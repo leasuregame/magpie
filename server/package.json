@@ -1,0 +1,26 @@
+{
+  "name": "magpie",
+  "description": "a game framework write with node.js",
+  "version": "1.0.0",
+  "author": "34",
+  "keywords": ["magpie", "coffeescrpt", "game", "web game"],
+  "contributors": ["34"],
+  "dependencies": {
+    "underscore": "1.4.4",
+    "underscore.string": "2.3.1"
+  },
+  "devDependencies": {
+    "coffee-script": ">=1.6.2",
+    "mocha": "*",
+    "should": "*"
+  },
+  "licenses":
+  [{
+    "type": "MIT"
+  }],
+  "repository": {
+    "type" : "git",
+    "url": "https://github.com/34/magpie.git"
+  },
+  "main" : "./index.js"
+}

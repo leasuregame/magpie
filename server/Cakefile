@@ -1,0 +1,18 @@
+exec = (require 'child_process').exec
+
+task 'test', 'Run all tests', ->
+	exec './node_modules/mocha/bin/mocha --compilers coffee:coffee-script', (err, stdout, stderr)->
+		console.log err
+		console.log stdout
+		console.log stderr
+
+task "clean", "clean up build directories", ->
+	console.log "cleaning up ..."
+
+task "build", "build the project files", ->
+	console.log "building..."
+
+task "package", "Clean, Build, and package the project", ->
+	invoke "clean"
+	invoke "build"
+	console.log "packaging..."

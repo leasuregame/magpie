@@ -20,18 +20,22 @@ class Skill
 condition = 
   'passive': '被动'
   'rate_trigger': '概率触发'
-  'damage': '受到伤害'
-  'dodge': '闪避'
-  'affter_crit': '暴击之后'
-  'hp_lower_to': '生命值降低到N%以下时'
-  'self_death': '自身阵亡'
-  'self_card_death': '己方卡牌阵亡'
-  'enemy_card_death': '敌方卡牌阵亡'
+  
+  'before_attack': '攻击之前触发'
+  'on_attack': '攻击的时候触发'
+  'after_attack': '攻击之后触发'
+  'on_damage': '受到伤害'
+  'on_dodge': '闪避'
+  'on_crit': '暴击之后'
+  'on_hp_reduce_to': '生命值降低到N%以下时'
+  'on_self_death': '自身阵亡'
+  'on_self_card_death': '己方卡牌阵亡'
+  'on_enemy_card_death': '敌方卡牌阵亡'
 
 magic = 
-  'lengthways': '纵向群体攻击'
-  'crossways_front': '横向前排群体攻击'
-  'crossways_back': '横向后排群体攻击'
+  'atk_lengthways': '纵向群体攻击'
+  'atk_crossways_front': '横向前排群体攻击'
+  'atk_crossways_back': '横向后排群体攻击'
   
   'damage_share': '伤害分摊'
   'damage_rebound': '伤害反弹'
@@ -44,6 +48,7 @@ magic =
   'atk_self_card': '攻击己方卡牌'
   'atk_forbid': '不能攻击'
   'atk_hp_promote': '同时提升攻击和生命'
+  'atk_one_more': '额外攻击一次'
   
   'hp_improve': '生命值提升'
   'hp_reduce': '生命值降低'

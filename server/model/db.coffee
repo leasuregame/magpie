@@ -51,69 +51,143 @@ class Database
       ],
       skill: [
         {
-          id: 1, name: '提升攻击', condition: 'passive', magic: 'atk_improve', when: 'now',
-          target: OWN, impact_cards: CARDSPOSITION.self, star3: '10:5', start4: '15:5', star5: '20:5'
-        },
-        {
-          id: 2, name: '免疫暴击', condition: 'passive', magic: 'crit_ignore', when: 'now',
-          target: OWN, impact_cards: CARDSPOSITION.self
-        },
-        {
-          id: 3, name: '提升攻击和生命', condition: 'passive', magic: 'atk_improve', when: 'now',
-          target: OWN, impact_cards: CARDSPOSITION.self, star3: '5:5', start4: '10:5', star5: '15:5'
-        },
-        {
-          id: 4, name: '增加己方任意2张卡牌下次攻击的攻击力', condition: 'passive_rate', rate: 30,
-          magic: 'atk_improve', when: 'next_round', target: OWN, impact_cards: CARDSPOSITION.random,
-          random_cards: 2, star3: '10:5', start4: '15:5', star5: '20:5'
-        },
-        {
-          id: 5, name: '纵向攻击 伤害平摊', condition: 'passive_rate', rate: 30, magic: 'atk_lengthways', 
-          when: 'now', target: ENEMY, impact_cards: CARDSPOSITION.crossways_front, 
-          star3: '10:5', start4: '15:5', star5: '20:5'
-        },
-        {
-          id: 5, name: '单体攻击敌方卡牌，附加魅惑效果，使其下一回合随机攻击己方某一张卡牌', 
-          condition: 'passive_rate', rate: 30, magic: 'atk_self_card', 
-          when: 'next_round', target: ENEMY, impact_cards: CARDSPOSITION.random, random_cards: 1
-          star3: '10:5', start4: '15:5', star5: '20:5'
-        },
-        {
-          id: 5, name: '每次攻击，都有一定概率（30%）封印对方攻击力最低的卡牌，使其下一回合无法发动攻击', 
-          condition: 'passive_rate', rate: 30, magic: 'atk_forbid',
-          when: 'next_round', target: ENEMY, impact_cards: CARDSPOSITION.hp_min, 
-          star3: '10:5', start4: '15:5', star5: '20:5'
-        },
-        {
-          id: 5, name: '每次攻击，都有一定概率（30%）对敌方造成连击效果，发起第二次攻击。---第二次攻击伤害的变化', 
-          condition: 'passive_rate', rate: 30, magic: 'atk_multiple', 
-          when: 'now', target: ENEMY, impact_cards: CARDSPOSITION.default, 
-          star3: '10:5', start4: '15:5', star5: '20:5'
-        },
-        {
-          id: 5, name: '伤害造成暴击后，下次发动攻击，其攻击力提升20%。', 
-          condition: 'on_crit', magic: 'atk_improve', 
-          when: 'next_round', target: ENEMY, impact_cards: CARDSPOSITION.default, 
-          star3: '20:5', start4: '25:5', star5: '30:5'
-        },  
-        {
-          id: 5, name: '卡牌阵亡后，将对敌方生命值最高的卡牌发起额外的最后一击，造成自身攻击力20%的伤害量。', 
-          condition: 'on_self_death', magic: 'atk_one_more', 
-          when: 'now', target: ENEMY, impact_cards: CARDSPOSITION.hp_max, 
-          star3: '20:5', start4: '25:5', star5: '30:5'
-        }, 
-        {
-          id: 5, name: '护佑己方生命值最高的卡牌，分摊其每次所受伤害量的10%。', 
-          condition: 'passive', magic: 'atk_reduce', 
-          when: 'now', target: OWN, impact_cards: CARDSPOSITION.hp_max, 
-          star3: '20:5', start4: '25:5', star5: '30:5'
-        }, 
-        {
-          id: 5, name: '生命值降低到70%以下，攻击力提升20%。', 
-          condition: 'on_hp_reduce_to', 'hp_reduce_to': 70, magic: 'atk_improve', 
-          when: 'now', target: OWN, impact_cards: CARDSPOSITION.self, 
-          star3: '20:5', start4: '25:5', star5: '30:5'
-        }, 
+          id: 1,
+          name: '提升攻击',
+          condition: 'passive',
+          magic: 'atk_improve',
+          when: 'now',
+          target: OWN,
+          scope: CARDSPOSITION.self,
+          star3: '10:5',
+          start4: '15:5',
+          star5: '20:5'
+        }, {
+          id: 2,
+          name: '免疫暴击',
+          condition: 'passive',
+          magic: 'crit_ignore',
+          when: 'now',
+          target: OWN,
+          scope: CARDSPOSITION.self
+        }, {
+          id: 3,
+          name: '提升攻击和生命',
+          condition: 'passive',
+          magic: 'atk_improve',
+          when: 'now',
+          target: OWN,
+          scope: CARDSPOSITION.self,
+          star3: '5:5',
+          start4: '10:5',
+          star5: '15:5'
+        }, {
+          id: 4,
+          name: '增加己方任意2张卡牌下次攻击的攻击力',
+          condition: 'passive_rate',
+          rate: 30,
+          magic: 'atk_improve',
+          when: 'next_round',
+          target: OWN,
+          scope: CARDSPOSITION.random,
+          random_cards: 2,
+          star3: '10:5',
+          start4: '15:5',
+          star5: '20:5'
+        }, {
+          id: 5,
+          name: '纵向攻击 伤害平摊',
+          condition: 'passive_rate',
+          rate: 30,
+          magic: 'atk_lengthways',
+          when: 'now',
+          target: ENEMY,
+          scope: CARDSPOSITION.crossways_front,
+          star3: '10:5',
+          start4: '15:5',
+          star5: '20:5'
+        }, {
+          id: 5,
+          name: '单体攻击敌方卡牌，附加魅惑效果，使其下一回合随机攻击己方某一张卡牌',
+          condition: 'passive_rate',
+          rate: 30,
+          magic: 'atk_self_card',
+          when: 'next_round',
+          target: ENEMY,
+          scope: CARDSPOSITION.random,
+          random_cards: 1,
+          star3: '10:5',
+          start4: '15:5',
+          star5: '20:5'
+        }, {
+          id: 5,
+          name: '每次攻击，都有一定概率（30%）封印对方攻击力最低的卡牌，使其下一回合无法发动攻击',
+          condition: 'passive_rate',
+          rate: 30,
+          magic: 'atk_forbid',
+          when: 'next_round',
+          target: ENEMY,
+          scope: CARDSPOSITION.hp_min,
+          star3: '10:5',
+          start4: '15:5',
+          star5: '20:5'
+        }, {
+          id: 5,
+          name: '每次攻击，都有一定概率（30%）对敌方造成连击效果，发起第二次攻击。---第二次攻击伤害的变化',
+          condition: 'passive_rate',
+          rate: 30,
+          magic: 'atk_multiple',
+          when: 'now',
+          target: ENEMY,
+          scope: CARDSPOSITION["default"],
+          star3: '10:5',
+          start4: '15:5',
+          star5: '20:5'
+        }, {
+          id: 5,
+          name: '伤害造成暴击后，下次发动攻击，其攻击力提升20%。',
+          condition: 'on_crit',
+          magic: 'atk_improve',
+          when: 'next_round',
+          target: ENEMY,
+          scope: CARDSPOSITION["default"],
+          star3: '20:5',
+          start4: '25:5',
+          star5: '30:5'
+        }, {
+          id: 5,
+          name: '卡牌阵亡后，将对敌方生命值最高的卡牌发起额外的最后一击，造成自身攻击力20%的伤害量。',
+          condition: 'on_self_death',
+          magic: 'atk_one_more',
+          when: 'now',
+          target: ENEMY,
+          scope: CARDSPOSITION.hp_max,
+          star3: '20:5',
+          start4: '25:5',
+          star5: '30:5'
+        }, {
+          id: 5,
+          name: '护佑己方生命值最高的卡牌，分摊其每次所受伤害量的10%。',
+          condition: 'passive',
+          magic: 'atk_reduce',
+          when: 'now',
+          target: OWN,
+          scope: CARDSPOSITION.hp_max,
+          star3: '20:5',
+          start4: '25:5',
+          star5: '30:5'
+        }, {
+          id: 5,
+          name: '生命值降低到70%以下，攻击力提升20%。',
+          condition: 'on_hp_reduce_to',
+          hp_reduce_to: 70,
+          magic: 'atk_improve',
+          when: 'now',
+          target: OWN,
+          scope: CARDSPOSITION.self,
+          star3: '20:5',
+          start4: '25:5',
+          star5: '30:5'
+        }
       ]
     }
     res[m]

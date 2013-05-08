@@ -1,14 +1,18 @@
 Module = require '../common/module'
+Events = require '../common/events'
 db = require '../model/db'
 util = require 'util'
 
 class Hero extends Module
+  @extend Events
+
   @table: 'hero'
 
   constructor: (id)->
     @id = null
     @hp = 0
     @atk = 0
+    @level = 0
     @skill = ''
     @effects = ''
 
@@ -32,6 +36,9 @@ class Hero extends Module
         @[key] = value
         
     this
+
+  laodSkill: ->
+
 
   attack: (enemys, cb) ->
     enemys = [enemys] if not util.isArray(enemys)

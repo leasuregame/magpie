@@ -17,9 +17,11 @@ class Skill
     @star4 = '15%:5%'
     @star5 = '20%:10%'
 
+
+
 condition = 
   'passive': '被动'
-  'rate_trigger': '概率触发'
+  'passive_rate': '概率触发'
   
   'before_attack': '攻击之前触发'
   'on_attack': '攻击的时候触发'

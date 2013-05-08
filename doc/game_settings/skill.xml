@@ -16,11 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>12340</WindowHeight>
+  <WindowHeight>16100</WindowHeight>
   <WindowWidth>38400</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>6</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -42,15 +41,6 @@
   </Style>
   <Style ss:ID="s64">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s66">
-   <Alignment ss:Vertical="Center"/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Modern" ss:Size="16"
-    ss:Color="#000000"/>
-  </Style>
-  <Style ss:ID="s67">
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Modern" ss:Size="16"
-    ss:Color="#000000"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="技能配置表">
@@ -241,6 +231,7 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -626,54 +617,6 @@
      <Number>3</Number>
      <ActiveRow>18</ActiveRow>
      <ActiveCol>5</ActiveCol>
-    </Pane>
-   </Panes>
-   <ProtectObjects>False</ProtectObjects>
-   <ProtectScenarios>False</ProtectScenarios>
-  </WorksheetOptions>
- </Worksheet>
- <Worksheet ss:Name="工作表7">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:AutoFitWidth="0" ss:Width="142"/>
-   <Column ss:AutoFitWidth="0" ss:Width="167"/>
-   <Row>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">export_name</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">技能配置表</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">skills</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">魔法配置表</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">magic</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">卡牌范围表</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">card_scope</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">目标常量表</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">target_const</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">触发条件表</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">trigger_condition</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">生效时机表</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">when_happen</Data></Cell>
-   </Row>
-  </Table>
-  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

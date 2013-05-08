@@ -18,6 +18,11 @@ class Module
   @proxy: (func) ->
     => func.apply(this, arguments)
 
+  @create: ->
+    instance = Object.create(@::)
+    instance::apply(instance, arguments)
+    instance
+
   proxy: (func) ->
     => func.apply(this, arguments)
 

@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -6,18 +7,18 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>arthur wu</Author>
-  <LastAuthor>arthur wu</LastAuthor>
+  <LastAuthor>arthur</LastAuthor>
   <Created>2013-05-07T08:08:26Z</Created>
-  <LastSaved>2013-05-09T10:44:46Z</LastSaved>
+  <LastSaved>2013-05-09T14:00:11Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
-  <Version>14.0</Version>
+  <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>4820</WindowHeight>
-  <WindowWidth>38400</WindowWidth>
+  <WindowHeight>4815</WindowHeight>
+  <WindowWidth>1980</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
   <ActiveSheet>7</ActiveSheet>
@@ -28,45 +29,130 @@
   <Style ss:ID="Default" ss:Name="Normal">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
   </Style>
   <Style ss:ID="s62">
-   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Alignment ss:Vertical="Center"/>
+   <NumberFormat ss:Format="0_ "/>
   </Style>
   <Style ss:ID="s63">
-   <NumberFormat/>
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s64">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <NumberFormat/>
   </Style>
   <Style ss:ID="s65">
-   <Alignment ss:Vertical="Center"/>
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s66">
    <Alignment ss:Vertical="Center"/>
-   <NumberFormat ss:Format="0_ "/>
+  </Style>
+  <Style ss:ID="s96">
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s97">
+   <Borders>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s98">
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s99">
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s100">
+   <Borders/>
+  </Style>
+  <Style ss:ID="s101">
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s105">
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#0F243E"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#0F243E"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s106">
+   <Borders>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#0F243E"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s107">
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#0F243E"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#0F243E"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s108">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#0F243E"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#0F243E"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s109">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#0F243E"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s110">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#0F243E"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#0F243E"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s111">
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#0F243E"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s112">
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#0F243E"/>
+   </Borders>
   </Style>
  </Styles>
  <Worksheet ss:Name="卡牌配置表">
   <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="12" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Row>
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">名称</Data></Cell>
     <Cell><Data ss:Type="String">基本暴击率</Data></Cell>
     <Cell><Data ss:Type="String">基本闪避率</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">星级</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">基本攻击力</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">攻击力增幅</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">基本生命值</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">生命值增幅</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">技能ID</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">星级</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">基本攻击力</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">攻击力增幅</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">基本生命值</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">生命值增幅</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">技能ID</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
     <Cell><Data ss:Type="String">init_crit</Data></Cell>
@@ -76,11 +162,11 @@
     <Cell><Data ss:Type="String">grow_atk</Data></Cell>
     <Cell><Data ss:Type="String">init_hp</Data></Cell>
     <Cell><Data ss:Type="String">grow_hp</Data></Cell>
-    <Cell><Data ss:Type="String">skill_id</Data><Comment ss:Author="arthur wu"><Data><B
-        xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
-         html:Color="#000000">技能配置表|name|id</Font></B></Data></Comment></Cell>
+    <Cell><Data ss:Type="String">skill_id</Data><Comment ss:Author="arthur wu"><ss:Data
+       xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Size="10"
+         html:Color="#000000">技能配置表|name|id</Font></B></ss:Data></Comment></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">雷震子</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -92,7 +178,7 @@
     <Cell><Data ss:Type="Number">15</Data></Cell>
     <Cell><Data ss:Type="String">箫花齐放</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">雷震子</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -104,7 +190,7 @@
     <Cell><Data ss:Type="Number">22</Data></Cell>
     <Cell><Data ss:Type="String">箫花齐放</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">雷震子</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -116,7 +202,7 @@
     <Cell><Data ss:Type="Number">35</Data></Cell>
     <Cell><Data ss:Type="String">箫花齐放</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">雷震子</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -128,7 +214,7 @@
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="String">箫花齐放</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">雷震子</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -140,7 +226,7 @@
     <Cell><Data ss:Type="Number">75</Data></Cell>
     <Cell><Data ss:Type="String">箫花齐放</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="String">孙悟空</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -152,7 +238,7 @@
     <Cell><Data ss:Type="Number">20</Data></Cell>
     <Cell><Data ss:Type="String">花魂附体</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell><Data ss:Type="String">孙悟空</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -164,7 +250,7 @@
     <Cell><Data ss:Type="Number">29</Data></Cell>
     <Cell><Data ss:Type="String">花魂附体</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="String">孙悟空</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -176,7 +262,7 @@
     <Cell><Data ss:Type="Number">43</Data></Cell>
     <Cell><Data ss:Type="String">花魂附体</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">9</Data></Cell>
     <Cell><Data ss:Type="String">孙悟空</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -188,7 +274,7 @@
     <Cell><Data ss:Type="Number">56</Data></Cell>
     <Cell><Data ss:Type="String">花魂附体</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">孙悟空</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -202,26 +288,27 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <PageLayoutZoom>0</PageLayoutZoom>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="技能配置表">
   <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="13" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="2" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="280"/>
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   <Column ss:Index="2" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="279.75"/>
    <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="156" ss:Span="1"/>
    <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="153" ss:Span="1"/>
-   <Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="110"/>
-   <Column ss:AutoFitWidth="0" ss:Width="130"/>
+   <Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="110.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="129.75"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">技能ID</Data></Cell>
     <Cell><Data ss:Type="String">描述</Data></Cell>
@@ -244,21 +331,21 @@
     <Cell><Data ss:Type="String">tips</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
     <Cell><Data ss:Type="String">trigger_condition</Data><Comment
-      ss:Author="arthur wu"><Data><B xmlns="http://www.w3.org/TR/REC-html40"><Font
-         html:Size="10" html:Color="#000000">触发条件表|name|name</Font></B></Data></Comment></Cell>
+      ss:Author="arthur wu"><ss:Data xmlns="http://www.w3.org/TR/REC-html40"><B><Font
+         html:Size="10" html:Color="#000000">触发条件表|name|name</Font></B></ss:Data></Comment></Cell>
     <Cell><Data ss:Type="String">hp_reduce_to</Data></Cell>
     <Cell><Data ss:Type="String">trigger_rate</Data></Cell>
     <Cell><Data ss:Type="String">limit_count</Data></Cell>
-    <Cell><Data ss:Type="String">when</Data><Comment ss:Author="arthur wu"><Data><B
-        xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
-         html:Color="#000000">生效时机表|name|value</Font></B></Data></Comment></Cell>
+    <Cell><Data ss:Type="String">when</Data><Comment ss:Author="arthur wu"><ss:Data
+       xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Size="10"
+         html:Color="#000000">生效时机表|name|value</Font></B></ss:Data></Comment></Cell>
     <Cell><Data ss:Type="String">magic_id</Data></Cell>
-    <Cell><Data ss:Type="String">target</Data><Comment ss:Author="arthur wu"><Data><B
-        xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
-         html:Color="#000000">目标常量表|name|value</Font></B></Data></Comment></Cell>
-    <Cell><Data ss:Type="String">scope</Data><Comment ss:Author="arthur wu"><Data><B
-        xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
-         html:Color="#000000">卡牌范围表|name|name</Font></B></Data></Comment></Cell>
+    <Cell><Data ss:Type="String">target</Data><Comment ss:Author="arthur wu"><ss:Data
+       xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Size="10"
+         html:Color="#000000">目标常量表|name|value</Font></B></ss:Data></Comment></Cell>
+    <Cell><Data ss:Type="String">scope</Data><Comment ss:Author="arthur wu"><ss:Data
+       xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Size="10"
+         html:Color="#000000">卡牌范围表|name|name</Font></B></ss:Data></Comment></Cell>
     <Cell><Data ss:Type="String">random_num</Data></Cell>
     <Cell><Data ss:Type="String">star3</Data></Cell>
     <Cell><Data ss:Type="String">star4</Data></Cell>
@@ -273,9 +360,9 @@
     <Cell><Data ss:Type="String">atk_improve</Data></Cell>
     <Cell><Data ss:Type="String">己方</Data></Cell>
     <Cell><Data ss:Type="String">self</Data></Cell>
-    <Cell ss:Index="13" ss:StyleID="s63"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:Index="13" ss:StyleID="s64"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">20,5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -300,7 +387,7 @@
     <Cell><Data ss:Type="String">10,5</Data></Cell>
     <Cell><Data ss:Type="String">15,5</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="38">
+   <Row ss:AutoFitHeight="0" ss:Height="38.0625">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">增加己方任意2张卡牌下次攻击的攻击力</Data></Cell>
     <Cell><Data ss:Type="String">花魂附体</Data></Cell>
@@ -358,7 +445,7 @@
     <Cell><Data ss:Type="String">15，5</Data></Cell>
     <Cell><Data ss:Type="String">20，5</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="38">
+   <Row ss:AutoFitHeight="0" ss:Height="38.0625">
     <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="String">伤害造成暴击后，下次发动攻击，其攻击力提升20%</Data></Cell>
     <Cell><Data ss:Type="String">寒冰真气</Data></Cell>
@@ -384,7 +471,7 @@
     <Cell><Data ss:Type="String">25，5</Data></Cell>
     <Cell><Data ss:Type="String">30，5</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="38">
+   <Row ss:AutoFitHeight="0" ss:Height="38.0625">
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">护佑己方生命值最高的卡牌，分摊其每次所受伤害量的10%</Data></Cell>
     <Cell><Data ss:Type="String">冲虚养气</Data></Cell>
@@ -397,7 +484,7 @@
     <Cell><Data ss:Type="String">15，5</Data></Cell>
     <Cell><Data ss:Type="String">20，5</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="38">
+   <Row ss:AutoFitHeight="0" ss:Height="38.0625">
     <Cell><Data ss:Type="Number">11</Data></Cell>
     <Cell><Data ss:Type="String">生命值降低到70%以下，攻击力提升20%</Data></Cell>
     <Cell><Data ss:Type="String">白鹤展翅</Data></Cell>
@@ -420,23 +507,23 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="魔法属性表">
   <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="23" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Width="44"/>
-   <Column ss:Width="164"/>
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   <Column ss:Width="44.25"/>
+   <Column ss:Width="164.25"/>
    <Column ss:Width="156"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">序号</Data></Cell>
@@ -564,7 +651,6 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -574,12 +660,13 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="卡牌范围表">
   <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="13" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="133"/>
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="132.75"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">名称</Data></Cell>
@@ -661,21 +748,21 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>16</ActiveRow>
      <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="目标常量表">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="6" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">目标</Data></Cell>
@@ -696,104 +783,125 @@
     <Cell><Data ss:Type="String">敌方</Data></Cell>
     <Cell><Data ss:Type="Number">-1</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">own</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="String">enemy</Data></Cell>
+    <Cell><Data ss:Type="Number">-1</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>6</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="触发条件表">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="12" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="167"/>
-   <Column ss:AutoFitWidth="0" ss:Width="252"/>
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="12" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="167.25" ss:Span="1"/>
+   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="252"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">名称</Data></Cell>
+    <Cell><Data ss:Type="String">值</Data></Cell>
     <Cell><Data ss:Type="String">描述</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
+    <Cell><Data ss:Type="String">value</Data></Cell>
     <Cell><Data ss:Type="String">desc</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">passive</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">被动</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">passive_rate</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
     <Cell><Data ss:Type="String">被动概率触发</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">on_crit</Data></Cell>
+    <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">暴击之后</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">on_attack</Data></Cell>
+    <Cell><Data ss:Type="Number">40</Data></Cell>
     <Cell><Data ss:Type="String">攻击时候触发</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">on_damage</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="String">受到伤害</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="String">on_dodge</Data></Cell>
+    <Cell><Data ss:Type="Number">60</Data></Cell>
     <Cell><Data ss:Type="String">闪避</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell><Data ss:Type="String">on_self_death</Data></Cell>
+    <Cell><Data ss:Type="Number">70</Data></Cell>
     <Cell><Data ss:Type="String">自身阵亡</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="String">on_self_card_death</Data></Cell>
+    <Cell><Data ss:Type="Number">80</Data></Cell>
     <Cell><Data ss:Type="String">己方卡牌阵亡</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">9</Data></Cell>
     <Cell><Data ss:Type="String">on_enemy_card_death</Data></Cell>
+    <Cell><Data ss:Type="Number">90</Data></Cell>
     <Cell><Data ss:Type="String">敌方卡牌阵亡</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="38">
+   <Row ss:AutoFitHeight="0" ss:Height="44.25">
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">on_hp_reduce_to</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">生命值降低到N%时触发，需结合魔法属性hp_reduce_to的值决定N%</Data></Cell>
+    <Cell><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">生命值降低到N%时触发，需结合魔法属性hp_reduce_to的值决定N%</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>23</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="生效时机表">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="5" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">名称</Data></Cell>
@@ -822,7 +930,6 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -831,16 +938,203 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="常量值表">
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="27" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="72" ss:DefaultRowHeight="20.25">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="197.25"/>
+   <Column ss:Index="4" ss:Width="175.5"/>
+   <Row>
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">名称</Data></Cell>
+    <Cell><Data ss:Type="String">值</Data></Cell>
+    <Cell><Data ss:Type="String">描述</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">name</Data></Cell>
+    <Cell><Data ss:Type="String">value</Data></Cell>
+    <Cell><Data ss:Type="String">tips</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s96"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s97"><Data ss:Type="String">passive</Data></Cell>
+    <Cell ss:StyleID="s97"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s98"><Data ss:Type="String">被动触发</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s99"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">passive_rate</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">被动概率触发</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s99"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">on_crit</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">暴击后触发</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s99"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">on_attack</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">攻击后触发</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s99"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">on_damage</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">受到伤害触发</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s99"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">on_dodge</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">闪避后触发</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s99"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">on_self_death</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">70</Data></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">自身死亡触发</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s99"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">on_self_card_death</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">80</Data></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">自身卡牌死亡触发</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s99"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">on_enemy_card_death</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">90</Data></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">敌方卡牌死亡触发</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s99"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">on_hp_reduce_to</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">生命值降低到N%时触发</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s105"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s106"><Data ss:Type="String">own</Data></Cell>
+    <Cell ss:StyleID="s106"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s107"><Data ss:Type="String">己方</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s108"><Data ss:Type="Number">12</Data></Cell>
+    <Cell ss:StyleID="s109"><Data ss:Type="String">enemy</Data></Cell>
+    <Cell ss:StyleID="s109"><Data ss:Type="Number">-1</Data></Cell>
+    <Cell ss:StyleID="s110"><Data ss:Type="String">敌方</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s105"><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:StyleID="s106"><Data ss:Type="String">self</Data></Cell>
+    <Cell ss:StyleID="s106"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s107"><Data ss:Type="String">自身卡牌</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s111"><Data ss:Type="Number">14</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">crossways_front</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s112"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s111"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">crossways_back</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s112"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s111"><Data ss:Type="Number">16</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">lengthways</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s112"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s111"><Data ss:Type="Number">17</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">hp_max</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s112"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s111"><Data ss:Type="Number">18</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">hp_min</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s112"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s111"><Data ss:Type="Number">19</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">atk_max</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s112"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s111"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">atk_min</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s112"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s111"><Data ss:Type="Number">21</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">random</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="s112"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s111"><Data ss:Type="Number">22</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">all</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s112"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s108"><Data ss:Type="Number">23</Data></Cell>
+    <Cell ss:StyleID="s109"><Data ss:Type="String">default</Data></Cell>
+    <Cell ss:StyleID="s109"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s110"/>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">24</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">25</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>600</VerticalResolution>
+   </Print>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>25</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="export">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="8" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:AutoFitWidth="0" ss:Width="197"/>
-   <Column ss:AutoFitWidth="0" ss:Width="161"/>
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="9" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   <Column ss:AutoFitWidth="0" ss:Width="197.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="161.25"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s65"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">export_name</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">技能配置表</Data></Cell>
@@ -870,11 +1164,13 @@
     <Cell><Data ss:Type="String">卡牌配置表</Data></Cell>
     <Cell><Data ss:Type="String">cards</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">常量值表</Data></Cell>
+    <Cell><Data ss:Type="String">Const</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -883,6 +1179,7 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
 </Workbook>

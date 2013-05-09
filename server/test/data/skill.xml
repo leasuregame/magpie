@@ -16,11 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>12340</WindowHeight>
-  <WindowWidth>38400</WindowWidth>
-  <WindowTopX>0</WindowTopX>
-  <WindowTopY>0</WindowTopY>
-  <ActiveSheet>6</ActiveSheet>
+  <WindowHeight>10880</WindowHeight>
+  <WindowWidth>19880</WindowWidth>
+  <WindowTopX>14860</WindowTopX>
+  <WindowTopY>840</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -76,14 +75,22 @@
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">tips</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
-    <Cell><Data ss:Type="String">trigger_condition</Data></Cell>
+    <Cell><Data ss:Type="String">trigger_condition</Data><Comment
+      ss:Author="arthur wu"><Data><B xmlns="http://www.w3.org/TR/REC-html40"><Font
+         html:Size="10" html:Color="#000000">触发条件表|name|name</Font></B></Data></Comment></Cell>
     <Cell><Data ss:Type="String">hp_reduce_to</Data></Cell>
     <Cell><Data ss:Type="String">trigger_rate</Data></Cell>
     <Cell><Data ss:Type="String">limit_count</Data></Cell>
-    <Cell><Data ss:Type="String">when</Data></Cell>
+    <Cell><Data ss:Type="String">when</Data><Comment ss:Author="arthur wu"><Data><B
+        xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
+         html:Color="#000000">生效时机表|name|value</Font></B></Data></Comment></Cell>
     <Cell><Data ss:Type="String">magic_id</Data></Cell>
-    <Cell><Data ss:Type="String">target</Data></Cell>
-    <Cell><Data ss:Type="String">scope</Data></Cell>
+    <Cell><Data ss:Type="String">target</Data><Comment ss:Author="arthur wu"><Data><B
+        xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
+         html:Color="#000000">目标常量表|name|value</Font></B></Data></Comment></Cell>
+    <Cell><Data ss:Type="String">scope</Data><Comment ss:Author="arthur wu"><Data><B
+        xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
+         html:Color="#000000">卡牌范围表|name|name</Font></B></Data></Comment></Cell>
     <Cell><Data ss:Type="String">random_num</Data></Cell>
     <Cell><Data ss:Type="String">star3</Data></Cell>
     <Cell><Data ss:Type="String">star4</Data></Cell>
@@ -92,7 +99,8 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">提升攻击</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">passive</Data></Cell>
+    <Cell><Data ss:Type="String">箫花齐放</Data></Cell>
+    <Cell><Data ss:Type="String">passive</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">永久生效</Data></Cell>
     <Cell><Data ss:Type="String">atk_improve</Data></Cell>
     <Cell><Data ss:Type="String">己方</Data></Cell>
@@ -104,7 +112,8 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">免疫暴击</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">passive</Data></Cell>
+    <Cell><Data ss:Type="String">散花势</Data></Cell>
+    <Cell><Data ss:Type="String">passive</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">永久生效</Data></Cell>
     <Cell><Data ss:Type="String">crit_ignore</Data></Cell>
     <Cell><Data ss:Type="String">己方</Data></Cell>
@@ -113,7 +122,8 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">提升攻击力和生命值</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">passive</Data></Cell>
+    <Cell><Data ss:Type="String">浪卷云飞</Data></Cell>
+    <Cell><Data ss:Type="String">passive</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">永久生效</Data></Cell>
     <Cell><Data ss:Type="String">atk_hp_improve</Data></Cell>
     <Cell><Data ss:Type="String">己方</Data></Cell>
@@ -125,7 +135,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="38">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">增加己方任意2张卡牌下次攻击的攻击力</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">passive_rate</Data></Cell>
+    <Cell><Data ss:Type="String">花魂附体</Data></Cell>
+    <Cell><Data ss:Type="String">passive_rate</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">下一回合生效</Data></Cell>
     <Cell><Data ss:Type="String">atk_improve</Data></Cell>
@@ -139,7 +150,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="57">
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">单体攻击敌方卡牌，附加魅惑效果，使其下一回合随机攻击己方某一张卡牌</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">passive_rate</Data></Cell>
+    <Cell><Data ss:Type="String">九阴白骨爪</Data></Cell>
+    <Cell><Data ss:Type="String">passive_rate</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">下一回合生效</Data></Cell>
     <Cell><Data ss:Type="String">atk_self_card</Data></Cell>
@@ -153,7 +165,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="57">
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="String">每次攻击，都有一定概率（30%）封印对方攻击力最低的卡牌，使其下一回合无法发动攻击</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">passive_rate</Data></Cell>
+    <Cell><Data ss:Type="String">九阴摧心掌</Data></Cell>
+    <Cell><Data ss:Type="String">passive_rate</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">下一回合生效</Data></Cell>
     <Cell><Data ss:Type="String">atk_forbid</Data></Cell>
@@ -166,7 +179,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="57">
     <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell><Data ss:Type="String">每次攻击，都有一定概率（30%）对敌方造成连击效果，发起第二次攻击。&#45;&#45;-第二次攻击伤害的变化</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">passive_rate</Data></Cell>
+    <Cell><Data ss:Type="String">嵩阳剑法</Data></Cell>
+    <Cell><Data ss:Type="String">passive_rate</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">立即生效</Data></Cell>
     <Cell><Data ss:Type="String">atk_multiple</Data></Cell>
@@ -179,7 +193,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="38">
     <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="String">伤害造成暴击后，下次发动攻击，其攻击力提升20%</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">on_crit</Data></Cell>
+    <Cell><Data ss:Type="String">寒冰真气</Data></Cell>
+    <Cell><Data ss:Type="String">on_crit</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">下一回合生效</Data></Cell>
     <Cell><Data ss:Type="String">atk_improve</Data></Cell>
     <Cell><Data ss:Type="String">己方</Data></Cell>
@@ -191,7 +206,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="57">
     <Cell><Data ss:Type="Number">9</Data></Cell>
     <Cell><Data ss:Type="String">卡牌阵亡后，将对敌方生命值最高的卡牌发起额外的最后一击，造成自身攻击力20%的伤害量</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">on_self_death</Data></Cell>
+    <Cell><Data ss:Type="String">寒冰神掌</Data></Cell>
+    <Cell><Data ss:Type="String">on_self_death</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">立即生效</Data></Cell>
     <Cell><Data ss:Type="String">atk_one_more</Data></Cell>
     <Cell><Data ss:Type="String">敌方</Data></Cell>
@@ -203,7 +219,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="38">
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">护佑己方生命值最高的卡牌，分摊其每次所受伤害量的10%</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">passive</Data></Cell>
+    <Cell><Data ss:Type="String">冲虚养气</Data></Cell>
+    <Cell><Data ss:Type="String">passive</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">永久生效</Data></Cell>
     <Cell><Data ss:Type="String">atk_reduce</Data></Cell>
     <Cell><Data ss:Type="String">己方</Data></Cell>
@@ -215,7 +232,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="38">
     <Cell><Data ss:Type="Number">11</Data></Cell>
     <Cell><Data ss:Type="String">生命值降低到70%以下，攻击力提升20%</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">on_hp_reduce_to</Data></Cell>
+    <Cell><Data ss:Type="String">白鹤展翅</Data></Cell>
+    <Cell><Data ss:Type="String">on_hp_reduce_to</Data></Cell>
     <Cell><Data ss:Type="Number">70</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">立即生效</Data></Cell>
     <Cell><Data ss:Type="String">atk_improve</Data></Cell>
@@ -235,20 +253,24 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>18</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
- <Worksheet ss:Name="魔法配置表">
+ <Worksheet ss:Name="魔法属性表">
   <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="23" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:Width="44"/>
+   <Column ss:Width="164"/>
+   <Column ss:Width="156"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">序号</Data></Cell>
     <Cell><Data ss:Type="String">魔法ID</Data></Cell>
@@ -379,8 +401,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>31</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>13</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -388,8 +410,15 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="卡牌范围表">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="12" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="13" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="133"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">名称</Data></Cell>
+    <Cell><Data ss:Type="String">值</Data></Cell>
+    <Cell><Data ss:Type="String">描述</Data></Cell>
+   </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
@@ -469,7 +498,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>12</ActiveRow>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -506,7 +536,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -514,13 +545,18 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="触发条件表">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="11" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="12" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="167"/>
    <Column ss:AutoFitWidth="0" ss:Width="252"/>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">no</Data></Cell>
     <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">名称</Data></Cell>
+    <Cell><Data ss:Type="String">描述</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">name</Data></Cell>
     <Cell><Data ss:Type="String">desc</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -580,17 +616,22 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
- <Worksheet ss:Name="生效时机">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="4" x:FullColumns="1"
+ <Worksheet ss:Name="生效时机表">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">名称</Data></Cell>
+    <Cell><Data ss:Type="String">值</Data></Cell>
+   </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
@@ -618,8 +659,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>18</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>1</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -631,43 +671,42 @@
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:AutoFitWidth="0" ss:Width="197"/>
    <Column ss:AutoFitWidth="0" ss:Width="161"/>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">export_name</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">技能配置表</Data></Cell>
     <Cell><Data ss:Type="String">skills</Data></Cell>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="String">魔法配置表</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">魔法属性表</Data></Cell>
     <Cell><Data ss:Type="String">magic</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">卡牌范围表</Data></Cell>
     <Cell><Data ss:Type="String">card_scope</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">目标常量表</Data></Cell>
     <Cell><Data ss:Type="String">target_const</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">触发条件表</Data></Cell>
     <Cell><Data ss:Type="String">trigger_condition</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">生效时机表</Data></Cell>
     <Cell><Data ss:Type="String">when_happen</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>2</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

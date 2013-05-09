@@ -219,9 +219,10 @@ function analyzeTable(alltable,tablename) {
   return outputTable;
 }
 function getValueByValue(outputTables,nameChanged,table_name,key,key_value) {
-  //console.log(comboInfo.table);
-  //console.log(nameChanged[comboInfo.table]);
-  console.log(table_name);
+  
+  //console.log(nameChanged[table_name]);
+  //console.log(table_name);
+  //console.log(key, key_value)
   var table = outputTables[nameChanged[table_name]]['rows'];
   if (isArray(key_value)) {
     var output = [];

@@ -11,6 +11,7 @@
     "xml2js": "0.1.14"
   },
   "devDependencies": {
+    "underscore": "1.4.4",
     "coffee-script": ">=1.6.2",
     "mocha": "*",
     "should": "*"

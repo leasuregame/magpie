@@ -13,7 +13,7 @@ class PropertyBase extends Module
     return -1
 
   activate: (target, value, args) ->
-    if not _able
+    if not @_able
       @target = target
       @value = value
       @args = args
@@ -21,8 +21,8 @@ class PropertyBase extends Module
       @_able = true
 
   inactivate: ->
-    if _able
+    if @_able
       @disable()
       @_able = false
 
-modeule.exports = PropertyBase
+module.exports = PropertyBase

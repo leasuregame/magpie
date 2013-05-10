@@ -1,5 +1,6 @@
 Matrix = require '../battle/matrix'
 should = require 'should'
+_ = require 'Underscore'
 
 describe 'A Matrix, for holding player cards with heros', ->
 
@@ -81,6 +82,58 @@ describe 'A Matrix, for holding player cards with heros', ->
     @matrix.unset('12')
     should.strictEqual( @matrix.get('00'), null )
 
+  it 'get crosswaysFront elements', ->
+    @matrix.crosswaysFront().should.eql([1,2,3])
+
+  it 'get crosswaysBack elements', ->
+    @matrix.crosswaysBack().should.eql([4,5,6])
+
+  it 'get lenthways elements', ->
+    @matrix.lengthways(0).should.eql([1,4])
+
+  it 'get all elements', ->
+    @matrix.all().should.eql([1,2,3,4,5,6])
+
+  it 'get hp_max, hp_min, atk_max, atk_min element', ->
+    @matrix = new Matrix([
+      [
+        {id: 1, hp: 1, atk: 1}
+        {id: 2, hp: 2, atk: 2}
+        {id: 3, hp: 3, atk: 3}
+      ],
+      [
+        {id: 4, hp: 4, atk: 4}
+        {id: 5, hp: 5, atk: 5}
+        {id: 6, hp: 6, atk: 6}
+      ]
+      ])
+    @matrix.hp_max().should.eql({id: 6, hp: 6, atk: 6})
+    @matrix.hp_min().should.eql({id: 1, hp: 1, atk: 1})
+    @matrix.atk_max().should.eql({id: 6, hp: 6, atk: 6})
+    @matrix.atk_min().should.eql({id: 1, hp: 1, atk: 1})
+
+  it 'get default element by specific position', ->
+    @matrix.default(1).should.equal(1)
+    @matrix.default('01').should.equal(2)
+    @matrix.default().should.equal(1)
+
+  it 'get random element', ->
+    check = (num) =>
+      res = @matrix.random(num)
+      res.length.should.equal(num)
+      for i in res
+        i.should.within(1,6)
+
+      _res = _.uniq(res)
+      _res.length.should.equal(res.length)
+
+
+    check(1)
+    check(2)
+    check(3)
+    check(4)
+    check(5)
+    check(6)
 
 
 

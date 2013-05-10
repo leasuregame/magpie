@@ -415,7 +415,7 @@ module.exports = function() {
 
   for (var i = 0;i < arguments.length; i++) {
     var file = arguments[i];
-    //console.log(file);
+    console.log(file);
     var data = fs.readFileSync(file);
       parser.parseString(data, function (err, result) {
           var sheets = result.Worksheet;

@@ -1,3 +1,5 @@
+_ = require 'Underscore'
+
 '''
   Matrix formation:
   4, 5, 6
@@ -78,6 +80,75 @@ class Matrix
       [row, col] = row
     @set(row, col, null)
     @
+
+  crosswaysFront: ->
+    @row(0)
+
+  crosswaysBack: ->
+    @row(1)
+
+  lengthways: (colIndex) ->
+    @col(colIndex)
+
+  all: ->
+    _res = []
+    _res = _res.concat(row) for row in @elements
+    _res
+
+  hp_max: ->
+    items = @all()
+    res = items[0]
+    items.forEach (h) ->
+      h.hp > res.hp && res = h
+    res
+
+  hp_min: ->
+    items = @all()
+    res = items[0]
+    items.forEach (h) ->
+      h.hp < res.hp && res = h
+    res
+
+  atk_max: ->
+    items = @all()
+    res = items[0]
+    items.forEach (h) ->
+      h.atk > res.atk && res = h
+    res
+
+  atk_min: ->
+    items = @all()
+    res = items[0]
+    items.forEach (h) ->
+      h.atk < res.atk && res = h
+    res
+
+  default: (pos) ->
+    if _.isString(pos) and pos.length is 2
+      attackOrder = ATTACKORDER[ @positionToNumber(pos) ]
+    else if _.isNumber(pos) and pos < (@rows * @cols)
+      attackOrder = ATTACKORDER[ pos ]
+    else
+      attackOrder = ATTACKORDER[ @positionToNumber(@curIndex) ]
+
+    for num in attackOrder
+      index = @numberToPosition(num)
+      el = @get(index)
+      return el if el?
+    null
+
+  random: (num = 1) ->    
+    len = @rows * @cols
+    num = len if num > len
+    
+    indexs = _.range(len)
+    _res = []
+    for i in _.range(num)
+      rd_index = Math.floor(Math.random() * len--)
+      _res.push( @get(@numberToPosition(indexs[rd_index] + 1)) )
+      indexs = indexs.filter (i) -> indexs.indexOf(i) != rd_index
+
+    _res
 
   get: (row, col) ->
     if arguments.length == 1

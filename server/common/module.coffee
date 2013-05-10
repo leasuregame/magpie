@@ -20,7 +20,7 @@ class Module
 
   @create: ->
     instance = Object.create(@::)
-    instance::apply(instance, arguments)
+    instance.constructor.apply(instance, arguments)
     instance
 
   proxy: (func) ->

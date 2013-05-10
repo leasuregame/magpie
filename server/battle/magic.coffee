@@ -5,7 +5,7 @@ Magic = exports = module.exports
 class Magic.atk_improve extends PropertyBase
   enable: (target, value, args) ->
     # target is a hero
-    # value is a percent
+    # value is skill info
     target.atk += target.atk * value
 
   disable: ->

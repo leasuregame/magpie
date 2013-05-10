@@ -1,7 +1,9 @@
 exec = (require 'child_process').exec
 
-task 'test', 'Run all tests', (file)->
-  filename = file || ''
+option '-f', '--file [file]', 'test file to run'
+
+task 'test', 'Run all tests', ->
+  filename = option.file || ''
   cmd = './node_modules/mocha/bin/mocha --compilers coffee:coffee-script ' + filename
   exec cmd, (err, stdout, stderr)->
     console.log err

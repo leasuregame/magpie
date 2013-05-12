@@ -113,6 +113,8 @@ class Round extends Base
       @attack.execute()
 
     @setShootCount()
+    @attacker.reset()
+    @defender.reset()
     
 class Attack extends Base
   constructor: ->
@@ -123,11 +125,11 @@ class Attack extends Base
     _attack = (atker, dfder) =>
       hero = atker.currentHero()
       enemys = dfder.currentHerosToBeAttacked()
-      hero.attack enemys, (enemys)->
-        enemys.forEach (enemy) ->
-          dfder.shootCount -= 1 if enemy.death()
+      hero.attack enemys, (enemy)->
+        dfder.shootCount -= 1 if enemy.death()
 
       atker.shootCount -= 1
+      atker.moveNextHero()
 
       @battleLog.addStep(
         hero.id, 

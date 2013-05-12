@@ -41,19 +41,20 @@ class Hero extends Module
     @skill = magic[skill_setting.magic_id].create()
     #@skill.activate(@, skill_setting)
 
-  attack: (enemys, cb) ->
+  attack: (enemys, callback) ->
     enemys = [enemys] if not _.isArray(enemys)
     
-    enemys.forEach (en) =>
-      en.trigger('on_attack')
+    enemys.forEach (enemy) =>
+      enemy.trigger('on_attack')
       
       atk_val = @atk
       if @isCrit()
         @is_crit = true
-        en.trigger('on_crit') 
+        enemy.trigger('on_crit') 
         atk_val = @atk * 1.5
 
-      en.damage(atk_val)
+      enemy.damage(atk_val)
+      callback enemy
 
   damage: (value) ->
     if @isDodge()

@@ -68,6 +68,9 @@ class Matrix
     @curIndex = @nextIndex()
     @
 
+  reset: ->
+    
+
   set: (row, col, el) ->
     if arguments.length == 2
       el = col

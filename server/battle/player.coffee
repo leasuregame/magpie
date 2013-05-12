@@ -75,6 +75,12 @@ class Player extends Module
     return [_heros] if not util.isArray(_heros)
     _heros
 
+  moveNextHero: ->
+    @cards.moveToNext()
+
+  reset: ->
+    @cards.reset()
+
   aliveHeros: ->
     res = @heros.filter (h) ->
       h.hp > 0

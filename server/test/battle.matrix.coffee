@@ -1,6 +1,6 @@
 Matrix = require '../battle/matrix'
 should = require 'should'
-_ = require 'Underscore'
+_ = require 'underscore'
 
 describe 'A Matrix, for holding player cards with heros', ->
 

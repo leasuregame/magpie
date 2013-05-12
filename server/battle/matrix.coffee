@@ -1,4 +1,4 @@
-_ = require 'Underscore'
+_ = require 'underscore'
 
 '''
   Matrix formation:

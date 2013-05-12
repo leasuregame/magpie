@@ -76,3 +76,5 @@ Events =
 
 Events.on = Events.bind
 Events.off = Events.unbind
+
+module.exports = Events

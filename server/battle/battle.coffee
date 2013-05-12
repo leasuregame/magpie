@@ -71,29 +71,34 @@ class Battle extends Base
     super
 
   init: ->
-    @fight = new Fight(@attacker, @defender)
+    @round = new Round(@attacker, @defender)
 
     @battleLog = new BattleLog()
     @battleLog.set('enemy', @defender)
-    @fight.battleLog = @battleLog
-
-  start: ->
-
+    @round.battleLog = @battleLog
 
   execute: ->
     while not @isOver()
-      @fight.execute()
+      @round.execute()
+      @round.increase_round_num()
 
     @battleLog.setWinner( if @defender.death() then @attacker else @defender )
 
-class Fight extends Base
+class Round extends Base
   constructor: ->
     super
 
   init: ->
+    @round_num = 1
     @setShootCount()
-    @round = new Round(@attacker, @defender)
-    @round.battleLog = @battleLog
+    @attack = new Attack(@attacker, @defender)
+    @attack.battleLog = @battleLog
+
+  increase_round_num: ->
+    @round_num ++
+
+  reset_round_num: ->
+    @round_num = 1
 
   setShootCount: ->
     @attacker.shootCount = @attacker.aliveHeros().length
@@ -104,11 +109,12 @@ class Fight extends Base
 
   execute: () ->
     while not @isOver()
-      @round.execute()
+      @attacker.round_num = @defender.round_num = @round_num
+      @attack.execute()
 
     @setShootCount()
     
-class Round extends Base
+class Attack extends Base
   constructor: ->
     super
 

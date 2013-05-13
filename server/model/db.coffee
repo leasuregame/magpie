@@ -25,15 +25,81 @@ class Database
 
   @_model: (m) ->
     res = {
-      player: [
-        {id: 1, lv: 3, hero_ids: [1]}
-        {id: 2, lv: 3, hero_ids: [2]}
-        {id: 3, lv: 2, hero_ids: [3, 4, 5]}
-        {id: 4, lv: 1, hero_ids: [6, 7, 8]}
-        {id: 5, lv: 4, hero_ids: [9, 10, 11]}
-        {id: 6, lv: 5, hero_ids: [12]}
-        {id: 7, lv: 5, hero_ids: [13]}
-      ],
+      player: [{
+        id: 1,
+        lv: 3,
+        hero_ids: [{
+          id: 1,
+          lv: 12,
+          star: 3,
+          card_id: 1
+        }]
+      }, {
+        id: 2,
+        lv: 3,
+        hero_ids: [{
+          id: 1,
+          lv: 12,
+          star: 3,
+          card_id: 2
+        }]
+      }, {
+        id: 3,
+        lv: 2,
+        hero_ids: [{
+          id: 3,
+          lv: 12,
+          star: 3,
+          card_id: 3
+        }, {
+          id: 4,
+          lv: 3,
+          start: 2,
+          card_id: 4
+        }, {
+          id: 5,
+          lv: 1,
+          start: 1,
+          card_id: 5
+        }]
+      }, {
+        id: 4,
+        lv: 1,
+        hero_ids: [{
+          id: 6,
+          lv: 12,
+          star: 3,
+          card_id: 2
+        }, {
+          id: 7,
+          lv: 3,
+          start: 2,
+          card_id: 4
+        }, {
+          id: 8,
+          lv: 3,
+          start: 2,
+          card_id: 4
+        }]
+      }, {
+        id: 6,
+        lv: 5,
+        hero_ids: [{
+          id: 9,
+          lv: 12,
+          star: 2,
+          card_id: 7
+        }]
+      }, {
+        id: 7,
+        lv: 5,
+        hero_ids: [{
+          id: 10,
+          lv: 12,
+          star: 2,
+          card_id: 12
+        }]
+      }],
       hero: [
         {id: 1, hp: 501, atk: 41, skill: '普通攻击', effects: '刀光剑影'}
         {id: 2, hp: 500, atk: 40, skill: '普通攻击', effects: '刀光剑影'}

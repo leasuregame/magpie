@@ -8,7 +8,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-05-09T03:40:11Z</Created>
-  <LastSaved>2013-05-09T10:24:05Z</LastSaved>
+  <LastSaved>2013-05-13T03:25:29Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -18,9 +18,8 @@
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <WindowHeight>7400</WindowHeight>
   <WindowWidth>26540</WindowWidth>
-  <WindowTopX>6600</WindowTopX>
-  <WindowTopY>2720</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <WindowTopX>4720</WindowTopX>
+  <WindowTopY>6480</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -42,7 +41,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="卡牌配置表">
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="12" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="17" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Width="28"/>
    <Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="93"/>
@@ -88,7 +87,7 @@
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">125</Data></Cell>
     <Cell><Data ss:Type="Number">15</Data></Cell>
-    <Cell><Data ss:Type="String">箫花齐放</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
@@ -105,7 +104,7 @@
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">200</Data></Cell>
     <Cell><Data ss:Type="Number">22</Data></Cell>
-    <Cell><Data ss:Type="String">箫花齐放</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -117,7 +116,7 @@
     <Cell><Data ss:Type="Number">15</Data></Cell>
     <Cell><Data ss:Type="Number">360</Data></Cell>
     <Cell><Data ss:Type="Number">35</Data></Cell>
-    <Cell><Data ss:Type="String">箫花齐放</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
@@ -129,7 +128,7 @@
     <Cell><Data ss:Type="Number">25</Data></Cell>
     <Cell><Data ss:Type="Number">572</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
-    <Cell><Data ss:Type="String">箫花齐放</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -141,7 +140,7 @@
     <Cell><Data ss:Type="Number">40</Data></Cell>
     <Cell><Data ss:Type="Number">875</Data></Cell>
     <Cell><Data ss:Type="Number">75</Data></Cell>
-    <Cell><Data ss:Type="String">箫花齐放</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">6</Data></Cell>
@@ -153,7 +152,7 @@
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">150</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
-    <Cell><Data ss:Type="String">花魂附体</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">7</Data></Cell>
@@ -165,7 +164,7 @@
     <Cell><Data ss:Type="Number">15</Data></Cell>
     <Cell><Data ss:Type="Number">150</Data></Cell>
     <Cell><Data ss:Type="Number">29</Data></Cell>
-    <Cell><Data ss:Type="String">花魂附体</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">8</Data></Cell>
@@ -177,7 +176,7 @@
     <Cell><Data ss:Type="Number">25</Data></Cell>
     <Cell><Data ss:Type="Number">150</Data></Cell>
     <Cell><Data ss:Type="Number">43</Data></Cell>
-    <Cell><Data ss:Type="String">花魂附体</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">9</Data></Cell>
@@ -189,11 +188,11 @@
     <Cell><Data ss:Type="Number">37</Data></Cell>
     <Cell><Data ss:Type="Number">150</Data></Cell>
     <Cell><Data ss:Type="Number">56</Data></Cell>
-    <Cell><Data ss:Type="String">花魂附体</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">10</Data></Cell>
-    <Cell><Data ss:Type="String">孙悟空</Data></Cell>
+    <Cell><Data ss:Type="String">杨戬</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -201,7 +200,67 @@
     <Cell><Data ss:Type="Number">56</Data></Cell>
     <Cell><Data ss:Type="Number">150</Data></Cell>
     <Cell><Data ss:Type="Number">74</Data></Cell>
-    <Cell><Data ss:Type="String">花魂附体</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">11</Data></Cell>
+    <Cell><Data ss:Type="String">杨戬</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">80</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">150</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">12</Data></Cell>
+    <Cell><Data ss:Type="String">杨戬</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">120</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">150</Data></Cell>
+    <Cell><Data ss:Type="Number">29</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">13</Data></Cell>
+    <Cell><Data ss:Type="String">杨戬</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">220</Data></Cell>
+    <Cell><Data ss:Type="Number">25</Data></Cell>
+    <Cell><Data ss:Type="Number">150</Data></Cell>
+    <Cell><Data ss:Type="Number">43</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">14</Data></Cell>
+    <Cell><Data ss:Type="String">杨戬</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">350</Data></Cell>
+    <Cell><Data ss:Type="Number">37</Data></Cell>
+    <Cell><Data ss:Type="Number">150</Data></Cell>
+    <Cell><Data ss:Type="Number">56</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="String">杨戬</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">500</Data></Cell>
+    <Cell><Data ss:Type="Number">56</Data></Cell>
+    <Cell><Data ss:Type="Number">150</Data></Cell>
+    <Cell><Data ss:Type="Number">74</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -213,11 +272,12 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveRow>15</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -240,8 +300,13 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

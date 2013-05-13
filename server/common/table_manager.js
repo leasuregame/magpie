@@ -11,14 +11,24 @@ module.exports = {
     if (fs.existsSync('../data/table.json')){
       this.loadTableData(JSON.parse(fs.readFileSync('../data/table.json')));
     } else {
-      data = loadtable(
+      data = this._readTables(
         '../data/skills.xml',
         '../data/cards.xml'
         );
       this.loadTableData(data.exports);
     }
   },
-
+  _readTables: function() {
+    return loadtable.apply( loadtable, arguments);
+  },
+  clear: function(){
+    this._tables = {};
+  },
+  reloadTables: function(){
+    this.clear();
+    data = this._readTables.apply(this, arguments).exports;
+    this.loadTableData(data);
+  },
   getTable: function(tablename) {
     if (_.isEmpty(this._tables)){
       this.cacheTables();

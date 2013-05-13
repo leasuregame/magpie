@@ -43,7 +43,7 @@ class BattleLog
     @set('steps', @steps)
     @result
 
-class Base extends Event
+class Base #extends Event
   constructor: (attacker, defender) ->
     @attacker = attacker
     @defender = defender
@@ -57,9 +57,9 @@ class Base extends Event
 
   process: ->
     @start()
-    @emit('before_execute')
+    #@emit('before_execute')
     !@isStop && @execute()
-    @emit('after_execute')
+    #@emit('after_execute')
     @end()
 
   start: ->
@@ -95,7 +95,7 @@ class Round extends Base
     @attack.battleLog = @battleLog
 
   increase_round_num: ->
-    @round_num ++
+    @round_num++
 
   reset_round_num: ->
     @round_num = 1
@@ -124,7 +124,7 @@ class Attack extends Base
 
     _attack = (atker, dfder) =>
       hero = atker.currentHero()
-      enemys = dfder.currentHerosToBeAttacked()
+      enemys = dfder.currentHerosToBeAttacked(atker)
       hero.attack enemys, (enemy)->
         dfder.shootCount -= 1 if enemy.death()
 

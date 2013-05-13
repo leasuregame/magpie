@@ -40,7 +40,13 @@ class Matrix
       throw new Error "Invalid parameter, #{pos}"
     @matrixOrder.indexOf(pos) + 1
 
-  attackElement: (pos) ->
+  attackElement: (scope, args) ->
+    if scope of @
+      @[scope](args)
+    else
+      throw new Error('Can not get element with scope: ' + scope)
+
+  getElement: (pos) ->
     attackOrder = ATTACKORDER[ @positionToNumber(pos) ]
     for num in attackOrder
       index = @numberToPosition(num)

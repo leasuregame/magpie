@@ -43,14 +43,19 @@ class BattleLog
     @set('steps', @steps)
     @result
 
+battleLog = new BattleLog()
+
 class Base #extends Event
   constructor: (attacker, defender) ->
     @attacker = attacker
     @defender = defender
     @isStop = false
-    @battleLog = null
+    # @battleLog = null
 
     @init?(arguments...)
+
+  # setLog: (log) ->
+  #   @battleLog = log
 
   isOver: ->
     @attacker.death() or @defender.death()
@@ -73,16 +78,16 @@ class Battle extends Base
   init: ->
     @round = new Round(@attacker, @defender)
 
-    @battleLog = new BattleLog()
-    @battleLog.set('enemy', @defender)
-    @round.battleLog = @battleLog
+    # @setLog new BattleLog()
+    battleLog.set('enemy', @defender)
+    # @round.setLog @battleLog
 
   execute: ->
     while not @isOver()
       @round.execute()
       @round.increase_round_num()
 
-    @battleLog.setWinner( if @defender.death() then @attacker else @defender )
+    battleLog.setWinner( if @defender.death() then @attacker else @defender )
 
 class Round extends Base
   constructor: ->
@@ -92,7 +97,7 @@ class Round extends Base
     @round_num = 1
     @setShootCount()
     @attack = new Attack(@attacker, @defender)
-    @attack.battleLog = @battleLog
+    # @attack.setLog @
 
   increase_round_num: ->
     @round_num++
@@ -131,14 +136,14 @@ class Attack extends Base
       atker.shootCount -= 1
       atker.moveNextHero()
 
-      @battleLog.addStep(
+      battleLog.addStep(
         hero.id, 
         enemys.map((e)-> e.id),
         hero.skill,
         hero.effects
       )
 
-      @battleLog.addPrint(atker, dfder, hero, enemys)
+      battleLog.addPrint(atker, dfder, hero, enemys)
     
     _attack( @attacker, @defender ) if @attacker.shootCount > 0
     _attack( @defender, @attacker ) if @defender.shootCount > 0

@@ -30,7 +30,7 @@ class Hero extends Module
     if not card
       throw new Error("配置表错误：不能从表 #{@constructor.table} 中找到卡牌信息，卡牌id为 #{@card_id}")
 
-    console.log 'card', card
+    console.log 'card id=',@card_id, card
     @name = card.name
     @init_crit_rate = @crit_rate = card.init_crit
     @init_dodge_rate = @dodge_rate = card.init_dodge
@@ -90,7 +90,7 @@ class Hero extends Module
     # 自身卡牌受到伤害后触发
     @trigger 'on_damage'
     # 自身卡牌阵亡后触发
-    if death()
+    if @death()
       @trigger 'on_self_death'
       @trigger 'on_self_card_death'
     
@@ -98,9 +98,10 @@ class Hero extends Module
     @hitRate(@crit_rate)
 
   isDodge: ->
-    @hitRate(@dodge_ratess)
+    @hitRate(@dodge_rate)
 
   hitRate: (rate) ->
+    console.log 'rage, ', rate
     rate = parseInt(rate)
     if isNaN(rate) or rate < 0 and rate > 100
       throw new Error("Invilid argument: can't pass #{rate} to int")

@@ -79,7 +79,8 @@ class Player extends Module
 
   currentHerosToBeAttacked: (enemy)->
     enemyHero = enemy.currentHero()
-    if enemyHero.skill_setting? and enemyHero.skill_setting.scope?
+    
+    if( 'skill_setting' of enemyHero and enemyHero.skill_setting? and 'scope' of enemyHero.skill_setting and enemyHero.skill_setting.scope? )
       atk_scope = enemyHero.skill_setting.scope 
     else
       atk_scope = 'default'

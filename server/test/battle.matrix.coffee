@@ -71,14 +71,14 @@ describe 'A Matrix, for holding player cards with heros', ->
     @matrix.positionToNumber('02').should.equal(3)
     @matrix.positionToNumber('12').should.equal(6)
 
-  it 'get attack element by position', ->
-    @matrix.attackElement('00').should.equal(1)
+  it 'get element by position', ->
+    @matrix.getElement('00').should.equal(1)
 
-    @matrix.unset('00').attackElement('00').should.equal(4)
-    @matrix.unset('10').attackElement('00').should.equal(2)
-    @matrix.unset('01').attackElement('00').should.equal(5)
-    @matrix.unset('11').attackElement('00').should.equal(3)
-    @matrix.unset('02').attackElement('00').should.equal(6)
+    @matrix.unset('00').getElement('00').should.equal(4)
+    @matrix.unset('10').getElement('00').should.equal(2)
+    @matrix.unset('01').getElement('00').should.equal(5)
+    @matrix.unset('11').getElement('00').should.equal(3)
+    @matrix.unset('02').getElement('00').should.equal(6)
     @matrix.unset('12')
     should.strictEqual( @matrix.get('00'), null )
 

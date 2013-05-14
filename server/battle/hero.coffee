@@ -2,9 +2,26 @@ Module = require '../common/module'
 Events = require '../common/events'
 tab = require '../model/table'
 magic = require './magic'
+battleLog = require './battle_log'
 
 util = require 'util'
 _ = require 'underscore'
+
+ATTACK_TYPE = 
+  normal:           'normal'
+  crit:             'crit'
+  multiple_hit:     'multiple_hit'
+  lengthways:       'lengthways'
+  crossways_front:  'crossways_front'
+  crossways_back:   'crossways_back'
+  charm:            'charm' # 魅惑
+  stun:             'stun' # 晕眩
+  dodge:            'dodge' # 闪避
+  damage_share:     'damage_share' # 伤害分摊
+  damage_rebound:   'damage_rebound' # 伤害反弹
+  hp_steal:         'hp_steal' # 生命值偷取
+  atk_steal:        'atk_steal' # 攻击力偷取 
+  resurrection:     'resurrection' # 复活
 
 class Hero extends Module
   @include Events
@@ -25,12 +42,13 @@ class Hero extends Module
     # 被动触发，永久生效
     @trigger('passive')
 
+    #console.log 'hero: ', @
+
   loadCardInfo: ->
     card = tab.getTableItem('cards', @card_id)
     if not card
       throw new Error("配置表错误：不能从表 #{@constructor.table} 中找到卡牌信息，卡牌id为 #{@card_id}")
 
-    console.log 'card id=',@card_id, card
     @name = card.name
     @init_crit_rate = @crit_rate = card.init_crit
     @init_dodge_rate = @dodge_rate = card.init_dodge
@@ -39,7 +57,7 @@ class Hero extends Module
     @skill_id = card.skill_id
 
   loadSkill: ->
-    console.log 'skill id', @skill_id
+    #console.log 'skill id', @skill_id
     @skill_setting = tab.getTableItem('skills', @skill_id)
     @skill = if @skill_setting? then magic[@skill_setting.magic_id].create() else null
     @skill.activate(@, @skill_setting) if @skill?
@@ -56,12 +74,15 @@ class Hero extends Module
         @crit()
         enemy.suffer_crit @atk * 1.5
       else
-        enemy.damage @atk
+        enemy.normal @atk
 
       #敌方卡牌阵亡之后触发
       @trigger 'on_enemy_card_death' if enemy.death()
 
       callback enemy
+
+  normal: (value) ->
+    @damage value
 
   suffer_crit: (value)->
     @damage value
@@ -75,11 +96,12 @@ class Hero extends Module
     @trigger 'on_crit'
     # 己方任意一张卡牌对敌方卡牌造成暴击之后触发
     @trigger 'on_card_crit'
+    @is_crit = true
 
   dodge: ->
     # 闪避触发
     @trigger 'on_dodge'
-    @isDodge = true
+    @is_dodge = true
 
   damage: (value) ->
     @hp -= value
@@ -101,7 +123,6 @@ class Hero extends Module
     @hitRate(@dodge_rate)
 
   hitRate: (rate) ->
-    console.log 'rage, ', rate
     rate = parseInt(rate)
     if isNaN(rate) or rate < 0 and rate > 100
       throw new Error("Invilid argument: can't pass #{rate} to int")

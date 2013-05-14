@@ -6,6 +6,7 @@ battleLog = require './battle_log'
 
 util = require 'util'
 _ = require 'underscore'
+utility = require '../common/utility'
 
 ATTACK_TYPE = 
   normal:           'normal'
@@ -81,6 +82,12 @@ class Hero extends Module
 
       callback enemy
 
+  skillAttack: (enemys, callback) ->
+    @attack enemys, callback
+
+  normalAttack: (enemy, callback) ->
+    @attack enemy, callback
+
   normal: (value) ->
     @damage value
 
@@ -117,18 +124,10 @@ class Hero extends Module
       @trigger 'on_self_card_death'
     
   isCrit: ->
-    @hitRate(@crit_rate)
+    utility.hitRate(@crit_rate)
 
   isDodge: ->
-    @hitRate(@dodge_rate)
-
-  hitRate: (rate) ->
-    rate = parseInt(rate)
-    if isNaN(rate) or rate < 0 and rate > 100
-      throw new Error("Invilid argument: can't pass #{rate} to int")
-    
-    rd = _.random(0, 100)
-    if rd <= rate then true else false
+    utility.hitRate(@dodge_rate)
 
   death: ->
     @hp <= 0

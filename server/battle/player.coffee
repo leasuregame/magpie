@@ -4,6 +4,7 @@ Matrix = require './matrix'
 db = require '../model/db'
 tab = require '../model/table'
 _ = require 'underscore'
+utility = require '../common/utility'
 
 class Player extends Module
   @table: 'player'
@@ -71,12 +72,15 @@ class Player extends Module
 
     res.length is 0
 
-  attack: (enemy) ->
+  attack: (enemy, callback) ->
     hero = @currentHero()
+    condition = hero.skill_setting.trigger_condition
     rate = hero.skill_setting.trigger_rate
 
-    if rate? 
-
+    if rate? and utility.hitRate(rate)
+      hero.skillAttack( enemy.currentHerosToBeAttacked(@), callback)
+    else
+      hero.normalAttack( enemy.herosToBeAttacked('default'), callback )
 
   currentHero: ->
     @matrix.current()
@@ -86,18 +90,16 @@ class Player extends Module
 
   currentHerosToBeAttacked: (enemy)->
     enemyHero = enemy.currentHero()
-    
-    # if( enemyHero.hasOwnProperty('skill_setting') \
-    #  and enemyHero.skill_setting? \
-    #  and enemyHero.skill_setting.hasOwnProperty('scope') \
-    #  and enemyHero.skill_setting.scope? )
+
     if enemyHero?.skill_setting?.scope?
       atk_scope = enemyHero.skill_setting.scope 
     else
       atk_scope = 'default'
-    res = @matrix.attackElement(atk_scope)
 
-    return if not _.isArray(res) then [res] else res
+    @herosToBeAttacked atk_scope
+
+  herosToBeAttacked: (scope) ->
+    @matrix.attackElement scope
 
   moveNextHero: ->
     @matrix.moveToNext()

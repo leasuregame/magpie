@@ -1,8 +1,9 @@
-Module = require('../common/module')
+Module = require '../common/module'
 Hero = require './hero'
-Matrix = require('./matrix')
+Matrix = require './matrix'
 db = require '../model/db'
-util = require 'util'
+tab = require '../model/table'
+_ = require 'underscore'
 
 class Player extends Module
   @table: 'player'
@@ -15,7 +16,7 @@ class Player extends Module
     @lineUp = lineUp
 
     @load(id) if id?
-    @cards = new Matrix()
+    @matrix = new Matrix()
     @bindCards()
 
     super
@@ -33,20 +34,23 @@ class Player extends Module
       else
         @[key] = value
 
-    @heros = if @hero_ids? then (new Hero(id) for id in @hero_ids) else []
+    @loadHeros()
 
     @
+
+  loadHeros: ->
+    @heros = if @hero_ids? then (new Hero(id) for id in @hero_ids) else []
 
   bindCards: ->
     if @lineUp != ''
       @parseLineUp().forEach (item) =>
-        [pos, hero_id] = item
+        [pos, card_id] = item
 
         _hero = (id) =>
           for h in @heros
-            return if h.id is parseInt(id) then h else null
+            return if h.card_id is parseInt(id) then h else null
 
-        @cards.set(pos, _hero(hero_id))
+        @matrix.set(pos, _hero(card_id))
 
   parseLineUp: (lineUp)->
     _str = lineUp || @lineUp
@@ -68,12 +72,27 @@ class Player extends Module
     res.length is 0
 
   currentHero: ->
-    @cards.current()
+    @matrix.current()
 
-  currentHerosToBeAttacked: ->
-    _heros = @cards.attackElement(@cards.curIndex)
-    return [_heros] if not util.isArray(_heros)
-    _heros
+  currentIndex: ->
+    @matrix.curIndex
+
+  currentHerosToBeAttacked: (enemy)->
+    enemyHero = enemy.currentHero()
+    
+    if( 'skill_setting' of enemyHero and enemyHero.skill_setting? and 'scope' of enemyHero.skill_setting and enemyHero.skill_setting.scope? )
+      atk_scope = enemyHero.skill_setting.scope 
+    else
+      atk_scope = 'default'
+    res = @matrix.attackElement(atk_scope)
+
+    return if not _.isArray(res) then [res] else res
+
+  moveNextHero: ->
+    @matrix.moveToNext()
+
+  reset: ->
+    @matrix.reset()
 
   aliveHeros: ->
     res = @heros.filter (h) ->

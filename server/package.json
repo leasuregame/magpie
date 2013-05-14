@@ -7,9 +7,11 @@
   "contributors": ["34"],
   "dependencies": {
     "underscore": "1.4.4",
-    "underscore.string": "2.3.1"
+    "underscore.string": "2.3.1",
+    "xml2js": "0.1.14"
   },
   "devDependencies": {
+    "underscore": "1.4.4",
     "coffee-script": ">=1.6.2",
     "mocha": "*",
     "should": "*"

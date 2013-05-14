@@ -1,18 +1,22 @@
 exec = (require 'child_process').exec
 
+option '-f', '--file [file]', 'test file to run'
+
 task 'test', 'Run all tests', ->
-	exec './node_modules/mocha/bin/mocha --compilers coffee:coffee-script', (err, stdout, stderr)->
-		console.log err
-		console.log stdout
-		console.log stderr
+  filename = option.file || ''
+  cmd = './node_modules/mocha/bin/mocha --compilers coffee:coffee-script ' + filename
+  exec cmd, (err, stdout, stderr)->
+    console.log err
+    console.log stdout
+    console.log stderr
 
 task "clean", "clean up build directories", ->
-	console.log "cleaning up ..."
+  console.log "cleaning up ..."
 
 task "build", "build the project files", ->
-	console.log "building..."
+  console.log "building..."
 
 task "package", "Clean, Build, and package the project", ->
-	invoke "clean"
-	invoke "build"
-	console.log "packaging..."
+  invoke "clean"
+  invoke "build"
+  console.log "packaging..."

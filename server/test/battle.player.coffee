@@ -68,5 +68,5 @@ describe 'Player', ->
     @player.load(3)
     @player.setLineUp('00:3,01:4,02:5')
 
-    @player.cards.should.be.an.instanceof(Matrix)
+    @player.matrix.should.be.an.instanceof(Matrix)
     

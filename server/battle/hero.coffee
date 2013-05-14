@@ -64,6 +64,8 @@ class Hero extends Module
     @skill.activate(@, @skill_setting) if @skill?
 
   attack: (enemys, callback) ->
+    #console.log 'attack hero: ', enemys
+
     enemys = [enemys] if not _.isArray(enemys)
     
     enemys.forEach (enemy) =>
@@ -111,7 +113,9 @@ class Hero extends Module
     @is_dodge = true
 
   damage: (value) ->
+    
     @hp -= value
+    console.log "#{@.name} damage : #{value}, hp: #{@hp}"
     # 生命值降低之后触发
     @trigger 'on_hp_reduce'
     # 自身卡牌受到攻击后触发

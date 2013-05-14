@@ -74,8 +74,9 @@ class Player extends Module
 
   attack: (enemy, callback) ->
     hero = @currentHero()
-    condition = hero.skill_setting.trigger_condition
-    rate = hero.skill_setting.trigger_rate
+    #console.log 'hero:', hero
+    condition = hero.skill_setting?.trigger_condition
+    rate = hero.skill_setting?.trigger_rate
 
     if rate? and utility.hitRate(rate)
       hero.skillAttack( enemy.currentHerosToBeAttacked(@), callback)

@@ -1,8 +1,7 @@
 _ = require 'underscore'
 
-exports = module.exports = utility
+exports = module.exports = 
 
-utility = 
   hitRate: (rate) ->
     rate = parseInt(rate)
     if isNaN(rate) or rate < 0 and rate > 100

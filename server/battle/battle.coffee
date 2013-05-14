@@ -63,9 +63,12 @@ class Round extends Base
     @attacker.shootCount is 0 and @defender.shootCount is 0
 
   execute: () ->
-    while not @isOver()
+    whi
+    le not @isOver()
+      #console.log 'b', @attacker.shootCount, @defender.shootCount
       @attacker.round_num = @defender.round_num = @round_num
       @attack.execute()
+
 
     @setShootCount()
     @attacker.reset()
@@ -76,26 +79,34 @@ class Attack extends Base
     super
 
   execute: () ->
+    
+    # _attack = (atker, dfder) =>
+    #   hero = atker.currentHero()
+    #   enemys = dfder.currentHerosToBeAttacked(atker)
 
-    _attack = (atker, dfder) =>
-      hero = atker.currentHero()
-      enemys = dfder.currentHerosToBeAttacked(atker)
+    #   hero.attack enemys, (enemy)->
+    #     dfder.shootCount -= 1 if enemy.death()
 
-      hero.attack enemys, (enemy)->
-        dfder.shootCount -= 1 if enemy.death()
+    #   atker.shootCount -= 1
+    #   atker.moveNextHero()
+
+    #   battleLog.addStep(
+    #     hero.id, 
+    #     enemys.map((e)-> e.id),
+    #     hero.skill,
+    #     hero.effects
+    #   )
+
+    #   battleLog.addPrint(atker, dfder, hero, enemys)
+    
+    _attack = (atker, dfder) ->
+      console.log "#{atker.id} attack"
+      atker.attack dfder, (hero) ->
+        dfder.shootCount -= 1 if hero.death()
 
       atker.shootCount -= 1
       atker.moveNextHero()
 
-      battleLog.addStep(
-        hero.id, 
-        enemys.map((e)-> e.id),
-        hero.skill,
-        hero.effects
-      )
-
-      battleLog.addPrint(atker, dfder, hero, enemys)
-    
     _attack( @attacker, @defender ) if @attacker.shootCount > 0
     _attack( @defender, @attacker ) if @defender.shootCount > 0
 

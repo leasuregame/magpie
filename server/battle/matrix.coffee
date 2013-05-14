@@ -41,13 +41,22 @@ class Matrix
     @matrixOrder.indexOf(pos) + 1
 
   attackElement: (scope, args) ->
-    if scope of @
-      @[scope](args)
-    else
-      throw new Error('Can not get element with scope: ' + scope)
+    try
+      if scope of @
+        return @[scope](args)
+      else
+        throw new Error('Can not get element with scope: ' + scope)
+    catch e
+      throw e      
 
   getElement: (pos) ->
-    attackOrder = ATTACKORDER[ @positionToNumber(pos) ]
+    if _.isString(pos) and pos.length is 2
+      attackOrder = ATTACKORDER[ @positionToNumber(pos) ]
+    else if _.isNumber(pos) and pos < (@rows * @cols)
+      attackOrder = ATTACKORDER[ pos ]
+    else
+      attackOrder = ATTACKORDER[ @positionToNumber(@curIndex) ]
+
     for num in attackOrder
       index = @numberToPosition(num)
       el = @get(index)
@@ -67,11 +76,16 @@ class Matrix
       index = 0
     else
       index = @matrixOrder.indexOf( @curIndex )
-      index = if index < len then index else 6%@len - 1
+      index = if index < len then index else 6%len - 1
     @matrixOrder[index + 1]
 
   moveToNext: ->
-    @curIndex = @nextIndex()
+    max_count = @matrixOrder.length
+    for i in [1...max_count]
+      ni = @nextIndex()
+      if @get(ni)?
+        @curIndex = ni
+        break
     @
 
   reset: ->
@@ -133,18 +147,7 @@ class Matrix
     res
 
   default: (pos) ->
-    if _.isString(pos) and pos.length is 2
-      attackOrder = ATTACKORDER[ @positionToNumber(pos) ]
-    else if _.isNumber(pos) and pos < (@rows * @cols)
-      attackOrder = ATTACKORDER[ pos ]
-    else
-      attackOrder = ATTACKORDER[ @positionToNumber(@curIndex) ]
-
-    for num in attackOrder
-      index = @numberToPosition(num)
-      el = @get(index)
-      return el if el?
-    null
+    @getElement(pos)
 
   random: (num = 1) ->    
     len = @rows * @cols

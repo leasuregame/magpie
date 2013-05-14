@@ -1,6 +1,7 @@
 Battle = require '../battle/battle'
 Player = require '../battle/player'
 tab = require '../model/table'
+battleLog = require '../battle/battle_log'
 
 describe 'Battle', ->
 
@@ -29,4 +30,5 @@ describe 'Battle', ->
     it 'start a battle, and fight till end', =>
       @battle.execute()
 
-      @battle.battleLog.print.should.equal(@battle.battleLog.reports())
+      battleLog.reports().should.equal(null)
+      battleLog.print.should.be.equal(null)

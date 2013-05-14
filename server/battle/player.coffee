@@ -44,7 +44,7 @@ class Player extends Module
   bindCards: ->
     if @lineUp != ''
       @parseLineUp().forEach (item) =>
-        [pos, card_id] = item
+        [pos, card_id] = item 
 
         _hero = (id) =>
           for h in @heros
@@ -71,6 +71,13 @@ class Player extends Module
 
     res.length is 0
 
+  attack: (enemy) ->
+    hero = @currentHero()
+    rate = hero.skill_setting.trigger_rate
+
+    if rate? 
+
+
   currentHero: ->
     @matrix.current()
 
@@ -80,7 +87,11 @@ class Player extends Module
   currentHerosToBeAttacked: (enemy)->
     enemyHero = enemy.currentHero()
     
-    if( 'skill_setting' of enemyHero and enemyHero.skill_setting? and 'scope' of enemyHero.skill_setting and enemyHero.skill_setting.scope? )
+    # if( enemyHero.hasOwnProperty('skill_setting') \
+    #  and enemyHero.skill_setting? \
+    #  and enemyHero.skill_setting.hasOwnProperty('scope') \
+    #  and enemyHero.skill_setting.scope? )
+    if enemyHero?.skill_setting?.scope?
       atk_scope = enemyHero.skill_setting.scope 
     else
       atk_scope = 'default'

@@ -34,7 +34,7 @@ class Hero extends Module
     @lv = attrs.lv
     @star = attrs.star
     @card_id = attrs.card_id
-    @skill_lv = attrs.skill_lv
+    @skill_lv = attrs.skill_lv or 1
     
     @is_crit = false
     @is_dodge = false

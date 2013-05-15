@@ -40,7 +40,7 @@ class Battle extends Base
     #while not @isOver()
       @round.process()
       @round.increase_round_num()
-      console.log 'round: ', @round.round_num
+      #console.log 'round: ', @round.round_num
 
 
   end: ->
@@ -75,7 +75,7 @@ class Round extends Base
   execute: () ->
     for i in [0..5]
     #while not @isOver()
-      console.log 'b', @attacker.shootCount, @defender.shootCount
+      #console.log 'b', @attacker.shootCount, @defender.shootCount
       @attacker.round_num = @defender.round_num = @round_num
       @attack.process()
 
@@ -90,7 +90,7 @@ class Attack extends Base
 
   execute: () ->    
     _attack = (atker, dfder) ->
-      console.log "#{atker.id} attack"
+      #console.log "#{atker.id} attack"
       atker.attack dfder, (hero) ->
         dfder.shootCount -= 1 if hero.death() and dfder.shootCount > 0
 

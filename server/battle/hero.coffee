@@ -44,7 +44,7 @@ class Hero extends Module
     # 被动触发，永久生效
     @trigger('passive')
 
-    #console.log 'hero: ', @
+    ##console.log 'hero: ', @
 
   loadCardInfo: ->
     card = tab.getTableItem('cards', @card_id)
@@ -59,10 +59,13 @@ class Hero extends Module
     @skill_id = card.skill_id
 
   loadSkill: ->
-    console.log 'skill id', @skill_id
+    
     @skill_setting = tab.getTableItem('skills', @skill_id)
     @skill = if @skill_setting? then magic[@skill_setting.magic_id]?.create() else null
     @skill.activate(@, @skill_setting) if @skill?
+
+    console.log 'skill id', @skill_id
+    console.log 'atk,', @atk
 
   attack: (enemys, callback) ->
     #console.log 'attack hero: ', enemys
@@ -81,6 +84,8 @@ class Hero extends Module
         @log(enemy, ATTACK_TYPE.crit, @atk * 1.5)
       else
         enemy.damage @atk
+        #if @name == '孙悟空3'
+          #console.log @, enemy, @atk, @hp
         @log(enemy, ATTACK_TYPE.normal, @atk)
 
       #敌方卡牌阵亡之后触发
@@ -115,7 +120,7 @@ class Hero extends Module
 
   damage: (value) ->
     @hp -= value
-    console.log "#{@.name} damage : #{value}, hp: #{@hp}"
+    #console.log "#{@.name} damage : #{value}, hp: #{@hp}"
     # 生命值降低之后触发
     @trigger 'on_hp_reduce'
     # 自身卡牌受到攻击后触发

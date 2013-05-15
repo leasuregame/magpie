@@ -67,11 +67,11 @@ class Matrix
     @elements[ @curIndex[0] ][ @curIndex[1] ]
 
   next: ->
-    console.log 'next, current,', @current()
+    #console.log 'next, current,', @current()
     max_count = @matrixOrder.length
     for i in [0...max_count]
       @moveToNext()
-      console.log 'next, next,', @current()
+      #console.log 'next, next,', @current()
       return @current() if @current()?
     null
 
@@ -84,7 +84,7 @@ class Matrix
       index = @matrixOrder.indexOf( cindex ) + 1
       index = 0 if index is len
     
-    console.log 'next index: ',len, cindex, index, @matrixOrder[index]
+    #console.log 'next index: ',len, cindex, index, @matrixOrder[index]
     @matrixOrder[index]
 
   moveToNext: ->

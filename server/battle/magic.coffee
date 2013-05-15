@@ -15,8 +15,11 @@ class Magic.atk_improve extends PropertyBase
   enable: (target, value, args) ->
     # target is a hero
     # value is skill info
+    console.log 'atk improve,', value, target.atk
     [base_val, lv_grow] = parse.effect(value['star'+target.star])
+    console.log 'base_val,', base_val, 'lv_grow', lv_grow
     target.atk += parseInt(target.atk * ( base_val + lv_grow * (target.skill_lv-1) )/100)
+    console.log 'after modify,', target.atk
 
   disable: ->
    [base_val, lv_grow] = parse.effect(value['star'+target.star])

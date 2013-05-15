@@ -46,8 +46,8 @@ class Player extends Module
     if @lineUp != ''
       @parseLineUp().forEach (item) =>
         [pos, card_id] = item 
-        console.log 'bind cards: ', [pos, card_id]
-        console.log @heros
+        #console.log 'bind cards: ', [pos, card_id]
+        #console.log @heros
         _hero = (id) =>
           for h in @heros
             return if h.card_id is parseInt(id) then h
@@ -76,7 +76,7 @@ class Player extends Module
 
   attack: (enemy, callback) ->
     hero = @currentHero()
-    #console.log 'hero:', hero
+    ##console.log 'hero:', hero
 
     if hero and not hero.death()
       condition = hero.skill_setting?.trigger_condition

@@ -5,30 +5,43 @@ battleLog = require '../battle/battle_log'
 
 describe 'Battle', ->
 
-  describe '1 v 1', ->
-    
-    @battle = null
+  describe '1 v 1', ->  
 
-    it 'setup', =>
+    before ->
       tab.reloadTables(
         './test/tables/skills.xml',
         './test/tables/cards.xml'
         )
 
+    beforeEach ->
+      @battle = null
+      # 孙悟空
       @attacker = new Player(6)
-      @attacker.setLineUp '00:7'
+      @attacker.setLineUp '00:7,01:8'
 
+      # 杨戬
       @defender = new Player(7)
-      @defender.setLineUp '00:12'
+      @defender.setLineUp '00:12,01:13'
 
       @battle = new Battle(@attacker, @defender)
+
+    it 'check bind cards', ->
+      @attacker.currentHero().card_id.should.be.equal(7)
+      @attacker.nextHero().card_id.should.be.equal(8)
+      @attacker.nextHero().card_id.should.be.equal(7)
+      @attacker.nextHero().card_id.should.be.equal(8)
+
+      @defender.currentHero().card_id.should.be.equal(12)
+      @defender.nextHero().card_id.should.be.equal(13)
+      @defender.nextHero().card_id.should.be.equal(12)
+      @defender.nextHero().card_id.should.be.equal(13)
 
     # it 'should have a valid BattleLog object', =>
     #   @battle.battleLog.should.be.a('object').and.have.property('winner')
     #   @battle.battleLog.should.have.property('steps')
 
-    it 'start a battle, and fight till end', =>
-      @battle.execute()
+    it 'start a battle, and fight till end', ->
+      @battle.process()
 
       battleLog.reports().should.equal(null)
-      battleLog.print.should.be.equal(null)
+      #battleLog.print.should.be.equal(null)

@@ -2,8 +2,15 @@ Player = require '../battle/player'
 Hero = require '../battle/hero'
 Matrix = require '../battle/matrix'
 should = require 'should'
+tab = require '../model/table'
 
 describe 'Player', ->
+  before ->
+    tab.reloadTables(
+        './test/tables/skills.xml',
+        './test/tables/cards.xml'
+        )
+
   beforeEach ->
     @player = new Player()
 
@@ -43,8 +50,9 @@ describe 'Player', ->
 
   it ".currentHerosToBeAttacked()", ->
     @player = new Player(1, '00:1')
-    @player.currentHerosToBeAttacked().should.be.an.instanceOf(Array)
-    @player.currentHerosToBeAttacked()[0].should.be.an.instanceOf(Hero)
+    player2 = new Player(2, '10:2')
+    #@player.currentHerosToBeAttacked(player2).should.not.be.empty
+    @player.currentHerosToBeAttacked(player2).should.be.an.instanceOf(Hero)
 
   it ".aliveHeros()", ->
     @player.load(3)
@@ -67,6 +75,7 @@ describe 'Player', ->
   it ".bindCards()", ->
     @player.load(3)
     @player.setLineUp('00:3,01:4,02:5')
+    @player.bindCards()
 
     @player.matrix.should.be.an.instanceof(Matrix)
     

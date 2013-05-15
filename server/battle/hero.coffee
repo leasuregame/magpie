@@ -34,12 +34,13 @@ class Hero extends Module
     @lv = attrs.lv
     @star = attrs.star
     @card_id = attrs.card_id
+    @skill_lv = attrs.skill_lv
     
     @is_crit = false
     @is_dodge = false
 
     @loadCardInfo()
-    @loadSkill()
+    @loadSkill() if @star > 2
     # 被动触发，永久生效
     @trigger('passive')
 
@@ -58,9 +59,9 @@ class Hero extends Module
     @skill_id = card.skill_id
 
   loadSkill: ->
-    #console.log 'skill id', @skill_id
+    console.log 'skill id', @skill_id
     @skill_setting = tab.getTableItem('skills', @skill_id)
-    @skill = if @skill_setting? then magic[@skill_setting.magic_id].create() else null
+    @skill = if @skill_setting? then magic[@skill_setting.magic_id]?.create() else null
     @skill.activate(@, @skill_setting) if @skill?
 
   attack: (enemys, callback) ->
@@ -71,13 +72,16 @@ class Hero extends Module
     enemys.forEach (enemy) =>
       if enemy.isDodge()
         enemy.dodge()
+        @log(enemy, ATTACK_TYPE.dodge, '')
         return
 
       if @isCrit()
         @crit()
         enemy.suffer_crit @atk * 1.5
+        @log(enemy, ATTACK_TYPE.crit, @atk * 1.5)
       else
-        enemy.normal @atk
+        enemy.damage @atk
+        @log(enemy, ATTACK_TYPE.normal, @atk)
 
       #敌方卡牌阵亡之后触发
       @trigger 'on_enemy_card_death' if enemy.death()
@@ -89,9 +93,6 @@ class Hero extends Module
 
   normalAttack: (enemy, callback) ->
     @attack enemy, callback
-
-  normal: (value) ->
-    @damage value
 
   suffer_crit: (value)->
     @damage value
@@ -113,7 +114,6 @@ class Hero extends Module
     @is_dodge = true
 
   damage: (value) ->
-    
     @hp -= value
     console.log "#{@.name} damage : #{value}, hp: #{@hp}"
     # 生命值降低之后触发
@@ -126,6 +126,10 @@ class Hero extends Module
     if @death()
       @trigger 'on_self_death'
       @trigger 'on_self_card_death'
+      #@log('', 'death', "#{@.name} is death")
+
+  log: (enemy, type, value)->
+    battleLog.addStep(@name, enemy?.name, type, "#{value}/#{enemy.hp}")
     
   isCrit: ->
     utility.hitRate(@crit_rate)

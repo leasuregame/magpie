@@ -9,8 +9,8 @@ utility = require '../common/utility'
 class Player extends Module
   @table: 'player'
 
-  constructor: (id, lineUp = '') ->
-    @id = null
+  constructor: (id = null, lineUp = '') ->
+    @id = id
     @lv = 0
     @hero_ids = []
     @heros = []
@@ -46,10 +46,12 @@ class Player extends Module
     if @lineUp != ''
       @parseLineUp().forEach (item) =>
         [pos, card_id] = item 
-
+        console.log 'bind cards: ', [pos, card_id]
+        console.log @heros
         _hero = (id) =>
           for h in @heros
-            return if h.card_id is parseInt(id) then h else null
+            return if h.card_id is parseInt(id) then h
+          null
 
         @matrix.set(pos, _hero(card_id))
 
@@ -75,16 +77,21 @@ class Player extends Module
   attack: (enemy, callback) ->
     hero = @currentHero()
     #console.log 'hero:', hero
-    condition = hero.skill_setting?.trigger_condition
-    rate = hero.skill_setting?.trigger_rate
 
-    if rate? and utility.hitRate(rate)
-      hero.skillAttack( enemy.currentHerosToBeAttacked(@), callback)
-    else
-      hero.normalAttack( enemy.herosToBeAttacked('default'), callback )
+    if hero and not hero.death()
+      condition = hero.skill_setting?.trigger_condition
+      rate = hero.skill_setting?.trigger_rate
+
+      if rate? and utility.hitRate(rate)
+        hero.skillAttack( enemy.currentHerosToBeAttacked(@), callback)
+      else
+        hero.normalAttack( enemy.herosToBeAttacked('default'), callback )
 
   currentHero: ->
     @matrix.current()
+
+  nextHero: ->
+    @matrix.next()
 
   currentIndex: ->
     @matrix.curIndex
@@ -101,9 +108,6 @@ class Player extends Module
 
   herosToBeAttacked: (scope) ->
     @matrix.attackElement scope
-
-  moveNextHero: ->
-    @matrix.moveToNext()
 
   reset: ->
     @matrix.reset()

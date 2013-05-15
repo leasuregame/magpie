@@ -40,7 +40,7 @@ class Database
         hero_ids: [{
           id: 1,
           lv: 12,
-          star: 3,
+          star: 2,
           card_id: 2
         }]
       }, {
@@ -84,21 +84,35 @@ class Database
       }, {
         id: 6,
         lv: 5,
-        hero_ids: [{
-          id: 9,
-          lv: 12,
-          star: 2,
-          card_id: 7
-        }]
+        hero_ids: [
+          {
+            id: 9,
+            lv: 12,
+            star: 2,
+            card_id: 7
+          },
+          {
+            id: 11,
+            lv: 5,
+            star: 3,
+            card_id: 8
+          }
+        ]
       }, {
         id: 7,
         lv: 5,
-        hero_ids: [{
-          id: 10,
-          lv: 12,
-          star: 2,
-          card_id: 12
-        }]
+        hero_ids: [
+          {
+            id: 10,
+            lv: 12,
+            star: 2,
+            card_id: 12
+          },{
+            id: 12,
+            lv: 7,
+            star: 3,
+            card_id: 13 
+          }]
       }],
       hero: [
         {id: 1, hp: 501, atk: 41, skill: '普通攻击', effects: '刀光剑影'}

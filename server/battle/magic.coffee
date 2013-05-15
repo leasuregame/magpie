@@ -15,17 +15,17 @@ class Magic.atk_improve extends PropertyBase
   enable: (target, value, args) ->
     # target is a hero
     # value is skill info
-    [base_val, lv_grow] = parse.effect(value)
-    target.atk += target.atk * ( base_val + lv_grow * target.skill_lv )
+    [base_val, lv_grow] = parse.effect(value['star'+target.star])
+    target.atk += parseInt(target.atk * ( base_val + lv_grow * (target.skill_lv-1) )/100)
 
   disable: ->
-   [base_val, lv_grow] = parse.effect(value)
-   @target.atk += @target.atk * ( base_val + lv_grow * @target.skill_lv )
+   [base_val, lv_grow] = parse.effect(value['star'+target.star])
+   @target.atk += parseInt(@target.atk * ( base_val + lv_grow * (target.skill_lv-1) )/100)
 
 class Magic.atk_reduce extends PropertyBase
   enable: (target, value, args) ->
-    [base_val, lv_grow] = parse.effect(value)
-    target.atk -= target.atk * ( base_val + lv_grow * target.skill_lv )
+    [base_val, lv_grow] = parse.effect(value['star'+target.star])
+    target.atk -= parseInt(target.atk * ( base_val + lv_grow * (target.skill_lv-1) )/100)
 
   disable: ->
-    @target.atk += @target.atk * ( base_val + lv_grow * @target.skill_lv )
+    @target.atk += parseInt(@target.atk * ( base_val + lv_grow * (target.skill_lv-1) )/100)

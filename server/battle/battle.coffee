@@ -36,8 +36,8 @@ class Battle extends Base
     battleLog.set('enemy', @defender)
 
   execute: ->
-    for i in [0..5]
-    #while not @isOver()
+    #for i in [0..5]
+    while not @isOver()
       @round.process()
       @round.increase_round_num()
       #console.log 'round: ', @round.round_num
@@ -66,15 +66,15 @@ class Round extends Base
     @defender.shootCount = @defender.aliveHeros().length
 
   isOver: ->
-    (@attacker.shootCount is 0 and @defender.shootCount is 0) or \
+    (@attacker.shootCount <= 0 and @defender.shootCount <= 0) or \
     @attacker.death() or @defender.death()
 
   start: ->
     @setShootCount()
 
   execute: () ->
-    for i in [0..5]
-    #while not @isOver()
+    #for i in [0..5]
+    while not @isOver()
       #console.log 'b', @attacker.shootCount, @defender.shootCount
       @attacker.round_num = @defender.round_num = @round_num
       @attack.process()
@@ -90,14 +90,17 @@ class Attack extends Base
 
   execute: () ->    
     _attack = (atker, dfder) ->
-      #console.log "#{atker.id} attack"
+      console.log (new Date()).toISOString(), "#{atker.id} attack", atker.shootCount, dfder.shootCount
       atker.attack dfder, (hero) ->
-        dfder.shootCount -= 1 if hero.death() and dfder.shootCount > 0
+        dfder.shootCount -= 1 if hero.death()
 
-      atker.shootCount -= 1 if atker.shootCount > 0
       atker.nextHero()
 
-    _attack( @attacker, @defender ) if @attacker.shootCount > 0 #and not @defender.death()
-    _attack( @defender, @attacker ) if @defender.shootCount > 0 #and not @attacker.death()
+    if @attacker.shootCount > 0
+      @attacker.shootCount -= 1
+      _attack( @attacker, @defender ) 
+    if @defender.shootCount > 0
+      @defender.shootCount -= 1
+      _attack( @defender, @attacker ) 
 
 exports = module.exports = Battle

@@ -91,7 +91,10 @@ class Player extends Module
     @matrix.current()
 
   nextHero: ->
-    @matrix.next()
+    
+    res = @matrix.next()
+    console.log 'player ', @id, res.name
+    res
 
   currentIndex: ->
     @matrix.curIndex

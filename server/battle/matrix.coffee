@@ -43,13 +43,16 @@ class Matrix
   attackElement: (scope, args) ->
     try
       if scope of @
-        return @[scope](args)
+        els = @[scope](args)
+        els = [els] if not _.isArray(els)
+        return _.filter els, (e) -> e? and not e.death?()
       else
         throw new Error('Can not get element with scope: ' + scope)
     catch e
       throw e      
 
   getElement: (pos) ->
+    # 根据对方给出的位置，找到可以被攻击的对象
     if _.isString(pos) and pos.length is 2
       attackOrder = ATTACKORDER[ @positionToNumber(pos) ]
     else if _.isNumber(pos) and pos < (@rows * @cols)
@@ -60,38 +63,37 @@ class Matrix
     for num in attackOrder
       index = @numberToPosition(num)
       el = @get(index)
-      return el if el?
+      return el if el? and not el.death?()
     null
 
   current: ->
-    @elements[ @curIndex[0] ][ @curIndex[1] ]
+    @get(@curIndex)
 
   next: ->
-    #console.log 'next, current,', @current()
     max_count = @matrixOrder.length
     for i in [0...max_count]
       @moveToNext()
-      #console.log 'next, next,', @current()
+      #console.log 'next, next,', @curIndex, @current()
       return @current() if @current()?
     null
 
   nextIndex: (cindex = @curIndex) ->
     len = @matrixOrder.length
-    if len <= 1
-      index = 0
-    else
-
-      index = @matrixOrder.indexOf( cindex ) + 1
-      index = 0 if index is len
+    index = @matrixOrder.indexOf( cindex ) + 1
+    index = 0 if index is len
     
     #console.log 'next index: ',len, cindex, index, @matrixOrder[index]
     @matrixOrder[index]
 
   moveToNext: ->
     @curIndex = @nextIndex()
+    @
 
   reset: ->
-    
+    allElements = @all()
+    res = _.find allElements, (i) -> i? and not i.death?()
+    @curIndex = @matrixOrder[ allElements.indexOf(res) ]
+    @
 
   set: (row, col, el) ->
     if arguments.length == 2

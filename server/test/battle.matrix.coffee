@@ -82,6 +82,34 @@ describe 'A Matrix, for holding player cards with heros', ->
     @matrix.unset('12')
     should.strictEqual( @matrix.get('00'), null )
 
+  it '.next(), return next not null element and set current index to the return element', ->
+    @matrix.next().should.be.equal(2)
+    @matrix.current().should.be.equal(2)
+
+    @matrix.next().should.be.equal(3)
+    @matrix.next().should.be.equal(4)
+    @matrix.next().should.be.equal(5)
+    @matrix.next().should.be.equal(6)
+
+    @matrix.current().should.be.equal(6)
+
+
+  it '.reset() current index to the element that not null and not death', ->
+    @matrix.current().should.be.equal(1)
+    @matrix.moveToNext().moveToNext()
+    @matrix.current().should.be.equal(3)
+
+    @matrix.reset()
+    @matrix.current().should.be.equal(1)
+
+    @matrix.moveToNext().moveToNext()
+    @matrix.current().should.be.equal(3)
+    @matrix.unset('00')
+
+    @matrix.reset()
+    @matrix.current().should.be.equal(2)
+
+
   it 'get crosswaysFront elements', ->
     @matrix.crosswaysFront().should.eql([1,2,3])
 
@@ -134,6 +162,8 @@ describe 'A Matrix, for holding player cards with heros', ->
     check(4)
     check(5)
     check(6)
+
+  it '.getElement(), ', ->
 
 
 

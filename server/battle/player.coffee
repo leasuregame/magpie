@@ -43,11 +43,12 @@ class Player extends Module
     @heros = if @hero_ids? then (new Hero(id) for id in @hero_ids) else []
 
   bindCards: ->
+    #console.log @heros
     if @lineUp != ''
       @parseLineUp().forEach (item) =>
         [pos, card_id] = item 
-        #console.log 'bind cards: ', [pos, card_id]
-        #console.log @heros
+        console.log 'bind cards: ', [pos, card_id]
+        
         _hero = (id) =>
           for h in @heros
             return if h.card_id is parseInt(id) then h
@@ -76,7 +77,8 @@ class Player extends Module
 
   attack: (enemy, callback) ->
     hero = @currentHero()
-    ##console.log 'hero:', hero
+    console.log 'hero:', hero.id, hero.atk, hero.hp
+    #console.log @heros
 
     if hero and not hero.death()
       condition = hero.skill_setting?.trigger_condition
@@ -91,9 +93,8 @@ class Player extends Module
     @matrix.current()
 
   nextHero: ->
-    
     res = @matrix.next()
-    console.log 'player ', @id, res.name
+    # console.log 'player ', @id, 'next card:', res.name
     res
 
   currentIndex: ->

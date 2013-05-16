@@ -120,7 +120,7 @@ class Hero extends Module
 
   damage: (value) ->
     @hp -= value
-    #console.log "#{@.name} damage : #{value}, hp: #{@hp}"
+    console.log "#{@.name} damage : #{value}, hp: #{@hp}"
     # 生命值降低之后触发
     @trigger 'on_hp_reduce'
     # 自身卡牌受到攻击后触发

@@ -113,7 +113,32 @@ class Database
             star: 3,
             card_id: 13 
           }]
-      }],
+      },
+      {
+        id: 8
+        lv: 20,
+        hero_ids: [
+          {id: 13, lv: 20, star: 2, card_id: 16}
+          {id: 14, lv: 20, star: 2, card_id: 17}
+          {id: 15, lv: 20, star: 2, card_id: 18}
+          {id: 16, lv: 20, star: 2, card_id: 19}
+          {id: 17, lv: 20, star: 2, card_id: 20}
+          {id: 18, lv: 20, star: 2, card_id: 21}
+        ]
+      },
+      {
+        id: 9
+        lv: 20,
+        hero_ids: [
+          {id: 19, lv: 20, star: 2, card_id: 22}
+          {id: 20, lv: 20, star: 2, card_id: 23}
+          {id: 21, lv: 20, star: 2, card_id: 24}
+          {id: 22, lv: 20, star: 2, card_id: 25}
+          {id: 23, lv: 20, star: 2, card_id: 26}
+          {id: 24, lv: 20, star: 2, card_id: 27}
+        ]
+      }
+      ],
       hero: [
         {id: 1, hp: 501, atk: 41, skill: '普通攻击', effects: '刀光剑影'}
         {id: 2, hp: 500, atk: 40, skill: '普通攻击', effects: '刀光剑影'}

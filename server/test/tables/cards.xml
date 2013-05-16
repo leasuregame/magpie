@@ -39,11 +39,15 @@
   <Style ss:ID="s63">
    <Alignment ss:Vertical="Center"/>
   </Style>
+  <Style ss:ID="s66">
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Modern" ss:Size="16"
+    ss:Color="#000000"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="卡牌配置表">
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="17" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="29" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Width="28"/>
+   <Column ss:Width="29"/>
    <Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="93"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
@@ -110,9 +114,9 @@
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="Number">120</Data></Cell>
+    <Cell><Data ss:Type="Number">250</Data></Cell>
     <Cell><Data ss:Type="Number">15</Data></Cell>
-    <Cell><Data ss:Type="Number">360</Data></Cell>
+    <Cell><Data ss:Type="Number">550</Data></Cell>
     <Cell><Data ss:Type="Number">35</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
@@ -170,7 +174,7 @@
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">300</Data></Cell>
     <Cell><Data ss:Type="Number">25</Data></Cell>
-    <Cell><Data ss:Type="Number">150</Data></Cell>
+    <Cell><Data ss:Type="Number">700</Data></Cell>
     <Cell><Data ss:Type="Number">43</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
@@ -256,6 +260,150 @@
     <Cell><Data ss:Type="Number">74</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">16</Data></Cell>
+    <Cell><Data ss:Type="String">卡1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">125</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">17</Data></Cell>
+    <Cell><Data ss:Type="String">卡2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">80</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">200</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">22</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">18</Data></Cell>
+    <Cell><Data ss:Type="String">卡3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">250</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">550</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">卡4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">220</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">572</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">卡5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">350</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">875</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">75</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">21</Data></Cell>
+    <Cell><Data ss:Type="String">卡6</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">80</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">22</Data></Cell>
+    <Cell><Data ss:Type="String">卡7</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">120</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">29</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">23</Data></Cell>
+    <Cell><Data ss:Type="String">卡8</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">300</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">700</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">43</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">24</Data></Cell>
+    <Cell><Data ss:Type="String">卡9</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">350</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">37</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">56</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">25</Data></Cell>
+    <Cell><Data ss:Type="String">卡10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">500</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">56</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">74</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">26</Data></Cell>
+    <Cell><Data ss:Type="String">卡11</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">80</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">27</Data></Cell>
+    <Cell><Data ss:Type="String">卡12</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">80</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">200</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">22</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
@@ -270,7 +418,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>10</ActiveRow>
+     <ActiveRow>27</ActiveRow>
      <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>

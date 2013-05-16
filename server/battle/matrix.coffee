@@ -1,13 +1,13 @@
 _ = require 'underscore'
 
-'''
+###
   Matrix formation:
   4, 5, 6
   1, 2, 3
 
   1, 2, 3
   4, 5, 6
-'''
+###
 ATTACKORDER = {
   1: [1,4,2,5,3,6]
   2: [2,5,1,4,3,6]
@@ -73,7 +73,7 @@ class Matrix
     max_count = @matrixOrder.length
     for i in [0...max_count]
       @moveToNext()
-      #console.log 'next, next,', @curIndex, @current()
+      console.log 'next, next,', @curIndex, @current()
       return @current() if @current()?
     null
 
@@ -82,7 +82,7 @@ class Matrix
     index = @matrixOrder.indexOf( cindex ) + 1
     index = 0 if index is len
     
-    #console.log 'next index: ',len, cindex, index, @matrixOrder[index]
+    console.log 'next index: ',len, cindex, index, @matrixOrder[index]
     @matrixOrder[index]
 
   moveToNext: ->
@@ -92,7 +92,9 @@ class Matrix
   reset: ->
     allElements = @all()
     res = _.find allElements, (i) -> i? and not i.death?()
-    @curIndex = @matrixOrder[ allElements.indexOf(res) ]
+    @curIndex = if res? then @matrixOrder[ allElements.indexOf(res) ] else '00'
+    #console.log 'allElements: ', allElements
+    #console.log 'reset: ', @curIndex, res
     @
 
   set: (row, col, el) ->
@@ -167,6 +169,7 @@ class Matrix
     _res
 
   get: (row, col) ->
+    #console.log 'get: ', row, col
     if arguments.length == 1
       [row, col] = row
     @_checkRowAndCol(row, col)

@@ -40,8 +40,24 @@ describe 'Battle', ->
     #   @battle.battleLog.should.be.a('object').and.have.property('winner')
     #   @battle.battleLog.should.have.property('steps')
 
-    it 'start a battle, and fight till end', ->
+    # it 'start a battle, and fight till end', ->
+    #   @battle.process()
+
+    #   battleLog.reports().should.equal(null)
+    #   #battleLog.print.should.be.equal(null)
+
+    it '6 v 6', ->
+      @battle = null
+      # 孙悟空
+      @attacker = new Player(8)
+      @attacker.setLineUp '00:16,01:17,02:18,10:19,11:20,12:21'
+
+      # 杨戬
+      @defender = new Player(9)
+      @defender.setLineUp '00:22,01:23,02:24,10:25,11:26,12:27'
+
+      @battle = new Battle(@attacker, @defender)
+
       @battle.process()
 
       battleLog.reports().should.equal(null)
-      #battleLog.print.should.be.equal(null)

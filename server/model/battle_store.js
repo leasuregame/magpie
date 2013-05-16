@@ -1,6 +1,5 @@
 var _ = require('underscore'),
   memcached = require('memcached'),
-  server_config = require('../server_config'),
   database = new memcached("127.0.0.1:11211");
 
 var _key = '_b_';

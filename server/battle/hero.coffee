@@ -69,9 +69,10 @@ class Hero extends Module
 
   attack: (enemys, callback) ->
     #console.log 'attack hero: ', enemys
-
     enemys = [enemys] if not _.isArray(enemys)
     
+    # 发起进攻之前触发
+    @trigger 'before_attack'
     enemys.forEach (enemy) =>
       if enemy.isDodge()
         enemy.dodge()
@@ -84,8 +85,6 @@ class Hero extends Module
         @log(enemy, ATTACK_TYPE.crit, @atk * 1.5)
       else
         enemy.damage @atk
-        #if @name == '孙悟空3'
-          #console.log @, enemy, @atk, @hp
         @log(enemy, ATTACK_TYPE.normal, @atk)
 
       #敌方卡牌阵亡之后触发
@@ -93,8 +92,11 @@ class Hero extends Module
 
       callback enemy
 
+    # 发起进攻之后触发
+    @trigger 'after_attack'
+
   skillAttack: (enemys, callback) ->
-    @attack enemys, callback
+    @attack enemys, callback    
 
   normalAttack: (enemy, callback) ->
     @attack enemy, callback
@@ -119,14 +121,16 @@ class Hero extends Module
     @is_dodge = true
 
   damage: (value) ->
+    # 自身卡牌受到伤害之前触发
+    @trigger 'before_damage'
     @hp -= value
-    console.log "#{@.name} damage : #{value}, hp: #{@hp}"
+    # 自身卡牌受到伤害后触发
+    @trigger 'after_damage'
     # 生命值降低之后触发
-    @trigger 'on_hp_reduce'
+    @trigger 'after_hp_reduce'
     # 自身卡牌受到攻击后触发
     @trigger 'on_attack'
-    # 自身卡牌受到伤害后触发
-    @trigger 'on_damage'
+    
     # 自身卡牌阵亡后触发
     if @death()
       @trigger 'on_self_death'

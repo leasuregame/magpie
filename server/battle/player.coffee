@@ -81,7 +81,6 @@ class Player extends Module
     #console.log @heros
 
     if hero and not hero.death()
-      condition = hero.skill_setting?.trigger_condition
       rate = hero.skill_setting?.trigger_rate
 
       if rate? and utility.hitRate(rate)
@@ -108,10 +107,10 @@ class Player extends Module
     else
       atk_scope = 'default'
 
-    @herosToBeAttacked atk_scope
+    @herosToBeAttacked atk_scope, enemyHero.skill_setting.random_num
 
-  herosToBeAttacked: (scope) ->
-    @matrix.attackElement scope
+  herosToBeAttacked: (scope, args) ->
+    @matrix.attackElement scope, args
 
   reset: ->
     @matrix.reset()

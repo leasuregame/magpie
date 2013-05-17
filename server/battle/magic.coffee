@@ -1,4 +1,5 @@
 PropertyBase = require './base_property'
+utility = require '../common/utility'
 
 Magic = exports = module.exports
 
@@ -15,11 +16,8 @@ class Magic.atk_improve extends PropertyBase
   enable: (target, value, args) ->
     # target is a hero
     # value is skill info
-    #console.log 'atk improve,', value, target.atk
     [base_val, lv_grow] = parse.effect(value['star'+target.star])
-    #console.log 'base_val,', base_val, 'lv_grow', lv_grow
     target.atk += parseInt(target.atk * ( base_val + lv_grow * (target.skill_lv-1) )/100)
-    #console.log 'after modify,', target.atk
 
   disable: ->
    [base_val, lv_grow] = parse.effect(value['star'+target.star])
@@ -32,3 +30,22 @@ class Magic.atk_reduce extends PropertyBase
 
   disable: ->
     @target.atk += parseInt(@target.atk * ( base_val + lv_grow * (target.skill_lv-1) )/100)
+
+class Magic.damage_reduce extends PropertyBase
+  enable: (target, skill_info, args) ->
+    _str = if skill_info.target is 1 then 'player' else 'enemy' 
+    player = target[obj_str]
+    objs = player.scope( skill_info.scope )
+    round_num = player.round_num
+    round_num += 1 if skill_info.when == 3
+    @event = skill_info.trigger_condition
+
+    target.bind @event, [@, objs, round_num]
+
+  disable: ->
+    @trigger.unbind @event
+
+  execute: ->
+    
+
+    

@@ -10,7 +10,7 @@ class PropertyBase extends Module
   execute: ->
 
   check: ->
-    return -1
+    if @value.rate? then @value.rate else -1
 
   activate: (target, value, args) ->
     if not @_able

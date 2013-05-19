@@ -122,7 +122,7 @@ class Hero extends Module
 
   damage: (value) ->
     # 自身卡牌受到伤害之前触发
-    @trigger 'before_damage'
+    @trigger 'before_damage' @
     @hp -= value
     # 自身卡牌受到伤害后触发
     @trigger 'after_damage'

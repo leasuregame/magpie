@@ -32,20 +32,16 @@ class Magic.atk_reduce extends PropertyBase
     @target.atk += parseInt(@target.atk * ( base_val + lv_grow * (target.skill_lv-1) )/100)
 
 class Magic.damage_reduce extends PropertyBase
-  enable: (target, skill_info, args) ->
-    _str = if skill_info.target is 1 then 'player' else 'enemy' 
-    player = target[obj_str]
-    objs = player.scope( skill_info.scope )
-    round_num = player.round_num
-    round_num += 1 if skill_info.when == 3
-    @event = skill_info.trigger_condition
-
-    target.bind @event, [@, objs, round_num]
+  enable: (targets, skill_info, args) ->
+    targets.forEach (tar) =>
+      tar.bind 'before_damage', @
 
   disable: ->
-    @trigger.unbind @event
+    @targets.forEach (tar) =>
+      tar.unbind 'before_damage', @
 
   execute: ->
+
     
 
     

@@ -31,14 +31,22 @@ class Battle extends Base
 
   init: ->
     @round = new Round(@attacker, @defender)
+
+  start: ->
     battleLog.set('enemy', @defender)
 
   execute: ->
+    #for i in [0..5]
     while not @isOver()
-      @round.execute()
+      @round.process()
       @round.increase_round_num()
+      console.log 'round: ', @round.round_num
+      console.log 'a death:', @attacker.death(), 'b death:', @defender.death()
 
-    battleLog.setWinner( if @defender.death() then @attacker else @defender )
+
+  end: ->
+    battleLog.setWinner( @attacker ) if @defender.death()
+    battleLog.setWinner( @defender ) if @attacker.death()
 
 class Round extends Base
   constructor: ->
@@ -46,7 +54,6 @@ class Round extends Base
 
   init: ->
     @round_num = 1
-    @setShootCount()
     @attack = new Attack(@attacker, @defender)
 
   increase_round_num: ->
@@ -60,16 +67,20 @@ class Round extends Base
     @defender.shootCount = @defender.aliveHeros().length
 
   isOver: ->
-    @attacker.shootCount is 0 and @defender.shootCount is 0
+    (@attacker.shootCount <= 0 and @defender.shootCount <= 0) or \
+    @attacker.death() or @defender.death()
+
+  start: ->
+    @setShootCount()
 
   execute: () ->
-    whi
-    le not @isOver()
-      #console.log 'b', @attacker.shootCount, @defender.shootCount
+    #for i in [0..5]
+    while not @isOver()
+      console.log 'b', @attacker.shootCount, @defender.shootCount
       @attacker.round_num = @defender.round_num = @round_num
-      @attack.execute()
+      @attack.process()
 
-
+  end: ->
     @setShootCount()
     @attacker.reset()
     @defender.reset()
@@ -78,36 +89,19 @@ class Attack extends Base
   constructor: ->
     super
 
-  execute: () ->
-    
-    # _attack = (atker, dfder) =>
-    #   hero = atker.currentHero()
-    #   enemys = dfder.currentHerosToBeAttacked(atker)
-
-    #   hero.attack enemys, (enemy)->
-    #     dfder.shootCount -= 1 if enemy.death()
-
-    #   atker.shootCount -= 1
-    #   atker.moveNextHero()
-
-    #   battleLog.addStep(
-    #     hero.id, 
-    #     enemys.map((e)-> e.id),
-    #     hero.skill,
-    #     hero.effects
-    #   )
-
-    #   battleLog.addPrint(atker, dfder, hero, enemys)
-    
+  execute: () ->    
     _attack = (atker, dfder) ->
-      console.log "#{atker.id} attack"
+      #console.log (new Date()).toISOString(), "#{atker.id} attack", atker.shootCount, dfder.shootCount
       atker.attack dfder, (hero) ->
         dfder.shootCount -= 1 if hero.death()
 
-      atker.shootCount -= 1
-      atker.moveNextHero()
+      atker.nextHero()
 
-    _attack( @attacker, @defender ) if @attacker.shootCount > 0
-    _attack( @defender, @attacker ) if @defender.shootCount > 0
+    if @attacker.shootCount > 0
+      @attacker.shootCount -= 1
+      _attack( @attacker, @defender ) 
+    if @defender.shootCount > 0
+      @defender.shootCount -= 1
+      _attack( @defender, @attacker ) 
 
 exports = module.exports = Battle

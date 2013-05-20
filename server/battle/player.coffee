@@ -9,8 +9,8 @@ utility = require '../common/utility'
 class Player extends Module
   @table: 'player'
 
-  constructor: (id, lineUp = '') ->
-    @id = null
+  constructor: (id = null, lineUp = '') ->
+    @id = id
     @lv = 0
     @hero_ids = []
     @heros = []
@@ -43,13 +43,16 @@ class Player extends Module
     @heros = if @hero_ids? then (new Hero(id) for id in @hero_ids) else []
 
   bindCards: ->
+    #console.log @heros
     if @lineUp != ''
       @parseLineUp().forEach (item) =>
         [pos, card_id] = item 
-
+        console.log 'bind cards: ', [pos, card_id]
+        
         _hero = (id) =>
           for h in @heros
-            return if h.card_id is parseInt(id) then h else null
+            return if h.card_id is parseInt(id) then h
+          null
 
         @matrix.set(pos, _hero(card_id))
 
@@ -74,17 +77,24 @@ class Player extends Module
 
   attack: (enemy, callback) ->
     hero = @currentHero()
-    #console.log 'hero:', hero
-    condition = hero.skill_setting?.trigger_condition
-    rate = hero.skill_setting?.trigger_rate
+    console.log 'hero:', hero.id, hero.atk, hero.hp
+    #console.log @heros
 
-    if rate? and utility.hitRate(rate)
-      hero.skillAttack( enemy.currentHerosToBeAttacked(@), callback)
-    else
-      hero.normalAttack( enemy.herosToBeAttacked('default'), callback )
+    if hero and not hero.death()
+      rate = hero.skill_setting?.trigger_rate
+
+      if rate? and utility.hitRate(rate)
+        hero.skillAttack( enemy.currentHerosToBeAttacked(@), callback)
+      else
+        hero.normalAttack( enemy.herosToBeAttacked('default'), callback )
 
   currentHero: ->
     @matrix.current()
+
+  nextHero: ->
+    res = @matrix.next()
+    # console.log 'player ', @id, 'next card:', res.name
+    res
 
   currentIndex: ->
     @matrix.curIndex
@@ -97,13 +107,10 @@ class Player extends Module
     else
       atk_scope = 'default'
 
-    @herosToBeAttacked atk_scope
+    @herosToBeAttacked atk_scope, enemyHero.skill_setting.random_num
 
-  herosToBeAttacked: (scope) ->
-    @matrix.attackElement scope
-
-  moveNextHero: ->
-    @matrix.moveToNext()
+  herosToBeAttacked: (scope, args) ->
+    @matrix.attackElement scope, args
 
   reset: ->
     @matrix.reset()

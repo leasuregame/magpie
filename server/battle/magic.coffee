@@ -1,31 +1,44 @@
 PropertyBase = require './base_property'
+utility = require '../common/utility'
 
 Magic = exports = module.exports
 
-parse = 
-  effect: (value) ->
-    pattern = /^\d+,\d+$/
-    if not pattern.exec(value)
-      throw new Error("effect value #{value} is invalid")
-
-    [base_val, lv_grow] = value.split(',')
-    [parseInt(base_val), parseInt(lv_grow)]
-
 class Magic.atk_improve extends PropertyBase
-  enable: (target, value, args) ->
-    # target is a hero
-    # value is skill info
-    [base_val, lv_grow] = parse.effect(value)
-    target.atk += target.atk * ( base_val + lv_grow * target.skill_lv )
+  enable: (targets, skill) ->
+    targets.forEach (tag) =>
+      tag.bind 'before_attack', @
 
   disable: ->
-   [base_val, lv_grow] = parse.effect(value)
-   @target.atk += @target.atk * ( base_val + lv_grow * @target.skill_lv )
+   @targets.forEach (tag) =>
+      tag.unbind 'before_attack', @
+
+  execute: (tag) ->
+    tag.atk += @changeValue tag.atk
 
 class Magic.atk_reduce extends PropertyBase
-  enable: (target, value, args) ->
-    [base_val, lv_grow] = parse.effect(value)
-    target.atk -= target.atk * ( base_val + lv_grow * target.skill_lv )
+  enable: (targets, skill) ->
+    targets.forEach (tag) =>
+      tag.bind 'before_attack', @
 
   disable: ->
-    @target.atk += @target.atk * ( base_val + lv_grow * @target.skill_lv )
+   @targets.forEach (tag) =>
+      tag.unbind 'before_attack', @
+
+  execute: (tag) ->
+    tag.atk -= @changeValue tag.atk
+
+class Magic.damage_reduce extends PropertyBase
+  enable: (targets, skill) ->
+    targets.forEach (tag) =>
+      tag.bind 'before_damage', @
+
+  disable: ->
+    @targets.forEach (tag) =>
+      tag.unbind 'before_damage', @
+
+  execute: (tag)->
+    tag.dmg -= @changeValue tag.dmg
+
+    
+
+    

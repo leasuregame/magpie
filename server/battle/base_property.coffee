@@ -1,4 +1,5 @@
 Module = require '../common/module'
+utility = require '../common/utility'
 
 class PropertyBase extends Module
   _able: false
@@ -10,19 +11,23 @@ class PropertyBase extends Module
   execute: ->
 
   check: ->
-    return -1
+    if @value.rate? then @value.rate else -1
 
-  activate: (target, value, args) ->
+  activate: (targets, skill) ->
     if not @_able
-      @target = target
-      @value = value
-      @args = args
-      @enable target, value, args
+      @targets = targets
+      @skill = skill
+      @enable targets, skill
       @_able = true
 
   inactivate: ->
     if @_able
       @disable()
       @_able = false
+
+  changeValue: (raw)->
+    [base_val, lv_grow] = utility.parseEffect(@skill['star'+@skill.hero.skill_lv])
+    parseInt(raw * ( base_val + lv_grow * (@skill.hero.skill_lv-1) )/100)
+
 
 module.exports = PropertyBase

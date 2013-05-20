@@ -1,21 +1,35 @@
+defautls = 
+
+
 class Skill
-  constructor: ->
-    @id = 0
-    @name = 'skill'
-    @rate = 30
-    @limit = 3 # 每次战斗最高触发次数限制
-    @condition = '被动' # 触发条件
-    @magic = '' # 魔法技能效果，如： 提供攻击、免疫暴击、不能攻击
-    @when = '' # 触发时机， 立即生效、下回合生效、永久生效
-    @target = '' #作用方, 自身、对方
-    @impact_cards = [] #'影响的卡牌', # 自身卡牌，前排所有，后排所有，纵向所有，所有卡牌，随机N张卡牌 等
-    @atk_max = [] #攻击最高卡
-    @atk_min = [] #攻击最低卡
-    @hp_max = [] #生命最高卡
-    @hp_min = [] #生命最低卡
-    @star3 = '10%:5%' #三星1级效果，每级增幅 5%
-    @star4 = '15%:5%'
-    @star5 = '20%:10%'
+  constructor: (hero, attrs)->
+    @hero = hero
+    @_attrs = attrs or defautls
+    for key, value of @_attrs
+      @[key] = value
+
+    @hero.bind @trigger_condition, @
+
+  execute: ->
+    targets = @get_targets()
+    magic = Magic[@magic_id].create()
+    magic.activate(@hero, targets, @_attrs)
+    magic.execute()
+    magic.inactivate()
+
+  get_targets: ->
+    @target()?.herosToBeAttacked @scope, @random_num
+
+  target: ->
+    return @hero.player if @target is 'own'
+    return @hero.player.enemy if @target is 'enemy'
+    throw new Error("Skill: can't get target with '#{@target}' ")
+
+  get_round_num: ->
+    @target()?.round_num
+
+  check: ->
+    @rate or -1
 
 
 

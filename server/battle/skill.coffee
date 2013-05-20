@@ -1,3 +1,5 @@
+utility = require '../common/utility'
+
 defautls = 
 
 
@@ -28,8 +30,10 @@ class Skill
   get_round_num: ->
     @target()?.round_num
 
-  check: ->
-    @rate or -1
+  check: -> 
+    if @rate and @rate > 0 
+      return utility.hitRate @rate
+    true
 
 
 

@@ -1,10 +1,17 @@
+_ = require 'underscore'
+
 Events =
   bind: (ev, callback) ->
     evs   = ev.split(' ')
     calls = @hasOwnProperty('_callbacks') and @_callbacks or= {}
+    objs = @hasOwnProperty('_objects') and @_objects or= {}
     for name in evs
-      calls[name] or= []
-      calls[name].push(callback)
+      if _.isFunction callback 
+        calls[name] or= []
+        calls[name].push(callback)
+      if _.isObject callback
+        objs[name] or= []
+        objs[name].push(callback)
     this
 
   one: (ev, callback) ->
@@ -19,6 +26,10 @@ Events =
     for callback in list
       if callback.apply(this, args) is false
         break
+
+    olist = @hasOwnProperty('_objs') and @_objs?[ev]
+    for obj in olist
+      obj.execute.apply(obj, args) if obj.check() and obj.can_atk()
     true
 
   listenTo: (obj, ev, callback) ->

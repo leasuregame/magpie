@@ -11,7 +11,7 @@ class PropertyBase extends Module
   execute: ->
 
   check: ->
-    if @value.rate? then @value.rate else -1
+    if @skill.rate? then utility.hitRate @skill.rate else true
 
   activate: (targets, skill) ->
     if not @_able

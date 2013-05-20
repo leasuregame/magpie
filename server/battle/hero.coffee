@@ -3,6 +3,7 @@ Events = require '../common/events'
 tab = require '../model/table'
 Magic = require './magic'
 battleLog = require './battle_log'
+Skill = require './skill'
 
 util = require 'util'
 _ = require 'underscore'
@@ -38,12 +39,16 @@ class Hero extends Module
     
     @is_crit = false
     @is_dodge = false
+    @cant_miss = false
+    @cant_be_crit = false
     @dmg = 0 # 每次所受伤害的值，默认值为0
+    @crit_factor = 1.5 # crit damage factor
+    @pos = 0
 
     @loadCardInfo()
     @loadSkill() if @star > 2
     # 被动触发，永久生效
-    @trigger 'passive', @
+    
 
     ##console.log 'hero: ', @
 
@@ -62,8 +67,10 @@ class Hero extends Module
   loadSkill: ->
     
     @skill_setting = tab.getTableItem('skills', @skill_id)
-    @magic = if @skill_setting? then Magic[@skill_setting.magic_id]?.create() else null
+    @skill = if @skill_setting? then new Skill(@, @skill_setting) else null
+    #@magic = if @skill_setting? then Magic[@skill_setting.magic_id]?.create() else null
     #@magic.activate(@, @, @skill_setting) if @magic?
+    @trigger 'passive', @
 
     console.log 'skill id', @skill_id
     console.log 'atk,', @atk
@@ -75,16 +82,16 @@ class Hero extends Module
     # 发起进攻之前触发
     @trigger 'before_attack', @
     enemys.forEach (enemy) =>
-      if enemy.isDodge()
+      if not @cant_miss and enemy.isDodge()
         enemy.dodge()
         @log(enemy, ATTACK_TYPE.dodge, '')
         return
 
-      if @isCrit()
+      if not enemy.cant_be_crit and @isCrit()
         @crit()
-        enemy.dmg = @atk * 1.5
+        enemy.dmg = @atk * @crit_factor
         enemy.suffer_crit()
-        @log(enemy, ATTACK_TYPE.crit, @atk * 1.5)
+        @log(enemy, ATTACK_TYPE.crit, @atk * @crit_factor)
       else
         enemy.dmg = @atk
         enemy.damage()

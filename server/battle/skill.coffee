@@ -1,10 +1,11 @@
+Module = require '../common/module'
 utility = require '../common/utility'
 
 defautls = 
 
 
-class Skill
-  constructor: (hero, attrs)->
+class Skill extends Module
+  init: (hero, attrs)->
     @hero = hero
     @_attrs = attrs or defautls
     for key, value of @_attrs
@@ -12,12 +13,17 @@ class Skill
 
     @hero.bind @trigger_condition, @
 
-  execute: ->
+  execute: (args)->
     targets = @get_targets()
     magic = Magic[@magic_id].create()
-    magic.activate(@hero, targets, @_attrs)
-    magic.execute()
-    magic.inactivate()
+    if @when is 'next_round'
+      magic.activate(@hero, targets, @_attrs)
+    
+    if @when is 'forever'
+      magic.execute(args)
+
+    # if @when is 'next_round'
+    #   magic.inactivate()
 
   get_targets: ->
     @target()?.herosToBeAttacked @scope, @random_num

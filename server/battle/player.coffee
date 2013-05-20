@@ -36,7 +36,6 @@ class Player extends Module
         @[key] = value
 
     @loadHeros()
-
     @
 
   loadHeros: ->

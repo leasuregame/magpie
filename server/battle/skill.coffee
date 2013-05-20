@@ -13,7 +13,7 @@ class Skill
   execute: ->
     targets = @get_targets()
     magic = Magic[@magic_id].create()
-    magic.activate(targets, @_attrs)
+    magic.activate(@hero, targets, @_attrs)
     magic.execute()
     magic.inactivate()
 

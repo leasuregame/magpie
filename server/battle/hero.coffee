@@ -1,7 +1,7 @@
 Module = require '../common/module'
 Events = require '../common/events'
 tab = require '../model/table'
-magic = require './magic'
+Magic = require './magic'
 battleLog = require './battle_log'
 
 util = require 'util'
@@ -38,11 +38,12 @@ class Hero extends Module
     
     @is_crit = false
     @is_dodge = false
+    @dmg = 0 # 每次所受伤害的值，默认值为0
 
     @loadCardInfo()
     @loadSkill() if @star > 2
     # 被动触发，永久生效
-    @trigger('passive')
+    @trigger 'passive', @
 
     ##console.log 'hero: ', @
 
@@ -61,8 +62,8 @@ class Hero extends Module
   loadSkill: ->
     
     @skill_setting = tab.getTableItem('skills', @skill_id)
-    @skill = if @skill_setting? then magic[@skill_setting.magic_id]?.create() else null
-    @skill.activate(@, @skill_setting) if @skill?
+    @magic = if @skill_setting? then Magic[@skill_setting.magic_id]?.create() else null
+    #@magic.activate(@, @, @skill_setting) if @magic?
 
     console.log 'skill id', @skill_id
     console.log 'atk,', @atk
@@ -72,7 +73,7 @@ class Hero extends Module
     enemys = [enemys] if not _.isArray(enemys)
     
     # 发起进攻之前触发
-    @trigger 'before_attack'
+    @trigger 'before_attack', @
     enemys.forEach (enemy) =>
       if enemy.isDodge()
         enemy.dodge()
@@ -81,19 +82,21 @@ class Hero extends Module
 
       if @isCrit()
         @crit()
-        enemy.suffer_crit @atk * 1.5
+        enemy.dmg = @atk * 1.5
+        enemy.suffer_crit()
         @log(enemy, ATTACK_TYPE.crit, @atk * 1.5)
       else
-        enemy.damage @atk
+        enemy.dmg = @atk
+        enemy.damage()
         @log(enemy, ATTACK_TYPE.normal, @atk)
 
       #敌方卡牌阵亡之后触发
-      @trigger 'on_enemy_card_death' if enemy.death()
+      @trigger 'on_enemy_card_death', @ if enemy.death()
 
       callback enemy
 
     # 发起进攻之后触发
-    @trigger 'after_attack'
+    @trigger 'after_attack', @
 
   skillAttack: (enemys, callback) ->
     @attack enemys, callback    
@@ -101,40 +104,40 @@ class Hero extends Module
   normalAttack: (enemy, callback) ->
     @attack enemy, callback
 
-  suffer_crit: (value)->
-    @damage value
+  suffer_crit: ->
+    @damage()
     # 自身卡牌受到暴击之后触发
-    @trigger 'on_suffer_crit'
+    @trigger 'on_suffer_crit', @
     # 己方任意一张卡牌受到暴击之后触发
-    @trigger 'on_card_suffer_crit'
+    @trigger 'on_card_suffer_crit', @
 
   crit: (enemy)->
     # 自身造成暴击之后触发
-    @trigger 'on_crit'
+    @trigger 'on_crit', @
     # 己方任意一张卡牌对敌方卡牌造成暴击之后触发
-    @trigger 'on_card_crit'
+    @trigger 'on_card_crit', @
     @is_crit = true
 
   dodge: ->
     # 闪避触发
-    @trigger 'on_dodge'
+    @trigger 'on_dodge', @
     @is_dodge = true
 
   damage: (value) ->
     # 自身卡牌受到伤害之前触发
-    @trigger 'before_damage' @
-    @hp -= value
+    @trigger 'before_damage', @
+    @hp -= @dmg
     # 自身卡牌受到伤害后触发
-    @trigger 'after_damage'
+    @trigger 'after_damage', @
     # 生命值降低之后触发
-    @trigger 'after_hp_reduce'
+    @trigger 'after_hp_reduce', @
     # 自身卡牌受到攻击后触发
-    @trigger 'on_attack'
+    @trigger 'on_attack', @
     
     # 自身卡牌阵亡后触发
     if @death()
-      @trigger 'on_self_death'
-      @trigger 'on_self_card_death'
+      @trigger 'on_self_death', @
+      @trigger 'on_self_card_death', @
       #@log('', 'death', "#{@.name} is death")
 
   log: (enemy, type, value)->

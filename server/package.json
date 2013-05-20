@@ -10,13 +10,13 @@
     "underscore.string": "2.3.1",
     "xml2js": "0.1.14",
     "memcached": "0.2.2"
-    ""
   },
   "devDependencies": {
     "underscore": "1.4.4",
     "coffee-script": ">=1.6.2",
     "mocha": "*",
-    "should": "*"
+    "should": "*",
+    "node-inspector": "0.1.10"
   },
   "licenses":
   [{

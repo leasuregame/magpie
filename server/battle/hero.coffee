@@ -100,7 +100,7 @@ class Hero extends Module
       #敌方卡牌阵亡之后触发
       @trigger 'on_enemy_card_death', @ if enemy.death()
 
-      callback enemy
+      callback?(enemy)
 
     # 发起进攻之后触发
     @trigger 'after_attack', @

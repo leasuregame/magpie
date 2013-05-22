@@ -2,6 +2,7 @@ http = require 'http'
 util = require 'util'
 
 ###
+我方卡牌信息
 {
   id: 4
   card_id: 4
@@ -32,7 +33,9 @@ util = require 'util'
   star: 4
   skill_lv: 1
 }
-line_up: '4:1,5:2,6:3'
+
+布阵字符串：如 1:4 表示1号位置放置id为4的卡牌
+line_up: '1:4,2:5,3:6'
 ###
 
 battle_log = 

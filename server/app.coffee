@@ -106,8 +106,8 @@ battle_log =
 
 
 app = http.createServer (req, res) ->
-  res.writeHead '200', {'Content-Type': 'text/plain'}
-  res.write(util.inspect(battle_log))
-  res.end()
+  res.writeHead '200', {'Content-Type': 'text/plain', 'charset': 'UTF-8'}
+  res.write(JSON.stringify(battle_log))
+  res.end('成功')
 
 app.listen('3344')

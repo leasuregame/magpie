@@ -101,7 +101,11 @@ class Matrix
     if arguments.length == 2
       el = col
       [row, col] = row
-    @elements[row][col] = el 
+      el.pos = row
+    else
+      el.pos = "#{row}#{col}"
+      
+    @elements[row][col] = el
     @
 
   unset: (row, col) ->

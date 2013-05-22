@@ -19,6 +19,7 @@ class Player extends Module
     @load(id) if id?
     @matrix = new Matrix()
     @bindCards()
+    @setAttackCount()
 
     super
 
@@ -36,7 +37,6 @@ class Player extends Module
         @[key] = value
 
     @loadHeros()
-
     @
 
   loadHeros: ->
@@ -114,10 +114,14 @@ class Player extends Module
 
   reset: ->
     @matrix.reset()
+    @setAttackCount()
 
   aliveHeros: ->
     res = @heros.filter (h) ->
-      h.hp > 0
+      h.hp? and h.hp > 0
     res || []
+
+  setAttackCount: ->
+    @attack_count = @aliveHero().length
 
 exports = module.exports = Player

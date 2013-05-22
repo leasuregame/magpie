@@ -40,9 +40,6 @@ class Battle extends Base
     while not @isOver()
       @round.process()
       @round.increase_round_num()
-      console.log 'round: ', @round.round_num
-      console.log 'a death:', @attacker.death(), 'b death:', @defender.death()
-
 
   end: ->
     battleLog.setWinner( @attacker ) if @defender.death()

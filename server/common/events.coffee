@@ -22,14 +22,16 @@ Events =
   trigger: (args...) ->
     ev = args.shift()
     list = @hasOwnProperty('_callbacks') and @_callbacks?[ev]
-    return unless list
+    olist = @hasOwnProperty('_objs') and @_objs?[ev]
+    return if not list and not olist
     for callback in list
       if callback.apply(this, args) is false
         break
 
-    olist = @hasOwnProperty('_objs') and @_objs?[ev]
     for obj in olist
-      obj.execute.apply(obj, args) if obj.check() and obj.can_atk()
+      if obj.check()
+        obj.execute.apply(obj, args)
+        
     true
 
   listenTo: (obj, ev, callback) ->
@@ -74,14 +76,22 @@ Events =
     evs = ev.split(' ')
     for name in evs
       list = @_callbacks?[name]
-      continue unless list
+      olist = @_objects?[name]
+      continue if not list and not olist
       unless callback
         delete @_callbacks[name]
+        delete @_objects[name]
         continue
       for cb, i in list when (cb is callback)
         list = list.slice()
         list.splice(i, 1)
         @_callbacks[name] = list
+        break
+
+      for obj, i in olist when (cb is callback)
+        olist = list.slice()
+        olist.splice(i, 1)
+        @_objects[name] = olist
         break
     this
 

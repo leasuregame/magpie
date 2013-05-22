@@ -1,34 +1,39 @@
+Module = require '../common/module'
 utility = require '../common/utility'
 
 defautls = 
 
 
-class Skill
-  constructor: (hero, attrs)->
+class Skill extends Module
+  init: (hero, attrs)->
     @hero = hero
     @_attrs = attrs or defautls
     for key, value of @_attrs
       @[key] = value
 
+    @magic = Magic[@magic_id].create()
     @hero.bind @trigger_condition, @
 
-  execute: ->
-    targets = @get_targets()
-    magic = Magic[@magic_id].create()
-    magic.activate(@hero, targets, @_attrs)
-    magic.execute()
-    magic.inactivate()
+  execute: (args)->
+    if @when in ['now', 'next_round']
+      @magic.activate(@hero, @get_targets(), @_attrs)
+    
+    if @when in ['forever', 'now']
+      @magic.execute(args)
+
+    # if @when is 'next_round'
+    #   magic.inactivate()
 
   get_targets: ->
-    @target()?.herosToBeAttacked @scope, @random_num
+    @_player()?.herosToBeAttacked @scope, @random_num
 
-  target: ->
+  _player: ->
     return @hero.player if @target is 'own'
     return @hero.player.enemy if @target is 'enemy'
     throw new Error("Skill: can't get target with '#{@target}' ")
 
   get_round_num: ->
-    @target()?.round_num
+    @_player()?.round_num
 
   check: -> 
     if @rate and @rate > 0 

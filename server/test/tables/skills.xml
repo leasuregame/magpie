@@ -8,7 +8,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-05-07T08:08:26Z</Created>
-  <LastSaved>2013-05-13T03:38:17Z</LastSaved>
+  <LastSaved>2013-05-20T07:18:26Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -16,11 +16,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>12340</WindowHeight>
+  <WindowHeight>11920</WindowHeight>
   <WindowWidth>38400</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -45,7 +45,12 @@
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
    <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s83" ss:Name="常规_技能配置表">
+  <Style ss:ID="s27" ss:Name="差">
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
+    ss:Color="#F20884"/>
+   <Interior ss:Color="#FF99CC" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s62" ss:Name="常规_技能配置表">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
@@ -58,112 +63,26 @@
     ss:Color="#006411"/>
    <Interior ss:Color="#CCFFCC" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s62">
+  <Style ss:ID="s63">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s64">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s65">
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="s66">
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="s67">
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="s68">
-   <Borders>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-   <Interior ss:Color="#33CCCC" ss:Pattern="Solid"/>
-  </Style>
-  <Style ss:ID="s69">
-   <Borders>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-   <Interior ss:Color="#33CCCC" ss:Pattern="Solid"/>
-  </Style>
-  <Style ss:ID="s70">
-   <Borders>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-   <Interior ss:Color="#33CCCC" ss:Pattern="Solid"/>
-  </Style>
-  <Style ss:ID="s72" ss:Parent="s26">
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="s73" ss:Parent="s26">
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="s75" ss:Parent="s39">
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="s77" ss:Parent="s43">
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="s79" ss:Parent="s51">
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
-    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-  </Style>
-  <Style ss:ID="s80">
-   <Alignment ss:Vertical="Center"/>
-  </Style>
-  <Style ss:ID="s82">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
   </Style>
-  <Style ss:ID="s84" ss:Parent="s83">
+  <Style ss:ID="s66" ss:Parent="s62">
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16"/>
    <Interior/>
   </Style>
-  <Style ss:ID="s85">
+  <Style ss:ID="s67">
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
    <NumberFormat/>
   </Style>
-  <Style ss:ID="s86" ss:Parent="s83">
+  <Style ss:ID="s68" ss:Parent="s62">
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16"/>
    <Interior ss:Color="#FCF305" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s87">
+  <Style ss:ID="s69">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
@@ -171,11 +90,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s88">
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Modern" ss:Size="16"
-    ss:Color="#000000"/>
-  </Style>
-  <Style ss:ID="s89">
+  <Style ss:ID="s70">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
@@ -183,7 +98,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s90">
+  <Style ss:ID="s71">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
@@ -191,18 +106,110 @@
    <NumberFormat/>
    <Protection/>
   </Style>
+  <Style ss:ID="s72">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s73">
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s74">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s75">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s76">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s77">
+   <Borders>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Interior ss:Color="#33CCCC" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s78">
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Interior ss:Color="#33CCCC" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s79">
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Interior ss:Color="#33CCCC" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s81" ss:Parent="s26">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s82" ss:Parent="s26">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s84" ss:Parent="s39">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s86" ss:Parent="s43">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s88" ss:Parent="s51">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s89">
+   <Alignment ss:Vertical="Center"/>
+  </Style>
+  <Style ss:ID="s91" ss:Parent="s27">
+   <NumberFormat/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="技能配置表">
   <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="52" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="2" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="280"/>
+   <Column ss:Index="2" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="457"/>
    <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="156" ss:Span="1"/>
    <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="153" ss:Span="1"/>
    <Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="110"/>
    <Column ss:AutoFitWidth="0" ss:Width="130"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">技能ID</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">描述</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">描述</Data></Cell>
     <Cell><Data ss:Type="String">技能名称</Data></Cell>
     <Cell><Data ss:Type="String">触发条件</Data><Comment ss:Author="gaobin"><Data>gaobin:&#10;&#13;1 passive 被动&#10;&#13;2 passive_rate 被动概率触发&#10;&#13;3 on_crit 暴击之后&#10;&#13;4 on_attack 攻击时候触发&#10;&#13;5 on_damage 受到伤害&#10;&#13;6 on_dodge 闪避&#10;&#13;7 on_self_death 自身阵亡&#10;&#13;8 on_self_card_death 己方卡牌阵亡&#10;&#13;9 on_enemy_card_death 敌方卡牌阵亡&#10;&#13;10 on_hp_reduce_to 生命值降低到N%时触发，需结合魔法属性hp_reduce_to的值决定N%&#10;&#13;11：自身受到暴击伤害后&#10;&#13;12：己方其他任意卡牌受到暴击后</Data></Comment></Cell>
     <Cell><Data ss:Type="String">触发概率</Data><Comment ss:Author="gaobin"><Data>gaobin:&#10;是就填具体概率，不是概率触发就不填</Data></Comment></Cell>
@@ -219,7 +226,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">tips</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">tips</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
     <Cell><Data ss:Type="String">trigger_condition</Data><Comment
       ss:Author="arthur wu"><Data><B xmlns="http://www.w3.org/TR/REC-html40"><Font
@@ -243,35 +250,35 @@
     <Cell><Data ss:Type="String">star4</Data></Cell>
     <Cell><Data ss:Type="String">star5</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:StyleID="s27">
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">提高卡牌自身攻击力10%。</Data></Cell>
+    <Cell><Data ss:Type="String">提高卡牌自身攻击力10%。</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:Index="12" ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="s91"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">20,5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">提高自身生命值10%。</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">提高自身生命值10%。</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">12</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:Index="12" ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell><Data ss:Type="String">15,5</Data></Cell>
+    <Cell><Data ss:Type="String">20,5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data><Comment ss:Author="gaobin"><Data>gaobin:&#10;无视闪避，免疫暴击，独特卡牌，这种卡牌不需要升级技能</Data></Comment></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">无视对方卡牌的闪避，每次攻击都可以100%命中。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">无视对方卡牌的闪避，每次攻击都可以100%命中。</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Number">1</Data></Cell>
@@ -280,744 +287,713 @@
     <Cell><Data ss:Type="Number">11</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="38">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">免疫暴击，任何伤害都无法对自身造成暴击。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">18</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">免疫暴击，任何伤害都无法对自身造成暴击。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">18</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="57">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">提高自身生命值5%，提高自身攻击力5%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">5，5</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">10，5</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">15，5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">提高自身生命值5%，提高自身攻击力5%。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">5，5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">10，5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">15，5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="57">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">增加10%的暴击伤害</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">增加10%的暴击伤害</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="57">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">每次攻击，都有一定概率（30%）对己方卡牌释放护佑效果，降低己方任意2张卡牌下次所受伤害降低10%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">17</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">每次攻击，都有一定概率（30%）对己方卡牌释放护佑效果，降低己方任意2张卡牌下次所受伤害降低10%。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">17</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="38" ss:StyleID="s27">
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+    <Cell><Data ss:Type="String">每次攻击，都有一定概率（30%）对己方卡牌释放增益效果，增加己方任意2张卡牌下次的攻击力，其攻击加成各自均为10%。</Data></Cell>
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">20,5</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="57">
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">每次攻击，都有一定概率（30%）对敌方当前任意2张卡牌释放虚弱效果，使得其下次发起攻击时，攻击力降低10%。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="38">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">每次攻击，都有一定概率（30%）对己方卡牌释放增益效果，增加己方任意2张卡牌下次的攻击力，其攻击加成各自均为10%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="57">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">9</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">每次攻击，都有一定概率（30%）对敌方当前任意2张卡牌释放虚弱效果，使得其下次发起攻击时，攻击力降低10%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">9</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">每次攻击，都有一定概率（30%）对敌方当前任意2张卡牌释放血影效果，降低对方卡牌的生命值，其降低幅度为10%。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="38">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">每次攻击，都有一定概率（30%）对敌方当前任意2张卡牌释放血影效果，降低对方卡牌的生命值，其降低幅度为10%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">13</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="38">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">11</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">一定概率（30%）发起纵向攻击，对敌方纵向的所有卡牌造成群体伤害。伤害平均分摊，初始伤害40%</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">11</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">40,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">50,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">60,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">一定概率（30%）发起纵向攻击，对敌方纵向的所有卡牌造成群体伤害。伤害平均分摊，初始伤害40%</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">40,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">50,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">60,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">12</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">一定概率（30%）发起横向攻击，对敌方前排的所有卡牌造成群体伤害。伤害平均分摊（当对方前排没有卡牌时，无法释放技能）</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">12</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">40,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">50,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">60,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">12</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">一定概率（30%）发起横向攻击，对敌方前排的所有卡牌造成群体伤害。伤害平均分摊（当对方前排没有卡牌时，无法释放技能）</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">12</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">40,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">50,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">60,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">13</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">一定概率（30%）发起横向攻击，对敌方后排的所有卡牌造成群体伤害。伤害平均分摊（当对方后排没有卡牌时，无法释放技能）</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">13</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">40,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">50,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">60,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">一定概率（30%）发起横向攻击，对敌方后排的所有卡牌造成群体伤害。伤害平均分摊（当对方后排没有卡牌时，无法释放技能）</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">40,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">50,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">60,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">14</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">每次攻击，都有一定概率（30%）魅惑对方卡牌，使其下次攻击己方生命值最高的卡牌。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">14</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">11</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">14</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">每次攻击，都有一定概率（30%）魅惑对方卡牌，使其下次攻击己方生命值最高的卡牌。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">14</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">15</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">每次攻击，都有一定概率（30%）魅惑对方卡牌，使其下次攻击己方生命值最低的卡牌。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">15</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">11</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">每次攻击，都有一定概率（30%）魅惑对方卡牌，使其下次攻击己方生命值最低的卡牌。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">16</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">单体攻击敌方卡牌，一定概率（30%）附加魅惑效果，使其下一回合随机攻击己方某一张卡牌。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">16</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">16</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">单体攻击敌方卡牌，一定概率（30%）附加魅惑效果，使其下一回合随机攻击己方某一张卡牌。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">16</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">17</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">每次攻击，都有一定概率（30%）封印对方攻击力最低的卡牌，使其下一回合无法发动攻击。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">17</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">9</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">17</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">每次攻击，都有一定概率（30%）封印对方攻击力最低的卡牌，使其下一回合无法发动攻击。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">17</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">18</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">每次攻击，都有一定概率（30%）封印对方攻击力最高的卡牌，使其下一回合无法发动攻击。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">18</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">9</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">18</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">每次攻击，都有一定概率（30%）封印对方攻击力最高的卡牌，使其下一回合无法发动攻击。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">18</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">19</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">单体攻击对方卡牌，一定概率（30%）附加虚弱效果，使得其下一回合发起攻击时，攻击力降低10%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">19</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">11</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">19</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">单体攻击对方卡牌，一定概率（30%）附加虚弱效果，使得其下一回合发起攻击时，攻击力降低10%。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">19</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">每次攻击，都有一定概率（30%）对敌方造成连击效果，发起第二次攻击。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">11</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">11</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">每次攻击，都有一定概率（30%）对敌方造成连击效果，发起第二次攻击。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s27">
+    <Cell><Data ss:Type="Number">21</Data></Cell>
+    <Cell><Data ss:Type="String">伤害造成暴击后，下次发动攻击，其攻击力提升20%。</Data></Cell>
+    <Cell><Data ss:Type="Number">21</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="s91"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">25,5</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">30,5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">21</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">伤害造成暴击后，下次发动攻击，其攻击力提升20%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">21</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">25,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">30,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">22</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">伤害造成暴击后，下次发动攻击，其暴击概率提升20%。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">22</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">19</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">25,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">30,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s27">
+    <Cell><Data ss:Type="Number">23</Data></Cell>
+    <Cell><Data ss:Type="String">伤害造成暴击后，己方攻击力最高的卡牌，下次发动攻击，其攻击力提升20%。</Data></Cell>
+    <Cell><Data ss:Type="Number">23</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell><Data ss:Type="String">25,5</Data></Cell>
+    <Cell><Data ss:Type="String">30,5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">22</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">伤害造成暴击后，下次发动攻击，其暴击概率提升20%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">22</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">19</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">25,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">30,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">24</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">卡牌阵亡后，将对敌方生命值最高的卡牌发起额外的最后一击，造成自身攻击力20%的伤害量。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">24</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">25,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">30,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">23</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">伤害造成暴击后，己方攻击力最高的卡牌，下次发动攻击，其攻击力提升20%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">23</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">25,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">30,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">卡牌阵亡后，己方生命值最低的卡牌，下次所受伤害的20%将会被该阵亡卡牌吸收。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">25,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">30,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">24</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">卡牌阵亡后，将对敌方生命值最高的卡牌发起额外的最后一击，造成自身攻击力20%的伤害量。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">24</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">11</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">25,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">30,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell><Data ss:Type="Number">26</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">卡牌阵亡后，己方攻击力最高的卡牌，下次攻击将获得该阵亡卡牌攻击力20%的额外加成。</Data></Cell>
+    <Cell><Data ss:Type="Number">26</Data></Cell>
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell><Data ss:Type="String">25,5</Data></Cell>
+    <Cell><Data ss:Type="String">30,5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">25</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">卡牌阵亡后，己方生命值最低的卡牌，下次所受伤害的20%将会被该阵亡卡牌吸收。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">25</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">15</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">25,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">30,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">27</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">卡牌阵亡后，己方其他每张上阵卡牌下次受到攻击，都将恢复各自10%的生命值。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">27</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">12</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s27">
+    <Cell><Data ss:Type="Number">28</Data></Cell>
+    <Cell><Data ss:Type="String">卡牌阵亡后，己方其他每张上阵卡牌下次发动攻击，将提升10%的额外攻击力。</Data></Cell>
+    <Cell><Data ss:Type="Number">28</Data></Cell>
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="s91"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">20,5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">26</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">卡牌阵亡后，己方攻击力最高的卡牌，下次攻击将获得该阵亡卡牌攻击力20%的额外加成。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">26</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">25,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">30,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">29</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">卡牌阵亡后，己方其他每张上阵卡牌下次受到攻击，都将反弹10%的伤害量。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">29</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">16</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">27</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">卡牌阵亡后，己方其他每张上阵卡牌下次受到攻击，都将恢复各自10%的生命值。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">27</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">12</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">敌方每张卡牌阵亡，自身都会恢复10%的生命值。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">12</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">28</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">卡牌阵亡后，己方其他每张上阵卡牌下次发动攻击，将提升10%的额外攻击力。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">28</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">31</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">自身所受伤害降低10%</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">31</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">17</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">29</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">卡牌阵亡后，己方其他每张上阵卡牌下次受到攻击，都将反弹10%的伤害量。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">29</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">16</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">32</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">自身所受暴击伤害降低20%</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">32</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">17</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">25,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">30,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">敌方每张卡牌阵亡，自身都会恢复10%的生命值。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">9</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">12</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">33</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">己方全部上阵卡牌所受伤害降低5%，包括自身。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">33</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">17</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">5,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">5,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">5,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s27">
+    <Cell><Data ss:Type="Number">34</Data></Cell>
+    <Cell><Data ss:Type="String">己方全部上阵卡牌攻击力提升5%，包括自身。</Data></Cell>
+    <Cell><Data ss:Type="Number">34</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="s91"><Data ss:Type="String">5,5</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">5,5</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">5,5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">31</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">自身所受伤害降低10%</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">31</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">17</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">护佑己方生命值最高的上阵卡牌，分摊其每次所受伤害量的10%。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">32</Data></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">自身所受暴击伤害降低20%</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">32</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">11</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">17</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">25,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">30,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">36</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">护佑己方生命值最低的上阵卡牌，分摊其每次所受伤害量的10%。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">36</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">33</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">己方全部上阵卡牌所受伤害降低5%，包括自身。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">33</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">17</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">5,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">5,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">5,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">37</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">不会发起普通攻击，但会复活己方当前阵亡的1张卡牌，并恢复其50%的生命值，100%的攻击力。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">37</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">21</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">50,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">55,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">60,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">34</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">己方全部上阵卡牌攻击力提升5%，包括自身。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">34</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">5,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">5,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">5,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">38</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">不会发起普通攻击，但会复活己方当前阵亡的1张卡牌，并恢复其50%的攻击力，100%的生命值。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">38</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">22</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">50,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">55,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">60,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">护佑己方生命值最高的上阵卡牌，分摊其每次所受伤害量的10%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">15</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">39</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">每次受到伤害，有一定概率（30%）偷取攻击者一定生命值，偷取量为自身生命值的10%。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">39</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">14</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">36</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">护佑己方生命值最低的上阵卡牌，分摊其每次所受伤害量的10%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">36</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">15</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">受到伤害后，每次都会反弹所受伤害的5%。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">16</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s27">
+    <Cell><Data ss:Type="Number">41</Data></Cell>
+    <Cell><Data ss:Type="String">生命值降低到70%以下，攻击力提升20%。</Data></Cell>
+    <Cell><Data ss:Type="Number">41</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="s91"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">25,5</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">30,5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">37</Data></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">不会发起普通攻击，但会复活己方当前阵亡的1张卡牌，并恢复其50%的生命值，100%的攻击力。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">37</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">21</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">50,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">55,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">60,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">42</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">生命值降低到70%以下，暴击率提升20%</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">42</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">19</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">25,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">30,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s27">
+    <Cell><Data ss:Type="Number">43</Data></Cell>
+    <Cell><Data ss:Type="String">每次成功闪避后，下次发动攻击时，其攻击力提升10%。</Data></Cell>
+    <Cell><Data ss:Type="Number">43</Data></Cell>
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="s91"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">20,5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">38</Data></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">不会发起普通攻击，但会复活己方当前阵亡的1张卡牌，并恢复其50%的攻击力，100%的生命值。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">38</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">22</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">50,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">55,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">60,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">39</Data></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">每次受到伤害，有一定概率（30%）偷取攻击者一定生命值，偷取量为自身生命值的10%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">39</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">14</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">受到伤害后，每次都会反弹所受伤害的5%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">16</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">41</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">生命值降低到70%以下，攻击力提升20%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">41</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">25,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">30,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">42</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">生命值降低到70%以下，暴击率提升20%</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">42</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">19</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">25,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">30,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">43</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">每次成功闪避后，下次发动攻击时，其攻击力提升10%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">43</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">44</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">每次成功闪避后，下次受到攻击时闪避率提升10%。</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">44</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">23</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s84"/>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s84"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">44</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">每次成功闪避后，下次受到攻击时闪避率提升10%。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">44</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">23</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">45</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">当己方其他任意一张卡牌受到暴击后，自身下次所受伤害都会降低10%。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">当己方其他任意一张卡牌受到暴击后，自身下次所受伤害都会降低10%。</Data></Cell>
     <Cell><Data ss:Type="Number">45</Data></Cell>
     <Cell><Data ss:Type="Number">12</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">17</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:Index="12" ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">46</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">自身每次受到暴击伤害，己方生命值最低的卡牌都会恢复10%的生命。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">自身每次受到暴击伤害，己方生命值最低的卡牌都会恢复10%的生命。</Data></Cell>
     <Cell><Data ss:Type="Number">46</Data></Cell>
     <Cell><Data ss:Type="Number">11</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">12</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:Index="12" ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">47</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">每次受到暴击伤害，自身都会恢复10%的生命值。</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">每次受到暴击伤害，自身都会恢复10%的生命值。</Data></Cell>
     <Cell><Data ss:Type="Number">47</Data></Cell>
     <Cell><Data ss:Type="Number">11</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">12</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:Index="12" ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">48</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">一定概率（30%）触发慈悲效果，不再普通攻击敌方，但会为己方前排卡牌全体恢复10%的生命值</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">一定概率（30%）触发慈悲效果，不再普通攻击敌方，但会为己方前排卡牌全体恢复10%的生命值</Data></Cell>
     <Cell><Data ss:Type="Number">48</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
@@ -1025,13 +1001,13 @@
     <Cell><Data ss:Type="Number">12</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:Index="12" ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">49</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">一定概率（30%）触发慈悲效果，不再普通攻击敌方，但会为己方后排卡牌全体恢复10%的生命值</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">一定概率（30%）触发慈悲效果，不再普通攻击敌方，但会为己方后排卡牌全体恢复10%的生命值</Data></Cell>
     <Cell><Data ss:Type="Number">49</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
@@ -1039,13 +1015,13 @@
     <Cell><Data ss:Type="Number">12</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:Index="12" ss:StyleID="s85"><Data ss:Type="String">10,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">15,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="s67"><Data ss:Type="String">10,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">15,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">一定概率（30%）触发慈悲效果，不再普通攻击敌方，但会为己方当前生命值最低的卡牌，恢复20%的生命值</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">一定概率（30%）触发慈悲效果，不再普通攻击敌方，但会为己方当前生命值最低的卡牌，恢复20%的生命值</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
@@ -1053,9 +1029,9 @@
     <Cell><Data ss:Type="Number">12</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:Index="12" ss:StyleID="s85"><Data ss:Type="String">20,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">25,5</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">30,5</Data></Cell>
+    <Cell ss:Index="12" ss:StyleID="s67"><Data ss:Type="String">20,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">25,5</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">30,5</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1067,12 +1043,11 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <TopRowVisible>5</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1203,14 +1178,14 @@
     <Cell><Data ss:Type="String">复活&#45;-恢复一定的生命值</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s87"><Data ss:Type="Number">22</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">resurrection</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">复活&#45;-恢复一定的攻击力</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">22</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">resurrection</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">复活&#45;-恢复一定的攻击力</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s87"><Data ss:Type="Number">23</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">dodge_improve</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">提高闪避</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">23</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">dodge_improve</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">提高闪避</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">24</Data></Cell>
@@ -1227,11 +1202,13 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>26</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>1</ActiveCol>
+     <RangeSelection>R3C2:R26C2</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1242,94 +1219,94 @@
   <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="15" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="193"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="266"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="266"/>
    <Column ss:AutoFitWidth="0" ss:Width="252"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">名称</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">描述</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">描述</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">desc</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">desc</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">passive</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">被动</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">被动</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">passive_rate</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">被动概率触发</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">被动概率触发</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">on_crit</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">自身造成暴击伤害之后</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">on_crit</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">自身造成暴击伤害之后</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">on_attack</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">攻击之后触发</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">攻击之后触发</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">on_damage</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">受到伤害</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">受到伤害</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="String">on_dodge</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">闪避</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">闪避</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell><Data ss:Type="String">on_self_death</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">自身阵亡</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">自身阵亡</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="String">on_self_card_death</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">己方卡牌阵亡</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">己方卡牌阵亡</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">9</Data></Cell>
     <Cell><Data ss:Type="String">on_enemy_card_death</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">敌方卡牌阵亡</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">敌方卡牌阵亡</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="44">
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">on_hp_reduce_to</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">生命值降低到N%时触发，需结合魔法属性hp_reduce_to的值决定N%</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">生命值降低到N%时触发，需结合魔法属性hp_reduce_to的值决定N%</Data></Cell>
     <Cell><Data ss:Type="String">N%固定写死为50%</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s87"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">11</Data></Cell>
     <Cell><Data ss:Type="String">on_suffer_crit</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">自身受到暴击伤害后</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">自身受到暴击伤害后</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s87"><Data ss:Type="Number">12</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">12</Data></Cell>
     <Cell><Data ss:Type="String">on_card_suffer_crit</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">己方其他任意一张卡牌受到暴击伤害后</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">己方其他任意一张卡牌受到暴击伤害后</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s87"><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="Number">13</Data></Cell>
     <Cell><Data ss:Type="String">on_card_crit</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">己方任意一张卡牌对敌方造成暴击伤害之后</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">己方任意一张卡牌对敌方造成暴击伤害之后</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>14</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+     <RangeSelection>R3C2:R15C2</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1492,29 +1469,29 @@
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="139"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s88"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">名称</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">中文</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">名称</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">中文</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s88"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">name</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">chinese</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">name</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">chinese</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s88"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">forever</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">永久生效</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">forever</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">永久生效</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s88"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">now</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">立即生效</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">now</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">立即生效</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s88"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">next_round</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">下回合生效</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">next_round</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">下回合生效</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1545,200 +1522,200 @@
    <Column ss:AutoFitWidth="0" ss:Width="243"/>
    <Column ss:Width="317"/>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s65"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">名称</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">值</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">中文</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">描述</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">名称</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">值</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">中文</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">描述</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">name</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">value</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">chinese</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">desc</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">name</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">value</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">chinese</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">desc</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s72"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">passive</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">被动触发</Data></Cell>
-    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s81"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">passive</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">被动触发</Data></Cell>
+    <Cell ss:StyleID="s81"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">passive_rate</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">被动概率触发</Data></Cell>
-    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">passive_rate</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">被动概率触发</Data></Cell>
+    <Cell ss:StyleID="s82"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">on_crit</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">暴击后触发</Data></Cell>
-    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">on_crit</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">暴击后触发</Data></Cell>
+    <Cell ss:StyleID="s82"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">on_attack</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">攻击后触发</Data></Cell>
-    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">on_attack</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">攻击后触发</Data></Cell>
+    <Cell ss:StyleID="s82"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">on_damage</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">受到伤害触发</Data></Cell>
-    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">on_damage</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">受到伤害触发</Data></Cell>
+    <Cell ss:StyleID="s82"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">on_dodge</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">60</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">闪避后触发</Data></Cell>
-    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">on_dodge</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">闪避后触发</Data></Cell>
+    <Cell ss:StyleID="s82"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">on_self_death</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">70</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">自身死亡触发</Data></Cell>
-    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">on_self_death</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">70</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">自身死亡触发</Data></Cell>
+    <Cell ss:StyleID="s82"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">on_self_card_death</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">80</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">自身卡牌死亡触发</Data></Cell>
-    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">on_self_card_death</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">80</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">自身卡牌死亡触发</Data></Cell>
+    <Cell ss:StyleID="s82"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">9</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">on_enemy_card_death</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">90</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">敌方卡牌死亡触发</Data></Cell>
-    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">on_enemy_card_death</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">90</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">敌方卡牌死亡触发</Data></Cell>
+    <Cell ss:StyleID="s82"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">on_hp_reduce_to</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="Number">100</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">生命值降低到N%时触发</Data></Cell>
-    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">on_hp_reduce_to</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">生命值降低到N%时触发</Data></Cell>
+    <Cell ss:StyleID="s82"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">11</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">own</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">110</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">己方</Data></Cell>
-    <Cell ss:StyleID="s75"/>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">own</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">110</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">己方</Data></Cell>
+    <Cell ss:StyleID="s84"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">12</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">enemy</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">120</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">敌方</Data></Cell>
-    <Cell ss:StyleID="s75"/>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">12</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">enemy</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="Number">120</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">敌方</Data></Cell>
+    <Cell ss:StyleID="s84"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">13</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">self</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">130</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">自身卡牌</Data></Cell>
-    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">13</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">self</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">130</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">自身卡牌</Data></Cell>
+    <Cell ss:StyleID="s86"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">14</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">crossways_front</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">140</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">前排所有</Data></Cell>
-    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">14</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">crossways_front</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">140</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">前排所有</Data></Cell>
+    <Cell ss:StyleID="s86"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">15</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">crossways_back</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">150</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">后排所有</Data></Cell>
-    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">crossways_back</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">后排所有</Data></Cell>
+    <Cell ss:StyleID="s86"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">16</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">lengthways</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">160</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">纵向所有</Data></Cell>
-    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">16</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">lengthways</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">160</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">纵向所有</Data></Cell>
+    <Cell ss:StyleID="s86"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">17</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">hp_max</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">170</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">生命值最高卡牌</Data></Cell>
-    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">17</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">hp_max</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">170</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">生命值最高卡牌</Data></Cell>
+    <Cell ss:StyleID="s86"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">18</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">hp_min</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">180</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">生命值最低卡牌</Data></Cell>
-    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">18</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">hp_min</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">180</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">生命值最低卡牌</Data></Cell>
+    <Cell ss:StyleID="s86"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">19</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">atk_max</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">190</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">攻击力最高卡牌</Data></Cell>
-    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">19</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">atk_max</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">190</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">攻击力最高卡牌</Data></Cell>
+    <Cell ss:StyleID="s86"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">atk_min</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">200</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">攻击力最低卡牌</Data></Cell>
-    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">atk_min</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">200</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">攻击力最低卡牌</Data></Cell>
+    <Cell ss:StyleID="s86"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">21</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">random</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">210</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">随机卡牌</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">结合技能属性的random_num决定随机几张牌</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">21</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">random</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">210</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">随机卡牌</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">结合技能属性的random_num决定随机几张牌</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">22</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">all</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">220</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">所有卡牌</Data></Cell>
-    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">22</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">all</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">220</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">所有卡牌</Data></Cell>
+    <Cell ss:StyleID="s86"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">23</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">default</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">230</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">默认卡牌</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">默认攻击顺序的卡牌</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">23</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">default</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="Number">230</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">默认卡牌</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">默认攻击顺序的卡牌</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s79"><Data ss:Type="Number">24</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">forever</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="Number">240</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">永久生效</Data></Cell>
-    <Cell ss:StyleID="s79"/>
+    <Cell ss:StyleID="s88"><Data ss:Type="Number">24</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">forever</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="Number">240</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">永久生效</Data></Cell>
+    <Cell ss:StyleID="s88"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s79"><Data ss:Type="Number">25</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">now</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="Number">250</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">立即生效</Data></Cell>
-    <Cell ss:StyleID="s79"/>
+    <Cell ss:StyleID="s88"><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">now</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="Number">250</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">立即生效</Data></Cell>
+    <Cell ss:StyleID="s88"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20">
-    <Cell ss:StyleID="s79"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">next_round</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="Number">260</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">下回合生效</Data></Cell>
-    <Cell ss:StyleID="s79"/>
+    <Cell ss:StyleID="s88"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">next_round</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="Number">260</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">下回合生效</Data></Cell>
+    <Cell ss:StyleID="s88"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1772,8 +1749,8 @@
    <Column ss:AutoFitWidth="0" ss:Width="197"/>
    <Column ss:AutoFitWidth="0" ss:Width="161"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s80"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">export_name</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">技能配置表</Data></Cell>
@@ -1812,8 +1789,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>11</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <RangeSelection>R2C1:R7C1</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

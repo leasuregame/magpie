@@ -9,6 +9,7 @@
 #include "SimpleAudioEngine.h"
 #include "ScriptingCore.h"
 #include "generated/jsb_cocos2dx_auto.hpp"
+#include "generated/jsb_cocos2dx_extension_auto.hpp"
 #include "cocos2d_specifics.hpp"
 
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
@@ -58,18 +59,37 @@ bool AppDelegate::applicationDidFinishLaunching()
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
 
+//    ScriptingCore* sc = ScriptingCore::getInstance();
+//    sc->addRegisterCallback(register_all_cocos2dx);
+//    sc->addRegisterCallback(register_cocos2dx_js_extensions);
+//    
+//    sc->start();
+    
+//    CCScene *scene = CCScene::create();
+//    UpdateLayer *updateLayer = new UpdateLayer();
+//    scene->addChild(updateLayer);
+//    updateLayer->release();
+//    
+//    pDirector->runWithScene(scene);
+    
+//    ScriptingCore* sc = ScriptingCore::getInstance();
+//    sc->addRegisterCallback(register_all_cocos2dx);
+//    sc->addRegisterCallback(register_cocos2dx_js_extensions);
+    
     ScriptingCore* sc = ScriptingCore::getInstance();
     sc->addRegisterCallback(register_all_cocos2dx);
+    sc->addRegisterCallback(register_all_cocos2dx_extension);
+//    sc->addRegisterCallback(register_all_cocos2dx_extension_manual);
     sc->addRegisterCallback(register_cocos2dx_js_extensions);
+//    sc->addRegisterCallback(register_CCBuilderReader);
+//    sc->addRegisterCallback(jsb_register_chipmunk);
+//    sc->addRegisterCallback(jsb_register_system);
     
     sc->start();
     
-    CCScene *scene = CCScene::create();
-    UpdateLayer *updateLayer = new UpdateLayer();
-    scene->addChild(updateLayer);
-    updateLayer->release();
-    
-    pDirector->runWithScene(scene);
+    CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
+    CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
+    ScriptingCore::getInstance()->runScript("main.js");
     
     return true;
 }
@@ -194,8 +214,8 @@ AssetsManager* UpdateLayer::getAssetsManager()
     
     if (! pAssetsManager)
     {
-        pAssetsManager = new AssetsManager("http://192.168.1.15/resource/game.zip",
-                                           "http://192.168.1.15:8888/",
+        pAssetsManager = new AssetsManager("http://192.168.1.89/resource/game.zip",
+                                           "http://192.168.1.89:8888/",
                                            pathToSave.c_str());
     }
     

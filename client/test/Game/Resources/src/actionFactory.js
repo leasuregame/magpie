@@ -6,6 +6,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
+/*
+* 动作
+* */
+
 var ActionFactory = {
     attack : function() {
         var a1 = cc.RotateTo.create(0.3 / GameCombatSpeed, 30);

@@ -33,10 +33,13 @@ var appFiles = [
     'src/actionFactory.js',
     'src/skillFactory.js',
     'src/model/singleton.js',
+    'src/model/base.js',
     'src/controls/cloudLayer.js',
     'src/controls/progress.js',
+    'src/controls/bgSprite.js',
     'src/view/battleLayer.js',
     'src/view/battleScene.js',
+    'src/view/battlePlayer.js',
     'src/view/testLayer.js',
     'src/view/testScene.js',
     'myApp.js'
@@ -55,9 +58,10 @@ director.setDisplayStats(true);
 director.setAnimationInterval(1.0 / 60);
 
 // create a scene. it's an autorelease object
-var myScene = new MyScene();
 //var myScene = new BattleScene();
+//var myScene = new BattleScene();
+var myScene = new testScene();
 
 // run
-director.replaceScene(myScene);
+director.runWithScene(myScene);
 

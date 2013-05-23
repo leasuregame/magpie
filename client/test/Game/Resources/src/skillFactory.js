@@ -6,6 +6,10 @@
  * To change this template use File | Settings | File Templates.
  */
 
+/*
+* 技能
+* */
+
 var SkillFactory = {
     normalAttack : function(own, enemy, hit) {
         var ownAction = ActionFactory.attack();
@@ -13,5 +17,7 @@ var SkillFactory = {
 
         own.runAction(ownAction.action);
         enemy.runAction(enemyAction.action);
+
+        return 1;
     }
 }

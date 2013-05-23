@@ -17,7 +17,7 @@ var singleton = function(cls) {
         if(result) return result;
 
         result = new cls();
-        result.init();
+        if(result.init != undefined) result.init();
 
         return result;
     }

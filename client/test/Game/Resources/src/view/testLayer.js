@@ -17,77 +17,67 @@ var testLayer = cc.Layer.extend({
 
         var size = cc.Director.getInstance().getWinSize();
 
-        var bgSprite = cc.Sprite.create(s_test_bg);
+        /*
+        var bgSprite = cc.Sprite.create(s_game_bg);
         bgSprite.setPosition(size.width / 2, size.height / 2);
         this.addChild(bgSprite);
-        /*
-        //var heroSprite = cc.Sprite.create("");
 
-        var item = cc.MenuItemFont.create("返回", function(){
-            console.log("fanhui");
-        }, null);
+        var sprite = cc.Sprite.create("res/test1/bg.png");
+        sprite.setPosition(size.width / 2, size.height / 2);
+        this.addChild(sprite);
+
+        var view = cc.Layer.create();
+        var sprite = cc.Sprite.create("res/test1/view.png");
+        sprite.setPosition(size.width / 2, size.height / 2);
+        view.addChild(sprite);
+        view.setVisible(false);
+
+        var item = cc.MenuItemImage.create("res/test1/close.png", null, function(){
+            view.setVisible(false);
+        });
+        item.setPosition(230, -320);
         var menu = cc.Menu.create(item);
+        view.addChild(menu);
+
+        this.addChild(view, 1);
+
+        var menu = cc.Menu.create();
+        for(var i = 1; i <= 5; ++i) {
+            cc.log("res/test1/" + i + ".png");
+
+            var item = cc.MenuItemImage.create("res/test1/" + i + ".png", "res/test1/" + i + ".png", function() {
+                view.setVisible(true);
+            });
+
+            item.setPosition(i * 100 + -300, 200);
+            menu.addChild(item);
+        }
         this.addChild(menu);
-//        menu.setAnchorPoint(1, 1);
-        menu.setPosition(50, 930);
 
-        var heroLabel = cc.LayerColor.create(cc.c4b(255,255,255,150), 720, 560);
-        heroLabel.setPosition(0, 350);
-        this.addChild(heroLabel);
+        //var a = Dialog.create(4, "haha", cc.c4b(100, 100, 100, 100), 500, 700);
+        CloudLayer.show();    */
 
-        var propertyLabel = cc.LayerColor.create(cc.c4b(100,100,0,150), 720, 150);
-        propertyLabel.setPosition(0, 0);
-        this.addChild(propertyLabel);
 
-        var nodeLabel = cc.LayerColor.create(cc.c4b(0,0,0,150), 720, 200);
-        nodeLabel.setPosition(0, 150);
-        this.addChild(nodeLabel);
+        var layer = cc.Layer.create();
+        var menu = cc.Menu.create();
+        menu.setPosition(cc.p(0, 0));
+        for(var j = 0; j < 9; ++j) {
+            for(var i = 1; i <= 5; ++i) {
+                cc.log("res/test1/" + i + ".png");
+                var item = cc.MenuItemImage.create("res/test1/" + i + ".png", "res/test1/" + i + ".png", function() {
+//                    console.log("xx");
+                });
 
-        var hero = cc.Sprite.create(s_hero);
-        hero.setPosition(size.width / 2, 650);
-        this.addChild(hero);
+                item.setPosition(i * 100, 100 * j);
+                menu.addChild(item);
+            }
+        }
+        layer.addChild(menu);
+//        this.addChild(layer);
 
-        var node = cc.LabelTTF.create("雷震子：收电费了, 电费了, 费了, 了........",  'Times New Roman', 32, cc.size(720,200), cc.TEXT_ALIGNMENT_LEFT);
-        node.setAnchorPoint(cc.p(0, 0));
-        node.setPosition(30, 100);
-        this.addChild(node);
-//        var grade = cc.LabelTTF.create("alignment left", 'Times New Roman', 32, cc.size(720, 150), cc.TEXT_ALIGNMENT_LEFT);
-        var grade = cc.LabelTTF.create("等级: 10",  'Times New Roman', 32, cc.size(720, 200), cc.TEXT_ALIGNMENT_LEFT);
-        this.addChild(grade);
-        grade.setAnchorPoint(cc.p(0, 0));
-        grade.setPosition(30, 50);
-
-        grade = cc.LabelTTF.create("生命: 10000",  'Times New Roman', 32, cc.size(720,200), cc.TEXT_ALIGNMENT_LEFT);
-        this.addChild(grade);
-        grade.setAnchorPoint(cc.p(0, 0));
-        grade.setPosition(30, 0);
-
-        grade = cc.LabelTTF.create("攻击: 2222",  'Times New Roman', 32, cc.size(720,200), cc.TEXT_ALIGNMENT_LEFT);
-        this.addChild(grade);
-        grade.setAnchorPoint(cc.p(0, 0));
-        grade.setPosition(500, 0);
-
-        grade = cc.LabelTTF.create("星级: 5",  'Times New Roman', 32, cc.size(720,200), cc.TEXT_ALIGNMENT_LEFT);
-        this.addChild(grade);
-        grade.setAnchorPoint(cc.p(0, 0));
-        grade.setPosition(500, 50);
-
-        grade = cc.LabelTTF.create("雷震子2货",  'Times New Roman', 32, cc.size(720,200), cc.TEXT_ALIGNMENT_LEFT);
-        this.addChild(grade);
-        grade.setPosition(size.width / 2, 935);
-
-        var p = Progress.createWithFile("res/power.png", "res/power_on_0.png", 50, 100);
-        this.addChild(p);
-        p.setPosition(150, 100);
-        var x = 1;
-//        p.schedule(function() {
-//                   cc.log("1");
-//                   cc.log("2");
-//                      if(x <= 100) {
-//                      this.setValue(x++);
-//                      }
-//        }, 0.1);
-        //p.scheduleUpdate();
-        */
+        var view = cc.ScrollView.create(cc.size(700, 1000), layer);
+        cc.log(view);
+        view.setDirection(0);
+        this.addChild(view);
     }
 })

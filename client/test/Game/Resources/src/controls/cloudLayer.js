@@ -7,7 +7,7 @@
  */
 
 /*
-* 不可点击层， 屏蔽所有点击
+* 不可点击层，屏蔽所有点击
 * */
 
 var CloudLayer = cc.Layer.extend({
@@ -25,6 +25,17 @@ var CloudLayer = cc.Layer.extend({
         this.setTouchMode(cc.TOUCHES_ONE_BY_ONE)
         this.setTouchPriority(this.LEAST);
         this.setTouchEnabled(true);
+        this.setVisible(false);
+
+        cc.Director.getInstance().getRunningScene().addChild(this);
+    },
+
+    _show : function() {
+        this.setVisible(true);
+    },
+
+    _hide : function() {
+        this.setVisible(false);
     },
 
     /**
@@ -55,10 +66,32 @@ var CloudLayer = cc.Layer.extend({
      */
     onTouchEnded:function (touch, event) {
         console.log("NoTouchLayer: touch end")
+    },
+
+    /**
+     * @param {cc.Touch} touch
+     * @param {event} event
+     */
+    onTouchCancelled:function (touch, event) {
+        cc.log("NoTouchLayer: touch cancelled");
     }
 })
 
 /*
-* 单利
+* 单例
 * */
 CloudLayer.getInstance = singleton(CloudLayer);
+
+/*
+* 显示
+* */
+CloudLayer.show = function() {
+    CloudLayer.getInstance()._show();
+}
+
+/*
+* 隐藏
+* */
+CloudLayer.hide = function() {
+    CloudLayer.getInstance()._hide();
+}

@@ -20,7 +20,7 @@ var BatterLayer = cc.Layer.extend({
         var sprite = cc.Sprite.create(s_game_bg);
         sprite.setPosition(size.width / 2, size.height / 2);
         this.addChild(sprite);
-
+        /*
         var own = [];
         sprite = cc.Sprite.create(s_hero);
         this.addChild(sprite);
@@ -97,5 +97,20 @@ var BatterLayer = cc.Layer.extend({
             }
             i = (i + 1) % 12;
         }, SkillInterval);
+        */
+
+        var item = cc.MenuItemFont.create("xx", function() {
+            var texture = cc.TextureCache.getInstance().textureForKey(cc.FileUtils.getInstance().fullPathForFilename(s_game_bg));
+            cc.log(texture == null ? "no" : "yes");
+
+            var i = cc.Sprite.createWithTexture(texture);
+            this.addChild(i);
+            i.setPosition(500, 500);
+
+            BattlePlayer.getInstance().play();
+        });
+        var menu = cc.Menu.create(item);
+        this.addChild(menu);
+
     }
 })

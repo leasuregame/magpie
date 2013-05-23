@@ -1,13 +1,11 @@
 Module = require '../common/module'
 Events = require '../common/events'
-tab = require '../model/table'
-Magic = require './magic'
-battleLog = require './battle_log'
 Skill = require './skill'
 
-util = require 'util'
-_ = require 'underscore'
+tab = require '../model/table'
+battleLog = require './battle_log'
 utility = require '../common/utility'
+_ = require 'underscore'
 
 ATTACK_TYPE = 
   normal:           'normal'
@@ -30,7 +28,8 @@ class Hero extends Module
 
   @table: 'cards'
 
-  init: (attrs)->
+  init: (attrs, player)->
+    @player = player
     @id = attrs.id
     @lv = attrs.lv
     @star = attrs.star
@@ -44,13 +43,10 @@ class Hero extends Module
     @dmg = 0 # 每次所受伤害的值，默认值为0
     @crit_factor = 1.5 # crit damage factor
     @pos = 0
+    @skill = null
 
     @loadCardInfo()
     @loadSkill() if @star > 2
-    # 被动触发，永久生效
-    
-
-    ##console.log 'hero: ', @
 
   loadCardInfo: ->
     card = tab.getTableItem('cards', @card_id)
@@ -58,103 +54,75 @@ class Hero extends Module
       throw new Error("配置表错误：不能从表 #{@constructor.table} 中找到卡牌信息，卡牌id为 #{@card_id}")
 
     @name = card.name
-    @init_crit_rate = @crit_rate = card.init_crit
-    @init_dodge_rate = @dodge_rate = card.init_dodge
     @init_atk = @atk = card.init_atk + card.grow_atk * @lv
     @init_hp = @hp = card.init_hp + card.grow_hp * @lv
     @skill_id = card.skill_id
 
   loadSkill: ->
-    
     @skill_setting = tab.getTableItem('skills', @skill_id)
-    @skill = if @skill_setting? then new Skill(@, @skill_setting) else null
-    #@magic = if @skill_setting? then Magic[@skill_setting.magic_id]?.create() else null
-    #@magic.activate(@, @, @skill_setting) if @magic?
-    @trigger 'passive', @
+    if @skill_setting?
+      @skill = new Skill(@, @skill_setting)
 
-    console.log 'skill id', @skill_id
-    console.log 'atk,', @atk
+  attack: (callback) ->
+    if @skill.check()
+      @usingSkill(callback)
+    else
+      @normalAttack(callback)
 
-  attack: (enemys, callback) ->
-    #console.log 'attack hero: ', enemys
-    enemys = [enemys] if not _.isArray(enemys)
-    
-    # 发起进攻之前触发
-    @trigger 'before_attack', @
-    enemys.forEach (enemy) =>
-      if not @cant_miss and enemy.isDodge()
-        enemy.dodge()
-        @log(enemy, ATTACK_TYPE.dodge, '')
-        return
+  usingSkill: (callback)->
+    doNothing = ->
 
-      if not enemy.cant_be_crit and @isCrit()
-        @crit()
-        enemy.dmg = @atk * @crit_factor
-        enemy.suffer_crit()
-        @log(enemy, ATTACK_TYPE.crit, @atk * @crit_factor)
+    switch @skill.type
+      when 'single_fight' or 'aoe'
+        @skillAttack @skill.getTargets(), callback
+      when 'single_heal' or 'mult_heal'
+        @cure @skill.getTargets(), callback
       else
-        enemy.dmg = @atk
-        enemy.damage()
-        @log(enemy, ATTACK_TYPE.normal, @atk)
-
-      #敌方卡牌阵亡之后触发
-      @trigger 'on_enemy_card_death', @ if enemy.death()
-
-      callback?(enemy)
-
-    # 发起进攻之后触发
-    @trigger 'after_attack', @
+        doNothing()
 
   skillAttack: (enemys, callback) ->
-    @attack enemys, callback    
+    _step = {a: @pos, d: [], v: [], t: 1}
 
-  normalAttack: (enemy, callback) ->
-    @attack enemy, callback
+    _len = enemys? and enemys.length
+    _dmg = parseInt(@atk * @skill.effectValue())
+    _dmg = parseInt(_dmg/_len) if _len > 1
 
-  suffer_crit: ->
-    @damage()
-    # 自身卡牌受到暴击之后触发
-    @trigger 'on_suffer_crit', @
-    # 己方任意一张卡牌受到暴击之后触发
-    @trigger 'on_card_suffer_crit', @
+    for enemy in enemys
+      enemy.damage _dmg
+      
+      _step.d.push enemy.pos
+      _step.v.push -_dmg
+      @log _step
 
-  crit: (enemy)->
-    # 自身造成暴击之后触发
-    @trigger 'on_crit', @
-    # 己方任意一张卡牌对敌方卡牌造成暴击之后触发
-    @trigger 'on_card_crit', @
-    @is_crit = true
+      callback enemy
 
-  dodge: ->
-    # 闪避触发
-    @trigger 'on_dodge', @
-    @is_dodge = true
+  cure: (enemys, callback) ->
+    _step = {a: @pos, d: [], v: [], t: 1}
+
+    for enemy in enemys
+      _hp = parseInt(enemy.hp * @skill.effectValue())
+      enemys.damage -_hp
+
+      _step.d.push enemy.pos
+      _step.v.push _hp
+      @log _step
+
+      callback enemy
+
+  normalAttack: (callback) ->
+    enemy = @skill.getTargets()
+    if enemy? and enemy instanceof Hero
+      enemy.damage @atk
+      callback enemy
+      @log {a: @pos, d: enemy.pos, v: @atk, t: 0}
+    else
+      throw new Error('Normal Attack Error: can not find target to be attacked.')
 
   damage: (value) ->
-    # 自身卡牌受到伤害之前触发
-    @trigger 'before_damage', @
-    @hp -= @dmg
-    # 自身卡牌受到伤害后触发
-    @trigger 'after_damage', @
-    # 生命值降低之后触发
-    @trigger 'after_hp_reduce', @
-    # 自身卡牌受到攻击后触发
-    @trigger 'on_attack', @
-    
-    # 自身卡牌阵亡后触发
-    if @death()
-      @trigger 'on_self_death', @
-      @trigger 'on_self_card_death', @
-      #@log('', 'death', "#{@.name} is death")
+    @hp -= value
 
-  log: (enemy, type, value)->
-    battleLog.addStep(@name, enemy?.name, type, "#{value}/#{enemy.hp}")
-    
-  isCrit: ->
-    utility.hitRate(@crit_rate)
-
-  isDodge: ->
-    utility.hitRate(@dodge_rate)
+  log: (step)->
+    battleLog.addStep(step)
 
   death: ->
     @hp <= 0

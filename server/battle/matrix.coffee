@@ -47,7 +47,7 @@ class Matrix
         els = [els] if not _.isArray(els)
         return _.filter els, (e) -> e? and not e.death?()
       else
-        throw new Error('Can not get element with scope: ' + scope)
+        return null
     catch e
       throw e      
 

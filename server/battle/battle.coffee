@@ -30,6 +30,8 @@ class Battle extends Base
     super
 
   init: ->
+    @attacker.setEnemy(@defender)
+    @defender.setEnemy(@attacker)
     @round = new Round(@attacker, @defender)
 
   start: ->

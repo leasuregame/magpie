@@ -29,14 +29,8 @@ class BattleLog
     if dfder.death()
       @print.push "玩家#{dfder.id} 被 玩家#{atker.id} 击败"
 
-
-  addStep: (atk_id, def_ids, type, effect) ->
-    @steps.push( 
-      attacker: atk_id
-      defender: def_ids
-      type: type
-      effect: effect
-     )
+  addStep: (step) ->
+    @steps.push step
 
   reports: ->
     @set('steps', @steps)

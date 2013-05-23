@@ -15,6 +15,7 @@ class Player extends Module
     @hero_ids = []
     @heros = []
     @lineUp = lineUp
+    @enemy = null
 
     @load(id) if id?
     @matrix = new Matrix()
@@ -22,6 +23,9 @@ class Player extends Module
     @setAttackCount()
 
     super
+
+  setEnemy: (enm) ->
+    @enemy = enm
 
   load: (id) ->
     # load hreos data from db
@@ -40,7 +44,7 @@ class Player extends Module
     @
 
   loadHeros: ->
-    @heros = if @hero_ids? then (new Hero(id) for id in @hero_ids) else []
+    @heros = if @hero_ids? then (new Hero(id, @) for id in @hero_ids) else []
 
   bindCards: ->
     #console.log @heros
@@ -75,18 +79,8 @@ class Player extends Module
 
     res.length is 0
 
-  attack: (enemy, callback) ->
-    hero = @currentHero()
-    console.log 'hero:', hero.id, hero.atk, hero.hp
-    #console.log @heros
-
-    if hero and not hero.death()
-      rate = hero.skill_setting?.trigger_rate
-
-      if rate? and utility.hitRate(rate)
-        hero.skillAttack( enemy.currentHerosToBeAttacked(@), callback)
-      else
-        hero.normalAttack( enemy.herosToBeAttacked('default'), callback )
+  attack: (callback) ->
+    @currentHero().attack(callback)
 
   currentHero: ->
     @matrix.current()
@@ -122,6 +116,6 @@ class Player extends Module
     res || []
 
   setAttackCount: ->
-    @attack_count = @aliveHero().length
+    @attack_count = @aliveHeros().length
 
 exports = module.exports = Player

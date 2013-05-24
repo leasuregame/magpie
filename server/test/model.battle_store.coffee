@@ -52,6 +52,6 @@ describe 'battle store', ->
 
     store.getData 'test_key1', (err, data) ->
       should.strictEqual undefined, err
-      data.should.not.be.ok            
+      data.should.not.be.ok    
 
 

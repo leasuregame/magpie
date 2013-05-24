@@ -24,11 +24,14 @@ class Skill extends Module
     for key, value of @_attrs
       @[key] = value
 
-    @magic = Magic[@magic_id].create()
-    @hero.bind @trigger_condition, @
-
   getTargets: ->
-    @_player()?.herosToBeAttacked @scope, @random_num
+    switch @scope
+      when 'default' then arg = @hero.pos
+      when 'random' then arg = @random_num
+      when 'lengthways' then arg = @hero.pos
+      else arg = null
+
+    @_player()?.herosToBeAttacked @scope, arg
 
   getRate: ->
     [base_val, lv_grow] = utility.parseEffect @['rate' + @hero.star]

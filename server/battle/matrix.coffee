@@ -101,9 +101,9 @@ class Matrix
     if arguments.length == 2
       el = col
       [row, col] = row
-      el.pos = row
+      el.pos = row if _.isObject(el)
     else
-      el.pos = "#{row}#{col}"
+      el.pos = "#{row}#{col}" if _.isObject(el)
       
     @elements[row][col] = el
     @
@@ -121,7 +121,11 @@ class Matrix
     @row(1)
 
   lengthways: (colIndex) ->
-    @col(colIndex)
+    if _.isString(colIndex) and colIndex.length == 2
+      idx = parseInt(colIndex[1])
+    else
+      idx = parseInt(colind)
+    @col(idx)
 
   all: ->
     _res = []

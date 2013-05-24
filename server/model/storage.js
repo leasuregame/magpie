@@ -147,7 +147,7 @@ function buildStorage() {
         });
       }, 0); //异步执行。防止外部未完成。
       return;
-    }
+    } 
     cache.Value = value; //保存最新value
     var cbs = cache.callbacks;
     cbs.push(callback); //cache建立之际保证了callbacks数组的存在。

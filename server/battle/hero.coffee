@@ -50,21 +50,24 @@ class Hero extends Module
 
   loadCardInfo: ->
     card = tab.getTableItem('cards', @card_id)
+    factor = tab.getTableItem('factors', @lv)?.factor
     if not card
       throw new Error("配置表错误：不能从表 #{@constructor.table} 中找到卡牌信息，卡牌id为 #{@card_id}")
 
     @name = card.name
-    @init_atk = @atk = card.atk
-    @init_hp = @hp = card.hp
+    @init_atk = @atk = parseInt(card.atk * factor)
+    @init_hp = @hp = parseInt(card.hp * factor)
     @skill_id = card.skill_id
 
   loadSkill: ->
     @skill_setting = tab.getTableItem('skills', @skill_id)
     if @skill_setting?
       @skill = new Skill(@, @skill_setting)
+    else
+      @skill = null
 
   attack: (callback) ->
-    if @skill.check()
+    if @skill? and @skill.check()
       @usingSkill(callback)
     else
       @normalAttack(callback)
@@ -110,11 +113,15 @@ class Hero extends Module
       callback enemy
 
   normalAttack: (callback) ->
-    enemy = @skill.getTargets()
-    if enemy? and enemy instanceof Hero
-      enemy.damage @atk
-      callback enemy
-      @log {a: @pos, d: enemy.pos, v: @atk, t: 0}
+    console.log "player id: #{@player.id}, enemy id: #{@player.enemy.id}, hero id: #{@id}, pos: #{@pos}"
+    
+    _hero = @player.enemy.herosToBeAttacked 'default', @pos
+    console.log _hero
+    if _.isArray(_hero) and _hero.length is 1
+      _hero = _hero[0]
+      _hero.damage @atk
+      callback _hero
+      @log {a: @pos, d: _hero.pos, v: @atk, t: 0, hp: @hp}
     else
       throw new Error('Normal Attack Error: can not find target to be attacked.')
 

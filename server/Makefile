@@ -6,4 +6,10 @@ test:
 		--ui bdd \
 		$(files)
 
-.PHONY: test
+startTT:
+	/data/ttserver/ttservctl start
+
+stopTT:
+	/data/ttserver/ttservctl stop
+
+.PHONY: test startTT stopTT

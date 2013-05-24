@@ -57,8 +57,10 @@ class Player extends Module
           for h in @heros
             return if h.card_id is parseInt(id) then h
           null
+        _h = _hero(card_id)
+        @matrix.set(pos, _h)
+        _h.pos = pos
 
-        @matrix.set(pos, _hero(card_id))
 
   parseLineUp: (lineUp)->
     _str = lineUp || @lineUp
@@ -92,16 +94,6 @@ class Player extends Module
 
   currentIndex: ->
     @matrix.curIndex
-
-  currentHerosToBeAttacked: (enemy)->
-    enemyHero = enemy.currentHero()
-
-    if enemyHero?.skill_setting?.scope?
-      atk_scope = enemyHero.skill_setting.scope 
-    else
-      atk_scope = 'default'
-
-    @herosToBeAttacked atk_scope, enemyHero.skill_setting.random_num
 
   herosToBeAttacked: (scope, args) ->
     @matrix.attackElement scope, args

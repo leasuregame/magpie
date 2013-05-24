@@ -88,10 +88,9 @@ class Attack extends Base
   constructor: ->
     super
 
-  execute: () ->    
+  execute: () ->
     _attack = (atker, dfder) ->
-      #console.log (new Date()).toISOString(), "#{atker.id} attack", atker.shootCount, dfder.shootCount
-      atker.attack dfder, (hero) ->
+      atker.attack (hero) ->
         dfder.shootCount -= 1 if hero.death()
 
       atker.nextHero()

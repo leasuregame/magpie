@@ -31,7 +31,7 @@ describe 'Player', ->
     @player.load(2)
 
     @player.id.should.equal(2)
-    @player.lv.should.equal(3)
+    @player.lv.should.equal(3) 
     @player.heros.should.not.be.empty
 
   it ".death(), should be death when all heros' hp <= 0", ->
@@ -47,12 +47,6 @@ describe 'Player', ->
   it ".currentHero()", ->
     @player = new Player(1, '00:1')
     @player.currentHero().should.be.an.instanceOf(Hero)
-
-  it ".currentHerosToBeAttacked()", ->
-    @player = new Player(1, '00:1')
-    player2 = new Player(2, '10:2')
-    #@player.currentHerosToBeAttacked(player2).should.not.be.empty
-    @player.currentHerosToBeAttacked(player2).should.be.an.instanceOf(Hero)
 
   it ".aliveHeros()", ->
     @player.load(3)

@@ -2,3 +2,5 @@
 .Trash
 node_modules
 *.xls#
+
+*.log

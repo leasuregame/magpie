@@ -54,8 +54,8 @@ class Hero extends Module
       throw new Error("配置表错误：不能从表 #{@constructor.table} 中找到卡牌信息，卡牌id为 #{@card_id}")
 
     @name = card.name
-    @init_atk = @atk = card.init_atk + card.grow_atk * @lv
-    @init_hp = @hp = card.init_hp + card.grow_hp * @lv
+    @init_atk = @atk = card.atk
+    @init_hp = @hp = card.hp
     @skill_id = card.skill_id
 
   loadSkill: ->

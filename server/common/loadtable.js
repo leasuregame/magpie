@@ -37,7 +37,6 @@ function analyzeTable(alltable,tablename) {
   }
   var outputTable = {};
   var columns = table.Row[1]['Cell'];//第2行
-
   var colNames = [];
   var colComment = {};
   var uniCol = null;

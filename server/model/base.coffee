@@ -1,10 +1,11 @@
 Memcached = require 'memcached'
+_ = require 'underscore'
 
 host = '127.0.0.1'
 port = '11211'
 mc = new Memcached("#{host}:#{port}")
 
-class DbBase
+DbBase =
   # store data, but only if the server do not 
   # already hold data for this key
   add: (key, value, cb) ->
@@ -29,6 +30,9 @@ class DbBase
   del: (key, cb) ->
     mc.del key, (err, data) -> cb(err, data)
 
-exports = module.exports = new DbBase()
+  inc: (key, cb) ->
+    mc.inc key, 1, cb
+
+exports = module.exports = DbBase
 
 

@@ -11,15 +11,16 @@ class ModelBase extends Module
 
     if attributes?
       @attr attributes
-
     @
 
   create: (data, cb) ->
     @id = uuid.v1()
     @add @id, data, (err, item) =>
-      if err? and item
-        @attr data
-        cb err, data
+      if err and not item
+        console.log err
+      
+      @attr data
+      cb err, item
     @
 
   update: (data, cb) ->
@@ -56,7 +57,6 @@ class ModelBase extends Module
   ###
   @create: (data, cb) ->
     id = uuid.v1()
-    console.log 'create: ', id
     data.id = id
     do (id, data, cb) =>
       _cb = (err, item) =>
@@ -69,14 +69,28 @@ class ModelBase extends Module
   @remove: (id, cb) ->
     @del id, cb
 
+  @update: (id, data, cb) ->
+    @fetch id, (err, res) =>
+      if err
+        throw new Error('can not find data with id: ' + id)
+
+      res.attr data
+
+      @set id, res, (err, item) ->
+        if err
+          console.log err
+
+        cb err, item
+
   @fetch: (id, cb) ->
     do (id, cb) =>
       @getJson id, (err, item) =>
-        console.log 'fetch callback...'
-        if err? and item
-          cb err, new @(id, item)
-
-        cb(err, item)
+        if err
+          console.log err
+          cb err, item
+          return
+          
+        cb err, new @(id, item)
 
   @fetchMany: (ids, cb) ->
     @gets ids, cb

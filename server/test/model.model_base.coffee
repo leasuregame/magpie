@@ -1,6 +1,6 @@
 ModelBase = require '../model/model_base'
 model = new ModelBase()
-util = require 'util'
+should = require 'should'
 
 data = 
   name: "孙悟空"
@@ -8,13 +8,15 @@ data =
   hp: 1000
   atk: 300
 
+_id = '123456789'
+
 callback = (err, item) ->
   if err? 
     throw new Error('error occur!')
 
 _model = null
 
-describe 'ModelBase', ->
+describe 'ModelBase, static methods', ->
   #beforeEach ->
     #_model = ModelBase.create data, (err, item) ->
 
@@ -23,16 +25,77 @@ describe 'ModelBase', ->
 
   it 'create', ->
     ModelBase.create data, (err, item) ->
-      #console.log item.id
-      console.log 'create........'
+      should.strictEqual undefined, err
+      item.should.be.instanceOf ModelBase
+
       item.name.should.be.equal "孙悟空"
       item.lv.should.be.equal 30
       item.hp.should.be.equal 1000
       item.atk.should.be.equal 300
+      
       ModelBase.remove item.id, (err, item) ->
-
+        should.strictEqual undefined, err
+        item.should.be.ok
 
   it 'fetch', ->
-    ModelBase.fetch '51b14a10-c6c0-11e2-b1fa-4375fabd52c1', (err, item) ->
-      console.log  err, item.id
-      item.id.should.be.equal '51b14a10-c6c0-11e2-b1fa-4375fabd52c1'
+    ModelBase.create data, (err, item) ->
+      should.strictEqual undefined, err
+      item.should.be.instanceOf ModelBase
+
+      ModelBase.fetch item.id, (err, result) ->
+        should.strictEqual undefined, err
+        result.id.should.be.equal item.id
+        result.name.should.be.equal "孙悟空"
+        result.lv.should.be.equal 30
+        result.hp.should.be.equal 1000
+        result.atk.should.be.equal 300
+
+      ModelBase.remove item.id, (err, item) ->
+        should.strictEqual undefined, err
+        item.should.be.ok
+
+  it 'update', ->
+    ModelBase.create data, (err, item) ->
+      should.strictEqual undefined, err
+      item.should.be.instanceOf ModelBase
+
+      ModelBase.update item.id, {lv: 20}, (err, result) ->
+        should.strictEqual undefined, err
+        result.should.be.ok
+
+        ModelBase.fetch item.id, (err, result) ->
+          should.strictEqual undefined, err
+          result.name.should.be.equal "孙悟空"
+          result.lv.should.be.equal 20
+          result.hp.should.be.equal 1000
+          result.atk.should.be.equal 300
+
+          ModelBase.remove item.id, (err, item) ->
+            should.strictEqual undefined, err
+            item.should.be.ok
+
+  it 'remove', ->
+    ModelBase.create data, (err, item) ->
+      should.strictEqual undefined, err
+      item.should.be.instanceOf ModelBase
+      
+      ModelBase.remove item.id, (err, result) ->
+        should.strictEqual undefined, err
+        result.should.be.ok
+
+        ModelBase.remove item.id, (err, result) ->
+          should.strictEqual undefined, err
+          result.should.not.be.ok
+
+describe 'ModelBase, instance mothods', ->
+  it 'init', ->
+    mb = new ModelBase(_id, {name: 'dahai'})
+    mb.id.should.be.equal _id
+    mb.name.should.be.equal 'dahai'
+
+  # it 'create', ->
+  #   mb = new ModelBase(_id, {name: 'dahai'})
+  #   mb.create {lv: 10}, (err, result) ->
+  #     should.strictEqual undefined, err
+  #     result.name.should.be.equal 'dahai'
+  #     result.lv.should.be.equal 10

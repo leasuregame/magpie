@@ -60,7 +60,7 @@ describe 'DB base', ->
       should.strictEqual(undefined, err)
       data.should.not.be.ok
 
-  it 'get()', ->
+  it '.get()', ->
     base.get key_1, (err, data) ->
       should.strictEqual(undefined, err)
       data.should.be.equal val_1

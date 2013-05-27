@@ -8,7 +8,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-05-09T03:40:11Z</Created>
-  <LastSaved>2013-05-24T02:24:54Z</LastSaved>
+  <LastSaved>2013-05-24T05:16:38Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -2259,7 +2259,7 @@
     <Cell ss:StyleID="s72"><Data ss:Type="String">实际增量系数</Data></Cell>
    </Row>
    <Row>
-    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">lv</Data></Cell>
     <Cell><Data ss:Type="String">base</Data></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">factor</Data></Cell>
    </Row>
@@ -2574,7 +2574,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>1</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -5,13 +5,67 @@ _ = require 'underscore'
 
 class ModelBase extends Module
   @extend db
+  @attributes: []
 
-  init: (id, attributes)->
-    @id = id
-
-    if attributes?
-      @attr attributes
+  @configure: (name, attributes...) ->
+    @className = name
+    @attributes = attributes if attributes.length
+    @attributes and= _.toArray(@attributes)
+    @attributes or= []
     @
+
+  ###
+  static methods
+  ###
+  @create: (data, cb) ->
+    if data.id?
+      id = data.id
+    else
+      id = uuid.v1()
+      data.id = id
+    do (id, data, cb) =>
+      _cb = (err, item) =>
+        if not err and item  
+          cb err, new @(id, data) if cb?
+        else
+          cb err, data if cb?
+      @add id, data, _cb
+
+  @remove: (id, cb) ->
+    @del id, cb
+
+  @update: (id, data, cb) ->
+    @fetch id, (err, res) =>
+      if err
+        throw new Error('can not find data with id: ' + id)
+
+      res.attr data
+
+      @set id, res, (err, item) ->
+        if err
+          console.log err
+
+        cb err, item
+
+  @fetch: (id, cb) ->
+    do (id, cb) =>
+      @getJson id, (err, item) =>
+        if err
+          console.log err
+          cb err, item
+          return
+          
+        cb err, new @(id, item)
+
+  @fetchMany: (ids, cb) ->
+    @gets ids, cb
+
+  ###
+  Instance
+  ###
+  constructor: (id, atts)->
+    @id = id
+    @attr atts if atts
 
   create: (data, cb) ->
     @id = uuid.v1()
@@ -44,56 +98,20 @@ class ModelBase extends Module
   attr: (name, value) ->
     if arguments.length == 2
       @[name] = value
-      return @
+      return this
     if arguments.length == 1
       if  _.isObject(name)
-        for k, v of name
-          @[k] = v
-        return @
+        attrs = name
+        if attrs.id then @id = attrs.id
+        for k, v of attrs
+          if attrs.hasOwnProperty(k) and typeof @[k] is 'function'
+            @[k](v)
+          else
+            @[k] = v
+        return this
       else
         return @[name]
-  ###
-  static methods
-  ###
-  @create: (data, cb) ->
-    id = uuid.v1()
-    data.id = id
-    do (id, data, cb) =>
-      _cb = (err, item) =>
-        if not err and item  
-          cb err, new @(id, data)
-        else
-          cb err, data
-      @add id, data, _cb
-
-  @remove: (id, cb) ->
-    @del id, cb
-
-  @update: (id, data, cb) ->
-    @fetch id, (err, res) =>
-      if err
-        throw new Error('can not find data with id: ' + id)
-
-      res.attr data
-
-      @set id, res, (err, item) ->
-        if err
-          console.log err
-
-        cb err, item
-
-  @fetch: (id, cb) ->
-    do (id, cb) =>
-      @getJson id, (err, item) =>
-        if err
-          console.log err
-          cb err, item
-          return
-          
-        cb err, new @(id, item)
-
-  @fetchMany: (ids, cb) ->
-    @gets ids, cb
+  
 
 
 exports = module.exports = ModelBase

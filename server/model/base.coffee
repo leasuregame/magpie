@@ -24,7 +24,8 @@ mc.get _key, (err, data) ->
 
 DbBase =
   # store data, but only if the server do not 
-  # already hold data for this key
+  # already hold data for this key, if the key is existe, 
+  # it will not store successfully.
   add: (key, value, cb) ->
     mc.add key, value, 0, cb
 

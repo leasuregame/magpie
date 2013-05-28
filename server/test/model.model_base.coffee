@@ -99,3 +99,11 @@ describe 'ModelBase, instance mothods', ->
   #     should.strictEqual undefined, err
   #     result.name.should.be.equal 'dahai'
   #     result.lv.should.be.equal 10
+
+  # it 'gen uuid', ->
+  #   uuid = require 'node-uuid'
+  #   res = []
+  #   for i in [0..10]
+  #     res.push uuid.v1()
+
+  #   console.log res

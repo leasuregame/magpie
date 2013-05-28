@@ -1,7 +1,7 @@
 Module = require '../common/module'
 Hero = require './hero'
 Matrix = require './matrix'
-db = require '../model/db'
+manager = require '../model/player'
 tab = require '../model/table'
 _ = require 'underscore'
 utility = require '../common/utility'
@@ -9,15 +9,15 @@ utility = require '../common/utility'
 class Player extends Module
   @table: 'player'
 
-  constructor: (id = null, lineUp = '') ->
+  constructor: (id, lineUp) ->
     @id = id
     @lv = 0
     @hero_ids = []
     @heros = []
-    @lineUp = lineUp
+    @lineUp = lineUp or ''
     @enemy = null
 
-    @load(id) if id?
+    @load() if id?
     @matrix = new Matrix()
     @bindCards()
     @setAttackCount()
@@ -27,20 +27,21 @@ class Player extends Module
   setEnemy: (enm) ->
     @enemy = enm
 
-  load: (id) ->
+  load: ->
     # load hreos data from db
-    model = db.find(@constructor.table, id)
+    manager.fetch @id, (err, model) => 
 
-    if not model
-      throw new Error('Can not find Player with id ' + id)
+      if err or not model
+        throw new Error('Can not find Player with id ' + @id)
 
-    for key, value of model
-      if model.hasOwnProperty(key) and typeof @[key] is 'function'
-        @[key](value)
-      else
-        @[key] = value
+      console.log model, model.constructor.attributes
+      for attr in model.constructor.attributes
+        console.log model[attr]
+        @[attr] = model[attr] if model[attr]?
 
-    @loadHeros()
+      @loadHeros()
+
+      console.log @
     @
 
   loadHeros: ->
@@ -48,7 +49,7 @@ class Player extends Module
 
   bindCards: ->
     #console.log @heros
-    if @lineUp != ''
+    if @lineUp? and @lineUp != ''
       @parseLineUp().forEach (item) =>
         [pos, card_id] = item 
         console.log 'bind cards: ', [pos, card_id]

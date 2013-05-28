@@ -19,7 +19,7 @@ defautls =
 class Skill extends Module
   init: (hero, attrs)->
     @hero = hero
-    @lv = hero.lv
+    @lv = hero.skill_lv
     @_attrs = attrs or defautls
     for key, value of @_attrs
       @[key] = value
@@ -35,17 +35,17 @@ class Skill extends Module
 
   getRate: ->
     [base_val, lv_grow] = utility.parseEffect @['rate' + @hero.star]
-    base_val + lv_grow * (@lv -1)
+    base_val + lv_grow * (@lv - 1)
 
   effectValue: ->
-    [base_val, lv_grow] = utility.parseEffect @['star' + @lv]
+    [base_val, lv_grow] = utility.parseEffect @['star' + @hero.star]
     base_val + lv_grow * (@lv - 1)
 
   get_round_num: ->
     @_player()?.round_num
 
   check: ->
-    utility.hitRate(@getRate()) and satisfy()
+    utility.hitRate(@getRate()) and @_satisfy()
 
   _satisfy: ->
     if @type in ['aoe', 'mult_heal']
@@ -57,8 +57,8 @@ class Skill extends Module
     true
 
   _player: ->
-    return @hero.player if @type is 'heal'
-    return @hero.player.enemy if @type is 'fight'
-    throw new Error("Skill: can't get target with '#{@target}' ")
+    return @hero.player if @type in ['single_heal', 'mult_heal']
+    return @hero.player.enemy if @type in ['single_fight', 'aoe']
+    throw new Error("Skill: can't get target with type: '#{@type}' ")
 
 exports = module.exports = Skill

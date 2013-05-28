@@ -30,7 +30,7 @@ class Battle extends Base
     super
 
   init: ->
-    @attacker.setEnemy(@defender)
+    @attacker.setEnemy(@defender, true)
     @defender.setEnemy(@attacker)
     @round = new Round(@attacker, @defender)
 
@@ -38,7 +38,6 @@ class Battle extends Base
     battleLog.set('enemy', @defender)
 
   execute: ->
-    #for i in [0..5]
     while not @isOver()
       @round.process()
       @round.increase_round_num()
@@ -73,9 +72,8 @@ class Round extends Base
     @setShootCount()
 
   execute: () ->
-    #for i in [0..5]
     while not @isOver()
-      console.log 'b', @attacker.shootCount, @defender.shootCount
+      #console.log 'b', @attacker.shootCount, @defender.shootCount
       @attacker.round_num = @defender.round_num = @round_num
       @attack.process()
 

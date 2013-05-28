@@ -1,3 +1,4 @@
+PlayerManager = require '../model/player'
 Player = require '../battle/player'
 Hero = require '../battle/hero'
 Matrix = require '../battle/matrix'
@@ -16,67 +17,67 @@ describe 'Player', ->
   after ->
     player_data.clearTestData()
 
-  # beforeEach ->
-  #   @player = new Player()
-
   it 'Initial, should be liked a Player', ->
 
-    player = new Player(player_data['player_id1'])
-    console.log player
-    player.id.should.equal player_data['player_id1']
-    #player.lv.should.equal(10)
-    player.exp.should.equal(456)
+    player = new Player()
+    player.id.should.equal 0
+    player.lv.should.equal(0)
+    player.exp.should.equal(0)
+    player.power.should.equal(0)
+    player.money.should.equal(0)
     player.lineUp.should.equal('')
-    player.hero_ids.should.not.be.empty
-    player.heros.should.not.be.empty
+    player.hero_ids.should.be.empty
+    player.heros.should.be.empty
 
-  # it '.load(), should be loaded data from db', ->
-  #   should.strictEqual(@player.id, null)
-  #   should.strictEqual(@player.lv, 0)
-  #   @player.heros.should.be.empty
 
-  #   @player.load(2)
+  it ".death(), should be death when all heros' hp <= 0", ->
+    PlayerManager.fetch player_data.player_id1, (err, model) ->
+      ply = new Player(model)
+      ply.death().should.be.false
 
-  #   @player.id.should.equal(2)
-  #   @player.lv.should.equal(3) 
-  #   @player.heros.should.not.be.empty
+      ply.heros.forEach (h)->
+        h.hp = 0
 
-  # it ".death(), should be death when all heros' hp <= 0", ->
-  #   @player.load(1)
+      ply.death().should.be.true
 
-  #   @player.death().should.be.false
+  it ".currentHero()", ->
+    PlayerManager.fetch player_data.player_id1, (err, model) ->
+      ply = new Player(model)
+      ply.setLineUp '00:1'
 
-  #   @player.heros.forEach (h)->
-  #     h.hp = 0
+      
+      ply.currentHero().should.be.an.instanceOf(Hero)
 
-  #   @player.death().should.be.true
+  it ".aliveHeros()", ->
+    PlayerManager.fetch player_data.player_id1, (err, model) ->
+      ply = new Player(model)
+      ply.aliveHeros().should.be.an.instanceof(Array)
+      ply.aliveHeros().length.should.equal(6)
 
-  # it ".currentHero()", ->
-  #   @player = new Player(1, '00:1')
-  #   @player.currentHero().should.be.an.instanceOf(Hero)
+  it ".setLineUp()", ->
+    PlayerManager.fetch player_data.player_id1, (err, model) ->
+      ply = new Player(model)
+      ply.lineUp.should.equal('')
+      ply.setLineUp('00:6')
+      ply.lineUp.should.be.equal('00:6')
 
-  # it ".aliveHeros()", ->
-  #   @player.load(3)
-  #   @player.aliveHeros().should.be.an.instanceof(Array)
-  #   @player.aliveHeros().length.should.equal(3)
+  it ".parseLineUp()", ->
+    PlayerManager.fetch player_data.player_id1, (err, model) ->
+      ply = new Player(model)
+      ply.setLineUp('00:1,01:2')
+      res = ply.parseLineUp()
+      res.should.be.an.instanceof(Array)
+      res.should.eql([['00', '1'],['01', '2']])
 
-  # it ".setLineUp()", ->
-  #   @player.lineUp.should.equal('')
-  #   @player.setLineUp('00:34').lineUp.should.equal('00:34')
+      ply.setLineUp('00:1')
+      ply.parseLineUp().should.eql([['00', '1']])
 
-  # it ".parseLineUp()", ->
-  #   @player.setLineUp('00:1,01:2')
-  #   res = @player.parseLineUp()
-  #   res.should.be.an.instanceof(Array)
-  #   res.should.eql([['00', '1'],['01', '2']])
+  it ".bindCards()", ->
+    PlayerManager.fetch player_data.player_id1, (err, model) ->
+      ply = new Player(model)
+      ply.setLineUp('00:3,01:4,02:5')
 
-  #   @player.setLineUp('00:1')
-  #   @player.parseLineUp().should.eql([['00', '1']])
-
-  # it ".bindCards()", ->
-  #   @player.load(3)
-  #   @player.setLineUp('00:3,01:4,02:5')
-  #   @player.bindCards()
-
-  #   @player.matrix.should.be.an.instanceof(Matrix)
+      ply.matrix.should.be.an.instanceof(Matrix)
+      ply.matrix.all().length.should.be.equal(6)
+      ply.matrix.attackElement('all').length.should.equal(3)
     

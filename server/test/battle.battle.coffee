@@ -1,7 +1,9 @@
 Battle = require '../battle/battle'
 Player = require '../battle/player'
+PlayerManager = require '../model/player'
 tab = require '../model/table'
 battleLog = require '../battle/battle_log'
+player_data =  require './prepare/player.data'
 
 describe 'Battle', ->
 
@@ -12,29 +14,33 @@ describe 'Battle', ->
         './test/tables/skills.xml',
         './test/tables/cards.xml'
         )
+      player_data.laodTestData()
 
-    beforeEach ->
-      @battle = null
-      # 孙悟空
-      @attacker = new Player(6)
-      @attacker.setLineUp '00:7,01:8'
+    after ->
+      player_data.clearTestData()
 
-      # 杨戬
-      @defender = new Player(7)
-      @defender.setLineUp '00:12,01:13'
+    # beforeEach ->
+    #   @battle = null
+    #   # 孙悟空
+    #   @attacker = new Player(6)
+    #   @attacker.setLineUp '00:7,01:8'
 
-      @battle = new Battle(@attacker, @defender)
+    #   # 杨戬
+    #   @defender = new Player(7)
+    #   @defender.setLineUp '00:12,01:13'
 
-    it 'check bind cards', ->
-      @attacker.currentHero().card_id.should.be.equal(7)
-      @attacker.nextHero().card_id.should.be.equal(8)
-      @attacker.nextHero().card_id.should.be.equal(7)
-      @attacker.nextHero().card_id.should.be.equal(8)
+    #   @battle = new Battle(@attacker, @defender)
 
-      @defender.currentHero().card_id.should.be.equal(12)
-      @defender.nextHero().card_id.should.be.equal(13)
-      @defender.nextHero().card_id.should.be.equal(12)
-      @defender.nextHero().card_id.should.be.equal(13)
+    # it 'check bind cards', ->
+    #   @attacker.currentHero().card_id.should.be.equal(7)
+    #   @attacker.nextHero().card_id.should.be.equal(8)
+    #   @attacker.nextHero().card_id.should.be.equal(7)
+    #   @attacker.nextHero().card_id.should.be.equal(8)
+
+    #   @defender.currentHero().card_id.should.be.equal(12)
+    #   @defender.nextHero().card_id.should.be.equal(13)
+    #   @defender.nextHero().card_id.should.be.equal(12)
+    #   @defender.nextHero().card_id.should.be.equal(13)
 
     # it 'should have a valid BattleLog object', =>
     #   @battle.battleLog.should.be.a('object').and.have.property('winner')
@@ -46,18 +52,40 @@ describe 'Battle', ->
     #   battleLog.reports().should.equal(null)
     #   #battleLog.print.should.be.equal(null)
 
-    it '6 v 6', ->
-      @battle = null
-      # 孙悟空
-      @attacker = new Player(8)
-      @attacker.setLineUp '00:16,01:17,02:18,10:19,11:20,12:21'
+    # it '6 v 6, normal attack', ->
+    #   PlayerManager.fetchMany [player_data.player_id1, player_data.player_id2], (err, result) ->
+    #     console.log err, result
 
-      # 杨戬
-      @defender = new Player(9)
-      @defender.setLineUp '00:22,01:23,02:24,10:25,11:26,12:27'
+    #     @battle = null
+    #     # 孙悟空
+    #     @attacker = new Player(result[player_data.player_id1])
+    #     @attacker.setLineUp '00:1,01:2,02:3,10:4,11:5,12:6'
 
-      @battle = new Battle(@attacker, @defender)
+    #     # 杨戬
+    #     @defender = new Player(result[player_data.player_id2])
+    #     @defender.setLineUp '00:7,01:8,02:9,10:10,11:11,12:12'
 
-      @battle.process()
+    #     @battle = new Battle(@attacker, @defender)
 
-      battleLog.reports().should.equal(null)
+    #     @battle.process()
+
+        # console.log battleLog.reports()
+
+    it '6 v 6, using skill', ->
+      PlayerManager.fetchMany [player_data.player_id3, player_data.player_id4], (err, result) ->
+        console.log err, result
+
+        @battle = null
+        # 小芳
+        @attacker = new Player(result[player_data.player_id3])
+        @attacker.setLineUp '00:4,01:9,02:15,10:19,11:24,12:30'
+
+        # 小丽
+        @defender = new Player(result[player_data.player_id4])
+        @defender.setLineUp '00:35,01:39,02:44,10:50,11:54,12:59'
+
+        @battle = new Battle(@attacker, @defender)
+
+        @battle.process()
+        res = battleLog.reports()
+        console.log res

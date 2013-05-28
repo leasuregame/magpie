@@ -27,7 +27,7 @@ describe 'ModelBase, static methods', ->
     ModelBase.create data, (err, item) ->
       should.strictEqual undefined, err
       item.should.be.instanceOf ModelBase
-
+      
       item.name.should.be.equal "孙悟空"
       item.lv.should.be.equal 30
       item.hp.should.be.equal 1000
@@ -53,6 +53,17 @@ describe 'ModelBase, static methods', ->
       ModelBase.remove item.id, (err, item) ->
         should.strictEqual undefined, err
         item.should.be.ok
+
+  it 'fetchMany', ->
+    ModelBase.create data, (err, item1) ->
+      should.strictEqual undefined, err
+      console.log item1
+      ModelBase.create data, (err, item2) ->
+        should.strictEqual undefined, err
+        console.log item1, item2
+
+        ModelBase.fetchMany [item1.id, item2.id], (err, result) ->
+          console.log err, result
 
   it 'update', ->
     ModelBase.create data, (err, item) ->

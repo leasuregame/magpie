@@ -23,12 +23,13 @@ class ModelBase extends Module
     else
       id = uuid.v1()
       data.id = id
+    console.log id
     do (id, data, cb) =>
       _cb = (err, item) =>
         if not err and item  
           cb err, new @(id, data) if cb?
         else
-          cb err, data if cb?
+          cb err, item if cb?
       @add id, data, _cb
 
   @remove: (id, cb) ->
@@ -58,8 +59,18 @@ class ModelBase extends Module
         cb err, new @(id, item)
 
   @fetchMany: (ids, cb) ->
-    @gets ids, cb
+    @gets ids, (err, items) =>
+      if err
+        console.log err
+        cb err, item
+        return
 
+      _res = {}
+      for k, data of items
+        data = JSON.parse(data) if _.isString(data)
+        _res[k] = new @(k, data)
+
+      cb err, _res
   ###
   Instance
   ###

@@ -9,59 +9,60 @@ utility = require '../common/utility'
 class Player extends Module
   @table: 'player'
 
-  constructor: (id, lineUp) ->
-    @id = id
-    @lv = 0
-    @hero_ids = []
-    @heros = []
-    @lineUp = lineUp or ''
-    @enemy = null
+  constructor: (model) ->
+    #@objects = model
 
-    @load() if id?
+    if model and model.constructor.attributes?
+      for attr in model.constructor.attributes
+        @[attr] = model[attr] if model[attr]?
+
+    @initAttrs() if not model
+    
+    @heros = []
+    @lineUp = ''
+    @enemy = null
+    @is_attacker = false
     @matrix = new Matrix()
+    @loadHeros()
     @bindCards()
     @setAttackCount()
 
     super
 
-  setEnemy: (enm) ->
+  initAttrs: ->
+    @id = 0
+    @lv = 0
+    @exp = 0
+    @power = 0
+    @money = 0
+    @hero_ids = []
+
+  setEnemy: (enm, is_attacker = false) ->
     @enemy = enm
-
-  load: ->
-    # load hreos data from db
-    manager.fetch @id, (err, model) => 
-
-      if err or not model
-        throw new Error('Can not find Player with id ' + @id)
-
-      console.log model, model.constructor.attributes
-      for attr in model.constructor.attributes
-        console.log model[attr]
-        @[attr] = model[attr] if model[attr]?
-
-      @loadHeros()
-
-      console.log @
-    @
+    @is_attacker = is_attacker
+    @heros.forEach (h) =>
+      h.setIdx @matrix.positionToNumber(h.pos), is_attacker
 
   loadHeros: ->
+
     @heros = if @hero_ids? then (new Hero(id, @) for id in @hero_ids) else []
 
   bindCards: ->
-    #console.log @heros
     if @lineUp? and @lineUp != ''
       @parseLineUp().forEach (item) =>
         [pos, card_id] = item 
-        console.log 'bind cards: ', [pos, card_id]
         
         _hero = (id) =>
           for h in @heros
             return if h.card_id is parseInt(id) then h
           null
         _h = _hero(card_id)
-        @matrix.set(pos, _h)
-        _h.pos = pos
 
+        if _h
+          @matrix.set(pos, _h)
+        else
+          #throw new Error('you have not such card with id is ' + card_id)
+          console.log 'you have not such card with id is ' + card_id
 
   parseLineUp: (lineUp)->
     _str = lineUp || @lineUp
@@ -90,7 +91,6 @@ class Player extends Module
 
   nextHero: ->
     res = @matrix.next()
-    # console.log 'player ', @id, 'next card:', res.name
     res
 
   currentIndex: ->

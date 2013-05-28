@@ -9,12 +9,12 @@ _ = require 'underscore'
   4, 5, 6
 ###
 ATTACKORDER = {
-  1: [1,4,2,5,3,6]
-  2: [2,5,1,4,3,6]
-  3: [3,6,2,5,1,4]
-  4: [1,4,2,5,3,6]
-  5: [2,5,1,4,3,6]
-  6: [3,6,2,5,1,4]
+  0: [0,3,1,4,2,5]
+  1: [1,4,0,3,2,5]
+  2: [2,5,1,4,0,3]
+  3: [0,3,1,4,2,5]
+  4: [1,4,0,3,2,5]
+  5: [2,5,1,4,0,3]
 }
 
 class Matrix
@@ -31,14 +31,14 @@ class Matrix
     @curIndex = '00'
 
   numberToPosition: (num) ->
-    if num < 1 and num > @matrixOrder.length
+    if num < 0 or num > @matrixOrder.length - 1
       throw new Error "Index Error: the given number #{num} out of Matrix index"
-    @matrixOrder[ num - 1 ]
+    @matrixOrder[ num ]
 
   positionToNumber: (pos) ->
     if pos not in @matrixOrder
       throw new Error "Invalid parameter, #{pos}"
-    @matrixOrder.indexOf(pos) + 1
+    @matrixOrder.indexOf(pos)
 
   attackElement: (scope, args) ->
     try
@@ -73,7 +73,7 @@ class Matrix
     max_count = @matrixOrder.length
     for i in [0...max_count]
       @moveToNext()
-      console.log 'next, next,', @curIndex, @current()
+      #console.log 'next, next,', @curIndex, @current()
       return @current() if @current()?
     null
 
@@ -82,7 +82,7 @@ class Matrix
     index = @matrixOrder.indexOf( cindex ) + 1
     index = 0 if index is len
     
-    console.log 'next index: ',len, cindex, index, @matrixOrder[index]
+    #console.log 'next index: ',len, cindex, index, @matrixOrder[index]
     @matrixOrder[index]
 
   moveToNext: ->
@@ -100,8 +100,8 @@ class Matrix
   set: (row, col, el) ->
     if arguments.length == 2
       el = col
-      [row, col] = row
       el.pos = row if _.isObject(el)
+      [row, col] = row
     else
       el.pos = "#{row}#{col}" if _.isObject(el)
       

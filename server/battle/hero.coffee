@@ -63,8 +63,6 @@ class Hero extends Module
     @skill_setting = tab.getTableItem('skills', @skill_id)
     if @skill_setting?
       @skill = new Skill(@, @skill_setting)
-    else
-      @skill = null
 
   attack: (callback) ->
     if @skill? and @skill.check()
@@ -84,7 +82,7 @@ class Hero extends Module
         doNothing()
 
   skillAttack: (enemys, callback) ->
-    _step = {a: @pos, d: [], v: [], t: 1}
+    _step = {a: @idx, d: [], v: [], t: 1}
 
     _len = enemys? and enemys.length
     _dmg = parseInt(@atk * @skill.effectValue())
@@ -93,35 +91,36 @@ class Hero extends Module
     for enemy in enemys
       enemy.damage _dmg
       
-      _step.d.push enemy.pos
+      _step.d.push enemy.idx
       _step.v.push -_dmg
       @log _step
 
       callback enemy
 
   cure: (enemys, callback) ->
-    _step = {a: @pos, d: [], v: [], t: 1}
+    _step = {a: @idx, d: [], v: [], t: 1}
 
     for enemy in enemys
       _hp = parseInt(enemy.hp * @skill.effectValue())
       enemys.damage -_hp
 
-      _step.d.push enemy.pos
+      _step.d.push enemy.idx
       _step.v.push _hp
       @log _step
 
       callback enemy
 
   normalAttack: (callback) ->
-    console.log "player id: #{@player.id}, enemy id: #{@player.enemy.id}, hero id: #{@id}, pos: #{@pos}"
+    #console.log "player id: #{@player.id}, enemy id: #{@player.enemy.id}, hero id: #{@id}, pos: #{@pos}"
     
     _hero = @player.enemy.herosToBeAttacked 'default', @pos
-    console.log _hero
+    
     if _.isArray(_hero) and _hero.length is 1
       _hero = _hero[0]
       _hero.damage @atk
       callback _hero
-      @log {a: @pos, d: _hero.pos, v: @atk, t: 0, hp: @hp}
+      @log {a: @idx, d: _hero.idx, v: @atk, t: 0, hp: _hero.hp, e: _hero.name}
+      console.log _hero.player.name, _hero.id, 'death' if _hero.death()
     else
       throw new Error('Normal Attack Error: can not find target to be attacked.')
 
@@ -133,5 +132,11 @@ class Hero extends Module
 
   death: ->
     @hp <= 0
+
+  setIdx: (idx, atker)->
+    @idx = if atker then idx else idx + 6
+
+  setPos: (pos) ->
+    @pos = pos
 
 exports = module.exports = Hero

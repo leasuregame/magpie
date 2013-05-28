@@ -1,6 +1,7 @@
 Module = require '../common/module'
 Magic = require './magic'
 utility = require '../common/utility'
+_ = require 'underscore'
 
 
 defautls = 
@@ -39,7 +40,7 @@ class Skill extends Module
 
   effectValue: ->
     [base_val, lv_grow] = utility.parseEffect @['star' + @hero.star]
-    base_val + lv_grow * (@lv - 1)
+    ( base_val + lv_grow * (@lv - 1) ) / 100
 
   get_round_num: ->
     @_player()?.round_num

@@ -49,7 +49,10 @@ class Matrix
       else
         return null
     catch e
-      throw e      
+      throw e
+
+  scope: (scope, args) ->
+    @attackElement scope, args 
 
   getElement: (pos) ->
     # 根据对方给出的位置，找到可以被攻击的对象
@@ -171,7 +174,7 @@ class Matrix
     _res = []
     for i in _.range(num)
       rd_index = Math.floor(Math.random() * len--)
-      _res.push( @get(@numberToPosition(indexs[rd_index] + 1)) )
+      _res.push( @get(@numberToPosition(indexs[rd_index])) )
       indexs = indexs.filter (i) -> indexs.indexOf(i) != rd_index
 
     _res

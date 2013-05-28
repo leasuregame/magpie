@@ -26,7 +26,7 @@ class Player extends Module
     @loadHeros()
     @bindCards()
     @setAttackCount()
-
+    console.log 'heros: ', @heros
     super
 
   initAttrs: ->
@@ -44,7 +44,6 @@ class Player extends Module
       h.setIdx @matrix.positionToNumber(h.pos), is_attacker
 
   loadHeros: ->
-
     @heros = if @hero_ids? then (new Hero(id, @) for id in @hero_ids) else []
 
   bindCards: ->
@@ -76,6 +75,9 @@ class Player extends Module
     @lineUp = lineUp
     @bindCards()
     @
+
+  cards: ->
+    _.map @matrix.scope('all'), (c) -> c.card_id
     
   death: ->
     res = @heros.filter (hero) ->

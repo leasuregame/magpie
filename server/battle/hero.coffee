@@ -71,19 +71,27 @@ class Hero extends Module
       @normalAttack(callback)
 
   usingSkill: (callback)->
+    console.log @name, 'using skill...', @skill.id, @skill.type ,@skill.name
     doNothing = ->
 
     switch @skill.type
-      when 'single_fight' or 'aoe'
+      when 'single_fight'
         @skillAttack @skill.getTargets(), callback
-      when 'single_heal' or 'mult_heal'
+      when 'aoe'
+        @skillAttack @skill.getTargets(), callback
+      when 'single_heal'
+        @cure @skill.getTargets(), callback
+      when 'mult_heal'
         @cure @skill.getTargets(), callback
       else
         doNothing()
 
   skillAttack: (enemys, callback) ->
-    _step = {a: @idx, d: [], v: [], t: 1}
-
+    console.log 'skill===============', @skill.type, 'count:', enemys.length
+    _step = {a: @idx, d: [], v: [], hp: [], t: 1}
+    # debug
+    _step.type = @skill.type
+    
     _len = enemys? and enemys.length
     _dmg = parseInt(@atk * @skill.effectValue())
     _dmg = parseInt(_dmg/_len) if _len > 1
@@ -93,23 +101,28 @@ class Hero extends Module
       
       _step.d.push enemy.idx
       _step.v.push -_dmg
-      @log _step
-
+      # debug
+      _step.hp.push enemy.hp
+      
       callback enemy
+
+    @log _step     
 
   cure: (enemys, callback) ->
     _step = {a: @idx, d: [], v: [], t: 1}
-
+    # debug
+    _step.type = @skill.type
+    
     for enemy in enemys
       _hp = parseInt(enemy.hp * @skill.effectValue())
-      enemys.damage -_hp
+      enemy.damage -_hp
 
       _step.d.push enemy.idx
       _step.v.push _hp
-      @log _step
 
       callback enemy
 
+    @log _step
   normalAttack: (callback) ->
     #console.log "player id: #{@player.id}, enemy id: #{@player.enemy.id}, hero id: #{@id}, pos: #{@pos}"
     
@@ -120,12 +133,14 @@ class Hero extends Module
       _hero.damage @atk
       callback _hero
       @log {a: @idx, d: _hero.idx, v: @atk, t: 0, hp: _hero.hp, e: _hero.name}
-      console.log _hero.player.name, _hero.id, 'death' if _hero.death()
+      
     else
       throw new Error('Normal Attack Error: can not find target to be attacked.')
 
   damage: (value) ->
     @hp -= value
+    # debug
+    console.log @player.name, @id, 'death' if @death()
 
   log: (step)->
     battleLog.addStep(step)

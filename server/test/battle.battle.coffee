@@ -71,21 +71,40 @@ describe 'Battle', ->
 
         # console.log battleLog.reports()
 
-    it '6 v 6, using skill', ->
-      PlayerManager.fetchMany [player_data.player_id3, player_data.player_id4], (err, result) ->
+    # it '6 v 6, using skill', ->
+    #   PlayerManager.fetchMany [player_data.player_id3, player_data.player_id4], (err, result) ->
+    #     console.log err, result
+
+    #     @battle = null
+    #     # 小芳
+    #     @attacker = new Player(result[player_data.player_id3])
+    #     @attacker.setLineUp '00:4,01:9,02:15,10:19,11:24,12:30'
+
+    #     # 小丽
+    #     @defender = new Player(result[player_data.player_id4])
+    #     @defender.setLineUp '00:35,01:39,02:44,10:50,11:54,12:59'
+
+    #     @battle = new Battle(@attacker, @defender)
+
+    #     @battle.process()
+    #     res = battleLog.reports()
+    #     console.log JSON.stringify res
+
+    it '6 v 6, using skill 2', ->
+      PlayerManager.fetchMany [player_data.player_id5, player_data.player_id6], (err, result) ->
         console.log err, result
 
         @battle = null
         # 小芳
-        @attacker = new Player(result[player_data.player_id3])
-        @attacker.setLineUp '00:4,01:9,02:15,10:19,11:24,12:30'
+        @attacker = new Player(result[player_data.player_id5])
+        @attacker.setLineUp '00:4,01:9,02:15,10:129,11:195,12:204'
 
         # 小丽
-        @defender = new Player(result[player_data.player_id4])
-        @defender.setLineUp '00:35,01:39,02:44,10:50,11:54,12:59'
+        @defender = new Player(result[player_data.player_id6])
+        @defender.setLineUp '00:50,01:54,02:59,10:139,11:174,12:235'
 
         @battle = new Battle(@attacker, @defender)
 
         @battle.process()
         res = battleLog.reports()
-        console.log res
+        console.log JSON.stringify res

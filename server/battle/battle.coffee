@@ -1,8 +1,6 @@
-util = require 'util'
-Event = (require 'events').EnventEmitter
 battleLog = require './battle_log'
 
-class Base #extends Event
+class Base
   constructor: (attacker, defender) ->
     @attacker = attacker
     @defender = defender
@@ -16,14 +14,12 @@ class Base #extends Event
 
   process: ->
     @start()
-    #@emit('before_execute')
     !@isStop && @execute()
-    #@emit('after_execute')
     @end()
 
   start: ->
   execute: ->
-  end: ->  
+  end: ->
 
 class Battle extends Base
   constructor: ->
@@ -35,7 +31,13 @@ class Battle extends Base
     @round = new Round(@attacker, @defender)
 
   start: ->
-    battleLog.set('enemy', @defender)
+    _enm = {
+      id: @defender.id
+      name: @defender.name
+      lv: @defender.lv
+      cards: @defender.cards()
+    }
+    battleLog.set('enemy', _enm)
 
   execute: ->
     while not @isOver()
@@ -43,8 +45,8 @@ class Battle extends Base
       @round.increase_round_num()
 
   end: ->
-    battleLog.setWinner( @attacker ) if @defender.death()
-    battleLog.setWinner( @defender ) if @attacker.death()
+    battleLog.setWinner( 'own' ) if @defender.death()
+    battleLog.setWinner( 'enemy' ) if @attacker.death()
 
 class Round extends Base
   constructor: ->
@@ -70,10 +72,10 @@ class Round extends Base
 
   start: ->
     @setShootCount()
+    console.log 'round: ', @round_num
 
   execute: () ->
     while not @isOver()
-      #console.log 'b', @attacker.shootCount, @defender.shootCount
       @attacker.round_num = @defender.round_num = @round_num
       @attack.process()
 

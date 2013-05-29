@@ -77,7 +77,7 @@ class Player extends Module
     @
 
   cards: ->
-    _.map @matrix.scope('all'), (c) -> c.card_id
+    _.map @matrix.scope('all'), (c) -> c.init_hp
     
   death: ->
     res = @heros.filter (hero) ->

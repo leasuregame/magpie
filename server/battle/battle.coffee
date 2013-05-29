@@ -38,6 +38,7 @@ class Battle extends Base
       cards: @defender.cards()
     }
     battleLog.set('enemy', _enm)
+    battleLog.set('me', {cards: @attacker.cards()})
 
   execute: ->
     while not @isOver()

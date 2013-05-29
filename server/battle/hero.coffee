@@ -116,7 +116,7 @@ class Hero extends Module
       _hero = _hero[0]
       _hero.damage @atk
       callback _hero
-      @log {a: @idx, d: _hero.idx, v: @atk, t: 0}
+      @log {a: @idx, d: _hero.idx, v: -@atk, t: 0}
       
     else
       throw new Error('Normal Attack Error: can not find target to be attacked.')

@@ -71,10 +71,10 @@ class Hero extends Module
         doNothing()
 
   skillAttack: (enemys, callback) ->
-    console.log 'skill===============', @skill.type, 'count:', enemys.length
-    _step = {a: @idx, d: [], v: [], hp: [], t: 1}
+    console.log 'skill: ', @skill.type, 'count:', enemys.length
+    _step = {a: @idx, d: [], v: [], t: 1}
     # debug
-    _step.type = @skill.type
+    #_step.type = @skill.type
     
     _len = enemys? and enemys.length
     _dmg = parseInt(@atk * @skill.effectValue())
@@ -86,7 +86,7 @@ class Hero extends Module
       _step.d.push enemy.idx
       _step.v.push -_dmg
       # debug
-      _step.hp.push enemy.hp
+      #_step.hp.push enemy.hp
       
       callback enemy
 
@@ -95,7 +95,7 @@ class Hero extends Module
   cure: (enemys, callback) ->
     _step = {a: @idx, d: [], v: [], t: 1}
     # debug
-    _step.type = @skill.type
+    #_step.type = @skill.type
     
     for enemy in enemys
       _hp = parseInt(enemy.hp * @skill.effectValue())
@@ -116,7 +116,7 @@ class Hero extends Module
       _hero = _hero[0]
       _hero.damage @atk
       callback _hero
-      @log {a: @idx, d: _hero.idx, v: @atk, t: 0, hp: _hero.hp, e: _hero.name}
+      @log {a: @idx, d: _hero.idx, v: @atk, t: 0}
       
     else
       throw new Error('Normal Attack Error: can not find target to be attacked.')

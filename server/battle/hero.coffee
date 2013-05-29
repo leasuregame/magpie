@@ -7,22 +7,6 @@ battleLog = require './battle_log'
 utility = require '../common/utility'
 _ = require 'underscore'
 
-ATTACK_TYPE = 
-  normal:           'normal'
-  crit:             'crit'
-  multiple_hit:     'multiple_hit'
-  lengthways:       'lengthways'
-  crossways_front:  'crossways_front'
-  crossways_back:   'crossways_back'
-  charm:            'charm' # 魅惑
-  stun:             'stun' # 晕眩
-  dodge:            'dodge' # 闪避
-  damage_share:     'damage_share' # 伤害分摊
-  damage_rebound:   'damage_rebound' # 伤害反弹
-  hp_steal:         'hp_steal' # 生命值偷取
-  atk_steal:        'atk_steal' # 攻击力偷取 
-  resurrection:     'resurrection' # 复活
-
 class Hero extends Module
   @include Events
 

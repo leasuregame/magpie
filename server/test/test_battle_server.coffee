@@ -1,6 +1,6 @@
 express = require 'express'
 
-test_data = require './prepare/player.data'
+test_data = require './prepare/battle_server_data'
 Battle = require '../battle/battle'
 Player = require '../battle/player'
 PlayerManager = require '../model/player'
@@ -30,7 +30,14 @@ app.get '/6v6', (req, res)->
 
     battle = new Battle(attacker, defender)
 
+    battleLog.clear()
     battle.process()
-    res.send JSON.stringify battleLog.reports()
+    
+    test_data.clearTestData()
+    report = battleLog.reports()
+    console.log report
+    console.log report.steps.length
+    res.send JSON.stringify report
+
 
 app.listen('3344')

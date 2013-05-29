@@ -12,4 +12,7 @@ startTT:
 stopTT:
 	/data/ttserver/ttservctl stop
 
-.PHONY: test startTT stopTT
+runserver:
+	./node_modules/.bin/coffee ./test/test_battle_server.coffee
+
+.PHONY: test startTT stopTT runserver

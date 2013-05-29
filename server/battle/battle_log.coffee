@@ -36,4 +36,9 @@ class BattleLog
     @set('steps', @steps)
     @result
 
+  clear: ->
+    @result = {}
+    @steps = []
+    @print = []
+
 exports = module.exports = new BattleLog()

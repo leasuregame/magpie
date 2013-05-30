@@ -77,8 +77,8 @@ random_liveup = (heros)->
     break if _res.length >= ids.length
 
   lu = ''
-  for i in _res
-    lu += "#{pos[i]}:#{ids[i]},"
+  for i in [0..._res.length]
+    lu += "#{pos[_res[i]]}:#{ids[i]},"
 
   lu[0...-1]
 

@@ -137,9 +137,12 @@ class Matrix
     @col(idx)
 
   all: ->
+    _.filter @allWithNull(), (i) -> i?
+
+  allWithNull: ->
     _res = []
     _res = _res.concat(row) for row in @elements
-    _.filter _res, (i) -> i?
+    _res
 
   hp_max: ->
     items = @all()

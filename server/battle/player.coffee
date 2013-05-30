@@ -78,11 +78,12 @@ class Player extends Module
     # saparator is : and ,
     # [position]:[hero_id],[position]:[hero_id]...
     @lineUp = lineUp
+    console.log 'line up: ', lineUp
     @bindCards()
     @
 
   cards: ->
-    _.map @matrix.scope('all'), (c) -> c.init_hp
+    _.map @matrix.allWithNull(), (c) -> c? and c.init_hp or null
     
   death: ->
     res = @heros.filter (hero) ->

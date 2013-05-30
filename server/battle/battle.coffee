@@ -92,7 +92,7 @@ class Attack extends Base
   execute: () ->
     _attack = (atker, dfder) ->
       atker.attack (hero) ->
-        dfder.shootCount -= 1 if hero.death()
+        #dfder.shootCount -= 1 if hero.death()
 
       atker.nextHero()
 

@@ -104,7 +104,7 @@ class Hero extends Module
 
     @log _step
   normalAttack: (callback) ->
-    console.log 'normal attack:', "player id: #{@player.id}, enemy id: #{@player.enemy.id}, hero id: #{@id}, pos: #{@pos}"
+    #console.log 'normal attack:', "player id: #{@player.id}, enemy id: #{@player.enemy.id}, hero id: #{@id}, pos: #{@pos}"
     
     _hero = @player.enemy.herosToBeAttacked 'default', @pos
     

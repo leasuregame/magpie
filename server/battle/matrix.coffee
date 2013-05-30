@@ -73,30 +73,29 @@ class Matrix
         return el 
     null
 
-  setCurrentIndex: ->
-
-
   current: ->
-    @get(@curIndex)
+    @curIndex and @get(@curIndex) or null
     # for el in @all()
     #   return el if el?
 
     # console.log 'can not get any card, please check you cards.'
     # return null
 
-
   next: ->
     max_count = @matrixOrder.length
     for i in [0...max_count]
       #console.log 'next, next,', @curIndex, @current()
-      return @current() if @moveToNext().current()?
+      @moveToNext()
+      _hero = @current()
+      return _hero if _hero? and not _hero.death()
     null
 
   nextIndex: (cindex = @curIndex) ->
     len = @matrixOrder.length
     index = @matrixOrder.indexOf( cindex ) + 1
-    index = 0 if index is len
-    
+    #index = 0 if index is len
+    return if index is len
+
     #console.log 'next index: ',len, cindex, index, @matrixOrder[index]
     @matrixOrder[index]
 
@@ -109,7 +108,7 @@ class Matrix
     res = _.find allElements, (i) -> i? and not i.death?()
     @curIndex = if res? then @matrixOrder[ allElements.indexOf(res) ] else '00'
     #console.log 'allElements: ', allElements
-    #console.log 'reset: ', @curIndex, res
+    console.log 'reset: ', @curIndex, res?.name
     @
 
   set: (row, col, el) ->

@@ -94,11 +94,11 @@ class Player extends Module
 
   attack: (callback) ->
     _hero = @currentHero()
-    if _hero is null
-      console.log @name, 'death:', @death(), @aliveHeros()
+    if _hero is null or _hero.death()
+      #console.log @name, 'death:', @death(), @aliveHeros()
       bl = require './battle_log'
       console.log JSON.stringify bl.reports()
-      throw new Error('no card alive')
+      #throw new Error('no card alive')
     else
       _hero.attack(callback)
 

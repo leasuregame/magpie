@@ -18,7 +18,7 @@ database.get(_key, function(err, data) {
     data = JSON.parse(data);
   }
   //data =  JSON.parse(data);
-  data.push(start_time);
+  data.push(start_time);  
   database.set(_key, data, -1, function(err, result) {
     // if(err)
     //    console.warn('err set data');

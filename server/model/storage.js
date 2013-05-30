@@ -1,7 +1,5 @@
-var memcached_class = require('memcached'),
-var server_config = require('../server_config'),
-var Err = require("../system/error");
-var _ require('underscore');
+var memcached_class = require('memcached');
+var _ = require('underscore');
 var logger = require('./logger');
 //存读时间差问题。。刚load完，另一边调用save
 
@@ -149,7 +147,7 @@ function buildStorage() {
         });
       }, 0); //异步执行。防止外部未完成。
       return;
-    }
+    } 
     cache.Value = value; //保存最新value
     var cbs = cache.callbacks;
     cbs.push(callback); //cache建立之际保证了callbacks数组的存在。

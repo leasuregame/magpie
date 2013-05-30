@@ -9,12 +9,12 @@ _ = require 'underscore'
   4, 5, 6
 ###
 ATTACKORDER = {
-  1: [1,4,2,5,3,6]
-  2: [2,5,1,4,3,6]
-  3: [3,6,2,5,1,4]
-  4: [1,4,2,5,3,6]
-  5: [2,5,1,4,3,6]
-  6: [3,6,2,5,1,4]
+  0: [0,3,1,4,2,5]
+  1: [1,4,0,3,2,5]
+  2: [2,5,1,4,0,3]
+  3: [0,3,1,4,2,5]
+  4: [1,4,0,3,2,5]
+  5: [2,5,1,4,0,3]
 }
 
 class Matrix
@@ -31,14 +31,14 @@ class Matrix
     @curIndex = '00'
 
   numberToPosition: (num) ->
-    if num < 1 and num > @matrixOrder.length
+    if num < 0 or num > @matrixOrder.length - 1
       throw new Error "Index Error: the given number #{num} out of Matrix index"
-    @matrixOrder[ num - 1 ]
+    @matrixOrder[ num ]
 
   positionToNumber: (pos) ->
     if pos not in @matrixOrder
       throw new Error "Invalid parameter, #{pos}"
-    @matrixOrder.indexOf(pos) + 1
+    @matrixOrder.indexOf(pos)
 
   attackElement: (scope, args) ->
     try
@@ -47,9 +47,12 @@ class Matrix
         els = [els] if not _.isArray(els)
         return _.filter els, (e) -> e? and not e.death?()
       else
-        throw new Error('Can not get element with scope: ' + scope)
+        return null
     catch e
-      throw e      
+      throw e
+
+  scope: (scope, args) ->
+    @attackElement scope, args 
 
   getElement: (pos) ->
     # 根据对方给出的位置，找到可以被攻击的对象
@@ -67,13 +70,18 @@ class Matrix
     null
 
   current: ->
-    @get(@curIndex)
+    for el in @all()
+      return el if el?
+
+    console.log 'can not get any card, please check you cards.'
+    return null
+
 
   next: ->
     max_count = @matrixOrder.length
     for i in [0...max_count]
       @moveToNext()
-      console.log 'next, next,', @curIndex, @current()
+      #console.log 'next, next,', @curIndex, @current()
       return @current() if @current()?
     null
 
@@ -82,7 +90,7 @@ class Matrix
     index = @matrixOrder.indexOf( cindex ) + 1
     index = 0 if index is len
     
-    console.log 'next index: ',len, cindex, index, @matrixOrder[index]
+    #console.log 'next index: ',len, cindex, index, @matrixOrder[index]
     @matrixOrder[index]
 
   moveToNext: ->
@@ -99,12 +107,13 @@ class Matrix
 
   set: (row, col, el) ->
     if arguments.length == 2
-      el = col
-      [row, col] = row
-      el.pos = row
-    else
-      el.pos = "#{row}#{col}"
-      
+      el = col      
+      if _.isString(row) and row.length == 2
+        [row, col] = row 
+      else if _.isNumber(row)
+        [row, col] = @numberToPosition(row) 
+
+    el.pos = "#{row}#{col}" if _.isObject(el)  
     @elements[row][col] = el
     @
 
@@ -121,9 +130,16 @@ class Matrix
     @row(1)
 
   lengthways: (colIndex) ->
-    @col(colIndex)
+    if _.isString(colIndex) and colIndex.length == 2
+      idx = parseInt(colIndex[1])
+    else
+      idx = parseInt(colind)
+    @col(idx)
 
   all: ->
+    _.filter @allWithNull(), (i) -> i?
+
+  allWithNull: ->
     _res = []
     _res = _res.concat(row) for row in @elements
     _res
@@ -167,7 +183,7 @@ class Matrix
     _res = []
     for i in _.range(num)
       rd_index = Math.floor(Math.random() * len--)
-      _res.push( @get(@numberToPosition(indexs[rd_index] + 1)) )
+      _res.push( @get(@numberToPosition(indexs[rd_index])) )
       indexs = indexs.filter (i) -> indexs.indexOf(i) != rd_index
 
     _res

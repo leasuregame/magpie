@@ -1,8 +1,6 @@
-util = require 'util'
-Event = (require 'events').EnventEmitter
 battleLog = require './battle_log'
 
-class Base #extends Event
+class Base
   constructor: (attacker, defender) ->
     @attacker = attacker
     @defender = defender
@@ -16,34 +14,40 @@ class Base #extends Event
 
   process: ->
     @start()
-    #@emit('before_execute')
     !@isStop && @execute()
-    #@emit('after_execute')
     @end()
 
   start: ->
   execute: ->
-  end: ->  
+  end: ->
 
 class Battle extends Base
   constructor: ->
     super
 
   init: ->
+    @attacker.setEnemy(@defender, true)
+    @defender.setEnemy(@attacker)
     @round = new Round(@attacker, @defender)
 
   start: ->
-    battleLog.set('enemy', @defender)
+    _enm = {
+      id: @defender.id
+      name: @defender.name
+      lv: @defender.lv
+      cards: @defender.cards()
+    }
+    battleLog.set('enemy', _enm)
+    battleLog.set('me', {cards: @attacker.cards()})
 
   execute: ->
-    #for i in [0..5]
     while not @isOver()
       @round.process()
       @round.increase_round_num()
 
   end: ->
-    battleLog.setWinner( @attacker ) if @defender.death()
-    battleLog.setWinner( @defender ) if @attacker.death()
+    battleLog.setWinner( 'own' ) if @defender.death()
+    battleLog.setWinner( 'enemy' ) if @attacker.death()
 
 class Round extends Base
   constructor: ->
@@ -69,11 +73,10 @@ class Round extends Base
 
   start: ->
     @setShootCount()
+    console.log 'round: ', @round_num
 
   execute: () ->
-    #for i in [0..5]
     while not @isOver()
-      console.log 'b', @attacker.shootCount, @defender.shootCount
       @attacker.round_num = @defender.round_num = @round_num
       @attack.process()
 
@@ -86,10 +89,9 @@ class Attack extends Base
   constructor: ->
     super
 
-  execute: () ->    
+  execute: () ->
     _attack = (atker, dfder) ->
-      #console.log (new Date()).toISOString(), "#{atker.id} attack", atker.shootCount, dfder.shootCount
-      atker.attack dfder, (hero) ->
+      atker.attack (hero) ->
         dfder.shootCount -= 1 if hero.death()
 
       atker.nextHero()

@@ -4,7 +4,6 @@ should = require 'should'
 describe 'battle store', ->
   it 'invalid key, whitespace', ->
     store.setData 'a b c', 'value', (err, data) ->
-      console.log arguments
       err.should.be.instanceOf(Error)
       should.strictEqual undefined, data
 
@@ -53,6 +52,6 @@ describe 'battle store', ->
 
     store.getData 'test_key1', (err, data) ->
       should.strictEqual undefined, err
-      data.should.not.be.ok            
+      data.should.not.be.ok    
 
 

@@ -1,7 +1,7 @@
 Module = require '../common/module'
 Hero = require './hero'
 Matrix = require './matrix'
-db = require '../model/db'
+manager = require '../model/player'
 tab = require '../model/table'
 _ = require 'underscore'
 utility = require '../common/utility'
@@ -9,52 +9,64 @@ utility = require '../common/utility'
 class Player extends Module
   @table: 'player'
 
-  constructor: (id = null, lineUp = '') ->
-    @id = id
-    @lv = 0
-    @hero_ids = []
-    @heros = []
-    @lineUp = lineUp
+  constructor: (model) ->
+    #@objects = model
 
-    @load(id) if id?
+    if model and model.constructor.attributes?
+      for attr in model.constructor.attributes
+        @[attr] = model[attr] if model[attr]?
+
+    @initAttrs() if not model
+    
+    @heros = []
+    @lineUp = ''
+    @enemy = null
+    @is_attacker = false
     @matrix = new Matrix()
+    @loadHeros()
     @bindCards()
     @setAttackCount()
-
+    #console.log 'heros: ', @heros
     super
 
-  load: (id) ->
-    # load hreos data from db
-    model = db.find(@constructor.table, id)
+  initAttrs: ->
+    @id = 0
+    @lv = 0
+    @exp = 0
+    @power = 0
+    @money = 0
+    @hero_ids = []
 
-    if not model
-      throw new Error('Can not find Player with id ' + id)
-
-    for key, value of model
-      if model.hasOwnProperty(key) and typeof @[key] is 'function'
-        @[key](value)
-      else
-        @[key] = value
-
-    @loadHeros()
-    @
+  setEnemy: (enm, is_attacker = false) ->
+    @enemy = enm
+    @is_attacker = is_attacker
+    @heros.forEach (h) =>
+      h.setIdx @matrix.positionToNumber(h.pos), is_attacker
 
   loadHeros: ->
-    @heros = if @hero_ids? then (new Hero(id) for id in @hero_ids) else []
+    console.log 'heros id: ', @hero_ids
+    @heros = if @hero_ids? then (new Hero(id, @) for id in @hero_ids) else []
 
   bindCards: ->
-    #console.log @heros
-    if @lineUp != ''
+    if @lineUp? and @lineUp != ''
       @parseLineUp().forEach (item) =>
         [pos, card_id] = item 
-        console.log 'bind cards: ', [pos, card_id]
         
         _hero = (id) =>
           for h in @heros
             return if h.card_id is parseInt(id) then h
           null
+        _h = _hero(card_id)
 
-        @matrix.set(pos, _hero(card_id))
+        if _h
+          @matrix.set(pos, _h)
+        else
+          #throw new Error('you have not such card with id is ' + card_id)
+          console.log 'you have not such card with id is ' + card_id
+    else
+      for i in [0...@heros.length]
+        @matrix.set(i, @heros[i])
+      return
 
   parseLineUp: (lineUp)->
     _str = lineUp || @lineUp
@@ -66,8 +78,12 @@ class Player extends Module
     # saparator is : and ,
     # [position]:[hero_id],[position]:[hero_id]...
     @lineUp = lineUp
+    console.log 'line up: ', lineUp
     @bindCards()
     @
+
+  cards: ->
+    _.map @matrix.allWithNull(), (c) -> c? and c.init_hp or null
     
   death: ->
     res = @heros.filter (hero) ->
@@ -75,39 +91,18 @@ class Player extends Module
 
     res.length is 0
 
-  attack: (enemy, callback) ->
-    hero = @currentHero()
-    console.log 'hero:', hero.id, hero.atk, hero.hp
-    #console.log @heros
-
-    if hero and not hero.death()
-      rate = hero.skill_setting?.trigger_rate
-
-      if rate? and utility.hitRate(rate)
-        hero.skillAttack( enemy.currentHerosToBeAttacked(@), callback)
-      else
-        hero.normalAttack( enemy.herosToBeAttacked('default'), callback )
+  attack: (callback) ->
+    @currentHero().attack(callback)
 
   currentHero: ->
     @matrix.current()
 
   nextHero: ->
     res = @matrix.next()
-    # console.log 'player ', @id, 'next card:', res.name
     res
 
   currentIndex: ->
     @matrix.curIndex
-
-  currentHerosToBeAttacked: (enemy)->
-    enemyHero = enemy.currentHero()
-
-    if enemyHero?.skill_setting?.scope?
-      atk_scope = enemyHero.skill_setting.scope 
-    else
-      atk_scope = 'default'
-
-    @herosToBeAttacked atk_scope, enemyHero.skill_setting.random_num
 
   herosToBeAttacked: (scope, args) ->
     @matrix.attackElement scope, args
@@ -122,6 +117,6 @@ class Player extends Module
     res || []
 
   setAttackCount: ->
-    @attack_count = @aliveHero().length
+    @attack_count = @aliveHeros().length
 
 exports = module.exports = Player

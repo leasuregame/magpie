@@ -6,4 +6,13 @@ test:
 		--ui bdd \
 		$(files)
 
-.PHONY: test
+startTT:
+	/data/ttserver/ttservctl start
+
+stopTT:
+	/data/ttserver/ttservctl stop
+
+runserver:
+	./node_modules/.bin/coffee ./test/test_battle_server.coffee
+
+.PHONY: test startTT stopTT runserver

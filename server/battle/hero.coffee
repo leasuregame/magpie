@@ -26,7 +26,7 @@ class Hero extends Module
     @cant_be_crit = false
     @dmg = 0 # 每次所受伤害的值，默认值为0
     @crit_factor = 1.5 # crit damage factor
-    @pos = 0
+    @pos = '00'
     @skill = null
 
     @loadCardInfo()
@@ -59,13 +59,9 @@ class Hero extends Module
     doNothing = ->
 
     switch @skill.type
-      when 'single_fight'
+      when 'single_fight', 'aoe' 
         @skillAttack @skill.getTargets(), callback
-      when 'aoe'
-        @skillAttack @skill.getTargets(), callback
-      when 'single_heal'
-        @cure @skill.getTargets(), callback
-      when 'mult_heal'
+      when 'single_heal', 'mult_heal'
         @cure @skill.getTargets(), callback
       else
         doNothing()
@@ -108,7 +104,7 @@ class Hero extends Module
 
     @log _step
   normalAttack: (callback) ->
-    #console.log "player id: #{@player.id}, enemy id: #{@player.enemy.id}, hero id: #{@id}, pos: #{@pos}"
+    console.log 'normal attack:', "player id: #{@player.id}, enemy id: #{@player.enemy.id}, hero id: #{@id}, pos: #{@pos}"
     
     _hero = @player.enemy.herosToBeAttacked 'default', @pos
     

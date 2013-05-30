@@ -66,7 +66,8 @@ class Player extends Module
     else
       for i in [0...@heros.length]
         @matrix.set(i, @heros[i])
-      return
+    
+    @matrix.reset()
 
   parseLineUp: (lineUp)->
     _str = lineUp || @lineUp

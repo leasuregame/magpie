@@ -13,21 +13,15 @@ exports = module.exports =
   player_id8: 'aa20df79-c748-11e2-a527-377d32fa9d96'
 
   laodTestData: ->
-    for p in player_data.concat(player_data_hight_star).concat(player_data_mass())
+    aps = all_players()
+    for p in aps
       Player.create p, (err, res) ->
         #console.log err, res
+    return aps
 
-    for i in player_random()
-      Player.create i, (err, res) ->
-        #console.log err, res
-
-  clearTestData: ->
-    for p in player_data.concat(player_data_hight_star).concat(player_data_mass())
+  clearTestData: (aps)->
+    for p in aps
       Player.remove(p.id, (err, res) ->)
-
-    for i in player_random()
-      Player.remove i.id, (err, res) ->
-        #console.log err, res
 
 all_players = ->
   res = player_data
@@ -52,6 +46,8 @@ player_random = ->
   m = _.random(1, 6)
   n = _.random(1, 6)
   cards = randomHeros(m+n)
+
+  console.log m, n, cards
 
   ps = player_data_hight_star.slice(0)
   ps[0].id = 'aa20df78-c748-11e2-a527-377d32fa9d96'   
@@ -183,9 +179,9 @@ ids = [
 ]
 
 hero_data = [
-  {id: 1, lv: 52, star: 4, card_id: 4, skill_lv: 1}
-  {id: 2, lv: 45, star: 4, card_id: 9, skill_lv: 1}
-  {id: 3, lv: 60, star: 5, card_id: 15, skill_lv: 1}
+  {id: 1, lv: 52, star: 4, card_id: 4, skill_lv: 1} #1
+  {id: 2, lv: 45, star: 4, card_id: 9, skill_lv: 1} #2
+  {id: 3, lv: 60, star: 5, card_id: 15, skill_lv: 1} #3
   {id: 4, lv: 39, star: 4, card_id: 19, skill_lv: 1}
   {id: 5, lv: 55, star: 4, card_id: 24, skill_lv: 1}
   {id: 6, lv: 40, star: 5, card_id: 30, skill_lv: 1}

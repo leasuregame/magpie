@@ -55,7 +55,7 @@ class Hero extends Module
       @normalAttack(callback)
 
   usingSkill: (callback)->
-    console.log @name, 'using skill...', @skill.id, @skill.type ,@skill.name
+    #console.log @name, 'using skill...', @skill.id, @skill.type ,@skill.name
     doNothing = ->
 
     switch @skill.type
@@ -67,10 +67,10 @@ class Hero extends Module
         doNothing()
 
   skillAttack: (enemys, callback) ->
-    console.log 'skill: ', @skill.type, 'count:', enemys.length
-    _step = {a: @idx, d: [], v: [], t: 1}
+    #console.log 'skill: ', @skill.type, 'count:', enemys.length
+    _step = {a: @idx, d: [], v: [], t: 1, ahp: @hp, dhp: []}
     # debug
-    #_step.type = @skill.type
+    _step.type = @skill.type
     
     _len = enemys? and enemys.length
     _dmg = parseInt(@atk * @skill.effectValue())
@@ -82,7 +82,7 @@ class Hero extends Module
       _step.d.push enemy.idx
       _step.v.push -_dmg
       # debug
-      #_step.hp.push enemy.hp
+      _step.dhp.push enemy.hp
       
       callback enemy
 
@@ -104,7 +104,7 @@ class Hero extends Module
 
     @log _step
   normalAttack: (callback) ->
-    console.log 'normal attack:', "player id: #{@player.id}, enemy id: #{@player.enemy.id}, hero id: #{@id}, pos: #{@pos}"
+    #console.log 'normal attack:', "player id: #{@player.id}, enemy id: #{@player.enemy.id}, hero id: #{@id}, pos: #{@pos}"
     
     _hero = @player.enemy.herosToBeAttacked 'default', @pos
     
@@ -112,7 +112,7 @@ class Hero extends Module
       _hero = _hero[0]
       _hero.damage @atk
       callback _hero
-      @log {a: @idx, d: _hero.idx, v: -@atk, t: 0}
+      @log {a: @idx, d: _hero.idx, v: -@atk, t: 0, death: _hero.death(), ahp: @hp, dhp: _hero.hp}
       
     else
       throw new Error('Normal Attack Error: can not find target to be attacked.')

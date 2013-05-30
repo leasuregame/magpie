@@ -56,7 +56,7 @@ class Matrix
 
   getElement: (pos) ->
     # 根据对方给出的位置，找到可以被攻击的对象
-    console.log '根据对方给出的位置，找到可以被攻击的对象', pos
+    
     if _.isString(pos) and pos.length is 2
       attackOrder = ATTACKORDER[ @positionToNumber(pos) ]
     else if _.isNumber(pos) and pos < (@rows * @cols)
@@ -67,47 +67,48 @@ class Matrix
     for num in attackOrder
       index = @numberToPosition(num)
       el = @get(index)
-      return el if el? and not el.death?()
+      
+      if el? and not el.death?()
+        #console.log '根据对方给出的位置，找到可以被攻击的对象', pos, index
+        return el 
     null
 
-  setCurrentIndex: ->
-    
-
   current: ->
-    @get(@curIndex)
+    @curIndex and @get(@curIndex) or null
     # for el in @all()
     #   return el if el?
 
     # console.log 'can not get any card, please check you cards.'
     # return null
 
-
   next: ->
     max_count = @matrixOrder.length
     for i in [0...max_count]
-      @moveToNext()
       #console.log 'next, next,', @curIndex, @current()
-      return @current() if @current()?
+      @moveToNext()
+      _hero = @current()
+      return _hero if _hero? and not _hero.death()
     null
 
   nextIndex: (cindex = @curIndex) ->
     len = @matrixOrder.length
     index = @matrixOrder.indexOf( cindex ) + 1
-    index = 0 if index is len
-    
+    #index = 0 if index is len
+    return if index is len
+
     #console.log 'next index: ',len, cindex, index, @matrixOrder[index]
     @matrixOrder[index]
 
   moveToNext: ->
-    @curIndex = @nextIndex()
+    @curIndex = @nextIndex()  
     @
 
   reset: ->
-    allElements = @all()
+    allElements = @allWithNull()
     res = _.find allElements, (i) -> i? and not i.death?()
     @curIndex = if res? then @matrixOrder[ allElements.indexOf(res) ] else '00'
     #console.log 'allElements: ', allElements
-    #console.log 'reset: ', @curIndex, res
+    console.log 'reset: ', @curIndex, res?.name
     @
 
   set: (row, col, el) ->

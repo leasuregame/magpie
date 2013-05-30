@@ -14,7 +14,7 @@ tab.reloadTables(
 
 app = express()
 app.get '/6v6', (req, res)->
-  test_data.laodTestData()
+  aps = test_data.laodTestData()
 
   PlayerManager.fetchMany [test_data.player_id5, test_data.player_id6], (err, result) ->
     console.log err, result
@@ -33,17 +33,17 @@ app.get '/6v6', (req, res)->
     battleLog.clear()
     battle.process()
     
-    test_data.clearTestData()
+    test_data.clearTestData(aps)
     report = battleLog.reports()
     console.log report
     console.log report.steps.length
     res.send "callback(" + JSON.stringify(report) + ")"
 
 app.get '/vs', (req, res) ->
-  test_data.laodTestData()
+  aps = test_data.laodTestData()
 
   PlayerManager.fetchMany [test_data.player_id7, test_data.player_id8], (err, result) ->
-    #console.log err, result
+    console.log err, result
 
     battle = null
     # 小芳
@@ -59,7 +59,7 @@ app.get '/vs', (req, res) ->
     battleLog.clear()
     battle.process()
     
-    test_data.clearTestData()
+    test_data.clearTestData(aps)
     report = battleLog.reports()
     console.log report
     console.log report.steps.length

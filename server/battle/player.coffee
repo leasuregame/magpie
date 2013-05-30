@@ -63,9 +63,9 @@ class Player extends Module
         else
           #throw new Error('you have not such card with id is ' + card_id)
           console.log 'you have not such card with id is ' + card_id
-    else
-      for i in [0...@heros.length]
-        @matrix.set(i, @heros[i])
+    # else
+    #   for i in [0...@heros.length]
+    #     @matrix.set(i, @heros[i])
     
     @matrix.reset()
 
@@ -93,7 +93,14 @@ class Player extends Module
     res.length is 0
 
   attack: (callback) ->
-    @currentHero().attack(callback)
+    _hero = @currentHero()
+    if _hero is null or _hero.death()
+      #console.log @name, 'death:', @death(), @aliveHeros()
+      bl = require './battle_log'
+      console.log JSON.stringify bl.reports()
+      #throw new Error('no card alive')
+    else
+      _hero.attack(callback)
 
   currentHero: ->
     @matrix.current()

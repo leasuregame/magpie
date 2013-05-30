@@ -67,7 +67,7 @@ var BattlePlayer = cc.Class.extend({
             cc.log("pop battle scene callback");
             this._scheduler.scheduleCallbackForTarget(this, function() {
                 cc.log("pop battle scene");
-                cc.Director.getInstance().popScene();
+                cc.Director.getInstance().replaceScene(cc.TransitionTurnOffTiles.create(1, MainScene.create(), true));
             }, 0.0, 0, 5, false);
         }
     },

@@ -17,7 +17,7 @@ var BattleScene = cc.Scene.extend({
     },
 
     init : function() {
-        lz.HttpClientPackage.getInstance().HttpGetRequest("http://192.168.1.89:3344/vs", this.newBattle, this);
+        lz.HttpClientPackage.getInstance().HttpGetRequest("http://192.168.1.7:3344/vs", this.newBattle, this);
     },
 
     newBattle : function(json) {

@@ -12,8 +12,6 @@
 
 var SkillFactory = {
     normalAttack : function(cardList, battleARound, labelList, progressList) {
-        cc.log("SkillFactory normalAttack");
-
         var own = battleARound.a;
         var enemy = battleARound.d;
         if(typeof(enemy) == "number") enemy = [enemy];

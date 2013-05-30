@@ -114,10 +114,7 @@ var MainLayer = cc.Layer.extend({
 
     _onClickTournament : function() {
         cc.log("MainLayer _onClickTournament");
-        //if(this._mainScene) this._mainScene.switchLayer(TournamentLayer);
-
-        cc.Director.getInstance().getRunningScene().setVisible(true);
-        cc.Director.getInstance().pushScene(BattleScene.create());
+        cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, BattleScene.create(), true));
     },
 
     _onClickLottery : function() {
@@ -133,7 +130,7 @@ var MainLayer = cc.Layer.extend({
 
 MainLayer.create = function(mainScene) {
     var ret = new MainLayer();
-    cc.log(mainScene);
+
     if(ret && ret.init(mainScene)) {
         return ret;
     }

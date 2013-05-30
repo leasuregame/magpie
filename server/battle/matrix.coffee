@@ -56,6 +56,7 @@ class Matrix
 
   getElement: (pos) ->
     # 根据对方给出的位置，找到可以被攻击的对象
+    console.log '根据对方给出的位置，找到可以被攻击的对象', pos
     if _.isString(pos) and pos.length is 2
       attackOrder = ATTACKORDER[ @positionToNumber(pos) ]
     else if _.isNumber(pos) and pos < (@rows * @cols)
@@ -69,12 +70,16 @@ class Matrix
       return el if el? and not el.death?()
     null
 
-  current: ->
-    for el in @all()
-      return el if el?
+  setCurrentIndex: ->
+    
 
-    console.log 'can not get any card, please check you cards.'
-    return null
+  current: ->
+    @get(@curIndex)
+    # for el in @all()
+    #   return el if el?
+
+    # console.log 'can not get any card, please check you cards.'
+    # return null
 
 
   next: ->

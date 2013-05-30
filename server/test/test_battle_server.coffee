@@ -37,7 +37,7 @@ app.get '/6v6', (req, res)->
     report = battleLog.reports()
     console.log report
     console.log report.steps.length
-    res.send JSON.stringify report
+    res.send "callback(" + JSON.stringify(report) + ")"
 
 app.get '/vs', (req, res) ->
   test_data.laodTestData()
@@ -63,7 +63,7 @@ app.get '/vs', (req, res) ->
     report = battleLog.reports()
     console.log report
     console.log report.steps.length
-    res.send JSON.stringify report
+    res.send "callback(" + JSON.stringify(report) + ")"
 
 _ = require 'underscore'
 random_liveup = (heros)->

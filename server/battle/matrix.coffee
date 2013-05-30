@@ -70,7 +70,12 @@ class Matrix
     null
 
   current: ->
-    @get(@curIndex)
+    for el in @all()
+      return el if el?
+
+    console.log 'can not get any card, please check you cards.'
+    return null
+
 
   next: ->
     max_count = @matrixOrder.length
@@ -102,12 +107,13 @@ class Matrix
 
   set: (row, col, el) ->
     if arguments.length == 2
-      el = col
-      el.pos = row if _.isObject(el)
-      [row, col] = row
-    else
-      el.pos = "#{row}#{col}" if _.isObject(el)
-      
+      el = col      
+      if _.isString(row) and row.length == 2
+        [row, col] = row 
+      else if _.isNumber(row)
+        [row, col] = @numberToPosition(row) 
+
+    el.pos = "#{row}#{col}" if _.isObject(el)  
     @elements[row][col] = el
     @
 
@@ -133,7 +139,7 @@ class Matrix
   all: ->
     _res = []
     _res = _res.concat(row) for row in @elements
-    _res
+    _.filter _res, (i) -> i?
 
   hp_max: ->
     items = @all()

@@ -39,5 +39,31 @@ app.get '/6v6', (req, res)->
     console.log report.steps.length
     res.send JSON.stringify report
 
+app.get '/vs', (req, res) ->
+  test_data.laodTestData()
+
+  PlayerManager.fetchMany [test_data.player_id7, test_data.player_id8], (err, result) ->
+    #console.log err, result
+
+    battle = null
+    # 小芳
+    attacker = new Player(result[test_data.player_id7])
+    #attacker.setLineUp '00:4,01:9,02:15,10:129,11:195,12:204'
+
+    # 小丽
+    defender = new Player(result[test_data.player_id8])
+    #defender.setLineUp '00:50,01:54,02:59,10:139,11:174,12:235'
+
+    battle = new Battle(attacker, defender)
+
+    battleLog.clear()
+    battle.process()
+    
+    test_data.clearTestData()
+    report = battleLog.reports()
+    console.log report
+    console.log report.steps.length
+    res.send JSON.stringify report
+
 
 app.listen('3344')

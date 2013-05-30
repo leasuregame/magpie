@@ -26,7 +26,7 @@ class Player extends Module
     @loadHeros()
     @bindCards()
     @setAttackCount()
-    console.log 'heros: ', @heros
+    #console.log 'heros: ', @heros
     super
 
   initAttrs: ->
@@ -44,6 +44,7 @@ class Player extends Module
       h.setIdx @matrix.positionToNumber(h.pos), is_attacker
 
   loadHeros: ->
+    console.log 'heros id: ', @hero_ids
     @heros = if @hero_ids? then (new Hero(id, @) for id in @hero_ids) else []
 
   bindCards: ->
@@ -62,6 +63,10 @@ class Player extends Module
         else
           #throw new Error('you have not such card with id is ' + card_id)
           console.log 'you have not such card with id is ' + card_id
+    else
+      for i in [0...@heros.length]
+        @matrix.set(i, @heros[i])
+      return
 
   parseLineUp: (lineUp)->
     _str = lineUp || @lineUp

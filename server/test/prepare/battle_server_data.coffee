@@ -1,5 +1,6 @@
 Player = require '../../model/player'
 #Account = require '../model/account'
+_ = require 'underscore'
 
 exports = module.exports =
   player_id1: 'aa20df72-c748-11e2-a527-377d32fa9d96'
@@ -8,48 +9,57 @@ exports = module.exports =
   player_id4: 'aa20df75-c748-11e2-a527-377d32fa9d96'
   player_id5: 'aa20df76-c748-11e2-a527-377d32fa9d96'
   player_id6: 'aa20df77-c748-11e2-a527-377d32fa9d96'
+  player_id7: 'aa20df78-c748-11e2-a527-377d32fa9d96'  
+  player_id8: 'aa20df79-c748-11e2-a527-377d32fa9d96'
+
   laodTestData: ->
     for p in player_data.concat(player_data_hight_star).concat(player_data_mass())
-      Player.create(p)
+      Player.create p, (err, res) ->
+        #console.log err, res
+
+    for i in player_random()
+      Player.create i, (err, res) ->
+        #console.log err, res
 
   clearTestData: ->
     for p in player_data.concat(player_data_hight_star).concat(player_data_mass())
       Player.remove(p.id, (err, res) ->)
 
-ids = [ 
+    for i in player_random()
+      Player.remove i.id, (err, res) ->
+        #console.log err, res
+
+all_players = ->
+  res = player_data
+  .concat(player_data_hight_star)
+  .concat(player_data_mass())
+  .concat(player_random())
+  return res
+
+randomHeros = (num)->
+  _res = []
+  max = hero_data.length
   
-  
-  'aa20df78-c748-11e2-a527-377d32fa9d96',
-  'aa20df79-c748-11e2-a527-377d32fa9d96',
-  'aa20df7a-c748-11e2-a527-377d32fa9d96' 
-]
+  while(true)
+    r = _.random(0, max - 1)
+    _res.push r if r not in _res
+    break if _res.length >= num
 
-# hero_data = [
-#   {id: 1, lv: 52, star: 4, card_id: 4, skill_lv: 1}
-#   {id: 2, lv: 45, star: 4, card_id: 9, skill_lv: 1}
-#   {id: 3, lv: 60, star: 5, card_id: 15, skill_lv: 1}
-#   {id: 4, lv: 39, star: 4, card_id: 19, skill_lv: 1}
-#   {id: 5, lv: 55, star: 4, card_id: 24, skill_lv: 1}
-#   {id: 6, lv: 40, star: 5, card_id: 30, skill_lv: 1}
-#   {id: 7, lv: 60, star: 5, card_id: 35, skill_lv: 1}
-#   {id: 8, lv: 48, star: 4, card_id: 39, skill_lv: 1}
-#   {id: 9, lv: 56, star: 4, card_id: 44, skill_lv: 1}
-#   {id: 10, lv: 60, star: 5, card_id: 50, skill_lv: 1}
-#   {id: 11, lv: 35, star: 4, card_id: 54, skill_lv: 1}
-#   {id: 12, lv: 40, star: 4, card_id: 59, skill_lv: 1}
+  console.log 'random indexs: ', _res
+  hero_data[i] for i in _res
 
-#   # aoe
-#   {id: 13, lv: 37, star:4, card_id: 129, skill_lv: 1}
-#   {id: 14, lv: 40, star:5, card_id: 139, skill_lv: 1}
+player_random = ->
+  m = _.random(1, 6)
+  n = _.random(1, 6)
+  cards = randomHeros(m+n)
 
-#   # aoe rate
-#   {id: 15, lv: 44, star: 4, card_id: 174, skill_lv: 1}
-#   {id: 16, lv: 46, star: 5, card_id: 195, skill_lv: 1}
+  ps = player_data_hight_star.slice(0)
+  ps[0].id = 'aa20df78-c748-11e2-a527-377d32fa9d96'   
+  ps[0].hero_ids = cards[0...m]
 
-#   # heal
-#   {id: 17, lv: 46, star: 4, card_id: 204, skill_lv: 1}
-#   {id: 18, lv: 46, star: 5, card_id: 235, skill_lv: 1}
-# ]
+  ps[1].id = 'aa20df79-c748-11e2-a527-377d32fa9d96'
+  ps[1].hero_ids = cards[m..]
+  ps
 
 player_data_mass = ->
   ps = player_data_hight_star.slice(0)
@@ -165,4 +175,36 @@ account_data = [
     email: 'b@leasuregame.com'
     password: '1'
   }
+]
+
+ids = [ 
+  
+  'aa20df7a-c748-11e2-a527-377d32fa9d96' 
+]
+
+hero_data = [
+  {id: 1, lv: 52, star: 4, card_id: 4, skill_lv: 1}
+  {id: 2, lv: 45, star: 4, card_id: 9, skill_lv: 1}
+  {id: 3, lv: 60, star: 5, card_id: 15, skill_lv: 1}
+  {id: 4, lv: 39, star: 4, card_id: 19, skill_lv: 1}
+  {id: 5, lv: 55, star: 4, card_id: 24, skill_lv: 1}
+  {id: 6, lv: 40, star: 5, card_id: 30, skill_lv: 1}
+  {id: 7, lv: 60, star: 5, card_id: 35, skill_lv: 1}
+  {id: 8, lv: 48, star: 4, card_id: 39, skill_lv: 1}
+  {id: 9, lv: 56, star: 4, card_id: 44, skill_lv: 1}
+  {id: 10, lv: 60, star: 5, card_id: 50, skill_lv: 1}
+  {id: 11, lv: 35, star: 4, card_id: 54, skill_lv: 1}
+  {id: 12, lv: 40, star: 4, card_id: 59, skill_lv: 1}
+
+  # aoe
+  {id: 13, lv: 37, star:4, card_id: 129, skill_lv: 1}
+  {id: 14, lv: 40, star:5, card_id: 139, skill_lv: 1}
+
+  # aoe rate
+  {id: 15, lv: 44, star: 4, card_id: 174, skill_lv: 1}
+  {id: 16, lv: 46, star: 5, card_id: 195, skill_lv: 1}
+
+  # heal
+  {id: 17, lv: 46, star: 4, card_id: 204, skill_lv: 1}
+  {id: 18, lv: 46, star: 5, card_id: 235, skill_lv: 1}
 ]

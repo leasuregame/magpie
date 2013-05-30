@@ -71,6 +71,9 @@ var Progress = cc.Node.extend({
 
     setValue : function(value) {
         this._value = value;
+        if(this._value > this._maxValue) this._value = this._maxValue;
+        if(this._value < 0) this._value = 0;
+
         this.updataProgress();
     },
 
@@ -80,6 +83,9 @@ var Progress = cc.Node.extend({
 
     addValue : function(value) {
         this._value += value;
+        if(this._value > this._maxValue) this._value = this._maxValue;
+        if(this._value < 0) this._value = 0;
+
         this.updataProgress();
     },
 

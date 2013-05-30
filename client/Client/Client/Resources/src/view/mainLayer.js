@@ -116,7 +116,8 @@ var MainLayer = cc.Layer.extend({
         cc.log("MainLayer _onClickTournament");
         //if(this._mainScene) this._mainScene.switchLayer(TournamentLayer);
 
-
+        cc.Director.getInstance().getRunningScene().setVisible(true);
+        cc.Director.getInstance().pushScene(BattleScene.create());
     },
 
     _onClickLottery : function() {

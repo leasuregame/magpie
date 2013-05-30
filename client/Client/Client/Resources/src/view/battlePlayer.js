@@ -18,6 +18,7 @@ var BattlePlayer = cc.Class.extend({
     _cardList : null,
     _labelList : null,
     _progressList : null,
+    _tipLabel : null,
 
     init : function() {
         cc.log("BattlePlayer init");
@@ -25,9 +26,10 @@ var BattlePlayer = cc.Class.extend({
         this._scheduler = cc.Director.getInstance().getScheduler();
     },
 
-    play : function(battleLog, cardList, labelList, progressList) {
+    play : function(battleLog, cardList, labelList, progressList, tipLabel) {
         cc.log("BattlePlayer play");
 
+        this._tipLabel = tipLabel;
         this._battleLog = battleLog;
         this._cardList = cardList;
         this._labelList = labelList;
@@ -35,23 +37,39 @@ var BattlePlayer = cc.Class.extend({
         this._battleLogLen = this._battleLog.length;
         this._battleRoundIndex = 0;
         this.playARound();
+        this._scheduler.scheduleCallbackForTarget(this, this.playARound, 2.0, this._battleLogLen - 2, 0, false);
     },
 
     playARound : function() {
-        cc.log("BattlePlayer playARound");
+//        this._scheduler.unscheduleCallbackForTarget(this, this.playARound);
+
+        cc.log("\n\n\nBattlePlayer playARound " + this._battleRoundIndex);
 
         var battleARound = this._battleLog[this._battleRoundIndex];
+
         cc.log(battleARound);
 
-        cc.log(battleARound.a + (battleARound.t == 0 ? " 用普攻 " : " 用技能 ") + " 揍了 " + battleARound.d + " 伤害为 " + battleARound.v);
+        var str = battleARound.a + (battleARound.t == 0 ? " 用普攻 " : " 用技能 ") + " 揍了 " + battleARound.d + " 伤害为 " + battleARound.v;
+        cc.log(str);
 
-        this._scheduler.unscheduleCallbackForTarget(this, this.playARound);
+        this._tipLabel.setString(str);
+
         var delay = SkillFactory.normalAttack(this._cardList, battleARound, this._labelList, this._progressList);
 //        var delay = 1;
         this._battleRoundIndex += 1;
 
-        if(this._battleRoundIndex < this._battleLogLen)
-            this._scheduler.scheduleCallbackForTarget(this, this.playARound, 0.0, 1, delay, false);
+//        if(this._battleRoundIndex < this._battleLogLen) {
+//            cc.log("set scheduler");
+//            this._scheduler.scheduleCallbackForTarget(this, this.playARound, delay, 1, 0, false);
+//        }
+
+        if(this._battleRoundIndex >= this._battleLogLen) {
+            cc.log("pop battle scene callback");
+            this._scheduler.scheduleCallbackForTarget(this, function() {
+                cc.log("pop battle scene");
+                cc.Director.getInstance().popScene();
+            }, 0.0, 0, 5, false);
+        }
     },
 
     pause : function() {

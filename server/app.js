@@ -182,7 +182,6 @@ app = http.createServer(function(req, res) {
     'charset': 'UTF-8'
   });
   res.write(JSON.stringify(battle_log));
-  return res.end('成功');
 });
 
 app.listen('3344');

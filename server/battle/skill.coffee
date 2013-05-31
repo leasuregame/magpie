@@ -1,5 +1,4 @@
 Module = require '../common/module'
-Magic = require './magic'
 utility = require '../common/utility'
 _ = require 'underscore'
 

@@ -64,6 +64,6 @@ var cocos2dApp = cc.Application.extend({
     }
 });
 
-//var myApp = new cocos2dApp(MainScene);
+var myApp = new cocos2dApp(MainScene);
 //var myApp = new cocos2dApp(testScene);
-var myApp = new cocos2dApp(BattleScene);
+//var myApp = new cocos2dApp(BattleScene);

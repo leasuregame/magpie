@@ -176,5 +176,5 @@ battle_log = {
 http.createServer(function(request, response) {
   response.writeHead(200, {"Content-Type": "text/plain"});
   response.write("callback(" + JSON.stringify(battle_log) + ")");
-  response.end();
+  response.end("");
 }).listen(8888);

@@ -181,7 +181,7 @@ app = http.createServer(function(req, res) {
     'Content-Type': 'application/json',
     'charset': 'UTF-8'
   });
-  res.write(JSON.stringify(battle_log));
+  res.write("callback(" + JSON.stringify(battle_log) + ")");
 });
 
 app.listen('3344');

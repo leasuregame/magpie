@@ -16,12 +16,17 @@ exports = module.exports =
     aps = all_players()
     for p in aps
       Player.create p, (err, res) ->
-        #console.log err, res
+        console.log 'create player data', err#, res
+        if err
+          console.log '---------error occur when create player data------------'
     return aps
 
   clearTestData: (aps)->
     for p in aps
-      Player.remove(p.id, (err, res) ->)
+      Player.remove p.id, (err, res) ->
+        console.log 'delete player data', err#, res
+        if err
+          console.log '---------error occur when delete player data------------'
 
 all_players = ->
   res = player_data
@@ -179,28 +184,28 @@ ids = [
 ]
 
 hero_data = [
-  {id: 1, lv: 52, star: 4, card_id: 4, skill_lv: 1} #1
-  {id: 2, lv: 45, star: 4, card_id: 9, skill_lv: 1} #2
-  {id: 3, lv: 60, star: 5, card_id: 15, skill_lv: 1} #3
-  {id: 4, lv: 39, star: 4, card_id: 19, skill_lv: 1}
-  {id: 5, lv: 55, star: 4, card_id: 24, skill_lv: 1}
-  {id: 6, lv: 40, star: 5, card_id: 30, skill_lv: 1}
-  {id: 7, lv: 60, star: 5, card_id: 35, skill_lv: 1}
-  {id: 8, lv: 48, star: 4, card_id: 39, skill_lv: 1}
-  {id: 9, lv: 56, star: 4, card_id: 44, skill_lv: 1}
-  {id: 10, lv: 60, star: 5, card_id: 50, skill_lv: 1}
-  {id: 11, lv: 35, star: 4, card_id: 54, skill_lv: 1}
-  {id: 12, lv: 40, star: 4, card_id: 59, skill_lv: 1}
+  {id: 1, lv: 52, star: 4, card_id: 4, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]} #1
+  {id: 2, lv: 45, star: 4, card_id: 9, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]} #2
+  {id: 3, lv: 60, star: 5, card_id: 15, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]} #3
+  {id: 4, lv: 39, star: 4, card_id: 19, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]}
+  {id: 5, lv: 55, star: 4, card_id: 24, skill_lv: 1, sp_value: [{name: 'akt_improve', value: 50}]}
+  {id: 6, lv: 40, star: 5, card_id: 30, skill_lv: 1, sp_value: [{name: 'akt_improve', value: 50}]}
+  {id: 7, lv: 60, star: 5, card_id: 35, skill_lv: 1, sp_value: [{name: 'akt_improve', value: 50}]}
+  {id: 8, lv: 48, star: 4, card_id: 39, skill_lv: 1, sp_value: [{name: 'crit', value: 50}]}
+  {id: 9, lv: 56, star: 4, card_id: 44, skill_lv: 1, sp_value: [{name: 'crit', value: 50}]}
+  {id: 10, lv: 60, star: 5, card_id: 50, skill_lv: 1, sp_value: [{name: 'crit', value: 50}]}
+  {id: 11, lv: 35, star: 4, card_id: 54, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
+  {id: 12, lv: 40, star: 4, card_id: 59, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
 
   # aoe
-  {id: 13, lv: 37, star:4, card_id: 129, skill_lv: 1}
-  {id: 14, lv: 40, star:5, card_id: 139, skill_lv: 1}
+  {id: 13, lv: 37, star:4, card_id: 129, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
+  {id: 14, lv: 40, star:5, card_id: 139, skill_lv: 1, sp_value: [{name: 'dmg_reduce', value: 50}]}
 
   # aoe rate
-  {id: 15, lv: 44, star: 4, card_id: 174, skill_lv: 1}
-  {id: 16, lv: 46, star: 5, card_id: 195, skill_lv: 1}
+  {id: 15, lv: 44, star: 4, card_id: 174, skill_lv: 1, sp_value: [{name: 'dmg_reduce', value: 50}]}
+  {id: 16, lv: 46, star: 5, card_id: 195, skill_lv: 1, sp_value: [{name: 'dmg_rebound', value: 50}]}
 
   # heal
-  {id: 17, lv: 46, star: 4, card_id: 204, skill_lv: 1}
-  {id: 18, lv: 46, star: 5, card_id: 235, skill_lv: 1}
+  {id: 17, lv: 46, star: 4, card_id: 204, skill_lv: 1, sp_value: [{name: 'dmg_rebound', value: 50}]}
+  {id: 18, lv: 46, star: 5, card_id: 235, skill_lv: 1, sp_value: [{name: 'dmg_rebound', value: 50}]}
 ]

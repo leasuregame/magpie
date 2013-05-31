@@ -1,6 +1,7 @@
 Module = require '../common/module'
 Events = require '../common/events'
 Skill = require './skill'
+SpecialProperty = require './special_property'
 
 tab = require '../model/table'
 battleLog = require './battle_log'
@@ -19,6 +20,7 @@ class Hero extends Module
     @star = attrs.star
     @card_id = attrs.card_id
     @skill_lv = attrs.skill_lv or 1
+    @sp_value = attrs.sp_value or []
     
     @is_crit = false
     @is_dodge = false
@@ -30,7 +32,8 @@ class Hero extends Module
     @skill = null
 
     @loadCardInfo()
-    @loadSkill() if @star > 2
+    @loadSpecialProperty()
+    @loadSkill()
 
   loadCardInfo: ->
     card = tab.getTableItem('cards', @card_id)
@@ -43,16 +46,38 @@ class Hero extends Module
     @init_hp = @hp = parseInt(card.hp * factor)
     @skill_id = card.skill_id
 
+  loadSpecialProperty: ->
+    return if @star < 3
+    @sp = new SpecialProperty(@sp_value)
+    @sp.takeEffect(@)
+
   loadSkill: ->
+    return if @star < 3
     @skill_setting = tab.getTableItem('skills', @skill_id)
     if @skill_setting?
       @skill = new Skill(@, @skill_setting)
 
   attack: (callback) ->
+    @setCrit()
+
     if @skill? and @skill.check()
       @usingSkill(callback)
     else
       @normalAttack(callback)
+
+    @unsetCrit()
+
+  setCrit: ->
+    @is_crit = @sp.isCrit()
+
+  unsetCrit: ->
+    @is_crit = false
+
+  isDodge: ->
+    @sp.isDodge()
+
+  isCrit: ->
+    @sp.isCrit()
 
   usingSkill: (callback)->
     #console.log @name, 'using skill...', @skill.id, @skill.type ,@skill.name
@@ -77,10 +102,19 @@ class Hero extends Module
     _dmg = parseInt(_dmg/_len) if _len > 1
 
     for enemy in enemys
-      enemy.damage _dmg
+      _v = -_dmg
+      if enemy.isDodge()
+        _dmg = 0
+        _v = 0
+      else if @isCrit()
+        # 暴击
+        _dmg *= @crit_factor 
+        _v = ['crit', -_dmg]
+
+      enemy.damage _dmg, @
       
       _step.d.push enemy.idx
-      _step.v.push -_dmg
+      _step.v.push _v
       # debug
       _step.dhp.push enemy.hp
       
@@ -95,7 +129,7 @@ class Hero extends Module
     
     for enemy in enemys
       _hp = parseInt(enemy.hp * @skill.effectValue())
-      enemy.damage -_hp
+      enemy.damageOnly -_hp
 
       _step.d.push enemy.idx
       _step.v.push _hp
@@ -110,17 +144,43 @@ class Hero extends Module
     
     if _.isArray(_hero) and _hero.length is 1
       _hero = _hero[0]
-      _hero.damage @atk
+      
+      _dmg = @atk
+
+      _v = -_dmg
+      if _hero.isDodge()
+        _dmg = 0
+        _v = 0
+      else if @isCrit()
+        # 暴击
+        _dmg *= @crit_factor 
+        _v = ['crit', -_dmg]
+
+      _hero.damage _dmg, @
       callback _hero
-      @log {a: @idx, d: _hero.idx, v: -@atk, t: 0, death: _hero.death(), ahp: @hp, dhp: _hero.hp}
+
+      @log {a: @idx, d: _hero.idx, v: _v, t: 0, death: _hero.death(), ahp: @hp, dhp: _hero.hp}
       
     else
       throw new Error('Normal Attack Error: can not find target to be attacked.')
 
-  damage: (value) ->
+  damage: (value, enemy) ->
+    # 检查辅助效果，伤害减少
+    value = @sp?.dmgReduce(value) or value
+
     @hp -= value
+
+    # 检查，伤害反弹
+    _val = @sp?.dmgRebound(value) or 0
+    if _val isnt 0
+      enemy.damageOnly _val
+      @log {a: @idx, d: enemy.idx, v: ['rebound', -_val], t: 0}
+
     # debug
     console.log @player.name, @id, 'death' if @death()
+
+  damageOnly: (value) ->
+    @hp -= value
 
   log: (step)->
     battleLog.addStep(step)

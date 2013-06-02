@@ -25,7 +25,7 @@ var MainLayer = cc.Layer.extend({
         systemMessagesLabel.setPosition(GAME_HORIZONTAL_LACUNA, GAME_VERTICAL_LACUNA + GAME_HEIGHT - 30);
         this.addChild(systemMessagesLabel);
 
-        var textLabel = cc.LabelTTF.create("系统消息：有一个SB又升级失败啦。。。哇哈哈哈哈哈。");
+        var textLabel = cc.LabelTTF.create("系统消息：有一个SB又升级失败啦。。。哇哈哈哈哈哈。", 'Times New Roman', 30);
         textLabel.setFontSize(25);
         textLabel.setAnchorPoint(cc.p(0, 0));
         systemMessagesLabel.addChild(textLabel);
@@ -47,7 +47,7 @@ var MainLayer = cc.Layer.extend({
         activityLabel.setPosition(GAME_HORIZONTAL_LACUNA, GAME_VERTICAL_LACUNA + 560);
         this.addChild(activityLabel);
 
-        var label = cc.LabelTTF.create("活动：OO");
+        var label = cc.LabelTTF.create("活动：OO", 'Times New Roman', 30);
         label.setFontSize(130);
         label.setAnchorPoint(cc.p(0, 0));
         activityLabel.addChild(label);
@@ -115,6 +115,7 @@ var MainLayer = cc.Layer.extend({
     _onClickTournament : function() {
         cc.log("MainLayer _onClickTournament");
         cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, BattleScene.create(), true));
+//        cc.Director.getInstance().replaceScene(BattleScene.create());
     },
 
     _onClickLottery : function() {

@@ -24,10 +24,10 @@ var Player = cc.Class.extend({
     },
 
     getPlayerLabel : function() {
-        if(this._playerLabel) {
-            this._playerLabel.removeFromParent();
-            return this._playerLabel;
-        }
+//        if(this._playerLabel) {
+//            this._playerLabel.removeFromParent();
+//            return this._playerLabel;
+//        }
 
         this._playerLabel = cc.LayerColor.create(cc.c4b(100,0,100,100), GAME_WIDTH, 180);
         this._playerLabel.ignoreAnchorPointForPosition(false);
@@ -38,7 +38,7 @@ var Player = cc.Class.extend({
         roleLabel.setAnchorPoint(cc.p(0, 0));
         this._playerLabel.addChild(roleLabel);
 
-        var label = cc.LabelTTF.create("头像");
+        var label = cc.LabelTTF.create("头像", 'Times New Roman', 30);
         label.setFontSize(25);
         label.setAnchorPoint(cc.p(0.5, 0.5));
         label.setPosition(90, 90);
@@ -50,7 +50,7 @@ var Player = cc.Class.extend({
         levelLabel.setPosition(180, 120);
         this._playerLabel.addChild(levelLabel);
 
-        label = cc.LabelTTF.create("等级：100");
+        label = cc.LabelTTF.create("等级：100", 'Times New Roman', 30);
         label.setFontSize(25);
         label.setAnchorPoint(cc.p(0.5, 0.5));
         label.setPosition(115, 30);
@@ -62,7 +62,7 @@ var Player = cc.Class.extend({
         nameLabel.setPosition(410, 120);
         this._playerLabel.addChild(nameLabel);
 
-        label = cc.LabelTTF.create("名字：lCeve");
+        label = cc.LabelTTF.create("名字：lCeve", 'Times New Roman', 30);
         label.setFontSize(25);
         label.setAnchorPoint(cc.p(0.5, 0.5));
         label.setPosition(115, 30);
@@ -74,7 +74,7 @@ var Player = cc.Class.extend({
         ingotLabel.setPosition(180, 60);
         this._playerLabel.addChild(ingotLabel);
 
-        label = cc.LabelTTF.create("元宝：100");
+        label = cc.LabelTTF.create("元宝：100", 'Times New Roman', 30);
         label.setFontSize(25);
         label.setAnchorPoint(cc.p(0.5, 0.5));
         label.setPosition(115, 30);
@@ -86,7 +86,7 @@ var Player = cc.Class.extend({
         moneyLabel.setPosition(410, 60);
         this._playerLabel.addChild(moneyLabel);
 
-        label = cc.LabelTTF.create("仙币：10000");
+        label = cc.LabelTTF.create("仙币：10000", 'Times New Roman', 30);
         label.setFontSize(25);
         label.setAnchorPoint(cc.p(0.5, 0.5));
         label.setPosition(115, 30);
@@ -98,7 +98,7 @@ var Player = cc.Class.extend({
         expLabel.setPosition(180, 0);
         this._playerLabel.addChild(expLabel);
 
-        label = cc.LabelTTF.create("经验：500/10000");
+        label = cc.LabelTTF.create("经验：500/10000", 'Times New Roman', 30);
         label.setFontSize(25);
         label.setAnchorPoint(cc.p(0.5, 0.5));
         label.setPosition(115, 30);
@@ -110,7 +110,7 @@ var Player = cc.Class.extend({
         powerLabel.setPosition(410, 0);
         this._playerLabel.addChild(powerLabel);
 
-        label = cc.LabelTTF.create("体力：20/200");
+        label = cc.LabelTTF.create("体力：20/200", 'Times New Roman', 30);
         label.setFontSize(25);
         label.setAnchorPoint(cc.p(0.5, 0.5));
         label.setPosition(115, 30);

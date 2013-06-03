@@ -13,8 +13,12 @@ tab.reloadTables(
     TABLE_DIR + 'cards.xml'
     )
 
+
 app = express()
 app.get '/6v6', (req, res)->
+  vs66 (data) -> res.send data
+
+vs66 = (cb) ->
   aps = test_data.laodTestData()
 
   PlayerManager.fetchMany [test_data.player_id5, test_data.player_id6], (err, result) ->
@@ -38,9 +42,12 @@ app.get '/6v6', (req, res)->
     report = battleLog.reports()
     console.log report
     console.log report.steps.length
-    res.send "callback(" + JSON.stringify(report) + ")"
+    cb "callback(" + JSON.stringify(report) + ")"
 
 app.get '/vs', (req, res) ->
+  vs (data) -> res.send data
+
+vs = (cb) ->
   aps = test_data.laodTestData()
 
   PlayerManager.fetchMany [test_data.player_id7, test_data.player_id8], (err, result) ->
@@ -64,7 +71,7 @@ app.get '/vs', (req, res) ->
     report = battleLog.reports()
     console.log report
     console.log report.steps.length
-    res.send "callback(" + JSON.stringify(report) + ")"
+    cb "callback(" + JSON.stringify(report) + ")"
 
 _ = require 'underscore'
 random_liveup = (heros)->
@@ -84,4 +91,6 @@ random_liveup = (heros)->
   lu[0...-1]
 
 app.listen('3344')
+
+module.exports = {vs: vs, vs66: vs66}
 console.log 'test server running on http://localhost:3344'

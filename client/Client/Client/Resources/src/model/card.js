@@ -13,13 +13,15 @@
 
 
 var Card = cc.Node.extend({
-    _databaseId : 0,         // 数据库对应ID
+    _tid : 0,                // 数据库对应ID
     _id : 0,                 // 数据表对应ID
     _name : "",              // 卡牌名称
     _description : "",       // 卡牌描述
     _star : 0,               // 卡牌星级
     _level : 0,              // 卡牌等级
     _maxLevel : 0,           // 卡牌最大等级
+    _exp : 0,                // 当前经验
+    _maxExp : 0,             // 最大经验
     _skillId : 0,            // 数据库表对应技能ID
     _skillName : "",         // 技能名称
     _skillDescription : "",  // 技能描述
@@ -34,11 +36,11 @@ var Card = cc.Node.extend({
     _cardMenuItem : null,
     _cardProgress : null,
 
-    init : function(databaseId, id, star, level, skillLevel, hp, damage) {
+    init : function(tid, id, star, level, skillLevel, hp, damage) {
         cc.log("Card init");
 
         this._super();
-        this._databaseId = databaseId || 0;
+        this._tid = tid || 0;
         this._id = id;
         this._star = star;
         this._level = level;
@@ -50,7 +52,7 @@ var Card = cc.Node.extend({
     initWithTable : function(row) {
         cc.log("Card initWithTable");
 
-        this.init(row.databaseId, row.id, row.star, row.level, row.skillLevel, row.hp, row.damage);
+        this.init(row.tid, row.id, row.star, row.level, row.skillLevel, row.hp, row.damage);
     },
 
     cardUpdata : function() {

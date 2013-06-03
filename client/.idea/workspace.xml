@@ -17,8 +17,9 @@
     <file path="/main_binding.js" changelist="14688c2c-8b9d-4a8b-94fb-9c048ac00f2a" time="1370201129390" ignored="false" />
     <file path="/cardDetails.js" changelist="14688c2c-8b9d-4a8b-94fb-9c048ac00f2a" time="1370243396674" ignored="false" />
     <file path="/cardNode.js" changelist="14688c2c-8b9d-4a8b-94fb-9c048ac00f2a" time="1370243914765" ignored="false" />
-    <file path="/card.js" changelist="14688c2c-8b9d-4a8b-94fb-9c048ac00f2a" time="1370245265406" ignored="false" />
+    <file path="/card.js" changelist="14688c2c-8b9d-4a8b-94fb-9c048ac00f2a" time="1370246534330" ignored="false" />
     <file path="/cardMenuItem.js" changelist="14688c2c-8b9d-4a8b-94fb-9c048ac00f2a" time="1370244892407" ignored="false" />
+    <file path="/lazyMenu.js" changelist="14688c2c-8b9d-4a8b-94fb-9c048ac00f2a" time="1370249742684" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,15 +39,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="battlePlayer.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/view/battlePlayer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="141" selection-start="968" selection-end="968" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="cardDetails.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/view/cardDetails.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -56,10 +48,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="card.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="card.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/model/card.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="108" selection-start="1983" selection-end="1983" vertical-scroll-proportion="0.776583">
+            <state line="54" column="25" selection-start="1400" selection-end="1400" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -94,6 +86,33 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="player.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/model/player.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="83" selection-start="642" selection-end="642" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lazyMenu.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/controls/lazyMenu.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="88" column="5" selection-start="2399" selection-end="2399" vertical-scroll-proportion="0.8578256">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CCMenu.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Cocos2d-html5-v2.1.3/cocos2d/menu_nodes/CCMenu.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="444" column="108" selection-start="13923" selection-end="13923" vertical-scroll-proportion="-30.538462">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -104,8 +123,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Client/Client/Resources/src/controls/progress.js" />
-        <option value="$PROJECT_DIR$/test/Game/Resources/src/actionFactory.js" />
         <option value="$PROJECT_DIR$/Client/Client/Resources/main.js" />
         <option value="$PROJECT_DIR$/Client/Client/Resources/src/view/battleLayer.js" />
         <option value="$PROJECT_DIR$/Cocos2d-html5-v2.1.3/cocos2d/layers_scenes_transitions_nodes/CCTransitionPageTurn.js" />
@@ -120,6 +137,8 @@
         <option value="$PROJECT_DIR$/Client/Client/Resources/src/view/cardNode.js" />
         <option value="$PROJECT_DIR$/Client/Client/Resources/src/view/cardMenuItem.js" />
         <option value="$PROJECT_DIR$/Client/Client/Resources/src/model/card.js" />
+        <option value="$PROJECT_DIR$/Client/Client/Resources/src/controls/lazyMenu.js" />
+        <option value="$PROJECT_DIR$/Client/Client/Resources/src/controls/cloudLayer.js" />
       </list>
     </option>
   </component>
@@ -459,41 +478,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Client/Client/libs/javascript/bindings/generated/jsb_cocos2dx_auto_api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7652" column="0" selection-start="125065" selection-end="125065" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Cocos2d-html5-v2.1.3/cocos2d/layers_scenes_transitions_nodes/CCTransition.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1399" column="0" selection-start="42839" selection-end="42839" vertical-scroll-proportion="0.020631067">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/view/mainScene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="10" selection-start="1094" selection-end="1094" vertical-scroll-proportion="0.71565115">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/Client/Resources/main_binding.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="163" selection-start="2759" selection-end="2759" vertical-scroll-proportion="0.6953405">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/model/player.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="81" selection-start="1522" selection-end="1522" vertical-scroll-proportion="0.7921147">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/view/skillFactory.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="144" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.16726404">
@@ -529,20 +513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/view/cardNode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="159" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/view/battleLayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="49" selection-start="1141" selection-end="1167" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/view/cardDetails.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="15" selection-start="186" selection-end="197" vertical-scroll-proportion="0.0">
@@ -557,6 +527,15 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/model/card.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="25" selection-start="1400" selection-end="1400" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/view/cardMenuItem.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="24" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0">
@@ -564,12 +543,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/model/card.js">
+    <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/view/cardNode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="108" selection-start="1983" selection-end="1983" vertical-scroll-proportion="0.776583">
+        <state line="24" column="159" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/view/battleLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="49" selection-start="1141" selection-end="1167" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/model/player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="83" selection-start="642" selection-end="642" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Cocos2d-html5-v2.1.3/cocos2d/menu_nodes/CCMenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="444" column="108" selection-start="13923" selection-end="13923" vertical-scroll-proportion="-30.538462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Cocos2d-html5-v2.1.3/cocos2d/layers_scenes_transitions_nodes/CCLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1568" selection-end="1568" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/controls/cloudLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="49" selection-start="475" selection-end="475" vertical-scroll-proportion="0.4874552">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/Client/Resources/src/controls/lazyMenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="5" selection-start="2399" selection-end="2399" vertical-scroll-proportion="0.8578256">
+          <folding />
         </state>
       </provider>
     </entry>

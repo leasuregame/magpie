@@ -37,11 +37,10 @@ var BattlePlayer = cc.Class.extend({
         this._battleLogLen = this._battleLog.length;
         this._battleRoundIndex = 0;
         this.playARound();
-        this._scheduler.scheduleCallbackForTarget(this, this.playARound, 2.0, this._battleLogLen - 2, 0, false);
     },
 
     playARound : function() {
-//        this._scheduler.unscheduleCallbackForTarget(this, this.playARound);
+        this._scheduler.unscheduleCallbackForTarget(this, this.playARound);
 
         cc.log("\n\n\nBattlePlayer playARound " + this._battleRoundIndex);
 
@@ -55,16 +54,16 @@ var BattlePlayer = cc.Class.extend({
         this._tipLabel.setString(str);
 
         var delay = SkillFactory.normalAttack(this._cardList, battleARound, this._labelList, this._progressList);
-//        var delay = 1;
         this._battleRoundIndex += 1;
 
-//        if(this._battleRoundIndex < this._battleLogLen) {
-//            cc.log("set scheduler");
-//            this._scheduler.scheduleCallbackForTarget(this, this.playARound, delay, 1, 0, false);
-//        }
+        if(this._battleRoundIndex < this._battleLogLen) {
+            cc.log("set next round");
 
-        if(this._battleRoundIndex >= this._battleLogLen) {
-            cc.log("pop battle scene callback");
+            this._scheduler.scheduleCallbackForTarget(this, this.playARound, delay, 1, 0, false);
+        }
+        else {
+            cc.log("battle is over, set back MainScene");
+
             this._scheduler.scheduleCallbackForTarget(this, function() {
                 cc.log("pop battle scene");
                 cc.Director.getInstance().replaceScene(cc.TransitionTurnOffTiles.create(1, MainScene.create()));

@@ -6,9 +6,11 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 /*
 * 卡牌类
 * */
+
 
 var Card = cc.Node.extend({
     _databaseId : 0,         // 数据库对应ID
@@ -28,17 +30,13 @@ var Card = cc.Node.extend({
     _critProbability : 0.0,  // 卡牌暴击概率
     _missProbability : 0.0,  // 卡牌闪避概率
 
-    _sprite : null,
-    _menuItem : null,
-    _menuPlainItem : null,
-    _panel : null,
+    _cardNode : null,
+    _cardMenuItem : null,
+    _cardProgress : null,
 
-    ctor : function() {
-        this._super();
-    },
-
-    // 根据表格初始化
     init : function(databaseId, id, star, level, skillLevel, hp, damage) {
+        cc.log("Card init");
+
         this._super();
         this._databaseId = databaseId || 0;
         this._id = id;
@@ -50,6 +48,8 @@ var Card = cc.Node.extend({
     },
 
     initWithTable : function(row) {
+        cc.log("Card initWithTable");
+
         this.init(row.databaseId, row.id, row.star, row.level, row.skillLevel, row.hp, row.damage);
     },
 
@@ -57,29 +57,31 @@ var Card = cc.Node.extend({
 
     },
 
-    _sprite : cc.Sprite.create(""),
+    getCardNode : function() {
+        if(this._cardNode == null) {
+            this._cardNode = CardNode.create(this);
+        }
 
-    getMenuItem : function() {
-        var cardItem = 1;
+        return this._cardNode;
     },
 
-    releaseMenuItem : function() {
-
+    releaseCardNode : function() {
+        this._cardNode = null;
     },
 
-    getPlainMenuItem : function() {
-        var cardItem = 1;
+    getCardMenuItem : function() {
+        if(this._cardMenuItem == null) {
+            this._cardMenuItem = CardMenuItem.create(this);
+        }
+
+        return this._cardMenuItem;
     },
 
-    releasePlainMenuItem : function() {
-
+    releaseCardMenuItem : function() {
+        this._cardMenuItem = null;
     },
 
-    getPanel : function() {
-
-    },
-
-    releasePanel : function() {
-
+    getCardDetails : function() {
+        return CardDetails.create(this);
     }
 })

@@ -8,4 +8,4 @@ describe 'load data from xml file', ->
       TABLE_DIR + 'cards.xml'
     )
     
-    #res.exports.should.eql(null)
+    #res.exports.should.equal(null)

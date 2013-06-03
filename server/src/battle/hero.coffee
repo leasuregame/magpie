@@ -94,28 +94,33 @@ class Hero extends Module
 
   skillAttack: (enemys, callback) ->
     #console.log 'skill: ', @skill.type, 'count:', enemys.length
-    _step = {a: @idx, d: [], v: [], t: 1, ahp: @hp, dhp: []}
+    _step = {a: -@idx, d: [], e: [], r: [], ahp: @hp, dhp: []}
     # debug
     _step.type = @skill.type
+
+    if @skill.type is 'aoe'
+      console.log '-enemys-', enemys
     
     _len = enemys? and enemys.length
     _dmg = parseInt(@atk * @skill.effectValue())
     _dmg = parseInt(_dmg/_len) if _len > 1
 
     for enemy in enemys
-      _v = -_dmg
+      _e = -_dmg
+      _d = enemy.idx
       if enemy.isDodge()
-        _dmg = 0
-        _v = 0
+        # 闪避
+        _dmg = _e = 0
       else if @isCrit()
         # 暴击
-        _dmg *= @crit_factor 
-        _v = ['crit', -_dmg]
+        _dmg *= @crit_factor
+        _e = -_dmg
+        _d = -enemy.idx
 
-      enemy.damage _dmg, @
+      enemy.damage _dmg, @, _step
       
-      _step.d.push enemy.idx
-      _step.v.push _v
+      _step.d.push _d
+      _step.e.push _e
       # debug
       _step.dhp.push enemy.hp
       
@@ -124,9 +129,9 @@ class Hero extends Module
     @log _step     
 
   cure: (enemys, callback) ->
-    _step = {a: @idx, d: [], v: [], t: 1}
+    _step = {a: -@idx, d: [], v: [], t: 1}
     # debug
-    #_step.type = @skill.type
+    _step.type = @skill.type
     
     for enemy in enemys
       _hp = parseInt(enemy.hp * @skill.effectValue())
@@ -149,23 +154,27 @@ class Hero extends Module
       _dmg = @atk
 
       _v = -_dmg
+      _d = _hero.idx
       if _hero.isDodge()
         _dmg = 0
         _v = 0
       else if @isCrit()
         # 暴击
         _dmg *= @crit_factor 
-        _v = ['crit', -_dmg]
+        _v = -_dmg
+        _d = -_hero.idx # 负索引代表暴击
 
-      _hero.damage _dmg, @
+      _step = {a: @idx, d: [_d], e: [_v], r: [], death: _hero.death(), ahp: @hp, dhp: _hero.hp}
+
+      _hero.damage _dmg, @, _step
       callback _hero
 
-      @log {a: @idx, d: _hero.idx, v: _v, t: 0, death: _hero.death(), ahp: @hp, dhp: _hero.hp}
+      @log _step
       
     else
       throw new Error('Normal Attack Error: can not find target to be attacked.')
 
-  damage: (value, enemy) ->
+  damage: (value, enemy, step) ->
     # 检查辅助效果，伤害减少
     value = @sp?.dmgReduce(value) or value
 
@@ -175,7 +184,9 @@ class Hero extends Module
     _val = @sp?.dmgRebound(value) or 0
     if _val isnt 0
       enemy.damageOnly _val
-      @log {a: @idx, d: enemy.idx, v: ['rebound', -_val], t: 0}
+      step.r.push -_val
+    else
+      step.r.push null
 
     # debug
     console.log @player.name, @id, 'death' if @death()
@@ -184,6 +195,8 @@ class Hero extends Module
     @hp -= value
 
   log: (step)->
+    if step.r? and not _.some step.r
+      delete step.r
     battleLog.addStep(step)
 
   death: ->

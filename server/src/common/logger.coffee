@@ -23,6 +23,11 @@ log4js.configure(
       category: "battle-log"
       type: "file"
       filename: "battle-log.log"
+    },
+    {
+      category: 'application-log'
+      type: 'file'
+      filename: '../logs/application-log.log'
     }
   ]
 )

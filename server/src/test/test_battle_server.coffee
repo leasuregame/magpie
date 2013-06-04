@@ -27,11 +27,11 @@ vs66 = (cb) ->
     battle = null
     # 小芳
     attacker = new Player(result[test_data.player_id5])
-    attacker.setLineUp '00:4,01:9,02:15,10:129,11:195,12:204'
+    attacker.setLineUp '00:4,01:9,02:129,10:184,11:24,12:204'
 
     # 小丽
     defender = new Player(result[test_data.player_id6])
-    defender.setLineUp '00:50,01:54,02:59,10:139,11:174,12:235'
+    defender.setLineUp '00:50,01:54,02:194,10:200,11:44,12:235'
 
     battle = new Battle(attacker, defender)
 

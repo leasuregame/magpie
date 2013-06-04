@@ -14,26 +14,30 @@ exports = module.exports =
 
   laodTestData: ->
     aps = all_players()
+    console.log aps.length, '-a-'
     for p in aps
-      Player.create p, (err, res) ->
-        console.log 'create player data', err#, res
-        if err
-          console.log '---------error occur when create player data------------'
+      console.log p.id
+    for p in aps
+      do (p) ->
+        Player.create p, (err, res) ->
+          console.log 'create player data', err, p.id
+          if err
+            console.log '---------error occur when create player data------------', p.id
     return aps
 
   clearTestData: (aps)->
     for p in aps
-      Player.remove p.id, (err, res) ->
-        console.log 'delete player data', err#, res
-        if err
-          console.log '---------error occur when delete player data------------'
+      do (p) ->
+        Player.remove p.id, (err, res) ->
+          console.log 'delete player data', err, p.id
+          if err
+            console.log '---------error occur when delete player data------------', p.id
 
 all_players = ->
-  res = player_data
-  .concat(player_data_hight_star)
-  .concat(player_data_mass())
+  player_data
+  #.concat(player_data_hight_star)
+  #.concat(player_data_mass())
   .concat(player_random())
-  return res
 
 randomHeros = (num)->
   _res = []
@@ -54,7 +58,7 @@ player_random = ->
 
   console.log m, n, cards
 
-  ps = player_data_hight_star.slice(0)
+  ps = _.clone(player_data_hight_star)
   ps[0].id = 'aa20df78-c748-11e2-a527-377d32fa9d96'   
   ps[0].hero_ids = cards[0...m]
 
@@ -63,25 +67,25 @@ player_random = ->
   ps
 
 player_data_mass = ->
-  ps = player_data_hight_star.slice(0)
+  ps = _.clone(player_data_hight_star)
   ps[0].id = 'aa20df76-c748-11e2-a527-377d32fa9d96'
   ps[0].hero_ids = [
-    {id: 1, lv: 52, star: 4, card_id: 4, skill_lv: 1}
-    {id: 2, lv: 45, star: 4, card_id: 9, skill_lv: 1}
-    {id: 3, lv: 60, star: 5, card_id: 15, skill_lv: 1}
-    {id: 13, lv: 37, star:4, card_id: 129, skill_lv: 1}
-    {id: 16, lv: 46, star: 5, card_id: 195, skill_lv: 1}
-    {id: 17, lv: 46, star: 4, card_id: 204, skill_lv: 1}
+    {id: 1, lv: 52, star: 4, card_id: 4, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]} #1
+    {id: 2, lv: 45, star: 4, card_id: 9, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]} #2
+    {id: 3, lv: 37, star:4, card_id: 129, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
+    {id: 4, lv: 37, star:4, card_id: 184, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
+    {id: 5, lv: 55, star: 4, card_id: 24, skill_lv: 1, sp_value: [{name: 'akt_improve', value: 50}]}
+    {id: 6, lv: 46, star: 4, card_id: 204, skill_lv: 1, sp_value: [{name: 'dmg_rebound', value: 50}]}
   ]
 
   ps[1].id = 'aa20df77-c748-11e2-a527-377d32fa9d96'
   ps[1].hero_ids = [
-    {id: 10, lv: 60, star: 5, card_id: 50, skill_lv: 1}
-    {id: 11, lv: 35, star: 4, card_id: 54, skill_lv: 1}
-    {id: 12, lv: 40, star: 4, card_id: 59, skill_lv: 1}
-    {id: 14, lv: 40, star:5, card_id: 139, skill_lv: 1}
-    {id: 15, lv: 44, star: 4, card_id: 174, skill_lv: 1}
-    {id: 18, lv: 46, star: 5, card_id: 235, skill_lv: 1}
+    {id: 7, lv: 37, star:4, card_id: 194, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
+    {id: 8, lv: 40, star:5, card_id: 200, skill_lv: 1, sp_value: [{name: 'dmg_reduce', value: 50}]}
+    {id: 9, lv: 56, star: 4, card_id: 44, skill_lv: 1, sp_value: [{name: 'crit', value: 50}]}
+    {id: 10, lv: 60, star: 5, card_id: 50, skill_lv: 1, sp_value: [{name: 'crit', value: 50}]}
+    {id: 11, lv: 35, star: 4, card_id: 54, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
+    {id: 12, lv: 46, star: 5, card_id: 235, skill_lv: 1, sp_value: [{name: 'dmg_rebound', value: 50}]}
   ]
   ps
 
@@ -132,12 +136,12 @@ player_data = [
     power: 60
     money: 100000
     hero_ids:[
-      {id: 1, lv: 3, star: 2, card_id: 1, skill_lv: 1}
-      {id: 2, lv: 4, star: 2, card_id: 2, skill_lv: 1}
-      {id: 3, lv: 5, star: 2, card_id: 3, skill_lv: 1}
-      {id: 4, lv: 10, star: 2, card_id: 4, skill_lv: 1}
-      {id: 5, lv: 30, star: 2, card_id: 5, skill_lv: 1}
-      {id: 6, lv: 40, star: 2, card_id: 6, skill_lv: 1}
+      {id: 1, lv: 52, star: 4, card_id: 4, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]} #1
+      {id: 2, lv: 45, star: 4, card_id: 9, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]} #2
+      {id: 3, lv: 37, star:4, card_id: 129, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
+      {id: 4, lv: 37, star:4, card_id: 184, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
+      {id: 5, lv: 55, star: 4, card_id: 24, skill_lv: 1, sp_value: [{name: 'akt_improve', value: 50}]}
+      {id: 6, lv: 46, star: 4, card_id: 204, skill_lv: 1, sp_value: [{name: 'dmg_rebound', value: 50}]}
     ]
   },
   {
@@ -149,12 +153,12 @@ player_data = [
     power: 45
     money: 120000
     hero_ids:[
-      {id: 7, lv: 3, star: 2, card_id: 7, skill_lv: 1}
-      {id: 8, lv: 4, star: 2, card_id: 8, skill_lv: 1}
-      {id: 9, lv: 5, star: 2, card_id: 9, skill_lv: 1}
-      {id: 10, lv: 10, star: 2, card_id: 10, skill_lv: 1}
-      {id: 11, lv: 30, star: 2, card_id: 11, skill_lv: 1}
-      {id: 12, lv: 40, star: 2, card_id: 12, skill_lv: 1}
+      {id: 7, lv: 37, star:4, card_id: 194, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
+      {id: 8, lv: 40, star:5, card_id: 200, skill_lv: 1, sp_value: [{name: 'dmg_reduce', value: 50}]}
+      {id: 9, lv: 56, star: 4, card_id: 44, skill_lv: 1, sp_value: [{name: 'crit', value: 50}]}
+      {id: 10, lv: 60, star: 5, card_id: 50, skill_lv: 1, sp_value: [{name: 'crit', value: 50}]}
+      {id: 11, lv: 35, star: 4, card_id: 54, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
+      {id: 12, lv: 46, star: 5, card_id: 235, skill_lv: 1, sp_value: [{name: 'dmg_rebound', value: 50}]}
     ]
   }
 ]
@@ -200,6 +204,11 @@ hero_data = [
   # aoe
   {id: 13, lv: 37, star:4, card_id: 129, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
   {id: 14, lv: 40, star:5, card_id: 139, skill_lv: 1, sp_value: [{name: 'dmg_reduce', value: 50}]}
+  {id: 19, lv: 37, star:4, card_id: 179, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
+  {id: 20, lv: 40, star:5, card_id: 190, skill_lv: 1, sp_value: [{name: 'dmg_reduce', value: 50}]}
+  {id: 21, lv: 37, star:4, card_id: 184, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
+  {id: 23, lv: 37, star:4, card_id: 194, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
+  {id: 24, lv: 40, star:5, card_id: 200, skill_lv: 1, sp_value: [{name: 'dmg_reduce', value: 50}]}
 
   # aoe rate
   {id: 15, lv: 44, star: 4, card_id: 174, skill_lv: 1, sp_value: [{name: 'dmg_reduce', value: 50}]}

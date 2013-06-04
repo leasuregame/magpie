@@ -115,6 +115,7 @@ Hero = (function(_super) {
   Hero.prototype.usingSkill = function(callback) {
     var doNothing;
 
+    log.info(this.name, 'using skill: {name:', this.skill.name, 'type:', this.skill.type, '}');
     doNothing = function() {};
     switch (this.skill.type) {
       case 'single_fight':
@@ -129,17 +130,14 @@ Hero = (function(_super) {
   };
 
   Hero.prototype.skillAttack = function(enemys, callback) {
-    var enemy, _dmg, _i, _len, _len1, _step, _v;
+    var enemy, _d, _dmg, _e, _i, _len, _len1, _step;
 
     _step = {
-      a: this.idx,
+      a: -this.idx,
       d: [],
-      v: [],
-      t: 1,
-      ahp: this.hp,
-      dhp: []
+      e: [],
+      r: []
     };
-    _step.type = this.skill.type;
     _len = (enemys != null) && enemys.length;
     _dmg = parseInt(this.atk * this.skill.effectValue());
     if (_len > 1) {
@@ -147,75 +145,78 @@ Hero = (function(_super) {
     }
     for (_i = 0, _len1 = enemys.length; _i < _len1; _i++) {
       enemy = enemys[_i];
-      _v = -_dmg;
+      _e = -_dmg;
+      _d = enemy.idx;
       if (enemy.isDodge()) {
-        _dmg = 0;
-        _v = 0;
+        _dmg = _e = 0;
+        log.info(enemy.name, '闪避');
       } else if (this.isCrit()) {
         _dmg *= this.crit_factor;
-        _v = ['crit', -_dmg];
+        _e = -_dmg;
+        _d = -enemy.idx;
+        log.info(enemy.name, '暴击');
       }
-      enemy.damage(_dmg, this);
-      _step.d.push(enemy.idx);
-      _step.v.push(_v);
-      _step.dhp.push(enemy.hp);
+      enemy.damage(_dmg, this, _step);
+      _step.d.push(_d);
+      _step.e.push(_e);
       callback(enemy);
     }
     return this.log(_step);
   };
 
   Hero.prototype.cure = function(enemys, callback) {
-    var enemy, _hp, _i, _len, _step;
+    var enemy, _hp, _i, _len, _results, _step;
 
     _step = {
-      a: this.idx,
+      a: -this.idx,
       d: [],
-      v: [],
-      t: 1
+      e: []
     };
+    _results = [];
     for (_i = 0, _len = enemys.length; _i < _len; _i++) {
       enemy = enemys[_i];
-      _hp = parseInt(enemy.hp * this.skill.effectValue());
+      _hp = parseInt(this.atk * this.skill.effectValue());
       enemy.damageOnly(-_hp);
       _step.d.push(enemy.idx);
-      _step.v.push(_hp);
+      _step.e.push(_hp);
       callback(enemy);
+      _results.push(this.log(_step));
     }
-    return this.log(_step);
+    return _results;
   };
 
   Hero.prototype.normalAttack = function(callback) {
-    var _dmg, _hero, _v;
+    var _d, _dmg, _e, _hero, _step;
 
     _hero = this.player.enemy.herosToBeAttacked('default', this.pos);
     if (_.isArray(_hero) && _hero.length === 1) {
       _hero = _hero[0];
       _dmg = this.atk;
-      _v = -_dmg;
+      _e = -_dmg;
+      _d = _hero.idx;
       if (_hero.isDodge()) {
         _dmg = 0;
-        _v = 0;
+        _e = 0;
       } else if (this.isCrit()) {
         _dmg *= this.crit_factor;
-        _v = ['crit', -_dmg];
+        _e = -_dmg;
+        _d = -_hero.idx;
       }
-      _hero.damage(_dmg, this);
-      callback(_hero);
-      return this.log({
+      _step = {
         a: this.idx,
-        d: _hero.idx,
-        v: _v,
-        t: 0,
-        death: _hero.death(),
-        ahp: this.hp,
-        dhp: _hero.hp
-      });
+        d: [_d],
+        e: [_e],
+        r: []
+      };
+      _hero.damage(_dmg, this, _step);
+      callback(_hero);
+      return this.log(_step);
     } else {
       throw new Error('Normal Attack Error: can not find target to be attacked.');
     }
   };
 
-  Hero.prototype.damage = function(value, enemy) {
+  Hero.prototype.damage = function(value, enemy, step) {
     var _ref1, _ref2, _val;
 
     value = ((_ref1 = this.sp) != null ? _ref1.dmgReduce(value) : void 0) || value;
@@ -223,15 +224,9 @@ Hero = (function(_super) {
     _val = ((_ref2 = this.sp) != null ? _ref2.dmgRebound(value) : void 0) || 0;
     if (_val !== 0) {
       enemy.damageOnly(_val);
-      this.log({
-        a: this.idx,
-        d: enemy.idx,
-        v: ['rebound', -_val],
-        t: 0
-      });
-    }
-    if (this.death()) {
-      return console.log(this.player.name, this.id, 'death');
+      return step.r.push(-_val);
+    } else {
+      return step.r.push(null);
     }
   };
 
@@ -240,6 +235,9 @@ Hero = (function(_super) {
   };
 
   Hero.prototype.log = function(step) {
+    if ((step.r != null) && !_.some(step.r)) {
+      delete step.r;
+    }
     return battleLog.addStep(step);
   };
 

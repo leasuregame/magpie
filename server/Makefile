@@ -15,6 +15,9 @@ stopTT:
 runserver:
 	./node_modules/.bin/coffee ./src/test/test_battle_server.coffee
 
+debug:
+	node ./node_modules/node-inspector/bin/inspector.js & node --debug ./lib/test/test_battle_server.js
+
 build:
 	sh ./scripts/build.sh
 

@@ -16,17 +16,25 @@ exports = module.exports = {
   player_id7: 'aa20df78-c748-11e2-a527-377d32fa9d96',
   player_id8: 'aa20df79-c748-11e2-a527-377d32fa9d96',
   laodTestData: function() {
-    var aps, p, _i, _len;
+    var aps, p, _fn, _i, _j, _len, _len1;
 
     aps = all_players();
+    console.log(aps.length, '-a-');
     for (_i = 0, _len = aps.length; _i < _len; _i++) {
       p = aps[_i];
-      Player.create(p, function(err, res) {
-        console.log('create player data', err);
+      console.log(p.id);
+    }
+    _fn = function(p) {
+      return Player.create(p, function(err, res) {
+        console.log('create player data', err, p.id);
         if (err) {
-          return console.log('---------error occur when create player data------------');
+          return console.log('---------error occur when create player data------------', p.id);
         }
       });
+    };
+    for (_j = 0, _len1 = aps.length; _j < _len1; _j++) {
+      p = aps[_j];
+      _fn(p);
     }
     return aps;
   },
@@ -36,22 +44,21 @@ exports = module.exports = {
     _results = [];
     for (_i = 0, _len = aps.length; _i < _len; _i++) {
       p = aps[_i];
-      _results.push(Player.remove(p.id, function(err, res) {
-        console.log('delete player data', err);
-        if (err) {
-          return console.log('---------error occur when delete player data------------');
-        }
-      }));
+      _results.push((function(p) {
+        return Player.remove(p.id, function(err, res) {
+          console.log('delete player data', err, p.id);
+          if (err) {
+            return console.log('---------error occur when delete player data------------', p.id);
+          }
+        });
+      })(p));
     }
     return _results;
   }
 };
 
 all_players = function() {
-  var res;
-
-  res = player_data.concat(player_data_hight_star).concat(player_data_mass()).concat(player_random());
-  return res;
+  return player_data.concat(player_data_mass());
 };
 
 randomHeros = function(num) {
@@ -84,7 +91,7 @@ player_random = function() {
   n = _.random(1, 6);
   cards = randomHeros(m + n);
   console.log(m, n, cards);
-  ps = player_data_hight_star.slice(0);
+  ps = _.clone(player_data_hight_star);
   ps[0].id = 'aa20df78-c748-11e2-a527-377d32fa9d96';
   ps[0].hero_ids = cards.slice(0, m);
   ps[1].id = 'aa20df79-c748-11e2-a527-377d32fa9d96';
@@ -95,7 +102,7 @@ player_random = function() {
 player_data_mass = function() {
   var ps;
 
-  ps = player_data_hight_star.slice(0);
+  ps = _.clone(player_data_hight_star);
   ps[0].id = 'aa20df76-c748-11e2-a527-377d32fa9d96';
   ps[0].hero_ids = [
     {
@@ -103,77 +110,149 @@ player_data_mass = function() {
       lv: 52,
       star: 4,
       card_id: 4,
-      skill_lv: 1
+      skill_lv: 1,
+      sp_value: [
+        {
+          name: 'dodge',
+          value: 50
+        }
+      ]
     }, {
       id: 2,
       lv: 45,
       star: 4,
       card_id: 9,
-      skill_lv: 1
+      skill_lv: 1,
+      sp_value: [
+        {
+          name: 'dodge',
+          value: 50
+        }
+      ]
     }, {
       id: 3,
-      lv: 60,
-      star: 5,
-      card_id: 15,
-      skill_lv: 1
-    }, {
-      id: 13,
       lv: 37,
       star: 4,
       card_id: 129,
-      skill_lv: 1
+      skill_lv: 1,
+      sp_value: [
+        {
+          name: 'hp_improve',
+          value: 50
+        }
+      ]
     }, {
-      id: 16,
-      lv: 46,
-      star: 5,
-      card_id: 195,
-      skill_lv: 1
+      id: 4,
+      lv: 37,
+      star: 4,
+      card_id: 184,
+      skill_lv: 1,
+      sp_value: [
+        {
+          name: 'hp_improve',
+          value: 50
+        }
+      ]
     }, {
-      id: 17,
+      id: 5,
+      lv: 55,
+      star: 4,
+      card_id: 24,
+      skill_lv: 1,
+      sp_value: [
+        {
+          name: 'akt_improve',
+          value: 50
+        }
+      ]
+    }, {
+      id: 6,
       lv: 46,
       star: 4,
       card_id: 204,
-      skill_lv: 1
+      skill_lv: 1,
+      sp_value: [
+        {
+          name: 'dmg_rebound',
+          value: 50
+        }
+      ]
     }
   ];
   ps[1].id = 'aa20df77-c748-11e2-a527-377d32fa9d96';
   ps[1].hero_ids = [
     {
+      id: 7,
+      lv: 37,
+      star: 4,
+      card_id: 194,
+      skill_lv: 1,
+      sp_value: [
+        {
+          name: 'hp_improve',
+          value: 50
+        }
+      ]
+    }, {
+      id: 8,
+      lv: 40,
+      star: 5,
+      card_id: 200,
+      skill_lv: 1,
+      sp_value: [
+        {
+          name: 'dmg_reduce',
+          value: 50
+        }
+      ]
+    }, {
+      id: 9,
+      lv: 56,
+      star: 4,
+      card_id: 44,
+      skill_lv: 1,
+      sp_value: [
+        {
+          name: 'crit',
+          value: 50
+        }
+      ]
+    }, {
       id: 10,
       lv: 60,
       star: 5,
       card_id: 50,
-      skill_lv: 1
+      skill_lv: 1,
+      sp_value: [
+        {
+          name: 'crit',
+          value: 50
+        }
+      ]
     }, {
       id: 11,
       lv: 35,
       star: 4,
       card_id: 54,
-      skill_lv: 1
+      skill_lv: 1,
+      sp_value: [
+        {
+          name: 'hp_improve',
+          value: 50
+        }
+      ]
     }, {
       id: 12,
-      lv: 40,
-      star: 4,
-      card_id: 59,
-      skill_lv: 1
-    }, {
-      id: 14,
-      lv: 40,
-      star: 5,
-      card_id: 139,
-      skill_lv: 1
-    }, {
-      id: 15,
-      lv: 44,
-      star: 4,
-      card_id: 174,
-      skill_lv: 1
-    }, {
-      id: 18,
       lv: 46,
       star: 5,
       card_id: 235,
-      skill_lv: 1
+      skill_lv: 1,
+      sp_value: [
+        {
+          name: 'dmg_rebound',
+          value: 50
+        }
+      ]
     }
   ];
   return ps;
@@ -286,40 +365,76 @@ player_data = [
     hero_ids: [
       {
         id: 1,
-        lv: 3,
-        star: 2,
-        card_id: 1,
-        skill_lv: 1
+        lv: 52,
+        star: 4,
+        card_id: 4,
+        skill_lv: 1,
+        sp_value: [
+          {
+            name: 'dodge',
+            value: 50
+          }
+        ]
       }, {
         id: 2,
-        lv: 4,
-        star: 2,
-        card_id: 2,
-        skill_lv: 1
+        lv: 45,
+        star: 4,
+        card_id: 9,
+        skill_lv: 1,
+        sp_value: [
+          {
+            name: 'dodge',
+            value: 50
+          }
+        ]
       }, {
         id: 3,
-        lv: 5,
-        star: 2,
-        card_id: 3,
-        skill_lv: 1
+        lv: 37,
+        star: 4,
+        card_id: 129,
+        skill_lv: 1,
+        sp_value: [
+          {
+            name: 'hp_improve',
+            value: 50
+          }
+        ]
       }, {
         id: 4,
-        lv: 10,
-        star: 2,
-        card_id: 4,
-        skill_lv: 1
+        lv: 37,
+        star: 4,
+        card_id: 184,
+        skill_lv: 1,
+        sp_value: [
+          {
+            name: 'hp_improve',
+            value: 50
+          }
+        ]
       }, {
         id: 5,
-        lv: 30,
-        star: 2,
-        card_id: 5,
-        skill_lv: 1
+        lv: 55,
+        star: 4,
+        card_id: 24,
+        skill_lv: 1,
+        sp_value: [
+          {
+            name: 'akt_improve',
+            value: 50
+          }
+        ]
       }, {
         id: 6,
-        lv: 40,
-        star: 2,
-        card_id: 6,
-        skill_lv: 1
+        lv: 46,
+        star: 4,
+        card_id: 204,
+        skill_lv: 1,
+        sp_value: [
+          {
+            name: 'dmg_rebound',
+            value: 50
+          }
+        ]
       }
     ]
   }, {
@@ -332,40 +447,76 @@ player_data = [
     hero_ids: [
       {
         id: 7,
-        lv: 3,
-        star: 2,
-        card_id: 7,
-        skill_lv: 1
+        lv: 37,
+        star: 4,
+        card_id: 194,
+        skill_lv: 1,
+        sp_value: [
+          {
+            name: 'hp_improve',
+            value: 50
+          }
+        ]
       }, {
         id: 8,
-        lv: 4,
-        star: 2,
-        card_id: 8,
-        skill_lv: 1
+        lv: 40,
+        star: 5,
+        card_id: 200,
+        skill_lv: 1,
+        sp_value: [
+          {
+            name: 'dmg_reduce',
+            value: 50
+          }
+        ]
       }, {
         id: 9,
-        lv: 5,
-        star: 2,
-        card_id: 9,
-        skill_lv: 1
+        lv: 56,
+        star: 4,
+        card_id: 44,
+        skill_lv: 1,
+        sp_value: [
+          {
+            name: 'crit',
+            value: 50
+          }
+        ]
       }, {
         id: 10,
-        lv: 10,
-        star: 2,
-        card_id: 10,
-        skill_lv: 1
+        lv: 60,
+        star: 5,
+        card_id: 50,
+        skill_lv: 1,
+        sp_value: [
+          {
+            name: 'crit',
+            value: 50
+          }
+        ]
       }, {
         id: 11,
-        lv: 30,
-        star: 2,
-        card_id: 11,
-        skill_lv: 1
+        lv: 35,
+        star: 4,
+        card_id: 54,
+        skill_lv: 1,
+        sp_value: [
+          {
+            name: 'hp_improve',
+            value: 50
+          }
+        ]
       }, {
         id: 12,
-        lv: 40,
-        star: 2,
-        card_id: 12,
-        skill_lv: 1
+        lv: 46,
+        star: 5,
+        card_id: 235,
+        skill_lv: 1,
+        sp_value: [
+          {
+            name: 'dmg_rebound',
+            value: 50
+          }
+        ]
       }
     ]
   }
@@ -553,6 +704,66 @@ hero_data = [
     lv: 40,
     star: 5,
     card_id: 139,
+    skill_lv: 1,
+    sp_value: [
+      {
+        name: 'dmg_reduce',
+        value: 50
+      }
+    ]
+  }, {
+    id: 19,
+    lv: 37,
+    star: 4,
+    card_id: 179,
+    skill_lv: 1,
+    sp_value: [
+      {
+        name: 'hp_improve',
+        value: 50
+      }
+    ]
+  }, {
+    id: 20,
+    lv: 40,
+    star: 5,
+    card_id: 190,
+    skill_lv: 1,
+    sp_value: [
+      {
+        name: 'dmg_reduce',
+        value: 50
+      }
+    ]
+  }, {
+    id: 21,
+    lv: 37,
+    star: 4,
+    card_id: 184,
+    skill_lv: 1,
+    sp_value: [
+      {
+        name: 'hp_improve',
+        value: 50
+      }
+    ]
+  }, {
+    id: 23,
+    lv: 37,
+    star: 4,
+    card_id: 194,
+    skill_lv: 1,
+    sp_value: [
+      {
+        name: 'hp_improve',
+        value: 50
+      }
+    ]
+  }, {
+    id: 24,
+    lv: 40,
+    star: 5,
+    card_id: 200,
     skill_lv: 1,
     sp_value: [
       {

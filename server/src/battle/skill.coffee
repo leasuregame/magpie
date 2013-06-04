@@ -1,6 +1,7 @@
 Module = require '../common/module'
 utility = require '../common/utility'
 _ = require 'underscore'
+log = require '../common/logger'
 
 
 defautls = 
@@ -45,9 +46,16 @@ class Skill extends Module
     @_player()?.round_num
 
   check: ->
+    # if @type in ['aoe', 'mult_heal']
+    #   tag = @getTargets()
+    #   log.warn @type, @scope
+    #   log.warn _.isArray(tag) and tag.length > 1
+    #   log.warn @_satisfy()
+
     utility.hitRate(@getRate()) and @_satisfy()
 
   _satisfy: ->
+    
     if @type in ['aoe', 'mult_heal']
       tag = @getTargets()
       if _.isArray(tag) and tag.length > 1

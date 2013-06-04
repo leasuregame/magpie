@@ -81,7 +81,7 @@ class Hero extends Module
     @sp.isCrit()
 
   usingSkill: (callback)->
-    #console.log @name, 'using skill...', @skill.id, @skill.type ,@skill.name
+    log.info @name, 'using skill: {name:', @skill.name, 'type:', @skill.type, '}'
     doNothing = ->
 
     switch @skill.type
@@ -93,17 +93,14 @@ class Hero extends Module
         doNothing()
 
   skillAttack: (enemys, callback) ->
-    #console.log 'skill: ', @skill.type, 'count:', enemys.length
-    _step = {a: -@idx, d: [], e: [], r: [], ahp: @hp, dhp: []}
-    # debug
-    _step.type = @skill.type
-
-    if @skill.type is 'aoe'
-      console.log '-enemys-', enemys
+    _step = {a: -@idx, d: [], e: [], r: []} 
     
     _len = enemys? and enemys.length
     _dmg = parseInt(@atk * @skill.effectValue())
     _dmg = parseInt(_dmg/_len) if _len > 1
+
+    # if @skill.type is 'aoe'
+    #   _step.r.push 'aoe'
 
     for enemy in enemys
       _e = -_dmg
@@ -111,41 +108,38 @@ class Hero extends Module
       if enemy.isDodge()
         # 闪避
         _dmg = _e = 0
+        log.info enemy.name, '闪避'
       else if @isCrit()
         # 暴击
         _dmg *= @crit_factor
         _e = -_dmg
         _d = -enemy.idx
+        log.info enemy.name, '暴击'
 
       enemy.damage _dmg, @, _step
       
       _step.d.push _d
       _step.e.push _e
-      # debug
-      _step.dhp.push enemy.hp
       
       callback enemy
 
     @log _step     
 
   cure: (enemys, callback) ->
-    _step = {a: -@idx, d: [], v: [], t: 1}
-    # debug
-    _step.type = @skill.type
+    _step = {a: -@idx, d: [], e: []}
     
     for enemy in enemys
-      _hp = parseInt(enemy.hp * @skill.effectValue())
+      _hp = parseInt(@.atk * @skill.effectValue())
       enemy.damageOnly -_hp
 
       _step.d.push enemy.idx
-      _step.v.push _hp
+      _step.e.push _hp
 
       callback enemy
 
-    @log _step
-  normalAttack: (callback) ->
-    #console.log 'normal attack:', "player id: #{@player.id}, enemy id: #{@player.enemy.id}, hero id: #{@id}, pos: #{@pos}"
-    
+      @log _step
+
+  normalAttack: (callback) ->    
     _hero = @player.enemy.herosToBeAttacked 'default', @pos
     
     if _.isArray(_hero) and _hero.length is 1
@@ -153,18 +147,18 @@ class Hero extends Module
       
       _dmg = @atk
 
-      _v = -_dmg
+      _e = -_dmg
       _d = _hero.idx
       if _hero.isDodge()
         _dmg = 0
-        _v = 0
+        _e = 0
       else if @isCrit()
         # 暴击
         _dmg *= @crit_factor 
-        _v = -_dmg
+        _e = -_dmg
         _d = -_hero.idx # 负索引代表暴击
 
-      _step = {a: @idx, d: [_d], e: [_v], r: [], death: _hero.death(), ahp: @hp, dhp: _hero.hp}
+      _step = {a: @idx, d: [_d], e: [_e], r: []}
 
       _hero.damage _dmg, @, _step
       callback _hero
@@ -187,9 +181,6 @@ class Hero extends Module
       step.r.push -_val
     else
       step.r.push null
-
-    # debug
-    console.log @player.name, @id, 'death' if @death()
 
   damageOnly: (value) ->
     @hp -= value

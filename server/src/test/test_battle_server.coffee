@@ -22,7 +22,7 @@ vs66 = (cb) ->
   aps = test_data.laodTestData()
 
   PlayerManager.fetchMany [test_data.player_id5, test_data.player_id6], (err, result) ->
-    console.log err, result
+    #console.log err, result
 
     battle = null
     # 小芳
@@ -51,7 +51,7 @@ vs = (cb) ->
   aps = test_data.laodTestData()
 
   PlayerManager.fetchMany [test_data.player_id7, test_data.player_id8], (err, result) ->
-    console.log err, result
+    #console.log err, result
 
     battle = null
     # 小芳

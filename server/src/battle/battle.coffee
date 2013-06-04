@@ -1,4 +1,5 @@
 battleLog = require './battle_log'
+log = require '../common/logger'
 
 class Base
   constructor: (attacker, defender) ->
@@ -40,6 +41,8 @@ class Battle extends Base
     battleLog.set('enemy', _enm)
     battleLog.set('me', {cards: @attacker.cards()})
 
+    log.info '*** 战斗开始 ***'
+
   execute: ->
     while not @isOver()
       @round.process()
@@ -48,6 +51,8 @@ class Battle extends Base
   end: ->
     battleLog.setWinner( 'own' ) if @defender.death()
     battleLog.setWinner( 'enemy' ) if @attacker.death()
+
+    log.info '*** 战斗结束 ***'
 
 class Round extends Base
   constructor: ->
@@ -73,7 +78,7 @@ class Round extends Base
 
   start: ->
     @setShootCount()
-    console.log 'round: ', @round_num
+    log.info "*** 回合 #{@round_num} 开始 ***"
 
   execute: () ->
     while not @isOver()
@@ -84,6 +89,8 @@ class Round extends Base
     @setShootCount()
     @attacker.reset()
     @defender.reset()
+
+    log.info "*** 回合 #{@round_num} 结束 ***"
     
 class Attack extends Base
   constructor: ->
@@ -92,6 +99,7 @@ class Attack extends Base
   execute: () ->
     _attack = (atker, dfder) ->
       atker.attack (hero) ->
+        # bug, 当卡牌出手后，没秒了，出手次数比实际要出手的次数少了一次
         #dfder.shootCount -= 1 if hero.death()
 
       atker.nextHero()

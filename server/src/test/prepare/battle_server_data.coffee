@@ -14,13 +14,11 @@ exports = module.exports =
 
   laodTestData: ->
     aps = all_players()
-    console.log aps.length, '-a-'
-    for p in aps
-      console.log p.id
+    
     for p in aps
       do (p) ->
         Player.create p, (err, res) ->
-          console.log 'create player data', err, p.id
+          #console.log 'create player data', err, p.id
           if err
             console.log '---------error occur when create player data------------', p.id
     return aps
@@ -29,7 +27,7 @@ exports = module.exports =
     for p in aps
       do (p) ->
         Player.remove p.id, (err, res) ->
-          console.log 'delete player data', err, p.id
+          #console.log 'delete player data', err, p.id
           if err
             console.log '---------error occur when delete player data------------', p.id
 

@@ -81,7 +81,7 @@ class Hero extends Module
     @sp.isCrit()
 
   usingSkill: (callback)->
-    log.info @name, 'using skill: {name:', @skill.name, 'type:', @skill.type, '}'
+    log.info @name, '使用技能', @skill.name, @skill.type
     doNothing = ->
 
     switch @skill.type
@@ -116,6 +116,8 @@ class Hero extends Module
         _d = -enemy.idx
         log.info enemy.name, '暴击'
 
+      log.info "#{enemy.name} 受到伤害 #{_dmg}"
+      
       enemy.damage _dmg, @, _step
       
       _step.d.push _d
@@ -136,8 +138,9 @@ class Hero extends Module
       _step.e.push _hp
 
       callback enemy
+      log.info "#{enemy.name} 加血 #{_hp}"
 
-      @log _step
+    @log _step
 
   normalAttack: (callback) ->    
     _hero = @player.enemy.herosToBeAttacked 'default', @pos
@@ -160,12 +163,15 @@ class Hero extends Module
 
       _step = {a: @idx, d: [_d], e: [_e], r: []}
 
+      log.info "#{_hero.name} 受到伤害 #{_dmg}"
+
       _hero.damage _dmg, @, _step
       callback _hero
-
+      
       @log _step
       
     else
+      log.error "普通攻击：找不到对方可攻击的卡牌"
       throw new Error('Normal Attack Error: can not find target to be attacked.')
 
   damage: (value, enemy, step) ->
@@ -179,11 +185,16 @@ class Hero extends Module
     if _val isnt 0
       enemy.damageOnly _val
       step.r.push -_val
+      log.info "伤害反弹给 #{enemy.name}, #{_val}"
     else
       step.r.push null
 
+    log.info "#{@name} 死亡" if @death()
+
   damageOnly: (value) ->
     @hp -= value
+
+    log.info "#{@name} 死亡" if @death()
 
   log: (step)->
     if step.r? and not _.some step.r

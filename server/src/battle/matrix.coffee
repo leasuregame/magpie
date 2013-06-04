@@ -75,7 +75,7 @@ class Matrix
     null
 
   current: ->
-    @curIndex and @get(@curIndex) or null
+    _hero = @curIndex and @get(@curIndex) or null
     # for el in @all()
     #   return el if el?
 

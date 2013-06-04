@@ -5,6 +5,7 @@ manager = require '../model/player'
 tab = require '../model/table'
 _ = require 'underscore'
 utility = require '../common/utility'
+log = require '../common/logger'
 
 class Player extends Module
   @table: 'player'
@@ -92,11 +93,9 @@ class Player extends Module
   attack: (callback) ->
     _hero = @currentHero()
     if _hero is null or _hero.death()
-      #console.log @name, 'death:', @death(), @aliveHeros()
-      bl = require './battle_log'
-      console.log JSON.stringify bl.reports()
-      #throw new Error('no card alive')
+      log.warn "玩家 #{@name} 拿不到当前卡牌，或者没有可用的牌可出了。卡牌：#{_hero.name}, 死亡状态：#{_hero.death()}"
     else
+      log.info "#{@name} 出手", _hero.name
       _hero.attack(callback)
 
   currentHero: ->

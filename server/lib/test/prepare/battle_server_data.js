@@ -16,24 +16,18 @@ exports = module.exports = {
   player_id7: 'aa20df78-c748-11e2-a527-377d32fa9d96',
   player_id8: 'aa20df79-c748-11e2-a527-377d32fa9d96',
   laodTestData: function() {
-    var aps, p, _fn, _i, _j, _len, _len1;
+    var aps, p, _fn, _i, _len;
 
     aps = all_players();
-    console.log(aps.length, '-a-');
-    for (_i = 0, _len = aps.length; _i < _len; _i++) {
-      p = aps[_i];
-      console.log(p.id);
-    }
     _fn = function(p) {
       return Player.create(p, function(err, res) {
-        console.log('create player data', err, p.id);
         if (err) {
           return console.log('---------error occur when create player data------------', p.id);
         }
       });
     };
-    for (_j = 0, _len1 = aps.length; _j < _len1; _j++) {
-      p = aps[_j];
+    for (_i = 0, _len = aps.length; _i < _len; _i++) {
+      p = aps[_i];
       _fn(p);
     }
     return aps;
@@ -46,7 +40,6 @@ exports = module.exports = {
       p = aps[_i];
       _results.push((function(p) {
         return Player.remove(p.id, function(err, res) {
-          console.log('delete player data', err, p.id);
           if (err) {
             return console.log('---------error occur when delete player data------------', p.id);
           }
@@ -58,7 +51,7 @@ exports = module.exports = {
 };
 
 all_players = function() {
-  return player_data.concat(player_data_mass());
+  return player_data.concat(player_random());
 };
 
 randomHeros = function(num) {

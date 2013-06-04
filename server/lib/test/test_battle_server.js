@@ -35,7 +35,6 @@ vs66 = function(cb) {
   return PlayerManager.fetchMany([test_data.player_id5, test_data.player_id6], function(err, result) {
     var attacker, battle, defender, report;
 
-    console.log(err, result);
     battle = null;
     attacker = new Player(result[test_data.player_id5]);
     attacker.setLineUp('00:4,01:9,02:129,10:184,11:24,12:204');
@@ -65,7 +64,6 @@ vs = function(cb) {
   return PlayerManager.fetchMany([test_data.player_id7, test_data.player_id8], function(err, result) {
     var attacker, battle, defender, report;
 
-    console.log(err, result);
     battle = null;
     attacker = new Player(result[test_data.player_id7]);
     attacker.setLineUp(random_liveup(attacker.heros));

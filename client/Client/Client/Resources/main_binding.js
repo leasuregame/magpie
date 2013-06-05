@@ -62,9 +62,9 @@ var appFiles = [
     'src/view/barriersLayer.js',
     'src/view/tournamentLayer.js',
     'src/view/strengthenLayer.js',
-    'src/view/mainScene.js',
 
-    'myApp.js'
+    'src/view/mainScene.js',
+    'src/myApp.js'                   //add your own files in order here
 ];
 
 cc.dumpConfig();
@@ -82,8 +82,8 @@ director.setAnimationInterval(1.0 / 60);
 //var test = lz.HttpClientPackage.getInstance();
 
 // create a scene. it's an autorelease object
-var myScene = new BattleScene();
-//var myScene = new MainScene();
+//var myScene = new BattleScene();
+var myScene = new MainScene();
 //var myScene = new testScene();
 
 // run

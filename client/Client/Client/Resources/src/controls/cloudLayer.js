@@ -22,7 +22,7 @@ var CloudLayer = cc.Layer.extend({
     init : function() {
         if(!this._super()) return false;
 
-        this.setTouchMode(cc.TOUCHES_ONE_BY_ONE)
+        this.setTouchMode(cc.TOUCHES_ONE_BY_ONE);
         this.setTouchPriority(this.LEAST);
         this.setTouchEnabled(true);
         this.setVisible(false);

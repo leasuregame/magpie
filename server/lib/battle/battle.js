@@ -63,7 +63,7 @@ Battle = (function(_super) {
     battleLog.set('me', {
       cards: this.attacker.cards()
     });
-    return log.info('*** 战斗开始 ***');
+    return log.info('    >>> 战斗开始 <<<    ');
   };
 
   Battle.prototype.execute = function() {
@@ -84,7 +84,7 @@ Battle = (function(_super) {
     if (this.attacker.death()) {
       battleLog.setWinner('enemy');
     }
-    return log.info('*** 战斗结束 ***');
+    return log.info('    >>> 战斗结束 <<<    ');
   };
 
   return Battle;

@@ -155,8 +155,9 @@ Player = (function(_super) {
 
     _hero = this.currentHero();
     if (_hero === null || _hero.death()) {
-      return log.warn("玩家 " + this.name + " 拿不到当前卡牌，或者没有可用的牌可出了。卡牌：" + _hero.name);
+      return log.warn("玩家 " + this.name + " 拿不到当前卡牌，或者没有可用的牌可出了。卡牌：" + _hero.name + ", 死亡状态：" + (_hero.death()));
     } else {
+      log.info("" + this.name + " 出手", _hero.name);
       return _hero.attack(callback);
     }
   };

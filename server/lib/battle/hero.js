@@ -115,7 +115,7 @@ Hero = (function(_super) {
   Hero.prototype.usingSkill = function(callback) {
     var doNothing;
 
-    log.info(this.name, 'using skill: {name:', this.skill.name, 'type:', this.skill.type, '}');
+    log.info(this.name, '使用技能', this.skill.name, this.skill.type);
     doNothing = function() {};
     switch (this.skill.type) {
       case 'single_fight':
@@ -156,6 +156,7 @@ Hero = (function(_super) {
         _d = -enemy.idx;
         log.info(enemy.name, '暴击');
       }
+      log.info("" + enemy.name + " 受到伤害 " + _dmg);
       enemy.damage(_dmg, this, _step);
       _step.d.push(_d);
       _step.e.push(_e);
@@ -165,14 +166,13 @@ Hero = (function(_super) {
   };
 
   Hero.prototype.cure = function(enemys, callback) {
-    var enemy, _hp, _i, _len, _results, _step;
+    var enemy, _hp, _i, _len, _step;
 
     _step = {
       a: -this.idx,
       d: [],
       e: []
     };
-    _results = [];
     for (_i = 0, _len = enemys.length; _i < _len; _i++) {
       enemy = enemys[_i];
       _hp = parseInt(this.atk * this.skill.effectValue());
@@ -180,9 +180,9 @@ Hero = (function(_super) {
       _step.d.push(enemy.idx);
       _step.e.push(_hp);
       callback(enemy);
-      _results.push(this.log(_step));
+      log.info("" + enemy.name + " 加血 " + _hp);
     }
-    return _results;
+    return this.log(_step);
   };
 
   Hero.prototype.normalAttack = function(callback) {
@@ -208,10 +208,12 @@ Hero = (function(_super) {
         e: [_e],
         r: []
       };
+      log.info("" + _hero.name + " 受到伤害 " + _dmg);
       _hero.damage(_dmg, this, _step);
       callback(_hero);
       return this.log(_step);
     } else {
+      log.error("普通攻击：找不到对方可攻击的卡牌");
       throw new Error('Normal Attack Error: can not find target to be attacked.');
     }
   };
@@ -224,14 +226,21 @@ Hero = (function(_super) {
     _val = ((_ref2 = this.sp) != null ? _ref2.dmgRebound(value) : void 0) || 0;
     if (_val !== 0) {
       enemy.damageOnly(_val);
-      return step.r.push(-_val);
+      step.r.push(-_val);
+      log.info("伤害反弹给 " + enemy.name + ", " + _val);
     } else {
-      return step.r.push(null);
+      step.r.push(null);
+    }
+    if (this.death()) {
+      return log.info("" + this.name + " 死亡");
     }
   };
 
   Hero.prototype.damageOnly = function(value) {
-    return this.hp -= value;
+    this.hp -= value;
+    if (this.death()) {
+      return log.info("" + this.name + " 死亡");
+    }
   };
 
   Hero.prototype.log = function(step) {

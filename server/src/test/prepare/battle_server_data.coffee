@@ -46,7 +46,7 @@ randomHeros = (num)->
     _res.push r if r not in _res
     break if _res.length >= num
 
-  console.log 'random indexs: ', _res
+  #console.log 'random indexs: ', _res
   hero_data[i] for i in _res
 
 player_random = ->
@@ -54,7 +54,7 @@ player_random = ->
   n = _.random(1, 6)
   cards = randomHeros(m+n)
 
-  console.log m, n, cards
+  #console.log m, n, cards
 
   ps = _.clone(player_data_hight_star)
   ps[0].id = 'aa20df78-c748-11e2-a527-377d32fa9d96'   
@@ -186,15 +186,15 @@ ids = [
 ]
 
 hero_data = [
-  {id: 1, lv: 52, star: 4, card_id: 4, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]} #1
-  {id: 2, lv: 45, star: 4, card_id: 9, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]} #2
-  {id: 3, lv: 60, star: 5, card_id: 15, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]} #3
-  {id: 4, lv: 39, star: 4, card_id: 19, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]}
-  {id: 5, lv: 55, star: 4, card_id: 24, skill_lv: 1, sp_value: [{name: 'akt_improve', value: 50}]}
-  {id: 6, lv: 40, star: 5, card_id: 30, skill_lv: 1, sp_value: [{name: 'akt_improve', value: 50}]}
-  {id: 7, lv: 60, star: 5, card_id: 35, skill_lv: 1, sp_value: [{name: 'akt_improve', value: 50}]}
-  {id: 8, lv: 48, star: 4, card_id: 39, skill_lv: 1, sp_value: [{name: 'crit', value: 50}]}
-  {id: 9, lv: 56, star: 4, card_id: 44, skill_lv: 1, sp_value: [{name: 'crit', value: 50}]}
+  # {id: 1, lv: 52, star: 4, card_id: 4, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]} #1
+  # {id: 2, lv: 45, star: 4, card_id: 9, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]} #2
+  # {id: 3, lv: 60, star: 5, card_id: 15, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]} #3
+  # {id: 4, lv: 39, star: 4, card_id: 19, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]}
+  # {id: 5, lv: 55, star: 4, card_id: 24, skill_lv: 1, sp_value: [{name: 'akt_improve', value: 50}]}
+  # {id: 6, lv: 40, star: 5, card_id: 30, skill_lv: 1, sp_value: [{name: 'akt_improve', value: 50}]}
+  # {id: 7, lv: 60, star: 5, card_id: 35, skill_lv: 1, sp_value: [{name: 'akt_improve', value: 50}]}
+  # {id: 8, lv: 48, star: 4, card_id: 39, skill_lv: 1, sp_value: [{name: 'crit', value: 50}]}
+  # {id: 9, lv: 56, star: 4, card_id: 44, skill_lv: 1, sp_value: [{name: 'crit', value: 50}]}
   {id: 10, lv: 60, star: 5, card_id: 50, skill_lv: 1, sp_value: [{name: 'crit', value: 50}]}
   {id: 11, lv: 35, star: 4, card_id: 54, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}
   {id: 12, lv: 40, star: 4, card_id: 59, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]}

@@ -37,9 +37,11 @@ class Battle extends Base
       name: @defender.name
       lv: @defender.lv
       cards: @defender.cards()
+      cards1: @defender.cards1()
     }
     battleLog.set('enemy', _enm)
     battleLog.set('me', {cards: @attacker.cards()})
+    battleLog.set('me1', {cards: @attacker.cards1()})
 
     log.info '    >>> 战斗开始 <<<    '
 

@@ -45,20 +45,17 @@ class Skill extends Module
   get_round_num: ->
     @_player()?.round_num
 
-  check: ->
-    # if @type in ['aoe', 'mult_heal']
-    #   tag = @getTargets()
-    #   log.warn @type, @scope
-    #   log.warn _.isArray(tag) and tag.length > 1
-    #   log.warn @_satisfy()
-
-    utility.hitRate(@getRate()) and @_satisfy()
-
-  _satisfy: ->
-    
+  check: (tags)->
     if @type in ['aoe', 'mult_heal']
-      tag = @getTargets()
-      if _.isArray(tag) and tag.length > 1
+      log.warn @type, @scope
+      log.warn _.isArray(tags) and tags.length > 1
+      log.warn @_satisfy(tags)
+
+    utility.hitRate(@getRate()) and @_satisfy(tags)
+
+  _satisfy: (tags)->
+    if @type in ['aoe', 'mult_heal']
+      if _.isArray(tags) and tags.length > 1
         return true
       else
         return false

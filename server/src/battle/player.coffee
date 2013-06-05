@@ -82,6 +82,9 @@ class Player extends Module
     @
 
   cards: ->
+    _.map @matrix.allWithNull(), (c) -> c? and c.hp or null
+
+  cards1: ->
     _.map @matrix.allWithNull(), (c) -> c? and c.init_hp or null
     
   death: ->

@@ -20,7 +20,9 @@ class SpecialProperty
 
     for a in @_attrs
       _pro = _propertys[a['name']]
-      _pro? and (tag[_pro] += parseInt( tag[_pro] * a['value'] / 100 ))
+      if _pro? 
+        tag[_pro] += parseInt( tag[_pro] * a['value'] / 100 )
+        tag['init'+_pro] = tag[_pro]
 
   has: (name) ->
     !!_.findWhere @_attrs, {name: name}

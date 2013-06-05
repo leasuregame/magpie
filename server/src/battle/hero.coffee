@@ -61,8 +61,9 @@ class Hero extends Module
   attack: (callback) ->
     @setCrit()
 
-    if @skill? and @skill.check()
-      @usingSkill(callback)
+    enemys = @skill.getTargets()
+    if @skill? and @skill.check(enemys)
+      @usingSkill(enemys, callback)
     else
       @normalAttack(callback)
 
@@ -80,15 +81,15 @@ class Hero extends Module
   isCrit: ->
     @sp.isCrit()
 
-  usingSkill: (callback)->
+  usingSkill: (enemys, callback)->
     log.info @name, '使用技能', @skill.name, @skill.type
     doNothing = ->
 
     switch @skill.type
       when 'single_fight', 'aoe' 
-        @skillAttack @skill.getTargets(), callback
+        @skillAttack enemys, callback
       when 'single_heal', 'mult_heal'
-        @cure @skill.getTargets(), callback
+        @cure enemys, callback
       else
         doNothing()
 
@@ -122,6 +123,8 @@ class Hero extends Module
       
       _step.d.push _d
       _step.e.push _e
+      # debug
+      _step['dhp'] = enemy.hp
       
       callback enemy
 
@@ -136,6 +139,8 @@ class Hero extends Module
 
       _step.d.push enemy.idx
       _step.e.push _hp
+      # debug
+      _step['dhp'] = enemy.hp
 
       callback enemy
       log.info "#{enemy.name} 加血 #{_hp}"
@@ -167,7 +172,9 @@ class Hero extends Module
 
       _hero.damage _dmg, @, _step
       callback _hero
-      
+      # debug
+      _step['dhp'] = _hero.hp
+
       @log _step
       
     else
@@ -190,11 +197,13 @@ class Hero extends Module
       step.r.push null
 
     log.info "#{@name} 死亡" if @death()
+    step['death'] = true if @death()
 
   damageOnly: (value) ->
     @hp -= value
 
     log.info "#{@name} 死亡" if @death()
+    #step['death'] = true if @death()
 
   log: (step)->
     if step.r? and not _.some step.r

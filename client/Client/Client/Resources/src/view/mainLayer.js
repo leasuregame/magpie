@@ -114,7 +114,8 @@ var MainLayer = cc.Layer.extend({
 
     _onClickTournament : function() {
         cc.log("MainLayer _onClickTournament");
-        cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, BattleScene.create(), true));
+//        cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, BattleScene.create(), true));
+        cc.Director.getInstance().replaceScene(BattleScene.create());
 //        cc.Director.getInstance().replaceScene(BattleScene.create());
     },
 

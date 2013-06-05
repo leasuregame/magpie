@@ -48,7 +48,14 @@ var BattlePlayer = cc.Class.extend({
 
         cc.log(battleARound);
 
-        var str = battleARound.a + (battleARound.t == 0 ? " 用普攻 " : " 用技能 ") + " 揍了 " + battleARound.d + " 伤害为 " + battleARound.v;
+        var own = battleARound.a < 0 ? -battleARound.a : battleARound.a;
+        var str = own + (battleARound.a > 0 ? " 用普攻 " : " 用技能 ");
+        for(var i = 0; i < battleARound.d.length; ++i) {
+            var index = battleARound.d[i];
+            str += (index < 0 ? -index : index) + " ";
+        }
+        str += "伤害为 " + battleARound.e;
+
         cc.log(str);
 
         this._tipLabel.setString(str);
@@ -66,7 +73,8 @@ var BattlePlayer = cc.Class.extend({
 
             this._scheduler.scheduleCallbackForTarget(this, function() {
                 cc.log("pop battle scene");
-                cc.Director.getInstance().replaceScene(cc.TransitionTurnOffTiles.create(1, MainScene.create()));
+//                cc.Director.getInstance().replaceScene(cc.TransitionTurnOffTiles.create(1, MainScene.create()));
+                cc.Director.getInstance().replaceScene(MainScene.create());
             }, 0.0, 0, 5, false);
         }
     },

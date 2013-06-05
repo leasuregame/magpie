@@ -61,6 +61,7 @@
             'src/controls/progress.js',
             'src/controls/bgSprite.js',
             'src/controls/dialog.js',
+            'src/controls/lazyMenu.js',
             'src/view/battleLayer.js',
             'src/view/battleScene.js',
             'src/view/battlePlayer.js',

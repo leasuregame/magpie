@@ -19,6 +19,8 @@
 cc.LAZY_MENU_HANDLER_PRIORITY  = 1;
 
 var LazyMenu = cc.Menu.extend({
+    _isScroll : false,
+
     registerWithTouchDispatcher:function () {
         cc.Director.getInstance().getTouchDispatcher().addTargetedDelegate(this, cc.LAZY_MENU_HANDLER_PRIORITY, true);
     },
@@ -28,46 +30,22 @@ var LazyMenu = cc.Menu.extend({
      * @return {Boolean}
      */
     onTouchBegan:function (touch, e) {
-        if (this._state != cc.MENU_STATE_WAITING || !this._visible || !this._enabled) {
-            return false;
-        }
-
-        for (var c = this._parent; c != null; c = c.getParent()) {
-            if (!c.isVisible()) {
-                return false;
-            }
-        }
-
-        this._selectedItem = this._itemForTouch(touch);
-        if (this._selectedItem) {
-            this._state = cc.MENU_STATE_TRACKING_TOUCH;
-            this._selectedItem.selected();
-            return true;
-        }
-        return false;
+        cc.log("LazyMenu onTouchBegan");
+        this._isScroll = false;
+        return this._super(touch, e);
     },
 
     /**
      * when a touch ended
      */
     onTouchEnded:function (touch, e) {
-        cc.Assert(this._state == cc.MENU_STATE_TRACKING_TOUCH, "[Menu onTouchEnded] -- invalid state");
-        if (this._selectedItem) {
-            this._selectedItem.unselected();
-            this._selectedItem.activate();
+        cc.log("LazyMenu onTouchEnded");
+        if(this._isScroll) {
+            this.onTouchCancelled(touch, e);
         }
-        this._state = cc.MENU_STATE_WAITING;
-    },
-
-    /**
-     * touch cancelled
-     */
-    onTouchCancelled:function (touch, e) {
-        cc.Assert(this._state == cc.MENU_STATE_TRACKING_TOUCH, "[Menu onTouchCancelled] -- invalid state");
-        if (this._selectedItem) {
-            this._selectedItem.unselected();
+        else {
+            this._super(touch, e);
         }
-        this._state = cc.MENU_STATE_WAITING;
     },
 
     /**
@@ -75,16 +53,24 @@ var LazyMenu = cc.Menu.extend({
      * @param {cc.Touch} touch
      */
     onTouchMoved:function (touch, e) {
-        cc.Assert(this._state == cc.MENU_STATE_TRACKING_TOUCH, "[Menu onTouchMoved] -- invalid state");
-        var currentItem = this._itemForTouch(touch);
-        if (currentItem != this._selectedItem) {
-            if (this._selectedItem) {
-                this._selectedItem.unselected();
-            }
-            this._selectedItem = currentItem;
-            if (this._selectedItem) {
-                this._selectedItem.selected();
-            }
-        }
+        cc.log("LazyMenu onTouchMoved");
+        this._isScroll = true;
+        this._super(touch, e);
     }
 })
+
+
+LazyMenu.create = function (/*Multiple Arguments*/) {
+    var ret = new LazyMenu();
+
+    if (arguments.length == 0) {
+        ret.initWithItems(null, null);
+    } else if (arguments.length == 1) {
+        if (arguments[0] instanceof Array) {
+            ret.initWithArray(arguments[0]);
+            return ret;
+        }
+    }
+    ret.initWithItems(arguments);
+    return ret;
+};

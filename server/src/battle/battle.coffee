@@ -41,7 +41,7 @@ class Battle extends Base
     battleLog.set('enemy', _enm)
     battleLog.set('me', {cards: @attacker.cards()})
 
-    log.info '*** 战斗开始 ***'
+    log.info '    >>> 战斗开始 <<<    '
 
   execute: ->
     while not @isOver()
@@ -52,7 +52,7 @@ class Battle extends Base
     battleLog.setWinner( 'own' ) if @defender.death()
     battleLog.setWinner( 'enemy' ) if @attacker.death()
 
-    log.info '*** 战斗结束 ***'
+    log.info '    >>> 战斗结束 <<<    '
 
 class Round extends Base
   constructor: ->

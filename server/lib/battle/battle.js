@@ -57,12 +57,18 @@ Battle = (function(_super) {
       id: this.defender.id,
       name: this.defender.name,
       lv: this.defender.lv,
-      cards: this.defender.cards()
+      cards: this.defender.cards(),
+      cards1: this.defender.cards1()
     };
     battleLog.set('enemy', _enm);
     battleLog.set('me', {
       cards: this.attacker.cards()
     });
+    battleLog.set('me1', {
+      cards: this.attacker.cards1()
+    });
+    log.error('attacker', this.attacker);
+    log.error('defentder', this.defender);
     return log.info('    >>> 战斗开始 <<<    ');
   };
 

@@ -9,7 +9,6 @@ class Base
 
     @init?(arguments...)
 
-
   isOver: ->
     @attacker.death() or @defender.death()
 
@@ -23,9 +22,6 @@ class Base
   end: ->
 
 class Battle extends Base
-  constructor: ->
-    super
-
   init: ->
     @attacker.setEnemy(@defender, true)
     @defender.setEnemy(@attacker)
@@ -37,12 +33,9 @@ class Battle extends Base
       name: @defender.name
       lv: @defender.lv
       cards: @defender.cards()
-      cards1: @defender.cards1()
     }
     battleLog.set('enemy', _enm)
     battleLog.set('me', {cards: @attacker.cards()})
-    battleLog.set('me1', {cards: @attacker.cards1()})
-
     log.info '    >>> 战斗开始 <<<    '
 
   execute: ->
@@ -57,9 +50,6 @@ class Battle extends Base
     log.info '    >>> 战斗结束 <<<    '
 
 class Round extends Base
-  constructor: ->
-    super
-
   init: ->
     @round_num = 1
     @attack = new Attack(@attacker, @defender)
@@ -76,6 +66,7 @@ class Round extends Base
 
   isOver: ->
     (@attacker.shootCount <= 0 and @defender.shootCount <= 0) or \
+    #(@attacker.bulletOut() and @defender.bulletOut()) or \
     @attacker.death() or @defender.death()
 
   start: ->
@@ -95,14 +86,18 @@ class Round extends Base
     log.info "*** 回合 #{@round_num} 结束 ***"
     
 class Attack extends Base
-  constructor: ->
-    super
-
   execute: () ->
+    # @attacker.attack (hero) ->
+    # @attacker.nextHero()
+
+    # @defender.attack (hero) ->
+    # @defender.nextHero()
+
     _attack = (atker, dfder) ->
       atker.attack (hero) ->
         # bug, 当卡牌出手后，没秒了，出手次数比实际要出手的次数少了一次
-        #dfder.shootCount -= 1 if hero.death()
+        if hero.death() and not hero.isAttacked()
+          dfder.shootCount -= 1 
 
       atker.nextHero()
 

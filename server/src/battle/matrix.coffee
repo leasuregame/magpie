@@ -98,12 +98,13 @@ class Matrix
     null
 
   nextIndex: (cindex = @curIndex) ->
-    len = @matrixOrder.length
-    index = @matrixOrder.indexOf( cindex ) + 1
-    #index = 0 if index is len
-    return if index is len
+    if not cindex
+      return
 
-    #console.log 'next index: ',len, cindex, index, @matrixOrder[index]
+    index = @matrixOrder.indexOf( cindex ) + 1
+    if index is @matrixOrder.length
+      return 
+
     @matrixOrder[index]
 
   moveToNext: ->

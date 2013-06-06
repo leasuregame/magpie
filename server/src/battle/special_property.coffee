@@ -1,5 +1,6 @@
 _ = require 'underscore'
 utility = require '../common/utility'
+log = require '../common/logger'
 
 # PP_TYPE = 
 #   'atk_improve'
@@ -14,15 +15,11 @@ class SpecialProperty
     @_attrs = attrs
 
   takeEffect: (tag) ->
-    _propertys = 
-      'atk_improve': 'atk'
-      'hp_improve': 'hp'
-
     for a in @_attrs
-      _pro = _propertys[a['name']]
+      _pro = passive_propertys[a['name']]
       if _pro? 
-        tag[_pro] += parseInt( tag[_pro] * a['value'] / 100 )
-        tag['init'+_pro] = tag[_pro]
+        tag['init_'+_pro] = tag[_pro] += parseInt( tag[_pro] * a['value'] / 100 )
+        log.error tag.name, tag.hp, tag.init_hp
 
   has: (name) ->
     !!_.findWhere @_attrs, {name: name}
@@ -49,6 +46,10 @@ class SpecialProperty
     return false if not @has('crit') 
 
     utility.hitRate parseInt(@get('crit'))
+
+passive_propertys = 
+  'atk_improve': 'atk'
+  'hp_improve': 'hp'
 
 exports = module.exports = SpecialProperty
       

@@ -87,9 +87,12 @@ Hero = (function(_super) {
   };
 
   Hero.prototype.attack = function(callback) {
+    var enemys;
+
     this.setCrit();
-    if ((this.skill != null) && this.skill.check()) {
-      this.usingSkill(callback);
+    enemys = this.skill.getTargets();
+    if ((this.skill != null) && this.skill.check(enemys)) {
+      this.usingSkill(enemys, callback);
     } else {
       this.normalAttack(callback);
     }
@@ -112,18 +115,22 @@ Hero = (function(_super) {
     return this.sp.isCrit();
   };
 
-  Hero.prototype.usingSkill = function(callback) {
+  Hero.prototype.usingSkill = function(enemys, callback) {
     var doNothing;
 
+    if (!enemys || !enemys.length > 0) {
+      log.warn('技能攻击时，攻击的对方卡牌不能为空');
+      return;
+    }
     log.info(this.name, '使用技能', this.skill.name, this.skill.type);
     doNothing = function() {};
     switch (this.skill.type) {
       case 'single_fight':
       case 'aoe':
-        return this.skillAttack(this.skill.getTargets(), callback);
+        return this.skillAttack(enemys, callback);
       case 'single_heal':
       case 'mult_heal':
-        return this.cure(this.skill.getTargets(), callback);
+        return this.cure(enemys, callback);
       default:
         return doNothing();
     }
@@ -139,7 +146,8 @@ Hero = (function(_super) {
       r: []
     };
     _len = (enemys != null) && enemys.length;
-    _dmg = parseInt(this.atk * this.skill.effectValue());
+    _dmg = parseInt(this.atk * (1 + this.skill.effectValue()));
+    log.warn('atk:', this.atk, 'dmg:', _dmg, 'effect:', this.skill.effectValue());
     if (_len > 1) {
       _dmg = parseInt(_dmg / _len);
     }
@@ -160,6 +168,7 @@ Hero = (function(_super) {
       enemy.damage(_dmg, this, _step);
       _step.d.push(_d);
       _step.e.push(_e);
+      _step['dhp'] = enemy.hp;
       callback(enemy);
     }
     return this.log(_step);
@@ -175,10 +184,11 @@ Hero = (function(_super) {
     };
     for (_i = 0, _len = enemys.length; _i < _len; _i++) {
       enemy = enemys[_i];
-      _hp = parseInt(this.atk * this.skill.effectValue());
+      _hp = parseInt(this.init_hp * this.skill.effectValue());
       enemy.damageOnly(-_hp);
       _step.d.push(enemy.idx);
       _step.e.push(_hp);
+      _step['dhp'] = enemy.hp;
       callback(enemy);
       log.info("" + enemy.name + " 加血 " + _hp);
     }
@@ -211,6 +221,7 @@ Hero = (function(_super) {
       log.info("" + _hero.name + " 受到伤害 " + _dmg);
       _hero.damage(_dmg, this, _step);
       callback(_hero);
+      _step['dhp'] = _hero.hp;
       return this.log(_step);
     } else {
       log.error("普通攻击：找不到对方可攻击的卡牌");
@@ -219,9 +230,14 @@ Hero = (function(_super) {
   };
 
   Hero.prototype.damage = function(value, enemy, step) {
-    var _ref1, _ref2, _val;
+    var _ref1, _ref2, _val, _value;
 
-    value = ((_ref1 = this.sp) != null ? _ref1.dmgReduce(value) : void 0) || value;
+    _value = ((_ref1 = this.sp) != null ? _ref1.dmgReduce(value) : void 0) || value;
+    if (_value < value) {
+      step.d.pop();
+      step.d.push(_value);
+      log.info('伤害减少了：', value - _value);
+    }
     this.hp -= value;
     _val = ((_ref2 = this.sp) != null ? _ref2.dmgRebound(value) : void 0) || 0;
     if (_val !== 0) {
@@ -232,7 +248,10 @@ Hero = (function(_super) {
       step.r.push(null);
     }
     if (this.death()) {
-      return log.info("" + this.name + " 死亡");
+      log.info("" + this.name + " 死亡");
+    }
+    if (this.death()) {
+      return step['death'] = true;
     }
   };
 

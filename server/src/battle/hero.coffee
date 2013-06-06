@@ -4,10 +4,13 @@ Skill = require './skill'
 SpecialProperty = require './special_property'
 
 tab = require '../model/table'
-battleLog = require './battle_log'
 utility = require '../common/utility'
 _ = require 'underscore'
+battleLog = require './battle_log'
 log = require '../common/logger'
+
+STATE_ORIGIN = 0
+STATE_ATTACKED = 1
 
 class Hero extends Module
   @include Events
@@ -23,13 +26,12 @@ class Hero extends Module
     @skill_lv = attrs.skill_lv or 1
     @sp_value = attrs.sp_value or []
     
-    @is_crit = false
-    @is_dodge = false
-    @cant_miss = false
-    @cant_be_crit = false
     @dmg = 0 # 每次所受伤害的值，默认值为0
     @crit_factor = 1.5 # crit damage factor
     @pos = '00'
+    @idx = null
+    @state = STATE_ORIGIN
+
     @skill = null
 
     @loadCardInfo()
@@ -59,21 +61,19 @@ class Hero extends Module
       @skill = new Skill(@, @skill_setting)
 
   attack: (callback) ->
-    @setCrit()
-
     enemys = @skill.getTargets()
     if @skill? and @skill.check(enemys)
       @usingSkill(enemys, callback)
     else
       @normalAttack(callback)
 
-    @unsetCrit()
+    @state = STATE_ATTACKED
 
-  setCrit: ->
-    @is_crit = @sp.isCrit()
+  reset: ->
+    @state = STATE_ORIGIN
 
-  unsetCrit: ->
-    @is_crit = false
+  isAttacked: ->
+    @state is STATE_ATTACKED
 
   isDodge: ->
     @sp.isDodge()
@@ -82,6 +82,10 @@ class Hero extends Module
     @sp.isCrit()
 
   usingSkill: (enemys, callback)->
+    if not enemys or not enemys.length > 0
+      log.warn '技能攻击时，攻击的对方卡牌不能为空'
+      return
+
     log.info @name, '使用技能', @skill.name, @skill.type
     doNothing = ->
 
@@ -94,38 +98,41 @@ class Hero extends Module
         doNothing()
 
   skillAttack: (enemys, callback) ->
+    # 负的a的id代表技能攻击
     _step = {a: -@idx, d: [], e: [], r: []} 
     
-    _len = enemys? and enemys.length
-    _dmg = parseInt(@atk * @skill.effectValue())
+    _len = enemys? and enemys.length or 0
+    _dmg = parseInt(@atk * (1 + @skill.effectValue()))
     _dmg = parseInt(_dmg/_len) if _len > 1
 
-    # if @skill.type is 'aoe'
-    #   _step.r.push 'aoe'
-
     for enemy in enemys
-      _e = -_dmg
-      _d = enemy.idx
+      
       if enemy.isDodge()
         # 闪避
-        _dmg = _e = 0
+        _step.d.push _d
+        _step.e.push 0
         log.info enemy.name, '闪避'
+        callback enemy
+        continue
       else if @isCrit()
         # 暴击
         _dmg *= @crit_factor
         _e = -_dmg
         _d = -enemy.idx
         log.info enemy.name, '暴击'
+      else
+        _e = -_dmg
+        _d = enemy.idx
 
       log.info "#{enemy.name} 受到伤害 #{_dmg}"
-      
-      enemy.damage _dmg, @, _step
-      
+
       _step.d.push _d
       _step.e.push _e
       # debug
       _step['dhp'] = enemy.hp
-      
+
+      enemy.damage _dmg, @, _step
+
       callback enemy
 
     @log _step     
@@ -134,7 +141,7 @@ class Hero extends Module
     _step = {a: -@idx, d: [], e: []}
     
     for enemy in enemys
-      _hp = parseInt(@.atk * @skill.effectValue())
+      _hp = parseInt(@init_hp * @skill.effectValue())
       enemy.damageOnly -_hp
 
       _step.d.push enemy.idx
@@ -183,12 +190,16 @@ class Hero extends Module
 
   damage: (value, enemy, step) ->
     # 检查辅助效果，伤害减少
-    value = @sp?.dmgReduce(value) or value
+    _value = @sp?.dmgReduce(value) or value
+    if _value < value
+      step.e.pop()
+      step.e.push -_value
+      log.info '伤害减少了：', value - _value
 
-    @hp -= value
+    @hp -= _value
 
     # 检查，伤害反弹
-    _val = @sp?.dmgRebound(value) or 0
+    _val = @sp?.dmgRebound(_value) or 0
     if _val isnt 0
       enemy.damageOnly _val
       step.r.push -_val

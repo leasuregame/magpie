@@ -22,7 +22,11 @@ SpecialProperty = (function() {
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       a = _ref[_i];
       _pro = _propertys[a['name']];
-      _results.push((_pro != null) && (tag[_pro] += parseInt(tag[_pro] * a['value'] / 100)));
+      if (_pro != null) {
+        _results.push(tag['init' + _pro] = tag[_pro] += parseInt(tag[_pro] * a['value'] / 100));
+      } else {
+        _results.push(void 0);
+      }
     }
     return _results;
   };

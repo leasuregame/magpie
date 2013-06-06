@@ -87,16 +87,22 @@ Skill = (function(_super) {
     return (_ref1 = this._player()) != null ? _ref1.round_num : void 0;
   };
 
-  Skill.prototype.check = function() {
-    return utility.hitRate(this.getRate()) && this._satisfy();
-  };
-
-  Skill.prototype._satisfy = function() {
-    var tag, _ref1;
+  Skill.prototype.check = function(tags) {
+    var _ref1;
 
     if ((_ref1 = this.type) === 'aoe' || _ref1 === 'mult_heal') {
-      tag = this.getTargets();
-      if (_.isArray(tag) && tag.length > 1) {
+      log.warn(this.type, this.scope);
+      log.warn(_.isArray(tags) && tags.length > 1);
+      log.warn(this._satisfy(tags));
+    }
+    return utility.hitRate(this.getRate()) && this._satisfy(tags);
+  };
+
+  Skill.prototype._satisfy = function(tags) {
+    var _ref1;
+
+    if ((_ref1 = this.type) === 'aoe' || _ref1 === 'mult_heal') {
+      if (_.isArray(tags) && tags.length > 1) {
         return true;
       } else {
         return false;

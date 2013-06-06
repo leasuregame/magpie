@@ -82,9 +82,6 @@ class Player extends Module
     @
 
   cards: ->
-    _.map @matrix.allWithNull(), (c) -> c? and c.hp or null
-
-  cards1: ->
     _.map @matrix.allWithNull(), (c) -> c? and c.init_hp or null
     
   death: ->
@@ -96,7 +93,7 @@ class Player extends Module
   attack: (callback) ->
     _hero = @currentHero()
     if _hero is null or _hero.death()
-      log.warn "玩家 #{@name} 拿不到当前卡牌，或者没有可用的牌可出了。卡牌：#{_hero.name}, 死亡状态：#{_hero.death()}"
+      log.warn "玩家 #{@name} 拿不到当前卡牌，或者没有可用的牌可出了。卡牌：#{_hero?.name}, 死亡状态：#{_hero?.death()}"
     else
       log.info "#{@name} 出手", _hero.name
       _hero.attack(callback)
@@ -117,6 +114,15 @@ class Player extends Module
   reset: ->
     @matrix.reset()
     @setAttackCount()
+
+    @heros.forEach (h) -> h.reset()
+
+  ###
+  检查在一个回合中，还有没有出手次数
+  ###
+  bulletOut: ->
+    res = _.find @heros, (h) -> not h.isAttacked()
+    not res
 
   aliveHeros: ->
     res = @heros.filter (h) ->

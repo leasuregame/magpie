@@ -121,14 +121,16 @@ Matrix = (function() {
   };
 
   Matrix.prototype.nextIndex = function(cindex) {
-    var index, len;
+    var index;
 
     if (cindex == null) {
       cindex = this.curIndex;
     }
-    len = this.matrixOrder.length;
+    if (!cindex) {
+      return;
+    }
     index = this.matrixOrder.indexOf(cindex) + 1;
-    if (index === len) {
+    if (index === this.matrixOrder.length) {
       return;
     }
     return this.matrixOrder[index];

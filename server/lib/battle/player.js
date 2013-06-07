@@ -137,12 +137,6 @@ Player = (function(_super) {
 
   Player.prototype.cards = function() {
     return _.map(this.matrix.allWithNull(), function(c) {
-      return (c != null) && c.hp || null;
-    });
-  };
-
-  Player.prototype.cards1 = function() {
-    return _.map(this.matrix.allWithNull(), function(c) {
       return (c != null) && c.init_hp || null;
     });
   };
@@ -161,7 +155,7 @@ Player = (function(_super) {
 
     _hero = this.currentHero();
     if (_hero === null || _hero.death()) {
-      return log.warn("玩家 " + this.name + " 拿不到当前卡牌，或者没有可用的牌可出了。卡牌：" + _hero.name + ", 死亡状态：" + (_hero.death()));
+      return log.warn("玩家 " + this.name + " 拿不到当前卡牌，或者没有可用的牌可出了。卡牌：" + (_hero != null ? _hero.name : void 0) + ", 死亡状态：" + (_hero != null ? _hero.death() : void 0));
     } else {
       log.info("" + this.name + " 出手", _hero.name);
       return _hero.attack(callback);
@@ -189,7 +183,24 @@ Player = (function(_super) {
 
   Player.prototype.reset = function() {
     this.matrix.reset();
-    return this.setAttackCount();
+    this.setAttackCount();
+    return this.heros.forEach(function(h) {
+      return h.reset();
+    });
+  };
+
+  /*
+  检查在一个回合中，还有没有出手次数
+  */
+
+
+  Player.prototype.bulletOut = function() {
+    var res;
+
+    res = _.find(this.heros, function(h) {
+      return !h.isAttacked();
+    });
+    return !res;
   };
 
   Player.prototype.aliveHeros = function() {

@@ -1,8 +1,7 @@
 Module = require '../common/module'
 Hero = require './hero'
 Matrix = require './matrix'
-manager = require '../model/player'
-tab = require '../model/table'
+tab = require '../manager/table'
 _ = require 'underscore'
 utility = require '../common/utility'
 log = require '../common/logger'
@@ -10,14 +9,14 @@ log = require '../common/logger'
 class Player extends Module
   @table: 'player'
 
-  constructor: (model) ->
+  constructor: (entity) ->
     #@objects = model
 
-    if model and model.constructor.attributes?
-      for attr in model.constructor.attributes
-        @[attr] = model[attr] if model[attr]?
+    if entity?
+      for key, val of entity.getAttributes()
+        @[key] = val
 
-    @initAttrs() if not model
+    @initAttrs() if not entity
     
     @heros = []
     @lineUp = ''

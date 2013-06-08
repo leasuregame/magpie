@@ -29,34 +29,34 @@ var LazyMenu = cc.Menu.extend({
      * @param {cc.Touch} touch
      * @return {Boolean}
      */
-    onTouchBegan:function (touch, e) {
-        cc.log("LazyMenu onTouchBegan");
-        this._isScroll = false;
-        return this._super(touch, e);
-    },
-
-    /**
-     * when a touch ended
-     */
-    onTouchEnded:function (touch, e) {
-        cc.log("LazyMenu onTouchEnded");
-        if(this._isScroll) {
-            this.onTouchCancelled(touch, e);
-        }
-        else {
-            this._super(touch, e);
-        }
-    },
+//    onTouchBegan:function (touch, e) {
+//        cc.log("LazyMenu onTouchBegan");
+//        this._isScroll = false;
+//        return this._super(touch, e);
+//    },
+//
+//    /**
+//     * when a touch ended
+//     */
+//    onTouchEnded:function (touch, e) {
+//        cc.log("LazyMenu onTouchEnded");
+//        if(this._isScroll) {
+//            this.onTouchCancelled(touch, e);
+//        }
+//        else {
+//            this._super(touch, e);
+//        }
+//    },
 
     /**
      * touch moved
      * @param {cc.Touch} touch
      */
-    onTouchMoved:function (touch, e) {
-        cc.log("LazyMenu onTouchMoved");
-        this._isScroll = true;
-        this._super(touch, e);
-    }
+//    onTouchMoved:function (touch, e) {
+//        cc.log("LazyMenu onTouchMoved");
+//        this._isScroll = true;
+//        this._super(touch, e);
+//    }
 })
 
 

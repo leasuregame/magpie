@@ -114,9 +114,13 @@ var MainLayer = cc.Layer.extend({
 
     _onClickTournament : function() {
         cc.log("MainLayer _onClickTournament");
-//        cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, BattleScene.create(), true));
-        cc.Director.getInstance().replaceScene(BattleScene.create());
-//        cc.Director.getInstance().replaceScene(BattleScene.create());
+
+        lz.HttpClientPackage.getInstance().HttpGetRequest("http://192.168.1.7:3344/vs", function(json) {
+            var battleLog = BattleLog.create(json);
+            BattleLogNote.getInstance().pushBattleLog(battleLog);
+//            cc.Director.getInstance().replaceScene(BattleScene.create(battleLog));
+            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, BattleScene.create(battleLog), true));
+        }, null);
     },
 
     _onClickLottery : function() {

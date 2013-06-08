@@ -19,7 +19,7 @@ var OtherLayer = cc.Layer.extend({
 
         var winSize = cc.Director.getInstance().getWinSize();
 
-        var label = cc.LabelTTF.create("OtherLayer");
+        var label = cc.LabelTTF.create("OtherLayer", 'Times New Roman', 60);
         label.setPosition(winSize.width / 2, winSize.height / 2);
         this.addChild(label);
 

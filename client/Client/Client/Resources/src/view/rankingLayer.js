@@ -18,7 +18,7 @@ var RankingLayer = cc.Layer.extend({
 
         var winSize = cc.Director.getInstance().getWinSize();
 
-        var label = cc.LabelTTF.create("RankingLayer");
+        var label = cc.LabelTTF.create("RankingLayer", 'Times New Roman', 60);
         label.setPosition(winSize.width / 2, winSize.height / 2);
         this.addChild(label);
 

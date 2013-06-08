@@ -13,18 +13,24 @@ bang[4] = "res/bang_tu.png";
 var g_ressources = [
     //image
     {src:"res/test1/close.png"},
-    {src:"res/test1/1.png"},
-    {src:"res/test1/2.png"},
-    {src:"res/test1/3.png"},
-    {src:"res/test1/4.png"},
-    {src:"res/test1/5.png"},
+    {src:"res/test1/HeadRebels1.png"},
+    {src:"res/test1/HeadRebels2.png"},
+    {src:"res/test1/HeadRebels3.png"},
     {src:s_progress_bg},
     {src:s_progress},
     {src:bang[0]},
     {src:bang[1]},
     {src:bang[2]},
     {src:bang[3]},
-    {src:bang[4]}
+    {src:bang[4]},
+    {src:"res/test1/BustRebels1.png"},
+    {src:"res/test1/BustRebels2.png"},
+    {src:"res/test1/BustRebels3.png"},
+    {src:"res/test1/Expression1.png"},
+    {src:"res/test1/Expression2.png"},
+    {src:"res/test1/Expression3.png"},
+    {src:"res/test1/Expression4.png"},
+    {src:"res/test1/Expression5.png"}
 
     //plist
 

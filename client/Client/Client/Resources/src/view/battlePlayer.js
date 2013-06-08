@@ -12,9 +12,8 @@
 
 var BattlePlayer = cc.Class.extend({
     _scheduler : null,
-    _battleLogLen : 0,
-    _battleRoundIndex : 0,
     _battleLog : null,
+
     _cardList : null,
     _labelList : null,
     _progressList : null,
@@ -34,49 +33,37 @@ var BattlePlayer = cc.Class.extend({
         this._cardList = cardList;
         this._labelList = labelList;
         this._progressList = progressList;
-        this._battleLogLen = this._battleLog.length;
-        this._battleRoundIndex = 0;
-        this.playARound();
+
+        this._battleLog.recover();
+        this.playAStep();
     },
 
-    playARound : function() {
-        this._scheduler.unscheduleCallbackForTarget(this, this.playARound);
+    playAStep : function() {
+        this._scheduler.unscheduleCallbackForTarget(this, this.playAStep);
 
-        cc.log("\n\n\nBattlePlayer playARound " + this._battleRoundIndex);
-
-        var battleARound = this._battleLog[this._battleRoundIndex];
-
-        cc.log(battleARound);
-
-        var own = battleARound.a < 0 ? -battleARound.a : battleARound.a;
-        var str = own + (battleARound.a > 0 ? " 用普攻 " : " 用技能 ");
-        for(var i = 0; i < battleARound.d.length; ++i) {
-            var index = battleARound.d[i];
-            str += (index < 0 ? -index : index) + " ";
+        if(!this._battleLog.hasNextBattleStep()) {
+            cc.log("pop battle scene");
+//            cc.Director.getInstance().replaceScene(MainScene.create());
+            cc.Director.getInstance().replaceScene(cc.TransitionTurnOffTiles.create(1, MainScene.create()));
+            return;
         }
-        str += "伤害为 " + battleARound.e;
+
+        cc.log("\n\n\nBattlePlayer playAStep " + this._battleLog.getBattleStepIndex());
+
+        var step = this._battleLog.getBattleStep();
+
+        var str = step.getAttacker() + (step.isSkill() ? " 用技能 揍了 " : " 用普攻 揍了 ");
+        str += step.getAllTarget();
+        str += " 伤害为 " + step.getAllEffect();
 
         cc.log(str);
 
         this._tipLabel.setString(str);
 
-        var delay = SkillFactory.normalAttack(this._cardList, battleARound, this._labelList, this._progressList);
-        this._battleRoundIndex += 1;
+        var delay = SkillFactory.normalAttack(this._cardList, step, this._labelList, this._progressList);
 
-        if(this._battleRoundIndex < this._battleLogLen) {
-            cc.log("set next round");
-
-            this._scheduler.scheduleCallbackForTarget(this, this.playARound, delay, 1, 0, false);
-        }
-        else {
-            cc.log("battle is over, set back MainScene");
-
-            this._scheduler.scheduleCallbackForTarget(this, function() {
-                cc.log("pop battle scene");
-//                cc.Director.getInstance().replaceScene(cc.TransitionTurnOffTiles.create(1, MainScene.create()));
-                cc.Director.getInstance().replaceScene(MainScene.create());
-            }, 0.0, 0, 5, false);
-        }
+        cc.log("set next round");
+        this._scheduler.scheduleCallbackForTarget(this, this.playAStep, delay, 1, 0, false);
     },
 
     pause : function() {

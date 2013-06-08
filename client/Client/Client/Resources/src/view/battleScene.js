@@ -7,36 +7,21 @@
  */
 
 var BattleScene = cc.Scene.extend({
-    ctor : function() {
-        this._super();
-        cc.associateWithNative( this, cc.Scene );
-    },
+    init : function(battleLog) {
+        if(!this._super()) return false;
 
-    onEnter : function() {
-        this._super();
-    },
+        var batterLayer = BatterLayer.create(battleLog);
+        this.addChild(batterLayer);
 
-    init : function() {
-        lz.HttpClientPackage.getInstance().HttpGetRequest("http://192.168.1.7:3344/vs", this.newBattle, this);
-    },
-
-    newBattle : function(json) {
-        var battleLogNote = BattleLogNote.getInstance();
-        battleLogNote.pushBattleLogWithJson(json);
-
-        var battleLog = battleLogNote.getLastBattleLog();
-        cc.log(battleLog);
-
-        this.addChild(BatterLayer.create(battleLog));
+        return true;
     }
 })
 
 
-BattleScene.create = function() {
+BattleScene.create = function(battleLog) {
     var ret = new BattleScene();
 
-    if(ret) {
-        ret.init()
+    if(ret && ret.init(battleLog)) {
         return ret;
     }
 

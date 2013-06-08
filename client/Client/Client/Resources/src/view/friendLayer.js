@@ -18,7 +18,7 @@ var FriendLayer = cc.Layer.extend({
 
         var winSize = cc.Director.getInstance().getWinSize();
 
-        var label = cc.LabelTTF.create("FriendLayer");
+        var label = cc.LabelTTF.create("FriendLayer", 'Times New Roman', 60);
         label.setPosition(winSize.width / 2, winSize.height / 2);
         this.addChild(label);
 

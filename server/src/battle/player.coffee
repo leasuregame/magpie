@@ -82,7 +82,16 @@ class Player extends Module
     @
 
   cards: ->
-    _.map @matrix.allWithNull(), (c) -> c? and c.init_hp or null
+    _.map @matrix.allWithNull(), (c) -> 
+      if c? 
+        return {
+          id: c.id
+          lv: c.lv
+          hp: c.init_hp
+          atk: c.init_atk
+        }
+      else
+        return null
     
   death: ->
     res = @heros.filter (hero) ->

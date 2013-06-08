@@ -186,7 +186,7 @@ class Hero extends Module
       
     else
       log.error "普通攻击：找不到对方可攻击的卡牌"
-      throw new Error('Normal Attack Error: can not find target to be attacked.')
+      #throw new Error('Normal Attack Error: can not find target to be attacked.')
 
   damage: (value, enemy, step) ->
     # 检查辅助效果，伤害减少

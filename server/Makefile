@@ -4,7 +4,7 @@ test:
 		--require should \
 		--reporter spec \
 		--ui bdd \
-		$(files)
+		./src/test/$(files)
 
 startTT:
 	/data/ttserver/ttservctl start
@@ -13,6 +13,12 @@ stopTT:
 	/data/ttserver/ttservctl stop
 
 runserver:
-	./node_modules/.bin/coffee ./test/test_battle_server.coffee
+	./node_modules/.bin/coffee ./src/test/test_battle_server.coffee
 
-.PHONY: test startTT stopTT runserver
+debug:
+	node ./node_modules/node-inspector/bin/inspector.js & node --debug ./lib/test/test_battle_server.js
+
+build:
+	sh ./scripts/build.sh
+
+.PHONY: test startTT stopTT runserver build

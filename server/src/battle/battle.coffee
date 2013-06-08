@@ -35,7 +35,7 @@ class Battle extends Base
       cards: @defender.cards()
     }
     battleLog.set('enemy', _enm)
-    battleLog.set('me', {cards: @attacker.cards()})
+    battleLog.set('own', {cards: @attacker.cards()})
     log.info '    >>> 战斗开始 <<<    '
 
   execute: ->

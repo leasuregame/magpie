@@ -190,22 +190,12 @@ class Hero extends Module
 
   damage: (value, enemy, step) ->
     # 检查辅助效果，伤害减少
-    _value = @sp?.dmgReduce(value) or value
-    if _value < value
-      step.e.pop()
-      step.e.push -_value
-      log.info '伤害减少了：', value - _value
+    _value = @_checkDmgReduce(value, step)
 
     @hp -= _value
 
     # 检查，伤害反弹
-    _val = @sp?.dmgRebound(_value) or 0
-    if _val isnt 0
-      enemy.damageOnly _val
-      step.r.push -_val
-      log.info "伤害反弹给 #{enemy.name}, #{_val}"
-    else
-      step.r.push null
+    # @_checkRebound(enemy, value, step)
 
     log.info "#{@name} 死亡" if @death()
     step['death'] = true if @death()
@@ -215,6 +205,24 @@ class Hero extends Module
 
     log.info "#{@name} 死亡" if @death()
     #step['death'] = true if @death()
+  
+  _checkDmgReduce: (value, step) ->
+    _value = @sp?.dmgReduce(value) or value
+    if _value < value
+      step.e.pop()
+      step.e.push -_value
+      log.info '伤害减少了：', value - _value
+
+    _value
+
+  _checkRebound: (enemy, value, step) ->
+    _val = @sp?.dmgRebound(value) or 0
+    if _val isnt 0
+      enemy.damageOnly _val
+      step.r.push -_val
+      log.info "伤害反弹给 #{enemy.name}, #{_val}"
+    else
+      step.r.push null
 
   log: (step)->
     if step.r? and not _.some step.r

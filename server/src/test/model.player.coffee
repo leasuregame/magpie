@@ -9,4 +9,4 @@ describe 'Player Model', ->
         console.log err, result
 
       Player.remove 'key1', (err, result) ->
-        console.log err, result
+        console.log err, result 

@@ -24,6 +24,7 @@ Handler.prototype.attack = function(msg, session, next) {
   var playerId = 'aa20df78-c748-11e2-a527-377d32fa9d96'; //session.get('playerId');
 
   playerManager.fetchMany([playerId, targetId], function(err, results){
+    console.log(results);
     var attacker = new Player(results[playerId]);
     attacker.setLineUp(random_liveup(attacker.heros));
 

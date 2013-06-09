@@ -27,7 +27,7 @@
           log: true
         }, function() {
         pomelo.request("battle.fightHandler.attack", {targetId: 'aa20df79-c748-11e2-a527-377d32fa9d96'}, function(data) {
-            alert(data.msg);
+            console.log(data.msg);
           });
         });
       }

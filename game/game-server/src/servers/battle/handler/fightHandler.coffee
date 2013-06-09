@@ -1,14 +1,13 @@
 Player = require '../../../battle/player'
 Battle = require '../../../battle/battle'
-battleLog require '../../../battle/battleLog'
+battleLog = require '../../../battle/battle_log'
 playerManager = require('../../../manager/manager').player
 _ = require 'underscore'
 
 module.exports = (app) ->
   new Handler(app)
 
-Handler = (app) ->
-  @app = app
+Handler = (@app) ->
 
 Handler::attack = (msg, session, next)->
   targetId = msg.targetId
@@ -16,10 +15,10 @@ Handler::attack = (msg, session, next)->
 
   playerManager.fetchMany [playerId, targetId], (err, results) ->
     attacker = new Player(results[playerId])
-    attacker.setLineUp random_liveUP(attacker.heros)
+    attacker.setLineUp random_liveup(attacker.heros)
 
     defender = new Player(results[targetId])
-    defender.setLineUp random_liveUP(defender.heros)
+    defender.setLineUp random_liveup(defender.heros)
 
     battleLog.clear()
     battle = new Battle(attacker, defender)

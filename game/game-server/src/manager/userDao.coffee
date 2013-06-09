@@ -3,25 +3,19 @@ User = require '../domain/user'
 
 module.exports = userDao
 
-userDao = 
-  getUserInfo: (username, password, cb) ->
-    sql = 'select * from User where name = ?'
-    args = [username]
-
-    pomelo.app.get('dbclient').query sql, args, (err, res) ->
-      if err isnt null
-        cb(err, null)
-      else
-        if !!res and res.length is 1
-          rs = res[0]
-          rs.uid = rs.id
-          cb(null, rs)
-        else
-          cb(null, {uid: 0, username: username})
+userDao =
+  getUserByEmail: (email, cb) ->
+    @_getUserBy('email', email, cb)
 
   getUserByName: (username, cb) ->
-    sql = 'select * from User where name = ?'
-    args = [username]
+    @_getUserBy('name', username, cb)
+
+  getUserById: (uid, cb) ->
+    @_getUserBy('id', uid, cb)
+
+  _getUserBy: (field, value, cb) ->
+    sql = "select * from User where #{field} = ?"
+    args = [value]
 
     pomelo.app.get('dbclient').query sql, args, (err, res) ->
       if err isnt null
@@ -30,26 +24,10 @@ userDao =
 
       if !!res and res.length is 1
         rs = res[0]
-        user = new USer({id: rs.id, name: rs.name, password: rs.password, from: rs.from})
+        user = new User({id: rs.id, name: rs.name, password: rs.password, from: rs.from})
         cb(null, user)
       else
-        cb(' user not exist ', null)
-
-  getUserByName: (uid, cb) ->
-    sql = 'select * from User where id = ?'
-    args = [uid]
-
-    pomelo.app.get('dbclient').query sql, args, (err, res) ->
-      if err isnt null
-        cb(err.message, null)
-        return
-      
-      if !!res and res.length is 1
-        rs = res[0]
-        user = new USer({id: rs.id, name: rs.name, password: rs.password, from: rs.from})
-        cb(null, user)
-      else
-        cb(' user not exist ', null)
+        cb(' User not exist ', null)
 
   deleteUserByName: (username, cb) ->
     sql = 'delete from User where name = ?'
@@ -65,16 +43,30 @@ userDao =
       else
         cb(null, false)
 
-  createUser: (username, password, from, cb) ->
-    sql = 'insert into User (name, password, `from`, loginCount, lastLoginTime) values(?,?,?,?,?)'
+  createUser: (email, password, from, cb) ->
+    sql = 'insert into User (email, password, `from`, loginCount, lastLoginTime) values(?,?,?,?,?)'
     loginTime = Date.now()
-    args = [username, password, from or '', 1, loginTime]
+    args = [email, password, from or '', 1, loginTime]
 
     pomelo.app.get('dbclient').insert sql, args, (err, res) ->
       if err isnt null
         cb({code: err.number, msg: err.message}, null)
       else
-        user = new User({id: res.insertId, name: username, password, loginCount: 1, lastLoginTime: res.lastLoginTime})
+        user = new User({id: res.insertId, email: email, password, loginCount: 1, lastLoginTime: res.lastLoginTime})
         cb(null, user)
+
+  updateUser: (uid, fields, cb) ->
+    if fields and fields.length > 0
+      for f, v of fields
+        setFields += "SET #{f}=#{v}, "
+
+      sql = "update User #{setFields} where id = ?"
+      args = [uid]
+
+      pomelo.app.get('dbclient').update sql, args, (err, res) ->
+        if err isnt null
+          cb({code: err.number, msg: err.message}, null)
+        else
+          cb(null, res)
 
 

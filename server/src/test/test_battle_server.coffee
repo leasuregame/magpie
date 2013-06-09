@@ -90,7 +90,7 @@ random_liveup = (heros)->
 
   lu[0...-1]
 
-app.listen('3345')
+app.listen('3344')
 
 module.exports = {vs: vs, vs66: vs66}
 console.log 'test server running on http://localhost:3344'

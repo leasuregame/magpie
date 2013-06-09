@@ -1,7 +1,9 @@
 
 cd game-server
 
-echo ${PWD} 
+#echo ${PWD} 
+
+mkdir app
 
 echo 'compiler coffee files...'
 ./node_modules/.bin/coffee -cb -o ./app ./src
@@ -16,5 +18,6 @@ done
 
 echo 'copy tables data...'
 cp -r ./src/test/tables ./app/test/tables
+cp -r ./src/manager/mysql ./app/manager/mysql
 
 echo 'Done!'

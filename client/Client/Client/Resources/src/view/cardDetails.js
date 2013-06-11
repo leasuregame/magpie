@@ -11,6 +11,13 @@
  * 卡牌 详细信息面板
  * */
 
+/** Layer will receive all the touches at once The onTouchesXXX API will be called
+ */
+cc.TOUCH_ALL_AT_ONCE = 0;
+
+/** Layer will receive only one touch at the time. The onTouchXXX API will be called */
+cc.TOUCH_ONE_BY_ONE = 1;
+
 
 var CardDetails = cc.Layer.extend({
     _touchedMenu: false,
@@ -21,7 +28,7 @@ var CardDetails = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        this.setTouchMode(cc.TOUCHES_ONE_BY_ONE);
+        this.setTouchMode(1);
         this.setTouchPriority(-100000);
         this.setTouchEnabled(true);
 
@@ -37,7 +44,7 @@ var CardDetails = cc.Layer.extend({
         this.addChild(sprite);
 
         if(card > 1) {
-            sprite = cc.Sprite.create("res/test/" + card + ".png");
+            sprite = cc.Sprite.create(s_path + card + ".png");
             sprite.setPosition(-125, 150);
             this.addChild(sprite);
         }
@@ -46,7 +53,7 @@ var CardDetails = cc.Layer.extend({
         if(card == 0) card = 1;
 
         for (var i = 0; i < card; ++i) {
-            sprite = cc.Sprite.create("res/test/star" + card + ".png");
+            sprite = cc.Sprite.create(s_path + "star" + card + ".png");
             sprite.setPosition(22, -50 * i + 300);
             this.addChild(sprite);
         }

@@ -91,4 +91,5 @@ var myScene = new MainScene();
 //var myScene = new testScene();
 
 // run
-director.runWithScene(myScene);
+//director.runWithScene(myScene);
+director.replaceScene(myScene);

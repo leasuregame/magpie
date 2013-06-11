@@ -73,9 +73,16 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     sc->start();
     
-    CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
-    CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
-    ScriptingCore::getInstance()->runScript("main_binding.js");
+    CCScene *scene = CCScene::create();
+    UpdateLayer *updateLayer = new UpdateLayer();
+    scene->addChild(updateLayer);
+    updateLayer->release();
+    
+    pDirector->runWithScene(scene);
+    
+//    CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
+//    CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
+//    ScriptingCore::getInstance()->runScript("main_binding.js");
     
     return true;
 }
@@ -134,7 +141,7 @@ UpdateLayer::~UpdateLayer()
 
 void UpdateLayer::update(cocos2d::CCObject *pSender)
 {
-    pProgressLabel->setString("");
+    pProgressLabel->setString("提示信息：你点击了更新。。。");
     
     // update resources
     getAssetsManager()->update();
@@ -144,7 +151,7 @@ void UpdateLayer::update(cocos2d::CCObject *pSender)
 
 void UpdateLayer::reset(cocos2d::CCObject *pSender)
 {
-    pProgressLabel->setString(" ");
+    pProgressLabel->setString("提示信息：你点击了删除。。。");
     
     // Remove downloaded files
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
@@ -166,6 +173,8 @@ void UpdateLayer::reset(cocos2d::CCObject *pSender)
 
 void UpdateLayer::enter(cocos2d::CCObject *pSender)
 {
+    pProgressLabel->setString("提示信息：你点击了进入。。。");
+    
     // Should set search resource path before running script if "update" is not clicked.
     // Because AssetsManager will set
     if (! isUpdateItemClicked)
@@ -177,7 +186,7 @@ void UpdateLayer::enter(cocos2d::CCObject *pSender)
     
     CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
     CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
-    ScriptingCore::getInstance()->runScript("main.js");
+    ScriptingCore::getInstance()->runScript("main_binding.js");
 }
 
 bool UpdateLayer::init()
@@ -188,20 +197,24 @@ bool UpdateLayer::init()
     
     CCSize size = CCDirector::sharedDirector()->getWinSize();
     
-    pItemReset = CCMenuItemFont::create("reset", this, menu_selector(UpdateLayer::reset));
-    pItemEnter = CCMenuItemFont::create("enter", this, menu_selector(UpdateLayer::enter));
-    pItemUpdate = CCMenuItemFont::create("update", this, menu_selector(UpdateLayer::update));
+    CCMenuItemFont::setFontSize(50);
     
-    pItemEnter->setPosition(ccp(size.width/2, size.height/2 + 50));
+    pItemReset = CCMenuItemFont::create("删除", this, menu_selector(UpdateLayer::reset));
+    pItemEnter = CCMenuItemFont::create("进入", this, menu_selector(UpdateLayer::enter));
+    pItemUpdate = CCMenuItemFont::create("更新", this, menu_selector(UpdateLayer::update));
+    
+    
+    pItemEnter->setPosition(ccp(size.width/2, size.height/2 + 150));
     pItemReset->setPosition(ccp(size.width/2, size.height/2));
-    pItemUpdate->setPosition(ccp(size.width/2, size.height/2 - 50));
+    pItemUpdate->setPosition(ccp(size.width/2, size.height/2 - 150));
     
     CCMenu *menu = CCMenu::create(pItemUpdate, pItemEnter, pItemReset, NULL);
     menu->setPosition(ccp(0,0));
     addChild(menu);
     
-    pProgressLabel = CCLabelTTF::create("", "Arial", 20);
-    pProgressLabel->setPosition(ccp(100, 50));
+    pProgressLabel = CCLabelTTF::create("提示信息：", "Arial", 30);
+    pProgressLabel->setPosition(ccp(size.width/5 + 50, size.height/5));
+    pProgressLabel->setAnchorPoint(ccp(0, 0));
     addChild(pProgressLabel);
     
     return true;
@@ -213,8 +226,8 @@ AssetsManager* UpdateLayer::getAssetsManager()
     
     if (! pAssetsManager)
     {
-        pAssetsManager = new AssetsManager("https://raw.github.com/minggo/AssetsManagerTest/master/package.zip",
-                                           "https://raw.github.com/minggo/AssetsManagerTest/master/version",
+        pAssetsManager = new AssetsManager("http://192.168.1.89/resources.zip",
+                                           "http://192.168.1.89:8888/",
                                            pathToSave.c_str());
         pAssetsManager->setDelegate(this);
         pAssetsManager->setConnectionTimeout(3);
@@ -249,23 +262,23 @@ void UpdateLayer::onError(AssetsManager::ErrorCode errorCode)
 {
     if (errorCode == AssetsManager::kNoNewVersion)
     {
-        pProgressLabel->setString("no new version");
+        pProgressLabel->setString("提示信息：不是新版本。。。");
     }
     
     if (errorCode == AssetsManager::kNetwork)
     {
-        pProgressLabel->setString("network error");
+        pProgressLabel->setString("提示信息：更行错误。。。");
     }
 }
 
 void UpdateLayer::onProgress(int percent)
 {
-    char progress[20];
-    snprintf(progress, 20, "downloading %d%%", percent);
+    char progress[200];
+    snprintf(progress, 200, "提示信息：已更新。。。 %d%%", percent);
     pProgressLabel->setString(progress);
 }
 
 void UpdateLayer::onSuccess()
 {
-    pProgressLabel->setString("download ok");
+    pProgressLabel->setString("提示信息：更新完毕。。。");
 }

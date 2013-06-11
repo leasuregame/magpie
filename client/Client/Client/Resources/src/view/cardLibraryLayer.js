@@ -37,7 +37,7 @@ var CardLibraryLayer = cc.Layer.extend({
                 }
             }(i);
 
-            var item = cc.MenuItemImage.create("res/test/h" + i + ".png", "res/test/h" + i + ".png", fun, this);
+            var item = cc.MenuItemImage.create(s_path + "h" + i + ".png", s_path + "h" + i + ".png", fun, this);
 
             item.setPosition(i * 90 + 45, 750);
             menu.addChild(item);
@@ -48,12 +48,12 @@ var CardLibraryLayer = cc.Layer.extend({
         }
 
         for (var i = 1; i <= 6; ++i) {
-            var item = cc.MenuItemImage.create("res/test/hg" + i + ".png", null, function(){}, null);
+            var sprite = cc.Sprite.create(s_path + "hg" + i + ".png");
 
-            item.setPosition(i * 90 + 45, 600);
-            menu.addChild(item);
+            sprite.setPosition(i * 90 + 45, 600);
+            this.addChild(sprite);
 
-            var sprite = cc.Sprite.create(s_frame1);
+            sprite = cc.Sprite.create(s_frame1);
             sprite.setPosition(i * 90 + 45, 600);
             this.addChild(sprite);
         }

@@ -1,4 +1,5 @@
-var s_path = "res/test/";
+//var s_path = "res/test/";
+var s_path = "";
 
 var s_game_bg = s_path + "bg.png";
 var s_progress_bg = s_path + "p.png";

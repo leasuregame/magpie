@@ -15,12 +15,6 @@
 var MainScene = cc.Scene.extend({
     _nowLayer: null,
 
-    ctor: function () {
-        cc.log("MainScene ctor");
-
-        this._super();
-    },
-
     onEnter: function () {
         cc.log("MainScene onEnter");
 

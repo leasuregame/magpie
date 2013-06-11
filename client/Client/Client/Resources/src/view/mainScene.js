@@ -8,26 +8,26 @@
 
 
 /*
-* main scene
-* */
+ * main scene
+ * */
 
 
 var MainScene = cc.Scene.extend({
-    _nowLayer : null,
+    _nowLayer: null,
 
-    ctor : function() {
+    ctor: function () {
         cc.log("MainScene ctor");
 
         this._super();
     },
 
-    onEnter : function() {
+    onEnter: function () {
         cc.log("MainScene onEnter");
 
         this._super();
 
         var mainBgLayer = MainBgLayer.create();
-        this.addChild(mainBgLayer,  -1);
+        this.addChild(mainBgLayer, -1);
 
         var mainMenuLayer = MainMenuLayer.create(this);
         this.addChild(mainMenuLayer, 1);
@@ -36,11 +36,11 @@ var MainScene = cc.Scene.extend({
         this.addChild(this._nowLayer);
     },
 
-    switchLayer : function(runLayer) {
+    switchLayer: function (runLayer) {
         cc.log("MainScene switchMenu");
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
-        if(!(this._nowLayer instanceof runLayer)) {
+        if (!(this._nowLayer instanceof runLayer)) {
             this.removeChild(this._nowLayer);
             this._nowLayer = runLayer.create(this);
             this.addChild(this._nowLayer);
@@ -48,10 +48,10 @@ var MainScene = cc.Scene.extend({
     }
 })
 
-MainScene.create = function() {
+MainScene.create = function () {
     var ret = new MainScene();
 
-    if(ret) {
+    if (ret) {
         return ret;
     }
 

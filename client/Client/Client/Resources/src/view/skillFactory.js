@@ -7,27 +7,27 @@
  */
 
 /*
-* 技能
-* */
+ * 技能
+ * */
 
 var SkillFactory = {
-    normalAttack : function(cardList, battleStep, labelList, progressList) {
+    normalAttack: function (cardList, battleStep, labelList, progressList) {
 //        cardList[battleStep.getAttacker()].runAction(ActionFactory.attack().action);
         cardList[battleStep.getAttacker()].atk();
 
         battleStep.recover();
-        while(battleStep.hasNextTaget()) {
+        while (battleStep.hasNextTaget()) {
             var isCrit = battleStep.isCrit();
             var taget = battleStep.getTarget();
             var effect = battleStep.getEffect();
 
-            if(progressList[taget] == null) continue;
+            if (progressList[taget] == null) continue;
 
             cc.log(taget);
             cc.log(progressList[taget].getValue());
             cc.log(effect);
 
-            if(progressList[taget].getValue() <= 0) continue;
+            if (progressList[taget].getValue() <= 0) continue;
             else progressList[taget].addValue(effect);
 
             cc.log(progressList[taget].getValue());
@@ -35,11 +35,11 @@ var SkillFactory = {
             cardList[taget].stopAllActions();
             labelList[taget].stopAllActions();
 
-            if(effect == 0) cardList[taget].miss();
+            if (effect == 0) cardList[taget].miss();
             else cardList[taget].hit();
 
             var str = "";
-            if(isCrit) {
+            if (isCrit) {
                 labelList[taget].setFontSize(75);
                 str += "暴"
             }
@@ -47,14 +47,14 @@ var SkillFactory = {
                 labelList[taget].setFontSize(60);
             }
 
-            if(effect == 0) {
+            if (effect == 0) {
                 labelList[taget].setColor(cc.c3b(0, 0, 255));
                 str += "MISS";
             }
             else {
                 str += effect;
 
-                if(effect > 0) {
+                if (effect > 0) {
                     labelList[taget].setColor(cc.c3b(0, 255, 0));
                 }
                 else {
@@ -70,14 +70,14 @@ var SkillFactory = {
         }
 
 
-        cc.Director.getInstance().getScheduler().scheduleCallbackForTarget(this, function() {
+        cc.Director.getInstance().getScheduler().scheduleCallbackForTarget(this, function () {
             battleStep.recover();
-            while(battleStep.hasNextTaget()) {
+            while (battleStep.hasNextTaget()) {
                 var taget = battleStep.getTarget();
 
-                if(progressList[taget] == null) continue;
+                if (progressList[taget] == null) continue;
 
-                if(progressList[taget].getValue() <= 0) {
+                if (progressList[taget].getValue() <= 0) {
                     cc.log("remove " + taget + " from parent");
 
                     cardList[taget].setVisible(false);

@@ -11,10 +11,10 @@
  * */
 
 var RankingLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("RankingLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         var winSize = cc.Director.getInstance().getWinSize();
 
@@ -26,10 +26,10 @@ var RankingLayer = cc.Layer.extend({
     }
 })
 
-RankingLayer.create = function() {
+RankingLayer.create = function () {
     var ret = new RankingLayer();
 
-    if(ret && ret.init()) {
+    if (ret && ret.init()) {
         return ret;
     }
 

@@ -8,24 +8,24 @@
 
 
 /*
-* 竞技
-* */
+ * 竞技
+ * */
 
 
 var TournamentLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("Tournament init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         return true;
     }
 })
 
-TournamentLayer.create = function() {
+TournamentLayer.create = function () {
     var res = new TournamentLayer();
 
-    if(res && res.init()) {
+    if (res && res.init()) {
         return res;
     }
 

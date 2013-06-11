@@ -8,36 +8,34 @@
 
 
 /*
-* card node
-* */
+ * card node
+ * */
 
 
 var CardNode = cc.Node.extend({
-    _frameSprite : null,
-    _heroSprite : null,
-    _expressionSprite : null,
+    _frameSprite: null,
+    _heroSprite: null,
+    _expressionSprite: null,
 
-    init : function(card) {
-        if(!this._super()) return false;
+    init: function (card) {
+        if (!this._super()) return false;
 
-        index = card % 3 + 1;
-        card = card % 5 + 1;
+        index = card % 6 + 1;
 
-        this._frameSprite = cc.Sprite.create("res/test1/BustFrame.png");
+        this._frameSprite = cc.Sprite.create(s_frame2);
         this.addChild(this._frameSprite);
 
-        this._heroSprite = cc.Sprite.create("res/test1/BustRebels" + index + ".png");
+        this._heroSprite = cc.Sprite.create("b" + index + ".png");
         this.addChild(this._heroSprite);
 
-        cc.log(card);
-        this._expressionSprite = cc.Sprite.create("res/test1/Expression" + card + ".png");
-        this._expressionSprite.setOpacity(0);
-        this.addChild(this._expressionSprite);
+//        this._expressionSprite = cc.Sprite.create("res/test1/Expression" + card + ".png");
+//        this._expressionSprite.setOpacity(0);
+//        this.addChild(this._expressionSprite);
 
         return true;
     },
 
-    atk : function() {
+    atk: function () {
         var a = cc.Sequence.create(cc.FadeIn.create(0.5), cc.FadeOut.create(0.5));
         this._expressionSprite.runAction(a);
 
@@ -51,7 +49,7 @@ var CardNode = cc.Node.extend({
         this.runAction(cc.Spawn.create(a, b));
     },
 
-    miss : function() {
+    miss: function () {
         var waitTime = cc.DelayTime.create(0.5);
 
         var a1 = cc.MoveBy.create(0.5 / GAME_COMBAT_SPEED, cc.p(-20, 0));
@@ -66,7 +64,7 @@ var CardNode = cc.Node.extend({
         this.runAction(aa);
     },
 
-    hit : function() {
+    hit: function () {
         var waitTime = cc.DelayTime.create(0.5);
 
         var a1 = cc.TintTo.create(0.5 / GAME_COMBAT_SPEED, 0, 255, 255);
@@ -84,10 +82,10 @@ var CardNode = cc.Node.extend({
 })
 
 
-CardNode.create = function(card) {
+CardNode.create = function (card) {
     var ret = new CardNode();
 
-    if(ret && ret.init(card)) {
+    if (ret && ret.init(card)) {
         return ret;
     }
 

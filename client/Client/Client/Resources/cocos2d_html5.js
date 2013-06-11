@@ -49,6 +49,9 @@
             'src/view/actionFactory.js',
             'src/view/effectsFactory.js',
             'src/view/skillFactory.js',
+
+            //'src/model/pomelo-client.js',
+
             'src/model/config.js',
             'src/model/singleton.js',
             'src/model/base.js',

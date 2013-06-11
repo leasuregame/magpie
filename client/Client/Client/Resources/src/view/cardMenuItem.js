@@ -8,23 +8,23 @@
 
 
 /*
-* card menu item
-* */
+ * card menu item
+ * */
 
 
 var CardMenuItem = cc.MenuItem.extend({
-    init : function(card) {
-        if(!this._super()) return false;
+    init: function (card) {
+        if (!this._super()) return false;
 
         return true;
     }
 })
 
 
-CardMenuItem.create = function(card) {
+CardMenuItem.create = function (card) {
     var ret = new CardMenuItem();
 
-    if(ret && ret.init(card)) {
+    if (ret && ret.init(card)) {
         return ret;
     }
 

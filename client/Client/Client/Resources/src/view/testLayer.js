@@ -7,7 +7,7 @@
  */
 
 var testLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         this._super();
 
         var size = cc.Director.getInstance().getWinSize();
@@ -23,12 +23,12 @@ var testLayer = cc.Layer.extend({
 
         var menu = cc.Menu.create();
         menu.setPosition(cc.p(0, 0));
-        for(var i = 1; i <= 5; ++i) {
+        for (var i = 1; i <= 5; ++i) {
             var k = Math.ceil(i / 2);
             cc.log("res/test1/HeadRebels" + k + ".png");
 
-            var fun = function(i) {
-                return function() {
+            var fun = function (i) {
+                return function () {
                     var layer = CardDetails.create(i);
                     layer.setPosition(size.width / 2, size.height / 2);
                     this.addChild(layer, 2);
@@ -44,14 +44,14 @@ var testLayer = cc.Layer.extend({
             sprite.setPosition(i * 100 + 50, 750);
             this.addChild(sprite);
 
-            if(k == 2) {
+            if (k == 2) {
                 var sprite = cc.Sprite.create("res/test1/HeadRebels1.png");
                 sprite.setPosition(i * 100 + 50, 750);
                 this.addChild(sprite);
             }
         }
 
-        for(var i = 1; i <= 5; ++i) {
+        for (var i = 1; i <= 5; ++i) {
             var k = Math.ceil(i / 2);
             cc.log("res/test1/HeadRebels" + k + ".png");
 
@@ -64,7 +64,7 @@ var testLayer = cc.Layer.extend({
             sprite.setPosition(i * 100 + 50, 600);
             this.addChild(sprite);
 
-            if(k == 2) {
+            if (k == 2) {
                 var sprite = cc.Sprite.create("res/test1/GrayHeadRebels1.png");
                 sprite.setPosition(i * 100 + 50, 600);
                 this.addChild(sprite);
@@ -77,7 +77,7 @@ var testLayer = cc.Layer.extend({
 
         this.addChild(menu);
 
-        for(var i = 1; i <= 3; ++i) {
+        for (var i = 1; i <= 3; ++i) {
             var node = cc.Node.create();
 
             node.setAnchorPoint(cc.p(0.5, 0.5));
@@ -116,31 +116,31 @@ var testLayer = cc.Layer.extend({
         //CloudLayer.show();
 
         /*
-        var layer = cc.Layer.create();
-        var menu = LazyMenu.create();
-        menu.setPosition(cc.p(0, 0));
-        for(var j = 0; j < 9; ++j) {
-            for(var i = 1; i <= 5; ++i) {
-                var fun = function(i, j) {
-                    return function() {
-                        cc.log(i + "  " + j);
-                    }
-                }(i, j);
+         var layer = cc.Layer.create();
+         var menu = LazyMenu.create();
+         menu.setPosition(cc.p(0, 0));
+         for(var j = 0; j < 9; ++j) {
+         for(var i = 1; i <= 5; ++i) {
+         var fun = function(i, j) {
+         return function() {
+         cc.log(i + "  " + j);
+         }
+         }(i, j);
 
-                cc.log("res/test1/" + i + ".png");
-                var item = cc.MenuItemImage.create("res/test1/" + i + ".png", "res/test1/" + i + ".png", fun);
+         cc.log("res/test1/" + i + ".png");
+         var item = cc.MenuItemImage.create("res/test1/" + i + ".png", "res/test1/" + i + ".png", fun);
 
-                item.setPosition(i * 100, 100 * j);
-                menu.addChild(item);
-            }
-        }
-        layer.addChild(menu);
-//        this.addChild(layer);
+         item.setPosition(i * 100, 100 * j);
+         menu.addChild(item);
+         }
+         }
+         layer.addChild(menu);
+         //        this.addChild(layer);
 
-        var view = cc.ScrollView.create(cc.size(700, 1000), layer);
-        cc.log(view);
-        view.setDirection(0);
-        this.addChild(view);
-        */
+         var view = cc.ScrollView.create(cc.size(700, 1000), layer);
+         cc.log(view);
+         view.setDirection(0);
+         this.addChild(view);
+         */
     }
 })

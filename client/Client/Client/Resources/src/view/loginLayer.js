@@ -8,15 +8,14 @@
 
 
 /*
-* login layer
-* */
+ * login layer
+ * */
 
 var LoginLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("LoginLayer init");
 
-        if(!this._super()) return false;
-
+        if (!this._super()) return false;
 
 
         return true;

@@ -7,25 +7,25 @@
  */
 
 /*
-* 战斗流程播放器
-* */
+ * 战斗流程播放器
+ * */
 
 var BattlePlayer = cc.Class.extend({
-    _scheduler : null,
-    _battleLog : null,
+    _scheduler: null,
+    _battleLog: null,
 
-    _cardList : null,
-    _labelList : null,
-    _progressList : null,
-    _tipLabel : null,
+    _cardList: null,
+    _labelList: null,
+    _progressList: null,
+    _tipLabel: null,
 
-    init : function() {
+    init: function () {
         cc.log("BattlePlayer init");
 
         this._scheduler = cc.Director.getInstance().getScheduler();
     },
 
-    play : function(battleLog, cardList, labelList, progressList, tipLabel) {
+    play: function (battleLog, cardList, labelList, progressList, tipLabel) {
         cc.log("BattlePlayer play");
 
         this._tipLabel = tipLabel;
@@ -38,10 +38,10 @@ var BattlePlayer = cc.Class.extend({
         this.playAStep();
     },
 
-    playAStep : function() {
+    playAStep: function () {
         this._scheduler.unscheduleCallbackForTarget(this, this.playAStep);
 
-        if(!this._battleLog.hasNextBattleStep()) {
+        if (!this._battleLog.hasNextBattleStep()) {
             cc.log("pop battle scene");
 //            cc.Director.getInstance().replaceScene(MainScene.create());
             cc.Director.getInstance().replaceScene(cc.TransitionTurnOffTiles.create(1, MainScene.create()));
@@ -66,17 +66,17 @@ var BattlePlayer = cc.Class.extend({
         this._scheduler.scheduleCallbackForTarget(this, this.playAStep, delay, 1, 0, false);
     },
 
-    pause : function() {
+    pause: function () {
         cc.log("BattlePlayer pause");
     },
 
-    getSpeed : function() {
+    getSpeed: function () {
         cc.log("BattlePlayer getSpeed");
 
         return GAME_COMBAT_SPEED;
     },
 
-    setSpeed : function(speed) {
+    setSpeed: function (speed) {
         cc.log("BattlePlayer setSpeed");
 
         GAME_COMBAT_SPEED = speed;

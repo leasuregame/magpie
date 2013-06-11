@@ -7,14 +7,14 @@
  */
 
 /*
-* friend layer
-* */
+ * friend layer
+ * */
 
 var FriendLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("FriendLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         var winSize = cc.Director.getInstance().getWinSize();
 
@@ -26,10 +26,10 @@ var FriendLayer = cc.Layer.extend({
     }
 })
 
-FriendLayer.create = function() {
+FriendLayer.create = function () {
     var res = new FriendLayer()
 
-    if(res && res.init()) {
+    if (res && res.init()) {
         return res;
     }
 

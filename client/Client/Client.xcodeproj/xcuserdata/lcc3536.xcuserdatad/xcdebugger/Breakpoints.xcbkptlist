@@ -14,5 +14,16 @@
          startingLineNumber = "25"
          endingLineNumber = "25">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Client/Resources/src/view/cardNode.js"
+         timestampString = "392379087.480594"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "30"
+         endingLineNumber = "30">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

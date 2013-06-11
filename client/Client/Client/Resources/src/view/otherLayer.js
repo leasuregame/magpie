@@ -8,14 +8,14 @@
 
 
 /*
-* other layer
-* */
+ * other layer
+ * */
 
 var OtherLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("OtherLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         var winSize = cc.Director.getInstance().getWinSize();
 
@@ -27,10 +27,10 @@ var OtherLayer = cc.Layer.extend({
     }
 })
 
-OtherLayer.create = function() {
+OtherLayer.create = function () {
     var res = new OtherLayer();
 
-    if(res && res.init()) {
+    if (res && res.init()) {
         return res;
     }
 

@@ -8,14 +8,14 @@
 
 
 /*
-* shop layer
-* */
+ * shop layer
+ * */
 
 var ShopLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("ShopLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         var winSize = cc.Director.getInstance().getWinSize();
 
@@ -27,10 +27,10 @@ var ShopLayer = cc.Layer.extend({
     }
 })
 
-ShopLayer.create = function() {
+ShopLayer.create = function () {
     var ret = new ShopLayer();
 
-    if(ret && ret.init()) {
+    if (ret && ret.init()) {
         return ret;
     }
 

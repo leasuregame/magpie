@@ -8,60 +8,50 @@
 
 
 /*
-* 卡牌 详细信息面板
-* */
+ * 卡牌 详细信息面板
+ * */
 
 
 var CardDetails = cc.Layer.extend({
-    _touchedMenu : false,
-    _menu : null,
+    _touchedMenu: false,
+    _menu: null,
 
-    init : function(card) {
-        cc.log("CardDetails init");
+    init: function (card) {
+        cc.log("CardDetails init" + card);
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         this.setTouchMode(cc.TOUCHES_ONE_BY_ONE);
         this.setTouchPriority(-100000);
         this.setTouchEnabled(true);
 
-        var bgSprite = cc.Sprite.create("res/test1/view.png");
+        var bgSprite = cc.Sprite.create(s_card_view);
         this.addChild(bgSprite);
 
-        var frame = cc.Sprite.create("res/test1/allFrame.png");
+        var frame = cc.Sprite.create(s_frame3);
         frame.setPosition(-125, 150);
         this.addChild(frame);
 
-        var sprite = null;
-        switch (card) {
-            case 1:
-            case 2: sprite = cc.Sprite.create("res/test1/Rebels1.png");
-                    sprite.setPosition(-125, 150);
-                    this.addChild(sprite);
-                    break;
+        var sprite = cc.Sprite.create(s_hero_1);
+        sprite.setPosition(-125, 150);
+        this.addChild(sprite);
 
-            case 3:
-            case 4: sprite = cc.Sprite.create("res/test1/Rebels1.png");
-                    sprite.setPosition(-125, 150);
-                    this.addChild(sprite);
-                    sprite = cc.Sprite.create("res/test1/Rebels2.png");
-                    sprite.setPosition(-125, 150);
-                    this.addChild(sprite);
-                    break;
-
-            case 5: sprite = cc.Sprite.create("res/test1/Rebels3.png");
-                    sprite.setPosition(-125, 150);
-                    this.addChild(sprite);
-                    break;
+        if(card > 1) {
+            sprite = cc.Sprite.create("res/test/" + card + ".png");
+            sprite.setPosition(-125, 150);
+            this.addChild(sprite);
         }
 
-        for(var i = 0; i < card; ++i) {
-            var sprite = cc.Sprite.create("res/test1/star.png");
+        card = card % 6;
+        if(card == 0) card = 1;
+
+        for (var i = 0; i < card; ++i) {
+            sprite = cc.Sprite.create("res/test/star" + card + ".png");
             sprite.setPosition(22, -50 * i + 300);
             this.addChild(sprite);
         }
 
-        var closeItem = cc.MenuItemImage.create("res/test1/close.png", "res/test1/close.png", this._onClickCloseItem, this);
+        var closeItem = cc.MenuItemImage.create(s_close, s_close, this._onClickCloseItem, this);
         closeItem.setPosition(252, -357);
         this._menu = cc.Menu.create(closeItem);
         this._menu.setPosition(0, 0);
@@ -70,11 +60,11 @@ var CardDetails = cc.Layer.extend({
         return true;
     },
 
-    _onClickCloseItem : function() {
+    _onClickCloseItem: function () {
         this.removeFromParent();
     },
 
-    onTouchBegan:function (touch, event) {
+    onTouchBegan: function (touch, event) {
         cc.log("dialog: touch began!");
         this._touchedMenu = this._menu.onTouchBegan(touch, event);
         return true;
@@ -85,7 +75,7 @@ var CardDetails = cc.Layer.extend({
      * @param {cc.Touch} touch
      * @param {event} event
      */
-    onTouchMoved:function (touch, event) {
+    onTouchMoved: function (touch, event) {
         cc.log("dialog: touch move");
         if (this._touchedMenu) {
             this._menu.onTouchMoved(touch, event);
@@ -97,7 +87,7 @@ var CardDetails = cc.Layer.extend({
      * @param {cc.Touch} touch
      * @param {event} event
      */
-    onTouchEnded:function (touch, event) {
+    onTouchEnded: function (touch, event) {
         cc.log("dialog: touch end");
         if (this._touchedMenu) {
             this._menu.onTouchEnded(touch, event);
@@ -109,7 +99,7 @@ var CardDetails = cc.Layer.extend({
      * @param {cc.Touch} touch
      * @param {event} event
      */
-    onTouchCancelled:function (touch, event) {
+    onTouchCancelled: function (touch, event) {
         cc.log("dialog: on touch cancelled");
         if (this._touchedMenu) {
             this._menu.onTouchEnded(touch, event);
@@ -119,10 +109,10 @@ var CardDetails = cc.Layer.extend({
 })
 
 
-CardDetails.create = function(card) {
+CardDetails.create = function (card) {
     var ret = new CardDetails();
 
-    if(ret && ret.init(card)) {
+    if (ret && ret.init(card)) {
         return ret;
     }
 

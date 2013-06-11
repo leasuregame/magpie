@@ -8,16 +8,16 @@
 
 
 /*
-* main layer
-* */
+ * main layer
+ * */
 
 var MainLayer = cc.Layer.extend({
-    _mainScene : null,
+    _mainScene: null,
 
-    init : function(mainScene) {
+    init: function (mainScene) {
         cc.log("MainLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         this._mainScene = mainScene;
 
@@ -102,20 +102,20 @@ var MainLayer = cc.Layer.extend({
         return true;
     },
 
-    _onClickTask : function() {
+    _onClickTask: function () {
         cc.log("MainLayer _onClickTask");
-        if(this._mainScene) this._mainScene.switchLayer(TaskLayer);
+        if (this._mainScene) this._mainScene.switchLayer(TaskLayer);
     },
 
-    _onClickBarriers : function() {
+    _onClickBarriers: function () {
         cc.log("MainLayer _onClickBarriers");
-        if(this._mainScene) this._mainScene.switchLayer(BarriersLayer);
+        if (this._mainScene) this._mainScene.switchLayer(BarriersLayer);
     },
 
-    _onClickTournament : function() {
+    _onClickTournament: function () {
         cc.log("MainLayer _onClickTournament");
 
-        lz.HttpClientPackage.getInstance().HttpGetRequest("http://192.168.1.7:3344/vs", function(json) {
+        lz.HttpClientPackage.getInstance().HttpGetRequest("http://192.168.1.7:3344/vs", function (json) {
             var battleLog = BattleLog.create(json);
             BattleLogNote.getInstance().pushBattleLog(battleLog);
 //            cc.Director.getInstance().replaceScene(BattleScene.create(battleLog));
@@ -123,21 +123,21 @@ var MainLayer = cc.Layer.extend({
         }, null);
     },
 
-    _onClickLottery : function() {
+    _onClickLottery: function () {
         cc.log("MainLayer _onClickLottery");
-        if(this._mainScene) this._mainScene.switchLayer(LotteryLayer);
+        if (this._mainScene) this._mainScene.switchLayer(LotteryLayer);
     },
 
-    _onClickStrengthen : function() {
+    _onClickStrengthen: function () {
         cc.log("MainLayer _onClickStrengthen");
-        if(this._mainScene) this._mainScene.switchLayer(StrengthenLayer);
+        if (this._mainScene) this._mainScene.switchLayer(StrengthenLayer);
     }
 })
 
-MainLayer.create = function(mainScene) {
+MainLayer.create = function (mainScene) {
     var ret = new MainLayer();
 
-    if(ret && ret.init(mainScene)) {
+    if (ret && ret.init(mainScene)) {
         return ret;
     }
 

@@ -8,18 +8,18 @@
 
 
 /*
-* main menu layer
-* */
+ * main menu layer
+ * */
 
 
 var MainMenuLayer = cc.Layer.extend({
-    _mainScene : null,
+    _mainScene: null,
 
-    init : function(mainScene) {
+    init: function (mainScene) {
         cc.log("MainMenuLayer init");
 
-        if(!this._super()) return false;
-        if(!mainScene) return false;
+        if (!this._super()) return false;
+        if (!mainScene) return false;
 
         this._mainScene = mainScene;
 
@@ -56,42 +56,42 @@ var MainMenuLayer = cc.Layer.extend({
         return true;
     },
 
-    _onClickMainLayer : function() {
+    _onClickMainLayer: function () {
         cc.log("MainMenuLayer _onClickMainLayer");
-        if(this._mainScene) this._mainScene.switchLayer(MainLayer);
+        if (this._mainScene) this._mainScene.switchLayer(MainLayer);
     },
 
-    _onClickShopLayer : function() {
+    _onClickShopLayer: function () {
         cc.log("MainMenuLayer _onClickShopLayer");
-        if(this._mainScene) this._mainScene.switchLayer(ShopLayer);
+        if (this._mainScene) this._mainScene.switchLayer(ShopLayer);
     },
 
-    _onClickCardLibraryLayer : function() {
+    _onClickCardLibraryLayer: function () {
         cc.log("MainMenuLayer _onClickCardLibraryLayer");
-        if(this._mainScene) this._mainScene.switchLayer(CardLibraryLayer);
+        if (this._mainScene) this._mainScene.switchLayer(CardLibraryLayer);
     },
 
-    _onClickRankingLayer : function() {
+    _onClickRankingLayer: function () {
         cc.log("MainMenuLayer _onClickRankingLayer");
-        if(this._mainScene) this._mainScene.switchLayer(RankingLayer);
+        if (this._mainScene) this._mainScene.switchLayer(RankingLayer);
     },
 
-    _onClickFriendLayer : function() {
+    _onClickFriendLayer: function () {
         cc.log("MainMenuLayer _onClickFriendLayer");
-        if(this._mainScene) this._mainScene.switchLayer(FriendLayer);
+        if (this._mainScene) this._mainScene.switchLayer(FriendLayer);
     },
 
-    _onClickOtherLayer : function() {
+    _onClickOtherLayer: function () {
         cc.log("MainMenuLayer _onClickOtherLayer");
-        if(this._mainScene) this._mainScene.switchLayer(OtherLayer);
+        if (this._mainScene) this._mainScene.switchLayer(OtherLayer);
     }
 })
 
 
-MainMenuLayer.create = function(mainScene) {
+MainMenuLayer.create = function (mainScene) {
     var ret = new MainMenuLayer();
 
-    if(ret && ret.init(mainScene)) {
+    if (ret && ret.init(mainScene)) {
         return ret;
     }
 

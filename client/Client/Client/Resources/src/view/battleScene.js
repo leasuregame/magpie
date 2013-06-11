@@ -7,8 +7,8 @@
  */
 
 var BattleScene = cc.Scene.extend({
-    init : function(battleLog) {
-        if(!this._super()) return false;
+    init: function (battleLog) {
+        if (!this._super()) return false;
 
         var batterLayer = BatterLayer.create(battleLog);
         this.addChild(batterLayer);
@@ -18,10 +18,10 @@ var BattleScene = cc.Scene.extend({
 })
 
 
-BattleScene.create = function(battleLog) {
+BattleScene.create = function (battleLog) {
     var ret = new BattleScene();
 
-    if(ret && ret.init(battleLog)) {
+    if (ret && ret.init(battleLog)) {
         return ret;
     }
 

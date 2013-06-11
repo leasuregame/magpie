@@ -3,7 +3,7 @@ Events = require '../common/events'
 Skill = require './skill'
 SpecialProperty = require './special_property'
 
-tab = require '../model/table'
+tab = require '../manager/table'
 utility = require '../common/utility'
 _ = require 'underscore'
 battleLog = require './battle_log'

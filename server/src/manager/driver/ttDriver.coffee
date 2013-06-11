@@ -22,7 +22,7 @@ mc.get _key, (err, data) ->
     if err
       console.log err
 
-DbBase =
+Driver =
   # store data, but only if the server do not 
   # already hold data for this key, if the key is existe, 
   # it will not store successfully.
@@ -54,6 +54,6 @@ DbBase =
   inc: (key, cb) ->
     mc.inc key, 1, cb
 
-module.exports = DbBase
+module.exports = Driver
 
 

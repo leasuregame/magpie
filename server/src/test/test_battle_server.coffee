@@ -3,8 +3,8 @@ express = require 'express'
 test_data = require './prepare/battle_server_data'
 Battle = require '../battle/battle'
 Player = require '../battle/player'
-PlayerManager = require('../manager/manager').player
-tab = require '../manager/table'
+PlayerManager = require '../model/player'
+tab = require '../model/table'
 battleLog = require '../battle/battle_log'
 TABLE_DIR = (require './prepare/path').TABLE_DIR
 
@@ -51,7 +51,7 @@ vs = (cb) ->
   aps = test_data.laodTestData()
 
   PlayerManager.fetchMany [test_data.player_id7, test_data.player_id8], (err, result) ->
-    console.log err, result
+    #console.log err, result
 
     battle = null
     # 小芳
@@ -90,7 +90,7 @@ random_liveup = (heros)->
 
   lu[0...-1]
 
-app.listen('3345')
+app.listen('3344')
 
 module.exports = {vs: vs, vs66: vs66}
 console.log 'test server running on http://localhost:3344'

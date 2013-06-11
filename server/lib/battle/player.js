@@ -137,16 +137,7 @@ Player = (function(_super) {
 
   Player.prototype.cards = function() {
     return _.map(this.matrix.allWithNull(), function(c) {
-      if (c != null) {
-        return {
-          id: c.id,
-          lv: c.lv,
-          hp: c.init_hp,
-          atk: c.init_atk
-        };
-      } else {
-        return null;
-      }
+      return (c != null) && c.init_hp || null;
     });
   };
 

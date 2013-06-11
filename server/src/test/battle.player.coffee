@@ -1,9 +1,9 @@
-PlayerManager = require('../manager/manager').player
+PlayerManager = require '../model/player'
 Player = require '../battle/player'
 Hero = require '../battle/hero'
 Matrix = require '../battle/matrix'
 should = require 'should'
-tab = require '../manager/table'
+tab = require '../model/table'
 player_data =  require './prepare/player.data'
 TABLE_DIR = (require './prepare/path').TABLE_DIR
 
@@ -33,7 +33,6 @@ describe 'Player', ->
 
   it ".death(), should be death when all heros' hp <= 0", ->
     PlayerManager.fetch player_data.player_id1, (err, model) ->
-      console.log err, model
       ply = new Player(model)
       ply.death().should.be.false
 

@@ -228,15 +228,29 @@ Hero = (function(_super) {
       _step['dhp'] = _hero.hp;
       return this.log(_step);
     } else {
-      return log.error("普通攻击：找不到对方可攻击的卡牌");
+      log.error("普通攻击：找不到对方可攻击的卡牌");
+      throw new Error('Normal Attack Error: can not find target to be attacked.');
     }
   };
 
   Hero.prototype.damage = function(value, enemy, step) {
-    var _value;
+    var _ref1, _ref2, _val, _value;
 
-    _value = this._checkDmgReduce(value, step);
+    _value = ((_ref1 = this.sp) != null ? _ref1.dmgReduce(value) : void 0) || value;
+    if (_value < value) {
+      step.e.pop();
+      step.e.push(-_value);
+      log.info('伤害减少了：', value - _value);
+    }
     this.hp -= _value;
+    _val = ((_ref2 = this.sp) != null ? _ref2.dmgRebound(_value) : void 0) || 0;
+    if (_val !== 0) {
+      enemy.damageOnly(_val);
+      step.r.push(-_val);
+      log.info("伤害反弹给 " + enemy.name + ", " + _val);
+    } else {
+      step.r.push(null);
+    }
     if (this.death()) {
       log.info("" + this.name + " 死亡");
     }
@@ -249,31 +263,6 @@ Hero = (function(_super) {
     this.hp -= value;
     if (this.death()) {
       return log.info("" + this.name + " 死亡");
-    }
-  };
-
-  Hero.prototype._checkDmgReduce = function(value, step) {
-    var _ref1, _value;
-
-    _value = ((_ref1 = this.sp) != null ? _ref1.dmgReduce(value) : void 0) || value;
-    if (_value < value) {
-      step.e.pop();
-      step.e.push(-_value);
-      log.info('伤害减少了：', value - _value);
-    }
-    return _value;
-  };
-
-  Hero.prototype._checkRebound = function(enemy, value, step) {
-    var _ref1, _val;
-
-    _val = ((_ref1 = this.sp) != null ? _ref1.dmgRebound(value) : void 0) || 0;
-    if (_val !== 0) {
-      enemy.damageOnly(_val);
-      step.r.push(-_val);
-      return log.info("伤害反弹给 " + enemy.name + ", " + _val);
-    } else {
-      return step.r.push(null);
     }
   };
 

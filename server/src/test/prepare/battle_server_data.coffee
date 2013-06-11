@@ -1,4 +1,4 @@
-Player = require('../../manager/manager').player
+Player = require '../../model/player'
 #Account = require '../model/account'
 _ = require 'underscore'
 

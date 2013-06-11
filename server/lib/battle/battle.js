@@ -61,7 +61,7 @@ Battle = (function(_super) {
       cards: this.defender.cards()
     };
     battleLog.set('enemy', _enm);
-    battleLog.set('own', {
+    battleLog.set('me', {
       cards: this.attacker.cards()
     });
     return log.info('    >>> 战斗开始 <<<    ');

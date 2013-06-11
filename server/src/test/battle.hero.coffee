@@ -1,5 +1,5 @@
 Hero = require '../battle/hero'
-tab = require '../manager/table'
+tab = require '../model/table'
 TABLE_DIR = (require './prepare/path').TABLE_DIR
 
 describe 'Hero', ->

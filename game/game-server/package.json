@@ -18,6 +18,7 @@
         "coffee-script": ">=1.6.2",
         "mocha": "*",
         "should": "*",
-        "node-inspector": "0.1.10"
+        "node-inspector": "0.1.10",
+        "websocket": "1.0.8"
     }
 }

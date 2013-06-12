@@ -1,12 +1,8 @@
 
-cd game-server
-
-#echo ${PWD} 
-
-mkdir app
+#echo ${PWD}
 
 echo 'compiler coffee files...'
-./node_modules/.bin/coffee -cb -o ./app ./src
+./node_modules/.bin/coffee -cb -o ./ ./src
 
 echo 'cp .js files'
 for i in `find ./src -name \*.js`
@@ -17,7 +13,7 @@ cp $i ./app/$sDIR/$sFname
 done
 
 echo 'copy tables data...'
-cp -r ./src/test/tables ./app/test/tables
-cp -r ./src/manager/mysql ./app/manager/mysql
+cp -r ./src/app/test/tables ./app/test/tables
+cp -r ./src/app/manager/mysql ./app/manager/mysql
 
 echo 'Done!'

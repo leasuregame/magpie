@@ -10,7 +10,7 @@ Handler::entry = (msg, session, next) ->
 
   console.log(msg, session)
 
-  sessionService = this.app.get('sessionService')
-  sessionService.sendMessage(session.id, {route: 'onChart', msg: 'push message.'} )
+  # sessionService = this.app.get('sessionService')
+  # sessionService.sendMessage(session.id, {route: 'onChart', msg: 'push message.'} )
 
   next(null, {code: 200, msg: 'game server is ok'})

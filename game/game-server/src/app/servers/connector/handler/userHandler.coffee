@@ -8,7 +8,7 @@ Handler = (@app) ->
 Handler::register = (msg, session, next) ->
   email = msg.email
   password = msg.password
-
+  
   userDao.createUser email, password, '', (err, user) ->
     if err or not user
       if err and err.code is "ER_DUP_ENTRY"

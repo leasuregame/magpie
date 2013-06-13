@@ -48,14 +48,15 @@ var CardLibraryLayer = cc.Layer.extend({
         }
 
         for (var i = 1; i <= 6; ++i) {
-            var sprite = cc.Sprite.create(s_path + "hg" + i + ".png");
-
+            var sprite = cc.Sprite.create(s_frame1);
             sprite.setPosition(i * 90 + 45, 600);
             this.addChild(sprite);
 
-            sprite = cc.Sprite.create(s_frame1);
+            sprite = cc.Sprite.create(s_path + "hg" + i + ".png");
             sprite.setPosition(i * 90 + 45, 600);
             this.addChild(sprite);
+
+
         }
 
         this.addChild(menu);

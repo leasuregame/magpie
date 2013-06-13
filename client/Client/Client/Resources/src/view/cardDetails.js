@@ -11,13 +11,6 @@
  * 卡牌 详细信息面板
  * */
 
-/** Layer will receive all the touches at once The onTouchesXXX API will be called
- */
-cc.TOUCH_ALL_AT_ONCE = 0;
-
-/** Layer will receive only one touch at the time. The onTouchXXX API will be called */
-cc.TOUCH_ONE_BY_ONE = 1;
-
 
 var CardDetails = cc.Layer.extend({
     _touchedMenu: false,
@@ -28,7 +21,7 @@ var CardDetails = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        this.setTouchMode(1);
+        this.setTouchMode(cc.TOUCH_ONE_BY_ONE);
         this.setTouchPriority(-100000);
         this.setTouchEnabled(true);
 
@@ -73,7 +66,12 @@ var CardDetails = cc.Layer.extend({
 
     onTouchBegan: function (touch, event) {
         cc.log("dialog: touch began!");
-        this._touchedMenu = this._menu.onTouchBegan(touch, event);
+        if(SETTING_IS_BROWSER) {
+            this._touchedMenu = this._menu.onTouchBegan(touch, event);
+        }
+        else {
+            this._touchedMenu = this._menu.ccTouchBegan(touch, event);
+        }
         return true;
     },
 
@@ -85,7 +83,12 @@ var CardDetails = cc.Layer.extend({
     onTouchMoved: function (touch, event) {
         cc.log("dialog: touch move");
         if (this._touchedMenu) {
-            this._menu.onTouchMoved(touch, event);
+            if(SETTING_IS_BROWSER) {
+                this._touchedMenu = this._menu.onTouchMoved(touch, event);
+            }
+            else {
+                this._touchedMenu = this._menu.ccTouchMoved(touch, event);
+            }
         }
     },
 
@@ -97,7 +100,12 @@ var CardDetails = cc.Layer.extend({
     onTouchEnded: function (touch, event) {
         cc.log("dialog: touch end");
         if (this._touchedMenu) {
-            this._menu.onTouchEnded(touch, event);
+            if(SETTING_IS_BROWSER) {
+                this._touchedMenu = this._menu.onTouchEnded(touch, event);
+            }
+            else {
+                this._touchedMenu = this._menu.ccTouchEnded(touch, event);
+            }
             this._touchedMenu = false;
         }
     },
@@ -109,7 +117,12 @@ var CardDetails = cc.Layer.extend({
     onTouchCancelled: function (touch, event) {
         cc.log("dialog: on touch cancelled");
         if (this._touchedMenu) {
-            this._menu.onTouchEnded(touch, event);
+            if(SETTING_IS_BROWSER) {
+                this._touchedMenu = this._menu.onTouchEnded(touch, event);
+            }
+            else {
+                this._touchedMenu = this._menu.ccTouchEnded(touch, event);
+            }
             this._touchedMenu = false;
         }
     }

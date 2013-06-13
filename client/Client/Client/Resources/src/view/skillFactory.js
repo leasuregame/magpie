@@ -23,9 +23,9 @@ var SkillFactory = {
 
             if (progressList[taget] == null) continue;
 
-            cc.log(taget);
+            cc.log("taget " + taget);
             cc.log(progressList[taget].getValue());
-            cc.log(effect);
+            cc.log("effect " + effect);
 
             if (progressList[taget].getValue() <= 0) continue;
             else progressList[taget].addValue(effect);

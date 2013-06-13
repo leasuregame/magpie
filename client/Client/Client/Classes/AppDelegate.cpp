@@ -203,6 +203,7 @@ bool UpdateLayer::init()
     pItemEnter = CCMenuItemFont::create("进入", this, menu_selector(UpdateLayer::enter));
     pItemUpdate = CCMenuItemFont::create("更新", this, menu_selector(UpdateLayer::update));
     
+    CCMenuItemFont::setFontSize(30);
     
     pItemEnter->setPosition(ccp(size.width/2, size.height/2 + 150));
     pItemReset->setPosition(ccp(size.width/2, size.height/2));
@@ -226,7 +227,7 @@ AssetsManager* UpdateLayer::getAssetsManager()
     
     if (! pAssetsManager)
     {
-        pAssetsManager = new AssetsManager("http://192.168.1.89/resources.zip",
+        pAssetsManager = new AssetsManager("http://192.168.1.89/Resources/resources.zip",
                                            "http://192.168.1.89:8888/",
                                            pathToSave.c_str());
         pAssetsManager->setDelegate(this);

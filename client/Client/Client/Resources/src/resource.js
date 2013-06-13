@@ -1,9 +1,14 @@
-//var s_path = "res/test/";
+var SETTING_IS_BROWSER = false;
+if(typeof(navigator) != 'undefined') {
+    SETTING_IS_BROWSER = true;
+}
+
 var s_path = "";
+if(SETTING_IS_BROWSER) var s_path = "res/test/";
 
 var s_game_bg = s_path + "bg.png";
-var s_progress_bg = s_path + "p.png";
-var s_progress = s_path + "pbg.png";
+var s_progress = s_path + "p.png";
+var s_progress_bg = s_path + "pbg.png";
 var s_card_library_bg = s_path + "lbg.png";
 var s_card_view = s_path + "view.png";
 var s_close = s_path + "close.png";

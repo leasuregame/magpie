@@ -23,13 +23,17 @@
       function show(route) {
         route = route || "battle.fightHandler.attack";
         pomelo.init({
-          host: host,
+            host: host,
           port: port,
           log: true
         }, function() {
-        pomelo.request(route, {targetId: 'aa20df79-c748-11e2-a527-377d32fa9d96'}, function(data) {
-            console.log(data.msg);
-          });
+          pomelo.request(route, {targetId: 'aa20df79-c748-11e2-a527-377d32fa9d96'}, function(data) {
+              console.log(data.msg);
+            });
+        });
+
+        pomelo.request('connector.entryHandler.entry', {}, function(data){
+          console.log(data);
         });
       }
     </script>

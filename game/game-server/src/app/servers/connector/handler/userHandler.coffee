@@ -11,14 +11,14 @@ Handler::register = (msg, session, next) ->
 
   userDao.createUser email, password, '', (err, user) ->
     if err or not user
-      if err and err.code is 1062
-        next(null, {code: 501})
+      if err and err.code is "ER_DUP_ENTRY"
+        next(null, {code: 501, msg: err.msg})
       else
-        next(null, {code: 500})
+        next(null, {code: 500, msg: err.msg})
     else
       next(null, {code: 200, uid: user.id})
 
-Handler::login = (msg, session, next) ->
+Handler::login = (msg, session, next) ->  
   email = msg.email
   password = msg.password
 

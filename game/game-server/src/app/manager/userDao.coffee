@@ -48,8 +48,9 @@ userDao =
     args = [email, password, from or '', 1, loginTime]
 
     pomelo.app.get('dbclient').insert sql, args, (err, res) ->
+      console.log err
       if err isnt null
-        cb({code: err.number, msg: err.message}, null)
+        cb({code: err.code, msg: err.message}, null)
       else
         user = new User({id: res.insertId, email: email, password, loginCount: 1, lastLoginTime: res.lastLoginTime})
         cb(null, user)

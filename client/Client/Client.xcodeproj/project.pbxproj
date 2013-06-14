@@ -347,6 +347,9 @@
 		906A0E271756F61F006A5000 /* js_binding_HttpClientPackage_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 906A0E201756F61F006A5000 /* js_binding_HttpClientPackage_api.js */; };
 		906A0E281756F61F006A5000 /* user.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 906A0E211756F61F006A5000 /* user.cfg */; };
 		906A0E291756F61F006A5000 /* userconf.ini in Resources */ = {isa = PBXBuildFile; fileRef = 906A0E221756F61F006A5000 /* userconf.ini */; };
+		909B5B581769DEF90062E0B9 /* WebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 909B5B561769DEF90062E0B9 /* WebSocket.cpp */; };
+		909B5B5B1769DF120062E0B9 /* jsb_websocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 909B5B591769DF120062E0B9 /* jsb_websocket.cpp */; };
+		909B5B611769E23C0062E0B9 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 909B5B601769E23C0062E0B9 /* libwebsockets.a */; };
 		90CB7E7317546FFC00845641 /* myApp.js in Sources */ = {isa = PBXBuildFile; fileRef = 90CB7E6F17546FFC00845641 /* myApp.js */; };
 		90CB7E7417546FFC00845641 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 90CB7E7017546FFC00845641 /* res */; };
 		90CB7E7517546FFC00845641 /* src in Resources */ = {isa = PBXBuildFile; fileRef = 90CB7E7117546FFC00845641 /* src */; };
@@ -1080,6 +1083,12 @@
 		906A0E201756F61F006A5000 /* js_binding_HttpClientPackage_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_binding_HttpClientPackage_api.js; sourceTree = "<group>"; };
 		906A0E211756F61F006A5000 /* user.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = user.cfg; sourceTree = "<group>"; };
 		906A0E221756F61F006A5000 /* userconf.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = userconf.ini; sourceTree = "<group>"; };
+		909B5B561769DEF90062E0B9 /* WebSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WebSocket.cpp; path = libs/extensions/network/WebSocket.cpp; sourceTree = "<group>"; };
+		909B5B571769DEF90062E0B9 /* WebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebSocket.h; path = libs/extensions/network/WebSocket.h; sourceTree = "<group>"; };
+		909B5B591769DF120062E0B9 /* jsb_websocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jsb_websocket.cpp; path = libs/javascript/bindings/jsb_websocket.cpp; sourceTree = "<group>"; };
+		909B5B5A1769DF120062E0B9 /* jsb_websocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jsb_websocket.h; path = libs/javascript/bindings/jsb_websocket.h; sourceTree = "<group>"; };
+		909B5B5E1769E23C0062E0B9 /* libwebsockets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libwebsockets.h; sourceTree = "<group>"; };
+		909B5B601769E23C0062E0B9 /* libwebsockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwebsockets.a; sourceTree = "<group>"; };
 		90CB7E6F17546FFC00845641 /* myApp.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = myApp.js; path = Resources/myApp.js; sourceTree = "<group>"; };
 		90CB7E7017546FFC00845641 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = Resources/res; sourceTree = "<group>"; };
 		90CB7E7117546FFC00845641 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = Resources/src; sourceTree = "<group>"; };
@@ -1102,6 +1111,7 @@
 				90271CE817545E8800715D5E /* libcurl.a in Frameworks */,
 				90271CEA17545E8800715D5E /* libwebp.a in Frameworks */,
 				90271E4F17545E9200715D5E /* libjs_static.a in Frameworks */,
+				909B5B611769E23C0062E0B9 /* libwebsockets.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1192,6 +1202,7 @@
 		90271BA717545E8300715D5E /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				909B5B5C1769E23C0062E0B9 /* libwebsockets */,
 				906A0E171756F61F006A5000 /* HttpClientPackage */,
 				90271BA817545E8300715D5E /* cocos2dx */,
 				90271D8B17545E8A00715D5E /* CocosDenshion */,
@@ -1897,6 +1908,8 @@
 		90271DA417545E8B00715D5E /* bindings */ = {
 			isa = PBXGroup;
 			children = (
+				909B5B591769DF120062E0B9 /* jsb_websocket.cpp */,
+				909B5B5A1769DF120062E0B9 /* jsb_websocket.h */,
 				90271DA517545E8B00715D5E /* cocos2d_specifics.cpp */,
 				90271DA717545E8B00715D5E /* cocos2d_specifics.hpp */,
 				90271DA917545E8B00715D5E /* cocosjs_manual_conversions.cpp */,
@@ -2376,6 +2389,8 @@
 		90271F4A17545E9500715D5E /* network */ = {
 			isa = PBXGroup;
 			children = (
+				909B5B561769DEF90062E0B9 /* WebSocket.cpp */,
+				909B5B571769DEF90062E0B9 /* WebSocket.h */,
 				90271F4B17545E9500715D5E /* HttpClient.cpp */,
 				90271F4D17545E9500715D5E /* HttpClient.h */,
 				90271F4E17545E9500715D5E /* HttpRequest.h */,
@@ -2529,6 +2544,32 @@
 				906A0E201756F61F006A5000 /* js_binding_HttpClientPackage_api.js */,
 			);
 			path = HttpClientPackage_bindings;
+			sourceTree = "<group>";
+		};
+		909B5B5C1769E23C0062E0B9 /* libwebsockets */ = {
+			isa = PBXGroup;
+			children = (
+				909B5B5D1769E23C0062E0B9 /* include */,
+				909B5B5F1769E23C0062E0B9 /* lib */,
+			);
+			name = libwebsockets;
+			path = libs/libwebsockets;
+			sourceTree = "<group>";
+		};
+		909B5B5D1769E23C0062E0B9 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				909B5B5E1769E23C0062E0B9 /* libwebsockets.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		909B5B5F1769E23C0062E0B9 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				909B5B601769E23C0062E0B9 /* libwebsockets.a */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2926,6 +2967,8 @@
 				906A0E231756F61F006A5000 /* HttpClientPackage.cpp in Sources */,
 				906A0E261756F61F006A5000 /* js_binding_HttpClientPackage.cpp in Sources */,
 				906A0E271756F61F006A5000 /* js_binding_HttpClientPackage_api.js in Sources */,
+				909B5B581769DEF90062E0B9 /* WebSocket.cpp in Sources */,
+				909B5B5B1769DF120062E0B9 /* jsb_websocket.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3010,6 +3053,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Client/libs/cocos2dx/platform/third_party/ios/libraries\"",
 					"\"$(SRCROOT)/Client/libs/javascript/spidermonkey-ios/lib\"",
+					"\"$(SRCROOT)/Client/libs/libwebsockets/lib\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -3036,6 +3080,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Client/libs/cocos2dx/platform/third_party/ios/libraries\"",
 					"\"$(SRCROOT)/Client/libs/javascript/spidermonkey-ios/lib\"",
+					"\"$(SRCROOT)/Client/libs/libwebsockets/lib\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",

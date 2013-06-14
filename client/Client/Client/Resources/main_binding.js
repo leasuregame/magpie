@@ -33,6 +33,7 @@ var appFiles = [
     'src/view/actionFactory.js',
     'src/view/effectsFactory.js',
     'src/view/skillFactory.js',
+    'src/model/pomeloWebsocketClient.js',
     'src/model/config.js',
     'src/model/singleton.js',
     'src/model/base.js',

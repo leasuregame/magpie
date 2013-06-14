@@ -50,7 +50,7 @@
             'src/view/effectsFactory.js',
             'src/view/skillFactory.js',
 
-            //'src/model/pomelo-client.js',
+            'src/model/pomeloWebsocketClient.js',
 
             'src/model/config.js',
             'src/model/singleton.js',

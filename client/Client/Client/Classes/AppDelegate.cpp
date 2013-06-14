@@ -12,6 +12,7 @@
 #include "js_bindings_system_registration.h"
 #include "jsb_opengl_registration.h"
 #include "js_binding_HttpClientPackage.hpp"
+#include "jsb_websocket.h"
 
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
 #include <dirent.h>
@@ -70,6 +71,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(jsb_register_system);
     sc->addRegisterCallback(JSB_register_opengl);
     sc->addRegisterCallback(register_all_js_binding_HttpClientPackage);
+    sc->addRegisterCallback(register_jsb_websocket);
     
     sc->start();
     

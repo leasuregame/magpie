@@ -25,10 +25,10 @@ Handler::login = (msg, session, next) ->
   password = msg.password
 
   userDao.getUserByEmail email, (err, user) ->
-    if err or not res
+    if err or not user
       next(null, {code: 501})
       return
-    
+    console.log 'password: ', password, user.password 
     if password isnt user.password
       next(null, {code: 500})
       return
@@ -37,10 +37,10 @@ Handler::login = (msg, session, next) ->
 
 Handler::setName = (msg, session, next) ->
   username = msg.username
-  uid = session.uid
+  uid = msg.uid or session.uid
 
-  userDao.updateUser uid, {name: username}, (err, res) ->
-    if err or not res
+  userDao.updateUser uid, {name: username}, (err, user) ->
+    if err or not user
       next(null, {code: 5001})
       return 
 

@@ -1,4 +1,4 @@
-describe("User Actions", function() {
+describe("User Actions # ", function() {
   var pomelo = window.pomelo;
   var inited = false;
 
@@ -43,18 +43,25 @@ describe("User Actions", function() {
   });
 
   describe('User Handler', function(){
-    it("push message", function(){
-      request('connector.entryHandler.push', {uid: 1}, function(data){
-        expect(data).toEqual('push message');
-      });
-    });
 
     it("register", function(){
       request('connector.userHandler.register', {uid: 1, email: '175040128@qq.com', password: 1}, function(data){
-        expect(data.code).toEqual(200);
-        expect(data.msg).toEqual(1)
+        // expect(data.code).toEqual(200);
+        // expect(data.msg).toEqual(1)
       });
     });
+
+    it("login", function(){
+      request('connector.userHandler.login', {email: '175040128@qq.com', password: '1'}, function(data){
+        expect(data).toEqual({code: 200, uid: 32209})
+      });
+    });
+
+    it("setName", function(){
+      request('connector.userHandler.setName', {uid: 32209, name: 'wuzhanghai'}, function(data){
+        expect(data).toEqual({code: 200})
+      });
+    })
 
   });
 

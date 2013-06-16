@@ -58,11 +58,12 @@ userDao =
         cb(null, user)
 
   updateUser: (uid, fields, cb) ->
-    if fields and fields.length > 0
+    if uid? and fields?
+      setFields = ''
       for f, v of fields
-        setFields += "SET #{f}=#{v}, "
+        setFields += "SET #{f}='#{v}',"
 
-      sql = "update User #{setFields} where id = ?"
+      sql = "update User #{setFields.slice(0, -1)} where id = ?"
       args = [uid]
 
       pomelo.app.get('dbclient').update sql, args, (err, res) ->

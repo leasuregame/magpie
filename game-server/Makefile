@@ -13,6 +13,9 @@ test:
 		--ui bdd \
 		./src/test/$(files)
 
+testserver:
+	node ./test/jasmine/app.js
+
 startserver:
 	sh ./bin/build.sh
 	node app.js

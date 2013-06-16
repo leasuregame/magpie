@@ -1,6 +1,7 @@
 describe("User Actions # ", function() {
   var pomelo = window.pomelo;
   var inited = false;
+  var userid;
 
   var request = function(route, msg, cb){
     var ok = false;
@@ -31,38 +32,106 @@ describe("User Actions # ", function() {
     waitsFor(function(){return inited;});
   };
 
-  describe("Entry Handler", function(){
-    beforeEach(intiPomelo);
+  describe("after connected to server", function(){
+    it("Set Up", function(){
+      intiPomelo();
+    });
+  });
 
+  describe("Entry Handler", function(){
     it("entry method should works fine.", function() {
-      request('connector.entryHandler.entry', {uid: 1, name: 'wuzhanghai'}, function(data){
+      request('connector.entryHandler.entry', {uid: 32209, name: 'wuzhanghai'}, function(data){
         expect(data).toEqual({code: 200, msg: "game server is ok"});
       });
     });
-    
   });
 
   describe('User Handler', function(){
 
-    it("register", function(){
-      request('connector.userHandler.register', {uid: 1, email: '175040128@qq.com', password: 1}, function(data){
-        // expect(data.code).toEqual(200);
-        // expect(data.msg).toEqual(1)
+    describe("when user not exists", function(){
+      afterEach(function(){
+        console.log('delete user:', userid);
+        $.get('/removeuser', {uid: userid}, function(data){
+          
+        });
+      });
+
+      it("register with a valid email and password", function(){
+        request('connector.userHandler.register', {email: 'test_email@qq.com', password: '1'}, function(data){
+          userid = data.uid
+          expect(data.code).toEqual(200);
+        });
+      });
+
+      it("register with an invalid email", function(){
+        request('connector.userHandler.register', {email: '123456', password: '1'}, function(data){
+          userid = data.uid
+          expect(data.code).toEqual(200);
+        });
+      });
+
+      it("register with empty email or password", function(){
+        request('connector.userHandler.register', {email: '', password: ''}, function(data){
+          expect(data.code).toEqual(501);
+          expect(data.msg).toEqual('');
+        });
       });
     });
 
-    it("login", function(){
-      request('connector.userHandler.login', {email: '175040128@qq.com', password: '1'}, function(data){
-        expect(data).toEqual({code: 200, uid: 32209})
+    describe("when user exists", function(){
+      beforeEach(function(){
+        var ok = false;
+        runs(function(){
+          $.get('/adduser', {email: 'test_email_1@qq.com', password: '1'}, function(data){
+            userid = data.uid;
+            ok = true;
+          });
+        });
+        
+        waitsFor(function(){return ok;});
       });
+
+      afterEach(function(){
+        console.log('delete user:', userid);
+        var ok = false;
+        runs(function(){
+          $.get('/removeuser', {uid: userid}, function(data){
+            ok = true;
+          });
+        });
+
+        waitsFor(function(){return ok;});
+      });
+
+      it("should can be register with exist email", function(){
+        request('connector.userHandler.register', {email: 'test_email_1@qq.com', password: 1}, function(data){
+          expect(data.code).toEqual(501);
+        });
+      });
+
+       it("should can be login", function(){
+        request('connector.userHandler.login', {email: 'test_email_1@qq.com', password: '1'}, function(data){
+          expect(data.code).toEqual(200)
+        });
+      });
+
+      it("should can be set name to user", function(){
+        request('connector.userHandler.setName', {uid: userid, name: 'wuzhanghai'}, function(data){
+          expect(data).toEqual({code: 200})
+        });
+      });
+
     });
-
-    it("setName", function(){
-      request('connector.userHandler.setName', {uid: 32209, name: 'wuzhanghai'}, function(data){
-        expect(data).toEqual({code: 200})
-      });
-    })
-
+    
   });
+
+  // describe('Player Handler', function(){
+  //   it("createPlayer", function(){
+  //     request('connector.playerHandler.createPlayer', {name: 'wuzhanghai'}, function(data){
+  //       expect(data).toEqual({code: 200})
+  //     });
+  //   });
+  // });
+
 
 });

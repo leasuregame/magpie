@@ -27,17 +27,17 @@ Driver =
   # already hold data for this key, if the key is existe, 
   # it will not store successfully.
   add: (key, value, cb) ->
-    mc.add key, value, 0, cb
+    mc.add key.toString(), value, 0, cb
 
   # store data
   set: (key, value, cb) ->
-    mc.set key, value, 0, cb
+    mc.set key.toString(), value, 0, cb
 
   get: (key, cb) ->
-    mc.get key, (err, data) -> cb(err, data)
+    mc.get key.toString(), (err, data) -> cb(err, data)
 
   getJson: (key, cb) ->
-    mc.get key, (err, data) ->
+    mc.get key.toString(), (err, data) ->
       try
         if _.isString(data)
           data = JSON.parse data
@@ -49,7 +49,7 @@ Driver =
     mc.getMulti keys, (err, data) -> cb(err, data)
 
   del: (key, cb) ->
-    mc.del key, (err, data) -> cb(err, data)
+    mc.del key.toString(), (err, data) -> cb(err, data)
 
   inc: (key, cb) ->
     mc.inc key, 1, cb

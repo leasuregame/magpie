@@ -6,12 +6,12 @@ module.exports = (app) ->
 Handler = (@app) ->
 
 Handler::entry = (msg, session, next) ->
-  username = msg.name
-  uid = msg.uid
-  session.bind(uid, ()->)
-  session.set('name', username)
+  # username = msg.name
+  # uid = msg.uid
+  # session.bind(uid, ()->)
+  # session.set('name', username)
 
-  console.log(msg, session.id)
+  # console.log(msg, session.id)
 
   #sessionService = this.app.get('sessionService')
   

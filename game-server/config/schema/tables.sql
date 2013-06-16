@@ -2,8 +2,8 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for User
 -- ----------------------------
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
+DROP TABLE IF EXISTS `User`;
+CREATE TABLE IF NOT EXISTS `User` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) COLLATE utf8_unicode_ci DEFAULT '',
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,

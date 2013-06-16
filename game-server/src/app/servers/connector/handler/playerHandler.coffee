@@ -8,7 +8,7 @@ Handler = (@app) ->
 Handler::createPlayer = (msg, session, next) ->
   name = msg.name
   uid = session.uid
-
+  console.log name, uid, session
   playerManager.fetch uid, (err, player) ->
     if err and not player
       next(null, {code: 501})

@@ -28,22 +28,28 @@ Handler::login = (msg, session, next) ->
     if err or not user
       next(null, {code: 501})
       return
-    console.log 'password: ', password, user.password 
+    
     if password isnt user.password
       next(null, {code: 500})
       return
-
+    console.log 'before bind: ', session.id, session.uid, user.id
+    session.bind(user.id)
+    session.set('playername', user.name)
+    session.on('close', onUserLeave)
+    console.log 'login: ', session
     next(null, {code: 200, uid: user.id})
 
 Handler::setName = (msg, session, next) ->
-  username = msg.username
+  username = msg.name
   uid = msg.uid or session.uid
 
   userDao.updateUser uid, {name: username}, (err, user) ->
     if err or not user
-      next(null, {code: 5001})
+      next(null, {code: 501, msg: err.msg})
       return 
 
     next(null, {code: 200})
 
-
+onUserLeave = (session, reason) ->
+  if not session or not session.uid
+    return

@@ -11,20 +11,23 @@ Handler::register = (msg, session, next) ->
   email = msg.email
   password = msg.password
   
-  userDao.createUser email, password, '', (err, user) ->
-    if err or not user
-      if err and err.code is "ER_DUP_ENTRY"
-        next(null, {code: 501, msg: Resources.ERROR.USER_EXISTS})
+  if not email or email is '' or not password or password is ''
+    next(null, {code: 501, msg: Resources.ERROR.INVALID_PARAMS})
+  else
+    userDao.createUser email, password, '', (err, user) ->
+      if err or not user
+        if err and err.code is "ER_DUP_ENTRY"
+          next(null, {code: 501, msg: Resources.ERROR.USER_EXISTS})
+        else
+          next(null, {code: 500, msg: err.msg})
       else
-        next(null, {code: 500, msg: err.msg})
-    else
-      next(null, {code: 200, uid: user.id})
+        next(null, {code: 200, uid: user.id})
 
 Handler::login = (msg, session, next) ->
   email = msg.email
   password = msg.password
 
-  userDao.getUserByEmail email, (err, user) ->
+  userDao.getUserByEmail email, (err, user) =>
     if err or not user
       next(null, {code: 501})
       return
@@ -32,11 +35,12 @@ Handler::login = (msg, session, next) ->
     if password isnt user.password
       next(null, {code: 500})
       return
-    console.log 'before bind: ', session.id, session.uid, user.id
+
     session.bind(user.id)
     session.set('playername', user.name)
     session.on('close', onUserLeave)
-    console.log 'login: ', session
+
+    @app.rpc.message.messageRemote.addPlayer(session, user.id, @app.get('serverId'), null)
     next(null, {code: 200, uid: user.id})
 
 Handler::setName = (msg, session, next) ->

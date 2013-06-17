@@ -8,6 +8,11 @@ app.set('name', 'game-server');
 
 // app configuration
 app.configure('production|development', 'connector', function() {
+  var dictionary = app.components['__dictionary__'];
+  if (!dictionary){
+    app.load(pomelo.components.dictionary)
+  }
+
   app.set('connectorConfig', {
     connector: pomelo.connectors.hybridconnector,
     heartbeat: 3,

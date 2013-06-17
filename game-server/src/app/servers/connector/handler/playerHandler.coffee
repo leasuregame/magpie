@@ -22,7 +22,7 @@ Handler::createPlayer = (msg, session, next) ->
         session.set('playername', name)
         session.on('close', onUserLeave)
 
-        next(null, {code: 200, player: player})
+        next(null, {code: 200, player: player.getAttributes()})
 
 onUserLeave = (session, reason) ->
   if not session or not session.uid

@@ -15,16 +15,13 @@ app.get('/test', function(req, res){
 });
 
 app.get('/adduser', function(req, res){
-  console.log(req.query, req.body, '-----------');
   email = req.query.email;
   pwd = req.query.password;
   mysql.query("insert into User (email, password) values ('" + email + "', '" + pwd + "')", function(err, result){
-    console.log('add user: == ', result, err);
     if(err){
       res.send({code: 500});
     }
     
-    console.log('add user:', result.insertId);
     res.send({code: 200, uid: result.insertId});
 
   });

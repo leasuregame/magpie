@@ -25,15 +25,18 @@ describe("User Actions # ", function() {
         inited = true;
 
         pomelo.on('onChart', function(data){
-          console.log('on chart: ', data);
-        })
+          console.log('***** on chart: ', data);
+        });
+        pomelo.on('onLogin', function(data){
+          console.log('***** on login: ', data);
+        });
       });
     });
     waitsFor(function(){return inited;});
   };
 
-  describe("after connected to server", function(){
-    it("Set Up", function(){
+  describe("Set Up", function(){
+    it("connect to server", function(){
       intiPomelo();
     });
   });
@@ -73,7 +76,7 @@ describe("User Actions # ", function() {
       it("register with empty email or password", function(){
         request('connector.userHandler.register', {email: '', password: ''}, function(data){
           expect(data.code).toEqual(501);
-          expect(data.msg).toEqual('');
+          expect(data.msg).toEqual('参数不正确！');
         });
       });
     });
@@ -103,7 +106,7 @@ describe("User Actions # ", function() {
         waitsFor(function(){return ok;});
       });
 
-      it("should can be register with exist email", function(){
+      it("should not can be register with exist email", function(){
         request('connector.userHandler.register', {email: 'test_email_1@qq.com', password: 1}, function(data){
           expect(data.code).toEqual(501);
         });
@@ -125,13 +128,53 @@ describe("User Actions # ", function() {
     
   });
 
-  // describe('Player Handler', function(){
-  //   it("createPlayer", function(){
-  //     request('connector.playerHandler.createPlayer', {name: 'wuzhanghai'}, function(data){
-  //       expect(data).toEqual({code: 200})
-  //     });
-  //   });
-  // });
+  describe('Player Handler', function(){
+    beforeEach(function(){
+      var ok = false;
+      runs(function(){
+        $.get('/adduser', {email: 'test_email_2@qq.com', password: '1'}, function(data){
+          userid = data.uid;
+          ok = true;
+        });
+      });
+      
+      waitsFor(function(){return ok;});
+    });
 
+    afterEach(function(){
+      var ok = false;
+      runs(function(){
+        $.get('/removeuser', {uid: userid}, function(data){
+          ok = true;
+        });
+      });
+
+      waitsFor(function(){return ok;});
+    });
+
+    describe("when user login", function(){
+      beforeEach(function(){
+        request('connector.userHandler.login', {email: 'test_email_2@qq.com', password: '1'}, function(data){
+          if (data.code == 200){
+            console.log('login success.');
+          }
+          else{
+            console.log('login faild.');
+          }
+        });
+
+        pomelo.on('onChart', function(data){
+          console.log('message: on chart: ', data);
+        })
+      });
+
+      it("should can be create player", function(){
+        request('connector.playerHandler.createPlayer', {name: 'wuzhanghai'}, function(data){
+          expect(data).toEqual({ code : 200, player : { id : userid, name : 'wuzhanghai' } })
+        });
+      });
+    });
+
+  });
 
 });

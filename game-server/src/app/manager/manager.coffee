@@ -51,7 +51,7 @@ class ModelBase
     @gets ids, (err, items) =>
       if err
         console.log err
-        cb err, item
+        cb err, items
         return
 
       _res = {}

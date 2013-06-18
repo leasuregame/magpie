@@ -11,9 +11,10 @@ Handler = (@app) ->
 
 Handler::attack = (msg, session, next)->
   targetId = msg.targetId
-  playerId = 'aa20df78-c748-11e2-a527-377d32fa9d96'
+  playerId = msg.playerId
 
   playerManager.fetchMany [playerId, targetId], (err, results) ->
+    console.log 'players for fight: ', err, results
     attacker = new Player(results[playerId])
     attacker.setLineUp random_liveup(attacker.heros)
 
@@ -26,7 +27,7 @@ Handler::attack = (msg, session, next)->
 
     next null, {code: 200, msg: JSON.stringify(battleLog.reports())}
 
-  @app.get('channelService').pushMessageByUids('onChart', {msg: 'a message from battle server'}, [{uid: session.uid, sid: 'connector-server-1'}])
+  #@app.get('channelService').pushMessageByUids('onChart', {msg: 'a message from battle server'}, [{uid: session.uid, sid: 'connector-server-1'}])
 
 random_liveup = (heros)->
   ids = _.map heros, (h) -> h.card_id

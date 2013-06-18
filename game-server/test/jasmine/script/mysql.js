@@ -18,7 +18,6 @@ mysqlClient.query = function(sql, args, cb){
 
   connection.query(sql, args, function(err, results) {
     if (err) {
-      console.log('--error--');
       throw err;
     }
 

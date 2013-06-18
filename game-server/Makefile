@@ -3,7 +3,7 @@ build:
 
 clean: 
 	rm -r ./app
-	rm -r ./test
+	#rm -r ./test
 
 test: 
 	./node_modules/.bin/mocha \
@@ -16,7 +16,7 @@ test:
 testserver:
 	node ./test/jasmine/app.js
 
-startserver:
+runserver:
 	sh ./bin/build.sh
 	node app.js
 
@@ -29,4 +29,7 @@ stopTT:
 createtables:
 	cat ./bin/initMysql.sh | mysql -uroot -p1
 
-.PHONY: build clean test startserver startTT stopTT
+loaddata:
+	node ./bin/loaddata.js
+
+.PHONY: build clean test testserver runserver startTT stopTT loaddata

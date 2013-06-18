@@ -27,7 +27,7 @@ describe("Message # ", function() {
         inited = true;
 
         pomelo.on('onMessage', function(data) {
-          console.log('***** on chart: ', data);
+          console.log('***** on message: ', data);
         });
         pomelo.on('onLogin', function(data) {
           console.log('***** on login: ', data);
@@ -105,23 +105,6 @@ describe("Message # ", function() {
             msg: 'send message content'
           })
         });
-      });
-
-      it('test', function(){
-        var send = function(){
-          request('message.messageHandler.send', {
-            content: 'send message content'
-          }, function(data) {
-            expect(data).toEqual({
-              code: 200,
-              msg: 'send message content'
-            })
-          });
-        };
-
-        send();
-        send();
-        send();
       });
 
     });

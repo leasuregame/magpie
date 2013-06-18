@@ -1,4 +1,4 @@
-describe("Message # ", function() {
+describe("Battle Server # ", function() {
   var pomelo = window.pomelo;
   var inited = false;
   var userid;

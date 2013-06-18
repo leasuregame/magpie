@@ -16,8 +16,8 @@ app.configure('production|development', 'connector', function() {
   app.set('connectorConfig', {
     connector: pomelo.connectors.hybridconnector,
     heartbeat: 3,
-    useDict: false,
-    useProtobuf: false
+    useDict: true,
+    useProtobuf: true
   });
 
   app.loadConfig('mysql', app.getBase() + '/config/mysql.json');

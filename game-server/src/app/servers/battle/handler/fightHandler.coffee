@@ -33,7 +33,7 @@ random_liveup = (heros)->
   ids = _.map heros, (h) -> h.card_id
   pos = ['00', '01', '02', '10', '11', '12']
 
-  _res = []  
+  _res = []
   while(true)
     r = _.random(0, 5)
     _res.push r if r not in _res

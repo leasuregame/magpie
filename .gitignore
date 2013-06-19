@@ -13,4 +13,4 @@ table.json
 client/.idea
 game-server/app
 components
-ttserver
+game-server/config/data/ttserver

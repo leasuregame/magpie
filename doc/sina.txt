@@ -5,4 +5,4 @@ user：root
 219.232.247.33 124.238.236.33   pBuwwCt5e5rrvw7W2AaK3Ni2JF4egFGf
 
 然后登陆新浪的ssh命令式：
-ssh -l root -p 8022 124.238.236.30
+ssh -l root -p 8022 219.232.247.33

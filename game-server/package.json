@@ -24,7 +24,6 @@
         "mocha": "*",
         "should": "*",
         "node-inspector": "0.1.10",
-        "websocket": "1.0.8",
         "express": ">=3.2.6",
         "jade": "*",
         "ejs": "*"

@@ -18,7 +18,7 @@ testserver:
 
 runserver:
 	sh ./bin/build.sh
-	node app.js
+	./node_modules/.bin/pomelo start development
 
 starttt:
 	./bin/ttservctl start

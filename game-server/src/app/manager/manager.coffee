@@ -1,10 +1,11 @@
+pomelo = require 'pomelo'
 Player = require '../domain/player'
-driver = require './driver/ttDriver'
 uuid = require 'node-uuid'
 _ = require 'underscore'
 
+
 class ModelBase
-  _.extend ModelBase, driver
+  _.extend ModelBase, pomelo.app.get('ttclient')
 
   @create: (data, cb) ->
     if data.id?

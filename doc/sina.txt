@@ -1,0 +1,8 @@
+user：root
+电信 网通 密码：
+124.238.236.30 219.232.247.30   URT7d8cJ4wMukArWMqWxjraxheErqL2i
+124.238.236.32 219.232.247.32   uqg3RgSqxFZEVSq8iHurksx9CHFUASJw
+219.232.247.33 124.238.236.33   pBuwwCt5e5rrvw7W2AaK3Ni2JF4egFGf
+
+然后登陆新浪的ssh命令式：
+ssh -l root -p 8022 124.238.236.30

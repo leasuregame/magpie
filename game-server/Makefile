@@ -20,11 +20,11 @@ runserver:
 	sh ./bin/build.sh
 	node app.js
 
-startTT:
-	/data/ttserver/ttservctl start
+starttt:
+	./bin/ttservctl start
 
-stopTT:
-	/data/ttserver/ttservctl stop
+stoptt:
+	./bin/ttservctl stop
 
 createtables:
 	cat ./bin/initMysql.sh | mysql -uroot -p1

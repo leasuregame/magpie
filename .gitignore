@@ -14,3 +14,4 @@ client/.idea
 game-server/app
 components
 game-server/config/data/ttserver
+game-server/logs/tmp

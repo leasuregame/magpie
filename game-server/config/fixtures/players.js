@@ -6,6 +6,7 @@ module.exports = {
     exp: 456,
     power: 60,
     money: 100000,
+    lineUp: '00:4,01:9,02:129,10:184,11:24,12:204',
     hero_ids:[
       {id: 1, lv: 52, star: 4, card_id: 4, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]},
       {id: 2, lv: 45, star: 4, card_id: 9, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]},
@@ -22,6 +23,7 @@ module.exports = {
     exp: 324,
     power: 45,
     money: 120000,
+    lineUp: '00:194,01:200,02:44,10:50,11:54,12:235',
     hero_ids:[
       {id: 7, lv: 37, star:4, card_id: 194, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]},
       {id: 8, lv: 40, star:5, card_id: 200, skill_lv: 1, sp_value: [{name: 'dmg_reduce', value: 50}]},

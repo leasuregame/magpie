@@ -10,16 +10,18 @@ module.exports = (app) ->
 Handler = (@app) ->
 
 Handler::attack = (msg, session, next)->
-  targetId = msg.targetId
-  playerId = msg.playerId
-
+  targetId = msg.targetId.toString()
+  playerId = msg.playerId.toString()
+  console.log targetId, playerId
   playerManager.fetchMany [playerId, targetId], (err, results) ->
     console.log 'players for fight: ', err, results
-    attacker = new Player(results[playerId])
-    attacker.setLineUp random_liveup(attacker.heros)
+    p_data = results[playerId]
+    attacker = new Player(p_data)
+    attacker.setLineUp p_data.get('lineUp') or random_liveup(attacker.heros)
 
-    defender = new Player(results[targetId])
-    defender.setLineUp random_liveup(defender.heros)
+    t_data = results[targetId]
+    defender = new Player(t_data)
+    defender.setLineUp t_data.get('lineUp') or random_liveup(defender.heros)
 
     battleLog.clear()
     battle = new Battle(attacker, defender)

@@ -2,11 +2,10 @@ Memcached = require 'memcached'
 _ = require 'underscore'
 mc = null;
 
-initDriver = (app) ->
+initDriver = (ttconfig) ->
   if mc 
     return
 
-  ttconfig = app.get('ttserver');
   _key = '_b_'
   start_time = new Date().getTime();
   host = ttconfig.host
@@ -29,7 +28,7 @@ initDriver = (app) ->
         console.log err
 
 module.exports = (app) ->
-  initDriver(app)
+  initDriver(app.get('ttserver'))
   Driver
 
 Driver =

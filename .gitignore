@@ -11,3 +11,7 @@ client/Client/Client/libs/extensions
 client/Client/Client/libs/javascript
 table.json
 client/.idea
+game-server/app
+components
+game-server/config/data/ttserver
+game-server/logs/tmp

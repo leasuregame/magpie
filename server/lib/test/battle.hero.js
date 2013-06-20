@@ -3,7 +3,7 @@ var Hero, TABLE_DIR, tab;
 
 Hero = require('../battle/hero');
 
-tab = require('../model/table');
+tab = require('../manager/table');
 
 TABLE_DIR = (require('./prepare/path')).TABLE_DIR;
 

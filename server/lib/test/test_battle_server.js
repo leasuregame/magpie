@@ -10,9 +10,9 @@ Battle = require('../battle/battle');
 
 Player = require('../battle/player');
 
-PlayerManager = require('../model/player');
+PlayerManager = require('../manager/manager').player;
 
-tab = require('../model/table');
+tab = require('../manager/table');
 
 battleLog = require('../battle/battle_log');
 
@@ -64,6 +64,7 @@ vs = function(cb) {
   return PlayerManager.fetchMany([test_data.player_id7, test_data.player_id8], function(err, result) {
     var attacker, battle, defender, report;
 
+    console.log(err, result);
     battle = null;
     attacker = new Player(result[test_data.player_id7]);
     attacker.setLineUp(random_liveup(attacker.heros));

@@ -2,7 +2,7 @@
 var Player, account_data, all_players, exports, hero_data, ids, player_data, player_data_hight_star, player_data_mass, player_random, randomHeros, _,
   __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-Player = require('../../model/player');
+Player = require('../../manager/manager').player;
 
 _ = require('underscore');
 

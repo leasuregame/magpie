@@ -5,9 +5,9 @@ Battle = require('../battle/battle');
 
 Player = require('../battle/player');
 
-PlayerManager = require('../model/player');
+PlayerManager = require('../manager/manager').player;
 
-tab = require('../model/table');
+tab = require('../manager/table');
 
 battleLog = require('../battle/battle_log');
 

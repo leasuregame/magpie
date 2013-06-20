@@ -115,12 +115,28 @@ var MainLayer = cc.Layer.extend({
     _onClickTournament: function () {
         cc.log("MainLayer _onClickTournament");
 
-        lz.HttpClientPackage.getInstance().HttpGetRequest("http://192.168.1.7:3344/vs", function (json) {
-            var battleLog = BattleLog.create(json);
-            BattleLogNote.getInstance().pushBattleLog(battleLog);
+        lzWindow.pomelo.request('battle.fightHandler.attack',
+            {playerId: '10000', targetId: '10001'},
+                function(data) {
+                if (data.code == 200) {
+                    cc.log('login success.');
+                } else {
+                    cc.log('login faild.');
+                }
+
+                cc.log(data);
+                var battleLog = BattleLog.create(data.msg);
+                BattleLogNote.getInstance().pushBattleLog(battleLog);
+                cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, BattleScene.create(battleLog), true));
+            });
+
+
+//        lz.HttpClientPackage.getInstance().HttpGetRequest("http://192.168.1.7:3344/vs", function (json) {
+//            var battleLog = BattleLog.create(json);
+//            BattleLogNote.getInstance().pushBattleLog(battleLog);
 //            cc.Director.getInstance().replaceScene(BattleScene.create(battleLog));
-            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, BattleScene.create(battleLog), true));
-        }, null);
+//            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, BattleScene.create(battleLog), true));
+//        }, null);
     },
 
     _onClickLottery: function () {

@@ -27,8 +27,8 @@ var BattleLog = cc.Class.extend({
         var battleLog = json;
 
         if(typeof(battleLog) == "string") {
-            battleLog = battleLog.substring(battleLog.indexOf("("));
-            battleLog = eval(battleLog);
+//            battleLog = battleLog.substring(battleLog.indexOf("("));
+            battleLog = eval("(" + battleLog + ")");
         }
 
         cc.log(battleLog);

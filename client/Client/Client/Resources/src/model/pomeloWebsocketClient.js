@@ -1762,6 +1762,9 @@ lzRequire.alias("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", "po
 
 lzRequire("boot");
 
+var ConnectSuccess = false;
+
+
 lzWindow.pomelo.init({
     host: '192.168.1.15',
     port: 3010,
@@ -1769,10 +1772,12 @@ lzWindow.pomelo.init({
     handshakeCallback : function(){}
 }, function() {
     cc.log('connect success!');
+    ConnectSuccess = true;
 
-    lzWindow.pomelo.on('onChat', function(data) {
-        cc.log('onChat success');
+    lzWindow.pomelo.on('close', function(data) {
+        cc.log('*****close');
         cc.log(data);
+        ConnectSuccess = false;
     });
 
     lzWindow.pomelo.on('onMessage', function(data) {
@@ -1788,12 +1793,7 @@ lzWindow.pomelo.init({
         } else {
             cc.log('login faild.');
         }
-
-        lzWindow.pomelo.request('message.messageHandler.send', {
-            content: 'send message content'
-        }, function(data) {
-            cc.log(data);
-        });
+        cc.log(data);
     });
 });
 

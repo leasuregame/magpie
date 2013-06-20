@@ -13,4 +13,4 @@ CREATE TABLE IF NOT EXISTS `User` (
   `lastLoginTime` bigint(20) unsigned DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_ACCOUNT_NAME` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=32209 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

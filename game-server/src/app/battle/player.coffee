@@ -4,7 +4,7 @@ Matrix = require './matrix'
 tab = require '../manager/table'
 _ = require 'underscore'
 utility = require '../common/utility'
-log = require '../common/logger'
+log = require('pomelo-logger').getLogger(__filename)
 
 class Player extends Module
   @table: 'player'

@@ -8,25 +8,25 @@
 
 
 /*
-* task layer
-* */
+ * task layer
+ * */
 
 
 var TaskLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("TaskLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         return true;
     }
 })
 
 
-TaskLayer.create = function() {
+TaskLayer.create = function () {
     var ret = new TaskLayer();
 
-    if(ret && ret.init()) {
+    if (ret && ret.init()) {
         return ret;
     }
 

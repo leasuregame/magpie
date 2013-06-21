@@ -8,23 +8,23 @@
 
 
 /*
-* 角色详细信息
-* */
+ * 角色详细信息
+ * */
 
 var RoleInformationLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("RoleInformationLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         return true;
     }
 })
 
-RoleInformationLayer.create = function() {
+RoleInformationLayer.create = function () {
     var ret = new RoleInformationLayer();
 
-    if(ret && ret.init()) {
+    if (ret && ret.init()) {
         return ret;
     }
 

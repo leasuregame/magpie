@@ -8,40 +8,40 @@
 
 
 /*
-* 抽卡
-* */
+ * 抽卡
+ * */
 
 var LotteryLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("LotteryLayer init");
 
-        if(!this._super())  return false;
+        if (!this._super())  return false;
 
-        var textLabel = cc.LabelTTF.create("元宝抽卡",  'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("元宝抽卡", 'Times New Roman', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT, 1000);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("初级抽卡",  'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("初级抽卡", 'Times New Roman', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT - 200, 900);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("可获得1,2,3星",  'Times New Roman', 25);
+        var textLabel = cc.LabelTTF.create("可获得1,2,3星", 'Times New Roman', 25);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT - 200, 850);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("中级抽卡",  'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("中级抽卡", 'Times New Roman', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT, 900);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("可获得2,3,4星",  'Times New Roman', 25);
+        var textLabel = cc.LabelTTF.create("可获得2,3,4星", 'Times New Roman', 25);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT, 850);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("高级抽卡",  'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("高级抽卡", 'Times New Roman', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT + 200, 900);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("可获得3,4,5星",  'Times New Roman', 25);
+        var textLabel = cc.LabelTTF.create("可获得3,4,5星", 'Times New Roman', 25);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT + 200, 850);
         this.addChild(textLabel);
 
@@ -60,31 +60,31 @@ var LotteryLayer = cc.Layer.extend({
         this.addChild(menu);
 
 
-        var textLabel = cc.LabelTTF.create("活力抽卡",  'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("活力抽卡", 'Times New Roman', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT, 500);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("初级抽卡",  'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("初级抽卡", 'Times New Roman', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT - 200, 400);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("10活力/次",  'Times New Roman', 25);
+        var textLabel = cc.LabelTTF.create("10活力/次", 'Times New Roman', 25);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT - 200, 350);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("中级抽卡",  'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("中级抽卡", 'Times New Roman', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT, 400);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("70活力/次",  'Times New Roman', 25);
+        var textLabel = cc.LabelTTF.create("70活力/次", 'Times New Roman', 25);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT, 350);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("高级抽卡",  'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("高级抽卡", 'Times New Roman', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT + 200, 400);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("100活力/次",  'Times New Roman', 25);
+        var textLabel = cc.LabelTTF.create("100活力/次", 'Times New Roman', 25);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT + 200, 350);
         this.addChild(textLabel);
 
@@ -102,43 +102,43 @@ var LotteryLayer = cc.Layer.extend({
 
         this.addChild(menu);
 
-        var textLabel = cc.LabelTTF.create("祝福好友，每日登陆，升级，均可获得活力值",  'Times New Roman', 25);
+        var textLabel = cc.LabelTTF.create("祝福好友，每日登陆，升级，均可获得活力值", 'Times New Roman', 25);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT, 200);
         this.addChild(textLabel);
 
         return true;
     },
 
-    _onClickLottery1 : function() {
+    _onClickLottery1: function () {
         cc.log("Lottery _onClickLottery1");
     },
 
-    _onClickLottery2 : function() {
+    _onClickLottery2: function () {
         cc.log("Lottery _onClickLottery2");
     },
 
-    _onClickLottery3 : function() {
+    _onClickLottery3: function () {
         cc.log("Lottery _onClickLottery3");
     },
 
-    _onClickVigorLottery1 : function() {
+    _onClickVigorLottery1: function () {
         cc.log("Lottery _onClickVigorLottery1");
     },
 
-    _onClickVigorLottery2 : function() {
+    _onClickVigorLottery2: function () {
         cc.log("Lottery _onClickVigorLottery2");
     },
 
-    _onClickVigorLottery3 : function() {
+    _onClickVigorLottery3: function () {
         cc.log("Lottery _onClickVigorLottery3");
     }
 })
 
 
-LotteryLayer.create = function() {
+LotteryLayer.create = function () {
     var ret = new LotteryLayer();
 
-    if(ret && ret.init()) {
+    if (ret && ret.init()) {
         return ret;
     }
 

@@ -14,5 +14,29 @@
          startingLineNumber = "25"
          endingLineNumber = "25">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Client/Resources/src/view/cardNode.js"
+         timestampString = "392379087.480594"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "30"
+         endingLineNumber = "30">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Client/libs/javascript/bindings/generated/jsb_cocos2dx_auto.cpp"
+         timestampString = "392661994.669138"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "32309"
+         endingLineNumber = "32309"
+         landmarkName = "js_cocos2dx_CCLayer_unregisterScriptTouchHandler(JSContext *cx, uint32_t argc, jsval *vp)"
+         landmarkType = "7">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

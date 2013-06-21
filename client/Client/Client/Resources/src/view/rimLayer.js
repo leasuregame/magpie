@@ -8,24 +8,24 @@
 
 
 /*
-* 边框
-* 适配 ipad 和 iphone5 分辨率
-* */
+ * 边框
+ * 适配 ipad 和 iphone5 分辨率
+ * */
 
 var RimLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("RimLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         return true;
     }
 })
 
-RimLayer.create = function() {
+RimLayer.create = function () {
     var ret = new RimLayer();
 
-    if(ret && ret.init()) {
+    if (ret && ret.init()) {
         return ret;
     }
 

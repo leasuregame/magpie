@@ -11,4 +11,5 @@
 * server config
 * */
 
-var SERVER_URL = "http://192.168.1.7:3344";
+var SERVER_URL = "http://192.168.1.7:3344/vs";
+

@@ -8,24 +8,24 @@
 
 
 /*
-* 强化
-* */
+ * 强化
+ * */
 
 
 var StrengthenLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("StrengthenLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         return true;
     }
 })
 
-StrengthenLayer.create = function() {
+StrengthenLayer.create = function () {
     var res = new StrengthenLayer();
 
-    if(res && res.init()) {
+    if (res && res.init()) {
         return res;
     }
 

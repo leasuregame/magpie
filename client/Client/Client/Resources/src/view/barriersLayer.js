@@ -8,19 +8,19 @@
 
 
 var BarriersLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("BarriersLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         return true;
     }
 })
 
-BarriersLayer.create = function() {
+BarriersLayer.create = function () {
     var ret = new BarriersLayer();
 
-    if(ret && ret.init()) {
+    if (ret && ret.init()) {
         return ret;
     }
 

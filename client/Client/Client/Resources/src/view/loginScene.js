@@ -7,18 +7,18 @@
  */
 
 /*
-* login scene
-* */
+ * login scene
+ * */
 
 var LoginScene = cc.Scene.extend({
-    ctor : function() {
+    ctor: function () {
         cc.log("LoginScene ctor");
 
         this._super();
     },
 
-    onEnter : function() {
-        if(!this._super()) return false;
+    onEnter: function () {
+        if (!this._super()) return false;
 
         cc.log("loginScene onEnter");
 

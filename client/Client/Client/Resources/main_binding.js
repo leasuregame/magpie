@@ -26,23 +26,29 @@
 // boot code needed for cocos2d + JS bindings.
 // Not needed by cocos2d-html5
 
-require('jsb_cocos2d.js');
+require('jsb.js');
 
 var appFiles = [
     'src/resource.js',
     'src/view/actionFactory.js',
     'src/view/effectsFactory.js',
     'src/view/skillFactory.js',
+    'src/model/pomeloWebsocketClient.js',
+    'src/model/config.js',
     'src/model/singleton.js',
     'src/model/base.js',
     'src/model/gameConfig.js',
     'src/model/player.js',
+    'src/model/battleStep.js',
     'src/model/battleLog.js',
     'src/model/battleLogNote.js',
     'src/controls/cloudLayer.js',
     'src/controls/progress.js',
     'src/controls/bgSprite.js',
     'src/controls/dialog.js',
+    //'src/controls/lazyMenu.js',
+    'src/view/cardDetails.js',
+    'src/view/cardNode.js',
     'src/view/battleLayer.js',
     'src/view/battleScene.js',
     'src/view/battlePlayer.js',
@@ -63,8 +69,7 @@ var appFiles = [
     'src/view/tournamentLayer.js',
     'src/view/strengthenLayer.js',
 
-    'src/view/mainScene.js',
-    'src/myApp.js'                   //add your own files in order here
+    'src/view/mainScene.js'
 ];
 
 cc.dumpConfig();
@@ -87,4 +92,5 @@ var myScene = new MainScene();
 //var myScene = new testScene();
 
 // run
-director.runWithScene(myScene);
+//director.runWithScene(myScene);
+director.replaceScene(myScene);

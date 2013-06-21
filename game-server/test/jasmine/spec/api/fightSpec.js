@@ -56,10 +56,17 @@ describe("Battle Server # ", function() {
           expect(bl.enemy).toEqual(jasmine.any(Object));
           expect(bl.winner).toEqual('enemy');
           expect(bl.steps).toEqual(jasmine.any(Array));
+          console.log(data);
         });
       });
     });
 
   });
+
+  // describe("Tear Down", function(){
+  //   it('disconnect', function(){
+  //     pomelo.disconnect();
+  //   });
+  // })
 
 });

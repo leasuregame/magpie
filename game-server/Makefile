@@ -11,7 +11,7 @@ test:
 		--require should \
 		--reporter spec \
 		--ui bdd \
-		./src/test/$(files)
+		./src/app/test/$(files)
 
 testserver:
 	node ./test/jasmine/app.js

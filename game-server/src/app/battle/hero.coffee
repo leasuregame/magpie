@@ -7,7 +7,7 @@ tab = require '../manager/table'
 utility = require '../common/utility'
 _ = require 'underscore'
 battleLog = require './battle_log'
-log = require '../common/logger'
+log = require('pomelo-logger').getLogger(__filename)
 
 STATE_ORIGIN = 0
 STATE_ATTACKED = 1

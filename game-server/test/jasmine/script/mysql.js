@@ -1,6 +1,6 @@
 var config = require('../../../config/mysql').development;
 var mysql = require('mysql');
-console.log(config);
+
 var connection = mysql.createConnection({
   host     : config.host,
   port     : config.port,

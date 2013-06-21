@@ -1,6 +1,6 @@
 _ = require 'underscore'
 utility = require '../common/utility'
-log = require '../common/logger'
+log = require('pomelo-logger').getLogger(__filename)
 
 # PP_TYPE = 
 #   'atk_improve'

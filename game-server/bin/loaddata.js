@@ -1,6 +1,7 @@
 var config = require('../config/mysql').development;
+var ttconfig = require('../config/ttserver').development;
 var mysql = require('mysql');
-var ttDriver = require('../app/manager/driver/ttDriver');
+var ttServer = require('../app/manager/ttserver/ttserver');
 var fs = require('fs');
 var path = require('path');
 
@@ -15,6 +16,16 @@ var connection = mysql.createConnection({
 });
 
 connection.connect();
+
+var mockApp = {
+  get: function(name){
+    if (name == 'ttserver'){
+      return ttconfig
+    }
+  }
+}
+
+var ttDriver = ttServer(mockApp);
 
 var query = function(sql, args, cb) {
   connection.query(sql, args, function(err, results) {

@@ -1,7 +1,7 @@
 Module = require '../common/module'
 utility = require '../common/utility'
 _ = require 'underscore'
-log = require '../common/logger'
+log = require('pomelo-logger').getLogger(__filename)
 
 
 defautls = 

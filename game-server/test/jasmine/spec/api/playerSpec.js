@@ -49,7 +49,7 @@ describe("Connecter Server # ", function() {
     beforeEach(function(){
       var ok = false;
       runs(function(){
-        $.get('/adduser', {email: 'test_email_2@qq.com', password: '1'}, function(data){
+        $.get('/adduser', {account: 'test_email_2@qq.com', password: '1'}, function(data){
           userid = data.uid;
           ok = true;
         });
@@ -71,7 +71,7 @@ describe("Connecter Server # ", function() {
 
     describe("when user login", function(){
       beforeEach(function(){
-        request('connector.userHandler.login', {email: 'test_email_2@qq.com', password: '1'}, function(data){
+        request('connector.userHandler.login', {account: 'test_email_2@qq.com', password: '1'}, function(data){
           if (data.code == 200){
             console.log('login success.');
           }

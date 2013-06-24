@@ -21,13 +21,13 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- ----------------------------
 -- Table structure for players
 -- ----------------------------
-DROP TABLE IF EXISTS `players`;
-CREATE TABLE IF NOT EXISTS `players` (
+DROP TABLE IF EXISTS `player`;
+CREATE TABLE IF NOT EXISTS `player` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `create_time` BIGINT(20) UNSIGNED NOT NULL,
   `user_id` INT(10) UNSIGNED NOT NULL,
   `area_id` SMALLINT(5) UNSIGNED NOT NULL,
-  `name` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT NOT NULL,
+  `name` VARCHAR(50) COLLATE utf8_unicode_ci NOT NULL,
   `power` SMALLINT(5) UNSIGNED DEFAULT '0',
   `lv` SMALLINT(5) UNSIGNED DEFAULT '0',
   `exp` INT(10) UNSIGNED DEFAULT '0',
@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `players` (
   `pass` SMALLINT(5) UNSIGNED DEFAULT '0',
   `pass_mark` BLOB(20),
   PRIMARY KEY (`id`),
+  UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -56,31 +57,31 @@ CREATE TABLE IF NOT EXISTS `card` (
 	`skill_lv` TINYINT(3) UNSIGNED DEFAULT '0',
 	`hp_addition` INT(10) UNSIGNED DEFAULT '0',
 	`atk_addition` INT(10) UNSIGNED DEFAULT '0',
-	PRIMARY KEY (`id`),
+	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------
 -- Table structure for battle_log
 -- --------------------------------
-DROP TABLE IF EXISTS `battle_log`;
-CREATE TABLE IF NOT EXISTS `battle_log` (
-	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `battleLog`;
+CREATE TABLE IF NOT EXISTS `battleLog` (
+	`id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 	`create_time` BIGINT(20) UNSIGNED NOT NULL,
 	`own` INT(10) UNSIGNED NOT NULL,
 	`enemy` INT(10) UNSIGNED DEFAULT '0',
 	`battle_log` VARCHAR(5000) COLLATE utf8_unicode_ci NOT NULL,
-	PRIMARY KEY (`id`),
+	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------
 -- Table structure for passive_skill
 -- --------------------------------
-DROP TABLE IF EXISTS `passive_skill`;
-CREATE TABLE IF NOT EXISTS `passive_skill` (
+DROP TABLE IF EXISTS `passiveSkill`;
+CREATE TABLE IF NOT EXISTS `passiveSkill` (
 	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `create_time` BIGINT(20) UNSIGNED NOT NULL,
 	`card_id` INT(10) UNSIGNED NOT NULL,
   `table_id` SMALLINT(5) UNSIGNED NOT NULL,
 	`value` TINYINT(3) UNSIGNED DEFAULT '0',
-	PRIMARY KEY (`id`),
+	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

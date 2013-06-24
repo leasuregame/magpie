@@ -15,9 +15,9 @@ app.get('/test', function(req, res){
 });
 
 app.get('/adduser', function(req, res){
-  email = req.query.email;
+  account = req.query.account;
   pwd = req.query.password;
-  mysql.query("insert into User (email, password) values ('" + email + "', '" + pwd + "')", function(err, result){
+  mysql.query("insert into User (account, password, create_time) values (?, ?, ?)", [account, pwd, Date.now()], function(err, result){
     if(err){
       res.send({code: 500});
     }

@@ -25,12 +25,15 @@ app.configure('production|development', 'connector|battle', function(){
 
 // configure sql database
 app.configure('production|development', 'connector|battle', function() {
-  var dbclient = require('./app/manager/mysql/mysql').init(app);
+  var dbclient = require('./app/dao/mysql/mysql').init(app);
   app.set('dbclient', dbclient);
   //app.load(pomelo.sync, {path:__dirname + '/app/dao/mapping', dbclient: dbclient});
   
   var ttclient = require('./app/manager/ttserver/ttserver')(app);
   app.set('ttclient', ttclient);  
+
+  app.set('daoType', 'mysql');
+  app.set('daoFactory', require('./app/dao')(app));
 });
 
 // start app

@@ -60,21 +60,21 @@ describe("User Actions # ", function() {
       });
 
       it("register with a valid email and password", function(){
-        request('connector.userHandler.register', {email: 'test_email@qq.com', password: '1'}, function(data){
+        request('connector.userHandler.register', {account: 'test_email@qq.com', password: '1'}, function(data){
           userid = data.uid
           expect(data.code).toEqual(200);
         });
       });
 
       it("register with an invalid email", function(){
-        request('connector.userHandler.register', {email: '123456', password: '1'}, function(data){
+        request('connector.userHandler.register', {account: '123456', password: '1'}, function(data){
           userid = data.uid
           expect(data.code).toEqual(200);
         });
       });
 
       it("register with empty email or password", function(){
-        request('connector.userHandler.register', {email: '', password: ''}, function(data){
+        request('connector.userHandler.register', {account: '', password: ''}, function(data){
           expect(data.code).toEqual(501);
           expect(data.msg).toEqual('参数不正确！');
         });
@@ -85,7 +85,7 @@ describe("User Actions # ", function() {
       beforeEach(function(){
         var ok = false;
         runs(function(){
-          $.get('/adduser', {email: 'test_email_1@qq.com', password: '1'}, function(data){
+          $.get('/adduser', {account: 'test_email_1@qq.com', password: '1'}, function(data){
             userid = data.uid;
             ok = true;
           });
@@ -107,13 +107,13 @@ describe("User Actions # ", function() {
       });
 
       it("should not can be register with exist email", function(){
-        request('connector.userHandler.register', {email: 'test_email_1@qq.com', password: 1}, function(data){
+        request('connector.userHandler.register', {account: 'test_email_1@qq.com', password: 1}, function(data){
           expect(data.code).toEqual(501);
         });
       });
 
        it("should can be login", function(){
-        request('connector.userHandler.login', {email: 'test_email_1@qq.com', password: '1'}, function(data){
+        request('connector.userHandler.login', {account: 'test_email_1@qq.com', password: '1'}, function(data){
           expect(data.code).toEqual(200)
         });
       });

@@ -96,7 +96,8 @@ describe("Connecter Server # ", function() {
       it("should can be create player", function(){
         request('connector.playerHandler.createPlayer', {name: 'wuzhanghai', area_id: 1}, function(data){
           pid = data.player.id;
-          expect(data).toEqual({ code : 200, player : { id : userid, name : 'wuzhanghai' } });
+          console.log(data);
+          expect(data).toEqual({ code : 201, player : { id : userid, name : 'wuzhanghai' } });
         });
       });
     });

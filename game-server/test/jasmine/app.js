@@ -17,7 +17,7 @@ app.get('/test', function(req, res){
 app.get('/adduser', function(req, res){
   account = req.query.account;
   pwd = req.query.password;
-  mysql.query("insert into User (account, password, create_time) values (?, ?, ?)", [account, pwd, Date.now()], function(err, result){
+  mysql.query("insert into user (account, password, create_time) values (?, ?, ?)", [account, pwd, Date.now()], function(err, result){
     if(err){
       res.send({code: 500});
     }
@@ -33,7 +33,7 @@ app.get('/removeuser', function(req, res){
     res.send({code: 200, msg: 'parameter uid is null'})
   }
   console.log('remove user:', uid);
-  mysql.query('delete from User where id = ?', [uid], function(err, results){
+  mysql.query('delete from user where id = ?', [uid], function(err, results){
     if (!err){
       res.send({code: 200});
     }
@@ -43,26 +43,26 @@ app.get('/removeuser', function(req, res){
   });
 });
 
-app.get('/removeplayer', function(req, res){
-  playerId = req.params.playerId;
-  tt.del(playerId, function(err, result){
-    if (err){
-      res.send({code: 500, msg: 'faild to delete player by id: ' + playerId});
-    }
-    else{
-      res.send({code: 200});
-    }
-  });
-});
+// app.get('/removeplayer', function(req, res){
+//   playerId = req.params.playerId;
+//   tt.del(playerId, function(err, result){
+//     if (err){
+//       res.send({code: 500, msg: 'faild to delete player by id: ' + playerId});
+//     }
+//     else{
+//       res.send({code: 200});
+//     }
+//   });
+// });
 
 app.get('/removePlayer', function(req, res){
-  playerId = req.params.pid;
-  mysql.query('delete from player where id = ?', [pid], function(err, res){
+  playerId = req.query.pid;
+  mysql.query('delete from player where id = ?', [playerId], function(err, results){
     if (!err){
       res.send({code: 200})
     }
     else{
-      res.send({code: 500, msg: 'faild to delete player by id: ' + pid});
+      res.send({code: 500, msg: 'faild to delete player by id: ' + playerId});
     }
   });
 });

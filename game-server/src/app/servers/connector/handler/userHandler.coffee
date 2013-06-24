@@ -1,7 +1,7 @@
 Code = require '../../../../../shared/code'
 Resources = require '../../../../../shared/resources'
 
-userDao = require('pomelo').app.get('daoFactory').get('user')
+dao = require('pomelo').app.get('dao')
 
 module.exports = (app) ->
   new Handler(app)
@@ -15,7 +15,7 @@ Handler::register = (msg, session, next) ->
   if not account or account is '' or not password or password is ''
     next(null, {code: 501, msg: Resources.ERROR.INVALID_PARAMS})
   else
-    userDao.createUser account, password, '', (err, user) ->
+    dao.user.createUser account, password, '', (err, user) ->
       if err or not user
         if err and err.code is "ER_DUP_ENTRY"
           next(null, {code: 501, msg: Resources.ERROR.USER_EXISTS})
@@ -28,7 +28,7 @@ Handler::login = (msg, session, next) ->
   account = msg.account
   password = msg.password
 
-  userDao.getUserByAccount account, (err, user) =>
+  dao.user.getUserByAccount account, (err, user) =>
     if err or not user
       next(null, {code: 501})
       return
@@ -48,7 +48,7 @@ Handler::setName = (msg, session, next) ->
   username = msg.name
   uid = msg.uid or session.uid
 
-  userDao.updateUser uid, {name: username}, (err, user) ->
+  dao.user.updateUser uid, {name: username}, (err, user) ->
     if err or not user
       next(null, {code: 501, msg: err.msg})
       return 

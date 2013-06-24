@@ -13,7 +13,7 @@ userDao =
     @_getUserBy('id', uid, cb)
 
   _getUserBy: (field, value, cb) ->
-    sql = "select * from User where #{field} = ?"
+    sql = "select * from user where #{field} = ?"
     args = [value]
 
     pomelo.app.get('dbclient').query sql, args, (err, res) ->
@@ -39,7 +39,7 @@ userDao =
     @_deleteUserBy 'account', account, cb
 
   _deleteUserBy: (field, value, cb) ->
-    sql = "delete from User where #{field} = ?"
+    sql = "delete from user where #{field} = ?"
     args = [value]
 
     pomelo.app.get('dbclient').delete sql, args, (err, res) ->
@@ -53,7 +53,7 @@ userDao =
         cb(null, false)
 
   createUser: (account, password, from, cb) ->
-    sql = 'insert into User (account, password, login_count, create_time, last_login_time, last_login_device) values(?,?,?,?,?,?)'
+    sql = 'insert into user (account, password, login_count, create_time, last_login_time, last_login_device) values(?,?,?,?,?,?)'
     now = Date.now()
     args = [account, password, 1, now, now, from or '']
 
@@ -71,7 +71,7 @@ userDao =
       for f, v of fields
         setFields += "SET #{f}='#{v}',"
 
-      sql = "update User #{setFields.slice(0, -1)} where id = ?"
+      sql = "update user #{setFields.slice(0, -1)} where id = ?"
       args = [uid]
 
       pomelo.app.get('dbclient').update sql, args, (err, res) ->

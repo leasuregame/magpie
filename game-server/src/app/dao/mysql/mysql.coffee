@@ -26,6 +26,9 @@ NND =
   shutdown: ->
     _pool.destroyAllNow()
 
+###
+mysql database CURD
+###
 sqlclient = 
   init: (app) ->
     if !!_pool

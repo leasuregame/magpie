@@ -32,8 +32,8 @@ app.configure('production|development', 'connector|battle', function() {
   var ttclient = require('./app/manager/ttserver/ttserver')(app);
   app.set('ttclient', ttclient);  
 
-  app.set('daoType', 'mysql');
-  app.set('daoFactory', require('./app/dao')(app));
+  var dao = require('./app/dao').init('mysql');
+  app.set('dao', dao);
 });
 
 // start app

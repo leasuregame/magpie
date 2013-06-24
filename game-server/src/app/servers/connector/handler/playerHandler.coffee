@@ -1,4 +1,4 @@
-playerDao = require('pomelo').app.get('daoFactory').get('player')
+dao = require('pomelo').app.get('dao')
 
 module.exports = (app) ->
   new Handler(app)
@@ -10,12 +10,12 @@ Handler::createPlayer = (msg, session, next) ->
   area_id = msg.area_id
   uid = session.uid
   
-  playerDao.getPlayerByName name, (err, player) ->
+  dao.player.getPlayerByName name, (err, player) ->
     if player
       next(null, {code: 501})
       return
 
-    playerDao.createPlayer uid, name, {area_id: area_id}, (err, player) ->
+    dao.player.createPlayer uid, name, {area_id: area_id}, (err, player) ->
       if err and not player
         next(null, {code: 500, error: err})
       else

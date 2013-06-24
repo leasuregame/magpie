@@ -61,7 +61,6 @@ module.exports = playerDao =
     if name?
       [sql, args] = sqlHelper.selectSql('player', ['name', name])
       dbclient.query sql, args, (err, res) ->
-        console.log err, res
         if err
           cb(err.message, null)
           return

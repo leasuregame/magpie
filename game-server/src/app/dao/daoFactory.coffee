@@ -1,31 +1,21 @@
 path = require 'path'
 fs = require 'fs'
-logger = require('pomelo-logger').getLogger(__filename)
 
-instance = null;
+Factory = module.exports = {}
 
-module.exports = (app) ->
-  if instance?
-    return instance
-  
-  instance = new Factory(app)
-  instance
+Factory.init = (type) ->
+  @type = type
+  autoLoad(type)
+  return Factory
 
-class Factory
-  constructor: (@app) ->
-    @daoType = @app.get('daoType')
-
-  get: (name) ->
-    if not name
-      logger.warn("can not get dao object by undefined name: #{name}")
+autoLoad = (type) ->
+  fs.readdirSync(__dirname + '/' + type).forEach (filename) ->
+    if not /Dao\.js/.test(filename)
       return
 
-    require(daoPath(this) + "/#{name}Dao")
+    name = path.basename filename, '.js'
+    
+    load = ->
+      return require "./#{type}/#{name}"
 
-daoPath = (self)->
-  _path = path.join(__dirname, self.daoType)
-  if not fs.existsSync(_path)
-    logger.error("dao path is not exsits: #{_path}")
-    throw new Error("#{_path} not exsits")
-
-  return _path
+    Factory.__defineGetter__(name.slice(0, -3), load)

@@ -2,15 +2,6 @@ Entity = require './entity'
 _ = require 'underscore'
 
 class Player extends Entity
-  create: (uid, name) ->
-    @set(
-      'uid': uid
-      'name': name
-      'money': 1000
-      'exp': 0
-      'power': 120
-    )
-
   consumePower: (val) ->
     _power = @get('power') - val
     @set 'power', _.max([_power, 0])

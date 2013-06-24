@@ -55,5 +55,17 @@ app.get('/removeplayer', function(req, res){
   });
 });
 
+app.get('/removePlayer', function(req, res){
+  playerId = req.params.pid;
+  mysql.query('delete from player where id = ?', [pid], function(err, res){
+    if (!err){
+      res.send({code: 200})
+    }
+    else{
+      res.send({code: 500, msg: 'faild to delete player by id: ' + pid});
+    }
+  });
+});
+
 app.listen(3000);
 console.log('Test server listen on http://127.0.0.1:3000/test');

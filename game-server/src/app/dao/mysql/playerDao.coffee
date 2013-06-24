@@ -1,8 +1,8 @@
-dbclient = require('pomelo').get('dbclient')
+dbclient = require('pomelo').app.get('dbclient')
 sqlHelper = require './sqlHelper'
 Player = require '../../domain/player'
-logger = require('pomelo-logger').getLoagger(__filename)
-_ = require 'underscorce'
+logger = require('pomelo-logger').getLogger(__filename)
+_ = require 'underscore'
 
 module.exports = playerDao =
   ###
@@ -16,7 +16,7 @@ module.exports = playerDao =
     if not uid or not name
       throw new Error("can not create user with not userid or username")
 
-    fields = _.extends {user_id: uid, name: name}, params
+    fields = _.extend {user_id: uid, name: name}, params
     [sql, args] = sqlHelper.insertSql('player', fields)
 
     dbclient.insert sql, args, (err, res) ->
@@ -46,7 +46,7 @@ module.exports = playerDao =
 
   getPlayerById: (playerId, cb) ->
     if playerId?
-      [sql, args] = sqlHelper.selectSql('player', playerId)
+      [sql, args] = sqlHelper.selectSql('player', ['id', playerId])
       dbclient.query sql, args, (err, res) ->
         if err
           cb(err.message, null)
@@ -56,6 +56,21 @@ module.exports = playerDao =
           playerCallbackHandler(res[0], cb)
         else
           cb(' Player not exists ', null)
+
+  getPlayerByName: (name, cb) ->
+    if name?
+      [sql, args] = sqlHelper.selectSql('player', ['name', name])
+      dbclient.query sql, args, (err, res) ->
+        console.log err, res
+        if err
+          cb(err.message, null)
+          return
+
+        if !!res and res.length is 1
+          playerCallbackHandler(res[0], cb)
+        else
+          cb(' Player not exists ', null)
+
 
 playerCallbackHandler = (row, cb) ->
   player = new Player(

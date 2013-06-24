@@ -1,5 +1,6 @@
 module.exports = 
   insertSql: (table, fields) ->
+    fields.create_time = Date.now()
     _fields = _args = ""
     _values = []
     for key, value of fields
@@ -22,6 +23,6 @@ module.exports =
     sql = "update #{table} #{_sets.slice(0, -1)} where id = ?"
     [sql, _values]
 
-  selectSql: (table, id) ->
-    sql = "select * from #{table} where id = ?"
-    [sql, [id]]
+  selectSql: (table, where) ->
+    sql = "select * from #{table} where #{where[0]}=?"
+    [sql, [where[1]]]

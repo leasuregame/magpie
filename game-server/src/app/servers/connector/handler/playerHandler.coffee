@@ -1,4 +1,4 @@
-playerManager = require('../../../manager/manager').player
+playerDao = require('pomelo').app.get('daoFactory').get('player')
 
 module.exports = (app) ->
   new Handler(app)
@@ -7,22 +7,24 @@ Handler = (@app) ->
 
 Handler::createPlayer = (msg, session, next) ->
   name = msg.name
+  area_id = msg.area_id
   uid = session.uid
-  console.log name, uid, session
-  playerManager.fetch uid, (err, player) ->
-    if err and not player
+  
+  playerDao.getPlayerByName name, (err, player) ->
+    if player
       next(null, {code: 501})
       return
 
-    playerManager.create {id: uid, name: name}, (err, player) ->
+    playerDao.createPlayer uid, name, {area_id: area_id}, (err, player) ->
       if err and not player
         next(null, {code: 500, error: err})
       else
         session.bind(uid)
-        session.set('playername', name)
+        session.set('playerId', player.id)
+        session.set('playername', player.name)
         session.on('close', onUserLeave)
 
-        next(null, {code: 200, player: player.getAttributes()})
+        next(null, {code: 200, player: player})
 
 onUserLeave = (session, reason) ->
   if not session or not session.uid

@@ -70,6 +70,8 @@ describe("Connecter Server # ", function() {
     });
 
     describe("when user login", function(){
+      var pid;
+
       beforeEach(function(){
         request('connector.userHandler.login', {account: 'test_email_2@qq.com', password: '1'}, function(data){
           if (data.code == 200){
@@ -85,9 +87,16 @@ describe("Connecter Server # ", function() {
         })
       });
 
+      afterEach(function(){
+        $.get('/removePlayer', {pid: pid}, function(data){
+
+          })
+      });
+
       it("should can be create player", function(){
-        request('connector.playerHandler.createPlayer', {name: 'wuzhanghai'}, function(data){
-          expect(data).toEqual({ code : 200, player : { id : userid, name : 'wuzhanghai' } })
+        request('connector.playerHandler.createPlayer', {name: 'wuzhanghai', area_id: 1}, function(data){
+          pid = data.player.id;
+          expect(data).toEqual({ code : 200, player : { id : userid, name : 'wuzhanghai' } });
         });
       });
     });

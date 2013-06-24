@@ -5,17 +5,13 @@ id = 1
 
 class Entity extends EventEmitter
   constructor: (opts) ->
-    @_attributes = {}
     @entityId = id++
 
-    setAttr @, opts.attributes if opts.attributes?
+    setAttr @, opts if opts
     @init?(arguments...)
 
   getEntityId: ->
     @entityId
-
-  getAttributes: ->
-    @_attributes
 
   sets: (attrs) ->
     setAttr @, attrs
@@ -34,7 +30,7 @@ class Entity extends EventEmitter
 
 setAttr = (self, name, value) ->
   if arguments.length == 3
-    self._attributes[name] = value
+    self[name] = value
     return this
   if arguments.length == 2
     if  _.isObject(name)
@@ -44,9 +40,9 @@ setAttr = (self, name, value) ->
         if attrs.hasOwnProperty(k) and typeof self[k] is 'function'
           self[k](v)
         else
-          self._attributes[k] = v
+          self[k] = v
       return this
     else
-      return self._attributes[name]
+      return self[name]
 
 exports = module.exports = Entity

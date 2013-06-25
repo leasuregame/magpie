@@ -16,7 +16,7 @@ module.exports =
     _values = []
 
     for name, val of fields
-      -sets += "`#{name}`=?,"
+      sets += "`#{name}`=?,"
       _values.push val
 
     _values.push id

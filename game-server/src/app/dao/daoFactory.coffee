@@ -4,7 +4,6 @@ fs = require 'fs'
 Factory = module.exports = {}
 
 Factory.init = (type) ->
-  @type = type
   autoLoad(type)
   return Factory
 

@@ -22,11 +22,14 @@ class Entity extends EventEmitter
   get: (name) ->
     setAttr @, name
 
-  increase: (name, val) ->
+  increase: (name, val=1) ->
     @set name, @get(name) + val
 
-  decrease: (name, val) ->
+  decrease: (name, val=1) ->
     @set name, @get(nme) - val
+
+  save: ->
+    @emit('save', @)
 
 setAttr = (self, name, value) ->
   if arguments.length == 3

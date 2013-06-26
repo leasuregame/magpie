@@ -10,6 +10,9 @@ exports = module.exports =
     rd = _.random(0, 100)
     if rd <= rate then true else false
 
+  random: ->
+    _.random(0, 100)
+
   parseEffect: (value) ->
     pattern = /^\d+,\d+$/
     if not pattern.exec(value)

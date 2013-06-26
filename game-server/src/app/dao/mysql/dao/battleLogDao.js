@@ -3,9 +3,9 @@
 
     dbclient = require('pomelo').app.get('dbclient');
 
-    sqlHelper = require('./sqlHelper');
+    sqlHelper = require('./../sqlHelper');
 
-    Player = require('../../domain/player');
+    Player = require('../../../domain/coffee/player');
 
     logger = require('pomelo-logger').getLogger(__filename);
 

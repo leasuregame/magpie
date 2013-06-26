@@ -1,5 +1,5 @@
 pomelo = require 'pomelo'
-User = require '../../domain/user'
+User = require '../../../domain/user'
 logger = require('pomelo-logger').getLogger(__filename)
 
 userDao =

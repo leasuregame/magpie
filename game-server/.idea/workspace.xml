@@ -6,14 +6,17 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/battleLogDao.js" changelist="046769e0-b24e-460a-b220-041e80884627" time="1372143613105" ignored="false" />
     <file path="/card.js" changelist="046769e0-b24e-460a-b220-041e80884627" time="1372151584519" ignored="false" />
-    <file path="/a.dummy" changelist="046769e0-b24e-460a-b220-041e80884627" time="1372144330890" ignored="false" />
+    <file path="/a.dummy" changelist="046769e0-b24e-460a-b220-041e80884627" time="1372271190968" ignored="false" />
     <file path="/battleLog.js" changelist="046769e0-b24e-460a-b220-041e80884627" time="1372148057143" ignored="false" />
     <file path="/PassiveSkill.js" changelist="046769e0-b24e-460a-b220-041e80884627" time="1372148068766" ignored="false" />
     <file path="/user.js" changelist="046769e0-b24e-460a-b220-041e80884627" time="1372146812140" ignored="false" />
     <file path="/players.js" changelist="046769e0-b24e-460a-b220-041e80884627" time="1372148075527" ignored="false" />
-    <file path="/cardDao.js" changelist="046769e0-b24e-460a-b220-041e80884627" time="1372240374130" ignored="false" />
+    <file path="/cardDao.js" changelist="046769e0-b24e-460a-b220-041e80884627" time="1372272066767" ignored="false" />
     <file path="/sqlHelper.coffee" changelist="046769e0-b24e-460a-b220-041e80884627" time="1372153486546" ignored="false" />
     <file path="/sqlHelper.js" changelist="046769e0-b24e-460a-b220-041e80884627" time="1372240461449" ignored="false" />
+    <file path="$PROJECT_DIR$/src/test/dao/userDao.test.coffee" changelist="046769e0-b24e-460a-b220-041e80884627" time="1372268391357" ignored="false" />
+    <file path="/daoFactory.js" changelist="046769e0-b24e-460a-b220-041e80884627" time="1372268884993" ignored="false" />
+    <file path="/userDao.js" changelist="046769e0-b24e-460a-b220-041e80884627" time="1372272150749" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,28 +36,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="user.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/domain/user.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="76" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="battleLog.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/domain/battleLog.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="34" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="cardDao.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/cardDao.js">
+        <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/dao/cardDao.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="36" selection-start="3106" selection-end="3106" vertical-scroll-proportion="0.0">
+            <state line="10" column="44" selection-start="175" selection-end="175" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -62,49 +47,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="card.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/domain/card.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="52" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sqlHelper.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="sqlHelper.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/sqlHelper.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="102" selection-start="2078" selection-end="2078" vertical-scroll-proportion="0.47318235">
-              <folding />
+            <state line="75" column="77" selection-start="2082" selection-end="2082" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="battleLogDao.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/battleLogDao.js">
+      <file leaf-file-name="userDao.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/dao/userDao.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="4" selection-start="157" selection-end="192" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="22" column="54" selection-start="508" selection-end="508" vertical-scroll-proportion="0.44683394">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mysql.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/dao/mysql/mysql.js">
+      <file leaf-file-name="user.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/domain/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="55" selection-start="379" selection-end="379" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sqlHelper.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/sqlHelper.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="2" selection-start="603" selection-end="603" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="16" column="8" selection-start="237" selection-end="558" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -119,8 +90,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/app/dao/mysql/battleLogDao.js" />
-        <option value="$PROJECT_DIR$/src/app/domain/user.js" />
         <option value="$PROJECT_DIR$/src/app/domain/battleLog.js" />
         <option value="$PROJECT_DIR$/src/app/domain/PassiveSkill.js" />
         <option value="$PROJECT_DIR$/src/app/domain/players.js" />
@@ -130,11 +99,18 @@
         <option value="$PROJECT_DIR$/src/app/dao/mysql/userDao.js" />
         <option value="$PROJECT_DIR$/src/app/dao/mysql/cardDao.js" />
         <option value="$PROJECT_DIR$/src/app/dao/mysql/sqlHelper.js" />
+        <option value="$PROJECT_DIR$/src/app/dao/mysql/sqlHelper1.js" />
+        <option value="$PROJECT_DIR$/src/app/dao/mysql/index.js" />
+        <option value="$PROJECT_DIR$/src/app/dao/index.js" />
+        <option value="$PROJECT_DIR$/src/app/dao/daoFactory.js" />
+        <option value="$PROJECT_DIR$/src/app/dao/mysql/dao/passiveSkill.js" />
+        <option value="$PROJECT_DIR$/src/app/dao/mysql/dao/cardDao.js" />
+        <option value="$PROJECT_DIR$/src/app/dao/mysql/dao/userDao.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="357" />
+    <option name="x" value="318" />
     <option name="y" value="22" />
     <option name="width" value="1602" />
     <option name="height" value="985" />
@@ -196,8 +172,114 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="servers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mysql" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="domain" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -249,6 +331,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mysql" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -257,11 +369,19 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="options.searchVisible" value="true" />
+    <property name="recentsLimit" value="5" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/dao" />
+      <recent name="$PROJECT_DIR$/src/app/dao/mysql/dao" />
+      <recent name="$PROJECT_DIR$/src/app/domain/coffee" />
+      <recent name="$PROJECT_DIR$/src/app/dao/mysql/coffee" />
+    </key>
   </component>
   <component name="RunManager" selected="Node.js.utility.coffee">
     <configuration default="false" name="utility.coffee" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="/usr/local/bin/node" path-to-js-file="utility.coffee" working-dir="$PROJECT_DIR$/src/app/common" coffeescript-path="/usr/local/bin" coffeescript-run="true">
@@ -316,25 +436,25 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="357" y="22" width="1602" height="985" extended-state="1" />
+    <frame x="318" y="22" width="1602" height="985" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947975" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17732742" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17732742" sideWeight="0.67052025" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -398,119 +518,127 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/generic-pool/lib/generic-pool.js">
+    <entry file="file://$PROJECT_DIR$/src/app/dao/index.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="310" column="5" selection-start="9590" selection-end="9590" vertical-scroll-proportion="0.35280097">
+        <state line="0" column="82" selection-start="39" selection-end="39" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/pool.coffee">
+    <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/coffee/mysql.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/userDao.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="89" selection-start="1549" selection-end="1553" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/playerDao.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="632" selection-end="632" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/schema/tables.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="56" selection-start="447" selection-end="447" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/userDao.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="10" selection-start="174" selection-end="174" vertical-scroll-proportion="0.08104887">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/playersDao.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="184" selection-end="184" vertical-scroll-proportion="0.14183553">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/domain/user.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="76" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.44205496">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/domain/card.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="52" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
+        <state line="19" column="0" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/dao/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="45" selection-start="220" selection-end="220" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#158#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/dao/daoFactory.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="57" selection-start="421" selection-end="421" vertical-scroll-proportion="0.38590202">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/dao/daoFactory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="70" selection-start="601" selection-end="601" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/dao/passiveSkill.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="2" selection-start="165" selection-end="165" vertical-scroll-proportion="0.08124253">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/domain/PassiveSkill.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../shared/code.js">
+    <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/dao/battleLogDao.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="43" selection-start="354" selection-end="354" vertical-scroll-proportion="0.40524435">
+        <state line="5" column="4" selection-start="157" selection-end="192" vertical-scroll-proportion="0.020310633">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/battleLogDao.js">
+    <entry file="file://$PROJECT_DIR$/src/app/manager/manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="4" selection-start="157" selection-end="192" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/dao/mysql/mysql.js">
+    <entry file="file://$PROJECT_DIR$/src/app/manager/table.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="55" selection-start="379" selection-end="379" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/domain/battleLog.js">
+    <entry file="file://$PROJECT_DIR$/src/app/manager/mysql/mysql.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="34" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
+        <state line="52" column="24" selection-start="962" selection-end="968" vertical-scroll-proportion="0.5483871">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/cardDao.js">
+    <entry file="file://$PROJECT_DIR$/src/app/domain/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="36" selection-start="3106" selection-end="3106" vertical-scroll-proportion="0.0">
+        <state line="16" column="8" selection-start="237" selection-end="558" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/sqlHelper.coffee">
+    <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/dao/cardDao.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="2" selection-start="603" selection-end="603" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="10" column="44" selection-start="175" selection-end="175" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/sqlHelper.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="102" selection-start="2078" selection-end="2078" vertical-scroll-proportion="0.47318235">
-          <folding />
+        <state line="75" column="77" selection-start="2082" selection-end="2082" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/dao/mysql/dao/userDao.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="54" selection-start="508" selection-end="508" vertical-scroll-proportion="0.44683394">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

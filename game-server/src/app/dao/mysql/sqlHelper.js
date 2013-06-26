@@ -15,11 +15,11 @@
 (function () {
     var sqlHelper = {
         /*
-        * 对某个表插入一行数据
-        * @param {string} table 插入表表名
-        * @param {literals} fields 字面量，数据列，如：{tableId: 10, value 10}
-        * @return {array} 包含两个数据，sql语句和填入值
-        * */
+         * 对某个表插入一行数据
+         * @param {string} table 插入表表名
+         * @param {literals} fields 字面量，数据列，如：{tableId: 10, value 10}
+         * @return {array} 包含两个数据，sql语句和填入值
+         * */
         insertSql: function (table, fields) {
             fields.createTime = Date.now();
 

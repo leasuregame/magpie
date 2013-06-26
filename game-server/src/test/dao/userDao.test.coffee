@@ -10,7 +10,7 @@ describe "User Data Access Object", ->
 
   before ->
     app.loadConfig('mysql', app.getBase() + '/config/mysql.json')
-    app.set('dbclient', require('../../app/dao/mysql/mysql').init(app))
+    app.set('dbclient', require('../../app/dao/mysql/coffee/mysql').init(app))
     app.set('dao', dao)
 
   describe "#createUser", ->

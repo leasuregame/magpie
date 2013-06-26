@@ -1,6 +1,6 @@
 dbclient = require('pomelo').app.get('dbclient')
-sqlHelper = require './sqlHelper'
-Player = require '../../domain/player'
+sqlHelper = require './../sqlHelper'
+Player = require '../../../domain/coffee/player'
 logger = require('pomelo-logger').getLogger(__filename)
 _ = require 'underscore'
 

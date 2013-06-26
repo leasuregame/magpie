@@ -11,13 +11,22 @@ test:
 		--require should \
 		--reporter spec \
 		--ui bdd \
-		./src/app/test/$(files)
+		--recursive \
+		./src/test/$(files)
+
+test-dao: build
+	./node_modules/.bin/mocha \
+		--compilers coffee:coffee-script \
+		--require should \
+		--reporter spec \
+		--ui bdd \
+		--recursive \
+		./test/dao/$(files)
 
 testserver:
 	node ./test/jasmine/app.js
 
-runserver:
-	sh ./bin/build.sh
+runserver: build
 	./node_modules/.bin/pomelo start development
 
 starttt:

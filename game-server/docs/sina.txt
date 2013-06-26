@@ -6,3 +6,5 @@ user：root
 
 然后登陆新浪的ssh命令式：
 ssh -l root -p 8022 124.238.236.33
+
+http://124.238.236.33/Client/Client/Resources/

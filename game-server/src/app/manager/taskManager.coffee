@@ -2,8 +2,8 @@ table = require './table'
 taskRate = require '../../config/data/taskRate'
 _ = require 'underscore'
 
-class Task
-  explore: (player, cb) ->
+class Manager
+  @explore: (player, app, cb) ->
     [task_id, progress] = parseTask(player.task)
     task = table.getTableItem('task', task_id)
     exp_to_upgrade = table.getTableItem('player_upgrade', player.lv)
@@ -20,6 +20,7 @@ class Task
     # 检查是否进入战斗
     if rd <= taskRate.fight
       res.result = 'fight'
+      app.rpc.battle.fightRemote.pve 
     else if taskRate.fight < rd <= (taskRate.fight + taskRate.precious_box)
       # 检查是否获得宝箱
       res.result = 'box'
@@ -64,7 +65,9 @@ openBox = () ->
 
   randomCard(getStar(rd))
 
-randomCard: (star) ->
+randomCard = (star) ->
   ids = _.range(star, 250, 5)
   index = _.random(0, ids.length)
   table.getTableItem('cards', ids[index])
+
+module.exports = Manager

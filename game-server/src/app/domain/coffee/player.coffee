@@ -2,6 +2,9 @@ Entity = require './entity'
 _ = require 'underscore'
 
 class Player extends Entity
+  init: ->
+    @cards = {}
+
   consumePower: (val) ->
     _power = @get('power') - val
     @set 'power', _.max([_power, 0])
@@ -24,16 +27,16 @@ class Player extends Entity
       @addCard(c)
 
   addCard: (card) ->
-    @get('cards')?[card.id] = card
+    @cards[card.id] = card
 
   # update card attributes
-  # @params data, should be an object that contains the updating attributes
+  # @params card, should be an object that contains the updating attributes
   # e.g {lv: 20, atk: 20050, hp: 238848}
-  updateCard: (cardId, data) ->
-    _.extend @get('cards')?[cardId], data
+  updateCard: (cardId, card) ->
+    _.extend @cards[cardId], card
 
   removeCard: (cardId) ->
-    if @get('cards')?[cardId]?
+    if@cards[cardId]?
       delete @get('cards')[cardId]
 
   # increaseExp: (val) ->

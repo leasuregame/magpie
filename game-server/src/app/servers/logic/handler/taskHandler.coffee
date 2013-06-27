@@ -10,21 +10,39 @@ Handler = (@app) ->
 
 Handler::explore = (msg, session, next) ->
   playerId = session.get('playerId')
+  data = null
+  player = null
 
-  playerManager.getPlayer {pid: playerId}, (err, player) ->
-    if err and not player
-      next(null, {code: 500, msg: resources.ERROR.PLAYER_NOT_EXISTS})
+  getPlayer = (cb) ->
+    playerManager.getPlayer {pid: playerId}, cb
+
+  executeExpolore = (player, cb) ->
+    taskManager.explore player, cb
+
+  checkFight = (_player, taskId, data, cb) =>
+    player = _player
+    data = data
+    if data.result is 'fight'
+      @app.rpc.battle.fightRemote.pve( session, {pid: player.id, taskId: taskId}, cb )
     else
-      taskManager.explore player, (err, data) ->
-        if err
-          next(null, {code: 500})
-        else
-          next(null, {code: 200, data: data})
+      cb(null, null)
 
-  async.waterfall [
-    (cb) ->
-      playerManager.getPlayer {pid: playerId}, cb
+  addBattleLogIfFight = (bl, cb) ->
+    if bl?
+      data.battle_log = bl
+    cb(null)
 
-    (player, cb) ->
-      
-    ], (err, result) ->
+  async.waterfall([
+    getPlayer,
+    executeExpolore,
+    checkFight,
+    addBattleLogIfFight      
+    ], 
+    (err) ->
+      if err
+        next(err, {code: 500})
+        return
+
+      player.save()
+      next(null, {code: 200, data: data})
+  )

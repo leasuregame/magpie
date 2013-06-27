@@ -1,5 +1,6 @@
 dao = require('pomelo').app.get('dao')
 Cache = require '../common/cache'
+async = require 'async'
 
 playerList = new Cache()
 
@@ -32,5 +33,32 @@ class Manager
 
     if params.name?
       return
+
+  @getPlayerForFight: (params, cb) ->
+    player = null
+    async.waterfall([
+      (callback) =>
+        @getPlayer params, callback
+
+      (player, callback) ->
+        player = player
+        getActivatedCards params, callback
+      ], 
+      (err, cards) ->
+        if err isnt null
+          cb(err, null)
+          return
+
+        player.addCards(cards)
+        cb(null, player)
+      )
+
+getActivatedCards = (params, cb) ->
+  dao.card.getCardByPlayersId params.pid, {activated: 1}, (err, cards) ->
+    if err isnt null
+      cb(err, null)
+      return
+
+    cb(null, cards)
 
 module.exports = Manager

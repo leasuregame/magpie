@@ -17,7 +17,7 @@
         /*
          * 对某个表插入一行数据
          * @param {string} table 插入表表名
-         * @param {literals} fields 字面量，数据列，如：{tableId: 10, value 10}
+         * @param {object} fields 字面量，数据列，如：{tableId: 10, value 10}
          * @return {array} 包含两个数据，sql语句和填入值
          * */
         insertSql: function (table, fields) {
@@ -44,11 +44,11 @@
         /*
          * 根据表名和ID更新数据
          * @param {string} table 插入表表名
-         * @param {number} id 主键，序号
-         * @param {literals} fields 字面量，数据列，如：{tableId: 10, value 5}
+         * @param {object} where 字面量，数据列，如：{id: 100000} or {name: "hehe"}
+         * @param {object} fields 字面量，数据列，如：{tableId: 10, value 5}
          * @return {array} 包含两个数据，sql语句和填入值
          * */
-        updateSql: function (table, id, fields) {
+        updateSql: function (table, where, fields) {
             var _sets = "";
             var _values = [];
             var key;
@@ -59,9 +59,9 @@
                 _sets += "`" + key + "`=?,";
                 _values.push(value);
             }
-            _values.push(id);
+            _values.push(where[1]);
 
-            var sql = "update " + table + " " + (_sets.slice(0, -1)) + " where id = ?";
+            var sql = "update " + table + " " + (_sets.slice(0, -1)) + " where " + where[0] + "=?";
 
             return [sql, _values];
         },
@@ -69,7 +69,7 @@
         /*
          * 根据表名和where字面量数据查找行
          * @param {string} table 插入表表名
-         * @param {literals} where 字面量，数据列，如：{id: 100000} or {name: "hehe"}
+         * @param {object} where 字面量，数据列，如：{id: 100000} or {name: "hehe"}
          * @return {array} 包含两个数据，sql语句和填入值
          * */
         selectSql: function (table, where, limit) {
@@ -81,10 +81,10 @@
         /*
          * 根据表名和where字面量数据删除行
          * @param {string} table 插入表表名
-         * @param {literals} where 字面量，数据列，如：{id: 100000} or {name: "hehe"}
+         * @param {object} where 字面量，数据列，如：{id: 100000} or {name: "hehe"}
          * @return {array} 包含两个数据，sql语句和填入值
          * */
-        deleteSql : function(table, where) {
+        deleteSql: function (table, where) {
             var sql = "delete from " + table + " where " + where[0] + "=?";
 
             return [sql, [where[1]]];

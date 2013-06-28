@@ -1,6 +1,6 @@
 _ = require 'underscore'
 
-exports = module.exports = 
+exports = module.exports =
 
   hitRate: (rate) ->
     rate = parseInt(rate)

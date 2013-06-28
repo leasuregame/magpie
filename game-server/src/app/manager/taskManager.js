@@ -11,7 +11,7 @@
   Manager = (function() {
     function Manager() {}
 
-    Manager.explore = function(player, app, cb) {
+    Manager.explore = function(player, cb) {
       var exp_to_upgrade, progress, rd, res, task, task_id, _ref, _ref1;
       _ref = parseTask(player.task), task_id = _ref[0], progress = _ref[1];
       task = table.getTableItem('task', task_id);
@@ -22,12 +22,12 @@
         exp_obtain: task.exp_obtain,
         coins_obtain: task.coins_obtain,
         upgrade: false,
-        card_id: null
+        card_id: null,
+        battle_log: null
       };
       rd = _.random(0, 100);
       if (rd <= taskRate.fight) {
         res.result = 'fight';
-        app.rpc.battle.fightRemote.pve;
       } else if ((taskRate.fight < rd && rd <= (taskRate.fight + taskRate.precious_box))) {
         res.result = 'box';
         res.card_id = (_ref1 = openBox()) != null ? _ref1.id : void 0;
@@ -44,7 +44,7 @@
         player.increase('exp', task.exp_obtain);
       }
       player.save();
-      return cb(null, res);
+      return cb(null, player, task_id, res);
     };
 
     return Manager;

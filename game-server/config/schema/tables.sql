@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 
 -- ----------------------------
--- Table structure for players
+-- Table structure for player
 -- ----------------------------
 DROP TABLE IF EXISTS `player`;
 CREATE TABLE IF NOT EXISTS `player` (
@@ -50,7 +50,7 @@ DROP TABLE IF EXISTS `card`;
 CREATE TABLE IF NOT EXISTS `card` (
 	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `createTime` BIGINT(20) UNSIGNED NOT NULL,
-	`playersId` INT(10) UNSIGNED NOT NULL,
+	`playerId` INT(10) UNSIGNED NOT NULL,
 	`tableId` SMALLINT(5) UNSIGNED NOT NULL,
 	`lv` SMALLINT(5) UNSIGNED DEFAULT '0',
 	`exp` INT(10) UNSIGNED DEFAULT '0',

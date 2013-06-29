@@ -61,7 +61,7 @@
             }
             _values.push(where[1]);
 
-            var sql = "update " + table + " " + (_sets.slice(0, -1)) + " where " + where[0] + "=?";
+            var sql = "update " + table + " set " + (_sets.slice(0, -1)) + " where " + where[0] + "=?";
 
             return [sql, _values];
         },

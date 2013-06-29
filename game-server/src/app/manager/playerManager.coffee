@@ -50,6 +50,7 @@ class Manager
           return
 
         player.addCards(cards)
+        playerList.put(player.id, player)
         cb(null, player)
       )
 

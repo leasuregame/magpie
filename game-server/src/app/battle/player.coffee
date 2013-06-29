@@ -10,8 +10,6 @@ class Player extends Module
   @table: 'player'
 
   constructor: (entity) ->
-    #@objects = model
-
     if entity?
       for key, val of entity.getAttributes()
         @[key] = val
@@ -23,6 +21,7 @@ class Player extends Module
     @enemy = null
     @is_attacker = false
     @matrix = new Matrix()
+    
     @loadHeros()
     @bindCards()
     @setAttackCount()

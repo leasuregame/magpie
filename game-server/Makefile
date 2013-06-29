@@ -23,6 +23,15 @@ test-dao: build
 		--recursive \
 		./test/dao/$(files)
 
+test-battle: build
+	./node_modules/.bin/mocha \
+		--compilers coffee:coffee-script \
+		--require should \
+		--reporter spec \
+		--ui bdd \
+		--recursive \
+		./test/battle/$(files)
+
 testserver:
 	node ./test/jasmine/app.js
 

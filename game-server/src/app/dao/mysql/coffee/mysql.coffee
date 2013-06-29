@@ -5,7 +5,7 @@ NND =
   初始化mysql数据库连接池
   ###
   init: (app) ->
-    _pool = require('./pool').createMysqlPool(app)
+    _pool = require('./../pool').createMysqlPool(app)
 
   ###
   执行sql语句

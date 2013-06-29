@@ -30,20 +30,14 @@
          * @param {function} cb  回调函数
          * */
         createPlayer: function (param, cb) {
-            if (typeof (param) == "undefined") {
-                throw new Error("playerDao.createPlayer param is undefined");
-            }
-
-            if (typeof (param.playerId) == "undefined") {
-                throw new Error("playerDao.createPlayer param.playerId is undefined");
-            }
-
-            if (typeof (param.areaId) == "undefined") {
-                throw new Error("playerDao.createPlayer param.areaId is undefined");
-            }
-
-            if (typeof (param.name) == "undefined") {
-                throw new Error("playerDao.createPlayer param.name is undefined");
+            if ( typeof param == "undefined" || 
+                 typeof param.id == "undefined" || 
+                 typeof param.areaId == "undefined" || 
+                 typeof param.name == "undefined" ||
+                 typeof param.userId == "undefined"
+            ) {
+                cb({code: 400, msg: "playerDao.createPlayer invalid parameter: " + JSON.stringify(param)}, null);
+                return;
             }
 
             var _ref = sqlHelper.insertSql("player", param);
@@ -59,7 +53,11 @@
                         msg: err.message
                     }, null);
                 } else {
-                    return cb(null, new Player(res));
+                    return cb(null, new Player({
+                        id: res.insertId,
+                        areaId: param.areaId,
+                        name: param.name
+                    }));
                 }
             });
         },
@@ -92,7 +90,11 @@
                         msg: err.message
                     }, null);
                 } else {
-                    return cb(null, res);
+                    if (!!res && res.affectedRows > 0){
+                        return cb(null, true);
+                    } else {
+                        return cb(null, false);
+                    }
                 }
             });
         },
@@ -219,22 +221,13 @@
                         msg: err.message
                     }, null);
                 } else {
-                    return cb(null, res);
+                    if (!!res && res.affectedRows > 0){
+                        return cb(null, true);
+                    } else {
+                        return cb(null, false);
+                    }
                 }
             });
-        },
-
-        /*
-         * 根据 player 删除一条 player 记录
-         * @param {object} player 需要删除的用户对象
-         * @param {function} cb  回调函数
-         * */
-        deletePlayer: function (player, cb) {
-            if (typeof (player) == "undefined") {
-                throw new Error("playerDao.deletePlayer player is undefined");
-            }
-
-            return this.deletePlayerById(player.getId(), cb);
         }
     }
 

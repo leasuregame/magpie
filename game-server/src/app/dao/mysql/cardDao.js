@@ -34,8 +34,8 @@
                 throw new Error("cardDao.createCard param is undefined");
             }
 
-            if (typeof (param.playersId) == "undefined") {
-                throw new Error("cardDao.createCard param.playersId is undefined");
+            if (typeof (param.playerId) == "undefined") {
+                throw new Error("cardDao.createCard param.playerId is undefined");
             }
 
             if (typeof (param.tableId) == "undefined") {
@@ -127,22 +127,22 @@
         },
 
         /*
-         * 根据 playersId 查找 card 记录
-         * @param {number} playersId 需要查找的玩家号
+         * 根据 playerId 查找 card 记录
+         * @param {number} playerId 需要查找的玩家号
          * @param {function} cb  回调函数
          * */
-        getCardByPlayersId: function (playersId, cb) {
-            if (typeof (playersId) == "undefined") {
-                throw new Error("cardDao.getCardByPlayersId playersId is undefined");
+        getCardByPlayerId: function (playerId, cb) {
+            if (typeof (playerId) == "undefined") {
+                throw new Error("cardDao.getCardByPlayerId playerId is undefined");
             }
 
-            var _ref = sqlHelper.selectSql("card", ["playersId", playersId]);
+            var _ref = sqlHelper.selectSql("card", ["playerId", playerId]);
             var sql = _ref[0];
             var args = _ref[1];
 
             return dbClient.query(sql, args, function (err, res) {
                 if (err) {
-                    logger.error("[cardDao.getCardByPlayersId faild] ", err.stack);
+                    logger.error("[cardDao.getCardByPlayerId faild] ", err.stack);
 
                     return cb({
                         code: err.code,

@@ -127,22 +127,22 @@
         },
 
         /*
-         * 根据 playersId 查找主动发起的 battleLog 记录
-         * @param {number} playersId 需要查找的记录号
+         * 根据 playerId 查找主动发起的 battleLog 记录
+         * @param {number} playerId 需要查找的记录号
          * @param {function} cb  回调函数
          * */
-        getBattleLogByOwnPlayersId: function (playersId, cb) {
-            if (typeof (playersId) == "undefined") {
-                throw new Error("battleLogDao.getBattleLogByOwnPlayersId playersId is undefined");
+        getBattleLogByOwnPlayerId: function (playerId, cb) {
+            if (typeof (playerId) == "undefined") {
+                throw new Error("battleLogDao.getBattleLogByOwnPlayerId playerId is undefined");
             }
 
-            var _ref = sqlHelper.selectSql("battleLog", ["own", playersId]);
+            var _ref = sqlHelper.selectSql("battleLog", ["own", playerId]);
             var sql = _ref[0];
             var args = _ref[1];
 
             return dbClient.query(sql, args, function (err, res) {
                 if (err) {
-                    logger.error("[battleLogDao.getBattleLogByOwnPlayersId faild] ", err.stack);
+                    logger.error("[battleLogDao.getBattleLogByOwnPlayerId faild] ", err.stack);
 
                     return cb({
                         code: err.code,
@@ -162,22 +162,22 @@
         },
 
         /*
-         * 根据 playersId 查找被攻击的 battleLog 记录
-         * @param {number} playersId 需要查找的记录号
+         * 根据 playerId 查找被攻击的 battleLog 记录
+         * @param {number} playerId 需要查找的记录号
          * @param {function} cb  回调函数
          * */
-        getBattleLogByEnemyPlayersId: function (playersId, cb) {
-            if (typeof (playersId) == "undefined") {
-                throw new Error("battleLogDao.getBattleLogByEnemyPlayersId playersId is undefined");
+        getBattleLogByEnemyPlayerId: function (playerId, cb) {
+            if (typeof (playerId) == "undefined") {
+                throw new Error("battleLogDao.getBattleLogByEnemyPlayerId playerId is undefined");
             }
 
-            var _ref = sqlHelper.selectSql("battleLog", ["enemy", playersId]);
+            var _ref = sqlHelper.selectSql("battleLog", ["enemy", playerId]);
             var sql = _ref[0];
             var args = _ref[1];
 
             return dbClient.query(sql, args, function (err, res) {
                 if (err) {
-                    logger.error("[battleLogDao.getBattleLogByEnemyPlayersId faild] ", err.stack);
+                    logger.error("[battleLogDao.getBattleLogByEnemyPlayerId faild] ", err.stack);
 
                     return cb({
                         code: err.code,

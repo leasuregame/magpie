@@ -50,7 +50,7 @@ var userDao = {
                     msg: err.message
                 }, null);
             } else {
-                return cb(null, new User({id: res.insertedId, account: param.account}));
+                return cb(null, new User({id: res.insertId, account: param.account}));
             }
         });
     },

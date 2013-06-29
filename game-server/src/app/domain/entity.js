@@ -11,7 +11,7 @@
  * entity
  * */
 
-
+var logger = require('pomelo-logger').getLogger(__filename);
 var __hasProp = {}.hasOwnProperty;
 var __extends = function (child, parent) {
     for (var key in parent) {
@@ -94,7 +94,14 @@ var setAttr = function (self, name, value) {
             for (key in name) {
                 value = name[key];
 
-                if (patrn.exec(value)) value = eval(value);
+                if (typeof value == 'string' && patrn.test(value)) {
+                    try{
+                        value = JSON.parse(value);
+                    } catch (e) {
+                        logger.error('can not parse to josn object: ', value);
+                        logger.error(e);
+                    }
+                }
 
                 if (name.hasOwnProperty(key) && typeof (name[key]) === "function") {
                     self[key](value);

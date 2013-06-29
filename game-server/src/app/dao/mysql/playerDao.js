@@ -12,7 +12,7 @@
  *
  * create
  * update
- * selete
+ * select
  * delete
  * */
 

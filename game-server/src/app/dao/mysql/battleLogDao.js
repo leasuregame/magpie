@@ -9,11 +9,6 @@
 
 /*
  * battleLog dao
- *
- * create
- * update
- * selete
- * delete
  * */
 
 
@@ -23,6 +18,16 @@
     var logger = require("pomelo-logger").getLogger(__filename);
     var BattleLog = require("../../domain/battleLog");
 
+    var getBattleLogObject = function (res) {
+        return new BattleLog({
+            id: res.id,
+            createTime: res.createTime,
+            own: res.own,
+            enemy: res.enemy,
+            battleLog: res.battleLog
+        });
+    }
+
     var battleLogDao = {
         /*
          * 创建一条 battleLog 记录
@@ -30,16 +35,8 @@
          * @param {function} cb  回调函数
          * */
         createBattleLog: function (param, cb) {
-            if (typeof (param) == "undefined") {
-                throw new Error("battleLogDao.createBattleLog param is undefined");
-            }
-
-            if (typeof (param.own) == "undefined") {
-                throw new Error("battleLogDao.createBattleLog param.own is undefined");
-            }
-
-            if (typeof (param.battleLog) == "undefined") {
-                throw new Error("battleLogDao.createBattleLog param.battleLog is undefined");
+            if (typeof (param) == "undefined" || typeof (param.own) == "undefined" || typeof (param.battleLog) == "undefined") {
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.insertSql("battleLog", param);
@@ -55,7 +52,7 @@
                         msg: err.message
                     }, null);
                 } else {
-                    return cb(null, new BattleLog(res));
+                    return cb(null, {id: res.insertId});
                 }
             });
         },
@@ -67,12 +64,8 @@
          * @param {function} cb  回调函数
          * */
         updateBattleLogById: function (id, param, cb) {
-            if (typeof (id) == "undefined") {
-                throw new Error("battleLogDao.updateBattleLogById id is undefined");
-            }
-
-            if (typeof (param) == "undefined") {
-                throw new Error("battleLogDao.updateBattleLogById param is undefined");
+            if (typeof (id) == "undefined" || typeof (param) == "undefined") {
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.updateSql("battleLog", ["id", id], param);
@@ -88,7 +81,7 @@
                         msg: err.message
                     }, null);
                 } else {
-                    return cb(null, res);
+                    return cb(null, true);
                 }
             });
         },
@@ -100,7 +93,7 @@
          * */
         getBattleLogById: function (id, cb) {
             if (typeof (id) == "undefined") {
-                throw new Error("battleLogDao.getBattleLogById id is undefined");
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.selectSql("battleLog", ["id", id]);
@@ -116,11 +109,11 @@
                         msg: err.message
                     }, null);
                 } else if (res && res.length === 1) {
-                    return cb(null, new BattleLog(res[0]));
+                    return cb(null, getBattleLogObject(res[0]));
                 } else {
                     return cb({
                         code: null,
-                        msg: "BattleLog not exists"
+                        msg: "BattleLog not exist"
                     }, null);
                 }
             });
@@ -133,7 +126,7 @@
          * */
         getBattleLogByOwnPlayerId: function (playerId, cb) {
             if (typeof (playerId) == "undefined") {
-                throw new Error("battleLogDao.getBattleLogByOwnPlayerId playerId is undefined");
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.selectSql("battleLog", ["own", playerId]);
@@ -153,7 +146,7 @@
                     var len = res.length;
 
                     for (var i = 0; i < len; ++i) {
-                        battleLogList.push(new BattleLog(res[i]));
+                        battleLogList.push(getBattleLogObject(res[i]));
                     }
 
                     return cb(null, battleLogList);
@@ -168,7 +161,7 @@
          * */
         getBattleLogByEnemyPlayerId: function (playerId, cb) {
             if (typeof (playerId) == "undefined") {
-                throw new Error("battleLogDao.getBattleLogByEnemyPlayerId playerId is undefined");
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.selectSql("battleLog", ["enemy", playerId]);
@@ -188,7 +181,7 @@
                     var len = res.length;
 
                     for (var i = 0; i < len; ++i) {
-                        battleLogList.push(new BattleLog(res[i]));
+                        battleLogList.push(getBattleLogObject(res[i]));
                     }
 
                     return cb(null, battleLogList);
@@ -203,7 +196,7 @@
          * */
         deleteBattleLogById: function (id, cb) {
             if (typeof (id) == "undefined") {
-                throw new Error("battleLogDao.deleteBattleLogById id is undefined");
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.deleteSql("battleLog", ["id", id]);
@@ -218,8 +211,10 @@
                         code: err.code,
                         msg: err.message
                     }, null);
+                } else if (res && res.affectedRows > 0) {
+                    return cb(null, true);
                 } else {
-                    return cb(null, res);
+                    return cb(null, false);
                 }
             });
         },
@@ -231,10 +226,10 @@
          * */
         deleteBattleLog: function (battleLog, cb) {
             if (typeof (battleLog) == "undefined") {
-                throw new Error("battleLogDao.deleteBattleLog battleLog is undefined");
+                return cb("param error", null);
             }
 
-            return this.deleteBattleLogById(battleLog.getId(), cb);
+            return this.deleteBattleLogById(battleLog.get("id"), cb);
         }
     }
 

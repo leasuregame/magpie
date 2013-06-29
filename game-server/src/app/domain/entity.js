@@ -83,8 +83,12 @@ var Entity = (function (_super) {
 
 var setAttr = function (self, name, value) {
     if (arguments.length === 3) {
-        self._mark[name] = true;
-        self[name] = value;
+        if (typeof (self[name]) == "undefined") {
+            self[name] = value;
+        } else if (self[name] !== value) {
+            self[name] = value;
+            self._mark[name] = true;
+        }
     } else if (arguments.length === 2) {
         if (_.isObject(name)) {
             var key;
@@ -94,13 +98,17 @@ var setAttr = function (self, name, value) {
             for (key in name) {
                 value = name[key];
 
-                if (patrn.exec(value)) value = eval(value);
+                if (patrn.exec(value)) value = eval("(" + value + ")");
 
                 if (name.hasOwnProperty(key) && typeof (name[key]) === "function") {
                     self[key](value);
                 } else {
-                    self._mark[key] = true;
-                    self[key] = value;
+                    if (typeof (self[key]) == "undefined") {
+                        self[key] = value;
+                    } else if (self[key] !== value) {
+                        self[key] = value;
+                        self._mark[key] = true;
+                    }
                 }
             }
         }

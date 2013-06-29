@@ -14,7 +14,6 @@ echo 'cp .js files'
 
 for i in `find ./src -name \*.js`
 do
-len=${#i}
 dir=${i:5}
 cp -R $i .$dir
 done

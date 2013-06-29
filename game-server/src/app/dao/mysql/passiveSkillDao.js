@@ -30,16 +30,12 @@
          * @param {function} cb  回调函数
          * */
         createPassiveSkill: function (param, cb) {
-            if (typeof (param) == "undefined") {
-                throw new Error("passiveSkillDao.createPassiveSkill param is undefined");
-            }
-
-            if (typeof (param.cardId) == "undefined") {
-                throw new Error("passiveSkillDao.createPassiveSkill param.cardId is undefined");
-            }
-
-            if (typeof (param.tableId) == "undefined") {
-                throw new Error("passiveSkillDao.createPassiveSkill param.tableId is undefined");
+            if (typeof (param) == "undefined" ||
+                typeof (param.cardId) == "undefined" || 
+                typeof (param.tableId) == "undefined"
+            ) {
+                cb({code: 400, msg: "passiveSkillDao.createPassiveSkill param is invalid, " + JSON.stringify(param)}, null);
+                return;
             }
 
             var _ref = sqlHelper.insertSql("passiveSkill", param);
@@ -49,13 +45,12 @@
             return dbClient.insert(sql, args, function (err, res) {
                 if (err) {
                     logger.error("[passiveSkillDao.createPassiveSkill faild] ", err.stack);
-
                     return cb({
                         code: err.code,
                         msg: err.message
                     }, null);
                 } else {
-                    return cb(null, new PassiveSkill(res));
+                    return cb(null, new PassiveSkill({id: res.insertId}));
                 }
             });
         },
@@ -88,7 +83,11 @@
                         msg: err.message
                     }, null);
                 } else {
-                    return cb(null, res);
+                    if (!!res && res.affectedRows > 0){
+                        return cb(null, true);
+                    } else {
+                        return cb(null, false);
+                    }
                 }
             });
         },
@@ -184,22 +183,13 @@
                         msg: err.message
                     }, null);
                 } else {
-                    return cb(null, res);
+                    if (!!res && res.affectedRows > 0){
+                        return cb(null, true);
+                    } else {
+                        return cb(null, false);
+                    }
                 }
             });
-        },
-
-        /*
-         * 根据 passiveSkill 删除一条 passiveSkill 记录
-         * @param {object} passiveSkill 需要删除的用户对象
-         * @param {function} cb  回调函数
-         * */
-        deletePassiveSkill: function (passiveSkill, cb) {
-            if (typeof (passiveSkill) == "undefined") {
-                throw new Error("passiveSkillDao.deletePassiveSkill passiveSkill is undefined");
-            }
-
-            return this.deletePassiveSkillById(passiveSkill.getId(), cb);
         }
     }
 

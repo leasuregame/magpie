@@ -30,11 +30,13 @@ var userDao = {
      * */
     createUser: function (param, cb) {
         if (typeof (param) == "undefined") {
-            throw new Error("userDao.createUser param is undefined");
+            cb({code: 400, msg: "userDao.createUser param is undefined"}, null);
+            return;
         }
 
         if (typeof (param.account) == "undefined") {
-            throw new Error("userDao.createUser param.account is undefined");
+            cb({code: 400, msg: "userDao.createUser param.account is undefined"}, null);
+            return;
         }
 
         var _ref = sqlHelper.insertSql("user", param);

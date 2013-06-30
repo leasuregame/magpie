@@ -31,8 +31,7 @@
          * */
         createPassiveSkill: function (param, cb) {
             if (typeof (param) == "undefined" ||
-                typeof (param.cardId) == "undefined" || 
-                typeof (param.tableId) == "undefined"
+                typeof (param.cardId) == "undefined"
             ) {
                 cb({code: 400, msg: "passiveSkillDao.createPassiveSkill param is invalid, " + JSON.stringify(param)}, null);
                 return;

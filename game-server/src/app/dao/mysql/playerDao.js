@@ -22,6 +22,8 @@
     var dbClient = require("pomelo").app.get("dbClient");
     var logger = require("pomelo-logger").getLogger(__filename);
     var Player = require("../../domain/player");
+    var cardDao = require("./cardDao");
+    var async = require('async');
 
     var playerDao = {
         /*
@@ -138,8 +140,8 @@
          * @param {function} cb  回调函数
          * */
         getPlayerById: function (id, cb) {
-            if (typeof (id) == "undefined") {
-                throw new Error("playerDao.getPlayerById id is undefined");
+            if (typeof id == "undefined" || id == null){
+                cb({code: 400, msg: "playerDao.getPlayerInfo id is undefined"})
             }
 
             var _ref = sqlHelper.selectSql("player", ["id", id]);
@@ -195,6 +197,31 @@
                         msg: "Player not exists"
                     }, null);
                 }
+            });
+        },
+
+        /*
+         * 根据 id 查找一条 player 记录, 包括所有的卡牌等其他信息
+         * @param {number} id 需要查找的记录号
+         * @param {function} cb  回调函数
+         * */
+        getPlayerInfo: function (id, cb) {
+            async.parallel([
+                function(callback) {
+                    playerDao.getPlayerById(id, callback);
+                },
+                function(callback) {
+                    cardDao.getCardByPlayerId(id, callback);
+                }
+            ],function(err, results){
+                if (err !== null){
+                    cb(err, null)
+                }
+
+                var player = results[0];
+                var cards = results[1];
+                player.addCards(cards);
+                cb(null, player);
             });
         },
 

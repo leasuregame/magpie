@@ -43,9 +43,20 @@ var Card = (function (_super) {
 
     Card.prototype.init = function() {
         this.passiveSkillList = {};
-    }
+    };
 
-    Card.prototype.getPassiveSkil
+    Card.prototype.addPassiveSkills = function(passiveSkills) {
+        self = this;
+        passiveSkills.forEach(function(ps){
+            self.addPassiveSkill(ps);
+        });
+    };
+
+    Card.prototype.addPassiveSkill = function(passiveSkill) {
+        if (typeof passiveSkill.id !== 'undefined' || typeof passiveSkill.id !== null) {
+            this.passiveSkillList[passiveSkill.id] = passiveSkill
+        }
+    };
 
     return Card;
 })(Entity);

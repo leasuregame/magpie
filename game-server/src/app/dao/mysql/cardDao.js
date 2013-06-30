@@ -30,16 +30,8 @@
          * @param {function} cb  回调函数
          * */
         createCard: function (param, cb) {
-            if (typeof (param) == "undefined") {
-                throw new Error("cardDao.createCard param is undefined");
-            }
-
-            if (typeof (param.playerId) == "undefined") {
-                throw new Error("cardDao.createCard param.playerId is undefined");
-            }
-
-            if (typeof (param.tableId) == "undefined") {
-                throw new Error("cardDao.createCard param.tableId is undefined");
+            if (typeof (param) == "undefined" || typeof (param.playerId) == "undefined" || typeof (param.tableId) == "undefined") {
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.insertSql("card", param);
@@ -55,7 +47,7 @@
                         msg: err.message
                     }, null);
                 } else {
-                    return cb(null, new Card(res));
+                    return cb(null, {id: res.insertId});
                 }
             });
         },
@@ -67,12 +59,8 @@
          * @param {function} cb  回调函数
          * */
         updateCardById: function (id, param, cb) {
-            if (typeof (id) == "undefined") {
-                throw new Error("cardDao.updateCardById id is undefined");
-            }
-
-            if (typeof (param) == "undefined") {
-                throw new Error("cardDao.updateCardById param is undefined");
+            if (typeof (id) == "undefined" || typeof (param) == "undefined") {
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.updateSql("card", ["id", id], param);
@@ -87,8 +75,10 @@
                         code: err.code,
                         msg: err.message
                     }, null);
+                } if (!!res && res.affectedRows > 0){
+                    return cb(null, true);
                 } else {
-                    return cb(null, res);
+                    return cb(null, false);
                 }
             });
         },
@@ -100,7 +90,7 @@
          * */
         getCardById: function (id, cb) {
             if (typeof (id) == "undefined") {
-                throw new Error("cardDao.getCardById id is undefined");
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.selectSql("card", ["id", id]);
@@ -120,7 +110,7 @@
                 } else {
                     return cb({
                         code: null,
-                        msg: "Card not exists"
+                        msg: "Card not exist"
                     }, null);
                 }
             });
@@ -133,7 +123,7 @@
          * */
         getCardByPlayerId: function (playerId, cb) {
             if (typeof (playerId) == "undefined") {
-                throw new Error("cardDao.getCardByPlayerId playerId is undefined");
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.selectSql("card", ["playerId", playerId]);
@@ -168,7 +158,7 @@
          * */
         deleteCardById: function (id, cb) {
             if (typeof (id) == "undefined") {
-                throw new Error("cardDao.deleteCardById id is undefined");
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.deleteSql("card", ["id", id]);
@@ -183,8 +173,10 @@
                         code: err.code,
                         msg: err.message
                     }, null);
+                } else if (res && res.affectedRows > 0) {
+                    return cb(null, true);
                 } else {
-                    return cb(null, res);
+                    return cb(null, false);
                 }
             });
         },
@@ -196,10 +188,10 @@
          * */
         deleteCard: function (card, cb) {
             if (typeof (card) == "undefined") {
-                throw new Error("cardDao.deleteCard card is undefined");
+                return cb("param error", null);
             }
 
-            return this.deleteCardById(card.getId(), cb);
+            return this.deleteCardById(card.get("id"), cb);
         }
     }
 

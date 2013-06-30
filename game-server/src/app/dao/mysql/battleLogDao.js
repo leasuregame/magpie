@@ -80,8 +80,10 @@
                         code: err.code,
                         msg: err.message
                     }, null);
-                } else {
+                } if (!!res && res.affectedRows > 0){
                     return cb(null, true);
+                } else {
+                    return cb(null, false);
                 }
             });
         },

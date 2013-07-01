@@ -11,7 +11,7 @@ class Player extends Module
 
   constructor: (entity) ->
     if entity?
-      for key, val of entity.getAttributes()
+      for key, val of entity.toJson()
         @[key] = val
 
     @initAttrs() if not entity

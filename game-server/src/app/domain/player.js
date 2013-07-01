@@ -12,21 +12,7 @@
  * */
 
 
-var __hasProp = {}.hasOwnProperty;
-var __extends = function (child, parent) {
-    for (var key in parent) {
-        if (__hasProp.call(parent, key)) child[key] = parent[key];
-    }
-    function ctor() {
-        this.constructor = child;
-    }
-
-    ctor.prototype = parent.prototype;
-    child.prototype = new ctor();
-    child.__super__ = parent.prototype;
-    return child;
-};
-
+var utility = require('../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
 
@@ -35,7 +21,7 @@ var _ = require("underscore");
  * @param {object} param 数据库 player 表中的一行记录
  * */
 var Player = (function (_super) {
-    __extends(Player, _super);
+    utility.extends(Player, _super);
 
     function Player(param) {
         Player.__super__.constructor.apply(this, arguments);

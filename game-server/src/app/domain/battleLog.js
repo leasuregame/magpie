@@ -11,22 +11,7 @@
  * battle log
  * */
 
-
-var __hasProp = {}.hasOwnProperty;
-var __extends = function (child, parent) {
-    for (var key in parent) {
-        if (__hasProp.call(parent, key)) child[key] = parent[key];
-    }
-    function ctor() {
-        this.constructor = child;
-    }
-
-    ctor.prototype = parent.prototype;
-    child.prototype = new ctor();
-    child.__super__ = parent.prototype;
-    return child;
-};
-
+var utility = require('../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
 
@@ -35,9 +20,10 @@ var _ = require("underscore");
  * @param {object} row 数据库 battleLog 表中的一行记录
  * */
 var BattleLog = (function (_super) {
-    __extends(BattleLog, _super);
+    utility.extends(BattleLog, _super);
 
     function BattleLog(param) {
+        console.log(BattleLog);
         BattleLog.__super__.constructor.apply(this, arguments);
     }
 

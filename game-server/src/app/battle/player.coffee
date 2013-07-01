@@ -9,15 +9,14 @@ log = require('pomelo-logger').getLogger(__filename)
 class Player extends Module
   @table: 'player'
 
-  constructor: (entity) ->
-    if entity?
-      for key, val of entity.getAttributes()
-        @[key] = val
+  init: (entity) ->
+    for key, val of entity
+      @[key] = val if entity.hasOwnProperty(key)
 
     @initAttrs() if not entity
     
     @heros = []
-    @lineUp = ''
+    @lineUp = @lineUp or ''
     @enemy = null
     @is_attacker = false
     @matrix = new Matrix()
@@ -33,7 +32,7 @@ class Player extends Module
     @exp = 0
     @power = 0
     @money = 0
-    @hero_ids = []
+    @cards = []
 
   setEnemy: (enm, is_attacker = false) ->
     @enemy = enm
@@ -42,7 +41,7 @@ class Player extends Module
       h.setIdx @matrix.positionToNumber(h.pos), is_attacker
 
   loadHeros: ->
-    @heros = if @hero_ids? then (new Hero(id, @) for id in @hero_ids) else []
+    @heros = if @cards? then (new Hero(@cards[id], @) for id of @cards) else []
 
   bindCards: ->
     if @lineUp? and @lineUp != ''

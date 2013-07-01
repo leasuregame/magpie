@@ -23,6 +23,15 @@ test-dao: build
 		--recursive \
 		./test/dao/$(files)
 
+test-mapping: build
+	./node_modules/.bin/mocha \
+		--compilers coffee:coffee-script \
+		--require should \
+		--reporter spec \
+		--ui bdd \
+		--recursive \
+		./test/mapping/$(files)
+
 test-battle: build
 	./node_modules/.bin/mocha \
 		--compilers coffee:coffee-script \

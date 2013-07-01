@@ -1,87 +1,92 @@
+<<<<<<< HEAD
 PlayerManager = require('../../app/manager/manager').player
 dao = require('../../../app/dao').init('mysql')
 
+=======
+>>>>>>> 5c3a5bbcee6ac4f3a440e3d0c6e0744d0e7c51fe
 Player = require '../../app/battle/player'
 Hero = require '../../app/battle/hero'
 Matrix = require '../../app/battle/matrix'
 should = require 'should'
-tab = require '../../app/manager/table'
-player_data =  require './prepare/player.data'
-TABLE_DIR = (require './prepare/path').TABLE_DIR
 
 describe 'Player', ->
-  before ->
-    tab.reloadTables(
-        TABLE_DIR + 'skills.xml',
-        TABLE_DIR + 'cards.xml'
-        )
-    player_data.laodTestData()
+  player = new Player {
+    id: 'aa20df72-c748-11e2-a527-377d32fa9d96',
+    lv: 10,
+    name: '小强',
+    exp: 456,
+    power: 60,
+    money: 100000,
+    lineUp: '00:4,01:9,02:129,10:184,11:24,12:204',
+    hero_ids:[
+      {id: 1, lv: 52, star: 4, card_id: 4, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]},
+      {id: 2, lv: 45, star: 4, card_id: 9, skill_lv: 1, sp_value: [{name: 'dodge', value: 50}]},
+      {id: 3, lv: 37, star:4, card_id: 129, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]},
+      {id: 4, lv: 37, star:4, card_id: 184, skill_lv: 1, sp_value: [{name: 'hp_improve', value: 50}]},
+      {id: 5, lv: 55, star: 4, card_id: 24, skill_lv: 1, sp_value: [{name: 'akt_improve', value: 50}]},
+      {id: 6, lv: 46, star: 4, card_id: 204, skill_lv: 1, sp_value: [{name: 'dmg_rebound', value: 50}]}
+    ]
+  }
 
-  after ->
-    player_data.clearTestData()
+  it 'should be liked a Player', ->
 
-  it 'Initial, should be liked a Player', ->
-
-    player = new Player()
-    player.id.should.equal 0
-    player.lv.should.equal(0)
-    player.exp.should.equal(0)
-    player.power.should.equal(0)
-    player.money.should.equal(0)
-    player.lineUp.should.equal('')
-    player.hero_ids.should.be.empty
-    player.heros.should.be.empty
+    ply = new Player()
+    ply.id.should.equal 0
+    ply.lv.should.equal(0)
+    ply.exp.should.equal(0)
+    ply.power.should.equal(0)
+    ply.money.should.equal(0)
+    ply.lineUp.should.equal('')
+    ply.hero_ids.should.be.empty
+    ply.heros.should.be.empty
 
 
   it ".death(), should be death when all heros' hp <= 0", ->
-    PlayerManager.fetch player_data.player_id1, (err, model) ->
-      console.log err, model
-      ply = new Player(model)
-      ply.death().should.be.false
+    player.death().should.be.false
 
-      ply.heros.forEach (h)->
-        h.hp = 0
+    player.heros.forEach (h)->
+      h.hp = 0
 
-      ply.death().should.be.true
+    player.death().should.be.true
 
-  it ".currentHero()", ->
-    PlayerManager.fetch player_data.player_id1, (err, model) ->
-      ply = new Player(model)
-      ply.setLineUp '00:1'
+  # it ".currentHero()", ->
+  #   PlayerManager.fetch player_data.player_id1, (err, model) ->
+  #     player = new Player(model)
+  #     player.setLineUp '00:1'
 
       
-      ply.currentHero().should.be.an.instanceOf(Hero)
+  #     player.currentHero().should.be.an.instanceOf(Hero)
 
-  it ".aliveHeros()", ->
-    PlayerManager.fetch player_data.player_id1, (err, model) ->
-      ply = new Player(model)
-      ply.aliveHeros().should.be.an.instanceof(Array)
-      ply.aliveHeros().length.should.equal(6)
+  # it ".aliveHeros()", ->
+  #   PlayerManager.fetch player_data.player_id1, (err, model) ->
+  #     player = new Player(model)
+  #     player.aliveHeros().should.be.an.instanceof(Array)
+  #     player.aliveHeros().length.should.equal(6)
 
-  it ".setLineUp()", ->
-    PlayerManager.fetch player_data.player_id1, (err, model) ->
-      ply = new Player(model)
-      ply.lineUp.should.equal('')
-      ply.setLineUp('00:6')
-      ply.lineUp.should.be.equal('00:6')
+  # it ".setLineUp()", ->
+  #   PlayerManager.fetch player_data.player_id1, (err, model) ->
+  #     player = new Player(model)
+  #     player.lineUp.should.equal('')
+  #     player.setLineUp('00:6')
+  #     player.lineUp.should.be.equal('00:6')
 
-  it ".parseLineUp()", ->
-    PlayerManager.fetch player_data.player_id1, (err, model) ->
-      ply = new Player(model)
-      ply.setLineUp('00:1,01:2')
-      res = ply.parseLineUp()
-      res.should.be.an.instanceof(Array)
-      res.should.eql([['00', '1'],['01', '2']])
+  # it ".parseLineUp()", ->
+  #   PlayerManager.fetch player_data.player_id1, (err, model) ->
+  #     player = new Player(model)
+  #     player.setLineUp('00:1,01:2')
+  #     res = player.parseLineUp()
+  #     res.should.be.an.instanceof(Array)
+  #     res.should.eql([['00', '1'],['01', '2']])
 
-      ply.setLineUp('00:1')
-      ply.parseLineUp().should.eql([['00', '1']])
+  #     player.setLineUp('00:1')
+  #     player.parseLineUp().should.eql([['00', '1']])
 
-  it ".bindCards()", ->
-    PlayerManager.fetch player_data.player_id1, (err, model) ->
-      ply = new Player(model)
-      ply.setLineUp('00:3,01:4,02:5')
+  # it ".bindCards()", ->
+  #   PlayerManager.fetch player_data.player_id1, (err, model) ->
+  #     player = new Player(model)
+  #     player.setLineUp('00:3,01:4,02:5')
 
-      ply.matrix.should.be.an.instanceof(Matrix)
-      ply.matrix.all().length.should.be.equal(3)
-      ply.matrix.attackElement('all').length.should.equal(3)
+  #     player.matrix.should.be.an.instanceof(Matrix)
+  #     player.matrix.all().length.should.be.equal(3)
+  #     player.matrix.attackElement('all').length.should.equal(3)
     

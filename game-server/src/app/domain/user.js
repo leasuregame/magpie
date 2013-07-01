@@ -12,30 +12,27 @@
  * */
 
 
-var __hasProp = {}.hasOwnProperty;
-var __extends = function (child, parent) {
-    for (var key in parent) {
-        if (__hasProp.call(parent, key)) child[key] = parent[key];
-    }
-    function ctor() {
-        this.constructor = child;
-    }
-
-    ctor.prototype = parent.prototype;
-    child.prototype = new ctor();
-    child.__super__ = parent.prototype;
-    return child;
-};
-
+var utility = require('../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
+
+var field = {
+    id: true,
+    createTime: true,
+    account: true,
+    password: true,
+    name: true,
+    loginCount: true,
+    lastLoginTime: true,
+    lostLoginDevict: true
+};
 
 /*
  * User 与 user 表对应的数据类，提供简单的操作
  * @param {object} param 数据库 user 表中的一行记录
  * */
 var User = (function (_super) {
-    __extends(User, _super);
+    utility.extends(User, _super);
 
     function User(param) {
         User.__super__.constructor.apply(this, arguments);

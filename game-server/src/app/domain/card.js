@@ -12,21 +12,7 @@
  * */
 
 
-var __hasProp = {}.hasOwnProperty;
-var __extends = function (child, parent) {
-    for (var key in parent) {
-        if (__hasProp.call(parent, key)) child[key] = parent[key];
-    }
-    function ctor() {
-        this.constructor = child;
-    }
-
-    ctor.prototype = parent.prototype;
-    child.prototype = new ctor();
-    child.__super__ = parent.prototype;
-    return child;
-};
-
+var utility = require('../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
 
@@ -35,13 +21,14 @@ var _ = require("underscore");
  * @param {object} param 数据库 card 表中的一行记录
  * */
 var Card = (function (_super) {
-    __extends(Card, _super);
+    utility.extends(Card, _super);
 
     function Card(param) {
         Card.__super__.constructor.apply(this, arguments);
     }
 
     Card.prototype.init = function() {
+<<<<<<< HEAD
         this.passiveSkillList = {};
     };
 
@@ -56,6 +43,22 @@ var Card = (function (_super) {
         if (typeof passiveSkill.id !== 'undefined' || typeof passiveSkill.id !== null) {
             this.passiveSkillList[passiveSkill.id] = passiveSkill
         }
+=======
+        this.passiveSkills = {};
+    };
+
+    Card.prototype.addPassiveSkill = function(ps) {
+      if (typeof ps.id !== 'undefined' && ps.id !== null) {
+        this.passiveSkills[ps.id] = ps;
+      }
+    };
+
+    Card.prototype.addPassiveSkills = function(pss) {
+      var self = this;
+      pss.forEach(function(ps){
+        self.passiveSkills[ps.id] = ps;
+      });
+>>>>>>> 5c3a5bbcee6ac4f3a440e3d0c6e0744d0e7c51fe
     };
 
     return Card;

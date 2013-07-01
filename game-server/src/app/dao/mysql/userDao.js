@@ -22,6 +22,23 @@ var dbClient = require("pomelo").app.get("dbClient");
 var logger = require("pomelo-logger").getLogger(__filename);
 var User = require("../../domain/user");
 
+var getUserObject = function (res) {
+    var user = new User({
+        id: res.id,
+        createTime: res.createTime,
+        account: res.account,
+        password: res.password,
+        name: res.name,
+        loginCount: res.loginCount,
+        lastLoginTime: res.lastLoginTime,
+        lostLoginDevict: res.lostLoginDevict
+    });
+
+    user.on('save', function() {
+        app.get('sync').exec('taskSync.updateTask', task.id, task);
+    });
+}
+
 var userDao = {
     /*
      * 创建一条 user 记录
@@ -29,14 +46,8 @@ var userDao = {
      * @param {function} cb  回调函数
      * */
     createUser: function (param, cb) {
-        if (typeof (param) == "undefined") {
-            cb({code: 400, msg: "userDao.createUser param is undefined"}, null);
-            return;
-        }
-
-        if (typeof (param.account) == "undefined") {
-            cb({code: 400, msg: "userDao.createUser param.account is undefined"}, null);
-            return;
+        if (typeof (param) == "undefined" || typeof (param.account) == "undefined") {
+            cb("param error", null);
         }
 
         var _ref = sqlHelper.insertSql("user", param);
@@ -52,7 +63,7 @@ var userDao = {
                     msg: err.message
                 }, null);
             } else {
-                return cb(null, new User({id: res.insertId, account: param.account}));
+                return cb(null, {id: res.insertId});
             }
         });
     },
@@ -63,65 +74,28 @@ var userDao = {
      * @param {object} param 字面量，更新需要的数据
      * @param {function} cb  回调函数
      * */
-    updateUserById: function (id, param, cb) {
-        if (typeof (id) == "undefined") {
-            throw new Error("userDao.updateUserById id is undefined");
-        }
-
-        if (typeof (param) == "undefined") {
-            throw new Error("userDao.updateUserById param is undefined");
-        }
-
-        var _ref = sqlHelper.updateSql("user", ["id", id], param);
-        var sql = _ref[0];
-        var args = _ref[1];
-        console.log(sql, args);
-        return dbClient.update(sql, args, function (err, res) {
-            if (err) {
-                logger.error("[userDao.updateUserById faild] ", err.stack);
-
-                return cb({
-                    code: err.code,
-                    msg: err.message
-                }, null);
-            } else {
-                return cb(null, res);
-            }
-        });
-    },
-
-    /*
-     * 根据 account 更新一条 user 记录
-     * @param {string} account 需要更新的用户名
-     * @param {object} param 字面量，更新需要的数据
-     * @param {function} cb  回调函数
-     * */
-    updateUserByAccount: function (account, param, cb) {
-        if (typeof (account) == "undefined") {
-            throw new Error("userDao.updateUserByAccount account is undefined");
-        }
-
-        if (typeof (param) == "undefined") {
-            throw new Error("userDao.updateUserByAccount param is undefined");
-        }
-
-        var _ref = sqlHelper.updateSql("user", ["account", account], param);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.update(sql, args, function (err, res) {
-            if (err) {
-                logger.error("[userDao.updateUserByAccount faild] ", err.stack);
-
-                return cb({
-                    code: err.code,
-                    msg: err.message
-                }, null);
-            } else {
-                return cb(null, res);
-            }
-        });
-    },
+//    updateUserById: function (id, param, cb) {
+//        if (typeof (id) == "undefined" || typeof (param) == "undefined") {
+//            cb("param error", null);
+//        }
+//
+//        var _ref = sqlHelper.updateSql("user", ["id", id], param);
+//        var sql = _ref[0];
+//        var args = _ref[1];
+//        console.log(sql, args);
+//        return dbClient.update(sql, args, function (err, res) {
+//            if (err) {
+//                logger.error("[userDao.updateUserById faild] ", err.stack);
+//
+//                return cb({
+//                    code: err.code,
+//                    msg: err.message
+//                }, null);
+//            } else {
+//                return cb(null, res);
+//            }
+//        });
+//    },
 
     /*
      * 根据 id 查找一条 user 记录
@@ -130,7 +104,7 @@ var userDao = {
      * */
     getUserById: function (id, cb) {
         if (typeof (id) == "undefined") {
-            throw new Error("userDao.getUserById id is undefined");
+            cb("param error", null);
         }
 
         var _ref = sqlHelper.selectSql("user", ["id", id]);
@@ -146,11 +120,11 @@ var userDao = {
                     msg: err.message
                 }, null);
             } else if (res && res.length === 1) {
-                return cb(null, new User(res[0]));
+                return cb(null, getUserObject(res[0]));
             } else {
                 return cb({
                     code: null,
-                    msg: "User not exists"
+                    msg: "User not exist"
                 }, null);
             }
         });
@@ -163,7 +137,7 @@ var userDao = {
      * */
     getUserByAccount: function (account, cb) {
         if (typeof (account) == "undefined") {
-            throw new Error("userDao.getUserByAccount id account undefined");
+            cb("param error", null);
         }
 
         var _ref = sqlHelper.selectSql("user", ["account", account]);
@@ -183,7 +157,7 @@ var userDao = {
             } else {
                 return cb({
                     code: null,
-                    msg: "User not exists"
+                    msg: "User not exist"
                 }, null);
             }
         });
@@ -196,7 +170,7 @@ var userDao = {
      * */
     deleteUserById: function (id, cb) {
         if (typeof (id) == "undefined") {
-            throw new Error("userDao.deleteUserById id is undefined");
+            cb("param error", null);
         }
 
         var _ref = sqlHelper.deleteSql("user", ["id", id]);
@@ -212,7 +186,7 @@ var userDao = {
                     msg: err.message
                 }, null);
             } else {
-                if (!!res && res.affectedRows > 0){
+                if (!!res && res.affectedRows > 0) {
                     return cb(null, true);
                 } else {
                     return cb(null, false);
@@ -228,7 +202,7 @@ var userDao = {
      * */
     deleteUser: function (user, cb) {
         if (typeof (user) == "undefined") {
-            throw new Error("userDao.deleteUser user is undefined");
+            cb("param error", null);
         }
 
         return this.deleteUserById(user.getId(), cb);

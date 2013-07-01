@@ -11,34 +11,28 @@
  * battle log
  * */
 
-
-var __hasProp = {}.hasOwnProperty;
-var __extends = function (child, parent) {
-    for (var key in parent) {
-        if (__hasProp.call(parent, key)) child[key] = parent[key];
-    }
-    function ctor() {
-        this.constructor = child;
-    }
-
-    ctor.prototype = parent.prototype;
-    child.prototype = new ctor();
-    child.__super__ = parent.prototype;
-    return child;
-};
-
+var utility = require('../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
+
+var FIELDS = {
+    id: true,
+    createTime: true,
+    own: true,
+    enemy: true,
+    battleLog: true
+};
 
 /*
  * BattleLog 与 battleLog 表对应的数据类，提供简单操作
  * @param {object} row 数据库 battleLog 表中的一行记录
  * */
 var BattleLog = (function (_super) {
-    __extends(BattleLog, _super);
+    utility.extends(BattleLog, _super);
 
     function BattleLog(param) {
         BattleLog.__super__.constructor.apply(this, arguments);
+        this._fields = FIELDS;
     }
 
     return BattleLog;

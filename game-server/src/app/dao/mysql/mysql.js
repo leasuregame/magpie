@@ -48,7 +48,7 @@ sqlclient = {
             NND.init(app);
             sqlclient.insert = NND.query;
             sqlclient.update = NND.query;
-            sqlclient["delete"] = NND.query;
+            sqlclient.delete = NND.query;
             sqlclient.query = NND.query;
             return sqlclient;
         }

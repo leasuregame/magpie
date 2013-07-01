@@ -12,21 +12,7 @@
  * */
 
 
-var __hasProp = {}.hasOwnProperty;
-var __extends = function (child, parent) {
-    for (var key in parent) {
-        if (__hasProp.call(parent, key)) child[key] = parent[key];
-    }
-    function ctor() {
-        this.constructor = child;
-    }
-
-    ctor.prototype = parent.prototype;
-    child.prototype = new ctor();
-    child.__super__ = parent.prototype;
-    return child;
-};
-
+var utility = require('../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
 
@@ -35,13 +21,15 @@ var _ = require("underscore");
  * @param {object} param 数据库 player 表中的一行记录
  * */
 var Player = (function (_super) {
-    __extends(Player, _super);
+    utility.extends(Player, _super);
+
 
     function Player(param) {
         Player.__super__.constructor.apply(this, arguments);
     }
 
     Player.prototype.init = function() {
+<<<<<<< HEAD
         this.cardList = {};
         this.ownBattleLogList = {};
         this.enemyBattleLogList = {};
@@ -63,10 +51,23 @@ var Player = (function (_super) {
             self.addCard(card)
         });
     }
+=======
+        this.cards = {};
+    };
+>>>>>>> 5c3a5bbcee6ac4f3a440e3d0c6e0744d0e7c51fe
 
-    Player.prototype.loadAllBattleLog = function() {
+    Player.prototype.addCard = function(card) {
+        if (typeof card.id !== 'undefined' && typeof card.id !== null){
+            this.cards[card.id] = card;
+        }
+    };
 
-    }
+    Player.prototype.addCards = function(cards) {
+        var self = this;
+        cards.forEach(function(card){
+            self.addCard(card);
+        });
+    };
 
     Player.prototype.getPassMarkByIndex = function (index) {
         if (index < 1) {
@@ -77,7 +78,7 @@ var Player = (function (_super) {
         var mark = (this.passMark >> (index - 1)) & 1;
 
         return (mark == 0);
-    }
+    };
 
     Player.prototype.resetPassMarkByAll = function () {
         this.set("passMark", 0);
@@ -93,7 +94,7 @@ var Player = (function (_super) {
         }
 
         this.set("passMark", _passMark);
-    }
+    };
 
     /*
      * 传入精英关卡序号，将其标记为已打
@@ -109,7 +110,7 @@ var Player = (function (_super) {
         _passMark |= (1 << (index - 1));
 
         this.set("passMark", _passMark);
-    }
+    };
 
     return Player;
 })(Entity);

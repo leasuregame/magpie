@@ -84,36 +84,6 @@ var cardDao = {
         });
     },
 
-
-
-    /*
-     * 根据 playerId 查找 card 记录
-     * @param {number} playerId 需要查找的玩家号
-     * @param {function} cb  回调函数
-     * */
-    getCardByPlayerId: function (playerId, cb) {
-        if (typeof (playerId) == "undefined") {
-            return cb("param error", null);
-        }
-        return dbClient.query(sql, args, function (err, res) {
-            if (err) {
-                logger.error("[cardDao.getCardById faild] ", err.stack);
-
-                return cb({
-                    code: err.code,
-                    msg: err.message
-                }, null);
-            } else if (res && res.length === 1) {
-                return cb(null, new Card(res[0]));
-            } else {
-                return cb({
-                    code: null,
-                    msg: "Card not exists"
-                }, null);
-            }
-        });
-    },
-
     getCardInfo: function (id, cb) {
         async.parallel([
             function (callback) {
@@ -180,38 +150,6 @@ var cardDao = {
         var _ref = sqlHelper.selectSql("card", ["id", id]);
         var sql = _ref[0];
         var args = _ref[1];
-
-        // return dbClient.query(sql, args, function (err, res) {
-        //     if (err) {
-        //         logger.error("[cardDao.getCardByPlayerId faild] ", err.stack);
-
-        //         return cb({
-        //             code: err.code,
-        //             msg: err.message
-        //         }, null);
-        //     } else if (res) {
-        //         var cardList = [];
-        //         var len = res.length;
-
-        //         for (var i = 0; i < len; ++i) {
-        //             (function(i){
-        //                 card = new Card(res[i]);
-        //                 passiveSkillDao.getPassiveSkillByCardId(card.id, function(err, ps){
-        //                     if (err){
-        //                         cb(err, null)
-        //                         return;
-        //                     }
-
-        //                     card.addPassiveSkill(ps)
-        //                     cardList.push(card);
-        //                 });  
-        //             })(i);
-
-        //         }
-        //         console.log('cards: ', cardList);
-        //         return cb(null, cardList);
-        //     }
-        // });
 
         async.waterfall([
             function (callback) {

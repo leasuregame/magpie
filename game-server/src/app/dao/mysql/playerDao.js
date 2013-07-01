@@ -97,13 +97,8 @@
          * @param {function} cb  回调函数
          * */
         getPlayerById: function (id, cb) {
-<<<<<<< HEAD
             if (typeof id == "undefined" || id == null){
                 cb({code: 400, msg: "playerDao.getPlayerInfo id is undefined"})
-=======
-            if (typeof (id) == "undefined") {
-                cb("param error", null);
->>>>>>> 5c3a5bbcee6ac4f3a440e3d0c6e0744d0e7c51fe
             }
 
             var _ref = sqlHelper.selectSql("player", ["id", id]);

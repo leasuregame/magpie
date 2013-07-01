@@ -16,6 +16,8 @@ var utility = require('../common/utility');
 var EventEmitter = require("events").EventEmitter;
 var _ = require("underscore");
 
+var FIELD = {};
+
 var Entity = (function (_super) {
     utility.extends(Entity, _super);
 
@@ -30,6 +32,10 @@ var Entity = (function (_super) {
             this.init.apply(this, arguments);
         }
     }
+
+    Entity.prototype.setField = function(field) {
+        FIELD = field;
+    };
 
     Entity.prototype.getEntityId = function () {
         return this.id;
@@ -63,6 +69,17 @@ var Entity = (function (_super) {
         }
     };
 
+    Entity.prototype.getSaveData = function () {
+        var key;
+        var param = {};
+
+        for (key in this._mark) {
+            param[key] = this[key];
+        }
+
+        return param;
+    };
+
     return Entity;
 
 })(EventEmitter);
@@ -73,7 +90,9 @@ var setAttr = function (self, name, value) {
             self[name] = value;
         } else if (self[name] !== value) {
             self[name] = value;
-            self._mark[name] = true;
+            if(FIELD[name])  {
+                self._mark[name] = true;
+            }
         }
     } else if (arguments.length === 2) {
         if (_.isObject(name)) {
@@ -85,7 +104,7 @@ var setAttr = function (self, name, value) {
                 value = name[key];
 
                 if (typeof value == 'string' && patrn.test(value)) {
-                    try{
+                    try {
                         value = JSON.parse(value);
                     } catch (e) {
                         logger.error('can not parse to josn object: ', value);
@@ -100,7 +119,9 @@ var setAttr = function (self, name, value) {
                         self[key] = value;
                     } else if (self[key] !== value) {
                         self[key] = value;
-                        self._mark[key] = true;
+                        if(FIELD[key])  {
+                            self._mark[name] = true;
+                        }
                     }
                 }
             }

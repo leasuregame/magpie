@@ -30,12 +30,8 @@
          * @param {function} cb  回调函数
          * */
         createPassiveSkill: function (param, cb) {
-            if (typeof (param) == "undefined" ||
-                typeof (param.cardId) == "undefined" || 
-                typeof (param.tableId) == "undefined"
-            ) {
-                cb({code: 400, msg: "passiveSkillDao.createPassiveSkill param is invalid, " + JSON.stringify(param)}, null);
-                return;
+            if (typeof (param) == "undefined" || typeof (param.cardId) == "undefined" || typeof (param.tableId) == "undefined") {
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.insertSql("passiveSkill", param);
@@ -62,12 +58,8 @@
          * @param {function} cb  回调函数
          * */
         updatePassiveSkillById: function (id, param, cb) {
-            if (typeof (id) == "undefined") {
-                throw new Error("passiveSkillDao.updatePassiveSkillById id is undefined");
-            }
-
-            if (typeof (param) == "undefined") {
-                throw new Error("passiveSkillDao.updatePassiveSkillById param is undefined");
+            if (typeof (id) == "undefined" || typeof (param) == "undefined") {
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.updateSql("passiveSkill", ["id", id], param);
@@ -83,7 +75,7 @@
                         msg: err.message
                     }, null);
                 } else {
-                    if (!!res && res.affectedRows > 0){
+                    if (!!res && res.affectedRows > 0) {
                         return cb(null, true);
                     } else {
                         return cb(null, false);
@@ -99,7 +91,7 @@
          * */
         getPassiveSkillById: function (id, cb) {
             if (typeof (id) == "undefined") {
-                throw new Error("passiveSkillDao.getPassiveSkillById id is undefined");
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.selectSql("passiveSkill", ["id", id]);
@@ -132,7 +124,7 @@
          * */
         getPassiveSkillByCardId: function (cardId, cb) {
             if (typeof (cardId) == "undefined") {
-                throw new Error("passiveSkillDao.getPassiveSkillByCardId cardId is undefined");
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.selectSql("passiveSkill", ["cardId", cardId]);
@@ -167,7 +159,7 @@
          * */
         deletePassiveSkillById: function (id, cb) {
             if (typeof (id) == "undefined") {
-                throw new Error("passiveSkillDao.deletePassiveSkillById id is undefined");
+                return cb("param error", null);
             }
 
             var _ref = sqlHelper.deleteSql("passiveSkill", ["id", id]);
@@ -183,7 +175,7 @@
                         msg: err.message
                     }, null);
                 } else {
-                    if (!!res && res.affectedRows > 0){
+                    if (!!res && res.affectedRows > 0) {
                         return cb(null, true);
                     } else {
                         return cb(null, false);

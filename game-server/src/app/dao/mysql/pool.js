@@ -2,31 +2,31 @@ var createMysqlPool, _poolModule;
 
 _poolModule = require('generic-pool');
 
-createMysqlPool = function(app) {
-  var mysqlConfig;
+createMysqlPool = function (app) {
+    var mysqlConfig;
 
-  mysqlConfig = app.get('mysql');
-  return _poolModule.Pool({
-    name: 'mysql',
-    create: function(callback) {
-      var client, mysql;
+    mysqlConfig = app.get('mysql');
+    return _poolModule.Pool({
+        name: 'mysql',
+        create: function (callback) {
+            var client, mysql;
 
-      mysql = require('mysql');
-      client = mysql.createConnection({
-        host: mysqlConfig.host,
-        user: mysqlConfig.user,
-        password: mysqlConfig.password,
-        database: mysqlConfig.database
-      });
-      return callback(null, client);
-    },
-    destroy: function(client) {
-      return client.end();
-    },
-    max: 10,
-    idleTimeoutMillis: 30000,
-    log: false
-  });
+            mysql = require('mysql');
+            client = mysql.createConnection({
+                host: mysqlConfig.host,
+                user: mysqlConfig.user,
+                password: mysqlConfig.password,
+                database: mysqlConfig.database
+            });
+            return callback(null, client);
+        },
+        destroy: function (client) {
+            return client.end();
+        },
+        max: 10,
+        idleTimeoutMillis: 30000,
+        log: false
+    });
 };
 
 exports.createMysqlPool = createMysqlPool;

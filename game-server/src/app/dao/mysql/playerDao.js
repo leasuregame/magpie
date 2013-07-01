@@ -30,14 +30,8 @@
          * @param {function} cb  回调函数
          * */
         createPlayer: function (param, cb) {
-            if ( typeof param == "undefined" || 
-                 typeof param.id == "undefined" || 
-                 typeof param.areaId == "undefined" || 
-                 typeof param.name == "undefined" ||
-                 typeof param.userId == "undefined"
-            ) {
-                cb({code: 400, msg: "playerDao.createPlayer invalid parameter: " + JSON.stringify(param)}, null);
-                return;
+            if (typeof param == "undefined" || typeof param.id == "undefined" || typeof param.areaId == "undefined" || typeof param.name == "undefined" || typeof param.userId == "undefined") {
+                cb("param error", null);
             }
 
             var _ref = sqlHelper.insertSql("player", param);
@@ -69,12 +63,8 @@
          * @param {function} cb  回调函数
          * */
         updatePlayerById: function (id, param, cb) {
-            if (typeof (id) == "undefined") {
-                throw new Error("playerDao.updatePlayerById id is undefined");
-            }
-
-            if (typeof (param) == "undefined") {
-                throw new Error("playerDao.updatePlayerById param is undefined");
+            if (typeof (id) == "undefined" || typeof (param) == "undefined") {
+                cb("param error", null);
             }
 
             var _ref = sqlHelper.updateSql("player", ["id", id], param);
@@ -90,44 +80,11 @@
                         msg: err.message
                     }, null);
                 } else {
-                    if (!!res && res.affectedRows > 0){
+                    if (!!res && res.affectedRows > 0) {
                         return cb(null, true);
                     } else {
                         return cb(null, false);
                     }
-                }
-            });
-        },
-
-        /*
-         * 根据 name 更新一条 player 记录
-         * @param {string} name 需要更新的用户名
-         * @param {object} param 字面量，更新需要的数据
-         * @param {function} cb  回调函数
-         * */
-        updatePlayerByName: function (name, param, cb) {
-            if (typeof (name) == "undefined") {
-                throw new Error("playerDao.updatePlayerByName name is undefined");
-            }
-
-            if (typeof (param) == "undefined") {
-                throw new Error("playerDao.updatePlayerByName param is undefined");
-            }
-
-            var _ref = sqlHelper.updateSql("player", ["name", name], param);
-            var sql = _ref[0];
-            var args = _ref[1];
-
-            return dbClient.update(sql, args, function (err, res) {
-                if (err) {
-                    logger.error("[playerDao.updatePlayerByName faild] ", err.stack);
-
-                    return cb({
-                        code: err.code,
-                        msg: err.message
-                    }, null);
-                } else {
-                    return cb(null, res);
                 }
             });
         },
@@ -139,7 +96,7 @@
          * */
         getPlayerById: function (id, cb) {
             if (typeof (id) == "undefined") {
-                throw new Error("playerDao.getPlayerById id is undefined");
+                cb("param error", null);
             }
 
             var _ref = sqlHelper.selectSql("player", ["id", id]);
@@ -172,7 +129,7 @@
          * */
         getPlayerByName: function (name, cb) {
             if (typeof (name) == "undefined") {
-                throw new Error("playerDao.getPlayerByName id name undefined");
+                cb("param error", null);
             }
 
             var _ref = sqlHelper.selectSql("player", ["name", name]);
@@ -205,7 +162,7 @@
          * */
         deletePlayerById: function (id, cb) {
             if (typeof (id) == "undefined") {
-                throw new Error("playerDao.deletePlayerById id is undefined");
+                cb("param error", null);
             }
 
             var _ref = sqlHelper.deleteSql("player", ["id", id]);
@@ -221,7 +178,7 @@
                         msg: err.message
                     }, null);
                 } else {
-                    if (!!res && res.affectedRows > 0){
+                    if (!!res && res.affectedRows > 0) {
                         return cb(null, true);
                     } else {
                         return cb(null, false);

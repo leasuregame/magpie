@@ -19,6 +19,7 @@ var should = require("should");
 var BattleLog = require("../../app/domain/battleLog");
 
 describe("Battle Log Data Access Object", function () {
+
     var data = {
         id: 234590,
         own: 1,

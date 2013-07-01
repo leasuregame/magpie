@@ -16,13 +16,12 @@ var utility = require('../common/utility');
 var EventEmitter = require("events").EventEmitter;
 var _ = require("underscore");
 
-var FIELD = {};
-
 var Entity = (function (_super) {
     utility.extends(Entity, _super);
 
     function Entity(param) {
         this._mark = {};
+        this._fields = {};
 
         if (param) {
             setAttr(this, param);
@@ -31,10 +30,6 @@ var Entity = (function (_super) {
         if (typeof(this.init) === "function") {
             this.init.apply(this, arguments);
         }
-    }
-
-    Entity.prototype.setField = function(field) {
-        FIELD = field;
     };
 
     Entity.prototype.getEntityId = function () {
@@ -90,7 +85,7 @@ var setAttr = function (self, name, value) {
             self[name] = value;
         } else if (self[name] !== value) {
             self[name] = value;
-            if(FIELD[name])  {
+            if(self._fields[name])  {
                 self._mark[name] = true;
             }
         }
@@ -119,7 +114,7 @@ var setAttr = function (self, name, value) {
                         self[key] = value;
                     } else if (self[key] !== value) {
                         self[key] = value;
-                        if(FIELD[key])  {
+                        if(self._fields[key])  {
                             self._mark[name] = true;
                         }
                     }

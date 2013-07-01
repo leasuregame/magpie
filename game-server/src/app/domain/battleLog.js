@@ -15,7 +15,7 @@ var utility = require('../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
 
-var FIELD = {
+var FIELDS = {
     id: true,
     createTime: true,
     own: true,
@@ -31,9 +31,8 @@ var BattleLog = (function (_super) {
     utility.extends(BattleLog, _super);
 
     function BattleLog(param) {
-        console.log(BattleLog);
         BattleLog.__super__.constructor.apply(this, arguments);
-        BattleLog.__super__.setField.apply(this, [FIELD]);
+        this._fields = FIELDS;
     }
 
     return BattleLog;

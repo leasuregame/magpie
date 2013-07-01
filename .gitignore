@@ -15,4 +15,5 @@ game-server/app
 components
 game-server/config/data/ttserver
 game-server/logs/tmp
+game-server/test/mapping
 game-server/test/battle

@@ -23,27 +23,27 @@ var _ = require("underscore");
 var Player = (function (_super) {
     utility.extends(Player, _super);
 
+
     function Player(param) {
         Player.__super__.constructor.apply(this, arguments);
     }
 
     Player.prototype.init = function() {
-        this.cardList = {};
-        this.ownBattleLogList = {};
-        this.enemyBattleLogList = {};
-    }
+        this.cards = {};
+    };
 
-    Player.prototype.loadAllData = function() {
+    Player.prototype.addCard = function(card) {
+        if (typeof card.id !== 'undefined' && typeof card.id !== null){
+            this.cards[card.id] = card;
+        }
+    };
 
-    }
-
-    Player.prototype.loadCardList = function() {
-
-    }
-
-    Player.prototype.loadAllBattleLog = function() {
-
-    }
+    Player.prototype.addCards = function(cards) {
+        var self = this;
+        cards.forEach(function(card){
+            self.addCard(card);
+        });
+    };
 
     Player.prototype.getPassMarkByIndex = function (index) {
         if (index < 1) {
@@ -54,7 +54,7 @@ var Player = (function (_super) {
         var mark = (this.passMark >> (index - 1)) & 1;
 
         return (mark == 0);
-    }
+    };
 
     Player.prototype.resetPassMarkByAll = function () {
         this.set("passMark", 0);
@@ -70,7 +70,7 @@ var Player = (function (_super) {
         }
 
         this.set("passMark", _passMark);
-    }
+    };
 
     /*
      * 传入精英关卡序号，将其标记为已打
@@ -86,7 +86,7 @@ var Player = (function (_super) {
         _passMark |= (1 << (index - 1));
 
         this.set("passMark", _passMark);
-    }
+    };
 
     return Player;
 })(Entity);

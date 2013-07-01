@@ -28,10 +28,21 @@ var Card = (function (_super) {
     }
 
     Card.prototype.init = function() {
-        this.passiveSkillList = {};
-    }
+        this.passiveSkills = {};
+    };
 
-    Card.prototype.getPassiveSkil
+    Card.prototype.addPassiveSkill = function(ps) {
+      if (typeof ps.id !== 'undefined' && ps.id !== null) {
+        this.passiveSkills[ps.id] = ps;
+      }
+    };
+
+    Card.prototype.addPassiveSkills = function(pss) {
+      var self = this;
+      pss.forEach(function(ps){
+        self.passiveSkills[ps.id] = ps;
+      });
+    };
 
     return Card;
 })(Entity);

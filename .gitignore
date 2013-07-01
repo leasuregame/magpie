@@ -16,4 +16,5 @@ components
 game-server/config/data/ttserver
 game-server/logs/tmp
 game-server/test/mapping
+game-server/test/dao
 game-server/test/battle

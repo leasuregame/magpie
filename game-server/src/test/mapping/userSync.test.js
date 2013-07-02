@@ -8,8 +8,8 @@
 
 
 /*
-* user sync test
-* */
+ * user sync test
+ * */
 
 
 require('./setup');
@@ -56,25 +56,25 @@ describe("User Sync Data Access Object", function () {
             });
 
             it("should can be update user by id", function (done) {
-                userSync.updateUserById(data.id, {
+                userSync.updateUserById(app.get("dbClient"), [data.id, {
                     name: "ccccc"
                 }, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.be.true;
                     done();
-                })
+                }])
             });
         });
 
         describe("when user no exist", function () {
             it("should can no update user by id", function (done) {
-                userSync.updateUserById(data.id, {
+                userSync.updateUserById(app.get("dbClient"), [data.id, {
                     name: "ccccc"
                 }, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.be.false;
                     done();
-                })
+                }])
             });
         });
     });

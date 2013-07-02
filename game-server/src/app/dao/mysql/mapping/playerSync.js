@@ -23,14 +23,23 @@ playerSync = {
      * @param {object} param 字面量，更新需要的数据
      * @param {function} cb  回调函数
      * */
-    updatePlayerById: function (id, param, cb) {
-        if (typeof (id) == "undefined" || typeof (param) == "undefined") {
-            cb("param error", null);
+    updatePlayerById: function (id, param) {
+        console.log(param);
+
+        var cb = function() {};
+        if(typeof (param[2]) != "undefined") {
+            cb = param[2];
         }
 
-        var _ref = sqlHelper.updateSql("player", ["id", id], param);
+        if (typeof (param[0]) == "undefined" || typeof (param[1]) == "undefined") {
+            return cb("param error", null);
+        }
+
+        var _ref = sqlHelper.updateSql("player", ["id", param[0]], param[1]);
         var sql = _ref[0];
         var args = _ref[1];
+
+        console.log(sql, args);
 
         return dbClient.update(sql, args, function (err, res) {
             if (err) {

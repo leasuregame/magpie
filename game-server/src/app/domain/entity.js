@@ -58,9 +58,9 @@ var Entity = (function (_super) {
         this.set(name, this[name] - val);
     };
 
-    Entity.prototype.save = function () {
-        if (_.isEmpty(this._mark)) {
-            this.emit("save", this);
+    Entity.prototype.save = function (cb) {
+        if (!_.isEmpty(this._mark)) {
+            this.emit("save", cb);
         }
     };
 

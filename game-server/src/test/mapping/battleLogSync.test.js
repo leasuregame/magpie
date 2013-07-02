@@ -50,24 +50,24 @@ describe("Battle Log Sync Data Access Object", function () {
             });
 
             it("should can be updata battle log by id", function (done) {
-                battleLogSync.updateBattleLogById(data.id, {
+                battleLogSync.updateBattleLogById(app.get("dbClient"), [data.id, {
                     own: 50
                 }, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.be.true;
                     done();
-                })
+                }])
             });
         });
         describe("when battle log no exist", function () {
             it("should can no updata battle log by id", function (done) {
-                battleLogSync.updateBattleLogById(data.id, {
+                battleLogSync.updateBattleLogById(app.get("dbClient"), [data.id, {
                     own: 50
                 }, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.be.false;
                     done();
-                })
+                }])
             });
         });
     });

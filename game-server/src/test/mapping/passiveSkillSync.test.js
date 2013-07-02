@@ -50,25 +50,25 @@ describe("Passive Skill Sync Data Access Object", function () {
             });
 
             it("should can be update passive skill by id", function (done) {
-                passiveSkillSync.updatePassiveSkillById(data.id, {
+                passiveSkillSync.updatePassiveSkillById(app.get("dbClient"), [data.id, {
                     tableId: 20
                 }, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.be.true;
                     done();
-                })
+                }])
             });
         });
 
         describe("when passive skill no exist", function () {
             it("should can no update passive skill by id", function (done) {
-                passiveSkillSync.updatePassiveSkillById(data.id, {
+                passiveSkillSync.updatePassiveSkillById(app.get("dbClient"), [data.id, {
                     tableId: 20
                 }, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.be.false;
                     done();
-                })
+                }])
             });
         });
     });

@@ -23,12 +23,17 @@ var passiveSkillSync = {
      * @param {object} param 字面量，更新需要的数据
      * @param {function} cb  回调函数
      * */
-    updatePassiveSkillById: function (id, param, cb) {
-        if (typeof (id) == "undefined" || typeof (param) == "undefined") {
+    updatePassiveSkillById: function (id, param) {
+        var cb = function() {};
+        if(typeof (param[2]) != "undefined") {
+            cb = param[2];
+        }
+
+        if (typeof (param[0]) == "undefined" || typeof (param[1]) == "undefined") {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.updateSql("passiveSkill", ["id", id], param);
+        var _ref = sqlHelper.updateSql("passiveSkill", ["id", param[0]], param[1]);
         var sql = _ref[0];
         var args = _ref[1];
 

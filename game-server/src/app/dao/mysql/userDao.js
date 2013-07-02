@@ -34,8 +34,9 @@ var getUserObject = function (res) {
         lostLoginDevice: res.lostLoginDevict
     });
 
-    user.on('save', function () {
-        app.get('sync').exec('userSync.updateUserById', res.id, user.getSaveData());
+    user.on('save', function (cb) {
+        var id = res.id;
+        app.get('sync').exec('userSync.updateUserById', id, [id, user.getSaveData(), cb]);
     });
 
     return user;
@@ -69,35 +70,6 @@ var userDao = {
             }
         });
     },
-
-    /*
-     * 根据 id 更新一条 user 记录
-     * @param {number} id 需要更新的记录号
-     * @param {object} param 字面量，更新需要的数据
-     * @param {function} cb  回调函数
-     * */
-//    updateUserById: function (id, param, cb) {
-//        if (typeof (id) == "undefined" || typeof (param) == "undefined") {
-//            cb("param error", null);
-//        }
-//
-//        var _ref = sqlHelper.updateSql("user", ["id", id], param);
-//        var sql = _ref[0];
-//        var args = _ref[1];
-//        console.log(sql, args);
-//        return dbClient.update(sql, args, function (err, res) {
-//            if (err) {
-//                logger.error("[userDao.updateUserById faild] ", err.stack);
-//
-//                return cb({
-//                    code: err.code,
-//                    msg: err.message
-//                }, null);
-//            } else {
-//                return cb(null, res);
-//            }
-//        });
-//    },
 
     /*
      * 根据 id 查找一条 user 记录

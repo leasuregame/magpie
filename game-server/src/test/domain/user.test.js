@@ -9,7 +9,7 @@
 
 /*
  * user test
- * insert -> dao -> get -> domain -> update -> save -> select -> judge
+ * insert -> dao -> get -> domain -> update -> save -> cb -> judge
  * */
 
 
@@ -17,7 +17,6 @@ require('./setup');
 app = require("pomelo").app;
 var dao = app.get('dao');
 var should = require("should");
-var BattleLog = require("../../app/domain/battleLog");
 
 describe("User Object", function () {
     var data = {
@@ -44,11 +43,13 @@ describe("User Object", function () {
                         data.name,
                         data.loginCount,
                         data.lastLoginTime,
-                        data.lastLoginDevict
+                        data.lastLoginDevice
                     ],
                     function (err, res) {
-
-                        return done();
+                        dao.user.getUserById(data.id, function (err, res) {
+                            user = res;
+                            return done();
+                        });
                     });
             });
         });
@@ -59,8 +60,14 @@ describe("User Object", function () {
             });
         });
 
-        it("", function (done) {
-
+        it("should can be save when user is no null", function (done) {
+            user.should.be.a("object");
+            user.increase("loginCount");
+            user.save(function (err, res) {
+                should.strictEqual(err, null);
+                res.should.be.true;
+                return done();
+            });
         });
     });
 });

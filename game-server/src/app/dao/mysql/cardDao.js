@@ -168,7 +168,7 @@ var cardDao = {
         if (typeof (playerId) == "undefined") {
             throw new Error("cardDao.getCardByPlayerId playerId is undefined");
         }
-        var _ref = sqlHelper.selectSql("card", ["id", id]);
+        var _ref = sqlHelper.selectSql("card", ["playerId", playerId]);
         var sql = _ref[0];
         var args = _ref[1];
 

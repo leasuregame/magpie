@@ -42,8 +42,9 @@ var getPlayerObject = function (res) {
         passMark: res.passMark
     });
 
-    player.on('save', function () {
-        app.get('sync').exec('playerSync.updatePlayerById', res.id, player.getSaveData());
+    player.on('save', function (cb) {
+        var id = res.id;
+        app.get('sync').exec('playerSync.updatePlayerById', id, [id, player.getSaveData(), cb]);
     });
 
     return player;

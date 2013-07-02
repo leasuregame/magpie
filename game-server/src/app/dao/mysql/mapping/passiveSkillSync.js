@@ -23,7 +23,7 @@ var passiveSkillSync = {
      * @param {object} param 字面量，更新需要的数据
      * @param {function} cb  回调函数
      * */
-    updatePassiveSkillById: function (id, param) {
+    updatePassiveSkillById: function (dbClient, param) {
         var cb = function() {};
         if(typeof (param[2]) != "undefined") {
             cb = param[2];

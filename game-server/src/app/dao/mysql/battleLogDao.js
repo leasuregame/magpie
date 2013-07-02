@@ -26,8 +26,9 @@ var getBattleLogObject = function (res) {
         battleLog: res.battleLog
     });
 
-    battleLog.on('save', function () {
-        app.get('sync').exec('battleLogSync.updateBattleLogById', res.id, battleLog.getSaveData());
+    battleLog.on('save', function (cb) {
+        var id = res.id;
+        app.get('sync').exec('battleLogSync.updateBattleLogById', id, [id, battleLog.getSaveData(), cb]);
     });
 
     return battleLog;

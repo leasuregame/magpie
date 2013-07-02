@@ -42,8 +42,8 @@ describe("Passive Skill Sync Data Access Object", function () {
                         });
                 });
             });
-
             after(function (done) {
+
                 app.get("dbClient")["delete"]("delete from passiveSkill", [], function () {
                     done();
                 });

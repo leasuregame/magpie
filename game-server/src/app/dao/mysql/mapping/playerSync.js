@@ -24,8 +24,6 @@ playerSync = {
      * @param {function} cb  回调函数
      * */
     updatePlayerById: function (id, param) {
-        console.log(param);
-
         var cb = function() {};
         if(typeof (param[2]) != "undefined") {
             cb = param[2];

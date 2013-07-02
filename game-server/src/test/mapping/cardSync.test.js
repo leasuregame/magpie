@@ -32,9 +32,7 @@ describe("Card Sync Data Access Object", function () {
     describe("#updateCardById", function () {
         describe("when card exist", function () {
             before(function (done) {
-                console.log("delete data card");
                 app.get("dbClient")["delete"]("delete from card", [], function () {
-                    console.log("insert data card");
                     app.get("dbClient")["insert"]("insert into card (id, createTime, playerId, tableId, lv, exp, skillLv, hpAddition, atkAddition) value (?, ?, ?, ?, ?, ?, ?, ?, ?);",
                         [
                             data.id,

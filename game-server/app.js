@@ -7,20 +7,20 @@ var app = pomelo.createApp();
 app.set('name', 'game-server');
 
 // app configuration
-app.configure('production|development', 'connector', function() {
-  app.set('connectorConfig', {
-    connector: pomelo.connectors.hybridconnector,
-    heartbeat: 3,
-    useDict: true,
-    useProtobuf: true
-  });
+app.configure('production|development', 'connector', function () {
+    app.set('connectorConfig', {
+        connector: pomelo.connectors.hybridconnector,
+        heartbeat: 3,
+        useDict: true,
+        useProtobuf: true
+    });
 
-  app.filter(pomelo.filters.timeout());
+    app.filter(pomelo.filters.timeout());
 });
 
-app.configure('production|development', 'connector|battle', function(){
-  app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
-  app.loadConfig('ttserver', app.getBase() + '/config/ttserver.json');
+app.configure('production|development', 'connector|battle', function () {
+    app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
+    app.loadConfig('ttserver', app.getBase() + '/config/ttserver.json');
 });
 
 // configure sql database
@@ -36,6 +36,6 @@ app.configure('production|development', 'connector|battle', function() {
 // start app
 app.start();
 
-process.on('uncaughtException', function(err) {
-  console.error(' Caught exception: ' + err.stack);
+process.on('uncaughtException', function (err) {
+    console.error(' Caught exception: ' + err.stack);
 });

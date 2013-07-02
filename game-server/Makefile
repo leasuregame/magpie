@@ -32,6 +32,15 @@ test-mapping: build
 		--recursive \
 		./test/mapping/$(files)
 
+test-domain: build
+	./node_modules/.bin/mocha \
+		--compilers coffee:coffee-script \
+		--require should \
+		--reporter spec \
+		--ui bdd \
+		--recursive \
+		./test/domain/$(files)
+
 test-battle: build
 	./node_modules/.bin/mocha \
 		--compilers coffee:coffee-script \

@@ -8,8 +8,8 @@
 
 
 /*
-* player sync test
-* */
+ * player sync test
+ * */
 
 
 require('./setup');
@@ -50,24 +50,24 @@ describe("Player Sync Data Access Object", function () {
             });
 
             it("should can be updata player by id", function (done) {
-                playerSync.updatePlayerById(data.id, {
+                playerSync.updatePlayerById(app.get("dbClient"), [data.id, {
                     name: "ccccc"
                 }, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.be.true;
                     done();
-                })
+                }])
             });
         });
         describe("when player no exist", function () {
             it("should can no updata player by id", function (done) {
-                playerSync.updatePlayerById(data.id, {
+                playerSync.updatePlayerById(app.get("dbClient"), [data.id, {
                     name: "ccccc"
                 }, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.be.false;
                     done();
-                })
+                }])
             });
         });
     });

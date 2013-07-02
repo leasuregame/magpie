@@ -50,7 +50,7 @@ test-battle: build
 		--recursive \
 		./test/battle/$(files)
 
-testserver:
+test-api: build
 	node ./test/jasmine/app.js
 
 runserver: build

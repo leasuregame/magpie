@@ -34,11 +34,11 @@ describe "Player Dao Access Object", ->
       it "should return error with param wrong", (done) ->
         dao.player.createPlayer {}, (err, res) -> 
           should.strictEqual null, res
-          err.code.should.be.equal(400)
+          err.should.be.equal('param error')
           
           dao.player.createPlayer {userId: uid}, (err, res) ->
             should.strictEqual null, res
-            err.code.should.be.equal(400)
+            err.should.be.equal('param error')
             done()
 
 
@@ -126,9 +126,7 @@ describe "Player Dao Access Object", ->
           (cb) -> dbClient.insert 'insert into passiveSkill (id, cardId, name, value, createTime) values (?,?,?,?,?)', [5, 5, 'hp_improve', 10, now], cb
           ], (err, res) -> 
             if err
-              console.log '================================================', err
-
-            console.log 'all data inserted........................'
+              console.log '创建测试数据出错:', err
             done()
         )
 
@@ -144,7 +142,7 @@ describe "Player Dao Access Object", ->
           player.should.be.a('object')
           player.userId.should.be.equal(uid)
           player.name.should.be.equal(name+'__')
-          Object.keys(player.cardList).length.should.be.equal(5)
+          Object.keys(player.cards).length.should.be.equal(5)
           
           done()
 
@@ -169,83 +167,83 @@ describe "Player Dao Access Object", ->
         res.should.not.be.ok
         done()
 
-  describe "#updatePlayer", ->
-    create_time = Date.now()
+  # describe "#updatePlayer", ->
+  #   create_time = Date.now()
 
-    before (done) ->
-      dbClient.insert 'insert into player (id, userId, areaId, name, createTime) values (?,?,?,?,?)',
-        [pid, uid, areaId, name, create_time], -> done()
+  #   before (done) ->
+  #     dbClient.insert 'insert into player (id, userId, areaId, name, createTime) values (?,?,?,?,?)',
+  #       [pid, uid, areaId, name, create_time], -> done()
 
-    after (done) ->
-      dbClient.delete 'delete from player where id = ?', [pid], -> done()
+  #   after (done) ->
+  #     dbClient.delete 'delete from player where id = ?', [pid], -> done()
 
-    describe "updatePlayerById", ->
-      it "should can be update player with specific fields", (done) ->
-        dao.player.updatePlayerById pid, {
-          areaId: 5
-          name: 'new name'
-          userId: 10
-          money: 1000
-        }, (err, res) ->
-          should.strictEqual null, err
-          res.should.be.ok
+  #   describe "updatePlayerById", ->
+  #     it "should can be update player with specific fields", (done) ->
+  #       dao.player.updatePlayerById pid, {
+  #         areaId: 5
+  #         name: 'new name'
+  #         userId: 10
+  #         money: 1000
+  #       }, (err, res) ->
+  #         should.strictEqual null, err
+  #         res.should.be.ok
 
-          dbClient.query 'select * from player where id = ?', [pid], (err, res) ->
-            res.length.should.be.equal(1)
+  #         dbClient.query 'select * from player where id = ?', [pid], (err, res) ->
+  #           res.length.should.be.equal(1)
 
-            player = res[0]
-            player.should.eql { 
-              id: 1,
-              createTime: create_time,
-              userId: 10,
-              areaId: 5,
-              name: 'new name',
-              power: 0,
-              lv: 0,
-              exp: 0,
-              money: 1000,
-              gold: 0,
-              lineUp: '',
-              ability: 0,
-              task: '',
-              pass: 0,
-              passMark: null 
-            }
-            done()
+  #           player = res[0]
+  #           player.should.eql { 
+  #             id: 1,
+  #             createTime: create_time,
+  #             userId: 10,
+  #             areaId: 5,
+  #             name: 'new name',
+  #             power: 0,
+  #             lv: 0,
+  #             exp: 0,
+  #             money: 1000,
+  #             gold: 0,
+  #             lineUp: '',
+  #             ability: 0,
+  #             task: '',
+  #             pass: 0,
+  #             passMark: null 
+  #           }
+  #           done()
 
-    describe "updatePlayerByName", ->
-      it "should can be update player with specific fields", (done) ->
-        dao.player.updatePlayerByName name, {
-          areaId: 5
-          name: 'new name'
-          userId: 10
-          money: 1000
-        }, (err, res) ->
-          should.strictEqual null, err
-          res.should.be.ok
+  #   describe "updatePlayerByName", ->
+  #     it "should can be update player with specific fields", (done) ->
+  #       dao.player.updatePlayerByName name, {
+  #         areaId: 5
+  #         name: 'new name'
+  #         userId: 10
+  #         money: 1000
+  #       }, (err, res) ->
+  #         should.strictEqual null, err
+  #         res.should.be.ok
 
-          dbClient.query 'select * from player where id = ?', [pid], (err, res) ->
-            res.length.should.be.equal(1)
+  #         dbClient.query 'select * from player where id = ?', [pid], (err, res) ->
+  #           res.length.should.be.equal(1)
 
-            player = res[0]
-            player.should.eql { 
-              id: 1,
-              createTime: create_time,
-              userId: 10,
-              areaId: 5,
-              name: 'new name',
-              power: 0,
-              lv: 0,
-              exp: 0,
-              money: 1000,
-              gold: 0,
-              lineUp: '',
-              ability: 0,
-              task: '',
-              pass: 0,
-              passMark: null 
-            }
-            done()
+  #           player = res[0]
+  #           player.should.eql { 
+  #             id: 1,
+  #             createTime: create_time,
+  #             userId: 10,
+  #             areaId: 5,
+  #             name: 'new name',
+  #             power: 0,
+  #             lv: 0,
+  #             exp: 0,
+  #             money: 1000,
+  #             gold: 0,
+  #             lineUp: '',
+  #             ability: 0,
+  #             task: '',
+  #             pass: 0,
+  #             passMark: null 
+  #           }
+  #           done()
 
 
 

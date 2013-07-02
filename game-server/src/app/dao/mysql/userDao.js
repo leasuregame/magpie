@@ -21,7 +21,6 @@ var sqlHelper = require("./sqlHelper");
 var dbClient = require("pomelo").app.get("dbClient");
 var logger = require("pomelo-logger").getLogger(__filename);
 var User = require("../../domain/user");
-var userSync = require("./mapping/userSyncs");
 
 var getUserObject = function (res) {
     var user = new User({

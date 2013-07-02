@@ -17,7 +17,6 @@ var sqlHelper = require("./sqlHelper");
 var dbClient = require("pomelo").app.get("dbClient");
 var logger = require("pomelo-logger").getLogger(__filename);
 var Card = require("../../domain/card");
-var cardSync = require("./mapping/cardSync");
 var PassiveSkill = require("../../domain/passiveSkill");
 var passiveSkillDao = require('./passiveSkillDao');
 var async = require('async');
@@ -180,22 +179,26 @@ var cardDao = {
                 var cardList = [];
                 async.each(rows, function (row, done) {
                     var card = new Card(row);
-                    passiveSkillDao.getPassiveSkillByCardId(card.id, function (err, ps) {
+                    passiveSkillDao.getPassiveSkillByCardId(card.id, function (err, res) {
                         if (err) {
-                            done(err);
-                            return;
+                            return done(err);
                         }
 
-                        var ps = new PassiveSkill(ps);
-                        card.addPassiveSkill(ps);
-                        cardList.push(card);
-                        done();
+                        if (!!res && res.length > 0){
+                            for (var i = 0; i < res.length; i++){
+                                var ps = new PassiveSkill(res[i]);
+                                card.addPassiveSkill(ps);
+                                cardList.push(card);
+                            }
+                        }
+                        
+                        return done();
                     });
                 }, function (err) {
                     if (err) {
-                        cb(err, null)
+                        return cb(err, null)
                     } else {
-                        cb(null, cardList)
+                        return cb(null, cardList)
                     }
                 });
             }

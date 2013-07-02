@@ -20,7 +20,6 @@ var sqlHelper = require("./sqlHelper");
 var dbClient = require("pomelo").app.get("dbClient");
 var logger = require("pomelo-logger").getLogger(__filename);
 var PassiveSkill = require("../../domain/passiveSkill");
-var passiveSkillSync = require("./mapping/passiveSkillSync");
 
 var getPassiveSkillObject = function(res) {
     var passiveSkill = new PassiveSkill({

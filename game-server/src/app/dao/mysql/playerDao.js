@@ -20,7 +20,6 @@ var sqlHelper = require("./sqlHelper");
 var dbClient = require("pomelo").app.get("dbClient");
 var logger = require("pomelo-logger").getLogger(__filename);
 var Player = require("../../domain/player");
-var playerSync = require("./mapping/playerSync");
 var cardDao = require("./cardDao");
 var async = require('async');
 
@@ -57,8 +56,13 @@ var playerDao = {
      * @param {function} cb  回调函数
      * */
     createPlayer: function (param, cb) {
-        if (typeof param == "undefined" || typeof param.id == "undefined" || typeof param.areaId == "undefined" || typeof param.name == "undefined" || typeof param.userId == "undefined") {
-            cb("param error", null);
+        if (typeof param == "undefined" || 
+            typeof param.id == "undefined" || 
+            typeof param.areaId == "undefined" || 
+            typeof param.name == "undefined" || 
+            typeof param.userId == "undefined"
+        ) {
+            return cb("param error", null);
         }
 
         var _ref = sqlHelper.insertSql("player", param);

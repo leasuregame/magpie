@@ -28,9 +28,6 @@ app.configure('production|development', 'connector|battle', function() {
   var dbclient = require('./app/dao/mysql/mysql').init(app);
   app.set('dbClient', dbclient);
   //app.load(pomelo.sync, {path:__dirname + '/app/dao/mapping', dbclient: dbclient});
-  
-  var ttclient = require('./app/manager/ttserver/ttserver')(app);
-  app.set('ttclient', ttclient);  
 
   var dao = require('./app/dao').init('mysql');
   app.set('dao', dao);

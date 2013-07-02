@@ -4,7 +4,8 @@ _ = require 'underscore'
 
 class Manager
   @explore: (player, cb) ->
-    [task_id, progress] = parseTask(player.task)
+    task_id = player.task.id
+    progress = player.task.progress
     task = table.getTableItem('task', task_id)
     exp_to_upgrade = table.getTableItem('player_upgrade', player.lv)
 
@@ -40,9 +41,7 @@ class Manager
     else
       player.increase('exp', task.exp_obtain)
 
-    player.save()
-
-    cb(null, player, task_id, res)
+    cb(null, player, res)
 
 parseTask = (mark) ->
   mark.split('#')

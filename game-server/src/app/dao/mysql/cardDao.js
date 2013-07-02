@@ -188,10 +188,9 @@ var cardDao = {
                             for (var i = 0; i < res.length; i++){
                                 var ps = new PassiveSkill(res[i]);
                                 card.addPassiveSkill(ps);
-                                cardList.push(card);
                             }
                         }
-                        
+                        cardList.push(card);
                         return done();
                     });
                 }, function (err) {

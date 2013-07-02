@@ -31,10 +31,10 @@ class Battle extends Base
       id: @defender.id
       name: @defender.name
       lv: @defender.lv
-      cards: @defender.cards()
+      cards: @defender.getCards()
     }
     battleLog.set('enemy', _enm)
-    battleLog.set('own', {cards: @attacker.cards()})
+    battleLog.set('own', {cards: @attacker.getCards()})
     log.info '    >>> 战斗开始 <<<    '
 
   execute: ->

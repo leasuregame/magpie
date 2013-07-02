@@ -34,25 +34,35 @@ class Manager
     if params.name?
       return
 
-  @getPlayerForFight: (params, cb) ->
+  @getPlayerInfo: (params, cb) ->
     player = null
-    async.waterfall([
-      (callback) =>
-        @getPlayer params, callback
+    dao.player.getPlayerInfo params.id, (err, player) ->
+      if err isnt null
+        cb(err, null)
+        return
 
-      (player, callback) ->
-        player = player
-        getActivatedCards params, callback
-      ], 
-      (err, cards) ->
-        if err isnt null
+      playerList.put(player.id, player)
+      cb(null, player)
+
+  @getPlayers: (ids, cb) ->
+    results = {}
+    async.each( 
+      ids, 
+      (id, done) ->
+        dao.player.getPlayerInfo id, (err, player) ->
+          if err isnt null
+            return done(err)
+
+          playerList.put player.id, player
+          results[id] = player
+          done()
+      , 
+      (err) ->
+        if (err) 
           cb(err, null)
-          return
-
-        player.addCards(cards)
-        playerList.put(player.id, player)
-        cb(null, player)
-      )
+        else
+          cb(null, results)
+    )
 
 getActivatedCards = (params, cb) ->
   dao.card.getCardByPlayersId params.pid, {activated: 1}, (err, cards) ->

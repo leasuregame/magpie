@@ -29,4 +29,6 @@ class Module
   constructor: ->
     @init?(arguments...)
 
+  init: ->
+
 exports = module.exports = Module

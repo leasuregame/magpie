@@ -41,12 +41,12 @@ var Card = (function (_super) {
     }
 
     Card.prototype.init = function () {
-        this.passiveSkills = {};
+        this.passiveSkills = [];
     };
 
     Card.prototype.addPassiveSkill = function (ps) {
         if (typeof ps.id !== 'undefined' && ps.id !== null) {
-            this.passiveSkills[ps.id] = ps;
+            this.passiveSkills.push(ps);
         }
     };
 

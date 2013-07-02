@@ -45,14 +45,15 @@ describe("Battle Server # ", function() {
     });
   });
 
-  describe("Fight Handler", function(){
+  describe("Task Handler", function(){
 
-    describe("battle.fightHandler.attack", function(){
+    describe("logic.taskHandler.explore", function(){
       it("should can be return the correct battle log", function(){
-        request('battle.fightHandler.attack', {playerId: '10000', targetId: '10001'}, function(data){
+        request('logic.taskHandler.explore', {playerId: '1'}, function(data){
           expect(data.code).toEqual(200);
           bl = JSON.parse(data.msg);
 
+          expect(bl).toEqual('')
           expect(bl.enemy).toEqual(jasmine.any(Object));
           expect(bl.winner).toEqual('enemy');
           expect(bl.steps).toEqual(jasmine.any(Array));

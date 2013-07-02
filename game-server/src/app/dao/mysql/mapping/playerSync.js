@@ -12,7 +12,7 @@
 * */
 
 
-var sqlHelper = require("./sqlHelper");
+var sqlHelper = require("../sqlHelper");
 var dbClient = require("pomelo").app.get("dbClient");
 var logger = require("pomelo-logger").getLogger(__filename);
 

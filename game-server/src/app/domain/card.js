@@ -16,6 +16,18 @@ var utility = require('../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
 
+var FIELDS = {
+    id: true,
+    createTime: true,
+    playerId: true,
+    tableId: true,
+    lv: true,
+    exp: true,
+    skillLv: true,
+    hpAddition: true,
+    atkAddition: true
+};
+
 /*
  * Card 与 card 表对应的数据类，提供简单操作
  * @param {object} param 数据库 card 表中的一行记录
@@ -25,23 +37,24 @@ var Card = (function (_super) {
 
     function Card(param) {
         Card.__super__.constructor.apply(this, arguments);
+        this._fields = FIELDS;
     }
 
-    Card.prototype.init = function() {
+    Card.prototype.init = function () {
         this.passiveSkills = {};
     };
 
-    Card.prototype.addPassiveSkill = function(ps) {
-      if (typeof ps.id !== 'undefined' && ps.id !== null) {
-        this.passiveSkills[ps.id] = ps;
-      }
+    Card.prototype.addPassiveSkill = function (ps) {
+        if (typeof ps.id !== 'undefined' && ps.id !== null) {
+            this.passiveSkills[ps.id] = ps;
+        }
     };
 
-    Card.prototype.addPassiveSkills = function(pss) {
-      var self = this;
-      pss.forEach(function(ps){
-        self.passiveSkills[ps.id] = ps;
-      });
+    Card.prototype.addPassiveSkills = function (pss) {
+        var self = this;
+        pss.forEach(function (ps) {
+            self.passiveSkills[ps.id] = ps;
+        });
     };
 
     return Card;

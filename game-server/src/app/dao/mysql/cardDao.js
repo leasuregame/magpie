@@ -21,6 +21,27 @@ var sqlHelper = require("./sqlHelper");
 var dbClient = require("pomelo").app.get("dbClient");
 var logger = require("pomelo-logger").getLogger(__filename);
 var Card = require("../../domain/card");
+var cardSync = require("./mapping/cardSync");
+
+var getCardObject = function (res) {
+    var card = new Card({
+        id: res.id,
+        createTime: res.createTime,
+        playerId: res.playerId,
+        tableId: res.tableId,
+        lv: res.lv,
+        exp: res.exp,
+        skillLv: res.skillLv,
+        hpAddition: res.hpAddition,
+        atkAddition: res.atkAddition
+    });
+
+    card.on('save', function () {
+        app.get('sync').exec('cardSync.updateCardById', res.id, card.getSaveData());
+    });
+
+    return card;
+}
 
 var cardDao = {
     /*
@@ -106,7 +127,7 @@ var cardDao = {
                     msg: err.message
                 }, null);
             } else if (res && res.length === 1) {
-                return cb(null, new Card(res[0]));
+                return cb(null, getCardObject(res[0]));
             } else {
                 return cb({
                     code: null,
@@ -143,7 +164,7 @@ var cardDao = {
                 var len = res.length;
 
                 for (var i = 0; i < len; ++i) {
-                    cardList.push(new Card(res[i]));
+                    cardList.push(getCardObject(res[i]));
                 }
 
                 return cb(null, cardList);

@@ -21,6 +21,7 @@ var sqlHelper = require("./sqlHelper");
 var dbClient = require("pomelo").app.get("dbClient");
 var logger = require("pomelo-logger").getLogger(__filename);
 var User = require("../../domain/user");
+var userSync = require("./mapping/userSyncs");
 
 var getUserObject = function (res) {
     var user = new User({
@@ -31,12 +32,14 @@ var getUserObject = function (res) {
         name: res.name,
         loginCount: res.loginCount,
         lastLoginTime: res.lastLoginTime,
-        lostLoginDevict: res.lostLoginDevict
+        lostLoginDevice: res.lostLoginDevict
     });
 
-    user.on('save', function() {
-        app.get('sync').exec('taskSync.updateTask', task.id, task);
+    user.on('save', function () {
+        app.get('sync').exec('userSync.updateUserById', res.id, user.getSaveData());
     });
+
+    return user;
 }
 
 var userDao = {

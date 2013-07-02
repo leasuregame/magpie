@@ -16,6 +16,24 @@ var utility = require('../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
 
+var FIELDS = {
+    id: true,
+    createTime: true,
+    userId: true,
+    areaId: true,
+    name: true,
+    power: true,
+    lv: true,
+    exp: true,
+    money: true,
+    gold: true,
+    lineUp: true,
+    ability: true,
+    task: true,
+    pass: true,
+    passMark: true
+};
+
 /*
  * Player 与 player 表对应的数据类，提供简单操作
  * @param {object} param 数据库 player 表中的一行记录
@@ -26,21 +44,22 @@ var Player = (function (_super) {
 
     function Player(param) {
         Player.__super__.constructor.apply(this, arguments);
+        this._fields = FIELDS;
     }
 
-    Player.prototype.init = function() {
+    Player.prototype.init = function () {
         this.cards = {};
     };
 
-    Player.prototype.addCard = function(card) {
-        if (typeof card.id !== 'undefined' && typeof card.id !== null){
+    Player.prototype.addCard = function (card) {
+        if (typeof card.id !== 'undefined' && typeof card.id !== null) {
             this.cards[card.id] = card;
         }
     };
 
-    Player.prototype.addCards = function(cards) {
+    Player.prototype.addCards = function (cards) {
         var self = this;
-        cards.forEach(function(card){
+        cards.forEach(function (card) {
             self.addCard(card);
         });
     };

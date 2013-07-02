@@ -25,7 +25,7 @@ describe("Battle Log Sync Data Access Object", function () {
         battleLog: {}
     };
 
-    describe("#updataBattleLogBy...", function () {
+    describe("#updataBattleLogById", function () {
         describe("when battle log exist", function () {
             before(function (done) {
                 app.get("dbClient")["delete"]("delete from battleLog", [], function () {

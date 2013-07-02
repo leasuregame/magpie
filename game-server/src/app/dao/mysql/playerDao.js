@@ -17,177 +17,201 @@
  * */
 
 
-(function () {
-    var sqlHelper = require("./sqlHelper");
-    var dbClient = require("pomelo").app.get("dbClient");
-    var logger = require("pomelo-logger").getLogger(__filename);
-    var Player = require("../../domain/player");
+var sqlHelper = require("./sqlHelper");
+var dbClient = require("pomelo").app.get("dbClient");
+var logger = require("pomelo-logger").getLogger(__filename);
+var Player = require("../../domain/player");
+var playerSync = require("./mapping/playerSync");
 
-    var playerDao = {
-        /*
-         * 创建一条 player 记录
-         * @param {object} param 字面量，创建需要的数据
-         * @param {function} cb  回调函数
-         * */
-        createPlayer: function (param, cb) {
-            if (typeof param == "undefined" || typeof param.id == "undefined" || typeof param.areaId == "undefined" || typeof param.name == "undefined" || typeof param.userId == "undefined") {
-                cb("param error", null);
-            }
+var getPlayerObject = function (res) {
+    var player = new Player({
+        id: res.id,
+        createTime: res.createTime,
+        userId: res.userId,
+        areaId: res.areaId,
+        name: res.name,
+        power: res.power,
+        lv: res.lv,
+        exp: res.exp,
+        money: res.money,
+        gold: res.gold,
+        lineUp: res.lineUp,
+        ability: res.ability,
+        task: res.task,
+        pass: res.pass,
+        passMark: res.passMark
+    });
 
-            var _ref = sqlHelper.insertSql("player", param);
-            var sql = _ref[0];
-            var args = _ref[1];
+    player.on('save', function () {
+        app.get('sync').exec('playerSync.updatePlayerById', res.id, player.getSaveData());
+    });
 
-            return dbClient.insert(sql, args, function (err, res) {
-                if (err) {
-                    logger.error("[playerDao.createPlayer faild] ", err.stack);
+    return player;
+}
 
-                    return cb({
-                        code: err.code,
-                        msg: err.message
-                    }, null);
-                } else {
-                    return cb(null, new Player({
-                        id: res.insertId,
-                        areaId: param.areaId,
-                        name: param.name
-                    }));
-                }
-            });
-        },
-
-        /*
-         * 根据 id 更新一条 player 记录
-         * @param {number} id 需要更新的记录号
-         * @param {object} param 字面量，更新需要的数据
-         * @param {function} cb  回调函数
-         * */
-        updatePlayerById: function (id, param, cb) {
-            if (typeof (id) == "undefined" || typeof (param) == "undefined") {
-                cb("param error", null);
-            }
-
-            var _ref = sqlHelper.updateSql("player", ["id", id], param);
-            var sql = _ref[0];
-            var args = _ref[1];
-
-            return dbClient.update(sql, args, function (err, res) {
-                if (err) {
-                    logger.error("[playerDao.updatePlayerById faild] ", err.stack);
-
-                    return cb({
-                        code: err.code,
-                        msg: err.message
-                    }, null);
-                } else {
-                    if (!!res && res.affectedRows > 0) {
-                        return cb(null, true);
-                    } else {
-                        return cb(null, false);
-                    }
-                }
-            });
-        },
-
-        /*
-         * 根据 id 查找一条 player 记录
-         * @param {number} id 需要查找的记录号
-         * @param {function} cb  回调函数
-         * */
-        getPlayerById: function (id, cb) {
-            if (typeof (id) == "undefined") {
-                cb("param error", null);
-            }
-
-            var _ref = sqlHelper.selectSql("player", ["id", id]);
-            var sql = _ref[0];
-            var args = _ref[1];
-
-            return dbClient.query(sql, args, function (err, res) {
-                if (err) {
-                    logger.error("[playerDao.getPlayerById faild] ", err.stack);
-
-                    return cb({
-                        code: err.code,
-                        msg: err.message
-                    }, null);
-                } else if (res && res.length === 1) {
-                    return cb(null, new Player(res[0]));
-                } else {
-                    return cb({
-                        code: null,
-                        msg: "Player not exists"
-                    }, null);
-                }
-            });
-        },
-
-        /*
-         * 根据 name 查找一条 player 记录
-         * @param {string} name 需要查找的账号名
-         * @param {function} cb  回调函数
-         * */
-        getPlayerByName: function (name, cb) {
-            if (typeof (name) == "undefined") {
-                cb("param error", null);
-            }
-
-            var _ref = sqlHelper.selectSql("player", ["name", name]);
-            var sql = _ref[0];
-            var args = _ref[1];
-
-            return dbClient.query(sql, args, function (err, res) {
-                if (err) {
-                    logger.error("[playerDao.getPlayerByName faild] ", err.stack);
-
-                    return cb({
-                        code: err.code,
-                        msg: err.message
-                    }, null);
-                } else if (res && res.length === 1) {
-                    return cb(null, new Player(res[0]));
-                } else {
-                    return cb({
-                        code: null,
-                        msg: "Player not exists"
-                    }, null);
-                }
-            });
-        },
-
-        /*
-         * 根据 id 删除一条 player 记录
-         * @param {number} id 需要删除的记录号
-         * @param {function} cb  回调函数
-         * */
-        deletePlayerById: function (id, cb) {
-            if (typeof (id) == "undefined") {
-                cb("param error", null);
-            }
-
-            var _ref = sqlHelper.deleteSql("player", ["id", id]);
-            var sql = _ref[0];
-            var args = _ref[1];
-
-            return dbClient.delete(sql, args, function (err, res) {
-                if (err) {
-                    logger.error("[playerDao.deletePlayerById faild] ", err.stack);
-
-                    return cb({
-                        code: err.code,
-                        msg: err.message
-                    }, null);
-                } else {
-                    if (!!res && res.affectedRows > 0) {
-                        return cb(null, true);
-                    } else {
-                        return cb(null, false);
-                    }
-                }
-            });
+var playerDao = {
+    /*
+     * 创建一条 player 记录
+     * @param {object} param 字面量，创建需要的数据
+     * @param {function} cb  回调函数
+     * */
+    createPlayer: function (param, cb) {
+        if (typeof param == "undefined" || typeof param.id == "undefined" || typeof param.areaId == "undefined" || typeof param.name == "undefined" || typeof param.userId == "undefined") {
+            cb("param error", null);
         }
+
+        var _ref = sqlHelper.insertSql("player", param);
+        var sql = _ref[0];
+        var args = _ref[1];
+
+        return dbClient.insert(sql, args, function (err, res) {
+            if (err) {
+                logger.error("[playerDao.createPlayer faild] ", err.stack);
+
+                return cb({
+                    code: err.code,
+                    msg: err.message
+                }, null);
+            } else {
+                return cb(null, new Player({
+                    id: res.insertId,
+                    areaId: param.areaId,
+                    name: param.name
+                }));
+            }
+        });
+    },
+
+    /*
+     * 根据 id 更新一条 player 记录
+     * @param {number} id 需要更新的记录号
+     * @param {object} param 字面量，更新需要的数据
+     * @param {function} cb  回调函数
+     * */
+    updatePlayerById: function (id, param, cb) {
+        if (typeof (id) == "undefined" || typeof (param) == "undefined") {
+            cb("param error", null);
+        }
+
+        var _ref = sqlHelper.updateSql("player", ["id", id], param);
+        var sql = _ref[0];
+        var args = _ref[1];
+
+        return dbClient.update(sql, args, function (err, res) {
+            if (err) {
+                logger.error("[playerDao.updatePlayerById faild] ", err.stack);
+
+                return cb({
+                    code: err.code,
+                    msg: err.message
+                }, null);
+            } else {
+                if (!!res && res.affectedRows > 0) {
+                    return cb(null, true);
+                } else {
+                    return cb(null, false);
+                }
+            }
+        });
+    },
+
+    /*
+     * 根据 id 查找一条 player 记录
+     * @param {number} id 需要查找的记录号
+     * @param {function} cb  回调函数
+     * */
+    getPlayerById: function (id, cb) {
+        if (typeof (id) == "undefined") {
+            cb("param error", null);
+        }
+
+        var _ref = sqlHelper.selectSql("player", ["id", id]);
+        var sql = _ref[0];
+        var args = _ref[1];
+
+        return dbClient.query(sql, args, function (err, res) {
+            if (err) {
+                logger.error("[playerDao.getPlayerById faild] ", err.stack);
+
+                return cb({
+                    code: err.code,
+                    msg: err.message
+                }, null);
+            } else if (res && res.length === 1) {
+                return cb(null, getPlayerObject(res[0]));
+            } else {
+                return cb({
+                    code: null,
+                    msg: "Player not exists"
+                }, null);
+            }
+        });
+    },
+
+    /*
+     * 根据 name 查找一条 player 记录
+     * @param {string} name 需要查找的账号名
+     * @param {function} cb  回调函数
+     * */
+    getPlayerByName: function (name, cb) {
+        if (typeof (name) == "undefined") {
+            cb("param error", null);
+        }
+
+        var _ref = sqlHelper.selectSql("player", ["name", name]);
+        var sql = _ref[0];
+        var args = _ref[1];
+
+        return dbClient.query(sql, args, function (err, res) {
+            if (err) {
+                logger.error("[playerDao.getPlayerByName faild] ", err.stack);
+
+                return cb({
+                    code: err.code,
+                    msg: err.message
+                }, null);
+            } else if (res && res.length === 1) {
+                return cb(null, getPlayerObject(res[0]));
+            } else {
+                return cb({
+                    code: null,
+                    msg: "Player not exists"
+                }, null);
+            }
+        });
+    },
+
+    /*
+     * 根据 id 删除一条 player 记录
+     * @param {number} id 需要删除的记录号
+     * @param {function} cb  回调函数
+     * */
+    deletePlayerById: function (id, cb) {
+        if (typeof (id) == "undefined") {
+            cb("param error", null);
+        }
+
+        var _ref = sqlHelper.deleteSql("player", ["id", id]);
+        var sql = _ref[0];
+        var args = _ref[1];
+
+        return dbClient.delete(sql, args, function (err, res) {
+            if (err) {
+                logger.error("[playerDao.deletePlayerById faild] ", err.stack);
+
+                return cb({
+                    code: err.code,
+                    msg: err.message
+                }, null);
+            } else {
+                if (!!res && res.affectedRows > 0) {
+                    return cb(null, true);
+                } else {
+                    return cb(null, false);
+                }
+            }
+        });
     }
+}
 
-    module.exports = playerDao;
-
-}).call(this);
+module.exports = playerDao;

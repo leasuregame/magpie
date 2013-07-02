@@ -16,7 +16,7 @@ var utility = require('../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
 
-var field = {
+var FIELDS = {
     id: true,
     createTime: true,
     account: true,
@@ -36,6 +36,7 @@ var User = (function (_super) {
 
     function User(param) {
         User.__super__.constructor.apply(this, arguments);
+        this._fields = FIELDS;
     }
 
     User.prototype.upLastLoginTime = function () {

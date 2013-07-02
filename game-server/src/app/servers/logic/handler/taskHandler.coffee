@@ -1,6 +1,5 @@
 playerManager = require '../../../manager/playerManager'
 taskManager = require '../../../manager/taskManager'
-resources = require '../../../../shared/resources'
 async = require 'async'
 
 module.exports = (app) ->
@@ -9,6 +8,8 @@ module.exports = (app) ->
 Handler = (@app) ->
 
 Handler::explore = (msg, session, next) ->
+  console.log 'explore start: ', msg
+
   playerId = session.get('playerId')
   data = null
   player = null
@@ -44,5 +45,5 @@ Handler::explore = (msg, session, next) ->
         return
 
       player.save()
-      next(null, {code: 200, data: data})
+      next(null, {code: 200, msg: data})
   )

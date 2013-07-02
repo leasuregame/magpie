@@ -4,4 +4,4 @@ module.exports = {
     INVALID_PARAMS: '参数不正确！',
     PLAYER_NOT_EXISTS: 'player not exists'
   }
-}
+};

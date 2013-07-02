@@ -25,13 +25,6 @@ describe("Battle Server # ", function() {
       }, function() {
         console.log('connect success!');
         inited = true;
-
-        pomelo.on('onMessage', function(data) {
-          console.log('***** on message: ', data);
-        });
-        pomelo.on('onLogin', function(data) {
-          console.log('***** on login: ', data);
-        });
       });
     });
     waitsFor(function() {
@@ -50,13 +43,10 @@ describe("Battle Server # ", function() {
     describe("logic.taskHandler.explore", function(){
       it("should can be return the correct battle log", function(){
         request('logic.taskHandler.explore', {playerId: '1'}, function(data){
-          expect(data.code).toEqual(200);
-          bl = JSON.parse(data.msg);
+          //expect(data.code).toEqual(200);
+          //bl = JSON.parse(data.msg);
 
-          expect(bl).toEqual('')
-          expect(bl.enemy).toEqual(jasmine.any(Object));
-          expect(bl.winner).toEqual('enemy');
-          expect(bl.steps).toEqual(jasmine.any(Array));
+          expect(data).toEqual('')
           console.log(data);
         });
       });
@@ -64,10 +54,10 @@ describe("Battle Server # ", function() {
 
   });
 
-  // describe("Tear Down", function(){
-  //   it('disconnect', function(){
-  //     pomelo.disconnect();
-  //   });
-  // })
+  describe("Tear Down", function(){
+    it('disconnect', function(){
+      pomelo.disconnect();
+    });
+  })
 
 });

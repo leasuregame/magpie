@@ -1,14 +1,14 @@
-module.exports = {
-  "mop_up_coin_obtain": 30, // 每次扫荡章节时获得元宝的概率
-  "coin_quantity": 10,      // 扫荡获得元宝的数量
-  "fight": 20,              // 每次探索遇到战斗的概率
-  "precious_box": 5,        // 每次探索遇到宝箱概率
-  "card_drop": {            // 每次战斗掉率卡牌的星级的概率
+{
+  "mop_up_coin_obtain": 30, 
+  "coin_quantity": 10,      
+  "fight": 20,              
+  "precious_box": 5,        
+  "card_drop": {            
     "start": {
       "one": 50,
       "two": 50
     },
-    "level": {              // 每次战斗掉率卡牌的等级的概率
+    "level": {              
       "one": 60,
       "two": 10,
       "three": 10,
@@ -16,7 +16,7 @@ module.exports = {
       "five": 10
     }
   },
-  "open_box": {             // 打开宝箱时获得卡牌星级的概率
+  "open_box": {             
     "start": {
       "one": 10,
       "two": 15,

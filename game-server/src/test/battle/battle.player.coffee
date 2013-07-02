@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-PlayerManager = require('../../app/manager/manager').player
 dao = require('../../../app/dao').init('mysql')
-
-=======
->>>>>>> 5c3a5bbcee6ac4f3a440e3d0c6e0744d0e7c51fe
 Player = require '../../app/battle/player'
 Hero = require '../../app/battle/hero'
 Matrix = require '../../app/battle/matrix'

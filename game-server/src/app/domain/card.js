@@ -28,8 +28,7 @@ var Card = (function (_super) {
     }
 
     Card.prototype.init = function() {
-<<<<<<< HEAD
-        this.passiveSkillList = {};
+        this.passiveSkills = {};
     };
 
     Card.prototype.addPassiveSkills = function(passiveSkills) {
@@ -39,26 +38,10 @@ var Card = (function (_super) {
         });
     };
 
-    Card.prototype.addPassiveSkill = function(passiveSkill) {
-        if (typeof passiveSkill.id !== 'undefined' || typeof passiveSkill.id !== null) {
-            this.passiveSkillList[passiveSkill.id] = passiveSkill
-        }
-=======
-        this.passiveSkills = {};
-    };
-
     Card.prototype.addPassiveSkill = function(ps) {
       if (typeof ps.id !== 'undefined' && ps.id !== null) {
         this.passiveSkills[ps.id] = ps;
       }
-    };
-
-    Card.prototype.addPassiveSkills = function(pss) {
-      var self = this;
-      pss.forEach(function(ps){
-        self.passiveSkills[ps.id] = ps;
-      });
->>>>>>> 5c3a5bbcee6ac4f3a440e3d0c6e0744d0e7c51fe
     };
 
     return Card;

@@ -30,16 +30,11 @@
          * @param {function} cb  回调函数
          * */
         createPassiveSkill: function (param, cb) {
-<<<<<<< HEAD
             if (typeof (param) == "undefined" ||
                 typeof (param.cardId) == "undefined"
             ) {
                 cb({code: 400, msg: "passiveSkillDao.createPassiveSkill param is invalid, " + JSON.stringify(param)}, null);
                 return;
-=======
-            if (typeof (param) == "undefined" || typeof (param.cardId) == "undefined" || typeof (param.tableId) == "undefined") {
-                return cb("param error", null);
->>>>>>> 5c3a5bbcee6ac4f3a440e3d0c6e0744d0e7c51fe
             }
 
             var _ref = sqlHelper.insertSql("passiveSkill", param);

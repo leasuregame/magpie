@@ -29,8 +29,7 @@ var Player = (function (_super) {
     }
 
     Player.prototype.init = function() {
-<<<<<<< HEAD
-        this.cardList = {};
+        this.cards = {};
         this.ownBattleLogList = {};
         this.enemyBattleLogList = {};
     }
@@ -50,24 +49,7 @@ var Player = (function (_super) {
         cards.forEach(function(card){
             self.addCard(card)
         });
-    }
-=======
-        this.cards = {};
-    };
->>>>>>> 5c3a5bbcee6ac4f3a440e3d0c6e0744d0e7c51fe
-
-    Player.prototype.addCard = function(card) {
-        if (typeof card.id !== 'undefined' && typeof card.id !== null){
-            this.cards[card.id] = card;
-        }
-    };
-
-    Player.prototype.addCards = function(cards) {
-        var self = this;
-        cards.forEach(function(card){
-            self.addCard(card);
-        });
-    };
+    }；
 
     Player.prototype.getPassMarkByIndex = function (index) {
         if (index < 1) {

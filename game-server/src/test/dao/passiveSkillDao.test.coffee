@@ -7,7 +7,7 @@ should = require 'should'
 describe "Passive Skill Data Access Object", ->
   id = 1
   cardId = 1
-  tableId = 1
+  name = 'hp_improve'
   value = '0'#'{"hp_improve": 10}'
 
   describe "#createPassiveSkill", ->
@@ -20,7 +20,7 @@ describe "Passive Skill Data Access Object", ->
         dao.passiveSkill.createPassiveSkill {
           id: id
           cardId: cardId
-          tableId: tableId
+          name: name
           value: value
         }, (err, res) ->
           should.strictEqual null, err
@@ -35,8 +35,8 @@ describe "Passive Skill Data Access Object", ->
 
     describe "when exists", ->
       before (done) ->
-        dbClient.insert 'insert into passiveSkill (id, cardId, tableId, value, createTime) value (?, ?, ?, ?, ?)', 
-          [id, cardId, tableId, value, Date.now()], -> done()
+        dbClient.insert 'insert into passiveSkill (id, cardId, name, value, createTime) value (?, ?, ?, ?, ?)', 
+          [id, cardId, name, value, Date.now()], -> done()
 
       after (done) ->
         dbClient.delete 'delete from passiveSkill where id =?', [id], -> done()
@@ -45,7 +45,7 @@ describe "Passive Skill Data Access Object", ->
         dao.passiveSkill.createPassiveSkill {
           id: id
           cardId: cardId
-          tableId: tableId
+          name: name
           value: value
         }, (err, res) ->
           should.strictEqual null, res
@@ -54,8 +54,8 @@ describe "Passive Skill Data Access Object", ->
 
   describe "#deletePassiveSkill", ->
     before (done) ->
-      dbClient.insert 'insert into passiveSkill (id, cardId, tableId, value, createTime) value (?, ?, ?, ?, ?)', 
-        [id, cardId, tableId, value, Date.now()], -> done()
+      dbClient.insert 'insert into passiveSkill (id, cardId, name, value, createTime) value (?, ?, ?, ?, ?)', 
+        [id, cardId, name, value, Date.now()], -> done()
 
     it "should can be delete a passive skill", (done) ->
       dao.passiveSkill.deletePassiveSkillById id, (err, res) ->
@@ -72,8 +72,8 @@ describe "Passive Skill Data Access Object", ->
   describe "#getPassiveSkill", ->
 
     before (done) ->
-      dbClient.insert 'insert into passiveSkill (id, cardId, tableId, value, createTime) value (?, ?, ?, ?, ?)', 
-        [id, cardId, tableId, value, Date.now()], -> done()
+      dbClient.insert 'insert into passiveSkill (id, cardId, name, value, createTime) value (?, ?, ?, ?, ?)', 
+        [id, cardId, name, value, Date.now()], -> done()
 
     after (done) ->
       dbClient.delete 'delete from passiveSkill where id =?', [id], -> done()
@@ -86,7 +86,7 @@ describe "Passive Skill Data Access Object", ->
         ps = res[0]
         ps.id.should.be.equal id
         ps.cardId.should.be.equal cardId
-        ps.tableId.should.be.equal tableId
+        ps.name.should.be.equal name
         done()
 
     it "should can be get with id", (done) ->
@@ -96,7 +96,7 @@ describe "Passive Skill Data Access Object", ->
         ps = res
         ps.id.should.be.equal id
         ps.cardId.should.be.equal cardId
-        ps.tableId.should.be.equal tableId
+        ps.name.should.be.equal name
         done()
 
     it "should return error when not exists", (done) ->
@@ -107,8 +107,8 @@ describe "Passive Skill Data Access Object", ->
 
   describe "#updatePassiveSkill", ->
     before (done) ->
-      dbClient.insert 'insert into passiveSkill (id, cardId, tableId, value, createTime) value (?, ?, ?, ?, ?)', 
-        [id, cardId, tableId, value, Date.now()], -> done()
+      dbClient.insert 'insert into passiveSkill (id, cardId, name, value, createTime) value (?, ?, ?, ?, ?)', 
+        [id, cardId, name, value, Date.now()], -> done()
 
     after (done) ->
       dbClient.delete 'delete from passiveSkill where id =?', [id], -> done()
@@ -116,7 +116,7 @@ describe "Passive Skill Data Access Object", ->
     it "should can be updated a passive skill attibutes", (done) ->
       dao.passiveSkill.updatePassiveSkillById id, {
         cardId: 2
-        tableId: 2
+        name: 2
         value: '2'
       }, (err, res) ->
         should.strictEqual null, err
@@ -126,7 +126,7 @@ describe "Passive Skill Data Access Object", ->
     it "should return false when passive skill not exists", (done) ->
       dao.passiveSkill.updatePassiveSkillById id+1000, {
         cardId: 2
-        tableId: 2
+        name: 2
         value: 'value'
       }, (err, res) ->
         should.strictEqual null, err

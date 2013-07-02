@@ -16,12 +16,13 @@
  * delete
  * */
 
-
 var sqlHelper = require("./sqlHelper");
 var dbClient = require("pomelo").app.get("dbClient");
 var logger = require("pomelo-logger").getLogger(__filename);
 var Player = require("../../domain/player");
 var playerSync = require("./mapping/playerSync");
+var cardDao = require("./cardDao");
+var async = require('async');
 
 var getPlayerObject = function (res) {
     var player = new Player({
@@ -78,39 +79,6 @@ var playerDao = {
                     areaId: param.areaId,
                     name: param.name
                 }));
-            }
-        });
-    },
-
-    /*
-     * 根据 id 更新一条 player 记录
-     * @param {number} id 需要更新的记录号
-     * @param {object} param 字面量，更新需要的数据
-     * @param {function} cb  回调函数
-     * */
-    updatePlayerById: function (id, param, cb) {
-        if (typeof (id) == "undefined" || typeof (param) == "undefined") {
-            cb("param error", null);
-        }
-
-        var _ref = sqlHelper.updateSql("player", ["id", id], param);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.update(sql, args, function (err, res) {
-            if (err) {
-                logger.error("[playerDao.updatePlayerById faild] ", err.stack);
-
-                return cb({
-                    code: err.code,
-                    msg: err.message
-                }, null);
-            } else {
-                if (!!res && res.affectedRows > 0) {
-                    return cb(null, true);
-                } else {
-                    return cb(null, false);
-                }
             }
         });
     },
@@ -180,6 +148,32 @@ var playerDao = {
             }
         });
     },
+
+    /*
+     * 根据 id 查找一条 player 记录, 包括所有的卡牌等其他信息
+     * @param {number} id 需要查找的记录号
+     * @param {function} cb  回调函数
+     * */
+    getPlayerInfo: function (id, cb) {
+        async.parallel([
+            function (callback) {
+                playerDao.getPlayerById(id, callback);
+            },
+            function (callback) {
+                cardDao.getCardByPlayerId(id, callback);
+            }
+        ], function (err, results) {
+            if (err !== null) {
+                cb(err, null)
+            }
+
+            var player = results[0];
+            var cards = results[1];
+            player.addCards(cards);
+            cb(null, player);
+        });
+    },
+
 
     /*
      * 根据 id 删除一条 player 记录

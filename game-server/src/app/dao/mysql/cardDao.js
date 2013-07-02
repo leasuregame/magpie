@@ -5,8 +5,6 @@
  * Time: 下午5:13
  * To change this template use File | Settings | File Templates.
  */
-
-
 /*
  * card dao
  *
@@ -15,13 +13,14 @@
  * select
  * delete
  * */
-
-
 var sqlHelper = require("./sqlHelper");
 var dbClient = require("pomelo").app.get("dbClient");
 var logger = require("pomelo-logger").getLogger(__filename);
 var Card = require("../../domain/card");
 var cardSync = require("./mapping/cardSync");
+var PassiveSkill = require("../../domain/passiveSkill");
+var passiveSkillDao = require('./passiveSkillDao');
+var async = require('async');
 
 var getCardObject = function (res) {
     var card = new Card({
@@ -67,7 +66,9 @@ var cardDao = {
                     msg: err.message
                 }, null);
             } else {
-                return cb(null, {id: res.insertId});
+                return cb(null, {
+                    id: res.insertId
+                });
             }
         });
     },
@@ -96,11 +97,32 @@ var cardDao = {
                     msg: err.message
                 }, null);
             }
-            if (!!res && res.affectedRows > 0) {
+            if ( !! res && res.affectedRows > 0) {
                 return cb(null, true);
             } else {
                 return cb(null, false);
             }
+        });
+    },
+
+    getCardInfo: function (id, cb) {
+        async.parallel([
+            function (callback) {
+                cardDao.getCardById(id, callback);
+            },
+            function (callback) {
+                passiveSkillDao.getPassiveSkillByCardId(id, callback);
+            }
+        ], function (err, results) {
+            if (err !== null) {
+                cb(err, null)
+            }
+
+            var card = results[0];
+            var pss = results[1];
+
+            card.addPassiveSkill(pss);
+            cb(null, card);
         });
     },
 
@@ -144,32 +166,40 @@ var cardDao = {
      * */
     getCardByPlayerId: function (playerId, cb) {
         if (typeof (playerId) == "undefined") {
-            return cb("param error", null);
+            throw new Error("cardDao.getCardByPlayerId playerId is undefined");
         }
-
-        var _ref = sqlHelper.selectSql("card", ["playerId", playerId]);
+        var _ref = sqlHelper.selectSql("card", ["id", id]);
         var sql = _ref[0];
         var args = _ref[1];
 
-        return dbClient.query(sql, args, function (err, res) {
-            if (err) {
-                logger.error("[cardDao.getCardByPlayerId faild] ", err.stack);
-
-                return cb({
-                    code: err.code,
-                    msg: err.message
-                }, null);
-            } else if (res) {
+        async.waterfall([
+            function (callback) {
+                dbClient.query(sql, args, callback);
+            },
+            function (rows, callback) {
                 var cardList = [];
-                var len = res.length;
+                async.each(rows, function (row, done) {
+                    var card = new Card(row);
+                    passiveSkillDao.getPassiveSkillByCardId(card.id, function (err, ps) {
+                        if (err) {
+                            done(err);
+                            return;
+                        }
 
-                for (var i = 0; i < len; ++i) {
-                    cardList.push(getCardObject(res[i]));
-                }
-
-                return cb(null, cardList);
+                        var ps = new PassiveSkill(ps);
+                        card.addPassiveSkill(ps);
+                        cardList.push(card);
+                        done();
+                    });
+                }, function (err) {
+                    if (err) {
+                        cb(err, null)
+                    } else {
+                        cb(null, cardList)
+                    }
+                });
             }
-        });
+        ]);
     },
 
     /*

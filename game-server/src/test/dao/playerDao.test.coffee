@@ -2,6 +2,7 @@ require './setup'
 app = require('pomelo').app
 dao = require('../../app/dao').init('mysql')
 dbClient = app.get('dbClient')
+async = require 'async'
 should = require 'should'
 
 describe "Player Dao Access Object", ->
@@ -102,7 +103,50 @@ describe "Player Dao Access Object", ->
           done()
 
     describe "get all player info", ->
-      it "should can be got all the player infomation", ->
+      _pid = 1000
+      now = Date.now()
+      
+      before (done) ->
+        async.series([
+          (cb) -> dbClient.insert 'insert into player (id, userId, areaId, name, createTime) values (?,?,?,?,?)', [_pid, uid, areaId, name+'__', now], cb
+          
+          (cb) -> dbClient.insert 'insert into card (id, playerId, tableId, createTime) values (?,?,?,?)', [1, _pid, 1, now], cb
+          (cb) -> dbClient.insert 'insert into passiveSkill (id, cardId, name, value, createTime) values (?,?,?,?,?)', [1, 1, 'hp_improve', 10, now], cb
+          
+          (cb) -> dbClient.insert 'insert into card (id, playerId, tableId, createTime) values (?,?,?,?)', [2, _pid, 2, now], cb
+          (cb) -> dbClient.insert 'insert into passiveSkill (id, cardId, name, value, createTime) values (?,?,?,?,?)', [2, 2, 'hp_improve', 10, now], cb
+
+          (cb) -> dbClient.insert 'insert into card (id, playerId, tableId, createTime) values (?,?,?,?)', [3, _pid, 3, now], cb
+          (cb) -> dbClient.insert 'insert into passiveSkill (id, cardId, name, value, createTime) values (?,?,?,?,?)', [3, 3, 'hp_improve', 10, now], cb
+
+          (cb) -> dbClient.insert 'insert into card (id, playerId, tableId, createTime) values (?,?,?,?)', [4, _pid, 4, now], cb
+          (cb) -> dbClient.insert 'insert into passiveSkill (id, cardId, name, value, createTime) values (?,?,?,?,?)', [4, 4, 'hp_improve', 10, now], cb
+
+          (cb) -> dbClient.insert 'insert into card (id, playerId, tableId, createTime) values (?,?,?,?)', [5, _pid, 5, now], cb
+          (cb) -> dbClient.insert 'insert into passiveSkill (id, cardId, name, value, createTime) values (?,?,?,?,?)', [5, 5, 'hp_improve', 10, now], cb
+          ], (err, res) -> 
+            if err
+              console.log '================================================', err
+
+            console.log 'all data inserted........................'
+            done()
+        )
+
+      after (done) ->
+        dbClient.delete 'delete from player where id = ?', [_pid], ->
+          dbClient.delete 'delete from card', ->
+            dbClient.delete 'delete from passiveSkill', -> done()
+          
+      it "should can be got all the player infomation", (done) ->
+        dao.player.getPlayerInfo _pid, (err, player) ->
+          should.strictEqual null, err
+          player.should.be.equal({})
+          player.should.be.a('object')
+          player.userId.should.be.equal(uid)
+          player.name.should.be.equal(name+'__')
+          Object.keys(player.cardList).length.should.be.equal(5)
+          
+          done()
 
   describe "#deletePlayer", ->
 

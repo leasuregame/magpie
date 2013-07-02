@@ -1,3 +1,4 @@
+dao = require('../../../app/dao').init('mysql')
 Player = require '../../app/battle/player'
 Hero = require '../../app/battle/hero'
 Matrix = require '../../app/battle/matrix'

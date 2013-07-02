@@ -50,10 +50,10 @@ var Card = (function (_super) {
         }
     };
 
-    Card.prototype.addPassiveSkills = function (pss) {
-        var self = this;
-        pss.forEach(function (ps) {
-            self.passiveSkills[ps.id] = ps;
+    Card.prototype.addPassiveSkills = function(passiveSkills) {
+        self = this;
+        passiveSkills.forEach(function(ps){
+            self.addPassiveSkill(ps);
         });
     };
 

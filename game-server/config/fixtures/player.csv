@@ -1,0 +1,5 @@
+id,createTime,userId,areaId,name,power,lv,exp,money,gold,lineUp,ability,task,pass,passMark
+1,,1,1,Linc,100,9,300,10000,200,,,,,
+2,,2,1,Mike,90,10,400,10000,200,,,,,
+3,,3,1,Marhon,120,11,410,10000,200,,,,,
+4,,4,1,Arthur,110,11,420,10000,200,,,,,

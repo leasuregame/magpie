@@ -49,11 +49,17 @@ var Player = (function (_super) {
 
     Player.prototype.init = function () {
         this.cards = {};
+        this.ownBattleLogList = {};
+        this.enemyBattleLogList = {};
     };
 
-    Player.prototype.addCard = function (card) {
-        if (typeof card.id !== 'undefined' && typeof card.id !== null) {
-            this.cards[card.id] = card;
+    Player.prototype.loadAllData = function() {
+
+    };
+
+    Player.prototype.addCard = function(card) {
+        if (typeof card.id !== 'undefined' && card.id !== null){
+            this.cards[card.id] = card
         }
     };
 

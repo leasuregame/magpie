@@ -8,7 +8,7 @@ class Manager
     progress = player.task.progress
     task = table.getTableItem('task', task_id)
     exp_to_upgrade = table.getTableItem('player_upgrade', player.lv)
-
+    console.log player, task, exp_to_upgrade
     res = {
       result: 'none'
       power_consume: task.power_consume

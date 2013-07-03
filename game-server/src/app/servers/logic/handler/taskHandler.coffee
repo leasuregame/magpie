@@ -10,17 +10,20 @@ Handler = (@app) ->
 Handler::explore = (msg, session, next) ->
   console.log 'explore start: ', msg
 
-  playerId = session.get('playerId')
+  playerId = session.get('playerId') or msg.playerId
   data = null
   player = null
 
   getPlayer = (cb) ->
-    playerManager.getPlayer {pid: playerId}, cb
+    console.log 'getting player...'
+    playerManager.getPlayerInfo {pid: playerId}, cb
 
   executeExpolore = (player, cb) ->
+    console.log 'player got.'
     taskManager.explore player, cb
 
   checkFight = (_player, taskId, data, cb) =>
+    console.log 'explored. checkFight...'
     player = _player
     data = data
     if data.result is 'fight'

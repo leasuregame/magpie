@@ -4,7 +4,7 @@ var fs = require('fs');
 var path = require('path');
 
 FIXTURES_DIR = path.join(__dirname, '..', 'config', 'fixtures/')
-DELIMITER = ',';
+DELIMITER = ';';
 
 var connection = mysql.createConnection({
   host: config.host,

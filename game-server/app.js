@@ -18,13 +18,10 @@ app.configure('production|development', 'connector', function () {
     app.filter(pomelo.filters.timeout());
 });
 
-app.configure('production|development', 'connector|battle', function () {
-    app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
-    app.loadConfig('ttserver', app.getBase() + '/config/ttserver.json');
-});
-
 // configure sql database
-app.configure('production|development', 'connector|battle', function() {
+app.configure('production|development', 'connector|battle|logic', function() {
+  app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
+  
   var dbclient = require('./app/dao/mysql/mysql').init(app);
   app.set('dbClient', dbclient);
   //app.load(pomelo.sync, {path:__dirname + '/app/dao/mapping', dbclient: dbclient});

@@ -29,14 +29,13 @@ class Manager
 
         playerList.put(player.id, player)
         cb(null, player)
-        return
 
     if params.name?
       return
 
   @getPlayerInfo: (params, cb) ->
-    player = null
-    dao.player.getPlayerInfo params.id, (err, player) ->
+    dao.player.getPlayerInfo params.pid, (err, player) ->
+      console.log 'get player: ', err, player, params
       if err isnt null
         cb(err, null)
         return

@@ -43,17 +43,23 @@ app.get('/removeuser', function(req, res){
   });
 });
 
-// app.get('/removeplayer', function(req, res){
-//   playerId = req.params.playerId;
-//   tt.del(playerId, function(err, result){
-//     if (err){
-//       res.send({code: 500, msg: 'faild to delete player by id: ' + playerId});
-//     }
-//     else{
-//       res.send({code: 200});
-//     }
-//   });
-// });
+app.get('/addPlayer', function(req, res){
+  playerId = req.query.playerId;
+  userId = req.query.userId;
+  areaId = req.query.areaId;
+  name = req.query.name;
+  task = JSON.stringify({id: 1, progress: 2});
+
+  mysql.query('insert into player (id, userId, areaId, name, task, createTime) values (?,?,?,?,?,?)', 
+    [playerId, userId, areaId, name, task, Date.now()], function(err, result) {
+    if (err){
+      res.send({code: 500, msg: 'faild to add player with parameters: ' + JSON.stringify(req.query)});
+    }
+    else{
+      res.send({code: 200});
+    }
+  });
+});
 
 app.get('/removePlayer', function(req, res){
   playerId = req.query.pid;

@@ -43,7 +43,7 @@ class Hero extends Module
     card = tab.getTableItem('cards', @card_id)
     factor = tab.getTableItem('factors', @lv)?.factor
     if not card
-      throw new Error("配置表错误：不能从表 #{@constructor.table} 中找到卡牌信息，卡牌id为 #{@card_id}")
+      throw new Error("配置表错误：不能从表 cards 中找到卡牌信息，卡牌id为 #{@card_id}")
 
     @name = card.name
     @init_atk = @atk = parseInt(card.atk * factor)

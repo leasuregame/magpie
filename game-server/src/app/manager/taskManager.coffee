@@ -8,7 +8,7 @@ class Manager
     progress = player.task.progress
     task = table.getTableItem('task', task_id)
     exp_to_upgrade = table.getTableItem('player_upgrade', player.lv)
-    console.log player, task, exp_to_upgrade
+
     res = {
       result: 'none'
       power_consume: task.power_consume
@@ -34,7 +34,7 @@ class Manager
     player.increase('money', task.coins_obtain)
 
     # 判断是否升级
-    if (player.exp + task.exp_obtain) >= exp_to_upgrade
+    if (player.exp + task.exp_obtain) >= exp_to_upgrade.exp
       player.exp = 0
       player.increase('lv')
       res.upgrade = true

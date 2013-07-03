@@ -53,7 +53,7 @@ test-battle: build
 test-api: build
 	node ./test/jasmine/app.js
 
-runserver: build createtables loaddata
+runserver: build
 	./node_modules/.bin/pomelo start development
 
 starttt:

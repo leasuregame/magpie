@@ -1,10 +1,9 @@
-dao = require('../../../app/dao').init('mysql')
 Player = require '../../app/battle/player'
 Hero = require '../../app/battle/hero'
 Matrix = require '../../app/battle/matrix'
 should = require 'should'
 
-describe 'Player', ->
+describe 'Player', -> 
   player = new Player {
     id: 'aa20df72-c748-11e2-a527-377d32fa9d96',
     lv: 10,

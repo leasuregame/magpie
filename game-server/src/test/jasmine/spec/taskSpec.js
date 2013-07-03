@@ -41,6 +41,12 @@ describe("Battle Server # ", function() {
   describe("Task Handler", function(){
 
     describe("logic.taskHandler.explore", function(){
+      // it("add player", function(){
+      //   $.get('/addPlayer', {playerId: '5', userId: '1', areaId: '1', name: 'wuzhanghai'}, function(data){
+      //     expect(data).toEqual({code: 200});
+      //   });
+      // });
+
       it("should can be return the correct battle log", function(){
         request('logic.taskHandler.explore', {playerId: '1'}, function(data){
           //expect(data.code).toEqual(200);

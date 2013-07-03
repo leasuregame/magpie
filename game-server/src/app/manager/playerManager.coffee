@@ -35,7 +35,6 @@ class Manager
 
   @getPlayerInfo: (params, cb) ->
     dao.player.getPlayerInfo params.pid, (err, player) ->
-      console.log 'get player: ', err, player, params
       if err isnt null
         cb(err, null)
         return

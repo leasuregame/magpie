@@ -10,7 +10,6 @@ class Player extends Module
   @table: 'player'
 
   init: (entity) ->
-    console.log 'player: ----', entity
     for key, val of entity
       @[key] = val if entity.hasOwnProperty(key)
 
@@ -59,7 +58,7 @@ class Player extends Module
         if _h
           @matrix.set(pos, _h)
         else
-          logger 'you have not such card with id is ' + card_id
+          logger.info 'you have not such card with id is ' + card_id
     # else
     #   for i in [0...@heros.length]
     #     @matrix.set(i, @heros[i])

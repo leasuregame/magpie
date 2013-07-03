@@ -14,7 +14,7 @@ describe 'Hero', ->
         id: 1
         lv: 10
         star: 1
-        card_id: 1
+        tableId: 1
         })
     
     hero.id.should.equal(1)
@@ -29,7 +29,7 @@ describe 'Hero', ->
         id: 1
         lv: 10
         star: 1
-        card_id: 1
+        tableId: 1
         skill_lv: 2
         })
     hero.death().should.be.false
@@ -43,7 +43,7 @@ describe 'Hero', ->
         id: 1
         lv: 10
         star: 3
-        card_id: 8
+        tableId: 8
         skill_lv: 2
       )
 

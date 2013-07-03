@@ -5,7 +5,8 @@ describe 'load data from xml file', ->
   it 'loadtable from xml file', ->
     res = loadtable(
       TABLE_DIR + 'skills.xml',
-      TABLE_DIR + 'cards.xml'
+      TABLE_DIR + 'cards.xml',
+      TABLE_DIR + 'tasks.xml'
     )
     
-    #res.exports.should.equal(null)
+    res.exports.should.equal(null)

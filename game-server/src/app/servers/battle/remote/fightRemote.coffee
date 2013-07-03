@@ -2,6 +2,7 @@ table = require '../../../manager/table'
 Battle = require '../../../battle/battle'
 battleLog = require '../../../battle/battle_log'
 Player = require '../../../battle/player'
+VirtualPlayer = require '../../../battle/virtual_player'
 async = require 'async'
 playerManager = require '../../../manager/playerManager'
 
@@ -16,7 +17,7 @@ exports.pve = (args, callback) ->
     
     (playerEntity, cb) ->
       attacker = new Player(playerEntity)
-      defender = new Player(taskData)
+      defender = new VirtualPlayer(taskData)
 
       battleLog = clear()
       battle = new Battle(attacker, defender)

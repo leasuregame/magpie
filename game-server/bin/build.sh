@@ -19,7 +19,7 @@ cd ..
 # done
 
 echo 'copy tables data...'
-cp -r ./src/test/battle/tables ./test/battle/table
+cp -r ./src/test/battle/tables ./test/battle
 cp -r ./src/test/jasmine ./test
 
 echo 'Done!'

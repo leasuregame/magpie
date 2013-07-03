@@ -49,13 +49,8 @@ var Player = (function (_super) {
 
     Player.prototype.init = function () {
         this.cards = {};
-        this.ownBattleLogList = {};
-        this.enemyBattleLogList = {};
     };
 
-    Player.prototype.loadAllData = function() {
-
-    };
 
     Player.prototype.addCard = function(card) {
         if (typeof card.id !== 'undefined' && card.id !== null){
@@ -69,6 +64,12 @@ var Player = (function (_super) {
             self.addCard(card);
         });
     };
+
+    Player.prototype.consumePower = function (value) {
+        var power = this.get('power');
+        this.set('power', _.max(power - value, 0))
+    };
+
 
     Player.prototype.getPassMarkByIndex = function (index) {
         if (index < 1) {

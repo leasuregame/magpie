@@ -67,7 +67,7 @@ var Player = (function (_super) {
 
     Player.prototype.consumePower = function (value) {
         var power = this.get('power');
-        this.set('power', _.max(power - value, 0))
+        this.set('power', _.max([power - value, 0]))
     };
 
 

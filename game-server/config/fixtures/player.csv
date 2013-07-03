@@ -1,5 +1,5 @@
 id;createTime;userId;areaId;name;power;lv;exp;money;gold;lineUp;ability;task;pass;passMark
-1;0;1;1;Linc;100;9;300;10000;200;;;"{""id"":1, ""progress"": 2}";;
-2;0;2;1;Mike;90;10;400;10000;200;;;"{""id"":1, ""progress"": 2}";;
+1;0;1;1;Linc;100;9;300;10000;200;00:1,01:2,02:3,10:4,11:5;;"{""id"":1, ""progress"": 2}";;
+2;0;2;1;Mike;90;10;400;10000;200;00:6,01:7,02:8,10:9,12:10;;"{""id"":1, ""progress"": 2}";;
 3;0;3;1;Marhon;120;11;410;10000;200;;;"{""id"":1, ""progress"": 2}";;
 4;0;4;1;Arthur;110;11;420;10000;200;;;"{""id"":1, ""progress"": 2}";;

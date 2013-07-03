@@ -11,7 +11,7 @@ Handler::explore = (msg, session, next) ->
   #console.log 'explore start: ', msg
 
   playerId = session.get('playerId') or msg.playerId
-  data = null
+  rewards = null
   player = null
 
   getPlayer = (cb) ->
@@ -25,16 +25,17 @@ Handler::explore = (msg, session, next) ->
   checkFight = (_player, data, cb) =>
     #console.log 'explored. checkFight...'
     player = _player
-    data = data
-    if data.result is 'fight'
+    rewards = data
+    if rewards.result is 'fight'
       @app.rpc.battle.fightRemote.pve( session, {pid: player.id, taskId: player.task.id}, cb )
     else
       console.log 'not fight', cb, data
       cb(null, null)
 
   addBattleLogIfFight = (bl, cb) ->
+    console.log 'add bl: ', bl, rewards
     if bl?
-      data.battle_log = bl
+      rewards.battle_log = bl
     cb(null)
 
   async.waterfall([
@@ -49,5 +50,5 @@ Handler::explore = (msg, session, next) ->
         return
 
       player.save()
-      next(null, {code: 200, msg: data})
+      next(null, {code: 200, msg: rewards})
   )

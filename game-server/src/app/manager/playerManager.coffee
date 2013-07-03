@@ -11,29 +11,13 @@ class Manager
       if err isnt null
         cb(err, null)
         return
-      
-      playerList.put(player.id, player)
+
       cb(null, player)
 
-  @getPlayer: (params, cb) ->
-    if params.pid?
-      _player = playerList.get(params.pid)
-      if player?
-        cb(null, _player)
-        return
-
-      dao.player.getPlayerById params.pid, (err, player) ->
-        if err isnt null
-          cb(err, null)
-          return
-
-        playerList.put(player.id, player)
-        cb(null, player)
-
-    if params.name?
-      return
-
   @getPlayerInfo: (params, cb) ->
+    _player = playerList.get(params.pid)
+    return cb(null, _player) if _player?
+
     dao.player.getPlayerInfo params.pid, (err, player) ->
       if err isnt null
         cb(err, null)
@@ -44,6 +28,15 @@ class Manager
 
   @getPlayers: (ids, cb) ->
     results = {}
+    _ids = _.clone(ids)
+    for id, i in _ids
+      _player = playerList.get(id)
+      if _player?
+        results[id] = _player
+        ids.splice(i, 1)
+
+    return cb(null, results) if ids.length is 0
+
     async.each( 
       ids, 
       (id, done) ->

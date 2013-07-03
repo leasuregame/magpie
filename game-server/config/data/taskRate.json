@@ -2,9 +2,9 @@
   "mop_up_coin_obtain": 30, 
   "coin_quantity": 10,      
   "fight": 20,              
-  "precious_box": 5,        
+  "precious_box": 20,        
   "card_drop": {            
-    "start": {
+    "star": {
       "one": 50,
       "two": 50
     },
@@ -17,7 +17,7 @@
     }
   },
   "open_box": {             
-    "start": {
+    "star": {
       "one": 10,
       "two": 15,
       "three": 70,

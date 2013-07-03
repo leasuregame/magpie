@@ -60,10 +60,10 @@ describe("Battle Server # ", function() {
 
   });
 
-  describe("Tear Down", function(){
-    it('disconnect', function(){
-      pomelo.disconnect();
-    });
-  })
+  // describe("Tear Down", function(){
+  //   it('disconnect', function(){
+  //     pomelo.disconnect();
+  //   });
+  // })
 
 });

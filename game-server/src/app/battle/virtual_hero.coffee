@@ -21,8 +21,8 @@ class VirtualHero extends Hero
     @star = 3
     @skill_id = card.skill_id
     @sp_value = [
-      {name: 'crit', value: card.crit}
-      {name: 'dodge', value: card.dodge}
+      {name: 'crit', value: card.crit_rate}
+      {name: 'dodge', value: card.dodge_rate}
     ]
 
 module.exports = VirtualHero

@@ -35,7 +35,7 @@ class Manager
 
     # 判断是否升级
     if (player.exp + task.exp_obtain) >= exp_to_upgrade.exp
-      player.exp = 0
+      player.set('exp', 0)
       player.increase('lv')
       res.upgrade = true
     else

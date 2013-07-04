@@ -8,52 +8,24 @@
 
 
 /*
-* 抽卡
-* */
+ * 抽卡
+ * */
 
 
 var _ = require("underscore");
 
-var lottery = function() {
-    var cardList1 = [];
-    var cardList2 = [];
-    var cardList3 = [];
-
-    for(var i = 1; i <= 250; ++i) {
-        var index = (i - 1) % 5;
-
-        if(index >= 0 && index <= 2) {
-            cardList1.push(i);
-        }
-
-        if(index >= 1 && index <= 3) {
-            cardList2.push(i);
-        }
-
-        if(index >= 2 && index <= 4) {
-            cardList3.push(i);
-        }
-    }
-
-    var getRandomCard = function(cardList) {
-        var len = cardList.length;
-
-        return cardList(0, len - 1);
-    }
-
-    this.lottery = function(level) {
-        if(level == 1) {
-            return getRandomCard(cardList1);
-        }
-
-        if(level == 2) {
-            return getRandomCard(cardList2);
-        }
-
-        if(level == 3) {
-            return getRandomCard(cardList3);
-        }
-
+/*
+ * 抽卡，传入参数抽卡种类
+ * 1：低级抽卡
+ * 2：中级抽卡
+ * 3：高级抽卡
+ * */
+var lottery = function (level) {
+    if (level < 1 || level > 3) {
         return 0;
     }
+
+    return _.random(0, 49) * 5 + _.random(0, 2) + level;
 }
+
+module.exports = lottery;

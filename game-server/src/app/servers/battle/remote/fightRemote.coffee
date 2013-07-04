@@ -19,9 +19,6 @@ exports.pve = (args, callback) ->
       attacker = new Player(playerEntity)
       defender = new VirtualPlayer(taskData)
 
-      console.log 'attacker, ', attacker
-      console.log 'defender, ', defender
-
       battleLog.clear()
       battle = new Battle(attacker, defender)
       battle.process()
@@ -29,7 +26,6 @@ exports.pve = (args, callback) ->
       cb(null, JSON.stringify battleLog.reports())
     ],
     (err, bl) ->
-      console.log 'pve err: ', err
       if err
         callback(err, null)
       else

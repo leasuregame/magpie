@@ -37,10 +37,9 @@ Handler::explore = (msg, session, next) ->
     executeExpolore,
     checkFight,
     addBattleLogIfFight
-    ], 
-    (err) ->
+    ], (err) ->
       if err
-        next(err, {code: 500})
+        next(err, {code: 500, msg: err.msg})
         return
 
       player.save()

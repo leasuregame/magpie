@@ -6,6 +6,7 @@ VirtualPlayer = require '../../../battle/virtual_player'
 async = require 'async'
 playerManager = require '../../../manager/playerManager'
 taskRate = require '../../../../config/data/taskRate'
+cardConfig = require '../../../../config/data/card'
 _ = require 'underscore'
 
 exports.pve = (args, callback) ->
@@ -29,7 +30,7 @@ exports.pve = (args, callback) ->
       battle = new Battle(attacker, defender)
       battle.process()
 
-      cb(null, JSON.stringify battleLog.reports())
+      cb(null,  battleLog.reports())
     ],
     (err, bl) ->
       if err
@@ -37,6 +38,9 @@ exports.pve = (args, callback) ->
       
       if bl.winner is 'own'
         rewardCards(bl)
+
+      addCardsToPlayer(playerEntity, bl.cards)
+      playerEntity.save()
 
       callback(null, bl)
   )
@@ -52,7 +56,7 @@ rewardCards = (battleLog, cardIds, count) ->
     battleLog.addCard {
       id: id
       star: star
-      level: level
+      lv: level
     }
 
 randomValue = (values, rates) ->
@@ -71,3 +75,12 @@ randomValue = (values, rates) ->
 
   # default
   values[0]
+
+addCardsToPlayer = (player, cards) ->
+  for card in cards
+    player.addCard(
+      tableId: card.id
+      lv: card.lv
+      star: card.star
+      type: cardConfig.TYPE.MONSTER
+      )

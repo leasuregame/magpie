@@ -11,13 +11,49 @@ test:
 		--require should \
 		--reporter spec \
 		--ui bdd \
-		./src/app/test/$(files)
+		--recursive \
+		./src/test/$(files)
 
-testserver:
+test-dao: build
+	./node_modules/.bin/mocha \
+		--compilers coffee:coffee-script \
+		--require should \
+		--reporter spec \
+		--ui bdd \
+		--recursive \
+		./test/dao/$(files)
+
+test-mapping: build
+	./node_modules/.bin/mocha \
+		--compilers coffee:coffee-script \
+		--require should \
+		--reporter spec \
+		--ui bdd \
+		--recursive \
+		./test/mapping/$(files)
+
+test-domain: build
+	./node_modules/.bin/mocha \
+		--compilers coffee:coffee-script \
+		--require should \
+		--reporter spec \
+		--ui bdd \
+		--recursive \
+		./test/domain/$(files)
+
+test-battle: build
+	./node_modules/.bin/mocha \
+		--compilers coffee:coffee-script \
+		--require should \
+		--reporter spec \
+		--ui bdd \
+		--recursive \
+		./test/battle/$(files)
+
+test-api: build
 	node ./test/jasmine/app.js
 
-runserver:
-	sh ./bin/build.sh
+runserver: build
 	./node_modules/.bin/pomelo start development
 
 starttt:

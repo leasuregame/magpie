@@ -1,6 +1,7 @@
-userDao = require '../../../manager/userDao'
 Code = require '../../../../../shared/code'
 Resources = require '../../../../../shared/resources'
+
+dao = require('pomelo').app.get('dao')
 
 module.exports = (app) ->
   new Handler(app)
@@ -8,13 +9,13 @@ module.exports = (app) ->
 Handler = (@app) ->
 
 Handler::register = (msg, session, next) ->
-  email = msg.email
+  account = msg.account
   password = msg.password
   
-  if not email or email is '' or not password or password is ''
+  if not account or account is '' or not password or password is ''
     next(null, {code: 501, msg: Resources.ERROR.INVALID_PARAMS})
   else
-    userDao.createUser email, password, '', (err, user) ->
+    dao.user.createUser account, password, '', (err, user) ->
       if err or not user
         if err and err.code is "ER_DUP_ENTRY"
           next(null, {code: 501, msg: Resources.ERROR.USER_EXISTS})
@@ -24,10 +25,10 @@ Handler::register = (msg, session, next) ->
         next(null, {code: 200, uid: user.id})
 
 Handler::login = (msg, session, next) ->
-  email = msg.email
+  account = msg.account
   password = msg.password
 
-  userDao.getUserByEmail email, (err, user) =>
+  dao.user.getUserByAccount account, (err, user) =>
     if err or not user
       next(null, {code: 501})
       return
@@ -47,7 +48,7 @@ Handler::setName = (msg, session, next) ->
   username = msg.name
   uid = msg.uid or session.uid
 
-  userDao.updateUser uid, {name: username}, (err, user) ->
+  dao.user.updateUser uid, {name: username}, (err, user) ->
     if err or not user
       next(null, {code: 501, msg: err.msg})
       return 

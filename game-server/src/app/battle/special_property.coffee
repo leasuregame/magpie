@@ -19,7 +19,6 @@ class SpecialProperty
       _pro = passive_propertys[a['name']]
       if _pro? 
         tag['init_'+_pro] = tag[_pro] += parseInt( tag[_pro] * a['value'] / 100 )
-        log.error tag.name, tag.hp, tag.init_hp
 
   has: (name) ->
     !!_.findWhere @_attrs, {name: name}
@@ -43,9 +42,8 @@ class SpecialProperty
     parseInt( val * ( 1 - @get('dmg_rebound')/100 ) )
 
   _hit: (type) ->
-    return false if not @has('crit') 
-
-    utility.hitRate parseInt(@get('crit'))
+    return false if not @has(type) 
+    utility.hitRate parseInt(@get(type))
 
 passive_propertys = 
   'atk_improve': 'atk'

@@ -90,7 +90,7 @@ var Player = (function (_super) {
         var mask = 1;
         var _passMark = this.passMark;
 
-        for (var i = 0; i < _pass; ++i) {
+        for (var i = 0; i < this.pass; ++i) {
             _passMark |= mask;
             mask <<= 1;
         }

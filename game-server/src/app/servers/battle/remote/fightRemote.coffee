@@ -9,7 +9,8 @@ playerManager = require '../../../manager/playerManager'
 exports.pve = (args, callback) ->
   pid = args.pid
   taskId = args.taskId
-  taskData = table.getTableItem 'task_config', taskId
+  table = args.table
+  taskData = table.getTableItem table, taskId
 
   async.waterfall([
     (cb) ->

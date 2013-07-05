@@ -1,4 +1,3 @@
-userDao = require '../../../manager/userDao'
 
 module.exports = (app) ->
   new Handler(app)

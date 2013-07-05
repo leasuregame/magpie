@@ -1,7 +1,6 @@
 _ = require 'underscore'
 
-exports = module.exports = 
-
+Utility = 
   hitRate: (rate) ->
     rate = parseInt(rate)
     if isNaN(rate) or rate < 0 and rate > 100
@@ -10,6 +9,9 @@ exports = module.exports =
     rd = _.random(0, 100)
     if rd <= rate then true else false
 
+  random: ->
+    _.random(0, 100)
+
   parseEffect: (value) ->
     pattern = /^\d+,\d+$/
     if not pattern.exec(value)
@@ -17,3 +19,32 @@ exports = module.exports =
 
     [base_val, lv_grow] = value.split(',')
     [parseInt(base_val), parseInt(lv_grow)]
+
+  extends: (child, parent) ->
+    for key of parent
+      child[key] = parent[key] if parent.hasOwnProperty(key)
+
+    ctor = ->
+      @constructor = child
+      return
+
+    ctor:: = parent::
+    child:: = new ctor()
+    child.__super__ = parent::
+    child
+
+module.exports = Utility
+
+# __extends = function(child, parent) { 
+#   for (var key in parent) {
+#    if (__hasProp.call(parent, key)) 
+#     child[key] = parent[key]; 
+#     } 
+#   function ctor() { 
+#     this.constructor = child; 
+#   } 
+#   ctor.prototype = parent.prototype; 
+#   child.prototype = new ctor(); 
+#   child.__super__ = parent.prototype; 
+#   return child; 
+# };

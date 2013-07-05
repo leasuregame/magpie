@@ -18,13 +18,13 @@ class Hero extends Module
   @table: 'cards'
 
   init: (attrs, player)->
+    console.log 'new card: ', attrs
     @player = player
     @id = attrs.id
     @lv = attrs.lv
-    @star = attrs.star
-    @card_id = attrs.card_id
-    @skill_lv = attrs.skill_lv or 1
-    @sp_value = attrs.sp_value or []
+    @card_id = attrs.tableId
+    @skill_lv = attrs.skillLv or 1
+    @sp_value = attrs.passiveSkills or []
     
     @dmg = 0 # 每次所受伤害的值，默认值为0
     @crit_factor = 1.5 # crit damage factor
@@ -33,6 +33,7 @@ class Hero extends Module
     @state = STATE_ORIGIN
 
     @skill = null
+    @sp = null
 
     @loadCardInfo()
     @loadSpecialProperty()
@@ -42,11 +43,12 @@ class Hero extends Module
     card = tab.getTableItem('cards', @card_id)
     factor = tab.getTableItem('factors', @lv)?.factor
     if not card
-      throw new Error("配置表错误：不能从表 #{@constructor.table} 中找到卡牌信息，卡牌id为 #{@card_id}")
+      throw new Error("配置表错误：不能从表 cards 中找到卡牌信息，卡牌id为 #{@card_id}")
 
     @name = card.name
     @init_atk = @atk = parseInt(card.atk * factor)
     @init_hp = @hp = parseInt(card.hp * factor)
+    @star = parseInt(card.star)
     @skill_id = card.skill_id
 
   loadSpecialProperty: ->
@@ -61,8 +63,8 @@ class Hero extends Module
       @skill = new Skill(@, @skill_setting)
 
   attack: (callback) ->
-    enemys = @skill.getTargets()
     if @skill? and @skill.check(enemys)
+      enemys = @skill.getTargets()
       @usingSkill(enemys, callback)
     else
       @normalAttack(callback)
@@ -76,10 +78,10 @@ class Hero extends Module
     @state is STATE_ATTACKED
 
   isDodge: ->
-    @sp.isDodge()
+    if @sp? then @sp.isDodge() else false
 
   isCrit: ->
-    @sp.isCrit()
+    if @sp? then @sp.isCrit() else false
 
   usingSkill: (enemys, callback)->
     if not enemys or not enemys.length > 0

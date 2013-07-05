@@ -1,7 +1,7 @@
 Module = require '../common/module'
 utility = require '../common/utility'
 _ = require 'underscore'
-log = require '../common/logger'
+log = require('pomelo-logger').getLogger(__filename)
 
 
 defautls = 
@@ -45,16 +45,12 @@ class Skill extends Module
   get_round_num: ->
     @_player()?.round_num
 
-  check: (tags)->
-    if @type in ['aoe', 'mult_heal']
-      log.warn @type, @scope
-      log.warn _.isArray(tags) and tags.length > 1
-      log.warn @_satisfy(tags)
+  check: ()->
+    utility.hitRate(@getRate()) and @_satisfy()
 
-    utility.hitRate(@getRate()) and @_satisfy(tags)
-
-  _satisfy: (tags)->
+  _satisfy: ()->
     if @type in ['aoe', 'mult_heal']
+      tags = @getTargets()
       if _.isArray(tags) and tags.length > 1
         return true
       else

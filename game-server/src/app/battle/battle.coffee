@@ -1,6 +1,5 @@
 battleLog = require './battle_log'
-log = require '../common/logger'
-
+log = require('pomelo-logger').getLogger(__filename)
 class Base
   constructor: (attacker, defender) ->
     @attacker = attacker
@@ -32,10 +31,10 @@ class Battle extends Base
       id: @defender.id
       name: @defender.name
       lv: @defender.lv
-      cards: @defender.cards()
+      cards: @defender.getCards()
     }
     battleLog.set('enemy', _enm)
-    battleLog.set('own', {cards: @attacker.cards()})
+    battleLog.set('own', {cards: @attacker.getCards()})
     log.info '    >>> 战斗开始 <<<    '
 
   execute: ->

@@ -6,22 +6,26 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 /*
  * login scene
  * */
 
+
 var LoginScene = cc.Scene.extend({
-    ctor: function () {
-        cc.log("LoginScene ctor");
-
-        this._super();
-    },
-
     onEnter: function () {
-        if (!this._super()) return false;
-
         cc.log("loginScene onEnter");
 
-        return true;
+        this._super();
     }
 })
+
+LoginScene.create = function() {
+    var ret = new LoginScene();
+
+    if(ret) {
+        return ret;
+    }
+
+    return null;
+}

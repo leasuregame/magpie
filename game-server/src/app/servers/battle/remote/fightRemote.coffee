@@ -11,10 +11,9 @@ _ = require 'underscore'
 
 exports.pve = (args, callback) ->
   pid = args.pid
-  taskId = args.taskId
-  table = args.table
-  taskData = table.getTableItem table, taskId
-  cardIds = taskData.cards.split('#')
+  tableId = args.tableId
+  tableName = args.table
+  taskData = table.getTableItem tableName, tableId
 
   playerEntity = null
   async.waterfall([
@@ -36,5 +35,5 @@ exports.pve = (args, callback) ->
       if err
         return callback(err, null)
       
-      callback(null, bl)
+      callback(null, bl.reports())
   )

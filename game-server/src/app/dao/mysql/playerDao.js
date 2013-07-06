@@ -126,7 +126,7 @@ var playerDao = {
         }
 
         playerDao._getPlayer({field: 'userId', value: uid}, cb);
-    }
+    },
 
     /*
      * 根据 id 查找一条 player 记录, 包括所有的卡牌等其他信息

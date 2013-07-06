@@ -1,7 +1,6 @@
 dao = require('pomelo').app.get('dao')
 Cache = require '../common/cache'
 async = require 'async'
-_ = require 'underscore'
 
 playerList = new Cache()
 

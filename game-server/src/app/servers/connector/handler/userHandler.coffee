@@ -15,7 +15,7 @@ Handler::register = (msg, session, next) ->
   if not account or account is '' or not password or password is ''
     next(null, {code: 501, msg: Resources.ERROR.INVALID_PARAMS})
   else
-    dao.user.createUser {account: account, password: password}, (err, user) ->
+    dao.user.createUser account, password, '', (err, user) ->
       if err or not user
         if err and err.code is "ER_DUP_ENTRY"
           next(null, {code: 501, msg: Resources.ERROR.USER_EXISTS})
@@ -42,8 +42,18 @@ Handler::login = (msg, session, next) ->
     session.on('close', onUserLeave)
 
     @app.rpc.message.messageRemote.addPlayer(session, user.id, @app.get('serverId'), null)
-    player = dao.player.
     next(null, {code: 200, uid: user.id})
+
+Handler::setName = (msg, session, next) ->
+  username = msg.name
+  uid = msg.uid or session.uid
+
+  dao.user.updateUser uid, {name: username}, (err, user) ->
+    if err or not user
+      next(null, {code: 501, msg: err.msg})
+      return 
+
+    next(null, {code: 200})
 
 onUserLeave = (session, reason) ->
   if not session or not session.uid

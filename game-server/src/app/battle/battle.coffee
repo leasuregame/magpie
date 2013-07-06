@@ -56,6 +56,9 @@ class Round extends Base
   increase_round_num: ->
     @round_num++
 
+  reset_round_num: ->
+    @round_num = 1
+
   setShootCount: ->
     @attacker.shootCount = @attacker.aliveHeros().length
     @defender.shootCount = @defender.aliveHeros().length
@@ -91,7 +94,7 @@ class Attack extends Base
 
     _attack = (atker, dfder) ->
       atker.attack (hero) ->
-        # bug, 当卡牌出手后，被秒了，出手次数比实际要出手的次数少了一次
+        # bug, 当卡牌出手后，没秒了，出手次数比实际要出手的次数少了一次
         if hero.death() and not hero.isAttacked()
           dfder.shootCount -= 1 
 
@@ -103,27 +106,5 @@ class Attack extends Base
     if @defender.shootCount > 0
       @defender.shootCount -= 1
       _attack( @defender, @attacker ) 
-
-
-    # if @attacker.shootCount > 0
-    #   @attacker.shootCount -= 1
-    #   @attacker.attack (hero) ->
-    #     if hero.death() and not hero.isAttacked()
-    #       @defender.shootCount -= 1
-
-    #     if @defender.shootCount > 0
-    #       @defender.shootCount -= 1
-    #       @defender.attack (hero) ->
-    #         if hero.death() and not hero.isAttacked()
-    #           @attacker.shootCount -= 1
-
-    # async.series [
-    #   (cb) ->
-    #     if @attacker.shootCount > 0
-    #       @attacker.shootCount -= 1
-    #       @attacker.attack (hero) ->
-    #         if hero.death() and not hero.isAttacked()
-    #           @defender.shootCount -= 1
-    # ]
 
 exports = module.exports = Battle

@@ -8,22 +8,22 @@ class Manager
   @explore: (player, cb) ->
     task_id = player.task.id
     progress = player.task.progress
-    taskData = table.getTableItem('task', task_id)
+    task = table.getTableItem('task', task_id)
     exp_to_upgrade = table.getTableItem('player_upgrade', player.lv)
 
     res = {
       result: 'none'
-      power_consume: taskData.power_consume
-      exp_obtain: taskData.exp_obtain
-      coins_obtain: taskData.coins_obtain
+      power_consume: task.power_consume
+      exp_obtain: task.exp_obtain
+      coins_obtain: task.coins_obtain
       upgrade: false
       open_box_card: null
       battle_log: null
     }
 
     # 检查是否体力充足
-    if player.power < taskData.power_consume
-      return cb({msg: '体力不足'}, null, null)
+    if player.power < task.power_consume
+      return cb({msg: '体力不足'}, null)
 
     rd = _.random(0, 100)
     # 检查是否进入战斗
@@ -37,18 +37,18 @@ class Manager
       res.result = 'none'
 
     # 更新玩家信息
-    player.increase('money', taskData.coins_obtain)
-    updateTask(player, taskData.poins)
+    player.increase('money', task.coins_obtain)
+    updateTask(player, poins)
 
     # 判断是否升级
-    if (player.exp + taskData.exp_obtain) >= exp_to_upgrade.exp
+    if (player.exp + task.exp_obtain) >= exp_to_upgrade.exp
       player.set('exp', 0)
       player.increase('lv')
       player.set('power', MAX_POWER) 
       res.upgrade = true
     else
-      player.increase('exp', taskData.exp_obtain)
-      player.consumePower(taskData.power_consume)
+      player.increase('exp', task.exp_obtain)
+      player.consumePower(task.power_consume)
 
     cb(null, player, res)
 
@@ -63,6 +63,9 @@ updateTask = (player, poins) ->
 
   player.set('task', task)
 
+parseTask = (mark) ->
+  mark.split('#')
+
 openBox = () ->
   star = taskRate.open_box.star
   rd = _.random(0, 100)
@@ -74,7 +77,7 @@ openBox = () ->
       return 2
     if (star.one + star.two) < rd < (star.one + star.two + star.three)
       return 3
-    if (star.one + star.two + star.three) < rd <= 100
+    if (star.one + star.two + star.three) rd <= 100
       return 4
 
     return 1

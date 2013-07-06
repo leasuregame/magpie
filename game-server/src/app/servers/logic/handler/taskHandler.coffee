@@ -1,11 +1,7 @@
 playerManager = require '../../../manager/playerManager'
 taskManager = require '../../../manager/taskManager'
-table = require '../../../manager/table'
-taskRate = require '../../../../config/data/taskRate'
+table = require '../../manager/table'
 async = require 'async'
-_ = require 'underscore'
-Card = require '../../../domain/card'
-cardConfig = require '../../../../config/data/card'
 
 module.exports = (app) ->
   new Handler(app)
@@ -27,7 +23,7 @@ Handler::explore = (msg, session, next) ->
     player = _player
     rewards = data
     if rewards.result is 'fight'
-      @app.rpc.battle.fightRemote.pve( session, {pid: player.id, tableId: player.task.id, table: 'task_config'}, cb )
+      @app.rpc.battle.fightRemote.pve( session, {pid: player.id, taskId: player.task.id, table: 'task_config'}, cb )
     else
       cb(null, null)
 
@@ -44,7 +40,7 @@ Handler::explore = (msg, session, next) ->
     addBattleLogIfFight
     ], (err) ->
       if err
-        next(null, {code: 500, msg: err.msg})
+        next(err, {code: 500, msg: err.msg})
         return
 
       player.save()
@@ -60,10 +56,10 @@ Handler::passBarrier = (msg, session, next) ->
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
 
-    (_player, cb) =>
+    (_player, cb) ->
       player = _player
       pass = msg.pass or player.pass
-      @app.rpc.battle.fightRemote.pve( session, {pid: player.id, tableId: pass, table: 'pass_config'}, cb )
+      @app.rpc.battle.fightRemote.pve( session, {pid: player.id, passId: pass, table: 'pass_config'}, cb )
 
     (bl, cb) ->
       if bl.winner is 'own'
@@ -73,7 +69,7 @@ Handler::passBarrier = (msg, session, next) ->
           money: rdata.coins
           skillPoins: rdata.skill_poins
 
-        bl.rewards = rewards
+        bl.addRewards rewards
 
         player.increase('exp', rewards.exp)
         player.increase('money', rewards.money)
@@ -87,7 +83,7 @@ Handler::passBarrier = (msg, session, next) ->
       return next(err, {code: 500})
 
     player.save()
-    next(null, {code: 200, msg: bl})
+    next(null, {code: 200, msg: JSON.stringify bl.reports()})
 
 
 obtainBattleRewards = (player, battleLog) ->
@@ -95,7 +91,7 @@ obtainBattleRewards = (player, battleLog) ->
   
   # 奖励掉落卡牌
   _cards = getRewardCards(taskData.cards.split('#'), taskData.max_drop_card_number)
-  battleLog.rewards.cards = _cards
+  battleLog.addReward 'cards', _cards
 
   # 将掉落的卡牌添加到玩家信息
   addCardsToPlayer(player, _cards)
@@ -107,10 +103,10 @@ getRewardCards = (cardIds, count) ->
   for i in [1..count]
     id = randomValue cardIds
     star = randomValue [1,2], _.values(cd.star)
-    level = randomValue [1,2,3,4,5], _.values(cd.level)
+    level = randomValue [1,2,3,4,5], _.vlues(cd.level)
 
     _cards.push {
-      id: parseInt(id)
+      id: id
       star: star
       lv: level
     }
@@ -128,10 +124,11 @@ randomValue = (values, rates) ->
     for r, i in _rates
       if rd <= r
         return values[i]
-  else if values.length > 0
-    return values[_.random(0, (values.length - 1))]
-  else # default
-    values[0]
+  else
+    return values[_.random(0, values.length -1)]
+
+  # default
+  values[0]
 
 addCardsToPlayer = (player, cards) ->
   for card in cards

@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `exp` INT(10) UNSIGNED DEFAULT '0',
   `money` INT(10) UNSIGNED DEFAULT '0',
   `gold`INT(10) UNSIGNED DEFAULT '0',
+  `skillPoins` INT(10) UNSIGNED DEFAULT '0',
   `lineUp` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
   `ability` INT(10) UNSIGNED DEFAULT '0',
   `task` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',

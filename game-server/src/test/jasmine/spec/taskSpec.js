@@ -1,4 +1,4 @@
-describe("Battle Server # ", function() {
+describe("Logic Server # ", function() {
   var pomelo = window.pomelo;
   var inited = false;
   var userid;
@@ -58,12 +58,17 @@ describe("Battle Server # ", function() {
       });
     });
 
-  });
+    describe("logic.taskHandler.passBarrier", function(){
+      
+      it("should can be execute and return result of pass barrier", function(){
+        request('logic.taskHandler.passBarrier', {playerId: '1'}, function(data){
+          expect(data).toEqual('')
+          console.log(data);
+        });
+      });
+      
+    });
 
-  // describe("Tear Down", function(){
-  //   it('disconnect', function(){
-  //     pomelo.disconnect();
-  //   });
-  // })
+  });
 
 });

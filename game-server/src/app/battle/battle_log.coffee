@@ -11,14 +11,17 @@ class BattleLog
   set: (key, value) ->
     @result[key] = value
 
+  get: (key) ->
+    @result[key]
+
   setWinner: (winner) ->
     @set('winner', winner)
 
   addStep: (step) ->
     @steps.push step
 
-  addCard: (card) ->
-    @rewards['cards'].push card
+  addReward: (key, value) ->
+    @rewards[key] = value
 
   reports: ->
     @set('steps', @steps)

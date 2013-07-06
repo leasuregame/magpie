@@ -99,7 +99,27 @@ var playerDao = {
             cb("param error", null);
         }
 
-        playerDao._getPlayer({field: 'id', value: id}, cb);
+        var _ref = sqlHelper.selectSql("player", ["id", id]);
+        var sql = _ref[0];
+        var args = _ref[1];
+
+        return dbClient.query(sql, args, function (err, res) {
+            if (err) {
+                logger.error("[playerDao.getPlayerById faild] ", err.stack);
+
+                return cb({
+                    code: err.code,
+                    msg: err.message
+                }, null);
+            } else if (res && res.length === 1) {
+                return cb(null, getPlayerObject(res[0]));
+            } else {
+                return cb({
+                    code: null,
+                    msg: "Player not exists"
+                }, null);
+            }
+        });
     },
 
     /*
@@ -112,21 +132,28 @@ var playerDao = {
             cb("param error", null);
         }
 
-        playerDao._getPlayer({field: 'name', value: name}, cb);
+        var _ref = sqlHelper.selectSql("player", ["name", name]);
+        var sql = _ref[0];
+        var args = _ref[1];
+
+        return dbClient.query(sql, args, function (err, res) {
+            if (err) {
+                logger.error("[playerDao.getPlayerByName faild] ", err.stack);
+
+                return cb({
+                    code: err.code,
+                    msg: err.message
+                }, null);
+            } else if (res && res.length === 1) {
+                return cb(null, getPlayerObject(res[0]));
+            } else {
+                return cb({
+                    code: null,
+                    msg: "Player not exists"
+                }, null);
+            }
+        });
     },
-
-    /*
-     * 根据 userId 查找一条 player 记录
-     * @param {string} uid 需要查找的用户Id 
-     * @param {function} cb  回调函数
-     * */
-    getPlayerByUserId: function(uid, cb) {
-        if (typeof uid == 'undefined') {
-            cb("param error", null);
-        }
-
-        playerDao._getPlayer({field: 'userId', value: uid}, cb);
-    }
 
     /*
      * 根据 id 查找一条 player 记录, 包括所有的卡牌等其他信息
@@ -150,40 +177,6 @@ var playerDao = {
             var cards = results[1];
             player.addCards(cards);
             cb(null, player);
-        });
-    },
-
-    /*
-     * 根据所给参数条件查找一条 player 记录
-     * @param {object} param 包含两个属性 field 和 value
-     *                       例如：{field: id, value: 1} 表示查找id=1的player
-     * @param {function} cb  回调函数
-     */
-    _getPlayer: function(param, cb) {
-        if (typeof uid == 'undefined') {
-            cb("param error", null);
-        }
-
-        var _ref = sqlHelper.selectSql("player", [param.field, param.value]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.query(sql, args, function(err, res) {
-            if (err) {
-                logger.error("[playerDao.getPlayerByUser faild] ", err.stack);
-
-                return cb({
-                    code: err.code,
-                    msg: err.message
-                }, null);
-            } else if (res && res.length === 1) {
-                return cb(null, getPlayerObject(res[0]));
-            } else {
-                return cb({
-                    code: null,
-                    msg: "Player not exists"
-                }, null);
-            }
         });
     },
 

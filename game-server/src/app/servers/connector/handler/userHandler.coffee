@@ -42,7 +42,7 @@ Handler::login = (msg, session, next) ->
     session.on('close', onUserLeave)
 
     @app.rpc.message.messageRemote.addPlayer(session, user.id, @app.get('serverId'), null)
-    player = dao.player.
+    #player = dao.player.
     next(null, {code: 200, uid: user.id})
 
 onUserLeave = (session, reason) ->

@@ -13,6 +13,14 @@
 
 var lzWindow = {};
 
+lzWindow.setTimeout = function(cb, timeout) {
+
+}
+
+lzWindow.clearTimeout = function() {
+
+}
+
 /**
  * lzRequire the given path.
  *
@@ -75,7 +83,7 @@ lzRequire.aliases = {};
  * @api private
  */
 
-lzRequire.resolve = function(path) {
+lzRequire.resolve = function (path) {
     if (path.charAt(0) === '/') path = path.slice(1);
 
     var paths = [
@@ -102,7 +110,7 @@ lzRequire.resolve = function(path) {
  * @api private
  */
 
-lzRequire.normalize = function(curr, path) {
+lzRequire.normalize = function (curr, path) {
     var segs = [];
 
     if ('.' != path.charAt(0)) return path;
@@ -129,7 +137,7 @@ lzRequire.normalize = function(curr, path) {
  * @api private
  */
 
-lzRequire.register = function(path, definition) {
+lzRequire.register = function (path, definition) {
     lzRequire.modules[path] = definition;
 };
 
@@ -141,7 +149,7 @@ lzRequire.register = function(path, definition) {
  * @api private
  */
 
-lzRequire.alias = function(from, to) {
+lzRequire.alias = function (from, to) {
     if (!lzRequire.modules.hasOwnProperty(from)) {
         throw new Error('Failed to alias "' + from + '", it does not exist');
     }
@@ -156,7 +164,7 @@ lzRequire.alias = function(from, to) {
  * @api private
  */
 
-lzRequire.relative = function(parent) {
+lzRequire.relative = function (parent) {
     var p = lzRequire.normalize(parent, '..');
 
     /**
@@ -184,7 +192,7 @@ lzRequire.relative = function(parent) {
      * Resolve relative to the parent.
      */
 
-    locallzRequire.resolve = function(path) {
+    locallzRequire.resolve = function (path) {
         var c = path.charAt(0);
         if ('/' == c) return path.slice(1);
         if ('.' == c) return lzRequire.normalize(p, path);
@@ -203,17 +211,17 @@ lzRequire.relative = function(parent) {
      * Check if module is defined at `path`.
      */
 
-    locallzRequire.exists = function(path) {
+    locallzRequire.exists = function (path) {
         return lzRequire.modules.hasOwnProperty(locallzRequire.resolve(path));
     };
 
     return locallzRequire;
 };
-lzRequire.register("component-indexof/index.js", function(exports, lzRequire, module){
+lzRequire.register("component-indexof/index.js", function (exports, lzRequire, module) {
 
     var indexOf = [].indexOf;
 
-    module.exports = function(arr, obj){
+    module.exports = function (arr, obj) {
         if (indexOf) return arr.indexOf(obj);
         for (var i = 0; i < arr.length; ++i) {
             if (arr[i] === obj) return i;
@@ -221,7 +229,7 @@ lzRequire.register("component-indexof/index.js", function(exports, lzRequire, mo
         return -1;
     };
 });
-lzRequire.register("component-emitter/index.js", function(exports, lzRequire, module){
+lzRequire.register("component-emitter/index.js", function (exports, lzRequire, module) {
 
     /**
      * Module dependencies.
@@ -269,7 +277,7 @@ lzRequire.register("component-emitter/index.js", function(exports, lzRequire, mo
      * @api public
      */
 
-    Emitter.prototype.on = function(event, fn){
+    Emitter.prototype.on = function (event, fn) {
         this._callbacks = this._callbacks || {};
         (this._callbacks[event] = this._callbacks[event] || [])
             .push(fn);
@@ -286,7 +294,7 @@ lzRequire.register("component-emitter/index.js", function(exports, lzRequire, mo
      * @api public
      */
 
-    Emitter.prototype.once = function(event, fn){
+    Emitter.prototype.once = function (event, fn) {
         var self = this;
         this._callbacks = this._callbacks || {};
 
@@ -312,7 +320,7 @@ lzRequire.register("component-emitter/index.js", function(exports, lzRequire, mo
 
     Emitter.prototype.off =
         Emitter.prototype.removeListener =
-            Emitter.prototype.removeAllListeners = function(event, fn){
+            Emitter.prototype.removeAllListeners = function (event, fn) {
                 this._callbacks = this._callbacks || {};
 
                 // all
@@ -345,7 +353,7 @@ lzRequire.register("component-emitter/index.js", function(exports, lzRequire, mo
      * @return {Emitter}
      */
 
-    Emitter.prototype.emit = function(event){
+    Emitter.prototype.emit = function (event) {
         this._callbacks = this._callbacks || {};
         var args = [].slice.call(arguments, 1)
             , callbacks = this._callbacks[event];
@@ -368,7 +376,7 @@ lzRequire.register("component-emitter/index.js", function(exports, lzRequire, mo
      * @api public
      */
 
-    Emitter.prototype.listeners = function(event){
+    Emitter.prototype.listeners = function (event) {
         this._callbacks = this._callbacks || {};
         return this._callbacks[event] || [];
     };
@@ -381,12 +389,12 @@ lzRequire.register("component-emitter/index.js", function(exports, lzRequire, mo
      * @api public
      */
 
-    Emitter.prototype.hasListeners = function(event){
-        return !! this.listeners(event).length;
+    Emitter.prototype.hasListeners = function (event) {
+        return !!this.listeners(event).length;
     };
 
 });
-lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function(exports, lzRequire, module){
+lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function (exports, lzRequire, module) {
     (function (exports, ByteArray, global) {
         var Protocol = exports;
 
@@ -422,20 +430,20 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function(exports, 
          * msg message body
          * socketio current support string
          */
-        Protocol.strencode = function(str) {
+        Protocol.strencode = function (str) {
             var byteArray = new ByteArray(str.length * 3);
             var offset = 0;
-            for(var i = 0; i < str.length; i++){
+            for (var i = 0; i < str.length; i++) {
                 var charCode = str.charCodeAt(i);
                 var codes = null;
-                if(charCode <= 0x7f){
+                if (charCode <= 0x7f) {
                     codes = [charCode];
-                }else if(charCode <= 0x7ff){
-                    codes = [0xc0|(charCode>>6), 0x80|(charCode & 0x3f)];
-                }else{
-                    codes = [0xe0|(charCode>>12), 0x80|((charCode & 0xfc0)>>6), 0x80|(charCode & 0x3f)];
+                } else if (charCode <= 0x7ff) {
+                    codes = [0xc0 | (charCode >> 6), 0x80 | (charCode & 0x3f)];
+                } else {
+                    codes = [0xe0 | (charCode >> 12), 0x80 | ((charCode & 0xfc0) >> 6), 0x80 | (charCode & 0x3f)];
                 }
-                for(var j = 0; j < codes.length; j++){
+                for (var j = 0; j < codes.length; j++) {
                     byteArray[offset] = codes[j];
                     ++offset;
                 }
@@ -450,21 +458,21 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function(exports, 
          * msg String data
          * return Message Object
          */
-        Protocol.strdecode = function(buffer) {
+        Protocol.strdecode = function (buffer) {
             var bytes = new ByteArray(buffer);
             var array = [];
             var offset = 0;
             var charCode = 0;
             var end = bytes.length;
-            while(offset < end){
-                if(bytes[offset] < 128){
+            while (offset < end) {
+                if (bytes[offset] < 128) {
                     charCode = bytes[offset];
                     offset += 1;
-                }else if(bytes[offset] < 224){
-                    charCode = ((bytes[offset] & 0x3f)<<6) + (bytes[offset+1] & 0x3f);
+                } else if (bytes[offset] < 224) {
+                    charCode = ((bytes[offset] & 0x3f) << 6) + (bytes[offset + 1] & 0x3f);
                     offset += 2;
-                }else{
-                    charCode = ((bytes[offset] & 0x0f)<<12) + ((bytes[offset+1] & 0x3f)<<6) + (bytes[offset+2] & 0x3f);
+                } else {
+                    charCode = ((bytes[offset] & 0x0f) << 12) + ((bytes[offset + 1] & 0x3f) << 6) + (bytes[offset + 2] & 0x3f);
                     offset += 3;
                 }
                 array.push(charCode);
@@ -494,7 +502,7 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function(exports, 
          * @param  {ByteArray} body   body content in bytes
          * @return {ByteArray}        new byte array that contains encode result
          */
-        Package.encode = function(type, body){
+        Package.encode = function (type, body) {
             var length = body ? body.length : 0;
             var buffer = new ByteArray(PKG_HEAD_BYTES + length);
             var index = 0;
@@ -502,7 +510,7 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function(exports, 
             buffer[index++] = (length >> 16) & 0xff;
             buffer[index++] = (length >> 8) & 0xff;
             buffer[index++] = length & 0xff;
-            if(body) {
+            if (body) {
                 copyArray(buffer, index, body, 0, length);
             }
             return buffer;
@@ -515,8 +523,8 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function(exports, 
          * @param  {ByteArray} buffer byte array containing package content
          * @return {Object}           {type: package type, buffer: body byte array}
          */
-        Package.decode = function(buffer){
-            var bytes =  new ByteArray(buffer);
+        Package.decode = function (buffer) {
+            var bytes = new ByteArray(buffer);
             var type = bytes[0];
             var index = 1;
             var length = ((bytes[index++]) << 16 | (bytes[index++]) << 8 | bytes[index++]) >>> 0;
@@ -535,22 +543,22 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function(exports, 
          * @param  {Buffer} msg           message body bytes
          * @return {Buffer}               encode result
          */
-        Message.encode = function(id, type, compressRoute, route, msg){
+        Message.encode = function (id, type, compressRoute, route, msg) {
             // caculate message max length
             var idBytes = msgHasId(type) ? caculateMsgIdBytes(id) : 0;
             var msgLen = MSG_FLAG_BYTES + idBytes;
 
-            if(msgHasRoute(type)) {
-                if(compressRoute) {
-                    if(typeof route !== 'number'){
+            if (msgHasRoute(type)) {
+                if (compressRoute) {
+                    if (typeof route !== 'number') {
                         throw new Error('error flag for number route!');
                     }
                     msgLen += MSG_ROUTE_CODE_BYTES;
                 } else {
                     msgLen += MSG_ROUTE_LEN_BYTES;
-                    if(route) {
+                    if (route) {
                         route = Protocol.strencode(route);
-                        if(route.length>255) {
+                        if (route.length > 255) {
                             throw new Error('route maxlength is overflow');
                         }
                         msgLen += route.length;
@@ -558,7 +566,7 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function(exports, 
                 }
             }
 
-            if(msg) {
+            if (msg) {
                 msgLen += msg.length;
             }
 
@@ -569,17 +577,17 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function(exports, 
             offset = encodeMsgFlag(type, compressRoute, buffer, offset);
 
             // add message id
-            if(msgHasId(type)) {
+            if (msgHasId(type)) {
                 offset = encodeMsgId(id, idBytes, buffer, offset);
             }
 
             // add route
-            if(msgHasRoute(type)) {
+            if (msgHasRoute(type)) {
                 offset = encodeMsgRoute(compressRoute, route, buffer, offset);
             }
 
             // add body
-            if(msg) {
+            if (msg) {
                 offset = encodeMsgBody(msg, buffer, offset);
             }
 
@@ -592,8 +600,8 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function(exports, 
          * @param  {Buffer|Uint8Array} buffer message bytes
          * @return {Object}            message object
          */
-        Message.decode = function(buffer) {
-            var bytes =  new ByteArray(buffer);
+        Message.decode = function (buffer) {
+            var bytes = new ByteArray(buffer);
             var bytesLen = bytes.length || bytes.byteLength;
             var offset = 0;
             var id = 0;
@@ -605,10 +613,10 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function(exports, 
             var type = (flag >> 1) & MSG_TYPE_MASK;
 
             // parse id
-            if(msgHasId(type)) {
+            if (msgHasId(type)) {
                 var byte = bytes[offset++];
                 id = byte & 0x7f;
-                while(byte & 0x80) {
+                while (byte & 0x80) {
                     id <<= 7;
                     byte = bytes[offset++];
                     id |= byte & 0x7f;
@@ -616,12 +624,12 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function(exports, 
             }
 
             // parse route
-            if(msgHasRoute(type)) {
-                if(compressRoute) {
+            if (msgHasRoute(type)) {
+                if (compressRoute) {
                     route = (bytes[offset++]) << 8 | bytes[offset++];
                 } else {
                     var routeLen = bytes[offset++];
-                    if(routeLen) {
+                    if (routeLen) {
                         route = new ByteArray(routeLen);
                         copyArray(route, 0, bytes, offset, routeLen);
                         route = Protocol.strdecode(route);
@@ -642,38 +650,38 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function(exports, 
                 'route': route, 'body': body};
         };
 
-        var copyArray = function(dest, doffset, src, soffset, length) {
-            if('function' === typeof src.copy) {
+        var copyArray = function (dest, doffset, src, soffset, length) {
+            if ('function' === typeof src.copy) {
                 // Buffer
                 src.copy(dest, doffset, soffset, soffset + length);
             } else {
                 // Uint8Array
-                for(var index=0; index<length; index++){
+                for (var index = 0; index < length; index++) {
                     dest[doffset++] = src[soffset++];
                 }
             }
         };
 
-        var msgHasId = function(type) {
+        var msgHasId = function (type) {
             return type === Message.TYPE_REQUEST || type === Message.TYPE_RESPONSE;
         };
 
-        var msgHasRoute = function(type) {
+        var msgHasRoute = function (type) {
             return type === Message.TYPE_REQUEST || type === Message.TYPE_NOTIFY ||
                 type === Message.TYPE_PUSH;
         };
 
-        var caculateMsgIdBytes = function(id) {
+        var caculateMsgIdBytes = function (id) {
             var len = 0;
             do {
                 len += 1;
                 id >>= 7;
-            } while(id > 0);
+            } while (id > 0);
             return len;
         };
 
-        var encodeMsgFlag = function(type, compressRoute, buffer, offset) {
-            if(type !== Message.TYPE_REQUEST && type !== Message.TYPE_NOTIFY &&
+        var encodeMsgFlag = function (type, compressRoute, buffer, offset) {
+            if (type !== Message.TYPE_REQUEST && type !== Message.TYPE_NOTIFY &&
                 type !== Message.TYPE_RESPONSE && type !== Message.TYPE_PUSH) {
                 throw new Error('unkonw message type: ' + type);
             }
@@ -683,26 +691,26 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function(exports, 
             return offset + MSG_FLAG_BYTES;
         };
 
-        var encodeMsgId = function(id, idBytes, buffer, offset) {
+        var encodeMsgId = function (id, idBytes, buffer, offset) {
             var index = offset + idBytes - 1;
             buffer[index--] = id & 0x7f;
-            while(index >= offset) {
+            while (index >= offset) {
                 id >>= 7;
                 buffer[index--] = id & 0x7f | 0x80;
             }
             return offset + idBytes;
         };
 
-        var encodeMsgRoute = function(compressRoute, route, buffer, offset) {
+        var encodeMsgRoute = function (compressRoute, route, buffer, offset) {
             if (compressRoute) {
-                if(route > MSG_ROUTE_CODE_MAX){
+                if (route > MSG_ROUTE_CODE_MAX) {
                     throw new Error('route number is overflow');
                 }
 
                 buffer[offset++] = (route >> 8) & 0xff;
                 buffer[offset++] = route & 0xff;
             } else {
-                if(route) {
+                if (route) {
                     buffer[offset++] = route.length & 0xff;
                     copyArray(buffer, offset, route, 0, route.length);
                     offset += route.length;
@@ -714,16 +722,16 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function(exports, 
             return offset;
         };
 
-        var encodeMsgBody = function(msg, buffer, offset) {
+        var encodeMsgBody = function (msg, buffer, offset) {
             copyArray(buffer, offset, msg, 0, msg.length);
             return offset + msg.length;
         };
 
         module.exports = Protocol;
-    })('object' === typeof module ? module.exports : (this.Protocol = {}),'object' === typeof module ? Buffer : Uint8Array, this);
+    })('object' === typeof module ? module.exports : (this.Protocol = {}), 'object' === typeof module ? Buffer : Uint8Array, this);
 
 });
-lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function(exports, lzRequire, module){
+lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function (exports, lzRequire, module) {
     /* ProtocolBuffer client 0.1.0*/
 
     /**
@@ -735,10 +743,10 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
      * Protocol buffer root
      * In browser, it will be window.protbuf
      */
-    (function (exports, global){
+    (function (exports, global) {
         var Protobuf = exports;
 
-        Protobuf.init = function(opts){
+        Protobuf.init = function (opts) {
             //On the serverside, use serverProtos to encode messages send to client
             Protobuf.encoder.init(opts.encoderProtos);
 
@@ -746,11 +754,11 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
             Protobuf.decoder.init(opts.decoderProtos);
         };
 
-        Protobuf.encode = function(key, msg){
+        Protobuf.encode = function (key, msg) {
             return Protobuf.encoder.encode(key, msg);
         };
 
-        Protobuf.decode = function(key, msg){
+        Protobuf.decode = function (key, msg) {
             return Protobuf.decoder.decode(key, msg);
         };
 
@@ -761,17 +769,17 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
     /**
      * constants
      */
-    (function (exports, global){
+    (function (exports, global) {
         var constants = exports.constants = {};
 
         constants.TYPES = {
-            uInt32 : 0,
-            sInt32 : 0,
-            int32 : 0,
-            double : 1,
-            string : 2,
-            message : 2,
-            float : 5
+            uInt32: 0,
+            sInt32: 0,
+            int32: 0,
+            double: 1,
+            string: 2,
+            message: 2,
+            float: 5
         };
 
     })('undefined' !== typeof protobuf ? protobuf : module.exports, this);
@@ -779,17 +787,17 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
     /**
      * util module
      */
-    (function (exports, global){
+    (function (exports, global) {
 
         var Util = exports.util = {};
 
-        Util.isSimpleType = function(type){
+        Util.isSimpleType = function (type) {
             return ( type === 'uInt32' ||
                 type === 'sInt32' ||
-                type === 'int32'  ||
+                type === 'int32' ||
                 type === 'uInt64' ||
                 type === 'sInt64' ||
-                type === 'float'  ||
+                type === 'float' ||
                 type === 'double' );
         };
 
@@ -798,7 +806,7 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
     /**
      * codec module
      */
-    (function (exports, global){
+    (function (exports, global) {
 
         var Codec = exports.codec = {};
 
@@ -807,44 +815,44 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
         var float64Array = new Float64Array(buffer);
         var uInt8Array = new Uint8Array(buffer);
 
-        Codec.encodeUInt32 = function(n){
+        Codec.encodeUInt32 = function (n) {
             var n = parseInt(n);
-            if(isNaN(n) || n < 0){
+            if (isNaN(n) || n < 0) {
                 return null;
             }
 
             var result = [];
-            do{
+            do {
                 var tmp = n % 128;
-                var next = Math.floor(n/128);
+                var next = Math.floor(n / 128);
 
-                if(next !== 0){
+                if (next !== 0) {
                     tmp = tmp + 128;
                 }
                 result.push(tmp);
                 n = next;
-            }while(n !== 0);
+            } while (n !== 0);
 
             return result;
         };
 
-        Codec.encodeSInt32 = function(n){
+        Codec.encodeSInt32 = function (n) {
             var n = parseInt(n);
-            if(isNaN(n)){
+            if (isNaN(n)) {
                 return null;
             }
-            n = n<0?(Math.abs(n)*2-1):n*2;
+            n = n < 0 ? (Math.abs(n) * 2 - 1) : n * 2;
 
             return Codec.encodeUInt32(n);
         };
 
-        Codec.decodeUInt32 = function(bytes){
+        Codec.decodeUInt32 = function (bytes) {
             var n = 0;
 
-            for(var i = 0; i < bytes.length; i++){
+            for (var i = 0; i < bytes.length; i++) {
                 var m = parseInt(bytes[i]);
-                n = n + ((m & 0x7f) * Math.pow(2,(7*i)));
-                if(m < 128){
+                n = n + ((m & 0x7f) * Math.pow(2, (7 * i)));
+                if (m < 128) {
                     return n;
                 }
             }
@@ -852,55 +860,55 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
             return n;
         };
 
-        Codec.decodeSInt32 = function(bytes){
+        Codec.decodeSInt32 = function (bytes) {
             var n = this.decodeUInt32(bytes);
-            var flag = ((n%2) === 1)?-1:1;
+            var flag = ((n % 2) === 1) ? -1 : 1;
 
-            n = ((n%2 + n)/2)*flag;
+            n = ((n % 2 + n) / 2) * flag;
 
             return n;
         };
 
-        Codec.encodeFloat = function(float){
+        Codec.encodeFloat = function (float) {
             float32Array[0] = float;
             return uInt8Array;
         };
 
-        Codec.decodeFloat = function(bytes, offset){
-            if(!bytes || bytes.length < (offset + 4)){
+        Codec.decodeFloat = function (bytes, offset) {
+            if (!bytes || bytes.length < (offset + 4)) {
                 return null;
             }
 
-            for(var i = 0; i < 4; i++){
+            for (var i = 0; i < 4; i++) {
                 uInt8Array[i] = bytes[offset + i];
             }
 
             return float32Array[0];
         };
 
-        Codec.encodeDouble = function(double){
+        Codec.encodeDouble = function (double) {
             float64Array[0] = double;
             return uInt8Array.subarray(0, 8);
         };
 
-        Codec.decodeDouble = function(bytes, offset){
-            if(!bytes || bytes.length < (offset + 8)){
+        Codec.decodeDouble = function (bytes, offset) {
+            if (!bytes || bytes.length < (offset + 8)) {
                 return null;
             }
 
-            for(var i = 0; i < 8; i++){
+            for (var i = 0; i < 8; i++) {
                 uInt8Array[i] = bytes[offset + i];
             }
 
             return float64Array[0];
         };
 
-        Codec.encodeStr = function(bytes, offset, str){
-            for(var i = 0; i < str.length; i++){
+        Codec.encodeStr = function (bytes, offset, str) {
+            for (var i = 0; i < str.length; i++) {
                 var code = str.charCodeAt(i);
                 var codes = encode2UTF8(code);
 
-                for(var j = 0; j < codes.length; j++){
+                for (var j = 0; j < codes.length; j++) {
                     bytes[offset] = codes[j];
                     offset++;
                 }
@@ -912,22 +920,22 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
         /**
          * Decode string from utf8 bytes
          */
-        Codec.decodeStr = function(bytes, offset, length){
+        Codec.decodeStr = function (bytes, offset, length) {
             var array = [];
             var end = offset + length;
 
-            while(offset < end){
+            while (offset < end) {
                 var code = 0;
 
-                if(bytes[offset] < 128){
+                if (bytes[offset] < 128) {
                     code = bytes[offset];
 
                     offset += 1;
-                }else if(bytes[offset] < 224){
-                    code = ((bytes[offset] & 0x3f)<<6) + (bytes[offset+1] & 0x3f);
+                } else if (bytes[offset] < 224) {
+                    code = ((bytes[offset] & 0x3f) << 6) + (bytes[offset + 1] & 0x3f);
                     offset += 2;
-                }else{
-                    code = ((bytes[offset] & 0x0f)<<12) + ((bytes[offset+1] & 0x3f)<<6) + (bytes[offset+2] & 0x3f);
+                } else {
+                    code = ((bytes[offset] & 0x0f) << 12) + ((bytes[offset + 1] & 0x3f) << 6) + (bytes[offset + 2] & 0x3f);
                     offset += 3;
                 }
 
@@ -936,7 +944,7 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
             }
 
             var str = '';
-            for(var i = 0; i < array.length;){
+            for (var i = 0; i < array.length;) {
                 str += String.fromCharCode.apply(null, array.slice(i, i + 10000));
                 i += 10000;
             }
@@ -947,14 +955,14 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
         /**
          * Return the byte length of the str use utf8
          */
-        Codec.byteLength = function(str){
-            if(typeof(str) !== 'string'){
+        Codec.byteLength = function (str) {
+            if (typeof(str) !== 'string') {
                 return -1;
             }
 
             var length = 0;
 
-            for(var i = 0; i < str.length; i++){
+            for (var i = 0; i < str.length; i++) {
                 var code = str.charCodeAt(i);
                 length += codeLength(code);
             }
@@ -965,22 +973,22 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
         /**
          * Encode a unicode16 char code to utf8 bytes
          */
-        function encode2UTF8(charCode){
-            if(charCode <= 0x7f){
+        function encode2UTF8(charCode) {
+            if (charCode <= 0x7f) {
                 return [charCode];
-            }else if(charCode <= 0x7ff){
-                return [0xc0|(charCode>>6), 0x80|(charCode & 0x3f)];
-            }else{
-                return [0xe0|(charCode>>12), 0x80|((charCode & 0xfc0)>>6), 0x80|(charCode & 0x3f)];
+            } else if (charCode <= 0x7ff) {
+                return [0xc0 | (charCode >> 6), 0x80 | (charCode & 0x3f)];
+            } else {
+                return [0xe0 | (charCode >> 12), 0x80 | ((charCode & 0xfc0) >> 6), 0x80 | (charCode & 0x3f)];
             }
         }
 
-        function codeLength(code){
-            if(code <= 0x7f){
+        function codeLength(code) {
+            if (code <= 0x7f) {
                 return 1;
-            }else if(code <= 0x7ff){
+            } else if (code <= 0x7ff) {
                 return 2;
-            }else{
+            } else {
                 return 3;
             }
         }
@@ -989,7 +997,7 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
     /**
      * encoder module
      */
-    (function (exports, global){
+    (function (exports, global) {
 
         var protobuf = exports;
         var MsgEncoder = exports.encoder = {};
@@ -998,16 +1006,16 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
         var constant = protobuf.constants;
         var util = protobuf.util;
 
-        MsgEncoder.init = function(protos){
+        MsgEncoder.init = function (protos) {
             this.protos = protos || {};
         };
 
-        MsgEncoder.encode = function(route, msg){
+        MsgEncoder.encode = function (route, msg) {
             //Get protos from protos map use the route as key
             var protos = this.protos[route];
 
             //Check msg
-            if(!checkMsg(msg, protos)){
+            if (!checkMsg(msg, protos)) {
                 return null;
             }
 
@@ -1019,9 +1027,9 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
             var uInt8Array = new Uint8Array(buffer);
             var offset = 0;
 
-            if(!!protos){
+            if (!!protos) {
                 offset = encodeMsg(uInt8Array, offset, protos, msg);
-                if(offset > 0){
+                if (offset > 0) {
                     return uInt8Array.subarray(0, offset);
                 }
             }
@@ -1032,32 +1040,32 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
         /**
          * Check if the msg follow the defination in the protos
          */
-        function checkMsg(msg, protos){
-            if(!protos){
+        function checkMsg(msg, protos) {
+            if (!protos) {
                 return false;
             }
 
-            for(var name in protos){
+            for (var name in protos) {
                 var proto = protos[name];
 
                 //All lzRequired element must exist
-                switch(proto.option){
+                switch (proto.option) {
                     case 'lzRequired' :
-                        if(typeof(msg[name]) === 'undefined'){
+                        if (typeof(msg[name]) === 'undefined') {
                             return false;
                         }
                     case 'optional' :
-                        if(typeof(msg[name]) !== 'undefined'){
-                            if(!!protos.__messages[proto.type]){
+                        if (typeof(msg[name]) !== 'undefined') {
+                            if (!!protos.__messages[proto.type]) {
                                 checkMsg(msg[name], protos.__messages[proto.type]);
                             }
                         }
                         break;
                     case 'repeated' :
                         //Check nest message in repeated elements
-                        if(!!msg[name] && !!protos.__messages[proto.type]){
-                            for(var i = 0; i < msg[name].length; i++){
-                                if(!checkMsg(msg[name][i], protos.__messages[proto.type])){
+                        if (!!msg[name] && !!protos.__messages[proto.type]) {
+                            for (var i = 0; i < msg[name].length; i++) {
+                                if (!checkMsg(msg[name][i], protos.__messages[proto.type])) {
                                     return false;
                                 }
                             }
@@ -1069,19 +1077,19 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
             return true;
         }
 
-        function encodeMsg(buffer, offset, protos, msg){
-            for(var name in msg){
-                if(!!protos[name]){
+        function encodeMsg(buffer, offset, protos, msg) {
+            for (var name in msg) {
+                if (!!protos[name]) {
                     var proto = protos[name];
 
-                    switch(proto.option){
+                    switch (proto.option) {
                         case 'lzRequired' :
                         case 'optional' :
                             offset = writeBytes(buffer, offset, encodeTag(proto.type, proto.tag));
                             offset = encodeProp(msg[name], proto.type, offset, buffer, protos);
                             break;
                         case 'repeated' :
-                            if(msg[name].length > 0){
+                            if (msg[name].length > 0) {
                                 offset = encodeArray(msg[name], proto, offset, buffer, protos);
                             }
                             break;
@@ -1092,8 +1100,8 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
             return offset;
         }
 
-        function encodeProp(value, type, offset, buffer, protos){
-            switch(type){
+        function encodeProp(value, type, offset, buffer, protos) {
+            switch (type) {
                 case 'uInt32':
                     offset = writeBytes(buffer, offset, codec.encodeUInt32(value));
                     break;
@@ -1119,7 +1127,7 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
                     offset += length;
                     break;
                 default :
-                    if(!!protos.__messages[type]){
+                    if (!!protos.__messages[type]) {
                         //Use a tmp buffer to build an internal msg
                         var tmpBuffer = new ArrayBuffer(codec.byteLength(JSON.stringify(value)));
                         var length = 0;
@@ -1128,7 +1136,7 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
                         //Encode length
                         offset = writeBytes(buffer, offset, codec.encodeUInt32(length));
                         //contact the object
-                        for(var i = 0; i < length; i++){
+                        for (var i = 0; i < length; i++) {
                             buffer[offset] = tmpBuffer[i];
                             offset++;
                         }
@@ -1142,17 +1150,17 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
         /**
          * Encode reapeated properties, simple msg and object are decode differented
          */
-        function encodeArray(array, proto, offset, buffer, protos){
+        function encodeArray(array, proto, offset, buffer, protos) {
             var i = 0;
 
-            if(util.isSimpleType(proto.type)){
+            if (util.isSimpleType(proto.type)) {
                 offset = writeBytes(buffer, offset, encodeTag(proto.type, proto.tag));
                 offset = writeBytes(buffer, offset, codec.encodeUInt32(array.length));
-                for(i = 0; i < array.length; i++){
+                for (i = 0; i < array.length; i++) {
                     offset = encodeProp(array[i], proto.type, offset, buffer);
                 }
-            }else{
-                for(i = 0; i < array.length; i++){
+            } else {
+                for (i = 0; i < array.length; i++) {
                     offset = writeBytes(buffer, offset, encodeTag(proto.type, proto.tag));
                     offset = encodeProp(array[i], proto.type, offset, buffer, protos);
                 }
@@ -1161,24 +1169,24 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
             return offset;
         }
 
-        function writeBytes(buffer, offset, bytes){
-            for(var i = 0; i < bytes.length; i++, offset++){
+        function writeBytes(buffer, offset, bytes) {
+            for (var i = 0; i < bytes.length; i++, offset++) {
                 buffer[offset] = bytes[i];
             }
 
             return offset;
         }
 
-        function encodeTag(type, tag){
-            var value = constant.TYPES[type]||2;
-            return codec.encodeUInt32((tag<<3)|value);
+        function encodeTag(type, tag) {
+            var value = constant.TYPES[type] || 2;
+            return codec.encodeUInt32((tag << 3) | value);
         }
     })('undefined' !== typeof protobuf ? protobuf : module.exports, this);
 
     /**
      * decoder module
      */
-    (function (exports, global){
+    (function (exports, global) {
         var protobuf = exports;
         var MsgDecoder = exports.decoder = {};
 
@@ -1188,43 +1196,43 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
         var buffer;
         var offset = 0;
 
-        MsgDecoder.init = function(protos){
+        MsgDecoder.init = function (protos) {
             this.protos = protos || {};
         };
 
-        MsgDecoder.setProtos = function(protos){
-            if(!!protos){
+        MsgDecoder.setProtos = function (protos) {
+            if (!!protos) {
                 this.protos = protos;
             }
         };
 
-        MsgDecoder.decode = function(route, buf){
+        MsgDecoder.decode = function (route, buf) {
             var protos = this.protos[route];
 
             buffer = buf;
             offset = 0;
 
-            if(!!protos){
+            if (!!protos) {
                 return decodeMsg({}, protos, buffer.length);
             }
 
             return null;
         };
 
-        function decodeMsg(msg, protos, length){
-            while(offset<length){
+        function decodeMsg(msg, protos, length) {
+            while (offset < length) {
                 var head = getHead();
                 var type = head.type;
                 var tag = head.tag;
                 var name = protos.__tags[tag];
 
-                switch(protos[name].option){
+                switch (protos[name].option) {
                     case 'optional' :
                     case 'lzRequired' :
                         msg[name] = decodeProp(protos[name].type, protos);
                         break;
                     case 'repeated' :
-                        if(!msg[name]){
+                        if (!msg[name]) {
                             msg[name] = [];
                         }
                         decodeArray(msg[name], protos[name].type, protos);
@@ -1238,35 +1246,36 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
         /**
          * Test if the given msg is finished
          */
-        function isFinish(msg, protos){
+        function isFinish(msg, protos) {
             return (!protos.__tags[peekHead().tag]);
         }
+
         /**
          * Get property head from protobuf
          */
-        function getHead(){
+        function getHead() {
             var tag = codec.decodeUInt32(getBytes());
 
             return {
-                type : tag&0x7,
-                tag : tag>>3
+                type: tag & 0x7,
+                tag: tag >> 3
             };
         }
 
         /**
          * Get tag head without move the offset
          */
-        function peekHead(){
+        function peekHead() {
             var tag = codec.decodeUInt32(peekBytes());
 
             return {
-                type : tag&0x7,
-                tag : tag>>3
+                type: tag & 0x7,
+                tag: tag >> 3
             };
         }
 
-        function decodeProp(type, protos){
-            switch(type){
+        function decodeProp(type, protos) {
+            switch (type) {
                 case 'uInt32':
                     return codec.decodeUInt32(getBytes());
                 case 'int32' :
@@ -1283,53 +1292,53 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
                 case 'string' :
                     var length = codec.decodeUInt32(getBytes());
 
-                    var str =  codec.decodeStr(buffer, offset, length);
+                    var str = codec.decodeStr(buffer, offset, length);
                     offset += length;
 
                     return str;
                 default :
-                    if(!!protos && !!protos.__messages[type]){
+                    if (!!protos && !!protos.__messages[type]) {
                         var length = codec.decodeUInt32(getBytes());
                         var msg = {};
-                        decodeMsg(msg, protos.__messages[type], offset+length);
+                        decodeMsg(msg, protos.__messages[type], offset + length);
                         return msg;
                     }
                     break;
             }
         }
 
-        function decodeArray(array, type, protos){
-            if(util.isSimpleType(type)){
+        function decodeArray(array, type, protos) {
+            if (util.isSimpleType(type)) {
                 var length = codec.decodeUInt32(getBytes());
 
-                for(var i = 0; i < length; i++){
+                for (var i = 0; i < length; i++) {
                     array.push(decodeProp(type));
                 }
-            }else{
+            } else {
                 array.push(decodeProp(type, protos));
             }
         }
 
-        function getBytes(flag){
+        function getBytes(flag) {
             var bytes = [];
             var pos = offset;
             flag = flag || false;
 
             var b;
 
-            do{
+            do {
                 b = buffer[pos];
                 bytes.push(b);
                 pos++;
-            }while(b >= 128);
+            } while (b >= 128);
 
-            if(!flag){
+            if (!flag) {
                 offset = pos;
             }
             return bytes;
         }
 
-        function peekBytes(){
+        function peekBytes() {
             return getBytes(true);
         }
 
@@ -1337,8 +1346,8 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
 
 
 });
-lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", function(exports, lzRequire, module){
-    (function() {
+lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", function (exports, lzRequire, module) {
+    (function () {
         var JS_WS_CLIENT_TYPE = 'js-websocket';
         var JS_WS_CLIENT_VERSION = '0.0.1';
 
@@ -1353,7 +1362,9 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
 
         if (typeof Object.create !== 'function') {
             Object.create = function (o) {
-                function F() {}
+                function F() {
+                }
+
                 F.prototype = o;
                 return new F();
             };
@@ -1397,7 +1408,7 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
 
         var initCallback = null;
 
-        pomelo.init = function(params, cb){
+        pomelo.init = function (params, cb) {
             initCallback = cb;
             var host = params.host;
             var port = params.port;
@@ -1408,8 +1419,8 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             cc.log('encode: ' + !!params.encode);
 
             var url = 'ws://' + host;
-            if(port) {
-                url +=  ':' + port;
+            if (port) {
+                url += ':' + port;
             }
 
             handshakeBuffer.user = params.user;
@@ -1417,14 +1428,14 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             initWebSocket(url, cb);
         };
 
-        var defaultDecode = pomelo.decode = function(data) {
+        var defaultDecode = pomelo.decode = function (data) {
             //probuff decode
             var msg = Message.decode(data);
 
-            if(msg.id > 0){
+            if (msg.id > 0) {
                 msg.route = routeMap[msg.id];
                 delete routeMap[msg.id];
-                if(!msg.route){
+                if (!msg.route) {
                     return;
                 }
             }
@@ -1433,18 +1444,18 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             return msg;
         };
 
-        var defaultEncode = pomelo.encode = function(reqId, route, msg) {
+        var defaultEncode = pomelo.encode = function (reqId, route, msg) {
             var type = reqId ? Message.TYPE_REQUEST : Message.TYPE_NOTIFY;
 
             //compress message by protobuf
-            if(clientProtos && clientProtos[route]) {
+            if (clientProtos && clientProtos[route]) {
                 msg = protobuf.encode(route, msg);
             } else {
                 msg = Protocol.strencode(JSON.stringify(msg));
             }
 
             var compressRoute = 0;
-            if(dict && dict[route]) {
+            if (dict && dict[route]) {
                 route = dict[route];
                 compressRoute = 1;
             }
@@ -1452,38 +1463,38 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             return Message.encode(reqId, type, compressRoute, route, msg);
         };
 
-        var initWebSocket = function(url,cb) {
+        var initWebSocket = function (url, cb) {
             cc.log('connect to ' + url);
             //Add protobuf version
-            if(SETTING_IS_BROWSER && window.localStorage && window.localStorage.getItem('protos') && protoVersion === 0){
+            if (SETTING_IS_BROWSER && window.localStorage && window.localStorage.getItem('protos') && protoVersion === 0) {
                 var protos = JSON.parse(window.localStorage.getItem('protos'));
 
                 protoVersion = protos.version || 0;
                 serverProtos = protos.server || {};
                 clientProtos = protos.client || {};
 
-                if(protobuf) protobuf.init({encoderProtos: clientProtos, decoderProtos: serverProtos});
+                if (protobuf) protobuf.init({encoderProtos: clientProtos, decoderProtos: serverProtos});
             }
             //Set protoversion
             handshakeBuffer.sys.protoVersion = protoVersion;
 
-            var onopen = function(event){
+            var onopen = function (event) {
                 var obj = Package.encode(Package.TYPE_HANDSHAKE, Protocol.strencode(JSON.stringify(handshakeBuffer)));
                 send(obj);
             };
-            var onmessage = function(event) {
+            var onmessage = function (event) {
                 processPackage(Package.decode(event.data), cb);
                 // new package arrived, update the heartbeat timeout
-                if(heartbeatTimeout) {
+                if (heartbeatTimeout) {
                     nextHeartbeatTimeout = Date.now() + heartbeatTimeout;
                 }
             };
-            var onerror = function(event) {
+            var onerror = function (event) {
                 pomelo.emit('io-error', event);
                 console.error('socket error: ', event);
             };
-            var onclose = function(event){
-                pomelo.emit('close',event);
+            var onclose = function (event) {
+                pomelo.emit('close', event);
                 console.error('socket close: ', event);
             };
             socket = new WebSocket(url);
@@ -1494,33 +1505,33 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             socket.onclose = onclose;
         };
 
-        pomelo.disconnect = function() {
-            if(socket) {
-                if(socket.disconnect) socket.disconnect();
-                if(socket.close) socket.close();
+        pomelo.disconnect = function () {
+            if (socket) {
+                if (socket.disconnect) socket.disconnect();
+                if (socket.close) socket.close();
                 cc.log('disconnect');
                 socket = null;
             }
 
-            if(heartbeatId) {
+            if (heartbeatId) {
                 clearTimeout(heartbeatId);
                 heartbeatId = null;
             }
-            if(heartbeatTimeoutId) {
+            if (heartbeatTimeoutId) {
                 clearTimeout(heartbeatTimeoutId);
                 heartbeatTimeoutId = null;
             }
         };
 
-        pomelo.request = function(route, msg, cb) {
-            if(arguments.length === 2 && typeof msg === 'function') {
+        pomelo.request = function (route, msg, cb) {
+            if (arguments.length === 2 && typeof msg === 'function') {
                 cb = msg;
                 msg = {};
             } else {
                 msg = msg || {};
             }
             route = route || msg.route;
-            if(!route) {
+            if (!route) {
                 return;
             }
 
@@ -1531,13 +1542,13 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             routeMap[reqId] = route;
         };
 
-        pomelo.notify = function(route, msg) {
+        pomelo.notify = function (route, msg) {
             msg = msg || {};
             sendMessage(0, route, msg);
         };
 
-        var sendMessage = function(reqId, route, msg) {
-            if(encode) {
+        var sendMessage = function (reqId, route, msg) {
+            if (encode) {
                 msg = encode(reqId, route, msg);
             }
 
@@ -1545,30 +1556,30 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             send(packet);
         };
 
-        var send = function(packet){
+        var send = function (packet) {
             socket.send(packet.buffer);
         };
 
         var handler = {};
 
-        var heartbeat = function(data) {
-            if(!heartbeatInterval) {
+        var heartbeat = function (data) {
+            if (!heartbeatInterval) {
                 // no heartbeat
                 return;
             }
 
             var obj = Package.encode(Package.TYPE_HEARTBEAT);
-            if(heartbeatTimeoutId) {
+            if (heartbeatTimeoutId) {
                 clearTimeout(heartbeatTimeoutId);
                 heartbeatTimeoutId = null;
             }
 
-            if(heartbeatId) {
+            if (heartbeatId) {
                 // already in a heartbeat interval
                 return;
             }
 
-            heartbeatId = setTimeout(function() {
+            heartbeatId = setTimeout(function () {
                 heartbeatId = null;
                 send(obj);
 
@@ -1577,9 +1588,9 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             }, heartbeatInterval);
         };
 
-        var heartbeatTimeoutCb = function() {
+        var heartbeatTimeoutCb = function () {
             var gap = nextHeartbeatTimeout - Date.now();
-            if(gap > gapThreshold) {
+            if (gap > gapThreshold) {
                 heartbeatTimeoutId = setTimeout(heartbeatTimeoutCb, gap);
             } else {
                 console.error('server heartbeat timeout');
@@ -1588,14 +1599,14 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             }
         };
 
-        var handshake = function(data){
+        var handshake = function (data) {
             data = JSON.parse(Protocol.strdecode(data));
-            if(data.code === RES_OLD_CLIENT) {
+            if (data.code === RES_OLD_CLIENT) {
                 pomelo.emit('error', 'client version not fullfill');
                 return;
             }
 
-            if(data.code !== RES_OK) {
+            if (data.code !== RES_OK) {
                 pomelo.emit('error', 'handshake fail');
                 return;
             }
@@ -1604,21 +1615,21 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
 
             var obj = Package.encode(Package.TYPE_HANDSHAKE_ACK);
             send(obj);
-            if(initCallback) {
+            if (initCallback) {
                 initCallback(socket);
                 initCallback = null;
             }
         };
 
-        var onData = function(data) {
+        var onData = function (data) {
             var msg = data;
-            if(decode) {
+            if (decode) {
                 msg = decode(msg);
             }
             processMessage(pomelo, msg);
         };
 
-        var onKick = function(data) {
+        var onKick = function (data) {
             pomelo.emit('onKick');
         };
 
@@ -1627,12 +1638,12 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
         handlers[Package.TYPE_DATA] = onData;
         handlers[Package.TYPE_KICK] = onKick;
 
-        var processPackage = function(msg) {
+        var processPackage = function (msg) {
             handlers[msg.type](msg.body);
         };
 
-        var processMessage = function(pomelo, msg) {
-            if(!msg.id) {
+        var processMessage = function (pomelo, msg) {
+            if (!msg.id) {
                 // server push message
                 pomelo.emit(msg.route, msg.body);
                 return;
@@ -1642,7 +1653,7 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             var cb = callbacks[msg.id];
 
             delete callbacks[msg.id];
-            if(typeof cb !== 'function') {
+            if (typeof cb !== 'function') {
                 return;
             }
 
@@ -1650,34 +1661,34 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             return;
         };
 
-        var processMessageBatch = function(pomelo, msgs) {
-            for(var i=0, l=msgs.length; i<l; i++) {
+        var processMessageBatch = function (pomelo, msgs) {
+            for (var i = 0, l = msgs.length; i < l; i++) {
                 processMessage(pomelo, msgs[i]);
             }
         };
 
-        var deCompose = function(msg){
+        var deCompose = function (msg) {
             var route = msg.route;
 
             //Decompose route from dict
-            if(msg.compressRoute) {
-                if(!abbrs[route]){
+            if (msg.compressRoute) {
+                if (!abbrs[route]) {
                     return {};
                 }
 
                 route = msg.route = abbrs[route];
             }
-            if(serverProtos && serverProtos[route]){
+            if (serverProtos && serverProtos[route]) {
                 return protobuf.decode(route, msg.body);
-            }else{
+            } else {
                 return JSON.parse(Protocol.strdecode(msg.body));
             }
 
             return msg;
         };
 
-        var handshakeInit = function(data){
-            if(data.sys && data.sys.heartbeat) {
+        var handshakeInit = function (data) {
+            if (data.sys && data.sys.heartbeat) {
                 heartbeatInterval = data.sys.heartbeat * 1000;   // heartbeat interval
                 heartbeatTimeout = heartbeatInterval * 2;        // max heartbeat timeout
             } else {
@@ -1687,40 +1698,40 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
 
             initData(data);
 
-            if(typeof handshakeCallback === 'function') {
+            if (typeof handshakeCallback === 'function') {
                 handshakeCallback(data.user);
             }
         };
 
         //Initilize data used in pomelo client
-        var initData = function(data){
-            if(!data || !data.sys) {
+        var initData = function (data) {
+            if (!data || !data.sys) {
                 return;
             }
             dict = data.sys.dict;
             var protos = data.sys.protos;
 
             //Init compress dict
-            if(dict){
+            if (dict) {
                 dict = dict;
                 abbrs = {};
 
-                for(var route in dict){
+                for (var route in dict) {
                     abbrs[dict[route]] = route;
                 }
             }
 
             //Init protobuf protos
-            if(protos){
+            if (protos) {
                 protoVersion = protos.version || 0;
                 serverProtos = protos.server || {};
                 clientProtos = protos.client || {};
-                if(!!protobuf){
+                if (!!protobuf) {
                     protobuf.init({encoderProtos: protos.client, decoderProtos: protos.server});
                 }
 
                 //Save protobuf protos to localStorage
-                if(SETTING_IS_BROWSER) window.localStorage.setItem('protos', JSON.stringify(protos));
+                if (SETTING_IS_BROWSER) window.localStorage.setItem('protos', JSON.stringify(protos));
             }
         };
 
@@ -1728,7 +1739,7 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
     })();
 
 });
-lzRequire.register("boot/index.js", function(exports, lzRequire, module){
+lzRequire.register("boot/index.js", function (exports, lzRequire, module) {
     var Emitter = lzRequire('emitter');
     lzWindow.EventEmitter = Emitter;
 
@@ -1763,45 +1774,6 @@ lzRequire.alias("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", "po
 lzRequire("boot");
 
 var ConnectSuccess = false;
-
-
-lzWindow.pomelo.init({
-    host: '192.168.1.15',
-    port: 3010,
-    user: {},
-    handshakeCallback : function(){}
-}, function() {
-    cc.log('connect success!');
-    ConnectSuccess = true;
-
-    lzWindow.pomelo.on('close', function(data) {
-        cc.log('*****close');
-        cc.log(data);
-        ConnectSuccess = false;
-    });
-
-    lzWindow.pomelo.on('onMessage', function(data) {
-        cc.log('***** on chart: ', data);
-    });
-
-    lzWindow.pomelo.request('connector.userHandler.login', {
-        email: 'test_email_2@qq.com',
-        password: '1'
-    }, function(data) {
-        if (data.code == 200) {
-            cc.log('login success.');
-        } else {
-            cc.log('login faild.');
-        }
-        cc.log(data);
-    });
-});
-
-
-
-
-
-
 
 
 /*

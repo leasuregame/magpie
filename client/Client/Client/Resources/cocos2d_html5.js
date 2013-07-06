@@ -51,6 +51,7 @@
             'src/view/skillFactory.js',
 
             'src/model/pomeloWebsocketClient.js',
+            'src/model/serverAPI.js',
 
             'src/model/config.js',
             'src/model/singleton.js',
@@ -67,6 +68,10 @@
             'src/controls/bgSprite.js',
             'src/controls/dialog.js',
             'src/controls/lazyMenu.js',
+            'src/view/signInScene.js',
+            'src/view/signInLayer.js',
+            'src/view/signUpScene.js',
+            'src/view/signUpLayer.js',
             'src/view/cardDetails.js',
             'src/view/cardNode.js',
             'src/view/battleLayer.js',

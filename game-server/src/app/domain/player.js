@@ -51,6 +51,11 @@ var Player = (function (_super) {
         this.cards = {};
     };
 
+    Player.prototype.save = function() {
+        Player.__super__.save.apply(this, arguments);
+        // update all cards info
+        _.values(this.cards).forEach(function(card){card.save()});
+    };
 
     Player.prototype.addCard = function(card) {
         if (typeof card.id !== 'undefined' && card.id !== null){

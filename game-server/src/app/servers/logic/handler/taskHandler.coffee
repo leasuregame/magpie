@@ -33,23 +33,28 @@ Handler::explore = (msg, session, next) ->
           session, 
           {pid: player.id, tableId: player.task.id, table: 'task_config'}, 
           (err, battleLog) ->
-            if battleLog.winner is 'own'
-              taskManager.countResult player, data, cb
-              obtainBattleRewards(player, battleLog)
-
             data.battle_log = battleLog
+
+            if battleLog.winner is 'own'
+              obtainBattleRewards(player, battleLog)
+              taskManager.countExploreResult player, data, cb
+            else
+              cb(null, data)
         )
       else if data.result is 'box'
-        data.open_box_card = taskManager.openBox()
-        taskManager.countResult player, data, cb
+        taskManager.openBox player, data, (err) ->
+          if err
+            cb(err, null)
+          else
+            taskManager.countExploreResult player, data, cb
       else
-        taskManager.countResult player, data, cb
+        taskManager.countExploreResult player, data, cb
   ], (err, data) ->
     if err
       return next(null, {code: 500, msg: err.msg})
 
-      player.save()
-      next(null, {code: 200, msg: data})
+    player.save()
+    next(null, {code: 200, msg: data})
 
 Handler::passBarrier = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -86,7 +91,6 @@ Handler::passBarrier = (msg, session, next) ->
     if err 
       return next(err, {code: 500})
 
-    player.save()
     next(null, {code: 200, msg: bl})
 
 
@@ -118,11 +122,16 @@ getRewardCards = (cardIds, count) ->
   _cards
 
 addCardsToPlayer = (player, cards) ->
-  for card in cards
-    player.addCard( new Card
-      tableId: card.id
-      lv: card.lv
-      star: card.star
-      type: cardConfig.TYPE.MONSTER
+  async.each cards, (card) ->
+    dao.card.createCard(
+      {
+        playerId: player.id, 
+        talbeId: card.id, 
+        star: card.star,
+        lv: card.lv,
+        type: cardConfig.TYPE.MONSTER
+      }, 
+      (err, card) ->
+        if err is null and card isnt null
+          player.addCard card
     )
-  return 

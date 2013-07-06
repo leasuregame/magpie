@@ -1,5 +1,6 @@
 table = require './table'
 taskRate = require '../../config/data/taskRate'
+utility = require '../common/utility'
 _ = require 'underscore'
 
 MAX_POWER = 100
@@ -25,16 +26,13 @@ class Manager
     if player.power < taskData.power_consume
       return cb({msg: '体力不足'}, null, null)
 
-    rd = _.random(0, 100)
-    # 检查是否进入战斗
-    if rd <= taskRate.fight
-      res.result = 'fight'
-    else if taskRate.fight < rd <= (taskRate.fight + taskRate.precious_box)
-      # 检查是否获得宝箱
-      res.result = 'box'
-      res.open_box_card = openBox()
-    else
-      res.result = 'none'
+    res.result = utility.randomValue( 
+      ['fight','box', 'none'],
+      [taskRate.fight, taskRate.precious_box, (100 - taskRate.fight - taskRate.precious_box)]
+    )
+
+    if res.result is 'box'
+      res.open_box_card = Manager.openBox()
 
     # 更新玩家信息
     player.increase('money', taskData.coins_obtain)
@@ -52,34 +50,42 @@ class Manager
 
     cb(null, player, res)
 
-updateTask = (player, poins) ->
-  # 更新任务的进度信息
-  # 参数poins为没小关所需要探索的层数
-  task = player.task
-  task.progress += 1
-  if task.progress > poins
-    task.progress = 0
-    task.id += 1
+  @openBox: (cb)->
+    stars = [1,2,3,4]
+    rates = _.values(taskRate.open_box.star)
+    randomCard(utility.randomValue(stars, rates))
 
-  player.set('task', task)
 
-openBox = () ->
-  star = taskRate.open_box.star
-  rd = _.random(0, 100)
+  @fightToMonster: (app, session, args, cb) ->
+    app.rpc.battle.fightRemote.pve( session, args, cb )
 
-  getStar = (rd) ->
-    if rd <= star.one
-      return 1
-    if star.one < rd <= (star.one + star.two)
-      return 2
-    if (star.one + star.two) < rd < (star.one + star.two + star.three)
-      return 3
-    if (star.one + star.two + star.three) < rd <= 100
-      return 4
+  @countExploreResult: (player, result, cb) ->
+    taskData = table.getTableItem('task', player.task.id)
+    exp_to_upgrade = table.getTableItem('player_upgrade', player.lv)
 
-    return 1
+    # 更新玩家money
+    player.increase('money', taskData.coins_obtain)
 
-  randomCard(getStar(rd))
+    # 更新任务的进度信息
+    # 参数poins为没小关所需要探索的层数
+    task = _.clone(player.task)
+    task.progress += 1
+    if task.progress > taskData.poins
+      task.progress = 0
+      task.id += 1
+    player.set('task', task)
+
+    # 判断是否升级
+    if (player.exp + taskData.exp_obtain) >= exp_to_upgrade.exp
+      player.set('exp', 0)
+      player.increase('lv')
+      player.set('power', MAX_POWER) 
+      result.upgrade = true
+    else
+      player.increase('exp', taskData.exp_obtain)
+      player.consumePower(taskData.power_consume)
+
+    cb(null, player, res)
 
 randomCard = (star) ->
   ids = _.range(star, 250, 5)

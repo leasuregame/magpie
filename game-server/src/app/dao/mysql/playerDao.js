@@ -160,7 +160,7 @@ var playerDao = {
      * @param {function} cb  回调函数
      */
     _getPlayer: function(param, cb) {
-        if (typeof uid == 'undefined') {
+        if (typeof param == 'undefined') {
             cb("param error", null);
         }
 

@@ -13,6 +13,14 @@
 
 var lzWindow = {};
 
+lzWindow.setTimeout = function(cb, timeout) {
+
+}
+
+lzWindow.clearTimeout = function() {
+
+}
+
 /**
  * lzRequire the given path.
  *

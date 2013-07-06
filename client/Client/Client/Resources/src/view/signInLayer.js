@@ -48,16 +48,17 @@ var SignInLayer = cc.Layer.extend({
         this._accountEditBox.setText("111");
         this._passwordEditBox.setText("111");
 
-        var signInButton = this._getButtonWithTitle("登录");
+        var signInButton = cc.MenuItemFont.create("登录", this._onClickSignIn, this);
         signInButton.setPosition(260, 250);
-        this.addChild(signInButton);
+//        this.addChild(signInButton);
 
-        var signUpButton = this._getButtonWithTitle("注册");
+        var signUpButton = cc.MenuItemFont.create("注册", this._onClickSignUp, this);
         signUpButton.setPosition(460, 250);
-        this.addChild(signUpButton);
+//        this.addChild(signUpButton);
 
-        signInButton.addTargetWithActionForControlEvent(this, this._onClickSignIn, cc.CONTROL_EVENT_TOUCH_DOWN);
-        signUpButton.addTargetWithActionForControlEvent(this, this._onClickSignUp, cc.CONTROL_EVENT_TOUCH_DOWN);
+        var menu = cc.Menu.create(signInButton, signUpButton);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu);
 
         return true;
     },
@@ -69,11 +70,11 @@ var SignInLayer = cc.Layer.extend({
 
         var titleButton = cc.LabelTTF.create(title, "Marker Felt", 30);
 
-        titleButton.setColor(cc.c3(159, 168, 176));
+        titleButton.setColor(cc.c3b(159, 168, 176));
 
         var button = cc.ControlButton.create(titleButton, backgroundButton);
-        button.setBackgroundSpriteForState(backgroundHighlightedButton, cc.CONTROL_STATE_HIGHLIGHTED);
-        button.setTitleColorForState(cc.WHITE, cc.CONTROL_STATE_HIGHLIGHTED);
+//        button.setBackgroundSpriteForState(backgroundHighlightedButton, cc.CONTROL_STATE_HIGHLIGHTED);
+//        button.setTitleColorForState(cc.WHITE, cc.CONTROL_STATE_HIGHLIGHTED);
 
         return button;
     },

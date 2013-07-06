@@ -12,7 +12,7 @@
  * */
 
 
-var SERVER_HOST = "192.168.1.15";
+var SERVER_HOST = "192.168.1.89";
 var SERVER_PORT = 3010;
 var ConnectSuccess = false;
 

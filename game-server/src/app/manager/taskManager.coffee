@@ -39,8 +39,7 @@ class Manager
     dao.card.createCard {playerId: player.id, tableId: data.open_box_card}, (err, card) ->
       if err
         cb(err)
-      else
-        card.set('lv', 5)
+      else    
         player.addCard card
         cb(null)
 

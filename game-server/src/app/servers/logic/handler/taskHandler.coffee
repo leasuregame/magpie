@@ -93,6 +93,9 @@ Handler::passBarrier = (msg, session, next) ->
 
     next(null, {code: 200, msg: bl})
 
+Handler::luckyCard = (msg, session, next) ->
+  
+
 
 obtainBattleRewards = (player, battleLog) ->
   taskData = table.getTableItem 'task_config', player.task.id

@@ -58,16 +58,16 @@ describe("Logic Server # ", function() {
       });
     });
 
-    // describe("logic.taskHandler.passBarrier", function(){
+    describe("logic.taskHandler.passBarrier", function(){
       
-    //   it("should can be execute and return result of pass barrier", function(){
-    //     request('logic.taskHandler.passBarrier', {playerId: '1'}, function(data){
-    //       expect(data).toEqual('')
-    //       console.log(data);
-    //     });
-    //   });
+      it("should can be execute and return result of pass barrier", function(){
+        request('logic.taskHandler.passBarrier', {playerId: '1'}, function(data){
+          expect(data).toEqual('')
+          console.log(data);
+        });
+      });
       
-    // });
+    });
 
   });
 

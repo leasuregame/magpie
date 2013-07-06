@@ -37,8 +37,7 @@ playerSync = {
         var sql = _ref[0];
         var args = _ref[1];
 
-        console.log(sql, args);
-
+        logger.debug(sql, args);
         return dbClient.update(sql, args, function (err, res) {
             if (err) {
                 logger.error("[playerDao.updatePlayerById faild] ", err.stack);

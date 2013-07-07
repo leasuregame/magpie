@@ -15,7 +15,8 @@
     "poins": 5
   },
   "POWER_GIVE": {
-    "time": [12, 6], 
-    "poins": 50
+    "hours": [12, 18], 
+    "poins": 50,
+    "interval": 60000
   }
 }

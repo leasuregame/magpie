@@ -35,7 +35,8 @@ var DEFAULT_PLAYER_INFO = {
     ability: 0,
     task: {id: 1, progress: 0},
     pass: 0,
-    passMark: 0
+    passMark: 0,
+    dailyGift: []
 };
 
 var createNewPlayer = function (playerInfo) {

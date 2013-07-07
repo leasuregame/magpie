@@ -14,6 +14,7 @@
 
 var utility = require('../common/utility');
 var Entity = require('./entity');
+var playerConfig = require('../../config/data/player');
 var _ = require("underscore");
 
 var FIELDS = {
@@ -34,6 +35,16 @@ var FIELDS = {
     passMark: true
 };
 
+var startPowerResumeTimer = function(player) {
+    var resumePoins = playerConfig.POWER_RESUME.poins;
+    var interval = playerConfig.POWER_RESUME.interval;
+    
+    setInterval(function(){
+        player.resumePower(resumePoins);
+        player.save();
+    }, interval);
+};
+
 /*
  * Player 与 player 表对应的数据类，提供简单操作
  * @param {object} param 数据库 player 表中的一行记录
@@ -45,6 +56,8 @@ var Player = (function (_super) {
     function Player(param) {
         Player.__super__.constructor.apply(this, arguments);
         this._fields = FIELDS;
+
+        startPowerResumeTimer(this);
     }
 
     Player.prototype.init = function () {
@@ -75,6 +88,18 @@ var Player = (function (_super) {
         this.set('power', _.max([power - value, 0]))
     };
 
+    Player.prototype.resumePower = function(value) {
+        var max_power;
+        for (var lv in playerConfig.POWER_LIMIT) {
+            if (this.lv <= parseInt(lv)){
+                max_power = playerConfig.POWER_LIMIT[lv];
+                break;
+            }
+        }
+
+        var power = this.get('power');
+        this.set('power', _.min([max_power, power + value]));
+    };
 
     Player.prototype.getPassMarkByIndex = function (index) {
         if (index < 1) {

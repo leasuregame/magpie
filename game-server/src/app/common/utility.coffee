@@ -9,8 +9,26 @@ Utility =
     rd = _.random(0, 100)
     if rd <= rate then true else false
 
-  random: ->
-    _.random(0, 100)
+  ###
+  get random value from the given values
+  @param {array} values, the given values for get the random one from them
+  @param {array} rates, the option parameter, if given, will return the value for the rates
+  ###
+  randomValue: (values, rates) ->
+    if rates?
+      _rates = []
+      _r = 0
+      for r in rates
+        _rates.push _r += r
+
+      rd = _.random(0, 100)
+      for r, i in _rates
+        if rd <= r
+          return values[i]
+    else if values.length > 0
+      return values[_.random(0, (values.length - 1))]
+    else # default
+      values[0]
 
   parseEffect: (value) ->
     pattern = /^\d+,\d+$/

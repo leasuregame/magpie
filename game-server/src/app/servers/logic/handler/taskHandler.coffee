@@ -6,6 +6,7 @@ async = require 'async'
 _ = require 'underscore'
 Card = require '../../../domain/card'
 cardConfig = require '../../../../config/data/card'
+utility = require '../../../common/utility'
 
 module.exports = (app) ->
   new Handler(app)
@@ -17,39 +18,43 @@ Handler::explore = (msg, session, next) ->
   rewards = null
   player = null
 
-  getPlayer = (cb) ->
-    playerManager.getPlayerInfo {pid: playerId}, cb
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
 
-  executeExpolore = (player, cb) ->
-    taskManager.explore player, cb
+    (_player, cb) ->
+      player = _player
+      taskManager.explore player, cb
 
-  checkFight = (_player, data, cb) =>
-    player = _player
-    rewards = data
-    if rewards.result is 'fight'
-      @app.rpc.battle.fightRemote.pve( session, {pid: player.id, tableId: player.task.id, table: 'task_config'}, cb )
-    else
-      cb(null, null)
+    (data, cb) =>
+      if data.result is 'fight'
+        taskManager.fightToMonster(
+          @app, 
+          session, 
+          {pid: player.id, tableId: player.task.id, table: 'task_config'}, 
+          (err, battleLog) ->
+            data.battle_log = battleLog
 
-  addBattleLogIfFight = (bl, cb) ->
-    if bl?
-      obtainBattleRewards(player, bl)
-      rewards.battle_log = bl
-    cb(null)
+            if battleLog.winner is 'own'
+              obtainBattleRewards(player, battleLog)
+              taskManager.countExploreResult player, data, cb
+            else
+              cb(null, data)
+        )
+      else if data.result is 'box'
+        taskManager.openBox player, data, (err) ->
+          if err
+            cb(err, null)
+          else
+            taskManager.countExploreResult player, data, cb
+      else
+        taskManager.countExploreResult player, data, cb
+  ], (err, data) ->
+    if err
+      return next(null, {code: 500, msg: err.msg})
 
-  async.waterfall([
-    getPlayer,
-    executeExpolore,
-    checkFight,
-    addBattleLogIfFight
-    ], (err) ->
-      if err
-        next(null, {code: 500, msg: err.msg})
-        return
-
-      player.save()
-      next(null, {code: 200, msg: rewards})
-  )
+    player.save()
+    next(null, {code: 200, msg: data})
 
 Handler::passBarrier = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -86,8 +91,10 @@ Handler::passBarrier = (msg, session, next) ->
     if err 
       return next(err, {code: 500})
 
-    player.save()
     next(null, {code: 200, msg: bl})
+
+Handler::luckyCard = (msg, session, next) ->
+  
 
 
 obtainBattleRewards = (player, battleLog) ->
@@ -105,9 +112,9 @@ getRewardCards = (cardIds, count) ->
   
   _cards = []
   for i in [1..count]
-    id = randomValue cardIds
-    star = randomValue [1,2], _.values(cd.star)
-    level = randomValue [1,2,3,4,5], _.values(cd.level)
+    id = utility.randomValue cardIds
+    star = utility.randomValue [1,2], _.values(cd.star)
+    level = utility.randomValue [1,2,3,4,5], _.values(cd.level)
 
     _cards.push {
       id: parseInt(id)
@@ -117,28 +124,17 @@ getRewardCards = (cardIds, count) ->
   
   _cards
 
-randomValue = (values, rates) ->
-  if rates?
-    _rates = []
-    _r = 0
-    for r in rates
-      _rates.push _r += r
-
-    rd = _.random(0, 100)
-    for r, i in _rates
-      if rd <= r
-        return values[i]
-  else if values.length > 0
-    return values[_.random(0, (values.length - 1))]
-  else # default
-    values[0]
-
 addCardsToPlayer = (player, cards) ->
-  for card in cards
-    player.addCard( new Card
-      tableId: card.id
-      lv: card.lv
-      star: card.star
-      type: cardConfig.TYPE.MONSTER
+  async.each cards, (card) ->
+    dao.card.createCard(
+      {
+        playerId: player.id, 
+        talbeId: card.id, 
+        star: card.star,
+        lv: card.lv,
+        type: cardConfig.TYPE.MONSTER
+      }, 
+      (err, card) ->
+        if err is null and card isnt null
+          player.addCard card
     )
-  return 

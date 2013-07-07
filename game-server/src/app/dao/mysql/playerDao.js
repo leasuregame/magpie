@@ -23,33 +23,30 @@ var logger = require("pomelo-logger").getLogger(__filename);
 var Player = require("../../domain/player");
 var cardDao = require("./cardDao");
 var async = require('async');
+var _ = require('underscore');
 
-var getPlayerObject = function (res) {
-    var player = new Player({
-        id: res.id,
-        createTime: res.createTime,
-        userId: res.userId,
-        areaId: res.areaId,
-        name: res.name,
-        power: res.power,
-        lv: res.lv,
-        exp: res.exp,
-        money: res.money,
-        gold: res.gold,
-        lineUp: res.lineUp,
-        ability: res.ability,
-        task: res.task,
-        pass: res.pass,
-        passMark: res.passMark
-    });
+var DEFAULT_PLAYER_INFO = {
+    power: 100,
+    lv: 1,
+    exp: 0,
+    money: 1000,
+    gold: 50,
+    lineUp: '',
+    ability: 0,
+    task: {id: 1, progress: 0},
+    pass: 0,
+    passMark: 0
+};
+
+var createNewPlayer = function (playerInfo) {
+    var player = new Player(playerInfo);
 
     player.on('save', function (cb) {
-        var id = res.id;
+        var id = player.id;
         app.get('sync').exec('playerSync.updatePlayerById', id, [id, player.getSaveData(), cb]);
     });
-
     return player;
-}
+};
 
 var playerDao = {
     /*
@@ -59,7 +56,6 @@ var playerDao = {
      * */
     createPlayer: function (param, cb) {
         if (typeof param == "undefined" || 
-            typeof param.id == "undefined" || 
             typeof param.areaId == "undefined" || 
             typeof param.name == "undefined" || 
             typeof param.userId == "undefined"
@@ -67,7 +63,9 @@ var playerDao = {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.insertSql("player", param);
+        var fields = _.clone(DEFAULT_PLAYER_INFO)
+        _.extend(fields, param);
+        var _ref = sqlHelper.insertSql("player", fields);
         var sql = _ref[0];
         var args = _ref[1];
 
@@ -80,11 +78,7 @@ var playerDao = {
                     msg: err.message
                 }, null);
             } else {
-                return cb(null, new Player({
-                    id: res.insertId,
-                    areaId: param.areaId,
-                    name: param.name
-                }));
+                return cb(null, createNewPlayer(_.extend({id: res.insertId}, fields)));
             }
         });
     },
@@ -143,13 +137,13 @@ var playerDao = {
             }
         ], function (err, results) {
             if (err !== null) {
-                cb(err, null)
+                return cb(err, null)
             }
 
             var player = results[0];
             var cards = results[1];
             player.addCards(cards);
-            cb(null, player);
+            return cb(null, player);
         });
     },
 
@@ -177,7 +171,7 @@ var playerDao = {
                     msg: err.message
                 }, null);
             } else if (res && res.length === 1) {
-                return cb(null, getPlayerObject(res[0]));
+                return cb(null, createNewPlayer(res[0]));
             } else {
                 return cb({
                     code: null,

@@ -38,12 +38,16 @@ Handler::login = (msg, session, next) ->
       return
 
     session.bind(user.id)
-    session.set('playername', user.name)
     session.on('close', onUserLeave)
 
-    @app.rpc.message.messageRemote.addPlayer(session, user.id, @app.get('serverId'), null)
-    #player = dao.player.
-    next(null, {code: 200, uid: user.id})
+    dao.player.getPlayerByUserId user.id, (err, player) ->
+      if err or not player
+        return next(null, {code: 200, uid: user.id, pid: null})
+
+      session.set('playerId', player.id)
+      session.set('playerName', player.name)
+
+      next(null, {code: 200, uid: user.id, pid: player.id})
 
 onUserLeave = (session, reason) ->
   if not session or not session.uid

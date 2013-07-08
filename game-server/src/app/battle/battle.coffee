@@ -26,6 +26,9 @@ class Battle extends Base
     @defender.setEnemy(@attacker)
     @round = new Round(@attacker, @defender)
 
+  isOver: ->
+    @attacker.death() or @defender.death() or @round.round_num > 30
+
   start: ->
     _enm = {
       id: @defender.id

@@ -103,7 +103,7 @@ class Player extends Module
     _hero = @currentHero()
     if _hero is null or _hero.death()
       logger.warn "玩家 #{@name} 拿不到当前卡牌，或者没有可用的牌可出了。卡牌：#{_hero?.name}, 死亡状态：#{_hero?.death()}"
-      @dead = true
+      #@dead = true
     else
       logger.info "#{@name} 出手", _hero.name
       _hero.attack(callback)

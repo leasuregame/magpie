@@ -1,5 +1,7 @@
 battleLog = require './battle_log'
+async = require 'async'
 log = require('pomelo-logger').getLogger(__filename)
+
 class Base
   constructor: (attacker, defender) ->
     @attacker = attacker
@@ -120,13 +122,26 @@ class Attack extends Base
     #         if hero.death() and not hero.isAttacked()
     #           @attacker.shootCount -= 1
 
+
+    # self = this
     # async.series [
     #   (cb) ->
-    #     if @attacker.shootCount > 0
-    #       @attacker.shootCount -= 1
-    #       @attacker.attack (hero) ->
+    #     if self.attacker.shootCount > 0
+    #       self.attacker.shootCount -= 1
+    #       self.attacker.attack (hero) ->
     #         if hero.death() and not hero.isAttacked()
-    #           @defender.shootCount -= 1
+    #           self.defender.shootCount -= 1
+            
+    #         self.attacker.nextHero()
+    #         cb(null)
+
+    #   (cb) ->
+    #     if self.defender.shootCount > 0
+    #       self.defender.shootCount -= 1
+    #       self.defender.attack (hero) ->
+    #         if hero.death() and not hero.isAttacked()
+    #           self.attacker.shootCount -= 1
+    #         self.defender.nextHero()
     # ]
 
 exports = module.exports = Battle

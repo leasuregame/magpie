@@ -18,7 +18,6 @@ class Hero extends Module
   @table: 'cards'
 
   init: (attrs, player)->
-    console.log 'new card: ', attrs
     @player = player
     @id = attrs.id
     @lv = attrs.lv

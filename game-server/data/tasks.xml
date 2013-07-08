@@ -9,7 +9,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-06-21T01:48:52Z</Created>
-  <LastSaved>2013-07-08T09:41:38Z</LastSaved>
+  <LastSaved>2013-07-04T06:50:56Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.00</Version>
  </DocumentProperties>
@@ -17,21 +17,12 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-<<<<<<< HEAD
-  <WindowHeight>9320</WindowHeight>
-  <WindowWidth>25980</WindowWidth>
-  <WindowTopX>3500</WindowTopX>
-  <WindowTopY>2700</WindowTopY>
-  <TabRatio>688</TabRatio>
-  <ActiveSheet>8</ActiveSheet>
-=======
   <WindowHeight>7995</WindowHeight>
   <WindowWidth>25980</WindowWidth>
   <WindowTopX>9135</WindowTopX>
   <WindowTopY>2655</WindowTopY>
   <TabRatio>688</TabRatio>
   <ActiveSheet>6</ActiveSheet>
->>>>>>> 2664072467b72f168672c48d0c9fd041253500f5
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -66,15 +57,9 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="任务表">
-<<<<<<< HEAD
-  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Width="28"/>
-=======
   <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
    <Column ss:Width="27.75"/>
->>>>>>> 2664072467b72f168672c48d0c9fd041253500f5
    <Column ss:AutoFitWidth="0" ss:Width="99"/>
    <Column ss:Width="92.25"/>
    <Column ss:Width="108"/>
@@ -143,16 +128,6 @@
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="String">第二章</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="String">第一节</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="Number">6</Data></Cell>
-    <Cell><Data ss:Type="Number">6</Data></Cell>
-    <Cell><Data ss:Type="Number">55</Data></Cell>
-   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
@@ -162,15 +137,11 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
-<<<<<<< HEAD
-   <PageLayoutZoom>0</PageLayoutZoom>
-=======
->>>>>>> 2664072467b72f168672c48d0c9fd041253500f5
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>13</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -261,7 +232,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">money_obtain</Data></Cell>
+    <Cell><Data ss:Type="String">coins_obtain</Data></Cell>
     <Cell><Data ss:Type="String">exp_obtain</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -521,7 +492,6 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1098,8 +1068,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>22</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1513,8 +1483,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>13</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>16</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1534,7 +1504,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">exp</Data></Cell>
-    <Cell><Data ss:Type="String">money</Data></Cell>
+    <Cell><Data ss:Type="String">coins</Data></Cell>
     <Cell><Data ss:Type="String">skill_poins</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -2140,16 +2110,11 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
-<<<<<<< HEAD
-   <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
-=======
->>>>>>> 2664072467b72f168672c48d0c9fd041253500f5
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>19</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -2176,7 +2141,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">章节扫荡产出表</Data></Cell>
-    <Cell><Data ss:Type="String">wipe_out</Data></Cell>
+    <Cell><Data ss:Type="String">mop_up</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">任务卡牌配置表</Data></Cell>
@@ -2208,8 +2173,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>11</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

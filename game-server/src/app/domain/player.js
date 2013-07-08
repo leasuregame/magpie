@@ -120,7 +120,26 @@ var Player = (function (_super) {
 
     Player.prototype.hasGive = function(gift) {
         return _.contains(this.get('dailyGift'), gift);
-    }
+    };
+
+    Player.prototype.strengthen = function(target, sources, cb) {
+        var target_card = this.cards[target];
+        if (typeof target_card == 'undefined') {
+            return cb('找不到目标卡牌', null)
+        }
+
+        var source_cards = [];
+        for (var i = 0; i < sources.length; i++) {
+            var _id = sources[i];
+            var _card = this.cards[_id];
+            if (!!_card) {
+                source_cards.push(_card);
+            }
+        }
+
+        target_card.eatCards(source_cards);
+        cb(null, player);
+    };
 
     Player.prototype.getPassMarkByIndex = function (index) {
         if (index < 1) {
@@ -130,7 +149,7 @@ var Player = (function (_super) {
 
         var mark = (this.passMark >> (index - 1)) & 1;
 
-        return (mark == 0);
+        return (mark == 1);
     };
 
     Player.prototype.resetPassMarkByAll = function () {

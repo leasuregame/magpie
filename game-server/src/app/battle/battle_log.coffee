@@ -6,7 +6,7 @@ class BattleLog
   constructor: ->
     @result = {}
     @steps = []
-    @rewards = {cards: []}
+    @rewards = {}
 
   set: (key, value) ->
     @result[key] = value
@@ -30,7 +30,7 @@ class BattleLog
 
   clear: ->
     @result = {}
-    @rewards = {cards: []}
+    @rewards = {}
     @steps = []
 
 exports = module.exports = new BattleLog()

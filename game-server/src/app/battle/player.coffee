@@ -63,6 +63,8 @@ class Player extends Module
     # else
     #   for i in [0...@heros.length]
     #     @matrix.set(i, @heros[i])
+    else
+      logger.warn 'there is not line up for player ' + @name
     
     @matrix.reset()
 

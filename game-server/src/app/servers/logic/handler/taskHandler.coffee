@@ -13,6 +13,9 @@ module.exports = (app) ->
 
 Handler = (@app) ->
 
+###
+探索
+###
 Handler::explore = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   rewards = null
@@ -56,8 +59,53 @@ Handler::explore = (msg, session, next) ->
     player.save()
     next(null, {code: 200, msg: data})
 
+###
+任务扫荡
+###
+Handler::wipeOut = (msg, session, next) ->
+  playerId = session.get('playerId') or msg.playerId
+  type = msg.type or 'task'
+
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+
+    (player, cb) ->
+      taskManager.wipeOut player, type, cb
+  ], (err, player, rewards) ->
+    if err
+      return next(null, {code: 500, msg: err.msg})
+
+    player.save()
+    next(null, {code: 200, msg: rewards})
+
+###
+强化
+###
+Handler::strengthen = (msg, session, next) ->
+  playerId = session.get('playerId') or msg.playerId
+  sources = msg.sources
+  target = msg.target
+
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+
+    (player, cb) ->
+      player.strengthen(target, sources, cb)
+  ], (err, player) ->
+    if err
+      return next(null, {code: 500, msg: err.msg})
+
+    player.save()
+    next(null, {code: 200, msg: rewards})
+
+###
+精英关卡，闯关
+###
 Handler::passBarrier = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
+  passId = msg.passId or 1
   player = null
   pass = 0
 
@@ -65,8 +113,14 @@ Handler::passBarrier = (msg, session, next) ->
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
 
-    (_player, cb) =>
+    (_player, cb) ->
       player = _player
+      if player.pass < passId
+        return cb({msg: '不能闯此关'})
+
+      cb(null)
+
+    (cb) =>
       pass = msg.pass or player.pass
       @app.rpc.battle.fightRemote.pve( session, {pid: player.id, tableId: pass, table: 'pass_config'}, cb )
 
@@ -83,13 +137,14 @@ Handler::passBarrier = (msg, session, next) ->
         player.increase('exp', rewards.exp)
         player.increase('money', rewards.money)
         player.increase('skillPoins', rewards.skillPoins)
+        player.increase('pass')
         player.save()
       
       cb(null, bl)
 
   ], (err, bl) ->
     if err 
-      return next(err, {code: 500})
+      return next(err, {code: 500, msg: err.msg or ''})
 
     next(null, {code: 200, msg: bl})
 

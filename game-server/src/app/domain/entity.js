@@ -68,6 +68,8 @@ var Entity = (function (_super) {
             param[key] = this[key];
         }
 
+        // reset _mark as empty
+        this._mark = {};
         return param;
     };
 

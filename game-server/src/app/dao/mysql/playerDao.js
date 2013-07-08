@@ -35,7 +35,8 @@ var DEFAULT_PLAYER_INFO = {
     ability: 0,
     task: {id: 1, progress: 0},
     pass: 0,
-    passMark: 0
+    passMark: 0,
+    dailyGift: []
 };
 
 var createNewPlayer = function (playerInfo) {
@@ -43,7 +44,15 @@ var createNewPlayer = function (playerInfo) {
 
     player.on('save', function (cb) {
         var id = player.id;
-        app.get('sync').exec('playerSync.updatePlayerById', id, [id, player.getSaveData(), cb]);
+        app.get('sync').exec(
+            'playerSync.updatePlayerById', 
+            id,
+            {
+                id: id,
+                data: player.getSaveData(),
+                cb: cb
+            }
+        );
     });
     return player;
 };

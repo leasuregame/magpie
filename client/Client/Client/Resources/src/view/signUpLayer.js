@@ -71,16 +71,20 @@ var SignUpLayer = cc.Layer.extend({
         this._nameEditBox.setMaxLength(18);
         this.addChild(this._nameEditBox);
 
-        var signUpAndSignInButton = this._getButtonWithTitle("注册并登录");
+        var signUpAndSignInButton = cc.MenuItemFont.create("注册", this._onClickSignUpAndSignIn, this);
         signUpAndSignInButton.setPosition(260, 250);
-        this.addChild(signUpAndSignInButton);
+//        this.addChild(signUpAndSignInButton);
 
-        var backButton = this._getButtonWithTitle("返回");
+        var backButton = cc.MenuItemFont.create("返回", this._onClickBack, this);
         backButton.setPosition(460, 250);
-        this.addChild(backButton);
+//        this.addChild(backButton);
 
-        signUpAndSignInButton.addTargetWithActionForControlEvent(this, this._onClickSignUpAndSignIn, cc.CONTROL_EVENT_TOUCH_DOWN);
-        backButton.addTargetWithActionForControlEvent(this, this._onClickBack, cc.CONTROL_EVENT_TOUCH_DOWN);
+        var menu = cc.Menu.create(signUpAndSignInButton, backButton);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu);
+
+//        signUpAndSignInButton.addTargetWithActionForControlEvent(this, this._onClickSignUpAndSignIn, cc.CONTROL_EVENT_TOUCH_DOWN);
+//        backButton.addTargetWithActionForControlEvent(this, this._onClickBack, cc.CONTROL_EVENT_TOUCH_DOWN);
 
         return true;
     },
@@ -92,7 +96,7 @@ var SignUpLayer = cc.Layer.extend({
 
         var titleButton = cc.LabelTTF.create(title, "Marker Felt", 30);
 
-        titleButton.setColor(cc.c3(159, 168, 176));
+        titleButton.setColor(cc.c3b(159, 168, 176));
 
         var button = cc.ControlButton.create(titleButton, backgroundButton);
         button.setBackgroundSpriteForState(backgroundHighlightedButton, cc.CONTROL_STATE_HIGHLIGHTED);

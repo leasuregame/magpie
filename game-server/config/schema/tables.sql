@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `task` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `pass` SMALLINT(5) UNSIGNED DEFAULT '0',
   `passMark` BLOB(20),
+  `dailyGift` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

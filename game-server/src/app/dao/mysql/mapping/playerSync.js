@@ -15,6 +15,7 @@
 var sqlHelper = require("../sqlHelper");
 var dbClient = require("pomelo").app.get("dbClient");
 var logger = require("pomelo-logger").getLogger(__filename);
+var _ = require('underscore');
 
 playerSync = {
     /*
@@ -25,15 +26,21 @@ playerSync = {
      * */
     updatePlayerById: function (id, param) {
         var cb = function() {};
-        if(typeof (param[2]) != "undefined") {
-            cb = param[2];
+        if(typeof (param.cb) != "undefined") {
+            cb = param.cb;
         }
 
-        if (typeof (param[0]) == "undefined" || typeof (param[1]) == "undefined") {
+        if (typeof (param.id) == "undefined" || typeof (param.data) == "undefined") {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.updateSql("player", ["id", param[0]], param[1]);
+        if (_.isEmpty(param.data)) {
+            // not data have to update
+            logger.debug('not data have to update for player');
+            return cb(null, true);
+        }
+
+        var _ref = sqlHelper.updateSql("player", ["id", param.id], param.data);
         var sql = _ref[0];
         var args = _ref[1];
 

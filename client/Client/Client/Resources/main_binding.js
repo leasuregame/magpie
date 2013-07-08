@@ -34,6 +34,7 @@ var appFiles = [
     'src/view/effectsFactory.js',
     'src/view/skillFactory.js',
     'src/model/pomeloWebsocketClient.js',
+    'src/model/serverAPI.js',
     'src/model/config.js',
     'src/model/singleton.js',
     'src/model/base.js',
@@ -47,6 +48,10 @@ var appFiles = [
     'src/controls/bgSprite.js',
     'src/controls/dialog.js',
     //'src/controls/lazyMenu.js',
+    'src/view/signInScene.js',
+    'src/view/signInLayer.js',
+    'src/view/signUpScene.js',
+    'src/view/signUpLayer.js',
     'src/view/cardDetails.js',
     'src/view/cardNode.js',
     'src/view/battleLayer.js',
@@ -88,7 +93,8 @@ director.setAnimationInterval(1.0 / 60);
 
 // create a scene. it's an autorelease object
 //var myScene = new BattleScene();
-var myScene = new MainScene();
+//var myScene = new MainScene();
+var myScene = new SignInScene();
 //var myScene = new testScene();
 
 // run

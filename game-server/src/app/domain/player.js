@@ -32,7 +32,8 @@ var FIELDS = {
     ability: true,
     task: true,
     pass: true,
-    passMark: true
+    passMark: true,
+    dailyGift: true
 };
 
 var startPowerResumeTimer = function(player) {

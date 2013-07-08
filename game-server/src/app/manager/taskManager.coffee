@@ -39,7 +39,7 @@ class Manager
   @wipeOutPass: (player, cb) ->
     pass = player.pass
 
-    rewards = {exp_obtain: 0, money_obtain: 0, skill_poins: 0}
+    rewards = {exp_obtain: 0, money_obtain: 0, skill_poins: 0, gold_obtain: 0}
     isWipeOut = false
     for id in _.range(1, pass)
       if not player.getPassMarkByIndex(id)
@@ -48,12 +48,17 @@ class Manager
         rewards.money_obtain += parseInt(data.money)
         rewards.skill_poins += parseInt(data.skill_poins)
 
+        # 一定概率获得元宝，百分之5的概率获得10元宝
+        if utility.hitRate(5)
+          rewards.gold_obtain += 10
+
         # 标记为已扫荡
         player.setPsssMarkByIndex(id)
         isWipeOut = true
 
     player.increase('exp',  rewards.exp_obtain)
     player.increase('money', rewards.money_obtain)
+    player.increase('gold', rewards.gold_obtain)
     player.increase('skillPoins', rewards.skill_poins)
 
     return cb(null, player, "没有关卡可以扫荡") if not isWipeOut

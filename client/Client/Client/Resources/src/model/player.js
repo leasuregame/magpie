@@ -7,33 +7,48 @@
  */
 
 
-var Player = cc.Class.extend({
-    _name : "",          // 角色
-    _level : 0,          // 等级
-    _power : 0,          // 体力
-    _exp : 0,            // 经验
-    _ingot : 0,          // 元宝
-    _money : 0,          // 金钱
+/*
+ * player
+ * */
 
-    _playerLabel : null,
 
-    init : function() {
+var Player = Entity.extend({
+    _id : 0,
+    _createTime: 0,
+    _userId : 0,
+    _areaId: 0,
+    _name: "",          // 角色
+    _power: 0,          // 体力
+    _lv: 0,          // 等级
+    _exp: 0,            // 经验
+    _gold: 0,          // 元宝
+    _money: 0,          // 金钱
+    _skillPoint: 0,
+    _lineUp : null,
+    _ability : 0,
+    _task : null,
+
+
+
+    _playerLabel: null,
+
+    init: function () {
         cc.log("Player init");
 
 
     },
 
-    getPlayerLabel : function() {
+    getPlayerLabel: function () {
 //        if(this._playerLabel) {
 //            this._playerLabel.removeFromParent();
 //            return this._playerLabel;
 //        }
 
-        this._playerLabel = cc.LayerColor.create(cc.c4b(100,0,100,100), GAME_WIDTH, 180);
+        this._playerLabel = cc.LayerColor.create(cc.c4b(100, 0, 100, 100), GAME_WIDTH, 180);
         this._playerLabel.ignoreAnchorPointForPosition(false);
         this._playerLabel.setAnchorPoint(cc.p(0, 0));
 
-        var roleLabel = cc.LayerColor.create(cc.c4b(100,100,100,100), 180, 180);
+        var roleLabel = cc.LayerColor.create(cc.c4b(100, 100, 100, 100), 180, 180);
         roleLabel.ignoreAnchorPointForPosition(false);
         roleLabel.setAnchorPoint(cc.p(0, 0));
         this._playerLabel.addChild(roleLabel);
@@ -44,7 +59,7 @@ var Player = cc.Class.extend({
         label.setPosition(90, 90);
         roleLabel.addChild(label);
 
-        var levelLabel = cc.LayerColor.create(cc.c4b(100,50,100,100), 230, 60);
+        var levelLabel = cc.LayerColor.create(cc.c4b(100, 50, 100, 100), 230, 60);
         levelLabel.ignoreAnchorPointForPosition(false);
         levelLabel.setAnchorPoint(cc.p(0, 0));
         levelLabel.setPosition(180, 120);
@@ -56,7 +71,7 @@ var Player = cc.Class.extend({
         label.setPosition(115, 30);
         levelLabel.addChild(label);
 
-        var nameLabel = cc.LayerColor.create(cc.c4b(100,100,50,100), 230, 60);
+        var nameLabel = cc.LayerColor.create(cc.c4b(100, 100, 50, 100), 230, 60);
         nameLabel.ignoreAnchorPointForPosition(false);
         nameLabel.setAnchorPoint(cc.p(0, 0));
         nameLabel.setPosition(410, 120);
@@ -68,7 +83,7 @@ var Player = cc.Class.extend({
         label.setPosition(115, 30);
         nameLabel.addChild(label);
 
-        var ingotLabel = cc.LayerColor.create(cc.c4b(50,100,100,100), 230, 60);
+        var ingotLabel = cc.LayerColor.create(cc.c4b(50, 100, 100, 100), 230, 60);
         ingotLabel.ignoreAnchorPointForPosition(false);
         ingotLabel.setAnchorPoint(cc.p(0, 0));
         ingotLabel.setPosition(180, 60);
@@ -80,7 +95,7 @@ var Player = cc.Class.extend({
         label.setPosition(115, 30);
         ingotLabel.addChild(label);
 
-        var moneyLabel = cc.LayerColor.create(cc.c4b(50,100,50,100), 230, 60);
+        var moneyLabel = cc.LayerColor.create(cc.c4b(50, 100, 50, 100), 230, 60);
         moneyLabel.ignoreAnchorPointForPosition(false);
         moneyLabel.setAnchorPoint(cc.p(0, 0));
         moneyLabel.setPosition(410, 60);
@@ -92,7 +107,7 @@ var Player = cc.Class.extend({
         label.setPosition(115, 30);
         moneyLabel.addChild(label);
 
-        var expLabel = cc.LayerColor.create(cc.c4b(100,50,50,100), 230, 60);
+        var expLabel = cc.LayerColor.create(cc.c4b(100, 50, 50, 100), 230, 60);
         expLabel.ignoreAnchorPointForPosition(false);
         expLabel.setAnchorPoint(cc.p(0, 0));
         expLabel.setPosition(180, 0);
@@ -104,7 +119,7 @@ var Player = cc.Class.extend({
         label.setPosition(115, 30);
         expLabel.addChild(label);
 
-        var powerLabel = cc.LayerColor.create(cc.c4b(50,50,100,100), 230, 60);
+        var powerLabel = cc.LayerColor.create(cc.c4b(50, 50, 100, 100), 230, 60);
         powerLabel.ignoreAnchorPointForPosition(false);
         powerLabel.setAnchorPoint(cc.p(0, 0));
         powerLabel.setPosition(410, 0);

@@ -52,6 +52,7 @@
 
             'src/model/pomeloWebsocketClient.js',
             'src/model/serverAPI.js',
+            'src/model/card.js',
 
             'src/model/config.js',
             'src/model/singleton.js',

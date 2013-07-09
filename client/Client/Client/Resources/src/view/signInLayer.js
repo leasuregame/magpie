@@ -45,8 +45,8 @@ var SignInLayer = cc.Layer.extend({
         this._passwordEditBox.setMaxLength(18);
         this.addChild(this._passwordEditBox);
 
-        this._accountEditBox.setText("111");
-        this._passwordEditBox.setText("111");
+        this._accountEditBox.setText("1");
+        this._passwordEditBox.setText("1");
 
         var signInButton = cc.MenuItemFont.create("登录", this._onClickSignIn, this);
         signInButton.setPosition(260, 250);
@@ -81,16 +81,16 @@ var SignInLayer = cc.Layer.extend({
 
     _onClickSignIn: function () {
         cc.log("_onClickSignIn");
-        lzWindow.pomelo.request('connector.userHandler.login', {
+        lzWindow.pomelo.request("connector.userHandler.login", {
             account: this._accountEditBox.getText(),
             password: this._passwordEditBox.getText()
         }, function (data) {
             if (data.code == 200) {
-                cc.log('sign in success.');
+                cc.log("sign in success");
 
                 cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, MainScene.create(), true));
             } else {
-                cc.log('sign in fail.');
+                cc.log("sign in fail");
             }
             cc.log(data);
         });

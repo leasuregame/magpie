@@ -38,7 +38,7 @@ var TaskLayer = cc.Layer.extend({
         cc.log("TaskLayer _onClickTask");
 
         var that = this;
-        lzWindow.pomelo.request("logic.taskHandler.explore", {playerId: 1}, function (data) {
+        lzWindow.pomelo.request("logic.taskHandler.explore", {playerId: GameData.player.get("id")}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {

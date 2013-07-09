@@ -13,5 +13,8 @@
 
 var GameData = {
     user : null,
-    player : null
+    player : null,
+    task : null,
+    pass : null,
+
 }

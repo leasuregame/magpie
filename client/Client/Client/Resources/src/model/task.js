@@ -15,7 +15,7 @@
 var Task = Entity.extend({
     _id: 0,
     _progress: 0,
-    _points: 0, // 最大成数
+    _points: 0, // 最大层数
 
     init: function (data) {
         this.update(data);
@@ -34,14 +34,31 @@ var Task = Entity.extend({
 
     getPercentage: function () {
         return (this._progress / this._points);
+    },
+
+    explore: function () {
+        cc.log("Task explore");
+
+        var that = this;
+        lzWindow.pomelo.request("logic.taskHandler.explore", {playerId: GameData.player.get("id")}, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("explore success");
+                that._explore(data.msg);
+            } else {
+                cc.log("explore fail");
+            }
+        });
     }
 })
 
 
-Task.create = function(data) {
+Task.create = function (data) {
     var ret = new Task();
 
-    if(ret && ret.init(data)) {
+    if (ret && ret.init(data)) {
         return ret;
     }
 

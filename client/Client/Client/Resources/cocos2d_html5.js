@@ -42,7 +42,7 @@
         frameRate:60,
         loadExtension:true,
         tag:'gameCanvas', //the dom element to run cocos2d on
-        engineDir:'../../../Cocos2d-html5-v2.1.3/cocos2d/',
+        engineDir:'../../../Cocos2d-html5-v2.1.4/cocos2d/',
         //SingleEngineFile:'',
         appFiles:[
             'src/resource.js',
@@ -60,6 +60,7 @@
             'src/model/gameConfig.js',
             'src/model/jquery-1.10.0.min.js',
             'src/model/httpClientPackage.js',
+            'src/model/entity.js',
             'src/model/player.js',
             'src/model/battleStep.js',
             'src/model/battleLog.js',

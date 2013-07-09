@@ -42,12 +42,12 @@ Handler::login = (msg, session, next) ->
 
     dao.player.getPlayerByUserId user.id, (err, player) ->
       if err or not player
-        return next(null, {code: 200, uid: user.id, pid: null})
+        return next(null, {code: 200, uid: user.id, player: null})
 
       session.set('playerId', player.id)
       session.set('playerName', player.name)
 
-      next(null, {code: 200, uid: user.id, pid: player.id})
+      next(null, {code: 200, uid: user.id, player: player})
 
 onUserLeave = (session, reason) ->
   if not session or not session.uid

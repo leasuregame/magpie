@@ -8,13 +8,31 @@
 
 
 /*
-* server API
-* */
+ * server API
+ * */
 
 
-var SERVER_URL = "http://192.168.1.7:3344/";
+var SERVER_HOST = "192.168.1.89";
+var SERVER_PORT = 3010;
+var ConnectSuccess = false;
 
-var SERVER_API = {
-    battle : "vs"
-}
+lzWindow.pomelo.init({
+    host: SERVER_HOST,
+    port: SERVER_PORT,
+    user: {},
+    handshakeCallback: function () {
+    }
+}, function () {
+    cc.log('connect success!');
+    ConnectSuccess = true;
 
+    lzWindow.pomelo.on('close', function (data) {
+        cc.log('*****close');
+        cc.log(data);
+        ConnectSuccess = false;
+    });
+
+    lzWindow.pomelo.on('onMessage', function (data) {
+        cc.log('***** on chart: ', data);
+    });
+});

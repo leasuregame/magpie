@@ -18,7 +18,6 @@ class Hero extends Module
   @table: 'cards'
 
   init: (attrs, player)->
-    console.log 'new card: ', attrs
     @player = player
     @id = attrs.id
     @lv = attrs.lv
@@ -88,7 +87,7 @@ class Hero extends Module
       log.warn '技能攻击时，攻击的对方卡牌不能为空'
       return
 
-    log.info @name, '使用技能', @skill.name, @skill.type
+    log.debug @name, '使用技能', @skill.name, @skill.type
     doNothing = ->
 
     switch @skill.type
@@ -113,7 +112,7 @@ class Hero extends Module
         # 闪避
         _step.d.push _d
         _step.e.push 0
-        log.info enemy.name, '闪避'
+        log.debug enemy.name, '闪避'
         callback enemy
         continue
       else if @isCrit()
@@ -121,12 +120,12 @@ class Hero extends Module
         _dmg *= @crit_factor
         _e = -_dmg
         _d = -enemy.idx
-        log.info enemy.name, '暴击'
+        log.debug enemy.name, '暴击'
       else
         _e = -_dmg
         _d = enemy.idx
 
-      log.info "#{enemy.name} 受到伤害 #{_dmg}"
+      log.debug "#{enemy.name} 受到伤害 #{_dmg}"
 
       _step.d.push _d
       _step.e.push _e
@@ -177,7 +176,7 @@ class Hero extends Module
 
       _step = {a: @idx, d: [_d], e: [_e], r: []}
 
-      log.info "#{_hero.name} 受到伤害 #{_dmg}"
+      log.debug "#{_hero.name} 受到伤害 #{_dmg}"
 
       _hero.damage _dmg, @, _step
       callback _hero
@@ -199,13 +198,13 @@ class Hero extends Module
     # 检查，伤害反弹
     # @_checkRebound(enemy, value, step)
 
-    log.info "#{@name} 死亡" if @death()
+    log.debug "#{@name} 死亡" if @death()
     step['death'] = true if @death()
 
   damageOnly: (value) ->
     @hp -= value
 
-    log.info "#{@name} 死亡" if @death()
+    log.debug "#{@name} 死亡" if @death()
     #step['death'] = true if @death()
   
   _checkDmgReduce: (value, step) ->

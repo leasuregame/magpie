@@ -14,6 +14,7 @@
 
 var utility = require('../common/utility');
 var Entity = require('./entity');
+var playerConfig = require('../../config/data/player');
 var _ = require("underscore");
 
 var FIELDS = {
@@ -31,7 +32,32 @@ var FIELDS = {
     ability: true,
     task: true,
     pass: true,
-    passMark: true
+    passMark: true,
+    dailyGift: true
+};
+
+var startPowerResumeTimer = function(player) {
+    var resumePoins = playerConfig.POWER_RESUME.poins;
+    var interval = playerConfig.POWER_RESUME.interval;
+    
+    setInterval(function(){
+        player.resumePower(resumePoins);
+        player.save();
+    }, interval);
+};
+
+var startPowerGiveTimer = function(player) {
+    var givePoins = playerConfig.POWER_GIVE.poins;
+    var hours = playerConfig.POWER_GIVE.hours;
+    var interval = playerConfig.POWER_GIVE.interval;
+
+    setInterval(function(){
+        var hour = (new Date()).getHours();
+        if (_.contains(hours, hour) && !player.hasGive(hour)) {
+            player.givePower(hour, givePoins);
+            player.save();
+        }
+    }, interval);
 };
 
 /*
@@ -41,16 +67,22 @@ var FIELDS = {
 var Player = (function (_super) {
     utility.extends(Player, _super);
 
-
     function Player(param) {
         Player.__super__.constructor.apply(this, arguments);
         this._fields = FIELDS;
+
+        startPowerResumeTimer(this);
     }
 
     Player.prototype.init = function () {
         this.cards = {};
     };
 
+    Player.prototype.save = function() {
+        Player.__super__.save.apply(this, arguments);
+        // update all cards info
+        _.values(this.cards).forEach(function(card){card.save()});
+    };
 
     Player.prototype.addCard = function(card) {
         if (typeof card.id !== 'undefined' && card.id !== null){
@@ -70,6 +102,45 @@ var Player = (function (_super) {
         this.set('power', _.max([power - value, 0]))
     };
 
+    Player.prototype.resumePower = function(value) {
+        var max_power = getMaxPower(this.lv, playerConfig.POWER_LIMIT);
+        var power = this.get('power');
+        this.set('power', _.min([max_power, power + value]));
+    };
+
+    Player.prototype.givePower = function(hour, value) {
+        var max_power = getMaxPower(this.lv, playerConfig.POWER_LIMIT);
+        var power = this.get('power');
+        this.set('power', _.min([power + value, max_power + 50]));
+        this.updateGift("power_"+hour);
+    };
+
+    Player.prototype.updateGift = function(gift) {
+        this.set('dailyGift', this.get('dailyGift').push(gift));
+    };
+
+    Player.prototype.hasGive = function(gift) {
+        return _.contains(this.get('dailyGift'), gift);
+    };
+
+    Player.prototype.strengthen = function(target, sources, cb) {
+        var target_card = this.cards[target];
+        if (typeof target_card == 'undefined') {
+            return cb('找不到目标卡牌', null)
+        }
+
+        var source_cards = [];
+        for (var i = 0; i < sources.length; i++) {
+            var _id = sources[i];
+            var _card = this.cards[_id];
+            if (!!_card) {
+                source_cards.push(_card);
+            }
+        }
+
+        target_card.eatCards(source_cards);
+        cb(null, player);
+    };
 
     Player.prototype.getPassMarkByIndex = function (index) {
         if (index < 1) {
@@ -79,7 +150,7 @@ var Player = (function (_super) {
 
         var mark = (this.passMark >> (index - 1)) & 1;
 
-        return (mark == 0);
+        return (mark == 1);
     };
 
     Player.prototype.resetPassMarkByAll = function () {
@@ -90,7 +161,7 @@ var Player = (function (_super) {
         var mask = 1;
         var _passMark = this.passMark;
 
-        for (var i = 0; i < _pass; ++i) {
+        for (var i = 0; i < this.pass; ++i) {
             _passMark |= mask;
             mask <<= 1;
         }
@@ -116,5 +187,16 @@ var Player = (function (_super) {
 
     return Player;
 })(Entity);
+
+getMaxPower = function (lv, powerLimit) {
+    var max_power = 50;
+    for (var lv in powerLimit) {
+        if (this.lv <= parseInt(lv)){
+            max_power = powerLimit[lv];
+            break;
+        }
+    }
+    return max_power;
+};
 
 module.exports = Player;

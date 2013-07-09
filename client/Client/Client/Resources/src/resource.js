@@ -1,10 +1,10 @@
 var SETTING_IS_BROWSER = false;
-if(typeof(navigator) != 'undefined') {
+if (typeof(navigator) != 'undefined') {
     SETTING_IS_BROWSER = true;
 }
 
 var s_path = "";
-if(SETTING_IS_BROWSER) var s_path = "res/test/";
+if (SETTING_IS_BROWSER) var s_path = "res/test/";
 
 var s_game_bg = s_path + "bg.png";
 var s_progress = s_path + "p.png";
@@ -61,58 +61,63 @@ var s_frame3 = s_path + "frame3.png";
 
 var g_ressources = [
     //image
-    {src:s_game_bg},
-    {src:s_progress_bg},
-    {src:s_progress},
-    {src:s_card_library_bg},
-    {src:s_card_view},
-    {src:s_close},
-    {src:s_lock},
+    {src: s_game_bg},
+    {src: s_progress_bg},
+    {src: s_progress},
+    {src: s_card_library_bg},
+    {src: s_card_view},
+    {src: s_close},
+    {src: s_lock},
 
-    {src:s_hero_1},
-    {src:s_hero_2},
-    {src:s_hero_3},
-    {src:s_hero_4},
-    {src:s_hero_5},
-    {src:s_hero_6},
+    {src: s_hero_1},
+    {src: s_hero_2},
+    {src: s_hero_3},
+    {src: s_hero_4},
+    {src: s_hero_5},
+    {src: s_hero_6},
 
-    {src:s_b_hero_1},
-    {src:s_b_hero_2},
-    {src:s_b_hero_3},
-    {src:s_b_hero_4},
-    {src:s_b_hero_5},
-    {src:s_b_hero_6},
+    {src: s_b_hero_1},
+    {src: s_b_hero_2},
+    {src: s_b_hero_3},
+    {src: s_b_hero_4},
+    {src: s_b_hero_5},
+    {src: s_b_hero_6},
 
-    {src:s_h_hero_1},
-    {src:s_h_hero_2},
-    {src:s_h_hero_3},
-    {src:s_h_hero_4},
-    {src:s_h_hero_5},
-    {src:s_h_hero_6},
+    {src: s_h_hero_1},
+    {src: s_h_hero_2},
+    {src: s_h_hero_3},
+    {src: s_h_hero_4},
+    {src: s_h_hero_5},
+    {src: s_h_hero_6},
 
-    {src:s_hg_hero_1},
-    {src:s_hg_hero_2},
-    {src:s_hg_hero_3},
-    {src:s_hg_hero_4},
-    {src:s_hg_hero_5},
-    {src:s_hg_hero_6},
+    {src: s_hg_hero_1},
+    {src: s_hg_hero_2},
+    {src: s_hg_hero_3},
+    {src: s_hg_hero_4},
+    {src: s_hg_hero_5},
+    {src: s_hg_hero_6},
 
-    {src:s_e_1},
-    {src:s_e_2},
-    {src:s_e_3},
-    {src:s_e_4},
-    {src:s_e_5},
-    {src:s_e_6},
+    {src: s_e_1},
+    {src: s_e_2},
+    {src: s_e_3},
+    {src: s_e_4},
+    {src: s_e_5},
+    {src: s_e_6},
 
-    {src:s_star1},
-    {src:s_star2},
-    {src:s_star3},
-    {src:s_star4},
-    {src:s_star5},
+    {src: s_star1},
+    {src: s_star2},
+    {src: s_star3},
+    {src: s_star4},
+    {src: s_star5},
 
-    {src:s_frame1},
-    {src:s_frame2},
-    {src:s_frame3}
+    {src: s_frame1},
+    {src: s_frame2},
+    {src: s_frame3},
+
+    {src: "res/yellow_edit.png"},
+    {src: "res/green_edit.png"},
+    {src: "res/button.png"},
+    {src: "res/buttonHighlighted.png"}
 
     //plist
 

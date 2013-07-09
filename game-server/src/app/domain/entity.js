@@ -32,10 +32,6 @@ var Entity = (function (_super) {
         }
     };
 
-    Entity.prototype.getEntityId = function () {
-        return this.id;
-    };
-
     Entity.prototype.sets = function (attrs) {
         setAttr(this, attrs);
     };
@@ -72,6 +68,8 @@ var Entity = (function (_super) {
             param[key] = this[key];
         }
 
+        // reset _mark as empty
+        this._mark = {};
         return param;
     };
 

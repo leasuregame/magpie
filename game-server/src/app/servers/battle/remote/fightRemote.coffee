@@ -5,17 +5,23 @@ Player = require '../../../battle/player'
 VirtualPlayer = require '../../../battle/virtual_player'
 async = require 'async'
 playerManager = require '../../../manager/playerManager'
+taskRate = require '../../../../config/data/taskRate'
+cardConfig = require '../../../../config/data/card'
+_ = require 'underscore'
 
 exports.pve = (args, callback) ->
   pid = args.pid
-  taskId = args.taskId
-  taskData = table.getTableItem 'task_config', taskId
+  tableId = args.tableId
+  tableName = args.table
+  taskData = table.getTableItem tableName, tableId
 
+  playerEntity = null
   async.waterfall([
     (cb) ->
       playerManager.getPlayerInfo {pid: pid}, cb
     
-    (playerEntity, cb) ->
+    (_playerEntity, cb) ->
+      playerEntity = _playerEntity
       attacker = new Player(playerEntity)
       defender = new VirtualPlayer(taskData)
 
@@ -23,12 +29,11 @@ exports.pve = (args, callback) ->
       battle = new Battle(attacker, defender)
       battle.process()
 
-      cb(null, JSON.stringify battleLog.reports())
+      cb(null,  battleLog)
     ],
     (err, bl) ->
       if err
-        callback(err, null)
-      else
-        console.log 'pve: ', bl
-        callback(null, bl)
+        return callback(err, null)
+      
+      callback(null, bl.reports())
   )

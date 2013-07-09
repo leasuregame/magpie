@@ -69,6 +69,28 @@ describe("Logic Server # ", function() {
       
     });
 
+    describe("logic.taskHandler.wipeOut", function(){
+      
+      it("任务 should can be 扫荡", function(){
+        request('logic.taskHandler.wipeOut', {playerId: '4', type: 'task'}, function(data){
+          expect(data).toEqual('')
+          console.log(data);
+        });
+      });
+      
+    });
+
+    describe("logic.taskHandler.wipeOut", function(){
+      
+      it("精英关卡 should can be 扫荡", function(){
+        request('logic.taskHandler.wipeOut', {playerId: '4', type: 'pass'}, function(data){
+          expect(data).toEqual('')
+          console.log(data);
+        });
+      });
+      
+    });
+
   });
 
 });

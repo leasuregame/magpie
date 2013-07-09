@@ -57,6 +57,10 @@ var Card = (function (_super) {
         });
     };
 
+    Card.prototype.eatCards = function(cards) {
+        
+    };
+
     return Card;
 })(Entity);
 

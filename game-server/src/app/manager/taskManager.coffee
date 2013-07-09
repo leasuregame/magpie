@@ -15,7 +15,7 @@ class Manager
       result: 'none'
       power_consume: 0
       exp_obtain: 0
-      coins_obtain: 0
+      money_obtain: 0
       upgrade: false
       open_box_card: null
       battle_log: null
@@ -31,6 +31,58 @@ class Manager
     )
 
     cb(null, data)
+
+  @wipeOut: (player, type, cb) ->
+    funs = {task: @wipeOutTask, pass: @wipeOutPass}
+    funs[type](player, cb)
+
+  @wipeOutPass: (player, cb) ->
+    pass = player.pass
+
+    rewards = {exp_obtain: 0, money_obtain: 0, skill_poins: 0, gold_obtain: 0}
+    isWipeOut = false
+    for id in _.range(1, pass)
+      if not player.getPassMarkByIndex(id)
+        data = table.getTableItem('pass_reward', id)
+        rewards.exp_obtain += parseInt(data.exp)
+        rewards.money_obtain += parseInt(data.money)
+        rewards.skill_poins += parseInt(data.skill_poins)
+
+        # 一定概率获得元宝，百分之5的概率获得10元宝
+        if utility.hitRate(5)
+          rewards.gold_obtain += 10
+
+        # 标记为已扫荡
+        player.setPsssMarkByIndex(id)
+        isWipeOut = true
+
+    player.increase('exp',  rewards.exp_obtain)
+    player.increase('money', rewards.money_obtain)
+    player.increase('gold', rewards.gold_obtain)
+    player.increase('skillPoins', rewards.skill_poins)
+
+    return cb(null, player, "没有关卡可以扫荡") if not isWipeOut
+    cb(null, player, rewards)
+
+  @wipeOutTask: (player, cb) ->
+    taskData = table.getTableItem('task', player.task.id)
+    chapterId = taskData.chapter_id
+
+    rewards = {exp_obtain: 0, money_obtain: 0, gold_obtain: 0}
+    for id in _.range(1, chapterId)
+      wipeOutData = table.getTableItem('wipe_out', id)
+      rewards.exp_obtain += parseInt(wipeOutData.exp_obtain)
+      rewards.money_obtain += parseInt(wipeOutData.money_obtain)
+
+      # 一定概率获得元宝
+      if utility.hitRate(taskRate.wipe_out_gold_rate)
+        rewards.gold_obtain += taskRate.wipe_out_gold_obtain
+
+    player.increase('exp',  rewards.exp_obtain)
+    player.increase('money', rewards.money_obtain)
+    player.increase('gold', rewards.gold_obtain)
+
+    cb(null, player, rewards)
 
   @openBox: (player, data, cb) ->
     stars = [1,2,3,4]
@@ -53,7 +105,7 @@ class Manager
     _.extend data, {
       power_consume: taskData.power_consume
       exp_obtain: taskData.exp_obtain
-      coins_obtain: taskData.coins_obtain
+      money_obtain: taskData.coins_obtain
     }
 
     # 更新玩家money

@@ -64,6 +64,12 @@ var BatterLayer = cc.Layer.extend({
 
         this.formation(battleLog);
 
+        var backItem = cc.MenuItemFont.create("结束战斗", this._onClickBack, this);
+        backItem.setPosition(cc.p(250, -460));
+
+        var menu = cc.Menu.create(backItem);
+        this.addChild(menu);
+
         return true;
     },
 
@@ -107,6 +113,13 @@ var BatterLayer = cc.Layer.extend({
         }
 
         BattlePlayer.getInstance().play(battleLog, this._cardsList, this._labelsList, this._progressList, this._tipLabel);
+    },
+
+    _onClickBack : function() {
+        cc.log("BattleLayer._onClickBack");
+
+        this.stopAllActions();
+        BattlePlayer.getInstance().end();
     }
 })
 

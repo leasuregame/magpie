@@ -1,6 +1,6 @@
 Code = require '../../../../../shared/code'
 Resources = require '../../../../../shared/resources'
-
+async = require 'async'
 dao = require('pomelo').app.get('dao')
 
 module.exports = (app) ->
@@ -28,26 +28,37 @@ Handler::login = (msg, session, next) ->
   account = msg.account
   password = msg.password
 
-  dao.user.getUserByAccount account, (err, user) =>
-    if err or not user
-      next(null, {code: 501})
-      return
+  uid = null;
+  async.waterfall [
+    (cb) ->
+      dao.user.getUserByAccount account, cb
     
-    if password isnt user.password
-      next(null, {code: 500})
-      return
+    (user, cb) ->
+      if password isnt user.password
+        cb({code: 501, msg: '密码不正确'})
+      else
+        cb(null, user.id)
 
-    session.bind(user.id)
-    session.on('close', onUserLeave)
+    (userId, cb) ->
+      uid = userId
+      dao.player.getPlayerByUserId uid, (err, player) ->
+        if err and not player
+          cb(null, null)
+        
+        cb(null, player)
 
-    dao.player.getPlayerByUserId user.id, (err, player) ->
-      if err or not player
-        return next(null, {code: 200, uid: user.id, pid: null})
+  ], (err, player) ->
+    if err
+      return next(null, {code: 501, msg: err.msg})
 
+    session.bind(uid)
+    if !!player
       session.set('playerId', player.id)
       session.set('playerName', player.name)
+      session.set('areaId', player.areaId)
 
-      next(null, {code: 200, uid: user.id, pid: player.id})
+    session.on('close', onUserLeave)
+    next(null, {code: 200, uid: uid, player: player})
 
 onUserLeave = (session, reason) ->
   if not session or not session.uid

@@ -11,6 +11,7 @@
  * 抽卡
  * */
 
+
 var LotteryLayer = cc.Layer.extend({
     init: function () {
         cc.log("LotteryLayer init");
@@ -110,27 +111,32 @@ var LotteryLayer = cc.Layer.extend({
     },
 
     _onClickLottery1: function () {
-        cc.log("Lottery _onClickLottery1");
+        cc.log("LotteryLayer _onClickLottery1");
     },
 
     _onClickLottery2: function () {
-        cc.log("Lottery _onClickLottery2");
+        cc.log("LotteryLayer _onClickLottery2");
     },
 
     _onClickLottery3: function () {
-        cc.log("Lottery _onClickLottery3");
+        cc.log("LotteryLayer _onClickLottery3");
     },
 
     _onClickVigorLottery1: function () {
-        cc.log("Lottery _onClickVigorLottery1");
+        cc.log("LotteryLayer _onClickVigorLottery1");
     },
 
     _onClickVigorLottery2: function () {
-        cc.log("Lottery _onClickVigorLottery2");
+        cc.log("LotteryLayer _onClickVigorLottery2");
     },
 
     _onClickVigorLottery3: function () {
-        cc.log("Lottery _onClickVigorLottery3");
+        cc.log("LotteryLayer _onClickVigorLottery3");
+    },
+
+    _lottery : function(level) {
+        cc.log("LotteryLayer _lottery");
+
     }
 })
 

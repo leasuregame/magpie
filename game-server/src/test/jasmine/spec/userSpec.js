@@ -115,7 +115,8 @@ describe("User Actions # ", function() {
 
        it("should can be login", function(){
         request('connector.userHandler.login', {account: 'test_email_1@qq.com', password: '1'}, function(data){
-          expect(data.code).toEqual(200)
+          expect(data.code).toEqual(200);
+          expect(data).toEqual('');
         });
       });
 

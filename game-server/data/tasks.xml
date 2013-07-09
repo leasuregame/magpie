@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -11,17 +10,18 @@
   <Created>2013-06-21T01:48:52Z</Created>
   <LastSaved>2013-07-04T06:50:56Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
-  <Version>14.00</Version>
+  <Version>14.0</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>7995</WindowHeight>
+  <WindowHeight>9380</WindowHeight>
   <WindowWidth>25980</WindowWidth>
-  <WindowTopX>9135</WindowTopX>
-  <WindowTopY>2655</WindowTopY>
+  <WindowTopX>7920</WindowTopX>
+  <WindowTopY>1980</WindowTopY>
   <TabRatio>688</TabRatio>
+  <ActiveSheet>7</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -57,12 +57,12 @@
  </Styles>
  <Worksheet ss:Name="任务表">
   <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
-   <Column ss:Width="27.75"/>
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:AutoFitWidth="0" ss:Width="68"/>
    <Column ss:AutoFitWidth="0" ss:Width="99"/>
-   <Column ss:Width="92.25"/>
+   <Column ss:Width="92"/>
    <Column ss:Width="108"/>
-   <Column ss:Width="75.75"/>
+   <Column ss:Width="76"/>
    <Column ss:AutoFitWidth="0" ss:Width="111"/>
    <Column ss:Width="108" ss:Span="1"/>
    <Row ss:AutoFitHeight="0">
@@ -77,9 +77,9 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">chapter_id</Data><Comment ss:Author="arthur wu"><ss:Data
-       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
-        html:Color="#000000">章节表|chapter|id&#13;</Font></ss:Data></Comment></Cell>
+    <Cell><Data ss:Type="String">chapter_id</Data><Comment ss:Author="arthur wu"><Data><Font
+        html:Size="10" html:Color="#000000"
+        xmlns="http://www.w3.org/TR/REC-html40">章节表|chapter|id&#13;</Font></Data></Comment></Cell>
     <Cell><Data ss:Type="String">section_id</Data></Cell>
     <Cell><Data ss:Type="String">section_name</Data></Cell>
     <Cell><Data ss:Type="String">points</Data></Cell>
@@ -146,22 +146,21 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
-   <Selected/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="章节表">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="12" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">章节名称</Data></Cell>
@@ -219,6 +218,7 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -228,12 +228,11 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="章节扫荡产出表">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="52" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="2" ss:Width="108"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">章节序号</Data></Cell>
@@ -498,6 +497,7 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -506,12 +506,11 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="玩家升级数值表">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="102" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="2" ss:Width="108"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">级别</Data></Cell>
@@ -924,6 +923,7 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -933,16 +933,15 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="任务卡牌配置表">
   <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
-   <Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="152.25"/>
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="152"/>
    <Column ss:Width="108"/>
-   <Column ss:Width="123.75"/>
-   <Column ss:Width="173.25"/>
+   <Column ss:Width="124"/>
+   <Column ss:Width="173"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">章节</Data></Cell>
@@ -988,6 +987,7 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -997,12 +997,11 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="任务卡牌表">
   <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">卡牌名称</Data></Cell>
@@ -1022,7 +1021,7 @@
     <Cell><Data ss:Type="String">skill_id</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">10000</Data></Cell>
     <Cell><Data ss:Type="String">白熊</Data></Cell>
     <Cell><Data ss:Type="Number">1000</Data></Cell>
     <Cell><Data ss:Type="Number">5000</Data></Cell>
@@ -1031,7 +1030,7 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="String">黑熊</Data></Cell>
     <Cell><Data ss:Type="Number">1200</Data></Cell>
     <Cell><Data ss:Type="Number">6000</Data></Cell>
@@ -1040,7 +1039,7 @@
     <Cell><Data ss:Type="Number">2</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">10002</Data></Cell>
     <Cell><Data ss:Type="String">红孩儿</Data></Cell>
     <Cell><Data ss:Type="Number">3000</Data></Cell>
     <Cell><Data ss:Type="Number">9000</Data></Cell>
@@ -1049,7 +1048,7 @@
     <Cell><Data ss:Type="Number">3</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">10003</Data></Cell>
     <Cell><Data ss:Type="String">树妖</Data></Cell>
     <Cell><Data ss:Type="Number">2300</Data></Cell>
     <Cell><Data ss:Type="Number">8000</Data></Cell>
@@ -1058,7 +1057,7 @@
     <Cell><Data ss:Type="Number">4</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">10004</Data></Cell>
     <Cell><Data ss:Type="String">白骨精</Data></Cell>
     <Cell><Data ss:Type="Number">4000</Data></Cell>
     <Cell><Data ss:Type="Number">12000</Data></Cell>
@@ -1075,21 +1074,20 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>22</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>6</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="关卡卡牌配置表">
   <Table ss:ExpandedColumnCount="11" ss:ExpandedRowCount="25" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="105"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
@@ -1402,6 +1400,7 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -1411,12 +1410,11 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="关卡卡牌表">
   <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">卡牌名称</Data></Cell>
@@ -1436,7 +1434,7 @@
     <Cell><Data ss:Type="String">skill_id</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">20001</Data></Cell>
     <Cell><Data ss:Type="String">白熊</Data></Cell>
     <Cell><Data ss:Type="Number">1000</Data></Cell>
     <Cell><Data ss:Type="Number">5000</Data></Cell>
@@ -1445,7 +1443,7 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">20002</Data></Cell>
     <Cell><Data ss:Type="String">黑熊</Data></Cell>
     <Cell><Data ss:Type="Number">1200</Data></Cell>
     <Cell><Data ss:Type="Number">6000</Data></Cell>
@@ -1454,7 +1452,7 @@
     <Cell><Data ss:Type="Number">2</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">20003</Data></Cell>
     <Cell><Data ss:Type="String">红孩儿</Data></Cell>
     <Cell><Data ss:Type="Number">3000</Data></Cell>
     <Cell><Data ss:Type="Number">9000</Data></Cell>
@@ -1463,7 +1461,7 @@
     <Cell><Data ss:Type="Number">3</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">20004</Data></Cell>
     <Cell><Data ss:Type="String">树妖</Data></Cell>
     <Cell><Data ss:Type="Number">2300</Data></Cell>
     <Cell><Data ss:Type="Number">8000</Data></Cell>
@@ -1472,7 +1470,7 @@
     <Cell><Data ss:Type="Number">4</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">20005</Data></Cell>
     <Cell><Data ss:Type="String">白骨精</Data></Cell>
     <Cell><Data ss:Type="Number">4000</Data></Cell>
     <Cell><Data ss:Type="Number">12000</Data></Cell>
@@ -1489,21 +1487,22 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>16</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="关卡产出表">
   <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="102" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">层数</Data></Cell>
     <Cell><Data ss:Type="String">经验</Data></Cell>
@@ -2119,6 +2118,7 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -2128,14 +2128,13 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="10" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
-   <Column ss:AutoFitWidth="0" ss:Width="152.25"/>
-   <Column ss:Width="123.75"/>
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:AutoFitWidth="0" ss:Width="152"/>
+   <Column ss:Width="124"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell><Data ss:Type="String">export_name</Data></Cell>
@@ -2179,6 +2178,7 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -2187,7 +2187,6 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
 </Workbook>

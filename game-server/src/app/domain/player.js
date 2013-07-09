@@ -124,22 +124,46 @@ var Player = (function (_super) {
     };
 
     Player.prototype.strengthen = function(target, sources, cb) {
-        var target_card = this.cards[target];
-        if (typeof target_card == 'undefined') {
-            return cb('找不到目标卡牌', null)
+        if (!this.hasCard(target)) {
+            return cb({msg: '找不到目标卡牌'}, null);
+        }
+        var targetCard = this.cards[target];
+        var _res = targetCard.eatCards(this.popCards(sources));
+        var expObtain = _res[0], upgradedLevel = _res[1];
+        var moneyComsume = table.getTableItem('card_grow', targetCard.tableId).money_need;
+
+        cb(null, {
+            exp_obtain: expObtain, 
+            upgraded_level: upgradedLevel, 
+            money_comsume: moneyComsume
+        });
+    };
+
+    Player.prototype.hasCard = function(id) {
+        return this.cards[id] !== 'undefined';
+    };
+
+    Player.prototype.getCards = function(ids) {
+        if (!_.isArray(ids)){
+            ids = [ids];
         }
 
-        var source_cards = [];
-        for (var i = 0; i < sources.length; i++) {
-            var _id = sources[i];
+        return _.filter(_.values(this.cards), function(card){
+            return _.cantains(ids, card.id);
+        });
+    };
+
+    Player.prototype.popCards = function(ids) {
+        var cards = [];
+        for (var i = 0; i < ids.length; i++) {
+            var _id = ids[i];
             var _card = this.cards[_id];
             if (!!_card) {
-                source_cards.push(_card);
+                cards.push(_card);
+                delete this.cards[_id];
             }
         }
-
-        target_card.eatCards(source_cards);
-        cb(null, player);
+        return cards;
     };
 
     Player.prototype.getPassMarkByIndex = function (index) {

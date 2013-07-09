@@ -80,27 +80,6 @@ Handler::wipeOut = (msg, session, next) ->
     next(null, {code: 200, msg: rewards})
 
 ###
-强化
-###
-Handler::strengthen = (msg, session, next) ->
-  playerId = session.get('playerId') or msg.playerId
-  sources = msg.sources
-  target = msg.target
-
-  async.waterfall [
-    (cb) ->
-      playerManager.getPlayerInfo {pid: playerId}, cb
-
-    (player, cb) ->
-      player.strengthen(target, sources, cb)
-  ], (err, player) ->
-    if err
-      return next(null, {code: 500, msg: err.msg})
-
-    player.save()
-    next(null, {code: 200, msg: rewards})
-
-###
 精英关卡，闯关
 ###
 Handler::passBarrier = (msg, session, next) ->
@@ -148,10 +127,6 @@ Handler::passBarrier = (msg, session, next) ->
 
     next(null, {code: 200, msg: bl})
 
-Handler::luckyCard = (msg, session, next) ->
-  
-
-
 obtainBattleRewards = (player, battleLog) ->
   taskData = table.getTableItem 'task_config', player.task.id
   
@@ -186,8 +161,7 @@ addCardsToPlayer = (player, cards) ->
         playerId: player.id, 
         talbeId: card.id, 
         star: card.star,
-        lv: card.lv,
-        type: cardConfig.TYPE.MONSTER
+        lv: card.lv
       }, 
       (err, card) ->
         if err is null and card isnt null

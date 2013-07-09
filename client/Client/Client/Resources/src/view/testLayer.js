@@ -115,32 +115,32 @@ var testLayer = cc.Layer.extend({
         //var a = Dialog.create(4, "haha", cc.c4b(100, 100, 100, 100), 500, 700);
         //CloudLayer.show();
 
-        /*
-         var layer = cc.Layer.create();
-         var menu = LazyMenu.create();
-         menu.setPosition(cc.p(0, 0));
-         for(var j = 0; j < 9; ++j) {
-         for(var i = 1; i <= 5; ++i) {
-         var fun = function(i, j) {
-         return function() {
-         cc.log(i + "  " + j);
-         }
-         }(i, j);
 
-         cc.log("res/test1/" + i + ".png");
-         var item = cc.MenuItemImage.create("res/test1/" + i + ".png", "res/test1/" + i + ".png", fun);
+        var layer = cc.Layer.create();
+        var menu = LazyMenu.create();
+        menu.setPosition(cc.p(0, 0));
+        for (var j = 0; j < 9; ++j) {
+            for (var i = 1; i <= 5; ++i) {
+                var fun = function (i, j) {
+                    return function () {
+                        cc.log(i + "  " + j);
+                    }
+                }(i, j);
 
-         item.setPosition(i * 100, 100 * j);
-         menu.addChild(item);
-         }
-         }
-         layer.addChild(menu);
-         //        this.addChild(layer);
+                cc.log("res/test1/" + i + ".png");
+                var item = cc.MenuItemImage.create("res/test1/" + i + ".png", "res/test1/" + i + ".png", fun);
 
-         var view = cc.ScrollView.create(cc.size(700, 1000), layer);
-         cc.log(view);
-         view.setDirection(0);
-         this.addChild(view);
-         */
+                item.setPosition(i * 100, 100 * j);
+                menu.addChild(item);
+            }
+        }
+        layer.addChild(menu);
+        //        this.addChild(layer);
+
+        var view = cc.ScrollView.create(cc.size(700, 1000), layer);
+        cc.log(view);
+        view.setDirection(0);
+        this.addChild(view);
+
     }
 })

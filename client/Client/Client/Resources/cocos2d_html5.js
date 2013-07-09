@@ -77,6 +77,7 @@
             'src/view/battleLayer.js',
             'src/view/battleScene.js',
             'src/view/battlePlayer.js',
+            'src/view/testtestLayer.js',
             'src/view/testLayer.js',
             'src/view/testScene.js',
             'src/view/mainMenuLayer.js',

@@ -7,15 +7,10 @@
  */
 
 var testScene = cc.Scene.extend({
-    ctor: function () {
-        this._super();
-        cc.associateWithNative(this, cc.Scene);
-    },
-
     onEnter: function () {
         this._super();
 
-        var layer = new testLayer();
+        var layer = new TesttestLayer();
         layer.init();
         this.addChild(layer);
     },

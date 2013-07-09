@@ -21,11 +21,18 @@ var _ = require("underscore");
  * 3：高级抽卡
  * */
 var lottery = function (level) {
-    if (level < 1 || level > 3) {
-        return 0;
-    }
+  if (level < 1 || level > 3) {
+      return 0;
+  }
 
-    return _.random(0, 49) * 5 + _.random(0, 2) + level;
-}
+  return _.random(0, 49) * 5 + _.random(0, 2) + level;
+};
+
+var newCard = function(id) {
+  var cardData = table.getTableItem('card', id);
+  return new Card({
+    tableId: id
+  });
+};
 
 module.exports = lottery;

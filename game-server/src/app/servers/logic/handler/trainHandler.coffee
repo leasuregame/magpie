@@ -39,5 +39,16 @@ Handler::luckyCard = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   type = msg.type
 
-  functions = 
-    ''
+  # functions = 
+  #   'gold_lower': 
+  #   'gold_medium':
+  #   'gold_hight': 
+  #   'friendship_lower':
+  #   'friendship_medium':
+  #   'frientdship_hight':
+
+  # playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+  #   if err
+  #     return next(null, {code: 500, msg: '找不到玩家数据'})
+
+  #   functions[type]()

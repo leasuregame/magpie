@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `pass` SMALLINT(5) UNSIGNED DEFAULT '0',
   `passMark` BLOB(20),
   `dailyGift` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
+  `fragments` SMALLINT(5) UNSIGNED DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

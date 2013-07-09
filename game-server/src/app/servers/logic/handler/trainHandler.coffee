@@ -1,4 +1,6 @@
 playerManager = require '../../../manager/playerManager'
+lottery = require '../../manager/lottery'
+dao = require('pomelo').app.get('dao')
 
 module.exports = (app) ->
   new Handler(app)
@@ -37,18 +39,41 @@ Handler::strengthen = (msg, session, next) ->
 
 Handler::luckyCard = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
+  level = msg.level
   type = msg.type
 
-  # functions = 
-  #   'gold_lower': 
-  #   'gold_medium':
-  #   'gold_hight': 
-  #   'friendship_lower':
-  #   'friendship_medium':
-  #   'frientdship_hight':
+  player = null
+  card = {}
+  consumeVal = 0
+  fragment = false
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
 
-  # playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
-  #   if err
-  #     return next(null, {code: 500, msg: '找不到玩家数据'})
+    (res, cb) ->
+      player = res
+      [card, consumeVal, fragment] = lottery.lottery(level, type);
 
-  #   functions[type]()
+      card.playerId = player.id
+      dao.card.createCard card, cb
+
+    (cardEnt, cb) ->
+      player.addCard(card);
+      if type is 'gold'
+        player.decrease('gold', consumeVal)
+
+      if type is 'friendship'
+        player.decrease('friendship', consumeVal)
+
+      if fragment
+        player.increase('fragments')
+
+      cb(null, player)
+  ], (err, player) ->
+    if err
+      return next(null, {code: 500, msg: 'card upgrade faild'})
+
+    player.save()
+    next(null, {code: 200, card: card, consume: consumeVal, hasFragment: fragment})
+
+    

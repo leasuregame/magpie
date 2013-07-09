@@ -24,6 +24,7 @@ var async = require('async');
 var _ = require('underscore');
 
 var DEFAULT_CARD_INFO = {
+    star: 1,
     lv: 1,
     exp: 0,
     skillLv: 1,

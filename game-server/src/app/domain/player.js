@@ -33,7 +33,8 @@ var FIELDS = {
     task: true,
     pass: true,
     passMark: true,
-    dailyGift: true
+    dailyGift: true,
+    fragments: true
 };
 
 var startPowerResumeTimer = function(player) {

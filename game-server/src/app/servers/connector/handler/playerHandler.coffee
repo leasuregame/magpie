@@ -7,7 +7,7 @@ Handler = (@app) ->
 
 Handler::createPlayer = (msg, session, next) ->
   name = msg.name
-  area_id = msg.area_id
+  areaId = msg.areaId
   uid = session.uid
   
   dao.player.getPlayerByName name, (err, player) ->
@@ -15,7 +15,7 @@ Handler::createPlayer = (msg, session, next) ->
       next(null, {code: 501})
       return
 
-    dao.player.createPlayer uid, name, {area_id: area_id}, (err, player) ->
+    dao.player.createPlayer {userId: uid, name: name, areaId: areaId}, (err, player) ->
       if err and not player
         next(null, {code: 500, error: err})
       else

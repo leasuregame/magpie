@@ -42,9 +42,7 @@ var BattlePlayer = cc.Class.extend({
         this._scheduler.unscheduleCallbackForTarget(this, this.playAStep);
 
         if (!this._battleLog.hasNextBattleStep()) {
-            cc.log("pop battle scene");
-//            cc.Director.getInstance().replaceScene(MainScene.create());
-            cc.Director.getInstance().replaceScene(cc.TransitionTurnOffTiles.create(1, MainScene.create()));
+            this.end();
             return;
         }
 
@@ -80,6 +78,14 @@ var BattlePlayer = cc.Class.extend({
         cc.log("BattlePlayer setSpeed");
 
         GAME_COMBAT_SPEED = speed;
+    },
+
+    end: function () {
+        cc.log("battle end");
+
+        this._scheduler.unscheduleAllCallbacksForTarget(this);
+//            cc.Director.getInstance().replaceScene(MainScene.create());
+        cc.Director.getInstance().replaceScene(cc.TransitionTurnOffTiles.create(1, MainScene.create()));
     }
 })
 

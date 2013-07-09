@@ -43,7 +43,7 @@ describe("User Actions # ", function() {
 
   describe("Entry Handler", function(){
     it("entry method should works fine.", function() {
-      request('connector.entryHandler.entry', {uid: 32209, name: 'wuzhanghai'}, function(data){
+      request('connector.entryHandler.entry', {uid: 1}, function(data){
         expect(data).toEqual({code: 200, msg: "game server is ok"});
       });
     });
@@ -109,18 +109,13 @@ describe("User Actions # ", function() {
       it("should not can be register with exist email", function(){
         request('connector.userHandler.register', {account: 'test_email_1@qq.com', password: 1}, function(data){
           expect(data.code).toEqual(501);
+          //expect(data.msg).toEqual('')
         });
       });
 
        it("should can be login", function(){
         request('connector.userHandler.login', {account: 'test_email_1@qq.com', password: '1'}, function(data){
           expect(data.code).toEqual(200)
-        });
-      });
-
-      it("should can be set name to user", function(){
-        request('connector.userHandler.setName', {uid: userid, name: 'wuzhanghai'}, function(data){
-          expect(data).toEqual({code: 200})
         });
       });
 

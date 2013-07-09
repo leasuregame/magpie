@@ -1,5 +1,7 @@
 battleLog = require './battle_log'
+async = require 'async'
 log = require('pomelo-logger').getLogger(__filename)
+
 class Base
   constructor: (attacker, defender) ->
     @attacker = attacker
@@ -25,6 +27,9 @@ class Battle extends Base
     @attacker.setEnemy(@defender, true)
     @defender.setEnemy(@attacker)
     @round = new Round(@attacker, @defender)
+
+  isOver: ->
+    @attacker.death() or @defender.death() or @round.round_num > 30
 
   start: ->
     _enm = {
@@ -55,9 +60,6 @@ class Round extends Base
 
   increase_round_num: ->
     @round_num++
-
-  reset_round_num: ->
-    @round_num = 1
 
   setShootCount: ->
     @attacker.shootCount = @attacker.aliveHeros().length
@@ -94,7 +96,7 @@ class Attack extends Base
 
     _attack = (atker, dfder) ->
       atker.attack (hero) ->
-        # bug, 当卡牌出手后，没秒了，出手次数比实际要出手的次数少了一次
+        # bug, 当卡牌出手后，被秒了，出手次数比实际要出手的次数少了一次
         if hero.death() and not hero.isAttacked()
           dfder.shootCount -= 1 
 
@@ -106,5 +108,40 @@ class Attack extends Base
     if @defender.shootCount > 0
       @defender.shootCount -= 1
       _attack( @defender, @attacker ) 
+
+
+    # if @attacker.shootCount > 0
+    #   @attacker.shootCount -= 1
+    #   @attacker.attack (hero) ->
+    #     if hero.death() and not hero.isAttacked()
+    #       @defender.shootCount -= 1
+
+    #     if @defender.shootCount > 0
+    #       @defender.shootCount -= 1
+    #       @defender.attack (hero) ->
+    #         if hero.death() and not hero.isAttacked()
+    #           @attacker.shootCount -= 1
+
+
+    # self = this
+    # async.series [
+    #   (cb) ->
+    #     if self.attacker.shootCount > 0
+    #       self.attacker.shootCount -= 1
+    #       self.attacker.attack (hero) ->
+    #         if hero.death() and not hero.isAttacked()
+    #           self.defender.shootCount -= 1
+            
+    #         self.attacker.nextHero()
+    #         cb(null)
+
+    #   (cb) ->
+    #     if self.defender.shootCount > 0
+    #       self.defender.shootCount -= 1
+    #       self.defender.attack (hero) ->
+    #         if hero.death() and not hero.isAttacked()
+    #           self.attacker.shootCount -= 1
+    #         self.defender.nextHero()
+    # ]
 
 exports = module.exports = Battle

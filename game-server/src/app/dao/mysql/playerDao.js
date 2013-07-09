@@ -23,33 +23,39 @@ var logger = require("pomelo-logger").getLogger(__filename);
 var Player = require("../../domain/player");
 var cardDao = require("./cardDao");
 var async = require('async');
+var _ = require('underscore');
 
-var getPlayerObject = function (res) {
-    var player = new Player({
-        id: res.id,
-        createTime: res.createTime,
-        userId: res.userId,
-        areaId: res.areaId,
-        name: res.name,
-        power: res.power,
-        lv: res.lv,
-        exp: res.exp,
-        money: res.money,
-        gold: res.gold,
-        lineUp: res.lineUp,
-        ability: res.ability,
-        task: res.task,
-        pass: res.pass,
-        passMark: res.passMark
-    });
+var DEFAULT_PLAYER_INFO = {
+    power: 100,
+    lv: 1,
+    exp: 0,
+    money: 1000,
+    gold: 50,
+    lineUp: '',
+    ability: 0,
+    task: {id: 1, progress: 0},
+    pass: 0,
+    passMark: 0,
+    dailyGift: []
+};
+
+var createNewPlayer = function (playerInfo) {
+    var player = new Player(playerInfo);
 
     player.on('save', function (cb) {
-        var id = res.id;
-        app.get('sync').exec('playerSync.updatePlayerById', id, [id, player.getSaveData(), cb]);
+        var id = player.id;
+        app.get('sync').exec(
+            'playerSync.updatePlayerById', 
+            id,
+            {
+                id: id,
+                data: player.getSaveData(),
+                cb: cb
+            }
+        );
     });
-
     return player;
-}
+};
 
 var playerDao = {
     /*
@@ -59,7 +65,6 @@ var playerDao = {
      * */
     createPlayer: function (param, cb) {
         if (typeof param == "undefined" || 
-            typeof param.id == "undefined" || 
             typeof param.areaId == "undefined" || 
             typeof param.name == "undefined" || 
             typeof param.userId == "undefined"
@@ -67,7 +72,9 @@ var playerDao = {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.insertSql("player", param);
+        var fields = _.clone(DEFAULT_PLAYER_INFO)
+        _.extend(fields, param);
+        var _ref = sqlHelper.insertSql("player", fields);
         var sql = _ref[0];
         var args = _ref[1];
 
@@ -80,11 +87,7 @@ var playerDao = {
                     msg: err.message
                 }, null);
             } else {
-                return cb(null, new Player({
-                    id: res.insertId,
-                    areaId: param.areaId,
-                    name: param.name
-                }));
+                return cb(null, createNewPlayer(_.extend({id: res.insertId}, fields)));
             }
         });
     },
@@ -99,27 +102,7 @@ var playerDao = {
             cb("param error", null);
         }
 
-        var _ref = sqlHelper.selectSql("player", ["id", id]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.query(sql, args, function (err, res) {
-            if (err) {
-                logger.error("[playerDao.getPlayerById faild] ", err.stack);
-
-                return cb({
-                    code: err.code,
-                    msg: err.message
-                }, null);
-            } else if (res && res.length === 1) {
-                return cb(null, getPlayerObject(res[0]));
-            } else {
-                return cb({
-                    code: null,
-                    msg: "Player not exists"
-                }, null);
-            }
-        });
+        playerDao._getPlayer({field: 'id', value: id}, cb);
     },
 
     /*
@@ -132,27 +115,20 @@ var playerDao = {
             cb("param error", null);
         }
 
-        var _ref = sqlHelper.selectSql("player", ["name", name]);
-        var sql = _ref[0];
-        var args = _ref[1];
+        playerDao._getPlayer({field: 'name', value: name}, cb);
+    },
 
-        return dbClient.query(sql, args, function (err, res) {
-            if (err) {
-                logger.error("[playerDao.getPlayerByName faild] ", err.stack);
+    /*
+     * 根据 userId 查找一条 player 记录
+     * @param {string} uid 需要查找的用户Id 
+     * @param {function} cb  回调函数
+     * */
+    getPlayerByUserId: function(uid, cb) {
+        if (typeof uid == 'undefined') {
+            cb("param error", null);
+        }
 
-                return cb({
-                    code: err.code,
-                    msg: err.message
-                }, null);
-            } else if (res && res.length === 1) {
-                return cb(null, getPlayerObject(res[0]));
-            } else {
-                return cb({
-                    code: null,
-                    msg: "Player not exists"
-                }, null);
-            }
-        });
+        playerDao._getPlayer({field: 'userId', value: uid}, cb);
     },
 
     /*
@@ -170,13 +146,47 @@ var playerDao = {
             }
         ], function (err, results) {
             if (err !== null) {
-                cb(err, null)
+                return cb(err, null)
             }
 
             var player = results[0];
             var cards = results[1];
             player.addCards(cards);
-            cb(null, player);
+            return cb(null, player);
+        });
+    },
+
+    /*
+     * 根据所给参数条件查找一条 player 记录
+     * @param {object} param 包含两个属性 field 和 value
+     *                       例如：{field: id, value: 1} 表示查找id=1的player
+     * @param {function} cb  回调函数
+     */
+    _getPlayer: function(param, cb) {
+        if (typeof param == 'undefined') {
+            cb("param error", null);
+        }
+
+        var _ref = sqlHelper.selectSql("player", [param.field, param.value]);
+        var sql = _ref[0];
+        var args = _ref[1];
+
+        return dbClient.query(sql, args, function(err, res) {
+            if (err) {
+                logger.error("[playerDao.getPlayerByUser faild] ", err.stack);
+
+                return cb({
+                    code: err.code,
+                    msg: err.message
+                }, null);
+            } else if (res && res.length === 1) {
+                return cb(null, createNewPlayer(res[0]));
+            } else {
+                return cb({
+                    code: null,
+                    msg: "Player not exists"
+                }, null);
+            }
         });
     },
 

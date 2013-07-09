@@ -21,27 +21,24 @@ var Card = require("../../domain/card");
 var PassiveSkill = require("../../domain/passiveSkill");
 var passiveSkillDao = require('./passiveSkillDao');
 var async = require('async');
+var _ = require('underscore');
 
-var getCardObject = function (res) {
-    var card = new Card({
-        id: res.id,
-        createTime: res.createTime,
-        playerId: res.playerId,
-        tableId: res.tableId,
-        lv: res.lv,
-        exp: res.exp,
-        skillLv: res.skillLv,
-        hpAddition: res.hpAddition,
-        atkAddition: res.atkAddition
-    });
+var DEFAULT_CARD_INFO = {
+    lv: 1,
+    exp: 0,
+    skillLv: 1,
+    hpAddition: 0,
+    atkAddition: 0
+};
 
+var createNewCard = function (cardInfo) {
+    var card = new Card(cardInfo);
     card.on('save', function (cb) {
-        var id = res.id;
+        var id = card.id;
         app.get('sync').exec('cardSync.updateCardById', id, [id, card.getSaveData(), cb]);
     });
-
     return card;
-}
+};
 
 var cardDao = {
     /*
@@ -54,7 +51,9 @@ var cardDao = {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.insertSql("card", param);
+        var fields = _.clone(DEFAULT_CARD_INFO);
+        _.extend(fields, param);
+        var _ref = sqlHelper.insertSql("card", fields);
         var sql = _ref[0];
         var args = _ref[1];
 
@@ -67,9 +66,9 @@ var cardDao = {
                     msg: err.message
                 }, null);
             } else {
-                return cb(null, {
-                    id: res.insertId
-                });
+                return cb(null, createNewCard(
+                    _.extend({id: res.insertId}, fields)
+                    ));
             }
         });
     },
@@ -118,7 +117,7 @@ var cardDao = {
                     msg: err.message
                 }, null);
             } else if (res && res.length === 1) {
-                return cb(null, getCardObject(res[0]));
+                return cb(null, createNewCard(res[0]));
             } else {
                 return cb({
                     code: null,
@@ -148,7 +147,7 @@ var cardDao = {
             function (rows, callback) {
                 var cardList = [];
                 async.each(rows, function (row, done) {
-                    var card = new Card(row);
+                    var card = createNewCard(row);
                     passiveSkillDao.getPassiveSkillByCardId(card.id, function (err, res) {
                         if (err) {
                             return done(err);

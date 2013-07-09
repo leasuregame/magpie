@@ -14,6 +14,7 @@
 
 var utility = require('../common/utility');
 var Entity = require('./entity');
+var table = require('../manager/table');
 var _ = require("underscore");
 
 var FIELDS = {
@@ -57,7 +58,49 @@ var Card = (function (_super) {
         });
     };
 
+    Card.prototype.eatCards = function(cards) {
+        var totalExp = 0;
+        cards.forEach(function(card){
+            totalExp += cardExp(card.lv, card.exp_need);
+        })
+        var upgraded_lv = this.upgrade(totalExp);
+        return [totalexp, upraded_lv];
+    };
+
+    Card.prototype.upgrade = function(exp) {
+        var _this = this;
+        var rows = table.getTable('card_grow').filter(function(row){
+            return row.lv >= _this.lv;
+        });
+
+        var upgraded_lv = 0;
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            if (exp >= row.exp_need) {
+                exp -= row.exp_need;
+                this.increase('lv');
+                upgraded_lv++;
+            } else {
+                this.set('exp', exp);
+            }
+        }
+        return upgraded_lv;
+    };
+
     return Card;
 })(Entity);
+
+var cardExp = function (lv, exp) {
+    var rows = table.getTable('card_grow').filter(function(row){
+        return row.lv < lv;
+    });
+
+    var totalExp = exp;
+    for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        totalExp += parseInt(row.exp);
+    }
+    return totalExp;
+};
 
 module.exports = Card;

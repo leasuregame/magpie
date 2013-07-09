@@ -33,7 +33,11 @@
                 value = fields[key];
                 _fields += "`" + key + "`,";
                 _args += "?,";
-                _values.push(value);
+                if (typeof value == 'object'){
+                    _values.push(JSON.stringify(value));
+                } else {
+                    _values.push(value);
+                }
             }
 
             var sql = "insert into " + table + " (" + (_fields.slice(0, -1)) + ") values (" + (_args.slice(0, -1)) + ")";
@@ -57,7 +61,11 @@
             for (key in fields) {
                 value = fields[key];
                 _sets += "`" + key + "`=?,";
-                _values.push(value);
+                if (typeof value == 'object') {
+                    _values.push(JSON.stringify(value));
+                } else{
+                    _values.push(value);
+                }
             }
             _values.push(where[1]);
 

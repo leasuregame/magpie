@@ -62,7 +62,7 @@ module.exports = {
         };
         return this;
       },
-      dofilter: function(filter) {
+      filter: function(filter) {
         var items = [];
         for (var item in this._data) {
           if (filter(item, this._data[item])) items.push(item);

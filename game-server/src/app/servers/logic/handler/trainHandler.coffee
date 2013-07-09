@@ -1,5 +1,5 @@
 playerManager = require '../../../manager/playerManager'
-lottery = require '../../manager/lottery'
+lottery = require '../../../manager/lottery'
 dao = require('pomelo').app.get('dao')
 
 module.exports = (app) ->

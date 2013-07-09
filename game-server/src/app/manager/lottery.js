@@ -12,7 +12,7 @@
  * */
 
 var cardConfig = require('../../config/data/card');
-var untility = reqire('../common/utility');
+var untility = require('../common/utility');
 var Card = require('../domain/card');
 var _ = require("underscore");
 

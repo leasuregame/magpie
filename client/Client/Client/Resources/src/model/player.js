@@ -19,14 +19,14 @@ var Player = Entity.extend({
     _areaId: 0,
     _name: "",          // 角色
     _power: 0,          // 体力
-    _lv: 0,          // 等级
+    _lv: 0,             // 等级
     _exp: 0,            // 经验
-    _gold: 0,          // 元宝
+    _gold: 0,           // 元宝
     _money: 0,          // 金钱
-    _skillPoint: 0,
-    _lineUp : null,
-    _ability : 0,
-    _task : null,
+    _skillPoint: 0,     // 技能点
+    _lineUp : null,     // 阵容
+    _ability : 0,       // 战力
+    _task : null,       // 任务
 
 
 

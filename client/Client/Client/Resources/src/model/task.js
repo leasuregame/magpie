@@ -36,19 +36,35 @@ var Task = Entity.extend({
         return (this._progress / this._points);
     },
 
-    explore: function () {
+    /*
+     * 根据id和任务进度请求服务器执行任务
+     * @ param {function} cb 回调函数
+     * @ param {number} id 任务id
+     * @ param {number} progress 进度
+     * */
+    explore: function (cb, id, progress) {
         cc.log("Task explore");
 
         var that = this;
-        lzWindow.pomelo.request("logic.taskHandler.explore", {playerId: GameData.player.get("id")}, function (data) {
+        lzWindow.pomelo.request("logic.taskHandler.explore", {id: id, progress: progress}, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 
             if (data.code == 200) {
                 cc.log("explore success");
-                that._explore(data.msg);
+
+                var msg = data.msg;
+
+                that.update({
+                    id: msg.id,
+                    progress: msg.progress
+                });
+
+                cb("success");
             } else {
                 cc.log("explore fail");
+
+                cb("fail");
             }
         });
     }

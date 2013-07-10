@@ -43,7 +43,7 @@ var MainMenuLayer = cc.Layer.extend({
         friendLayerItem.setAnchorPoint(cc.p(0, 0));
         friendLayerItem.setPosition(466, 88);
 
-        var otherLayerItem = cc.MenuItemFont.create("其他", this._onClickOtherLayer, this);
+        var otherLayerItem = cc.MenuItemFont.create("消息", this._onClickOtherLayer, this);
         otherLayerItem.setAnchorPoint(cc.p(0, 0));
         otherLayerItem.setPosition(572, 88);
 
@@ -83,7 +83,7 @@ var MainMenuLayer = cc.Layer.extend({
 
     _onClickOtherLayer: function () {
         cc.log("MainMenuLayer _onClickOtherLayer");
-        if (this._mainScene) this._mainScene.switchLayer(OtherLayer);
+        if (this._mainScene) this._mainScene.switchLayer(MessageLayer);
     }
 })
 

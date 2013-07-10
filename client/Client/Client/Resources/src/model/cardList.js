@@ -6,29 +6,39 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 /*
-*
+* card list
 * */
 
-var CardList = function() {
-    this.cardList = [];
 
-    this.init = function() {
+var CardList = Entity.extend({
+    _cardList : {},
+
+    init : function() {
+
+    },
+
+    push: function(card) {
+        this._cardList[card.get("id")] = card;
+    },
+
+    getCardByIndex : function(index) {
+        return this._cardList[index];
+    },
+
+    update: function() {
 
     }
+})
 
-    this.insert = function(databaseId, id, level, skillLevel) {
-        list.push(Card.create(databaseId, id, level, skillLevel));
-    }
-}
 
-CardList.create = function(cardList) {
-    var list = new CardList();
-    var len = cardList.length;
+CardList.create = function() {
+    var cardList = new CardList();
 
-    for(var i = 0; i < len; ++i) {
-        list.push(Card.create(cardList.databaseId, cardList.id, cardList.level, cardList.skillLevel));
+    if(cardList && cardList.init()) {
+        return cardList;
     }
 
-    return list;
+    return null;
 }

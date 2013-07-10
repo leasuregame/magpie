@@ -54,7 +54,6 @@
             'src/model/serverAPI.js',
             'src/model/card.js',
 
-            'src/model/config.js',
             'src/model/singleton.js',
             'src/model/base.js',
             'src/model/gameConfig.js',
@@ -89,7 +88,7 @@
             'src/view/cardLibraryLayer.js',
             'src/view/rankingLayer.js',
             'src/view/friendLayer.js',
-            'src/view/otherLayer.js',
+            'src/view/messageLayer.js',
 
             'src/view/taskLayer.js',
             'src/view/lotteryLayer.js',

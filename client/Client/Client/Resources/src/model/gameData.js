@@ -8,13 +8,15 @@
 
 
 /*
-* game data
-* */
+ * game data
+ * */
 
 var GameData = {
-    user : null,
-    player : null,
-    task : null,
-    pass : null,
-
+    user: null,
+    player: null,
+    task: null,
+    pass: null,
+    cardLibrary: null,
+    rank: null,
+    lottery: null
 }

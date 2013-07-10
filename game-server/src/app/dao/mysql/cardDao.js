@@ -155,10 +155,7 @@ var cardDao = {
                         }
 
                         if (!!res && res.length > 0){
-                            for (var i = 0; i < res.length; i++){
-                                var ps = new PassiveSkill(res[i]);
-                                card.addPassiveSkill(ps);
-                            }
+                            card.addPassiveSkills(res)
                         }
                         cardList.push(card);
                         return done();

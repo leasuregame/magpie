@@ -144,10 +144,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
 
-    passSkill.set('name', 'asdfasdfas')
-    console.log '------', passSkill
-    passSkill.save.apply(passSkill)
-    console.log passSkill
+    passSkill.save()
     next(null, {code: 200, value: passSkill.value})
 
 

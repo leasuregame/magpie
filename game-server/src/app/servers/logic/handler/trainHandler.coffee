@@ -5,6 +5,7 @@ async = require 'async'
 dao = require('pomelo').app.get('dao')
 table = require '../../../manager/table'
 passSkillConfig = require '../../../../config/data/passSkill'
+elixirConfig = require '../../../../config/data/elixir'
 utility = require '../../../common/utility'
 _ = require 'underscore'
 
@@ -147,5 +148,52 @@ Handler::passSkillAfresh  = (msg, session, next) ->
     passSkill.save()
     next(null, {code: 200, value: passSkill.value})
 
+Handler::smeltElixir = (msg, session, next) ->
+  playerId = session.get('playerId') or msg.playerId
+  cardIds = msg.cardIds
 
-    
+  result = 0
+  async.waterfall [
+    (cb) ->
+      cardManager.getCards cards, cb
+
+    (cards, cb) ->
+      result = cards.map (c) ->
+        _points = 0
+        if utility.hitRate(elixirConfig.smelt[c.star].rate)
+          _points += elixirConfig.smelt[c.star].value
+
+        return _points
+
+      cb(null)
+
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+  ], (err, player) ->
+    if err
+      next(null, {code: 501, err.msg})
+
+    player.increase('elixir', results)
+    player.save()
+    next(null, {code: 200, elixir: results})
+
+Handler::useElixir = (msg, session, next) ->
+  playerId = session.get('playerId') or msg.playerId
+  elixir = msg.elixir
+  cardId = msg.cardId
+
+  cardManager.getCard cardId, (err, card) ->
+    if card.star < 3
+      next(null, {code: 501, msg: 'can not use elixir on star 2 card'})
+
+    limit = elixirConfig.limit[card.star]
+    if card.elixir + elixir > limit
+      next(null, {code: 501, msg: "card's elixir has be the max"})
+
+    card.increase('elixir', elixir)
+    card.save
+    next(null, {code: 200})
+
+Handler::starUpgrade = (msg, session, next) ->
+  
+

@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `dailyGift` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
   `fragments` INT(5) UNSIGNED DEFAULT '0',
   `friendPoint` INT(10) UNSIGNED DEFAULT '0',
+  `elixir` INT(10) UNSIGNED DEFAULT '0', 
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

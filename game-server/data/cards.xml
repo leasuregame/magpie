@@ -9,7 +9,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-07-09T16:12:28Z</Created>
-  <LastSaved>2013-07-10T07:05:05Z</LastSaved>
+  <LastSaved>2013-07-10T07:15:28Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -24,7 +24,7 @@
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>10080</WindowTopX>
   <WindowTopY>2300</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -137,9 +137,6 @@
   </Style>
   <Style ss:ID="s81">
    <Alignment ss:Vertical="Bottom"/>
-  </Style>
-  <Style ss:ID="s82">
-   <Alignment ss:Vertical="Center"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="卡牌配置表">
@@ -3951,79 +3948,13 @@
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>4</ActiveCol>
-    </Pane>
-   </Panes>
-   <ProtectObjects>False</ProtectObjects>
-   <ProtectScenarios>False</ProtectScenarios>
-  </WorksheetOptions>
- </Worksheet>
- <Worksheet ss:Name="卡牌技能升级表">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="95"/>
-   <Row>
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">技能等级</Data></Cell>
-    <Cell><Data ss:Type="String">三星</Data></Cell>
-    <Cell><Data ss:Type="String">四星</Data></Cell>
-    <Cell><Data ss:Type="String">五星</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">level</Data></Cell>
-    <Cell><Data ss:Type="String">star3</Data></Cell>
-    <Cell><Data ss:Type="String">star4</Data></Cell>
-    <Cell><Data ss:Type="String">star5</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">3000</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">5000</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">10000</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">6000</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">15000</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">30000</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">9000</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">30000</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">60000</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">4</Data></Cell>
-    <Cell><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">12000</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">80000</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">120000</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">15000</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">120000</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">200000</Data></Cell>
-   </Row>
-  </Table>
-  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
+   <TopRowVisible>5</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>13</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>18</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -4067,7 +3998,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>17</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

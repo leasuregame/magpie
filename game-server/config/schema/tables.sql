@@ -88,6 +88,6 @@ CREATE TABLE IF NOT EXISTS `passiveSkill` (
     `createTime` BIGINT(20) UNSIGNED NOT NULL,
     `cardId` INT(10) UNSIGNED NOT NULL,
     `name` VARCHAR(20) COLLATE utf8_unicode_ci NOT NULL,
-    `value` TINYINT(3) UNSIGNED DEFAULT '0',
+    `value` FLOAT(5,1) UNSIGNED DEFAULT '0',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

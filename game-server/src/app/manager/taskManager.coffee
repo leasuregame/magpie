@@ -1,7 +1,7 @@
 table = require './table'
 taskRate = require '../../config/data/taskRate'
 utility = require '../common/utility'
-dao = require('pomelo').app.get('dao');
+dao = require('pomelo').app.get('dao')
 _ = require 'underscore'
 
 MAX_POWER = 100

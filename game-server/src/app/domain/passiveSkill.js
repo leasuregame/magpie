@@ -19,7 +19,7 @@ var FIELDS = {
     id: true,
     createTime: true,
     cardId: true,
-    tableId: true,
+    name: true,
     value: true
 };
 

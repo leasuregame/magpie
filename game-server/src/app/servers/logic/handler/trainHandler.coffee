@@ -4,6 +4,9 @@ lottery = require '../../../manager/lottery'
 async = require 'async'
 dao = require('pomelo').app.get('dao')
 table = require '../../../manager/table'
+passSkillConfig = require '../../../../config/data/passSkill'
+utility = require '../../../common/utility'
+_ = require 'underscore'
 
 module.exports = (app) ->
   new Handler(app)
@@ -79,38 +82,73 @@ Handler::luckyCard = (msg, session, next) ->
     player.save()
     next(null, {code: 200, card: card, consume: consumeVal, hasFragment: fragment})
 
-# Handler::skillUpgrade = (msg, session, next) ->
-#   playerId = session.get('playerId') or msg.playerId
-#   cardId = msg.cardId
+Handler::skillUpgrade = (msg, session, next) ->
+  playerId = session.get('playerId') or msg.playerId
+  cardId = msg.cardId
 
-#   async.waterfall [
-#     (cb) ->
-#       playerManager.getPlayerInfo {pid: playerId}, cb
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
 
-#     (res, cb) ->
-#       player = res
-#       card = player.getCard(cardId)
-#       cb(null, player, card)
+    (res, cb) ->
+      player = res
+      card = player.getCard(cardId)
+      cb(null, player, card)
 
-#     (player, card, cb) ->
-#       if card? and card.star < 3
-#         return cb({code: 501, msg: '三星级以下的卡牌没有技能，不能升级'}, null)
+    (player, card, cb) ->
+      if card? and card.star < 3
+        return cb({code: 501, msg: '三星级以下的卡牌没有技能，不能升级'}, null)
 
-#       upgradeData = table.getTableItem('skill_upgrade', card.lv)
-#       sp_need = upgradeData['star'+card.star];
+      upgradeData = table.getTableItem('skill_upgrade', card.skillLv)
+      sp_need = upgradeData['star'+card.star];
 
-#       if player.skillPoint < sp_need
-#         return cb({code: 501, msg: '技能点不够，不能升级'}, card)  
+      if player.skillPoint < sp_need
+        return cb({code: 501, msg: '技能点不够，不能升级'}, card)  
       
-#       card.increase('skillLv')
-#       cb(null, card)
-#   ], (err, card) ->
-#     if err
-#       return next(null, {code: err.code, msg: err.msg})
+      card.increase('skillLv')
+      cb(null, card)
+  ], (err, card) ->
+    if err
+      return next(null, {code: err.code, msg: err.msg})
 
-#     card.save()
-#     next(null, {code: 200})
+    card.save()
+    next(null, {code: 200})
 
+Handler::passSkillAfresh  = (msg, session, next) ->
+  playerId = session.get('playerId') or msg.playerId
+  cardId = msg.cardId
+  psId = msg.psId
+  type = msg.type or 'money'
+
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+
+    (player, cb) ->
+      money_need = passSkillConfig.CONSUME[type]
+
+      if player[type] < money_need
+        return cb({code: 501, msg: '资源不足，不能洗炼'})
+
+      card = player.getCard(cardId)
+      passSkill = card.passiveSkills[psId]
+
+      _obj = passSkillConfig.AFRESH[type]
+      valueScope = utility.randomValue(_.keys(_obj), _.values(_obj))
+      [start, end] = valueScope.split('~')
+      value = _.random(start * 100, end * 100)
+      passSkill.set('value', (value/100).toFixed(1))
+
+      cb(null, passSkill)
+  ], (err, passSkill) ->
+    if err
+      return next(null, {code: err.code, msg: err.msg})
+
+    passSkill.set('name', 'asdfasdfas')
+    console.log '------', passSkill
+    passSkill.save.apply(passSkill)
+    console.log passSkill
+    next(null, {code: 200, value: passSkill.value})
 
 
     

@@ -27,7 +27,7 @@ var getPassiveSkillObject = function(res) {
         id: res.id,
         createTime: res.createTime,
         cardId: res.cardId,
-        tableId: res.tableId,
+        name: res.name,
         value: res.value
     });
 

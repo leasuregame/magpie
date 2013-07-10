@@ -13,40 +13,39 @@
 
 
 var Card = cc.Node.extend({
-    _tid: 0,                // 数据库对应ID
-    _id: 0,                 // 数据表对应ID
+    _id: 0,                 // 数据库对应ID
+    _createTime : 0,        // 创建时间
+    _tableId: 0,            // 数据表对应ID
+    _lv: 0,                 // 卡牌等级
+    _exp: 0,                // 当前经验
+    _skillLv: 0,            // 技能等级
+    _hpAddition : 0,        // 生命培养量
+    _atkAddition: 0,        // 攻击培养量
+
     _name: "",              // 卡牌名称
     _description: "",       // 卡牌描述
     _star: 0,               // 卡牌星级
-    _level: 0,              // 卡牌等级
-    _maxLevel: 0,           // 卡牌最大等级
-    _exp: 0,                // 当前经验
+
+    _maxLv: 0,              // 卡牌最大等级
+
     _maxExp: 0,             // 最大经验
     _skillId: 0,            // 数据库表对应技能ID
     _skillName: "",         // 技能名称
     _skillDescription: "",  // 技能描述
-    _skillLevel: 0,         // 技能等级
-    _skillMaxLevel: 0,      // 技能最大等级
+
+    _skillMaxLv: 0,         // 技能最大等级
     _hp: 0,                 // 卡牌生命值
-    _damage: 0,             // 卡牌攻击值
-    _critProbability: 0.0,  // 卡牌暴击概率
-    _missProbability: 0.0,  // 卡牌闪避概率
+    _atk: 0,                // 卡牌攻击值
 
-    _cardNode: null,
-    _cardMenuItem: null,
-    _cardProgress: null,
-
-    init: function (tid, id, star, level, skillLevel, hp, damage) {
+    init: function (data) {
         cc.log("Card init");
 
-        this._super();
-        this._tid = tid || 0;
-        this._id = id;
-        this._star = star;
-        this._level = level;
-        this._skillLevel = skillLevel;
-        this._hp = hp;
-        this._damage = damage;
+        this._id = data.id;
+        this._createTime = data.createTime;
+        this._tableId = data.tableId;
+        this._lv = data.lv;
+
+        return null;
     },
 
     initWithTable: function (row) {
@@ -55,44 +54,17 @@ var Card = cc.Node.extend({
         this.init(row.tid, row.id, row.star, row.level, row.skillLevel, row.hp, row.damage);
     },
 
-    cardUpdata: function () {
-
-    },
-
-    getCardNode: function () {
-        if (this._cardNode == null) {
-            this._cardNode = CardNode.create(this);
-        }
-
-        return this._cardNode;
-    },
-
-    releaseCardNode: function () {
-        this._cardNode = null;
-    },
-
-    getCardMenuItem: function () {
-        if (this._cardMenuItem == null) {
-            this._cardMenuItem = CardMenuItem.create(this);
-        }
-
-        return this._cardMenuItem;
-    },
-
-    releaseCardMenuItem: function () {
-        this._cardMenuItem = null;
-    },
-
-    getCardDetails: function () {
-        return CardDetails.create(this);
+    update: function () {
+        cc.log("Card update");
     }
 })
 
+Card.create = function(data) {
+    var ret = new Card();
 
-var test = {
-    11: "card",
-    2: "lcc"
+    if(ret && ret.init(data)) {
+        return ret;
+    }
 
+    return null;
 }
-
-cc.log(test[11]);

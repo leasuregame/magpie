@@ -13,7 +13,7 @@
 
 
 var LOTTERY_BY_GOLD = 1;
-var LOTTERY_BY_
+var LOTTERY_BY_DAILY = 0;
 
 var Lottery = Entity.extend({
     _lotteryCount: 0,
@@ -31,10 +31,16 @@ var Lottery = Entity.extend({
     lottery: function (cb, lotteryType, level) {
         cc.log("Lottery lottery");
 
-        if(type == )
+        if (lotteryType == LOTTERY_BY_GOLD) {
+
+        } else if (lotteryType == LOTTERY_BY_DAILY) {
+
+        } else {
+            cb("lotteryType error");
+        }
 
         var that = this;
-        lzWindow.pomelo.request("", {level: level}, function (data) {
+        lzWindow.pomelo.request("", {type: lotteryType, level: level}, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 

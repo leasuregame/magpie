@@ -12,11 +12,11 @@ module.exports = {
   },
   "POWER_RESUME": {
     "interval": 10000,
-    "poins": 5
+    "point": 5
   },
   "POWER_GIVE": {
     "hours": [12, 18], 
-    "poins": 50,
+    "point": 50,
     "interval": 60000
   }
 }

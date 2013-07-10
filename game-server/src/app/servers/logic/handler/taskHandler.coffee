@@ -109,13 +109,13 @@ Handler::passBarrier = (msg, session, next) ->
         rewards = 
           exp: rdata.exp
           money: rdata.coins
-          skillPoins: rdata.skill_poins
+          skillPoint: rdata.skill_point
 
         bl.rewards = rewards
 
         player.increase('exp', rewards.exp)
         player.increase('money', rewards.money)
-        player.increase('skillPoins', rewards.skillPoins)
+        player.increase('skillPoint', rewards.skillPoint)
         player.increase('pass')
         player.save()
       

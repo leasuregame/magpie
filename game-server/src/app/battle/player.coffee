@@ -71,7 +71,11 @@ class Player extends Module
   parseLineUp: (lineUp)->
     _str = lineUp || @lineUp
     pos_hero = _str.split(',')
-    pos_hero.map (item)-> item.split(':')
+    pos_hero.map (item) => 
+      [pos,id] = item.split(':')
+      if pos.length is 1
+        pos = @matrix.numberToPosition(pos)
+      [pos, id]
 
   setLineUp: (lineUp)->
     # line up formation: 

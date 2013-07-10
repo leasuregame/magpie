@@ -1,6 +1,9 @@
 playerManager = require '../../../manager/playerManager'
+cardManager = require '../../../manager/cardManager'
 lottery = require '../../../manager/lottery'
+async = require 'async'
 dao = require('pomelo').app.get('dao')
+table = require '../../../manager/table'
 
 module.exports = (app) ->
   new Handler(app)
@@ -28,7 +31,7 @@ Handler::strengthen = (msg, session, next) ->
       if cardsDeleted
         player.strengthen(target, sources, cb)
       else
-        cb(null, {exp_obtain: 0, upgraded_level: 0, money_obtain: 0})
+        cb(null, {exp_obtain: 0, upgraded_level: 0, money_consume: 0})
 
   ], (err, result) ->
     if err
@@ -39,8 +42,8 @@ Handler::strengthen = (msg, session, next) ->
 
 Handler::luckyCard = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
-  level = msg.level
-  type = msg.type
+  level = msg.level or 1
+  type = msg.type or 'gold'
 
   player = null
   card = {}
@@ -52,7 +55,7 @@ Handler::luckyCard = (msg, session, next) ->
 
     (res, cb) ->
       player = res
-      [card, consumeVal, fragment] = lottery.lottery(level, type);
+      [card, consumeVal, fragment] = lottery(level, type);
 
       card.playerId = player.id
       dao.card.createCard card, cb
@@ -63,7 +66,7 @@ Handler::luckyCard = (msg, session, next) ->
         player.decrease('gold', consumeVal)
 
       if type is 'friendship'
-        player.decrease('friendship', consumeVal)
+        player.decrease('friendPoint', consumeVal)
 
       if fragment
         player.increase('fragments')
@@ -75,5 +78,39 @@ Handler::luckyCard = (msg, session, next) ->
 
     player.save()
     next(null, {code: 200, card: card, consume: consumeVal, hasFragment: fragment})
+
+# Handler::skillUpgrade = (msg, session, next) ->
+#   playerId = session.get('playerId') or msg.playerId
+#   cardId = msg.cardId
+
+#   async.waterfall [
+#     (cb) ->
+#       playerManager.getPlayerInfo {pid: playerId}, cb
+
+#     (res, cb) ->
+#       player = res
+#       card = player.getCard(cardId)
+#       cb(null, player, card)
+
+#     (player, card, cb) ->
+#       if card? and card.star < 3
+#         return cb({code: 501, msg: '三星级以下的卡牌没有技能，不能升级'}, null)
+
+#       upgradeData = table.getTableItem('skill_upgrade', card.lv)
+#       sp_need = upgradeData['star'+card.star];
+
+#       if player.skillPoint < sp_need
+#         return cb({code: 501, msg: '技能点不够，不能升级'}, card)  
+      
+#       card.increase('skillLv')
+#       cb(null, card)
+#   ], (err, card) ->
+#     if err
+#       return next(null, {code: err.code, msg: err.msg})
+
+#     card.save()
+#     next(null, {code: 200})
+
+
 
     

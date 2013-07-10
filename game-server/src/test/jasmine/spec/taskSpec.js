@@ -49,10 +49,9 @@ describe("Logic Server # ", function() {
 
       it("should can be return the correct battle log", function(){
         request('logic.taskHandler.explore', {playerId: '1'}, function(data){
-          //expect(data.code).toEqual(200);
-          //bl = JSON.parse(data.msg);
 
-          expect(data).toEqual('')
+          expect(data.code).toEqual(200);
+          expect(data.msg).toEqual('');
           console.log(data);
         });
       });
@@ -62,7 +61,7 @@ describe("Logic Server # ", function() {
       
       it("should can be execute and return result of pass barrier", function(){
         request('logic.taskHandler.passBarrier', {playerId: '1'}, function(data){
-          expect(data).toEqual('')
+          expect(data).toEqual('');
           console.log(data);
         });
       });
@@ -73,7 +72,7 @@ describe("Logic Server # ", function() {
       
       it("任务 should can be 扫荡", function(){
         request('logic.taskHandler.wipeOut', {playerId: '4', type: 'task'}, function(data){
-          expect(data).toEqual('')
+          expect(data).toEqual('');
           console.log(data);
         });
       });
@@ -84,12 +83,39 @@ describe("Logic Server # ", function() {
       
       it("精英关卡 should can be 扫荡", function(){
         request('logic.taskHandler.wipeOut', {playerId: '4', type: 'pass'}, function(data){
-          expect(data).toEqual('')
+          expect(data).toEqual('');
           console.log(data);
         });
       });
       
     });
+
+    describe("logic.trainHandler.luckyCard", function() {
+      it("should can be get a lucky card", function(){
+        request('logic.trainHandler.luckyCard', {playerId: '4', type: 'gold', level: 1}, function(data) {
+          expect(data).toEqual('');
+          console.log(data);
+        });
+      });
+    });
+
+    describe("logic.trainHandler.strengthen", function() {
+      it("should can be strenthen, and return properties", function(){
+        request('logic.trainHandler.strengthen', {playerId: '1', target: 3, sources: [1,2]}, function(data) {
+          expect(data).toEqual('');
+          console.log(data);
+        });
+      });
+    });
+
+    // describe("logic.trainHandler.skillUpgrade", function() {
+    //   it("card's skill should can be upgrade", function(){
+    //     request('logic.trainHandler.skillUpgrade', {playerId: '1', cardId: 5}, function(data) {
+    //       expect(data).toEqual('');
+    //       console.log(data);
+    //     });
+    //   });
+    // });
 
   });
 

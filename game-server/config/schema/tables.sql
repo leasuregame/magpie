@@ -33,14 +33,15 @@ CREATE TABLE IF NOT EXISTS `player` (
   `exp` INT(10) UNSIGNED DEFAULT '0',
   `money` INT(10) UNSIGNED DEFAULT '0',
   `gold`INT(10) UNSIGNED DEFAULT '0',
-  `skillPoins` INT(10) UNSIGNED DEFAULT '0',
+  `skillPoint` INT(10) UNSIGNED DEFAULT '0',
   `lineUp` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
   `ability` INT(10) UNSIGNED DEFAULT '0',
   `task` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `pass` SMALLINT(5) UNSIGNED DEFAULT '0',
   `passMark` BLOB(20),
   `dailyGift` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
-  `fragments` SMALLINT(5) UNSIGNED DEFAULT '0',
+  `fragments` INT(5) UNSIGNED DEFAULT '0',
+  `friendPoint` INT(10) UNSIGNED DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

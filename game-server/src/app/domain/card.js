@@ -62,9 +62,9 @@ var Card = (function (_super) {
         var totalExp = 0;
         cards.forEach(function(card){
             totalExp += cardExp(card.lv, card.exp_need);
-        })
+        });
         var upgraded_lv = this.upgrade(totalExp);
-        return [totalexp, upraded_lv];
+        return [totalExp, upgraded_lv];
     };
 
     Card.prototype.upgrade = function(exp) {

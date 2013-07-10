@@ -1,5 +1,5 @@
 pomelo = require 'pomelo'
-Player = require '../domain/coffee/player'
+Player = require '../domain/player'
 uuid = require 'node-uuid'
 _ = require 'underscore'
 

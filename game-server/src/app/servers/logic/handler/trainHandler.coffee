@@ -10,6 +10,9 @@ starUpgradeConfig = require '../../../../config/data/starUpgrade'
 utility = require '../../../common/utility'
 _ = require 'underscore'
 
+LOTTERY_BY_GOLD = 1
+LOTTERY_BY_ENERGY = 0
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -48,10 +51,13 @@ Handler::strengthen = (msg, session, next) ->
 Handler::luckyCard = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   level = msg.level or 1
-  type = msg.type or 'gold'
+  type = msg.type or 1
+
+  typeMapping = {}
+  typeMapping[LOTTERY_BY_GOLD] = 'gold'
+  typeMapping[LOTTERY_BY_ENERGY] = 'energy'
 
   player = null
-  card = {}
   consumeVal = 0
   fragment = false
   async.waterfall [
@@ -62,27 +68,30 @@ Handler::luckyCard = (msg, session, next) ->
       player = res
       [card, consumeVal, fragment] = lottery(level, type);
 
+      if player[typeMapping[type]] < consumeVal
+        return cb({code: 501, msg: '没有足够的资源来完成本次抽卡'}, null)
+
       card.playerId = player.id
       dao.card.createCard card, cb
 
     (cardEnt, cb) ->
-      player.addCard(card);
-      if type is 'gold'
+      player.addCard(cardEnt);
+      if type is LOTTERY_BY_GOLD
         player.decrease('gold', consumeVal)
 
-      if type is 'friendship'
+      if type is LOTTERY_BY_ENERGY
         player.decrease('friendPoint', consumeVal)
 
       if fragment
         player.increase('fragments')
 
-      cb(null, player)
-  ], (err, player) ->
+      cb(null, cardEnt, player)
+  ], (err, cardEnt, player) ->
     if err
-      return next(null, {code: 500, msg: 'card upgrade faild'})
+      return next(null, {code: err.code, msg: err.msg})
 
     player.save()
-    next(null, {code: 200, card: card, consume: consumeVal, hasFragment: fragment})
+    next(null, {code: 200, card: cardEnt.toJson(), consume: consumeVal, hasFragment: fragment})
 
 Handler::skillUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -133,39 +142,42 @@ Handler::starUpgrade = (msg, session, next) ->
 
     (res, cb) ->
       player = res
-      card = player.getCard(cardId)
+      card = player.getCard(target)
       if card.star < starUpgradeConfig.STAR_MIN
         return cb({code: 501, msg: "卡牌星级必须到达#{starUpgradeConfig.STAR_MIN}级才能进阶"})
-      cb(null)      
+      cb(null)
 
     (cb) ->
-      player = res
       _config = starUpgradeConfig['STAR_'+card.star]
       if gold > 0 and gold < player.gold
         card_count += parseInt(gold/_config.gold_per_card)
-        player.descrease('gold', gold)
+        
+      if card_count > _config.max_num
+        return cb({code: 501, msg: "最多只能消耗#{_config.max_num}张卡牌来进行升级"})
 
       totalRate = _.min([card_count * _config.rate_per_card, 100])
       if utility.hitRate(totalRate)
         is_upgrade = true
 
-      cb()
-  ], (err) ->
+      cardManager.deleteCards sources, cb
+  ], (err, result) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
 
-    card.increase('star')
-    if allInherit
-      player.descrease('gold', starUpgradeConfig.ALL_INHERIT_GOLD)
-    else
-      inherit_info = starUpgradeConfig.DEFAULT_INHERIT
-      card.set('exp', parseInt(card.get('exp') * inherit_info['exp'] / 100))
-      card.set('skillPoint', parseInt(card.get('skillPoint') * inherit_info['skillPoint'] / 100))
-      card.set('elixir', parseInt(card.get('elixir') * inherit_info['elixir'] / 100))
+    if is_upgrade and result
+      player.decrease('gold', gold)
+      card.increase('star')
+      if allInherit
+        player.decrease('gold', starUpgradeConfig.ALL_INHERIT_GOLD)
+      else
+        inherit_info = starUpgradeConfig.DEFAULT_INHERIT
+        card.set('exp', parseInt(card.get('exp') * inherit_info['exp'] / 100))
+        card.set('skillPoint', parseInt(card.get('skillPoint') * inherit_info['skillPoint'] / 100))
+        card.set('elixir', parseInt(card.get('elixir') * inherit_info['elixir'] / 100))
 
     player.save()
     card.save()
-    next(null, {code: 200})
+    next(null, {code: 200, upgrade: is_upgrade})
 
 Handler::passSkillAfresh  = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -207,7 +219,7 @@ Handler::smeltElixir = (msg, session, next) ->
   result = 0
   async.waterfall [
     (cb) ->
-      cardManager.getCards cards, cb
+      cardManager.getCards cardIds, cb
 
     (cards, cb) ->
       result = cards.map (c) ->
@@ -220,14 +232,18 @@ Handler::smeltElixir = (msg, session, next) ->
       cb(null)
 
     (cb) ->
+      cardManager.deleteCards cardIds, cb
+
+    (results, cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
   ], (err, player) ->
     if err
       return next(null, {code: 501, msg: err.msg})
 
-    player.increase('elixir', results)
+    sum = result.reduce (x,y) -> x + y
+    player.increase('elixir', sum) if sum > 0
     player.save()
-    next(null, {code: 200, elixir: results})
+    next(null, {code: 200, elixir: result, sum: sum})
 
 Handler::useElixir = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -243,7 +259,7 @@ Handler::useElixir = (msg, session, next) ->
       return next(null, {code: 501, msg: "card's elixir has be the max"})
 
     card.increase('elixir', elixir)
-    card.save
+    card.save()
     next(null, {code: 200})
 
   

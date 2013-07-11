@@ -36,7 +36,8 @@ var FIELDS = {
     passMark: true,
     dailyGift: true,
     fragments: true,
-    friendPoint: true
+    friendPoint: true,
+    elixir: true
 };
 
 var startPowerResumeTimer = function(player) {
@@ -218,6 +219,28 @@ var Player = (function (_super) {
         _passMark |= (1 << (index - 1));
 
         this.set("passMark", _passMark);
+    };
+
+    Player.prototype.toJson = function () {
+        return {
+            id: this.id,
+            userId: this.userId,
+            areaId: this.areaId,
+            name: this.name,
+            power: this.power,
+            lv: this.lv,
+            exp: this.exp,
+            money: this.money,
+            gold: this.gold,
+            lineUp: this.lineUp,
+            ability: this.ability,
+            task: this.task,
+            pass: this.pass,
+            passMark: this.passMark,
+            dailyGift: this.dailyGift,
+            fregments: this.fregments,
+            elixir: this.elixir
+        };
     };
 
     return Player;

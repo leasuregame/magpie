@@ -58,7 +58,7 @@ Handler::login = (msg, session, next) ->
       session.set('areaId', player.areaId)
 
     session.on('close', onUserLeave)
-    next(null, {code: 200, uid: uid, player: player})
+    next(null, {code: 200, uid: uid, player: player?.toJson()})
 
 onUserLeave = (session, reason) ->
   if not session or not session.uid

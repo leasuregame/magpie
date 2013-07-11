@@ -84,14 +84,14 @@ var cardDao = {
             }
         ], function (err, results) {
             if (err !== null) {
-                cb(err, null)
+                return cb(err, null)
             }
 
             var card = results[0];
             var pss = results[1];
 
             card.addPassiveSkill(pss);
-            cb(null, card);
+            return cb(null, card);
         });
     },
 
@@ -122,7 +122,7 @@ var cardDao = {
             } else {
                 return cb({
                     code: null,
-                    msg: "Card not exist"
+                    msg: "卡牌不存在"
                 }, null);
             }
         });

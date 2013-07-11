@@ -7,8 +7,8 @@ _ = require 'underscore'
 MAX_POWER = 100
 
 class Manager
-  @explore: (player, cb) ->
-    task_id = player.task.id
+  @explore: (player, taskId, cb) ->
+    task_id = taskId or player.task.id
     taskData = table.getTableItem('task', task_id)
 
     data = {

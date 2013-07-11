@@ -18,6 +18,7 @@ Handler = (@app) ->
 ###
 Handler::explore = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
+  taskId = msg.taskId
   rewards = null
   player = null
 
@@ -27,7 +28,7 @@ Handler::explore = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
-      taskManager.explore player, cb
+      taskManager.explore player, taskId, cb
 
     (data, cb) =>
       if data.result is 'fight'

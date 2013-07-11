@@ -22,6 +22,7 @@ var FIELDS = {
     createTime: true,
     playerId: true,
     tableId: true,
+    star: true,
     lv: true,
     exp: true,
     skillLv: true,
@@ -85,6 +86,20 @@ var Card = (function (_super) {
             }
         }
         return upgraded_lv;
+    };
+
+    Card.prototype.toJson = function() {
+        return {
+            id: this.id,
+            playerId: this.playerId,
+            tableId: this.tableId,
+            star: this.star,
+            lv: this.lv,
+            exp: this.exp,
+            skillLv: this.skillLv,
+            hpAddition: this.hpAddition,
+            atkAddition: this.atkAddition
+        };
     };
 
     return Card;

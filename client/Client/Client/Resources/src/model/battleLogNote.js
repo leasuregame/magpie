@@ -8,41 +8,41 @@
 
 
 /*
-* battleLogNote
-* */
+ * battleLogNote
+ * */
 
 var BattleLogNote = cc.Class.extend({
-    _battleLogNote : null,
+    _battleLogNote: null,
 
-    init : function() {
+    init: function () {
         cc.log("BattleLogNote init");
 
         this._battleLogNote = [];
     },
 
-    pushBattleLogWithJson : function(json) {
+    pushBattleLogWithJson: function (json) {
         cc.log("BattleLogNote pushBattleLogWithJson");
 
         this._battleLogNote.push(BattleLog.create(json));
     },
 
-    pushBattleLog : function(battleLog) {
+    pushBattleLog: function (battleLog) {
         this._battleLogNote.push(battleLog);
     },
 
-    getLastBattleLog : function() {
+    getLastBattleLog: function () {
         cc.log("BattleLogNote getLastBattleLog");
 
         return this._battleLogNote[this._battleLogNote.length - 1];
     },
 
-    getBattleLogNote : function() {
+    getBattleLogNote: function () {
         cc.log("BattleLogNote getBattleLogNote");
 
         return this._battleLogNote;
     },
 
-    getBattleWithIndex : function(index) {
+    getBattleWithIndex: function (index) {
         cc.log("BattleLogNote getBattleWithIndex");
 
         return this._battleLogNote[index];

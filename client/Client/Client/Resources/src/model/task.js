@@ -42,11 +42,11 @@ var Task = Entity.extend({
      * @ param {number} id 任务id
      * @ param {number} progress 进度
      * */
-    explore: function (cb, id, progress) {
+    explore: function (cb, id) {
         cc.log("Task explore");
 
         var that = this;
-        lzWindow.pomelo.request("logic.taskHandler.explore", {id: id, progress: progress}, function (data) {
+        lzWindow.pomelo.request("logic.taskHandler.explore", {playerId: 1, id: id}, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 

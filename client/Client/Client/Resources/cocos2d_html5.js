@@ -60,10 +60,12 @@
             'src/model/jquery-1.10.0.min.js',
             'src/model/httpClientPackage.js',
             'src/model/entity.js',
+            'src/model/lottery.js',
             'src/model/player.js',
             'src/model/battleStep.js',
             'src/model/battleLog.js',
             'src/model/battleLogNote.js',
+            'src/model/gameData.js',
             'src/controls/cloudLayer.js',
             'src/controls/progress.js',
             'src/controls/bgSprite.js',
@@ -92,7 +94,7 @@
 
             'src/view/taskLayer.js',
             'src/view/lotteryLayer.js',
-            'src/view/barriersLayer.js',
+            'src/view/passLayer.js',
             'src/view/tournamentLayer.js',
             'src/view/strengthenLayer.js',
 

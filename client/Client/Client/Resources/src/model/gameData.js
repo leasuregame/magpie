@@ -11,12 +11,27 @@
  * game data
  * */
 
-var GameData = {
+var gameData = {
+    mainScene : null,
+
     user: null,
     player: null,
     task: null,
     pass: null,
     cardLibrary: null,
     rank: null,
-    lottery: null
+    lottery: null,
+
+    gameInit: function() {
+        cc.log("gameData init");
+
+        this.lottery = Lottery.create();
+    },
+
+    gameEnd: function() {
+
+    }
 }
+
+
+gameData.gameInit();

@@ -18,6 +18,10 @@ var LotteryLayer = cc.Layer.extend({
 
         if (!this._super())  return false;
 
+        this.label = cc.LabelTTF.create("抽奖结果：", 'Times New Roman', 32);
+        this.label.setPosition(cc.p(120, 650));
+        this.addChild(this.label);
+
         var textLabel = cc.LabelTTF.create("元宝抽卡", 'Times New Roman', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT, 1000);
         this.addChild(textLabel);
@@ -89,13 +93,13 @@ var LotteryLayer = cc.Layer.extend({
         textLabel.setPosition(GAME_WIDTH_MIDPOINT + 200, 350);
         this.addChild(textLabel);
 
-        var lotteryItem1 = cc.MenuItemFont.create("抽奖", this._onClickVigorLottery1, this);
+        var lotteryItem1 = cc.MenuItemFont.create("抽奖", this._onClickEnergyLottery1, this);
         lotteryItem1.setPosition(GAME_WIDTH_MIDPOINT - 200, 300);
 
-        var lotteryItem2 = cc.MenuItemFont.create("抽奖", this._onClickVigorLottery2, this);
+        var lotteryItem2 = cc.MenuItemFont.create("抽奖", this._onClickEnergyLottery2, this);
         lotteryItem2.setPosition(GAME_WIDTH_MIDPOINT, 300);
 
-        var lotteryItem3 = cc.MenuItemFont.create("抽奖", this._onClickVigorLottery3, this);
+        var lotteryItem3 = cc.MenuItemFont.create("抽奖", this._onClickEnergyLottery3, this);
         lotteryItem3.setPosition(GAME_WIDTH_MIDPOINT + 200, 300);
 
         var menu = cc.Menu.create(lotteryItem1, lotteryItem2, lotteryItem3);
@@ -112,31 +116,39 @@ var LotteryLayer = cc.Layer.extend({
 
     _onClickLottery1: function () {
         cc.log("LotteryLayer _onClickLottery1");
+        this._lottery(LOTTERY_BY_GOLD, 1);
     },
 
     _onClickLottery2: function () {
         cc.log("LotteryLayer _onClickLottery2");
+        this._lottery(LOTTERY_BY_GOLD, 2);
     },
 
     _onClickLottery3: function () {
         cc.log("LotteryLayer _onClickLottery3");
+        this._lottery(LOTTERY_BY_GOLD, 3);
     },
 
-    _onClickVigorLottery1: function () {
-        cc.log("LotteryLayer _onClickVigorLottery1");
+    _onClickEnergyLottery1: function () {
+        cc.log("LotteryLayer _onClickEnergyLottery1");
+        this._lottery(LOTTERY_BY_ENERGY, 1);
     },
 
-    _onClickVigorLottery2: function () {
-        cc.log("LotteryLayer _onClickVigorLottery2");
+    _onClickEnergyLottery2: function () {
+        cc.log("LotteryLayer _onClickEnergyLottery2");
+        this._lottery(LOTTERY_BY_ENERGY, 2);
     },
 
-    _onClickVigorLottery3: function () {
-        cc.log("LotteryLayer _onClickVigorLottery3");
+    _onClickEnergyLottery3: function () {
+        cc.log("LotteryLayer _onClickEnergyLottery3");
+        this._lottery(LOTTERY_BY_ENERGY, 3);
     },
 
-    _lottery : function(level) {
+    _lottery : function(type, level) {
         cc.log("LotteryLayer _lottery");
-
+        gameData.lottery.lottery(function(msg) {
+            cc.log(msg);
+        }, type, level);
     }
 })
 

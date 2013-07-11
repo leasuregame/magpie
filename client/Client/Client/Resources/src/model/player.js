@@ -26,7 +26,7 @@ var Player = Entity.extend({
     _skillPoint: 0,     // 技能点
     _lineUp : null,     // 阵容
     _ability : 0,       // 战力
-    _task : null,       // 任务
+    _energy: 0,         // 活力
 
 
 

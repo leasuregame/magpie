@@ -57,7 +57,7 @@ var cocos2dApp = cc.Application.extend({
 
         //load resources
         cc.Loader.preload(g_ressources, function () {
-            cc.Director.getInstance().runWithScene(new this.startScene());
+            cc.Director.getInstance().runWithScene(this.startScene.getInstance());
         }, this);
 
         return true;

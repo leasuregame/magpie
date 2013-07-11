@@ -70,7 +70,7 @@ var appFiles = [
 
     'src/view/taskLayer.js',
     'src/view/lotteryLayer.js',
-    'src/view/barriersLayer.js',
+    'src/view/passLayer.js',
     'src/view/tournamentLayer.js',
     'src/view/strengthenLayer.js',
 

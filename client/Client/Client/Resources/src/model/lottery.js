@@ -13,34 +13,37 @@
 
 
 var LOTTERY_BY_GOLD = 1;
-var LOTTERY_BY_DAILY = 0;
+var LOTTERY_BY_ENERGY = 0;
 
 var Lottery = Entity.extend({
     _lotteryCount: 0,
 
     init: function (data) {
+        cc.log("Lottery init");
+
         this.update(data);
 
         return true;
     },
 
-    update: function (data) {
-        this._lotteryCount = data.lotteryCount;
+    update: function () {
     },
 
-    lottery: function (cb, lotteryType, level) {
+    lottery: function (cb, type, level) {
         cc.log("Lottery lottery");
 
-        if (lotteryType == LOTTERY_BY_GOLD) {
-
-        } else if (lotteryType == LOTTERY_BY_DAILY) {
-
+        if (type == LOTTERY_BY_GOLD) {
+            cc.log("lottery by gold");
+        } else if (type == LOTTERY_BY_ENERGY) {
+            cc.log("lottery by energy");
         } else {
-            cb("lotteryType error");
+            cb("lottery type error");
+
+            return;
         }
 
         var that = this;
-        lzWindow.pomelo.request("", {type: lotteryType, level: level}, function (data) {
+        lzWindow.pomelo.request("logic.trainHandler.luckyCard", {playerId: 1, type: type, level: level}, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 
@@ -48,10 +51,6 @@ var Lottery = Entity.extend({
                 cc.log("lottery success");
 
                 var msg = data.msg;
-
-                that.update({
-                    lotteryCount: msg.lotteryCount
-                });
 
                 cb("success");
             } else {
@@ -64,10 +63,10 @@ var Lottery = Entity.extend({
 })
 
 
-Lottery.create = function (data) {
+Lottery.create = function () {
     var ret = new Lottery();
 
-    if (ret && ret(data)) {
+    if (ret && ret.init()) {
         return ret;
     }
 

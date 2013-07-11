@@ -6,6 +6,7 @@ dao = require('pomelo').app.get('dao')
 table = require '../../../manager/table'
 passSkillConfig = require '../../../../config/data/passSkill'
 elixirConfig = require '../../../../config/data/elixir'
+starUpgradeConfig = require '../../../../config/data/starUpgrade'
 utility = require '../../../common/utility'
 _ = require 'underscore'
 
@@ -115,6 +116,57 @@ Handler::skillUpgrade = (msg, session, next) ->
     card.save()
     next(null, {code: 200})
 
+Handler::starUpgrade = (msg, session, next) ->
+  playerId = session.get('playerId') or msg.playerId
+  target = msg.target
+  sources = msg.sources
+  gold = msg.gold or 0
+  allInherit = msg.allInherit or false
+
+  card_count = sources.length
+  is_upgrade = false
+  card = null
+  player = null
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+
+    (res, cb) ->
+      player = res
+      card = player.getCard(cardId)
+      if card.star < starUpgradeConfig.STAR_MIN
+        return cb({code: 501, msg: "卡牌星级必须到达#{starUpgradeConfig.STAR_MIN}级才能进阶"})
+      cb(null)      
+
+    (cb) ->
+      player = res
+      _config = starUpgradeConfig['STAR_'+card.star]
+      if gold > 0 and gold < player.gold
+        card_count += parseInt(gold/_config.gold_per_card)
+        player.descrease('gold', gold)
+
+      totalRate = _.min([card_count * _config.rate_per_card, 100])
+      if utility.hitRate(totalRate)
+        is_upgrade = true
+
+      cb()
+  ], (err) ->
+    if err
+      return next(null, {code: err.code, msg: err.msg})
+
+    card.increase('star')
+    if allInherit
+      player.descrease('gold', starUpgradeConfig.ALL_INHERIT_GOLD)
+    else
+      inherit_info = starUpgradeConfig.DEFAULT_INHERIT
+      card.set('exp', parseInt(card.get('exp') * inherit_info['exp'] / 100))
+      card.set('skillPoint', parseInt(card.get('skillPoint') * inherit_info['skillPoint'] / 100))
+      card.set('elixir', parseInt(card.get('elixir') * inherit_info['elixir'] / 100))
+
+    player.save()
+    card.save()
+    next(null, {code: 200})
+
 Handler::passSkillAfresh  = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   cardId = msg.cardId
@@ -171,7 +223,7 @@ Handler::smeltElixir = (msg, session, next) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
   ], (err, player) ->
     if err
-      next(null, {code: 501, err.msg})
+      return next(null, {code: 501, msg: err.msg})
 
     player.increase('elixir', results)
     player.save()
@@ -182,18 +234,17 @@ Handler::useElixir = (msg, session, next) ->
   elixir = msg.elixir
   cardId = msg.cardId
 
-  cardManager.getCard cardId, (err, card) ->
+  cardManager.getCardInfo cardId, (err, card) ->
     if card.star < 3
-      next(null, {code: 501, msg: 'can not use elixir on star 2 card'})
+      return next(null, {code: 501, msg: 'can not use elixir on star 2 card'})
 
     limit = elixirConfig.limit[card.star]
     if card.elixir + elixir > limit
-      next(null, {code: 501, msg: "card's elixir has be the max"})
+      return next(null, {code: 501, msg: "card's elixir has be the max"})
 
     card.increase('elixir', elixir)
     card.save
     next(null, {code: 200})
 
-Handler::starUpgrade = (msg, session, next) ->
   
 

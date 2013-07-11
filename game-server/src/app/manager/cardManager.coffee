@@ -21,4 +21,22 @@ class Manager
           cb(null, _.some(results))
       )
 
+  @getCards: (ids, cb) ->
+    ids = [ids] if not _.isArray(ids)
+
+    async.map(
+      ids,
+      (id, done) ->
+        dao.card.getCardInfo id, done
+      , (err, cards) ->
+        if err isnt null
+          cb(err, null)
+        else
+          cb(null, cards)
+
+    )
+
+  @getCardInfo: (id, cb) ->
+    dao.card.getCardInfo id, cb
+
 module.exports = Manager

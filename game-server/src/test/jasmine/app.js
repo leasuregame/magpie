@@ -44,31 +44,42 @@ app.get('/removeuser', function(req, res){
 });
 
 app.get('/addPlayer', function(req, res){
-  playerId = req.query.playerId;
+  //playerId = req.query.playerId;
   userId = req.query.userId;
   areaId = req.query.areaId;
   name = req.query.name;
-  task = JSON.stringify({id: 1, progress: 2});
+  //task = JSON.stringify({id: 1, progress: 2});
 
-  mysql.query('insert into player (id, userId, areaId, name, task, createTime) values (?,?,?,?,?,?)', 
-    [playerId, userId, areaId, name, task, Date.now()], function(err, result) {
+  mysql.query('insert into player (userId, areaId, name, createTime) values (?,?,?,?)', 
+    [userId, areaId, name, Date.now()], function(err, result) {
     if (err){
       res.send({code: 500, msg: 'faild to add player with parameters: ' + JSON.stringify(req.query)});
     }
     else{
-      res.send({code: 200});
+      res.send({code: 200, playerId: result.insertId});
     }
   });
 });
 
 app.get('/removePlayer', function(req, res){
-  playerId = req.query.pid;
+  playerId = req.query.playerId;
   mysql.query('delete from player where id = ?', [playerId], function(err, results){
     if (!err){
       res.send({code: 200})
     }
     else{
       res.send({code: 500, msg: 'faild to delete player by id: ' + playerId});
+    }
+  });
+});
+
+var spawn = require('child_process').spawn;
+app.get('/loadDataFromCsvFile', function(req, res) {
+  var ps = spawn('node', [__dirname + '../../../bin/loaddata.js']);
+  ps.stdout.on('data', function(data) {
+    if (/done/.test(data.toString())) {
+      ps.kill('SIGHUP');
+      res.send('done');
     }
   });
 });

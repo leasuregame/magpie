@@ -37,7 +37,9 @@ var DEFAULT_PLAYER_INFO = {
     pass: 0,
     passMark: 0,
     dailyGift: [],
-    fragments: 0
+    fragments: 0,
+    energy: 0,
+    skillPoint: 0
 };
 
 var createNewPlayer = function (playerInfo) {

@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `passMark` BLOB(20),
   `dailyGift` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
   `fragments` INT(5) UNSIGNED DEFAULT '0',
-  `friendPoint` INT(10) UNSIGNED DEFAULT '0',
+  `energy` INT(10) UNSIGNED DEFAULT '0',
   `elixir` INT(10) UNSIGNED DEFAULT '0', 
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
@@ -62,7 +62,8 @@ CREATE TABLE IF NOT EXISTS `card` (
 	`exp` INT(10) UNSIGNED DEFAULT '0',
 	`skillLv` TINYINT(3) UNSIGNED DEFAULT '0',
 	`hpAddition` INT(10) UNSIGNED DEFAULT '0',
-	`atkAddition` INT(10) UNSIGNED DEFAULT '0'
+	`atkAddition` INT(10) UNSIGNED DEFAULT '0',
+  `type` SMALLINT(2) UNSIGNED DEFAULT '0',
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

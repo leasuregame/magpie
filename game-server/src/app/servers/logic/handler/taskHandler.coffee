@@ -30,12 +30,12 @@ Handler::explore = (msg, session, next) ->
       player = _player
       taskManager.explore player, taskId, cb
 
-    (data, cb) =>
+    (data, chapterId, cb) =>
       if data.result is 'fight'
         taskManager.fightToMonster(
           @app, 
           session, 
-          {pid: player.id, tableId: player.task.id, table: 'task_config'}, 
+          {pid: player.id, tableId: chapterId, table: 'task_config'}, 
           (err, battleLog) ->
             data.battle_log = battleLog
 

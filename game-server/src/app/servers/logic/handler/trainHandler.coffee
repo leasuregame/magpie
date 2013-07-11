@@ -80,7 +80,7 @@ Handler::luckyCard = (msg, session, next) ->
         player.decrease('gold', consumeVal)
 
       if type is LOTTERY_BY_ENERGY
-        player.decrease('friendPoint', consumeVal)
+        player.decrease('energy', consumeVal)
 
       if fragment
         player.increase('fragments')

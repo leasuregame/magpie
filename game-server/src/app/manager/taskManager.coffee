@@ -30,7 +30,7 @@ class Manager
       [taskRate.fight, taskRate.precious_box, (100 - taskRate.fight - taskRate.precious_box)]
     )
 
-    cb(null, data)
+    cb(null, data, taskData.chapter_id)
 
   @wipeOut: (player, type, cb) ->
     funs = {task: @wipeOutTask, pass: @wipeOutPass}

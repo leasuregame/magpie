@@ -1,3 +1,15 @@
+var doAjax = function(url, params, cb) {
+  var ok = false;
+  runs(function(){
+    $.get(url, params, function(data) {
+      cb(data);
+      ok = true;
+    });
+  });
+
+  waits(function(){ return ok; });
+};
+
 describe("Logic Server # ", function() {
   var pomelo = window.pomelo;
   var inited = false;
@@ -36,26 +48,26 @@ describe("Logic Server # ", function() {
     it("connect to server", function() {
       intiPomelo();
     });
+
+    it('load test data form csv files', function(){
+      doAjax('/loadDataFromCsvFile', {}, function(data){
+        expect(data).toEqual('done');
+      });
+    });
   });
 
   describe("Task Handler", function(){
 
-    // describe("logic.taskHandler.explore", function(){
-    //   // it("add player", function(){
-    //   //   $.get('/addPlayer', {playerId: '5', userId: '1', areaId: '1', name: 'wuzhanghai'}, function(data){
-    //   //     expect(data).toEqual({code: 200});
-    //   //   });
-    //   // });
+    describe("logic.taskHandler.explore", function(){
 
-    //   it("should can be return the correct battle log", function(){
-    //     request('logic.taskHandler.explore', {playerId: '1'}, function(data){
-
-    //       expect(data.code).toEqual(200);
-    //       expect(data.msg).toEqual('');
-    //       console.log(data);
-    //     });
-    //   });
-    // });
+      it("should can be return the correct battle log", function(){
+        request('logic.taskHandler.explore', {playerId: 100, taskId: 6}, function(data){
+          expect(data.code).toEqual(200);
+          expect(data.msg).toEqual('');
+          console.log(data);
+        });
+      });
+    });
 
     // describe("logic.taskHandler.passBarrier", function(){
       

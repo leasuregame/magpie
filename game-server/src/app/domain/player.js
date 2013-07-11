@@ -36,7 +36,7 @@ var FIELDS = {
     passMark: true,
     dailyGift: true,
     fragments: true,
-    friendPoint: true,
+    energy: true,
     elixir: true
 };
 

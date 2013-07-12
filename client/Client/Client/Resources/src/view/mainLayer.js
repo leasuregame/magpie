@@ -109,7 +109,7 @@ var MainLayer = cc.Layer.extend({
 
     _onClickBarriers: function () {
         cc.log("MainLayer _onClickBarriers");
-        if (this._mainScene) this._mainScene.switchLayer(BarriersLayer);
+        if (this._mainScene) this._mainScene.switchLayer(PassLayer);
     },
 
     _onClickTournament: function () {

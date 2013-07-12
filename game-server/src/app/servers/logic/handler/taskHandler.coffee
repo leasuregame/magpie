@@ -40,7 +40,7 @@ Handler::explore = (msg, session, next) ->
             data.battle_log = battleLog
 
             if battleLog.winner is 'own'
-              obtainBattleRewards(player, battleLog)
+              obtainBattleRewards(player, chapterId, battleLog)
               taskManager.countExploreResult player, data, cb
             else
               cb(null, data)
@@ -128,8 +128,8 @@ Handler::passBarrier = (msg, session, next) ->
 
     next(null, {code: 200, msg: bl})
 
-obtainBattleRewards = (player, battleLog) ->
-  taskData = table.getTableItem 'task_config', player.task.id
+obtainBattleRewards = (player, taskId, battleLog) ->
+  taskData = table.getTableItem 'task_config', taskId
   
   # 奖励掉落卡牌
   _cards = getRewardCards(taskData.cards.split('#'), taskData.max_drop_card_number)

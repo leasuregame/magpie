@@ -68,11 +68,11 @@
             'src/view/cardLibraryLayer.js',
             'src/view/rankingLayer.js',
             'src/view/friendLayer.js',
-            'src/view/otherLayer.js',
+            'src/view/messageLayer.js',
 
             'src/view/taskLayer.js',
             'src/view/lotteryLayer.js',
-            'src/view/barriersLayer.js',
+            'src/view/passLayer.js',
             'src/view/tournamentLayer.js',
             'src/view/strengthenLayer.js',
 

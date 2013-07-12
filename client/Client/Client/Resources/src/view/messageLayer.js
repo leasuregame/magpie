@@ -8,18 +8,18 @@
 
 
 /*
- * other layer
+ * message layer
  * */
 
-var OtherLayer = cc.Layer.extend({
+var MessageLayer = cc.Layer.extend({
     init: function () {
-        cc.log("OtherLayer init");
+        cc.log("MessageLayer init");
 
         if (!this._super()) return false;
 
         var winSize = cc.Director.getInstance().getWinSize();
 
-        var label = cc.LabelTTF.create("OtherLayer", 'Times New Roman', 60);
+        var label = cc.LabelTTF.create("MessageLayer", 'Times New Roman', 60);
         label.setPosition(winSize.width / 2, winSize.height / 2);
         this.addChild(label);
 
@@ -27,8 +27,8 @@ var OtherLayer = cc.Layer.extend({
     }
 })
 
-OtherLayer.create = function () {
-    var res = new OtherLayer();
+MessageLayer.create = function () {
+    var res = new MessageLayer();
 
     if (res && res.init()) {
         return res;

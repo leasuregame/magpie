@@ -57,7 +57,7 @@ var cocos2dApp = cc.Application.extend({
 
         //load resources
         cc.Loader.preload(g_ressources, function () {
-            cc.Director.getInstance().runWithScene(new this.startScene());
+            cc.Director.getInstance().runWithScene(this.startScene.getInstance());
         }, this);
 
         return true;
@@ -66,6 +66,6 @@ var cocos2dApp = cc.Application.extend({
 
 //var myApp = new cocos2dApp(SignUpScene);
 //var myApp = new cocos2dApp(SignInScene);
-//var myApp = new cocos2dApp(MainScene);
-var myApp = new cocos2dApp(testScene);
+var myApp = new cocos2dApp(MainScene);
+//var myApp = new cocos2dApp(testScene);
 //var myApp = new cocos2dApp(BattleScene);

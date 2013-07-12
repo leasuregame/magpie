@@ -7,9 +7,9 @@
  */
 
 
-var BarriersLayer = cc.Layer.extend({
+var PassLayer = cc.Layer.extend({
     init: function () {
-        cc.log("BarriersLayer init");
+        cc.log("PassLayer init");
 
         if (!this._super()) return false;
 
@@ -67,8 +67,8 @@ var BarriersLayer = cc.Layer.extend({
         return true;
     },
 
-    _onClickWipeOut: function() {
-        cc.log("BarriersLayer _onClickWipeOut");
+    _onClickWipeOut: function () {
+        cc.log("PassLayer _onClickWipeOut");
 
 //        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {playerId: 1}, function (data) {
 //            cc.log(data);
@@ -82,7 +82,7 @@ var BarriersLayer = cc.Layer.extend({
     },
 
     _onClickBarriers: function (index) {
-        cc.log("BarriersLayer _onClickBarriers");
+        cc.log("PassLayer _onClickBarriers");
         cc.log(index);
 
         var that = this;
@@ -102,8 +102,8 @@ var BarriersLayer = cc.Layer.extend({
     }
 })
 
-BarriersLayer.create = function () {
-    var ret = new BarriersLayer();
+PassLayer.create = function () {
+    var ret = new PassLayer();
 
     if (ret && ret.init()) {
         return ret;

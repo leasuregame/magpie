@@ -42,12 +42,8 @@ var MainScene = cc.Scene.extend({
     }
 })
 
-MainScene.create = function () {
-    var ret = new MainScene();
 
-    if (ret) {
-        return ret;
-    }
-
-    return null;
-}
+/*
+ * 单例
+ * */
+MainScene.getInstance = singleton(MainScene);

@@ -42,7 +42,7 @@
         frameRate:60,
         loadExtension:true,
         tag:'gameCanvas', //the dom element to run cocos2d on
-        engineDir:'../../../Cocos2d-html5-v2.1.3/cocos2d/',
+        engineDir:'../../../Cocos2d-html5-v2.1.4/cocos2d/',
         //SingleEngineFile:'',
         appFiles:[
             'src/resource.js',
@@ -52,17 +52,20 @@
 
             'src/model/pomeloWebsocketClient.js',
             'src/model/serverAPI.js',
+            'src/model/card.js',
 
-            'src/model/config.js',
             'src/model/singleton.js',
             'src/model/base.js',
             'src/model/gameConfig.js',
             'src/model/jquery-1.10.0.min.js',
             'src/model/httpClientPackage.js',
+            'src/model/entity.js',
+            'src/model/lottery.js',
             'src/model/player.js',
             'src/model/battleStep.js',
             'src/model/battleLog.js',
             'src/model/battleLogNote.js',
+            'src/model/gameData.js',
             'src/controls/cloudLayer.js',
             'src/controls/progress.js',
             'src/controls/bgSprite.js',
@@ -87,11 +90,11 @@
             'src/view/cardLibraryLayer.js',
             'src/view/rankingLayer.js',
             'src/view/friendLayer.js',
-            'src/view/otherLayer.js',
+            'src/view/messageLayer.js',
 
             'src/view/taskLayer.js',
             'src/view/lotteryLayer.js',
-            'src/view/barriersLayer.js',
+            'src/view/passLayer.js',
             'src/view/tournamentLayer.js',
             'src/view/strengthenLayer.js',
 

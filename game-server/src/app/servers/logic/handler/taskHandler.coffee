@@ -7,6 +7,7 @@ _ = require 'underscore'
 Card = require '../../../domain/card'
 cardConfig = require '../../../../config/data/card'
 utility = require '../../../common/utility'
+dao = require('pomelo').app.get('dao')
 
 module.exports = (app) ->
   new Handler(app)
@@ -132,15 +133,24 @@ obtainBattleRewards = (player, taskId, battleLog) ->
   taskData = table.getTableItem 'task_config', taskId
   
   # 奖励掉落卡牌
-  _cards = getRewardCards(taskData.cards.split('#'), taskData.max_drop_card_number)
+  ids = taskData.cards.split('#').map (id) ->
+    _row = table.getTableItem 'task_card', id
+    _row.card_id
+
+  _cards = getRewardCards(ids, taskData.max_drop_card_number)
   battleLog.rewards.cards = _cards
 
   # 将掉落的卡牌添加到玩家信息
   addCardsToPlayer(player, _cards)
 
 getRewardCards = (cardIds, count) ->
+  countCardId = (id, star) ->
+    _card = table.getTableItem 'cards', id
+    if _card.star isnt star
+      id = if _card.star > star then (id - 1) else (id + 1)
+    return id
+
   cd = taskRate.card_drop
-  
   _cards = []
   for i in [1..count]
     id = utility.randomValue cardIds
@@ -148,7 +158,7 @@ getRewardCards = (cardIds, count) ->
     level = utility.randomValue [1,2,3,4,5], _.values(cd.level)
 
     _cards.push {
-      id: parseInt(id)
+      id: countCardId(parseInt(id))
       star: star
       lv: level
     }

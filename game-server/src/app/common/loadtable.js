@@ -1,5 +1,6 @@
 var fs = require('fs'),
   xml2js = require('xml2js');
+  _ = require('underscore');
 
 var parser = new xml2js.Parser();
 
@@ -413,6 +414,7 @@ module.exports = function() {
   exports = {};
   var nameChanged = {};
   var allTables = {};
+  var needMergeTables = []
 
   for (var i = 0; i < arguments.length; i++) {
     var file = arguments[i];
@@ -457,6 +459,15 @@ module.exports = function() {
       //console.log(outputTables);
       throw '导出表重名了：' + row[1].Data['#'];
     }
+    
+    // 需要合并的表
+    if (typeof row[2] !== 'undefined') {
+      needMergeTables.push({
+        from: row[1].Data['#'], 
+        to: row[2].Data['#']
+      });
+    }
+
     outputTables[row[1].Data['#']] = analyzeTable(allTables, row[0].Data['#']);
     nameChanged[row[1].Data['#']] = row[0].Data['#'];
     nameChanged[row[0].Data['#']] = row[1].Data['#'];
@@ -472,7 +483,7 @@ module.exports = function() {
   };
 
   //console.log(exports['skill_settings']);
-
+  mergeTables(needMergeTables, exports, nameChanged, outputTables);
   return {
     exports: exports,
     client: {
@@ -481,6 +492,19 @@ module.exports = function() {
     }
   };
 }
+
+function mergeTables(tabs, tables, nameChanged, outputTables){
+  tabs.forEach(function(tab) {
+    var from = tab.from;
+    _.extend(tables[tab.to], tables[from])
+    delete tables[from];
+    delete outputTables[from];
+
+    var _from = nameChanged[from];
+    delete nameChanged[from];
+    delete nameChanged[_from];
+  });
+};
 
 
 

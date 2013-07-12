@@ -19,6 +19,7 @@ class Manager
       upgrade: false
       open_box_card: null
       battle_log: null
+      fragment: false
     }
 
     # 检查是否体力充足
@@ -85,9 +86,11 @@ class Manager
     cb(null, player, rewards)
 
   @openBox: (player, data, cb) ->
-    stars = [1,2,3,4]
-    rates = _.values(taskRate.open_box.star)
-    data.open_box_card = randomCard(utility.randomValue(stars, rates))
+    _obj = taskRate.open_box.star
+
+    _res = randomCard(utility.randomValue(_.keys(_obj), _.values(_obj)))
+    data.open_box_card = _res if _res > 0
+    data.fragment = true if _res is -1
     dao.card.createCard {playerId: player.id, tableId: data.open_box_card}, (err, card) ->
       if err
         cb(err)

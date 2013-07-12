@@ -58,27 +58,27 @@ describe("Logic Server # ", function() {
 
   describe("Task Handler", function(){
 
-    describe("logic.taskHandler.explore", function(){
+    // describe("logic.taskHandler.explore", function(){
 
-      it("should can be return the correct battle log", function(){
-        request('logic.taskHandler.explore', {playerId: 100, taskId: 6}, function(data){
-          expect(data.code).toEqual(200);
-          expect(data.msg).toEqual('');
-          console.log(data);
-        });
-      });
-    });
-
-    // describe("logic.taskHandler.passBarrier", function(){
-      
-    //   it("should can be execute and return result of pass barrier", function(){
-    //     request('logic.taskHandler.passBarrier', {playerId: '1'}, function(data){
-    //       expect(data).toEqual('');
+    //   it("should can be return the correct battle log", function(){
+    //     request('logic.taskHandler.explore', {playerId: 100, taskId: 6}, function(data){
+    //       expect(data.code).toEqual(200);
+    //       expect(data.msg).toEqual('');
     //       console.log(data);
     //     });
     //   });
-      
     // });
+
+    describe("logic.taskHandler.passBarrier", function(){
+      
+      it("should can be execute and return result of pass barrier", function(){
+        request('logic.taskHandler.passBarrier', {playerId: '1'}, function(data){
+          expect(data).toEqual('');
+          console.log(data);
+        });
+      });
+      
+    });
 
     // describe("logic.taskHandler.wipeOut", function(){
       
@@ -147,24 +147,24 @@ describe("Logic Server # ", function() {
     //   });
     // });
 
-    describe("logic.trainHandler.starUpgrade", function() {
-      it("card' star should can be upgrade", function(){
-        request(
-          'logic.trainHandler.starUpgrade', 
-          {
-            playerId: '1', 
-            target: 1,
-            sources: [2,3],
-            gold: 0,
-            allInherit: true
-          }, 
-          function(data) {
-            expect(data).toEqual('');
-            console.log(data);
-          }
-        );
-      });
-    });
+    // describe("logic.trainHandler.starUpgrade", function() {
+    //   it("card' star should can be upgrade", function(){
+    //     request(
+    //       'logic.trainHandler.starUpgrade', 
+    //       {
+    //         playerId: '1', 
+    //         target: 1,
+    //         sources: [2,3],
+    //         gold: 0,
+    //         allInherit: true
+    //       }, 
+    //       function(data) {
+    //         expect(data).toEqual('');
+    //         console.log(data);
+    //       }
+    //     );
+    //   });
+    // });
 
   });
 });

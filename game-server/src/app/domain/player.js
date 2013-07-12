@@ -43,8 +43,8 @@ var FIELDS = {
 var startPowerResumeTimer = function(player) {
     var resumePoint = playerConfig.POWER_RESUME.point;
     var interval = playerConfig.POWER_RESUME.interval;
-    
-    setInterval(function(){
+
+    setInterval(function() {
         player.resumePower(resumePoint);
         player.save();
     }, interval);
@@ -55,7 +55,7 @@ var startPowerGiveTimer = function(player) {
     var hours = playerConfig.POWER_GIVE.hours;
     var interval = playerConfig.POWER_GIVE.interval;
 
-    setInterval(function(){
+    setInterval(function() {
         var hour = (new Date()).getHours();
         if (_.contains(hours, hour) && !player.hasGive(hour)) {
             player.givePower(hour, givePoint);
@@ -68,7 +68,7 @@ var startPowerGiveTimer = function(player) {
  * Player 与 player 表对应的数据类，提供简单操作
  * @param {object} param 数据库 player 表中的一行记录
  * */
-var Player = (function (_super) {
+var Player = (function(_super) {
     utility.extends(Player, _super);
 
     function Player(param) {
@@ -78,30 +78,32 @@ var Player = (function (_super) {
         startPowerResumeTimer(this);
     }
 
-    Player.prototype.init = function () {
+    Player.prototype.init = function() {
         this.cards = {};
     };
 
     Player.prototype.save = function() {
         Player.__super__.save.apply(this, arguments);
         // update all cards info
-        _.values(this.cards).forEach(function(card){card.save()});
+        _.values(this.cards).forEach(function(card) {
+            card.save()
+        });
     };
 
     Player.prototype.addCard = function(card) {
-        if (typeof card.id !== 'undefined' && card.id !== null){
+        if (typeof card.id !== 'undefined' && card.id !== null) {
             this.cards[card.id] = card
         }
     };
 
-    Player.prototype.addCards = function (cards) {
+    Player.prototype.addCards = function(cards) {
         var self = this;
-        cards.forEach(function (card) {
+        cards.forEach(function(card) {
             self.addCard(card);
         });
     };
 
-    Player.prototype.consumePower = function (value) {
+    Player.prototype.consumePower = function(value) {
         var power = this.get('power');
         this.set('power', _.max([power - value, 0]))
     };
@@ -116,7 +118,7 @@ var Player = (function (_super) {
         var max_power = getMaxPower(this.lv, playerConfig.POWER_LIMIT);
         var power = this.get('power');
         this.set('power', _.min([power + value, max_power + 50]));
-        this.updateGift("power_"+hour);
+        this.updateGift("power_" + hour);
     };
 
     Player.prototype.updateGift = function(gift) {
@@ -129,16 +131,19 @@ var Player = (function (_super) {
 
     Player.prototype.strengthen = function(target, sources, cb) {
         if (!this.hasCard(target)) {
-            return cb({msg: '找不到目标卡牌'}, null);
+            return cb({
+                msg: '找不到目标卡牌'
+            }, null);
         }
         var targetCard = this.cards[target];
         var _res = targetCard.eatCards(this.popCards(sources));
-        var expObtain = _res[0], upgradedLevel = _res[1];
+        var expObtain = _res[0],
+            upgradedLevel = _res[1];
         var moneyConsume = table.getTableItem('card_grow', targetCard.tableId).money_need;
 
         cb(null, {
-            exp_obtain: expObtain, 
-            upgraded_level: upgradedLevel, 
+            exp_obtain: expObtain,
+            upgraded_level: upgradedLevel,
             moneyConsume: moneyConsume
         });
     };
@@ -152,7 +157,7 @@ var Player = (function (_super) {
     }
 
     Player.prototype.getCards = function(ids) {
-        if (!_.isArray(ids)){
+        if (!_.isArray(ids)) {
             ids = [ids];
         }
 
@@ -170,7 +175,7 @@ var Player = (function (_super) {
         for (var i = 0; i < ids.length; i++) {
             var _id = ids[i];
             var _card = this.cards[_id];
-            if (!!_card) {
+            if ( !! _card) {
                 cards.push(_card);
                 delete this.cards[_id];
             }
@@ -178,7 +183,7 @@ var Player = (function (_super) {
         return cards;
     };
 
-    Player.prototype.getPassMarkByIndex = function (index) {
+    Player.prototype.getPassMarkByIndex = function(index) {
         if (index < 1) {
             console.log("关卡标记索引不存在");
             return;
@@ -189,11 +194,11 @@ var Player = (function (_super) {
         return (mark == 1);
     };
 
-    Player.prototype.resetPassMarkByAll = function () {
+    Player.prototype.resetPassMarkByAll = function() {
         this.set("passMark", 0);
     };
 
-    Player.prototype.setPassMarkByAll = function () {
+    Player.prototype.setPassMarkByAll = function() {
         var mask = 1;
         var _passMark = this.passMark;
 
@@ -209,7 +214,7 @@ var Player = (function (_super) {
      * 传入精英关卡序号，将其标记为已打
      * @param {number} index 关卡序号
      * */
-    Player.prototype.setPsssMarkByIndex = function (index) {
+    Player.prototype.setPsssMarkByIndex = function(index) {
         if (index < 1) {
             console.log("关卡标记索引不存在");
             return;
@@ -221,9 +226,10 @@ var Player = (function (_super) {
         this.set("passMark", _passMark);
     };
 
-    Player.prototype.toJson = function () {
+    Player.prototype.toJson = function() {
         return {
             id: this.id,
+            createTime: this.createTime,
             userId: this.userId,
             areaId: this.areaId,
             name: this.name,
@@ -232,24 +238,44 @@ var Player = (function (_super) {
             exp: this.exp,
             money: this.money,
             gold: this.gold,
-            lineUp: this.lineUp,
+            lineUp: lineUpToObj(this.lineUp),
             ability: this.ability,
             task: this.task,
             pass: this.pass,
             passMark: this.passMark,
             dailyGift: this.dailyGift,
+            skillPoint: this.skillPoint,
+            energy: this.energy,
             fregments: this.fregments,
-            elixir: this.elixir
+            elixir: this.elixir,
+            cards: _.values(this.cards).map(function(card) {
+                return card.toJson();
+            })
         };
     };
 
     return Player;
 })(Entity);
 
-getMaxPower = function (lv, powerLimit) {
+var lineUpToObj = function(lineUp) {
+    var lines = lineUp.split(',');
+    var _results = {}
+    lines.forEach(function(l){
+        var _ref = l.split(':'), pos = _ref[0], num = _ref[1];
+        _results[positionConvert(pos)] = num
+    });
+    return _results;
+};
+
+var positionConvert = function(val) {
+    var order = ['00', '01', '02', '10', '11', '12']
+    return order.indexOf(val) + 1;
+};
+
+var getMaxPower = function(lv, powerLimit) {
     var max_power = 50;
     for (var lv in powerLimit) {
-        if (this.lv <= parseInt(lv)){
+        if (this.lv <= parseInt(lv)) {
             max_power = powerLimit[lv];
             break;
         }

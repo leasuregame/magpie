@@ -98,7 +98,10 @@ var Card = (function (_super) {
             exp: this.exp,
             skillLv: this.skillLv,
             hpAddition: this.hpAddition,
-            atkAddition: this.atkAddition
+            atkAddition: this.atkAddition, 
+            passiveSkills: _.values(this.passiveSkills).map(function(ps) {
+                return ps.toJson();
+            })
         };
     };
 

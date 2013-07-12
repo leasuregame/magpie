@@ -35,6 +35,16 @@ var PassiveSkill = (function (_super) {
         this._fields = FIELDS;
     }
 
+
+    PassiveSkill.prototype.toJson = function(){
+        return {
+            id: this.id,
+            cardId: this.cardId,
+            name: this.name,
+            value: this.value
+        };
+    };
+
     return PassiveSkill;
 })(Entity);
 

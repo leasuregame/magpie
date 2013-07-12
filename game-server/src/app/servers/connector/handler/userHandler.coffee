@@ -41,9 +41,9 @@ Handler::login = (msg, session, next) ->
 
     (userId, cb) ->
       uid = userId
-      dao.player.getPlayerByUserId uid, (err, player) ->
+      dao.player.getPlayerInfo uid, (err, player) ->
         if err and not player
-          cb(null, null)
+          return cb(null, null)
         
         cb(null, player)
 
@@ -58,7 +58,7 @@ Handler::login = (msg, session, next) ->
       session.set('areaId', player.areaId)
 
     session.on('close', onUserLeave)
-    next(null, {code: 200, uid: uid, player: player?.toJson()})
+    next(null, {code: 200, msg: {user: {id: uid}, player: player?.toJson()}})
 
 onUserLeave = (session, reason) ->
   if not session or not session.uid

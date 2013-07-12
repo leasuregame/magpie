@@ -8,21 +8,45 @@
 
 
 /*
-* line up
-* */
+ * line up
+ * */
 
+
+var MAX_LINE_UP_CARD = 6;
 
 var LineUp = Entity.extend({
-    init : function() {
+    _lineUp: {},
+
+    init: function (data) {
+        var key;
+
+        for(key in data) {
+            this._lineUp[key] = data[key];
+        }
+
+        cc.log(this);
+
         return true;
+    },
+
+    getLineUpByIndex: function (index) {
+        return this._lineUp[index];
+    },
+
+    setLineUpByIndex: function (index, cardId) {
+        this._lineUp[index] = cardId;
+    },
+
+    syncLineUp: function () {
+
     }
 })
 
 
-LineUp.create = function() {
+LineUp.create = function () {
     var ret = new LineUp();
 
-    if(ret && ret.init()) {
+    if (ret) {
         return ret;
     }
 

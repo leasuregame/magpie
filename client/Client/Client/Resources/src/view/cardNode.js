@@ -39,14 +39,13 @@ var CardNode = cc.Node.extend({
 //        var a = cc.Sequence.create(cc.FadeIn.create(0.5), cc.FadeOut.create(0.5));
 //        this._expressionSprite.runAction(a);
 
-//        var a1 = cc.RotateBy.create(0.3 / GAME_COMBAT_SPEED, 30);
-//        var a2 = cc.RotateBy.create(0.4 / GAME_COMBAT_SPEED, -60);
-//        var a3 = cc.RotateBy.create(0.3 / GAME_COMBAT_SPEED, 30);
-//        var a = cc.Sequence.create(a1, a2, a3);
-//
-//
-//        var b = cc.Sequence.create(cc.ScaleTo.create(0.3, 1.1), cc.ScaleTo.create(0.3, 1.0));
-//        this.runAction(cc.Spawn.create(a, b));
+        var a1 = cc.RotateBy.create(0.3 / GAME_COMBAT_SPEED, 30);
+        var a2 = cc.RotateBy.create(0.4 / GAME_COMBAT_SPEED, -60);
+        var a3 = cc.RotateBy.create(0.3 / GAME_COMBAT_SPEED, 30);
+        var a = cc.Sequence.create(a1, a2, a3);
+
+        var b = cc.Sequence.create(cc.ScaleTo.create(0.3, 1.1), cc.ScaleTo.create(0.3, 1.0));
+        this.runAction(cc.Spawn.create(a, b));
 
 //        var a = cc.OrbitCamera.create(2, 1, 0, 0, 360, 90, -45);
 //        this.runAction(a);

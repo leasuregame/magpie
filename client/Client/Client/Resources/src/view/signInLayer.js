@@ -80,24 +80,24 @@ var SignInLayer = cc.Layer.extend({
     },
 
     _onClickSignIn: function () {
-        cc.log("_onClickSignIn");
-        lzWindow.pomelo.request("connector.userHandler.login", {
-            account: this._accountEditBox.getText(),
-            password: this._passwordEditBox.getText()
-        }, function (data) {
-            if (data.code == 200) {
-                cc.log("sign in success");
+        cc.log("LoginLayer _onClickSignIn");
 
-                cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, MainScene.create(), true));
-            } else {
-                cc.log("sign in fail");
-            }
-            cc.log(data);
+        cc.log(this._accountEditBox.getText());
+        cc.log(this._passwordEditBox.getText());
+
+        var user = gameData.user;
+
+        user.set("account", this._accountEditBox.getText());
+        user.set("password", this._passwordEditBox.getText());
+
+        user.signIn(function(msg) {
+            cc.log(msg);
+            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, MainScene.getInstance(), true));
         });
     },
 
     _onClickSignUp: function () {
-        cc.log("_onClickSignUp");
+        cc.log("LoginLayer _onClickSignUp");
         cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, SignUpScene.create(), true));
     },
 

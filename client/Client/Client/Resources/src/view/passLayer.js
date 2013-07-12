@@ -8,10 +8,14 @@
 
 
 var PassLayer = cc.Layer.extend({
+    _pass: null,
+
     init: function () {
         cc.log("PassLayer init");
 
         if (!this._super()) return false;
+
+        this._pass = gameData.pass;
 
         var wipeOutItem = cc.MenuItemFont.create("扫荡", this._onClickWipeOut, this);
         wipeOutItem.setPosition(cc.p(250, 400));
@@ -45,7 +49,7 @@ var PassLayer = cc.Layer.extend({
 
             var cb = (function (that, index) {
                 return function () {
-                    that._onClickBarriers(index);
+                    that._onClickDefiance(index);
                 }
             }(this, i));
 
@@ -55,7 +59,7 @@ var PassLayer = cc.Layer.extend({
             menu.addChild(item);
         }
 
-        var view = cc.ScrollView.create(cc.size(300, 840), layer);
+        var view = cc.ScrollView.create(cc.size(160, 840), layer);
         view.setContentSize(cc.size(300, 10050));
         view.setPosition(cc.p(300, 150));
         view.setBounceable(false);
@@ -70,35 +74,22 @@ var PassLayer = cc.Layer.extend({
     _onClickWipeOut: function () {
         cc.log("PassLayer _onClickWipeOut");
 
-//        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {playerId: 1}, function (data) {
-//            cc.log(data);
-//
-//            if (data.code == 200) {
-//                cc.log('wipeOut success.');
-//            } else {
-//                cc.log('wipeOut faild.');
-//            }
-//        });
+        this._pass.wipeOut(function(data) {
+            cc.log(data);
+        });
     },
 
-    _onClickBarriers: function (index) {
-        cc.log("PassLayer _onClickBarriers");
+    _onClickDefiance: function (index) {
+        cc.log("PassLayer _onClickDefiance");
         cc.log(index);
 
-        var that = this;
-        lzWindow.pomelo.request("logic.taskHandler.passBarrier", {playerId: 1, index: index}, function (data) {
+        this._pass.defiance(function(data) {
             cc.log(data);
 
-            if (data.code == 200) {
-                cc.log('barriers success.');
-                var battleLog = BattleLog.create(data.msg);
-                BattleLogNote.getInstance().pushBattleLog(battleLog);
-                cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, BattleScene.create(battleLog), true));
-            } else {
-                cc.log('barriers faild.');
-                cc.log("关卡挑战失败!");
-            }
-        });
+            var scene = BattleScene.create(BattleLogNote.getInstance().getLastBattleLog());
+
+            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, scene, true));
+        }, index);
     }
 })
 

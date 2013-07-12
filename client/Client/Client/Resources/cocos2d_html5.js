@@ -52,19 +52,30 @@
 
             'src/model/pomeloWebsocketClient.js',
             'src/model/serverAPI.js',
-            'src/model/card.js',
+
 
             'src/model/singleton.js',
             'src/model/base.js',
             'src/model/gameConfig.js',
             'src/model/jquery-1.10.0.min.js',
             'src/model/httpClientPackage.js',
+
             'src/model/entity.js',
-            'src/model/lottery.js',
+            'src/model/user.js',
             'src/model/player.js',
+            'src/model/card.js',
+            'src/model/cardList.js',
+            'src/model/lineUp.js',
+            'src/model/task.js',
+            'src/model/pass.js',
+            'src/model/rank.js',
+            'src/model/lottery.js',
+            'src/model/cardLibrary.js',
+
             'src/model/battleStep.js',
             'src/model/battleLog.js',
             'src/model/battleLogNote.js',
+
             'src/model/gameData.js',
             'src/controls/cloudLayer.js',
             'src/controls/progress.js',

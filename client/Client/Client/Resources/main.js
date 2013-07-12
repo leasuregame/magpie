@@ -56,16 +56,18 @@ var cocos2dApp = cc.Application.extend({
         director.setAnimationInterval(1.0 / this.config['frameRate']);
 
         //load resources
-        cc.Loader.preload(g_ressources, function () {
-            cc.Director.getInstance().runWithScene(this.startScene.getInstance());
+        cc.LoaderScene.preload(g_ressources, function () {
+            cc.Director.getInstance().replaceScene(new this.startScene());
+//            cc.Director.getInstance().runWithScene(this.startScene.getInstance());
         }, this);
 
         return true;
     }
 });
 
+
 //var myApp = new cocos2dApp(SignUpScene);
-//var myApp = new cocos2dApp(SignInScene);
-var myApp = new cocos2dApp(MainScene);
+var myApp = new cocos2dApp(SignInScene);
+//var myApp = new cocos2dApp(MainScene);
 //var myApp = new cocos2dApp(testScene);
 //var myApp = new cocos2dApp(BattleScene);

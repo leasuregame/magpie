@@ -13,12 +13,16 @@
 
 
 var TaskLayer = cc.Layer.extend({
+    _task: null,
+
     init: function () {
         cc.log("TaskLayer init");
 
         if (!this._super()) return false;
 
-        var exploreItem = cc.MenuItemFont.create("探索", this._onClickTask, this);
+        this._task = gameData.task;
+
+        var exploreItem = cc.MenuItemFont.create("探索", this._onClickExplore, this);
         var wipeOutItem = cc.MenuItemFont.create("扫荡", this._onClickWipeOut, this);
 
         wipeOutItem.setPosition(cc.p(250, 400));
@@ -29,38 +33,37 @@ var TaskLayer = cc.Layer.extend({
         this.label = cc.LabelTTF.create("探索结果：", "Times New Roman", 20);
         this.label.setAnchorPoint(cc.p(0, 0));
         this.label.setPosition(cc.p(50, 300));
+
         this.addChild(this.label);
 
         return true;
     },
 
-    _onClickTask: function () {
-        cc.log("TaskLayer _onClickTask");
+    _onClickExplore: function () {
+        cc.log("TaskLayer _onClickExplore");
 
-        var that = this;
-        lzWindow.pomelo.request("logic.taskHandler.explore", {playerId: GameData.player.get("id")}, function (data) {
+        this._task.explore(function(data) {
             cc.log(data);
+        }, 1);
 
-            if (data.code == 200) {
-                cc.log('explore success.');
-                that._explore(data.msg);
-            } else {
-                cc.log('explore faild.');
-            }
-        });
+//        var that = this;
+//        lzWindow.pomelo.request("logic.taskHandler.explore", {playerId: GameData.player.get("id")}, function (data) {
+//            cc.log(data);
+//
+//            if (data.code == 200) {
+//                cc.log('explore success.');
+//                that._explore(data.msg);
+//            } else {
+//                cc.log('explore faild.');
+//            }
+//        });
     },
 
     _onClickWipeOut: function() {
         cc.log("TaskLayer _onClickWipeOut");
 
-        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {playerId: 4}, function (data) {
+        this._task.wipeOut(function(data) {
             cc.log(data);
-
-            if (data.code == 200) {
-                cc.log('wipeOut success.');
-            } else {
-                cc.log('wipeOut faild.');
-            }
         });
     },
 

@@ -8,35 +8,44 @@
 
 
 /*
-* card list
-* */
+ * card list
+ * */
 
 
 var CardList = Entity.extend({
-    _cardList : {},
+    _cardList: {},
 
-    init : function() {
+    init: function (cardList) {
+        var len = cardList.length;
 
+        for (var i = 0; i < len; ++i) {
+            var card = Card.create(cardList[i]);
+            this._cardList[card.get("id")] = card;
+        }
+
+        cc.log(this);
+
+        return true;
     },
 
-    push: function(card) {
+    push: function (card) {
         this._cardList[card.get("id")] = card;
     },
 
-    getCardByIndex : function(index) {
+    getCardByIndex: function (index) {
         return this._cardList[index];
     },
 
-    update: function() {
+    update: function () {
 
     }
 })
 
 
-CardList.create = function() {
+CardList.create = function () {
     var cardList = new CardList();
 
-    if(cardList && cardList.init()) {
+    if (cardList) {
         return cardList;
     }
 

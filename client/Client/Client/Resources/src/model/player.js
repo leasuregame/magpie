@@ -13,29 +13,50 @@
 
 
 var Player = Entity.extend({
-    _id : 0,
-    _createTime: 0,
-    _userId : 0,
-    _areaId: 0,
+    _id: 0,             // 数据库id
+    _createTime: 0,     // 创建时间
+    _userId: 0,         // 账号id
+    _areaId: 0,         // 区
     _name: "",          // 角色
     _power: 0,          // 体力
     _lv: 0,             // 等级
     _exp: 0,            // 经验
     _gold: 0,           // 元宝
     _money: 0,          // 金钱
+    _elixir: 0,         // 仙丹
+    _fragment: 0,       // 碎片
     _skillPoint: 0,     // 技能点
-    _lineUp : null,     // 阵容
-    _ability : 0,       // 战力
+    _ability: 0,        // 战力
     _energy: 0,         // 活力
-
-
 
     _playerLabel: null,
 
-    init: function () {
+    init: function (data) {
         cc.log("Player init");
 
+        this._id = data.id;
+        this._createTime = data.createTime;
+        this._userId = data.userId;
+        this._areaId = data.areaId;
+        this._name = data.name;
+        this._power = data.power;
+        this._lv = data.lv;
+        this._exp = data.exp;
+        this._gold = data.gold;
+        this._money = data.money;
+        this._elixir = data.elixir;
+        this._skillPoint = data.skillPoint;
+        this._ability = data.ability;
+        this._energy = data.energy;
 
+        gameData.cardList.init(data.cards);
+        gameData.lineUp.init(data.lineUp);
+        gameData.task.init(data.task);
+        gameData.pass.init({pass: data.pass, passMark: data.passMark});
+
+        cc.log(this);
+
+        return true;
     },
 
     getPlayerLabel: function () {
@@ -135,7 +156,13 @@ var Player = Entity.extend({
     }
 })
 
-/*
- * 单例
- * */
-Player.getInstance = singleton(Player);
+
+Player.create = function (data) {
+    var ret = new Player();
+
+    if (ret) {
+        return ret;
+    }
+
+    return null;
+}

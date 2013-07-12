@@ -23,12 +23,16 @@ var User = Entity.extend({
     _lastLoginDevice: "",
 
     init: function (data) {
+        cc.log("User init");
+
         this._id = data.id;
 
         return true;
     },
 
     signIn: function (cb) {
+        cc.log("User signIn");
+
         var that = this;
 
         lzWindow.pomelo.request("connector.userHandler.login", {
@@ -37,17 +41,26 @@ var User = Entity.extend({
         }, function (data) {
             cc.log(data);
 
+            var msg = data.msg;
+
             if (data.code == 200) {
                 cc.log("sign in success");
 
-                that._id = data.uid;
+                that.init(msg.user);
+                gameData.player.init(msg.player);
+
+                cb("success");
             } else {
                 cc.log("sign in fail");
+
+                cb("fail");
             }
         });
     },
 
-    signUp: function () {
+    signUp: function (cb) {
+        cc.log("User signUp");
+
         var that = this;
 
         lzWindow.pomelo.request('connector.userHandler.register', {
@@ -60,19 +73,24 @@ var User = Entity.extend({
             if (data.code == 200) {
                 cc.log("sign up success");
 
-                that._id = data.uid;
+
+
+                cb("success");
             } else {
                 cc.log("sign up fail");
+
+                cb("fail");
             }
         });
     },
 
     signOut: function () {
+        cc.log("User signOut");
 
     },
 
     reSignIn: function () {
-
+        cc.log("User reSignIn")
     }
 })
 
@@ -80,7 +98,7 @@ var User = Entity.extend({
 User.create = function (data) {
     var user = new User();
 
-    if (user && user.init(data)) {
+    if (user) {
         return user;
     }
 

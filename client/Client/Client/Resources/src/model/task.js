@@ -18,7 +18,13 @@ var Task = Entity.extend({
     _points: 0, // 最大层数
 
     init: function (data) {
-        this.update(data);
+        if(this._id != data.id) {
+            this._id = data.id;
+            this._progress = data.progress;
+            this._points = 5; // 读表
+        }
+
+        cc.log(this);
 
         return true;
     },
@@ -40,29 +46,41 @@ var Task = Entity.extend({
      * 根据id和任务进度请求服务器执行任务
      * @ param {function} cb 回调函数
      * @ param {number} id 任务id
-     * @ param {number} progress 进度
      * */
     explore: function (cb, id) {
         cc.log("Task explore");
 
         var that = this;
-        lzWindow.pomelo.request("logic.taskHandler.explore", {playerId: 1, id: id}, function (data) {
+        lzWindow.pomelo.request("logic.taskHandler.explore", {playerId: gameData.player.get("id"), id: id}, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 
             if (data.code == 200) {
                 cc.log("explore success");
 
-                var msg = data.msg;
-
-                that.update({
-                    id: msg.id,
-                    progress: msg.progress
-                });
-
                 cb("success");
             } else {
                 cc.log("explore fail");
+
+                cb("fail");
+            }
+        });
+    },
+
+    wipeOut: function(cb) {
+        cc.log("Task wipeOut");
+
+        var that = this;
+
+        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {playerId: 1, type: "task"}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("Task success.");
+
+                cb("success");
+            } else {
+                cc.log("Task fail");
 
                 cb("fail");
             }
@@ -74,7 +92,7 @@ var Task = Entity.extend({
 Task.create = function (data) {
     var ret = new Task();
 
-    if (ret && ret.init(data)) {
+    if (ret) {
         return ret;
     }
 

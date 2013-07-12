@@ -33,13 +33,16 @@ CREATE TABLE IF NOT EXISTS `player` (
   `exp` INT(10) UNSIGNED DEFAULT '0',
   `money` INT(10) UNSIGNED DEFAULT '0',
   `gold`INT(10) UNSIGNED DEFAULT '0',
-  `skillPoins` INT(10) UNSIGNED DEFAULT '0',
+  `skillPoint` INT(10) UNSIGNED DEFAULT '0',
   `lineUp` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
   `ability` INT(10) UNSIGNED DEFAULT '0',
   `task` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `pass` SMALLINT(5) UNSIGNED DEFAULT '0',
   `passMark` BLOB(20),
   `dailyGift` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
+  `fragments` INT(5) UNSIGNED DEFAULT '0',
+  `energy` INT(10) UNSIGNED DEFAULT '0',
+  `elixir` INT(10) UNSIGNED DEFAULT '0', 
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -86,6 +89,6 @@ CREATE TABLE IF NOT EXISTS `passiveSkill` (
     `createTime` BIGINT(20) UNSIGNED NOT NULL,
     `cardId` INT(10) UNSIGNED NOT NULL,
     `name` VARCHAR(20) COLLATE utf8_unicode_ci NOT NULL,
-    `value` TINYINT(3) UNSIGNED DEFAULT '0',
+    `value` FLOAT(5,1) UNSIGNED DEFAULT '0',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

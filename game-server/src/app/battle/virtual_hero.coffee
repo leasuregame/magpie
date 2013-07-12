@@ -11,7 +11,8 @@ class VirtualHero extends Hero
 
 
   loadCardInfo: ->
-    card = tab.getTableItem('task_card', @card_id)
+    card = tab.getTableItem('task_card', @card_id) or \
+           tab.getTableItem('pass_card', @card_id)
     if not card
       throw new Error("配置表错误：不能从表 task_card 中找到卡牌信息，卡牌id为 #{@card_id}")
 

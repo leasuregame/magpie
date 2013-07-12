@@ -24,6 +24,7 @@ var async = require('async');
 var _ = require('underscore');
 
 var DEFAULT_CARD_INFO = {
+    star: 1,
     lv: 1,
     exp: 0,
     skillLv: 1,
@@ -83,14 +84,14 @@ var cardDao = {
             }
         ], function (err, results) {
             if (err !== null) {
-                cb(err, null)
+                return cb(err, null)
             }
 
             var card = results[0];
             var pss = results[1];
 
             card.addPassiveSkill(pss);
-            cb(null, card);
+            return cb(null, card);
         });
     },
 
@@ -121,7 +122,7 @@ var cardDao = {
             } else {
                 return cb({
                     code: null,
-                    msg: "Card not exist"
+                    msg: "卡牌不存在"
                 }, null);
             }
         });
@@ -154,10 +155,7 @@ var cardDao = {
                         }
 
                         if (!!res && res.length > 0){
-                            for (var i = 0; i < res.length; i++){
-                                var ps = new PassiveSkill(res[i]);
-                                card.addPassiveSkill(ps);
-                            }
+                            card.addPassiveSkills(res)
                         }
                         cardList.push(card);
                         return done();

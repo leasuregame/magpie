@@ -37,6 +37,8 @@ var passiveSkillSync = {
         var sql = _ref[0];
         var args = _ref[1];
 
+        logger.debug(sql, args);
+
         return dbClient.update(sql, args, function (err, res) {
             if (err) {
                 logger.error("[passiveSkillDao.updatePassiveSkillById faild] ", err.stack);

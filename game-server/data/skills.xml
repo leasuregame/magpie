@@ -16,10 +16,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>14080</WindowHeight>
+  <WindowHeight>10320</WindowHeight>
   <WindowWidth>36580</WindowWidth>
   <WindowTopX>20</WindowTopX>
   <WindowTopY>1040</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -27,8 +28,7 @@
   <Style ss:ID="Default" ss:Name="Normal">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -63,21 +63,18 @@
    <Protection/>
   </Style>
   <Style ss:ID="s65">
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
    <Interior/>
   </Style>
   <Style ss:ID="s66">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
    <Interior/>
   </Style>
   <Style ss:ID="s67">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -92,8 +89,7 @@
    <Interior/>
   </Style>
   <Style ss:ID="s74">
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
   </Style>
@@ -1013,7 +1009,6 @@
    </Print>
    <Zoom>130</Zoom>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1179,8 +1174,68 @@
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
+ <Worksheet ss:Name="卡牌技能升级表">
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Row>
+    <Cell><Data ss:Type="String">技能等级</Data></Cell>
+    <Cell><Data ss:Type="String">三星</Data></Cell>
+    <Cell><Data ss:Type="String">四星</Data></Cell>
+    <Cell><Data ss:Type="String">五星</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">star3</Data></Cell>
+    <Cell><Data ss:Type="String">star4</Data></Cell>
+    <Cell><Data ss:Type="String">star5</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">3000</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">5000</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">10000</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">6000</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">15000</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">30000</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">9000</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">30000</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">60000</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">12000</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">80000</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">120000</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">15000</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">120000</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">200000</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
  <Worksheet ss:Name="export">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:AutoFitWidth="0" ss:Width="197"/>
    <Column ss:AutoFitWidth="0" ss:Width="161"/>
@@ -1200,6 +1255,10 @@
     <Cell><Data ss:Type="String">卡牌范围表</Data></Cell>
     <Cell><Data ss:Type="String">scope</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">卡牌技能升级表</Data></Cell>
+    <Cell><Data ss:Type="String">skill_upgrade</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
@@ -1213,7 +1272,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

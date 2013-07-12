@@ -49,7 +49,7 @@ var insertSql = function(table, headers, row) {
   }
 
   var sql = "insert into " + table + " (" + fields_str.slice(0, -1) + ") values (" + values_str.slice(0, -1) + ");";
-  console.log(sql, args);
+  //console.log(sql, args);
   return [sql, args];
 };
 
@@ -60,7 +60,7 @@ var importCsvToMySql = function(table, filepath) {
   var list = data.toString().split(row_delimiter);
   var headers = list[0].split(DELIMITER);
   var rows = list.slice(1);
-  if (table == 'player') console.log(list);
+
   for (i = 0; i < rows.length; i++) {
     // ignore empty row
     if (rows[i] == '' || rows[i].split(DELIMITER).length == 1) break;
@@ -93,7 +93,7 @@ var importCsvToMySql = function(table, filepath) {
 var laodCsvDataToSql = function() {
   console.log("  *** load data from csv ***  ");
   fs.readdirSync(FIXTURES_DIR).forEach(function(filename) {
-    if (!/\.csv/.test(filename)) {
+    if (!/\.csv$/.test(filename)) {
       return;
     }
 
@@ -102,6 +102,7 @@ var laodCsvDataToSql = function() {
     console.log(filename + '   >>   ' + table);
   });
   console.log('  *** completed ***  ');
+  console.log('done');
   //process.exit();
 };
 

@@ -1,14 +1,14 @@
 table = require './table'
 taskRate = require '../../config/data/taskRate'
 utility = require '../common/utility'
-dao = require('pomelo').app.get('dao');
+dao = require('pomelo').app.get('dao')
 _ = require 'underscore'
 
 MAX_POWER = 100
 
 class Manager
-  @explore: (player, cb) ->
-    task_id = player.task.id
+  @explore: (player, taskId, cb) ->
+    task_id = taskId or player.task.id
     taskData = table.getTableItem('task', task_id)
 
     data = {
@@ -30,7 +30,7 @@ class Manager
       [taskRate.fight, taskRate.precious_box, (100 - taskRate.fight - taskRate.precious_box)]
     )
 
-    cb(null, data)
+    cb(null, data, taskData.chapter_id)
 
   @wipeOut: (player, type, cb) ->
     funs = {task: @wipeOutTask, pass: @wipeOutPass}
@@ -39,14 +39,14 @@ class Manager
   @wipeOutPass: (player, cb) ->
     pass = player.pass
 
-    rewards = {exp_obtain: 0, money_obtain: 0, skill_poins: 0, gold_obtain: 0}
+    rewards = {exp_obtain: 0, money_obtain: 0, skill_point: 0, gold_obtain: 0}
     isWipeOut = false
     for id in _.range(1, pass)
       if not player.getPassMarkByIndex(id)
         data = table.getTableItem('pass_reward', id)
         rewards.exp_obtain += parseInt(data.exp)
         rewards.money_obtain += parseInt(data.money)
-        rewards.skill_poins += parseInt(data.skill_poins)
+        rewards.skill_point += parseInt(data.skill_point)
 
         # 一定概率获得元宝，百分之5的概率获得10元宝
         if utility.hitRate(5)
@@ -59,7 +59,7 @@ class Manager
     player.increase('exp',  rewards.exp_obtain)
     player.increase('money', rewards.money_obtain)
     player.increase('gold', rewards.gold_obtain)
-    player.increase('skillPoins', rewards.skill_poins)
+    player.increase('skillPoint', rewards.skill_point)
 
     return cb(null, player, "没有关卡可以扫荡") if not isWipeOut
     cb(null, player, rewards)
@@ -67,7 +67,7 @@ class Manager
   @wipeOutTask: (player, cb) ->
     taskData = table.getTableItem('task', player.task.id)
     chapterId = taskData.chapter_id
-
+    console.log player.task, chapterId
     rewards = {exp_obtain: 0, money_obtain: 0, gold_obtain: 0}
     for id in _.range(1, chapterId)
       wipeOutData = table.getTableItem('wipe_out', id)
@@ -112,10 +112,10 @@ class Manager
     player.increase('money', taskData.coins_obtain)
 
     # 更新任务的进度信息
-    # 参数poins为没小关所需要探索的层数
+    # 参数points为没小关所需要探索的层数
     task = _.clone(player.task)
     task.progress += 1
-    if task.progress > taskData.poins
+    if task.progress > taskData.points
       task.progress = 0
       task.id += 1
     player.set('task', task)

@@ -113,12 +113,67 @@ describe("User Actions # ", function() {
         });
       });
 
-       it("should can be login", function(){
+      it("should can be login, and player is undefined", function(){
         request('connector.userHandler.login', {account: 'test_email_1@qq.com', password: '1'}, function(data){
           expect(data.code).toEqual(200);
-          expect(data).toEqual('');
+          expect(typeof data.player).toEqual('undefined');
         });
       });
+
+      describe("when player for user is created", function(){
+        var playerId;
+
+        beforeEach(function(){
+          var ok = false;
+          runs(function(){
+            $.get('/addPlayer', {userId: userid, areaId: 1, name: 'user1'}, function(data) {
+              playerId = data.playerId;
+              ok = true;
+            });
+          });
+          waitsFor(function(){return ok;});
+        });
+
+        afterEach(function(){
+          var ok = false;
+          runs(function(){
+            $.get('/removePlayer', {playerId: playerId}, function(data) {
+              ok = true;
+            });
+          });
+          waitsFor(function(){return ok;});
+        });
+
+        it("should can be login, and return player info", function(){
+          request('connector.userHandler.login', {account: 'test_email_1@qq.com', password: '1'}, function(data){
+            expect(data).toEqual(
+              {
+                code: 200,
+                uid: userid,
+                player: {
+                  id: playerId,
+                  userId: userid,
+                  areaId: 1,
+                  name: 'user1',
+                  power: 0,
+                  lv: 0,
+                  exp: 0,
+                  money: 0,
+                  gold: 0,
+                  lineUp: '',
+                  ability: 0,
+                  task: '',
+                  pass: 0,
+                  passMark: null,
+                  dailyGift: '',
+                  elixir: 0
+                }
+              }
+            );
+          });
+        });
+
+      });    
 
     });
     

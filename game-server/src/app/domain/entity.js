@@ -46,12 +46,12 @@ var Entity = (function (_super) {
 
     Entity.prototype.increase = function (name, val) {
         val = val || 1;
-        this.set(name, this[name] + val);
+        this.set(name, parseInt(this[name]) + parseInt(val));
     };
 
     Entity.prototype.decrease = function (name, val) {
         val = val || 1;
-        this.set(name, this[name] - val);
+        this.set(name, parseInt(this[name]) - parseInt(val));
     };
 
     Entity.prototype.save = function (cb) {

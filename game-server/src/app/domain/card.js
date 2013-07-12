@@ -22,6 +22,7 @@ var FIELDS = {
     createTime: true,
     playerId: true,
     tableId: true,
+    star: true,
     lv: true,
     exp: true,
     skillLv: true,
@@ -42,12 +43,12 @@ var Card = (function (_super) {
     }
 
     Card.prototype.init = function () {
-        this.passiveSkills = [];
+        this.passiveSkills = {};
     };
 
     Card.prototype.addPassiveSkill = function (ps) {
         if (typeof ps.id !== 'undefined' && ps.id !== null) {
-            this.passiveSkills.push(ps);
+            this.passiveSkills[ps.id] = ps;
         }
     };
 
@@ -62,9 +63,9 @@ var Card = (function (_super) {
         var totalExp = 0;
         cards.forEach(function(card){
             totalExp += cardExp(card.lv, card.exp_need);
-        })
+        });
         var upgraded_lv = this.upgrade(totalExp);
-        return [totalexp, upraded_lv];
+        return [totalExp, upgraded_lv];
     };
 
     Card.prototype.upgrade = function(exp) {
@@ -85,6 +86,20 @@ var Card = (function (_super) {
             }
         }
         return upgraded_lv;
+    };
+
+    Card.prototype.toJson = function() {
+        return {
+            id: this.id,
+            playerId: this.playerId,
+            tableId: this.tableId,
+            star: this.star,
+            lv: this.lv,
+            exp: this.exp,
+            skillLv: this.skillLv,
+            hpAddition: this.hpAddition,
+            atkAddition: this.atkAddition
+        };
     };
 
     return Card;

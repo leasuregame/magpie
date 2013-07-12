@@ -18,6 +18,7 @@ Handler = (@app) ->
 ###
 Handler::explore = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
+  taskId = msg.taskId
   rewards = null
   player = null
 
@@ -27,14 +28,14 @@ Handler::explore = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
-      taskManager.explore player, cb
+      taskManager.explore player, taskId, cb
 
-    (data, cb) =>
+    (data, chapterId, cb) =>
       if data.result is 'fight'
         taskManager.fightToMonster(
           @app, 
           session, 
-          {pid: player.id, tableId: player.task.id, table: 'task_config'}, 
+          {pid: player.id, tableId: chapterId, table: 'task_config'}, 
           (err, battleLog) ->
             data.battle_log = battleLog
 
@@ -109,13 +110,13 @@ Handler::passBarrier = (msg, session, next) ->
         rewards = 
           exp: rdata.exp
           money: rdata.coins
-          skillPoins: rdata.skill_poins
+          skillPoint: rdata.skill_point
 
         bl.rewards = rewards
 
         player.increase('exp', rewards.exp)
         player.increase('money', rewards.money)
-        player.increase('skillPoins', rewards.skillPoins)
+        player.increase('skillPoint', rewards.skillPoint)
         player.increase('pass')
         player.save()
       

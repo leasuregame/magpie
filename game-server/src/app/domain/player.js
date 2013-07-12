@@ -15,6 +15,7 @@
 var utility = require('../common/utility');
 var Entity = require('./entity');
 var playerConfig = require('../../config/data/player');
+var table = require('../manager/table');
 var _ = require("underscore");
 
 var FIELDS = {
@@ -33,28 +34,31 @@ var FIELDS = {
     task: true,
     pass: true,
     passMark: true,
-    dailyGift: true
+    dailyGift: true,
+    fragments: true,
+    energy: true,
+    elixir: true
 };
 
 var startPowerResumeTimer = function(player) {
-    var resumePoins = playerConfig.POWER_RESUME.poins;
+    var resumePoint = playerConfig.POWER_RESUME.point;
     var interval = playerConfig.POWER_RESUME.interval;
     
     setInterval(function(){
-        player.resumePower(resumePoins);
+        player.resumePower(resumePoint);
         player.save();
     }, interval);
 };
 
 var startPowerGiveTimer = function(player) {
-    var givePoins = playerConfig.POWER_GIVE.poins;
+    var givePoint = playerConfig.POWER_GIVE.point;
     var hours = playerConfig.POWER_GIVE.hours;
     var interval = playerConfig.POWER_GIVE.interval;
 
     setInterval(function(){
         var hour = (new Date()).getHours();
         if (_.contains(hours, hour) && !player.hasGive(hour)) {
-            player.givePower(hour, givePoins);
+            player.givePower(hour, givePoint);
             player.save();
         }
     }, interval);
@@ -130,12 +134,12 @@ var Player = (function (_super) {
         var targetCard = this.cards[target];
         var _res = targetCard.eatCards(this.popCards(sources));
         var expObtain = _res[0], upgradedLevel = _res[1];
-        var moneyComsume = table.getTableItem('card_grow', targetCard.tableId).money_need;
+        var moneyConsume = table.getTableItem('card_grow', targetCard.tableId).money_need;
 
         cb(null, {
             exp_obtain: expObtain, 
             upgraded_level: upgradedLevel, 
-            money_comsume: moneyComsume
+            moneyConsume: moneyConsume
         });
     };
 
@@ -143,14 +147,22 @@ var Player = (function (_super) {
         return this.cards[id] !== 'undefined';
     };
 
+    Player.prototype.getCard = function(id) {
+        return this.cards[id] || null
+    }
+
     Player.prototype.getCards = function(ids) {
         if (!_.isArray(ids)){
             ids = [ids];
         }
 
-        return _.filter(_.values(this.cards), function(card){
-            return _.cantains(ids, card.id);
-        });
+        var results = []
+        for (var id in this.cards) {
+            if (_.contains(ids, id)) {
+                results.push(this.cards[id]);
+            }
+        }
+        return results;
     };
 
     Player.prototype.popCards = function(ids) {
@@ -207,6 +219,28 @@ var Player = (function (_super) {
         _passMark |= (1 << (index - 1));
 
         this.set("passMark", _passMark);
+    };
+
+    Player.prototype.toJson = function () {
+        return {
+            id: this.id,
+            userId: this.userId,
+            areaId: this.areaId,
+            name: this.name,
+            power: this.power,
+            lv: this.lv,
+            exp: this.exp,
+            money: this.money,
+            gold: this.gold,
+            lineUp: this.lineUp,
+            ability: this.ability,
+            task: this.task,
+            pass: this.pass,
+            passMark: this.passMark,
+            dailyGift: this.dailyGift,
+            fregments: this.fregments,
+            elixir: this.elixir
+        };
     };
 
     return Player;

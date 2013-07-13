@@ -12,7 +12,7 @@
  * */
 
 
-var Card = cc.Node.extend({
+var Card = Entity.extend({
     _id: 0,                 // 数据库对应ID
     _createTime: 0,         // 创建时间
     _tableId: 0,            // 数据表对应ID

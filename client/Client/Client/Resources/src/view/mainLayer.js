@@ -35,7 +35,7 @@ var MainLayer = cc.Layer.extend({
 //        this.addChild(spacingLabel);
 
 
-        var playerLabel = Player.getInstance().getPlayerLabel();
+        var playerLabel = gameData.player.getPlayerLabel();
         playerLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, GAME_VERTICAL_LACUNA + 730));
         this.addChild(playerLabel);
 

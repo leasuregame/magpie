@@ -17,22 +17,20 @@ var Pass = Entity.extend({
     _passMark: 0,
 
     init: function (data) {
-        this.update(data);
+        this._pass = data.pass;
+        this._passMark = data.passMark || 0;
+
+        cc.log(this);
 
         return true;
     },
 
-    update: function (data) {
-        this._pass = data.pass;
-        this._passMark = data.passMark;
-    },
-
-    barriers: function (cb, index) {
-        cc.log("BarriersLayer barriers");
+    defiance: function (cb, index) {
+        cc.log("PassLayer defiance");
         cc.log(index);
 
         var that = this;
-        lzWindow.pomelo.request("logic.taskHandler.passBarrier", {index: index}, function (data) {
+        lzWindow.pomelo.request("logic.taskHandler.passBarrier", {playerId: 1, index: index}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
@@ -40,18 +38,32 @@ var Pass = Entity.extend({
 
                 var msg = data.msg;
 
-                that.update({
-                    pass: msg.pass,
-                    passMark: msg.passMark
-                });
-
-                var battleLog = BattleLog.create(msg.battle_log);
+                var battleLog = BattleLog.create(msg);
                 BattleLogNote.getInstance().pushBattleLog(battleLog);
-                cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, BattleScene.create(battleLog), true));
 
                 cb("success");
             } else {
                 cc.log("barriers fail");
+
+                cb("fail");
+            }
+        });
+    },
+
+    wipeOut: function(cb) {
+        cc.log("Pass wipeOut");
+
+        var that = this;
+
+        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {playerId: 1, type: "pass"}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("wipeOut success.");
+
+                cb("success");
+            } else {
+                cc.log("wipeOut fail");
 
                 cb("fail");
             }
@@ -63,7 +75,7 @@ var Pass = Entity.extend({
 Pass.create = function (data) {
     var ret = new Pass();
 
-    if (ret && ret.init(data)) {
+    if (ret) {
         return ret;
     }
 

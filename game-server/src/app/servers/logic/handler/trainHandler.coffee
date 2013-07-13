@@ -91,7 +91,10 @@ Handler::luckyCard = (msg, session, next) ->
       return next(null, {code: err.code, msg: err.msg})
 
     player.save()
-    next(null, {code: 200, card: cardEnt.toJson(), consume: consumeVal, hasFragment: fragment})
+    next(null, {
+      code: 200, 
+      msg: {card: cardEnt.toJson(), consume: consumeVal, hasFragment: fragment}
+      })
 
 Handler::skillUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -107,9 +110,16 @@ Handler::skillUpgrade = (msg, session, next) ->
       cb(null, player, card)
 
     (player, card, cb) ->
+      if not card
+        return cb({code: 501, msg: '找不到卡牌'})
+
       if card? and card.star < 3
         return cb({code: 501, msg: '三星级以下的卡牌没有技能，不能升级'}, null)
 
+      if card? and card.skillLv > 5
+        return cb({code: 501, msg: '该卡牌的技能等级已经升到最高级，不能再升级了'})
+
+      console.log 'skill upgrade: ', 'skillLv: ', card.skillLv, card
       upgradeData = table.getTableItem('skill_upgrade', card.skillLv)
       sp_need = upgradeData['star'+card.star];
 
@@ -177,7 +187,7 @@ Handler::starUpgrade = (msg, session, next) ->
 
     player.save()
     card.save()
-    next(null, {code: 200, upgrade: is_upgrade})
+    next(null, {code: 200, msg: {upgrade: is_upgrade}})
 
 Handler::passSkillAfresh  = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -198,6 +208,9 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       card = player.getCard(cardId)
       passSkill = card.passiveSkills[psId]
 
+      if not passSkill
+        return cb({code: 501, msg: '找不到被动属性'})
+
       _obj = passSkillConfig.AFRESH[type]
       valueScope = utility.randomValue(_.keys(_obj), _.values(_obj))
       [start, end] = valueScope.split('~')
@@ -210,7 +223,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       return next(null, {code: err.code, msg: err.msg})
 
     passSkill.save()
-    next(null, {code: 200, value: passSkill.value})
+    next(null, {code: 200, msg: {value: passSkill.value}})
 
 Handler::smeltElixir = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -243,7 +256,7 @@ Handler::smeltElixir = (msg, session, next) ->
     sum = result.reduce (x,y) -> x + y
     player.increase('elixir', sum) if sum > 0
     player.save()
-    next(null, {code: 200, elixir: result, sum: sum})
+    next(null, {code: 200, msg: {elixir: result, sum: sum}})
 
 Handler::useElixir = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId

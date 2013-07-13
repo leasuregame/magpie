@@ -12,23 +12,33 @@
  * */
 
 var gameData = {
-    mainScene : null,
+    mainScene: null,
 
     user: null,
     player: null,
+    cardList: null,
+    lineUp: null,
     task: null,
     pass: null,
     cardLibrary: null,
     rank: null,
     lottery: null,
 
-    gameInit: function() {
+    gameInit: function () {
         cc.log("gameData init");
 
+        this.user = User.create();
+        this.player = Player.create();
+        this.cardList = CardList.create();
+        this.lineUp = LineUp.create();
+        this.task = Task.create();
+        this.pass = Pass.create();
+        this.cardLibrary = CardLibrary.create();
+        this.rank = Rank.create();
         this.lottery = Lottery.create();
     },
 
-    gameEnd: function() {
+    gameEnd: function () {
 
     }
 }

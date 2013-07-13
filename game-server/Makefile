@@ -1,6 +1,9 @@
 build:
 	sh ./bin/build.sh
 
+convert-data:
+	node ./bin/convertXmlToJson.js 
+
 clean: 
 	rm -r ./app
 	#rm -r ./test

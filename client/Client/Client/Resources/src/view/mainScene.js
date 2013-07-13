@@ -19,6 +19,10 @@ var MainScene = cc.Scene.extend({
         cc.log("MainScene onEnter");
 
         this._super();
+    },
+
+    init : function() {
+        cc.log("MainScene init");
 
         var mainBgLayer = MainBgLayer.create();
         this.addChild(mainBgLayer, -1);

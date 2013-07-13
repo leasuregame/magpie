@@ -131,7 +131,7 @@ Handler::passBarrier = (msg, session, next) ->
 
 obtainBattleRewards = (player, taskId, battleLog) ->
   taskData = table.getTableItem 'task_config', taskId
-  
+
   # 奖励掉落卡牌
   ids = taskData.cards.split('#').map (id) ->
     _row = table.getTableItem 'task_card', id
@@ -147,20 +147,25 @@ getRewardCards = (cardIds, count) ->
   countCardId = (id, star) ->
     _card = table.getTableItem 'cards', id
     if _card.star isnt star
-      id = if _card.star > star then (id - 1) else (id + 1)
-    return id
+      _card_id = if _card.star > star then (id - 1) else (id + 1)
+      return _card_id
+    else
+      return id
 
   cd = taskRate.card_drop
   _cards = []
   for i in [1..count]
-    id = utility.randomValue cardIds
-    star = utility.randomValue [1,2], _.values(cd.star)
-    level = utility.randomValue [1,2,3,4,5], _.values(cd.level)
+    _id = utility.randomValue cardIds
+    _star = utility.randomValue _.keys(cd.star), _.values(cd.star)
+    _level = utility.randomValue _.keys(cd.level), _.values(cd.level)
 
+    console.log "-id-", _id, _star
+    _id = countCardId(parseInt(_id), parseInt(_star))
+    console.log "=id=", _id
     _cards.push {
-      id: countCardId(parseInt(id))
-      star: star
-      lv: level
+      id: _id
+      star: parseInt(_star)
+      lv: parseInt(_level)
     }
   
   _cards

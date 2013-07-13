@@ -77,8 +77,9 @@ var spawn = require('child_process').spawn;
 app.get('/loadDataFromCsvFile', function(req, res) {
   var ps = spawn('node', [__dirname + '../../../bin/loaddata.js']);
   ps.stdout.on('data', function(data) {
+    console.log(data.toString());
     if (/done/.test(data.toString())) {
-      ps.kill('SIGHUP');
+      //ps.kill('SIGHUP');
       res.send('done');
     }
   });

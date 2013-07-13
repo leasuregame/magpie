@@ -144,7 +144,7 @@ var Player = (function(_super) {
         cb(null, {
             exp_obtain: expObtain,
             upgraded_level: upgradedLevel,
-            moneyConsume: moneyConsume
+            money_consume: parseInt(moneyConsume)
         });
     };
 

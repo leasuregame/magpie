@@ -95,9 +95,37 @@ describe("Connecter Server # ", function() {
 
       it("should can be create player", function(){
         request('connector.playerHandler.createPlayer', {name: 'wuzhanghai', areaId: 1}, function(data){
-          pid = data.player.id;
           console.log(data);
-          expect(data).toEqual({ code : 201, player : { id : userid, name : 'wuzhanghai' } });
+          pid = data.msg.player.id;
+          expect(data).toEqual({
+            code: 200,
+            msg: {
+              player: {
+                  id: 127,
+                  createTime: 1373813037403,
+                  userId: 139,
+                  areaId: 1,
+                  name: 'wuzhanghai',
+                  power: 100,
+                  lv: 1,
+                  exp: 0,
+                  money: 1000,
+                  gold: 50,
+                  lineUp: {},
+                  ability: 0,
+                  task: {
+                      id: 1,
+                      progress: 0
+                  },
+                  pass: 0,
+                  passMark: 0,
+                  dailyGift: [],
+                  skillPoint: 0,
+                  energy: 0,
+                  cards: []
+              }
+            }
+          });
         });
       });
     });

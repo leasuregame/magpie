@@ -33,7 +33,7 @@ var Message = Entity.extend({
 Message.create = function() {
     var ret = new Message();
 
-    if(ret && ret.init()) {
+    if(ret) {
         return ret;
     }
 

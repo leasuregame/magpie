@@ -21,12 +21,11 @@ var Lottery = Entity.extend({
     init: function (data) {
         cc.log("Lottery init");
 
-        this.update(data);
-
         return true;
     },
 
     update: function () {
+        cc.log("Lottery update");
     },
 
     lottery: function (cb, type, level) {
@@ -66,7 +65,7 @@ var Lottery = Entity.extend({
 Lottery.create = function () {
     var ret = new Lottery();
 
-    if (ret && ret.init()) {
+    if (ret) {
         return ret;
     }
 

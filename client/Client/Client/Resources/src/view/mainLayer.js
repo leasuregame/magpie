@@ -34,37 +34,123 @@ var MainLayer = cc.Layer.extend({
 //        spacingLabel.setPosition(GAME_HORIZONTAL_LACUNA, GAME_VERTICAL_LACUNA + GAME_HEIGHT - 50);
 //        this.addChild(spacingLabel);
 
+        var playerLabel = cc.LayerColor.create(cc.c4b(100, 0, 100, 100), GAME_WIDTH, 180);
+        playerLabel.ignoreAnchorPointForPosition(false);
+        playerLabel.setAnchorPoint(cc.p(0.5, 0));
 
-        var playerLabel = gameData.player.getPlayerLabel();
-        playerLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, GAME_VERTICAL_LACUNA + 730));
+        var nameLabel = cc.LayerColor.create(cc.c4b(100, 100, 100, 100), 180, 180);
+        nameLabel.ignoreAnchorPointForPosition(false);
+        nameLabel.setAnchorPoint(cc.p(0, 0));
+        playerLabel.addChild(nameLabel);
+
+        var label = cc.LabelTTF.create("lCeve", 'Times New Roman', 30);
+        label.setFontSize(25);
+        label.setAnchorPoint(cc.p(0.5, 0.5));
+        label.setPosition(90, 90);
+        nameLabel.addChild(label);
+
+        var levelLabel = cc.LayerColor.create(cc.c4b(100, 50, 100, 100), 230, 60);
+        levelLabel.ignoreAnchorPointForPosition(false);
+        levelLabel.setAnchorPoint(cc.p(0, 0));
+        levelLabel.setPosition(180, 120);
+        playerLabel.addChild(levelLabel);
+
+        label = cc.LabelTTF.create("等级：100", 'Times New Roman', 30);
+        label.setFontSize(25);
+        label.setAnchorPoint(cc.p(0.5, 0.5));
+        label.setPosition(115, 30);
+        levelLabel.addChild(label);
+
+        var vipLabel = cc.LayerColor.create(cc.c4b(100, 100, 50, 100), 230, 60);
+        vipLabel.ignoreAnchorPointForPosition(false);
+        vipLabel.setAnchorPoint(cc.p(0, 0));
+        vipLabel.setPosition(410, 120);
+        playerLabel.addChild(vipLabel);
+
+        label = cc.LabelTTF.create("VIP0", 'Times New Roman', 30);
+        label.setFontSize(25);
+        label.setAnchorPoint(cc.p(0.5, 0.5));
+        label.setPosition(115, 30);
+        vipLabel.addChild(label);
+
+        var ingotLabel = cc.LayerColor.create(cc.c4b(50, 100, 100, 100), 230, 60);
+        ingotLabel.ignoreAnchorPointForPosition(false);
+        ingotLabel.setAnchorPoint(cc.p(0, 0));
+        ingotLabel.setPosition(180, 60);
+        playerLabel.addChild(ingotLabel);
+
+        label = cc.LabelTTF.create("元宝：100", 'Times New Roman', 30);
+        label.setFontSize(25);
+        label.setAnchorPoint(cc.p(0.5, 0.5));
+        label.setPosition(115, 30);
+        ingotLabel.addChild(label);
+
+        var moneyLabel = cc.LayerColor.create(cc.c4b(50, 100, 50, 100), 230, 60);
+        moneyLabel.ignoreAnchorPointForPosition(false);
+        moneyLabel.setAnchorPoint(cc.p(0, 0));
+        moneyLabel.setPosition(410, 60);
+        playerLabel.addChild(moneyLabel);
+
+        label = cc.LabelTTF.create("仙币：10000", 'Times New Roman', 30);
+        label.setFontSize(25);
+        label.setAnchorPoint(cc.p(0.5, 0.5));
+        label.setPosition(115, 30);
+        moneyLabel.addChild(label);
+
+        var expLabel = cc.LayerColor.create(cc.c4b(100, 50, 50, 100), 230, 60);
+        expLabel.ignoreAnchorPointForPosition(false);
+        expLabel.setAnchorPoint(cc.p(0, 0));
+        expLabel.setPosition(180, 0);
+        playerLabel.addChild(expLabel);
+
+        label = cc.LabelTTF.create("经验：500/10000", 'Times New Roman', 30);
+        label.setFontSize(25);
+        label.setAnchorPoint(cc.p(0.5, 0.5));
+        label.setPosition(115, 30);
+        expLabel.addChild(label);
+
+        var powerLabel = cc.LayerColor.create(cc.c4b(50, 50, 100, 100), 230, 60);
+        powerLabel.ignoreAnchorPointForPosition(false);
+        powerLabel.setAnchorPoint(cc.p(0, 0));
+        powerLabel.setPosition(410, 0);
+        playerLabel.addChild(powerLabel);
+
+        label = cc.LabelTTF.create("体力：20/200", 'Times New Roman', 30);
+        label.setFontSize(25);
+        label.setAnchorPoint(cc.p(0.5, 0.5));
+        label.setPosition(115, 30);
+        powerLabel.addChild(label);
+
+//        var playerLabel = gameData.player.getPlayerLabel();
+        playerLabel.setPosition(cc.p(GAME_WIDTH_MIDPOINT, GAME_VERTICAL_LACUNA + 730));
         this.addChild(playerLabel);
 
 //        spacingLabel = cc.LayerColor.create(cc.c4b(220, 200, 200, 100), GAME_WIDTH, 20);
 //        spacingLabel.setPosition(GAME_HORIZONTAL_LACUNA, GAME_VERTICAL_LACUNA + 710);
 //        this.addChild(spacingLabel);
 
-        var activityLabel = cc.LayerColor.create(cc.c4b(100, 0, 100, 100), GAME_WIDTH, 150);
-        activityLabel.setPosition(GAME_HORIZONTAL_LACUNA, GAME_VERTICAL_LACUNA + 560);
-        this.addChild(activityLabel);
-
-        var label = cc.LabelTTF.create("活动：OO", 'Times New Roman', 30);
-        label.setFontSize(130);
-        label.setAnchorPoint(cc.p(0, 0));
-        activityLabel.addChild(label);
+//        var activityLabel = cc.LayerColor.create(cc.c4b(100, 0, 100, 100), GAME_WIDTH, 150);
+//        activityLabel.setPosition(GAME_HORIZONTAL_LACUNA, GAME_VERTICAL_LACUNA + 560);
+//        this.addChild(activityLabel);
+//
+//        var label = cc.LabelTTF.create("活动：OO", 'Times New Roman', 30);
+//        label.setFontSize(130);
+//        label.setAnchorPoint(cc.p(0, 0));
+//        activityLabel.addChild(label);
 
 //        spacingLabel = cc.LayerColor.create(cc.c4b(220, 200, 200, 100), GAME_WIDTH, 20);
 //        spacingLabel.setPosition(GAME_HORIZONTAL_LACUNA, GAME_VERTICAL_LACUNA + 540);
 //        this.addChild(spacingLabel);
 
-        var teamLabel = cc.LayerColor.create(cc.c4b(100, 0, 100, 100), GAME_WIDTH, 180);
-        teamLabel.setPosition(GAME_HORIZONTAL_LACUNA, GAME_VERTICAL_LACUNA + 360);
-        this.addChild(teamLabel);
+        var lineUpLabel = LineUpLabel.create();
+        lineUpLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, GAME_VERTICAL_LACUNA + 560));
+        this.addChild(lineUpLabel);
 
 //        spacingLabel = cc.LayerColor.create(cc.c4b(220, 200, 200, 100), GAME_WIDTH, 20);
 //        spacingLabel.setPosition(GAME_HORIZONTAL_LACUNA, GAME_VERTICAL_LACUNA + 340);
 //        this.addChild(spacingLabel);
 
-        var functionLabel = cc.LayerColor.create(cc.c4b(100, 0, 100, 100), GAME_WIDTH, 270);
+        var functionLabel = cc.LayerColor.create(cc.c4b(100, 0, 100, 100), GAME_WIDTH, 470);
         functionLabel.setPosition(GAME_HORIZONTAL_LACUNA, GAME_VERTICAL_LACUNA + 70);
         this.addChild(functionLabel);
 

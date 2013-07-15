@@ -25,9 +25,10 @@ var Player = Entity.extend({
     _money: 0,          // 金钱
     _elixir: 0,         // 仙丹
     _fragment: 0,       // 碎片
-    _skillPoint: 0,     // 技能点
-    _ability: 0,        // 战力
     _energy: 0,         // 活力
+    _skillPoint: 0,     // 技能点
+    _ability: 0,        // 战斗力
+    _vip: 0,            // VIP等级
 
     _playerLabel: null,
 
@@ -60,11 +61,6 @@ var Player = Entity.extend({
     },
 
     getPlayerLabel: function () {
-//        if(this._playerLabel) {
-//            this._playerLabel.removeFromParent();
-//            return this._playerLabel;
-//        }
-
         this._playerLabel = cc.LayerColor.create(cc.c4b(100, 0, 100, 100), GAME_WIDTH, 180);
         this._playerLabel.ignoreAnchorPointForPosition(false);
         this._playerLabel.setAnchorPoint(cc.p(0, 0));

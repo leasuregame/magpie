@@ -74,7 +74,6 @@ var User = Entity.extend({
                 cc.log("sign up success");
 
 
-
                 cb("success");
             } else {
                 cc.log("sign up fail");
@@ -84,13 +83,17 @@ var User = Entity.extend({
         });
     },
 
-    signOut: function () {
+    signOut: function (cb) {
         cc.log("User signOut");
 
     },
 
-    reSignIn: function () {
+    reSignIn: function (cb) {
         cc.log("User reSignIn")
+    },
+
+    changePassword: function (cb) {
+        cc.log("User changePassword");
     }
 })
 

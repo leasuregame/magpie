@@ -27,5 +27,9 @@ var Entity = cc.Class.extend({
 
     get: function (name) {
         return this["_" + name];
+    },
+
+    has: function (name) {
+        return (typeof (this["_" + name]) != "undefined");
     }
 })

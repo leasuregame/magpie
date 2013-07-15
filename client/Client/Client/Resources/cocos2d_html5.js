@@ -46,6 +46,8 @@
         //SingleEngineFile:'',
         appFiles:[
             'src/resource.js',
+            'src/table/table.js',
+
             'src/view/actionFactory.js',
             'src/view/effectsFactory.js',
             'src/view/skillFactory.js',
@@ -71,6 +73,7 @@
             'src/model/rank.js',
             'src/model/lottery.js',
             'src/model/cardLibrary.js',
+            'src/model/message.js',
 
             'src/model/battleStep.js',
             'src/model/battleLog.js',
@@ -82,18 +85,25 @@
             'src/controls/bgSprite.js',
             'src/controls/dialog.js',
             'src/controls/lazyMenu.js',
+
             'src/view/signInScene.js',
             'src/view/signInLayer.js',
             'src/view/signUpScene.js',
             'src/view/signUpLayer.js',
             'src/view/cardDetails.js',
             'src/view/cardNode.js',
+
+            'src/view/lineUpLabel.js',
+
             'src/view/battleLayer.js',
             'src/view/battleScene.js',
             'src/view/battlePlayer.js',
             'src/view/testtestLayer.js',
             'src/view/testLayer.js',
             'src/view/testScene.js',
+
+            'src/view/cardUpgradeLabel.js',
+
             'src/view/mainMenuLayer.js',
             'src/view/mainBgLayer.js',
             'src/view/mainLayer.js',
@@ -102,7 +112,6 @@
             'src/view/rankingLayer.js',
             'src/view/friendLayer.js',
             'src/view/messageLayer.js',
-
             'src/view/taskLayer.js',
             'src/view/lotteryLayer.js',
             'src/view/passLayer.js',

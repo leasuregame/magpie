@@ -18,10 +18,10 @@ var LineUp = Entity.extend({
     _lineUp: {},
 
     init: function (data) {
-        var key;
+        cc.log("LineUp init");
 
-        for(key in data) {
-            this._lineUp[key] = data[key];
+        for(var i = 1; i <= MAX_LINE_UP_CARD; ++i) {
+            this._lineUp[i] = data[i] || null;
         }
 
         cc.log(this);
@@ -30,15 +30,20 @@ var LineUp = Entity.extend({
     },
 
     getLineUpByIndex: function (index) {
+        cc.log("LineUp getLineUpByIndex");
+        cc.log(index);
+
         return this._lineUp[index];
     },
 
     setLineUpByIndex: function (index, cardId) {
+        cc.log("LineUp setLineUpByIndex");
+
         this._lineUp[index] = cardId;
     },
 
     syncLineUp: function () {
-
+        cc.log("LineUp syncLineUp");
     }
 })
 

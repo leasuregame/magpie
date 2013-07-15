@@ -37,7 +37,10 @@ var FIELDS = {
     dailyGift: true,
     fragments: true,
     energy: true,
-    elixir: true
+    elixir: true,
+    honnerPoint: true,
+    title: true,
+    rank: true
 };
 
 var startPowerResumeTimer = function(player) {
@@ -259,10 +262,10 @@ var Player = (function(_super) {
 
 var lineUpToObj = function(lineUp) {
     var lines = lineUp.split(',');
-    var _results = {}
+    var _results = {};
     lines.forEach(function(l){
         var _ref = l.split(':'), pos = _ref[0], num = _ref[1];
-        _results[positionConvert(pos)] = num
+        _results[positionConvert(pos)] = parseInt(num);
     });
     return _results;
 };

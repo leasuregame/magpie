@@ -30,6 +30,9 @@ var Player = Entity.extend({
     _ability: 0,        // 战斗力
     _vip: 0,            // VIP等级
 
+    _maxExp: 1000,         // 最大经验
+    _maxPower: 200,       // 最大体力
+
     _playerLabel: null,
 
     init: function (data) {

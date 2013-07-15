@@ -94,6 +94,8 @@
             'src/view/cardNode.js',
 
             'src/view/lineUpLabel.js',
+            'src/view/cardListLayer.js',
+            'src/view/playerHeaderLabel.js',
 
             'src/view/battleLayer.js',
             'src/view/battleScene.js',

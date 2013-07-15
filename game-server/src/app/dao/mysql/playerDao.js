@@ -187,7 +187,7 @@ var playerDao = {
             } else {
                 return cb({
                     code: null,
-                    msg: "Player not exists"
+                    msg: "Player not exists with params: " + JSON.stringify(param)
                 }, null);
             }
         });

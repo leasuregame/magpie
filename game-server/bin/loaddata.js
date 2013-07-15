@@ -3,6 +3,7 @@ var mysql = require('mysql');
 var fs = require('fs');
 var path = require('path');
 var async = require('async');
+var _ = require('underscore');
 
 var FIXTURES_DIR = path.join(__dirname, '..', 'config', 'fixtures/')
 var DELIMITER = ';';
@@ -66,7 +67,7 @@ var importCsvToMySql = function(table, filepath, callback) {
     rows, 
     function(row, cb){
       // ignore empty row
-      if (row == '' || row.split(DELIMITER).length == 1){
+      if (row == '' || !_.any(row.split(DELIMITER))){
         return cb();
       }
 

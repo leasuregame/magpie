@@ -1,6 +1,6 @@
 express = require('express');
 mysql = require('./script/mysql');
-tt = require('./script/tt');
+fs = require('fs');
 
 var app = express();
 
@@ -11,7 +11,10 @@ app.set('views', __dirname + '/views')
 app.engine('html', require('ejs').renderFile);
 
 app.get('/test', function(req, res){
-  res.render('SpecRunner.html');
+  var files = fs.readdirSync(__dirname + '/spec');
+  files = files.filter(function(f) { return /Spec.js$/.test(f); });
+  //files = ['taskSpec.js'];
+  res.render('SpecRunner.html', {files: files});
 });
 
 app.get('/adduser', function(req, res){

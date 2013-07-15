@@ -15,11 +15,12 @@
     require('boot');
   </script>
   <!-- include spec files here... -->
-  
-  <script type="text/javascript" src="spec/fightSpec.js"></script>
-  <script type="text/javascript" src="spec/taskSpec.js"></script>
-  <script type="text/javascript" src="spec/userSpec.js"></script>
-  <script type="text/javascript" src="spec/playerSpec.js"></script>
+
+<% if (files) { %> 
+  <% files.forEach(function(file) { %>
+    <script type="text/javascript" src="spec/<%= file -%>"></script>
+  <% }) %>
+<% } %>
 
   <script type="text/javascript">
     (function() {
@@ -53,5 +54,6 @@
 </head>
 
 <body>
+  
 </body>
 </html>

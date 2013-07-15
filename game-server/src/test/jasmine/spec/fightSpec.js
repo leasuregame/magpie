@@ -1,3 +1,17 @@
+var doAjax = function(url, params, cb) {
+  var ok = false;
+  runs(function() {
+    $.get(url, params, function(data) {
+      cb(data);
+      ok = true;
+    });
+  });
+
+  waits(function() {
+    return ok;
+  });
+};
+
 describe("Battle Server # ", function() {
   var pomelo = window.pomelo;
   var inited = false;
@@ -55,7 +69,7 @@ describe("Battle Server # ", function() {
 
     describe("battle.fightHandler.attack", function(){
       it("should can be return the correct battle log", function(){
-        request('battle.fightHandler.attack', {playerId: '1', targetId: '2'}, function(data){
+        request('battle.fightHandler.attack', {playerId: 1, targetId: 2}, function(data){
           expect(data.code).toEqual(200);
           bl = JSON.parse(data.msg);
 

@@ -14,7 +14,7 @@ class VirtualHero extends Hero
     card = tab.getTableItem('task_card', @card_id) or \
            tab.getTableItem('pass_card', @card_id)
     if not card
-      throw new Error("配置表错误：不能从表 task_card 中找到卡牌信息，卡牌id为 #{@card_id}")
+      throw new Error("配置表错误：不能从表 task_card或者pass_card 中找到卡牌信息，卡牌id为 #{@card_id}")
 
     @name = card.name
     @init_atk = @atk = parseInt(card.atk)

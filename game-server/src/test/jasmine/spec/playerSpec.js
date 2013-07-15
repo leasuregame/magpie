@@ -96,14 +96,15 @@ describe("Connecter Server # ", function() {
       it("should can be create player", function(){
         request('connector.playerHandler.createPlayer', {name: 'wuzhanghai', areaId: 1}, function(data){
           console.log(data);
+          var player = data.msg.player;
           pid = data.msg.player.id;
           expect(data).toEqual({
             code: 200,
             msg: {
               player: {
-                  id: 127,
-                  createTime: 1373813037403,
-                  userId: 139,
+                  id: pid,
+                  createTime: player.createTime,
+                  userId: userid,
                   areaId: 1,
                   name: 'wuzhanghai',
                   power: 100,

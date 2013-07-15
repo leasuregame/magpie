@@ -80,15 +80,15 @@ describe("User Actions # ", function() {
         });
       });
 
-      it("register with an invalid email", function() {
-        request('connector.userHandler.register', {
-          account: '123456',
-          password: '1'
-        }, function(data) {
-          userid = data.uid
-          expect(data.code).toEqual(501);
-        });
-      });
+      // it("register with an invalid email", function() {
+      //   request('connector.userHandler.register', {
+      //     account: '123456',
+      //     password: '1'
+      //   }, function(data) {
+      //     userid = data.uid
+      //     expect(data.code).toEqual(501);
+      //   });
+      // });
 
       it("register with empty email or password", function() {
         request('connector.userHandler.register', {
@@ -150,6 +150,7 @@ describe("User Actions # ", function() {
           account: 'test_email_1@qq.com',
           password: '1'
         }, function(data) {
+          console.log(data);
           expect(data.code).toEqual(200);
           expect(typeof data.player).toEqual('undefined');
         });
@@ -157,6 +158,7 @@ describe("User Actions # ", function() {
 
       describe("when player for user is created", function() {
         var playerId;
+        var createTime;
 
         beforeEach(function() {
           var ok = false;
@@ -167,6 +169,8 @@ describe("User Actions # ", function() {
               name: 'user1'
             }, function(data) {
               playerId = data.playerId;
+              createTime = data.ct;
+              console.log('paleyr insertd', playerId);
               ok = true;
             });
           });
@@ -191,9 +195,10 @@ describe("User Actions # ", function() {
 
         it("should can be login, and return player info", function() {
           request('connector.userHandler.login', {
-            account: '1',
+            account: 'test_email_1@qq.com',
             password: '1'
           }, function(data) {
+            console.log('after login');
             expect(data).toEqual({
               code: 200,
               msg: {
@@ -202,6 +207,7 @@ describe("User Actions # ", function() {
                 },
                 player: {
                   id: playerId,
+                  createTime: createTime,
                   userId: userid,
                   areaId: 1,
                   name: 'user1',
@@ -210,13 +216,15 @@ describe("User Actions # ", function() {
                   exp: 0,
                   money: 0,
                   gold: 0,
-                  lineUp: '',
+                  lineUp: {},
                   ability: 0,
                   task: '',
                   pass: 0,
                   passMark: null,
                   dailyGift: '',
+                  skillPoint: 0,
                   elixir: 0,
+                  energy: 0,
                   cards: []
                 }
               }

@@ -2,6 +2,8 @@ var config = require('../config/mysql').development;
 var mysql = require('mysql');
 var fs = require('fs');
 var path = require('path');
+var async = require('async');
+var _ = require('underscore');
 
 var FIXTURES_DIR = path.join(__dirname, '..', 'config', 'fixtures/')
 var DELIMITER = ';';
@@ -53,7 +55,7 @@ var insertSql = function(table, headers, row) {
   return [sql, args];
 };
 
-var importCsvToMySql = function(table, filepath) {
+var importCsvToMySql = function(table, filepath, callback) {
   data = fs.readFileSync(filepath, 'utf-8')
   row_delimiter = data.indexOf('\n') > 0 ? '\n' : '\r2';
 
@@ -61,16 +63,19 @@ var importCsvToMySql = function(table, filepath) {
   var headers = list[0].split(DELIMITER);
   var rows = list.slice(1);
 
-  for (i = 0; i < rows.length; i++) {
-    // ignore empty row
-    if (rows[i] == '' || rows[i].split(DELIMITER).length == 1) break;
+  async.each(
+    rows, 
+    function(row, cb){
+      // ignore empty row
+      if (row == '' || !_.any(row.split(DELIMITER))){
+        return cb();
+      }
 
-    (function(i) {
-      id = rows[i].split(',')[0];
-      var _ref = deleteSql(table, rows[i].split(DELIMITER)[0]),
+      id = row.split(',')[0];
+      var _ref = deleteSql(table, row.split(DELIMITER)[0]),
         delete_sql = _ref[0],
         d_args = _ref[1];
-      var _ref = insertSql(table, headers, rows[i]),
+      var _ref = insertSql(table, headers, row),
         insert_sql = _ref[0],
         i_args = _ref[1];
 
@@ -81,29 +86,37 @@ var importCsvToMySql = function(table, filepath) {
         query(insert_sql, i_args, function(err, result) {
           if (err) {
             console.log('Error: import data to ', table);
-            throw err;
+            return cb(err);
           }
+          cb();
         });
       });
-    })(i);
-  }
-
+    }, 
+    callback
+  );
 };
 
 var laodCsvDataToSql = function() {
   console.log("  *** load data from csv ***  ");
-  fs.readdirSync(FIXTURES_DIR).forEach(function(filename) {
+  var files = fs.readdirSync(FIXTURES_DIR);
+
+  async.each(files, function(filename, cb){
     if (!/\.csv$/.test(filename)) {
-      return;
+      return cb();
     }
 
     var table = path.basename(filename, '.csv');
-    importCsvToMySql(table, FIXTURES_DIR + filename);
+    importCsvToMySql(table, FIXTURES_DIR + filename, cb);
     console.log(filename + '   >>   ' + table);
-  });
-  console.log('  *** completed ***  ');
-  console.log('done');
-  //process.exit();
+  }, function(err){
+    if (err) {
+      console.log(err);
+    }
+
+    console.log('  *** completed ***  ');
+    console.log('done');
+    process.exit();
+  });  
 };
 
 laodCsvDataToSql();

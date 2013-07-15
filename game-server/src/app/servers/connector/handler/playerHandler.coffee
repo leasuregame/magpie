@@ -12,8 +12,8 @@ Handler::createPlayer = (msg, session, next) ->
   
   dao.player.getPlayerByName name, (err, player) ->
     if player
-      next(null, {code: 501})
-      return
+      return next(null, {code: 501, msg: "player exists."})
+      
 
     dao.player.createPlayer {userId: uid, name: name, areaId: areaId}, (err, player) ->
       if err and not player
@@ -24,7 +24,7 @@ Handler::createPlayer = (msg, session, next) ->
         session.set('playername', player.name)
         session.on('close', onUserLeave)
 
-        next(null, {code: 200, player: player})
+        next(null, {code: 200, msg: {player: player.toJson()}})
 
 onUserLeave = (session, reason) ->
   if not session or not session.uid

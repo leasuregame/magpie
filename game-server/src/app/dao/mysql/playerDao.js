@@ -102,7 +102,7 @@ var playerDao = {
      * */
     getPlayerById: function (id, cb) {
         if (typeof (id) == "undefined") {
-            cb("param error", null);
+            return cb("param error", null);
         }
 
         playerDao._getPlayer({field: 'id', value: id}, cb);
@@ -115,7 +115,7 @@ var playerDao = {
      * */
     getPlayerByName: function (name, cb) {
         if (typeof (name) == "undefined") {
-            cb("param error", null);
+            return cb("param error", null);
         }
 
         playerDao._getPlayer({field: 'name', value: name}, cb);
@@ -128,7 +128,7 @@ var playerDao = {
      * */
     getPlayerByUserId: function(uid, cb) {
         if (typeof uid == 'undefined') {
-            cb("param error", null);
+            return cb("param error", null);
         }
 
         playerDao._getPlayer({field: 'userId', value: uid}, cb);
@@ -167,7 +167,7 @@ var playerDao = {
      */
     _getPlayer: function(param, cb) {
         if (typeof param == 'undefined') {
-            cb("param error", null);
+            return cb("param error", null);
         }
 
         var _ref = sqlHelper.selectSql("player", [param.field, param.value]);
@@ -187,7 +187,7 @@ var playerDao = {
             } else {
                 return cb({
                     code: null,
-                    msg: "Player not exists"
+                    msg: "Player not exists with params: " + JSON.stringify(param)
                 }, null);
             }
         });

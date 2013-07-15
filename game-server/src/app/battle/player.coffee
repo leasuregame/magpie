@@ -48,18 +48,18 @@ class Player extends Module
     console.log 'line up: ', @lineUp
     if @lineUp? and @lineUp != ''
       @parseLineUp().forEach (item) =>
-        [pos, card_id] = item 
+        [pos, id] = item 
         
         _hero = (id) =>
           for h in @heros
-            return if h.card_id is parseInt(id) then h
+            return if h.id is parseInt(id) then h
           null
-        _h = _hero(card_id)
+        _h = _hero(id)
 
         if _h
           @matrix.set(pos, _h)
         else
-          logger.info 'you have not such card with id is ' + card_id
+          logger.info 'you have not such card with id is ' + id
     # else
     #   for i in [0...@heros.length]
     #     @matrix.set(i, @heros[i])

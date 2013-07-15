@@ -26,6 +26,8 @@
         "node-inspector": "0.1.10",
         "express": ">=3.2.6",
         "jade": "*",
-        "ejs": "*"
+        "ejs": "*",
+        "csv": "*",
+        "async": "*"
     }
 }

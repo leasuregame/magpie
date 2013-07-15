@@ -100,8 +100,9 @@ describe("Logic Server # ", function() {
             'steps',
             'rewards'
             ].sort());
+          expect( )
           console.log(data);
-        });
+        }); 
       });
 
     });
@@ -155,7 +156,7 @@ describe("Logic Server # ", function() {
 
     describe("logic.trainHandler.strengthen", function() {
       it("should can be strenthen, and return properties", function(){
-        request('logic.trainHandler.strengthen', {playerId: pid, target: 100, sources: [103,102]}, function(data) {
+        request('logic.trainHandler.strengthen', {playerId: pid, target: 100, sources: [150,151]}, function(data) {
           expect(data.code).toEqual(200);
           expect(_.keys(data.msg).sort()).toEqual([
             'exp_obtain', 
@@ -189,7 +190,7 @@ describe("Logic Server # ", function() {
 
     describe("logic.trainHandler.smeltElixir", function() {
       it("card should can be smelt to elixir", function(){
-        request('logic.trainHandler.smeltElixir', {playerId: pid+1, cardIds: [106,107,108]}, function(data) {
+        request('logic.trainHandler.smeltElixir', {playerId: pid, cardIds: [152,153,154, 155, 156]}, function(data) {
           expect(data.code).toEqual(200);
           expect(_.keys(data.msg).sort()).toEqual([
             'elixir', 

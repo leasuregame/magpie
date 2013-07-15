@@ -29,7 +29,7 @@ var getBattleLogObject = function (res) {
 
     battleLog.on('save', function (cb) {
         var id = res.id;
-        app.get('sync').exec('battleLogSync.updateBattleLogById', id, [id, battleLog.getSaveData(), cb]);
+        app.get('sync').exec('battleLogSync.updateBattleLogById', id, {id: id, data: battleLog.getSaveData(), cb: cb});
     });
 
     return battleLog;
@@ -177,11 +177,8 @@ var battleLogDao = {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.deleteSql("battleLog", ["id", id]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.delete(sql, args, function (err, res) {
+        var stm = sqlHelper.deleteSql("battleLog", {"id": id});
+        return dbClient.delete(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[battleLogDao.deleteBattleLogById faild] ", err.stack);
 
@@ -195,19 +192,6 @@ var battleLogDao = {
                 return cb(null, false);
             }
         });
-    },
-
-    /*
-     * 根据 battleLog 删除一条 battleLog 记录
-     * @param {object} battleLog 需要删除的用户对象
-     * @param {function} cb  回调函数
-     * */
-    deleteBattleLog: function (battleLog, cb) {
-        if (typeof (battleLog) == "undefined") {
-            return cb("param error", null);
-        }
-
-        return this.deleteBattleLogById(battleLog.get("id"), cb);
     }
 }
 

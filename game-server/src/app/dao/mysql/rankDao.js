@@ -45,7 +45,51 @@ var Dao = {
 		});
 	},
 
-	updateRanks
+	getRank: function(param, cb) {
+		if (typeof param == 'undefined') {
+			return cb('[Invalid parameters when get a rank] ' + JSON.stringify(param), null);
+		}
+
+		var _ref = sqlHelper.selectSql("rank", param);
+		var sql = _ref[0], args = _ref[1];
+
+		return dbClient.query sql, args, function(err, res) {
+			if (err) {
+				logger.error("[rankDao.getRank faild] ", err.stack);
+
+				return cb({
+					code: err.code,
+					msg: err.message
+				}, null);
+			} else if (!!res && res.length == 1) {
+				return cb(null, new Rank(res[0]));
+			} else {
+				return cb(null, {code: null, msg: 'can not find rank'})
+			}
+		};
+	}, 
+
+	updateRank: function(param, cb) {
+		if (typeof (param.id) == "undefined" || typeof (param.data) == "undefined") {
+		    return cb("param error", null);
+		}
+
+		var stm = sqlHelper.updateSql("user", {"id": param.id}, param.data);
+		return dbClient.update(stm.sql, stm.args, function (err, res) {
+		    if (err) {
+		        logger.error("[userDao.updateUserById faild] ", err.stack);
+
+		        return cb({
+		            code: err.code,
+		            msg: err.message
+		        }, null);
+		    } if (!!res && res.affectedRows > 0) {
+		        return cb(null, true);
+		    } else {
+		        return cb(null, false);
+		    }
+		});
+	}
 };
 
 module.exports = Dao;

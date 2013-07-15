@@ -36,7 +36,7 @@ var createNewCard = function (cardInfo) {
     var card = new Card(cardInfo);
     card.on('save', function (cb) {
         var id = card.id;
-        app.get('sync').exec('cardSync.updateCardById', id, [id, card.getSaveData(), cb]);
+        app.get('sync').exec('cardSync.updateCardById', id, {id: id, data: card.getSaveData(), cb: cb});
     });
     return card;
 };
@@ -105,11 +105,8 @@ var cardDao = {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.selectSql("card", ["id", id]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.query(sql, args, function (err, res) {
+        var stm = sqlHelper.selectSql("card", {id: id});
+        return dbClient.query(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[cardDao.getCardById faild] ", err.stack);
 
@@ -137,13 +134,11 @@ var cardDao = {
         if (typeof (playerId) == "undefined") {
             throw new Error("cardDao.getCardByPlayerId playerId is undefined");
         }
-        var _ref = sqlHelper.selectSql("card", ["playerId", playerId]);
-        var sql = _ref[0];
-        var args = _ref[1];
 
+        var stm = sqlHelper.selectSql("card", {playerId: playerId});
         async.waterfall([
             function (callback) {
-                dbClient.query(sql, args, callback);
+                dbClient.query(stm.sql, stm.args, callback);
             },
             function (rows, callback) {
                 var cardList = [];
@@ -181,11 +176,8 @@ var cardDao = {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.deleteSql("card", ["id", id]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.delete(sql, args, function (err, res) {
+        var stm = sqlHelper.deleteSql("card", {"id": id});
+        return dbClient.delete(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[cardDao.deleteCardById faild] ", err.stack);
 
@@ -199,19 +191,6 @@ var cardDao = {
                 return cb(null, false);
             }
         });
-    },
-
-    /*
-     * 根据 card 删除一条 card 记录
-     * @param {object} card 需要删除的用户对象
-     * @param {function} cb  回调函数
-     * */
-    deleteCard: function (card, cb) {
-        if (typeof (card) == "undefined") {
-            return cb("param error", null);
-        }
-
-        return this.deleteCardById(card.get("id"), cb);
     }
 }
 

@@ -41,7 +41,7 @@ Handler::login = (msg, session, next) ->
 
     (userId, cb) ->
       uid = userId
-      dao.player.getPlayerByUserId uid, (err, player) ->
+      dao.player.getPlayer {userId: uid}, (err, player) ->
         if err and not player
           return cb(null, null)
 

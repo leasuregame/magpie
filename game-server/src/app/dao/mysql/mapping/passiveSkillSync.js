@@ -25,21 +25,18 @@ var passiveSkillSync = {
      * */
     updatePassiveSkillById: function (dbClient, param) {
         var cb = function() {};
-        if(typeof (param[2]) != "undefined") {
-            cb = param[2];
+        if(typeof (param.cb) != "undefined") {
+            cb = param.cb;
         }
 
-        if (typeof (param[0]) == "undefined" || typeof (param[1]) == "undefined") {
+        if (typeof (param.id) == "undefined" || typeof (param.data) == "undefined") {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.updateSql("passiveSkill", ["id", param[0]], param[1]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
+        var stm = sqlHelper.updateSql("passiveSkill", {"id": param.id}, param.data);
         logger.debug(sql, args);
 
-        return dbClient.update(sql, args, function (err, res) {
+        return dbClient.update(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[passiveSkillDao.updatePassiveSkillById faild] ", err.stack);
 

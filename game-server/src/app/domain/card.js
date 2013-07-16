@@ -26,7 +26,6 @@ var Card = (function (_super) {
 
     function Card(param) {
         Card.__super__.constructor.apply(this, arguments);
-        this._fields = FIELDS;
     }
 
     Card.fields = [

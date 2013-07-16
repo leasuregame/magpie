@@ -24,7 +24,6 @@ var BattleLog = (function (_super) {
 
     function BattleLog(param) {
         BattleLog.__super__.constructor.apply(this, arguments);
-        this._fields = FIELDS;
     }
 
     BattleLog.fields = [

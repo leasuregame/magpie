@@ -51,7 +51,6 @@ var Player = (function(_super) {
 
     function Player(param) {
         Player.__super__.constructor.apply(this, arguments);
-        this._fields = FIELDS;
 
         startPowerResumeTimer(this);
     }

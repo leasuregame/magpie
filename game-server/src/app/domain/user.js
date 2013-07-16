@@ -25,7 +25,6 @@ var User = (function (_super) {
 
     function User(param) {
         User.__super__.constructor.apply(this, arguments);
-        this._fields = FIELDS;
     }
 
     User.fields = [

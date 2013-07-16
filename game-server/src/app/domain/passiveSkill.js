@@ -25,7 +25,6 @@ var PassiveSkill = (function (_super) {
 
     function PassiveSkill(param) {
         PassiveSkill.__super__.constructor.apply(this, arguments);
-        this._fields = FIELDS;
     }
 
     PassiveSkill.fields = [

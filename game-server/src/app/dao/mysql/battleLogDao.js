@@ -74,11 +74,8 @@ var battleLogDao = {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.selectSql("battleLog", ["id", id]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.query(sql, args, function (err, res) {
+        var stm = sqlHelper.selectSql("battleLog", {"id": id});
+        return dbClient.query(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[battleLogDao.getBattleLogById faild] ", err.stack);
 
@@ -107,11 +104,8 @@ var battleLogDao = {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.selectSql("battleLog", ["own", playerId]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.query(sql, args, function (err, res) {
+        var stm = sqlHelper.selectSql("battleLog", {"own": playerId});
+        return dbClient.query(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[battleLogDao.getBattleLogByOwnPlayerId faild] ", err.stack);
 
@@ -142,11 +136,8 @@ var battleLogDao = {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.selectSql("battleLog", ["enemy", playerId]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.query(sql, args, function (err, res) {
+        var stm = sqlHelper.selectSql("battleLog", {"enemy": playerId});
+        return dbClient.query(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[battleLogDao.getBattleLogByEnemyPlayerId faild] ", err.stack);
 

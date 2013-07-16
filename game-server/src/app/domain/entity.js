@@ -60,16 +60,16 @@ var Entity = (function (_super) {
     };
 
     Entity.prototype.getSaveData = function () {
-        var key;
-        var param = {};
-
-        for (key in this._mark) {
-            param[key] = this[key];
+        var __fields = this.constructor.fields;
+        var _results = {};
+        for (var i = 0; i < __fields.length; i++) {
+            field = __fields[i];
+            if (this.changedFields.indexOf(field) > -1) {
+                _results[field] = this[field];
+            }
         }
-
-        // reset _mark as empty
-        this._mark = {};
-        return param;
+        this.changedFields = [];
+        return _results;
     };
 
     Entity.prototype.changedData = function() {

@@ -43,7 +43,7 @@ describe("Player Object", function () {
                         data.lv
                     ],
                     function (err, res) {
-                        dao.player.getPlayerById(data.id, function (err, res) {
+                        dao.player.getPlayer({id: data.id}, function (err, res) {
                             player = res;
                             return done();
                         });

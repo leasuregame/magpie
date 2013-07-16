@@ -40,12 +40,9 @@ playerSync = {
             return cb(null, true);
         }
 
-        var _ref = sqlHelper.updateSql("player", ["id", param.id], param.data);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        logger.debug(sql, args);
-        return dbClient.update(sql, args, function (err, res) {
+        var stm = sqlHelper.updateSql("player", {"id": param.id}, param.data);
+        logger.debug(stm);
+        return dbClient.update(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[playerDao.updatePlayerById faild] ", err.stack);
 

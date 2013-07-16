@@ -43,10 +43,14 @@ CREATE TABLE IF NOT EXISTS `player` (
   `fragments` INT(5) UNSIGNED DEFAULT '0',
   `energy` INT(10) UNSIGNED DEFAULT '0',
   `elixir` INT(10) UNSIGNED DEFAULT '0', 
+  
+  -- 竞技排名信息：荣誉点，头衔，头衔等级
+  `honorPoint` INT(10) UNSIGNED DEFAULT '0',
+  `title` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
+  `rank` SMALLINT(3) UNSIGNED DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 
 -- ----------------------------
 -- Table structure for card
@@ -85,10 +89,28 @@ CREATE TABLE IF NOT EXISTS `battleLog` (
 -- ---------------------------------
 DROP TABLE IF EXISTS `passiveSkill`;
 CREATE TABLE IF NOT EXISTS `passiveSkill` (
-    `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-    `createTime` BIGINT(20) UNSIGNED NOT NULL,
-    `cardId` INT(10) UNSIGNED NOT NULL,
-    `name` VARCHAR(20) COLLATE utf8_unicode_ci NOT NULL,
-    `value` FLOAT(5,1) UNSIGNED DEFAULT '0',
-    PRIMARY KEY (`id`)
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `createTime` BIGINT(20) UNSIGNED NOT NULL,
+  `cardId` INT(10) UNSIGNED NOT NULL,
+  `name` VARCHAR(20) COLLATE utf8_unicode_ci NOT NULL,
+  `value` FLOAT(5,1) UNSIGNED DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ---------------------------------
+-- Table structure for rank
+-- ---------------------------------
+DROP TABLE IF EXISTS `rank`;
+CREATE TABLE IF NOT EXISTS `rank` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `createTime` BIGINT(20) UNSIGNED NOT NULL,
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `ranking` INT(10) UNSIGNED NOT NULL,
+  `counts` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
+  -- `challengeCount` INT(10) UNSIGNED DEFAULT '0',
+  -- `winCount` INT(10) UNSIGNED DEFAULT '0',
+  -- `loseCount` INT(10) UNSIGNED DEFAULT '0',
+  -- `winningStreakCount` INT(10) UNSIGNED DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `INDEX_RANKING` (`ranking`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

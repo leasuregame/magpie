@@ -96,45 +96,6 @@ var playerDao = {
     },
 
     /*
-     * 根据 id 查找一条 player 记录
-     * @param {number} id 需要查找的记录号
-     * @param {function} cb  回调函数
-     * */
-    getPlayerById: function (id, cb) {
-        if (typeof (id) == "undefined") {
-            return cb("param error", null);
-        }
-
-        playerDao._getPlayer({field: 'id', value: id}, cb);
-    },
-
-    /*
-     * 根据 name 查找一条 player 记录
-     * @param {string} name 需要查找的账号名
-     * @param {function} cb  回调函数
-     * */
-    getPlayerByName: function (name, cb) {
-        if (typeof (name) == "undefined") {
-            return cb("param error", null);
-        }
-
-        playerDao._getPlayer({field: 'name', value: name}, cb);
-    },
-
-    /*
-     * 根据 userId 查找一条 player 记录
-     * @param {string} uid 需要查找的用户Id 
-     * @param {function} cb  回调函数
-     * */
-    getPlayerByUserId: function(uid, cb) {
-        if (typeof uid == 'undefined') {
-            return cb("param error", null);
-        }
-
-        playerDao._getPlayer({field: 'userId', value: uid}, cb);
-    },
-
-    /*
      * 根据 id 查找一条 player 记录, 包括所有的卡牌等其他信息
      * @param {number} id 需要查找的记录号
      * @param {function} cb  回调函数
@@ -142,7 +103,7 @@ var playerDao = {
     getPlayerInfo: function (id, cb) {
         async.parallel([
             function (callback) {
-                playerDao.getPlayerById(id, callback);
+                playerDao.getPlayer({id: id}, callback);
             },
             function (callback) {
                 cardDao.getCardByPlayerId(id, callback);
@@ -161,20 +122,17 @@ var playerDao = {
 
     /*
      * 根据所给参数条件查找一条 player 记录
-     * @param {object} param 包含两个属性 field 和 value
-     *                       例如：{field: id, value: 1} 表示查找id=1的player
+     * @param {object} param is key, value object
+     *                       例如：{id: 1} 表示查找id=1的player
      * @param {function} cb  回调函数
      */
-    _getPlayer: function(param, cb) {
-        if (typeof param == 'undefined') {
-            return cb("param error", null);
+    getPlayer: function(param, cb) {
+        if (typeof param == 'undefined' || typeof param !== 'object') {
+            return cb("param error:" + JSON.stringify(param), null);
         }
 
-        var _ref = sqlHelper.selectSql("player", [param.field, param.value]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.query(sql, args, function(err, res) {
+        var stm = sqlHelper.selectSql("player", param);
+        return dbClient.query(stm.sql, stm.args, function(err, res) {
             if (err) {
                 logger.error("[playerDao.getPlayerByUser faild] ", err.stack);
 
@@ -204,11 +162,8 @@ var playerDao = {
             cb("param error", null);
         }
 
-        var _ref = sqlHelper.deleteSql("player", ["id", id]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.delete(sql, args, function (err, res) {
+        var stm = sqlHelper.deleteSql("player", {"id": id});
+        return dbClient.delete(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[playerDao.deletePlayerById faild] ", err.stack);
 

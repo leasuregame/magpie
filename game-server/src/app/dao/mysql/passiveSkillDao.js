@@ -33,7 +33,7 @@ var getPassiveSkillObject = function(res) {
 
     passiveSkill.on('save', function (cb) {
         var id = res.id;
-        app.get('sync').exec('passiveSkillSync.updatePassiveSkillById', id, [id, passiveSkill.getSaveData(), cb]);
+        app.get('sync').exec('passiveSkillSync.updatePassiveSkillById', id, {id: id, data: passiveSkill.getSaveData(), cb: cb});
     });
 
     return passiveSkill;
@@ -77,11 +77,8 @@ var passiveSkillDao = {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.selectSql("passiveSkill", ["id", id]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.query(sql, args, function (err, res) {
+        var stm = sqlHelper.selectSql("passiveSkill", {"id": id});
+        return dbClient.query(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[passiveSkillDao.getPassiveSkillById faild] ", err.stack);
 
@@ -110,11 +107,8 @@ var passiveSkillDao = {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.selectSql("passiveSkill", ["cardId", cardId]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.query(sql, args, function (err, res) {
+        var stm = sqlHelper.selectSql("passiveSkill", {"cardId": cardId});
+        return dbClient.query(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[passiveSkillDao.getPassiveSkillByCardId faild] ", err.stack);
 
@@ -145,11 +139,8 @@ var passiveSkillDao = {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.deleteSql("passiveSkill", ["id", id]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.delete(sql, args, function (err, res) {
+        var stm = sqlHelper.deleteSql("passiveSkill", {"id": id});
+        return dbClient.delete(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[passiveSkillDao.deletePassiveSkillById faild] ", err.stack);
 

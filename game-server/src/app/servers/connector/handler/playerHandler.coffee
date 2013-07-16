@@ -10,7 +10,7 @@ Handler::createPlayer = (msg, session, next) ->
   areaId = msg.areaId
   uid = session.uid
   
-  dao.player.getPlayerByName name, (err, player) ->
+  dao.player.getPlayer {name: name}, (err, player) ->
     if player
       return next(null, {code: 501, msg: "player exists."})
       

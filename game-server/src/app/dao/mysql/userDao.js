@@ -37,7 +37,7 @@ var getUserObject = function (res) {
 
     user.on('save', function (cb) {
         var id = res.id;
-        app.get('sync').exec('userSync.updateUserById', id, [id, user.getSaveData(), cb]);
+        app.get('sync').exec('userSync.updateUserById', id, {id: id, data: user.getSaveData(), cb: cb});
     });
 
     return user;
@@ -82,11 +82,8 @@ var userDao = {
             cb("param error", null);
         }
 
-        var _ref = sqlHelper.selectSql("user", ["id", id]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.query(sql, args, function (err, res) {
+        var stm = sqlHelper.selectSql("user", {"id": id});
+        return dbClient.query(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[userDao.getUserById faild] ", err.stack);
 
@@ -115,11 +112,8 @@ var userDao = {
             cb("param error", null);
         }
 
-        var _ref = sqlHelper.selectSql("user", ["account", account]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.query(sql, args, function (err, res) {
+        var stm = sqlHelper.selectSql("user", {"account": account});
+        return dbClient.query(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[userDao.getUserByAccount faild] ", err.stack);
 
@@ -148,11 +142,8 @@ var userDao = {
             cb("param error", null);
         }
 
-        var _ref = sqlHelper.deleteSql("user", ["id", id]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.delete(sql, args, function (err, res) {
+        var stm = sqlHelper.deleteSql("user", {"id": id});
+        return dbClient.delete(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[userDao.deleteUserById faild] ", err.stack);
 
@@ -168,19 +159,6 @@ var userDao = {
                 }
             }
         });
-    },
-
-    /*
-     * 根据 user 删除一条 user 记录
-     * @param {object} user 需要删除的用户对象
-     * @param {function} cb  回调函数
-     * */
-    deleteUser: function (user, cb) {
-        if (typeof (user) == "undefined") {
-            cb("param error", null);
-        }
-
-        return this.deleteUserById(user.getId(), cb);
     }
 };
 

@@ -119,7 +119,7 @@ describe("Card Data Access Object", function () {
             it("should can no get card by id", function (done) {
                 dao.card.getCardById(data.id, function (err, res) {
                     should.strictEqual(res, null);
-                    err.msg.should.be.equal("Card not exist");
+                    err.msg.should.be.equal("卡牌不存在");
                     return done();
                 })
             });
@@ -129,60 +129,6 @@ describe("Card Data Access Object", function () {
                     should.strictEqual(err, null);
                     res.should.eql([]);
                     return done();
-                })
-            });
-        });
-    });
-
-    describe("#updatecardBy...", function () {
-        describe("when card exist", function () {
-            before(function (done) {
-                console.log("delete data card");
-                app.get("dbClient")["delete"]("delete from card", [], function () {
-                    console.log("insert data card");
-                    app.get("dbClient")["insert"]("insert into card (id, createTime, playerId, tableId, lv, exp, skillLv, hpAddition, atkAddition) value (?, ?, ?, ?, ?, ?, ?, ?, ?);",
-                        [
-                            data.id,
-                            Date.now(),
-                            data.playerId,
-                            data.tableId,
-                            data.lv,
-                            data.exp,
-                            data.skillLv,
-                            data.hpAddition,
-                            data.atkAddition
-                        ],
-                        function (err, res) {
-                            return done();
-                        });
-                });
-            });
-
-            after(function (done) {
-                app.get("dbClient")["delete"]("delete from card", [], function () {
-                    done();
-                });
-            });
-
-            it("should can be update card by id", function (done) {
-                dao.card.updateCardById(data.id, {
-                    tableId: 20
-                }, function (err, res) {
-                    should.strictEqual(err, null);
-                    res.should.be.true;
-                    done();
-                })
-            });
-        });
-
-        describe("when card no exist", function () {
-            it("should can no update card by id", function (done) {
-                dao.card.updateCardById(data.id, {
-                    tableId: 20
-                }, function (err, res) {
-                    should.strictEqual(err, null);
-                    res.should.be.false;
-                    done();
                 })
             });
         });
@@ -225,27 +171,11 @@ describe("Card Data Access Object", function () {
                     return done();
                 });
             });
-
-            it("should can be delete by card", function (done) {
-                dao.card.deleteCard(new Card(data), function (err, res) {
-                    should.strictEqual(err, null);
-                    res.should.be.true;
-                    return done();
-                });
-            });
         });
 
         describe("when card no exist", function () {
             it("should can no delete by id", function (done) {
                 dao.card.deleteCardById(data.id, function (err, res) {
-                    should.strictEqual(err, null);
-                    res.should.be.false;
-                    return done();
-                });
-            });
-
-            it("should can no delete by card", function (done) {
-                dao.card.deleteCard(new Card(data), function (err, res) {
                     should.strictEqual(err, null);
                     res.should.be.false;
                     return done();

@@ -6,9 +6,9 @@ async = require 'async'
 should = require 'should'
 
 describe "Player Dao Access Object", ->
-  uid = 1
-  pid = 1
-  areaId = 1
+  uid = 1000
+  pid = 1000
+  areaId = 10
   name = 'test_player_name'
 
   describe "#createPlayer", ->
@@ -58,7 +58,7 @@ describe "Player Dao Access Object", ->
           name: name
         }, (err, res) ->
           should.strictEqual null, res
-          err.should.eql { code: 'ER_DUP_ENTRY', msg: 'ER_DUP_ENTRY: Duplicate entry \'1\' for key \'PRIMARY\'' }
+          err.should.eql { code: 'ER_DUP_ENTRY', msg: 'ER_DUP_ENTRY: Duplicate entry \'1000\' for key \'PRIMARY\'' }
           done()
 
 
@@ -72,7 +72,7 @@ describe "Player Dao Access Object", ->
 
     describe "when player exists", ->
       it "should can get the existed user with id", (done) ->
-        dao.player.getPlayerById pid, (err, res) ->
+        dao.player.getPlayer {id: pid}, (err, res) ->
           should.strictEqual null, err
           res.id.should.be.equal(pid)
           res.name.should.be.equal(name)
@@ -80,7 +80,15 @@ describe "Player Dao Access Object", ->
           done()
 
       it "should can get the existed user with name", (done) ->
-        dao.player.getPlayerByName name, (err, res) ->
+        dao.player.getPlayer {name: name}, (err, res) ->
+          should.strictEqual null, err
+          res.id.should.be.equal(pid)
+          res.name.should.be.equal(name)
+          # check other property of res
+          done()
+
+      it "shoudl can get the existed user with userId", (done) ->
+        dao.player.getPlayer {userId: uid}, (err, res) ->
           should.strictEqual null, err
           res.id.should.be.equal(pid)
           res.name.should.be.equal(name)
@@ -90,20 +98,20 @@ describe "Player Dao Access Object", ->
     describe "when player not exists", ->
       it "get user with id should return error", (done) ->
         pid_not_exists = 100000
-        dao.player.getPlayerById pid_not_exists, (err, res) ->
+        dao.player.getPlayer {id: pid_not_exists}, (err, res) ->
           should.strictEqual null, res
-          err.should.eql {code: null, msg: 'Player not exists'}
+          err.should.eql {code: null, msg: 'Player not exists with params: {\"id\":100000}'}
           done()
 
       it "get user with name should return error", (done) ->
         name_not_exists = 'not exists name'
-        dao.player.getPlayerByName name_not_exists, (err, res) ->
+        dao.player.getPlayer {name: name_not_exists}, (err, res) ->
           should.strictEqual null, res
-          err.should.eql {code: null, msg: 'Player not exists'}
+          err.should.eql {code: null, msg: 'Player not exists with params: {\"name\":\"not exists name\"}'}
           done()
 
     describe "get all player info", ->
-      _pid = 1000
+      _pid = 1001
       now = Date.now()
       
       before (done) ->
@@ -138,7 +146,7 @@ describe "Player Dao Access Object", ->
       it "should can be got all the player infomation", (done) ->
         dao.player.getPlayerInfo _pid, (err, player) ->
           should.strictEqual null, err
-          player.should.be.equal({})
+          #player.toJson().should.be.equal({})
           player.should.be.a('object')
           player.userId.should.be.equal(uid)
           player.name.should.be.equal(name+'__')

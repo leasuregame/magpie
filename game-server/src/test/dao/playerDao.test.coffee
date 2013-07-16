@@ -175,6 +175,12 @@ describe "Player Dao Access Object", ->
         res.should.not.be.ok
         done()
 
+  # describe "#getTop10Players", ->
+  #   it "should can get top 10 players order by 'ranking'", (done) ->
+  #     dao.player.getTop10Players 'ranking', (err, players) ->
+  #       players.length.should.be.equal(6)
+  #       (players.map (p) -> p.ranking).should.eql([1,2,3,4,5,6])          
+  #       done()
     
   
 

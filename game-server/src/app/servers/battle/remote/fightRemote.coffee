@@ -37,3 +37,26 @@ exports.pve = (args, callback) ->
       
       callback(null, bl.reports())
   )
+
+exports.pvp = (args, callback) ->
+  targetId = args.targetId
+  playerId = args.playerId
+  playerManager.getPlayers [playerId, targetId], (err, results) ->
+    if err
+      return callback(err, null)
+
+    console.log 'players for fight: ', err, results
+    p_data = results[playerId]
+    attacker = new Player(p_data)
+    console.log 'before set line up'
+    attacker.setLineUp p_data.get('lineUp')
+    console.log 'after set line up'
+    t_data = results[targetId]
+    defender = new Player(t_data)
+    defender.setLineUp t_data.get('lineUp')
+
+    battleLog.clear()
+    battle = new Battle(attacker, defender)
+    battle.process()
+
+    next null, {code: 200, msg: JSON.stringify(battleLog.reports())}

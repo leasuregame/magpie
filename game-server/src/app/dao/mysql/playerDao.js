@@ -169,7 +169,32 @@ var playerDao = {
 
             if (!!res && res.length > 0) {
                 var playerList = res.map(function(data) {
-                    return createNewPlayer(data);
+                    return new Player(data);
+                });
+                return cb(null, playerList);
+            } else {
+                return cb(null, []);
+            }
+        });
+    },
+
+    getPlayers: function (where, cb) {
+        if (arguments.length == 1) {
+            where = '';
+        }
+        var sql = 'select * from player ' + where !== '' ? ' where ' + where : '';
+        return dbClient.query(sql, function(err, res){
+            if (err) {
+                logger.error('[playerDao.getPlayers faild]', err.stack);
+                return cb({
+                    code: err.code,
+                    msg: err.message
+                }, null);
+            }
+
+            if (!!res && res.length > 0) {
+                var playerList = res.map(function(data) {
+                    return new Player(data);
                 });
                 return cb(null, playerList);
             } else {

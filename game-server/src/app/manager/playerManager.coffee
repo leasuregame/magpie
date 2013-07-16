@@ -56,6 +56,10 @@ class Manager
           cb(null, results)
     )
 
+  @top10: (cb) ->
+    
+
+
 getActivatedCards = (params, cb) ->
   dao.card.getCardByPlayersId params.pid, {activated: 1}, (err, cards) ->
     if err isnt null

@@ -151,6 +151,32 @@ var playerDao = {
         });
     },
 
+    getTop10Players: function (orderBy, cb) {
+        if (arguments.length == 1) {
+            cb = orderBy;
+            orderBy = 'ranking';
+        }
+
+        var sql = sqlHelper.topPlayersSql(orderBy, 10);
+        return dbClient.query(sql, function(err, res){
+            if (err) {
+                logger.error('[playerDao.getTop10Players faild]', err.stack);
+                return cb({
+                    code: err.code,
+                    msg: err.message
+                }, null);
+            }
+
+            if (!!res && res.length > 0) {
+                var playerList = res.map(function(data) {
+                    return createNewPlayer(data);
+                });
+                return cb(null, playerList);
+            } else {
+                return cb(null, []);
+            }
+        });
+    },
 
     /*
      * 根据 id 删除一条 player 记录

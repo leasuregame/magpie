@@ -38,16 +38,19 @@ CREATE TABLE IF NOT EXISTS `player` (
   `ability` INT(10) UNSIGNED DEFAULT '0',
   `task` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `pass` SMALLINT(5) UNSIGNED DEFAULT '0',
-  `passMark` BLOB(20),
-  `dailyGift` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
-  `fragments` INT(5) UNSIGNED DEFAULT '0',
-  `energy` INT(10) UNSIGNED DEFAULT '0',
-  `elixir` INT(10) UNSIGNED DEFAULT '0', 
+  `passMark` BLOB(20),  -- 闯关标记
+  `dailyGift` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '', -- 每日奖励
+  `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
+  `energy` INT(10) UNSIGNED DEFAULT '0',  -- 活力值
+  `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数
   
   -- 竞技排名信息：荣誉点，头衔，头衔等级
-  `honorPoint` INT(10) UNSIGNED DEFAULT '0',
-  `title` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
-  `rank` SMALLINT(3) UNSIGNED DEFAULT '0',
+  `honorPoint` INT(10) UNSIGNED DEFAULT '0', -- 荣誉点
+  `title` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',  -- 头衔称号
+  `rank` SMALLINT(3) UNSIGNED DEFAULT '0',  -- 头衔称号等级
+  `ranking` INT(10) UNSIGNED DEFAULT '0',   -- 排名
+  -- counts = {challenge: 0, win: 0, lose: 0, winingStreak: 0}
+  `counts` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',  -- 挑战统计数
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -100,17 +103,17 @@ CREATE TABLE IF NOT EXISTS `passiveSkill` (
 -- ---------------------------------
 -- Table structure for rank
 -- ---------------------------------
-DROP TABLE IF EXISTS `rank`;
-CREATE TABLE IF NOT EXISTS `rank` (
-  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `createTime` BIGINT(20) UNSIGNED NOT NULL,
-  `playerId` INT(10) UNSIGNED NOT NULL,
-  `ranking` INT(10) UNSIGNED NOT NULL,
-  `counts` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
-  -- `challengeCount` INT(10) UNSIGNED DEFAULT '0',
-  -- `winCount` INT(10) UNSIGNED DEFAULT '0',
-  -- `loseCount` INT(10) UNSIGNED DEFAULT '0',
-  -- `winningStreakCount` INT(10) UNSIGNED DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `INDEX_RANKING` (`ranking`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+-- DROP TABLE IF EXISTS `rank`;
+-- CREATE TABLE IF NOT EXISTS `rank` (
+--   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+--   `createTime` BIGINT(20) UNSIGNED NOT NULL,
+--   `playerId` INT(10) UNSIGNED NOT NULL,
+--   `ranking` INT(10) UNSIGNED NOT NULL,
+--   `counts` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
+--   -- `challengeCount` INT(10) UNSIGNED DEFAULT '0',
+--   -- `winCount` INT(10) UNSIGNED DEFAULT '0',
+--   -- `loseCount` INT(10) UNSIGNED DEFAULT '0',
+--   -- `winningStreakCount` INT(10) UNSIGNED DEFAULT '0',
+--   PRIMARY KEY (`id`),
+--   UNIQUE KEY `INDEX_RANKING` (`ranking`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

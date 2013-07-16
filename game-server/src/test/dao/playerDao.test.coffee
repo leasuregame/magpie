@@ -175,83 +175,8 @@ describe "Player Dao Access Object", ->
         res.should.not.be.ok
         done()
 
-  # describe "#updatePlayer", ->
-  #   create_time = Date.now()
-
-  #   before (done) ->
-  #     dbClient.insert 'insert into player (id, userId, areaId, name, createTime) values (?,?,?,?,?)',
-  #       [pid, uid, areaId, name, create_time], -> done()
-
-  #   after (done) ->
-  #     dbClient.delete 'delete from player where id = ?', [pid], -> done()
-
-  #   describe "updatePlayerById", ->
-  #     it "should can be update player with specific fields", (done) ->
-  #       dao.player.updatePlayerById pid, {
-  #         areaId: 5
-  #         name: 'new name'
-  #         userId: 10
-  #         money: 1000
-  #       }, (err, res) ->
-  #         should.strictEqual null, err
-  #         res.should.be.ok
-
-  #         dbClient.query 'select * from player where id = ?', [pid], (err, res) ->
-  #           res.length.should.be.equal(1)
-
-  #           player = res[0]
-  #           player.should.eql { 
-  #             id: 1,
-  #             createTime: create_time,
-  #             userId: 10,
-  #             areaId: 5,
-  #             name: 'new name',
-  #             power: 0,
-  #             lv: 0,
-  #             exp: 0,
-  #             money: 1000,
-  #             gold: 0,
-  #             lineUp: '',
-  #             ability: 0,
-  #             task: '',
-  #             pass: 0,
-  #             passMark: null 
-  #           }
-  #           done()
-
-  #   describe "updatePlayerByName", ->
-  #     it "should can be update player with specific fields", (done) ->
-  #       dao.player.updatePlayerByName name, {
-  #         areaId: 5
-  #         name: 'new name'
-  #         userId: 10
-  #         money: 1000
-  #       }, (err, res) ->
-  #         should.strictEqual null, err
-  #         res.should.be.ok
-
-  #         dbClient.query 'select * from player where id = ?', [pid], (err, res) ->
-  #           res.length.should.be.equal(1)
-
-  #           player = res[0]
-  #           player.should.eql { 
-  #             id: 1,
-  #             createTime: create_time,
-  #             userId: 10,
-  #             areaId: 5,
-  #             name: 'new name',
-  #             power: 0,
-  #             lv: 0,
-  #             exp: 0,
-  #             money: 1000,
-  #             gold: 0,
-  #             lineUp: '',
-  #             ability: 0,
-  #             task: '',
-  #             pass: 0,
-  #             passMark: null 
-  #           }
-  #           done()
+    
+  
 
 
 

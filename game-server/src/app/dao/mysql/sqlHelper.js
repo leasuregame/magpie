@@ -11,6 +11,7 @@
  * sql helper
  * */
 
+var util = require('util');
 
 var sqlHelper = {
     /*
@@ -105,6 +106,10 @@ var sqlHelper = {
             sql: sql, 
             args: stm.args
         };
+    },
+
+    topPlayersSql: function(orderBy, limit) {
+        return util.format("select * from player order by `%s` limit %s", orderBy, limit);
     }
 };
 

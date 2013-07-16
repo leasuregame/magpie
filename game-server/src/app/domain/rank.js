@@ -13,21 +13,14 @@
 var Entity = require('./entity');
 var utility = require('../common/utility');
 
-var FIELDS = {
-	id: true,
-	createTime: true,
-	playerId: true,
-	ranking: true,
-	counts: true
-};
-
 var Rank = (function(_super) {
 	utility.extends(Rank, _super);
 
 	function Rank(param) {
 		Rank.__super__.constructor.apply(this, arguments);
-		this._fields = FIELDS;
 	}
+
+	Rank.fields = ['id', 'createTime', 'playerId', 'ranking', 'counts'];
 
 	Rank.prototype.toJson = function() {
 		return {
@@ -40,3 +33,5 @@ var Rank = (function(_super) {
 
 	return Rank;
 })(Entity);
+
+module.exports = Rank;

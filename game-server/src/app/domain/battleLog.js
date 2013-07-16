@@ -15,14 +15,6 @@ var utility = require('../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
 
-var FIELDS = {
-    id: true,
-    createTime: true,
-    own: true,
-    enemy: true,
-    battleLog: true
-};
-
 /*
  * BattleLog 与 battleLog 表对应的数据类，提供简单操作
  * @param {object} row 数据库 battleLog 表中的一行记录
@@ -34,6 +26,14 @@ var BattleLog = (function (_super) {
         BattleLog.__super__.constructor.apply(this, arguments);
         this._fields = FIELDS;
     }
+
+    BattleLog.fields = [
+        'id',
+        'createTime',
+        'own',
+        'enemy',
+        'battleLog'
+    ];
 
     return BattleLog;
 })(Entity);

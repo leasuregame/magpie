@@ -20,8 +20,7 @@ var Entity = (function (_super) {
     utility.extends(Entity, _super);
 
     function Entity(param) {
-        this._mark = {};
-        this._fields = {};
+        this.changedFields = [];
 
         if (param) {
             setAttr(this, param);
@@ -73,6 +72,19 @@ var Entity = (function (_super) {
         return param;
     };
 
+    Entity.prototype.changedData = function() {
+        var __fields = this.constructor.fields;
+        var _results = {};
+        for (var i = 0; i < __fields.length; i++) {
+            field = __fields[i];
+            if (this.changedFields.indexOf(field) > -1) {
+                _results[field] = this[field];
+            }
+        }
+        this.changedFields = [];
+        return _results;
+    };
+
     return Entity;
 
 })(EventEmitter);
@@ -83,8 +95,8 @@ var setAttr = function (self, name, value) {
             self[name] = value;
         } else if (self[name] !== value) {
             self[name] = value;
-            if(self._fields[name])  {
-                self._mark[name] = true;
+            if(self.constructor.fields.indexOf(name) > -1)  {
+                self.changedFields.push(name);
             }
         }
     } else if (arguments.length === 2) {
@@ -112,8 +124,8 @@ var setAttr = function (self, name, value) {
                         self[key] = value;
                     } else if (self[key] !== value) {
                         self[key] = value;
-                        if(self._fields[key])  {
-                            self._mark[name] = true;
+                        if(self.constructor.fields.indexOf(key) > -1)  {
+                            self.changedFields.push(key);
                         }
                     }
                 }

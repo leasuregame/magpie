@@ -18,31 +18,6 @@ var playerConfig = require('../../config/data/player');
 var table = require('../manager/table');
 var _ = require("underscore");
 
-var FIELDS = {
-    id: true,
-    createTime: true,
-    userId: true,
-    areaId: true,
-    name: true,
-    power: true,
-    lv: true,
-    exp: true,
-    money: true,
-    gold: true,
-    lineUp: true,
-    ability: true,
-    task: true,
-    pass: true,
-    passMark: true,
-    dailyGift: true,
-    fragments: true,
-    energy: true,
-    elixir: true,
-    honnerPoint: true,
-    title: true,
-    rank: true
-};
-
 var startPowerResumeTimer = function(player) {
     var resumePoint = playerConfig.POWER_RESUME.point;
     var interval = playerConfig.POWER_RESUME.interval;
@@ -80,6 +55,31 @@ var Player = (function(_super) {
 
         startPowerResumeTimer(this);
     }
+
+    Player.fields = [
+        'id',
+        'createTime',
+        'userId',
+        'areaId',
+        'name',
+        'power',
+        'lv',
+        'exp',
+        'money',
+        'gold',
+        'lineUp',
+        'ability',
+        'task',
+        'pass',
+        'passMark',
+        'dailyGift',
+        'fragments',
+        'energy',
+        'elixir',
+        'honnerPoint',
+        'title',
+        'rank'
+    ];
 
     Player.prototype.init = function() {
         this.cards = {};

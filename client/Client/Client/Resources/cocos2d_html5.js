@@ -120,7 +120,7 @@
             'src/view/tournamentLayer.js',
             'src/view/strengthenLayer.js',
 
-            'src/view/mainScene.js',
+            'src/view/main.js',
             'src/myApp.js'                   //add your own files in order here
         ]
     };

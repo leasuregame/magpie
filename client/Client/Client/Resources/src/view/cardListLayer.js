@@ -12,16 +12,15 @@
  * */
 
 
-var CustomTableViewCell = cc.TableViewCell.extend({
-    draw:function (ctx) {
-        this._super(ctx);
-    }
-});
+var SELECT_TYPE_LITER = 1;
+var SELECT_TYPE_DROP = 0;
 
 var CardListLayer = cc.Layer.extend({
     _cardList: null,
     _sortType: null,
+    _cardListCell: {},
     _selectCount: 0,
+    _selectType: SELECT_TYPE_DROP,
 
     init: function (sortType, selectCount) {
         cc.log("CardListLayer init");
@@ -29,75 +28,127 @@ var CardListLayer = cc.Layer.extend({
         if (!this._super()) return false;
 
         this._cardList = gameData.cardList;
+        this._sortType = sortType;
+        this._selectCount = selectCount;
 
-        var tableView = cc.TableView.create(this, cc.size(60, 350));
-        tableView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
-        tableView.setPosition(cc.p(winSize.width - 150, winSize.height / 2 - 150));
-        tableView.setDelegate(this);
-        tableView.setVerticalFillOrder(cc.TABLEVIEW_FILL_TOPDOWN);
-        this.addChild(tableView);
-        tableView.reloadData();
+        var scrollViewLayer = cc.Layer.create();
+        var len = this._cardList.get("length");
+        var cardList = this._cardList.get("cardList");
+        var key;
+        var str;
+
+        for(key in cardList) {
+            var card = cardList[key];
+
+            var cell = cc.LayerColor.create(cc.c4b(100, 100, 0, 100), GAME_WIDTH, 100);
+            cell.setAnchorPoint(cc.p(0, 0));
+            cell.setPosition(cc.p(0, 0));
+            cell.isSelect = false;
+
+            var cardItem = cc.MenuItemImage.create(s_h_hero_1, s_h_hero_1, function() {
+                cc.log("click card Item" + key);
+            }, this);
+            cardItem.setPosition(cc.p(100, 50));
+
+            var selectLabel = cc.LabelTTF.create("未选择", 'Times New Roman', 30);
+            var selectItem = cc.MenuItemLabel.create(selectLabel, function() {
+                cc.log("click selectItem");
+                cell.isSelect = !cell.isSelect;
+                var str = cell.isSelect ? "已选择" : "未选择";
+                selectLabel.setString(str);
+            }, this);
+            selectItem.setPosition(cc.p(560, 50));
+
+            var str = card.get("isUse") ? "已上阵" : "未上阵";
+            var useLabel = cc.LabelTTF.create(str, 'Times New Roman', 30);
+            var useItem = cc.MenuItemLabel.create(useLabel, function() {
+                cc.log("click useItem");
+                card.clickUse();
+                var str = card.get("isUse") ? "已上阵" : "未上阵";
+                useLabel.setString(str);
+            }, this);
+            useItem.setPosition(cc.p(420, 50));
+
+            var lazyMenu = LazyMenu.create(cardItem, selectItem, useItem);
+            lazyMenu.setPosition(cc.p(0, 0));
+            cell.addChild(lazyMenu);
+
+            var nameLabel = cc.LabelTTF.create("卡名：" + card.get("name"), 'Times New Roman', 30);
+            nameLabel.setAnchorPoint(cc.p(0, 0));
+            nameLabel.setPosition(cc.p(200, 70));
+            cell.addChild(nameLabel);
+
+            var lvLabel = cc.LabelTTF.create("等级：" + card.get("lv"), 'Times New Roman', 30);
+            lvLabel.setAnchorPoint(cc.p(0, 0));
+            lvLabel.setPosition(cc.p(200, 35));
+            cell.addChild(lvLabel);
+
+            var starLabel = cc.LabelTTF.create("星级：" + card.get("star"), 'Times New Roman', 30);
+            starLabel.setAnchorPoint(cc.p(0, 0));
+            starLabel.setPosition(cc.p(200, 0));
+            cell.addChild(starLabel);
+
+
+            scrollViewLayer.addChild(cell);
+
+            this._cardListCell[key] = cell;
+        }
+
+        var scrollView = cc.ScrollView.create(cc.size(GAME_WIDTH, 840), scrollViewLayer);
+        scrollView.setContentSize(cc.size(GAME_WIDTH, 840));
+        scrollView.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 150));
+        scrollView.setBounceable(false);
+        scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        scrollView.updateInset();
+        this.addChild(scrollView);
+
+        this.update();
+
+        str = this._selectType == SELECT_TYPE_DROP ? "升序排列" : "降序排列";
+        var selectTypeLabel = cc.LabelTTF.create(str, 'Times New Roman', 30);
+        var selectTypeItem = cc.MenuItemLabel.create(selectTypeLabel, function() {
+            cc.log("click selectTypeItem");
+            this._selectType ^= 1;
+            str = this._selectType == SELECT_TYPE_DROP ? "升序排列" : "降序排列";
+            useLabel.setString(str);
+        }, this);
+        selectTypeItem.setPosition(cc.p(420, 50));
+
+        var okItem = cc.MenuItemFont.create("确定", this._onClickOk, this);
 
         return true;
     },
 
-    toExtensionsMainLayer:function (sender) {
-        var scene = new ExtensionsTestScene();
-        scene.runThisTest();
-    },
+    update: function () {
+        cc.log("CardListLayer update");
 
-    scrollViewDidScroll:function (view) {
-    },
-    scrollViewDidZoom:function (view) {
-    },
+        var cardListIndex = this._cardList.sortCardList(this._sortType);
+        var len = cardListIndex.length;
 
-    tableCellTouched:function (table, cell) {
-        cc.log("cell touched at index: " + cell.getIdx());
-    },
-
-    cellSizeForTable:function (table) {
-        return cc.size(60, 60);
-    },
-
-    tableCellAtIndex:function (table, idx) {
-        var strValue = idx.toFixed(0);
-        var cell = table.dequeueCell();
-        var label;
-        if (!cell) {
-            cell = new CustomTableViewCell();
-            var sprite = cc.Sprite.create(s_image_icon);
-            sprite.setAnchorPoint(cc.p(0,0));
-            sprite.setPosition(cc.p(0, 0));
-            cell.addChild(sprite);
-
-            label = cc.LabelTTF.create(strValue, "Helvetica", 20.0);
-            label.setPosition(cc.p(0,0));
-            label.setAnchorPoint(cc.p(0,0));
-            label.setTag(123);
-            cell.addChild(label);
-        } else {
-            label = cell.getChildByTag(123);
-            label.setString(strValue);
+        for(var i = 0; i < len; ++i) {
+            this._cardListCell[cardListIndex[i]].setPosition(cc.p(0, i * 110));
         }
-
-        return cell;
-    },
-
-    numberOfCellsInTableView:function (table) {
-        return 25;
     },
 
     // 重新设置排序方式，读取卡牌列表，并更新到界面
     setSortType: function (sortType) {
+        cc.log("CardListLayer setSortType");
+
         if (sortType != this._sortType) {
             this._sortType = sortType;
         }
     },
 
-    setSelectCount: function(selectCount) {
-        if(selectCount != this._selectCount) {
+    setSelectCount: function (selectCount) {
+        cc.log("CardListLayer setSelectCount");
+
+        if (selectCount != this._selectCount) {
             this._selectCount = selectCount;
         }
+    },
+
+    _onClickOk: function() {
+        cc.log("CardListLayer _onClickOk");
     }
 })
 

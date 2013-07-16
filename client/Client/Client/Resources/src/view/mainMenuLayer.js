@@ -35,7 +35,7 @@ var MainMenuLayer = cc.Layer.extend({
         cardLibraryLayerItem.setAnchorPoint(cc.p(0, 0));
         cardLibraryLayerItem.setPosition(254, 88);
 
-        var rankingLayerItem = cc.MenuItemFont.create("排行", this._onClickRankingLayer, this);
+        var rankingLayerItem = cc.MenuItemFont.create("卡牌", this._onClickCardListLayer, this);
         rankingLayerItem.setAnchorPoint(cc.p(0, 0));
         rankingLayerItem.setPosition(360, 88);
 
@@ -71,9 +71,9 @@ var MainMenuLayer = cc.Layer.extend({
         if (this._mainScene) this._mainScene.switchLayer(CardLibraryLayer);
     },
 
-    _onClickRankingLayer: function () {
+    _onClickCardListLayer: function () {
         cc.log("MainMenuLayer _onClickRankingLayer");
-        if (this._mainScene) this._mainScene.switchLayer(RankingLayer);
+        if (this._mainScene) this._mainScene.switchLayer(CardListLayer);
     },
 
     _onClickFriendLayer: function () {

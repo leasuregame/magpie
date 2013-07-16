@@ -63,7 +63,7 @@ var LineUpLabel = cc.Layer.extend({
         for (var i = 1; i <= MAX_LINE_UP_CARD; ++i) {
             var cardId = this._lineUp.getLineUpByIndex(i);
             var card = this._cardList.getCardByIndex(cardId);
-            //this._lineUpCard[i].setString(card.get("name"));
+            this._lineUpCard[i].setString(card ? card.get("name") : "空");
         }
     },
 

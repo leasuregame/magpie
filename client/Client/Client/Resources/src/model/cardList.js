@@ -19,17 +19,25 @@ var SORT_CARD_LIST_BY_ABILITY = "ability";
 var CardList = Entity.extend({
     _cardList: {},
     _index: [],
+    _length: 0,
 
-    init: function (cardList) {
-        var len = cardList.length;
+    init: function (cardList, lineUp) {
+        this._length = cardList.length;
 
-        for (var i = 0; i < len; ++i) {
+        for (var i = 0; i < this._length; ++i) {
             var cardId = cardList[i].id;
             var card = Card.create(cardList[i]);
 
             this._cardList[cardId] = card;
             this._index[i] = cardId;
         }
+
+        var key;
+        for(key in lineUp) {
+            var cardId = lineUp[key];
+            this._cardList[cardId].set("isUse", true);
+        }
+
         cc.log(this._cardList[1]);
         cc.log(this);
 
@@ -59,6 +67,8 @@ var CardList = Entity.extend({
     sortCardList: function (type) {
         cc.log("CardList sortCardList");
         cc.log(type);
+
+        if(type == "") type = SORT_CARD_LIST_BY_STAR;
 
         this._index.sort(this._sort(this._cardList, type));
 

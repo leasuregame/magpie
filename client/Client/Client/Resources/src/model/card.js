@@ -23,6 +23,7 @@ var Card = Entity.extend({
     _atkAddition: 0,        // 攻击培养量
     _elixir: 0,             // 已经消耗的仙丹
     _passiveSkillList: [],  // 被动技能
+    _isUse: false,          // 是否上阵
 
     _kindId: 0,             // 系列号
     _name: "",              // 卡牌名称
@@ -133,6 +134,9 @@ var Card = Entity.extend({
 
     },
 
+    clickUse: function() {
+        this._isUse = !this._isUse;
+    },
 
     clone: function () {
         cc.log("Card clone");

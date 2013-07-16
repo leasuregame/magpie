@@ -74,7 +74,7 @@ var appFiles = [
     'src/view/tournamentLayer.js',
     'src/view/strengthenLayer.js',
 
-    'src/view/mainScene.js'
+    'src/view/main.js'
 ];
 
 cc.dumpConfig();

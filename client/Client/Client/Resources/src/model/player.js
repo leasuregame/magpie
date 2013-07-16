@@ -53,7 +53,7 @@ var Player = Entity.extend({
         this._ability = data.ability;
         this._energy = data.energy;
 
-        gameData.cardList.init(data.cards);
+        gameData.cardList.init(data.cards, data.lineUp);
         gameData.lineUp.init(data.lineUp);
         gameData.task.init(data.task);
         gameData.pass.init({pass: data.pass, passMark: data.passMark});

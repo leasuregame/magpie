@@ -2,14 +2,6 @@ _ = require 'underscore'
 utility = require '../common/utility'
 log = require('pomelo-logger').getLogger(__filename)
 
-# PP_TYPE = 
-#   'atk_improve'
-#   'hp_improve'
-#   'crit'
-#   'dodge'
-#   'dmg_reduce'
-#   'dmg_rebound'
-
 class SpecialProperty
   constructor: (attrs) ->
     @_attrs = attrs

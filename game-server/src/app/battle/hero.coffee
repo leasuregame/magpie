@@ -18,8 +18,6 @@ class Hero extends Module
   @table: 'cards'
 
   init: (attrs, player)->
-    #console.log 'cardData: ', attrs
-    #console.log 'player: ', player
     @player = player
     @id = attrs.id
     @lv = attrs.lv

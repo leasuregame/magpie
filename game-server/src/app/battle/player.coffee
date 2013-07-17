@@ -60,9 +60,6 @@ class Player extends Module
           @matrix.set(pos, _h)
         else
           logger.info 'you have not such card with id is ' + id
-    # else
-    #   for i in [0...@heros.length]
-    #     @matrix.set(i, @heros[i])
     else
       logger.warn 'there is not line up for player ' + @name
     

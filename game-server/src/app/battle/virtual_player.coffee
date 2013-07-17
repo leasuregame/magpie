@@ -26,4 +26,24 @@ class VirtualPlayer extends Player
   loadHeros: ->
     @heros = if @cards? then new VHero(c, @) for c in @cards else []
 
+  bindCards: ->
+    if @lineUp? and @lineUp != ''
+      @parseLineUp().forEach (item) =>
+        [pos, id] = item 
+        
+        _hero = (id) =>
+          for h in @heros
+            return if h.card_id is parseInt(id) then h
+          null
+        _h = _hero(id)
+
+        if _h
+          @matrix.set(pos, _h)
+        else
+          logger.info 'you have not such card with id is ' + id
+    else
+      logger.warn 'there is not line up for player ' + @name
+    
+    @matrix.reset()
+
 module.exports = VirtualPlayer

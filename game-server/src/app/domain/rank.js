@@ -20,12 +20,15 @@ var Rank = (function(_super) {
 		Rank.__super__.constructor.apply(this, arguments);
 	}
 
-	Rank.fields = ['id', 'createTime', 'playerId', 'ranking', 'counts'];
+	Rank.fields = ['id', 'createTime', 'playerId', 'honorPoint', 'title', 'rank', 'ranking', 'counts'];
 
 	Rank.prototype.toJson = function() {
 		return {
 			id: this.id,
 			playerId: this.playerId,
+			honnorPoint: this.honnorPoint,
+			title: this.title,
+			rank: this.rank,
 			ranking: this.ranking,
 			counts: this.counts
 		};

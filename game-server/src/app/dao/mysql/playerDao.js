@@ -158,7 +158,7 @@ var playerDao = {
         }
 
         var sql = sqlHelper.topPlayersSql(orderBy, 10);
-        return dbClient.query(sql, function(err, res){
+        return dbClient.query(sql, [], function(err, res){
             if (err) {
                 logger.error('[playerDao.getTop10Players faild]', err.stack);
                 return cb({
@@ -182,8 +182,9 @@ var playerDao = {
         if (arguments.length == 1) {
             where = '';
         }
-        var sql = 'select * from player ' + where !== '' ? ' where ' + where : '';
-        return dbClient.query(sql, function(err, res){
+        var sql = 'select * from player ' + (where !== '' ? ' where ' + where : '');
+        console.log('sql:', sql);
+        return dbClient.query(sql, [], function(err, res){
             if (err) {
                 logger.error('[playerDao.getPlayers faild]', err.stack);
                 return cb({

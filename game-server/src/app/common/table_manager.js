@@ -17,7 +17,8 @@ module.exports = {
       data = this._readTables(
         DATA_DIR + 'skills.xml',
         DATA_DIR + 'cards.xml',
-        DATA_DIR + 'tasks.xml'
+        DATA_DIR + 'tasks.xml',
+        DATA_DIR + 'rank.xml'
         );
       this.loadTableData(data.exports);
     }

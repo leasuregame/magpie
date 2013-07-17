@@ -45,7 +45,7 @@ var insertSql = function(table, headers, row) {
     if (fields[i] !== '') {
       fields_str += headers[i] + ",";
       values_str += "?,"
-      var field = OBJECT_FIELDS.indexOf(headers[i]) !== -1 ? fields[i].replace(new RegExp('""', 'gm'), '"').replace('"{', '{').replace('}"', '}') : fields[i]
+      var field = OBJECT_FIELDS.indexOf(headers[i]) !== -1 ? fields[i].replace(new RegExp('""', 'gm'), '"').replace('"{', '{').replace('}"', '}') : fields[i];
       args.push(field);
     }
   }
@@ -119,4 +119,39 @@ var laodCsvDataToSql = function() {
   });  
 };
 
+var loadDataForRankingList = function() {  
+  var count = 0;
+  for (var i = 10000; i < 20001; i++) {
+    (function(id){
+      var _ranking = 10000;
+      var data = {
+        id: id,
+        name: 'james' + id,
+        userId: id,
+        areaId: 1,
+        createTime: Date.now()
+      };
+      query('insert into player set ?', data, function(err, res){
+        if (err) {
+          console.log(err);
+        }
+        console.log(res.insertId);
+
+        query('insert into rank set ?', {
+          playerId: id,
+          createTime: Date.now(),
+          ranking: id - 9999
+        }, function(err, _res) {
+          count += 1;
+          if (count == 10001) {
+            process.exit();
+          }
+        });        
+      });
+
+    })(i);
+  }
+};
+
 laodCsvDataToSql();
+//loadDataForRankingList();

@@ -66,7 +66,7 @@ stoptt:
 	./bin/ttservctl stop
 
 createtables:
-	cat ./bin/initMysql.sh | mysql -uroot -p1
+	sh ./bin/initMysql.sh
 
 loaddata:
 	node ./bin/loaddata.js

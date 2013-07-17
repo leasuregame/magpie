@@ -74,14 +74,12 @@ var Player = (function(_super) {
         'dailyGift',
         'fragments',
         'energy',
-        'elixir',
-        'honnerPoint',
-        'title',
-        'rank'
+        'elixir'
     ];
 
     Player.prototype.init = function() {
         this.cards = {};
+        this.rank = null;
     };
 
     Player.prototype.save = function() {
@@ -252,7 +250,8 @@ var Player = (function(_super) {
             elixir: this.elixir,
             cards: _.values(this.cards).map(function(card) {
                 return card.toJson();
-            })
+            }), 
+            rank: this.rank.toJson()
         };
     };
 

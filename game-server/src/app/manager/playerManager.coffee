@@ -60,11 +60,44 @@ class Manager
     dao.player.getPlayers condition, cb
 
   @top10: (cb) ->
-    dao.player.getTop10Players (err, players) ->
+    async.waterfall [
+      (callback) ->
+        dao.rank.top10 callback
+
+      (ranks, callback) ->
+        _ids = ranks.map (r)-> r.playerId
+        Manager.selectPlayers " id in (#{_ids.toString()}) ", (err, results) ->
+          callback(err, results, ranks)
+
+    ], (err, players, ranks) ->
       if err isnt null
-        cb(err, null)
-      else
-        cb(null, players)
+        return cb(err, null)
+
+      addRankInfo(players, ranks)
+      cb(null, players)
+
+  @rankingList: (rankings, cb) ->
+    async.waterfall [
+      (callback) ->
+        dao.rank.select " ranking in (#{rankings.toString()}) ", callback
+
+      (ranks, callback) ->
+        _ids = ranks.map (r)-> r.playerId
+        Manager.selectPlayers " id in (#{_ids.toString()}) ", (err, results) ->
+          callback(err, results, ranks)
+          
+    ], (err, players, ranks) ->
+      if err isnt null
+        return cb(err, null)
+
+      addRankInfo(players, ranks)
+      cb(null, players)
+    
+
+addRankInfo = (players, ranks) ->
+  for p in players
+    r = _.findWhere(ranks, {playerId: p.id})
+    p.set('rank', r) if r?
 
 getActivatedCards = (params, cb) ->
   dao.card.getCardByPlayersId params.pid, {activated: 1}, (err, cards) ->

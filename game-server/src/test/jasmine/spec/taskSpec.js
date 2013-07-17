@@ -1,50 +1,6 @@
-var doAjax = function(url, params, cb) {
-  var ok = false;
-  runs(function() {
-    $.get(url, params, function(data) {
-      cb(data);
-      ok = true;
-    });
-  });
-
-  waits(function() {
-    return ok;
-  });
-};
-
 describe("Logic Server # ", function() {
   var pomelo = window.pomelo;
-  var inited = false;
   var userid;
-
-  var request = function(route, msg, cb) {
-    var ok = false;
-    runs(function() {
-      pomelo.request(route, msg, function(data) {
-        ok = true;
-        cb(data);
-      });
-    });
-
-    waitsFor(function() {
-      return ok;
-    });
-  };
-
-  var intiPomelo = function() {
-    runs(function() {
-      pomelo.init({
-        host: '127.0.0.1',
-        port: '3010'
-      }, function() {
-        console.log('connect success!');
-        inited = true;
-      });
-    });
-    waitsFor(function() {
-      return inited;
-    });
-  };
 
   describe("Set Up", function() {
     it("connect to server", function() {

@@ -6,6 +6,9 @@ var Rank = require('../../domain/rank');
 var _ = require('underscore');
 
 var DEFAULT_RANK_INFO = {
+	honorPoint: 0,
+	title: '',
+	rank: 1,
 	ranking: 0,
 	counts: {
 		challenge: 0,
@@ -50,10 +53,8 @@ var Dao = {
 			return cb('[Invalid parameters when get a rank] ' + JSON.stringify(param), null);
 		}
 
-		var _ref = sqlHelper.selectSql("rank", param);
-		var sql = _ref[0], args = _ref[1];
-
-		return dbClient.query sql, args, function(err, res) {
+		var stm = sqlHelper.selectSql("rank", param);
+		return dbClient.query(stm.sql, stm.args, function(err, res) {
 			if (err) {
 				logger.error("[rankDao.getRank faild] ", err.stack);
 
@@ -66,8 +67,53 @@ var Dao = {
 			} else {
 				return cb(null, {code: null, msg: 'can not find rank'})
 			}
-		};
+		});
 	}, 
+
+	top10: function(cb) {
+		var sql = 'select * from rank order by ranking limit 10';
+		return dbClient.query(sql, [], function(err, res){
+            if (err) {
+                logger.error('[rankDao.top10 faild]', err.stack);
+                return cb({
+                    code: err.code,
+                    msg: err.message
+                }, null);
+            }
+
+            if (!!res && res.length > 0) {
+                var rankList = res.map(function(data) {
+                    return new Rank(data);
+                });
+                return cb(null, rankList);
+            } else {
+                return cb(null, []);
+            }
+        }); 
+	},
+
+	select: function(where, cb) {
+		var sql = 'select * from rank ' + (where !== '' ? 'where ' + where : '');
+		console.log(sql);
+		return dbClient.query(sql, [], function(err, res){
+            if (err) {
+                logger.error('[rankDao.select faild]', err.stack);
+                return cb({
+                    code: err.code,
+                    msg: err.message
+                }, null);
+            }
+
+            if (!!res && res.length > 0) {
+                var rankList = res.map(function(data) {
+                    return new Rank(data);
+                });
+                return cb(null, rankList);
+            } else {
+                return cb(null, []);
+            }
+        }); 
+	},
 
 	updateRank: function(param, cb) {
 		if (typeof (param.id) == "undefined" || typeof (param.data) == "undefined") {

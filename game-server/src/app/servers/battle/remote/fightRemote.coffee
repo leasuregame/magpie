@@ -15,6 +15,7 @@ exports.pve = (args, callback) ->
   tableName = args.table
   taskData = table.getTableItem tableName, tableId
 
+  console.log '==============================================================================================', tableName, tableId, taskData
   playerEntity = null
   async.waterfall([
     (cb) ->

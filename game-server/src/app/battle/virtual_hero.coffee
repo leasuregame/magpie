@@ -11,10 +11,15 @@ class VirtualHero extends Hero
 
 
   loadCardInfo: ->
-    card = tab.getTableItem('task_card', @card_id) or \
-           tab.getTableItem('pass_card', @card_id)
+    _card_id = tab.getTableItem('task_card', @card_id)?.card_id or \
+           tab.getTableItem('pass_card', @card_id)?.card_id
+
+
+    card = tab.getTableItem('cards', _card_id)
+    console.log '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+    console.log @card_id, _card_id, card
     if not card
-      throw new Error("配置表错误：不能从表 task_card或者pass_card 中找到卡牌信息，卡牌id为 #{@card_id}")
+      throw new Error("配置表错误：不能从表 cards 中找到卡牌信息，卡牌id为 #{@card_id}")
 
     @name = card.name
     @init_atk = @atk = parseInt(card.atk)

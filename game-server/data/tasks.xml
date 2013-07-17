@@ -8,9 +8,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>arthur wu</Author>
-  <LastAuthor>arthur wu</LastAuthor>
+  <LastAuthor>arthur</LastAuthor>
   <Created>2013-07-09T15:45:25Z</Created>
-  <LastSaved>2013-07-10T03:18:22Z</LastSaved>
+  <LastSaved>2013-07-17T14:37:50Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.00</Version>
  </DocumentProperties>
@@ -26,7 +26,7 @@
   <WindowTopX>7215</WindowTopX>
   <WindowTopY>1245</WindowTopY>
   <TabRatio>663</TabRatio>
-  <ActiveSheet>5</ActiveSheet>
+  <ActiveSheet>9</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -7831,7 +7831,7 @@
          html:Color="#000000">大章表|chapter|id</Font></B></ss:Data></Comment></Cell>
     <Cell><Data ss:Type="String">card_count</Data></Cell>
     <Cell><Data ss:Type="String">cards</Data></Cell>
-    <Cell><Data ss:Type="String">boss</Data></Cell>
+    <Cell><Data ss:Type="String">boss_id</Data></Cell>
     <Cell><Data ss:Type="String">trigger_rate</Data></Cell>
     <Cell><Data ss:Type="String">boss_attr</Data></Cell>
     <Cell><Data ss:Type="String">formation</Data></Cell>
@@ -8501,13 +8501,12 @@
     <PaperSizeIndex>9</PaperSizeIndex>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <LeftColumnVisible>3</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -9563,7 +9562,7 @@
     <Cell ss:StyleID="s77"><Data ss:Type="String">card_count</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">cards</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">formation</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">boss</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">boss_id</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">trigger_rate</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">boss_attr</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">atk_inc</Data></Cell>
@@ -10909,8 +10908,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>12</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -11554,13 +11553,14 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="export">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="10" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
    <Column ss:AutoFitWidth="0" ss:Width="152.25"/>
    <Column ss:Width="123.75"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell><Data ss:Type="String">export_name</Data></Cell>
+    <Cell><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">玩家升级经验表</Data></Cell>
@@ -11593,6 +11593,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">关卡怪物属性表</Data></Cell>
     <Cell><Data ss:Type="String">pass_card</Data></Cell>
+    <Cell><Data ss:Type="String">task_card</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">关卡产出表</Data></Cell>
@@ -11605,11 +11606,12 @@
     <Footer x:Margin="0.51180555555555596"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

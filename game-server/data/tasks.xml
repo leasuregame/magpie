@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -11,7 +12,7 @@
   <Created>2013-07-09T15:45:25Z</Created>
   <LastSaved>2013-07-10T03:18:22Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
-  <Version>14.0</Version>
+  <Version>14.00</Version>
  </DocumentProperties>
  <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <KSOProductBuildVer dt:dt="string">2052-8.1.0.3526</KSOProductBuildVer>
@@ -20,12 +21,12 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>13520</WindowHeight>
-  <WindowWidth>32400</WindowWidth>
-  <WindowTopX>7220</WindowTopX>
-  <WindowTopY>1240</WindowTopY>
+  <WindowHeight>13515</WindowHeight>
+  <WindowWidth>29040</WindowWidth>
+  <WindowTopX>7215</WindowTopX>
+  <WindowTopY>1245</WindowTopY>
   <TabRatio>663</TabRatio>
-  <ActiveSheet>6</ActiveSheet>
+  <ActiveSheet>5</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -192,7 +193,7 @@
  </Styles>
  <Worksheet ss:Name="玩家升级经验表">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="102" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">级别</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">升到下一级所需经验</Data></Cell>
@@ -604,7 +605,6 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -614,20 +614,21 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="任务奖励表">
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="502" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s73" ss:DefaultColumnWidth="97"
-   ss:DefaultRowHeight="19">
-   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="68"/>
+   x:FullRows="1" ss:StyleID="s73" ss:DefaultColumnWidth="96.75"
+   ss:DefaultRowHeight="18.9375">
+   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="68.25"/>
    <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="99"/>
-   <Column ss:StyleID="s73" ss:Width="92"/>
+   <Column ss:StyleID="s73" ss:Width="92.25"/>
    <Column ss:StyleID="s73" ss:Width="108"/>
-   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="68"/>
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="68.25"/>
    <Column ss:StyleID="s76" ss:AutoFitWidth="0"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="83"/>
-   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="86"/>
+   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="83.25"/>
+   <Column ss:StyleID="s76" ss:AutoFitWidth="0" ss:Width="86.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">章名称</Data></Cell>
@@ -641,9 +642,9 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">chapter_id</Data><Comment ss:Author="arthur wu"><Data><B
-        xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
-         html:Color="#000000">大章表|chapter|id</Font></B></Data></Comment></Cell>
+    <Cell><Data ss:Type="String">chapter_id</Data><Comment ss:Author="arthur wu"><ss:Data
+       xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Size="10"
+         html:Color="#000000">大章表|chapter|id</Font></B></ss:Data></Comment></Cell>
     <Cell><Data ss:Type="String">section_id</Data></Cell>
     <Cell><Data ss:Type="String">section_name</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">points</Data></Cell>
@@ -6165,7 +6166,6 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -6175,12 +6175,13 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="大章表">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="52" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s73" ss:DefaultColumnWidth="97"
-   ss:DefaultRowHeight="19">
+   x:FullRows="1" ss:StyleID="s73" ss:DefaultColumnWidth="96.75"
+   ss:DefaultRowHeight="18.9375">
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">大章名称</Data></Cell>
@@ -6401,7 +6402,6 @@
     <PaperSizeIndex>9</PaperSizeIndex>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -6410,11 +6410,12 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="任务扫荡产出表">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="52" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s77"><Data ss:Type="String">大章序号</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">铜板产出</Data></Cell>
@@ -6683,7 +6684,6 @@
     <PaperSizeIndex>9</PaperSizeIndex>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -6692,11 +6692,12 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="任务怪物属性表">
   <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="253" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s77"><Data ss:Type="String">id</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">卡牌名称</Data></Cell>
@@ -6709,8 +6710,8 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s77"><Data ss:Type="String">id</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">card_id</Data><Comment
-      ss:Author="arthur wu"><Data><B xmlns="http://www.w3.org/TR/REC-html40"><Font
-         html:Size="10" html:Color="#000000">怪物卡牌配置表|name|id</Font></B></Data></Comment></Cell>
+      ss:Author="arthur wu"><ss:Data xmlns="http://www.w3.org/TR/REC-html40"><B><Font
+         html:Size="10" html:Color="#000000">怪物卡牌配置表|name|id</Font></B></ss:Data></Comment></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">atk</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">hp</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">dodge_rate</Data></Cell>
@@ -7788,7 +7789,6 @@
     <PaperSizeIndex>9</PaperSizeIndex>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -7798,18 +7798,19 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="任务卡牌配置表">
   <Table ss:ExpandedColumnCount="11" ss:ExpandedRowCount="52" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s77" ss:DefaultColumnWidth="97"
-   ss:DefaultRowHeight="19">
-   <Column ss:Index="4" ss:StyleID="s77" ss:Width="191"/>
-   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="152"/>
-   <Column ss:StyleID="s77" ss:Width="256"/>
-   <Column ss:StyleID="s77" ss:Width="124"/>
+   x:FullRows="1" ss:StyleID="s77" ss:DefaultColumnWidth="96.75"
+   ss:DefaultRowHeight="18.9375">
+   <Column ss:Index="4" ss:StyleID="s77" ss:Width="191.25"/>
+   <Column ss:StyleID="s77" ss:AutoFitWidth="0" ss:Width="152.25"/>
+   <Column ss:StyleID="s77" ss:Width="255.75"/>
+   <Column ss:StyleID="s77" ss:Width="123.75"/>
    <Column ss:StyleID="s77" ss:Width="243"/>
-   <Column ss:StyleID="s77" ss:Width="173"/>
+   <Column ss:StyleID="s77" ss:Width="173.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">大章</Data></Cell>
@@ -7825,17 +7826,17 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">chepter_id</Data><Comment ss:Author="arthur wu"><Data><B
-        xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
-         html:Color="#000000">大章表|chapter|id</Font></B></Data></Comment></Cell>
+    <Cell><Data ss:Type="String">chepter_id</Data><Comment ss:Author="arthur wu"><ss:Data
+       xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Size="10"
+         html:Color="#000000">大章表|chapter|id</Font></B></ss:Data></Comment></Cell>
     <Cell><Data ss:Type="String">card_count</Data></Cell>
     <Cell><Data ss:Type="String">cards</Data></Cell>
     <Cell><Data ss:Type="String">boss</Data></Cell>
     <Cell><Data ss:Type="String">trigger_rate</Data></Cell>
     <Cell><Data ss:Type="String">boss_attr</Data></Cell>
     <Cell><Data ss:Type="String">formation</Data></Cell>
-    <Cell><Data ss:Type="String">point_atk_inc</Data></Cell>
-    <Cell><Data ss:Type="String">point_hp_inc</Data></Cell>
+    <Cell><Data ss:Type="String">atk_inc</Data></Cell>
+    <Cell><Data ss:Type="String">hp_inc</Data></Cell>
     <Cell><Data ss:Type="String">max_drop_card_number</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -7843,7 +7844,7 @@
     <Cell><Data ss:Type="String">遇到上帝的1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001</Data></Cell>
@@ -7856,7 +7857,7 @@
     <Cell><Data ss:Type="String">遇到上帝的2</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002</Data></Cell>
@@ -7869,7 +7870,7 @@
     <Cell><Data ss:Type="String">遇到上帝的3</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002</Data></Cell>
@@ -7882,7 +7883,7 @@
     <Cell><Data ss:Type="String">遇到上帝的4</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002</Data></Cell>
@@ -7895,7 +7896,7 @@
     <Cell><Data ss:Type="String">遇到上帝的5</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002</Data></Cell>
@@ -7908,7 +7909,7 @@
     <Cell><Data ss:Type="String">遇到上帝的6</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003</Data></Cell>
@@ -7921,7 +7922,7 @@
     <Cell><Data ss:Type="String">遇到上帝的7</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003</Data></Cell>
@@ -7934,7 +7935,7 @@
     <Cell><Data ss:Type="String">遇到上帝的8</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003</Data></Cell>
@@ -7947,7 +7948,7 @@
     <Cell><Data ss:Type="String">遇到上帝的9</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003</Data></Cell>
@@ -7960,7 +7961,7 @@
     <Cell><Data ss:Type="String">遇到上帝的10</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003</Data></Cell>
@@ -7973,7 +7974,7 @@
     <Cell><Data ss:Type="String">遇到上帝的11</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003</Data></Cell>
@@ -7986,7 +7987,7 @@
     <Cell><Data ss:Type="String">遇到上帝的12</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003</Data></Cell>
@@ -7999,7 +8000,7 @@
     <Cell><Data ss:Type="String">遇到上帝的13</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003</Data></Cell>
@@ -8012,7 +8013,7 @@
     <Cell><Data ss:Type="String">遇到上帝的14</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003</Data></Cell>
@@ -8025,7 +8026,7 @@
     <Cell><Data ss:Type="String">遇到上帝的15</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003</Data></Cell>
@@ -8038,7 +8039,7 @@
     <Cell><Data ss:Type="String">遇到上帝的16</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8051,7 +8052,7 @@
     <Cell><Data ss:Type="String">遇到上帝的17</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8064,7 +8065,7 @@
     <Cell><Data ss:Type="String">遇到上帝的18</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8077,7 +8078,7 @@
     <Cell><Data ss:Type="String">遇到上帝的19</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8090,7 +8091,7 @@
     <Cell><Data ss:Type="String">遇到上帝的20</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8103,7 +8104,7 @@
     <Cell><Data ss:Type="String">遇到上帝的21</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8116,7 +8117,7 @@
     <Cell><Data ss:Type="String">遇到上帝的22</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8129,7 +8130,7 @@
     <Cell><Data ss:Type="String">遇到上帝的23</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8142,7 +8143,7 @@
     <Cell><Data ss:Type="String">遇到上帝的24</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8155,7 +8156,7 @@
     <Cell><Data ss:Type="String">遇到上帝的25</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8168,7 +8169,7 @@
     <Cell><Data ss:Type="String">遇到上帝的26</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8181,7 +8182,7 @@
     <Cell><Data ss:Type="String">遇到上帝的27</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8194,7 +8195,7 @@
     <Cell><Data ss:Type="String">遇到上帝的28</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8207,7 +8208,7 @@
     <Cell><Data ss:Type="String">遇到上帝的29</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8220,7 +8221,7 @@
     <Cell><Data ss:Type="String">遇到上帝的30</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8233,7 +8234,7 @@
     <Cell><Data ss:Type="String">遇到上帝的31</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8246,7 +8247,7 @@
     <Cell><Data ss:Type="String">遇到上帝的32</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8259,7 +8260,7 @@
     <Cell><Data ss:Type="String">遇到上帝的33</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8272,7 +8273,7 @@
     <Cell><Data ss:Type="String">遇到上帝的34</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8285,7 +8286,7 @@
     <Cell><Data ss:Type="String">遇到上帝的35</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8298,7 +8299,7 @@
     <Cell><Data ss:Type="String">遇到上帝的36</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8311,7 +8312,7 @@
     <Cell><Data ss:Type="String">遇到上帝的37</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8324,7 +8325,7 @@
     <Cell><Data ss:Type="String">遇到上帝的38</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8337,7 +8338,7 @@
     <Cell><Data ss:Type="String">遇到上帝的39</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8350,7 +8351,7 @@
     <Cell><Data ss:Type="String">遇到上帝的40</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8363,7 +8364,7 @@
     <Cell><Data ss:Type="String">遇到上帝的41</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8376,7 +8377,7 @@
     <Cell><Data ss:Type="String">遇到上帝的42</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8389,7 +8390,7 @@
     <Cell><Data ss:Type="String">遇到上帝的43</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8402,7 +8403,7 @@
     <Cell><Data ss:Type="String">遇到上帝的44</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8415,7 +8416,7 @@
     <Cell><Data ss:Type="String">遇到上帝的45</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8428,7 +8429,7 @@
     <Cell><Data ss:Type="String">遇到上帝的46</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8441,7 +8442,7 @@
     <Cell><Data ss:Type="String">遇到上帝的47</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8454,7 +8455,7 @@
     <Cell><Data ss:Type="String">遇到上帝的48</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8467,7 +8468,7 @@
     <Cell><Data ss:Type="String">遇到上帝的49</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8480,7 +8481,7 @@
     <Cell><Data ss:Type="String">遇到上帝的50</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">10000#10001#10002#10004#10005</Data></Cell>
-    <Cell><Data ss:Type="Number">100001</Data></Cell>
+    <Cell><Data ss:Type="Number">10001</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10001,3:10002,4:10003,5:10004</Data></Cell>
@@ -8500,22 +8501,24 @@
     <PaperSizeIndex>9</PaperSizeIndex>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
+   <LeftColumnVisible>3</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>22</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="关卡怪物属性表">
   <Table ss:ExpandedColumnCount="13" ss:ExpandedRowCount="102" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s73" ss:DefaultColumnWidth="97"
-   ss:DefaultRowHeight="19">
+   x:FullRows="1" ss:StyleID="s73" ss:DefaultColumnWidth="96.75"
+   ss:DefaultRowHeight="18.9375">
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">卡牌名称</Data></Cell>
@@ -8527,9 +8530,9 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">card_id</Data><Comment ss:Author="arthur wu"><Data><B
-        xmlns="http://www.w3.org/TR/REC-html40"><Font html:Size="10"
-         html:Color="#000000">怪物卡牌配置表|name|id</Font></B></Data></Comment></Cell>
+    <Cell><Data ss:Type="String">card_id</Data><Comment ss:Author="arthur wu"><ss:Data
+       xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Size="10"
+         html:Color="#000000">怪物卡牌配置表|name|id</Font></B></ss:Data></Comment></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">atk</Data></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">hp</Data></Cell>
     <Cell><Data ss:Type="String">dodge_rate</Data></Cell>
@@ -9522,8 +9525,6 @@
     <PaperSizeIndex>9</PaperSizeIndex>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -9533,13 +9534,14 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="关卡卡牌配置表">
   <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="102" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="5" ss:Width="191"/>
-   <Column ss:Width="256"/>
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   <Column ss:Index="5" ss:Width="191.25"/>
+   <Column ss:Width="255.75"/>
    <Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="105"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s77"><Data ss:Type="String">id</Data></Cell>
@@ -10904,7 +10906,6 @@
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <Zoom>115</Zoom>
-   <PageLayoutZoom>115</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -10914,12 +10915,13 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>115</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="关卡产出表">
   <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="102" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s77" ss:DefaultColumnWidth="97"
-   ss:DefaultRowHeight="19">
+   x:FullRows="1" ss:StyleID="s77" ss:DefaultColumnWidth="96.75"
+   ss:DefaultRowHeight="18.9375">
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">层数</Data></Cell>
     <Cell><Data ss:Type="String">经验</Data></Cell>
@@ -11539,7 +11541,6 @@
     <Footer x:Margin="0.51180555555555596"/>
    </PageSetup>
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -11549,13 +11550,14 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="10" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:AutoFitWidth="0" ss:Width="152"/>
-   <Column ss:Width="124"/>
+   x:FullRows="1" ss:DefaultColumnWidth="96.75" ss:DefaultRowHeight="18.9375">
+   <Column ss:AutoFitWidth="0" ss:Width="152.25"/>
+   <Column ss:Width="123.75"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell><Data ss:Type="String">export_name</Data></Cell>
@@ -11603,7 +11605,6 @@
     <Footer x:Margin="0.51180555555555596"/>
    </PageSetup>
    <Unsynced/>
-   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -11613,6 +11614,7 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
 </Workbook>

@@ -29,7 +29,7 @@ class Battle extends Base
     @round = new Round(@attacker, @defender)
 
   isOver: ->
-    @attacker.death() or @defender.death() or @round.round_num > 5
+    @attacker.death() or @defender.death() or @round.round_num > 10
 
   start: ->
     _enm = {

@@ -73,6 +73,7 @@ describe("User Actions # ", function() {
             password: '1'
           }, function(data) {
             userid = data.uid;
+            console.log('added user:', userid);
             ok = true;
           });
         });
@@ -133,7 +134,7 @@ describe("User Actions # ", function() {
             }, function(data) {
               playerId = data.playerId;
               createTime = data.ct;
-              console.log('paleyr insertd', playerId);
+              console.log('paleyr for', userid, 'insertd:', playerId);
               ok = true;
             });
           });

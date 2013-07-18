@@ -44,7 +44,6 @@ var DEFAULT_PLAYER_INFO = {
 
 var createNewPlayer = function (playerInfo) {
     var player = new Player(playerInfo);
-
     player.on('save', function (cb) {
         var id = player.id;
         app.get('sync').exec(

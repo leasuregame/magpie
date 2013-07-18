@@ -96,7 +96,7 @@ var importCsvToMySql = function(table, filepath, callback) {
   );
 };
 
-var laodCsvDataToSql = function() {
+var laodCsvDataToSql = function(cb) {
   console.log("  *** load data from csv ***  ");
   var files = fs.readdirSync(FIXTURES_DIR);
 
@@ -113,14 +113,16 @@ var laodCsvDataToSql = function() {
       console.log(err);
     }
 
-    console.log('  *** completed ***  ');
+    console.log('  *** load dta from csv completed ***  ');
     console.log('done');
-    process.exit();
+    cb(null, true);
   });  
 };
 
-var loadDataForRankingList = function() {  
+var loadDataForRankingList = function(cb) {  
   var count = 0;
+  console.log('  *** create test data for ranking list ***  ');
+  console.log('creating......');
   for (var i = 10000; i < 20001; i++) {
     (function(id){
       var _ranking = 10000;
@@ -135,7 +137,6 @@ var loadDataForRankingList = function() {
         if (err) {
           console.log(err);
         }
-        console.log(res.insertId);
 
         query('insert into rank set ?', {
           playerId: id,
@@ -144,7 +145,8 @@ var loadDataForRankingList = function() {
         }, function(err, _res) {
           count += 1;
           if (count == 10001) {
-            process.exit();
+            console.log('  ***  data for ranking list completed ***  ');
+            cb(null, true);
           }
         });        
       });
@@ -153,5 +155,20 @@ var loadDataForRankingList = function() {
   }
 };
 
-laodCsvDataToSql();
-//loadDataForRankingList();
+var main = function(){
+  async.map(
+    [laodCsvDataToSql, loadDataForRankingList], 
+    //[laodCsvDataToSql], 
+    //[loadDataForRankingList], 
+    function(fn, cb) {
+      fn(cb)
+    },
+    function(err, results) {
+      if (_.every(results)) {
+        process.exit();
+      }
+    }
+  );
+};
+
+main();

@@ -54,7 +54,7 @@ var Entity = (function(_super) {
     };
 
     Entity.prototype.save = function(cb) {
-        if (!_.isEmpty(this._mark)) {
+        if (!_.isEmpty(this.changedFields)) {
             this.emit("save", cb);
         }
     };

@@ -18,6 +18,24 @@ var DEFAULT_RANK_INFO = {
 	}
 };
 
+var createNewRank = function (rankInfo) {
+    var rank = new Rank(rankInfo);
+
+    rank.on('save', function (cb) {
+        var id = rank.id;
+        app.get('sync').exec(
+            'rankSync.updateRank', 
+            id,
+            {
+                id: id,
+                data: rank.getSaveData(),
+                cb: cb
+            }
+        );
+    });
+    return rank;
+};
+
 var Dao = {
 	createRank: function(param, cb) {
 		if (typeof param == 'undefined') {
@@ -63,7 +81,7 @@ var Dao = {
 					msg: err.message
 				}, null);
 			} else if (!!res && res.length == 1) {
-				return cb(null, new Rank(res[0]));
+				return cb(null, createNewRank(res[0]));
 			} else {
 				return cb(null, {code: null, msg: 'can not find rank'})
 			}
@@ -106,35 +124,13 @@ var Dao = {
 
             if (!!res && res.length > 0) {
                 var rankList = res.map(function(data) {
-                    return new Rank(data);
+                    return createNewRank(data);
                 });
                 return cb(null, rankList);
             } else {
                 return cb(null, []);
             }
         }); 
-	},
-
-	updateRank: function(param, cb) {
-		if (typeof (param.id) == "undefined" || typeof (param.data) == "undefined") {
-		    return cb("param error", null);
-		}
-
-		var stm = sqlHelper.updateSql("user", {"id": param.id}, param.data);
-		return dbClient.update(stm.sql, stm.args, function (err, res) {
-		    if (err) {
-		        logger.error("[userDao.updateUserById faild] ", err.stack);
-
-		        return cb({
-		            code: err.code,
-		            msg: err.message
-		        }, null);
-		    } if (!!res && res.affectedRows > 0) {
-		        return cb(null, true);
-		    } else {
-		        return cb(null, false);
-		    }
-		});
 	}
 };
 

@@ -13,7 +13,7 @@ app.engine('html', require('ejs').renderFile);
 app.get('/test', function(req, res){
   var files = fs.readdirSync(__dirname + '/spec');
   files = files.filter(function(f) { return /Spec.js$/.test(f); });
-  files = ['taskSpec.js'];
+  //files = ['taskSpec.js'];
   res.render('SpecRunner.html', {files: files});
 });
 
@@ -80,10 +80,12 @@ app.get('/loadDataFromCsvFile', function(req, res) {
   var ps = spawn('node', [__dirname + '../../../bin/loaddata.js']);
   ps.stdout.on('data', function(data) {
     console.log(data.toString());
-    if (/done/.test(data.toString())) {
-      ps.kill('SIGHUP');
-      res.send('done');
-    }
+  });
+  ps.stderr.on('data', function(data) {
+    console.log('error: ', data.toString());
+  });
+  ps.on('close', function(code){
+    res.send('done');
   });
 });
 
@@ -91,7 +93,6 @@ app.get('/createDb', function(req, res) {
   var ps = spawn('sh', [__dirname + '/../../bin/initMysql.sh']);
   ps.stdout.on('data', function(data){
     console.log(data.toString());
-    
   });
   ps.stderr.on('data', function(data) {
     console.log('error:', data.toString());

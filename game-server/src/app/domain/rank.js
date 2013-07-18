@@ -12,6 +12,7 @@
 
 var Entity = require('./entity');
 var utility = require('../common/utility');
+var _ = require('underscore');
 
 var Rank = (function(_super) {
 	utility.extends(Rank, _super);
@@ -32,6 +33,22 @@ var Rank = (function(_super) {
 			ranking: this.ranking,
 			counts: this.counts
 		};
+	};
+
+	Rank.prototype.incCount = function(name) {
+		var counts = _.clone(this.counts);
+		if (counts.hasOwnProperty(name)) {
+			counts[name]++;
+		}
+		this.set('counts', counts);
+	};
+
+	Rank.prototype.resetCount = function(name) {
+		var counts = _.clone(this.counts);
+		if (counts.hasOwnProperty(name)) {
+			counts[name] = 0;
+		}
+		this.set('counts', counts);
 	};
 
 	return Rank;

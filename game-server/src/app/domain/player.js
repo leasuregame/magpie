@@ -251,7 +251,7 @@ var Player = (function(_super) {
             cards: _.values(this.cards).map(function(card) {
                 return card.toJson();
             }), 
-            rank: this.rank.toJson()
+            rank: this.rank !== null ? this.rank.toJson() : null
         };
     };
 

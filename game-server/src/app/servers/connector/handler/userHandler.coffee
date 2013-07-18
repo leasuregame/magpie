@@ -41,34 +41,36 @@ Handler::login = (msg, session, next) ->
 
     (userId, cb) ->
       uid = userId
-      dao.player.getPlayer {userId: uid}, (err, player) ->
-        if err and not player
+      dao.player.getPlayer {userId: uid}, (err, res) ->
+        if err and not res
+          console.log err
           return cb(null, null)
 
-        cb(null, player)
+        cb(null, res.id)
 
-    (res, cb) ->
-      if not res
+    (playerId, cb) ->
+      if not playerId
         return cb(null, null)
 
-      dao.player.getPlayerInfo res.id, (err, player) ->
+      dao.player.getPlayerInfo playerId, (err, player) ->
         if err and not player
+          console.log err
           return cb(null, null)
         
         cb(null, player)
 
-  ], (err, player) ->
+  ], (err, _player) ->
     if err
       return next(null, {code: 501, msg: err.msg})
 
     session.bind(uid)
-    if !!player
-      session.set('playerId', player.id)
-      session.set('playerName', player.name)
-      session.set('areaId', player.areaId)
+    if !!_player
+      session.set('playerId', _player.id)
+      session.set('playerName', _player.name)
+      session.set('areaId', _player.areaId)
 
     session.on('close', onUserLeave)
-    next(null, {code: 200, msg: {user: {id: uid}, player: player?.toJson()}})
+    next(null, {code: 200, msg: {user: {id: uid}, player: _player?.toJson()}})
 
 onUserLeave = (session, reason) ->
   if not session or not session.uid

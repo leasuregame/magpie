@@ -1,3 +1,4 @@
+var queues = require('mysql-queues');
 var NND, sqlclient, _pool;
 
 _pool = null;
@@ -16,7 +17,7 @@ NND = {
 
     query: function (sql, args, cb) {
         return _pool.acquire(function (err, client) {
-            if (!!err) {
+            if ( !! err) {
                 console.error('[sqlqueryErr] ' + err.stack);
                 return;
             }
@@ -25,6 +26,46 @@ NND = {
                 return cb(err, res);
             });
         });
+    },
+
+    queues: function (sqlList, cb) {
+        //return _pool.acquire(function (err, client) {
+            // if ( !! err) {
+            //     console.error('[sqlqueryErr] ' + err.stack);
+            //     return;
+            // }
+            var mysql = require('mysql');
+            var client = mysql.createConnection({
+                host: '127.0.0.1',
+                user: 'dev',
+                password: '1',
+                port: 3306,
+                database: 'magpie',
+            });
+            client.connect();
+
+            // for (var i = 0; i < sqlList.length; i++) {
+            //     client.query(sqlList[i].sql, sqlList[i].args);
+            // }
+
+            queues(client, true);
+            
+            var trans = client.startTransaction();
+
+            function error(e) {
+                if (e && trans.rollback) {
+                    trans.rollback();
+                    throw e;
+                }
+            }
+            
+            for (var i = 0; i < sqlList.length; i++) {
+                trans.query(sqlList[i].sql, sqlList[i].args, error);
+            }
+            trans.commit(cb);
+            //trans.execute();
+            console.log('execute queues...');
+        //});
     },
     /*
      关闭数据连接池
@@ -42,7 +83,7 @@ NND = {
 
 sqlclient = {
     init: function (app) {
-        if (!!_pool) {
+        if ( !! _pool) {
             return sqlclient;
         } else {
             NND.init(app);
@@ -50,6 +91,7 @@ sqlclient = {
             sqlclient.update = NND.query;
             sqlclient.delete = NND.query;
             sqlclient.query = NND.query;
+            sqlclient.queues = NND.queues;
             return sqlclient;
         }
     },

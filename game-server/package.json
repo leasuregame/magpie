@@ -5,6 +5,7 @@
     "dependencies": {
         "pomelo": "0.4.2",
         "mysql": ">=2.0",
+        "mysql-queues": "*",
         "generic-pool": ">=1.0.9",
         "underscore": "1.4.4",
         "underscore.string": "2.3.1",

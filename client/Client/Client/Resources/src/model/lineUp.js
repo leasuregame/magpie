@@ -12,16 +12,23 @@
  * */
 
 
-var MAX_LINE_UP_CARD = 6;
+var MAX_LINE_UP_CARD = 5;
+var MAX_LINE_UP_SIZE = 6;
 
 var LineUp = Entity.extend({
     _lineUp: {},
+    _lineUpCount: 0,
 
     init: function (data) {
         cc.log("LineUp init");
 
-        for(var i = 1; i <= MAX_LINE_UP_CARD; ++i) {
-            this._lineUp[i] = data[i] || null;
+        for(var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
+            if(data[i]) {
+                this._lineUpCount++;
+                this._lineUp[i] = data[i];
+            } else {
+                this._lineUp[i] = null;
+            }
         }
 
         cc.log(this);
@@ -34,6 +41,21 @@ var LineUp = Entity.extend({
         cc.log(index);
 
         return this._lineUp[index];
+    },
+
+    setLineUp: function(cardId) {
+        cc.log("LineUp setLineUp");
+
+        if(this._lineUpCount < MAX_LINE_UP_CARD) {
+            for(var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
+                if(this._lineUp[i] == null) {
+                    this._lineUp[i] = cardId;
+                    return true;
+                }
+            }
+        }
+
+        return false;
     },
 
     setLineUpByIndex: function (index, cardId) {

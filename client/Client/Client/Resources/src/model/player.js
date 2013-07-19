@@ -29,9 +29,11 @@ var Player = Entity.extend({
     _skillPoint: 0,     // 技能点
     _ability: 0,        // 战斗力
     _vip: 0,            // VIP等级
+    _maxTournamentCount: 0,
+    _tournamentCount: 0,
 
-    _maxExp: 1000,         // 最大经验
-    _maxPower: 200,       // 最大体力
+    _maxExp: 1000,      // 最大经验
+    _maxPower: 200,     // 最大体力
 
     _playerLabel: null,
 

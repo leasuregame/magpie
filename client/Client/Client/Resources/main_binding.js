@@ -64,7 +64,7 @@ var appFiles = [
     'src/view/mainLayer.js',
     'src/view/shopLayer.js',
     'src/view/cardLibraryLayer.js',
-    'src/view/rankingLayer.js',
+    'src/view/rankLayer.js',
     'src/view/friendLayer.js',
     'src/view/messageLayer.js',
 

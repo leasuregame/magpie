@@ -24,6 +24,7 @@ var gameData = {
     rank: null,
     lottery: null,
     message: null,
+    tournament : null,
 
     gameInit: function () {
         cc.log("gameData init");
@@ -38,6 +39,7 @@ var gameData = {
         this.rank = Rank.create();
         this.lottery = Lottery.create();
         this.message = Message.create();
+        this.tournament = Tournament.create();
     },
 
     gameEnd: function () {

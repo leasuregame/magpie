@@ -21,7 +21,7 @@ var MainScene = cc.Scene.extend({
         this._super();
     },
 
-    init : function() {
+    init: function () {
         cc.log("MainScene init");
 
         var mainBgLayer = MainBgLayer.create();
@@ -30,7 +30,7 @@ var MainScene = cc.Scene.extend({
         var mainMenuLayer = MainMenuLayer.create(this);
         this.addChild(mainMenuLayer, 1);
 
-        this._nowLayer = MainLayer.create(this);
+        this._nowLayer = MainLayer.create();
         this.addChild(this._nowLayer);
     },
 
@@ -39,10 +39,14 @@ var MainScene = cc.Scene.extend({
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
         if (!(this._nowLayer instanceof runLayer)) {
-            this.removeChild(this._nowLayer);
-            this._nowLayer = runLayer.create(this);
-            this.addChild(this._nowLayer);
+            this.switch(runLayer.create());
         }
+    },
+
+    switch: function(layerObject) {
+        if (this._nowLayer != null) this.removeChild(this._nowLayer);
+        this._nowLayer = layerObject;
+        this.addChild(this._nowLayer);
     }
 })
 

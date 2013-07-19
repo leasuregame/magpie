@@ -42,6 +42,14 @@ var Task = Entity.extend({
         return (this._progress / this._points);
     },
 
+    getChapter: function() {
+        return ((this._id / 10 - 1) / 5 + 1);
+    },
+
+    getSection: function() {
+        return ((this._id / 10 - 1) % 5 + 1);
+    },
+
     /*
      * 根据id和任务进度请求服务器执行任务
      * @ param {function} cb 回调函数
@@ -72,7 +80,7 @@ var Task = Entity.extend({
 
         var that = this;
 
-        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {playerId: 1, type: "task"}, function (data) {
+        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {playerId: gameData.player.get("id"), type: "task"}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {

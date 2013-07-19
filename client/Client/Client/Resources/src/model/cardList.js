@@ -55,6 +55,15 @@ var CardList = Entity.extend({
         return this._cardList[index];
     },
 
+    changeUseCardByIndex: function(index) {
+        cc.log("CardList changeUseCardByIndex");
+
+        var isUse = !this._cardList[index].get("isUse");
+        this._cardList[index].set("isUse", isUse);
+
+        return isUse;
+    },
+
     _sort: function (cardList, type) {
         cc.log("CardList _sort");
         cc.log(type);
@@ -67,6 +76,8 @@ var CardList = Entity.extend({
     sortCardList: function (type) {
         cc.log("CardList sortCardList");
         cc.log(type);
+
+        type = type || SORT_CARD_LIST_BY_STAR;
 
         if(type == "") type = SORT_CARD_LIST_BY_STAR;
 

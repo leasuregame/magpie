@@ -41,7 +41,7 @@ var LineUpLabel = cc.Layer.extend({
         this.addChild(bg);
 
         this._lineUpCard = {};
-        for (var i = 1; i <= MAX_LINE_UP_CARD; ++i) {
+        for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
             var cardBg = cc.LayerColor.create(cc.c4b(100, 20, 100, 200), 80, 80);
             cardBg.setPosition(cc.p(i * 100 - 70, 35));
             this.addChild(cardBg);
@@ -60,10 +60,9 @@ var LineUpLabel = cc.Layer.extend({
         cc.log("LineUpLabel update");
         cc.log(this._lineUp);
 
-        for (var i = 1; i <= MAX_LINE_UP_CARD; ++i) {
+        for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
             var cardId = this._lineUp.getLineUpByIndex(i);
-            var card = this._cardList.getCardByIndex(cardId);
-            this._lineUpCard[i].setString(card ? card.get("name") : "空");
+            this._lineUpCard[i].setString(cardId ? this._cardList.getCardByIndex(cardId).get("name") : "空");
         }
     },
 

@@ -7,7 +7,7 @@
  */
 
 var BatterLayer = cc.Layer.extend({
-    _cardsList: null,
+    _cardList: null,
     _labelsList: null,
     _progressList: null,
     _tipLabel: null,
@@ -27,11 +27,6 @@ var BatterLayer = cc.Layer.extend({
         cc.p(590, 950)
     ],
 
-    ctor: function () {
-        this._super();
-        cc.associateWithNative(this, cc.Layer);
-    },
-
     init: function (battleLog) {
         if (!this._super()) return false;
 
@@ -41,7 +36,7 @@ var BatterLayer = cc.Layer.extend({
         bgSprite.setPosition(size.width / 2, size.height / 2);
         this.addChild(bgSprite);
 
-        this._cardsList = [];
+        this._cardList = [];
         this._labelsList = [];
         this._progressList = [];
         this._tipLabel = cc.LabelTTF.create("xxx", 'Times New Roman', 30);
@@ -85,10 +80,10 @@ var BatterLayer = cc.Layer.extend({
         this._tipLabel.setString("");
 
         for (var i = 0; i < 12; ++i) {
-            if (this._cardsList[i] != null) {
-                cc.log("remove " + i + " this._cardsList[i]");
-                this._cardsList[i].removeFromParent();
-                this._cardsList[i] = null;
+            if (this._cardList[i] != null) {
+                cc.log("remove " + i + " this._cardList[i]");
+                this._cardList[i].removeFromParent();
+                this._cardList[i] = null;
             }
             if (this._progressList[i] != null) {
                 cc.log("remove " + i + " this._progressList[i]");
@@ -103,7 +98,7 @@ var BatterLayer = cc.Layer.extend({
             var sprite = CardNode.create(i);
             this.addChild(sprite);
             sprite.setPosition(this._cardPosition[i]);
-            this._cardsList[i] = sprite;
+            this._cardList[i] = sprite;
 
             var progress = Progress.createWithFile(s_progress_bg, s_progress, card.hp, card.hp);
             this.addChild(progress);
@@ -112,7 +107,7 @@ var BatterLayer = cc.Layer.extend({
             this._progressList[i] = progress;
         }
 
-        BattlePlayer.getInstance().play(battleLog, this._cardsList, this._labelsList, this._progressList, this._tipLabel);
+        BattlePlayer.getInstance().play(battleLog, this._cardList, this._labelsList, this._progressList, this._tipLabel);
     },
 
     _onClickBack : function() {

@@ -30,7 +30,7 @@ var Pass = Entity.extend({
         cc.log(index);
 
         var that = this;
-        lzWindow.pomelo.request("logic.taskHandler.passBarrier", {playerId: 1, index: index}, function (data) {
+        lzWindow.pomelo.request("logic.taskHandler.passBarrier", {playerId: gameData.player.get("id"), index: index}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
@@ -41,7 +41,7 @@ var Pass = Entity.extend({
                 var battleLog = BattleLog.create(msg);
                 BattleLogNote.getInstance().pushBattleLog(battleLog);
 
-                cb("success");
+                cb("success". battleLog.get("id"));
             } else {
                 cc.log("barriers fail");
 
@@ -55,7 +55,7 @@ var Pass = Entity.extend({
 
         var that = this;
 
-        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {playerId: 1, type: "pass"}, function (data) {
+        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {playerId: gameData.player.get("id"), type: "pass"}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {

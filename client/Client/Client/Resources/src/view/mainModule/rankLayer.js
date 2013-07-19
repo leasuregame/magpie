@@ -10,15 +10,15 @@
  * ranking layer
  * */
 
-var RankingLayer = cc.Layer.extend({
+var RankLayer = cc.Layer.extend({
     init: function () {
-        cc.log("RankingLayer init");
+        cc.log("RankLayer init");
 
         if (!this._super()) return false;
 
         var winSize = cc.Director.getInstance().getWinSize();
 
-        var label = cc.LabelTTF.create("RankingLayer", 'Times New Roman', 60);
+        var label = cc.LabelTTF.create("RankLayer", 'Times New Roman', 60);
         label.setPosition(winSize.width / 2, winSize.height / 2);
         this.addChild(label);
 
@@ -26,8 +26,8 @@ var RankingLayer = cc.Layer.extend({
     }
 })
 
-RankingLayer.create = function () {
-    var ret = new RankingLayer();
+RankLayer.create = function () {
+    var ret = new RankLayer();
 
     if (ret && ret.init()) {
         return ret;

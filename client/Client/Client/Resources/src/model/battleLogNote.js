@@ -8,44 +8,42 @@
 
 
 /*
- * battleLogNote
+ * battle log note
+ *
+ * 战报是一个不会修改的数据，所以可以本地缓存起来
+ * 如果玩家请求播放某场战斗，先从本地缓存读取
+ * 如果没有再按ID请求服务器获取战报
+ * 该模块待添加
  * */
 
-var BattleLogNote = cc.Class.extend({
-    _battleLogNote: null,
 
-    init: function () {
-        cc.log("BattleLogNote init");
+var BattleLogNote = Entity.extend({
+    _battleLogNote: {},
 
-        this._battleLogNote = [];
-    },
+    pushBattleLogByJson: function (json) {
+        cc.log("BattleLogNote pushBattleLogByJson");
 
-    pushBattleLogWithJson: function (json) {
-        cc.log("BattleLogNote pushBattleLogWithJson");
-
-        this._battleLogNote.push(BattleLog.create(json));
+        var battleLog = BattleLog.create(json);
+        this.pushBattleLog(battleLog);
     },
 
     pushBattleLog: function (battleLog) {
-        this._battleLogNote.push(battleLog);
+        cc.log("BattleLogNote pushBattleLog");
+
+        var id = battleLog.get("id");
+        this._battleLogNote[id] = battleLog;
     },
 
-    getLastBattleLog: function () {
-        cc.log("BattleLogNote getLastBattleLog");
+    getBattleByBattleLogId: function (id) {
+        cc.log("BattleLogNote getBattleByBattleLogId");
 
-        return this._battleLogNote[this._battleLogNote.length - 1];
+        return this._battleLogNote[id];
     },
 
-    getBattleLogNote: function () {
-        cc.log("BattleLogNote getBattleLogNote");
+    _loadLocalBattleLogData: function () {
+        cc.log("BattleLogNote _loadLocalBattleLogData");
 
-        return this._battleLogNote;
-    },
-
-    getBattleWithIndex: function (index) {
-        cc.log("BattleLogNote getBattleWithIndex");
-
-        return this._battleLogNote[index];
+        // 待添加
     }
 })
 

@@ -13,30 +13,54 @@
 
 
 var SkillUpgradeLabel = cc.Node.extend({
-    init : function() {
+    _leadCard: null,
+    _retinueCard: [],
+
+    onEnter: function () {
+        cc.log("SkillUpgradeLabel onEnter");
+
+        this._super();
+        this.update();
+    },
+
+    init: function () {
         cc.log("SkillUpgradeLabel init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         var bg = cc.LayerColor.create(cc.c4b(100, 0, 100, 100), GAME_WIDTH, 150);
         bg.setPosition(cc.p(0, 0));
-        this.addChild(bg);
+//        this.addChild(bg);
+
+        var selectLeadItem = cc.MenuItemLabel.create(bg, this._onClickSelectLead, this);
+
+        var menu = cc.Menu.create(selectLeadItem);
+        this.addChild(menu);
 
         var tipLabel = cc.LabelTTF.create("卡牌升级可以提升卡牌的基础攻击力和生命值", 'Times New Roman', 20);
         tipLabel.setPosition(cc.p(0, 0));
         this.addChild(tipLabel);
 
 
-
         return true;
+    },
+
+    update: function () {
+
+    },
+
+    _onClickSelectLead: function () {
+        cc.log("SkillUpgradeLabel _onClickSelectLead");
     }
+
+
 })
 
 
-SkillUpgradeLabel.create = function(){
+SkillUpgradeLabel.create = function () {
     var ret = new SkillUpgradeLabel();
 
-    if(ret && ret.init()) {
+    if (ret && ret.init()) {
         return ret;
     }
 

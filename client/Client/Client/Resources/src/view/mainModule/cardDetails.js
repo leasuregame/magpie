@@ -51,9 +51,9 @@ var CardDetails = cc.Layer.extend({
             this.addChild(sprite);
         }
 
-        var closeItem = cc.MenuItemImage.create(s_close, s_close, this._onClickCloseItem, this);
-        closeItem.setPosition(252, -357);
-        this._menu = cc.Menu.create(closeItem);
+        this.closeItem = cc.MenuItemImage.create(s_close, s_close, this._onClickCloseItem, this);
+        this.closeItem.setPosition(252, -357);
+        this._menu = cc.Menu.create(this.closeItem);
         this._menu.setPosition(0, 0);
         this.addChild(this._menu);
 
@@ -61,6 +61,7 @@ var CardDetails = cc.Layer.extend({
     },
 
     _onClickCloseItem: function () {
+        this.closeItem.setEnabled(false);
         this.removeFromParent();
     },
 

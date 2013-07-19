@@ -59,9 +59,9 @@ var PassLayer = cc.Layer.extend({
             menu.addChild(item);
         }
 
-        var view = cc.ScrollView.create(cc.size(160, 840), layer);
+        var view = cc.ScrollView.create(cc.size(160, 730), layer);
         view.setContentSize(cc.size(300, 10050));
-        view.setPosition(cc.p(300, 150));
+        view.setPosition(cc.p(280, 200));
         view.setBounceable(false);
         view.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         view.updateInset();
@@ -83,10 +83,10 @@ var PassLayer = cc.Layer.extend({
         cc.log("PassLayer _onClickDefiance");
         cc.log(index);
 
-        this._pass.defiance(function(data) {
+        this._pass.defiance(function(data, id) {
             cc.log(data);
 
-            var scene = BattleScene.create(BattleLogNote.getInstance().getLastBattleLog());
+            var scene = BattleScene.create(BattleLogNote.getInstance().getBattleByBattleLogId(id));
 
             cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, scene, true));
         }, index);

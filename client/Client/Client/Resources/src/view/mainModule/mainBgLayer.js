@@ -2,27 +2,33 @@
  * Created with JetBrains WebStorm.
  * User: lcc3536
  * Date: 13-5-17
- * Time: 上午11:23
+ * Time: 上午10:52
  * To change this template use File | Settings | File Templates.
  */
 
 
 /*
- * 角色详细信息
+ *  main bg layer
  * */
 
-var RoleInformationLayer = cc.Layer.extend({
+
+var MainBgLayer = cc.Layer.extend({
     init: function () {
-        cc.log("RoleInformationLayer init");
+        cc.log("MainBgLayer init");
 
         if (!this._super()) return false;
+
+        var bgSprite = cc.Sprite.create(s_game_bg);
+        bgSprite.setPosition(GAME_MIDPOINT);
+        this.addChild(bgSprite);
 
         return true;
     }
 })
 
-RoleInformationLayer.create = function () {
-    var ret = new RoleInformationLayer();
+
+MainBgLayer.create = function () {
+    var ret = new MainBgLayer();
 
     if (ret && ret.init()) {
         return ret;

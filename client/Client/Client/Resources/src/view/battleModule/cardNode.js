@@ -28,17 +28,10 @@ var CardNode = cc.Node.extend({
         this._heroSprite = cc.Sprite.create(s_path + "b" + index + ".png");
         this.addChild(this._heroSprite);
 
-//        this._expressionSprite = cc.Sprite.create("res/test1/Expression" + card + ".png");
-//        this._expressionSprite.setOpacity(0);
-//        this.addChild(this._expressionSprite);
-
         return true;
     },
 
     atk: function () {
-//        var a = cc.Sequence.create(cc.FadeIn.create(0.5), cc.FadeOut.create(0.5));
-//        this._expressionSprite.runAction(a);
-
         var a1 = cc.RotateBy.create(0.3 / GAME_COMBAT_SPEED, 30);
         var a2 = cc.RotateBy.create(0.4 / GAME_COMBAT_SPEED, -60);
         var a3 = cc.RotateBy.create(0.3 / GAME_COMBAT_SPEED, 30);

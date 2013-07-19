@@ -105,6 +105,9 @@ var Card = Entity.extend({
         this._hpInit *= multiple;
         this._atkInit *= multiple;
 
+        this._hpInit = Math.round(this._hpInit);
+        this._atkInit = Math.round(this._atkInit);
+
         this._hp = this._hpInit + this._hpAddition;
         this._atk = this._atkInit + this._atkAddition;
 
@@ -131,11 +134,7 @@ var Card = Entity.extend({
 
     // 计算总经验
     getCardExp: function () {
-
-    },
-
-    clickUse: function() {
-        this._isUse = !this._isUse;
+        cc.log("Card getCardExp");
     },
 
     clone: function () {

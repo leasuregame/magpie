@@ -13,6 +13,9 @@
 
 
 var Rank = Entity.extend({
+    _rankList: null,
+
+
     init : function() {
 
         return true;

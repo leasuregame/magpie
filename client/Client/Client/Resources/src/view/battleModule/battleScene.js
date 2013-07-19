@@ -18,10 +18,10 @@ var BattleScene = cc.Scene.extend({
 })
 
 
-BattleScene.create = function (battleLog) {
+BattleScene.create = function (battleLogId) {
     var ret = new BattleScene();
 
-    if (ret && ret.init(battleLog)) {
+    if (ret && ret.init(battleLogId)) {
         return ret;
     }
 

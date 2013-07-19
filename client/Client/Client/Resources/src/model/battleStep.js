@@ -12,7 +12,7 @@
 * */
 
 
-var BattleStep = cc.Class.extend({
+var BattleStep = Entity.extend({
     _isSkill : null,
     _attacker : 0,
     _target : [],

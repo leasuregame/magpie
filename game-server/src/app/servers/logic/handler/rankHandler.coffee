@@ -146,6 +146,7 @@ genRankings = (ranking) ->
 
 filterPlayersInfo = (players, rankings) ->
   players.map (p) -> 
+    p = p.toJson()
     {
       playerId: p.id
       name: p.name

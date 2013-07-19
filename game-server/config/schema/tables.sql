@@ -113,6 +113,5 @@ CREATE TABLE IF NOT EXISTS `rank` (
   -- `winCount` INT(10) UNSIGNED DEFAULT '0',
   -- `loseCount` INT(10) UNSIGNED DEFAULT '0',
   -- `winningStreakCount` INT(10) UNSIGNED DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `INDEX_RANKING` (`ranking`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

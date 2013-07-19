@@ -15,7 +15,29 @@ IF (SELECT EXISTS(SELECT 1 FROM `mysql`.`user` WHERE `user` = username)) = 0 THE
     deallocate prepare stmt;
     end;
 END IF;
-end $$
+end;
+
+CREATE PROCEDURE `exchangeRankings` (p1 int, p2 int, r1 int, r2 int)
+BEGIN
+DECLARE succ int;
+START TRANSACTION;
+SET succ = 0;
+UPDATE `rank` set `ranking` = r2 where `playerId` = p1 and `ranking` = r1;
+IF ROW_COUNT() > 0 THEN
+	UPDATE `rank` set `ranking` = r1 where `playerId` = p2 and `ranking` = r2;
+	IF ROW_COUNT() > 0 THEN
+		SET succ = 1;
+		COMMIT;
+		SELECT succ;
+	ELSE
+		ROLLBACK;
+		SELECT succ;
+	END IF;
+ELSE
+	ROLLBACK;
+	SELECT succ;
+END IF;
+END $$
 delimiter ;
 
 call createUser('dev', '1');

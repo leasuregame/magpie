@@ -93,7 +93,8 @@ Handler::challenge = (msg, session, next) ->
       if err
         return next(null, {code: err.code, msg: err.msg})
 
-      next(null, {code: 200, msg: { rewards: rewards, battleLog: bl}})
+      bl.rewards = rewards
+      next(null, {code: 200, msg: {battleLog: bl}})
   
 
 exchangeRanking = (app, playerId, targetId, isWin, honorPoint, cb) ->

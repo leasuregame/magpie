@@ -114,24 +114,47 @@ var Dao = {
 		var sql = 'select * from rank ' + (where !== '' ? 'where ' + where : '');
 		console.log(sql);
 		return dbClient.query(sql, [], function(err, res){
-            if (err) {
-                logger.error('[rankDao.select faild]', err.stack);
-                return cb({
-                    code: err.code,
-                    msg: err.message
-                }, null);
-            }
+        if (err) {
+            logger.error('[rankDao.select faild]', err.stack);
+            return cb({
+                code: err.code,
+                msg: err.message
+            }, null);
+        }
 
-            if (!!res && res.length > 0) {
-                var rankList = res.map(function(data) {
-                    return createNewRank(data);
-                });
-                return cb(null, rankList);
-            } else {
-                return cb(null, []);
-            }
-        }); 
-	}
+        if (!!res && res.length > 0) {
+            var rankList = res.map(function(data) {
+                return createNewRank(data);
+            });
+            return cb(null, rankList);
+        } else {
+            return cb(null, []);
+        }
+    }); 
+	}, 
+
+  updateRanks: function(param, cb) {
+    var sql = 'call exchangeRankings (' + [
+        param.player.id, 
+        param.target.id,
+        param.player.ranking,
+        param.target.ranking
+      ].toString() + ')';
+    return dbClient.query(sql, [], function(err, res) {
+      if (err) {
+        logger.error('[rankDao.select faild]', err.stack);
+        return cb({
+            code: err.code,
+            msg: err.message
+        }, null);
+      }
+
+      if (!!res) {
+        return cb(null, res);
+      }
+    });
+  }
+
 };
 
 module.exports = Dao;

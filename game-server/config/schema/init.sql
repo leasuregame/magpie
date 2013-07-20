@@ -17,7 +17,11 @@ IF (SELECT EXISTS(SELECT 1 FROM `mysql`.`user` WHERE `user` = username)) = 0 THE
 END IF;
 end;
 
-CREATE PROCEDURE `exchangeRankings` (p1 int, p2 int, r1 int, r2 int)
+-- grant permission to dev for database magpie
+GRANT ALL PRIVILEGES ON magpie.* to dev@localhost IDENTIFIED BY "1";
+
+
+CREATE PROCEDURE `exchangeRankings` (p1 int, p2 int, r1 int, r2 int, isWin int)
 BEGIN
 DECLARE succ int;
 START TRANSACTION;
@@ -42,5 +46,3 @@ delimiter ;
 
 call createUser('dev', '1');
 
--- grant permission to dev for database magpie
-GRANT ALL PRIVILEGES ON magpie.* to dev@localhost IDENTIFIED BY "1";

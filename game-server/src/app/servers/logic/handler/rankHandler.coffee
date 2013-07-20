@@ -83,11 +83,12 @@ Handler::challenge = (msg, session, next) ->
       player.save()
 
       isWin = _results == 'win'
-      exchangeRanking @app, playerId, targetId, isWin, rewards.honorPoint, (err) ->
+      rankManager.exchangeRankings [playerId, targetId], (err, res) ->
+        console.log 'exchange result: ', err, res
         if err
           return cb(err)
         else
-          cb(null, rewards, bl)
+          return cb(null, rewards, bl)
 
   ], (err, rewards, bl) ->
       if err
@@ -96,6 +97,30 @@ Handler::challenge = (msg, session, next) ->
       bl.rewards = rewards
       next(null, {code: 200, msg: {battleLog: bl}})
   
+Handler::trans = (msg, session, next) ->
+  sqlList = [
+    {
+      sql: "INSERT into battleLog (id, createTime, own, enemy, battleLog) values (?,?,?,?,?)"
+      args: [1, 0, 1, 1, 'battlelog']
+    }
+    {
+      sql: 'update battleLog set enemy = ? where id = ?'
+      args: [2, 1]
+    }
+    {
+      sql: 'update battleLog set own = ? where id = ?'
+      args: [2, 1]
+    }
+    {
+      sql: 'update battleLog set battleLog = ? where id = ?'
+      args: ['fuck you', 1]
+    }
+  ]
+
+  @app.get('dbClient').queues sqlList, (err, info) ->
+    console.log 'result: ', err, info
+    next(null, {code: 200, msg: info})
+    
 
 exchangeRanking = (app, playerId, targetId, isWin, honorPoint, cb) ->
   app.get('dao').rank.select " playerId in (#{[playerId, targetId].toString()}) ", (err, ranks) ->

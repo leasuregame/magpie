@@ -83,6 +83,17 @@ describe("Ranking List", function() {
   //   })
   // });
 
+  describe("transaction", function() {
+    
+      it("should can be execute transaction", function() {
+        request('logic.rankHandler.trans', {}, function(data) {
+            console.log(data);
+            expect(data).toEqual('');
+          });
+      });
+
+  });
+
   describe("Tear Down", function(){
     it('disconnect', function(){
       pomelo.disconnect();

@@ -28,14 +28,14 @@ var Tournament = Entity.extend({
 
         var len = data.length;
 
-        for(var i = 0; i < len; ++i) {
+        for (var i = 0; i < len; ++i) {
             player = data[i];
 
             var cards = player.cards;
             var cardsLen = cards.length;
             var cardList = [];
 
-            for(var j = 0; j < cardsLen; ++j) {
+            for (var j = 0; j < cardsLen; ++j) {
                 cardList[j] = Card.create(cards[j]);
             }
 
@@ -95,7 +95,7 @@ var Tournament = Entity.extend({
         });
     },
 
-    addFriend: function() {
+    addFriend: function () {
         cc.log("Tournament addFriend");
 
     }

@@ -54,11 +54,9 @@ var cardDao = {
 
         var fields = _.clone(DEFAULT_CARD_INFO);
         _.extend(fields, param);
-        var _ref = sqlHelper.insertSql("card", fields);
-        var sql = _ref[0];
-        var args = _ref[1];
-        console.log(sql, args);
-        return dbClient.insert(sql, args, function (err, res) {
+        var stm = sqlHelper.insertSql("card", fields);
+        console.log(stm);
+        return dbClient.insert(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[cardDao.createCard faild] ", err.stack);
 

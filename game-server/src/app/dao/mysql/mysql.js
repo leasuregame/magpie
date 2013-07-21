@@ -40,14 +40,22 @@ NND = {
             function error(e, info) {
                 console.log('check transaction: ', e, info);
                 if (e && trans.rollback) {
-                    trans.rollback();
-                    throw e;
+                    trans.rollback(function(err, info) {
+                        return cb(e, false);
+                    });
+                }
+                if (info.affectedRows < 1 && trans.rollback) {
+                    trans.rollback(function(err, info){
+                        return cb({code: 501, msg: 'not all data is complete'}, false)
+                    });
                 }
             }
             for (var i = 0; i < sqlList.length; i++) {
                 trans.query(sqlList[i].sql, sqlList[i].args, error);
             }
-            trans.commit(cb);
+            trans.commit(function(err, info) {
+                return cb(err, true);
+            });
         });
     },
     /*

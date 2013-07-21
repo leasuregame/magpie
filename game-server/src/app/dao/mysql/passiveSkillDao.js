@@ -50,11 +50,8 @@ var passiveSkillDao = {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.insertSql("passiveSkill", param);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.insert(sql, args, function (err, res) {
+        var stm = sqlHelper.insertSql("passiveSkill", param);
+        return dbClient.insert(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[passiveSkillDao.createPassiveSkill faild] ", err.stack);
                 return cb({

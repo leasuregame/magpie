@@ -35,18 +35,44 @@ var Rank = (function(_super) {
 		};
 	};
 
+	Rank.prototype.pushRecent = function(id) {
+		this._modifyCount('recentChallenger', function(counts, name) {
+			var recentChallenger = counts[name];
+			if (recentChallenger.length > 3) {
+				recentChallenger.pop();
+			}
+
+			if (recentChallenger.indexOf(id) < 0) {
+				recentChallenger.push(id);
+			}
+		});
+	};
+
 	Rank.prototype.incCount = function(name) {
-		var counts = _.clone(this.counts);
-		if (counts.hasOwnProperty(name)) {
+		this._modifyCount(name, function(counts, name) {
 			counts[name]++;
-		}
-		this.set('counts', counts);
+		});
 	};
 
 	Rank.prototype.resetCount = function(name) {
+		this._modifyCount(name, function(counts, name) {
+			counts[name] = 0;
+		});
+	};
+
+	Rank.prototype._modifyCount = function(name, fn) {
+		if (typeof this.counts !== 'object') {
+			this.counts = {
+				challenge: 0,
+				win: 0,
+				lose: 0,
+				winningStreak: 0,
+		        recentChallenger: []
+			};
+		}
 		var counts = _.clone(this.counts);
 		if (counts.hasOwnProperty(name)) {
-			counts[name] = 0;
+			fn(counts, name);
 		}
 		this.set('counts', counts);
 	};

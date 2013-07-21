@@ -54,11 +54,8 @@ var userDao = {
             cb("param error", null);
         }
 
-        var _ref = sqlHelper.insertSql("user", param);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.insert(sql, args, function (err, res) {
+        var stm = sqlHelper.insertSql("user", param);
+        return dbClient.insert(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[userDao.createUser faild] ", err.stack);
 

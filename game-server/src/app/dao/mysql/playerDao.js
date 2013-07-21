@@ -76,11 +76,8 @@ var playerDao = {
 
         var fields = _.clone(DEFAULT_PLAYER_INFO)
         _.extend(fields, param);
-        var _ref = sqlHelper.insertSql("player", fields);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.insert(sql, args, function (err, res) {
+        var stm = sqlHelper.insertSql("player", fields);
+        return dbClient.insert(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[playerDao.createPlayer faild] ", err.stack);
 

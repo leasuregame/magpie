@@ -46,11 +46,8 @@ var battleLogDao = {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.insertSql("battleLog", param);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.insert(sql, args, function (err, res) {
+        var stm = sqlHelper.insertSql("battleLog", param);
+        return dbClient.insert(stm.sql, stm.args, function (err, res) {
             if (err) {
                 logger.error("[battleLogDao.createBattleLog faild] ", err.stack);
 

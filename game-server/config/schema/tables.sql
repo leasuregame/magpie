@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `rank` (
   `rank` SMALLINT(3) UNSIGNED DEFAULT '0',  -- 头衔称号等级
   `ranking` INT(10) UNSIGNED DEFAULT '0',   -- 排名
   -- counts = {challenge: 0, win: 0, lose: 0, winingStreak: 0}
-  `counts` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',  -- 挑战统计数
+  `counts` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',  -- 挑战统计数
   -- `challengeCount` INT(10) UNSIGNED DEFAULT '0',
   -- `winCount` INT(10) UNSIGNED DEFAULT '0',
   -- `loseCount` INT(10) UNSIGNED DEFAULT '0',

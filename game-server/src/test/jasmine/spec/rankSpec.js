@@ -69,29 +69,18 @@ describe("Ranking List", function() {
 
   });
 
-  // describe("challenge", function() {
-  //   describe("when one challenge to other", function() {
-  //     it("should can be return battle log", function() {
-  //       request('logic.rankHandler.challenge', {
-  //           playerId: 100,
-  //           targetId: 101
-  //         }, function(data) {
-  //           console.log(data);
-  //           expect(data).toEqual('');
-  //         });
-  //     });
-  //   })
-  // });
-
-  describe("transaction", function() {
-    
-      it("should can be execute transaction", function() {
-        request('logic.rankHandler.trans', {}, function(data) {
+  describe("challenge", function() {
+    describe("when one challenge to other", function() {
+      it("should can be return battle log", function() {
+        request('logic.rankHandler.challenge', {
+            playerId: 100,
+            targetId: 101
+          }, function(data) {
             console.log(data);
             expect(data).toEqual('');
           });
       });
-
+    })
   });
 
   describe("Tear Down", function(){

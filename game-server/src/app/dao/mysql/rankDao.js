@@ -14,7 +14,8 @@ var DEFAULT_RANK_INFO = {
 		challenge: 0,
 		win: 0,
 		lose: 0,
-		winningStreak: 0
+		winningStreak: 0,
+        recentChallenger: []
 	}
 };
 
@@ -44,11 +45,8 @@ var Dao = {
 
 		var fields = _.clone(DEFAULT_RANK_INFO);
 		_.extend(fields, param);
-		var _ref = sqlHelper.insertSql("rank", fields);
-		var sql = _ref[0];
-		var args = _ref[1];
-
-		return dbClient.insert(sql, args, function(err, res) {
+		var stm = sqlHelper.insertSql("rank", fields);
+		return dbClient.insert(stm.sql, stm.args, function(err, res) {
 			if (err) {
 				logger.error("[rankDao.createRank faild] ", err.stack);
 

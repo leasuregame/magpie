@@ -1,4 +1,5 @@
 playerManager = require '../../../manager/playerManager'
+rankManager = require '../../../manager/rankManager'
 table = require '../../../manager/table'
 async = require 'async'
 
@@ -80,76 +81,21 @@ Handler::challenge = (msg, session, next) ->
 
       player.increase('exp', rewards.exp)
       player.increase('money', rewards.money)
-      player.save()
 
       isWin = _results == 'win'
-      rankManager.exchangeRankings [playerId, targetId], (err, res) ->
+      rankManager.exchangeRankings player, targetId, rewards, isWin, (err, res) ->
         console.log 'exchange result: ', err, res
-        if err
+        if err and not res
           return cb(err)
         else
           return cb(null, rewards, bl)
 
   ], (err, rewards, bl) ->
       if err
-        return next(null, {code: err.code, msg: err.msg})
+        return next(null, {code: err.code, msg: err.msg or err.message})
 
       bl.rewards = rewards
       next(null, {code: 200, msg: {battleLog: bl}})
-  
-Handler::trans = (msg, session, next) ->
-  sqlList = [
-    {
-      sql: "INSERT into battleLog (id, createTime, own, enemy, battleLog) values (?,?,?,?,?)"
-      args: [1, 0, 1, 1, 'battlelog']
-    }
-    {
-      sql: 'update battleLog set enemy = ? where id = ?'
-      args: [2, 1]
-    }
-    {
-      sql: 'update battleLog set own = ? where id = ?'
-      args: [2, 1]
-    }
-    {
-      sql: 'update battleLog set battleLog = ? where id = ?'
-      args: ['fuck you', 1]
-    }
-  ]
-
-  @app.get('dbClient').queues sqlList, (err, info) ->
-    console.log 'result: ', err, info
-    next(null, {code: 200, msg: info})
-    
-
-exchangeRanking = (app, playerId, targetId, isWin, honorPoint, cb) ->
-  app.get('dao').rank.select " playerId in (#{[playerId, targetId].toString()}) ", (err, ranks) ->
-    if err
-      return cb(err)
-
-    if ranks[0].playerId is playerId
-      challenger = ranks[0]
-      defender = ranks[1]
-    else
-      challenger = ranks[1]
-      defender = ranks[0]
-
-    if isWin
-      ranking1 = challenger.ranking
-      ranking2 = defender.ranking
-      defender.set('ranking', ranking1)
-      challenger.set('ranking', ranking2)
-      challenger.incCount('win')
-      challenger.incCount('winningStreak')
-    else
-      challenger.incCount('lose')
-      challenger.resetCount('winningStreak')
-
-    challenger.incCount('challenge')
-    challenger.increase('honorPoint', honorPoint)
-    challenger.save()
-    defender.save()
-    cb()
 
 genRankings = (ranking) ->
   top10 = {}

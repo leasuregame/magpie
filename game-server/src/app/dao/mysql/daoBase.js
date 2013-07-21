@@ -1,7 +1,7 @@
 var sqlHelper = require('./sqlHelper');
 var dbClient = require('pomelo').app.get('dbClient');
 var logger = require('pomelo-logger').getLogger(__filename);
-var DaoBase = module.exports;
+var _ = require('underscore');
 
 var ACTION = {
   INSERT: 'insert',
@@ -10,18 +10,20 @@ var ACTION = {
   SELECT: 'select'
 }
 
-DaoBase = {
-  DEFAULT_VALUES = {},
-  table: ''
-  domain: null,
+var DaoBase = (function() {
+  function DaoBase() {}
 
-  create: function(options, cb) {
+  DaoBase.DEFAULT_VALUES = {};
+  DaoBase.table = '';
+  DaoBase.domain = null;
+
+  DaoBase.create =  function(options, cb) {
     var _this = this;
     var data = _.clone(this.DEFAULT_VALUES);
     _.extend(options.data, data);
-    options.table = this.table;
+    options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.INSERT, options);
-    return dbClient.query(stm..sql, stm.args, function(err, res) {
+    return dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when create " + _this.table + "]", err.stack)
         return cb({
@@ -30,38 +32,27 @@ DaoBase = {
         });
       }
 
-      return cb(null, new _this.domain(_.extend({id: res.insertId}, data)));
+      return cb(null, new _this.domain(_.extend({id: res.insertId}, options.data)));
     });
-  }, 
+  };
 
-  fetchOne: function(options, cb) {
+  DaoBase.fetchOne = function(options, cb) {
     var _this = this;
-    options.table = this.table;
-    var stm = sqlHelper.generateSql(ACTION.SELECT, options);
-    return dbClient.query(stm.sql, stm.args, function(err, res) {
-      if (err) {
-        logger.error("[SQL ERROR, when fetch " + _this.table + "]", err.stack)
-        return cb({
-          code: err.code,
-          msg: err.message
-        });
+    return this.fetchMany(options, function(err, res){
+      if (!!res && res.length == 0) {
+        return cb({code: 404, msg: 'can not find ' + _this.table}, null)
       }
-
-      if (!!res && res.length == 1) {
-        return cb(null, new _this.domain(res[0]));
-      } else {
-        return cb(null, {code: 404, msg: 'can not find ' + _this.table})
-      }
+      return cb(err, !!res ? res[0] : null);
     });
-  }, 
+  };
 
-  fetchMany: function(options, cb) {
+  DaoBase.fetchMany = function(options, cb) {
     var _this = this;
-    options.table = this.table;
+    options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.SELECT, options);
     return dbClient.query(stm.sql, stm.args, function(err, res){
       if (err) {
-        logger.error("[SQL ERROR, when fetch " + _this.table + "s]", err.stack)
+        logger.error("[SQL ERROR, when fetch " + _this.table + "]", err.stack)
         return cb({
           code: err.code,
           msg: err.message
@@ -76,11 +67,11 @@ DaoBase = {
         return cb(null, []);
       }
     });
-  }, 
+  };
 
-  update: function(options, cb) {
+  DaoBase.update = function(options, cb) {
     var _this = this;
-    options.table = this.table;
+    options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.UPDATE, options);
     return dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
@@ -97,6 +88,30 @@ DaoBase = {
         return cb(null, false);
       }
     });
-  }
+  };
 
-};
+  DaoBase.delete = function(options, cb) {
+    var _this = this;
+    options.table = options.table || this.table;
+    var stm = sqlHelper.generateSql(ACTION.DELETE, options);
+    return dbClient.query(stm.sql, stm.args, function(err, res) {
+      if (err) {
+        logger.error("[SQL ERROR, when delete " + _this.table + "s]", err.stack)
+        return cb({
+          code: err.code,
+          msg: err.message
+        });
+      }
+
+      if (!!res && res.affectedRows > 0) {
+        return cb(null, true);
+      } else {
+        return cb(null, false);
+      }
+    });
+  };
+
+  return DaoBase;
+})();
+
+module.exports = DaoBase;

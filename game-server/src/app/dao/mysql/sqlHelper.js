@@ -25,6 +25,10 @@ var sqlHelper = {
      * @return {array} 包含两个数据，sql语句和填入值
      * */
     insertSql: function (table, fields) {
+        if (arguments.length == 1) {
+            fields = table.data;
+            table = table.table;
+        }
         fields.createTime = Date.now();
         var sql = "insert into " + table + " set ?";
 
@@ -43,9 +47,9 @@ var sqlHelper = {
      * */
     updateSql: function (table, where, data) {
         if (arguments.length == 1) {
-            where = table.where,
-            data = table.data,
-            table = table.table
+            where = table.where;
+            data = table.data;
+            table = table.table;
         }
         var _sets = "";
         var _values = [];
@@ -78,6 +82,11 @@ var sqlHelper = {
      * @return {array} 包含两个数据，sql语句和填入值
      * */
     selectSql: function (table, where, limit) {
+        if (arguments.length == 1) {
+            where = table.where;
+            limit = table.limit;
+            table = table.table;
+        }
         var stm = Statement.where(where);        
         var sql = "select * from " + table + " where " + stm.where;
         return {
@@ -93,6 +102,10 @@ var sqlHelper = {
      * @return {array} 包含两个数据，sql语句和填入值
      * */
     deleteSql: function (table, where) {
+        if (arguments.length == 1) {
+            where = table.where;
+            table = table.table;
+        }
         var stm = Statement.where(where);
         var sql = "delete from " + table + " where " + stm.where;
 

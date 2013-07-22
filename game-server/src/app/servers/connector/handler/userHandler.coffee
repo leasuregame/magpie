@@ -15,7 +15,7 @@ Handler::register = (msg, session, next) ->
   if not account or account is '' or not password or password is ''
     next(null, {code: 501, msg: Resources.ERROR.INVALID_PARAMS})
   else
-    dao.user.createUser {account: account, password: password}, (err, user) ->
+    dao.user.create data: {account: account, password: password}, (err, user) ->
       if err or not user
         if err and err.code is "ER_DUP_ENTRY"
           next(null, {code: 501, msg: Resources.ERROR.USER_EXISTS})
@@ -31,7 +31,7 @@ Handler::login = (msg, session, next) ->
   uid = null;
   async.waterfall [
     (cb) ->
-      dao.user.getUserByAccount account, cb
+      dao.user.fetchOne where: {account:account}, cb
     
     (user, cb) ->
       if password isnt user.password
@@ -41,7 +41,7 @@ Handler::login = (msg, session, next) ->
 
     (userId, cb) ->
       uid = userId
-      dao.player.getPlayer {userId: uid}, (err, res) ->
+      dao.player.fetchOne where: {userId: uid}, (err, res) ->
         if err and not res
           console.log err
           return cb(null, null)
@@ -52,7 +52,7 @@ Handler::login = (msg, session, next) ->
       if not playerId
         return cb(null, null)
 
-      dao.player.getPlayerInfo playerId, (err, player) ->
+      dao.player.getPlayerInfo where: {id:playerId}, (err, player) ->
         if err and not player
           console.log err
           return cb(null, null)

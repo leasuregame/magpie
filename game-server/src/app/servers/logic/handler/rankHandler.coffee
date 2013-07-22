@@ -23,23 +23,14 @@ module.exports = (app) ->
 
 Handler = (@app) ->
 
-Handler::top10 = (msg, session, next) ->
-  playerManager.top10 (err, players) ->
-    if err
-      return next(null, {code: err.code, msg: err.message?})
-
-    next(null, {code: 200, msg: players.map (p)-> p.toJson()})
-
 Handler::rankingList = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
-  console.log 'session playerId: ', playerId
   async.waterfall [
     (cb) =>
-      @app.get('dao').rank.getRank {playerId: playerId}, cb
+      @app.get('dao').rank.fetchOne where:{playerId: playerId}, cb
 
     (rank, cb) ->
       rankings = genRankings(rank.ranking)
-      console.log 'ranking list:', rank.ranking, rankings
       playerManager.rankingList _.keys(rankings), (err, players) ->
         cb(err, players, rankings)
 

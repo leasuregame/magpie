@@ -85,10 +85,15 @@ var sqlHelper = {
         if (arguments.length == 1) {
             where = table.where;
             limit = table.limit;
+            orderby = table.orderby || '';
+            limit = table.limit || -1;
             table = table.table;
         }
-        var stm = Statement.where(where);        
-        var sql = "select * from " + table + " where " + stm.where;
+        var stm = Statement.where(where);
+        where = stm.where == '' ? '' : ' where ' + stm.where;
+        orderby = orderby == '' ? '' : ' order by ' + orderby;
+        limit = limit == -1 ? '' : ' limit ' + limit;
+        var sql = "select * from " + table + where + orderby + limit;
         return {
             sql: sql, 
             args: stm.args
@@ -125,12 +130,18 @@ var Statement = {
         var where_str = '';
         var args = []
         
-        for (var key in params) {
-            where_str += key + ' = ? and ';
-            args.push(params[key]);
+        if (typeof params === 'string') {
+            where_str = params;
+        } else if (typeof params === 'object') {
+            for (var key in params) {
+                where_str += key + ' = ? and ';
+                args.push(params[key]);
+            }
+            where_str = where_str.slice(0, -4);
         }
+
         return {
-            where: where_str.slice(0, -4), 
+            where: where_str,
             args: args
         };
     }

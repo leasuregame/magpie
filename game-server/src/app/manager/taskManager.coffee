@@ -91,7 +91,7 @@ class Manager
     _res = randomCard(utility.randomValue(_.keys(_obj), _.values(_obj)))
     data.open_box_card = _res if _res > 0
     data.fragment = true if _res is -1
-    dao.card.createCard {playerId: player.id, tableId: data.open_box_card}, (err, card) ->
+    dao.card.create data: {playerId: player.id, tableId: data.open_box_card}, (err, card) ->
       if err
         cb(err)
       else    

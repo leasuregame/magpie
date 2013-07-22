@@ -18,7 +18,7 @@ describe "Player Dao Access Object", ->
         dbClient.delete 'delete from player where id = ?', [pid], -> done()
 
       it "should can create a player", (done) ->
-        dao.player.createPlayer( {
+        dao.player.create( data: {
           id: pid
           userId: uid
           areaId: areaId
@@ -32,13 +32,17 @@ describe "Player Dao Access Object", ->
         )
 
       it "should return error with param wrong", (done) ->
-        dao.player.createPlayer {}, (err, res) -> 
+        dao.player.create data: {}, (err, res) -> 
           should.strictEqual null, res
-          err.should.be.equal('param error')
+          err.should.be.eql(
+            code: 'ER_NO_DEFAULT_FOR_FIELD',
+            msg: 'ER_NO_DEFAULT_FOR_FIELD: Field \'userId\' doesn\'t have a default value')
           
-          dao.player.createPlayer {userId: uid}, (err, res) ->
+          dao.player.create data: {userId: uid}, (err, res) ->
             should.strictEqual null, res
-            err.should.be.equal('param error')
+            err.should.be.equal(
+              code: 'ER_NO_DEFAULT_FOR_FIELD',
+              msg: 'ER_NO_DEFAULT_FOR_FIELD: Field \'userId\' doesn\'t have a default value')
             done()
 
 
@@ -51,7 +55,7 @@ describe "Player Dao Access Object", ->
         dbClient.delete 'delete from player where id = ?', [pid], -> done()
 
       it "should can not create duplicate player", (done) ->
-        dao.player.createPlayer {
+        dao.player.create data: {
           id: pid
           userId: uid
           areaId: areaId
@@ -72,7 +76,7 @@ describe "Player Dao Access Object", ->
 
     describe "when player exists", ->
       it "should can get the existed user with id", (done) ->
-        dao.player.getPlayer {id: pid}, (err, res) ->
+        dao.player.fetchOne where: {id: pid}, (err, res) ->
           should.strictEqual null, err
           res.id.should.be.equal(pid)
           res.name.should.be.equal(name)
@@ -80,7 +84,7 @@ describe "Player Dao Access Object", ->
           done()
 
       it "should can get the existed user with name", (done) ->
-        dao.player.getPlayer {name: name}, (err, res) ->
+        dao.player.fetchOne where: {name: name}, (err, res) ->
           should.strictEqual null, err
           res.id.should.be.equal(pid)
           res.name.should.be.equal(name)
@@ -88,7 +92,7 @@ describe "Player Dao Access Object", ->
           done()
 
       it "shoudl can get the existed user with userId", (done) ->
-        dao.player.getPlayer {userId: uid}, (err, res) ->
+        dao.player.fetchOne where: {userId: uid}, (err, res) ->
           should.strictEqual null, err
           res.id.should.be.equal(pid)
           res.name.should.be.equal(name)
@@ -98,14 +102,14 @@ describe "Player Dao Access Object", ->
     describe "when player not exists", ->
       it "get user with id should return error", (done) ->
         pid_not_exists = 100000
-        dao.player.getPlayer {id: pid_not_exists}, (err, res) ->
+        dao.player.fetchOne where: {id: pid_not_exists}, (err, res) ->
           should.strictEqual null, res
           err.should.eql {code: null, msg: 'Player not exists with params: {\"id\":100000}'}
           done()
 
       it "get user with name should return error", (done) ->
         name_not_exists = 'not exists name'
-        dao.player.getPlayer {name: name_not_exists}, (err, res) ->
+        dao.player.fetchOne where: {name: name_not_exists}, (err, res) ->
           should.strictEqual null, res
           err.should.eql {code: null, msg: 'Player not exists with params: {\"name\":\"not exists name\"}'}
           done()
@@ -144,9 +148,9 @@ describe "Player Dao Access Object", ->
             dbClient.delete 'delete from passiveSkill', -> done()
           
       it "should can be got all the player infomation", (done) ->
-        dao.player.getPlayerInfo _pid, (err, player) ->
+        dao.player.getPlayerInfo where: id: _pid, (err, player) ->
           should.strictEqual null, err
-          #player.toJson().should.be.equal({})
+          player.toJson().should.be.equal({})
           player.should.be.a('object')
           player.userId.should.be.equal(uid)
           player.name.should.be.equal(name+'__')
@@ -164,13 +168,13 @@ describe "Player Dao Access Object", ->
       dbClient.delete 'delete from player where id = ?', [pid], -> done()
 
     it "when player exists, should can be delete a player", (done) ->
-      dao.player.deletePlayerById pid, (err, res) ->
+      dao.player.delete where: id: pid, (err, res) ->
         should.strictEqual err, null
         res.should.be.ok
         done()
 
     it "when player not exists, should return false", (done) ->
-      dao.player.deletePlayerById pid+10000, (err, res) ->
+      dao.player.delete where: id: pid+10000, (err, res) ->
         should.strictEqual err, null
         res.should.not.be.ok
         done()
@@ -181,10 +185,3 @@ describe "Player Dao Access Object", ->
   #       players.length.should.be.equal(6)
   #       (players.map (p) -> p.ranking).should.eql([1,2,3,4,5,6])          
   #       done()
-    
-  
-
-
-
-
-

@@ -12,9 +12,9 @@
  * */
 
 
-var SERVER_HOST = "192.168.1.14";
+var SERVER_HOST = "192.168.1.19";
 var SERVER_PORT = 3010;
-var ConnectSuccess = false;
+var connectSuccess = false;
 
 lzWindow.pomelo.init({
     host: SERVER_HOST,
@@ -24,12 +24,12 @@ lzWindow.pomelo.init({
     }
 }, function () {
     cc.log('connect success!');
-    ConnectSuccess = true;
+    connectSuccess = true;
 
     lzWindow.pomelo.on('close', function (data) {
         cc.log('*****close');
         cc.log(data);
-        ConnectSuccess = false;
+        connectSuccess = false;
     });
 
     lzWindow.pomelo.on('onMessage', function (data) {

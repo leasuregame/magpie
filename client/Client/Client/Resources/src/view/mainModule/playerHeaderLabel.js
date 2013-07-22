@@ -161,7 +161,6 @@ var PlayerHeaderLabel = cc.Layer.extend({
             if (cc.rectContainsPoint(this._selectRect, point)) {
                 cc.log("PlayerHeaderLabel select");
                 this._isMouseDown = false;
-                this.addChild(CardListLayer.create());
             }
         }
     },

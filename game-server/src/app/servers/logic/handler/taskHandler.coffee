@@ -172,8 +172,8 @@ getRewardCards = (cardIds, count) ->
 
 addCardsToPlayer = (player, cards) ->
   async.each cards, (card) ->
-    dao.card.createCard(
-      {
+    dao.card.create(
+      data: {
         playerId: player.id, 
         talbeId: card.id, 
         star: card.star,

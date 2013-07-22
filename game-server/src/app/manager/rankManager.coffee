@@ -5,7 +5,7 @@ _ = require('underscore')
 
 Manager = module.exports = 
   exchangeRankings: (player, targetId, rewards, isWin, cb) ->
-    dao.rank.select " playerId in (#{[player.id, targetId].toString()}) ", (err, ranks) ->
+    dao.rank.fetchMany where: " playerId in (#{[player.id, targetId].toString()}) ", (err, ranks) ->
       if err
         return cb(err)
 

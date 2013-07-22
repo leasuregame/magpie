@@ -12,17 +12,13 @@
 * */
 
 
-var PlayerDetailsLayer = cc.Layer.extend({
+var PlayerDetailsLayer = LazyLayer.extend({
     init: function() {
         cc.log("PlayerDetailsLayer init");
 
         if(!this._super()) return false;
 
-        var winSize = cc.Director.getInstance().getWinSize();
 
-        var label = cc.LabelTTF.create("PlayerDetailsLayer", 'Times New Roman', 60);
-        label.setPosition(winSize.width / 2, winSize.height / 2);
-        this.addChild(label);
 
         return true;
     }

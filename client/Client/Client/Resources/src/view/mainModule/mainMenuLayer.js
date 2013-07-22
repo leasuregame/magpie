@@ -18,29 +18,35 @@ var MainMenuLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        var mainLayerItem = cc.MenuItemFont.create("首页", this._onClickMainLayer, this);
-        mainLayerItem.setAnchorPoint(cc.p(0, 0));
-        mainLayerItem.setPosition(42, 88);
+        var bgSprite = cc.Sprite.create(main_scene_image.main_menu_bg);
+        bgSprite.setAnchorPoint(cc.p(0, 0));
+        bgSprite.setPosition(GAME_ZERO);
+        this.addChild(bgSprite, -1);
 
-        var pveLayerItem = cc.MenuItemFont.create("关卡", this._onClickPveLayer, this);
-        pveLayerItem.setAnchorPoint(cc.p(0, 0));
-        pveLayerItem.setPosition(148, 88);
+        var mainLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickMainLayer, this);
+        mainLayerItem.setPosition(cc.p(110, 143));
 
-        var tournamentLayerItem = cc.MenuItemFont.create("竞技", this._onClickTournamentLayer, this);
-        tournamentLayerItem.setAnchorPoint(cc.p(0, 0));
-        tournamentLayerItem.setPosition(254, 88);
+        var pveLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickPveLayer, this);
+        pveLayerItem.setPosition(cc.p(210, 143));
 
-        var rankingLayerItem = cc.MenuItemFont.create("卡牌", this._onClickCardListLayer, this);
-        rankingLayerItem.setAnchorPoint(cc.p(0, 0));
-        rankingLayerItem.setPosition(360, 88);
+        var tournamentLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickTournamentLayer, this);
+        tournamentLayerItem.setPosition(cc.p(310, 143));
 
-        var shopLayerItem = cc.MenuItemFont.create("商城", this._onClickShopLayer, this);
-        shopLayerItem.setAnchorPoint(cc.p(0, 0));
-        shopLayerItem.setPosition(466, 88);
+        var rankingLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickCardListLayer, this);
+        rankingLayerItem.setPosition(cc.p(410, 143));
 
-        var messageLayerItem = cc.MenuItemFont.create("消息", this._onClickMessageLayer, this);
-        messageLayerItem.setAnchorPoint(cc.p(0, 0));
-        messageLayerItem.setPosition(572, 88);
+        var shopLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickShopLayer, this);
+        shopLayerItem.setPosition(cc.p(510, 143));
+
+        var messageLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickMessageLayer, this);
+        messageLayerItem.setPosition(cc.p(610, 143));
+
+        var itemIcon = null;
+        for(var i = 0; i < 6; ++i) {
+            itemIcon = cc.Sprite.create(main_scene_image["icon" + (i + 5)]);
+            itemIcon.setPosition(cc.p(110 + i * 100, 140));
+            this.addChild(itemIcon, 1);
+        }
 
 
         var mainMenu = cc.Menu.create(mainLayerItem, pveLayerItem, tournamentLayerItem, rankingLayerItem, shopLayerItem, messageLayerItem);

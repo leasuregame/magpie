@@ -36,6 +36,21 @@ var LineUp = Entity.extend({
         return true;
     },
 
+    getLineUpList: function() {
+        cc.log("LineUp getLineUpList");
+
+        var lineUpList = [];
+        var cardList = gameData.cardList;
+
+        for(var key in this._lineUp) {
+            if(this._lineUp[key]) {
+                lineUpList.push(cardList.getCardByIndex(this._lineUp[key]));
+            }
+        }
+
+        return lineUpList;
+    },
+
     getLineUpByIndex: function (index) {
         cc.log("LineUp getLineUpByIndex");
         cc.log(index);

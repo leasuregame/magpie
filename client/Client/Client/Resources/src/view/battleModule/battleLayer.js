@@ -100,7 +100,7 @@ var BatterLayer = cc.Layer.extend({
             sprite.setPosition(this._cardPosition[i]);
             this._cardList[i] = sprite;
 
-            var progress = Progress.createWithFile(s_progress_bg, s_progress, card.hp, card.hp);
+            var progress = Progress.create(s_progress_bg, s_progress, card.hp, card.hp);
             this.addChild(progress);
             progress.setPosition(this._cardPosition[i].x, this._cardPosition[i].y - 100);
             progress.setScale(0.2);

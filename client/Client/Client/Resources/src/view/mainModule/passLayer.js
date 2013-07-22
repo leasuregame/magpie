@@ -35,7 +35,7 @@ var PassLayer = cc.Layer.extend({
 
         for (var i = 0; i < 100; ++i) {
             if (i > 0) {
-                sprite = cc.Sprite.create("res/test/p.png");
+                sprite = cc.Sprite.create("res1/test/p.png");
                 sprite.setScale(0.15);
                 sprite.setRotation(90);
                 sprite.setPosition(cc.p(130, 100 * i + 60));
@@ -53,7 +53,7 @@ var PassLayer = cc.Layer.extend({
                 }
             }(this, i));
 
-            item = cc.MenuItemImage.create("res/green_edit.png", "res/green_edit.png", cb, this);
+            item = cc.MenuItemImage.create("res1/green_edit.png", "res1/green_edit.png", cb, this);
             item.setPosition(cc.p(130, 100 * i + 110));
 
             menu.addChild(item);

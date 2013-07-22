@@ -9,7 +9,7 @@ class Manager
     async.map(
       ids,
       (id, done) ->
-        dao.card.deleteCardById id, (err, result) ->
+        dao.card.delete where: {id:id}, (err, result) ->
           if err isnt null
             return done(err, false)
 
@@ -27,7 +27,7 @@ class Manager
     async.map(
       ids,
       (id, done) ->
-        dao.card.getCardInfo id, done
+        dao.card.getCardInfo where: id:id, done
       , (err, cards) ->
         if err isnt null
           cb(err, null)
@@ -37,6 +37,6 @@ class Manager
     )
 
   @getCardInfo: (id, cb) ->
-    dao.card.getCardInfo id, cb
+    dao.card.getCardInfo where: id:id, cb
 
 module.exports = Manager

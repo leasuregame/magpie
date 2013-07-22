@@ -38,7 +38,6 @@ NND = {
             var trans = client.startTransaction();
 
             function error(e, info) {
-                console.log('check transaction: ', e, info);
                 if (e && trans.rollback) {
                     trans.rollback(function(err, info) {
                         return cb(e, false);
@@ -46,7 +45,7 @@ NND = {
                 }
                 if (info.affectedRows < 1 && trans.rollback) {
                     trans.rollback(function(err, info){
-                        return cb({code: 501, msg: 'not all data is complete'}, false)
+                        return cb({code: 501, msg: 'not all data is complete'}, false);
                     });
                 }
             }

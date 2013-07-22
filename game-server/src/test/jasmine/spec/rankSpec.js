@@ -13,19 +13,6 @@ describe("Ranking List", function() {
     // });
   });
 
-  describe("top10 players", function() {
-    it('should can be return top 10 players order by ranking', function() {
-      request('logic.rankHandler.top10', {}, function(data) {
-        //expect(data).toEqual('');
-        expect(_.map(data.msg, function(p) {
-          return p.rank.ranking;
-        }).sort(function(a, b) {
-          return a - b;
-        })).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-      });
-    });
-  });
-
   describe("ranking list", function() {
     var ids = [20000, 17000, 15000, 13000, 11000, 10700, 10300, 10199, 10013, 10001];
     var steps = [100, 80, 60, 40, 20, 15, 10, 5, 1, 1];

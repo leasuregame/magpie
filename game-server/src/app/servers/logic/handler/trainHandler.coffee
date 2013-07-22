@@ -72,7 +72,7 @@ Handler::luckyCard = (msg, session, next) ->
         return cb({code: 501, msg: '没有足够的资源来完成本次抽卡'}, null)
 
       card.playerId = player.id
-      dao.card.createCard card, cb
+      dao.card.create data:card, cb
 
     (cardEnt, cb) ->
       player.addCard(cardEnt);

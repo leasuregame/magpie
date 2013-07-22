@@ -42,10 +42,12 @@ describe("Battle Log Data Access Object", function () {
 
         it("should can be create battle log", function (done) {
             dao.battleLog.createBattleLog({
-                id: data.id,
-                own: data.own,
-                enemy: data.enemy,
-                battleLog: JSON.stringify(data.battleLog)
+                data: {
+                    id: data.id,
+                    own: data.own,
+                    enemy: data.enemy,
+                    battleLog: JSON.stringify(data.battleLog)
+                }
             }, function (err, res) {
                 should.strictEqual(err, null);
                 res.id.should.equal(data.id);
@@ -79,7 +81,7 @@ describe("Battle Log Data Access Object", function () {
             });
 
             it("should can be get battle log by id", function (done) {
-                dao.battleLog.getBattleLogById(data.id, function (err, res) {
+                dao.battleLog.getBattleLogById({where: {id: data.id}}, function (err, res) {
                     should.strictEqual(err, null);
                     res.id.should.equal(data.id);
                     res.own.should.equal(data.own);
@@ -90,7 +92,7 @@ describe("Battle Log Data Access Object", function () {
             });
 
             it("should can be get battle log by own player id", function (done) {
-                dao.battleLog.getBattleLogByOwnPlayerId(data.own, function (err, res) {
+                dao.battleLog.getBattleLogByOwnPlayerId({where: {own: data.own}}, function (err, res) {
                     should.strictEqual(err, null);
                     res.length.should.equal(1);
                     res[0].id.should.equal(data.id);
@@ -102,7 +104,7 @@ describe("Battle Log Data Access Object", function () {
             });
 
             it("should can be get battle log by enemy player id", function (done) {
-                dao.battleLog.getBattleLogByEnemyPlayerId(data.enemy, function (err, res) {
+                dao.battleLog.getBattleLogByEnemyPlayerId({where: {enemy: data.enemy}}, function (err, res) {
                     should.strictEqual(err, null);
                     res.length.should.equal(1);
                     res[0].id.should.equal(data.id);
@@ -116,15 +118,15 @@ describe("Battle Log Data Access Object", function () {
 
         describe("when battle log no exist", function () {
             it("should can no get battle log by id", function (done) {
-                dao.battleLog.getBattleLogById(data.id, function (err, res) {
+                dao.battleLog.getBattleLogById({where: {own: data.own}}, function (err, res) {
                     should.strictEqual(res, null);
-                    err.msg.should.be.equal("BattleLog not exist");
+                    err.msg.should.be.equal("can not find battleLog");
                     return done();
                 })
             });
 
             it("should can no get battle log by own id", function (done) {
-                dao.battleLog.getBattleLogByOwnPlayerId(data.own, function (err, res) {
+                dao.battleLog.getBattleLogByOwnPlayerId({where: {own: data.own}}, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.eql([]);
                     return done();
@@ -132,7 +134,7 @@ describe("Battle Log Data Access Object", function () {
             });
 
             it("should can no get battle log by enemy id", function (done) {
-                dao.battleLog.getBattleLogByEnemyPlayerId(data.enemy, function (err, res) {
+                dao.battleLog.getBattleLogByEnemyPlayerId({where: {enemy: data.enemy}}, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.eql([]);
                     return done();
@@ -166,15 +168,7 @@ describe("Battle Log Data Access Object", function () {
             });
 
             it("should can be delete by id", function (done) {
-                dao.battleLog.deleteBattleLogById(data.id, function (err, res) {
-                    should.strictEqual(err, null);
-                    res.should.be.true;
-                    return done();
-                });
-            });
-
-            it("should can be delete by battle log", function (done) {
-                dao.battleLog.deleteBattleLog(new BattleLog(data), function (err, res) {
+                dao.battleLog.deleteBattleLogById({where: {id: data.id}}, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.be.true;
                     return done();
@@ -184,15 +178,7 @@ describe("Battle Log Data Access Object", function () {
 
         describe("when battle log no exist", function () {
             it("should can no delete by id", function (done) {
-                dao.battleLog.deleteBattleLogById(data.id, function (err, res) {
-                    should.strictEqual(err, null);
-                    res.should.be.false;
-                    return done();
-                });
-            });
-
-            it("should can no delete by battle log", function (done) {
-                dao.battleLog.deleteBattleLog(new BattleLog(data), function (err, res) {
+                dao.battleLog.deleteBattleLogById({where: {id: data.id}}, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.be.false;
                     return done();

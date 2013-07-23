@@ -8,3 +8,25 @@ user：root
 ssh -l root -p 8022 124.238.236.33
 
 http://124.238.236.33/Client/Client/Resources/
+
+/dev/shm/magpie
+
+start nginx 
+/usr/local/nginx/sbin/nginx
+
+stop nginx 
+/usr/local/nginx/sbin/nginx -s stop
+
+mysql信息：
+连接IP：124.238.236.33
+用户名：root
+密码：1easure114E
+端口：6033
+数据库：paydb
+
+user: dev, password: 1 port: 6033
+mysql -udev -p1
+
+start game server:
+./node_modules/.bin/pomelo start production --daemon
+./node_modules/.bin/pomelo stop

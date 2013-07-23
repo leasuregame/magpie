@@ -16,11 +16,10 @@ exports.pve = (args, callback) ->
   sectionId = args.sectionId
   taskData = table.getTableItem tableName, tableId
 
-  console.log '==============================================================================================', tableName, tableId, taskData
   playerEntity = null
   async.waterfall([
     (cb) ->
-      playerManager.getPlayerInfo {pid: pid}, cb
+      playerManager.getPlayerInfo {pid: pid, sync: false}, cb
     
     (_playerEntity, cb) ->
       playerEntity = _playerEntity

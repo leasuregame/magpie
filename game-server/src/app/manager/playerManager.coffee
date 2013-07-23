@@ -19,7 +19,11 @@ class Manager
     _player = playerList.get(params.pid)
     return cb(null, _player) if _player?
 
-    dao.player.getPlayerInfo where: id:params.pid, (err, player) ->
+    sync = params.sync or true
+    dao.player.getPlayerInfo {
+      where: {id:params.pid}, 
+      sync: sync
+    }, (err, player) ->
       if err isnt null
         cb(err, null)
         return
@@ -29,21 +33,21 @@ class Manager
 
   @getPlayers: (ids, cb) ->
     results = {}
-    _ids = _.clone(ids)
-    for id, i in _ids
-      _player = playerList.get(id)
-      if _player?
-        results[id] = _player
-        ids.splice(i, 1)
+    # _ids = _.clone(ids)
+    # for id, i in _ids
+    #   _player = playerList.get(id)
+    #   if _player?
+    #     results[id] = _player
+    #     ids.splice(i, 1)
 
-    return cb(null, results) if ids.length is 0
+    # return cb(null, results) if ids.length is 0
 
     dao.player.fetchMany where: "id in (#{ids.toString()})", (err, players) ->
       if (err) 
         cb(err, null)
       else
         for p in players
-          playerList.put p.id, p
+          # playerList.put p.id, p
           results[p.id] = p
         cb(null, results)
 

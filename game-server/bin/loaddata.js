@@ -157,8 +157,8 @@ var loadDataForRankingList = function(cb) {
 
 var main = function(){
   async.map(
-    [laodCsvDataToSql, loadDataForRankingList], 
-    //[laodCsvDataToSql], 
+    //[laodCsvDataToSql, loadDataForRankingList], 
+    [laodCsvDataToSql], 
     //[loadDataForRankingList], 
     function(fn, cb) {
       fn(cb)

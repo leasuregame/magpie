@@ -43,7 +43,6 @@ exports.pvp = (args, callback) ->
   targetId = args.targetId
   playerId = args.playerId
   playerManager.getPlayers [playerId, targetId], (err, results) ->
-    console.log err, results
     if err
       return callback(err, null)
 

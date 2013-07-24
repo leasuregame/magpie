@@ -161,6 +161,27 @@ var DaoBase = (function() {
     });
   };
 
+  DaoBase.query = function(sql, args, cb) {
+    var _this = this;
+    return dbClient.query(sql, args, function(err, res) {
+      if (err) {
+        logger.error("[SQL ERROR, when delete " + _this.table + "s]", err.stack);
+        return cb({
+          code: err.code,
+          msg: err.message
+        });
+      }
+
+      if (!!res && res.length > 0) {
+        return cb(null, res.map(function(data) {
+          return new _this.domain(data);
+        }));
+      } else {
+        return cb(null, []);
+      }
+    });
+  };
+
   return DaoBase;
 })();
 

@@ -83,7 +83,7 @@ class Round extends Base
     @setShootCount()
     @attacker.reset()
     @defender.reset()
-
+    battleLog.addStep("*** 回合 #{@round_num} 结束 ***")
     log.info "*** 回合 #{@round_num} 结束 ***"
     
 class Attack extends Base

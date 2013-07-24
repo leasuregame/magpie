@@ -1,16 +1,16 @@
 describe("Ranking List", function() {
-  var pomelo = window.pomelo;
 
   describe("Set Up", function() {
     it("connect to server", function() {
       intiPomelo();
     });
 
-    // it("init db", function(){
-    //   doAjax('/createDb', {}, function(data){
-    //     expect(data).toEqual('done');
+    // it("init db and load test data", function(){
+    //   doAjax('/loadDataFromCsvFile', {}, function(data) {
+    //       expect(data).toEqual('done');
     //   });
     // });
+
   });
 
   describe("ranking list", function() {
@@ -70,10 +70,5 @@ describe("Ranking List", function() {
     })
   });
 
-  describe("Tear Down", function(){
-    it('disconnect', function(){
-      pomelo.disconnect();
-    });
-  });
 
 });

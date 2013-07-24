@@ -77,7 +77,7 @@ app.get('/removePlayer', function(req, res){
 
 var spawn = require('child_process').spawn;
 app.get('/loadDataFromCsvFile', function(req, res) {
-  var ps = spawn('node', [__dirname + '../../../bin/loaddata.js']);
+  var ps = spawn('sh', [__dirname + '/script/loadRankingListData.sh']);
   ps.stdout.on('data', function(data) {
     console.log(data.toString());
   });

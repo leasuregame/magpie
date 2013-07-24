@@ -259,12 +259,14 @@ var Player = (function(_super) {
 })(Entity);
 
 var lineUpToObj = function(lineUp) {
-    var lines = lineUp.split(',');
     var _results = {};
-    lines.forEach(function(l){
-        var _ref = l.split(':'), pos = _ref[0], num = _ref[1];
-        _results[positionConvert(pos)] = parseInt(num);
-    });
+    if (lineUp !== '') {
+        var lines = lineUp.split(',');
+        lines.forEach(function(l){
+            var _ref = l.split(':'), pos = _ref[0], num = _ref[1];
+            _results[positionConvert(pos)] = parseInt(num);
+        });
+    }    
     return _results;
 };
 

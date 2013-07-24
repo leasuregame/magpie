@@ -32,24 +32,13 @@ class Manager
       cb(null, player)
 
   @getPlayers: (ids, cb) ->
-    results = {}
-    # _ids = _.clone(ids)
-    # for id, i in _ids
-    #   _player = playerList.get(id)
-    #   if _player?
-    #     results[id] = _player
-    #     ids.splice(i, 1)
+    dao.player.getPlayerDetails ids, (err, res) ->
+      if err isnt null
+        return cb(err, null)
 
-    # return cb(null, results) if ids.length is 0
-
-    dao.player.fetchMany where: "id in (#{ids.toString()})", (err, players) ->
-      if (err) 
-        cb(err, null)
-      else
-        for p in players
-          # playerList.put p.id, p
-          results[p.id] = p
-        cb(null, results)
+      results = {}
+      res.map (r) -> results[r.id] = r
+      return cb(null, results)
 
   @rankingList: (rankings, cb) ->
     async.waterfall [

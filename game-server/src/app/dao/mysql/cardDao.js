@@ -45,7 +45,7 @@ var CardDao = (function (_super) {
                 _this.fetchOne(options, callback);
             },
             function (callback) {
-                passiveSkillDao.getPassiveSkillByCardId({
+                passiveSkillDao.fetchMany({
                     where: {cardId: options.where.id},
                     sync: options.sync
                 }, callback);
@@ -73,7 +73,7 @@ var CardDao = (function (_super) {
             function(cards, callback) {
                 var cardList = [];
                 async.each(cards, function (card, done) {
-                    passiveSkillDao.getPassiveSkillByCardId({where: {cardId: card.id}}, function (err, res) {
+                    passiveSkillDao.fetchMany({where: {cardId: card.id}}, function (err, res) {
                         if (err) {
                             return done(err);
                         }

@@ -1,3 +1,5 @@
+MOCHA = ./node_modules/.bin/mocha
+
 build:
 	sh ./bin/build.sh
 
@@ -18,13 +20,8 @@ test:
 		./src/test/$(files)
 
 test-dao: build
-	./node_modules/.bin/mocha \
-		--compilers coffee:coffee-script \
-		--require should \
-		--reporter spec \
-		--ui bdd \
-		--recursive \
-		./test/dao/$(files)
+	XUNIT_FILE="test/TESTS-xunit.xml" \
+	$(MOCHA) -R xunit-file  --require should --recursive --reporter spec ./test/dao/$(files)
 
 test-mapping: build
 	./node_modules/.bin/mocha \

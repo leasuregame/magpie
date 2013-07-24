@@ -35,12 +35,6 @@ var BattleLogDao = (function(_super) {
     BattleLogDao.domain = BattleLog;
     BattleLogDao.syncKey = 'battleLogSync.updateBattleLogById';
 
-    BattleLogDao.createBattleLog = BattleLogDao.create;
-    BattleLogDao.getBattleLogById = BattleLogDao.fetchOne;
-    BattleLogDao.getBattleLogByOwnPlayerId = BattleLogDao.fetchMany;
-    BattleLogDao.getBattleLogByEnemyPlayerId = BattleLogDao.fetchMany;
-    BattleLogDao.deleteBattleLogById = BattleLogDao.delete;
-
     return BattleLogDao;
 })(DaoBase);
 

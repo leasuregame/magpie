@@ -17,12 +17,13 @@
  * */
 var Player = require("../../domain/player");
 var cardDao = require("./cardDao");
+var rankDao = require("./rankDao");
 var async = require('async');
 
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
 
-var PlayerDao = (function (_super) {
+var PlayerDao = (function(_super) {
     utility.extends(PlayerDao, _super);
 
     function PlayerDao() {
@@ -37,7 +38,10 @@ var PlayerDao = (function (_super) {
         gold: 50,
         lineUp: '',
         ability: 0,
-        task: {id: 1, progress: 0},
+        task: {
+            id: 1,
+            progress: 0
+        },
         pass: 0,
         passMark: 0,
         dailyGift: [],
@@ -49,28 +53,43 @@ var PlayerDao = (function (_super) {
     PlayerDao.domain = Player;
     PlayerDao.syncKey = 'playerSync.updatePlayerById';
 
-    PlayerDao.getPlayerInfo = function (options, cb) {
+    PlayerDao.getPlayerInfo = function(options, cb) {
         var _this = this;
         async.parallel([
-            function (callback) {
+            function(callback) {
                 _this.fetchOne(options, callback);
             },
-            function (callback) {
+            function(callback) {
                 cardDao.getCards({
                     sync: options.sync,
                     where: {
-                        playerId: options.where.id,
+                        playerId: options.where.id
                     }
                 }, callback);
+            },
+            function(callback) {
+                rankDao.fetchOne({
+                    sync: options.sync,
+                    where: {
+                        playerId: options.where.id
+                    }
+                }, function(err, res) {
+                    if (err && err.code == 404) {
+                        return callback(null, null);
+                    }
+                    return callback(null, res);
+                });
             }
-        ], function (err, results) {
+        ], function(err, results) {
             if (err !== null) {
                 return cb(err, null)
             }
 
             var player = results[0];
             var cards = results[1];
+            var rank = results[2];
             player.addCards(cards);
+            player.set('rank', rank);
             return cb(null, player);
         });
     };

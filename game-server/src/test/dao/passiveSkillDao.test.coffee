@@ -13,11 +13,13 @@ describe "Passive Skill Data Access Object", ->
   describe "#createPassiveSkill", ->
 
     describe "when not exists", ->
+      before (done) -> dbClient.delete 'delete from passiveSkill', -> done()
+
       after (done) ->
         dbClient.delete 'delete from passiveSkill where id =?', [id], -> done()
 
       it "should can be create with right param", (done) ->
-        dao.passiveSkill.createPassiveSkill data: {
+        dao.passiveSkill.create data: {
           id: id
           cardId: cardId
           name: name
@@ -28,9 +30,9 @@ describe "Passive Skill Data Access Object", ->
           done()
 
       it "should can't be create with the wrong param", (done) ->
-        dao.passiveSkill.createPassiveSkill data:{}, (err, res) ->
+        dao.passiveSkill.create data:{}, (err, res) ->
           should.strictEqual null, res
-          err.code.should.be.equal 400
+          err.code.should.be.equal 'ER_NO_DEFAULT_FOR_FIELD'
           done()
 
     describe "when exists", ->
@@ -42,7 +44,7 @@ describe "Passive Skill Data Access Object", ->
         dbClient.delete 'delete from passiveSkill where id =?', [id], -> done()
 
       it "should can be create with duplicate id", (done) ->
-        dao.passiveSkill.createPassiveSkill data: {
+        dao.passiveSkill.create data: {
           id: id
           cardId: cardId
           name: name
@@ -58,13 +60,13 @@ describe "Passive Skill Data Access Object", ->
         [id, cardId, name, value, Date.now()], -> done()
 
     it "should can be delete a passive skill", (done) ->
-      dao.passiveSkill.deletePassiveSkillById where: {id: id}, (err, res) ->
+      dao.passiveSkill.delete where: {id: id}, (err, res) ->
         should.strictEqual null, err
         res.should.be.ok
         done()
 
     it "should can not delete a not exist passive skill", (done) ->
-      dao.passiveSkill.deletePassiveSkillById where: {id: id + 1000}, (err, res) ->
+      dao.passiveSkill.delete where: {id: id + 1000}, (err, res) ->
         should.strictEqual null, err
         res.should.not.be.ok
         done()
@@ -79,7 +81,7 @@ describe "Passive Skill Data Access Object", ->
       dbClient.delete 'delete from passiveSkill where id =?', [id], -> done()
 
     it "should can be get a passive skill with card id", (done) ->
-      dao.passiveSkill.getPassiveSkillByCardId where: cardId: cardId, (err, res) ->
+      dao.passiveSkill.fetchMany where: cardId: cardId, (err, res) ->
         should.strictEqual null, err
         res.length.should.be.equal 1
 
@@ -90,7 +92,7 @@ describe "Passive Skill Data Access Object", ->
         done()
 
     it "should can be get with id", (done) ->
-      dao.passiveSkill.getPassiveSkillById where: id: id, (err, res) ->
+      dao.passiveSkill.fetchOne where: id: id, (err, res) ->
         should.strictEqual null, err
 
         ps = res
@@ -100,7 +102,7 @@ describe "Passive Skill Data Access Object", ->
         done()
 
     it "should return error when not exists", (done) ->
-      dao.passiveSkill.getPassiveSkillById where: id: id+1000, (err, res) ->
+      dao.passiveSkill.fetchOne where: id: id+1000, (err, res) ->
         should.strictEqual null, res
-        err.should.eql {code: null, msg: 'PassiveSkill not exists'}
+        err.should.eql {code: 404, msg: 'can not find passiveSkill'}
         done()

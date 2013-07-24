@@ -34,11 +34,6 @@ var PassiveSkillDao = (function(_super) {
     PassiveSkillDao.domain = PassiveSkill;
     PassiveSkillDao.syncKey = 'passiveSkillSync.updatePassiveSkillById';
 
-    PassiveSkillDao.createPassiveSkill = PassiveSkillDao.create;
-    PassiveSkillDao.getPassiveSkillById = PassiveSkillDao.fetchOne;
-    PassiveSkillDao.deletePassiveSkillById = PassiveSkillDao.delete;
-    PassiveSkillDao.getPassiveSkillByCardId = PassiveSkillDao.fetchMany;
-
     return PassiveSkillDao;
 })(DaoBase);
 

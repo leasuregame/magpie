@@ -21,7 +21,7 @@ test:
 
 test-dao: build
 	XUNIT_FILE="test/TESTS-xunit.xml" \
-	$(MOCHA) -R xunit-file  --require should --recursive --reporter spec ./test/dao/$(files)
+	$(MOCHA) -R xunit-file  --require should --recursive ./test/dao/$(files)
 
 test-mapping: build
 	./node_modules/.bin/mocha \

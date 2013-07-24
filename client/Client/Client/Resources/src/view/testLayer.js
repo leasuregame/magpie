@@ -17,7 +17,7 @@ var testLayer = cc.Layer.extend({
         bgSprite.setPosition(size.width / 2, size.height / 2);
         this.addChild(bgSprite);
 
-        var sprite = cc.Sprite.create("res/test1/bg.png");
+        var sprite = cc.Sprite.create("res1/test1/bg.png");
         sprite.setPosition(size.width / 2, size.height / 2);
         this.addChild(sprite);
 
@@ -25,7 +25,7 @@ var testLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         for (var i = 1; i <= 5; ++i) {
             var k = Math.ceil(i / 2);
-            cc.log("res/test1/HeadRebels" + k + ".png");
+            cc.log("res1/test1/HeadRebels" + k + ".png");
 
             var fun = function (i) {
                 return function () {
@@ -35,17 +35,17 @@ var testLayer = cc.Layer.extend({
                 }
             }(i);
 
-            var item = cc.MenuItemImage.create("res/test1/HeadRebels" + k + ".png", "res/test1/HeadRebels" + k + ".png", fun, this);
+            var item = cc.MenuItemImage.create("res1/test1/HeadRebels" + k + ".png", "res1/test1/HeadRebels" + k + ".png", fun, this);
 
             item.setPosition(i * 100 + 50, 750);
             menu.addChild(item);
 
-            var sprite = cc.Sprite.create("res/test1/HeadFrame.png");
+            var sprite = cc.Sprite.create("res1/test1/HeadFrame.png");
             sprite.setPosition(i * 100 + 50, 750);
             this.addChild(sprite);
 
             if (k == 2) {
-                var sprite = cc.Sprite.create("res/test1/HeadRebels1.png");
+                var sprite = cc.Sprite.create("res1/test1/HeadRebels1.png");
                 sprite.setPosition(i * 100 + 50, 750);
                 this.addChild(sprite);
             }
@@ -53,24 +53,24 @@ var testLayer = cc.Layer.extend({
 
         for (var i = 1; i <= 5; ++i) {
             var k = Math.ceil(i / 2);
-            cc.log("res/test1/HeadRebels" + k + ".png");
+            cc.log("res1/test1/HeadRebels" + k + ".png");
 
-            var item = cc.MenuItemImage.create("res/test1/GrayHeadRebels" + k + ".png");
+            var item = cc.MenuItemImage.create("res1/test1/GrayHeadRebels" + k + ".png");
 
             item.setPosition(i * 100 + 50, 600);
             menu.addChild(item);
 
-            var sprite = cc.Sprite.create("res/test1/HeadFrame.png");
+            var sprite = cc.Sprite.create("res1/test1/HeadFrame.png");
             sprite.setPosition(i * 100 + 50, 600);
             this.addChild(sprite);
 
             if (k == 2) {
-                var sprite = cc.Sprite.create("res/test1/GrayHeadRebels1.png");
+                var sprite = cc.Sprite.create("res1/test1/GrayHeadRebels1.png");
                 sprite.setPosition(i * 100 + 50, 600);
                 this.addChild(sprite);
             }
 
-            var sprite = cc.Sprite.create("res/test1/lock.png");
+            var sprite = cc.Sprite.create("res1/test1/lock.png");
             sprite.setPosition(i * 100 + 50, 600);
             this.addChild(sprite, 1);
         }
@@ -82,13 +82,13 @@ var testLayer = cc.Layer.extend({
 
             node.setAnchorPoint(cc.p(0.5, 0.5));
 
-            var sprite = cc.Sprite.create("res/test1/BustFrame.png");
+            var sprite = cc.Sprite.create("res1/test1/BustFrame.png");
             node.addChild(sprite);
 
-            sprite = cc.Sprite.create("res/test1/BustRebels" + i + ".png");
+            sprite = cc.Sprite.create("res1/test1/BustRebels" + i + ".png");
             node.addChild(sprite);
 
-            sprite = cc.Sprite.create("res/test1/Expression" + i + ".png");
+            sprite = cc.Sprite.create("res1/test1/Expression" + i + ".png");
             node.addChild(sprite);
 
             var waitTime1 = cc.DelayTime.create(0.5 * (i - 1));
@@ -127,8 +127,8 @@ var testLayer = cc.Layer.extend({
                     }
                 }(i, j);
 
-                cc.log("res/test1/" + i + ".png");
-                var item = cc.MenuItemImage.create("res/test1/" + i + ".png", "res/test1/" + i + ".png", fun);
+                cc.log("res1/test1/" + i + ".png");
+                var item = cc.MenuItemImage.create("res1/test1/" + i + ".png", "res1/test1/" + i + ".png", fun);
 
                 item.setPosition(i * 100, 100 * j);
                 menu.addChild(item);

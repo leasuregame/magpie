@@ -7,47 +7,39 @@
  */
 
 /*
-* 进度条
-* */
+ * 进度条
+ * */
 
 
 var Progress = cc.Node.extend({
-    _value : 0,
-    _maxValue : 0,
-    _bgSprite : null,
-    _progressSprite : null,
-    _progress : null,
+    _value: 0,
+    _maxValue: 0,
+    _bgSprite: null,
+    _progressSprite: null,
+    _progress: null,
 
+    init: function () {
+        cc.log("Progress init");
 
-    ctor : function() {
-        this._super();
-        cc.associateWithNative(this, cc.Node);
-    },
-
-    init : function() {
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         this._progress = cc.ProgressTimer.create(this._progressSprite);
 
-        //this._bgSprite.ignoreAnchorPointForPosition(true);
-        //this._bgSprite.setAnchorPoint(cc.p(0.0, 0.0));
         this._progress.setType(cc.PROGRESS_TIMER_TYPE_BAR);
         this._progress.setMidpoint(cc.p(0.0, 0.5));
         this._progress.setBarChangeRate(cc.p(1.0, 0.0));
 
-//        this._progress.ignoreAnchorPointForPosition(true);
-//        this._progress.setAnchorPoint(cc.p(1, 0.5));
-//        this._progress.setPosition(size.width / 2, size.height / 2);
-
         this.addChild(this._bgSprite, -1);
         this.addChild(this._progress, 1);
 
-        this.updataProgress();
+        this.update();
 
         return true;
     },
 
-    initWithFile : function(bgFileName, progressFileName, value, maxValue) {
+    initWithFile: function (bgFileName, progressFileName, value, maxValue) {
+        cc.log("Progress initWithFile");
+
         this._value = value;
         this._maxValue = maxValue;
         this._bgSprite = cc.Sprite.create(bgFileName);
@@ -56,7 +48,9 @@ var Progress = cc.Node.extend({
         return this.init();
     },
 
-    initWithSpriteFrameName : function(bgSpriteFrameName, progressSpriteFrameName, value, maxValue) {
+    initWithSpriteFrameName: function (bgSpriteFrameName, progressSpriteFrameName, value, maxValue) {
+        cc.log("Progress initWithSpriteFrameName");
+
         this._value = value;
         this._maxValue = maxValue;
         this._bgSprite = cc.Sprite.createWithSpriteFrameName(bgSpriteFrameName);
@@ -65,69 +59,91 @@ var Progress = cc.Node.extend({
         return this.init();
     },
 
-    getValue : function() {
-        return this._value;
-    },
+    update: function () {
+        cc.log("Progress update");
 
-    setValue : function(value) {
-        this._value = value;
-        if(this._value > this._maxValue) this._value = this._maxValue;
-        if(this._value < 0) this._value = 0;
+        if (this._maxValue < 0) this._maxValue = 0;
+        if (this._value > this._maxValue) this._value = this._maxValue;
+        if (this._value < 0) this._value = 0;
 
-        this.updataProgress();
-    },
-
-    getMaxValue : function() {
-        return this._maxValue;
-    },
-
-    addValue : function(value) {
-        this._value += value;
-        if(this._value > this._maxValue) this._value = this._maxValue;
-        if(this._value < 0) this._value = 0;
-
-        this.updataProgress();
-    },
-
-    setMaxValue : function(maxValue) {
-        this._maxValue = maxValue;
-        this.updataProgress();
-    },
-
-    updataProgress : function() {
         var ratio = this._value / this._maxValue * 100;
 
         var pto = cc.ProgressTo.create(0, ratio);
         this._progress.runAction(pto);
     },
 
-    setBgSprite : function(bgSprite) {
+    getValue: function () {
+        cc.log("Progress getValue");
+
+        return this._value;
+    },
+
+    setValue: function (value) {
+        cc.log("Progress setValue");
+
+        this._value = value;
+        this.update();
+    },
+
+    getMaxValue: function () {
+        cc.log("Progress getMaxValue");
+
+        return this._maxValue;
+    },
+
+    addValue: function (value) {
+        cc.log("Progress addValue");
+
+        this._value += value;
+        this.update();
+    },
+
+    setMaxValue: function (maxValue) {
+        cc.log("Progress setMaxValue");
+
+        this._maxValue = maxValue;
+        this.update();
+    },
+
+    setAllValue: function (maxValue, value) {
+        cc.log("Progress setAllValue");
+
+        this._maxValue = maxValue;
+        this._value = value;
+        this.update();
+    },
+
+    setBgSprite: function (bgSprite) {
+        cc.log("Progress setBgSprite");
+
         this.removeChild(this._bgSprite, true);
         this.addChild(bgSprite, -1);
         this._bgSprite = bgSprite;
     },
 
-    setProgressSprite : function(progressSprite) {
+    setProgressSprite: function (progressSprite) {
+        cc.log("Progress setProgressSprite");
+
         this._progress.setSprite(progressSprite);
     }
 })
 
 
 /*
-* 创建函数
-* */
-Progress.createWithFile = function(bgFileName, progressFileName, value, maxValue) {
+ * 创建函数
+ * */
+Progress.create = function (bgFileName, progressFileName, value, maxValue) {
     var progress = new Progress();
-    if(progress && progress.initWithFile(bgFileName, progressFileName, value, maxValue)) {
+    if (progress && progress.initWithFile(bgFileName, progressFileName, value, maxValue)) {
         return progress;
     }
 
     return null;
 }
 
-Progress.createWithSpriteFrameName = function(bgSpriteFrameName, progressSpriteFrameName, value, maxValue) {
+Progress.createWithSpriteFrameName = function (bgSpriteFrameName, progressSpriteFrameName, value, maxValue) {
     var progress = new Progress();
-    if(progress && progress.initWithSpriteFrameName(bgSpriteFrameName, progressSpriteFrameName, value, maxValue)) {
+    if (progress && progress.initWithSpriteFrameName(bgSpriteFrameName, progressSpriteFrameName, value, maxValue)) {
         return progress;
     }
 

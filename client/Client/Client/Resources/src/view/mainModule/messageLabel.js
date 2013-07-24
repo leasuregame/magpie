@@ -8,45 +8,47 @@
 
 
 /*
-* message label
-* */
+ * message label
+ * */
 
 
 var MessageLabel = cc.Layer.extend({
-    onEnter: function() {
+    onEnter: function () {
         cc.log("MessageLabel onEnter");
 
         this._super();
         this.update();
     },
 
-    init: function() {
+    init: function () {
         cc.log("MessageLabel init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
-        var bg = cc.LayerColor.create(cc.c4b(100, 100, 0, 100), GAME_WIDTH, 30);
-        this.addChild(bg);
+        var bgSprite = cc.Sprite.create(main_scene_image.main_message_bg);
+        bgSprite.setAnchorPoint(cc.p(0, 0));
+        this.addChild(bgSprite, -1);
 
-        this._messageLabel = cc.LabelTTF.create("系统消息：", 'Times New Roman', 25);
+        this._messageLabel = cc.LabelTTF.create("系统消息：", "黑体", 22);
         this._messageLabel.setAnchorPoint(cc.p(0, 0));
+        this._messageLabel.setPosition(cc.p(20, 10));
         this.addChild(this._messageLabel);
 
         return true;
     },
 
-    update: function() {
+    update: function () {
         cc.log("MessageLabel update");
 
-        this._messageLabel.setString("系统消息：有一个SB又升级失败啦。。。哇哈哈哈哈哈。");
+        this._messageLabel.setString("系统消息：xxxxxxxxxxxxxxxxxxxxxxx");
     }
 })
 
 
-MessageLabel.create = function() {
+MessageLabel.create = function () {
     var ret = new MessageLabel();
 
-    if(ret && ret.init()) {
+    if (ret && ret.init()) {
         return ret;
     }
 

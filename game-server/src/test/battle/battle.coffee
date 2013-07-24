@@ -1,6 +1,6 @@
 Battle = require '../../app/battle/battle'
 Player = require '../../app/battle/player'
-PlayerManager = require('../../app/manager/manager').player
+PlayerManager = require('../../app/manager/playerManager')
 tab = require '../../app/manager/table'
 battleLog = require '../../app/battle/battle_log'
 player_data =  require './prepare/player.data'

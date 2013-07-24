@@ -46,7 +46,7 @@ describe("User Object", function () {
                         data.lastLoginDevice
                     ],
                     function (err, res) {
-                        dao.user.getUserById(data.id, function (err, res) {
+                        dao.user.fetchOne({where: {id:data.id}}, function (err, res) {
                             user = res;
                             return done();
                         });

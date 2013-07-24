@@ -10,7 +10,7 @@
 /*
 * passive skill sync
 * */
-var PassiveSkillDao = require('../passiveSillDao');
+var PassiveSkillDao = require('../passiveSkillDao');
 
 var passiveSkillSync = {
     /*

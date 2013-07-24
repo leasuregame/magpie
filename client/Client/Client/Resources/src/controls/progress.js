@@ -17,6 +17,8 @@ var Progress = cc.Node.extend({
     _bgSprite: null,
     _progressSprite: null,
     _progress: null,
+    _valueLabel: null,
+    _maxValueLabel: null,
 
     init: function () {
         cc.log("Progress init");
@@ -30,7 +32,22 @@ var Progress = cc.Node.extend({
         this._progress.setBarChangeRate(cc.p(1.0, 0.0));
 
         this.addChild(this._bgSprite, -1);
-        this.addChild(this._progress, 1);
+        this.addChild(this._progress);
+
+        var slashesLabel = cc.LabelTTF.create("/", "Times New Roman", 22);
+        slashesLabel.setAnchorPoint(cc.p(0.5, 0.5));
+        slashesLabel.setPosition(cc.p(0, 0));
+        this.addChild(slashesLabel);
+
+        this._valueLabel = cc.LabelTTF.create("", "Times New Roman", 22);
+        this._valueLabel.setAnchorPoint(cc.p(1, 0.5));
+        this._valueLabel.setPosition(cc.p(-10, 0));
+        this.addChild(this._valueLabel);
+
+        this._maxValueLabel = cc.LabelTTF.create("", "Times New Roman", 22);
+        this._maxValueLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._maxValueLabel.setPosition(cc.p(10, 0));
+        this.addChild(this._maxValueLabel);
 
         this.update();
 
@@ -65,6 +82,9 @@ var Progress = cc.Node.extend({
         if (this._maxValue < 0) this._maxValue = 0;
         if (this._value > this._maxValue) this._value = this._maxValue;
         if (this._value < 0) this._value = 0;
+
+        this._valueLabel.setString(this._value);
+        this._maxValueLabel.setString(this._maxValue);
 
         var ratio = this._value / this._maxValue * 100;
 

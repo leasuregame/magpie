@@ -28,7 +28,15 @@ var login_scene_res = [
 var main_scene_path = "res/main/";
 
 var main_scene_image = {
-    bg: main_scene_path + "bg.png",
+    bg1: main_scene_path + "bg1.png",
+    bg2: main_scene_path + "bg2.png",
+    bg3: main_scene_path + "bg3.png",
+    bg4: main_scene_path + "bg4.png",
+    bg5: main_scene_path + "bg5.png",
+    bg6: main_scene_path + "bg6.png",
+
+    card0: main_scene_path + "card0.png",
+
     player_details_bg: main_scene_path + "player_details_bg.png",
     lv_bg: main_scene_path + "lv_bg.png",
     exp_bg: main_scene_path + "exp_bg.png",
@@ -36,6 +44,13 @@ var main_scene_image = {
     main_menu_bg: main_scene_path + "main_menu_bg.png",
     main_message_bg: main_scene_path + "main_message_bg.png",
     vip5: main_scene_path + "vip5.png",
+    select: main_scene_path + "select.png",
+    use: main_scene_path + "use.png",
+    star1: main_scene_path + "star1.png",
+    ladder1: main_scene_path + "ladder1.png",
+    ladder2: main_scene_path + "ladder2.png",
+    tower1: main_scene_path + "tower1.png",
+    tower2: main_scene_path + "tower2.png",
 
     card_item_bg0: main_scene_path + "card_item_bg0.png",
     card_item_bg1: main_scene_path + "card_item_bg1.png",
@@ -66,6 +81,23 @@ var main_scene_image = {
     button6s: main_scene_path + "button6s.png",
     button7: main_scene_path + "button7.png",
     button7s: main_scene_path + "button7s.png",
+    button8: main_scene_path + "button8.png",
+    button8s: main_scene_path + "button8s.png",
+    button9: main_scene_path + "button9.png",
+    button9s: main_scene_path + "button9s.png",
+    button10: main_scene_path + "button10.png",
+    button10s: main_scene_path + "button10s.png",
+    button11: main_scene_path + "button11.png",
+    button11s: main_scene_path + "button11s.png",
+    button12: main_scene_path + "button12.png",
+    button12s: main_scene_path + "button12s.png",
+    button12d: main_scene_path + "button12d.png",
+    button13: main_scene_path + "button13.png",
+    button13s: main_scene_path + "button13s.png",
+    button13d: main_scene_path + "button13d.png",
+    button14: main_scene_path + "button14.png",
+    button14s: main_scene_path + "button14s.png",
+    button14d: main_scene_path + "button14d.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -76,7 +108,14 @@ var main_scene_image = {
     icon7: main_scene_path + "icon7.png",
     icon8: main_scene_path + "icon8.png",
     icon9: main_scene_path + "icon9.png",
-    icon10: main_scene_path + "icon10.png"
+    icon10: main_scene_path + "icon10.png",
+    icon11: main_scene_path + "icon11.png",
+    icon12: main_scene_path + "icon12.png",
+    icon13: main_scene_path + "icon13.png",
+    icon14: main_scene_path + "icon14.png",
+    icon15: main_scene_path + "icon14.png",
+    icon16: main_scene_path + "icon14.png",
+    icon17: main_scene_path + "icon14.png"
 }
 
 var main_scene_res = [

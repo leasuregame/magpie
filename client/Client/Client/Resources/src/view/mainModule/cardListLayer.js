@@ -38,7 +38,7 @@ var CardListLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        this._callback = callback || function() {
+        this._callback = callback || function () {
             MainScene.getInstance().switchLayer(MainLayer);
         };
         this._target = target || null;
@@ -97,7 +97,7 @@ var CardListLayer = cc.Layer.extend({
         }
 
         this._scrollViewHeight = 110 * len - 10;
-        if(this._scrollViewHeight < 840) this._scrollViewHeight = 780;
+        if (this._scrollViewHeight < 840) this._scrollViewHeight = 780;
 
         var scrollView = cc.ScrollView.create(cc.size(GAME_WIDTH, 780), scrollViewLayer);
         scrollView.setContentSize(cc.size(GAME_WIDTH, this._scrollViewHeight));
@@ -161,20 +161,20 @@ var CardListLayer = cc.Layer.extend({
         }
     },
 
-    _onClickCardDetails: function(id) {
-        return function() {
+    _onClickCardDetails: function (id) {
+        return function () {
             cc.log("CardListLayer _onClickCardDetails " + id);
         }
     },
 
-    _onClickSelect: function(id, selectLabel) {
-        return function() {
+    _onClickSelect: function (id, selectLabel) {
+        return function () {
             cc.log("CardListLayer _onClickSelect");
 
             var isSelect = !this._cardListCell[id].isSelect;
 
-            if(isSelect) {
-                if(this._selectCount < this._maxSelectCount) {
+            if (isSelect) {
+                if (this._selectCount < this._maxSelectCount) {
                     this._selectCount++;
                     this._cardListCell[id].isSelect = isSelect;
                     selectLabel.setString("已选择");
@@ -189,8 +189,8 @@ var CardListLayer = cc.Layer.extend({
         }
     },
 
-    _onClickUse: function(id, useLabel) {
-        return function() {
+    _onClickUse: function (id, useLabel) {
+        return function () {
             cc.log("CardListLayer _onClickUse");
 
             var isUse = this._cardList.changeUseCardByIndex(id)
@@ -205,23 +205,23 @@ var CardListLayer = cc.Layer.extend({
         var selectIndex = [];
         var key;
 
-        for(key in this._cardListCell) {
-            if(this._cardListCell[key].isSelect) selectIndex.push(this._cardList.getCardByIndex(key));
+        for (key in this._cardListCell) {
+            if (this._cardListCell[key].isSelect) selectIndex.push(this._cardList.getCardByIndex(key));
         }
 
         cc.log("select idnex");
         cc.log(selectIndex);
 
-        if(this._target) this._callback.call(this._target, selectIndex);
+        if (this._target) this._callback.call(this._target, selectIndex);
         else this._callback(selectIndex);
     },
 
-    _onClickChangeLineUp: function() {
+    _onClickChangeLineUp: function () {
         cc.log("CardListLayer _onClickChangeLineUp");
     },
 
-    _onClickChangeSelectType: function(selectTypeLabel) {
-        return function() {
+    _onClickChangeSelectType: function (selectTypeLabel) {
+        return function () {
             cc.log("CardListLayer _onClickChangeSelectType");
 
             this._selectType ^= 1;
@@ -231,11 +231,11 @@ var CardListLayer = cc.Layer.extend({
         }
     },
 
-    _onClickSell: function() {
+    _onClickSell: function () {
         cc.log("CardListLayer _onClickSell");
     },
 
-    _onClickSelectAllLow: function() {
+    _onClickSelectAllLow: function () {
         cc.log("CardListLayer _onClickAllLow");
     }
 })

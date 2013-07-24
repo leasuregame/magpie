@@ -15,6 +15,10 @@
 cc.LAZY_LAYER_HANDLER_PRIORITY = -1000;
 
 var LazyLayer = cc.Layer.extend({
+    _canClick: true,
+    _touchedMenu: false,
+    _menu: null,
+
     init: function () {
         if (!this._super()) return false;
 
@@ -22,26 +26,33 @@ var LazyLayer = cc.Layer.extend({
         this.setTouchPriority(cc.LAZY_LAYER_HANDLER_PRIORITY);
         this.setTouchEnabled(true);
 
+        this._menu = cc.Menu.create();
+        this._menu.setPosition(cc.p(0, 0));
+        this.addChild(this._menu, 1);
+
         return true;
     },
 
-    _show: function () {
-        this.setVisible(true);
+    addMenuItem: function (menuItem) {
+        this._menu.addChild(menuItem);
     },
 
-    _hide: function () {
-        this.setVisible(false);
+    setCanClick: function (canClick) {
+        this._canClick = canClick;
     },
 
     /**
-     * default implements are used to call script callback if exist<br/>
-     * you must override these touch functions if you wish to utilize them
+     * callback when a touch event moved
      * @param {cc.Touch} touch
      * @param {event} event
-     * @return {Boolean}
      */
     onTouchBegan: function (touch, event) {
         cc.log("LazyLayer onTouchBegan");
+
+        if (this._canClick) {
+            this._touchedMenu = this._menu.onTouchBegan(touch, event);
+        }
+
         return true;
     },
 
@@ -51,7 +62,10 @@ var LazyLayer = cc.Layer.extend({
      * @param {event} event
      */
     onTouchMoved: function (touch, event) {
-        cc.log("LazyLayer onTouchMoved")
+        cc.log("LazyLayer onTouchMoved");
+        if (this._canClick && this._touchedMenu) {
+            this._touchedMenu = this._menu.onTouchMoved(touch, event);
+        }
     },
 
     /**
@@ -60,7 +74,11 @@ var LazyLayer = cc.Layer.extend({
      * @param {event} event
      */
     onTouchEnded: function (touch, event) {
-        cc.log("LazyLayer onTouchEnded")
+        cc.log("LazyLayer onTouchEnded");
+        if (this._canClick && this._touchedMenu) {
+            this._touchedMenu = this._menu.onTouchEnded(touch, event);
+            this._touchedMenu = false;
+        }
     },
 
     /**
@@ -69,14 +87,18 @@ var LazyLayer = cc.Layer.extend({
      */
     onTouchCancelled: function (touch, event) {
         cc.log("LazyLayer onTouchCancelled");
+        if (this._canClick && this._touchedMenu) {
+            this._touchedMenu = this._menu.onTouchEnded(touch, event);
+            this._touchedMenu = false;
+        }
     }
 })
 
 
-LazyLayer.create = function() {
+LazyLayer.create = function () {
     var ret = new LazyLayer();
 
-    if(ret && ret.init()) {
+    if (ret && ret.init()) {
         return ret;
     }
 

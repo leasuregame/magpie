@@ -7,6 +7,11 @@
  */
 
 
+/*
+ * pass layer
+ * */
+
+
 var PassLayer = cc.Layer.extend({
     _pass: null,
 
@@ -16,6 +21,11 @@ var PassLayer = cc.Layer.extend({
         if (!this._super()) return false;
 
         this._pass = gameData.pass;
+
+        var bgSprite = cc.Sprite.create(main_scene_image.bg5);
+        bgSprite.setAnchorPoint(cc.p(0, 0));
+        bgSprite.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 200));
+        this.addChild(bgSprite);
 
         var wipeOutItem = cc.MenuItemFont.create("扫荡", this._onClickWipeOut, this);
         wipeOutItem.setPosition(cc.p(250, 400));
@@ -74,7 +84,7 @@ var PassLayer = cc.Layer.extend({
     _onClickWipeOut: function () {
         cc.log("PassLayer _onClickWipeOut");
 
-        this._pass.wipeOut(function(data) {
+        this._pass.wipeOut(function (data) {
             cc.log(data);
         });
     },
@@ -83,7 +93,7 @@ var PassLayer = cc.Layer.extend({
         cc.log("PassLayer _onClickDefiance");
         cc.log(index);
 
-        this._pass.defiance(function(data, id) {
+        this._pass.defiance(function (data, id) {
             cc.log(data);
 
             var scene = BattleScene.create(BattleLogNote.getInstance().getBattleByBattleLogId(id));

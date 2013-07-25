@@ -47,7 +47,7 @@ class Manager
 
       (ranks, callback) ->
         _ids = ranks.map (r)-> r.playerId
-        dao.player.fetchMany where: " id in (#{_ids.toString()}) ", (err, results) ->
+        dao.player.getPlayerDetails _ids, (err, results) ->
           callback(err, results, ranks)
           
     ], (err, players, ranks) ->

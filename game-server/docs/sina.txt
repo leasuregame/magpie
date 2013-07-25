@@ -28,5 +28,7 @@ user: dev, password: 1 port: 6033
 mysql -udev -p1
 
 start game server:
-/dev/shm/magpie/game-server/node_modules/.bin/pomelo start production --daemon
-/dev/shm/magpie/game-server/node_modules/.bin/pomelo stop
+
+cd /dev/shm/magpie/game-server
+
+./node_modules/.bin/pomelo stop && ./node_modules/.bin/pomelo start production --daemon

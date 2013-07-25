@@ -13,16 +13,20 @@
 
 
 var Pass = Entity.extend({
-    _pass: 0,
+    _passTop: 0,
     _passMark: 0,
 
     init: function (data) {
-        this._pass = data.pass;
-        this._passMark = data.passMark || 0;
-
-        cc.log(this);
+        this.update(data);
 
         return true;
+    },
+
+    update: function(data) {
+        cc.log("Pass update");
+
+        this._passTop = data.pass;
+        this._passMark = data.passMark || 0;
     },
 
     defiance: function (cb, index) {
@@ -38,14 +42,17 @@ var Pass = Entity.extend({
 
                 var msg = data.msg;
 
-                var battleLog = BattleLog.create(msg);
+                that.update({
+                    pass: msg.pass,
+                    passMark: msg.passMark
+                })
+
+                var battleLog = BattleLog.create(msg.battleLog);
                 BattleLogNote.getInstance().pushBattleLog(battleLog);
 
-                cb("success". battleLog.get("id"));
+                cb(battleLog.get("id"));
             } else {
                 cc.log("barriers fail");
-
-                cb("fail");
             }
         });
     },
@@ -61,11 +68,16 @@ var Pass = Entity.extend({
             if (data.code == 200) {
                 cc.log("wipeOut success.");
 
+                var msg = data.msg;
+
+                that.update({
+                    pass: msg.pass,
+                    passMark: msg.passMark
+                })
+
                 cb("success");
             } else {
                 cc.log("wipeOut fail");
-
-                cb("fail");
             }
         });
     }

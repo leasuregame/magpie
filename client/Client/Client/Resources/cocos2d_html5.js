@@ -83,6 +83,7 @@
             'src/controls/bgSprite.js',
             'src/controls/dialog.js',
             'src/controls/lazyMenu.js',
+            'src/controls/lazyLayer.js',
 
             'src/view/loginModule/signInScene.js',
             'src/view/loginModule/signInLayer.js',

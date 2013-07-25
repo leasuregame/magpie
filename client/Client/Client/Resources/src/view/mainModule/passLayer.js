@@ -7,6 +7,11 @@
  */
 
 
+/*
+ * pass layer
+ * */
+
+
 var PassLayer = cc.Layer.extend({
     _pass: null,
 
@@ -17,10 +22,25 @@ var PassLayer = cc.Layer.extend({
 
         this._pass = gameData.pass;
 
-        var wipeOutItem = cc.MenuItemFont.create("扫荡", this._onClickWipeOut, this);
-        wipeOutItem.setPosition(cc.p(250, 400));
+        var bgSprite = cc.Sprite.create(main_scene_image.bg5);
+        bgSprite.setAnchorPoint(cc.p(0, 0));
+        bgSprite.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 200));
+        this.addChild(bgSprite);
+
+        var tipLabel = cc.Sprite.create(main_scene_image.bg6);
+        tipLabel.setAnchorPoint(cc.p(0, 0));
+        tipLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 868));
+        this.addChild(tipLabel);
+
+        var wipeOutItem = cc.MenuItemImage.create(main_scene_image.button9, main_scene_image.button9s, this._onClickWipeOut, this);
+        wipeOutItem.setPosition(cc.p(543, 34));
         var wipeOutMenu = cc.Menu.create(wipeOutItem);
-        this.addChild(wipeOutMenu);
+        wipeOutMenu.setPosition(cc.p(0, 0));
+        tipLabel.addChild(wipeOutMenu);
+
+        var iconSprite = cc.Sprite.create(main_scene_image.icon15);
+        iconSprite.setPosition(cc.p(543, 34));
+        tipLabel.addChild(iconSprite);
 
         var layer = cc.Layer.create();
         layer.setAnchorPoint(cc.p(0, 0));
@@ -74,7 +94,7 @@ var PassLayer = cc.Layer.extend({
     _onClickWipeOut: function () {
         cc.log("PassLayer _onClickWipeOut");
 
-        this._pass.wipeOut(function(data) {
+        this._pass.wipeOut(function (data) {
             cc.log(data);
         });
     },
@@ -83,7 +103,7 @@ var PassLayer = cc.Layer.extend({
         cc.log("PassLayer _onClickDefiance");
         cc.log(index);
 
-        this._pass.defiance(function(data, id) {
+        this._pass.defiance(function (data, id) {
             cc.log(data);
 
             var scene = BattleScene.create(BattleLogNote.getInstance().getBattleByBattleLogId(id));

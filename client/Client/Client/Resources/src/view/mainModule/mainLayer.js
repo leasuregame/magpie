@@ -13,6 +13,9 @@
 
 
 var MainLayer = cc.Layer.extend({
+    _selectRect: cc.rect(40, 890, GAME_WIDTH, 120),
+    _isTouch: false,
+
     onEnter: function () {
         cc.log("MainLayer onEnter");
 
@@ -27,7 +30,7 @@ var MainLayer = cc.Layer.extend({
 
         this.setTouchEnabled(true);
 
-        var bgSprite = cc.Sprite.create(main_scene_image.bg);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg1);
         bgSprite.setPosition(GAME_MIDPOINT);
         this.addChild(bgSprite, -1);
 
@@ -36,9 +39,13 @@ var MainLayer = cc.Layer.extend({
         this._nameLabel.setPosition(cc.p(200, 980));
         this.addChild(this._nameLabel);
 
+        this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0);
+        this._expProgress.setPosition(cc.p(240, 933));
+        this.addChild(this._expProgress, 2);
+
         var lvBg = cc.Sprite.create(main_scene_image.lv_bg);
         lvBg.setPosition(cc.p(100, 950));
-        this.addChild(lvBg, 1);
+        this.addChild(lvBg, 2);
 
         this._lvLabel = cc.LabelTTF.create("0", 'Times New Roman', 45);
         this._lvLabel.setAnchorPoint(cc.p(0.5, 0.5));
@@ -47,7 +54,7 @@ var MainLayer = cc.Layer.extend({
 
         var vipSprite = cc.Sprite.create(main_scene_image.vip5);
         vipSprite.setPosition(cc.p(450, 982));
-        this.addChild(vipSprite);
+        this.addChild(vipSprite, 2);
 
         this._goldLabel = cc.LabelTTF.create("", 'Times New Roman', 22);
         this._goldLabel.setAnchorPoint(cc.p(0.5, 0.5));
@@ -58,10 +65,6 @@ var MainLayer = cc.Layer.extend({
         this._moneyLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._moneyLabel.setPosition(cc.p(610, 933));
         this.addChild(this._moneyLabel);
-
-        this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0);
-        this._expProgress.setPosition(cc.p(240, 933));
-        this.addChild(this._expProgress);
 
         this._powerLabel = cc.LabelTTF.create("0", 'Times New Roman', 22);
         this._powerLabel.setAnchorPoint(cc.p(0.5, 0.5));
@@ -78,10 +81,6 @@ var MainLayer = cc.Layer.extend({
         this._rankLabel.setPosition(cc.p(540, 712));
         this.addChild(this._rankLabel);
 
-        var messagesLabel = MessageLabel.create();
-        messagesLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 1010));
-        this.addChild(messagesLabel);
-
         var lineUpLabel = LineUpLabel.create();
         lineUpLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 800));
         this.addChild(lineUpLabel);
@@ -96,32 +95,32 @@ var MainLayer = cc.Layer.extend({
         lotteryLayerItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 500));
 
         var pveLayerItem = cc.MenuItemImage.create(main_scene_image.button1, main_scene_image.button1s, this._onClickPveLayer, this);
-        pveLayerItem.setPosition(cc.p(150, 600));
+        pveLayerItem.setPosition(cc.p(180, 600));
 
         var tournamentLayerItem = cc.MenuItemImage.create(main_scene_image.button2, main_scene_image.button2s, this._onClickTournamentLayer, this);
-        tournamentLayerItem.setPosition(cc.p(150, 400));
+        tournamentLayerItem.setPosition(cc.p(180, 400));
 
         var strengthenLayerItem = cc.MenuItemImage.create(main_scene_image.button3, main_scene_image.button3s, this._onClickStrengthenLayer, this);
-        strengthenLayerItem.setPosition(cc.p(570, 600));
+        strengthenLayerItem.setPosition(cc.p(555, 600));
 
         var evolutionLayerItem = cc.MenuItemImage.create(main_scene_image.button4, main_scene_image.button4s, this._onClickEvolutionLayer, this);
-        evolutionLayerItem.setPosition(cc.p(570, 400));
+        evolutionLayerItem.setPosition(cc.p(555, 400));
 
         var cardLibraryLayerItem = cc.MenuItemImage.create(main_scene_image.button6, main_scene_image.button6s, this._onClickCardLibraryLayer, this);
         cardLibraryLayerItem.setPosition(cc.p(135, 250));
 
-        var rankLayerItem = cc.MenuItemImage.create(main_scene_image.button6, main_scene_image.button6s, this._onClickRankLayerItem, this);
+        var rankLayerItem = cc.MenuItemImage.create(main_scene_image.button6, main_scene_image.button6s, this._onClickRankLayer, this);
         rankLayerItem.setPosition(cc.p(285, 250));
 
-        var friendLayerItem = cc.MenuItemImage.create(main_scene_image.button6, main_scene_image.button6s, this._onClickFriendLayerItem, this);
+        var friendLayerItem = cc.MenuItemImage.create(main_scene_image.button6, main_scene_image.button6s, this._onClickFriendLayer, this);
         friendLayerItem.setPosition(cc.p(435, 250));
 
-        var configLayerItem = cc.MenuItemImage.create(main_scene_image.button6, main_scene_image.button6s, this._onClickConfigLayerItem, this);
+        var configLayerItem = cc.MenuItemImage.create(main_scene_image.button6, main_scene_image.button6s, this._onClickConfigLayer, this);
         configLayerItem.setPosition(cc.p(585, 250));
 
 
         var itemIcon;
-        for(var i = 0; i < 4; ++i) {
+        for (var i = 0; i < 4; ++i) {
             itemIcon = cc.Sprite.create(main_scene_image["icon" + (i + 1)]);
             itemIcon.setPosition(cc.p(135 + i * 150, 250));
             this.addChild(itemIcon, 1);
@@ -154,54 +153,94 @@ var MainLayer = cc.Layer.extend({
         this._rankLabel.setString(player.get("rank"));
     },
 
-    _onClickActivityLayer: function() {
+    _onClickActivityLayer: function () {
         cc.log("MainLayer _onClickActivityLayer");
         MainScene.getInstance().switchLayer(ActivityLayer);
     },
 
-    _onClickLotteryLayer: function() {
+    _onClickLotteryLayer: function () {
         cc.log("MainLayer _onClickLotteryLayer");
         MainScene.getInstance().switchLayer(LotteryLayer);
     },
 
-    _onClickPveLayer: function() {
+    _onClickPveLayer: function () {
         cc.log("MainLayer _onClickPveLayer");
         MainScene.getInstance().switchLayer(PveLayer);
     },
 
-    _onClickTournamentLayer: function() {
+    _onClickTournamentLayer: function () {
         cc.log("MainLayer _onClickTournamentLayer");
         MainScene.getInstance().switchLayer(TournamentLayer);
     },
 
-    _onClickStrengthenLayer: function() {
+    _onClickStrengthenLayer: function () {
         cc.log("MainLayer _onClickStrengthenLayer");
         MainScene.getInstance().switchLayer(StrengthenLayer);
     },
 
-    _onClickEvolutionLayer: function() {
+    _onClickEvolutionLayer: function () {
         cc.log("MainLayer _onClickEvolutionLayer");
         MainScene.getInstance().switchLayer(EvolutionLayer);
     },
 
-    _onClickCardLibraryLayer: function() {
+    _onClickCardLibraryLayer: function () {
         cc.log("MainLayer _onClickCardLibraryLayer");
         MainScene.getInstance().switchLayer(CardLibraryLayer);
     },
 
-    _onClickRankLayerItem: function() {
+    _onClickRankLayer: function () {
         cc.log("MainLayer _onClickRankLayerItem");
         MainScene.getInstance().switchLayer(RankLayer);
     },
 
-    _onClickFriendLayerItem: function() {
+    _onClickFriendLayer: function () {
         cc.log("MainLayer _onClickFriendLayerItem");
         MainScene.getInstance().switchLayer(FriendLayer);
     },
 
-    _onClickConfigLayerItem: function() {
+    _onClickConfigLayer: function () {
         cc.log("MainLayer _onClickConfigLayerItem");
         MainScene.getInstance().switchLayer(ConfigLayer);
+    },
+
+    _onClickPlayerDetails: function() {
+        cc.log("MainLayer _onClickPlayerDetails");
+
+        this.addChild(PlayerDetailsLayer.create(), 1);
+    },
+
+    onTouchesBegan: function (touches, event) {
+        cc.log("MainLayer onTouchesBegan");
+
+        var point = touches[0].getLocation();
+        if (cc.rectContainsPoint(this._selectRect, point)) {
+            this._isTouch = true;
+        }
+    },
+
+    onTouchesMoved: function (touches, event) {
+        cc.log("MainLayer onTouchesMoved");
+    },
+
+    onTouchesEnded: function (touches, event) {
+        cc.log("MainLayer onTouchesEnded");
+
+        if (this._isTouch) {
+            var point = touches[0].getLocation();
+
+            if (cc.rectContainsPoint(this._selectRect, point)) {
+                cc.log("PlayerHeaderLabel select");
+                this._isTouch = false;
+
+                this._onClickPlayerDetails();
+            }
+        }
+    },
+
+    onTouchesCancelled: function (touches, event) {
+        cc.log("MainLayer onTouchesCancelled");
+
+        this._isTouch = false;
     }
 })
 

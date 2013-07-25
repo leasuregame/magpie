@@ -24,8 +24,8 @@ var MainScene = cc.Scene.extend({
     init: function () {
         cc.log("MainScene init");
 
-//        var mainBgLayer = MainBgLayer.create();
-//        this.addChild(mainBgLayer, -1);
+        var mainBgLayer = MainBgLayer.create();
+        this.addChild(mainBgLayer, -1);
 
         var mainMenuLayer = MainMenuLayer.create(this);
         this.addChild(mainMenuLayer, 1);
@@ -43,7 +43,7 @@ var MainScene = cc.Scene.extend({
         }
     },
 
-    switch: function(layerObject) {
+    switch: function (layerObject) {
         if (this._nowLayer != null) this.removeChild(this._nowLayer);
         this._nowLayer = layerObject;
         this.addChild(this._nowLayer);

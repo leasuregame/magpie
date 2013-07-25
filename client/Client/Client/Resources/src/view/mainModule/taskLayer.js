@@ -38,15 +38,15 @@ var TaskLayer = cc.Layer.extend({
         var chapterTable = outputTables.chapter.rows;
         var scrollViewLayer = cc.Layer.create();
 
-        var line = cc.LayerColor.create(cc.c4b(100, 0, 100, 250), 20, 840);
+        var line = cc.LayerColor.create(cc.c4b(100, 0, 100, 250), 20, 750);
         scrollViewLayer.addChild(line);
 
         for (var i = 0; i < CHAPTER_COUNT; ++i) {
-            var cell = cc.LayerColor.create(cc.c4b(100, 100, 0, 100), 600, 840);
+            var cell = cc.LayerColor.create(cc.c4b(100, 100, 0, 100), 600, 750);
             cell.setPosition(cc.p(600 * i + 20 * (i + 1), 0));
             scrollViewLayer.addChild(cell);
 
-            line = cc.LayerColor.create(cc.c4b(100, 0, 100, 250), 20, 840);
+            line = cc.LayerColor.create(cc.c4b(100, 0, 100, 250), 20, 750);
             line.setPosition(cc.p((600 + 20) * (i + 1), 0));
             scrollViewLayer.addChild(line);
 

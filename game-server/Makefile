@@ -56,6 +56,10 @@ test-api: build
 runserver: build
 	./node_modules/.bin/pomelo start development
 
+restartserver: build
+	./node_modules/.bin/pomelo stop
+	./node_modules/.bin/pomelo start production --daemon
+
 starttt:
 	./bin/ttservctl start
 

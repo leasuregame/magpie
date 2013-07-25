@@ -75,15 +75,18 @@ class Round extends Base
     log.info "*** 回合 #{@round_num} 开始 ***"
 
   execute: () ->
-    while not @isOver()
+    count = 0
+    while not @isOver() or count < 6
       @attacker.round_num = @defender.round_num = @round_num
       @attack.process()
+      count++
+    return
 
   end: ->
     @setShootCount()
     @attacker.reset()
     @defender.reset()
-    battleLog.addStep("*** 回合 #{@round_num} 结束 ***")
+    #battleLog.addStep("*** 回合 #{@round_num} 结束 ***")
     log.info "*** 回合 #{@round_num} 结束 ***"
     
 class Attack extends Base

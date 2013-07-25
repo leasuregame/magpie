@@ -45,21 +45,20 @@ class Player extends Module
     @heros = if @cards? then (new Hero(@cards[id], @) for id of @cards) else []
 
   bindCards: ->
-    console.log 'line up: ', @lineUp
     if @lineUp? and @lineUp != ''
       @parseLineUp().forEach (item) =>
         [pos, id] = item 
         
         _hero = (id) =>
           for h in @heros
-            return if h.id is parseInt(id) then h
+            return h if h.id is parseInt(id)
           null
         _h = _hero(id)
 
         if _h
           @matrix.set(pos, _h)
         else
-          logger.info 'you have not such card with id is ' + id
+          logger.warn 'you have not such card with id is ' + id
     else
       logger.warn 'there is not line up for player ' + @name
     
@@ -95,18 +94,18 @@ class Player extends Module
         return null
     
   death: ->
-    res = @heros.filter (hero) ->
-      hero.hp > 0
-
-    res.length is 0 or @dead
+    @aliveHeros().length is 0
 
   attack: (callback) ->
     _hero = @currentHero()
     if _hero is null or _hero.death()
-      logger.warn "玩家 #{@name} 拿不到当前卡牌，或者没有可用的牌可出了。卡牌：#{_hero?.name}, 死亡状态：#{_hero?.death()}"
+      logger.warn "玩家 #{@name} 拿不到当前卡牌，或者没有可用的牌可出了。\
+      卡牌：#{_hero?.name}, 死亡状态：#{_hero?.death()} \
+      卡牌位置: #{@matrix.curIndex}
+      "
       #@dead = true
     else
-      logger.info "#{@name} 出手", _hero.name
+      logger.info "#{@name} 出手", _hero.idx
       _hero.attack(callback)
 
   currentHero: ->
@@ -136,7 +135,7 @@ class Player extends Module
     not res
 
   aliveHeros: ->
-    res = @heros.filter (h) ->
+    res = @matrix.all().filter (h) ->
       h.hp? and h.hp > 0
     res || []
 

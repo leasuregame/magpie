@@ -6,7 +6,7 @@ describe("Ranking List", function() {
     });
 
     it("init db and load test data", function(){
-      doAjax('/loaddata/all', {}, function(data) {
+      doAjax('/loaddata/csv', {}, function(data) {
           expect(data).toEqual('done');
       });
     });

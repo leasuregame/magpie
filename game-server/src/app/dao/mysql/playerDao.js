@@ -133,14 +133,14 @@ var PlayerDao = (function(_super) {
 
             cards.forEach(function(c) {
                 c.addPassiveSkills(passiveSkills.filter(function(ps){
-                    return ps.cardId = c.id;
+                    return ps.cardId == c.id;
                 }));
             });
 
             players.forEach(function(p){
-                p.addCards(cards.filter(function(c){ return c.playerId = p.id}));
+                p.addCards(cards.filter(function(c){ return c.playerId == p.id}));
 
-                _ranks = ranks.filter(function(r) { return r.playerId = p.id});
+                _ranks = ranks.filter(function(r) { return r.playerId == p.id});
                 if (_ranks.length > 0) {
                     p.set('rank', _ranks[0]);
                 }

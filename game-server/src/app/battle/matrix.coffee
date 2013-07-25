@@ -93,8 +93,6 @@ class Matrix
 
       if _.isObject(_hero) and not _hero.death()
         return _hero
-      else
-        return _hero
     null
 
   nextIndex: (cindex = @curIndex) ->

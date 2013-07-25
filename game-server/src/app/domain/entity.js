@@ -105,7 +105,7 @@ var setAttr = function(self, name, value) {
         if (_.isObject(name)) {
             var key;
             var value;
-            var patrn = /^\{.*\}$/;
+            var patrn = /^[\{\[].*[\]\}]$/;
 
             for (key in name) {
                 value = name[key];

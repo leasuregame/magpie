@@ -10,11 +10,7 @@
 /*
  * battle log sync
  * */
-
-
-var sqlHelper = require("../sqlHelper");
-var dbClient = require("pomelo").app.get("dbClient");
-var logger = require("pomelo-logger").getLogger(__filename);
+var BattleLogDao = require('../battleLogDao');
 
 var battleLogSync = {
     /*
@@ -33,22 +29,10 @@ var battleLogSync = {
             return cb("param error", null);
         }
 
-        var stm = sqlHelper.updateSql("battleLog", {"id": param.id}, param.data);
-        return dbClient.update(stm.sql, stm.args, function (err, res) {
-            if (err) {
-                logger.error("[battleLogDao.updateBattleLogById faild] ", err.stack);
-
-                return cb({
-                    code: err.code,
-                    msg: err.message
-                }, null);
-            }
-            if (!!res && res.affectedRows > 0) {
-                return cb(null, true);
-            } else {
-                return cb(null, false);
-            }
-        });
+        return BattleLogDao.update({
+            where: {id: param.id},
+            data: param.data
+        }, cb);
     }
 };
 

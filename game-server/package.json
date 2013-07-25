@@ -29,6 +29,7 @@
         "jade": "*",
         "ejs": "*",
         "csv": "*",
-        "async": "*"
+        "async": "*",
+        "xunit-file": "*"
     }
 }

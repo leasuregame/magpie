@@ -87,8 +87,7 @@ class Hero extends Module
       log.warn '技能攻击时，攻击的对方卡牌不能为空'
       return
 
-    log.debug @name, '使用技能', @skill.name, @skill.type
-    doNothing = ->
+    log.debug @idx, '使用技能', @skill.name, @skill.type
 
     switch @skill.type
       when 'single_fight', 'aoe' 
@@ -96,7 +95,7 @@ class Hero extends Module
       when 'single_heal', 'mult_heal'
         @cure enemys, callback
       else
-        doNothing()
+        callback()
 
   skillAttack: (enemys, callback) ->
     # 负的a的id代表技能攻击
@@ -112,7 +111,7 @@ class Hero extends Module
         # 闪避
         _step.d.push _d
         _step.e.push 0
-        log.debug enemy.name, '闪避'
+        log.debug enemy.idx, '闪避'
         callback enemy
         continue
       else if @isCrit()
@@ -120,12 +119,12 @@ class Hero extends Module
         _dmg *= @crit_factor
         _e = -_dmg
         _d = -enemy.idx
-        log.debug enemy.name, '暴击'
+        log.debug enemy.idx, '暴击'
       else
         _e = -_dmg
         _d = enemy.idx
 
-      log.debug "#{enemy.name} 受到伤害 #{_dmg}"
+      log.debug "#{enemy.idx} 受到伤害 #{_e}"
 
       _step.d.push _d
       _step.e.push _e
@@ -151,7 +150,7 @@ class Hero extends Module
       _step['dhp'] = enemy.hp
 
       callback enemy
-      log.info "#{enemy.name} 加血 #{_hp}"
+      log.info "#{enemy.idx} 加血 #{_hp}"
 
     @log _step
 
@@ -176,7 +175,7 @@ class Hero extends Module
 
       _step = {a: @idx, d: [_d], e: [_e], r: []}
 
-      log.debug "#{_hero.name} 受到伤害 #{_dmg}"
+      log.debug "#{_hero.idx} 受到伤害 #{_e}"
 
       _hero.damage _dmg, @, _step
       callback _hero
@@ -198,13 +197,13 @@ class Hero extends Module
     # 检查，伤害反弹
     # @_checkRebound(enemy, value, step)
 
-    log.debug "#{@name} 死亡" if @death()
+    log.debug "#{@idx} 死亡" if @death()
     step['death'] = true if @death()
 
   damageOnly: (value) ->
     @hp -= value
 
-    log.debug "#{@name} 死亡" if @death()
+    log.debug "#{@idx} 死亡" if @death()
     #step['death'] = true if @death()
   
   _checkDmgReduce: (value, step) ->
@@ -221,7 +220,7 @@ class Hero extends Module
     if _val isnt 0
       enemy.damageOnly _val
       step.r.push -_val
-      log.info "伤害反弹给 #{enemy.name}, #{_val}"
+      log.info "伤害反弹给 #{enemy.idx}, #{_val}"
     else
       step.r.push null
 

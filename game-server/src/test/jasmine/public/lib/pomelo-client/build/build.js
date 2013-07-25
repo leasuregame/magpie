@@ -790,7 +790,7 @@ require.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function(e
 
   var buffer = new ArrayBuffer(8);
   var float32Array = new Float32Array(buffer);
-  var float64Array = new Float64Array(buffer);
+  var float64Array = new Float32Array(buffer);
   var uInt8Array = new Uint8Array(buffer);
 
   Codec.encodeUInt32 = function(n){

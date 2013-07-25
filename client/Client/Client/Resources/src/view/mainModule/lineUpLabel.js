@@ -15,9 +15,6 @@
 var LineUpLabel = cc.Layer.extend({
     _cardList: null,
     _lineUp: null,
-    _lineUpCard: {},
-    _selectRect: cc.rect(40, 648, GAME_WIDTH, 150),
-    _isMouseDown: false,
 
     onEnter: function () {
         cc.log("LineUpLabel onEnter");
@@ -33,12 +30,6 @@ var LineUpLabel = cc.Layer.extend({
 
         this._cardList = gameData.cardList;
         this._lineUp = gameData.lineUp;
-
-        this.setTouchEnabled(true);
-
-        bg = cc.LayerColor.create(cc.c4b(100, 0, 100, 100), GAME_WIDTH, 150);
-        bg.setAnchorPoint(cc.p(0, 0));
-        this.addChild(bg);
 
         this._lineUpCard = {};
         for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
@@ -58,37 +49,43 @@ var LineUpLabel = cc.Layer.extend({
 
     update: function () {
         cc.log("LineUpLabel update");
-        cc.log(this._lineUp);
 
-        for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            var cardId = this._lineUp.getLineUpByIndex(i);
-            this._lineUpCard[i].setString(cardId ? this._cardList.getCardByIndex(cardId).get("name") : "空");
-        }
-    },
+        this.removeAllChildren();
 
-    onTouchesBegan: function (touches, event) {
-        var point = touches[0].getLocation();
-        if (cc.rectContainsPoint(this._selectRect, point)) {
-            this._isMouseDown = true;
-        }
-    },
+        var lineUpList = this._lineUp.getLineUpList();
 
-    onTouchesMoved: function (touches, event) {
-    },
+        var menu = cc.Menu.create();
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu);
 
-    onTouchesEnded: function (touches, event) {
-        if (this._isMouseDown) {
-            var point = touches[0].getLocation();
+        for (var i = 0; i < MAX_LINE_UP_CARD; ++i) {
+            var card = lineUpList[i];
+            var star = 1;
 
-            if (cc.rectContainsPoint(this._selectRect, point)) {
-                cc.log("LineUpLabel select");
-                this._isMouseDown = false;
+            if (card) {
+                star = card.get("star");
+
+                var cardItem = cc.MenuItemImage.create(s_h_hero_1, s_h_hero_1, this._onClickCard(card), this);
+                cardItem.setPosition(cc.p(80 + 120 * i, 0));
+                menu.addChild(cardItem);
             }
+
+            var cardItemBg = cc.Sprite.create(main_scene_image["card_item_bg" + star]);
+            cardItemBg.setPosition(cc.p(80 + 120 * i, 0));
+            this.addChild(cardItemBg, -1);
+
+            var cardItemFrame = cc.Sprite.create(main_scene_image["card_item_frame" + star]);
+            cardItemFrame.setPosition(cc.p(80 + 120 * i, 0));
+            this.addChild(cardItemFrame, 1);
         }
     },
 
-    onTouchesCancelled: function (touches, event) {
-        this._isMouseDown = false;
+    _onClickCard: function (card) {
+        return function () {
+            cc.log("LineUpLabel _onClickCard");
+            cc.log(card);
+
+        }
     }
 })
 

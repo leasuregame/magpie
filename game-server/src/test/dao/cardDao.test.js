@@ -46,7 +46,7 @@ describe("Card Data Access Object", function () {
         });
 
         it("should can be create card", function (done) {
-            dao.card.createCard(data, function (err, res) {
+            dao.card.create({data: data}, function (err, res) {
                 should.strictEqual(err, null);
                 res.id.should.equal(data.id);
                 return done();
@@ -85,7 +85,7 @@ describe("Card Data Access Object", function () {
             });
 
             it("should can be get card by id", function (done) {
-                dao.card.getCardById(data.id, function (err, res) {
+                dao.card.fetchOne({where: {id: data.id}}, function (err, res) {
                     should.strictEqual(err, null);
                     res.id.should.equal(data.id);
                     res.playerId.should.equal(data.playerId);
@@ -100,7 +100,7 @@ describe("Card Data Access Object", function () {
             });
 
             it("should can be get card by player id", function (done) {
-                dao.card.getCardByPlayerId(data.playerId, function (err, res) {
+                dao.card.fetchMany({where: {playerId: data.playerId}}, function (err, res) {
                     should.strictEqual(err, null);
                     res[0].id.should.equal(data.id);
                     res[0].playerId.should.equal(data.playerId);
@@ -117,15 +117,15 @@ describe("Card Data Access Object", function () {
 
         describe("when card no exist", function () {
             it("should can no get card by id", function (done) {
-                dao.card.getCardById(data.id, function (err, res) {
+                dao.card.fetchOne({where: {id: data.id}}, function (err, res) {
                     should.strictEqual(res, null);
-                    err.msg.should.be.equal("卡牌不存在");
+                    err.msg.should.be.equal("can not find card");
                     return done();
                 })
             });
 
             it("should can no get card by player id", function (done) {
-                dao.card.getCardByPlayerId(data.playerId, function (err, res) {
+                dao.card.fetchMany({where: {playerId: data.playerId}}, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.eql([]);
                     return done();
@@ -165,7 +165,7 @@ describe("Card Data Access Object", function () {
             });
 
             it("should can be delete by id", function (done) {
-                dao.card.deleteCardById(data.id, function (err, res) {
+                dao.card.delete({where: {id: data.id}}, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.be.true;
                     return done();
@@ -175,7 +175,7 @@ describe("Card Data Access Object", function () {
 
         describe("when card no exist", function () {
             it("should can no delete by id", function (done) {
-                dao.card.deleteCardById(data.id, function (err, res) {
+                dao.card.delete({where: {id: data.id}}, function (err, res) {
                     should.strictEqual(err, null);
                     res.should.be.false;
                     return done();

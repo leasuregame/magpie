@@ -7,15 +7,9 @@ describe("Logic Server # ", function() {
       intiPomelo();
     });
 
-    it("recreate database", function(){
-      doAjax('/createDb', {}, function(data){
-        expect(data).toEqual('done');
-      });
-    });
-
-    it('load test data form csv files', function() {
-      doAjax('/loadDataFromCsvFile', {}, function(data) {
-        expect(data).toEqual('done');
+    it("init db and load test data", function(){
+      doAjax('/loaddata/csv', {}, function(data) {
+          expect(data).toEqual('done');
       });
     });
   });

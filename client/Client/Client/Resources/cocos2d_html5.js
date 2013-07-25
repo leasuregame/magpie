@@ -83,6 +83,7 @@
             'src/controls/bgSprite.js',
             'src/controls/dialog.js',
             'src/controls/lazyMenu.js',
+            'src/controls/lazyLayer.js',
 
             'src/view/loginModule/signInScene.js',
             'src/view/loginModule/signInLayer.js',
@@ -106,6 +107,7 @@
             'src/view/mainModule/mainScene.js',
             'src/view/mainModule/messageLabel.js',
             'src/view/mainModule/messageLayer.js',
+            'src/view/mainModule/passLabel.js',
             'src/view/mainModule/passLayer.js',
             'src/view/mainModule/playerDetailsLayer.js',
             'src/view/mainModule/playerHeaderLabel.js',

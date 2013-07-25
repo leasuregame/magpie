@@ -40,7 +40,7 @@ describe("PassiveSkill Object", function () {
                         data.value
                     ],
                     function (err, res) {
-                        dao.passiveSkill.getPassiveSkillById(data.id, function (err, res) {
+                        dao.passiveSkill.fetchOne({where: {id:data.id}}, function (err, res) {
                             passiveSkill = res;
                             return done();
                         });

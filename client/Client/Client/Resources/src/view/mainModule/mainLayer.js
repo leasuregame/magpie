@@ -13,6 +13,9 @@
 
 
 var MainLayer = cc.Layer.extend({
+    _selectRect: cc.rect(40, 890, GAME_WIDTH, 120),
+    _isTouch: false,
+
     onEnter: function () {
         cc.log("MainLayer onEnter");
 
@@ -25,73 +28,110 @@ var MainLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        var messagesLabel = MessageLabel.create();
-        messagesLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 1018));
-        this.addChild(messagesLabel);
+        this.setTouchEnabled(true);
 
-        var playerHeaderLabel = PlayerHeaderLabel.create();
-        playerHeaderLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 818));
-        this.addChild(playerHeaderLabel);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg1);
+        bgSprite.setAnchorPoint(cc.p(0, 0));
+        bgSprite.setPosition(GAME_BG_POINT);
+        this.addChild(bgSprite, -1);
+
+        this._nameLabel = cc.LabelTTF.create("0", 'Times New Roman', 30);
+        this._nameLabel.setAnchorPoint(cc.p(0.5, 0.5));
+        this._nameLabel.setPosition(cc.p(200, 980));
+        this.addChild(this._nameLabel);
+
+        this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0);
+        this._expProgress.setPosition(cc.p(240, 933));
+        this.addChild(this._expProgress, 2);
+
+        var lvBg = cc.Sprite.create(main_scene_image.lv_bg);
+        lvBg.setPosition(cc.p(100, 950));
+        this.addChild(lvBg, 2);
+
+        this._lvLabel = cc.LabelTTF.create("0", 'Times New Roman', 45);
+        this._lvLabel.setAnchorPoint(cc.p(0.5, 0.5));
+        this._lvLabel.setPosition(cc.p(46, 46));
+        lvBg.addChild(this._lvLabel);
+
+        var vipSprite = cc.Sprite.create(main_scene_image.vip5);
+        vipSprite.setPosition(cc.p(450, 982));
+        this.addChild(vipSprite, 2);
+
+        this._goldLabel = cc.LabelTTF.create("", 'Times New Roman', 22);
+        this._goldLabel.setAnchorPoint(cc.p(0.5, 0.5));
+        this._goldLabel.setPosition(cc.p(610, 982));
+        this.addChild(this._goldLabel);
+
+        this._moneyLabel = cc.LabelTTF.create("0", 'Times New Roman', 22);
+        this._moneyLabel.setAnchorPoint(cc.p(0.5, 0.5));
+        this._moneyLabel.setPosition(cc.p(610, 933));
+        this.addChild(this._moneyLabel);
+
+        this._powerLabel = cc.LabelTTF.create("0", 'Times New Roman', 22);
+        this._powerLabel.setAnchorPoint(cc.p(0.5, 0.5));
+        this._powerLabel.setPosition(cc.p(460, 933));
+        this.addChild(this._powerLabel);
+
+        this._abilityLabel = cc.LabelTTF.create("0", 'Times New Roman', 22);
+        this._abilityLabel.setAnchorPoint(cc.p(0.5, 0.5));
+        this._abilityLabel.setPosition(cc.p(300, 712));
+        this.addChild(this._abilityLabel);
+
+        this._rankLabel = cc.LabelTTF.create("0", 'Times New Roman', 22);
+        this._rankLabel.setAnchorPoint(cc.p(0.5, 0.5));
+        this._rankLabel.setPosition(cc.p(540, 712));
+        this.addChild(this._rankLabel);
 
         var lineUpLabel = LineUpLabel.create();
-        lineUpLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 648));
+        lineUpLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 800));
         this.addChild(lineUpLabel);
 
-        var functionLabel = cc.LayerColor.create(cc.c4b(100, 0, 100, 100), GAME_WIDTH, 470);
-        functionLabel.setPosition(GAME_HORIZONTAL_LACUNA, GAME_VERTICAL_LACUNA + 70);
-        this.addChild(functionLabel);
 
         var activityLayerItem = cc.MenuItemFont.create("活动入口", this._onClickActivityLayer, this);
         activityLayerItem.setFontSize(40);
         activityLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
-        activityLayerItem.setPosition(cc.p(320, 385));
+        activityLayerItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 650));
 
-        var lotteryLayerItem = cc.MenuItemFont.create("抽奖", this._onClickLotteryLayer, this);
-        lotteryLayerItem.setFontSize(70);
-        lotteryLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
-        lotteryLayerItem.setPosition(cc.p(320, 255));
+        var lotteryLayerItem = cc.MenuItemImage.create(main_scene_image.button5, main_scene_image.button5s, this._onClickLotteryLayer, this);
+        lotteryLayerItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 500));
 
-        var pveLayerItem = cc.MenuItemFont.create("关卡", this._onClickPveLayer, this);
-        pveLayerItem.setFontSize(40);
-        pveLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
-        pveLayerItem.setPosition(cc.p(120, 320));
+        var pveLayerItem = cc.MenuItemImage.create(main_scene_image.button1, main_scene_image.button1s, this._onClickPveLayer, this);
+        pveLayerItem.setPosition(cc.p(180, 600));
 
-        var tournamentLayerItem = cc.MenuItemFont.create("竞技", this._onClickTournamentLayer, this);
-        tournamentLayerItem.setFontSize(40);
-        tournamentLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
-        tournamentLayerItem.setPosition(cc.p(120, 190));
+        var tournamentLayerItem = cc.MenuItemImage.create(main_scene_image.button2, main_scene_image.button2s, this._onClickTournamentLayer, this);
+        tournamentLayerItem.setPosition(cc.p(180, 400));
 
-        var strengthenLayerItem = cc.MenuItemFont.create("强化", this._onClickStrengthenLayer, this);
-        strengthenLayerItem.setFontSize(40);
-        strengthenLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
-        strengthenLayerItem.setPosition(cc.p(520, 320));
+        var strengthenLayerItem = cc.MenuItemImage.create(main_scene_image.button3, main_scene_image.button3s, this._onClickStrengthenLayer, this);
+        strengthenLayerItem.setPosition(cc.p(555, 600));
 
-        var evolutionLayerItem = cc.MenuItemFont.create("进阶", this._onClickEvolutionLayer, this);
-        evolutionLayerItem.setFontSize(40);
-        evolutionLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
-        evolutionLayerItem.setPosition(cc.p(520, 190));
+        var evolutionLayerItem = cc.MenuItemImage.create(main_scene_image.button4, main_scene_image.button4s, this._onClickEvolutionLayer, this);
+        evolutionLayerItem.setPosition(cc.p(555, 400));
 
-        var cardLibraryLayerItem = cc.MenuItemFont.create("图鉴", this._onClickCardLibraryLayer, this);
-        cardLibraryLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
-        cardLibraryLayerItem.setPosition(cc.p(100, 70));
+        var cardLibraryLayerItem = cc.MenuItemImage.create(main_scene_image.button6, main_scene_image.button6s, this._onClickCardLibraryLayer, this);
+        cardLibraryLayerItem.setPosition(cc.p(135, 250));
 
-        var rankLayerItem = cc.MenuItemFont.create("排行榜", this._onClickRankLayerItem , this);
-        rankLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
-        rankLayerItem.setPosition(cc.p(250, 70));
+        var rankLayerItem = cc.MenuItemImage.create(main_scene_image.button6, main_scene_image.button6s, this._onClickRankLayer, this);
+        rankLayerItem.setPosition(cc.p(285, 250));
 
-        var friendLayerItem = cc.MenuItemFont.create("好友", this._onClickFriendLayerItem, this);
-        friendLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
-        friendLayerItem.setPosition(cc.p(400, 70));
+        var friendLayerItem = cc.MenuItemImage.create(main_scene_image.button6, main_scene_image.button6s, this._onClickFriendLayer, this);
+        friendLayerItem.setPosition(cc.p(435, 250));
 
-        var configLayerItem = cc.MenuItemFont.create("设置", this._onClickConfigLayerItem, this);
-        configLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
-        configLayerItem.setPosition(cc.p(550, 70));
+        var configLayerItem = cc.MenuItemImage.create(main_scene_image.button6, main_scene_image.button6s, this._onClickConfigLayer, this);
+        configLayerItem.setPosition(cc.p(585, 250));
+
+
+        var itemIcon;
+        for (var i = 0; i < 4; ++i) {
+            itemIcon = cc.Sprite.create(main_scene_image["icon" + (i + 1)]);
+            itemIcon.setPosition(cc.p(135 + i * 150, 250));
+            this.addChild(itemIcon, 1);
+        }
 
         var functionMenu = cc.Menu.create(activityLayerItem, lotteryLayerItem, pveLayerItem, tournamentLayerItem, strengthenLayerItem,
             evolutionLayerItem, cardLibraryLayerItem, rankLayerItem, friendLayerItem, configLayerItem);
-        functionMenu.setPosition(0, 0);
+        functionMenu.setPosition(cc.p(0, 0));
 
-        functionLabel.addChild(functionMenu);
+        this.addChild(functionMenu);
 
         return true;
     },
@@ -99,56 +139,109 @@ var MainLayer = cc.Layer.extend({
     update: function () {
         cc.log("MainLayer update");
 
+        var player = gameData.player;
+
+        cc.log(player);
+
+        this._expProgress.setAllValue(player.get("maxPower"), player.get("power"));
+
+        this._nameLabel.setString(player.get("name"));
+        this._lvLabel.setString(player.get("lv"));
+        this._goldLabel.setString(player.get("gold"));
+        this._moneyLabel.setString(player.get("money"));
+        this._powerLabel.setString(player.get("power"));
+        this._abilityLabel.setString(player.get("ability"));
+        this._rankLabel.setString(player.get("rank"));
     },
 
-    _onClickActivityLayer: function() {
+    _onClickActivityLayer: function () {
         cc.log("MainLayer _onClickActivityLayer");
         MainScene.getInstance().switchLayer(ActivityLayer);
     },
 
-    _onClickLotteryLayer: function() {
+    _onClickLotteryLayer: function () {
         cc.log("MainLayer _onClickLotteryLayer");
         MainScene.getInstance().switchLayer(LotteryLayer);
     },
 
-    _onClickPveLayer: function() {
+    _onClickPveLayer: function () {
         cc.log("MainLayer _onClickPveLayer");
         MainScene.getInstance().switchLayer(PveLayer);
     },
 
-    _onClickTournamentLayer: function() {
+    _onClickTournamentLayer: function () {
         cc.log("MainLayer _onClickTournamentLayer");
         MainScene.getInstance().switchLayer(TournamentLayer);
     },
 
-    _onClickStrengthenLayer: function() {
+    _onClickStrengthenLayer: function () {
         cc.log("MainLayer _onClickStrengthenLayer");
         MainScene.getInstance().switchLayer(StrengthenLayer);
     },
 
-    _onClickEvolutionLayer: function() {
+    _onClickEvolutionLayer: function () {
         cc.log("MainLayer _onClickEvolutionLayer");
         MainScene.getInstance().switchLayer(EvolutionLayer);
     },
 
-    _onClickCardLibraryLayer: function() {
+    _onClickCardLibraryLayer: function () {
         cc.log("MainLayer _onClickCardLibraryLayer");
         MainScene.getInstance().switchLayer(CardLibraryLayer);
     },
 
-    _onClickRankLayerItem: function() {
+    _onClickRankLayer: function () {
         cc.log("MainLayer _onClickRankLayerItem");
         MainScene.getInstance().switchLayer(RankLayer);
     },
 
-    _onClickFriendLayerItem: function() {
+    _onClickFriendLayer: function () {
         cc.log("MainLayer _onClickFriendLayerItem");
         MainScene.getInstance().switchLayer(FriendLayer);
     },
 
-    _onClickConfigLayerItem: function() {
+    _onClickConfigLayer: function () {
         cc.log("MainLayer _onClickConfigLayerItem");
         MainScene.getInstance().switchLayer(ConfigLayer);
+    },
+
+    _onClickPlayerDetails: function() {
+        cc.log("MainLayer _onClickPlayerDetails");
+
+        this.addChild(PlayerDetailsLayer.create(), 1);
+    },
+
+    onTouchesBegan: function (touches, event) {
+        cc.log("MainLayer onTouchesBegan");
+
+        var point = touches[0].getLocation();
+        if (cc.rectContainsPoint(this._selectRect, point)) {
+            this._isTouch = true;
+        }
+    },
+
+    onTouchesMoved: function (touches, event) {
+        cc.log("MainLayer onTouchesMoved");
+    },
+
+    onTouchesEnded: function (touches, event) {
+        cc.log("MainLayer onTouchesEnded");
+
+        if (this._isTouch) {
+            var point = touches[0].getLocation();
+
+            if (cc.rectContainsPoint(this._selectRect, point)) {
+                cc.log("PlayerHeaderLabel select");
+                this._isTouch = false;
+
+                this._onClickPlayerDetails();
+            }
+        }
+    },
+
+    onTouchesCancelled: function (touches, event) {
+        cc.log("MainLayer onTouchesCancelled");
+
+        this._isTouch = false;
     }
 })
 

@@ -16,11 +16,10 @@ exports.pve = (args, callback) ->
   sectionId = args.sectionId
   taskData = table.getTableItem tableName, tableId
 
-  console.log '==============================================================================================', tableName, tableId, taskData
   playerEntity = null
   async.waterfall([
     (cb) ->
-      playerManager.getPlayerInfo {pid: pid}, cb
+      playerManager.getPlayerInfo {pid: pid, sync: false}, cb
     
     (_playerEntity, cb) ->
       playerEntity = _playerEntity
@@ -44,16 +43,12 @@ exports.pvp = (args, callback) ->
   targetId = args.targetId
   playerId = args.playerId
   playerManager.getPlayers [playerId, targetId], (err, results) ->
-    console.log err, results
     if err
       return callback(err, null)
 
-    console.log 'players for fight: ', err, results
     p_data = results[playerId]
     attacker = new Player(p_data)
-    console.log 'before set line up'
     attacker.setLineUp p_data.get('lineUp')
-    console.log 'after set line up'
     t_data = results[targetId]
     defender = new Player(t_data)
     defender.setLineUp t_data.get('lineUp')

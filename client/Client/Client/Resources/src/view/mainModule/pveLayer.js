@@ -14,31 +14,50 @@
 
 var PveLayer = cc.Layer.extend({
     _nowLayer: null,
+    _taskLayerItem: null,
+    _passLayerItem: null,
+    _taskStrLabel1: null,
+    _taskStrLabel2: null,
+    _passStrLabel1: null,
+    _passStrLabel2: null,
 
     init: function () {
         cc.log("PveLayer init");
 
         if (!this._super()) return false;
 
-        var menuBg = cc.LayerColor.create(cc.c4b(100, 0, 100, 100), GAME_WIDTH, 60);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg4);
+        bgSprite.setAnchorPoint(cc.p(0, 0));
+        bgSprite.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 936));
+        this.addChild(bgSprite, 1);
 
-        var taskLayerItem = cc.MenuItemFont.create("任务", this._onClickTaskLayer, this);
-        taskLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
-        taskLayerItem.setPosition(cc.p(150, 30));
+        this._taskLayerItem = cc.MenuItemImage.create(main_scene_image.button12, main_scene_image.button12s, main_scene_image.button12d, this._onClickTaskLayer, this);
+        this._taskLayerItem.setPosition(cc.p(130, 973));
 
-        var passLayerItem = cc.MenuItemFont.create("关卡", this._onClickPassLayer, this);
-        passLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
-        passLayerItem.setPosition(cc.p(500, 30));
+        this._passLayerItem = cc.MenuItemImage.create(main_scene_image.button12, main_scene_image.button12s, main_scene_image.button12d, this._onClickPassLayer, this);
+        this._passLayerItem.setPosition(cc.p(270, 973));
 
-        var menu = cc.Menu.create(taskLayerItem, passLayerItem);
+        var menu = cc.Menu.create(this._taskLayerItem, this._passLayerItem);
         menu.setPosition(cc.p(0, 0));
-        menuBg.addChild(menu);
+        this.addChild(menu, 1);
 
-        menuBg.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 988));
-        this.addChild(menuBg);
+        this._taskStrLabel1 = cc.Sprite.create(main_scene_image.icon16);
+        this._taskStrLabel1.setPosition(cc.p(130, 973));
+        this.addChild(this._taskStrLabel1, 2);
 
-        this._nowLayer = TaskLayer.create();
-        this.addChild(this._nowLayer);
+        this._taskStrLabel2 = cc.Sprite.create(main_scene_image.icon17);
+        this._taskStrLabel2.setPosition(cc.p(130, 973));
+        this.addChild(this._taskStrLabel2, 2);
+
+        this._passStrLabel1 = cc.Sprite.create(main_scene_image.icon18);
+        this._passStrLabel1.setPosition(cc.p(270, 973));
+        this.addChild(this._passStrLabel1, 2);
+
+        this._passStrLabel2 = cc.Sprite.create(main_scene_image.icon19);
+        this._passStrLabel2.setPosition(cc.p(270, 973));
+        this.addChild(this._passStrLabel2, 2);
+
+        this._onClickTaskLayer();
 
         return true;
     },
@@ -46,12 +65,24 @@ var PveLayer = cc.Layer.extend({
     _onClickTaskLayer: function () {
         cc.log("PveLayer _onClickTaskLayer");
 
+        this._taskLayerItem.setEnabled(false);
+        this._passLayerItem.setEnabled(true);
+        this._taskStrLabel1.setVisible(true);
+        this._taskStrLabel2.setVisible(false);
+        this._passStrLabel1.setVisible(false);
+        this._passStrLabel2.setVisible(true);
         this.switchLayer(TaskLayer);
     },
 
     _onClickPassLayer: function () {
         cc.log("PveLayer _onClickPassLayer");
 
+        this._taskLayerItem.setEnabled(true);
+        this._passLayerItem.setEnabled(false);
+        this._taskStrLabel1.setVisible(false);
+        this._taskStrLabel2.setVisible(true);
+        this._passStrLabel1.setVisible(true);
+        this._passStrLabel2.setVisible(false);
         this.switchLayer(PassLayer);
     },
 

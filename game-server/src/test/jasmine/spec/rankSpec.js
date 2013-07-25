@@ -1,29 +1,16 @@
 describe("Ranking List", function() {
-  var pomelo = window.pomelo;
 
   describe("Set Up", function() {
     it("connect to server", function() {
       intiPomelo();
     });
 
-    // it("init db", function(){
-    //   doAjax('/createDb', {}, function(data){
-    //     expect(data).toEqual('done');
-    //   });
-    // });
-  });
-
-  describe("top10 players", function() {
-    it('should can be return top 10 players order by ranking', function() {
-      request('logic.rankHandler.top10', {}, function(data) {
-        //expect(data).toEqual('');
-        expect(_.map(data.msg, function(p) {
-          return p.rank.ranking;
-        }).sort(function(a, b) {
-          return a - b;
-        })).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+    it("init db and load test data", function(){
+      doAjax('/loaddata/csv', {}, function(data) {
+          expect(data).toEqual('done');
       });
     });
+
   });
 
   describe("ranking list", function() {
@@ -83,10 +70,5 @@ describe("Ranking List", function() {
     })
   });
 
-  describe("Tear Down", function(){
-    it('disconnect', function(){
-      pomelo.disconnect();
-    });
-  });
 
 });

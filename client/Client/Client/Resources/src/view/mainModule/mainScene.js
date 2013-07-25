@@ -43,7 +43,7 @@ var MainScene = cc.Scene.extend({
         }
     },
 
-    switch: function(layerObject) {
+    switch: function (layerObject) {
         if (this._nowLayer != null) this.removeChild(this._nowLayer);
         this._nowLayer = layerObject;
         this.addChild(this._nowLayer);

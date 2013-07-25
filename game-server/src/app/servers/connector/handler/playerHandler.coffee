@@ -10,12 +10,11 @@ Handler::createPlayer = (msg, session, next) ->
   areaId = msg.areaId
   uid = session.uid
   
-  dao.player.getPlayer {name: name}, (err, player) ->
+  dao.player.fetchOne where: {userId: uid, name: name}, (err, player) ->
     if player
       return next(null, {code: 501, msg: "player exists."})
       
-
-    dao.player.createPlayer {userId: uid, name: name, areaId: areaId}, (err, player) ->
+    dao.player.create data: {userId: uid, name: name, areaId: areaId}, (err, player) ->
       if err and not player
         next(null, {code: 500, error: err})
       else

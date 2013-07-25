@@ -7,66 +7,71 @@
  */
 
 
+/*
+ * pass layer
+ * */
+
+
 var PassLayer = cc.Layer.extend({
-    _pass: null,
+    _ladderList: [],
 
     init: function () {
         cc.log("PassLayer init");
 
         if (!this._super()) return false;
 
-        this._pass = gameData.pass;
+        var bgSprite = cc.Sprite.create(main_scene_image.bg5);
+        bgSprite.setAnchorPoint(cc.p(0, 0));
+        bgSprite.setPosition(GAME_BG_POINT);
+        this.addChild(bgSprite);
 
-        var wipeOutItem = cc.MenuItemFont.create("扫荡", this._onClickWipeOut, this);
-        wipeOutItem.setPosition(cc.p(250, 400));
-        var wipeOutMenu = cc.Menu.create(wipeOutItem);
-        this.addChild(wipeOutMenu);
-
-        var layer = cc.Layer.create();
-        layer.setAnchorPoint(cc.p(0, 0));
+        var scrollViewLayer = cc.Layer.create();
+        scrollViewLayer.setAnchorPoint(cc.p(0, 0));
 
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
-        layer.addChild(menu);
+        scrollViewLayer.addChild(menu);
 
-        var item = null;
-        var label = null;
-        var sprite = null;
+        for (var i = 1; i <= MAX_PASS_COUNT; ++i) {
+            var passLabel = PassLabel.create(i);
+            passLabel.setPosition(cc.p(20 + (i - 1) % 2 * 125, 20 + 185 * (i - 1)));
+            scrollViewLayer.addChild(passLabel);
 
-        for (var i = 0; i < 100; ++i) {
-            if (i > 0) {
-                sprite = cc.Sprite.create("res/test/p.png");
-                sprite.setScale(0.15);
-                sprite.setRotation(90);
-                sprite.setPosition(cc.p(130, 100 * i + 60));
-                layer.addChild(sprite);
+            if (i > 1) {
+                var ladderSprite = cc.Sprite.create(main_scene_image["ladder" + ((i) % 2 + 1)]);
+                ladderSprite.setAnchorPoint(cc.p(0, 0));
+                ladderSprite.setPosition(cc.p(80, 110 + 185 * (i - 2)));
+                scrollViewLayer.addChild(ladderSprite);
+                this._ladderList[i] = ladderSprite;
             }
 
-            label = cc.LabelTTF.create("第" + (i + 1) + "关：", "Marker Felt", 25);
-            label.setAnchorPoint(cc.p(0, 0));
-            label.setPosition(cc.p(0, 100 * (i + 1)));
-            layer.addChild(label);
-
-            var cb = (function (that, index) {
-                return function () {
-                    that._onClickDefiance(index);
-                }
-            }(this, i));
-
-            item = cc.MenuItemImage.create("res/green_edit.png", "res/green_edit.png", cb, this);
-            item.setPosition(cc.p(130, 100 * i + 110));
-
-            menu.addChild(item);
+            var numLabel = cc.LabelTTF.create("第" + i + "关", "Marker Felt", 25);
+            numLabel.setAnchorPoint(cc.p(0, 0));
+            numLabel.setPosition(cc.p((i - 1) % 2 * 240, 20 + 185 * (i - 1)));
+            scrollViewLayer.addChild(numLabel);
         }
 
-        var view = cc.ScrollView.create(cc.size(160, 730), layer);
-        view.setContentSize(cc.size(300, 10050));
-        view.setPosition(cc.p(280, 200));
-        view.setBounceable(false);
+        var view = cc.ScrollView.create(cc.size(310, 749), scrollViewLayer);
+        view.setContentSize(cc.size(300, 18590));
+        view.setPosition(cc.p(100, 200));
         view.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         view.updateInset();
-
         this.addChild(view);
+
+        var tipLabel = cc.Sprite.create(main_scene_image.bg6);
+        tipLabel.setAnchorPoint(cc.p(0, 0));
+        tipLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 868));
+        this.addChild(tipLabel);
+
+        var wipeOutItem = cc.MenuItemImage.create(main_scene_image.button9, main_scene_image.button9s, this._onClickWipeOut, this);
+        wipeOutItem.setPosition(cc.p(543, 34));
+        var wipeOutMenu = cc.Menu.create(wipeOutItem);
+        wipeOutMenu.setPosition(cc.p(0, 0));
+        tipLabel.addChild(wipeOutMenu);
+
+        var iconSprite = cc.Sprite.create(main_scene_image.icon15);
+        iconSprite.setPosition(cc.p(543, 34));
+        tipLabel.addChild(iconSprite);
 
         return true;
     },
@@ -74,22 +79,9 @@ var PassLayer = cc.Layer.extend({
     _onClickWipeOut: function () {
         cc.log("PassLayer _onClickWipeOut");
 
-        this._pass.wipeOut(function(data) {
+        gameData.pass.wipeOut(function (data) {
             cc.log(data);
         });
-    },
-
-    _onClickDefiance: function (index) {
-        cc.log("PassLayer _onClickDefiance");
-        cc.log(index);
-
-        this._pass.defiance(function(data, id) {
-            cc.log(data);
-
-            var scene = BattleScene.create(BattleLogNote.getInstance().getBattleByBattleLogId(id));
-
-            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, scene, true));
-        }, index);
     }
 })
 

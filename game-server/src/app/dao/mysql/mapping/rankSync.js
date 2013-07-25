@@ -1,6 +1,4 @@
-var sqlHelper = require("../sqlHelper");
-var dbClient = require("pomelo").app.get("dbClient");
-var logger = require("pomelo-logger").getLogger(__filename);
+var RankDao = require('../rankDao');
 
 var rankSync = {
 	updateRank: function (dbClient, param) {
@@ -13,22 +11,10 @@ var rankSync = {
 		    return cb("param error", null);
 		}
 
-		var stm = sqlHelper.updateSql("rank", {"id": param.id}, param.data);
-		console.log(stm);
-		return dbClient.update(stm.sql, stm.args, function (err, res) {
-		    if (err) {
-		        logger.error("[rankSync.updateRank faild] ", err.stack);
-
-		        return cb({
-		            code: err.code,
-		            msg: err.message
-		        }, null);
-		    } if (!!res && res.affectedRows > 0) {
-		        return cb(null, true);
-		    } else {
-		        return cb(null, false);
-		    }
-		});
+		return RankDao.update({
+			where: {id: param.id},
+			data: param.data
+		}, cb);
 	}
 };
 

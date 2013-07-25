@@ -38,7 +38,8 @@ describe("User Actions # ", function() {
           account: 'test_email@qq.com',
           password: '1'
         }, function(data) {
-          userid = data.uid
+          expect(typeof data.msg.userId).toEqual('number');
+          userid = data.msg.userId;
           expect(data.code).toEqual(200);
         });
       });
@@ -189,7 +190,8 @@ describe("User Actions # ", function() {
                   skillPoint: 0,
                   elixir: 0,
                   energy: 0,
-                  cards: []
+                  cards: [],
+                  rank: null
                 }
               }
             });

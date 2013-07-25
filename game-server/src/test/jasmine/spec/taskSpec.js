@@ -7,17 +7,11 @@ describe("Logic Server # ", function() {
       intiPomelo();
     });
 
-    // it("recreate database", function(){
-    //   doAjax('/createDb', {}, function(data){
-    //     expect(data).toEqual('done');
-    //   });
-    // });
-
-    // it('load test data form csv files', function() {
-    //   doAjax('/loadDataFromCsvFile', {}, function(data) {
-    //     expect(data).toEqual('done');
-    //   });
-    // });
+    it("init db and load test data", function(){
+      doAjax('/loaddata/csv', {}, function(data) {
+          expect(data).toEqual('done');
+      });
+    });
   });
 
   describe("Task Handler", function() {
@@ -143,7 +137,6 @@ describe("Logic Server # ", function() {
     describe("logic.trainHandler.passSkillAfresh", function() {
       it("card's pass skill should can be passSkillAfresh", function(){
         request('logic.trainHandler.passSkillAfresh', {playerId: pid, cardId: 101, psId: 6}, function(data) {
-          expect(data).toEqual('');
           expect(data.code).toEqual(200);
           expect(data.msg.value).toBeDefined();
           expect(_.isNumber(parseInt(dada.msg.value))).toEqual('number');

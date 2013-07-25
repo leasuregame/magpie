@@ -6,26 +6,35 @@ async = require 'async'
 should = require 'should'
 
 describe "mysql queues (transaction)", ->
-  it "should can be execute multiple sql in a transaction", ->
+  _insertId = 1
+
+  before (done) -> dbClient.query 'delete from battleLog', (err, res) -> done()
+
+  it "should can be execute multiple sql in a transaction", (done)->
     sqlList = [
       {
         sql: "INSERT into battleLog (id, createTime, own, enemy, battleLog) values (?,?,?,?,?)"
-        args: [1, 0, 1, 1, 'battlelog']
+        args: [_insertId, 0, 1, 1, 'battlelog']
       }
       {
         sql: 'update battleLog set enemy = ? where id = ?'
-        args: [2, 1]
+        args: [2, _insertId]
       }
       {
         sql: 'update battleLog set own = ? where id = ?'
-        args: [2, 1]
+        args: [2, _insertId]
       }
       {
         sql: 'update battleLog set battleLog = ? where id = ?'
-        args: ['fuck you', 1]
+        args: ['fuck you', _insertId]
       }
     ]
 
     dbClient.queues sqlList, (err, info) ->
-      console.log 'result: ', err, info
-      should.strictEqual(info, '')
+      should.strictEqual(err, null)
+      info.should.be.equal(true)
+
+      dbClient.query 'select * from battleLog where id = ?', [_insertId], (err, res) -> 
+        should.strictEqual(err, null)
+        res.should.be.eql [ { id: 1, createTime: 0, own: 2, enemy: 2, battleLog: 'fuck you' } ]
+        done()

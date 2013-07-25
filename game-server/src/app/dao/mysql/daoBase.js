@@ -95,7 +95,6 @@ var DaoBase = (function() {
     var _this = this;
     options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.SELECT, options);
-    console.log('fetch many: ', stm);
     return dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when fetch " + _this.table + "]", stm);
@@ -158,6 +157,27 @@ var DaoBase = (function() {
         return cb(null, true);
       } else {
         return cb(null, false);
+      }
+    });
+  };
+
+  DaoBase.query = function(sql, args, cb) {
+    var _this = this;
+    return dbClient.query(sql, args, function(err, res) {
+      if (err) {
+        logger.error("[SQL ERROR, when delete " + _this.table + "s]", err.stack);
+        return cb({
+          code: err.code,
+          msg: err.message
+        });
+      }
+
+      if (!!res && res.length > 0) {
+        return cb(null, res.map(function(data) {
+          return new _this.domain(data);
+        }));
+      } else {
+        return cb(null, []);
       }
     });
   };

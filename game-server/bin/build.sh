@@ -1,7 +1,7 @@
 
 #echo ${PWD}
 
-rm -r ./test ./app
+#rm -r ./test ./app
 
 echo 'compiler coffee files...'
 ./node_modules/.bin/coffee -cb -o ./ ./src

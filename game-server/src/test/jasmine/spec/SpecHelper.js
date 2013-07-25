@@ -17,9 +17,9 @@ var doAjax = function(url, params, cb) {
     });
   });
 
-  waits(function() {
+  waitsFor(function() {
     return ok;
-  });
+  }, "The ajax request should be completed", 60000);
 };
 
 var request = function(route, msg, cb) {

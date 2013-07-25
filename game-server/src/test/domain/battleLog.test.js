@@ -41,7 +41,7 @@ describe("BattleLog Object", function () {
                         JSON.stringify(data.battleLog)
                     ],
                     function (err, res) {
-                        dao.battleLog.getBattleLogById(data.id, function (err, res) {
+                        dao.battleLog.fetchOne({where: {id: data.id}}, function (err, res) {
                             battleLog = res;
                             return done();
                         });

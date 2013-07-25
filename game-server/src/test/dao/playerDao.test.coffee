@@ -11,6 +11,8 @@ describe "Player Dao Access Object", ->
   areaId = 10
   name = 'test_player_name'
 
+  before (done) -> dbClient.delete 'delete from player', -> done()
+
   describe "#createPlayer", ->
 
     describe "When player not exists", ->
@@ -40,9 +42,9 @@ describe "Player Dao Access Object", ->
           
           dao.player.create data: {userId: uid}, (err, res) ->
             should.strictEqual null, res
-            err.should.be.equal(
+            err.should.be.eql(
               code: 'ER_NO_DEFAULT_FOR_FIELD',
-              msg: 'ER_NO_DEFAULT_FOR_FIELD: Field \'userId\' doesn\'t have a default value')
+              msg: 'ER_NO_DEFAULT_FOR_FIELD: Field \'areaId\' doesn\'t have a default value')
             done()
 
 
@@ -104,14 +106,14 @@ describe "Player Dao Access Object", ->
         pid_not_exists = 100000
         dao.player.fetchOne where: {id: pid_not_exists}, (err, res) ->
           should.strictEqual null, res
-          err.should.eql {code: null, msg: 'Player not exists with params: {\"id\":100000}'}
+          err.should.eql {code: 404, msg: 'can not find player'}
           done()
 
       it "get user with name should return error", (done) ->
         name_not_exists = 'not exists name'
         dao.player.fetchOne where: {name: name_not_exists}, (err, res) ->
           should.strictEqual null, res
-          err.should.eql {code: null, msg: 'Player not exists with params: {\"name\":\"not exists name\"}'}
+          err.should.eql {code: 404, msg: 'can not find player'}
           done()
 
     describe "get all player info", ->
@@ -150,12 +152,112 @@ describe "Player Dao Access Object", ->
       it "should can be got all the player infomation", (done) ->
         dao.player.getPlayerInfo where: id: _pid, (err, player) ->
           should.strictEqual null, err
-          player.toJson().should.be.equal({})
-          player.should.be.a('object')
-          player.userId.should.be.equal(uid)
-          player.name.should.be.equal(name+'__')
-          Object.keys(player.cards).length.should.be.equal(5)
           
+          expect = {
+                id: 1001,
+                createTime: now,
+                userId: 1000,
+                areaId: 10,
+                name: 'test_player_name__',
+                power: 0,
+                lv: 0,
+                exp: 0,
+                money: 0,
+                gold: 0,
+                lineUp: { '0': NaN },
+                ability: 0,
+                task: '',
+                pass: 0,
+                passMark: null,
+                dailyGift: '',
+                skillPoint: 0,
+                energy: 0,
+                fregments: undefined,
+                elixir: 0,
+                cards: [{
+                      id: 1,
+                      playerId: 1001,
+                      tableId: 1,
+                      star: 1,
+                      lv: 1,
+                      exp: 0,
+                      skillLv: 1,
+                      hpAddition: 0,
+                      atkAddition: 0,
+                      passiveSkills: [{
+                            id: 1,
+                            cardId: 1,
+                            name: 'hp_improve',
+                            value: 10
+                      }]
+                }, {
+                      id: 2,
+                      playerId: 1001,
+                      tableId: 2,
+                      star: 1,
+                      lv: 1,
+                      exp: 0,
+                      skillLv: 1,
+                      hpAddition: 0,
+                      atkAddition: 0,
+                      passiveSkills: [{
+                            id: 2,
+                            cardId: 2,
+                            name: 'hp_improve',
+                            value: 10
+                      }]
+                }, {
+                      id: 3,
+                      playerId: 1001,
+                      tableId: 3,
+                      star: 1,
+                      lv: 1,
+                      exp: 0,
+                      skillLv: 1,
+                      hpAddition: 0,
+                      atkAddition: 0,
+                      passiveSkills: [{
+                            id: 3,
+                            cardId: 3,
+                            name: 'hp_improve',
+                            value: 10
+                      }]
+                }, {
+                      id: 4,
+                      playerId: 1001,
+                      tableId: 4,
+                      star: 1,
+                      lv: 1,
+                      exp: 0,
+                      skillLv: 1,
+                      hpAddition: 0,
+                      atkAddition: 0,
+                      passiveSkills: [{
+                            id: 4,
+                            cardId: 4,
+                            name: 'hp_improve',
+                            value: 10
+                      }]
+                }, {
+                      id: 5,
+                      playerId: 1001,
+                      tableId: 5,
+                      star: 1,
+                      lv: 1,
+                      exp: 0,
+                      skillLv: 1,
+                      hpAddition: 0,
+                      atkAddition: 0,
+                      passiveSkills: [{
+                            id: 5,
+                            cardId: 5,
+                            name: 'hp_improve',
+                            value: 10
+                      }]
+                }],
+                rank: null
+          }
+          _.isEqual(player.toJson(), expect).should.be.equal(true)
           done()
 
   describe "#deletePlayer", ->

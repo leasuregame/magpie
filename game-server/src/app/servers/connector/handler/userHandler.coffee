@@ -22,7 +22,7 @@ Handler::register = (msg, session, next) ->
         else
           next(null, {code: 500, msg: err.msg})
       else
-        next(null, {code: 200, uid: user.id})
+        next(null, {code: 200, msg: {userId: user.id}})
 
 Handler::login = (msg, session, next) ->
   account = msg.account

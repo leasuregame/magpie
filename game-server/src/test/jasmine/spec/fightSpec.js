@@ -1,6 +1,4 @@
 describe("Battle Server # ", function() {
-  var pomelo = window.pomelo;
-  var userid;
 
   describe("Set Up", function() {
     it("connect to server", function() {
@@ -8,7 +6,7 @@ describe("Battle Server # ", function() {
     });
 
     it('load test data form csv files', function() {
-      doAjax('/loadDataFromCsvFile', {}, function(data) {
+      doAjax('/loaddata/csv', {}, function(data) {
         expect(data).toEqual('done');
       });
     });
@@ -22,7 +20,7 @@ describe("Battle Server # ", function() {
           expect(data.code).toEqual(200);
           bl = JSON.parse(data.msg);
 
-          //expect(bl).toEqual('')
+          expect(bl).toEqual('')
           console.log(bl);
           expect(bl.enemy).toEqual(jasmine.any(Object));
           expect(bl.winner).toEqual('enemy');
@@ -40,11 +38,5 @@ describe("Battle Server # ", function() {
     });
 
   });
-
-  // describe("Tear Down", function(){
-  //   it('disconnect', function(){
-  //     pomelo.disconnect();
-  //   });
-  // })
 
 });

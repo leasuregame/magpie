@@ -5,11 +5,11 @@ describe("Ranking List", function() {
       intiPomelo();
     });
 
-    // it("init db and load test data", function(){
-    //   doAjax('/loadDataFromCsvFile', {}, function(data) {
-    //       expect(data).toEqual('done');
-    //   });
-    // });
+    it("init db and load test data", function(){
+      doAjax('/loaddata/all', {}, function(data) {
+          expect(data).toEqual('done');
+      });
+    });
 
   });
 

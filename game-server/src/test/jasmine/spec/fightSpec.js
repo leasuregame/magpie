@@ -6,7 +6,7 @@ describe("Battle Server # ", function() {
     });
 
     it('load test data form csv files', function() {
-      doAjax('/loadDataFromCsvFile', {}, function(data) {
+      doAjax('/loaddata/csv', {}, function(data) {
         expect(data).toEqual('done');
       });
     });

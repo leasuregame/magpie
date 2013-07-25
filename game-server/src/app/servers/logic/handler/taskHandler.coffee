@@ -79,7 +79,7 @@ Handler::wipeOut = (msg, session, next) ->
       return next(null, {code: 500, msg: err.msg})
 
     player.save()
-    next(null, {code: 200, msg: rewards})
+    next(null, {code: 200, msg: {rewards: rewards, pass: player.pass, passMark: player.passMark}})
 
 ###
 精英关卡，闯关
@@ -127,7 +127,7 @@ Handler::passBarrier = (msg, session, next) ->
     if err 
       return next(err, {code: 500, msg: err.msg or ''})
 
-    next(null, {code: 200, msg: bl})
+    next(null, {code: 200, msg: {battleLog: bl, pass: player.pass, passMark: player.passMark}})
 
 obtainBattleRewards = (player, taskId, battleLog) ->
   taskData = table.getTableItem 'task_config', taskId

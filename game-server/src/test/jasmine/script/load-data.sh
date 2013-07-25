@@ -2,4 +2,4 @@ echo ${PWD}
 
 sh ./bin/initMysql.sh
 
-node ./bin/loaddata.js
+node ./bin/loaddata.js $1

@@ -6,30 +6,23 @@ describe("Connecter Server # ", function() {
     it("connect to server", function() {
       intiPomelo();
     });
+
+    it("init database", function() {
+      doAjax('/createDb', {}, function(data) {
+        expect(data).toEqual('done');
+      });
+    })
   });
 
   describe('Player Handler', function(){
     beforeEach(function(){
-      var ok = false;
-      runs(function(){
-        $.get('/adduser', {account: 'test_email_2@qq.com', password: '1'}, function(data){
-          userid = data.uid;
-          ok = true;
-        });
+      doAjax('/adduser', {account: 'test_email_2@qq.com', password: '1'}, function(data) {
+        userid = data.uid;
       });
-      
-      waitsFor(function(){return ok;});
     });
 
     afterEach(function(){
-      var ok = false;
-      runs(function(){
-        $.get('/removeuser', {uid: userid}, function(data){
-          ok = true;
-        });
-      });
-
-      waitsFor(function(){return ok;});
+      doAjax('/removeuser', {uid: userid}, function(data) {});
     });
 
     describe("when user login", function(){
@@ -86,7 +79,8 @@ describe("Connecter Server # ", function() {
                   dailyGift: [],
                   skillPoint: 0,
                   energy: 0,
-                  cards: []
+                  cards: [], 
+                  rank: null
               }
             }
           });

@@ -8,7 +8,7 @@ describe("Logic Server # ", function() {
     });
 
     it("init db and load test data", function(){
-      doAjax('/loadDataFromCsvFile', {}, function(data) {
+      doAjax('/loaddata/csv', {}, function(data) {
           expect(data).toEqual('done');
       });
     });

@@ -15,7 +15,7 @@ var client = require('webdriverjs').remote({
  
 client.init()
 .url('http://127.0.0.1:3000/test')
-.waitFor(".runner .description", 60000)
+.waitFor(".runner .description", 60000 * 10)
 .execute(
     "var results = []; " + 
     "$('.jasmine_reporter .spec').each( function( i, el ) { " + 
@@ -23,7 +23,11 @@ client.init()
         "$( el ).parents( '.suite' ).each( function( j, su ) {" + 
             "suites = $( '> .description', su ).text() + ' > ' + suites;" + 
         "});" + 
-        "results[i] = { 'name': suites, 'result': $( el ).hasClass( 'passed' ), 'error': $( '> .messages > .resultMessage ', el ).text() };" +
+        "results[i] = { " + 
+            "'name': suites, " +
+            "'result': $( el ).hasClass( 'passed' ), "+
+            "'errorMessage': $( '> .messages > .resultMessage ', el ).text(), " +
+            "'stackTrace': $('> .messages > .stackTrace ', el).text() " + "};" +
     "});" + 
     "return JSON.stringify(results);", 
 [], function(err, res) {
@@ -45,7 +49,9 @@ var ConvertJasmineResults = function(results) {
         var testcase = subElement(suite, 'testcase');
         testcase.set("name", res.name);
         if (!res.result) {
-            testcase.set('error', res.error);
+            var failure = subElement(testcase, 'failure');
+            failure.set('message', res.errorMessage)
+            failure.set('text', res.stackTrace);
         }
     }
     var etree = new ElementTree(suite);

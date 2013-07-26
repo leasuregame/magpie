@@ -51,11 +51,7 @@ describe("Logic Server # ", function() {
           expect(data.msg).toBeDefined();
           //expect(data.msg).toEqual('');
           expect(_.keys(data.msg).sort()).toEqual([
-            'enemy',
-            'own',
-            'winner',
-            'steps',
-            'rewards'
+            'battleLog'
             ].sort());
           expect( )
           console.log(data);
@@ -70,9 +66,8 @@ describe("Logic Server # ", function() {
         request('logic.taskHandler.wipeOut', {playerId: pid, type: 'task'}, function(data){
           expect(data.code).toEqual(200);
           expect(_.keys(data.msg).sort()).toEqual([
-            'exp_obtain',
-            'money_obtain',
-            'gold_obtain'
+            'pass',
+            'rewards'
             ].sort());
           console.log('任务扫荡', data);
         });
@@ -86,10 +81,8 @@ describe("Logic Server # ", function() {
         request('logic.taskHandler.wipeOut', {playerId: pid, type: 'pass'}, function(data){
           expect(data.code).toEqual(200);
           expect(_.keys(data.msg).sort()).toEqual([
-            'exp_obtain',
-            'money_obtain',
-            'gold_obtain',
-            'skill_point'
+            'pass',
+            'rewards'
             ].sort());
           console.log('关卡扫荡', data);
         });

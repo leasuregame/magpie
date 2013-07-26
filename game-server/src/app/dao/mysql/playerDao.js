@@ -24,6 +24,14 @@ var async = require('async');
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
 
+var defaultMark = function() {
+    var i, result = [];
+    for (i = 0; i < 100; i++) {
+        result.push(0);
+    }
+    return result;
+};
+
 var PlayerDao = (function(_super) {
     utility.extends(PlayerDao, _super);
 
@@ -43,8 +51,10 @@ var PlayerDao = (function(_super) {
             id: 1,
             progress: 0
         },
-        pass: 0,
-        passMark: 0,
+        pass: {
+            layer: 0,
+            mark: defaultMark()
+        },
         dailyGift: [],
         fragments: 0,
         energy: 0,

@@ -38,12 +38,12 @@ class Manager
     funs[type](player, cb)
 
   @wipeOutPass: (player, cb) ->
-    pass = player.pass
+    layer = player.pass.layer
 
     rewards = {exp_obtain: 0, money_obtain: 0, skill_point: 0, gold_obtain: 0}
     isWipeOut = false
-    for id in _.range(1, pass)
-      if not player.getPassMarkByIndex(id)
+    for id in _.range(1, layer)
+      if not player.hasPassMark(id)
         data = table.getTableItem('pass_reward', id)
         rewards.exp_obtain += parseInt(data.exp)
         rewards.money_obtain += parseInt(data.money)
@@ -54,7 +54,7 @@ class Manager
           rewards.gold_obtain += 10
 
         # 标记为已扫荡
-        player.setPsssMarkByIndex(id)
+        player.setPassMark(id)
         isWipeOut = true
 
     player.increase('exp',  rewards.exp_obtain)

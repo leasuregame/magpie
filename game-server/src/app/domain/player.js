@@ -242,7 +242,7 @@ var Player = (function(_super) {
             ability: this.ability,
             task: this.task,
             pass: this.pass,
-            passMark: this.passMark,
+            passMark: parseInt(this.passMark.toString()),
             dailyGift: this.dailyGift,
             skillPoint: this.skillPoint,
             energy: this.energy,

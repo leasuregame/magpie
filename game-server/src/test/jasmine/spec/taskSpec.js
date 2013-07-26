@@ -74,7 +74,7 @@ describe("Logic Server # ", function() {
             'money_obtain',
             'gold_obtain'
             ].sort());
-          console.log(data);
+          console.log('任务扫荡', data);
         });
       });
 
@@ -91,7 +91,7 @@ describe("Logic Server # ", function() {
             'gold_obtain',
             'skill_point'
             ].sort());
-          console.log(data);
+          console.log('关卡扫荡', data);
         });
       });
 

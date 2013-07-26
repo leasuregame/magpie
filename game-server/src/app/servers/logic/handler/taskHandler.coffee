@@ -79,16 +79,15 @@ Handler::wipeOut = (msg, session, next) ->
       return next(null, {code: 500, msg: err.msg})
 
     player.save()
-    next(null, {code: 200, msg: {rewards: rewards, pass: player.pass, passMark: player.passMark}})
+    next(null, {code: 200, msg: {rewards: rewards, pass: player.pass}})
 
 ###
 精英关卡，闯关
 ###
 Handler::passBarrier = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
-  passId = msg.passId or 1
+  layer = msg.layer
   player = null
-  pass = 0
 
   async.waterfall [
     (cb) ->
@@ -96,18 +95,18 @@ Handler::passBarrier = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
-      if player.pass < passId
+      layer = layer or player.pass.layer + 1
+      if (player.pass.layer + 1) < layer or layer > 100
         return cb({msg: '不能闯此关'})
 
       cb(null)
 
     (cb) =>
-      pass = msg.pass or player.pass
-      @app.rpc.battle.fightRemote.pve( session, {pid: player.id, tableId: pass, table: 'pass_config'}, cb )
+      @app.rpc.battle.fightRemote.pve( session, {pid: player.id, tableId: layer, table: 'pass_config'}, cb )
 
     (bl, cb) ->
       if bl.winner is 'own'
-        rdata = table.getTableItem 'pass_reward', pass
+        rdata = table.getTableItem 'pass_reward', layer
         rewards = 
           exp: rdata.exp
           money: rdata.coins
@@ -118,7 +117,7 @@ Handler::passBarrier = (msg, session, next) ->
         player.increase('exp', rewards.exp)
         player.increase('money', rewards.money)
         player.increase('skillPoint', rewards.skillPoint)
-        player.increase('pass')
+        player.incPass()
         player.save()
       
       cb(null, bl)
@@ -127,7 +126,7 @@ Handler::passBarrier = (msg, session, next) ->
     if err 
       return next(err, {code: 500, msg: err.msg or ''})
 
-    next(null, {code: 200, msg: {battleLog: bl, pass: player.pass, passMark: player.passMark}})
+    next(null, {code: 200, msg: {battleLog: bl, pass: player.passs}})
 
 obtainBattleRewards = (player, taskId, battleLog) ->
   taskData = table.getTableItem 'task_config', taskId

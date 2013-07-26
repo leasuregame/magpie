@@ -38,7 +38,7 @@
         COCOS2D_DEBUG:2, //0 to turn debug off, 1 for basic debug, and 2 for full debug
         box2d:false,
         chipmunk:false,
-        showFPS:false,
+        showFPS:true,
         frameRate:60,
         loadExtension:true,
         tag:'gameCanvas', //the dom element to run cocos2d on
@@ -107,6 +107,7 @@
             'src/view/mainModule/mainScene.js',
             'src/view/mainModule/messageLabel.js',
             'src/view/mainModule/messageLayer.js',
+            'src/view/mainModule/passLabel.js',
             'src/view/mainModule/passLayer.js',
             'src/view/mainModule/playerDetailsLayer.js',
             'src/view/mainModule/playerHeaderLabel.js',

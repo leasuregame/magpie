@@ -22,33 +22,7 @@ var LazyMenu = cc.Menu.extend({
     _isScroll: false,
 
     registerWithTouchDispatcher: function () {
-        cc.log("registerWithTouchDispatcher");
-
         cc.Director.getInstance().getTouchDispatcher().addTargetedDelegate(this, cc.LAZY_MENU_HANDLER_PRIORITY, true);
-    },
-
-    init: function () {
-        cc.log("init");
-
-        this._super();
-    },
-
-    /**
-     * initializes a cc.Menu with it's items
-     * @param {Array} args
-     * @return {Boolean}
-     */
-    initWithItems: function (args) {
-        var pArray = [];
-        if (args) {
-            for (var i = 0; i < args.length; i++) {
-                if (args[i]) {
-                    pArray.push(args[i]);
-                }
-            }
-        }
-
-        return this.initWithArray(pArray);
     },
 
     /**
@@ -82,29 +56,6 @@ var LazyMenu = cc.Menu.extend({
         cc.log("LazyMenu onTouchMoved");
         this._isScroll = true;
         this._super(touch, e);
-    },
-
-    /**
-     * @param {cc.Touch} touch
-     * @return {Boolean}
-     */
-    ccTouchBegan: function (touch, e) {
-        cc.log("LazyMenu ccTouchBegan");
-    },
-
-    /**
-     * when a touch ended
-     */
-    ccTouchEnded: function (touch, e) {
-        cc.log("LazyMenu ccTouchEnded");
-    },
-
-    /**
-     * touch moved
-     * @param {cc.Touch} touch
-     */
-    ccTouchMoved: function (touch, e) {
-        cc.log("LazyMenu ccTouchMoved");
     }
 })
 

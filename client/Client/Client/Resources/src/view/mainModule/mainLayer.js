@@ -31,7 +31,8 @@ var MainLayer = cc.Layer.extend({
         this.setTouchEnabled(true);
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg1);
-        bgSprite.setPosition(GAME_MIDPOINT);
+        bgSprite.setAnchorPoint(cc.p(0, 0));
+        bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite, -1);
 
         this._nameLabel = cc.LabelTTF.create("0", 'Times New Roman', 30);

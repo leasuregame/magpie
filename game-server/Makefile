@@ -8,7 +8,7 @@ convert-data:
 
 clean: 
 	rm -r ./app
-	#rm -r ./test
+	rm -r ./test
 
 test: 
 	./node_modules/.bin/mocha \
@@ -59,12 +59,6 @@ runserver: build
 restartserver: build
 	./node_modules/.bin/pomelo stop
 	./node_modules/.bin/pomelo start production --daemon
-
-starttt:
-	./bin/ttservctl start
-
-stoptt:
-	./bin/ttservctl stop
 
 createtables:
 	sh ./bin/initMysql.sh

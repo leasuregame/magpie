@@ -30,6 +30,9 @@
         "ejs": "*",
         "csv": "*",
         "async": "*",
-        "xunit-file": "*"
+        "xunit-file": "*",
+        "webdriverjs": "*",
+        "forever": "*",
+        "elementtree": "*"
     }
 }

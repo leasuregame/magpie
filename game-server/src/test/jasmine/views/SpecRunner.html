@@ -33,9 +33,9 @@
 
       var htmlReporter = new jasmine.HtmlReporter();
 
-      jasmineEnv.addReporter(htmlReporter);
+      //jasmineEnv.addReporter(htmlReporter);
       //jasmineEnv.addReporter(new jasmine.ConsoleReporter());
-      //jasmineEnv.addReporter(new jasmine.TrivialReporter());
+      jasmineEnv.addReporter(new jasmine.TrivialReporter());
       //jasmineEnv.addReporter(new jasmine.JUnitXmlReporter());
       jasmineEnv.specFilter = function(spec) {
         return htmlReporter.specFilter(spec);

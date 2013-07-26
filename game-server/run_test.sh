@@ -1,6 +1,6 @@
 PATH=/usr/local/bin:$PATH
 
-sudo npm install
+npm install
 
 make build
 

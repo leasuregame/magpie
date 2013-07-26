@@ -51,7 +51,7 @@ var ConvertJasmineResults = function(results) {
         if (!res.result) {
             var failure = subElement(testcase, 'failure');
             failure.set('message', res.errorMessage)
-            failure.set('text', res.stackTrace);
+            failure.text = res.stackTrace;
         }
     }
     var etree = new ElementTree(suite);

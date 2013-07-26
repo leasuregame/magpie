@@ -13,8 +13,8 @@ app.engine('html', require('ejs').renderFile);
 
 app.get('/test', function(req, res){
   var files = fs.readdirSync(__dirname + '/spec');
-  //files = files.filter(function(f) { return /Spec.js$/.test(f); });
-  files = ['taskSpec.js'];
+  files = files.filter(function(f) { return /Spec.js$/.test(f); });
+  //files = ['taskSpec.js'];
   res.render('SpecRunner.html', {files: files});
 });
 

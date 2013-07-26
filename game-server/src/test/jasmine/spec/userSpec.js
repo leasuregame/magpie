@@ -185,7 +185,6 @@ describe("User Actions # ", function() {
                   ability: 0,
                   task: '',
                   pass: 0,
-                  passMark: null,
                   dailyGift: '',
                   skillPoint: 0,
                   elixir: 0,

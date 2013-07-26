@@ -115,7 +115,9 @@ var main_scene_image = {
     icon14: main_scene_path + "icon14.png",
     icon15: main_scene_path + "icon15.png",
     icon16: main_scene_path + "icon16.png",
-    icon17: main_scene_path + "icon17.png"
+    icon17: main_scene_path + "icon17.png",
+    icon18: main_scene_path + "icon18.png",
+    icon19: main_scene_path + "icon19.png"
 }
 
 var main_scene_res = [

@@ -27,6 +27,7 @@ describe("Connecter Server # ", function() {
 
     describe("when user login", function(){
       var pid;
+      var myName = 'wuzhanghai';
 
       beforeEach(function(){
         request('connector.userHandler.login', {account: 'test_email_2@qq.com', password: '1'}, function(data){
@@ -37,20 +38,14 @@ describe("Connecter Server # ", function() {
             console.log('login faild.');
           }
         });
-
-        pomelo.on('onChart', function(data){
-          console.log('message: on chart: ', data);
-        })
       });
 
       afterEach(function(){
-        $.get('/removePlayer', {pid: pid}, function(data){
-
-          })
+        doAjax('/removePlayer', {playerId: pid}, function(data){});
       });
 
       it("should can be create player", function(){
-        request('connector.playerHandler.createPlayer', {name: 'wuzhanghai', areaId: 1}, function(data){
+        request('connector.playerHandler.createPlayer', {name: myName, areaId: 1}, function(data){
           console.log(data);
           var player = data.msg.player;
           pid = data.msg.player.id;
@@ -86,6 +81,30 @@ describe("Connecter Server # ", function() {
           });
         });
       });
+      
+      describ("when player exists", function(){
+        beforeEach(function(){
+          doAjax('/addPlayer', {userId: userid, areaId: 1, name: myName}, function(data){
+            pid = data.playerId;
+          });
+        });
+
+        afterEach(function(){
+          doAjax('/removePlayer', {playerId: pid}, function(data){});
+        })
+        it("should can not create duplicate player", function() {
+          request('connector.playerHandler.createPlayer', {name: myName, areaId: 1}, function(data){
+            expect(data).toEqual({
+              code: 501, 
+              msg: "player exists."
+            })
+          });
+        });
+
+      });
+
+      
+
     });
 
   });

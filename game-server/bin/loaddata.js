@@ -7,7 +7,7 @@ var _ = require('underscore');
 
 var FIXTURES_DIR = path.join(__dirname, '..', 'config', 'fixtures/')
 var DELIMITER = ';';
-var OBJECT_FIELDS = ['task'];
+var OBJECT_FIELDS = ['task', 'pass'];
 
 var connection = mysql.createConnection({
   host: config.host,

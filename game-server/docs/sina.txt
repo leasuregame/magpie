@@ -31,4 +31,5 @@ start game server:
 
 cd /dev/shm/magpie/game-server
 
-./node_modules/.bin/pomelo stop && ./node_modules/.bin/pomelo start production --daemon
+
+make build && ./node_modules/.bin/pomelo stop && ./node_modules/.bin/pomelo start production --daemon

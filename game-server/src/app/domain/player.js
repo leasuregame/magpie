@@ -17,6 +17,7 @@ var Entity = require('./entity');
 var playerConfig = require('../../config/data/player');
 var table = require('../manager/table');
 var _ = require("underscore");
+var logger = require('pomelo-logger').getLogger(__filename);
 
 var startPowerResumeTimer = function(player) {
     var resumePoint = playerConfig.POWER_RESUME.point;
@@ -70,7 +71,6 @@ var Player = (function(_super) {
         'ability',
         'task',
         'pass',
-        'passMark',
         'dailyGift',
         'fragments',
         'energy',
@@ -183,47 +183,29 @@ var Player = (function(_super) {
         return cards;
     };
 
-    Player.prototype.getPassMarkByIndex = function(index) {
-        if (index < 1) {
-            console.log("关卡标记索引不存在");
+    Player.prototype.setPassMark = function(layer) {
+        if (layer < 1 || layer > 100) {
+            logger.warn('无效的关卡层数 ', layer);
             return;
         }
+        var pass = _.clone(this.pass);
+        pass.mark[layer - 1] = 1;
+        this.set('pass', pass);
+    };
 
-        var mark = (this.passMark >> (index - 1)) & 1;
-
+    Player.prototype.hasPassMark = function(layer) {
+        if (layer < 1 || layer > 100) {
+            logger.warn('无效的关卡层数 ', layer);
+            return;
+        }
+        var mark = this.pass.mark[layer -1];
         return (mark == 1);
     };
 
-    Player.prototype.resetPassMarkByAll = function() {
-        this.set("passMark", 0);
-    };
-
-    Player.prototype.setPassMarkByAll = function() {
-        var mask = 1;
-        var _passMark = this.passMark;
-
-        for (var i = 0; i < this.pass; ++i) {
-            _passMark |= mask;
-            mask <<= 1;
-        }
-
-        this.set("passMark", _passMark);
-    };
-
-    /*
-     * 传入精英关卡序号，将其标记为已打
-     * @param {number} index 关卡序号
-     * */
-    Player.prototype.setPsssMarkByIndex = function(index) {
-        if (index < 1) {
-            console.log("关卡标记索引不存在");
-            return;
-        }
-
-        var _passMark = this.passMark;
-        _passMark |= (1 << (index - 1));
-
-        this.set("passMark", _passMark);
+    Player.prototype.incPass = function() {
+        var pass = _.clone(this.pass);
+        pass.layer++;
+        this.set('pass', pass);
     };
 
     Player.prototype.toJson = function() {
@@ -241,8 +223,7 @@ var Player = (function(_super) {
             lineUp: lineUpToObj(this.lineUp),
             ability: this.ability,
             task: this.task,
-            pass: this.pass,
-            passMark: this.passMark,
+            pass: checkPass(this.pass),
             dailyGift: this.dailyGift,
             skillPoint: this.skillPoint,
             energy: this.energy,
@@ -257,6 +238,24 @@ var Player = (function(_super) {
 
     return Player;
 })(Entity);
+
+var checkPass = function(pass) {
+    if (typeof pass !== 'object') {
+        pass = {
+            layer: 0,
+            mark: defaultMark()
+        };
+    }
+    return pass;
+};
+
+var defaultMark = function() {
+    var i, result = [];
+    for (i = 0; i < 100; i++) {
+        result.push(0);
+    }
+    return result;
+};
 
 var lineUpToObj = function(lineUp) {
     var _results = {};

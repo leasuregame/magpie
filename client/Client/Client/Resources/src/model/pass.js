@@ -12,6 +12,9 @@
  * */
 
 
+var MAX_PASS_COUNT = 100;
+var PASS_BOSS_SPACE = 5;
+
 var Pass = Entity.extend({
     _passTop: 0,
     _passMark: 0,
@@ -27,6 +30,23 @@ var Pass = Entity.extend({
 
         this._passTop = data.pass;
         this._passMark = data.passMark || 0;
+    },
+
+    getPassMarkByIndex: function(index) {
+        cc.log("Pass getPassMarkByIndex");
+
+        return (((this._passMark >> (index - 1)) & 1) == 0);
+    },
+
+    getPassMarkList: function() {
+        cc.log("Pass getPassMarkList");
+
+        var passMarkList = [];
+        for(var i = 1; i <= MAX_PASS_COUNT; ++i) {
+            passMarkList[i] = (((this._passMark >> (i - 1)) & 1) == 0);
+        }
+
+        return passMarkList;
     },
 
     defiance: function (cb, index) {

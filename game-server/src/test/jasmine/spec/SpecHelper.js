@@ -60,13 +60,6 @@ var intiPomelo = function() {
     }, function() {
       console.log('connect success!');
       inited = true;
-
-      pomelo.on('onMessage', function(data) {
-        console.log('***** on message: ', data);
-      });
-      pomelo.on('onLogin', function(data) {
-        console.log('***** on login: ', data);
-      });
     });
   });
   waitsFor(function() {

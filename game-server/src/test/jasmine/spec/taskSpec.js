@@ -172,4 +172,11 @@ describe("Logic Server # ", function() {
     });
 
   });
+
+  describe("tear down", function() {
+    it('disconnect', function(){
+      pomelo.disconnect();
+    });
+  });
+  
 });

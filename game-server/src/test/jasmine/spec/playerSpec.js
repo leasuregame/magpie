@@ -91,6 +91,9 @@ describe("Connecter Server # ", function() {
     it("remove player", function(){
       doAjax('/removePlayer', {playerId: pid}, function(data){});
     });
-  });    
 
+    it('disconnect', function(){
+      pomelo.disconnect();
+    });
+  });    
 });

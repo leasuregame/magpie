@@ -6,7 +6,7 @@ var client = require('webdriverjs').remote({
     desiredCapabilities: {
         // You may choose other browsers
         // http://code.google.com/p/selenium/wiki/DesiredCapabilities
-        browserName: 'safari'
+        browserName: 'firefox', //'safari'
     },
     // webdriverjs has a lot of output which is generally useless
     // However, if anything goes wrong, remove this to see more details
@@ -44,6 +44,9 @@ var ConvertJasmineResults = function(results) {
     var suite = element("testsuite");
     suite.set("name", "Jasmine Tests > Socket Api Tests");
 
+    var tests = results.length;
+    var failures = 0;
+    var errors = 0;
     for (var i = 0; i < results.length; i++) {
         res = results[i];
         var testcase = subElement(suite, 'testcase');
@@ -52,8 +55,15 @@ var ConvertJasmineResults = function(results) {
             var failure = subElement(testcase, 'failure');
             failure.set('message', res.errorMessage)
             failure.text = res.stackTrace;
+
+            failures++;
+            errors++;
         }
     }
+    suite.set("tests", tests);
+    suite.set("failures", failures);
+    suite.set("errors", errors);
+
     var etree = new ElementTree(suite);
     var xml = etree.write({'xml_declaration': false});
     fs.writeFile(__dirname + '/../TESTS-jasmine-api-test.xml', xml, function(err) {

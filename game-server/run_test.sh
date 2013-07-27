@@ -1,4 +1,4 @@
-PATH=/usr/local/bin:$PATH
+PATH=/usr/local/bin:/opt/node/bin:$PATH
 
 npm install
 

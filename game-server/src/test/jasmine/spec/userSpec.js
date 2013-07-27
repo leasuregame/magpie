@@ -207,4 +207,10 @@ describe("User Actions # ", function() {
 
   });
 
+  describe("tear down", function() {
+    it('disconnect', function(){
+      pomelo.disconnect();
+    });
+  });
+
 });

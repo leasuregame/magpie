@@ -38,6 +38,11 @@ var CardListLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        var bgSprite = cc.Sprite.create(main_scene_image.bg2);
+        bgSprite.setAnchorPoint(cc.p(0, 0));
+        bgSprite.setPosition(GAME_BG_POINT);
+        this.addChild(bgSprite);
+
         this._callback = callback || function () {
             MainScene.getInstance().switchLayer(MainLayer);
         };

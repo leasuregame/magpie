@@ -59,7 +59,7 @@ var Player = Entity.extend({
         gameData.cardList.init(data.cards, data.lineUp);
         gameData.lineUp.init(data.lineUp);
         gameData.task.init(data.task);
-        gameData.pass.init({pass: data.pass, passMark: data.passMark});
+        gameData.pass.init(data.pass);
 
         cc.log(this);
 

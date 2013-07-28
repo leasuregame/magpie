@@ -12,8 +12,6 @@
  * */
 
 var gameData = {
-    mainScene: null,
-
     user: null,
     player: null,
     cardList: null,

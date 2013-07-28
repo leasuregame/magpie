@@ -92,8 +92,26 @@ var LazyLayer = cc.Layer.extend({
             this._touchedMenu = false;
         }
     }
-})
+});
 
+
+(function() {
+    var cloudLayer = null;
+
+    LazyLayer.showCloudLayer = function() {
+        if(cloudLayer == null) {
+            cloudLayer = LazyLayer.create();
+        }
+
+        cc.Director.getInstance().getRunningScene().addChild(cloudLayer);
+    };
+
+    LazyLayer.closeCloudLayer = function() {
+        if(cloudLayer) {
+            cloudLayer.removeFromParent();
+        }
+    };
+})();
 
 LazyLayer.create = function () {
     var ret = new LazyLayer();

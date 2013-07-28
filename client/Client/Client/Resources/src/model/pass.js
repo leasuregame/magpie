@@ -17,10 +17,12 @@ var PASS_BOSS_SPACE = 5;
 
 var Pass = Entity.extend({
     _passTop: 0,
-    _passMark: 0,
+    _passMark: [],
 
     init: function (data) {
         this.update(data);
+
+        cc.log(this);
 
         return true;
     },
@@ -28,33 +30,34 @@ var Pass = Entity.extend({
     update: function(data) {
         cc.log("Pass update");
 
-        this._passTop = data.pass;
-        this._passMark = data.passMark || 0;
+        this._passTop = data.layer || 0;
+//        this._passTop = 90;
+        this._passMark = data.mark || [];
+    },
+
+    canWipeOut: function() {
+        cc.log("Pass canWipOut");
+
+        for(var i = 1; i <= this._passTop; ++i) {
+            if(this.getPassMarkByIndex(i)) {
+                return true
+            }
+        }
+
+        return false;
     },
 
     getPassMarkByIndex: function(index) {
-        cc.log("Pass getPassMarkByIndex");
+        cc.log("Pass getPassMarkByIndex " + index);
 
-        return (((this._passMark >> (index - 1)) & 1) == 0);
-    },
-
-    getPassMarkList: function() {
-        cc.log("Pass getPassMarkList");
-
-        var passMarkList = [];
-        for(var i = 1; i <= MAX_PASS_COUNT; ++i) {
-            passMarkList[i] = (((this._passMark >> (i - 1)) & 1) == 0);
-        }
-
-        return passMarkList;
+        return (this._passMark[index - 1] == 0);
     },
 
     defiance: function (cb, index) {
-        cc.log("PassLayer defiance");
-        cc.log(index);
+        cc.log("Pass defiance " + index);
 
         var that = this;
-        lzWindow.pomelo.request("logic.taskHandler.passBarrier", {playerId: gameData.player.get("id"), index: index}, function (data) {
+        lzWindow.pomelo.request("logic.taskHandler.passBarrier", {playerId: gameData.player.get("id"), layer: index}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
@@ -62,10 +65,7 @@ var Pass = Entity.extend({
 
                 var msg = data.msg;
 
-                that.update({
-                    pass: msg.pass,
-                    passMark: msg.passMark
-                })
+                that.update(msg.pass);
 
                 var battleLog = BattleLog.create(msg.battleLog);
                 BattleLogNote.getInstance().pushBattleLog(battleLog);
@@ -90,12 +90,17 @@ var Pass = Entity.extend({
 
                 var msg = data.msg;
 
-                that.update({
-                    pass: msg.pass,
-                    passMark: msg.passMark
-                })
+                that.update(msg.pass);
 
-                cb("success");
+                var rewards = msg.rewards;
+                var player = gameData.player;
+
+                player.add("exp", rewards.exp_obtain);
+                player.add("gold", rewards.gold_obtain);
+                player.add("money", rewards.money_obtain);
+                player.add("skillPoint", rewards.skill_point);
+
+                cb(rewards);
             } else {
                 cc.log("wipeOut fail");
             }

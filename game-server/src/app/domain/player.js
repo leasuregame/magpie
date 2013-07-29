@@ -43,6 +43,27 @@ var startPowerGiveTimer = function(player) {
     }, interval);
 };
 
+var groupCardsEffect = function(player) {
+    var cardIds = _.values(player.lineUpObj());
+    var cards = _.values(player.cards).filter(function(c) {
+        return c.star >= 3 && cardIds.indexOf(c.id) > -1;
+    });
+    var cardTable = table.getTable('cards');
+
+    for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var cardConfig = cardTable.getItem(card.id);
+        var series = cardConfig.group.split(',');
+        var seriesCards = cardTable.filter(function(id, item) {
+            return (series.indexOf(item.number) > -1) && (cardIds.indexOf(id) > -1);
+        });
+
+        if (!_.isEmpty(seriesCards) && (series.length === seriesCards.length)) {
+            card.activeGroupEffect(cardConfig);
+        }
+    }
+};
+
 /*
  * Player 与 player 表对应的数据类，提供简单操作
  * @param {object} param 数据库 player 表中的一行记录
@@ -92,7 +113,7 @@ var Player = (function(_super) {
 
     Player.prototype.addCard = function(card) {
         if (typeof card.id !== 'undefined' && card.id !== null) {
-            this.cards[card.id] = card
+            this.cards[card.id] = card;
         }
     };
 
@@ -129,6 +150,14 @@ var Player = (function(_super) {
         return _.contains(this.get('dailyGift'), gift);
     };
 
+    Player.prototype.updateLineUp = function(lineupObj) {
+        this.set('lineUp', objToLineUp(lineupObj));
+    };
+
+    Player.prototype.lineUpObj = function() {
+        return lineUpToObj(this.lineUp);
+    };
+
     Player.prototype.strengthen = function(target, sources, cb) {
         if (!this.hasCard(target)) {
             return cb({
@@ -153,15 +182,15 @@ var Player = (function(_super) {
     };
 
     Player.prototype.getCard = function(id) {
-        return this.cards[id] || null
-    }
+        return this.cards[id] || null;
+    };
 
     Player.prototype.getCards = function(ids) {
         if (!_.isArray(ids)) {
             ids = [ids];
         }
 
-        var results = []
+        var results = [];
         for (var id in this.cards) {
             if (_.contains(ids, id)) {
                 results.push(this.cards[id]);
@@ -198,8 +227,8 @@ var Player = (function(_super) {
             logger.warn('无效的关卡层数 ', layer);
             return;
         }
-        var mark = this.pass.mark[layer -1];
-        return (mark == 1);
+        var mark = this.pass.mark[layer - 1];
+        return (mark === 1);
     };
 
     Player.prototype.incPass = function() {
@@ -220,7 +249,7 @@ var Player = (function(_super) {
             exp: this.exp,
             money: this.money,
             gold: this.gold,
-            lineUp: lineUpToObj(this.lineUp),
+            lineUp: this.lineUpObj(),
             ability: this.ability,
             task: this.task,
             pass: checkPass(this.pass),
@@ -231,7 +260,7 @@ var Player = (function(_super) {
             elixir: this.elixir,
             cards: _.values(this.cards).map(function(card) {
                 return card.toJson();
-            }), 
+            }),
             rank: this.rank !== null ? this.rank.toJson() : null
         };
     };
@@ -261,16 +290,29 @@ var lineUpToObj = function(lineUp) {
     var _results = {};
     if (lineUp !== '') {
         var lines = lineUp.split(',');
-        lines.forEach(function(l){
-            var _ref = l.split(':'), pos = _ref[0], num = _ref[1];
+        lines.forEach(function(l) {
+            var _ref = l.split(':'),
+                pos = _ref[0],
+                num = _ref[1];
             _results[positionConvert(pos)] = parseInt(num);
         });
-    }    
+    }
     return _results;
 };
 
+var objToLineUp = function(obj) {
+    var order = ['00', '01', '02', '10', '11', '12'];
+    var _lineUp = '';
+
+    for (var key in obj) {
+        _lineUp += '' + order[parseInt(key) - 1] + ':' + obj[key] + ',';
+    }
+    console.log('exchange line up: ', _lineUp);
+    return _lineUp.slice(0, -1);
+};
+
 var positionConvert = function(val) {
-    var order = ['00', '01', '02', '10', '11', '12']
+    var order = ['00', '01', '02', '10', '11', '12'];
     return order.indexOf(val) + 1;
 };
 

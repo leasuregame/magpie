@@ -17,6 +17,9 @@ var Entity = require('./entity');
 var table = require('../manager/table');
 var _ = require("underscore");
 
+var GROUP_EFFECT_ATK = 1
+var GROUP_EFFECT_HP = 2
+
 /*
  * Card 与 card 表对应的数据类，提供简单操作
  * @param {object} param 数据库 card 表中的一行记录
@@ -43,6 +46,16 @@ var Card = (function (_super) {
 
     Card.prototype.init = function () {
         this.passiveSkills = {};
+    };
+
+    Card.prototype.activeGroupEffect = function(cardConfig) {
+        var _property = {
+            GROUP_EFFECT_ATK: 'atk',
+            GROUP_EFFECT_HP: 'hp'
+        }
+        var type = cardConfig.group_effect;
+        var factor = table.getTableItem('factors', this.lv)?.factor
+        this[_property[type]+'Addition'] += parseInt(cardConfig[_property[type]] * factor * 20 / 100);
     };
 
     Card.prototype.addPassiveSkill = function (ps) {
@@ -86,6 +99,7 @@ var Card = (function (_super) {
         }
         return upgraded_lv;
     };
+
 
     Card.prototype.toJson = function() {
         return {

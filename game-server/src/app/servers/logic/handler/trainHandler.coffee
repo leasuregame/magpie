@@ -275,5 +275,15 @@ Handler::useElixir = (msg, session, next) ->
     card.save()
     next(null, {code: 200})
 
-  
+Handler::changeLineUp = (msg, session, next) ->
+  playerId = session.get('playerId') or msg.playerId
+  lineupObj = msg.lineUp
+
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {code: 500, msg: err.msg})
+
+    player.updateLineUp(lineupObj)
+    player.save()
+    next(null, { code: 200, msg: {lineUp: player.lineUpObj()} })
 

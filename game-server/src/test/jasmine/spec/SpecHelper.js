@@ -19,6 +19,13 @@ beforeEach(function() {
         ].sort()
       );
       return result;
+    },
+    hasProperties: function(expectedProperties) {
+      var obj = this.actual;
+      return _.isEqual(
+        _.keys(obj).sort(),
+        expectedProperties.sort()
+      );
     }
   });
 });

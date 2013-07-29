@@ -117,7 +117,8 @@ Handler::passBarrier = (msg, session, next) ->
         player.increase('exp', rewards.exp)
         player.increase('money', rewards.money)
         player.increase('skillPoint', rewards.skillPoint)
-        player.incPass()
+        player.incPass() if player.pass.layer is layer-1
+        player.setPassMark(layer)
         player.save()
       
       cb(null, bl)

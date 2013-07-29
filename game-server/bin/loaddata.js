@@ -1,4 +1,5 @@
-var config = require('../config/mysql').development;
+console.log(process.argv);
+var config = require('../config/mysql')[process.argv[3]];
 var mysql = require('mysql');
 var fs = require('fs');
 var path = require('path');

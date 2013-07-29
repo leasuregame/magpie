@@ -136,7 +136,7 @@ describe("Logic Server # ", function() {
         request('logic.trainHandler.passSkillAfresh', {playerId: pid, cardId: 101, psId: 6}, function(data) {
           expect(data.code).toEqual(200);
           expect(data.msg.value).toBeDefined();
-          expect(_.isNumber(parseInt(dada.msg.value))).toEqual('number');
+          expect(_.isNumber(parseInt(data.msg.value))).toEqual('number');
           console.log(data);
         });
       });
@@ -168,7 +168,7 @@ describe("Logic Server # ", function() {
           }, 
           function(data) {
             expect(data.code).toEqual(200);
-            expect(data.msg.upgrade).to.beTruthy()
+            expect(data.msg.upgrade).toEqual(true);
             console.log(data);
           }
         );

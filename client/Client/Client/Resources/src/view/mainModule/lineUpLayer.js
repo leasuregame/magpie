@@ -12,13 +12,15 @@
 * */
 
 
-var LineUpLayer = cc.Layer.extend({
+var LineUpLayer = LazyLayer.extend({
+
+
     init : function() {
         cc.log("LineUpLayer init");
 
         if(!this._super()) return false;
 
-        var bgSprite = cc.Sprite.create();
+        var bgSprite = cc.Sprite.create(main_scene_image.bg3);
         bgSprite.setPosition(GAME_MIDPOINT);
         this.addChild(bgSprite);
 

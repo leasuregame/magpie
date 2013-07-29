@@ -91,8 +91,8 @@
             'src/view/loginModule/signUpLayer.js',
 
 
-            'src/view/mainModule/starLabel.js',
             'src/view/mainModule/activityLayer.js',
+            'src/view/mainModule/cardLabel.js',
             'src/view/mainModule/cardDetails.js',
             'src/view/mainModule/cardLibraryLayer.js',
             'src/view/mainModule/cardListLayer.js',
@@ -117,6 +117,7 @@
             'src/view/mainModule/rankLayer.js',
             'src/view/mainModule/shopLayer.js',
             'src/view/mainModule/skillUpgradeLabel.js',
+            'src/view/mainModule/starLabel.js',
             'src/view/mainModule/strengthenLayer.js',
             'src/view/mainModule/taskLayer.js',
             'src/view/mainModule/tournamentLayer.js',

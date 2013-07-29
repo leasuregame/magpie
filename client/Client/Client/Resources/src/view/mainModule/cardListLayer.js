@@ -29,10 +29,11 @@ var CardListLayer = cc.Layer.extend({
     _excludeList:[],                        // 不能选择列表
     _maxSelectCount: 0,
     _selectCount: 0,
-    _cardListCell: {},
-
-    _target: null,
+    _cardCount: 0,
+    _cardLabelList: {},
     _scrollViewHeight: 0,
+    _scrollView: null,
+    _otherLayer: null,
 
     onEnter: function () {
         cc.log("CardListLayer onEnter");
@@ -41,129 +42,171 @@ var CardListLayer = cc.Layer.extend({
         this.update();
     },
 
-    init: function (callback, target, maxSelectCount, sortType) {
+    init: function (selectType, sortType, excludeList, cb) {
         cc.log("CardListLayer init");
 
         if (!this._super()) return false;
+
+        this._cardCount = gameData.cardList.get("length");
+        this._selectType = selectType || SELECT_TYPE_DEFAULT;
+        this._sortType = sortType || SORT_TYPE_DROP;
+        this._excludeList = excludeList || [];
+        this._maxSelectCount = this._cardCount;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg2);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
 
-
-
-        this._callback = callback || function () {
-            MainScene.getInstance().switchLayer(MainLayer);
-        };
-        this._target = target || null;
-
-        this._cardList = gameData.cardList;
-        var len = this._cardList.get("length");
-        this._sortType = sortType;
-        this._maxSelectCount = maxSelectCount || len;
-
-        var scrollViewLayer = cc.Layer.create();
-        var cardList = this._cardList.get("cardList");
-        var key;
-
-        for (key in cardList) {
-            var card = cardList[key];
-
-            var cell = cc.LayerColor.create(cc.c4b(100, 0, 100, 100), GAME_WIDTH, 100);
-            cell.setAnchorPoint(cc.p(0, 0));
-            cell.setPosition(cc.p(0, 0));
-            cell.isSelect = false;
-
-            var cardItem = cc.MenuItemImage.create(s_h_hero_1, s_h_hero_1, this._onClickCardDetails(key), this);
-            cardItem.setPosition(cc.p(100, 50));
-
-            var selectLabel = cc.LabelTTF.create("未选择", 'Times New Roman', 30);
-            var selectItem = cc.MenuItemLabel.create(selectLabel, this._onClickSelect(key, selectLabel), this);
-            selectItem.setPosition(cc.p(560, 50));
-
-            var str = card.get("isUse") ? "已上阵" : "未上阵";
-            var useLabel = cc.LabelTTF.create(str, 'Times New Roman', 30);
-            var useItem = cc.MenuItemLabel.create(useLabel, this._onClickUse(key, useLabel), this);
-            useItem.setPosition(cc.p(420, 50));
-
-            var lazyMenu = LazyMenu.create(cardItem, selectItem, useItem);
-            lazyMenu.setPosition(cc.p(0, 0));
-            cell.addChild(lazyMenu);
-
-            var nameLabel = cc.LabelTTF.create("卡名：" + card.get("name"), 'Times New Roman', 30);
-            nameLabel.setAnchorPoint(cc.p(0, 0));
-            nameLabel.setPosition(cc.p(200, 70));
-            cell.addChild(nameLabel);
-
-            var lvLabel = cc.LabelTTF.create("等级：" + card.get("lv"), 'Times New Roman', 30);
-            lvLabel.setAnchorPoint(cc.p(0, 0));
-            lvLabel.setPosition(cc.p(200, 35));
-            cell.addChild(lvLabel);
-
-            var starLabel = cc.LabelTTF.create("星级：" + card.get("star"), 'Times New Roman', 30);
-            starLabel.setAnchorPoint(cc.p(0, 0));
-            starLabel.setPosition(cc.p(200, 0));
-            cell.addChild(starLabel);
-
-            scrollViewLayer.addChild(cell);
-
-            this._cardListCell[key] = cell;
-        }
-
-        this._scrollViewHeight = 110 * len - 10;
-        if (this._scrollViewHeight < 840) this._scrollViewHeight = 780;
-
-        var scrollView = cc.ScrollView.create(cc.size(GAME_WIDTH, 780), scrollViewLayer);
-        scrollView.setContentSize(cc.size(GAME_WIDTH, this._scrollViewHeight));
-        scrollView.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 150));
-        scrollView.setBounceable(false);
-        scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
-        scrollView.updateInset();
-        this.addChild(scrollView);
-
-        var changeLineUpItem = cc.MenuItemFont.create("调整阵型", this._onClickChangeLineUp, this);
-        changeLineUpItem.setPosition(cc.p(200, 1020));
-
-        var okItem = cc.MenuItemFont.create("确定", this._onClickOk, this);
-        okItem.setPosition(cc.p(550, 1020));
-
-        var sellItem = cc.MenuItemFont.create("出售", this._onClickSell, this);
-        sellItem.setPosition(cc.p(100, 980));
-
-        var selectTypeLabel = cc.LabelTTF.create("升序排列", 'Times New Roman', 40);
-        var selectTypeItem = cc.MenuItemLabel.create(selectTypeLabel, this._onClickChangeSelectType(selectTypeLabel), this);
-        selectTypeItem.setPosition(cc.p(370, 980));
-
-        var selectAllLowItem = cc.MenuItemFont.create("所有1/2星", this._onClickSelectAllLow, this);
-        selectAllLowItem.setPosition(cc.p(590, 980));
-
-        var menu = cc.Menu.create(changeLineUpItem, okItem, /*sellItem,*/ selectTypeItem, selectAllLowItem);
-        menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
-
         return true;
     },
-
-    _initDefault: function() {
-
-    },
-
-    _initLineUp: function() {
-
-    },
-
-    _init
 
     update: function () {
         cc.log("CardListLayer update");
 
-        var cardListIndex = this._cardList.sortCardList(this._sortType);
+        if(this._scrollView != null) {
+            this._scrollView.removeFromParent();
+            this._scrollView = null;
+        }
+
+        var cardList = gameData.cardList.get("cardList");
+        var scrollViewLayer = cc.Layer.create();
+
+        for (var key in cardList) {
+            var card = cardList[key];
+
+            var cardLabel = CardLabel.create(card, this._selectType);
+            cardLabel.setAnchorPoint(cc.p(0, 0));
+            cardLabel.setPosition(cc.p(0, 0));
+
+            scrollViewLayer.addChild(cardLabel);
+
+            this._cardLabelList[key] = cardLabel;
+        }
+
+        this._scrollViewHeight = 124 * this._cardCount;
+        if (this._scrollViewHeight < 620) this._scrollViewHeight = 620;
+
+        var scrollView = cc.ScrollView.create(cc.size(586, 620), scrollViewLayer);
+        scrollView.setContentSize(cc.size(GAME_WIDTH, this._scrollViewHeight));
+        scrollView.setPosition(cc.p(67, 260));
+//        scrollView.setBounceable(false);
+        scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        scrollView.updateInset();
+        this.addChild(scrollView);
+
+        var cardListIndex = gameData.cardList.sortCardList(this._sortType);
         var len = cardListIndex.length;
 
         for (var i = 0; i < len; ++i) {
-            var index = this._selectType == SELECT_TYPE_DROP ? (len - i) : (i + 1);
-            this._cardListCell[cardListIndex[i]].setPosition(cc.p(0, this._scrollViewHeight - index * 110));
+            var index = this._selectType == SORT_TYPE_DROP ? (len - i) : (i + 1);
+            this._cardLabelList[cardListIndex[i]].setPosition(cc.p(0, this._scrollViewHeight - index * 124));
+        }
+    },
+
+    _initDefault: function () {
+        cc.log("CardListLayer _initDefault");
+
+        this._clearOtherLayer();
+
+        var lineUpItem = cc.MenuItemImage();
+        lineUpItem.setPosition(cc.p());
+
+        var sellItem = cc.MenuItemImage();
+        sellItem.setPosition(cc.p());
+
+        var menu = cc.Menu.create(lineUpItem, sellItem);
+
+        this._otherLayer.addChild(menu);
+    },
+
+    _initLineUp: function () {
+        cc.log("CardListLayer _initLineUp");
+
+        var okItem = cc.MenuItemImage();
+        okItem.setPosition(cc.p());
+
+        var lineUpItem = cc.MenuItemImage();
+        lineUpItem.setPosition(cc.p());
+
+        var menu = cc.Menu.create(lineUpItem, sellItem);
+
+        this._otherLayer.addChild(menu);
+    },
+
+    _initMaster: function () {
+        cc.log("CardListLayer _initMaster");
+
+        var okItem = cc.MenuItemImage();
+        okItem.setPosition(cc.p());
+
+        var lineUpItem = cc.MenuItemImage();
+        lineUpItem.setPosition(cc.p());
+
+        var menu = cc.Menu.create(lineUpItem, sellItem);
+
+        this._otherLayer.addChild(menu);
+    },
+
+    _initExp: function () {
+        cc.log("CardListLayer _initExp");
+
+        var okItem = cc.MenuItemImage();
+        okItem.setPosition(cc.p());
+
+        var lineUpItem = cc.MenuItemImage();
+        lineUpItem.setPosition(cc.p());
+
+        var menu = cc.Menu.create(lineUpItem, sellItem);
+
+        this._otherLayer.addChild(menu);
+    },
+
+    _initMoney: function () {
+        cc.log("CardListLayer _initMoney");
+
+        var okItem = cc.MenuItemImage();
+        okItem.setPosition(cc.p());
+
+        var lineUpItem = cc.MenuItemImage();
+        lineUpItem.setPosition(cc.p());
+
+        var menu = cc.Menu.create(lineUpItem, sellItem);
+
+        this._otherLayer.addChild(menu);
+    },
+
+    _initElixir: function () {
+        cc.log("CardListLayer _initElixir");
+
+        var okItem = cc.MenuItemImage();
+        okItem.setPosition(cc.p());
+
+        var lineUpItem = cc.MenuItemImage();
+        lineUpItem.setPosition(cc.p());
+
+        var menu = cc.Menu.create(lineUpItem, sellItem);
+
+        this._otherLayer.addChild(menu);
+    },
+
+
+
+    _clearOtherLayer: function() {
+        cc.log("CardListLayer _clearOtherLayer");
+
+        if(this._otherLayer != null) {
+            this._otherLayer.removeAllChildren();
+        }
+    },
+
+    setSelectType: function(selectType) {
+        cc.log("CardListLayer setSelectType");
+
+        if(selectType != this._selectType) {
+            this._selectType = selectType;
+
+
         }
     },
 

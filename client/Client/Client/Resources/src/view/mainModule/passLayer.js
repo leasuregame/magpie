@@ -248,12 +248,10 @@ var PassLayer = cc.Layer.extend({
     _onClickWipeOut: function () {
         cc.log("PassLayer _onClickWipeOut");
 
-//        scrollView.setContentOffsetInDuration(cc.p(0, 0), 10);
-//        this._nowPassTop += 1;
         this._wipeOutAnimation();
-//        gameData.pass.wipeOut(function (data) {
-//            cc.log(data);
-//        });
+        gameData.pass.wipeOut(function (data) {
+            cc.log(data);
+        });
     }
 })
 

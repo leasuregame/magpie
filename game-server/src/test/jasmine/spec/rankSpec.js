@@ -1,16 +1,26 @@
 describe("Ranking List", function() {
-
-  describe("Set Up", function() {
-    it("connect to server", function() {
-      intiPomelo();
+  beforeAll(function(){
+    doAjax('/loaddata/all', {}, function(data) {
+        expect(data).toEqual('done');
     });
+  });
 
-    it("init db and load test data", function(){
-      doAjax('/loaddata/all', {}, function(data) {
-          expect(data).toEqual('done');
+  describe("challenge", function() {
+    describe("when one challenge to other", function() {
+      it("should can be return battle log", function() {
+        request('logic.rankHandler.challenge', {
+            playerId: 100,
+            targetId: 101
+          }, function(data) {
+            console.log(data);
+            expect(data.code).toEqual(200);
+            expect(data.msg.battleLog).toBeBattleLog();
+            expect(data.msg.battleLog.winner).toEqual('enemy')
+            expect(data.msg.battleLog.rewards).toEqual({})
+            expect(data.msg.pass).toEqual({ layer : 25, mark : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] });
+          });
       });
     });
-
   });
 
   describe("ranking list", function() {
@@ -54,30 +64,6 @@ describe("Ranking List", function() {
 
     });
 
-  });
-
-  describe("challenge", function() {
-    describe("when one challenge to other", function() {
-      it("should can be return battle log", function() {
-        request('logic.rankHandler.challenge', {
-            playerId: 100,
-            targetId: 101
-          }, function(data) {
-            console.log(data);
-            expect(data.code).toEqual(200);
-            expect(data.msg.battleLog).toBeBattleLog();
-            expect(data.msg.battleLog.winner).toEqual('enemy')
-            expect(data.msg.battleLog.rewards).toEqual({})
-            expect(data.msg.pass).toEqual({ layer : 25, mark : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] });
-          });
-      });
-    })
-  });
-
-  describe("tear down", function() {
-    it('disconnect', function(){
-      pomelo.disconnect();
-    });
   });
 
 });

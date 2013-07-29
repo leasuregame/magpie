@@ -5,10 +5,6 @@ describe("Connecter Server # ", function() {
   var myName = 'wuzhanghai';
   
   describe("Set Up", function() {
-    it("connect to server", function() {
-      intiPomelo();
-    });
-
     it("init database", function() {
       doAjax('/createDb', {}, function(data) {});
     })
@@ -90,10 +86,6 @@ describe("Connecter Server # ", function() {
 
     it("remove player", function(){
       doAjax('/removePlayer', {playerId: pid}, function(data){});
-    });
-
-    it('disconnect', function(){
-      pomelo.disconnect();
     });
   });    
 });

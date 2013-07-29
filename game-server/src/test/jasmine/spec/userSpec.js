@@ -3,10 +3,6 @@ describe("User Actions # ", function() {
   var userid;
 
   describe("Set Up", function() {
-    it("connect to server", function() {
-      intiPomelo();
-    });
-
     it("init database", function() {
       doAjax('/createDb', {}, function(data) {});
     })
@@ -205,12 +201,6 @@ describe("User Actions # ", function() {
 
     });
 
-  });
-
-  describe("tear down", function() {
-    it('disconnect', function(){
-      pomelo.disconnect();
-    });
   });
 
 });

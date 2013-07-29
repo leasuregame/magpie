@@ -2,11 +2,7 @@ describe("Logic Server # ", function() {
   var pomelo = window.pomelo;
   var userid;
 
-  describe("Set Up", function() {
-    it("connect to server", function() {
-      intiPomelo();
-    });
-
+  beforeAll(function() {
     it("init db and load test data", function(){
       doAjax('/loaddata/csv', {}, function(data) {
           expect(data).toEqual('done');
@@ -203,12 +199,6 @@ describe("Logic Server # ", function() {
       });
     });
 
-  });
-
-  describe("tear down", function() {
-    it('disconnect', function(){
-      pomelo.disconnect();
-    });
   });
   
 });

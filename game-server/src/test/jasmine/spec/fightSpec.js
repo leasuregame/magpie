@@ -1,14 +1,8 @@
 describe("Battle Server # ", function() {
 
-  describe("Set Up", function() {
-    it("connect to server", function() {
-      intiPomelo();
-    });
-
-    it('load test data form csv files', function() {
-      doAjax('/loaddata/csv', {}, function(data) {
-        expect(data).toEqual('done');
-      });
+  beforeAll(function() {
+    doAjax('/loaddata/csv', {}, function(data) {
+      expect(data).toEqual('done');
     });
   });
 
@@ -23,12 +17,6 @@ describe("Battle Server # ", function() {
       });
     });
 
-  });
-
-  describe("tear down", function() {
-    it('disconnect', function(){
-      pomelo.disconnect();
-    });
   });
 
 });

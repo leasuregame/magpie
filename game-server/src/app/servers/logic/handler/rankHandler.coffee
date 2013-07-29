@@ -86,7 +86,7 @@ Handler::challenge = (msg, session, next) ->
         return next(null, {code: err.code, msg: err.msg or err.message})
 
       bl.rewards = rewards
-      next(null, {code: 200, msg: {battleLog: bl}})
+      next(null, {code: 200, msg: {battleLog: bl, counts: pass.counts}})
 
 genRankings = (ranking) ->
   top10 = {}

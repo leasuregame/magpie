@@ -4,6 +4,21 @@ beforeEach(function() {
       var player = this.actual;
       return player.currentlyPlayingSong === expectedSong && 
              player.isPlaying;
+    },
+    toBeBattleLog: function() {
+      var battleLog = this.actual;
+      var result = false;
+      result = _.isEqual(
+        _.keys(battleLog).sort(), 
+        [
+          'enemy',
+          'own',
+          'winner',
+          'steps',
+          'rewards'
+        ].sort()
+      );
+      return result;
     }
   });
 });
@@ -45,13 +60,6 @@ var intiPomelo = function() {
     }, function() {
       console.log('connect success!');
       inited = true;
-
-      pomelo.on('onMessage', function(data) {
-        console.log('***** on message: ', data);
-      });
-      pomelo.on('onLogin', function(data) {
-        console.log('***** on login: ', data);
-      });
     });
   });
   waitsFor(function() {

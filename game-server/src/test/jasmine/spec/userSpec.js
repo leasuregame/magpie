@@ -6,6 +6,10 @@ describe("User Actions # ", function() {
     it("connect to server", function() {
       intiPomelo();
     });
+
+    it("init database", function() {
+      doAjax('/createDb', {}, function(data) {});
+    })
   });
 
   describe("Entry Handler", function() {
@@ -184,7 +188,7 @@ describe("User Actions # ", function() {
                   lineUp: {},
                   ability: 0,
                   task: '',
-                  pass: 0,
+                  pass: { layer : 0, mark : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] },
                   dailyGift: '',
                   skillPoint: 0,
                   elixir: 0,
@@ -201,6 +205,12 @@ describe("User Actions # ", function() {
 
     });
 
+  });
+
+  describe("tear down", function() {
+    it('disconnect', function(){
+      pomelo.disconnect();
+    });
   });
 
 });

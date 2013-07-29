@@ -9,7 +9,7 @@ ssh -l root -p 8022 124.238.236.33
 
 http://124.238.236.33/Client/Client/Resources/
 
-/dev/shm/magpie
+cd /dev/shm/magpie
 
 start nginx 
 /usr/local/nginx/sbin/nginx

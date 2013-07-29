@@ -47,14 +47,18 @@ describe("Logic Server # ", function() {
         request('logic.taskHandler.passBarrier', {
           playerId: pid
         }, function(data) {
+          console.log('闯关', data);
           expect(data.code).toEqual(200);
           expect(data.msg).toBeDefined();
           //expect(data.msg).toEqual('');
           expect(_.keys(data.msg).sort()).toEqual([
-            'battleLog'
+            'battleLog',
+            'pass'
             ].sort());
-          expect( )
-          console.log(data);
+          expect(data.msg.battleLog.winner).toEqual('own')
+          expect(data.msg.battleLog.rewards).toEqual({})
+          expect(data.msg.pass).toEqual({})
+          
         }); 
       });
 
@@ -172,4 +176,11 @@ describe("Logic Server # ", function() {
     });
 
   });
+
+  describe("tear down", function() {
+    it('disconnect', function(){
+      pomelo.disconnect();
+    });
+  });
+  
 });

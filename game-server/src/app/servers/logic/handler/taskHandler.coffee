@@ -125,8 +125,8 @@ Handler::passBarrier = (msg, session, next) ->
   ], (err, bl) ->
     if err 
       return next(err, {code: 500, msg: err.msg or ''})
-
-    next(null, {code: 200, msg: {battleLog: bl, pass: player.passs}})
+    
+    next(null, {code: 200, msg: {battleLog: bl, pass: player.pass}})
 
 obtainBattleRewards = (player, taskId, battleLog) ->
   taskData = table.getTableItem 'task_config', taskId

@@ -6,7 +6,7 @@ describe("Ranking List", function() {
     });
 
     it("init db and load test data", function(){
-      doAjax('/loaddata/csv', {}, function(data) {
+      doAjax('/loaddata/all', {}, function(data) {
           expect(data).toEqual('done');
       });
     });
@@ -29,10 +29,10 @@ describe("Ranking List", function() {
       return _.union(top10, results.reverse());
     };
 
-    describe("when my ranking grate then 100000", function() {
 
-      ids.map(function(id, index) {
+    ids.map(function(id, index) {
 
+      describe("when my ranking is " + (id - 9999), function(){
         it('should can be return correct ranking list for (' + (id - 9999) + ')', function() {
           request('logic.rankHandler.rankingList', {
             playerId: id
@@ -64,11 +64,20 @@ describe("Ranking List", function() {
             targetId: 101
           }, function(data) {
             console.log(data);
-            expect(data).toEqual('');
+            expect(data.code).toEqual(200);
+            expect(data.msg.battleLog).toBeBattleLog();
+            expect(data.msg.battleLog.winner).toEqual('enemy')
+            expect(data.msg.battleLog.rewards).toEqual({})
+            expect(data.msg.pass).toEqual({ layer : 25, mark : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] });
           });
       });
     })
   });
 
+  describe("tear down", function() {
+    it('disconnect', function(){
+      pomelo.disconnect();
+    });
+  });
 
 });

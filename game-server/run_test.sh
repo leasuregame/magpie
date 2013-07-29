@@ -1,7 +1,8 @@
-PATH=/usr/local/bin:$PATH
+PATH=/usr/local/bin:/opt/node/bin:$PATH
 
 npm install
 
+rm -r ./test ./app
 make build
 
 XUNIT_FILE="test/TESTS-dao.xml" ./node_modules/.bin/mocha -R xunit-file  --require should --recursive ./test/dao

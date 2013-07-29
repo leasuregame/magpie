@@ -14,7 +14,13 @@ var ACTION = {
 var addSyncEvent = function (syncKey, entity, cb) {
   entity.on('save', 
     function (cb) {
-      app.get('sync').exec(
+      var fn;
+      if (app.get('debug')) {
+        fn = app.get('sync').flush;
+      } else {
+        fn = app.get('sync').exec;
+      }
+      fn.call(app.get('sync'), 
         syncKey,
         entity.id, 
         {
@@ -123,6 +129,7 @@ var DaoBase = (function() {
     var _this = this;
     options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.UPDATE, options);
+    console.log(stm);
     return dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when update " + _this.table + "s]", err.stack);

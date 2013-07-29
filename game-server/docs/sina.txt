@@ -27,9 +27,12 @@ mysql信息：
 user: dev, password: 1 port: 6033
 mysql -udev -p1
 
-start game server:
+重新创建数据库表：
+make inittables
 
+初始化数据：
+node ./bin/loaddata.js all production
+
+重启游戏服务：
 cd /dev/shm/magpie/game-server
-
-
 make build && ./node_modules/.bin/pomelo stop && ./node_modules/.bin/pomelo start production --daemon

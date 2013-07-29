@@ -56,8 +56,8 @@ describe("Logic Server # ", function() {
             'pass'
             ].sort());
           expect(data.msg.battleLog.winner).toEqual('own')
-          expect(data.msg.battleLog.rewards).toEqual({})
-          expect(data.msg.pass).toEqual({})
+          expect(data.msg.battleLog.rewards).hasProperties(['exp', 'skillPoint'])
+          expect(data.msg.pass).hasProperties(['layer', 'mark'])
           
         }); 
       });
@@ -136,7 +136,7 @@ describe("Logic Server # ", function() {
         request('logic.trainHandler.passSkillAfresh', {playerId: pid, cardId: 101, psId: 6}, function(data) {
           expect(data.code).toEqual(200);
           expect(data.msg.value).toBeDefined();
-          expect(_.isNumber(parseInt(data.msg.value))).toEqual('number');
+          expect(_.isNumber(parseInt(data.msg.value))).toEqual(true);
           console.log(data);
         });
       });
@@ -168,8 +168,36 @@ describe("Logic Server # ", function() {
           }, 
           function(data) {
             expect(data.code).toEqual(200);
-            expect(data.msg.upgrade).toEqual(true);
+            expect(data.msg.upgrade).toEqual(false);
             console.log(data);
+          }
+        );
+      });
+    });
+
+    describe("logic.trainHandler.changeLineUp", function(){
+      it("should can be change player's lineUp", function(){
+        request(
+          'logic.trainHandler.changeLineUp',
+          {
+            playerId: '1',
+            lineUp: {
+              1: 5,
+              2: 4,
+              3: 3,
+              4: 2,
+              5: 1
+            }
+          }, 
+          function(data) {
+            expect(data.code).toEqual(200);
+            expect(data.msg.lineUp).toEqual({
+              1: 5,
+              2: 4,
+              3: 3,
+              4: 2,
+              5: 1
+            });
           }
         );
       });

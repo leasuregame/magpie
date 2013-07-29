@@ -1,4 +1,5 @@
-dao = require('pomelo').app.get('dao')
+app = require('pomelo').app
+dao = app.get('dao')
 Cache = require '../common/cache'
 async = require 'async'
 _ = require 'underscore'
@@ -16,8 +17,9 @@ class Manager
       cb(null, player)
 
   @getPlayerInfo: (params, cb) ->
-    _player = playerList.get(params.pid)
-    return cb(null, _player) if _player?
+    if app.get('debug')
+      _player = playerList.get(params.pid)
+      return cb(null, _player) if _player?
 
     sync = params.sync or true
     dao.player.getPlayerInfo {

@@ -91,6 +91,7 @@
             'src/view/loginModule/signUpLayer.js',
 
 
+            'src/view/mainModule/starLabel.js',
             'src/view/mainModule/activityLayer.js',
             'src/view/mainModule/cardDetails.js',
             'src/view/mainModule/cardLibraryLayer.js',

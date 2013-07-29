@@ -20,6 +20,7 @@ var SELECT_TYPE_MONEY = 4;
 var SELECT_TYPE_ELIXIR = 5;
 
 var CardLabel = cc.Node.extend({
+    _card: null,
     _isSelect: false,
     _enabled: true,
     _nameLabel: null,
@@ -44,15 +45,41 @@ var CardLabel = cc.Node.extend({
     init: function (card) {
         cc.log("CardLabel init");
 
+        if(!this._super()) return false;
+
+        this._card = card;
+
         this._cardItem = cc.MenuItemImage.create(main_scene_image.button15, main_scene_image.button15s, main_scene_image.button15d, this._onClickCard, this);
         this._cardItem.setAnchorPoint(cc.p(0, 0));
 
         var cardHeadItem = cc.MenuItemImage.create(main_scene_image.button15, this._onClickCardHead, this);
-        cardHeadItem.setPosition(cc.p());
+        cardHeadItem.setPosition(cc.p(200, 62));
 
-        var menu = LazyMenu.create(cardItem, cardHeadItem);
+        var menu = LazyMenu.create(this._cardItem, cardHeadItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
+
+        this._nameLabel = cc.LabelTTF.create(this._card.get("name"), 'Times New Roman', 22);
+
+        this._lvLabel = cc.LabelTTF.create(this._card.get("lv"), 'Times New Roman', 22);
+
+        this._expLabel = cc.LabelTTF.create(this._card.get("exp"), 'Times New Roman', 22);
+
+        this._moneyLabel = cc.LabelTTF.create(this._card.get("money"), 'Times New Roman', 22);
+
+        this._elixirLabel = cc.LabelTTF.create(this._card.get("elixir"), 'Times New Roman', 22);
+
+        this._abilityLabel = cc.LabelTTF.create(this._card.get("ability"), 'Times New Roman', 22);
+
+        this._starLabel = StarLabel.create(this._card.get("star"));
+
+        this._useLabel = cc.Sprite.create(main_scene_image.);
+
+        this._hookBgLabel = cc.Sprite.create();
+
+        this._hookLabel = cc.Sprite.create();
+
+        return true;
     },
 
     _initDefault: function () {

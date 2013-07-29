@@ -42,19 +42,27 @@ var PassLabel = cc.Node.extend({
         return true;
     },
 
-    update: function (data) {
+    update: function () {
         cc.log("PassLabel update");
 
+        cc.log(gameData.pass.getPassMarkByIndex(this._index));
         this._passItem.setEnabled(gameData.pass.getPassMarkByIndex(this._index));
     },
 
     _onClickDefiance: function () {
         cc.log("PassLayer _onClickDefiance " + this._index);
 
-//        gameData.pass.defiance(function (id) {
-//            var scene = BattleScene.create(BattleLogNote.getInstance().getBattleByBattleLogId(id));
-//            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, scene, true));
-//        }, this._index);
+        var pass = gameData.pass;
+
+        if(this._index > pass.get("passTop") + 1) {
+            cc.log("can't Defiance");
+            return;
+        }
+
+        pass.defiance(function (id) {
+            var scene = BattleScene.create(BattleLogNote.getInstance().getBattleByBattleLogId(id));
+            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, scene, true));
+        }, this._index);
     }
 })
 

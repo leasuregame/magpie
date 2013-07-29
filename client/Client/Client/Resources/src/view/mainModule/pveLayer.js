@@ -28,33 +28,33 @@ var PveLayer = cc.Layer.extend({
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg4);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 936));
+        bgSprite.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 940));
         this.addChild(bgSprite, 1);
 
         this._taskLayerItem = cc.MenuItemImage.create(main_scene_image.button12, main_scene_image.button12s, main_scene_image.button12d, this._onClickTaskLayer, this);
-        this._taskLayerItem.setPosition(cc.p(130, 973));
+        this._taskLayerItem.setPosition(cc.p(130, 983));
 
         this._passLayerItem = cc.MenuItemImage.create(main_scene_image.button12, main_scene_image.button12s, main_scene_image.button12d, this._onClickPassLayer, this);
-        this._passLayerItem.setPosition(cc.p(270, 973));
+        this._passLayerItem.setPosition(cc.p(270, 983));
 
         var menu = cc.Menu.create(this._taskLayerItem, this._passLayerItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
         this._taskStrLabel1 = cc.Sprite.create(main_scene_image.icon16);
-        this._taskStrLabel1.setPosition(cc.p(130, 973));
+        this._taskStrLabel1.setPosition(cc.p(130, 983));
         this.addChild(this._taskStrLabel1, 2);
 
         this._taskStrLabel2 = cc.Sprite.create(main_scene_image.icon17);
-        this._taskStrLabel2.setPosition(cc.p(130, 973));
+        this._taskStrLabel2.setPosition(cc.p(130, 983));
         this.addChild(this._taskStrLabel2, 2);
 
         this._passStrLabel1 = cc.Sprite.create(main_scene_image.icon18);
-        this._passStrLabel1.setPosition(cc.p(270, 973));
+        this._passStrLabel1.setPosition(cc.p(270, 983));
         this.addChild(this._passStrLabel1, 2);
 
         this._passStrLabel2 = cc.Sprite.create(main_scene_image.icon19);
-        this._passStrLabel2.setPosition(cc.p(270, 973));
+        this._passStrLabel2.setPosition(cc.p(270, 983));
         this.addChild(this._passStrLabel2, 2);
 
         this._onClickTaskLayer();

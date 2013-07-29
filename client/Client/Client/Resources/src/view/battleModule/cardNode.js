@@ -25,7 +25,7 @@ var CardNode = cc.Node.extend({
         this._frameSprite = cc.Sprite.create(s_frame2);
         this.addChild(this._frameSprite);
 
-        this._heroSprite = cc.Sprite.create(s_path + "b" + index + ".png");
+        this._heroSprite = cc.Sprite.create(s_path1 + "b" + index + ".png");
         this.addChild(this._heroSprite);
 
         return true;

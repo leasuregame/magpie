@@ -25,6 +25,18 @@ var Entity = cc.Class.extend({
         }
     },
 
+    add: function(name, value) {
+        tthis["_" + name] += value;
+    },
+
+    adds: function (attrs) {
+        var key;
+
+        for (key in attrs) {
+            this.add(key, attrs[key]);
+        }
+    },
+
     get: function (name) {
         return this["_" + name];
     },

@@ -12,19 +12,27 @@
  * */
 
 
-var SELECT_TYPE_LITER = 1;
-var SELECT_TYPE_DROP = 0;
+var SELECT_TYPE_DEFAULT = 0;
+var SELECT_TYPE_LINEUP = 1;
+var SELECT_TYPE_MASTER = 2;
+var SELECT_TYPE_EXP = 3;
+var SELECT_TYPE_MONEY = 4;
+var SELECT_TYPE_ELIXIR = 5;
+
+
+var SORT_TYPE_LITER = 1;
+var SORT_TYPE_DROP = 0;
 
 var CardListLayer = cc.Layer.extend({
-    _cardList: null,
-    _callback: null,
-    _target: null,
-    _sortType: null,
+    _selectType: SELECT_TYPE_DEFAULT,       // 选择界面类型
+    _sortType: SORT_TYPE_DROP,              // 排序方式
+    _excludeList:[],                        // 不能选择列表
     _maxSelectCount: 0,
     _selectCount: 0,
     _cardListCell: {},
+
+    _target: null,
     _scrollViewHeight: 0,
-    _selectType: SELECT_TYPE_DROP,
 
     onEnter: function () {
         cc.log("CardListLayer onEnter");
@@ -42,6 +50,8 @@ var CardListLayer = cc.Layer.extend({
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
+
+
 
         this._callback = callback || function () {
             MainScene.getInstance().switchLayer(MainLayer);
@@ -134,6 +144,16 @@ var CardListLayer = cc.Layer.extend({
 
         return true;
     },
+
+    _initDefault: function() {
+
+    },
+
+    _initLineUp: function() {
+
+    },
+
+    _init
 
     update: function () {
         cc.log("CardListLayer update");

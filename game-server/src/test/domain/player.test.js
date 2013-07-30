@@ -91,7 +91,36 @@ describe("Player Object", function () {
         });
     });
     
-    
+    describe(".addCards()", function(){
+        it("should can be add multiple cards", function(){
+            var player = new Player();
+            player.addCards([
+                new Card({id: 1}),
+                new Card({id: 2})
+            ]);
+            _.keys(player.cards).length.should.eql([1,2]);
+            player.cards[1].should.be.an.instanceOf(Card);
+            player.cards[2].should.be.an.instanceOf(Card);
+        });
+
+        it("should only can add Card instances", function(){
+            var player = new Player();
+            (function(){
+                player.addCards([1,2])
+            }).should.throw('should only can add a Card instance');
+        })
+    });
+
+    describe('.activeCards()', function(){
+        it('should can get all active cards', function(){
+            var player = new Player(
+                {
+                    id: 1,
+                    name: 'arthur'
+                }
+            );
+        })
+    })
 
     
 });

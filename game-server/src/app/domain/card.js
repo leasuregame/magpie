@@ -54,7 +54,7 @@ var Card = (function (_super) {
             GROUP_EFFECT_HP: 'hp'
         }
         var type = cardConfig.group_effect;
-        var factor = table.getTableItem('factors', this.lv)?.factor
+        var factor = table.getTableItem('factors', this.lv).factor;
         this[_property[type]+'Addition'] += parseInt(cardConfig[_property[type]] * factor * 20 / 100);
     };
 

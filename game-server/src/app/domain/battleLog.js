@@ -26,13 +26,17 @@ var BattleLog = (function (_super) {
         BattleLog.__super__.constructor.apply(this, arguments);
     }
 
-    BattleLog.fields = [
+    BattleLog.FIELDS = [
         'id',
         'createTime',
         'own',
         'enemy',
         'battleLog'
     ];
+
+    BattleLog.DEFAULT_VALUES = {
+        battleLog: {}
+    };
 
     return BattleLog;
 })(Entity);

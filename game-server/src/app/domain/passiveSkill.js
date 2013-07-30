@@ -27,13 +27,18 @@ var PassiveSkill = (function (_super) {
         PassiveSkill.__super__.constructor.apply(this, arguments);
     }
 
-    PassiveSkill.fields = [
+    PassiveSkill.FIELDS = [
         'id',
         'createTime',
         'cardId',
         'name',
         'value'
     ];
+
+    PassiveSkill.DEFAULT_VALUES = {
+        name: '',
+        value: 0
+    };
 
     PassiveSkill.prototype.toJson = function(){
         return {

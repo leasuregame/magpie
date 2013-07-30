@@ -26,14 +26,6 @@ var CardDao = (function (_super) {
         CardDao.__super__.constructor.apply(this, arguments);
     }
 
-    CardDao.DEFAULT_VALUES = {
-        star: 1,
-        lv: 1,
-        exp: 0,
-        skillLv: 1,
-        hpAddition: 0,
-        atkAddition: 0
-    };
     CardDao.table = 'card';
     CardDao.domain = Card;
     CardDao.syncKey = 'cardSync.updateCardById';

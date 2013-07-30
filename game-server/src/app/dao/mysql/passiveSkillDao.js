@@ -26,10 +26,6 @@ var PassiveSkillDao = (function(_super) {
         PassiveSkillDao.__super__.constructor.apply(this, arguments);
     }
 
-    PassiveSkillDao.DEFAULT_VALUES = {
-        name: '',
-        value: 0
-    };
     PassiveSkillDao.table = 'passiveSkill';
     PassiveSkillDao.domain = PassiveSkill;
     PassiveSkillDao.syncKey = 'passiveSkillSync.updatePassiveSkillById';

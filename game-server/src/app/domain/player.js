@@ -59,9 +59,25 @@ var groupCardsEffect = function(player) {
         });
 
         if (!_.isEmpty(seriesCards) && (series.length === seriesCards.length)) {
-            card.activeGroupEffect(cardConfig);
+            card.activeGroupEffect();
         }
     }
+};
+
+var countAbility = function(player) {
+    var ability = 0;
+    player.activeCards().forEach(function(card) {
+        ability += card.ability();
+    });
+    player.ability = ability;
+};
+
+var defaultMark = function() {
+    var i, result = [];
+    for (i = 0; i < 100; i++) {
+        result.push(0);
+    }
+    return result;
 };
 
 /*
@@ -74,10 +90,12 @@ var Player = (function(_super) {
     function Player(param) {
         Player.__super__.constructor.apply(this, arguments);
 
+        countAbility(this);
+        groupCardsEffect(this);
         startPowerResumeTimer(this);
     }
 
-    Player.fields = [
+    Player.FIELDS = [
         'id',
         'createTime',
         'userId',
@@ -97,6 +115,28 @@ var Player = (function(_super) {
         'energy',
         'elixir'
     ];
+
+    Player.DEFAULT_VALUES = {
+        power: 100,
+        lv: 1,
+        exp: 0,
+        money: 1000,
+        gold: 50,
+        lineUp: '',
+        ability: 0,
+        task: {
+            id: 1,
+            progress: 0
+        },
+        pass: {
+            layer: 0,
+            mark: defaultMark()
+        },
+        dailyGift: [],
+        fragments: 0,
+        energy: 0,
+        skillPoint: 0
+    };
 
     Player.prototype.init = function() {
         this.cards = {};
@@ -121,6 +161,13 @@ var Player = (function(_super) {
         var self = this;
         cards.forEach(function(card) {
             self.addCard(card);
+        });
+    };
+
+    Player.prototype.activeCards = function() {
+        var cardIds = _.values(this.lineUpObj());
+        return _.values(this.cards).filter(function(c) {
+            return cardIds.indexOf(c.id) > -1;
         });
     };
 
@@ -278,17 +325,9 @@ var checkPass = function(pass) {
     return pass;
 };
 
-var defaultMark = function() {
-    var i, result = [];
-    for (i = 0; i < 100; i++) {
-        result.push(0);
-    }
-    return result;
-};
-
 var lineUpToObj = function(lineUp) {
     var _results = {};
-    if (lineUp !== '') {
+    if (_.isString(lineUp) && lineUp !== '') {
         var lines = lineUp.split(',');
         lines.forEach(function(l) {
             var _ref = l.split(':'),
@@ -307,7 +346,6 @@ var objToLineUp = function(obj) {
     for (var key in obj) {
         _lineUp += '' + order[parseInt(key) - 1] + ':' + obj[key] + ',';
     }
-    console.log('exchange line up: ', _lineUp);
     return _lineUp.slice(0, -1);
 };
 

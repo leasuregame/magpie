@@ -29,9 +29,16 @@ var Card = (function (_super) {
 
     function Card(param) {
         Card.__super__.constructor.apply(this, arguments);
+
+        var cardConfig = table.getTableItem('cards', this.tableId);
+        var factor = table.getTableItem('factors', this.lv).factor
+        this.hp = cardConfig.hp * factor;
+        this.atk = cardConfig.atk * factor;
+        this.skill = table.getTableItem('skills', cardConfig.skill_id);
+        this.cardConfig = cardConfig;
     }
 
-    Card.fields = [
+    Card.FIELDS = [
         'id',
         'createTime',
         'playerId',
@@ -44,18 +51,30 @@ var Card = (function (_super) {
         'atkAddition'
     ];
 
+    Card.DEFAULT_VALUES = {
+        star: 1,
+        lv: 1,
+        exp: 0,
+        skillLv: 1,
+        hpAddition: 0,
+        atkAddition: 0
+    };
+
     Card.prototype.init = function () {
         this.passiveSkills = {};
     };
 
-    Card.prototype.activeGroupEffect = function(cardConfig) {
+    Card.prototype.activeGroupEffect = function() {
         var _property = {
             GROUP_EFFECT_ATK: 'atk',
             GROUP_EFFECT_HP: 'hp'
         }
-        var type = cardConfig.group_effect;
-        var factor = table.getTableItem('factors', this.lv).factor;
-        this[_property[type]+'Addition'] += parseInt(cardConfig[_property[type]] * factor * 20 / 100);
+        var type = this.cardConfig.group_effect;
+        this[_property[type]+'Addition'] += this[_property[type]] * 20 / 100;
+    };
+
+    Card.prototype.ability = function() {
+        return this.atk + parseInt(this.hp/3);
     };
 
     Card.prototype.addPassiveSkill = function (ps) {

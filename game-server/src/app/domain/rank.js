@@ -21,7 +21,20 @@ var Rank = (function(_super) {
 		Rank.__super__.constructor.apply(this, arguments);
 	}
 
-	Rank.fields = ['id', 'createTime', 'playerId', 'honorPoint', 'title', 'rank', 'ranking', 'counts'];
+	Rank.FIELDS = ['id', 'createTime', 'playerId', 'honorPoint', 'title', 'rank', 'ranking', 'counts'];
+	Rank.DEFAULT_VALUES = {
+        honorPoint: 0,
+        title: '',
+        rank: 1,
+        ranking: 0,
+        counts: {
+            challenge: 0,
+            win: 0,
+            lose: 0,
+            winningStreak: 0,
+            recentChallenger: []
+        }
+    };
 
 	Rank.prototype.toJson = function() {
 		return {

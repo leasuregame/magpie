@@ -18,6 +18,7 @@ var playerConfig = require('../../config/data/player');
 var table = require('../manager/table');
 var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
+var Card = require('./card');
 
 var startPowerResumeTimer = function(player) {
     var resumePoint = playerConfig.POWER_RESUME.point;
@@ -152,8 +153,10 @@ var Player = (function(_super) {
     };
 
     Player.prototype.addCard = function(card) {
-        if (typeof card.id !== 'undefined' && card.id !== null) {
+        if (card instanceof Card && card.id !== null) {
             this.cards[card.id] = card;
+        } else {
+            throw new Error('should only can add a Card instance');
         }
     };
 

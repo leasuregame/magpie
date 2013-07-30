@@ -1,4 +1,5 @@
 dao = require('pomelo').app.get('dao')
+Player = require('../../../domain/player')
 
 module.exports = (app) ->
   new Handler(app)
@@ -9,14 +10,11 @@ Handler::createPlayer = (msg, session, next) ->
   name = msg.name
   areaId = msg.areaId
   uid = session.uid
-  
-  console.log 'create player: ', name, areaId, uid
-  dao.player.fetchOne where: {userId: uid, name: name}, (err, player) ->
-    console.log 'get player: ', err, player
-    if player
+
+  dao.player.fetchOne where: {name: name}, (err, player) ->
+    if not err and player instanceof Player
       return next(null, {code: 501, msg: "player exists."})
     
-    console.log '-a-'
     dao.player.create data: {userId: uid, name: name, areaId: areaId}, (err, player) ->
       if err and not player
         next(null, {code: 500, error: err})

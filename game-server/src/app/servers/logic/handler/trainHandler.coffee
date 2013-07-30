@@ -159,7 +159,7 @@ Handler::starUpgrade = (msg, session, next) ->
 
     (cb) ->
       _config = starUpgradeConfig['STAR_'+card.star]
-      if gold > 0 and gold < player.gold
+      if gold > 0 and gold <= player.gold
         card_count += parseInt(gold/_config.gold_per_card)
         
       if card_count > _config.max_num
@@ -168,8 +168,9 @@ Handler::starUpgrade = (msg, session, next) ->
       totalRate = _.min([card_count * _config.rate_per_card, 100])
       if utility.hitRate(totalRate)
         is_upgrade = true
-
-      cardManager.deleteCards sources, cb
+        cardManager.deleteCards sources, cb
+      else
+        cb()
   ], (err, result) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
@@ -177,7 +178,9 @@ Handler::starUpgrade = (msg, session, next) ->
     if is_upgrade and result
       player.decrease('gold', gold)
       card.increase('star')
-      if allInherit
+
+      # 若金币不足，则不能使用金币来继承全部属性
+      if allInherit and player.gold >= starUpgradeConfig.ALL_INHERIT_GOLD
         player.decrease('gold', starUpgradeConfig.ALL_INHERIT_GOLD)
       else
         inherit_info = starUpgradeConfig.DEFAULT_INHERIT

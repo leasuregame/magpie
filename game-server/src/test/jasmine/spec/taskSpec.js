@@ -3,10 +3,8 @@ describe("Logic Server # ", function() {
   var userid;
 
   beforeAll(function() {
-    it("init db and load test data", function(){
-      doAjax('/loaddata/csv', {}, function(data) {
-          expect(data).toEqual('done');
-      });
+    doAjax('/loaddata/csv', {}, function(data) {
+      expect(data).toEqual('done');
     });
   });
 
@@ -23,18 +21,19 @@ describe("Logic Server # ", function() {
           expect(data.code).toEqual(200);
           expect(data.msg).toBeDefined();
           expect(_.keys(data.msg).sort()).toEqual([
-            'result', 
-            'power_consume', 
-            'exp_obtain', 
-            'money_obtain', 
-            'upgrade', 
+            'result',
+            'power_consume',
+            'exp_obtain',
+            'money_obtain',
+            'upgrade',
             'open_box_card',
-            'battle_log', 
+            'battle_log',
             'fragment'
           ].sort());
           console.log(data);
         });
       });
+
     });
 
     describe("logic.taskHandler.passBarrier", function() {
@@ -50,40 +49,46 @@ describe("Logic Server # ", function() {
           expect(_.keys(data.msg).sort()).toEqual([
             'battleLog',
             'pass'
-            ].sort());
+          ].sort());
           expect(data.msg.battleLog.winner).toEqual('own')
           expect(data.msg.battleLog.rewards).hasProperties(['exp', 'skillPoint'])
           expect(data.msg.pass).hasProperties(['layer', 'mark'])
-          
-        }); 
+
+        });
       });
 
     });
 
-    describe("logic.taskHandler.wipeOut", function(){
+    describe("logic.taskHandler.wipeOut", function() {
 
-      it("任务 should can be 扫荡", function(){
-        request('logic.taskHandler.wipeOut', {playerId: pid, type: 'task'}, function(data){
+      it("任务 should can be 扫荡", function() {
+        request('logic.taskHandler.wipeOut', {
+          playerId: pid,
+          type: 'task'
+        }, function(data) {
           expect(data.code).toEqual(200);
           expect(_.keys(data.msg).sort()).toEqual([
             'pass',
             'rewards'
-            ].sort());
+          ].sort());
           console.log('任务扫荡', data);
         });
       });
 
     });
 
-    describe("logic.taskHandler.wipeOut", function(){
+    describe("logic.taskHandler.wipeOut", function() {
 
-      it("精英关卡 should can be 扫荡", function(){
-        request('logic.taskHandler.wipeOut', {playerId: pid, type: 'pass'}, function(data){
+      it("精英关卡 should can be 扫荡", function() {
+        request('logic.taskHandler.wipeOut', {
+          playerId: pid,
+          type: 'pass'
+        }, function(data) {
           expect(data.code).toEqual(200);
           expect(_.keys(data.msg).sort()).toEqual([
             'pass',
             'rewards'
-            ].sort());
+          ].sort());
           console.log('关卡扫荡', data);
         });
       });
@@ -91,36 +96,47 @@ describe("Logic Server # ", function() {
     });
 
     describe("logic.trainHandler.luckyCard", function() {
-      it("should can be get a lucky card", function(){
-        request('logic.trainHandler.luckyCard', {playerId: pid, type: 1, level: 1}, function(data) {
+      it("should can be get a lucky card", function() {
+        request('logic.trainHandler.luckyCard', {
+          playerId: pid,
+          type: 1,
+          level: 1
+        }, function(data) {
           expect(data.code).toEqual(200);
           expect(_.keys(data.msg).sort()).toEqual([
-            'card', 
-            'consume', 
+            'card',
+            'consume',
             'hasFragment'
-            ].sort());
+          ].sort());
           console.log(data);
         });
       });
     });
 
     describe("logic.trainHandler.strengthen", function() {
-      it("should can be strenthen, and return properties", function(){
-        request('logic.trainHandler.strengthen', {playerId: pid, target: 100, sources: [150,151]}, function(data) {
+      it("should can be strenthen, and return properties", function() {
+        request('logic.trainHandler.strengthen', {
+          playerId: pid,
+          target: 100,
+          sources: [150, 151]
+        }, function(data) {
           expect(data.code).toEqual(200);
           expect(_.keys(data.msg).sort()).toEqual([
-            'exp_obtain', 
-            'money_consume', 
+            'exp_obtain',
+            'money_consume',
             'upgraded_level'
-            ].sort());
+          ].sort());
           console.log(data);
         });
       });
     });
 
     describe("logic.trainHandler.skillUpgrade", function() {
-      it("card's skill should can be upgrade", function(){
-        request('logic.trainHandler.skillUpgrade', {playerId: pid, cardId: 100}, function(data) {
+      it("card's skill should can be upgrade", function() {
+        request('logic.trainHandler.skillUpgrade', {
+          playerId: pid,
+          cardId: 100
+        }, function(data) {
           expect(data.code).toEqual(200);
           console.log(data);
         });
@@ -128,8 +144,12 @@ describe("Logic Server # ", function() {
     });
 
     describe("logic.trainHandler.passSkillAfresh", function() {
-      it("card's pass skill should can be passSkillAfresh", function(){
-        request('logic.trainHandler.passSkillAfresh', {playerId: pid, cardId: 101, psId: 6}, function(data) {
+      it("card's pass skill should can be passSkillAfresh", function() {
+        request('logic.trainHandler.passSkillAfresh', {
+          playerId: pid,
+          cardId: 101,
+          psId: 6
+        }, function(data) {
           expect(data.code).toEqual(200);
           expect(data.msg.value).toBeDefined();
           expect(_.isNumber(parseInt(data.msg.value))).toEqual(true);
@@ -139,29 +159,31 @@ describe("Logic Server # ", function() {
     });
 
     describe("logic.trainHandler.smeltElixir", function() {
-      it("card should can be smelt to elixir", function(){
-        request('logic.trainHandler.smeltElixir', {playerId: pid, cardIds: [152,153,154, 155, 156]}, function(data) {
+      it("card should can be smelt to elixir", function() {
+        request('logic.trainHandler.smeltElixir', {
+          playerId: pid,
+          cardIds: [152, 153, 154, 155, 156]
+        }, function(data) {
           expect(data.code).toEqual(200);
           expect(_.keys(data.msg).sort()).toEqual([
-            'elixir', 
+            'elixir',
             'sum'
-            ].sort());
+          ].sort());
           console.log(data);
         });
       });
     });
 
     describe("logic.trainHandler.starUpgrade", function() {
-      it("card' star should can be upgrade", function(){
+      it("card' star should can be upgrade", function() {
         request(
-          'logic.trainHandler.starUpgrade', 
-          {
-            playerId: '1', 
+          'logic.trainHandler.starUpgrade', {
+            playerId: '1',
             target: 1,
-            sources: [2,3],
+            sources: [2, 3],
             gold: 0,
             allInherit: true
-          }, 
+          },
           function(data) {
             expect(data.code).toEqual(200);
             expect(data.msg.upgrade).toEqual(false);
@@ -171,11 +193,10 @@ describe("Logic Server # ", function() {
       });
     });
 
-    describe("logic.trainHandler.changeLineUp", function(){
-      it("should can be change player's lineUp", function(){
+    describe("logic.trainHandler.changeLineUp", function() {
+      it("should can be change player's lineUp", function() {
         request(
-          'logic.trainHandler.changeLineUp',
-          {
+          'logic.trainHandler.changeLineUp', {
             playerId: '1',
             lineUp: {
               1: 5,
@@ -184,7 +205,7 @@ describe("Logic Server # ", function() {
               4: 2,
               5: 1
             }
-          }, 
+          },
           function(data) {
             expect(data.code).toEqual(200);
             expect(data.msg.lineUp).toEqual({
@@ -200,5 +221,5 @@ describe("Logic Server # ", function() {
     });
 
   });
-  
+
 });

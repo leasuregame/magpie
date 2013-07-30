@@ -21,11 +21,9 @@ var Entity = (function(_super) {
 
     function Entity(param) {
         this.changedFields = [];
-
         if (param) {
-            var values = _.clone(this.constructor.DEFAULT_VALUES);
-            _.extend(values, param)
-            setAttr(this, values);
+            _.defaults(param, this.constructor.DEFAULT_VALUES)
+            setAttr(this, param);
         }
 
         if (typeof(this.init) === "function") {
@@ -92,7 +90,6 @@ var Entity = (function(_super) {
 })(EventEmitter);
 
 var setAttr = function(self, name, value) {
-    console.log('set attributes;', name, value);
     if (arguments.length === 3) {
         if (typeof(self[name]) == "undefined") {
             self[name] = value;

@@ -30,12 +30,14 @@ var Card = (function (_super) {
     function Card(param) {
         Card.__super__.constructor.apply(this, arguments);
 
-        var cardConfig = table.getTableItem('cards', this.tableId);
-        var factor = table.getTableItem('factors', this.lv).factor
-        this.hp = cardConfig.hp * factor;
-        this.atk = cardConfig.atk * factor;
-        this.skill = table.getTableItem('skills', cardConfig.skill_id);
-        this.cardConfig = cardConfig;
+        if (this.tableId) {
+            var cardConfig = table.getTableItem('cards', this.tableId);
+            var factor = table.getTableItem('factors', this.lv).factor
+            this.hp = cardConfig.hp * factor;
+            this.atk = cardConfig.atk * factor;
+            this.skill = table.getTableItem('skills', cardConfig.skill_id);
+            this.cardConfig = cardConfig;
+        }
     }
 
     Card.FIELDS = [
@@ -74,7 +76,10 @@ var Card = (function (_super) {
     };
 
     Card.prototype.ability = function() {
-        return this.atk + parseInt(this.hp/3);
+        var _abi =  this.atk + parseInt(this.hp/3);
+        if (this.skill) {
+            _abi += this.skill.scope * utility.parseEffect(this.skill['star'+this.star])
+        }
     };
 
     Card.prototype.addPassiveSkill = function (ps) {

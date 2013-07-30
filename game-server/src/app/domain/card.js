@@ -32,12 +32,14 @@ var Card = (function (_super) {
 
         if (this.tableId) {
             var cardConfig = table.getTableItem('cards', this.tableId);
-            var factor = table.getTableItem('factors', this.lv).factor
-            this.hp = cardConfig.hp * factor;
-            this.atk = cardConfig.atk * factor;
+            var factor = table.getTableItem('factors', this.lv).factor;
+            this.init_hp = this.hp = cardConfig.hp * factor;
+            this.init_atk = this.atk = cardConfig.atk * factor;
             this.skill = table.getTableItem('skills', cardConfig.skill_id);
             this.cardConfig = cardConfig;
         }
+        // 被动属性生效
+        passiveSkillEffect(this);
     }
 
     Card.FIELDS = [
@@ -76,16 +78,43 @@ var Card = (function (_super) {
     };
 
     Card.prototype.ability = function() {
+        // 1点攻击力=1点战斗力
+        // 3点生命值=1点战斗力
         var _abi =  this.atk + parseInt(this.hp/3);
+        
+        // 技能增强效果 技能攻击个数 * 技能增强效果 * 触发概率
         if (this.skill) {
-            _abi += this.skill.scope * utility.parseEffect(this.skill['star'+this.star])
+            _abi += this.skill.scope * 
+                utility.parseEffect(this.skill['star' + this.star])[0] * 
+                utility.parseEffect(this.skill['rate' + this.star])[0];
         }
+
+        // 0.1%暴击率=10点战斗力
+        // 0.1%闪避率=10点战斗力
+        // 0.1%减伤率=10点战斗力
+        var should_inc_ps = ['dmg_reduce', 'crit', 'dodge']
+        if (this.star >=3) {
+            var ps_values = _.values(this.passiveSkills)
+                .filter(function(ps) {
+                    return should_inc_ps.indexOf(ps.name) > -1;
+                })
+                .map(function(ps){
+                    return ps.value;
+                });
+            var sum = 0;
+            if (ps_values.length > 0) {
+                sum += _.reduce(ps_values, function(x, y) {return x + y;});
+            }            
+            _abi += sum * 100;
+        }
+        return _abi;
     };
 
     Card.prototype.addPassiveSkill = function (ps) {
         if (typeof ps.id !== 'undefined' && ps.id !== null) {
             this.passiveSkills[ps.id] = ps;
         }
+        passiveSkillEffect(this);
     };
 
     Card.prototype.addPassiveSkills = function(passiveSkills) {
@@ -156,6 +185,15 @@ var cardExp = function (lv, exp) {
         totalExp += parseInt(row.exp);
     }
     return totalExp;
+};
+
+var passiveSkillEffect = function(card){
+    var _pro = {'atk_improve': 'atk', 'hp_improve': 'hp'};
+    _.values(card.passiveSkills).filter(function(ps) {
+        return _.keys(_pro).indexOf(ps.name) > -1;
+    }).forEach(function(ps) {
+        card[_pro[ps.name]] += parseInt(card[_pro['init_' + ps.name]] * ps.value / 100);
+    });
 };
 
 module.exports = Card;

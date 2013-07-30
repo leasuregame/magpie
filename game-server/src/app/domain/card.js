@@ -35,7 +35,9 @@ var Card = (function (_super) {
             var factor = table.getTableItem('factors', this.lv).factor;
             this.init_hp = this.hp = cardConfig.hp * factor;
             this.init_atk = this.atk = cardConfig.atk * factor;
-            this.skill = table.getTableItem('skills', cardConfig.skill_id);
+            if (cardConfig.star >= 3) {
+                this.skill = table.getTableItem('skills', cardConfig.skill_id);
+            }
             this.cardConfig = cardConfig;
         }
         // 被动属性生效
@@ -65,7 +67,7 @@ var Card = (function (_super) {
     };
 
     Card.prototype.init = function () {
-        this.passiveSkills = {};
+        this.passiveSkills = this.passiveSkills || {};
     };
 
     Card.prototype.activeGroupEffect = function() {
@@ -84,7 +86,7 @@ var Card = (function (_super) {
         
         // 技能增强效果 技能攻击个数 * 技能增强效果 * 触发概率
         if (this.skill) {
-            _abi += this.skill.scope * 
+            _abi += //this.skill.scope * 
                 utility.parseEffect(this.skill['star' + this.star])[0] * 
                 utility.parseEffect(this.skill['rate' + this.star])[0];
         }
@@ -107,7 +109,7 @@ var Card = (function (_super) {
             }            
             _abi += sum * 100;
         }
-        return _abi;
+        return parseInt(_abi);
     };
 
     Card.prototype.addPassiveSkill = function (ps) {

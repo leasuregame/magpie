@@ -140,8 +140,8 @@ var Player = (function(_super) {
     };
 
     Player.prototype.init = function() {
-        this.cards = {};
-        this.rank = null;
+        this.cards = this.cards || {};
+        this.rank = this.rank || null;
     };
 
     Player.prototype.save = function() {
@@ -165,6 +165,37 @@ var Player = (function(_super) {
         cards.forEach(function(card) {
             self.addCard(card);
         });
+    };
+
+    Player.prototype.hasCard = function(id) {
+        return this.cards[id] !== 'undefined';
+    };
+
+    Player.prototype.getCard = function(id) {
+        return this.cards[id] || null;
+    };
+
+    Player.prototype.getCards = function(ids) {
+        if (!_.isArray(ids)) {
+            ids = [ids];
+        }
+
+        return _.values(this.cards).filter(function(c){
+            return ids.indexOf(parseInt(c.id)) > -1;
+        });
+    };
+
+    Player.prototype.popCards = function(ids) {
+        var cards = [];
+        for (var i = 0; i < ids.length; i++) {
+            var _id = ids[i];
+            var _card = this.cards[_id];
+            if ( !! _card) {
+                cards.push(_card);
+                delete this.cards[_id];
+            }
+        }
+        return cards;
     };
 
     Player.prototype.activeCards = function() {
@@ -225,41 +256,6 @@ var Player = (function(_super) {
             upgraded_level: upgradedLevel,
             money_consume: parseInt(moneyConsume)
         });
-    };
-
-    Player.prototype.hasCard = function(id) {
-        return this.cards[id] !== 'undefined';
-    };
-
-    Player.prototype.getCard = function(id) {
-        return this.cards[id] || null;
-    };
-
-    Player.prototype.getCards = function(ids) {
-        if (!_.isArray(ids)) {
-            ids = [ids];
-        }
-
-        var results = [];
-        for (var id in this.cards) {
-            if (_.contains(ids, id)) {
-                results.push(this.cards[id]);
-            }
-        }
-        return results;
-    };
-
-    Player.prototype.popCards = function(ids) {
-        var cards = [];
-        for (var i = 0; i < ids.length; i++) {
-            var _id = ids[i];
-            var _card = this.cards[_id];
-            if ( !! _card) {
-                cards.push(_card);
-                delete this.cards[_id];
-            }
-        }
-        return cards;
     };
 
     Player.prototype.setPassMark = function(layer) {

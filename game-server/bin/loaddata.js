@@ -1,11 +1,13 @@
-var config = require('../config/mysql').development;
+var config = require('../config/mysql')[process.argv[3] || 'development'];
 var mysql = require('mysql');
 var fs = require('fs');
 var path = require('path');
+var async = require('async');
+var _ = require('underscore');
 
 var FIXTURES_DIR = path.join(__dirname, '..', 'config', 'fixtures/')
 var DELIMITER = ';';
-var OBJECT_FIELDS = ['task'];
+var OBJECT_FIELDS = ['task', 'pass'];
 
 var connection = mysql.createConnection({
   host: config.host,
@@ -43,34 +45,36 @@ var insertSql = function(table, headers, row) {
     if (fields[i] !== '') {
       fields_str += headers[i] + ",";
       values_str += "?,"
-      var field = OBJECT_FIELDS.indexOf(headers[i]) !== -1 ? fields[i].replace(new RegExp('""', 'gm'), '"').replace('"{', '{').replace('}"', '}') : fields[i]
+      var field = OBJECT_FIELDS.indexOf(headers[i]) !== -1 ? fields[i].replace(new RegExp('""', 'gm'), '"').replace('"{', '{').replace('}"', '}') : fields[i];
       args.push(field);
     }
   }
 
   var sql = "insert into " + table + " (" + fields_str.slice(0, -1) + ") values (" + values_str.slice(0, -1) + ");";
-  console.log(sql, args);
   return [sql, args];
 };
 
-var importCsvToMySql = function(table, filepath) {
+var importCsvToMySql = function(table, filepath, callback) {
   data = fs.readFileSync(filepath, 'utf-8')
   row_delimiter = data.indexOf('\n') > 0 ? '\n' : '\r2';
 
   var list = data.toString().split(row_delimiter);
   var headers = list[0].split(DELIMITER);
   var rows = list.slice(1);
-  if (table == 'player') console.log(list);
-  for (i = 0; i < rows.length; i++) {
-    // ignore empty row
-    if (rows[i] == '' || rows[i].split(DELIMITER).length == 1) break;
 
-    (function(i) {
-      id = rows[i].split(',')[0];
-      var _ref = deleteSql(table, rows[i].split(DELIMITER)[0]),
+  async.each(
+    rows,
+    function(row, cb) {
+      // ignore empty row
+      if (row == '' || !_.any(row.split(DELIMITER))) {
+        return cb();
+      }
+
+      id = row.split(',')[0];
+      var _ref = deleteSql(table, row.split(DELIMITER)[0]),
         delete_sql = _ref[0],
         d_args = _ref[1];
-      var _ref = insertSql(table, headers, rows[i]),
+      var _ref = insertSql(table, headers, row),
         insert_sql = _ref[0],
         i_args = _ref[1];
 
@@ -81,28 +85,102 @@ var importCsvToMySql = function(table, filepath) {
         query(insert_sql, i_args, function(err, result) {
           if (err) {
             console.log('Error: import data to ', table);
-            throw err;
+            return cb(err);
           }
+          cb();
         });
       });
-    })(i);
-  }
-
+    },
+    callback
+  );
 };
 
-var laodCsvDataToSql = function() {
+var laodCsvDataToSql = function(cb) {
   console.log("  *** load data from csv ***  ");
-  fs.readdirSync(FIXTURES_DIR).forEach(function(filename) {
-    if (!/\.csv/.test(filename)) {
-      return;
+  var files = fs.readdirSync(FIXTURES_DIR);
+
+  async.each(files, function(filename, cb) {
+    if (!/\.csv$/.test(filename)) {
+      return cb();
     }
 
     var table = path.basename(filename, '.csv');
-    importCsvToMySql(table, FIXTURES_DIR + filename);
+    importCsvToMySql(table, FIXTURES_DIR + filename, cb);
     console.log(filename + '   >>   ' + table);
+  }, function(err) {
+    if (err) {
+      console.log(err);
+    }
+
+    console.log('  *** load dta from csv completed ***  ');
+    console.log('done');
+    cb(null, true);
   });
-  console.log('  *** completed ***  ');
-  //process.exit();
 };
 
-laodCsvDataToSql();
+var loadDataForRankingList = function(cb) {
+  var count = 0;
+  console.log('  *** create test data for ranking list ***  ');
+  console.log('creating......');
+  for (var i = 10000; i < 20001; i++) {
+    (function(id) {
+      var _ranking = 10000;
+      var data = {
+        id: id,
+        name: 'james' + id,
+        userId: id,
+        areaId: 1,
+        createTime: Date.now()
+      };
+      query('insert into player set ?', data, function(err, res) {
+        if (err) {
+          console.log(err);
+        }
+
+        query('insert into rank set ?', {
+          playerId: id,
+          createTime: Date.now(),
+          ranking: id - 9999
+        }, function(err, _res) {
+          count += 1;
+          if (count == 10001) {
+            console.log('  ***  data for ranking list completed ***  ');
+            cb(null, true); 
+          }
+        });
+      });
+
+    })(i);
+  }
+};
+
+var main = function() {
+  var type = process.argv[2];
+  var quenues = [];
+
+  switch (type) {
+    case 'csv': 
+      quenues.push(laodCsvDataToSql); 
+      break;
+    case 'rank': 
+      quenues.push(loadDataForRankingList); 
+      break;
+    default: 
+      quenues.push(laodCsvDataToSql);
+      quenues.push(loadDataForRankingList);
+  }
+
+  async.map(
+    quenues,
+    function(fn, cb) {
+      fn(cb)
+    },
+    function(err, results) {
+      if (_.every(results)) {
+        process.exit();
+      }
+    }
+  );
+};
+
+main();

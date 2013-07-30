@@ -20,7 +20,7 @@ var LoginScene = cc.Scene.extend({
     onEnter : function() {
         if(!this._super()) return false;
 
-        cc.log("loginScene onEnter");
+        cc.log("login onEnter");
 
         return true;
     }

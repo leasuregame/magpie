@@ -13,13 +13,13 @@ describe "User Data Access Object", ->
       app.get('dbClient').delete 'delete from user where account = ?', [account], ->
 
     it "should can be create user when user not exists", (done) ->
-      dao.user.createUser {account: account, password: password}, (err, res) ->
+      dao.user.createUser data:{account: account, password: password}, (err, res) ->
         res.id.should.be.a('number')
         should.strictEqual(err, null)
         done()  
 
     it "should return error message when user exists", (done) ->
-      dao.user.createUser {account: account, password: password}, (err, res) ->
+      dao.user.createUser data:{account: account, password: password}, (err, res) ->
         should.strictEqual(res, null)
         err.should.eql({ 
           code: 'ER_DUP_ENTRY',
@@ -44,27 +44,27 @@ describe "User Data Access Object", ->
           )
 
       it "should can be got user by account", (done) ->
-        dao.user.getUserByAccount account, (err, res) ->
+        dao.user.getUserByAccount where: account:account, (err, res) ->
           should.strictEqual(err, null)
           res.should.be.ok
           done()
 
       it "should can be got user by Id", (done) ->
-        dao.user.getUserById id, (err, res) ->
+        dao.user.getUserById where: id:id, (err, res) ->
           should.strictEqual(err, null)
           res.should.be.ok
           done()
 
     describe "when user not exists", ->
       it "should can not get user by id, and with error [User not exist]", (done) ->
-        dao.user.getUserById id, (err, res) -> 
-          err.should.eql({ code: null, msg: 'User not exist' })
+        dao.user.getUserById where: id:id, (err, res) -> 
+          err.should.eql({ code: 404, msg: 'can not find user' })
           should.strictEqual(res, null)
           done()
 
       it "should can not get user by Account, and with error [User not exist]", (done) ->
-        dao.user.getUserByAccount account, (err, res) ->
-          err.should.eql({ code: null, msg: 'User not exist' })
+        dao.user.getUserByAccount where: account:account, (err, res) ->
+          err.should.eql({ code: 404, msg: 'can not find user' })
           should.strictEqual(res, null)
           done()
 
@@ -85,7 +85,7 @@ describe "User Data Access Object", ->
           )
 
       it "should can be delete by Id", (done) ->
-        dao.user.deleteUserById id, (err, res) ->
+        dao.user.deleteUserById where: id:id, (err, res) ->
           should.strictEqual(err, null)
           res.should.be.ok
           done()
@@ -93,7 +93,7 @@ describe "User Data Access Object", ->
 
     describe "when user not exist", ->
       it "should return result 'false', deleteUserById", (done) ->
-        dao.user.deleteUserById id, (err, res) ->
+        dao.user.deleteUserById where: id:id, (err, res) ->
           should.strictEqual(err, null)
           res.should.not.be.ok
           done()

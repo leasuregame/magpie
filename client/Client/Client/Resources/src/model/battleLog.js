@@ -8,31 +8,32 @@
 
 
 /*
-* battle log
-* */
+ * battle log
+ * */
 
 
-var BattleLog = cc.Class.extend({
-    _own : null,
-    _enemy : null,
-    _winner : "",
-    _rewards : null,
-    _battleStep : null,
-    _battleStepLen : 0,
-    _index : -1,
+var BattleLog = Entity.extend({
+    _id: 0,
+    _own: null,
+    _enemy: null,
+    _winner: "",
+    _rewards: null,
+    _battleStep: null,
+    _battleStepLen: 0,
+    _index: -1,
 
-    init : function(json) {
+    init: function (json) {
         cc.log("BattleLog init");
 
         var battleLog = json;
 
-        if(typeof(battleLog) == "string") {
-//            battleLog = battleLog.substring(battleLog.indexOf("("));
-            battleLog = eval("(" + battleLog + ")");
+        if (typeof(battleLog) == "string") {
+            battleLog = JSON.parse(battleLog);
         }
 
         cc.log(battleLog);
 
+        this._id = battleLog.id || 0;
         this._own = battleLog.own;
         this._enemy = battleLog.enemy;
         this._winner = battleLog.winner;
@@ -43,31 +44,21 @@ var BattleLog = cc.Class.extend({
         return true;
     },
 
-    getBattleWinner : function() {
-        cc.log("BattleLog getBattleWinner");
-        return this._winner;
-    },
-
-    getBattleOwn : function() {
+    getBattleOwn: function () {
         cc.log("BattleLog getBattleMe");
         return this._own;
     },
 
-    getBattleEnemy : function() {
+    getBattleEnemy: function () {
         cc.log("BattleLog getBattleEnemy");
         return this._enemy;
     },
 
-    getBattleReward : function() {
-        cc.log("BattleLog getBattleResult");
-        return this._rewards;
-    },
-
-    recover : function() {
+    recover: function () {
         this._index = -1;
     },
 
-    hasNextBattleStep : function() {
+    hasNextBattleStep: function () {
         this._index += 1;
 
         cc.log("BattleLog has Next BattleStep " + this._index + "  " + this._battleStepLen + " " + (this._index < this._battleStepLen));
@@ -75,21 +66,22 @@ var BattleLog = cc.Class.extend({
         return (this._index < this._battleStepLen);
     },
 
-    getBattleStep : function() {
+    getBattleStep: function () {
         cc.log("BattleLog getBattleStep");
+
         return BattleStep.create(this._battleStep[this._index]);
     },
 
-    getBattleStepIndex : function() {
+    getBattleStepIndex: function () {
         return this._index;
     }
 })
 
 
-BattleLog.create = function(json) {
+BattleLog.create = function (json) {
     var ret = new BattleLog();
 
-    if(ret && ret.init(json)) {
+    if (ret && ret.init(json)) {
         return ret;
     }
 

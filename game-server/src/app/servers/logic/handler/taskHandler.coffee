@@ -7,6 +7,7 @@ _ = require 'underscore'
 Card = require '../../../domain/card'
 cardConfig = require '../../../../config/data/card'
 utility = require '../../../common/utility'
+dao = require('pomelo').app.get('dao')
 
 module.exports = (app) ->
   new Handler(app)
@@ -18,6 +19,7 @@ Handler = (@app) ->
 ###
 Handler::explore = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
+  taskId = msg.taskId
   rewards = null
   player = null
 
@@ -27,19 +29,19 @@ Handler::explore = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
-      taskManager.explore player, cb
+      taskManager.explore player, taskId, cb
 
-    (data, cb) =>
+    (data, chapterId, sectionId, cb) =>
       if data.result is 'fight'
         taskManager.fightToMonster(
           @app, 
           session, 
-          {pid: player.id, tableId: player.task.id, table: 'task_config'}, 
+          {pid: player.id, tableId: chapterId, sectionId: sectionId, table: 'task_config'}, 
           (err, battleLog) ->
             data.battle_log = battleLog
 
             if battleLog.winner is 'own'
-              obtainBattleRewards(player, battleLog)
+              obtainBattleRewards(player, chapterId, battleLog)
               taskManager.countExploreResult player, data, cb
             else
               cb(null, data)
@@ -77,16 +79,15 @@ Handler::wipeOut = (msg, session, next) ->
       return next(null, {code: 500, msg: err.msg})
 
     player.save()
-    next(null, {code: 200, msg: rewards})
+    next(null, {code: 200, msg: {rewards: rewards, pass: player.pass}})
 
 ###
 精英关卡，闯关
 ###
 Handler::passBarrier = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
-  passId = msg.passId or 1
+  layer = msg.layer
   player = null
-  pass = 0
 
   async.waterfall [
     (cb) ->
@@ -94,29 +95,30 @@ Handler::passBarrier = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
-      if player.pass < passId
+      layer = layer or player.pass.layer + 1
+      if (player.pass.layer + 1) < layer or layer > 100
         return cb({msg: '不能闯此关'})
 
       cb(null)
 
     (cb) =>
-      pass = msg.pass or player.pass
-      @app.rpc.battle.fightRemote.pve( session, {pid: player.id, tableId: pass, table: 'pass_config'}, cb )
+      @app.rpc.battle.fightRemote.pve( session, {pid: player.id, tableId: layer, table: 'pass_config'}, cb )
 
     (bl, cb) ->
       if bl.winner is 'own'
-        rdata = table.getTableItem 'pass_reward', pass
+        rdata = table.getTableItem 'pass_reward', layer
         rewards = 
           exp: rdata.exp
           money: rdata.coins
-          skillPoins: rdata.skill_poins
+          skillPoint: rdata.skill_point
 
         bl.rewards = rewards
 
         player.increase('exp', rewards.exp)
         player.increase('money', rewards.money)
-        player.increase('skillPoins', rewards.skillPoins)
-        player.increase('pass')
+        player.increase('skillPoint', rewards.skillPoint)
+        player.incPass() if player.pass.layer is layer-1
+        player.setPassMark(layer)
         player.save()
       
       cb(null, bl)
@@ -124,40 +126,54 @@ Handler::passBarrier = (msg, session, next) ->
   ], (err, bl) ->
     if err 
       return next(err, {code: 500, msg: err.msg or ''})
+    
+    next(null, {code: 200, msg: {battleLog: bl, pass: player.pass}})
 
-    next(null, {code: 200, msg: bl})
+obtainBattleRewards = (player, taskId, battleLog) ->
+  taskData = table.getTableItem 'task_config', taskId
 
-obtainBattleRewards = (player, battleLog) ->
-  taskData = table.getTableItem 'task_config', player.task.id
-  
   # 奖励掉落卡牌
-  _cards = getRewardCards(taskData.cards.split('#'), taskData.max_drop_card_number)
+  ids = taskData.cards.split('#').map (id) ->
+    _row = table.getTableItem 'task_card', id
+    _row.card_id
+
+  _cards = getRewardCards(ids, taskData.max_drop_card_number)
   battleLog.rewards.cards = _cards
 
   # 将掉落的卡牌添加到玩家信息
   addCardsToPlayer(player, _cards)
 
 getRewardCards = (cardIds, count) ->
+  countCardId = (id, star) ->
+    _card = table.getTableItem 'cards', id
+    if _card.star isnt star
+      _card_id = if _card.star > star then (id - 1) else (id + 1)
+      return _card_id
+    else
+      return id
+
   cd = taskRate.card_drop
-  
   _cards = []
   for i in [1..count]
-    id = utility.randomValue cardIds
-    star = utility.randomValue [1,2], _.values(cd.star)
-    level = utility.randomValue [1,2,3,4,5], _.values(cd.level)
+    _id = utility.randomValue cardIds
+    _star = utility.randomValue _.keys(cd.star), _.values(cd.star)
+    _level = utility.randomValue _.keys(cd.level), _.values(cd.level)
 
+    console.log "-id-", _id, _star
+    _id = countCardId(parseInt(_id), parseInt(_star))
+    console.log "=id=", _id
     _cards.push {
-      id: parseInt(id)
-      star: star
-      lv: level
+      id: _id
+      star: parseInt(_star)
+      lv: parseInt(_level)
     }
   
   _cards
 
 addCardsToPlayer = (player, cards) ->
   async.each cards, (card) ->
-    dao.card.createCard(
-      {
+    dao.card.create(
+      data: {
         playerId: player.id, 
         talbeId: card.id, 
         star: card.star,

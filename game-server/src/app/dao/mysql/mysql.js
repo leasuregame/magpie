@@ -1,3 +1,4 @@
+var queues = require('mysql-queues');
 var NND, sqlclient, _pool;
 
 _pool = null;
@@ -16,13 +17,43 @@ NND = {
 
     query: function (sql, args, cb) {
         return _pool.acquire(function (err, client) {
-            if (!!err) {
+            if ( !! err) {
                 console.error('[sqlqueryErr] ' + err.stack);
                 return;
             }
             return client.query(sql, args, function (err, res) {
                 _pool.release(client);
                 return cb(err, res);
+            });
+        });
+    },
+
+    queues: function (sqlList, cb) {
+        return _pool.acquire(function (err, client) {
+            if ( !! err) {
+                console.error('[sqlqueryErr] ' + err.stack);
+                return;
+            }
+            queues(client, true);
+            var trans = client.startTransaction();
+
+            function error(e, info) {
+                if (e && trans.rollback) {
+                    trans.rollback(function(err, info) {
+                        return cb(e, false);
+                    });
+                }
+                if (info.affectedRows < 1 && trans.rollback) {
+                    trans.rollback(function(err, info){
+                        return cb({code: 501, msg: 'not all data is complete'}, false);
+                    });
+                }
+            }
+            for (var i = 0; i < sqlList.length; i++) {
+                trans.query(sqlList[i].sql, sqlList[i].args, error);
+            }
+            trans.commit(function(err, info) {
+                return cb(err, true);
             });
         });
     },
@@ -42,7 +73,7 @@ NND = {
 
 sqlclient = {
     init: function (app) {
-        if (!!_pool) {
+        if ( !! _pool) {
             return sqlclient;
         } else {
             NND.init(app);
@@ -50,6 +81,7 @@ sqlclient = {
             sqlclient.update = NND.query;
             sqlclient.delete = NND.query;
             sqlclient.query = NND.query;
+            sqlclient.queues = NND.queues;
             return sqlclient;
         }
     },

@@ -1,4 +1,5 @@
-dao = require('pomelo').app.get('dao')
+app = require('pomelo').app
+dao = app.get('dao')
 Cache = require '../common/cache'
 async = require 'async'
 _ = require 'underscore'
@@ -8,7 +9,7 @@ playerList = new Cache()
 class Manager 
 
   @createPlayer: (uid, name, params, cb) ->
-    dao.player.createPlayer uid, name, params, (err, player) ->
+    dao.player.create data: {userId: uid, name: name, areaId: areaId}, (err, player) ->
       if err isnt null
         cb(err, null)
         return
@@ -16,10 +17,15 @@ class Manager
       cb(null, player)
 
   @getPlayerInfo: (params, cb) ->
-    _player = playerList.get(params.pid)
-    return cb(null, _player) if _player?
+    if app.get('debug')
+      _player = playerList.get(params.pid)
+      return cb(null, _player) if _player?
 
-    dao.player.getPlayerInfo params.pid, (err, player) ->
+    sync = params.sync or true
+    dao.player.getPlayerInfo {
+      where: {id:params.pid}, 
+      sync: sync
+    }, (err, player) ->
       if err isnt null
         cb(err, null)
         return
@@ -28,40 +34,35 @@ class Manager
       cb(null, player)
 
   @getPlayers: (ids, cb) ->
-    results = {}
-    _ids = _.clone(ids)
-    for id, i in _ids
-      _player = playerList.get(id)
-      if _player?
-        results[id] = _player
-        ids.splice(i, 1)
+    dao.player.getPlayerDetails ids, (err, res) ->
+      if err isnt null
+        return cb(err, null)
 
-    return cb(null, results) if ids.length is 0
+      results = {}
+      res.map (r) -> results[r.id] = r
+      return cb(null, results)
 
-    async.each( 
-      ids, 
-      (id, done) ->
-        dao.player.getPlayerInfo id, (err, player) ->
-          if err isnt null
-            return done(err)
+  @rankingList: (rankings, cb) ->
+    async.waterfall [
+      (callback) ->
+        dao.rank.fetchMany where: " ranking in (#{rankings.toString()}) ", callback
 
-          playerList.put player.id, player
-          results[id] = player
-          done()
-      , 
-      (err) ->
-        if (err) 
-          cb(err, null)
-        else
-          cb(null, results)
-    )
+      (ranks, callback) ->
+        _ids = ranks.map (r)-> r.playerId
+        dao.player.getPlayerDetails _ids, (err, results) ->
+          callback(err, results, ranks)
+          
+    ], (err, players, ranks) ->
+      if err isnt null
+        return cb(err, null)
 
-getActivatedCards = (params, cb) ->
-  dao.card.getCardByPlayersId params.pid, {activated: 1}, (err, cards) ->
-    if err isnt null
-      cb(err, null)
-      return
+      addRankInfo(players, ranks)
+      cb(null, players)
+    
 
-    cb(null, cards)
+addRankInfo = (players, ranks) ->
+  for p in players
+    r = _.findWhere(ranks, {playerId: p.id})
+    p.set('rank', r) if r?
 
 module.exports = Manager

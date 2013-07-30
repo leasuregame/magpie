@@ -49,7 +49,7 @@ describe("Card Object", function () {
                         data.atkAddition
                     ],
                     function (err, res) {
-                        dao.card.getCardById(data.id, function (err, res) {
+                        dao.card.fetchOne({where: {id: data.id}}, function (err, res) {
                             card = res;
                             return done();
                         });

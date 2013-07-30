@@ -1,107 +1,91 @@
 describe("Connecter Server # ", function() {
   var pomelo = window.pomelo;
-  var inited = false;
   var userid;
-
-  var request = function(route, msg, cb) {
-    var ok = false;
-    runs(function() {
-      pomelo.request(route, msg, function(data) {
-        ok = true;
-        cb(data);
-      });
-    });
-
-    waitsFor(function() {
-      return ok;
-    });
-  };
-
-  var intiPomelo = function() {
-    runs(function() {
-      pomelo.init({
-        host: '127.0.0.1',
-        port: '3010'
-      }, function() {
-        console.log('connect success!');
-        inited = true;
-
-        pomelo.on('onMessage', function(data) {
-          console.log('***** on message: ', data);
-        });
-        pomelo.on('onLogin', function(data) {
-          console.log('***** on login: ', data);
-        });
-      });
-    });
-    waitsFor(function() {
-      return inited;
-    });
-  };
-
+  var pid;
+  var myName = 'wuzhanghai';
+  
   describe("Set Up", function() {
-    it("connect to server", function() {
-      intiPomelo();
-    });
+    it("init database", function() {
+      doAjax('/createDb', {}, function(data) {});
+    })
   });
 
   describe('Player Handler', function(){
-    beforeEach(function(){
-      var ok = false;
-      runs(function(){
-        $.get('/adduser', {account: 'test_email_2@qq.com', password: '1'}, function(data){
-          userid = data.uid;
-          ok = true;
-        });
+    
+    it("add user test_email_2@qq.com",function(){
+      doAjax('/adduser', {account: 'test_email_2@qq.com', password: '1'}, function(data) {
+        userid = data.uid;
       });
+    });
       
-      waitsFor(function(){return ok;});
+    it ("login with test_email_2@qq.com", function(){
+      request('connector.userHandler.login', {account: 'test_email_2@qq.com', password: '1'}, function(data){
+        if (data.code == 200){
+          console.log('login success.');
+        }
+        else{
+          console.log('login faild.');
+        }
+      });
     });
 
-    afterEach(function(){
-      var ok = false;
-      runs(function(){
-        $.get('/removeuser', {uid: userid}, function(data){
-          ok = true;
+    it("should can be create player", function(){
+      request('connector.playerHandler.createPlayer', {name: myName, areaId: 1}, function(data){
+        console.log('create new palyer');
+        console.log(data);
+        var player = data.msg.player;
+        pid = data.msg.player.id;
+        expect(data).toEqual({
+          code: 200,
+          msg: {
+            player: {
+                id: pid,
+                createTime: player.createTime,
+                userId: userid,
+                areaId: 1,
+                name: 'wuzhanghai',
+                power: 100,
+                lv: 1,
+                exp: 0,
+                money: 1000,
+                gold: 50,
+                lineUp: {},
+                ability: 0,
+                task: {
+                    id: 1,
+                    progress: 0
+                },
+                pass: { layer : 0, mark : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] },
+                dailyGift: [],
+                skillPoint: 0,
+                energy: 0,
+                cards: [], 
+                rank: null
+            }
+          }
         });
       });
-
-      waitsFor(function(){return ok;});
     });
 
-    describe("when user login", function(){
-      var pid;
-
-      beforeEach(function(){
-        request('connector.userHandler.login', {account: 'test_email_2@qq.com', password: '1'}, function(data){
-          if (data.code == 200){
-            console.log('login success.');
-          }
-          else{
-            console.log('login faild.');
-          }
-        });
-
-        pomelo.on('onChart', function(data){
-          console.log('message: on chart: ', data);
+    it("should can not create duplicate player", function() {
+      request('connector.playerHandler.createPlayer', {name: myName, areaId: 1}, function(data){
+        console.log('create dup player');
+        expect(data).toEqual({
+          code: 501, 
+          msg: "player exists."
         })
-      });
-
-      afterEach(function(){
-        $.get('/removePlayer', {pid: pid}, function(data){
-
-          })
-      });
-
-      it("should can be create player", function(){
-        request('connector.playerHandler.createPlayer', {name: 'wuzhanghai', areaId: 1}, function(data){
-          pid = data.player.id;
-          console.log(data);
-          expect(data).toEqual({ code : 201, player : { id : userid, name : 'wuzhanghai' } });
-        });
       });
     });
 
   });
 
+  describe("tearm donw", function(){
+    it("remove user", function(){
+      doAjax('/removeuser', {uid: userid}, function(data) {});
+    });
+
+    it("remove player", function(){
+      doAjax('/removePlayer', {playerId: pid}, function(data){});
+    });
+  });    
 });

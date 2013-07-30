@@ -8,82 +8,158 @@
 
 
 /*
-* 卡牌类
-* */
+ * 卡牌类
+ * */
 
 
-var Card = cc.Node.extend({
-    _tid : 0,                // 数据库对应ID
-    _id : 0,                 // 数据表对应ID
-    _name : "",              // 卡牌名称
-    _description : "",       // 卡牌描述
-    _star : 0,               // 卡牌星级
-    _level : 0,              // 卡牌等级
-    _maxLevel : 0,           // 卡牌最大等级
-    _exp : 0,                // 当前经验
-    _maxExp : 0,             // 最大经验
-    _skillId : 0,            // 数据库表对应技能ID
-    _skillName : "",         // 技能名称
-    _skillDescription : "",  // 技能描述
-    _skillLevel : 0,         // 技能等级
-    _skillMaxLevel : 0,      // 技能最大等级
-    _hp : 0,                 // 卡牌生命值
-    _damage : 0,             // 卡牌攻击值
-    _critProbability : 0.0,  // 卡牌暴击概率
-    _missProbability : 0.0,  // 卡牌闪避概率
+var Card = Entity.extend({
+    _id: 0,                 // 数据库对应ID
+    _createTime: 0,         // 创建时间
+    _tableId: 0,            // 数据表对应ID
+    _lv: 0,                 // 卡牌等级
+    _exp: 0,                // 当前经验
+    _skillLv: 0,            // 技能等级
+    _hpAddition: 0,         // 生命培养量
+    _atkAddition: 0,        // 攻击培养量
+    _elixir: 0,             // 已经消耗的仙丹
+    _passiveSkillList: [],  // 被动技能
+    _isUse: false,          // 是否上阵
 
-    _cardNode : null,
-    _cardMenuItem : null,
-    _cardProgress : null,
+    _kindId: 0,             // 系列号
+    _name: "",              // 卡牌名称
+    _description: "",       // 卡牌描述
+    _star: 0,               // 卡牌星级
+    _maxLv: 0,              // 卡牌最大等级
+    _maxExp: 0,             // 最大经验
+    _hpInit: 0,             // 卡牌初始生命值
+    _atkInit: 0,            // 卡牌初始攻击值
+    _hp: 0,                 // 卡牌总生命值
+    _atk: 0,                // 卡牌总攻击力
+    _ability: 0,            // 战斗力
+    _skillId: 0,            // 数据库表对应技能ID
 
-    init : function(tid, id, star, level, skillLevel, hp, damage) {
+    _skillName: "",         // 技能名称
+    _skillDescription: "",  // 技能描述
+    _skillMaxLv: 0,         // 技能最大等级
+
+    init: function (data) {
         cc.log("Card init");
 
-        this._super();
-        this._tid = tid || 0;
-        this._id = id;
-        this._star = star;
-        this._level = level;
-        this._skillLevel = skillLevel;
-        this._hp = hp;
-        this._damage = damage;
+        return this.update(data);
     },
 
-    initWithTable : function(row) {
-        cc.log("Card initWithTable");
+    // 更新卡牌数据
+    update: function (data) {
+        cc.log("Card update");
 
-        this.init(row.tid, row.id, row.star, row.level, row.skillLevel, row.hp, row.damage);
-    },
+        this._id = data.id || this._id;
+        this._createTime = data.createTime || this._createTime;
+        this._tableId = data.tableId || this._tableId;
+        this._lv = data.lv || this._lv;
+        this._exp = data.exp || this._exp;
+        this._skillLv = data.skillLv || this._skillLv;
+        this._hpAddition = data.hpAddition || this._hpAddition;
+        this._atkAddition = data.atkAddition || this._atkAddition;
+        this._elixir = data.elixir || this._elixir;
 
-    cardUpdata : function() {
-
-    },
-
-    getCardNode : function() {
-        if(this._cardNode == null) {
-            this._cardNode = CardNode.create(this);
+        if (data.passiveSkills) {
+            var passiveSkillList = data.passiveSkills;
+            var len = passiveSkillList.length;
+            for (var i = 0; i < len; ++i) {
+                this._passiveSkillList[i] = {
+                    id: passiveSkillList.id,
+                    name: passiveSkillList.name,
+                    value: passiveSkillList.value
+                }
+            }
         }
 
-        return this._cardNode;
+        this._loadCardTable();
+        this._loadSkillTable();
+
+        this._ability = this._getCardAbility();
+
+        return true;
     },
 
-    releaseCardNode : function() {
-        this._cardNode = null;
+    _loadCardTable: function () {
+        cc.log("Card _loadCardTable");
+
+        // 读取卡牌配置表
+
+        var cardTable = outputTables.cards.rows[this._tableId];
+
+        this._kindId = cardTable.number;
+        this._name = cardTable.name;
+        this._description = cardTable.description;
+        this._star = cardTable.star;
+        this._hpInit = cardTable.hp;
+        this._atkInit = cardTable.atk;
+        this._skillId = cardTable.skill_id;
+
+        // 读取等级加成表
+
+        var factorsTable = outputTables.factors.rows[this._lv];
+        var multiple = factorsTable.factor;
+
+        this._hpInit *= multiple;
+        this._atkInit *= multiple;
+
+        this._hpInit = Math.round(this._hpInit);
+        this._atkInit = Math.round(this._atkInit);
+
+        this._hp = this._hpInit + this._hpAddition;
+        this._atk = this._atkInit + this._atkAddition;
+
     },
 
-    getCardMenuItem : function() {
-        if(this._cardMenuItem == null) {
-            this._cardMenuItem = CardMenuItem.create(this);
-        }
+    _loadSkillTable: function () {
+        cc.log("Card _loadSkillTable");
 
-        return this._cardMenuItem;
+        // 读取技能配置表
+
+        var skillTable = outputTables.skills.rows[this._skillId];
+
+        this._skillName = skillTable.name;
+        this._skillDescription = skillTable.description;
+        this._skillMaxLv = 6;
     },
 
-    releaseCardMenuItem : function() {
-        this._cardMenuItem = null;
+    // 计算单个卡牌战斗力
+    _getCardAbility: function () {
+        cc.log("Card _getCardAbility");
+
+        return 0;
     },
 
-    getCardDetails : function() {
-        return CardDetails.create(this);
+    // 计算总经验
+    getCardExp: function () {
+        cc.log("Card getCardExp");
+    },
+
+    clone: function () {
+        cc.log("Card clone");
+
+        return Card.create({
+            id: this._id,
+            createTime: this._createTime,
+            tableId: this._tableId,
+            lv: this._lv,
+            exp: this._exp,
+            skillLv: this._skillLv,
+            hpAddition: this._hpAddition,
+            atkAddition: this._atkAddition,
+            elixir: this._elixir
+        });
     }
 })
+
+Card.create = function (data) {
+    var ret = new Card();
+
+    if (ret && ret.init(data)) {
+        return ret;
+    }
+
+    return null;
+}

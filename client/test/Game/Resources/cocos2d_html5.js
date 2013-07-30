@@ -66,17 +66,17 @@
             'src/view/mainLayer.js',
             'src/view/shopLayer.js',
             'src/view/cardLibraryLayer.js',
-            'src/view/rankingLayer.js',
+            'src/view/rankLayer.js',
             'src/view/friendLayer.js',
-            'src/view/otherLayer.js',
+            'src/view/messageLayer.js',
 
             'src/view/taskLayer.js',
             'src/view/lotteryLayer.js',
-            'src/view/barriersLayer.js',
+            'src/view/passLayer.js',
             'src/view/tournamentLayer.js',
             'src/view/strengthenLayer.js',
 
-            'src/view/mainScene.js',
+            'src/view/main.js',
             'src/myApp.js', //add your own files in order here
             'main_html5.js'
         ]

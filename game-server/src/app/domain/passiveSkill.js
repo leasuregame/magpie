@@ -15,13 +15,6 @@ var utility = require('../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
 
-var FIELDS = {
-    id: true,
-    createTime: true,
-    cardId: true,
-    tableId: true,
-    value: true
-};
 
 /*
  * PassiveSkill 与 passiveSkill 表对应的数据类，提供简单操作
@@ -32,8 +25,24 @@ var PassiveSkill = (function (_super) {
 
     function PassiveSkill(param) {
         PassiveSkill.__super__.constructor.apply(this, arguments);
-        this._fields = FIELDS;
     }
+
+    PassiveSkill.fields = [
+        'id',
+        'createTime',
+        'cardId',
+        'name',
+        'value'
+    ];
+
+    PassiveSkill.prototype.toJson = function(){
+        return {
+            id: this.id,
+            cardId: this.cardId,
+            name: this.name,
+            value: this.value
+        };
+    };
 
     return PassiveSkill;
 })(Entity);

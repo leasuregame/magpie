@@ -15,6 +15,7 @@ createMysqlPool = function (app) {
             client = mysql.createConnection({
                 host: mysqlConfig.host,
                 user: mysqlConfig.user,
+                port: mysqlConfig.port,
                 password: mysqlConfig.password,
                 database: mysqlConfig.database
             });

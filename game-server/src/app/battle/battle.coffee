@@ -29,7 +29,7 @@ class Battle extends Base
     @round = new Round(@attacker, @defender)
 
   isOver: ->
-    @attacker.death() or @defender.death() or @round.round_num > 30
+    @attacker.death() or @defender.death() or @round.round_num > 10
 
   start: ->
     _enm = {
@@ -75,15 +75,18 @@ class Round extends Base
     log.info "*** 回合 #{@round_num} 开始 ***"
 
   execute: () ->
-    while not @isOver()
+    count = 0
+    while not @isOver() or count < 6
       @attacker.round_num = @defender.round_num = @round_num
       @attack.process()
+      count++
+    return
 
   end: ->
     @setShootCount()
     @attacker.reset()
     @defender.reset()
-
+    #battleLog.addStep("*** 回合 #{@round_num} 结束 ***")
     log.info "*** 回合 #{@round_num} 结束 ***"
     
 class Attack extends Base

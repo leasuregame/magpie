@@ -4,3 +4,4 @@ id;cardId;name;value;createTime
 3;2;dodge;10;0
 4;3;crit;10;0
 5;4;dmg_reduce;10;0
+6;101;dmg_reduce;10;0

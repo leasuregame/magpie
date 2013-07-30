@@ -10,11 +10,7 @@
 /*
  * battle log sync
  * */
-
-
-var sqlHelper = require("../sqlHelper");
-var dbClient = require("pomelo").app.get("dbClient");
-var logger = require("pomelo-logger").getLogger(__filename);
+var BattleLogDao = require('../battleLogDao');
 
 var battleLogSync = {
     /*
@@ -25,33 +21,18 @@ var battleLogSync = {
      * */
     updateBattleLogById: function (id, param) {
         var cb = function() {};
-        if(typeof (param[2]) != "undefined") {
-            cb = param[2];
+        if(typeof (param.cb) != "undefined") {
+            cb = param.cb;
         }
 
-        if (typeof (param[0]) == "undefined" || typeof (param[1]) == "undefined") {
+        if (typeof (param.id) == "undefined" || typeof (param.data) == "undefined") {
             return cb("param error", null);
         }
 
-        var _ref = sqlHelper.updateSql("battleLog", ["id", param[0]], param[1]);
-        var sql = _ref[0];
-        var args = _ref[1];
-
-        return dbClient.update(sql, args, function (err, res) {
-            if (err) {
-                logger.error("[battleLogDao.updateBattleLogById faild] ", err.stack);
-
-                return cb({
-                    code: err.code,
-                    msg: err.message
-                }, null);
-            }
-            if (!!res && res.affectedRows > 0) {
-                return cb(null, true);
-            } else {
-                return cb(null, false);
-            }
-        });
+        return BattleLogDao.update({
+            where: {id: param.id},
+            data: param.data
+        }, cb);
     }
 };
 

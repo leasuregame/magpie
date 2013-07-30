@@ -38,5 +38,18 @@
          landmarkName = "js_cocos2dx_CCLayer_unregisterScriptTouchHandler(JSContext *cx, uint32_t argc, jsval *vp)"
          landmarkType = "7">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Client/libs/javascript/bindings/ScriptingCore.cpp"
+         timestampString = "395939928.114891"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "990"
+         endingLineNumber = "990"
+         landmarkName = "jsval_to_int32( JSContext *cx, jsval vp, int32_t *outval )"
+         landmarkType = "7">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

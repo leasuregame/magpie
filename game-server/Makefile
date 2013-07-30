@@ -1,9 +1,14 @@
+MOCHA = ./node_modules/.bin/mocha
+
 build:
 	sh ./bin/build.sh
 
+convert-data:
+	node ./bin/convertXmlToJson.js 
+
 clean: 
 	rm -r ./app
-	#rm -r ./test
+	rm -r ./test
 
 test: 
 	./node_modules/.bin/mocha \
@@ -15,13 +20,8 @@ test:
 		./src/test/$(files)
 
 test-dao: build
-	./node_modules/.bin/mocha \
-		--compilers coffee:coffee-script \
-		--require should \
-		--reporter spec \
-		--ui bdd \
-		--recursive \
-		./test/dao/$(files)
+	XUNIT_FILE="test/TESTS-xunit.xml" \
+	$(MOCHA) -R xunit-file  --require should --recursive ./test/dao/$(files)
 
 test-mapping: build
 	./node_modules/.bin/mocha \
@@ -56,16 +56,17 @@ test-api: build
 runserver: build
 	./node_modules/.bin/pomelo start development
 
-starttt:
-	./bin/ttservctl start
-
-stoptt:
-	./bin/ttservctl stop
+restartserver: build
+	./node_modules/.bin/pomelo stop
+	./node_modules/.bin/pomelo start production --daemon
 
 createtables:
-	cat ./bin/initMysql.sh | mysql -uroot -p1
+	sh ./bin/initMysql.sh
+
+inittables: 
+	mysql -udev -p1 < ./config/schema/tables.sql;
 
 loaddata:
-	node ./bin/loaddata.js
+	node ./bin/loaddata.js all development
 
 .PHONY: build clean test testserver runserver startTT stopTT loaddata

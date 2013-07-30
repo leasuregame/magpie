@@ -21,8 +21,8 @@ var Entity = (function(_super) {
 
     function Entity(param) {
         this.changedFields = [];
-
         if (param) {
+            _.defaults(param, this.constructor.DEFAULT_VALUES)
             setAttr(this, param);
         }
 
@@ -60,7 +60,7 @@ var Entity = (function(_super) {
     };
 
     Entity.prototype.getSaveData = function() {
-        var __fields = this.constructor.fields;
+        var __fields = this.constructor.FIELDS;
         var _results = {};
         for (var i = 0; i < __fields.length; i++) {
             field = __fields[i];
@@ -73,7 +73,7 @@ var Entity = (function(_super) {
     };
 
     Entity.prototype.changedData = function() {
-        var __fields = this.constructor.fields;
+        var __fields = this.constructor.FIELDS;
         var _results = {};
         for (var i = 0; i < __fields.length; i++) {
             field = __fields[i];
@@ -95,7 +95,7 @@ var setAttr = function(self, name, value) {
             self[name] = value;
         } else if (self[name] !== value) {
             self[name] = value;
-            if (self.constructor.fields.indexOf(name) > -1) {
+            if (self.constructor.FIELDS.indexOf(name) > -1) {
                 if (self.changedFields.indexOf(name) < 0) {
                     self.changedFields.push(name);
                 }
@@ -126,7 +126,7 @@ var setAttr = function(self, name, value) {
                         self[key] = value;
                     } else if (self[key] !== value) {
                         self[key] = value;
-                        if (self.constructor.fields.indexOf(key) > -1) {
+                        if (self.constructor.FIELDS.indexOf(key) > -1) {
                             if (self.changedFields.indexOf(key) < 0) {
                                 self.changedFields.push(key);
                             }

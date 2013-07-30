@@ -27,7 +27,7 @@ var User = (function (_super) {
         User.__super__.constructor.apply(this, arguments);
     }
 
-    User.fields = [
+    User.FIELDS = [
         'id', 
         'createTime',
         'account',
@@ -37,6 +37,12 @@ var User = (function (_super) {
         'lastLoginTime',
         'lastLoginDevict'
     ];
+    User.DEFAULT_VALUES = {
+        name: '', 
+        loginCount: 0,
+        lastLoginTime: Date.now(),
+        lastLoginDevice: ''
+    };
 
     User.prototype.upLastLoginTime = function () {
         this.set("lastLoginTime", Date.now());

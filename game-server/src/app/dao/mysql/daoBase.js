@@ -36,7 +36,6 @@ var addSyncEvent = function (syncKey, entity, cb) {
 var DaoBase = (function() {
   function DaoBase() {}
 
-  DaoBase.DEFAULT_VALUES = {};
   DaoBase.table = '';
   DaoBase.domain = null;
   DaoBase.syncKey = '';
@@ -54,7 +53,7 @@ var DaoBase = (function() {
 
   DaoBase.create = function(options, cb) {
     var _this = this, key;
-    var data = _.clone(this.DEFAULT_VALUES);
+    var data = _.clone(this.domain.DEFAULT_VALUES);
     _.extend(data, options.data);
     options.table = options.table || this.table;
 

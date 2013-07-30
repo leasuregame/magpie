@@ -17,6 +17,8 @@
 require('./setup');
 app = require("pomelo").app;
 var dao = app.get('dao');
+var Player = require('../../app/domain/player');
+var Card = require('../../app/domain/card');
 var should = require("should");
 
 describe("Player Object", function () {
@@ -43,7 +45,7 @@ describe("Player Object", function () {
                         data.lv
                     ],
                     function (err, res) {
-                        dao.player.fetchOne({where: {id:data.id}}, function (err, res) {
+                        dao.player.fetchOne({sync: true, where: {id:data.id}}, function (err, res) {
                             player = res;
                             return done();
                         });
@@ -68,4 +70,28 @@ describe("Player Object", function () {
             });
         });
     });
+
+    describe(".addCard()", function(){
+        var player;
+
+        it("should can be add a card", function() {
+            player = new Player();
+            var cardId = 0;
+            player.addCard(new Card({id: cardId}));
+            player.cards.should.not.eql({});
+            player.cards[cardId].should.be.an.instanceOf(Card);
+        });
+
+        it("should only can add a Card instance", function(){
+            player = new Player();
+            
+            (function(){
+                player.addCard(1)
+            }).should.throw('should only can add a Card instance');
+        });
+    });
+    
+    
+
+    
 });

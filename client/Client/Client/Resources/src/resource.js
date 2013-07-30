@@ -3,7 +3,7 @@ if (typeof(navigator) != 'undefined') {
     SETTING_IS_BROWSER = true;
 }
 
-var s_path1 = "";
+var s_path1 = "res1/test/";
 if (SETTING_IS_BROWSER) {
     s_path1 = "res1/test/";
 }
@@ -35,8 +35,6 @@ var main_scene_image = {
     bg5: main_scene_path + "bg5.png",
     bg6: main_scene_path + "bg6.png",
 
-    card0: main_scene_path + "card0.png",
-
     player_details_bg: main_scene_path + "player_details_bg.png",
     lv_bg: main_scene_path + "lv_bg.png",
     exp_bg: main_scene_path + "exp_bg.png",
@@ -49,6 +47,17 @@ var main_scene_image = {
     ladder2: main_scene_path + "ladder2.png",
     tower1: main_scene_path + "tower1.png",
     tower2: main_scene_path + "tower2.png",
+
+    card0: main_scene_path + "card0.png",
+    card1: main_scene_path + "card1.png",
+
+    card_frame1: main_scene_path + "card_frame1.png",
+    card_frame2: main_scene_path + "card_frame2.png",
+    card_frame3: main_scene_path + "card_frame3.png",
+    card_frame4: main_scene_path + "card_frame4.png",
+    card_frame5: main_scene_path + "card_frame5.png",
+
+    card_icon1: main_scene_path + "card_icon1.png",
 
     card_item_bg0: main_scene_path + "card_item_bg0.png",
     card_item_bg1: main_scene_path + "card_item_bg1.png",
@@ -79,6 +88,8 @@ var main_scene_image = {
     button6s: main_scene_path + "button6s.png",
     button7: main_scene_path + "button7.png",
     button7s: main_scene_path + "button7s.png",
+    button8: main_scene_path + "button8.png",
+    button8s: main_scene_path + "button8s.png",
     button9: main_scene_path + "button9.png",
     button9s: main_scene_path + "button9s.png",
     button10: main_scene_path + "button10.png",
@@ -97,6 +108,8 @@ var main_scene_image = {
     button15: main_scene_path + "button15.png",
     button15s: main_scene_path + "button15s.png",
     button15d: main_scene_path + "button15d.png",
+    button16: main_scene_path + "button16.png",
+    button16s: main_scene_path + "button16s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -108,10 +121,10 @@ var main_scene_image = {
     icon8: main_scene_path + "icon8.png",
     icon9: main_scene_path + "icon9.png",
     icon10: main_scene_path + "icon10.png",
-    icon11: main_scene_path + "icon11.png",
-    icon12: main_scene_path + "icon12.png",
-    icon13: main_scene_path + "icon13.png",
-    icon14: main_scene_path + "icon14.png",
+//    icon11: main_scene_path + "icon11.png",
+//    icon12: main_scene_path + "icon12.png",
+//    icon13: main_scene_path + "icon13.png",
+//    icon14: main_scene_path + "icon14.png",
     icon15: main_scene_path + "icon15.png",
     icon16: main_scene_path + "icon16.png",
     icon17: main_scene_path + "icon17.png",
@@ -128,7 +141,9 @@ var main_scene_image = {
     icon28: main_scene_path + "icon28.png",
     icon29: main_scene_path + "icon29.png",
     icon30: main_scene_path + "icon30.png",
-    icon31: main_scene_path + "icon31.png"
+    icon31: main_scene_path + "icon31.png",
+    icon32: main_scene_path + "icon32.png",
+    icon33: main_scene_path + "icon33.png"
 }
 
 var main_scene_res = [

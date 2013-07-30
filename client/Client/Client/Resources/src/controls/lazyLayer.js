@@ -50,7 +50,12 @@ var LazyLayer = cc.Layer.extend({
         cc.log("LazyLayer onTouchBegan");
 
         if (this._canClick) {
-            this._touchedMenu = this._menu.onTouchBegan(touch, event);
+            if (SETTING_IS_BROWSER) {
+                this._touchedMenu = this._menu.onTouchBegan(touch, event);
+            } else {
+                this._touchedMenu = this._menu.ccTouchBegan(touch, event);
+            }
+
         }
 
         return true;
@@ -63,8 +68,14 @@ var LazyLayer = cc.Layer.extend({
      */
     onTouchMoved: function (touch, event) {
         cc.log("LazyLayer onTouchMoved");
+
+
         if (this._canClick && this._touchedMenu) {
-            this._touchedMenu = this._menu.onTouchMoved(touch, event);
+            if (SETTING_IS_BROWSER) {
+                this._touchedMenu = this._menu.onTouchMoved(touch, event);
+            } else {
+                this._touchedMenu = this._menu.ccTouchMoved(touch, event);
+            }
         }
     },
 
@@ -75,8 +86,18 @@ var LazyLayer = cc.Layer.extend({
      */
     onTouchEnded: function (touch, event) {
         cc.log("LazyLayer onTouchEnded");
+
+        if (SETTING_IS_BROWSER) {
+            this._touchedMenu = this._menu.onTouchBegan(touch, event);
+        } else {
+
+        }
         if (this._canClick && this._touchedMenu) {
-            this._touchedMenu = this._menu.onTouchEnded(touch, event);
+            if (SETTING_IS_BROWSER) {
+                this._touchedMenu = this._menu.onTouchEnded(touch, event);
+            } else {
+                this._touchedMenu = this._menu.ccTouchEnded(touch, event);
+            }
             this._touchedMenu = false;
         }
     },
@@ -87,27 +108,34 @@ var LazyLayer = cc.Layer.extend({
      */
     onTouchCancelled: function (touch, event) {
         cc.log("LazyLayer onTouchCancelled");
+
+
         if (this._canClick && this._touchedMenu) {
-            this._touchedMenu = this._menu.onTouchEnded(touch, event);
+            if (SETTING_IS_BROWSER) {
+                this._touchedMenu = this._menu.onTouchEnded(touch, event);
+            } else {
+                this._touchedMenu = this._menu.ccTouchEnded(touch, event);
+            }
             this._touchedMenu = false;
         }
     }
 });
 
 
-(function() {
+(function () {
     var cloudLayer = null;
 
-    LazyLayer.showCloudLayer = function() {
-        if(cloudLayer == null) {
+    LazyLayer.showCloudLayer = function () {
+        if (cloudLayer == null) {
             cloudLayer = LazyLayer.create();
+            cloudLayer.retain();
         }
 
         cc.Director.getInstance().getRunningScene().addChild(cloudLayer);
     };
 
-    LazyLayer.closeCloudLayer = function() {
-        if(cloudLayer) {
+    LazyLayer.closeCloudLayer = function () {
+        if (cloudLayer) {
             cloudLayer.removeFromParent();
         }
     };

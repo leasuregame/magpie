@@ -105,7 +105,7 @@ var Tournament = Entity.extend({
 Tournament.create = function () {
     var ret = new Tournament();
 
-    if (ret && ret.init()) {
+    if (ret) {
         return ret;
     }
 

@@ -20,6 +20,7 @@ var SELECT_TYPE_MONEY = 4;
 var SELECT_TYPE_ELIXIR = 5;
 
 var CardLabel = cc.Node.extend({
+    _target: null,
     _card: null,
     _selectType: null,
     _isSelect: false,
@@ -30,28 +31,30 @@ var CardLabel = cc.Node.extend({
     _hookBgLabel: null,
     _cardItem: null,
 
-    init: function (card, selectType) {
+    init: function (target, card, selectType) {
         cc.log("CardLabel init");
 
         if (!this._super()) return false;
 
+        this._target = target;
         this._card = card;
 
         var star = this._card.get("star");
 
         this._cardItem = cc.MenuItemImage.create(main_scene_image.button15, main_scene_image.button15s, main_scene_image.button15d, this._onClickCard, this);
         this._cardItem.setAnchorPoint(cc.p(0, 0));
+        this._cardItem.setPosition(cc.p(0, 0));
 
-        var cardHeadItemMenu = LazyMenu.create(this._cardItem);
-        cardHeadItemMenu.setPosition(cc.p(0, 0));
-        this.addChild(cardHeadItemMenu);
+        var cardItemMenu = LazyMenu.create(this._cardItem);
+        cardItemMenu.setPosition(cc.p(0, 0));
+        this.addChild(cardItemMenu);
 
         var cardHeadItem = cc.MenuItemImage.create(main_scene_image["card_item_bg" + star], main_scene_image["card_item_bg" + star], this._onClickCardHead, this);
         cardHeadItem.setPosition(cc.p(80, 67));
 
-        var cardItemMenu = LazyMenu.create(cardHeadItem);
-        cardItemMenu.setPosition(cc.p(0, 0));
-        this.addChild(cardItemMenu);
+        var cardHeadItemMenu = LazyMenu.create(cardHeadItem);
+        cardHeadItemMenu.setPosition(cc.p(0, 0));
+        this.addChild(cardHeadItemMenu);
 
         var cardHeadSprite = cc.Sprite.create(s_h_hero_1);
         cardHeadSprite.setPosition(cc.p(80, 67));
@@ -98,7 +101,7 @@ var CardLabel = cc.Node.extend({
         this._otherLabel = cc.Node.create();
 
         selectType = selectType || SELECT_TYPE_DEFAULT;
-//        this.setSelectType(selectType);
+        this.setSelectType(selectType);
 
         return true;
     },
@@ -115,6 +118,7 @@ var CardLabel = cc.Node.extend({
 
     _initMaster: function () {
         cc.log("CardLabel _initMaster");
+
     },
 
     _initExp: function () {
@@ -221,9 +225,18 @@ var CardLabel = cc.Node.extend({
     setEnabled: function (enabled) {
         cc.log("CardLabel setEnabled");
 
-        enabled = enabled || true;
-
         this._cardItem.setEnabled(enabled);
+    },
+
+    select: function() {
+        this._isSelect = !this._isSelect;
+        this._target.selectCallback(this._card.get("id"));
+
+        this._hookLabel.setVisible(this._isSelect);
+    },
+
+    isSelect: function() {
+        return this._isSelect;
     },
 
     update: function (selectType, enabled) {
@@ -234,8 +247,11 @@ var CardLabel = cc.Node.extend({
     },
 
     _onClickCard: function () {
-        cc.log("CardLabel _onClickCard");
-//        this._cardItem.setEnabled(false);
+        cc.log("CardLabel _onClickCard" + this._card.get("id"));
+
+        if (this._selectType != SELECT_TYPE_DEFAULT) {
+            this.select();
+        }
     },
 
     _onClickCardHead: function () {
@@ -244,10 +260,10 @@ var CardLabel = cc.Node.extend({
 })
 
 
-CardLabel.create = function (card, selectType) {
+CardLabel.create = function (target, card, selectType) {
     var ret = new CardLabel();
 
-    if (ret && ret.init(card, selectType)) {
+    if (ret && ret.init(target, card, selectType)) {
         return ret;
     }
 

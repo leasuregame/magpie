@@ -52,7 +52,7 @@ var LineUpLabel = cc.Layer.extend({
 
         this.removeAllChildren();
 
-        var lineUpList = this._lineUp.getLineUpList();
+        var lineUpList = this._lineUp.getLineUpCardList();
 
         var menu = cc.Menu.create();
         menu.setPosition(cc.p(0, 0));
@@ -83,8 +83,8 @@ var LineUpLabel = cc.Layer.extend({
     _onClickCard: function (card) {
         return function () {
             cc.log("LineUpLabel _onClickCard");
-            cc.log(card);
 
+            MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_LINEUP));
         }
     }
 })

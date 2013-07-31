@@ -39,6 +39,9 @@ var Card = (function(_super) {
                 init_atk: cardConfig.atk * factor,
                 atk: cardConfig.atk * factor
             });
+            
+            // 同步配置表中卡牌的星级到数据库
+            this.set('star', cardConfig.star);
             if (cardConfig.star >= 3) {
                 this.skill = table.getTableItem('skills', cardConfig.skill_id);
             }
@@ -94,9 +97,11 @@ var Card = (function(_super) {
         var _abi = this.atk + parseInt(this.hp / 3);
 
         // 技能增强效果 技能攻击个数 * 技能增强效果 * 触发概率
+        console.log(this.skill);
+        console.log(this.star);
         if (this.skill) {
             _abi += parseInt(this.skill.target_num) * 
-            utility.parseEffect(this.skill['star' + this.star])[0] *
+                utility.parseEffect(this.skill['star' + this.star])[0] *
                 utility.parseEffect(this.skill['rate' + this.star])[0];
         }
 

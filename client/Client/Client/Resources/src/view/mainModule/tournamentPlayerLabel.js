@@ -117,7 +117,8 @@ var TournamentPlayerLabel = cc.Layer.extend({
             } else {
                 gameData.tournament.defiance(function(id){
                     var scene = BattleScene.create(BattleLogNote.getInstance().getBattleByBattleLogId(id));
-                    cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, scene, true));
+                    cc.Director.getInstance().replaceScene(scene);
+//                    cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, scene, true));
                 }, this._tournamentPlayer.playerId);
 
             }

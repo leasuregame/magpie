@@ -66,6 +66,7 @@ var appFiles = [
     'src/controls/dialog.js',
     'src/controls/lazyMenu.js',
     'src/controls/lazyLayer.js',
+    'src/controls/markLayer.js',
 
     'src/view/loginModule/signInScene.js',
     'src/view/loginModule/signInLayer.js',
@@ -135,12 +136,9 @@ director.setAnimationInterval(1.0 / 60);
 // create a scene. it's an autorelease object
 //var myScene = new BattleScene();
 //var myScene = new MainScene();
-var myScene = new SignInScene();
+var myScene = SignInScene.create();
 //var myScene = new testScene();
 
 // run
 //director.runWithScene(myScene);
 director.replaceScene(myScene);
-
-
-var aa = LazyMenu.create();

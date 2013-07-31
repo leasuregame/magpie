@@ -14,9 +14,9 @@
 
 var CardNode = cc.Node.extend({
     _card: null,
-    _cardFrameSprite: null,
-    _cardSprite: null,
-    _cardIconSprite: null,
+    _frameSprite: null,
+    _heroSprite: null,
+    _iconSprite: null,
 
     init: function (card) {
         cc.log("CardNode init");
@@ -24,18 +24,6 @@ var CardNode = cc.Node.extend({
         if (!this._super()) return false;
 
         this._card = card;
-
-        var star = this._card.get("star");
-
-        this._cardFrameSprite = cc.Sprite.create(main_scene_image["card_frame" + star]);
-        this.addChild(this._cardFrameSprite, -1);
-
-        this._cardSprite = cc.Sprite.create(main_scene_image.card1);
-        this.addChild(this._cardSprite);
-
-        this._cardIconSprite = cc.Sprite.create(main_scene_image.card_icon1);
-        this._cardIconSprite.setPosition(cc.p(45, -51));
-        this.addChild(this._cardIconSprite, 0);
 
         return true;
     },

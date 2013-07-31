@@ -84,6 +84,7 @@
             'src/controls/dialog.js',
             'src/controls/lazyMenu.js',
             'src/controls/lazyLayer.js',
+            'src/controls/markLayer.js',
 
             'src/view/loginModule/signInScene.js',
             'src/view/loginModule/signInLayer.js',
@@ -92,11 +93,14 @@
 
 
             'src/view/mainModule/activityLayer.js',
-            'src/view/mainModule/cardLabel.js',
             'src/view/mainModule/cardDetails.js',
+            'src/view/mainModule/cardNode.js',
+            'src/view/mainModule/cardFullNode.js',
+            'src/view/mainModule/cardHalfNode.js',
+            'src/view/mainModule/cardHeadNode.js',
+            'src/view/mainModule/cardLabel.js',
             'src/view/mainModule/cardLibraryLayer.js',
             'src/view/mainModule/cardListLayer.js',
-            'src/view/mainModule/cardNode.js',
             'src/view/mainModule/cardUpgradeLabel.js',
             'src/view/mainModule/configLayer.js',
             'src/view/mainModule/evolutionLayer.js',

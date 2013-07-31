@@ -51,5 +51,18 @@
          landmarkName = "jsval_to_int32( JSContext *cx, jsval vp, int32_t *outval )"
          landmarkType = "7">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Client/libs/cocos2dx/menu_nodes/CCMenu.cpp"
+         timestampString = "396945184.266378"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "232"
+         endingLineNumber = "232"
+         landmarkName = "CCMenu::ccTouchBegan(CCTouch* touch, CCEvent* event)"
+         landmarkType = "5">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

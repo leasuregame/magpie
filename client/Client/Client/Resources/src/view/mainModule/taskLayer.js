@@ -80,9 +80,9 @@ var TaskLayer = cc.Layer.extend({
             }
         }
 
-        var scrollView = cc.ScrollView.create(cc.size(GAME_WIDTH, 840), scrollViewLayer);
+        var scrollView = cc.ScrollView.create(cc.size(GAME_WIDTH, 720), scrollViewLayer);
         scrollView.setContentSize(cc.size(GAME_WIDTH * CHAPTER_COUNT - 20 * (CHAPTER_COUNT - 1), 840));
-        scrollView.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 150));
+        scrollView.setPosition(GAME_BG_POINT);
         scrollView.setBounceable(false);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         scrollView.updateInset();

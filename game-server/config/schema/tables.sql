@@ -40,7 +40,6 @@ CREATE TABLE IF NOT EXISTS `player` (
   `ability` INT(10) UNSIGNED DEFAULT '0',
   `task` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `pass` VARCHAR(500) COLLATE utf8_unicode_ci DEFAULT '',
-  `passMark` BLOB(20),  -- 闯关标记
   `dailyGift` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '', -- 每日奖励
   `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
   `energy` INT(10) UNSIGNED DEFAULT '0',  -- 活力值

@@ -19,28 +19,93 @@ var _ = require("underscore");
 var Entity = (function(_super) {
     utility.extends(Entity, _super);
 
-    function Entity(param) {
+    function Entity(attributes) {
+        attributes || (attributes = {});
+        this.attributes = {};
         this.changedFields = [];
-        if (param) {
-            _.defaults(param, this.constructor.DEFAULT_VALUES)
-            setAttr(this, param);
-        }
+        this.tracked = [];
+
+        _.defaults(attributes, this.constructor.DEFAULT_VALUES)
+        this.track(Object.keys(attributes));
+        this.set(attributes);
 
         if (typeof(this.init) === "function") {
             this.init.apply(this, arguments);
         }
     };
 
-    Entity.prototype.sets = function(attrs) {
-        setAttr(this, attrs);
+    Entity.FIELDS = [];
+    Entity.DEFAULT_VALUES = {};
+
+    Entity.prototype.track = function(keys) {
+        var _this = this;
+        _.each(keys, function(key) {
+            _this.tracked.push(key);
+            _this.__defineGetter__(key, function() {
+                return _this.get(key);
+            });
+            return _this.__defineSetter__(key, function(val) {
+                return _this.set(key, val);
+            });
+        });
+        return this;
     };
 
-    Entity.prototype.set = function(name, value) {
-        setAttr(this, name, value);
+    Entity.prototype.set = function() {
+        var _this = this;
+        var attrs, key, val, cb;
+        attrs = key = val = false;
+
+        if (typeof arguments[0] !== 'object') {
+            key = arguments[0];
+            val = arguments[1];
+            attrs = {};
+            attrs[key] = val;
+        } else {
+            attrs = arguments[0];
+        }
+
+        _.each(attrs, function(v, k) {
+            if (_this.attributes[k] == v) {
+                return; // value is not changed
+            }
+
+            // add to tracked
+            if (_this.tracked.indexOf(k) < 0) {
+                _this.track([k]);
+            }
+
+            // if value is object string, convert to object
+            var patrn = /^[\{\[].*[\]\}]$/;
+            if (typeof v == 'string' && patrn.test(v)) {
+                try {
+                    v = JSON.parse(v);
+                } catch (e) {
+                    logger.error('can not parse to josn object: ', v);
+                    logger.error(e);
+                }
+            }
+
+            // add to changeFields
+            if (_this.constructor.FIELDS.indexOf(k) > -1 && _this.changedFields.indexOf(k) < 0) {
+                _this.changedFields.push(k);
+            }
+
+            _this.attributes[k] = v;
+        });
+
+        _this.emit('change', _this.attributes);
+
+        _.each(attrs, function(v, k) {
+            var type = k + '.change';
+            _this.emit(type, v);
+        });
+
+        return this;
     };
 
     Entity.prototype.get = function(name) {
-        return this[name];
+        return this.attributes[name];
     };
 
     Entity.prototype.increase = function(name, val) {
@@ -85,57 +150,10 @@ var Entity = (function(_super) {
         return _results;
     };
 
+    Entity.prototype.toJson = function() {};
+
     return Entity;
 
 })(EventEmitter);
-
-var setAttr = function(self, name, value) {
-    if (arguments.length === 3) {
-        if (typeof(self[name]) == "undefined") {
-            self[name] = value;
-        } else if (self[name] !== value) {
-            self[name] = value;
-            if (self.constructor.FIELDS.indexOf(name) > -1) {
-                if (self.changedFields.indexOf(name) < 0) {
-                    self.changedFields.push(name);
-                }
-            }
-        }
-    } else if (arguments.length === 2) {
-        if (_.isObject(name)) {
-            var key;
-            var value;
-            var patrn = /^[\{\[].*[\]\}]$/;
-
-            for (key in name) {
-                value = name[key];
-
-                if (typeof value == 'string' && patrn.test(value)) {
-                    try {
-                        value = JSON.parse(value);
-                    } catch (e) {
-                        logger.error('can not parse to josn object: ', value);
-                        logger.error(e);
-                    }
-                }
-
-                if (name.hasOwnProperty(key) && typeof(name[key]) === "function") {
-                    self[key](value);
-                } else {
-                    if (typeof(self[key]) == "undefined") {
-                        self[key] = value;
-                    } else if (self[key] !== value) {
-                        self[key] = value;
-                        if (self.constructor.FIELDS.indexOf(key) > -1) {
-                            if (self.changedFields.indexOf(key) < 0) {
-                                self.changedFields.push(key);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-};
 
 module.exports = Entity;

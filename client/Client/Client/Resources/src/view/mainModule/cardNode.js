@@ -27,17 +27,23 @@ var CardNode = cc.Node.extend({
 
         var star = this._card.get("star");
 
-        this._cardFrameSprite = cc.Sprite.create(main_scene_image[""]);
+        this._cardFrameSprite = cc.Sprite.create(main_scene_image["card_frame" + star]);
         this.addChild(this._cardFrameSprite, -1);
 
-        this._cardSprite = cc.Sprite.create();
+        this._cardSprite = cc.Sprite.create(main_scene_image.card1);
         this.addChild(this._cardSprite);
 
-        this._cardIconSprite = cc.Sprite.create();
-        this._cardIconSprite.setPosition(cc.p());
+        this._cardIconSprite = cc.Sprite.create(main_scene_image.card_icon1);
+        this._cardIconSprite.setPosition(cc.p(45, -51));
         this.addChild(this._cardIconSprite, 0);
 
         return true;
+    },
+
+    getCardId: function() {
+        cc.log("CardNode getCardId");
+
+        return this._card.get("id");
     }
 })
 

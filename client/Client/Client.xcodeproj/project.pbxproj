@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		900B85A417A7BE7800F38A45 /* res1 in Resources */ = {isa = PBXBuildFile; fileRef = 900B85A317A7BE7800F38A45 /* res1 */; };
 		90271B7617545E8300715D5E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90271B7517545E8300715D5E /* QuartzCore.framework */; };
 		90271B7817545E8300715D5E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90271B7717545E8300715D5E /* OpenGLES.framework */; };
 		90271B7A17545E8300715D5E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90271B7917545E8300715D5E /* OpenAL.framework */; };
@@ -306,39 +307,6 @@
 		90271F8C17545E9600715D5E /* SlotData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90271F8B17545E9600715D5E /* SlotData.cpp */; };
 		90271F8F17545E9600715D5E /* spine-cocos2dx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90271F8E17545E9600715D5E /* spine-cocos2dx.cpp */; };
 		90271F9717545E9600715D5E /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90271F9617545E9600715D5E /* AppDelegate.cpp */; };
-		90271F9A17545E9600715D5E /* Abadi40-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90271F9917545E9600715D5E /* Abadi40-hd.fnt */; };
-		90271F9C17545E9600715D5E /* Abadi40-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 90271F9B17545E9600715D5E /* Abadi40-hd.png */; };
-		90271F9E17545E9600715D5E /* Abadi40-ipad.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90271F9D17545E9600715D5E /* Abadi40-ipad.fnt */; };
-		90271FA017545E9600715D5E /* Abadi40-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 90271F9F17545E9600715D5E /* Abadi40-ipad.png */; };
-		90271FA217545E9600715D5E /* Abadi40.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90271FA117545E9600715D5E /* Abadi40.fnt */; };
-		90271FA417545E9600715D5E /* Abadi40.png in Resources */ = {isa = PBXBuildFile; fileRef = 90271FA317545E9600715D5E /* Abadi40.png */; };
-		90271FA617545E9600715D5E /* About.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 90271FA517545E9600715D5E /* About.ccbi */; };
-		90271FA817545E9600715D5E /* coins-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90271FA717545E9600715D5E /* coins-hd.plist */; };
-		90271FAA17545E9600715D5E /* coins-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 90271FA917545E9600715D5E /* coins-hd.png */; };
-		90271FAC17545E9600715D5E /* coins.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90271FAB17545E9600715D5E /* coins.plist */; };
-		90271FAE17545E9600715D5E /* coins.png in Resources */ = {isa = PBXBuildFile; fileRef = 90271FAD17545E9600715D5E /* coins.png */; };
-		90271FB017545E9600715D5E /* Gas40-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90271FAF17545E9600715D5E /* Gas40-hd.fnt */; };
-		90271FB217545E9600715D5E /* Gas40-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 90271FB117545E9600715D5E /* Gas40-hd.png */; };
-		90271FB417545E9600715D5E /* Gas40-ipad.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90271FB317545E9600715D5E /* Gas40-ipad.fnt */; };
-		90271FB617545E9600715D5E /* Gas40-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 90271FB517545E9600715D5E /* Gas40-ipad.png */; };
-		90271FB817545E9600715D5E /* Gas40.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90271FB717545E9600715D5E /* Gas40.fnt */; };
-		90271FBA17545E9600715D5E /* Gas40.png in Resources */ = {isa = PBXBuildFile; fileRef = 90271FB917545E9600715D5E /* Gas40.png */; };
-		90271FBC17545E9600715D5E /* HUD.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 90271FBB17545E9600715D5E /* HUD.ccbi */; };
-		90271FBE17545E9600715D5E /* konqa32-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90271FBD17545E9600715D5E /* konqa32-hd.fnt */; };
-		90271FC017545E9600715D5E /* konqa32-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 90271FBF17545E9600715D5E /* konqa32-hd.png */; };
-		90271FC217545E9600715D5E /* konqa32-ipad.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90271FC117545E9600715D5E /* konqa32-ipad.fnt */; };
-		90271FC417545E9600715D5E /* konqa32-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 90271FC317545E9600715D5E /* konqa32-ipad.png */; };
-		90271FC617545E9600715D5E /* konqa32.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90271FC517545E9600715D5E /* konqa32.fnt */; };
-		90271FC817545E9600715D5E /* konqa32.png in Resources */ = {isa = PBXBuildFile; fileRef = 90271FC717545E9600715D5E /* konqa32.png */; };
-		90271FCA17545E9600715D5E /* labels-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90271FC917545E9600715D5E /* labels-hd.plist */; };
-		90271FCC17545E9700715D5E /* labels-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 90271FCB17545E9600715D5E /* labels-hd.png */; };
-		90271FCE17545E9700715D5E /* labels-ipad.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90271FCD17545E9700715D5E /* labels-ipad.plist */; };
-		90271FD017545E9700715D5E /* labels-ipad.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = 90271FCF17545E9700715D5E /* labels-ipad.pvr.gz */; };
-		90271FD217545E9700715D5E /* labels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90271FD117545E9700715D5E /* labels.plist */; };
-		90271FD417545E9700715D5E /* labels.png in Resources */ = {isa = PBXBuildFile; fileRef = 90271FD317545E9700715D5E /* labels.png */; };
-		90271FD617545E9700715D5E /* MainMenu.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 90271FD517545E9700715D5E /* MainMenu.ccbi */; };
-		90271FD817545E9700715D5E /* stars2.png in Resources */ = {isa = PBXBuildFile; fileRef = 90271FD717545E9700715D5E /* stars2.png */; };
-		90271FDA17545E9700715D5E /* watermelon.png in Resources */ = {isa = PBXBuildFile; fileRef = 90271FD917545E9700715D5E /* watermelon.png */; };
 		90271FDC17545E9700715D5E /* hello.js in Resources */ = {isa = PBXBuildFile; fileRef = 90271FDB17545E9700715D5E /* hello.js */; };
 		906A0E231756F61F006A5000 /* HttpClientPackage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 906A0E191756F61F006A5000 /* HttpClientPackage.cpp */; };
 		906A0E241756F61F006A5000 /* HttpClientPackage.ini in Resources */ = {isa = PBXBuildFile; fileRef = 906A0E1B1756F61F006A5000 /* HttpClientPackage.ini */; };
@@ -359,6 +327,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		900B85A317A7BE7800F38A45 /* res1 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res1; path = Resources/res1; sourceTree = "<group>"; };
 		90271B7217545E8300715D5E /* Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Client.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90271B7517545E8300715D5E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		90271B7717545E8300715D5E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1040,39 +1009,6 @@
 		90271F9317545E9600715D5E /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		90271F9517545E9600715D5E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		90271F9617545E9600715D5E /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
-		90271F9917545E9600715D5E /* Abadi40-hd.fnt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Abadi40-hd.fnt"; path = "Resources/CCB/Abadi40-hd.fnt"; sourceTree = "<group>"; };
-		90271F9B17545E9600715D5E /* Abadi40-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Abadi40-hd.png"; path = "Resources/CCB/Abadi40-hd.png"; sourceTree = "<group>"; };
-		90271F9D17545E9600715D5E /* Abadi40-ipad.fnt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Abadi40-ipad.fnt"; path = "Resources/CCB/Abadi40-ipad.fnt"; sourceTree = "<group>"; };
-		90271F9F17545E9600715D5E /* Abadi40-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Abadi40-ipad.png"; path = "Resources/CCB/Abadi40-ipad.png"; sourceTree = "<group>"; };
-		90271FA117545E9600715D5E /* Abadi40.fnt */ = {isa = PBXFileReference; lastKnownFileType = text; name = Abadi40.fnt; path = Resources/CCB/Abadi40.fnt; sourceTree = "<group>"; };
-		90271FA317545E9600715D5E /* Abadi40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Abadi40.png; path = Resources/CCB/Abadi40.png; sourceTree = "<group>"; };
-		90271FA517545E9600715D5E /* About.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = About.ccbi; path = Resources/CCB/About.ccbi; sourceTree = "<group>"; };
-		90271FA717545E9600715D5E /* coins-hd.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "coins-hd.plist"; path = "Resources/CCB/coins-hd.plist"; sourceTree = "<group>"; };
-		90271FA917545E9600715D5E /* coins-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "coins-hd.png"; path = "Resources/CCB/coins-hd.png"; sourceTree = "<group>"; };
-		90271FAB17545E9600715D5E /* coins.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = coins.plist; path = Resources/CCB/coins.plist; sourceTree = "<group>"; };
-		90271FAD17545E9600715D5E /* coins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coins.png; path = Resources/CCB/coins.png; sourceTree = "<group>"; };
-		90271FAF17545E9600715D5E /* Gas40-hd.fnt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Gas40-hd.fnt"; path = "Resources/CCB/Gas40-hd.fnt"; sourceTree = "<group>"; };
-		90271FB117545E9600715D5E /* Gas40-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gas40-hd.png"; path = "Resources/CCB/Gas40-hd.png"; sourceTree = "<group>"; };
-		90271FB317545E9600715D5E /* Gas40-ipad.fnt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Gas40-ipad.fnt"; path = "Resources/CCB/Gas40-ipad.fnt"; sourceTree = "<group>"; };
-		90271FB517545E9600715D5E /* Gas40-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Gas40-ipad.png"; path = "Resources/CCB/Gas40-ipad.png"; sourceTree = "<group>"; };
-		90271FB717545E9600715D5E /* Gas40.fnt */ = {isa = PBXFileReference; lastKnownFileType = text; name = Gas40.fnt; path = Resources/CCB/Gas40.fnt; sourceTree = "<group>"; };
-		90271FB917545E9600715D5E /* Gas40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Gas40.png; path = Resources/CCB/Gas40.png; sourceTree = "<group>"; };
-		90271FBB17545E9600715D5E /* HUD.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = HUD.ccbi; path = Resources/CCB/HUD.ccbi; sourceTree = "<group>"; };
-		90271FBD17545E9600715D5E /* konqa32-hd.fnt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "konqa32-hd.fnt"; path = "Resources/CCB/konqa32-hd.fnt"; sourceTree = "<group>"; };
-		90271FBF17545E9600715D5E /* konqa32-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "konqa32-hd.png"; path = "Resources/CCB/konqa32-hd.png"; sourceTree = "<group>"; };
-		90271FC117545E9600715D5E /* konqa32-ipad.fnt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "konqa32-ipad.fnt"; path = "Resources/CCB/konqa32-ipad.fnt"; sourceTree = "<group>"; };
-		90271FC317545E9600715D5E /* konqa32-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "konqa32-ipad.png"; path = "Resources/CCB/konqa32-ipad.png"; sourceTree = "<group>"; };
-		90271FC517545E9600715D5E /* konqa32.fnt */ = {isa = PBXFileReference; lastKnownFileType = text; name = konqa32.fnt; path = Resources/CCB/konqa32.fnt; sourceTree = "<group>"; };
-		90271FC717545E9600715D5E /* konqa32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = konqa32.png; path = Resources/CCB/konqa32.png; sourceTree = "<group>"; };
-		90271FC917545E9600715D5E /* labels-hd.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "labels-hd.plist"; path = "Resources/CCB/labels-hd.plist"; sourceTree = "<group>"; };
-		90271FCB17545E9600715D5E /* labels-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "labels-hd.png"; path = "Resources/CCB/labels-hd.png"; sourceTree = "<group>"; };
-		90271FCD17545E9700715D5E /* labels-ipad.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "labels-ipad.plist"; path = "Resources/CCB/labels-ipad.plist"; sourceTree = "<group>"; };
-		90271FCF17545E9700715D5E /* labels-ipad.pvr.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; name = "labels-ipad.pvr.gz"; path = "Resources/CCB/labels-ipad.pvr.gz"; sourceTree = "<group>"; };
-		90271FD117545E9700715D5E /* labels.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = labels.plist; path = Resources/CCB/labels.plist; sourceTree = "<group>"; };
-		90271FD317545E9700715D5E /* labels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = labels.png; path = Resources/CCB/labels.png; sourceTree = "<group>"; };
-		90271FD517545E9700715D5E /* MainMenu.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; name = MainMenu.ccbi; path = Resources/CCB/MainMenu.ccbi; sourceTree = "<group>"; };
-		90271FD717545E9700715D5E /* stars2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stars2.png; path = Resources/CCB/stars2.png; sourceTree = "<group>"; };
-		90271FD917545E9700715D5E /* watermelon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = watermelon.png; path = Resources/CCB/watermelon.png; sourceTree = "<group>"; };
 		90271FDB17545E9700715D5E /* hello.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = hello.js; path = Resources/hello.js; sourceTree = "<group>"; };
 		906A0E191756F61F006A5000 /* HttpClientPackage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClientPackage.cpp; sourceTree = "<group>"; };
 		906A0E1A1756F61F006A5000 /* HttpClientPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientPackage.h; sourceTree = "<group>"; };
@@ -1165,6 +1101,7 @@
 		90271B8617545E8300715D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				900B85A317A7BE7800F38A45 /* res1 */,
 				90CB7E78175470A300845641 /* main_binding.js */,
 				90CB7E6F17546FFC00845641 /* myApp.js */,
 				90CB7E7017546FFC00845641 /* res */,
@@ -1182,7 +1119,6 @@
 				90271B9B17545E8300715D5E /* iTunesArtwork */,
 				90271B9D17545E8300715D5E /* Info.plist */,
 				90271FDB17545E9700715D5E /* hello.js */,
-				90271F9817545E9600715D5E /* CCB */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -2473,46 +2409,6 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		90271F9817545E9600715D5E /* CCB */ = {
-			isa = PBXGroup;
-			children = (
-				90271F9917545E9600715D5E /* Abadi40-hd.fnt */,
-				90271F9B17545E9600715D5E /* Abadi40-hd.png */,
-				90271F9D17545E9600715D5E /* Abadi40-ipad.fnt */,
-				90271F9F17545E9600715D5E /* Abadi40-ipad.png */,
-				90271FA117545E9600715D5E /* Abadi40.fnt */,
-				90271FA317545E9600715D5E /* Abadi40.png */,
-				90271FA517545E9600715D5E /* About.ccbi */,
-				90271FA717545E9600715D5E /* coins-hd.plist */,
-				90271FA917545E9600715D5E /* coins-hd.png */,
-				90271FAB17545E9600715D5E /* coins.plist */,
-				90271FAD17545E9600715D5E /* coins.png */,
-				90271FAF17545E9600715D5E /* Gas40-hd.fnt */,
-				90271FB117545E9600715D5E /* Gas40-hd.png */,
-				90271FB317545E9600715D5E /* Gas40-ipad.fnt */,
-				90271FB517545E9600715D5E /* Gas40-ipad.png */,
-				90271FB717545E9600715D5E /* Gas40.fnt */,
-				90271FB917545E9600715D5E /* Gas40.png */,
-				90271FBB17545E9600715D5E /* HUD.ccbi */,
-				90271FBD17545E9600715D5E /* konqa32-hd.fnt */,
-				90271FBF17545E9600715D5E /* konqa32-hd.png */,
-				90271FC117545E9600715D5E /* konqa32-ipad.fnt */,
-				90271FC317545E9600715D5E /* konqa32-ipad.png */,
-				90271FC517545E9600715D5E /* konqa32.fnt */,
-				90271FC717545E9600715D5E /* konqa32.png */,
-				90271FC917545E9600715D5E /* labels-hd.plist */,
-				90271FCB17545E9600715D5E /* labels-hd.png */,
-				90271FCD17545E9700715D5E /* labels-ipad.plist */,
-				90271FCF17545E9700715D5E /* labels-ipad.pvr.gz */,
-				90271FD117545E9700715D5E /* labels.plist */,
-				90271FD317545E9700715D5E /* labels.png */,
-				90271FD517545E9700715D5E /* MainMenu.ccbi */,
-				90271FD717545E9700715D5E /* stars2.png */,
-				90271FD917545E9700715D5E /* watermelon.png */,
-			);
-			name = CCB;
-			sourceTree = "<group>";
-		};
 		906A0E171756F61F006A5000 /* HttpClientPackage */ = {
 			isa = PBXGroup;
 			children = (
@@ -2658,39 +2554,6 @@
 				90271E0417545E9000715D5E /* obfuscate_exclude_chipmunk.js in Resources */,
 				90271E0617545E9000715D5E /* obfuscate_exclude_cocos2d.js in Resources */,
 				90271E1B17545E9000715D5E /* js.msg in Resources */,
-				90271F9A17545E9600715D5E /* Abadi40-hd.fnt in Resources */,
-				90271F9C17545E9600715D5E /* Abadi40-hd.png in Resources */,
-				90271F9E17545E9600715D5E /* Abadi40-ipad.fnt in Resources */,
-				90271FA017545E9600715D5E /* Abadi40-ipad.png in Resources */,
-				90271FA217545E9600715D5E /* Abadi40.fnt in Resources */,
-				90271FA417545E9600715D5E /* Abadi40.png in Resources */,
-				90271FA617545E9600715D5E /* About.ccbi in Resources */,
-				90271FA817545E9600715D5E /* coins-hd.plist in Resources */,
-				90271FAA17545E9600715D5E /* coins-hd.png in Resources */,
-				90271FAC17545E9600715D5E /* coins.plist in Resources */,
-				90271FAE17545E9600715D5E /* coins.png in Resources */,
-				90271FB017545E9600715D5E /* Gas40-hd.fnt in Resources */,
-				90271FB217545E9600715D5E /* Gas40-hd.png in Resources */,
-				90271FB417545E9600715D5E /* Gas40-ipad.fnt in Resources */,
-				90271FB617545E9600715D5E /* Gas40-ipad.png in Resources */,
-				90271FB817545E9600715D5E /* Gas40.fnt in Resources */,
-				90271FBA17545E9600715D5E /* Gas40.png in Resources */,
-				90271FBC17545E9600715D5E /* HUD.ccbi in Resources */,
-				90271FBE17545E9600715D5E /* konqa32-hd.fnt in Resources */,
-				90271FC017545E9600715D5E /* konqa32-hd.png in Resources */,
-				90271FC217545E9600715D5E /* konqa32-ipad.fnt in Resources */,
-				90271FC417545E9600715D5E /* konqa32-ipad.png in Resources */,
-				90271FC617545E9600715D5E /* konqa32.fnt in Resources */,
-				90271FC817545E9600715D5E /* konqa32.png in Resources */,
-				90271FCA17545E9600715D5E /* labels-hd.plist in Resources */,
-				90271FCC17545E9700715D5E /* labels-hd.png in Resources */,
-				90271FCE17545E9700715D5E /* labels-ipad.plist in Resources */,
-				90271FD017545E9700715D5E /* labels-ipad.pvr.gz in Resources */,
-				90271FD217545E9700715D5E /* labels.plist in Resources */,
-				90271FD417545E9700715D5E /* labels.png in Resources */,
-				90271FD617545E9700715D5E /* MainMenu.ccbi in Resources */,
-				90271FD817545E9700715D5E /* stars2.png in Resources */,
-				90271FDA17545E9700715D5E /* watermelon.png in Resources */,
 				90271FDC17545E9700715D5E /* hello.js in Resources */,
 				90CB7E7417546FFC00845641 /* res in Resources */,
 				90CB7E7517546FFC00845641 /* src in Resources */,
@@ -2698,6 +2561,7 @@
 				906A0E251756F61F006A5000 /* HttpClientPackage.sh in Resources */,
 				906A0E281756F61F006A5000 /* user.cfg in Resources */,
 				906A0E291756F61F006A5000 /* userconf.ini in Resources */,
+				900B85A417A7BE7800F38A45 /* res1 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

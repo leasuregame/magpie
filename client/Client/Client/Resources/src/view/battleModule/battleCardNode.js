@@ -12,7 +12,7 @@
  * */
 
 
-var CardNode = cc.Node.extend({
+var BattleCardNode = cc.Node.extend({
     _frameSprite: null,
     _heroSprite: null,
     _expressionSprite: null,
@@ -77,8 +77,8 @@ var CardNode = cc.Node.extend({
 })
 
 
-CardNode.create = function (card) {
-    var ret = new CardNode();
+BattleCardNode.create = function (card) {
+    var ret = new BattleCardNode();
 
     if (ret && ret.init(card)) {
         return ret;

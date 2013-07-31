@@ -53,7 +53,7 @@ var DaoBase = (function() {
 
   DaoBase.create = function(options, cb) {
     var _this = this, key;
-    var data = _.clone(this.domain.DEFAULT_VALUES);
+    var data = _.pick(this.domain.DEFAULT_VALUES, this.domain.FIELDS);
     _.extend(data, options.data);
     options.table = options.table || this.table;
 

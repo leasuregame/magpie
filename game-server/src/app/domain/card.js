@@ -24,7 +24,7 @@ var GROUP_EFFECT_HP = 2
  * Card 与 card 表对应的数据类，提供简单操作
  * @param {object} param 数据库 card 表中的一行记录
  * */
-var Card = (function (_super) {
+var Card = (function(_super) {
     utility.extends(Card, _super);
 
     function Card(param) {
@@ -33,9 +33,15 @@ var Card = (function (_super) {
         if (this.tableId) {
             var cardConfig = table.getTableItem('cards', this.tableId);
             var factor = table.getTableItem('factors', this.lv).factor;
-            this.init_hp = this.hp = cardConfig.hp * factor;
-            this.init_atk = this.atk = cardConfig.atk * factor;
-            this.skill = table.getTableItem('skills', cardConfig.skill_id);
+            this.set({
+                init_hp: cardConfig.hp * factor,
+                hp: cardConfig.hp * factor,
+                init_atk: cardConfig.atk * factor,
+                atk: cardConfig.atk * factor
+            });
+            if (cardConfig.star >= 3) {
+                this.skill = table.getTableItem('skills', cardConfig.skill_id);
+            }
             this.cardConfig = cardConfig;
         }
         // 被动属性生效
@@ -64,28 +70,33 @@ var Card = (function (_super) {
         atkAddition: 0
     };
 
-    Card.prototype.init = function () {
-        this.passiveSkills = {};
+    Card.prototype.init = function() {
+        this.passiveSkills = this.passiveSkills || {};
     };
 
     Card.prototype.activeGroupEffect = function() {
-        var _property = {
-            GROUP_EFFECT_ATK: 'atk',
-            GROUP_EFFECT_HP: 'hp'
+        var _property = {};
+        _property[GROUP_EFFECT_ATK] = 'atk';
+        _property[GROUP_EFFECT_HP] = 'hp';
+
+        var type = parseInt(this.cardConfig.effetc_type);
+        var effect_val = 20;
+        if (type == GROUP_EFFECT_HP) {
+            effect_val = 25;
         }
-        var type = this.cardConfig.group_effect;
-        this[_property[type]+'Addition'] += this[_property[type]] * 20 / 100;
+        this.set(_property[type] + 'Addition', parseInt(this[_property[type]] * effect_val / 100));
+        return this;
     };
 
     Card.prototype.ability = function() {
         // 1点攻击力=1点战斗力
         // 3点生命值=1点战斗力
-        var _abi =  this.atk + parseInt(this.hp/3);
-        
+        var _abi = this.atk + parseInt(this.hp / 3);
+
         // 技能增强效果 技能攻击个数 * 技能增强效果 * 触发概率
         if (this.skill) {
-            _abi += this.skill.scope * 
-                utility.parseEffect(this.skill['star' + this.star])[0] * 
+            _abi += parseInt(this.skill.target_num) * 
+            utility.parseEffect(this.skill['star' + this.star])[0] *
                 utility.parseEffect(this.skill['rate' + this.star])[0];
         }
 
@@ -93,24 +104,26 @@ var Card = (function (_super) {
         // 0.1%闪避率=10点战斗力
         // 0.1%减伤率=10点战斗力
         var should_inc_ps = ['dmg_reduce', 'crit', 'dodge']
-        if (this.star >=3) {
+        if (this.star >= 3) {
             var ps_values = _.values(this.passiveSkills)
                 .filter(function(ps) {
                     return should_inc_ps.indexOf(ps.name) > -1;
                 })
-                .map(function(ps){
+                .map(function(ps) {
                     return ps.value;
                 });
             var sum = 0;
             if (ps_values.length > 0) {
-                sum += _.reduce(ps_values, function(x, y) {return x + y;});
-            }            
+                sum += _.reduce(ps_values, function(x, y) {
+                    return x + y;
+                });
+            }
             _abi += sum * 100;
         }
-        return _abi;
+        return parseInt(_abi);
     };
 
-    Card.prototype.addPassiveSkill = function (ps) {
+    Card.prototype.addPassiveSkill = function(ps) {
         if (typeof ps.id !== 'undefined' && ps.id !== null) {
             this.passiveSkills[ps.id] = ps;
         }
@@ -119,14 +132,14 @@ var Card = (function (_super) {
 
     Card.prototype.addPassiveSkills = function(passiveSkills) {
         self = this;
-        passiveSkills.forEach(function(ps){
+        passiveSkills.forEach(function(ps) {
             self.addPassiveSkill(ps);
         });
     };
 
     Card.prototype.eatCards = function(cards) {
         var totalExp = 0;
-        cards.forEach(function(card){
+        cards.forEach(function(card) {
             totalExp += cardExp(card.lv, card.exp_need);
         });
         var upgraded_lv = this.upgrade(totalExp);
@@ -135,7 +148,7 @@ var Card = (function (_super) {
 
     Card.prototype.upgrade = function(exp) {
         var _this = this;
-        var rows = table.getTable('card_grow').filter(function(row){
+        var rows = table.getTable('card_grow').filter(function(row) {
             return row.lv >= _this.lv;
         });
 
@@ -164,7 +177,7 @@ var Card = (function (_super) {
             exp: this.exp,
             skillLv: this.skillLv,
             hpAddition: this.hpAddition,
-            atkAddition: this.atkAddition, 
+            atkAddition: this.atkAddition,
             passiveSkills: _.values(this.passiveSkills).map(function(ps) {
                 return ps.toJson();
             })
@@ -174,8 +187,8 @@ var Card = (function (_super) {
     return Card;
 })(Entity);
 
-var cardExp = function (lv, exp) {
-    var rows = table.getTable('card_grow').filter(function(row){
+var cardExp = function(lv, exp) {
+    var rows = table.getTable('card_grow').filter(function(row) {
         return row.lv < lv;
     });
 
@@ -187,8 +200,11 @@ var cardExp = function (lv, exp) {
     return totalExp;
 };
 
-var passiveSkillEffect = function(card){
-    var _pro = {'atk_improve': 'atk', 'hp_improve': 'hp'};
+var passiveSkillEffect = function(card) {
+    var _pro = {
+        'atk_improve': 'atk',
+        'hp_improve': 'hp'
+    };
     _.values(card.passiveSkills).filter(function(ps) {
         return _.keys(_pro).indexOf(ps.name) > -1;
     }).forEach(function(ps) {

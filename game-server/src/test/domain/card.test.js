@@ -126,4 +126,17 @@ describe("Card Object", function () {
 
         });
     });
+
+    describe('.activeGroupEffect()', function(){
+        it('should can active group effect', function(){
+            var card = new Card({
+                id: 1, 
+                tableId: 3,
+                star: 3
+            });
+            card.activeGroupEffect();
+            card.atkAddition.should.equal(29);
+            card.hpAddition.should.equal(0);
+        })
+    })
 });

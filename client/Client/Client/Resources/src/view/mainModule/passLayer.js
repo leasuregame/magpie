@@ -16,6 +16,10 @@ var PassLayer = cc.Layer.extend({
     _scrollView: null,
     _cardSprite: null,
     _towerSprite: null,
+    _skillPointLabel: null,
+    _skillPointObtainLabel: null,
+    _expObtainLabel: null,
+    _moneyObtainLabel: null,
     _passLabelList: [],
     _ladderList: [],
     _nowPassTop: 0,
@@ -39,9 +43,7 @@ var PassLayer = cc.Layer.extend({
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
 
-        var scrollViewLayer = cc.Layer.create();
-        scrollViewLayer.setAnchorPoint(cc.p(0, 0));
-
+        var scrollViewLayer = MarkLayer.create(cc.rect(100, 200, 330, 750));
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
@@ -76,7 +78,7 @@ var PassLayer = cc.Layer.extend({
         }
         scrollViewLayer.addChild(this._cardSprite, 1);
 
-        this._scrollView = cc.ScrollView.create(cc.size(310, 750), scrollViewLayer);
+        this._scrollView = cc.ScrollView.create(cc.size(330, 750), scrollViewLayer);
         this._scrollView.setContentSize(cc.size(300, 18620));
         this._scrollView.setPosition(cc.p(100, 200));
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
@@ -127,7 +129,7 @@ var PassLayer = cc.Layer.extend({
             this._towerSprite.setTextureRect(cc.rect(0, 209 - len * 209, 94, len));
 
             for (var i = 2; i <= MAX_PASS_COUNT; ++i) {
-                if (i <= this._nowPassTop + 1) {
+                if (i <= this._nowPassTop) {
                     this._ladderList[i].setVisible(true);
                 } else {
                     this._ladderList[i].setVisible(false);
@@ -160,7 +162,6 @@ var PassLayer = cc.Layer.extend({
 
             this._scrollView.setContentOffsetInDuration(offsetPoint, duration);
         } else {
-            cc.log(offsetPoint);
             this._scrollView.setContentOffset(offsetPoint);
         }
     },
@@ -247,12 +248,10 @@ var PassLayer = cc.Layer.extend({
     _onClickWipeOut: function () {
         cc.log("PassLayer _onClickWipeOut");
 
-//        scrollView.setContentOffsetInDuration(cc.p(0, 0), 10);
-//        this._nowPassTop += 1;
         this._wipeOutAnimation();
-//        gameData.pass.wipeOut(function (data) {
-//            cc.log(data);
-//        });
+        gameData.pass.wipeOut(function (data) {
+            cc.log(data);
+        });
     }
 })
 

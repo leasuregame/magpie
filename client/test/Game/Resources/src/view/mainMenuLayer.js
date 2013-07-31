@@ -15,13 +15,12 @@
 var MainMenuLayer = cc.Layer.extend({
     _mainScene : null,
 
-    init : function(mainScene) {
+    init : function() {
         cc.log("MainMenuLayer init");
 
         if(!this._super()) return false;
-        if(!mainScene) return false;
 
-        this._mainScene = mainScene;
+        this._mainScene = MainScene.getInstance();
 
         var mainLayerItem = cc.MenuItemFont.create("主页", this._onClickMainLayer, this);
         mainLayerItem.setAnchorPoint(cc.p(0, 0));
@@ -88,10 +87,10 @@ var MainMenuLayer = cc.Layer.extend({
 })
 
 
-MainMenuLayer.create = function(mainScene) {
+MainMenuLayer.create = function() {
     var ret = new MainMenuLayer();
 
-    if(ret && ret.init(mainScene)) {
+    if(ret && ret.init()) {
         return ret;
     }
 

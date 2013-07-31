@@ -65,6 +65,8 @@ var appFiles = [
     'src/controls/bgSprite.js',
     'src/controls/dialog.js',
     'src/controls/lazyMenu.js',
+    'src/controls/lazyLayer.js',
+    'src/controls/markLayer.js',
 
     'src/view/loginModule/signInScene.js',
     'src/view/loginModule/signInLayer.js',
@@ -73,14 +75,17 @@ var appFiles = [
 
 
     'src/view/mainModule/activityLayer.js',
+    'src/view/mainModule/cardLabel.js',
     'src/view/mainModule/cardDetails.js',
     'src/view/mainModule/cardLibraryLayer.js',
     'src/view/mainModule/cardListLayer.js',
+    'src/view/mainModule/cardNode.js',
     'src/view/mainModule/cardUpgradeLabel.js',
     'src/view/mainModule/configLayer.js',
     'src/view/mainModule/evolutionLayer.js',
     'src/view/mainModule/friendLayer.js',
     'src/view/mainModule/lineUpLabel.js',
+    'src/view/mainModule/lineUpLayer.js',
     'src/view/mainModule/lotteryLayer.js',
     'src/view/mainModule/mainBgLayer.js',
     'src/view/mainModule/mainLayer.js',
@@ -88,6 +93,7 @@ var appFiles = [
     'src/view/mainModule/mainScene.js',
     'src/view/mainModule/messageLabel.js',
     'src/view/mainModule/messageLayer.js',
+    'src/view/mainModule/passLabel.js',
     'src/view/mainModule/passLayer.js',
     'src/view/mainModule/playerDetailsLayer.js',
     'src/view/mainModule/playerHeaderLabel.js',
@@ -96,6 +102,7 @@ var appFiles = [
     'src/view/mainModule/rankLayer.js',
     'src/view/mainModule/shopLayer.js',
     'src/view/mainModule/skillUpgradeLabel.js',
+    'src/view/mainModule/starLabel.js',
     'src/view/mainModule/strengthenLayer.js',
     'src/view/mainModule/taskLayer.js',
     'src/view/mainModule/tournamentLayer.js',
@@ -104,7 +111,7 @@ var appFiles = [
     'src/view/battleModule/actionFactory.js',
     'src/view/battleModule/effectsFactory.js',
     'src/view/battleModule/skillFactory.js',
-    'src/view/battleModule/cardNode.js',
+    'src/view/battleModule/battleCardNode.js',
     'src/view/battleModule/battleLayer.js',
     'src/view/battleModule/battleScene.js',
     'src/view/battleModule/battlePlayer.js',
@@ -129,7 +136,7 @@ director.setAnimationInterval(1.0 / 60);
 // create a scene. it's an autorelease object
 //var myScene = new BattleScene();
 //var myScene = new MainScene();
-var myScene = new SignInScene();
+var myScene = SignInScene.create();
 //var myScene = new testScene();
 
 // run

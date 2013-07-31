@@ -22,30 +22,45 @@ var LineUp = Entity.extend({
     init: function (data) {
         cc.log("LineUp init");
 
-        for(var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            if(data[i]) {
-                this._lineUpCount++;
-                this._lineUp[i] = data[i];
-            } else {
-                this._lineUp[i] = null;
-            }
-        }
+        this.update(data);
 
         cc.log(this);
 
         return true;
     },
 
-    getLineUpList: function() {
+    update: function(data) {
+        cc.log("LineUp update");
+
+        this._lineUp = {};
+        for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
+            if (data[i]) {
+                this._lineUpCount++;
+                this._lineUp[i] = data[i];
+            }
+        }
+    },
+
+    getLineUpCardList: function () {
+        cc.log("LineUp getLineUpCardList");
+
+        var lineUpCardList = [];
+        var cardList = gameData.cardList;
+
+        for (var key in this._lineUp) {
+            lineUpCardList.push(cardList.getCardByIndex(this._lineUp[key]));
+        }
+
+        return lineUpCardList;
+    },
+
+    getLineUpList: function () {
         cc.log("LineUp getLineUpList");
 
         var lineUpList = [];
-        var cardList = gameData.cardList;
 
-        for(var key in this._lineUp) {
-            if(this._lineUp[key]) {
-                lineUpList.push(cardList.getCardByIndex(this._lineUp[key]));
-            }
+        for (var key in this._lineUp) {
+            lineUpList.push(this._lineUp[key]);
         }
 
         return lineUpList;
@@ -55,15 +70,15 @@ var LineUp = Entity.extend({
         cc.log("LineUp getLineUpByIndex");
         cc.log(index);
 
-        return this._lineUp[index];
+        return (this._lineUp[index] ? this._lineUp[index] : null);
     },
 
-    setLineUp: function(cardId) {
+    setLineUp: function (cardId) {
         cc.log("LineUp setLineUp");
 
-        if(this._lineUpCount < MAX_LINE_UP_CARD) {
-            for(var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-                if(this._lineUp[i] == null) {
+        if (this._lineUpCount < MAX_LINE_UP_CARD) {
+            for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
+                if (this._lineUp[i] == null) {
                     this._lineUp[i] = cardId;
                     return true;
                 }
@@ -79,8 +94,35 @@ var LineUp = Entity.extend({
         this._lineUp[index] = cardId;
     },
 
-    syncLineUp: function () {
-        cc.log("LineUp syncLineUp");
+    changeLineUp: function (cb, lineUp) {
+        cc.log("LineUp changeLineUp");
+        cc.log(lineUp);
+
+        for(var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
+            if(this._lineUp[i] != lineUp[i]) {
+                cc.log(i);
+                var that = this;
+
+                lzWindow.pomelo.request("logic.trainHandler.changeLineUp", {playerId: gameData.player.get("id"), lineUp: lineUp}, function (data) {
+                    cc.log(data);
+
+                    if (data.code == 200) {
+                        cc.log("barriers success");
+
+                        var msg = data.msg;
+
+                        that.update(msg.lineUp);
+
+                        cb("yes");
+                    } else {
+                        cc.log("barriers fail");
+                    }
+                });
+
+                return;
+            }
+        }
+        cb();
     }
 })
 

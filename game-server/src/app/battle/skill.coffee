@@ -9,7 +9,7 @@ defautls =
   name: 'nobody'
   type: 'single_fight'
   scope: 'default'
-  random_num: 1
+  target_num: 1
   star3: ''
   rate3: ''
   star4: ''
@@ -28,7 +28,7 @@ class Skill extends Module
   getTargets: ->
     switch @scope
       when 'default' then arg = @hero.pos
-      when 'random' then arg = @random_num
+      when 'random' then arg = @target_num
       when 'lengthways' then arg = @hero.pos
       else arg = null
 

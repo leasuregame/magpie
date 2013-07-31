@@ -23,6 +23,7 @@
         "underscore": "1.4.4",
         "coffee-script": ">=1.6.2",
         "mocha": "*",
+        "sinon": "*",
         "should": "*",
         "node-inspector": "0.1.10",
         "express": ">=3.2.6",

@@ -95,10 +95,10 @@ var Pass = Entity.extend({
                 var rewards = msg.rewards;
                 var player = gameData.player;
 
-                player.add("exp", rewards.exp_obtain);
-                player.add("gold", rewards.gold_obtain);
-                player.add("money", rewards.money_obtain);
-                player.add("skillPoint", rewards.skill_point);
+                player.add("exp", rewards.exp_obtain || 0);
+                player.add("gold", rewards.gold_obtain || 0);
+                player.add("money", rewards.money_obtain || 0);
+                player.add("skillPoint", rewards.skill_point || 0);
 
                 cb(rewards);
             } else {

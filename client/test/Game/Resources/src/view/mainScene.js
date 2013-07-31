@@ -29,7 +29,7 @@ var MainScene = cc.Scene.extend({
         var mainBgLayer = MainBgLayer.create();
         this.addChild(mainBgLayer,  -1);
 
-        var mainMenuLayer = MainMenuLayer.create(this);
+        var mainMenuLayer = MainMenuLayer.create();
         this.addChild(mainMenuLayer, 1);
 
         this._nowLayer = MainLayer.create(this);
@@ -42,7 +42,7 @@ var MainScene = cc.Scene.extend({
 
         if(!(this._nowLayer instanceof runLayer)) {
             this.removeChild(this._nowLayer);
-            this._nowLayer = runLayer.create(this);
+            this._nowLayer = runLayer.create();
             this.addChild(this._nowLayer);
         }
     }

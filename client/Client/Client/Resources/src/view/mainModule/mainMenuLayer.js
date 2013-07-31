@@ -74,6 +74,7 @@ var MainMenuLayer = cc.Layer.extend({
     _onClickCardListLayer: function () {
         cc.log("MainMenuLayer _onClickCardListLayer");
         MainScene.getInstance().switchLayer(CardListLayer);
+//        MainScene.getInstance().switchLayer(LineUpLayer);
     },
 
     _onClickShopLayer: function () {

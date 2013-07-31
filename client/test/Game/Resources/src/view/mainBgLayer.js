@@ -8,15 +8,15 @@
 
 
 /*
-*  主窗口背景层
-* */
+ *  主窗口背景层
+ * */
 
 
 var MainBgLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("MainBgLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         var bgSprite = cc.Sprite.create(s_game_bg);
         bgSprite.setPosition(GAME_MIDPOINT);
@@ -27,10 +27,10 @@ var MainBgLayer = cc.Layer.extend({
 })
 
 
-MainBgLayer.create = function() {
+MainBgLayer.create = function () {
     var ret = new MainBgLayer();
 
-    if(ret && ret.init()) {
+    if (ret && ret.init()) {
         return ret;
     }
 

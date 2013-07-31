@@ -21,6 +21,36 @@ cc.LAZY_MENU_HANDLER_PRIORITY = 1;
 var LazyMenu = cc.Menu.extend({
     _isScroll: false,
 
+    /**
+     * initializes a cc.Menu with it's items
+     * @param {Array} args
+     * @return {Boolean}
+     */
+    initWithItems: function (args) {
+        var pArray = [];
+        if (args) {
+            for (var i = 0; i < args.length; i++) {
+                if (args[i]) {
+                    pArray.push(args[i]);
+                }
+            }
+        }
+
+        return this.initWithArray(pArray);
+    },
+
+    initWithArray: function (arrayOfItems) {
+        cc.log("LazyMenu initWithArray");
+
+        if (!this._super(arrayOfItems))  return false;
+
+        this.setTouchMode(cc.TOUCHES_ONE_BY_ONE);
+        this.setTouchPriority(cc.LAZY_MENU_HANDLER_PRIORITY);
+        this.setTouchEnabled(true);
+
+        return true;
+    },
+
     registerWithTouchDispatcher: function () {
         cc.Director.getInstance().getTouchDispatcher().addTargetedDelegate(this, cc.LAZY_MENU_HANDLER_PRIORITY, true);
     },
@@ -31,8 +61,12 @@ var LazyMenu = cc.Menu.extend({
      */
     onTouchBegan: function (touch, e) {
         cc.log("LazyMenu onTouchBegan");
+
         this._isScroll = false;
-        return this._super(touch, e);
+
+        if (SETTING_IS_BROWSER) {
+            return this._super(touch, e);
+        }
     },
 
     /**
@@ -40,11 +74,18 @@ var LazyMenu = cc.Menu.extend({
      */
     onTouchEnded: function (touch, e) {
         cc.log("LazyMenu onTouchEnded");
+
         if (this._isScroll) {
-            this.onTouchCancelled(touch, e);
+            if (SETTING_IS_BROWSER) {
+                this.onTouchCancelled(touch, e);
+            } else {
+                return true;
+            }
         }
         else {
-            this._super(touch, e);
+            if (SETTING_IS_BROWSER) {
+                this._super(touch, e);
+            }
         }
     },
 
@@ -54,8 +95,12 @@ var LazyMenu = cc.Menu.extend({
      */
     onTouchMoved: function (touch, e) {
         cc.log("LazyMenu onTouchMoved");
+
         this._isScroll = true;
-        this._super(touch, e);
+
+        if (SETTING_IS_BROWSER) {
+            this._super(touch, e);
+        }
     }
 })
 
@@ -65,12 +110,15 @@ LazyMenu.create = function (/*Multiple Arguments*/) {
 
     if (arguments.length == 0) {
         ret.initWithItems(null, null);
+        return ret;
     } else if (arguments.length == 1) {
         if (arguments[0] instanceof Array) {
             ret.initWithArray(arguments[0]);
             return ret;
         }
     }
+
     ret.initWithItems(arguments);
+
     return ret;
 };

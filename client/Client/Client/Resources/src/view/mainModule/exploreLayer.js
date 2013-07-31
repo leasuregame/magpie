@@ -76,7 +76,8 @@ var ExploreLayer = cc.Layer.extend({
             str += "遇到战斗 ----" + "消耗体力：" + msg.power_consume + "获得经验：" + msg.exp_obtain + "获得金钱：" + msg.money_obtain;
             var battleLog = BattleLog.create(msg.battle_log);
             BattleLogNote.getInstance().pushBattleLog(battleLog);
-            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, BattleScene.create(battleLog), true));
+            cc.Director.getInstance().replaceScene(BattleScene.create(battleLog));
+//            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, BattleScene.create(battleLog), true));
         } else if (msg.result == "box") {
             str += "遇到宝箱 ----" + "消耗体力：" + msg.power_consume + "获得经验：" + msg.exp_obtain + "获得金钱：" + msg.money_obtain + "获得卡牌：" + msg.open_box_card;
         } else if (msg.result == "none") {

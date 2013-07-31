@@ -17,6 +17,8 @@
 require('./setup');
 app = require("pomelo").app;
 var dao = app.get('dao');
+var Card = require('../../app/domain/card');
+var PassiveSkill = require('../../app/domain/passiveSkill');
 var should = require("should");
 
 describe("Card Object", function () {
@@ -49,7 +51,7 @@ describe("Card Object", function () {
                         data.atkAddition
                     ],
                     function (err, res) {
-                        dao.card.fetchOne({where: {id: data.id}}, function (err, res) {
+                        dao.card.fetchOne({sync: true, where: {id: data.id}}, function (err, res) {
                             card = res;
                             return done();
                         });
@@ -73,4 +75,68 @@ describe("Card Object", function () {
             });
         });
     });
+
+    describe('.ability()', function(){
+        describe("when card's star less than 3", function(){
+            it('should can count out ability of card', function(){
+                var card = new Card({
+                    id: 1,
+                    tableId: 1
+                });
+                card.ability().should.equal(99);
+
+                card = new Card({
+                    id: 1,
+                    tableId: 1,
+                    lv: 10
+                })
+                card.ability().should.equal(225);
+
+            });
+        });
+        
+        describe("when card's star grater than 2", function(){
+            it('should can count out ability of card', function(){
+                var card = new Card({
+                    id: 1, 
+                    tableId: 3,
+                    star: 3
+                });
+                card.ability().should.equal(4197);
+
+                card = new Card({
+                    id: 1,
+                    tableId: 3,
+                    star: 3,
+                    lv: 10
+                });
+                card.ability().should.equal(4539);
+
+                card = new Card({
+                    id: 1, 
+                    tableId: 3,
+                    star: 3,
+                    lv: 10,
+                    passiveSkills: {
+                        1: new PassiveSkill({name: 'crit', value: 10})
+                    }
+                });
+                card.ability().should.equal(5539);
+            });
+
+        });
+    });
+
+    describe('.activeGroupEffect()', function(){
+        it('should can active group effect', function(){
+            var card = new Card({
+                id: 1, 
+                tableId: 3,
+                star: 3
+            });
+            card.activeGroupEffect();
+            card.atkAddition.should.equal(29);
+            card.hpAddition.should.equal(0);
+        })
+    })
 });

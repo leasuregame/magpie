@@ -33,12 +33,6 @@ var UserDao = (function (_super) {
         UserDao.__super__.constructor.apply(this, arguments);
     }
 
-    UserDao.DEFAULT_VALUES = {
-        name: '', 
-        loginCount: 0,
-        lastLoginTime: Date.now(),
-        lastLoginDevice: ''
-    };
     UserDao.table = 'user';
     UserDao.domain = User;
     UserDao.syncKey = 'userSync.updateUserById';

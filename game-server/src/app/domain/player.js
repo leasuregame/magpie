@@ -18,6 +18,7 @@ var playerConfig = require('../../config/data/player');
 var table = require('../manager/table');
 var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
+var Card = require('./card');
 
 var startPowerResumeTimer = function(player) {
     var resumePoint = playerConfig.POWER_RESUME.point;
@@ -53,15 +54,29 @@ var groupCardsEffect = function(player) {
     for (var i = 0; i < cards.length; i++) {
         var card = cards[i];
         var cardConfig = cardTable.getItem(card.id);
-        var series = cardConfig.group.split(',');
+        var series = cardConfig.group.toString().split(',');
         var seriesCards = cardTable.filter(function(id, item) {
             return (series.indexOf(item.number) > -1) && (cardIds.indexOf(id) > -1);
         });
 
         if (!_.isEmpty(seriesCards) && (series.length === seriesCards.length)) {
-            card.activeGroupEffect(cardConfig);
+            card.activeGroupEffect();
         }
     }
+};
+
+var defaultMark = function() {
+    var i, result = [];
+    for (i = 0; i < 100; i++) {
+        result.push(0);
+    }
+    return result;
+};
+
+var addListeners = function(player) {
+    player.on('lineUp.change', function(){
+        player.getAbility();
+    });
 };
 
 /*
@@ -73,11 +88,9 @@ var Player = (function(_super) {
 
     function Player(param) {
         Player.__super__.constructor.apply(this, arguments);
-
-        startPowerResumeTimer(this);
     }
 
-    Player.fields = [
+    Player.FIELDS = [
         'id',
         'createTime',
         'userId',
@@ -88,6 +101,7 @@ var Player = (function(_super) {
         'exp',
         'money',
         'gold',
+        'skillPoint',
         'lineUp',
         'ability',
         'task',
@@ -98,9 +112,36 @@ var Player = (function(_super) {
         'elixir'
     ];
 
+    Player.DEFAULT_VALUES = {
+        power: 100,
+        lv: 1,
+        exp: 0,
+        money: 1000,
+        gold: 50,
+        lineUp: '',
+        ability: 0,
+        task: {
+            id: 1,
+            progress: 0
+        },
+        pass: {
+            layer: 0,
+            mark: defaultMark()
+        },
+        dailyGift: [],
+        fragments: 0,
+        energy: 0,
+        skillPoint: 0
+    };
+
     Player.prototype.init = function() {
-        this.cards = {};
-        this.rank = null;
+        this.cards || (this.cards = []);
+        this.rank || (this.rank = null);
+        groupCardsEffect(this);
+        startPowerResumeTimer(this);
+
+        addListeners(this);
+        this.emit('lineUp.change');
     };
 
     Player.prototype.save = function() {
@@ -111,16 +152,68 @@ var Player = (function(_super) {
         });
     };
 
+    Player.prototype.getAbility = function(){
+        var ability = 0;
+        this.activeCards().forEach(function(card) {
+            var _a = card.ability();
+            if (!_.isNaN(_a)) {
+                ability += card.ability();
+            }
+        });
+        this.set('ability', ability);
+        return ability;
+    };  
+
     Player.prototype.addCard = function(card) {
-        if (typeof card.id !== 'undefined' && card.id !== null) {
+        if (card instanceof Card && card.id !== null) {
             this.cards[card.id] = card;
+        } else {
+            throw new Error('should only can add a Card instance');
         }
     };
 
     Player.prototype.addCards = function(cards) {
         var self = this;
-        cards.forEach(function(card) {
+        _.each(cards, function(card) {
             self.addCard(card);
+        });
+    };
+
+    Player.prototype.hasCard = function(id) {
+        return this.cards[id] !== 'undefined';
+    };
+
+    Player.prototype.getCard = function(id) {
+        return this.cards[id] || null;
+    };
+
+    Player.prototype.getCards = function(ids) {
+        if (!_.isArray(ids)) {
+            ids = [ids];
+        }
+
+        return _.values(this.cards).filter(function(c){
+            return ids.indexOf(parseInt(c.id)) > -1;
+        });
+    };
+
+    Player.prototype.popCards = function(ids) {
+        var cards = [];
+        for (var i = 0; i < ids.length; i++) {
+            var _id = ids[i];
+            var _card = this.cards[_id];
+            if ( !! _card) {
+                cards.push(_card);
+                delete this.cards[_id];
+            }
+        }
+        return cards;
+    };
+
+    Player.prototype.activeCards = function() {
+        var cardIds = _.values(this.lineUpObj());
+        return _.values(this.cards).filter(function(c) {
+            return cardIds.indexOf(c.id) > -1;
         });
     };
 
@@ -177,41 +270,6 @@ var Player = (function(_super) {
         });
     };
 
-    Player.prototype.hasCard = function(id) {
-        return this.cards[id] !== 'undefined';
-    };
-
-    Player.prototype.getCard = function(id) {
-        return this.cards[id] || null;
-    };
-
-    Player.prototype.getCards = function(ids) {
-        if (!_.isArray(ids)) {
-            ids = [ids];
-        }
-
-        var results = [];
-        for (var id in this.cards) {
-            if (_.contains(ids, id)) {
-                results.push(this.cards[id]);
-            }
-        }
-        return results;
-    };
-
-    Player.prototype.popCards = function(ids) {
-        var cards = [];
-        for (var i = 0; i < ids.length; i++) {
-            var _id = ids[i];
-            var _card = this.cards[_id];
-            if ( !! _card) {
-                cards.push(_card);
-                delete this.cards[_id];
-            }
-        }
-        return cards;
-    };
-
     Player.prototype.setPassMark = function(layer) {
         if (layer < 1 || layer > 100) {
             logger.warn('无效的关卡层数 ', layer);
@@ -250,7 +308,7 @@ var Player = (function(_super) {
             money: this.money,
             gold: this.gold,
             lineUp: this.lineUpObj(),
-            ability: this.ability,
+            ability: this.getAbility(),
             task: this.task,
             pass: checkPass(this.pass),
             dailyGift: this.dailyGift,
@@ -261,7 +319,7 @@ var Player = (function(_super) {
             cards: _.values(this.cards).map(function(card) {
                 return card.toJson();
             }),
-            rank: this.rank !== null ? this.rank.toJson() : null
+            rank: (typeof this.rank !== 'undefined' && this.rank !== null) ? this.rank.toJson() : null
         };
     };
 
@@ -278,17 +336,9 @@ var checkPass = function(pass) {
     return pass;
 };
 
-var defaultMark = function() {
-    var i, result = [];
-    for (i = 0; i < 100; i++) {
-        result.push(0);
-    }
-    return result;
-};
-
 var lineUpToObj = function(lineUp) {
     var _results = {};
-    if (lineUp !== '') {
+    if (_.isString(lineUp) && lineUp !== '') {
         var lines = lineUp.split(',');
         lines.forEach(function(l) {
             var _ref = l.split(':'),
@@ -307,7 +357,6 @@ var objToLineUp = function(obj) {
     for (var key in obj) {
         _lineUp += '' + order[parseInt(key) - 1] + ':' + obj[key] + ',';
     }
-    console.log('exchange line up: ', _lineUp);
     return _lineUp.slice(0, -1);
 };
 

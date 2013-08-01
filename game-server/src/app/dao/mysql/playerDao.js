@@ -24,14 +24,6 @@ var async = require('async');
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
 
-var defaultMark = function() {
-    var i, result = [];
-    for (i = 0; i < 100; i++) {
-        result.push(0);
-    }
-    return result;
-};
-
 var PlayerDao = (function(_super) {
     utility.extends(PlayerDao, _super);
 
@@ -39,27 +31,6 @@ var PlayerDao = (function(_super) {
         PlayerDao.__super__.constructor.apply(this, arguments);
     }
 
-    PlayerDao.DEFAULT_VALUES = {
-        power: 100,
-        lv: 1,
-        exp: 0,
-        money: 1000,
-        gold: 50,
-        lineUp: '',
-        ability: 0,
-        task: {
-            id: 1,
-            progress: 0
-        },
-        pass: {
-            layer: 0,
-            mark: defaultMark()
-        },
-        dailyGift: [],
-        fragments: 0,
-        energy: 0,
-        skillPoint: 0
-    };
     PlayerDao.table = 'player';
     PlayerDao.domain = Player;
     PlayerDao.syncKey = 'playerSync.updatePlayerById';

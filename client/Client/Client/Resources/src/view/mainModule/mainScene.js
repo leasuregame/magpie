@@ -24,14 +24,16 @@ var MainScene = cc.Scene.extend({
     init: function () {
         cc.log("MainScene init");
 
+        this.retain();
+
         var mainBgLayer = MainBgLayer.create();
         this.addChild(mainBgLayer, -1);
 
-        var mainMenuLayer = MainMenuLayer.create(this);
-        this.addChild(mainMenuLayer, 1);
-
         this._nowLayer = MainLayer.create();
         this.addChild(this._nowLayer);
+
+        var mainMenuLayer = MainMenuLayer.create(this);
+        this.addChild(mainMenuLayer, -1);
     },
 
     switchLayer: function (runLayer) {

@@ -30,6 +30,25 @@ beforeEach(function() {
   });
 });
 
+beforeEach(function(){
+  intiPomelo();
+});
+
+afterEach(function(){
+  pomelo.disconnect();
+});
+
+var beforeAll = function (func) {
+  var beforeAllCalled = false;
+
+  jasmine.getEnv().currentSuite.beforeEach(function () {
+    if (!beforeAllCalled) {
+      beforeAllCalled = true;
+      func();
+    }
+  });
+};
+
 var doAjax = function(url, params, cb) {
   var ok = false;
   runs(function() {

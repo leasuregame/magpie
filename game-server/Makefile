@@ -63,7 +63,10 @@ restartserver: build
 createtables:
 	sh ./bin/initMysql.sh
 
+inittables: 
+	mysql -udev -p1 < ./config/schema/tables.sql;
+
 loaddata:
-	node ./bin/loaddata.js
+	node ./bin/loaddata.js all development
 
 .PHONY: build clean test testserver runserver startTT stopTT loaddata

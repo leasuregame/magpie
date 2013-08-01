@@ -9,19 +9,6 @@ var RankDao = (function (_super) {
         RankDao.__super__.constructor.apply(this, arguments);
     }
 
-    RankDao.DEFAULT_VALUES = {
-        honorPoint: 0,
-        title: '',
-        rank: 1,
-        ranking: 0,
-        counts: {
-            challenge: 0,
-            win: 0,
-            lose: 0,
-            winningStreak: 0,
-            recentChallenger: []
-        }
-    };
     RankDao.table = 'rank';
     RankDao.domain = Rank;
     RankDao.syncKey = 'rankSync.updateRank';

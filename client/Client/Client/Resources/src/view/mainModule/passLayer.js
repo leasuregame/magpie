@@ -16,6 +16,10 @@ var PassLayer = cc.Layer.extend({
     _scrollView: null,
     _cardSprite: null,
     _towerSprite: null,
+    _skillPointLabel: null,
+    _skillPointObtainLabel: null,
+    _expObtainLabel: null,
+    _moneyObtainLabel: null,
     _passLabelList: [],
     _ladderList: [],
     _nowPassTop: 0,
@@ -40,8 +44,6 @@ var PassLayer = cc.Layer.extend({
         this.addChild(bgSprite);
 
         var scrollViewLayer = cc.Layer.create();
-        scrollViewLayer.setAnchorPoint(cc.p(0, 0));
-
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
@@ -160,7 +162,6 @@ var PassLayer = cc.Layer.extend({
 
             this._scrollView.setContentOffsetInDuration(offsetPoint, duration);
         } else {
-            cc.log(offsetPoint);
             this._scrollView.setContentOffset(offsetPoint);
         }
     },
@@ -247,12 +248,10 @@ var PassLayer = cc.Layer.extend({
     _onClickWipeOut: function () {
         cc.log("PassLayer _onClickWipeOut");
 
-//        scrollView.setContentOffsetInDuration(cc.p(0, 0), 10);
-//        this._nowPassTop += 1;
         this._wipeOutAnimation();
-//        gameData.pass.wipeOut(function (data) {
-//            cc.log(data);
-//        });
+        gameData.pass.wipeOut(function (data) {
+            cc.log(data);
+        });
     }
 })
 

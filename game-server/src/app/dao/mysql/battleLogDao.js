@@ -28,9 +28,6 @@ var BattleLogDao = (function(_super) {
         BattleLogDao.__super__.constructor.apply(this, arguments);
     }
 
-    BattleLogDao.DEFAULT_VALUES = {
-        battleLog: {}
-    };
     BattleLogDao.table = 'battleLog';
     BattleLogDao.domain = BattleLog;
     BattleLogDao.syncKey = 'battleLogSync.updateBattleLogById';

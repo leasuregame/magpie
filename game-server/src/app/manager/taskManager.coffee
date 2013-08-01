@@ -88,9 +88,13 @@ class Manager
   @openBox: (player, data, cb) ->
     _obj = taskRate.open_box.star
 
-    _res = randomCard(utility.randomValue(_.keys(_obj), _.values(_obj)))
-    data.open_box_card = _res if _res > 0
-    data.fragment = true if _res is -1
+    _rd_star = utility.randomValue(_.keys(_obj), _.values(_obj))
+    if _rd_star is -1
+      data.fragment = true
+    else
+      _res = randomCard(_rd_star)
+      data.open_box_card = _res
+    
     dao.card.create data: {playerId: player.id, tableId: data.open_box_card}, (err, card) ->
       if err
         cb(err)
@@ -136,7 +140,7 @@ class Manager
     cb(null, data)
 
 randomCard = (star) ->
-  ids = _.range(star, 250, 5)
+  ids = _.range(parseInt(star), 250, 5)
   index = _.random(0, ids.length)
   ids[index]
 

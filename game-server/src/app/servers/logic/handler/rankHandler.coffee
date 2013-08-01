@@ -75,7 +75,6 @@ Handler::challenge = (msg, session, next) ->
 
       isWin = _results == 'win'
       rankManager.exchangeRankings player, targetId, rewards, isWin, (err, res) ->
-        console.log 'exchange result: ', err, res
         if err and not res
           return cb(err)
         else

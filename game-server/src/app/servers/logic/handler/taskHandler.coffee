@@ -159,9 +159,7 @@ getRewardCards = (cardIds, count) ->
     _star = utility.randomValue _.keys(cd.star), _.values(cd.star)
     _level = utility.randomValue _.keys(cd.level), _.values(cd.level)
 
-    console.log "-id-", _id, _star
     _id = countCardId(parseInt(_id), parseInt(_star))
-    console.log "=id=", _id
     _cards.push {
       id: _id
       star: parseInt(_star)

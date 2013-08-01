@@ -56,27 +56,31 @@ var LineUpLabel = cc.Layer.extend({
 
         var menu = cc.Menu.create();
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this.addChild(menu, 1);
 
         for (var i = 0; i < MAX_LINE_UP_CARD; ++i) {
             var card = lineUpList[i];
             var star = 1;
 
             if (card) {
-                star = card.get("star");
+                var cardHeadItem = CardHeadNode.getCardHeadItem(card, this._onClickCard(card), this);
+                cardHeadItem.setPosition(cc.p(80 + 120 * i, 0));
+                menu.addChild(cardHeadItem);
 
-                var cardItem = cc.MenuItemImage.create(s_h_hero_1, s_h_hero_1, this._onClickCard(card), this);
-                cardItem.setPosition(cc.p(80 + 120 * i, 0));
-                menu.addChild(cardItem);
+//                star = card.get("star");
+//
+//                var cardItem = cc.MenuItemImage.create(s_h_hero_1, s_h_hero_1, this._onClickCard(card), this);
+//                cardItem.setPosition(cc.p(80 + 120 * i, 0));
+//                menu.addChild(cardItem);
             }
 
-            var cardItemBg = cc.Sprite.create(main_scene_image["card_item_bg" + star]);
-            cardItemBg.setPosition(cc.p(80 + 120 * i, 0));
-            this.addChild(cardItemBg, -1);
-
-            var cardItemFrame = cc.Sprite.create(main_scene_image["card_item_frame" + star]);
-            cardItemFrame.setPosition(cc.p(80 + 120 * i, 0));
-            this.addChild(cardItemFrame, 1);
+//            var cardItemBg = cc.Sprite.create(main_scene_image["card_item_bg" + star]);
+//            cardItemBg.setPosition(cc.p(80 + 120 * i, 0));
+//            this.addChild(cardItemBg, -1);
+//
+//            var cardItemFrame = cc.Sprite.create(main_scene_image["card_item_frame" + star]);
+//            cardItemFrame.setPosition(cc.p(80 + 120 * i, 0));
+//            this.addChild(cardItemFrame, 1);
         }
     },
 

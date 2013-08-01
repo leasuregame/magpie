@@ -20,7 +20,7 @@ var addSyncEvent = function (syncKey, entity, cb) {
       } else {
         fn = app.get('sync').exec;
       }
-      app.get('sync').flush.call(app.get('sync'), 
+      fn.call(app.get('sync'), 
         syncKey,
         entity.id, 
         {

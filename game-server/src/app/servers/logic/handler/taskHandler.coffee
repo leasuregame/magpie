@@ -96,7 +96,7 @@ Handler::passBarrier = (msg, session, next) ->
     (_player, cb) ->
       player = _player
       layer = if layer? then layer else player.pass.layer + 1
-      if layer > 100 or layer < 1 or layer > (player.pass.layer + 1)
+      if layer > 100 or layer < 1 #or layer > (player.pass.layer + 1)
         return cb({code: 501, msg: '不能闯此关'})
 
       cb(null)

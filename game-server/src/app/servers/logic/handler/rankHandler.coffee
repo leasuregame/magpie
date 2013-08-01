@@ -88,6 +88,24 @@ Handler::challenge = (msg, session, next) ->
       bl.rewards = rewards
       next(null, {code: 200, msg: {battleLog: bl, counts: player.counts}})
 
+Handler::grantTitle = (msg, session, next) ->
+  playerId = session.get('playerId') or msg.playerId
+  honnorPoint = msg.honnorPoint
+
+  rankManager.getRank playerId, (err, rank) ->
+    if err
+      return next(null, {code: 500, msg: err.msg})
+
+    titleConfig = table.getTableItem 'title', rank.rank + 1
+    if honnorPoint < parseInt(titleConfig.honnorPoint_need)
+      return next(null, {code: 501, msg: '荣誉点不够'})
+
+    rank.grantTitle titleConfig.title, honnorPoint
+    rank.save()
+
+    next null, {code: 200}
+
+
 genRankings = (ranking) ->
   top10 = {}
   for r in [1..10]

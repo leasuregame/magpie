@@ -22,16 +22,23 @@ var LineUp = Entity.extend({
     init: function (data) {
         cc.log("LineUp init");
 
+        this.update(data);
+
+        cc.log(this);
+
+        return true;
+    },
+
+    update: function(data) {
+        cc.log("LineUp update");
+
+        this._lineUp = {};
         for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
             if (data[i]) {
                 this._lineUpCount++;
                 this._lineUp[i] = data[i];
             }
         }
-
-        cc.log(this);
-
-        return true;
     },
 
     getLineUpCardList: function () {
@@ -104,6 +111,8 @@ var LineUp = Entity.extend({
 
                         var msg = data.msg;
 
+                        that.update(msg.lineUp);
+
                         cb("yes");
                     } else {
                         cc.log("barriers fail");
@@ -113,6 +122,7 @@ var LineUp = Entity.extend({
                 return;
             }
         }
+        cb();
     }
 })
 

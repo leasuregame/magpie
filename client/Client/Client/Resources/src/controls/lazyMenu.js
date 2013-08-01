@@ -61,8 +61,12 @@ var LazyMenu = cc.Menu.extend({
      */
     onTouchBegan: function (touch, e) {
         cc.log("LazyMenu onTouchBegan");
+
         this._isScroll = false;
-        return this._super(touch, e);
+
+        if (SETTING_IS_BROWSER) {
+            return this._super(touch, e);
+        }
     },
 
     /**
@@ -70,11 +74,18 @@ var LazyMenu = cc.Menu.extend({
      */
     onTouchEnded: function (touch, e) {
         cc.log("LazyMenu onTouchEnded");
+
         if (this._isScroll) {
-            this.onTouchCancelled(touch, e);
+            if (SETTING_IS_BROWSER) {
+                this.onTouchCancelled(touch, e);
+            } else {
+                return true;
+            }
         }
         else {
-            this._super(touch, e);
+            if (SETTING_IS_BROWSER) {
+                this._super(touch, e);
+            }
         }
     },
 
@@ -84,8 +95,12 @@ var LazyMenu = cc.Menu.extend({
      */
     onTouchMoved: function (touch, e) {
         cc.log("LazyMenu onTouchMoved");
+
         this._isScroll = true;
-        this._super(touch, e);
+
+        if (SETTING_IS_BROWSER) {
+            this._super(touch, e);
+        }
     }
 })
 

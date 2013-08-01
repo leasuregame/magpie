@@ -119,7 +119,8 @@ var SignUpLayer = cc.Layer.extend({
 
     _onClickBack: function () {
         cc.log("_onClickBack");
-        cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, SignInScene.create(), false));
+        cc.Director.getInstance().replaceScene(SignInScene.create());
+//        cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, SignInScene.create(), false));
     },
 
     editBoxEditingDidBegin: function (editBox) {

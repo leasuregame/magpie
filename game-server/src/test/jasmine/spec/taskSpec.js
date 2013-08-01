@@ -91,7 +91,7 @@ describe("Logic Server # ", function() {
       it('should can not execute the pass that greater than the player has passed', function(){
         request('logic.taskHandler.passBarrier', {
           playerId: 102,
-          layer: 30
+          layer: 27
         }, function(data){
           expect(data).toEqual({
             code: 501,

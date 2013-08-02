@@ -7,7 +7,6 @@ Manager = module.exports =
   getRank: (playerId, cb) ->
     dao.rank.fetchOne sync: true, where: {playerId: playerId}, cb
 
-
   exchangeRankings: (player, targetId, rewards, isWin, cb) ->
     dao.rank.fetchMany where: " playerId in (#{[player.id, targetId].toString()}) ", (err, ranks) ->
       if err
@@ -40,6 +39,9 @@ Manager = module.exports =
       defender.increase('honorPoint', parseInt(rewards.honorPoint/2))
       challenger.pushRecent(targetId)
       defender.pushRecent(player.id)
+
+      # update rank info
+      player.rank = challenger
 
       jobs = [
         {

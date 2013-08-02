@@ -127,11 +127,16 @@ var beforeAll = function (func) {
 };
 
 var doAjax = function(url, params, cb) {
+  if (arguments.length == 2) {
+    cb = params;
+    params = {};
+  }
+
   var ok = false;
   runs(function() {
     $.get(url, params, function(data) {
-      cb(data);
       ok = true;
+      cb(data);
     });
   });
 

@@ -1,7 +1,34 @@
+var checkChallengeResults = function(rankId, ranking, isWin, data) {
+  console.log(rankId, ranking, isWin);
+  var challenge = 1,
+    win = 1,
+    lose = 0,
+    winningStreak = 1,
+    recentChallenger = [100];
+
+  if (!isWin) {
+    win = 0;
+    lose = 1;
+    winningStreak = 0;
+  }
+
+  doAjax('/rank/' + rankId, {}, function(res) {
+    console.log(res);
+    expect(JSON.parse(res.data.counts)).toEqual({
+      challenge: challenge,
+      win: win,
+      lose: lose,
+      winningStreak: winningStreak,
+      recentChallenger: recentChallenger
+    });
+    expect(res.data.ranking).toEqual(ranking);
+  });
+};
+
 describe("Ranking List", function() {
-  beforeAll(function(){
+  beforeAll(function() {
     doAjax('/loaddata/all', {}, function(data) {
-        expect(data).toEqual('done');
+      expect(data).toEqual('done');
     });
   });
 
@@ -9,17 +36,27 @@ describe("Ranking List", function() {
     describe("when one challenge to other", function() {
       it("should can be return battle log", function() {
         request('logic.rankHandler.challenge', {
-            playerId: 100,
-            targetId: 101
-          }, function(data) {
-            console.log(data);
-            expect(data.code).toEqual(200);
-            expect(data.msg.battleLog).toBeBattleLog();
-            expect(data.msg.battleLog.winner).toEqual('enemy');
-            expect(data.msg.battleLog.rewards).toEqual({});
-            expect(data.msg.counts).toEqual({});
+          playerId: 101,
+          targetId: 100
+        }, function(data) {
+          console.log(data);
+          expect(data.code).toEqual(200);
+          expect(data.msg.battleLog).toBeBattleLog();
+          expect(['own', 'enemy']).toContain(data.msg.battleLog.winner);
+
+          var isWin = data.msg.battleLog.winner == 'own';
+          expect(data.msg.battleLog.rewards).toEqual({});
+
+          if (isWin) {
+            checkChallengeResults(2, 20000, isWin, data);
+            checkChallengeResults(1, 20001, !isWin, data);
+          } else {
+            checkChallengeResults(2, 20001, isWin, data);
+            checkChallengeResults(1, 20000, !isWin, data);
+          }
         });
       });
+
     });
   });
 
@@ -42,7 +79,7 @@ describe("Ranking List", function() {
 
     ids.map(function(id, index) {
 
-      describe("when my ranking is " + (id - 9999), function(){
+      describe("when my ranking is " + (id - 9999), function() {
         it('should can be return correct ranking list for (' + (id - 9999) + ')', function() {
           request('logic.rankHandler.rankingList', {
             playerId: id

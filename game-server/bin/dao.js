@@ -14,68 +14,82 @@ var FIXTURES_DIR = path.join(__dirname, '..', 'config', 'fixtures/');
 
 var importCsvToMySql = function(table, filepath, callback) {
   csv()
-  .from(filepath, {columns: true, delimiter: ';', escape: '"'})
-  .transform(function(row, index, cb) {
-  	_.each(row, function(val, key){
-  		if (_.isEmpty(val)) {
-  			delete row[key];
-  		}
-  	});
+    .from(filepath, {
+      columns: true,
+      delimiter: ';',
+      escape: '"'
+    })
+    .transform(function(row, index, cb) {
+      _.each(row, function(val, key) {
+        if (_.isEmpty(val)) {
+          delete row[key];
+        }
+      });
 
-  	if (_.isEmpty(row)) return;
-  	
-  	dao[table].delete({where: {id: row.id}}, function(err, res) {
-      dao[table].create({data: row}, function(err, res) {
-        if (err) {
-  				console.log(err);
-  			}
-        console.log('create success', index);
-        cb(null, true);
-  		});
-  	});
-  })
-	.on('error', function(error){
-	  console.log(error.message);
-	})
-  .on('close', function(){
-    console.log('');
-  })
-	.on('end', function(count) {
-    console.log('call end..............');
-		callback(null, count);
-	});
+      if (_.isEmpty(row)) {
+        cb(null);
+        return;
+      }
+
+      dao[table].delete({
+        where: {
+          id: row.id
+        }
+      }, function(err, res) {
+        dao[table].create({
+          data: row
+        }, function(err, res) {
+          if (err) {
+            console.log(err);
+          }
+          cb(null, true);
+        });
+      });
+    })
+    .on('error', function(error) {
+      console.log(error.message);
+    })
+    .on('close', function() {
+      console.log('');
+    })
+    .on('end', function(count) {
+      callback(null, count);
+    });
 };
-
-//importCsvToMySql('user', FIXTURES_DIR + 'user.csv', function(){});
 
 var loadCsvDataToSql = function(callback) {
   console.log("  *** load data from csv ***  ");
-  var files = fs.readdirSync(FIXTURES_DIR);
-
-  async.eachSeries(files, function(filename, cb) {
-    if (!/\.csv$/.test(filename)) {
-      return cb();
-    }
-
-    var table = path.basename(filename, '.csv');
-    importCsvToMySql(table, FIXTURES_DIR + filename, function(err, count) {
-    	console.log(filename + '   >>   ' + table);
-      cb(err);
-    });
-  }, function(err) {
-    if (err) {
-      console.log(err);
-    }
-
-    console.log('  *** load dta from csv completed ***  ');
-    callback(null, true);
+  var files = fs.readdirSync(FIXTURES_DIR).filter(function(file) {
+    return /\.csv$/.test(file);
   });
+  
+  var count = 0;
+  for (var i = 0; i < files.length; i++) {
+    (function(i) {
+      var filename = files[i];
+
+      var table = path.basename(filename, '.csv');
+      importCsvToMySql(table, FIXTURES_DIR + filename, function(err, res) {
+        count++;
+        if (err) {
+          console.log('load ' + filename + ' error: ', err);
+          return;
+        }
+
+        console.log(filename + '   >>   ' + table);
+        if (count == files.length) {
+          console.log("  *** load data from csv complete ***  ");
+          callback(null, true);
+        }
+      });
+    })(i);
+  }
 };
 
 var loadDataForRankingList = function(callback) {
   var count = 0;
   console.log('  *** create test data for ranking list ***  ');
-  console.log('creating......');
+  console.log('raking list data creating......');
   for (var i = 10000; i < 20001; i++) {
     (function(id) {
       var _ranking = 10000;
@@ -87,22 +101,26 @@ var loadDataForRankingList = function(callback) {
         createTime: Date.now()
       };
 
-      dao.player.create({data: data}, function(err, res) {
-      	if (err) {
-      		console.log(err);
-      	}
+      dao.player.create({
+        data: data
+      }, function(err, res) {
+        if (err) {
+          console.log(err);
+        }
 
-      	dao.rank.create({data: {
-      		playerId: id,
-          createTime: Date.now(),
-          ranking: id - 9999
-      	}}, function(err, _res) {
-      		count += 1;
-      		if (count == 10001) {
-      			console.log('  ***  data for ranking list completed ***  ');
-      			callback(null, true); 
-      		}
-      	});
+        dao.rank.create({
+          data: {
+            playerId: id,
+            createTime: Date.now(),
+            ranking: id - 9999
+          }
+        }, function(err, _res) {
+          count += 1;
+          if (count == 10001) {
+            console.log('  ***  data for ranking list completed ***  ');
+            callback(null, true);
+          }
+        });
       });
     })(i);
   }
@@ -114,13 +132,13 @@ var main = function() {
   var start = Date.now();
 
   switch (type) {
-    case 'csv': 
-      quenues.push(loadCsvDataToSql); 
+    case 'csv':
+      quenues.push(loadCsvDataToSql);
       break;
-    case 'rank': 
-      quenues.push(loadDataForRankingList); 
+    case 'rank':
+      quenues.push(loadDataForRankingList);
       break;
-    default: 
+    default:
       quenues.push(loadCsvDataToSql);
       quenues.push(loadDataForRankingList);
   }
@@ -131,8 +149,8 @@ var main = function() {
       fn(cb)
     },
     function(err, results) {
-    	var end = Date.now();
-    	console.log('time: ' + (end - start)/1000 + 's');
+      var end = Date.now();
+      console.log('time: ' + (end - start) / 1000 + 's');
       if (_.every(results)) {
         process.exit();
       }

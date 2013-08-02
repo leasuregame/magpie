@@ -67,6 +67,6 @@ inittables:
 	mysql -udev -p1 < ./config/schema/tables.sql;
 
 loaddata:
-	node ./bin/loaddata.js all development
+	node ./bin/dao.js all development
 
 .PHONY: build clean test testserver runserver startTT stopTT loaddata

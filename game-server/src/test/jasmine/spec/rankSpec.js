@@ -15,10 +15,10 @@ describe("Ranking List", function() {
             console.log(data);
             expect(data.code).toEqual(200);
             expect(data.msg.battleLog).toBeBattleLog();
-            expect(data.msg.battleLog.winner).toEqual('enemy')
-            expect(data.msg.battleLog.rewards).toEqual({})
-            expect(data.msg.pass).toEqual({ layer : 25, mark : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] });
-          });
+            expect(data.msg.battleLog.winner).toEqual('enemy');
+            expect(data.msg.battleLog.rewards).toEqual({});
+            expect(data.msg.counts).toEqual({});
+        });
       });
     });
   });

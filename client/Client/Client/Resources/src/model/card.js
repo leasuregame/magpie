@@ -113,7 +113,7 @@ var Card = Entity.extend({
         this._hp = this._hpInit + this._hpAddition;
         this._atk = this._atkInit + this._atkAddition;
 
-        this._url = "hero" + (Math.round(Math.random()) + 1);
+        this._url = "hero" + (this._id % 6 + 1);
     },
 
     _loadSkillTable: function () {

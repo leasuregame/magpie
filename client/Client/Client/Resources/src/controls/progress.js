@@ -12,6 +12,7 @@
 
 
 var Progress = cc.Node.extend({
+    _showValue: false,
     _value: 0,
     _maxValue: 0,
     _bgSprite: null,
@@ -19,6 +20,13 @@ var Progress = cc.Node.extend({
     _progress: null,
     _valueLabel: null,
     _maxValueLabel: null,
+
+    onEnter: function() {
+        cc.log("Progress onEnter");
+
+        this._super();
+        this.update();
+    },
 
     init: function () {
         cc.log("Progress init");
@@ -31,46 +39,50 @@ var Progress = cc.Node.extend({
         this._progress.setMidpoint(cc.p(0.0, 0.5));
         this._progress.setBarChangeRate(cc.p(1.0, 0.0));
 
-        this.addChild(this._bgSprite, -1);
+        if (this._bgSprite != null) {
+            this.addChild(this._bgSprite, -1);
+        }
         this.addChild(this._progress);
 
-        var slashesLabel = cc.LabelTTF.create("/", "Times New Roman", 22);
-        slashesLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        slashesLabel.setPosition(cc.p(0, 0));
-        this.addChild(slashesLabel);
+        if (this._showValue) {
+            var slashesLabel = cc.LabelTTF.create("/", "Times New Roman", 22);
+            slashesLabel.setAnchorPoint(cc.p(0.5, 0.5));
+            slashesLabel.setPosition(cc.p(0, 0));
+            this.addChild(slashesLabel);
 
-        this._valueLabel = cc.LabelTTF.create("", "Times New Roman", 22);
-        this._valueLabel.setAnchorPoint(cc.p(1, 0.5));
-        this._valueLabel.setPosition(cc.p(-10, 0));
-        this.addChild(this._valueLabel);
+            this._valueLabel = cc.LabelTTF.create("", "Times New Roman", 22);
+            this._valueLabel.setAnchorPoint(cc.p(1, 0.5));
+            this._valueLabel.setPosition(cc.p(-10, 0));
+            this.addChild(this._valueLabel);
 
-        this._maxValueLabel = cc.LabelTTF.create("", "Times New Roman", 22);
-        this._maxValueLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._maxValueLabel.setPosition(cc.p(10, 0));
-        this.addChild(this._maxValueLabel);
-
-        this.update();
+            this._maxValueLabel = cc.LabelTTF.create("", "Times New Roman", 22);
+            this._maxValueLabel.setAnchorPoint(cc.p(0, 0.5));
+            this._maxValueLabel.setPosition(cc.p(10, 0));
+            this.addChild(this._maxValueLabel);
+        }
 
         return true;
     },
 
-    initWithFile: function (bgFileName, progressFileName, value, maxValue) {
+    initWithFile: function (bgFileName, progressFileName, value, maxValue, showValue) {
         cc.log("Progress initWithFile");
 
+        this._showValue = showValue;
         this._value = value;
         this._maxValue = maxValue;
-        this._bgSprite = cc.Sprite.create(bgFileName);
+        this._bgSprite = bgFileName == null ? null : cc.Sprite.create(bgFileName);
         this._progressSprite = cc.Sprite.create(progressFileName);
 
         return this.init();
     },
 
-    initWithSpriteFrameName: function (bgSpriteFrameName, progressSpriteFrameName, value, maxValue) {
+    initWithSpriteFrameName: function (bgSpriteFrameName, progressSpriteFrameName, value, maxValue, showValue) {
         cc.log("Progress initWithSpriteFrameName");
 
+        this._showValue = showValue;
         this._value = value;
         this._maxValue = maxValue;
-        this._bgSprite = cc.Sprite.createWithSpriteFrameName(bgSpriteFrameName);
+        this._bgSprite = bgFileName == null ? null : cc.Sprite.createWithSpriteFrameName(bgSpriteFrameName);
         this._progressSprite = cc.Sprite.createWithSpriteFrameName(progressSpriteFrameName);
 
         return this.init();
@@ -83,8 +95,10 @@ var Progress = cc.Node.extend({
         if (this._value > this._maxValue) this._value = this._maxValue;
         if (this._value < 0) this._value = 0;
 
-        this._valueLabel.setString(this._value);
-        this._maxValueLabel.setString(this._maxValue);
+        if (this._showValue) {
+            this._valueLabel.setString(this._value);
+            this._maxValueLabel.setString(this._maxValue);
+        }
 
         var ratio = this._value / this._maxValue * 100;
 
@@ -136,7 +150,10 @@ var Progress = cc.Node.extend({
     setBgSprite: function (bgSprite) {
         cc.log("Progress setBgSprite");
 
-        this.removeChild(this._bgSprite, true);
+        if (this._bgSprite != null) {
+            this.removeChild(this._bgSprite, true);
+        }
+
         this.addChild(bgSprite, -1);
         this._bgSprite = bgSprite;
     },
@@ -152,18 +169,22 @@ var Progress = cc.Node.extend({
 /*
  * 创建函数
  * */
-Progress.create = function (bgFileName, progressFileName, value, maxValue) {
+Progress.create = function (bgFileName, progressFileName, value, maxValue, showValue) {
+    showValue = showValue || false;
+
     var progress = new Progress();
-    if (progress && progress.initWithFile(bgFileName, progressFileName, value, maxValue)) {
+    if (progress && progress.initWithFile(bgFileName, progressFileName, value, maxValue, showValue)) {
         return progress;
     }
 
     return null;
 }
 
-Progress.createWithSpriteFrameName = function (bgSpriteFrameName, progressSpriteFrameName, value, maxValue) {
+Progress.createWithSpriteFrameName = function (bgSpriteFrameName, progressSpriteFrameName, value, maxValue, showValue) {
+    showValue = showValue || false;
+
     var progress = new Progress();
-    if (progress && progress.initWithSpriteFrameName(bgSpriteFrameName, progressSpriteFrameName, value, maxValue)) {
+    if (progress && progress.initWithSpriteFrameName(bgSpriteFrameName, progressSpriteFrameName, value, maxValue, showValue)) {
         return progress;
     }
 

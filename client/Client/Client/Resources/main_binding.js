@@ -31,13 +31,15 @@ require('jsb.js');
 var appFiles = [
     'src/resource.js',
 
+    'src/table/table.js',
+
     'src/model/pomeloWebsocketClient.js',
     'src/model/serverAPI.js',
-    'src/table/table.js',
 
     'src/model/singleton.js',
     'src/model/base.js',
     'src/model/gameConfig.js',
+
     'src/model/entity.js',
     'src/model/user.js',
     'src/model/player.js',
@@ -84,6 +86,7 @@ var appFiles = [
     'src/view/mainModule/cardUpgradeLabel.js',
     'src/view/mainModule/configLayer.js',
     'src/view/mainModule/evolutionLayer.js',
+    'src/view/mainModule/exploreLayer.js',
     'src/view/mainModule/friendLayer.js',
     'src/view/mainModule/lineUpLabel.js',
     'src/view/mainModule/lineUpLayer.js',
@@ -112,7 +115,7 @@ var appFiles = [
     'src/view/battleModule/actionFactory.js',
     'src/view/battleModule/effectsFactory.js',
     'src/view/battleModule/skillFactory.js',
-    'src/view/battleModule/battleCardNode.js',
+    'src/view/battleModule/battleCardHalfNode.js',
     'src/view/battleModule/battleLayer.js',
     'src/view/battleModule/battleScene.js',
     'src/view/battleModule/battlePlayer.js',

@@ -95,7 +95,7 @@ var BatterLayer = cc.Layer.extend({
 
             if (card == null) continue;
 
-            var sprite = BattleCardNode.create(i);
+            var sprite = BattleCardHalfNode.create(i);
             this.addChild(sprite);
             sprite.setPosition(this._cardPosition[i]);
             this._cardList[i] = sprite;

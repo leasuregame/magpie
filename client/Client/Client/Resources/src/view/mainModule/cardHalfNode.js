@@ -25,8 +25,8 @@ var CardHalfNode = CardNode.extend({
         this._frameSprite = cc.Sprite.create(main_scene_image["card_frame" + star]);
         this.addChild(this._frameSprite, -1);
 
-        this._cardSprite = cc.Sprite.create(main_scene_image[url + "_half" + index]);
-        this.addChild(this._cardSprite);
+        this._heroSprite = cc.Sprite.create(main_scene_image[url + "_half" + index]);
+        this.addChild(this._heroSprite);
 
         this._iconSprite = cc.Sprite.create(main_scene_image.card_icon1);
         this._iconSprite.setPosition(cc.p(45, -51));

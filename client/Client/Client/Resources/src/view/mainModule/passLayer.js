@@ -97,9 +97,9 @@ var PassLayer = cc.Layer.extend({
         wipeOutMenu.setPosition(cc.p(0, 0));
         tipLabel.addChild(wipeOutMenu);
 
-        var iconSprite = cc.Sprite.create(main_scene_image.icon15);
-        iconSprite.setPosition(cc.p(543, 34));
-        tipLabel.addChild(iconSprite);
+        var wipeOutIconSprite = cc.Sprite.create(main_scene_image.icon15);
+        wipeOutIconSprite.setPosition(cc.p(543, 34));
+        tipLabel.addChild(wipeOutIconSprite);
 
         var towerBgSprite = cc.Sprite.create(main_scene_image.tower1);
         towerBgSprite.setAnchorPoint(cc.p(0, 0));

@@ -35,6 +35,7 @@ var User = Entity.extend({
 
         var that = this;
 
+        cc.log(this);
         lzWindow.pomelo.request("connector.userHandler.login", {
             account: this._account,
             password: this._password

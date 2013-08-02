@@ -18,11 +18,7 @@ var Task = Entity.extend({
     _points: 0, // 最大层数
 
     init: function (data) {
-        if(this._id != data.id) {
-            this._id = data.id;
-            this._progress = data.progress;
-            this._points = 5; // 读表
-        }
+        this.update(data);
 
         cc.log(this);
 
@@ -32,7 +28,7 @@ var Task = Entity.extend({
     update: function (data) {
         if (this._id != data.id) {
             this._id = data.id;
-            this._points = xxx; // 获取数据表层数，需要修改
+            this._points = outputTables.task.rows[this._id].points;
         }
 
         this._progress = data.progress;
@@ -42,12 +38,32 @@ var Task = Entity.extend({
         return (this._progress / this._points);
     },
 
-    getChapter: function() {
+    getChapter: function () {
         return ((this._id / 10 - 1) / 5 + 1);
     },
 
-    getSection: function() {
+    getSection: function () {
         return ((this._id / 10 - 1) % 5 + 1);
+    },
+
+    getProgress: function (index) {
+        cc.log("Task getProgress");
+
+        var progress = {};
+        if (index == this._id) {
+            progress.points = this._points;
+            progress.progress = this._progress;
+        } else {
+            progress.points = outputTables.task.rows[index].points;
+
+            if (index < this._id) {
+                progress.progress = progress.points;
+            } else {
+                progress.progress = 0;
+            }
+        }
+
+        return progress;
     },
 
     /*
@@ -66,16 +82,35 @@ var Task = Entity.extend({
             if (data.code == 200) {
                 cc.log("explore success");
 
-                cb("success");
+                var msg = data.msg;
+
+                var player = gameData.player;
+                player.update({
+                    exp: msg.exp_obtain,
+                    money: msg.money_obtain,
+                    power: msg.power_consume,
+                    fragment: msg.fragment ? 1 : 0
+                });
+
+                var backData = {
+                    result: msg.result
+                };
+                if (msg.result == "fight") {
+                    var battleLog = BattleLog.create(msg.battle_log);
+                    BattleLogNote.getInstance().pushBattleLog(battleLog);
+                    backData.battleLogId = battleLog.get("id");
+                } else if (msg.result == "box") {
+                    backData.card = msg.open_box_card;
+                }
+
+                cb(backData);
             } else {
                 cc.log("explore fail");
-
-                cb("fail");
             }
         });
     },
 
-    wipeOut: function(cb) {
+    wipeOut: function (cb) {
         cc.log("Task wipeOut");
 
         var that = this;

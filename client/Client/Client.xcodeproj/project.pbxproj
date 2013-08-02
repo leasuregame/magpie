@@ -319,8 +319,8 @@
 		909B5B581769DEF90062E0B9 /* WebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 909B5B561769DEF90062E0B9 /* WebSocket.cpp */; };
 		909B5B5B1769DF120062E0B9 /* jsb_websocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 909B5B591769DF120062E0B9 /* jsb_websocket.cpp */; };
 		909B5B611769E23C0062E0B9 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 909B5B601769E23C0062E0B9 /* libwebsockets.a */; };
+		90ACE63917AC171C0068C967 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 90ACE63817AC171C0068C967 /* res */; };
 		90CB7E7317546FFC00845641 /* myApp.js in Sources */ = {isa = PBXBuildFile; fileRef = 90CB7E6F17546FFC00845641 /* myApp.js */; };
-		90CB7E7417546FFC00845641 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 90CB7E7017546FFC00845641 /* res */; };
 		90CB7E771754701800845641 /* myApp.js in Resources */ = {isa = PBXBuildFile; fileRef = 90CB7E6F17546FFC00845641 /* myApp.js */; };
 		90CB7E79175470A300845641 /* main_binding.js in Sources */ = {isa = PBXBuildFile; fileRef = 90CB7E78175470A300845641 /* main_binding.js */; };
 		90CB7E7A175470AA00845641 /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 90CB7E78175470A300845641 /* main_binding.js */; };
@@ -1026,8 +1026,8 @@
 		909B5B5A1769DF120062E0B9 /* jsb_websocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jsb_websocket.h; path = libs/javascript/bindings/jsb_websocket.h; sourceTree = "<group>"; };
 		909B5B5E1769E23C0062E0B9 /* libwebsockets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libwebsockets.h; sourceTree = "<group>"; };
 		909B5B601769E23C0062E0B9 /* libwebsockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwebsockets.a; sourceTree = "<group>"; };
+		90ACE63817AC171C0068C967 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = Resources/res; sourceTree = "<group>"; };
 		90CB7E6F17546FFC00845641 /* myApp.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = myApp.js; path = Resources/myApp.js; sourceTree = "<group>"; };
-		90CB7E7017546FFC00845641 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = Resources/res; sourceTree = "<group>"; };
 		90CB7E78175470A300845641 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main_binding.js; path = Resources/main_binding.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1101,11 +1101,11 @@
 		90271B8617545E8300715D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				90ACE63817AC171C0068C967 /* res */,
 				9099D01417AA2B660014E86C /* src */,
 				900B85A317A7BE7800F38A45 /* res1 */,
 				90CB7E78175470A300845641 /* main_binding.js */,
 				90CB7E6F17546FFC00845641 /* myApp.js */,
-				90CB7E7017546FFC00845641 /* res */,
 				90271B8717545E8300715D5E /* CloseNormal.png */,
 				90271B8917545E8300715D5E /* CloseSelected.png */,
 				90271B8B17545E8300715D5E /* Default.png */,
@@ -2555,13 +2555,13 @@
 				90271E0617545E9000715D5E /* obfuscate_exclude_cocos2d.js in Resources */,
 				90271E1B17545E9000715D5E /* js.msg in Resources */,
 				90271FDC17545E9700715D5E /* hello.js in Resources */,
-				90CB7E7417546FFC00845641 /* res in Resources */,
 				906A0E241756F61F006A5000 /* HttpClientPackage.ini in Resources */,
 				906A0E251756F61F006A5000 /* HttpClientPackage.sh in Resources */,
 				906A0E281756F61F006A5000 /* user.cfg in Resources */,
 				906A0E291756F61F006A5000 /* userconf.ini in Resources */,
 				900B85A417A7BE7800F38A45 /* res1 in Resources */,
 				9099D01517AA2B660014E86C /* src in Resources */,
+				90ACE63917AC171C0068C967 /* res in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

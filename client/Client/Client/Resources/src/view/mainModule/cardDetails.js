@@ -27,7 +27,7 @@ var CardDetails = LazyLayer.extend({
         this.addChild(bgSprite);
 
         var cardFullNode = CardFullNode.create(this._card);
-        cardFullNode.setPosition(cc.p(220, 730));
+        cardFullNode.setPosition(cc.p(232, 788));
         this.addChild(cardFullNode);
 
         var activeSkillLabel = cc.Sprite.create(main_scene_image.icon34);

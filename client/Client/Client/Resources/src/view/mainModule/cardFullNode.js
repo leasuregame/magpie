@@ -25,9 +25,9 @@ var CardFullNode = CardNode.extend({
         this._heroSprite = cc.Sprite.create(main_scene_image[url + "_full1"]);
         this.addChild(this._heroSprite);
 
-        if(index > 1) {
-            this._iconSprite = cc.Sprite.create(main_scene_image[url + "_full" + index]);
-            this.addChild(this._iconSprite);
+        for(var i = 2; i <= index; ++i) {
+            var robeSprite = cc.Sprite.create(main_scene_image[url + "_full" + i]);
+            this.addChild(robeSprite);
         }
 
         return true;

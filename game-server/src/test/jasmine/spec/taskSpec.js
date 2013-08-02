@@ -13,7 +13,7 @@ describe("Logic Server # ", function() {
 
     describe("logic.taskHandler.explore", function() {
 
-      it("should can be return the correct battle log", function() {
+      it("should can be return the correct explore result", function() {
         request('logic.taskHandler.explore', {
           playerId: pid,
           taskId: 6
@@ -30,7 +30,39 @@ describe("Logic Server # ", function() {
             'battle_log',
             'fragment'
           ].sort());
+
+          res = data.msg
+          switch(res.result) {
+            case 'fight': 
+              expect(res.battleLog).toBeBattleLog();
+              break;
+            case 'box':
+              expect(typeof res.open_box_card).toEqual('number');
+              break;
+            default: 
+              expect(res.result).toEqual('none');
+              expect(res.battleLog).toEqual(null);
+              expect(res.open_box_card).toEqual(null);
+          }
+
+          expect(res.power_consume).toEqual(5);
+          expect(res.exp_obtain).toEqual(145);
+          expect(res.money_obtain).toEqual(290);
+          expect(typeof res.upgrade).toEqual('boolean');
+          expect(typeof res.fragment).toEqual('boolean');
           console.log(data);
+        });
+      });
+
+      describe('when power is not enought', function(){
+        it('should can not explore', function(){
+          request('logic.taskHandler.explore', {
+            playerId: 102,
+            taskId: 6
+          }, function(data){
+            expect(data.code).toEqual(501);
+            expect(data.msg).toEqual('体力不足');
+          });
         });
       });
 
@@ -45,7 +77,6 @@ describe("Logic Server # ", function() {
           console.log('闯关', data);
           expect(data.code).toEqual(200);
           expect(data.msg).toBeDefined();
-          //expect(data.msg).toEqual('');
           expect(_.keys(data.msg).sort()).toEqual([
             'battleLog',
             'pass'
@@ -54,6 +85,42 @@ describe("Logic Server # ", function() {
           expect(data.msg.battleLog.rewards).hasProperties(['exp', 'skillPoint'])
           expect(data.msg.pass).hasProperties(['layer', 'mark'])
 
+        });
+      });
+
+      it('should can not execute the pass that greater than the player has passed', function(){
+        request('logic.taskHandler.passBarrier', {
+          playerId: 102,
+          layer: 27
+        }, function(data){
+          expect(data).toEqual({
+            code: 501,
+            msg: '不能闯此关'
+          });
+        });
+      });
+
+      it('should can not execute the pass that less than 1', function(){
+        request('logic.taskHandler.passBarrier', {
+          playerId: 102,
+          layer: 0
+        }, function(data){
+          expect(data).toEqual({
+            code: 501,
+            msg: '不能闯此关'
+          });
+        });
+      });
+
+      it('should can not execute the pass that greater than 100', function(){
+        request('logic.taskHandler.passBarrier', {
+          playerId: 102,
+          layer: 101
+        }, function(data){
+          expect(data).toEqual({
+            code: 501,
+            msg: '不能闯此关'
+          });
         });
       });
 

@@ -106,7 +106,7 @@ var LazyLayer = cc.Layer.extend({
 
         if (this._canClick && this._touchedMenu) {
             if (SETTING_IS_BROWSER) {
-                tthis._menu.onTouchEnded(touch, event);
+                this._menu.onTouchEnded(touch, event);
             } else {
                 this._menu.ccTouchEnded(touch, event);
             }

@@ -31,15 +31,13 @@ require('jsb.js');
 var appFiles = [
     'src/resource.js',
 
-    'src/table/table.js',
-
     'src/model/pomeloWebsocketClient.js',
     'src/model/serverAPI.js',
+    'src/table/table.js',
 
     'src/model/singleton.js',
     'src/model/base.js',
     'src/model/gameConfig.js',
-
     'src/model/entity.js',
     'src/model/user.js',
     'src/model/player.js',
@@ -75,11 +73,14 @@ var appFiles = [
 
 
     'src/view/mainModule/activityLayer.js',
-    'src/view/mainModule/cardLabel.js',
     'src/view/mainModule/cardDetails.js',
+    'src/view/mainModule/cardNode.js',
+    'src/view/mainModule/cardFullNode.js',
+    'src/view/mainModule/cardHalfNode.js',
+    'src/view/mainModule/cardHeadNode.js',
+    'src/view/mainModule/cardLabel.js',
     'src/view/mainModule/cardLibraryLayer.js',
     'src/view/mainModule/cardListLayer.js',
-    'src/view/mainModule/cardNode.js',
     'src/view/mainModule/cardUpgradeLabel.js',
     'src/view/mainModule/configLayer.js',
     'src/view/mainModule/evolutionLayer.js',
@@ -121,9 +122,10 @@ var appFiles = [
 
 cc.dumpConfig();
 
-for( var i=0; i < appFiles.length; i++) {
-    require( appFiles[i] );
+for (var i = 0; i < appFiles.length; ++i) {
+    require(appFiles[i]);
 }
+
 
 var director = cc.Director.getInstance();
 director.setDisplayStats(true);

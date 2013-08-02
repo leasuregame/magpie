@@ -97,8 +97,6 @@ var Card = (function(_super) {
         var _abi = this.atk + parseInt(this.hp / 3);
 
         // 技能增强效果 技能攻击个数 * 技能增强效果 * 触发概率
-        console.log(this.skill);
-        console.log(this.star);
         if (this.skill) {
             _abi += parseInt(this.skill.target_num) * 
                 utility.parseEffect(this.skill['star' + this.star])[0] *

@@ -32,6 +32,8 @@ var Entity = (function(_super) {
         if (typeof(this.init) === "function") {
             this.init.apply(this, arguments);
         }
+        // clear changeFields when new an Entity instance
+        this.changedFields = []
     };
 
     Entity.FIELDS = [];
@@ -66,7 +68,7 @@ var Entity = (function(_super) {
         }
 
         _.each(attrs, function(v, k) {
-            if (_this.attributes[k] == v) {
+            if (_.has(_this.attributes, k) && _this.attributes[k] == v) {
                 return; // value is not changed
             }
 
@@ -89,7 +91,7 @@ var Entity = (function(_super) {
             // add to changeFields
             if (_this.constructor.FIELDS.indexOf(k) > -1 && _this.changedFields.indexOf(k) < 0) {
                 _this.changedFields.push(k);
-            }
+            }   
 
             _this.attributes[k] = v;
         });
@@ -130,7 +132,7 @@ var Entity = (function(_super) {
         for (var i = 0; i < __fields.length; i++) {
             field = __fields[i];
             if (this.changedFields.indexOf(field) > -1) {
-                _results[field] = this[field];
+                _results[field] = this.get(field);
             }
         }
         this.changedFields = [];
@@ -143,7 +145,7 @@ var Entity = (function(_super) {
         for (var i = 0; i < __fields.length; i++) {
             field = __fields[i];
             if (this.changedFields.indexOf(field) > -1) {
-                _results[field] = this[field];
+                _results[field] = this.get(field);
             }
         }
         this.changedFields = [];

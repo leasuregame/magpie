@@ -16,133 +16,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <SupBook>
-   <Path>Macintosh HD:Users:arthur:magpie:doc:策划文档:数值系统.xls</Path>
-   <SheetName>升级</SheetName>
-   <SheetName>升级奖励</SheetName>
-   <SheetName>任务</SheetName>
-   <SheetName>任务怪物</SheetName>
-   <SheetName>精英关卡</SheetName>
-   <SheetName>关卡怪物</SheetName>
-   <SheetName>卡牌技能升级</SheetName>
-   <SheetName>竞技场</SheetName>
-   <SheetName>卡牌基础属性参考</SheetName>
-   <SheetName>卡牌基本属性升级增量表</SheetName>
-   <SheetName>竞技排名奖励</SheetName>
-   <SheetName>竞技荣誉称号</SheetName>
-   <SheetName>抽卡</SheetName>
-   <SheetName>宝箱抽奖</SheetName>
-   <SheetName>卡牌升级</SheetName>
-   <SheetName>卡牌熔炼和培养</SheetName>
-   <SheetName>卡牌进阶</SheetName>
-   <SheetName>卡牌被动技能洗练</SheetName>
-   <SheetName>好友系统</SheetName>
-   <SheetName>排行榜</SheetName>
-   <SheetName>商城</SheetName>
-   <SheetName>功能开放教学以及等级限制</SheetName>
-   <SheetName>技能调整思路</SheetName>
-   <SheetName>技能原始版参考</SheetName>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>0</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>1</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>2</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>3</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>4</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>5</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>6</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>7</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>8</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>9</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>10</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>11</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>12</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>13</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>14</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>15</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>16</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>17</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>18</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>19</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>20</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>21</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>22</SheetIndex>
-   </Xct>
-   <Xct>
-    <Count>0</Count>
-    <SheetIndex>23</SheetIndex>
-   </Xct>
-  </SupBook>
-  <WindowHeight>15260</WindowHeight>
+  <WindowHeight>11500</WindowHeight>
   <WindowWidth>25600</WindowWidth>
   <WindowTopX>10700</WindowTopX>
   <WindowTopY>60</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -156,21 +34,24 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s66">
+  <Style ss:ID="s62">
    <NumberFormat ss:Format="0_ "/>
   </Style>
-  <Style ss:ID="s79">
+  <Style ss:ID="s63">
    <Alignment ss:Vertical="Bottom"/>
+  </Style>
+  <Style ss:ID="s64">
+   <Alignment ss:Vertical="Center"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="竞技产出表">
   <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="83" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="3" ss:StyleID="s66" ss:AutoFitWidth="0"/>
+   <Column ss:Index="3" ss:StyleID="s62" ss:AutoFitWidth="0"/>
    <Column ss:Index="5" ss:Width="132"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0"/>
-   <Column ss:Index="8" ss:StyleID="s66" ss:Width="140"/>
-   <Row>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0"/>
+   <Column ss:Index="8" ss:StyleID="s62" ss:Width="140"/>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">等级</Data></Cell>
     <Cell><Data ss:Type="String">胜利经验/次</Data></Cell>
@@ -180,7 +61,7 @@
     <Cell><Data ss:Type="String">失败铜板/次</Data></Cell>
     <Cell><Data ss:Type="String">失败荣誉点/次</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">lv</Data></Cell>
     <Cell><Data ss:Type="String">win_exp</Data></Cell>
@@ -190,7 +71,7 @@
     <Cell><Data ss:Type="String">lose_money</Data></Cell>
     <Cell><Data ss:Type="String">lose_honor_point</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">20</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -200,7 +81,7 @@
     <Cell><Data ss:Type="Number">25</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">21</Data></Cell>
     <Cell><Data ss:Type="Number">21</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -210,7 +91,7 @@
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">22</Data></Cell>
     <Cell><Data ss:Type="Number">22</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -220,7 +101,7 @@
     <Cell><Data ss:Type="Number">35</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">23</Data></Cell>
     <Cell><Data ss:Type="Number">23</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -230,7 +111,7 @@
     <Cell><Data ss:Type="Number">40</Data></Cell>
     <Cell><Data ss:Type="Number">6</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">24</Data></Cell>
     <Cell><Data ss:Type="Number">24</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -240,7 +121,7 @@
     <Cell><Data ss:Type="Number">45</Data></Cell>
     <Cell><Data ss:Type="Number">7</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">25</Data></Cell>
     <Cell><Data ss:Type="Number">25</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -250,7 +131,7 @@
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">8</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">26</Data></Cell>
     <Cell><Data ss:Type="Number">26</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -260,7 +141,7 @@
     <Cell><Data ss:Type="Number">55</Data></Cell>
     <Cell><Data ss:Type="Number">9</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">27</Data></Cell>
     <Cell><Data ss:Type="Number">27</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -270,7 +151,7 @@
     <Cell><Data ss:Type="Number">60</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">28</Data></Cell>
     <Cell><Data ss:Type="Number">28</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -280,7 +161,7 @@
     <Cell><Data ss:Type="Number">65</Data></Cell>
     <Cell><Data ss:Type="Number">11</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">29</Data></Cell>
     <Cell><Data ss:Type="Number">29</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -290,7 +171,7 @@
     <Cell><Data ss:Type="Number">70</Data></Cell>
     <Cell><Data ss:Type="Number">12</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -300,7 +181,7 @@
     <Cell><Data ss:Type="Number">75</Data></Cell>
     <Cell><Data ss:Type="Number">13</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">31</Data></Cell>
     <Cell><Data ss:Type="Number">31</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -310,7 +191,7 @@
     <Cell><Data ss:Type="Number">80</Data></Cell>
     <Cell><Data ss:Type="Number">14</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">32</Data></Cell>
     <Cell><Data ss:Type="Number">32</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -320,7 +201,7 @@
     <Cell><Data ss:Type="Number">85</Data></Cell>
     <Cell><Data ss:Type="Number">15</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">33</Data></Cell>
     <Cell><Data ss:Type="Number">33</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -330,7 +211,7 @@
     <Cell><Data ss:Type="Number">90</Data></Cell>
     <Cell><Data ss:Type="Number">16</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">34</Data></Cell>
     <Cell><Data ss:Type="Number">34</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
@@ -340,7 +221,7 @@
     <Cell><Data ss:Type="Number">95</Data></Cell>
     <Cell><Data ss:Type="Number">17</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">35</Data></Cell>
     <Cell><Data ss:Type="Number">35</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
@@ -350,7 +231,7 @@
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">18</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">36</Data></Cell>
     <Cell><Data ss:Type="Number">36</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
@@ -360,7 +241,7 @@
     <Cell><Data ss:Type="Number">105</Data></Cell>
     <Cell><Data ss:Type="Number">19</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">37</Data></Cell>
     <Cell><Data ss:Type="Number">37</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -370,7 +251,7 @@
     <Cell><Data ss:Type="Number">110</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">38</Data></Cell>
     <Cell><Data ss:Type="Number">38</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -380,7 +261,7 @@
     <Cell><Data ss:Type="Number">115</Data></Cell>
     <Cell><Data ss:Type="Number">21</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">39</Data></Cell>
     <Cell><Data ss:Type="Number">39</Data></Cell>
     <Cell><Data ss:Type="Number">6</Data></Cell>
@@ -390,7 +271,7 @@
     <Cell><Data ss:Type="Number">120</Data></Cell>
     <Cell><Data ss:Type="Number">22</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">40</Data></Cell>
     <Cell><Data ss:Type="Number">40</Data></Cell>
     <Cell><Data ss:Type="Number">6</Data></Cell>
@@ -400,7 +281,7 @@
     <Cell><Data ss:Type="Number">125</Data></Cell>
     <Cell><Data ss:Type="Number">23</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">41</Data></Cell>
     <Cell><Data ss:Type="Number">41</Data></Cell>
     <Cell><Data ss:Type="Number">7</Data></Cell>
@@ -410,7 +291,7 @@
     <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="Number">24</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">42</Data></Cell>
     <Cell><Data ss:Type="Number">42</Data></Cell>
     <Cell><Data ss:Type="Number">8</Data></Cell>
@@ -420,7 +301,7 @@
     <Cell><Data ss:Type="Number">135</Data></Cell>
     <Cell><Data ss:Type="Number">25</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">43</Data></Cell>
     <Cell><Data ss:Type="Number">43</Data></Cell>
     <Cell><Data ss:Type="Number">8</Data></Cell>
@@ -430,7 +311,7 @@
     <Cell><Data ss:Type="Number">140</Data></Cell>
     <Cell><Data ss:Type="Number">26</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">44</Data></Cell>
     <Cell><Data ss:Type="Number">44</Data></Cell>
     <Cell><Data ss:Type="Number">9</Data></Cell>
@@ -440,7 +321,7 @@
     <Cell><Data ss:Type="Number">145</Data></Cell>
     <Cell><Data ss:Type="Number">27</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">45</Data></Cell>
     <Cell><Data ss:Type="Number">45</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
@@ -450,7 +331,7 @@
     <Cell><Data ss:Type="Number">150</Data></Cell>
     <Cell><Data ss:Type="Number">28</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">46</Data></Cell>
     <Cell><Data ss:Type="Number">46</Data></Cell>
     <Cell><Data ss:Type="Number">11</Data></Cell>
@@ -460,7 +341,7 @@
     <Cell><Data ss:Type="Number">155</Data></Cell>
     <Cell><Data ss:Type="Number">29</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">47</Data></Cell>
     <Cell><Data ss:Type="Number">47</Data></Cell>
     <Cell><Data ss:Type="Number">12</Data></Cell>
@@ -470,7 +351,7 @@
     <Cell><Data ss:Type="Number">160</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">48</Data></Cell>
     <Cell><Data ss:Type="Number">48</Data></Cell>
     <Cell><Data ss:Type="Number">13</Data></Cell>
@@ -480,7 +361,7 @@
     <Cell><Data ss:Type="Number">165</Data></Cell>
     <Cell><Data ss:Type="Number">31</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">49</Data></Cell>
     <Cell><Data ss:Type="Number">49</Data></Cell>
     <Cell><Data ss:Type="Number">15</Data></Cell>
@@ -490,7 +371,7 @@
     <Cell><Data ss:Type="Number">170</Data></Cell>
     <Cell><Data ss:Type="Number">32</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">16</Data></Cell>
@@ -500,7 +381,7 @@
     <Cell><Data ss:Type="Number">175</Data></Cell>
     <Cell><Data ss:Type="Number">33</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">51</Data></Cell>
     <Cell><Data ss:Type="Number">51</Data></Cell>
     <Cell><Data ss:Type="Number">18</Data></Cell>
@@ -510,7 +391,7 @@
     <Cell><Data ss:Type="Number">180</Data></Cell>
     <Cell><Data ss:Type="Number">34</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">52</Data></Cell>
     <Cell><Data ss:Type="Number">52</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
@@ -520,7 +401,7 @@
     <Cell><Data ss:Type="Number">185</Data></Cell>
     <Cell><Data ss:Type="Number">35</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">53</Data></Cell>
     <Cell><Data ss:Type="Number">53</Data></Cell>
     <Cell><Data ss:Type="Number">22</Data></Cell>
@@ -530,7 +411,7 @@
     <Cell><Data ss:Type="Number">190</Data></Cell>
     <Cell><Data ss:Type="Number">36</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">54</Data></Cell>
     <Cell><Data ss:Type="Number">54</Data></Cell>
     <Cell><Data ss:Type="Number">24</Data></Cell>
@@ -540,7 +421,7 @@
     <Cell><Data ss:Type="Number">195</Data></Cell>
     <Cell><Data ss:Type="Number">37</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">55</Data></Cell>
     <Cell><Data ss:Type="Number">55</Data></Cell>
     <Cell><Data ss:Type="Number">26</Data></Cell>
@@ -550,7 +431,7 @@
     <Cell><Data ss:Type="Number">200</Data></Cell>
     <Cell><Data ss:Type="Number">38</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">56</Data></Cell>
     <Cell><Data ss:Type="Number">56</Data></Cell>
     <Cell><Data ss:Type="Number">29</Data></Cell>
@@ -560,7 +441,7 @@
     <Cell><Data ss:Type="Number">205</Data></Cell>
     <Cell><Data ss:Type="Number">39</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">57</Data></Cell>
     <Cell><Data ss:Type="Number">57</Data></Cell>
     <Cell><Data ss:Type="Number">32</Data></Cell>
@@ -570,7 +451,7 @@
     <Cell><Data ss:Type="Number">210</Data></Cell>
     <Cell><Data ss:Type="Number">40</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">58</Data></Cell>
     <Cell><Data ss:Type="Number">58</Data></Cell>
     <Cell><Data ss:Type="Number">35</Data></Cell>
@@ -580,7 +461,7 @@
     <Cell><Data ss:Type="Number">215</Data></Cell>
     <Cell><Data ss:Type="Number">41</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">59</Data></Cell>
     <Cell><Data ss:Type="Number">59</Data></Cell>
     <Cell><Data ss:Type="Number">38</Data></Cell>
@@ -590,7 +471,7 @@
     <Cell><Data ss:Type="Number">220</Data></Cell>
     <Cell><Data ss:Type="Number">42</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">60</Data></Cell>
     <Cell><Data ss:Type="Number">60</Data></Cell>
     <Cell><Data ss:Type="Number">42</Data></Cell>
@@ -600,7 +481,7 @@
     <Cell><Data ss:Type="Number">225</Data></Cell>
     <Cell><Data ss:Type="Number">43</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">61</Data></Cell>
     <Cell><Data ss:Type="Number">61</Data></Cell>
     <Cell><Data ss:Type="Number">47</Data></Cell>
@@ -610,7 +491,7 @@
     <Cell><Data ss:Type="Number">230</Data></Cell>
     <Cell><Data ss:Type="Number">44</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">62</Data></Cell>
     <Cell><Data ss:Type="Number">62</Data></Cell>
     <Cell><Data ss:Type="Number">51</Data></Cell>
@@ -620,7 +501,7 @@
     <Cell><Data ss:Type="Number">235</Data></Cell>
     <Cell><Data ss:Type="Number">45</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">63</Data></Cell>
     <Cell><Data ss:Type="Number">63</Data></Cell>
     <Cell><Data ss:Type="Number">56</Data></Cell>
@@ -630,7 +511,7 @@
     <Cell><Data ss:Type="Number">240</Data></Cell>
     <Cell><Data ss:Type="Number">46</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">64</Data></Cell>
     <Cell><Data ss:Type="Number">64</Data></Cell>
     <Cell><Data ss:Type="Number">62</Data></Cell>
@@ -640,7 +521,7 @@
     <Cell><Data ss:Type="Number">245</Data></Cell>
     <Cell><Data ss:Type="Number">47</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">65</Data></Cell>
     <Cell><Data ss:Type="Number">65</Data></Cell>
     <Cell><Data ss:Type="Number">68</Data></Cell>
@@ -650,7 +531,7 @@
     <Cell><Data ss:Type="Number">250</Data></Cell>
     <Cell><Data ss:Type="Number">48</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">66</Data></Cell>
     <Cell><Data ss:Type="Number">66</Data></Cell>
     <Cell><Data ss:Type="Number">75</Data></Cell>
@@ -660,7 +541,7 @@
     <Cell><Data ss:Type="Number">255</Data></Cell>
     <Cell><Data ss:Type="Number">49</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">67</Data></Cell>
     <Cell><Data ss:Type="Number">67</Data></Cell>
     <Cell><Data ss:Type="Number">82</Data></Cell>
@@ -670,7 +551,7 @@
     <Cell><Data ss:Type="Number">260</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">68</Data></Cell>
     <Cell><Data ss:Type="Number">68</Data></Cell>
     <Cell><Data ss:Type="Number">91</Data></Cell>
@@ -680,7 +561,7 @@
     <Cell><Data ss:Type="Number">265</Data></Cell>
     <Cell><Data ss:Type="Number">51</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">69</Data></Cell>
     <Cell><Data ss:Type="Number">69</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
@@ -690,7 +571,7 @@
     <Cell><Data ss:Type="Number">270</Data></Cell>
     <Cell><Data ss:Type="Number">52</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">70</Data></Cell>
     <Cell><Data ss:Type="Number">70</Data></Cell>
     <Cell><Data ss:Type="Number">110</Data></Cell>
@@ -700,7 +581,7 @@
     <Cell><Data ss:Type="Number">275</Data></Cell>
     <Cell><Data ss:Type="Number">53</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">71</Data></Cell>
     <Cell><Data ss:Type="Number">71</Data></Cell>
     <Cell><Data ss:Type="Number">121</Data></Cell>
@@ -710,7 +591,7 @@
     <Cell><Data ss:Type="Number">280</Data></Cell>
     <Cell><Data ss:Type="Number">54</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">72</Data></Cell>
     <Cell><Data ss:Type="Number">72</Data></Cell>
     <Cell><Data ss:Type="Number">133</Data></Cell>
@@ -720,7 +601,7 @@
     <Cell><Data ss:Type="Number">285</Data></Cell>
     <Cell><Data ss:Type="Number">55</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">73</Data></Cell>
     <Cell><Data ss:Type="Number">73</Data></Cell>
     <Cell><Data ss:Type="Number">146</Data></Cell>
@@ -730,7 +611,7 @@
     <Cell><Data ss:Type="Number">290</Data></Cell>
     <Cell><Data ss:Type="Number">56</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">74</Data></Cell>
     <Cell><Data ss:Type="Number">74</Data></Cell>
     <Cell><Data ss:Type="Number">161</Data></Cell>
@@ -740,7 +621,7 @@
     <Cell><Data ss:Type="Number">295</Data></Cell>
     <Cell><Data ss:Type="Number">57</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">75</Data></Cell>
     <Cell><Data ss:Type="Number">75</Data></Cell>
     <Cell><Data ss:Type="Number">177</Data></Cell>
@@ -750,7 +631,7 @@
     <Cell><Data ss:Type="Number">300</Data></Cell>
     <Cell><Data ss:Type="Number">58</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">76</Data></Cell>
     <Cell><Data ss:Type="Number">76</Data></Cell>
     <Cell><Data ss:Type="Number">194</Data></Cell>
@@ -760,7 +641,7 @@
     <Cell><Data ss:Type="Number">305</Data></Cell>
     <Cell><Data ss:Type="Number">59</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">77</Data></Cell>
     <Cell><Data ss:Type="Number">77</Data></Cell>
     <Cell><Data ss:Type="Number">214</Data></Cell>
@@ -770,7 +651,7 @@
     <Cell><Data ss:Type="Number">310</Data></Cell>
     <Cell><Data ss:Type="Number">60</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">78</Data></Cell>
     <Cell><Data ss:Type="Number">78</Data></Cell>
     <Cell><Data ss:Type="Number">235</Data></Cell>
@@ -780,7 +661,7 @@
     <Cell><Data ss:Type="Number">315</Data></Cell>
     <Cell><Data ss:Type="Number">61</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">79</Data></Cell>
     <Cell><Data ss:Type="Number">79</Data></Cell>
     <Cell><Data ss:Type="Number">259</Data></Cell>
@@ -790,7 +671,7 @@
     <Cell><Data ss:Type="Number">320</Data></Cell>
     <Cell><Data ss:Type="Number">62</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">80</Data></Cell>
     <Cell><Data ss:Type="Number">80</Data></Cell>
     <Cell><Data ss:Type="Number">284</Data></Cell>
@@ -800,7 +681,7 @@
     <Cell><Data ss:Type="Number">325</Data></Cell>
     <Cell><Data ss:Type="Number">63</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">81</Data></Cell>
     <Cell><Data ss:Type="Number">81</Data></Cell>
     <Cell><Data ss:Type="Number">313</Data></Cell>
@@ -810,7 +691,7 @@
     <Cell><Data ss:Type="Number">330</Data></Cell>
     <Cell><Data ss:Type="Number">64</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">82</Data></Cell>
     <Cell><Data ss:Type="Number">82</Data></Cell>
     <Cell><Data ss:Type="Number">344</Data></Cell>
@@ -820,7 +701,7 @@
     <Cell><Data ss:Type="Number">335</Data></Cell>
     <Cell><Data ss:Type="Number">65</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">83</Data></Cell>
     <Cell><Data ss:Type="Number">83</Data></Cell>
     <Cell><Data ss:Type="Number">379</Data></Cell>
@@ -830,7 +711,7 @@
     <Cell><Data ss:Type="Number">340</Data></Cell>
     <Cell><Data ss:Type="Number">66</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">84</Data></Cell>
     <Cell><Data ss:Type="Number">84</Data></Cell>
     <Cell><Data ss:Type="Number">416</Data></Cell>
@@ -840,7 +721,7 @@
     <Cell><Data ss:Type="Number">345</Data></Cell>
     <Cell><Data ss:Type="Number">67</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">85</Data></Cell>
     <Cell><Data ss:Type="Number">85</Data></Cell>
     <Cell><Data ss:Type="Number">458</Data></Cell>
@@ -850,7 +731,7 @@
     <Cell><Data ss:Type="Number">350</Data></Cell>
     <Cell><Data ss:Type="Number">68</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">86</Data></Cell>
     <Cell><Data ss:Type="Number">86</Data></Cell>
     <Cell><Data ss:Type="Number">504</Data></Cell>
@@ -860,7 +741,7 @@
     <Cell><Data ss:Type="Number">355</Data></Cell>
     <Cell><Data ss:Type="Number">69</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">87</Data></Cell>
     <Cell><Data ss:Type="Number">87</Data></Cell>
     <Cell><Data ss:Type="Number">554</Data></Cell>
@@ -870,7 +751,7 @@
     <Cell><Data ss:Type="Number">360</Data></Cell>
     <Cell><Data ss:Type="Number">70</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">88</Data></Cell>
     <Cell><Data ss:Type="Number">88</Data></Cell>
     <Cell><Data ss:Type="Number">610</Data></Cell>
@@ -880,7 +761,7 @@
     <Cell><Data ss:Type="Number">365</Data></Cell>
     <Cell><Data ss:Type="Number">71</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">89</Data></Cell>
     <Cell><Data ss:Type="Number">89</Data></Cell>
     <Cell><Data ss:Type="Number">671</Data></Cell>
@@ -890,7 +771,7 @@
     <Cell><Data ss:Type="Number">370</Data></Cell>
     <Cell><Data ss:Type="Number">72</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">90</Data></Cell>
     <Cell><Data ss:Type="Number">90</Data></Cell>
     <Cell><Data ss:Type="Number">738</Data></Cell>
@@ -900,7 +781,7 @@
     <Cell><Data ss:Type="Number">375</Data></Cell>
     <Cell><Data ss:Type="Number">73</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">91</Data></Cell>
     <Cell><Data ss:Type="Number">91</Data></Cell>
     <Cell><Data ss:Type="Number">811</Data></Cell>
@@ -910,7 +791,7 @@
     <Cell><Data ss:Type="Number">380</Data></Cell>
     <Cell><Data ss:Type="Number">74</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">92</Data></Cell>
     <Cell><Data ss:Type="Number">92</Data></Cell>
     <Cell><Data ss:Type="Number">893</Data></Cell>
@@ -920,7 +801,7 @@
     <Cell><Data ss:Type="Number">385</Data></Cell>
     <Cell><Data ss:Type="Number">75</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">93</Data></Cell>
     <Cell><Data ss:Type="Number">93</Data></Cell>
     <Cell><Data ss:Type="Number">982</Data></Cell>
@@ -930,7 +811,7 @@
     <Cell><Data ss:Type="Number">390</Data></Cell>
     <Cell><Data ss:Type="Number">76</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">94</Data></Cell>
     <Cell><Data ss:Type="Number">94</Data></Cell>
     <Cell><Data ss:Type="Number">1080</Data></Cell>
@@ -940,7 +821,7 @@
     <Cell><Data ss:Type="Number">395</Data></Cell>
     <Cell><Data ss:Type="Number">77</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">95</Data></Cell>
     <Cell><Data ss:Type="Number">95</Data></Cell>
     <Cell><Data ss:Type="Number">1188</Data></Cell>
@@ -950,7 +831,7 @@
     <Cell><Data ss:Type="Number">400</Data></Cell>
     <Cell><Data ss:Type="Number">78</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">96</Data></Cell>
     <Cell><Data ss:Type="Number">96</Data></Cell>
     <Cell><Data ss:Type="Number">1307</Data></Cell>
@@ -960,7 +841,7 @@
     <Cell><Data ss:Type="Number">405</Data></Cell>
     <Cell><Data ss:Type="Number">79</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">97</Data></Cell>
     <Cell><Data ss:Type="Number">97</Data></Cell>
     <Cell><Data ss:Type="Number">1438</Data></Cell>
@@ -970,7 +851,7 @@
     <Cell><Data ss:Type="Number">410</Data></Cell>
     <Cell><Data ss:Type="Number">80</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">98</Data></Cell>
     <Cell><Data ss:Type="Number">98</Data></Cell>
     <Cell><Data ss:Type="Number">1581</Data></Cell>
@@ -980,7 +861,7 @@
     <Cell><Data ss:Type="Number">415</Data></Cell>
     <Cell><Data ss:Type="Number">81</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">99</Data></Cell>
     <Cell><Data ss:Type="Number">99</Data></Cell>
     <Cell><Data ss:Type="Number">1739</Data></Cell>
@@ -990,7 +871,7 @@
     <Cell><Data ss:Type="Number">420</Data></Cell>
     <Cell><Data ss:Type="Number">82</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
@@ -1002,6 +883,132 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="竞技称号表">
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="12" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:Index="4" ss:Width="188"/>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">阶级</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">名称</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">百分比加成</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">兑换当前等级所需荣誉点</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">title</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">inc_value</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">honnorPoint_need</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">初级天兵</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">3000</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">中级天兵</Data></Cell>
+    <Cell ss:StyleID="s64" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">5000</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">高级天兵</Data></Cell>
+    <Cell ss:StyleID="s64" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">10000</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">初级天将</Data></Cell>
+    <Cell ss:StyleID="s64" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">20000</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">中级天将</Data></Cell>
+    <Cell ss:StyleID="s64" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">40000</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">高级天将</Data></Cell>
+    <Cell ss:StyleID="s64" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">70000</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">伏虎尊者</Data></Cell>
+    <Cell ss:StyleID="s64" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">10000</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">降龙尊者</Data></Cell>
+    <Cell ss:StyleID="s64" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">150000</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">三界战神</Data></Cell>
+    <Cell ss:StyleID="s64" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">200000</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">斗战胜佛</Data></Cell>
+    <Cell ss:StyleID="s64" ss:Formula="=R[-1]C+5"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">300000</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="export">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="3" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell><Data ss:Type="String">merge_to</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">竞技产出表</Data></Cell>
+    <Cell><Data ss:Type="String">rank</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">竞技称号表</Data></Cell>
+    <Cell><Data ss:Type="String">title</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
@@ -1014,31 +1021,6 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-    </Pane>
-   </Panes>
-   <ProtectObjects>False</ProtectObjects>
-   <ProtectScenarios>False</ProtectScenarios>
-  </WorksheetOptions>
- </Worksheet>
- <Worksheet ss:Name="export">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Row>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">export_name</Data></Cell>
-    <Cell><Data ss:Type="String">merge_to</Data></Cell>
-   </Row>
-   <Row>
-    <Cell><Data ss:Type="String">竞技产出表</Data></Cell>
-    <Cell><Data ss:Type="String">rank</Data></Cell>
-   </Row>
-  </Table>
-  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <PageLayoutZoom>0</PageLayoutZoom>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

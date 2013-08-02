@@ -1,5 +1,7 @@
 Player = require './player'
 VHero = require './virtual_hero'
+_ = require 'underscore'
+logger = require('pomelo-logger').getLogger(__filename)
 
 class VirtualPlayer extends Player
   init: (data) ->
@@ -9,8 +11,10 @@ class VirtualPlayer extends Player
 
     card_ids = data.cards.split('#')
 
+    realId = 0
     for id in card_ids
       @cards.push {
+        id: realId++
         tableId: parseInt(id)
         boss: {
           id: data.boss_id
@@ -20,6 +24,16 @@ class VirtualPlayer extends Player
           point_hp_inc: data.hp_inc
         } if id is data.boss_id
       }
+
+    _cards = _.clone(@cards)
+    arr = @lineUp.split(',').map (item) =>
+      [pos, _tableId] = item.split(':')
+      _card = _.findWhere _cards, {tableId: parseInt(_tableId)}
+      _cards.splice(_cards.indexOf(_card), 1)
+      _card_id = _card.id
+      "#{pos}:#{_card_id}"
+
+    @lineUp = arr.join(',')
 
     super({})
 
@@ -33,7 +47,7 @@ class VirtualPlayer extends Player
         
         _hero = (id) =>
           for h in @heros
-            return if h.card_id is parseInt(id) then h
+            return if h.id is parseInt(id) then h
           null
         _h = _hero(id)
 

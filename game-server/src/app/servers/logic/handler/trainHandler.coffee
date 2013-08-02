@@ -119,6 +119,7 @@ Handler::skillUpgrade = (msg, session, next) ->
       if card? and card.skillLv > 5
         return cb({code: 501, msg: '该卡牌的技能等级已经升到最高级，不能再升级了'})
 
+      console.log 'skill upgrade: ', 'skillLv: ', card.skillLv, card
       upgradeData = table.getTableItem('skill_upgrade', card.skillLv)
       sp_need = upgradeData['star'+card.star];
 

@@ -56,7 +56,7 @@ Handler::explore = (msg, session, next) ->
         taskManager.countExploreResult player, data, cb
   ], (err, data) ->
     if err
-      return next(null, {code: err.code or 500, msg: err.msg})
+      return next(null, {code: 500, msg: err.msg})
 
     player.save()
     next(null, {code: 200, msg: data})
@@ -95,9 +95,9 @@ Handler::passBarrier = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
-      layer = if layer? then layer else player.pass.layer + 1
-      if layer > 100 or layer < 1 or layer > (player.pass.layer + 1)
-        return cb({code: 501, msg: '不能闯此关'})
+      layer = layer or player.pass.layer + 1
+      if (player.pass.layer + 1) < layer or layer > 100
+        return cb({msg: '不能闯此关'})
 
       cb(null)
 
@@ -125,7 +125,7 @@ Handler::passBarrier = (msg, session, next) ->
 
   ], (err, bl) ->
     if err 
-      return next(err, {code: err.code or 500, msg: err.msg or ''})
+      return next(err, {code: 500, msg: err.msg or ''})
     
     next(null, {code: 200, msg: {battleLog: bl, pass: player.pass}})
 
@@ -159,7 +159,9 @@ getRewardCards = (cardIds, count) ->
     _star = utility.randomValue _.keys(cd.star), _.values(cd.star)
     _level = utility.randomValue _.keys(cd.level), _.values(cd.level)
 
+    console.log "-id-", _id, _star
     _id = countCardId(parseInt(_id), parseInt(_star))
+    console.log "=id=", _id
     _cards.push {
       id: _id
       star: parseInt(_star)

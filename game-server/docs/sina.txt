@@ -36,10 +36,3 @@ node ./bin/loaddata.js all production
 重启游戏服务：
 cd /dev/shm/magpie/game-server
 make build && ./node_modules/.bin/pomelo stop && ./node_modules/.bin/pomelo start production --daemon
-
-
-
-pkill -9 -f node
-make inittables
-node ./bin/loaddata.js all production
-./node_modules/.bin/pomelo start production --daemon

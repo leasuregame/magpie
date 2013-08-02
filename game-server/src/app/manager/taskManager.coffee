@@ -24,7 +24,7 @@ class Manager
 
     # 检查是否体力充足
     if player.power < taskData.power_consume
-      return cb({code: 501,msg: '体力不足'}, null, null)
+      return cb({msg: '体力不足'}, null, null)
 
     data.result = utility.randomValue( 
       ['fight','box', 'none'],
@@ -68,6 +68,7 @@ class Manager
   @wipeOutTask: (player, cb) ->
     taskData = table.getTableItem('task', player.task.id)
     chapterId = taskData.chapter_id
+    console.log player.task, chapterId
     rewards = {exp_obtain: 0, money_obtain: 0, gold_obtain: 0}
     for id in _.range(1, chapterId)
       wipeOutData = table.getTableItem('wipe_out', id)

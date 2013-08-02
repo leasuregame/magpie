@@ -48,12 +48,6 @@ var Rank = (function(_super) {
 		};
 	};
 
-	Rank.prototype.grantTitle = function(title, honnorPoint) {
-		this.set('title', titleConfig.title)
-	    this.increase('rank')
-	    this.decrease('honnorPoint', honnorPoint)
-	};
-
 	Rank.prototype.pushRecent = function(id) {
 		this._modifyCount('recentChallenger', function(counts, name) {
 			var recentChallenger = counts[name];

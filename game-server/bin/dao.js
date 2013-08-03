@@ -1,14 +1,17 @@
 var pomelo = require('pomelo');
 var app = pomelo.createApp();
-app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
-app.set('dbClient', require('../app/dao/mysql/mysql').init(app));
 var dao = require('../app/dao').init('mysql');
-app.set('dao', dao);
 var csv = require('csv');
 var path = require('path');
 var fs = require('fs');
 var async = require('async');
 var _ = require('underscore');
+
+app.configure(process.argv[3] || 'all', function() {
+  app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
+  app.set('dbClient', require('../app/dao/mysql/mysql').init(app));
+  app.set('dao', dao);
+});
 
 var FIXTURES_DIR = path.join(__dirname, '..', 'config', 'fixtures/');
 

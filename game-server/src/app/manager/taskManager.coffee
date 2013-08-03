@@ -91,14 +91,19 @@ class Manager
     if _rd_star is -1
       data.fragment = true
     else
-      _res = randomCard(_rd_star)
-      data.open_box_card = _res
-    
-    dao.card.create data: {playerId: player.id, tableId: data.open_box_card}, (err, card) ->
+      _card_table_id = randomCard(_rd_star)
+      
+    dao.card.create data: {
+      playerId: player.id, 
+      tableId: _card_table_id
+      star: _rd_star
+      }
+    , (err, card) ->
       if err
         cb(err)
       else    
         player.addCard card
+        data.open_box_card = card.toJson()
         cb(null)
 
   @fightToMonster: (app, session, args, cb) ->

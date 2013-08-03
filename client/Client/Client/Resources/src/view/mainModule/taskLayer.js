@@ -16,13 +16,8 @@ var TASK_CHAPTER_COUNT = 10;
 var TASK_SECTION_COUNT = 5;
 
 var TaskLayer = cc.Layer.extend({
-    _task: null,
-    _titleLabel: {},
     _sectionItem: {},
-
-
     _wipeOutItemList: {},
-
     _turnLeftSprite: null,
     _turnRightSprite: null,
     _scrollViewLayer: null,
@@ -46,8 +41,6 @@ var TaskLayer = cc.Layer.extend({
         cc.log("TaskLayer init");
 
         if (!this._super()) return false;
-
-        this._task = gameData.task;
 
         this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
         this._turnLeftSprite.setRotation(180);
@@ -116,35 +109,9 @@ var TaskLayer = cc.Layer.extend({
 
     update: function () {
         cc.log("TaskLayer update");
-
-//        var chapter = this._task.getChapter();
-//        var section = this._task.getSection();
-//        var id = this._task.get("id");
-//
-//        cc.log(chapter);
-//        cc.log(id);
-//
-//        for (var i = 0; i < TASK_CHAPTER_COUNT; ++i) {
-//            if (i + 1 < chapter) {
-//                this._titleLabel[i + 1].setString("第" + (i + 1) + "章 (5/5)");
-//                this._wipeOutItem[i + 1].setEnabled(true);
-//            } else if (i + 1 == chapter) {
-//                this._titleLabel[i + 1].setString("第" + (i + 1) + "章 (" + section + "/5)");
-//                this._wipeOutItem[i + 1].setEnabled(false);
-//            } else {
-//                this._titleLabel[i + 1].setString("第" + (i + 1) + "章 (0/5)");
-//                this._wipeOutItem[i + 1].setEnabled(false);
-//            }
-//
-//            for (var j = 0; j < TASK_SECTION_COUNT; ++j) {
-//                var index = i * TASK_SECTION_COUNT + j + 1;
-//
-//                this._sectionItem[index].setEnabled(index <= id ? true : false);
-//            }
-//        }
     },
 
-    _onClickSection: function (id) {
+    _onClickSection: function (id, sectionItem) {
         return function () {
             cc.log("TaskLayer _onClickSection " + id);
 
@@ -156,7 +123,7 @@ var TaskLayer = cc.Layer.extend({
         return function () {
             cc.log("TaskLayer _onClickWipeOut " + id);
 
-            this._task.wipeOut(function (data) {
+            gameData.task.wipeOut(function (data) {
                 cc.log(data);
             });
         }

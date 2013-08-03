@@ -57,14 +57,6 @@ var CardLabel = cc.Node.extend({
         cardHeadItemMenu.setPosition(cc.p(0, 0));
         this.addChild(cardHeadItemMenu);
 
-//        var cardHeadSprite = cc.Sprite.create(s_h_hero_1);
-//        cardHeadSprite.setPosition(cc.p(80, 67));
-//        this.addChild(cardHeadSprite);
-//
-//        var cardFrameSprite = cc.Sprite.create(main_scene_image["card_item_frame" + star]);
-//        cardFrameSprite.setPosition(cc.p(80, 67));
-//        this.addChild(cardFrameSprite);
-
         var nameLabel = cc.LabelTTF.create(this._card.get("name"), 'Times New Roman', 22);
         nameLabel.setPosition(cc.p(200, 93));
         this.addChild(nameLabel);

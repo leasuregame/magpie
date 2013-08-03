@@ -12,21 +12,26 @@
  * */
 
 
-var BattleCardNode = cc.Node.extend({
+var BattleCardHalfNode = cc.Node.extend({
     _frameSprite: null,
     _heroSprite: null,
+    _iconSprite: null,
     _expressionSprite: null,
 
     init: function (card) {
         if (!this._super()) return false;
 
-        index = card % 6 + 1;
+        index = (Math.round(Math.random() * 2) + 1);
 
-        this._frameSprite = cc.Sprite.create(s_frame2);
-        this.addChild(this._frameSprite);
+        this._frameSprite = cc.Sprite.create(main_scene_image["card_frame" + index]);
+        this.addChild(this._frameSprite, -1);
 
-        this._heroSprite = cc.Sprite.create(s_path1 + "b" + index + ".png");
+        this._heroSprite = cc.Sprite.create(main_scene_image["hero" + (Math.round(Math.random() * 5) + 1) + "_half" + index]);
         this.addChild(this._heroSprite);
+
+        this._iconSprite = cc.Sprite.create(main_scene_image.card_icon1);
+        this._iconSprite.setPosition(cc.p(45, -51));
+        this.addChild(this._iconSprite, 1);
 
         return true;
     },
@@ -77,8 +82,8 @@ var BattleCardNode = cc.Node.extend({
 })
 
 
-BattleCardNode.create = function (card) {
-    var ret = new BattleCardNode();
+BattleCardHalfNode.create = function (card) {
+    var ret = new BattleCardHalfNode();
 
     if (ret && ret.init(card)) {
         return ret;

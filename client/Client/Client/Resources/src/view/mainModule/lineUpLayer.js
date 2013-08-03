@@ -49,7 +49,7 @@ var LineUpLayer = LazyLayer.extend({
             if (cardId) {
                 var card = cardList.getCardByIndex(cardId);
 
-                var cardNode = CardNode.create(card);
+                var cardNode = CardHalfNode.create(card);
                 cardNode.setPosition(this._locate[i]);
                 this.addChild(cardNode);
 
@@ -81,6 +81,7 @@ var LineUpLayer = LazyLayer.extend({
 
         var that = this;
         gameData.lineUp.changeLineUp(function(data) {
+            cc.log("yes");
             that.removeFromParent();
         }, this._getLineUpData());
     },

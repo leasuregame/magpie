@@ -43,7 +43,7 @@ var PassLayer = cc.Layer.extend({
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
 
-        var scrollViewLayer = cc.Layer.create();
+        var scrollViewLayer = MarkLayer.create(cc.rect(100, 200, 330, 750));
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
@@ -78,7 +78,7 @@ var PassLayer = cc.Layer.extend({
         }
         scrollViewLayer.addChild(this._cardSprite, 1);
 
-        this._scrollView = cc.ScrollView.create(cc.size(310, 750), scrollViewLayer);
+        this._scrollView = cc.ScrollView.create(cc.size(330, 750), scrollViewLayer);
         this._scrollView.setContentSize(cc.size(300, 18620));
         this._scrollView.setPosition(cc.p(100, 200));
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
@@ -97,9 +97,9 @@ var PassLayer = cc.Layer.extend({
         wipeOutMenu.setPosition(cc.p(0, 0));
         tipLabel.addChild(wipeOutMenu);
 
-        var iconSprite = cc.Sprite.create(main_scene_image.icon15);
-        iconSprite.setPosition(cc.p(543, 34));
-        tipLabel.addChild(iconSprite);
+        var wipeOutIconSprite = cc.Sprite.create(main_scene_image.icon15);
+        wipeOutIconSprite.setPosition(cc.p(543, 34));
+        tipLabel.addChild(wipeOutIconSprite);
 
         var towerBgSprite = cc.Sprite.create(main_scene_image.tower1);
         towerBgSprite.setAnchorPoint(cc.p(0, 0));
@@ -129,7 +129,7 @@ var PassLayer = cc.Layer.extend({
             this._towerSprite.setTextureRect(cc.rect(0, 209 - len * 209, 94, len));
 
             for (var i = 2; i <= MAX_PASS_COUNT; ++i) {
-                if (i <= this._nowPassTop + 1) {
+                if (i <= this._nowPassTop) {
                     this._ladderList[i].setVisible(true);
                 } else {
                     this._ladderList[i].setVisible(false);

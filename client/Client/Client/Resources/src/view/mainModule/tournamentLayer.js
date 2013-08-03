@@ -68,9 +68,9 @@ var TournamentLayer = cc.Layer.extend({
             scrollViewLayer.addChild(tournamentPlayerLabel);
         }
 
-        this._rankScrollView = cc.ScrollView.create(cc.size(GAME_WIDTH, 700), scrollViewLayer);
+        this._rankScrollView = cc.ScrollView.create(cc.size(GAME_WIDTH, 650), scrollViewLayer);
         this._rankScrollView.setContentSize(cc.size(GAME_WIDTH, height));
-        this._rankScrollView.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 150));
+        this._rankScrollView.setPosition(GAME_BG_POINT);
         this._rankScrollView.setBounceable(false);
         this._rankScrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._rankScrollView.updateInset();

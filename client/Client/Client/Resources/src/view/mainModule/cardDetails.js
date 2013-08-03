@@ -12,120 +12,49 @@
  * */
 
 
-var CardDetails = cc.Layer.extend({
-    _touchedMenu: false,
-    _menu: null,
+var CardDetails = LazyLayer.extend({
+    _card: null,
 
     init: function (card) {
-        cc.log("CardDetails init" + card);
+        cc.log("CardDetails init");
 
         if (!this._super()) return false;
 
-        this.setTouchMode(cc.TOUCH_ONE_BY_ONE);
-        this.setTouchPriority(-100000);
-        this.setTouchEnabled(true);
+        this._card = card;
 
-        var bgSprite = cc.Sprite.create(s_card_view);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg7);
+        bgSprite.setPosition(GAME_MIDPOINT);
         this.addChild(bgSprite);
 
-        var frame = cc.Sprite.create(s_frame3);
-        frame.setPosition(-125, 150);
-        this.addChild(frame);
+        var cardFullNode = CardFullNode.create(this._card);
+        cardFullNode.setPosition(cc.p(232, 788));
+        this.addChild(cardFullNode);
 
-        var sprite = cc.Sprite.create(s_hero_1);
-        sprite.setPosition(-125, 150);
-        this.addChild(sprite);
+        var activeSkillLabel = cc.Sprite.create(main_scene_image.icon34);
+        activeSkillLabel.setPosition(cc.p(510, 800));
+        this.addChild(activeSkillLabel);
 
-        if(card > 1) {
-            sprite = cc.Sprite.create(s_path + card + ".png");
-            sprite.setPosition(-125, 150);
-            this.addChild(sprite);
-        }
+        var passiveSkillLabel = cc.Sprite.create(main_scene_image.icon35);
+        passiveSkillLabel.setPosition(cc.p(510, 640));
+        this.addChild(passiveSkillLabel);
 
-        card = card % 6;
-        if(card == 0) card = 1;
+        var informationLabel = cc.Sprite.create(main_scene_image.icon36);
+        informationLabel.setPosition(cc.p(200, 610));
+        this.addChild(informationLabel);
 
-        for (var i = 0; i < card; ++i) {
-            sprite = cc.Sprite.create(s_path + "star" + card + ".png");
-            sprite.setPosition(22, -50 * i + 300);
-            this.addChild(sprite);
-        }
+        var closeItem = cc.MenuItemImage.create(main_scene_image.button17, main_scene_image.button17s, this._onClickClose, this);
+        closeItem.setPosition(360, 130);
 
-        this.closeItem = cc.MenuItemImage.create(s_close, s_close, this._onClickCloseItem, this);
-        this.closeItem.setPosition(252, -357);
-        this._menu = cc.Menu.create(this.closeItem);
-        this._menu.setPosition(0, 0);
-        this.addChild(this._menu);
+        this.addMenuItem(closeItem);
 
         return true;
     },
 
-    _onClickCloseItem: function () {
-        this.closeItem.setEnabled(false);
+    _onClickClose: function () {
+        cc.log("CardDetails _onClickClose");
+
+        this.setCanClick(false);
         this.removeFromParent();
-    },
-
-    onTouchBegan: function (touch, event) {
-        cc.log("dialog: touch began!");
-        if(SETTING_IS_BROWSER) {
-            this._touchedMenu = this._menu.onTouchBegan(touch, event);
-        }
-        else {
-            this._touchedMenu = this._menu.ccTouchBegan(touch, event);
-        }
-        return true;
-    },
-
-    /**
-     * callback when a touch event moved
-     * @param {cc.Touch} touch
-     * @param {event} event
-     */
-    onTouchMoved: function (touch, event) {
-        cc.log("dialog: touch move");
-        if (this._touchedMenu) {
-            if(SETTING_IS_BROWSER) {
-                this._touchedMenu = this._menu.onTouchMoved(touch, event);
-            }
-            else {
-                this._touchedMenu = this._menu.ccTouchMoved(touch, event);
-            }
-        }
-    },
-
-    /**
-     * callback when a touch event finished
-     * @param {cc.Touch} touch
-     * @param {event} event
-     */
-    onTouchEnded: function (touch, event) {
-        cc.log("dialog: touch end");
-        if (this._touchedMenu) {
-            if(SETTING_IS_BROWSER) {
-                this._touchedMenu = this._menu.onTouchEnded(touch, event);
-            }
-            else {
-                this._touchedMenu = this._menu.ccTouchEnded(touch, event);
-            }
-            this._touchedMenu = false;
-        }
-    },
-
-    /**
-     * @param {cc.Touch} touch
-     * @param {event} event
-     */
-    onTouchCancelled: function (touch, event) {
-        cc.log("dialog: on touch cancelled");
-        if (this._touchedMenu) {
-            if(SETTING_IS_BROWSER) {
-                this._touchedMenu = this._menu.onTouchEnded(touch, event);
-            }
-            else {
-                this._touchedMenu = this._menu.ccTouchEnded(touch, event);
-            }
-            this._touchedMenu = false;
-        }
     }
 })
 

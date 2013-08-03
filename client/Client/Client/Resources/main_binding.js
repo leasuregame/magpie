@@ -66,6 +66,7 @@ var appFiles = [
     'src/controls/dialog.js',
     'src/controls/lazyMenu.js',
     'src/controls/lazyLayer.js',
+    'src/controls/markLayer.js',
 
     'src/view/loginModule/signInScene.js',
     'src/view/loginModule/signInLayer.js',
@@ -74,14 +75,18 @@ var appFiles = [
 
 
     'src/view/mainModule/activityLayer.js',
-    'src/view/mainModule/cardLabel.js',
     'src/view/mainModule/cardDetails.js',
+    'src/view/mainModule/cardNode.js',
+    'src/view/mainModule/cardFullNode.js',
+    'src/view/mainModule/cardHalfNode.js',
+    'src/view/mainModule/cardHeadNode.js',
+    'src/view/mainModule/cardLabel.js',
     'src/view/mainModule/cardLibraryLayer.js',
     'src/view/mainModule/cardListLayer.js',
-    'src/view/mainModule/cardNode.js',
     'src/view/mainModule/cardUpgradeLabel.js',
     'src/view/mainModule/configLayer.js',
     'src/view/mainModule/evolutionLayer.js',
+    'src/view/mainModule/exploreLayer.js',
     'src/view/mainModule/friendLayer.js',
     'src/view/mainModule/lineUpLabel.js',
     'src/view/mainModule/lineUpLayer.js',
@@ -110,7 +115,7 @@ var appFiles = [
     'src/view/battleModule/actionFactory.js',
     'src/view/battleModule/effectsFactory.js',
     'src/view/battleModule/skillFactory.js',
-    'src/view/battleModule/battleCardNode.js',
+    'src/view/battleModule/battleCardHalfNode.js',
     'src/view/battleModule/battleLayer.js',
     'src/view/battleModule/battleScene.js',
     'src/view/battleModule/battlePlayer.js',
@@ -120,9 +125,10 @@ var appFiles = [
 
 cc.dumpConfig();
 
-for( var i=0; i < appFiles.length; i++) {
-    require( appFiles[i] );
+for (var i = 0; i < appFiles.length; ++i) {
+    require(appFiles[i]);
 }
+
 
 var director = cc.Director.getInstance();
 director.setDisplayStats(true);
@@ -135,12 +141,9 @@ director.setAnimationInterval(1.0 / 60);
 // create a scene. it's an autorelease object
 //var myScene = new BattleScene();
 //var myScene = new MainScene();
-var myScene = new SignInScene();
+var myScene = SignInScene.create();
 //var myScene = new testScene();
 
 // run
 //director.runWithScene(myScene);
 director.replaceScene(myScene);
-
-
-var aa = LazyMenu.create();

@@ -40,7 +40,7 @@ var MainLayer = cc.Layer.extend({
         this._nameLabel.setPosition(cc.p(200, 980));
         this.addChild(this._nameLabel);
 
-        this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0);
+        this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0, true);
         this._expProgress.setPosition(cc.p(240, 933));
         this.addChild(this._expProgress, 2);
 

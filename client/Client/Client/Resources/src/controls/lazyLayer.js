@@ -72,9 +72,9 @@ var LazyLayer = cc.Layer.extend({
 
         if (this._canClick && this._touchedMenu) {
             if (SETTING_IS_BROWSER) {
-                this._touchedMenu = this._menu.onTouchMoved(touch, event);
+                this._menu.onTouchMoved(touch, event);
             } else {
-                this._touchedMenu = this._menu.ccTouchMoved(touch, event);
+                this._menu.ccTouchMoved(touch, event);
             }
         }
     },
@@ -87,16 +87,11 @@ var LazyLayer = cc.Layer.extend({
     onTouchEnded: function (touch, event) {
         cc.log("LazyLayer onTouchEnded");
 
-        if (SETTING_IS_BROWSER) {
-            this._touchedMenu = this._menu.onTouchBegan(touch, event);
-        } else {
-
-        }
         if (this._canClick && this._touchedMenu) {
             if (SETTING_IS_BROWSER) {
-                this._touchedMenu = this._menu.onTouchEnded(touch, event);
+                this._menu.onTouchEnded(touch, event);
             } else {
-                this._touchedMenu = this._menu.ccTouchEnded(touch, event);
+                this._menu.ccTouchEnded(touch, event);
             }
             this._touchedMenu = false;
         }
@@ -109,12 +104,11 @@ var LazyLayer = cc.Layer.extend({
     onTouchCancelled: function (touch, event) {
         cc.log("LazyLayer onTouchCancelled");
 
-
         if (this._canClick && this._touchedMenu) {
             if (SETTING_IS_BROWSER) {
-                this._touchedMenu = this._menu.onTouchEnded(touch, event);
+                this._menu.onTouchEnded(touch, event);
             } else {
-                this._touchedMenu = this._menu.ccTouchEnded(touch, event);
+                this._menu.ccTouchEnded(touch, event);
             }
             this._touchedMenu = false;
         }

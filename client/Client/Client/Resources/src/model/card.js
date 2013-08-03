@@ -42,6 +42,8 @@ var Card = Entity.extend({
     _skillDescription: "",  // 技能描述
     _skillMaxLv: 0,         // 技能最大等级
 
+    _url: "",
+
     init: function (data) {
         cc.log("Card init");
 
@@ -111,6 +113,7 @@ var Card = Entity.extend({
         this._hp = this._hpInit + this._hpAddition;
         this._atk = this._atkInit + this._atkAddition;
 
+        this._url = "hero" + (this._id % 6 + 1);
     },
 
     _loadSkillTable: function () {

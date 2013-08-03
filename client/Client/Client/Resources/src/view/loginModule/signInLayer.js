@@ -48,17 +48,24 @@ var SignInLayer = cc.Layer.extend({
         this._accountEditBox.setText("1");
         this._passwordEditBox.setText("1");
 
-        var signInButton = cc.MenuItemFont.create("登录", this._onClickSignIn, this);
-        signInButton.setPosition(260, 250);
+        this.signInButton = cc.MenuItemFont.create("登录", this._onClickSignIn, this);
+        this.signInButton.setFontSize(45);
+        this.signInButton.setPosition(260, 250);
+        this.signInButton.setEnabled(false);
 //        this.addChild(signInButton);
 
-        var signUpButton = cc.MenuItemFont.create("注册", this._onClickSignUp, this);
+        var signUpButton = cc.MenuItemFont.create("直接进入", this._onClickSignUp, this);
+        signUpButton.setFontSize(45);
         signUpButton.setPosition(460, 250);
 //        this.addChild(signUpButton);
 
-        var menu = cc.Menu.create(signInButton, signUpButton);
-        menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this.menu = cc.Menu.create(this.signInButton, signUpButton);
+        this.menu.setPosition(cc.p(0, 0));
+        this.addChild(this.menu);
+
+        this.schedule(function() {
+            this.signInButton.setEnabled(connectSuccess);
+        }, 0.5)
 
         return true;
     },
@@ -82,6 +89,8 @@ var SignInLayer = cc.Layer.extend({
     _onClickSignIn: function () {
         cc.log("LoginLayer _onClickSignIn");
 
+        this.signInButton.setEnabled(false);
+
         cc.log(this._accountEditBox.getText());
         cc.log(this._passwordEditBox.getText());
 
@@ -92,13 +101,18 @@ var SignInLayer = cc.Layer.extend({
 
         user.signIn(function(msg) {
             cc.log(msg);
-            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, MainScene.getInstance(), true));
+            cc.Director.getInstance().replaceScene(MainScene.getInstance());
+//            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, MainScene.getInstance(), true));
         });
     },
 
     _onClickSignUp: function () {
         cc.log("LoginLayer _onClickSignUp");
-        cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, SignUpScene.create(), true));
+
+//        this.menu.setEnabled(false);
+//        cc.Director.getInstance().replaceScene(SignUpScene.create());
+//        cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, SignUpScene.create(), true));
+        cc.Director.getInstance().replaceScene(MainScene.getInstance());
     },
 
     editBoxEditingDidBegin: function (editBox) {

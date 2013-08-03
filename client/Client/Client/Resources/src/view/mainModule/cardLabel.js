@@ -49,20 +49,21 @@ var CardLabel = cc.Node.extend({
         cardItemMenu.setPosition(cc.p(0, 0));
         this.addChild(cardItemMenu);
 
-        var cardHeadItem = cc.MenuItemImage.create(main_scene_image["card_item_bg" + star], main_scene_image["card_item_bg" + star], this._onClickCardHead, this);
+//        var cardHeadItem = cc.MenuItemImage.create(main_scene_image["card_item_bg" + star], main_scene_image["card_item_bg" + star], this._onClickCardHead, this);
+        var cardHeadItem = CardHeadNode.getCardHeadItem(this._card);
         cardHeadItem.setPosition(cc.p(80, 67));
 
         var cardHeadItemMenu = LazyMenu.create(cardHeadItem);
         cardHeadItemMenu.setPosition(cc.p(0, 0));
         this.addChild(cardHeadItemMenu);
 
-        var cardHeadSprite = cc.Sprite.create(s_h_hero_1);
-        cardHeadSprite.setPosition(cc.p(80, 67));
-        this.addChild(cardHeadSprite);
-
-        var cardFrameSprite = cc.Sprite.create(main_scene_image["card_item_frame" + star]);
-        cardFrameSprite.setPosition(cc.p(80, 67));
-        this.addChild(cardFrameSprite);
+//        var cardHeadSprite = cc.Sprite.create(s_h_hero_1);
+//        cardHeadSprite.setPosition(cc.p(80, 67));
+//        this.addChild(cardHeadSprite);
+//
+//        var cardFrameSprite = cc.Sprite.create(main_scene_image["card_item_frame" + star]);
+//        cardFrameSprite.setPosition(cc.p(80, 67));
+//        this.addChild(cardFrameSprite);
 
         var nameLabel = cc.LabelTTF.create(this._card.get("name"), 'Times New Roman', 22);
         nameLabel.setPosition(cc.p(200, 93));

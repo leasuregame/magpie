@@ -10,7 +10,7 @@
 /*
  * pomelo websocket client
  * */
-
+ cc.log("pomelo websocket client");
 var lzWindow = {};
 
 lzWindow.setTimeout = function(cb, timeout) {

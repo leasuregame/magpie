@@ -34,6 +34,11 @@ var main_scene_image = {
     bg4: main_scene_path + "bg4.png",
     bg5: main_scene_path + "bg5.png",
     bg6: main_scene_path + "bg6.png",
+    bg7: main_scene_path + "bg7.png",
+    bg8: main_scene_path + "bg8.png",
+    bg9: main_scene_path + "bg9.png",
+    bg10: main_scene_path + "bg10.png",
+    bg11: main_scene_path + "bg11.png",
 
     player_details_bg: main_scene_path + "player_details_bg.png",
     lv_bg: main_scene_path + "lv_bg.png",
@@ -50,6 +55,9 @@ var main_scene_image = {
 
     card0: main_scene_path + "card0.png",
     card1: main_scene_path + "card1.png",
+
+    progress2: main_scene_path + "progress2.png",
+    progress3: main_scene_path + "progress3.png",
 
     card_frame1: main_scene_path + "card_frame1.png",
     card_frame2: main_scene_path + "card_frame2.png",
@@ -110,6 +118,9 @@ var main_scene_image = {
     button15d: main_scene_path + "button15d.png",
     button16: main_scene_path + "button16.png",
     button16s: main_scene_path + "button16s.png",
+    button17: main_scene_path + "button17.png",
+    button17s: main_scene_path + "button17s.png",
+    button18: main_scene_path + "button18.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -143,7 +154,12 @@ var main_scene_image = {
     icon30: main_scene_path + "icon30.png",
     icon31: main_scene_path + "icon31.png",
     icon32: main_scene_path + "icon32.png",
-    icon33: main_scene_path + "icon33.png"
+    icon33: main_scene_path + "icon33.png",
+    icon34: main_scene_path + "icon34.png",
+    icon35: main_scene_path + "icon35.png",
+    icon36: main_scene_path + "icon36.png",
+    icon37: main_scene_path + "icon37.png",
+    icon38: main_scene_path + "icon38.png"
 }
 
 var main_scene_res = [
@@ -154,6 +170,24 @@ var main_scene_res = [
     //bgm
     //effect
 ];
+
+for (var cardId = 1; cardId <= 6; ++cardId) {
+    main_scene_image["hero" + cardId + "_head1"] = main_scene_path + "hero" + cardId + "_head1.png";
+    main_scene_image["hero" + cardId + "_head2"] = main_scene_path + "hero" + cardId + "_head2.png";
+    main_scene_image["hero" + cardId + "_head3"] = main_scene_path + "hero" + cardId + "_head3.png";
+
+    main_scene_image["hero" + cardId + "_head_lock1"] = main_scene_path + "hero" + cardId + "_head_lock1.png";
+    main_scene_image["hero" + cardId + "_head_lock2"] = main_scene_path + "hero" + cardId + "_head_lock2.png";
+    main_scene_image["hero" + cardId + "_head_lock3"] = main_scene_path + "hero" + cardId + "_head_lock3.png";
+
+    main_scene_image["hero" + cardId + "_half1"] = main_scene_path + "hero" + cardId + "_half1.png";
+    main_scene_image["hero" + cardId + "_half2"] = main_scene_path + "hero" + cardId + "_half2.png";
+    main_scene_image["hero" + cardId + "_half3"] = main_scene_path + "hero" + cardId + "_half3.png";
+
+    main_scene_image["hero" + cardId + "_full1"] = main_scene_path + "hero" + cardId + "_full1.png";
+    main_scene_image["hero" + cardId + "_full2"] = main_scene_path + "hero" + cardId + "_full2.png";
+    main_scene_image["hero" + cardId + "_full3"] = main_scene_path + "hero" + cardId + "_full3.png";
+}
 
 for (var key in main_scene_image) {
     main_scene_res.push({src: main_scene_image[key]});
@@ -175,7 +209,7 @@ var battle_scene_res = [
 ];
 
 
-var s_game_bg = s_path1 + "bg.png";
+var s_game_bg = s_path1 + "bg2.png";
 var s_progress = s_path1 + "p.png";
 var s_progress_bg = s_path1 + "pbg.png";
 var s_card_library_bg = s_path1 + "lbg.png";

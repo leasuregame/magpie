@@ -63,7 +63,7 @@ var CardListLayer = cc.Layer.extend({
         this.addChild(bgSprite);
 
         var cardList = gameData.cardList.get("cardList");
-        var scrollViewLayer = cc.Layer.create();
+        var scrollViewLayer = MarkLayer.create(cc.rect(67, 260, 586, 620));
 
         for (var key in cardList) {
             var card = cardList[key];
@@ -91,7 +91,7 @@ var CardListLayer = cc.Layer.extend({
         this._otherLayer = cc.Layer.create();
         this.addChild(this._otherLayer);
 
-//        this.setSelectType(selectType);
+        this.setSelectType(selectType);
 
         return true;
     },

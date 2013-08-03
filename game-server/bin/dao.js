@@ -7,11 +7,11 @@ var fs = require('fs');
 var async = require('async');
 var _ = require('underscore');
 
-app.configure(process.argv[3] || 'all', function() {
-  app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
-  app.set('dbClient', require('../app/dao/mysql/mysql').init(app));
-  app.set('dao', dao);
-});
+app.set('env', process.argv[3] || 'development');
+app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
+app.set('dbClient', require('../app/dao/mysql/mysql').init(app));
+app.set('dao', dao);
+
 
 var FIXTURES_DIR = path.join(__dirname, '..', 'config', 'fixtures/');
 

@@ -31,7 +31,7 @@ mysql -udev -p1
 make inittables
 
 初始化数据：
-node ./bin/loaddata.js all production
+node ./bin/dao.js all production
 
 重启游戏服务：
 cd /dev/shm/magpie/game-server

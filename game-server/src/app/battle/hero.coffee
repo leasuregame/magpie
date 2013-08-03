@@ -3,6 +3,7 @@ Events = require '../common/events'
 Skill = require './skill'
 SpecialProperty = require './special_property'
 
+app = require('pomelo').app;
 tab = require '../manager/table'
 utility = require '../common/utility'
 _ = require 'underscore'

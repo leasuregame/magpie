@@ -36,15 +36,21 @@ Handler::explore = (msg, session, next) ->
         taskManager.fightToMonster(
           @app, 
           session, 
-          {pid: player.id, tableId: chapterId, sectionId: sectionId, table: 'task_config'}, 
-          (err, battleLog) ->
-            data.battle_log = battleLog
+          {pid: player.id, tableId: chapterId, sectionId: sectionId, table: 'task_config'}
+        , (err, battleLog) ->
+          data.battle_log = battleLog
 
-            if battleLog.winner is 'own'
-              obtainBattleRewards(player, chapterId, battleLog)
-              taskManager.countExploreResult player, data, cb
-            else
-              cb(null, data)
+          if battleLog.winner is 'own'
+            async.parallel [
+              (callback) ->
+                obtainBattleRewards(player, chapterId, battleLog, callback)
+
+              (callback) ->
+                taskManager.countExploreResult player, data, callback
+            ], (err, results) ->
+              cb(err, results[1])
+          else
+            cb(null, data)
         )
       else if data.result is 'box'
         taskManager.openBox player, data, (err) ->
@@ -129,7 +135,7 @@ Handler::passBarrier = (msg, session, next) ->
     
     next(null, {code: 200, msg: {battleLog: bl, pass: player.pass}})
 
-obtainBattleRewards = (player, taskId, battleLog) ->
+obtainBattleRewards = (player, taskId, battleLog, cb) ->
   taskData = table.getTableItem 'task_config', taskId
 
   # 奖励掉落卡牌
@@ -138,10 +144,13 @@ obtainBattleRewards = (player, taskId, battleLog) ->
     _row.card_id
 
   _cards = getRewardCards(ids, taskData.max_drop_card_number)
-  battleLog.rewards.cards = _cards
+  
+  saveCardsInfo player.id, _cards, (results) ->
+    battleLog.rewards.cards = results.map (card) -> card.toJson()
 
-  # 将掉落的卡牌添加到玩家信息
-  addCardsToPlayer(player, _cards)
+    # 将掉落的卡牌添加到玩家信息
+    player.addCards results
+    cb()
 
 getRewardCards = (cardIds, count) ->
   countCardId = (id, star) ->
@@ -170,16 +179,26 @@ getRewardCards = (cardIds, count) ->
   
   _cards
 
-addCardsToPlayer = (player, cards) ->
-  async.each cards, (card) ->
-    dao.card.create(
-      data: {
-        playerId: player.id, 
-        talbeId: card.id, 
-        star: card.star,
-        lv: card.lv
-      }, 
-      (err, card) ->
-        if err is null and card isnt null
-          player.addCard card
-    )
+saveCardsInfo = (playerId, cards, cb) ->
+  results = []
+  async.each cards
+    , (card, callback) ->
+      dao.card.create(
+        data: {
+          playerId: playerId, 
+          tableId: card.id, 
+          star: card.star,
+          lv: card.lv
+        }, 
+        (err, card) ->
+          if err and not card
+            return callback(err)
+
+          results.push card
+          callback()
+      )
+    , (err) ->
+      if err
+        console.log err
+
+      cb(results)

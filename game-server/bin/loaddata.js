@@ -157,6 +157,7 @@ var loadDataForRankingList = function(cb) {
 var main = function() {
   var type = process.argv[2];
   var quenues = [];
+  var start = Date.now();
 
   switch (type) {
     case 'csv': 
@@ -176,6 +177,8 @@ var main = function() {
       fn(cb)
     },
     function(err, results) {
+      var end = Date.now();
+      console.log('time: ' + (end - start)/1000 + 's');
       if (_.every(results)) {
         process.exit();
       }

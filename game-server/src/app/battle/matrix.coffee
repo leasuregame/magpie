@@ -76,16 +76,10 @@ class Matrix
 
   current: ->
     @curIndex and @get(@curIndex) or null
-    # for el in @all()
-    #   return el if el?
-
-    # console.log 'can not get any card, please check you cards.'
-    # return null
 
   next: ->
     max_count = @matrixOrder.length
     for i in [0...max_count]
-      #console.log 'next, next,', @curIndex, @current()
       @moveToNext()
       _hero = @current()
       if not _hero
@@ -199,7 +193,6 @@ class Matrix
     _res
 
   get: (row, col) ->
-    #console.log 'get: ', row, col
     if arguments.length == 1
       [row, col] = row
     @_checkRowAndCol(row, col)

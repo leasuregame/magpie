@@ -39,6 +39,9 @@ var main_scene_image = {
     bg9: main_scene_path + "bg9.png",
     bg10: main_scene_path + "bg10.png",
     bg11: main_scene_path + "bg11.png",
+    bg12: main_scene_path + "bg12.png",
+    bg13: main_scene_path + "bg13.png",
+    bg14: main_scene_path + "bg14.png",
 
     player_details_bg: main_scene_path + "player_details_bg.png",
     lv_bg: main_scene_path + "lv_bg.png",
@@ -121,6 +124,12 @@ var main_scene_image = {
     button17: main_scene_path + "button17.png",
     button17s: main_scene_path + "button17s.png",
     button18: main_scene_path + "button18.png",
+    button19: main_scene_path + "button19.png",
+    button19s: main_scene_path + "button19s.png",
+    button20: main_scene_path + "button20.png",
+    button20s: main_scene_path + "button20s.png",
+    button21: main_scene_path + "button21.png",
+    button21s: main_scene_path + "button21s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -159,7 +168,13 @@ var main_scene_image = {
     icon35: main_scene_path + "icon35.png",
     icon36: main_scene_path + "icon36.png",
     icon37: main_scene_path + "icon37.png",
-    icon38: main_scene_path + "icon38.png"
+    icon38: main_scene_path + "icon38.png",
+    icon39: main_scene_path + "icon39.png",
+    icon40: main_scene_path + "icon40.png",
+    icon41: main_scene_path + "icon41.png",
+    icon42: main_scene_path + "icon42.png",
+    icon43: main_scene_path + "icon43.png",
+    icon44: main_scene_path + "icon44.png"
 }
 
 var main_scene_res = [

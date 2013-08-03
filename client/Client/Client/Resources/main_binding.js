@@ -110,7 +110,7 @@ var appFiles = [
     'src/view/mainModule/strengthenLayer.js',
     'src/view/mainModule/taskLayer.js',
     'src/view/mainModule/tournamentLayer.js',
-    'src/view/mainModule/tournamentPlayerLabel.js',
+    'src/view/mainModule/tournamentLabel.js',
 
     'src/view/battleModule/actionFactory.js',
     'src/view/battleModule/effectsFactory.js',

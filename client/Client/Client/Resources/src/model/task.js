@@ -72,7 +72,7 @@ var Task = Entity.extend({
      * @ param {number} id 任务id
      * */
     explore: function (cb, id) {
-        cc.log("Task explore");
+        cc.log("Task explore " + id);
 
         var that = this;
         lzWindow.pomelo.request("logic.taskHandler.explore", {playerId: gameData.player.get("id"), id: id}, function (data) {

@@ -13,10 +13,9 @@
 
 
 var TournamentLayer = cc.Layer.extend({
-    _tournament : null,
-    _rankScrollView : null,
+    _rankScrollView: null,
 
-    onEnter: function() {
+    onEnter: function () {
         cc.log("TournamentLayer onEnter");
 
         this._super();
@@ -28,47 +27,44 @@ var TournamentLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        this._tournament = gameData.tournament;
-
-        var playerTournamentLabel = PlayerTournamentLabel.create();
-        playerTournamentLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 878));
-        this.addChild(playerTournamentLabel);
+//        var playerTournamentLabel = PlayerTournamentLabel.create();
+//        playerTournamentLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 878));
+//        this.addChild(playerTournamentLabel);
 
         return true;
     },
 
-    update: function() {
+    update: function () {
         cc.log("TournamentLayer update");
-        cc.log(this._tournament);
 
-        if(this._rankScrollView != null) {
+        if (this._rankScrollView != null) {
             this.removeChild(this._rankScrollView);
         }
 
         var that = this;
-        this._tournament.sync(function() {
+        gameData.tournament.sync(function () {
             cc.log("TournamentLayer update callback");
 
             that._addRankScrollView();
         })
     },
 
-    _addRankScrollView: function() {
+    _addRankScrollView: function () {
         cc.log("TournamentLayer _addRankScrollView");
 
-        var rankList = this._tournament.get("rankList");
+        var rankList = gameData.tournament.get("rankList");
         var len = rankList.length;
-        var height = len * (100 + 10) - 10;
+        var height = len * 135;
 
         var scrollViewLayer = cc.Layer.create();
 
-        for(var i = 0; i < len; ++i) {
-            var tournamentPlayerLabel = TournamentPlayerLabel.create(rankList[i]);
-            tournamentPlayerLabel.setPosition(cc.p(0, height - 100 * (i + 1) - 10 * i));
+        for (var i = 0; i < len; ++i) {
+            var tournamentPlayerLabel = TournamentLabel.create(rankList[i]);
+            tournamentPlayerLabel.setPosition(cc.p(0, height - 135 *(i + 1)));
             scrollViewLayer.addChild(tournamentPlayerLabel);
         }
 
-        this._rankScrollView = cc.ScrollView.create(cc.size(GAME_WIDTH, 650), scrollViewLayer);
+        this._rankScrollView = cc.ScrollView.create(cc.size(612, 675), scrollViewLayer);
         this._rankScrollView.setContentSize(cc.size(GAME_WIDTH, height));
         this._rankScrollView.setPosition(GAME_BG_POINT);
         this._rankScrollView.setBounceable(false);

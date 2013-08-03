@@ -92,6 +92,17 @@ app.get('/createDb', function(req, res) {
   command(req, res, 'sh', [__dirname + '/../../bin/initMysql.sh']);
 });
 
+app.get('/:table/:id', function(req, res) {
+  mysql.query('select * from ' + req.params.table + ' where id = ?', [req.params.id], function(err, result) {
+    if (err) {
+      res.send({code: 500, msg: err})
+    } else {
+      if (!!result && result.length == 1)
+      res.send({code: 200, data: result[0]});
+    }
+  });
+});
+
 var command = function(req, res, cmd, args) {
   var ps = spawn(cmd, args);
   ps.stdout.on('data', function(data){

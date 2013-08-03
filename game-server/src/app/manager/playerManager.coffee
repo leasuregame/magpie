@@ -2,9 +2,8 @@ app = require('pomelo').app
 dao = app.get('dao')
 Cache = require '../common/cache'
 async = require 'async'
+playerList = require('./playerCache');
 _ = require 'underscore'
-
-playerList = new Cache()
 
 class Manager 
 

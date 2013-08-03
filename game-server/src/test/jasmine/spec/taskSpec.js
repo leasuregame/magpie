@@ -18,9 +18,9 @@ describe("Logic Server # ", function() {
           playerId: pid,
           taskId: 6
         }, function(data) {
+          console.log(data);
           expect(data.code).toEqual(200);
-          expect(data.msg).toBeDefined();
-          expect(_.keys(data.msg).sort()).toEqual([
+          expect(data.msg).hasProperties([
             'result',
             'power_consume',
             'exp_obtain',
@@ -29,8 +29,31 @@ describe("Logic Server # ", function() {
             'open_box_card',
             'battle_log',
             'fragment'
-          ].sort());
-          console.log(data);
+          ]);
+
+          var res = data.msg;
+          switch(res.result) {
+            case 'fight': 
+              expect(res.battle_log).toBeBattleLog();
+              break;
+            case 'box':
+              expect(typeof res.open_box_card).toEqual('object');
+              expect(res.open_box_card).hasProperties([
+                'id', 'lv', 'exp', 'star', 'tableId', 'skillLv', 'hpAddition', 'atkAddition',
+                'passiveSkills', 'playerId'
+                ])
+              break;
+            default: 
+              expect(res.result).toEqual('none');
+              expect(res.battle_log).toEqual(null);
+              expect(res.open_box_card).toEqual(null);
+          }
+
+          expect(res.power_consume).toEqual(5);
+          expect(res.exp_obtain).toEqual(145);
+          expect(res.money_obtain).toEqual(290);
+          expect(typeof res.upgrade).toEqual('boolean');
+          expect(typeof res.fragment).toEqual('boolean');
         });
       });
 

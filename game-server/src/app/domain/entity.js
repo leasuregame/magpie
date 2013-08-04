@@ -91,7 +91,7 @@ var Entity = (function(_super) {
             // add to changeFields
             if (_this.constructor.FIELDS.indexOf(k) > -1 && _this.changedFields.indexOf(k) < 0) {
                 _this.changedFields.push(k);
-            }   
+            }
 
             _this.attributes[k] = v;
         });
@@ -111,12 +111,16 @@ var Entity = (function(_super) {
     };
 
     Entity.prototype.increase = function(name, val) {
-        val = val || 1;
+        if (typeof val == 'undefined') {
+            val = 1;
+        }
         this.set(name, parseInt(this[name]) + parseInt(val));
     };
 
     Entity.prototype.decrease = function(name, val) {
-        val = val || 1;
+        if (typeof val == 'undefined') {
+            val = 1;
+        }
         this.set(name, parseInt(this[name]) - parseInt(val));
     };
 

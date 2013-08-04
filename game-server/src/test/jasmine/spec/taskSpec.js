@@ -32,8 +32,8 @@ describe("Logic Server # ", function() {
           ]);
 
           var res = data.msg;
-          switch(res.result) {
-            case 'fight': 
+          switch (res.result) {
+            case 'fight':
               expect(res.battle_log).toBeBattleLog();
               break;
             case 'box':
@@ -41,9 +41,9 @@ describe("Logic Server # ", function() {
               expect(res.open_box_card).hasProperties([
                 'id', 'lv', 'exp', 'star', 'tableId', 'skillLv', 'hpAddition', 'atkAddition',
                 'passiveSkills', 'playerId'
-                ])
+              ])
               break;
-            default: 
+            default:
               expect(res.result).toEqual('none');
               expect(res.battle_log).toEqual(null);
               expect(res.open_box_card).toEqual(null);
@@ -57,12 +57,12 @@ describe("Logic Server # ", function() {
         });
       });
 
-      describe('when power is not enought', function(){
-        it('should can not explore', function(){
+      describe('when power is not enought', function() {
+        it('should can not explore', function() {
           request('logic.taskHandler.explore', {
             playerId: 102,
             taskId: 6
-          }, function(data){
+          }, function(data) {
             expect(data.code).toEqual(501);
             expect(data.msg).toEqual('体力不足');
           });
@@ -80,26 +80,29 @@ describe("Logic Server # ", function() {
           console.log('闯关', data);
           expect(data.code).toEqual(200);
           expect(data.msg).toBeDefined();
-          expect(_.keys(data.msg).sort()).toEqual([
+          expect(data.msg).hasProperties([
             'battleLog',
             'pass'
-          ].sort());
+          ]);
           expect(data.msg.battleLog.winner).toEqual('own')
           expect(data.msg.battleLog.rewards).hasProperties(['exp', 'skillPoint'])
           expect(data.msg.pass).hasProperties(['layer', 'mark'])
 
-          doAjax('/player/' + pid, {}, function(data) {
-            expect(data).toEqual({});
+          doAjax('/player/' + pid, {}, function(res) {
+            expect(JSON.parse(res.data.pass)).toEqual({
+              layer: 26,
+              mark: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            });
           });
 
         });
       });
 
-      it('should can not execute the pass that greater than the player has passed', function(){
+      it('should can not execute the pass that greater than the player has passed', function() {
         request('logic.taskHandler.passBarrier', {
           playerId: 102,
           layer: 27
-        }, function(data){
+        }, function(data) {
           expect(data).toEqual({
             code: 501,
             msg: '不能闯此关'
@@ -107,11 +110,11 @@ describe("Logic Server # ", function() {
         });
       });
 
-      it('should can not execute the pass that less than 1', function(){
+      it('should can not execute the pass that less than 1', function() {
         request('logic.taskHandler.passBarrier', {
           playerId: 102,
           layer: 0
-        }, function(data){
+        }, function(data) {
           expect(data).toEqual({
             code: 501,
             msg: '不能闯此关'
@@ -119,11 +122,11 @@ describe("Logic Server # ", function() {
         });
       });
 
-      it('should can not execute the pass that greater than 100', function(){
+      it('should can not execute the pass that greater than 100', function() {
         request('logic.taskHandler.passBarrier', {
           playerId: 102,
           layer: 101
-        }, function(data){
+        }, function(data) {
           expect(data).toEqual({
             code: 501,
             msg: '不能闯此关'
@@ -134,37 +137,95 @@ describe("Logic Server # ", function() {
     });
 
     describe("logic.taskHandler.wipeOut", function() {
+      var before_data;
 
-      it("任务 should can be 扫荡", function() {
-        request('logic.taskHandler.wipeOut', {
-          playerId: pid,
-          type: 'task'
-        }, function(data) {
-          expect(data.code).toEqual(200);
-          expect(_.keys(data.msg).sort()).toEqual([
-            'pass',
-            'rewards'
-          ].sort());
-          console.log('任务扫荡', data);
+      describe("task wipeOut", function() {
+        beforeEach(function() {
+          doAjax('/player/' + pid, {}, function(res) {
+            console.log('before each: ', res);
+            before_data = {
+              exp: res.data.exp,
+              money: res.data.money,
+              gold: res.data.gold,
+              skill_point: res.data.skillPoint
+            }
+          });
+        });
+
+        it("任务 should can be 扫荡", function() {
+          request('logic.taskHandler.wipeOut', {
+            playerId: pid,
+            type: 'task'
+          }, function(data) {
+            console.log('任务扫荡', data);
+            expect(data.code).toEqual(200);
+            expect(data.msg).hasProperties([
+              'pass',
+              'rewards'
+            ]);
+
+            doAjax('/player/' + pid, {}, function(res) {
+              expect(data.msg.rewards).toEqual({
+                exp_obtain: res.data.exp - before_data.exp,
+                money_obtain: res.data.money - before_data.money,
+                gold_obtain: res.data.gold - before_data.gold
+              });
+            });
+          });
         });
       });
 
-    });
-
-    describe("logic.taskHandler.wipeOut", function() {
-
-      it("精英关卡 should can be 扫荡", function() {
-        request('logic.taskHandler.wipeOut', {
-          playerId: pid,
-          type: 'pass'
-        }, function(data) {
-          expect(data.code).toEqual(200);
-          expect(_.keys(data.msg).sort()).toEqual([
-            'pass',
-            'rewards'
-          ].sort());
-          console.log('关卡扫荡', data);
+      describe("pass wipeOut", function() {
+        beforeEach(function() {
+          doAjax('/player/' + 103, {}, function(res) {
+            console.log('before each: ', res);
+            before_data = {
+              exp: res.data.exp,
+              money: res.data.money,
+              gold: res.data.gold,
+              skill_point: res.data.skillPoint
+            }
+          });
         });
+
+        it("精英关卡 should can be 扫荡", function() {
+          request('logic.taskHandler.wipeOut', {
+            playerId: 103,
+            type: 'pass'
+          }, function(data) {
+            console.log('关卡扫荡', data);
+            expect(data.code).toEqual(200);
+            expect(_.keys(data.msg).sort()).toEqual([
+              'pass',
+              'rewards'
+            ].sort());
+
+            doAjax('/player/' + 103, {}, function(res) {
+              expect(data.msg.rewards).toEqual({
+                exp_obtain: res.data.exp - before_data.exp,
+                money_obtain: res.data.money - before_data.money,
+                gold_obtain: res.data.gold - before_data.gold,
+                skill_point: res.data.skillPoint - before_data.skill_point
+              });
+            });
+          });
+        });
+
+        describe("when all pass have been passed", function() {
+          it("should return there is not pass to be execute", function() {
+            request('logic.taskHandler.wipeOut', {
+              playerId: 103,
+              type: 'pass'
+            }, function(data) {
+              console.log('关卡扫荡', data);
+              expect(data).toEqual({
+                code: 501,
+                msg: '没有关卡可以扫荡'
+              });
+            });
+          });
+        });
+
       });
 
     });

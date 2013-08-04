@@ -62,7 +62,7 @@ class Manager
     player.increase('gold', rewards.gold_obtain)
     player.increase('skillPoint', rewards.skill_point)
 
-    return cb(null, player, "没有关卡可以扫荡") if not isWipeOut
+    return cb({code: 501, msg: "没有关卡可以扫荡"}) if not isWipeOut
     cb(null, player, rewards)
 
   @wipeOutTask: (player, cb) ->

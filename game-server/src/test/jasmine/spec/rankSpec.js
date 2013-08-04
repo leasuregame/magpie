@@ -26,7 +26,7 @@ var checkChallengeResults = function(rankId, ranking, challenger, isWin, data) {
 
 describe("Ranking List", function() {
   beforeAll(function() {
-    doAjax('/loaddata/csv', {}, function(data) {
+    doAjax('/loaddata/all', {}, function(data) {
       expect(data).toEqual('done');
     });
   });

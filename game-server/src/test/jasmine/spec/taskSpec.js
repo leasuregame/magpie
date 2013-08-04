@@ -88,6 +88,10 @@ describe("Logic Server # ", function() {
           expect(data.msg.battleLog.rewards).hasProperties(['exp', 'skillPoint'])
           expect(data.msg.pass).hasProperties(['layer', 'mark'])
 
+          doAjax('/player/' + pid, {}, function(data) {
+            expect(data).toEqual({});
+          });
+
         });
       });
 

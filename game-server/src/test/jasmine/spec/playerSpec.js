@@ -4,11 +4,9 @@ describe("Connecter Server # ", function() {
   var pid;
   var myName = 'wuzhanghai';
   
-  describe("Set Up", function() {
-    it("init database", function() {
-      doAjax('/createDb', {}, function(data) {});
-    })
-  });
+  beforeAll(function(){
+    doAjax('/createDb', {}, function(data) {});
+  })
 
   describe('Player Handler', function(){
     

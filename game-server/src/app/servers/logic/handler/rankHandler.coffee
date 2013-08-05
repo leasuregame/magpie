@@ -38,6 +38,9 @@ Handler::rankingList = (msg, session, next) ->
     if err
       return next(null, {code: err.code, msg: err.message})
 
+    rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK \
+      for p in players when playerId in p.rank.counts.recentChallenger
+
     players = filterPlayersInfo(players, rankings)
     players.sort (x, y) -> x.ranking - y.ranking
     next(null, {code: 200, msg: players})
@@ -62,7 +65,7 @@ Handler::challenge = (msg, session, next) ->
 
     (bl, cb) =>
       rankData = table.getTableItem 'rank', player.lv
-      _results = if bl.winner is 'own' then 'lose' else 'win'
+      _results = if bl.winner is 'own' then 'win' else 'lose'
       
       rewards = {
         exp: rankData[_results + '_exp']
@@ -74,7 +77,7 @@ Handler::challenge = (msg, session, next) ->
       player.increase('money', rewards.money)
 
       isWin = _results == 'win'
-      rankManager.exchangeRankings player, targetId, rewards, isWin, (err, res) ->
+      rankManager.exchangeRankings player, targetId, rankData, isWin, (err, res) ->
         if err and not res
           return cb(err)
         else

@@ -37,8 +37,6 @@ node ./bin/dao.js all production
 cd /dev/shm/magpie/game-server
 make build && ./node_modules/.bin/pomelo stop && ./node_modules/.bin/pomelo start production --daemon
 
-
-
 pkill -9 -f node
 make inittables
 node ./bin/loaddata.js all production

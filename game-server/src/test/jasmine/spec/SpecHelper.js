@@ -5,8 +5,7 @@ beforeEach(function() {
       var isWin = battleLog.winner == 'own' ? true : false;
 
       var keys_ok = _.isEqual(
-        _.keys(battleLog).sort(), 
-        [
+        _.keys(battleLog).sort(), [
           'enemy',
           'own',
           'winner',
@@ -16,22 +15,26 @@ beforeEach(function() {
       );
 
       var cards_ok = false;
-      var enemy_card_length = _.filter(battleLog.enemy.cards, function(e) { return e !== null; }).length;
-      var own_card_length = _.filter(battleLog.own.cards, function(e) { return e !== null; }).length;
-      
+      var enemy_card_length = _.filter(battleLog.enemy.cards, function(e) {
+        return e !== null;
+      }).length;
+      var own_card_length = _.filter(battleLog.own.cards, function(e) {
+        return e !== null;
+      }).length;
+
       cards_ok = enemy_card_length > 0 && own_card_length > 0;
 
       function checkSteps(steps) {
         var ok = false;
 
-        if(_.isEmpty(steps)){
+        if (_.isEmpty(steps)) {
           console.log('steps of battle log is empty!');
           return false;
         }
 
         var dmage = {};
         _.each(steps, function(s) {
-          _.each(s.d, function(pos, index){
+          _.each(s.d, function(pos, index) {
             if (!_.isNumber(s.a) || !_.isNumber(pos)) {
               console.log('战斗步骤数据格式错误,', s);
               return false;
@@ -41,7 +44,7 @@ beforeEach(function() {
               dmage[pos] = Math.abs(s.e[index]);
             } else {
               dmage[pos] += Math.abs(s.e[index]);
-            }            
+            }
           })
         });
 
@@ -50,7 +53,7 @@ beforeEach(function() {
           var death_man = 0;
           _.each(dmage, function(val, key) {
             k = parseInt(key);
-            if (k >= 6 && battleLog.enemy.cards[k-6].hp <= val) {
+            if (k >= 6 && battleLog.enemy.cards[k - 6].hp <= val) {
               death_man++;
             }
           })
@@ -58,9 +61,9 @@ beforeEach(function() {
             ok = true;
           } else {
             console.log('玩家赢了，但战斗步骤中死亡了的人数和敌人的人数不一致');
-            console.log('敌方死亡人数：', death_man);
-            console.log('敌方实际人数：', enemy_length);
           }
+          console.log('敌方死亡人数：', death_man);
+          console.log('敌方实际人数：', enemy_card_length);
         } else {
           var death_man = 0;
           _.each(dmage, function(val, key) {
@@ -69,14 +72,14 @@ beforeEach(function() {
               death_man++;
             }
           })
-          
+
           if (own_card_length == death_man) {
             ok = true;
           } else {
             console.log('玩家输了，但战斗步骤中死亡了的人数和自己的人数不一致');
-            console.log('我方死亡人数：', death_man);
-            console.log('我方实际人数：', enemy_length);
           }
+          console.log('我方死亡人数：', death_man);
+          console.log('我方实际人数：', own_card_length);
         }
 
         return ok;
@@ -107,18 +110,18 @@ beforeEach(function() {
   });
 });
 
-beforeEach(function(){
+beforeEach(function() {
   intiPomelo();
 });
 
-afterEach(function(){
+afterEach(function() {
   pomelo.disconnect();
 });
 
-var beforeAll = function (func) {
+var beforeAll = function(func) {
   var beforeAllCalled = false;
 
-  jasmine.getEnv().currentSuite.beforeEach(function () {
+  jasmine.getEnv().currentSuite.beforeEach(function() {
     if (!beforeAllCalled) {
       beforeAllCalled = true;
       func();
@@ -146,17 +149,17 @@ var doAjax = function(url, params, cb) {
 };
 
 var request = function(route, msg, cb) {
-	var ok = false;
-	runs(function() {
-	  pomelo.request(route, msg, function(data) {
-	    ok = true;
-	    cb(data);
-	  });
-	});
+  var ok = false;
+  runs(function() {
+    pomelo.request(route, msg, function(data) {
+      ok = true;
+      cb(data);
+    });
+  });
 
-	waitsFor(function() {
-	  return ok;
-	});
+  waitsFor(function() {
+    return ok;
+  });
 };
 
 var intiPomelo = function() {

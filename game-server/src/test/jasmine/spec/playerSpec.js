@@ -37,6 +37,11 @@ describe("Connecter Server # ", function() {
           console.log(data);
           var player = data.msg.player;
           pid = data.msg.player.id;
+          
+          var cards = data.msg.player.cards;
+          delete data.msg.player.cards;
+          expect(cards.length).toEqual(3);
+
           expect(data).toEqual({
             code: 200,
             msg: {
@@ -61,7 +66,6 @@ describe("Connecter Server # ", function() {
                   dailyGift: [],
                   skillPoint: 0,
                   energy: 0,
-                  cards: [], 
                   rank: null
               }
             }

@@ -65,6 +65,7 @@ Handler::login = (msg, session, next) ->
 
     session.bind(uid)
     if !!_player
+    if _player?
       session.set('playerId', _player.id)
       session.set('playerName', _player.name)
       session.set('areaId', _player.areaId)

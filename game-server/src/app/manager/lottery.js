@@ -23,8 +23,9 @@ var lottery = function(level, type) {
   var card = newCard(level, card_id);
   var fragment = gen_card_fragment(level);
   var consume_val = consume(level, type);
+  var pss = initPassiveSkill(card.star);
 
-  return [card, consume_val, fragment];
+  return [card, consume_val, fragment, pss];
 };
 
 /*
@@ -67,8 +68,8 @@ var gen_card_fragment = function(level) {
 var newCard = function(level, id) {
   var cardData = table.getTableItem('card', id);
 
-  var card_star = gen_card_star(level);
-  var card_level = gen_card_level(card_star);
+  var card_star = parseInt(gen_card_star(level));
+  var card_level = parseInt(gen_card_level(card_star));
 
   return {
       tableId: id,
@@ -80,6 +81,22 @@ var newCard = function(level, id) {
 var consume = function(level, type) {
   var mapping = cardConfig.LOTTERY_CONSUME;
   return mapping[type][level]
+};
+
+var initPassiveSkill = function(star) {
+  var count = star - 2;
+  
+  var results = [];
+  for (var i = 0; i < count; i++) {
+    var index = _.random(cardConfig.PASSIVESKILL.TYPE.length-1);
+    var _res = cardConfig.PASSIVESKILL.VALUE_SCOPE.split('-');
+    var start = _res[0], end = _res[1];
+    results.push({
+      name: cardConfig.PASSIVESKILL.TYPE[index],
+      value: _.random(start, end)
+    })
+  }
+  return results;
 };
 
 module.exports = lottery;

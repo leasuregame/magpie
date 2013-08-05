@@ -46,5 +46,15 @@ module.exports = {
       "2": 300,
       "3": 500
     }
+  },
+  "PASSIVESKILL": {
+    TYPE: [
+      'crit',
+      'dodge',
+      'dmg_reduce',
+      'atk_improve',
+      'hp_improve'
+     ],
+    VALUE_SCOPE: '1-4'
   }
 }

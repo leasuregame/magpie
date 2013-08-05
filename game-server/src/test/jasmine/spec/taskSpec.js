@@ -237,13 +237,14 @@ describe("Logic Server # ", function() {
           type: 1,
           level: 1
         }, function(data) {
+          console.log(data);
           expect(data.code).toEqual(200);
-          expect(_.keys(data.msg).sort()).toEqual([
+          expect(data.msg).hasProperties([
             'card',
             'consume',
             'hasFragment'
-          ].sort());
-          console.log(data);
+          ]);
+          
         });
       });
     });

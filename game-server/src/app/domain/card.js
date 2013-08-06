@@ -143,7 +143,7 @@ var Card = (function(_super) {
     Card.prototype.eatCards = function(cards) {
         var totalExp = 0;
         cards.forEach(function(card) {
-            totalExp += cardExp(card.lv, card.exp_need);
+            totalExp += card.cur_exp;
         });
         var upgraded_lv = this.upgrade(totalExp);
         return [totalExp, upgraded_lv];
@@ -164,6 +164,7 @@ var Card = (function(_super) {
                 upgraded_lv++;
             } else {
                 this.set('exp', exp);
+                break;
             }
         }
         return upgraded_lv;
@@ -173,6 +174,7 @@ var Card = (function(_super) {
     Card.prototype.toJson = function() {
         return {
             id: this.id,
+            createTime: this.createTime,
             playerId: this.playerId,
             tableId: this.tableId,
             star: this.star,
@@ -189,19 +191,6 @@ var Card = (function(_super) {
 
     return Card;
 })(Entity);
-
-var cardExp = function(lv, exp) {
-    var rows = table.getTable('card_grow').filter(function(row) {
-        return row.lv < lv;
-    });
-
-    var totalExp = exp;
-    for (var i = 0; i < rows.length; i++) {
-        var row = rows[i];
-        totalExp += parseInt(row.exp);
-    }
-    return totalExp;
-};
 
 var passiveSkillEffect = function(card) {
     var _pro = {

@@ -252,6 +252,8 @@ var Player = (function(_super) {
     };
 
     Player.prototype.strengthen = function(target, sources, cb) {
+        var _this = this;
+
         if (!this.hasCard(target)) {
             return cb({
                 msg: '找不到目标卡牌'
@@ -261,13 +263,22 @@ var Player = (function(_super) {
         var _res = targetCard.eatCards(this.popCards(sources));
         var expObtain = _res[0],
             upgradedLevel = _res[1];
-        var moneyConsume = table.getTableItem('card_grow', targetCard.tableId).money_need;
+        var items = table.getTable('card_grow').filter(function(item){
+            return item.id >= targetCard.lv && item.id < (targetCard.lv + upgradedLevel);
+        });
+        console.log(items, upgradedLevel, expObtain);
+        var moneyConsume = items.reduce(function(x, y) {return x + y;});
+        if (this.money < moneyConsume) {
+            return cb({code: 501, msg: '铜板不足'});
+        }
 
-        cb(null, {
+        this.decrease('money', moneyConsume);
+
+        return cb(null, {
             exp_obtain: expObtain,
             upgraded_level: upgradedLevel,
             money_consume: parseInt(moneyConsume)
-        });
+        }, targetCard);
     };
 
     Player.prototype.setPassMark = function(layer) {

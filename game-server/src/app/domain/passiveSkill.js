@@ -44,6 +44,7 @@ var PassiveSkill = (function (_super) {
         return {
             id: this.id,
             cardId: this.cardId,
+            createTime: this.createTime,
             name: this.name,
             value: this.value
         };

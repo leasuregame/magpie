@@ -62,6 +62,9 @@ var main_scene_image = {
 
     progress2: main_scene_path + "progress2.png",
     progress3: main_scene_path + "progress3.png",
+    progress4: main_scene_path + "progress4.png",
+    progress5: main_scene_path + "progress5.png",
+    progress6: main_scene_path + "progress6.png",
 
     card_frame_s: main_scene_path + "card_frame_s.png",
     card_frame1: main_scene_path + "card_frame1.png",
@@ -105,6 +108,7 @@ var main_scene_image = {
     button8s: main_scene_path + "button8s.png",
     button9: main_scene_path + "button9.png",
     button9s: main_scene_path + "button9s.png",
+    button9d: main_scene_path + "button9d.png",
     button10: main_scene_path + "button10.png",
     button10s: main_scene_path + "button10s.png",
     button11: main_scene_path + "button11.png",

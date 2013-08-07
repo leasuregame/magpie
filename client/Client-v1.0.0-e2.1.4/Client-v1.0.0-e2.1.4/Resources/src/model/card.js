@@ -78,6 +78,7 @@ var Card = Entity.extend({
 
         this._loadCardTable();
         this._loadSkillTable();
+        this._loadCardGrow();
 
         this._ability = this._getCardAbility();
 
@@ -88,7 +89,6 @@ var Card = Entity.extend({
         cc.log("Card _loadCardTable");
 
         // 读取卡牌配置表
-
         var cardTable = outputTables.cards.rows[this._tableId];
 
         this._kindId = cardTable.number;
@@ -116,11 +116,19 @@ var Card = Entity.extend({
         this._url = "hero" + (this._id % 6 + 1);
     },
 
+    _loadCardGrow: function () {
+        cc.log("Card _loadCardGrow");
+
+        // 读取卡牌升级配置表
+        var cardGrow = outputTables.card_grow.rows[this._lv];
+
+        this._maxExp = cardGrow.exp_need;
+    },
+
     _loadSkillTable: function () {
         cc.log("Card _loadSkillTable");
 
         // 读取技能配置表
-
         var skillTable = outputTables.skills.rows[this._skillId];
 
         this._skillName = skillTable.name;
@@ -138,15 +146,34 @@ var Card = Entity.extend({
     addExp: function (exp) {
         cc.log("Card addExp");
 
+        var needMoney = 0;
+        var cardGrow = outputTables.card_grow.rows;
 
+        this._exp += exp;
+        cc.log(this._exp);
+
+        while (this._exp >= this._maxExp) {
+            needMoney += cardGrow[this._lv].money_need;
+
+            this._exp -= this._maxExp;
+            this._lv += 1;
+            this._maxExp = cardGrow[this._lv].exp_need;
+
+            cc.log(this._exp);
+
+        }
+
+        return needMoney;
     },
 
     // 计算总经验
     getCardExp: function () {
         cc.log("Card getCardExp");
 
-        var hasExp = exp;
+        // 读取卡牌升级配置表
+        var cardGrow = outputTables.card_grow.rows[this._lv];
 
+        return (cardGrow.cur_exp + this._exp);
     },
 
     getCardFullLvExp: function () {
@@ -155,23 +182,6 @@ var Card = Entity.extend({
         var needExp = 0;
 
         return needExp;
-    },
-
-    clone: function () {
-        cc.log("Card clone");
-
-        return Card.create({
-            id: this._id,
-            createTime: this._createTime,
-            tableId: this._tableId,
-            lv: this._lv,
-            exp: this._exp,
-            skillLv: this._skillLv,
-            hpAddition: this._hpAddition,
-            atkAddition: this._atkAddition,
-            elixir: this._elixir,
-            passiveSkills: this._passiveSkillList
-        });
     }
 })
 

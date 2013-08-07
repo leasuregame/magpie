@@ -63,6 +63,7 @@ var main_scene_image = {
     progress2: main_scene_path + "progress2.png",
     progress3: main_scene_path + "progress3.png",
 
+    card_frame_s: main_scene_path + "card_frame_s.png",
     card_frame1: main_scene_path + "card_frame1.png",
     card_frame2: main_scene_path + "card_frame2.png",
     card_frame3: main_scene_path + "card_frame3.png",
@@ -136,7 +137,7 @@ var main_scene_image = {
     button22d: main_scene_path + "button22d.png",
     button23: main_scene_path + "button23.png",
     button23s: main_scene_path + "button23s.png",
-    button123d: main_scene_path + "button23d.png",
+    button23d: main_scene_path + "button23d.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -184,7 +185,16 @@ var main_scene_image = {
     icon44: main_scene_path + "icon44.png",
     icon45: main_scene_path + "icon45.png",
     icon46: main_scene_path + "icon46.png",
-    icon47: main_scene_path + "icon47.png"
+    icon47: main_scene_path + "icon47.png",
+    icon48: main_scene_path + "icon48.png",
+    icon49: main_scene_path + "icon49.png",
+    icon50: main_scene_path + "icon50.png",
+    icon51: main_scene_path + "icon51.png",
+    icon52: main_scene_path + "icon52.png",
+    icon53: main_scene_path + "icon53.png",
+    icon54: main_scene_path + "icon54.png",
+    icon55: main_scene_path + "icon55.png",
+    icon56: main_scene_path + "icon56.png"
 }
 
 var main_scene_res = [

@@ -22,6 +22,8 @@ var CardList = Entity.extend({
     _length: 0,
 
     init: function (cardList, lineUp) {
+        cc.log("CardList init");
+
         this._length = cardList.length;
 
         for (var i = 0; i < this._length; ++i) {
@@ -33,7 +35,7 @@ var CardList = Entity.extend({
         }
 
         var key;
-        for(key in lineUp) {
+        for (key in lineUp) {
             var cardId = lineUp[key];
             this._cardList[cardId].set("isUse", true);
         }
@@ -45,7 +47,29 @@ var CardList = Entity.extend({
     },
 
     push: function (card) {
-        this._cardList[card.get("id")] = card;
+        cc.log("CardList push");
+
+        if(card instanceof Array) {
+            var len = card.length;
+            for(var i = 0; i < len; ++i) {
+                this._cardList[card[i].get("id")] = card[i];
+            }
+        } else {
+            this._cardList[card.get("id")] = card;
+        }
+    },
+
+    delete: function (card) {
+        cc.log("CardList delete");
+
+        if(card instanceof Array) {
+            var len = card.length;
+            for(var i = 0; i < len; ++i) {
+                delete this._cardList[card[i].get("id")];
+            }
+        } else {
+            delete this._cardList[card.get("id")];
+        }
     },
 
     getCardByIndex: function (index) {
@@ -55,7 +79,7 @@ var CardList = Entity.extend({
         return this._cardList[index];
     },
 
-    changeUseCardByIndex: function(index) {
+    changeUseCardByIndex: function (index) {
         cc.log("CardList changeUseCardByIndex");
 
         var isUse = !this._cardList[index].get("isUse");
@@ -79,7 +103,7 @@ var CardList = Entity.extend({
 
         type = type || SORT_CARD_LIST_BY_STAR;
 
-        if(type == "") type = SORT_CARD_LIST_BY_STAR;
+        if (type == "") type = SORT_CARD_LIST_BY_STAR;
 
         this._index.sort(this._sort(this._cardList, type));
 

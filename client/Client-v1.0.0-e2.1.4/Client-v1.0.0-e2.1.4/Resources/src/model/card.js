@@ -138,6 +138,9 @@ var Card = Entity.extend({
     // 计算总经验
     getCardExp: function () {
         cc.log("Card getCardExp");
+
+        var hasExp = exp;
+
     },
 
     clone: function () {

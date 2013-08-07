@@ -14,7 +14,7 @@
 
 var SignInScene = cc.Scene.extend({
     onEnter: function () {
-        cc.log("login onEnter");
+        cc.log("SignInScene onEnter");
 
         this._super();
 
@@ -23,10 +23,10 @@ var SignInScene = cc.Scene.extend({
     }
 })
 
-SignInScene.create = function() {
+SignInScene.create = function () {
     var ret = new SignInScene();
 
-    if(ret) {
+    if (ret) {
         return ret;
     }
 

@@ -13,8 +13,25 @@
 
 
 var CardUpgradeLabel = cc.Layer.extend({
-    _targetCard: null,
+    _leadCard: null,
     _retinueCard: [],
+    _leadCardHalfNode: null,
+    _tipLabel: null,
+    _helpLabel: null,
+    _expLabel: null,
+    _maxExpLabel: null,
+    _moneyLabel: null,
+    _cardCountLabel: null,
+    _cardLabel: null,
+    _hpLabel: null,
+    _hpAdditionLabel: null,
+    _atkLabel: null,
+    _atkAdditionLabel: null,
+    _lvLabel: null,
+    _yellowProgress: null,
+    _greenProgress: null,
+    _selectRetinueCardItem: null,
+    _upgradeItem: null,
 
     onEnter: function () {
         cc.log("CardUpgradeLabel onEnter");
@@ -28,47 +45,96 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        var leadCardLabel = cc.LayerColor.create(cc.c4b(150, 100, 100, 200), 250, 400);
-        this.leadCardString = cc.LabelTTF.create("请选择\n升级主卡", 'Times New Roman', 25, cc.size(250, 400), cc.TEXT_ALIGNMENT_CENTER);
-        this.leadCardString.setPosition(cc.p(125, 100));
-        leadCardLabel.addChild(this.leadCardString);
-        var selectLeadItem = cc.MenuItemLabel.create(leadCardLabel, this._onClickSelectLead, this);
-        selectLeadItem.setPosition(cc.p(225, 600));
+        var cardItemBgSprite = cc.Sprite.create(main_scene_image.icon48);
+        cardItemBgSprite.setPosition(cc.p(360, 600));
+        this.addChild(cardItemBgSprite);
 
-        var tipLabel = cc.LayerColor.create(cc.c4b(100, 150, 100, 200), 250, 200);
-        tipLabel.setPosition(cc.p(350, 600));
-        this.addChild(tipLabel);
-        var tipString = cc.LabelTTF.create("温馨提示\n主卡通过吞噬从卡\n来提升等级", 'Times New Roman', 25, cc.size(250, 200), cc.TEXT_ALIGNMENT_CENTER);
-        tipString.setPosition(cc.p(125, 50));
-        tipLabel.addChild(tipString);
+        var helpBgSprite = cc.Sprite.create(main_scene_image.icon50);
+        helpBgSprite.setPosition(cc.p(360, 380));
+        this.addChild(helpBgSprite);
 
-        var retinueCardLabel = cc.LayerColor.create(cc.c4b(100, 100, 150, 200), 250, 200);
-        this.retinueCardString = cc.LabelTTF.create("请选择从卡", 'Times New Roman', 25, cc.size(250, 200), cc.TEXT_ALIGNMENT_CENTER);
-        this.retinueCardString.setPosition(cc.p(125, 50));
-        retinueCardLabel.addChild(this.retinueCardString);
-        var retinueCardItem = cc.MenuItemLabel.create(retinueCardLabel, this._onClickSelectRetinue, this);
-        retinueCardItem.setPosition(cc.p(475, 500));
+        this._cardLabel = cc.Node.create();
+        this._cardLabel.setPosition(cc.p(202, 445));
+        this.addChild(this._cardLabel, 1);
 
-        var Label = cc.LabelTTF.create("卡牌升级可以提升卡牌的基础攻击力和生命值", 'Times New Roman', 25);
-        Label.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 230));
-        this.addChild(Label);
+        var cardLabelBgSprite = cc.Sprite.create(main_scene_image.icon49);
+        cardLabelBgSprite.setAnchorPoint(cc.p(0, 0));
+        this._cardLabel.addChild(cardLabelBgSprite);
 
-        var label = cc.LabelTTF.create("费用消耗：", 'Times New Roman', 25);
-        label.setAnchorPoint(cc.p(0, 0));
-        label.setPosition(cc.p(100, 350));
-        this.addChild(label);
+        var cardLabelIcon = cc.Sprite.create(main_scene_image.icon54);
+        cardLabelIcon.setPosition(cc.p(70, 90));
+        this._cardLabel.addChild(cardLabelIcon);
 
-        this.consumeLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
-        this.consumeLabel.setAnchorPoint(cc.p(0, 0));
-        this.consumeLabel.setPosition(cc.p(280, 350));
-        this.addChild(this.consumeLabel);
+        this._tipLabel = cc.Sprite.create(main_scene_image.icon56);
+        this._tipLabel.setPosition(cc.p(360, 380));
+        this.addChild(this._tipLabel);
 
-        this.okItem = cc.MenuItemFont.create("升级", this._onClickOk, this);
-        this.okItem.setPosition(cc.p(350, 300));
+        this._helpLabel = cc.Sprite.create(main_scene_image.icon55);
+        this._helpLabel.setPosition(cc.p(320, 380));
+        this.addChild(this._helpLabel);
 
-        var menu = cc.Menu.create(selectLeadItem, retinueCardItem, this.okItem);
+        var selectLeadCardItem = cc.MenuItemImage.create(
+            main_scene_image.card_frame1,
+            main_scene_image.card_frame_s,
+            this._onClickSelectLeadCard,
+            this
+        );
+        selectLeadCardItem.setPosition(cc.p(355, 685));
+
+        this._selectRetinueCardItem = cc.MenuItemImage.create(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            this._onClickSelectRetinueCard,
+            this
+        );
+        this._selectRetinueCardItem.setPosition(cc.p(260, 270));
+
+        this._upgradeItem = cc.MenuItemImage.create(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            this._onClickUpgrade,
+            this
+        );
+        this._upgradeItem.setPosition(cc.p(460, 270));
+
+
+        var menu = cc.Menu.create(selectLeadCardItem, this._selectRetinueCardItem, this._upgradeItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
+
+        this._expLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        this._expLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._expLabel.setPosition(cc.p(240, 405));
+        this.addChild(this._expLabel);
+
+        this._maxExpLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        this._maxExpLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._maxExpLabel.setPosition(cc.p(500, 405));
+        this.addChild(this._maxExpLabel);
+
+        this._moneyLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._moneyLabel.setPosition(cc.p(240, 357));
+        this.addChild(this._moneyLabel);
+
+        this._cardCountLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        this._cardCountLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._cardCountLabel.setPosition(cc.p(480, 357));
+        this.addChild(this._cardCountLabel);
+
+        var selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon51);
+        selectLeadCardIcon.setPosition(cc.p(355, 685));
+        this.addChild(selectLeadCardIcon);
+
+        var selectRetinueCardIcon = cc.Sprite.create(main_scene_image.icon53);
+        selectRetinueCardIcon.setPosition(cc.p(260, 270));
+        this.addChild(selectRetinueCardIcon);
+
+        var upgradeIcon = cc.Sprite.create(main_scene_image.icon52);
+        upgradeIcon.setPosition(cc.p(460, 270));
+        this.addChild(upgradeIcon);
 
         return true;
     },
@@ -76,30 +142,109 @@ var CardUpgradeLabel = cc.Layer.extend({
     update: function () {
         cc.log("CardUpgradeLabel update");
 
-        var str = "请选择\n升级主卡";
-        if (this._leadCard) {
-            str = "";
-            str += "卡名：" + this._leadCard.get("name") + "\n";
-            str += "星级：" + this._leadCard.get("star") + "\n";
-            str += "等级：" + this._leadCard.get("lv") + "\n";
-            str += "经验：" + this._leadCard.get("exp") + "\n";
-            str += "升级经验：" + this._leadCard.get("maxExp") + "\n";
-            str += "生命：" + this._leadCard.get("hp") + "\n";
-            str += "攻击：" + this._leadCard.get("atk");
-        }
-        this.leadCardString.setString(str);
+        if (this._leadCard == null) {
+            this._retinueCard = [];
 
-        var str = "请选择从卡";
-        if (this._retinueCard.length > 0) {
-            str = "当前选择从卡 " + this._retinueCard.length + " 张";
-        }
-        this.retinueCardString.setString(str);
-
-        if (this._leadCard && this._retinueCard.length > 0) {
-            this.okItem.setEnabled(true);
+            this._selectRetinueCardItem.setEnabled(false);
+            this._upgradeItem.setEnabled(false);
         } else {
-            this.okItem.setEnabled(false);
         }
+    },
+
+    _stopAllActions: function () {
+        this._lvLabel.stopAllActions();
+        this._hpAdditionLabel.stopAllActions();
+        this._atkAdditionLabel.stopAllActions();
+        this._yellowProgress.stopAllActions();
+        this._greenProgress.stopAllActions();
+    },
+
+    _addLeadCard: function () {
+        cc.log("CardUpgradeLabel _addLeadCard");
+
+        if (this._leadCardHalfNode != null) {
+            this._leadCardHalfNode.removeFromParent();
+            this._leadCardHalfNode = null;
+        }
+
+        if (this._leadCard == null) {
+            this._hpLabel.setString("0");
+            this._hpAdditionLabel.setString("+0");
+            this._atkLabel.setString("0");
+            this._atkAdditionLabel.setString("+0");
+
+            this._lvLabel.setString("0");
+            this._yellowProgress.setAllValue(0, 0);
+
+            this._expLabel.setString("0");
+            this._maxExpLabel.setString("0");
+            this._moneyLabel.setString("0");
+            this._cardCountLabel.setString("0");
+
+        } else {
+            this._leadCardHalfNode = CardHalfNode.create(this._leadCard);
+            this._leadCardHalfNode.setPosition(cc.p(355, 685));
+            this.addChild(this._leadCardHalfNode, 1);
+        }
+    },
+
+    _addRetinueCard: function() {
+        cc.log("CardUpgradeLabel _addRetinueCard");
+
+
+    },
+
+    _canSelectLeadCard: function () {
+        cc.log("CardUpgradeLabel _canSelectLeadCard");
+
+        this._retinueCard = [];
+
+        this._stopAllActions();
+
+        this._addLeadCard();
+
+        this._selectRetinueCardItem.setEnabled(false);
+        this._upgradeItem.setEnabled(false);
+
+        this._tipLabel.setVisible(true);
+        this._helpLabel.setVisible(false);
+        this._expLabel.setVisible(false);
+        this._maxExpLabel.setVisible(false);
+        this._moneyLabel.setVisible(false);
+        this._cardCountLabel.setVisible(false);
+
+        this._cardLabel.setVisible(false);
+    },
+
+    _canSelectRetinueCard: function () {
+        cc.log("CardUpgradeLabel _canSelectRetinueCard");
+
+        this._stopAllActions();
+
+        this._addLeadCard();
+
+        this._selectRetinueCardItem.setEnabled(true);
+        this._upgradeItem.setEnabled(false);
+
+        this._tipLabel.setVisible(false);
+        this._helpLabel.setVisible(true);
+        this._expLabel.setVisible(true);
+        this._maxExpLabel.setVisible(true);
+        this._moneyLabel.setVisible(true);
+        this._cardCountLabel.setVisible(true);
+
+        this._cardLabel.setVisible(true);
+
+
+    },
+
+    _canUpgrade: function () {
+        cc.log("CardUpgradeLabel _canUpgrade");
+
+        this._stopAllActions();
+
+        this._addLeadCard();
+
     },
 
     _switchToCardListLayer: function (cardListLayer) {
@@ -118,34 +263,34 @@ var CardUpgradeLabel = cc.Layer.extend({
         parent.setVisible(true);
     },
 
-    _onClickSelectLead: function () {
-        cc.log("CardUpgradeLabel _onClickSelectLead");
+    _onClickSelectLeadCard: function () {
+        cc.log("CardUpgradeLabel _onClickSelectLeadCard");
 
-        var cardListLayer = CardListLayer.create(function (data) {
-            cc.log(data);
-
-            this._leadCard = data[0] || null;
-            this._backToThisLayer(cardListLayer);
-        }, this, 1);
-
-        this._switchToCardListLayer(cardListLayer);
+//        var cardListLayer = CardListLayer.create(function (data) {
+//            cc.log(data);
+//
+//            this._leadCard = data[0] || null;
+//            this._backToThisLayer(cardListLayer);
+//        }, this, 1);
+//
+//        this._switchToCardListLayer(cardListLayer);
     },
 
-    _onClickSelectRetinue: function () {
-        cc.log("CardUpgradeLabel _onClickSelectRetinue");
+    _onClickSelectRetinueCard: function () {
+        cc.log("CardUpgradeLabel _onClickSelectRetinueCard");
 
-        var cardListLayer = CardListLayer.create(function (data) {
-            cc.log(data);
-
-            this._retinueCard = data;
-            this._backToThisLayer(cardListLayer);
-        }, this);
-
-        this._switchToCardListLayer(cardListLayer);
+//        var cardListLayer = CardListLayer.create(function (data) {
+//            cc.log(data);
+//
+//            this._retinueCard = data;
+//            this._backToThisLayer(cardListLayer);
+//        }, this);
+//
+//        this._switchToCardListLayer(cardListLayer);
     },
 
-    _onClickOk: function () {
-        cc.log("CardUpgradeLabel _onClickOk");
+    _onClickUpgrade: function () {
+        cc.log("CardUpgradeLabel _onClickUpgrade");
     }
 })
 

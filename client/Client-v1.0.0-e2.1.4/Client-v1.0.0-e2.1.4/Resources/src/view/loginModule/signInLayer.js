@@ -17,7 +17,7 @@ var SignInLayer = cc.Layer.extend({
     _passwordEditBox: null,
 
     init: function () {
-        cc.log("LoginLayer init");
+        cc.log("SignInLayer init");
 
         if (!this._super()) return false;
 
@@ -87,7 +87,7 @@ var SignInLayer = cc.Layer.extend({
     },
 
     _onClickSignIn: function () {
-        cc.log("LoginLayer _onClickSignIn");
+        cc.log("SignInLayer _onClickSignIn");
 
         this.signInButton.setEnabled(false);
 
@@ -107,7 +107,7 @@ var SignInLayer = cc.Layer.extend({
     },
 
     _onClickSignUp: function () {
-        cc.log("LoginLayer _onClickSignUp");
+        cc.log("SignInLayer _onClickSignUp");
 
 //        this.menu.setEnabled(false);
 //        cc.Director.getInstance().replaceScene(SignUpScene.create());

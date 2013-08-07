@@ -21,7 +21,7 @@ var Progress = cc.Node.extend({
     _valueLabel: null,
     _maxValueLabel: null,
 
-    onEnter: function() {
+    onEnter: function () {
         cc.log("Progress onEnter");
 
         this._super();
@@ -100,7 +100,11 @@ var Progress = cc.Node.extend({
             this._maxValueLabel.setString(this._maxValue);
         }
 
-        var ratio = this._value / this._maxValue * 100;
+        var ratio = 0;
+
+        if (this._maxValue > 0) {
+            ratio = this._value / this._maxValue * 100;
+        }
 
         var pto = cc.ProgressTo.create(0, ratio);
         this._progress.runAction(pto);

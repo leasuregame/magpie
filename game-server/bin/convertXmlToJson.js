@@ -30,7 +30,8 @@ process.chdir(__dirname);
 var tabledata = require("../app/common/loadtable")(
   '../data/skills.xml',
   '../data/cards.xml',
-  '../data/tasks.xml'
+  '../data/tasks.xml',
+  '../data/rank.xml'
 );
 
 files.forEach(function(filepath){

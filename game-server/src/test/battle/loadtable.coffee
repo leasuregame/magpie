@@ -10,6 +10,6 @@ describe 'load data from xml file', ->
       TABLE_DIR + 'rank.xml'
     )
     
-    #res.should.equal(null)
+    res.exports.should.equal(null)
     (typeof res.monster_cards).should.equal('undefined')
     Object.keys(res.exports.cards).length.should.be.above(250)

@@ -17,6 +17,7 @@ var Entity = require('./entity');
 var table = require('../manager/table');
 var _ = require("underscore");
 
+var MAX_LEVEL = require('../../config/data/card').MAX_LEVEL
 var GROUP_EFFECT_ATK = 1
 var GROUP_EFFECT_HP = 2
 
@@ -39,7 +40,7 @@ var Card = (function(_super) {
                 init_atk: cardConfig.atk * factor,
                 atk: cardConfig.atk * factor
             });
-            
+
             // 同步配置表中卡牌的星级到数据库
             this.set('star', cardConfig.star);
             if (cardConfig.star >= 3) {
@@ -98,7 +99,7 @@ var Card = (function(_super) {
 
         // 技能增强效果 技能攻击个数 * 技能增强效果 * 触发概率
         if (this.skill) {
-            _abi += parseInt(this.skill.target_num) * 
+            _abi += parseInt(this.skill.target_num) *
                 utility.parseEffect(this.skill['star' + this.star])[0] *
                 utility.parseEffect(this.skill['rate' + this.star])[0];
         }
@@ -143,36 +144,52 @@ var Card = (function(_super) {
     Card.prototype.eatCards = function(cards) {
         var totalExp = 0;
         cards.forEach(function(card) {
-            totalExp += cardExp(card.lv, card.exp_need);
-        });
-        var upgraded_lv = this.upgrade(totalExp);
-        return [totalExp, upgraded_lv];
+            var row = table.getTable('card_grow').findOne(function(id) {
+                return parseInt(id) == card.lv;
+            });
+            if (row !== null) {
+                totalExp += parseInt(row.cur_exp);
+            }
+        });        
+        return totalExp;
     };
 
-    Card.prototype.upgrade = function(exp) {
+    Card.prototype.vitual_upgrade = function(exp) {
         var _this = this;
-        var rows = table.getTable('card_grow').filter(function(row) {
-            return row.lv >= _this.lv;
+        var rows = table.getTable('card_grow').filter(function(id) {
+            return parseInt(id) >= _this.lv;
         });
 
         var upgraded_lv = 0;
         for (var i = 0; i < rows.length; i++) {
             var row = rows[i];
             if (exp >= row.exp_need) {
-                exp -= row.exp_need;
-                this.increase('lv');
+                exp -= parseInt(row.exp_need);
                 upgraded_lv++;
-            } else {
-                this.set('exp', exp);
             }
         }
-        return upgraded_lv;
+
+        if ((this.lv + upgraded_lv) > MAX_LEVEL[this.star]) {
+            upgraded_lv = MAX_LEVEL[this.star] - this.lv;
+            exp = 0;
+        }
+
+        return [upgraded_lv, exp];
+    };
+
+    Card.prototype.upgrade = function(lv, exp) {
+        if (this.lv == MAX_LEVEL[this.star]) {
+            return;
+        }
+        this.increase('lv', lv);
+        return this.set('exp', exp);
     };
 
 
     Card.prototype.toJson = function() {
         return {
             id: this.id,
+            createTime: this.createTime,
             playerId: this.playerId,
             tableId: this.tableId,
             star: this.star,
@@ -189,19 +206,6 @@ var Card = (function(_super) {
 
     return Card;
 })(Entity);
-
-var cardExp = function(lv, exp) {
-    var rows = table.getTable('card_grow').filter(function(row) {
-        return row.lv < lv;
-    });
-
-    var totalExp = exp;
-    for (var i = 0; i < rows.length; i++) {
-        var row = rows[i];
-        totalExp += parseInt(row.exp);
-    }
-    return totalExp;
-};
 
 var passiveSkillEffect = function(card) {
     var _pro = {

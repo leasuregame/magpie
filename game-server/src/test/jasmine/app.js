@@ -11,67 +11,92 @@ app.use('/spec', express.static(__dirname + '/spec'));
 app.set('views', __dirname + '/views')
 app.engine('html', require('ejs').renderFile);
 
-app.get('/test', function(req, res){
+app.get('/test', function(req, res) {
   var files = fs.readdirSync(__dirname + '/spec');
-  files = files.filter(function(f) { return /Spec.js$/.test(f); });
+  files = files.filter(function(f) {
+    return /Spec.js$/.test(f);
+  });
   //files = ['fightSpec.js', 'playerSpec.js', 'userSpec.js'];
-  res.render('SpecRunner.html', {files: files});
+  res.render('SpecRunner.html', {
+    files: files
+  });
 });
 
-app.get('/adduser', function(req, res){
+app.get('/adduser', function(req, res) {
   var account = req.query.account;
   var pwd = req.query.password;
-  mysql.query("insert into user (account, password, createTime) values (?, ?, ?)", [account, pwd, Date.now()], function(err, result){
-    if(err){
-      res.send({code: 500});
+  mysql.query("insert into user (account, password, createTime) values (?, ?, ?)", [account, pwd, Date.now()], function(err, result) {
+    if (err) {
+      res.send({
+        code: 500
+      });
     }
-    
-    res.send({code: 200, uid: result.insertId});
+
+    res.send({
+      code: 200,
+      uid: result.insertId
+    });
 
   });
 });
 
-app.get('/removeuser', function(req, res){
+app.get('/removeuser', function(req, res) {
   var uid = req.query.uid;
-  if (!uid){
-    res.send({code: 200, msg: 'parameter uid is null'})
+  if (!uid) {
+    res.send({
+      code: 200,
+      msg: 'parameter uid is null'
+    })
   }
 
-  mysql.query('delete from user where id = ?', [uid], function(err, results){
-    if (!err){
-      res.send({code: 200});
-    }
-    else{
-      res.send({code: 500, msg: 'faild to delete user by id: ' + uid});
+  mysql.query('delete from user where id = ?', [uid], function(err, results) {
+    if (!err) {
+      res.send({
+        code: 200
+      });
+    } else {
+      res.send({
+        code: 500,
+        msg: 'faild to delete user by id: ' + uid
+      });
     }
   });
 });
 
-app.get('/addPlayer', function(req, res){
+app.get('/addPlayer', function(req, res) {
   var userId = req.query.userId;
   var areaId = req.query.areaId;
   var name = req.query.name;
   var ct = Date.now();
 
-  mysql.query('insert into player (userId, areaId, name, createTime) values (?,?,?,?)', 
-    [userId, areaId, name, Date.now()], function(err, result) {
-    if (err){
-      res.send({code: 500, msg: 'faild to add player with parameters: ' + JSON.stringify(req.query)});
-    }
-    else{
-      res.send({code: 200, playerId: result.insertId, ct: ct});
+  mysql.query('insert into player (userId, areaId, name, createTime) values (?,?,?,?)', [userId, areaId, name, Date.now()], function(err, result) {
+    if (err) {
+      res.send({
+        code: 500,
+        msg: 'faild to add player with parameters: ' + JSON.stringify(req.query)
+      });
+    } else {
+      res.send({
+        code: 200,
+        playerId: result.insertId,
+        ct: ct
+      });
     }
   });
 });
 
-app.get('/removePlayer', function(req, res){
+app.get('/removePlayer', function(req, res) {
   var playerId = req.query.playerId;
-  mysql.query('delete from player where id = ?', [playerId], function(err, results){
-    if (!err){
-      res.send({code: 200})
-    }
-    else{      
-      res.send({code: 500, msg: 'faild to delete player by id: ' + playerId});
+  mysql.query('delete from player where id = ?', [playerId], function(err, results) {
+    if (!err) {
+      res.send({
+        code: 200
+      })
+    } else {
+      res.send({
+        code: 500,
+        msg: 'faild to delete player by id: ' + playerId
+      });
     }
   });
 });
@@ -95,17 +120,26 @@ app.get('/createDb', function(req, res) {
 app.get('/:table/:id', function(req, res) {
   mysql.query('select * from ' + req.params.table + ' where id = ?', [req.params.id], function(err, result) {
     if (err) {
-      res.send({code: 500, msg: err})
+      res.send({
+        code: 500,
+        msg: err
+      })
     } else {
-      if (!!result && result.length == 1)
-      res.send({code: 200, data: result[0]});
+      if ( !! result && result.length == 1) {
+        res.send({
+          code: 200,
+          data: result[0]
+        });
+      } else {
+        res.send({code: 404, data: req.params.table + ' not exists'});
+      }
     }
   });
 });
 
 var command = function(req, res, cmd, args) {
   var ps = spawn(cmd, args);
-  ps.stdout.on('data', function(data){
+  ps.stdout.on('data', function(data) {
     console.log(data.toString());
   });
   ps.stderr.on('data', function(data) {
@@ -113,7 +147,7 @@ var command = function(req, res, cmd, args) {
   });
   ps.on('close', function(code) {
     res.send('done');
-  }); 
+  });
 };
 
 app.listen(3000);

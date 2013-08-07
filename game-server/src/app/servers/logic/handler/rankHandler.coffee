@@ -130,14 +130,13 @@ genRankings = (ranking) ->
 
 filterPlayersInfo = (players, rankings) ->
   players.map (p) -> 
-    p = p.toJson()
     {
       playerId: p.id
       name: p.name
       ability: p.ability
       lv: p.lv
       ranking: p.rank.ranking
-      cards: p.cards
+      cards: p.activeCards().map (c) -> c.toJson()
       type: rankings[p.rank.ranking]
     }
     

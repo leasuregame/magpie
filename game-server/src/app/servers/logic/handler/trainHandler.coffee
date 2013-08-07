@@ -8,6 +8,7 @@ passSkillConfig = require '../../../../config/data/passSkill'
 elixirConfig = require '../../../../config/data/elixir'
 starUpgradeConfig = require '../../../../config/data/starUpgrade'
 utility = require '../../../common/utility'
+job = require '../../../dao/job'
 _ = require 'underscore'
 
 LOTTERY_BY_GOLD = 1
@@ -27,31 +28,58 @@ Handler::strengthen = (msg, session, next) ->
   target = msg.target
   player = null;
 
+  if sources is null or sources.length == 0
+    return next(null, {code: 501, msg: '素材卡牌不能为空'})
+
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
 
-    (_player, cb) ->
-      player = _player
-      cardManager.deleteCards sources, cb  
+    (res, cb) ->
+      player = res
+      player.strengthen target, sources, cb
 
-    (cardsDeleted, cb) ->
-      if cardsDeleted
-        player.strengthen(target, sources, cb)
-      else
-        cb(null, {exp_obtain: 0, upgraded_level: 0, money_consume: 0})
+    (results, targetCard, cb) ->
+      _jobs = [
+        {
+          type: 'update'
+          options: 
+            table: 'card'
+            where: id: targetCard.id
+            data: targetCard.getSaveData()
+        }
+        {
+          type: 'update'
+          options: 
+            table: 'player'
+            where: id: playerId
+            data: player.getSaveData()
+        }
+      ]
 
+      if sources.length > 0 
+        _jobs.push {
+          type: 'delete'
+          options: 
+            table: 'card'
+            where: " id in (#{sources.toString()}) "
+        }
+
+      job.multJobs _jobs, (err, ok) ->
+        if err and not ok
+          return cb(err)
+
+        cb(null, results)
   ], (err, result) ->
     if err
-      return next(null, {code: 500, msg: err.msg})
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
 
-    player?.save()
     next(null, {code: 200, msg: result})
 
 Handler::luckyCard = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   level = msg.level or 1
-  type = msg.type or 1
+  type = if msg.type? then msg.type else LOTTERY_BY_GOLD
 
   typeMapping = {}
   typeMapping[LOTTERY_BY_GOLD] = 'gold'
@@ -60,20 +88,38 @@ Handler::luckyCard = (msg, session, next) ->
   player = null
   consumeVal = 0
   fragment = false
+  passiveSkills = []
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
 
     (res, cb) ->
       player = res
-      [card, consumeVal, fragment] = lottery(level, type);
+      [card, consumeVal, fragment, passiveSkills] = lottery(level, type);
 
+      console.log msg, type, player.gold, player.energy, consumeVal
       if player[typeMapping[type]] < consumeVal
         return cb({code: 501, msg: '没有足够的资源来完成本次抽卡'}, null)
 
       card.playerId = player.id
       dao.card.create data:card, cb
 
+    (card, cb) ->
+      if passiveSkills.length is 0
+        return cb(null, card)
+
+      async.each passiveSkills,
+        (ps, callback) ->
+          ps.cardId = card.id
+          dao.passiveSkill.create data: ps, (err, res) ->
+            return callback(err) if err
+            card.addPassiveSkill(res)
+            callback()
+        (err) ->
+          return cb(err) if err
+
+          cb(null, card)
+        
     (cardEnt, cb) ->
       player.addCard(cardEnt);
       if type is LOTTERY_BY_GOLD

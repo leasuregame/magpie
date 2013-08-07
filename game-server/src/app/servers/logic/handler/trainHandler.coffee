@@ -28,6 +28,9 @@ Handler::strengthen = (msg, session, next) ->
   target = msg.target
   player = null;
 
+  if sources is null or sources.length == 0
+    return next(null, {code: 501, msg: '素材卡牌不能为空'})
+
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -37,13 +40,7 @@ Handler::strengthen = (msg, session, next) ->
       player.strengthen target, sources, cb
 
     (results, targetCard, cb) ->
-      job.multJobs [
-        {
-          type: 'delete'
-          options: 
-            table: 'card'
-            where: " id in #{sources.toString()} "
-        }
+      _jobs = [
         {
           type: 'update'
           options: 
@@ -58,37 +55,26 @@ Handler::strengthen = (msg, session, next) ->
             where: id: playerId
             data: player.getSaveData()
         }
-      ], (err, ok) ->
+      ]
+
+      if sources.length > 0 
+        _jobs.push {
+          type: 'delete'
+          options: 
+            table: 'card'
+            where: " id in (#{sources.toString()}) "
+        }
+
+      job.multJobs _jobs, (err, ok) ->
         if err and not ok
           return cb(err)
 
         cb(null, results)
   ], (err, result) ->
     if err
-      return next(null, {code: 500, msg: err.msg})
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
 
     next(null, {code: 200, msg: result})
-
-  # async.waterfall [
-  #   (cb) ->
-  #     playerManager.getPlayerInfo {pid: playerId}, cb
-
-  #   (_player, cb) ->
-  #     player = _player
-  #     cardManager.deleteCards sources, cb  
-
-  #   (cardsDeleted, cb) ->
-  #     if cardsDeleted
-  #       player.strengthen(target, sources, cb)
-  #     else
-  #       cb(null, {exp_obtain: 0, upgraded_level: 0, money_consume: 0})
-
-  # ], (err, result) ->
-  #   if err
-  #     return next(null, {code: 500, msg: err.msg})
-
-  #   player?.save()
-  #   next(null, {code: 200, msg: result})
 
 Handler::luckyCard = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId

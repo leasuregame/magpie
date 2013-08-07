@@ -65,16 +65,16 @@ module.exports = {
       },
       filter: function(filter) {
         var items = [];
-        for (var item in this._data) {
-          if (filter(item, this._data[item])) items.push(item);
+        for (var id in this._data) {
+          if (filter(id, this._data[id])) items.push(this._data[id]);
         };
         return items;
       },
       findOne: function(filter) {
         var find = null;
-        for (var item in this._data) {
-          if (filter(item, this._data[item])) {
-            find = item;
+        for (var id in this._data) {
+          if (filter(id, this._data[id])) {
+            find = id;
             break;
           }
         };

@@ -46,7 +46,7 @@ var startPowerGiveTimer = function(player) {
 
 var groupCardsEffect = function(player) {
     var cardIds = _.values(player.lineUpObj());
-    var cards = _.values(player.cards).filter(function(c) {
+    var cards = _.values(player.cards).filter(function(id, c) {
         return c.star >= 3 && cardIds.indexOf(c.id) > -1;
     });
     var cardTable = table.getTable('cards');
@@ -74,7 +74,7 @@ var defaultMark = function() {
 };
 
 var addListeners = function(player) {
-    player.on('lineUp.change', function(){
+    player.on('lineUp.change', function() {
         player.getAbility();
     });
 };
@@ -152,7 +152,7 @@ var Player = (function(_super) {
         });
     };
 
-    Player.prototype.getAbility = function(){
+    Player.prototype.getAbility = function() {
         var ability = 0;
         this.activeCards().forEach(function(card) {
             var _a = card.ability();
@@ -162,7 +162,7 @@ var Player = (function(_super) {
         });
         this.set('ability', ability);
         return ability;
-    };  
+    };
 
     Player.prototype.addCard = function(card) {
         if (card instanceof Card && card.id !== null) {
@@ -192,7 +192,7 @@ var Player = (function(_super) {
             ids = [ids];
         }
 
-        return _.values(this.cards).filter(function(c){
+        return _.values(this.cards).filter(function(c) {
             return ids.indexOf(parseInt(c.id)) > -1;
         });
     };
@@ -254,29 +254,61 @@ var Player = (function(_super) {
     Player.prototype.strengthen = function(target, sources, cb) {
         var _this = this;
 
-        if (!this.hasCard(target)) {
+        var targetCard = this.getCard(target);
+        if (typeof targetCard == 'undefined' || targetCard == null) {
             return cb({
+                code: 501,
                 msg: '找不到目标卡牌'
             }, null);
         }
-        var targetCard = this.cards[target];
-        var _res = targetCard.eatCards(this.popCards(sources));
-        var expObtain = _res[0],
-            upgradedLevel = _res[1];
-        var items = table.getTable('card_grow').filter(function(item){
-            return item.id >= targetCard.lv && item.id < (targetCard.lv + upgradedLevel);
+        var source_cards = this.getCards(sources);
+        if (source_cards.length == 0) {
+            return cb({
+                code: 501,
+                msg: '找不到素材卡牌'
+            });
+        }
+
+        var before_lv = targetCard.lv;
+        var expObtain = 0;
+        source_cards.forEach(function(card) {
+            var row = table.getTable('card_grow').findOne(function(id) {
+                return parseInt(id) == card.lv;
+            });
+            if (row !== null) {
+                expObtain += parseInt(row.cur_exp);
+            }
         });
-        console.log(items, upgradedLevel, expObtain);
-        var moneyConsume = items.reduce(function(x, y) {return x + y;});
+
+        // 预升级，得到升级的级数和剩余的经验
+        // 不会实际卡牌的属性
+        var _ref = targetCard.vitual_upgrade(expObtain);
+        var upgraded_lv = _ref[0];
+        var exp_remain = _ref[1];
+
+        var items = table.getTable('card_grow').filter(function(id, item) {
+            return item.lv >= before_lv && item.lv < (targetCard.lv + upgraded_lv);
+        });
+        var moneyConsume = 0;
+        items.forEach(function(item) {
+            moneyConsume += item.money_need;
+        });
+        
+        moneyConsume = parseInt(moneyConsume);
         if (this.money < moneyConsume) {
-            return cb({code: 501, msg: '铜板不足'});
+            return cb({
+                code: 501,
+                msg: '铜板不足'
+            });
         }
 
         this.decrease('money', moneyConsume);
+        targetCard.upgrade(upgraded_lv, exp_remain);
 
         return cb(null, {
             exp_obtain: expObtain,
-            upgraded_level: upgradedLevel,
+            cur_lv: targetCard.lv,
+            cur_exp: targetCard.exp,
             money_consume: parseInt(moneyConsume)
         }, targetCard);
     };

@@ -1,7 +1,7 @@
+module.exports = {
 /*
  * 抽卡参数配置
  */
-module.exports = {
   "STAR": {       // 抽卡时得到卡牌的星级的概率
     "LOWER": {    // 低级抽卡
       "1": 50,
@@ -47,6 +47,10 @@ module.exports = {
       "3": 500
     }
   },
+
+/*
+ * 被动技能的类型，和卡牌出生时获得的值的范围
+ */
   "PASSIVESKILL": {
     TYPE: [
       'crit',
@@ -56,5 +60,16 @@ module.exports = {
       'hp_improve'
      ],
     VALUE_SCOPE: '1-4'
+  },
+/*
+ * 卡牌级别范围
+ * key 代表卡牌星级，value 代表对应星级所能达到的最高级 
+ */
+  MAX_LEVEL: {
+    1: 30,
+    2: 40,
+    3: 50,
+    4: 55,
+    5: 60
   }
 }

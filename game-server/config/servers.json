@@ -17,7 +17,8 @@
     "logic": [{
         "id": "logic-server-1",
         "host": "127.0.0.1",
-        "port": 4020
+        "port": 4020,
+        "args": " --debug=7878 "
       }
     ],
     "message": [{

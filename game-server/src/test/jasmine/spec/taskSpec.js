@@ -336,7 +336,7 @@ describe("Logic Server # ", function() {
                     });
                   });
                 });
-                
+
                 doAjax('/player/' + pid, {}, function(res) {
                   if (type == LOTTERY_TYPE.GOLD) {
                     expect(res.data.gold).toEqual(before_gold - data.msg.consume);
@@ -396,23 +396,116 @@ describe("Logic Server # ", function() {
 
 
     describe("logic.trainHandler.strengthen", function() {
+      var before_player, before_card;
+
+      beforeEach(function() {
+        doAjax('/player/' + pid, {}, function(res) {
+          before_player = res.data;
+        });
+
+        doAjax('/card/' + 100, {}, function(res) {
+          before_card = res.data;
+        });
+      });
+
       it("should can be strenthen, and return properties", function() {
         request('logic.trainHandler.strengthen', {
           playerId: pid,
           target: 100,
           sources: [150, 151]
         }, function(data) {
+          console.log(data);
           expect(data.code).toEqual(200);
-          expect(_.keys(data.msg).sort()).toEqual([
+          expect(data.msg).hasProperties([
             'exp_obtain',
             'money_consume',
-            'upgraded_level'
-          ].sort());
-          console.log(data);
+            'cur_lv',
+            'cur_exp'
+          ]);
+
+          doAjax('/player/' + pid, {}, function(res) {
+            var _player = res.data;
+            expect(_player.money).toEqual(before_player.money - data.msg.money_consume);
+          });
+
+          doAjax('/card/' + 100, {}, function(res) {
+            var _card = res.data;
+            expect(_card.lv).toEqual(data.msg.cur_lv);
+            expect(_card.exp).toEqual(data.msg.cur_exp);
+          });
+
+          doAjax('/card/' + 150, {}, function(res) {
+            expect(res).toEqual({
+              code: 404,
+              data: 'card not exists'
+            });
+          });
+
+          doAjax('/card/' + 151, {}, function(res) {
+            expect(res).toEqual({
+              code: 404,
+              data: 'card not exists'
+            });
+          });
+
         });
       });
+
+      describe("when money is not enought", function() {
+        it("should warnning a message that can not strengthen", function() {
+          request('logic.trainHandler.strengthen', {
+            playerId: 106,
+            target: 160,
+            sources: [150, 151]
+          }, function(data) {
+            console.log(data);
+            expect(data.code).toEqual(501);
+            expect(data.msg).toEqual('找不到素材卡牌');
+          });
+        });
+
+        it("should warnning a message that can not strengthen", function() {
+          request('logic.trainHandler.strengthen', {
+            playerId: 106,
+            target: 100,
+            sources: [161, 162]
+          }, function(data) {
+            console.log(data);
+            expect(data.code).toEqual(501);
+            expect(data.msg).toEqual('找不到目标卡牌');
+          });
+        });
+
+        it("should warnning a message that can not strengthen", function() {
+          request('logic.trainHandler.strengthen', {
+            playerId: 106,
+            target: 160,
+            sources: [161, 162]
+          }, function(data) {
+            console.log(data);
+            expect(data.code).toEqual(501);
+            expect(data.msg).toEqual('铜板不足');
+          });
+        });
+      });
+
+      describe("when parameter sources is empty", function(){
+        it("should warning a message", function(){
+          request('logic.trainHandler.strengthen', {
+            playerId: pid,
+            target: 100,
+            sources: []
+          }, function(data) {
+            console.log(data);
+            expect(data.code).toEqual(501);
+            expect(data.msg).toEqual('素材卡牌不能为空');
+          });
+        });
+      });
+
     });
 
+    // 技能升级
     describe("logic.trainHandler.skillUpgrade", function() {
       it("card's skill should can be upgrade", function() {
         request('logic.trainHandler.skillUpgrade', {

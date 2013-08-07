@@ -168,30 +168,68 @@ var CardUpgradeLabel = cc.Layer.extend({
         }
 
         if (this._leadCard == null) {
+            this._retinueCard = [];
+
             this._hpLabel.setString("0");
             this._hpAdditionLabel.setString("+0");
             this._atkLabel.setString("0");
             this._atkAdditionLabel.setString("+0");
-
-            this._lvLabel.setString("0");
-            this._yellowProgress.setAllValue(0, 0);
 
             this._expLabel.setString("0");
             this._maxExpLabel.setString("0");
             this._moneyLabel.setString("0");
             this._cardCountLabel.setString("0");
 
+            this._lvLabel.setString("0");
+            this._yellowProgress.setAllValue(0, 0);
+            this._greenProgress.setAllValue(0, 0);
+
         } else {
             this._leadCardHalfNode = CardHalfNode.create(this._leadCard);
             this._leadCardHalfNode.setPosition(cc.p(355, 685));
             this.addChild(this._leadCardHalfNode, 1);
+
+            this._hpLabel.setString(this._leadCard.get("hp"));
+            this._hpAdditionLabel.setString("+0");
+            this._atkLabel.setString(this._leadCard.get("atk"));
+            this._atkAdditionLabel.setString("+0");
+
+            this._expLabel.setString("0");
+            this._maxExpLabel.setString(this._leadCard.getCardFullLvExp());
+            this._moneyLabel.setString("0");
+            this._cardCountLabel.setString("0");
+
+            this._lvLabel.setString(this._leadCard.get("lv"));
+            this._yellowProgress.setAllValue(this._leadCard.get("exp"), this._leadCard.get("maxExp"));
+            this._greenProgress.setAllValue(0, 0);
         }
     },
 
     _addRetinueCard: function() {
         cc.log("CardUpgradeLabel _addRetinueCard");
 
+        var cardCount = this._retinueCard.length;
 
+        if(len > 0) {
+            var exp = 0;
+
+            for(var i = 0; i < cardCount; ++i) {
+                exp += this._retinueCard[i].getCardExp();
+            }
+
+            var dummyCard = this._leadCard.clone();
+
+            this._hpAdditionLabel.setString("+0");
+            this._atkAdditionLabel.setString("+0");
+
+            this._expLabel.setString(exp);
+            this._moneyLabel.setString("0");
+            this._cardCountLabel.setString(cardCount);
+
+            this._lvLabel.setString(this._leadCard.get("lv"));
+            this._yellowProgress.setAllValue(this._leadCard.get("exp"), this._leadCard.get("maxExp"));
+            this._greenProgress.setAllValue(0, 0);
+        }
     },
 
     _canSelectLeadCard: function () {

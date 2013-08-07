@@ -135,12 +135,26 @@ var Card = Entity.extend({
         return 0;
     },
 
+    addExp: function (exp) {
+        cc.log("Card addExp");
+
+
+    },
+
     // 计算总经验
     getCardExp: function () {
         cc.log("Card getCardExp");
 
         var hasExp = exp;
 
+    },
+
+    getCardFullLvExp: function () {
+        cc.log("Card getCardFullLvExp");
+
+        var needExp = 0;
+
+        return needExp;
     },
 
     clone: function () {
@@ -155,7 +169,8 @@ var Card = Entity.extend({
             skillLv: this._skillLv,
             hpAddition: this._hpAddition,
             atkAddition: this._atkAddition,
-            elixir: this._elixir
+            elixir: this._elixir,
+            passiveSkills: this._passiveSkillList
         });
     }
 })

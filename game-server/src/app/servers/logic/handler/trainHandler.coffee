@@ -45,21 +45,23 @@ Handler::strengthen = (msg, session, next) ->
       console.log targetCard
       _jobs = []
 
+      cardData = targetCard.getSaveData()
       _jobs.push {
         type: 'update'
         options: 
           table: 'card'
           where: id: targetCard.id
-          data: targetCard.getSaveData()
-      } if not _.isEmpty(targetCard.getSaveData())
+          data: cardData
+      } if not _.isEmpty(cardData)
 
+      playerData = player.getSaveData()
       _jobs.push {
         type: 'update'
         options: 
           table: 'player'
           where: id: playerId
-          data: player.getSaveData()
-      } if not _.isEmpty(player.getSaveData())
+          data: playerData
+      } if not _.isEmpty(playerData)
 
       _jobs.push {
         type: 'delete'

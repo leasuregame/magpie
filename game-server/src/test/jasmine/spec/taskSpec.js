@@ -320,8 +320,8 @@ describe("Logic Server # ", function() {
                     lv: card.lv,
                     exp: card.exp,
                     skillLv: card.skillLv,
-                    skillPoint : card.skillPoint, 
-                    elixir : card.elixir,
+                    skillPoint: card.skillPoint,
+                    elixir: card.elixir,
                     hpAddition: card.hpAddition,
                     atkAddition: card.atkAddition
                   });
@@ -716,13 +716,13 @@ describe("Logic Server # ", function() {
             console.log(data);
 
             doAjax('/player/' + 1, {}, function(res) {
-              expect(res.data.gold).toEqual(before_player.gold - 1000);
+              expect(res.data.gold).toEqual(before_player.gold);
             });
 
             doAjax('/card/' + 1, {}, function(res) {
               if (data.msg.upgrade) {
                 expect(res.data.star).toEqual(before_card.star + 1);
-                
+
               } else {
                 expect(res.data.star).toEqual(before_card.star);
               }
@@ -747,19 +747,26 @@ describe("Logic Server # ", function() {
         );
       });
 
-      describe("when card's star is less then 3", function() {
+      describe("when card's star is 1", function() {
         it('should can not upgrade star of card', function() {
           request(
             'logic.trainHandler.starUpgrade', {
               playerId: 1,
               target: 11,
-              sources: [3, 4],
+              sources: [4],
               allInherit: true
             },
             function(data) {
-              expect(data.code).toEqual(501);
+              expect(data.code).toEqual(200);
               expect(data.msg).toEqual('卡牌星级必须到达3级才能进阶');
               console.log(data);
+
+              doAjax('/card/' + 4, {}, function(res) {
+                expect(res).toEqual({
+                  code: 404,
+                  data: 'card not exists'
+                });
+              });
             }
           );
         });
@@ -787,8 +794,8 @@ describe("Logic Server # ", function() {
         it('should can not upgrade star of card', function() {
           request(
             'logic.trainHandler.starUpgrade', {
-              playerId: 1,
-              target: 1,
+              playerId: 104,
+              target: 156,
               sources: [3, 4],
               allInherit: true
             },

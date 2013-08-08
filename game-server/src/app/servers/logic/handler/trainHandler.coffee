@@ -211,6 +211,8 @@ Handler::starUpgrade = (msg, session, next) ->
         return cb({code: 501, msg: "卡牌星级必须到达#{starUpgradeConfig.STAR_MIN}级才能进阶"})
       if card.star is 5
         return cb({code: 501, msg: "卡牌星级已经是最高级了"})
+      if _.isEmpty(player.getCards(sources))
+        return cb({code: 501, msg: "can not find sources cards"})
 
       cb(null)
 
@@ -228,14 +230,9 @@ Handler::starUpgrade = (msg, session, next) ->
       if utility.hitRate(totalRate)
         is_upgrade = true
       
-      cardManager.deleteCards sources, cb
-  ], (err, result) ->
-    if err
-      return next(null, {code: err.code, msg: err.msg})
-
-    if is_upgrade and result
-      player.decrease('money', money_consume)
-      card.increase('star')
+      if is_upgrade
+        player.decrease('money', money_consume)
+        card.increase('star')
 
       # 若金币不足，则不能使用金币来继承全部属性
       if allInherit and player.gold >= starUpgradeConfig.ALL_INHERIT_GOLD
@@ -252,8 +249,40 @@ Handler::starUpgrade = (msg, session, next) ->
       [_lv, _exp_remain] = card.vitual_upgrade(_exp)
       card.upgrade(_lv, _exp_remain)
 
-    player.save()
-    card.save()
+      cb()
+    (cb) ->
+      _jobs = []
+
+      playerData = player.getSaveData()
+      _jobs.push {
+        type: 'update'
+        options: 
+          table: 'player'
+          where: id: player.id
+          data: playerData
+      } if not _.isEmpty(playerData)
+
+      cardData = card.getSaveData()
+      _jobs.push {
+        type: 'update'
+        options:
+          table: 'card'
+          where: id: card.id
+          data: cardData
+      } if not _.isEmpty(cardData)
+
+      _jobs.push {
+        type: 'delete'
+        options: 
+          table: 'card'
+          where: " id in (#{sources.toString()}) "
+      }
+
+      job.multJobs _jobs, cb
+  ], (err, result) ->
+    if err and not result
+      return next(null, {code: err.code, msg: err.msg})
+
     next(null, {code: 200, msg: {upgrade: is_upgrade, card: card.toJson()}})
 
 Handler::passSkillAfresh  = (msg, session, next) ->
@@ -330,14 +359,15 @@ Handler::smeltElixir = (msg, session, next) ->
             where: " id in (#{cardIds.toString()})"
         }
       ]
-      console.log 'data: ', player.getSaveData()
+      
+      pData = player.getSaveData()
       _jobs.push {
         type: 'update'
         options:
           table: 'player'
           where: id: player.id
-          data: player.getSaveData()
-      } if not _.isEmpty(player.getSaveData())
+          data: pData
+      } if not _.isEmpty(pData)
       
       job.multJobs _jobs, cb
   ], (err, res) ->
@@ -369,9 +399,31 @@ Handler::useElixir = (msg, session, next) ->
 
     card.increase('elixir', elixir)
     player.decrease('elixir', elixir)
-    card.save()
-    player.save()
-    next(null, {code: 200})
+    
+    _jobs = []
+    playerData = player.getSaveData()
+    _jobs.push {
+      type: 'update'
+      options: 
+        table: 'player'
+        where: id: player.id
+        data: playerData
+    } if not _.isEmpty(playerData)
+
+    cardData = card.getSaveData()
+    _jobs.push {
+      type: 'update'
+      options:
+        table: 'card'
+        where: id: card.id
+        data: cardData
+    } if not _.isEmpty(cardData)
+
+    job.multJobs _jobs, (err, result) ->
+      if err
+        return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+      next(null, {code: 200})
 
 Handler::changeLineUp = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId

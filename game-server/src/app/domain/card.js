@@ -61,6 +61,8 @@ var Card = (function(_super) {
         'lv',
         'exp',
         'skillLv',
+        'skillPoint',
+        'elixir',
         'hpAddition',
         'atkAddition'
     ];
@@ -70,6 +72,8 @@ var Card = (function(_super) {
         lv: 1,
         exp: 0,
         skillLv: 1,
+        skillPoint: 0,
+        elixir: 0,
         hpAddition: 0,
         atkAddition: 0
     };

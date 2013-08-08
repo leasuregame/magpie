@@ -49,26 +49,45 @@ var CardList = Entity.extend({
     push: function (card) {
         cc.log("CardList push");
 
-        if(card instanceof Array) {
+        if (card instanceof Array) {
             var len = card.length;
-            for(var i = 0; i < len; ++i) {
+            for (var i = 0; i < len; ++i) {
                 this._cardList[card[i].get("id")] = card[i];
             }
+            this._length += len;
         } else {
             this._cardList[card.get("id")] = card;
+            this._length += 1;
         }
     },
 
     delete: function (card) {
         cc.log("CardList delete");
 
-        if(card instanceof Array) {
+        if (card instanceof Array) {
             var len = card.length;
-            for(var i = 0; i < len; ++i) {
+            for (var i = 0; i < len; ++i) {
                 delete this._cardList[card[i].get("id")];
             }
+            this._length -= len;
         } else {
             delete this._cardList[card.get("id")];
+            this._length -= 1;
+        }
+    },
+
+    deleteById: function (cardId) {
+        cc.log("CardList deleteById");
+
+        if (cardId instanceof Array) {
+            var len = cardId.length;
+            for (var i = 0; i < len; ++i) {
+                delete this._cardList[cardId[i]];
+            }
+            this._length -= len;
+        } else {
+            delete this._cardList[cardId];
+            this._length -= 1;
         }
     },
 

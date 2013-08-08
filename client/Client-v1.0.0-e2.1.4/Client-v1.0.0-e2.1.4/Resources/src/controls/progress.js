@@ -110,6 +110,15 @@ var Progress = cc.Node.extend({
         this._progress.runAction(pto);
     },
 
+    /**
+     * opacity setter
+     * @param {Number} opacity
+     */
+    setOpacity: function (opacity) {
+        if (this._bgSprite) this._bgSprite.setOpacity(opacity);
+        this._progress.setOpacity(opacity);
+    },
+
     getValue: function () {
         cc.log("Progress getValue");
 
@@ -119,8 +128,10 @@ var Progress = cc.Node.extend({
     setValue: function (value) {
         cc.log("Progress setValue");
 
-        this._value = value;
-        this.update();
+        if (this._value != value) {
+            this._value = value;
+            this.update();
+        }
     },
 
     getMaxValue: function () {
@@ -132,23 +143,29 @@ var Progress = cc.Node.extend({
     addValue: function (value) {
         cc.log("Progress addValue");
 
-        this._value += value;
-        this.update();
+        if (value != 0) {
+            this._value += value;
+            this.update();
+        }
     },
 
     setMaxValue: function (maxValue) {
         cc.log("Progress setMaxValue");
 
-        this._maxValue = maxValue;
-        this.update();
+        if (this._maxValue != maxValue) {
+            this._maxValue = maxValue;
+            this.update();
+        }
     },
 
     setAllValue: function (maxValue, value) {
         cc.log("Progress setAllValue");
 
-        this._maxValue = maxValue;
-        this._value = value;
-        this.update();
+        if (this._maxValue != maxValue || this._value != value) {
+            this._maxValue = maxValue;
+            this._value = value;
+            this.update();
+        }
     },
 
     setBgSprite: function (bgSprite) {

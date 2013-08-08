@@ -53,32 +53,32 @@ var Card = Entity.extend({
     // 更新卡牌数据
     update: function (data) {
         cc.log("Card update");
+        if (data) {
+            this._id = data.id || this._id;
+            this._createTime = data.createTime || this._createTime;
+            this._tableId = data.tableId || this._tableId;
+            this._lv = data.lv || this._lv;
+            this._exp = data.exp || this._exp;
+            this._skillLv = data.skillLv || this._skillLv;
+            this._hpAddition = data.hpAddition || this._hpAddition;
+            this._atkAddition = data.atkAddition || this._atkAddition;
+            this._elixir = data.elixir || this._elixir;
 
-        this._id = data.id || this._id;
-        this._createTime = data.createTime || this._createTime;
-        this._tableId = data.tableId || this._tableId;
-        this._lv = data.lv || this._lv;
-        this._exp = data.exp || this._exp;
-        this._skillLv = data.skillLv || this._skillLv;
-        this._hpAddition = data.hpAddition || this._hpAddition;
-        this._atkAddition = data.atkAddition || this._atkAddition;
-        this._elixir = data.elixir || this._elixir;
-
-        if (data.passiveSkills) {
-            var passiveSkillList = data.passiveSkills;
-            var len = passiveSkillList.length;
-            for (var i = 0; i < len; ++i) {
-                this._passiveSkillList[i] = {
-                    id: passiveSkillList.id,
-                    name: passiveSkillList.name,
-                    value: passiveSkillList.value
+            if (data.passiveSkills) {
+                var passiveSkillList = data.passiveSkills;
+                var len = passiveSkillList.length;
+                for (var i = 0; i < len; ++i) {
+                    this._passiveSkillList[i] = {
+                        id: passiveSkillList.id,
+                        name: passiveSkillList.name,
+                        value: passiveSkillList.value
+                    }
                 }
             }
         }
 
         this._loadCardTable();
         this._loadSkillTable();
-        this._loadCardGrow();
 
         this._ability = this._getCardAbility();
 
@@ -100,7 +100,6 @@ var Card = Entity.extend({
         this._skillId = cardTable.skill_id;
 
         // 读取等级加成表
-
         var factorsTable = outputTables.factors.rows[this._lv];
         var multiple = factorsTable.factor;
 
@@ -114,15 +113,16 @@ var Card = Entity.extend({
         this._atk = this._atkInit + this._atkAddition;
 
         this._url = "hero" + (this._id % 6 + 1);
-    },
-
-    _loadCardGrow: function () {
-        cc.log("Card _loadCardGrow");
 
         // 读取卡牌升级配置表
-        var cardGrow = outputTables.card_grow.rows[this._lv];
+        var cardGrowTable = outputTables.card_grow.rows[this._lv];
 
-        this._maxExp = cardGrow.exp_need;
+        this._maxExp = cardGrowTable.exp_need;
+
+        // 读取星级上限表
+        var cardLvLimitTable = outputTables.card_lv_limit.rows[this._star];
+
+        this._maxLv = cardLvLimitTable.max_lv;
     },
 
     _loadSkillTable: function () {
@@ -144,24 +144,23 @@ var Card = Entity.extend({
     },
 
     addExp: function (exp) {
-        cc.log("Card addExp");
+        cc.log("Card addExp " + exp);
 
         var needMoney = 0;
         var cardGrow = outputTables.card_grow.rows;
 
         this._exp += exp;
-        cc.log(this._exp);
 
         while (this._exp >= this._maxExp) {
+            cc.log(this._maxExp);
             needMoney += cardGrow[this._lv].money_need;
 
             this._exp -= this._maxExp;
             this._lv += 1;
             this._maxExp = cardGrow[this._lv].exp_need;
-
-            cc.log(this._exp);
-
         }
+
+        this.update();
 
         return needMoney;
     },
@@ -179,9 +178,43 @@ var Card = Entity.extend({
     getCardFullLvExp: function () {
         cc.log("Card getCardFullLvExp");
 
-        var needExp = 0;
+        // 读取卡牌升级配置表
+        var cardGrow = outputTables.card_grow.rows[this._maxLv];
 
-        return needExp;
+        return (cardGrow.cur_exp + this.getCardExp());
+    },
+
+    upgrade: function (cb, cardIdList) {
+        cc.log("Card upgrade " + this._id);
+        cc.log(cardIdList);
+
+        var that = this;
+        lzWindow.pomelo.request("logic.trainHandler.strengthen", {playerId: gameData.player.get("id"), target: this._id, sources: cardIdList}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("upgrade success");
+
+                var msg = data.msg;
+
+                that.update({
+                    lv: msg.cur_lv,
+                    exp: msg.cur_exp
+                });
+
+                gameData.player.add("money", -msg.money_consume);
+                gameData.cardList.deleteById(cardIdList);
+
+                cb({
+                    exp: msg.exp_obtain,
+                    money: msg.money_consume
+                });
+            } else {
+                cc.log("upgrade fail");
+
+                cb(null);
+            }
+        });
     }
 })
 

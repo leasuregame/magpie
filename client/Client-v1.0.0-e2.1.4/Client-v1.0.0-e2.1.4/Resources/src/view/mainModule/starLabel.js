@@ -22,7 +22,7 @@ var StarLabel = cc.Node.extend({
 
         this._count = count;
 
-        for(var i = 0; i < this._count; ++i) {
+        for (var i = 0; i < this._count; ++i) {
             var starSprite = cc.Sprite.create(main_scene_image.star1);
             starSprite.setAnchorPoint(cc.p(0, 0));
             starSprite.setPosition(cc.p(40 * i, 0));
@@ -30,6 +30,15 @@ var StarLabel = cc.Node.extend({
         }
 
         return true;
+    },
+
+    setOpacity: function (opacity) {
+        var children = this.getChildren();
+        var len = children.length;
+
+        for (var i = 0; i < len; ++i) {
+            children[i].setOpacity(opacity);
+        }
     }
 })
 

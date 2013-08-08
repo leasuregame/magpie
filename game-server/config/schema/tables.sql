@@ -61,9 +61,10 @@ CREATE TABLE IF NOT EXISTS `card` (
 	`lv` SMALLINT(5) UNSIGNED DEFAULT '1',
 	`exp` INT(10) UNSIGNED DEFAULT '0',
 	`skillLv` TINYINT(3) UNSIGNED DEFAULT '1',
+  `skillPoint` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的技能点
+  `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
 	`hpAddition` INT(10) UNSIGNED DEFAULT '0',
 	`atkAddition` INT(10) UNSIGNED DEFAULT '0',
-  `type` SMALLINT(2) UNSIGNED DEFAULT '0',
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

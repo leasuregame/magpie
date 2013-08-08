@@ -19,12 +19,12 @@ var _ = require("underscore");
 
 
 var lottery = function(level, type) {
-  var card_id = randomCardId(level);
-  var card = newCard(level, card_id);
+  var card = newCard(level);
   var fragment = gen_card_fragment(level);
   var consume_val = consume(level, type);
+  var pss = initPassiveSkill(card.star);
 
-  return [card, consume_val, fragment];
+  return [card, consume_val, fragment, pss];
 };
 
 /*
@@ -33,12 +33,8 @@ var lottery = function(level, type) {
  * 2：中级抽卡
  * 3：高级抽卡
  * */
-var randomCardId = function (level) {
-  if (level < 1 || level > 3) {
-      return 0;
-  }
-
-  return _.random(0, 49) * 5 + _.random(0, 2) + level;
+var randomCardId = function (star) {
+  return _.random(0, 49) * 5 + star;
 };
 
 var gen_card_star = function(level) {
@@ -64,14 +60,13 @@ var gen_card_fragment = function(level) {
   return utility.hitRate(cardConfig.FRAGMENT[level]);
 };
 
-var newCard = function(level, id) {
-  var cardData = table.getTableItem('card', id);
-
-  var card_star = gen_card_star(level);
-  var card_level = gen_card_level(card_star);
+var newCard = function(level) {
+  var card_star = parseInt(gen_card_star(level));
+  var card_id = randomCardId(card_star);
+  var card_level = parseInt(gen_card_level(card_star));
 
   return {
-      tableId: id,
+      tableId: card_id,
       star: card_star,
       lv: card_level
     };
@@ -80,6 +75,22 @@ var newCard = function(level, id) {
 var consume = function(level, type) {
   var mapping = cardConfig.LOTTERY_CONSUME;
   return mapping[type][level]
+};
+
+var initPassiveSkill = function(star) {
+  var count = star - 2;
+  
+  var results = [];
+  for (var i = 0; i < count; i++) {
+    var index = _.random(cardConfig.PASSIVESKILL.TYPE.length-1);
+    var _res = cardConfig.PASSIVESKILL.VALUE_SCOPE.split('-');
+    var start = parseInt(_res[0]), end = parseInt(_res[1]);
+    results.push({
+      name: cardConfig.PASSIVESKILL.TYPE[index],
+      value: _.random(start, end)
+    })
+  }
+  return results;
 };
 
 module.exports = lottery;

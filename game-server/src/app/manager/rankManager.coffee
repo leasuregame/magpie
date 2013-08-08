@@ -7,7 +7,7 @@ Manager = module.exports =
   getRank: (playerId, cb) ->
     dao.rank.fetchOne sync: true, where: {playerId: playerId}, cb
 
-  exchangeRankings: (player, targetId, rewards, isWin, cb) ->
+  exchangeRankings: (player, targetId, rankData, isWin, cb) ->
     dao.rank.fetchMany where: " playerId in (#{[player.id, targetId].toString()}) ", (err, ranks) ->
       if err
         return cb(err)
@@ -35,8 +35,8 @@ Manager = module.exports =
 
       challenger.incCount('challenge')
       defender.incCount('challenge')
-      challenger.increase('honorPoint', rewards.honorPoint)
-      defender.increase('honorPoint', parseInt(rewards.honorPoint/2))
+      challenger.increase('honorPoint', rankData.win_honor_point)
+      defender.increase('honorPoint', rankData.lose_honor_point)
       challenger.pushRecent(targetId)
       defender.pushRecent(player.id)
 

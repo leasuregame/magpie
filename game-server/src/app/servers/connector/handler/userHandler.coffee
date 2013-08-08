@@ -61,10 +61,10 @@ Handler::login = (msg, session, next) ->
 
   ], (err, _player) ->
     if err
-      return next(null, {code: 501, msg: err.msg})
+      return next(null, {code: err.code or 500, msg: err.msg or err})
 
     session.bind(uid)
-    if !!_player
+    if _player?
       session.set('playerId', _player.id)
       session.set('playerName', _player.name)
       session.set('areaId', _player.areaId)

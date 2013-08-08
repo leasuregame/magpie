@@ -1,10 +1,9 @@
-var checkChallengeResults = function(rankId, ranking, isWin, data) {
-  console.log(rankId, ranking, isWin);
+var checkChallengeResults = function(rankId, ranking, challenger, isWin, data) {
   var challenge = 1,
     win = 1,
     lose = 0,
     winningStreak = 1,
-    recentChallenger = [100];
+    recentChallenger = [challenger];
 
   if (!isWin) {
     win = 0;
@@ -45,14 +44,16 @@ describe("Ranking List", function() {
           expect(['own', 'enemy']).toContain(data.msg.battleLog.winner);
 
           var isWin = data.msg.battleLog.winner == 'own';
-          expect(data.msg.battleLog.rewards).toEqual({});
-
+          expect(data.msg.battleLog.rewards).hasProperties([
+            'exp', 'money', 'honorPoint'
+          ]);
+          
           if (isWin) {
-            checkChallengeResults(2, 20000, isWin, data);
-            checkChallengeResults(1, 20001, !isWin, data);
+            checkChallengeResults(2, 20000, 100, isWin, data);
+            checkChallengeResults(1, 20001, 101, !isWin, data);
           } else {
-            checkChallengeResults(2, 20001, isWin, data);
-            checkChallengeResults(1, 20000, !isWin, data);
+            checkChallengeResults(2, 20001, 100, isWin, data);
+            checkChallengeResults(1, 20000, 101, !isWin, data);
           }
         });
       });

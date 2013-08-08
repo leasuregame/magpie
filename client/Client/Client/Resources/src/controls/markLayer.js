@@ -12,7 +12,7 @@
 * */
 
 
-var MARK_LAYER_HANDLER_PRIORITY = -1;
+var MARK_LAYER_HANDLER_PRIORITY = 1;
 
 var MarkLayer = cc.Layer.extend({
     _rect: null,
@@ -39,10 +39,19 @@ var MarkLayer = cc.Layer.extend({
     onTouchBegan: function (touch, event) {
         cc.log("MarkLayer onTouchBegan");
 
+        cc.log(this.getPosition());
+        cc.log(this._rect);
         cc.log(touch.getLocation());
+        cc.log(this.convertToWorldSpace(cc.p(0, 0)));
+        var rect = cc.rect(this.getPosition().x, this.getPosition().y, this._rect.width, this._rect.height);
+        cc.log(rect);
+        var point = this.convertToNodeSpace(touch.getLocation());
         cc.log(this.convertToNodeSpace(touch.getLocation()));
-
-        if (cc.rectContainsPoint(this._rect, touch.getLocation())) {
+        cc.log(this.convertToWorldSpace(touch.getLocation()));
+        cc.log(this.convertToNodeSpaceAR(touch.getLocation()));
+        cc.log(this.convertToWorldSpaceAR(touch.getLocation()));
+        cc.log(cc.rectContainsPoint(this._rect, point));
+        if (cc.rectContainsPoint(rect, point)) {
             return false;
         }
 

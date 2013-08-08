@@ -82,7 +82,7 @@ Handler::wipeOut = (msg, session, next) ->
       taskManager.wipeOut player, type, cb
   ], (err, player, rewards) ->
     if err
-      return next(null, {code: 500, msg: err.msg})
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
 
     player.save()
     next(null, {code: 200, msg: {rewards: rewards, pass: player.pass}})

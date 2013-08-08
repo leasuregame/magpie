@@ -29,6 +29,7 @@ NND = {
     },
 
     queues: function (sqlList, cb) {
+        console.log(sqlList);
         return _pool.acquire(function (err, client) {
             if ( !! err) {
                 console.error('[sqlqueryErr] ' + err.stack);
@@ -43,14 +44,16 @@ NND = {
                         return cb(e, false);
                     });
                 }
-                if (info.affectedRows < 1 && trans.rollback) {
-                    trans.rollback(function(err, info){
-                        return cb({code: 501, msg: 'not all data is complete'}, false);
-                    });
-                }
+                // if (info.affectedRows < 1 && trans.rollback) {
+                //     trans.rollback(function(err, info){
+                //         return cb({code: 501, msg: 'not all data is complete'}, false);
+                //     });
+                // }
             }
             for (var i = 0; i < sqlList.length; i++) {
-                trans.query(sqlList[i].sql, sqlList[i].args, error);
+                var sql = sqlList[i].sql;
+                var args = sqlList[i].args;
+                trans.query(sql, args, error);              
             }
             trans.commit(function(err, info) {
                 return cb(err, true);

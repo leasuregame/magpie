@@ -160,9 +160,11 @@ var Card = (function(_super) {
 
     Card.prototype.vitual_upgrade = function(exp) {
         var _this = this;
-        var rows = table.getTable('card_grow').filter(function(id) {
-            return parseInt(id) >= _this.lv;
+        var rows = table.getTable('card_grow').filter(function(id, item) {
+            return parseInt(item.lv) >= _this.lv;
         });
+
+        rows.sort(function(x,y) {return x.lv - y.lv;});
 
         var upgraded_lv = 0;
         for (var i = 0; i < rows.length; i++) {
@@ -170,10 +172,12 @@ var Card = (function(_super) {
             if (exp >= row.exp_need) {
                 exp -= parseInt(row.exp_need);
                 upgraded_lv++;
+            } else {
+                break;
             }
         }
 
-        if ((this.lv + upgraded_lv) > MAX_LEVEL[this.star]) {
+        if ((this.lv + upgraded_lv) >= MAX_LEVEL[this.star]) {
             upgraded_lv = MAX_LEVEL[this.star] - this.lv;
             exp = 0;
         }

@@ -41,6 +41,8 @@ Handler::strengthen = (msg, session, next) ->
       player.strengthen target, sources, cb
 
     (results, targetCard, cb) ->
+      console.log player
+      console.log targetCard
       _jobs = []
 
       _jobs.push {

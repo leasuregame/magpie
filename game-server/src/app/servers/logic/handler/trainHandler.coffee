@@ -187,11 +187,11 @@ Handler::starUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   target = msg.target
   sources = msg.sources
-  gold = if msg.gold? then msg.gold else 0
   allInherit = msg.allInherit or false
 
   card_count = sources.length
   is_upgrade = false
+  money_consume = 0
   card = null
   player = null
   async.waterfall [
@@ -212,11 +212,11 @@ Handler::starUpgrade = (msg, session, next) ->
 
     (cb) ->
       _config = starUpgradeConfig['STAR_'+card.star]
-      if gold > 0 and gold <= player.gold
-        card_count += parseInt(gold/_config.gold_per_card)
-      else if gold > player.gold
-        return cb({code: 501, msg: '金币不足'})
-        
+      money_consume = _config.money
+      
+      if player.money < money_consume
+        return cb({code: 501, msg: '铜板不足'})
+
       if card_count > _config.max_num
         return cb({code: 501, msg: "最多只能消耗#{_config.max_num}张卡牌来进行升级"})
 
@@ -230,7 +230,7 @@ Handler::starUpgrade = (msg, session, next) ->
       return next(null, {code: err.code, msg: err.msg})
 
     if is_upgrade and result
-      player.decrease('gold', gold)
+      player.decrease('money', money_consume)
       card.increase('star')
 
       # 若金币不足，则不能使用金币来继承全部属性

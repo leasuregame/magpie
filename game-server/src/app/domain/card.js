@@ -200,6 +200,8 @@ var Card = (function(_super) {
             lv: this.lv,
             exp: this.exp,
             skillLv: this.skillLv,
+            skillPoint: this.skillPoint,
+            elixir: this.elixir,
             hpAddition: this.hpAddition,
             atkAddition: this.atkAddition,
             passiveSkills: _.values(this.passiveSkills).map(function(ps) {

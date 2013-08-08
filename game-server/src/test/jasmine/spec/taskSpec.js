@@ -320,6 +320,8 @@ describe("Logic Server # ", function() {
                     lv: card.lv,
                     exp: card.exp,
                     skillLv: card.skillLv,
+                    skillPoint : card.skillPoint, 
+                    elixir : card.elixir,
                     hpAddition: card.hpAddition,
                     atkAddition: card.atkAddition
                   });
@@ -553,7 +555,7 @@ describe("Logic Server # ", function() {
         it("can not upgrade card skill", function() {
           request('logic.trainHandler.skillUpgrade', {
             playerId: 1,
-            cardId: 2
+            cardId: 4
           }, function(data) {
             expect(data.code).toEqual(501);
             expect(data.msg).toEqual('三星级以下的卡牌没有技能，不能升级');
@@ -658,7 +660,7 @@ describe("Logic Server # ", function() {
       it("card should can be smelt to elixir", function() {
         request('logic.trainHandler.smeltElixir', {
           playerId: pid,
-          cardIds: [150, 151, 152]
+          cardIds: [170, 171, 172]
         }, function(data) {
           console.log(data);
           expect(data.code).toEqual(200);
@@ -706,7 +708,6 @@ describe("Logic Server # ", function() {
             playerId: 1,
             target: 1,
             sources: [2, 3],
-            gold: 1000,
             allInherit: false
           },
           function(data) {
@@ -753,7 +754,6 @@ describe("Logic Server # ", function() {
               playerId: 1,
               target: 11,
               sources: [3, 4],
-              gold: 0,
               allInherit: true
             },
             function(data) {
@@ -772,7 +772,6 @@ describe("Logic Server # ", function() {
               playerId: 1,
               target: 5,
               sources: [3, 4],
-              gold: 0,
               allInherit: true
             },
             function(data) {
@@ -791,7 +790,6 @@ describe("Logic Server # ", function() {
               playerId: 1,
               target: 1,
               sources: [3, 4],
-              gold: 2000,
               allInherit: true
             },
             function(data) {
@@ -810,7 +808,6 @@ describe("Logic Server # ", function() {
               playerId: 100,
               target: 100,
               sources: [101, 102],
-              gold: 40000,
               allInherit: true
             },
             function(data) {

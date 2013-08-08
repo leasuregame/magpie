@@ -37,33 +37,34 @@ Handler::strengthen = (msg, session, next) ->
 
     (res, cb) ->
       player = res
+
       player.strengthen target, sources, cb
 
     (results, targetCard, cb) ->
-      _jobs = [
-        {
-          type: 'update'
-          options: 
-            table: 'card'
-            where: id: targetCard.id
-            data: targetCard.getSaveData()
-        }
-        {
-          type: 'update'
-          options: 
-            table: 'player'
-            where: id: playerId
-            data: player.getSaveData()
-        }
-      ]
+      _jobs = []
 
-      if sources.length > 0 
-        _jobs.push {
-          type: 'delete'
-          options: 
-            table: 'card'
-            where: " id in (#{sources.toString()}) "
-        }
+      _jobs.push {
+        type: 'update'
+        options: 
+          table: 'card'
+          where: id: targetCard.id
+          data: targetCard.getSaveData()
+      } if not _.isEmpty(targetCard.getSaveData())
+
+      _jobs.push {
+        type: 'update'
+        options: 
+          table: 'player'
+          where: id: playerId
+          data: player.getSaveData()
+      } if not _.isEmpty(player.getSaveData())
+
+      _jobs.push {
+        type: 'delete'
+        options: 
+          table: 'card'
+          where: " id in (#{sources.toString()}) "
+      } if sources.length > 0 
 
       job.multJobs _jobs, (err, ok) ->
         if err and not ok

@@ -489,8 +489,8 @@ describe("Logic Server # ", function() {
         });
       });
 
-      describe("when parameter sources is empty", function(){
-        it("should warning a message", function(){
+      describe("when parameter sources is empty", function() {
+        it("should warning a message", function() {
           request('logic.trainHandler.strengthen', {
             playerId: pid,
             target: 100,
@@ -507,6 +507,18 @@ describe("Logic Server # ", function() {
 
     // 技能升级
     describe("logic.trainHandler.skillUpgrade", function() {
+      var before_player, before_card;
+
+      beforeEach(function() {
+        doAjax('/player/' + pid, {}, function(res) {
+          before_player = res.data;
+        });
+
+        doAjax('/card/' + 100, {}, function(res) {
+          before_card = res.data;
+        });
+      });
+
       it("card's skill should can be upgrade", function() {
         request('logic.trainHandler.skillUpgrade', {
           playerId: pid,
@@ -514,11 +526,76 @@ describe("Logic Server # ", function() {
         }, function(data) {
           expect(data.code).toEqual(200);
           console.log(data);
+
+          doAjax('/player/' + pid, {}, function(res) {
+            expect(res.data.skillPoint).toBeLessThan(before_player.skillPoint);
+          });
+
+          doAjax('/card/' + 100, {}, function(res) {
+            expect(res.data.skillLv).toEqual(before_card.skillLv + 1);
+          });
         });
       });
+
+      describe("when target card is not exists", function() {
+        it("can not upgrade card skill", function() {
+          request('logic.trainHandler.skillUpgrade', {
+            playerId: pid,
+            cardId: 0
+          }, function(data) {
+            expect(data.code).toEqual(501);
+            expect(data.msg).toEqual('找不到卡牌');
+          })
+        });
+      });
+
+      describe("when target card's star is less than 3", function() {
+        it("can not upgrade card skill", function() {
+          request('logic.trainHandler.skillUpgrade', {
+            playerId: 1,
+            cardId: 2
+          }, function(data) {
+            expect(data.code).toEqual(501);
+            expect(data.msg).toEqual('三星级以下的卡牌没有技能，不能升级');
+          })
+        });
+      });
+
+      describe("when target card's star is 5(max star)", function() {
+        it("can not upgrade card skill", function() {
+          request('logic.trainHandler.skillUpgrade', {
+            playerId: pid,
+            cardId: 103
+          }, function(data) {
+            expect(data.code).toEqual(501);
+            expect(data.msg).toEqual('该卡牌的技能等级已经升到最高级，不能再升级了');
+          })
+        });
+      });
+
+      describe("when player's skillPoint is not enought", function() {
+        it("can not upgrade card skill", function() {
+          request('logic.trainHandler.skillUpgrade', {
+            playerId: 107,
+            cardId: 163
+          }, function(data) {
+            expect(data.code).toEqual(501);
+            expect(data.msg).toEqual('技能点不够，不能升级');
+          })
+        });
+      });
+
     });
 
     describe("logic.trainHandler.passSkillAfresh", function() {
+      var before_ps;
+
+      beforeEach(function() {
+        doAjax('/passiveSkill/' + 6, {}, function(res) {
+          before_ps = res.data;
+        });
+      });
+
       it("card's pass skill should can be passSkillAfresh", function() {
         request('logic.trainHandler.passSkillAfresh', {
           playerId: pid,
@@ -528,44 +605,223 @@ describe("Logic Server # ", function() {
           expect(data.code).toEqual(200);
           expect(data.msg.value).toBeDefined();
           expect(_.isNumber(parseInt(data.msg.value))).toEqual(true);
+
+          setTimeOut(function() {
+            doAjax('/passiveSkill/' + 6, {}, function(res) {
+              expect(res.data.value).toEqual(data.msg.value);
+            });
+          }, 2000);
           console.log(data);
         });
       });
+
+      describe("when money is not enought", function() {
+        it("should can not afrash", function() {
+          request('logic.trainHandler.passSkillAfresh', {
+            playerId: 106,
+            cardId: 164,
+            psId: 7
+          }, function(data) {
+            expect(data.code).toEqual(501);
+            expect(data.msg).toEqual('铜板不足，不能洗炼');
+            console.log(data);
+          });
+        });
+      });
+
+      describe("when passiveSkill is not exists", function() {
+        it("should can not afrash", function() {
+          request('logic.trainHandler.passSkillAfresh', {
+            playerId: pid,
+            cardId: 104,
+            psId: 7
+          }, function(data) {
+            expect(data.code).toEqual(501);
+            expect(data.msg).toEqual('找不到被动属性');
+            console.log(data);
+          });
+        });
+      });
+
     });
 
     describe("logic.trainHandler.smeltElixir", function() {
+      var before_player;
+
+      beforeEach(function() {
+        doAjax('/player/' + pid, {}, function(res) {
+          before_player = res.data;
+        });
+      });
+
+
       it("card should can be smelt to elixir", function() {
         request('logic.trainHandler.smeltElixir', {
           playerId: pid,
-          cardIds: [152, 153, 154, 155, 156]
+          cardIds: [150, 151, 152]
         }, function(data) {
+          console.log(data);
           expect(data.code).toEqual(200);
-          expect(_.keys(data.msg).sort()).toEqual([
+          expect(data.msg).hasProperties([
             'elixir',
             'sum'
-          ].sort());
+          ]);
+          expect(data.msg.elixir.length).toEqual(3);
+
+          doAjax('/player/' + pid, {}, function(res) {
+            expect(res.data.elixir).toEqual(before.elixir + data.msg.sum);
+          });
+
+        });
+      });
+
+      it("when all card is not exists, should can not smelt", function() {
+        request('logic.trainHandler.smeltElixir', {
+          playerId: pid,
+          cardIds: [161, 162]
+        }, function(data) {
           console.log(data);
+          expect(data.code).toEqual(501);
+          expect(data.msg).toEqual('找不到卡牌');
         });
       });
     });
 
     describe("logic.trainHandler.starUpgrade", function() {
+      var before_player, before_card;
+
+      beforeEach(function() {
+        doAjax('/player/' + 1, {}, function(res) {
+          before_player = res.data;
+        });
+
+        doAjax('/card/' + 1, {}, function(res) {
+          before_card = res.data;
+        });
+      });
+
       it("card' star should can be upgrade", function() {
         request(
           'logic.trainHandler.starUpgrade', {
-            playerId: '1',
+            playerId: 1,
             target: 1,
             sources: [2, 3],
-            gold: 0,
-            allInherit: true
+            gold: 1000,
+            allInherit: false
           },
           function(data) {
             expect(data.code).toEqual(200);
             expect(data.msg.upgrade).toEqual(false);
             console.log(data);
+
+            doAjax('/player/' + 1, {}, function(res) {
+              expect(res.data.gold).toEqual(before_player.gold - 1000);
+            });
+
+            doAjax('/card/' + 1, {}, function(res) {
+              if (data.msg.upgrade) {
+                expect(res.data.star).toEqual(before_card.star + 1);
+                
+              } else {
+                expect(res.data.star).toEqual(before_card.star);
+              }
+              expect()
+            });
+
+
+            doAjax('/card/' + 2, {}, function(res) {
+              expect(res).toEqual({
+                code: 404,
+                data: 'card not exists'
+              });
+            });
+
+            doAjax('/card/' + 3, {}, function(res) {
+              expect(res).toEqual({
+                code: 404,
+                data: 'card not exists'
+              });
+            });
           }
         );
       });
+
+      describe("when card's star is less then 3", function() {
+        it('should can not upgrade star of card', function() {
+          request(
+            'logic.trainHandler.starUpgrade', {
+              playerId: 1,
+              target: 11,
+              sources: [3, 4],
+              gold: 0,
+              allInherit: true
+            },
+            function(data) {
+              expect(data.code).toEqual(501);
+              expect(data.msg).toEqual('卡牌星级必须到达3级才能进阶');
+              console.log(data);
+            }
+          );
+        });
+      });
+
+      describe("when card's star is 5", function() {
+        it('should can not upgrade star of card', function() {
+          request(
+            'logic.trainHandler.starUpgrade', {
+              playerId: 1,
+              target: 5,
+              sources: [3, 4],
+              gold: 0,
+              allInherit: true
+            },
+            function(data) {
+              expect(data.code).toEqual(501);
+              expect(data.msg).toEqual('卡牌星级已经是最高级了');
+              console.log(data);
+            }
+          );
+        });
+      });
+
+      describe("when money is not enought", function() {
+        it('should can not upgrade star of card', function() {
+          request(
+            'logic.trainHandler.starUpgrade', {
+              playerId: 1,
+              target: 1,
+              sources: [3, 4],
+              gold: 2000,
+              allInherit: true
+            },
+            function(data) {
+              expect(data.code).toEqual(501);
+              expect(data.msg).toEqual('金币不足');
+              console.log(data);
+            }
+          );
+        });
+      });
+
+      describe("when card's count is grater then the max number", function() {
+        it('should can not upgrade star of card', function() {
+          request(
+            'logic.trainHandler.starUpgrade', {
+              playerId: 100,
+              target: 100,
+              sources: [101, 102],
+              gold: 40000,
+              allInherit: true
+            },
+            function(data) {
+              expect(data.code).toEqual(501);
+              expect(data.msg).toEqual('最多只能消耗20张卡牌来进行升级');
+              console.log(data);
+            }
+          );
+        });
+      });
+
     });
 
     describe("logic.trainHandler.changeLineUp", function() {

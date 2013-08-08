@@ -29,7 +29,7 @@ var TournamentLabel = cc.Node.extend({
     init: function (data) {
         cc.log("TournamentPlayerLabel init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         this._player = data;
 
@@ -49,22 +49,22 @@ var TournamentLabel = cc.Node.extend({
         playerRankLabel.setPosition(cc.p(90, 100));
         this.addChild(playerRankLabel);
 
-        if(data.playerId != gameData.player.get("id")) {
+        if (data.playerId != gameData.player.get("id")) {
             var functionItem = null;
             var functionLabel = null;
 
-            if(data.type == CAN_ADD_FRIEND) {
+            if (data.type == CAN_ADD_FRIEND) {
                 functionItem = cc.MenuItemImage.create(main_scene_image.button20, main_scene_image.button20s, this._onClickFunction, this);
                 functionLabel = cc.Sprite.create(main_scene_image.icon41);
-            } else if(data.type == CAN_DEFIANCE) {
+            } else if (data.type == CAN_DEFIANCE) {
                 functionItem = cc.MenuItemImage.create(main_scene_image.button20, main_scene_image.button20s, this._onClickFunction, this);
                 functionLabel = cc.Sprite.create(main_scene_image.icon43);
-            } else if(data.type == CAN_COUNTER_ATTACK) {
+            } else if (data.type == CAN_COUNTER_ATTACK) {
                 functionItem = cc.MenuItemImage.create(main_scene_image.button21, main_scene_image.button21s, this._onClickFunction, this);
                 functionLabel = cc.Sprite.create(main_scene_image.icon40);
             }
 
-            if(functionItem) {
+            if (functionItem) {
                 functionItem.setPosition(cc.p(500, 67));
 
                 var functionItemMenu = LazyMenu.create(functionItem);
@@ -72,7 +72,7 @@ var TournamentLabel = cc.Node.extend({
                 this.addChild(functionItemMenu);
             }
 
-            if(functionLabel) {
+            if (functionLabel) {
                 functionLabel.setPosition(cc.p(500, 67));
                 this.addChild(functionLabel);
             }
@@ -83,12 +83,12 @@ var TournamentLabel = cc.Node.extend({
         var width = len * (63 + 5) - 5;
         width = width > 214 ? width : 214;
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(180, 30, 214, 64));
+        var scrollViewLayer = MarkLayer.create(cc.rect(0, 0, width, 64));
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
 
-        for(var i = 0; i < len; ++i) {
+        for (var i = 0; i < len; ++i) {
             cc.log(lineUpCardList[i]);
             var cardHeadItem = CardHeadNode.getCardHeadItem(lineUpCardList[i]);
             cardHeadItem.setScale(0.6);
@@ -122,11 +122,11 @@ var TournamentLabel = cc.Node.extend({
     _onClickFunction: function () {
         cc.log("TournamentPlayerLabel _onClickFunction " + this._tournamentPlayer.type);
 
-        if(this._tournamentPlayer.playerId != gameData.player.get("id")) {
-            if(this._tournamentPlayer.type == CAN_ADD_FRIEND) {
+        if (this._tournamentPlayer.playerId != gameData.player.get("id")) {
+            if (this._tournamentPlayer.type == CAN_ADD_FRIEND) {
                 gameData.tournament.addFriend(this._tournamentPlayer.playerId);
             } else {
-                gameData.tournament.defiance(function(id){
+                gameData.tournament.defiance(function (id) {
                     var scene = BattleScene.create(BattleLogNote.getInstance().getBattleByBattleLogId(id));
                     cc.Director.getInstance().replaceScene(scene);
 //                    cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, scene, true));

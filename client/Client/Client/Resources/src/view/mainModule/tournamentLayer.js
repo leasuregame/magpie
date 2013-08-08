@@ -60,7 +60,7 @@ var TournamentLayer = cc.Layer.extend({
 
         for (var i = 0; i < len; ++i) {
             var tournamentPlayerLabel = TournamentLabel.create(rankList[i]);
-            tournamentPlayerLabel.setPosition(cc.p(0, height - 135 *(i + 1)));
+            tournamentPlayerLabel.setPosition(cc.p(0, height - 135 * (i + 1)));
             scrollViewLayer.addChild(tournamentPlayerLabel);
         }
 

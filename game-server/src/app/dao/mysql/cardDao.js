@@ -13,7 +13,7 @@
  * select
  * delete
  * */
-var Card = require("../../domain/card");
+var Card = require("../../domain/entity/card");
 var passiveSkillDao = require('./passiveSkillDao');
 var async = require('async');
 var DaoBase = require("./daoBase");

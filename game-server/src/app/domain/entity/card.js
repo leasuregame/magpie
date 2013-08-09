@@ -12,12 +12,12 @@
  * */
 
 
-var utility = require('../common/utility');
+var utility = require('../../common/utility');
 var Entity = require('./entity');
-var table = require('../manager/table');
+var table = require('../../manager/table');
 var _ = require("underscore");
 
-var MAX_LEVEL = require('../../config/data/card').MAX_LEVEL
+var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL
 var GROUP_EFFECT_ATK = 1
 var GROUP_EFFECT_HP = 2
 

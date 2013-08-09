@@ -12,7 +12,7 @@
  * */
 
 var logger = require('pomelo-logger').getLogger(__filename);
-var utility = require('../common/utility');
+var utility = require('../../common/utility');
 var EventEmitter = require("events").EventEmitter;
 var _ = require("underscore");
 

@@ -12,10 +12,10 @@
  * */
 
 
-var utility = require('../common/utility');
+var utility = require('../../common/utility');
 var Entity = require('./entity');
-var playerConfig = require('../../config/data/player');
-var table = require('../manager/table');
+var playerConfig = require('../../../config/data/player');
+var table = require('../../manager/table');
 var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');

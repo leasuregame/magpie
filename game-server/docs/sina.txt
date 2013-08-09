@@ -40,4 +40,5 @@ make build && ./node_modules/.bin/pomelo stop && ./node_modules/.bin/pomelo star
 pkill -9 -f node
 make inittables
 node ./bin/dao.js all production
+make build
 ./node_modules/.bin/pomelo start production --daemon

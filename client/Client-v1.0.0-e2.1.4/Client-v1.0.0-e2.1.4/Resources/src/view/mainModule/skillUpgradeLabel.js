@@ -15,6 +15,23 @@
 var SkillUpgradeLabel = cc.Node.extend({
     _leadCard: null,
     _retinueCard: [],
+    _leadCardHalfNode: null,
+    _tipLabel: null,
+    _helpLabel: null,
+    _expLabel: null,
+    _maxExpLabel: null,
+    _moneyLabel: null,
+    _cardCountLabel: null,
+    _cardLabel: null,
+    _hpLabel: null,
+    _hpAdditionLabel: null,
+    _atkLabel: null,
+    _atkAdditionLabel: null,
+    _lvLabel: null,
+    _yellowProgress: null,
+    _greenProgress: null,
+    _selectRetinueCardItem: null,
+    _upgradeItem: null,
 
     onEnter: function () {
         cc.log("SkillUpgradeLabel onEnter");

@@ -151,8 +151,20 @@ var Card = Entity.extend({
 
         this._exp += exp;
 
-        while (this._exp >= this._maxExp) {
-            cc.log(this._maxExp);
+        while (true) {
+            if (this._lv >= this._maxLv) {
+                this._lv = this._maxLv;
+                this._exp = 0;
+                break;
+            }
+
+            if (this._exp < this._maxExp) {
+                break;
+            }
+
+            cc.log("this._exp: " + this._exp);
+            cc.log("this._maxExp: " + this._maxExp);
+
             needMoney += cardGrow[this._lv].money_need;
 
             this._exp -= this._maxExp;

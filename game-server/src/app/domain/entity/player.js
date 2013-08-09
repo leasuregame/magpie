@@ -113,7 +113,10 @@ var Player = (function(_super) {
     ];
 
     Player.DEFAULT_VALUES = {
-        power: 100,
+        power: {
+            time: 0,
+            value: 50
+        },
         lv: 1,
         exp: 0,
         money: 1000,
@@ -217,21 +220,33 @@ var Player = (function(_super) {
         });
     };
 
+    Player.prototype.updatePower = function(power) {
+        if (this.power.value !== power.value) {
+            this.set('power', power);
+        }
+    };
+
     Player.prototype.consumePower = function(value) {
-        var power = this.get('power');
-        this.set('power', _.max([power - value, 0]))
+        var power = _.clone(this.get('power'));
+        power.value = _.max([power.value - value, 0]);
+        power.time = Date.now();
+        this.updatePower(power);
     };
 
     Player.prototype.resumePower = function(value) {
         var max_power = getMaxPower(this.lv, playerConfig.POWER_LIMIT);
-        var power = this.get('power');
-        this.set('power', _.min([max_power, power + value]));
+        var power = _.clone(this.get('power'));
+        power.value = _.min([max_power, power.value + value]);
+        power.time = Date.now();
+        this.updatePower(power);
     };
 
     Player.prototype.givePower = function(hour, value) {
         var max_power = getMaxPower(this.lv, playerConfig.POWER_LIMIT);
-        var power = this.get('power');
-        this.set('power', _.min([power + value, max_power + 50]));
+        var power = _.clone(this.get('power'));
+        power.value = _.min([power.value + value, max_power + 50]);
+        power.time = Date.now();
+        this.updatePower(power);
         this.updateGift("power_" + hour);
     };
 

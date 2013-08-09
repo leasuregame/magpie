@@ -4,7 +4,7 @@ utility = require '../common/utility'
 dao = require('pomelo').app.get('dao')
 _ = require 'underscore'
 
-MAX_POWER = 100
+MAX_POWER = 200
 
 class Manager
   @explore: (player, taskId, cb) ->
@@ -23,7 +23,7 @@ class Manager
     }
 
     # 检查是否体力充足
-    if player.power < taskData.power_consume
+    if player.power.value < taskData.power_consume
       return cb({code: 501,msg: '体力不足'}, null, null)
 
     data.result = utility.randomValue( 
@@ -135,7 +135,7 @@ class Manager
     if (player.exp + taskData.exp_obtain) >= exp_to_upgrade.exp
       player.set('exp', 0)
       player.increase('lv')
-      player.set('power', MAX_POWER) 
+      player.resumePower('power', MAX_POWER) 
       data.upgrade = true
     else
       player.increase('exp', taskData.exp_obtain)

@@ -16,3 +16,6 @@ Area.getPlayer = (playerId) ->
 Area.getPlayers = ->
   players.all()
 
+Area.powerConsume = ->
+  for p in @getPlayers()
+    p.emit('power.consume')

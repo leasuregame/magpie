@@ -167,6 +167,7 @@ var Card = (function(_super) {
         rows.sort(function(x,y) {return x.lv - y.lv;});
 
         var upgraded_lv = 0;
+        exp += this.exp;  // 加上卡牌本身剩余的经验
         for (var i = 0; i < rows.length; i++) {
             var row = rows[i];
             if (exp >= row.exp_need) {

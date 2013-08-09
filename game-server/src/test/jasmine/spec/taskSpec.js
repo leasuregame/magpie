@@ -425,7 +425,7 @@ describe("Logic Server # ", function() {
             'cur_exp'
           ]);
 
-          expect(data.msg.exp_obtain).toEqual(234534);
+          expect(data.msg.exp_obtain).toEqual(254534);
           expect(data.msg.money_consume).toEqual(729864);
           expect(data.msg.cur_lv).toEqual(55);
           expect(data.msg.cur_exp).toEqual(0);
@@ -467,10 +467,10 @@ describe("Logic Server # ", function() {
           console.log(data);
           expect(data.code).toEqual(200);
 
-          expect(data.msg.exp_obtain).toEqual(200);
-          expect(data.msg.money_consume).toEqual(115);
-          expect(data.msg.cur_lv).toEqual(2);
-          expect(data.msg.cur_exp).toEqual(90);
+          expect(data.msg.exp_obtain).toEqual(230);
+          expect(data.msg.money_consume).toEqual(247);
+          expect(data.msg.cur_lv).toEqual(3);
+          expect(data.msg.cur_exp).toEqual(89);
 
           doAjax('/card/' + 250, {}, function(res) {
             var _card = res.data;

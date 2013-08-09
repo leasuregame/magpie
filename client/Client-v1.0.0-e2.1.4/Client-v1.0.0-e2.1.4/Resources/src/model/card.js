@@ -38,6 +38,8 @@ var Card = Entity.extend({
     _skillId: 0,            // 数据库表对应技能ID
 
     _skillName: "",         // 技能名称
+    _skillHarm: 0,          // 技能伤害
+    _skillRate: 0,          // 技能概率
     _skillDescription: "",  // 技能描述
     _skillMaxLv: 0,         // 技能最大等级
 
@@ -130,9 +132,22 @@ var Card = Entity.extend({
         // 读取技能配置表
         var skillTable = outputTables.skills.rows[this._skillId];
 
+        var skillHarmString = skillTable["star" + this._star];
+        var skillHarm = [0, 0];
+
+        if (skillHarmString) {
+            skillHarm = skillHarmString.split(",", 2);
+        }
+
+        this._skillHarm = parseInt(skillHarm[0]) + parseInt(skillHarm[1]) * this._skillLv;
+
+        this._skillRate = skillTable["rate" + this._star];
+
+        if (!this._skillRate) this._skillRate = 0;
+
         this._skillName = skillTable.name;
         this._skillDescription = skillTable.description;
-        this._skillMaxLv = 6;
+        this._skillMaxLv = 5;
     },
 
     // 计算单个卡牌战斗力
@@ -224,6 +239,62 @@ var Card = Entity.extend({
                 cc.log("upgrade fail");
 
                 cb(null);
+            }
+        });
+    },
+
+    canUpgradeSkill: function () {
+        cc.log("Card canUpgradeSkill");
+
+        return (this._star > 2 && this._skillLv < this._skillMaxLv)
+    },
+
+    getUpgradeNeedSKillPoint: function () {
+        cc.log("Card getUpgradeNeedSKillPoint");
+
+        if (this.canUpgradeSkill()) {
+            var skillUpgradeTable = outputTables.skill_upgrade.rows[this._skillLv + 1];
+            return skillUpgradeTable["star" + this._star];
+        }
+
+        return 0;
+    },
+
+    getNextSkillLvHarm: function () {
+        cc.log("Card getNextSkillLvHarm");
+
+        if (this.canUpgradeSkill()) {
+            // 读取技能配置表
+            var skillHarmString = outputTables.skills.rows[this._skillId]["star" + this._star];
+            var skillHarm = [0, 0];
+
+            if (skillHarmString) {
+                skillHarm = skillHarmString.split(",", 2);
+            }
+
+            return (parseInt(skillHarm[0]) + parseInt(skillHarm[1]) * (this._skillLv + 1));
+        }
+
+        return 0;
+    },
+
+    upgradeSkill: function (cb) {
+        cc.log("Card upgradeSkill " + this._id);
+
+        var that = this;
+        lzWindow.pomelo.request("logic.trainHandler.skillUpgrade", {playerId: gameData.player.get("id"), cardId: this._id}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("upgrade success");
+
+                var msg = data.msg;
+
+                cb();
+            } else {
+                cc.log("upgrade fail");
+
+                cb();
             }
         });
     }

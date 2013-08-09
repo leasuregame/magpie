@@ -431,21 +431,6 @@ var CardUpgradeLabel = cc.Layer.extend({
         }, 0.1, times);
     },
 
-    _switchToCardListLayer: function (cardListLayer) {
-        cc.log("CardUpgradeLabel _switchToCardListLayer");
-
-        this.getParent().setVisible(false);
-        MainScene.getInstance().switch(cardListLayer);
-    },
-
-    _backToThisLayer: function (cardListLayer) {
-        cc.log("CardUpgradeLabel _backToThisLayer");
-
-        var parent = this.getParent();
-        parent.setVisible(true);
-        MainScene.getInstance().switch(parent);
-    },
-
     _onClickSelectLeadCard: function () {
         cc.log("CardUpgradeLabel _onClickSelectLeadCard");
 
@@ -459,13 +444,13 @@ var CardUpgradeLabel = cc.Layer.extend({
                 that._leadCard = data[0] || null;
                 that._retinueCard = [];
             }
-            that._backToThisLayer(cardListLayer);
+            that.getParent()._backToThisLayer();
 
             cc.log("this._leadCard :");
             cc.log(that._leadCard);
         });
 
-        this._switchToCardListLayer(cardListLayer);
+        this.getParent()._switchToCardListLayer(cardListLayer);
     },
 
     _onClickSelectRetinueCard: function () {
@@ -486,13 +471,13 @@ var CardUpgradeLabel = cc.Layer.extend({
             if (data) {
                 that._retinueCard = data;
             }
-            that._backToThisLayer(cardListLayer);
+            that.getParent()._backToThisLayer();
 
             cc.log("this._retinueCard :");
             cc.log(that._retinueCard);
         });
 
-        this._switchToCardListLayer(cardListLayer);
+        this.getParent()._switchToCardListLayer(cardListLayer);
     },
 
     _onClickUpgrade: function () {

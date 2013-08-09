@@ -85,6 +85,20 @@ var StrengthenLayer = cc.Layer.extend({
         return true;
     },
 
+    _switchToCardListLayer: function (cardListLayer) {
+        cc.log("StrengthenLayer _switchToCardListLayer");
+
+        this.setVisible(false);
+        MainScene.getInstance().switch(cardListLayer);
+    },
+
+    _backToThisLayer: function (cardListLayer) {
+        cc.log("StrengthenLayer _backToThisLayer");
+
+        this.setVisible(true);
+        MainScene.getInstance().switch(this);
+    },
+
     _onClickCardUpgrade: function () {
         cc.log("StrengthenLayer _onClickCardUpgrade");
 

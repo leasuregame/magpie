@@ -35,16 +35,16 @@
 (function () {
     var d = document;
     var c = {
-        COCOS2D_DEBUG:2, //0 to turn debug off, 1 for basic debug, and 2 for full debug
-        box2d:false,
-        chipmunk:false,
-        showFPS:true,
-        frameRate:60,
-        loadExtension:true,
-        tag:'gameCanvas', //the dom element to run cocos2d on
-        engineDir:'../../../Cocos2d-html5-v2.1.4/cocos2d/',
+        COCOS2D_DEBUG: 2, //0 to turn debug off, 1 for basic debug, and 2 for full debug
+        box2d: false,
+        chipmunk: false,
+        showFPS: true,
+        frameRate: 60,
+        loadExtension: true,
+        tag: 'gameCanvas', //the dom element to run cocos2d on
+        engineDir: '../../../Cocos2d-html5-v2.1.4/cocos2d/',
         //SingleEngineFile:'',
-        appFiles:[
+        appFiles: [
             'src/resource.js',
 
             'src/table/table.js',
@@ -142,7 +142,7 @@
         ]
     };
 
-    if(!d.createElement('canvas').getContext){
+    if (!d.createElement('canvas').getContext) {
         var s = d.createElement('div');
         s.innerHTML = '<h2>Your browser does not support HTML5 canvas!</h2>' +
             '<p>Google Chrome is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier.Click the logo to download.</p>' +

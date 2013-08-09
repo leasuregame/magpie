@@ -320,6 +320,8 @@ describe("Logic Server # ", function() {
                     lv: card.lv,
                     exp: card.exp,
                     skillLv: card.skillLv,
+                    skillPoint: card.skillPoint,
+                    elixir: card.elixir,
                     hpAddition: card.hpAddition,
                     atkAddition: card.atkAddition
                   });
@@ -423,6 +425,11 @@ describe("Logic Server # ", function() {
             'cur_exp'
           ]);
 
+          expect(data.msg.exp_obtain).toEqual(254534);
+          expect(data.msg.money_consume).toEqual(729864);
+          expect(data.msg.cur_lv).toEqual(55);
+          expect(data.msg.cur_exp).toEqual(0);
+
           doAjax('/player/' + pid, {}, function(res) {
             var _player = res.data;
             expect(_player.money).toEqual(before_player.money - data.msg.money_consume);
@@ -450,6 +457,44 @@ describe("Logic Server # ", function() {
 
         });
       });
+
+      it("卡牌强化并升级, 当1星1级卡牌吞掉两张1星1级的卡牌时", function(){
+        request('logic.trainHandler.strengthen', {
+          playerId: pid,
+          target: 250,
+          sources: [251, 252]
+        }, function(data) {
+          console.log(data);
+          expect(data.code).toEqual(200);
+
+          expect(data.msg.exp_obtain).toEqual(230);
+          expect(data.msg.money_consume).toEqual(247);
+          expect(data.msg.cur_lv).toEqual(3);
+          expect(data.msg.cur_exp).toEqual(89);
+
+          doAjax('/card/' + 250, {}, function(res) {
+            var _card = res.data;
+            expect(_card.lv).toEqual(data.msg.cur_lv);
+            expect(_card.exp).toEqual(data.msg.cur_exp);
+          });
+
+          doAjax('/card/' + 251, {}, function(res) {
+            expect(res).toEqual({
+              code: 404,
+              data: 'card not exists'
+            });
+          });
+
+          doAjax('/card/' + 252, {}, function(res) {
+            expect(res).toEqual({
+              code: 404,
+              data: 'card not exists'
+            });
+          });
+        });
+      });
+
+      
 
       describe("when money is not enought", function() {
         it("should warnning a message that can not strengthen", function() {
@@ -553,7 +598,7 @@ describe("Logic Server # ", function() {
         it("can not upgrade card skill", function() {
           request('logic.trainHandler.skillUpgrade', {
             playerId: 1,
-            cardId: 2
+            cardId: 4
           }, function(data) {
             expect(data.code).toEqual(501);
             expect(data.msg).toEqual('三星级以下的卡牌没有技能，不能升级');
@@ -658,7 +703,7 @@ describe("Logic Server # ", function() {
       it("card should can be smelt to elixir", function() {
         request('logic.trainHandler.smeltElixir', {
           playerId: pid,
-          cardIds: [150, 151, 152]
+          cardIds: [170, 171, 172]
         }, function(data) {
           console.log(data);
           expect(data.code).toEqual(200);
@@ -690,6 +735,12 @@ describe("Logic Server # ", function() {
     describe("logic.trainHandler.starUpgrade", function() {
       var before_player, before_card;
 
+      beforeAll(function() {
+        doAjax('/loaddata/csv', {}, function(data) {
+          expect(data).toEqual('done');
+        });
+      });
+
       beforeEach(function() {
         doAjax('/player/' + 1, {}, function(res) {
           before_player = res.data;
@@ -706,7 +757,6 @@ describe("Logic Server # ", function() {
             playerId: 1,
             target: 1,
             sources: [2, 3],
-            gold: 1000,
             allInherit: false
           },
           function(data) {
@@ -715,19 +765,24 @@ describe("Logic Server # ", function() {
             console.log(data);
 
             doAjax('/player/' + 1, {}, function(res) {
-              expect(res.data.gold).toEqual(before_player.gold - 1000);
+              expect(res.data.gold).toEqual(before_player.gold);
             });
 
             doAjax('/card/' + 1, {}, function(res) {
               if (data.msg.upgrade) {
                 expect(res.data.star).toEqual(before_card.star + 1);
-                
+
               } else {
                 expect(res.data.star).toEqual(before_card.star);
               }
               expect()
             });
 
+            doAjax('/card/' + 1, {}, function(res) {
+              var _card = data.msg.card;
+              delete _card.passiveSkills;
+              expect(res.data).toEqual(_card);
+            });
 
             doAjax('/card/' + 2, {}, function(res) {
               expect(res).toEqual({
@@ -746,20 +801,32 @@ describe("Logic Server # ", function() {
         );
       });
 
-      describe("when card's star is less then 3", function() {
+      describe("when card's star is 1", function() {
         it('should can not upgrade star of card', function() {
           request(
             'logic.trainHandler.starUpgrade', {
               playerId: 1,
               target: 11,
-              sources: [3, 4],
-              gold: 0,
+              sources: [4],
               allInherit: true
             },
             function(data) {
-              expect(data.code).toEqual(501);
-              expect(data.msg).toEqual('卡牌星级必须到达3级才能进阶');
               console.log(data);
+              expect(data.code).toEqual(200);
+              expect(data.msg.upgrade).toEqual(false);
+
+              doAjax('/card/' + 11, {}, function(res) {
+                var _card = data.msg.card;
+                delete _card.passiveSkills;
+                expect(res.data).toEqual(_card);
+              });
+
+              doAjax('/card/' + 4, {}, function(res) {
+                expect(res).toEqual({
+                  code: 404,
+                  data: 'card not exists'
+                });
+              });
             }
           );
         });
@@ -772,7 +839,6 @@ describe("Logic Server # ", function() {
               playerId: 1,
               target: 5,
               sources: [3, 4],
-              gold: 0,
               allInherit: true
             },
             function(data) {
@@ -788,15 +854,32 @@ describe("Logic Server # ", function() {
         it('should can not upgrade star of card', function() {
           request(
             'logic.trainHandler.starUpgrade', {
-              playerId: 1,
-              target: 1,
-              sources: [3, 4],
-              gold: 2000,
+              playerId: 106,
+              target: 165,
+              sources: [160, 161],
               allInherit: true
             },
             function(data) {
               expect(data.code).toEqual(501);
-              expect(data.msg).toEqual('金币不足');
+              expect(data.msg).toEqual('铜板不足');
+              console.log(data);
+            }
+          );
+        });
+      });
+
+      describe("when sources cards is not exist", function() {
+        it('should can not upgrade star of card', function() {
+          request(
+            'logic.trainHandler.starUpgrade', {
+              playerId: 106,
+              target: 165,
+              sources: [2, 1],
+              allInherit: true
+            },
+            function(data) {
+              expect(data.code).toEqual(501);
+              expect(data.msg).toEqual('找不到素材卡牌');
               console.log(data);
             }
           );
@@ -808,9 +891,30 @@ describe("Logic Server # ", function() {
           request(
             'logic.trainHandler.starUpgrade', {
               playerId: 100,
-              target: 100,
-              sources: [101, 102],
-              gold: 40000,
+              target: 200,
+              sources: [
+                201,
+                202,
+                203,
+                204,
+                205,
+                206,
+                207,
+                208,
+                209,
+                210,
+                211,
+                212,
+                213,
+                214,
+                215,
+                216,
+                217,
+                218,
+                219,
+                220,
+                221
+              ],
               allInherit: true
             },
             function(data) {

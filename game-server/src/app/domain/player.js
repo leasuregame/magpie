@@ -276,7 +276,7 @@ var Player = (function(_super) {
                 return parseInt(id) == card.lv;
             });
             if (row !== null) {
-                expObtain += parseInt(row.cur_exp);
+                expObtain += parseInt(row.cur_exp + card.exp);
             }
         });
 

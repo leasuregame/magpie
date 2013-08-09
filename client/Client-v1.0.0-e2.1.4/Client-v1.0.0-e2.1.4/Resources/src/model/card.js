@@ -290,6 +290,12 @@ var Card = Entity.extend({
 
                 var msg = data.msg;
 
+                that.update({
+                    skillLv: msg.skillLv
+                });
+
+                gameData.player.add("skillPoint", -msg.skillPoint);
+
                 cb();
             } else {
                 cc.log("upgrade fail");

@@ -11,7 +11,7 @@
  * passive skill
  * */
 
-var utility = require('../common/utility');
+var utility = require('../../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
 

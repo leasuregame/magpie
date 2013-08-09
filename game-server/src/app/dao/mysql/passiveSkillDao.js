@@ -15,7 +15,7 @@
  * select
  * delete
  * */
-var PassiveSkill = require("../../domain/passiveSkill");
+var PassiveSkill = require("../../domain/entity/passiveSkill");
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
 

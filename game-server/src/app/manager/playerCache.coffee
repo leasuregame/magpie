@@ -19,4 +19,7 @@ class PlayerCache
   @size = ->
   	cache.size()
 
+  @all = ->
+    cache.all()
+
  module.exports = PlayerCache

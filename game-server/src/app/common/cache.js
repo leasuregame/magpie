@@ -54,9 +54,22 @@ Cache = (function(){
     return null;
   };
 
+  Cache.prototype.all = function() {
+    var key, results = [], item = null;
+    for (key in this.cache) {
+      if (this.cache.hasOwnProperty(key)){
+        item = this.get(key);
+        if (item !== null) {
+          results.push(item);
+        }
+      }
+    }
+    return results;
+  };
+
   Cache.prototype.size = function() { 
     var size = 0, key;
-    for (key in cache) {
+    for (key in this.cache) {
       if (this.cache.hasOwnProperty(key)) 
         if (this.get(key) !== null)
           size++;
@@ -66,7 +79,7 @@ Cache = (function(){
 
   Cache.prototype.memsize = function() { 
     var size = 0, key;
-    for (key in cache) {
+    for (key in this.cache) {
       if (this.cache.hasOwnProperty(key)) 
         size++;
     }

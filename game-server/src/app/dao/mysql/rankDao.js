@@ -1,4 +1,4 @@
-var Rank = require('../../domain/rank');
+var Rank = require('../../domain/entity/rank');
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
 

@@ -11,7 +11,7 @@
  * */
 
 var Entity = require('./entity');
-var utility = require('../common/utility');
+var utility = require('../../common/utility');
 var _ = require('underscore');
 
 var Rank = (function(_super) {

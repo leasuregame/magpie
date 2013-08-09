@@ -24,11 +24,11 @@ Handler = (@app) ->
 ###
 Handler::strengthen = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
-  sources = msg.sources
+  sources = msg.sources or []
   target = msg.target
   player = null;
 
-  if sources is null or sources.length == 0
+  if sources.length == 0
     return next(null, {code: 501, msg: '素材卡牌不能为空'})
 
   async.waterfall [
@@ -150,6 +150,7 @@ Handler::skillUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   cardId = msg.cardId
 
+  sp_need = 0
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -185,7 +186,7 @@ Handler::skillUpgrade = (msg, session, next) ->
 
     card.save()
     player.save()
-    next(null, {code: 200})
+    next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need}})
 
 Handler::starUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId

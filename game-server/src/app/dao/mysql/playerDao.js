@@ -15,7 +15,7 @@
  * select
  * delete
  * */
-var Player = require("../../domain/player");
+var Player = require("../../domain/entity/player");
 var cardDao = require("./cardDao");
 var rankDao = require("./rankDao");
 var passiveSkillDao = require("./passiveSkillDao")

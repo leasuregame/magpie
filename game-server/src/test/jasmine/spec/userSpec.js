@@ -8,19 +8,6 @@ describe("User Actions # ", function() {
     })
   });
 
-  describe("Entry Handler", function() {
-    it("entry method should works fine.", function() {
-      request('connector.entryHandler.entry', {
-        uid: 1
-      }, function(data) {
-        expect(data).toEqual({
-          code: 200,
-          msg: "game server is ok"
-        });
-      });
-    });
-  });
-
   describe('User Handler', function() {
 
     describe("when user not exists", function() {

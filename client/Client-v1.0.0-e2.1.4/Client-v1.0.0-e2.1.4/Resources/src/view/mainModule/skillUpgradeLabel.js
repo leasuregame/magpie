@@ -43,7 +43,7 @@ var SkillUpgradeLabel = cc.Node.extend({
         if (!this._super()) return false;
 
         var cardItemBgSprite = cc.Sprite.create(main_scene_image.icon61);
-        cardItemBgSprite.setPosition(cc.p(360, 600));
+        cardItemBgSprite.setPosition(cc.p(360, 632));
         this.addChild(cardItemBgSprite);
 
         var helpBgSprite = cc.Sprite.create(main_scene_image.icon50);
@@ -68,13 +68,13 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         this._skillLvLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
         this._skillLvLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._skillLvLabel.setPosition(cc.p(122, 86));
+        this._skillLvLabel.setPosition(cc.p(122, 85));
         this._resLabel.addChild(this._skillLvLabel);
 
         this._nextSkillLvLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
         this._nextSkillLvLabel.setAnchorPoint(cc.p(0, 0.5));
         this._nextSkillLvLabel.setColor(cc.c3b(118, 238, 60));
-        this._nextSkillLvLabel.setPosition(cc.p(180, 86));
+        this._nextSkillLvLabel.setPosition(cc.p(180, 85));
         this._resLabel.addChild(this._nextSkillLvLabel);
 
         this._skillProbabilityLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
@@ -89,7 +89,7 @@ var SkillUpgradeLabel = cc.Node.extend({
         this._resLabel.addChild(this._nextSkillProbabilityLabel);
 
         this._arrowLabel1 = cc.Sprite.create(main_scene_image.icon63);
-        this._arrowLabel1.setPosition(cc.p(158, 86));
+        this._arrowLabel1.setPosition(cc.p(158, 85));
         this._resLabel.addChild(this._arrowLabel1);
 
         this._arrowLabel2 = cc.Sprite.create(main_scene_image.icon63);
@@ -110,7 +110,7 @@ var SkillUpgradeLabel = cc.Node.extend({
             this._onClickSelectLeadCard,
             this
         );
-        selectLeadCardItem.setPosition(cc.p(355, 685));
+        selectLeadCardItem.setPosition(cc.p(354, 685));
 
         this._upgradeItem = cc.MenuItemImage.create(
             main_scene_image.button9,
@@ -137,7 +137,7 @@ var SkillUpgradeLabel = cc.Node.extend({
         this.addChild(this._needSkillPointLabel);
 
         var selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon51);
-        selectLeadCardIcon.setPosition(cc.p(355, 685));
+        selectLeadCardIcon.setPosition(cc.p(354, 685));
         this.addChild(selectLeadCardIcon);
 
         var selectLeadCardIconAction = cc.Sequence.create(

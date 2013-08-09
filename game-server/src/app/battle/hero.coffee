@@ -23,7 +23,7 @@ class Hero extends Module
     @id = attrs.id
     @lv = attrs.lv
     @card_id = attrs.tableId
-    @skill_lv = attrs.skillLv or 1
+    @skill_lv = attrs.skillLv or 0
     @sp_value = attrs.passiveSkills or []
     
     @dmg = 0 # 每次所受伤害的值，默认值为0
@@ -103,8 +103,7 @@ class Hero extends Module
     _step = {a: -@idx, d: [], e: [], r: []} 
     
     _len = enemys? and enemys.length or 0
-    _dmg = parseInt(@atk * (1 + @skill.effectValue()))
-    _dmg = parseInt(_dmg/_len) if _len > 1
+    _dmg = parseInt(@atk * @skill.effectValue())
 
     for enemy in enemys
       
@@ -140,9 +139,9 @@ class Hero extends Module
 
   cure: (enemys, callback) ->
     _step = {a: -@idx, d: [], e: []}
+    _hp = parseInt(@init_hp * @skill.effectValue())
     
-    for enemy in enemys
-      _hp = parseInt(@init_hp * @skill.effectValue())
+    for enemy in enemys      
       enemy.damageOnly -_hp
 
       _step.d.push enemy.idx

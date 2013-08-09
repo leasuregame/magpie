@@ -35,12 +35,13 @@ class Skill extends Module
     @_player()?.herosToBeAttacked @scope, arg
 
   getRate: ->
-    [base_val, lv_grow] = utility.parseEffect @['rate' + @hero.star]
-    base_val + lv_grow * (@lv - 1)
+    parseInt(@['rate' + @hero.star])
+    # [base_val, lv_grow] = utility.parseEffect @['rate' + @hero.star]
+    # base_val + lv_grow * (@lv - 1)
 
   effectValue: ->
     [base_val, lv_grow] = utility.parseEffect @['star' + @hero.star]
-    ( base_val + lv_grow * (@lv - 1) ) / 100
+    ( base_val + lv_grow * @lv ) / 100
 
   get_round_num: ->
     @_player()?.round_num

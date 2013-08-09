@@ -176,9 +176,11 @@
     <Cell ss:StyleID="s73"><Data ss:Type="String">description</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">name</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">type</Data><Comment
-      ss:Author="arthur wu"><Data>技能类型表|id|name</Data></Comment></Cell>
+      ss:Author="arthur wu"><Data><B xmlns="http://www.w3.org/TR/REC-html40"><Font
+         html:Size="10" html:Color="#000000">技能类型表|id|name</Font></B></Data></Comment></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">scope</Data><Comment
-      ss:Author="arthur wu"><Data>卡牌范围表|id|name</Data></Comment></Cell>
+      ss:Author="arthur wu"><Data><B xmlns="http://www.w3.org/TR/REC-html40"><Font
+         html:Size="10" html:Color="#000000">卡牌范围表|id|name</Font></B></Data></Comment></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">target_num</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">star3</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">rate3</Data></Cell>
@@ -1043,8 +1045,8 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>10</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -105,7 +105,7 @@ var Card = (function(_super) {
         if (this.skill) {
             _abi += parseInt(this.skill.target_num) *
                 utility.parseEffect(this.skill['star' + this.star])[0] *
-                utility.parseEffect(this.skill['rate' + this.star])[0];
+                this.skill['rate' + this.star];
         }
 
         // 0.1%暴击率=10点战斗力

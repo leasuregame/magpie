@@ -35,6 +35,7 @@ beforeEach(function() {
         var dmage = {};
         _.each(steps, function(s) {
           _.each(s.d, function(pos, index) {
+            pos = Math.abs(pos);
             if (!_.isNumber(s.a) || !_.isNumber(pos)) {
               console.log('战斗步骤数据格式错误,', s);
               return false;
@@ -47,7 +48,7 @@ beforeEach(function() {
             }
           })
         });
-
+        
         // 检查 死亡人数的一致性
         if (isWin) {
           var death_man = 0;

@@ -88,6 +88,7 @@ var StrengthenLayer = cc.Layer.extend({
     _switchToCardListLayer: function (cardListLayer) {
         cc.log("StrengthenLayer _switchToCardListLayer");
 
+        this.retain();
         this.setVisible(false);
         MainScene.getInstance().switch(cardListLayer);
     },
@@ -131,7 +132,7 @@ var StrengthenLayer = cc.Layer.extend({
 
     _switchLabel: function (runLabel) {
         if (!(this._nowLayer instanceof runLabel)) {
-            this.removeChild(this._nowLabel);
+            if (this._nowLabel != null) this.removeChild(this._nowLabel);
             this._nowLabel = runLabel.create();
             this.addChild(this._nowLabel);
         }

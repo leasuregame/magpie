@@ -303,6 +303,23 @@ var Card = Entity.extend({
                 cb();
             }
         });
+    },
+
+    clone: function () {
+        cc.log("Card clone");
+
+        return Card.create({
+            id: this._id,
+            createTime: this._createTime,
+            tableId: this._tableId,
+            lv: this._lv,
+            exp: this._exp,
+            skillLv: this._skillLv,
+            hpAddition: this._hpAddition,
+            atkAddition: this._atkAddition,
+            elixir: this._elixir,
+            passiveSkills: this._passiveSkills
+        });
     }
 })
 

@@ -29,5 +29,18 @@
          landmarkName = "WebSocket::init(const Delegate&amp; delegate, const std::string&amp; url, const std::vector&lt;std::string&gt;* protocols/* = NULL*/)"
          landmarkType = "5">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Client-v1.0.0-e2.1.4/libs/javascript/bindings/generated/jsb_cocos2dx_auto.cpp"
+         timestampString = "397732715.757238"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "3365"
+         endingLineNumber = "3365"
+         landmarkName = "js_cocos2dx_CCNode_removeChild(JSContext *cx, uint32_t argc, jsval *vp)"
+         landmarkType = "7">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

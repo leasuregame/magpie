@@ -158,7 +158,7 @@ var SkillUpgradeLabel = cc.Node.extend({
             this._leadCardHalfNode = null;
         }
 
-        if(this._leadCard == null) {
+        if (this._leadCard == null) {
             this._resLabel.setVisible(false);
             this._tipLabel.setVisible(true);
             this._helpLabel.setVisible(false);
@@ -176,7 +176,7 @@ var SkillUpgradeLabel = cc.Node.extend({
 
             this._skillPointLabel.setString(skillPoint);
             this._skillPointLabel.setVisible(true);
-            if(upgradeNeedSkillPoint > skillPoint) {
+            if (upgradeNeedSkillPoint > skillPoint) {
                 this._skillPointLabel.setColor(cc.RED);
             } else {
                 this._skillPointLabel.setColor(cc.WHITE);
@@ -194,7 +194,7 @@ var SkillUpgradeLabel = cc.Node.extend({
             this._skillNameLabel.setString(this._leadCard.get("skillName"));
             this._skillHarmLabel.setVisible(true);
 
-            if(this._leadCard.canUpgradeSkill()) {
+            if (this._leadCard.canUpgradeSkill()) {
                 this._arrowLabel1.setVisible(true);
                 this._arrowLabel2.setVisible(true);
 
@@ -230,8 +230,8 @@ var SkillUpgradeLabel = cc.Node.extend({
 
             if (data) {
                 that._leadCard = data[0] || null;
-                that._retinueCard = [];
             }
+
             that.getParent()._backToThisLayer();
 
             cc.log("this._leadCard :");

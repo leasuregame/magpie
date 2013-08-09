@@ -425,6 +425,11 @@ describe("Logic Server # ", function() {
             'cur_exp'
           ]);
 
+          expect(data.msg.exp_obtain).toEqual(234534);
+          expect(data.msg.money_consume).toEqual(729864);
+          expect(data.msg.cur_lv).toEqual(55);
+          expect(data.msg.cur_exp).toEqual(0);
+
           doAjax('/player/' + pid, {}, function(res) {
             var _player = res.data;
             expect(_player.money).toEqual(before_player.money - data.msg.money_consume);
@@ -452,6 +457,44 @@ describe("Logic Server # ", function() {
 
         });
       });
+
+      it("卡牌强化并升级, 当1星1级卡牌吞掉两张1星1级的卡牌时", function(){
+        request('logic.trainHandler.strengthen', {
+          playerId: pid,
+          target: 250,
+          sources: [251, 252]
+        }, function(data) {
+          console.log(data);
+          expect(data.code).toEqual(200);
+
+          expect(data.msg.exp_obtain).toEqual(200);
+          expect(data.msg.money_consume).toEqual(115);
+          expect(data.msg.cur_lv).toEqual(2);
+          expect(data.msg.cur_exp).toEqual(90);
+
+          doAjax('/card/' + 250, {}, function(res) {
+            var _card = res.data;
+            expect(_card.lv).toEqual(data.msg.cur_lv);
+            expect(_card.exp).toEqual(data.msg.cur_exp);
+          });
+
+          doAjax('/card/' + 251, {}, function(res) {
+            expect(res).toEqual({
+              code: 404,
+              data: 'card not exists'
+            });
+          });
+
+          doAjax('/card/' + 252, {}, function(res) {
+            expect(res).toEqual({
+              code: 404,
+              data: 'card not exists'
+            });
+          });
+        });
+      });
+
+      
 
       describe("when money is not enought", function() {
         it("should warnning a message that can not strengthen", function() {
@@ -692,6 +735,12 @@ describe("Logic Server # ", function() {
     describe("logic.trainHandler.starUpgrade", function() {
       var before_player, before_card;
 
+      beforeAll(function() {
+        doAjax('/loaddata/csv', {}, function(data) {
+          expect(data).toEqual('done');
+        });
+      });
+
       beforeEach(function() {
         doAjax('/player/' + 1, {}, function(res) {
           before_player = res.data;
@@ -729,6 +778,11 @@ describe("Logic Server # ", function() {
               expect()
             });
 
+            doAjax('/card/' + 1, {}, function(res) {
+              var _card = data.msg.card;
+              delete _card.passiveSkills;
+              expect(res.data).toEqual(_card);
+            });
 
             doAjax('/card/' + 2, {}, function(res) {
               expect(res).toEqual({
@@ -757,9 +811,15 @@ describe("Logic Server # ", function() {
               allInherit: true
             },
             function(data) {
-              expect(data.code).toEqual(200);
-              expect(data.msg).toEqual('卡牌星级必须到达3级才能进阶');
               console.log(data);
+              expect(data.code).toEqual(200);
+              expect(data.msg.upgrade).toEqual(false);
+
+              doAjax('/card/' + 11, {}, function(res) {
+                var _card = data.msg.card;
+                delete _card.passiveSkills;
+                expect(res.data).toEqual(_card);
+              });
 
               doAjax('/card/' + 4, {}, function(res) {
                 expect(res).toEqual({
@@ -794,14 +854,32 @@ describe("Logic Server # ", function() {
         it('should can not upgrade star of card', function() {
           request(
             'logic.trainHandler.starUpgrade', {
-              playerId: 104,
-              target: 156,
-              sources: [3, 4],
+              playerId: 106,
+              target: 165,
+              sources: [160, 161],
               allInherit: true
             },
             function(data) {
               expect(data.code).toEqual(501);
-              expect(data.msg).toEqual('金币不足');
+              expect(data.msg).toEqual('铜板不足');
+              console.log(data);
+            }
+          );
+        });
+      });
+
+      describe("when sources cards is not exist", function() {
+        it('should can not upgrade star of card', function() {
+          request(
+            'logic.trainHandler.starUpgrade', {
+              playerId: 106,
+              target: 165,
+              sources: [2, 1],
+              allInherit: true
+            },
+            function(data) {
+              expect(data.code).toEqual(501);
+              expect(data.msg).toEqual('找不到素材卡牌');
               console.log(data);
             }
           );
@@ -813,8 +891,30 @@ describe("Logic Server # ", function() {
           request(
             'logic.trainHandler.starUpgrade', {
               playerId: 100,
-              target: 100,
-              sources: [101, 102],
+              target: 200,
+              sources: [
+                201,
+                202,
+                203,
+                204,
+                205,
+                206,
+                207,
+                208,
+                209,
+                210,
+                211,
+                212,
+                213,
+                214,
+                215,
+                216,
+                217,
+                218,
+                219,
+                220,
+                221
+              ],
               allInherit: true
             },
             function(data) {

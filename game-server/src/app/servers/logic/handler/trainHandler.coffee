@@ -212,7 +212,7 @@ Handler::starUpgrade = (msg, session, next) ->
       if card.star is 5
         return cb({code: 501, msg: "卡牌星级已经是最高级了"})
       if _.isEmpty(player.getCards(sources))
-        return cb({code: 501, msg: "can not find sources cards"})
+        return cb({code: 501, msg: "找不到素材卡牌"})
 
       cb(null)
 

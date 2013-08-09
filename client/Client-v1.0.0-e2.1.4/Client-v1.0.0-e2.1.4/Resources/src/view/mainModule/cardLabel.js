@@ -43,7 +43,7 @@ var CardLabel = cc.Node.extend({
         this.addChild(cardItemMenu);
 
         var cardHeadItem = CardHeadNode.getCardHeadItem(this._card);
-        cardHeadItem.setPosition(cc.p(80, 67));
+        cardHeadItem.setPosition(cc.p(80, 65));
 
         var cardHeadItemMenu = LazyMenu.create(cardHeadItem);
         cardHeadItemMenu.setPosition(cc.p(0, 0));

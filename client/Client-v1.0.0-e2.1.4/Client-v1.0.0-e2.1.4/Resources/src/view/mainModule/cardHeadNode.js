@@ -29,13 +29,15 @@ var CardHeadNode = CardNode.extend({
         cc.log((url + "_head" + index));
         this._heroSprite = cc.Sprite.create(main_scene_image[url + "_head" + index]);
         this._heroSprite.setAnchorPoint(cc.p(0, 0));
+        this._heroSprite.setPosition(cc.p(6, 12));
         this.addChild(this._heroSprite);
 
-        this._iconSprite = cc.Sprite.create(main_scene_image["card_item_frame" + star]);
+        this._iconSprite = cc.Sprite.create(main_scene_image.card_item_frame);
         this._iconSprite.setAnchorPoint(cc.p(0, 0));
+        this._iconSprite.setPosition(cc.p(6, 12));
         this.addChild(this._iconSprite);
 
-        this.setContentSize(cc.size(105, 106));
+        this.setContentSize(cc.size(108, 108));
 
         return true;
     }

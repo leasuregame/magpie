@@ -75,18 +75,13 @@ var main_scene_image = {
 
     card_icon1: main_scene_path + "card_icon1.png",
 
-    card_item_bg0: main_scene_path + "card_item_bg0.png",
     card_item_bg1: main_scene_path + "card_item_bg1.png",
     card_item_bg2: main_scene_path + "card_item_bg2.png",
     card_item_bg3: main_scene_path + "card_item_bg3.png",
     card_item_bg4: main_scene_path + "card_item_bg4.png",
     card_item_bg5: main_scene_path + "card_item_bg5.png",
 
-    card_item_frame1: main_scene_path + "card_item_frame1.png",
-    card_item_frame2: main_scene_path + "card_item_frame2.png",
-    card_item_frame3: main_scene_path + "card_item_frame3.png",
-    card_item_frame4: main_scene_path + "card_item_frame4.png",
-    card_item_frame5: main_scene_path + "card_item_frame5.png",
+    card_item_frame: main_scene_path + "card_item_frame.png",
 
     button0: main_scene_path + "button0.png",
     button0s: main_scene_path + "button0s.png",
@@ -153,8 +148,8 @@ var main_scene_image = {
     icon8: main_scene_path + "icon8.png",
     icon9: main_scene_path + "icon9.png",
     icon10: main_scene_path + "icon10.png",
-//    icon11: main_scene_path + "icon11.png",
-//    icon12: main_scene_path + "icon12.png",
+    icon11: main_scene_path + "icon11.png",
+    icon12: main_scene_path + "icon12.png",
 //    icon13: main_scene_path + "icon13.png",
 //    icon14: main_scene_path + "icon14.png",
     icon15: main_scene_path + "icon15.png",

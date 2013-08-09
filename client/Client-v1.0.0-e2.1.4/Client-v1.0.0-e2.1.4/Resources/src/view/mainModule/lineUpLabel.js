@@ -64,23 +64,9 @@ var LineUpLabel = cc.Layer.extend({
 
             if (card) {
                 var cardHeadItem = CardHeadNode.getCardHeadItem(card, this._onClickCard(card), this);
-                cardHeadItem.setPosition(cc.p(80 + 120 * i, 0));
+                cardHeadItem.setPosition(cc.p(79 + 122 * i, 0));
                 menu.addChild(cardHeadItem);
-
-//                star = card.get("star");
-//
-//                var cardItem = cc.MenuItemImage.create(s_h_hero_1, s_h_hero_1, this._onClickCard(card), this);
-//                cardItem.setPosition(cc.p(80 + 120 * i, 0));
-//                menu.addChild(cardItem);
             }
-
-//            var cardItemBg = cc.Sprite.create(main_scene_image["card_item_bg" + star]);
-//            cardItemBg.setPosition(cc.p(80 + 120 * i, 0));
-//            this.addChild(cardItemBg, -1);
-//
-//            var cardItemFrame = cc.Sprite.create(main_scene_image["card_item_frame" + star]);
-//            cardItemFrame.setPosition(cc.p(80 + 120 * i, 0));
-//            this.addChild(cardItemFrame, 1);
         }
     },
 

@@ -104,7 +104,7 @@ var CardListLayer = cc.Layer.extend({
         var len = cardListIndex.length;
 
         for (var i = 0; i < len; ++i) {
-            var index = this._selectType == SORT_TYPE_DROP ? (i + 1) : (len - i);
+            var index = this._sortType == SORT_TYPE_DROP ? (len - i) : (i + 1);
             this._cardLabelList[cardListIndex[i]].setPosition(cc.p(0, this._scrollViewHeight - index * 124));
         }
 
@@ -260,7 +260,7 @@ var CardListLayer = cc.Layer.extend({
     _initExp: function () {
         cc.log("CardListLayer _initExp");
 
-        this._selectType = SORT_TYPE_LITER;
+        this._sortType = SORT_TYPE_LITER;
 
         var titleLabel = cc.Sprite.create(main_scene_image.icon25);
         titleLabel.setPosition(cc.p(360, 1000));

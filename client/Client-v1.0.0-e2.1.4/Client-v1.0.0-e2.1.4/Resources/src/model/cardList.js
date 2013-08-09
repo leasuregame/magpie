@@ -21,29 +21,35 @@ var CardList = Entity.extend({
     _index: [],
     _length: 0,
 
-    init: function (cardList, lineUp) {
+    init: function (cardList) {
         cc.log("CardList init");
 
-        this._length = cardList.length;
+        var len = cardList.length;
 
-        for (var i = 0; i < this._length; ++i) {
+        for (var i = 0; i < len; ++i) {
             var cardId = cardList[i].id;
             var card = Card.create(cardList[i]);
 
             this._cardList[cardId] = card;
-            this._index[i] = cardId;
         }
 
-        var key;
-        for (key in lineUp) {
-            var cardId = lineUp[key];
-            this._cardList[cardId].set("isUse", true);
-        }
+        this.update();
 
-        cc.log(this._cardList[1]);
         cc.log(this);
 
         return true;
+    },
+
+    update: function () {
+        cc.log("CardList update");
+
+        this._length = 0;
+        this._index = [];
+
+        var key;
+        for (key in this._cardList) {
+            this._index[this._length++] = this._cardList[key].get("id");
+        }
     },
 
     push: function (card) {
@@ -54,11 +60,11 @@ var CardList = Entity.extend({
             for (var i = 0; i < len; ++i) {
                 this._cardList[card[i].get("id")] = card[i];
             }
-            this._length += len;
         } else {
             this._cardList[card.get("id")] = card;
-            this._length += 1;
         }
+
+        this.update();
     },
 
     delete: function (card) {
@@ -69,11 +75,11 @@ var CardList = Entity.extend({
             for (var i = 0; i < len; ++i) {
                 delete this._cardList[card[i].get("id")];
             }
-            this._length -= len;
         } else {
             delete this._cardList[card.get("id")];
-            this._length -= 1;
         }
+
+        this.update();
     },
 
     deleteById: function (cardId) {
@@ -84,11 +90,11 @@ var CardList = Entity.extend({
             for (var i = 0; i < len; ++i) {
                 delete this._cardList[cardId[i]];
             }
-            this._length -= len;
         } else {
             delete this._cardList[cardId];
-            this._length -= 1;
         }
+
+        this.update();
     },
 
     getCardByIndex: function (index) {
@@ -96,15 +102,6 @@ var CardList = Entity.extend({
         cc.log(index);
 
         return this._cardList[index];
-    },
-
-    changeUseCardByIndex: function (index) {
-        cc.log("CardList changeUseCardByIndex");
-
-        var isUse = !this._cardList[index].get("isUse");
-        this._cardList[index].set("isUse", isUse);
-
-        return isUse;
     },
 
     _sort: function (cardList, type) {

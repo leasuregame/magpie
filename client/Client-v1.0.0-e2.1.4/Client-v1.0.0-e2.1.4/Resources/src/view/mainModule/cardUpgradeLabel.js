@@ -22,7 +22,7 @@ var CardUpgradeLabel = cc.Layer.extend({
     _maxExpLabel: null,
     _moneyLabel: null,
     _cardCountLabel: null,
-    _cardLabel: null,
+    _resLabel: null,
     _hpLabel: null,
     _hpAdditionLabel: null,
     _atkLabel: null,
@@ -53,55 +53,55 @@ var CardUpgradeLabel = cc.Layer.extend({
         helpBgSprite.setPosition(cc.p(360, 380));
         this.addChild(helpBgSprite);
 
-        this._cardLabel = cc.Node.create();
-        this._cardLabel.setPosition(cc.p(202, 445));
-        this.addChild(this._cardLabel, 1);
+        this._resLabel = cc.Node.create();
+        this._resLabel.setPosition(cc.p(202, 445));
+        this.addChild(this._resLabel, 1);
 
-        var cardLabelBgSprite = cc.Sprite.create(main_scene_image.icon49);
-        cardLabelBgSprite.setAnchorPoint(cc.p(0, 0));
-        this._cardLabel.addChild(cardLabelBgSprite);
+        var resLabelBgSprite = cc.Sprite.create(main_scene_image.icon49);
+        resLabelBgSprite.setAnchorPoint(cc.p(0, 0));
+        this._resLabel.addChild(resLabelBgSprite);
 
-        var cardLabelIcon = cc.Sprite.create(main_scene_image.icon54);
-        cardLabelIcon.setPosition(cc.p(70, 95));
-        this._cardLabel.addChild(cardLabelIcon);
+        var resLabelIcon = cc.Sprite.create(main_scene_image.icon54);
+        resLabelIcon.setPosition(cc.p(70, 95));
+        this._resLabel.addChild(resLabelIcon);
 
         this._lvLabel = cc.LabelTTF.create("0", 'Times New Roman', 40);
         this._lvLabel.setPosition(cc.p(70, 40));
-        this._cardLabel.addChild(this._lvLabel);
+        this._resLabel.addChild(this._lvLabel);
 
         this._hpLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
         this._hpLabel.setAnchorPoint(cc.p(0, 0.5));
         this._hpLabel.setPosition(cc.p(110, 112));
-        this._cardLabel.addChild(this._hpLabel);
+        this._resLabel.addChild(this._hpLabel);
 
         this._hpAdditionLabel = cc.LabelTTF.create("+0", 'Times New Roman', 25);
         this._hpAdditionLabel.setAnchorPoint(cc.p(0, 0.5));
         this._hpAdditionLabel.setColor(cc.c3b(118, 238, 60));
         this._hpAdditionLabel.setPosition(cc.p(180, 112));
-        this._cardLabel.addChild(this._hpAdditionLabel);
+        this._resLabel.addChild(this._hpAdditionLabel);
 
         this._atkLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
         this._atkLabel.setAnchorPoint(cc.p(0, 0.5));
         this._atkLabel.setPosition(cc.p(110, 78));
-        this._cardLabel.addChild(this._atkLabel);
+        this._resLabel.addChild(this._atkLabel);
 
         this._atkAdditionLabel = cc.LabelTTF.create("+0", 'Times New Roman', 25);
         this._atkAdditionLabel.setAnchorPoint(cc.p(0, 0.5));
         this._atkAdditionLabel.setColor(cc.c3b(118, 238, 60));
         this._atkAdditionLabel.setPosition(cc.p(180, 78));
-        this._cardLabel.addChild(this._atkAdditionLabel);
+        this._resLabel.addChild(this._atkAdditionLabel);
 
         var progressBgSprite = cc.Sprite.create(main_scene_image.progress4);
         progressBgSprite.setPosition(cc.p(190, 40));
-        this._cardLabel.addChild(progressBgSprite);
+        this._resLabel.addChild(progressBgSprite);
 
         this._greenProgress = Progress.create(null, main_scene_image.progress6, 9, 10);
         this._greenProgress.setPosition(cc.p(190, 40));
-        this._cardLabel.addChild(this._greenProgress);
+        this._resLabel.addChild(this._greenProgress);
 
         this._yellowProgress = Progress.create(null, main_scene_image.progress5, 7, 10);
         this._yellowProgress.setPosition(cc.p(190, 40));
-        this._cardLabel.addChild(this._yellowProgress);
+        this._resLabel.addChild(this._yellowProgress);
 
         this._tipLabel = cc.Sprite.create(main_scene_image.icon56);
         this._tipLabel.setPosition(cc.p(360, 380));
@@ -243,7 +243,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._moneyLabel.setVisible(false);
             this._cardCountLabel.setVisible(false);
 
-            this._cardLabel.setVisible(false);
+            this._resLabel.setVisible(false);
             this._hpAdditionLabel.setVisible(false);
             this._atkAdditionLabel.setVisible(false);
         } else {
@@ -275,7 +275,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._moneyLabel.setVisible(true);
             this._cardCountLabel.setVisible(true);
 
-            this._cardLabel.setVisible(true);
+            this._resLabel.setVisible(true);
             this._hpAdditionLabel.setVisible(true);
             this._atkAdditionLabel.setVisible(true);
         }
@@ -413,7 +413,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._atkAdditionLabel.setString(this._leadCard.get("atk") - dummyCard.get("atk"));
             this._yellowProgress.setAllValue(dummyCard.get("maxExp"), dummyCard.get("exp"));
 
-            if(this._leadCard.get("lv") > dummyCard.get("lv")) {
+            if (this._leadCard.get("lv") > dummyCard.get("lv")) {
                 this._greenProgress.setAllValue(dummyCard.get("maxExp"), dummyCard.get("maxExp"));
             } else {
                 this._greenProgress.setAllValue(this._leadCard.get("maxExp"), this._leadCard.get("exp"));
@@ -423,7 +423,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._moneyLabel.setString(Math.round(money * factor));
             this._cardCountLabel.setString(Math.round(cardCount * factor));
 
-            if(exp <= 0) {
+            if (exp <= 0) {
                 LazyLayer.closeCloudLayer();
                 this._retinueCard = [];
                 this.update();
@@ -510,6 +510,7 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._leadCard.upgrade(function (data) {
             cc.log(data);
 
+            that._retinueCard = [];
             that._upgrade(dummyCard, data.exp, data.money, len);
         }, cardIdList);
     }

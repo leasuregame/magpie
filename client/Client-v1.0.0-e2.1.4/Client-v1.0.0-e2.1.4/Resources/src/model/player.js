@@ -57,7 +57,7 @@ var Player = Entity.extend({
         this._energy = data.energy;
         this._maxExp = outputTables.player_upgrade.rows[this._lv].exp;
 
-        gameData.cardList.init(data.cards, data.lineUp);
+        gameData.cardList.init(data.cards);
         gameData.lineUp.init(data.lineUp);
         gameData.task.init(data.task);
         gameData.pass.init(data.pass);

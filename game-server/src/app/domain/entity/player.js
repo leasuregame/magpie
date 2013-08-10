@@ -20,63 +20,12 @@ var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 
-var startPowerResumeTimer = function(player) {
-    var resumePoint = playerConfig.POWER_RESUME.point;
-    var interval = playerConfig.POWER_RESUME.interval;
-
-    setInterval(function() {
-        player.resumePower(resumePoint);
-        player.save();
-    }, interval);
-};
-
-var startPowerGiveTimer = function(player) {
-    var givePoint = playerConfig.POWER_GIVE.point;
-    var hours = playerConfig.POWER_GIVE.hours;
-    var interval = playerConfig.POWER_GIVE.interval;
-
-    setInterval(function() {
-        var hour = (new Date()).getHours();
-        if (_.contains(hours, hour) && !player.hasGive(hour)) {
-            player.givePower(hour, givePoint);
-            player.save();
-        }
-    }, interval);
-};
-
-var groupCardsEffect = function(player) {
-    var cardIds = _.values(player.lineUpObj());
-    var cards = _.values(player.cards).filter(function(id, c) {
-        return c.star >= 3 && cardIds.indexOf(c.id) > -1;
-    });
-    var cardTable = table.getTable('cards');
-
-    for (var i = 0; i < cards.length; i++) {
-        var card = cards[i];
-        var cardConfig = cardTable.getItem(card.id);
-        var series = cardConfig.group.toString().split(',');
-        var seriesCards = cardTable.filter(function(id, item) {
-            return (series.indexOf(item.number) > -1) && (cardIds.indexOf(id) > -1);
-        });
-
-        if (!_.isEmpty(seriesCards) && (series.length === seriesCards.length)) {
-            card.activeGroupEffect();
-        }
-    }
-};
-
 var defaultMark = function() {
     var i, result = [];
     for (i = 0; i < 100; i++) {
         result.push(0);
     }
     return result;
-};
-
-var addListeners = function(player) {
-    player.on('lineUp.change', function() {
-        player.getAbility();
-    });
 };
 
 /*
@@ -89,6 +38,11 @@ var Player = (function(_super) {
     function Player(param) {
         Player.__super__.constructor.apply(this, arguments);
     }
+
+    Player.prototype.init = function() {
+        this.cards || (this.cards = []);
+        this.rank || (this.rank = null);
+    };
 
     Player.FIELDS = [
         'id',
@@ -137,16 +91,6 @@ var Player = (function(_super) {
         skillPoint: 0
     };
 
-    Player.prototype.init = function() {
-        this.cards || (this.cards = []);
-        this.rank || (this.rank = null);
-        groupCardsEffect(this);
-        startPowerResumeTimer(this);
-
-        addListeners(this);
-        this.emit('lineUp.change');
-    };
-
     Player.prototype.save = function() {
         Player.__super__.save.apply(this, arguments);
         // update all cards info
@@ -163,8 +107,32 @@ var Player = (function(_super) {
                 ability += card.ability();
             }
         });
-        this.set('ability', ability);
         return ability;
+    };
+
+    Player.prototype.updateAbility = function() {
+        this.set('ability', this.getAbility());
+    };
+
+    Player.prototype.activeGroupEffect = function() {
+        var cardIds = _.values(this.lineUpObj());
+        var cards = _.values(this.cards).filter(function(id, c) {
+            return c.star >= 3 && cardIds.indexOf(c.id) > -1;
+        });
+        var cardTable = table.getTable('cards');
+
+        for (var i = 0; i < cards.length; i++) {
+            var card = cards[i];
+            var cardConfig = cardTable.getItem(card.id);
+            var series = cardConfig.group.toString().split(',');
+            var seriesCards = cardTable.filter(function(id, item) {
+                return (series.indexOf(item.number) > -1) && (cardIds.indexOf(id) > -1);
+            });
+
+            if (!_.isEmpty(seriesCards) && (series.length === seriesCards.length)) {
+                card.activeGroupEffect();
+            }
+        }
     };
 
     Player.prototype.addCard = function(card) {
@@ -308,7 +276,7 @@ var Player = (function(_super) {
         items.forEach(function(item) {
             moneyConsume += item.money_need;
         });
-        
+
         moneyConsume = parseInt(moneyConsume);
         if (this.money < moneyConsume) {
             return cb({

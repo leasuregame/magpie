@@ -1,6 +1,6 @@
 dao = require('pomelo').app.get('dao')
 playerManager = require '../../../manager/playerManager'
-area = require '../../../doamin/area/area'
+area = require '../../../domain/area/area'
 logger = require('pomelo-logger').getLogger(__filename)
 
 module.exports = (app) ->

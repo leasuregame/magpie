@@ -35,6 +35,10 @@ app.configure('production|development', 'connector|battle|logic', function() {
   app.set('dao', dao);
 });
 
+// app.configure('production|development', 'area|battle', function(){
+//   loadMysqlConfig(app.getBase() + '/config/mysql1.json');
+// });
+
 app.configure('development', 'connector|battle|logic', function() {
   app.set('debug', true);
 });
@@ -45,3 +49,15 @@ app.start();
 process.on('uncaughtException', function(err) {
   console.error(' Caught exception: ' + err.stack);
 });
+
+var loadMysqlConfig = function(path) {
+  var areaId = app.get('curServer').area;
+  var mysqlConfig = require(path);
+  var env = app.get('env');
+
+  var val = mysqlConfig;
+  if (mysqlConfig[env] && mysqlConfig[env][areaId]) {
+    val = mysqlConfig[env][areaId];
+  }
+  app.set('mysql', val);
+};

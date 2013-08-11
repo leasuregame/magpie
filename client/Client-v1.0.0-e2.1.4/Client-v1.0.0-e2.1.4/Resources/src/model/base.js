@@ -8,38 +8,34 @@
 
 
 /*
-*
-* */
+ *
+ * */
 
-cc.Sprite.createNoCache = function(filename, rect) {
-    var sprite = new cc.Sprite();
-    var loadImg = new Image();
-    loadImg.addEventListener("load", function () {
-        if (!rect) {
-            rect = cc.rect(0, 0, loadImg.width, loadImg.height);
+
+var lz = {};
+
+/**
+ * copy an new object
+ * @function
+ * @param {object|Array} obj source object
+ * @return {Array|object}
+ */
+lz.clone = function (obj) {
+    var newObj = (obj instanceof Array) ? [] : {};
+    for (var key in obj) {
+        var copy = obj[key];
+        if (copy instanceof Array) {
+            newObj[key] = lz.clone(copy);
+        } else if (((typeof copy) == "object")) {
+            newObj[key] = lz.clone(copy);
+        } else {
+            newObj[key] = copy;
         }
-        var texture2d = new cc.Texture2D();
-        texture2d.initWithElement(loadImg);
-        texture2d.handleLoadedTexture();
-        sprite.initWithTexture(texture2d, rect);
-    });
-    loadImg.addEventListener("error", function () {
-        cc.log("load failure:" + filename);
-    });
-    loadImg.src = filename;
-
-    return sprite;
-}
-
-//Number.method('integer', function() {
-//    return Math[this < 0 ? 'ceiling' : 'floor'](this);
-//});
-//
-//String.method('trim', function() {
-//    return this.replace(/^\s+|\s+$/g, '');
-//})
+    }
+    return newObj;
+};
 
 // 获取不大于原数的随机数
-Number.prototype.getRandom = function() {
+Number.prototype.getRandom = function () {
     return Math.floor(Math.random() * this);
 }

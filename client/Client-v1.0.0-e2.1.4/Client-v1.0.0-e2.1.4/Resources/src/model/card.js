@@ -12,6 +12,14 @@
  * */
 
 
+var passiveSkillDescription = {
+    "atk_improve": "攻击",
+    "hp_improve": "生命",
+    "crit": "暴击",
+    "dodge": "闪避",
+    "atk_reduce": "减伤"
+};
+
 var Card = Entity.extend({
     _id: 0,                 // 数据库对应ID
     _createTime: 0,         // 创建时间
@@ -22,7 +30,7 @@ var Card = Entity.extend({
     _hpAddition: 0,         // 生命培养量
     _atkAddition: 0,        // 攻击培养量
     _elixir: 0,             // 已经消耗的仙丹
-    _passiveSkillList: [],  // 被动技能
+    _passiveSkill: {},  // 被动技能
 
     _kindId: 0,             // 系列号
     _name: "",              // 卡牌名称
@@ -65,17 +73,7 @@ var Card = Entity.extend({
             this._atkAddition = data.atkAddition || this._atkAddition;
             this._elixir = data.elixir || this._elixir;
 
-            if (data.passiveSkills) {
-                var passiveSkillList = data.passiveSkills;
-                var len = passiveSkillList.length;
-                for (var i = 0; i < len; ++i) {
-                    this._passiveSkillList[i] = {
-                        id: passiveSkillList.id,
-                        name: passiveSkillList.name,
-                        value: passiveSkillList.value
-                    }
-                }
-            }
+            this._updatePassiveSkill(data.passiveSkills);
         }
 
         this._loadCardTable();
@@ -84,6 +82,21 @@ var Card = Entity.extend({
         this._ability = this._getCardAbility();
 
         return true;
+    },
+
+    _updatePassiveSkill: function (data) {
+        cc.log("Card _updatePassiveSkill");
+
+        if (data) {
+            var len = data.length;
+            for (var i = 0; i < len; ++i) {
+                this._passiveSkill[data[i].id] = {
+                    name: data[i].name,
+                    value: data[i].value,
+                    description: passiveSkillDescription[data[i].name]
+                }
+            }
+        }
     },
 
     _loadCardTable: function () {
@@ -302,23 +315,6 @@ var Card = Entity.extend({
 
                 cb();
             }
-        });
-    },
-
-    clone: function () {
-        cc.log("Card clone");
-
-        return Card.create({
-            id: this._id,
-            createTime: this._createTime,
-            tableId: this._tableId,
-            lv: this._lv,
-            exp: this._exp,
-            skillLv: this._skillLv,
-            hpAddition: this._hpAddition,
-            atkAddition: this._atkAddition,
-            elixir: this._elixir,
-            passiveSkills: this._passiveSkills
         });
     }
 })

@@ -293,7 +293,7 @@ var CardUpgradeLabel = cc.Layer.extend({
                 exp += this._retinueCard[i].getCardExp();
             }
 
-            var dummyCard = this._leadCard.clone();
+            var dummyCard = lz.clone(this._leadCard);
 
             var money = dummyCard.addExp(exp);
 
@@ -489,7 +489,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             cardIdList.push(this._retinueCard[i].get("id"));
         }
 
-        var dummyCard = this._leadCard.clone();
+        var dummyCard = lz.clone(this._leadCard);
 
         var that = this;
         this._leadCard.upgrade(function (data) {

@@ -20,7 +20,7 @@ class Manager
     #   _player = playerList.get(params.pid)
     #   return cb(null, _player) if _player?
 
-    sync = params.sync or true
+    sync = params.sync? and params.sync or true
     dao.player.getPlayerInfo {
       where: {id:params.pid}, 
       sync: sync

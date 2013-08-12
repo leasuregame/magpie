@@ -136,6 +136,14 @@ var doAjax = function(url, params, cb) {
     params = {};
   }
 
+  if (typeof params == 'undefined') {
+    params = {};
+  }
+
+  if (typeof cb == 'undefined') {
+    cb = function(){};
+  }
+
   var ok = false;
   runs(function() {
     $.get(url, params, function(data) {

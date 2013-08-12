@@ -7,6 +7,7 @@ Area.init = (opts) ->
   timer.run()
   
 Area.addPlayer = (player) ->
+  
   eventManager.addEventToPlayer(player)
   players.put player
 
@@ -21,7 +22,6 @@ Area.getPlayers = ->
 
 Area.powerConsume = ->
   for p in @getPlayers()
-    console.log p, @getPlayers()
     p.emit('power.consume')
     p.emit('power.give')
   return

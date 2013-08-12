@@ -36,9 +36,9 @@ app.configure('production|development', 'connector|battle|logic', function() {
 
 });
 
-// app.configure('production|development', 'logic', function(){
-//   area.init();
-// });
+app.configure('production|development', 'logic', function(){
+  area.init();
+});
 
 // app.configure('production|development', 'area|battle', function(){
 //   loadMysqlConfig(app.getBase() + '/config/mysql1.json');

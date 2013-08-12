@@ -11,7 +11,7 @@ Handler = (@app) ->
 Handler::entry = (msg, session, next) ->
   playerId = session.get('playerId')
 
-  playerManager.getPlayerInfo playerId, (err, player) ->
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err
       logger.error 'Get player failed! ' + err
       return next(new Error('fail to get player info'), {

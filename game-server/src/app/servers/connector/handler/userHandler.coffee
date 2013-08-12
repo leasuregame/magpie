@@ -2,6 +2,7 @@ Code = require '../../../../../shared/code'
 Resources = require '../../../../../shared/resources'
 async = require 'async'
 dao = require('pomelo').app.get('dao')
+logger = require('pomelo-logger').getLogger(__filename)
 
 module.exports = (app) ->
   new Handler(app)
@@ -29,6 +30,7 @@ Handler::login = (msg, session, next) ->
   password = msg.password
 
   uid = null;
+  player = null;
   async.waterfall [
     (cb) ->
       dao.user.fetchOne where: {account:account}, cb
@@ -41,9 +43,12 @@ Handler::login = (msg, session, next) ->
 
     (userId, cb) ->
       uid = userId
+      session.bind uid, cb
+
+    (cb) ->
       dao.player.fetchOne where: {userId: uid}, (err, res) ->
         if err and not res
-          console.log err
+          logger.error 'faild to get player' + err
           return cb(null, null)
 
         cb(null, res.id)
@@ -54,23 +59,23 @@ Handler::login = (msg, session, next) ->
 
       dao.player.getPlayerInfo where: {id:playerId}, (err, player) ->
         if err and not player
-          console.log err
+          logger.error 'faild to get player' + err
           return cb(null, null)
         
         cb(null, player)
 
-  ], (err, _player) ->
+    (_player, cb) ->
+      player = _player
+      session.set('playerId', player.id)
+      session.set('playerName', player.name)
+      session.set('areaId', player.areaId)
+      session.on('close', onUserLeave)
+      session.pushAll cb
+  ], (err) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
-
-    session.bind(uid)
-    if _player?
-      session.set('playerId', _player.id)
-      session.set('playerName', _player.name)
-      session.set('areaId', _player.areaId)
-
-    session.on('close', onUserLeave)
-    next(null, {code: 200, msg: {user: {id: uid}, player: _player?.toJson()}})
+    
+    next(null, {code: 200, msg: {user: {id: uid}, player: player?.toJson()}})
 
 onUserLeave = (session, reason) ->
   if not session or not session.uid

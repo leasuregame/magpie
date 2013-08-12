@@ -13,11 +13,11 @@
 
 
 var passiveSkillDescription = {
-    "atk_improve": "攻击",
-    "hp_improve": "生命",
-    "crit": "暴击",
-    "dodge": "闪避",
-    "atk_reduce": "减伤"
+    atk_improve: "攻击",
+    hp_improve: "生命",
+    crit: "暴击",
+    dodge: "闪避",
+    atk_reduce: "减伤"
 };
 
 var Card = Entity.extend({

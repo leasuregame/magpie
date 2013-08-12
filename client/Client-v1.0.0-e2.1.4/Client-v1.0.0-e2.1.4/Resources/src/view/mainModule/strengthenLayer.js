@@ -127,7 +127,7 @@ var StrengthenLayer = cc.Layer.extend({
         this._skillUpgradeItem.setEnabled(true);
         this._passiveSkillUpgradeItem.setEnabled(false);
 
-        this._switchLabel(PassiveSkillUpgradeLabel);
+        this._switchLabel(PassiveSkillAfreshLabel);
     },
 
     _switchLabel: function (runLabel) {

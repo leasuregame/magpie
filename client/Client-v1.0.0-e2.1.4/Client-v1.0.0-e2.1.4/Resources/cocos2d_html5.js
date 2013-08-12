@@ -113,7 +113,7 @@
             'src/view/mainModule/mainScene.js',
             'src/view/mainModule/messageLabel.js',
             'src/view/mainModule/messageLayer.js',
-            'src/view/mainModule/passiveSkillUpgradeLabel.js',
+            'src/view/mainModule/passiveSkillAfreshLabel.js',
             'src/view/mainModule/passLabel.js',
             'src/view/mainModule/passLayer.js',
             'src/view/mainModule/playerDetailsLayer.js',

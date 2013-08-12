@@ -251,7 +251,6 @@ Handler::starUpgrade = (msg, session, next) ->
         card.upgrade(_lv, _exp_remain)
 
         # 卡牌星级进阶，添加一个被动属性
-        card.increase('star')
         ps_data = {}
         if card.star >= 3
           ps_data = require('../../../domain/entity/passiveSkill').born()
@@ -289,7 +288,7 @@ Handler::starUpgrade = (msg, session, next) ->
       }
 
       _jobs.push {
-        type: 'create'
+        type: 'insert'
         options:
           table: 'passiveSkill'
           data: ps_data

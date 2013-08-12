@@ -771,7 +771,7 @@ describe("Logic Server # ", function() {
             });
 
             doAjax('/card/' + 1, {}, function(res) {
-              var _card = data.msg.card;
+              var _card = _.clone(data.msg.card);
               delete _card.passiveSkills;
               expect(res.data).toEqual(_card);
             });
@@ -808,7 +808,7 @@ describe("Logic Server # ", function() {
               expect(data.msg.upgrade).toEqual(false);
 
               doAjax('/card/' + 11, {}, function(res) {
-                var _card = data.msg.card;
+                var _card = _.clone(data.msg.card);
                 delete _card.passiveSkills;
                 expect(res.data).toEqual(_card);
               });

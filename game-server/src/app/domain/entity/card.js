@@ -211,7 +211,7 @@ var Card = (function(_super) {
             atkAddition: this.atkAddition,
             passiveSkills: _.values(this.passiveSkills).map(function(ps) {
                 return ps.toJson();
-            })
+            }) || []
         };
     };
 

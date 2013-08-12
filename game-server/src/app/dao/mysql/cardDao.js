@@ -50,7 +50,7 @@ var CardDao = (function (_super) {
             var card = results[0];
             var pss = results[1];
 
-            card.addPassiveSkill(pss);
+            card.addPassiveSkills(pss);
             return cb(null, card);
         });
     };

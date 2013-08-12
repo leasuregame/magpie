@@ -1,5 +1,5 @@
 var pomelo = require('pomelo');
-
+var area = require('./app/domain/area/area');
 /**
  * Init app for client.
  */
@@ -28,12 +28,17 @@ app.configure('production|development', 'connector|battle|logic', function() {
   app.load(pomelo.sync, {
     path: __dirname + '/app/dao/mysql/mapping',
     dbclient: dbclient,
-    interval: 10000
+    interval: 60000
   });
 
   var dao = require('./app/dao').init('mysql');
   app.set('dao', dao);
+
 });
+
+// app.configure('production|development', 'logic', function(){
+//   area.init();
+// });
 
 // app.configure('production|development', 'area|battle', function(){
 //   loadMysqlConfig(app.getBase() + '/config/mysql1.json');

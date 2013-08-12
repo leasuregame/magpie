@@ -633,27 +633,19 @@ describe("Logic Server # ", function() {
     });
 
     describe("logic.trainHandler.passSkillAfresh", function() {
-      var before_ps;
-
-      beforeEach(function() {
-        doAjax('/passiveSkill/' + 6, {}, function(res) {
-          before_ps = res.data;
-        });
-      });
 
       it("card's pass skill should can be passSkillAfresh", function() {
         request('logic.trainHandler.passSkillAfresh', {
           playerId: pid,
           cardId: 101,
-          psId: 6
+          psIds: [6]
         }, function(data) {
           expect(data.code).toEqual(200);
-          expect(data.msg.value).toBeDefined();
-          expect(_.isNumber(parseInt(data.msg.value))).toEqual(true);
 
-          setTimeOut(function() {
+          setTimeout(function() {
             doAjax('/passiveSkill/' + 6, {}, function(res) {
-              expect(res.data.value).toEqual(data.msg.value);
+              expect(res.data.name).toEqual(data.msg[0].name);
+              expect(res.data.value).toEqual(data.msg[0].value);
             });
           }, 2000);
           console.log(data);
@@ -665,10 +657,10 @@ describe("Logic Server # ", function() {
           request('logic.trainHandler.passSkillAfresh', {
             playerId: 106,
             cardId: 164,
-            psId: 7
+            psIds: [7]
           }, function(data) {
             expect(data.code).toEqual(501);
-            expect(data.msg).toEqual('铜板不足，不能洗炼');
+            expect(data.msg).toEqual('铜板/元宝不足，不能洗炼');
             console.log(data);
           });
         });
@@ -679,7 +671,7 @@ describe("Logic Server # ", function() {
           request('logic.trainHandler.passSkillAfresh', {
             playerId: pid,
             cardId: 104,
-            psId: 7
+            psIds: [7]
           }, function(data) {
             expect(data.code).toEqual(501);
             expect(data.msg).toEqual('找不到被动属性');
@@ -760,9 +752,9 @@ describe("Logic Server # ", function() {
             allInherit: false
           },
           function(data) {
+            console.log(data);
             expect(data.code).toEqual(200);
             expect(data.msg.upgrade).toEqual(false);
-            console.log(data);
 
             doAjax('/player/' + 1, {}, function(res) {
               expect(res.data.gold).toEqual(before_player.gold);
@@ -802,7 +794,7 @@ describe("Logic Server # ", function() {
       });
 
       describe("when card's star is 1", function() {
-        it('should can not upgrade star of card', function() {
+        it('should can upgrade star of card', function() {
           request(
             'logic.trainHandler.starUpgrade', {
               playerId: 1,

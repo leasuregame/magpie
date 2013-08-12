@@ -264,7 +264,7 @@ var Player = (function(_super) {
         });
 
         // 预升级，得到升级的级数和剩余的经验
-        // 不会实际卡牌的属性
+        // 不会改变卡牌的属性
         var _ref = targetCard.vitual_upgrade(expObtain);
         var upgraded_lv = _ref[0];
         var exp_remain = _ref[1];

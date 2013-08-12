@@ -1,7 +1,7 @@
 var Cache, now;
 
-Cache = (function(){
-  function Cache(){
+Cache = (function() {
+  function Cache() {
     this.cache = {};
     this.debug = false;
     this.hitCount = 0;
@@ -9,14 +9,17 @@ Cache = (function(){
   }
 
   Cache.prototype.put = function(key, value, time, timeoutCallback) {
-    if (this.debug) console.log('caching: '+key+' = '+value+' (@'+time+')');
+    if (this.debug) console.log('caching: ' + key + ' = ' + value + ' (@' + time + ')');
     var oldRecord = this.cache[key];
     if (oldRecord) {
       clearTimeout(oldRecord.timeout);
     }
 
     var expire = time + now();
-    var record = {value: value, expire: expire};
+    var record = {
+      value: value,
+      expire: expire
+    };
 
     if (!isNaN(expire)) {
       var timeout = setTimeout(function() {
@@ -43,7 +46,7 @@ Cache = (function(){
     var data = this.cache[key];
     if (typeof data != "undefined") {
       if (isNaN(data.expire) || data.expire >= now()) {
-      if (this.debug) hitCount++;
+        if (this.debug) hitCount++;
         return data.value;
       } else {
         // free some space
@@ -55,9 +58,10 @@ Cache = (function(){
   };
 
   Cache.prototype.all = function() {
-    var key, results = [], item = null;
+    var key, results = [],
+      item = null;
     for (key in this.cache) {
-      if (this.cache.hasOwnProperty(key)){
+      if (this.cache.hasOwnProperty(key)) {
         item = this.get(key);
         if (item !== null) {
           results.push(item);
@@ -67,20 +71,22 @@ Cache = (function(){
     return results;
   };
 
-  Cache.prototype.size = function() { 
-    var size = 0, key;
+  Cache.prototype.size = function() {
+    var size = 0,
+      key;
     for (key in this.cache) {
-      if (this.cache.hasOwnProperty(key)) 
+      if (this.cache.hasOwnProperty(key))
         if (this.get(key) !== null)
           size++;
     }
     return size;
   };
 
-  Cache.prototype.memsize = function() { 
-    var size = 0, key;
+  Cache.prototype.memsize = function() {
+    var size = 0,
+      key;
     for (key in this.cache) {
-      if (this.cache.hasOwnProperty(key)) 
+      if (this.cache.hasOwnProperty(key))
         size++;
     }
     return size;
@@ -102,8 +108,8 @@ Cache = (function(){
 
 })();
 
-now = function() { 
-  return (new Date).getTime(); 
+now = function() {
+  return (new Date).getTime();
 };
 
 module.exports = Cache;

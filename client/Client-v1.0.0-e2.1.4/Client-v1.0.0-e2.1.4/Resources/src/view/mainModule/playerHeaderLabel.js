@@ -36,7 +36,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
 
         this.setTouchEnabled(true);
 
-        this._nameLabel = cc.LabelTTF.create("null", 'Times New Roman', 30);
+        this._nameLabel = cc.LabelTTF.create("null", '黑体', 30);
         this._nameLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._nameLabel.setPosition(cc.p(160, 90));
         this.addChild(this._nameLabel);
@@ -49,7 +49,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
         lvBg.setPosition(cc.p(60, 60));
         this.addChild(lvBg, 2);
 
-        this._lvLabel = cc.LabelTTF.create("0", 'Times New Roman', 45);
+        this._lvLabel = cc.LabelTTF.create("0", '黑体', 45);
         this._lvLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._lvLabel.setPosition(cc.p(46, 46));
         lvBg.addChild(this._lvLabel);
@@ -58,17 +58,17 @@ var PlayerHeaderLabel = cc.Layer.extend({
         vipSprite.setPosition(cc.p(410, 92));
         this.addChild(vipSprite, 2);
 
-        this._goldLabel = cc.LabelTTF.create("", 'Times New Roman', 22);
+        this._goldLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._goldLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._goldLabel.setPosition(cc.p(570, 92));
         this.addChild(this._goldLabel);
 
-        this._moneyLabel = cc.LabelTTF.create("0", 'Times New Roman', 22);
+        this._moneyLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._moneyLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._moneyLabel.setPosition(cc.p(570, 43));
         this.addChild(this._moneyLabel);
 
-        this._powerLabel = cc.LabelTTF.create("0", 'Times New Roman', 22);
+        this._powerLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._powerLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._powerLabel.setPosition(cc.p(420, 43));
         this.addChild(this._powerLabel);

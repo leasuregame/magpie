@@ -17,7 +17,7 @@ var passiveSkillDescription = {
     hp_improve: "生命",
     crit: "暴击",
     dodge: "闪避",
-    atk_reduce: "减伤"
+    dmg_reduce: "减伤"
 };
 
 var Card = Entity.extend({
@@ -30,7 +30,7 @@ var Card = Entity.extend({
     _hpAddition: 0,         // 生命培养量
     _atkAddition: 0,        // 攻击培养量
     _elixir: 0,             // 已经消耗的仙丹
-    _passiveSkill: {},  // 被动技能
+    _passiveSkill: {},       // 被动技能
 
     _kindId: 0,             // 系列号
     _name: "",              // 卡牌名称

@@ -34,12 +34,12 @@ var MainLayer = cc.Layer.extend({
         playerHeaderLabel.setPosition(cc.p(40, 890));
         this.addChild(playerHeaderLabel);
 
-        this._abilityLabel = cc.LabelTTF.create("0", 'Times New Roman', 22);
+        this._abilityLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._abilityLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._abilityLabel.setPosition(cc.p(300, 712));
         this.addChild(this._abilityLabel);
 
-        this._rankLabel = cc.LabelTTF.create("0", 'Times New Roman', 22);
+        this._rankLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._rankLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._rankLabel.setPosition(cc.p(540, 712));
         this.addChild(this._rankLabel);

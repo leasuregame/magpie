@@ -39,19 +39,19 @@ var BatterLayer = cc.Layer.extend({
         this._cardList = [];
         this._labelsList = [];
         this._progressList = [];
-        this._tipLabel = cc.LabelTTF.create("xxx", 'Times New Roman', 30);
+        this._tipLabel = cc.LabelTTF.create("xxx", '黑体', 30);
         this._tipLabel.setAnchorPoint(cc.p(0, 0));
         this._tipLabel.setPosition(150, 20);
         this.addChild(this._tipLabel);
 
         for (var i = 0; i < 12; ++i) {
-            var label = cc.LabelTTF.create("", 'Times New Roman', 60);
+            var label = cc.LabelTTF.create("", '黑体', 60);
             label.setColor(cc.c3b(255, 0, 0));
             this.addChild(label, 1);
             label.setPosition(this._cardPosition[i]);
             this._labelsList.push(label);
 
-            label = cc.LabelTTF.create("" + i, 'Times New Roman', 60);
+            label = cc.LabelTTF.create("" + i, '黑体', 60);
             label.setColor(cc.c3b(255, 255, 0));
             this.addChild(label, 1);
             label.setPosition(this._cardPosition[i].x - 70, this._cardPosition[i].y + 50);

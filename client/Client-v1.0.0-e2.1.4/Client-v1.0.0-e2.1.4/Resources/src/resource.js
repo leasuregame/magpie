@@ -43,6 +43,7 @@ var main_scene_image = {
     bg13: main_scene_path + "bg13.png",
     bg14: main_scene_path + "bg14.png",
     bg15: main_scene_path + "bg15.png",
+    bg16: main_scene_path + "bg16.png",
 
     player_details_bg: main_scene_path + "player_details_bg.png",
     lv_bg: main_scene_path + "lv_bg.png",

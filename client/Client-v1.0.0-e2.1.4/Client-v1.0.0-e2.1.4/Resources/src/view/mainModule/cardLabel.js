@@ -49,7 +49,7 @@ var CardLabel = cc.Node.extend({
         cardHeadItemMenu.setPosition(cc.p(0, 0));
         this.addChild(cardHeadItemMenu);
 
-        var nameLabel = cc.LabelTTF.create(this._card.get("name"), 'Times New Roman', 22);
+        var nameLabel = cc.LabelTTF.create(this._card.get("name"), '黑体', 22);
         nameLabel.setPosition(cc.p(200, 93));
         this.addChild(nameLabel);
 
@@ -57,12 +57,12 @@ var CardLabel = cc.Node.extend({
         lvBgSprite.setPosition(cc.p(80, 32));
         this.addChild(lvBgSprite);
 
-        var lvLabel = cc.LabelTTF.create(this._card.get("lv"), 'Times New Roman', 22);
+        var lvLabel = cc.LabelTTF.create(this._card.get("lv"), '黑体', 22);
         lvLabel.setAnchorPoint(cc.p(0, 0.5));
         lvLabel.setPosition(cc.p(90, 32));
         this.addChild(lvLabel);
 
-        var abilityLabel = cc.LabelTTF.create(this._card.get("ability"), 'Times New Roman', 22);
+        var abilityLabel = cc.LabelTTF.create(this._card.get("ability"), '黑体', 22);
         abilityLabel.setAnchorPoint(cc.p(0, 0.5));
         abilityLabel.setPosition(cc.p(200, 45));
         this.addChild(abilityLabel);
@@ -113,7 +113,7 @@ var CardLabel = cc.Node.extend({
 
         this._clearOtherLabel();
 
-        var expLabel = cc.LabelTTF.create(this._card.getCardExp(), 'Times New Roman', 35);
+        var expLabel = cc.LabelTTF.create(this._card.getCardExp(), '黑体', 35);
         expLabel.setPosition(cc.p(380, 64));
         this._otherLabel.addChild(expLabel);
 
@@ -134,7 +134,7 @@ var CardLabel = cc.Node.extend({
 
         this._clearOtherLabel();
 
-        var moneyLabel = cc.LabelTTF.create(this._card.get("money"), 'Times New Roman', 35);
+        var moneyLabel = cc.LabelTTF.create(this._card.get("money"), '黑体', 35);
         moneyLabel.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(moneyLabel);
 
@@ -150,7 +150,7 @@ var CardLabel = cc.Node.extend({
 
         this._clearOtherLabel();
 
-        var elixirLabel = cc.LabelTTF.create(this._card.get("elixir"), 'Times New Roman', 35);
+        var elixirLabel = cc.LabelTTF.create(this._card.get("elixir"), '黑体', 35);
         elixirLabel.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(elixirLabel);
 

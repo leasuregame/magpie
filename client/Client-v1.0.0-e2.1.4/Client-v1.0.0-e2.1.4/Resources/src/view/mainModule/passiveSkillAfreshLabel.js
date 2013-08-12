@@ -16,21 +16,44 @@ var USE_NULL = 0;
 var USE_MONEY = 1;
 var USE_GOLD = 2;
 
+var STOP_UNTIL_NULL = 0;
+var STOP_UNTIL_BLUE = 1;
+var STOP_UNTIL_YELLOW = 2;
+
 var PassiveSkillAfreshLabel = cc.Layer.extend({
     _leadCard: null,
     _leadCardHeadNode: null,
     _nameLabel: null,
     _lvLabel: null,
 
+    _resLabel: null,
+
     _useMoneyIcon: null,
     _useGoldIcon: null,
     _useType: USE_NULL,
+
+    _stopTypeLabel: null,
+
+    _stopUntilBlueIcon: null,
+    _stopUntilYellowIcon: null,
+    _stopType: STOP_UNTIL_NULL,
 
     _passiveSkill: {},
     _passiveSkillList: [],
 
     _passiveSkillNameTexture: {},
 
+    _afreshItem: null,
+    _repeatAfreshItem: null,
+    _startItem: null,
+    _cancelItem: null,
+    _stopItem: null,
+
+    _afreshIcon: null,
+    _repeatAfreshIcon: null,
+    _startIcon: null,
+    _cancelIcon: null,
+    _stopIcon: null,
 
     onEnter: function () {
         cc.log("PassiveSkillAfreshLabel onEnter");
@@ -50,16 +73,28 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             hp_improve: cc.TextureCache.getInstance().addImage(main_scene_image.icon76),
             crit: cc.TextureCache.getInstance().addImage(main_scene_image.icon78),
             dodge: cc.TextureCache.getInstance().addImage(main_scene_image.icon79),
-            atk_reduce: cc.TextureCache.getInstance().addImage(main_scene_image.icon80)
+            dmg_reduce: cc.TextureCache.getInstance().addImage(main_scene_image.icon80)
         };
 
         var cardItemBgSprite = cc.Sprite.create(main_scene_image.icon68);
         cardItemBgSprite.setPosition(cc.p(328, 725));
         this.addChild(cardItemBgSprite);
 
+        this._nameLabel = cc.LabelTTF.create("", '黑体', 23);
+        this._nameLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._nameLabel.setPosition(cc.p(243, 742));
+        this.addChild(this._nameLabel);
+        this._nameLabel.setVisible(false);
+
+        this._lvLabel = cc.LabelTTF.create("", '黑体', 23);
+        this._lvLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._lvLabel.setPosition(cc.p(245, 708));
+        this.addChild(this._lvLabel);
+        this._lvLabel.setVisible(false);
+
         this._resLabel = cc.Node.create();
         this._resLabel.setAnchorPoint(cc.p(0, 0));
-        this._resLabel.setPosition(cc.p(137, 300));
+        this._resLabel.setPosition(cc.p(133, 300));
         this.addChild(this._resLabel, 1);
 
         var resLabelBgSprite = cc.Sprite.create(main_scene_image.icon66);
@@ -75,17 +110,16 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._resLabel.addChild(resMenu);
 
         for (var i = 0; i < 3; ++i) {
-            var nameLabel = cc.Sprite.create();
-            nameLabel.setPosition(cc.p(100, (3 - i) * 100));
+            var nameLabel = cc.Sprite.createWithTexture(this._passiveSkillNameTexture.atk_improve);
+            nameLabel.setPosition(cc.p(80, 152 + 78 * (2 - i)));
             this._resLabel.addChild(nameLabel);
-//            nameLabel.setVisible(false);
-            nameLabel.setTexture(this._passiveSkillNameTexture.atk_improve)
+            nameLabel.setVisible(false);
+//            nameLabel.setTexture(this._passiveSkillNameTexture.atk_reduce);
 
-
-            var valueLabel = cc.LabelTTF.create("+ 5%", 'Times New Roman', 35);
-            valueLabel.setPosition(cc.p(200, (3 - i) * 100));
+            var valueLabel = cc.LabelTTF.create("", '黑体', 28);
+            valueLabel.setPosition(cc.p(190, 152 + 78 * (2 - i)));
             this._resLabel.addChild(valueLabel);
-//            valueLabel.setVisible(false);
+            valueLabel.setVisible(false);
 
             var lockItem = cc.MenuItemImage.create(
                 main_scene_image.button24,
@@ -93,13 +127,20 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                 this._onClickLock(i),
                 this
             );
-            lockItem.setPosition(cc.p(350, (3 - i) * 100));
+            lockItem.setPosition(cc.p(370, 152 + 78 * (2 - i)));
             resMenu.addChild(lockItem);
+            lockItem.setVisible(false);
+
+            var hookLabel = cc.Sprite.create(main_scene_image.icon20);
+            hookLabel.setPosition(cc.p(350, 152 + 78 * (2 - i)));
+            this._resLabel.addChild(hookLabel);
+            hookLabel.setVisible(false);
 
             this._passiveSkillList[i] = {
                 id: 0,
                 nameLabel: nameLabel,
                 valueLabel: valueLabel,
+                hookLabel: hookLabel,
                 lockItem: lockItem,
                 isLock: false
             }
@@ -111,7 +152,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._onClickUseMoney,
             this
         );
-        useMoneyItem.setPosition(cc.p(80, 100));
+        useMoneyItem.setPosition(cc.p(67, 92));
         resMenu.addChild(useMoneyItem);
 
         var useGoldItem = cc.MenuItemImage.create(
@@ -120,49 +161,65 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._onClickUseGold,
             this
         );
-        useGoldItem.setPosition(cc.p(290, 100));
+        useGoldItem.setPosition(cc.p(291, 92));
         resMenu.addChild(useGoldItem);
 
         this._useMoneyIcon = cc.Sprite.create(main_scene_image.icon75);
-        this._useMoneyIcon.setPosition(cc.p(100, 100));
+        this._useMoneyIcon.setPosition(cc.p(67, 92));
         this._resLabel.addChild(this._useMoneyIcon);
         this._useMoneyIcon.setVisible(false);
 
         this._useGoldIcon = cc.Sprite.create(main_scene_image.icon75);
-        this._useGoldIcon.setPosition(cc.p(300, 100));
+        this._useGoldIcon.setPosition(cc.p(291, 92));
         this._resLabel.addChild(this._useGoldIcon);
         this._useGoldIcon.setVisible(false);
 
-//        this._skillNameLabel = cc.LabelTTF.create("xxxx", 'Times New Roman', 40);
-//        this._skillNameLabel.setPosition(cc.p(158, 120));
-//        this._resLabel.addChild(this._skillNameLabel);
-//
-//        this._skillLvLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
-//        this._skillLvLabel.setPosition(cc.p(125, 85));
-//        this._resLabel.addChild(this._skillLvLabel);
-//
-//        this._nextSkillLvLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
-//        this._nextSkillLvLabel.setColor(cc.c3b(118, 238, 60));
-//        this._nextSkillLvLabel.setPosition(cc.p(190, 85));
-//        this._resLabel.addChild(this._nextSkillLvLabel);
-//
-//        this._skillHarmLabel = cc.LabelTTF.create("0%", 'Times New Roman', 25);
-//        this._skillHarmLabel.setPosition(cc.p(115, 30));
-//        this._resLabel.addChild(this._skillHarmLabel);
-//
-//        this._nextSkillHarmLabel = cc.LabelTTF.create("0%", 'Times New Roman', 25);
-//        this._nextSkillHarmLabel.setColor(cc.c3b(118, 238, 60));
-//        this._nextSkillHarmLabel.setPosition(cc.p(200, 30));
-//        this._resLabel.addChild(this._nextSkillHarmLabel);
 
-//        this._arrowLabel1 = cc.Sprite.create(main_scene_image.icon63);
-//        this._arrowLabel1.setPosition(cc.p(158, 85));
-//        this._resLabel.addChild(this._arrowLabel1);
-//
-//        this._arrowLabel2 = cc.Sprite.create(main_scene_image.icon63);
-//        this._arrowLabel2.setPosition(cc.p(158, 30));
-//        this._resLabel.addChild(this._arrowLabel2);
+        this._stopTypeLabel = cc.Node.create();
+        this._stopTypeLabel.setAnchorPoint(cc.p(0, 0));
+        this._stopTypeLabel.setPosition(cc.p(106, 380));
+        this.addChild(this._stopTypeLabel, 2);
+        this._stopTypeLabel.setVisible(false);
 
+        var stopTypeBgSprite = cc.Sprite.create(main_scene_image.bg16);
+        stopTypeBgSprite.setAnchorPoint(cc.p(0, 0));
+        this._stopTypeLabel.addChild(stopTypeBgSprite);
+
+        var stopTypeIcon = cc.Sprite.create(main_scene_image.icon74);
+        stopTypeIcon.setPosition(cc.p(255, 137));
+        this._stopTypeLabel.addChild(stopTypeIcon);
+
+        var stopTypeMenu = cc.Menu.create();
+        stopTypeMenu.setPosition(cc.p(0, 0));
+        this._stopTypeLabel.addChild(stopTypeMenu);
+
+        var stopUntilBlueItem = cc.MenuItemImage.create(
+            main_scene_image.button25,
+            main_scene_image.button25s,
+            this._onClickStopUntilBlue,
+            this
+        );
+        stopUntilBlueItem.setPosition(cc.p(80, 178));
+        stopTypeMenu.addChild(stopUntilBlueItem);
+
+        var stopUntilYellowItem = cc.MenuItemImage.create(
+            main_scene_image.button25,
+            main_scene_image.button25s,
+            this._onClickStopUntilYellow,
+            this
+        );
+        stopUntilYellowItem.setPosition(cc.p(80, 96));
+        stopTypeMenu.addChild(stopUntilYellowItem);
+
+        this._stopUntilBlueIcon = cc.Sprite.create(main_scene_image.icon75);
+        this._stopUntilBlueIcon.setPosition(cc.p(80, 178));
+        this._stopTypeLabel.addChild(this._stopUntilBlueIcon);
+        this._stopUntilBlueIcon.setVisible(false);
+
+        this._stopUntilYellowIcon = cc.Sprite.create(main_scene_image.icon75);
+        this._stopUntilYellowIcon.setPosition(cc.p(80, 96));
+        this._stopTypeLabel.addChild(this._stopUntilYellowIcon);
+        this._stopUntilYellowIcon.setVisible(false);
 
         var selectLeadCardItem = cc.MenuItemImage.create(
             main_scene_image.card_item_bg1,
@@ -172,29 +229,64 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         );
         selectLeadCardItem.setPosition(cc.p(191, 724));
 
-        this._upgradeItem = cc.MenuItemImage.create(
+        this._afreshItem = cc.MenuItemImage.create(
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.button9d,
-            this._onClickUpgrade,
+            this._onClickAfresh,
             this
         );
-        this._upgradeItem.setPosition(cc.p(360, 270));
+        this._afreshItem.setPosition(cc.p(260, 270));
 
+        this._repeatAfreshItem = cc.MenuItemImage.create(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            this._onClickRepeatAfresh,
+            this
+        );
+        this._repeatAfreshItem.setPosition(cc.p(460, 270));
 
-        var menu = cc.Menu.create(selectLeadCardItem, this._upgradeItem);
+        this._startItem = cc.MenuItemImage.create(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            this._onClickStart,
+            this
+        );
+        this._startItem.setPosition(cc.p(260, 270));
+        this._startItem.setVisible(false);
+
+        this._cancelItem = cc.MenuItemImage.create(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            this._onClickCancel,
+            this
+        );
+        this._cancelItem.setPosition(cc.p(460, 270));
+        this._cancelItem.setVisible(false);
+
+        this._stopItem = cc.MenuItemImage.create(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            this._onClickStop,
+            this
+        );
+        this._stopItem.setPosition(cc.p(360, 270));
+        this._stopItem.setVisible(false);
+
+        var menu = cc.Menu.create(
+            selectLeadCardItem,
+            this._afreshItem,
+            this._repeatAfreshItem,
+            this._startItem,
+            this._cancelItem,
+            this._stopItem
+        );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
-
-//        this._skillPointLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
-//        this._skillPointLabel.setAnchorPoint(cc.p(0, 0.5));
-//        this._skillPointLabel.setPosition(cc.p(243, 382));
-//        this.addChild(this._skillPointLabel);
-//
-//        this._needSkillPointLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
-//        this._needSkillPointLabel.setAnchorPoint(cc.p(0, 0.5));
-//        this._needSkillPointLabel.setPosition(cc.p(512, 382));
-//        this.addChild(this._needSkillPointLabel);
 
         var selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon11);
         selectLeadCardIcon.setPosition(cc.p(188, 727));
@@ -207,9 +299,28 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         selectLeadCardIcon.runAction(cc.RepeatForever.create(selectLeadCardIconAction));
 
-        var upgradeIcon = cc.Sprite.create(main_scene_image.icon52);
-        upgradeIcon.setPosition(cc.p(360, 270));
-        this.addChild(upgradeIcon);
+        this._afreshIcon = cc.Sprite.create(main_scene_image.icon69);
+        this._afreshIcon.setPosition(cc.p(260, 270));
+        this.addChild(this._afreshIcon);
+
+        this._repeatAfreshIcon = cc.Sprite.create(main_scene_image.icon70);
+        this._repeatAfreshIcon.setPosition(cc.p(460, 270));
+        this.addChild(this._repeatAfreshIcon);
+
+        this._startIcon = cc.Sprite.create(main_scene_image.icon71);
+        this._startIcon.setPosition(cc.p(260, 270));
+        this.addChild(this._startIcon);
+        this._startIcon.setVisible(false);
+
+        this._cancelIcon = cc.Sprite.create(main_scene_image.icon72);
+        this._cancelIcon.setPosition(cc.p(460, 270));
+        this.addChild(this._cancelIcon);
+        this._cancelIcon.setVisible(false);
+
+        this._stopIcon = cc.Sprite.create(main_scene_image.icon73);
+        this._stopIcon.setPosition(cc.p(360, 270));
+        this.addChild(this._stopIcon);
+        this._stopIcon.setVisible(false);
 
         return true;
     },
@@ -217,15 +328,59 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     update: function () {
         cc.log("PassiveSkillAfreshLabel update");
 
-        if (this._leadCard == null) {
-            this._nameLabel.setString("");
-            this._nameLabel.setVisible(false);
+        if (this._leadCard) {
+            if (this._leadCardHeadNode == null) {
+                this._leadCardHeadNode = CardHeadNode.create(this._leadCard);
+                this._leadCardHeadNode.setPosition(cc.p(137, 670));
+                this.addChild(this._leadCardHeadNode);
+            }
 
-            this._lvLabel.setString("LV: ");
-            this._lvLabel.setVisible(false);
-        } else {
+            this._nameLabel.setString(this._leadCard.get("name"));
+            this._nameLabel.setVisible(true);
+
+            this._lvLabel.setString("LV: " + this._leadCard.get("lv"));
+            this._lvLabel.setVisible(true);
+
 
         }
+    },
+
+    _reset: function () {
+        cc.log("PassiveSkillAfreshLabel _reset");
+
+        if (this._leadCardHeadNode != null) {
+            this._leadCardHeadNode.removeFromParent();
+            this._leadCardHeadNode = null;
+        }
+
+        this._nameLabel.setString("");
+        this._nameLabel.setVisible(false);
+
+        this._lvLabel.setString("LV: 0");
+        this._lvLabel.setVisible(false);
+
+        this._resLabel.setVisible(true);
+
+        for (var i = 0; i < 3; ++i) {
+            var passiveSkill = this._passiveSkillList[i];
+
+            passiveSkill.nameLabel.setVisible(false);
+            passiveSkill.valueLabel.setVisible(false);
+            passiveSkill.hookLabel.setVisible(false);
+            passiveSkill.lockItem.setVisible(false);
+            passiveSkill.isLock = false;
+            passiveSkill.id = 0;
+        }
+
+        this._afreshItem.setEnabled(false);
+        this._repeatAfreshItem.setEnabled(false);
+        this._startItem.setEnabled(false);
+        this._cancelItem.setEnabled(false);
+        this._stopItem.setEnabled(false);
+
+        this._startItem.setVisible(false);
+        this._cancelItem.setVisible(false);
+        this._stopItem.setVisible(false);
     },
 
     _clearPassiveSkill: function () {
@@ -257,6 +412,10 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _onClickLock: function (index) {
         return function () {
             cc.log("PassiveSkillAfreshLabel _onClickLock: " + index);
+
+            var passiveSkill = this._passiveSkillList[index];
+            passiveSkill.isLock = !passiveSkill.isLock;
+            passiveSkill.hookLabel.setVisible(passiveSkill.isLock);
         }
     },
 
@@ -292,29 +451,137 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         }
     },
 
+    _onClickStopUntilBlue: function () {
+        cc.log("PassiveSkillAfreshLabel _onClickStopUntilBlue");
+
+        if (this._stopType == STOP_UNTIL_NULL) {
+            this._stopType = STOP_UNTIL_BLUE;
+            this._stopUntilBlueIcon.setVisible(true);
+        } else if (this._stopType == STOP_UNTIL_BLUE) {
+            this._stopType = STOP_UNTIL_NULL;
+            this._stopUntilBlueIcon.setVisible(false);
+        } else if (this._stopType == STOP_UNTIL_YELLOW) {
+            this._stopType = USE_MONEY;
+            this._stopUntilBlueIcon.setVisible(true);
+            this._stopUntilYellowIcon.setVisible(false);
+        }
+    },
+
+    _onClickStopUntilYellow: function () {
+        cc.log("PassiveSkillAfreshLabel _onClickStopUntilYellow");
+
+        if (this._stopType == STOP_UNTIL_NULL) {
+            this._stopType = STOP_UNTIL_YELLOW;
+            this._stopUntilYellowIcon.setVisible(true);
+        } else if (this._stopType == STOP_UNTIL_BLUE) {
+            this._stopType = STOP_UNTIL_YELLOW;
+            this._stopUntilBlueIcon.setVisible(false);
+            this._stopUntilYellowIcon.setVisible(true);
+        } else if (this._stopType == STOP_UNTIL_YELLOW) {
+            this._stopType = STOP_UNTIL_NULL;
+            this._stopUntilYellowIcon.setVisible(false);
+        }
+    },
+
     _onClickAfresh: function () {
         cc.log("PassiveSkillAfreshLabel _onClickAfresh");
 
         var that = this;
-        this._leadCard.upgradeSkill(function (data) {
-            that.update();
-        });
+//        this._leadCard.upgradeSkill(function (data) {
+//            that.update();
+//        });
     },
 
     _onClickRepeatAfresh: function () {
         cc.log("PassiveSkillAfreshLabel _onClickRepeatAfresh");
+
+        this._resLabel.setVisible(false);
+
+        this._afreshItem.setVisible(false);
+        this._afreshIcon.setVisible(false);
+
+        this._repeatAfreshItem.setVisible(false);
+        this._repeatAfreshIcon.setVisible(false);
+
+        this._stopTypeLabel.setVisible(true);
+
+        this._startItem.setVisible(true);
+        this._startIcon.setVisible(true);
+
+        this._cancelItem.setVisible(true);
+        this._cancelIcon.setVisible(true);
+
+        this._stopItem.setVisible(false);
+        this._stopIcon.setVisible(false);
     },
 
     _onClickStart: function () {
         cc.log("PassiveSkillAfreshLabel _onClickStart");
+
+        this._resLabel.setVisible(true);
+
+        this._afreshItem.setVisible(false);
+        this._afreshIcon.setVisible(false);
+
+        this._repeatAfreshItem.setVisible(false);
+        this._repeatAfreshIcon.setVisible(false);
+
+        this._stopTypeLabel.setVisible(false);
+
+        this._startItem.setVisible(false);
+        this._startIcon.setVisible(false);
+
+        this._cancelItem.setVisible(false);
+        this._cancelIcon.setVisible(false);
+
+        this._stopItem.setVisible(true);
+        this._stopIcon.setVisible(true);
     },
 
     _onClickCancel: function () {
         cc.log("PassiveSkillAfreshLabel _onClickCancel");
+
+        this._resLabel.setVisible(true);
+
+        this._afreshItem.setVisible(true);
+        this._afreshIcon.setVisible(true);
+
+        this._repeatAfreshItem.setVisible(true);
+        this._repeatAfreshIcon.setVisible(true);
+
+        this._stopTypeLabel.setVisible(false);
+
+        this._startItem.setVisible(false);
+        this._startIcon.setVisible(false);
+
+        this._cancelItem.setVisible(false);
+        this._cancelIcon.setVisible(false);
+
+        this._stopItem.setVisible(false);
+        this._stopIcon.setVisible(false);
     },
 
     _onClickStop: function () {
         cc.log("PassiveSkillAfreshLabel _onClickStop");
+
+        this._resLabel.setVisible(true);
+
+        this._afreshItem.setVisible(true);
+        this._afreshIcon.setVisible(true);
+
+        this._repeatAfreshItem.setVisible(true);
+        this._repeatAfreshIcon.setVisible(true);
+
+        this._stopTypeLabel.setVisible(false);
+
+        this._startItem.setVisible(false);
+        this._startIcon.setVisible(false);
+
+        this._cancelItem.setVisible(false);
+        this._cancelIcon.setVisible(false);
+
+        this._stopItem.setVisible(false);
+        this._stopIcon.setVisible(false);
     }
 })
 

@@ -47,7 +47,7 @@ var TournamentLayer = cc.Layer.extend({
         playerLabel.setPosition(cc.p(40, 868));
         this.addChild(playerLabel);
 
-        this._nameLabel = cc.LabelTTF.create("null", 'Times New Roman', 30);
+        this._nameLabel = cc.LabelTTF.create("null", '黑体', 30);
         this._nameLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._nameLabel.setPosition(cc.p(200, 988));
         this.addChild(this._nameLabel);
@@ -62,17 +62,17 @@ var TournamentLayer = cc.Layer.extend({
         lvBg.setScale(0.8);
         this.addChild(lvBg, 2);
 
-        this._lvLabel = cc.LabelTTF.create("0", 'Times New Roman', 45);
+        this._lvLabel = cc.LabelTTF.create("0", '黑体', 45);
         this._lvLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._lvLabel.setPosition(cc.p(46, 46));
         this._lvLabel.setScale(0.8);
         lvBg.addChild(this._lvLabel);
 
-        this._rankLabel = cc.LabelTTF.create(0, 'Times New Roman', 25);
+        this._rankLabel = cc.LabelTTF.create(0, '黑体', 25);
         this._rankLabel.setPosition(cc.p(438, 954));
         this.addChild(this._rankLabel);
 
-        this._abilityLabel = cc.LabelTTF.create(0, 'Times New Roman', 25);
+        this._abilityLabel = cc.LabelTTF.create(0, '黑体', 25);
         this._abilityLabel.setPosition(cc.p(603, 954));
         this.addChild(this._abilityLabel);
 

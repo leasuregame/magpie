@@ -62,24 +62,24 @@ var SkillUpgradeLabel = cc.Node.extend({
         resLabelIcon.setPosition(cc.p(130, 70));
         this._resLabel.addChild(resLabelIcon);
 
-        this._skillNameLabel = cc.LabelTTF.create("xxxx", 'Times New Roman', 40);
+        this._skillNameLabel = cc.LabelTTF.create("xxxx", '黑体', 40);
         this._skillNameLabel.setPosition(cc.p(158, 120));
         this._resLabel.addChild(this._skillNameLabel);
 
-        this._skillLvLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        this._skillLvLabel = cc.LabelTTF.create("0", '黑体', 25);
         this._skillLvLabel.setPosition(cc.p(125, 85));
         this._resLabel.addChild(this._skillLvLabel);
 
-        this._nextSkillLvLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        this._nextSkillLvLabel = cc.LabelTTF.create("0", '黑体', 25);
         this._nextSkillLvLabel.setColor(cc.c3b(118, 238, 60));
         this._nextSkillLvLabel.setPosition(cc.p(190, 85));
         this._resLabel.addChild(this._nextSkillLvLabel);
 
-        this._skillHarmLabel = cc.LabelTTF.create("0%", 'Times New Roman', 25);
+        this._skillHarmLabel = cc.LabelTTF.create("0%", '黑体', 25);
         this._skillHarmLabel.setPosition(cc.p(115, 30));
         this._resLabel.addChild(this._skillHarmLabel);
 
-        this._nextSkillHarmLabel = cc.LabelTTF.create("0%", 'Times New Roman', 25);
+        this._nextSkillHarmLabel = cc.LabelTTF.create("0%", '黑体', 25);
         this._nextSkillHarmLabel.setColor(cc.c3b(118, 238, 60));
         this._nextSkillHarmLabel.setPosition(cc.p(200, 30));
         this._resLabel.addChild(this._nextSkillHarmLabel);
@@ -122,12 +122,12 @@ var SkillUpgradeLabel = cc.Node.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._skillPointLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        this._skillPointLabel = cc.LabelTTF.create("0", '黑体', 25);
         this._skillPointLabel.setAnchorPoint(cc.p(0, 0.5));
         this._skillPointLabel.setPosition(cc.p(243, 382));
         this.addChild(this._skillPointLabel);
 
-        this._needSkillPointLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        this._needSkillPointLabel = cc.LabelTTF.create("0", '黑体', 25);
         this._needSkillPointLabel.setAnchorPoint(cc.p(0, 0.5));
         this._needSkillPointLabel.setPosition(cc.p(512, 382));
         this.addChild(this._needSkillPointLabel);

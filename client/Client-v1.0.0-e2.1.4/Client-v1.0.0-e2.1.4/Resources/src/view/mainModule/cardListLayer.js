@@ -287,11 +287,11 @@ var CardListLayer = cc.Layer.extend({
         tipLabel.setPosition(cc.p(100, 920));
         this._otherLayer.addChild(tipLabel);
 
-        var countLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        var countLabel = cc.LabelTTF.create("0", '黑体', 25);
         countLabel.setPosition(cc.p(247, 923));
         this.addChild(countLabel);
 
-        var expLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        var expLabel = cc.LabelTTF.create("0", '黑体', 25);
         expLabel.setPosition(cc.p(425, 923));
         this.addChild(expLabel);
 

@@ -10,7 +10,7 @@ module.exports = {
     "hp_improve": 20,
     "crit": 20,
     "dodge": 20,
-    "atk_reduce": 20
+    "dmg_reduce": 20
   },
   AFRESH: {         // 洗炼被动技能得到的百分比的概率
     1: {

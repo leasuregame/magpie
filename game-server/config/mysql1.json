@@ -1,0 +1,35 @@
+{
+	"development": {
+		"1": {
+			"host": "127.0.0.1",
+			"port": "3306",
+			"database": "magpie-area-1",
+			"user": "dev",
+			"password": "1"
+		},
+		"2": {
+			"host": "127.0.0.1",
+			"port": "3306",
+			"database": "magpie-area-2",
+			"user": "dev",
+			"password": "1"
+		}
+	},
+
+	"production": {
+		"1": {
+			"host": "127.0.0.1",
+			"port": "6033",
+			"database": "magpie-area-1",
+			"user": "dev",
+			"password": "1"
+		},
+		"2": {
+			"host": "127.0.0.1",
+			"port": "6033",
+			"database": "magpie-area-2",
+			"user": "dev",
+			"password": "1"
+		}
+	}
+}

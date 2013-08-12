@@ -235,23 +235,31 @@ Handler::starUpgrade = (msg, session, next) ->
         player.decrease('money', money_consume)
         card.increase('star')
 
-      # 若金币不足，则不能使用金币来继承全部属性
-      if allInherit and player.gold >= starUpgradeConfig.ALL_INHERIT_GOLD
-        player.decrease('gold', starUpgradeConfig.ALL_INHERIT_GOLD)
-        _exp = table.getTableItem('card_grow', card.lv).cur_exp + card.exp
-      else
-        inherit_info = starUpgradeConfig.DEFAULT_INHERIT
-        _exp = parseInt((table.getTableItem('card_grow', card.lv).cur_exp + card.exp) / 2)
-        card.set('skillPoint', parseInt(card.get('skillPoint') * inherit_info['skillPoint'] / 100))
-        card.set('elixir', parseInt(card.get('elixir') * inherit_info['elixir'] / 100))
+        # 若金币不足，则不能使用金币来继承全部属性
+        if allInherit and player.gold >= starUpgradeConfig.ALL_INHERIT_GOLD
+          player.decrease('gold', starUpgradeConfig.ALL_INHERIT_GOLD)
+          _exp = table.getTableItem('card_grow', card.lv).cur_exp + card.exp
+        else
+          inherit_info = starUpgradeConfig.DEFAULT_INHERIT
+          _exp = parseInt((table.getTableItem('card_grow', card.lv).cur_exp + card.exp) / 2)
+          card.set('skillPoint', parseInt(card.get('skillPoint') * inherit_info['skillPoint'] / 100))
+          card.set('elixir', parseInt(card.get('elixir') * inherit_info['elixir'] / 100))
 
-      # 重新计算卡牌等级和剩余经验
-      card.set('lv', 1)
-      [_lv, _exp_remain] = card.vitual_upgrade(_exp)
-      card.upgrade(_lv, _exp_remain)
+        # 重新计算卡牌等级和剩余经验
+        card.set('lv', 1)
+        [_lv, _exp_remain] = card.vitual_upgrade(_exp)
+        card.upgrade(_lv, _exp_remain)
 
-      cb()
-    (cb) ->
+        # 卡牌星级进阶，添加一个被动属性
+        ps_data = {}
+        if card.star >= 3
+          ps_data = require('../../../domain/entity/passiveSkill').born()
+          ps_data.cardId = card.id
+        cb null, ps_data
+
+      cb null, {}
+
+    (ps_data, cb) ->
       _jobs = []
 
       playerData = player.getSaveData()
@@ -279,48 +287,58 @@ Handler::starUpgrade = (msg, session, next) ->
           where: " id in (#{sources.toString()}) "
       }
 
+      _jobs.push {
+        type: 'insert'
+        options:
+          table: 'passiveSkill'
+          data: ps_data
+      } if not _.isEmpty(ps_data)
+
       job.multJobs _jobs, cb
   ], (err, result) ->
     if err and not result
       return next(null, {code: err.code, msg: err.msg})
 
-    next(null, {code: 200, msg: {upgrade: is_upgrade, card: card.toJson()}})
+    cardManager.getCardInfo card.id, (err, res) ->
+      if err
+        return next(null, err)
+
+      next(null, {code: 200, msg: {upgrade: is_upgrade, card: res.toJson()}})
 
 Handler::passSkillAfresh  = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   cardId = msg.cardId
-  psId = msg.psId
-  type = msg.type or 'money'
+  psIds = msg.psIds or []
+  type = if msg.type? then msg.type else passSkillConfig.TYPE.MONEY
+  _pros = 1: 'money', 2: 'gold'
 
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
 
     (player, cb) ->
-      money_need = passSkillConfig.CONSUME[type]
+      money_need = passSkillConfig.CONSUME[type] * psIds.length
 
-      if player[type] < money_need
-        return cb({code: 501, msg: '铜板不足，不能洗炼'})
+      if player[_pros[type]] < money_need
+        return cb({code: 501, msg: '铜板/元宝不足，不能洗炼'})
 
       card = player.getCard(cardId)
-      passSkill = card.passiveSkills[psId]
+      console.log psIds, card.passiveSkills
+      passSkills = _.values(card.passiveSkills).filter (ps) -> _.contains(psIds, ps.id)
 
-      if card.passiveSkills.length is 0 or not passSkill
+      if _.isEmpty(passSkills)
         return cb({code: 501, msg: '找不到被动属性'})
 
-      _obj = passSkillConfig.AFRESH[type]
-      valueScope = utility.randomValue(_.keys(_obj), _.values(_obj))
-      [start, end] = valueScope.split('~')
-      value = _.random(start * 100, end * 100)
-      passSkill.set('value', parseFloat((value/100).toFixed(1)))
-
-      cb(null, passSkill)
-  ], (err, passSkill) ->
+      ps.afresh(type) for ps in passSkills
+      player.decrease(_pros[type], money_need)
+      cb(null, player, passSkills)
+  ], (err, player, passSkills) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
 
-    passSkill.save()
-    next(null, {code: 200, msg: {value: passSkill.value}})
+    passSkills.forEach (ps) -> ps.save()
+    player.save()
+    next(null, {code: 200, msg: passSkills.map (p) -> p.toJson()})
 
 Handler::smeltElixir = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId

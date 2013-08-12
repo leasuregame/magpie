@@ -20,63 +20,12 @@ var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 
-var startPowerResumeTimer = function(player) {
-    var resumePoint = playerConfig.POWER_RESUME.point;
-    var interval = playerConfig.POWER_RESUME.interval;
-
-    setInterval(function() {
-        player.resumePower(resumePoint);
-        player.save();
-    }, interval);
-};
-
-var startPowerGiveTimer = function(player) {
-    var givePoint = playerConfig.POWER_GIVE.point;
-    var hours = playerConfig.POWER_GIVE.hours;
-    var interval = playerConfig.POWER_GIVE.interval;
-
-    setInterval(function() {
-        var hour = (new Date()).getHours();
-        if (_.contains(hours, hour) && !player.hasGive(hour)) {
-            player.givePower(hour, givePoint);
-            player.save();
-        }
-    }, interval);
-};
-
-var groupCardsEffect = function(player) {
-    var cardIds = _.values(player.lineUpObj());
-    var cards = _.values(player.cards).filter(function(id, c) {
-        return c.star >= 3 && cardIds.indexOf(c.id) > -1;
-    });
-    var cardTable = table.getTable('cards');
-
-    for (var i = 0; i < cards.length; i++) {
-        var card = cards[i];
-        var cardConfig = cardTable.getItem(card.id);
-        var series = cardConfig.group.toString().split(',');
-        var seriesCards = cardTable.filter(function(id, item) {
-            return (series.indexOf(item.number) > -1) && (cardIds.indexOf(id) > -1);
-        });
-
-        if (!_.isEmpty(seriesCards) && (series.length === seriesCards.length)) {
-            card.activeGroupEffect();
-        }
-    }
-};
-
 var defaultMark = function() {
     var i, result = [];
     for (i = 0; i < 100; i++) {
         result.push(0);
     }
     return result;
-};
-
-var addListeners = function(player) {
-    player.on('lineUp.change', function() {
-        player.getAbility();
-    });
 };
 
 /*
@@ -89,6 +38,11 @@ var Player = (function(_super) {
     function Player(param) {
         Player.__super__.constructor.apply(this, arguments);
     }
+
+    Player.prototype.init = function() {
+        this.cards || (this.cards = []);
+        this.rank || (this.rank = null);
+    };
 
     Player.FIELDS = [
         'id',
@@ -113,7 +67,10 @@ var Player = (function(_super) {
     ];
 
     Player.DEFAULT_VALUES = {
-        power: 100,
+        power: {
+            time: 0,
+            value: 50
+        },
         lv: 1,
         exp: 0,
         money: 1000,
@@ -134,16 +91,6 @@ var Player = (function(_super) {
         skillPoint: 0
     };
 
-    Player.prototype.init = function() {
-        this.cards || (this.cards = []);
-        this.rank || (this.rank = null);
-        groupCardsEffect(this);
-        startPowerResumeTimer(this);
-
-        addListeners(this);
-        this.emit('lineUp.change');
-    };
-
     Player.prototype.save = function() {
         Player.__super__.save.apply(this, arguments);
         // update all cards info
@@ -160,8 +107,32 @@ var Player = (function(_super) {
                 ability += card.ability();
             }
         });
-        this.set('ability', ability);
         return ability;
+    };
+
+    Player.prototype.updateAbility = function() {
+        this.set('ability', this.getAbility());
+    };
+
+    Player.prototype.activeGroupEffect = function() {
+        var cardIds = _.values(this.lineUpObj());
+        var cards = _.values(this.cards).filter(function(id, c) {
+            return c.star >= 3 && cardIds.indexOf(c.id) > -1;
+        });
+        var cardTable = table.getTable('cards');
+
+        for (var i = 0; i < cards.length; i++) {
+            var card = cards[i];
+            var cardConfig = cardTable.getItem(card.id);
+            var series = cardConfig.group.toString().split(',');
+            var seriesCards = cardTable.filter(function(id, item) {
+                return (series.indexOf(item.number) > -1) && (cardIds.indexOf(id) > -1);
+            });
+
+            if (!_.isEmpty(seriesCards) && (series.length === seriesCards.length)) {
+                card.activeGroupEffect();
+            }
+        }
     };
 
     Player.prototype.addCard = function(card) {
@@ -217,21 +188,33 @@ var Player = (function(_super) {
         });
     };
 
+    Player.prototype.updatePower = function(power) {
+        if (this.power.value !== power.value) {
+            this.set('power', power);
+        }
+    };
+
     Player.prototype.consumePower = function(value) {
-        var power = this.get('power');
-        this.set('power', _.max([power - value, 0]))
+        var power = _.clone(this.get('power'));
+        power.value = _.max([power.value - value, 0]);
+        power.time = Date.now();
+        this.updatePower(power);
     };
 
     Player.prototype.resumePower = function(value) {
         var max_power = getMaxPower(this.lv, playerConfig.POWER_LIMIT);
-        var power = this.get('power');
-        this.set('power', _.min([max_power, power + value]));
+        var power = _.clone(this.get('power'));
+        power.value = _.min([max_power, power.value + value]);
+        power.time = Date.now();
+        this.updatePower(power);
     };
 
     Player.prototype.givePower = function(hour, value) {
         var max_power = getMaxPower(this.lv, playerConfig.POWER_LIMIT);
-        var power = this.get('power');
-        this.set('power', _.min([power + value, max_power + 50]));
+        var power = _.clone(this.get('power'));
+        power.value = _.min([power.value + value, max_power + 50]);
+        power.time = Date.now();
+        this.updatePower(power);
         this.updateGift("power_" + hour);
     };
 
@@ -281,7 +264,7 @@ var Player = (function(_super) {
         });
 
         // 预升级，得到升级的级数和剩余的经验
-        // 不会实际卡牌的属性
+        // 不会改变卡牌的属性
         var _ref = targetCard.vitual_upgrade(expObtain);
         var upgraded_lv = _ref[0];
         var exp_remain = _ref[1];
@@ -293,7 +276,7 @@ var Player = (function(_super) {
         items.forEach(function(item) {
             moneyConsume += item.money_need;
         });
-        
+
         moneyConsume = parseInt(moneyConsume);
         if (this.money < moneyConsume) {
             return cb({

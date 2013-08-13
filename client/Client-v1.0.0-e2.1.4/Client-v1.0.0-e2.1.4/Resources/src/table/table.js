@@ -891,7 +891,7 @@ var outputTables = {
                 "rate_per_card": 7,
                 "max_num": 15,
                 "exp_inherit": 50,
-                "skillPoint_inherti": 50,
+                "skillPoint_inherit": 50,
                 "elixir_inherit": 50,
                 "gold_need": 500
             },
@@ -902,7 +902,7 @@ var outputTables = {
                 "rate_per_card": 6,
                 "max_num": 17,
                 "exp_inherit": 50,
-                "skillPoint_inherti": 50,
+                "skillPoint_inherit": 50,
                 "elixir_inherit": 50,
                 "gold_need": 500
             },
@@ -913,7 +913,7 @@ var outputTables = {
                 "rate_per_card": 5,
                 "max_num": 20,
                 "exp_inherit": 50,
-                "skillPoint_inherti": 50,
+                "skillPoint_inherit": 50,
                 "elixir_inherit": 50,
                 "gold_need": 500
             },
@@ -924,7 +924,7 @@ var outputTables = {
                 "rate_per_card": 3,
                 "max_num": 34,
                 "exp_inherit": 50,
-                "skillPoint_inherti": 50,
+                "skillPoint_inherit": 50,
                 "elixir_inherit": 50,
                 "gold_need": 500
             }

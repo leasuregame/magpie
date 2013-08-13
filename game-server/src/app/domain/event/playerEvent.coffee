@@ -6,8 +6,9 @@ exports.addEvents = (player) ->
     ply = player
     interval = playerConfig.POWER_RESUME.interval
     power = ply.power
+    now = Date.now()
 
-    if (power.time + interval) <= Date.now()
+    if (power.time + interval) <= now
       times = parseInt (now - power.time)/interval
       resumePoint = playerConfig.POWER_RESUME.point
       ply.resumePower(resumePoint * times)
@@ -19,8 +20,8 @@ exports.addEvents = (player) ->
     interval = playerConfig.POWER_GIVE.interval
     cur_hour = (new Date()).getHours()
 
-    if _.contains(hours, hour) and not player.hasGive(hour)
-      player.givePower(hour, givePoint)
+    if _.contains(hours, cur_hour) and not player.hasGive(cur_hour)
+      player.givePower(cur_hour, givePoint)
       player.save()
 
   player.on 'lineUp.change', ->

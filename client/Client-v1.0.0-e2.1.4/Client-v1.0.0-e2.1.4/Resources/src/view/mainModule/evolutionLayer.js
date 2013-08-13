@@ -8,15 +8,15 @@
 
 
 /*
-* evolution layer
-* */
+ * evolution layer
+ * */
 
 
 var EvolutionLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("EvolutionLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         var winSize = cc.Director.getInstance().getWinSize();
 
@@ -29,10 +29,10 @@ var EvolutionLayer = cc.Layer.extend({
 })
 
 
-EvolutionLayer.create = function() {
+EvolutionLayer.create = function () {
     var ret = new EvolutionLayer();
 
-    if(ret && ret.init()) {
+    if (ret && ret.init()) {
         return ret;
     }
 

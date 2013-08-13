@@ -31,7 +31,6 @@ var Pass = Entity.extend({
         cc.log("Pass update");
 
         this._passTop = data.layer || 0;
-//        this._passTop = 90;
         this._passMark = data.mark || [];
     },
 

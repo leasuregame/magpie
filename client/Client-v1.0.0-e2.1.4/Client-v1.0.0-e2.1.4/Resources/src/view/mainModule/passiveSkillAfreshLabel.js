@@ -38,8 +38,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _stopUntilYellowIcon: null,
     _stopType: STOP_UNTIL_NULL,
 
-    _passiveSkill: {},
     _passiveSkillList: [],
+    _afreshIdList: [],
 
     _passiveSkillNameTexture: {},
 
@@ -137,7 +137,6 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             hookLabel.setVisible(false);
 
             this._passiveSkillList[i] = {
-                id: 0,
                 nameLabel: nameLabel,
                 valueLabel: valueLabel,
                 hookLabel: hookLabel,
@@ -328,6 +327,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     update: function () {
         cc.log("PassiveSkillAfreshLabel update");
 
+        var isAllLock = true;
         if (this._leadCard) {
             if (this._leadCardHeadNode == null) {
                 this._leadCardHeadNode = CardHeadNode.create(this._leadCard);
@@ -341,8 +341,41 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._lvLabel.setString("LV: " + this._leadCard.get("lv"));
             this._lvLabel.setVisible(true);
 
+            var index = 0;
+            var passiveSkill = this._leadCard.get("passiveSkill");
 
+            this._afreshIdList = [];
+            for (var key in passiveSkill) {
+                var passiveSkillLabel = this._passiveSkillList[index++];
+
+                if (!passiveSkillLabel.isLock) {
+                    this._afreshIdList.push(passiveSkill[key].id);
+                }
+
+                var value = passiveSkill[key].value.toFixed(1);
+                passiveSkillLabel.valueLabel.setString("+ " + value + "%");
+
+                if (value >= 8.0) {
+                    passiveSkillLabel.valueLabel.setColor(cc.c3b(255, 248, 69));
+                } else if (value >= 5.0) {
+                    passiveSkillLabel.valueLabel.setColor(cc.c3b(105, 218, 255));
+                } else {
+                    passiveSkillLabel.valueLabel.setColor(cc.c3b(118, 238, 60));
+                }
+
+                passiveSkillLabel.nameLabel.setTexture(this._passiveSkillNameTexture[passiveSkill[key].name]);
+                passiveSkillLabel.nameLabel.setVisible(true);
+                passiveSkillLabel.valueLabel.setVisible(true);
+                passiveSkillLabel.lockItem.setVisible(true);
+
+                isAllLock = isAllLock && passiveSkillLabel.isLock;
+            }
         }
+
+        var isEnabled = (this._leadCard && this._useType != USE_NULL && !isAllLock);
+        this._afreshItem.setEnabled(isEnabled);
+        this._repeatAfreshItem.setEnabled(isEnabled);
+        this._startItem.setEnabled(this._stopType != STOP_UNTIL_NULL);
     },
 
     _reset: function () {
@@ -362,29 +395,61 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._resLabel.setVisible(true);
 
         for (var i = 0; i < 3; ++i) {
-            var passiveSkill = this._passiveSkillList[i];
+            var passiveSkillLabel = this._passiveSkillList[i];
 
-            passiveSkill.nameLabel.setVisible(false);
-            passiveSkill.valueLabel.setVisible(false);
-            passiveSkill.hookLabel.setVisible(false);
-            passiveSkill.lockItem.setVisible(false);
-            passiveSkill.isLock = false;
-            passiveSkill.id = 0;
+            passiveSkillLabel.nameLabel.setVisible(false);
+            passiveSkillLabel.valueLabel.setVisible(false);
+            passiveSkillLabel.hookLabel.setVisible(false);
+            passiveSkillLabel.lockItem.setVisible(false);
+            passiveSkillLabel.isLock = false;
+            passiveSkillLabel.id = 0;
         }
 
-        this._afreshItem.setEnabled(false);
-        this._repeatAfreshItem.setEnabled(false);
-        this._startItem.setEnabled(false);
-        this._cancelItem.setEnabled(false);
-        this._stopItem.setEnabled(false);
-
-        this._startItem.setVisible(false);
-        this._cancelItem.setVisible(false);
-        this._stopItem.setVisible(false);
+        this._afreshIdList = [];
     },
 
-    _clearPassiveSkill: function () {
-        cc.log("PassiveSkillAfreshLabel _clearPassiveSkill");
+    _afresh: function (isRepeatAfresh) {
+        cc.log("PassiveSkillAfreshLabel _afresh");
+
+        var that = this;
+        this._leadCard.afreshPassiveSkill(function (data) {
+            if (isRepeatAfresh) {
+                that._afreshCallBack();
+            }
+
+            that.update();
+        }, this._afreshIdList, this._useType);
+    },
+
+    _repeatAfresh: function () {
+        cc.log("PassiveSkillAfreshLabel _repeatAfresh");
+
+        this._afresh(true);
+    },
+
+    _afreshCallBack: function () {
+        cc.log("PassiveSkillAfreshLabel _afreshCallBack: " + this._stopType);
+
+        var passiveSkill = this._leadCard.get("passiveSkill");
+        var maxValue = 0;
+        var len = this._afreshIdList.length;
+        for (var i = 0; i < len; ++i) {
+            maxValue = Math.max(maxValue, passiveSkill[this._afreshIdList[i]].value);
+        }
+
+        cc.log(maxValue);
+
+        if (maxValue < 0) {
+            this.unschedule(this._repeatAfresh);
+        } else if (this._stopType == STOP_UNTIL_BLUE) {
+            if (maxValue >= 5.0) {
+                this._onClickStop();
+            }
+        } else if (this._stopType == STOP_UNTIL_YELLOW) {
+            if (maxValue >= 8.0) {
+                this._onClickStop();
+            }
+        }
     },
 
     _onClickSelectLeadCard: function () {
@@ -397,7 +462,12 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             cc.log(data);
 
             if (data) {
-                that._leadCard = data[0] || null;
+                var leadCard = data[0] || null;
+
+                if (leadCard !== that._leadCard) {
+                    that._reset();
+                    that._leadCard = leadCard;
+                }
             }
 
             that.getParent()._backToThisLayer();
@@ -416,6 +486,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             var passiveSkill = this._passiveSkillList[index];
             passiveSkill.isLock = !passiveSkill.isLock;
             passiveSkill.hookLabel.setVisible(passiveSkill.isLock);
+
+            this.update();
         }
     },
 
@@ -433,6 +505,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._useMoneyIcon.setVisible(true);
             this._useGoldIcon.setVisible(false);
         }
+
+        this.update();
     },
 
     _onClickUseGold: function () {
@@ -449,6 +523,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._useType = USE_NULL;
             this._useGoldIcon.setVisible(false);
         }
+
+        this.update();
     },
 
     _onClickStopUntilBlue: function () {
@@ -465,6 +541,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._stopUntilBlueIcon.setVisible(true);
             this._stopUntilYellowIcon.setVisible(false);
         }
+
+        this.update();
     },
 
     _onClickStopUntilYellow: function () {
@@ -481,15 +559,14 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._stopType = STOP_UNTIL_NULL;
             this._stopUntilYellowIcon.setVisible(false);
         }
+
+        this.update();
     },
 
     _onClickAfresh: function () {
         cc.log("PassiveSkillAfreshLabel _onClickAfresh");
 
-        var that = this;
-//        this._leadCard.upgradeSkill(function (data) {
-//            that.update();
-//        });
+        this._afresh();
     },
 
     _onClickRepeatAfresh: function () {
@@ -536,6 +613,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         this._stopItem.setVisible(true);
         this._stopIcon.setVisible(true);
+
+        this.schedule(this._repeatAfresh, 2, null);
     },
 
     _onClickCancel: function () {
@@ -582,6 +661,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         this._stopItem.setVisible(false);
         this._stopIcon.setVisible(false);
+
+        this.unschedule(this._repeatAfresh);
     }
 })
 

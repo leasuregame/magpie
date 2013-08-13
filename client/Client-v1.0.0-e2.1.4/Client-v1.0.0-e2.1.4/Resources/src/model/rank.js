@@ -16,17 +16,17 @@ var Rank = Entity.extend({
     _rankList: null,
 
 
-    init : function() {
+    init: function () {
 
         return true;
     }
 })
 
 
-Rank.create = function(data) {
+Rank.create = function (data) {
     var ret = new Rank();
 
-    if(ret && ret.init(data)) {
+    if (ret && ret.init(data)) {
         return ret;
     }
 

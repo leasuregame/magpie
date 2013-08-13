@@ -30,7 +30,7 @@ var Card = Entity.extend({
     _hpAddition: 0,         // 生命培养量
     _atkAddition: 0,        // 攻击培养量
     _elixir: 0,             // 已经消耗的仙丹
-    _passiveSkill: {},       // 被动技能
+    _passiveSkill: {},      // 被动技能
 
     _kindId: 0,             // 系列号
     _name: "",              // 卡牌名称
@@ -72,7 +72,7 @@ var Card = Entity.extend({
             this._hpAddition = data.hpAddition || this._hpAddition;
             this._atkAddition = data.atkAddition || this._atkAddition;
             this._elixir = data.elixir || this._elixir;
-
+            this._passiveSkill = {};
             this._updatePassiveSkill(data.passiveSkills);
         }
 
@@ -86,11 +86,13 @@ var Card = Entity.extend({
 
     _updatePassiveSkill: function (data) {
         cc.log("Card _updatePassiveSkill");
-
         if (data) {
             var len = data.length;
+            cc.log(len);
             for (var i = 0; i < len; ++i) {
                 this._passiveSkill[data[i].id] = {
+                    id: data[i].id,
+                    createTime: data[i].createTime,
                     name: data[i].name,
                     value: data[i].value,
                     description: passiveSkillDescription[data[i].name]
@@ -228,7 +230,11 @@ var Card = Entity.extend({
         cc.log(cardIdList);
 
         var that = this;
-        lzWindow.pomelo.request("logic.trainHandler.strengthen", {playerId: gameData.player.get("id"), target: this._id, sources: cardIdList}, function (data) {
+        lzWindow.pomelo.request("logic.trainHandler.strengthen", {
+            playerId: gameData.player.get("id"),
+            target: this._id,
+            sources: cardIdList
+        }, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
@@ -295,11 +301,14 @@ var Card = Entity.extend({
         cc.log("Card upgradeSkill " + this._id);
 
         var that = this;
-        lzWindow.pomelo.request("logic.trainHandler.skillUpgrade", {playerId: gameData.player.get("id"), cardId: this._id}, function (data) {
+        lzWindow.pomelo.request("logic.trainHandler.skillUpgrade", {
+            playerId: gameData.player.get("id"),
+            cardId: this._id
+        }, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
-                cc.log("upgrade success");
+                cc.log("upgradeSkill success");
 
                 var msg = data.msg;
 
@@ -311,7 +320,43 @@ var Card = Entity.extend({
 
                 cb();
             } else {
-                cc.log("upgrade fail");
+                cc.log("upgradeSkill fail");
+
+                cb();
+            }
+        });
+    },
+
+    afreshPassiveSkill: function (cb, afreshIdList, type) {
+        cc.log("Card afreshPassiveSkill " + this._id);
+        cc.log(afreshIdList);
+        cc.log(type);
+
+        var that = this;
+        lzWindow.pomelo.request("logic.trainHandler.passSkillAfresh", {
+            playerId: gameData.player.get("id"),
+            cardId: this._id,
+            psIds: afreshIdList,
+            type: type
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("passSkillAfresh success");
+
+                var msg = data.msg;
+
+                that._updatePassiveSkill(msg);
+
+                if (type == USE_MONEY) {
+                    gameData.player.add("money", -20000);
+                } else if (type == USE_GOLD) {
+                    gameData.player.add("gold", -10);
+                }
+
+                cb();
+            } else {
+                cc.log("passSkillAfresh fail");
 
                 cb();
             }

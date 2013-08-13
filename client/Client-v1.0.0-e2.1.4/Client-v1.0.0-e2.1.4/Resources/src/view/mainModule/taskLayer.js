@@ -79,7 +79,7 @@ var TaskLayer = cc.Layer.extend({
             wipeOutIconSprite.setPosition(cc.p(120 + offsetX, 715));
             this._scrollViewLayer.addChild(wipeOutIconSprite, 1);
 
-            var titlesLabel = cc.LabelTTF.create("第 " + i + " 页", 'Times New Roman', 30);
+            var titlesLabel = cc.LabelTTF.create("第 " + i + " 页", '黑体', 30);
             titlesLabel.setPosition(cc.p(320 + offsetX, 715));
             this._scrollViewLayer.addChild(titlesLabel);
 
@@ -90,7 +90,7 @@ var TaskLayer = cc.Layer.extend({
                 sectionItem.setPosition(cc.p(this._locate[j - 1].x + offsetX, this._locate[j - 1].y));
                 menu.addChild(sectionItem);
 
-                var sectionNameLabel = cc.LabelTTF.create(chapterTable[index].chapter, 'Times New Roman', 30);
+                var sectionNameLabel = cc.LabelTTF.create(chapterTable[index].chapter, '黑体', 30);
                 sectionNameLabel.setPosition(cc.p(this._locate[j - 1].x + offsetX, this._locate[j - 1].y - 100));
                 this._scrollViewLayer.addChild(sectionNameLabel);
             }

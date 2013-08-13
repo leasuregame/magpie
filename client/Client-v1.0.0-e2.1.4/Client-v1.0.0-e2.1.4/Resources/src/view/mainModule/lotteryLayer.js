@@ -18,35 +18,35 @@ var LotteryLayer = cc.Layer.extend({
 
         if (!this._super())  return false;
 
-        this.label = cc.LabelTTF.create("抽奖结果：", 'Times New Roman', 32);
+        this.label = cc.LabelTTF.create("抽奖结果：", '黑体', 32);
         this.label.setPosition(cc.p(120, 650));
         this.addChild(this.label);
 
-        var textLabel = cc.LabelTTF.create("元宝抽卡", 'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("元宝抽卡", '黑体', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT, 980);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("初级抽卡", 'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("初级抽卡", '黑体', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT - 200, 900);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("可获得1,2,3星", 'Times New Roman', 25);
+        var textLabel = cc.LabelTTF.create("可获得1,2,3星", '黑体', 25);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT - 200, 850);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("中级抽卡", 'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("中级抽卡", '黑体', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT, 900);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("可获得2,3,4星", 'Times New Roman', 25);
+        var textLabel = cc.LabelTTF.create("可获得2,3,4星", '黑体', 25);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT, 850);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("高级抽卡", 'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("高级抽卡", '黑体', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT + 200, 900);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("可获得3,4,5星", 'Times New Roman', 25);
+        var textLabel = cc.LabelTTF.create("可获得3,4,5星", '黑体', 25);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT + 200, 850);
         this.addChild(textLabel);
 
@@ -65,31 +65,31 @@ var LotteryLayer = cc.Layer.extend({
         this.addChild(menu);
 
 
-        var textLabel = cc.LabelTTF.create("活力抽卡", 'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("活力抽卡", '黑体', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT, 500);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("初级抽卡", 'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("初级抽卡", '黑体', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT - 200, 400);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("10活力/次", 'Times New Roman', 25);
+        var textLabel = cc.LabelTTF.create("10活力/次", '黑体', 25);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT - 200, 350);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("中级抽卡", 'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("中级抽卡", '黑体', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT, 400);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("70活力/次", 'Times New Roman', 25);
+        var textLabel = cc.LabelTTF.create("70活力/次", '黑体', 25);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT, 350);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("高级抽卡", 'Times New Roman', 32);
+        var textLabel = cc.LabelTTF.create("高级抽卡", '黑体', 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT + 200, 400);
         this.addChild(textLabel);
 
-        var textLabel = cc.LabelTTF.create("100活力/次", 'Times New Roman', 25);
+        var textLabel = cc.LabelTTF.create("100活力/次", '黑体', 25);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT + 200, 350);
         this.addChild(textLabel);
 
@@ -107,7 +107,7 @@ var LotteryLayer = cc.Layer.extend({
 
         this.addChild(menu);
 
-        var textLabel = cc.LabelTTF.create("祝福好友，每日登陆，升级，均可获得活力值", 'Times New Roman', 25);
+        var textLabel = cc.LabelTTF.create("祝福好友，每日登陆，升级，均可获得活力值", '黑体', 25);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT, 220);
         this.addChild(textLabel);
 

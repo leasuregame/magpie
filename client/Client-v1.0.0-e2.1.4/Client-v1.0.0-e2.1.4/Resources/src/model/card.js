@@ -12,6 +12,14 @@
  * */
 
 
+var passiveSkillDescription = {
+    atk_improve: "攻击",
+    hp_improve: "生命",
+    crit: "暴击",
+    dodge: "闪避",
+    dmg_reduce: "减伤"
+};
+
 var Card = Entity.extend({
     _id: 0,                 // 数据库对应ID
     _createTime: 0,         // 创建时间
@@ -22,7 +30,7 @@ var Card = Entity.extend({
     _hpAddition: 0,         // 生命培养量
     _atkAddition: 0,        // 攻击培养量
     _elixir: 0,             // 已经消耗的仙丹
-    _passiveSkillList: [],  // 被动技能
+    _passiveSkill: {},      // 被动技能
 
     _kindId: 0,             // 系列号
     _name: "",              // 卡牌名称
@@ -38,6 +46,8 @@ var Card = Entity.extend({
     _skillId: 0,            // 数据库表对应技能ID
 
     _skillName: "",         // 技能名称
+    _skillHarm: 0,          // 技能伤害
+    _skillRate: 0,          // 技能概率
     _skillDescription: "",  // 技能描述
     _skillMaxLv: 0,         // 技能最大等级
 
@@ -62,18 +72,8 @@ var Card = Entity.extend({
             this._hpAddition = data.hpAddition || this._hpAddition;
             this._atkAddition = data.atkAddition || this._atkAddition;
             this._elixir = data.elixir || this._elixir;
-
-            if (data.passiveSkills) {
-                var passiveSkillList = data.passiveSkills;
-                var len = passiveSkillList.length;
-                for (var i = 0; i < len; ++i) {
-                    this._passiveSkillList[i] = {
-                        id: passiveSkillList.id,
-                        name: passiveSkillList.name,
-                        value: passiveSkillList.value
-                    }
-                }
-            }
+            this._passiveSkill = {};
+            this._updatePassiveSkill(data.passiveSkills);
         }
 
         this._loadCardTable();
@@ -82,6 +82,23 @@ var Card = Entity.extend({
         this._ability = this._getCardAbility();
 
         return true;
+    },
+
+    _updatePassiveSkill: function (data) {
+        cc.log("Card _updatePassiveSkill");
+        if (data) {
+            var len = data.length;
+            cc.log(len);
+            for (var i = 0; i < len; ++i) {
+                this._passiveSkill[data[i].id] = {
+                    id: data[i].id,
+                    createTime: data[i].createTime,
+                    name: data[i].name,
+                    value: data[i].value,
+                    description: passiveSkillDescription[data[i].name]
+                }
+            }
+        }
     },
 
     _loadCardTable: function () {
@@ -130,9 +147,22 @@ var Card = Entity.extend({
         // 读取技能配置表
         var skillTable = outputTables.skills.rows[this._skillId];
 
+        var skillHarmString = skillTable["star" + this._star];
+        var skillHarm = [0, 0];
+
+        if (skillHarmString) {
+            skillHarm = skillHarmString.split(",", 2);
+        }
+
+        this._skillHarm = parseInt(skillHarm[0]) + parseInt(skillHarm[1]) * this._skillLv;
+
+        this._skillRate = skillTable["rate" + this._star];
+
+        if (!this._skillRate) this._skillRate = 0;
+
         this._skillName = skillTable.name;
         this._skillDescription = skillTable.description;
-        this._skillMaxLv = 6;
+        this._skillMaxLv = 5;
     },
 
     // 计算单个卡牌战斗力
@@ -200,7 +230,11 @@ var Card = Entity.extend({
         cc.log(cardIdList);
 
         var that = this;
-        lzWindow.pomelo.request("logic.trainHandler.strengthen", {playerId: gameData.player.get("id"), target: this._id, sources: cardIdList}, function (data) {
+        lzWindow.pomelo.request("logic.trainHandler.strengthen", {
+            playerId: gameData.player.get("id"),
+            target: this._id,
+            sources: cardIdList
+        }, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
@@ -224,6 +258,107 @@ var Card = Entity.extend({
                 cc.log("upgrade fail");
 
                 cb(null);
+            }
+        });
+    },
+
+    canUpgradeSkill: function () {
+        cc.log("Card canUpgradeSkill");
+
+        return (this._star > 2 && this._skillLv < this._skillMaxLv)
+    },
+
+    getUpgradeNeedSKillPoint: function () {
+        cc.log("Card getUpgradeNeedSKillPoint");
+
+        if (this.canUpgradeSkill()) {
+            var skillUpgradeTable = outputTables.skill_upgrade.rows[this._skillLv + 1];
+            return skillUpgradeTable["star" + this._star];
+        }
+
+        return 0;
+    },
+
+    getNextSkillLvHarm: function () {
+        cc.log("Card getNextSkillLvHarm");
+
+        if (this.canUpgradeSkill()) {
+            // 读取技能配置表
+            var skillHarmString = outputTables.skills.rows[this._skillId]["star" + this._star];
+            var skillHarm = [0, 0];
+
+            if (skillHarmString) {
+                skillHarm = skillHarmString.split(",", 2);
+            }
+
+            return (parseInt(skillHarm[0]) + parseInt(skillHarm[1]) * (this._skillLv + 1));
+        }
+
+        return 0;
+    },
+
+    upgradeSkill: function (cb) {
+        cc.log("Card upgradeSkill " + this._id);
+
+        var that = this;
+        lzWindow.pomelo.request("logic.trainHandler.skillUpgrade", {
+            playerId: gameData.player.get("id"),
+            cardId: this._id
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("upgradeSkill success");
+
+                var msg = data.msg;
+
+                that.update({
+                    skillLv: msg.skillLv
+                });
+
+                gameData.player.add("skillPoint", -msg.skillPoint);
+
+                cb();
+            } else {
+                cc.log("upgradeSkill fail");
+
+                cb();
+            }
+        });
+    },
+
+    afreshPassiveSkill: function (cb, afreshIdList, type) {
+        cc.log("Card afreshPassiveSkill " + this._id);
+        cc.log(afreshIdList);
+        cc.log(type);
+
+        var that = this;
+        lzWindow.pomelo.request("logic.trainHandler.passSkillAfresh", {
+            playerId: gameData.player.get("id"),
+            cardId: this._id,
+            psIds: afreshIdList,
+            type: type
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("passSkillAfresh success");
+
+                var msg = data.msg;
+
+                that._updatePassiveSkill(msg);
+
+                if (type == USE_MONEY) {
+                    gameData.player.add("money", -20000);
+                } else if (type == USE_GOLD) {
+                    gameData.player.add("gold", -10);
+                }
+
+                cb();
+            } else {
+                cc.log("passSkillAfresh fail");
+
+                cb();
             }
         });
     }

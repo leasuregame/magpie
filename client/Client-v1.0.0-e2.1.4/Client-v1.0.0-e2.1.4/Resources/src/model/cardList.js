@@ -24,6 +24,7 @@ var CardList = Entity.extend({
     init: function (cardList) {
         cc.log("CardList init");
 
+        this._cardList = {};
         var len = cardList.length;
 
         for (var i = 0; i < len; ++i) {

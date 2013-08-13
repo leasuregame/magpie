@@ -65,27 +65,27 @@ var CardUpgradeLabel = cc.Layer.extend({
         resLabelIcon.setPosition(cc.p(70, 95));
         this._resLabel.addChild(resLabelIcon);
 
-        this._lvLabel = cc.LabelTTF.create("0", 'Times New Roman', 40);
+        this._lvLabel = cc.LabelTTF.create("0", '黑体', 40);
         this._lvLabel.setPosition(cc.p(70, 40));
         this._resLabel.addChild(this._lvLabel);
 
-        this._hpLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        this._hpLabel = cc.LabelTTF.create("0", '黑体', 25);
         this._hpLabel.setAnchorPoint(cc.p(0, 0.5));
         this._hpLabel.setPosition(cc.p(110, 112));
         this._resLabel.addChild(this._hpLabel);
 
-        this._hpAdditionLabel = cc.LabelTTF.create("+0", 'Times New Roman', 25);
+        this._hpAdditionLabel = cc.LabelTTF.create("+0", '黑体', 25);
         this._hpAdditionLabel.setAnchorPoint(cc.p(0, 0.5));
         this._hpAdditionLabel.setColor(cc.c3b(118, 238, 60));
         this._hpAdditionLabel.setPosition(cc.p(180, 112));
         this._resLabel.addChild(this._hpAdditionLabel);
 
-        this._atkLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        this._atkLabel = cc.LabelTTF.create("0", '黑体', 25);
         this._atkLabel.setAnchorPoint(cc.p(0, 0.5));
         this._atkLabel.setPosition(cc.p(110, 78));
         this._resLabel.addChild(this._atkLabel);
 
-        this._atkAdditionLabel = cc.LabelTTF.create("+0", 'Times New Roman', 25);
+        this._atkAdditionLabel = cc.LabelTTF.create("+0", '黑体', 25);
         this._atkAdditionLabel.setAnchorPoint(cc.p(0, 0.5));
         this._atkAdditionLabel.setColor(cc.c3b(118, 238, 60));
         this._atkAdditionLabel.setPosition(cc.p(180, 78));
@@ -142,22 +142,22 @@ var CardUpgradeLabel = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._expLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        this._expLabel = cc.LabelTTF.create("0", '黑体', 25);
         this._expLabel.setAnchorPoint(cc.p(0, 0.5));
         this._expLabel.setPosition(cc.p(240, 405));
         this.addChild(this._expLabel);
 
-        this._maxExpLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        this._maxExpLabel = cc.LabelTTF.create("0", '黑体', 25);
         this._maxExpLabel.setAnchorPoint(cc.p(0, 0.5));
         this._maxExpLabel.setPosition(cc.p(500, 405));
         this.addChild(this._maxExpLabel);
 
-        this._moneyLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        this._moneyLabel = cc.LabelTTF.create("0", '黑体', 25);
         this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
         this._moneyLabel.setPosition(cc.p(240, 357));
         this.addChild(this._moneyLabel);
 
-        this._cardCountLabel = cc.LabelTTF.create("0", 'Times New Roman', 25);
+        this._cardCountLabel = cc.LabelTTF.create("0", '黑体', 25);
         this._cardCountLabel.setAnchorPoint(cc.p(0, 0.5));
         this._cardCountLabel.setPosition(cc.p(480, 357));
         this.addChild(this._cardCountLabel);
@@ -293,7 +293,7 @@ var CardUpgradeLabel = cc.Layer.extend({
                 exp += this._retinueCard[i].getCardExp();
             }
 
-            var dummyCard = cc.clone(this._leadCard);
+            var dummyCard = lz.clone(this._leadCard);
 
             var money = dummyCard.addExp(exp);
 
@@ -431,21 +431,6 @@ var CardUpgradeLabel = cc.Layer.extend({
         }, 0.1, times);
     },
 
-    _switchToCardListLayer: function (cardListLayer) {
-        cc.log("CardUpgradeLabel _switchToCardListLayer");
-
-        this.getParent().setVisible(false);
-        MainScene.getInstance().switch(cardListLayer);
-    },
-
-    _backToThisLayer: function (cardListLayer) {
-        cc.log("CardUpgradeLabel _backToThisLayer");
-
-        var parent = this.getParent();
-        parent.setVisible(true);
-        MainScene.getInstance().switch(parent);
-    },
-
     _onClickSelectLeadCard: function () {
         cc.log("CardUpgradeLabel _onClickSelectLeadCard");
 
@@ -459,13 +444,13 @@ var CardUpgradeLabel = cc.Layer.extend({
                 that._leadCard = data[0] || null;
                 that._retinueCard = [];
             }
-            that._backToThisLayer(cardListLayer);
+            that.getParent()._backToThisLayer();
 
             cc.log("this._leadCard :");
             cc.log(that._leadCard);
         });
 
-        this._switchToCardListLayer(cardListLayer);
+        this.getParent()._switchToCardListLayer(cardListLayer);
     },
 
     _onClickSelectRetinueCard: function () {
@@ -486,13 +471,13 @@ var CardUpgradeLabel = cc.Layer.extend({
             if (data) {
                 that._retinueCard = data;
             }
-            that._backToThisLayer(cardListLayer);
+            that.getParent()._backToThisLayer();
 
             cc.log("this._retinueCard :");
             cc.log(that._retinueCard);
         });
 
-        this._switchToCardListLayer(cardListLayer);
+        this.getParent()._switchToCardListLayer(cardListLayer);
     },
 
     _onClickUpgrade: function () {
@@ -504,7 +489,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             cardIdList.push(this._retinueCard[i].get("id"));
         }
 
-        var dummyCard = cc.clone(this._leadCard);
+        var dummyCard = lz.clone(this._leadCard);
 
         var that = this;
         this._leadCard.upgrade(function (data) {

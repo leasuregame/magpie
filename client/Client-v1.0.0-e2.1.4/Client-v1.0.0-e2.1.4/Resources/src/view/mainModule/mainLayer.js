@@ -34,14 +34,14 @@ var MainLayer = cc.Layer.extend({
         playerHeaderLabel.setPosition(cc.p(40, 890));
         this.addChild(playerHeaderLabel);
 
-        this._abilityLabel = cc.LabelTTF.create("0", 'Times New Roman', 22);
+        this._abilityLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._abilityLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._abilityLabel.setPosition(cc.p(300, 712));
+        this._abilityLabel.setPosition(cc.p(300, 700));
         this.addChild(this._abilityLabel);
 
-        this._rankLabel = cc.LabelTTF.create("0", 'Times New Roman', 22);
+        this._rankLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._rankLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._rankLabel.setPosition(cc.p(540, 712));
+        this._rankLabel.setPosition(cc.p(530, 700));
         this.addChild(this._rankLabel);
 
         var lineUpLabel = LineUpLabel.create();
@@ -49,10 +49,10 @@ var MainLayer = cc.Layer.extend({
         this.addChild(lineUpLabel);
 
 
-        var activityLayerItem = cc.MenuItemFont.create("活动入口", this._onClickActivityLayer, this);
-        activityLayerItem.setFontSize(40);
-        activityLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
-        activityLayerItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 650));
+//        var activityLayerItem = cc.MenuItemFont.create("活动入口", this._onClickActivityLayer, this);
+//        activityLayerItem.setFontSize(40);
+//        activityLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
+//        activityLayerItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 650));
 
         var lotteryLayerItem = cc.MenuItemImage.create(main_scene_image.button5, main_scene_image.button5s, this._onClickLotteryLayer, this);
         lotteryLayerItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 500));
@@ -69,25 +69,19 @@ var MainLayer = cc.Layer.extend({
         var evolutionLayerItem = cc.MenuItemImage.create(main_scene_image.button4, main_scene_image.button4s, this._onClickEvolutionLayer, this);
         evolutionLayerItem.setPosition(cc.p(555, 400));
 
-        var cardLibraryLayerItem = cc.MenuItemImage.create(main_scene_image.button6, main_scene_image.button6s, this._onClickCardLibraryLayer, this);
+        var cardLibraryLayerItem = cc.MenuItemImage.create(main_scene_image.button26, main_scene_image.button26s, this._onClickCardLibraryLayer, this);
         cardLibraryLayerItem.setPosition(cc.p(135, 250));
 
-        var rankLayerItem = cc.MenuItemImage.create(main_scene_image.button6, main_scene_image.button6s, this._onClickRankLayer, this);
+        var rankLayerItem = cc.MenuItemImage.create(main_scene_image.button27, main_scene_image.button27s, this._onClickRankLayer, this);
         rankLayerItem.setPosition(cc.p(285, 250));
 
-        var friendLayerItem = cc.MenuItemImage.create(main_scene_image.button6, main_scene_image.button6s, this._onClickFriendLayer, this);
+        var friendLayerItem = cc.MenuItemImage.create(main_scene_image.button28, main_scene_image.button28s, this._onClickFriendLayer, this);
         friendLayerItem.setPosition(cc.p(435, 250));
 
-        var configLayerItem = cc.MenuItemImage.create(main_scene_image.button6, main_scene_image.button6s, this._onClickConfigLayer, this);
+        var configLayerItem = cc.MenuItemImage.create(main_scene_image.button29, main_scene_image.button29s, this._onClickConfigLayer, this);
         configLayerItem.setPosition(cc.p(585, 250));
 
-        for (var i = 0; i < 4; ++i) {
-            var itemIcon = cc.Sprite.create(main_scene_image["icon" + (i + 1)]);
-            itemIcon.setPosition(cc.p(135 + i * 150, 250));
-            this.addChild(itemIcon, 1);
-        }
-
-        var functionMenu = cc.Menu.create(activityLayerItem, lotteryLayerItem, pveLayerItem, tournamentLayerItem, strengthenLayerItem,
+        var functionMenu = cc.Menu.create(lotteryLayerItem, pveLayerItem, tournamentLayerItem, strengthenLayerItem,
             evolutionLayerItem, cardLibraryLayerItem, rankLayerItem, friendLayerItem, configLayerItem);
         functionMenu.setPosition(cc.p(0, 0));
 

@@ -19,7 +19,7 @@ var ShopLayer = cc.Layer.extend({
 
         var winSize = cc.Director.getInstance().getWinSize();
 
-        var label = cc.LabelTTF.create("ShopLayer", 'Times New Roman', 60);
+        var label = cc.LabelTTF.create("ShopLayer", '黑体', 60);
         label.setPosition(winSize.width / 2, winSize.height / 2);
         this.addChild(label);
 

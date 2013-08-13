@@ -8,7 +8,7 @@
 
 
 /*
- * 强化
+ * strengthen layer
  * */
 
 
@@ -44,7 +44,7 @@ var StrengthenLayer = cc.Layer.extend({
             this._onClickCardUpgrade,
             this
         );
-        this._cardUpgradeItem.setPosition(cc.p(110, 848));
+        this._cardUpgradeItem.setPosition(cc.p(110, 844));
 
         this._skillUpgradeItem = cc.MenuItemImage.create(
             main_scene_image.button23,
@@ -53,7 +53,7 @@ var StrengthenLayer = cc.Layer.extend({
             this._onClickSkillUpgrade,
             this
         );
-        this._skillUpgradeItem.setPosition(cc.p(254, 848));
+        this._skillUpgradeItem.setPosition(cc.p(254, 844));
 
         this._passiveSkillUpgradeItem = cc.MenuItemImage.create(
             main_scene_image.button23,
@@ -62,27 +62,42 @@ var StrengthenLayer = cc.Layer.extend({
             this._onClickPassiveSkillUpgrade,
             this
         );
-        this._passiveSkillUpgradeItem.setPosition(cc.p(404, 848));
+        this._passiveSkillUpgradeItem.setPosition(cc.p(404, 844));
 
         var menu = cc.Menu.create(this._cardUpgradeItem, this._skillUpgradeItem, this._passiveSkillUpgradeItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
         var cardUpgradeIcon = cc.Sprite.create(main_scene_image.icon45);
-        cardUpgradeIcon.setPosition(cc.p(103, 848));
+        cardUpgradeIcon.setPosition(cc.p(103, 842));
         this.addChild(cardUpgradeIcon);
 
         var skillUpgradeIcon = cc.Sprite.create(main_scene_image.icon46);
-        skillUpgradeIcon.setPosition(cc.p(254, 848));
+        skillUpgradeIcon.setPosition(cc.p(254, 842));
         this.addChild(skillUpgradeIcon);
 
         var passiveSkillUpgradeIcon = cc.Sprite.create(main_scene_image.icon47);
-        passiveSkillUpgradeIcon.setPosition(cc.p(404, 848));
+        passiveSkillUpgradeIcon.setPosition(cc.p(404, 842));
         this.addChild(passiveSkillUpgradeIcon);
 
         this._onClickCardUpgrade();
 
         return true;
+    },
+
+    _switchToCardListLayer: function (cardListLayer) {
+        cc.log("StrengthenLayer _switchToCardListLayer");
+
+        this.retain();
+        this.setVisible(false);
+        MainScene.getInstance().switch(cardListLayer);
+    },
+
+    _backToThisLayer: function () {
+        cc.log("StrengthenLayer _backToThisLayer");
+
+        this.setVisible(true);
+        MainScene.getInstance().switch(this);
     },
 
     _onClickCardUpgrade: function () {
@@ -112,12 +127,12 @@ var StrengthenLayer = cc.Layer.extend({
         this._skillUpgradeItem.setEnabled(true);
         this._passiveSkillUpgradeItem.setEnabled(false);
 
-        this._switchLabel(PassiveSkillUpgradeLabel);
+        this._switchLabel(PassiveSkillAfreshLabel);
     },
 
     _switchLabel: function (runLabel) {
         if (!(this._nowLayer instanceof runLabel)) {
-            this.removeChild(this._nowLabel);
+            if (this._nowLabel != null) this.removeChild(this._nowLabel);
             this._nowLabel = runLabel.create();
             this.addChild(this._nowLabel);
         }

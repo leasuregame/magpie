@@ -18,33 +18,28 @@ var MainMenuLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        var bgSprite = cc.Sprite.create(main_scene_image.main_menu_bg);
-        bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_ZERO);
-        this.addChild(bgSprite, -1);
-
         var mainLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickMainLayer, this);
-        mainLayerItem.setPosition(cc.p(110, 143));
+        mainLayerItem.setPosition(cc.p(93, 141));
 
         var pveLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickPveLayer, this);
-        pveLayerItem.setPosition(cc.p(210, 143));
+        pveLayerItem.setPosition(cc.p(200, 141));
 
         var tournamentLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickTournamentLayer, this);
-        tournamentLayerItem.setPosition(cc.p(310, 143));
+        tournamentLayerItem.setPosition(cc.p(307, 141));
 
         var rankingLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickCardListLayer, this);
-        rankingLayerItem.setPosition(cc.p(410, 143));
+        rankingLayerItem.setPosition(cc.p(414, 141));
 
         var shopLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickShopLayer, this);
-        shopLayerItem.setPosition(cc.p(510, 143));
+        shopLayerItem.setPosition(cc.p(521, 141));
 
         var messageLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickMessageLayer, this);
-        messageLayerItem.setPosition(cc.p(610, 143));
+        messageLayerItem.setPosition(cc.p(628, 141));
 
         var itemIcon = null;
-        for(var i = 0; i < 6; ++i) {
+        for (var i = 0; i < 6; ++i) {
             itemIcon = cc.Sprite.create(main_scene_image["icon" + (i + 5)]);
-            itemIcon.setPosition(cc.p(110 + i * 100, 140));
+            itemIcon.setPosition(cc.p(93 + i * 107, 141));
             this.addChild(itemIcon, 1);
         }
 

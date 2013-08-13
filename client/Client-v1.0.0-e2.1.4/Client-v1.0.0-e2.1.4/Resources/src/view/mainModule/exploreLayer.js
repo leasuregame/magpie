@@ -55,7 +55,7 @@ var ExploreLayer = cc.Layer.extend({
 //        this._turnRightSprite.setVisible(false);
         this.addChild(this._turnRightSprite, 1);
 
-        var titleLabel = cc.LabelTTF.create("第" + index + "章: " + outputTables.chapter.rows[index].chapter, 'Times New Roman', 30);
+        var titleLabel = cc.LabelTTF.create("第" + index + "章: " + outputTables.chapter.rows[index].chapter, '黑体', 30);
         titleLabel.setPosition(cc.p(360, 995));
         this.addChild(titleLabel);
 
@@ -96,23 +96,23 @@ var ExploreLayer = cc.Layer.extend({
             exploreIconSprite.setPosition(cc.p(268 + offsetX, 235));
             this._scrollViewLayer.addChild(exploreIconSprite, 1);
 
-            var powerLabel = cc.LabelTTF.create("0 / 0", 'Times New Roman', 20);
+            var powerLabel = cc.LabelTTF.create("0 / 0", '黑体', 20);
             powerLabel.setPosition(cc.p(460 + offsetX, 377));
             this._scrollViewLayer.addChild(powerLabel);
 
-            var expLabel = cc.LabelTTF.create("0 / 0", 'Times New Roman', 20);
+            var expLabel = cc.LabelTTF.create("0 / 0", '黑体', 20);
             expLabel.setPosition(cc.p(460 + offsetX, 329));
             this._scrollViewLayer.addChild(expLabel);
 
-            var progressLabel = cc.LabelTTF.create("0 / 0", 'Times New Roman', 20);
+            var progressLabel = cc.LabelTTF.create("0 / 0", '黑体', 20);
             progressLabel.setPosition(cc.p(460 + offsetX, 290));
             this._scrollViewLayer.addChild(progressLabel);
 
-            var nameLabel = cc.LabelTTF.create(chapterTable[id].section_name, 'Times New Roman', 30);
+            var nameLabel = cc.LabelTTF.create(chapterTable[id].section_name, '黑体', 30);
             nameLabel.setPosition(cc.p(268 + offsetX, 425));
             this._scrollViewLayer.addChild(nameLabel);
 
-            var storyLabel = cc.LabelTTF.create("哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈\n哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈", 'Times New Roman', 30, cc.size(537, 100), cc.TEXT_ALIGNMENT_LEFT);
+            var storyLabel = cc.LabelTTF.create("哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈\n哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈", '黑体', 30, cc.size(537, 100), cc.TEXT_ALIGNMENT_LEFT);
             storyLabel.setAnchorPoint(cc.p(0, 1));
             storyLabel.setPosition(cc.p(30 + offsetX, 100));
             this._scrollViewLayer.addChild(storyLabel);

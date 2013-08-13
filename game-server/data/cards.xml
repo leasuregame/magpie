@@ -24,7 +24,7 @@
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>10940</WindowTopX>
   <WindowTopY>720</WindowTopY>
-  <ActiveSheet>7</ActiveSheet>
+  <ActiveSheet>5</ActiveSheet>
   <FirstVisibleSheet>1</FirstVisibleSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -6151,7 +6151,7 @@
     <Cell><Data ss:Type="String">rate_per_card</Data></Cell>
     <Cell><Data ss:Type="String">max_num</Data></Cell>
     <Cell><Data ss:Type="String">exp_inherit</Data></Cell>
-    <Cell><Data ss:Type="String">skillPoint_inherti</Data></Cell>
+    <Cell><Data ss:Type="String">skillPoint_inherit</Data></Cell>
     <Cell><Data ss:Type="String">elixir_inherit</Data></Cell>
     <Cell><Data ss:Type="String">gold_need</Data></Cell>
    </Row>
@@ -6202,12 +6202,12 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>6</ActiveCol>
-     <RangeSelection>R2C7:R2C8</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -6313,11 +6313,11 @@
    </PageSetup>
    <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>7</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

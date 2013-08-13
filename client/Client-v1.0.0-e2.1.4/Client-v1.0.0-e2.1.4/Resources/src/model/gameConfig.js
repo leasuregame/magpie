@@ -18,7 +18,7 @@ var GAME_WIDTH = 640;
 var GAME_HEIGHT = 960;
 var GAME_MIDPOINT = cc.p(360, 568);
 var GAME_ZERO = cc.p(40, 88);
-var GAME_BG_POINT = cc.p(40, 198);
+var GAME_BG_POINT = cc.p(40, 194);
 var GAME_WIDTH_MIDPOINT = 360;
 var GAME_HEIGHT_MIDPOINT = 568;
 

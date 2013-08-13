@@ -361,6 +361,24 @@ var Card = Entity.extend({
                 cb();
             }
         });
+    },
+
+    canEvolution: function () {
+        cc.log("Card canEvolution");
+
+        return (this._star < 5);
+    },
+
+    getPreCardRate: function () {
+        cc.log("Card getPreCardRate");
+    },
+
+    getEvolutionUseMaxCard: function () {
+        cc.log("Card getEvolutionUseMaxCard");
+    },
+
+    getEvolutionNeedMoney: function () {
+        cc.log("Card getEvolutionNeedMoney");
     }
 })
 

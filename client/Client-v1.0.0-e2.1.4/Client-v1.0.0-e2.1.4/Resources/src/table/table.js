@@ -7,6 +7,10 @@ var nameChanged = {
     "卡牌范围表": "scope",
     "skill_upgrade": "卡牌技能升级表",
     "卡牌技能升级表": "skill_upgrade",
+    "elixir": "仙丹配置表",
+    "仙丹配置表": "elixir",
+    "star_upgrade": "卡牌进阶配置表",
+    "卡牌进阶配置表": "star_upgrade",
     "card_lv_limit": "卡牌等级限制表",
     "卡牌等级限制表": "card_lv_limit",
     "card_grow": "卡牌升级表",
@@ -39,7 +43,20 @@ var nameChanged = {
 
 var outputTables = {
     "skills": {
-        "colComment": {},
+        "colComment": {
+            "type": {
+                "table": "技能类型表",
+                "key_index": "id",
+                "value_index": "name",
+                "withPound": false
+            },
+            "scope": {
+                "table": "卡牌范围表",
+                "key_index": "id",
+                "value_index": "name",
+                "withPound": false
+            }
+        },
         "rows": {
             "1": {
                 "id": 1,
@@ -847,6 +864,69 @@ var outputTables = {
                 "star3": 15000,
                 "star4": 120000,
                 "star5": 200000
+            }
+        }
+    },
+    "elixir": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "elixir": 5,
+                "atk": 1,
+                "hp": 3,
+                "star3_max": 10000,
+                "star4_max": 25000,
+                "star5_max": 50000
+            }
+        }
+    },
+    "star_upgrade": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star": 1,
+                "money_need": 3000,
+                "rate_per_card": 7,
+                "max_num": 15,
+                "exp_inherit": 50,
+                "skillPoint_inherti": 50,
+                "elixir_inherit": 50,
+                "gold_need": 500
+            },
+            "2": {
+                "id": 2,
+                "star": 2,
+                "money_need": 5000,
+                "rate_per_card": 6,
+                "max_num": 17,
+                "exp_inherit": 50,
+                "skillPoint_inherti": 50,
+                "elixir_inherit": 50,
+                "gold_need": 500
+            },
+            "3": {
+                "id": 3,
+                "star": 3,
+                "money_need": 10000,
+                "rate_per_card": 5,
+                "max_num": 20,
+                "exp_inherit": 50,
+                "skillPoint_inherti": 50,
+                "elixir_inherit": 50,
+                "gold_need": 500
+            },
+            "4": {
+                "id": 4,
+                "star": 4,
+                "money_need": 20000,
+                "rate_per_card": 3,
+                "max_num": 34,
+                "exp_inherit": 50,
+                "skillPoint_inherti": 50,
+                "elixir_inherit": 50,
+                "gold_need": 500
             }
         }
     },

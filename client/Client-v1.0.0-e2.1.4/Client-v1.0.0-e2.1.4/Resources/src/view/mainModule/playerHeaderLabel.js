@@ -38,39 +38,43 @@ var PlayerHeaderLabel = cc.Layer.extend({
 
         this._nameLabel = cc.LabelTTF.create("null", '黑体', 30);
         this._nameLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._nameLabel.setPosition(cc.p(160, 79));
+        this._nameLabel.setPosition(cc.p(160, 83));
         this.addChild(this._nameLabel);
 
-        this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0, true);
-        this._expProgress.setPosition(cc.p(200, 43));
+        var expProgressBg = cc.Sprite.create(main_scene_image.exp_bg);
+        expProgressBg.setPosition(cc.p(195, 36));
+        this.addChild(expProgressBg, 2);
+
+        this._expProgress = Progress.create(null, main_scene_image.exp, 5, 100, true);
+        this._expProgress.setPosition(cc.p(200, 35));
         this.addChild(this._expProgress, 2);
 
         var lvBg = cc.Sprite.create(main_scene_image.lv_bg);
-        lvBg.setPosition(cc.p(60, 60));
+        lvBg.setPosition(cc.p(60, 53));
         this.addChild(lvBg, 2);
 
         this._lvLabel = cc.LabelTTF.create("0", '黑体', 45);
         this._lvLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._lvLabel.setPosition(cc.p(46, 46));
+        this._lvLabel.setPosition(cc.p(46, 39));
         lvBg.addChild(this._lvLabel);
 
         var vipSprite = cc.Sprite.create(main_scene_image.vip5);
-        vipSprite.setPosition(cc.p(265, 79));
+        vipSprite.setPosition(cc.p(265, 83));
         this.addChild(vipSprite, 2);
 
         this._goldLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._goldLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._goldLabel.setPosition(cc.p(570, 79));
+        this._goldLabel.setPosition(cc.p(570, 83));
         this.addChild(this._goldLabel);
 
         this._moneyLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._moneyLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._moneyLabel.setPosition(cc.p(570, 32));
+        this._moneyLabel.setPosition(cc.p(570, 36));
         this.addChild(this._moneyLabel);
 
         this._powerLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._powerLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._powerLabel.setPosition(cc.p(420, 32));
+        this._powerLabel.setPosition(cc.p(420, 36));
         this.addChild(this._powerLabel);
 
         return true;

@@ -76,6 +76,7 @@ var appFiles = [
 
     'src/view/mainModule/activityLayer.js',
     'src/view/mainModule/cardDetails.js',
+    'src/view/mainModule/cardEvolutionLabel.js',
     'src/view/mainModule/cardNode.js',
     'src/view/mainModule/cardFullNode.js',
     'src/view/mainModule/cardHalfNode.js',
@@ -83,6 +84,7 @@ var appFiles = [
     'src/view/mainModule/cardLabel.js',
     'src/view/mainModule/cardLibraryLayer.js',
     'src/view/mainModule/cardListLayer.js',
+    'src/view/mainModule/cardTrainLabel.js',
     'src/view/mainModule/cardUpgradeLabel.js',
     'src/view/mainModule/configLayer.js',
     'src/view/mainModule/evolutionLayer.js',

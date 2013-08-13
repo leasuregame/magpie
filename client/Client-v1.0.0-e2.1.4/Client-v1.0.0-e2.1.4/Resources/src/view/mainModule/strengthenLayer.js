@@ -69,15 +69,15 @@ var StrengthenLayer = cc.Layer.extend({
         this.addChild(menu);
 
         var cardUpgradeIcon = cc.Sprite.create(main_scene_image.icon45);
-        cardUpgradeIcon.setPosition(cc.p(103, 844));
+        cardUpgradeIcon.setPosition(cc.p(103, 842));
         this.addChild(cardUpgradeIcon);
 
         var skillUpgradeIcon = cc.Sprite.create(main_scene_image.icon46);
-        skillUpgradeIcon.setPosition(cc.p(254, 844));
+        skillUpgradeIcon.setPosition(cc.p(254, 842));
         this.addChild(skillUpgradeIcon);
 
         var passiveSkillUpgradeIcon = cc.Sprite.create(main_scene_image.icon47);
-        passiveSkillUpgradeIcon.setPosition(cc.p(404, 844));
+        passiveSkillUpgradeIcon.setPosition(cc.p(404, 842));
         this.addChild(passiveSkillUpgradeIcon);
 
         this._onClickCardUpgrade();
@@ -93,7 +93,7 @@ var StrengthenLayer = cc.Layer.extend({
         MainScene.getInstance().switch(cardListLayer);
     },
 
-    _backToThisLayer: function (cardListLayer) {
+    _backToThisLayer: function () {
         cc.log("StrengthenLayer _backToThisLayer");
 
         this.setVisible(true);

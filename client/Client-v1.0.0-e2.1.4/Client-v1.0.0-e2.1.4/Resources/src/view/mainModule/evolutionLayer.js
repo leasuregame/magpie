@@ -59,11 +59,11 @@ var EvolutionLayer = cc.Layer.extend({
         this.addChild(menu);
 
         var cardEvolutionIcon = cc.Sprite.create(main_scene_image.icon45);
-        cardEvolutionIcon.setPosition(cc.p(103, 844));
+        cardEvolutionIcon.setPosition(cc.p(103, 842));
         this.addChild(cardEvolutionIcon);
 
         var cardTrainIcon = cc.Sprite.create(main_scene_image.icon46);
-        cardTrainIcon.setPosition(cc.p(254, 844));
+        cardTrainIcon.setPosition(cc.p(254, 842));
         this.addChild(cardTrainIcon);
 
         this._onClickCardEvolution();
@@ -79,7 +79,7 @@ var EvolutionLayer = cc.Layer.extend({
         MainScene.getInstance().switch(cardListLayer);
     },
 
-    _backToThisLayer: function (cardListLayer) {
+    _backToThisLayer: function () {
         cc.log("EvolutionLayer _backToThisLayer");
 
         this.setVisible(true);
@@ -92,7 +92,7 @@ var EvolutionLayer = cc.Layer.extend({
         this._cardEvolutionItem.setEnabled(false);
         this._cardTrainItem.setEnabled(true);
 
-        this._switchLabel(CardUpgradeLabel);
+        this._switchLabel(CardEvolutionLayer);
     },
 
     _onClickCardTrain: function () {
@@ -101,7 +101,7 @@ var EvolutionLayer = cc.Layer.extend({
         this._cardEvolutionItem.setEnabled(true);
         this._cardTrainItem.setEnabled(false);
 
-        this._switchLabel(SkillUpgradeLabel);
+        this._switchLabel(CardTrainLabel);
     },
 
     _switchLabel: function (runLabel) {

@@ -37,9 +37,9 @@ var MainMenuLayer = cc.Layer.extend({
         messageLayerItem.setPosition(cc.p(628, 141));
 
         var itemIcon = null;
-        for(var i = 0; i < 6; ++i) {
+        for (var i = 0; i < 6; ++i) {
             itemIcon = cc.Sprite.create(main_scene_image["icon" + (i + 5)]);
-            itemIcon.setPosition(cc.p(95 + i * 106, 141));
+            itemIcon.setPosition(cc.p(93 + i * 107, 141));
             this.addChild(itemIcon, 1);
         }
 

@@ -25,30 +25,22 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _leadCardHeadNode: null,
     _nameLabel: null,
     _lvLabel: null,
-
     _resLabel: null,
-
     _useMoneyIcon: null,
     _useGoldIcon: null,
     _useType: USE_NULL,
-
     _stopTypeLabel: null,
-
     _stopUntilBlueIcon: null,
     _stopUntilYellowIcon: null,
     _stopType: STOP_UNTIL_NULL,
-
     _passiveSkillList: [],
     _afreshIdList: [],
-
     _passiveSkillNameTexture: {},
-
     _afreshItem: null,
     _repeatAfreshItem: null,
     _startItem: null,
     _cancelItem: null,
     _stopItem: null,
-
     _afreshIcon: null,
     _repeatAfreshIcon: null,
     _startIcon: null,

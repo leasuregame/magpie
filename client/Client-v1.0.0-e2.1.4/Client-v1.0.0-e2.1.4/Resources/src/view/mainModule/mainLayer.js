@@ -36,12 +36,12 @@ var MainLayer = cc.Layer.extend({
 
         this._abilityLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._abilityLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._abilityLabel.setPosition(cc.p(300, 696));
+        this._abilityLabel.setPosition(cc.p(300, 700));
         this.addChild(this._abilityLabel);
 
         this._rankLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._rankLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._rankLabel.setPosition(cc.p(530, 696));
+        this._rankLabel.setPosition(cc.p(530, 700));
         this.addChild(this._rankLabel);
 
         var lineUpLabel = LineUpLabel.create();

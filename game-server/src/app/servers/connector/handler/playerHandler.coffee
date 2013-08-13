@@ -1,5 +1,5 @@
 dao = require('pomelo').app.get('dao')
-Player = require('../../../domain/player')
+Player = require('../../../domain/entity/player')
 async = require('async')
 
 module.exports = (app) ->

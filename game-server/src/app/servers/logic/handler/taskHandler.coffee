@@ -4,7 +4,7 @@ table = require '../../../manager/table'
 taskRate = require '../../../../config/data/taskRate'
 async = require 'async'
 _ = require 'underscore'
-Card = require '../../../domain/card'
+Card = require '../../../domain/entity/card'
 cardConfig = require '../../../../config/data/card'
 utility = require '../../../common/utility'
 dao = require('pomelo').app.get('dao')
@@ -43,7 +43,7 @@ Handler::explore = (msg, session, next) ->
           if battleLog.winner is 'own'
             async.parallel [
               (callback) ->
-                obtainBattleRewards(player, chapterId, battleLog, callback)
+                taskManager.obtainBattleRewards(player, chapterId, battleLog, callback)
 
               (callback) ->
                 taskManager.countExploreResult player, data, callback
@@ -134,69 +134,3 @@ Handler::passBarrier = (msg, session, next) ->
       return next(err, {code: err.code or 500, msg: err.msg or ''})
     
     next(null, {code: 200, msg: {battleLog: bl, pass: player.pass}})
-
-obtainBattleRewards = (player, taskId, battleLog, cb) ->
-  taskData = table.getTableItem 'task_config', taskId
-
-  # 奖励掉落卡牌
-  ids = taskData.cards.split('#').map (id) ->
-    _row = table.getTableItem 'task_card', id
-    _row.card_id
-
-  _cards = getRewardCards(ids, taskData.max_drop_card_number)
-  
-  saveCardsInfo player.id, _cards, (results) ->
-    battleLog.rewards.cards = results.map (card) -> card.toJson()
-
-    # 将掉落的卡牌添加到玩家信息
-    player.addCards results
-    cb()
-
-getRewardCards = (cardIds, count) ->
-  countCardId = (id, star) ->
-    _card = table.getTableItem 'cards', id
-    if _card.star isnt star
-      _card_id = if _card.star > star then (id - 1) else (id + 1)
-      return _card_id
-    else
-      return id
-
-  cd = taskRate.card_drop
-  _cards = []
-  for i in [1..count]
-    _id = utility.randomValue cardIds
-    _star = utility.randomValue _.keys(cd.star), _.values(cd.star)
-    _level = utility.randomValue _.keys(cd.level), _.values(cd.level)
-
-    _id = countCardId(parseInt(_id), parseInt(_star))
-    _cards.push {
-      id: _id
-      star: parseInt(_star)
-      lv: parseInt(_level)
-    }
-  
-  _cards
-
-saveCardsInfo = (playerId, cards, cb) ->
-  results = []
-  async.each cards
-    , (card, callback) ->
-      dao.card.create(
-        data: {
-          playerId: playerId, 
-          tableId: card.id, 
-          star: card.star,
-          lv: card.lv
-        }, 
-        (err, card) ->
-          if err and not card
-            return callback(err)
-
-          results.push card
-          callback()
-      )
-    , (err) ->
-      if err
-        console.log err
-
-      cb(results)

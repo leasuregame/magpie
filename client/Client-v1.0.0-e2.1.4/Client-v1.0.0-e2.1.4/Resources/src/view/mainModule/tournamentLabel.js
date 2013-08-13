@@ -41,11 +41,11 @@ var TournamentLabel = cc.Node.extend({
         playerItemMenu.setPosition(cc.p(0, 0));
         this.addChild(playerItemMenu);
 
-        var playerNameLabel = cc.LabelTTF.create(data.name, 'Times New Roman', 25);
+        var playerNameLabel = cc.LabelTTF.create(data.name, '黑体', 25);
         playerNameLabel.setPosition(cc.p(90, 60));
         this.addChild(playerNameLabel);
 
-        var playerRankLabel = cc.LabelTTF.create(data.rank, 'Times New Roman', 25);
+        var playerRankLabel = cc.LabelTTF.create(data.rank, '黑体', 25);
         playerRankLabel.setPosition(cc.p(90, 100));
         this.addChild(playerRankLabel);
 

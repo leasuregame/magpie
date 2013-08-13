@@ -16,7 +16,7 @@ var sqlHelper = require("./sqlHelper");
 var app = require("pomelo").app;
 var dbClient = app.get("dbClient");
 var logger = require("pomelo-logger").getLogger(__filename);
-var BattleLog = require("../../domain/battleLog");
+var BattleLog = require("../../domain/entity/battleLog");
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
 

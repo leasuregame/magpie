@@ -16,11 +16,11 @@ class Manager
       cb(null, player)
 
   @getPlayerInfo: (params, cb) ->
-    if app.get('debug')
-      _player = playerList.get(params.pid)
-      return cb(null, _player) if _player?
+    # if app.get('debug')
+    #   _player = playerList.get(params.pid)
+    #   return cb(null, _player) if _player?
 
-    sync = params.sync or true
+    sync = params.sync? and params.sync or true
     dao.player.getPlayerInfo {
       where: {id:params.pid}, 
       sync: sync
@@ -29,7 +29,7 @@ class Manager
         cb(err, null)
         return
 
-      playerList.put(player.id, player)
+      # playerList.put(player.id, player)
       cb(null, player)
 
   @getPlayers: (ids, cb) ->

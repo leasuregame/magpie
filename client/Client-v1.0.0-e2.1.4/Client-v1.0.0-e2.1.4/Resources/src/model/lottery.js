@@ -54,6 +54,8 @@ var Lottery = Entity.extend({
                 var card = Card.create(msg.card);
                 gameData.cardList.push(card);
 
+                cc.log(gameData.cardList.get("cardList"));
+
                 cb("success");
             } else {
                 cc.log("lottery fail");

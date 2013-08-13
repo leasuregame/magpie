@@ -9,7 +9,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-08-07T15:53:22Z</Created>
-  <LastSaved>2013-08-07T12:11:38Z</LastSaved>
+  <LastSaved>2013-08-13T10:37:43Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -20,11 +20,12 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>12440</WindowHeight>
+  <WindowHeight>12620</WindowHeight>
   <WindowWidth>28800</WindowWidth>
-  <WindowTopX>2080</WindowTopX>
-  <WindowTopY>0</WindowTopY>
+  <WindowTopX>10940</WindowTopX>
+  <WindowTopY>720</WindowTopY>
   <ActiveSheet>5</ActiveSheet>
+  <FirstVisibleSheet>1</FirstVisibleSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -6068,8 +6069,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>13</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -6079,42 +6080,186 @@
  <Worksheet ss:Name="卡牌等级限制表">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">星级</Data></Cell>
     <Cell><Data ss:Type="String">最高等级</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">max_lv</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">40</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="Number">55</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">60</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>3</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="卡牌进阶配置表">
+  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="6" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:AutoFitWidth="0" ss:Width="81"/>
+   <Column ss:Index="4" ss:Width="140"/>
+   <Column ss:Width="108"/>
+   <Column ss:Width="124"/>
+   <Column ss:Width="156"/>
+   <Column ss:Width="124"/>
+   <Column ss:Width="140"/>
+   <Row>
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">当前星级</Data></Cell>
+    <Cell><Data ss:Type="String">所需铜板</Data></Cell>
+    <Cell><Data ss:Type="String">每张卡提供的概率</Data></Cell>
+    <Cell><Data ss:Type="String">最多卡牌数量</Data></Cell>
+    <Cell><Data ss:Type="String">经验技能百分比</Data></Cell>
+    <Cell><Data ss:Type="String">技能点继承百分比</Data></Cell>
+    <Cell><Data ss:Type="String">仙丹继承百分比</Data></Cell>
+    <Cell><Data ss:Type="String">全部继承所需元宝</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">star</Data></Cell>
+    <Cell><Data ss:Type="String">money_need</Data></Cell>
+    <Cell><Data ss:Type="String">rate_per_card</Data></Cell>
+    <Cell><Data ss:Type="String">max_num</Data></Cell>
+    <Cell><Data ss:Type="String">exp_inherit</Data></Cell>
+    <Cell><Data ss:Type="String">skillPoint_inherit</Data></Cell>
+    <Cell><Data ss:Type="String">elixir_inherit</Data></Cell>
+    <Cell><Data ss:Type="String">gold_need</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">3000</Data></Cell>
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">500</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">5000</Data></Cell>
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell><Data ss:Type="Number">17</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">500</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">10000</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">500</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">20000</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">34</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">500</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>6</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="仙丹配置表">
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:Index="4" ss:Width="108"/>
+   <Column ss:Width="188" ss:Span="2"/>
+   <Row>
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">仙丹数量</Data></Cell>
+    <Cell><Data ss:Type="String">兑换的攻击力</Data></Cell>
+    <Cell><Data ss:Type="String">兑换的生命值</Data></Cell>
+    <Cell><Data ss:Type="String">3星卡牌仙丹的最大容量</Data></Cell>
+    <Cell><Data ss:Type="String">4星卡牌仙丹的最大容量</Data></Cell>
+    <Cell><Data ss:Type="String">5星卡牌仙丹的最大容量</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">elixir</Data></Cell>
+    <Cell><Data ss:Type="String">atk</Data></Cell>
+    <Cell><Data ss:Type="String">hp</Data></Cell>
+    <Cell><Data ss:Type="String">star3_max</Data></Cell>
+    <Cell><Data ss:Type="String">star4_max</Data></Cell>
+    <Cell><Data ss:Type="String">star5_max</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">10000</Data></Cell>
+    <Cell><Data ss:Type="Number">25000</Data></Cell>
+    <Cell><Data ss:Type="Number">50000</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>22</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -6122,7 +6267,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="export">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="6" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="8" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:AutoFitWidth="0" ss:Width="146"/>
    <Column ss:Width="124"/>
@@ -6152,6 +6297,14 @@
     <Cell><Data ss:Type="String">卡牌等级限制表</Data></Cell>
     <Cell><Data ss:Type="String">card_lv_limit</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">卡牌进阶配置表</Data></Cell>
+    <Cell><Data ss:Type="String">star_upgrade</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">仙丹配置表</Data></Cell>
+    <Cell><Data ss:Type="String">elixir</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -6160,11 +6313,11 @@
    </PageSetup>
    <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

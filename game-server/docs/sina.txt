@@ -42,3 +42,5 @@ make inittables
 node ./bin/dao.js all production
 make build
 ./node_modules/.bin/pomelo start production --daemon
+
+cat ./logs/node-log-logic-server-1.log

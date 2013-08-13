@@ -13,7 +13,7 @@
 
 var cardConfig = require('../../config/data/card');
 var utility = require('../common/utility');
-var Card = require('../domain/card');
+var Card = require('../domain/entity/card');
 var table = require('../manager/table');
 var _ = require("underscore");
 

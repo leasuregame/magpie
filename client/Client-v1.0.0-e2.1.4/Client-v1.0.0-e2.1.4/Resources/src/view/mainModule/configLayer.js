@@ -20,7 +20,7 @@ var ConfigLayer = cc.Layer.extend({
 
         var winSize = cc.Director.getInstance().getWinSize();
 
-        var label = cc.LabelTTF.create("ConfigLayer", 'Times New Roman', 60);
+        var label = cc.LabelTTF.create("ConfigLayer", '黑体', 60);
         label.setPosition(winSize.width / 2, winSize.height / 2);
         this.addChild(label);
 

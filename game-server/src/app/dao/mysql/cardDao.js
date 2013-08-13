@@ -13,7 +13,7 @@
  * select
  * delete
  * */
-var Card = require("../../domain/card");
+var Card = require("../../domain/entity/card");
 var passiveSkillDao = require('./passiveSkillDao');
 var async = require('async');
 var DaoBase = require("./daoBase");
@@ -50,7 +50,7 @@ var CardDao = (function (_super) {
             var card = results[0];
             var pss = results[1];
 
-            card.addPassiveSkill(pss);
+            card.addPassiveSkills(pss);
             return cb(null, card);
         });
     };

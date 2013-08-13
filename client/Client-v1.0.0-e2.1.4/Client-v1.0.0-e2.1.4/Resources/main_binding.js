@@ -76,6 +76,7 @@ var appFiles = [
 
     'src/view/mainModule/activityLayer.js',
     'src/view/mainModule/cardDetails.js',
+    'src/view/mainModule/cardEvolutionLabel.js',
     'src/view/mainModule/cardNode.js',
     'src/view/mainModule/cardFullNode.js',
     'src/view/mainModule/cardHalfNode.js',
@@ -83,6 +84,7 @@ var appFiles = [
     'src/view/mainModule/cardLabel.js',
     'src/view/mainModule/cardLibraryLayer.js',
     'src/view/mainModule/cardListLayer.js',
+    'src/view/mainModule/cardTrainLabel.js',
     'src/view/mainModule/cardUpgradeLabel.js',
     'src/view/mainModule/configLayer.js',
     'src/view/mainModule/evolutionLayer.js',
@@ -97,6 +99,7 @@ var appFiles = [
     'src/view/mainModule/mainScene.js',
     'src/view/mainModule/messageLabel.js',
     'src/view/mainModule/messageLayer.js',
+    'src/view/mainModule/passiveSkillAfreshLabel.js',
     'src/view/mainModule/passLabel.js',
     'src/view/mainModule/passLayer.js',
     'src/view/mainModule/playerDetailsLayer.js',

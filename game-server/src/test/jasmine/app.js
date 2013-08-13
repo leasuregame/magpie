@@ -1,5 +1,6 @@
 var express = require('express');
 var mysql = require('./script/mysql');
+var util = require('./script/util');
 var fs = require('fs');
 var spawn = require('child_process').spawn;
 
@@ -12,14 +13,17 @@ app.set('views', __dirname + '/views')
 app.engine('html', require('ejs').renderFile);
 
 app.get('/test', function(req, res) {
-  var files = fs.readdirSync(__dirname + '/spec');
-  files = files.filter(function(f) {
-    return /Spec.js$/.test(f);
+  var dir = __dirname + '/spec';
+  util.walk(dir, function(err, files){
+    files = files.filter(function(f) {
+      return /Spec.js$/.test(f);
+    });
+    //files = ['fightSpec.js', 'playerSpec.js', 'userSpec.js'];
+    res.render('SpecRunner.html', {
+      files: files.map(function(f) { return f.substr(dir.length+1)})
+    });
   });
-  //files = ['fightSpec.js', 'playerSpec.js', 'userSpec.js'];
-  res.render('SpecRunner.html', {
-    files: files
-  });
+
 });
 
 app.get('/adduser', function(req, res) {
@@ -131,7 +135,10 @@ app.get('/:table/:id', function(req, res) {
           data: result[0]
         });
       } else {
-        res.send({code: 404, data: req.params.table + ' not exists'});
+        res.send({
+          code: 404,
+          data: req.params.table + ' not exists'
+        });
       }
     }
   });

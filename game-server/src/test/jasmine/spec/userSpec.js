@@ -163,7 +163,7 @@ describe("User Actions # ", function() {
                   userId: userid,
                   areaId: 1,
                   name: 'user1',
-                  power: 0,
+                  power: '',
                   lv: 0,
                   exp: 0,
                   money: 0,

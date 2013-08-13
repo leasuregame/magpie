@@ -66,9 +66,11 @@ Handler::login = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
-      session.set('playerId', player.id)
-      session.set('playerName', player.name)
-      session.set('areaId', player.areaId)
+      if player?
+        session.set('playerId', player.id)
+        session.set('playerName', player.name)
+        session.set('areaId', player.areaId)
+        
       session.on('close', onUserLeave)
       session.pushAll cb
   ], (err) ->

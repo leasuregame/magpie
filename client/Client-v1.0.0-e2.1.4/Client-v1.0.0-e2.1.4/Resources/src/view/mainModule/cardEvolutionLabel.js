@@ -38,7 +38,7 @@ var CardEvolutionLayer = cc.Layer.extend({
         if (!this._super()) return false;
 
         var cardItemBgSprite = cc.Sprite.create(main_scene_image.icon83);
-        cardItemBgSprite.setPosition(cc.p(354, 627));
+        cardItemBgSprite.setPosition(cc.p(359, 627));
         this.addChild(cardItemBgSprite);
 
         var helpBgSprite = cc.Sprite.create(main_scene_image.icon50);
@@ -77,7 +77,7 @@ var CardEvolutionLayer = cc.Layer.extend({
             this._onClickSelectLeadCard,
             this
         );
-        selectLeadCardItem.setPosition(cc.p(355, 685));
+        selectLeadCardItem.setPosition(cc.p(360, 685));
 
         this._selectRetinueCardItem = cc.MenuItemImage.create(
             main_scene_image.button9,
@@ -104,16 +104,16 @@ var CardEvolutionLayer = cc.Layer.extend({
 
         this._moneyLabel = cc.LabelTTF.create("0", '黑体', 25);
         this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._moneyLabel.setPosition(cc.p(255, 376));
+        this._moneyLabel.setPosition(cc.p(493, 376));
         this.addChild(this._moneyLabel);
 
         this._cardCountLabel = cc.LabelTTF.create("0", '黑体', 25);
         this._cardCountLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._cardCountLabel.setPosition(cc.p(493, 376));
+        this._cardCountLabel.setPosition(cc.p(255, 376));
         this.addChild(this._cardCountLabel);
 
         var selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon51);
-        selectLeadCardIcon.setPosition(cc.p(355, 685));
+        selectLeadCardIcon.setPosition(cc.p(360, 685));
         this.addChild(selectLeadCardIcon);
 
         var selectLeadCardIconAction = cc.Sequence.create(
@@ -161,7 +161,7 @@ var CardEvolutionLayer = cc.Layer.extend({
             this._evolutionItem.setEnabled(false);
         } else {
             this._leadCardHalfNode = CardHalfNode.create(this._leadCard);
-            this._leadCardHalfNode.setPosition(cc.p(355, 685));
+            this._leadCardHalfNode.setPosition(cc.p(360, 685));
             this.addChild(this._leadCardHalfNode, 1);
 
             this._evolutionRateLabel.setString("0%");

@@ -371,6 +371,8 @@ var Card = Entity.extend({
 
     getPreCardRate: function () {
         cc.log("Card getPreCardRate");
+
+
     },
 
     getEvolutionUseMaxCard: function () {

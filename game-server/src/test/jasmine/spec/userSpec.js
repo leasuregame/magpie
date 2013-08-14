@@ -2,11 +2,11 @@ describe("User Actions # ", function() {
   var pomelo = window.pomelo;
   var userid;
 
-  describe("Set Up", function() {
-    it("init database", function() {
-      doAjax('/createDb', {}, function(data) {});
-    })
-  });
+  // describe("Set Up", function() {
+  //   it("init database", function() {
+  //     doAjax('/createDb', {}, function(data) {});
+  //   })
+  // });
 
   describe('User Handler', function() {
 

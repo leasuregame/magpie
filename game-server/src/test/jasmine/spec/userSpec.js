@@ -25,6 +25,7 @@ describe("User Actions # ", function() {
           account: 'test_email@qq.com',
           password: '1'
         }, function(data) {
+          console.log(data);
           expect(typeof data.msg.userId).toEqual('number');
           userid = data.msg.userId;
           expect(data.code).toEqual(200);
@@ -58,7 +59,7 @@ describe("User Actions # ", function() {
         runs(function() {
           $.get('/adduser', {
             account: 'test_email_1@qq.com',
-            password: '1'
+            password: '1',
           }, function(data) {
             userid = data.uid;
             console.log('added user:', userid);
@@ -100,9 +101,10 @@ describe("User Actions # ", function() {
       it("should can be login, and player is undefined", function() {
         request('connector.userHandler.login', {
           account: 'test_email_1@qq.com',
-          password: '1'
+          password: '1',
+          areaId: 1
         }, function(data) {
-          console.log(data);
+          console.log('result: ', data);
           expect(data.code).toEqual(200);
           expect(typeof data.player).toEqual('undefined');
         });
@@ -118,7 +120,7 @@ describe("User Actions # ", function() {
             $.get('/addPlayer', {
               userId: userid,
               areaId: 1,
-              name: 'user1'
+              name: 'player1'
             }, function(data) {
               playerId = data.playerId;
               createTime = data.ct;
@@ -148,7 +150,8 @@ describe("User Actions # ", function() {
         it("should can be login, and return player info", function() {
           request('connector.userHandler.login', {
             account: 'test_email_1@qq.com',
-            password: '1'
+            password: '1',
+            areaId: 1
           }, function(data) {
             console.log('after login');
             expect(data).toEqual({

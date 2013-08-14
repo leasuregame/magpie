@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `loginCount` SMALLINT(5) UNSIGNED DEFAULT '0',
   `lastLoginTime` BIGINT(20) UNSIGNED DEFAULT '0',
   `lastLoginDevice` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
-  `lastLoginArea` INT DEFAULT '-1',
+  `lastLoginArea` INT,
   `roles` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_ACCOUNT` (`account`)

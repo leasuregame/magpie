@@ -1,5 +1,4 @@
 dao = require('pomelo').app.get('dao')
-Player = require('../../../domain/entity/player')
 async = require('async')
 
 module.exports = (app) ->
@@ -9,35 +8,37 @@ Handler = (@app) ->
 
 Handler::createPlayer = (msg, session, next) ->
   name = msg.name
-  areaId = msg.areaId
+  areaId = session.get('areaId') or msg.areaId
   uid = session.uid
 
-  dao.player.fetchOne where: {name: name}, (err, player) ->
-    if not err and player instanceof Player
-      return next(null, {code: 501, msg: "player exists."})
-    
-    async.waterfall [
-      (cb) ->
-        dao.player.create data: {userId: uid, name: name, areaId: areaId}, cb
+  @app.rpc.area.playerRemote.createPlayer session, {
+    name: name
+    userId: uid
+    areaId: areaId
+  }, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err})
 
-      (player, cb) ->
-        initPlayer player, cb
-    ], (err, player) ->
-      if err
-        next(null, {code: 500, msg: err})
-    
-      afterCreatePlayer(session, uid, player, next)
+    afterCreatePlayer(session, uid, areaId, player, next)
 
-afterCreatePlayer = (session, uid, player, next) ->
+afterCreatePlayer = (session, uid, areaId, player, next) ->
   async.waterfall [
+    (cb) ->
+      dao.user.fetchOne where: id: uid, cb
+
+    (user, cb) ->
+      user.roles = user.roles.push areaId
+      user.lastLoginArea = areaId
+      user.save()
+
     (cb) ->
       session.bind uid, cb
 
-    (cb) ->
+    (cb) =>
       session.set('playerId', player.id)
       session.set('areaId', player.areaId)
       session.set('playerName', player.name)
-      session.on('closed', onUserLeave)
+      session.on('closed', onUserLeave.bind(null, @app))
       session.pushAll(cb)
 
     (cb) ->
@@ -47,41 +48,14 @@ afterCreatePlayer = (session, uid, player, next) ->
       logger.error('创建玩家失败，' + err.stack)
       return next(null, {code: 500, msg: err.msg or ''})
 
-    next(null, {code: 200, msg: {player: player?.toJson()}})
+    next(null, {code: 200, msg: {player: player}})
 
 onUserLeave = (session, reason) ->
   if not session or not session.uid
     return
 
-  # do something
-
-initPlayer = (player, callback) ->
-  # 添加初始卡牌信息
-  async.parallel [
-    (cb) ->
-      dao.card.create data: {
-        playerId: player.id
-        tableId: 3
-        lv: 5
-        star: 3
-        }, cb
-    (cb) ->
-      dao.card.create data: {
-        playerId: player.id
-        tableId: 6
-        lv: 1
-        star: 1
-        }, cb
-    (cb) ->
-      dao.card.create data: {
-        playerId: player.id
-        tableId: 12
-        lv: 1
-        star: 2
-        }, cb
-  ], (err, results) ->
+  app.rpc.area.playerRemote.playerLeave session, playerId: session.get('playerId'), (err) ->
     if err
-      return callback(err)
+      logger.error 'user leave error' + err
 
-    player.addCards results
-    callback(null, player)
+  # do something

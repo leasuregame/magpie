@@ -1,31 +1,40 @@
-var config = require('../../../config/mysql1').development[1];
+var config = require('../../../config/mysql1').development;
+var magpie_area_1 = config[1];
+var magpie_area_2 = config[2];
+var userdbConfig = config['userdb'];
 var mysql = require('mysql');
+var exp = module.exports;
 
-var connection = mysql.createConnection({
-  host     : config.host,
-  port     : config.port,
-  user     : config.user,
-  password : config.password,
-  database : config.database
+var m1Conn = mysql.createConnection({
+  host: magpie_area_1.host,
+  port: magpie_area_1.port,
+  user: magpie_area_1.user,
+  password: magpie_area_1.password,
+  database: magpie_area_1.database
 });
+m1Conn.connect()
 
-connection.connect();
+exp.magpiedb1 = m1Conn;
 
-var mysqlClient = module.exports;
+var m2Conn = mysql.createConnection({
+  host: magpie_area_2.host,
+  port: magpie_area_2.port,
+  user: magpie_area_2.user,
+  password: magpie_area_2.password,
+  database: magpie_area_2.database
+});
+m2Conn.connect()
 
-mysqlClient.query = function(sql, args, cb){
-  
-
-  connection.query(sql, args, function(err, results) {
-    if (err) {
-      throw err;
-    }
-
-    cb(null, results);
-
-    //connection.end();  
-  });
-
-};
+exp.magpiedb2 = m2Conn;
 
 
+var userConn = mysql.createConnection({
+  host: userdbConfig.host,
+  port: userdbConfig.port,
+  user: userdbConfig.user,
+  password: userdbConfig.password,
+  database: userdbConfig.database
+});
+userConn.connect()
+
+exp.userdb = userConn;

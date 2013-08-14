@@ -29,7 +29,7 @@ app.get('/test', function(req, res) {
 app.get('/adduser', function(req, res) {
   var account = req.query.account;
   var pwd = req.query.password;
-  mysql.query("insert into user (account, password, createTime) values (?, ?, ?)", [account, pwd, Date.now()], function(err, result) {
+  mysql.userdb.query("insert into user (account, password, createTime, roles) values (?, ?, ?, ?)", [account, pwd, Date.now(), '[1]'], function(err, result) {
     if (err) {
       res.send({
         code: 500
@@ -53,7 +53,7 @@ app.get('/removeuser', function(req, res) {
     })
   }
 
-  mysql.query('delete from user where id = ?', [uid], function(err, results) {
+  mysql.userdb.query('delete from user where id = ?', [uid], function(err, results) {
     if (!err) {
       res.send({
         code: 200
@@ -73,7 +73,7 @@ app.get('/addPlayer', function(req, res) {
   var name = req.query.name;
   var ct = Date.now();
 
-  mysql.query('insert into player (userId, areaId, name, createTime) values (?,?,?,?)', [userId, areaId, name, Date.now()], function(err, result) {
+  mysql.magpiedb1.query('insert into player (userId, areaId, name, createTime) values (?,?,?,?)', [userId, areaId, name, Date.now()], function(err, result) {
     if (err) {
       res.send({
         code: 500,
@@ -91,7 +91,7 @@ app.get('/addPlayer', function(req, res) {
 
 app.get('/removePlayer', function(req, res) {
   var playerId = req.query.playerId;
-  mysql.query('delete from player where id = ?', [playerId], function(err, results) {
+  mysql.magpiedb1.query('delete from player where id = ?', [playerId], function(err, results) {
     if (!err) {
       res.send({
         code: 200
@@ -122,7 +122,7 @@ app.get('/createDb', function(req, res) {
 });
 
 app.get('/:table/:id', function(req, res) {
-  mysql.query('select * from ' + req.params.table + ' where id = ?', [req.params.id], function(err, result) {
+  mysql.magpiedb1.query('select * from ' + req.params.table + ' where id = ?', [req.params.id], function(err, result) {
     if (err) {
       res.send({
         code: 500,

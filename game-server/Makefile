@@ -61,7 +61,8 @@ restartserver: build
 	./node_modules/.bin/pomelo start production --daemon
 
 newdb:
-	sh ./bin/initMysql.sh $(db)
+	sh ./bin/initMysql.sh magpie_area_1
+	sh ./bin/initMysql.sh magpie_area_2
 
 inittables: 
 	mysql -udev -p1 < ./config/schema/tables.sql;

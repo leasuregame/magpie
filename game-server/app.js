@@ -51,14 +51,24 @@ app.configure('production|development', 'connector', function() {
 
 // configure sql database
 app.configure('production|development', 'connector', function() {
+  var env = app.get('env');
+  app.set('mysql', require(app.getBase() + '/config/mysql1.json')[env]['userdb']);
 
+  var dbclient = require('./app/dao/mysql/mysql').init(app);
+  app.set('dbClient', dbclient);
+
+  app.load(pomelo.sync, {
+    path: __dirname + '/app/dao/mysql/mapping/user',
+    dbclient: dbclient,
+    interval: 60000
+  });
 });
 
 app.configure('production|development', 'logic', function() {
   area.init();
 });
 
-app.configure('production|development', 'connector|area|battle', function() {
+app.configure('production|development', 'area|battle', function() {
   var loadMysqlConfig = function(path, app) {
     var areaId = app.get('curServer').area;
     var mysqlConfig = require(path);
@@ -77,11 +87,13 @@ app.configure('production|development', 'connector|area|battle', function() {
   app.set('dbClient', dbclient);
 
   app.load(pomelo.sync, {
-    path: __dirname + '/app/dao/mysql/mapping',
+    path: __dirname + '/app/dao/mysql/mapping/area',
     dbclient: dbclient,
     interval: 60000
   });
+});
 
+app.configure('production|development', 'connector|area|battle', function(){
   var dao = require('./app/dao').init('mysql');
   app.set('dao', dao);
 });

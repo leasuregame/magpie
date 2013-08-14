@@ -1,4 +1,4 @@
-var RankDao = require('../rankDao');
+var RankDao = require('../../rankDao');
 
 var rankSync = {
 	updateRank: function (dbClient, param) {

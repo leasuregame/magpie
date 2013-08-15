@@ -511,12 +511,7 @@ var CardListLayer = cc.Layer.extend({
 
             var selectList = this._getSelectCardList();
             var len = selectList.length;
-            var rate = 0;
-
-            for (var i = 0; i < len; ++i) {
-                rate += selectList[i].getPreCardRate();
-            }
-
+            var rate = len * this._otherData.leadCard.getPreCardRate();
             rate = rate < 100 ? rate : 100;
 
             countLabel.setString(len);

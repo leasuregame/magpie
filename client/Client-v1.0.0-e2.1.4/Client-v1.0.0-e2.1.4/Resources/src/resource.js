@@ -242,7 +242,12 @@ var main_scene_image = {
     icon84: main_scene_path + "icon84.png",
     icon85: main_scene_path + "icon85.png",
     icon86: main_scene_path + "icon86.png",
-    icon87: main_scene_path + "icon87.png"
+    icon87: main_scene_path + "icon87.png",
+    icon88: main_scene_path + "icon88.png",
+    icon89: main_scene_path + "icon89.png",
+    icon90: main_scene_path + "icon90.png",
+    icon91: main_scene_path + "icon91.png",
+    icon92: main_scene_path + "icon92.png"
 }
 
 var main_scene_res = [

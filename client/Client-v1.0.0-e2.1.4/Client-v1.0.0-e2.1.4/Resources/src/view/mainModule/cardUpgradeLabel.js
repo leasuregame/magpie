@@ -32,6 +32,7 @@ var CardUpgradeLabel = cc.Layer.extend({
     _greenProgress: null,
     _selectRetinueCardItem: null,
     _upgradeItem: null,
+    _selectLeadCardIcon: null,
 
     onEnter: function () {
         cc.log("CardUpgradeLabel onEnter");
@@ -162,16 +163,9 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._cardCountLabel.setPosition(cc.p(480, 357));
         this.addChild(this._cardCountLabel);
 
-        var selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon51);
-        selectLeadCardIcon.setPosition(cc.p(355, 685));
-        this.addChild(selectLeadCardIcon);
-
-        var selectLeadCardIconAction = cc.Sequence.create(
-            cc.FadeOut.create(1),
-            cc.FadeIn.create(1)
-        );
-
-        selectLeadCardIcon.runAction(cc.RepeatForever.create(selectLeadCardIconAction));
+        this._selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon51);
+        this._selectLeadCardIcon.setPosition(cc.p(355, 685));
+        this.addChild(this._selectLeadCardIcon);
 
         var selectRetinueCardIcon = cc.Sprite.create(main_scene_image.icon53);
         selectRetinueCardIcon.setPosition(cc.p(260, 270));
@@ -200,12 +194,14 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._atkAdditionLabel.stopAllActions();
         this._yellowProgress.stopAllActions();
         this._greenProgress.stopAllActions();
+        this._selectLeadCardIcon.stopAllActions();
 
         this._lvLabel.setOpacity(255);
         this._hpAdditionLabel.setOpacity(255);
         this._atkAdditionLabel.setOpacity(255);
         this._yellowProgress.setOpacity(255);
         this._greenProgress.setOpacity(255);
+        this._selectLeadCardIcon.setOpacity(255);
     },
 
     _addLeadCard: function () {
@@ -218,6 +214,13 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         if (this._leadCard == null) {
             this._retinueCard = [];
+
+            var selectLeadCardIconAction = cc.Sequence.create(
+                cc.FadeOut.create(1),
+                cc.FadeIn.create(1)
+            );
+
+            this._selectLeadCardIcon.runAction(cc.RepeatForever.create(selectLeadCardIconAction));
 
             this._hpLabel.setString("0");
             this._hpAdditionLabel.setString("+0");

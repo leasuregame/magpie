@@ -24,6 +24,7 @@ var CardEvolutionLayer = cc.Layer.extend({
     _evolutionRateLabel: null,
     _selectRetinueCardItem: null,
     _evolutionItem: null,
+    _selectLeadCardIcon: null,
 
     onEnter: function () {
         cc.log("CardEvolutionLayer onEnter");
@@ -112,16 +113,9 @@ var CardEvolutionLayer = cc.Layer.extend({
         this._cardCountLabel.setPosition(cc.p(255, 376));
         this.addChild(this._cardCountLabel);
 
-        var selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon51);
-        selectLeadCardIcon.setPosition(cc.p(360, 685));
-        this.addChild(selectLeadCardIcon);
-
-        var selectLeadCardIconAction = cc.Sequence.create(
-            cc.FadeOut.create(1),
-            cc.FadeIn.create(1)
-        );
-
-        selectLeadCardIcon.runAction(cc.RepeatForever.create(selectLeadCardIconAction));
+        this._selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon51);
+        this._selectLeadCardIcon.setPosition(cc.p(360, 685));
+        this.addChild(this._selectLeadCardIcon);
 
         var selectRetinueCardIcon = cc.Sprite.create(main_scene_image.icon53);
         selectRetinueCardIcon.setPosition(cc.p(260, 270));
@@ -144,6 +138,16 @@ var CardEvolutionLayer = cc.Layer.extend({
 
         if (this._leadCard == null) {
             this._retinueCard = [];
+
+            this._selectLeadCardIcon.stopAllActions();
+            this._selectLeadCardIcon.setOpacity(255);
+
+            var selectLeadCardIconAction = cc.Sequence.create(
+                cc.FadeOut.create(1),
+                cc.FadeIn.create(1)
+            );
+
+            this._selectLeadCardIcon.runAction(cc.RepeatForever.create(selectLeadCardIconAction));
 
             this._evolutionRateLabel.setString("0%");
             this._resLabel.setVisible(false);

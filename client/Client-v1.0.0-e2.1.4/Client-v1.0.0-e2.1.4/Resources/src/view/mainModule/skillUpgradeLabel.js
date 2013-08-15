@@ -28,7 +28,7 @@ var SkillUpgradeLabel = cc.Node.extend({
     _skillHarmLabel: null,
     _nextSkillHarmLabel: null,
     _upgradeItem: null,
-
+    _selectLeadCardIcon: null,
 
     onEnter: function () {
         cc.log("SkillUpgradeLabel onEnter");
@@ -132,16 +132,9 @@ var SkillUpgradeLabel = cc.Node.extend({
         this._needSkillPointLabel.setPosition(cc.p(512, 382));
         this.addChild(this._needSkillPointLabel);
 
-        var selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon51);
-        selectLeadCardIcon.setPosition(cc.p(354, 685));
-        this.addChild(selectLeadCardIcon);
-
-        var selectLeadCardIconAction = cc.Sequence.create(
-            cc.FadeOut.create(1),
-            cc.FadeIn.create(1)
-        );
-
-        selectLeadCardIcon.runAction(cc.RepeatForever.create(selectLeadCardIconAction));
+        this._selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon51);
+        this._selectLeadCardIcon.setPosition(cc.p(354, 685));
+        this.addChild(this._selectLeadCardIcon);
 
         var upgradeIcon = cc.Sprite.create(main_scene_image.icon52);
         upgradeIcon.setPosition(cc.p(360, 270));
@@ -164,6 +157,16 @@ var SkillUpgradeLabel = cc.Node.extend({
             this._helpLabel.setVisible(false);
             this._skillPointLabel.setVisible(false);
             this._needSkillPointLabel.setVisible(false);
+
+            this._selectLeadCardIcon.stopAllActions();
+            this._selectLeadCardIcon.setOpacity(255);
+
+            var selectLeadCardIconAction = cc.Sequence.create(
+                cc.FadeOut.create(1),
+                cc.FadeIn.create(1)
+            );
+
+            this._selectLeadCardIcon.runAction(cc.RepeatForever.create(selectLeadCardIconAction));
 
             this._upgradeItem.setEnabled(false);
         } else {

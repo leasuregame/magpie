@@ -48,7 +48,7 @@ beforeEach(function() {
             }
           })
         });
-        
+
         // 检查 死亡人数的一致性
         if (isWin) {
           var death_man = 0;
@@ -112,7 +112,7 @@ beforeEach(function() {
 });
 
 beforeEach(function() {
-  intiPomelo();
+  initPomelo();
 });
 
 afterEach(function() {
@@ -141,7 +141,7 @@ var doAjax = function(url, params, cb) {
   }
 
   if (typeof cb == 'undefined') {
-    cb = function(){};
+    cb = function() {};
   }
 
   var ok = false;
@@ -171,7 +171,7 @@ var request = function(route, msg, cb) {
   });
 };
 
-var intiPomelo = function() {
+var initPomelo = function() {
   var inited = false;
   runs(function() {
     pomelo.init({
@@ -184,5 +184,24 @@ var intiPomelo = function() {
   });
   waitsFor(function() {
     return inited;
+  });
+};
+
+var loginWith = function(account, pwd, areaId) {
+  request("connector.userHandler.login", {
+    account: account,
+    password: pwd,
+    areaId: areaId
+  }, function(data) {
+    console.log(account + ' has logined', data);
+  });
+};
+
+var entryGame = function(account, areaId) {
+  request("connector.entryHandler.entry", {
+    account: account,
+    areaId: areaId
+  }, function(data) {
+    console.log(account + ' has logined', data);
   });
 };

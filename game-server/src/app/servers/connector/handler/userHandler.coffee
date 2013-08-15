@@ -69,7 +69,7 @@ Handler::login = (msg, session, next) ->
       session.pushAll cb
   ], (err) ->
     if err
-      logger.error 'fail to login: ' + err
+      logger.error 'fail to login: ', err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     user.lastLoginArea = areaId

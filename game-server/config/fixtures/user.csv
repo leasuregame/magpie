@@ -1,5 +1,7 @@
-id;account;password;name;loginCount;lastLoginTime;lastLoginDevice;createTime
-1;1;1;;1;0;andriod;0
-2;2;1;;1;0;ipad mini;0
-3;3;1;;1;0;Ipad 2;0
-4;4;1;;1;0;Iphone 5;0
+id;account;password;name;loginCount;lastLoginTime;lastLoginDevice;createTime;roles
+1;1;1;;1;0;andriod;0;
+2;2;1;;1;0;ipad mini;0;
+3;3;1;;1;0;Ipad 2;0;
+4;4;1;;1;0;Iphone 5;0;
+100;arthur;1;Arthur;0;0;ipad mini;0;[1]
+102;mike;1;Mike;0;0;Ipad 2;0;[1]

@@ -98,7 +98,7 @@ app.configure('production|development', 'connector|area|battle', function(){
   app.set('dao', dao);
 });
 
-app.configure('development', 'connector|battle|logic', function() {
+app.configure('development', 'connector|battle|logic|area', function() {
   app.set('debug', true);
 });
 

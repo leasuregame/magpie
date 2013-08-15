@@ -44,7 +44,7 @@ var User = (function (_super) {
         loginCount: 0,
         lastLoginTime: Date.now(),
         lastLoginDevice: '',
-        lastLoginArea: null,
+        lastLoginArea: -1,
         roles: []
     };
 

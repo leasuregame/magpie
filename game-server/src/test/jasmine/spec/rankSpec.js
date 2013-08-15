@@ -34,7 +34,7 @@ describe("Ranking List", function() {
   describe("challenge", function() {
     describe("when one challenge to other", function() {
       it("should can be return battle log", function() {
-        request('logic.rankHandler.challenge', {
+        request('area.rankHandler.challenge', {
           playerId: 101,
           targetId: 100
         }, function(data) {
@@ -82,7 +82,7 @@ describe("Ranking List", function() {
 
       describe("when my ranking is " + (id - 9999), function() {
         it('should can be return correct ranking list for (' + (id - 9999) + ')', function() {
-          request('logic.rankHandler.rankingList', {
+          request('area.rankHandler.rankingList', {
             playerId: id
           }, function(data) {
             var cur_ranking = id - 9999;

@@ -117,8 +117,12 @@ app.get('/loaddata/all', function(req, res) {
   command(req, res, 'sh', [__dirname + '/script/load-data.sh', 'all']);
 });
 
+app.get('/loaddata/user', function(req, res) {
+  command(req, res, 'sh', [__dirname + '/script/load-data.sh', 'user']);
+});
+
 app.get('/createDb', function(req, res) {
-  command(req, res, 'sh', [__dirname + '/../../bin/initMysql.sh']);
+  command(req, res, 'sh', [__dirname + '/../../bin/initMysql.sh', 'magpie_area_1']);
 });
 
 app.get('/:table/:id', function(req, res) {

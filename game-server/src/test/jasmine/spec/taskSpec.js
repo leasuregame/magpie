@@ -11,10 +11,10 @@ describe("Logic Server # ", function() {
   describe("Task Handler", function() {
     var pid = 100;
 
-    describe("logic.taskHandler.explore", function() {
+    describe("area.taskHandler.explore", function() {
 
       it("should can be return the correct explore result", function() {
-        request('logic.taskHandler.explore', {
+        request('area.taskHandler.explore', {
           playerId: pid,
           taskId: 6
         }, function(data) {
@@ -59,7 +59,7 @@ describe("Logic Server # ", function() {
 
       describe('when power is not enought', function() {
         it('should can not explore', function() {
-          request('logic.taskHandler.explore', {
+          request('area.taskHandler.explore', {
             playerId: 102,
             taskId: 6
           }, function(data) {
@@ -71,10 +71,10 @@ describe("Logic Server # ", function() {
 
     });
 
-    describe("logic.taskHandler.passBarrier", function() {
+    describe("area.taskHandler.passBarrier", function() {
 
       it("should can be execute and return result of pass barrier", function() {
-        request('logic.taskHandler.passBarrier', {
+        request('area.taskHandler.passBarrier', {
           playerId: pid
         }, function(data) {
           console.log('闯关', data);
@@ -99,7 +99,7 @@ describe("Logic Server # ", function() {
       });
 
       it('should can not execute the pass that greater than the player has passed', function() {
-        request('logic.taskHandler.passBarrier', {
+        request('area.taskHandler.passBarrier', {
           playerId: 102,
           layer: 27
         }, function(data) {
@@ -111,7 +111,7 @@ describe("Logic Server # ", function() {
       });
 
       it('should can not execute the pass that less than 1', function() {
-        request('logic.taskHandler.passBarrier', {
+        request('area.taskHandler.passBarrier', {
           playerId: 102,
           layer: 0
         }, function(data) {
@@ -123,7 +123,7 @@ describe("Logic Server # ", function() {
       });
 
       it('should can not execute the pass that greater than 100', function() {
-        request('logic.taskHandler.passBarrier', {
+        request('area.taskHandler.passBarrier', {
           playerId: 102,
           layer: 101
         }, function(data) {
@@ -136,7 +136,7 @@ describe("Logic Server # ", function() {
 
     });
 
-    describe("logic.taskHandler.wipeOut", function() {
+    describe("area.taskHandler.wipeOut", function() {
       var before_data;
 
       describe("task wipeOut", function() {
@@ -153,7 +153,7 @@ describe("Logic Server # ", function() {
         });
 
         it("任务 should can be 扫荡", function() {
-          request('logic.taskHandler.wipeOut', {
+          request('area.taskHandler.wipeOut', {
             playerId: pid,
             type: 'task'
           }, function(data) {
@@ -189,7 +189,7 @@ describe("Logic Server # ", function() {
         });
 
         it("精英关卡 should can be 扫荡", function() {
-          request('logic.taskHandler.wipeOut', {
+          request('area.taskHandler.wipeOut', {
             playerId: 103,
             type: 'pass'
           }, function(data) {
@@ -213,7 +213,7 @@ describe("Logic Server # ", function() {
 
         describe("when all pass have been passed", function() {
           it("should return there is not pass to be execute", function() {
-            request('logic.taskHandler.wipeOut', {
+            request('area.taskHandler.wipeOut', {
               playerId: 103,
               type: 'pass'
             }, function(data) {
@@ -230,7 +230,7 @@ describe("Logic Server # ", function() {
 
     });
 
-    describe("logic.trainHandler.luckyCard", function() {
+    describe("area.trainHandler.luckyCard", function() {
       var LOTTERY_TYPE = {
         GOLD: 1,
         ENERGY: 0
@@ -293,7 +293,7 @@ describe("Logic Server # ", function() {
 
           var test = function(test_name, type) {
             it(test_name, function() {
-              request('logic.trainHandler.luckyCard', {
+              request('area.trainHandler.luckyCard', {
                 playerId: pid,
                 type: type,
                 level: level
@@ -370,7 +370,7 @@ describe("Logic Server # ", function() {
 
       describe("when gold or energy is not enought", function() {
         it("元宝不足时，不能抽卡", function() {
-          request('logic.trainHandler.luckyCard', {
+          request('area.trainHandler.luckyCard', {
             playerId: 104,
             type: LOTTERY_TYPE.GOLD,
             level: 1
@@ -382,7 +382,7 @@ describe("Logic Server # ", function() {
         });
 
         it("友情值不足时，不能抽卡", function() {
-          request('logic.trainHandler.luckyCard', {
+          request('area.trainHandler.luckyCard', {
             playerId: 105,
             type: LOTTERY_TYPE.ENERGY,
             level: 1
@@ -397,7 +397,7 @@ describe("Logic Server # ", function() {
     });
 
 
-    describe("logic.trainHandler.strengthen", function() {
+    describe("area.trainHandler.strengthen", function() {
       var before_player, before_card;
 
       beforeEach(function() {
@@ -411,7 +411,7 @@ describe("Logic Server # ", function() {
       });
 
       it("should can be strenthen, and return properties", function() {
-        request('logic.trainHandler.strengthen', {
+        request('area.trainHandler.strengthen', {
           playerId: pid,
           target: 100,
           sources: [150, 151]
@@ -459,7 +459,7 @@ describe("Logic Server # ", function() {
       });
 
       it("卡牌强化并升级, 当1星1级卡牌吞掉两张1星1级的卡牌时", function(){
-        request('logic.trainHandler.strengthen', {
+        request('area.trainHandler.strengthen', {
           playerId: pid,
           target: 250,
           sources: [251, 252]
@@ -498,7 +498,7 @@ describe("Logic Server # ", function() {
 
       describe("when money is not enought", function() {
         it("should warnning a message that can not strengthen", function() {
-          request('logic.trainHandler.strengthen', {
+          request('area.trainHandler.strengthen', {
             playerId: 106,
             target: 160,
             sources: [150, 151]
@@ -510,7 +510,7 @@ describe("Logic Server # ", function() {
         });
 
         it("should warnning a message that can not strengthen", function() {
-          request('logic.trainHandler.strengthen', {
+          request('area.trainHandler.strengthen', {
             playerId: 106,
             target: 100,
             sources: [161, 162]
@@ -522,7 +522,7 @@ describe("Logic Server # ", function() {
         });
 
         it("should warnning a message that can not strengthen", function() {
-          request('logic.trainHandler.strengthen', {
+          request('area.trainHandler.strengthen', {
             playerId: 106,
             target: 160,
             sources: [161, 162]
@@ -536,7 +536,7 @@ describe("Logic Server # ", function() {
 
       describe("when parameter sources is empty", function() {
         it("should warning a message", function() {
-          request('logic.trainHandler.strengthen', {
+          request('area.trainHandler.strengthen', {
             playerId: pid,
             target: 100,
             sources: []
@@ -551,7 +551,7 @@ describe("Logic Server # ", function() {
     });
 
     // 技能升级
-    describe("logic.trainHandler.skillUpgrade", function() {
+    describe("area.trainHandler.skillUpgrade", function() {
       var before_player, before_card;
 
       beforeEach(function() {
@@ -565,7 +565,7 @@ describe("Logic Server # ", function() {
       });
 
       it("card's skill should can be upgrade", function() {
-        request('logic.trainHandler.skillUpgrade', {
+        request('area.trainHandler.skillUpgrade', {
           playerId: pid,
           cardId: 100
         }, function(data) {
@@ -584,7 +584,7 @@ describe("Logic Server # ", function() {
 
       describe("when target card is not exists", function() {
         it("can not upgrade card skill", function() {
-          request('logic.trainHandler.skillUpgrade', {
+          request('area.trainHandler.skillUpgrade', {
             playerId: pid,
             cardId: 0
           }, function(data) {
@@ -596,7 +596,7 @@ describe("Logic Server # ", function() {
 
       describe("when target card's star is less than 3", function() {
         it("can not upgrade card skill", function() {
-          request('logic.trainHandler.skillUpgrade', {
+          request('area.trainHandler.skillUpgrade', {
             playerId: 1,
             cardId: 4
           }, function(data) {
@@ -608,7 +608,7 @@ describe("Logic Server # ", function() {
 
       describe("when target card's star is 5(max star)", function() {
         it("can not upgrade card skill", function() {
-          request('logic.trainHandler.skillUpgrade', {
+          request('area.trainHandler.skillUpgrade', {
             playerId: pid,
             cardId: 103
           }, function(data) {
@@ -620,7 +620,7 @@ describe("Logic Server # ", function() {
 
       describe("when player's skillPoint is not enought", function() {
         it("can not upgrade card skill", function() {
-          request('logic.trainHandler.skillUpgrade', {
+          request('area.trainHandler.skillUpgrade', {
             playerId: 107,
             cardId: 163
           }, function(data) {
@@ -632,10 +632,10 @@ describe("Logic Server # ", function() {
 
     });
 
-    describe("logic.trainHandler.passSkillAfresh", function() {
+    describe("area.trainHandler.passSkillAfresh", function() {
 
       it("card's pass skill should can be passSkillAfresh", function() {
-        request('logic.trainHandler.passSkillAfresh', {
+        request('area.trainHandler.passSkillAfresh', {
           playerId: pid,
           cardId: 101,
           psIds: [6]
@@ -654,7 +654,7 @@ describe("Logic Server # ", function() {
 
       describe("when money is not enought", function() {
         it("should can not afrash", function() {
-          request('logic.trainHandler.passSkillAfresh', {
+          request('area.trainHandler.passSkillAfresh', {
             playerId: 106,
             cardId: 164,
             psIds: [7]
@@ -668,7 +668,7 @@ describe("Logic Server # ", function() {
 
       describe("when passiveSkill is not exists", function() {
         it("should can not afrash", function() {
-          request('logic.trainHandler.passSkillAfresh', {
+          request('area.trainHandler.passSkillAfresh', {
             playerId: pid,
             cardId: 104,
             psIds: [7]
@@ -682,7 +682,7 @@ describe("Logic Server # ", function() {
 
     });
 
-    describe("logic.trainHandler.smeltElixir", function() {
+    describe("area.trainHandler.smeltElixir", function() {
       var before_player;
 
       beforeEach(function() {
@@ -693,7 +693,7 @@ describe("Logic Server # ", function() {
 
 
       it("card should can be smelt to elixir", function() {
-        request('logic.trainHandler.smeltElixir', {
+        request('area.trainHandler.smeltElixir', {
           playerId: pid,
           cardIds: [170, 171, 172]
         }, function(data) {
@@ -713,7 +713,7 @@ describe("Logic Server # ", function() {
       });
 
       it("when all card is not exists, should can not smelt", function() {
-        request('logic.trainHandler.smeltElixir', {
+        request('area.trainHandler.smeltElixir', {
           playerId: pid,
           cardIds: [161, 162]
         }, function(data) {
@@ -724,7 +724,7 @@ describe("Logic Server # ", function() {
       });
     });
 
-    describe("logic.trainHandler.starUpgrade", function() {
+    describe("area.trainHandler.starUpgrade", function() {
       var before_player, before_card;
 
       beforeAll(function() {
@@ -745,7 +745,7 @@ describe("Logic Server # ", function() {
 
       it("card' star should can be upgrade", function() {
         request(
-          'logic.trainHandler.starUpgrade', {
+          'area.trainHandler.starUpgrade', {
             playerId: 1,
             target: 1,
             sources: [2, 3],
@@ -796,7 +796,7 @@ describe("Logic Server # ", function() {
       describe("when card's star is 1", function() {
         it('should can upgrade star of card', function() {
           request(
-            'logic.trainHandler.starUpgrade', {
+            'area.trainHandler.starUpgrade', {
               playerId: 1,
               target: 11,
               sources: [4],
@@ -827,7 +827,7 @@ describe("Logic Server # ", function() {
       describe("when card's star is 5", function() {
         it('should can not upgrade star of card', function() {
           request(
-            'logic.trainHandler.starUpgrade', {
+            'area.trainHandler.starUpgrade', {
               playerId: 1,
               target: 5,
               sources: [3, 4],
@@ -845,7 +845,7 @@ describe("Logic Server # ", function() {
       describe("when money is not enought", function() {
         it('should can not upgrade star of card', function() {
           request(
-            'logic.trainHandler.starUpgrade', {
+            'area.trainHandler.starUpgrade', {
               playerId: 106,
               target: 165,
               sources: [160, 161],
@@ -863,7 +863,7 @@ describe("Logic Server # ", function() {
       describe("when sources cards is not exist", function() {
         it('should can not upgrade star of card', function() {
           request(
-            'logic.trainHandler.starUpgrade', {
+            'area.trainHandler.starUpgrade', {
               playerId: 106,
               target: 165,
               sources: [2, 1],
@@ -881,7 +881,7 @@ describe("Logic Server # ", function() {
       describe("when card's count is grater then the max number", function() {
         it('should can not upgrade star of card', function() {
           request(
-            'logic.trainHandler.starUpgrade', {
+            'area.trainHandler.starUpgrade', {
               playerId: 100,
               target: 200,
               sources: [
@@ -920,10 +920,10 @@ describe("Logic Server # ", function() {
 
     });
 
-    describe("logic.trainHandler.changeLineUp", function() {
+    describe("area.trainHandler.changeLineUp", function() {
       it("should can be change player's lineUp", function() {
         request(
-          'logic.trainHandler.changeLineUp', {
+          'area.trainHandler.changeLineUp', {
             playerId: '1',
             lineUp: {
               1: 5,

@@ -17,7 +17,7 @@ Handler::createPlayer = (msg, session, next) ->
     areaId: areaId
   }, (err, player) ->
     if err
-      return next(null, {code: err.code or 500, msg: err})
+      return next(null, {code: err.code or 500, msg: err.msg or err})
 
     afterCreatePlayer(session, uid, areaId, player, next)
 
@@ -30,7 +30,8 @@ afterCreatePlayer = (session, uid, areaId, player, next) ->
       user.roles = user.roles.push areaId
       user.lastLoginArea = areaId
       user.save()
-
+      cb()
+      
     (cb) ->
       session.bind uid, cb
 

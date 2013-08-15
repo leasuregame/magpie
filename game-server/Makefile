@@ -67,7 +67,11 @@ newdb:
 inittables: 
 	mysql -udev -p1 < ./config/schema/tables.sql;
 
+loaddata-user:
+	node ./bin/loadUserData.js 
+
 loaddata:
 	node ./bin/dao.js all development
+	
 
 .PHONY: build clean test testserver runserver startTT stopTT loaddata

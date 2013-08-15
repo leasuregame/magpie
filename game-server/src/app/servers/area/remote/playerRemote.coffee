@@ -8,7 +8,7 @@ exports.createPlayer = (args, callback) ->
   areaId = args.areaId
 
   dao.player.fetchOne where: {name: name}, (err, player) ->
-    if err and not player
+    if not err and player
       return callback({code: 501, msg: "player exists."})
     
     async.waterfall [

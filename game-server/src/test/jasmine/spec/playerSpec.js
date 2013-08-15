@@ -20,12 +20,13 @@ describe("Connecter Server # ", function() {
 
       request('connector.userHandler.login', {
         account: 'test_email_2@qq.com',
-        password: '1'
+        password: '1',
+        areaId: 1
       }, function(data) {
         if (data.code == 200) {
-          console.log('login success.');
+          console.log('login success.', data);
         } else {
-          console.log('login faild.');
+          console.log('login faild.', data);
         }
       });
     });
@@ -94,7 +95,7 @@ describe("Connecter Server # ", function() {
     });
 
     describe("when player exists", function() {
-      var pid;
+      var pid1;
 
       beforeEach(function() {
         doAjax('/addPlayer', {
@@ -102,13 +103,13 @@ describe("Connecter Server # ", function() {
           name: myName,
           areaId: 1
         }, function(data) {
-          pid = data.playerId;
+          pid1 = data.playerId;
         });
       });
 
       afterEach(function() {
         doAjax('removePlayer', {
-          playerId: pid
+          playerId: pid1
         }, function() {});
       })
 

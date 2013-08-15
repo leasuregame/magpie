@@ -15,7 +15,7 @@ describe("Area server API", function() {
 		});
 
 		it("should can entry", function() {
-			request("logic.entryHandler.entry", {}, function(data) {
+			request("area.entryHandler.entry", {}, function(data) {
 				expect(data).toEqual("");
 			});
 		});

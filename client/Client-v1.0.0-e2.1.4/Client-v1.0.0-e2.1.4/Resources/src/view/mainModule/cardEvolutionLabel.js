@@ -93,7 +93,7 @@ var CardEvolutionLayer = cc.Layer.extend({
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.button9d,
-            this._onClickUpgrade,
+            this._onClickEvolution,
             this
         );
         this._evolutionItem.setPosition(cc.p(460, 270));
@@ -174,7 +174,7 @@ var CardEvolutionLayer = cc.Layer.extend({
             this._cardCountLabel.setString("0");
             this._cardCountLabel.setVisible(true);
 
-            this._moneyLabel.setString("0");
+            this._moneyLabel.setString(this._leadCard.getEvolutionNeedMoney());
             this._moneyLabel.setVisible(true);
 
             this._helpLabel.setVisible(true);
@@ -187,7 +187,10 @@ var CardEvolutionLayer = cc.Layer.extend({
         var cardCount = this._retinueCard.length;
 
         if (cardCount > 0) {
-            this._evolutionRateLabel.setString("0%");
+            var rate = this._leadCard.getPreCardRate() * cardCount;
+            rate  = rate < 100 ? rate : 100;
+
+            this._evolutionRateLabel.setString(rate + "%");
             this._resLabel.setVisible(true);
 
             this._cardCountLabel.setString(cardCount);
@@ -245,21 +248,19 @@ var CardEvolutionLayer = cc.Layer.extend({
     _onClickEvolution: function () {
         cc.log("CardEvolutionLayer _onClickEvolution");
 
-//        var cardIdList = [];
-//        var len = this._retinueCard.length;
-//        for (var i = 0; i < len; ++i) {
-//            cardIdList.push(this._retinueCard[i].get("id"));
-//        }
-//
-//        var dummyCard = lz.clone(this._leadCard);
-//
-//        var that = this;
-//        this._leadCard.upgrade(function (data) {
-//            cc.log(data);
-//
-//            that._retinueCard = [];
-//            that._upgrade(dummyCard, data.exp, data.money, len);
-//        }, cardIdList);
+        var cardIdList = [];
+        var len = this._retinueCard.length;
+        for (var i = 0; i < len; ++i) {
+            cardIdList.push(this._retinueCard[i].get("id"));
+        }
+
+        var that = this;
+        this._leadCard.evolution(function (data) {
+            cc.log(data);
+
+            that._retinueCard = [];
+            that.update();
+        }, cardIdList);
     }
 })
 

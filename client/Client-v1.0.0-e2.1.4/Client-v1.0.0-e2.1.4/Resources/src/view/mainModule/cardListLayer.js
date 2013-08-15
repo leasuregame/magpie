@@ -493,10 +493,10 @@ var CardListLayer = cc.Layer.extend({
             }
         }
 
-//        var tipLabel = cc.Sprite.create(main_scene_image.icon58);
-//        tipLabel.setAnchorPoint(cc.p(0, 0.5));
-//        tipLabel.setPosition(cc.p(100, 920));
-//        this._otherLabel.addChild(tipLabel);
+        var tipLabel = cc.Sprite.create(main_scene_image.icon94);
+        tipLabel.setAnchorPoint(cc.p(0, 0.5));
+        tipLabel.setPosition(cc.p(100, 920));
+        this._otherLabel.addChild(tipLabel);
 
         var countLabel = cc.LabelTTF.create("0", "黑体", 25);
         countLabel.setPosition(cc.p(247, 920));

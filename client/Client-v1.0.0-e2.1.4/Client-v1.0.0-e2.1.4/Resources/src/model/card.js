@@ -387,10 +387,53 @@ var Card = Entity.extend({
 
     getEvolutionUseMaxCard: function () {
         cc.log("Card getEvolutionUseMaxCard");
+
+        if (this.canEvolution()) {
+            return outputTables.star_upgrade.rows[this._star].max_num;
+        }
+
+        return 0;
     },
 
     getEvolutionNeedMoney: function () {
         cc.log("Card getEvolutionNeedMoney");
+
+        if (this.canEvolution()) {
+            return outputTables.star_upgrade.rows[this._star].money_need;
+        }
+
+        return 0;
+    },
+
+    evolution: function(cb, cardIdList) {
+        cc.log("Card evolution " + this._id);
+        cc.log(cardIdList);
+
+        var that = this;
+        lzWindow.pomelo.request("logic.trainHandler.starUpgrade", {
+            playerId: gameData.player.get("id"),
+            target: this._id,
+            sources: cardIdList
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("evolution success");
+
+                var msg = data.msg;
+
+                gameData.player.add("money", -that.getEvolutionNeedMoney());
+                gameData.cardList.deleteById(cardIdList);
+
+                that.update(msg.card);
+
+                cb();
+            } else {
+                cc.log("evolution fail");
+
+                cb(null);
+            }
+        });
     },
 
     canTrain: function () {

@@ -41,22 +41,22 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this._nameLabel.setPosition(cc.p(160, 83));
         this.addChild(this._nameLabel);
 
-        var expProgressBg = cc.Sprite.create(main_scene_image.exp_bg);
-        expProgressBg.setPosition(cc.p(195, 36));
-        this.addChild(expProgressBg, 2);
+//        var expProgressBg = cc.Sprite.create(main_scene_image.exp_bg);
+//        expProgressBg.setPosition(cc.p(210, 36));
+//        this.addChild(expProgressBg, 2);
 
-        this._expProgress = Progress.create(null, main_scene_image.exp, 5, 100, true);
-        this._expProgress.setPosition(cc.p(200, 35));
+        this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 5, 100, true);
+        this._expProgress.setPosition(cc.p(214, 36));
         this.addChild(this._expProgress, 2);
 
         var lvBg = cc.Sprite.create(main_scene_image.lv_bg);
-        lvBg.setPosition(cc.p(60, 53));
+        lvBg.setPosition(cc.p(60, 60));
         this.addChild(lvBg, 2);
 
         this._lvLabel = cc.LabelTTF.create("0", '黑体', 45);
-        this._lvLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._lvLabel.setPosition(cc.p(46, 46));
-        lvBg.addChild(this._lvLabel);
+//        this._lvLabel.setAnchorPoint(cc.p(0.5, 0.5));
+        this._lvLabel.setPosition(cc.p(60, 60));
+        this.addChild(this._lvLabel, 2);
 
         var vipSprite = cc.Sprite.create(main_scene_image.vip5);
         vipSprite.setPosition(cc.p(265, 83));

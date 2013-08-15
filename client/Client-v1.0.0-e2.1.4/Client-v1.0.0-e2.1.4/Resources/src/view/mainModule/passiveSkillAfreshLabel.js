@@ -447,10 +447,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _onClickSelectLeadCard: function () {
         cc.log("PassiveSkillAfreshLabel _onClickSelectLeadCard");
 
-        var selectList = this._leadCard ? [this._leadCard.get("id")] : null;
-
         var that = this;
-        var cardListLayer = CardListLayer.create(SELECT_TYPE_MASTER, null, selectList, function (data) {
+        var cardListLayer = CardListLayer.create(SELECT_TYPE_PASSIVE_SKILL_AFRESH_MASTER, function (data) {
             cc.log(data);
 
             if (data) {
@@ -466,6 +464,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
             cc.log("this._leadCard :");
             cc.log(that._leadCard);
+        }, {
+            leadCard: this._leadCard
         });
 
         this.getParent()._switchToCardListLayer(cardListLayer);

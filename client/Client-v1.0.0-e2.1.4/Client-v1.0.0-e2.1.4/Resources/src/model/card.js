@@ -327,6 +327,12 @@ var Card = Entity.extend({
         });
     },
 
+    canAfreshPassiveSkill: function () {
+        cc.log("Card canAfreshPassiveSkill");
+
+        return (this._star > 2);
+    },
+
     afreshPassiveSkill: function (cb, afreshIdList, type) {
         cc.log("Card afreshPassiveSkill " + this._id);
         cc.log(afreshIdList);
@@ -372,7 +378,11 @@ var Card = Entity.extend({
     getPreCardRate: function () {
         cc.log("Card getPreCardRate");
 
+        if (this.canEvolution()) {
+            return outputTables.star_upgrade.rows[this._star].rate_per_card;
+        }
 
+        return 0;
     },
 
     getEvolutionUseMaxCard: function () {
@@ -381,6 +391,18 @@ var Card = Entity.extend({
 
     getEvolutionNeedMoney: function () {
         cc.log("Card getEvolutionNeedMoney");
+    },
+
+    canTrain: function () {
+        cc.log("Card canTrain");
+
+        return (this._star > 2);
+    },
+
+    getSellCardMoney: function () {
+        cc.log("Card getSellCardMoney");
+
+        return 0;
     }
 })
 

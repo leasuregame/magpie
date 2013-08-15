@@ -35,6 +35,29 @@ lz.clone = function (obj) {
     return newObj;
 };
 
+
+/*
+ * 数组去重
+ * */
+Array.prototype.distinct = function () {
+    var arr = [],
+        obj = {},
+        i = 0,
+        len = this.length,
+        result;
+
+    for (; i < len; i++) {
+        result = this[i];
+        if (obj[result] !== result) {
+            arr.push(result);
+            obj[result] = result;
+        }
+    }
+
+    return arr;
+};
+
+
 // 获取不大于原数的随机数
 Number.prototype.getRandom = function () {
     return Math.floor(Math.random() * this);

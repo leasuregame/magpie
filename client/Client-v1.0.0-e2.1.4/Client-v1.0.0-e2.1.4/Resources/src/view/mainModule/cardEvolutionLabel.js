@@ -196,20 +196,21 @@ var CardEvolutionLayer = cc.Layer.extend({
     _onClickSelectLeadCard: function () {
         cc.log("CardEvolutionLayer _onClickSelectLeadCard");
 
-        var selectList = this._leadCard ? [this._leadCard.get("id")] : null;
-
         var that = this;
-        var cardListLayer = CardListLayer.create(SELECT_TYPE_MASTER, null, selectList, function (data) {
+        var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_EVOLUTION_MASTER, function (data) {
             cc.log(data);
 
             if (data) {
                 that._leadCard = data[0] || null;
                 that._retinueCard = [];
             }
+
             that.getParent()._backToThisLayer();
 
             cc.log("this._leadCard :");
             cc.log(that._leadCard);
+        }, {
+            leadCard: this._leadCard
         });
 
         this.getParent()._switchToCardListLayer(cardListLayer);
@@ -218,16 +219,8 @@ var CardEvolutionLayer = cc.Layer.extend({
     _onClickSelectRetinueCard: function () {
         cc.log("CardEvolutionLayer _onClickSelectRetinueCard");
 
-        var selectList = [];
-        var len = this._retinueCard.length;
-        for (var i = 0; i < len; ++i) {
-            selectList.push(this._retinueCard[i].get("id"));
-        }
-
-        var excludeList = this._leadCard ? [this._leadCard.get("id")] : null;
-
         var that = this;
-        var cardListLayer = CardListLayer.create(SELECT_TYPE_EXP, excludeList, selectList, function (data) {
+        var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_EVOLUTION_RETINUE, function (data) {
             cc.log(data);
 
             if (data) {
@@ -237,6 +230,9 @@ var CardEvolutionLayer = cc.Layer.extend({
 
             cc.log("this._retinueCard :");
             cc.log(that._retinueCard);
+        }, {
+            leadCard: this._leadCard,
+            retinueCard: this._retinueCard
         });
 
         this.getParent()._switchToCardListLayer(cardListLayer);

@@ -63,23 +63,23 @@ var SkillUpgradeLabel = cc.Node.extend({
         this._resLabel.addChild(resLabelIcon);
 
         this._skillNameLabel = cc.LabelTTF.create("xxxx", '黑体', 40);
-        this._skillNameLabel.setPosition(cc.p(158, 120));
+        this._skillNameLabel.setPosition(cc.p(158, 118));
         this._resLabel.addChild(this._skillNameLabel);
 
-        this._skillLvLabel = cc.LabelTTF.create("0", '黑体', 25);
+        this._skillLvLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._skillLvLabel.setPosition(cc.p(125, 85));
         this._resLabel.addChild(this._skillLvLabel);
 
-        this._nextSkillLvLabel = cc.LabelTTF.create("0", '黑体', 25);
+        this._nextSkillLvLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._nextSkillLvLabel.setColor(cc.c3b(118, 238, 60));
         this._nextSkillLvLabel.setPosition(cc.p(190, 85));
         this._resLabel.addChild(this._nextSkillLvLabel);
 
-        this._skillHarmLabel = cc.LabelTTF.create("0%", '黑体', 25);
+        this._skillHarmLabel = cc.LabelTTF.create("0%", '黑体', 22);
         this._skillHarmLabel.setPosition(cc.p(115, 30));
         this._resLabel.addChild(this._skillHarmLabel);
 
-        this._nextSkillHarmLabel = cc.LabelTTF.create("0%", '黑体', 25);
+        this._nextSkillHarmLabel = cc.LabelTTF.create("0%", '黑体', 22);
         this._nextSkillHarmLabel.setColor(cc.c3b(118, 238, 60));
         this._nextSkillHarmLabel.setPosition(cc.p(200, 30));
         this._resLabel.addChild(this._nextSkillHarmLabel);
@@ -222,20 +222,21 @@ var SkillUpgradeLabel = cc.Node.extend({
     _onClickSelectLeadCard: function () {
         cc.log("SkillUpgradeLabel _onClickSelectLeadCard");
 
-        var selectList = this._leadCard ? [this._leadCard.get("id")] : null;
-
         var that = this;
-        var cardListLayer = CardListLayer.create(SELECT_TYPE_MASTER, null, selectList, function (data) {
+        var cardListLayer = CardListLayer.create(SELECT_TYPE_SKILL_UPGRADE_MASTER, function (data) {
             cc.log(data);
 
             if (data) {
                 that._leadCard = data[0] || null;
+                that._retinueCard = [];
             }
 
             that.getParent()._backToThisLayer();
 
             cc.log("this._leadCard :");
             cc.log(that._leadCard);
+        }, {
+            leadCard: this._leadCard
         });
 
         this.getParent()._switchToCardListLayer(cardListLayer);

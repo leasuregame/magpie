@@ -55,7 +55,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
 
         this._lvLabel = cc.LabelTTF.create("0", '黑体', 45);
         this._lvLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._lvLabel.setPosition(cc.p(46, 39));
+        this._lvLabel.setPosition(cc.p(46, 46));
         lvBg.addChild(this._lvLabel);
 
         var vipSprite = cc.Sprite.create(main_scene_image.vip5);

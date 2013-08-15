@@ -29,7 +29,7 @@ var LineUp = Entity.extend({
         return true;
     },
 
-    update: function(data) {
+    update: function (data) {
         cc.log("LineUp update");
 
         this._lineUp = {};
@@ -94,12 +94,24 @@ var LineUp = Entity.extend({
         this._lineUp[index] = cardId;
     },
 
+    isLineUpCard: function (cardId) {
+        cc.log("LineUp isLineUpCard");
+
+        for (var key in this._lineUp) {
+            if (this._lineUp[key] == cardId) {
+                return true;
+            }
+        }
+
+        return false;
+    },
+
     changeLineUp: function (cb, lineUp) {
         cc.log("LineUp changeLineUp");
         cc.log(lineUp);
 
-        for(var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            if(this._lineUp[i] != lineUp[i]) {
+        for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
+            if (this._lineUp[i] != lineUp[i]) {
                 cc.log(i);
                 var that = this;
 

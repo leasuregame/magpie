@@ -8,8 +8,8 @@
 
 
 /*
-* card half node
-* */
+ * card half node
+ * */
 
 
 var CardHalfNode = CardNode.extend({
@@ -28,8 +28,13 @@ var CardHalfNode = CardNode.extend({
         this._heroSprite = cc.Sprite.create(main_scene_image[url + "_half" + index]);
         this.addChild(this._heroSprite);
 
-        this._iconSprite = cc.Sprite.create(main_scene_image.card_icon1);
-        this._iconSprite.setPosition(cc.p(45, -51));
+        var skillType = this._card.get("skillType");
+        if (skillType > 3) {
+            skillType = 3;
+        }
+
+        this._iconSprite = cc.Sprite.create(main_scene_image["card_icon" + skillType]);
+        this._iconSprite.setPosition(cc.p(47, -60));
         this.addChild(this._iconSprite, 1);
 
         return true;

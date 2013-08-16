@@ -75,6 +75,8 @@ var main_scene_image = {
     card_frame5: main_scene_path + "card_frame5.png",
 
     card_icon1: main_scene_path + "card_icon1.png",
+    card_icon2: main_scene_path + "card_icon2.png",
+    card_icon3: main_scene_path + "card_icon3.png",
 
     card_item_bg_s: main_scene_path + "card_item_bg_s.png",
     card_item_bg1: main_scene_path + "card_item_bg1.png",
@@ -249,7 +251,8 @@ var main_scene_image = {
     icon91: main_scene_path + "icon91.png",
     icon92: main_scene_path + "icon92.png",
     icon93: main_scene_path + "icon93.png",
-    icon94: main_scene_path + "icon94.png"
+    icon94: main_scene_path + "icon94.png",
+    icon95: main_scene_path + "icon95.png"
 }
 
 var main_scene_res = [

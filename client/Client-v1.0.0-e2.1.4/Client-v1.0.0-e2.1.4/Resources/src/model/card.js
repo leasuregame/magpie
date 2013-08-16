@@ -49,6 +49,7 @@ var Card = Entity.extend({
     _skillHarm: 0,          // 技能伤害
     _skillRate: 0,          // 技能概率
     _skillDescription: "",  // 技能描述
+    _skillType: 0,          // 技能类型
     _skillMaxLv: 0,         // 技能最大等级
 
     _url: "",
@@ -162,6 +163,7 @@ var Card = Entity.extend({
 
         this._skillName = skillTable.name;
         this._skillDescription = skillTable.description;
+        this._skillType = skillTable.type;
         this._skillMaxLv = 5;
     },
 
@@ -405,7 +407,7 @@ var Card = Entity.extend({
         return 0;
     },
 
-    evolution: function(cb, cardIdList) {
+    evolution: function (cb, cardIdList) {
         cc.log("Card evolution " + this._id);
         cc.log(cardIdList);
 
@@ -440,6 +442,42 @@ var Card = Entity.extend({
         cc.log("Card canTrain");
 
         return (this._star > 2);
+    },
+
+    train: function (cb, trainCount, trainType) {
+        cc.log("Card train " + this._id);
+
+        var elixir = trainCount * 10;
+        var that = this;
+        lzWindow.pomelo.request("logic.trainHandler.useElixir", {
+            playerId: gameData.player.get("id"),
+            cardId: this._id,
+            elixir: elixir
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("train success");
+
+                var msg = data.msg;
+
+                gameData.player.add("elixir", -elixir);
+
+                this._elixir += elixir;
+
+                if (trainType == TRAIN_CARD_HP) {
+                    this._hpAddition += trainCount * 3;
+                } else if (trainType == TRAIN_CARD_ATK) {
+                    this._atkAddition += trainCount;
+                }
+
+                cb();
+            } else {
+                cc.log("train fail");
+
+                cb(null);
+            }
+        });
     },
 
     getSellCardMoney: function () {

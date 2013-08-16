@@ -395,6 +395,9 @@ Handler::useElixir = (msg, session, next) ->
     if card.star < 3
       return next(null, {code: 501, msg: '不能对3星以下的卡牌使用仙丹'})
 
+    if player.elixir < elixir
+      return next(null, {code: 501, msg: '仙丹不足'})
+
     limit = elixirConfig.limit[card.star]
     if card.elixir >= limit
       return next(null, {code: 501, msg: "卡牌仙丹容量已满"})

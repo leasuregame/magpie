@@ -1,6 +1,6 @@
 describe("Area Server", function() {
+	
 	describe("Task Handler", function() {
-
 
 		beforeAll(function() {
 			doAjax('/loaddata/csv', {}, function(data) {
@@ -48,7 +48,7 @@ describe("Area Server", function() {
 								expect(typeof res.open_box_card).toEqual('object');
 								expect(res.open_box_card).hasProperties([
 									'id', 'lv', 'exp', 'star', 'tableId', 'skillLv', 'hpAddition', 'atkAddition',
-									'passiveSkills', 'playerId'
+									'passiveSkills', 'playerId', 'skillPoint', 'elixir'
 								])
 								break;
 							default:

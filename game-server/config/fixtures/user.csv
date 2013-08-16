@@ -1,7 +1,1 @@
-id;account;password;name;loginCount;lastLoginTime;lastLoginDevice;createTime;roles
-1;1;1;;1;0;andriod;0;
-2;2;1;;1;0;ipad mini;0;
-3;3;1;;1;0;Ipad 2;0;
-4;4;1;;1;0;Iphone 5;0;
-100;arthur;1;Arthur;0;0;ipad mini;0;[1]
-102;mike;1;Mike;0;0;Ipad 2;0;[1]
+id;account;password;name;loginCount;lastLoginTime;lastLoginDevice;createTime;roles1;1;1;;1;0;andriod;0;[1]2;2;1;;1;0;ipad mini;0;[1]3;3;1;;1;0;Ipad 2;0;[1]4;4;1;;1;0;Iphone 5;0;[1]100;arthur;1;Arthur;0;0;ipad mini;0;[1]102;mike;1;Mike;0;0;Ipad 2;0;[1]103;papa;1;Papa;0;0;ipad;0;[1]106;poorman;1;poorman;0;0;ipand;0;[1]107;user1;1;user1;0;0;ipad;0;[1]

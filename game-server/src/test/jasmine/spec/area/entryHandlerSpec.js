@@ -15,9 +15,7 @@ describe("Area server API", function() {
 		});
 
 		it("should can entry", function() {
-			request("area.entryHandler.entry", {}, function(data) {
-				expect(data).toEqual("");
-			});
+			
 		});
 	});
 

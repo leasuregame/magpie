@@ -389,6 +389,8 @@ Handler::useElixir = (msg, session, next) ->
   playerManager.getPlayerInfo playerId, (err, player) ->
     card = player.getCard(cardId)
 
+    
+
     if card is null
       return next(null, {code: 501, msg: '找不到卡牌'})
 

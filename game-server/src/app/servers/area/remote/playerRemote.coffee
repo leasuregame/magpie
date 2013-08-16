@@ -26,6 +26,7 @@ exports.createPlayer = (args, callback) ->
 
 exports.getPlayerByUserId = (userId, callback) ->
   dao.player.getPlayerInfo where: userId: userId, (err, player) ->
+    console.log err, player
     if err and not player
       return callback {code: 501, msg: 'can not find player by user id: ' + userId}
 

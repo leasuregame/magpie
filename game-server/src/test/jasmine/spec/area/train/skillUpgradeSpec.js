@@ -61,7 +61,7 @@ describe("Area Server", function() {
       describe("when target card's star is less than 3", function() {
         it("can not upgrade card skill", function() {
           request('area.trainHandler.skillUpgrade', {
-            cardId: 4
+            cardId: 110
           }, function(data) {
             expect(data.code).toEqual(501);
             expect(data.msg).toEqual('三星级以下的卡牌没有技能，不能升级');
@@ -76,7 +76,7 @@ describe("Area Server", function() {
           }, function(data) {
             expect(data.code).toEqual(501);
             expect(data.msg).toEqual('该卡牌的技能等级已经升到最高级，不能再升级了');
-          })
+          });
         });
       });
 

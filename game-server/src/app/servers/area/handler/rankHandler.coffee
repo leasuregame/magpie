@@ -88,7 +88,6 @@ Handler::challenge = (msg, session, next) ->
         return next(null, {code: err.code, msg: err.msg or err.message})
 
       bl.rewards = rewards
-      console.log player.rank
       next(null, {code: 200, msg: {battleLog: bl, counts: player.rank?.counts}})
 
 Handler::grantTitle = (msg, session, next) ->

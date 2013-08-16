@@ -43,6 +43,7 @@ var main = function() {
     function(err, results) {
       var end = Date.now();
       console.log('time: ' + (end - start) / 1000 + 's');
+      console.log('finished on:', Date.now());
       if (_.every(results)) {
         process.exit();
       }

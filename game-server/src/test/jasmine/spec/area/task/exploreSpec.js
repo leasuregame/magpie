@@ -48,7 +48,7 @@ describe("Area Server", function() {
 								expect(typeof res.open_box_card).toEqual('object');
 								expect(res.open_box_card).hasProperties([
 									'id', 'lv', 'exp', 'star', 'tableId', 'skillLv', 'hpAddition', 'atkAddition',
-									'passiveSkills', 'playerId', 'skillPoint', 'elixir'
+									'passiveSkills', 'playerId', 'skillPoint', 'elixir', 'createTime'
 								])
 								break;
 							default:

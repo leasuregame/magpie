@@ -44,23 +44,26 @@ Handler::login = (msg, session, next) ->
       else
         cb()
 
+    (cb) ->
+      session.bind user.id, cb
+
+    (cb) =>
+      session.set('areaId', areaId)
+      session.pushAll cb
+
     (cb) =>
       # check whether has create player in the login area
       if _.contains user.roles, areaId
         @app.rpc.area.playerRemote.getPlayerByUserId session, user.id, (err, res) ->
           if err
             logger.error 'fail to get player by user id', err
-          logger.info 'get remote player: ', res
+          #logger.info 'get remote player: ', res
           player = res
-          cb(null, user.id)
+          cb()
       else
-        cb(null, user.id)
+        cb()
 
-    (userId, cb) ->
-      session.bind userId, cb
-
-    (cb) =>
-      session.set('areaId', areaId)
+    (cb) ->
       if player?
         session.set('playerId', player.id)
         session.set('playerName', player.name)

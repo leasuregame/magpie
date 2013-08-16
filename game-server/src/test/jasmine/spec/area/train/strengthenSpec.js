@@ -51,7 +51,7 @@ describe("Area Server", function() {
 						expect(data.msg.cur_lv).toEqual(55);
 						expect(data.msg.cur_exp).toEqual(0);
 
-						doAjax('/player/' + pid, {}, function(res) {
+						doAjax('/player/' + arthur.playerId, {}, function(res) {
 							var _player = res.data;
 							expect(_player.money).toEqual(before_player.money - data.msg.money_consume);
 						});

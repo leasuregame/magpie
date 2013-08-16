@@ -323,7 +323,6 @@ Handler::passSkillAfresh  = (msg, session, next) ->
         return cb({code: 501, msg: '铜板/元宝不足，不能洗炼'})
 
       card = player.getCard(cardId)
-      console.log psIds, card.passiveSkills
       passSkills = _.values(card.passiveSkills).filter (ps) -> _.contains(psIds, ps.id)
 
       if _.isEmpty(passSkills)
@@ -353,7 +352,6 @@ Handler::smeltElixir = (msg, session, next) ->
     (res, cb) ->
       player = res
       cards = player.getCards cardIds
-      console.log 'cards: ', cards
       if cards.length is 0
         return cb({code: 501, msg: '找不到卡牌'})
 

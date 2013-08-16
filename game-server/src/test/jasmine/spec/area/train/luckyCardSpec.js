@@ -154,9 +154,10 @@ describe("Area Server", function() {
 			execute_suit('高级抽卡', GRADE.HIGHT);
 
 			describe("when gold or energy is not enought", function() {
+
 				it("元宝不足时，不能抽卡", function() {
+					loginWith('user3', '1', 1);
 					request('area.trainHandler.luckyCard', {
-						playerId: 104,
 						type: LOTTERY_TYPE.GOLD,
 						level: 1
 					}, function(data) {
@@ -167,8 +168,8 @@ describe("Area Server", function() {
 				});
 
 				it("友情值不足时，不能抽卡", function() {
+					loginWith('user2', '1', 1);
 					request('area.trainHandler.luckyCard', {
-						playerId: 105,
 						type: LOTTERY_TYPE.ENERGY,
 						level: 1
 					}, function(data) {

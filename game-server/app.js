@@ -21,9 +21,7 @@ app.configure('production|development', function() {
       areaIdMap[areas[id].area] = areas[id].id;
     }
     app.set('areaIdMap', areaIdMap);
-  }
 
-  if (app.serverType !== 'master') {
     var battles = app.get('servers').battle;
     var battleIdMap = {};
     for (var id in battles) {
@@ -32,9 +30,25 @@ app.configure('production|development', function() {
     app.set('battleIdMap', battleIdMap);
   }
 
+  // proxy configures
+  app.set('proxyConfig', {
+    cacheMsg: true,
+    interval: 30,
+    lazyConnection: true,
+    enableRpcLog: true
+  });
+
+  // remote configures
+  app.set('remoteConfig', {
+    cacheMsg: true,
+    interval: 30
+  });
+
   app.route('connector', routeUtil.connector);
   app.route('area', routeUtil.area);
   app.route('battle', routeUtil.battle);
+
+  app.filter(pomelo.filters.timeout());
 });
 
 // app configuration
@@ -45,8 +59,6 @@ app.configure('production|development', 'connector', function() {
     useDict: true,
     useProtobuf: true
   });
-
-  app.filter(pomelo.filters.timeout());
 });
 
 // configure sql database
@@ -69,19 +81,15 @@ app.configure('production|development', 'logic', function() {
 });
 
 app.configure('production|development', 'area|battle', function() {
-  var loadMysqlConfig = function(path, app) {
-    var areaId = app.get('curServer').area;
-    var mysqlConfig = require(path);
-    var env = app.get('env');
+  var areaId = app.get('curServer').area;
+  var mysqlConfig = require(app.getBase() + '/config/mysql1.json');
+  var env = app.get('env');
 
-    var val = mysqlConfig;
-    if (mysqlConfig[env] && mysqlConfig[env][areaId]) {
-      val = mysqlConfig[env][areaId];
-    }
-    app.set('mysql', val);
-  };
-
-  loadMysqlConfig(app.getBase() + '/config/mysql1.json', app);
+  var val = mysqlConfig;
+  if (mysqlConfig[env] && mysqlConfig[env][areaId]) {
+    val = mysqlConfig[env][areaId];
+  }
+  app.set('mysql', val);
 
   var dbclient = require('./app/dao/mysql/mysql').init(app);
   app.set('dbClient', dbclient);
@@ -93,7 +101,7 @@ app.configure('production|development', 'area|battle', function() {
   });
 });
 
-app.configure('production|development', 'connector|area|battle', function(){
+app.configure('production|development', 'connector|area|battle', function() {
   var dao = require('./app/dao').init('mysql');
   app.set('dao', dao);
 });

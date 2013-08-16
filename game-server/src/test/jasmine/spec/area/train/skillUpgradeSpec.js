@@ -38,7 +38,7 @@ describe("Area Server", function() {
           console.log(data);
 
           doAjax('/player/' + arthur.playerId, {}, function(res) {
-            expect(res.data.skillPoint).toBeLessThan(before_player.skillPoint);
+            expect(res.data.skillPoint).toEqual(before_player.skillPoint - data.msg.skillPoint);
           });
 
           doAjax('/card/' + 100, {}, function(res) {

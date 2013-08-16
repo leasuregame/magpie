@@ -16,7 +16,7 @@ var udata = new Data(dao);
 var user_path = path.join(__dirname, '..', 'config', 'fixtures/', 'user.csv');
 udata.importCsvToSql('user', user_path, function(err, res) {
   if (!err) {
-    console.log('load user data complete.');
+    console.log('load user data complete, on ', Date.now());
     process.exit();
   }
 });

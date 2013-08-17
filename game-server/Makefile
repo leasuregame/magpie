@@ -3,7 +3,7 @@ MOCHA = ./node_modules/.bin/mocha
 build:
 	sh ./bin/build.sh
 
-convert-data:
+convert-data: build
 	node ./bin/convertXmlToJson.js 
 
 clean: 

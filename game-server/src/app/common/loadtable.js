@@ -441,8 +441,6 @@ module.exports = function() {
         }
         allTables[tabName] = sheets[i]['Table'];
       };
-
-
     });
   };
 
@@ -496,7 +494,8 @@ module.exports = function() {
 function mergeTables(tabs, tables, nameChanged, outputTables){
   tabs.forEach(function(tab) {
     var from = tab.from;
-    _.extend(tables[tab.to], tables[from])
+    _.extend(tables[tab.to], tables[from]);
+    _.extend(outputTables[tab.to].rows, outputTables[from].rows);
     delete tables[from];
     delete outputTables[from];
 

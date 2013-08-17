@@ -610,7 +610,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._stopItem.setVisible(true);
         this._stopIcon.setVisible(true);
 
-        this.schedule(this._repeatAfresh, 2, null);
+        this.schedule(this._repeatAfresh, 2, cc.REPEAT_FOREVER, 0);
     },
 
     _onClickCancel: function () {

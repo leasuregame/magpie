@@ -29,9 +29,9 @@ var MessageLabel = cc.Node.extend({
         bgSprite.setAnchorPoint(cc.p(0, 0));
         this.addChild(bgSprite, -1);
 
-        this._messageLabel = cc.LabelTTF.create("系统消息：", "黑体", 22);
+        this._messageLabel = cc.LabelTTF.create("系统消息：", "黑体", 20);
         this._messageLabel.setAnchorPoint(cc.p(0, 0));
-        this._messageLabel.setPosition(cc.p(20, 10));
+        this._messageLabel.setPosition(cc.p(20, 5));
         this.addChild(this._messageLabel);
 
         return true;

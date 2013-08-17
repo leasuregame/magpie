@@ -1,7 +1,7 @@
 describe("Area Server", function() {
 
   describe("Train Handler", function() {
-    var arthur = {
+    var user1 = {
       id: 1,
       playerId: 1,
       areaId: 1,
@@ -16,7 +16,7 @@ describe("Area Server", function() {
 
     describe("area.trainHandler.changeLineUp", function() {
       beforeEach(function() {
-        loginWith(arthur.account, arthur.password, arthur.areaId);
+        loginWith(user1.account, user1.password, user1.areaId);
       });
 
       it("should can be change player's lineUp", function() {

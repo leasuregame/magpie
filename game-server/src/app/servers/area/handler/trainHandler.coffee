@@ -382,12 +382,15 @@ Handler::useElixir = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   elixir = msg.elixir
   cardId = msg.cardId
-
+  console.log session
   playerManager.getPlayerInfo playerId, (err, player) ->
+    if (err) 
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    if player.elixir < elixir
+      return next(null, {code: 501, msg: '仙丹不足'})
+
     card = player.getCard(cardId)
-
-    
-
     if card is null
       return next(null, {code: 501, msg: '找不到卡牌'})
 

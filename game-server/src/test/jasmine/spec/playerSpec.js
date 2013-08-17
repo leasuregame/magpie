@@ -1,5 +1,4 @@
-describe("Connecter Server # ", function() {
-  var pomelo = window.pomelo;
+describe("Connector Server", function() {
   var userid;
   var pid;
   var myName = 'wuzhanghai';

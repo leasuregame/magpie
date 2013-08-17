@@ -13,7 +13,7 @@ module.exports =
 	area: (session, msg, app, cb) ->
 		areas = app.get 'areaIdMap'
 		serverId = areas[session.get('areaId')]
-
+		console.log session.get('areaid');
 		if not serverId
 			cb(new Error('can not find server info for type: ' + msg.serverType))
 			return

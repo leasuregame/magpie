@@ -125,7 +125,7 @@ describe("Area Server", function() {
 					areaId: 1,
 					id: 106,
 					playerId: 106
-				}
+				};
 
 				beforeEach(function() {
 					loginWith(poorman.account, poorman.password, poorman.areaId);

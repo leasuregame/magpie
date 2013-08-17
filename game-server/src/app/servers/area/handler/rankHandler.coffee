@@ -24,7 +24,7 @@ module.exports = (app) ->
 Handler = (@app) ->
 
 Handler::rankingList = (msg, session, next) ->
-  playerId = session.get('playerId') or msg.playerId
+  playerId = msg.playerId or session.get('playerId')
   async.waterfall [
     (cb) =>
       @app.get('dao').rank.fetchOne where:{playerId: playerId}, cb

@@ -70,7 +70,7 @@ var PlayerDetailsLayer = LazyLayer.extend({
         this._powerLabel.setPosition(cc.p(240, 305));
         this.addChild(this._powerLabel);
 
-        var tipLabel = cc.LabelTTF.create("体力每10分钟恢复10点", '黑体', 30);
+        var tipLabel = cc.LabelTTF.create("体力每10分钟恢复10点", '黑体', 28);
         tipLabel.setAnchorPoint(cc.p(0, 0.5));
         tipLabel.setPosition(cc.p(150, 250));
         this.addChild(tipLabel);

@@ -146,6 +146,8 @@ var Card = Entity.extend({
     _loadSkillTable: function () {
         cc.log("Card _loadSkillTable");
 
+        if(!this._skillId) return;
+
         // 读取技能配置表
         var skillTable = outputTables.skills.rows[this._skillId];
 

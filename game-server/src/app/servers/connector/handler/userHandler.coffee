@@ -57,7 +57,7 @@ Handler::login = (msg, session, next) ->
         @app.rpc.area.playerRemote.getPlayerByUserId session, user.id, (err, res) ->
           if err
             logger.error 'fail to get player by user id', err
-          #logger.info 'get remote player: ', res
+          logger.info 'get remote player: ', res
           player = res
           cb()
       else
@@ -80,6 +80,7 @@ Handler::login = (msg, session, next) ->
     next(null, {code: 200, msg: {user: user?.toJson(), player: player}})
 
 onUserLeave = (app, session, reason) ->
+  console.log 'user leave: ', session.uid
   if not session or not session.uid
     return
 

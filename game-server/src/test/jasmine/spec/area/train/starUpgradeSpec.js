@@ -31,7 +31,7 @@ describe("Area Server", function() {
 				
 				describe("when card's star is 3", function() {
 
-					it("card's star should can be upgrade", function() {
+					it("star of card should can be upgrade", function() {
 						request('area.trainHandler.starUpgrade', {
 							target: 1,
 							sources: [2, 3]

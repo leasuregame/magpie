@@ -74,7 +74,7 @@ var CardDao = (function(_super) {
 				}
 
 				passiveSkillDao.fetchMany({
-					sync: options.sycn,
+					sync: options.sync,
 					where: ' cardId in (' + ids.toString() + ')'
 				}, function(err, pss) {
 					if (err) {

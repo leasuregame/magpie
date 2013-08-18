@@ -227,13 +227,14 @@ Handler::starUpgrade = (msg, session, next) ->
       if card_count > starUpgradeConfig.max_num
         return cb({code: 501, msg: "最多只能消耗#{starUpgradeConfig.max_num}张卡牌来进行升级"})
 
-      totalRate = _.min([card_count * starUpgradeConfig.rate_per_card, 100])
+      totalRate = _.min([20 * starUpgradeConfig.rate_per_card, 100])
       if utility.hitRate(totalRate)
         is_upgrade = true
       
       if is_upgrade
         player.decrease('money', money_consume)
         card.increase('star')
+        card.increase('tableId')
 
         # 卡牌星级进阶，添加一个被动属性
         ps_data = {}
@@ -382,8 +383,8 @@ Handler::useElixir = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   elixir = msg.elixir
   cardId = msg.cardId
-  console.log session
-  playerManager.getPlayerInfo playerId, (err, player) ->
+
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if (err) 
       return next(null, {code: err.code or 500, msg: err.msg or err})
 

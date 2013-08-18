@@ -27,19 +27,18 @@ describe("Area Server", function() {
         }, function(data) {
           expect(data.code).toEqual(200);
 
-          setTimeout(function() {
-            doAjax('/passiveSkill/' + 6, {}, function(res) {
-              expect(res.data.name).toEqual(data.msg[0].name);
-              expect(res.data.value).toEqual(data.msg[0].value);
-            });
-          }, 2000);
+          doAjax('/passiveSkill/' + 6, {}, function(res) {
+            expect(res.data.name).toEqual(data.msg[0].name);
+            expect(res.data.value).toEqual(data.msg[0].value);
+          });
+
           console.log(data);
         });
       });
     });
 
     describe("when money is not enought", function() {
-      beforeEach(function(){
+      beforeEach(function() {
         loginWith('poorman', '1', 1);
       });
 

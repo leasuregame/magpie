@@ -27,16 +27,18 @@ Manager = module.exports =
         challenger.incCount('winningStreak')
         defender.resetCount('winningStreak')
         defender.incCount('lose')
+
+        player.increase('elixir', rankData.win_elixir)
       else
         challenger.incCount('lose')
         defender.incCount('win')
         defender.incCount('winningStreak')
         challenger.resetCount('winningStreak')
 
+        player.increase('elixir', rankData.lose_elixir)
+
       challenger.incCount('challenge')
       defender.incCount('challenge')
-      challenger.increase('honorPoint', rankData.win_honor_point)
-      defender.increase('honorPoint', rankData.lose_honor_point)
       challenger.pushRecent(targetId)
       defender.pushRecent(player.id)
 

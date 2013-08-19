@@ -70,7 +70,7 @@ Handler::challenge = (msg, session, next) ->
       rewards = {
         exp: rankData[_results + '_exp']
         money: rankData[_results + '_money']
-        honorPoint: rankData[_results + '_honor_point']
+        elixir: rankData[_results + '_elixir']
       }
 
       player.increase('exp', rewards.exp)

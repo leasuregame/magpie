@@ -14,6 +14,7 @@
 
 var CardDetails = LazyLayer.extend({
     _card: null,
+    _menu: null,
 
     init: function (card) {
         cc.log("CardDetails init");
@@ -45,7 +46,9 @@ var CardDetails = LazyLayer.extend({
         var closeItem = cc.MenuItemImage.create(main_scene_image.button17, main_scene_image.button17s, this._onClickClose, this);
         closeItem.setPosition(360, 130);
 
-        this.addMenuItem(closeItem);
+        this._menu = cc.Menu.create(closeItem);
+        this._menu.setPosition(cc.p(0, 0));
+        this.addChild(this._menu);
 
         return true;
     },
@@ -53,10 +56,10 @@ var CardDetails = LazyLayer.extend({
     _onClickClose: function () {
         cc.log("CardDetails _onClickClose");
 
-        this.setCanClick(false);
+        this._menu.setEnabled(false);
         this.removeFromParent();
     }
-})
+});
 
 
 CardDetails.create = function (card) {
@@ -67,5 +70,5 @@ CardDetails.create = function (card) {
     }
 
     return null;
-}
+};
 

@@ -55,7 +55,7 @@ var Tournament = Entity.extend({
         cc.log("Tournament sync");
 
         var that = this;
-        lzWindow.pomelo.request("logic.rankHandler.rankingList", {playerId: gameData.player.get("id")}, function (data) {
+        lzWindow.pomelo.request("area.rankHandler.rankingList", {playerId: gameData.player.get("id")}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
@@ -77,7 +77,7 @@ var Tournament = Entity.extend({
         cc.log("Tournament defiance " + targetId);
 
         var that = this;
-        lzWindow.pomelo.request("logic.rankHandler.challenge", {playerId: gameData.player.get("id"), targetId: targetId}, function (data) {
+        lzWindow.pomelo.request("area.rankHandler.chanllenge", {playerId: gameData.player.get("id"), targetId: targetId}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {

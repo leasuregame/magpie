@@ -13,6 +13,7 @@
 
 
 var LineUpLayer = LazyLayer.extend({
+    _menu: null,
     _cardNode: {},
     _selectCard: 0,
     _locate: {
@@ -67,8 +68,12 @@ var LineUpLayer = LazyLayer.extend({
         closeItem.setPosition(cc.p(620, 1000));
         this.addMenuItem(closeItem);
 
+        this._menu = cc.Menu.create(okItem, closeItem);
+        this._menu.setPosition(cc.p(0, 0));
+        this.addChild(this._menu);
+
         var okLabel = cc.Sprite.create(main_scene_image.icon32);
-        okLabel.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 390));
+        okLabel.setPosition(cc.p(360, 390));
         this.addChild(okLabel, 1);
 
         return true;
@@ -77,29 +82,29 @@ var LineUpLayer = LazyLayer.extend({
     _onClickOk: function () {
         cc.log("LineUpLayer _onClickOk");
 
-        this.setCanClick(false);
+        this._menu.setEnabled(false);
 
         var that = this;
-        gameData.lineUp.changeLineUp(function(data) {
-            cc.log("yes");
+        gameData.lineUp.changeLineUp(function (data) {
             that.removeFromParent();
         }, this._getLineUpData());
     },
 
-    _onClickClose: function() {
+    _onClickClose: function () {
         cc.log("LineUpLayer _okClickClose");
 
-        this.setCanClick(false);
+        this._menu.setEnabled(false);
+
         this.removeFromParent();
     },
 
-    _getLineUpData: function() {
+    _getLineUpData: function () {
         cc.log("LineUpLayer _getLineUpData");
 
         var lineUp = {};
 
         for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            if(this._cardNode[i] != null) {
+            if (this._cardNode[i] != null) {
                 lineUp[i] = this._cardNode[i].getCardId();
             }
         }
@@ -207,7 +212,7 @@ var LineUpLayer = LazyLayer.extend({
 
         this._super(touch, event);
     }
-})
+});
 
 
 LineUpLayer.create = function () {
@@ -218,4 +223,4 @@ LineUpLayer.create = function () {
     }
 
     return null;
-}
+};

@@ -27,18 +27,18 @@ var Pass = Entity.extend({
         return true;
     },
 
-    update: function(data) {
+    update: function (data) {
         cc.log("Pass update");
 
         this._passTop = data.layer || 0;
         this._passMark = data.mark || [];
     },
 
-    canWipeOut: function() {
+    canWipeOut: function () {
         cc.log("Pass canWipOut");
 
-        for(var i = 1; i <= this._passTop; ++i) {
-            if(this.getPassMarkByIndex(i)) {
+        for (var i = 1; i <= this._passTop; ++i) {
+            if (this.getPassMarkByIndex(i)) {
                 return true
             }
         }
@@ -46,7 +46,7 @@ var Pass = Entity.extend({
         return false;
     },
 
-    getPassMarkByIndex: function(index) {
+    getPassMarkByIndex: function (index) {
         cc.log("Pass getPassMarkByIndex " + index);
 
         return (this._passMark[index - 1] == 0);
@@ -56,11 +56,13 @@ var Pass = Entity.extend({
         cc.log("Pass defiance " + index);
 
         var that = this;
-        lzWindow.pomelo.request("logic.taskHandler.passBarrier", {playerId: gameData.player.get("id"), layer: index}, function (data) {
+        lzWindow.pomelo.request("area.taskHandler.passBarrier", {
+            layer: index
+        }, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
-                cc.log("barriers success");
+                cc.log("defiance success");
 
                 var msg = data.msg;
 
@@ -71,17 +73,20 @@ var Pass = Entity.extend({
 
                 cb(battleLog.get("id"));
             } else {
-                cc.log("barriers fail");
+                cc.log("defiance fail");
             }
         });
     },
 
-    wipeOut: function(cb) {
+    wipeOut: function (cb) {
         cc.log("Pass wipeOut");
 
         var that = this;
 
-        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {playerId: gameData.player.get("id"), type: "pass"}, function (data) {
+        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {
+            playerId: gameData.player.get("id"),
+            type: "pass"
+        }, function (data) {
             cc.log(data);
 
             if (data.code == 200) {

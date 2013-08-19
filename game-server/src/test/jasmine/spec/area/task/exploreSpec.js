@@ -1,5 +1,5 @@
 describe("Area Server", function() {
-	
+
 	describe("Task Handler", function() {
 
 		beforeAll(function() {
@@ -45,11 +45,15 @@ describe("Area Server", function() {
 								expect(res.battle_log).toBeBattleLog();
 								break;
 							case 'box':
-								expect(typeof res.open_box_card).toEqual('object');
-								expect(res.open_box_card).hasProperties([
-									'id', 'lv', 'exp', 'star', 'tableId', 'skillLv', 'hpAddition', 'atkAddition',
-									'passiveSkills', 'playerId', 'skillPoint', 'elixir', 'createTime'
-								])
+								if (!res.fregment) {
+									expect(typeof res.open_box_card).toEqual('object');
+									expect(res.open_box_card).hasProperties([
+										'id', 'lv', 'exp', 'star', 'tableId', 'skillLv', 'hpAddition', 'atkAddition',
+										'passiveSkills', 'playerId', 'skillPoint', 'elixir', 'createTime'
+									])
+								} else {
+									expect(res.open_box_card).toEqual(null);
+								}
 								break;
 							default:
 								expect(res.result).toEqual('none');

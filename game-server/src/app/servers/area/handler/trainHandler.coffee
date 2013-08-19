@@ -241,7 +241,7 @@ Handler::starUpgrade = (msg, session, next) ->
         if card.star >= 3
           ps_data = require('../../../domain/entity/passiveSkill').born()
           ps_data.cardId = card.id
-        cb null, ps_data
+        return cb null, ps_data
 
       cb null, {}
 
@@ -288,7 +288,7 @@ Handler::starUpgrade = (msg, session, next) ->
     cardManager.getCardInfo card.id, (err, res) ->
       if err
         return next(null, err)
-
+      
       next(null, {code: 200, msg: {upgrade: is_upgrade, card: res.toJson()}})
 
 Handler::passSkillAfresh  = (msg, session, next) ->

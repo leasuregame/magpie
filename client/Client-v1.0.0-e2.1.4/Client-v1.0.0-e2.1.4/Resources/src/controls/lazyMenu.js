@@ -16,7 +16,7 @@
  * */
 
 
-cc.LAZY_MENU_HANDLER_PRIORITY = 3;
+var LAZY_MENU_HANDLER_PRIORITY = 3;
 
 var LazyMenu = cc.Menu.extend({
     _isScroll: false,
@@ -45,14 +45,14 @@ var LazyMenu = cc.Menu.extend({
         if (!this._super(arrayOfItems))  return false;
 
         this.setTouchMode(cc.TOUCHES_ONE_BY_ONE);
-        this.setTouchPriority(cc.LAZY_MENU_HANDLER_PRIORITY);
+        this.setTouchPriority(LAZY_MENU_HANDLER_PRIORITY);
         this.setTouchEnabled(true);
 
         return true;
     },
 
     registerWithTouchDispatcher: function () {
-        cc.Director.getInstance().getTouchDispatcher().addTargetedDelegate(this, cc.LAZY_MENU_HANDLER_PRIORITY, true);
+        cc.Director.getInstance().getTouchDispatcher().addTargetedDelegate(this, LAZY_MENU_HANDLER_PRIORITY, true);
     },
 
     /**

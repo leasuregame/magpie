@@ -12,7 +12,7 @@
  * */
 
 
-cc.LAZY_LAYER_HANDLER_PRIORITY = -1000;
+var LAZY_LAYER_HANDLER_PRIORITY = -1000;
 
 var LazyLayer = cc.Layer.extend({
     _canClick: true,
@@ -23,7 +23,7 @@ var LazyLayer = cc.Layer.extend({
         if (!this._super()) return false;
 
         this.setTouchMode(cc.TOUCHES_ONE_BY_ONE);
-        this.setTouchPriority(cc.LAZY_LAYER_HANDLER_PRIORITY);
+        this.setTouchPriority(LAZY_LAYER_HANDLER_PRIORITY);
         this.setTouchEnabled(true);
 
         this._menu = cc.Menu.create();

@@ -61,6 +61,12 @@ app.configure('production|development', 'connector', function() {
   });
 });
 
+app.configure('production|development', 'gate', function(){
+  app.set('connectorConfig', {
+    connector: pomelo.connectors.hybridconnector
+  });
+});
+
 // configure sql database
 app.configure('production|development', 'connector|auth', function() {
   var env = app.get('env');

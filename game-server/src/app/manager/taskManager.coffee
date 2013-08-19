@@ -93,6 +93,7 @@ class Manager
     _rd_star = utility.randomValue(_.keys(_obj), _.values(_obj))
     if _rd_star is -1
       data.fragment = true
+      return cb()
     else
       _card_table_id = randomCard(_rd_star)
       

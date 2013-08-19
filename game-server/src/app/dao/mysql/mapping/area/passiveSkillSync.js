@@ -2,24 +2,24 @@
  * Created with JetBrains WebStorm.
  * User: lcc3536
  * Date: 13-7-1
- * Time: 下午3:10
+ * Time: 下午3:11
  * To change this template use File | Settings | File Templates.
  */
 
 
 /*
- * battle log sync
- * */
-var BattleLogDao = require('../battleLogDao');
+* passive skill sync
+* */
+var PassiveSkillDao = require('../../passiveSkillDao');
 
-var battleLogSync = {
+var passiveSkillSync = {
     /*
-     * 根据 id 更新一条 battleLog 记录
+     * 根据 id 更新一条 passiveSkill 记录
      * @param {number} id 需要更新的记录号
      * @param {object} param 字面量，更新需要的数据
      * @param {function} cb  回调函数
      * */
-    updateBattleLogById: function (id, param) {
+    updatePassiveSkillById: function (dbClient, param) {
         var cb = function() {};
         if(typeof (param.cb) != "undefined") {
             cb = param.cb;
@@ -29,11 +29,11 @@ var battleLogSync = {
             return cb("param error", null);
         }
 
-        return BattleLogDao.update({
+        return PassiveSkillDao.update({
             where: {id: param.id},
             data: param.data
         }, cb);
     }
 };
 
-module.exports = battleLogSync;
+module.exports = passiveSkillSync;

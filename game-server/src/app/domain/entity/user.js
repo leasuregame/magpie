@@ -35,13 +35,17 @@ var User = (function (_super) {
         'name',
         'loginCount',
         'lastLoginTime',
-        'lastLoginDevict'
+        'lastLoginDevict',
+        'lastLoginArea',
+        'roles'
     ];
     User.DEFAULT_VALUES = {
         name: '', 
         loginCount: 0,
         lastLoginTime: Date.now(),
-        lastLoginDevice: ''
+        lastLoginDevice: '',
+        lastLoginArea: -1,
+        roles: []
     };
 
     User.prototype.upLastLoginTime = function () {
@@ -55,7 +59,21 @@ var User = (function (_super) {
         // 细节未实现
 
         return true;
-    }
+    };
+
+    User.prototype.toJson = function() {
+        return {
+            id: this.id,
+            createTime: this.createTime,
+            account: this.account,
+            name: this.name,
+            loginCount: this.loginCount,
+            lastLoginTime: this.lastLoginTime,
+            lastLoginDevice: this.lastLoginDevice,
+            lastLoginArea: this.lastLoginArea,
+            roles: this.roles
+        };
+    };
 
     return User;
 })(Entity);

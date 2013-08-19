@@ -1,11 +1,55 @@
 var pomelo = require('pomelo');
 var area = require('./app/domain/area/area');
+var routeUtil = require('./app/common/route');
 /**
  * Init app for client.
  */
 var app = pomelo.createApp();
 app.set('name', 'game-server');
 app.set('debug', false);
+
+app.configure('production', function() {
+  app.enable('systemMonitor');
+});
+
+app.configure('production|development', function() {
+  //Set areasIdMap, a map from area id to serverId.
+  if (app.serverType !== 'master') {
+    var areas = app.get('servers').area;
+    var areaIdMap = {};
+    for (var id in areas) {
+      areaIdMap[areas[id].area] = areas[id].id;
+    }
+    app.set('areaIdMap', areaIdMap);
+
+    var battles = app.get('servers').battle;
+    var battleIdMap = {};
+    for (var id in battles) {
+      battleIdMap[battles[id].area] = battles[id].id;
+    }
+    app.set('battleIdMap', battleIdMap);
+  }
+
+  // proxy configures
+  app.set('proxyConfig', {
+    cacheMsg: true,
+    interval: 30,
+    lazyConnection: true,
+    enableRpcLog: true
+  });
+
+  // remote configures
+  app.set('remoteConfig', {
+    cacheMsg: true,
+    interval: 30
+  });
+
+  app.route('connector', routeUtil.connector);
+  app.route('area', routeUtil.area);
+  app.route('battle', routeUtil.battle);
+
+  app.filter(pomelo.filters.timeout());
+});
 
 // app configuration
 app.configure('production|development', 'connector', function() {
@@ -15,36 +59,54 @@ app.configure('production|development', 'connector', function() {
     useDict: true,
     useProtobuf: true
   });
-
-  app.filter(pomelo.filters.timeout());
 });
 
 // configure sql database
-app.configure('production|development', 'connector|battle|logic', function() {
-  app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
+app.configure('production|development', 'connector', function() {
+  var env = app.get('env');
+  app.set('mysql', require(app.getBase() + '/config/mysql1.json')[env]['userdb']);
 
   var dbclient = require('./app/dao/mysql/mysql').init(app);
   app.set('dbClient', dbclient);
+
   app.load(pomelo.sync, {
-    path: __dirname + '/app/dao/mysql/mapping',
+    path: __dirname + '/app/dao/mysql/mapping/user',
     dbclient: dbclient,
     interval: 60000
   });
-
-  var dao = require('./app/dao').init('mysql');
-  app.set('dao', dao);
-
 });
 
-app.configure('production|development', 'logic', function(){
+app.configure('production|development', 'logic', function() {
   area.init();
 });
 
-// app.configure('production|development', 'area|battle', function(){
-//   loadMysqlConfig(app.getBase() + '/config/mysql1.json');
-// });
+app.configure('production|development', 'area|battle', function() {
+  var areaId = app.get('curServer').area;
+  var mysqlConfig = require(app.getBase() + '/config/mysql1.json');
+  var env = app.get('env');
 
-app.configure('development', 'connector|battle|logic', function() {
+  var val = mysqlConfig;
+  if (mysqlConfig[env] && mysqlConfig[env][areaId]) {
+    val = mysqlConfig[env][areaId];
+  }
+  app.set('mysql', val);
+
+  var dbclient = require('./app/dao/mysql/mysql').init(app);
+  app.set('dbClient', dbclient);
+
+  app.load(pomelo.sync, {
+    path: __dirname + '/app/dao/mysql/mapping/area',
+    dbclient: dbclient,
+    interval: 60000
+  });
+});
+
+app.configure('production|development', 'connector|area|battle', function() {
+  var dao = require('./app/dao').init('mysql');
+  app.set('dao', dao);
+});
+
+app.configure('development', 'connector|battle|logic|area', function() {
   app.set('debug', true);
 });
 
@@ -54,15 +116,3 @@ app.start();
 process.on('uncaughtException', function(err) {
   console.error(' Caught exception: ' + err.stack);
 });
-
-var loadMysqlConfig = function(path) {
-  var areaId = app.get('curServer').area;
-  var mysqlConfig = require(path);
-  var env = app.get('env');
-
-  var val = mysqlConfig;
-  if (mysqlConfig[env] && mysqlConfig[env][areaId]) {
-    val = mysqlConfig[env][areaId];
-  }
-  app.set('mysql', val);
-};

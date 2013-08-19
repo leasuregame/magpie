@@ -21,6 +21,7 @@ NND = {
                 console.error('[sqlqueryErr] ' + err.stack);
                 return;
             }
+
             return client.query(sql, args, function (err, res) {
                 _pool.release(client);
                 return cb(err, res);
@@ -56,6 +57,7 @@ NND = {
                 trans.query(sql, args, error);              
             }
             trans.commit(function(err, info) {
+                _pool.release(client);
                 return cb(err, true);
             });
         });

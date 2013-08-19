@@ -3,7 +3,7 @@ MOCHA = ./node_modules/.bin/mocha
 build:
 	sh ./bin/build.sh
 
-convert-data:
+convert-data: build
 	node ./bin/convertXmlToJson.js 
 
 clean: 
@@ -60,13 +60,18 @@ restartserver: build
 	./node_modules/.bin/pomelo stop
 	./node_modules/.bin/pomelo start production --daemon
 
-createtables:
-	sh ./bin/initMysql.sh
+newdb:
+	sh ./bin/initMysql.sh magpie_area_1
+	sh ./bin/initMysql.sh magpie_area_2
 
 inittables: 
 	mysql -udev -p1 < ./config/schema/tables.sql;
 
+loaddata-user:
+	node ./bin/loadUserData.js 
+
 loaddata:
 	node ./bin/dao.js all development
+	
 
 .PHONY: build clean test testserver runserver startTT stopTT loaddata

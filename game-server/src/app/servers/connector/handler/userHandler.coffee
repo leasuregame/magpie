@@ -1,7 +1,4 @@
-Code = require '../../../../../shared/code'
-Resources = require '../../../../../shared/resources'
 async = require 'async'
-dao = require('pomelo').app.get('dao')
 logger = require('pomelo-logger').getLogger(__filename)
 _ = require 'underscore'
 
@@ -11,20 +8,14 @@ module.exports = (app) ->
 Handler = (@app) ->
 
 Handler::register = (msg, session, next) ->
-  account = msg.account
-  password = msg.password
-  
-  if not account or account is '' or not password or password is ''
-    next(null, {code: 501, msg: Resources.ERROR.INVALID_PARAMS})
-  else
-    dao.user.create data: {account: account, password: password}, (err, user) ->
-      if err or not user
-        if err and err.code is "ER_DUP_ENTRY"
-          next(null, {code: 501, msg: Resources.ERROR.USER_EXISTS})
-        else
-          next(null, {code: 500, msg: err.msg})
-      else
-        next(null, {code: 200, msg: {userId: user.id}})
+  @app.rpc.auth.authRemote.register session, {
+    account: msg.account
+    password: msg.password
+  }, (err, user) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    next(null, {code: 200, msg: {userId: user.id}})
 
 Handler::login = (msg, session, next) ->
   account = msg.account
@@ -34,17 +25,11 @@ Handler::login = (msg, session, next) ->
   user = null;
   player = null
   async.waterfall [
-    (cb) ->
-      dao.user.fetchOne where: {account:account}, cb
-    
+    (cb) =>
+      @app.rpc.auth.authRemote.auth session, account, password, areaId, cb
+
     (res, cb) ->
       user = res
-      if password isnt user.password
-        cb({code: 501, msg: '密码不正确'})
-      else
-        cb()
-
-    (cb) ->
       session.bind user.id, cb
 
     (cb) =>
@@ -75,9 +60,7 @@ Handler::login = (msg, session, next) ->
       logger.error 'fail to login: ', err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    user.lastLoginArea = areaId
-    user.save()
-    next(null, {code: 200, msg: {user: user?.toJson(), player: player}})
+    next(null, {code: 200, msg: {user: user, player: player}})
 
 onUserLeave = (app, session, reason) ->
   console.log 'user leave: ', session.uid

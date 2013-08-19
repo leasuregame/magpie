@@ -7,6 +7,9 @@
     "gate": [
       { "id": "gate-server-1", "host": "127.0.0.1", "clientPort": 3009, "frontend": true }
     ],
+    "auth": [
+      { "id": "auth-server-1", "host": "127.0.0.1", "port": 4300}
+    ],
     "battle": [
       { "id": "battle-server-1", "host": "127.0.0.1", "port": 4000, "area": 1 },
       { "id": "battle-server-2", "host": "127.0.0.1", "port": 4001, "area": 2 }
@@ -19,7 +22,7 @@
       { "id": "area-server-2", "host": "127.0.0.1", "port": 4101, "area": 2 }
     ],
     "message": [
-      { "id": "message-server-1", "host": "127.0.0.1", "port": 4300 }
+      { "id": "message-server-1", "host": "127.0.0.1", "port": 4400 }
     ]    
   },
   "production": {

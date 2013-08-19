@@ -46,6 +46,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _startIcon: null,
     _cancelIcon: null,
     _stopIcon: null,
+    _selectLeadCardIcon: null,
 
     onEnter: function () {
         cc.log("PassiveSkillAfreshLabel onEnter");
@@ -279,16 +280,9 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        var selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon11);
-        selectLeadCardIcon.setPosition(cc.p(188, 727));
-        this.addChild(selectLeadCardIcon);
-
-        var selectLeadCardIconAction = cc.Sequence.create(
-            cc.FadeOut.create(1),
-            cc.FadeIn.create(1)
-        );
-
-        selectLeadCardIcon.runAction(cc.RepeatForever.create(selectLeadCardIconAction));
+        this._selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon11);
+        this._selectLeadCardIcon.setPosition(cc.p(188, 727));
+        this.addChild(this._selectLeadCardIcon);
 
         this._afreshIcon = cc.Sprite.create(main_scene_image.icon69);
         this._afreshIcon.setPosition(cc.p(260, 270));
@@ -378,6 +372,16 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._leadCardHeadNode = null;
         }
 
+        this._selectLeadCardIcon.stopAllActions();
+        this._selectLeadCardIcon.setOpacity(255);
+
+        var selectLeadCardIconAction = cc.Sequence.create(
+            cc.FadeOut.create(1),
+            cc.FadeIn.create(1)
+        );
+
+        this._selectLeadCardIcon.runAction(cc.RepeatForever.create(selectLeadCardIconAction));
+
         this._nameLabel.setString("");
         this._nameLabel.setVisible(false);
 
@@ -447,10 +451,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _onClickSelectLeadCard: function () {
         cc.log("PassiveSkillAfreshLabel _onClickSelectLeadCard");
 
-        var selectList = this._leadCard ? [this._leadCard.get("id")] : null;
-
         var that = this;
-        var cardListLayer = CardListLayer.create(SELECT_TYPE_MASTER, null, selectList, function (data) {
+        var cardListLayer = CardListLayer.create(SELECT_TYPE_PASSIVE_SKILL_AFRESH_MASTER, function (data) {
             cc.log(data);
 
             if (data) {
@@ -466,6 +468,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
             cc.log("this._leadCard :");
             cc.log(that._leadCard);
+        }, {
+            leadCard: this._leadCard
         });
 
         this.getParent()._switchToCardListLayer(cardListLayer);
@@ -606,7 +610,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._stopItem.setVisible(true);
         this._stopIcon.setVisible(true);
 
-        this.schedule(this._repeatAfresh, 2, null);
+        this.schedule(this._repeatAfresh, 2, cc.REPEAT_FOREVER, 0);
     },
 
     _onClickCancel: function () {

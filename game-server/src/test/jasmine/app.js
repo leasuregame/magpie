@@ -31,7 +31,7 @@ app.get('/adduser', function(req, res) {
   var pwd = req.query.password;
   mysql.userdb.query("insert into user (account, password, createTime, roles) values (?, ?, ?, ?)", [account, pwd, Date.now(), '[1]'], function(err, result) {
     if (err) {
-      res.send({
+      return res.send({
         code: 500
       });
     }
@@ -47,7 +47,7 @@ app.get('/adduser', function(req, res) {
 app.get('/removeuser', function(req, res) {
   var uid = req.query.uid;
   if (!uid) {
-    res.send({
+    return res.send({
       code: 200,
       msg: 'parameter uid is null'
     })

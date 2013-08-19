@@ -58,13 +58,13 @@ var MainLayer = cc.Layer.extend({
         lotteryLayerItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 500));
 
         var pveLayerItem = cc.MenuItemImage.create(main_scene_image.button1, main_scene_image.button1s, this._onClickPveLayer, this);
-        pveLayerItem.setPosition(cc.p(180, 600));
+        pveLayerItem.setPosition(cc.p(180, 590));
 
         var tournamentLayerItem = cc.MenuItemImage.create(main_scene_image.button2, main_scene_image.button2s, this._onClickTournamentLayer, this);
         tournamentLayerItem.setPosition(cc.p(180, 400));
 
         var strengthenLayerItem = cc.MenuItemImage.create(main_scene_image.button3, main_scene_image.button3s, this._onClickStrengthenLayer, this);
-        strengthenLayerItem.setPosition(cc.p(555, 600));
+        strengthenLayerItem.setPosition(cc.p(555, 590));
 
         var evolutionLayerItem = cc.MenuItemImage.create(main_scene_image.button4, main_scene_image.button4s, this._onClickEvolutionLayer, this);
         evolutionLayerItem.setPosition(cc.p(555, 400));

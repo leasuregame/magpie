@@ -49,6 +49,7 @@ var Card = Entity.extend({
     _skillHarm: 0,          // 技能伤害
     _skillRate: 0,          // 技能概率
     _skillDescription: "",  // 技能描述
+    _skillType: 0,          // 技能类型
     _skillMaxLv: 0,         // 技能最大等级
 
     _url: "",
@@ -105,8 +106,9 @@ var Card = Entity.extend({
         cc.log("Card _loadCardTable");
 
         // 读取卡牌配置表
+        cc.log(this._tableId);
         var cardTable = outputTables.cards.rows[this._tableId];
-
+        cc.log(cardTable);
         this._kindId = cardTable.number;
         this._name = cardTable.name;
         this._description = cardTable.description;
@@ -144,6 +146,8 @@ var Card = Entity.extend({
     _loadSkillTable: function () {
         cc.log("Card _loadSkillTable");
 
+        if(!this._skillId) return;
+
         // 读取技能配置表
         var skillTable = outputTables.skills.rows[this._skillId];
 
@@ -162,6 +166,7 @@ var Card = Entity.extend({
 
         this._skillName = skillTable.name;
         this._skillDescription = skillTable.description;
+        this._skillType = skillTable.type;
         this._skillMaxLv = 5;
     },
 
@@ -327,6 +332,12 @@ var Card = Entity.extend({
         });
     },
 
+    canAfreshPassiveSkill: function () {
+        cc.log("Card canAfreshPassiveSkill");
+
+        return (this._star > 2);
+    },
+
     afreshPassiveSkill: function (cb, afreshIdList, type) {
         cc.log("Card afreshPassiveSkill " + this._id);
         cc.log(afreshIdList);
@@ -361,6 +372,121 @@ var Card = Entity.extend({
                 cb();
             }
         });
+    },
+
+    canEvolution: function () {
+        cc.log("Card canEvolution");
+
+        return (this._star < 5);
+    },
+
+    getPreCardRate: function () {
+        cc.log("Card getPreCardRate");
+
+        if (this.canEvolution()) {
+            return outputTables.star_upgrade.rows[this._star].rate_per_card;
+        }
+
+        return 0;
+    },
+
+    getEvolutionUseMaxCard: function () {
+        cc.log("Card getEvolutionUseMaxCard");
+
+        if (this.canEvolution()) {
+            return outputTables.star_upgrade.rows[this._star].max_num;
+        }
+
+        return 0;
+    },
+
+    getEvolutionNeedMoney: function () {
+        cc.log("Card getEvolutionNeedMoney");
+
+        if (this.canEvolution()) {
+            return outputTables.star_upgrade.rows[this._star].money_need;
+        }
+
+        return 0;
+    },
+
+    evolution: function (cb, cardIdList) {
+        cc.log("Card evolution " + this._id);
+        cc.log(cardIdList);
+
+        var that = this;
+        lzWindow.pomelo.request("logic.trainHandler.starUpgrade", {
+            playerId: gameData.player.get("id"),
+            target: this._id,
+            sources: cardIdList
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("evolution success");
+
+                var msg = data.msg;
+
+                gameData.player.add("money", -that.getEvolutionNeedMoney());
+                gameData.cardList.deleteById(cardIdList);
+
+                that.update(msg.card);
+
+                cb();
+            } else {
+                cc.log("evolution fail");
+
+                cb(null);
+            }
+        });
+    },
+
+    canTrain: function () {
+        cc.log("Card canTrain");
+
+        return (this._star > 2);
+    },
+
+    train: function (cb, trainCount, trainType) {
+        cc.log("Card train " + this._id);
+
+        var elixir = trainCount * 10;
+        var that = this;
+        lzWindow.pomelo.request("logic.trainHandler.useElixir", {
+            playerId: gameData.player.get("id"),
+            cardId: this._id,
+            elixir: elixir
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("train success");
+
+                var msg = data.msg;
+
+                gameData.player.add("elixir", -elixir);
+
+                this._elixir += elixir;
+
+                if (trainType == TRAIN_CARD_HP) {
+                    this._hpAddition += trainCount * 3;
+                } else if (trainType == TRAIN_CARD_ATK) {
+                    this._atkAddition += trainCount;
+                }
+
+                cb();
+            } else {
+                cc.log("train fail");
+
+                cb(null);
+            }
+        });
+    },
+
+    getSellCardMoney: function () {
+        cc.log("Card getSellCardMoney");
+
+        return 0;
     }
 })
 

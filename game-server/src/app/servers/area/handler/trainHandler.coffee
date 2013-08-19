@@ -227,7 +227,7 @@ Handler::starUpgrade = (msg, session, next) ->
       if card_count > starUpgradeConfig.max_num
         return cb({code: 501, msg: "最多只能消耗#{starUpgradeConfig.max_num}张卡牌来进行升级"})
 
-      totalRate = _.min([20 * starUpgradeConfig.rate_per_card, 100])
+      totalRate = _.min([card_count * starUpgradeConfig.rate_per_card, 100])
       if utility.hitRate(totalRate)
         is_upgrade = true
       
@@ -397,6 +397,9 @@ Handler::useElixir = (msg, session, next) ->
 
     if card.star < 3
       return next(null, {code: 501, msg: '不能对3星以下的卡牌使用仙丹'})
+
+    if player.elixir < elixir
+      return next(null, {code: 501, msg: '仙丹不足'})
 
     limit = elixirConfig.limit[card.star]
     if card.elixir >= limit

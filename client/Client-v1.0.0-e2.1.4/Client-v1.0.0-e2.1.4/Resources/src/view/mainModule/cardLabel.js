@@ -43,44 +43,46 @@ var CardLabel = cc.Node.extend({
         this.addChild(cardItemMenu);
 
         var cardHeadItem = CardHeadNode.getCardHeadItem(this._card);
-        cardHeadItem.setPosition(cc.p(80, 65));
+        cardHeadItem.setPosition(cc.p(80, 60));
 
         var cardHeadItemMenu = LazyMenu.create(cardHeadItem);
         cardHeadItemMenu.setPosition(cc.p(0, 0));
         this.addChild(cardHeadItemMenu);
 
         var nameLabel = cc.LabelTTF.create(this._card.get("name"), '黑体', 22);
-        nameLabel.setPosition(cc.p(200, 93));
+        nameLabel.setAnchorPoint(cc.p(0, 0.5));
+        nameLabel.setPosition(cc.p(170, 88));
         this.addChild(nameLabel);
 
         var lvBgSprite = cc.Sprite.create(main_scene_image.icon28);
-        lvBgSprite.setPosition(cc.p(80, 32));
+        lvBgSprite.setPosition(cc.p(80, 27));
         this.addChild(lvBgSprite);
 
         var lvLabel = cc.LabelTTF.create(this._card.get("lv"), '黑体', 22);
         lvLabel.setAnchorPoint(cc.p(0, 0.5));
-        lvLabel.setPosition(cc.p(90, 32));
+        lvLabel.setPosition(cc.p(90, 27));
         this.addChild(lvLabel);
 
         var abilityLabel = cc.LabelTTF.create(this._card.get("ability"), '黑体', 22);
         abilityLabel.setAnchorPoint(cc.p(0, 0.5));
-        abilityLabel.setPosition(cc.p(200, 45));
+        abilityLabel.setPosition(cc.p(200, 40));
         this.addChild(abilityLabel);
 
         this._starLabel = StarLabel.create(star);
-        this._starLabel.setPosition(cc.p(325, 46));
+        this._starLabel.setPosition(cc.p(325, 41));
         this.addChild(this._starLabel);
 
         this._useLabel = cc.Sprite.create(main_scene_image.icon26);
-        this._useLabel.setPosition(cc.p(290, 45));
+        this._useLabel.setPosition(cc.p(280, 40));
         this.addChild(this._useLabel);
+        this._useLabel.setVisible(gameData.lineUp.isLineUpCard(this._card.get("id")));
 
         this._hookBgLabel = cc.Sprite.create(main_scene_image.icon27);
-        this._hookBgLabel.setPosition(cc.p(545, 67));
+        this._hookBgLabel.setPosition(cc.p(545, 62));
         this.addChild(this._hookBgLabel);
 
         this._hookLabel = cc.Sprite.create(main_scene_image.icon20);
-        this._hookLabel.setPosition(cc.p(545, 67));
+        this._hookLabel.setPosition(cc.p(545, 62));
         this.addChild(this._hookLabel);
 
         this._otherLabel = cc.Node.create();
@@ -102,14 +104,28 @@ var CardLabel = cc.Node.extend({
 
     },
 
-    _initMaster: function () {
-        cc.log("CardLabel _initMaster");
-
-
+    _initCardUpgradeMaster: function () {
+        cc.log("CardLabel _initCardUpgradeMaster");
     },
 
-    _initExp: function () {
-        cc.log("CardLabel _initExp");
+    _initCardEvolutionMaster: function () {
+        cc.log("CardLabel _initCardEvolutionMaster");
+    },
+
+    _initSkillUpgradeMaster: function () {
+        cc.log("CardLabel _initSkillUpgradeMaster");
+    },
+
+    _initPassiveSkillAfreshMaster: function () {
+        cc.log("CardLabel _initPassiveSkillAfreshMaster");
+    },
+
+    _initCardTrainMaster: function () {
+        cc.log("CardLabel _initCardTrainMaster");
+    },
+
+    _initCardUpgradeRetinue: function () {
+        cc.log("CardLabel _initCardUpgradeRetinue");
 
         this._clearOtherLabel();
 
@@ -129,34 +145,44 @@ var CardLabel = cc.Node.extend({
         this._blinkOtherLabel();
     },
 
-    _initMoney: function () {
-        cc.log("CardLabel _initMoney");
+    _initCardEvolutionRetinue: function () {
+        cc.log("CardLabel _initCardEvolutionRetinue");
 
         this._clearOtherLabel();
 
-        var moneyLabel = cc.LabelTTF.create(this._card.get("money"), '黑体', 35);
-        moneyLabel.setPosition(cc.p(0, 0));
-        this._otherLabel.addChild(moneyLabel);
+        var rateLabel = cc.LabelTTF.create(this._card.getPreCardRate() + "%", '黑体', 35);
+        rateLabel.setPosition(cc.p(380, 64));
+        this._otherLabel.addChild(rateLabel);
 
-        var moneyIcon = cc.Sprite.create(main_scene_image.icon30);
-        moneyIcon.setPosition(cc.p(0, 0));
-        this._otherLabel.addChild(moneyIcon);
+//        var rateIcon = cc.Sprite.create(main_scene_image.icon29);
+//        rateIcon.setPosition(cc.p(470, 64));
+//        this._otherLabel.addChild(rateIcon);
+
+        this._otherLabel.setOpacity = function (opacity) {
+            rateLabel.setOpacity(opacity);
+//            rateIcon.setOpacity(opacity);
+        };
 
         this._blinkOtherLabel();
     },
 
-    _initElixir: function () {
-        cc.log("CardLabel _initElixir");
+    _initSell: function () {
+        cc.log("CardLabel _initSell");
 
         this._clearOtherLabel();
 
-        var elixirLabel = cc.LabelTTF.create(this._card.get("elixir"), '黑体', 35);
-        elixirLabel.setPosition(cc.p(0, 0));
-        this._otherLabel.addChild(elixirLabel);
+        var moneyLabel = cc.LabelTTF.create(this._card.getSellCardMoney(), '黑体', 35);
+        moneyLabel.setPosition(cc.p(380, 64));
+        this._otherLabel.addChild(moneyLabel);
 
-        var elixirIcon = cc.Sprite.create(main_scene_image.icon31);
-        elixirIcon.setPosition(cc.p(0, 0));
-        this._otherLabel.addChild(elixirIcon);
+        var moneyIcon = cc.Sprite.create(main_scene_image.icon30);
+        moneyIcon.setPosition(cc.p(470, 64));
+        this._otherLabel.addChild(moneyIcon);
+
+        this._otherLabel.setOpacity = function (opacity) {
+            moneyLabel.setOpacity(opacity);
+            moneyIcon.setOpacity(opacity);
+        };
 
         this._blinkOtherLabel();
     },
@@ -227,18 +253,37 @@ var CardLabel = cc.Node.extend({
         if (selectType != this._selectType) {
             this._selectType = selectType;
 
-            if (this._selectType == SELECT_TYPE_DEFAULT) {
-                this._initDefault();
-            } else if (this._selectType == SELECT_TYPE_LINEUP) {
-                this._initLineUp();
-            } else if (this._selectType == SELECT_TYPE_MASTER) {
-                this._initMaster();
-            } else if (this._selectType == SELECT_TYPE_EXP) {
-                this._initExp();
-            } else if (this._selectType == SELECT_TYPE_MONEY) {
-                this._initMoney();
-            } else if (this._selectType == SELECT_TYPE_ELIXIR) {
-                this._initElixir();
+            switch (this._selectType) {
+                case SELECT_TYPE_LINEUP :
+                    this._initLineUp();
+                    break;
+                case SELECT_TYPE_CARD_UPGRADE_MASTER :
+                    this._initCardUpgradeMaster();
+                    break;
+                case SELECT_TYPE_CARD_EVOLUTION_MASTER :
+                    this._initCardEvolutionMaster();
+                    break;
+                case SELECT_TYPE_SKILL_UPGRADE_MASTER :
+                    this._initSkillUpgradeMaster();
+                    break;
+                case SELECT_TYPE_PASSIVE_SKILL_AFRESH_MASTER :
+                    this._initPassiveSkillAfreshMaster();
+                    break;
+                case SELECT_TYPE_CARD_TRAIN_MASTER :
+                    this._initCardTrainMaster();
+                    break;
+                case SELECT_TYPE_CARD_UPGRADE_RETINUE :
+                    this._initCardUpgradeRetinue();
+                    break;
+                case SELECT_TYPE_CARD_EVOLUTION_RETINUE :
+                    this._initCardEvolutionRetinue();
+                    break;
+                case SELECT_TYPE_SELL :
+                    this._initSell();
+                    break;
+                default :
+                    this._initDefault();
+                    break;
             }
 
             this._updateHookLabel();
@@ -251,12 +296,22 @@ var CardLabel = cc.Node.extend({
         this._cardItem.setEnabled(enabled);
     },
 
+    isEnabled: function () {
+        cc.log("CardLabel getEnabled");
+
+        return this._cardItem.isEnabled();
+    },
+
     select: function () {
         cc.log("CardLabel select");
 
         this._isSelect = !this._isSelect;
-        this._target.selectCallback(this._card.get("id"));
         this._hookLabel.setVisible(this._isSelect);
+        if (this._selectType == SELECT_TYPE_LINEUP) {
+            this._useLabel.setVisible(this._isSelect);
+        }
+
+        this._target.selectCallback(this._card.get("id"));
     },
 
     isSelect: function () {
@@ -278,10 +333,6 @@ var CardLabel = cc.Node.extend({
         if (this._selectType != SELECT_TYPE_DEFAULT) {
             this.select();
         }
-    },
-
-    _onClickCardHead: function () {
-        cc.log("CardLabel _onClickCardHead");
     }
 })
 

@@ -53,7 +53,7 @@ var TournamentLayer = cc.Layer.extend({
         this.addChild(this._nameLabel);
 
         this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0, true);
-        this._expProgress.setPosition(cc.p(210, 955));
+        this._expProgress.setPosition(cc.p(225, 955));
         this._expProgress.setScale(0.8);
         this.addChild(this._expProgress, 2);
 
@@ -64,9 +64,9 @@ var TournamentLayer = cc.Layer.extend({
 
         this._lvLabel = cc.LabelTTF.create("0", '黑体', 45);
         this._lvLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._lvLabel.setPosition(cc.p(46, 46));
+        this._lvLabel.setPosition(cc.p(100, 968));
         this._lvLabel.setScale(0.8);
-        lvBg.addChild(this._lvLabel);
+        this.addChild(this._lvLabel, 2);
 
         this._rankLabel = cc.LabelTTF.create(0, '黑体', 25);
         this._rankLabel.setPosition(cc.p(438, 954));

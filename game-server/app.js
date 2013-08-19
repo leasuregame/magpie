@@ -62,7 +62,7 @@ app.configure('production|development', 'connector', function() {
 });
 
 // configure sql database
-app.configure('production|development', 'connector', function() {
+app.configure('production|development', 'connector|auth', function() {
   var env = app.get('env');
   app.set('mysql', require(app.getBase() + '/config/mysql1.json')[env]['userdb']);
 
@@ -101,12 +101,12 @@ app.configure('production|development', 'area|battle', function() {
   });
 });
 
-app.configure('production|development', 'connector|area|battle', function() {
+app.configure('production|development', 'connector|auth|area|battle', function() {
   var dao = require('./app/dao').init('mysql');
   app.set('dao', dao);
 });
 
-app.configure('development', 'connector|battle|logic|area', function() {
+app.configure('development', 'connector|auth|battle|logic|area', function() {
   app.set('debug', true);
 });
 

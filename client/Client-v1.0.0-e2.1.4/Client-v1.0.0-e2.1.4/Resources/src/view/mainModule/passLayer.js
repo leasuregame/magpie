@@ -78,7 +78,7 @@ var PassLayer = cc.Layer.extend({
         }
         scrollViewLayer.addChild(this._cardSprite, 1);
 
-        this._scrollView = cc.ScrollView.create(cc.size(330, 750), scrollViewLayer);
+        this._scrollView = cc.ScrollView.create(cc.size(330, 743), scrollViewLayer);
         this._scrollView.setContentSize(cc.size(300, 18620));
         this._scrollView.setPosition(cc.p(100, 200));
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);

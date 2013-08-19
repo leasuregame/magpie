@@ -19,6 +19,7 @@ var ExploreLayer = cc.Layer.extend({
     _scrollView: null,
     _exploreLabelList: {},
     _scrollViewLayer: null,
+    _mapLabel: null,
 
     onEnter: function () {
         cc.log("ExploreLayer onEnter");
@@ -41,8 +42,24 @@ var ExploreLayer = cc.Layer.extend({
 
         var headBgSprite = cc.Sprite.create(main_scene_image.bg11);
         headBgSprite.setAnchorPoint(cc.p(0, 0));
-        headBgSprite.setPosition(cc.p(40, 943));
+        headBgSprite.setPosition(cc.p(40, 956));
         this.addChild(headBgSprite);
+
+        this._mapLabel = cc.Sprite.create(main_scene_image.bg4, cc.rect(0, 0, 640, 193));
+        this._mapLabel.setAnchorPoint(cc.p(0, 0));
+        this._mapLabel.setPosition(cc.p(40, 760));
+        this.addChild(this._mapLabel);
+
+        var line1Icon = cc.Sprite.create(main_scene_image.icon96);
+        line1Icon.setAnchorPoint(cc.p(0.5, 0));
+        line1Icon.setPosition(cc.p(360, 922));
+        this.addChild(line1Icon);
+
+        var line2Icon = cc.Sprite.create(main_scene_image.icon96);
+        line2Icon.setRotation(180);
+        line2Icon.setAnchorPoint(cc.p(0.5, 0));
+        line2Icon.setPosition(cc.p(360, 791));
+        this.addChild(line2Icon);
 
         this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
         this._turnLeftSprite.setRotation(180);
@@ -56,13 +73,13 @@ var ExploreLayer = cc.Layer.extend({
         this.addChild(this._turnRightSprite, 1);
 
         var titleLabel = cc.LabelTTF.create("第" + index + "章: " + outputTables.chapter.rows[index].chapter, '黑体', 30);
-        titleLabel.setPosition(cc.p(360, 995));
+        titleLabel.setPosition(cc.p(360, 1005));
         this.addChild(titleLabel);
 
         var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
-            MainScene.getInstance().switchLayer(MainLayer);
+            MainScene.getInstance().switchLayer(PveLayer);
         }, this);
-        backItem.setPosition(cc.p(100, 1000));
+        backItem.setPosition(cc.p(100, 1005));
 
         var menu = cc.Menu.create(backItem);
         menu.setPosition(cc.p(0, 0));
@@ -73,13 +90,13 @@ var ExploreLayer = cc.Layer.extend({
 
         this._scrollViewLayer = MarkLayer.create(cc.rect(92, 380, 537, 276));
 
-        var menu = LazyMenu.create();
-        menu.setPosition(cc.p(0, 0));
-        this._scrollViewLayer.addChild(menu, 1);
+        var lazyMenu = LazyMenu.create();
+        lazyMenu.setPosition(cc.p(0, 0));
+        this._scrollViewLayer.addChild(lazyMenu, 1);
 
         for (var i = 1; i <= 10; ++i) {
             var id = i + 10 * (this._index - 1);
-            var offsetX = 537 * (i - 1);
+            var offsetX = 493 * (i - 1);
 
             cc.log(id);
 
@@ -89,44 +106,44 @@ var ExploreLayer = cc.Layer.extend({
             this._scrollViewLayer.addChild(exploreBgSprite);
 
             var exploreItem = cc.MenuItemImage.create(main_scene_image.button9, main_scene_image.button9s, this._onClickExplore(id), this);
-            exploreItem.setPosition(cc.p(268 + offsetX, 235));
-            menu.addChild(exploreItem);
+            exploreItem.setPosition(cc.p(246 + offsetX, 235));
+            lazyMenu.addChild(exploreItem);
 
-            var exploreIconSprite = cc.Sprite.create(main_scene_image.icon15);
-            exploreIconSprite.setPosition(cc.p(268 + offsetX, 235));
-            this._scrollViewLayer.addChild(exploreIconSprite, 1);
+            var exploreIcon = cc.Sprite.create(main_scene_image.icon15);
+            exploreIcon.setPosition(cc.p(246 + offsetX, 235));
+            this._scrollViewLayer.addChild(exploreIcon, 1);
 
-            var powerLabel = cc.LabelTTF.create("0 / 0", '黑体', 20);
-            powerLabel.setPosition(cc.p(460 + offsetX, 377));
+            var powerLabel = cc.LabelTTF.create("0/0", '黑体', 20);
+            powerLabel.setPosition(cc.p(420 + offsetX, 381));
             this._scrollViewLayer.addChild(powerLabel);
 
-            var expLabel = cc.LabelTTF.create("0 / 0", '黑体', 20);
-            expLabel.setPosition(cc.p(460 + offsetX, 329));
+            var expLabel = cc.LabelTTF.create("0/0", '黑体', 20);
+            expLabel.setPosition(cc.p(420 + offsetX, 333));
             this._scrollViewLayer.addChild(expLabel);
 
-            var progressLabel = cc.LabelTTF.create("0 / 0", '黑体', 20);
-            progressLabel.setPosition(cc.p(460 + offsetX, 290));
+            var progressLabel = cc.LabelTTF.create("0/0", '黑体', 20);
+            progressLabel.setPosition(cc.p(420 + offsetX, 294));
             this._scrollViewLayer.addChild(progressLabel);
 
-            var nameLabel = cc.LabelTTF.create(chapterTable[id].section_name, '黑体', 30);
-            nameLabel.setPosition(cc.p(268 + offsetX, 425));
+            var nameLabel = cc.LabelTTF.create(chapterTable[id].section_name, '黑体', 25);
+            nameLabel.setPosition(cc.p(246 + offsetX, 432));
             this._scrollViewLayer.addChild(nameLabel);
 
-            var storyLabel = cc.LabelTTF.create("哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈\n哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈", '黑体', 30, cc.size(537, 100), cc.TEXT_ALIGNMENT_LEFT);
+            var storyLabel = cc.LabelTTF.create("哈哈哈哈哈哈啊哈哈哈哈哈哈\n哈哈哈哈哈哈啊哈哈哈哈哈哈", '黑体', 20, cc.size(537, 100), cc.TEXT_ALIGNMENT_LEFT);
             storyLabel.setAnchorPoint(cc.p(0, 1));
             storyLabel.setPosition(cc.p(30 + offsetX, 100));
             this._scrollViewLayer.addChild(storyLabel);
 
             var powerProgress = Progress.create(null, main_scene_image.progress2, 200, 200);
-            powerProgress.setPosition(cc.p(282 + offsetX, 377));
+            powerProgress.setPosition(cc.p(240 + offsetX, 382));
             this._scrollViewLayer.addChild(powerProgress);
 
             var expProgress = Progress.create(null, main_scene_image.progress3, 200, 200);
-            expProgress.setPosition(cc.p(282 + offsetX, 329));
+            expProgress.setPosition(cc.p(240 + offsetX, 335));
             this._scrollViewLayer.addChild(expProgress);
 
             var sectionProgress = Progress.create(null, main_scene_image.progress3, 200, 200);
-            sectionProgress.setPosition(cc.p(282 + offsetX, 290));
+            sectionProgress.setPosition(cc.p(240 + offsetX, 297));
             this._scrollViewLayer.addChild(sectionProgress);
 
             this._exploreLabelList[i] = {
@@ -139,9 +156,9 @@ var ExploreLayer = cc.Layer.extend({
             }
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(537, 556), this._scrollViewLayer);
+        this._scrollView = cc.ScrollView.create(cc.size(493, 556), this._scrollViewLayer);
         this._scrollView.setContentSize(cc.size(5370, 556));
-        this._scrollView.setPosition(cc.p(92, 200));
+        this._scrollView.setPosition(cc.p(113, 200));
         this._scrollView.setBounceable(false);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         this._scrollView.updateInset();
@@ -166,9 +183,9 @@ var ExploreLayer = cc.Layer.extend({
             var section = progress.progress;
             var maxSection = progress.points;
 
-            exploreLabel.powerLabel.setString(power + " / " + maxPower);
-            exploreLabel.expLabel.setString(exp + " / " + maxExp);
-            exploreLabel.progressLabel.setString(section + " / " + maxSection);
+            exploreLabel.powerLabel.setString(power + "/" + maxPower);
+            exploreLabel.expLabel.setString(exp + "/" + maxExp);
+            exploreLabel.progressLabel.setString(section + "/" + maxSection);
 
             exploreLabel.powerProgress.setAllValue(maxPower, power);
             exploreLabel.expProgress.setAllValue(maxExp, exp);

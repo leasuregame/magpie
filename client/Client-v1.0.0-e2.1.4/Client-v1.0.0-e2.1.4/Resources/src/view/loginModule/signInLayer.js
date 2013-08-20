@@ -21,18 +21,18 @@ var SignInLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        var accountLabel = cc.LabelTTF.create("账号:", "Marker Felt", 30);
+        var accountLabel = cc.LabelTTF.create("账号:", "黑体", 30);
         accountLabel.setPosition(cc.p(150, 500));
         this.addChild(accountLabel);
 
-        var passwordLabel = cc.LabelTTF.create("密码:", "Marker Felt", 30);
+        var passwordLabel = cc.LabelTTF.create("密码:", "黑体", 30);
         passwordLabel.setPosition(cc.p(150, 400));
         this.addChild(passwordLabel);
 
         this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create("res1/yellow_edit.png"));
         this._accountEditBox.setPosition(cc.p(380, 500));
         this._accountEditBox.setDelegate(this);
-        this._accountEditBox.setFont("American Typewriter", 25);
+        this._accountEditBox.setFont("黑体", 25);
         this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._accountEditBox.setMaxLength(18);
         this.addChild(this._accountEditBox);
@@ -52,38 +52,20 @@ var SignInLayer = cc.Layer.extend({
         this.signInButton.setFontSize(45);
         this.signInButton.setPosition(260, 250);
         this.signInButton.setEnabled(false);
-//        this.addChild(signInButton);
 
         var signUpButton = cc.MenuItemFont.create("直接进入", this._onClickSignUp, this);
         signUpButton.setFontSize(45);
         signUpButton.setPosition(460, 250);
-//        this.addChild(signUpButton);
 
         this.menu = cc.Menu.create(this.signInButton, signUpButton);
         this.menu.setPosition(cc.p(0, 0));
         this.addChild(this.menu);
 
-        this.schedule(function() {
+        this.schedule(function () {
             this.signInButton.setEnabled(connectSuccess);
         }, 0.5)
 
         return true;
-    },
-
-    _getButtonWithTitle: function (title) {
-        /** Creates and return a button with a default background and title color. */
-        var backgroundButton = cc.Scale9Sprite.create("res1/button.png");
-        var backgroundHighlightedButton = cc.Scale9Sprite.create("res1/buttonHighlighted.png");
-
-        var titleButton = cc.LabelTTF.create(title, "Marker Felt", 30);
-
-        titleButton.setColor(cc.c3b(159, 168, 176));
-
-        var button = cc.ControlButton.create(titleButton, backgroundButton);
-//        button.setBackgroundSpriteForState(backgroundHighlightedButton, cc.CONTROL_STATE_HIGHLIGHTED);
-//        button.setTitleColorForState(cc.WHITE, cc.CONTROL_STATE_HIGHLIGHTED);
-
-        return button;
     },
 
     _onClickSignIn: function () {
@@ -99,7 +81,7 @@ var SignInLayer = cc.Layer.extend({
         user.set("account", this._accountEditBox.getText());
         user.set("password", this._passwordEditBox.getText());
 
-        user.signIn(function(msg) {
+        user.signIn(function (msg) {
             cc.log(msg);
             cc.Director.getInstance().replaceScene(MainScene.getInstance());
 //            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, MainScene.getInstance(), true));

@@ -8,26 +8,26 @@
 
 
 /*
-* sign up scene
-* */
+ * sign up scene
+ * */
 
 
 var SignUpScene = cc.Scene.extend({
-    onEnter : function() {
+    onEnter: function () {
         this._super();
 
         var signUpLayer = SignUpLayer.create();
         this.addChild(signUpLayer);
     }
-})
+});
 
 
-SignUpScene.create = function() {
+SignUpScene.create = function () {
     var ret = new SignUpScene();
 
-    if(ret) {
+    if (ret) {
         return ret;
     }
 
     return null;
-}
+};

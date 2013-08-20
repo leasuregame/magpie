@@ -80,8 +80,6 @@ CREATE TABLE IF NOT EXISTS `rank` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
   `playerId` INT(10) UNSIGNED NOT NULL,
-  `title` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',  -- 头衔称号
-  `rank` SMALLINT(3) UNSIGNED DEFAULT '0',  -- 头衔称号等级
   `ranking` INT(10) UNSIGNED DEFAULT '0',   -- 排名
   -- counts = {challenge: 0, win: 0, lose: 0, winingStreak: 0}
   `counts` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',  -- 挑战统计数

@@ -75,6 +75,10 @@ loaddata-user:
 
 loaddata:
 	node ./bin/dao.js all development
+
+data-for-test: build
+	node ./data/test/loadUserData.js
+	node ./data/test/dao.js csv production
 	
 
 .PHONY: build clean test testserver runserver startTT stopTT loaddata

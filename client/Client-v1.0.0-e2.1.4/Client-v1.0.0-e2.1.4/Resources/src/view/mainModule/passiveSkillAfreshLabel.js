@@ -73,13 +73,13 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         cardItemBgSprite.setPosition(cc.p(328, 725));
         this.addChild(cardItemBgSprite);
 
-        this._nameLabel = cc.LabelTTF.create("", '黑体', 23);
+        this._nameLabel = cc.LabelTTF.create("", "黑体", 23);
         this._nameLabel.setAnchorPoint(cc.p(0, 0.5));
         this._nameLabel.setPosition(cc.p(243, 742));
         this.addChild(this._nameLabel);
         this._nameLabel.setVisible(false);
 
-        this._lvLabel = cc.LabelTTF.create("", '黑体', 23);
+        this._lvLabel = cc.LabelTTF.create("", "黑体", 23);
         this._lvLabel.setAnchorPoint(cc.p(0, 0.5));
         this._lvLabel.setPosition(cc.p(245, 708));
         this.addChild(this._lvLabel);
@@ -109,7 +109,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             nameLabel.setVisible(false);
 //            nameLabel.setTexture(this._passiveSkillNameTexture.atk_reduce);
 
-            var valueLabel = cc.LabelTTF.create("", '黑体', 28);
+            var valueLabel = cc.LabelTTF.create("", "黑体", 28);
             valueLabel.setPosition(cc.p(190, 152 + 78 * (2 - i)));
             this._resLabel.addChild(valueLabel);
             valueLabel.setVisible(false);
@@ -660,7 +660,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         this.unschedule(this._repeatAfresh);
     }
-})
+});
 
 
 PassiveSkillAfreshLabel.create = function () {
@@ -671,4 +671,4 @@ PassiveSkillAfreshLabel.create = function () {
     }
 
     return null;
-}
+};

@@ -8,7 +8,7 @@
 
 
 /*
- * 竞技
+ * tournament layer
  * */
 
 
@@ -125,7 +125,7 @@ var TournamentLayer = cc.Layer.extend({
 
         this.addChild(this._rankScrollView);
     }
-})
+});
 
 TournamentLayer.create = function () {
     var res = new TournamentLayer();
@@ -135,4 +135,4 @@ TournamentLayer.create = function () {
     }
 
     return null;
-}
+};

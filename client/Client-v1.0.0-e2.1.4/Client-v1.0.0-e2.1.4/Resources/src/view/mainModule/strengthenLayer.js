@@ -137,7 +137,7 @@ var StrengthenLayer = cc.Layer.extend({
             this.addChild(this._nowLabel);
         }
     }
-})
+});
 
 StrengthenLayer.create = function () {
     var res = new StrengthenLayer();
@@ -147,4 +147,4 @@ StrengthenLayer.create = function () {
     }
 
     return null;
-}
+};

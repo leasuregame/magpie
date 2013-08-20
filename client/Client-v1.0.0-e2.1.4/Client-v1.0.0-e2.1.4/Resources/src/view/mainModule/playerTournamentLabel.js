@@ -112,5 +112,5 @@ PlayerTournamentLabel.create = function () {
     }
 
     return null;
-}
+};
 

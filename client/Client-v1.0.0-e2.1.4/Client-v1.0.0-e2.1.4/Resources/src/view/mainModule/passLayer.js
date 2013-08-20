@@ -91,7 +91,12 @@ var PassLayer = cc.Layer.extend({
         tipLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 873));
         this.addChild(tipLabel);
 
-        var wipeOutItem = cc.MenuItemImage.create(main_scene_image.button9, main_scene_image.button9s, this._onClickWipeOut, this);
+        var wipeOutItem = cc.MenuItemImage.create(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            this._onClickWipeOut,
+            this
+        );
         wipeOutItem.setPosition(cc.p(543, 34));
         var wipeOutMenu = cc.Menu.create(wipeOutItem);
         wipeOutMenu.setPosition(cc.p(0, 0));
@@ -157,9 +162,6 @@ var PassLayer = cc.Layer.extend({
         var offsetPoint = this._getOffset(index);
 
         if (duration) {
-            var oldOffsetPoint = this._scrollView.getContentOffset();
-            var nowOffsetPoint = cc.p(offsetPoint.x - oldOffsetPoint.x, offsetPoint.y - oldOffsetPoint.y);
-
             this._scrollView.setContentOffsetInDuration(offsetPoint, duration);
         } else {
             this._scrollView.setContentOffset(offsetPoint);
@@ -210,7 +212,7 @@ var PassLayer = cc.Layer.extend({
 
         this._cardWalk(this._nowPassTop);
 
-        if(this._nowPassTop == 100) {
+        if (this._nowPassTop == 100) {
             this.scheduleOnce(function () {
                 LazyLayer.closeCloudLayer();
             }, 2);
@@ -253,7 +255,7 @@ var PassLayer = cc.Layer.extend({
             cc.log(data);
         });
     }
-})
+});
 
 PassLayer.create = function () {
     var ret = new PassLayer();
@@ -263,4 +265,4 @@ PassLayer.create = function () {
     }
 
     return null;
-}
+};

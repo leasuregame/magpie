@@ -37,7 +37,12 @@ var PlayerDetailsLayer = LazyLayer.extend({
         bgSprite.setPosition(GAME_MIDPOINT);
         this.addChild(bgSprite);
 
-        var closeItem = cc.MenuItemImage.create(main_scene_image.button0, main_scene_image.button0s, this._onClickClose, this);
+        var closeItem = cc.MenuItemImage.create(
+            main_scene_image.button0,
+            main_scene_image.button0s,
+            this._onClickClose,
+            this
+        );
         closeItem.setPosition(cc.p(620, 1000));
 
         this._menu = cc.Menu.create(closeItem);
@@ -102,7 +107,7 @@ var PlayerDetailsLayer = LazyLayer.extend({
 
         this.removeFromParent();
     }
-})
+});
 
 
 PlayerDetailsLayer.create = function () {
@@ -113,4 +118,4 @@ PlayerDetailsLayer.create = function () {
     }
 
     return null;
-}
+};

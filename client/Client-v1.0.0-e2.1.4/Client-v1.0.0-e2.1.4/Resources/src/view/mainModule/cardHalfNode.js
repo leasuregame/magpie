@@ -39,7 +39,7 @@ var CardHalfNode = CardNode.extend({
 
         return true;
     }
-})
+});
 
 
 CardHalfNode.create = function (card) {
@@ -50,4 +50,4 @@ CardHalfNode.create = function (card) {
     }
 
     return null;
-}
+};

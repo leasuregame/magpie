@@ -48,41 +48,94 @@ var MainLayer = cc.Layer.extend({
         lineUpLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 800));
         this.addChild(lineUpLabel);
 
-
 //        var activityLayerItem = cc.MenuItemFont.create("活动入口", this._onClickActivityLayer, this);
 //        activityLayerItem.setFontSize(40);
 //        activityLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
 //        activityLayerItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 650));
 
-        var lotteryLayerItem = cc.MenuItemImage.create(main_scene_image.button5, main_scene_image.button5s, this._onClickLotteryLayer, this);
+        var lotteryLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button5,
+            main_scene_image.button5s,
+            this._onClickLotteryLayer,
+            this
+        );
         lotteryLayerItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 500));
 
-        var pveLayerItem = cc.MenuItemImage.create(main_scene_image.button1, main_scene_image.button1s, this._onClickPveLayer, this);
+        var pveLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button1,
+            main_scene_image.button1s,
+            this._onClickPveLayer,
+            this
+        );
         pveLayerItem.setPosition(cc.p(180, 590));
 
-        var tournamentLayerItem = cc.MenuItemImage.create(main_scene_image.button2, main_scene_image.button2s, this._onClickTournamentLayer, this);
+        var tournamentLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button2,
+            main_scene_image.button2s,
+            this._onClickTournamentLayer,
+            this
+        );
         tournamentLayerItem.setPosition(cc.p(180, 400));
 
-        var strengthenLayerItem = cc.MenuItemImage.create(main_scene_image.button3, main_scene_image.button3s, this._onClickStrengthenLayer, this);
+        var strengthenLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button3,
+            main_scene_image.button3s,
+            this._onClickStrengthenLayer,
+            this
+        );
         strengthenLayerItem.setPosition(cc.p(555, 590));
 
-        var evolutionLayerItem = cc.MenuItemImage.create(main_scene_image.button4, main_scene_image.button4s, this._onClickEvolutionLayer, this);
+        var evolutionLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button4,
+            main_scene_image.button4s,
+            this._onClickEvolutionLayer,
+            this
+        );
         evolutionLayerItem.setPosition(cc.p(555, 400));
 
-        var cardLibraryLayerItem = cc.MenuItemImage.create(main_scene_image.button26, main_scene_image.button26s, this._onClickCardLibraryLayer, this);
+        var cardLibraryLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button26,
+            main_scene_image.button26s,
+            this._onClickCardLibraryLayer,
+            this
+        );
         cardLibraryLayerItem.setPosition(cc.p(135, 250));
 
-        var rankLayerItem = cc.MenuItemImage.create(main_scene_image.button27, main_scene_image.button27s, this._onClickRankLayer, this);
+        var rankLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button27,
+            main_scene_image.button27s,
+            this._onClickRankLayer,
+            this
+        );
         rankLayerItem.setPosition(cc.p(285, 250));
 
-        var friendLayerItem = cc.MenuItemImage.create(main_scene_image.button28, main_scene_image.button28s, this._onClickFriendLayer, this);
+        var friendLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button28,
+            main_scene_image.button28s,
+            this._onClickFriendLayer,
+            this
+        );
         friendLayerItem.setPosition(cc.p(435, 250));
 
-        var configLayerItem = cc.MenuItemImage.create(main_scene_image.button29, main_scene_image.button29s, this._onClickConfigLayer, this);
+        var configLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button29,
+            main_scene_image.button29s,
+            this._onClickConfigLayer,
+            this
+        );
         configLayerItem.setPosition(cc.p(585, 250));
 
-        var functionMenu = cc.Menu.create(lotteryLayerItem, pveLayerItem, tournamentLayerItem, strengthenLayerItem,
-            evolutionLayerItem, cardLibraryLayerItem, rankLayerItem, friendLayerItem, configLayerItem);
+        var functionMenu = cc.Menu.create(
+            lotteryLayerItem,
+            pveLayerItem,
+            tournamentLayerItem,
+            strengthenLayerItem,
+            evolutionLayerItem,
+            cardLibraryLayerItem,
+            rankLayerItem,
+            friendLayerItem,
+            configLayerItem
+        );
         functionMenu.setPosition(cc.p(0, 0));
 
         this.addChild(functionMenu);
@@ -150,7 +203,8 @@ var MainLayer = cc.Layer.extend({
         cc.log("MainLayer _onClickConfigLayerItem");
         MainScene.getInstance().switchLayer(ConfigLayer);
     }
-})
+});
+
 
 MainLayer.create = function () {
     var ret = new MainLayer();
@@ -160,4 +214,4 @@ MainLayer.create = function () {
     }
 
     return null;
-}
+};

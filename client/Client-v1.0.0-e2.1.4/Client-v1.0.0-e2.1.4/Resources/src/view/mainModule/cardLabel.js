@@ -34,7 +34,13 @@ var CardLabel = cc.Node.extend({
 
         var star = this._card.get("star");
 
-        this._cardItem = cc.MenuItemImage.create(main_scene_image.button15, main_scene_image.button15s, main_scene_image.button15d, this._onClickCard, this);
+        this._cardItem = cc.MenuItemImage.create(
+            main_scene_image.button15,
+            main_scene_image.button15s,
+            main_scene_image.button15d,
+            this._onClickCard,
+            this
+        );
         this._cardItem.setAnchorPoint(cc.p(0, 0));
         this._cardItem.setPosition(cc.p(0, 0));
 
@@ -49,7 +55,7 @@ var CardLabel = cc.Node.extend({
         cardHeadItemMenu.setPosition(cc.p(0, 0));
         this.addChild(cardHeadItemMenu);
 
-        var nameLabel = cc.LabelTTF.create(this._card.get("name"), '黑体', 22);
+        var nameLabel = cc.LabelTTF.create(this._card.get("name"), "黑体", 22);
         nameLabel.setAnchorPoint(cc.p(0, 0.5));
         nameLabel.setPosition(cc.p(170, 88));
         this.addChild(nameLabel);
@@ -58,12 +64,12 @@ var CardLabel = cc.Node.extend({
         lvBgSprite.setPosition(cc.p(80, 27));
         this.addChild(lvBgSprite);
 
-        var lvLabel = cc.LabelTTF.create(this._card.get("lv"), '黑体', 22);
+        var lvLabel = cc.LabelTTF.create(this._card.get("lv"), "黑体", 22);
         lvLabel.setAnchorPoint(cc.p(0, 0.5));
         lvLabel.setPosition(cc.p(90, 27));
         this.addChild(lvLabel);
 
-        var abilityLabel = cc.LabelTTF.create(this._card.get("ability"), '黑体', 22);
+        var abilityLabel = cc.LabelTTF.create(this._card.get("ability"), "黑体", 22);
         abilityLabel.setAnchorPoint(cc.p(0, 0.5));
         abilityLabel.setPosition(cc.p(200, 40));
         this.addChild(abilityLabel);
@@ -129,7 +135,7 @@ var CardLabel = cc.Node.extend({
 
         this._clearOtherLabel();
 
-        var expLabel = cc.LabelTTF.create(this._card.getCardExp(), '黑体', 35);
+        var expLabel = cc.LabelTTF.create(this._card.getCardExp(), "黑体", 35);
         expLabel.setPosition(cc.p(380, 64));
         this._otherLabel.addChild(expLabel);
 
@@ -150,17 +156,12 @@ var CardLabel = cc.Node.extend({
 
         this._clearOtherLabel();
 
-        var rateLabel = cc.LabelTTF.create(this._card.getPreCardRate() + "%", '黑体', 35);
+        var rateLabel = cc.LabelTTF.create(this._card.getPreCardRate() + "%", "黑体", 35);
         rateLabel.setPosition(cc.p(380, 64));
         this._otherLabel.addChild(rateLabel);
 
-//        var rateIcon = cc.Sprite.create(main_scene_image.icon29);
-//        rateIcon.setPosition(cc.p(470, 64));
-//        this._otherLabel.addChild(rateIcon);
-
         this._otherLabel.setOpacity = function (opacity) {
             rateLabel.setOpacity(opacity);
-//            rateIcon.setOpacity(opacity);
         };
 
         this._blinkOtherLabel();
@@ -171,7 +172,7 @@ var CardLabel = cc.Node.extend({
 
         this._clearOtherLabel();
 
-        var moneyLabel = cc.LabelTTF.create(this._card.getSellCardMoney(), '黑体', 35);
+        var moneyLabel = cc.LabelTTF.create(this._card.getSellCardMoney(), "黑体", 35);
         moneyLabel.setPosition(cc.p(380, 64));
         this._otherLabel.addChild(moneyLabel);
 
@@ -334,7 +335,7 @@ var CardLabel = cc.Node.extend({
             this.select();
         }
     }
-})
+});
 
 
 CardLabel.create = function (target, card, selectType) {
@@ -345,4 +346,4 @@ CardLabel.create = function (target, card, selectType) {
     }
 
     return null;
-}
+};

@@ -8,33 +8,33 @@
 
 
 /*
-* activity layer
-* */
+ * activity layer
+ * */
 
 
 var ActivityLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("ActivityLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         var winSize = cc.Director.getInstance().getWinSize();
 
-        var label = cc.LabelTTF.create("ActivityLayer", '黑体', 60);
+        var label = cc.LabelTTF.create("ActivityLayer", "黑体", 60);
         label.setPosition(winSize.width / 2, winSize.height / 2);
         this.addChild(label);
 
         return true;
     }
-})
+});
 
 
-ActivityLayer.create = function() {
+ActivityLayer.create = function () {
     var ret = new ActivityLayer();
 
-    if(ret && ret.init()) {
+    if (ret && ret.init()) {
         return ret;
     }
 
     return null;
-}
+};

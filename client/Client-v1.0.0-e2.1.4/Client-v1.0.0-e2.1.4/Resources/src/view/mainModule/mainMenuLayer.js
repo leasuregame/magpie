@@ -18,22 +18,52 @@ var MainMenuLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        var mainLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickMainLayer, this);
+        var mainLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button7,
+            main_scene_image.button7s,
+            this._onClickMainLayer,
+            this
+        );
         mainLayerItem.setPosition(cc.p(93, 141));
 
-        var pveLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickPveLayer, this);
+        var pveLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button7,
+            main_scene_image.button7s,
+            this._onClickPveLayer,
+            this
+        );
         pveLayerItem.setPosition(cc.p(200, 141));
 
-        var tournamentLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickTournamentLayer, this);
+        var tournamentLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button7,
+            main_scene_image.button7s,
+            this._onClickTournamentLayer,
+            this
+        );
         tournamentLayerItem.setPosition(cc.p(307, 141));
 
-        var rankingLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickCardListLayer, this);
+        var rankingLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button7,
+            main_scene_image.button7s,
+            this._onClickCardListLayer,
+            this
+        );
         rankingLayerItem.setPosition(cc.p(414, 141));
 
-        var shopLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickShopLayer, this);
+        var shopLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button7,
+            main_scene_image.button7s,
+            this._onClickShopLayer,
+            this
+        );
         shopLayerItem.setPosition(cc.p(521, 141));
 
-        var messageLayerItem = cc.MenuItemImage.create(main_scene_image.button7, main_scene_image.button7s, this._onClickMessageLayer, this);
+        var messageLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button7,
+            main_scene_image.button7s,
+            this._onClickMessageLayer,
+            this
+        );
         messageLayerItem.setPosition(cc.p(628, 141));
 
         var itemIcon = null;
@@ -44,7 +74,14 @@ var MainMenuLayer = cc.Layer.extend({
         }
 
 
-        var mainMenu = cc.Menu.create(mainLayerItem, pveLayerItem, tournamentLayerItem, rankingLayerItem, shopLayerItem, messageLayerItem);
+        var mainMenu = cc.Menu.create(
+            mainLayerItem,
+            pveLayerItem,
+            tournamentLayerItem,
+            rankingLayerItem,
+            shopLayerItem,
+            messageLayerItem
+        );
         mainMenu.setPosition(cc.p(0, 0));
         this.addChild(mainMenu);
 
@@ -69,7 +106,6 @@ var MainMenuLayer = cc.Layer.extend({
     _onClickCardListLayer: function () {
         cc.log("MainMenuLayer _onClickCardListLayer");
         MainScene.getInstance().switchLayer(CardListLayer);
-//        MainScene.getInstance().switchLayer(LineUpLayer);
     },
 
     _onClickShopLayer: function () {
@@ -81,7 +117,7 @@ var MainMenuLayer = cc.Layer.extend({
         cc.log("MainMenuLayer _onClickMessageLayer");
         MainScene.getInstance().switchLayer(MessageLayer);
     }
-})
+});
 
 
 MainMenuLayer.create = function () {
@@ -92,4 +128,4 @@ MainMenuLayer.create = function () {
     }
 
     return null;
-}
+};

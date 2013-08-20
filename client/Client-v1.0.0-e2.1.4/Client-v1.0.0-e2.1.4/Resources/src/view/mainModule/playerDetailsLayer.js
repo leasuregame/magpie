@@ -19,6 +19,7 @@ var PlayerDetailsLayer = LazyLayer.extend({
     _elixirLabel: null,
     _energyLabel: null,
     _powerLabel: null,
+    _menu: null,
 
     onEnter: function () {
         cc.log("PlayerDetailsLayer onEnter");
@@ -38,7 +39,10 @@ var PlayerDetailsLayer = LazyLayer.extend({
 
         var closeItem = cc.MenuItemImage.create(main_scene_image.button0, main_scene_image.button0s, this._onClickClose, this);
         closeItem.setPosition(cc.p(620, 1000));
-        this.addMenuItem(closeItem);
+
+        this._menu = cc.Menu.create(closeItem);
+        this._menu.setPosition(cc.p(0, 0));
+        this.addChild(this._menu);
 
         this._goldLabel = cc.LabelTTF.create("0", '黑体', 30);
         this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
@@ -94,7 +98,8 @@ var PlayerDetailsLayer = LazyLayer.extend({
     _onClickClose: function () {
         cc.log("PlayerDetailsLayer _onClickClose");
 
-        this.setCanClick(false);
+        this._menu.setEnabled(false);
+
         this.removeFromParent();
     }
 })

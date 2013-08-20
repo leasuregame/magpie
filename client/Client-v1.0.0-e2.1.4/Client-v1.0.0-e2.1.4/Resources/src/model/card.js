@@ -235,8 +235,7 @@ var Card = Entity.extend({
         cc.log(cardIdList);
 
         var that = this;
-        lzWindow.pomelo.request("logic.trainHandler.strengthen", {
-            playerId: gameData.player.get("id"),
+        lzWindow.pomelo.request("area.trainHandler.strengthen", {
             target: this._id,
             sources: cardIdList
         }, function (data) {
@@ -306,8 +305,7 @@ var Card = Entity.extend({
         cc.log("Card upgradeSkill " + this._id);
 
         var that = this;
-        lzWindow.pomelo.request("logic.trainHandler.skillUpgrade", {
-            playerId: gameData.player.get("id"),
+        lzWindow.pomelo.request("area.trainHandler.skillUpgrade", {
             cardId: this._id
         }, function (data) {
             cc.log(data);
@@ -344,8 +342,7 @@ var Card = Entity.extend({
         cc.log(type);
 
         var that = this;
-        lzWindow.pomelo.request("logic.trainHandler.passSkillAfresh", {
-            playerId: gameData.player.get("id"),
+        lzWindow.pomelo.request("area.trainHandler.passSkillAfresh", {
             cardId: this._id,
             psIds: afreshIdList,
             type: type
@@ -415,8 +412,7 @@ var Card = Entity.extend({
         cc.log(cardIdList);
 
         var that = this;
-        lzWindow.pomelo.request("logic.trainHandler.starUpgrade", {
-            playerId: gameData.player.get("id"),
+        lzWindow.pomelo.request("area.trainHandler.starUpgrade", {
             target: this._id,
             sources: cardIdList
         }, function (data) {
@@ -452,8 +448,7 @@ var Card = Entity.extend({
 
         var elixir = trainCount * 10;
         var that = this;
-        lzWindow.pomelo.request("logic.trainHandler.useElixir", {
-            playerId: gameData.player.get("id"),
+        lzWindow.pomelo.request("area.trainHandler.useElixir", {
             cardId: this._id,
             elixir: elixir
         }, function (data) {

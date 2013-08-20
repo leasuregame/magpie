@@ -109,7 +109,7 @@ var ExploreLayer = cc.Layer.extend({
             exploreItem.setPosition(cc.p(246 + offsetX, 235));
             lazyMenu.addChild(exploreItem);
 
-            var exploreIcon = cc.Sprite.create(main_scene_image.icon15);
+            var exploreIcon = cc.Sprite.create(main_scene_image.icon38);
             exploreIcon.setPosition(cc.p(246 + offsetX, 235));
             this._scrollViewLayer.addChild(exploreIcon, 1);
 

@@ -75,7 +75,9 @@ var Task = Entity.extend({
         cc.log("Task explore " + id);
 
         var that = this;
-        lzWindow.pomelo.request("logic.taskHandler.explore", {playerId: gameData.player.get("id"), id: id}, function (data) {
+        lzWindow.pomelo.request("area.taskHandler.explore", {
+            id: id
+        }, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 
@@ -95,6 +97,7 @@ var Task = Entity.extend({
                 var backData = {
                     result: msg.result
                 };
+
                 if (msg.result == "fight") {
                     var battleLog = BattleLog.create(msg.battle_log);
                     BattleLogNote.getInstance().pushBattleLog(battleLog);

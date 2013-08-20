@@ -42,7 +42,10 @@ var Lottery = Entity.extend({
         }
 
         var that = this;
-        lzWindow.pomelo.request("logic.trainHandler.luckyCard", {playerId: 1, type: type, level: level}, function (data) {
+        lzWindow.pomelo.request("area.trainHandler.luckyCard", {
+            type: type,
+            level: level
+        }, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 
@@ -54,7 +57,16 @@ var Lottery = Entity.extend({
                 var card = Card.create(msg.card);
                 gameData.cardList.push(card);
 
-                cc.log(gameData.cardList.get("cardList"));
+                var player = gameData.player;
+                if(type == LOTTERY_BY_GOLD) {
+                    player.add("gold", -msg.consume);
+                } else if(type == LOTTERY_BY_ENERGY) {
+                    player.add("energy", -msg.consume);
+                }
+
+                if(msg.hasFragment) {
+                    player.add("fragment", 1);
+                }
 
                 cb("success");
             } else {

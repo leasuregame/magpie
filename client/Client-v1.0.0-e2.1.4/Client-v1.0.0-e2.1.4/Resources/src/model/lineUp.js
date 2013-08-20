@@ -115,11 +115,13 @@ var LineUp = Entity.extend({
                 cc.log(i);
                 var that = this;
 
-                lzWindow.pomelo.request("logic.trainHandler.changeLineUp", {playerId: gameData.player.get("id"), lineUp: lineUp}, function (data) {
+                lzWindow.pomelo.request("area.trainHandler.changeLineUp", {
+                    lineUp: lineUp
+                }, function (data) {
                     cc.log(data);
 
                     if (data.code == 200) {
-                        cc.log("barriers success");
+                        cc.log("changeLineUp success");
 
                         var msg = data.msg;
 
@@ -127,7 +129,7 @@ var LineUp = Entity.extend({
 
                         cb("yes");
                     } else {
-                        cc.log("barriers fail");
+                        cc.log("changeLineUp fail");
                     }
                 });
 

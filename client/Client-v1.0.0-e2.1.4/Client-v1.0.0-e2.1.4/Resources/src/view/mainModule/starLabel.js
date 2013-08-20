@@ -40,7 +40,7 @@ var StarLabel = cc.Node.extend({
             children[i].setOpacity(opacity);
         }
     }
-})
+});
 
 
 StarLabel.create = function (count) {
@@ -51,4 +51,4 @@ StarLabel.create = function (count) {
     }
 
     return null;
-}
+};

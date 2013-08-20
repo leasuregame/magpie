@@ -50,7 +50,7 @@ var MainScene = cc.Scene.extend({
         this._nowLayer = layerObject;
         this.addChild(this._nowLayer);
     }
-})
+});
 
 
 /*

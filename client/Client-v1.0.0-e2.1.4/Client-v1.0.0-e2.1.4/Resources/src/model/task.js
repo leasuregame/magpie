@@ -132,7 +132,7 @@ var Task = Entity.extend({
             }
         });
     }
-})
+});
 
 
 Task.create = function (data) {
@@ -143,4 +143,4 @@ Task.create = function (data) {
     }
 
     return null;
-}
+};

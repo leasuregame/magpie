@@ -60,11 +60,21 @@ var LineUpLayer = LazyLayer.extend({
             }
         }
 
-        var okItem = cc.MenuItemImage.create(main_scene_image.button9, main_scene_image.button9s, this._onClickOk, this);
+        var okItem = cc.MenuItemImage.create(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            this._onClickOk,
+            this
+        );
         okItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 390));
         this.addMenuItem(okItem);
 
-        var closeItem = cc.MenuItemImage.create(main_scene_image.button0, main_scene_image.button0s, this._onClickClose, this);
+        var closeItem = cc.MenuItemImage.create(
+            main_scene_image.button0,
+            main_scene_image.button0s,
+            this._onClickClose,
+            this
+        );
         closeItem.setPosition(cc.p(620, 1000));
         this.addMenuItem(closeItem);
 

@@ -33,7 +33,13 @@ var PassLabel = cc.Node.extend({
         var str = "button14";
         if (this._index % PASS_BOSS_SPACE == 0) str = "button13";
 
-        this._passItem = cc.MenuItemImage.create(main_scene_image[str], main_scene_image[str + "s"], main_scene_image[str + "d"], this._onClickDefiance, this);
+        this._passItem = cc.MenuItemImage.create(
+            main_scene_image[str],
+            main_scene_image[str + "s"],
+            main_scene_image[str + "d"],
+            this._onClickDefiance,
+            this
+        );
         this._passItem.setAnchorPoint(cc.p(0, 0));
         var menu = LazyMenu.create(this._passItem);
         menu.setPosition(cc.p(0, 0));
@@ -54,7 +60,7 @@ var PassLabel = cc.Node.extend({
 
         var pass = gameData.pass;
 
-        if(this._index > pass.get("passTop") + 1) {
+        if (this._index > pass.get("passTop") + 1) {
             cc.log("can't Defiance");
             return;
         }
@@ -65,7 +71,7 @@ var PassLabel = cc.Node.extend({
 //            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, scene, true));
         }, this._index);
     }
-})
+});
 
 
 PassLabel.create = function (index) {
@@ -76,4 +82,4 @@ PassLabel.create = function (index) {
     }
 
     return null;
-}
+};

@@ -138,7 +138,7 @@ var LineUp = Entity.extend({
         }
         cb();
     }
-})
+});
 
 
 LineUp.create = function () {
@@ -149,4 +149,4 @@ LineUp.create = function () {
     }
 
     return null;
-}
+};

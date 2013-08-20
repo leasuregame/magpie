@@ -24,7 +24,7 @@ var MainBgLayer = cc.Layer.extend({
 
         return true;
     }
-})
+});
 
 
 MainBgLayer.create = function () {
@@ -35,4 +35,4 @@ MainBgLayer.create = function () {
     }
 
     return null;
-}
+};

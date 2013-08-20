@@ -38,7 +38,7 @@ var CardListLayer = cc.Layer.extend({
     _scrollView: null,              // 滑动列表
     _otherData: {},                 // 可变数据
     _otherLabel: null,              // 可变模块
-    _isSelectAllLow: false,
+    _isSelectAllLow: false,         // 是否选择全部低星卡
 
     onEnter: function () {
         cc.log("CardListLayer onEnter");
@@ -86,10 +86,20 @@ var CardListLayer = cc.Layer.extend({
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
 
-        var sortItem = cc.MenuItemImage.create(main_scene_image.button30, main_scene_image.button30, this._onClickSortType, this);
+        var sortItem = cc.MenuItemImage.create(
+            main_scene_image.button30,
+            main_scene_image.button30,
+            this._onClickSortType,
+            this
+        );
         sortItem.setPosition(cc.p(100, 230));
 
-        this._onSelectAllLowItem = cc.MenuItemImage.create(main_scene_image.button32, main_scene_image.button32, this._onClickSelectAllLow, this);
+        this._onSelectAllLowItem = cc.MenuItemImage.create(
+            main_scene_image.button32,
+            main_scene_image.button32,
+            this._onClickSelectAllLow,
+            this
+        );
         this._onSelectAllLowItem.setPosition(cc.p(300, 230));
         this._onSelectAllLowItem.setVisible(false);
 
@@ -250,10 +260,19 @@ var CardListLayer = cc.Layer.extend({
         titleLabel.setPosition(cc.p(360, 1000));
         this._otherLabel.addChild(titleLabel);
 
-        var lineUpItem = cc.MenuItemImage.create(main_scene_image.button16, main_scene_image.button16s, this._onClickLineUp, this);
+        var lineUpItem = cc.MenuItemImage.create(
+            main_scene_image.button16,
+            main_scene_image.button16s,
+            this._onClickLineUp,
+            this);
         lineUpItem.setPosition(cc.p(120, 920));
 
-        var sellItem = cc.MenuItemImage.create(main_scene_image.button9, main_scene_image.button9s, this._onClickSell, this);
+        var sellItem = cc.MenuItemImage.create(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            this._onClickSell,
+            this
+        );
         sellItem.setPosition(cc.p(600, 920));
 
         var menu = cc.Menu.create(sellItem, lineUpItem);
@@ -274,10 +293,20 @@ var CardListLayer = cc.Layer.extend({
         titleLabel.setPosition(cc.p(360, 1000));
         this._otherLabel.addChild(titleLabel);
 
-        var okItem = cc.MenuItemImage.create(main_scene_image.button9, main_scene_image.button9s, this._onClickOk, this);
+        var okItem = cc.MenuItemImage.create(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            this._onClickOk,
+            this
+        );
         okItem.setPosition(cc.p(600, 920));
 
-        var lineUpItem = cc.MenuItemImage.create(main_scene_image.button16, main_scene_image.button16s, this._onClickLineUp, this);
+        var lineUpItem = cc.MenuItemImage.create(
+            main_scene_image.button16,
+            main_scene_image.button16s,
+            this._onClickLineUp,
+            this
+        );
         lineUpItem.setPosition(cc.p(120, 920));
 
         var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
@@ -311,7 +340,12 @@ var CardListLayer = cc.Layer.extend({
         titleLabel.setPosition(cc.p(360, 1000));
         this._otherLabel.addChild(titleLabel);
 
-        var okItem = cc.MenuItemImage.create(main_scene_image.button9, main_scene_image.button9s, this._onClickOk, this);
+        var okItem = cc.MenuItemImage.create(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            this._onClickOk,
+            this
+        );
         okItem.setPosition(cc.p(600, 920));
 
         var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
@@ -407,7 +441,12 @@ var CardListLayer = cc.Layer.extend({
         titleLabel.setPosition(cc.p(360, 1000));
         this._otherLabel.addChild(titleLabel);
 
-        var okItem = cc.MenuItemImage.create(main_scene_image.button9, main_scene_image.button9s, this._onClickOk, this);
+        var okItem = cc.MenuItemImage.create(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            this._onClickOk,
+            this
+        );
         okItem.setPosition(cc.p(600, 920));
 
         var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
@@ -634,7 +673,6 @@ var CardListLayer = cc.Layer.extend({
         }
     },
 
-    // 重新设置排序方式，读取卡牌列表，并更新到界面
     setSortType: function (sortType) {
         cc.log("CardListLayer setSortType");
 
@@ -706,7 +744,7 @@ var CardListLayer = cc.Layer.extend({
             }
         }
     }
-})
+});
 
 
 CardListLayer.create = function (selectType, cb, otherData) {
@@ -722,4 +760,4 @@ CardListLayer.create = function (selectType, cb, otherData) {
     }
 
     return null;
-}
+};

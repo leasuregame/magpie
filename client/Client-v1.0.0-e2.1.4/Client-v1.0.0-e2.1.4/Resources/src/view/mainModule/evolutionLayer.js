@@ -111,7 +111,7 @@ var EvolutionLayer = cc.Layer.extend({
             this.addChild(this._nowLabel);
         }
     }
-})
+});
 
 
 EvolutionLayer.create = function () {
@@ -122,4 +122,4 @@ EvolutionLayer.create = function () {
     }
 
     return null;
-}
+};

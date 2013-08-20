@@ -99,7 +99,7 @@ var Tournament = Entity.extend({
         cc.log("Tournament addFriend");
 
     }
-})
+});
 
 
 Tournament.create = function () {
@@ -110,4 +110,4 @@ Tournament.create = function () {
     }
 
     return null;
-}
+};

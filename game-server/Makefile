@@ -77,7 +77,7 @@ loaddata:
 	node ./bin/dao.js all development
 
 data-for-test: build
-	node ./data/test/loadUserData.js
+	node ./data/test/loadUserData.js production
 	node ./data/test/dao.js csv production
 	
 

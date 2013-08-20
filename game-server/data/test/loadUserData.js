@@ -5,9 +5,9 @@ var _ = require('underscore');
 var pomelo = require('pomelo');
 var app = pomelo.createApp();
 
-app.set('env', process.argv[3] || 'development');
+app.set('env', process.argv[2] || 'development');
 //app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
-app.set('mysql', require('../../config/mysql1')[process.argv[3] || 'development']['userdb']);
+app.set('mysql', require('../../config/mysql1')[process.argv[2] || 'development']['userdb']);
 app.set('dbClient', require('../../app/dao/mysql/mysql').init(app));
 var dao = require('../../app/dao').init('mysql');
 app.set('dao', dao);

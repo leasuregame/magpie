@@ -40,10 +40,10 @@ var ExploreLayer = cc.Layer.extend({
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
 
-        var headBgSprite = cc.Sprite.create(main_scene_image.bg11);
-        headBgSprite.setAnchorPoint(cc.p(0, 0));
-        headBgSprite.setPosition(cc.p(40, 956));
-        this.addChild(headBgSprite);
+        var headIcon = cc.Sprite.create(main_scene_image.icon2);
+        headIcon.setAnchorPoint(cc.p(0, 0));
+        headIcon.setPosition(cc.p(40, 956));
+        this.addChild(headIcon);
 
         this._mapLabel = cc.Sprite.create(main_scene_image.bg4, cc.rect(0, 0, 640, 193));
         this._mapLabel.setAnchorPoint(cc.p(0, 0));

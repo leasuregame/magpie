@@ -13,14 +13,14 @@
 
 
 var User = Entity.extend({
-    _id: 0,
-    _createTime: 0,
-    _account: "",
-    _password: "",
-    _name: "",
-    _loginCount: 0,
-    _lastLoginTime: 0,
-    _lastLoginDevice: "",
+    _id: 0,                 // 账号序号
+    _createTime: 0,         // 创建时间
+    _account: "",           // 账号
+    _password: "",          // 密码
+    _name: "",              // 名字
+    _loginCount: 0,         // 总登录次数
+    _lastLoginTime: 0,      // 最后登录时间
+    _lastLoginDevice: "",   // 最后登录设备
 
     init: function (data) {
         cc.log("User init");
@@ -34,11 +34,10 @@ var User = Entity.extend({
         cc.log("User signIn");
 
         var that = this;
-
-        cc.log(this);
         lzWindow.pomelo.request("connector.userHandler.login", {
             account: this._account,
-            password: this._password
+            password: this._password,
+            areaId: 1
         }, function (data) {
             cc.log(data);
 
@@ -63,8 +62,7 @@ var User = Entity.extend({
         cc.log("User signUp");
 
         var that = this;
-
-        lzWindow.pomelo.request('connector.userHandler.register', {
+        lzWindow.pomelo.request("connector.userHandler.register", {
             account: this._account,
             password: this._password,
             name: this._name
@@ -96,7 +94,7 @@ var User = Entity.extend({
     changePassword: function (cb) {
         cc.log("User changePassword");
     }
-})
+});
 
 
 User.create = function (data) {
@@ -107,4 +105,4 @@ User.create = function (data) {
     }
 
     return null;
-}
+};

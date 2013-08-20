@@ -20,20 +20,25 @@ var TournamentLabel = cc.Node.extend({
     _player: null,
 
     onEnter: function () {
-        cc.log("TournamentPlayerLabel onEnter");
+        cc.log("TournamentLabel onEnter");
 
         this._super();
         this.update();
     },
 
     init: function (data) {
-        cc.log("TournamentPlayerLabel init");
+        cc.log("TournamentLabel init");
 
-        if (!this._super()) return false;
+        if (!this._super())return false;
 
         this._player = data;
 
-        var playerItem = cc.MenuItemImage.create(main_scene_image.button19, main_scene_image.button19s9, this._onClickPlayer, this);
+        var playerItem = cc.MenuItemImage.create(
+            main_scene_image.button19,
+            main_scene_image.button19s,
+            this._onClickPlayer,
+            this
+        );
         playerItem.setAnchorPoint(cc.p(0, 0));
         playerItem.setPosition(cc.p(0, 0));
 
@@ -54,13 +59,28 @@ var TournamentLabel = cc.Node.extend({
             var functionLabel = null;
 
             if (data.type == CAN_ADD_FRIEND) {
-                functionItem = cc.MenuItemImage.create(main_scene_image.button20, main_scene_image.button20s, this._onClickFunction, this);
+                functionItem = cc.MenuItemImage.create(
+                    main_scene_image.button20,
+                    main_scene_image.button20s,
+                    this._onClickFunction,
+                    this
+                );
                 functionLabel = cc.Sprite.create(main_scene_image.icon41);
             } else if (data.type == CAN_DEFIANCE) {
-                functionItem = cc.MenuItemImage.create(main_scene_image.button20, main_scene_image.button20s, this._onClickFunction, this);
+                functionItem = cc.MenuItemImage.create(
+                    main_scene_image.button20,
+                    main_scene_image.button20s,
+                    this._onClickFunction,
+                    this
+                );
                 functionLabel = cc.Sprite.create(main_scene_image.icon43);
             } else if (data.type == CAN_COUNTER_ATTACK) {
-                functionItem = cc.MenuItemImage.create(main_scene_image.button21, main_scene_image.button21s, this._onClickFunction, this);
+                functionItem = cc.MenuItemImage.create(
+                    main_scene_image.button21,
+                    main_scene_image.button21s,
+                    this._onClickFunction,
+                    this
+                );
                 functionLabel = cc.Sprite.create(main_scene_image.icon40);
             }
 
@@ -108,18 +128,18 @@ var TournamentLabel = cc.Node.extend({
     },
 
     update: function () {
-        cc.log("TournamentPlayerLabel update");
+        cc.log("TournamentLabel update");
 
     },
 
     _onClickPlayer: function () {
-        cc.log("TournamentPlayerLabel _onClickPlayer");
+        cc.log("TournamentLabel _onClickPlayer");
 
 
     },
 
     _onClickFunction: function () {
-        cc.log("TournamentPlayerLabel _onClickFunction " + this._player.type);
+        cc.log("TournamentLabel _onClickFunction " + this._player.type);
 
         if (this._player.playerId != gameData.player.get("id")) {
             if (this._player.type == CAN_ADD_FRIEND) {
@@ -134,7 +154,7 @@ var TournamentLabel = cc.Node.extend({
             }
         }
     }
-})
+});
 
 
 TournamentLabel.create = function (data) {
@@ -145,4 +165,4 @@ TournamentLabel.create = function (data) {
     }
 
     return null;
-}
+};

@@ -41,11 +41,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this._nameLabel.setPosition(cc.p(160, 83));
         this.addChild(this._nameLabel);
 
-//        var expProgressBg = cc.Sprite.create(main_scene_image.exp_bg);
-//        expProgressBg.setPosition(cc.p(210, 36));
-//        this.addChild(expProgressBg, 2);
-
-        this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 5, 100, true);
+        this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0, true);
         this._expProgress.setPosition(cc.p(214, 36));
         this.addChild(this._expProgress, 2);
 
@@ -54,7 +50,6 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this.addChild(lvBg, 2);
 
         this._lvLabel = cc.LabelTTF.create("0", '黑体', 45);
-//        this._lvLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._lvLabel.setPosition(cc.p(60, 60));
         this.addChild(this._lvLabel, 2);
 
@@ -87,7 +82,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
 
         cc.log(player);
 
-        this._expProgress.setAllValue(player.get("maxPower"), player.get("power"));
+        this._expProgress.setAllValue(player.get("maxExp"), player.get("exp"));
 
         this._nameLabel.setString(player.get("name"));
         this._lvLabel.setString(player.get("lv"));
@@ -147,4 +142,4 @@ PlayerHeaderLabel.create = function () {
     }
 
     return null;
-}
+};

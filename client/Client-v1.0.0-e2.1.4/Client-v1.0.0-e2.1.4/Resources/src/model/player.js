@@ -46,7 +46,7 @@ var Player = Entity.extend({
         this._userId = data.userId || this._userId;
         this._areaId = data.areaId || this._areaId;
         this._name = data.name || this._name;
-        this._power = data.power || this._power;
+        this._power = data.power.value || this._power;
         this._lv = data.lv || this._lv;
         this._exp = data.exp || this._exp;
         this._gold = data.gold || this._gold;
@@ -84,7 +84,7 @@ var Player = Entity.extend({
             this._maxExp = table[this._lv].exp;
         }
     }
-})
+});
 
 
 Player.create = function (data) {
@@ -95,4 +95,4 @@ Player.create = function (data) {
     }
 
     return null;
-}
+};

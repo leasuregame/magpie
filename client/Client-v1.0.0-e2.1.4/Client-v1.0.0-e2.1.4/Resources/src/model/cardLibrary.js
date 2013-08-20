@@ -25,7 +25,7 @@ var CardLibrary = Entity.extend({
 
         return true;
     }
-})
+});
 
 
 CardLibrary.create = function (data) {
@@ -36,4 +36,4 @@ CardLibrary.create = function (data) {
     }
 
     return null;
-}
+};

@@ -8,34 +8,34 @@
 
 
 /*
-* message
-* */
+ * message
+ * */
 
 
 var Message = Entity.extend({
-    _messageList : [],
+    _messageList: [],
 
-    init : function() {
+    init: function () {
 
         return true;
     },
 
-    push: function(msg) {
+    push: function (msg) {
         this._messageList.push(msg);
     },
 
-    getLastMessage: function() {
+    getLastMessage: function () {
         return this._messageList[this._messageList.length];
     }
-})
+});
 
 
-Message.create = function() {
+Message.create = function () {
     var ret = new Message();
 
-    if(ret) {
+    if (ret) {
         return ret;
     }
 
     return null;
-}
+};

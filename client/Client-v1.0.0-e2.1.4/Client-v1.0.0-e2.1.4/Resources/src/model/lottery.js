@@ -58,13 +58,13 @@ var Lottery = Entity.extend({
                 gameData.cardList.push(card);
 
                 var player = gameData.player;
-                if(type == LOTTERY_BY_GOLD) {
+                if (type == LOTTERY_BY_GOLD) {
                     player.add("gold", -msg.consume);
-                } else if(type == LOTTERY_BY_ENERGY) {
+                } else if (type == LOTTERY_BY_ENERGY) {
                     player.add("energy", -msg.consume);
                 }
 
-                if(msg.hasFragment) {
+                if (msg.hasFragment) {
                     player.add("fragment", 1);
                 }
 
@@ -76,7 +76,7 @@ var Lottery = Entity.extend({
             }
         });
     }
-})
+});
 
 
 Lottery.create = function () {
@@ -87,4 +87,4 @@ Lottery.create = function () {
     }
 
     return null;
-}
+};

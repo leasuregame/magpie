@@ -8,7 +8,7 @@
 
 
 /*
- * 卡牌类
+ * card
  * */
 
 
@@ -146,7 +146,7 @@ var Card = Entity.extend({
     _loadSkillTable: function () {
         cc.log("Card _loadSkillTable");
 
-        if(!this._skillId) return;
+        if (!this._skillId) return;
 
         // 读取技能配置表
         var skillTable = outputTables.skills.rows[this._skillId];
@@ -483,7 +483,7 @@ var Card = Entity.extend({
 
         return 0;
     }
-})
+});
 
 Card.create = function (data) {
     var ret = new Card();
@@ -493,4 +493,4 @@ Card.create = function (data) {
     }
 
     return null;
-}
+};

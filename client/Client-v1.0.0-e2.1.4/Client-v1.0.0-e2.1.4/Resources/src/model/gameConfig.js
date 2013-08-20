@@ -8,8 +8,8 @@
 
 
 /*
-* 游戏配置
-* */
+ * 游戏配置
+ * */
 
 
 var GAME_HORIZONTAL_LACUNA = 40;

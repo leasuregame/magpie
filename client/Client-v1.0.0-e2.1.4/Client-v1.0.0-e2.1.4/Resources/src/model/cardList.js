@@ -126,7 +126,7 @@ var CardList = Entity.extend({
 
         return this._index;
     }
-})
+});
 
 
 CardList.create = function () {
@@ -137,4 +137,4 @@ CardList.create = function () {
     }
 
     return null;
-}
+};

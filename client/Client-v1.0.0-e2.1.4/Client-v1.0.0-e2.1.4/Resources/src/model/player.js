@@ -33,7 +33,7 @@ var Player = Entity.extend({
     _maxTournamentCount: 0,
     _tournamentCount: 0,
 
-    _maxExp: 0,      // 最大经验
+    _maxExp: 0,         // 最大经验
     _maxPower: 200,     // 最大体力
 
     _playerLabel: null,

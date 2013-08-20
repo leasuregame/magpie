@@ -110,7 +110,7 @@ var Pass = Entity.extend({
             }
         });
     }
-})
+});
 
 
 Pass.create = function (data) {
@@ -121,4 +121,4 @@ Pass.create = function (data) {
     }
 
     return null;
-}
+};

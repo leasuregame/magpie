@@ -8,7 +8,7 @@
 
 
 /*
- * 卡牌 详细信息面板
+ * card details
  * */
 
 
@@ -44,11 +44,26 @@ var CardDetails = LazyLayer.extend({
         this.addChild(informationLabel);
 
         var closeItem = cc.MenuItemImage.create(main_scene_image.button17, main_scene_image.button17s, this._onClickClose, this);
-        closeItem.setPosition(360, 130);
+        closeItem.setPosition(cc.p(360, 130));
 
         this._menu = cc.Menu.create(closeItem);
         this._menu.setPosition(cc.p(0, 0));
         this.addChild(this._menu);
+
+        var lvLabel = cc.LabelTTF.create(this._card.get("lv"), "黑体", 20);
+        lvLabel.setAnchorPoint(cc.p(0, 0));
+        lvLabel.setPosition(cc.p(110, 620));
+        this.addChild(lvLabel);
+
+        var hpLabel = cc.LabelTTF.create(this._card.get("hp"), "黑体", 20);
+        hpLabel.setAnchorPoint(cc.p(0, 0));
+        hpLabel.setPosition(cc.p(270, 585));
+        this.addChild(hpLabel);
+
+        var atkLabel = cc.LabelTTF.create(this._card.get("atk"), "黑体", 20);
+        atkLabel.setAnchorPoint(cc.p(0, 0));
+        atkLabel.setPosition(cc.p(130, 585));
+        this.addChild(atkLabel);
 
         return true;
     },

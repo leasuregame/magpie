@@ -34,7 +34,7 @@ var SoulLayer = cc.Layer.extend({
 
 
     }
-})
+});
 
 
 SoulLayer.create = function () {
@@ -45,4 +45,4 @@ SoulLayer.create = function () {
     }
 
     return null;
-}
+};

@@ -22,7 +22,7 @@ var gameData = {
     rank: null,
     lottery: null,
     message: null,
-    tournament : null,
+    tournament: null,
 
     gameInit: function () {
         cc.log("gameData init");

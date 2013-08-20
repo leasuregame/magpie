@@ -75,7 +75,7 @@ var BattleLog = Entity.extend({
     getBattleStepIndex: function () {
         return this._index;
     }
-})
+});
 
 
 BattleLog.create = function (json) {
@@ -86,4 +86,4 @@ BattleLog.create = function (json) {
     }
 
     return null;
-}
+};

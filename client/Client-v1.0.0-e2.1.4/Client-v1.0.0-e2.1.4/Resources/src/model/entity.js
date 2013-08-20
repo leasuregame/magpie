@@ -8,7 +8,7 @@
 
 
 /*
- * Entity
+ * entity
  * */
 
 
@@ -25,7 +25,7 @@ var Entity = cc.Class.extend({
         }
     },
 
-    add: function(name, value) {
+    add: function (name, value) {
         this["_" + name] += value;
     },
 
@@ -44,4 +44,4 @@ var Entity = cc.Class.extend({
     has: function (name) {
         return (typeof (this["_" + name]) != "undefined");
     }
-})
+});

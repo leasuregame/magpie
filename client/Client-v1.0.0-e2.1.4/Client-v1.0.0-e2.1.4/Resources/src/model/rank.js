@@ -20,7 +20,7 @@ var Rank = Entity.extend({
 
         return true;
     }
-})
+});
 
 
 Rank.create = function (data) {
@@ -31,4 +31,4 @@ Rank.create = function (data) {
     }
 
     return null;
-}
+};

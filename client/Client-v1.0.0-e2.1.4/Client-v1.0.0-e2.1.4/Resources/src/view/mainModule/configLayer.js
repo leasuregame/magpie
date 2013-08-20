@@ -8,33 +8,33 @@
 
 
 /*
-* config layer
-* */
+ * config layer
+ * */
 
 
 var ConfigLayer = cc.Layer.extend({
-    init : function() {
+    init: function () {
         cc.log("ConfigLayer init");
 
-        if(!this._super()) return false;
+        if (!this._super()) return false;
 
         var winSize = cc.Director.getInstance().getWinSize();
 
-        var label = cc.LabelTTF.create("ConfigLayer", '黑体', 60);
+        var label = cc.LabelTTF.create("ConfigLayer", "黑体", 60);
         label.setPosition(winSize.width / 2, winSize.height / 2);
         this.addChild(label);
 
         return true;
     }
-})
+});
 
 
-ConfigLayer.create = function() {
+ConfigLayer.create = function () {
     var ret = new ConfigLayer();
 
-    if(ret && ret.init()) {
+    if (ret && ret.init()) {
         return ret;
     }
 
     return null;
-}
+};

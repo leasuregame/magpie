@@ -31,7 +31,7 @@ var TournamentMessageLabel = cc.Node.extend({
 
         this._messageLabel = cc.LabelTTF.create("竞技消息：", "黑体", 22);
         this._messageLabel.setAnchorPoint(cc.p(0, 0));
-        this._messageLabel.setPosition(cc.p(20, 10));
+        this._messageLabel.setPosition(cc.p(20, 5));
         this.addChild(this._messageLabel);
 
         return true;
@@ -42,7 +42,7 @@ var TournamentMessageLabel = cc.Node.extend({
 
         this._messageLabel.setString("竞技消息：xxxxxxxxxxxxxxxxxxxxxxx");
     }
-})
+});
 
 
 TournamentMessageLabel.create = function () {
@@ -53,4 +53,4 @@ TournamentMessageLabel.create = function () {
     }
 
     return null;
-}
+};

@@ -71,7 +71,12 @@ var TaskLayer = cc.Layer.extend({
             bgSprite.setPosition(offsetX, 0);
             this._scrollViewLayer.addChild(bgSprite);
 
-            var wipeOutItem = cc.MenuItemImage.create(main_scene_image.button9, main_scene_image.button9s, this._onClickWipeOut(i), this);
+            var wipeOutItem = cc.MenuItemImage.create(
+                main_scene_image.button9,
+                main_scene_image.button9s,
+                this._onClickWipeOut(i),
+                this
+            );
             wipeOutItem.setPosition(cc.p(530 + offsetX, 50));
             menu.addChild(wipeOutItem);
 
@@ -79,14 +84,19 @@ var TaskLayer = cc.Layer.extend({
             wipeOutIcon.setPosition(cc.p(530 + offsetX, 50));
             this._scrollViewLayer.addChild(wipeOutIcon, 1);
 
-            var titlesLabel = cc.LabelTTF.create("第 " + i + " 大章", '黑体', 30);
+            var titlesLabel = cc.LabelTTF.create("第 " + i + " 大章", "黑体", 30);
             titlesLabel.setPosition(cc.p(320 + offsetX, 715));
             this._scrollViewLayer.addChild(titlesLabel);
 
             for (var j = 1; j <= TASK_SECTION_COUNT; ++j) {
                 var index = 5 * (i - 1) + j;
 
-                var sectionItem = cc.MenuItemImage.create(main_scene_image.button18, main_scene_image.button18, this._onClickSection(index), this);
+                var sectionItem = cc.MenuItemImage.create(
+                    main_scene_image.button18,
+                    main_scene_image.button18,
+                    this._onClickSection(index),
+                    this
+                );
                 sectionItem.setPosition(cc.p(this._locate[j - 1].x + offsetX, this._locate[j - 1].y));
                 menu.addChild(sectionItem);
 
@@ -96,7 +106,7 @@ var TaskLayer = cc.Layer.extend({
                 sectionNameBg.setPosition(sectionNameLabelPoint);
                 this._scrollViewLayer.addChild(sectionNameBg);
 
-                var sectionNameLabel = cc.LabelTTF.create(chapterTable[index].chapter, '黑体', 25);
+                var sectionNameLabel = cc.LabelTTF.create(chapterTable[index].chapter, "黑体", 25);
                 sectionNameLabel.setPosition(sectionNameLabelPoint);
                 this._scrollViewLayer.addChild(sectionNameLabel);
             }
@@ -134,7 +144,7 @@ var TaskLayer = cc.Layer.extend({
             });
         }
     }
-})
+});
 
 
 TaskLayer.create = function () {
@@ -145,4 +155,4 @@ TaskLayer.create = function () {
     }
 
     return null;
-}
+};

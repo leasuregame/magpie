@@ -26,7 +26,6 @@ var CardHeadNode = CardNode.extend({
         this._frameSprite.setAnchorPoint(cc.p(0, 0));
         this.addChild(this._frameSprite);
 
-        cc.log((url + "_head" + index));
         this._heroSprite = cc.Sprite.create(main_scene_image[url + "_head" + index]);
         this._heroSprite.setAnchorPoint(cc.p(0, 0));
         this._heroSprite.setPosition(cc.p(6, 12));
@@ -41,7 +40,7 @@ var CardHeadNode = CardNode.extend({
 
         return true;
     }
-})
+});
 
 
 CardHeadNode.create = function (card) {
@@ -52,7 +51,7 @@ CardHeadNode.create = function (card) {
     }
 
     return null;
-}
+};
 
 
 CardHeadNode.getCardHeadItem = function (card, cb, target) {
@@ -64,4 +63,4 @@ CardHeadNode.getCardHeadItem = function (card, cb, target) {
 
     var cardHeadNode = CardHeadNode.create(card);
     return cc.MenuItemLabel.create(cardHeadNode, cb, target);
-}
+};

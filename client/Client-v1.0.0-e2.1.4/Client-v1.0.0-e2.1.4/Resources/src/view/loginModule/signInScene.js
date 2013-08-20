@@ -21,7 +21,8 @@ var SignInScene = cc.Scene.extend({
         var loginLayer = SignInLayer.create();
         this.addChild(loginLayer);
     }
-})
+});
+
 
 SignInScene.create = function () {
     var ret = new SignInScene();
@@ -31,4 +32,4 @@ SignInScene.create = function () {
     }
 
     return null;
-}
+};

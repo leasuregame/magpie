@@ -58,7 +58,7 @@ var CardEvolutionLayer = cc.Layer.extend({
         resLabelIcon.setPosition(cc.p(118, 68));
         this._resLabel.addChild(resLabelIcon);
 
-        this._evolutionRateLabel = cc.LabelTTF.create("100%", '黑体', 30);
+        this._evolutionRateLabel = cc.LabelTTF.create("100%", "黑体", 30);
         this._evolutionRateLabel.setColor(cc.c3b(118, 238, 60));
         this._evolutionRateLabel.setAnchorPoint(cc.p(0, 0.5));
         this._evolutionRateLabel.setPosition(cc.p(180, 68));
@@ -103,12 +103,12 @@ var CardEvolutionLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._moneyLabel = cc.LabelTTF.create("0", '黑体', 25);
+        this._moneyLabel = cc.LabelTTF.create("0", "黑体", 25);
         this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
         this._moneyLabel.setPosition(cc.p(493, 376));
         this.addChild(this._moneyLabel);
 
-        this._cardCountLabel = cc.LabelTTF.create("0", '黑体', 25);
+        this._cardCountLabel = cc.LabelTTF.create("0", "黑体", 25);
         this._cardCountLabel.setAnchorPoint(cc.p(0, 0.5));
         this._cardCountLabel.setPosition(cc.p(255, 376));
         this.addChild(this._cardCountLabel);
@@ -188,7 +188,7 @@ var CardEvolutionLayer = cc.Layer.extend({
 
         if (cardCount > 0) {
             var rate = this._leadCard.getPreCardRate() * cardCount;
-            rate  = rate < 100 ? rate : 100;
+            rate = rate < 100 ? rate : 100;
 
             this._evolutionRateLabel.setString(rate + "%");
             this._resLabel.setVisible(true);
@@ -262,7 +262,7 @@ var CardEvolutionLayer = cc.Layer.extend({
             that.update();
         }, cardIdList);
     }
-})
+});
 
 
 CardEvolutionLayer.create = function () {
@@ -273,4 +273,4 @@ CardEvolutionLayer.create = function () {
     }
 
     return null;
-}
+};

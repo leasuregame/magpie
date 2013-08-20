@@ -87,7 +87,7 @@ var PveLayer = cc.Layer.extend({
             this.addChild(this._nowLayer);
         }
     }
-})
+});
 
 PveLayer.create = function () {
     var ret = new PveLayer();
@@ -97,4 +97,4 @@ PveLayer.create = function () {
     }
 
     return null;
-}
+};

@@ -37,7 +37,7 @@ var LineUpLabel = cc.Layer.extend({
             cardBg.setPosition(cc.p(i * 100 - 70, 35));
             this.addChild(cardBg);
 
-            var label = cc.LabelTTF.create("xx", '黑体', 30);
+            var label = cc.LabelTTF.create("xx", "黑体", 30);
             label.setPosition(cc.p(i * 100 - 30, 75));
             this.addChild(label);
 
@@ -77,7 +77,7 @@ var LineUpLabel = cc.Layer.extend({
             MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_LINEUP));
         }
     }
-})
+});
 
 
 LineUpLabel.create = function () {
@@ -88,4 +88,4 @@ LineUpLabel.create = function () {
     }
 
     return null;
-}
+};

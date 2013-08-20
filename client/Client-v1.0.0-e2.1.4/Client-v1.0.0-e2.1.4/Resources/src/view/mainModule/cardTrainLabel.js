@@ -24,7 +24,6 @@ var CardTrainLabel = cc.Layer.extend({
     _trainType: TRAIN_CARD_NULL,
     _trainCount: TRAIN_ZERO_COUNT,
 
-
     onEnter: function () {
         cc.log("CardTrainLabel onEnter");
 
@@ -59,7 +58,7 @@ var CardTrainLabel = cc.Layer.extend({
         elixirIcon.setPosition(cc.p(550, 750));
         this.addChild(elixirIcon);
 
-        this._elixirLabel = cc.LabelTTF.create("0", '黑体', 22);
+        this._elixirLabel = cc.LabelTTF.create("0", "黑体", 22);
         this._elixirLabel.setColor(cc.c3b(255, 248, 69));
         this._elixirLabel.setAnchorPoint(cc.p(0, 0.5));
         this._elixirLabel.setPosition(cc.p(605, 750));
@@ -77,29 +76,29 @@ var CardTrainLabel = cc.Layer.extend({
         resLabelIcon.setPosition(cc.p(90, 70));
         this._resLabel.addChild(resLabelIcon);
 
-        this._hpLabel = cc.LabelTTF.create("0", '黑体', 22);
+        this._hpLabel = cc.LabelTTF.create("0", "黑体", 22);
         this._hpLabel.setAnchorPoint(cc.p(0, 0.5));
         this._hpLabel.setPosition(cc.p(110, 104));
         this._resLabel.addChild(this._hpLabel);
 
-        this._hpAdditionLabel = cc.LabelTTF.create("+0", '黑体', 22);
+        this._hpAdditionLabel = cc.LabelTTF.create("+0", "黑体", 22);
         this._hpAdditionLabel.setAnchorPoint(cc.p(0, 0.5));
         this._hpAdditionLabel.setColor(cc.c3b(118, 238, 60));
         this._hpAdditionLabel.setPosition(cc.p(180, 104));
         this._resLabel.addChild(this._hpAdditionLabel);
 
-        this._atkLabel = cc.LabelTTF.create("0", '黑体', 22);
+        this._atkLabel = cc.LabelTTF.create("0", "黑体", 22);
         this._atkLabel.setAnchorPoint(cc.p(0, 0.5));
         this._atkLabel.setPosition(cc.p(110, 70));
         this._resLabel.addChild(this._atkLabel);
 
-        this._atkAdditionLabel = cc.LabelTTF.create("+0", '黑体', 22);
+        this._atkAdditionLabel = cc.LabelTTF.create("+0", "黑体", 22);
         this._atkAdditionLabel.setAnchorPoint(cc.p(0, 0.5));
         this._atkAdditionLabel.setColor(cc.c3b(118, 238, 60));
         this._atkAdditionLabel.setPosition(cc.p(180, 70));
         this._resLabel.addChild(this._atkAdditionLabel);
 
-        this._needElixirLabel = cc.LabelTTF.create("0", '黑体', 22);
+        this._needElixirLabel = cc.LabelTTF.create("0", "黑体", 22);
         this._needElixirLabel.setAnchorPoint(cc.p(0, 0.5));
         this._needElixirLabel.setPosition(cc.p(140, 33));
         this._resLabel.addChild(this._needElixirLabel);
@@ -409,7 +408,7 @@ var CardTrainLabel = cc.Layer.extend({
 
         this.update();
     }
-})
+});
 
 
 CardTrainLabel.create = function () {
@@ -420,4 +419,4 @@ CardTrainLabel.create = function () {
     }
 
     return null;
-}
+};

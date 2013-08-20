@@ -152,7 +152,7 @@ var SignUpLayer = cc.Layer.extend({
 
         return "Unknown EditBox";
     }
-})
+});
 
 
 SignUpLayer.create = function () {
@@ -163,4 +163,4 @@ SignUpLayer.create = function () {
     }
 
     return null;
-}
+};

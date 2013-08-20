@@ -72,14 +72,14 @@ var TaskLayer = cc.Layer.extend({
             this._scrollViewLayer.addChild(bgSprite);
 
             var wipeOutItem = cc.MenuItemImage.create(main_scene_image.button9, main_scene_image.button9s, this._onClickWipeOut(i), this);
-            wipeOutItem.setPosition(cc.p(120 + offsetX, 715));
+            wipeOutItem.setPosition(cc.p(530 + offsetX, 50));
             menu.addChild(wipeOutItem);
 
-            var wipeOutIconSprite = cc.Sprite.create(main_scene_image.icon15);
-            wipeOutIconSprite.setPosition(cc.p(120 + offsetX, 715));
-            this._scrollViewLayer.addChild(wipeOutIconSprite, 1);
+            var wipeOutIcon = cc.Sprite.create(main_scene_image.icon15);
+            wipeOutIcon.setPosition(cc.p(530 + offsetX, 50));
+            this._scrollViewLayer.addChild(wipeOutIcon, 1);
 
-            var titlesLabel = cc.LabelTTF.create("第 " + i + " 页", '黑体', 30);
+            var titlesLabel = cc.LabelTTF.create("第 " + i + " 大章", '黑体', 30);
             titlesLabel.setPosition(cc.p(320 + offsetX, 715));
             this._scrollViewLayer.addChild(titlesLabel);
 
@@ -90,13 +90,19 @@ var TaskLayer = cc.Layer.extend({
                 sectionItem.setPosition(cc.p(this._locate[j - 1].x + offsetX, this._locate[j - 1].y));
                 menu.addChild(sectionItem);
 
-                var sectionNameLabel = cc.LabelTTF.create(chapterTable[index].chapter, '黑体', 30);
-                sectionNameLabel.setPosition(cc.p(this._locate[j - 1].x + offsetX, this._locate[j - 1].y - 100));
+                var sectionNameLabelPoint = cc.p(this._locate[j - 1].x + offsetX, this._locate[j - 1].y - 100);
+
+                var sectionNameBg = cc.Sprite.create(main_scene_image.icon3);
+                sectionNameBg.setPosition(sectionNameLabelPoint);
+                this._scrollViewLayer.addChild(sectionNameBg);
+
+                var sectionNameLabel = cc.LabelTTF.create(chapterTable[index].chapter, '黑体', 25);
+                sectionNameLabel.setPosition(sectionNameLabelPoint);
                 this._scrollViewLayer.addChild(sectionNameLabel);
             }
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(640, 744), this._scrollViewLayer);
+        this._scrollView = cc.ScrollView.create(cc.size(640, 743), this._scrollViewLayer);
         this._scrollView.setContentSize(cc.size(640 * TASK_CHAPTER_COUNT, 744));
         this._scrollView.setPosition(GAME_BG_POINT);
         this._scrollView.setBounceable(false);

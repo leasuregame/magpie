@@ -19,7 +19,7 @@ var SORT_CARD_LIST_BY_ABILITY = "ability";
 var CardList = Entity.extend({
     _cardList: {},
     _index: [],
-    _length: 0,
+    _count: 0,
 
     init: function (cardList) {
         cc.log("CardList init");
@@ -44,12 +44,12 @@ var CardList = Entity.extend({
     update: function () {
         cc.log("CardList update");
 
-        this._length = 0;
+        this._count = 0;
         this._index = [];
 
         var key;
         for (key in this._cardList) {
-            this._index[this._length++] = this._cardList[key].get("id");
+            this._index[this._count++] = this._cardList[key].get("id");
         }
     },
 

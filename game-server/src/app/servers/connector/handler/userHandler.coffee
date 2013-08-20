@@ -1,8 +1,6 @@
-Code = require '../../../../../shared/code'
-Resources = require '../../../../../shared/resources'
 async = require 'async'
-dao = require('pomelo').app.get('dao')
 logger = require('pomelo-logger').getLogger(__filename)
+_ = require 'underscore'
 
 module.exports = (app) ->
   new Handler(app)
@@ -10,75 +8,66 @@ module.exports = (app) ->
 Handler = (@app) ->
 
 Handler::register = (msg, session, next) ->
-  account = msg.account
-  password = msg.password
-  
-  if not account or account is '' or not password or password is ''
-    next(null, {code: 501, msg: Resources.ERROR.INVALID_PARAMS})
-  else
-    dao.user.create data: {account: account, password: password}, (err, user) ->
-      if err or not user
-        if err and err.code is "ER_DUP_ENTRY"
-          next(null, {code: 501, msg: Resources.ERROR.USER_EXISTS})
-        else
-          next(null, {code: 500, msg: err.msg})
-      else
-        next(null, {code: 200, msg: {userId: user.id}})
+  @app.rpc.auth.authRemote.register session, {
+    account: msg.account
+    password: msg.password
+  }, (err, user) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    next(null, {code: 200, msg: {userId: user.id}})
 
 Handler::login = (msg, session, next) ->
   account = msg.account
   password = msg.password
+  areaId = msg.areaId
 
-  uid = null;
-  player = null;
+  user = null;
+  player = null
   async.waterfall [
-    (cb) ->
-      dao.user.fetchOne where: {account:account}, cb
-    
-    (user, cb) ->
-      if password isnt user.password
-        cb({code: 501, msg: '密码不正确'})
+    (cb) =>
+      @app.rpc.auth.authRemote.auth session, account, password, areaId, cb
+
+    (res, cb) ->
+      user = res
+      session.bind user.id, cb
+
+    (cb) =>
+      session.set('areaId', areaId)
+      session.pushAll cb
+
+    (cb) =>
+      # check whether has create player in the login area
+      if _.contains user.roles, areaId
+        @app.rpc.area.playerRemote.getPlayerByUserId session, user.id, (err, res) ->
+          if err
+            logger.error 'fail to get player by user id', err
+          logger.info 'get remote player: ', res
+          player = res
+          cb()
       else
-        cb(null, user.id)
-
-    (userId, cb) ->
-      uid = userId
-      session.bind uid, cb
+        cb()
 
     (cb) ->
-      dao.player.fetchOne where: {userId: uid}, (err, res) ->
-        if err and not res
-          logger.error 'faild to get player' + err
-          return cb(null, null)
-
-        cb(null, res.id)
-
-    (playerId, cb) ->
-      if not playerId
-        return cb(null, null)
-
-      dao.player.getPlayerInfo where: {id:playerId}, (err, player) ->
-        if err and not player
-          logger.error 'faild to get player' + err
-          return cb(null, null)
-        
-        cb(null, player)
-
-    (_player, cb) ->
-      player = _player
       if player?
         session.set('playerId', player.id)
         session.set('playerName', player.name)
-        session.set('areaId', player.areaId)
-        
-      session.on('close', onUserLeave)
+
+      session.on('close', onUserLeave.bind(null, @app))
       session.pushAll cb
   ], (err) ->
     if err
+      logger.error 'fail to login: ', err
       return next(null, {code: err.code or 500, msg: err.msg or err})
-    
-    next(null, {code: 200, msg: {user: {id: uid}, player: player?.toJson()}})
 
-onUserLeave = (session, reason) ->
+    next(null, {code: 200, msg: {user: user, player: player}})
+
+onUserLeave = (app, session, reason) ->
+  console.log 'user leave: ', session.uid
   if not session or not session.uid
     return
+
+  app.rpc.area.playerRemote.playerLeave session, playerId: session.get('playerId'), (err) ->
+    if err
+      logger.error 'user leave error' + err
+

@@ -75,6 +75,8 @@ var main_scene_image = {
     card_frame5: main_scene_path + "card_frame5.png",
 
     card_icon1: main_scene_path + "card_icon1.png",
+    card_icon2: main_scene_path + "card_icon2.png",
+    card_icon3: main_scene_path + "card_icon3.png",
 
     card_item_bg_s: main_scene_path + "card_item_bg_s.png",
     card_item_bg1: main_scene_path + "card_item_bg1.png",
@@ -110,9 +112,9 @@ var main_scene_image = {
     button10s: main_scene_path + "button10s.png",
     button11: main_scene_path + "button11.png",
     button11s: main_scene_path + "button11s.png",
-    button12: main_scene_path + "button12.png",
-    button12s: main_scene_path + "button12s.png",
-    button12d: main_scene_path + "button12d.png",
+//    button12: main_scene_path + "button12.png",
+//    button12s: main_scene_path + "button12s.png",
+//    button12d: main_scene_path + "button12d.png",
     button13: main_scene_path + "button13.png",
     button13s: main_scene_path + "button13s.png",
     button13d: main_scene_path + "button13d.png",
@@ -151,11 +153,15 @@ var main_scene_image = {
     button28s: main_scene_path + "button28s.png",
     button29: main_scene_path + "button29.png",
     button29s: main_scene_path + "button29s.png",
+    button30: main_scene_path + "button30.png",
+    button31: main_scene_path + "button31.png",
+    button32: main_scene_path + "button32.png",
+    button33: main_scene_path + "button33.png",
 
 //    icon1: main_scene_path + "icon1.png",
 //    icon2: main_scene_path + "icon2.png",
-//    icon3: main_scene_path + "icon3.png",
-//    icon4: main_scene_path + "icon4.png",
+    icon3: main_scene_path + "icon3.png",
+    icon4: main_scene_path + "icon4.png",
     icon5: main_scene_path + "icon5.png",
     icon6: main_scene_path + "icon6.png",
     icon7: main_scene_path + "icon7.png",
@@ -164,13 +170,13 @@ var main_scene_image = {
     icon10: main_scene_path + "icon10.png",
     icon11: main_scene_path + "icon11.png",
     icon12: main_scene_path + "icon12.png",
-//    icon13: main_scene_path + "icon13.png",
-//    icon14: main_scene_path + "icon14.png",
+    icon13: main_scene_path + "icon13.png",
+    icon14: main_scene_path + "icon14.png",
     icon15: main_scene_path + "icon15.png",
     icon16: main_scene_path + "icon16.png",
     icon17: main_scene_path + "icon17.png",
-    icon18: main_scene_path + "icon18.png",
-    icon19: main_scene_path + "icon19.png",
+//    icon18: main_scene_path + "icon18.png",
+//    icon19: main_scene_path + "icon19.png",
     icon20: main_scene_path + "icon20.png",
     icon21: main_scene_path + "icon21.png",
     icon22: main_scene_path + "icon22.png",
@@ -238,8 +244,17 @@ var main_scene_image = {
     icon84: main_scene_path + "icon84.png",
     icon85: main_scene_path + "icon85.png",
     icon86: main_scene_path + "icon86.png",
-    icon87: main_scene_path + "icon87.png"
-}
+    icon87: main_scene_path + "icon87.png",
+    icon88: main_scene_path + "icon88.png",
+    icon89: main_scene_path + "icon89.png",
+    icon90: main_scene_path + "icon90.png",
+    icon91: main_scene_path + "icon91.png",
+    icon92: main_scene_path + "icon92.png",
+    icon93: main_scene_path + "icon93.png",
+    icon94: main_scene_path + "icon94.png",
+    icon95: main_scene_path + "icon95.png",
+    icon96: main_scene_path + "icon96.png"
+};
 
 var main_scene_res = [
     //image

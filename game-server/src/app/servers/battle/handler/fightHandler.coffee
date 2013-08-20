@@ -12,7 +12,6 @@ Handler = (@app) ->
 Handler::attack = (msg, session, next)->
   targetId = msg.targetId.toString()
   playerId = msg.playerId.toString()
-  console.log targetId, playerId
   playerManager.getPlayers [playerId, targetId], (err, results) ->
 
     console.log 'players for fight: ', err, results

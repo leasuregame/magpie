@@ -219,7 +219,10 @@ var Player = (function(_super) {
     };
 
     Player.prototype.updateGift = function(gift) {
-        this.set('dailyGift', this.get('dailyGift').push(gift));
+        if (!_.isArray(this.dailyGift)){
+            this.dailyGift = [];
+        }
+        this.set('dailyGift', this.dailyGift.push(gift));
     };
 
     Player.prototype.hasGive = function(gift) {

@@ -58,11 +58,11 @@ var EvolutionLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        var cardEvolutionIcon = cc.Sprite.create(main_scene_image.icon45);
+        var cardEvolutionIcon = cc.Sprite.create(main_scene_image.icon81);
         cardEvolutionIcon.setPosition(cc.p(103, 842));
         this.addChild(cardEvolutionIcon);
 
-        var cardTrainIcon = cc.Sprite.create(main_scene_image.icon46);
+        var cardTrainIcon = cc.Sprite.create(main_scene_image.icon82);
         cardTrainIcon.setPosition(cc.p(254, 842));
         this.addChild(cardTrainIcon);
 

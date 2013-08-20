@@ -1,6 +1,4 @@
-Route = module.exports
-
-Route = 
+module.exports = 
 	connector: (session, msg, app, cb) ->
 		if not session
 			cb(new Error('fail to reoute to connector server for session is empty'))

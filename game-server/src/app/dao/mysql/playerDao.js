@@ -37,23 +37,26 @@ var PlayerDao = (function(_super) {
 
     PlayerDao.getPlayerInfo = function(options, cb) {
         var _this = this;
-        async.parallel([
+        var player, cards;
+        async.waterfall([
             function(callback) {
                 _this.fetchOne(options, callback);
             },
-            function(callback) {
+            function(res, callback) {
+                player = res;
                 cardDao.getCards({
                     sync: options.sync,
                     where: {
-                        playerId: options.where.id
+                        playerId: player.id
                     }
                 }, callback);
             },
-            function(callback) {
+            function(res, callback) {
+                cards = res;
                 rankDao.fetchOne({
                     sync: options.sync,
                     where: {
-                        playerId: options.where.id
+                        playerId: player.id
                     }
                 }, function(err, res) {
                     if (err && err.code == 404) {
@@ -62,14 +65,11 @@ var PlayerDao = (function(_super) {
                     return callback(null, res);
                 });
             }
-        ], function(err, results) {
+        ], function(err, rank) {
             if (err !== null) {
                 return cb(err, null);
             }
 
-            var player = results[0];
-            var cards = results[1];
-            var rank = results[2];
             player.addCards(cards);
             player.set('rank', rank);
             return cb(null, player);

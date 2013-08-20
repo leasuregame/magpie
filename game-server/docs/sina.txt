@@ -28,11 +28,15 @@ mysql信息：
 user: dev, password: 1 port: 6033
 mysql -udev -p1
 
+初始化数据csv文件目录：
+/game-server/data/csv
+
 重新创建数据库表：
-make inittables
+make inittables db=magpie_area_1
+make inittables db=magpie_area_2
 
 初始化数据：
-node ./bin/dao.js all production
+make data-for-test
 
 重启游戏服务：
 cd /dev/shm/magpie/game-server

@@ -3,14 +3,19 @@ var path = require('path');
 var fs = require('fs');
 var async = require('async');
 var _ = require('underscore');
-var FIXTURES_DIR = path.join(__dirname, '..', 'config', 'fixtures/');
 
-module.exports = function(db) {
-	return new Data(db);
+module.exports = function(db, dir) {
+	return new Data(db, dir);
 };
 
-var Data = function(db) {
+var Data = function(db, dir) {
 	this.db = db;
+  if (typeof dir !== 'undefined') {
+    this.fixtures_dir = dir;  
+  } else {
+    this.fixtures_dir = path.join(__dirname, '..', 'config', 'fixtures/');
+  }
+  
 };
 
 Data.prototype.importCsvToSql = function(table, filepath, callback) {
@@ -62,7 +67,7 @@ Data.prototype.importCsvToSql = function(table, filepath, callback) {
 Data.prototype.loadCsvDataToSql = function(callback) {
   console.log("  *** load data from csv ***  ");
   var self = this;
-  var files = fs.readdirSync(FIXTURES_DIR).filter(function(file) {
+  var files = fs.readdirSync(this.fixtures_dir).filter(function(file) {
     return /\.csv$/.test(file) && !/user\.csv$/.test(file);
   });
   
@@ -72,7 +77,7 @@ Data.prototype.loadCsvDataToSql = function(callback) {
       var filename = files[i];
 
       var table = path.basename(filename, '.csv');
-      self.importCsvToSql(table, FIXTURES_DIR + filename, function(err, res) {
+      self.importCsvToSql(table, self.fixtures_dir + filename, function(err, res) {
         count++;
         if (err) {
           console.log('load ' + filename + ' error: ', err);

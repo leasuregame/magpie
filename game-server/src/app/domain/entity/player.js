@@ -28,6 +28,10 @@ var defaultMark = function() {
     return result;
 };
 
+var NOW = function() {
+    return Date.now();
+};
+
 /*
  * Player 与 player 表对应的数据类，提供简单操作
  * @param {object} param 数据库 player 表中的一行记录
@@ -63,12 +67,14 @@ var Player = (function(_super) {
         'dailyGift',
         'fragments',
         'energy',
-        'elixir'
+        'elixir',
+        'spiritor',
+        'spiritPool'
     ];
 
     Player.DEFAULT_VALUES = {
         power: {
-            time: 0,
+            time: NOW(),
             value: 50
         },
         lv: 1,
@@ -88,7 +94,16 @@ var Player = (function(_super) {
         dailyGift: [],
         fragments: 0,
         energy: 0,
-        skillPoint: 0
+        elixir: 0,
+        spiritor: {
+            lv: 0,
+            spirit: 0
+        },
+        spiritPool: {
+            lv: 1,
+            exp: 0,
+            collectCount: 0
+        }
     };
 
     Player.prototype.save = function() {

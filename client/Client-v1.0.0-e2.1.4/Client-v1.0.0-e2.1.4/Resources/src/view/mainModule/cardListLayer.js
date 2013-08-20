@@ -293,13 +293,13 @@ var CardListLayer = cc.Layer.extend({
         titleLabel.setPosition(cc.p(360, 1000));
         this._otherLabel.addChild(titleLabel);
 
-        var okItem = cc.MenuItemImage.create(
+        var changeLineUpItem = cc.MenuItemImage.create(
             main_scene_image.button9,
             main_scene_image.button9s,
-            this._onClickOk,
+            this._onClickChangeLineUp,
             this
         );
-        okItem.setPosition(cc.p(600, 920));
+        changeLineUpItem.setPosition(cc.p(600, 920));
 
         var lineUpItem = cc.MenuItemImage.create(
             main_scene_image.button16,
@@ -314,7 +314,7 @@ var CardListLayer = cc.Layer.extend({
         }, this);
         backItem.setPosition(cc.p(100, 1000));
 
-        var menu = cc.Menu.create(okItem, lineUpItem, backItem);
+        var menu = cc.Menu.create(changeLineUpItem, lineUpItem, backItem);
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
 
@@ -705,6 +705,49 @@ var CardListLayer = cc.Layer.extend({
         cc.log("CardListLayer _onClickSell");
 
         MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_SELL));
+    },
+
+    _onClickChangeLineUp: function () {
+        cc.log("CardListLayer _onClickChangeLineUp");
+
+        var lineUp = lz.clone(gameData.lineUp.get("lineUp"));
+        var cardList = this._getSelectCardList();
+        var i, key, len;
+        cc.log(lineUp);
+        len = cardList.length;
+        for (i = 0; i < len; ++i) {
+            cardList[i] = cardList[i].get("id");
+        }
+
+        for (key in lineUp) {
+            var isLineUpCard = false;
+
+            for (i = 0; i < cardList.length; ++i) {
+                if (lineUp[key] == cardList[i]) {
+                    cardList.splice(i, 1);
+                    isLineUpCard = true;
+                    break;
+                }
+            }
+
+            if (!isLineUpCard) {
+                delete lineUp[key];
+            }
+        }
+
+        len = cardList.length;
+        for (i = 0, key = 1; i < len && key < MAX_LINE_UP_SIZE; ++i) {
+            while (key < MAX_LINE_UP_SIZE) {
+                if (!lineUp[key]) {
+                    lineUp[key++] = cardList[i];
+                    break;
+                }
+                key++;
+            }
+        }
+
+        gameData.lineUp.changeLineUp(function (data) {
+        }, lineUp);
     },
 
     _onClickLineUp: function () {

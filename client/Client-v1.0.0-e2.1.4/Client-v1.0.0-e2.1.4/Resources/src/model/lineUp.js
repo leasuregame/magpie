@@ -111,6 +111,7 @@ var LineUp = Entity.extend({
         cc.log(lineUp);
 
         for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
+            cc.log(i);
             if (this._lineUp[i] != lineUp[i]) {
                 cc.log(i);
                 var that = this;
@@ -127,9 +128,11 @@ var LineUp = Entity.extend({
 
                         that.update(msg.lineUp);
 
-                        cb("yes");
+                        cb("success");
                     } else {
                         cc.log("changeLineUp fail");
+
+                        cb("fail");
                     }
                 });
 

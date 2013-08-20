@@ -67,7 +67,6 @@ var LineUpLayer = LazyLayer.extend({
             this
         );
         okItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 390));
-        this.addMenuItem(okItem);
 
         var closeItem = cc.MenuItemImage.create(
             main_scene_image.button0,
@@ -76,7 +75,6 @@ var LineUpLayer = LazyLayer.extend({
             this
         );
         closeItem.setPosition(cc.p(620, 1000));
-        this.addMenuItem(closeItem);
 
         this._menu = cc.Menu.create(okItem, closeItem);
         this._menu.setPosition(cc.p(0, 0));

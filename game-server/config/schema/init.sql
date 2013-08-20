@@ -1,7 +1,3 @@
-drop database if exists magpie;
-create database magpie;
-use magpie;
-
 -- define create user procedure
 drop procedure if exists createUser;
 delimiter $$
@@ -16,10 +12,6 @@ IF (SELECT EXISTS(SELECT 1 FROM `mysql`.`user` WHERE `user` = username)) = 0 THE
     end;
 END IF;
 end;
-
--- grant permission to dev for database magpie
-GRANT ALL PRIVILEGES ON magpie.* to dev@localhost IDENTIFIED BY "1";
-
 
 CREATE PROCEDURE `exchangeRankings` (p1 int, p2 int, r1 int, r2 int, isWin int)
 BEGIN
@@ -45,4 +37,6 @@ END $$
 delimiter ;
 
 call createUser('dev', '1');
+-- grant permission to dev for database magpie
+-- GRANT ALL PRIVILEGES ON @dbname.* to dev@localhost IDENTIFIED BY "1";
 

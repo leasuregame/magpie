@@ -8,7 +8,8 @@ var async = require('async');
 var _ = require('underscore');
 
 app.set('env', process.argv[3] || 'development');
-app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
+//app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
+app.set('mysql', require('../config/mysql1')[process.argv[3] || 'development'][1]);
 app.set('dbClient', require('../app/dao/mysql/mysql').init(app));
 app.set('dao', dao);
 

@@ -60,8 +60,8 @@ restartserver: build
 	./node_modules/.bin/pomelo stop
 	./node_modules/.bin/pomelo start production --daemon
 
-createtables:
-	sh ./bin/initMysql.sh
+newdb:
+	sh ./bin/initMysql.sh $(dbname)
 
 inittables: 
 	mysql -udev -p1 < ./config/schema/tables.sql;

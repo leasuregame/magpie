@@ -1,4 +1,4 @@
-var config = require('../../../config/mysql').development;
+var config = require('../../../config/mysql1').development[1];
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({

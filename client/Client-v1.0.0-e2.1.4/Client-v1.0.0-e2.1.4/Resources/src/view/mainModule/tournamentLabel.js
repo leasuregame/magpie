@@ -46,19 +46,19 @@ var TournamentLabel = cc.Node.extend({
         playerItemMenu.setPosition(cc.p(0, 0));
         this.addChild(playerItemMenu);
 
-        var playerNameLabel = cc.LabelTTF.create(data.name, '黑体', 25);
+        var playerNameLabel = cc.LabelTTF.create(this._player.name, '黑体', 25);
         playerNameLabel.setPosition(cc.p(90, 60));
         this.addChild(playerNameLabel);
 
-        var playerRankLabel = cc.LabelTTF.create(data.rank, '黑体', 25);
+        var playerRankLabel = cc.LabelTTF.create(this._player.rank, '黑体', 25);
         playerRankLabel.setPosition(cc.p(90, 100));
         this.addChild(playerRankLabel);
 
-        if (data.playerId != gameData.player.get("id")) {
+        if (this._player.playerId != gameData.player.get("id")) {
             var functionItem = null;
             var functionLabel = null;
 
-            if (data.type == CAN_ADD_FRIEND) {
+            if (this._player.type == CAN_ADD_FRIEND) {
                 functionItem = cc.MenuItemImage.create(
                     main_scene_image.button20,
                     main_scene_image.button20s,
@@ -66,7 +66,7 @@ var TournamentLabel = cc.Node.extend({
                     this
                 );
                 functionLabel = cc.Sprite.create(main_scene_image.icon41);
-            } else if (data.type == CAN_DEFIANCE) {
+            } else if (this._player.type == CAN_DEFIANCE) {
                 functionItem = cc.MenuItemImage.create(
                     main_scene_image.button20,
                     main_scene_image.button20s,
@@ -74,7 +74,7 @@ var TournamentLabel = cc.Node.extend({
                     this
                 );
                 functionLabel = cc.Sprite.create(main_scene_image.icon43);
-            } else if (data.type == CAN_COUNTER_ATTACK) {
+            } else if (this._player.type == CAN_COUNTER_ATTACK) {
                 functionItem = cc.MenuItemImage.create(
                     main_scene_image.button21,
                     main_scene_image.button21s,
@@ -98,38 +98,54 @@ var TournamentLabel = cc.Node.extend({
             }
         }
 
-        var lineUpCardList = data.cardList;
-        var len = lineUpCardList.length;
-        var width = len * (63 + 5) - 5;
-        width = width > 214 ? width : 214;
-
-        var scrollViewLayer = cc.Layer.create();
-        var menu = LazyMenu.create();
-        menu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(menu);
-
-        for (var i = 0; i < len; ++i) {
-            var cardHeadItem = CardHeadNode.getCardHeadItem(lineUpCardList[i]);
-            cardHeadItem.setScale(0.6);
-            cardHeadItem.setPosition(cc.p(32 + i * (63 + 5), 32));
-            menu.addChild(cardHeadItem);
-        }
-
-        var view = cc.ScrollView.create(cc.size(214, 64), scrollViewLayer);
-        view.setContentSize(cc.size(width, 64));
-        view.setPosition(cc.p(180, 30));
-        view.setBounceable(false);
-        view.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
-        view.updateInset();
-
-        this.addChild(view);
+        var tableView = cc.TableView.create(this, cc.size(194.4, 64.8));
+        tableView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
+        tableView.setPosition(cc.p(180, 30));
+        tableView.setDelegate(this);
+        this.addChild(tableView);
+        tableView.reloadData();
 
         return true;
     },
 
     update: function () {
         cc.log("TournamentLabel update");
+    },
 
+    scrollViewDidScroll: function (view) {
+        cc.log("TournamentLabel update");
+    },
+
+    scrollViewDidZoom: function (view) {
+        cc.log("TournamentLabel update");
+    },
+
+    tableCellTouched: function (table, cell) {
+        cc.log("cell touched at index: " + cell.getIdx());
+
+        var index = cell.getIdx();
+        var cardDetails = CardDetails.create(this._player.cardList[index]);
+        MainScene.getInstance().addChild(cardDetails, 1);
+    },
+
+    cellSizeForTable: function (table) {
+        return cc.size(64.8, 64.8);
+    },
+
+    tableCellAtIndex: function (table, idx) {
+        cell = new cc.TableViewCell();
+
+        if (this._player.cardList[idx]) {
+            var cardHeadNode = CardHeadNode.create(this._player.cardList[idx]);
+            cardHeadNode.setScale(0.6);
+            cell.addChild(cardHeadNode);
+        }
+
+        return cell;
+    },
+
+    numberOfCellsInTableView: function (table) {
+        return this._player.cardList.length;
     },
 
     _onClickPlayer: function () {

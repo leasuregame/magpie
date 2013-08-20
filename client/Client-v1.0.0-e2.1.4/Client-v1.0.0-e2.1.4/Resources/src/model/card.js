@@ -464,9 +464,11 @@ var Card = Entity.extend({
                 this._elixir += elixir;
 
                 if (trainType == TRAIN_CARD_HP) {
-                    this._hpAddition += trainCount * 3;
+                    that._hpAddition += trainCount * 3;
+                    that._hp += trainCount * 3;
                 } else if (trainType == TRAIN_CARD_ATK) {
-                    this._atkAddition += trainCount;
+                    that._atkAddition += trainCount;
+                    that._atk += trainCount;
                 }
 
                 cb();

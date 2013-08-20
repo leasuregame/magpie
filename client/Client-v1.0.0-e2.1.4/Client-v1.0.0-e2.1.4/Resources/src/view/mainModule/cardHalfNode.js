@@ -14,7 +14,7 @@
 
 var CardHalfNode = CardNode.extend({
     init: function (card) {
-        cc.log("CardNode init");
+        cc.log("CardHalfNode init");
 
         if (!this._super(card)) return false;
 

@@ -37,31 +37,31 @@ var PlayerTournamentLabel = cc.Layer.extend({
         bg.setAnchorPoint(cc.p(0, 0));
         this.addChild(bg);
 
-        this._nameLabel = cc.LabelTTF.create("名字：", '黑体', 30);
+        this._nameLabel = cc.LabelTTF.create("名字：", "黑体", 30);
         this._nameLabel.setFontSize(25);
-        this._nameLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._nameLabel.setPosition(90, 90);
+        this._nameLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._nameLabel.setPosition(100, 90);
         this.addChild(this._nameLabel);
 
-        this._expLabel = cc.LabelTTF.create("经验：", '黑体', 30);
+        this._expLabel = cc.LabelTTF.create("经验：", "黑体", 30);
         this._expLabel.setFontSize(25);
         this._expLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._expLabel.setPosition(90, 30);
         this.addChild(this._expLabel);
 
-        this._tournamentCountLabel = cc.LabelTTF.create("每天有奖挑战次数：战到你爽", '黑体', 30);
+        this._tournamentCountLabel = cc.LabelTTF.create("每天有奖挑战次数：战到你爽", "黑体", 30);
         this._tournamentCountLabel.setFontSize(25);
         this._tournamentCountLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._tournamentCountLabel.setPosition(cc.p(420, 90));
         this.addChild(this._tournamentCountLabel);
 
-        this._rankLabel = cc.LabelTTF.create("排名：", '黑体', 30);
+        this._rankLabel = cc.LabelTTF.create("排名：", "黑体", 30);
         this._rankLabel.setFontSize(25);
         this._rankLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._rankLabel.setPosition(305, 30);
         this.addChild(this._rankLabel);
 
-        this._abilityLabel = cc.LabelTTF.create("战斗力：", '黑体', 30);
+        this._abilityLabel = cc.LabelTTF.create("战斗力：", "黑体", 30);
         this._abilityLabel.setFontSize(25);
         this._abilityLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._abilityLabel.setPosition(535, 30);

@@ -45,7 +45,7 @@ var SignInLayer = cc.Layer.extend({
         this._passwordEditBox.setMaxLength(18);
         this.addChild(this._passwordEditBox);
 
-        this._accountEditBox.setText("1");
+        this._accountEditBox.setText("songsong");
         this._passwordEditBox.setText("1");
 
         this.signInButton = cc.MenuItemFont.create("登录", this._onClickSignIn, this);
@@ -63,7 +63,7 @@ var SignInLayer = cc.Layer.extend({
 
         this.schedule(function () {
             this.signInButton.setEnabled(connectSuccess);
-        }, 0.5)
+        }, 0.5);
 
         return true;
     },

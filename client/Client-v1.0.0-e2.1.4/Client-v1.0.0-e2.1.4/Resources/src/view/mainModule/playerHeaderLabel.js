@@ -37,8 +37,8 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this.setTouchEnabled(true);
 
         this._nameLabel = cc.LabelTTF.create("null", '黑体', 30);
-        this._nameLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._nameLabel.setPosition(cc.p(160, 83));
+        this._nameLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._nameLabel.setPosition(cc.p(130, 83));
         this.addChild(this._nameLabel);
 
         this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0, true);
@@ -54,7 +54,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this.addChild(this._lvLabel, 2);
 
         var vipSprite = cc.Sprite.create(main_scene_image.vip5);
-        vipSprite.setPosition(cc.p(265, 83));
+        vipSprite.setPosition(cc.p(410, 83));
         this.addChild(vipSprite, 2);
 
         this._goldLabel = cc.LabelTTF.create("0", '黑体', 22);

@@ -66,6 +66,8 @@ var main_scene_image = {
     progress4: main_scene_path + "progress4.png",
     progress5: main_scene_path + "progress5.png",
     progress6: main_scene_path + "progress6.png",
+    progress7: main_scene_path + "progress7.png",
+    progress8: main_scene_path + "progress8.png",
 
     card_frame_s: main_scene_path + "card_frame_s.png",
     card_frame1: main_scene_path + "card_frame1.png",

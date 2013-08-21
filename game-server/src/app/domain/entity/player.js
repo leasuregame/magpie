@@ -95,6 +95,7 @@ var Player = (function(_super) {
         fragments: 0,
         energy: 0,
         elixir: 0,
+        skillPoint: 0,
         spiritor: {
             lv: 0,
             spirit: 0
@@ -210,7 +211,9 @@ var Player = (function(_super) {
     };
 
     Player.prototype.consumePower = function(value) {
-        var power = _.clone(this.get('power'));
+        if (this.power.value <= 0) return;
+
+        var power = _.clone(this.power);
         power.value = _.max([power.value - value, 0]);
         power.time = Date.now();
         this.updatePower(power);
@@ -218,7 +221,10 @@ var Player = (function(_super) {
 
     Player.prototype.resumePower = function(value) {
         var max_power = getMaxPower(this.lv, playerConfig.POWER_LIMIT);
-        var power = _.clone(this.get('power'));
+        
+        if (this.power.value >= max_power) return;
+
+        var power = _.clone(this.power);
         power.value = _.min([max_power, power.value + value]);
         power.time = Date.now();
         this.updatePower(power);
@@ -226,7 +232,7 @@ var Player = (function(_super) {
 
     Player.prototype.givePower = function(hour, value) {
         var max_power = getMaxPower(this.lv, playerConfig.POWER_LIMIT);
-        var power = _.clone(this.get('power'));
+        var power = _.clone(this.power);
         power.value = _.min([power.value + value, max_power + 50]);
         power.time = Date.now();
         this.updatePower(power);
@@ -237,7 +243,7 @@ var Player = (function(_super) {
         if (!_.isArray(this.dailyGift)){
             this.dailyGift = [];
         }
-        this.set('dailyGift', this.get('dailyGift').push(gift));
+        this.dailyGift.push(gift);
     };
 
     Player.prototype.hasGive = function(gift) {

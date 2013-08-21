@@ -28,6 +28,9 @@ Handler::explore = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
+      if taskId > player.task.id 
+        return cb({code: 501, msg: '不能探索此关'})
+        
       taskManager.explore player, taskId, cb
 
     (data, chapterId, sectionId, cb) =>
@@ -45,7 +48,7 @@ Handler::explore = (msg, session, next) ->
                 taskManager.obtainBattleRewards(player, chapterId, battleLog, callback)
 
               (callback) ->
-                taskManager.countExploreResult player, data, callback
+                taskManager.countExploreResult player, data, taskId, callback
             ], (err, results) ->
               cb(err, results[1])
           else
@@ -56,9 +59,9 @@ Handler::explore = (msg, session, next) ->
           if err
             cb(err, null)
           else
-            taskManager.countExploreResult player, data, cb
+            taskManager.countExploreResult player, data, taskId, cb
       else
-        taskManager.countExploreResult player, data, cb
+        taskManager.countExploreResult player, data, taskId, cb
   ], (err, data) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg})

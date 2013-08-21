@@ -13,7 +13,10 @@ exports.createPlayer = (args, callback) ->
     
     async.waterfall [
       (cb) ->
-        dao.player.create data: {userId: userId, name: name, areaId: areaId}, cb
+        dao.player.create {
+          sync: true
+          data: {userId: userId, name: name, areaId: areaId}, 
+        }, cb
 
       (player, cb) ->
         initPlayer player, cb
@@ -25,7 +28,7 @@ exports.createPlayer = (args, callback) ->
       callback(null, player.toJson())
 
 exports.getPlayerByUserId = (userId, callback) ->
-  dao.player.getPlayerInfo where: userId: userId, (err, player) ->
+  dao.player.getPlayerInfo {sync: true, where: userId: userId}, (err, player) ->
     if err and not player
       return callback {code: 501, msg: 'can not find player by user id: ' + userId}
 

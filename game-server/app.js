@@ -82,7 +82,7 @@ app.configure('production|development', 'connector|auth', function() {
   });
 });
 
-app.configure('production|development', 'logic', function() {
+app.configure('production|development', 'area', function() {
   area.init();
 });
 

@@ -31,7 +31,8 @@ var tabledata = require("../app/common/loadtable")(
   '../data/skills.xml',
   '../data/cards.xml',
   '../data/tasks.xml',
-  '../data/rank.xml'
+  '../data/rank.xml',
+  '../data/spirit.xml'
 );
 
 files.forEach(function(filepath){

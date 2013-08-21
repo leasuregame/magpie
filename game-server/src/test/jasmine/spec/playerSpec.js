@@ -83,6 +83,7 @@ describe("Connector Server", function() {
                 },
                 dailyGift: [],
                 energy: 0,
+                skillPoint: 0,
                 elixir: 0,
                 spiritor: {
                   lv: 0,

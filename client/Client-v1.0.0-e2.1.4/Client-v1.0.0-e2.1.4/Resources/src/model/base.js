@@ -36,6 +36,24 @@ lz.clone = function (obj) {
     return newObj;
 };
 
+lz.getColor = function (colorType) {
+    var color = cc.c3b(255, 255, 255);
+
+    switch (colorType) {
+        case "green" :
+            color = cc.c3b(118, 238, 60);
+            break;
+        case "blue" :
+            color = cc.c3b(105, 218, 255);
+            break;
+        case "yellow" :
+            color = cc.c3b(255, 248, 69);
+            break;
+    }
+
+    return color;
+};
+
 
 /*
  * 数组去重

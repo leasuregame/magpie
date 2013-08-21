@@ -84,7 +84,7 @@ var BattlePlayer = cc.Class.extend({
         cc.log("battle end");
 
         this._scheduler.unscheduleAllCallbacksForTarget(this);
-        this._scheduler.scheduleCallbackForTarget(this, function() {
+        this._scheduler.scheduleCallbackForTarget(this, function () {
             cc.log("replace scene MainScene");
             cc.Director.getInstance().replaceScene(MainScene.getInstance());
 //            cc.Director.getInstance().replaceScene(cc.TransitionTurnOffTiles.create(1, MainScene.getInstance()));

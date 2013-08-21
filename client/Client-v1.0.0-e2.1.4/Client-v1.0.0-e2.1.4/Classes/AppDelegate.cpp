@@ -218,8 +218,9 @@ bool UpdateLayer::init()
     menu->setPosition(ccp(0,0));
     addChild(menu);
     
-    pProgressLabel = CCLabelTTF::create("提示信息：", "Arial", 30);
-    pProgressLabel->setPosition(ccp(size.width/5 + 50, size.height/5));
+    string str = "提示信息：" + getAssetsManager()->getVersion();
+    pProgressLabel = CCLabelTTF::create(str.c_str(), "Arial", 30);
+    pProgressLabel->setPosition(ccp(size.width/7, size.height/5));
     pProgressLabel->setAnchorPoint(ccp(0, 0));
     addChild(pProgressLabel);
     
@@ -232,7 +233,7 @@ AssetsManager* UpdateLayer::getAssetsManager()
     
     if (! pAssetsManager)
     {
-        pAssetsManager = new AssetsManager("http://192.168.1.2/Resources/resources.zip",
+        pAssetsManager = new AssetsManager("http://192.168.1.2/Resources.zip",
                                            "http://192.168.1.2:8888/",
                                            pathToSave.c_str());
         pAssetsManager->setDelegate(this);
@@ -268,7 +269,7 @@ void UpdateLayer::onError(AssetsManager::ErrorCode errorCode)
 {
     if (errorCode == AssetsManager::kNoNewVersion)
     {
-        pProgressLabel->setString("提示信息：不是新版本，不需要更新。。。");
+        pProgressLabel->setString("提示信息：当前为最新版本，不需要更新。。。");
     }
     
     if (errorCode == AssetsManager::kNetwork)

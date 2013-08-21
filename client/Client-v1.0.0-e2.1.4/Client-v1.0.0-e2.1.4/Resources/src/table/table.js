@@ -15635,121 +15635,141 @@ var outputTables = {
                 "id": 0,
                 "type": "power",
                 "value": 10,
-                "name": "体力"
+                "name": "体力",
+                "color": "green"
             },
             "1": {
                 "id": 1,
                 "type": "power",
                 "value": 50,
-                "name": "体力"
+                "name": "体力",
+                "color": "blue"
             },
             "2": {
                 "id": 2,
                 "type": "power",
                 "value": 100,
-                "name": "体力"
+                "name": "体力",
+                "color": "yellow"
             },
             "3": {
                 "id": 3,
                 "type": "elixir",
                 "value": 10,
-                "name": "仙丹"
+                "name": "仙丹",
+                "color": "green"
             },
             "4": {
                 "id": 4,
                 "type": "elixir",
                 "value": 100,
-                "name": "仙丹"
+                "name": "仙丹",
+                "color": "blue"
             },
             "5": {
                 "id": 5,
                 "type": "elixir",
                 "value": 5000,
-                "name": "仙丹"
+                "name": "仙丹",
+                "color": "yellow"
             },
             "6": {
                 "id": 6,
                 "type": "money",
                 "value": 1000,
-                "name": "铜板"
+                "name": "铜板",
+                "color": "green"
             },
             "7": {
                 "id": 7,
                 "type": "money",
                 "value": 10000,
-                "name": "铜板"
+                "name": "铜板",
+                "color": "blue"
             },
             "8": {
                 "id": 8,
                 "type": "money",
                 "value": 200000,
-                "name": "铜板"
+                "name": "铜板",
+                "color": "yellow"
             },
             "9": {
                 "id": 9,
                 "type": "skillPoint",
                 "value": 100,
-                "name": "技能点"
+                "name": "技能点",
+                "color": "green"
             },
             "10": {
                 "id": 10,
                 "type": "skillPoint",
                 "value": 500,
-                "name": "技能点"
+                "name": "技能点",
+                "color": "blue"
             },
             "11": {
                 "id": 11,
                 "type": "skillPoint",
                 "value": 10000,
-                "name": "技能点"
+                "name": "技能点",
+                "color": "yellow"
             },
             "12": {
                 "id": 12,
                 "type": "energy",
                 "value": 50,
-                "name": "活力"
+                "name": "活力",
+                "color": "green"
             },
             "13": {
                 "id": 13,
                 "type": "energy",
                 "value": 100,
-                "name": "活力"
+                "name": "活力",
+                "color": "blue"
             },
             "14": {
                 "id": 14,
                 "type": "energy",
                 "value": 5000,
-                "name": "活力"
+                "name": "活力",
+                "color": "yellow"
             },
             "15": {
                 "id": 15,
                 "type": "reiki",
                 "value": 50,
-                "name": "灵气"
+                "name": "灵气",
+                "color": "green"
             },
             "16": {
                 "id": 16,
                 "type": "reiki",
                 "value": 100,
-                "name": "灵气"
+                "name": "灵气",
+                "color": "blue"
             },
             "17": {
                 "id": 17,
                 "type": "reiki",
                 "value": 1000,
-                "name": "灵气"
+                "name": "灵气",
+                "color": "yellow"
             },
             "18": {
                 "id": 18,
                 "type": "gold",
                 "value": 10,
-                "name": "元宝"
+                "name": "元宝",
+                "color": "blue"
             },
             "19": {
                 "id": 19,
                 "type": "gold",
                 "value": 50,
-                "name": "元宝"
+                "name": "元宝",
+                "color": "yellow"
             }
         }
     }

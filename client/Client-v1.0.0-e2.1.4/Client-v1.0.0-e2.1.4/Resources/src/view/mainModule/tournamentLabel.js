@@ -18,6 +18,8 @@ var CAN_COUNTER_ATTACK = 2;
 
 var TournamentLabel = cc.Node.extend({
     _player: null,
+    _turnLeftSprite: null,
+    _turnRightSprite: null,
 
     onEnter: function () {
         cc.log("TournamentLabel onEnter");
@@ -47,11 +49,11 @@ var TournamentLabel = cc.Node.extend({
         this.addChild(playerItemMenu);
 
         var playerNameLabel = cc.LabelTTF.create(this._player.name, '黑体', 25);
-        playerNameLabel.setPosition(cc.p(90, 60));
+        playerNameLabel.setPosition(cc.p(95, 99));
         this.addChild(playerNameLabel);
 
-        var playerRankLabel = cc.LabelTTF.create(this._player.rank, '黑体', 25);
-        playerRankLabel.setPosition(cc.p(90, 100));
+        var playerRankLabel = cc.LabelTTF.create(this._player.rank, '黑体', 35);
+        playerRankLabel.setPosition(cc.p(95, 48));
         this.addChild(playerRankLabel);
 
         if (this._player.playerId != gameData.player.get("id")) {
@@ -85,7 +87,7 @@ var TournamentLabel = cc.Node.extend({
             }
 
             if (functionItem) {
-                functionItem.setPosition(cc.p(500, 67));
+                functionItem.setPosition(cc.p(530, 67));
 
                 var functionItemMenu = LazyMenu.create(functionItem);
                 functionItemMenu.setPosition(cc.p(0, 0));
@@ -93,17 +95,30 @@ var TournamentLabel = cc.Node.extend({
             }
 
             if (functionLabel) {
-                functionLabel.setPosition(cc.p(500, 67));
+                functionLabel.setPosition(cc.p(530, 67));
                 this.addChild(functionLabel);
             }
         }
 
-        var tableView = cc.TableView.create(this, cc.size(194.4, 64.8));
+        var tableView = cc.TableView.create(this, cc.size(226.8, 75.6));
         tableView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
-        tableView.setPosition(cc.p(180, 30));
+        tableView.setPosition(cc.p(200, 15));
         tableView.setDelegate(this);
         this.addChild(tableView);
         tableView.reloadData();
+
+        this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
+        this._turnLeftSprite.setRotation(180);
+        this._turnLeftSprite.setScale(0.5);
+        this._turnLeftSprite.setPosition(cc.p(183, 53));
+//        this._turnLeftSprite.setVisible(false);
+        this.addChild(this._turnLeftSprite, 1);
+
+        this._turnRightSprite = cc.Sprite.create(main_scene_image.icon37);
+        this._turnRightSprite.setScale(0.5);
+        this._turnRightSprite.setPosition(cc.p(440, 53));
+//        this._turnRightSprite.setVisible(false);
+        this.addChild(this._turnRightSprite, 1);
 
         return true;
     },
@@ -129,7 +144,7 @@ var TournamentLabel = cc.Node.extend({
     },
 
     cellSizeForTable: function (table) {
-        return cc.size(64.8, 64.8);
+        return cc.size(75.6, 75.6);
     },
 
     tableCellAtIndex: function (table, idx) {
@@ -137,7 +152,7 @@ var TournamentLabel = cc.Node.extend({
 
         if (this._player.cardList[idx]) {
             var cardHeadNode = CardHeadNode.create(this._player.cardList[idx]);
-            cardHeadNode.setScale(0.6);
+            cardHeadNode.setScale(0.7);
             cell.addChild(cardHeadNode);
         }
 

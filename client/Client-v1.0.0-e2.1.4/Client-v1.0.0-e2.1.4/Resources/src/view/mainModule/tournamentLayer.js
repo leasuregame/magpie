@@ -48,8 +48,8 @@ var TournamentLayer = cc.Layer.extend({
         this.addChild(playerLabel);
 
         this._nameLabel = cc.LabelTTF.create("null", '黑体', 30);
-        this._nameLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._nameLabel.setPosition(cc.p(200, 988));
+        this._nameLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._nameLabel.setPosition(cc.p(150, 988));
         this.addChild(this._nameLabel);
 
         this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0, true);

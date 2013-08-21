@@ -59,12 +59,12 @@ var PlayerHeaderLabel = cc.Layer.extend({
 
         this._goldLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._goldLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._goldLabel.setPosition(cc.p(570, 83));
+        this._goldLabel.setPosition(cc.p(580, 83));
         this.addChild(this._goldLabel);
 
         this._moneyLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._moneyLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._moneyLabel.setPosition(cc.p(570, 36));
+        this._moneyLabel.setPosition(cc.p(580, 36));
         this.addChild(this._moneyLabel);
 
         this._powerLabel = cc.LabelTTF.create("0", '黑体', 22);

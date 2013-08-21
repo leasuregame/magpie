@@ -2,7 +2,7 @@ app = require('pomelo').app
 dao = app.get('dao')
 Cache = require '../common/cache'
 async = require 'async'
-playerList = require('./playerCache');
+area = require('../domain/area/area');
 _ = require 'underscore'
 
 class Manager 
@@ -16,9 +16,9 @@ class Manager
       cb(null, player)
 
   @getPlayerInfo: (params, cb) ->
-    # if app.get('debug')
-    #   _player = playerList.get(params.pid)
-    #   return cb(null, _player) if _player?
+    #if not app.get('debug')
+    _player = area.getPlayer(params.pid)
+    return cb(null, _player) if _player?
 
     sync = params.sync? and params.sync or true
     dao.player.getPlayerInfo {
@@ -29,7 +29,6 @@ class Manager
         cb(err, null)
         return
 
-      # playerList.put(player.id, player)
       cb(null, player)
 
   @getPlayers: (ids, cb) ->

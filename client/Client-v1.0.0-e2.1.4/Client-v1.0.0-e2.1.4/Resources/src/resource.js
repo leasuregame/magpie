@@ -49,7 +49,6 @@ var main_scene_image = {
     lv_bg: main_scene_path + "lv_bg.png",
     exp_bg: main_scene_path + "exp_bg.png",
     exp: main_scene_path + "exp.png",
-    main_menu_bg: main_scene_path + "main_menu_bg.png",
     main_message_bg: main_scene_path + "main_message_bg.png",
     vip5: main_scene_path + "vip5.png",
     star1: main_scene_path + "star1.png",
@@ -161,7 +160,7 @@ var main_scene_image = {
     button33: main_scene_path + "button33.png",
     button34: main_scene_path + "button34.png",
 
-//    icon1: main_scene_path + "icon1.png",
+    icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
     icon3: main_scene_path + "icon3.png",
     icon4: main_scene_path + "icon4.png",
@@ -262,8 +261,11 @@ var main_scene_image = {
     icon99: main_scene_path + "icon99.png",
     icon100: main_scene_path + "icon100.png",
     icon101: main_scene_path + "icon101.png",
-    icon102: main_scene_path + "icon102.png"
-}
+    icon102: main_scene_path + "icon102.png",
+    icon103: main_scene_path + "icon103.png",
+    icon104: main_scene_path + "icon104.png",
+    icon105: main_scene_path + "icon105.png"
+};
 
 var main_scene_res = [
     //image

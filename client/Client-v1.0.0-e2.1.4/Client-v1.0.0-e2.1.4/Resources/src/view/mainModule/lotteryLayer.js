@@ -18,13 +18,14 @@ var LotteryLayer = cc.Layer.extend({
 
         if (!this._super())  return false;
 
+        var bgSprite = cc.Sprite.create(main_scene_image.bg11);
+        bgSprite.setAnchorPoint(cc.p(0, 0));
+        bgSprite.setPosition(GAME_BG_POINT);
+        this.addChild(bgSprite);
+
         this.label = cc.LabelTTF.create("抽奖结果：", "黑体", 32);
         this.label.setPosition(cc.p(120, 650));
         this.addChild(this.label);
-
-        var textLabel = cc.LabelTTF.create("元宝抽卡", "黑体", 32);
-        textLabel.setPosition(GAME_WIDTH_MIDPOINT, 980);
-        this.addChild(textLabel);
 
         var textLabel = cc.LabelTTF.create("初级抽卡", "黑体", 32);
         textLabel.setPosition(GAME_WIDTH_MIDPOINT - 200, 900);

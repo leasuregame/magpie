@@ -18,7 +18,8 @@ module.exports = {
         DATA_DIR + 'skills.xml',
         DATA_DIR + 'cards.xml',
         DATA_DIR + 'tasks.xml',
-        DATA_DIR + 'rank.xml'
+        DATA_DIR + 'rank.xml',
+        DATA_DIR + 'lottery.xml'
         );
       this.loadTableData(data.exports);
     }

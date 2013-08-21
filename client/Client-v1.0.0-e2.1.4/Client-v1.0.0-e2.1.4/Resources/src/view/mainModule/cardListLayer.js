@@ -59,10 +59,15 @@ var CardListLayer = cc.Layer.extend({
         this._otherData = otherData;
         this._maxSelectCount = cardCount;
 
-        var bgSprite = cc.Sprite.create(main_scene_image.bg2);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
+
+        var headIcon = cc.Sprite.create(main_scene_image.icon2);
+        headIcon.setAnchorPoint(cc.p(0, 0));
+        headIcon.setPosition(cc.p(40, 962));
+        this.addChild(headIcon);
 
         var cardList = gameData.cardList.get("cardList");
         var scrollViewLayer = MarkLayer.create(cc.rect(67, 260, 586, 620));
@@ -312,7 +317,7 @@ var CardListLayer = cc.Layer.extend({
         var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
             MainScene.getInstance().switchLayer(MainLayer);
         }, this);
-        backItem.setPosition(cc.p(100, 1000));
+        backItem.setPosition(cc.p(100, 1005));
 
         var menu = cc.Menu.create(changeLineUpItem, lineUpItem, backItem);
         menu.setPosition(cc.p(0, 0));
@@ -351,7 +356,7 @@ var CardListLayer = cc.Layer.extend({
         var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
             this._cb(null);
         }, this);
-        backItem.setPosition(cc.p(100, 1000));
+        backItem.setPosition(cc.p(100, 1005));
 
         var menu = cc.Menu.create(okItem, backItem);
         menu.setPosition(cc.p(0, 0));
@@ -452,7 +457,7 @@ var CardListLayer = cc.Layer.extend({
         var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
             this._cb(null);
         }, this);
-        backItem.setPosition(cc.p(100, 1000));
+        backItem.setPosition(cc.p(100, 1005));
 
         var menu = cc.Menu.create(okItem, backItem);
         menu.setPosition(cc.p(0, 0));
@@ -579,7 +584,7 @@ var CardListLayer = cc.Layer.extend({
         var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
             MainScene.getInstance().switch(CardListLayer.create());
         }, this);
-        backItem.setPosition(cc.p(100, 1000));
+        backItem.setPosition(cc.p(100, 1005));
 
         var menu = cc.Menu.create(okItem, backItem);
         menu.setPosition(cc.p(0, 0));

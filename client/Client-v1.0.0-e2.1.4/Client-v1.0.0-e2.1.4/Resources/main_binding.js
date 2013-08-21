@@ -90,6 +90,7 @@ var appFiles = [
     'src/view/mainModule/evolutionLayer.js',
     'src/view/mainModule/exploreLayer.js',
     'src/view/mainModule/friendLayer.js',
+    'src/view/mainModule/gamblingLayer.js',
     'src/view/mainModule/lineUpLabel.js',
     'src/view/mainModule/lineUpLayer.js',
     'src/view/mainModule/lotteryLayer.js',
@@ -116,6 +117,7 @@ var appFiles = [
     'src/view/mainModule/tournamentLayer.js',
     'src/view/mainModule/tournamentLabel.js',
     'src/view/mainModule/tournamentMessageLabel.js',
+    'src/view/mainModule/treasureHuntLayer.js',
 
     'src/view/battleModule/actionFactory.js',
     'src/view/battleModule/effectsFactory.js',

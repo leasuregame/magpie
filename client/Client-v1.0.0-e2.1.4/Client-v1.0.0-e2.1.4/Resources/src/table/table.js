@@ -38,7 +38,9 @@ var nameChanged = {
     "title": "竞技称号表",
     "竞技称号表": "title",
     "rank": "竞技产出表",
-    "竞技产出表": "rank"
+    "竞技产出表": "rank",
+    "treasure_hunt": "寻宝配置表",
+    "寻宝配置表": "treasure_hunt"
 }
 
 var outputTables = {
@@ -15623,6 +15625,131 @@ var outputTables = {
                 "lose_exp": 0,
                 "lose_money": 425,
                 "lose_honor_point": 83
+            }
+        }
+    },
+    "treasure_hunt": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "type": "power",
+                "value": 10,
+                "name": "体力"
+            },
+            "1": {
+                "id": 1,
+                "type": "power",
+                "value": 50,
+                "name": "体力"
+            },
+            "2": {
+                "id": 2,
+                "type": "power",
+                "value": 100,
+                "name": "体力"
+            },
+            "3": {
+                "id": 3,
+                "type": "elixir",
+                "value": 10,
+                "name": "仙丹"
+            },
+            "4": {
+                "id": 4,
+                "type": "elixir",
+                "value": 100,
+                "name": "仙丹"
+            },
+            "5": {
+                "id": 5,
+                "type": "elixir",
+                "value": 5000,
+                "name": "仙丹"
+            },
+            "6": {
+                "id": 6,
+                "type": "money",
+                "value": 1000,
+                "name": "铜板"
+            },
+            "7": {
+                "id": 7,
+                "type": "money",
+                "value": 10000,
+                "name": "铜板"
+            },
+            "8": {
+                "id": 8,
+                "type": "money",
+                "value": 200000,
+                "name": "铜板"
+            },
+            "9": {
+                "id": 9,
+                "type": "skillPoint",
+                "value": 100,
+                "name": "技能点"
+            },
+            "10": {
+                "id": 10,
+                "type": "skillPoint",
+                "value": 500,
+                "name": "技能点"
+            },
+            "11": {
+                "id": 11,
+                "type": "skillPoint",
+                "value": 10000,
+                "name": "技能点"
+            },
+            "12": {
+                "id": 12,
+                "type": "energy",
+                "value": 50,
+                "name": "活力"
+            },
+            "13": {
+                "id": 13,
+                "type": "energy",
+                "value": 100,
+                "name": "活力"
+            },
+            "14": {
+                "id": 14,
+                "type": "energy",
+                "value": 5000,
+                "name": "活力"
+            },
+            "15": {
+                "id": 15,
+                "type": "reiki",
+                "value": 50,
+                "name": "灵气"
+            },
+            "16": {
+                "id": 16,
+                "type": "reiki",
+                "value": 100,
+                "name": "灵气"
+            },
+            "17": {
+                "id": 17,
+                "type": "reiki",
+                "value": 1000,
+                "name": "灵气"
+            },
+            "18": {
+                "id": 18,
+                "type": "gold",
+                "value": 10,
+                "name": "元宝"
+            },
+            "19": {
+                "id": 19,
+                "type": "gold",
+                "value": 50,
+                "name": "元宝"
             }
         }
     }

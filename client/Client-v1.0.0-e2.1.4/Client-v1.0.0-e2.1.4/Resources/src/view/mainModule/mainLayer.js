@@ -53,13 +53,13 @@ var MainLayer = cc.Layer.extend({
 //        activityLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
 //        activityLayerItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 650));
 
-        var lotteryLayerItem = cc.MenuItemImage.create(
+        var gamblingLayerItem = cc.MenuItemImage.create(
             main_scene_image.button5,
             main_scene_image.button5s,
-            this._onClickLotteryLayer,
+            this._onClickGamblingLayer,
             this
         );
-        lotteryLayerItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 500));
+        gamblingLayerItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 500));
 
         var pveLayerItem = cc.MenuItemImage.create(
             main_scene_image.button1,
@@ -126,7 +126,7 @@ var MainLayer = cc.Layer.extend({
         configLayerItem.setPosition(cc.p(585, 250));
 
         var functionMenu = cc.Menu.create(
-            lotteryLayerItem,
+            gamblingLayerItem,
             pveLayerItem,
             tournamentLayerItem,
             strengthenLayerItem,
@@ -159,9 +159,9 @@ var MainLayer = cc.Layer.extend({
         MainScene.getInstance().switchLayer(ActivityLayer);
     },
 
-    _onClickLotteryLayer: function () {
-        cc.log("MainLayer _onClickLotteryLayer");
-        MainScene.getInstance().switchLayer(LotteryLayer);
+    _onClickGamblingLayer: function () {
+        cc.log("MainLayer _onClickGamblingLayer");
+        MainScene.getInstance().switchLayer(GamblingLayer);
     },
 
     _onClickPveLayer: function () {

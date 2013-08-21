@@ -89,7 +89,6 @@ var Card = Entity.extend({
         cc.log("Card _updatePassiveSkill");
         if (data) {
             var len = data.length;
-            cc.log(len);
             for (var i = 0; i < len; ++i) {
                 this._passiveSkill[data[i].id] = {
                     id: data[i].id,
@@ -106,9 +105,8 @@ var Card = Entity.extend({
         cc.log("Card _loadCardTable");
 
         // 读取卡牌配置表
-        cc.log(this._tableId);
         var cardTable = outputTables.cards.rows[this._tableId];
-        cc.log(cardTable);
+
         this._kindId = cardTable.number;
         this._name = cardTable.name;
         this._description = cardTable.description;

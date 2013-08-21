@@ -22,6 +22,11 @@ var PveLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        var headIcon = cc.Sprite.create(main_scene_image.icon1);
+        headIcon.setAnchorPoint(cc.p(0, 0));
+        headIcon.setPosition(cc.p(40, 962));
+        this.addChild(headIcon);
+
         this._taskLayerItem = cc.MenuItemImage.create(
             main_scene_image.button22,
             main_scene_image.button22s,
@@ -29,7 +34,7 @@ var PveLayer = cc.Layer.extend({
             this._onClickTaskLayer,
             this
         );
-        this._taskLayerItem.setPosition(cc.p(111, 980));
+        this._taskLayerItem.setPosition(cc.p(111, 1005));
 
         this._passLayerItem = cc.MenuItemImage.create(
             main_scene_image.button23,
@@ -38,23 +43,19 @@ var PveLayer = cc.Layer.extend({
             this._onClickPassLayer,
             this
         );
-        this._passLayerItem.setPosition(cc.p(254, 980));
+        this._passLayerItem.setPosition(cc.p(254, 1005));
 
         var menu = cc.Menu.create(this._taskLayerItem, this._passLayerItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
         var taskIcon = cc.Sprite.create(main_scene_image.icon16);
-        taskIcon.setPosition(cc.p(110, 978));
+        taskIcon.setPosition(cc.p(105, 1000));
         this.addChild(taskIcon, 2);
 
         var passIcon = cc.Sprite.create(main_scene_image.icon17);
-        passIcon.setPosition(cc.p(254, 978));
+        passIcon.setPosition(cc.p(254, 1000));
         this.addChild(passIcon, 2);
-
-        var lineIcon = cc.Sprite.create(main_scene_image.icon4);
-        lineIcon.setPosition(cc.p(360, 944));
-        this.addChild(lineIcon, 2);
 
         this._onClickTaskLayer();
 

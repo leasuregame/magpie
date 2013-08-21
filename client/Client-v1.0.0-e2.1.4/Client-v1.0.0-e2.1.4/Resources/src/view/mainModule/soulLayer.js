@@ -40,7 +40,7 @@ var SoulLayer = cc.Layer.extend({
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 956));
+        headIcon.setPosition(cc.p(40, 962));
         this.addChild(headIcon);
 
         var titleIcon = cc.Sprite.create(main_scene_image.icon102);

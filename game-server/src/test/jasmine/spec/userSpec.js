@@ -157,6 +157,8 @@ describe("Connector Server", function() {
                 skillPoint: 0,
                 elixir: 0,
                 energy: 0,
+                spiritor: '',
+                spiritPool: '',
                 cards: [],
                 rank: null
               });

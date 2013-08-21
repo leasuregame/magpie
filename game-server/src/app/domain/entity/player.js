@@ -74,7 +74,7 @@ var Player = (function(_super) {
 
     Player.DEFAULT_VALUES = {
         power: {
-            time: NOW(),
+            time: 0,
             value: 50
         },
         lv: 1,
@@ -237,7 +237,7 @@ var Player = (function(_super) {
         if (!_.isArray(this.dailyGift)){
             this.dailyGift = [];
         }
-        this.set('dailyGift', this.dailyGift.push(gift));
+        this.set('dailyGift', this.get('dailyGift').push(gift));
     };
 
     Player.prototype.hasGive = function(gift) {
@@ -360,6 +360,8 @@ var Player = (function(_super) {
             energy: this.energy,
             fregments: this.fregments,
             elixir: this.elixir,
+            spiritor: this.spiritor,
+            spiritPool: this.spiritPool,
             cards: _.values(this.cards).map(function(card) {
                 return card.toJson();
             }),

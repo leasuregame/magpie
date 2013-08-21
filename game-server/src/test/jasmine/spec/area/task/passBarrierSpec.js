@@ -17,11 +17,11 @@ describe("Area Server", function() {
 			password: '1'
 		};
 
-		// beforeAll(function() {
-		// 	doAjax('/loaddata/csv', {}, function(data) {
-		// 		expect(data).toEqual('done');
-		// 	});
-		// });
+		beforeAll(function() {
+			doAjax('/loaddata/csv', {}, function(data) {
+				expect(data).toEqual('done');
+			});
+		});
 
 		describe("area.taskHandler.passBarrier", function() {
 			describe("when start a passBarrier", function() {
@@ -43,10 +43,7 @@ describe("Area Server", function() {
 						expect(data.msg.pass).hasProperties(['layer', 'mark'])
 
 						doAjax('/player/' + arthur.playerId, {}, function(res) {
-							expect(JSON.parse(res.data.pass)).toEqual({
-								layer: 26,
-								mark: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-							});
+							expect(JSON.parse(res.data.pass)).toEqual(data.msg.pass);
 						});
 
 					});

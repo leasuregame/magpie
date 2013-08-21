@@ -16,9 +16,10 @@ class Manager
       cb(null, player)
 
   @getPlayerInfo: (params, cb) ->
-    #if not app.get('debug')
-    _player = area.getPlayer(params.pid)
-    return cb(null, _player) if _player?
+    if not app.get('debug')
+      _player = area.getPlayer(params.pid)
+      console.log '-get player form area cache-', _player?.id, _player?.name
+      return cb(null, _player) if _player?
 
     sync = params.sync? and params.sync or true
     dao.player.getPlayerInfo {

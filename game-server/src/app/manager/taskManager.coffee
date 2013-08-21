@@ -140,7 +140,7 @@ class Manager
       player.addCards results
       cb()
 
-  @countExploreResult: (player, data, cb) ->
+  @countExploreResult: (player, data, taskId, cb) ->
     taskData = table.getTableItem('task', player.task.id)
     exp_to_upgrade = table.getTableItem('player_upgrade', player.lv)
 
@@ -155,12 +155,13 @@ class Manager
 
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
-    task = _.clone(player.task)
-    task.progress += 1
-    if task.progress > taskData.points
-      task.progress = 0
-      task.id += 1
-    player.set('task', task)
+    if taskId == player.task.id
+      task = _.clone(player.task)
+      task.progress += 1
+      if task.progress > taskData.points
+        task.progress = 0
+        task.id += 1
+      player.set('task', task)
 
     # 判断是否升级
     if (player.exp + taskData.exp_obtain) >= exp_to_upgrade.exp

@@ -1,22 +1,34 @@
 Module = require '../common/module'
 Hero = require './hero'
+Spiritor = require './spiritor'
 Matrix = require './matrix'
 tab = require '../manager/table'
-_ = require 'underscore'
 utility = require '../common/utility'
+_ = require 'underscore'
 logger = require('pomelo-logger').getLogger(__filename)
 
+copyAttrs = (self, ent) ->
+  self.id = ent.id 
+  self.lv = ent.lv
+  self.exp = ent.exp
+  self.lineUp = ent.lineUp
+  self.spiritor = new Spiritor(ent.spiritor)
+  self.cards = ent.activeCards()
+
+defaultEntity = 
+  id: 0
+  lv: 0
+  exp: 0
+  lineUp: ''
+  spiritor: new Spiritor(lv: 0)
+  cards: []
+
 class Player extends Module
-  @table: 'player'
-
   init: (entity) ->
-    for key, val of entity
-      @[key] = val if entity.hasOwnProperty(key)
-
-    @initAttrs() if not entity
+    entity ||= defaultEntity
+    copyAttrs @, entity
     
     @heros = []
-    @lineUp = @lineUp or ''
     @enemy = null
     @is_attacker = false
     @matrix = new Matrix()
@@ -27,13 +39,19 @@ class Player extends Module
     @setAttackCount()
     super
 
-  initAttrs: ->
-    @id = 0
-    @lv = 0
-    @exp = 0
-    @power = 0
-    @money = 0
-    @cards = {}
+    console.log 'after init', @
+
+  attack: (callback) ->
+    _hero = @currentHero()
+    if _hero is null or _hero.death()
+      logger.warn "玩家 #{@name} 拿不到当前卡牌，或者没有可用的牌可出了。\
+      卡牌：#{_hero?.name}, 死亡状态：#{_hero?.death()} \
+      卡牌位置: #{@matrix.curIndex}
+      "
+      #@dead = true
+    else
+      logger.info "#{@name} 出手", _hero.idx
+      _hero.attack(callback)
 
   setEnemy: (enm, is_attacker = false) ->
     @enemy = enm
@@ -42,7 +60,7 @@ class Player extends Module
       h.setIdx @matrix.positionToNumber(h.pos), is_attacker
 
   loadHeros: ->
-    @heros = if @cards? then (new Hero(@cards[id], @) for id of @cards) else []
+    @heros = if not _.isEmpty(@cards) then (new Hero(card, @) for card in @cards) else []
 
   bindCards: ->
     if @lineUp? and @lineUp != ''
@@ -95,18 +113,6 @@ class Player extends Module
     
   death: ->
     @aliveHeros().length is 0
-
-  attack: (callback) ->
-    _hero = @currentHero()
-    if _hero is null or _hero.death()
-      logger.warn "玩家 #{@name} 拿不到当前卡牌，或者没有可用的牌可出了。\
-      卡牌：#{_hero?.name}, 死亡状态：#{_hero?.death()} \
-      卡牌位置: #{@matrix.curIndex}
-      "
-      #@dead = true
-    else
-      logger.info "#{@name} 出手", _hero.idx
-      _hero.attack(callback)
 
   currentHero: ->
     @matrix.current()

@@ -6,9 +6,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>arthur wu</Author>
-  <LastAuthor>arthur wu</LastAuthor>
+  <LastAuthor>晨晨 林</LastAuthor>
   <Created>2013-08-20T06:14:56Z</Created>
-  <LastSaved>2013-08-20T06:30:35Z</LastSaved>
+  <LastSaved>2013-08-22T03:42:40Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>14620</WindowHeight>
-  <WindowWidth>25600</WindowWidth>
-  <WindowTopX>13780</WindowTopX>
-  <WindowTopY>0</WindowTopY>
+  <WindowHeight>10860</WindowHeight>
+  <WindowWidth>19060</WindowWidth>
+  <WindowTopX>17880</WindowTopX>
+  <WindowTopY>1220</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -34,10 +34,10 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s71">
+  <Style ss:ID="s62">
    <NumberFormat/>
   </Style>
-  <Style ss:ID="s76">
+  <Style ss:ID="s63">
    <Alignment ss:Vertical="Bottom"/>
   </Style>
  </Styles>
@@ -46,7 +46,7 @@
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="3" ss:Width="108" ss:Span="2"/>
    <Column ss:Index="6" ss:Width="124"/>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">等级</Data></Cell>
     <Cell><Data ss:Type="String">升级所需灵气</Data></Cell>
@@ -55,7 +55,7 @@
     <Cell><Data ss:Type="String">元神攻击百分比</Data></Cell>
     <Cell><Data ss:Type="String">触发概率</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">lv</Data></Cell>
     <Cell><Data ss:Type="String">spirit_need</Data></Cell>
@@ -64,107 +64,108 @@
     <Cell><Data ss:Type="String">spirit_atk_pct</Data></Cell>
     <Cell><Data ss:Type="String">rate</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">900</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">55</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">2040</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">60</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">4180</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">15</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">15</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">65</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">65</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="Number">6720</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">70</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">70</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">9660</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">25</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">25</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">75</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">75</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="Number">13000</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">80</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">80</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell><Data ss:Type="Number">16740</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">85</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">85</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="Number">20880</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">90</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">90</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">9</Data></Cell>
     <Cell><Data ss:Type="Number">9</Data></Cell>
     <Cell><Data ss:Type="Number">25420</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">45</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">45</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">95</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">95</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
@@ -175,8 +176,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>24</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>15</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -184,83 +185,104 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="灵气池配置表">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="12" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="13" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="4" ss:Width="140"/>
-   <Row>
+   <Column ss:AutoFitWidth="0" ss:Width="141"/>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">等级</Data></Cell>
     <Cell><Data ss:Type="String">所需经验</Data></Cell>
     <Cell><Data ss:Type="String">每次采集获得灵气</Data></Cell>
+    <Cell><Data ss:Type="String">每次采集获得经验</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">lv</Data></Cell>
     <Cell><Data ss:Type="String">exp_need</Data></Cell>
     <Cell><Data ss:Type="String">spirit_obtain</Data></Cell>
+    <Cell><Data ss:Type="String">exp_obtain</Data></Cell>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="Number">225</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell><Data ss:Type="Number">450</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">525</Data></Cell>
     <Cell><Data ss:Type="Number">12</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="Number">825</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">975</Data></Cell>
     <Cell><Data ss:Type="Number">14</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">4</Data></Cell>
-    <Cell><Data ss:Type="Number">4</Data></Cell>
-    <Cell><Data ss:Type="Number">1200</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">1350</Data></Cell>
     <Cell><Data ss:Type="Number">16</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="Number">1575</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">1725</Data></Cell>
     <Cell><Data ss:Type="Number">18</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">6</Data></Cell>
-    <Cell><Data ss:Type="Number">6</Data></Cell>
-    <Cell><Data ss:Type="Number">1950</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">2100</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">7</Data></Cell>
-    <Cell><Data ss:Type="Number">7</Data></Cell>
-    <Cell><Data ss:Type="Number">2325</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell><Data ss:Type="Number">2475</Data></Cell>
     <Cell><Data ss:Type="Number">22</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">8</Data></Cell>
-    <Cell><Data ss:Type="Number">8</Data></Cell>
-    <Cell><Data ss:Type="Number">2700</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell><Data ss:Type="Number">2850</Data></Cell>
     <Cell><Data ss:Type="Number">24</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">9</Data></Cell>
-    <Cell><Data ss:Type="Number">9</Data></Cell>
-    <Cell><Data ss:Type="Number">3075</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+    <Cell><Data ss:Type="Number">3225</Data></Cell>
     <Cell><Data ss:Type="Number">26</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">9</Data></Cell>
+    <Cell><Data ss:Type="Number">9</Data></Cell>
+    <Cell><Data ss:Type="Number">3600</Data></Cell>
+    <Cell><Data ss:Type="Number">28</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">28</Data></Cell>
+    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
@@ -272,7 +294,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
+     <ActiveRow>17</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
@@ -283,8 +305,10 @@
  <Worksheet ss:Name="灵气采集信息表">
   <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="1" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Row ss:AutoFitHeight="0"/>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
@@ -300,21 +324,22 @@
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Row>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">export_name</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">export_name</Data></Cell>
     <Cell><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">元神配置表</Data></Cell>
     <Cell><Data ss:Type="String">spirit</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">灵气池配置表</Data></Cell>
     <Cell><Data ss:Type="String">spirit_pool</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>

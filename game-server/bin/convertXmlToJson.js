@@ -17,7 +17,6 @@ function tryMkdir(file) {
 
 var files = [
   '../data/table.json',
-  '../../client/Client/Client/Resources/src/table/table.json',
   '../../client/Client-v1.0.0-e2.1.4/Client-v1.0.0-e2.1.4/Resources/src/table/table.json'];
 
 for (var i = files.length - 1; i >= 0; i--) {

@@ -51,7 +51,12 @@ class Player extends Module
       #@dead = true
     else
       logger.info "#{@name} 出手", _hero.idx
-      _hero.attack(callback)
+      _hero.attack (enemyHero) ->
+        if enemyHero.death()
+          ### 触发元神之怒 ###
+          @spiritor.angry(enemyHero, callback)
+        else 
+          callback(enemyHero)
 
   setEnemy: (enm, is_attacker = false) ->
     @enemy = enm
@@ -67,12 +72,11 @@ class Player extends Module
       @parseLineUp().forEach (item) =>
         [pos, id] = item 
         
-        _hero = (id) =>
-          for h in @heros
-            return h if h.id is parseInt(id)
-          null
-        _h = _hero(id)
+        ### 元神 ###
+        if parseInt(id) is -1
+          return
 
+        _h = _.findWhere @heros, id: parseInt(id)
         if _h
           @matrix.set(pos, _h)
         else

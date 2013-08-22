@@ -63,9 +63,9 @@ class Hero extends Module
       @skill = new Skill(@, @skill_setting)
 
   attack: (callback) ->
+    enemys = @skill.getTargets()
     if @skill? and @skill.check(enemys)
-      enemys = @skill.getTargets()
-      @usingSkill(enemys, callback)
+      @usingSkill(callback, enemys)
     else
       @normalAttack(callback)
 
@@ -83,7 +83,7 @@ class Hero extends Module
   isCrit: ->
     if @sp? then @sp.isCrit() else false
 
-  usingSkill: (enemys, callback)->
+  usingSkill: (callback, enemys = @skill.getTargets(), percent = 100, isSpiritor = false) ->
     if not enemys or not enemys.length > 0
       log.warn '技能攻击时，攻击的对方卡牌不能为空'
       return
@@ -92,18 +92,19 @@ class Hero extends Module
 
     switch @skill.type
       when 'single_fight', 'aoe' 
-        @skillAttack enemys, callback
+        @skillAttack enemys, percent, isSpiritor, callback
       when 'single_heal', 'mult_heal'
-        @cure enemys, callback
+        @cure enemys, percent, isSpiritor, callback
       else
         callback()
 
-  skillAttack: (enemys, callback) ->
+  skillAttack: (enemys, percent, isSpiritor, callback) ->
     # 负的a的id代表技能攻击
-    _step = {a: -@idx, d: [], e: [], r: []} 
+    _step = {a: -@idx, d: [], e: [], r: []}
+    _step.t = 'spirit' if isSpiritor
     
     _len = enemys? and enemys.length or 0
-    _dmg = parseInt(@atk * @skill.effectValue())
+    _dmg = parseInt(@atk * @skill.effectValue() * percent / 100)
 
     for enemy in enemys
       
@@ -137,9 +138,11 @@ class Hero extends Module
 
     @log _step     
 
-  cure: (enemys, callback) ->
+  cure: (enemys, percent, isSpiritor, callback) ->
     _step = {a: -@idx, d: [], e: []}
-    _hp = parseInt(@init_hp * @skill.effectValue())
+    _step.t = 'spirit' if isSpiritor
+    
+    _hp = parseInt(@init_hp * @skill.effectValue() * percent / 100)
     
     for enemy in enemys      
       enemy.damageOnly -_hp

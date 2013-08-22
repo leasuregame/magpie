@@ -221,7 +221,7 @@ var Player = (function(_super) {
 
     Player.prototype.resumePower = function(value) {
         var max_power = getMaxPower(this.lv, playerConfig.POWER_LIMIT);
-        
+
         if (this.power.value >= max_power) return;
 
         var power = _.clone(this.power);
@@ -240,7 +240,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.updateGift = function(gift) {
-        if (!_.isArray(this.dailyGift)){
+        if (!_.isArray(this.dailyGift)) {
             this.dailyGift = [];
         }
         this.dailyGift.push(gift);
@@ -255,7 +255,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.lineUpObj = function() {
-        return lineUpToObj(this.lineUp);
+        return lineUpToObj(this, this.lineUp);
     };
 
     Player.prototype.strengthen = function(target, sources, cb) {
@@ -388,15 +388,19 @@ var checkPass = function(pass) {
     return pass;
 };
 
-var lineUpToObj = function(lineUp) {
+var lineUpToObj = function(self, lineUp) {
     var _results = {};
     if (_.isString(lineUp) && lineUp !== '') {
         var lines = lineUp.split(',');
         lines.forEach(function(l) {
             var _ref = l.split(':'),
                 pos = _ref[0],
-                num = _ref[1];
-            _results[positionConvert(pos)] = parseInt(num);
+                num = parseInt(_ref[1]);
+            if (num == -1) {
+                _results[positionConvert(pos)] = self.spiritor;
+            } else {
+                _results[positionConvert(pos)] = num;
+            }
         });
     }
     return _results;

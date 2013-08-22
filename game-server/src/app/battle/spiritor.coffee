@@ -1,5 +1,6 @@
 Module = require '../common/module'
 Events = require '../common/events'
+table = require '../manager/table'
 spiritConfig = require '../../config/data/spirit'
 utility = require '../common/utility'
 
@@ -18,6 +19,16 @@ class Spiritor extends Module
   trigger: () ->
     utility.hitRate @rate
 
-  angry: () ->
-    
+  angry: (hero, cb) ->
+    return cb(hero) if not trigger()
+    return cb(hero) if not hero.skill
+
+    console.log '元神攻击', @lv, @spirit_atk_inc
+    hero.usingSkill(
+      (res) ->
+        cb(hero)
+      , null
+      , @spirit_atk_inc
+    )
+
 module.exports = Spiritor

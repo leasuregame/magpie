@@ -41,4 +41,3 @@ end;
 -- delimiter ;
 
 call createUser('dev', '1');
-

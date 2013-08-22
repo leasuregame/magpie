@@ -1,4 +1,1 @@
-id;createTime;playerId;honorPoint;title;rank;ranking;counts
-1;0;100;1304;1;1;20000;
-2;0;101;120;1;1;20001;
-3;0;1;12304;1;1;10003;
+id;createTime;playerId;ranking;counts1;0;100;20000;2;0;101;20001;3;0;1;10003;

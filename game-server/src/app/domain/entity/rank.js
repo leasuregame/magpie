@@ -21,11 +21,8 @@ var Rank = (function(_super) {
 		Rank.__super__.constructor.apply(this, arguments);
 	}
 
-	Rank.FIELDS = ['id', 'createTime', 'playerId', 'honorPoint', 'title', 'rank', 'ranking', 'counts'];
+	Rank.FIELDS = ['id', 'createTime', 'playerId', 'ranking', 'counts'];
 	Rank.DEFAULT_VALUES = {
-        honorPoint: 0,
-        title: '',
-        rank: 1,
         ranking: 0,
         counts: {
             challenge: 0,
@@ -40,18 +37,9 @@ var Rank = (function(_super) {
 		return {
 			id: this.id,
 			playerId: this.playerId,
-			honnorPoint: this.honnorPoint,
-			title: this.title,
-			rank: this.rank,
 			ranking: this.ranking,
 			counts: this.counts
 		};
-	};
-
-	Rank.prototype.grantTitle = function(title, honnorPoint) {
-		this.set('title', titleConfig.title)
-	    this.increase('rank')
-	    this.decrease('honnorPoint', honnorPoint)
 	};
 
 	Rank.prototype.pushRecent = function(id) {

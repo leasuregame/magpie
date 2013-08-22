@@ -28,6 +28,10 @@ var defaultMark = function() {
     return result;
 };
 
+var NOW = function() {
+    return Date.now();
+};
+
 /*
  * Player 与 player 表对应的数据类，提供简单操作
  * @param {object} param 数据库 player 表中的一行记录
@@ -63,7 +67,9 @@ var Player = (function(_super) {
         'dailyGift',
         'fragments',
         'energy',
-        'elixir'
+        'elixir',
+        'spiritor',
+        'spiritPool'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -88,7 +94,17 @@ var Player = (function(_super) {
         dailyGift: [],
         fragments: 0,
         energy: 0,
-        skillPoint: 0
+        elixir: 0,
+        skillPoint: 0,
+        spiritor: {
+            lv: 0,
+            spirit: 0
+        },
+        spiritPool: {
+            lv: 1,
+            exp: 0,
+            collectCount: 0
+        }
     };
 
     Player.prototype.save = function() {
@@ -195,7 +211,9 @@ var Player = (function(_super) {
     };
 
     Player.prototype.consumePower = function(value) {
-        var power = _.clone(this.get('power'));
+        if (this.power.value <= 0) return;
+
+        var power = _.clone(this.power);
         power.value = _.max([power.value - value, 0]);
         power.time = Date.now();
         this.updatePower(power);
@@ -203,7 +221,10 @@ var Player = (function(_super) {
 
     Player.prototype.resumePower = function(value) {
         var max_power = getMaxPower(this.lv, playerConfig.POWER_LIMIT);
-        var power = _.clone(this.get('power'));
+        
+        if (this.power.value >= max_power) return;
+
+        var power = _.clone(this.power);
         power.value = _.min([max_power, power.value + value]);
         power.time = Date.now();
         this.updatePower(power);
@@ -211,7 +232,7 @@ var Player = (function(_super) {
 
     Player.prototype.givePower = function(hour, value) {
         var max_power = getMaxPower(this.lv, playerConfig.POWER_LIMIT);
-        var power = _.clone(this.get('power'));
+        var power = _.clone(this.power);
         power.value = _.min([power.value + value, max_power + 50]);
         power.time = Date.now();
         this.updatePower(power);
@@ -222,7 +243,7 @@ var Player = (function(_super) {
         if (!_.isArray(this.dailyGift)){
             this.dailyGift = [];
         }
-        this.set('dailyGift', this.dailyGift.push(gift));
+        this.dailyGift.push(gift);
     };
 
     Player.prototype.hasGive = function(gift) {
@@ -345,6 +366,8 @@ var Player = (function(_super) {
             energy: this.energy,
             fregments: this.fregments,
             elixir: this.elixir,
+            spiritor: this.spiritor,
+            spiritPool: this.spiritPool,
             cards: _.values(this.cards).map(function(card) {
                 return card.toJson();
             }),

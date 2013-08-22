@@ -82,8 +82,18 @@ describe("Connector Server", function() {
                   mark: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 },
                 dailyGift: [],
-                skillPoint: 0,
                 energy: 0,
+                skillPoint: 0,
+                elixir: 0,
+                spiritor: {
+                  lv: 0,
+                  spirit: 0
+                },
+                spiritPool: {
+                  lv: 1,
+                  exp: 0,
+                  collectCount: 0
+                },
                 rank: null
               }
             }

@@ -7,7 +7,6 @@ Area.init = (opts) ->
   timer.run()
   
 Area.addPlayer = (player) ->
-  
   eventManager.addEventToPlayer(player)
   players.put player
 

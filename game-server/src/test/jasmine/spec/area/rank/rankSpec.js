@@ -50,7 +50,7 @@ describe("Area Server", function() {
 
             var isWin = data.msg.battleLog.winner == 'own';
             expect(data.msg.battleLog.rewards).hasProperties([
-              'exp', 'money', 'honorPoint'
+              'exp', 'money', 'elixir'
             ]);
 
             if (isWin) {

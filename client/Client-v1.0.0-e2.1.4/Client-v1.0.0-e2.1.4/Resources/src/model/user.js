@@ -97,7 +97,7 @@ var User = Entity.extend({
 });
 
 
-User.create = function (data) {
+User.create = function () {
     var user = new User();
 
     if (user) {

@@ -23,6 +23,8 @@ var gameData = {
     lottery: null,
     message: null,
     tournament: null,
+    spirit: null,
+    spiritPool: null,
 
     gameInit: function () {
         cc.log("gameData init");
@@ -38,12 +40,13 @@ var gameData = {
         this.lottery = Lottery.create();
         this.message = Message.create();
         this.tournament = Tournament.create();
+        this.spirit = Spirit.create();
+        this.spiritPool = SpiritPool.create();
     },
 
     gameEnd: function () {
-
     }
-}
+};
 
 
 gameData.gameInit();

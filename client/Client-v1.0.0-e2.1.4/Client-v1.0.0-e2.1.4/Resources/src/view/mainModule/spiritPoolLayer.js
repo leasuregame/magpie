@@ -8,28 +8,28 @@
 
 
 /*
- * soul layer
+ * spirit pool layer
  * */
 
 
-var SoulLayer = cc.Layer.extend({
+var SpiritPoolLayer = cc.Layer.extend({
     _lvLabel: null,
     _expLabel: null,
     _countLabel: null,
     _expProgress: null,
-    _soulTableItem: null,
+    _spiritPoolItem: null,
     _hook: null,
     _useGold: false,
 
     onEnter: function () {
-        cc.log("SoulLayer onEnter");
+        cc.log("SpiritPoolLayer onEnter");
 
         this._super();
         this.update();
     },
 
     init: function () {
-        cc.log("SoulLayer init");
+        cc.log("SpiritPoolLayer init");
 
         if (!this._super()) return false;
 
@@ -87,13 +87,13 @@ var SoulLayer = cc.Layer.extend({
         this._expProgress.setPosition(cc.p(360, 250));
         this.addChild(this._expProgress);
 
-        this._soulTableItem = cc.MenuItemImage.create(
+        this._spiritPoolItem = cc.MenuItemImage.create(
             main_scene_image.icon97,
             main_scene_image.icon97,
-            this._onClickSoulTable,
+            this._onClickSpiritPool,
             this
         );
-        this._soulTableItem.setPosition(cc.p(360, 650));
+        this._spiritPoolItem.setPosition(cc.p(360, 650));
 
         var useGoldItem = cc.MenuItemImage.create(
             main_scene_image.button34,
@@ -103,7 +103,7 @@ var SoulLayer = cc.Layer.extend({
         );
         useGoldItem.setPosition(cc.p(360, 380));
 
-        var menu = cc.Menu.create(this._soulTableItem, useGoldItem);
+        var menu = cc.Menu.create(this._spiritPoolItem, useGoldItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -116,18 +116,28 @@ var SoulLayer = cc.Layer.extend({
     },
 
     update: function () {
-        cc.log("SoulLayer update");
+        cc.log("SpiritPoolLayer update");
 
+        var spiritPool = gameData.spiritPool;
 
+        this._lvLabel.setString(spiritPool.get("lv"));
+        this._expLabel.setString(spiritPool.get("exp") + " / " + spiritPool.get("maxExp"));
+        this._expProgress.setAllValue(spiritPool.get("maxExp"), spiritPool.get("exp"));
+        this._countLabel.setString(spiritPool.get("collectCount") + " 次");
     },
 
-    _onClickSoulTable: function () {
-        cc.log("SoulLayer _onClickSoulTable");
+    _onClickSpiritPool: function () {
+        cc.log("SpiritPoolLayer _onClickSoulTable");
 
+        var that = this;
+        gameData.spiritPool.collect(function (data) {
+            cc.log(data);
+            that.update();
+        }, this._useGold);
     },
 
     _onClickUseGold: function () {
-        cc.log("SoulLayer _onClickUseGold");
+        cc.log("SpiritPoolLayer _onClickUseGold");
 
         this._useGold = !this._useGold;
         this._hook.setVisible(this._useGold);
@@ -135,8 +145,8 @@ var SoulLayer = cc.Layer.extend({
 });
 
 
-SoulLayer.create = function () {
-    var ret = new SoulLayer();
+SpiritPoolLayer.create = function () {
+    var ret = new SpiritPoolLayer();
 
     if (ret && ret.init()) {
         return ret;

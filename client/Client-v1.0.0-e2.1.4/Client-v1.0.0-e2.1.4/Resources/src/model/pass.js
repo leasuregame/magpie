@@ -20,6 +20,8 @@ var Pass = Entity.extend({
     _passMark: [],
 
     init: function (data) {
+        cc.log("Pass init");
+
         this.update(data);
 
         cc.log(this);
@@ -30,8 +32,8 @@ var Pass = Entity.extend({
     update: function (data) {
         cc.log("Pass update");
 
-        this._passTop = data.layer || 0;
-        this._passMark = data.mark || [];
+        this.set("passTop", data.layer);
+        this.set("passMark", data.mark);
     },
 
     canWipeOut: function () {

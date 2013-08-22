@@ -41,26 +41,28 @@ var Player = Entity.extend({
     init: function (data) {
         cc.log("Player init");
 
-        this._id = data.id || this._id;
-        this._createTime = data.createTime || this._createTime;
-        this._userId = data.userId || this._userId;
-        this._areaId = data.areaId || this._areaId;
-        this._name = data.name || this._name;
-        this._power = data.power.value || this._power;
-        this._lv = data.lv || this._lv;
-        this._exp = data.exp || this._exp;
-        this._gold = data.gold || this._gold;
-        this._money = data.money || this._money;
-        this._elixir = data.elixir || this._elixir;
-        this._skillPoint = data.skillPoint || this._skillPoint;
-        this._ability = data.ability || this._ability;
-        this._energy = data.energy || this._energy;
-        this._maxExp = outputTables.player_upgrade.rows[this._lv].exp;
+        this.set("id", data.id);
+        this.set("createTime", data.createTime);
+        this.set("userId", data.userId);
+        this.set("areaId", data.areaId);
+        this.set("name", data.name);
+        this.set("power", data.power.value);
+        this.set("lv", data.lv);
+        this.set("exp", data.exp);
+        this.set("gold", data.gold);
+        this.set("money", data.money);
+        this.set("elixir", data.elixir);
+        this.set("skillPoint", data.skillPoint);
+        this.set("ability", data.ability);
+        this.set("energy", data.energy);
+        this.set("maxExp", outputTables.player_upgrade.rows[this._lv].exp);
 
         gameData.cardList.init(data.cards);
         gameData.lineUp.init(data.lineUp);
         gameData.task.init(data.task);
         gameData.pass.init(data.pass);
+        gameData.spirit.init(data.spiritor);
+        gameData.spiritPool.init(data.spiritPool);
 
         cc.log(this);
 
@@ -87,7 +89,7 @@ var Player = Entity.extend({
 });
 
 
-Player.create = function (data) {
+Player.create = function () {
     var ret = new Player();
 
     if (ret) {

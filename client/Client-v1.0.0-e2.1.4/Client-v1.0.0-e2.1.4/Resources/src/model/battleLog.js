@@ -46,11 +46,13 @@ var BattleLog = Entity.extend({
 
     getBattleOwn: function () {
         cc.log("BattleLog getBattleMe");
+
         return this._own;
     },
 
     getBattleEnemy: function () {
         cc.log("BattleLog getBattleEnemy");
+
         return this._enemy;
     },
 

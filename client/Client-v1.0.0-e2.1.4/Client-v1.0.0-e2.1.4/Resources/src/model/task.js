@@ -15,9 +15,11 @@
 var Task = Entity.extend({
     _id: 0,
     _progress: 0,
-    _points: 0, // 最大层数
+    _points: 0,          // 最大层数
 
     init: function (data) {
+        cc.log("Task init");
+
         this.update(data);
 
         cc.log(this);
@@ -26,6 +28,8 @@ var Task = Entity.extend({
     },
 
     update: function (data) {
+        cc.log("Task update");
+
         if (this._id != data.id) {
             this._id = data.id;
             this._points = outputTables.task.rows[this._id].points;
@@ -35,14 +39,20 @@ var Task = Entity.extend({
     },
 
     getPercentage: function () {
+        cc.log("Task getPercentage");
+
         return (this._progress / this._points);
     },
 
     getChapter: function () {
+        cc.log("Task getChapter");
+
         return ((this._id / 10 - 1) / 5 + 1);
     },
 
     getSection: function () {
+        cc.log("Task getSection");
+
         return ((this._id / 10 - 1) % 5 + 1);
     },
 
@@ -108,7 +118,7 @@ var Task = Entity.extend({
 
                 cb(backData);
             } else {
-                cc.log("explore fail");
+                cc.log("fail");
             }
         });
     },
@@ -135,7 +145,7 @@ var Task = Entity.extend({
 });
 
 
-Task.create = function (data) {
+Task.create = function () {
     var ret = new Task();
 
     if (ret) {

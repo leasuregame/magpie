@@ -69,6 +69,8 @@
             'src/model/cardLibrary.js',
             'src/model/message.js',
             'src/model/tournament.js',
+            'src/model/spirit.js',
+            'src/model/spiritPool.js',
 
             'src/model/battleStep.js',
             'src/model/battleLog.js',
@@ -126,7 +128,7 @@
             'src/view/mainModule/rankLayer.js',
             'src/view/mainModule/shopLayer.js',
             'src/view/mainModule/skillUpgradeLabel.js',
-            'src/view/mainModule/soulLayer.js',
+            'src/view/mainModule/spiritPoolLayer.js',
             'src/view/mainModule/starLabel.js',
             'src/view/mainModule/strengthenLayer.js',
             'src/view/mainModule/taskLayer.js',

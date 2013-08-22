@@ -22,6 +22,7 @@ var CardLibrary = Entity.extend({
     _cardLibrary: [],
 
     init: function (data) {
+        cc.log("CardLibrary init");
 
         return true;
     }

@@ -14,7 +14,9 @@
 
 var Entity = cc.Class.extend({
     set: function (name, value) {
-        this["_" + name] = value;
+        if (typeof value != "undefined") {
+            this["_" + name] = value;
+        }
     },
 
     sets: function (attrs) {
@@ -26,7 +28,9 @@ var Entity = cc.Class.extend({
     },
 
     add: function (name, value) {
-        this["_" + name] += value;
+        if (typeof value != "undefined") {
+            this["_" + name] += value;
+        }
     },
 
     adds: function (attrs) {

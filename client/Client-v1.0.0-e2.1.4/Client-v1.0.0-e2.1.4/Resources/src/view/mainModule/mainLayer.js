@@ -148,8 +148,6 @@ var MainLayer = cc.Layer.extend({
 
         var player = gameData.player;
 
-        cc.log(player);
-
         this._abilityLabel.setString(player.get("ability"));
         this._rankLabel.setString(player.get("rank"));
     },
@@ -202,7 +200,7 @@ var MainLayer = cc.Layer.extend({
     _onClickConfigLayer: function () {
         cc.log("MainLayer _onClickConfigLayerItem");
 //        MainScene.getInstance().switchLayer(ConfigLayer);
-        MainScene.getInstance().switchLayer(SoulLayer);
+        MainScene.getInstance().switchLayer(SpiritPoolLayer);
     }
 });
 

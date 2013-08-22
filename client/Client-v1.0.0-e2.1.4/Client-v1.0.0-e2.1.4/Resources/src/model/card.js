@@ -57,23 +57,25 @@ var Card = Entity.extend({
     init: function (data) {
         cc.log("Card init");
 
+        this._passiveSkill = {};
+
         return this.update(data);
     },
 
     // 更新卡牌数据
     update: function (data) {
         cc.log("Card update");
+
         if (data) {
-            this._id = data.id || this._id;
-            this._createTime = data.createTime || this._createTime;
-            this._tableId = data.tableId || this._tableId;
-            this._lv = data.lv || this._lv;
-            this._exp = data.exp || this._exp;
-            this._skillLv = data.skillLv || this._skillLv;
-            this._hpAddition = data.hpAddition || this._hpAddition;
-            this._atkAddition = data.atkAddition || this._atkAddition;
-            this._elixir = data.elixir || this._elixir;
-            this._passiveSkill = {};
+            this.set("id", data.id);
+            this.set("createTime", data.createTime);
+            this.set("tableId", data.tableId);
+            this.set("lv", data.lv);
+            this.set("exp", data.exp);
+            this.set("skillLv", data.skillLv);
+            this.set("hpAddition", data.hpAddition);
+            this.set("atkAddition", data.atkAddition);
+            this.set("elixir", data.elixir);
             this._updatePassiveSkill(data.passiveSkills);
         }
 
@@ -87,6 +89,7 @@ var Card = Entity.extend({
 
     _updatePassiveSkill: function (data) {
         cc.log("Card _updatePassiveSkill");
+
         if (data) {
             var len = data.length;
             for (var i = 0; i < len; ++i) {

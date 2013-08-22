@@ -17,8 +17,8 @@
 require('./setup');
 app = require("pomelo").app;
 var dao = app.get('dao');
-var Player = require('../../app/domain/player');
-var Card = require('../../app/domain/card');
+var Player = require('../../app/domain/entity/player');
+var Card = require('../../app/domain/entity/card');
 var should = require("should");
 
 describe("Player Object", function () {
@@ -254,6 +254,32 @@ describe("Player Object", function () {
         });
     });
 
-
+    describe('.activeSpiritorEffect()', function(){
+        describe('when new a player', function(){
+            it('should active spiritor effect', function(){
+                var player = new Player({
+                    id: 1,
+                    name: 'arthur',
+                    lineUp: '00:1,01:2,02:3,10:4,11:5',
+                    spiritor: {
+                        lv: 1,
+                        exp: 100,
+                    },
+                    cards: {
+                        1: new Card({id: 1, tableId: 1, star: 1}),
+                        2: new Card({id: 2, tableId: 7, star: 2}),
+                        3: new Card({id: 3, tableId: 13, star: 3}),
+                        4: new Card({id: 4, tableId: 19, star: 4}),
+                        5: new Card({id: 5, tableId: 25, star: 5}),
+                        6: new Card({id: 6, tableId: 30, star: 5})
+                    }
+                });
+                player.activeSpiritorEffect();
+                player.activeCards().map(function(c) {
+                    return c.toJson();
+                }).should.equal({});
+            });
+        });
+    });
     
 });

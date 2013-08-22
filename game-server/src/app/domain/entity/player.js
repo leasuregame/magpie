@@ -112,8 +112,14 @@ var Player = (function(_super) {
 
         var cards = this.activeCards();
         cards.forEach(function(card) {
-            card.hp += parseInt(card.hp * spiritConfig.hp_inc);
-            card.atk += parseInt(card.atk * spiritConfig.atk_inc);
+            var _hp = parseInt(card.hp * spiritConfig.hp_inc);;
+            var _atk = parseInt(card.atk * spiritConfig.atk_inc);
+
+            card.hp += _hp;
+            card.incs.spirit_hp += _hp;
+
+            card.atk += _atk;
+            card.incs.spirit_atk += _atk;
         });
     };
 

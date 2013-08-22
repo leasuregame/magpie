@@ -25,7 +25,7 @@ var Entity = (function(_super) {
         this.changedFields = [];
         this.tracked = [];
 
-        _.defaults(attributes, this.constructor.DEFAULT_VALUES)
+        _.defaults(attributes, this.constructor.DEFAULT_VALUES);
         this.track(Object.keys(attributes));
         this.set(attributes);
 

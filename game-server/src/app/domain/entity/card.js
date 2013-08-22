@@ -75,7 +75,19 @@ var Card = (function(_super) {
         skillPoint: 0,
         elixir: 0,
         hpAddition: 0,
-        atkAddition: 0
+        atkAddition: 0,
+        init_hp: 0,
+        init_atk: 0,
+        hp: 0,
+        atk: 0,
+        incs: {
+            group_hp: 0,
+            group_atk: 0,
+            spirit_hp: 0,
+            spirit_atk: 0,
+            ps_hp: 0,
+            ps_atk: 0
+        }
     };
 
     Card.prototype.init = function() {
@@ -94,7 +106,9 @@ var Card = (function(_super) {
         }
         var aval = parseInt(this[_property[type]] * effect_val / 100);
         this.increase(_property[type] + 'Addition', aval);
+        
         this.increase(_property[tpe], aval);
+        this.incs['group_' + _property[type]] = aval;
         return this;
     };
 
@@ -203,6 +217,9 @@ var Card = (function(_super) {
             createTime: this.createTime,
             playerId: this.playerId,
             tableId: this.tableId,
+            hp: this.hp,
+            atk: this.atk,
+            incs: this.incs,
             star: this.star,
             lv: this.lv,
             exp: this.exp,
@@ -228,7 +245,9 @@ var passiveSkillEffect = function(card) {
     _.values(card.passiveSkills).filter(function(ps) {
         return _.keys(_pro).indexOf(ps.name) > -1;
     }).forEach(function(ps) {
-        card[_pro[ps.name]] += parseInt(card[_pro['init_' + ps.name]] * ps.value / 100);
+        var _val = parseInt(card[_pro['init_' + ps.name]] * ps.value / 100);
+        card[_pro[ps.name]] += _val;
+        card['ps_' + _pro[ps.name]] += _val;
     });
 };
 

@@ -85,7 +85,7 @@ var TaskLayer = cc.Layer.extend({
             this._scrollViewLayer.addChild(wipeOutIcon, 1);
 
             var titlesLabel = cc.LabelTTF.create("第 " + i + " 大章", "黑体", 30);
-            titlesLabel.setPosition(cc.p(320 + offsetX, 715));
+            titlesLabel.setPosition(cc.p(320 + offsetX, 738));
             this._scrollViewLayer.addChild(titlesLabel);
 
             for (var j = 1; j <= TASK_SECTION_COUNT; ++j) {
@@ -112,8 +112,8 @@ var TaskLayer = cc.Layer.extend({
             }
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(640, 743), this._scrollViewLayer);
-        this._scrollView.setContentSize(cc.size(640 * TASK_CHAPTER_COUNT, 744));
+        this._scrollView = cc.ScrollView.create(cc.size(640, 768), this._scrollViewLayer);
+        this._scrollView.setContentSize(cc.size(640 * TASK_CHAPTER_COUNT, 768));
         this._scrollView.setPosition(GAME_BG_POINT);
         this._scrollView.setBounceable(false);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
@@ -127,7 +127,7 @@ var TaskLayer = cc.Layer.extend({
         cc.log("TaskLayer update");
     },
 
-    _onClickSection: function (id, sectionItem) {
+    _onClickSection: function (id) {
         return function () {
             cc.log("TaskLayer _onClickSection " + id);
 

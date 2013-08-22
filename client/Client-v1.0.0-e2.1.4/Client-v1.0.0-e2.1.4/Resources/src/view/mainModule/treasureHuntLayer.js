@@ -18,31 +18,34 @@ var TREASURE_HUNT_ACCELERATION = (0.5 - 0.02) / TREASURE_HUNT_BUFFER_LEN;
 
 var TreasureHuntLayer = cc.Layer.extend({
     _selectFrame: null,
+    _tipLabel: null,
+    _freeCountLabel: null,
+    _countLabel: null,
     _index: 0,
     _slideCount: 0,
     _nowSlideNum: 0,
     _interval: 0,
     _locate: [
-        cc.p(140, 878),
-        cc.p(250, 878),
-        cc.p(360, 878),
-        cc.p(470, 878),
-        cc.p(580, 878),
-        cc.p(580, 778),
-        cc.p(580, 678),
-        cc.p(580, 578),
-        cc.p(580, 478),
-        cc.p(580, 378),
-        cc.p(580, 278),
-        cc.p(470, 278),
-        cc.p(360, 278),
-        cc.p(250, 278),
-        cc.p(140, 278),
-        cc.p(140, 378),
-        cc.p(140, 478),
-        cc.p(140, 578),
-        cc.p(140, 678),
-        cc.p(140, 778)
+        cc.p(110, 883),
+        cc.p(235, 883),
+        cc.p(360, 883),
+        cc.p(485, 883),
+        cc.p(610, 883),
+        cc.p(610, 788),
+        cc.p(610, 683),
+        cc.p(610, 578),
+        cc.p(610, 473),
+        cc.p(610, 368),
+        cc.p(610, 263),
+        cc.p(485, 263),
+        cc.p(360, 263),
+        cc.p(235, 263),
+        cc.p(110, 263),
+        cc.p(110, 368),
+        cc.p(110, 473),
+        cc.p(110, 578),
+        cc.p(110, 683),
+        cc.p(110, 788)
     ],
 
     onEnter: function () {
@@ -71,11 +74,11 @@ var TreasureHuntLayer = cc.Layer.extend({
             frame.setPosition(cc.p(point.x + 2, point.y - 2));
             this.addChild(frame);
 
-            var nameLabel = cc.LabelTTF.create(table[i].name, "黑体", 23);
-            nameLabel.setPosition(point);
-            this.addChild(nameLabel);
+            var iconSprite = cc.Sprite.create(this._getIconUrl(table[i].type));
+            iconSprite.setPosition(point);
+            this.addChild(iconSprite);
 
-            var valueLabel = cc.LabelTTF.create("+" + table[i].value, "黑体", 15);
+            var valueLabel = cc.LabelTTF.create("+" + table[i].value, "黑体", 16);
             valueLabel.setAnchorPoint(cc.p(1, 0));
             valueLabel.setPosition(cc.p(point.x + 33, point.y - 35));
             this.addChild(valueLabel);
@@ -87,17 +90,35 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._selectFrame.setVisible(false);
 
         var treasureHuntItem = cc.MenuItemImage.create(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.button9d,
+            main_scene_image.button35,
+            main_scene_image.button35,
             this._onClickTreasureHunt,
             this
         );
-        treasureHuntItem.setPosition(cc.p(360, 600));
+        treasureHuntItem.setPosition(cc.p(360, 630));
 
         var menu = cc.Menu.create(treasureHuntItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
+
+        this._tipLabel = cc.Sprite.create(main_scene_image.icon114);
+        this._tipLabel.setPosition(cc.p(360, 780));
+        this.addChild(this._tipLabel);
+//        this._tipLabel.setVisible(false);
+
+        var helpLabel = cc.Sprite.create(main_scene_image.icon113);
+        helpLabel.setPosition(cc.p(360, 400));
+        this.addChild(helpLabel);
+
+        this._freeCountLabel = cc.LabelTTF.create("0", "黑体", 30);
+        this._freeCountLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._freeCountLabel.setPosition(cc.p(400, 427));
+        this.addChild(this._freeCountLabel);
+
+        this._countLabel = cc.LabelTTF.create("0", "黑体", 30);
+        this._countLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._countLabel.setPosition(cc.p(400, 373));
+        this.addChild(this._countLabel);
 
         return true;
     },
@@ -106,6 +127,36 @@ var TreasureHuntLayer = cc.Layer.extend({
         cc.log("TreasureHuntLayer update");
 
 
+    },
+
+    _getIconUrl: function (type) {
+        var url = "";
+
+        switch (type) {
+            case "power":
+                url = main_scene_image.icon106;
+                break;
+            case "elixir":
+                url = main_scene_image.icon107;
+                break;
+            case "money":
+                url = main_scene_image.icon108;
+                break;
+            case "skillPoint":
+                url = main_scene_image.icon109;
+                break;
+            case "energy":
+                url = main_scene_image.icon110;
+                break;
+            case "spirit":
+                url = main_scene_image.icon111;
+                break;
+            case "gold":
+                url = main_scene_image.icon112;
+                break;
+        }
+
+        return url;
     },
 
     _getRandomIndex: function () {

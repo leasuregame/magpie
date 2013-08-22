@@ -15673,21 +15673,21 @@ var outputTables = {
             },
             "6": {
                 "id": 6,
-                "type": "money",
-                "value": 1000,
-                "name": "铜板"
+                "type": "spirit",
+                "value": 50,
+                "name": "灵气"
             },
             "7": {
                 "id": 7,
-                "type": "money",
-                "value": 10000,
-                "name": "铜板"
+                "type": "spirit",
+                "value": 100,
+                "name": "灵气"
             },
             "8": {
                 "id": 8,
-                "type": "money",
-                "value": 200000,
-                "name": "铜板"
+                "type": "spirit",
+                "value": 1000,
+                "name": "灵气"
             },
             "9": {
                 "id": 9,
@@ -15727,21 +15727,21 @@ var outputTables = {
             },
             "15": {
                 "id": 15,
-                "type": "reiki",
-                "value": 50,
-                "name": "灵气"
+                "type": "money",
+                "value": 1000,
+                "name": "铜板"
             },
             "16": {
                 "id": 16,
-                "type": "reiki",
-                "value": 100,
-                "name": "灵气"
+                "type": "money",
+                "value": 10000,
+                "name": "铜板"
             },
             "17": {
                 "id": 17,
-                "type": "reiki",
-                "value": 1000,
-                "name": "灵气"
+                "type": "money",
+                "value": 200000,
+                "name": "铜板"
             },
             "18": {
                 "id": 18,

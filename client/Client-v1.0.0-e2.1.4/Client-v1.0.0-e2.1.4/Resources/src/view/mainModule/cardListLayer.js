@@ -69,6 +69,10 @@ var CardListLayer = cc.Layer.extend({
         headIcon.setPosition(cc.p(40, 962));
         this.addChild(headIcon);
 
+        var lineIcon = cc.Sprite.create(main_scene_image.icon18);
+        lineIcon.setPosition(cc.p(360, 887));
+        this.addChild(lineIcon);
+
         var cardList = gameData.cardList.get("cardList");
         var scrollViewLayer = MarkLayer.create(cc.rect(67, 260, 586, 620));
 

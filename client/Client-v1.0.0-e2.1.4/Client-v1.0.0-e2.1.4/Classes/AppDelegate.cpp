@@ -204,7 +204,7 @@ bool UpdateLayer::init()
     
     CCMenuItemFont::setFontSize(50);
     
-    pItemReset = CCMenuItemFont::create("删除", this, menu_selector(UpdateLayer::reset));
+    pItemReset = CCMenuItemFont::create("重置", this, menu_selector(UpdateLayer::reset));
     pItemEnter = CCMenuItemFont::create("进入", this, menu_selector(UpdateLayer::enter));
     pItemUpdate = CCMenuItemFont::create("更新", this, menu_selector(UpdateLayer::update));
     

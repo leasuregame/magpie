@@ -63,8 +63,8 @@ class Hero extends Module
       @skill = new Skill(@, @skill_setting)
 
   attack: (callback) ->
-    enemys = @skill.getTargets()
-    if @skill? and @skill.check(enemys)
+    if @skill? and @skill.check()
+      enemys = @skill.getTargets()
       @usingSkill(callback, enemys)
     else
       @normalAttack(callback)
@@ -101,7 +101,7 @@ class Hero extends Module
   skillAttack: (enemys, percent, isSpiritor, callback) ->
     # 负的a的id代表技能攻击
     _step = {a: -@idx, d: [], e: [], r: []}
-    _step.t = 'spirit' if isSpiritor
+    _step.t = 1 if isSpiritor
     
     _len = enemys? and enemys.length or 0
     _dmg = parseInt(@atk * @skill.effectValue() * percent / 100)
@@ -113,7 +113,6 @@ class Hero extends Module
         _step.d.push _d
         _step.e.push 0
         log.debug enemy.idx, '闪避'
-        callback enemy
         continue
       else if @isCrit()
         # 暴击
@@ -134,13 +133,12 @@ class Hero extends Module
 
       enemy.damage _dmg, @, _step
 
-      callback enemy
-
-    @log _step     
+    @log _step
+    callback enemys     
 
   cure: (enemys, percent, isSpiritor, callback) ->
     _step = {a: -@idx, d: [], e: []}
-    _step.t = 'spirit' if isSpiritor
+    _step.t = 1 if isSpiritor
     
     _hp = parseInt(@init_hp * @skill.effectValue() * percent / 100)
     
@@ -152,10 +150,10 @@ class Hero extends Module
       # debug
       _step['dhp'] = enemy.hp
 
-      callback enemy
       log.info "#{enemy.idx} 加血 #{_hp}"
 
     @log _step
+    callback enemys
 
   normalAttack: (callback) ->    
     _hero = @player.enemy.herosToBeAttacked 'default', @pos
@@ -181,15 +179,15 @@ class Hero extends Module
       log.debug "#{_hero.idx} 受到伤害 #{_e}"
 
       _hero.damage _dmg, @, _step
-      callback _hero
       # debug
       _step['dhp'] = _hero.hp
 
       @log _step
-      
+      callback _hero
     else
       log.error "普通攻击：找不到对方可攻击的卡牌"
       #throw new Error('Normal Attack Error: can not find target to be attacked.')
+      callback()
 
   damage: (value, enemy, step) ->
     # 检查辅助效果，伤害减少

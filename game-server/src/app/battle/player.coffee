@@ -9,6 +9,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 
 copyAttrs = (self, ent) ->
   self.id = ent.id 
+  self.name = ent.name
   self.lv = ent.lv
   self.exp = ent.exp
   self.lineUp = ent.lineUp
@@ -17,10 +18,11 @@ copyAttrs = (self, ent) ->
 
 defaultEntity = 
   id: 0
+  name: 'anyone'
   lv: 0
   exp: 0
   lineUp: ''
-  spiritor: new Spiritor(lv: 0)
+  spiritor: {lv: 0}
   cards: []
 
 class Player extends Module
@@ -51,12 +53,19 @@ class Player extends Module
       #@dead = true
     else
       logger.info "#{@name} 出手", _hero.idx
-      _hero.attack (enemyHero) ->
-        if enemyHero.death()
+      _hero.attack (enemyHeros) =>
+        return callback() if not enemyHeros
+
+        enemyHeros = [enemyHeros] if not _.isArray(enemyHeros)
+        hasDeath = not _.isEmpty(enemyHeros.filter (h) -> h.death())
+
+        console.log 'death: ', hasDeath
+        if hasDeath and not @enemy.death()
+          logger.warn '卡牌死亡，判断触发元神之怒'
           ### 触发元神之怒 ###
-          @spiritor.angry(enemyHero, callback)
+          @enemy.spiritor.angry(enemyHeros, callback)
         else 
-          callback(enemyHero)
+          callback(enemyHeros)
 
   setEnemy: (enm, is_attacker = false) ->
     @enemy = enm

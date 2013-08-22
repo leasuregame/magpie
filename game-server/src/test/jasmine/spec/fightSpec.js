@@ -22,8 +22,8 @@ describe("Battle Server", function() {
 
       it("should can be return the correct battle log", function() {
         request('battle.fightHandler.attack', {
-          playerId: 1,
-          targetId: 2
+          playerId: 100,
+          targetId: 101
         }, function(data) {
           console.log(data);
           expect(data.code).toEqual(200);

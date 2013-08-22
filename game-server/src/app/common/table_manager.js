@@ -3,14 +3,13 @@ var fs = require("fs");
 var loadtable = require("./loadtable");
 var path = require('path');
 
-DATA_DIR = path.join('../../data/');
+DATA_DIR = path.join(__dirname, '../../data/');
 
 module.exports = {
   _tables: {}, //下划线表示不应该直接访问
   //获取数据表格
 
   cacheTables: function() {
-    process.chdir(__dirname);
     if (fs.existsSync(DATA_DIR + 'table.json')){
       this.loadTableData(JSON.parse(fs.readFileSync(DATA_DIR + 'table.json')));
     } else {

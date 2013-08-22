@@ -9,26 +9,34 @@ class Spiritor extends Module
 
   init: (attrs) ->
     @lv = attrs.lv
-
+    
     spirit = table.getTableItem('spirit', @lv)
     @hp_inc = spirit.hp_inc
     @atk_inc = spirit.atk_inc
-    @spirit_atk_inc = spirit.spirit_atk_inc
+    @spirit_atk_pct = spirit.spirit_atk_pct
     @rate = spirit.rate
 
   trigger: () ->
-    utility.hitRate @rate
+    console.log @
+    res = utility.hitRate @rate
+    console.log 'trigger: ', res
+    res
 
-  angry: (hero, cb) ->
-    return cb(hero) if not trigger()
-    return cb(hero) if not hero.skill
+  angry: (heros, cb) ->
+    for hero in heros
+      continue if not hero.skill
 
-    console.log '元神攻击', @lv, @spirit_atk_inc
-    hero.usingSkill(
-      (res) ->
-        cb(hero)
-      , null
-      , @spirit_atk_inc
-    )
+      if @trigger()
+        console.log '元神攻击', @lv, @spirit_atk_pct
+        hero.usingSkill(
+          (res) ->
+            cb(hero)
+          , null
+          , @spirit_atk_pct
+          , true
+        )
+        break
+        
+    cb(heros)
 
 module.exports = Spiritor

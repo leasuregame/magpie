@@ -92,7 +92,9 @@ var Card = (function(_super) {
         if (type == GROUP_EFFECT_HP) {
             effect_val = 25;
         }
-        this.set(_property[type] + 'Addition', parseInt(this[_property[type]] * effect_val / 100));
+        var aval = parseInt(this[_property[type]] * effect_val / 100);
+        this.increase(_property[type] + 'Addition', aval);
+        this.increase(_property[tpe], aval);
         return this;
     };
 

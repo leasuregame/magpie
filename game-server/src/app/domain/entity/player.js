@@ -107,6 +107,16 @@ var Player = (function(_super) {
         }
     };
 
+    Player.prototype.activeSpiritorEffect = function(){
+        var spiritConfig = table.getTableItem('spirit', this.spiritor.lv);
+
+        var cards = this.activeCards();
+        cards.forEach(function(card) {
+            card.hp += parseInt(card.hp * spiritConfig.hp_inc);
+            card.atk += parseInt(card.atk * spiritConfig.atk_inc);
+        });
+    };
+
     Player.prototype.save = function() {
         Player.__super__.save.apply(this, arguments);
         // update all cards info

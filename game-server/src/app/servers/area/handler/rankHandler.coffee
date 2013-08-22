@@ -2,6 +2,7 @@ playerManager = require '../../../manager/playerManager'
 rankManager = require '../../../manager/rankManager'
 table = require '../../../manager/table'
 async = require 'async'
+_ = require 'underscore'
 
 INTERVALS = 
   10000: 100

@@ -16,7 +16,6 @@ function tryMkdir(file) {
 }
 
 var files = [
-  '../data/table.json',
   '../../client/Client/Client/Resources/src/table/table.json',
   '../../client/Client-v1.0.0-e2.1.4/Client-v1.0.0-e2.1.4/Resources/src/table/table.json'];
 
@@ -38,5 +37,7 @@ var tabledata = require("../app/common/loadtable")(
 files.forEach(function(filepath){
   fs.writeFileSync(filepath, JSON.stringify(tabledata.client));
 });
+
+fs.writeFileSync('../data/table1.json', JSON.stringify(tabledata.exports));
 
 console.log('complete');

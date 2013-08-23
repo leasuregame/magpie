@@ -1,6 +1,7 @@
 table = require './table'
 taskRate = require '../../config/data/taskRate'
 psConfig = require '../../config/data/passSkill'
+spiritConfig = require '../../config/data/spirit'
 utility = require '../common/utility'
 dao = require('pomelo').app.get('dao')
 async = require('async')
@@ -130,10 +131,20 @@ class Manager
   @obtainBattleRewards: (player, taskId, battleLog, cb) ->
     taskData = table.getTableItem 'task_config', taskId
 
-    ### 标记为已经赢得战斗 ###
     task = _.clone(player.task)
-    task.hasWin = true
-    player.task = task
+    if not task.hasWin
+      ### 标记为已经赢得战斗 ###
+      task.hasWin = true
+      player.task = task
+
+      ### the first time win, obtain some spirit ###
+      spirit = 0
+      _.each battleLog.enemy.cards, (v, k) ->
+        if v.boss?
+          spirit += spiritConfig.SPIRIT.TASK.BOSS
+        else 
+          spirit += spiritConfig.SPIRIT.TASK.OTHER
+      battleLog.rewards.spirit = spirit
 
     # 奖励掉落卡牌
     ids = taskData.cards.split('#').map (id) ->

@@ -15,12 +15,8 @@ beforeEach(function() {
       );
 
       var cards_ok = false;
-      var enemy_card_length = _.filter(battleLog.enemy.cards, function(e) {
-        return e !== null;
-      }).length;
-      var own_card_length = _.filter(battleLog.own.cards, function(e) {
-        return e !== null;
-      }).length;
+      var enemy_card_length = _.keys(battleLog.enemy.cards).length;
+      var own_card_length = _.keys(battleLog.own.cards).length;
 
       cards_ok = enemy_card_length > 0 && own_card_length > 0;
 
@@ -54,7 +50,7 @@ beforeEach(function() {
           var death_man = 0;
           _.each(dmage, function(val, key) {
             k = parseInt(key);
-            if (k >= 6 && battleLog.enemy.cards[k - 6].hp <= val) {
+            if (k >= 6 && battleLog.enemy.cards[k].hp <= val) {
               death_man++;
             }
           })

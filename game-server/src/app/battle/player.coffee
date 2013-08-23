@@ -117,7 +117,7 @@ class Player extends Module
   getCards: ->
     cobj = {}
     cobj[c.idx] = {
-      id: c.id
+      tableId: c.card_id
       hp: c.hp
     } for c in @heros
     cobj

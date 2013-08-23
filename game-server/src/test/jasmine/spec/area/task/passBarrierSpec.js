@@ -46,7 +46,6 @@ describe("Area Server", function() {
 						doAjax('/player/' + arthur.playerId, {}, function(res) {
 							expect(JSON.parse(res.data.pass)).toEqual(data.msg.pass);
 						});
-						expect(data.msg.battleLog).toEqual('');
 					});
 				});
 			});

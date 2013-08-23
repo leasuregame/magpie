@@ -90,7 +90,7 @@ var BattlePlayer = cc.Class.extend({
 //            cc.Director.getInstance().replaceScene(cc.TransitionTurnOffTiles.create(1, MainScene.getInstance()));
         }, 0, 0, 1.5, false);
     }
-})
+});
 
 
 /*

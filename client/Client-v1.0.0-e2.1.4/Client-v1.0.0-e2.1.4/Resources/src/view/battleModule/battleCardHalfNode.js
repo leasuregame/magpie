@@ -79,7 +79,7 @@ var BattleCardHalfNode = cc.Node.extend({
         var bb = cc.Sequence.create(waitTime.copy(), a3, a4, a5, a6);
         this.runAction(bb);
     }
-})
+});
 
 
 BattleCardHalfNode.create = function (card) {
@@ -90,4 +90,4 @@ BattleCardHalfNode.create = function (card) {
     }
 
     return null;
-}
+};

@@ -91,4 +91,4 @@ var SkillFactory = {
 
         return 2.0;
     }
-}
+};

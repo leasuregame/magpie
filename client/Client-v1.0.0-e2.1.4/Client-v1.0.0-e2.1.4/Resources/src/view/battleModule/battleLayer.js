@@ -116,7 +116,7 @@ var BatterLayer = cc.Layer.extend({
         this.stopAllActions();
         BattlePlayer.getInstance().end();
     }
-})
+});
 
 
 BatterLayer.create = function (battleLog) {
@@ -127,4 +127,4 @@ BatterLayer.create = function (battleLog) {
     }
 
     return null;
-}
+};

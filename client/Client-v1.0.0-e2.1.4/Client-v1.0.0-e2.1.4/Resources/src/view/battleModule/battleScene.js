@@ -6,6 +6,12 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
+/*
+ * battle scene
+ * */
+
+
 var BattleScene = cc.Scene.extend({
     init: function (battleLog) {
         if (!this._super()) return false;
@@ -15,7 +21,7 @@ var BattleScene = cc.Scene.extend({
 
         return true;
     }
-})
+});
 
 
 BattleScene.create = function (battleLogId) {
@@ -26,4 +32,4 @@ BattleScene.create = function (battleLogId) {
     }
 
     return null;
-}
+};

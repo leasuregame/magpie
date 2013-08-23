@@ -76,6 +76,7 @@ var Card = Entity.extend({
             this.set("hpAddition", data.hpAddition);
             this.set("atkAddition", data.atkAddition);
             this.set("elixir", data.elixir);
+
             this._updatePassiveSkill(data.passiveSkills);
         }
 

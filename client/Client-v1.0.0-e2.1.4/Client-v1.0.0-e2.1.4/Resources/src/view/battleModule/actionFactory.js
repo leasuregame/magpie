@@ -39,4 +39,4 @@ var ActionFactory = {
 
         return {action: a, time: 1.0 / GAME_COMBAT_SPEED};
     }
-}
+};

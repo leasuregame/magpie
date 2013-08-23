@@ -14,8 +14,8 @@
 
 var LineUpLayer = LazyLayer.extend({
     _menu: null,
-    _cardNode: {},
-    _selectCard: 0,
+    _node: {},
+    _selectNode: 0,
     _locate: {
         1: cc.p(172, 764),
         2: cc.p(360, 764),
@@ -48,15 +48,20 @@ var LineUpLayer = LazyLayer.extend({
             var cardId = lineUp.getLineUpByIndex(i);
 
             if (cardId) {
-                var card = cardList.getCardByIndex(cardId);
+                var node = null;
 
-                var cardNode = CardHalfNode.create(card);
-                cardNode.setPosition(this._locate[i]);
-                this.addChild(cardNode);
+                if (cardId == -1) {
+                    node = SpiritNode.create();
+                    node.setScale(0.7);
+                } else {
+                    node = CardHalfNode.create(cardList.getCardByIndex(cardId));
+                }
 
-                this._cardNode[i] = cardNode;
+                node.setPosition(this._locate[i]);
+                this.addChild(node);
+                this._node[i] = node;
             } else {
-                this._cardNode[i] = null;
+                this._node[i] = null;
             }
         }
 
@@ -112,8 +117,8 @@ var LineUpLayer = LazyLayer.extend({
         var lineUp = {};
 
         for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            if (this._cardNode[i] != null) {
-                lineUp[i] = this._cardNode[i].getCardId();
+            if (this._node[i] != null) {
+                lineUp[i] = this._node[i].getId();
             }
         }
 
@@ -132,12 +137,12 @@ var LineUpLayer = LazyLayer.extend({
 
         for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
             if (cc.rectContainsPoint(this._touchRect[i], point)) {
-                if (this._cardNode[i] != null) {
+                if (this._node[i] != null) {
                     cc.log("touch card " + i);
 
-                    this._selectCard = i;
-                    this._cardNode[i].setZOrder(1);
-                    this._cardNode[i].setPosition(point);
+                    this._selectNode = i;
+                    this._node[i].setZOrder(1);
+                    this._node[i].setPosition(point);
 
                     return true;
                 }
@@ -155,10 +160,10 @@ var LineUpLayer = LazyLayer.extend({
     onTouchMoved: function (touch, event) {
         cc.log("LineUpLayer onTouchMoved");
 
-        if (this._selectCard > 0) {
+        if (this._selectNode > 0) {
             var point = touch.getLocation();
 
-            this._cardNode[this._selectCard].setPosition(point);
+            this._node[this._selectNode].setPosition(point);
 
             return;
         }
@@ -174,26 +179,26 @@ var LineUpLayer = LazyLayer.extend({
     onTouchEnded: function (touch, event) {
         cc.log("LineUpLayer onTouchEnded");
 
-        if (this._selectCard > 0) {
+        if (this._selectNode > 0) {
             var point = touch.getLocation();
 
             for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
                 if (cc.rectContainsPoint(this._touchRect[i], point)) {
-                    var cardNode = this._cardNode[this._selectCard];
+                    var node = this._node[this._selectNode];
 
 
-                    this._cardNode[this._selectCard] = this._cardNode[i];
-                    if (this._cardNode[i] != null) {
-                        this._cardNode[i].setPosition(this._locate[this._selectCard]);
+                    this._node[this._selectNode] = this._node[i];
+                    if (this._node[i] != null) {
+                        this._node[i].setPosition(this._locate[this._selectNode]);
                     }
 
-                    this._cardNode[i] = cardNode;
-                    if (cardNode != null) {
-                        cardNode.setPosition(this._locate[i]);
-                        cardNode.setZOrder(0);
+                    this._node[i] = node;
+                    if (node != null) {
+                        node.setPosition(this._locate[i]);
+                        node.setZOrder(0);
                     }
 
-                    this._selectCard = 0;
+                    this._selectNode = 0;
 
                     return;
                 }
@@ -212,10 +217,10 @@ var LineUpLayer = LazyLayer.extend({
     onTouchCancelled: function (touch, event) {
         cc.log("LineUpLayer onTouchCancelled");
 
-        if (this._selectCard > 0) {
-            this._cardNode[this._selectCard].setPosition(this._locate[this._selectCard]);
-            this._cardNode[this._selectCard].setZOrder(0);
-            this._selectCard = 0;
+        if (this._selectNode > 0) {
+            this._node[this._selectNode].setPosition(this._locate[this._selectNode]);
+            this._node[this._selectNode].setZOrder(0);
+            this._selectNode = 0;
         }
 
         this._super(touch, event);

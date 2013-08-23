@@ -88,7 +88,7 @@ var CardListLayer = cc.Layer.extend({
             this._cardLabel[key] = cardLabel;
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(586, 620), scrollViewLayer);
+        this._scrollView = cc.ScrollView.create(cc.size(594, 620), scrollViewLayer);
         this._scrollView.setPosition(cc.p(60, 260));
 //        this._scrollView.setBounceable(false);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
@@ -152,7 +152,7 @@ var CardListLayer = cc.Layer.extend({
 
         if (this._scrollViewHeight < 620) this._scrollViewHeight = 620;
 
-        this._scrollView.setContentSize(cc.size(GAME_WIDTH, this._scrollViewHeight));
+        this._scrollView.setContentSize(cc.size(594, this._scrollViewHeight));
         this._scrollView.updateInset();
 
         var offsetPoint = this._scrollView.minContainerOffset();
@@ -337,7 +337,9 @@ var CardListLayer = cc.Layer.extend({
         var len = lineUp.length;
 
         for (var i = 0; i < len; ++i) {
-            this._cardLabel[lineUp[i]].select();
+            if (this._cardLabel[lineUp[i]] !== undefined) {
+                this._cardLabel[lineUp[i]].select();
+            }
         }
 
     },
@@ -474,7 +476,9 @@ var CardListLayer = cc.Layer.extend({
         var lineUp = gameData.lineUp.getLineUpList();
         var len = lineUp.length;
         for (var i = 0; i < len; ++i) {
-            this._excludeList.push(lineUp[i]);
+            if (this._cardLabel[lineUp[i]] !== undefined) {
+                this._excludeList.push(lineUp[i]);
+            }
         }
 
         if (this._otherData.leadCard) {
@@ -601,7 +605,9 @@ var CardListLayer = cc.Layer.extend({
         var lineUp = gameData.lineUp.getLineUpList();
         var len = lineUp.length;
         for (var i = 0; i < len; ++i) {
-            this._excludeList.push(lineUp[i]);
+            if (this._cardLabel[lineUp[i]] !== undefined) {
+                this._excludeList.push(lineUp[i]);
+            }
         }
 
         var tipLabel = cc.Sprite.create(main_scene_image.icon57);

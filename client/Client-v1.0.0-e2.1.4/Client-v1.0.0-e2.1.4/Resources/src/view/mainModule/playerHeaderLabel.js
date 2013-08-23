@@ -91,7 +91,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
     _onClickPlayerDetails: function () {
         cc.log("MainLayer _onClickPlayerDetails");
 
-        MainScene.getInstance().addChild(PlayerDetailsLayer.create(), 1);
+        MainScene.getInstance().addChild(PlayerDetails.create(), 1);
     },
 
     onTouchesBegan: function (touches, event) {

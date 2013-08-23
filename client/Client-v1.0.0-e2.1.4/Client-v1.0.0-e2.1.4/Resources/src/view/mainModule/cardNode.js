@@ -28,8 +28,8 @@ var CardNode = cc.Node.extend({
         return true;
     },
 
-    getCardId: function () {
-        cc.log("CardNode getCardId");
+    getId: function () {
+        cc.log("CardNode getId");
 
         return this._card.get("id");
     }

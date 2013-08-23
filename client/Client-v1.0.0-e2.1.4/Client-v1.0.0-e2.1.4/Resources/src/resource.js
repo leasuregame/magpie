@@ -60,6 +60,8 @@ var main_scene_image = {
     card0: main_scene_path + "card0.png",
     card1: main_scene_path + "card1.png",
 
+    spirit1: main_scene_path + "spirit1.png",
+
     progress2: main_scene_path + "progress2.png",
     progress3: main_scene_path + "progress3.png",
     progress4: main_scene_path + "progress4.png",
@@ -67,6 +69,8 @@ var main_scene_image = {
     progress6: main_scene_path + "progress6.png",
     progress7: main_scene_path + "progress7.png",
     progress8: main_scene_path + "progress8.png",
+    progress9: main_scene_path + "progress9.png",
+    progress10: main_scene_path + "progress10.png",
 
     card_frame_s: main_scene_path + "card_frame_s.png",
     card_frame1: main_scene_path + "card_frame1.png",
@@ -274,7 +278,8 @@ var main_scene_image = {
     icon111: main_scene_path + "icon111.png",
     icon112: main_scene_path + "icon112.png",
     icon113: main_scene_path + "icon113.png",
-    icon114: main_scene_path + "icon114.png"
+    icon114: main_scene_path + "icon114.png",
+    icon115: main_scene_path + "icon115.png"
 };
 
 var main_scene_res = [

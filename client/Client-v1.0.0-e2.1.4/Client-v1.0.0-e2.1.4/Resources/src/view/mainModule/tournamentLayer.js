@@ -32,48 +32,47 @@ var TournamentLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        var bgSprite = cc.Sprite.create(main_scene_image.bg12);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
 
         var tournamentMessageLabel = TournamentMessageLabel.create();
-        tournamentMessageLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 1011));
+        tournamentMessageLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 1013));
         this.addChild(tournamentMessageLabel);
 
         var playerLabel = cc.Sprite.create(main_scene_image.bg14);
         playerLabel.setAnchorPoint(cc.p(0, 0));
-        playerLabel.setPosition(cc.p(40, 868));
-        playerLabel.setPosition(cc.p(40, 868));
+        playerLabel.setPosition(cc.p(40, 873));
         this.addChild(playerLabel);
 
         this._nameLabel = cc.LabelTTF.create("null", '黑体', 30);
         this._nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._nameLabel.setPosition(cc.p(150, 988));
+        this._nameLabel.setPosition(cc.p(150, 974));
         this.addChild(this._nameLabel);
 
         this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0, true);
-        this._expProgress.setPosition(cc.p(225, 955));
+        this._expProgress.setPosition(cc.p(225, 941));
         this._expProgress.setScale(0.8);
         this.addChild(this._expProgress, 2);
 
         var lvBg = cc.Sprite.create(main_scene_image.lv_bg);
-        lvBg.setPosition(cc.p(100, 968));
+        lvBg.setPosition(cc.p(100, 954));
         lvBg.setScale(0.8);
         this.addChild(lvBg, 2);
 
         this._lvLabel = cc.LabelTTF.create("0", '黑体', 45);
         this._lvLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._lvLabel.setPosition(cc.p(100, 968));
+        this._lvLabel.setPosition(cc.p(100, 954));
         this._lvLabel.setScale(0.8);
         this.addChild(this._lvLabel, 2);
 
         this._rankLabel = cc.LabelTTF.create(0, '黑体', 25);
-        this._rankLabel.setPosition(cc.p(438, 954));
+        this._rankLabel.setPosition(cc.p(440, 940));
         this.addChild(this._rankLabel);
 
         this._abilityLabel = cc.LabelTTF.create(0, '黑体', 25);
-        this._abilityLabel.setPosition(cc.p(603, 954));
+        this._abilityLabel.setPosition(cc.p(605, 940));
         this.addChild(this._abilityLabel);
 
         return true;

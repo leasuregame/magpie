@@ -106,8 +106,6 @@ var LazyMenu = cc.Menu.extend({
             point = cc.p(point.x - this._touchBeganPoint.x, point.y - this._touchBeganPoint.y);
             var distance = point.x * point.x + point.y * point.y;
 
-            cc.log(distance);
-
             if (distance > 100) {
                 this._isScroll = true;
             }

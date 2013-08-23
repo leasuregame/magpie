@@ -12,7 +12,7 @@
  * */
 
 
-var PlayerDetailsLayer = LazyLayer.extend({
+var PlayerDetails = LazyLayer.extend({
     _goldLabel: null,
     _moneyLabel: null,
     _skillPointLabel: null,
@@ -22,32 +22,20 @@ var PlayerDetailsLayer = LazyLayer.extend({
     _menu: null,
 
     onEnter: function () {
-        cc.log("PlayerDetailsLayer onEnter");
+        cc.log("PlayerDetails onEnter");
 
         this._super();
         this.update();
     },
 
     init: function () {
-        cc.log("PlayerDetailsLayer init");
+        cc.log("PlayerDetails init");
 
         if (!this._super()) return false;
 
         var bgSprite = cc.Sprite.create(main_scene_image.player_details_bg);
         bgSprite.setPosition(GAME_MIDPOINT);
         this.addChild(bgSprite);
-
-        var closeItem = cc.MenuItemImage.create(
-            main_scene_image.button0,
-            main_scene_image.button0s,
-            this._onClickClose,
-            this
-        );
-        closeItem.setPosition(cc.p(620, 1000));
-
-        this._menu = cc.Menu.create(closeItem);
-        this._menu.setPosition(cc.p(0, 0));
-        this.addChild(this._menu);
 
         this._goldLabel = cc.LabelTTF.create("0", '黑体', 30);
         this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
@@ -84,11 +72,23 @@ var PlayerDetailsLayer = LazyLayer.extend({
         tipLabel.setPosition(cc.p(150, 250));
         this.addChild(tipLabel);
 
+        var closeItem = cc.MenuItemImage.create(
+            main_scene_image.button0,
+            main_scene_image.button0s,
+            this._onClickClose,
+            this
+        );
+        closeItem.setPosition(cc.p(620, 1000));
+
+        this._menu = cc.Menu.create(closeItem);
+        this._menu.setPosition(cc.p(0, 0));
+        this.addChild(this._menu);
+
         return true;
     },
 
     update: function () {
-        cc.log("PlayerDetailsLayer update");
+        cc.log("PlayerDetails update");
 
         var player = gameData.player;
 
@@ -101,7 +101,7 @@ var PlayerDetailsLayer = LazyLayer.extend({
     },
 
     _onClickClose: function () {
-        cc.log("PlayerDetailsLayer _onClickClose");
+        cc.log("PlayerDetails _onClickClose");
 
         this._menu.setEnabled(false);
 
@@ -110,8 +110,8 @@ var PlayerDetailsLayer = LazyLayer.extend({
 });
 
 
-PlayerDetailsLayer.create = function () {
-    var ret = new PlayerDetailsLayer();
+PlayerDetails.create = function () {
+    var ret = new PlayerDetails();
 
     if (ret && ret.init()) {
         return ret;

@@ -88,7 +88,7 @@ var PassLayer = cc.Layer.extend({
 
         var tipLabel = cc.Sprite.create(main_scene_image.bg6);
         tipLabel.setAnchorPoint(cc.p(0, 0));
-        tipLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 873));
+        tipLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 894));
         this.addChild(tipLabel);
 
         var wipeOutItem = cc.MenuItemImage.create(

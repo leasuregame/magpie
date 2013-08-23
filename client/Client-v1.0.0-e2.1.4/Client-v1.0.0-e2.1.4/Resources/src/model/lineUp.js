@@ -34,7 +34,7 @@ var LineUp = Entity.extend({
 
         this._lineUp = {};
         for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            if (data[i]) {
+            if (data[i] !== undefined) {
                 this._lineUpCount++;
                 this._lineUp[i] = data[i];
             }
@@ -47,8 +47,10 @@ var LineUp = Entity.extend({
         var lineUpCardList = [];
         var cardList = gameData.cardList;
 
-        for (var key in this._lineUp) {
-            lineUpCardList.push(cardList.getCardByIndex(this._lineUp[key]));
+        for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
+            if (this._lineUp[i] !== undefined && this._lineUp[i] >= 0) {
+                lineUpCardList.push(cardList.getCardByIndex(this._lineUp[i]));
+            }
         }
 
         return lineUpCardList;
@@ -59,39 +61,19 @@ var LineUp = Entity.extend({
 
         var lineUpList = [];
 
-        for (var key in this._lineUp) {
-            lineUpList.push(this._lineUp[key]);
+        for (var i = 1; i < MAX_LINE_UP_SIZE; ++i) {
+            if (this._lineUp[i] !== undefined) {
+                lineUpList.push(this._lineUp[i]);
+            }
         }
 
         return lineUpList;
     },
 
     getLineUpByIndex: function (index) {
-        cc.log("LineUp getLineUpByIndex");
-        cc.log(index);
+        cc.log("LineUp getLineUpByIndex: " + index);
 
         return (this._lineUp[index] ? this._lineUp[index] : null);
-    },
-
-    setLineUp: function (cardId) {
-        cc.log("LineUp setLineUp");
-
-        if (this._lineUpCount < MAX_LINE_UP_CARD) {
-            for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-                if (this._lineUp[i] == null) {
-                    this._lineUp[i] = cardId;
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    },
-
-    setLineUpByIndex: function (index, cardId) {
-        cc.log("LineUp setLineUpByIndex");
-
-        this._lineUp[index] = cardId;
     },
 
     isLineUpCard: function (cardId) {
@@ -107,7 +89,7 @@ var LineUp = Entity.extend({
     },
 
     changeLineUp: function (cb, lineUp) {
-        cc.log("LineUp changeLineUp");
+        cc.log("LineUp changeLineUp: " + lindeUp);
         cc.log(lineUp);
 
         for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {

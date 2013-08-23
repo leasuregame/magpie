@@ -52,30 +52,23 @@ var LineUpLabel = cc.Layer.extend({
 
         this.removeAllChildren();
 
-        var lineUpList = this._lineUp.getLineUpCardList();
-
+        var lineUpCardList = this._lineUp.getLineUpCardList();
+        cc.log(lineUpCardList);
         var menu = cc.Menu.create();
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
         for (var i = 0; i < MAX_LINE_UP_CARD; ++i) {
-            var card = lineUpList[i];
-            var star = 1;
-
-            if (card) {
-                var cardHeadItem = CardHeadNode.getCardHeadItem(card, this._onClickCard(card), this);
-                cardHeadItem.setPosition(cc.p(79 + 122 * i, 0));
-                menu.addChild(cardHeadItem);
-            }
+            var cardHeadItem = CardHeadNode.getCardHeadItem(lineUpCardList[i], this._onClickCard, this);
+            cardHeadItem.setPosition(cc.p(79 + 122 * i, 0));
+            menu.addChild(cardHeadItem);
         }
     },
 
-    _onClickCard: function (card) {
-        return function () {
-            cc.log("LineUpLabel _onClickCard");
+    _onClickCard: function () {
+        cc.log("LineUpLabel _onClickCard");
 
-            MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_LINEUP));
-        }
+        MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_LINEUP));
     }
 });
 

@@ -18,18 +18,27 @@ var CardHeadNode = CardNode.extend({
 
         if (!this._super(card)) return false;
 
-        var url = this._card.get("url");
-        var star = this._card.get("star");
-        var index = Math.floor((star - 1) / 2) + 1;
+        var url = "";
+        var star = 1;
+        var index = 1;
+
+        if (this._card) {
+            url = this._card.get("url");
+            star = this._card.get("star");
+            index = Math.floor((star - 1) / 2) + 1;
+        }
+
 
         this._frameSprite = cc.Sprite.create(main_scene_image["card_item_bg" + star]);
         this._frameSprite.setAnchorPoint(cc.p(0, 0));
         this.addChild(this._frameSprite);
 
-        this._heroSprite = cc.Sprite.create(main_scene_image[url + "_head" + index]);
-        this._heroSprite.setAnchorPoint(cc.p(0, 0));
-        this._heroSprite.setPosition(cc.p(6, 12));
-        this.addChild(this._heroSprite);
+        if (url) {
+            this._heroSprite = cc.Sprite.create(main_scene_image[url + "_head" + index]);
+            this._heroSprite.setAnchorPoint(cc.p(0, 0));
+            this._heroSprite.setPosition(cc.p(6, 12));
+            this.addChild(this._heroSprite);
+        }
 
         this._iconSprite = cc.Sprite.create(main_scene_image.card_item_frame);
         this._iconSprite.setAnchorPoint(cc.p(0, 0));
@@ -55,6 +64,7 @@ CardHeadNode.create = function (card) {
 
 
 CardHeadNode.getCardHeadItem = function (card, cb, target) {
+    card = card || null;
     cb = cb || function () {
         var cardDetails = CardDetails.create(card);
         MainScene.getInstance().addChild(cardDetails, 1);

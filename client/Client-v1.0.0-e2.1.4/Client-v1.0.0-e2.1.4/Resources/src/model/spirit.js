@@ -16,6 +16,9 @@ var Spirit = Entity.extend({
     _lv: 0,
     _exp: 0,
     _maxExp: 0,
+    _rate: 0,
+    _passiveHarm: 0,
+    _skillHarm: 0,
 
     init: function (data) {
         cc.log("Spirit init");
@@ -32,7 +35,19 @@ var Spirit = Entity.extend({
 
         this.set("lv", data.lv);
         this.set("exp", data.spirit);
-        this.set("maxExp", outputTables.spirit.rows[this._lv].spirit_need);
+
+        this._loadTable();
+    },
+
+    _loadTable: function () {
+        cc.log("Spirit _loadTable");
+
+        var table = outputTables.spirit.rows[this._lv];
+
+        this._maxExp = table.spirit_need;
+        this._passiveHarm = table.hp_inc;
+        this._skillHarm = table.spirit_atk_pct;
+        this._rate = table.rate;
     }
 });
 

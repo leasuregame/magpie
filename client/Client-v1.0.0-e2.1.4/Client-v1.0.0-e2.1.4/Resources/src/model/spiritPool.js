@@ -34,7 +34,16 @@ var SpiritPool = Entity.extend({
         this.set("lv", data.lv);
         this.set("exp", data.exp);
         this.set("collectCount", data.collectCount);
-        this.set("maxExp", outputTables.spirit_pool.rows[this._lv].exp_need);
+
+        this._loadTable();
+    },
+
+    _loadTable: function () {
+        cc.log("SpiritPool _loadTable");
+
+        var table = outputTables.spirit_pool.rows[this._lv];
+
+        this._maxExp = table.exp_need;
     },
 
     collect: function (cb, useGold) {

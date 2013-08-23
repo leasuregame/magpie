@@ -47,12 +47,12 @@ var SpiritPoolLayer = cc.Layer.extend({
         titleIcon.setPosition(cc.p(360, 1000));
         this.addChild(titleIcon);
 
-        var soulIcon = cc.Sprite.create(main_scene_image.icon101);
-        soulIcon.setPosition(cc.p(150, 855));
-        this.addChild(soulIcon);
+        var spiritIcon = cc.Sprite.create(main_scene_image.icon101);
+        spiritIcon.setPosition(cc.p(150, 845));
+        this.addChild(spiritIcon);
 
         var countIcon = cc.Sprite.create(main_scene_image.icon98);
-        countIcon.setPosition(cc.p(550, 880));
+        countIcon.setPosition(cc.p(550, 870));
         this.addChild(countIcon);
 
         var lvIcon = cc.Sprite.create(main_scene_image.icon100);
@@ -75,17 +75,20 @@ var SpiritPoolLayer = cc.Layer.extend({
 
         this._countLabel = cc.LabelTTF.create("0 次", "黑体", 25);
         this._countLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._countLabel.setPosition(cc.p(535, 860));
+        this._countLabel.setPosition(cc.p(535, 850));
         this.addChild(this._countLabel);
 
         this._expProgress = Progress.create(
             main_scene_image.progress7,
             main_scene_image.progress8,
-            1,
-            1
+            0,
+            0
         );
         this._expProgress.setPosition(cc.p(360, 250));
         this.addChild(this._expProgress);
+
+        var spiritItem = SpiritNode.getSpiritItem();
+        spiritItem.setPosition(150, 890);
 
         this._spiritPoolItem = cc.MenuItemImage.create(
             main_scene_image.icon97,
@@ -103,7 +106,7 @@ var SpiritPoolLayer = cc.Layer.extend({
         );
         useGoldItem.setPosition(cc.p(360, 380));
 
-        var menu = cc.Menu.create(this._spiritPoolItem, useGoldItem);
+        var menu = cc.Menu.create(spiritItem, this._spiritPoolItem, useGoldItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 

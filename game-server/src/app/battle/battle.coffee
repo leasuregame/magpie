@@ -34,12 +34,13 @@ class Battle extends Base
   start: ->
     _enm = {
       id: @defender.id
-      name: @defender.name
-      lv: @defender.lv
       cards: @defender.getCards()
     }
     battleLog.set('enemy', _enm)
-    battleLog.set('own', {cards: @attacker.getCards()})
+    battleLog.set('own', {
+      id: @attacker.id
+      cards: @attacker.getCards()
+    })
     log.info '    >>> 战斗开始 <<<    '
 
   execute: ->

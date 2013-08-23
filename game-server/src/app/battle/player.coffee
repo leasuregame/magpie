@@ -115,17 +115,13 @@ class Player extends Module
     @
 
   getCards: ->
-    _.map @matrix.allWithNull(), (c) -> 
-      if c? 
-        return {
-          id: c.id
-          lv: c.lv
-          hp: c.init_hp
-          atk: c.init_atk
-        }
-      else
-        return null
-    
+    cobj = {}
+    cobj[c.idx] = {
+      id: c.id
+      hp: c.hp
+    } for c in @heros
+    cobj
+
   death: ->
     @aliveHeros().length is 0
 

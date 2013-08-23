@@ -9,7 +9,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-08-07T15:53:16Z</Created>
-  <LastSaved>2013-08-07T10:59:36Z</LastSaved>
+  <LastSaved>2013-08-23T09:14:08Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -20,12 +20,12 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>10180</WindowHeight>
+  <WindowHeight>10020</WindowHeight>
   <WindowWidth>38400</WindowWidth>
-  <WindowTopX>0</WindowTopX>
-  <WindowTopY>0</WindowTopY>
+  <WindowTopX>-340</WindowTopX>
+  <WindowTopY>1600</WindowTopY>
   <TabRatio>721</TabRatio>
-  <ActiveSheet>5</ActiveSheet>
+  <ActiveSheet>6</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -33,7 +33,8 @@
   <Style ss:ID="Default" ss:Name="Normal">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
+    ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -49,7 +50,8 @@
   <Style ss:ID="s63" ss:Name="常规_关卡怪物">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
+    ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -97,7 +99,8 @@
   <Style ss:ID="s69" ss:Name="常规_任务卡牌表_1">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
+    ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -6493,7 +6496,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
+     <ActiveRow>7</ActiveRow>
      <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
@@ -7879,12 +7882,12 @@
    </PageSetup>
    <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>2</ActiveCol>
+     <RangeSelection>R3C3:R3C4</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -7936,7 +7939,7 @@
     <Cell><Data ss:Type="String">10000#10000</Data></Cell>
     <Cell><Data ss:Type="Number">10000</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10000,2:10000</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -7949,7 +7952,7 @@
     <Cell><Data ss:Type="String">10001#10001#10002</Data></Cell>
     <Cell><Data ss:Type="Number">10002</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10001,2:10001,3:10002</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -7962,7 +7965,7 @@
     <Cell><Data ss:Type="String">10002#10002#10003</Data></Cell>
     <Cell><Data ss:Type="Number">10003</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10002,2:10002,3:10003</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -7975,7 +7978,7 @@
     <Cell><Data ss:Type="String">10003#10003#10004</Data></Cell>
     <Cell><Data ss:Type="Number">10004</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10003,2:10003,3:10004</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -7988,7 +7991,7 @@
     <Cell><Data ss:Type="String">10004#10004#10005</Data></Cell>
     <Cell><Data ss:Type="Number">10005</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10004,2:10004,3:10005</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8001,7 +8004,7 @@
     <Cell><Data ss:Type="String">10005#10005#10005#10006</Data></Cell>
     <Cell><Data ss:Type="Number">10006</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10005,2:10005,3:10005,4:10006</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8014,7 +8017,7 @@
     <Cell><Data ss:Type="String">10006#10006#10006#10007</Data></Cell>
     <Cell><Data ss:Type="Number">10007</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10006,2:10006,3:10006,4:10007</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8027,7 +8030,7 @@
     <Cell><Data ss:Type="String">10007#10007#10007#10008</Data></Cell>
     <Cell><Data ss:Type="Number">10008</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10007,2:10007,3:10007,4:10008</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8040,7 +8043,7 @@
     <Cell><Data ss:Type="String">10008#10008#10008#10009</Data></Cell>
     <Cell><Data ss:Type="Number">10009</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10008,2:10008,3:10008,4:10009</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8053,7 +8056,7 @@
     <Cell><Data ss:Type="String">10009#10009#10009#10010</Data></Cell>
     <Cell><Data ss:Type="Number">10010</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10009,2:10009,3:10009,4:10010</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8066,7 +8069,7 @@
     <Cell><Data ss:Type="String">10010#10010#10010#10011</Data></Cell>
     <Cell><Data ss:Type="Number">10011</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10010,2:10010,3:10010,4:10011</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8079,7 +8082,7 @@
     <Cell><Data ss:Type="String">10011#10011#10011#10012</Data></Cell>
     <Cell><Data ss:Type="Number">10012</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10011,2:10011,3:10011,4:10012</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8092,7 +8095,7 @@
     <Cell><Data ss:Type="String">10012#10012#10012#10013</Data></Cell>
     <Cell><Data ss:Type="Number">10013</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10012,2:10012,3:10012,4:10013</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8105,7 +8108,7 @@
     <Cell><Data ss:Type="String">10013#10013#10013#10014</Data></Cell>
     <Cell><Data ss:Type="Number">10014</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10013,2:10013,3:10013,4:10014</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8118,7 +8121,7 @@
     <Cell><Data ss:Type="String">10014#10014#10014#10015</Data></Cell>
     <Cell><Data ss:Type="Number">10015</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10014,2:10014,3:10014,4:10015</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8131,7 +8134,7 @@
     <Cell><Data ss:Type="String">10015#10015#10015#10015#10016</Data></Cell>
     <Cell><Data ss:Type="Number">10016</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10015,2:10015,3:10015,4:10015,5:10016</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8144,7 +8147,7 @@
     <Cell><Data ss:Type="String">10016#10016#10016#10016#10017</Data></Cell>
     <Cell><Data ss:Type="Number">10017</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10016,2:10016,3:10016,4:10016,5:10017</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8157,7 +8160,7 @@
     <Cell><Data ss:Type="String">10017#10017#10017#10017#10018</Data></Cell>
     <Cell><Data ss:Type="Number">10018</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10017,2:10017,3:10017,4:10017,5:10018</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8170,7 +8173,7 @@
     <Cell><Data ss:Type="String">10018#10018#10018#10018#10019</Data></Cell>
     <Cell><Data ss:Type="Number">10019</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10018,2:10018,3:10018,4:10018,5:10019</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8183,7 +8186,7 @@
     <Cell><Data ss:Type="String">10019#10019#10019#10019#10020</Data></Cell>
     <Cell><Data ss:Type="Number">10020</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10019,2:10019,3:10019,4:10019,5:10020</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8196,7 +8199,7 @@
     <Cell><Data ss:Type="String">10020#10020#10020#10020#10021</Data></Cell>
     <Cell><Data ss:Type="Number">10021</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10020,2:10020,3:10020,4:10020,5:10021</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8209,7 +8212,7 @@
     <Cell><Data ss:Type="String">10021#10021#10021#10021#10022</Data></Cell>
     <Cell><Data ss:Type="Number">10022</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10022,2:10022,3:10022,4:10022,5:10022</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8222,7 +8225,7 @@
     <Cell><Data ss:Type="String">10022#10022#10022#10022#10023</Data></Cell>
     <Cell><Data ss:Type="Number">10023</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10022,2:10022,3:10022,4:10022,5:10023</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8235,7 +8238,7 @@
     <Cell><Data ss:Type="String">10023#10023#10023#10023#10024</Data></Cell>
     <Cell><Data ss:Type="Number">10024</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10023,2:10023,3:10023,4:10023,5:10024</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8248,7 +8251,7 @@
     <Cell><Data ss:Type="String">10024#10024#10024#10024#10025</Data></Cell>
     <Cell><Data ss:Type="Number">10025</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10024,2:10024,3:10024,4:10024,5:10025</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8261,7 +8264,7 @@
     <Cell><Data ss:Type="String">10025#10025#10025#10025#10026</Data></Cell>
     <Cell><Data ss:Type="Number">10026</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10025,2:10025,3:10025,4:10025,5:10026</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8274,7 +8277,7 @@
     <Cell><Data ss:Type="String">10026#10026#10026#10026#10027</Data></Cell>
     <Cell><Data ss:Type="Number">10027</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10026,2:10026,3:10026,4:10026,5:10027</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8287,7 +8290,7 @@
     <Cell><Data ss:Type="String">10027#10027#10027#10027#10028</Data></Cell>
     <Cell><Data ss:Type="Number">10028</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10027,2:10027,3:10027,4:10027,5:10028</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8300,7 +8303,7 @@
     <Cell><Data ss:Type="String">10028#10028#10028#10028#10029</Data></Cell>
     <Cell><Data ss:Type="Number">10029</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10028,2:10028,3:10028,4:10028,5:10029</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8313,7 +8316,7 @@
     <Cell><Data ss:Type="String">10029#10029#10029#10029#10030</Data></Cell>
     <Cell><Data ss:Type="Number">10030</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10029,2:10029,3:10029,4:10029,5:10030</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8326,7 +8329,7 @@
     <Cell><Data ss:Type="String">10030#10030#10030#10030#10031</Data></Cell>
     <Cell><Data ss:Type="Number">10031</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10030,2:10030,3:10030,4:10030,5:10031</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8339,7 +8342,7 @@
     <Cell><Data ss:Type="String">10031#10031#10031#10031#10032</Data></Cell>
     <Cell><Data ss:Type="Number">10032</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10031,2:10031,3:10031,4:10031,5:10032</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8352,7 +8355,7 @@
     <Cell><Data ss:Type="String">10032#10032#10032#10032#10033</Data></Cell>
     <Cell><Data ss:Type="Number">10033</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10032,2:10032,3:10032,4:10032,5:10033</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8365,7 +8368,7 @@
     <Cell><Data ss:Type="String">10033#10033#10033#10033#10034</Data></Cell>
     <Cell><Data ss:Type="Number">10034</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10033,2:10033,3:10033,4:10033,5:10034</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8378,7 +8381,7 @@
     <Cell><Data ss:Type="String">10034#10034#10034#10034#10035</Data></Cell>
     <Cell><Data ss:Type="Number">10035</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10034,2:10034,3:10034,4:10034,5:10035</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8391,7 +8394,7 @@
     <Cell><Data ss:Type="String">10035#10035#10035#10035#10036</Data></Cell>
     <Cell><Data ss:Type="Number">10036</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10035,2:10035,3:10035,4:10035,5:10036</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8404,7 +8407,7 @@
     <Cell><Data ss:Type="String">10036#10036#10036#10036#10037</Data></Cell>
     <Cell><Data ss:Type="Number">10037</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10036,2:10036,3:10036,4:10036,5:10037</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8417,7 +8420,7 @@
     <Cell><Data ss:Type="String">10037#10037#10037#10037#10038</Data></Cell>
     <Cell><Data ss:Type="Number">10038</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10037,2:10037,3:10037,4:10037,5:10038</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8430,7 +8433,7 @@
     <Cell><Data ss:Type="String">10038#10038#10038#10038#10039</Data></Cell>
     <Cell><Data ss:Type="Number">10039</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10039,2:10039,3:10039,4:10039,5:10039</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8443,7 +8446,7 @@
     <Cell><Data ss:Type="String">10039#10039#10039#10039#10040</Data></Cell>
     <Cell><Data ss:Type="Number">10040</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10039,2:10039,3:10039,4:10039,5:10040</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8456,7 +8459,7 @@
     <Cell><Data ss:Type="String">10040#10040#10040#10040#10041</Data></Cell>
     <Cell><Data ss:Type="Number">10041</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10040,2:10040,3:10040,4:10040,5:10041</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8469,7 +8472,7 @@
     <Cell><Data ss:Type="String">10041#10041#10041#10041#10042</Data></Cell>
     <Cell><Data ss:Type="Number">10042</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10041,2:10041,3:10041,4:10041,5:10042</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8482,7 +8485,7 @@
     <Cell><Data ss:Type="String">10042#10042#10042#10042#10043</Data></Cell>
     <Cell><Data ss:Type="Number">10043</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10042,2:10042,3:10042,4:10042,5:10043</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8495,7 +8498,7 @@
     <Cell><Data ss:Type="String">10043#10043#10043#10043#10044</Data></Cell>
     <Cell><Data ss:Type="Number">10044</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10043,2:10043,3:10043,4:10043,5:10044</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8508,7 +8511,7 @@
     <Cell><Data ss:Type="String">10044#10044#10044#10044#10045</Data></Cell>
     <Cell><Data ss:Type="Number">10045</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10044,2:10044,3:10044,4:10044,5:10045</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8521,7 +8524,7 @@
     <Cell><Data ss:Type="String">10045#10045#10045#10045#10046</Data></Cell>
     <Cell><Data ss:Type="Number">10046</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10045,2:10045,3:10045,4:10045,5:10046</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8534,7 +8537,7 @@
     <Cell><Data ss:Type="String">10046#10046#10046#10046#10047</Data></Cell>
     <Cell><Data ss:Type="Number">10047</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10046,2:10046,3:10046,4:10046,5:10047</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8547,7 +8550,7 @@
     <Cell><Data ss:Type="String">10047#10047#10047#10047#10048</Data></Cell>
     <Cell><Data ss:Type="Number">10048</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10047,2:10047,3:10047,4:10047,5:10048</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8560,7 +8563,7 @@
     <Cell><Data ss:Type="String">10048#10048#10048#10048#10049</Data></Cell>
     <Cell><Data ss:Type="Number">10049</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10048,2:10048,3:10048,4:10048,5:10049</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8573,7 +8576,7 @@
     <Cell><Data ss:Type="String">10049#10049#10049#10049#10050</Data></Cell>
     <Cell><Data ss:Type="Number">10050</Data></Cell>
     <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">130</Data></Cell>
     <Cell><Data ss:Type="String">1:10049,2:10049,3:10049,4:10049,5:10050</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
@@ -8587,11 +8590,12 @@
    </PageSetup>
    <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -9381,6 +9385,8 @@
  <Worksheet ss:Name="关卡卡牌配置表">
   <Table ss:ExpandedColumnCount="11" ss:ExpandedRowCount="102" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="170"/>
+   <Column ss:Width="243"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s78"><Data ss:Type="String">id</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">层数</Data></Cell>
@@ -11415,8 +11421,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>5</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

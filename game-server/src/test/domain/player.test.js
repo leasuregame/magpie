@@ -21,7 +21,7 @@ var Player = require('../../app/domain/entity/player');
 var Card = require('../../app/domain/entity/card');
 var should = require("should");
 
-describe("Player Object", function () {
+describe("Player Object", function() {
     var data = {
         id: 234590,
         userId: 1,
@@ -84,13 +84,13 @@ describe("Player Object", function () {
 
             it("should only can add a Card instance", function(){
                 var player = new Player();
-                
+
                 (function(){
                     player.addCard(1)
                 }).should.throw('should only can add a Card instance');
             });
         });
-        
+
         describe(".addCards()", function(){
             it("should can be add multiple cards", function(){
                 var player1 = new Player();
@@ -254,32 +254,104 @@ describe("Player Object", function () {
         });
     });
 
-    describe('.activeSpiritorEffect()', function(){
-        describe('when new a player', function(){
-            it('should active spiritor effect', function(){
+    describe('.activeSpiritorEffect()', function() {
+        describe('when new a player', function() {
+            it('should active spiritor effect', function() {
                 var player = new Player({
                     id: 1,
                     name: 'arthur',
-                    lineUp: '00:1,01:2,02:3,10:4,11:5',
+                    lineUp: '00:1',
                     spiritor: {
-                        lv: 1,
+                        lv: 10,
                         exp: 100,
                     },
                     cards: {
-                        1: new Card({id: 1, tableId: 1, star: 1}),
-                        2: new Card({id: 2, tableId: 7, star: 2}),
-                        3: new Card({id: 3, tableId: 13, star: 3}),
-                        4: new Card({id: 4, tableId: 19, star: 4}),
-                        5: new Card({id: 5, tableId: 25, star: 5}),
-                        6: new Card({id: 6, tableId: 30, star: 5})
+                        1: new Card({
+                            id: 1,
+                            tableId: 1,
+                            star: 1
+                        })
                     }
                 });
+
                 player.activeSpiritorEffect();
                 player.activeCards().map(function(c) {
                     return c.toJson();
-                }).should.equal({});
+                }).should.eql([{
+                    id: 1,
+                    createTime: undefined,
+                    playerId: undefined,
+                    tableId: 1,
+                    init_hp: 120,
+                    init_atk: 59,
+                    hp: 180,
+                    atk: 88,
+                    incs: {
+                        group_hp: 0,
+                        group_atk: 0,
+                        spirit_hp: 60,
+                        spirit_atk: 29,
+                        ps_hp: 0,
+                        ps_atk: 0
+                    },
+                    star: 1,
+                    lv: 1,
+                    exp: 0,
+                    skillLv: 1,
+                    skillPoint: 0,
+                    elixir: 0,
+                    hpAddition: 0,
+                    atkAddition: 0,
+                    passiveSkills: []
+                }]);
+            });
+        });
+
+        describe('when add a lineUp card', function() {
+            it('should can update the line up card propertys', function() {
+                var player = new Player({
+                    lineUp: '00:1',
+                    spiritor: {
+                        lv: 1,
+                        exp: 0
+                    }
+                });
+
+                player.addCard(new Card({
+                    id: 1,
+                    tableId: 1,
+                    lv: 5
+                }));
+
+                player.cards['1'].toJson().should.eql({
+                    id: 1,
+                    createTime: undefined,
+                    playerId: undefined,
+                    tableId: 1,
+                    init_hp: 174,
+                    init_atk: 85,
+                    hp: 182,
+                    atk: 89,
+                    incs: {
+                        group_hp: 0,
+                        group_atk: 0,
+                        spirit_hp: 8,
+                        spirit_atk: 4,
+                        ps_hp: 0,
+                        ps_atk: 0
+                    },
+                    star: 1,
+                    lv: 5,
+                    exp: 0,
+                    skillLv: 1,
+                    skillPoint: 0,
+                    elixir: 0,
+                    hpAddition: 0,
+                    atkAddition: 0,
+                    passiveSkills: []
+                });
             });
         });
     });
-    
+
 });

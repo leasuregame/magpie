@@ -51,4 +51,25 @@ Utility =
     child.__super__ = parent::
     child
 
+  deepCopy: (obj) ->
+    newObj = {}
+    for key of obj
+      if _.isObject(obj[key])
+        newObj[key] = Utility.deepCopy(obj[key])
+      else if _.isArray(obj[key])
+        newArr = []
+        for item in obj[key]
+          if _.isObject(item) or _.isArray(item)
+            newArr.push Utility.deepCopy(item)
+          else
+            newArr.push item
+
+        newObj[key] = newArr
+      else
+        newObj[key] = obj[key]
+
+    newObj
+
+
+
 module.exports = Utility

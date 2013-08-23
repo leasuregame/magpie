@@ -25,7 +25,7 @@ var Entity = (function(_super) {
         this.changedFields = [];
         this.tracked = [];
 
-        _.defaults(attributes, this.constructor.DEFAULT_VALUES);
+        _.defaults(attributes, utility.deepCopy(this.constructor.DEFAULT_VALUES));
         this.track(Object.keys(attributes));
         this.set(attributes);
 
@@ -97,7 +97,7 @@ var Entity = (function(_super) {
         });
 
         _this.emit('change', _this.attributes);
-
+        
         _.each(attrs, function(v, k) {
             var type = k + '.change';
             _this.emit(type, v);

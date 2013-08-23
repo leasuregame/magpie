@@ -17,11 +17,11 @@
 require('./setup');
 app = require("pomelo").app;
 var dao = app.get('dao');
-var Card = require('../../app/domain/card');
-var PassiveSkill = require('../../app/domain/passiveSkill');
+var Card = require('../../app/domain/entity/card');
+var PassiveSkill = require('../../app/domain/entity/passiveSkill');
 var should = require("should");
 
-describe("Card Object", function () {
+describe("Card Object", function() {
     var data = {
         id: 234590,
         playerId: 1,
@@ -33,52 +33,52 @@ describe("Card Object", function () {
         atkAddition: 40
     };
 
-    describe("#save", function () {
-        var card = null;
+    // describe("#save", function () {
+    //     var card = null;
 
-        before(function (done) {
-            app.get("dbClient")["delete"]("delete from card", [], function () {
-                app.get("dbClient")["insert"]("insert into card (id, createTime, playerId, tableId, lv, exp, skillLv, hpAddition, atkAddition) value (?, ?, ?, ?, ?, ?, ?, ?, ?);",
-                    [
-                        data.id,
-                        Date.now(),
-                        data.playerId,
-                        data.tableId,
-                        data.lv,
-                        data.exp,
-                        data.skillLv,
-                        data.hpAddition,
-                        data.atkAddition
-                    ],
-                    function (err, res) {
-                        dao.card.fetchOne({sync: true, where: {id: data.id}}, function (err, res) {
-                            card = res;
-                            return done();
-                        });
-                    });
-            });
-        });
+    //     before(function (done) {
+    //         app.get("dbClient")["delete"]("delete from card", [], function () {
+    //             app.get("dbClient")["insert"]("insert into card (id, createTime, playerId, tableId, lv, exp, skillLv, hpAddition, atkAddition) value (?, ?, ?, ?, ?, ?, ?, ?, ?);",
+    //                 [
+    //                     data.id,
+    //                     Date.now(),
+    //                     data.playerId,
+    //                     data.tableId,
+    //                     data.lv,
+    //                     data.exp,
+    //                     data.skillLv,
+    //                     data.hpAddition,
+    //                     data.atkAddition
+    //                 ],
+    //                 function (err, res) {
+    //                     dao.card.fetchOne({sync: true, where: {id: data.id}}, function (err, res) {
+    //                         card = res;
+    //                         return done();
+    //                     });
+    //                 });
+    //         });
+    //     });
 
-        after(function (done) {
-            app.get("dbClient")["delete"]("delete from card", [], function () {
-                done();
-            });
-        });
+    //     after(function (done) {
+    //         app.get("dbClient")["delete"]("delete from card", [], function () {
+    //             done();
+    //         });
+    //     });
 
-        it("should can be update card when card is no null", function (done) {
-            card.should.be.a("object");
-            card.increase("lv");
-            card.save(function (err, res) {
-                should.strictEqual(err, null);
-                res.should.be.true;
-                return done();
-            });
-        });
-    });
+    //     it("should can be update card when card is no null", function (done) {
+    //         card.should.be.a("object");
+    //         card.increase("lv");
+    //         card.save(function (err, res) {
+    //             should.strictEqual(err, null);
+    //             res.should.be.true;
+    //             return done();
+    //         });
+    //     });
+    // });
 
-    describe('.ability()', function(){
-        describe("when card's star less than 3", function(){
-            it('should can count out ability of card', function(){
+    describe('.ability()', function() {
+        describe("when card's star less than 3", function() {
+            it('should can count out ability of card', function() {
                 var card = new Card({
                     id: 1,
                     tableId: 1
@@ -94,11 +94,11 @@ describe("Card Object", function () {
 
             });
         });
-        
-        describe("when card's star grater than 2", function(){
-            it('should can count out ability of card', function(){
+
+        describe("when card's star grater than 2", function() {
+            it('should can count out ability of card', function() {
                 var card = new Card({
-                    id: 1, 
+                    id: 1,
                     tableId: 3,
                     star: 3
                 });
@@ -110,27 +110,30 @@ describe("Card Object", function () {
                     star: 3,
                     lv: 10
                 });
-                card.ability().should.equal(4539);
+                card.ability().should.equal(4540);
 
                 card = new Card({
-                    id: 1, 
+                    id: 1,
                     tableId: 3,
                     star: 3,
                     lv: 10,
                     passiveSkills: {
-                        1: new PassiveSkill({name: 'crit', value: 10})
+                        1: new PassiveSkill({
+                            name: 'crit',
+                            value: 10
+                        })
                     }
                 });
-                card.ability().should.equal(5539);
+                card.ability().should.equal(5540);
             });
 
         });
     });
 
-    describe('.activeGroupEffect()', function(){
-        it('should can active group effect', function(){
+    describe('.activeGroupEffect()', function() {
+        it('should can active group effect', function() {
             var card = new Card({
-                id: 1, 
+                id: 1,
                 tableId: 3,
                 star: 3
             });
@@ -138,5 +141,71 @@ describe("Card Object", function () {
             card.atkAddition.should.equal(29);
             card.hpAddition.should.equal(0);
         })
-    })
+    });
+
+    describe('.addPassiveSkill()', function() {
+        describe('when add a passive skill', function() {
+            it('should can be add correct', function() {
+                var card = new Card({
+                    id: 1,
+                    lv: 1,
+                    tableId: 3
+                });
+
+                card.addPassiveSkill(new PassiveSkill({
+                    id: 1,
+                    name: 'hp_improve',
+                    value: 5.3
+                }));
+
+                card.addPassiveSkill(new PassiveSkill({
+                    id: 2,
+                    name: 'atk_improve',
+                    value: 10
+                }));
+
+                card.toJson().should.eql({
+                    id: 1,
+                    createTime: undefined,
+                    playerId: undefined,
+                    tableId: 3,
+                    init_hp: 355,
+                    init_atk: 149,
+                    hp: 391,
+                    atk: 163,
+                    incs: {
+                        group_hp: 0,
+                        group_atk: 0,
+                        spirit_hp: 0,
+                        spirit_atk: 0,
+                        ps_hp: 36,
+                        ps_atk: 14,
+                        elixir_hp: 0,
+                        elixir_atk: 0
+                    },
+                    star: 3,
+                    lv: 1,
+                    exp: 0,
+                    skillLv: 1,
+                    skillPoint: 0,
+                    elixir: 0,
+                    hpAddition: 0,
+                    atkAddition: 0,
+                    passiveSkills: [{
+                        id: 1,
+                        cardId: undefined,
+                        createTime: undefined,
+                        name: 'hp_improve',
+                        value: 5.3
+                    }, {
+                        id: 2,
+                        cardId: undefined,
+                        createTime: undefined,
+                        name: 'atk_improve',
+                        value: 10
+                    }]
+                });
+            });
+        });
+    });
 });

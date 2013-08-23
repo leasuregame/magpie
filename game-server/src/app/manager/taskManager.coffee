@@ -25,7 +25,7 @@ class Manager
       fragment: false
     }
 
-    # 检查是否体力充足
+    ### 检查是否体力充足 ###
     if player.power.value < taskData.power_consume
       return cb({code: 501,msg: '体力不足'}, null, null)
 
@@ -33,6 +33,10 @@ class Manager
       ['fight','box', 'none'],
       [taskRate.fight, taskRate.precious_box, (100 - taskRate.fight - taskRate.precious_box)]
     )
+
+    ### 判断最后一小关，如果没有在这一个章节中获得战斗的胜利，则触发战斗 ###
+    if player.task.progress is taskData.points and not player.task.hasWin
+      data.result = 'fight'
 
     cb(null, data, taskData.chapter_id, taskData.section_id)
 
@@ -126,6 +130,11 @@ class Manager
   @obtainBattleRewards: (player, taskId, battleLog, cb) ->
     taskData = table.getTableItem 'task_config', taskId
 
+    ### 标记为已经赢得战斗 ###
+    task = _.clone(player.task)
+    task.hasWin = true
+    player.task = task
+
     # 奖励掉落卡牌
     ids = taskData.cards.split('#').map (id) ->
       _row = table.getTableItem 'task_card', id
@@ -161,6 +170,7 @@ class Manager
       if task.progress > taskData.points
         task.progress = 0
         task.id += 1
+        task.hasWin = false
       player.set('task', task)
 
     # 判断是否升级

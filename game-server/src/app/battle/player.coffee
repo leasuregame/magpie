@@ -13,8 +13,8 @@ copyAttrs = (self, ent) ->
   self.lv = ent.lv
   self.exp = ent.exp
   self.lineUp = ent.lineUp
-  self.spiritor = new Spiritor(ent.spiritor)
-  self.cards = ent.activeCards()
+  self.spiritor = if ent.spiritor? then new Spiritor(ent.spiritor) else null
+  self.cards = ent.activeCards?() or ent.cards
 
 defaultEntity = 
   id: 0
@@ -35,6 +35,7 @@ class Player extends Module
     @is_attacker = false
     @matrix = new Matrix()
     @dead = false
+    @is_monster = false
     
     @loadHeros()
     @bindCards()
@@ -57,9 +58,10 @@ class Player extends Module
         return callback() if not enemyHeros
 
         enemyHeros = [enemyHeros] if not _.isArray(enemyHeros)
+        return callback(enemyHeros) if @enemy.is_monster
+
         hasDeath = not _.isEmpty(enemyHeros.filter (h) -> h.death())
 
-        console.log 'death: ', hasDeath
         if hasDeath and not @enemy.death()
           logger.warn '卡牌死亡，判断触发元神之怒'
           ### 触发元神之怒 ###

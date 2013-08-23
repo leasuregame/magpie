@@ -22,6 +22,10 @@ class Hero extends Module
     @player = player
     @id = attrs.id
     @lv = attrs.lv
+    @init_hp = attrs.init_hp
+    @hp = attrs.hp
+    @atk = attrs.atk
+    @init_atk = attrs.init_atk
     @card_id = attrs.tableId
     @skill_lv = attrs.skillLv or 0
     @sp_value = attrs.passiveSkills or []
@@ -41,13 +45,10 @@ class Hero extends Module
 
   loadCardInfo: ->
     card = tab.getTableItem('cards', @card_id)
-    factor = tab.getTableItem('factors', @lv)?.factor
     if not card
       throw new Error("配置表错误：不能从表 cards 中找到卡牌信息，卡牌id为 #{@card_id}")
 
     @name = card.name
-    @init_atk = @atk = parseInt(card.atk * factor)
-    @init_hp = @hp = parseInt(card.hp * factor)
     @star = parseInt(card.star)
     @skill_id = card.skill_id
 

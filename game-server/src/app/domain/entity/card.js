@@ -21,6 +21,27 @@ var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL
 var GROUP_EFFECT_ATK = 1
 var GROUP_EFFECT_HP = 2
 
+var addEvents = function(card) {
+    card.on('add.passiveSkill', function() {
+        var _pro = {
+            'atk_improve': 'atk',
+            'hp_improve': 'hp'
+        };
+        _.values(card.passiveSkills).filter(function(ps) {
+            return _.keys(_pro).indexOf(ps.name) > -1;
+        }).forEach(function(ps) {
+            var _key = _pro[ps.name];
+            var _val = parseInt(card['init_' + _key] * ps.value / 100);
+            card[_key] += _val;
+            card.incs['ps_' + _key] += _val;
+        });
+    });
+
+    card.on('elixir.change', function(){
+
+    });
+};
+
 /*
  * Card 与 card 表对应的数据类，提供简单操作
  * @param {object} param 数据库 card 表中的一行记录
@@ -34,11 +55,14 @@ var Card = (function(_super) {
         if (this.tableId) {
             var cardConfig = table.getTableItem('cards', this.tableId);
             var factor = table.getTableItem('factors', this.lv).factor;
+
+            var _hp = parseInt(cardConfig.hp * factor),
+                _atk = parseInt(cardConfig.atk * factor);
             this.set({
-                init_hp: cardConfig.hp * factor,
-                hp: cardConfig.hp * factor,
-                init_atk: cardConfig.atk * factor,
-                atk: cardConfig.atk * factor
+                init_hp: _hp,
+                hp: _hp,
+                init_atk: _atk,
+                atk: _atk
             });
 
             // 同步配置表中卡牌的星级到数据库
@@ -48,8 +72,8 @@ var Card = (function(_super) {
             }
             this.cardConfig = cardConfig;
         }
-        // 被动属性生效
-        passiveSkillEffect(this);
+
+        addEvents(this);
     }
 
     Card.FIELDS = [
@@ -86,7 +110,9 @@ var Card = (function(_super) {
             spirit_hp: 0,
             spirit_atk: 0,
             ps_hp: 0,
-            ps_atk: 0
+            ps_atk: 0,
+            elixir_hp: 0,
+            elixir_atk: 0
         }
     };
 
@@ -106,8 +132,8 @@ var Card = (function(_super) {
         }
         var aval = parseInt(this[_property[type]] * effect_val / 100);
         this.increase(_property[type] + 'Addition', aval);
-        
-        this.increase(_property[tpe], aval);
+
+        this.increase(_property[type], aval);
         this.incs['group_' + _property[type]] = aval;
         return this;
     };
@@ -150,8 +176,8 @@ var Card = (function(_super) {
     Card.prototype.addPassiveSkill = function(ps) {
         if (typeof ps.id !== 'undefined' && ps.id !== null) {
             this.passiveSkills[ps.id] = ps;
+            this.emit('add.passiveSkill');
         }
-        passiveSkillEffect(this);
     };
 
     Card.prototype.addPassiveSkills = function(passiveSkills) {
@@ -170,7 +196,7 @@ var Card = (function(_super) {
             if (row !== null) {
                 totalExp += parseInt(row.cur_exp);
             }
-        });        
+        });
         return totalExp;
     };
 
@@ -180,10 +206,12 @@ var Card = (function(_super) {
             return parseInt(item.lv) >= _this.lv;
         });
 
-        rows.sort(function(x,y) {return x.lv - y.lv;});
+        rows.sort(function(x, y) {
+            return x.lv - y.lv;
+        });
 
         var upgraded_lv = 0;
-        exp += this.exp;  // 加上卡牌本身剩余的经验
+        exp += this.exp; // 加上卡牌本身剩余的经验
         for (var i = 0; i < rows.length; i++) {
             var row = rows[i];
             if (exp >= row.exp_need) {
@@ -217,6 +245,8 @@ var Card = (function(_super) {
             createTime: this.createTime,
             playerId: this.playerId,
             tableId: this.tableId,
+            init_hp: this.init_hp,
+            init_atk: this.init_atk,
             hp: this.hp,
             atk: this.atk,
             incs: this.incs,
@@ -236,19 +266,5 @@ var Card = (function(_super) {
 
     return Card;
 })(Entity);
-
-var passiveSkillEffect = function(card) {
-    var _pro = {
-        'atk_improve': 'atk',
-        'hp_improve': 'hp'
-    };
-    _.values(card.passiveSkills).filter(function(ps) {
-        return _.keys(_pro).indexOf(ps.name) > -1;
-    }).forEach(function(ps) {
-        var _val = parseInt(card[_pro['init_' + ps.name]] * ps.value / 100);
-        card[_pro[ps.name]] += _val;
-        card['ps_' + _pro[ps.name]] += _val;
-    });
-};
 
 module.exports = Card;

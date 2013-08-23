@@ -41,11 +41,12 @@ describe("Area Server", function() {
 						expect(data.msg.battleLog.winner).toEqual('own')
 						expect(data.msg.battleLog.rewards).hasProperties(['exp', 'skillPoint'])
 						expect(data.msg.pass).hasProperties(['layer', 'mark'])
+						expect(data.msg.battleLog).toBeBattleLog();
 
 						doAjax('/player/' + arthur.playerId, {}, function(res) {
 							expect(JSON.parse(res.data.pass)).toEqual(data.msg.pass);
 						});
-
+						expect(data.msg.battleLog).toEqual('');
 					});
 				});
 			});

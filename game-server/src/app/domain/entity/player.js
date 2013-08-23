@@ -32,6 +32,15 @@ var NOW = function() {
     return Date.now();
 };
 
+var addEvents = function(player) {
+    player.on('add.card', function(card) {
+        if (player.isLineUpCard(card)) {
+            player.activeGroupEffect();
+            player.activeSpiritorEffect();
+        }
+    });
+};
+
 /*
  * Player 与 player 表对应的数据类，提供简单操作
  * @param {object} param 数据库 player 表中的一行记录
@@ -44,8 +53,10 @@ var Player = (function(_super) {
     }
 
     Player.prototype.init = function() {
-        this.cards || (this.cards = []);
-        this.rank || (this.rank = null);
+        this.cards || (this.cards = {});
+        this.rank || (this.rank = {});
+
+        addEvents(this);
     };
 
     Player.FIELDS = [
@@ -81,11 +92,12 @@ var Player = (function(_super) {
         exp: 0,
         money: 1000,
         gold: 50,
-        lineUp: '',
+        lineUp: '12:-1',
         ability: 0,
         task: {
             id: 1,
-            progress: 0
+            progress: 0,
+            hasWin: false
         },
         pass: {
             layer: 0,
@@ -101,26 +113,30 @@ var Player = (function(_super) {
             spirit: 0
         },
         spiritPool: {
-            lv: 1,
+            lv: 0,
             exp: 0,
             collectCount: 0
-        }
+        },
+        cards: {},
+        rank: {}
+
     };
 
-    Player.prototype.activeSpiritorEffect = function(){
+    Player.prototype.activeSpiritorEffect = function() {
         var spiritConfig = table.getTableItem('spirit', this.spiritor.lv);
 
         var cards = this.activeCards();
-        cards.forEach(function(card) {
-            var _hp = parseInt(card.hp * spiritConfig.hp_inc);;
-            var _atk = parseInt(card.atk * spiritConfig.atk_inc);
+        for (var i = 0; i < cards.length; i++) {
+            var card = cards[i];
+            var _hp = parseInt(card.init_hp * spiritConfig.hp_inc / 100);
+            var _atk = parseInt(card.init_atk * spiritConfig.atk_inc / 100);
 
             card.hp += _hp;
             card.incs.spirit_hp += _hp;
 
             card.atk += _atk;
             card.incs.spirit_atk += _atk;
-        });
+        }
     };
 
     Player.prototype.save = function() {
@@ -169,7 +185,11 @@ var Player = (function(_super) {
 
     Player.prototype.addCard = function(card) {
         if (card instanceof Card && card.id !== null) {
-            this.cards[card.id] = card;
+            var cards = this.cards;
+            cards[card.id] = card;
+            this.cards = cards;
+
+            this.emit('add.card', card);
         } else {
             throw new Error('should only can add a Card instance');
         }
@@ -180,6 +200,10 @@ var Player = (function(_super) {
         _.each(cards, function(card) {
             self.addCard(card);
         });
+    };
+
+    Player.prototype.isLineUpCard = function(card) {
+        return _.has(this.cards, card.id);
     };
 
     Player.prototype.hasCard = function(id) {
@@ -387,7 +411,7 @@ var Player = (function(_super) {
             cards: _.values(this.cards).map(function(card) {
                 return card.toJson();
             }),
-            rank: (typeof this.rank !== 'undefined' && this.rank !== null) ? this.rank.toJson() : null
+            rank: !_.isEmpty(this.rank) ? this.rank.toJson() : null
         };
     };
 

@@ -122,13 +122,15 @@ Handler::passBarrier = (msg, session, next) ->
           skillPoint: rdata.skill_point
 
         ### count spirit ###
-        spirit = 0
+        spirit = {total: 0}
         if layer is player.pass.layer + 1
           _.each bl.enemy.cards, (v, k) ->
             if v.boss?
-              spirit += spiritConfig.SPIRIT.PASS.BOSS
+              spirit[k] = spiritConfig.SPIRIT.PASS.BOSS
+              spirit.total += spiritConfig.SPIRIT.PASS.BOSS
             else 
-              spirit += spiritConfig.SPIRIT.PASS.OTHER
+              spirit[k] = spiritConfig.SPIRIT.PASS.OTHER
+              spirit.total += spiritConfig.SPIRIT.PASS.OTHER
 
         rewards.spirit = spirit
         bl.rewards = rewards

@@ -436,11 +436,9 @@ var lineUpToObj = function(self, lineUp) {
             var _ref = l.split(':'),
                 pos = _ref[0],
                 num = parseInt(_ref[1]);
-            if (num == -1) {
-                _results[positionConvert(pos)] = self.spiritor;
-            } else {
-                _results[positionConvert(pos)] = num;
-            }
+
+            _results[positionConvert(pos)] = num;
+
         });
     }
     return _results;

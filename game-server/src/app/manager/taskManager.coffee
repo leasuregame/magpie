@@ -138,12 +138,14 @@ class Manager
       player.task = task
 
       ### the first time win, obtain some spirit ###
-      spirit = 0
+      spirit = {total: 0}
       _.each battleLog.enemy.cards, (v, k) ->
         if v.boss?
-          spirit += spiritConfig.SPIRIT.TASK.BOSS
-        else 
-          spirit += spiritConfig.SPIRIT.TASK.OTHER
+          spirit[k] = spiritConfig.SPIRIT.TASK.BOSS
+          spirit.total += spiritConfig.SPIRIT.TASK.BOSS
+        else
+          spirit[k] = spiritConfig.SPIRIT.TASK.OTHER
+          spirit.total = spiritConfig.SPIRIT.TASK.OTHER
       battleLog.rewards.spirit = spirit
 
     # 奖励掉落卡牌

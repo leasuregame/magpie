@@ -43,6 +43,9 @@ describe("Area Server", function() {
 						switch (res.result) {
 							case 'fight':
 								expect(res.battle_log).toBeBattleLog();
+								expect(res.battle_log.rewards).hasProperties([
+									'spirit', 'cards'
+								]);
 								break;
 							case 'box':
 								if (!res.fregment) {

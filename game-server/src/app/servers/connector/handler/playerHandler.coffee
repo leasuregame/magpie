@@ -51,7 +51,7 @@ afterCreatePlayer = (session, uid, areaId, player, next) ->
 
     next(null, {code: 200, msg: {player: player}})
 
-onUserLeave = (session, reason) ->
+onUserLeave = (app, session, reason) ->
   if not session or not session.uid
     return
 

@@ -117,6 +117,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._onClickSelectLeadCard,
             this
         );
+        selectLeadCardItem.setScale(1.1);
         selectLeadCardItem.setPosition(cc.p(354, 685));
 
         this._trainItem = cc.MenuItemImage.create(
@@ -239,6 +240,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._trainItem.setEnabled(false);
         } else {
             this._leadCardHalfNode = CardHalfNode.create(this._leadCard);
+            this._leadCardHalfNode.setScale(1.1);
             this._leadCardHalfNode.setPosition(cc.p(354, 685));
             this.addChild(this._leadCardHalfNode, 1);
 

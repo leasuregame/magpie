@@ -52,7 +52,6 @@ var LineUpLayer = LazyLayer.extend({
 
                 if (cardId == -1) {
                     node = SpiritNode.create();
-                    node.setScale(0.7);
                 } else {
                     node = CardHalfNode.create(cardList.getCardByIndex(cardId));
                 }

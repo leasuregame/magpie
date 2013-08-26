@@ -54,6 +54,8 @@ var main_scene_image = {
     bg14: main_scene_path + "bg14.png",
     bg15: main_scene_path + "bg15.png",
     bg16: main_scene_path + "bg16.png",
+    bg17: main_scene_path + "bg17.png",
+    bg18: main_scene_path + "bg18.png",
 
     player_details_bg: main_scene_path + "player_details_bg.png",
     lv_bg: main_scene_path + "lv_bg.png",
@@ -151,7 +153,7 @@ var main_scene_image = {
     button16s: main_scene_path + "button16s.png",
     button17: main_scene_path + "button17.png",
     button17s: main_scene_path + "button17s.png",
-    button18: main_scene_path + "button18.png",
+//    button18: main_scene_path + "button18.png",
     button19: main_scene_path + "button19.png",
     button19s: main_scene_path + "button19s.png",
     button20: main_scene_path + "button20.png",
@@ -327,7 +329,7 @@ for (var cardId = 1; cardId <= 6; ++cardId) {
     main_scene_image["hero" + cardId + "_full3"] = main_scene_path + "hero" + cardId + "_full3.png";
 }
 
-for(var taskId = 1; taskId <= 5; ++taskId) {
+for (var taskId = 1; taskId <= 5; ++taskId) {
     main_scene_image["task" + taskId] = main_scene_path + "task" + taskId + ".png";
 }
 

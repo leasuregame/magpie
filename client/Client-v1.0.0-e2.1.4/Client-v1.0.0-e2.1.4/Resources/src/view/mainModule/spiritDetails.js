@@ -37,6 +37,7 @@ var SpiritDetails = LazyLayer.extend({
         this.addChild(bgLayer);
 
         var spiritNode = SpiritNode.create();
+        spiritNode.setScale(2.0);
         spiritNode.setPosition(cc.p(360, 900));
         this.addChild(spiritNode);
 

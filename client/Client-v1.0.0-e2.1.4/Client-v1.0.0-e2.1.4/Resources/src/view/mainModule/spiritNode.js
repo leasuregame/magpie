@@ -62,7 +62,7 @@ SpiritNode.getSpiritItem = function (cb, target) {
         target
     );
 
-    spiritItem.setScale(0.5);
+    spiritItem.setScale(0.8);
 
    return spiritItem;
 };

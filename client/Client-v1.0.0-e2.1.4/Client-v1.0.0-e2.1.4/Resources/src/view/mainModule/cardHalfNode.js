@@ -34,7 +34,7 @@ var CardHalfNode = CardNode.extend({
         }
 
         this._iconSprite = cc.Sprite.create(main_scene_image["card_icon" + skillType]);
-        this._iconSprite.setPosition(cc.p(47, -60));
+        this._iconSprite.setPosition(cc.p(40, -53));
         this.addChild(this._iconSprite, 1);
 
         return true;

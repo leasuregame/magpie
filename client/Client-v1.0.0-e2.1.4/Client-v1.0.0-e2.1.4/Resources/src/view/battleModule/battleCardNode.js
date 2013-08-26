@@ -58,8 +58,7 @@ var BattleCardNode = cc.Node.extend({
             main_scene_image.progress11,
             main_scene_image.progress12,
             this._hp,
-            this._maxHp,
-            true
+            this._maxHp
         );
         this._hpProgress.setPosition(cc.p(0, -100));
         this.addChild(this._hpProgress);

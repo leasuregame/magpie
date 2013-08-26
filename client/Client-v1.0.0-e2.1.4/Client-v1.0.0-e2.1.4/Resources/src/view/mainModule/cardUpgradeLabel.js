@@ -118,6 +118,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._onClickSelectLeadCard,
             this
         );
+        selectLeadCardItem.setScale(1.1);
         selectLeadCardItem.setPosition(cc.p(355, 685));
 
         this._selectRetinueCardItem = cc.MenuItemImage.create(
@@ -251,6 +252,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._atkAdditionLabel.setVisible(false);
         } else {
             this._leadCardHalfNode = CardHalfNode.create(this._leadCard);
+            this._leadCardHalfNode.setScale(1.1);
             this._leadCardHalfNode.setPosition(cc.p(355, 685));
             this.addChild(this._leadCardHalfNode, 1);
 

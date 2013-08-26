@@ -9,9 +9,15 @@ if (SETTING_IS_BROWSER) {
 }
 
 // login scene res
+var login_scene_path = "res/login/";
+
+var login_scene_image = {
+    edit1: login_scene_path + "edit1.png",
+    edit2: login_scene_path + "edit2.png"
+};
+
 var login_scene_res = [
     //image
-    {src: s_game_bg}
 
     //plist
 
@@ -23,6 +29,10 @@ var login_scene_res = [
 
     //effect
 ];
+
+for (var key in login_scene_image) {
+    login_scene_res.push({src: login_scene_image[key]});
+}
 
 // main scene res
 var main_scene_path = "res/main/";
@@ -71,6 +81,14 @@ var main_scene_image = {
     progress8: main_scene_path + "progress8.png",
     progress9: main_scene_path + "progress9.png",
     progress10: main_scene_path + "progress10.png",
+    progress11: main_scene_path + "progress11.png",
+    progress12: main_scene_path + "progress12.png",
+
+    pve_bg1: main_scene_path + "pve_bg1.png",
+    pvp_bg1: main_scene_path + "pvp_bg1.png",
+
+    edit1: main_scene_path + "edit1.png",
+    edit2: main_scene_path + "edit2.png",
 
     card_frame_s: main_scene_path + "card_frame_s.png",
     card_frame1: main_scene_path + "card_frame1.png",
@@ -316,131 +334,6 @@ for (var key in main_scene_image) {
 // battle scene res
 var battle_scene_res = [
     //image
-
-    //plist
-
-    //fnt
-
-    //tmx
-
-    //bgm
-
-    //effect
-];
-
-
-var s_game_bg = s_path1 + "bg2.png";
-var s_progress = s_path1 + "p.png";
-var s_progress_bg = s_path1 + "pbg.png";
-var s_card_library_bg = s_path1 + "lbg.png";
-var s_card_view = s_path1 + "view.png";
-var s_close = s_path1 + "close.png";
-var s_lock = s_path1 + "lock.png";
-
-var s_hero_1 = s_path1 + "1.png";
-var s_hero_2 = s_path1 + "2.png";
-var s_hero_3 = s_path1 + "3.png";
-var s_hero_4 = s_path1 + "4.png";
-var s_hero_5 = s_path1 + "5.png";
-var s_hero_6 = s_path1 + "6.png";
-
-var s_b_hero_1 = s_path1 + "b1.png";
-var s_b_hero_2 = s_path1 + "b2.png";
-var s_b_hero_3 = s_path1 + "b3.png";
-var s_b_hero_4 = s_path1 + "b4.png";
-var s_b_hero_5 = s_path1 + "b5.png";
-var s_b_hero_6 = s_path1 + "b6.png";
-
-var s_h_hero_1 = s_path1 + "h1.png";
-var s_h_hero_2 = s_path1 + "h2.png";
-var s_h_hero_3 = s_path1 + "h3.png";
-var s_h_hero_4 = s_path1 + "h4.png";
-var s_h_hero_5 = s_path1 + "h5.png";
-var s_h_hero_6 = s_path1 + "h6.png";
-
-var s_hg_hero_1 = s_path1 + "hg1.png";
-var s_hg_hero_2 = s_path1 + "hg2.png";
-var s_hg_hero_3 = s_path1 + "hg3.png";
-var s_hg_hero_4 = s_path1 + "hg4.png";
-var s_hg_hero_5 = s_path1 + "hg5.png";
-var s_hg_hero_6 = s_path1 + "hg6.png";
-
-var s_e_1 = s_path1 + "e1.png";
-var s_e_2 = s_path1 + "e2.png";
-var s_e_3 = s_path1 + "e3.png";
-var s_e_4 = s_path1 + "e4.png";
-var s_e_5 = s_path1 + "e5.png";
-var s_e_6 = s_path1 + "e6.png";
-
-var s_star1 = s_path1 + "star1.png";
-var s_star2 = s_path1 + "star2.png";
-var s_star3 = s_path1 + "star3.png";
-var s_star4 = s_path1 + "star4.png";
-var s_star5 = s_path1 + "star5.png";
-
-var s_frame1 = s_path1 + "frame1.png";
-var s_frame2 = s_path1 + "frame2.png";
-var s_frame3 = s_path1 + "frame3.png";
-
-var g_ressources = [
-    //image
-    {src: s_game_bg},
-    {src: s_progress_bg},
-    {src: s_progress},
-    {src: s_card_library_bg},
-    {src: s_card_view},
-    {src: s_close},
-    {src: s_lock},
-
-    {src: s_hero_1},
-    {src: s_hero_2},
-    {src: s_hero_3},
-    {src: s_hero_4},
-    {src: s_hero_5},
-    {src: s_hero_6},
-
-    {src: s_b_hero_1},
-    {src: s_b_hero_2},
-    {src: s_b_hero_3},
-    {src: s_b_hero_4},
-    {src: s_b_hero_5},
-    {src: s_b_hero_6},
-
-    {src: s_h_hero_1},
-    {src: s_h_hero_2},
-    {src: s_h_hero_3},
-    {src: s_h_hero_4},
-    {src: s_h_hero_5},
-    {src: s_h_hero_6},
-
-    {src: s_hg_hero_1},
-    {src: s_hg_hero_2},
-    {src: s_hg_hero_3},
-    {src: s_hg_hero_4},
-    {src: s_hg_hero_5},
-    {src: s_hg_hero_6},
-
-    {src: s_e_1},
-    {src: s_e_2},
-    {src: s_e_3},
-    {src: s_e_4},
-    {src: s_e_5},
-    {src: s_e_6},
-
-    {src: s_star1},
-    {src: s_star2},
-    {src: s_star3},
-    {src: s_star4},
-    {src: s_star5},
-
-    {src: s_frame1},
-    {src: s_frame2},
-    {src: s_frame3},
-
-    {src: "res1/yellow_edit.png"},
-    {src: "res1/green_edit.png"},
-    {src: "res1/button.png"},
-    {src: "res1/buttonHighlighted.png"}
 
     //plist
 

@@ -33,8 +33,8 @@
  THE SOFTWARE.
  ****************************************************************************/
 var cocos2dApp = cc.Application.extend({
-    config:document['ccConfig'],
-    ctor:function (scene) {
+    config: document['ccConfig'],
+    ctor: function (scene) {
         this._super();
         this.startScene = scene;
         cc.COCOS2D_DEBUG = this.config['COCOS2D_DEBUG'];
@@ -42,7 +42,7 @@ var cocos2dApp = cc.Application.extend({
         cc.setup(this.config['tag']);
         cc.AppController.shareAppController().didFinishLaunchingWithOptions();
     },
-    applicationDidFinishLaunching:function () {
+    applicationDidFinishLaunching: function () {
         // initialize director
         var director = cc.Director.getInstance();
 
@@ -56,13 +56,8 @@ var cocos2dApp = cc.Application.extend({
         director.setAnimationInterval(1.0 / this.config['frameRate']);
 
         //load resources
-        cc.LoaderScene.preload(g_ressources, function () {
-//            cc.Director.getInstance().replaceScene(new this.startScene());
-//            cc.Director.getInstance().replaceScene(this.startScene.getInstance());
-            cc.Loader.preload(main_scene_res, function () {
+        cc.LoaderScene.preload(main_scene_res, function () {
             cc.Director.getInstance().replaceScene(this.startScene.create());
-//                cc.Director.getInstance().replaceScene(this.startScene.getInstance());
-            }, this);
         }, this);
 
         return true;

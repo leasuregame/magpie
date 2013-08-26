@@ -356,8 +356,6 @@
 		90AF460217AF76A8001EB2B6 /* main.js in Sources */ = {isa = PBXBuildFile; fileRef = 90AF442817AF76A7001EB2B6 /* main.js */; };
 		90AF460317AF76A8001EB2B6 /* main_binding.js in Sources */ = {isa = PBXBuildFile; fileRef = 90AF442917AF76A7001EB2B6 /* main_binding.js */; };
 		90AF460417AF76A8001EB2B6 /* myApp.js in Sources */ = {isa = PBXBuildFile; fileRef = 90AF442A17AF76A7001EB2B6 /* myApp.js */; };
-		90AF479917AF8690001EB2B6 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 90AF479617AF8690001EB2B6 /* res */; };
-		90AF479A17AF8690001EB2B6 /* res1 in Resources */ = {isa = PBXBuildFile; fileRef = 90AF479717AF8690001EB2B6 /* res1 */; };
 		90AF479B17AF8690001EB2B6 /* src in Resources */ = {isa = PBXBuildFile; fileRef = 90AF479817AF8690001EB2B6 /* src */; };
 		90DA3F0817AF898C005AD6B1 /* cocos2d_html5.js in Resources */ = {isa = PBXBuildFile; fileRef = 90AF441B17AF76A6001EB2B6 /* cocos2d_html5.js */; };
 		90DA3F0917AF898C005AD6B1 /* hello.js in Resources */ = {isa = PBXBuildFile; fileRef = 90AF441D17AF76A6001EB2B6 /* hello.js */; };
@@ -1128,8 +1126,6 @@
 		90AF442817AF76A7001EB2B6 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		90AF442917AF76A7001EB2B6 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main_binding.js; sourceTree = "<group>"; };
 		90AF442A17AF76A7001EB2B6 /* myApp.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = myApp.js; sourceTree = "<group>"; };
-		90AF479617AF8690001EB2B6 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
-		90AF479717AF8690001EB2B6 /* res1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res1; sourceTree = "<group>"; };
 		90AF479817AF8690001EB2B6 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = src; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2570,8 +2566,6 @@
 			isa = PBXGroup;
 			children = (
 				90AF442717AF76A7001EB2B6 /* iTunesArtwork */,
-				90AF479617AF8690001EB2B6 /* res */,
-				90AF479717AF8690001EB2B6 /* res1 */,
 				90AF479817AF8690001EB2B6 /* src */,
 				90AF441B17AF76A6001EB2B6 /* cocos2d_html5.js */,
 				90AF441D17AF76A6001EB2B6 /* hello.js */,
@@ -2752,8 +2746,6 @@
 				90AF45FD17AF76A8001EB2B6 /* Icon.png in Resources */,
 				90AF45FE17AF76A8001EB2B6 /* Icon@2x.png in Resources */,
 				90AF460117AF76A8001EB2B6 /* iTunesArtwork in Resources */,
-				90AF479917AF8690001EB2B6 /* res in Resources */,
-				90AF479A17AF8690001EB2B6 /* res1 in Resources */,
 				90AF479B17AF8690001EB2B6 /* src in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

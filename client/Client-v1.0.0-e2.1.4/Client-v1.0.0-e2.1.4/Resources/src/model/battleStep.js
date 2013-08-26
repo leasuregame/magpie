@@ -13,8 +13,9 @@
 
 
 var BattleStep = Entity.extend({
-    _isSkill: null,
+    _isSkill: false,
     _attacker: 0,
+    _type: null,
     _target: [],
     _isCrit: [],
     _effect: [],
@@ -22,19 +23,17 @@ var BattleStep = Entity.extend({
     _index: -1,
 
     init: function (battleStep) {
-        cc.log("Battle init");
+        cc.log("BattleStep init");
         cc.log(battleStep);
 
         this._isSkill = battleStep.a < 0;
         this._attacker = Math.abs(battleStep.a);
 
-        if (typeof(battleStep.d) == "number") battleStep.d = [battleStep.d];
-        if (typeof(battleStep.e) == "number") battleStep.e = [battleStep.e];
+        this._type = battleStep.t || null
 
-        var len = battleStep.d.length;
-        this._targetLen = len;
+        this._targetLen = battleStep.d.length;
 
-        for (var i = 0; i < len; ++i) {
+        for (var i = 0; i < this._targetLen; ++i) {
             this._isCrit[i] = battleStep.d[i] < 0;
             this._target[i] = Math.abs(battleStep.d[i]);
             this._effect[i] = battleStep.e[i];
@@ -43,27 +42,11 @@ var BattleStep = Entity.extend({
         return true;
     },
 
-    getAttacker: function () {
-        return this._attacker;
-    },
-
-    isSkill: function () {
-        return this._isSkill;
-    },
-
-    getAllTarget: function () {
-        return this._target;
-    },
-
-    getAllEffect: function () {
-        return this._effect;
-    },
-
     recover: function () {
         this._index = -1;
     },
 
-    hasNextTaget: function () {
+    hasNextTarget: function () {
         this._index += 1;
         return this._index < this._targetLen;
     },
@@ -78,6 +61,10 @@ var BattleStep = Entity.extend({
 
     isCrit: function () {
         return this._isCrit[this._index];
+    },
+
+    isSpiritAtk: function () {
+        return (this._type == 1);
     }
 });
 

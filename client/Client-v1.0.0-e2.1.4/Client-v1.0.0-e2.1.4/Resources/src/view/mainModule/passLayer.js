@@ -64,7 +64,7 @@ var PassLayer = cc.Layer.extend({
                 this._ladderList[i] = ladderSprite;
             }
 
-            var numLabel = cc.LabelTTF.create("第" + i + "关", "Marker Felt", 25);
+            var numLabel = cc.LabelTTF.create("第" + i + "关", "黑体", 25);
             numLabel.setAnchorPoint(cc.p(0, 0));
             numLabel.setPosition(cc.p((i - 1) % 2 * 240, 20 + 185 * (i - 1)));
             scrollViewLayer.addChild(numLabel);

@@ -89,8 +89,7 @@ var LineUp = Entity.extend({
     },
 
     changeLineUp: function (cb, lineUp) {
-        cc.log("LineUp changeLineUp: " + lindeUp);
-        cc.log(lineUp);
+        cc.log("LineUp changeLineUp: " + lineUp);
 
         for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
             cc.log(i);

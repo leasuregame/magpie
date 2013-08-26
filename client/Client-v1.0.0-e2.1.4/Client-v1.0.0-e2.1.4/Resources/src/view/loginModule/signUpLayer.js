@@ -39,7 +39,7 @@ var SignUpLayer = cc.Layer.extend({
         nameLabel.setPosition(cc.p(150, 400));
         this.addChild(nameLabel);
 
-        this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create("res1/yellow_edit.png"));
+        this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit2));
         this._accountEditBox.setPosition(cc.p(420, 700));
         this._accountEditBox.setDelegate(this);
         this._accountEditBox.setFont("American Typewriter", 25);
@@ -47,7 +47,7 @@ var SignUpLayer = cc.Layer.extend({
         this._accountEditBox.setMaxLength(18);
         this.addChild(this._accountEditBox);
 
-        this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create("res1/green_edit.png"));
+        this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
         this._passwordEditBox.setPosition(cc.p(420, 600));
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordEditBox.setDelegate(this);
@@ -55,7 +55,7 @@ var SignUpLayer = cc.Layer.extend({
         this._passwordEditBox.setMaxLength(18);
         this.addChild(this._passwordEditBox);
 
-        this._passwordAgainEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create("res1/green_edit.png"));
+        this._passwordAgainEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
         this._passwordAgainEditBox.setPosition(cc.p(420, 500));
         this._passwordAgainEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordAgainEditBox.setDelegate(this);
@@ -63,7 +63,7 @@ var SignUpLayer = cc.Layer.extend({
         this._passwordAgainEditBox.setMaxLength(18);
         this.addChild(this._passwordAgainEditBox);
 
-        this._nameEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create("res1/yellow_edit.png"));
+        this._nameEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit2));
         this._nameEditBox.setPosition(cc.p(420, 400));
         this._nameEditBox.setDelegate(this);
         this._nameEditBox.setFont("American Typewriter", 25);

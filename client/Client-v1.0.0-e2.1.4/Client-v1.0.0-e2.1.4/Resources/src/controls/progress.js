@@ -12,6 +12,7 @@
 
 
 var Progress = cc.Node.extend({
+    _ratio: 0,
     _showValue: false,
     _value: 0,
     _maxValue: 0,
@@ -88,8 +89,10 @@ var Progress = cc.Node.extend({
         return this.init();
     },
 
-    update: function () {
+    update: function (duration) {
         cc.log("Progress update");
+
+        duration = duration || 0;
 
         if (this._maxValue < 0) this._maxValue = 0;
         if (this._value > this._maxValue) this._value = this._maxValue;
@@ -106,8 +109,10 @@ var Progress = cc.Node.extend({
             ratio = this._value / this._maxValue * 100;
         }
 
-        var pto = cc.ProgressTo.create(0, ratio);
+        var pto = cc.ProgressFromTo.create(duration, this._ratio, ratio);
         this._progress.runAction(pto);
+
+        this._ratio = ratio;
     },
 
     /**
@@ -125,12 +130,12 @@ var Progress = cc.Node.extend({
         return this._value;
     },
 
-    setValue: function (value) {
+    setValue: function (value, duration) {
         cc.log("Progress setValue");
 
         if (this._value != value) {
             this._value = value;
-            this.update();
+            this.update(duration);
         }
     },
 
@@ -140,31 +145,31 @@ var Progress = cc.Node.extend({
         return this._maxValue;
     },
 
-    addValue: function (value) {
+    addValue: function (value, duration) {
         cc.log("Progress addValue");
 
         if (value != 0) {
             this._value += value;
-            this.update();
+            this.update(duration);
         }
     },
 
-    setMaxValue: function (maxValue) {
+    setMaxValue: function (maxValue, duration) {
         cc.log("Progress setMaxValue");
 
         if (this._maxValue != maxValue) {
             this._maxValue = maxValue;
-            this.update();
+            this.update(duration);
         }
     },
 
-    setAllValue: function (maxValue, value) {
+    setAllValue: function (maxValue, value, duration) {
         cc.log("Progress setAllValue");
 
         if (this._maxValue != maxValue || this._value != value) {
             this._maxValue = maxValue;
             this._value = value;
-            this.update();
+            this.update(duration);
         }
     },
 

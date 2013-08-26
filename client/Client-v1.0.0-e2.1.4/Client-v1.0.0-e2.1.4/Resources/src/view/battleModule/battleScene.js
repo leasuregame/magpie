@@ -24,10 +24,10 @@ var BattleScene = cc.Scene.extend({
 });
 
 
-BattleScene.create = function (battleLogId) {
+BattleScene.create = function (battleLog) {
     var ret = new BattleScene();
 
-    if (ret && ret.init(battleLogId)) {
+    if (ret && ret.init(battleLog)) {
         return ret;
     }
 

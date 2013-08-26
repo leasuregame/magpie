@@ -29,7 +29,7 @@ var SignInLayer = cc.Layer.extend({
         passwordLabel.setPosition(cc.p(150, 400));
         this.addChild(passwordLabel);
 
-        this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create("res1/yellow_edit.png"));
+        this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit2));
         this._accountEditBox.setPosition(cc.p(380, 500));
         this._accountEditBox.setDelegate(this);
         this._accountEditBox.setFont("黑体", 25);
@@ -37,7 +37,7 @@ var SignInLayer = cc.Layer.extend({
         this._accountEditBox.setMaxLength(18);
         this.addChild(this._accountEditBox);
 
-        this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create("res1/green_edit.png"));
+        this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
         this._passwordEditBox.setPosition(cc.p(380, 400));
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordEditBox.setDelegate(this);

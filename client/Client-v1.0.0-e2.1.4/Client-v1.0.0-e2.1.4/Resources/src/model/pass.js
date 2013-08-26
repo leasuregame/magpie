@@ -70,10 +70,8 @@ var Pass = Entity.extend({
 
                 that.update(msg.pass);
 
-                var battleLog = BattleLog.create(msg.battleLog);
-                BattleLogNote.getInstance().pushBattleLog(battleLog);
-
-                cb(battleLog.get("id"));
+                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
+                cb(battleLogId);
             } else {
                 cc.log("defiance fail");
             }

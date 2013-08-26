@@ -13,10 +13,7 @@
 var BattlePlayer = cc.Class.extend({
     _scheduler: null,
     _battleLog: null,
-
-    _cardList: null,
-    _labelList: null,
-    _progressList: null,
+    _battleNode: null,
     _tipLabel: null,
 
     init: function () {
@@ -25,14 +22,24 @@ var BattlePlayer = cc.Class.extend({
         this._scheduler = cc.Director.getInstance().getScheduler();
     },
 
-    play: function (battleLog, cardList, labelList, progressList, tipLabel) {
+    play: function (id) {
         cc.log("BattlePlayer play");
 
-        this._tipLabel = tipLabel;
-        this._battleLog = battleLog;
-        this._cardList = cardList;
-        this._labelList = labelList;
-        this._progressList = progressList;
+        this._battleNode = null;
+        this._tipLabel = null;
+        this._battleLog = BattleLog.create(id);
+
+        if (this._battleLog === undefined) {
+            cc.log("no find " + id + " this battle log!!");
+            return;
+        }
+
+        cc.Director.getInstance().replaceScene(BattleScene.create(this._battleLog));
+
+        if (this._battleNode == null || this._tipLabel == null) {
+            cc.log("battle element is undefined");
+            return;
+        }
 
         this._battleLog.recover();
         this.playAStep();
@@ -48,36 +55,29 @@ var BattlePlayer = cc.Class.extend({
 
         cc.log("\n\n\nBattlePlayer playAStep " + this._battleLog.getBattleStepIndex());
 
-        var step = this._battleLog.getBattleStep();
+        var battleStep = this._battleLog.getBattleStep();
 
-        var str = step.getAttacker() + (step.isSkill() ? " 用技能 揍了 " : " 用普攻 揍了 ");
-        str += step.getAllTarget();
-        str += " 伤害为 " + step.getAllEffect();
+        if (battleStep.isSpiritAtk()) {
+            battleStep.set("attacker", this._battleLog.getSpirit(battleStep.get("attacker")));
+        }
 
+        var str = battleStep.get("attacker") + (battleStep.get("isSkill") ? " 用技能 揍了 " : " 用普攻 揍了 ");
+        str += battleStep.get("target");
+        str += " 伤害为 " + battleStep.get("effect");
         cc.log(str);
-
         this._tipLabel.setString(str);
 
-        var delay = SkillFactory.normalAttack(this._cardList, step, this._labelList, this._progressList);
+        var delay = SkillFactory.normalAttack(this._battleNode, battleStep);
 
         cc.log("set next round");
         this._scheduler.scheduleCallbackForTarget(this, this.playAStep, delay, 1, 0, false);
     },
 
-    pause: function () {
-        cc.log("BattlePlayer pause");
-    },
+    setBattleElement: function (battleNode, tipLabel) {
+        cc.log("BattlePlayer setBattleElement");
 
-    getSpeed: function () {
-        cc.log("BattlePlayer getSpeed");
-
-        return GAME_COMBAT_SPEED;
-    },
-
-    setSpeed: function (speed) {
-        cc.log("BattlePlayer setSpeed");
-
-        GAME_COMBAT_SPEED = speed;
+        this._battleNode = battleNode;
+        this._tipLabel = tipLabel;
     },
 
     end: function () {

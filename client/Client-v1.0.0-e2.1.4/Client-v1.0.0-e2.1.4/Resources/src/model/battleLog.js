@@ -14,6 +14,7 @@
 
 var BattleLog = Entity.extend({
     _id: 0,
+    _type: PVE_BATTLE_LOG,
     _own: null,
     _enemy: null,
     _winner: "",
@@ -22,38 +23,65 @@ var BattleLog = Entity.extend({
     _battleStepLen: 0,
     _index: -1,
 
-    init: function (json) {
+    init: function (id) {
         cc.log("BattleLog init");
 
-        var battleLog = json;
-
-        if (typeof(battleLog) == "string") {
-            battleLog = JSON.parse(battleLog);
-        }
-
+        var battleLog = BattleLogPool.getInstance().getBattleLogById(id);
         cc.log(battleLog);
-
-        this._id = battleLog.id || 0;
-        this._own = battleLog.own;
-        this._enemy = battleLog.enemy;
-        this._winner = battleLog.winner;
-        this._rewards = battleLog.rewards;
-        this._battleStep = battleLog.steps;
-        this._battleStepLen = this._battleStep.length;
+        this.set("id", battleLog.id);
+        this.set("type", battleLog.type);
+        this.set("own", battleLog.own);
+        this.set("enemy", battleLog.enemy);
+        this.set("winner", battleLog.winner);
+        this.set("rewards", battleLog.rewards);
+        this.set("battleStep", battleLog.steps);
+        this.set("battleStepLen", battleLog.steps.length);
 
         return true;
     },
 
-    getBattleOwn: function () {
-        cc.log("BattleLog getBattleMe");
+    getBattleNode: function () {
+        cc.log("BattleLog getBattleNode");
 
-        return this._own;
+        var battleNode = {};
+
+        for (var i = 0; i < 12; ++i) {
+            if (this._own.cards[i] != undefined) {
+                battleNode[i] = this._own.cards[i];
+            }
+
+            if (this._enemy.cards[i] != undefined) {
+                battleNode[i] = this._enemy.cards[i];
+            }
+        }
+
+        return battleNode;
     },
 
-    getBattleEnemy: function () {
-        cc.log("BattleLog getBattleEnemy");
+    getSpirit: function (id) {
+        cc.log("BattleLog getThisCardSpirit: " + id);
 
-        return this._enemy;
+        if (id < 6) {
+            return this._getOwnSpirit();
+        } else {
+            return this._getEnemySpirit();
+        }
+    },
+
+    _getOwnSpirit: function () {
+        for (var key in this._own.cards) {
+            if (typeof (this._own.cards[key]) == "number") {
+                return key;
+            }
+        }
+    },
+
+    _getEnemySpirit: function () {
+        for (var key in this._enemy.cards) {
+            if (typeof (this._enemy.cards[key]) == "number") {
+                return key;
+            }
+        }
     },
 
     recover: function () {
@@ -69,7 +97,7 @@ var BattleLog = Entity.extend({
     },
 
     getBattleStep: function () {
-        cc.log("BattleLog getBattleStep");
+        cc.log("BattleLog getBattleStep: " + this._battleStep[this._index]);
 
         return BattleStep.create(this._battleStep[this._index]);
     },
@@ -80,10 +108,10 @@ var BattleLog = Entity.extend({
 });
 
 
-BattleLog.create = function (json) {
+BattleLog.create = function (id) {
     var ret = new BattleLog();
 
-    if (ret && ret.init(json)) {
+    if (ret && ret.init(id)) {
         return ret;
     }
 

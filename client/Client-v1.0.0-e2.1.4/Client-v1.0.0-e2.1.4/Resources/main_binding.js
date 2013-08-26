@@ -56,9 +56,9 @@ var appFiles = [
     'src/model/spirit.js',
     'src/model/spiritPool.js',
 
-    'src/model/battleStep.js',
+    'src/model/battleLogPool.js',
     'src/model/battleLog.js',
-    'src/model/battleLogNote.js',
+    'src/model/battleStep.js',
 
     'src/model/gameData.js',
 
@@ -126,7 +126,8 @@ var appFiles = [
     'src/view/battleModule/actionFactory.js',
     'src/view/battleModule/effectsFactory.js',
     'src/view/battleModule/skillFactory.js',
-    'src/view/battleModule/battleCardHalfNode.js',
+    'src/view/battleModule/battleCardNode.js',
+    'src/view/battleModule/battleSpiritNode.js',
     'src/view/battleModule/battleLayer.js',
     'src/view/battleModule/battleScene.js',
     'src/view/battleModule/battlePlayer.js',
@@ -150,10 +151,7 @@ director.setAnimationInterval(1.0 / 60);
 //var test = lz.HttpClientPackage.getInstance();
 
 // create a scene. it's an autorelease object
-//var myScene = new BattleScene();
-//var myScene = new MainScene();
 var myScene = SignInScene.create();
-//var myScene = new testScene();
 
 // run
 //director.runWithScene(myScene);

@@ -66,8 +66,7 @@ var PassLabel = cc.Node.extend({
         }
 
         pass.defiance(function (id) {
-            var scene = BattleScene.create(BattleLogNote.getInstance().getBattleByBattleLogId(id));
-            cc.Director.getInstance().replaceScene(scene);
+            BattlePlayer.getInstance().play(id);
 //            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, scene, true));
         }, this._index);
     }

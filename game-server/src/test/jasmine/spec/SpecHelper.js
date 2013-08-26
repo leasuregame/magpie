@@ -95,7 +95,7 @@ beforeEach(function() {
         console.log('战斗奖励不正确');
       }
 
-      return keys_ok && cards_ok && steps_ok && rewards_ok;
+      return keys_ok && cards_ok && steps_ok;
     },
     hasProperties: function(expectedProperties) {
       var obj = this.actual;

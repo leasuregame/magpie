@@ -431,7 +431,7 @@ Handler::useElixir = (msg, session, next) ->
       if err
         return next(null, {code: err.code or 500, msg: err.msg or ''})
 
-      next(null, {code: 200})
+      return next(null, {code: 200})
 
 Handler::changeLineUp = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId

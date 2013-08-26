@@ -54,11 +54,11 @@ describe("Area Server", function() {
             ]);
 
             if (isWin) {
-              checkChallengeResults(2, 20000, 100, isWin, data);
-              checkChallengeResults(1, 20001, 101, !isWin, data);
-            } else {
               checkChallengeResults(2, 20001, 100, isWin, data);
               checkChallengeResults(1, 20000, 101, !isWin, data);
+            } else {
+              checkChallengeResults(2, 20000, 100, isWin, data);
+              checkChallengeResults(1, 20001, 101, !isWin, data);
             }
           });
         });

@@ -11,26 +11,31 @@ var ACTION = {
   SELECT: 'select'
 };
 
-var addSyncEvent = function (syncKey, entity, cb) {
-  entity.on('save', 
-    function (cb) {
-      var fn;
-      if (app.get('debug')) {
-        fn = app.get('sync').flush;
-      } else {
-        fn = app.get('sync').exec;
-      }
-      fn.call(app.get('sync'), 
-        syncKey,
-        entity.id, 
-        {
-          id: entity.id,
-          data: entity.getSaveData(),
-          cb: cb
-        }
-      );
+var addSyncEvent = function(syncKey, entity, cb) {
+  entity.on('save', function(cb) {
+    var fn;
+    if (app.get('debug')) {
+      fn = app.get('sync').flush;
+    } else {
+      fn = app.get('sync').exec;
     }
-  );
+    fn.call(app.get('sync'),
+      syncKey,
+      entity.id, {
+        id: entity.id,
+        data: entity.getSaveData(),
+        cb: cb
+      }
+    );
+  });
+
+  entity.on('persist', function(cb) {
+    app.get('sync').flush(syncKey, entity.id, {
+      id: entity.id,
+      data: entity.allData(),
+      cb: cb
+    });
+  });
 };
 
 var DaoBase = (function() {
@@ -52,7 +57,8 @@ var DaoBase = (function() {
    */
 
   DaoBase.create = function(options, cb) {
-    var _this = this, key;
+    var _this = this,
+      key;
     var data = _.pick(this.domain.DEFAULT_VALUES, this.domain.FIELDS);
     _.extend(data, options.data);
     options.table = options.table || this.table;
@@ -75,7 +81,9 @@ var DaoBase = (function() {
         }, null);
       }
 
-      var entity = new _this.domain(_.extend({id: res.insertId}, options.data));
+      var entity = new _this.domain(_.extend({
+        id: res.insertId
+      }, options.data));
       if (options.sync) {
         addSyncEvent(_this.syncKey, entity);
       }
@@ -86,13 +94,13 @@ var DaoBase = (function() {
   DaoBase.fetchOne = function(options, cb) {
     var _this = this;
     return this.fetchMany(options, function(err, res) {
-      if (!!res && res.length === 0) {
+      if ( !! res && res.length === 0) {
         return cb({
           code: 404,
           msg: 'can not find ' + _this.table
         }, null);
       }
-      return cb(err, !!res ? res[0] : null);
+      return cb(err, !! res ? res[0] : null);
     });
   };
 
@@ -111,7 +119,7 @@ var DaoBase = (function() {
         });
       }
 
-      if (!!res && res.length > 0) {
+      if ( !! res && res.length > 0) {
         return cb(null, res.map(function(data) {
           var entity = new _this.domain(data);
           if (options.sync) {
@@ -139,7 +147,7 @@ var DaoBase = (function() {
         });
       }
 
-      if (!!res && res.affectedRows > 0) {
+      if ( !! res && res.affectedRows > 0) {
         return cb(null, true);
       } else {
         return cb(null, false);
@@ -160,7 +168,7 @@ var DaoBase = (function() {
         });
       }
 
-      if (!!res && res.affectedRows > 0) {
+      if ( !! res && res.affectedRows > 0) {
         return cb(null, true);
       } else {
         return cb(null, false);
@@ -179,7 +187,7 @@ var DaoBase = (function() {
         });
       }
 
-      if (!!res && res.length > 0) {
+      if ( !! res && res.length > 0) {
         return cb(null, res.map(function(data) {
           return new _this.domain(data);
         }));

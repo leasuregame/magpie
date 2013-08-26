@@ -103,7 +103,11 @@ var Player = (function(_super) {
             layer: 0,
             mark: defaultMark()
         },
-        dailyGift: [],
+        dailyGift: {
+            lotteryCount: 500,
+            lotteryFreeCount: 0,
+            power: []
+        },
         fragments: 0,
         energy: 0,
         elixir: 0,
@@ -276,18 +280,21 @@ var Player = (function(_super) {
         power.value = _.min([power.value + value, max_power + 50]);
         power.time = Date.now();
         this.updatePower(power);
-        this.updateGift("power_" + hour);
+
+        // 更新dailyGift的power
+        var dg = _.clone(this.dailyGift);
+        dg.power.push(hour);
+        this.dailyGift = dg;
     };
 
-    Player.prototype.updateGift = function(gift) {
-        if (!_.isArray(this.dailyGift)) {
-            this.dailyGift = [];
-        }
-        this.dailyGift.push(gift);
+    Player.prototype.updateGift = function(name, value) {
+        dg = _.clone(this.dailyGift);
+        dg[name] = value;
+        this.dailyGift = dg;
     };
 
     Player.prototype.hasGive = function(gift) {
-        return _.contains(this.get('dailyGift'), gift);
+        return _.contains(this.dailyGift.power, gift);
     };
 
     Player.prototype.updateLineUp = function(lineupObj) {

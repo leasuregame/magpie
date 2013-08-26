@@ -143,16 +143,13 @@ var Entity = (function(_super) {
         return _results;
     };
 
-    Entity.prototype.changedData = function() {
+    Entity.prototype.allData = function() {
         var __fields = this.constructor.FIELDS;
         var _results = {};
         for (var i = 0; i < __fields.length; i++) {
-            field = __fields[i];
-            if (this.changedFields.indexOf(field) > -1) {
-                _results[field] = this.get(field);
-            }
+            var field = __fields[i];
+            _results[field] = this.get(field);
         }
-        this.changedFields = [];
         return _results;
     };
 

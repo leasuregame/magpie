@@ -12,20 +12,23 @@
  * */
 
 
+var SYSTEM_MESSAGE = 0;
+var FRIEND_MESSAGE = 1;
+var BATTLE_MESSAGE = 2;
+
 var Message = Entity.extend({
     _messageList: [],
 
     init: function () {
+        cc.log("Message init");
 
         return true;
     },
 
     push: function (msg) {
-        this._messageList.push(msg);
-    },
+        cc.log("Message push");
 
-    getLastMessage: function () {
-        return this._messageList[this._messageList.length];
+        this._messageList.push(msg);
     }
 });
 

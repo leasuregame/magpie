@@ -43,6 +43,10 @@ describe("Area Server", function() {
 						expect(data.msg.pass).hasProperties(['layer', 'mark'])
 						expect(data.msg.battleLog).toBeBattleLog();
 
+						expect(data.msg.battleLog.rewards).hasProperties([
+							'spirit', 'skillPoint', 'exp'
+						]);
+
 						doAjax('/player/' + arthur.playerId, {}, function(res) {
 							expect(JSON.parse(res.data.pass)).toEqual(data.msg.pass);
 						});

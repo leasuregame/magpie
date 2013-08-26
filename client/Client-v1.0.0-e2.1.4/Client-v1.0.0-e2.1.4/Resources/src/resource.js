@@ -327,6 +327,10 @@ for (var cardId = 1; cardId <= 6; ++cardId) {
     main_scene_image["hero" + cardId + "_full3"] = main_scene_path + "hero" + cardId + "_full3.png";
 }
 
+for(var taskId = 1; taskId <= 5; ++taskId) {
+    main_scene_image["task" + taskId] = main_scene_path + "task" + taskId + ".png";
+}
+
 for (var key in main_scene_image) {
     main_scene_res.push({src: main_scene_image[key]});
 }

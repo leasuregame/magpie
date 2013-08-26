@@ -115,7 +115,7 @@ class Player extends Module
     @
 
   getCards: ->
-    cobj = {}
+    cobj = {spiritorLv: @spiritor?.lv}
     cobj[c.idx] = {
       tableId: c.card_id
       hp: c.hp

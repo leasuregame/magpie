@@ -23,11 +23,11 @@ var TaskLayer = cc.Layer.extend({
     _scrollViewLayer: null,
     _scrollView: null,
     _locate: [
-        cc.p(160, 620),
-        cc.p(210, 380),
-        cc.p(450, 570),
-        cc.p(480, 330),
-        cc.p(360, 150)
+        cc.p(160, 550),
+        cc.p(200, 270),
+        cc.p(440, 440),
+        cc.p(480, 260),
+        cc.p(360, 70)
     ],
 
     onEnter: function () {
@@ -97,10 +97,11 @@ var TaskLayer = cc.Layer.extend({
                     this._onClickSection(index),
                     this
                 );
+                sectionItem.setAnchorPoint(cc.p(0.5, 0));
                 sectionItem.setPosition(cc.p(this._locate[j - 1].x + offsetX, this._locate[j - 1].y));
                 menu.addChild(sectionItem);
 
-                var sectionNameLabelPoint = cc.p(this._locate[j - 1].x + offsetX, this._locate[j - 1].y - 110);
+                var sectionNameLabelPoint = cc.p(this._locate[j - 1].x + offsetX, this._locate[j - 1].y - 20);
 
                 var sectionNameBg = cc.Sprite.create(main_scene_image.icon3);
                 sectionNameBg.setPosition(sectionNameLabelPoint);

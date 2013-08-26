@@ -18,7 +18,8 @@ module.exports = {
         DATA_DIR + 'cards.xml',
         DATA_DIR + 'tasks.xml',
         DATA_DIR + 'rank.xml',
-        DATA_DIR + 'spirit.xml'
+        DATA_DIR + 'spirit.xml',
+        DATA_DIR + 'lottery.xml'
         );
       this.loadTableData(data.exports);
     }
@@ -79,6 +80,13 @@ module.exports = {
           }
         };
         return find ? this._data[find] : find;
+      }, 
+      map: function(fn) {
+        var _res = [];
+        for (var id in this._data) {
+          _res.push(fn(this._data[id]));
+        }
+        return _res;
       }
     };
   },

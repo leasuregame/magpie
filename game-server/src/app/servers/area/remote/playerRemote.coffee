@@ -36,7 +36,7 @@ exports.getPlayerByUserId = (userId, callback) ->
     return callback null, player.toJson()
 
 exports.playerLeave = (playerId, callback) ->
-  area.removePlayer player
+  area.removePlayer playerId
   callback()
 
 initPlayer = (player, callback) ->

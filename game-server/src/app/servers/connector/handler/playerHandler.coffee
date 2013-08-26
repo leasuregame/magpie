@@ -55,7 +55,7 @@ onUserLeave = (app, session, reason) ->
   if not session or not session.uid
     return
 
-  app.rpc.area.playerRemote.playerLeave session, playerId: session.get('playerId'), (err) ->
+  app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), (err) ->
     if err
       logger.error 'user leave error' + err
 

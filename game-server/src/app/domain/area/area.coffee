@@ -1,6 +1,7 @@
 eventManager = require '../event/eventManager'
 players = require '../../manager/playerCache'
 timer = require './timer'
+logger = require('pomelo-logger').getLogger(__filename)
 Area = module.exports
 
 Area.init = (opts) ->
@@ -11,7 +12,12 @@ Area.addPlayer = (player) ->
   players.put player
 
 Area.removePlayer = (playerId) ->
-  players.del playerId
+  _player = Area.getPlayer playerId
+  _player.emit 'persist', (err, res) ->
+    if err
+      logger.error 'faild to persist player data.' + err
+
+    players.del playerId
 
 Area.getPlayer = (playerId) ->
   players.get playerId

@@ -16,6 +16,12 @@ copyAttrs = (self, ent) ->
   self.spiritor = if ent.spiritor? then new Spiritor(ent.spiritor) else null
   self.cards = ent.activeCards?() or ent.cards
 
+  self.spiritorIdx = -1
+  _refs = if ent.lineUpObj? then ent.lineUpObj() else []
+  _.each _refs, (v, k) -> 
+    if v is -1 
+      self.spiritorIdx = k - 1
+
 defaultEntity = 
   id: 0
   name: 'anyone'
@@ -115,11 +121,12 @@ class Player extends Module
     @
 
   getCards: ->
-    cobj = {spiritorLv: @spiritor?.lv}
+    cobj = {}
     cobj[c.idx] = {
       tableId: c.card_id
       hp: c.hp
     } for c in @heros
+    cobj[@spiritorIdx] = @spiritor.lv
     cobj
 
   death: ->

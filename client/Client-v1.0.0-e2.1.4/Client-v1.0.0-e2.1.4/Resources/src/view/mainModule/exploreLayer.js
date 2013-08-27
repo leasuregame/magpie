@@ -42,23 +42,23 @@ var ExploreLayer = cc.Layer.extend({
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 956));
+        headIcon.setPosition(cc.p(40, 962));
         this.addChild(headIcon);
 
         this._mapLabel = cc.Sprite.create(main_scene_image.bg4, cc.rect(0, 0, 640, 193));
         this._mapLabel.setAnchorPoint(cc.p(0, 0));
-        this._mapLabel.setPosition(cc.p(40, 760));
+        this._mapLabel.setPosition(cc.p(40, 766));
         this.addChild(this._mapLabel);
 
         var line1Icon = cc.Sprite.create(main_scene_image.icon96);
         line1Icon.setAnchorPoint(cc.p(0.5, 0));
-        line1Icon.setPosition(cc.p(360, 922));
+        line1Icon.setPosition(cc.p(360, 928));
         this.addChild(line1Icon);
 
         var line2Icon = cc.Sprite.create(main_scene_image.icon96);
         line2Icon.setRotation(180);
         line2Icon.setAnchorPoint(cc.p(0.5, 0));
-        line2Icon.setPosition(cc.p(360, 791));
+        line2Icon.setPosition(cc.p(360, 797));
         this.addChild(line2Icon);
 
         this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);

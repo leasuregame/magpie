@@ -72,12 +72,11 @@ var BattleCardNode = cc.Node.extend({
     _loadTable: function () {
         cc.log("BattleCardNode _loadTable");
 
-        this._url = "hero" + (this._tableId % 6 + 1);
-
         // 读取卡牌配置表
         var cardTable = outputTables.cards.rows[this._tableId];
         this._star = cardTable.star;
         this._skillId = cardTable.skill_id;
+        this._url = "hero" + (cardTable.number % 6 + 1);
 
         // 读取技能配置表
         if (this._skillId) {

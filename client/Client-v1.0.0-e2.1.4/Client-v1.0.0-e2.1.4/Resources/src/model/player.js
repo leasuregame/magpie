@@ -63,6 +63,7 @@ var Player = Entity.extend({
         gameData.pass.init(data.pass);
         gameData.spirit.init(data.spiritor);
         gameData.spiritPool.init(data.spiritPool);
+        gameData.cardLibrary.init();
 
         cc.log(this);
 

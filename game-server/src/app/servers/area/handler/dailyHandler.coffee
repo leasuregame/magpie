@@ -39,7 +39,7 @@ Handler::lottery = (msg, session, next) ->
     player.save()
 
     next(null, {code: 200, msg: {
-      resourceId: _id, 
+      resourceId: resource.id, 
       lotteryCount: player.dailyGift.lotteryCount
       }
     })

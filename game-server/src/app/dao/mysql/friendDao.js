@@ -4,7 +4,7 @@ var logger = require('pomelo-logger').getLogger(__filename);
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
 
-var FriendDao = (function() {
+var FriendDao = (function(_super) {
     utility.extends(FriendDao, _super);
 
     function FriendDao() {
@@ -12,10 +12,14 @@ var FriendDao = (function() {
     }
 
     FriendDao.table = 'friend';
-    FriendDao.domain = function(attrs) {
+
+    var domain = function(attrs) {
         this.playerId = attrs.playerId;
         this.friendId = attrs.friendId;
-    }
+    };
+    domain.DEFAULT_VALUES = {};
+    domain.FIELDS = ['playerId', 'friendId'];
+    FriendDao.domain = domain;
 
     FriendDao.getFriends = function(playerId, cb) {
         var sql = 'select id, name, lv from player \
@@ -26,7 +30,7 @@ var FriendDao = (function() {
             );';
         var args = [playerId, playerId];
 
-        return dbClient.query(sql, args, function (err, res) {
+        return dbClient.query(sql, args, function(err, res) {
             if (err) {
                 logger.error("[SQL ERROR, when query friends]", sql, args);
                 logger.error(err.stack);
@@ -35,8 +39,8 @@ var FriendDao = (function() {
                     msg: err.message
                 });
             }
-
-            if (!!res && res.length > 0) {
+            
+            if ( !! res && res.length > 0) {
                 cb(null, res);
             } else {
                 cb(null, []);

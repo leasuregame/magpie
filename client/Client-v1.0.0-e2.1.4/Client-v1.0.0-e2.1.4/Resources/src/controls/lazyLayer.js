@@ -16,6 +16,8 @@ var LAZY_LAYER_HANDLER_PRIORITY = -128;
 
 var LazyLayer = cc.Layer.extend({
     init: function () {
+        cc.log("LazyLayer init");
+
         if (!this._super()) return false;
 
         this.setTouchMode(cc.TOUCHES_ONE_BY_ONE);

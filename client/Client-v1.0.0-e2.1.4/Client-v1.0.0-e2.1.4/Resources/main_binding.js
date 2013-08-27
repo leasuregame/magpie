@@ -62,12 +62,10 @@ var appFiles = [
 
     'src/model/gameData.js',
 
-    'src/controls/cloudLayer.js',
     'src/controls/progress.js',
-    'src/controls/bgSprite.js',
-    'src/controls/dialog.js',
-    'src/controls/lazyMenu.js',
     'src/controls/lazyLayer.js',
+    'src/controls/shyLayer.js',
+    'src/controls/lazyMenu.js',
     'src/controls/markLayer.js',
 
     'src/view/loginModule/signInScene.js',

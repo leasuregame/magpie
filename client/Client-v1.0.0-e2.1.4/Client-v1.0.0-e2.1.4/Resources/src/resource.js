@@ -91,6 +91,7 @@ var main_scene_image = {
 
     edit1: main_scene_path + "edit1.png",
     edit2: main_scene_path + "edit2.png",
+    edit3: main_scene_path + "edit3.png",
 
     card_frame_s: main_scene_path + "card_frame_s.png",
     card_frame1: main_scene_path + "card_frame1.png",
@@ -184,6 +185,8 @@ var main_scene_image = {
     button33: main_scene_path + "button33.png",
     button34: main_scene_path + "button34.png",
     button35: main_scene_path + "button35.png",
+    button36: main_scene_path + "button36.png",
+    button36s: main_scene_path + "button36s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -300,7 +303,17 @@ var main_scene_image = {
     icon113: main_scene_path + "icon113.png",
     icon114: main_scene_path + "icon114.png",
     icon115: main_scene_path + "icon115.png",
-    icon116: main_scene_path + "icon116.png"
+    icon116: main_scene_path + "icon116.png",
+    icon117: main_scene_path + "icon117.png",
+    icon118: main_scene_path + "icon118.png",
+    icon119: main_scene_path + "icon119.png",
+    icon120: main_scene_path + "icon120.png",
+    icon121: main_scene_path + "icon121.png",
+    icon122: main_scene_path + "icon122.png",
+    icon123: main_scene_path + "icon123.png",
+    icon124: main_scene_path + "icon124.png",
+    icon125: main_scene_path + "icon125.png",
+    icon126: main_scene_path + "icon126.png"
 };
 
 var main_scene_res = [

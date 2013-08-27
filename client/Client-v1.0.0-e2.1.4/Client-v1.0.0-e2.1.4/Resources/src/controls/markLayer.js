@@ -12,7 +12,7 @@
  * */
 
 
-var MARK_LAYER_HANDLER_PRIORITY = -1;
+var MARK_LAYER_HANDLER_PRIORITY = 2;
 
 var MarkLayer = cc.Layer.extend({
     _rect: null,

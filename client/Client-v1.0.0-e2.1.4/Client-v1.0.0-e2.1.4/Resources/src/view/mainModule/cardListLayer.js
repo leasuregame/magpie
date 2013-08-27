@@ -357,7 +357,7 @@ var CardListLayer = cc.Layer.extend({
             this._onClickOk,
             this
         );
-        okItem.setPosition(cc.p(600, 920));
+        okItem.setPosition(cc.p(600, 926));
 
         var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
             this._cb(null);
@@ -369,7 +369,7 @@ var CardListLayer = cc.Layer.extend({
         this._otherLabel.addChild(menu);
 
         var okLabel = cc.Sprite.create(main_scene_image.icon21);
-        okLabel.setPosition(cc.p(600, 920));
+        okLabel.setPosition(cc.p(600, 926));
         this._otherLabel.addChild(okLabel);
 
         this._maxSelectCount = 1;
@@ -458,7 +458,7 @@ var CardListLayer = cc.Layer.extend({
             this._onClickOk,
             this
         );
-        okItem.setPosition(cc.p(600, 920));
+        okItem.setPosition(cc.p(600, 926));
 
         var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
             this._cb(null);
@@ -470,7 +470,7 @@ var CardListLayer = cc.Layer.extend({
         this._otherLabel.addChild(menu);
 
         var okLabel = cc.Sprite.create(main_scene_image.icon21);
-        okLabel.setPosition(cc.p(600, 920));
+        okLabel.setPosition(cc.p(600, 926));
         this._otherLabel.addChild(okLabel);
 
         var lineUp = gameData.lineUp.getLineUpList();
@@ -587,7 +587,7 @@ var CardListLayer = cc.Layer.extend({
         var okItem = cc.MenuItemImage.create(main_scene_image.button9, main_scene_image.button9s, function () {
             cc.log("sell card");
         }, this);
-        okItem.setPosition(cc.p(600, 920));
+        okItem.setPosition(cc.p(600, 926));
 
         var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
             MainScene.getInstance().switch(CardListLayer.create());
@@ -599,7 +599,7 @@ var CardListLayer = cc.Layer.extend({
         this._otherLabel.addChild(menu);
 
         var okLabel = cc.Sprite.create(main_scene_image.icon21);
-        okLabel.setPosition(cc.p(600, 920));
+        okLabel.setPosition(cc.p(600, 926));
         this._otherLabel.addChild(okLabel);
 
         var lineUp = gameData.lineUp.getLineUpList();

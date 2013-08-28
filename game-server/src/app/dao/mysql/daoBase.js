@@ -63,6 +63,10 @@ var DaoBase = (function() {
     _.extend(data, options.data);
     options.table = options.table || this.table;
 
+    if (_.contains(this.domain.FIELDS, 'createTime')){
+      data.createTime = Date.now();
+    }
+
     for (key in data) {
       if (typeof data[key] === 'object') {
         data[key] = JSON.stringify(data[key]);
@@ -80,7 +84,7 @@ var DaoBase = (function() {
           msg: err.message
         }, null);
       }
-
+      
       var entity = new _this.domain(_.extend({
         id: res.insertId
       }, options.data));

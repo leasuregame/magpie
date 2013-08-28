@@ -29,6 +29,31 @@ CREATE TABLE IF NOT EXISTS `player` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
+-- Table structure for friend
+-- ----------------------------
+DROP TABLE IF EXISTS `friend`;
+CREATE TABLE IF NOT EXISTS `friend` (
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `friendId` INT(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`playerId`, `friendId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Table structure for message
+-- ----------------------------
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE IF NOT EXISTS `message` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `type` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
+  `options` VARCHAR(256) COLLATE utf8_unicode_ci DEFAULT '',
+  `content` VARCHAR(512) COLLATE utf8_unicode_ci DEFAULT '',
+  `status` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
+  `createTime` BIGINT(20) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
 -- Table structure for card
 -- ----------------------------
 DROP TABLE IF EXISTS `card`;
@@ -67,7 +92,6 @@ CREATE TABLE IF NOT EXISTS `battleLog` (
 DROP TABLE IF EXISTS `passiveSkill`;
 CREATE TABLE IF NOT EXISTS `passiveSkill` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `createTime` BIGINT(20) UNSIGNED NOT NULL,
   `cardId` INT(10) UNSIGNED NOT NULL,
   `name` VARCHAR(20) COLLATE utf8_unicode_ci NOT NULL,
   `value` FLOAT(5,1) UNSIGNED DEFAULT '0',

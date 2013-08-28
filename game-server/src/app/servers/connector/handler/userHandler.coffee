@@ -51,8 +51,7 @@ Handler::login = (msg, session, next) ->
       if player?
         session.set('playerId', player.id)
         session.set('playerName', player.name)
-
-      session.on('closed', onUserLeave.bind(null, @app))
+        session.on('closed', onUserLeave.bind(null, @app))
       session.pushAll cb
   ], (err) ->
     if err

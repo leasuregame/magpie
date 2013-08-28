@@ -30,18 +30,7 @@ Handler::lottery = (msg, session, next) ->
     ### 抽奖次数减一 ###
     player.updateGift 'lotteryCount', player.dailyGift.lotteryCount-1
 
-    tData = table.getTable('treasure_hunt')
-    items = tData.map (row) ->
-      return [row.id, row.rate * 100]
-
-    values = []
-    rates = []
-    for item in items
-      values.push item[0]
-      rates.push item[1]
-
-    _id = utility.randomValue values, rates, 10000
-    resource = table.getTableItem('treasure_hunt', _id)
+    resource = randomReward()
     if resource.type is 'power'
       player.resumePower(resource.value)
     else
@@ -50,7 +39,21 @@ Handler::lottery = (msg, session, next) ->
     player.save()
 
     next(null, {code: 200, msg: {
-      resourceId: _id, 
+      resourceId: resource.id, 
       lotteryCount: player.dailyGift.lotteryCount
       }
     })
+
+randomReward = ->
+  tData = table.getTable('treasure_hunt')
+  items = tData.map (row) ->
+    return [row.id, row.rate * 100]
+
+  values = []
+  rates = []
+  for item in items
+    values.push item[0]
+    rates.push item[1]
+
+  id = utility.randomValue values, rates, 10000
+  table.getTableItem('treasure_hunt', id)

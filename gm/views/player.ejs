@@ -1,0 +1,24 @@
+<%- include header %>
+<form class="form-inline span4" role="form" method = "get" action="/playerData">
+  <fieldset>
+     <legend>用户数据修改</legend>
+    <div class="control-group">
+      <label  class="control-group" for="playerId">玩家：</label>
+      <input type="text" class="input-small" id="playerName" name="playerName">
+    </div>
+    <div class="form-group">
+      <label for="areaId">服务器:</label>
+      <select id="areaList" class="form-control input-small" name="areaId">
+        <% areas.forEach(function(area){ %>
+           <option value = "<%= area.id %>">
+            <%= area.name %>
+           </option>
+        <% }) %>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">确认</button>
+  </fieldset>
+</form>
+
+<%- include footer %>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GM</title>
+<link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+<style type="text/css">
+    body {
+      padding-top: 60px;
+      padding-bottom: 40px;
+} </style>
+
+<script src="/javascripts/jquery.js" type="text/javascript"></script>
+<script src="/javascripts/bootstrap.js"></script>
+
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+   <div class="navbar-inner">
+￼￼￼ <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+      <a class="brand" href="/">GM</a>
+      <div class="nav-collapse">
+          <ul class="nav">
+          <li class="active">
+          <a href="/">首页</a>
+          </li> <% if (!user) { %>
+          <li><a href="/login">登录</a></li>
+          <% } else { %>
+          <li><a href="/player">玩家数据修改</a></li>
+          <li><a href="/reward">补偿或奖励</a></li>
+          <li><a href="/dataTest">数值平衡测试</a></li>
+           <% if(user.isRoot == 1) { %>
+            <li><a href="/reg">添加GM用户</a></li>
+           <% } %>
+          <% } %>
+          </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<article>
+<nav>
+
+<% if(user) { %>
+<div class="container-fluid">
+   <div class="row-fluid">
+          <div class="span3">
+            <div class="well sidebar-nav">
+              <ul class="nav nav-list">
+                <li><a title="用户数据修改" href="/player">用户数据修改</a></li>
+                <li><a title="补偿奖赏" href="/reward">补偿奖赏</a></span>
+                <li><a title="数值平衡测试" href="/dataTest">数值平衡测试</a></li>
+                <% if(user.isRoot == 1) {%>
+                     <li><a title="添加GM用户" href="/reg">添加GM用户</a></li>
+                <% } %>
+              </ul>
+            </div><!--/.well -->
+          </div><!--/span-->
+
+<% } %>
+
+

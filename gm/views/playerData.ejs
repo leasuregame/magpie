@@ -1,0 +1,75 @@
+<%- include header%>
+      <form class="form-inline span5" role="form" method="post">
+
+            <fieldset>
+                <legend>玩家数据修改</legend>
+
+              <div class="row-fluid marketing">
+                <div class = "span6">
+                    <div class="control-group">
+                        <label class="control-label" for="lv">等级:</label>
+                        <input type="text" class="input-small" id="lv" name="lv" value = "<%= player["lv"] %>" >
+                    </div>
+
+                    <div class="control-group">
+                         <label class="control-label" for="exp">经验:</label>
+                         <input type="text" class="input-small" id="exp" name="exp" value = "<%= player["exp"] %>" >
+                    </div>
+
+
+                    <div class="control-group">
+                          <label class="control-label" for="money">元宝:</label>
+
+                          <input type="text" class="input-small" id="money" name="money" value = "<%= player["money"] %>">
+                    </div>
+
+
+                    <div class="control-group">
+                          <label class="control-label" for="gold">铜板:</label>
+
+                          <input type="text" class="input-small" id="gold" name="gold" value = "<%= player["gold"] %>">
+                    </div>
+
+
+                     <div class="control-group">
+                          <label class="control-label" for="energy">体力:</label>
+
+                          <input type="text" class="input-small" id="power" name="power" value = "<%= eval("(" + player["power"] + ")").value%>">
+                    </div>
+                </div>
+
+                <div class = "span6">
+                    <div class="control-group">
+                        <label class="control-label" for="spiritor">元神等级:</label>
+                        <input type="text" class="input-small" id="spiritor" name="spiritor" value = "<%= eval("(" + player["spiritor"] + ")").lv %>" >
+                    </div>
+
+                     <div class="control-group">
+                        <label class="control-label" for="spiritor">灵气:</label>
+                        <input type="text" class="input-small" id="spiritor" name="spiritor" value = "<%= eval("(" + player["spiritor"] + ")").spirit %>" >
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="spiritPool">灵气池等级:</label>
+                        <input type="text" class="input-small" id="spiritPool" name="spiritPool" value = "<%= eval("(" + player["spiritPool"] + ")").lv %>" >
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="spiritPool">灵气池经验:</label>
+                        <input type="text" class="input-small" id="spiritPool" name="spiritPool" value = "<%= eval("(" + player["spiritPool"] + ")").exp %>" >
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="spiritPool">已采集次数:</label>
+                        <input type="text" class="input-small" id="spiritPool" name="spiritPool" value = "<%= eval("(" + player["spiritPool"] + ")").collectCount %>" >
+                    </div>
+
+                </div>
+
+              </div>
+                <button type="submit" class="btn btn-primary">确定</button>
+
+            </fieldset>
+
+      </form>
+<%- include footer%>

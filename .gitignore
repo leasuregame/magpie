@@ -3,6 +3,7 @@
 node_modules
 *.xls#
 *.log
+UserInterfaceState.xcuserstate
 Cocos2d-html5-*
 client/Client/Client/libs/chipmunk
 client/Client/Client/libs/cocos2dx

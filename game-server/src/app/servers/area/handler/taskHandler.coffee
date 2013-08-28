@@ -68,6 +68,7 @@ Handler::explore = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg})
 
     player.save()
+    data.task = player.task
     next(null, {code: 200, msg: data})
 
 ###

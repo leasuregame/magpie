@@ -1,31 +1,19 @@
-var Rank = require('../../domain/entity/rank');
+var Message = require('../../domain/entity/message');
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
 
-var RankDao = (function (_super) {
-    utility.extends(RankDao, _super);
+var MessageDao = (function (_super) {
+    utility.extends(MessageDao, _super);
 
-    function RankDao() {
-        RankDao.__super__.constructor.apply(this, arguments);
+    function MessageDao() {
+        MessageDao.__super__.constructor.apply(this, arguments);
     }
 
-    RankDao.table = 'rank';
-    RankDao.domain = Rank;
-    RankDao.syncKey = 'rankSync.updateRank';
+    MessageDao.table = 'message';
+    MessageDao.domain = Message;
+    MessageDao.syncKey = 'messageSync.update';
 
-    RankDao.createRank = RankDao.create;
-    RankDao.getRank = RankDao.fetchOne;
-    
-    RankDao.top10 = function(cb) {
-        this.fetchMany({
-            orderby: 'ranking',
-            limit: 10
-        }, cb);
-    };
-
-    RankDao.select = RankDao.fetchMany;
-
-    return RankDao;
+    return MessageDao;
 })(DaoBase);
 
-module.exports = RankDao;
+module.exports = MessageDao;

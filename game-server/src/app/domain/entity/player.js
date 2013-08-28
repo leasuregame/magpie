@@ -106,7 +106,9 @@ var Player = (function(_super) {
         dailyGift: {
             lotteryCount: 500,
             lotteryFreeCount: 0,
-            power: []
+            power: [],
+            receivedBlessCount: 0,
+            gaveBlessCount: 0
         },
         fragments: 0,
         energy: 0,

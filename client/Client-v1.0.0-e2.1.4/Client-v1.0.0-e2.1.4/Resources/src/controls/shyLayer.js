@@ -38,9 +38,13 @@ var ShyLayer = LazyLayer.extend({
     onTouchBegan: function (touch, event) {
         cc.log("ShyLayer onTouchBegan");
 
-        this._cb();
+        if (this.isVisible()) {
+            this._cb();
 
-        return true;
+            return true;
+        }
+
+        return false;
     }
 });
 

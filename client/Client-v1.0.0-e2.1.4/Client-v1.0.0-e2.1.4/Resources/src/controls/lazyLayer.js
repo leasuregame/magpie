@@ -35,7 +35,11 @@ var LazyLayer = cc.Layer.extend({
     onTouchBegan: function (touch, event) {
         cc.log("LazyLayer onTouchBegan");
 
-        return true;
+        if (this.isVisible()) {
+            return true;
+        }
+
+        return false;
     },
 
     /**

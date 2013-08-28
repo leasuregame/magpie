@@ -132,7 +132,7 @@ var Card = Entity.extend({
         this._hp = this._hpInit + this._hpAddition;
         this._atk = this._atkInit + this._atkAddition;
 
-        this._url = "hero" + (this._kindId % 6 + 1);
+        this._url = "card" + (this._kindId % 6 + 1);
 
         // 读取卡牌升级配置表
         var cardGrowTable = outputTables.card_grow.rows[this._lv];

@@ -76,7 +76,7 @@ var BattleCardNode = cc.Node.extend({
         var cardTable = outputTables.cards.rows[this._tableId];
         this._star = cardTable.star;
         this._skillId = cardTable.skill_id;
-        this._url = "hero" + (cardTable.number % 6 + 1);
+        this._url = "card" + (cardTable.number % 6 + 1);
 
         // 读取技能配置表
         if (this._skillId) {

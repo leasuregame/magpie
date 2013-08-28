@@ -177,9 +177,7 @@ var TournamentLabel = cc.Node.extend({
                 gameData.tournament.addFriend(this._player.playerId);
             } else {
                 gameData.tournament.defiance(function (id) {
-                    var scene = BattleScene.create(BattleLogNote.getInstance().getBattleByBattleLogId(id));
-                    cc.Director.getInstance().replaceScene(scene);
-//                    cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, scene, true));
+                    BattlePlayer.getInstance().play(id);
                 }, this._player.playerId);
 
             }

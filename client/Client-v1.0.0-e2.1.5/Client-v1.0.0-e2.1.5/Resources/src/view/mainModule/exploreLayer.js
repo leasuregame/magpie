@@ -186,7 +186,6 @@ var ExploreLayer = cc.Layer.extend({
             var player = gameData.player;
             var task = gameData.task;
             var progress = task.getProgress(i + 10 * (this._index - 1));
-            cc.log(progress);
             var power = player.get("power");
             var maxPower = player.get("maxPower");
             var exp = player.get("exp");
@@ -214,9 +213,7 @@ var ExploreLayer = cc.Layer.extend({
                 cc.log(data);
 
                 if (data.result == "fight") {
-                    var scene = BattleScene.create(BattleLogNote.getInstance().getBattleByBattleLogId(data.battleLogId));
-                    cc.Director.getInstance().replaceScene(scene);
-//            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, scene, true));
+                    BattlePlayer.getInstance().play(data.battleLogId);
                 } else {
                     that.update();
                 }

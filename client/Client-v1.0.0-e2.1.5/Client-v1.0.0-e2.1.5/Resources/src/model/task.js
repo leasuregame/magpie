@@ -100,7 +100,7 @@ var Task = Entity.extend({
                 player.update({
                     exp: msg.exp_obtain,
                     money: msg.money_obtain,
-                    power: msg.power_consume,
+                    power: -msg.power_consume,
                     fragment: msg.fragment ? 1 : 0
                 });
 
@@ -109,9 +109,7 @@ var Task = Entity.extend({
                 };
 
                 if (msg.result == "fight") {
-                    var battleLog = BattleLog.create(msg.battle_log);
-                    BattleLogNote.getInstance().pushBattleLog(battleLog);
-                    backData.battleLogId = battleLog.get("id");
+                    backData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battle_log, PVE_BATTLE_LOG);
                 } else if (msg.result == "box") {
                     backData.card = msg.open_box_card;
                 }

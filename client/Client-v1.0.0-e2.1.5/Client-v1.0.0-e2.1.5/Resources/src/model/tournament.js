@@ -85,10 +85,9 @@ var Tournament = Entity.extend({
 
                 var msg = data.msg;
 
-                var battleLog = BattleLog.create(msg.battleLog);
-                BattleLogNote.getInstance().pushBattleLog(battleLog);
-                cc.log(battleLog);
-                cb(battleLog.get("id"));
+                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
+
+                cb(battleLogId);
             } else {
                 cc.log("Tournament defiance fail");
             }

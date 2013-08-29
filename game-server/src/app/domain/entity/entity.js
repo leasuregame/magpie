@@ -25,7 +25,7 @@ var Entity = (function(_super) {
         this.changedFields = [];
         this.tracked = [];
 
-        _.defaults(attributes, this.constructor.DEFAULT_VALUES)
+        _.defaults(attributes, utility.deepCopy(this.constructor.DEFAULT_VALUES));
         this.track(Object.keys(attributes));
         this.set(attributes);
 
@@ -97,7 +97,7 @@ var Entity = (function(_super) {
         });
 
         _this.emit('change', _this.attributes);
-
+        
         _.each(attrs, function(v, k) {
             var type = k + '.change';
             _this.emit(type, v);
@@ -143,16 +143,13 @@ var Entity = (function(_super) {
         return _results;
     };
 
-    Entity.prototype.changedData = function() {
+    Entity.prototype.allData = function() {
         var __fields = this.constructor.FIELDS;
         var _results = {};
         for (var i = 0; i < __fields.length; i++) {
-            field = __fields[i];
-            if (this.changedFields.indexOf(field) > -1) {
-                _results[field] = this.get(field);
-            }
+            var field = __fields[i];
+            _results[field] = this.get(field);
         }
-        this.changedFields = [];
         return _results;
     };
 

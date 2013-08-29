@@ -18,6 +18,7 @@
 var Player = require("../../domain/entity/player");
 var cardDao = require("./cardDao");
 var rankDao = require("./rankDao");
+var friendDao = require('./friendDao');
 var passiveSkillDao = require("./passiveSkillDao")
 var async = require('async');
 
@@ -37,7 +38,7 @@ var PlayerDao = (function(_super) {
 
     PlayerDao.getPlayerInfo = function(options, cb) {
         var _this = this;
-        var player, cards;
+        var player, cards, rank;
         async.waterfall([
             function(callback) {
                 _this.fetchOne(options, callback);
@@ -64,14 +65,19 @@ var PlayerDao = (function(_super) {
                     }
                     return callback(null, res);
                 });
+            },
+            function(res, callback) {
+                rank = res;
+                friendDao.getFriends(player.id, callback);
             }
-        ], function(err, rank) {
+        ], function(err, friends) {
             if (err !== null) {
                 return cb(err, null);
             }
 
             player.addCards(cards);
             player.set('rank', rank);
+            player.set('friends', friends);
             return cb(null, player);
         });
     };

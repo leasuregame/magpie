@@ -15,7 +15,8 @@ exports.pve = (args, callback) ->
   tableName = args.table
   sectionId = args.sectionId
   taskData = table.getTableItem tableName, tableId
-
+  taskData.sectionId = sectionId
+  
   playerEntity = null
   async.waterfall([
     (cb) ->

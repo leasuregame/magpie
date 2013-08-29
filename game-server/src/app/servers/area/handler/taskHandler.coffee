@@ -6,6 +6,7 @@ async = require 'async'
 _ = require 'underscore'
 Card = require '../../../domain/entity/card'
 cardConfig = require '../../../../config/data/card'
+spiritConfig = require '../../../../config/data/spirit'
 utility = require '../../../common/utility'
 dao = require('pomelo').app.get('dao')
 
@@ -67,6 +68,7 @@ Handler::explore = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg})
 
     player.save()
+    data.task = player.task
     next(null, {code: 200, msg: data})
 
 ###
@@ -120,6 +122,18 @@ Handler::passBarrier = (msg, session, next) ->
           money: rdata.coins
           skillPoint: rdata.skill_point
 
+        ### count spirit ###
+        spirit = {total: 0}
+        if layer is player.pass.layer + 1
+          _.each bl.enemy.cards, (v, k) ->
+            if v.boss?
+              spirit[k] = spiritConfig.SPIRIT.PASS.BOSS
+              spirit.total += spiritConfig.SPIRIT.PASS.BOSS
+            else 
+              spirit[k] = spiritConfig.SPIRIT.PASS.OTHER
+              spirit.total += spiritConfig.SPIRIT.PASS.OTHER
+
+        rewards.spirit = spirit
         bl.rewards = rewards
 
         player.increase('exp', rewards.exp)

@@ -14,7 +14,7 @@ Handler::attack = (msg, session, next)->
   playerId = msg.playerId.toString()
   playerManager.getPlayers [playerId, targetId], (err, results) ->
 
-    console.log 'players for fight: ', err, results
+    #console.log 'players for fight: ', err, results
     p_data = results[playerId]
     attacker = new Player(p_data)
     console.log 'before set line up'

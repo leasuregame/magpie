@@ -6,36 +6,45 @@ logger = require('pomelo-logger').getLogger(__filename)
 class VirtualPlayer extends Player
   init: (data) ->
     @data = data
-    @cards = []
-    @lineUp = data.formation or ''
+    cards = []
+    lineUp = data.formation or ''
 
     card_ids = data.cards.split('#')
-
     realId = 0
+    hasOneBoss = false
     for id in card_ids
-      @cards.push {
+      _obj = {
         id: realId++
         tableId: parseInt(id)
-        boss: {
+        sectionId: data.sectionId
+      }
+      if not hasOneBoss and data.boss_id? and parseInt(id) is parseInt(data.boss_id)
+        _obj.boss = {
           id: data.boss_id
           skill_trigger_rate: data.trigger_rate
-          attr_inc: data.boos_attr
+          attr_inc: data.boss_attr
           point_atk_inc: data.atk_inc
           point_hp_inc: data.hp_inc
-        } if id is data.boss_id
-      }
+        }
+        hasOneBoss = true
 
-    _cards = _.clone(@cards)
-    arr = @lineUp.split(',').map (item) =>
+      cards.push _obj
+
+    _cards = _.clone(cards)
+    arr = lineUp.split(',').map (item) =>
       [pos, _tableId] = item.split(':')
       _card = _.findWhere _cards, {tableId: parseInt(_tableId)}
       _cards.splice(_cards.indexOf(_card), 1)
       _card_id = _card.id
       "#{pos}:#{_card_id}"
 
-    @lineUp = arr.join(',')
-
-    super({})
+    lineUp = arr.join(',')
+    
+    super(
+      cards: cards
+      lineUp: lineUp
+    )
+    @is_monster = true
 
   loadHeros: ->
     @heros = if @cards? then new VHero(c, @) for c in @cards else []
@@ -59,5 +68,14 @@ class VirtualPlayer extends Player
       logger.warn 'there is not line up for player ' + @name
     
     @matrix.reset()
+
+  getCards: ->
+    cobj = {}
+    cobj[c.idx] = {
+      tableId: c.card_id
+      hp: c.hp
+      boss: true if c.boss?
+    } for c in @heros
+    cobj
 
 module.exports = VirtualPlayer

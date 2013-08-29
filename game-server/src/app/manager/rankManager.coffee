@@ -21,8 +21,9 @@ Manager = module.exports =
       targetRanking = defender.ranking
 
       if isWin
-        defender.set('ranking', playerRanking)
-        challenger.set('ranking', targetRanking)
+        if playerRanking < targetRanking
+          defender.set('ranking', playerRanking)
+          challenger.set('ranking', targetRanking)
         challenger.incCount('win')
         challenger.incCount('winningStreak')
         defender.resetCount('winningStreak')

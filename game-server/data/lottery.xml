@@ -6,9 +6,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>晨晨 林</Author>
-  <LastAuthor>晨晨 林</LastAuthor>
+  <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-08-21T08:58:49Z</Created>
-  <LastSaved>2013-08-21T09:06:31Z</LastSaved>
+  <LastSaved>2013-08-26T06:28:18Z</LastSaved>
   <Company>乐之游戏</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9060</WindowHeight>
+  <WindowHeight>10680</WindowHeight>
   <WindowWidth>25600</WindowWidth>
-  <WindowTopX>10340</WindowTopX>
-  <WindowTopY>4340</WindowTopY>
+  <WindowTopX>12920</WindowTopX>
+  <WindowTopY>1880</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -27,8 +27,7 @@
   <Style ss:ID="Default" ss:Name="Normal">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -38,139 +37,205 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="寻宝配置表">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="22" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="22" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">序号</Data></Cell>
     <Cell><Data ss:Type="String">类型</Data></Cell>
     <Cell><Data ss:Type="String">值</Data></Cell>
     <Cell><Data ss:Type="String">名称</Data></Cell>
+    <Cell><Data ss:Type="String">类型概率</Data></Cell>
+    <Cell><Data ss:Type="String">值概率</Data></Cell>
+    <Cell><Data ss:Type="String">实际概率</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">type</Data></Cell>
     <Cell><Data ss:Type="String">value</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
+    <Cell><Data ss:Type="String">type_rate</Data></Cell>
+    <Cell><Data ss:Type="String">value_rate</Data></Cell>
+    <Cell><Data ss:Type="String">rate</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="String">power</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">体力</Data></Cell>
+    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">18</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">power</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="String">体力</Data></Cell>
+    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">9</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">power</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="String">体力</Data></Cell>
+    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">3</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">elixir</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">仙丹</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">9</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">elixir</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="String">仙丹</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">39</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">5.85</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">elixir</Data></Cell>
     <Cell><Data ss:Type="Number">5000</Data></Cell>
     <Cell><Data ss:Type="String">仙丹</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">0.15</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">6</Data></Cell>
     <Cell><Data ss:Type="String">spirit</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="String">灵气</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">6</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell><Data ss:Type="String">spirit</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="String">灵气</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">39</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">3.9</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="String">spirit</Data></Cell>
     <Cell><Data ss:Type="Number">1000</Data></Cell>
     <Cell><Data ss:Type="String">灵气</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">0.1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">9</Data></Cell>
     <Cell><Data ss:Type="String">skillPoint</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="String">技能点</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">6</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">skillPoint</Data></Cell>
     <Cell><Data ss:Type="Number">500</Data></Cell>
     <Cell><Data ss:Type="String">技能点</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">39</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">3.9</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">11</Data></Cell>
     <Cell><Data ss:Type="String">skillPoint</Data></Cell>
     <Cell><Data ss:Type="Number">10000</Data></Cell>
     <Cell><Data ss:Type="String">技能点</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">0.1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">12</Data></Cell>
     <Cell><Data ss:Type="String">energy</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="String">活力</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">6</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">13</Data></Cell>
     <Cell><Data ss:Type="String">energy</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="String">活力</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">39</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">3.9</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">14</Data></Cell>
     <Cell><Data ss:Type="String">energy</Data></Cell>
     <Cell><Data ss:Type="Number">5000</Data></Cell>
     <Cell><Data ss:Type="String">活力</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">0.1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">15</Data></Cell>
     <Cell><Data ss:Type="String">money</Data></Cell>
     <Cell><Data ss:Type="Number">1000</Data></Cell>
     <Cell><Data ss:Type="String">铜板</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">9</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">16</Data></Cell>
     <Cell><Data ss:Type="String">money</Data></Cell>
     <Cell><Data ss:Type="Number">10000</Data></Cell>
     <Cell><Data ss:Type="String">铜板</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">39</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">5.85</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">17</Data></Cell>
     <Cell><Data ss:Type="String">money</Data></Cell>
     <Cell><Data ss:Type="Number">200000</Data></Cell>
     <Cell><Data ss:Type="String">铜板</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">0.15</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">18</Data></Cell>
     <Cell><Data ss:Type="String">gold</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">元宝</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">99</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">9.9</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">19</Data></Cell>
     <Cell><Data ss:Type="String">gold</Data></Cell>
-    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">500</Data></Cell>
     <Cell><Data ss:Type="String">元宝</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:Formula="=RC[-2]*RC[-1]/100"><Data ss:Type="Number">0.1</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -181,12 +246,13 @@
     <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>-4</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
+   <Zoom>130</Zoom>
+   <PageLayoutZoom>130</PageLayoutZoom>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>10</ActiveRow>
+     <ActiveRow>7</ActiveRow>
      <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>

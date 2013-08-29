@@ -15,12 +15,8 @@ beforeEach(function() {
       );
 
       var cards_ok = false;
-      var enemy_card_length = _.filter(battleLog.enemy.cards, function(e) {
-        return e !== null;
-      }).length;
-      var own_card_length = _.filter(battleLog.own.cards, function(e) {
-        return e !== null;
-      }).length;
+      var enemy_card_length = _.values(battleLog.enemy.cards).filter(function(val){return _.isObject(val)}).length;
+      var own_card_length = _.values(battleLog.own.cards).filter(function(val){return _.isObject(val)}).length;
 
       cards_ok = enemy_card_length > 0 && own_card_length > 0;
 
@@ -32,15 +28,17 @@ beforeEach(function() {
           return false;
         }
 
+        var stepFormatOk = true;
         var dmage = {};
         _.each(steps, function(s) {
           _.each(s.d, function(pos, index) {
-            pos = Math.abs(pos);
             if (!_.isNumber(s.a) || !_.isNumber(pos)) {
               console.log('战斗步骤数据格式错误,', s);
-              return false;
+              stepFormatOk = false;
+              return;
             }
 
+            pos = Math.abs(pos);
             if (!_.has(dmage, pos)) {
               dmage[pos] = Math.abs(s.e[index]);
             } else {
@@ -54,7 +52,7 @@ beforeEach(function() {
           var death_man = 0;
           _.each(dmage, function(val, key) {
             k = parseInt(key);
-            if (k >= 6 && battleLog.enemy.cards[k - 6].hp <= val) {
+            if (k >= 6 && battleLog.enemy.cards[k].hp <= val) {
               death_man++;
             }
           })
@@ -83,7 +81,7 @@ beforeEach(function() {
           console.log('我方实际人数：', own_card_length);
         }
 
-        return ok;
+        return ok && stepFormatOk;
       }
 
       var steps_ok = checkSteps(battleLog.steps);
@@ -99,7 +97,7 @@ beforeEach(function() {
         console.log('战斗奖励不正确');
       }
 
-      return keys_ok && cards_ok && steps_ok && rewards_ok;
+      return keys_ok && cards_ok && steps_ok;
     },
     hasProperties: function(expectedProperties) {
       var obj = this.actual;

@@ -47,14 +47,11 @@ describe("Area Server", function() {
 							doAjax('/card/' + 1, {}, function(res) {
 								if (data.msg.upgrade) {
 									expect(res.data.star).toEqual(before_card.star + 1);
-
+									expect(data.msg.card.passiveSkills.length).toEqual(2);
 								} else {
 									expect(res.data.star).toEqual(before_card.star);
-								}
-
-								var _card = _.clone(data.msg.card);
-								delete _card.passiveSkills;
-								expect(res.data).toEqual(_card);
+									expect(data.msg.card.passiveSkills.length).toEqual(1);
+								}								
 							});
 
 							doAjax('/card/' + 2, {}, function(res) {
@@ -85,9 +82,7 @@ describe("Area Server", function() {
 							expect(typeof data.msg.upgrade).toEqual('boolean');
 
 							doAjax('/card/' + 11, {}, function(res) {
-								var _card = _.clone(data.msg.card);
-								delete _card.passiveSkills;
-								expect(res.data).toEqual(_card);
+								expect(res.data.star).toEqual(data.msg.card.star);
 							});
 
 							doAjax('/card/' + 4, {}, function(res) {

@@ -71,26 +71,35 @@ describe("Connector Server", function() {
                 exp: 0,
                 money: 1000,
                 gold: 50,
-                lineUp: {},
+                lineUp: {
+                  6: -1
+                },
                 ability: 0,
                 task: {
                   id: 1,
-                  progress: 0
+                  progress: 0,
+                  hasWin: false
                 },
                 pass: {
                   layer: 0,
                   mark: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 },
-                dailyGift: [],
-                energy: 0,
+                dailyGift: {
+                  lotteryCount: 500,
+                  lotteryFreeCount: 0,
+                  power: [],
+                  receivedBlessCount: 0,
+                  gaveBlessCount: 0
+                },
                 skillPoint: 0,
+                energy: 0,
                 elixir: 0,
                 spiritor: {
                   lv: 0,
                   spirit: 0
                 },
                 spiritPool: {
-                  lv: 1,
+                  lv: 0,
                   exp: 0,
                   collectCount: 0
                 },

@@ -2,6 +2,7 @@ playerManager = require '../../../manager/playerManager'
 rankManager = require '../../../manager/rankManager'
 table = require '../../../manager/table'
 async = require 'async'
+_ = require 'underscore'
 
 INTERVALS = 
   10000: 100
@@ -25,12 +26,15 @@ Handler = (@app) ->
 
 Handler::rankingList = (msg, session, next) ->
   playerId = msg.playerId or session.get('playerId')
+  
+  player = null
   async.waterfall [
     (cb) =>
-      @app.get('dao').rank.fetchOne where:{playerId: playerId}, cb
+      playerManager.getPlayerInfo {pid: playerId}, cb
 
-    (rank, cb) ->
-      rankings = genRankings(rank.ranking)
+    (res, cb) ->
+      player = res
+      rankings = genRankings(player.rank.ranking)
       playerManager.rankingList _.keys(rankings), (err, players) ->
         cb(err, players, rankings)
 
@@ -39,7 +43,7 @@ Handler::rankingList = (msg, session, next) ->
       return next(null, {code: err.code, msg: err.message})
 
     rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK \
-      for p in players when playerId in p.rank.counts.recentChallenger
+      for p in players when p.playerId isnt playerId and playerId in p.rank.counts.recentChallenger
 
     players = filterPlayersInfo(players, rankings)
     players.sort (x, y) -> x.ranking - y.ranking

@@ -1,1 +1,1 @@
-id;cardId;name;value;createTime1;1;hp_improve;10;02;1;atk_improve;20;03;2;dodge;10;04;3;crit;10;05;4;dmg_reduce;10;06;101;dmg_reduce;10;07;164;crit;5;0
+id;cardId;name;value1;1;hp_improve;102;5;atk_improve;203;2;dodge;104;3;crit;105;4;dmg_reduce;106;101;dmg_reduce;107;164;crit;5

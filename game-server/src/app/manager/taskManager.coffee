@@ -1,6 +1,7 @@
 table = require './table'
 taskRate = require '../../config/data/taskRate'
 psConfig = require '../../config/data/passSkill'
+spiritConfig = require '../../config/data/spirit'
 utility = require '../common/utility'
 dao = require('pomelo').app.get('dao')
 async = require('async')
@@ -25,7 +26,7 @@ class Manager
       fragment: false
     }
 
-    # 检查是否体力充足
+    ### 检查是否体力充足 ###
     if player.power.value < taskData.power_consume
       return cb({code: 501,msg: '体力不足'}, null, null)
 
@@ -33,6 +34,10 @@ class Manager
       ['fight','box', 'none'],
       [taskRate.fight, taskRate.precious_box, (100 - taskRate.fight - taskRate.precious_box)]
     )
+
+    ### 判断最后一小关，如果没有在这一个章节中获得战斗的胜利，则触发战斗 ###
+    if player.task.progress is taskData.points and not player.task.hasWin
+      data.result = 'fight'
 
     cb(null, data, taskData.chapter_id, taskData.section_id)
 
@@ -126,6 +131,23 @@ class Manager
   @obtainBattleRewards: (player, taskId, battleLog, cb) ->
     taskData = table.getTableItem 'task_config', taskId
 
+    task = _.clone(player.task)
+    if not task.hasWin
+      ### 标记为已经赢得战斗 ###
+      task.hasWin = true
+      player.task = task
+
+      ### the first time win, obtain some spirit ###
+      spirit = {total: 0}
+      _.each battleLog.enemy.cards, (v, k) ->
+        if v.boss?
+          spirit[k] = spiritConfig.SPIRIT.TASK.BOSS
+          spirit.total += spiritConfig.SPIRIT.TASK.BOSS
+        else
+          spirit[k] = spiritConfig.SPIRIT.TASK.OTHER
+          spirit.total = spiritConfig.SPIRIT.TASK.OTHER
+      battleLog.rewards.spirit = spirit
+
     # 奖励掉落卡牌
     ids = taskData.cards.split('#').map (id) ->
       _row = table.getTableItem 'task_card', id
@@ -161,6 +183,7 @@ class Manager
       if task.progress > taskData.points
         task.progress = 0
         task.id += 1
+        task.hasWin = false
       player.set('task', task)
 
     # 判断是否升级
@@ -209,22 +232,22 @@ bornPassiveSkill = () ->
   }
 
 getRewardCards = (cardIds, count) ->
-  countCardId = (id, star) ->
-    _card = table.getTableItem 'cards', id
-    if _card.star isnt star
-      _card_id = if _card.star > star then (id - 1) else (id + 1)
-      return _card_id
-    else
-      return id
+  # countCardId = (id, star) ->
+  #   _card = table.getTableItem 'cards', id
+  #   if _card.star isnt star
+  #     _card_id = if _card.star > star then (id - 1) else (id + 1)
+  #     return _card_id
+  #   else
+  #     return id
 
   cd = taskRate.card_drop
   _cards = []
   for i in [1..count]
     _id = utility.randomValue cardIds
-    _star = utility.randomValue _.keys(cd.star), _.values(cd.star)
+    _star = 1 #utility.randomValue _.keys(cd.star), _.values(cd.star)
     _level = utility.randomValue _.keys(cd.level), _.values(cd.level)
 
-    _id = countCardId(parseInt(_id), parseInt(_star))
+    #_id = countCardId(parseInt(_id), parseInt(_star))
     _cards.push {
       id: _id
       star: parseInt(_star)

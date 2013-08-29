@@ -56,6 +56,9 @@ test-api: build
 runserver: build
 	./node_modules/.bin/pomelo start development
 
+debug: 
+	./node_modules/.bin/node-inspector --web-port=9090 &
+
 restartserver: build
 	./node_modules/.bin/pomelo stop
 	./node_modules/.bin/pomelo start production --daemon

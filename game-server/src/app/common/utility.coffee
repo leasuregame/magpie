@@ -14,14 +14,14 @@ Utility =
   @param {array} values, the given values for get the random one from them
   @param {array} rates, the option parameter, if given, will return the value for the rates
   ###
-  randomValue: (values, rates) ->
+  randomValue: (values, rates, maxVal=100) ->
     if rates?
       _rates = []
       _r = 0
       for r in rates
         _rates.push _r += r
 
-      rd = _.random(0, 100)
+      rd = _.random(0, maxVal)
       for r, i in _rates
         if rd <= r
           return values[i]
@@ -50,5 +50,26 @@ Utility =
     child:: = new ctor()
     child.__super__ = parent::
     child
+
+  deepCopy: (obj) ->
+    newObj = {}
+    for key of obj
+      if _.isObject(obj[key])
+        newObj[key] = Utility.deepCopy(obj[key])
+      else if _.isArray(obj[key])
+        newArr = []
+        for item in obj[key]
+          if _.isObject(item) or _.isArray(item)
+            newArr.push Utility.deepCopy(item)
+          else
+            newArr.push item
+
+        newObj[key] = newArr
+      else
+        newObj[key] = obj[key]
+
+    newObj
+
+
 
 module.exports = Utility

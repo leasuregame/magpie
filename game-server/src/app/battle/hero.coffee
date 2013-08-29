@@ -22,6 +22,10 @@ class Hero extends Module
     @player = player
     @id = attrs.id
     @lv = attrs.lv
+    @init_hp = attrs.init_hp
+    @hp = attrs.hp
+    @atk = attrs.atk
+    @init_atk = attrs.init_atk
     @card_id = attrs.tableId
     @skill_lv = attrs.skillLv or 0
     @sp_value = attrs.passiveSkills or []
@@ -41,13 +45,10 @@ class Hero extends Module
 
   loadCardInfo: ->
     card = tab.getTableItem('cards', @card_id)
-    factor = tab.getTableItem('factors', @lv)?.factor
     if not card
       throw new Error("配置表错误：不能从表 cards 中找到卡牌信息，卡牌id为 #{@card_id}")
 
     @name = card.name
-    @init_atk = @atk = parseInt(card.atk * factor)
-    @init_hp = @hp = parseInt(card.hp * factor)
     @star = parseInt(card.star)
     @skill_id = card.skill_id
 
@@ -63,9 +64,9 @@ class Hero extends Module
       @skill = new Skill(@, @skill_setting)
 
   attack: (callback) ->
-    if @skill? and @skill.check(enemys)
+    if @skill? and @skill.check()
       enemys = @skill.getTargets()
-      @usingSkill(enemys, callback)
+      @usingSkill(callback, enemys)
     else
       @normalAttack(callback)
 
@@ -83,7 +84,7 @@ class Hero extends Module
   isCrit: ->
     if @sp? then @sp.isCrit() else false
 
-  usingSkill: (enemys, callback)->
+  usingSkill: (callback, enemys = @skill.getTargets(), percent = 100, isSpiritor = false) ->
     if not enemys or not enemys.length > 0
       log.warn '技能攻击时，攻击的对方卡牌不能为空'
       return
@@ -92,18 +93,19 @@ class Hero extends Module
 
     switch @skill.type
       when 'single_fight', 'aoe' 
-        @skillAttack enemys, callback
+        @skillAttack enemys, percent, isSpiritor, callback
       when 'single_heal', 'mult_heal'
-        @cure enemys, callback
+        @cure enemys, percent, isSpiritor, callback
       else
         callback()
 
-  skillAttack: (enemys, callback) ->
+  skillAttack: (enemys, percent, isSpiritor, callback) ->
     # 负的a的id代表技能攻击
-    _step = {a: -@idx, d: [], e: [], r: []} 
+    _step = {a: -@idx, d: [], e: [], r: []}
+    _step.t = 1 if isSpiritor
     
     _len = enemys? and enemys.length or 0
-    _dmg = parseInt(@atk * @skill.effectValue())
+    _dmg = parseInt(@atk * @skill.effectValue() * percent / 100)
 
     for enemy in enemys
       
@@ -112,7 +114,6 @@ class Hero extends Module
         _step.d.push _d
         _step.e.push 0
         log.debug enemy.idx, '闪避'
-        callback enemy
         continue
       else if @isCrit()
         # 暴击
@@ -133,13 +134,14 @@ class Hero extends Module
 
       enemy.damage _dmg, @, _step
 
-      callback enemy
+    @log _step
+    callback enemys     
 
-    @log _step     
-
-  cure: (enemys, callback) ->
+  cure: (enemys, percent, isSpiritor, callback) ->
     _step = {a: -@idx, d: [], e: []}
-    _hp = parseInt(@init_hp * @skill.effectValue())
+    _step.t = 1 if isSpiritor
+    
+    _hp = parseInt(@init_hp * @skill.effectValue() * percent / 100)
     
     for enemy in enemys      
       enemy.damageOnly -_hp
@@ -149,10 +151,10 @@ class Hero extends Module
       # debug
       _step['dhp'] = enemy.hp
 
-      callback enemy
       log.info "#{enemy.idx} 加血 #{_hp}"
 
     @log _step
+    callback enemys
 
   normalAttack: (callback) ->    
     _hero = @player.enemy.herosToBeAttacked 'default', @pos
@@ -178,15 +180,15 @@ class Hero extends Module
       log.debug "#{_hero.idx} 受到伤害 #{_e}"
 
       _hero.damage _dmg, @, _step
-      callback _hero
       # debug
       _step['dhp'] = _hero.hp
 
       @log _step
-      
+      callback _hero
     else
       log.error "普通攻击：找不到对方可攻击的卡牌"
       #throw new Error('Normal Attack Error: can not find target to be attacked.')
+      callback()
 
   damage: (value, enemy, step) ->
     # 检查辅助效果，伤害减少

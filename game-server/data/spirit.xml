@@ -6,9 +6,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>arthur wu</Author>
-  <LastAuthor>晨晨 林</LastAuthor>
+  <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-08-20T06:14:56Z</Created>
-  <LastSaved>2013-08-22T03:42:40Z</LastSaved>
+  <LastSaved>2013-08-22T11:18:40Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -16,11 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>10860</WindowHeight>
-  <WindowWidth>19060</WindowWidth>
-  <WindowTopX>17880</WindowTopX>
-  <WindowTopY>1220</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <WindowHeight>10400</WindowHeight>
+  <WindowWidth>25600</WindowWidth>
+  <WindowTopX>8700</WindowTopX>
+  <WindowTopY>1260</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -67,7 +66,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">100</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
@@ -80,7 +79,7 @@
     <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="Number">55</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">100</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -173,11 +172,12 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>15</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -185,100 +185,86 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="灵气池配置表">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="13" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="13" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="4" ss:Width="140"/>
-   <Column ss:AutoFitWidth="0" ss:Width="141"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">等级</Data></Cell>
     <Cell><Data ss:Type="String">所需经验</Data></Cell>
     <Cell><Data ss:Type="String">每次采集获得灵气</Data></Cell>
-    <Cell><Data ss:Type="String">每次采集获得经验</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">lv</Data></Cell>
     <Cell><Data ss:Type="String">exp_need</Data></Cell>
     <Cell><Data ss:Type="String">spirit_obtain</Data></Cell>
-    <Cell><Data ss:Type="String">exp_obtain</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">225</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="Number">525</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">450</Data></Cell>
     <Cell><Data ss:Type="Number">12</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell><Data ss:Type="Number">975</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">825</Data></Cell>
     <Cell><Data ss:Type="Number">14</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="Number">1350</Data></Cell>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">1200</Data></Cell>
     <Cell><Data ss:Type="Number">16</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">4</Data></Cell>
-    <Cell><Data ss:Type="Number">4</Data></Cell>
-    <Cell><Data ss:Type="Number">1725</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">1575</Data></Cell>
     <Cell><Data ss:Type="Number">18</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="Number">2100</Data></Cell>
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell><Data ss:Type="Number">1950</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">6</Data></Cell>
-    <Cell><Data ss:Type="Number">6</Data></Cell>
-    <Cell><Data ss:Type="Number">2475</Data></Cell>
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell><Data ss:Type="Number">2325</Data></Cell>
     <Cell><Data ss:Type="Number">22</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">7</Data></Cell>
-    <Cell><Data ss:Type="Number">7</Data></Cell>
-    <Cell><Data ss:Type="Number">2850</Data></Cell>
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+    <Cell><Data ss:Type="Number">2700</Data></Cell>
     <Cell><Data ss:Type="Number">24</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">8</Data></Cell>
-    <Cell><Data ss:Type="Number">8</Data></Cell>
-    <Cell><Data ss:Type="Number">3225</Data></Cell>
+    <Cell><Data ss:Type="Number">9</Data></Cell>
+    <Cell><Data ss:Type="Number">9</Data></Cell>
+    <Cell><Data ss:Type="Number">3075</Data></Cell>
     <Cell><Data ss:Type="Number">26</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">9</Data></Cell>
-    <Cell><Data ss:Type="Number">9</Data></Cell>
-    <Cell><Data ss:Type="Number">3600</Data></Cell>
-    <Cell><Data ss:Type="Number">28</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">30</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">28</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -290,12 +276,11 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>17</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -344,7 +329,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

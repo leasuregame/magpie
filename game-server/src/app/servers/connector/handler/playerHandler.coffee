@@ -15,13 +15,13 @@ Handler::createPlayer = (msg, session, next) ->
     name: name
     userId: uid
     areaId: areaId
-  }, (err, player) ->
+  }, (err, player) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    afterCreatePlayer(session, uid, areaId, player, next)
+    afterCreatePlayer(@app, session, uid, areaId, player, next)
 
-afterCreatePlayer = (session, uid, areaId, player, next) ->
+afterCreatePlayer = (app, session, uid, areaId, player, next) ->
   async.waterfall [
     (cb) ->
       dao.user.fetchOne where: id: uid, cb
@@ -39,7 +39,7 @@ afterCreatePlayer = (session, uid, areaId, player, next) ->
       session.set('playerId', player.id)
       session.set('areaId', player.areaId)
       session.set('playerName', player.name)
-      session.on('closed', onUserLeave.bind(null, @app))
+      session.on('closed', onUserLeave.bind(null, app))
       session.pushAll(cb)
 
     (cb) ->
@@ -51,11 +51,11 @@ afterCreatePlayer = (session, uid, areaId, player, next) ->
 
     next(null, {code: 200, msg: {player: player}})
 
-onUserLeave = (session, reason) ->
+onUserLeave = (app, session, reason) ->
   if not session or not session.uid
     return
 
-  app.rpc.area.playerRemote.playerLeave session, playerId: session.get('playerId'), (err) ->
+  app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), (err) ->
     if err
       logger.error 'user leave error' + err
 

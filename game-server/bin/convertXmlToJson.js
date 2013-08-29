@@ -16,8 +16,9 @@ function tryMkdir(file) {
 }
 
 var files = [
-  '../../client/Client/Client/Resources/src/table/table.json',
-  '../../client/Client-v1.0.0-e2.1.4/Client-v1.0.0-e2.1.4/Resources/src/table/table.json'];
+  '../data/table.json',
+  '../../client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/Resources/src/table/table.json'
+];
 
 for (var i = files.length - 1; i >= 0; i--) {
   files[i] = path.resolve(__dirname, files[i]);
@@ -31,11 +32,11 @@ var tabledata = require("../app/common/loadtable")(
   '../data/cards.xml',
   '../data/tasks.xml',
   '../data/rank.xml',
-  '../data/spirit.xml',
-  '../data/lottery.xml'
+  '../data/lottery.xml',
+  '../data/spirit.xml'
 );
 
-files.forEach(function(filepath){
+files.forEach(function(filepath) {
   fs.writeFileSync(filepath, JSON.stringify(tabledata.client));
 });
 

@@ -55,8 +55,8 @@ var MessageLayer = cc.Layer.extend({
         this._systemMessageLayerItem.setPosition(cc.p(395, 1005));
 
         var menu = cc.Menu.create(
-            this._lotteryLayerItem,
-            this._treasureHuntLayerItem,
+            this._battleMessageLayerItem,
+            this._friendMessageLayerItem,
             this._systemMessageLayerItem
         );
         menu.setPosition(cc.p(0, 0));
@@ -74,25 +74,44 @@ var MessageLayer = cc.Layer.extend({
         systemMessageIcon.setPosition(cc.p(395, 1000));
         this.addChild(systemMessageIcon, 2);
 
+        var bgSprite = cc.Sprite.create(main_scene_image.bg11);
+        bgSprite.setAnchorPoint(cc.p(0, 0));
+        bgSprite.setPosition(GAME_BG_POINT);
+        this.addChild(bgSprite);
+
+        this._onClickBattleMessageLayer();
+
         return true;
     },
 
     _onClickBattleMessageLayer: function () {
         cc.log("MessageLayer _onClickBattleMessageLayer");
 
+        this._battleMessageLayerItem.setEnabled(false);
+        this._friendMessageLayerItem.setEnabled(true);
+        this._systemMessageLayerItem.setEnabled(true);
 
+        this.switchLayer(BattleMessageLayer);
     },
 
     _onClickFriendMessageLayer: function () {
         cc.log("MessageLayer _onClickFriendMessageLayer");
 
+        this._battleMessageLayerItem.setEnabled(true);
+        this._friendMessageLayerItem.setEnabled(false);
+        this._systemMessageLayerItem.setEnabled(true);
 
+        this.switchLayer(FriendMessageLayer);
     },
 
     _onClickSystemMessageLayer: function () {
         cc.log("MessageLayer _onClickSystemMessageLayer");
 
+        this._battleMessageLayerItem.setEnabled(true);
+        this._friendMessageLayerItem.setEnabled(true);
+        this._systemMessageLayerItem.setEnabled(false);
 
+        this.switchLayer(SystemMessageLayer);
     },
 
     switchLayer: function (runLayer) {

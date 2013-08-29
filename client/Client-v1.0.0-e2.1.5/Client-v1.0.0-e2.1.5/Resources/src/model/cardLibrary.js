@@ -32,29 +32,17 @@ var CardLibrary = Entity.extend({
     _loadData: function () {
         cc.log("CardLibrary _loadData");
 
-        var cardTable = outputTables.cards.rows;
-
         this._cardLibrary = [];
-        for (var key in cardTable) {
+        for (var i = 1; i <= 250; ++i) {
             this._cardLibrary.push({
-                id: key,
                 type: CARD_EXIST,
                 card: Card.create({
-                    tableId: cardTable[key].id,
+                    tableId: i,
                     lv: 1,
                     skillLv: 1
                 })
             })
         }
-
-        cc.log(this._cardLibrary);
-
-        this._cardLibrary.sort(this._sort);
-        cc.log(this._cardLibrary);
-    },
-
-    _sort: function (a, b) {
-        return (a.id - b.id);
     }
 });
 

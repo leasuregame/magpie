@@ -59,7 +59,7 @@ var CardLibraryLayer = cc.Layer.extend({
         }
 
         var scrollView = cc.ScrollView.create(cc.size(640, 733), scrollViewLayer);
-        scrollView.setContentSize(cc.size(640, 13334));
+        scrollView.setContentSize(cc.size(640, scrollViewHeight));
         scrollView.setPosition(GAME_BG_POINT);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();

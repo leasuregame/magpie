@@ -75,6 +75,7 @@ var appFiles = [
 
 
     'src/view/mainModule/activityLayer.js',
+    'src/view/mainModule/battleMessageLayer.js',
     'src/view/mainModule/cardDetails.js',
     'src/view/mainModule/cardEvolutionLabel.js',
     'src/view/mainModule/cardNode.js',
@@ -90,6 +91,7 @@ var appFiles = [
     'src/view/mainModule/evolutionLayer.js',
     'src/view/mainModule/exploreLayer.js',
     'src/view/mainModule/friendLayer.js',
+    'src/view/mainModule/friendMessageLayer.js',
     'src/view/mainModule/gamblingLayer.js',
     'src/view/mainModule/lineUpLabel.js',
     'src/view/mainModule/lineUpLayer.js',
@@ -115,6 +117,7 @@ var appFiles = [
     'src/view/mainModule/spiritPoolLayer.js',
     'src/view/mainModule/starLabel.js',
     'src/view/mainModule/strengthenLayer.js',
+    'src/view/mainModule/systemMessageLayer.js',
     'src/view/mainModule/taskLayer.js',
     'src/view/mainModule/tournamentLayer.js',
     'src/view/mainModule/tournamentLabel.js',

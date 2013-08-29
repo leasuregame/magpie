@@ -72,6 +72,7 @@
             'src/model/tournament.js',
             'src/model/spirit.js',
             'src/model/spiritPool.js',
+            'src/model/friend.js',
 
             'src/model/battleLogPool.js',
             'src/model/battleLog.js',

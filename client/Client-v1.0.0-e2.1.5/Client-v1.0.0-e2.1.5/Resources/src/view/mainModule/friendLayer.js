@@ -13,12 +13,13 @@
 
 
 var FriendLayer = cc.Layer.extend({
-    _selectFriend: 0,
-    _blessingCountLabel: null,
-    _receiveCountLabel: null,
+    _selectFriendId: 0,
+    _giveBlessCountLabel: null,
+    _receiveBlessCountLabel: null,
     _shyLayer: null,
     _addFriendLayer: null,
     _nameEditBox: null,
+    _scrollView: null,
 
     onEnter: function () {
         cc.log("FriendLayer onEnter");
@@ -58,13 +59,13 @@ var FriendLayer = cc.Layer.extend({
         receiveCountIcon.setPosition(cc.p(130, 909));
         this.addChild(receiveCountIcon);
 
-        this._blessingCountLabel = cc.LabelTTF.create("15", "黑体", 22);
-        this._blessingCountLabel.setPosition(cc.p(215, 941));
-        this.addChild(this._blessingCountLabel);
+        this._giveBlessCountLabel = cc.LabelTTF.create("15", "黑体", 22);
+        this._giveBlessCountLabel.setPosition(cc.p(215, 941));
+        this.addChild(this._giveBlessCountLabel);
 
-        this._receiveCountLabel = cc.LabelTTF.create("15", "黑体", 22);
-        this._receiveCountLabel.setPosition(cc.p(215, 907));
-        this.addChild(this._receiveCountLabel);
+        this._receiveBlessCountLabel = cc.LabelTTF.create("15", "黑体", 22);
+        this._receiveBlessCountLabel.setPosition(cc.p(215, 907));
+        this.addChild(this._receiveBlessCountLabel);
 
         var addFriendItem = cc.MenuItemImage.create(
             main_scene_image.button9,
@@ -86,6 +87,9 @@ var FriendLayer = cc.Layer.extend({
 
         this._addAddFriendLayer();
         this._addFunctionLayer();
+
+
+//        scrollView.setContentOffset(scrollView.minContainerOffset());
 
         return true;
     },
@@ -224,7 +228,74 @@ var FriendLayer = cc.Layer.extend({
     update: function () {
         cc.log("FriendLayer update");
 
+        var friend = gameData.friend;
 
+        this._giveBlessCountLabel.setString(friend.get("giveBlessCount"));
+        this._receiveBlessCountLabel.setString(friend.get("receiveBlessCount"));
+
+        if (this._scrollView != null) {
+            this._scrollView.removeFromParent();
+        }
+
+        var friendList = friend.get("friendList");
+        var len = friendList.length;
+        cc.log(friendList);
+
+        var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 733));
+        var friendMenu = LazyMenu.create();
+        friendMenu.setPosition(cc.p(0, 0));
+        scrollViewLayer.addChild(friendMenu);
+
+        var menu = LazyMenu.create();
+        menu.setPosition(cc.p(0, 0));
+        scrollViewLayer.addChild(menu);
+
+        var scrollViewHeight = len * 127 - 18;
+        if (scrollViewHeight < 620) {
+            scrollViewHeight = 620;
+        }
+
+        for (var i = 0; i < len; ++i) {
+            var id = friendList[i].id;
+
+            var friendItem = cc.MenuItemImage.create(
+                main_scene_image.button36,
+                main_scene_image.button36s,
+                this._onClickFriend(id),
+                this
+            );
+            friendItem.setAnchorPoint(cc.p(0, 0));
+            friendItem.setPosition(cc.p(0, scrollViewHeight - 109 - 127 * i));
+            friendMenu.addChild(friendItem);
+
+            var giveBlessItem = cc.MenuItemImage.create(
+                main_scene_image.button20,
+                main_scene_image.button20s,
+                this._onClickGiveBless(id),
+                this
+            );
+            giveBlessItem.setPosition(cc.p(510, scrollViewHeight - 55 - 127 * i));
+            menu.addChild(giveBlessItem);
+
+            var receiveBlessItem = cc.MenuItemImage.create(
+                main_scene_image.button21,
+                main_scene_image.button21s,
+                this._onClickReceiveBless(id),
+                this
+            );
+            receiveBlessItem.setPosition(cc.p(510, scrollViewHeight - 55 - 127 * i));
+            menu.addChild(receiveBlessItem);
+        }
+
+        this._scrollView = cc.ScrollView.create(cc.size(595, 620), scrollViewLayer);
+        this._scrollView.setPosition(cc.p(60, 260));
+        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        this._scrollView.updateInset();
+        this.addChild(this._scrollView);
+
+
+        this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
+        this._scrollView.setContentOffset(cc.p(0, this._scrollView.minContainerOffset().y));
     },
 
     _onClickAddFriend: function () {
@@ -245,7 +316,7 @@ var FriendLayer = cc.Layer.extend({
 //        this._nameEditBox.setVisible(false);
     },
 
-    _onClickBlessing: function () {
+    _onClickGiveBless: function (id) {
         return function () {
             cc.log("FriendLayer _onClickBlessing: " + id);
 
@@ -254,7 +325,7 @@ var FriendLayer = cc.Layer.extend({
 
     },
 
-    _onClickReceive: function (id) {
+    _onClickReceiveBless: function (id) {
         return function () {
             cc.log("FriendLayer _onClickReceive: " + id);
 

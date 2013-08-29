@@ -70,6 +70,4 @@ Utility =
 
     newObj
 
-
-
 module.exports = Utility

@@ -1,31 +1,8 @@
 dao = require('pomelo').app.get('dao')
 playerManager = require '../../../manager/playerManager'
+msgConfig = require '../../../../config/data/message'
 logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async'
-
-MESSAGETYPE = {
-  ADDFRIEND: 1
-  MESSAGE: 2
-  BATTLENOTICE: 3
-  SYSTEM: 4
-  BLESS: 10
-}
-
-MESSAGESTATUS = {
-  ASKING: 1,
-  ACCEPT: 2,
-  REJECT: 3,
-  HANDLED: 4,
-  UNHANDLED: 5,
-  NOTICE: 6
-}
-
-FINALSTATUS = [
-  MESSAGESTATUS.ACCEPT,
-  MESSAGESTATUS.REJECT,
-  MESSAGESTATUS.HANDLED,
-  MESSAGESTATUS.NOTICE
-]
 
 isFinalStatus = (status) ->
   _.contains FINALSTATUS, status
@@ -46,7 +23,7 @@ Handler::leaveMessage = (msg, session, next) ->
     sender: playerId
     receiver: friendId
     content: content
-    status: MESSAGESTATUS.NOTICE
+    status: msgConfig.MESSAGESTATUS.NOTICE
   }, (err, res) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
@@ -85,11 +62,11 @@ Handler::addFriend = (msg, session, next) ->
 
     (friend, cb) ->
       dao.message.create data: {
-        type: MESSAGETYPE.ADDFRIEND
+        type: msgConfig.MESSAGETYPE.ADDFRIEND
         sender: playerId,
         receiver: friend.id,
         content: "#{playerName}请求加你为好友！"
-        status: MESSAGESTATUS.ASKING
+        status: msgConfig.MESSAGESTATUS.ASKING
       }, cb
   ], (err, msg) =>
     if err
@@ -121,7 +98,7 @@ Handler::accept = (msg, session, next) ->
     (res, cb) ->      
       dao.message.update {
         where: id: msgId
-        data: status: MESSAGESTATUS.ACCEPT
+        data: status: msgConfig.MESSAGESTATUS.ACCEPT
       }, cb
   ], (err, res) ->
     if err
@@ -143,7 +120,7 @@ Handler::reject = (msg, session, next) ->
 
       dao.message.update {
         where: id: msgId
-        data: status: MESSAGESTATUS.REJECT
+        data: status: msgConfig.MESSAGESTATUS.REJECT
       }, cb
   ], (err, res) ->
     if err
@@ -161,7 +138,7 @@ Handler::giveBless = (msg, session, next) ->
       playerManager.getPlayerInfo pid: playerId, cb
 
     (player, cb) ->
-      if player.dailyGift.gaveBless.count >= 15
+      if player.dailyGift.gaveBless.count >= msgConfig.MAX_GIVE_COUNT
         return cb({code: 501, '今日你送出祝福的次数已经达到上限'})
 
       if _.contains player.dailyGift.gaveBless.receivers, friendId
@@ -178,7 +155,7 @@ Handler::giveBless = (msg, session, next) ->
         if err
           return cb(err)
 
-        if res.dailyGift.receivedBlessCount >= 15
+        if res.dailyGift.receivedBlessCount >= msgConfig.MAX_RECEIVE_COUNT
           return cb({code: 501, '今日对方接收祝福的次数已经达到上限'})
 
         res.dailyGift.receivedBless.count++
@@ -192,12 +169,12 @@ Handler::giveBless = (msg, session, next) ->
 
     (res, cb) ->
       dao.message.create data: {
-        type: MESSAGETYPE.BLESS
+        type: msgConfig.MESSAGETYPE.BLESS
         sender: playerId
         receiver: friendId
         options: energy: 5
         content: "#{playerName}为你送来了祝福，你获得了5点的活力值"
-        status: MESSAGESTATUS.UNHANDLED
+        status: msgConfig.MESSAGESTATUS.UNHANDLED
       }, cb
   ], (err, res) ->
     if err
@@ -229,7 +206,7 @@ Handler::receiveBless = (msg, session, next) ->
     (cb) ->
       dao.message.update {
         where: id: msgId
-        data: status: MESSAGESTATUS.HANDLED
+        data: status: msgConfig.MESSAGESTATUS.HANDLED
       }, cb
   ], (err, res) ->
     if err

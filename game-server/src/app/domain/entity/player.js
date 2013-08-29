@@ -15,6 +15,9 @@
 var utility = require('../../common/utility');
 var Entity = require('./entity');
 var playerConfig = require('../../../config/data/player');
+var msgConfig = require('../../../config/data/message');
+var spiritConfig = require('../../../config/data/spirit');
+var lotteryConfig = require('../../../config/data/lottery');
 var table = require('../../manager/table');
 var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
@@ -105,7 +108,7 @@ var Player = (function(_super) {
             mark: defaultMark()
         },
         dailyGift: {
-            lotteryCount: 500,
+            lotteryCount: 0,
             lotteryFreeCount: 0,
             power: [],
             receivedBless: {
@@ -418,13 +421,13 @@ var Player = (function(_super) {
             ability: this.getAbility(),
             task: this.task,
             pass: checkPass(this.pass),
-            dailyGift: this.dailyGift,
+            dailyGift: processDailyGift(this.dailyGift),
             skillPoint: this.skillPoint,
             energy: this.energy,
             fregments: this.fregments,
             elixir: this.elixir,
             spiritor: this.spiritor,
-            spiritPool: this.spiritPool,
+            spiritPool: processSpiritPoll(this.spiritPool),
             cards: _.values(this.cards).map(function(card) {
                 return card.toJson();
             }),
@@ -435,6 +438,20 @@ var Player = (function(_super) {
 
     return Player;
 })(Entity);
+
+var processSpiritPoll = function(sp) {
+    sp = utility.deepCopy(sp);
+    sp.collectCount = spiritConfig.MAX_COLLECT_COUNT - sp.collectCount;
+    return sp;
+};
+
+var processDailyGift = function(dg) {
+    dg = utility.deepCopy(dg);
+    dg.gaveBless.count = msgConfig.MAX_GIVE_COUNT - dg.gaveBless.count;
+    dg.receivedBless.count = msgConfig.MAX_RECEIVE_COUNT - dg.receivedBless.count;
+    dg.lotteryCount = lotteryConfig.DAILY_LOTTERY_COUNT - dg.lotteryCount;
+    return dg;
+};
 
 var checkPass = function(pass) {
     if (typeof pass !== 'object') {

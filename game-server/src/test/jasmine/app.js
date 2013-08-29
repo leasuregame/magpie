@@ -30,6 +30,24 @@ app.get('/test', function(req, res) {
 
 });
 
+app.get('/message/add', function(req, res) {
+  args = req.query;
+  args.createTime = Date.now();
+  mysql.magpiedb1.query("insert into message set ?", args, function(err, result) {
+    if (err) {
+      return res.send({
+        code: 500,
+        msg: err
+      });
+    }
+
+    res.send({
+      code: 200,
+      uid: result.insertId
+    });
+  });
+});
+
 app.get('/adduser', function(req, res) {
   var account = req.query.account;
   var pwd = req.query.password;

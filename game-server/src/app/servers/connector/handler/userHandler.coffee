@@ -39,7 +39,7 @@ Handler::login = (msg, session, next) ->
     (cb) =>
       # check whether has create player in the login area
       if _.contains user.roles, areaId
-        @app.rpc.area.playerRemote.getPlayerByUserId session, user.id, (err, res) ->
+        @app.rpc.area.playerRemote.getPlayerByUserId session, user.id, @app.getServerId(), (err, res) ->
           if err
             logger.error 'fail to get player by user id', err
           player = res
@@ -65,7 +65,7 @@ onUserLeave = (app, session, reason) ->
   if not session or not session.uid
     return
 
-  app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), (err) ->
+  app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), session.uid, app.getServerId(), (err) ->
     if err
       logger.error 'user leave error' + err
 

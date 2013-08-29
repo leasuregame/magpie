@@ -178,6 +178,10 @@ var initPomelo = function() {
     }, function() {
       console.log('connect success!');
       inited = true;
+
+      pomelo.on('onMessage', function(data){
+        console.log('Receive a message: ', data);
+      });
     });
   });
   waitsFor(function() {

@@ -11,7 +11,8 @@ var Message = (function (_super) {
 
     Message.FIELDS = [
         'id',
-        'playerId',
+        'sender',
+        'receiver',
         'type',
         'options',
         'content',
@@ -26,7 +27,8 @@ var Message = (function (_super) {
     Message.prototype.toJson = function(){
         return {
             id: this.id,
-            playerId: this.playerId,
+            sender: this.sender,
+            receiver: this.receiver,
             type: this.type,
             status: this.status,
             options: this.options,

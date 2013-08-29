@@ -5,19 +5,19 @@ async = require 'async'
 
 MESSAGETYPE = {
   ADDFRIEND: 1
-  BLESS: 2
+  MESSAGE: 2
   BATTLENOTICE: 3
   SYSTEM: 4
+  BLESS: 10
 }
 
 MESSAGESTATUS = {
   ASKING: 1,
   ACCEPT: 2,
   REJECT: 3,
-  BLESSING: 4,
-  HANDLED: 5,
-  UNHANDLED: 6,
-  NOTICE: 7
+  HANDLED: 4,
+  UNHANDLED: 5,
+  NOTICE: 6
 }
 
 FINALSTATUS = [
@@ -36,14 +36,43 @@ module.exports = (app) ->
 
 Handler = (@app) ->
 
-Handler::messageList = (msg, session, next) ->
+Handler::leaveMessage = (msg, session, next) ->
   playerId = session.get('playerId')
+  friendId = msg.friendId
+  content = msg.content
 
-  dao.message.fetchMany where: playerId : playerId, (err, res) ->
+  dao.message.create data: {
+    type: MESSAGETYPE.MESSAGE
+    sender: playerId
+    receiver: friendId
+    content: content
+    status: MESSAGESTATUS.NOTICE
+  }, (err, res) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    next(null, {code: 200, msg: res.map (r) -> r.toJson?()})
+    next(null, {code: 200})
+
+Handler::readMessage = (msg, session, next) ->
+  playerId = session.get('playerId')
+  msgId = msg.msgId
+
+  dao.message.fetchOne where: id: msgId, (err, res) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    next(null, {code: 200, msg: res.content})
+
+Handler::messageList = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  dao.message.fetchMany where: receiver: playerId, (err, res) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    res = res.map (r) -> r.toJson?()
+    results = _.groupBy res, (item) -> item.type
+    next(null, {code: 200, msg: results})
 
 Handler::addFriend = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -57,15 +86,18 @@ Handler::addFriend = (msg, session, next) ->
     (friend, cb) ->
       dao.message.create data: {
         type: MESSAGETYPE.ADDFRIEND
-        playerId: playerId
-        options: friendId: friend.id
+        sender: playerId,
+        receiver: friend.id,
         content: "#{playerName}请求加你为好友！"
         status: MESSAGESTATUS.ASKING
       }, cb
-  ], (err, msg) ->
+  ], (err, msg) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
+    channel = @app.get('channelService').getChannel('message', false)
+    console.log 'send message: ', channel.getMembers()
+    channel.pushMessage({route: 'onMessage', msg: msg.content})
     next(null, {code: 200})
 
 Handler::accept = (msg, session, next) ->
@@ -82,8 +114,8 @@ Handler::accept = (msg, session, next) ->
 
       dao.friend.create {
         data: 
-          playerId: message.playerId 
-          friendId: message.options.friendId
+          playerId: message.sender 
+          friendId: message.receiver
       }, cb
 
     (res, cb) ->      
@@ -129,10 +161,15 @@ Handler::giveBless = (msg, session, next) ->
       playerManager.getPlayerInfo pid: playerId, cb
 
     (player, cb) ->
-      if player.dailyGift.gaveBlessCount >= 15
+      if player.dailyGift.gaveBless.count >= 15
         return cb({code: 501, '今日你送出祝福的次数已经达到上限'})
 
-      player.updateGift 'gaveBlessCount', player.dailyGift.gaveBlessCount + 1
+      if _.contains player.dailyGift.gaveBless.receivers, friendId
+        return cb({code: 501, '一天只能给同一位好友送出一次祝福哦'})
+
+      player.dailyGift.gaveBless.count++
+      player.dailyGift.gaveBless.receivers.push(friendId)
+      player.updateGift 'gaveBless', player.dailyGift.gaveBless
       player.save()
       cb()
 
@@ -144,7 +181,8 @@ Handler::giveBless = (msg, session, next) ->
         if res.dailyGift.receivedBlessCount >= 15
           return cb({code: 501, '今日对方接收祝福的次数已经达到上限'})
 
-        res.dailyGift.receivedBlessCount++
+        res.dailyGift.receivedBless.count++
+        res.dailyGift.receivedBless.givers.push(playerId)
         dao.player.update {
           where: id: friendId
           data: {
@@ -155,8 +193,9 @@ Handler::giveBless = (msg, session, next) ->
     (res, cb) ->
       dao.message.create data: {
         type: MESSAGETYPE.BLESS
-        playerId: friendId
-        options: friendId: playerId, energy: 5
+        sender: playerId
+        receiver: friendId
+        options: energy: 5
         content: "#{playerName}为你送来了祝福，你获得了5点的活力值"
         status: MESSAGESTATUS.UNHANDLED
       }, cb

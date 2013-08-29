@@ -108,8 +108,14 @@ var Player = (function(_super) {
             lotteryCount: 500,
             lotteryFreeCount: 0,
             power: [],
-            receivedBlessCount: 0,
-            gaveBlessCount: 0
+            receivedBless: {
+                count: 0,
+                givers: []
+            },
+            gaveBless: {
+                count: 0,
+                receivers: [] 
+            }
         },
         fragments: 0,
         energy: 0,

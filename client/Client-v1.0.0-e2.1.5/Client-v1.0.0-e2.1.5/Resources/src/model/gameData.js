@@ -21,6 +21,7 @@ var gameData = {
     cardLibrary: null,
     rank: null,
     lottery: null,
+    treasureHunt: null,
     message: null,
     tournament: null,
     spirit: null,
@@ -38,6 +39,7 @@ var gameData = {
         this.cardLibrary = CardLibrary.create();
         this.rank = Rank.create();
         this.lottery = Lottery.create();
+        this.treasureHunt = TreasureHunt.create();
         this.message = Message.create();
         this.tournament = Tournament.create();
         this.spirit = Spirit.create();

@@ -35,7 +35,7 @@ var NOW = function() {
 var addEvents = function(player) {
     player.on('add.card', function(card) {
         if (player.isLineUpCard(card)) {
-            player.activeGroupEffect();
+            //player.activeGroupEffect();
             player.activeSpiritorEffect();
         }
     });

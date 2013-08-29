@@ -29,7 +29,6 @@ var sqlHelper = {
             fields = table.data;
             table = table.table;
         }
-        fields.createTime = Date.now();
         var sql = "insert into " + table + " set ?";
 
         return { 

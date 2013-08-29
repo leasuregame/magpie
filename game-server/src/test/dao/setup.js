@@ -9,7 +9,9 @@
 
 var pomelo = require('pomelo');
 var app = pomelo.createApp();
-app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
+var mysqlConfig = require('../../config/mysql1.json');
+app.set('mysql', mysqlConfig.development['1']);
+//app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
 app.set('dbClient', require('../../app/dao/mysql/mysql').init(app));
 var dao = require('../../app/dao').init('mysql');
 app.set('dao', dao);

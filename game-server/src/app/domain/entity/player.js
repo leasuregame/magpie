@@ -35,7 +35,7 @@ var NOW = function() {
 var addEvents = function(player) {
     player.on('add.card', function(card) {
         if (player.isLineUpCard(card)) {
-            player.activeGroupEffect();
+            //player.activeGroupEffect();
             player.activeSpiritorEffect();
         }
     });
@@ -53,8 +53,9 @@ var Player = (function(_super) {
     }
 
     Player.prototype.init = function() {
-        this.cards || (this.cards = {});
-        this.rank || (this.rank = {});
+        // this.cards || (this.cards = {});
+        // this.rank || (this.rank = {});
+        // this.friends || (this.friends = []);
 
         addEvents(this);
     };
@@ -106,7 +107,9 @@ var Player = (function(_super) {
         dailyGift: {
             lotteryCount: 500,
             lotteryFreeCount: 0,
-            power: []
+            power: [],
+            receivedBlessCount: 0,
+            gaveBlessCount: 0
         },
         fragments: 0,
         energy: 0,
@@ -122,7 +125,8 @@ var Player = (function(_super) {
             collectCount: 0
         },
         cards: {},
-        rank: {}
+        rank: {},
+        friends: []
 
     };
 
@@ -418,7 +422,8 @@ var Player = (function(_super) {
             cards: _.values(this.cards).map(function(card) {
                 return card.toJson();
             }),
-            rank: !_.isEmpty(this.rank) ? this.rank.toJson() : null
+            rank: !_.isEmpty(this.rank) ? this.rank.toJson() : null,
+            friends: this.friends
         };
     };
 

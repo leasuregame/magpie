@@ -232,22 +232,22 @@ bornPassiveSkill = () ->
   }
 
 getRewardCards = (cardIds, count) ->
-  countCardId = (id, star) ->
-    _card = table.getTableItem 'cards', id
-    if _card.star isnt star
-      _card_id = if _card.star > star then (id - 1) else (id + 1)
-      return _card_id
-    else
-      return id
+  # countCardId = (id, star) ->
+  #   _card = table.getTableItem 'cards', id
+  #   if _card.star isnt star
+  #     _card_id = if _card.star > star then (id - 1) else (id + 1)
+  #     return _card_id
+  #   else
+  #     return id
 
   cd = taskRate.card_drop
   _cards = []
   for i in [1..count]
     _id = utility.randomValue cardIds
-    _star = utility.randomValue _.keys(cd.star), _.values(cd.star)
+    _star = 1 #utility.randomValue _.keys(cd.star), _.values(cd.star)
     _level = utility.randomValue _.keys(cd.level), _.values(cd.level)
 
-    _id = countCardId(parseInt(_id), parseInt(_star))
+    #_id = countCardId(parseInt(_id), parseInt(_star))
     _cards.push {
       id: _id
       star: parseInt(_star)

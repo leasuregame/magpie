@@ -24,7 +24,7 @@ describe("Area Server", function() {
 
 				it("should can be return the correct result", function() {
 					request('area.taskHandler.explore', {
-						taskId: 6
+						taskId: 250
 					}, function(data) {
 						console.log(data);
 						expect(data.code).toEqual(200);
@@ -36,7 +36,8 @@ describe("Area Server", function() {
 							'upgrade',
 							'open_box_card',
 							'battle_log',
-							'fragment'
+							'fragment',
+							'task'
 						]);
 
 						var res = data.msg;
@@ -46,22 +47,32 @@ describe("Area Server", function() {
 								expect(res.battle_log.rewards).hasProperties([
 									'spirit', 'cards'
 								]);
+								if (res.battle_log.winner == 'own') {
+									expect(res.task).toEqual({id: 250, progress: 3, hasWin: true});
+								} else {
+									expect(res.task).toEqual({id: 250, progress: 2});
+								}
 								break;
 							case 'box':
 								if (!res.fregment) {
 									expect(typeof res.open_box_card).toEqual('object');
 									expect(res.open_box_card).hasProperties([
-										'id', 'lv', 'exp', 'star', 'tableId', 'skillLv', 'hpAddition', 'atkAddition',
-										'passiveSkills', 'playerId', 'skillPoint', 'elixir', 'createTime'
-									])
+										'id', 'lv', 'exp', 'star', 'tableId', 
+										'skillLv', 'hpAddition', 'atkAddition',
+										'passiveSkills', 'playerId', 'skillPoint', 
+										'elixir', 'createTime',
+										'init_hp', 'init_atk', 'hp', 'atk', 'incs'
+									]);
 								} else {
 									expect(res.open_box_card).toEqual(null);
 								}
+								expect(res.task).toEqual({id: 250, progress: 3});
 								break;
 							default:
 								expect(res.result).toEqual('none');
 								expect(res.battle_log).toEqual(null);
 								expect(res.open_box_card).toEqual(null);
+								expect(res.task).toEqual({id: 250, progress: 3});
 						}
 
 						expect(res.power_consume).toEqual(5);

@@ -431,7 +431,7 @@ var Player = (function(_super) {
             cards: _.values(this.cards).map(function(card) {
                 return card.toJson();
             }),
-            rank: !_.isEmpty(this.rank) ? this.rank.toJson() : null,
+            rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
             friends: this.friends
         };
     };
@@ -440,12 +440,18 @@ var Player = (function(_super) {
 })(Entity);
 
 var processSpiritPoll = function(sp) {
+    if (_.isEmpty(sp)) {
+        return sp;
+    }
     sp = utility.deepCopy(sp);
     sp.collectCount = spiritConfig.MAX_COLLECT_COUNT - sp.collectCount;
     return sp;
 };
 
 var processDailyGift = function(dg) {
+    if (_.isEmpty(dg)) {
+        return dg;
+    }
     dg = utility.deepCopy(dg);
     dg.gaveBless.count = msgConfig.MAX_GIVE_COUNT - dg.gaveBless.count;
     dg.receivedBless.count = msgConfig.MAX_RECEIVE_COUNT - dg.receivedBless.count;

@@ -39,8 +39,8 @@ var FriendDao = (function(_super) {
                     msg: err.message
                 });
             }
-            
-            if ( !! res && res.length > 0) {
+
+            if ( !!res && res.length > 0) {
                 cb(null, res);
             } else {
                 cb(null, []);

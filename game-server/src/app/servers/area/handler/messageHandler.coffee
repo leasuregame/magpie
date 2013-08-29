@@ -5,8 +5,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async'
 
 isFinalStatus = (status) ->
-  _.contains FINALSTATUS, status
-
+  _.contains msgConfig.FINALSTATUS, status
 
 module.exports = (app) ->
   new Handler(app)
@@ -19,7 +18,7 @@ Handler::leaveMessage = (msg, session, next) ->
   content = msg.content
 
   dao.message.create data: {
-    type: MESSAGETYPE.MESSAGE
+    type: msgConfig.MESSAGETYPE.MESSAGE
     sender: playerId
     receiver: friendId
     content: content

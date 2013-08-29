@@ -54,12 +54,12 @@ Utility =
   deepCopy: (obj) ->
     newObj = {}
     for key of obj
-      if _.isObject(obj[key])
+      if _.isObject(obj[key]) and not _.isArray(obj[key])
         newObj[key] = Utility.deepCopy(obj[key])
       else if _.isArray(obj[key])
         newArr = []
         for item in obj[key]
-          if _.isObject(item) or _.isArray(item)
+          if _.isObject(item)
             newArr.push Utility.deepCopy(item)
           else
             newArr.push item

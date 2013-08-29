@@ -11,6 +11,8 @@ Remote::createPlayer = (args, callback) ->
   name = args.name
   userId = args.userId
   areaId = args.areaId
+  serverId = args.serverId
+  self = this
 
   dao.player.fetchOne where: {name: name}, (err, player) ->
     if not err and player
@@ -25,12 +27,12 @@ Remote::createPlayer = (args, callback) ->
 
       (player, cb) ->
         initPlayer player, cb
-    ], (err, player) =>
+    ], (err, player) ->
       if err
         return callback({code: 500, msg: err})
       
       area.addPlayer player
-      addPlayerToChannel(@app, userId, serverId)
+      addPlayerToChannel(self.app, userId, serverId)
       callback(null, player.toJson())
 
 Remote::getPlayerByUserId = (userId, serverId, callback) ->

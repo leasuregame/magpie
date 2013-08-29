@@ -23,6 +23,18 @@ var Message = (function (_super) {
         content: ''
     };
 
+    Message.prototype.toJson = function(){
+        return {
+            id: this.id,
+            playerId: this.playerId,
+            type: this.type,
+            status: this.status,
+            options: this.options,
+            content: this.content,
+            createTime: this.createTime
+        }
+    };
+
     return Message;
 })(Entity);
 

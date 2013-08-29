@@ -28,18 +28,24 @@ describe("Area Server", function(){
 			describe('when receive a friendship asking', function(){
 				it('should can accept', function(){
 					request('area.messageHandler.accept', {msgId: 1}, function(data){
-						expect(data).toEqual('')
+						expect(data).toEqual('');
 					});
 				});
 
 				it('should can reject', function(){
 					request('area.messageHandler.reject', {msgId: 1}, function(data){
-						expect(data).toEqual('')
+						expect(data).toEqual('');
 					});
 				});
 			});
 
-			describe('')
+			describe('when get message list', function(){
+				it('should can return message list for current login user', function(){
+					request('area.messageHandler.messageList', {}, function(data){
+						expect(data).toEqual('');
+					});
+				});
+			});
 		});
 	});
 });

@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `friend` (
 DROP TABLE IF EXISTS `message`;
 CREATE TABLE IF NOT EXISTS `message` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `playerId` INT(10) UNSIGNED NOT NULL,
+  `playerId` INT(10) UNSIGNED,
   `type` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
   `options` VARCHAR(256) COLLATE utf8_unicode_ci DEFAULT '',
   `content` VARCHAR(512) COLLATE utf8_unicode_ci DEFAULT '',

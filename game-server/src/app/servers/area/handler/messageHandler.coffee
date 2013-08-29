@@ -36,6 +36,15 @@ module.exports = (app) ->
 
 Handler = (@app) ->
 
+Handler::messageList = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  dao.message.fetchMany where: playerId : playerId, (err, res) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    next(null, {code: 200, msg: res.map (r) -> r.toJson?()})
+
 Handler::addFriend = (msg, session, next) ->
   playerId = session.get('playerId')
   playerName = session.get('playerName')

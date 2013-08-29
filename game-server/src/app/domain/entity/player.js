@@ -53,8 +53,9 @@ var Player = (function(_super) {
     }
 
     Player.prototype.init = function() {
-        this.cards || (this.cards = {});
-        this.rank || (this.rank = {});
+        // this.cards || (this.cards = {});
+        // this.rank || (this.rank = {});
+        // this.friends || (this.friends = []);
 
         addEvents(this);
     };
@@ -124,7 +125,8 @@ var Player = (function(_super) {
             collectCount: 0
         },
         cards: {},
-        rank: {}
+        rank: {},
+        friends: []
 
     };
 
@@ -420,7 +422,8 @@ var Player = (function(_super) {
             cards: _.values(this.cards).map(function(card) {
                 return card.toJson();
             }),
-            rank: !_.isEmpty(this.rank) ? this.rank.toJson() : null
+            rank: !_.isEmpty(this.rank) ? this.rank.toJson() : null,
+            friends: this.friends
         };
     };
 

@@ -22,7 +22,7 @@ var FriendDao = (function(_super) {
     FriendDao.domain = domain;
 
     FriendDao.getFriends = function(playerId, cb) {
-        var sql = 'select id, name, lv from player \
+        var sql = 'select id, name, lv, ability from player \
             where id in ( \
                 select friendId from friend where playerId = ? \
                 union \

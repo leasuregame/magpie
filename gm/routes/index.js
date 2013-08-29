@@ -7,6 +7,8 @@ var User =  require('../models/user');
 
 var player = require('./player');
 
+var card = require('./card');
+
 var routes = function(app){
 
     app.get('/',function(req , res){
@@ -100,66 +102,9 @@ var routes = function(app){
     });
 
     player(app);
-    /*
-    app.get('/player',checkLogin);
-
-    //玩家数据修改
-    app.get('/player',function(req , res){
+    card(app);
 
 
-        Area.getAreasList(function(areas) {
-            res.render('player',{
-                title : '玩家数据修改',
-                user : req.session.user,
-                areas:areas,
-                success:req.flash('success').toString(),
-                error:req.flash('error').toString()
-            });
-        });
-
-
-    });
-
-    app.post('/player',function(req , res){
-        var playerName = req.body.playerName;
-        var areaId = req.body.areaId;
-        var player = {
-            name : playerName,
-            areaId : areaId
-        }
-
-
-
-        Player.getPlayerInfo(player,function(err,player){
-            if(err) {
-                console.log(err);
-                return res.redirect('/player');
-            }else {
-                console.log(player);
-                res.redirect('/playerData');
-            }
-        });
-        //   req.flash('success', '通过');
-
-    });
-
-    app.get('/playerData',checkLogin);
-
-
-    app.get('/playerData',function(req ,res){
-
-        res.render('playerData',{
-            title : '玩家数据修改',
-            user : req.session.user,
-            success:req.flash('success').toString(),
-            error:req.flash('error').toString()
-        });
-    });
-
-    app.post('/playerData',function(req , res){
-
-    });
-    */
     app.get('/reward',checkLogin);
 
     //全服、个人补偿奖赏

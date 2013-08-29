@@ -1,0 +1,125 @@
+<%- include header %>
+
+     <div class="form-inline span3">
+        <fieldset>
+            <legend>玩家拥有的卡牌
+            <button type="button" class="btn btn-primary" id = "btnAddCard" method = "put" action = "/cardData">添加卡牌</button>
+            </legend>
+            <div id = "cardsList">
+
+            </div>
+        </fieldset>
+        <div class="page_btn clear">
+                   <span class="page_box">
+                       <a class="page_first">首页</a>
+                       <a class="prev">上一页</a>
+                       <span class="num">
+                       <span class="current_page">1</span>
+                       <span style="padding:0 3px;">/</span>
+                       <span class="total"></span></span>
+                       <a class="next">下一页</a>
+                       <a class="page_last">末页</a>
+                   </span>
+               </div>
+
+     </div>
+
+     <form class="form-inline span5" role="form" id = "cardShow">
+        <fieldset>
+            <legend>卡牌操作</legend>
+            <div class="row-fluid marketing">
+
+                 <div class = "span6" id = "card">
+                    <div class="control-group">
+                        <label class="control-label" for="id">卡牌ID:</label>
+                        <input type="text" class="input-small" id="id" name="id">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="lv">卡牌等级:</label>
+                        <input type="text" class="input-small" id="lv" name="lv">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="skillLv">技能等级:</label>
+                        <input type="text" class="input-small" id="skillLv" name="skillLv" ">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="elixir">消耗仙丹:</label>
+                        <input type="text" class="input-small" id="elixir" name="elixir">
+                    </div>
+
+                 </div>
+
+                 <div class = "span6">
+                       <div class="control-group">
+                          <label for="star">星级:</label>
+                          <select id="starList" class="form-control input-small" name="star">
+                                <option value = "1">1</option>
+                                <option value = "2">2</option>
+                                <option value = "3">3</option>
+                                <option value = "4">4</option>
+                                <option value = "5">5</option>
+
+                          </select>
+
+                       </div>
+
+                    <div class="control-group">
+                          <label for="star">技能1:</label>
+                          <select id="passSkill1" class="form-control input-small" name="passSkill">
+                                <option value = "null"></option>
+                                <option value = "hp_improve">提升血量</option>
+                                <option value = "atk_improve">提升攻击</option>
+                                <option value = "dodge">闪避</option>
+                                <option value = "crit">暴击</option>
+                                <option value = "dmg_reduce">减伤</option>
+                          </select>
+                          <input type="text" class="input-small" id="passSkill11" name="passSkill">
+
+                     </div>
+
+                 <div class="control-group">
+                          <label for="star">技能2:</label>
+                          <select id="passSkill2" class="form-control input-small" name="passSkill">
+                                <option value = "null"></option>
+                                <option value = "hp_improve">提升血量</option>
+                                <option value = "atk_improve">提升攻击</option>
+                                <option value = "dodge">闪避</option>
+                                <option value = "crit">暴击</option>
+                                <option value = "dmg_reduce">减伤</option>
+                          </select>
+                          <input type="text" class="input-small" id="passSkill12" name="passSkill">
+
+                 </div>
+
+                 <div class="control-group">
+                          <label for="star">技能3:</label>
+                          <select id="passSkill3" class="form-control input-small" name="passSkill">
+                                <option value = "null"></option>
+                                <option value = "hp_improve">提升血量</option>
+                                <option value = "atk_improve">提升攻击</option>
+                                <option value = "dodge">闪避</option>
+                                <option value = "crit">暴击</option>
+                                <option value = "dmg_reduce">减伤</option>
+                          </select>
+                          <input type="text" class="input-small" id="passSkill13" name="passSkill">
+                 </div>
+                 </div>
+            </div>
+
+             <button type="button" class="btn btn-primary" id = "btnUpdateCard" method = "post" action = "/cardData">更新卡牌</button>
+             <button type="button" class="btn btn-primary" id = "btnDelCard" method = "delete" action = "/cardData">删除卡牌</button>
+        </fieldset>
+     </form>
+
+
+     <script src="/javascripts/cards.js"></script>
+     <script type="text/javascript">
+
+          setCards(<%- JSON.stringify(cards) %>);
+         //setCard(0);
+     </script>
+
+<%- include footer %>

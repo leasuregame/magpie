@@ -1,5 +1,5 @@
 <%- include header%>
-      <form class="form-inline span5" role="form" method="post">
+      <form class="form-inline span5" role="form" method="post" action = "/playerData?player=<%=JSON.stringify(player)%>">
 
             <fieldset>
                 <legend>玩家数据修改</legend>
@@ -10,12 +10,6 @@
                         <label class="control-label" for="lv">等级:</label>
                         <input type="text" class="input-small" id="lv" name="lv" value = "<%= player["lv"] %>" >
                     </div>
-
-                    <div class="control-group">
-                         <label class="control-label" for="exp">经验:</label>
-                         <input type="text" class="input-small" id="exp" name="exp" value = "<%= player["exp"] %>" >
-                    </div>
-
 
                     <div class="control-group">
                           <label class="control-label" for="money">元宝:</label>
@@ -36,27 +30,41 @@
 
                           <input type="text" class="input-small" id="power" name="power" value = "<%= eval("(" + player["power"] + ")").value%>">
                     </div>
+
+                    <div class="control-group">
+                          <label class="control-label" for="skillPoint">技能点:</label>
+
+                          <input type="text" class="input-small" id="skillPoint" name="skillPoint" value = "<%= player["skillPoint"] %>">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="fragments">碎片数:</label>
+                        <input type="text" class="input-small" id="fragments" name="fragments" value = "<%= player["fragments"] %>" >
+                    </div>
+
                 </div>
 
                 <div class = "span6">
+
+                    <div class="control-group">
+                        <label class="control-label" for="energy">活力值:</label>
+                        <input type="text" class="input-small" id="energy" name="energy" value = "<%= player["energy"] %>" >
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="elixir">仙丹数:</label>
+                        <input type="text" class="input-small" id="elixir" name="elixir" value = "<%= player["elixir"] %>" >
+                    </div>
+
                     <div class="control-group">
                         <label class="control-label" for="spiritor">元神等级:</label>
                         <input type="text" class="input-small" id="spiritor" name="spiritor" value = "<%= eval("(" + player["spiritor"] + ")").lv %>" >
                     </div>
 
-                     <div class="control-group">
-                        <label class="control-label" for="spiritor">灵气:</label>
-                        <input type="text" class="input-small" id="spiritor" name="spiritor" value = "<%= eval("(" + player["spiritor"] + ")").spirit %>" >
-                    </div>
 
                     <div class="control-group">
                         <label class="control-label" for="spiritPool">灵气池等级:</label>
                         <input type="text" class="input-small" id="spiritPool" name="spiritPool" value = "<%= eval("(" + player["spiritPool"] + ")").lv %>" >
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label" for="spiritPool">灵气池经验:</label>
-                        <input type="text" class="input-small" id="spiritPool" name="spiritPool" value = "<%= eval("(" + player["spiritPool"] + ")").exp %>" >
                     </div>
 
                     <div class="control-group">

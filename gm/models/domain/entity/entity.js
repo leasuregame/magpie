@@ -27,6 +27,7 @@ var Entity = (function(_super) {
         this.tracked = [];
 
         _.defaults(attributes, utility.deepCopy(this.constructor.DEFAULT_VALUES));
+        //Entity.track(Object.keys(attributes));
         this.track(Object.keys(attributes));
         this.set(attributes);
 

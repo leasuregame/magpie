@@ -15,7 +15,7 @@ var Url = require('url');
 
 var player = function(app) {
 
-    // app.get('/player',checkLogin);
+     app.get('/player',checkLogin);
 
     //玩家数据修改
     app.get('/player',function(req , res){
@@ -33,51 +33,14 @@ var player = function(app) {
 
 
     });
-   /*
-    app.post('/player',function(req , res){
 
-        var playerName = req.body.playerName;
-        var areaId = req.body.areaId;
-        var player = {
-            where :{
-                name : playerName,
-                areaId : areaId
-            }
-        }
-       // res.session.player = player;
-       //res.createSession(req,player);
-       // res.redirect('/playerData?name=' + playerName.toString() + '&areaId=' + areaId.toString());
-        var db = getDB(areaId);
-        dbClient.init(db);
-
-        playerDao.getPlayerInfo(player,function(err,player){
-            if(err) {
-                console.log(err);
-                return res.redirect('/player');
-            }else {
-               // console.log(player);
-                //$(document).ready(function(){
-                //    document.getElementById("lv").val = player.lv;
-                //});
-                //console.log(player);
-                var pp = new Player(player);
-                console.log(pp);
-                res.redirect('/playerData?player='+pp);
-            }
-        });
-        //   req.flash('success', '通过');
-
-    });
-     */
-    // app.get('/playerData',checkLogin);
-
+    app.get('/playerData',checkLogin);
 
     app.get('/playerData',function(req ,res){
 
         var url = Url.parse(req.url,true);
         var query = url.query;
 
-       // console.log(req);
         var playerName = query['playerName'];
         var areaId = query['areaId'];
 
@@ -111,59 +74,65 @@ var player = function(app) {
     });
 
     app.post('/playerData',function(req , res){
-        //console.log(req.url);
+
         var url = Url.parse(req.url,true);
         var query = url.query;
 
-        console.log(req.body);
-        var playerName = query['playerName'];
-        var areaId = query['areaId'];
-
+        var player = JSON.parse(query['player']);
+        console.log((player["spiritor"]));
         var data = req.body;
-        var time = new Date();
+        var time = Date.now();
 
         data["power"] = {
             time : time,
             value : data["power"]
         }
 
-
-        console.log(data["spiritor"]);
+        var spiritor = player["spiritor"];
         data["spiritor"] = {
-            lv : data.spiritor[0],
-            spirit:data.spiritor[1]
+            lv : data.spiritor,
+            spirit: spiritor["spirit"] || 0
         }
+
+        spiritPool = player["spiritPool"];
         data["spiritPool"] = {
             lv:data.spiritPool[0],
-            exp:data.spiritPool[1],
-            collectCount:data.spiritPool[2]
+            exp:spiritPool["exp"] || 0,
+            collectCount:data.spiritPool[1]
         }
 
-
-        var player = {
+        console.log(data);
+        var options = {
             where :{
-                name : playerName,
-                areaId : areaId
+                name : player["name"],
+                areaId : player["areaId"]
             },
-            data:req.body
+            data:data
 
         };
 
 
-        playerDao.update(player,function(err,isOK){
+        playerDao.update(options,function(err,isOK){
             if(err) {
                 console.log(err);
                 req.flash('error','修改数据失败');
                 res.redirect(req.url);
             }else {
-                console.log(isOK);
                 req.flash('success','修改数据成功');
-                res.redirect(req.url);
+                res.redirect('/playerData?playerName=' + player["name"] + '&areaId=' + player["areaId"]);
             }
 
         });
 
     });
+
+    function checkLogin(req, res, next){
+        if(!req.session.user){
+            req.flash('error','请先登录');
+            return res.redirect('/login');
+        }
+        next();
+    }
 
 };
 

@@ -48,6 +48,7 @@ app.use(function(req,res,next){
     var err = req.flash('error'),
         success = req.flash('success');
     res.locals.user = req.session.user;
+    res.locals.playerId = req.session.playerId;
     res.locals.error = err.length ? err : null;
     res.locals.success = success.length ? success : null;
     next();

@@ -15,6 +15,7 @@ var routes = function(app){
         res.render('index',{
             title:'主页',
             user: req.session.user,
+            playerId:req.session.playerId,
             success:req.flash('success').toString(),
             error:req.flash('error').toString()
         });
@@ -25,6 +26,7 @@ var routes = function(app){
         res.render('login',{
             title:'登录',
             user:req.session.user,
+            playerId:req.session.playerId,
             success:req.flash('success').toString(),
             error:req.flash('error').toString()
         });
@@ -64,6 +66,7 @@ var routes = function(app){
         res.render('reg',{
             title:'添加用户',
             user:req.session.user,
+            playerId:req.session.playerId,
             success:req.flash('success').toString(),
             error:req.flash('error').toString()
         });

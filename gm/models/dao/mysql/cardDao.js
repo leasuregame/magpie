@@ -53,7 +53,8 @@ var CardDao = (function(_super) {
 			var pss = results[1];
 
 			//card.addPassiveSkills(pss);
-			return cb(null, results);
+            card.passSkills = pss;
+			return cb(null, card);
 		});
 	};
 

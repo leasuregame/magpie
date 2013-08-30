@@ -25,6 +25,7 @@ var player = function(app) {
             res.render('player',{
                 title : '玩家数据修改',
                 user : req.session.user,
+                playerId:req.session.playerId,
                 areas:areas,
                 success:req.flash('success').toString(),
                 error:req.flash('error').toString()
@@ -63,10 +64,12 @@ var player = function(app) {
                 req.flash('error','没有该玩家的信息');
                 return res.redirect('/player');
             }else {
+                req.session.playerId = Player.id,
                 console.log(Player);
                 res.render('playerData',{
                     title : '玩家数据修改',
                     user : req.session.user,
+                    playerId:req.session.playerId,
                     player : Player,
                     area : area,
                     success:req.flash('success').toString(),

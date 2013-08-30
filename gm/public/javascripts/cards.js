@@ -12,62 +12,115 @@ var cards = [];
 var playerId;
 var operate;
 
+//星级对应的最大等级
+var MaxLevelConfig = [
+    {
+        star:1,
+        maxLevel:30
+    },
+    {
+        star:2,
+        maxLevel:40
+    },
+    {
+        star:3,
+        maxLevel:50
+    },
+    {
+        star:4,
+        maxLevel:55
+    },
+    {
+        star:5,
+        maxLevel:60
+    }
+];
+
+
 var OperateConfig = {
     ADD:0,
     UPDATE:1
-
 };
 
-var Cardconfig = {
-    lv:0,
-    skill:0,
+//卡牌默认属性
+var CardConfig = {
+    lv:1,
+    skillLv:0,
     elixir:0,
     star:1,
+    tableId:1,
     passSkills:[]
 };
 
 function setPlayerId(id) {
-    console.log(id);
+    //console.log(id);
     playerId = id;
 }
 
 function setCards(data) {
     cards = data;
     setCardsList();//设置卡牌列表
+    setCard(cards[0].id);//设置默认显示的卡牌
+    //eventHandle();
 };
 
-$(document).ready(function(){
+//事件处理
+function eventHandle(){
+    $(document).ready(function(){
 
-    setCard(cards[0].id);//设置默认显示的卡牌
+        $("#divTableId").hide();
 
-    $("#btnAddCard").click(function(){
-        operate = OperateConfig.ADD;
-        setCard(-1);
+        $("#btnAddCard").click(function(){
+            $("#divTableId").show();
+            operate = OperateConfig.ADD;
+            setCard(-1);
+        });
+
+        $(".btnUpdateCard").bind("click",function(){
+            operate = OperateConfig.UPDATE;
+            setCard(this.value);
+        });
+
+        $(".btnDelCard").click(function(){
+            submitDel(this.value);
+            delRow(this.value);
+        });
+
+        $("#btnOK").click(function(){
+            if(operate == OperateConfig.ADD)
+                submitAdd();
+            else if(operate == OperateConfig.UPDATE)
+                submitUpdate();
+        });
+
+        $("#btnReset").click(function(){
+            setCard($("#id").val());
+        });
+
+        $("#lv").blur(function(){
+            var val = $("#lv").val();
+            if(val < 1)
+                $("#lv").val(1);
+            if(val > 60)
+                $("#lv").val(60);
+
+            var star = $("#starList").val();
+            if(val > MaxLevelConfig[star - 1].maxLevel)
+                $("#lv").val(MaxLevelConfig[star - 1].maxLevel);
+
+        });
+
+        $("#starList").change(function(){
+            var key = hasCard($("#id").val());
+            var card = (key == -1) ? CardConfig : cards[key];
+            var passSkills = card["passSkills"];
+            setPassSkill(passSkills,$("#starList").val());
+        });
+
     });
+}
 
-    $(".btnUpdateCard").click(function(){
-        operate = OperateConfig.UPDATE;
-        setCard(this.value);
-    });
-
-    $(".btnDelCard").click(function(){
-        submitDel(this.value);
-        delRow(this.value);
-    });
-
-    $("#btnOK").click(function(){
-        if(operate == OperateConfig.ADD)
-            submitAdd();
-        else if(operate == OperateConfig.UPDATE)
-            submitUpdate();
-    });
-
-    $("#btnReset").click(function(){
-        setCard($("#id").val());
-    });
-
-});
-
+//提交添加
 function submitAdd() {
     var data = getData();
     var url = "/addCard?card=" + JSON.stringify(data);
@@ -76,11 +129,7 @@ function submitAdd() {
         type:"post",
         success:function(msg){
             console.log(msg);
-            for(var i = 0;i < cards.length;i++) {
-                if(cards[i].id == data.id) {
-                    cards[i] = data;
-                }
-            }
+            cards[cards.length] = msg;
             updateCardsList();
         }
     });
@@ -89,10 +138,19 @@ function submitAdd() {
 //提交更新
 function submitUpdate(){
 
-   // console.log(data);
     var data = getData();
-    console.log(data);
-    var url = "/cardData?card=" + JSON.stringify(data);
+
+    //星级改变时要修改对应的配置表id
+    for(var i = 0;i < cards.length;i++) {
+        if(cards[i].id == data.id) {
+            var tableId = cards[i].tableId;
+            console.log("tableId=",tableId);
+            data.tableId = (data.star - cards[i].star) + tableId;
+            break;
+        }
+    }
+
+    var url = "/updateCard?card=" + JSON.stringify(data);
     $.ajax({
         url:url,
         type:"post",
@@ -101,6 +159,7 @@ function submitUpdate(){
             for(var i = 0;i < cards.length;i++) {
                 if(cards[i].id == data.id) {
                     cards[i] = data;
+                    break;
                 }
             }
             updateCardsList();
@@ -108,6 +167,7 @@ function submitUpdate(){
     });
 };
 
+//提交删除
 function submitDel(id){
     var url = "/delCard?cardId=" + id;
     $.ajax({
@@ -125,6 +185,41 @@ function submitDel(id){
     });
 };
 
+//设置卡牌表单显示
+function setCard(id) {
+    var key = hasCard(id);
+    var card = (key == -1) ? CardConfig : cards[key];
+    var passSkills = card["passSkills"];
+
+    if(key != -1){
+        $("#id").val(card.id);
+    }else {
+        $("#id").val("auto");
+    }
+
+    $("#lv").val(card.lv);
+    $("#skillLv").val(card.skillLv);
+    $("#elixir").val(card.elixir);
+    $("#starList").val(card.star);
+    $("#tableId").val(card.tableId);
+
+    setPassSkill(passSkills,card.star);
+    // $("#cardShow").show();
+
+};
+
+//判断数据中是否有id = cardId的卡牌
+function hasCard(cardId) {
+
+    for(var i = 0; i < cards.length;i++) {
+        if(cards[i].id == cardId) {
+            return i;
+        }
+    }
+    return -1;
+};
+
+//获取表单数据
 function getData() {
     var data = {
         lv:$("#lv").val(),
@@ -137,9 +232,11 @@ function getData() {
 
     if($("#id").val() != "auto")
        data.id = $("#id").val();
+    else
+       data.tableId = $("#tableId").val();
 
     var id = 0;
-    if($("#skill1Name").val() != "") {
+    if($("#skill1Name").val() != "" || $("#skill1").val() != "") {
         data.passSkills[id++] = {
             id:$("#skill1").val(),
             name:$("#skill1Name").val(),
@@ -147,7 +244,7 @@ function getData() {
         }
     }
 
-    if($("#skill2Name").val() != "") {
+    if($("#skill2Name").val() != "" || $("#skill2").val() != "") {
         data.passSkills[id++] = {
             id:$("#skill2").val(),
             name:$("#skill2Name").val(),
@@ -155,7 +252,7 @@ function getData() {
         }
     }
 
-    if($("#skill3Name").val() != "") {
+    if($("#skill3Name").val() != "" || $("#skill3").val != "") {
         data.passSkills[id++] = {
             id:$("#skill3").val(),
             name:$("#skill3Name").val(),
@@ -183,7 +280,7 @@ function setCardsList() {
         inner += "</tr>";
     });
 
-
+    eventHandle();
     $("#cardsList").append(inner);
     setPagination();
 
@@ -200,59 +297,16 @@ function delCardsList(){
     $("tr[id !='th']").remove();
 };
 
+//删除指定行
 function delRow(id){
     $("tr[id =" + id + "]").remove();
 };
-
-//设置卡牌显示
-function setCard(id) {
-    var key = hasCard(id);
-    var card = (key == -1) ? Cardconfig:cards[key];
-    var passSkill = card["passSkills"];
-
-    if(key != -1){
-        $("#id").val(card.id);
-        //$("#id").show();
-    }else {
-        $("#id").val("auto");
-    }
-
-    $("#lv").val(card.lv);
-    $("#skillLv").val(card.skillLv);
-    $("#elixir").val(card.elixir);
-    $("#starList").val(card.star);
-
-    $("#starList").change(function(){
-        setPassSkill(passSkill,$("#starList").val());
-    });
-
-    $('#skill1Name').change(function(){
-        var val = $('#skill1Name').val;
-        $('#skill2Name option[value = ' + "val" +'] ').attr("disabled",true);
-    });
-
-    setPassSkill(passSkill,card.star);
-   // $("#cardShow").show();
-
-};
-
-//判断数据中是否有id = cardId的卡牌
-function hasCard(cardId) {
-
-    for(var i = 0; i < cards.length;i++) {
-        if(cards[i].id == cardId) {
-            return i;
-        }
-    }
-    return -1;
-};
-
 
 //设置技能下拉框显示的值
 function setPassSkill(pss,star) {
 
     var len = pss.length;
-
+    console.log("len=" + len + "star=" + star);
     if(len == 0 || star < 3) {
         $("#skill1").val("");
         $("#skill1Name").val("");
@@ -272,11 +326,11 @@ function setPassSkill(pss,star) {
         $("#skill1").val(pss[0].id);
         $("#skill1Name").val(pss[0].name);
         $("#skill1Value").val(pss[0].value);
-        $("#skill2").val("");
+       // $("#skill2").val("");
         $("#skill2Name").val("");
         $("#skill2Value").val("");
 
-        $("#skill3").val("");
+       // $("#skill3").val("");
         $("#skill3Name").val("");
         $("#skill3Value").val("");
 
@@ -288,7 +342,7 @@ function setPassSkill(pss,star) {
         $("#skill2Name").val(pss[1].name);
         $("#skill2Value").val(pss[1].value);
 
-        $("#skill3").val("");
+       // $("#skill3").val("");
         $("#skill3Name").val("");
         $("#skill3Value").val("");
 
@@ -302,7 +356,6 @@ function setPassSkill(pss,star) {
         $("#skill3Value").val(pss[2].value);
     }
 
-   // console.log($("#skill1").val());
     updatePassSkill(star)
 
 };

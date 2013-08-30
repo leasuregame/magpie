@@ -27,6 +27,7 @@ var card = function(app) {
             res.render('card',{
                 title : '卡牌操作',
                 user : req.session.user,
+                playerId:req.session.playerId,
                 areas:areas,
                 success:req.flash('success').toString(),
                 error:req.flash('error').toString()
@@ -69,15 +70,15 @@ var card = function(app) {
                        playerId : Player["id"]
                     }
                 }
-
+                req.session.playerId = Player.id,
                 cardDao.getCards(player,function(err,cards){
-                  //  console.log(cards);
+                   // console.log(cards);
                     res.render('cardData',{
                         title : '卡牌操作',
                         user : req.session.user,
                         cards : cards,
                         playerName:Player.name,
-                        playerId:Player.id,
+                        playerId:req.session.playerId,
                         areaName:area.name,
                         success:req.flash('success').toString(),
                         error:req.flash('error').toString()
@@ -90,7 +91,7 @@ var card = function(app) {
 
     });
 
-    app.post('/cardData',function(req,res){
+    app.post('/updateCard',function(req,res){
 
         var url = Url.parse(req.url,true);
         var query = url.query;
@@ -104,14 +105,15 @@ var card = function(app) {
                 lv:data.lv,
                 skillLv:data.skillLv,
                 elixir:data.elixir,
-                star:data.star
+                star:data.star,
+                tableId:data.tableId
             }
         };
 
        // console.log(req.url);
-
+      //  console.log(card.data);
         var passSkills = data.passSkills;
-       // console.log(passSkills);
+        console.log(passSkills);
         cardDao.update(card,function(err,isOK){
             if(err) {
                 console.log(err);
@@ -133,8 +135,23 @@ var card = function(app) {
                                  console.log(res);
                              }
                          });
-                     }
-                     else {
+                     }else if(pss.id != '' && pss.name == '') {
+                         console.log("id = " + pss.id);
+                         var options = {
+                             where:{
+                                 cardId:data.id,
+                                 id:pss.id
+                             }
+                         };
+                         passiveSkillDao.delete(options,function(err,isOK){
+                             if(err){
+                                 console.log(err);
+                             }else {
+                                 console.log("del = " + isOK);
+                             }
+                         });
+
+                     }else {
                          var options = {
                             where:{
                               id:pss.id
@@ -164,42 +181,81 @@ var card = function(app) {
         var url = Url.parse(req.url,true);
         var query = url.query;
         var card = JSON.parse(query["card"]);
-
+        var time = Date.now();
         var options = {
             data:{
                 lv:card.lv,
                 skillLv:card.skillLv,
                 elixir:card.elixir,
-                star:card.star
+                tableId:card.tableId,
+                playerId:req.session.playerId,
+                star:card.star,
+                createTime:time
             }
         };
-
+        var passSkills = card.passSkills;
+        var error = "success";
+      //  console.log(card);
+        var cardId;
         cardDao.create(options, function(err,card){
             if(err) {
-                console.log(err);
+                error = err;
             }else {
-                console.log(card);
-                var passSkills = card.passSkills;
-                passSkills.forEach(function(pss){
-                    var options = {
-                        data:{
-                            cardId:card.id,
-                            name:pss.name,
-                            value:pss.value,
-                            createTime:Date.now()
+                cardId = card["insertId"];
+
+
+                //cardDao.getCardInfo(options,function(err,card){
+                  //  if(err) {
+                  //      error = err;
+                  //  }else {
+                        //console.log("card=" + JSON.stringify(res));
+                        //var card =  JSON.stringify(card);
+
+                      //  console.log(cardId);
+
+                        passSkills.forEach(function(pss){
+                            if(!(pss.name == '' || pss.value == '')) {
+                                var options = {
+                                    data:{
+                                        cardId:cardId,
+                                        name:pss.name,
+                                        value:pss.value,
+                                        createTime:Date.now()
+                                    }
+                                }
+                                passiveSkillDao.create(options,function(err,res){
+                                    if(err){
+                                        error = err;
+                                    }else {
+                                        console.log(res);
+                                    }
+                                });
+                            }
+
+                        });
+
+                        console.log("cc="+cardId);
+                        if(error == "success") {
+                            var options = {
+                                where:{
+                                    id:cardId
+                                }
+                            };
+                            cardDao.getCardInfo(options,function(err,card){
+                                console.log(card);
+                                console.log(JSON.stringify(card));
+                                res.send(card);
+                            });
                         }
                     }
-                    passiveSkillDao.create(options,function(err,res){
-                        if(err){
-                            console.log(err);
-                        }else {
-                            console.log(res);
-                        }
-                    });
                 });
-            }
 
-        });
+          //  }
+
+       // });
+
+
+
 
     });
 

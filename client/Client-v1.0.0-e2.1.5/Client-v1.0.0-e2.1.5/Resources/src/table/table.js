@@ -1199,9 +1199,6 @@ var outputTables = {
                 "hp": 355,
                 "skill_name": "七十二变",
                 "skill_id": 3,
-                "group": "2,3,5",
-                "group_name": "西天取经",
-                "effetc_type": 1,
                 "description": "从今往后一万年，你们都会记住我的名字，齐天大圣孙悟空。",
                 "url": 3
             },
@@ -1215,9 +1212,6 @@ var outputTables = {
                 "hp": 516,
                 "skill_name": "七十二变",
                 "skill_id": 3,
-                "group": 4,
-                "group_name": "基情永恒",
-                "effetc_type": 2,
                 "description": "你是谁的亲戚，麻烦打架前先报上来，免得俺老孙白费力气。",
                 "url": 4
             },
@@ -1231,9 +1225,6 @@ var outputTables = {
                 "hp": 821,
                 "skill_name": "七十二变",
                 "skill_id": 3,
-                "group": 6,
-                "group_name": "纯洁友情",
-                "effetc_type": 1,
                 "description": "一沙一世界，一树一菩提，妖即是色，色即是空，空即是佛。",
                 "url": 5
             },
@@ -1269,9 +1260,6 @@ var outputTables = {
                 "hp": 390,
                 "skill_name": "倒打一耙",
                 "skill_id": 5,
-                "group": 39,
-                "group_name": "真爱",
-                "effetc_type": 1,
                 "description": "猴子说我呆，沙僧说我二，其实我只是不想做这些无意义的事情。",
                 "url": 2
             },
@@ -1285,10 +1273,7 @@ var outputTables = {
                 "hp": 552,
                 "skill_name": "倒打一耙",
                 "skill_id": 5,
-                "group": 38,
-                "group_name": "天敌",
-                "effetc_type": 2,
-                "description": "连如来也当我是个吃货，其实我唯有不停的吃，才能让自己不去向她。",
+                "description": "连如来也当我是个吃货，其实我唯有不停的吃，才能让自己不去想她。",
                 "url": 3
             },
             "10": {
@@ -1301,7 +1286,6 @@ var outputTables = {
                 "hp": 878,
                 "skill_name": "倒打一耙",
                 "skill_id": 5,
-                "effetc_type": 1,
                 "description": "那年，我管银河系。",
                 "url": 4
             },
@@ -1337,8 +1321,6 @@ var outputTables = {
                 "hp": 357,
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
-                "group": "2,3,5",
-                "effetc_type": 1,
                 "description": "大师兄，师傅被抓走了！大师兄，二师兄和师傅被抓走了！",
                 "url": 1
             },
@@ -1352,7 +1334,6 @@ var outputTables = {
                 "hp": 526,
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "我这职位就像领导司机，比较敏感，容易说错话做错事。",
                 "url": 2
             },
@@ -1366,7 +1347,6 @@ var outputTables = {
                 "hp": 825,
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "我是要告诉人家，我失去的东西一定要拿回来！",
                 "url": 3
             },
@@ -1402,7 +1382,6 @@ var outputTables = {
                 "hp": 367,
                 "skill_name": "群牛乱舞",
                 "skill_id": 5,
-                "effetc_type": 1,
                 "description": "看清楚是平天不是齐天！猴子是我小弟，不要总拿他压我！",
                 "url": 6
             },
@@ -1416,7 +1395,6 @@ var outputTables = {
                 "hp": 530,
                 "skill_name": "群牛乱舞",
                 "skill_id": 5,
-                "effetc_type": 2,
                 "description": "我宁愿做一日英雄，都不想成世做条虫，放马过来吧！",
                 "url": 1
             },
@@ -1430,7 +1408,6 @@ var outputTables = {
                 "hp": 829,
                 "skill_name": "群牛乱舞",
                 "skill_id": 5,
-                "effetc_type": 1,
                 "description": "孩子被你们带走了，老婆也离我而去，你要我放下，我还有什么可放？",
                 "url": 2
             },
@@ -1442,7 +1419,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 53,
                 "hp": 121,
-                "description": "那年，我徒步去阿三国，没有导游，只有三个同样不认识路的团友。",
+                "description": "那年，我徒步去阿三国，没有导游，只有三个同样不认识路的驴友。",
                 "url": 3
             },
             "22": {
@@ -1466,8 +1443,6 @@ var outputTables = {
                 "hp": 354,
                 "skill_name": "普度众生",
                 "skill_id": 10,
-                "group": "2,3,5",
-                "effetc_type": 1,
                 "description": "我知道在雷音寺宣传道教等于去踢馆，所以如来直接把我给转世到了人间。",
                 "url": 5
             },
@@ -1481,7 +1456,6 @@ var outputTables = {
                 "hp": 517,
                 "skill_name": "普度众生",
                 "skill_id": 10,
-                "effetc_type": 2,
                 "description": "我心里清楚，我的功德是奶了雷音寺这帮人，而不是因为取经。",
                 "url": 6
             },
@@ -1495,7 +1469,6 @@ var outputTables = {
                 "hp": 822,
                 "skill_name": "普度众生",
                 "skill_id": 10,
-                "effetc_type": 1,
                 "description": "我吃素，却总是被人当肉吃，我只想做回我自己。",
                 "url": 1
             },
@@ -1531,7 +1504,6 @@ var outputTables = {
                 "hp": 341,
                 "skill_name": "浴火重生",
                 "skill_id": 2,
-                "effetc_type": 1,
                 "description": "你热么？我给你扇扇？",
                 "url": 4
             },
@@ -1545,7 +1517,6 @@ var outputTables = {
                 "hp": 519,
                 "skill_name": "浴火重生",
                 "skill_id": 2,
-                "effetc_type": 2,
                 "description": "以前看月亮的时候叫人家小甜甜，原来都是假的。",
                 "url": 5
             },
@@ -1559,7 +1530,6 @@ var outputTables = {
                 "hp": 813,
                 "skill_name": "浴火重生",
                 "skill_id": 2,
-                "effetc_type": 1,
                 "description": "孩子已被掳走，再不能让他们把我们夫妻分离了。",
                 "url": 6
             },
@@ -1595,7 +1565,6 @@ var outputTables = {
                 "hp": 390,
                 "skill_name": "雷霆之怒",
                 "skill_id": 3,
-                "effetc_type": 1,
                 "description": "想搬家么？找我吧！什么？房子很大？我可以把你家对面那条河一起搬走。",
                 "url": 3
             },
@@ -1609,7 +1578,6 @@ var outputTables = {
                 "hp": 550,
                 "skill_name": "雷霆之怒",
                 "skill_id": 3,
-                "effetc_type": 2,
                 "description": "先锋这个职业，基本就是送死+被黑锅的意思，你懂的。",
                 "url": 4
             },
@@ -1623,7 +1591,6 @@ var outputTables = {
                 "hp": 855,
                 "skill_name": "雷霆之怒",
                 "skill_id": 3,
-                "effetc_type": 1,
                 "description": "斧头帮知道吧，那是我开创的。",
                 "url": 5
             },
@@ -1659,7 +1626,6 @@ var outputTables = {
                 "hp": 393,
                 "skill_name": "三味真火",
                 "skill_id": 3,
-                "effetc_type": 1,
                 "description": "这门神功的唯一的缺点是使用前要先把自己打出鼻血来……",
                 "url": 2
             },
@@ -1673,7 +1639,6 @@ var outputTables = {
                 "hp": 556,
                 "skill_name": "三味真火",
                 "skill_id": 3,
-                "effetc_type": 2,
                 "description": "虽然我长个正太样儿，却有颗大叔的心。",
                 "url": 3
             },
@@ -1687,7 +1652,6 @@ var outputTables = {
                 "hp": 859,
                 "skill_name": "三味真火",
                 "skill_id": 3,
-                "effetc_type": 1,
                 "description": "厌倦了打打杀杀、尔虞我诈的日子，我决定从事更有前途的金融行业。",
                 "url": 4
             },
@@ -1723,7 +1687,6 @@ var outputTables = {
                 "hp": 392,
                 "skill_name": "兽之元神",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "当仇恨成为了信仰，我就变成了复仇的恶魔。",
                 "url": 1
             },
@@ -1737,7 +1700,6 @@ var outputTables = {
                 "hp": 556,
                 "skill_name": "兽之元神",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "我对这次的任命很满意，感谢姬总对我的信任！",
                 "url": 2
             },
@@ -1751,7 +1713,6 @@ var outputTables = {
                 "hp": 857,
                 "skill_name": "兽之元神",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "嫌我名字长？和慈禧比起来，我这个只能算缩写。",
                 "url": 3
             },
@@ -1787,7 +1748,6 @@ var outputTables = {
                 "hp": 389,
                 "skill_name": "雷音破",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "走的匆忙，忘记问师父我爹长啥样了，这是要闹哪样呀！",
                 "url": 6
             },
@@ -1801,7 +1761,6 @@ var outputTables = {
                 "hp": 559,
                 "skill_name": "雷音破",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "一条命通五关不难，难的是还要背个人一起过，不服你试试？",
                 "url": 1
             },
@@ -1815,7 +1774,6 @@ var outputTables = {
                 "hp": 860,
                 "skill_name": "雷音破",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "你感觉不到我的体温，因为我全身都是金刚，没有血肉。",
                 "url": 2
             },
@@ -1851,7 +1809,6 @@ var outputTables = {
                 "hp": 354,
                 "skill_name": "红颜祸水",
                 "skill_id": 6,
-                "effetc_type": 1,
                 "description": "商朝的后宫也演甄嬛传啊有木有，刚进宫皇后就训话，本宫心累啊！",
                 "url": 5
             },
@@ -1865,7 +1822,6 @@ var outputTables = {
                 "hp": 516,
                 "skill_name": "红颜祸水",
                 "skill_id": 6,
-                "effetc_type": 2,
                 "description": "我不懂什么红颜祸水，我只是棋盘中的一颗棋子，但我知道我们是真爱！",
                 "url": 6
             },
@@ -1879,7 +1835,6 @@ var outputTables = {
                 "hp": 823,
                 "skill_name": "红颜祸水",
                 "skill_id": 6,
-                "effetc_type": 1,
                 "description": "千年修白，万年修黑。女娲娘娘，真的是这样子的么？",
                 "url": 1
             },
@@ -1915,7 +1870,6 @@ var outputTables = {
                 "hp": 350,
                 "skill_name": "太公之悲",
                 "skill_id": 7,
-                "effetc_type": 1,
                 "description": "施主印堂发黑，带有凶兆，必有大波，不如让贫道为你算上一卦。",
                 "url": 4
             },
@@ -1929,7 +1883,6 @@ var outputTables = {
                 "hp": 515,
                 "skill_name": "太公之悲",
                 "skill_id": 7,
-                "effetc_type": 2,
                 "description": "我孙子和姬发差不多大，他封我为尚父，我总觉得哪里不对劲。",
                 "url": 5
             },
@@ -1943,7 +1896,6 @@ var outputTables = {
                 "hp": 821,
                 "skill_name": "太公之悲",
                 "skill_id": 7,
-                "effetc_type": 1,
                 "description": "齐祖是说我是齐国创始人，不是说我长的像齐达内。",
                 "url": 6
             },
@@ -1979,7 +1931,6 @@ var outputTables = {
                 "hp": 355,
                 "skill_name": "失魂引",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "这帮天兵天将下凡连城管都打不过，还想我去收孙悟空！",
                 "url": 3
             },
@@ -1993,7 +1944,6 @@ var outputTables = {
                 "hp": 511,
                 "skill_name": "失魂引",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "天庭的九门提督可不好当，你知道隆科多是怎么挂的么？",
                 "url": 4
             },
@@ -2007,7 +1957,6 @@ var outputTables = {
                 "hp": 828,
                 "skill_name": "失魂引",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "每天托着个十几斤重的塔走来走去，我的手臂都快骨质增生了。",
                 "url": 5
             },
@@ -2043,7 +1992,6 @@ var outputTables = {
                 "hp": 375,
                 "skill_name": "五音诀",
                 "skill_id": 8,
-                "effetc_type": 1,
                 "description": "我能有今天的成就，要感谢我的粑粑和麻麻，还有CCTV。",
                 "url": 2
             },
@@ -2057,7 +2005,6 @@ var outputTables = {
                 "hp": 512,
                 "skill_name": "五音诀",
                 "skill_id": 8,
-                "effetc_type": 2,
                 "description": "当不当教主真的不重要，看一看这花花世界，就像梦一场。",
                 "url": 3
             },
@@ -2071,7 +2018,6 @@ var outputTables = {
                 "hp": 815,
                 "skill_name": "五音诀",
                 "skill_id": 8,
-                "effetc_type": 1,
                 "description": "我就是一ATM，关键还得你卡里有钱，不然我也帮不了你。",
                 "url": 4
             },
@@ -2107,7 +2053,6 @@ var outputTables = {
                 "hp": 374,
                 "skill_name": "玄冥寒",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "没有人能分辨出这究竟是一道影，还是一堵墙，其实它是我的鞭。",
                 "url": 1
             },
@@ -2121,7 +2066,6 @@ var outputTables = {
                 "hp": 516,
                 "skill_name": "玄冥寒",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "只有和它们在一起，我才能感觉到那种无私的信任与关怀。",
                 "url": 2
             },
@@ -2135,7 +2079,6 @@ var outputTables = {
                 "hp": 820,
                 "skill_name": "玄冥寒",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "成王败寇，我的实力无需封神榜上的职位来证明。",
                 "url": 3
             },
@@ -2171,7 +2114,6 @@ var outputTables = {
                 "hp": 375,
                 "skill_name": "土遁",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "我这根捆仙绳，平时可以当领带，战时可以当武器，多功能用途。",
                 "url": 6
             },
@@ -2185,7 +2127,6 @@ var outputTables = {
                 "hp": 520,
                 "skill_name": "土遁",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "地行比飞行安全多了，最多撞个石头啥的，不会坠机。",
                 "url": 1
             },
@@ -2199,7 +2140,6 @@ var outputTables = {
                 "hp": 825,
                 "skill_name": "土遁",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "我最大的成就不是封神，而是娶了心中的女神邓婵玉。",
                 "url": 2
             },
@@ -2235,7 +2175,6 @@ var outputTables = {
                 "hp": 375,
                 "skill_name": "苦海无边",
                 "skill_id": 9,
-                "effetc_type": 1,
                 "description": "没想到隔了几辈子再遇到白蛇，已经修炼成了女神模样。",
                 "url": 5
             },
@@ -2249,7 +2188,6 @@ var outputTables = {
                 "hp": 519,
                 "skill_name": "苦海无边",
                 "skill_id": 9,
-                "effetc_type": 2,
                 "description": "人蛇恋是不会有结果的，她应该呆在我的身边修炼。",
                 "url": 6
             },
@@ -2263,7 +2201,6 @@ var outputTables = {
                 "hp": 830,
                 "skill_name": "苦海无边",
                 "skill_id": 9,
-                "effetc_type": 1,
                 "description": "没想到会和他们一起升仙，看着他们甜蜜的样子，我有点失落。",
                 "url": 1
             },
@@ -2299,7 +2236,6 @@ var outputTables = {
                 "hp": 380,
                 "skill_name": "水漫金山",
                 "skill_id": 4,
-                "effetc_type": 1,
                 "description": "没灵芝仙草许仙就活不了，许仙不在了我就得回青城山继续宅了！",
                 "url": 4
             },
@@ -2313,7 +2249,6 @@ var outputTables = {
                 "hp": 524,
                 "skill_name": "水漫金山",
                 "skill_id": 4,
-                "effetc_type": 2,
                 "description": "白素贞你住手吧，许仙真的不在珠海金山！",
                 "url": 5
             },
@@ -2327,7 +2262,6 @@ var outputTables = {
                 "hp": 831,
                 "skill_name": "水漫金山",
                 "skill_id": 4,
-                "effetc_type": 1,
                 "description": "尔康，你不能恨我，你不能因为我这么爱你而恨我。",
                 "url": 6
             },
@@ -2363,7 +2297,6 @@ var outputTables = {
                 "hp": 374,
                 "skill_name": "黯然销魂",
                 "skill_id": 4,
-                "effetc_type": 1,
                 "description": "法海你不懂爱，姐姐不要你，我也不会从。",
                 "url": 3
             },
@@ -2377,7 +2310,6 @@ var outputTables = {
                 "hp": 516,
                 "skill_name": "黯然销魂",
                 "skill_id": 4,
-                "effetc_type": 2,
                 "description": "法海，要么你跟我走，要么你放过我姐姐！",
                 "url": 4
             },
@@ -2391,7 +2323,6 @@ var outputTables = {
                 "hp": 820,
                 "skill_name": "黯然销魂",
                 "skill_id": 4,
-                "effetc_type": 1,
                 "description": "一起升仙的那天，我和他是最落寞的，只羡鸳鸯不羡仙。",
                 "url": 5
             },
@@ -2427,7 +2358,6 @@ var outputTables = {
                 "hp": 345,
                 "skill_name": "莲花心经",
                 "skill_id": 7,
-                "effetc_type": 1,
                 "description": "那天我花7分钱买了本《筋斗云》，然后我就会飞了。",
                 "url": 2
             },
@@ -2441,7 +2371,6 @@ var outputTables = {
                 "hp": 510,
                 "skill_name": "莲花心经",
                 "skill_id": 7,
-                "effetc_type": 2,
                 "description": "凤凰台上凤凰花，凤凰花开飞凤凰。",
                 "url": 3
             },
@@ -2455,7 +2384,6 @@ var outputTables = {
                 "hp": 801,
                 "skill_name": "莲花心经",
                 "skill_id": 7,
-                "effetc_type": 1,
                 "description": "让我们荡起双桨，小船儿推开波浪~~~轻点！",
                 "url": 4
             },
@@ -2491,8 +2419,7 @@ var outputTables = {
                 "hp": 408,
                 "skill_name": "流云诀",
                 "skill_id": 8,
-                "effetc_type": 1,
-                "description": "开导劝化风尘女子是我的业余爱好，似然她们都说我虚伪。",
+                "description": "开导劝化风尘女子是我的业余爱好，虽然她们都说我虚伪。",
                 "url": 1
             },
             "104": {
@@ -2505,7 +2432,6 @@ var outputTables = {
                 "hp": 572,
                 "skill_name": "流云诀",
                 "skill_id": 8,
-                "effetc_type": 2,
                 "description": "这年头，我一跟人说自己是剑仙，他们就流露出诡异的笑容。",
                 "url": 2
             },
@@ -2519,7 +2445,6 @@ var outputTables = {
                 "hp": 875,
                 "skill_name": "流云诀",
                 "skill_id": 8,
-                "effetc_type": 1,
                 "description": "我有个徒孙叫王重阳，他拿过一个叫华山论剑的武术冠军。",
                 "url": 3
             },
@@ -2555,7 +2480,6 @@ var outputTables = {
                 "hp": 712,
                 "skill_name": "流星拐",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "扮猪吃老虎是我的最爱，比如在大街上的人堆里变条龙飞走。",
                 "url": 6
             },
@@ -2569,7 +2493,6 @@ var outputTables = {
                 "hp": 575,
                 "skill_name": "流星拐",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "有人找我求雨，我都要求他舔我的烂腿，没办法，好这口。",
                 "url": 1
             },
@@ -2583,7 +2506,6 @@ var outputTables = {
                 "hp": 872,
                 "skill_name": "流星拐",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "我们教主圈从不缺新闻，最近的咆哮教主你知道么？",
                 "url": 2
             },
@@ -2619,7 +2541,6 @@ var outputTables = {
                 "hp": 711,
                 "skill_name": "行云流水",
                 "skill_id": 9,
-                "effetc_type": 1,
                 "description": "《十日谈》这样的少儿不宜的书籍都能出名，何况我的是日试呢！",
                 "url": 5
             },
@@ -2633,7 +2554,6 @@ var outputTables = {
                 "hp": 574,
                 "skill_name": "行云流水",
                 "skill_id": 9,
-                "effetc_type": 2,
                 "description": "呐，当差人是要拜关二哥，你要是炒黄金，当然得拜我啦。",
                 "url": 6
             },
@@ -2647,7 +2567,6 @@ var outputTables = {
                 "hp": 873,
                 "skill_name": "行云流水",
                 "skill_id": 9,
-                "effetc_type": 1,
                 "description": "当了神仙，就跟童话里说的一样，从此过上了幸福的生活。",
                 "url": 1
             },
@@ -2683,7 +2602,6 @@ var outputTables = {
                 "hp": 405,
                 "skill_name": "人驴合一",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "我也不记得我多少岁了，名字里就有个老字，咱能不比老么？",
                 "url": 4
             },
@@ -2697,7 +2615,6 @@ var outputTables = {
                 "hp": 598,
                 "skill_name": "人驴合一",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "折个驴、变个狗啥的我最在行了，人都说我可以去马戏团工作。",
                 "url": 5
             },
@@ -2711,7 +2628,6 @@ var outputTables = {
                 "hp": 902,
                 "skill_name": "人驴合一",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "我总觉得我的封号有点娘，不过他们说听起来很有冲劲。",
                 "url": 6
             },
@@ -2746,7 +2662,6 @@ var outputTables = {
                 "hp": 408,
                 "skill_name": "天籁之音",
                 "skill_id": 9,
-                "effetc_type": 1,
                 "description": "不要信什么只可意会不可言传的烂话，那是人家不想告诉你。"
             },
             "124": {
@@ -2759,7 +2674,6 @@ var outputTables = {
                 "hp": 600,
                 "skill_name": "天籁之音",
                 "skill_id": 9,
-                "effetc_type": 2,
                 "description": "你会吹箫？是呀！你会吹箫啊？哈哈，有空教你啊！"
             },
             "125": {
@@ -2772,7 +2686,6 @@ var outputTables = {
                 "hp": 910,
                 "skill_name": "天籁之音",
                 "skill_id": 9,
-                "effetc_type": 1,
                 "description": "离开的那天，我的爱与肉身一起，在风中化去了。"
             },
             "126": {
@@ -2805,7 +2718,6 @@ var outputTables = {
                 "hp": 410,
                 "skill_name": "吐气如兰",
                 "skill_id": 7,
-                "effetc_type": 1,
                 "description": "这些年看到好玩的好看的东西，就对着他们念咒语：快到篮里来！"
             },
             "129": {
@@ -2818,7 +2730,6 @@ var outputTables = {
                 "hp": 602,
                 "skill_name": "吐气如兰",
                 "skill_id": 7,
-                "effetc_type": 2,
                 "description": "他们说我是阴阳调和于一体，其实我只是有点伪娘控而已。"
             },
             "130": {
@@ -2831,7 +2742,6 @@ var outputTables = {
                 "hp": 908,
                 "skill_name": "吐气如兰",
                 "skill_id": 7,
-                "effetc_type": 1,
                 "description": "汉钟离要我跟他走，我知道他的意思，但我还是从了。"
             },
             "131": {
@@ -2864,7 +2774,6 @@ var outputTables = {
                 "hp": 412,
                 "skill_name": "织女情",
                 "skill_id": 9,
-                "effetc_type": 1,
                 "description": "死牛给我出的馊主意，要我去偷妹纸的衣服，岛国动作片看多了吧！"
             },
             "134": {
@@ -2877,7 +2786,6 @@ var outputTables = {
                 "hp": 604,
                 "skill_name": "织女情",
                 "skill_id": 9,
-                "effetc_type": 2,
                 "description": "我们驸马界一直都是比较低调的，除了出了个叫陈世美的。"
             },
             "135": {
@@ -2890,7 +2798,6 @@ var outputTables = {
                 "hp": 908,
                 "skill_name": "织女情",
                 "skill_id": 9,
-                "effetc_type": 1,
                 "description": "一年才见一次面，见面的时候还被围观，这让我们夫妻情何以堪啊！"
             },
             "136": {
@@ -2923,7 +2830,6 @@ var outputTables = {
                 "hp": 403,
                 "skill_name": "鹊桥泪",
                 "skill_id": 4,
-                "effetc_type": 1,
                 "description": "突然有一天有了家有了孩子，你会觉得这世界变得不一样了。"
             },
             "139": {
@@ -2936,7 +2842,6 @@ var outputTables = {
                 "hp": 592,
                 "skill_name": "鹊桥泪",
                 "skill_id": 4,
-                "effetc_type": 2,
                 "description": "牛郎走的第一天，想他；牛郎走的第二天，想他想他；牛郎走的第三天，想他想他想他。"
             },
             "140": {
@@ -2949,7 +2854,6 @@ var outputTables = {
                 "hp": 901,
                 "skill_name": "鹊桥泪",
                 "skill_id": 4,
-                "effetc_type": 1,
                 "description": "这是个集御姐、人妻、熟女、OL于一身的封号，牛郎肯定会喜欢的。"
             },
             "141": {
@@ -2982,7 +2886,6 @@ var outputTables = {
                 "hp": 394,
                 "skill_name": "桂花情",
                 "skill_id": 7,
-                "effetc_type": 1,
                 "description": "无聊的时候我就砍砍桂花树，反正砍得没有长得快。"
             },
             "144": {
@@ -2995,7 +2898,6 @@ var outputTables = {
                 "hp": 604,
                 "skill_name": "桂花情",
                 "skill_id": 7,
-                "effetc_type": 2,
                 "description": "你能理解单身几百年后突然来一个女神和你共处的感受么？"
             },
             "145": {
@@ -3008,7 +2910,6 @@ var outputTables = {
                 "hp": 911,
                 "skill_name": "桂花情",
                 "skill_id": 7,
-                "effetc_type": 1,
                 "description": "桂花树下桃花仙，桂花仙人种桂花；从此不砍桂花树，抱得嫦娥躲在家。"
             },
             "146": {
@@ -3041,7 +2942,6 @@ var outputTables = {
                 "hp": 412,
                 "skill_name": "鬼脚七",
                 "skill_id": 2,
-                "effetc_type": 1,
                 "description": "我发现一口井，每天晚上播天气预报，然后我就出名了。"
             },
             "149": {
@@ -3054,7 +2954,6 @@ var outputTables = {
                 "hp": 608,
                 "skill_name": "鬼脚七",
                 "skill_id": 2,
-                "effetc_type": 2,
                 "description": "只要你有了想象力，草就可以变成马，豆就可以变成兵。"
             },
             "150": {
@@ -3067,7 +2966,6 @@ var outputTables = {
                 "hp": 909,
                 "skill_name": "鬼脚七",
                 "skill_id": 2,
-                "effetc_type": 1,
                 "description": "当了神仙后，玉帝给我分了一套别墅，有产权的哦！"
             },
             "151": {
@@ -3100,7 +2998,6 @@ var outputTables = {
                 "hp": 432,
                 "skill_name": "招魂蟠",
                 "skill_id": 2,
-                "effetc_type": 1,
                 "description": "别老练少林72绝技了，多看苍老师的片子可以下火去戾气。"
             },
             "154": {
@@ -3113,7 +3010,6 @@ var outputTables = {
                 "hp": 592,
                 "skill_name": "招魂蟠",
                 "skill_id": 2,
-                "effetc_type": 2,
                 "description": "巨龙巨龙你差两年，永永远远的差两年。"
             },
             "155": {
@@ -3126,7 +3022,6 @@ var outputTables = {
                 "hp": 938,
                 "skill_name": "招魂蟠",
                 "skill_id": 2,
-                "effetc_type": 1,
                 "description": "抽刀断水水更流，举杯消愁愁更愁，吃多吃少难吃足。"
             },
             "156": {
@@ -3159,7 +3054,6 @@ var outputTables = {
                 "hp": 430,
                 "skill_name": "哭丧棒",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "我们这儿都是牛啊马啊狗啊啥的，重口味者禁入！"
             },
             "159": {
@@ -3172,7 +3066,6 @@ var outputTables = {
                 "hp": 590,
                 "skill_name": "哭丧棒",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "这里打斗比较激烈一些，需要用到皮鞭、绳索、蜡烛等物品。"
             },
             "160": {
@@ -3185,7 +3078,6 @@ var outputTables = {
                 "hp": 940,
                 "skill_name": "哭丧棒",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "我们终于回归正常了，各位有特殊癖好的也可以再回去。"
             },
             "161": {
@@ -3218,7 +3110,6 @@ var outputTables = {
                 "hp": 355,
                 "skill_name": "日炎拳",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "这次能提拔，多亏巨灵神他们给我指了条路。"
             },
             "164": {
@@ -3229,8 +3120,8 @@ var outputTables = {
                 "lv": 1,
                 "atk": 228,
                 "hp": 518,
+                "skill_name": "日炎拳",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "众仙们，我们要以高度负责的精神，认真组织和开展好学习实践活动！"
             },
             "165": {
@@ -3241,8 +3132,8 @@ var outputTables = {
                 "lv": 1,
                 "atk": 352,
                 "hp": 830,
+                "skill_name": "日炎拳",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "再过两年要退居二线了，我儿子的仙籍得抓紧办了。"
             },
             "166": {
@@ -3263,7 +3154,6 @@ var outputTables = {
                 "lv": 1,
                 "atk": 89,
                 "hp": 207,
-                "skill_name": "落星腿",
                 "skill_id": 1,
                 "description": "相比副连这个很娘的称呼，我更喜欢大家叫我captain。"
             },
@@ -3275,8 +3165,8 @@ var outputTables = {
                 "lv": 1,
                 "atk": 137,
                 "hp": 253,
+                "skill_name": "流星击",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "其实神仙的夜生活很丰富的，很庆幸我负责夜里的巡逻，你懂的。"
             },
             "169": {
@@ -3287,8 +3177,8 @@ var outputTables = {
                 "lv": 1,
                 "atk": 230,
                 "hp": 515,
+                "skill_name": "流星击",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "为啥那个唱歌的神仙升的比我快那么多!"
             },
             "170": {
@@ -3299,7 +3189,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 360,
                 "hp": 824,
-                "effetc_type": 1,
+                "skill_name": "流星击",
                 "description": "笑什么笑，是大校不是大笑，严肃点！"
             },
             "171": {
@@ -3332,7 +3222,6 @@ var outputTables = {
                 "hp": 426,
                 "skill_name": "巫山云雨",
                 "skill_id": 8,
-                "effetc_type": 1,
                 "description": "巫山朝云暮雨的天气很适合野合么？什么大家都跑我这儿来？"
             },
             "174": {
@@ -3345,7 +3234,6 @@ var outputTables = {
                 "hp": 587,
                 "skill_name": "巫山云雨",
                 "skill_id": 8,
-                "effetc_type": 2,
                 "description": "我鄙视那些YY我的文章，再经典也是对我的伤害。"
             },
             "175": {
@@ -3358,7 +3246,6 @@ var outputTables = {
                 "hp": 934,
                 "skill_name": "巫山云雨",
                 "skill_id": 8,
-                "effetc_type": 1,
                 "description": "曾经沧海难为水，除却巫山不是云。"
             },
             "176": {
@@ -3391,7 +3278,6 @@ var outputTables = {
                 "hp": 430,
                 "skill_name": "碧波滔天",
                 "skill_id": 3,
-                "effetc_type": 1,
                 "description": "不喜欢就是不喜欢，龙王太子又如何！"
             },
             "179": {
@@ -3404,7 +3290,6 @@ var outputTables = {
                 "hp": 585,
                 "skill_name": "碧波滔天",
                 "skill_id": 3,
-                "effetc_type": 2,
                 "description": "再逼我就跳海，死了我也不放过你！"
             },
             "180": {
@@ -3417,7 +3302,6 @@ var outputTables = {
                 "hp": 931,
                 "skill_name": "碧波滔天",
                 "skill_id": 3,
-                "effetc_type": 1,
                 "description": "我知道海不可能被填平，我只是想告诉后面的姐妹他是个什么样的男人。"
             },
             "181": {
@@ -3450,7 +3334,6 @@ var outputTables = {
                 "hp": 431,
                 "skill_name": "大地之怒",
                 "skill_id": 5,
-                "effetc_type": 1,
                 "description": "快使用星将术，哼哼哈嘿，快爆发小宇宙，伊莫拉沙！"
             },
             "184": {
@@ -3463,7 +3346,6 @@ var outputTables = {
                 "hp": 588,
                 "skill_name": "大地之怒",
                 "skill_id": 5,
-                "effetc_type": 2,
                 "description": "田径运动员比赛前都会拜拜我，我是他们这行的祖师爷。"
             },
             "185": {
@@ -3476,7 +3358,6 @@ var outputTables = {
                 "hp": 934,
                 "skill_name": "大地之怒",
                 "skill_id": 5,
-                "effetc_type": 1,
                 "description": "别问我为什么要追日，除非你不抗日！"
             },
             "186": {
@@ -3509,7 +3390,6 @@ var outputTables = {
                 "hp": 428,
                 "skill_name": "穿云箭",
                 "skill_id": 4,
-                "effetc_type": 1,
                 "description": "当我第一次见到宓妃时，她在弹一把七弦琴，后来她有一个好听的名字：洛神。"
             },
             "189": {
@@ -3522,7 +3402,6 @@ var outputTables = {
                 "hp": 565,
                 "skill_name": "穿云箭",
                 "skill_id": 4,
-                "effetc_type": 2,
                 "description": "唯有射下那九个太阳，才能压下我内心的怒火。"
             },
             "190": {
@@ -3535,7 +3414,6 @@ var outputTables = {
                 "hp": 939,
                 "skill_name": "穿云箭",
                 "skill_id": 4,
-                "effetc_type": 1,
                 "description": "有人在我坟前的桃树下唱歌：我在这儿等着你回来……"
             },
             "191": {
@@ -3568,7 +3446,6 @@ var outputTables = {
                 "hp": 385,
                 "skill_name": "天音玄",
                 "skill_id": 10,
-                "effetc_type": 1,
                 "description": "天杀的王母，跟我演甄嬛传，让我天天在月宫捣药！"
             },
             "194": {
@@ -3581,7 +3458,6 @@ var outputTables = {
                 "hp": 546,
                 "skill_name": "天音玄",
                 "skill_id": 10,
-                "effetc_type": 2,
                 "description": "命运让我离开了后羿，却又给我送来了吴刚，我只能呵呵。"
             },
             "195": {
@@ -3594,7 +3470,6 @@ var outputTables = {
                 "hp": 852,
                 "skill_name": "天音玄",
                 "skill_id": 10,
-                "effetc_type": 1,
                 "description": "想我的时候，打一盘Luna地图或是看看钱包。"
             },
             "196": {
@@ -3627,7 +3502,6 @@ var outputTables = {
                 "hp": 383,
                 "skill_name": "天杀",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "出来混的就是要讲义气嘛，打个架婆婆妈妈的最不爽了。"
             },
             "199": {
@@ -3640,7 +3514,6 @@ var outputTables = {
                 "hp": 542,
                 "skill_name": "天杀",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "虽千万人吾往矣，这才是亮剑精神！"
             },
             "200": {
@@ -3653,7 +3526,6 @@ var outputTables = {
                 "hp": 848,
                 "skill_name": "天杀",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "自从没了脑袋，打架灵活多了，也不用护头护脑了。"
             },
             "201": {
@@ -3686,7 +3558,6 @@ var outputTables = {
                 "hp": 386,
                 "skill_name": "开山裂地",
                 "skill_id": 6,
-                "effetc_type": 1,
                 "description": "你能救母，我也能救母，我是沉香，我为我自己代言。"
             },
             "204": {
@@ -3699,7 +3570,6 @@ var outputTables = {
                 "hp": 547,
                 "skill_name": "开山裂地",
                 "skill_id": 6,
-                "effetc_type": 2,
                 "description": "别人走路我爬山，别人劈柴我劈山。"
             },
             "205": {
@@ -3712,7 +3582,6 @@ var outputTables = {
                 "hp": 851,
                 "skill_name": "开山裂地",
                 "skill_id": 6,
-                "effetc_type": 1,
                 "description": "每次点上这个灯，都会发出悦耳的音乐：等灯等灯。"
             },
             "206": {
@@ -3745,7 +3614,6 @@ var outputTables = {
                 "hp": 381,
                 "skill_name": "舍生取义",
                 "skill_id": 8,
-                "effetc_type": 1,
                 "description": "别以为喝酒吃肉就能修成正果，你看鲁智深就知道了。"
             },
             "209": {
@@ -3758,7 +3626,6 @@ var outputTables = {
                 "hp": 540,
                 "skill_name": "舍生取义",
                 "skill_id": 8,
-                "effetc_type": 2,
                 "description": "左右两边是十八罗汉，降龙伏虎在这一边，至于求子就要拜观音大士。"
             },
             "210": {
@@ -3771,7 +3638,6 @@ var outputTables = {
                 "hp": 847,
                 "skill_name": "舍生取义",
                 "skill_id": 8,
-                "effetc_type": 1,
                 "description": "我想代表天宫向凡间宣扬爱心，让他们明白只要有爱，哪里都是天堂。"
             },
             "211": {
@@ -3804,7 +3670,6 @@ var outputTables = {
                 "hp": 382,
                 "skill_name": "水乳之欢",
                 "skill_id": 2,
-                "effetc_type": 1,
                 "description": "第一次见到他的时候，我就记住了他的名字：后羿。"
             },
             "214": {
@@ -3817,8 +3682,7 @@ var outputTables = {
                 "hp": 545,
                 "skill_name": "水乳之欢",
                 "skill_id": 2,
-                "effetc_type": 2,
-                "description": "既然无法陪绑左右，不如化为这护城的洛水守护你。"
+                "description": "既然无法陪伴左右，不如化为这护城的洛水守护你。"
             },
             "215": {
                 "id": 215,
@@ -3830,7 +3694,6 @@ var outputTables = {
                 "hp": 849,
                 "skill_name": "水乳之欢",
                 "skill_id": 2,
-                "effetc_type": 1,
                 "description": "仿佛兮若轻云之蔽月，飘飘兮若流风之回雪。"
             },
             "216": {
@@ -3863,7 +3726,6 @@ var outputTables = {
                 "hp": 380,
                 "skill_name": "无米之炊",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "考验徒弟说到底就是洗脑，能洗的就教，不能洗的咱就说考验没通过。"
             },
             "219": {
@@ -3876,7 +3738,6 @@ var outputTables = {
                 "hp": 550,
                 "skill_name": "无米之炊",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "想入会？交五斗米。慢着，这是报名费，交学费后面排队去。"
             },
             "220": {
@@ -3889,7 +3750,6 @@ var outputTables = {
                 "hp": 845,
                 "skill_name": "无米之炊",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "我是五斗米教扛把子，你知道什么叫不准勾引二嫂么？"
             },
             "221": {
@@ -3922,7 +3782,6 @@ var outputTables = {
                 "hp": 388,
                 "skill_name": "五世修罗",
                 "skill_id": 6,
-                "effetc_type": 1,
                 "description": "这拳打出来之前，得先做一次全身运动，比较费时间。"
             },
             "224": {
@@ -3935,7 +3794,6 @@ var outputTables = {
                 "hp": 545,
                 "skill_name": "五世修罗",
                 "skill_id": 6,
-                "effetc_type": 2,
                 "description": "这战甲酷毙了！就是穿着太占地方，容易卡门，脱了也不能缩小存放。"
             },
             "225": {
@@ -3948,7 +3806,6 @@ var outputTables = {
                 "hp": 851,
                 "skill_name": "五世修罗",
                 "skill_id": 6,
-                "effetc_type": 1,
                 "description": "有创造神就会有破坏神，还会有调和神，我们都只是棋子。"
             },
             "226": {
@@ -3981,7 +3838,6 @@ var outputTables = {
                 "hp": 384,
                 "skill_name": "罗汉印",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "我吹的是血，不是雪。"
             },
             "229": {
@@ -3994,7 +3850,6 @@ var outputTables = {
                 "hp": 541,
                 "skill_name": "罗汉印",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "就像飞蛾扑火，明知不可能，还是要义无反顾的燃烧自己。"
             },
             "230": {
@@ -4007,7 +3862,6 @@ var outputTables = {
                 "hp": 849,
                 "skill_name": "罗汉印",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "每个人都有一个大鸟梦，而我的是众鸟之王。"
             },
             "231": {
@@ -4040,7 +3894,6 @@ var outputTables = {
                 "hp": 386,
                 "skill_name": "八部众",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "如果非要做一个选择，就让我死在乔伽的手下吧。"
             },
             "234": {
@@ -4053,7 +3906,6 @@ var outputTables = {
                 "hp": 555,
                 "skill_name": "八部众",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "屈服黑暗是他的宿命，执迷不悟是我的宿命。"
             },
             "235": {
@@ -4066,7 +3918,6 @@ var outputTables = {
                 "hp": 841,
                 "skill_name": "八部众",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "既然无法在一起，那就把我的武器叫做无双环吧。"
             },
             "236": {
@@ -4099,7 +3950,6 @@ var outputTables = {
                 "hp": 420,
                 "skill_name": "三只眼",
                 "skill_id": 4,
-                "effetc_type": 1,
                 "description": "在小庙里当神仙没什么不好，大庙里的神仙很大，心眼却很小。"
             },
             "239": {
@@ -4112,7 +3962,6 @@ var outputTables = {
                 "hp": 595,
                 "skill_name": "三只眼",
                 "skill_id": 4,
-                "effetc_type": 2,
                 "description": "英雄惜英雄只是电影里的桥段，你挑衅我的狗我就跟你拼命！"
             },
             "240": {
@@ -4125,7 +3974,6 @@ var outputTables = {
                 "hp": 920,
                 "skill_name": "三只眼",
                 "skill_id": 4,
-                "effetc_type": 1,
                 "description": "很多年之后，我有个绰号叫“二郎神”，其实我不二。"
             },
             "241": {
@@ -4158,7 +4006,6 @@ var outputTables = {
                 "hp": 591,
                 "skill_name": "龙骨枪",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "我家有一把乾坤弓，拿来咱们一起去打麻雀吧！"
             },
             "244": {
@@ -4171,7 +4018,6 @@ var outputTables = {
                 "hp": 597,
                 "skill_name": "龙骨枪",
                 "skill_id": 1,
-                "effetc_type": 2,
                 "description": "公海里的海鲜是不是谁都可以捕捞？我想捉条龙。"
             },
             "245": {
@@ -4184,7 +4030,6 @@ var outputTables = {
                 "hp": 915,
                 "skill_name": "龙骨枪",
                 "skill_id": 1,
-                "effetc_type": 1,
                 "description": "那年开始，我忘记了很多事情，师父说，那就好。"
             },
             "246": {
@@ -4217,7 +4062,6 @@ var outputTables = {
                 "hp": 597,
                 "skill_name": "月光宝盒",
                 "skill_id": 10,
-                "effetc_type": 1,
                 "description": "拔出宝剑就能娶我，你还不明白我那颗恨嫁的心么？"
             },
             "249": {
@@ -4230,7 +4074,6 @@ var outputTables = {
                 "hp": 593,
                 "skill_name": "月光宝盒",
                 "skill_id": 10,
-                "effetc_type": 2,
                 "description": "回到过去我可以当什么都没发生，虽然不能拥有，但我可以不去忘记。"
             },
             "250": {
@@ -4243,7 +4086,6 @@ var outputTables = {
                 "hp": 920,
                 "skill_name": "月光宝盒",
                 "skill_id": 10,
-                "effetc_type": 1,
                 "description": "意中人你驾着七色云彩慢慢飞，小心前面带刺的玫瑰。"
             },
             "10000": {
@@ -4255,7 +4097,7 @@ var outputTables = {
                 "atk": 59,
                 "hp": 120,
                 "url": 1,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10001": {
                 "id": 10001,
@@ -4266,7 +4108,7 @@ var outputTables = {
                 "atk": 100,
                 "hp": 195,
                 "url": 2,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10002": {
                 "id": 10002,
@@ -4277,7 +4119,7 @@ var outputTables = {
                 "atk": 45,
                 "hp": 140,
                 "url": 3,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10003": {
                 "id": 10003,
@@ -4288,7 +4130,7 @@ var outputTables = {
                 "atk": 79,
                 "hp": 221,
                 "url": 4,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10004": {
                 "id": 10004,
@@ -4299,7 +4141,7 @@ var outputTables = {
                 "atk": 51,
                 "hp": 129,
                 "url": 5,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10005": {
                 "id": 10005,
@@ -4310,7 +4152,7 @@ var outputTables = {
                 "atk": 82,
                 "hp": 208,
                 "url": 6,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10006": {
                 "id": 10006,
@@ -4321,7 +4163,7 @@ var outputTables = {
                 "atk": 47,
                 "hp": 131,
                 "url": 1,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10007": {
                 "id": 10007,
@@ -4332,7 +4174,7 @@ var outputTables = {
                 "atk": 75,
                 "hp": 211,
                 "url": 2,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10008": {
                 "id": 10008,
@@ -4343,7 +4185,7 @@ var outputTables = {
                 "atk": 53,
                 "hp": 121,
                 "url": 3,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10009": {
                 "id": 10009,
@@ -4354,7 +4196,7 @@ var outputTables = {
                 "atk": 82,
                 "hp": 195,
                 "url": 4,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10010": {
                 "id": 10010,
@@ -4365,7 +4207,7 @@ var outputTables = {
                 "atk": 61,
                 "hp": 115,
                 "url": 5,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10011": {
                 "id": 10011,
@@ -4376,7 +4218,7 @@ var outputTables = {
                 "atk": 95,
                 "hp": 186,
                 "url": 6,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10012": {
                 "id": 10012,
@@ -4387,7 +4229,7 @@ var outputTables = {
                 "atk": 51,
                 "hp": 130,
                 "url": 1,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10013": {
                 "id": 10013,
@@ -4398,7 +4240,7 @@ var outputTables = {
                 "atk": 82,
                 "hp": 220,
                 "url": 2,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10014": {
                 "id": 10014,
@@ -4409,7 +4251,7 @@ var outputTables = {
                 "atk": 56,
                 "hp": 134,
                 "url": 3,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10015": {
                 "id": 10015,
@@ -4420,7 +4262,7 @@ var outputTables = {
                 "atk": 86,
                 "hp": 226,
                 "url": 4,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10016": {
                 "id": 10016,
@@ -4431,7 +4273,7 @@ var outputTables = {
                 "atk": 53,
                 "hp": 139,
                 "url": 5,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10017": {
                 "id": 10017,
@@ -4442,7 +4284,7 @@ var outputTables = {
                 "atk": 86,
                 "hp": 223,
                 "url": 6,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10018": {
                 "id": 10018,
@@ -4453,7 +4295,7 @@ var outputTables = {
                 "atk": 53,
                 "hp": 140,
                 "url": 1,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10019": {
                 "id": 10019,
@@ -4464,7 +4306,7 @@ var outputTables = {
                 "atk": 86,
                 "hp": 227,
                 "url": 2,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10020": {
                 "id": 10020,
@@ -4475,7 +4317,7 @@ var outputTables = {
                 "atk": 55,
                 "hp": 120,
                 "url": 3,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10021": {
                 "id": 10021,
@@ -4486,7 +4328,7 @@ var outputTables = {
                 "atk": 85,
                 "hp": 195,
                 "url": 4,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10022": {
                 "id": 10022,
@@ -4497,7 +4339,7 @@ var outputTables = {
                 "atk": 54,
                 "hp": 125,
                 "url": 5,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10023": {
                 "id": 10023,
@@ -4508,7 +4350,7 @@ var outputTables = {
                 "atk": 88,
                 "hp": 190,
                 "url": 6,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10024": {
                 "id": 10024,
@@ -4519,7 +4361,7 @@ var outputTables = {
                 "atk": 58,
                 "hp": 120,
                 "url": 1,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10025": {
                 "id": 10025,
@@ -4530,7 +4372,7 @@ var outputTables = {
                 "atk": 87,
                 "hp": 192,
                 "url": 2,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10026": {
                 "id": 10026,
@@ -4541,7 +4383,7 @@ var outputTables = {
                 "atk": 51,
                 "hp": 130,
                 "url": 3,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10027": {
                 "id": 10027,
@@ -4552,7 +4394,7 @@ var outputTables = {
                 "atk": 81,
                 "hp": 221,
                 "url": 4,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10028": {
                 "id": 10028,
@@ -4563,7 +4405,7 @@ var outputTables = {
                 "atk": 53,
                 "hp": 126,
                 "url": 5,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10029": {
                 "id": 10029,
@@ -4574,7 +4416,7 @@ var outputTables = {
                 "atk": 83,
                 "hp": 224,
                 "url": 6,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10030": {
                 "id": 10030,
@@ -4585,7 +4427,7 @@ var outputTables = {
                 "atk": 55,
                 "hp": 121,
                 "url": 1,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10031": {
                 "id": 10031,
@@ -4596,7 +4438,7 @@ var outputTables = {
                 "atk": 85,
                 "hp": 228,
                 "url": 2,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10032": {
                 "id": 10032,
@@ -4607,7 +4449,7 @@ var outputTables = {
                 "atk": 56,
                 "hp": 129,
                 "url": 3,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10033": {
                 "id": 10033,
@@ -4618,7 +4460,7 @@ var outputTables = {
                 "atk": 88,
                 "hp": 226,
                 "url": 4,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10034": {
                 "id": 10034,
@@ -4629,7 +4471,7 @@ var outputTables = {
                 "atk": 58,
                 "hp": 122,
                 "url": 5,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10035": {
                 "id": 10035,
@@ -4640,7 +4482,7 @@ var outputTables = {
                 "atk": 88,
                 "hp": 222,
                 "url": 6,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10036": {
                 "id": 10036,
@@ -4651,7 +4493,7 @@ var outputTables = {
                 "atk": 53,
                 "hp": 126,
                 "url": 1,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10037": {
                 "id": 10037,
@@ -4662,7 +4504,7 @@ var outputTables = {
                 "atk": 83,
                 "hp": 224,
                 "url": 2,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10038": {
                 "id": 10038,
@@ -4673,7 +4515,7 @@ var outputTables = {
                 "atk": 60,
                 "hp": 120,
                 "url": 3,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10039": {
                 "id": 10039,
@@ -4684,7 +4526,7 @@ var outputTables = {
                 "atk": 100,
                 "hp": 190,
                 "url": 4,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10040": {
                 "id": 10040,
@@ -4695,7 +4537,7 @@ var outputTables = {
                 "atk": 51,
                 "hp": 140,
                 "url": 5,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10041": {
                 "id": 10041,
@@ -4706,7 +4548,7 @@ var outputTables = {
                 "atk": 82,
                 "hp": 230,
                 "url": 6,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10042": {
                 "id": 10042,
@@ -4717,7 +4559,7 @@ var outputTables = {
                 "atk": 52,
                 "hp": 141,
                 "url": 1,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10043": {
                 "id": 10043,
@@ -4728,7 +4570,7 @@ var outputTables = {
                 "atk": 82,
                 "hp": 232,
                 "url": 2,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10044": {
                 "id": 10044,
@@ -4739,7 +4581,7 @@ var outputTables = {
                 "atk": 55,
                 "hp": 144,
                 "url": 3,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10045": {
                 "id": 10045,
@@ -4750,7 +4592,7 @@ var outputTables = {
                 "atk": 85,
                 "hp": 231,
                 "url": 4,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10046": {
                 "id": 10046,
@@ -4761,7 +4603,7 @@ var outputTables = {
                 "atk": 48,
                 "hp": 145,
                 "url": 5,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10047": {
                 "id": 10047,
@@ -4772,7 +4614,7 @@ var outputTables = {
                 "atk": 75,
                 "hp": 230,
                 "url": 6,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10048": {
                 "id": 10048,
@@ -4783,7 +4625,7 @@ var outputTables = {
                 "atk": 46,
                 "hp": 146,
                 "url": 1,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10049": {
                 "id": 10049,
@@ -4794,7 +4636,7 @@ var outputTables = {
                 "atk": 76,
                 "hp": 231,
                 "url": 2,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "10050": {
                 "id": 10050,
@@ -4805,7 +4647,7 @@ var outputTables = {
                 "atk": 76,
                 "hp": 231,
                 "url": 2,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20000": {
                 "id": 20000,
@@ -4816,7 +4658,7 @@ var outputTables = {
                 "atk": 246,
                 "hp": 739,
                 "url": 5,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20001": {
                 "id": 20001,
@@ -4827,7 +4669,7 @@ var outputTables = {
                 "atk": 246,
                 "hp": 739,
                 "url": 6,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20002": {
                 "id": 20002,
@@ -4838,7 +4680,7 @@ var outputTables = {
                 "atk": 386,
                 "hp": 1157,
                 "url": 1,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20003": {
                 "id": 20003,
@@ -4849,7 +4691,7 @@ var outputTables = {
                 "atk": 590,
                 "hp": 1770,
                 "url": 2,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20004": {
                 "id": 20004,
@@ -4860,7 +4702,7 @@ var outputTables = {
                 "atk": 881,
                 "hp": 2644,
                 "url": 3,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20005": {
                 "id": 20005,
@@ -4871,7 +4713,7 @@ var outputTables = {
                 "atk": 1286,
                 "hp": 3857,
                 "url": 4,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20006": {
                 "id": 20006,
@@ -4882,7 +4724,7 @@ var outputTables = {
                 "atk": 1952,
                 "hp": 5856,
                 "url": 5,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20007": {
                 "id": 20007,
@@ -4893,7 +4735,7 @@ var outputTables = {
                 "atk": 2703,
                 "hp": 8108,
                 "url": 6,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20008": {
                 "id": 20008,
@@ -4904,7 +4746,7 @@ var outputTables = {
                 "atk": 3653,
                 "hp": 10959,
                 "url": 1,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20009": {
                 "id": 20009,
@@ -4915,7 +4757,7 @@ var outputTables = {
                 "atk": 4586,
                 "hp": 13759,
                 "url": 2,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20010": {
                 "id": 20010,
@@ -4926,7 +4768,7 @@ var outputTables = {
                 "atk": 5664,
                 "hp": 14727,
                 "url": 3,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20011": {
                 "id": 20011,
@@ -4937,7 +4779,7 @@ var outputTables = {
                 "atk": 7160,
                 "hp": 18617,
                 "url": 4,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20012": {
                 "id": 20012,
@@ -4948,7 +4790,7 @@ var outputTables = {
                 "atk": 8913,
                 "hp": 23173,
                 "url": 5,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20013": {
                 "id": 20013,
@@ -4959,7 +4801,7 @@ var outputTables = {
                 "atk": 10922,
                 "hp": 28397,
                 "url": 6,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20014": {
                 "id": 20014,
@@ -4970,7 +4812,7 @@ var outputTables = {
                 "atk": 13177,
                 "hp": 34261,
                 "url": 1,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20015": {
                 "id": 20015,
@@ -4981,7 +4823,7 @@ var outputTables = {
                 "atk": 15078,
                 "hp": 39203,
                 "url": 2,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20016": {
                 "id": 20016,
@@ -4992,7 +4834,7 @@ var outputTables = {
                 "atk": 17322,
                 "hp": 43304,
                 "url": 3,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20017": {
                 "id": 20017,
@@ -5003,7 +4845,7 @@ var outputTables = {
                 "atk": 20154,
                 "hp": 50385,
                 "url": 4,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20018": {
                 "id": 20018,
@@ -5014,7 +4856,7 @@ var outputTables = {
                 "atk": 22305,
                 "hp": 55763,
                 "url": 5,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20019": {
                 "id": 20019,
@@ -5025,7 +4867,7 @@ var outputTables = {
                 "atk": 25569,
                 "hp": 63922,
                 "url": 6,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             },
             "20020": {
                 "id": 20020,
@@ -5036,7 +4878,7 @@ var outputTables = {
                 "atk": 29049,
                 "hp": 72624,
                 "url": 6,
-                "descrption": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。"
             }
         }
     },
@@ -6451,7 +6293,14 @@ var outputTables = {
         }
     },
     "task_card": {
-        "colComment": {},
+        "colComment": {
+            "card_id": {
+                "table": "怪物卡牌配置表",
+                "key_index": "name",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
         "rows": {
             "10000": {
                 "id": 10000,
@@ -7102,7 +6951,14 @@ var outputTables = {
         }
     },
     "task_config": {
-        "colComment": {},
+        "colComment": {
+            "chapter_id": {
+                "table": "大章表",
+                "key_index": "chapter",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
         "rows": {
             "1": {
                 "id": 1,
@@ -8217,7 +8073,14 @@ var outputTables = {
         }
     },
     "task": {
-        "colComment": {},
+        "colComment": {
+            "chapter_id": {
+                "table": "大章表",
+                "key_index": "chapter",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
         "rows": {
             "1": {
                 "id": 1,
@@ -8228,7 +8091,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 5,
                 "coins_obtain": 50,
-                "description": "一声长叹，后裔的心中充满了愤懑。自从嫦娥撇下他独自奔月之后，他一直都买不起一套像样的房，现在依旧住茅屋，而且还是小产权。"
+                "description": "一声长叹，后裔的心中充满了愤懑。自从嫦娥撇下他独自奔月之后，他一直都买不起套像样的房，现在依旧住茅屋，而且还是小产权。"
             },
             "2": {
                 "id": 2,
@@ -8316,7 +8179,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 5,
                 "coins_obtain": 50,
-                "description": "跟随牛郎多年的那头牛，可以产奶。"
+                "description": "跟随牛郎多年的那头牛，是头公牛，不过可以产奶。"
             },
             "10": {
                 "id": 10,
@@ -8404,7 +8267,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 5,
                 "coins_obtain": 50,
-                "description": "仙界每年都会举行一次峰会，讨论关于修仙之道相关事宜。会议由西天如来发起，耶稣如果有空的话，他一般也是会来参加的。"
+                "description": "仙界每年都会举行一次峰会，讨论关于修仙之道相关事宜。会议由西天如来发起，耶稣如果有空的话，他也会来参加的。"
             },
             "18": {
                 "id": 18,
@@ -8679,7 +8542,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 21,
                 "coins_obtain": 70,
-                "description": "盘古当年开天辟地的时候，他用了三年六个月十五天八小时二十五分三十六秒。我们可以想象，盘古爷劈的有多么辛苦，玉帝说。"
+                "description": "盘古当年开天辟地的时候，他用了三年六个月十五天八小时二十五分三十六秒。我们可以想象，盘古爷劈的有多么辛苦。"
             },
             "43": {
                 "id": 43,
@@ -8976,7 +8839,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 32,
                 "coins_obtain": 80,
-                "description": "阎罗王最大的癖好，就是吃刚刚来到阴间的灵魂，尤其是青壮年男女的灵魂，一大半都被他吃掉了。天上地下，这家伙大概是最黑的了。"
+                "description": "阎罗王最大的癖好，就是吃刚刚来到阴间的灵魂，尤其是青壮年男女的灵魂，一大半都被他吃掉了。天上地下，这家伙大概是最狠的了。"
             },
             "70": {
                 "id": 70,
@@ -9086,7 +8949,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 50,
                 "coins_obtain": 100,
-                "description": "三藏西天取经遇到了很多妖怪，但唯一一个并不是真正想吃他的只有狐狸精，因为狐狸姐姐相信真爱，渴望真爱，愿意拥抱真爱。"
+                "description": "三藏西天取经遇到了很多妖怪，但唯一一个并不是真正想吃他的只有狐狸精，因为狐狸姐姐相信真爱，渴望真爱，拥抱真爱。"
             },
             "80": {
                 "id": 80,
@@ -9801,7 +9664,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 95,
                 "coins_obtain": 190,
-                "description": "红孩儿的三昧真火是他的成名绝技。不过虽然练就了这法术，不过他的脑子也被烧坏了，所以他脑子有问题。"
+                "description": "红孩儿的三味真火是他的成名绝技。不过虽然练就了这法术，不过他的脑子也被烧坏了，所以他脑子有问题。"
             },
             "145": {
                 "id": 145,
@@ -10054,7 +9917,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 105,
                 "coins_obtain": 210,
-                "description": "月老老了，他真的老了，最近经常在搭线的时候手一哆嗦就搞错了。这导致人间许多男子在洞房完了之后才发现这女的不是自己媳妇。"
+                "description": "月老老了，他真的老了，最近经常在搭线的时候手一哆嗦就搞错了。这导致人间许多男子在洞房完了之后才发现女的不是自己媳妇。"
             },
             "168": {
                 "id": 168,
@@ -10406,7 +10269,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 120,
                 "coins_obtain": 240,
-                "description": "神仙中对于男欢女爱之事最上瘾的大概莫过于巫山神女了，基本上只要有机会她就会巫山云雨一把。不过搞过都说她活儿很不错。"
+                "description": "神仙中对于男欢女爱之事最上瘾的大概莫过于巫山神女了，基本上只要有机会她就会巫山云雨一把。不过搞过的都说她活儿很不错。"
             },
             "200": {
                 "id": 200,
@@ -10439,7 +10302,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 125,
                 "coins_obtain": 250,
-                "description": "人间空气污染指数的上升，直接影响了仙界的空气质量，南天门最近空气的PM指数已经达到了八百多，污染程度与人间紫禁城相近。"
+                "description": "人间空气污染指数的上升，直接影响了仙界的空气质量，南天门最近空气的PM指数已经达到了800多，污染程度与人间紫禁城相近。"
             },
             "203": {
                 "id": 203,
@@ -10593,7 +10456,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 130,
                 "coins_obtain": 260,
-                "description": "最近仙界房地产市场泡沫越来越大，玉帝指示各部门，没事的时候大家研究一下，保障终神仙的基本生活品质还是有一点意义的。"
+                "description": "最近仙界房地产市场泡沫越来越大，玉帝指示各部门，没事的时候大家研究一下，保障众神仙的基本生活品质还是有一点意义的。"
             },
             "217": {
                 "id": 217,
@@ -10637,7 +10500,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 130,
                 "coins_obtain": 260,
-                "description": "吴刚打算这几天向玉帝申请下凡一趟，看看他的兄弟后裔。老这么让他搁这守着，孤男寡女的，也不是那么个事。"
+                "description": "吴刚打算这几天向玉帝申请下凡一趟，看看他的兄弟后裔。老这么让他守着，孤男寡女的，也不是那么个事。"
             },
             "221": {
                 "id": 221,
@@ -10835,7 +10698,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 140,
                 "coins_obtain": 280,
-                "description": "作为仙界最具艺术才华的仙子，文曲星最近创作了一首叫做《草！你们都去死吧！》的诗词，该诗以感情强烈而迅速风靡仙界。"
+                "description": "作为仙界最具艺术才华的仙子，文曲星最近创作了一首叫做《你们都去死吧！》的诗词，该诗以感情强烈而迅速风靡仙界。"
             },
             "239": {
                 "id": 239,
@@ -11055,7 +10918,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 150,
                 "coins_obtain": 300,
-                "description": "为了防止走光，众仙女在腾云驾雾的时候很少穿那种刻意飘的起来的迷你裙，一律改穿紧身牛仔短裤了。"
+                "description": "为了防止走光，众仙女在腾云驾雾的时候很少穿那种刻意飘的起来的迷你裙，一律改穿紧身包臀牛仔短裤了。"
             },
             "259": {
                 "id": 259,
@@ -11297,7 +11160,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 160,
                 "coins_obtain": 320,
-                "description": "唐僧从来不吃肉，他最喜欢吃木耳。"
+                "description": "唐僧从来不吃肉，他最喜欢吃黑木耳。"
             },
             "281": {
                 "id": 281,
@@ -11902,7 +11765,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 190,
                 "coins_obtain": 380,
-                "description": "喜马拉雅之神最近打算搬家了，因为喜马拉山每年都在变暖，每年都在变矮，他无法忍受这一状况，但却有无可奈何。"
+                "description": "喜马拉雅之神最近打算搬家了，因为喜马拉山每年都在变暖，每年都在变矮，他无法忍受这一状况，但却又无可奈何。"
             },
             "336": {
                 "id": 336,
@@ -12232,7 +12095,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 205,
                 "coins_obtain": 410,
-                "description": "托塔李天王的那座塔，其实是用东海三太子的匹和筋做成的。"
+                "description": "托塔李天王的那座塔，其实是用东海三太子的皮和筋做成的。"
             },
             "366": {
                 "id": 366,
@@ -12551,7 +12414,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 220,
                 "coins_obtain": 440,
-                "description": "九头鸟因为最近屡犯天规，被处以看头刑罚，最近被砍的只剩下一颗脑袋了。"
+                "description": "九头鸟因为最近屡犯天规，被处以砍头刑罚，最近被砍的只剩下一颗脑袋了。"
             },
             "395": {
                 "id": 395,
@@ -12584,7 +12447,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 220,
                 "coins_obtain": 440,
-                "description": "北海龙王很清楚，美人鱼其实不是上半身人下半身鱼，而是上半身鱼下半身鱼。"
+                "description": "北海龙王很清楚，美人鱼其实不是上半身人下半身鱼，而是上半身鱼下半身人。"
             },
             "398": {
                 "id": 398,
@@ -12628,7 +12491,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 225,
                 "coins_obtain": 450,
-                "description": "北斗七星君最近打算和七仙女结对子，不过这遭到了王母的反对，她意思是，这事儿啊，动静太大了，影响不太好。"
+                "description": "北斗七星君最近打算和七仙女结对子，不过这遭到了王母的反对，她意思是，这事儿啊，动静太大了啊，影响不太好啊。"
             },
             "402": {
                 "id": 402,
@@ -12650,7 +12513,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 225,
                 "coins_obtain": 450,
-                "description": "对于凡间里专家盛行的这个事，玉帝的观点是，应该把这事儿告诉阎王，让他地狱里尽快一次性解决。"
+                "description": "对于凡间里专家盛行的这个事，玉帝的观点是，应该把这事儿告诉阎王，让他在地狱里尽快一次性解决。"
             },
             "404": {
                 "id": 404,
@@ -12804,7 +12667,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 230,
                 "coins_obtain": 460,
-                "description": "因为长年久坐龙椅，玉帝经常大腿发麻，医仙说他这是腰间盘突出，脊椎压住神经了，需要走手术动刀子才行。"
+                "description": "因为长年久坐龙椅，玉帝经常大腿发麻，医仙说他这是腰间盘突出，脊椎压住神经了，需要做手术动刀子才行。"
             },
             "418": {
                 "id": 418,
@@ -12815,7 +12678,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 230,
                 "coins_obtain": 460,
-                "description": "肺主气，肾主骨，由于憋了数百年了，能量过大。所以人间的后裔近日腰疼的厉害，医生说悠着点兄弟，别太猛了，肾都快被你搞烂了。"
+                "description": "肺主气，肾主骨，由于憋了数百年了，能量过大。所以人间的后裔近日腰疼的厉害，医生说悠着点兄弟，别太猛了，肾快被你搞烂了。"
             },
             "419": {
                 "id": 419,
@@ -13046,7 +12909,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 240,
                 "coins_obtain": 480,
-                "description": "有人说沉香当年劈山救母的斧头，就是盘古爷当年开天辟地的那把。其实这传言是真的。"
+                "description": "有人说沉香当年劈山救母的斧头，就是盘古爷当年开天辟地的那把。这是真的。"
             },
             "440": {
                 "id": 440,
@@ -13167,7 +13030,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 245,
                 "coins_obtain": 490,
-                "description": "神仙中QQ号码最牛的是二郎神，他的QQ号是：888，可以说是QQ号中的元老号，而且开过光。不过最近被人盗了。"
+                "description": "神仙中QQ号码最牛的是二郎神，他的QQ号是：888，可以说是QQ号中的元老号，而且让如来佛开过光。不过最近被人盗了。"
             },
             "451": {
                 "id": 451,
@@ -13420,7 +13283,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 260,
                 "coins_obtain": 520,
-                "description": "为了更好的研究女性心理，吴刚与牛郎以及托塔李天王成立了一家专门的研究机构，名为“妇女之友”。"
+                "description": "为了更好的研究女性心理，吴刚与牛郎以及托塔李天王成立了一家专门的研究机构，名为“妇女之夜”。"
             },
             "474": {
                 "id": 474,
@@ -13541,7 +13404,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 265,
                 "coins_obtain": 530,
-                "description": "华山老仙在近日登山的时候不慎从山顶一直滚到山脚，造成了全身粉碎性骨折。玉帝看了后叹了口气说，还是让阎王收了吧。"
+                "description": "华山老仙在近日登山的时候不慎从山顶一直滚到山脚，造成了全身粉碎性骨折。玉帝看了后叹了口气说，让阎王收了吧。"
             },
             "485": {
                 "id": 485,

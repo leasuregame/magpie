@@ -104,20 +104,18 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._tipLabel = cc.Sprite.create(main_scene_image.icon114);
         this._tipLabel.setPosition(cc.p(360, 780));
         this.addChild(this._tipLabel);
-//        this._tipLabel.setVisible(false);
+        this._tipLabel.setVisible(false);
 
         var helpLabel = cc.Sprite.create(main_scene_image.icon113);
         helpLabel.setPosition(cc.p(360, 400));
         this.addChild(helpLabel);
 
-        this._freeCountLabel = cc.LabelTTF.create("0", "黑体", 30);
-        this._freeCountLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._freeCountLabel.setPosition(cc.p(400, 427));
+        this._freeCountLabel = cc.LabelTTF.create("0", "黑体", 25);
+        this._freeCountLabel.setPosition(cc.p(420, 427));
         this.addChild(this._freeCountLabel);
 
-        this._countLabel = cc.LabelTTF.create("0", "黑体", 30);
-        this._countLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._countLabel.setPosition(cc.p(400, 373));
+        this._countLabel = cc.LabelTTF.create("0", "黑体", 25);
+        this._countLabel.setPosition(cc.p(420, 373));
         this.addChild(this._countLabel);
 
         return true;
@@ -126,7 +124,14 @@ var TreasureHuntLayer = cc.Layer.extend({
     update: function () {
         cc.log("TreasureHuntLayer update");
 
+        var treasureHunt = gameData.treasureHunt;
 
+        var count = treasureHunt.get("count");
+        var freeCount = treasureHunt.get("freeCount");
+
+        this._countLabel.setString(count);
+        this._freeCountLabel.setString(freeCount);
+        this._tipLabel.setVisible(freeCount <= 0);
     },
 
     _getIconUrl: function (type) {
@@ -250,7 +255,16 @@ var TreasureHuntLayer = cc.Layer.extend({
     _onClickTreasureHunt: function () {
         cc.log("TreasureHuntLayer _onClickTreasureHunt");
 
-        this._playAnimation(this._getRandomIndex());
+        var that = this;
+        gameData.treasureHunt.treasureHunt(function (id) {
+            cc.log(id);
+
+            that.update();
+
+            if (id >= 0 && id <= 19) {
+                that._playAnimation(id);
+            }
+        })
     }
 });
 

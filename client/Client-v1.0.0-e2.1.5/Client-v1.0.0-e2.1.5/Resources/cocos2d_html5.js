@@ -66,11 +66,13 @@
             'src/model/pass.js',
             'src/model/rank.js',
             'src/model/lottery.js',
+            'src/model/treasureHunt.js',
             'src/model/cardLibrary.js',
             'src/model/message.js',
             'src/model/tournament.js',
             'src/model/spirit.js',
             'src/model/spiritPool.js',
+            'src/model/friend.js',
 
             'src/model/battleLogPool.js',
             'src/model/battleLog.js',

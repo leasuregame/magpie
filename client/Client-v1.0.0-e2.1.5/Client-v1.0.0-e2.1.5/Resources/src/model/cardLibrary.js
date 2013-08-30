@@ -43,6 +43,22 @@ var CardLibrary = Entity.extend({
                 })
             })
         }
+
+        this._cardLibrary.sort(this._sort);
+    },
+
+    _sort: function(a, b) {
+        var starA = a.card.get("star");
+        var starB = b.card.get("star");
+
+        var tableIdA = a.card.get("tableId");
+        var tableIdB = b.card.get("tableId");
+
+        if(starA != starB) {
+            return (starB - starA);
+        } else {
+            return tableIdA - tableIdB;
+        }
     }
 });
 

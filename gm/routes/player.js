@@ -15,7 +15,7 @@ var Url = require('url');
 
 var player = function(app) {
 
-     app.get('/player',checkLogin);
+   // app.get('/player',checkLogin);
 
     //玩家数据修改
     app.get('/player',function(req , res){
@@ -34,29 +34,32 @@ var player = function(app) {
 
     });
 
-    app.get('/playerData',checkLogin);
+   // app.get('/playerData',checkLogin);
 
     app.get('/playerData',function(req ,res){
 
+        console.log(req.url);
         var url = Url.parse(req.url,true);
         var query = url.query;
 
         var playerName = query['playerName'];
-        var areaId = query['areaId'];
+       // console.log(url);
+        var area = JSON.parse(query['area']);
+        //console.log(area);
 
-        var db = getDB(areaId);
+        var db = getDB(area["id"]);
         dbClient.init(db);
 
         var player = {
             where :{
                 name : playerName,
-                areaId : areaId
+                areaId : area.id
             }
         };
 
         playerDao.getPlayerInfo(player,function(err,Player){
             if(err) {
-                console.log(err);
+               // console.log(err);
                 req.flash('error','没有该玩家的信息');
                 return res.redirect('/player');
             }else {
@@ -65,6 +68,7 @@ var player = function(app) {
                     title : '玩家数据修改',
                     user : req.session.user,
                     player : Player,
+                    area : area,
                     success:req.flash('success').toString(),
                     error:req.flash('error').toString()
                 });
@@ -77,12 +81,14 @@ var player = function(app) {
 
         var url = Url.parse(req.url,true);
         var query = url.query;
-
+        //console.log(req.url);
         var player = JSON.parse(query['player']);
-        console.log((player["spiritor"]));
-        var data = req.body;
-        var time = Date.now();
+        var area = JSON.parse(query['area']);
+      //  console.log((player["spiritor"]));
+        var data = player;
 
+       // console.log(area.id);
+       /*
         data["power"] = {
             time : time,
             value : data["power"]
@@ -96,16 +102,16 @@ var player = function(app) {
 
         spiritPool = player["spiritPool"];
         data["spiritPool"] = {
-            lv:data.spiritPool[0],
+            lv:data.spiritPoolLv,
             exp:spiritPool["exp"] || 0,
-            collectCount:data.spiritPool[1]
+            collectCount:data.spiritPoolCount
         }
-
-        console.log(data);
+        */
+        //console.log(data);
         var options = {
             where :{
                 name : player["name"],
-                areaId : player["areaId"]
+                areaId : area.id
             },
             data:data
 
@@ -115,11 +121,14 @@ var player = function(app) {
         playerDao.update(options,function(err,isOK){
             if(err) {
                 console.log(err);
-                req.flash('error','修改数据失败');
-                res.redirect(req.url);
+                res.send('修改数据失败');
+               // req.flash('error','修改数据失败');
+              //  res.redirect(req.url);
             }else {
-                req.flash('success','修改数据成功');
-                res.redirect('/playerData?playerName=' + player["name"] + '&areaId=' + player["areaId"]);
+               // req.flash('success','修改数据成功');
+                //return res.msg = "修改数据成功";
+                //res.redirect('/playerData?playerName=' + player["name"] + '&area=' + JSON.stringify(area));
+                res.send("修改数据成功");
             }
 
         });

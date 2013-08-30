@@ -6,28 +6,16 @@
  * To change this template use File | Settings | File Templates.
  */
 
-//var dao = require('../../models/dao/mysql/cardDao');
 
 
 var cards = [];
+var playerId;
+var operate;
 
-function setCards(data) {
-    //console.log(data);
-    cards = data;
+var OperateConfig = {
+    ADD:0,
+    UPDATE:1
 
-    setCardsList();
-
-    $("#id").val(cards[0].id);
-    setCard(0);
-    updateButton(0);
-
-    $("#id").change(function(){
-        var id = hasCard($("#id").val()); //-1代表没有
-        setCard(id);
-        updateButton(id);
-    });
-
-   // $("#cardShow").hide();
 };
 
 var Cardconfig = {
@@ -38,23 +26,214 @@ var Cardconfig = {
     passSkills:[]
 };
 
+function setPlayerId(id) {
+    console.log(id);
+    playerId = id;
+}
+
+function setCards(data) {
+    cards = data;
+    setCardsList();//设置卡牌列表
+};
+
+$(document).ready(function(){
+
+    setCard(cards[0].id);//设置默认显示的卡牌
+
+    $("#btnAddCard").click(function(){
+        operate = OperateConfig.ADD;
+        setCard(-1);
+    });
+
+    $(".btnUpdateCard").click(function(){
+        operate = OperateConfig.UPDATE;
+        setCard(this.value);
+    });
+
+    $(".btnDelCard").click(function(){
+        submitDel(this.value);
+        delRow(this.value);
+    });
+
+    $("#btnOK").click(function(){
+        if(operate == OperateConfig.ADD)
+            submitAdd();
+        else if(operate == OperateConfig.UPDATE)
+            submitUpdate();
+    });
+
+    $("#btnReset").click(function(){
+        setCard($("#id").val());
+    });
+
+});
+
+function submitAdd() {
+    var data = getData();
+    var url = "/addCard?card=" + JSON.stringify(data);
+    $.ajax({
+        url:url,
+        type:"post",
+        success:function(msg){
+            console.log(msg);
+            for(var i = 0;i < cards.length;i++) {
+                if(cards[i].id == data.id) {
+                    cards[i] = data;
+                }
+            }
+            updateCardsList();
+        }
+    });
+}
+
+//提交更新
+function submitUpdate(){
+
+   // console.log(data);
+    var data = getData();
+    console.log(data);
+    var url = "/cardData?card=" + JSON.stringify(data);
+    $.ajax({
+        url:url,
+        type:"post",
+        success:function(msg){
+            console.log(msg);
+            for(var i = 0;i < cards.length;i++) {
+                if(cards[i].id == data.id) {
+                    cards[i] = data;
+                }
+            }
+            updateCardsList();
+        }
+    });
+};
+
+function submitDel(id){
+    var url = "/delCard?cardId=" + id;
+    $.ajax({
+        url:url,
+        type:"post",
+        success:function(msg){
+            console.log(msg);
+           /* for(var i = 0;i < cards.length;i++) {
+                if(cards[i].id == data.id) {
+                    cards[i] = data;
+                }
+            }*/
+          //  updateCardsList();
+        }
+    });
+};
+
+function getData() {
+    var data = {
+        lv:$("#lv").val(),
+        skillLv:$("#skillLv").val(),
+        elixir:$("#elixir").val(),
+        star:$("#starList").val(),
+        passSkills:[]
+
+    }
+
+    if($("#id").val() != "auto")
+       data.id = $("#id").val();
+
+    var id = 0;
+    if($("#skill1Name").val() != "") {
+        data.passSkills[id++] = {
+            id:$("#skill1").val(),
+            name:$("#skill1Name").val(),
+            value:$("#skill1Value").val()
+        }
+    }
+
+    if($("#skill2Name").val() != "") {
+        data.passSkills[id++] = {
+            id:$("#skill2").val(),
+            name:$("#skill2Name").val(),
+            value:$("#skill2Value").val()
+        }
+    }
+
+    if($("#skill3Name").val() != "") {
+        data.passSkills[id++] = {
+            id:$("#skill3").val(),
+            name:$("#skill3Name").val(),
+            value:$("#skill3Value").val()
+        }
+    }
+    return data;
+};
+
+//设置卡牌列表
+function setCardsList() {
+    var inner = "";
+    cards.forEach(function(card){
+        inner += "<tr id =" + card.id +"><td>" + card.id + "</td><td>" + card.lv + "</td><td>" + card.skillLv + "</td><td>" + card.elixir + "</td><td>" + card.star + "</td>";
+
+        for(var i = 0;i < 3;i++) {
+            if(card.passSkills.length > i)
+                inner += "<td>" + card.passSkills[i].name + "</td>";
+            else
+                inner += "<td></td>";
+        }
+
+        inner += '<td><button type="button" class="btn btn-primary btnUpdateCard" id = "btnUpdateCard" value=' + card.id + '>' + "更新" + '</button></td>';
+        inner += '<td><button type="button" class="btn btn-primary btnDelCard" id = "btnDelCard" value=' + card.id +'>' + "删除" + '</button></td>';
+        inner += "</tr>";
+    });
+
+
+    $("#cardsList").append(inner);
+    setPagination();
+
+};
+
+//更新表格
+function updateCardsList(){
+    delCardsList();
+    setCardsList();
+};
+
+//删除表格
+function delCardsList(){
+    $("tr[id !='th']").remove();
+};
+
+function delRow(id){
+    $("tr[id =" + id + "]").remove();
+};
 
 //设置卡牌显示
-function setCard(key) {
+function setCard(id) {
+    var key = hasCard(id);
     var card = (key == -1) ? Cardconfig:cards[key];
     var passSkill = card["passSkills"];
 
-    if(key != -1)
+    if(key != -1){
         $("#id").val(card.id);
+        //$("#id").show();
+    }else {
+        $("#id").val("auto");
+    }
+
     $("#lv").val(card.lv);
     $("#skillLv").val(card.skillLv);
     $("#elixir").val(card.elixir);
     $("#starList").val(card.star);
+
     $("#starList").change(function(){
-        updatePassSkill($("#starList").val());
+        setPassSkill(passSkill,$("#starList").val());
+    });
+
+    $('#skill1Name').change(function(){
+        var val = $('#skill1Name').val;
+        $('#skill2Name option[value = ' + "val" +'] ').attr("disabled",true);
     });
 
     setPassSkill(passSkill,card.star);
+   // $("#cardShow").show();
+
 };
 
 //判断数据中是否有id = cardId的卡牌
@@ -74,29 +253,56 @@ function setPassSkill(pss,star) {
 
     var len = pss.length;
 
-    if(len == 0) {
-        $("#passSkill1").val("null");
-        $("#passSkill11").val("");
-        $("#passSkill2").val("null");
-        $("#passSkill12").val("");
-        $("#passSkill3").val("null");
-        $("#passSkill13").val("");
+    if(len == 0 || star < 3) {
+        $("#skill1").val("");
+        $("#skill1Name").val("");
+        $("#skill1Value").val("");
+
+        $("#skill2").val("");
+        $("#skill2Name").val("");
+        $("#skill2Value").val("");
+
+        $("#skill3").val("");
+        $("#skill3Name").val("");
+        $("#skill3Value").val("");
     }
 
-    if(len > 0) {
-        //console.log(pss[0].name);
-        $("#passSkill1").val(pss[0].name);
-        $("#passSkill11").val(pss[0].value);
+    if(len > 0 && star >= 3) {
+
+        $("#skill1").val(pss[0].id);
+        $("#skill1Name").val(pss[0].name);
+        $("#skill1Value").val(pss[0].value);
+        $("#skill2").val("");
+        $("#skill2Name").val("");
+        $("#skill2Value").val("");
+
+        $("#skill3").val("");
+        $("#skill3Name").val("");
+        $("#skill3Value").val("");
+
+
     }
-    if(len > 1) {
-        $("#passSkill2").val(pss[1].name);
-        $("#passSkill12").val(pss[1].value);
+    if(len > 1 && star >= 4) {
+
+        $("#skill2").val(pss[1].id);
+        $("#skill2Name").val(pss[1].name);
+        $("#skill2Value").val(pss[1].value);
+
+        $("#skill3").val("");
+        $("#skill3Name").val("");
+        $("#skill3Value").val("");
+
+
+
     }
-    if(len > 2) {
-        $("#passSkill3").val(pss[2].name);
-        $("#passSkill13").val(pss[2].value);
+    if(len > 2 && star >= 5) {
+
+        $("#skill3").val(pss[2].id);
+        $("#skill3Name").val(pss[2].name);
+        $("#skill3Value").val(pss[2].value);
     }
 
+   // console.log($("#skill1").val());
     updatePassSkill(star)
 
 };
@@ -104,86 +310,45 @@ function setPassSkill(pss,star) {
 //更新技能下拉框是否可选
 function updatePassSkill(star) {
 
-   // console.log(star);
-
     if(star < 3) {
-        $("#passSkill3").attr("disabled",true);
-        $("#passSkill13").attr("disabled",true);
-        $("#passSkill2").attr("disabled",true);
-        $("#passSkill12").attr("disabled",true);
-        $("#passSkill1").attr("disabled",true);
-        $("#passSkill11").attr("disabled",true);
+        $("#skill1Name").attr("disabled",true);
+        $("#skill1Value").attr("disabled",true);
+        $("#skill2Name").attr("disabled",true);
+        $("#skill2Value").attr("disabled",true);
+        $("#skill3Name").attr("disabled",true);
+        $("#skill3Value").attr("disabled",true);
     }
     else if(star == 3) {
-        $("#passSkill3").attr("disabled",true);
-        $("#passSkill13").attr("disabled",true);
-        $("#passSkill2").attr("disabled",true);
-        $("#passSkill12").attr("disabled",true);
-        $("#passSkill1").attr("disabled",false);
-        $("#passSkill11").attr("disabled",false);
+        $("#skill3Name").attr("disabled",true);
+        $("#skill3Value").attr("disabled",true);
+        $("#skill2Name").attr("disabled",true);
+        $("#skill2Value").attr("disabled",true);
+        $("#skill1Name").attr("disabled",false);
+        $("#skill1Value").attr("disabled",false);
     }
     else if(star == 4) {
-        $("#passSkill3").attr("disabled",true);
-        $("#passSkill13").attr("disabled",true);
-        $("#passSkill2").attr("disabled",false);
-        $("#passSkill12").attr("disabled",false);
-        $("#passSkill1").attr("disabled",false);
-        $("#passSkill11").attr("disabled",false);
+        $("#skill3Name").attr("disabled",true);
+        $("#skill3Value").attr("disabled",true);
+        $("#skill2Name").attr("disabled",false);
+        $("#skill2Value").attr("disabled",false);
+        $("#skill1Name").attr("disabled",false);
+        $("#skill1Value").attr("disabled",false);
     }
     else {
-        $("#passSkill3").attr("disabled",false);
-        $("#passSkill13").attr("disabled",false);
-        $("#passSkill2").attr("disabled",false);
-        $("#passSkill12").attr("disabled",false);
-        $("#passSkill1").attr("disabled",false);
-        $("#passSkill11").attr("disabled",false);
+        $("#skill3Name").attr("disabled",false);
+        $("#skill3Value").attr("disabled",false);
+        $("#skill2Name").attr("disabled",false);
+        $("#skill2Value").attr("disabled",false);
+        $("#skill1Name").attr("disabled",false);
+        $("#skill1Value").attr("disabled",false);
     }
 };
 
-//更新按钮显示隐藏
-function updateButton(key){
-
-    //console.log(key);
-
-    if(key == -1) {
-       // $("#btnAddCard").show();
-        $("#btnUpdateCard").hide();
-        $("#btnDelCard").hide();
-    }else {
-      //  $("#btnAddCard").hide();
-        $("#btnUpdateCard").show();
-        $("#btnDelCard").show();
-    }
-
-};
-
-
-//设置卡牌列表
-function setCardsList() {
-    var inner = "<ul> ";
-    cards.forEach(function(card){
-        inner += "<li value= " + card.id + "><a>" + card.id + "</a></li>";
-    });
-    inner += "</ul>";
-    // console.log(cards.length);
-    console.log(inner);
-    $("#cardsList").append(inner);
-    $.each($("#cardsList ul li"),function(index,item){
-        $(this).click(function(){
-            var cardId = item.value;
-            //console.log(cardId);
-            var id = hasCard(cardId)
-            setCard(id);
-        });
-    });
-
-    setPagination();
-};
 
 //分页显示功能
 function setPagination() {
 
-    var total = $("#cardsList ul li").length;//总条数
+    var total = $("#cardsList tr").length;//总条数
 
     var current_items = 10;//每页显示10条
     var current_page = 1;//当前页面
@@ -232,20 +397,18 @@ function setPagination() {
     });
 
     function showPage(page) {
-        $("#cardsList ul li").hide();
-        $.each($("#cardsList ul li"),function(index,item){
+        $("#cardsList tr").hide();
+        $.each($("#cardsList tr"),function(index,item){
             var start = current_items * (current_page - 1);
             var end = current_items * current_page;
-            if(index >= start && index < end)
+            if(index >= start && index < end || index == 0)
                 $(this).show();
-
         });
+
+
     };
 
-
-
-
-}
+};
 
 
 

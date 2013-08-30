@@ -1,45 +1,45 @@
 <%- include header%>
-      <form class="form-inline span5" role="form" method="post" action = "/playerData?player=<%=JSON.stringify(player)%>">
+      <form class="form-inline span5" role="form" id = "playerData" name = "playerData">
 
             <fieldset>
-                <legend>玩家数据修改</legend>
+                <legend><%=area["name"] %>:<%= player["name"]%>的数据修改</legend>
 
               <div class="row-fluid marketing">
                 <div class = "span6">
                     <div class="control-group">
                         <label class="control-label" for="lv">等级:</label>
-                        <input type="text" class="input-small" id="lv" name="lv" value = "<%= player["lv"] %>" >
+                        <input type="text" class="input-small" id="lv" name="lv" >
                     </div>
 
                     <div class="control-group">
                           <label class="control-label" for="money">元宝:</label>
 
-                          <input type="text" class="input-small" id="money" name="money" value = "<%= player["money"] %>">
+                          <input type="text" class="input-small" id="money" name="money">
                     </div>
 
 
                     <div class="control-group">
                           <label class="control-label" for="gold">铜板:</label>
 
-                          <input type="text" class="input-small" id="gold" name="gold" value = "<%= player["gold"] %>">
+                          <input type="text" class="input-small" id="gold" name="gold">
                     </div>
 
 
                      <div class="control-group">
                           <label class="control-label" for="energy">体力:</label>
 
-                          <input type="text" class="input-small" id="power" name="power" value = "<%= eval("(" + player["power"] + ")").value%>">
+                          <input type="text" class="input-small" id="power" name="power">
                     </div>
 
                     <div class="control-group">
                           <label class="control-label" for="skillPoint">技能点:</label>
 
-                          <input type="text" class="input-small" id="skillPoint" name="skillPoint" value = "<%= player["skillPoint"] %>">
+                          <input type="text" class="input-small" id="skillPoint" name="skillPoint">
                     </div>
 
                     <div class="control-group">
                         <label class="control-label" for="fragments">碎片数:</label>
-                        <input type="text" class="input-small" id="fragments" name="fragments" value = "<%= player["fragments"] %>" >
+                        <input type="text" class="input-small" id="fragments" name="fragments">
                     </div>
 
                 </div>
@@ -48,36 +48,47 @@
 
                     <div class="control-group">
                         <label class="control-label" for="energy">活力值:</label>
-                        <input type="text" class="input-small" id="energy" name="energy" value = "<%= player["energy"] %>" >
+                        <input type="text" class="input-small" id="energy" name="energy">
                     </div>
 
                     <div class="control-group">
                         <label class="control-label" for="elixir">仙丹数:</label>
-                        <input type="text" class="input-small" id="elixir" name="elixir" value = "<%= player["elixir"] %>" >
+                        <input type="text" class="input-small" id="elixir" name="elixir">
                     </div>
 
                     <div class="control-group">
                         <label class="control-label" for="spiritor">元神等级:</label>
-                        <input type="text" class="input-small" id="spiritor" name="spiritor" value = "<%= eval("(" + player["spiritor"] + ")").lv %>" >
+                        <input type="text" class="input-small" id="spiritor" name="spiritor"" >
                     </div>
 
 
                     <div class="control-group">
                         <label class="control-label" for="spiritPool">灵气池等级:</label>
-                        <input type="text" class="input-small" id="spiritPool" name="spiritPool" value = "<%= eval("(" + player["spiritPool"] + ")").lv %>" >
+                        <input type="text" class="input-small" id="spiritPoolLv" name="spiritPoolLv" >
                     </div>
 
                     <div class="control-group">
                         <label class="control-label" for="spiritPool">已采集次数:</label>
-                        <input type="text" class="input-small" id="spiritPool" name="spiritPool" value = "<%= eval("(" + player["spiritPool"] + ")").collectCount %>" >
+                        <input type="text" class="input-small" id="spiritPoolCount" name="spiritPoolCount" >
                     </div>
 
                 </div>
 
               </div>
-                <button type="submit" class="btn btn-primary">确定</button>
+                <button type="button" id = "tbnUpdate" class="btn btn-primary">确定</button>
 
+              <div class = "alert alert-success" id = "tip">
+
+              </div>
             </fieldset>
 
+
       </form>
+
+        <script src="/javascripts/player.js"></script>
+
+           <script type="text/javascript">
+                setPlayer(<%- JSON.stringify(player) %>,<%- JSON.stringify(area) %>);
+           </script>
+
 <%- include footer%>

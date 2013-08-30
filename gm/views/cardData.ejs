@@ -1,38 +1,42 @@
 <%- include header %>
 
-     <div class="form-inline span3">
+     <div class="form-inline span5">
         <fieldset>
-            <legend>玩家拥有的卡牌
-            <button type="button" class="btn btn-primary" id = "btnAddCard" method = "put" action = "/cardData">添加卡牌</button>
+            <legend><%=areaName%>:<%=playerName%>拥有的卡牌
+            <button type="button" class="btn btn-primary" id = "btnAddCard">添加卡牌</button>
             </legend>
-            <div id = "cardsList">
-
+            <div >
+                <table class = "table table-bordered" id = "cardsList">
+                    <tr id = "th">
+                        <th>卡牌ID</th><th>卡牌等级</th><th>技能等级</th><th>消耗仙丹</th><th>星级</th><th>被动技能1</th><th>被动技能2</th><th>被动技能3</th><th></th><th></th>
+                    </tr>
+                </table>
             </div>
         </fieldset>
         <div class="page_btn clear">
                    <span class="page_box">
-                       <a class="page_first">首页</a>
-                       <a class="prev">上一页</a>
+                       <a href = "javascript:void(0)" class="page_first">首页</a>
+                       <a href = "javascript:void(0)" class="prev">上一页</a>
                        <span class="num">
                        <span class="current_page">1</span>
                        <span style="padding:0 3px;">/</span>
                        <span class="total"></span></span>
-                       <a class="next">下一页</a>
-                       <a class="page_last">末页</a>
+                       <a href = "javascript:void(0)" class="next">下一页</a>
+                       <a href = "javascript:void(0)" class="page_last">末页</a>
                    </span>
                </div>
 
      </div>
 
-     <form class="form-inline span5" role="form" id = "cardShow">
+     <form  id = "cardShow" class="form-inline span5" method = "post">
         <fieldset>
             <legend>卡牌操作</legend>
-            <div class="row-fluid marketing">
+            <div >
 
-                 <div class = "span6" id = "card">
+                 <div id = "card" class="form-inline span3">
                     <div class="control-group">
                         <label class="control-label" for="id">卡牌ID:</label>
-                        <input type="text" class="input-small" id="id" name="id">
+                        <input type="text" class="input-small" id="id" name="id" disabled = "disabled">
                     </div>
 
                     <div class="control-group">
@@ -52,7 +56,7 @@
 
                  </div>
 
-                 <div class = "span6">
+                 <div class="form-inline span5">
                        <div class="control-group">
                           <label for="star">星级:</label>
                           <select id="starList" class="form-control input-small" name="star">
@@ -67,59 +71,60 @@
                        </div>
 
                     <div class="control-group">
-                          <label for="star">技能1:</label>
-                          <select id="passSkill1" class="form-control input-small" name="passSkill">
-                                <option value = "null"></option>
+                          <label id = "skill1" for="skill1" value = "" >被动技能1:</label>
+                          <select id="skill1Name" class="form-control input-small" name="passSkill">
+                                <option value = ""></option>
                                 <option value = "hp_improve">提升血量</option>
                                 <option value = "atk_improve">提升攻击</option>
                                 <option value = "dodge">闪避</option>
                                 <option value = "crit">暴击</option>
                                 <option value = "dmg_reduce">减伤</option>
                           </select>
-                          <input type="text" class="input-small" id="passSkill11" name="passSkill">
+                          <input type="text" class="input-small" id="skill1Value" name="passSkill">
 
                      </div>
 
                  <div class="control-group">
-                          <label for="star">技能2:</label>
-                          <select id="passSkill2" class="form-control input-small" name="passSkill">
-                                <option value = "null"></option>
+                          <label id = "skill2" for="skill2" value = "">被动技能2:</label>
+                          <select id="skill2Name" class="form-control input-small" name="passSkill">
+                                <option value = ""></option>
                                 <option value = "hp_improve">提升血量</option>
                                 <option value = "atk_improve">提升攻击</option>
                                 <option value = "dodge">闪避</option>
                                 <option value = "crit">暴击</option>
                                 <option value = "dmg_reduce">减伤</option>
                           </select>
-                          <input type="text" class="input-small" id="passSkill12" name="passSkill">
+                          <input type="text" class="input-small" id="skill2Value" name="passSkill">
 
                  </div>
 
-                 <div class="control-group">
-                          <label for="star">技能3:</label>
-                          <select id="passSkill3" class="form-control input-small" name="passSkill">
-                                <option value = "null"></option>
+                 <div class="control-group" value = "">
+                          <label id = "skill3" for="skill3" value = "">被动技能3:</label>
+                          <select id="skill3Name" class="form-control input-small" name="passSkill">
+                                <option value = ""></option>
                                 <option value = "hp_improve">提升血量</option>
                                 <option value = "atk_improve">提升攻击</option>
                                 <option value = "dodge">闪避</option>
                                 <option value = "crit">暴击</option>
                                 <option value = "dmg_reduce">减伤</option>
                           </select>
-                          <input type="text" class="input-small" id="passSkill13" name="passSkill">
+                          <input type="text" class="input-small" id="skill3Value" name="passSkill">
                  </div>
                  </div>
             </div>
+            <div  class="form-inline span5">
+                 <button type="button" class="btn btn-primary" id = "btnOK" >确定</button>
+                 <button type="button" class="btn btn-primary" id = "btnReset" >重置</button>
 
-             <button type="button" class="btn btn-primary" id = "btnUpdateCard" method = "post" action = "/cardData">更新卡牌</button>
-             <button type="button" class="btn btn-primary" id = "btnDelCard" method = "delete" action = "/cardData">删除卡牌</button>
+            </div>
         </fieldset>
      </form>
 
-
      <script src="/javascripts/cards.js"></script>
-     <script type="text/javascript">
 
+     <script type="text/javascript">
           setCards(<%- JSON.stringify(cards) %>);
-         //setCard(0);
+          setPlayerId(<%= playerId %>);
      </script>
 
 <%- include footer %>

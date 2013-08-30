@@ -6,6 +6,8 @@
  * To change this template use File | Settings | File Templates.
  */
 
+var playerDao = require('./dao/mysql/playerDao');
+
 function Player(player) {
     this.id = player.id;
     this.name = player.name;
@@ -15,6 +17,32 @@ function Player(player) {
     this.exp = player.exp;
     this.money = player.money;
     this.gold = player.gold;
+};
+
+Player.update = function(options,cb){
+
+    playerDao.update(options,function(err,isOK){
+        if(err) {
+            console.log(err);
+            return cb(err,false);
+        }else {
+            return cb(null,true);
+
+        }
+
+    });
+};
+
+Player.getPlayerInfo = function(options,cb){
+
+    playerDao.getPlayerInfo(options,function(err,player){
+        if(err) {
+            return cb(err,null);
+        }else {
+            return cb(null,player);
+        }
+    });
+
 };
 
 

@@ -8,9 +8,9 @@
     </div>
     <div class="form-group">
       <label for="areaId">服务器:</label>
-      <select id="areaList" class="form-control input-small" name="areaId">
+      <select id="areaList" class="form-control input-small" name="area">
         <% areas.forEach(function(area){ %>
-           <option value = "<%= area.id %>">
+          <option value = "<%= JSON.stringify(area) %>">
             <%= area.name %>
            </option>
         <% }) %>

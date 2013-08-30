@@ -30,9 +30,6 @@ User.prototype.save = function(cb) {
 };
 
 User.get = function get(username,cb) {
-    //console.log(username);
-    console.log("get");
-    console.log(db);
 
     db.get(dbSelect,username,function(err,row){
            var user;

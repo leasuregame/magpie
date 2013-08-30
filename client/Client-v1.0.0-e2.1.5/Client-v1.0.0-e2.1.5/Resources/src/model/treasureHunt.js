@@ -45,6 +45,7 @@ var TreasureHunt = Entity.extend({
                 var table = outputTables.treasure_hunt.rows[msg.resourceId];
 
                 that._count = msg.lotteryCount;
+                that._freeCount = msg.lotteryFreeCount;
 
                 var playerData = {};
                 playerData[table.type] = table.value;

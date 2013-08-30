@@ -16,10 +16,13 @@ var FriendLayer = cc.Layer.extend({
     _selectFriendId: 0,
     _giveBlessCountLabel: null,
     _receiveBlessCountLabel: null,
+    _friendCountLabel: null,
+    _maxFriendCountLabel: null,
     _shyLayer: null,
     _addFriendLayer: null,
     _nameEditBox: null,
     _scrollView: null,
+    _scrollViewElement: {},
 
     onEnter: function () {
         cc.log("FriendLayer onEnter");
@@ -85,11 +88,26 @@ var FriendLayer = cc.Layer.extend({
         addFriendIcon.setPosition(cc.p(600, 926));
         this.addChild(addFriendIcon);
 
+        var friendCountIcon = cc.Sprite.create(main_scene_image.icon117);
+        friendCountIcon.setPosition(cc.p(565, 227));
+        this.addChild(friendCountIcon);
+
+        var slashIcon = cc.LabelTTF.create("/", "黑体", 22);
+        slashIcon.setPosition(cc.p(565, 227));
+        this.addChild(slashIcon);
+
+        this._friendCountLabel = cc.LabelTTF.create("0", "黑体", 22);
+        this._friendCountLabel.setAnchorPoint(cc.p(1, 0.5));
+        this._friendCountLabel.setPosition(cc.p(550, 227));
+        this.addChild(this._friendCountLabel);
+
+        this._maxFriendCountLabel = cc.LabelTTF.create("0", "黑体", 22);
+        this._maxFriendCountLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._maxFriendCountLabel.setPosition(cc.p(580, 227));
+        this.addChild(this._maxFriendCountLabel);
+
         this._addAddFriendLayer();
         this._addFunctionLayer();
-
-
-//        scrollView.setContentOffset(scrollView.minContainerOffset());
 
         return true;
     },
@@ -232,6 +250,8 @@ var FriendLayer = cc.Layer.extend({
 
         this._giveBlessCountLabel.setString(friend.get("giveBlessCount"));
         this._receiveBlessCountLabel.setString(friend.get("receiveBlessCount"));
+        this._friendCountLabel.setString(friend.get("friendCount"));
+        this._maxFriendCountLabel.setString(friend.get("maxFriendCount"));
 
         if (this._scrollView != null) {
             this._scrollView.removeFromParent();
@@ -239,7 +259,6 @@ var FriendLayer = cc.Layer.extend({
 
         var friendList = friend.get("friendList");
         var len = friendList.length;
-        cc.log(friendList);
 
         var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 733));
         var friendMenu = LazyMenu.create();
@@ -255,8 +274,22 @@ var FriendLayer = cc.Layer.extend({
             scrollViewHeight = 620;
         }
 
+        this._scrollViewElement = {};
+
         for (var i = 0; i < len; ++i) {
             var id = friendList[i].id;
+
+            var nameLabel = cc.LabelTTF.create(friendList[i].name, "黑体", 22);
+            nameLabel.setPosition(cc.p(100, scrollViewHeight - 25 - 127 * i));
+            scrollViewLayer.addChild(nameLabel);
+
+            var lvLabel = cc.LabelTTF.create(friendList[i].lv, "黑体", 22);
+            lvLabel.setPosition(cc.p(115, scrollViewHeight - 70 - 127 * i));
+            scrollViewLayer.addChild(lvLabel);
+
+            var abilityLabel = cc.LabelTTF.create(friendList[i].ability, "黑体", 22);
+            abilityLabel.setPosition(cc.p(300, scrollViewHeight - 55 - 127 * i));
+            scrollViewLayer.addChild(abilityLabel);
 
             var friendItem = cc.MenuItemImage.create(
                 main_scene_image.button36,
@@ -268,14 +301,7 @@ var FriendLayer = cc.Layer.extend({
             friendItem.setPosition(cc.p(0, scrollViewHeight - 109 - 127 * i));
             friendMenu.addChild(friendItem);
 
-            var giveBlessItem = cc.MenuItemImage.create(
-                main_scene_image.button20,
-                main_scene_image.button20s,
-                this._onClickGiveBless(id),
-                this
-            );
-            giveBlessItem.setPosition(cc.p(510, scrollViewHeight - 55 - 127 * i));
-            menu.addChild(giveBlessItem);
+            var point = cc.p(510, scrollViewHeight - 55 - 127 * i);
 
             var receiveBlessItem = cc.MenuItemImage.create(
                 main_scene_image.button21,
@@ -283,8 +309,34 @@ var FriendLayer = cc.Layer.extend({
                 this._onClickReceiveBless(id),
                 this
             );
-            receiveBlessItem.setPosition(cc.p(510, scrollViewHeight - 55 - 127 * i));
+            receiveBlessItem.setPosition(point);
             menu.addChild(receiveBlessItem);
+            receiveBlessItem.setVisible(false);
+
+            var giveBlessItem = cc.MenuItemImage.create(
+                main_scene_image.button20,
+                main_scene_image.button20s,
+                this._onClickGiveBless(id),
+                this
+            );
+            giveBlessItem.setPosition(point);
+            menu.addChild(giveBlessItem);
+
+            var giveBlessIcon = cc.Sprite.create(main_scene_image.icon124);
+            giveBlessIcon.setPosition(point);
+            scrollViewLayer.addChild(giveBlessIcon);
+
+            var receiveBlessIcon = cc.Sprite.create(main_scene_image.icon123);
+            receiveBlessIcon.setPosition(point);
+            scrollViewLayer.addChild(receiveBlessIcon);
+            receiveBlessIcon.setVisible(false);
+
+            this._scrollViewElement[id] = {
+                giveBlessItem: giveBlessItem,
+                receiveBlessItem: receiveBlessItem,
+                giveBlessIcon: giveBlessIcon,
+                receiveBlessIcon: receiveBlessIcon
+            };
         }
 
         this._scrollView = cc.ScrollView.create(cc.size(595, 620), scrollViewLayer);
@@ -292,7 +344,6 @@ var FriendLayer = cc.Layer.extend({
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
-
 
         this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
         this._scrollView.setContentOffset(cc.p(0, this._scrollView.minContainerOffset().y));
@@ -313,12 +364,13 @@ var FriendLayer = cc.Layer.extend({
         cc.log("FriendLayer _onClickCancel");
 
         this._addFriendLayer.setVisible(false);
-//        this._nameEditBox.setVisible(false);
     },
 
     _onClickGiveBless: function (id) {
         return function () {
-            cc.log("FriendLayer _onClickBlessing: " + id);
+            cc.log("FriendLayer _onClickGiveBless: " + id);
+
+            var element = this._scrollViewElement[id];
 
 
         }
@@ -327,9 +379,15 @@ var FriendLayer = cc.Layer.extend({
 
     _onClickReceiveBless: function (id) {
         return function () {
-            cc.log("FriendLayer _onClickReceive: " + id);
+            cc.log("FriendLayer _onClickReceiveBless: " + id);
 
+            var element = this._scrollViewElement[id];
 
+            element.giveBlessItem.setVisible(true);
+            element.giveBlessIcon.setVisible(true);
+
+            element.receiveBlessItem.setVisible(false);
+            element.receiveBlessIcon.setVisible(false);
         }
     },
 

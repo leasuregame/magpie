@@ -64,11 +64,6 @@ var Player = Entity.extend({
         gameData.spirit.init(data.spiritor);
         gameData.spiritPool.init(data.spiritPool);
         gameData.cardLibrary.init();
-        gameData.friend.init({
-            friendList: data.friends,
-            giveBlessCount: data.dailyGift.gaveBlessCount,
-            receiveBlessCount: data.dailyGift.reveiveBlessCount
-        });
         gameData.treasureHunt.init({
             count: data.dailyGift.lotteryCount,
             freeCount: data.dailyGift.lotteryFreeCount

@@ -259,8 +259,6 @@ var TreasureHuntLayer = cc.Layer.extend({
         gameData.treasureHunt.treasureHunt(function (id) {
             cc.log(id);
 
-            that.update();
-
             if (id >= 0 && id <= 19) {
                 that._playAnimation(id);
             }

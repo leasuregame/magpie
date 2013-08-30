@@ -13,94 +13,26 @@
 
 
 var Friend = Entity.extend({
-    _giveBlessCount: 0,
-    _receiveBlessCount: 0,
-    _friendCount: 0,
-    _maxFriendCount: 0,
     _friendList: [],
 
-    init: function (data) {
+    init: function () {
         cc.log("Friend init");
-
-        this._friendList = data.friendList;
-        this._giveBlessCount = data.giveBlessCount;
-        this._receiveBlessCount = data.receiveBlessCount;
-        this._friendCount = this._friendList.length;
-        this._maxFriendCount = 50;
-
-        cc.log(this);
-
-        return true;
     },
 
-    addFriend: function (name) {
-        cc.log("Friend addFriend: " + name);
-
-        var that = this;
-        lzWindow.pomelo.request("area.messageHandler.addFriend", {
-            friendName: name
-        }, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
-
-            if (data.code == 200) {
-                cc.log("addFriend success");
-            } else {
-                cc.log("addFriend fail");
-            }
-        });
+    add: function (cb, playerId) {
+        cc.log("Friend add");
     },
 
-    deleteFriend: function (cb, playerId) {
-        cc.log("Friend deleteFriend");
+    delete: function (cb, playerId) {
+        cc.log("Friend delete");
     },
 
-    giveBless: function (cb, friendId) {
-        cc.log("Friend giveBless: " + friendId);
-
-        var that = this;
-        lzWindow.pomelo.request("area.messageHandler.giveBless", {
-            friendId: friendId
-        }, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
-
-            if (data.code == 200) {
-                cc.log("giveBless success");
-
-                that._giveBlessCount -= 1;
-
-                cb("success");
-            } else {
-                cc.log("giveBless fail");
-
-                cb("fail");
-            }
-        });
+    blessing: function (cb, playerId) {
+        cc.log("Friend delete");
     },
 
-    receiveBless: function (cb, friendId) {
-        cc.log("Friend receiveBless: " + friendId);
-
-        var that = this;
-        lzWindow.pomelo.request("area.messageHandler.receiveBless", {
-            friendId: friendId
-        }, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
-
-            if (data.code == 200) {
-                cc.log("receiveBless success");
-
-                that._receiveBlessCount -= 1;
-
-                cb("success");
-            } else {
-                cc.log("receiveBless fail");
-
-                cb("fail");
-            }
-        });
+    receive: function (cb, playerId) {
+        cc.log("Friend receive");
     },
 
     sendMessage: function (cb, playerId, msg) {

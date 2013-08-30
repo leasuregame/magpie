@@ -13,16 +13,12 @@
 
 
 var FriendLayer = cc.Layer.extend({
-    _selectFriendId: 0,
-    _giveBlessCountLabel: null,
-    _receiveBlessCountLabel: null,
-    _friendCountLabel: null,
-    _maxFriendCountLabel: null,
+    _selectFriend: 0,
+    _blessingCountLabel: null,
+    _receiveCountLabel: null,
     _shyLayer: null,
     _addFriendLayer: null,
     _nameEditBox: null,
-    _scrollView: null,
-    _scrollViewElement: {},
 
     onEnter: function () {
         cc.log("FriendLayer onEnter");
@@ -62,13 +58,13 @@ var FriendLayer = cc.Layer.extend({
         receiveCountIcon.setPosition(cc.p(130, 909));
         this.addChild(receiveCountIcon);
 
-        this._giveBlessCountLabel = cc.LabelTTF.create("15", "黑体", 22);
-        this._giveBlessCountLabel.setPosition(cc.p(215, 941));
-        this.addChild(this._giveBlessCountLabel);
+        this._blessingCountLabel = cc.LabelTTF.create("15", "黑体", 22);
+        this._blessingCountLabel.setPosition(cc.p(215, 941));
+        this.addChild(this._blessingCountLabel);
 
-        this._receiveBlessCountLabel = cc.LabelTTF.create("15", "黑体", 22);
-        this._receiveBlessCountLabel.setPosition(cc.p(215, 907));
-        this.addChild(this._receiveBlessCountLabel);
+        this._receiveCountLabel = cc.LabelTTF.create("15", "黑体", 22);
+        this._receiveCountLabel.setPosition(cc.p(215, 907));
+        this.addChild(this._receiveCountLabel);
 
         var addFriendItem = cc.MenuItemImage.create(
             main_scene_image.button9,
@@ -87,24 +83,6 @@ var FriendLayer = cc.Layer.extend({
         var addFriendIcon = cc.Sprite.create(main_scene_image.icon125);
         addFriendIcon.setPosition(cc.p(600, 926));
         this.addChild(addFriendIcon);
-
-        var friendCountIcon = cc.Sprite.create(main_scene_image.icon117);
-        friendCountIcon.setPosition(cc.p(565, 227));
-        this.addChild(friendCountIcon);
-
-        var slashIcon = cc.LabelTTF.create("/", "黑体", 22);
-        slashIcon.setPosition(cc.p(565, 227));
-        this.addChild(slashIcon);
-
-        this._friendCountLabel = cc.LabelTTF.create("0", "黑体", 22);
-        this._friendCountLabel.setAnchorPoint(cc.p(1, 0.5));
-        this._friendCountLabel.setPosition(cc.p(550, 227));
-        this.addChild(this._friendCountLabel);
-
-        this._maxFriendCountLabel = cc.LabelTTF.create("0", "黑体", 22);
-        this._maxFriendCountLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._maxFriendCountLabel.setPosition(cc.p(580, 227));
-        this.addChild(this._maxFriendCountLabel);
 
         this._addAddFriendLayer();
         this._addFunctionLayer();
@@ -246,107 +224,7 @@ var FriendLayer = cc.Layer.extend({
     update: function () {
         cc.log("FriendLayer update");
 
-        var friend = gameData.friend;
 
-        this._giveBlessCountLabel.setString(friend.get("giveBlessCount"));
-        this._receiveBlessCountLabel.setString(friend.get("receiveBlessCount"));
-        this._friendCountLabel.setString(friend.get("friendCount"));
-        this._maxFriendCountLabel.setString(friend.get("maxFriendCount"));
-
-        if (this._scrollView != null) {
-            this._scrollView.removeFromParent();
-        }
-
-        var friendList = friend.get("friendList");
-        var len = friendList.length;
-
-        var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 733));
-        var friendMenu = LazyMenu.create();
-        friendMenu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(friendMenu);
-
-        var menu = LazyMenu.create();
-        menu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(menu);
-
-        var scrollViewHeight = len * 127 - 18;
-        if (scrollViewHeight < 620) {
-            scrollViewHeight = 620;
-        }
-
-        this._scrollViewElement = {};
-
-        for (var i = 0; i < len; ++i) {
-            var id = friendList[i].id;
-
-            var nameLabel = cc.LabelTTF.create(friendList[i].name, "黑体", 22);
-            nameLabel.setPosition(cc.p(100, scrollViewHeight - 25 - 127 * i));
-            scrollViewLayer.addChild(nameLabel);
-
-            var lvLabel = cc.LabelTTF.create(friendList[i].lv, "黑体", 22);
-            lvLabel.setPosition(cc.p(115, scrollViewHeight - 70 - 127 * i));
-            scrollViewLayer.addChild(lvLabel);
-
-            var abilityLabel = cc.LabelTTF.create(friendList[i].ability, "黑体", 22);
-            abilityLabel.setPosition(cc.p(300, scrollViewHeight - 55 - 127 * i));
-            scrollViewLayer.addChild(abilityLabel);
-
-            var friendItem = cc.MenuItemImage.create(
-                main_scene_image.button36,
-                main_scene_image.button36s,
-                this._onClickFriend(id),
-                this
-            );
-            friendItem.setAnchorPoint(cc.p(0, 0));
-            friendItem.setPosition(cc.p(0, scrollViewHeight - 109 - 127 * i));
-            friendMenu.addChild(friendItem);
-
-            var point = cc.p(510, scrollViewHeight - 55 - 127 * i);
-
-            var receiveBlessItem = cc.MenuItemImage.create(
-                main_scene_image.button21,
-                main_scene_image.button21s,
-                this._onClickReceiveBless(id),
-                this
-            );
-            receiveBlessItem.setPosition(point);
-            menu.addChild(receiveBlessItem);
-            receiveBlessItem.setVisible(false);
-
-            var giveBlessItem = cc.MenuItemImage.create(
-                main_scene_image.button20,
-                main_scene_image.button20s,
-                this._onClickGiveBless(id),
-                this
-            );
-            giveBlessItem.setPosition(point);
-            menu.addChild(giveBlessItem);
-
-            var giveBlessIcon = cc.Sprite.create(main_scene_image.icon124);
-            giveBlessIcon.setPosition(point);
-            scrollViewLayer.addChild(giveBlessIcon);
-
-            var receiveBlessIcon = cc.Sprite.create(main_scene_image.icon123);
-            receiveBlessIcon.setPosition(point);
-            scrollViewLayer.addChild(receiveBlessIcon);
-            receiveBlessIcon.setVisible(false);
-
-            this._scrollViewElement[id] = {
-                giveBlessItem: giveBlessItem,
-                receiveBlessItem: receiveBlessItem,
-                giveBlessIcon: giveBlessIcon,
-                receiveBlessIcon: receiveBlessIcon
-            };
-        }
-
-        this._scrollView = cc.ScrollView.create(cc.size(595, 620), scrollViewLayer);
-        this._scrollView.setPosition(cc.p(60, 260));
-        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
-        this._scrollView.updateInset();
-        this.addChild(this._scrollView);
-
-        this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
-        this._scrollView.setContentOffset(cc.p(0, this._scrollView.minContainerOffset().y));
     },
 
     _onClickAddFriend: function () {
@@ -364,30 +242,23 @@ var FriendLayer = cc.Layer.extend({
         cc.log("FriendLayer _onClickCancel");
 
         this._addFriendLayer.setVisible(false);
+//        this._nameEditBox.setVisible(false);
     },
 
-    _onClickGiveBless: function (id) {
+    _onClickBlessing: function () {
         return function () {
-            cc.log("FriendLayer _onClickGiveBless: " + id);
-
-            var element = this._scrollViewElement[id];
+            cc.log("FriendLayer _onClickBlessing: " + id);
 
 
         }
 
     },
 
-    _onClickReceiveBless: function (id) {
+    _onClickReceive: function (id) {
         return function () {
-            cc.log("FriendLayer _onClickReceiveBless: " + id);
+            cc.log("FriendLayer _onClickReceive: " + id);
 
-            var element = this._scrollViewElement[id];
 
-            element.giveBlessItem.setVisible(true);
-            element.giveBlessIcon.setVisible(true);
-
-            element.receiveBlessItem.setVisible(false);
-            element.receiveBlessIcon.setVisible(false);
         }
     },
 

@@ -42,7 +42,7 @@ var CardLibraryLayer = cc.Layer.extend({
 
         var cardLibrary = gameData.cardLibrary.get("cardLibrary");
         var len = cardLibrary.length;
-        cc.log(cardLibrary);
+
         var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 733));
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));

@@ -169,7 +169,7 @@ var CardListLayer = cc.Layer.extend({
 
         var canSelectCardListIndex = [];
         var noSelectCardListIndex = [];
-        var i;
+        var i = 0;
 
         for (i = 0; i < cardCount; ++i) {
             if (this._isCanSelect(cardListIndex[i])) {

@@ -26,7 +26,6 @@ var gameData = {
     tournament: null,
     spirit: null,
     spiritPool: null,
-    friend: null,
 
     gameInit: function () {
         cc.log("gameData init");
@@ -45,7 +44,6 @@ var gameData = {
         this.tournament = Tournament.create();
         this.spirit = Spirit.create();
         this.spiritPool = SpiritPool.create();
-        this.friend = Friend.create();
     },
 
     gameEnd: function () {

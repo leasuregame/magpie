@@ -4,10 +4,10 @@ module.exports = {
   "fight": 20,         
   "precious_box": 5,        
   "card_drop": {            
-    "star": {
-      "1": 50,
-      "2": 50
-    },
+    // "star": {
+    //   "1": 50,
+    //   "2": 50
+    // },
     "level": {              
       "1": 60,
       "2": 10,

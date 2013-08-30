@@ -13,11 +13,15 @@ app.set('views', __dirname + '/views')
 app.engine('html', require('ejs').renderFile);
 
 app.get('/test', function(req, res) {
+  var debug = req.query.debug || false;
   var dir = __dirname + '/spec';
   util.walk(dir, function(err, files){
     files = files.filter(function(f) {
       return /Spec.js$/.test(f);
     });
+    if (debug) {
+      files = [];
+    }
     //files = ['fightSpec.js', 'playerSpec.js', 'userSpec.js'];
     res.render('SpecRunner.html', {
       files: files.map(function(f) { return f.substr(dir.length+1)})

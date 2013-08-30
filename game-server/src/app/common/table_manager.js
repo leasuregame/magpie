@@ -18,24 +18,25 @@ module.exports = {
         DATA_DIR + 'cards.xml',
         DATA_DIR + 'tasks.xml',
         DATA_DIR + 'rank.xml',
+        DATA_DIR + 'lottery.xml',
         DATA_DIR + 'spirit.xml'
-        );
+      );
       this.loadTableData(data.exports);
     }
   },
   _readTables: function() {
-    return loadtable.apply( loadtable, arguments);
+    return loadtable.apply(loadtable, arguments);
   },
-  clear: function(){
+  clear: function() {
     this._tables = {};
   },
-  reloadTables: function(){
+  reloadTables: function() {
     this.clear();
     data = this._readTables.apply(this, arguments).exports;
     this.loadTableData(data);
   },
   getTable: function(tablename) {
-    if (_.isEmpty(this._tables)){
+    if (_.isEmpty(this._tables)) {
       this.cacheTables();
     }
     //console.log(tablename);
@@ -79,6 +80,13 @@ module.exports = {
           }
         };
         return find ? this._data[find] : find;
+      },
+      map: function(fn) {
+        var _res = [];
+        for (var id in this._data) {
+          _res.push(fn(this._data[id]));
+        }
+        return _res;
       }
     };
   },
@@ -250,7 +258,7 @@ module.exports = {
         var aRealRowData = this._transData(g, model, aRowData);
 
         if (aRealRowData && (
-        ((typeof(aRealRowData.id) === 'string') && (aRealRowData.id.length > 0)) || ((typeof(aRealRowData.id) === 'number')))) {
+          ((typeof(aRealRowData.id) === 'string') && (aRealRowData.id.length > 0)) || ((typeof(aRealRowData.id) === 'number')))) {
           data[aRealRowData.id] = aRealRowData;
         }
       }
@@ -325,8 +333,8 @@ module.exports = {
   //从文件夹加载数据。//下划线表示不应该直接访问
   _loadAllData: function(datapath) {
     var modellist = {},
-    modelattr = {},
-    modeldata = {};
+      modelattr = {},
+      modeldata = {};
 
     this._loadByIndex(datapath + 'index', modellist);
     var index = modellist.index;

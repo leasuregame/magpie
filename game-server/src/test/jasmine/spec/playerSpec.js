@@ -84,7 +84,13 @@ describe("Connector Server", function() {
                   layer: 0,
                   mark: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 },
-                dailyGift: [],
+                dailyGift: {
+                  lotteryCount: 500,
+                  lotteryFreeCount: 0,
+                  power: [],
+                  receivedBlessCount: 0,
+                  gaveBlessCount: 0
+                },
                 skillPoint: 0,
                 energy: 0,
                 elixir: 0,

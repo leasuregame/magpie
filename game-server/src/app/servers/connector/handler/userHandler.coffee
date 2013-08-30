@@ -47,12 +47,11 @@ Handler::login = (msg, session, next) ->
       else
         cb()
 
-    (cb) ->
+    (cb) =>
       if player?
         session.set('playerId', player.id)
         session.set('playerName', player.name)
-
-      session.on('close', onUserLeave.bind(null, @app))
+        session.on('closed', onUserLeave.bind(null, @app))
       session.pushAll cb
   ], (err) ->
     if err
@@ -66,7 +65,7 @@ onUserLeave = (app, session, reason) ->
   if not session or not session.uid
     return
 
-  app.rpc.area.playerRemote.playerLeave session, playerId: session.get('playerId'), (err) ->
+  app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), (err) ->
     if err
       logger.error 'user leave error' + err
 

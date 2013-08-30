@@ -32,6 +32,12 @@ class Manager
 
       cb(null, player)
 
+  @getPlayer: (params, cb) ->
+    dao.player.fetchOne where: params, (err, player) ->
+      if err
+        return cb(err, null)
+      cb(null, player)
+
   @getPlayers: (ids, cb) ->
     dao.player.getPlayerDetails ids, (err, res) ->
       if err isnt null

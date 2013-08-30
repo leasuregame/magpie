@@ -37,11 +37,12 @@ Data.prototype.importCsvToSql = function(table, filepath, callback) {
         cb(null);
         return;
       }
-
+      var where = {id: row.id};
+      if (table == 'friend') {
+        where = {playerId: row.playerId, friendId: row.friendId};
+      }
       self.db[table].delete({
-        where: {
-          id: row.id
-        }
+        where: where
       }, function(err, res) {
         self.db[table].create({
           data: row

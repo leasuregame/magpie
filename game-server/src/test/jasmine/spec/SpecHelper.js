@@ -15,8 +15,8 @@ beforeEach(function() {
       );
 
       var cards_ok = false;
-      var enemy_card_length = _.keys(battleLog.enemy.cards).length;
-      var own_card_length = _.keys(battleLog.own.cards).length;
+      var enemy_card_length = _.values(battleLog.enemy.cards).filter(function(val){return _.isObject(val)}).length;
+      var own_card_length = _.values(battleLog.own.cards).filter(function(val){return _.isObject(val)}).length;
 
       cards_ok = enemy_card_length > 0 && own_card_length > 0;
 
@@ -28,15 +28,17 @@ beforeEach(function() {
           return false;
         }
 
+        var stepFormatOk = true;
         var dmage = {};
         _.each(steps, function(s) {
           _.each(s.d, function(pos, index) {
-            pos = Math.abs(pos);
             if (!_.isNumber(s.a) || !_.isNumber(pos)) {
               console.log('战斗步骤数据格式错误,', s);
-              return false;
+              stepFormatOk = false;
+              return;
             }
 
+            pos = Math.abs(pos);
             if (!_.has(dmage, pos)) {
               dmage[pos] = Math.abs(s.e[index]);
             } else {
@@ -79,7 +81,7 @@ beforeEach(function() {
           console.log('我方实际人数：', own_card_length);
         }
 
-        return ok;
+        return ok && stepFormatOk;
       }
 
       var steps_ok = checkSteps(battleLog.steps);

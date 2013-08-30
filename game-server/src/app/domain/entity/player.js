@@ -35,7 +35,7 @@ var NOW = function() {
 var addEvents = function(player) {
     player.on('add.card', function(card) {
         if (player.isLineUpCard(card)) {
-            player.activeGroupEffect();
+            //player.activeGroupEffect();
             player.activeSpiritorEffect();
         }
     });
@@ -53,8 +53,9 @@ var Player = (function(_super) {
     }
 
     Player.prototype.init = function() {
-        this.cards || (this.cards = {});
-        this.rank || (this.rank = {});
+        // this.cards || (this.cards = {});
+        // this.rank || (this.rank = {});
+        // this.friends || (this.friends = []);
 
         addEvents(this);
     };
@@ -103,7 +104,13 @@ var Player = (function(_super) {
             layer: 0,
             mark: defaultMark()
         },
-        dailyGift: [],
+        dailyGift: {
+            lotteryCount: 500,
+            lotteryFreeCount: 0,
+            power: [],
+            receivedBlessCount: 0,
+            gaveBlessCount: 0
+        },
         fragments: 0,
         energy: 0,
         elixir: 0,
@@ -118,7 +125,8 @@ var Player = (function(_super) {
             collectCount: 0
         },
         cards: {},
-        rank: {}
+        rank: {},
+        friends: []
 
     };
 
@@ -276,18 +284,21 @@ var Player = (function(_super) {
         power.value = _.min([power.value + value, max_power + 50]);
         power.time = Date.now();
         this.updatePower(power);
-        this.updateGift("power_" + hour);
+
+        // 更新dailyGift的power
+        var dg = _.clone(this.dailyGift);
+        dg.power.push(hour);
+        this.dailyGift = dg;
     };
 
-    Player.prototype.updateGift = function(gift) {
-        if (!_.isArray(this.dailyGift)) {
-            this.dailyGift = [];
-        }
-        this.dailyGift.push(gift);
+    Player.prototype.updateGift = function(name, value) {
+        dg = _.clone(this.dailyGift);
+        dg[name] = value;
+        this.dailyGift = dg;
     };
 
     Player.prototype.hasGive = function(gift) {
-        return _.contains(this.get('dailyGift'), gift);
+        return _.contains(this.dailyGift.power, gift);
     };
 
     Player.prototype.updateLineUp = function(lineupObj) {
@@ -411,7 +422,8 @@ var Player = (function(_super) {
             cards: _.values(this.cards).map(function(card) {
                 return card.toJson();
             }),
-            rank: !_.isEmpty(this.rank) ? this.rank.toJson() : null
+            rank: !_.isEmpty(this.rank) ? this.rank.toJson() : null,
+            friends: this.friends
         };
     };
 

@@ -21,7 +21,6 @@ var files = [
   '../../gm/config/table/table.json'
 ];
 
-
 for (var i = files.length - 1; i >= 0; i--) {
   files[i] = path.resolve(__dirname, files[i]);
   tryMkdir(files[i]);
@@ -34,10 +33,11 @@ var tabledata = require("../app/common/loadtable")(
   '../data/cards.xml',
   '../data/tasks.xml',
   '../data/rank.xml',
+  '../data/lottery.xml',
   '../data/spirit.xml'
 );
 
-files.forEach(function(filepath){
+files.forEach(function(filepath) {
   fs.writeFileSync(filepath, JSON.stringify(tabledata.client));
 });
 

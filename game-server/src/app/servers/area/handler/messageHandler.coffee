@@ -19,12 +19,27 @@ mergeMessages = (myMessages, systemMessages) ->
       myMessages.push m
   return myMessages
 
+sendMessage = (app, target, msg, next) ->
+  callback = (err, res) ->
+    if err
+      code = 500
+    else if res
+      code = res
+    else 
+      code = 200
+    next(null, {code: code})
+
+  if target isnt null
+    app.get('messageService').pushByPid target, msg, callback
+  else 
+    app.get('messageService').pushMessage msg, callback
+
 module.exports = (app) ->
   new Handler(app)
 
 Handler = (@app) ->
 
-Handler::systemMessage = (msg, session, next) ->
+Handler::sysMsg = (msg, session, next) ->
   content = msg.content
   options = msg.options or {}
 
@@ -39,18 +54,21 @@ Handler::systemMessage = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    @app.get('messageService').pushMessage(
-      {
-        route: 'onMessage', msg: res.content
-      }, (err, res) ->
-        if err
-          code = 500
-        else if res
-          code = res
-        else 
-          code = 200
-        next(null, {code: code})
-    )
+    sendMessage @app, null, {
+      route: 'onMessage'
+      msg: res.toJson()
+    }, next
+
+Handler::handleSysMsg = (msg, session, next) ->
+  playerId = session.get('playerId')
+  msgId = msg.msgId
+
+  dao.message.fetchOne where: id: msgId, (err, res) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    # do something 
+    next(null, {code: 200})
 
 Handler::leaveMessage = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -68,19 +86,10 @@ Handler::leaveMessage = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    @app.get('messageService').pushByPid(
-      friendId, 
-      {
-        route: 'onLeaveMessage', msg: "#{playerName}给你发你发了一条留言"
-      }, (err, res) ->
-        if err
-          code = 500
-        else if res
-          code = res
-        else 
-          code = 200
-        next(null, {code: code})
-    )
+    sendMessage @app, friendId, {
+      route: 'OnMessage'
+      msg: res.toJson()
+    }, next
 
 Handler::readMessage = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -161,20 +170,10 @@ Handler::addFriend = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    @app.get('messageService').pushByPid(
-      friend.id, 
-      {
-        route: 'onAskingFriend', 
-        msg: msg.content
-      }, (err, res) ->
-        if err
-          code = 500
-        else if res
-          code = res
-        else 
-          code = 200
-        next(null, {code: code})
-    )
+    sendMessage @app, friend.id, {
+      route: 'onMessage'
+      msg: msg.toJson()
+    }, next
 
 Handler::accept = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -206,20 +205,10 @@ Handler::accept = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    @app.get('messageService').pushByPid(
-      message.sender,
-      {
-        route: 'onAccept',
-        msg: "#{playerName}同意了你的好友请求"
-      }, (err, res) ->
-        if err
-          code = 500
-        else if res
-          code = res
-        else 
-          code = 200
-        next(null, {code: code})
-    )
+    sendMessage @app, message.sender, {
+      route: 'onMessage'
+      msg: message.toJson()
+    }
 
 Handler::reject = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -242,20 +231,10 @@ Handler::reject = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    @app.get('messageService').pushByPid(
-      message.sender,
-      {
-        route: 'onReject',
-        msg: "#{playerName}同意了你的好友请求"
-      }, (err, res) ->
-        if err
-          code = 500
-        else if res
-          code = res
-        else 
-          code = 200
-        next(null, {code: code})
-    )
+    sendMessage @app, message.sender, {
+      route: 'onMessage'
+      msg: "#{playerName}同意了你的好友请求"
+    }
 
 Handler::giveBless = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -312,20 +291,10 @@ Handler::giveBless = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    @app.get('messageService').pushByPid(
-      friendId,
-      {
-        route: 'onBless',
-        msg: "#{playerName}为你送来了一个祝福"
-      }, (err, res) ->
-        if err
-          code = 500
-        else if res
-          code = res
-        else 
-          code = 200
-        next(null, {code: code})
-    )
+    sendMessage @app, friendId, {
+      route: 'onBless'
+      msg: res.toJson()
+    }
 
 Handler::receiveBless = (msg, session, next) ->
   playerId = session.get('playerId')

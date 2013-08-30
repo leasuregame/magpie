@@ -31,6 +31,8 @@ var nameChanged = {
     "任务扫荡产出表": "wipe_out",
     "chapter": "大章表",
     "大章表": "chapter",
+    "chapter_title": "总章表",
+    "总章表": "chapter_title",
     "task": "任务奖励表",
     "任务奖励表": "task",
     "player_upgrade": "玩家升级经验表",
@@ -6293,14 +6295,7 @@ var outputTables = {
         }
     },
     "task_card": {
-        "colComment": {
-            "card_id": {
-                "table": "怪物卡牌配置表",
-                "key_index": "name",
-                "value_index": "id",
-                "withPound": false
-            }
-        },
+        "colComment": {},
         "rows": {
             "10000": {
                 "id": 10000,
@@ -6951,14 +6946,7 @@ var outputTables = {
         }
     },
     "task_config": {
-        "colComment": {
-            "chapter_id": {
-                "table": "大章表",
-                "key_index": "chapter",
-                "value_index": "id",
-                "withPound": false
-            }
-        },
+        "colComment": {},
         "rows": {
             "1": {
                 "id": 1,
@@ -8072,15 +8060,53 @@ var outputTables = {
             }
         }
     },
-    "task": {
-        "colComment": {
-            "chapter_id": {
-                "table": "大章表",
-                "key_index": "chapter",
-                "value_index": "id",
-                "withPound": false
+    "chapter_title": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "苦寒地狱"
+            },
+            "2": {
+                "id": 2,
+                "name": "凄凉人间"
+            },
+            "3": {
+                "id": 3,
+                "name": "南天之门"
+            },
+            "4": {
+                "id": 4,
+                "name": "西天取经"
+            },
+            "5": {
+                "id": 5,
+                "name": "莲花加持"
+            },
+            "6": {
+                "id": 6,
+                "name": "千年之修"
+            },
+            "7": {
+                "id": 7,
+                "name": "斩妖除魔"
+            },
+            "8": {
+                "id": 8,
+                "name": "降龙伏虎"
+            },
+            "9": {
+                "id": 9,
+                "name": "普度众生"
+            },
+            "10": {
+                "id": 10,
+                "name": "尊者之身"
             }
-        },
+        }
+    },
+    "task": {
+        "colComment": {},
         "rows": {
             "1": {
                 "id": 1,

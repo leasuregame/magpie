@@ -4,16 +4,57 @@ msgConfig = require '../../../../config/data/message'
 logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async'
 
+SYSTEM = -1
+
+
 isFinalStatus = (status) ->
   _.contains msgConfig.FINALSTATUS, status
+
+mergeMessages = (myMessages, systemMessages) ->
+  mySystems = myMessages.filter (m) -> m.sender is -1
+  mySystems = mySystems.map (m) -> m.msgId
+
+  systemMessages.forEach (m) ->
+    if m.id not in mySystems
+      myMessages.push m
+  return myMessages
 
 module.exports = (app) ->
   new Handler(app)
 
 Handler = (@app) ->
 
+Handler::systemMessage = (msg, session, next) ->
+  content = msg.content
+  options = msg.options or {}
+
+  dao.message.create data: {
+    options: options
+    sender: -1
+    receiver: -1
+    content: content
+    type: msgConfig.MESSAGETYPE.SYSTEM
+    status: msgConfig.MESSAGESTATUS.UNHANDLED
+  }, (err, res) =>
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    @app.get('messageService').pushMessage(
+      {
+        route: 'onMessage', msg: res.content
+      }, (err, res) ->
+        if err
+          code = 500
+        else if res
+          code = res
+        else 
+          code = 200
+        next(null, {code: code})
+    )
+
 Handler::leaveMessage = (msg, session, next) ->
   playerId = session.get('playerId')
+  playerName = session.get('playerName')
   friendId = msg.friendId
   content = msg.content
 
@@ -23,11 +64,23 @@ Handler::leaveMessage = (msg, session, next) ->
     receiver: friendId
     content: content
     status: msgConfig.MESSAGESTATUS.NOTICE
-  }, (err, res) ->
+  }, (err, res) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    next(null, {code: 200})
+    @app.get('messageService').pushByPid(
+      friendId, 
+      {
+        route: 'onLeaveMessage', msg: "#{playerName}给你发你发了一条留言"
+      }, (err, res) ->
+        if err
+          code = 500
+        else if res
+          code = res
+        else 
+          code = 200
+        next(null, {code: code})
+    )
 
 Handler::readMessage = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -42,24 +95,61 @@ Handler::readMessage = (msg, session, next) ->
 Handler::messageList = (msg, session, next) ->
   playerId = session.get('playerId')
 
-  dao.message.fetchMany where: receiver: playerId, (err, res) ->
+  async.parallel [
+    (cb) ->
+      dao.message.fetchMany where: {
+        sender: -1
+        receiver: -1
+        type: msgConfig.MESSAGETYPE.SYSTEM
+        msgId: null
+      }, cb
+
+    (cb) ->
+      dao.message.fetchMany where: receiver: playerId, cb
+  ], (err, results) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    res = res.map (r) -> r.toJson?()
-    results = _.groupBy res, (item) -> item.type
-    next(null, {code: 200, msg: results})
+    systemMessages = results[0]
+    myMessages = results[1]
+    messages = mergeMessages(myMessages, systemMessages)
+    messages = messages.map (m) -> m.toJson?()
+    messages = _.groupBy messages, (item) -> item.type
+    next(null, {code: 200, msg: messages})
+
+Handler::deleteFriend = (msg, session, next) ->
+  playerId = session.get('playerId')
+  friendId = msg.friendId
+  console.log 'delte friend', msg
+  dao.friend.deleteFriend {
+    playerId: playerId
+    friendId: friendId
+  }, (err, res) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    next(null, {code: 200})
 
 Handler::addFriend = (msg, session, next) ->
   playerId = session.get('playerId')
   playerName = session.get('playerName')
   friendName = msg.name
 
+  friend = null
   async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo pid: playerId, (err, ply) ->
+        return cb(err) if err
+        if ply.friends.filter((f) -> f.name is friendName).length > 0
+          cb({code: 501, msg: '对方已经是你的好友'})
+        else
+          cb()
+
     (cb) ->
       playerManager.getPlayer name: friendName, cb
 
-    (friend, cb) ->
+    (res, cb) ->
+      friend = res
       dao.message.create data: {
         type: msgConfig.MESSAGETYPE.ADDFRIEND
         sender: playerId,
@@ -71,20 +161,33 @@ Handler::addFriend = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    channel = @app.get('channelService').getChannel('message', false)
-    console.log 'send message: ', channel.getMembers()
-    channel.pushMessage({route: 'onMessage', msg: msg.content})
-    next(null, {code: 200})
+    @app.get('messageService').pushByPid(
+      friend.id, 
+      {
+        route: 'onAskingFriend', 
+        msg: msg.content
+      }, (err, res) ->
+        if err
+          code = 500
+        else if res
+          code = res
+        else 
+          code = 200
+        next(null, {code: code})
+    )
 
 Handler::accept = (msg, session, next) ->
   playerId = session.get('playerId')
+  playerName = session.get('playerName')
   msgId = msg.msgId
 
+  message = null
   async.waterfall [
     (cb) ->
       dao.message.fetchOne where: id: msgId, cb
 
-    (message, cb) ->
+    (res, cb) ->
+      message = res
       if isFinalStatus(message.status)
         return cb({code: 200, msg: '已处理'})
 
@@ -94,19 +197,33 @@ Handler::accept = (msg, session, next) ->
           friendId: message.receiver
       }, cb
 
-    (res, cb) ->      
+    (friend, cb) ->      
       dao.message.update {
         where: id: msgId
         data: status: msgConfig.MESSAGESTATUS.ACCEPT
       }, cb
-  ], (err, res) ->
+  ], (err, data) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    next(null, {code: 200})
+    @app.get('messageService').pushByPid(
+      message.sender,
+      {
+        route: 'onAccept',
+        msg: "#{playerName}同意了你的好友请求"
+      }, (err, res) ->
+        if err
+          code = 500
+        else if res
+          code = res
+        else 
+          code = 200
+        next(null, {code: code})
+    )
 
 Handler::reject = (msg, session, next) ->
   playerId = session.get('playerId')
+  playerName = session.get('playerName')
   msgId = msg.msgId
 
   async.waterfall [
@@ -121,16 +238,32 @@ Handler::reject = (msg, session, next) ->
         where: id: msgId
         data: status: msgConfig.MESSAGESTATUS.REJECT
       }, cb
-  ], (err, res) ->
+  ], (err, res) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    next(null, {code: 200})
+    @app.get('messageService').pushByPid(
+      message.sender,
+      {
+        route: 'onReject',
+        msg: "#{playerName}同意了你的好友请求"
+      }, (err, res) ->
+        if err
+          code = 500
+        else if res
+          code = res
+        else 
+          code = 200
+        next(null, {code: code})
+    )
 
 Handler::giveBless = (msg, session, next) ->
   playerId = session.get('playerId')
   playerName = session.get('playerName')
   friendId = msg.friendId
+
+  if friendId is playerId 
+    return next(null, {code: 501, '不能给自己送祝福'})
 
   async.waterfall [
     (cb) ->
@@ -175,11 +308,24 @@ Handler::giveBless = (msg, session, next) ->
         content: "#{playerName}为你送来了祝福，你获得了5点的活力值"
         status: msgConfig.MESSAGESTATUS.UNHANDLED
       }, cb
-  ], (err, res) ->
+  ], (err, res) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    next(null, {code: 200})
+    @app.get('messageService').pushByPid(
+      friendId,
+      {
+        route: 'onBless',
+        msg: "#{playerName}为你送来了一个祝福"
+      }, (err, res) ->
+        if err
+          code = 500
+        else if res
+          code = res
+        else 
+          code = 200
+        next(null, {code: code})
+    )
 
 Handler::receiveBless = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -212,6 +358,3 @@ Handler::receiveBless = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     next(null, {code: 200})
-
-
-

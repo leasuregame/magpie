@@ -1,5 +1,7 @@
-dao = require('pomelo').app.get('dao')
+app = require('pomelo').app
+dao = app.get('dao')
 area = require '../../../domain/area/area'
+messageService = app.get('messageService')
 async = require('async')
 
 module.exports = (app) ->
@@ -32,7 +34,7 @@ Remote::createPlayer = (args, callback) ->
         return callback({code: 500, msg: err})
       
       area.addPlayer player
-      addPlayerToChannel(self.app, userId, serverId)
+      messageService.add(userId, serverId, player.id, player.name)
       callback(null, player.toJson())
 
 Remote::getPlayerByUserId = (userId, serverId, callback) ->
@@ -41,22 +43,13 @@ Remote::getPlayerByUserId = (userId, serverId, callback) ->
       return callback {code: 501, msg: 'can not find player by user id: ' + userId}
 
     area.addPlayer player
-    addPlayerToChannel(@app, userId, serverId)
+    messageService.add(userId, serverId, player.id, player.name)
     return callback null, player.toJson()
 
 Remote::playerLeave = (playerId, uid, serverId, callback) ->
   area.removePlayer playerId
-  removePlayerFromChannel(@app, uid, serverId)
+  messageService.leave(uid, serverId)
   callback()
-
-addPlayerToChannel = (app, uid, serverId) ->
-  channel = app.get('channelService').getChannel('message', true)
-  channel.add(uid, serverId) if not channel.getMember(uid)
-  console.log 'add user to channel', uid, serverId, channel.getMembers()
-
-removePlayerFromChannel = (app, uid, serverId) ->
-  channel = app.get('channelService').getChannel('message', true)
-  channel.leave(uid, serverId)
 
 initPlayer = (player, callback) ->
   # 添加初始卡牌信息

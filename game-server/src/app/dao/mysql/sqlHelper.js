@@ -133,7 +133,11 @@ var Statement = {
             where_str = params;
         } else if (typeof params === 'object') {
             for (var key in params) {
-                where_str += key + ' = ? and ';
+                if (params[key] == null) {
+                    where_str += key + ' is ? and '
+                } else {
+                    where_str += key + ' = ? and ';
+                }                
                 args.push(params[key]);
             }
             where_str = where_str.slice(0, -4);

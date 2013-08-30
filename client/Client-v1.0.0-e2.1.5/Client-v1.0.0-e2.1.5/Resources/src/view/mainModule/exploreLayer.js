@@ -135,7 +135,7 @@ var ExploreLayer = cc.Layer.extend({
             this._scrollViewLayer.addChild(nameLabel);
 
             var storyLabel = cc.LabelTTF.create(
-                "哈哈哈哈哈哈啊哈哈哈哈哈哈\n哈哈哈哈哈哈啊哈哈哈哈哈哈",
+                this._getDescription(chapterTable[id]),
                 "黑体",
                 20,
                 cc.size(537, 100),
@@ -227,6 +227,25 @@ var ExploreLayer = cc.Layer.extend({
 
     _hitSprite: function (sprite) {
         cc.log("ExploreLayer _showSprite");
+    },
+
+    _getDescription: function (str) {
+        cc.log("ExploreLayer _getDescription");
+
+        var description = [];
+        var len = str.length;
+
+        for (var i = 0; len > 0; ++i) {
+            if (len < 10) {
+                description[i] = str.substring(i * 10);
+            } else {
+                description[i] = str.substring(i * 10, i * 10 + 10);
+            }
+
+            len -= 6;
+        }
+
+        return description;
     }
 });
 

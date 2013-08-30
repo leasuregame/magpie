@@ -55,7 +55,6 @@ var TaskLayer = cc.Layer.extend({
 
 
         // 读配置表
-        var chapterTitleTable = outputTables.chapter_title.rows;
         var chapterTable = outputTables.chapter.rows;
 
         this._scrollViewLayer = MarkLayer.create(cc.rect(40, 198, 640, 744));
@@ -85,8 +84,8 @@ var TaskLayer = cc.Layer.extend({
             wipeOutIcon.setPosition(cc.p(530 + offsetX, 50));
             this._scrollViewLayer.addChild(wipeOutIcon, 1);
 
-            var titlesLabel = cc.LabelTTF.create(chapterTitleTable[i].name, "黑体", 30);
-            titlesLabel.setPosition(cc.p(320 + offsetX, 745));
+            var titlesLabel = cc.LabelTTF.create("第 " + i + " 大章", "黑体", 30);
+            titlesLabel.setPosition(cc.p(320 + offsetX, 738));
             this._scrollViewLayer.addChild(titlesLabel);
 
             for (var j = 1; j <= TASK_SECTION_COUNT; ++j) {

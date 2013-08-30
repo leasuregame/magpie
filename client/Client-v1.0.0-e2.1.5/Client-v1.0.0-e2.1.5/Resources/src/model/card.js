@@ -118,7 +118,6 @@ var Card = Entity.extend({
         this._hpInit = cardTable.hp;
         this._atkInit = cardTable.atk;
         this._skillId = cardTable.skill_id;
-        this._skillName = cardTable.skill_name;
 
         // 读取等级加成表
         var factorsTable = outputTables.factors.rows[this._lv];
@@ -167,6 +166,7 @@ var Card = Entity.extend({
 
         if (!this._skillRate) this._skillRate = 0;
 
+        this._skillName = skillTable.name;
         this._skillDescription = skillTable.description;
         this._skillType = skillTable.type;
         this._skillMaxLv = 5;

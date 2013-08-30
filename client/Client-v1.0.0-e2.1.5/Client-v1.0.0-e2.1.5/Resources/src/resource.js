@@ -64,13 +64,13 @@ var main_scene_image = {
     main_message_bg: main_scene_path + "main_message_bg.png",
     vip5: main_scene_path + "vip5.png",
     star1: main_scene_path + "star1.png",
-    star2: main_scene_path + "star2.png",
     ladder1: main_scene_path + "ladder1.png",
     ladder2: main_scene_path + "ladder2.png",
     tower1: main_scene_path + "tower1.png",
     tower2: main_scene_path + "tower2.png",
 
     card0: main_scene_path + "card0.png",
+    card1: main_scene_path + "card1.png",
 
     spirit1: main_scene_path + "spirit1.png",
 
@@ -223,7 +223,7 @@ var main_scene_image = {
     icon33: main_scene_path + "icon33.png",
     icon34: main_scene_path + "icon34.png",
     icon35: main_scene_path + "icon35.png",
-//    icon36: main_scene_path + "icon36.png",
+    icon36: main_scene_path + "icon36.png",
     icon37: main_scene_path + "icon37.png",
     icon38: main_scene_path + "icon38.png",
     icon39: main_scene_path + "icon39.png",

@@ -72,7 +72,8 @@ var ExploreLayer = cc.Layer.extend({
 //        this._turnRightSprite.setVisible(false);
         this.addChild(this._turnRightSprite, 1);
 
-        var titleLabel = cc.LabelTTF.create("第" + index + "章: " + outputTables.chapter.rows[index].chapter, "黑体", 30);
+        var titleIndex = Math.floor((this._index - 1) / 5) + 1;
+        var titleLabel = cc.LabelTTF.create(outputTables.chapter_title.rows[titleIndex].name, "黑体", 40);
         titleLabel.setPosition(cc.p(360, 1005));
         this.addChild(titleLabel);
 

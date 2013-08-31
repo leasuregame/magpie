@@ -6,10 +6,11 @@
             <button type="button" class="btn btn-primary" id = "btnAddCard">添加卡牌</button>
             </legend>
             <div >
-                <table class = "table table-bordered" id = "cardsList">
-                    <tr id = "th">
+                <table class = "table table-bordered table-hover" id = "cardsList">
+                    <thead id = "th">
                         <th>卡牌ID</th><th>卡牌等级</th><th>技能等级</th><th>消耗仙丹</th><th>星级</th><th>被动技能1</th><th>被动技能2</th><th>被动技能3</th><th></th><th></th>
-                    </tr>
+                    </thead>
+
                 </table>
             </div>
         </fieldset>
@@ -30,7 +31,7 @@
 
      <form  id = "cardShow" class="form-inline span5" method = "post">
         <fieldset>
-            <legend>卡牌操作</legend>
+            <legend id = "operateName"></legend>
             <div >
 
                  <div id = "card" class="form-inline span3">

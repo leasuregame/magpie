@@ -32,10 +32,13 @@ function setPlayerData() {
 };
 
 $(document).ready(function(){
-   $("#tip").hide();
-   $("#tbnUpdate").click(function(){
-       updatePlayerData();
-   });
+    $("#tip").hide();
+    $("#btnUpdate").click(function(){
+        updatePlayerData();
+    });
+    $("#btnReset").click(function(){
+        setPlayerData();
+    })
 });
 
 function updatePlayerData() {
@@ -76,7 +79,7 @@ function updatePlayerData() {
         type:"post",
         //target:$("#tip"),
         success:function(msg){
-            console.log(msg);
+           // console.log(msg);
             var inner = "<p>" + msg + "</p>";
             $("#tip").append(inner);
             $("#tip").show();

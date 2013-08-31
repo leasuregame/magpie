@@ -10,7 +10,8 @@
 
 var cards = [];
 var playerId;
-var operate;
+var operate = 1;
+var lastSelectId = null;
 
 //星级对应的最大等级
 var MaxLevelConfig = [
@@ -59,42 +60,54 @@ function setPlayerId(id) {
 
 function setCards(data) {
     cards = data;
+
+    init();
+};
+
+function init(){
+
     setCardsList();//设置卡牌列表
     setCard(cards[0].id);//设置默认显示的卡牌
+
+    setRowCss(cards[0].id);
     //eventHandle();
-};
+
+    $("#divTableId").hide();
+
+    $("#btnAddCard").click(function(){
+       // $("#divTableId").show();
+       // $("#operateName").html("添加卡牌");
+        operate = OperateConfig.ADD;
+        setCard(-1);
+        setRowCss(-1);
+    });
+
+    $("#btnOK").click(function(){
+        if(operate == OperateConfig.ADD)
+            submitAdd();
+        else if(operate == OperateConfig.UPDATE)
+            submitUpdate();
+    });
+
+    $("#btnReset").click(function(){
+        setCard($("#id").val());
+    });
+
+}
 
 //事件处理
 function eventHandle(){
     $(document).ready(function(){
 
-        $("#divTableId").hide();
-
-        $("#btnAddCard").click(function(){
-            $("#divTableId").show();
-            operate = OperateConfig.ADD;
-            setCard(-1);
-        });
-
         $(".btnUpdateCard").bind("click",function(){
             operate = OperateConfig.UPDATE;
+            setRowCss(this.value);
             setCard(this.value);
         });
 
         $(".btnDelCard").click(function(){
             submitDel(this.value);
-            delRow(this.value);
-        });
 
-        $("#btnOK").click(function(){
-            if(operate == OperateConfig.ADD)
-                submitAdd();
-            else if(operate == OperateConfig.UPDATE)
-                submitUpdate();
-        });
-
-        $("#btnReset").click(function(){
-            setCard($("#id").val());
         });
 
         $("#lv").blur(function(){
@@ -128,9 +141,11 @@ function submitAdd() {
         url:url,
         type:"post",
         success:function(msg){
-            console.log(msg);
+          //  console.log(msg);
             cards[cards.length] = msg;
-            updateCardsList();
+           // updateCardsList();
+            addRow(msg);
+            setRowCss(msg.id);
         }
     });
 }
@@ -159,10 +174,11 @@ function submitUpdate(){
             for(var i = 0;i < cards.length;i++) {
                 if(cards[i].id == data.id) {
                     cards[i] = data;
+                    updateRow(data);
                     break;
                 }
             }
-            updateCardsList();
+
         }
     });
 };
@@ -175,12 +191,26 @@ function submitDel(id){
         type:"post",
         success:function(msg){
             console.log(msg);
-           /* for(var i = 0;i < cards.length;i++) {
-                if(cards[i].id == data.id) {
-                    cards[i] = data;
+            var row = $("tr[id =" + id + "]");
+            var index = row.index();
+            if(index == 0) {
+                var d = $("tr:eq(" + (index + 2) + ")").children().eq(0).html();
+
+            }else {
+                var d = $("tr:eq(" + (index) + ")").children().eq(0).html();
+            }
+            if(msg) {
+                if(operate == OperateConfig.UPDATE) {
+                    console.log(d);
+                    setCard(d);
+                    setRowCss(d);
+
+                //console.log(row.index());
                 }
-            }*/
-          //  updateCardsList();
+
+                delRow(id);
+
+            }
         }
     });
 };
@@ -203,8 +233,15 @@ function setCard(id) {
     $("#starList").val(card.star);
     $("#tableId").val(card.tableId);
 
+    if(operate == OperateConfig.ADD) {
+        $("#divTableId").show();
+        $("#operateName").html("添加卡牌");
+    }
+    else {
+        $("#divTableId").hide();
+        $("#operateName").html("更新卡牌");
+    }
     setPassSkill(passSkills,card.star);
-    // $("#cardShow").show();
 
 };
 
@@ -280,26 +317,61 @@ function setCardsList() {
         inner += "</tr>";
     });
 
-    eventHandle();
     $("#cardsList").append(inner);
+    eventHandle();
     setPagination();
 
 };
 
-//更新表格
-function updateCardsList(){
-    delCardsList();
-    setCardsList();
+//添加一行
+function addRow(card){
+    var inner = "";
+        inner += "<tr id =" + card.id +"><td>" + card.id + "</td><td>" + card.lv + "</td><td>" + card.skillLv + "</td><td>" + card.elixir + "</td><td>" + card.star + "</td>";
+
+        for(var i = 0;i < 3;i++) {
+            if(card.passSkills.length > i)
+                inner += "<td>" + card.passSkills[i].name + "</td>";
+            else
+                inner += "<td></td>";
+        }
+
+        inner += '<td><button type="button" class="btn btn-primary btnUpdateCard" id = "btnUpdateCard" value=' + card.id + '>' + "更新" + '</button></td>';
+        inner += '<td><button type="button" class="btn btn-primary btnDelCard" id = "btnDelCard" value=' + card.id +'>' + "删除" + '</button></td>';
+        inner += "</tr>";
+
+
+        $("#cardsList").prepend(inner);
+        eventHandle();
 };
 
-//删除表格
-function delCardsList(){
-    $("tr[id !='th']").remove();
+//更新指定行
+function updateRow(data) {
+
+    var row = $("tr[id = "+ data.id +  "]").children();
+    row.eq(1).html(data.lv);
+    row.eq(2).html(data.skillLv);
+    row.eq(3).html(data.elixir);
+    row.eq(4).html(data.star);
+
+    for(var i = 0;i < 3;i++) {
+        if(data.passSkills.length > i)
+            row.eq(i + 5).html(data.passSkills[i].name);
+    }
+
 };
 
 //删除指定行
 function delRow(id){
     $("tr[id =" + id + "]").remove();
+};
+
+//设置选中行的背景色
+function setRowCss(id){
+    //console.log(id);
+    if(lastSelectId != null)
+        $("tr[id = "+ lastSelectId +  "]").css("background-color",'#ffffff');
+    $("tr[id = "+ id +  "]").css("background-color","#dff0d8");
+    lastSelectId = id;
 };
 
 //设置技能下拉框显示的值

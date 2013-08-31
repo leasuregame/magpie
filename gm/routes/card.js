@@ -119,7 +119,7 @@ var card = function(app) {
                 console.log(err);
             }else {
                  passSkills.forEach(function(pss){
-                     if(pss.id == '') {
+                     if(pss.id == '' && pss.name != '' && pss.value !='') {
                          var options = {
                              data:{
                                  cardId:data.id,

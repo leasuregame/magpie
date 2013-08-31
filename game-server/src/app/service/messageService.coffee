@@ -1,0 +1,55 @@
+Code = require '../../../shared/code'
+CHANNEL_NAME = 'MESSAGE'
+
+module.exports = (app) ->
+	new Service(app) 
+
+class Service
+	constructor: (@app) ->
+		@uidMap = {}
+		@pidMap = {}
+
+	add: (uid, serverId, playerId, playerName) ->
+		channel = @app.get('channelService').getChannel(CHANNEL_NAME, true)
+		if not channel 
+			return Code.MESSAGE.FA_CHANNEL_CREATE
+
+		channel.add(uid, serverId)
+		addRecord(@, uid, serverId, playerId, playerName)
+		return Code.OK
+
+	leave: (uid, serverId) ->
+		channel = @app.get('channelService').getChannel(CHANNEL_NAME, true)
+		channel.leave(uid, serverId) if channel
+		removeRecord(@, uid, serverId)
+
+	pushByUid: (uid, msg, cb) ->
+		record = @uidMap[uid]
+		if not record 
+			return cb(null, Code.MESSAGE.FA_USER_NOT_ONLINE)
+
+		@app.get('channelService').pushMessageByUids(msg.route, [{uid: record.uid, sid: record.sid}], cb)
+
+	pushByPid: (pid, msg, cb) ->
+		record = @pidMap[pid]
+		if not record 
+			return cb(null, Code.MESSAGE.FA_USER_NOT_ONLINE)
+		console.log 'push message by playerId:', pid, msg, record
+		console.log @app.get('channelService').getChannel(CHANNEL_NAME).getMembers()
+		@app.get('channelService').pushMessageByUids(msg.route, msg, [{uid: record.uid, sid: record.sid}], cb)
+
+	pushMessage: (msg, cb) ->
+		channel = @app.get('channelService').getChannel(CHANNEL_NAME)
+		if not channel
+			return cb(new Error('channel ' + CHANNEL_NAME + ' dose not exist'))
+
+		channel.pushMessage(msg.route, msg, cb)
+
+addRecord = (self, uid, sid, pid, playerName) ->
+	record = {uid: uid, sid: sid, pid: pid, name: playerName}
+	self.uidMap[uid] = record
+	self.pidMap[pid] = record
+
+removeRecord = (self, uid) ->
+	record = self.uidMap[uid]
+	delete self.uidMap[uid] if recode

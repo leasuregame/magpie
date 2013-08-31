@@ -1,6 +1,7 @@
 playerManager = require '../../../manager/playerManager'
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
+lotteryConfig = require '../../../../config/data/lottery'
 
 module.exports = (app) ->
   new Handler(app)
@@ -14,7 +15,7 @@ Handler::lottery = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    if player.dailyGift.lotteryCount <= 0
+    if player.dailyGift.lotteryCount >= lotteryConfig.DAILY_LOTTERY_COUNT
       return next(null, {code: 501, msg: '您的抽奖次数已用完'})
 
     if player.gold < 10
@@ -28,7 +29,7 @@ Handler::lottery = (msg, session, next) ->
       player.decrease('gold', 10)
 
     ### 抽奖次数减一 ###
-    player.updateGift 'lotteryCount', player.dailyGift.lotteryCount-1
+    player.updateGift 'lotteryCount', player.dailyGift.lotteryCount+1
 
     resource = randomReward()
     if resource.type is 'power'

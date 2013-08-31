@@ -1,7 +1,10 @@
+app = require('pomelo').app
 playerManager = require '../../../manager/playerManager'
 rankManager = require '../../../manager/rankManager'
 table = require '../../../manager/table'
 async = require 'async'
+logger = require('pomelo-logger').getLogger(__filename)
+msgConfig = require '../../../../config/data/message'
 _ = require 'underscore'
 
 INTERVALS = 
@@ -94,6 +97,8 @@ Handler::challenge = (msg, session, next) ->
       bl.rewards = rewards
       next(null, {code: 200, msg: {battleLog: bl, counts: player.rank?.counts}})
 
+      saveBattleLog(bl)
+
 Handler::grantTitle = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   honnorPoint = msg.honnorPoint
@@ -143,3 +148,32 @@ filterPlayersInfo = (players, rankings) ->
       type: rankings[p.rank.ranking]
     }
     
+saveBattleLog = (bl) ->
+  playerId = bl.own.id
+  targetId = bl.enemy.id
+
+  app.get('dao').battleLog.create data: {
+    own: playerId
+    enemy: targetId
+    battleLog: bl
+  }, (err, res) ->
+    if err
+      logger.error '[fail to save battleLog]' + err
+
+    app.get('dao').message.create data: {
+      sender: playerId
+      receiver: targetId
+      content: "玩家#{playerId}在竞技场中挑战了你"
+      type: msgConfig.MESSAGETYPE.BATTLENOTICE
+      status: msgConfig.MESSAGESTATUS.NOTICE
+      options: {battleLogId: res.id}
+    }, (err, message) ->
+      if err
+        logger.error '[fail to create message]' + err
+
+      app.get('messageService').pushByPid targetId, {
+        route: 'onMessage'
+        msg: message.toJson()
+      }, (err, res) ->
+        if err
+          logger.error "[fail to send message to #{targetId}]" + err

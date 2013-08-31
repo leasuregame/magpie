@@ -4,39 +4,27 @@ describe("Connector Server", function() {
   var myName = 'wuzhanghai';
 
   beforeAll(function() {
-    doAjax('/createDb', {}, function(data) {});
+    doAjax('/loaddata/csv', {}, function(data) {});
   })
 
   describe('Player Handler', function() {
+    var arthur = {
+      id: 100,
+      playerId: 100,
+      areaId: 1,
+      account: 'arthur',
+      password: '1'
+    };
 
+    var papa = {
+      id: 103,
+      playerId: 103,
+      areaId: 1,
+      account: 'papa',
+      password: '1'
+    };
     beforeEach(function() {
-      doAjax('/adduser', {
-        account: 'test_email_2@qq.com',
-        password: '1'
-      }, function(data) {
-        userid = data.uid;
-      });
-
-      request('connector.userHandler.login', {
-        account: 'test_email_2@qq.com',
-        password: '1',
-        areaId: 1
-      }, function(data) {
-        if (data.code == 200) {
-          console.log('login success.', data);
-        } else {
-          console.log('login faild.', data);
-        }
-      });
-    });
-
-    afterEach(function() {
-      doAjax('/removeuser', {
-        uid: userid
-      }, function(data) {});
-      doAjax('/removePlayer', {
-        playerId: pid
-      }, function(data) {});
+      loginWith(arthur.account, arthur.password, arthur.areaId);
     });
 
     describe("when player not exists", function() {
@@ -45,7 +33,6 @@ describe("Connector Server", function() {
           name: myName,
           areaId: 1
         }, function(data) {
-          console.log('create new palyer');
           console.log(data);
           var player = data.msg.player;
           pid = data.msg.player.id;
@@ -60,7 +47,7 @@ describe("Connector Server", function() {
               player: {
                 id: pid,
                 createTime: player.createTime,
-                userId: userid,
+                userId: 100,
                 areaId: 1,
                 name: 'wuzhanghai',
                 power: {
@@ -88,8 +75,14 @@ describe("Connector Server", function() {
                   lotteryCount: 500,
                   lotteryFreeCount: 0,
                   power: [],
-                  receivedBlessCount: 0,
-                  gaveBlessCount: 0
+                  receivedBless: {
+                    count: 15,
+                    givers: []
+                  },
+                  gaveBless: {
+                    count: 15,
+                    receivers: []
+                  }
                 },
                 skillPoint: 0,
                 energy: 0,
@@ -101,9 +94,10 @@ describe("Connector Server", function() {
                 spiritPool: {
                   lv: 0,
                   exp: 0,
-                  collectCount: 0
+                  collectCount: 15
                 },
-                rank: null
+                rank: {},
+                friends: []
               }
             }
           });
@@ -113,27 +107,10 @@ describe("Connector Server", function() {
     });
 
     describe("when player exists", function() {
-      var pid1;
-
-      beforeEach(function() {
-        doAjax('/addPlayer', {
-          userId: userid,
-          name: myName,
-          areaId: 1
-        }, function(data) {
-          pid1 = data.playerId;
-        });
-      });
-
-      afterEach(function() {
-        doAjax('removePlayer', {
-          playerId: pid1
-        }, function() {});
-      })
 
       it("should can not create duplicate player", function() {
         request('connector.playerHandler.createPlayer', {
-          name: myName,
+          name: 'arthur',
           areaId: 1
         }, function(data) {
           console.log('create dup player');

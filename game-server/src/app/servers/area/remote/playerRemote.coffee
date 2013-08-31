@@ -1,11 +1,20 @@
-dao = require('pomelo').app.get('dao')
+app = require('pomelo').app
+dao = app.get('dao')
 area = require '../../../domain/area/area'
+messageService = app.get('messageService')
 async = require('async')
 
-exports.createPlayer = (args, callback) ->
+module.exports = (app) ->
+  new Remote(app)
+
+Remote = (@app) ->
+
+Remote::createPlayer = (args, callback) ->
   name = args.name
   userId = args.userId
   areaId = args.areaId
+  serverId = args.serverId
+  self = this
 
   dao.player.fetchOne where: {name: name}, (err, player) ->
     if not err and player
@@ -25,18 +34,21 @@ exports.createPlayer = (args, callback) ->
         return callback({code: 500, msg: err})
       
       area.addPlayer player
+      messageService.add(userId, serverId, player.id, player.name)
       callback(null, player.toJson())
 
-exports.getPlayerByUserId = (userId, callback) ->
-  dao.player.getPlayerInfo {sync: true, where: userId: userId}, (err, player) ->
+Remote::getPlayerByUserId = (userId, serverId, callback) ->
+  dao.player.getPlayerInfo {sync: true, where: userId: userId}, (err, player) =>
     if err and not player
       return callback {code: 501, msg: 'can not find player by user id: ' + userId}
 
     area.addPlayer player
+    messageService.add(userId, serverId, player.id, player.name)
     return callback null, player.toJson()
 
-exports.playerLeave = (playerId, callback) ->
+Remote::playerLeave = (playerId, uid, serverId, callback) ->
   area.removePlayer playerId
+  messageService.leave(uid, serverId)
   callback()
 
 initPlayer = (player, callback) ->

@@ -15,6 +15,7 @@ Handler::createPlayer = (msg, session, next) ->
     name: name
     userId: uid
     areaId: areaId
+    serverId: @app.getServerId()
   }, (err, player) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
@@ -55,7 +56,7 @@ onUserLeave = (app, session, reason) ->
   if not session or not session.uid
     return
 
-  app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), (err) ->
+  app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), session.uid, app.getServerId(), (err) ->
     if err
       logger.error 'user leave error' + err
 

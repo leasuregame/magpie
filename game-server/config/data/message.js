@@ -1,4 +1,4 @@
-module.exports = {
+exp = module.exports = {
 	MESSAGETYPE: {
 		ADDFRIEND: 1,
 		MESSAGE: 2,
@@ -18,3 +18,9 @@ module.exports = {
 	MAX_GIVE_COUNT: 15,
 	MAX_RECEIVE_COUNT: 15
 };
+
+exp.TYPE_MAP = {}
+exp.TYPE_MAP[exp.MESSAGETYPE.ADDFRIEND] = 'friend'
+exp.TYPE_MAP[exp.MESSAGETYPE.MESSAGE] = 'friend'
+exp.TYPE_MAP[exp.MESSAGETYPE.BATTLENOTICE] = 'battle'
+exp.TYPE_MAP[exp.MESSAGETYPE.SYSTEM] = 'system'

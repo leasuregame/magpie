@@ -18,6 +18,20 @@ mergeMessages = (myMessages, systemMessages) ->
       myMessages.push m
   return myMessages
 
+changeGroupNameAndSort = (messages) ->
+  results = {}
+  for k, v of messages
+    name = msgConfig.TYPE_MAP[k]
+    if typeof results[name] is 'undefined'
+      results[name] = v
+    else
+      results[name].push v
+
+  for n, items of results
+    items.sort (x, y) -> x.createTime < y.createTime
+
+  results
+
 sendMessage = (app, target, msg, next) ->
   callback = (err, res) ->
     if err
@@ -125,12 +139,13 @@ Handler::messageList = (msg, session, next) ->
     messages = messages.map (m) -> 
       if m.type is msgConfig.MESSAGETYPE.MESSAGE then m.toLeaveMessage?() else m.toJson?()
     messages = _.groupBy messages, (item) -> item.type
+    messages = changeGroupNameAndSort(messages)
     next(null, {code: 200, msg: messages})
 
 Handler::deleteFriend = (msg, session, next) ->
   playerId = session.get('playerId')
   friendId = msg.friendId
-  console.log 'delte friend', msg
+
   dao.friend.deleteFriend {
     playerId: playerId
     friendId: friendId

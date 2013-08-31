@@ -45,8 +45,8 @@ Handler::sysMsg = (msg, session, next) ->
 
   dao.message.create data: {
     options: options
-    sender: -1
-    receiver: -1
+    sender: SYSTEM
+    receiver: SYSTEM
     content: content
     type: msgConfig.MESSAGETYPE.SYSTEM
     status: msgConfig.MESSAGESTATUS.UNHANDLED

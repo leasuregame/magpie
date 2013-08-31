@@ -15,36 +15,36 @@ var MessageDao = (function (_super) {
     MessageDao.domain = Message;
     MessageDao.syncKey = 'messageSync.update';
 
-    MessageDao.systemMessage = function(options, cb) {
-        var queryReceived = 'select m.* from message as m \
-            left join message as s on m.msgId = s.id \
-            where m.sender = -1 and m.type = 4 \
-            and m.receiver = ?';
-        var queryAll = 'select * from message where sender = -1 and receiver = -1 and \
-            type = 4 and msgId is null';
+    // MessageDao.systemMessage = function(options, cb) {
+    //     var queryReceived = 'select m.* from message as m \
+    //         left join message as s on m.msgId = s.id \
+    //         where m.sender = -1 and m.type = 4 \
+    //         and m.receiver = ?';
+    //     var queryAll = 'select * from message where sender = -1 and receiver = -1 and \
+    //         type = 4 and msgId is null';
 
-        var sql = queryAll, args = [];
-        if (options.receiver) {
-            sql = queryReceived;
-            args = [options.reveiver];
-        }
-        return dbClient.query(sql, args, function (err, res) {
-            if (err) {
-                logger.error("[SQL ERROR, when query system message]", sql, args);
-                logger.error(err.stack);
-                return cb({
-                    code: err.code,
-                    msg: err.message
-                });
-            }
+    //     var sql = queryAll, args = [];
+    //     if (options.receiver) {
+    //         sql = queryReceived;
+    //         args = [options.reveiver];
+    //     }
+    //     return dbClient.query(sql, args, function (err, res) {
+    //         if (err) {
+    //             logger.error("[SQL ERROR, when query system message]", sql, args);
+    //             logger.error(err.stack);
+    //             return cb({
+    //                 code: err.code,
+    //                 msg: err.message
+    //             });
+    //         }
 
-            if ( !!res && res.length > 0) {
-                cb(null, res);
-            } else {
-                cb(null, []);
-            }
-        });
-    };
+    //         if ( !!res && res.length > 0) {
+    //             cb(null, res);
+    //         } else {
+    //             cb(null, []);
+    //         }
+    //     });
+    // };
 
     return MessageDao;
 })(DaoBase);

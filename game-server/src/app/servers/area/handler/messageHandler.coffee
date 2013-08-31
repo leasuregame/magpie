@@ -6,7 +6,6 @@ async = require 'async'
 
 SYSTEM = -1
 
-
 isFinalStatus = (status) ->
   _.contains msgConfig.FINALSTATUS, status
 
@@ -27,7 +26,7 @@ sendMessage = (app, target, msg, next) ->
       code = res
     else 
       code = 200
-    next(null, {code: code})
+    next(null, {code: code}) if next?
 
   if target isnt null
     app.get('messageService').pushByPid target, msg, callback
@@ -79,6 +78,7 @@ Handler::leaveMessage = (msg, session, next) ->
   dao.message.create data: {
     type: msgConfig.MESSAGETYPE.MESSAGE
     sender: playerId
+    options: {playerName: playerName}
     receiver: friendId
     content: content
     status: msgConfig.MESSAGESTATUS.NOTICE
@@ -88,7 +88,7 @@ Handler::leaveMessage = (msg, session, next) ->
 
     sendMessage @app, friendId, {
       route: 'OnMessage'
-      msg: res.toJson()
+      msg: res.toLeaveMessage()
     }, next
 
 Handler::readMessage = (msg, session, next) ->
@@ -122,7 +122,8 @@ Handler::messageList = (msg, session, next) ->
     systemMessages = results[0]
     myMessages = results[1]
     messages = mergeMessages(myMessages, systemMessages)
-    messages = messages.map (m) -> m.toJson?()
+    messages = messages.map (m) -> 
+      if m.type is msgConfig.MESSAGETYPE.MESSAGE then m.toLeaveMessage?() else m.toJson?()
     messages = _.groupBy messages, (item) -> item.type
     next(null, {code: 200, msg: messages})
 
@@ -159,13 +160,27 @@ Handler::addFriend = (msg, session, next) ->
 
     (res, cb) ->
       friend = res
-      dao.message.create data: {
+      dao.message.fetchOne where: {
         type: msgConfig.MESSAGETYPE.ADDFRIEND
-        sender: playerId,
-        receiver: friend.id,
-        content: "#{playerName}请求加你为好友！"
-        status: msgConfig.MESSAGESTATUS.ASKING
-      }, cb
+        sender: playerId
+        receiver: friend.id
+      }, (err, res) ->
+        if not err and !!res
+          cb(null, true)
+        else 
+          cb(null, false)
+
+    (exist, cb) ->
+      if not exist
+        dao.message.create data: {
+          type: msgConfig.MESSAGETYPE.ADDFRIEND
+          sender: playerId
+          receiver: friend.id
+          content: "#{playerName}请求加你为好友！"
+          status: msgConfig.MESSAGESTATUS.ASKING
+        }, cb
+      else 
+        cb()
   ], (err, msg) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
@@ -173,7 +188,7 @@ Handler::addFriend = (msg, session, next) ->
     sendMessage @app, friend.id, {
       route: 'onMessage'
       msg: msg.toJson()
-    }, next
+    }, next if msg?
 
 Handler::accept = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -196,14 +211,25 @@ Handler::accept = (msg, session, next) ->
           friendId: message.receiver
       }, cb
 
-    (friend, cb) ->      
+    (friend, cb) ->  
+      message.status = msgConfig.MESSAGESTATUS.ACCEPT
       dao.message.update {
         where: id: msgId
         data: status: msgConfig.MESSAGESTATUS.ACCEPT
       }, cb
-  ], (err, data) =>
+
+    (updated, cb) ->
+      playerManager.getPlayer id: message.sender, cb
+  ], (err, sender) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    next(null, {code: 200, msg: {
+      id: sender.id
+      name: sender.name
+      lv: sender.lv
+      ability: sender.ability
+    }})
 
     sendMessage @app, message.sender, {
       route: 'onMessage'
@@ -231,10 +257,11 @@ Handler::reject = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    sendMessage @app, message.sender, {
-      route: 'onMessage'
-      msg: "#{playerName}同意了你的好友请求"
-    }
+    next(null, {code: 200})
+    # sendMessage @app, message.sender, {
+    #   route: 'onMessage'
+    #   msg: "#{playerName}拒绝了你的好友请求"
+    # }
 
 Handler::giveBless = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -292,9 +319,9 @@ Handler::giveBless = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     sendMessage @app, friendId, {
-      route: 'onBless'
+      route: 'onMessage'
       msg: res.toJson()
-    }
+    }, next
 
 Handler::receiveBless = (msg, session, next) ->
   playerId = session.get('playerId')

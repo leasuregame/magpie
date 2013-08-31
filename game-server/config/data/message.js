@@ -17,4 +17,4 @@ module.exports = {
 	FINALSTATUS: [2, 3, 4, 6],
 	MAX_GIVE_COUNT: 15,
 	MAX_RECEIVE_COUNT: 15
-}
+};

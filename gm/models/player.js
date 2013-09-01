@@ -27,7 +27,6 @@ Player.update = function(options,cb){
             return cb(err,false);
         }else {
             return cb(null,true);
-
         }
 
     });
@@ -44,6 +43,8 @@ Player.getPlayerInfo = function(options,cb){
     });
 
 };
+
+
 
 
 

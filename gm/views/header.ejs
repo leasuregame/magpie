@@ -28,16 +28,15 @@
       <a class="brand" href="/">GM</a>
       <div class="nav-collapse">
           <ul class="nav">
-          <li class="active">
-          <a href="/">首页</a>
-          </li> <% if (!user) { %>
+          <% if (!user) { %>
           <li><a href="/login">登录</a></li>
           <% } else { %>
-          <li><a href="/player">玩家数据修改</a></li>
-          <li><a href='/card'>卡牌操作</a></li>
+          <li><a href="/playerLogin">选择玩家</a></li>
+          <li><a href="/playerData">玩家数据修改</a></li>
+          <li><a href='/cardData'>卡牌操作</a></li>
           <li><a href="/reward">补偿或奖励</a></li>
           <li><a href="/dataTest">数值平衡测试</a></li>
-           <li><a href="/player">选择玩家</a></li>
+
            <% if(user.isRoot == 1) { %>
             <li><a href="/reg">添加GM用户</a></li>
            <% } %>
@@ -59,11 +58,12 @@
           <div class="form-inline span2">
             <div class="well sidebar-nav">
               <ul class="nav nav-list">
-                <li><a title="玩家数据修改" href="/player">玩家数据修改</a></li>
-                <li><a title = "卡牌操作" href='/card'>卡牌操作</a></li>
+                 <li><a title="选择玩家" href="/playerLogin">选择玩家</a></li>
+                <li><a title="玩家数据修改" href="/playerData">玩家数据修改</a></li>
+                <li><a title = "卡牌操作" href='/cardData'>卡牌操作</a></li>
                 <li><a title="补偿奖赏" href="/reward">补偿奖赏</a></span>
                 <li><a title="数值平衡测试" href="/dataTest">数值平衡测试</a></li>
-                 <li><a title="选择玩家" href="/player">选择玩家</a></li>
+
                 <% if(user.isRoot == 1) {%>
                      <li><a title="添加GM用户" href="/reg">添加GM用户</a></li>
                 <% } %>

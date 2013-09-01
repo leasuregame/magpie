@@ -16,34 +16,35 @@ var Url = require('url');
 var player = function(app) {
 
     //玩家数据修改
-    app.get('/player',function(req , res){
+    app.get('/playerLogin',function(req , res){
 
 
+        var url = Url.parse(req.url,true);
+        var query = url.query;
+       // console.log(url + "   " + query);
+        var target = query["target"] || 'playerLogin';
+       // console.log(target);
+        if(!req.session.player)
+            target = 'playerLogin';
         Area.getAreasList(function(areas) {
-            res.render('player',{
+
+            res.render(target,{
                 title : '玩家数据修改',
                 user : req.session.user,
-                playerId:req.session.playerId,
+                player:req.session.player,
+                area:req.session.area,
                 areas:areas,
                 success:req.flash('success').toString(),
                 error:req.flash('error').toString()
             });
         });
 
-
     });
 
-    app.get('/playerData',function(req ,res){
+    app.post('/playerLogin',function(req,res){
 
-        console.log(req.url);
-        var url = Url.parse(req.url,true);
-        var query = url.query;
-
-        var playerName = query['playerName'];
-       // console.log(url);
-        var area = JSON.parse(query['area']);
-        //console.log(area);
-
+        var playerName = req.body.playerName;//query['playerName'];
+        var area = JSON.parse(req.body.area);//JSON.parse(query['area']);
         var db = getDB(area["id"]);
         dbClient.init(db);
 
@@ -54,26 +55,40 @@ var player = function(app) {
             }
         };
 
-        playerDao.getPlayerInfo(player,function(err,Player){
+        Player.getPlayerInfo(player,function(err,Player){
             if(err) {
-               // console.log(err);
                 req.flash('error','没有该玩家的信息');
                 return res.redirect('/player');
             }else {
-                req.session.playerId = Player.id,
-                console.log(Player);
+                req.session.player = Player;
+                req.session.area = area;
                 res.render('playerData',{
                     title : '玩家数据修改',
                     user : req.session.user,
-                    playerId:req.session.playerId,
-                    player : Player,
-                    area : area,
+                    player : req.session.player,
+                    area : req.session.area,
                     success:req.flash('success').toString(),
                     error:req.flash('error').toString()
                 });
             }
         });
 
+    });
+
+
+    app.get('/playerData',function(req,res){
+        if(req.session.player) {
+            res.render('playerData',{
+                title : '玩家数据修改',
+                user : req.session.user,
+                player : req.session.player,
+                area : req.session.area,
+                success:req.flash('success').toString(),
+                error:req.flash('error').toString()
+            });
+        }else {
+            res.redirect('/playerLogin?target=playerData');
+        }
     });
 
     app.post('/playerData',function(req , res){
@@ -89,14 +104,14 @@ var player = function(app) {
 
         var options = {
             where :{
-                name : player["name"],
+                name : data.name,
                 areaId : area.id
             },
             data:data
 
         };
 
-        playerDao.update(options,function(err,isOK){
+        Player.update(options,function(err,isOK){
             if(err) {
                // console.log(err);
                 res.send('修改数据失败');

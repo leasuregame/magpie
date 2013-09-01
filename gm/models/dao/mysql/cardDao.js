@@ -81,51 +81,7 @@ var CardDao = (function(_super) {
 					if (err) {
 						return cb(err);
 					}
-                   /* var id = 0;
-                    var data = new Array();
-                    for(var i = 0;i < cards.length;i++) {
-                        passiveSkillDao.fetchMany({
-                            where: {
-                                cardId: cards[i].id
-                            },
-                            sync: options.sync
-                        }, function(err,passSkills){
-                            // console.log(card);
-                            //console.log(passSkills);
-                           // console.log(i);
-                            var card = cards[id];
-                            card["passSkills"] = passSkills;
-                            data[id] = card;
-                           // console.log(data[id]);
-                            id++;
-                        });
-                    }
-                    /*
-					cards.forEach(function(card) {
-						var _pss = _.where(pss, {
-							cardId: card.id
-						});
 
-                        passiveSkillDao.fetchMany({
-                            where: {
-                                cardId: card.id
-                            },
-                            sync: options.sync
-                        }, function(err,passSkills){
-                           // console.log(card);
-                            card["passSkills"] = passSkills;
-                          //  console.log(card);
-                        });
-						/*if (_pss !== null) {
-                            console.log(card);
-                            var c = Card(card);
-							c.addPassiveSkills(_pss);
-						}
-
-
-					});
-                    */
-                    //console.log(pss);
                     for(var i = 0;i < cards.length;i++) {
                         cards[i].passSkills = [];
                         for(var j = 0;j < pss.length;j++)

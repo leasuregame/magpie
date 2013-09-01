@@ -54,7 +54,7 @@ var routes = function(app){
             }
             req.session.user = user;
             req.flash('success','登录成功');
-            res.redirect('/');
+            res.redirect('/playerLogin');
         });
     });
 

@@ -42,29 +42,30 @@ $(document).ready(function(){
 });
 
 function updatePlayerData() {
-    console.log(player);
-    player.lv = $("#lv").val();
-    player.money = $("#money").val();
-    player.gold = $("#gold").val();
+   // console.log(player);
+    var data = {};
+    data.lv = $("#lv").val();
+    data.money = $("#money").val();
+    data.gold = $("#gold").val();
 
     var power = {
         time : Date.now(),
         value : $("#power").val()
     };
 
-    player.power = power;
+    data.power = power;
 
-    player.skillPoint = $("#skillPoint").val();
-    player.fragments = $("#fragments").val();
-    player.energy = $("#energy").val();
-    player.elixir = $("#elixir").val();
+    data.skillPoint = $("#skillPoint").val();
+    data.fragments = $("#fragments").val();
+    data.energy = $("#energy").val();
+    data.elixir = $("#elixir").val();
 
     var spiritor = {
         lv:$("#spiritor").val(),
         spirit:JSON.parse(player.spiritor).spirit
     };
 
-    player.spiritor = JSON.stringify(spiritor);
+    data.spiritor = JSON.stringify(spiritor);
 
     var spiritPool = {
         lv:$("#spiritPoolLv").val(),
@@ -72,10 +73,12 @@ function updatePlayerData() {
         collectCount:$("#spiritPoolCount").val()
     }
 
-    player.spiritPool = JSON.stringify(spiritPool);
-
+    data.spiritPool = JSON.stringify(spiritPool);
+    data.name = player.name;
+   // data.name = player.name;
+   console.log(data);
     $.ajax({
-        url:"/playerData?player=" + JSON.stringify(player) + "&area=" + JSON.stringify(area),
+        url:"/playerData?player=" + JSON.stringify(data) + "&area=" + JSON.stringify(area),
         type:"post",
         //target:$("#tip"),
         success:function(msg){

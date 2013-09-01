@@ -2,7 +2,7 @@
 
      <div class="form-inline span5">
         <fieldset>
-            <legend><%=areaName%>:<%=playerName%>拥有的卡牌
+            <legend><%=area["name"]%>:<%=player["name"]%>拥有的卡牌
             <button type="button" class="btn btn-primary" id = "btnAddCard">添加卡牌</button>
             </legend>
             <div >
@@ -131,8 +131,8 @@
      <script src="/javascripts/cards.js"></script>
 
      <script type="text/javascript">
-          setCards(<%- JSON.stringify(cards) %>);
-          setPlayerId(<%= playerId %>);
+          setCards(<%- JSON.stringify(player.cards) %>);
+          setPlayerId(<%= player.id %>);
      </script>
 
 <%- include footer %>

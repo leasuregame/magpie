@@ -74,6 +74,7 @@ var PlayerDao = (function(_super) {
             //console.log(cards);
             //player.addCards(cards);
             //player.set('rank', rank);
+            player.cards = cards;
             return cb(null, player);
         });
     };

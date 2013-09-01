@@ -296,6 +296,7 @@ function getData() {
             value:$("#skill3Value").val()
         }
     }
+    data.playerId = playerId;
     return data;
 };
 

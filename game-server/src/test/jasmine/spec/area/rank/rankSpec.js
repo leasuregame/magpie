@@ -3,7 +3,7 @@ var checkChallengeResults = function(rankId, ranking, challenger, isWin, data) {
     win = 1,
     lose = 0,
     winningStreak = 1,
-    recentChallenger = [challenger];
+    recentChallenger = challenger == null ? [] : [challenger];
 
   if (!isWin) {
     win = 0;
@@ -34,7 +34,7 @@ describe("Area Server", function() {
     });
 
     describe("challenge", function() {
-      describe("when one challenge to other", function() {
+      describe("高排位挑战低排位", function() {
         beforeEach(function() {
           loginWith('user4', '1', 1);
         });
@@ -54,11 +54,42 @@ describe("Area Server", function() {
             ]);
 
             if (isWin) {
-              checkChallengeResults(2, 20001, 100, isWin, data);
-              checkChallengeResults(1, 20000, 101, !isWin, data);
-            } else {
-              checkChallengeResults(2, 20000, 100, isWin, data);
               checkChallengeResults(1, 20001, 101, !isWin, data);
+              checkChallengeResults(2, 20000, null, isWin, data);
+            } else {
+              checkChallengeResults(1, 20001, 101, !isWin, data);
+              checkChallengeResults(2, 20000, null, isWin, data);
+            }
+          });
+        });
+
+      });
+
+      describe("低排位挑战高排位", function() {
+        beforeEach(function() {
+          loginWith('arthur', '1', 1);
+        });
+
+        it("should can be return battle log", function() {
+          request('area.rankHandler.challenge', {
+            targetId: 101
+          }, function(data) {
+            console.log(data);
+            expect(data.code).toEqual(200);
+            expect(data.msg.battleLog).toBeBattleLog();
+            expect(['own', 'enemy']).toContain(data.msg.battleLog.winner);
+
+            var isWin = data.msg.battleLog.winner == 'own';
+            expect(data.msg.battleLog.rewards).hasProperties([
+              'exp', 'money', 'elixir'
+            ]);
+
+            if (isWin) {
+              checkChallengeResults(1, 20000, null, isWin, data);
+              checkChallengeResults(2, 20001, 100, !isWin, data);
+            } else {
+              checkChallengeResults(1, 20001, null, isWin, data);
+              checkChallengeResults(2, 20000, 100, !isWin, data);
             }
           });
         });

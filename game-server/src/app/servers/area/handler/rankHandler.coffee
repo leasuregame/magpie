@@ -46,7 +46,7 @@ Handler::rankingList = (msg, session, next) ->
       return next(null, {code: err.code, msg: err.message})
 
     rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK \
-      for p in players when p.playerId isnt playerId and playerId in p.rank.counts.recentChallenger
+      for p in players when p.id isnt playerId and p.id in player.rank.counts.recentChallenger
 
     players = filterPlayersInfo(players, rankings)
     players.sort (x, y) -> x.ranking - y.ranking
@@ -54,6 +54,7 @@ Handler::rankingList = (msg, session, next) ->
 
 Handler::challenge = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
+  playerName = session.get('playerName')
   targetId = msg.targetId
 
   player = null
@@ -97,7 +98,7 @@ Handler::challenge = (msg, session, next) ->
       bl.rewards = rewards
       next(null, {code: 200, msg: {battleLog: bl, counts: player.rank?.counts}})
 
-      saveBattleLog(bl)
+      saveBattleLog(bl, playerName)
 
 Handler::grantTitle = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -148,9 +149,14 @@ filterPlayersInfo = (players, rankings) ->
       type: rankings[p.rank.ranking]
     }
     
-saveBattleLog = (bl) ->
+saveBattleLog = (bl, playerName) ->
   playerId = bl.own.id
   targetId = bl.enemy.id
+
+  if bl.winner is 'own'
+    result = '你输了'
+  else
+    result = '你赢了'
 
   app.get('dao').battleLog.create data: {
     own: playerId
@@ -163,7 +169,7 @@ saveBattleLog = (bl) ->
     app.get('dao').message.create data: {
       sender: playerId
       receiver: targetId
-      content: "玩家#{playerId}在竞技场中挑战了你"
+      content: "玩家#{playerName}在竞技场中挑战了你，" + result 
       type: msgConfig.MESSAGETYPE.BATTLENOTICE
       status: msgConfig.MESSAGESTATUS.NOTICE
       options: {battleLogId: res.id}

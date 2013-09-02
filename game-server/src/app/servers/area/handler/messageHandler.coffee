@@ -161,7 +161,7 @@ Handler::deleteFriend = (msg, session, next) ->
 Handler::addFriend = (msg, session, next) ->
   playerId = session.get('playerId')
   playerName = session.get('playerName')
-  friendName = msg.name
+  friendName = msg.friendName
 
   friend = null
   async.waterfall [

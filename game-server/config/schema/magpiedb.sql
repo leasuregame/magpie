@@ -10,6 +10,8 @@ CREATE TABLE IF NOT EXISTS `player` (
   `name` VARCHAR(50) COLLATE utf8_unicode_ci NOT NULL,
   `power` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `lv` SMALLINT(5) UNSIGNED DEFAULT '0',
+  `vip` SMALLINT(2) UNSIGNED DEFAULT '0',
+  `cash` INT UNSIGNED '0', 
   `exp` INT(10) UNSIGNED DEFAULT '0',
   `money` INT(10) UNSIGNED DEFAULT '0',
   `gold`INT(10) UNSIGNED DEFAULT '0',

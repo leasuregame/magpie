@@ -120,8 +120,10 @@ describe("Area Server", function() {
 
 				function doPassBarrier(layer) {
 					it('爬塔第 ' + layer + ' 层', function() {
-						request('area.taskHandler.passBarrier', {}, function(data) {
-							console.log('闯关', data);
+						request('area.taskHandler.passBarrier', {
+							layer: layer
+						}, function(data) {
+							console.log('第' + layer + '层：', data);
 							expect(data.code).toEqual(200);
 							expect(data.msg).toBeDefined();
 							expect(data.msg).hasProperties([
@@ -144,11 +146,18 @@ describe("Area Server", function() {
 					});
 				}
 
-				for (var i = 1; i < 51; i++) {
+				for (var i = 1; i < 101; i++) {
 					(function(layer) {
 						doPassBarrier(layer);
 					})(i);
 				}
+
+			});
+
+			discribe('tear down', function() {
+				it('disconnect', function() {
+					pomelo.disconnect();
+				});
 
 			});
 		});

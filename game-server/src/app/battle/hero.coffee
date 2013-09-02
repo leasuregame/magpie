@@ -111,7 +111,7 @@ class Hero extends Module
       
       if enemy.isDodge()
         # 闪避
-        _step.d.push _d
+        _step.d.push enemy.idx
         _step.e.push 0
         log.debug enemy.idx, '闪避'
         continue

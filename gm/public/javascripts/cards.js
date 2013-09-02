@@ -524,15 +524,15 @@ function updatePassSkill(star) {
 
 //分页显示功能
 function setPagination() {
-
-    var total = $("#cardsList tr").length;//总条数
+    /*
+    var total = $("#cardsList tbody tr").length;//总条数
 
     var current_items = 10;//每页显示10条
     var current_page = 1;//当前页面
     var total_page = Math.ceil(total / current_items);//总页面数
    // console.log(total_page);
 
-    $(".current_page").text(current_page);
+    $(".current_page").val(current_page);
     $(".total").text(total_page);
 
     showPage(current_page);
@@ -573,9 +573,22 @@ function setPagination() {
         showPage(current_page);
     });
 
+    //输入框
+    $(".current_page").change(function(){
+        var val = $(".current_page").val();
+        if(val < 1 || val > total_page) {
+            $(".current_page").val(current_page)
+            return;
+        }else {
+            current_page = val;
+            showPage(current_page);
+        }
+
+    });
+
     function showPage(page) {
-        $("#cardsList tr").hide();
-        $.each($("#cardsList tr"),function(index,item){
+        $("#cardsList tbody tr").hide();
+        $.each($("#cardsList tbody tr"),function(index,item){
             var start = current_items * (current_page - 1);
             var end = current_items * current_page;
             if(index >= start && index < end || index == 0)
@@ -584,6 +597,11 @@ function setPagination() {
 
 
     };
+    */
+    var total = $("#cardsList tbody tr").length;//总条数
+
+    var current_items = 10;//每页显示10条
+   pagination("#cardsList tbody tr",current_items,total);
 
 };
 

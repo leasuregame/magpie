@@ -3,6 +3,7 @@ var dbClient = app.get('dbClient');
 var logger = require('pomelo-logger').getLogger(__filename);
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
+var util = require('util');
 
 var FriendDao = (function(_super) {
     utility.extends(FriendDao, _super);
@@ -39,8 +40,8 @@ var FriendDao = (function(_super) {
                     msg: err.message
                 });
             }
-            
-            if ( !! res && res.length > 0) {
+
+            if ( !!res && res.length > 0) {
                 cb(null, res);
             } else {
                 cb(null, []);
@@ -48,8 +49,20 @@ var FriendDao = (function(_super) {
         });
     };
 
-    return FriendDao;
+    FriendDao.deleteFriend = function(options, cb) {
+        var condition = "(playerId = %d and friendId = %d) or (playerId = %d and friendId = %d)";
+        condition = util.format(
+            condition, 
+            options.playerId,
+            options.friendId,
+            options.friendId,
+            options.playerId
+        );
+        console.log(condition);
+        FriendDao.delete({where: condition}, cb);            
+    };
 
+    return FriendDao;
 })(DaoBase);
 
 module.exports = FriendDao;

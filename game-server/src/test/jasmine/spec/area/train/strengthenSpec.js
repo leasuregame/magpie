@@ -128,7 +128,7 @@ describe("Area Server", function() {
 					loginWith(poorman.account, poorman.password, poorman.areaId);
 				});
 
-				it("should warnning a message that can not strengthen", function() {
+				it("should warnning a message that can not find source card", function() {
 					request('area.trainHandler.strengthen', {
 						target: 160,
 						sources: [150, 151]
@@ -139,7 +139,7 @@ describe("Area Server", function() {
 					});
 				});
 
-				it("should warnning a message that can not strengthen", function() {
+				it("should warnning a message that can not find target card", function() {
 					request('area.trainHandler.strengthen', {
 						target: 100,
 						sources: [161, 162]
@@ -150,7 +150,7 @@ describe("Area Server", function() {
 					});
 				});
 
-				it("should warnning a message that can not strengthen", function() {
+				it("should warnning a message that money is not enought", function() {
 					request('area.trainHandler.strengthen', {
 						target: 160,
 						sources: [161, 162]

@@ -10,7 +10,7 @@ module.exports = {
   //获取数据表格
 
   cacheTables: function() {
-    if (fs.existsSync(DATA_DIR + 'table.json')){
+    if (fs.existsSync(DATA_DIR + 'table1.json')){
       this.loadTableData(JSON.parse(fs.readFileSync(DATA_DIR + 'table1.json')));
     } else {
       data = this._readTables(

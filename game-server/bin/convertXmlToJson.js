@@ -42,5 +42,6 @@ files.forEach(function(filepath) {
 });
 
 fs.writeFileSync('../data/table1.json', JSON.stringify(tabledata.exports));
+fs.writeFileSync('../../gm/config/table/table1.json', JSON.stringify(tabledata.exports));
 
 console.log('complete');

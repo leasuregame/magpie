@@ -12,7 +12,7 @@ module.exports = {
     FA_NO_SERVER_AVAILABLE: 2001
   }, 
 
-  CHAT: {
+  MESSAGE: {
     FA_CHANNEL_CREATE:    3001, 
     FA_CHANNEL_NOT_EXIST:   3002, 
     FA_UNKNOWN_CONNECTOR:   3003, 

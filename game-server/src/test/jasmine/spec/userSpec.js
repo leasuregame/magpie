@@ -160,7 +160,8 @@ describe("Connector Server", function() {
                 spiritor: '',
                 spiritPool: '',
                 cards: [],
-                rank: null
+                rank: {},
+                friends: []
               });
             });
           });

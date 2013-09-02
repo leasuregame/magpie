@@ -1,6 +1,7 @@
 var utility = require('../../common/utility');
 var Entity = require('./entity');
 var _ = require("underscore");
+var util = require('util');
 
 var Message = (function (_super) {
     utility.extends(Message, _super);
@@ -11,8 +12,11 @@ var Message = (function (_super) {
 
     Message.FIELDS = [
         'id',
-        'playerId',
+        'msgId',
+        'sender',
+        'receiver',
         'type',
+        'status',
         'options',
         'content',
         'createTime'
@@ -26,13 +30,28 @@ var Message = (function (_super) {
     Message.prototype.toJson = function(){
         return {
             id: this.id,
-            playerId: this.playerId,
+            msgId: this.msgId,
+            sender: this.sender,
+            receiver: this.receiver,
             type: this.type,
             status: this.status,
             options: this.options,
             content: this.content,
             createTime: this.createTime
         }
+    };
+
+    Message.prototype.toLeaveMessage = function() {
+        return {
+            id: this.id,
+            sender: this.sender,
+            receiver: this.receiver,
+            type: this.type,
+            status: this.status,
+            text: this.content,
+            content: util.format('%s 给你发了一条留言', this.options.playerName),
+            createTime: this.createTime
+        };
     };
 
     return Message;

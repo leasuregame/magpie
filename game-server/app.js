@@ -1,5 +1,6 @@
 var pomelo = require('pomelo');
 var area = require('./app/domain/area/area');
+var MessageService = require('./app/service/messageService');
 var routeUtil = require('./app/common/route');
 /**
  * Init app for client.
@@ -84,6 +85,8 @@ app.configure('production|development', 'connector|auth', function() {
 
 app.configure('production|development', 'area', function() {
   area.init();
+
+  app.set('messageService', new MessageService(app));
 });
 
 app.configure('production|development', 'area|battle', function() {

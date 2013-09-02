@@ -178,6 +178,10 @@ var initPomelo = function() {
     }, function() {
       console.log('connect success!');
       inited = true;
+
+      // pomelo.on('onMessage', function(data){
+      //   console.log('Receive a message: ', data);
+      // });
     });
   });
   waitsFor(function() {
@@ -202,4 +206,47 @@ var entryGame = function(account, areaId) {
   }, function(data) {
     console.log(account + ' has logined', data);
   });
+};
+
+
+var game = {
+  init: function() {
+    pomelo.init({
+      host: '127.0.0.1',
+      port: '3010'
+    }, function() {
+      console.log('connect success!');
+      pomelo.on('onLeaveMessage', function(data){
+        console.log('Receive a message: ', data);
+      });
+
+      pomelo.on('onMessage', function(data) {
+        console.log('Add friend: ', data);
+      });
+
+      pomelo.on('onAccept', function(data) {
+        console.log('accept add friend: ', data);
+      });
+
+      pomelo.on('onReject', function(data) {
+        console.log('reject add friend: ', data);
+      });
+
+      pomelo.on('onBless', function(data) {
+        console.log('receive a bless: ', data);
+      });
+    });
+  },
+  login: function(name, pwd, areaId) {
+    pomelo.request('connector.userHandler.login', 
+      {account: name, password: pwd, areaId: areaId}
+      , function(data) {
+      console.log(data);
+    });
+  },
+  request: function(route, args) {
+    pomelo.request(route, args, function(data){
+      console.log(data);
+    });
+  }
 };

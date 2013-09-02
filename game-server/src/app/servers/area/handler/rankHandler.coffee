@@ -46,7 +46,7 @@ Handler::rankingList = (msg, session, next) ->
       return next(null, {code: err.code, msg: err.message})
 
     rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK \
-      for p in players when p.playerId isnt playerId and playerId in p.rank.counts.recentChallenger
+      for p in players when p.id isnt playerId and p.id in player.rank.counts.recentChallenger
 
     players = filterPlayersInfo(players, rankings)
     players.sort (x, y) -> x.ranking - y.ranking

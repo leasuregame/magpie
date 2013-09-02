@@ -37,6 +37,13 @@ var Friend = Entity.extend({
         return true;
     },
 
+    push: function (friend) {
+        cc.log("friend push");
+
+        this._friendList.push(friend);
+        this._friendCount = this._friendList.length;
+    },
+
     addFriend: function (name) {
         cc.log("Friend addFriend: " + name);
 
@@ -91,8 +98,6 @@ var Friend = Entity.extend({
                 cb("success");
             } else {
                 cc.log("giveBless fail");
-
-                cb("fail");
             }
         });
     },
@@ -116,8 +121,6 @@ var Friend = Entity.extend({
                 cb("success");
             } else {
                 cc.log("receiveBless fail");
-
-                cb("fail");
             }
         });
     },

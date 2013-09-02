@@ -24,16 +24,17 @@ lzWindow.pomelo.init({
     handshakeCallback: function () {
     }
 }, function () {
-    cc.log('connect success!');
+    cc.log("connect success!");
     connectSuccess = true;
 
-    lzWindow.pomelo.on('close', function (data) {
-        cc.log('*****close');
+    lzWindow.pomelo.on("close", function (data) {
+        cc.log("*****close");
         cc.log(data);
         connectSuccess = false;
     });
 
-    lzWindow.pomelo.on('onMessage', function (data) {
-        cc.log('***** on chart: ', data);
+    lzWindow.pomelo.on("onMessage", function (data) {
+        cc.log("***** on chart: ");
+        cc.log(data);
     });
 });

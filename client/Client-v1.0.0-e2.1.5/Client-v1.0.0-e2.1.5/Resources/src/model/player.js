@@ -75,6 +75,7 @@ var Player = Entity.extend({
             count: data.dailyGift.lotteryCount,
             freeCount: data.dailyGift.lotteryFreeCount
         });
+        gameData.message.init();
 
         cc.log(this);
 

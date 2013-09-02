@@ -203,6 +203,10 @@ var Player = (function(_super) {
         }
     };
 
+    Player.prototype.addExpCard = function(quantity) {
+        
+    };
+
     Player.prototype.addCard = function(card) {
         if (card instanceof Card && card.id !== null) {
             var cards = this.cards;

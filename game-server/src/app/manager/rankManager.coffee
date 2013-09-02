@@ -21,7 +21,7 @@ Manager = module.exports =
       targetRanking = defender.ranking
 
       if isWin
-        if playerRanking < targetRanking
+        if playerRanking > targetRanking
           defender.set('ranking', playerRanking)
           challenger.set('ranking', targetRanking)
         challenger.incCount('win')
@@ -40,7 +40,7 @@ Manager = module.exports =
 
       challenger.incCount('challenge')
       defender.incCount('challenge')
-      challenger.pushRecent(targetId)
+      #challenger.pushRecent(targetId)
       defender.pushRecent(player.id)
 
       # update rank info

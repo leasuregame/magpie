@@ -76,9 +76,12 @@ Handler::handleSysMsg = (msg, session, next) ->
   playerId = session.get('playerId')
   msgId = msg.msgId
 
-  dao.message.fetchOne where: id: msgId, (err, res) ->
+  dao.message.fetchOne where: id: msgId, (err, message) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    if message.type isnt msgConfig.MESSAGETYPE.MESSAGE
+      return next(null, {code: 501, msg: '消息类型不匹配'})
 
     # do something 
     next(null, {code: 200})
@@ -217,6 +220,10 @@ Handler::accept = (msg, session, next) ->
 
     (res, cb) ->
       message = res
+
+      if message.type isnt msgConfig.MESSAGETYPE.ADDFRIEND
+        return cb({code: 501, msg: '消息类型不匹配'})
+
       if isFinalStatus(message.status)
         return cb({code: 200, msg: '已处理'})
 
@@ -261,6 +268,9 @@ Handler::reject = (msg, session, next) ->
       dao.message.fetchOne where: id: msgId, cb
 
     (message, cb) ->
+      if message.type isnt msgConfig.MESSAGETYPE.ADDFRIEND
+        return cb({code: 501, msg: '消息类型不匹配'})
+
       if isFinalStatus(message.status)
         return cb({code: 200, msg: '已处理'})
 
@@ -349,6 +359,9 @@ Handler::receiveBless = (msg, session, next) ->
 
     (res, cb) ->
       message = res
+      if message.type isnt msgConfig.MESSAGETYPE.ADDFRIEND
+        return cb({code: 501, msg: '消息类型不匹配'})
+      
       if isFinalStatus(message.status)
         return cb({code: 200, msg: '已处理'})
       

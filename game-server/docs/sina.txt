@@ -8,7 +8,7 @@ user：root
 
 ssh -l root -p 8022 124.238.236.33
 
-http://124.238.236.33/Client-v1.0.0-e2.1.4/Client-v1.0.0-e2.1.4/Resources/
+http://124.238.236.33/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/Resources/
 
 cd /dev/shm/magpie
 

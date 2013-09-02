@@ -66,8 +66,10 @@ var Player = Entity.extend({
         gameData.cardLibrary.init();
         gameData.friend.init({
             friendList: data.friends,
-            giveBlessCount: data.dailyGift.gaveBlessCount,
-            receiveBlessCount: data.dailyGift.reveiveBlessCount
+            giveBlessCount: data.dailyGift.gaveBless.count,
+            giveBlessList: data.dailyGift.gaveBless.receivers,
+            receiveBlessCount: data.dailyGift.receivedBless.count,
+            receiveBlessList: data.dailyGift.receivedBless.givers
         });
         gameData.treasureHunt.init({
             count: data.dailyGift.lotteryCount,

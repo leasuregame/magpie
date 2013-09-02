@@ -125,6 +125,8 @@ var TaskLayer = cc.Layer.extend({
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
 
+        this._beganOffset = cc.p(0, 0);
+
         return true;
     },
 
@@ -148,17 +150,6 @@ var TaskLayer = cc.Layer.extend({
                 cc.log(data);
             });
         }
-    },
-
-    /**
-     * Touches is the same as Touch, except this one can handle multi-touch
-     * @param {cc.Touch} touches
-     * @param {event} event
-     */
-    onTouchesBegan: function (touches, event) {
-        cc.log("TaskLayer onTouchesBegan");
-
-        this._beganOffset = this._scrollView.getContentOffset();
     },
 
     /**
@@ -188,6 +179,7 @@ var TaskLayer = cc.Layer.extend({
         }
 
         this._scrollView.setContentOffset(offset, true);
+        this._beganOffset = offset;
     }
 });
 

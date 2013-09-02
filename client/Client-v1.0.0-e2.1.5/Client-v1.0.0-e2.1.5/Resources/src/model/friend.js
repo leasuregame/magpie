@@ -14,7 +14,9 @@
 
 var Friend = Entity.extend({
     _giveBlessCount: 0,
+    _giveBlessList: [],
     _receiveBlessCount: 0,
+    _receiveBlessList: [],
     _friendCount: 0,
     _maxFriendCount: 0,
     _friendList: [],
@@ -24,7 +26,9 @@ var Friend = Entity.extend({
 
         this._friendList = data.friendList;
         this._giveBlessCount = data.giveBlessCount;
+        this._giveBlessList = data.giveBlessList;
         this._receiveBlessCount = data.receiveBlessCount;
+        this._receiveBlessList = data.receiveBlessList;
         this._friendCount = this._friendList.length;
         this._maxFriendCount = 50;
 
@@ -51,8 +55,22 @@ var Friend = Entity.extend({
         });
     },
 
-    deleteFriend: function (cb, playerId) {
+    deleteFriend: function (cb, friendId) {
         cc.log("Friend deleteFriend");
+
+        var that = this;
+        lzWindow.pomelo.request("area.messageHandler.deleteFriend", {
+            friendId: friendId
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("deleteFriend success");
+            } else {
+                cc.log("deleteFriend fail");
+            }
+        });
     },
 
     giveBless: function (cb, friendId) {
@@ -93,6 +111,7 @@ var Friend = Entity.extend({
                 cc.log("receiveBless success");
 
                 that._receiveBlessCount -= 1;
+                gameData.player.add("energy", 5);
 
                 cb("success");
             } else {
@@ -105,6 +124,25 @@ var Friend = Entity.extend({
 
     sendMessage: function (cb, playerId, msg) {
         cc.log("Friend sendMessage: " + palyerId + " " + msg);
+
+        var that = this;
+        lzWindow.pomelo.request("area.messageHandler.leaveMessage", {
+            friendId: friendId,
+            content: msg
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("sendMessage success");
+
+                cb("success");
+            } else {
+                cc.log("sendMessage fail");
+
+                cb("fail");
+            }
+        });
     }
 });
 

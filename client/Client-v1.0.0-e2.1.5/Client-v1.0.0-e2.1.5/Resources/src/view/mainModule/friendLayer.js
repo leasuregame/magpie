@@ -358,6 +358,8 @@ var FriendLayer = cc.Layer.extend({
     _onClickOk: function () {
         cc.log("FriendLayer _onClickOk");
         cc.log("name: " + this._nameEditBox.getText());
+
+        gameData.friend.addFriend(name);
     },
 
     _onClickCancel: function () {

@@ -8,7 +8,7 @@
             <div >
                 <table class = "table table-bordered table-hover" id = "cardsList">
                     <thead id = "th">
-                        <th>卡牌ID</th><th>卡牌等级</th><th>技能等级</th><th>消耗仙丹</th><th>星级</th><th>被动技能1</th><th>被动技能2</th><th>被动技能3</th><th></th><th></th>
+                        <th>卡牌名字</th><th>卡牌等级</th><th>技能等级</th><th>消耗仙丹</th><th>星级</th><th>被动技能1</th><th>被动技能2</th><th>被动技能3</th><th></th><th></th>
                     </thead>
 
                 </table>
@@ -35,10 +35,16 @@
             <div >
 
                  <div id = "card" class="form-inline span3">
-                    <div class="control-group">
+                    <div class="control-group" id = "divCardId">
                         <label class="control-label" for="id">卡牌ID:</label>
-                        <input type="text" class="input-small" id="id" name="id" disabled = "disabled">
+                        <input type="text" class="input-small" id="id" name="id" disabled = "disabled" >
                     </div>
+
+                    <div class="control-group" id = "divCardName">
+                        <label class="control-label" for="id">卡牌名字:</label>
+                        <input type="text" class="input-small" id="name" name="name" disabled = "disabled">
+                    </div>
+
 
                     <div class="control-group">
                         <label class="control-label" for="lv">卡牌等级:</label>
@@ -125,8 +131,15 @@
                  <button type="button" class="btn btn-primary" id = "btnOK" >确定</button>
                  <button type="button" class="btn btn-primary" id = "btnReset" >重置</button>
             </div>
+
+
+
         </fieldset>
+
      </form>
+      <div class="form-inline span5" id = "tip">
+
+      </div>
 
      <script src="/javascripts/cards.js"></script>
 

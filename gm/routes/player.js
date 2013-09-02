@@ -9,7 +9,6 @@
 var Area = require('../models/area');
 var getDB = require('../models/getDatabase');
 var dbClient = require('../models/dao/mysql/mysql');
-var playerDao = require('../models/dao/mysql/playerDao');
 var Player = require('../models/player');
 var Url = require('url');
 
@@ -58,8 +57,9 @@ var player = function(app) {
         Player.getPlayerInfo(player,function(err,Player){
             if(err) {
                 req.flash('error','没有该玩家的信息');
-                return res.redirect('/player');
+                return res.redirect('/playerLogin');
             }else {
+                console.log(Player);
                 req.session.player = Player;
                 req.session.area = area;
                 res.render('playerData',{
@@ -78,14 +78,33 @@ var player = function(app) {
 
     app.get('/playerData',function(req,res){
         if(req.session.player) {
-            res.render('playerData',{
-                title : '玩家数据修改',
-                user : req.session.user,
-                player : req.session.player,
-                area : req.session.area,
-                success:req.flash('success').toString(),
-                error:req.flash('error').toString()
+            var player = {
+                where :{
+                    name : req.session.player.name,
+                    areaId : req.session.area.id
+                }
+            };
+            Player.getPlayerInfo(player,function(err,Player){
+                if(err) {
+                    req.flash('error','没有该玩家的信息');
+                    return res.redirect('/playerLogin');
+                }
+                else{
+                  //  console.log("player = " + Player);
+                    req.session.player = Player;
+                    //console.log(req.session.player);
+                    res.render('playerData',{
+                        title : '玩家数据修改',
+                        user : req.session.user,
+                        player : req.session.player,
+                        area : req.session.area,
+                        success:req.flash('success').toString(),
+                        error:req.flash('error').toString()
+                    });
+                }
             });
+
+
         }else {
             res.redirect('/playerLogin?target=playerData');
         }

@@ -9,7 +9,11 @@
 var cardDao = require('./dao/mysql/cardDao');
 var passiveSkillDao = require('./dao/mysql/passiveSkillDao');
 var async = require('async');
+var table = require('./manager/table');
+
 function Card() {};
+
+Card.table = "cards";
 
 Card.update = function(data,cb){
 
@@ -31,7 +35,7 @@ Card.update = function(data,cb){
     cardDao.update(card,function(err,isOK){
         if(err) {
             console.log(err);
-            return cb(err,false);
+            return cb(err,null);
         }else {
             passSkills.forEach(function(pss){
                 if(pss.id == '' && pss.name != '' && pss.value !='') {
@@ -46,7 +50,7 @@ Card.update = function(data,cb){
                     passiveSkillDao.create(options,function(err,res){
                         if(err){
                             console.log(err);
-                            return cb(err,false);
+                            return cb(err,null);
                         }else {
                             console.log(res);
                         }
@@ -62,7 +66,7 @@ Card.update = function(data,cb){
                     passiveSkillDao.delete(options,function(err,isOK){
                         if(err){
                             console.log(err);
-                            return cb(err,false);
+                            return cb(err,null);
                         }else {
                             console.log("del = " + isOK);
                         }
@@ -82,7 +86,7 @@ Card.update = function(data,cb){
                     passiveSkillDao.update(options,function(err,isOK){
                         if(err){
                             console.log(err);
-                            return cb(err,false);
+                            return cb(err,null);
                         }else {
                             console.log(isOK);
                         }
@@ -92,8 +96,8 @@ Card.update = function(data,cb){
 
         }
     });
-
-    return cb(null,false);
+    var name = Card.getName(data.tableId);
+    return cb(null,name);
 
 };
 
@@ -145,22 +149,24 @@ Card.create = function(card,cb){
             });
 
 
-                var options = {
-                    where:{
-                        id:cardId
-                    }
-                };
-                cardDao.getCardInfo(options,function(err,card){
-                   // console.log(card);
-                   // console.log(JSON.stringify(card));
-                    if(err) {
-                        return cb(err,null);
-                    }
-                    return cb(null,card);
-                  //  res.send(card);
-                });
+            var options = {
+                where:{
+                    id:cardId
+                }
+            };
+            cardDao.getCardInfo(options,function(err,card){
 
-            }
+                if(err) {
+                        return cb(err,null);
+                }
+
+                card.name = Card.getName(card.tableId);
+                console.log(card);
+                return cb(null,card);
+                  //  res.send(card);
+            });
+
+        }
 
     });
 };
@@ -195,8 +201,19 @@ Card.delete = function(cardId,cb){
     });
 };
 
-Card.getName = function(tableId){
 
+
+Card.getName = function(tableId){
+    //console.log(Card.table);
+    var data = table.getTableItem(Card.table,tableId);
+   // console.log(data);
+    return data.name;
+};
+
+Card.setCardsName =function(cards) {
+   cards.forEach(function(card){
+       card.name = Card.getName(card.tableId);
+   });
 };
 
 

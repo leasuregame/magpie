@@ -7,8 +7,7 @@
  */
 
 var dbClient = require('../models/dao/mysql/mysql');
-var cardDao = require('../models/dao/mysql/cardDao');
-var passiveSkillDao = require('../models/dao/mysql/passiveSkillDao');
+var Player = require('../models/player');
 var Card = require('../models/card');
 
 var Url = require('url');
@@ -21,14 +20,31 @@ var card = function(app) {
     app.get('/cardData',function(req , res){
 
         if(req.session.player) {
-            res.render('cardData',{
-                title : '卡牌操作',
-                user : req.session.user,
-                player:req.session.player,
-                area : req.session.area,
-                success:req.flash('success').toString(),
-                error:req.flash('error').toString()
+            var player = {
+                where :{
+                    name : req.session.player.name,
+                    areaId : req.session.area.id
+                }
+            };
+            Player.getPlayerInfo(player,function(err,Player){
+                if(err) {
+                    req.flash('error','没有该玩家的信息');
+                    return res.redirect('/playerLogin');
+                }
+                else{
+                    //  console.log("player = " + Player);
+                    req.session.player = Player;
+                    res.render('cardData',{
+                        title : '卡牌操作',
+                        user : req.session.user,
+                        player:req.session.player,
+                        area : req.session.area,
+                        success:req.flash('success').toString(),
+                        error:req.flash('error').toString()
+                    });
+                }
             });
+
         }else {
             res.redirect('/playerLogin?target=card');
         }
@@ -43,8 +59,14 @@ var card = function(app) {
 
         var data = JSON.parse(query['card']);
 
-        Card.update(data,function(err,isOK){
-            res.send("更新成功");
+        Card.update(data,function(err,cardName){
+            if(err) {
+                //console.log(err);
+                res.send({type:"fail",info:err});
+            }
+           else {
+                res.send({type:"success",info:cardName});
+            }
         });
     });
 
@@ -55,11 +77,11 @@ var card = function(app) {
         console.log(card);
         Card.create(card,function(err,card){
             if(err) {
-                console.log(err);
-
+               // console.log(err);
+               res.send({type:"fail",info:err});
             } else{
-                console.log(card);
-                res.send(card);
+                //console.log(card);
+                res.send({type:"success",info:card});
             }
         });
     });
@@ -73,7 +95,14 @@ var card = function(app) {
       //  console.log(cardId);
 
         Card.delete(cardId,function(err,isOK){
-            res.send(isOK);
+           // res.send(isOK);
+            if(err) {
+                 console.log(err);
+                res.send({type:"fail",info:err});
+            } else{
+                //console.log(card);
+                res.send({type:"success",info:"删除成功"});
+            }
         });
     });
 

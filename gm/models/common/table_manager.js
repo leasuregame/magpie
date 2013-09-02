@@ -3,7 +3,7 @@ var fs = require("fs");
 var loadtable = require("./loadtable");
 var path = require('path');
 
-DATA_DIR = path.join(__dirname, '../../data/');
+DATA_DIR = path.join(__dirname, '../../config/table/');
 
 module.exports = {
   _tables: {}, //下划线表示不应该直接访问
@@ -11,7 +11,7 @@ module.exports = {
 
   cacheTables: function() {
     if (fs.existsSync(DATA_DIR + 'table.json')){
-      this.loadTableData(JSON.parse(fs.readFileSync(DATA_DIR + 'table.json')));
+      this.loadTableData(JSON.parse(fs.readFileSync(DATA_DIR + 'table1.json')));
     } else {
       data = this._readTables(
         DATA_DIR + 'skills.xml',
@@ -38,9 +38,12 @@ module.exports = {
     if (_.isEmpty(this._tables)){
       this.cacheTables();
     }
-    //console.log(tablename);
+
+  //  console.log("name = " + tablename);
+  //  console.log(this._tables);
+
     var tab = this._tables[tablename];
-    //console.log(tab);
+ //   console.log(tab);
     if (!tab) return null;
     return {
       _data: tab.data,

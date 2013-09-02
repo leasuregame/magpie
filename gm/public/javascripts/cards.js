@@ -50,6 +50,7 @@ var CardConfig = {
     elixir:0,
     star:1,
     tableId:1,
+    name:'',
     passSkills:[]
 };
 
@@ -71,18 +72,22 @@ function init(){
 
     setRowCss(cards[0].id);
     //eventHandle();
+    $("#divCardId").hide();
 
     $("#divTableId").hide();
 
     $("#btnAddCard").click(function(){
-       // $("#divTableId").show();
-       // $("#operateName").html("添加卡牌");
+
         operate = OperateConfig.ADD;
         setCard(-1);
         setRowCss(-1);
     });
 
     $("#btnOK").click(function(){
+        if(checkLv() == false)
+            return;
+        if(checkTableId() == false)
+            return;
         if(operate == OperateConfig.ADD)
             submitAdd();
         else if(operate == OperateConfig.UPDATE)
@@ -91,6 +96,13 @@ function init(){
 
     $("#btnReset").click(function(){
         setCard($("#id").val());
+    });
+
+    $("#starList").change(function(){
+        var key = hasCard($("#id").val());
+        var card = (key == -1) ? CardConfig : cards[key];
+        var passSkills = card["passSkills"];
+        setPassSkill(passSkills,$("#starList").val());
     });
 
 }
@@ -109,28 +121,45 @@ function eventHandle(){
             submitDel(this.value);
 
         });
-
-        $("#lv").blur(function(){
-            var val = $("#lv").val();
-            if(val < 1)
-                $("#lv").val(1);
-            if(val > 60)
-                $("#lv").val(60);
-
-            var star = $("#starList").val();
-            if(val > MaxLevelConfig[star - 1].maxLevel)
-                $("#lv").val(MaxLevelConfig[star - 1].maxLevel);
-
-        });
-
-        $("#starList").change(function(){
-            var key = hasCard($("#id").val());
-            var card = (key == -1) ? CardConfig : cards[key];
-            var passSkills = card["passSkills"];
-            setPassSkill(passSkills,$("#starList").val());
-        });
-
     });
+}
+
+//检查tableID
+function checkTableId(){
+    var val = $("#tableId").val();
+    var star = $("#starList").val();
+    val = val % 5;
+    if(val == 0) val = 5;
+
+    if(val != star) {
+        var info =  $("#tableId").val() + "为" + val + "星卡牌";
+        setShowMsg({type:"fail",info:info});
+        return false;
+    }
+    return true;
+};
+
+//检查lv
+function checkLv() {
+    var val = $("#lv").val();
+    if(val < 1) {
+        var info = "卡牌最低等级为1";
+        setShowMsg({type:"error",info:info});
+        return false;
+    }
+        //$("#lv").val(1);
+   //if(val > 60)
+       // $("#lv").val(60);
+
+    var star = $("#starList").val();
+    if(val > MaxLevelConfig[star - 1].maxLevel) {
+        $("#lv").val(MaxLevelConfig[star - 1].maxLevel);
+        var info = star + "星卡牌最大等级为" + MaxLevelConfig[star - 1].maxLevel;
+        setShowMsg({type:"error",info:info});
+        return false;
+    }
+
+    return true;
 }
 
 //提交添加
@@ -142,10 +171,16 @@ function submitAdd() {
         type:"post",
         success:function(msg){
           //  console.log(msg);
-            cards[cards.length] = msg;
+            if(msg.type == "success") {
+                cards[cards.length] = msg.info;
            // updateCardsList();
-            addRow(msg);
-            setRowCss(msg.id);
+                addRow(msg.info);
+                setRowCss(msg.info.id);
+                setShowMsg({type:msg.type,info:"添加成功"});
+            }else {
+                setShowMsg(msg);
+            }
+
         }
     });
 }
@@ -170,13 +205,20 @@ function submitUpdate(){
         url:url,
         type:"post",
         success:function(msg){
-            console.log(msg);
-            for(var i = 0;i < cards.length;i++) {
-                if(cards[i].id == data.id) {
-                    cards[i] = data;
-                    updateRow(data);
-                    break;
+           // console.log(msg);
+            if(msg.type == "success") {
+                for(var i = 0;i < cards.length;i++) {
+                    if(cards[i].id == data.id) {
+                        cards[i] = data;
+                        cards[i].name = msg.info;
+                       // console.log(cards[i]);
+                        updateRow(data);
+                        setShowMsg({type:msg.type,info:"更新成功"});
+                        break;
+                    }
                 }
+            } else {
+                setShowMsg(msg);
             }
 
         }
@@ -190,16 +232,17 @@ function submitDel(id){
         url:url,
         type:"post",
         success:function(msg){
-            console.log(msg);
+            //console.log(msg);
             var row = $("tr[id =" + id + "]");
             var index = row.index();
             if(index == 0) {
-                var d = $("tr:eq(" + (index + 2) + ")").children().eq(0).html();
-
+                var d = $("tr:eq(" + (index + 2) + ")").attr("id");
+               // console.log(d);
             }else {
-                var d = $("tr:eq(" + (index) + ")").children().eq(0).html();
+                var d = $("tr:eq(" + (index) + ")").attr("id");//.val();
+                //console.log(d);
             }
-            if(msg) {
+            if(msg.type == "success") {
                 if(operate == OperateConfig.UPDATE) {
                     console.log(d);
                     setCard(d);
@@ -207,9 +250,11 @@ function submitDel(id){
 
                 //console.log(row.index());
                 }
-
+                setShowMsg(msg);
                 delRow(id);
 
+            }else {
+                setShowMsg(msg);
             }
         }
     });
@@ -232,12 +277,15 @@ function setCard(id) {
     $("#elixir").val(card.elixir);
     $("#starList").val(card.star);
     $("#tableId").val(card.tableId);
+    $("#name").val(card.name);
 
     if(operate == OperateConfig.ADD) {
+        $("#divCardName").hide();
         $("#divTableId").show();
         $("#operateName").html("添加卡牌");
     }
     else {
+        $("#divCardName").show();
         $("#divTableId").hide();
         $("#operateName").html("更新卡牌");
     }
@@ -304,7 +352,7 @@ function getData() {
 function setCardsList() {
     var inner = "";
     cards.forEach(function(card){
-        inner += "<tr id =" + card.id +"><td>" + card.id + "</td><td>" + card.lv + "</td><td>" + card.skillLv + "</td><td>" + card.elixir + "</td><td>" + card.star + "</td>";
+        inner += "<tr id =" + card.id +"><td>" + card.name + "</td><td>" + card.lv + "</td><td>" + card.skillLv + "</td><td>" + card.elixir + "</td><td>" + card.star + "</td>";
 
         for(var i = 0;i < 3;i++) {
             if(card.passSkills.length > i)
@@ -327,7 +375,7 @@ function setCardsList() {
 //添加一行
 function addRow(card){
     var inner = "";
-        inner += "<tr id =" + card.id +"><td>" + card.id + "</td><td>" + card.lv + "</td><td>" + card.skillLv + "</td><td>" + card.elixir + "</td><td>" + card.star + "</td>";
+        inner += "<tr id =" + card.id +"><td>" + card.name + "</td><td>" + card.lv + "</td><td>" + card.skillLv + "</td><td>" + card.elixir + "</td><td>" + card.star + "</td>";
 
         for(var i = 0;i < 3;i++) {
             if(card.passSkills.length > i)
@@ -343,12 +391,14 @@ function addRow(card){
 
         $("#cardsList").prepend(inner);
         eventHandle();
+    setPagination();
 };
 
 //更新指定行
 function updateRow(data) {
 
     var row = $("tr[id = "+ data.id +  "]").children();
+    row.eq(0).html(data.name);
     row.eq(1).html(data.lv);
     row.eq(2).html(data.skillLv);
     row.eq(3).html(data.elixir);
@@ -364,6 +414,7 @@ function updateRow(data) {
 //删除指定行
 function delRow(id){
     $("tr[id =" + id + "]").remove();
+    setPagination();
 };
 
 //设置选中行的背景色
@@ -534,6 +585,21 @@ function setPagination() {
 
     };
 
+};
+
+
+//信息提示
+function setShowMsg(msg) {
+   // console.log(msg);
+    $("#tip").show();
+    if(msg.type == "success") {
+        $("#tip").css("background-color","#dff0d8");
+    }else{
+        $("#tip").css("background-color","#f2dede");
+    }
+    $("#tip").html(msg.info);
+
+    //$("#tip").hide(5000);
 };
 
 

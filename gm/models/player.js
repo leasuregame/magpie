@@ -7,6 +7,7 @@
  */
 
 var playerDao = require('./dao/mysql/playerDao');
+var card = require('./card');
 
 function Player(player) {
     this.id = player.id;
@@ -38,6 +39,8 @@ Player.getPlayerInfo = function(options,cb){
         if(err) {
             return cb(err,null);
         }else {
+            card.setCardsName(player.cards);
+            console.log(player.cards);
             return cb(null,player);
         }
     });

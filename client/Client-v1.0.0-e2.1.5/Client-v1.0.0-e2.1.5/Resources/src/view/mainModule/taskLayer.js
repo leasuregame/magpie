@@ -42,6 +42,8 @@ var TaskLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this.setTouchEnabled(true);
+
         this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
         this._turnLeftSprite.setRotation(180);
         this._turnLeftSprite.setPosition(cc.p(80, 570));
@@ -119,6 +121,7 @@ var TaskLayer = cc.Layer.extend({
         this._scrollView.setPosition(GAME_BG_POINT);
         this._scrollView.setBounceable(false);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
+//        this._scrollView.setTouchEnabled(false);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
 
@@ -145,6 +148,112 @@ var TaskLayer = cc.Layer.extend({
                 cc.log(data);
             });
         }
+    },
+
+    /**
+     * Touches is the same as Touch, except this one can handle multi-touch
+     * @param {cc.Touch} touches
+     * @param {event} event
+     */
+    onTouchesBegan: function (touches, event) {
+        cc.log("TaskLayer onTouchesBegan");
+
+        this._beganOffset = this._scrollView.getContentOffset();
+    },
+
+    /**
+     * when a touch moved
+     * @param {cc.Touch} touches
+     * @param {event} event
+     */
+    onTouchesMoved: function (touches, event) {
+        cc.log("TaskLayer onTouchesMoved");
+    },
+
+    /**
+     * when a touch finished
+     * @param {cc.Touch} touches
+     * @param {event} event
+     */
+    onTouchesEnded: function (touches, event) {
+        cc.log("TaskLayer onTouchesEnded");
+
+        this._scrollView.unscheduleAllCallbacks();
+        this._scrollView.stopAllActions();
+
+        var endOffset = this._scrollView.getContentOffset();
+        var offset = this._beganOffset;
+
+        if (this._beganOffset.x - endOffset.x > 100) {
+            offset = cc.p(Math.floor(endOffset.x / 640) * 640, 0);
+        } else if (this._beganOffset.x - endOffset.x < -100) {
+            offset = cc.p(Math.ceil(endOffset.x / 640) * 640, 0);
+        } else {
+            if (Math.abs(offset.x) % 640 > 320) {
+                offset = cc.p(Math.floor(offset.x / 640) * 640, 0);
+            } else {
+                offset = cc.p(Math.ceil(offset.x / 640) * 640, 0);
+            }
+        }
+
+        this._scrollView.setContentOffset(offset, true);
+    },
+
+    /**
+     * @param touch
+     * @param event
+     */
+    onTouchesCancelled: function (touch, event) {
+        cc.log("TaskLayer onTouchesCancelled");
+
+    },
+
+    /**
+     * callback when a touch event moved
+     * @param {cc.Touch} touch
+     * @param {event} event
+     */
+    onTouchBegan: function (touch, event) {
+        cc.log("TaskLayer onTouchBegan");
+
+        this._touchPoint = touch.getLocation();
+        this._beganOffset = this._scrollView.getContentOffset();
+
+        return true;
+    },
+
+    /**
+     * callback when a touch event moved
+     * @param {cc.Touch} touch
+     * @param {event} event
+     */
+    onTouchMoved: function (touch, event) {
+        cc.log("TaskLayer onTouchMoved");
+
+        var offset = lz.clone(this._beganOffset);
+        var point = touch.getLocation();
+        var len = point.x - this._touchPoint.x;
+
+        offset.x = offset.x + len;
+
+        this._scrollView.setContentOffset(offset);
+    },
+
+    /**
+     * callback when a touch event finished
+     * @param {cc.Touch} touch
+     * @param {event} event
+     */
+    onTouchEnded: function (touch, event) {
+        cc.log("TaskLayer onTouchEnded");
+    },
+
+    /**
+     * @param {cc.Touch} touch
+     * @param {event} event
+     */
+    onTouchCancelled: function (touch, event) {
+        cc.log("TaskLayer onTouchCancelled");
     }
 });
 

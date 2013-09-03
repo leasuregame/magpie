@@ -93,6 +93,14 @@ var Message = Entity.extend({
 
                 var msg = data.msg;
 
+                var len = that._friendMessage.length;
+                for (var i = 0; i < len; ++i) {
+                    if (that._friendMessage[i].id == msgId) {
+                        that._friendMessage[i].status = ACCEPT_STATUS;
+                        break;
+                    }
+                }
+
                 gameData.friend.push(msg);
             } else {
                 cc.log("accept fail");
@@ -112,6 +120,14 @@ var Message = Entity.extend({
 
             if (data.code == 200) {
                 cc.log("accept success");
+
+                var len = that._friendMessage.length;
+                for (var i = 0; i < len; ++i) {
+                    if (that._friendMessage[i].id == msgId) {
+                        that._friendMessage[i].status = REJECT_STATUS;
+                        break;
+                    }
+                }
             } else {
                 cc.log("accept fail");
             }
@@ -127,7 +143,20 @@ var Message = Entity.extend({
     receive: function (msgId) {
         cc.log("Message receive: " + msgId);
 
+        var that = this;
+        lzWindow.pomelo.request("area.messageHandler.handleSysMsg", {
+            msgId: msgId
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
 
+            if (data.code == 200) {
+                cc.log("receive success");
+
+            } else {
+                cc.log("receive fail");
+            }
+        });
     },
 
     _sort: function () {
@@ -139,7 +168,7 @@ var Message = Entity.extend({
     },
 
     _cmp: function (a, b) {
-        return (a.createTime - b.createTime);
+        return (b.createTime - a.createTime);
     }
 });
 

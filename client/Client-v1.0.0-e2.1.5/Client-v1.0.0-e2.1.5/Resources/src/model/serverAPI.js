@@ -28,13 +28,15 @@ lzWindow.pomelo.init({
     connectSuccess = true;
 
     lzWindow.pomelo.on("close", function (data) {
-        cc.log("*****close");
+        cc.log("***** on close:");
         cc.log(data);
         connectSuccess = false;
     });
 
     lzWindow.pomelo.on("onMessage", function (data) {
-        cc.log("***** on chart: ");
+        cc.log("***** on message:");
         cc.log(data);
+
+        gameData.message.push(data.msg);
     });
 });

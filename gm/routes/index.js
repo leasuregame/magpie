@@ -7,10 +7,12 @@ var User =  require('../models/user');
 var player = require('./player');
 var card = require('./card');
 var rank = require('./rank');
+var logger = require('../logger').logger('user');
 
 var routes = function(app){
 
     app.get('/',function(req , res){
+
         res.render('index',{
             title:'主页',
             user: req.session.user,
@@ -29,7 +31,6 @@ var routes = function(app){
             success:req.flash('success').toString(),
             error:req.flash('error').toString()
         });
-        //res.render('login');
     });
 
     app.post('/login',function(req , res){
@@ -44,15 +45,18 @@ var routes = function(app){
         User.get(name,function(err,user){
             if(!user) {
                 req.flash('error','用户不存在');
+                logger.error("[login]" + user.name + "不存在");
                 return res.redirect('/login');
             }
 
             if(user.password != password){
                 req.flash('error','密码错误');
+                logger.error("[login]" + user.name + ":密码错误,正确密码" + user.password + " 输入密码" + password);
                 return res.redirect('/login');
             }
             req.session.user = user;
             req.flash('success','登录成功');
+            logger.info("[login]" + user.name + ":登录成功");
             res.redirect('/playerLogin');
         });
     });
@@ -96,6 +100,7 @@ var routes = function(app){
                         return res.redirect('/reg');
                     }
                     req.flash('success','注册成功');
+                    logger.info("[reg]" + JSON.stringify(newUser) + "注册成功");
                     res.redirect('/');
                 });
             }

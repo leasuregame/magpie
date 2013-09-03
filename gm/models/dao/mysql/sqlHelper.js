@@ -29,7 +29,7 @@ var sqlHelper = {
             fields = table.data;
             table = table.table;
         }
-        if(!fields.createTime)
+        if(!fields.createTime && table != 'passiveSkill')
             fields.createTime = Date.now();
         var sql = "insert into " + table + " set ?";
 

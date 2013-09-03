@@ -9,7 +9,7 @@
 var dbClient = require('../models/dao/mysql/mysql');
 var Player = require('../models/player');
 var Card = require('../models/card');
-
+var logger = require('../logger').logger('card');
 var Url = require('url');
 
 var card = function(app) {
@@ -58,13 +58,14 @@ var card = function(app) {
         var query = url.query;
 
         var data = JSON.parse(query['card']);
-
+        logger.info("[update]" + JSON.stringify(data));
         Card.update(data,function(err,cardName){
             if(err) {
-                //console.log(err);
+                logger.error("[update]" + err);
                 res.send({type:"fail",info:err});
             }
            else {
+                logger.info("[update]" + "success");
                 res.send({type:"success",info:cardName});
             }
         });
@@ -74,13 +75,14 @@ var card = function(app) {
         var url = Url.parse(req.url,true);
         var query = url.query;
         var card = JSON.parse(query["card"]);
-        console.log(card);
+        logger.info("[add]" + JSON.stringify(card));
+       // console.log(card);
         Card.create(card,function(err,card){
             if(err) {
-               // console.log(err);
+                logger.error("[add]" + err);
                res.send({type:"fail",info:err});
             } else{
-                //console.log(card);
+                logger.info("[add]" + "success");
                 res.send({type:"success",info:card});
             }
         });
@@ -93,14 +95,14 @@ var card = function(app) {
 
         var cardId = query["cardId"];
       //  console.log(cardId);
-
+        logger.info("[del]cardId = " + cardId);
         Card.delete(cardId,function(err,isOK){
            // res.send(isOK);
             if(err) {
-                 console.log(err);
+                logger.error("[del]" + err);
                 res.send({type:"fail",info:err});
             } else{
-                //console.log(card);
+                logger.info("[del] " + "success");
                 res.send({type:"success",info:"删除成功"});
             }
         });

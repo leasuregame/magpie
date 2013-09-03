@@ -11,6 +11,7 @@ var getDB = require('../models/getDatabase');
 var dbClient = require('../models/dao/mysql/mysql');
 var Player = require('../models/player');
 var Url = require('url');
+var logger = require('../logger').logger('player');
 
 var player = function(app) {
 
@@ -59,9 +60,12 @@ var player = function(app) {
         Player.getPlayerInfo(player,function(err,Player){
             if(err) {
                 req.flash('error','没有该玩家的信息');
+                logger.error("[playerLogin]" +  playerName + "没有该玩家的信息");
                 return res.redirect('/playerLogin');
             }else {
-                console.log(Player);
+               // console.log(Player);
+                logger.info("[playerLogin]" + playerName);
+                logger.info("[playerLogin][playerData]" + JSON.stringify(Player));
                 req.session.player = Player;
                 req.session.area = area;
                 res.render('playerData',{
@@ -133,9 +137,11 @@ var player = function(app) {
         Player.update(options,function(err,isOK){
             if(err) {
                // console.log(err);
+                logger.error("[update]" + err);
                 res.send({type:'error',info:'修改数据失败'});
 
             }else {
+                logger.info("[update]" + JSON.stringify(data));
                 res.send({type:'success',info:'修改数据成功'});
             }
 

@@ -9,6 +9,7 @@
 var playerDao = require('./dao/mysql/playerDao');
 var card = require('./card');
 
+
 function Player(player) {
     this.id = player.id;
     this.name = player.name;

@@ -8,6 +8,7 @@
 
 var Rank = require('../models/rank');
 var Url = require('url');
+var logger = require('../logger').logger('rank');
 
 var rank = function (app) {
 
@@ -18,10 +19,11 @@ var rank = function (app) {
             Rank.getRankByPlayerId(req.session.player.id, function (err, rank) {
 
                 if(err)
-                   console.log(err);
+                    logger.error("[get]" + err);
 
                 else {
                     r =rank;
+                    logger.info("[get]" + JSON.stringify(rank));
                 }
 
                 res.render('rank', {
@@ -46,12 +48,14 @@ var rank = function (app) {
         var url = Url.parse(req.url,true);
         var query = url.query;
         var rank = JSON.parse(query["rank"]);
-
+        logger.info("[update]" + JSON.stringify(rank));
         Rank.updateRank(rank,function(err,isOK){
             if(err) {
+                logger.error("[update]" + err);
                 res.send({type:'fail',info:'修改排名失败'});
 
             }else {
+                logger.info("[update]" + "success");
                 res.send({type:'success',info:"修改排名成功"});
             }
         });

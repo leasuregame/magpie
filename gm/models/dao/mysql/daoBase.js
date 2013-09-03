@@ -1,8 +1,7 @@
 var sqlHelper = require('./sqlHelper');
 var express = require('express');
 var dbClient = require('./mysql');
-var log4js = require('log4js');
-var logger = log4js.getLogger();
+var logger =  require('../../../logger').logger('daoBase');
 var _ = require('underscore');
 
 var ACTION = {
@@ -76,8 +75,8 @@ var DaoBase = (function() {
     var _this = this;
     options.table = options.table || this.table;
     var stm = sqlHelper.generateSql(ACTION.SELECT, options);
-    console.log('fetch manay:', stm);
-
+    //console.log('fetch manay:', stm);
+    //logger.info('fetch manay:', stm);
     return dbClient.query(stm.sql, stm.args, function(err, res) {
       if (err) {
         logger.error("[SQL ERROR, when fetch " + _this.table + "]", stm);

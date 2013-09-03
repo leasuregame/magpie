@@ -21,8 +21,7 @@ var sqlHelper = require("./sqlHelper");
 var express = require('express');
 var app = express();
 var dbClient = app.get('dbClient');
-var log4js = require('log4js');
-var logger = log4js.getLogger();
+
 var User = require("../../domain/entity/user");
 
 var DaoBase = require("./daoBase");

@@ -43,13 +43,13 @@ Card.update = function(data,cb){
                         data:{
                             cardId:data.id,
                             name:pss.name,
-                            value:pss.value,
-                            createTime:Date.now()
+                            value:pss.value
+
                         }
                     }
                     passiveSkillDao.create(options,function(err,res){
                         if(err){
-                            console.log(err);
+                            //console.log(err);
                             return cb(err,null);
                         }else {
                             console.log(res);
@@ -65,7 +65,7 @@ Card.update = function(data,cb){
                     };
                     passiveSkillDao.delete(options,function(err,isOK){
                         if(err){
-                            console.log(err);
+                            //console.log(err);
                             return cb(err,null);
                         }else {
                             console.log("del = " + isOK);
@@ -85,7 +85,7 @@ Card.update = function(data,cb){
                     }
                     passiveSkillDao.update(options,function(err,isOK){
                         if(err){
-                            console.log(err);
+                            //console.log(err);
                             return cb(err,null);
                         }else {
                             console.log(isOK);
@@ -93,11 +93,11 @@ Card.update = function(data,cb){
                     });
                 }
             });
-
+            var name = Card.getName(data.tableId);
+            return cb(null,name);
         }
     });
-    var name = Card.getName(data.tableId);
-    return cb(null,name);
+
 
 };
 
@@ -132,8 +132,8 @@ Card.create = function(card,cb){
                         data:{
                             cardId:cardId,
                             name:pss.name,
-                            value:pss.value,
-                            createTime:Date.now()
+                            value:pss.value
+
                         }
                     }
                     passiveSkillDao.create(options,function(err,res){

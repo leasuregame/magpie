@@ -21,7 +21,13 @@ Handler::buyVip = (msg, session, next) ->
 
     player.increase('cash', cash)
     player.save()
-    next(null, {code: 200, msg: {vip: player.vip}})
+    next(null, {code: 200, msg: {
+      player: {
+        vip: player.vip
+        dailyGift: player.dailyGift
+        spiritPool: player.spiritPool
+      }
+    }})
 
 Handler::buyVipBox = (msg, session, next) ->
   playerId = session.get('playerId')

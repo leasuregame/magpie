@@ -35,6 +35,43 @@ var NOW = function() {
     return Date.now();
 };
 
+var recountVipPrivilege = function(player, oldVip) {
+    var curVip = player.vip;
+    var diff = curVip - oldVip;
+    if (diff <= 0) return;
+
+    var oldVipInfo = table.getTableItem('vip_privilege', oldVip);
+    if (!oldVipInfo && oldVip == 0) {
+        oldVipInfo = {
+            id: 0,
+            lottery_count: 0,
+            friend_count: 0,
+            buy_power_count: 0,
+            give_bless_count: 0,
+            receive_bless_count: 0,
+            challenge_count: 0,
+            spirit_collect_count: 0
+        };
+    }
+    var curVipInfo = table.getTableItem('vip_privilege', curVip);
+    console.log(oldVipInfo, curVipInfo);
+    var dg = utility.deepCopy(player.dailyGift);
+    dg.lotteryFreeCount += curVipInfo.lottery_count - oldVipInfo.lottery_count;
+
+    dg.powerBuyCount += curVipInfo.buy_power_count - oldVipInfo.buy_power_count;
+    dg.gaveBless.count += curVipInfo.give_bless_count - oldVipInfo.give_bless_count;
+    dg.receivedBless.count += curVipInfo.receive_bless_count - oldVipInfo.receive_bless_count;
+    dg.challengeCount += curVipInfo.challenge_count - oldVipInfo.challenge_count;
+    player.dailyGift = dg;
+    console.log(dg);
+    var sp = utility.deepCopy(player.spiritPool);
+    sp.collectCount += curVipInfo.spirit_collect_count - oldVipInfo.spirit_collect_count;
+    player.spiritPool = sp;
+    console.log(sp);
+    player.save();
+    console.log('message');
+};
+
 var addEvents = function(player) {
     player.on('add.card', function(card) {
         if (player.isLineUpCard(card)) {
@@ -43,22 +80,30 @@ var addEvents = function(player) {
         }
     });
 
-    player.on('cash.change', function(cash){
+    player.on('cash.change', function(cash) {
         var vipData = table.getTable('vip');
-        var vips = vipData.map(function(item){
-            return {lv: item.lv, tc: item.total_cash};
-        }).sort(function(x, y) { return x.tc - y.tc; });
+        var vips = vipData.map(function(item) {
+            return {
+                lv: item.lv,
+                tc: item.total_cash
+            };
+        }).sort(function(x, y) {
+            return x.tc - y.tc;
+        });
 
+        var oldVip = player.vip;
         var i, vip;
         for (i = 0; i < vips.length; i++) {
             vip = vips[i];
-            next_tc = vips[i+1] != null ? vips[i+1].tc : Number.MAX_VALUE;
+            next_tc = vips[i + 1] != null ? vips[i + 1].tc : Number.MAX_VALUE;
             if (cash >= vip.tc && cash < next_tc) {
                 player.set('vip', vip.lv);
                 player.save()
                 break;
             }
         }
+
+        recountVipPrivilege(player, oldVip);
     });
 };
 
@@ -70,14 +115,14 @@ var executeVipPrivilege = function(player) {
     dg.lotteryFreeCount += pri.lottery_free_count;
     // 好友上限 ++
     dg.powerBuyCount += pri.buy_power_count;
-    dg.givenBless.count += pri.give_bless_count;
-    dg.receivenBless.count += pri.receive_bless_count;
+    dg.gaveBless.count += pri.give_bless_count;
+    dg.receivedBless.count += pri.receive_bless_count;
     dg.challengeCount += pri.challege_count;
 
     player.dailyGift = dg;
 
     var sp = _.clone(player.spiritPool);
-    sp.collectCount += pri.spirt_collect_count;
+    sp.collectCount += pri.spirit_collect_count;
 
     player.spiritPool = sp;
     player.save();
@@ -98,7 +143,7 @@ var Player = (function(_super) {
         // this.cards || (this.cards = {});
         // this.rank || (this.rank = {});
         // this.friends || (this.friends = []);
-        
+
         // executeVipPrivilege(this);
         addEvents(this);
     };
@@ -152,18 +197,18 @@ var Player = (function(_super) {
             mark: defaultMark()
         },
         dailyGift: {
-            lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT,     // 每日抽奖次数
+            lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: 0, // 每日免费抽奖次数
-            powerGiven: [],    // 体力赠送情况
-            powerBuyCount: 2,  // 购买体力次数
-            challengeCount: 15,     // 每日有奖竞技次数
-            receivedBless: {   // 接收的祝福
+            powerGiven: [], // 体力赠送情况
+            powerBuyCount: 2, // 购买体力次数
+            challengeCount: 15, // 每日有奖竞技次数
+            receivedBless: { // 接收的祝福
                 count: msgConfig.MAX_RECEIVE_COUNT,
                 givers: []
             },
-            gaveBless: {       // 送出的祝福
+            gaveBless: { // 送出的祝福
                 count: msgConfig.MAX_GIVE_COUNT,
-                receivers: [] 
+                receivers: []
             }
         },
         fragments: 0,
@@ -246,7 +291,7 @@ var Player = (function(_super) {
         }
     };
 
-    Player.prototype.isVip = function(){
+    Player.prototype.isVip = function() {
         return this.vip > 0;
     };
 

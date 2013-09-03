@@ -29,6 +29,8 @@ function setPlayerData() {
     $("#spiritor").val(JSON.parse(player.spiritor).lv);
     $("#spiritPoolLv").val(JSON.parse(player.spiritPool).lv);
     $("#spiritPoolCount").val(JSON.parse(player.spiritPool).collectCount);
+    $("#taskId").val(JSON.parse(player.task).id);
+    $("#layer").val(JSON.parse(player.pass).layer);
 };
 
 $(document).ready(function(){
@@ -71,9 +73,25 @@ function updatePlayerData() {
         lv:$("#spiritPoolLv").val(),
         exp:JSON.parse(player.spiritPool).exp,
         collectCount:$("#spiritPoolCount").val()
-    }
+    };
 
     data.spiritPool = JSON.stringify(spiritPool);
+
+
+    var task = {
+        id:$("#taskId").val(),
+        progress:0
+    };
+
+    data.task = JSON.stringify(task);
+
+    var pass = {
+        layer:$("#layer").val(),
+        mark:JSON.parse(player.pass).mark
+    };
+
+    data.pass = JSON.stringify(pass);
+
     data.name = player.name;
    // data.name = player.name;
    console.log(data);
@@ -83,12 +101,24 @@ function updatePlayerData() {
         //target:$("#tip"),
         success:function(msg){
            // console.log(msg);
-            var inner = "<p>" + msg + "</p>";
-            $("#tip").append(inner);
-            $("#tip").show();
+            setShowMsg(msg);
         }
     });
-
-
 };
+
+
+//信息提示
+function setShowMsg(msg) {
+    // console.log(msg);
+    $("#tip").show();
+    if(msg.type == "success") {
+        $("#tip").css("background-color","#dff0d8");
+    }else{
+        $("#tip").css("background-color","#f2dede");
+    }
+    $("#tip").html(msg.info);
+
+    //$("#tip").hide(5000);
+};
+
 

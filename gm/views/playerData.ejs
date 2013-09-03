@@ -5,7 +5,7 @@
                 <legend><%=area["name"] %>:<%= player["name"]%>的数据修改</legend>
 
               <div class="row-fluid marketing">
-                <div class = "span6">
+                <div class = "span5">
                     <div class="control-group">
                         <label class="control-label" for="lv">等级:</label>
                         <input type="text" class="input-small" id="lv" name="lv" >
@@ -44,7 +44,7 @@
 
                 </div>
 
-                <div class = "span6">
+                <div class = "span5">
 
                     <div class="control-group">
                         <label class="control-label" for="energy">活力值:</label>
@@ -72,12 +72,24 @@
                         <input type="text" class="input-small" id="spiritPoolCount" name="spiritPoolCount" >
                     </div>
 
+                    <div class="control-group">
+                        <label class="control-label" for="taskId">任务Id：</label>
+                        <input type="text" class="input-small" id="taskId" name="taskId">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="layer">关卡层数：</label>
+                        <input type="text" class="input-small" id="layer" name="layer">
+                    </div>
+
                 </div>
 
               </div>
                 <button type="button" id = "btnUpdate" class="btn btn-primary">确定</button>
                 <button type="button" id = "btnReset" class="btn btn-primary">重置</button>
-              <div class = "alert alert-success" id = "tip">
+              <div class="alert" id = "tip">
+
+              </div>
 
               </div>
             </fieldset>

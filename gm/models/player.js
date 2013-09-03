@@ -39,8 +39,8 @@ Player.getPlayerInfo = function(options,cb){
         if(err) {
             return cb(err,null);
         }else {
+            console.log(player);
             card.setCardsName(player.cards);
-            console.log(player.cards);
             return cb(null,player);
         }
     });

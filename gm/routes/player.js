@@ -14,15 +14,17 @@ var Url = require('url');
 
 var player = function(app) {
 
+    app.get('/playerLogin',checkLogin);
+
     //玩家数据修改
     app.get('/playerLogin',function(req , res){
 
 
         var url = Url.parse(req.url,true);
         var query = url.query;
-       // console.log(url + "   " + query);
+
         var target = query["target"] || 'playerLogin';
-       // console.log(target);
+
         if(!req.session.player)
             target = 'playerLogin';
         Area.getAreasList(function(areas) {
@@ -90,9 +92,7 @@ var player = function(app) {
                     return res.redirect('/playerLogin');
                 }
                 else{
-                  //  console.log("player = " + Player);
                     req.session.player = Player;
-                    //console.log(req.session.player);
                     res.render('playerData',{
                         title : '玩家数据修改',
                         user : req.session.user,
@@ -133,10 +133,10 @@ var player = function(app) {
         Player.update(options,function(err,isOK){
             if(err) {
                // console.log(err);
-                res.send('修改数据失败');
+                res.send({type:'error',info:'修改数据失败'});
 
             }else {
-                res.send("修改数据成功");
+                res.send({type:'success',info:'修改数据成功'});
             }
 
         });

@@ -4,10 +4,9 @@
  */
 
 var User =  require('../models/user');
-
 var player = require('./player');
-
 var card = require('./card');
+var rank = require('./rank');
 
 var routes = function(app){
 
@@ -106,7 +105,7 @@ var routes = function(app){
 
     player(app);
     card(app);
-
+    rank(app);
 
     app.get('/reward',checkLogin);
 

@@ -71,6 +71,7 @@ function init(){
     setCard(cards[0].id);//设置默认显示的卡牌
 
     setRowCss(cards[0].id);
+    $("#tip").hide();
     //eventHandle();
     $("#divCardId").hide();
 
@@ -84,14 +85,17 @@ function init(){
     });
 
     $("#btnOK").click(function(){
-        if(checkLv() == false)
-            return;
-        if(checkTableId() == false)
-            return;
-        if(operate == OperateConfig.ADD)
+
+        if(operate == OperateConfig.ADD) {
+            if(checkTableId() == false)
+                return;
             submitAdd();
-        else if(operate == OperateConfig.UPDATE)
+        }
+        else if(operate == OperateConfig.UPDATE) {
+            if(checkLv() == false)
+                return;
             submitUpdate();
+        }
     });
 
     $("#btnReset").click(function(){
@@ -132,7 +136,10 @@ function checkTableId(){
     if(val == 0) val = 5;
 
     if(val != star) {
-        var info =  $("#tableId").val() + "为" + val + "星卡牌";
+     //  if(operate == OperateConfig.ADD)
+            var info =  $("#tableId").val() + "为" + val + "星卡牌";
+     //   else
+     //       var info =  $("#name").val() + "为" + val + "星卡牌";
         setShowMsg({type:"fail",info:info});
         return false;
     }
@@ -147,9 +154,6 @@ function checkLv() {
         setShowMsg({type:"error",info:info});
         return false;
     }
-        //$("#lv").val(1);
-   //if(val > 60)
-       // $("#lv").val(60);
 
     var star = $("#starList").val();
     if(val > MaxLevelConfig[star - 1].maxLevel) {
@@ -212,7 +216,7 @@ function submitUpdate(){
                         cards[i] = data;
                         cards[i].name = msg.info;
                        // console.log(cards[i]);
-                        updateRow(data);
+                        updateRow(cards[i]);
                         setShowMsg({type:msg.type,info:"更新成功"});
                         break;
                     }
@@ -398,6 +402,8 @@ function addRow(card){
 function updateRow(data) {
 
     var row = $("tr[id = "+ data.id +  "]").children();
+    $("#name").val(data.name);
+   // console.log(data.name);
     row.eq(0).html(data.name);
     row.eq(1).html(data.lv);
     row.eq(2).html(data.skillLv);

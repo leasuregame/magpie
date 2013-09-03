@@ -180,6 +180,14 @@ var TaskLayer = cc.Layer.extend({
 
         this._scrollView.setContentOffset(offset, true);
         this._beganOffset = offset;
+    },
+
+    /**
+     * @param touch
+     * @param event
+     */
+    onTouchesCancelled: function (touch, event) {
+        this.onTouchesEnded(touch, event);
     }
 });
 

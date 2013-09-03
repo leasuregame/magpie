@@ -21,31 +21,32 @@ var TreasureHuntLayer = cc.Layer.extend({
     _tipLabel: null,
     _freeCountLabel: null,
     _countLabel: null,
+    _goldLabel: null,
     _index: 0,
     _slideCount: 0,
     _nowSlideNum: 0,
     _interval: 0,
     _locate: [
-        cc.p(110, 883),
-        cc.p(235, 883),
-        cc.p(360, 883),
-        cc.p(485, 883),
-        cc.p(610, 883),
-        cc.p(610, 788),
-        cc.p(610, 683),
-        cc.p(610, 578),
-        cc.p(610, 473),
-        cc.p(610, 368),
-        cc.p(610, 263),
-        cc.p(485, 263),
-        cc.p(360, 263),
-        cc.p(235, 263),
-        cc.p(110, 263),
-        cc.p(110, 368),
-        cc.p(110, 473),
-        cc.p(110, 578),
-        cc.p(110, 683),
-        cc.p(110, 788)
+        cc.p(110, 853),
+        cc.p(235, 853),
+        cc.p(360, 853),
+        cc.p(485, 853),
+        cc.p(610, 853),
+        cc.p(610, 753),
+        cc.p(610, 653),
+        cc.p(610, 553),
+        cc.p(610, 453),
+        cc.p(610, 353),
+        cc.p(610, 253),
+        cc.p(485, 253),
+        cc.p(360, 253),
+        cc.p(235, 253),
+        cc.p(110, 253),
+        cc.p(110, 353),
+        cc.p(110, 453),
+        cc.p(110, 553),
+        cc.p(110, 653),
+        cc.p(110, 753)
     ],
 
     onEnter: function () {
@@ -67,15 +68,20 @@ var TreasureHuntLayer = cc.Layer.extend({
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
 
+        var headLabel = cc.Sprite.create(main_scene_image.icon147);
+        headLabel.setAnchorPoint(cc.p(0, 0));
+        headLabel.setPosition(cc.p(40, 905));
+        this.addChild(headLabel);
+
+        var goldIcon = cc.Sprite.create(main_scene_image.icon148);
+        goldIcon.setPosition(cc.p(565, 934));
+        this.addChild(goldIcon);
+
         for (var i = 0; i < MAX_TREASURE_HUNT_COUNT; ++i) {
             var point = this._locate[i];
-            var frame = cc.Sprite.create(main_scene_image.card_item_bg1);
-            frame.setScale(0.8);
-            frame.setPosition(cc.p(point.x + 2, point.y - 2));
-            this.addChild(frame);
 
             var iconSprite = cc.Sprite.create(this._getIconUrl(table[i].type));
-            iconSprite.setPosition(point);
+            iconSprite.setPosition(cc.p(point.x + 1, point.y - 1));
             this.addChild(iconSprite);
 
             var valueLabel = cc.LabelTTF.create("+" + table[i].value, "黑体", 16);
@@ -85,7 +91,6 @@ var TreasureHuntLayer = cc.Layer.extend({
         }
 
         this._selectFrame = cc.Sprite.create(main_scene_image.icon105);
-        this._selectFrame.setPosition(cc.p(500, 500));
         this.addChild(this._selectFrame);
         this._selectFrame.setVisible(false);
 
@@ -95,34 +100,41 @@ var TreasureHuntLayer = cc.Layer.extend({
             this._onClickTreasureHunt,
             this
         );
-        treasureHuntItem.setPosition(cc.p(360, 630));
+        treasureHuntItem.setPosition(cc.p(360, 600));
 
         var menu = cc.Menu.create(treasureHuntItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
         this._tipLabel = cc.Sprite.create(main_scene_image.icon114);
-        this._tipLabel.setPosition(cc.p(360, 780));
+        this._tipLabel.setPosition(cc.p(360, 750));
         this.addChild(this._tipLabel);
         this._tipLabel.setVisible(false);
 
         var helpLabel = cc.Sprite.create(main_scene_image.icon113);
-        helpLabel.setPosition(cc.p(360, 400));
+        helpLabel.setPosition(cc.p(360, 370));
         this.addChild(helpLabel);
 
         this._freeCountLabel = cc.LabelTTF.create("0", "黑体", 25);
-        this._freeCountLabel.setPosition(cc.p(420, 427));
+        this._freeCountLabel.setPosition(cc.p(420, 397));
         this.addChild(this._freeCountLabel);
 
         this._countLabel = cc.LabelTTF.create("0", "黑体", 25);
-        this._countLabel.setPosition(cc.p(420, 373));
+        this._countLabel.setPosition(cc.p(420, 343));
         this.addChild(this._countLabel);
+
+        this._goldLabel = cc.LabelTTF.create(0, "黑体", 20);
+        this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._goldLabel.setPosition(cc.p(580, 933));
+        this.addChild(this._goldLabel);
 
         return true;
     },
 
     update: function () {
         cc.log("TreasureHuntLayer update");
+
+        this._goldLabel.setString(gameData.player.get("gold"));
 
         var treasureHunt = gameData.treasureHunt;
 

@@ -50,6 +50,7 @@ var TreasureHunt = Entity.extend({
                 var playerData = {};
                 playerData[table.type] = table.value;
                 gameData.player.update(playerData);
+                gameData.player.add("gold", -10);
 
                 cb(msg.resourceId);
             } else {

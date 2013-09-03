@@ -109,13 +109,13 @@ beforeEach(function() {
   });
 });
 
-// beforeEach(function() {
-//   initPomelo();
-// });
+beforeEach(function() {
+  initPomelo();
+});
 
-// afterEach(function() {
-//   pomelo.disconnect();
-// });
+afterEach(function() {
+  pomelo.disconnect();
+});
 
 var beforeAll = function(func) {
   var beforeAllCalled = false;

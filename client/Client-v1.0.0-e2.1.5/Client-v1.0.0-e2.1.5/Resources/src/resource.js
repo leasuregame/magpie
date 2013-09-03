@@ -56,6 +56,7 @@ var main_scene_image = {
     bg16: main_scene_path + "bg16.png",
     bg17: main_scene_path + "bg17.png",
     bg18: main_scene_path + "bg18.png",
+    bg19: main_scene_path + "bg19.png",
 
     player_details_bg: main_scene_path + "player_details_bg.png",
     lv_bg: main_scene_path + "lv_bg.png",
@@ -325,7 +326,13 @@ var main_scene_image = {
     icon135: main_scene_path + "icon135.png",
     icon136: main_scene_path + "icon136.png",
     icon137: main_scene_path + "icon137.png",
-    icon138: main_scene_path + "icon138.png"
+    icon138: main_scene_path + "icon138.png",
+    icon139: main_scene_path + "icon139.png",
+    icon140: main_scene_path + "icon140.png",
+    icon141: main_scene_path + "icon141.png",
+    icon142: main_scene_path + "icon142.png",
+    icon143: main_scene_path + "icon143.png",
+    icon144: main_scene_path + "icon144.png"
 };
 
 var main_scene_res = [

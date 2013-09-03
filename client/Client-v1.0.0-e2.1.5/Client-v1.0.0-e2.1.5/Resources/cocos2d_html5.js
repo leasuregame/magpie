@@ -85,6 +85,7 @@
             'src/controls/shyLayer.js',
             'src/controls/lazyMenu.js',
             'src/controls/markLayer.js',
+            'src/controls/strokeLabel.js',
 
             'src/view/loginModule/signInScene.js',
             'src/view/loginModule/signInLayer.js',

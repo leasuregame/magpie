@@ -1,4 +1,5 @@
 module.exports = {
+  EXP_CARD_ID: 30000,
 /*
  * 抽卡参数配置
  */

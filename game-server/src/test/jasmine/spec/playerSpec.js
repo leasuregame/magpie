@@ -56,8 +56,9 @@ describe("Connector Server", function() {
                 },
                 lv: 1,
                 exp: 0,
-                money: 1000,
-                gold: 50,
+                vip: 0,
+                money: 0,
+                gold: 0,
                 lineUp: {
                   6: -1
                 },
@@ -74,7 +75,9 @@ describe("Connector Server", function() {
                 dailyGift: {
                   lotteryCount: 500,
                   lotteryFreeCount: 0,
-                  power: [],
+                  powerGiven: [],
+                  powerBuyCount: 2,
+                  challengeCount: 15,
                   receivedBless: {
                     count: 15,
                     givers: []

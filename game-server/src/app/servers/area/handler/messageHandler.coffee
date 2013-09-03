@@ -221,6 +221,9 @@ Handler::accept = (msg, session, next) ->
     (res, cb) ->
       message = res
 
+      if message.receiver isnt playerId
+        return cb({code: 501, msg: '你没有权限处理此消息'})
+
       if message.type isnt msgConfig.MESSAGETYPE.ADDFRIEND
         return cb({code: 501, msg: '消息类型不匹配'})
 
@@ -253,10 +256,21 @@ Handler::accept = (msg, session, next) ->
       ability: sender.ability
     }})
 
-    sendMessage @app, message.sender, {
-      route: 'onMessage'
-      msg: message.toJson()
-    }
+    _message = message.toJson()
+    playerManager.getPlayerInfo pid: playerId, (err, res) ->
+      if err
+        logger.error 'fail to get player info: ', err
+
+      _message.friend = {
+        id: playerId
+        name: playerName
+        lv: res.lv
+        ability: res.ability
+      }
+      sendMessage @app, message.sender, {
+        route: 'onMessage'
+        msg: _message
+      }
 
 Handler::reject = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -268,6 +282,9 @@ Handler::reject = (msg, session, next) ->
       dao.message.fetchOne where: id: msgId, cb
 
     (message, cb) ->
+      if message.receiver isnt playerId
+        return cb({code: 501, msg: '你没有权限处理此消息'})
+
       if message.type isnt msgConfig.MESSAGETYPE.ADDFRIEND
         return cb({code: 501, msg: '消息类型不匹配'})
 
@@ -359,7 +376,10 @@ Handler::receiveBless = (msg, session, next) ->
 
     (res, cb) ->
       message = res
-      if message.type isnt msgConfig.MESSAGETYPE.ADDFRIEND
+      if message.receiver isnt playerId
+        return cb({code: 501, msg: '你没有权限处理此消息'})
+
+      if message.type isnt msgConfig.MESSAGETYPE.BLESS
         return cb({code: 501, msg: '消息类型不匹配'})
       
       if isFinalStatus(message.status)

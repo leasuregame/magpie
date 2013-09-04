@@ -70,4 +70,10 @@ Utility =
 
     newObj
 
+  hasMark: (val, bit) ->
+    return val >> (bit -1) & 1
+
+  mark: (val, bit) ->
+    val = val | (1 << (bit -1))
+
 module.exports = Utility

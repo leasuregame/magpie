@@ -54,7 +54,7 @@ var recountVipPrivilege = function(player, oldVip) {
         };
     }
     var curVipInfo = table.getTableItem('vip_privilege', curVip);
-    console.log(oldVipInfo, curVipInfo);
+
     var dg = utility.deepCopy(player.dailyGift);
     dg.lotteryFreeCount += curVipInfo.lottery_free_count - oldVipInfo.lottery_free_count;
 
@@ -63,13 +63,12 @@ var recountVipPrivilege = function(player, oldVip) {
     dg.receivedBless.count += curVipInfo.receive_bless_count - oldVipInfo.receive_bless_count;
     dg.challengeCount += curVipInfo.challenge_count - oldVipInfo.challenge_count;
     player.dailyGift = dg;
-    console.log(dg);
+
     var sp = utility.deepCopy(player.spiritPool);
     sp.collectCount += curVipInfo.spirit_collect_count - oldVipInfo.spirit_collect_count;
     player.spiritPool = sp;
     console.log(sp);
     player.save();
-    console.log('message');
 };
 
 var addEvents = function(player) {
@@ -172,7 +171,8 @@ var Player = (function(_super) {
         'energy',
         'elixir',
         'spiritor',
-        'spiritPool'
+        'spiritPool',
+        'signIn'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -225,6 +225,10 @@ var Player = (function(_super) {
             lv: 0,
             exp: 0,
             collectCount: spiritConfig.MAX_COLLECT_COUNT
+        },
+        signIn: {
+            months: {},
+            flag: 0
         },
         cards: {},
         rank: {},
@@ -499,6 +503,23 @@ var Player = (function(_super) {
         var pass = _.clone(this.pass);
         pass.layer++;
         this.set('pass', pass);
+    };
+
+    Player.prototype.signToday = function() {
+        var d = new Date();
+        var key = util.format('%d%d', d.getFullYear(), d.getMonth());
+        var si = utility.deepCopy(this.signIn);
+
+        if (!_.has(si, key)) {
+            si.months[key] = 0;
+        }
+
+        utility.mark(si.months[key], d.getDay());
+        this.signIn = si;
+    };
+
+    Player.prototype.signDays = function() {
+        
     };
 
     Player.prototype.toJson = function() {

@@ -47,15 +47,48 @@ Handler::lottery = (msg, session, next) ->
 
 Handler::signIn = (msg, session, next) ->
   playerId = session.get('playerId')
-  date = msg.date 
 
-  next(null, {
-    code: 200, 
-    msg: {
-      money: 0, 
-      energy: 0
-    }
-  })
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    player.signToday()
+    player.increase('money', 2000)
+    player.increase('energy', 100)
+    player.save()
+    next(null, {
+      code: 200, 
+      msg: {
+        money: 2000, 
+        energy: 100
+      }
+    })
+
+Handler::getSignInGift = (msg, session, next) ->
+  playerId = session.get('playerId')
+  id = msg.id
+
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    rew = table.getTableItem('signIn_rewards', id)
+    
+
+    setIfExist = (attrs) ->
+      player.increase att, val for att, val of rew when att in attrs
+      return
+
+    setIfExist ['energy', 'money', 'skillPoint', 'elixir']
+    if rew.lottery_free_count > 0
+      dg = player.dailyGift
+      dg.lotteryFreeCount += rew.lottery_free_count
+      player.dailyGift = dg
+
+    player.save()
+    next(null, {
+      code: 200
+    })
 
 randomReward = ->
   tData = table.getTable('treasure_hunt')

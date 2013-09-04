@@ -45,6 +45,18 @@ Handler::lottery = (msg, session, next) ->
       }
     })
 
+Handler::signIn = (msg, session, next) ->
+  playerId = session.get('playerId')
+  date = msg.date 
+
+  next(null, {
+    code: 200, 
+    msg: {
+      money: 0, 
+      energy: 0
+    }
+  })
+
 randomReward = ->
   tData = table.getTable('treasure_hunt')
   items = tData.map (row) ->

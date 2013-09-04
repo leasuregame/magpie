@@ -47,14 +47,9 @@ describe("Area Server", function() {
 
 					it("不能购买vip礼包", function() {
 						request('area.vipHandler.buyVip', {
-							cash: 10
+							id: 1
 						}, function(data) {
-							expect(data).toEqual({
-								code: 200,
-								msg: {
-									vip: 1
-								}
-							});
+							expect(data.code).toEqual(200);
 						});
 
 						request('area.vipHandler.buyVipBox', {

@@ -44,7 +44,7 @@ var recountVipPrivilege = function(player, oldVip) {
     if (!oldVipInfo && oldVip == 0) {
         oldVipInfo = {
             id: 0,
-            lottery_count: 0,
+            lottery_free_count: 0,
             friend_count: 0,
             buy_power_count: 0,
             give_bless_count: 0,
@@ -56,7 +56,7 @@ var recountVipPrivilege = function(player, oldVip) {
     var curVipInfo = table.getTableItem('vip_privilege', curVip);
     console.log(oldVipInfo, curVipInfo);
     var dg = utility.deepCopy(player.dailyGift);
-    dg.lotteryFreeCount += curVipInfo.lottery_count - oldVipInfo.lottery_count;
+    dg.lotteryFreeCount += curVipInfo.lottery_free_count - oldVipInfo.lottery_free_count;
 
     dg.powerBuyCount += curVipInfo.buy_power_count - oldVipInfo.buy_power_count;
     dg.gaveBless.count += curVipInfo.give_bless_count - oldVipInfo.give_bless_count;
@@ -157,6 +157,7 @@ var Player = (function(_super) {
         'power',
         'lv',
         'vip',
+        'vipBox',
         'cash',
         'exp',
         'money',
@@ -181,6 +182,7 @@ var Player = (function(_super) {
         },
         lv: 1,
         vip: 0,
+        vipBox: [],
         cash: 0,
         exp: 0,
         money: 0,
@@ -227,7 +229,6 @@ var Player = (function(_super) {
         cards: {},
         rank: {},
         friends: []
-
     };
 
     Player.prototype.activeSpiritorEffect = function() {
@@ -510,7 +511,8 @@ var Player = (function(_super) {
             power: this.power,
             lv: this.lv,
             vip: this.vip,
-            //cash: this.cash,
+            vipBox: this.vipBox,
+            cash: this.cash,
             exp: this.exp,
             money: this.money,
             gold: this.gold,

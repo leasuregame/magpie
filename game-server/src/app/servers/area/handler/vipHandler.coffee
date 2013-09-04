@@ -13,13 +13,15 @@ Handler = (@app) ->
 
 Handler::buyVip = (msg, session, next) ->
   playerId = session.get('playerId')
-  cash = msg.cash
+  id = msg.id
 
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    player.increase('cash', cash)
+    data = table.getTableItem('recharge', id)
+    player.increase('cash', data.cash)
+    player.increase('gold', data.gold)
     player.save()
     next(null, {code: 200, msg: {
       player: {
@@ -44,6 +46,9 @@ Handler::buyVipBox = (msg, session, next) ->
     if boxInfo.id > player.vip
       return next(null, {code: 501, msg: '你还不是VIP'+boxId+', 不能购买VIP' + boxId + '礼包'})
 
+    if _.contains player.vipBox, boxInfo.id
+      return next(null, {code: 501, msg: '不能重复购买'})
+
     if player.gold < boxInfo.price
       return next(null, {code: 501, msg: '元宝不足'})
 
@@ -67,7 +72,7 @@ Handler::buyExpCard = (msg, session, next) ->
         return next(null, err) 
 
       player.decrease 'money', qty * PRICE
-      next(null, {code: 200, msg: {card: cards[0], qty: cards.length}})
+      next(null, {code: 200, msg: {card: cards[0], cardIds: cards.map (c) -> c.id}})
 
 openVipBox = (player, boxInfo, next) ->
   setIfExist = (attrs) ->
@@ -76,15 +81,19 @@ openVipBox = (player, boxInfo, next) ->
 
   setIfExist ['energy', 'money', 'skillPoint', 'elixir', 'fragments']
   player.resumePower(boxInfo.power)
+
+  vb = _.clone(player.vipBox)
+  vb.push boxInfo.id
+  player.vipBox = vb
   player.save()
   
   if _.has boxInfo, 'exp_card'
     addExpCardFor player, boxInfo.exp_card, (err, cards) ->
       return next(null, {code: err.code or 500, msg: err.msg or err}) if err
 
-      next(null, {code: 200, msg: {boxInfo: boxInfo, card: cards[0], qty: cards.length}})
+      next(null, {code: 200, msg: {card: cards[0], cardIds: cards.map (c) -> c.id}})
   else
-    next(null, {code: 200, msg: {boxInfo: boxInfo, card: {}, qty: 0}})
+    next(null, {code: 200, msg: {card: {}, cardIds: []}})
 
 addExpCardFor = (player, qty, cb) ->
   async.times(

@@ -514,12 +514,31 @@ var Player = (function(_super) {
             si.months[key] = 0;
         }
 
-        utility.mark(si.months[key], d.getDay());
+        si.months[key] = utility.mark(si.months[key], d.getDay());
         this.signIn = si;
     };
 
     Player.prototype.signDays = function() {
-        
+        var i, days = 0;
+        var d = new Date();
+        var key = util.format('%d%d', d.getFullYear(), d.getMonth());
+
+        for (i = 1; i <= 31; i++) {
+            if (utility.hasMark(this.signIn.months[key], i)) {
+                days += 1;
+            } 
+        }
+        return days;
+    };
+
+    player.prototype.setSignInFlag = function(id) {
+        var si = utility.deepCopy(this.signIn);
+        si.flag = utility.mark(si.flag, id);
+        this.signIn = si;
+    };
+
+    player.prototype.hasSignInFlag = function(id) {
+        return utility.hasMark(this.signIn.flag, id);
     };
 
     Player.prototype.toJson = function() {

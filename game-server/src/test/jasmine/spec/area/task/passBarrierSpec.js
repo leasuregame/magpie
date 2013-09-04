@@ -25,12 +25,6 @@ describe("Area Server", function() {
 
 		describe("area.taskHandler.passBarrier", function() {
 			describe("一般爬塔测试", function() {
-				beforeEach(function() {
-					initPomelo();
-				});
-				afterEach(function() {
-					pomelo.disconnect();
-				});
 
 				// describe("when start a passBarrier", function() {
 				// 	beforeEach(function() {
@@ -113,8 +107,7 @@ describe("Area Server", function() {
 			});
 
 			describe("连续爬塔50层测试", function() {
-				beforeAll(function() {
-					initPomelo();
+				beforeEach(function() {
 					loginWith(passer.account, passer.password, passer.areaId);
 				});
 
@@ -154,12 +147,7 @@ describe("Area Server", function() {
 
 			});
 
-			discribe('tear down', function() {
-				it('disconnect', function() {
-					pomelo.disconnect();
-				});
 
-			});
 		});
 	});
 });

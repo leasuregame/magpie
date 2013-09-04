@@ -33,12 +33,14 @@
 
       var htmlReporter = new jasmine.HtmlReporter();
       var trivialReporter = new jasmine.TrivialReporter();
-      //jasmineEnv.addReporter(htmlReporter);
+      jasmineEnv.addReporter(htmlReporter);
       //jasmineEnv.addReporter(new jasmine.ConsoleReporter());
-      jasmineEnv.addReporter(trivialReporter);
+      
+      //jasmineEnv.addReporter(trivialReporter);
+      
       //jasmineEnv.addReporter(new jasmine.JUnitXmlReporter());
       jasmineEnv.specFilter = function(spec) {
-        return trivialReporter.specFilter(spec);
+        return htmlReporter.specFilter(spec);
       };
 
       var currentWindowOnload = window.onload;

@@ -44,7 +44,7 @@ describe('Area Server', function() {
 								spiritPool: {
 									lv: 0,
 									exp: 5,
-									collectCount: 1
+									collectCount: 14
 								}
 							}
 						});

@@ -29,7 +29,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
             this._onClickClose,
             this
         );
-        closeItem.setPosition(cc.p(615, 935));
+        closeItem.setPosition(cc.p(605, 925));
 
         var menu = cc.Menu.create(closeItem);
         menu.setPosition(cc.p(0, 0));
@@ -55,7 +55,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
         this._scrollView = cc.ScrollView.create(cc.size(500, 600), scrollViewLayer);
         this._scrollView.setTouchPriority(-300);
-        this._scrollView.setPosition(cc.p(108, 260));
+        this._scrollView.setPosition(cc.p(110, 260));
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);

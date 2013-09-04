@@ -36,7 +36,7 @@ var PaymentLayer = LazyLayer.extend({
             this._onClickClose,
             this
         );
-        closeItem.setPosition(cc.p(615, 935));
+        closeItem.setPosition(cc.p(605, 925));
 
         var vipPrivilegeItem = cc.MenuItemImage.create(
             main_scene_image.button38,
@@ -58,13 +58,15 @@ var PaymentLayer = LazyLayer.extend({
         this.addChild(vipPrivilegeIcon);
 
         var tipLabel = cc.Sprite.create(main_scene_image.icon160);
-        tipLabel.setPosition(cc.p(360, 900));
+        tipLabel.setPosition(cc.p(260, 900));
         this.addChild(tipLabel);
 
-        var len = 6;
+        var paymentTypeList = gameData.shop.getPaymentTypeList();
+        var len = paymentTypeList.length;
 
         var scrollViewLayer = MarkLayer.create(cc.rect(107, 260, 500, 550));
         var menu = LazyMenu.create();
+        menu.setTouchPriority(-200);
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
@@ -78,12 +80,39 @@ var PaymentLayer = LazyLayer.extend({
             bgSprite.setPosition(cc.p(0, y));
             scrollViewLayer.addChild(bgSprite);
 
+            var cashIcon = cc.Sprite.create(main_scene_image.icon173);
+            cashIcon.setPosition(cc.p(30, y + 50));
+            scrollViewLayer.addChild(cashIcon);
+
+            var goldIcon = cc.Sprite.create(main_scene_image.icon148);
+            goldIcon.setPosition(cc.p(150, y + 50));
+            scrollViewLayer.addChild(goldIcon);
+
+            var otherGoldIcon = cc.Sprite.create(main_scene_image.icon166);
+            otherGoldIcon.setPosition(cc.p(270, y + 50));
+            scrollViewLayer.addChild(otherGoldIcon);
+
+            var paymentIcon = cc.Sprite.create(main_scene_image.icon159);
+            paymentIcon.setPosition(cc.p(421, y + 50));
+            scrollViewLayer.addChild(paymentIcon, 1);
+
+
+            var paymentItem = cc.MenuItemImage.create(
+                main_scene_image.button21,
+                main_scene_image.button21s,
+                this._onClickVipPrivilege,
+                this
+            );
+            paymentItem.setPosition(cc.p(421, y + 50));
+            menu.addChild(paymentItem);
 
         }
 
+        cc.log(menu.getTouchPriority());
+
         this._scrollView = cc.ScrollView.create(cc.size(500, 550), scrollViewLayer);
         this._scrollView.setTouchPriority(-300);
-        this._scrollView.setPosition(cc.p(107, 260));
+        this._scrollView.setPosition(cc.p(108, 260));
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
@@ -113,6 +142,14 @@ var PaymentLayer = LazyLayer.extend({
         parent.addChild(vipPrivilegeLayer, 1);
 
         this.removeFromParent();
+    },
+
+    _onClickPayment: function (id) {
+        return function () {
+            cc.log("PaymentLayer _onClickPayment: " + id);
+
+
+        }
     }
 });
 

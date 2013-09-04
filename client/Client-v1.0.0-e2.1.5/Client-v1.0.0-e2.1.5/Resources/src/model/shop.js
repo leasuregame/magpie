@@ -30,6 +30,8 @@ var Shop = Entity.extend({
         }
 
         paymentTypeList.sort(this._cmp);
+
+        return paymentTypeList;
     },
 
     getVipBoxList: function () {
@@ -43,6 +45,8 @@ var Shop = Entity.extend({
         }
 
         vipBoxList.sort(this._cmp);
+
+        return vipBoxList;
     },
 
     getVipPrivilegeList: function () {
@@ -56,6 +60,8 @@ var Shop = Entity.extend({
         }
 
         vipPrivilegeList.sort(this._cmp);
+
+        return vipPrivilegeList;
     },
 
     getNextVipCash: function () {

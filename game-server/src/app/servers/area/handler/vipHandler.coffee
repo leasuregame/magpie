@@ -13,13 +13,15 @@ Handler = (@app) ->
 
 Handler::buyVip = (msg, session, next) ->
   playerId = session.get('playerId')
-  cash = msg.cash
+  id = msg.id
 
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    player.increase('cash', cash)
+    data = table.getTableItem('recharge', id)
+    player.increase('cash', data.cash)
+    player.increase('gold', data.gold)
     player.save()
     next(null, {code: 200, msg: {
       player: {

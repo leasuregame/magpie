@@ -44,7 +44,7 @@ var recountVipPrivilege = function(player, oldVip) {
     if (!oldVipInfo && oldVip == 0) {
         oldVipInfo = {
             id: 0,
-            lottery_count: 0,
+            lottery_free_count: 0,
             friend_count: 0,
             buy_power_count: 0,
             give_bless_count: 0,
@@ -56,7 +56,7 @@ var recountVipPrivilege = function(player, oldVip) {
     var curVipInfo = table.getTableItem('vip_privilege', curVip);
     console.log(oldVipInfo, curVipInfo);
     var dg = utility.deepCopy(player.dailyGift);
-    dg.lotteryFreeCount += curVipInfo.lottery_count - oldVipInfo.lottery_count;
+    dg.lotteryFreeCount += curVipInfo.lottery_free_count - oldVipInfo.lottery_free_count;
 
     dg.powerBuyCount += curVipInfo.buy_power_count - oldVipInfo.buy_power_count;
     dg.gaveBless.count += curVipInfo.give_bless_count - oldVipInfo.give_bless_count;

@@ -30,6 +30,24 @@ app.get('/test', function(req, res) {
 
 });
 
+app.get('/message/add', function(req, res) {
+  args = req.query;
+  args.createTime = Date.now();
+  mysql.magpiedb1.query("insert into message set ?", args, function(err, result) {
+    if (err) {
+      return res.send({
+        code: 500,
+        msg: err
+      });
+    }
+
+    res.send({
+      code: 200,
+      uid: result.insertId
+    });
+  });
+});
+
 app.get('/adduser', function(req, res) {
   var account = req.query.account;
   var pwd = req.query.password;
@@ -152,6 +170,32 @@ app.get('/:table/:id', function(req, res) {
   });
 });
 
+app.get('/update/:table/:id', function(req, res) {
+  var table = req.params.table;
+  var id = req.params.id;
+  var data = req.query;
+
+  var _sets = ' set ',
+      args = [];
+  for (var key in data) {
+    _sets += key + ' = ?,';
+    args.push(data[key]);
+  }
+  var sql = 'update ' + table + _sets.slice(0, -1) + ' where id = ?';
+  args.push(id);
+  console.log(sql, args);
+  mysql.magpiedb1.query(sql, args, function(err, result) {
+    if (err) {
+      res.send({
+        code: 500,
+        msg: err
+      })
+    } else {
+      res.send({code: 200});
+    }
+  });
+});
+  
 var command = function(req, res, cmd, args) {
   var ps = spawn(cmd, args);
   ps.stdout.on('data', function(data) {

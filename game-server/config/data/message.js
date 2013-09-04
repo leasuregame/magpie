@@ -1,0 +1,26 @@
+exp = module.exports = {
+	MESSAGETYPE: {
+		ADDFRIEND: 1,
+		MESSAGE: 2,
+		BATTLENOTICE: 3,
+		SYSTEM: 4,
+		BLESS: 10
+	},
+	MESSAGESTATUS: {
+		ASKING: 1,
+		ACCEPT: 2,
+		REJECT: 3,
+		HANDLED: 4,
+		UNHANDLED: 5,
+		NOTICE: 6
+	},
+	FINALSTATUS: [2, 3, 4, 6],
+	MAX_GIVE_COUNT: 15,
+	MAX_RECEIVE_COUNT: 15
+};
+
+exp.TYPE_MAP = {}
+exp.TYPE_MAP[exp.MESSAGETYPE.ADDFRIEND] = 'friend'
+exp.TYPE_MAP[exp.MESSAGETYPE.MESSAGE] = 'friend'
+exp.TYPE_MAP[exp.MESSAGETYPE.BATTLENOTICE] = 'battle'
+exp.TYPE_MAP[exp.MESSAGETYPE.SYSTEM] = 'system'

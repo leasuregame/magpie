@@ -13,19 +13,23 @@ describe("Area Server", function(){
 				doAjax('/loaddata/csv', {}, function(){});
 			});
 
-			beforeEach(function(){
-				loginWith(arthur.account, arthur.password, arthur.areaId);
-			});
-
 			describe('when asking to add an exist player as a friend', function(){
+				beforeEach(function(){
+					loginWith(arthur.account, arthur.password, arthur.areaId);
+				});
+
 				it('should can send the message', function(){
-					request('area.messageHandler.addFriend', {name: 'Mike'}, function(data){
+					request('area.messageHandler.addFriend', {friendName: 'Mike'}, function(data){
 						expect(data).toEqual('');
 					});
 				});
 			});
 
 			describe('when receive a friendship asking', function(){
+				beforeEach(function(){
+					loginWith('2', '1', 1);
+				});
+
 				it('should can accept', function(){
 					request('area.messageHandler.accept', {msgId: 1}, function(data){
 						expect(data).toEqual('');
@@ -40,6 +44,21 @@ describe("Area Server", function(){
 			});
 
 			describe('when get message list', function(){
+				beforeEach(function(){
+					doAjax('/message/add', {receiver: arthur.playerId, type: 1}, function(){});
+					doAjax('/message/add', {receiver: arthur.playerId, type: 1}, function(){});
+					doAjax('/message/add', {receiver: arthur.playerId, type: 1}, function(){});
+					doAjax('/message/add', {receiver: arthur.playerId, type: 2}, function(){});
+					doAjax('/message/add', {receiver: arthur.playerId, type: 2}, function(){});
+					doAjax('/message/add', {receiver: arthur.playerId, type: 2}, function(){});
+					doAjax('/message/add', {receiver: arthur.playerId, type: 3}, function(){});
+					doAjax('/message/add', {receiver: arthur.playerId, type: 3}, function(){});
+					doAjax('/message/add', {receiver: arthur.playerId, type: 4}, function(){});
+				
+					
+					loginWith(arthur.account, arthur.password, arthur.areaId);
+				});
+
 				it('should can return message list for current login user', function(){
 					request('area.messageHandler.messageList', {}, function(data){
 						expect(data).toEqual('');

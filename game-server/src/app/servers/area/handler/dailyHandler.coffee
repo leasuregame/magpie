@@ -40,8 +40,8 @@ Handler::lottery = (msg, session, next) ->
 
     next(null, {code: 200, msg: {
       resourceId: resource.id, 
-      lotteryCount: player.dailyGift.lotteryCount,
-      lotteryFreeCount: player.dailyGift.lotteryFreeCount
+      lotteryCount: player.toJson().dailyGift.lotteryCount,
+      lotteryFreeCount: player.toJson().dailyGift.lotteryFreeCount
       }
     })
 

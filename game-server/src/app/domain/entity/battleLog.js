@@ -38,6 +38,16 @@ var BattleLog = (function (_super) {
         battleLog: {}
     };
 
+    BattleLog.prototype.toJson = function(){
+        return {
+            id: this.id,
+            own: this.own,
+            enemy: this.enemy,
+            battleLog: this.battleLog,
+            createTime: this.createTime
+        };
+    };
+
     return BattleLog;
 })(Entity);
 

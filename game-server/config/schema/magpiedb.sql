@@ -10,6 +10,8 @@ CREATE TABLE IF NOT EXISTS `player` (
   `name` VARCHAR(50) COLLATE utf8_unicode_ci NOT NULL,
   `power` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `lv` SMALLINT(5) UNSIGNED DEFAULT '0',
+  `vip` SMALLINT(2) UNSIGNED DEFAULT '0',
+  `cash` INT(10) UNSIGNED DEFAULT '0', 
   `exp` INT(10) UNSIGNED DEFAULT '0',
   `money` INT(10) UNSIGNED DEFAULT '0',
   `gold`INT(10) UNSIGNED DEFAULT '0',
@@ -43,12 +45,14 @@ CREATE TABLE IF NOT EXISTS `friend` (
 -- ----------------------------
 DROP TABLE IF EXISTS `message`;
 CREATE TABLE IF NOT EXISTS `message` (
-  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `playerId` INT(10) UNSIGNED,
-  `type` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `msgId` BIGINT(20) UNSIGNED,
+  `sender` BIGINT(20),
+  `receiver` BIGINT(20),
+  `type` SMALLINT(2) UNSIGNED DEFAULT '0',
   `options` VARCHAR(256) COLLATE utf8_unicode_ci DEFAULT '',
   `content` VARCHAR(512) COLLATE utf8_unicode_ci DEFAULT '',
-  `status` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
+  `status` SMALLINT(2) UNSIGNED DEFAULT '0',
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

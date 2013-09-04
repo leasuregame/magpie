@@ -25,6 +25,7 @@ var Card = Entity.extend({
     _createTime: 0,         // 创建时间
     _tableId: 0,            // 数据表对应ID
     _lv: 0,                 // 卡牌等级
+    _vip: 0,                // vip等级
     _exp: 0,                // 当前经验
     _skillLv: 0,            // 技能等级
     _hpAddition: 0,         // 生命培养量

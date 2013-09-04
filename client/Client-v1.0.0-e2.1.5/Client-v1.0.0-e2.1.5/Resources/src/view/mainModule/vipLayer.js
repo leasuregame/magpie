@@ -42,19 +42,38 @@ var VipLayer = cc.Layer.extend({
         this.addChild(headLabel);
 
         var goldIcon = cc.Sprite.create(main_scene_image.icon148);
-        goldIcon.setPosition(cc.p(465, 934));
+        goldIcon.setPosition(cc.p(270, 934));
         this.addChild(goldIcon);
 
         var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
-        moneyIcon.setPosition(cc.p(565, 934));
+        moneyIcon.setPosition(cc.p(410, 934));
         this.addChild(moneyIcon);
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(57, 207, 605, 742));
-        var menu = LazyMenu.create();
-        menu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(menu, 1);
+        this._goldLabel = cc.LabelTTF.create(0, "黑体", 20);
+        this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._goldLabel.setPosition(cc.p(288, 932));
+        this.addChild(this._goldLabel);
 
-        var scrollViewHeight = len * 127 - 20;
+        this._moneyLabel = cc.LabelTTF.create(0, "黑体", 20);
+        this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._moneyLabel.setPosition(cc.p(430, 932));
+        this.addChild(this._moneyLabel);
+
+        var paymentItem = cc.MenuItemImage.create(
+            main_scene_image.button38,
+            main_scene_image.button38s,
+            this._onClickPayment,
+            this
+        );
+        paymentItem.setPosition(cc.p(600, 934));
+
+        var menu = cc.Menu.create(paymentItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu);
+
+        var paymentIcon = cc.Sprite.create(main_scene_image.icon159);
+        paymentIcon.setPosition(cc.p(600, 934));
+        this.addChild(paymentIcon);
 
         return true;
     },
@@ -62,6 +81,56 @@ var VipLayer = cc.Layer.extend({
     update: function () {
         cc.log("VipLayer update");
 
+        var player = gameData.player;
+
+        this._goldLabel.setString(player.get("gold"));
+        this._moneyLabel.setString(player.get("money"));
+
+        if (this._scrollView != null) {
+            this._scrollView.removeFromParent();
+        }
+
+        var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 711));
+        var menu = LazyMenu.create();
+        menu.setPosition(cc.p(0, 0));
+        scrollViewLayer.addChild(menu, 1);
+
+        var scrollViewHeight = MAX_VIP_LEVEL * 176 + 20;
+
+        for (var i = 1; i <= MAX_VIP_LEVEL; ++i) {
+            var y = scrollViewHeight - i * 176;
+
+            var bgSprite = cc.Sprite.create(main_scene_image.icon162);
+            bgSprite.setAnchorPoint(cc.p(0, 0));
+            bgSprite.setPosition(cc.p(20, y));
+            scrollViewLayer.addChild(bgSprite);
+
+
+        }
+
+        this._scrollView = cc.ScrollView.create(cc.size(640, 711), scrollViewLayer);
+        this._scrollView.setPosition(GAME_BG_POINT);
+        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        this._scrollView.updateInset();
+        this.addChild(this._scrollView);
+
+        this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
+        this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
+    },
+
+    _onClickPayment: function () {
+        cc.log("VipLayer _onClickPayment");
+
+        var paymentLayer = PaymentLayer.create();
+        this.addChild(paymentLayer, 1);
+    },
+
+    _onClickByVipBox: function (index) {
+        return function () {
+            cc.log("VipLayer _onClickByVipBox: " + index);
+
+
+        }
     }
 });
 

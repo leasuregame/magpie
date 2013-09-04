@@ -108,6 +108,7 @@ var appFiles = [
     'src/view/mainModule/passiveSkillAfreshLabel.js',
     'src/view/mainModule/passLabel.js',
     'src/view/mainModule/passLayer.js',
+    'src/view/mainModule/paymentLayer.js',
     'src/view/mainModule/playerDetails.js',
     'src/view/mainModule/playerHeaderLabel.js',
     'src/view/mainModule/playerTournamentLabel.js',
@@ -128,6 +129,7 @@ var appFiles = [
     'src/view/mainModule/tournamentMessageLabel.js',
     'src/view/mainModule/treasureHuntLayer.js',
     'src/view/mainModule/vipLayer.js',
+    'src/view/mainModule/vipPrivilegeLayer.js',
 
     'src/view/battleModule/actionFactory.js',
     'src/view/battleModule/effectsFactory.js',

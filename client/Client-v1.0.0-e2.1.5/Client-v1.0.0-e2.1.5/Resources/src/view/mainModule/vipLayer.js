@@ -12,8 +12,6 @@
  * */
 
 
-var MAX_VIP_LEVEL = 12;
-
 var VipLayer = cc.Layer.extend({
     _goldLabel: null,
     _moneyLabel: null,
@@ -125,7 +123,7 @@ var VipLayer = cc.Layer.extend({
         this.addChild(paymentLayer, 1);
     },
 
-    _onClickByVipBox: function (index) {
+    _onClickBugVipBox: function (index) {
         return function () {
             cc.log("VipLayer _onClickByVipBox: " + index);
 

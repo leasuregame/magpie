@@ -15,12 +15,9 @@ describe("Area Server", function(){
 				var buyVip = function(lv) {
 					it("VIP " + lv, function(){
 						request('area.vipHandler.buyVip', {cash: moneyList[lv -1]}, function(data) {
-							expect(data).toEqual({
-								code: 200,
-								msg: {
-									vip: lv
-								}
-							});
+							expect(data.code).toEqual(200);
+							expect(data.msg.player.vip).toEqual(lv);
+							expect(data.msg.player).hasProperties('vip', 'dailyGift', 'spiritPool');
 						});
 					});
 				};

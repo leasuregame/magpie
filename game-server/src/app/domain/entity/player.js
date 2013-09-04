@@ -157,6 +157,7 @@ var Player = (function(_super) {
         'power',
         'lv',
         'vip',
+        'vipBox',
         'cash',
         'exp',
         'money',
@@ -181,6 +182,7 @@ var Player = (function(_super) {
         },
         lv: 1,
         vip: 0,
+        vipBox: [],
         cash: 0,
         exp: 0,
         money: 0,
@@ -227,7 +229,6 @@ var Player = (function(_super) {
         cards: {},
         rank: {},
         friends: []
-
     };
 
     Player.prototype.activeSpiritorEffect = function() {
@@ -510,7 +511,8 @@ var Player = (function(_super) {
             power: this.power,
             lv: this.lv,
             vip: this.vip,
-            //cash: this.cash,
+            vipBox: this.vipBox,
+            cash: this.cash,
             exp: this.exp,
             money: this.money,
             gold: this.gold,

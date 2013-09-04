@@ -49,12 +49,7 @@ describe("Area Server", function() {
 						request('area.vipHandler.buyVip', {
 							cash: 10
 						}, function(data) {
-							expect(data).toEqual({
-								code: 200,
-								msg: {
-									vip: 1
-								}
-							});
+							expect(data.code).toEqual(200);
 						});
 
 						request('area.vipHandler.buyVipBox', {

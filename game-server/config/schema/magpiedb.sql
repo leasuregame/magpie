@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `power` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `lv` SMALLINT(5) UNSIGNED DEFAULT '0',
   `vip` SMALLINT(2) UNSIGNED DEFAULT '0',
+  `vipBox` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
   `cash` INT(10) UNSIGNED DEFAULT '0', 
   `exp` INT(10) UNSIGNED DEFAULT '0',
   `money` INT(10) UNSIGNED DEFAULT '0',

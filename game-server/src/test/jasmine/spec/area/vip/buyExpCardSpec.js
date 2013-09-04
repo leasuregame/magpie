@@ -33,7 +33,7 @@ describe("Area Server", function() {
 							qty: 1
 						}, function(data) {
 							expect(data.code).toEqual(200);
-							expect(data.msg.qty).toEqual(1);
+							expect(data.msg.cards.length).toEqual(1);
 							expect(data.msg.card.tableId).toEqual(30000);
 						});
 					});

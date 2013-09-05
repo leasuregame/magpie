@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数
   `spiritor` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `spiritPool` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
+  `signIn` VARCHAR(200) COLLATE utf8_unicode_ci DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

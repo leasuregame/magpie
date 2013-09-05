@@ -17,6 +17,10 @@ var user_path = path.join(__dirname, 'csv', 'user.csv');
 udata.importCsvToSql('user', user_path, function(err, res) {
   if (!err) {
     console.log('load user data complete, on ', Date.now());
-    process.exit();
+    //process.exit();
   }
+});
+udata.dataForRankingUser(function(err, res){
+	console.log('rank user complete');
+	process.exit();
 });

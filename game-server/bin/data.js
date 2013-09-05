@@ -169,9 +169,20 @@ Data.prototype.dataForRanking = function(callback){
           }, cb)
         }
       ], function(err, results) {
-        if (err) console.log(err);
-        console.log(row.id);
-        cb(null, true);
+        if (err) return console.log(err);
+
+        var player = results[0];
+        var rank = results[1];
+        var cards = results[2];
+
+        player.lineUp = random_lineup(cards);
+        self.db.player.update({
+          where: { id: player.id},
+          data: {lineUp: player.lineUp}
+        }, function(err, res){
+          console.log(row.id);
+          cb(null, true);
+        });
       });
     })
     .on('error', function(error) {
@@ -224,4 +235,29 @@ Data.prototype.loadDataForRankingList = function(callback) {
       });
     })(i);
   }
+};
+
+var random_lineup = function(cards) {
+  var i, ids, lu, pos, r, _i, _ref, _res;
+  var __indexOf = [].indexOf;
+  ids = _.map(cards, function(h) {
+    return h.tableId;
+  });
+  pos = ['00', '01', '02', '10', '11'];
+  _res = [];
+  while (true) {
+    r = _.random(0, 4);
+    if (__indexOf.call(_res, r) < 0) {
+      _res.push(r);
+    }
+    if (_res.length >= ids.length) {
+      break;
+    }
+  }
+  lu = '';
+  for (i = _i = 0, _ref = _res.length; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
+    lu += "" + pos[_res[i]] + ":" + ids[i] + ",";
+  }
+  console.log(ids, lu);
+  return lu + '12:-1';
 };

@@ -45,7 +45,7 @@ Handler::lottery = (msg, session, next) ->
       }
     })
 
-Handler::signInDetais = (msg, session, next) ->
+Handler::signInDetails = (msg, session, next) ->
   playerId = session.get('playerId')
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err
@@ -81,9 +81,9 @@ Handler::getSignInGift = (msg, session, next) ->
 
     rew = table.getTableItem('signIn_rewards', id)
     if player.signDays() < rew.count
-      return next(null, {code: 501, msg: 'sign in days is less than ' + rew.count})
+      return next(null, {code: 501, msg: "签到次数不足#{rew.count}次"})
     if player.hasSignInFlag(id) 
-      return next(null, {code: 501, msg: 'can not get sign in gift tow times'})
+      return next(null, {code: 501, msg: '不能重复领取'})
 
     setIfExist = (attrs) ->
       player.increase att, val for att, val of rew when att in attrs

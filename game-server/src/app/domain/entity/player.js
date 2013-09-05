@@ -22,6 +22,7 @@ var table = require('../../manager/table');
 var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
+var util = require('util');
 
 var defaultMark = function() {
     var i, result = [];
@@ -384,7 +385,7 @@ var Player = (function(_super) {
 
         // 更新dailyGift的power
         var dg = _.clone(this.dailyGift);
-        dg.power.push(hour);
+        dg.powerGiven.push(hour);
         this.dailyGift = dg;
     };
 
@@ -495,38 +496,43 @@ var Player = (function(_super) {
 
     Player.prototype.signToday = function() {
         var d = new Date();
-        var key = util.format('%d%d', d.getFullYear(), d.getMonth());
+        var key = util.format('%d%d', d.getFullYear(), d.getMonth()+1);
         var si = utility.deepCopy(this.signIn);
 
         if (!_.has(si, key)) {
+            var _months = Object.keys(si.months);
+            if (_months.length >= 12) {
+                delete si.months[_months[0]];
+            }
             si.months[key] = 0;
         }
 
-        si.months[key] = utility.mark(si.months[key], d.getDay());
+        si.months[key] = utility.mark(si.months[key], d.getDay()+1);
         this.signIn = si;
     };
 
     Player.prototype.signDays = function() {
         var i, days = 0;
         var d = new Date();
-        var key = util.format('%d%d', d.getFullYear(), d.getMonth());
-
+        var key = util.format('%d%d', d.getFullYear(), d.getMonth()+1);
+        console.log(this.signIn.months[key], key);
         for (i = 1; i <= 31; i++) {
             if (utility.hasMark(this.signIn.months[key], i)) {
                 days += 1;
             } 
         }
+        console.log('sidn days: ', days);
         return days;
     };
 
-    player.prototype.setSignInFlag = function(id) {
+    Player.prototype.setSignInFlag = function(id) {
         var si = utility.deepCopy(this.signIn);
-        si.flag = utility.mark(si.flag, id);
+        si.flag = utility.mark(parseInt(si.flag), id);
         this.signIn = si;
     };
 
-    player.prototype.hasSignInFlag = function(id) {
-        return utility.hasMark(this.signIn.flag, id);
+    Player.prototype.hasSignInFlag = function(id) {
+        return utility.hasMark(parseInt(this.signIn.flag), id);
     };
 
     Player.prototype.toJson = function() {
@@ -559,7 +565,8 @@ var Player = (function(_super) {
                 return card.toJson();
             }),
             rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
-            friends: this.friends
+            friends: this.friends,
+            signIn: utility.deepCopy(this.signIn)
         };
     };
 

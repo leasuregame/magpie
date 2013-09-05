@@ -16,8 +16,9 @@ function tryMkdir(file) {
 }
 
 var files = [
-  '../data/table.json',
-  '../../client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/Resources/src/table/table.json'
+  '../../client/Client/Client/Resources/src/table/table.json',
+  '../../client/Client-v1.0.0-e2.1.4/Client-v1.0.0-e2.1.4/Resources/src/table/table.json',
+  '../../gm/config/table/table.json'
 ];
 
 for (var i = files.length - 1; i >= 0; i--) {
@@ -41,5 +42,6 @@ files.forEach(function(filepath) {
 });
 
 fs.writeFileSync('../data/table1.json', JSON.stringify(tabledata.exports));
+fs.writeFileSync('../../gm/config/table/table1.json', JSON.stringify(tabledata.exports));
 
 console.log('complete');

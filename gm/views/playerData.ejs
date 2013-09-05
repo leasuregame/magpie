@@ -1,0 +1,106 @@
+<%- include header%>
+      <form class="form-inline span5" role="form" id = "playerData" name = "playerData">
+
+            <fieldset>
+                <legend><%=area["name"] %>:<%= player["name"]%>的数据修改</legend>
+
+              <div class="row-fluid marketing">
+                <div class = "span5">
+                    <div class="control-group">
+                        <label class="control-label" for="lv">等级:</label>
+                        <input type="text" class="input-small" id="lv" name="lv" >
+                    </div>
+
+                    <div class="control-group">
+                          <label class="control-label" for="money">元宝:</label>
+
+                          <input type="text" class="input-small" id="money" name="money">
+                    </div>
+
+
+                    <div class="control-group">
+                          <label class="control-label" for="gold">铜板:</label>
+
+                          <input type="text" class="input-small" id="gold" name="gold">
+                    </div>
+
+
+                     <div class="control-group">
+                          <label class="control-label" for="energy">体力:</label>
+
+                          <input type="text" class="input-small" id="power" name="power">
+                    </div>
+
+                    <div class="control-group">
+                          <label class="control-label" for="skillPoint">技能点:</label>
+
+                          <input type="text" class="input-small" id="skillPoint" name="skillPoint">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="fragments">碎片数:</label>
+                        <input type="text" class="input-small" id="fragments" name="fragments">
+                    </div>
+
+                </div>
+
+                <div class = "span5">
+
+                    <div class="control-group">
+                        <label class="control-label" for="energy">活力值:</label>
+                        <input type="text" class="input-small" id="energy" name="energy">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="elixir">仙丹数:</label>
+                        <input type="text" class="input-small" id="elixir" name="elixir">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="spiritor">元神等级:</label>
+                        <input type="text" class="input-small" id="spiritor" name="spiritor"" >
+                    </div>
+
+
+                    <div class="control-group">
+                        <label class="control-label" for="spiritPool">灵气池等级:</label>
+                        <input type="text" class="input-small" id="spiritPoolLv" name="spiritPoolLv" >
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="spiritPool">已采集次数:</label>
+                        <input type="text" class="input-small" id="spiritPoolCount" name="spiritPoolCount" >
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="taskId">任务Id：</label>
+                        <input type="text" class="input-small" id="taskId" name="taskId">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="layer">关卡层数：</label>
+                        <input type="text" class="input-small" id="layer" name="layer">
+                    </div>
+
+                </div>
+
+              </div>
+                <button type="button" id = "btnUpdate" class="btn btn-primary">确定</button>
+                <button type="button" id = "btnReset" class="btn btn-primary">重置</button>
+              <div class="alert" id = "tip">
+
+              </div>
+
+              </div>
+            </fieldset>
+
+
+      </form>
+
+        <script src="/javascripts/player.js"></script>
+
+           <script type="text/javascript">
+                setPlayer(<%- JSON.stringify(player) %>,<%- JSON.stringify(area) %>);
+           </script>
+
+<%- include footer%>

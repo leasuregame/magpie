@@ -241,7 +241,7 @@ var random_lineup = function(cards) {
   var i, ids, lu, pos, r, _i, _ref, _res;
   var __indexOf = [].indexOf;
   ids = _.map(cards, function(h) {
-    return h.tableId;
+    return h.id;
   });
   pos = ['00', '01', '02', '10', '11'];
   _res = [];
@@ -258,6 +258,6 @@ var random_lineup = function(cards) {
   for (i = _i = 0, _ref = _res.length; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
     lu += "" + pos[_res[i]] + ":" + ids[i] + ",";
   }
-  console.log(ids, lu);
+
   return lu + '12:-1';
 };

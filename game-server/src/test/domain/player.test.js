@@ -200,15 +200,18 @@ describe("Player Object", function() {
     describe('.consumePower()', function(){
         it('should can consume power with the given value', function(){
             var player = new Player({
-                power: 100
+                power: {
+                    time:0,
+                    value:100
+                }
             });
 
             player.consumePower(50);
-            player.get('power').should.be.equal(50);
+            player.get('power').value.should.be.equal(50);
             player.changedFields.should.include('power');
 
             player.consumePower(60);
-            player.get('power').should.be.equal(0);
+            player.get('power').value.should.be.equal(0);
             player.changedFields.should.include('power');
         });
     });
@@ -245,12 +248,13 @@ describe("Player Object", function() {
                     }
                 });
 
-            player.ability.should.equal(17800);
-            player.getAbility().should.equal(17800);
 
+            player.getAbility().should.equal(11436);
+            player.ability.should.equal(11436);
             player.lineUp = '00:1,01:2,02:3,10:4,11:6';
-            player.ability.should.equal(17844);
-            player.getAbility().should.equal(17844);
+
+            player.getAbility().should.equal(17314);
+            player.ability.should.equal(17314);
         });
     });
 
@@ -292,12 +296,15 @@ describe("Player Object", function() {
                         spirit_hp: 60,
                         spirit_atk: 29,
                         ps_hp: 0,
-                        ps_atk: 0
-                    },
+                        ps_atk: 0,
+                        elixir_hp: 0,
+                        elixir_atk: 0
+
+                },
                     star: 1,
                     lv: 1,
                     exp: 0,
-                    skillLv: 1,
+                    skillLv: 0,
                     skillPoint: 0,
                     elixir: 0,
                     hpAddition: 0,
@@ -330,20 +337,22 @@ describe("Player Object", function() {
                     tableId: 1,
                     init_hp: 174,
                     init_atk: 85,
-                    hp: 182,
-                    atk: 89,
+                    hp: 174,
+                    atk: 85,
                     incs: {
                         group_hp: 0,
                         group_atk: 0,
-                        spirit_hp: 8,
-                        spirit_atk: 4,
+                        spirit_hp: 0,
+                        spirit_atk: 0,
                         ps_hp: 0,
-                        ps_atk: 0
+                        ps_atk: 0,
+                        elixir_hp: 0,
+                        elixir_atk: 0
                     },
                     star: 1,
                     lv: 5,
                     exp: 0,
-                    skillLv: 1,
+                    skillLv: 0,
                     skillPoint: 0,
                     elixir: 0,
                     hpAddition: 0,
@@ -352,6 +361,49 @@ describe("Player Object", function() {
                 });
             });
         });
+    });
+
+    describe('.isVip()',function(){
+
+        it('should can get true while player is Vip',function(){
+
+            var player = new Player({
+                id:1,
+                vip:0
+            });
+
+            player.isVip().should.equal(false);
+
+            player.set('vip',5);
+
+            player.isVip().should.equal(true);
+
+        });
+
+    });
+
+    describe('.isLineUpCard()',function(){
+
+        it('should can get true when cardId in lineUpObj',function(){
+
+            var player = new Player({
+                id: 1,
+                name: 'arthur',
+                lineUp: '00:1,01:2,02:3,10:4,11:5',
+                cards: {
+                    1: new Card({id: 1, tableId: 1, star: 1}),
+                    2: new Card({id: 2, tableId: 7, star: 2}),
+                    3: new Card({id: 3, tableId: 13, star: 3}),
+                    4: new Card({id: 4, tableId: 19, star: 4}),
+                    5: new Card({id: 5, tableId: 25, star: 5}),
+                    6: new Card({id: 6, tableId: 30, star: 5})
+                }
+            });
+
+            player.isLineUpCard(player.cards[3]).should.equal(true);
+            player.isLineUpCard(player.cards[5]).should.equal(false);
+        });
+
     });
 
 });

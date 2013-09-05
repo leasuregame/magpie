@@ -264,12 +264,13 @@ var Player = (function(_super) {
                 ability += card.ability();
             }
         });
+        this.set('ability', ability);
         return ability;
     };
 
-    Player.prototype.updateAbility = function() {
-        this.set('ability', this.getAbility());
-    };
+   // Player.prototype.updateAbility = function() {
+   //     this.set('ability', this.getAbility());
+   // };
 
     Player.prototype.activeGroupEffect = function() {
         var cardIds = _.values(this.lineUpObj());
@@ -316,7 +317,8 @@ var Player = (function(_super) {
     };
 
     Player.prototype.isLineUpCard = function(card) {
-        return _.has(this.cards, card.id);
+       // return _.has(this.cards, card.id);
+        return _.has(_.values(this.lineUpObj()), card.id);
     };
 
     Player.prototype.hasCard = function(id) {

@@ -95,14 +95,104 @@ Data.prototype.loadCsvDataToSql = function(callback) {
   }
 };
 
+Data.prototype.dataForRankingUser = function(callback) {
+  var self = this, id;
+  async.times(5000, function(n, next) {
+    id = n + 20;
+    self.db.user.create({
+      data: {
+        id: id,
+        account: 'robot' + id,
+        password: '1',
+        roles: [1]
+      }
+    }, next);
+  }, function(err, results) {
+    if (err) console.log(err);
+    console.log('user');
+    callback(null, true)
+  });
+};
+
+Data.prototype.dataForRanking = function(callback){
+  // 新浪服务器使用的数据
+  var userId = 20;
+  var self = this;
+  var filepath = path.join(this.fixtures_dir, '..', 'robot', 'player.csv');
+  console.log(filepath);
+  csv()
+    .from(filepath, {
+      columns: true,
+      delimiter: ';',
+      escape: '"'
+    })
+    .transform(function(row, index, cb) {
+      _.each(row, function(val, key) {
+        if (_.isEmpty(val)) {
+          delete row[key];
+        }
+      });
+
+      if (_.isEmpty(row)) {
+        cb(null);
+        return;
+      }
+
+      var playerData = {
+        id: row.id,
+        userId: userId++,
+        areaId: 1,
+        name: row.name
+      };
+      var rankData = {
+        playerId: row.id,
+        ranking: row.ranking
+      };
+
+      var ids = _.range(parseInt(row.card_star), 250, 5);
+      var cardData = {
+        playerId: row.id,
+        star: row.card_star,
+        lv: row.card_lv
+      };
+      async.parallel([
+        function(cb) {
+          self.db.player.create({data: playerData}, cb);    
+        },
+        function(cb) {
+          self.db.rank.create({data: rankData}, cb);
+        },
+        function(cb) {
+          async.times(row.card_count, function(n, next){
+            cardData.tableId = ids[_.random(0, ids.length-1)];
+            self.db.card.create({data: cardData}, next);
+          }, cb)
+        }
+      ], function(err, results) {
+        if (err) console.log(err);
+        console.log(row.id);
+        cb(null, true);
+      });
+    })
+    .on('error', function(error) {
+      console.log('load csv error:', error.message);
+    })
+    .on('close', function() {
+      console.log('');
+    })
+    .on('end', function(count) {
+      callback(null, count);
+    });
+};
+
 Data.prototype.loadDataForRankingList = function(callback) {
+  // 接口测试使用的数据
   var self = this;
   var count = 0;
   console.log('  *** create test data for ranking list ***  ');
   console.log('raking list data creating......');
   for (var i = 10000; i < 20001; i++) {
     (function(id) {
-      var _ranking = 10000;
       var data = {
         id: id,
         name: 'james' + id,

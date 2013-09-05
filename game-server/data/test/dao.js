@@ -29,6 +29,9 @@ var main = function() {
     case 'rank':
       quenues.push(gdata.loadDataForRankingList);
       break;
+    case 'rank4Sina': 
+      quenues.push(gdata.dataForRanking);
+      break;
     default:
       quenues.push(gdata.loadCsvDataToSql);
       quenues.push(gdata.loadDataForRankingList);

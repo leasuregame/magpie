@@ -30,7 +30,7 @@ var StrokeLabel = cc.Node.extend({
 
         if (!this._super()) return false;
 
-        var string = arg[0] || "";
+        var string = arg[0];
         var fontName = arg[1] || "黑体";
         var fontSize = arg[2] || 20;
         var dimensions = arg[3] || cc.size(0, arg[2]);

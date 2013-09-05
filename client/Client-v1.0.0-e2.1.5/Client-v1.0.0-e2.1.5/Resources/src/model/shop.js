@@ -43,17 +43,23 @@ var Shop = Entity.extend({
 
         var table = outputTables.vip_box.rows;
         var vipBoxList = [];
+        var len = this._useVipBoxList.length;
 
         for (var key in table) {
-            vipBoxList.push(table[key]);
+            var i;
+
+            for (i = 0; i < len; ++i) {
+                if (this._useVipBoxList[i] == table[key].id) {
+                    break;
+                }
+            }
+
+            if (i == len) {
+                vipBoxList.push(table[key]);
+            }
         }
 
         vipBoxList.sort(this._cmp);
-
-        var len = this._useVipBoxList.length;
-        for (var i = 0; i < len; ++i) {
-            vipBoxList.splice(this._useVipBoxList[i] - 1, 1);
-        }
 
         cc.log(vipBoxList);
 

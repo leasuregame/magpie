@@ -45,6 +45,7 @@ var Message = (function (_super) {
         return {
             id: this.id,
             sender: this.sender,
+            senderName: this.options.playerName,
             receiver: this.receiver,
             type: this.type,
             status: this.status,

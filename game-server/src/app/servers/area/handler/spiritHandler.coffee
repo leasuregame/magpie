@@ -20,7 +20,7 @@ Handler::collect = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
     
     spiritPool = _.clone(player.spiritPool)
-    if spiritPool.collectCount >= spiritConfig.MAX_COLLECT_COUNT
+    if spiritPool.collectCount <= 0
       return next(null, {code: 501, msg: '不能采集，已经达到每天最大采集次数'})
 
     spiritPollData = table.getTableItem('spirit_pool', spiritPool.lv)
@@ -30,7 +30,7 @@ Handler::collect = (msg, session, next) ->
     if spiritPool.exp >= spiritPollData.exp_need
       spiritPool.lv += 1
       spiritPool.exp -= spiritPollData.exp_need
-    spiritPool.collectCount += 1
+    spiritPool.collectCount -= 1
 
     ### 获得灵气，并判断元神是否升级 ###
     spiritor = _.clone(player.spiritor)

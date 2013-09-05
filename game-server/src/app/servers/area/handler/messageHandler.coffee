@@ -76,9 +76,12 @@ Handler::handleSysMsg = (msg, session, next) ->
   playerId = session.get('playerId')
   msgId = msg.msgId
 
-  dao.message.fetchOne where: id: msgId, (err, res) ->
+  dao.message.fetchOne where: id: msgId, (err, message) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    if message.type isnt msgConfig.MESSAGETYPE.SYSTEM
+      return next(null, {code: 501, msg: '消息类型不匹配'})
 
     # do something 
     next(null, {code: 200})
@@ -158,7 +161,7 @@ Handler::deleteFriend = (msg, session, next) ->
 Handler::addFriend = (msg, session, next) ->
   playerId = session.get('playerId')
   playerName = session.get('playerName')
-  friendName = msg.name
+  friendName = msg.friendName
 
   friend = null
   async.waterfall [
@@ -217,6 +220,13 @@ Handler::accept = (msg, session, next) ->
 
     (res, cb) ->
       message = res
+
+      if message.receiver isnt playerId
+        return cb({code: 501, msg: '你没有权限处理此消息'})
+
+      if message.type isnt msgConfig.MESSAGETYPE.ADDFRIEND
+        return cb({code: 501, msg: '消息类型不匹配'})
+
       if isFinalStatus(message.status)
         return cb({code: 200, msg: '已处理'})
 
@@ -246,10 +256,21 @@ Handler::accept = (msg, session, next) ->
       ability: sender.ability
     }})
 
-    sendMessage @app, message.sender, {
-      route: 'onMessage'
-      msg: message.toJson()
-    }
+    _message = message.toJson()
+    playerManager.getPlayerInfo pid: playerId, (err, res) ->
+      if err
+        logger.error 'fail to get player info: ', err
+
+      _message.friend = {
+        id: playerId
+        name: playerName
+        lv: res.lv
+        ability: res.ability
+      }
+      sendMessage @app, message.sender, {
+        route: 'onMessage'
+        msg: _message
+      }
 
 Handler::reject = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -261,6 +282,12 @@ Handler::reject = (msg, session, next) ->
       dao.message.fetchOne where: id: msgId, cb
 
     (message, cb) ->
+      if message.receiver isnt playerId
+        return cb({code: 501, msg: '你没有权限处理此消息'})
+
+      if message.type isnt msgConfig.MESSAGETYPE.ADDFRIEND
+        return cb({code: 501, msg: '消息类型不匹配'})
+
       if isFinalStatus(message.status)
         return cb({code: 200, msg: '已处理'})
 
@@ -291,13 +318,13 @@ Handler::giveBless = (msg, session, next) ->
       playerManager.getPlayerInfo pid: playerId, cb
 
     (player, cb) ->
-      if player.dailyGift.gaveBless.count >= msgConfig.MAX_GIVE_COUNT
+      if player.dailyGift.gaveBless.count <= 0
         return cb({code: 501, '今日你送出祝福的次数已经达到上限'})
 
       if _.contains player.dailyGift.gaveBless.receivers, friendId
         return cb({code: 501, '一天只能给同一位好友送出一次祝福哦'})
 
-      player.dailyGift.gaveBless.count++
+      player.dailyGift.gaveBless.count--
       player.dailyGift.gaveBless.receivers.push(friendId)
       player.updateGift 'gaveBless', player.dailyGift.gaveBless
       player.save()
@@ -308,10 +335,10 @@ Handler::giveBless = (msg, session, next) ->
         if err
           return cb(err)
 
-        if res.dailyGift.receivedBlessCount >= msgConfig.MAX_RECEIVE_COUNT
+        if res.dailyGift.receivedBlessCount <= 0
           return cb({code: 501, '今日对方接收祝福的次数已经达到上限'})
 
-        res.dailyGift.receivedBless.count++
+        res.dailyGift.receivedBless.count--
         res.dailyGift.receivedBless.givers.push(playerId)
         dao.player.update {
           where: id: friendId
@@ -349,6 +376,12 @@ Handler::receiveBless = (msg, session, next) ->
 
     (res, cb) ->
       message = res
+      if message.receiver isnt playerId
+        return cb({code: 501, msg: '你没有权限处理此消息'})
+
+      if message.type isnt msgConfig.MESSAGETYPE.BLESS
+        return cb({code: 501, msg: '消息类型不匹配'})
+      
       if isFinalStatus(message.status)
         return cb({code: 200, msg: '已处理'})
       

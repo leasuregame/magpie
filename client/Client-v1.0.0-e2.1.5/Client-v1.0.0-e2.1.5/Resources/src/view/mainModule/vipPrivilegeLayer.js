@@ -90,7 +90,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
             var offsetY = y + 240;
             for (var key in vipPrivilege) {
-                if (key != "id" && vipPrivilege[key] > 0) {
+                if (vipPrivilegeDescription[key] != undefined && vipPrivilege[key] > 0) {
                     var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
                     vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
                     scrollViewLayer.addChild(vipPrivilegeIcon);

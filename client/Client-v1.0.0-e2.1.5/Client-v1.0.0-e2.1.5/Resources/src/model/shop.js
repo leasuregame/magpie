@@ -15,8 +15,12 @@
 var MAX_VIP_LEVEL = 12;
 
 var Shop = Entity.extend({
-    init: function () {
+    _useVipBoxList: [],
 
+    init: function (data) {
+        cc.log("Shop init");
+
+        this._useVipBoxList = data.useVipBoxList;
     },
 
     getPaymentTypeList: function () {
@@ -46,6 +50,13 @@ var Shop = Entity.extend({
 
         vipBoxList.sort(this._cmp);
 
+        var len = this._useVipBoxList.length;
+        for (var i = 0; i < len; ++i) {
+            vipBoxList.splice(this._useVipBoxList[i] - 1, 1);
+        }
+
+        cc.log(vipBoxList);
+
         return vipBoxList;
     },
 
@@ -73,8 +84,30 @@ var Shop = Entity.extend({
         return outputTables.vip.rows[vip + 1].total_cash - player.get("cash");
     },
 
-    payment: function () {
-        cc.log("Shop payment");
+    payment: function (id) {
+        cc.log("Shop payment: " + id);
+
+        var that = this;
+        lzWindow.pomelo.request("area.messageHandler.reject", {
+            msgId: msgId
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("accept success");
+
+                var len = that._friendMessage.length;
+                for (var i = 0; i < len; ++i) {
+                    if (that._friendMessage[i].id == msgId) {
+                        that._friendMessage[i].status = REJECT_STATUS;
+                        break;
+                    }
+                }
+            } else {
+                cc.log("accept fail");
+            }
+        });
     },
 
     buyVipBox: function () {
@@ -86,7 +119,7 @@ var Shop = Entity.extend({
     },
 
     _cmp: function (a, b) {
-        return (a.id - b.id);
+        return (b.id - a.id);
     }
 });
 

@@ -81,7 +81,9 @@ var sqlHelper = {
      * @return {array} 包含两个数据，sql语句和填入值
      * */
     selectSql: function (table, where, limit) {
+        var orderby, fields;
         if (arguments.length == 1) {
+            fields = table.fields || ''
             where = table.where;
             limit = table.limit;
             orderby = table.orderby || '';
@@ -89,6 +91,7 @@ var sqlHelper = {
             table = table.table;
         }
         var stm = Statement.where(where);
+        fields = fields == '' ? ' * ' : fields.join(',');
         where = stm.where == '' ? '' : ' where ' + stm.where;
         orderby = orderby == '' ? '' : ' order by ' + orderby;
         limit = limit == -1 ? '' : ' limit ' + limit;

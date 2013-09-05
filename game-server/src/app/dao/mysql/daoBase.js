@@ -49,6 +49,7 @@ var DaoBase = (function() {
    * options = {
    *   table: [string], 需要操作的表的名称
    *   data: [object],  操作的数据对象
+   *   fields: [array]  the fields to be selected, empty means all
    *   where: [object] or [string], 条件对象或者条件语句，如：{id: 1} or 'id = 1'
    *   limit: [number], 需要返回记录的行数
    *   orderby: [string], 排序字段的名称

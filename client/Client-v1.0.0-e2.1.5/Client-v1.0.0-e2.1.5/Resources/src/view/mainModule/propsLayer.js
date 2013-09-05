@@ -74,19 +74,19 @@ var PropsLayer = cc.Layer.extend({
         expCardLabel.setPosition(cc.p(120, 800));
         this.addChild(expCardLabel);
 
-        var bugItem = cc.MenuItemImage.create(
+        var buyItem = cc.MenuItemImage.create(
             main_scene_image.button20,
             main_scene_image.button20s,
-            this._onClickBug,
+            this._onClickBuy,
             this
         );
-        bugItem.setPosition(cc.p(570, 750));
+        buyItem.setPosition(cc.p(570, 750));
 
-        var bugIcon = cc.Sprite.create(main_scene_image.icon163);
-        bugIcon.setPosition(cc.p(570, 750));
-        this.addChild(bugIcon, 1);
+        var buyIcon = cc.Sprite.create(main_scene_image.icon163);
+        buyIcon.setPosition(cc.p(570, 750));
+        this.addChild(buyIcon, 1);
 
-        var menu = cc.Menu.create(paymentItem, bugItem);
+        var menu = cc.Menu.create(paymentItem, buyItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -138,8 +138,8 @@ var PropsLayer = cc.Layer.extend({
         this.addChild(paymentLayer, 1);
     },
 
-    _onClickBug: function () {
-        cc.log("VipLayer _onClickBug");
+    _onClickBuy: function () {
+        cc.log("VipLayer _onClickBuy");
 
 
     }

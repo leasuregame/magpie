@@ -161,18 +161,18 @@ var VipLayer = cc.Layer.extend({
             vipBoxDetailsItem.setPosition(cc.p(90, y + 82));
             menu.addChild(vipBoxDetailsItem);
 
-            var bugItem = cc.MenuItemImage.create(
+            var buyItem = cc.MenuItemImage.create(
                 main_scene_image.button20,
                 main_scene_image.button20s,
-                this._onClickBug(vipBox.id),
+                this._onClickBuy(vipBox.id),
                 this
             );
-            bugItem.setPosition(cc.p(530, y + 40));
-            menu.addChild(bugItem);
+            buyItem.setPosition(cc.p(530, y + 40));
+            menu.addChild(buyItem);
 
-            var bugIcon = cc.Sprite.create(main_scene_image.icon163);
-            bugIcon.setPosition(cc.p(530, y + 40));
-            scrollViewLayer.addChild(bugIcon, 1);
+            var buyIcon = cc.Sprite.create(main_scene_image.icon163);
+            buyIcon.setPosition(cc.p(530, y + 40));
+            scrollViewLayer.addChild(buyIcon, 1);
 
             var vipLabel = cc.Sprite.create(main_scene_image["vip" + vipBox.id]);
             vipLabel.setAnchorPoint(cc.p(0, 0.5));
@@ -298,6 +298,60 @@ var VipLayer = cc.Layer.extend({
         lazyLayer.addChild(okIcon);
     },
 
+    _addTip: function (id) {
+        cc.log("VipLayer _addTip");
+
+        var lazyLayer = LazyLayer.create();
+        this.addChild(lazyLayer);
+
+        var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
+        bgSprite.setContentSize(cc.size(550, 250));
+        bgSprite.setPosition(cc.p(360, 580));
+        lazyLayer.addChild(bgSprite);
+
+        var failLabel = cc.Sprite.create(main_scene_image.icon165);
+        failLabel.setPosition(cc.p(360, 650));
+        lazyLayer.addChild(failLabel);
+
+        var tipLabel = StrokeLabel.create("只有达到VIP" + id + "才能购买此礼包，快去充值吧！");
+        tipLabel.setColor(cc.c3b(255, 252, 175));
+        tipLabel.setPosition(cc.p(360, 600));
+        lazyLayer.addChild(tipLabel);
+
+        var paymentItem = cc.MenuItemImage.create(
+            main_scene_image.button21,
+            main_scene_image.button21s,
+            function () {
+                lazyLayer.removeFromParent();
+                this._onClickPayment();
+            },
+            this
+        );
+        paymentItem.setPosition(cc.p(260, 520));
+
+        var closeItem = cc.MenuItemImage.create(
+            main_scene_image.button20,
+            main_scene_image.button20s,
+            function () {
+                lazyLayer.removeFromParent();
+            },
+            this
+        );
+        closeItem.setPosition(cc.p(460, 520));
+
+        var menu = cc.Menu.create(paymentItem, closeItem);
+        menu.setPosition(cc.p(0, 0));
+        lazyLayer.addChild(menu);
+
+        var paymentIcon = cc.Sprite.create(main_scene_image.icon159);
+        paymentIcon.setPosition(cc.p(260, 520));
+        lazyLayer.addChild(paymentIcon);
+
+        var closeIcon = cc.Sprite.create(main_scene_image.icon36);
+        closeIcon.setPosition(cc.p(460, 520));
+        lazyLayer.addChild(closeIcon);
+    },
+
     _onClickPayment: function () {
         cc.log("VipLayer _onClickPayment");
 
@@ -305,11 +359,22 @@ var VipLayer = cc.Layer.extend({
         this.addChild(paymentLayer, 1);
     },
 
-    _onClickBug: function (index) {
+    _onClickBuy: function (id) {
         return function () {
-            cc.log("VipLayer _onClickBug: " + index);
+            cc.log("VipLayer _onClickBuy: " + id);
 
+            if (gameData.player.get("vip") < id) {
+                this._addTip(id);
 
+                return;
+            }
+
+            var that = this;
+            gameData.shop.buyVipBox(function (data) {
+                cc.log(data);
+
+                that.update();
+            }, id);
         }
     },
 

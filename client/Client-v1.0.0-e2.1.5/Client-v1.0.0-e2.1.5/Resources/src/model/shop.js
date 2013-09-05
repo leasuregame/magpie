@@ -84,38 +84,128 @@ var Shop = Entity.extend({
         return outputTables.vip.rows[vip + 1].total_cash - player.get("cash");
     },
 
-    payment: function (id) {
+    payment: function (cb, id) {
         cc.log("Shop payment: " + id);
 
         var that = this;
-        lzWindow.pomelo.request("area.messageHandler.reject", {
-            msgId: msgId
+        lzWindow.pomelo.request("area.vipHandler.buyVip", {
+            id: id
         }, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 
             if (data.code == 200) {
-                cc.log("accept success");
+                cc.log("payment success");
 
-                var len = that._friendMessage.length;
-                for (var i = 0; i < len; ++i) {
-                    if (that._friendMessage[i].id == msgId) {
-                        that._friendMessage[i].status = REJECT_STATUS;
-                        break;
-                    }
+                var msg = data.msg;
+
+                if (msg.player && msg.player.vip != gameData.player.get("vip")) {
+                    var table = outputTables.recharge.rows[id];
+
+                    gameData.player.add("gold", table.cash * 10 + table.gold);
+
+                    gameData.player.set("vip", msg.player.vip);
+
+                    gameData.friend.init({
+                        friendList: msg.player.friends,
+                        giveBlessCount: msg.player.dailyGift.gaveBless.count,
+                        giveBlessList: msg.player.dailyGift.gaveBless.receivers,
+                        receiveBlessCount: msg.player.dailyGift.receivedBless.count,
+                        receiveBlessList: msg.player.dailyGift.receivedBless.givers
+                    });
+
+                    gameData.treasureHunt.init({
+                        count: msg.player.dailyGift.lotteryCount,
+                        freeCount: msg.player.dailyGift.lotteryFreeCount
+                    });
+
+                    gameData.spiritPool.init(msg.player.spiritPool);
+
+                    that._useVipBoxList.push(id);
+
+                    cb();
                 }
             } else {
-                cc.log("accept fail");
+                cc.log("payment fail");
             }
         });
     },
 
-    buyVipBox: function () {
-        cc.log("shop bugVipBox");
+    buyVipBox: function (cb, id) {
+        cc.log("shop buyVipBox: " + id);
+
+        var that = this;
+        lzWindow.pomelo.request("area.vipHandler.buyVipBox", {
+            boxId: id
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("buyVipBox success");
+
+                var msg = data.msg;
+                var table = outputTables.vip_box.rows[id];
+
+                gameData.player.adds({
+                    power: table.power || 0,
+                    energy: table.energy || 0,
+                    money: table.money || 0,
+                    skillPoint: table.skillPoint || 0,
+                    elixir: table.elixir || 0,
+                    fragment: table.fragments || 0,
+                    gold: table.price
+                });
+
+                var cardIdList = msg.cardIds;
+                var len = cardIdList.length;
+                var cardData = msg.card;
+
+                for (var i = 0; i < len; ++i) {
+                    cardData.id = cardIdList[i];
+                    var card = Card.create(cardData);
+                    gameData.cardList.push(card);
+                }
+
+                cb();
+            } else {
+                cc.log("buyVipBox fail");
+            }
+        });
     },
 
-    bugExpCard: function () {
-        cc.log("Shop bugExpCard");
+    buyExpCard: function (cb, count) {
+        cc.log("Shop buyExpCard: " + count);
+
+        var that = this;
+        lzWindow.pomelo.request("area.vipHandler.buyExpCard", {
+            qty: count
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("buyExpCard success");
+
+                var msg = data.msg;
+
+                var cardIdList = msg.cardIds;
+                var len = cardIdList.length;
+                var cardData = msg.card;
+
+                for (var i = 0; i < len; ++i) {
+                    cardData.id = cardIdList[i];
+                    var card = Card.create(cardData);
+                    gameData.cardList.push(card);
+                }
+
+                gameData.player.add("money", -5000 * count);
+
+                cb();
+            } else {
+                cc.log("buyExpCard fail");
+            }
+        });
     },
 
     _cmp: function (a, b) {

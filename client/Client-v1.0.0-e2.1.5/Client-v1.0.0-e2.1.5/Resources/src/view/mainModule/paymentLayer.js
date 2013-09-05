@@ -150,7 +150,12 @@ var PaymentLayer = LazyLayer.extend({
         return function () {
             cc.log("PaymentLayer _onClickPayment: " + id);
 
+            var parent = this.getParent();
+            gameData.shop.payment(function (data) {
+                cc.log(data);
 
+                parent.update();
+            }, id);
         }
     }
 });

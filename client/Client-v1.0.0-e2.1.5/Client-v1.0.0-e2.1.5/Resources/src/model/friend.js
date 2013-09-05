@@ -24,13 +24,13 @@ var Friend = Entity.extend({
     init: function (data) {
         cc.log("Friend init");
 
-        this._friendList = data.friendList;
-        this._giveBlessCount = data.giveBlessCount;
-        this._giveBlessList = data.giveBlessList;
-        this._receiveBlessCount = data.receiveBlessCount;
-        this._receiveBlessList = data.receiveBlessList;
-        this._friendCount = this._friendList.length;
-        this._maxFriendCount = 50;
+        this.set("friendList", data.friendList);
+        this.set("giveBlessCount", data.giveBlessCount);
+        this.set("giveBlessList", data.giveBlessList);
+        this.set("receiveBlessCount", data.receiveBlessCount);
+        this.set("receiveBlessList", data.receiveBlessList);
+        this.set("friendCount", this._friendList.length);
+        this.set("maxFriendCount", 30);
 
         cc.log(this);
 

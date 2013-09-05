@@ -12,6 +12,16 @@
  * */
 
 
+var vipPrivilegeDescription = {
+    lottery_free_count: "每日抽奖次数",
+    friend_count: "好友上限",
+    buy_power_count: "每日体力购买次数",
+    give_bless_count: "每日送出祝福次数",
+    receive_bless_count: "每日接受祝福次数",
+    challenge_count: "每日有奖竞技次数",
+    spirit_collect_count: "每日灵气采集次数"
+};
+
 var VipPrivilegeLayer = LazyLayer.extend({
     init: function () {
         cc.log("VipPrivilegeLayer init");
@@ -22,6 +32,20 @@ var VipPrivilegeLayer = LazyLayer.extend({
         bgSprite.setContentSize(cc.size(540, 720));
         bgSprite.setPosition(cc.p(360, 580));
         this.addChild(bgSprite);
+
+        var shop = gameData.shop;
+        var vip = gameData.player.get("vip");
+        var nextVipCash = shop.getNextVipCash();
+        cc.log(nextVipCash);
+        if (nextVipCash) {
+            var tipLabel = StrokeLabel.create(
+                "您现在是VIP" + vip + "再冲" + nextVipCash + "元RMB可以享受VIP" + (vip + 1),
+                "黑体",
+                22
+            );
+            tipLabel.setPosition(cc.p(360, 880));
+            this.addChild(tipLabel);
+        }
 
         var closeItem = cc.MenuItemImage.create(
             main_scene_image.button37,
@@ -35,33 +59,61 @@ var VipPrivilegeLayer = LazyLayer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        var vipPrivilegeList = shop.getVipPrivilegeList();
+        var len = vipPrivilegeList.length;
+
         var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 711));
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
-        var scrollViewHeight = MAX_VIP_LEVEL * 315;
+        var scrollViewHeight = len * 315;
 
-        for (var i = 1; i <= MAX_VIP_LEVEL; ++i) {
-            var y = scrollViewHeight - i * 315;
+        for (var i = 0; i < len; ++i) {
+            var y = scrollViewHeight - 315 - i * 315;
 
-            var bgSprite = cc.Sprite.create(main_scene_image.icon169);
+            var vipPrivilege = vipPrivilegeList[i];
+
+            var bgSpriteUrl = main_scene_image.icon169;
+            if (vip == vipPrivilege.id) {
+                bgSpriteUrl = main_scene_image.icon168;
+            }
+
+            var bgSprite = cc.Sprite.create(bgSpriteUrl);
             bgSprite.setAnchorPoint(cc.p(0, 0));
             bgSprite.setPosition(cc.p(0, y));
             scrollViewLayer.addChild(bgSprite);
 
+            var vipIcon = cc.Sprite.create(main_scene_image["vip" + vipPrivilege.id]);
+            vipIcon.setPosition(cc.p(250, y + 280));
+            scrollViewLayer.addChild(vipIcon);
 
+            var offsetY = y + 240;
+            for (var key in vipPrivilege) {
+                if (key != "id" && vipPrivilege[key] > 0) {
+                    var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
+                    vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
+                    scrollViewLayer.addChild(vipPrivilegeIcon);
+
+                    var vipPrivilegeLabel = StrokeLabel.create(vipPrivilegeDescription[key] + " + " + vipPrivilege[key]);
+                    vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
+                    vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
+                    scrollViewLayer.addChild(vipPrivilegeLabel);
+
+                    offsetY -= 35;
+                }
+            }
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(500, 600), scrollViewLayer);
-        this._scrollView.setTouchPriority(-300);
-        this._scrollView.setPosition(cc.p(110, 260));
-        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
-        this._scrollView.updateInset();
-        this.addChild(this._scrollView);
+        var scrollView = cc.ScrollView.create(cc.size(500, 600), scrollViewLayer);
+        scrollView.setTouchPriority(-300);
+        scrollView.setPosition(cc.p(110, 260));
+        scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        scrollView.updateInset();
+        this.addChild(scrollView);
 
-        this._scrollView.setContentSize(cc.size(500, scrollViewHeight));
-        this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
+        scrollView.setContentSize(cc.size(500, scrollViewHeight));
+        scrollView.setContentOffset(scrollView.minContainerOffset());
 
         return true;
     },

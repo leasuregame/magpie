@@ -26,7 +26,6 @@ var StrokeLabel = cc.Node.extend({
     },
 
     init: function (arg) {
-        cc.log(arg);
         cc.log("StrokeLabel init");
 
         if (!this._super()) return false;

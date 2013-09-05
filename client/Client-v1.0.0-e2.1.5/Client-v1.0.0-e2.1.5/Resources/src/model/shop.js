@@ -68,7 +68,7 @@ var Shop = Entity.extend({
         var player = gameData.player;
         var vip = player.get("vip");
 
-        if (vip == 12) return 0;
+        if (vip == MAX_VIP_LEVEL) return 0;
 
         return outputTables.vip.rows[vip + 1].total_cash - player.get("cash");
     },

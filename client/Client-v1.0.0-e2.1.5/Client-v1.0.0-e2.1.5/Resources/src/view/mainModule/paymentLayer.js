@@ -13,13 +13,6 @@
 
 
 var PaymentLayer = LazyLayer.extend({
-    onEnter: function () {
-        cc.log("PaymentLayer onEnter");
-
-        this._super();
-        this.update();
-    },
-
     init: function () {
         cc.log("PaymentLayer init");
 
@@ -72,8 +65,8 @@ var PaymentLayer = LazyLayer.extend({
 
         var scrollViewHeight = len * 110;
 
-        for (var i = 1; i <= len; ++i) {
-            var y = scrollViewHeight - i * 110;
+        for (var i = 0; i < len; ++i) {
+            var y = scrollViewHeight - 110 - i * 110;
 
             var bgSprite = cc.Sprite.create(main_scene_image.icon175);
             bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -96,11 +89,26 @@ var PaymentLayer = LazyLayer.extend({
             paymentIcon.setPosition(cc.p(421, y + 50));
             scrollViewLayer.addChild(paymentIcon, 1);
 
+            var equalIcon = StrokeLabel.create("=", "黑体", 40);
+            equalIcon.setPosition(cc.p(125, y + 50));
+            scrollViewLayer.addChild(equalIcon);
+
+            var cashLabel = StrokeLabel.create(paymentTypeList[i].cash, "黑体", 28);
+            cashLabel.setPosition(cc.p(76, y + 50));
+            scrollViewLayer.addChild(cashLabel);
+
+            var goldLabel = StrokeLabel.create(paymentTypeList[i].cash * 10, "黑体", 28);
+            goldLabel.setPosition(cc.p(205, y + 50));
+            scrollViewLayer.addChild(goldLabel);
+
+            var otherGoldLabel = StrokeLabel.create(paymentTypeList[i].gold, "黑体", 28);
+            otherGoldLabel.setPosition(cc.p(320, y + 50));
+            scrollViewLayer.addChild(otherGoldLabel);
 
             var paymentItem = cc.MenuItemImage.create(
                 main_scene_image.button21,
                 main_scene_image.button21s,
-                this._onClickVipPrivilege,
+                this._onClickPayment(paymentTypeList[i].id),
                 this
             );
             paymentItem.setPosition(cc.p(421, y + 50));
@@ -108,23 +116,17 @@ var PaymentLayer = LazyLayer.extend({
 
         }
 
-        cc.log(menu.getTouchPriority());
+        var scrollView = cc.ScrollView.create(cc.size(500, 550), scrollViewLayer);
+        scrollView.setTouchPriority(-300);
+        scrollView.setPosition(cc.p(108, 260));
+        scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        scrollView.updateInset();
+        this.addChild(scrollView);
 
-        this._scrollView = cc.ScrollView.create(cc.size(500, 550), scrollViewLayer);
-        this._scrollView.setTouchPriority(-300);
-        this._scrollView.setPosition(cc.p(108, 260));
-        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
-        this._scrollView.updateInset();
-        this.addChild(this._scrollView);
-
-        this._scrollView.setContentSize(cc.size(500, scrollViewHeight));
-        this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
+        scrollView.setContentSize(cc.size(500, scrollViewHeight));
+        scrollView.setContentOffset(scrollView.minContainerOffset());
 
         return true;
-    },
-
-    update: function () {
-        cc.log("PaymentLayer update");
     },
 
     _onClickClose: function () {

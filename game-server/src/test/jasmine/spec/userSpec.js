@@ -144,6 +144,7 @@ describe("Connector Server", function() {
                 power: '',
                 lv: 0,
                 exp: 0,
+                vip: 0,
                 money: 0,
                 gold: 0,
                 lineUp: {},
@@ -153,12 +154,12 @@ describe("Connector Server", function() {
                   layer: 0,
                   mark: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 },
-                dailyGift: '',
+                dailyGift: {},
                 skillPoint: 0,
                 elixir: 0,
                 energy: 0,
                 spiritor: '',
-                spiritPool: '',
+                spiritPool: {},
                 cards: [],
                 rank: {},
                 friends: []

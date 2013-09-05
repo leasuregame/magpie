@@ -19,7 +19,8 @@ module.exports = {
         DATA_DIR + 'tasks.xml',
         DATA_DIR + 'rank.xml',
         DATA_DIR + 'lottery.xml',
-        DATA_DIR + 'spirit.xml'
+        DATA_DIR + 'spirit.xml',
+        DATA_DIR + 'vip.xml'
       );
       this.loadTableData(data.exports);
     }

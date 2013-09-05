@@ -80,7 +80,7 @@ Handler::handleSysMsg = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    if message.type isnt msgConfig.MESSAGETYPE.MESSAGE
+    if message.type isnt msgConfig.MESSAGETYPE.SYSTEM
       return next(null, {code: 501, msg: '消息类型不匹配'})
 
     # do something 
@@ -318,13 +318,13 @@ Handler::giveBless = (msg, session, next) ->
       playerManager.getPlayerInfo pid: playerId, cb
 
     (player, cb) ->
-      if player.dailyGift.gaveBless.count >= msgConfig.MAX_GIVE_COUNT
+      if player.dailyGift.gaveBless.count <= 0
         return cb({code: 501, '今日你送出祝福的次数已经达到上限'})
 
       if _.contains player.dailyGift.gaveBless.receivers, friendId
         return cb({code: 501, '一天只能给同一位好友送出一次祝福哦'})
 
-      player.dailyGift.gaveBless.count++
+      player.dailyGift.gaveBless.count--
       player.dailyGift.gaveBless.receivers.push(friendId)
       player.updateGift 'gaveBless', player.dailyGift.gaveBless
       player.save()
@@ -335,10 +335,10 @@ Handler::giveBless = (msg, session, next) ->
         if err
           return cb(err)
 
-        if res.dailyGift.receivedBlessCount >= msgConfig.MAX_RECEIVE_COUNT
+        if res.dailyGift.receivedBlessCount <= 0
           return cb({code: 501, '今日对方接收祝福的次数已经达到上限'})
 
-        res.dailyGift.receivedBless.count++
+        res.dailyGift.receivedBless.count--
         res.dailyGift.receivedBless.givers.push(playerId)
         dao.player.update {
           where: id: friendId

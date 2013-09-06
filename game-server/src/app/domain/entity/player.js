@@ -23,44 +23,25 @@ var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 var util = require('util');
-
-var defaultMark = function() {
-    var i, result = [];
-    for (i = 0; i < 100; i++) {
-        result.push(0);
-    }
-    return result;
-};
-
-var NOW = function() {
-    return Date.now();
-};
-
-var recountVipPrivilege = function(player, oldVip) {
-    var curVip = player.vip;
-    var diff = curVip - oldVip;
-    if (diff <= 0) return;
-
-    var oldVipInfo = table.getTableItem('vip_privilege', oldVip);
-    var curVipInfo = table.getTableItem('vip_privilege', curVip);
-
-    var dg = utility.deepCopy(player.dailyGift);
-    dg.lotteryFreeCount += curVipInfo.lottery_free_count - oldVipInfo.lottery_free_count;
-
-    dg.powerBuyCount += curVipInfo.buy_power_count - oldVipInfo.buy_power_count;
-    dg.gaveBless.count += curVipInfo.give_bless_count - oldVipInfo.give_bless_count;
-    dg.receivedBless.count += curVipInfo.receive_bless_count - oldVipInfo.receive_bless_count;
-    dg.challengeCount += curVipInfo.challenge_count - oldVipInfo.challenge_count;
-    player.dailyGift = dg;
-
-    var sp = utility.deepCopy(player.spiritPool);
-    sp.collectCount += curVipInfo.spirit_collect_count - oldVipInfo.spirit_collect_count;
-    player.spiritPool = sp;
-    console.log(sp);
-    player.save();
-};
+var achieve = require('../achievement');
 
 var addEvents = function(player) {
+    // 经验值改变，判断是否升级
+    player.on('exp.change', function(exp) {
+        var upgradeInfo = table.getTableItem('player_upgrade', player.lv);
+        if (exp >= upgradeInfo.exp) {
+            player.set('exp', exp - upgradeInfo.exp);
+            player.increase('lv');
+            player.resumePower(getMaxPower(player.lv));
+            player.save();
+        }
+    });
+
+    // 玩家级别改变，判断是否达到成就
+    player.on('lv.change', function(lv) {
+        achieve.levelTo(player, lv);
+    });
+
     player.on('add.card', function(card) {
         if (player.isLineUpCard(card)) {
             //player.activeGroupEffect();
@@ -93,27 +74,6 @@ var addEvents = function(player) {
 
         recountVipPrivilege(player, oldVip);
     });
-};
-
-var executeVipPrivilege = function(player) {
-    if (!player.isVip()) return;
-
-    var pri = table.getTableItem('vip_privilege', player.vip);
-    var dg = _.clone(player.dailyGift);
-    dg.lotteryFreeCount += pri.lottery_free_count;
-    // 好友上限 ++
-    dg.powerBuyCount += pri.buy_power_count;
-    dg.gaveBless.count += pri.give_bless_count;
-    dg.receivedBless.count += pri.receive_bless_count;
-    dg.challengeCount += pri.challege_count;
-
-    player.dailyGift = dg;
-
-    var sp = _.clone(player.spiritPool);
-    sp.collectCount += pri.spirit_collect_count;
-
-    player.spiritPool = sp;
-    player.save();
 };
 
 /*
@@ -161,7 +121,8 @@ var Player = (function(_super) {
         'elixir',
         'spiritor',
         'spiritPool',
-        'signIn'
+        'signIn',
+        'achievement'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -219,9 +180,14 @@ var Player = (function(_super) {
             months: {},
             flag: 0
         },
+        achievement: {},
         cards: {},
         rank: {},
         friends: []
+    };
+
+    Player.prototype.achieve = function(id) {
+        
     };
 
     Player.prototype.activeSpiritorEffect = function() {
@@ -366,7 +332,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.resumePower = function(value) {
-        var max_power = getMaxPower(this.lv, playerConfig.POWER_LIMIT);
+        var max_power = getMaxPower(this.lv);
 
         if (this.power.value >= max_power) return;
 
@@ -377,7 +343,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.givePower = function(hour, value) {
-        var max_power = getMaxPower(this.lv, playerConfig.POWER_LIMIT);
+        var max_power = getMaxPower(this.lv);
         var power = _.clone(this.power);
         power.value = _.min([power.value + value, max_power + 50]);
         power.time = Date.now();
@@ -634,8 +600,9 @@ var positionConvert = function(val) {
     return order.indexOf(val) + 1;
 };
 
-var getMaxPower = function(lv, powerLimit) {
+var getMaxPower = function(lv) {
     var max_power = 50;
+    var powerLimit = playerConfig.POWER_LIMIT;
     for (var lv in powerLimit) {
         if (this.lv <= parseInt(lv)) {
             max_power = powerLimit[lv];
@@ -643,6 +610,63 @@ var getMaxPower = function(lv, powerLimit) {
         }
     }
     return max_power;
+};
+
+var defaultMark = function() {
+    var i, result = [];
+    for (i = 0; i < 100; i++) {
+        result.push(0);
+    }
+    return result;
+};
+
+var NOW = function() {
+    return Date.now();
+};
+
+var recountVipPrivilege = function(player, oldVip) {
+    var curVip = player.vip;
+    var diff = curVip - oldVip;
+    if (diff <= 0) return;
+
+    var oldVipInfo = table.getTableItem('vip_privilege', oldVip);
+    var curVipInfo = table.getTableItem('vip_privilege', curVip);
+
+    var dg = utility.deepCopy(player.dailyGift);
+    dg.lotteryFreeCount += curVipInfo.lottery_free_count - oldVipInfo.lottery_free_count;
+
+    dg.powerBuyCount += curVipInfo.buy_power_count - oldVipInfo.buy_power_count;
+    dg.gaveBless.count += curVipInfo.give_bless_count - oldVipInfo.give_bless_count;
+    dg.receivedBless.count += curVipInfo.receive_bless_count - oldVipInfo.receive_bless_count;
+    dg.challengeCount += curVipInfo.challenge_count - oldVipInfo.challenge_count;
+    player.dailyGift = dg;
+
+    var sp = utility.deepCopy(player.spiritPool);
+    sp.collectCount += curVipInfo.spirit_collect_count - oldVipInfo.spirit_collect_count;
+    player.spiritPool = sp;
+    console.log(sp);
+    player.save();
+};
+
+var executeVipPrivilege = function(player) {
+    if (!player.isVip()) return;
+
+    var pri = table.getTableItem('vip_privilege', player.vip);
+    var dg = _.clone(player.dailyGift);
+    dg.lotteryFreeCount += pri.lottery_free_count;
+    // 好友上限 ++
+    dg.powerBuyCount += pri.buy_power_count;
+    dg.gaveBless.count += pri.give_bless_count;
+    dg.receivedBless.count += pri.receive_bless_count;
+    dg.challengeCount += pri.challege_count;
+
+    player.dailyGift = dg;
+
+    var sp = _.clone(player.spiritPool);
+    sp.collectCount += pri.spirit_collect_count;
+
+    player.spiritPool = sp;
+    player.save();
 };
 
 module.exports = Player;

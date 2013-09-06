@@ -38,7 +38,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
         var nextVipCash = shop.getNextVipCash();
         cc.log(nextVipCash);
         if (nextVipCash) {
-            var tipLabel = StrokeLabel.create(
+            var tipLabel = cc.LabelTTF.create(
                 "您现在是VIP" + vip + "再冲" + nextVipCash + "元RMB可以享受VIP" + (vip + 1),
                 "黑体",
                 22
@@ -95,7 +95,11 @@ var VipPrivilegeLayer = LazyLayer.extend({
                     vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
                     scrollViewLayer.addChild(vipPrivilegeIcon);
 
-                    var vipPrivilegeLabel = StrokeLabel.create(vipPrivilegeDescription[key] + " + " + vipPrivilege[key]);
+                    var vipPrivilegeLabel = cc.LabelTTF.create(
+                        vipPrivilegeDescription[key] + " + " + vipPrivilege[key],
+                        "黑体",
+                        20
+                    );
                     vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
                     vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
                     scrollViewLayer.addChild(vipPrivilegeLabel);

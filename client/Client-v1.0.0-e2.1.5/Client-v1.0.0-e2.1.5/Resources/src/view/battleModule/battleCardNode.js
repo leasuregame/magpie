@@ -20,7 +20,7 @@ var BattleCardNode = cc.Node.extend({
     _boss: false,
     _url: "",
     _skillId: 0,
-    _skillType: 1,
+    _skillType: 0,
     _frameSprite: null,
     _heroSprite: null,
     _iconSprite: null,
@@ -50,9 +50,11 @@ var BattleCardNode = cc.Node.extend({
             this._skillType = 3;
         }
 
-        this._iconSprite = cc.Sprite.create(main_scene_image["card_icon" + this._skillType]);
-        this._iconSprite.setPosition(cc.p(47, -60));
-        this.addChild(this._iconSprite, 1);
+        if (this._skillType) {
+            this._iconSprite = cc.Sprite.create(main_scene_image["card_icon" + this._skillType]);
+            this._iconSprite.setPosition(cc.p(47, -60));
+            this.addChild(this._iconSprite, 1);
+        }
 
         this._hpProgress = Progress.create(
             main_scene_image.progress11,
@@ -100,7 +102,7 @@ var BattleCardNode = cc.Node.extend({
     setOpacity: function (opacity) {
         this._frameSprite.setOpacity(opacity);
         this._heroSprite.setOpacity(opacity);
-        this._iconSprite.setOpacity(opacity);
+        if(this._iconSprite) this._iconSprite.setOpacity(opacity);
     },
 
     getColor: function () {
@@ -110,7 +112,7 @@ var BattleCardNode = cc.Node.extend({
     setColor: function (color3) {
         this._frameSprite.setColor(color3);
         this._heroSprite.setColor(color3);
-        this._iconSprite.setColor(color3);
+        if(this._iconSprite)this._iconSprite.setColor(color3);
     },
 
     _tip: function (value, isCrit) {

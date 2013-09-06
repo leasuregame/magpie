@@ -126,11 +126,9 @@ var Shop = Entity.extend({
                     });
 
                     gameData.spiritPool.init(msg.player.spiritPool);
-
-                    that._useVipBoxList.push(id);
-
-                    cb();
                 }
+
+                cb();
             } else {
                 cc.log("payment fail");
             }
@@ -172,6 +170,8 @@ var Shop = Entity.extend({
                     var card = Card.create(cardData);
                     gameData.cardList.push(card);
                 }
+
+                that._useVipBoxList.push(id);
 
                 cb();
             } else {

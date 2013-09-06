@@ -183,26 +183,30 @@ var VipLayer = cc.Layer.extend({
             vipLvIcon.setPosition(cc.p(130, y + 60));
             scrollViewLayer.addChild(vipLvIcon, 1);
 
-            var titleLabel = StrokeLabel.create("尊享礼包");
+            var titleLabel = cc.LabelTTF.create("尊享礼包", "黑体", 20);
             titleLabel.setColor(cc.c3b(255, 252, 175));
             titleLabel.setPosition(cc.p(310, y + 140));
             scrollViewLayer.addChild(titleLabel);
 
             var cost = vipBox.price * 10;
 
-            var descriptionLabel1 = StrokeLabel.create("VIP" + vipBox.id + "尊享礼包，原价" + cost + "魔石，只能购买一次");
+            var descriptionLabel1 = cc.LabelTTF.create(
+                "VIP" + vipBox.id + "尊享礼包，原价" + cost + "魔石，只能购买一次",
+                "黑体",
+                20
+            );
             descriptionLabel1.setAnchorPoint(cc.p(0, 0.5));
             descriptionLabel1.setColor(cc.c3b(255, 252, 175));
             descriptionLabel1.setPosition(cc.p(170, y + 105));
             scrollViewLayer.addChild(descriptionLabel1);
 
-            var descriptionLabel2 = StrokeLabel.create("点击图表可预览礼包内容。");
+            var descriptionLabel2 = cc.LabelTTF.create("点击图表可预览礼包内容。", "黑体", 20);
             descriptionLabel2.setAnchorPoint(cc.p(0, 0.5));
             descriptionLabel2.setColor(cc.c3b(255, 252, 175));
             descriptionLabel2.setPosition(cc.p(170, y + 75));
             scrollViewLayer.addChild(descriptionLabel2);
 
-            var costIcon = StrokeLabel.create("原价:");
+            var costIcon = cc.LabelTTF.create("原价:", "黑体", 20);
             costIcon.setColor(cc.c3b(255, 252, 175));
             costIcon.setAnchorPoint(cc.p(0, 0.5));
             costIcon.setPosition(cc.p(170, y + 35));
@@ -212,7 +216,7 @@ var VipLayer = cc.Layer.extend({
             costGoldIcon.setPosition(cc.p(235, y + 35));
             scrollViewLayer.addChild(costGoldIcon);
 
-            var costLabel = StrokeLabel.create(cost);
+            var costLabel = cc.LabelTTF.create(cost, "黑体", 20);
             costLabel.setColor(cc.c3b(255, 252, 175));
             costLabel.setPosition(cc.p(275, y + 35));
             scrollViewLayer.addChild(costLabel);
@@ -229,7 +233,7 @@ var VipLayer = cc.Layer.extend({
             goldIcon.setPosition(cc.p(385, y + 35));
             scrollViewLayer.addChild(goldIcon);
 
-            var specialOfferLabel = StrokeLabel.create(vipBox.price);
+            var specialOfferLabel = cc.LabelTTF.create(vipBox.price, "黑体", 20);
             specialOfferLabel.setColor(cc.c3b(225, 121, 60));
             specialOfferLabel.setPosition(cc.p(420, y + 35));
             scrollViewLayer.addChild(specialOfferLabel);

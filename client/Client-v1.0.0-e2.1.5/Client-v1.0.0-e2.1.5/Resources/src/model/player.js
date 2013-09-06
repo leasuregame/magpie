@@ -78,10 +78,11 @@ var Player = Entity.extend({
             count: data.dailyGift.lotteryCount,
             freeCount: data.dailyGift.lotteryFreeCount
         });
-        gameData.message.init();
         gameData.shop.init({
             useVipBoxList: data.vipBox
         });
+        gameData.message.init();
+        gameData.signIn.init();
 
         cc.log(this);
 

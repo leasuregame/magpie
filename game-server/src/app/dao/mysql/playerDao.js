@@ -159,8 +159,8 @@ var PlayerDao = (function(_super) {
         });
     };
 
-    playerDao.orderBy = function (orderby, limit, cb) {
-        var sql 'select id, name, lv, ability from player \
+    PlayerDao.orderBy = function (orderby, limit, cb) {
+        var sql = 'select id, name, lv, ability from player \
             order by ' + orderby + ' limit ' + limit;
 
         dbClient.query(sql, [], function(err, res) {

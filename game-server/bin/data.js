@@ -98,7 +98,7 @@ Data.prototype.loadCsvDataToSql = function(callback) {
 Data.prototype.dataForRankingUser = function(callback) {
   var self = this, id;
   async.times(5000, function(n, next) {
-    id = n + 20;
+    id = n + 9;
     self.db.user.create({
       data: {
         id: id,
@@ -142,6 +142,7 @@ Data.prototype.dataForRanking = function(callback){
         id: row.id,
         userId: userId++,
         areaId: 1,
+        lv: 25,
         name: row.name
       };
       var rankData = {
@@ -238,25 +239,30 @@ Data.prototype.loadDataForRankingList = function(callback) {
 };
 
 var random_lineup = function(cards) {
-  var i, ids, lu, pos, r, _i, _ref, _res;
-  var __indexOf = [].indexOf;
+  var i, ids, lu, pos, r, _i, _ref, _res, tids;
   ids = _.map(cards, function(h) {
-    return h.id;
+    return [h.id, h.tableId];
   });
+  
   pos = ['00', '01', '02', '10', '11'];
   _res = [];
   while (true) {
     r = _.random(0, 4);
-    if (__indexOf.call(_res, r) < 0) {
+    if (_res.indexOf(r) < 0) {
       _res.push(r);
     }
     if (_res.length >= ids.length) {
       break;
     }
   }
+  
   lu = '';
+  tids = [];
   for (i = _i = 0, _ref = _res.length; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
-    lu += "" + pos[_res[i]] + ":" + ids[i] + ",";
+    if (tids.indexOf(ids[i][1]) < 0) {
+      lu += "" + pos[_res[i]] + ":" + ids[i][0] + ",";
+      tids.push(ids[i][1]);
+    }
   }
 
   return lu + '12:-1';

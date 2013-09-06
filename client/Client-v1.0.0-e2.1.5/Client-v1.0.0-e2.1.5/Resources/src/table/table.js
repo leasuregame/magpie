@@ -47,6 +47,8 @@ var nameChanged = {
     "灵气池配置表": "spirit_pool",
     "spirit": "元神配置表",
     "元神配置表": "spirit",
+    "signIn_rewards": "签到奖励",
+    "签到奖励": "signIn_rewards",
     "recharge": "充值类型",
     "充值类型": "recharge",
     "vip_privilege": "vip特权",
@@ -56,7 +58,7 @@ var nameChanged = {
     "vip": "vip"
 };
 
-var outputTables = {
+outputTables = {
     "skills": {
         "colComment": {
             "type": {
@@ -75,7 +77,7 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "description": "单体攻击，造成大量伤害。",
+                "description": "单体攻击，对敌方卡牌造成大量伤害。",
                 "type": 1,
                 "scope": 1,
                 "star3": "130,5",
@@ -87,7 +89,7 @@ var outputTables = {
             },
             "2": {
                 "id": 2,
-                "description": "横向攻击，对敌方前排造成伤害。",
+                "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
                 "type": 2,
                 "scope": 2,
                 "star3": "40,5",
@@ -99,7 +101,7 @@ var outputTables = {
             },
             "3": {
                 "id": 3,
-                "description": "横向攻击，对敌方后排造成伤害。",
+                "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
                 "type": 2,
                 "scope": 3,
                 "star3": "40,5",
@@ -111,7 +113,7 @@ var outputTables = {
             },
             "4": {
                 "id": 4,
-                "description": "纵向攻击，对敌方纵列造成伤害。",
+                "description": "纵向攻击，对敌方纵列每张卡牌造成一定伤害。。",
                 "type": 2,
                 "scope": 4,
                 "star3": "50,5",
@@ -123,7 +125,7 @@ var outputTables = {
             },
             "5": {
                 "id": 5,
-                "description": "随机攻击敌方2张卡牌，造成伤害。",
+                "description": "随机攻击敌方2张卡牌，对每张卡牌造成一定伤害。",
                 "type": 2,
                 "scope": 5,
                 "target_num": 2,
@@ -136,7 +138,7 @@ var outputTables = {
             },
             "6": {
                 "id": 6,
-                "description": "随机攻击敌方3张卡牌，造成伤害。",
+                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
                 "type": 2,
                 "scope": 5,
                 "target_num": 3,
@@ -149,7 +151,7 @@ var outputTables = {
             },
             "7": {
                 "id": 7,
-                "description": "为当前血量最低的上阵卡牌恢复生命值。",
+                "description": "为当前血量最低的上阵卡牌恢复生命值。治疗量取决于拥有该治疗技能卡牌的生命值上限。",
                 "type": 3,
                 "scope": 7,
                 "star3": "30,5",
@@ -161,7 +163,7 @@ var outputTables = {
             },
             "8": {
                 "id": 8,
-                "description": "为前排卡牌恢复生命值。",
+                "description": "为前排卡牌恢复生命值。治疗量取决于拥有该治疗技能卡牌的生命值上限。",
                 "type": 4,
                 "scope": 2,
                 "star3": "15,5",
@@ -173,7 +175,7 @@ var outputTables = {
             },
             "9": {
                 "id": 9,
-                "description": "为后排卡牌恢复生命值。",
+                "description": "为后排卡牌恢复生命值。治疗量取决于拥有该治疗技能卡牌的生命值上限。",
                 "type": 4,
                 "scope": 3,
                 "star3": "15,5",
@@ -185,7 +187,7 @@ var outputTables = {
             },
             "10": {
                 "id": 10,
-                "description": "为当前上阵的所有卡牌恢复生命值。",
+                "description": "为当前上阵的所有卡牌恢复生命值。治疗量取决于拥有该治疗技能卡牌的生命值上限。",
                 "type": 4,
                 "scope": 6,
                 "star3": "10,5",
@@ -15280,6 +15282,57 @@ var outputTables = {
             }
         }
     },
+    "signIn_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5,
+                "money": 10000,
+                "energy": 200,
+                "skillPoint": 0,
+                "spirit": 0,
+                "lottery_free_count": 0
+            },
+            "2": {
+                "id": 2,
+                "count": 10,
+                "money": 20000,
+                "energy": 500,
+                "skillPoint": 0,
+                "spirit": 0,
+                "lottery_free_count": 0
+            },
+            "3": {
+                "id": 3,
+                "count": 18,
+                "money": 30000,
+                "energy": 800,
+                "skillPoint": 1000,
+                "spirit": 0,
+                "lottery_free_count": 3
+            },
+            "4": {
+                "id": 4,
+                "count": 25,
+                "money": 50000,
+                "energy": 1000,
+                "skillPoint": 2000,
+                "spirit": 500,
+                "lottery_free_count": 5
+            },
+            "5": {
+                "id": 5,
+                "count": -1,
+                "money": 100000,
+                "energy": 2000,
+                "skillPoint": 5000,
+                "spirit": 1000,
+                "lottery_free_count": 10,
+                "gold": 100
+            }
+        }
+    },
     "recharge": {
         "colComment": {},
         "rows": {
@@ -15323,6 +15376,16 @@ var outputTables = {
     "vip_privilege": {
         "colComment": {},
         "rows": {
+            "0": {
+                "id": 0,
+                "lottery_free_count": 0,
+                "friend_count": 0,
+                "buy_power_count": 0,
+                "give_bless_count": 0,
+                "receive_bless_count": 0,
+                "challenge_count": 0,
+                "spirit_collect_count": 0
+            },
             "1": {
                 "id": 1,
                 "lottery_free_count": 1,
@@ -15453,6 +15516,10 @@ var outputTables = {
                 "power": 100,
                 "energy": 500,
                 "money": 100000,
+                "skillPoint": 0,
+                "elixir": 0,
+                "fragments": 0,
+                "exp_card": 0,
                 "price": 10
             },
             "2": {
@@ -15461,6 +15528,9 @@ var outputTables = {
                 "energy": 600,
                 "money": 120000,
                 "skillPoint": 1000,
+                "elixir": 0,
+                "fragments": 0,
+                "exp_card": 0,
                 "price": 50
             },
             "3": {
@@ -15470,6 +15540,8 @@ var outputTables = {
                 "money": 150000,
                 "skillPoint": 1100,
                 "elixir": 1000,
+                "fragments": 0,
+                "exp_card": 0,
                 "price": 100
             },
             "4": {
@@ -15480,6 +15552,7 @@ var outputTables = {
                 "skillPoint": 1200,
                 "elixir": 1500,
                 "fragments": 3,
+                "exp_card": 0,
                 "price": 200
             },
             "5": {
@@ -15490,6 +15563,7 @@ var outputTables = {
                 "skillPoint": 2000,
                 "elixir": 2000,
                 "fragments": 3,
+                "exp_card": 0,
                 "price": 300
             },
             "6": {

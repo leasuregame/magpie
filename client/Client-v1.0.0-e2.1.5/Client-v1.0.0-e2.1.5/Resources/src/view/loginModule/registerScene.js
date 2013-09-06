@@ -8,22 +8,22 @@
 
 
 /*
- * sign up scene
+ * register scene
  * */
 
 
-var SignUpScene = cc.Scene.extend({
+var RegisterScene = cc.Scene.extend({
     onEnter: function () {
         this._super();
 
-        var signUpLayer = SignUpLayer.create();
-        this.addChild(signUpLayer);
+        var registerLayer = RegisterLayer.create();
+        this.addChild(registerLayer);
     }
 });
 
 
-SignUpScene.create = function () {
-    var ret = new SignUpScene();
+RegisterScene.create = function () {
+    var ret = new RegisterScene();
 
     if (ret) {
         return ret;

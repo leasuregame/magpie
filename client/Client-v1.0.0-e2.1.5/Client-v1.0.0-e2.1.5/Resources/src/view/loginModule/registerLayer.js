@@ -8,18 +8,18 @@
 
 
 /*
- * sign up layer
+ * register layer
  * */
 
 
-var SignUpLayer = cc.Layer.extend({
+var RegisterLayer = cc.Layer.extend({
     _accountEditBox: null,
     _passwordEditBox: null,
     _passwordAgainEditBox: null,
     _nameEditBox: null,
 
     init: function () {
-        cc.log("SignUpLayer init");
+        cc.log("RegisterLayer init");
 
         if (!this._super()) return false;
 
@@ -71,42 +71,21 @@ var SignUpLayer = cc.Layer.extend({
         this._nameEditBox.setMaxLength(18);
         this.addChild(this._nameEditBox);
 
-        var signUpAndSignInButton = cc.MenuItemFont.create("注册", this._onClickSignUpAndSignIn, this);
-        signUpAndSignInButton.setPosition(260, 250);
-//        this.addChild(signUpAndSignInButton);
+        var registerAndLoginButton = cc.MenuItemFont.create("注册", this._onClickRegisterAndLogin, this);
+        registerAndLoginButton.setPosition(260, 250);
 
         var backButton = cc.MenuItemFont.create("返回", this._onClickBack, this);
         backButton.setPosition(460, 250);
-//        this.addChild(backButton);
 
-        var menu = cc.Menu.create(signUpAndSignInButton, backButton);
+        var menu = cc.Menu.create(registerAndLoginButton, backButton);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
-
-//        signUpAndSignInButton.addTargetWithActionForControlEvent(this, this._onClickSignUpAndSignIn, cc.CONTROL_EVENT_TOUCH_DOWN);
-//        backButton.addTargetWithActionForControlEvent(this, this._onClickBack, cc.CONTROL_EVENT_TOUCH_DOWN);
 
         return true;
     },
 
-    _getButtonWithTitle: function (title) {
-        /** Creates and return a button with a default background and title color. */
-        var backgroundButton = cc.Scale9Sprite.create("res1/button.png");
-        var backgroundHighlightedButton = cc.Scale9Sprite.create("res1/buttonHighlighted.png");
-
-        var titleButton = cc.LabelTTF.create(title, "Marker Felt", 30);
-
-        titleButton.setColor(cc.c3b(159, 168, 176));
-
-        var button = cc.ControlButton.create(titleButton, backgroundButton);
-        button.setBackgroundSpriteForState(backgroundHighlightedButton, cc.CONTROL_STATE_HIGHLIGHTED);
-        button.setTitleColorForState(cc.WHITE, cc.CONTROL_STATE_HIGHLIGHTED);
-
-        return button;
-    },
-
-    _onClickSignUpAndSignIn: function () {
-        cc.log("_onClickSignUpAndSignIn");
+    _onClickRegisterAndLogin: function () {
+        cc.log("_onClickRegisterAndLogin");
 
         lzWindow.pomelo.request('connector.userHandler.register', {
             account: this._accountEditBox.getText(),
@@ -119,44 +98,14 @@ var SignUpLayer = cc.Layer.extend({
 
     _onClickBack: function () {
         cc.log("_onClickBack");
-        cc.Director.getInstance().replaceScene(SignInScene.create());
-//        cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, SignInScene.create(), false));
-    },
-
-    editBoxEditingDidBegin: function (editBox) {
-        cc.log("editBox " + this._getEditBoxName(editBox) + " DidBegin !");
-    },
-
-    editBoxEditingDidEnd: function (editBox) {
-        cc.log("editBox " + this._getEditBoxName(editBox) + " DidEnd !");
-    },
-
-    editBoxTextChanged: function (editBox, text) {
-        cc.log("editBox " + this._getEditBoxName(editBox) + ", TextChanged, text: " + text);
-    },
-
-    editBoxReturn: function (editBox) {
-        cc.log("editBox " + this._getEditBoxName(editBox) + " was returned !");
-    },
-
-    _getEditBoxName: function (editBox) {
-        if (this._accountEditBox == editBox) {
-            return "_accountEditBox";
-        } else if (this._passwordEditBox == editBox) {
-            return "_passwordEditBox";
-        } else if (this._passwordAgainEditBox == editBox) {
-            return "_passwordAgainEditBox";
-        } else if (this._nameEditBox == editBox) {
-            return "_nameEditBox";
-        }
-
-        return "Unknown EditBox";
+        cc.Director.getInstance().replaceScene(LoginScene.create());
+//        cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, LoginScene.create(), false));
     }
 });
 
 
-SignUpLayer.create = function () {
-    var ret = new SignUpLayer();
+RegisterLayer.create = function () {
+    var ret = new RegisterLayer();
 
     if (ret && ret.init()) {
         return ret;

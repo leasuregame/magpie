@@ -72,10 +72,10 @@ var appFiles = [
     'src/controls/markLayer.js',
     'src/controls/strokeLabel.js',
 
-    'src/view/loginModule/signInScene.js',
-    'src/view/loginModule/signInLayer.js',
-    'src/view/loginModule/signUpScene.js',
-    'src/view/loginModule/signUpLayer.js',
+    'src/view/loginModule/loginScene.js',
+    'src/view/loginModule/loginLayer.js',
+    'src/view/loginModule/registerScene.js',
+    'src/view/loginModule/registerLayer.js',
 
 
     'src/view/mainModule/activityLayer.js',
@@ -160,7 +160,7 @@ director.setAnimationInterval(1.0 / 60);
 //var test = lz.HttpClientPackage.getInstance();
 
 // create a scene. it's an autorelease object
-var myScene = SignInScene.create();
+var myScene = LoginScene.create();
 
 // run
 //director.runWithScene(myScene);

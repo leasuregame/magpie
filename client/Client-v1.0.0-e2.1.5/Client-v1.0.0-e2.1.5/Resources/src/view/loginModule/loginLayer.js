@@ -8,16 +8,16 @@
 
 
 /*
- * sign in layer
+ * login layer
  * */
 
 
-var SignInLayer = cc.Layer.extend({
+var LoginLayer = cc.Layer.extend({
     _accountEditBox: null,
     _passwordEditBox: null,
 
     init: function () {
-        cc.log("SignInLayer init");
+        cc.log("LoginLayer init");
 
         if (!this._super()) return false;
 
@@ -46,33 +46,32 @@ var SignInLayer = cc.Layer.extend({
         this.addChild(this._passwordEditBox);
 
         this._accountEditBox.setText("chenchen");
-//        this._accountEditBox.setText("liusheng");
         this._passwordEditBox.setText("1");
 
-        this.signInButton = cc.MenuItemFont.create("登录", this._onClickSignIn, this);
-        this.signInButton.setFontSize(45);
-        this.signInButton.setPosition(260, 250);
-        this.signInButton.setEnabled(false);
+        this.loginButton = cc.MenuItemFont.create("登录", this._onClickLogin, this);
+        this.loginButton.setFontSize(45);
+        this.loginButton.setPosition(260, 250);
+        this.loginButton.setEnabled(false);
 
-        var signUpButton = cc.MenuItemFont.create("直接进入", this._onClickSignUp, this);
-        signUpButton.setFontSize(45);
-        signUpButton.setPosition(460, 250);
+        var registerButton = cc.MenuItemFont.create("直接进入", this._onClickRegister, this);
+        registerButton.setFontSize(45);
+        registerButton.setPosition(460, 250);
 
-        this.menu = cc.Menu.create(this.signInButton, signUpButton);
+        this.menu = cc.Menu.create(this.loginButton, registerButton);
         this.menu.setPosition(cc.p(0, 0));
         this.addChild(this.menu);
 
         this.schedule(function () {
-            this.signInButton.setEnabled(connectSuccess);
+            this.loginButton.setEnabled(connectSuccess);
         }, 0.5);
 
         return true;
     },
 
-    _onClickSignIn: function () {
-        cc.log("SignInLayer _onClickSignIn");
+    _onClickLogin: function () {
+        cc.log("LoginLayer _onClickLogin");
 
-        this.signInButton.setEnabled(false);
+        this.loginButton.setEnabled(false);
 
         cc.log(this._accountEditBox.getText());
         cc.log(this._passwordEditBox.getText());
@@ -82,55 +81,28 @@ var SignInLayer = cc.Layer.extend({
         user.set("account", this._accountEditBox.getText());
         user.set("password", this._passwordEditBox.getText());
 
-        user.signIn(function (msg) {
+        user.login(function (msg) {
             cc.log(msg);
             cc.Director.getInstance().replaceScene(MainScene.getInstance());
 //            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, MainScene.getInstance(), true));
         });
     },
 
-    _onClickSignUp: function () {
-        cc.log("SignInLayer _onClickSignUp");
+    _onClickRegister: function () {
+        cc.log("LoginLayer _onClickRegister");
 
-//        this.menu.setEnabled(false);
-//        cc.Director.getInstance().replaceScene(SignUpScene.create());
-//        cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, SignUpScene.create(), true));
+//        cc.Director.getInstance().replaceScene(RegisterScene.create());
+//        cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, RegisterScene.create(), true));
         cc.Director.getInstance().replaceScene(MainScene.getInstance());
-    },
-
-    editBoxEditingDidBegin: function (editBox) {
-        cc.log("editBox " + this._getEditBoxName(editBox) + " DidBegin !");
-    },
-
-    editBoxEditingDidEnd: function (editBox) {
-        cc.log("editBox " + this._getEditBoxName(editBox) + " DidEnd !");
-    },
-
-    editBoxTextChanged: function (editBox, text) {
-        cc.log("editBox " + this._getEditBoxName(editBox) + ", TextChanged, text: " + text);
-    },
-
-    editBoxReturn: function (editBox) {
-        cc.log("editBox " + this._getEditBoxName(editBox) + " was returned !");
-    },
-
-    _getEditBoxName: function (editBox) {
-        if (this._accountEditBox == editBox) {
-            return "_accountEditBox";
-        } else if (this._passwordEditBox == editBox) {
-            return "_passwordEditBox";
-        }
-
-        return "Unknown EditBox";
     }
-})
+});
 
-SignInLayer.create = function () {
-    var ret = new SignInLayer();
+LoginLayer.create = function () {
+    var ret = new LoginLayer();
 
     if (ret && ret.init()) {
         return ret;
     }
 
     return null;
-}
+};

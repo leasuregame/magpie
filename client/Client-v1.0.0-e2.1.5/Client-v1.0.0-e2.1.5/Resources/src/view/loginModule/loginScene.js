@@ -8,24 +8,24 @@
 
 
 /*
- * sign in scene
+ * login scene
  * */
 
 
-var SignInScene = cc.Scene.extend({
+var LoginScene = cc.Scene.extend({
     onEnter: function () {
-        cc.log("SignInScene onEnter");
+        cc.log("LoginScene onEnter");
 
         this._super();
 
-        var loginLayer = SignInLayer.create();
+        var loginLayer = LoginLayer.create();
         this.addChild(loginLayer);
     }
 });
 
 
-SignInScene.create = function () {
-    var ret = new SignInScene();
+LoginScene.create = function () {
+    var ret = new LoginScene();
 
     if (ret) {
         return ret;

@@ -174,12 +174,16 @@ app.get('/update/:table/:id', function(req, res) {
   var table = req.params.table;
   var id = req.params.id;
   var data = req.query;
-
-  var _sets = ' set ',
+  console.log(data);
+  var _sets = ' set ', arg,
       args = [];
   for (var key in data) {
     _sets += key + ' = ?,';
-    args.push(data[key]);
+    arg = data[key];
+    if (typeof arg == 'object') {
+      arg = JSON.stringify(arg);
+    }
+    args.push(arg);
   }
   var sql = 'update ' + table + _sets.slice(0, -1) + ' where id = ?';
   args.push(id);

@@ -45,17 +45,61 @@ Handler::lottery = (msg, session, next) ->
       }
     })
 
+Handler::signInDetails = (msg, session, next) ->
+  playerId = session.get('playerId')
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+    next(null, {code: 200, msg: player.signIn})
+
 Handler::signIn = (msg, session, next) ->
   playerId = session.get('playerId')
-  date = msg.date 
 
-  next(null, {
-    code: 200, 
-    msg: {
-      money: 0, 
-      energy: 0
-    }
-  })
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    player.signToday()
+    player.increase('money', 2000)
+    player.increase('energy', 100)
+    player.save()
+    next(null, {
+      code: 200, 
+      msg: {
+        money: 2000, 
+        energy: 100
+      }
+    })
+
+Handler::getSignInGift = (msg, session, next) ->
+  playerId = session.get('playerId')
+  id = msg.id
+
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    rew = table.getTableItem('signIn_rewards', id)
+    if player.signDays() < rew.count
+      return next(null, {code: 501, msg: "签到次数不足#{rew.count}次"})
+    if player.hasSignInFlag(id) 
+      return next(null, {code: 501, msg: '不能重复领取'})
+
+    setIfExist = (attrs) ->
+      player.increase att, val for att, val of rew when att in attrs
+      return
+
+    setIfExist ['energy', 'money', 'skillPoint', 'elixir']
+    if rew.lottery_free_count > 0
+      dg = player.dailyGift
+      dg.lotteryFreeCount += rew.lottery_free_count
+      player.dailyGift = dg
+
+    player.setSignInFlag(id)
+    player.save()
+    next(null, {
+      code: 200
+    })
 
 randomReward = ->
   tData = table.getTable('treasure_hunt')

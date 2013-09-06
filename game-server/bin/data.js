@@ -95,14 +95,116 @@ Data.prototype.loadCsvDataToSql = function(callback) {
   }
 };
 
+Data.prototype.dataForRankingUser = function(callback) {
+  var self = this, id;
+  async.times(5000, function(n, next) {
+    id = n + 9;
+    self.db.user.create({
+      data: {
+        id: id,
+        account: 'robot' + id,
+        password: '1',
+        roles: [1]
+      }
+    }, next);
+  }, function(err, results) {
+    if (err) console.log(err);
+    console.log('user');
+    callback(null, true)
+  });
+};
+
+Data.prototype.dataForRanking = function(callback){
+  // 新浪服务器使用的数据
+  var userId = 20;
+  var self = this;
+  var filepath = path.join(this.fixtures_dir, '..', 'robot', 'player.csv');
+  console.log(filepath);
+  csv()
+    .from(filepath, {
+      columns: true,
+      delimiter: ';',
+      escape: '"'
+    })
+    .transform(function(row, index, cb) {
+      _.each(row, function(val, key) {
+        if (_.isEmpty(val)) {
+          delete row[key];
+        }
+      });
+
+      if (_.isEmpty(row)) {
+        cb(null);
+        return;
+      }
+
+      var playerData = {
+        id: row.id,
+        userId: userId++,
+        areaId: 1,
+        lv: 25,
+        name: row.name
+      };
+      var rankData = {
+        playerId: row.id,
+        ranking: row.ranking
+      };
+
+      var ids = _.range(parseInt(row.card_star), 250, 5);
+      var cardData = {
+        playerId: row.id,
+        star: row.card_star,
+        lv: row.card_lv
+      };
+      async.parallel([
+        function(cb) {
+          self.db.player.create({data: playerData}, cb);    
+        },
+        function(cb) {
+          self.db.rank.create({data: rankData}, cb);
+        },
+        function(cb) {
+          async.times(row.card_count, function(n, next){
+            cardData.tableId = ids[_.random(0, ids.length-1)];
+            self.db.card.create({data: cardData}, next);
+          }, cb)
+        }
+      ], function(err, results) {
+        if (err) return console.log(err);
+
+        var player = results[0];
+        var rank = results[1];
+        var cards = results[2];
+
+        player.lineUp = random_lineup(cards);
+        self.db.player.update({
+          where: { id: player.id},
+          data: {lineUp: player.lineUp}
+        }, function(err, res){
+          console.log(row.id);
+          cb(null, true);
+        });
+      });
+    })
+    .on('error', function(error) {
+      console.log('load csv error:', error.message);
+    })
+    .on('close', function() {
+      console.log('');
+    })
+    .on('end', function(count) {
+      callback(null, count);
+    });
+};
+
 Data.prototype.loadDataForRankingList = function(callback) {
+  // 接口测试使用的数据
   var self = this;
   var count = 0;
   console.log('  *** create test data for ranking list ***  ');
   console.log('raking list data creating......');
   for (var i = 10000; i < 20001; i++) {
     (function(id) {
-      var _ranking = 10000;
       var data = {
         id: id,
         name: 'james' + id,
@@ -134,4 +236,34 @@ Data.prototype.loadDataForRankingList = function(callback) {
       });
     })(i);
   }
+};
+
+var random_lineup = function(cards) {
+  var i, ids, lu, pos, r, _i, _ref, _res, tids;
+  ids = _.map(cards, function(h) {
+    return [h.id, h.tableId];
+  });
+  
+  pos = ['00', '01', '02', '10', '11'];
+  _res = [];
+  while (true) {
+    r = _.random(0, 4);
+    if (_res.indexOf(r) < 0) {
+      _res.push(r);
+    }
+    if (_res.length >= ids.length) {
+      break;
+    }
+  }
+  
+  lu = '';
+  tids = [];
+  for (i = _i = 0, _ref = _res.length; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
+    if (tids.indexOf(ids[i][1]) < 0) {
+      lu += "" + pos[_res[i]] + ":" + ids[i][0] + ",";
+      tids.push(ids[i][1]);
+    }
+  }
+
+  return lu + '12:-1';
 };

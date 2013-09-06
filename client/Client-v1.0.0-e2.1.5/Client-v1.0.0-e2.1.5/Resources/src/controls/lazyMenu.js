@@ -22,6 +22,12 @@ var LazyMenu = cc.Menu.extend({
     _touchBeganPoint: null,
     _isScroll: false,
 
+    onEnter: function () {
+        cc.log("LazyMenu onEnter");
+
+        this._super();
+    },
+
     /**
      * initializes a cc.Menu with it's items
      * @param {Array} args
@@ -47,13 +53,8 @@ var LazyMenu = cc.Menu.extend({
 
         this.setTouchMode(cc.TOUCHES_ONE_BY_ONE);
         this.setTouchPriority(LAZY_MENU_HANDLER_PRIORITY);
-        this.setTouchEnabled(true);
 
         return true;
-    },
-
-    registerWithTouchDispatcher: function () {
-        cc.Director.getInstance().getTouchDispatcher().addTargetedDelegate(this, LAZY_MENU_HANDLER_PRIORITY, true);
     },
 
     /**

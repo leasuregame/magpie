@@ -400,7 +400,9 @@ void CCTouchDispatcher::touches(CCSet *pTouches, CCEvent *pEvent, unsigned int u
     //
     // process standard handlers 2nd
     //
-    if (uStandardHandlersCount > 0 && pMutableTouches->count() > 0)
+    // 源码已修改
+    // 吞没点击后，任然往下发送ccTouchesEnd & ccTouchesCancelled事件
+    if (uStandardHandlersCount > 0)
     {
         CCStandardTouchHandler *pHandler = NULL;
         CCObject* pObj = NULL;
@@ -412,14 +414,18 @@ void CCTouchDispatcher::touches(CCSet *pTouches, CCEvent *pEvent, unsigned int u
             {
                 break;
             }
-
+            
             switch (sHelper.m_type)
             {
             case CCTOUCHBEGAN:
-                pHandler->getDelegate()->ccTouchesBegan(pMutableTouches, pEvent);
+                if(pMutableTouches->count() > 0) {
+                    pHandler->getDelegate()->ccTouchesBegan(pMutableTouches, pEvent);
+                }
                 break;
             case CCTOUCHMOVED:
-                pHandler->getDelegate()->ccTouchesMoved(pMutableTouches, pEvent);
+                if(pMutableTouches->count() > 0) {
+                    pHandler->getDelegate()->ccTouchesMoved(pMutableTouches, pEvent);
+                }
                 break;
             case CCTOUCHENDED:
                 pHandler->getDelegate()->ccTouchesEnded(pMutableTouches, pEvent);

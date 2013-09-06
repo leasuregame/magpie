@@ -30,8 +30,8 @@ var User = Entity.extend({
         return true;
     },
 
-    signIn: function (cb) {
-        cc.log("User signIn");
+    login: function (cb) {
+        cc.log("User login");
 
         var that = this;
         lzWindow.pomelo.request("connector.userHandler.login", {
@@ -58,8 +58,8 @@ var User = Entity.extend({
         });
     },
 
-    signUp: function (cb) {
-        cc.log("User signUp");
+    register: function (cb) {
+        cc.log("User register");
 
         var that = this;
         lzWindow.pomelo.request("connector.userHandler.register", {
@@ -82,13 +82,13 @@ var User = Entity.extend({
         });
     },
 
-    signOut: function (cb) {
-        cc.log("User signOut");
+    loginOut: function (cb) {
+        cc.log("User loginOut");
 
     },
 
-    reSignIn: function (cb) {
-        cc.log("User reSignIn")
+    reLogin: function (cb) {
+        cc.log("User reLogin")
     },
 
     changePassword: function (cb) {

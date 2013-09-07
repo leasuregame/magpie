@@ -437,6 +437,10 @@ Handler::changeLineUp = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   lineupObj = msg.lineUp
 
+  tids = _.values(lineupObj)
+  if _.uniq(tids).length isnt tids.length
+    return next(null, {code: 501, msg: '上阵卡牌的角色不能重复'})
+
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err
       return next(null, {code: 500, msg: err.msg})

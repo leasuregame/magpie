@@ -358,6 +358,8 @@ var FriendLayer = cc.Layer.extend({
     _onClickOk: function () {
         cc.log("FriendLayer _onClickOk");
         cc.log("name: " + this._nameEditBox.getText());
+
+        gameData.friend.addFriend(this._nameEditBox.getText());
     },
 
     _onClickCancel: function () {
@@ -372,7 +374,9 @@ var FriendLayer = cc.Layer.extend({
 
             var element = this._scrollViewElement[id];
 
-
+            gameData.friend.giveBless(function (data) {
+                cc.log(data);
+            }, id);
         }
 
     },
@@ -383,11 +387,15 @@ var FriendLayer = cc.Layer.extend({
 
             var element = this._scrollViewElement[id];
 
-            element.giveBlessItem.setVisible(true);
-            element.giveBlessIcon.setVisible(true);
+            gameData.friend.receiveBless(function (data) {
+                cc.log(data);
 
-            element.receiveBlessItem.setVisible(false);
-            element.receiveBlessIcon.setVisible(false);
+                element.giveBlessItem.setVisible(true);
+                element.giveBlessIcon.setVisible(true);
+
+                element.receiveBlessItem.setVisible(false);
+                element.receiveBlessIcon.setVisible(false);
+            }, id);
         }
     },
 

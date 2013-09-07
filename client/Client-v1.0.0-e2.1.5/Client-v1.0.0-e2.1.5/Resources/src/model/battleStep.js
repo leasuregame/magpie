@@ -26,6 +26,10 @@ var BattleStep = Entity.extend({
         cc.log("BattleStep init");
         cc.log(battleStep);
 
+        this._target = [];
+        this._isCrit = [];
+        this._effect = [];
+
         this._isSkill = battleStep.a < 0;
         this._attacker = Math.abs(battleStep.a);
 

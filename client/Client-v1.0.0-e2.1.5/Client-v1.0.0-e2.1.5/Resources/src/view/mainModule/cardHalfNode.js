@@ -32,10 +32,14 @@ var CardHalfNode = CardNode.extend({
         if (skillType > 3) {
             skillType = 3;
         }
+        cc.log(this._card);
+        cc.log("card_icon" + skillType);
 
-        this._iconSprite = cc.Sprite.create(main_scene_image["card_icon" + skillType]);
-        this._iconSprite.setPosition(cc.p(40, -53));
-        this.addChild(this._iconSprite, 1);
+        if (skillType) {
+            this._iconSprite = cc.Sprite.create(main_scene_image["card_icon" + skillType]);
+            this._iconSprite.setPosition(cc.p(40, -53));
+            this.addChild(this._iconSprite, 1);
+        }
 
         return true;
     }

@@ -21,6 +21,7 @@ var rankDao = require("./rankDao");
 var friendDao = require('./friendDao');
 var passiveSkillDao = require("./passiveSkillDao")
 var async = require('async');
+var dbClient = require('pomelo').app.get('dbClient');
 
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
@@ -136,6 +137,44 @@ var PlayerDao = (function(_super) {
             return cb(null, players);
         });
 
+    };
+
+    PlayerDao.orderByRanking = function(limit, cb) {
+        var sql = 'select id, name, vl, ability, r.ranking from player as p \
+            join rank as r on r.playerId = p.id \
+            order by r.ranking DESC \
+            limit ' + limit;
+
+        dbClient.query(sql, [], function(err, res) {
+            if (err) {
+                logger.error('[SQL OERROR, when fetch player order by ranking]');
+                logger.error(err.stack);
+            }
+
+            if (!!res && res.length > 0) {
+                return cb(null, res);
+            } else {
+                return cb(null, []);
+            }
+        });
+    };
+
+    PlayerDao.orderBy = function (orderby, limit, cb) {
+        var sql = 'select id, name, lv, ability from player \
+            order by ' + orderby + ' limit ' + limit;
+
+        dbClient.query(sql, [], function(err, res) {
+            if (err) {
+                logger.error('[SQL OERROR, when fetch player order by ' + orderby + ']');
+                logger.error(err.stack);
+            }
+
+            if (!!res && res.length > 0) {
+                return cb(null, res);
+            } else {
+                return cb(null, []);
+            }
+        });
     };
 
     return PlayerDao;

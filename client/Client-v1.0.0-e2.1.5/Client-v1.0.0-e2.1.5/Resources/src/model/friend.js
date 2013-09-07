@@ -14,7 +14,9 @@
 
 var Friend = Entity.extend({
     _giveBlessCount: 0,
+    _giveBlessList: [],
     _receiveBlessCount: 0,
+    _receiveBlessList: [],
     _friendCount: 0,
     _maxFriendCount: 0,
     _friendList: [],
@@ -22,15 +24,24 @@ var Friend = Entity.extend({
     init: function (data) {
         cc.log("Friend init");
 
-        this._friendList = data.friendList;
-        this._giveBlessCount = data.giveBlessCount;
-        this._receiveBlessCount = data.receiveBlessCount;
-        this._friendCount = this._friendList.length;
-        this._maxFriendCount = 50;
+        this.set("friendList", data.friendList);
+        this.set("giveBlessCount", data.giveBlessCount);
+        this.set("giveBlessList", data.giveBlessList);
+        this.set("receiveBlessCount", data.receiveBlessCount);
+        this.set("receiveBlessList", data.receiveBlessList);
+        this.set("friendCount", this._friendList.length);
+        this.set("maxFriendCount", 30);
 
         cc.log(this);
 
         return true;
+    },
+
+    push: function (friend) {
+        cc.log("friend push");
+
+        this._friendList.push(friend);
+        this._friendCount = this._friendList.length;
     },
 
     addFriend: function (name) {
@@ -51,8 +62,22 @@ var Friend = Entity.extend({
         });
     },
 
-    deleteFriend: function (cb, playerId) {
+    deleteFriend: function (cb, friendId) {
         cc.log("Friend deleteFriend");
+
+        var that = this;
+        lzWindow.pomelo.request("area.messageHandler.deleteFriend", {
+            friendId: friendId
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("deleteFriend success");
+            } else {
+                cc.log("deleteFriend fail");
+            }
+        });
     },
 
     giveBless: function (cb, friendId) {
@@ -73,8 +98,6 @@ var Friend = Entity.extend({
                 cb("success");
             } else {
                 cc.log("giveBless fail");
-
-                cb("fail");
             }
         });
     },
@@ -93,18 +116,36 @@ var Friend = Entity.extend({
                 cc.log("receiveBless success");
 
                 that._receiveBlessCount -= 1;
+                gameData.player.add("energy", 5);
 
                 cb("success");
             } else {
                 cc.log("receiveBless fail");
-
-                cb("fail");
             }
         });
     },
 
     sendMessage: function (cb, playerId, msg) {
         cc.log("Friend sendMessage: " + palyerId + " " + msg);
+
+        var that = this;
+        lzWindow.pomelo.request("area.messageHandler.leaveMessage", {
+            friendId: friendId,
+            content: msg
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("sendMessage success");
+
+                cb("success");
+            } else {
+                cc.log("sendMessage fail");
+
+                cb("fail");
+            }
+        });
     }
 });
 

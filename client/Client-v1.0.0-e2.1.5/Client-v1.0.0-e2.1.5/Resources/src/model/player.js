@@ -29,6 +29,7 @@ var Player = Entity.extend({
     _skillPoint: 0,     // 技能点
     _ability: 0,        // 战斗力
     _vip: 0,            // VIP等级
+    _cash: 0,           // 付费
     _rank: 0,
     _maxTournamentCount: 0,
     _tournamentCount: 0,
@@ -55,6 +56,8 @@ var Player = Entity.extend({
         this.set("skillPoint", data.skillPoint);
         this.set("ability", data.ability);
         this.set("energy", data.energy);
+        this.set("vip", data.vip);
+        this.set("cash", data.cash);
         this.set("maxExp", outputTables.player_upgrade.rows[this._lv].exp);
 
         gameData.cardList.init(data.cards);
@@ -66,12 +69,18 @@ var Player = Entity.extend({
         gameData.cardLibrary.init();
         gameData.friend.init({
             friendList: data.friends,
-            giveBlessCount: data.dailyGift.gaveBlessCount,
-            receiveBlessCount: data.dailyGift.reveiveBlessCount
+            giveBlessCount: data.dailyGift.gaveBless.count,
+            giveBlessList: data.dailyGift.gaveBless.receivers,
+            receiveBlessCount: data.dailyGift.receivedBless.count,
+            receiveBlessList: data.dailyGift.receivedBless.givers
         });
         gameData.treasureHunt.init({
             count: data.dailyGift.lotteryCount,
             freeCount: data.dailyGift.lotteryFreeCount
+        });
+        gameData.message.init();
+        gameData.shop.init({
+            useVipBoxList: data.vipBox
         });
 
         cc.log(this);

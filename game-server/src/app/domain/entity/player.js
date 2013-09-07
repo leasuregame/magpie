@@ -22,6 +22,7 @@ var table = require('../../manager/table');
 var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
+var util = require('util');
 
 var defaultMark = function() {
     var i, result = [];
@@ -41,20 +42,8 @@ var recountVipPrivilege = function(player, oldVip) {
     if (diff <= 0) return;
 
     var oldVipInfo = table.getTableItem('vip_privilege', oldVip);
-    if (!oldVipInfo && oldVip == 0) {
-        oldVipInfo = {
-            id: 0,
-            lottery_free_count: 0,
-            friend_count: 0,
-            buy_power_count: 0,
-            give_bless_count: 0,
-            receive_bless_count: 0,
-            challenge_count: 0,
-            spirit_collect_count: 0
-        };
-    }
     var curVipInfo = table.getTableItem('vip_privilege', curVip);
-    console.log(oldVipInfo, curVipInfo);
+
     var dg = utility.deepCopy(player.dailyGift);
     dg.lotteryFreeCount += curVipInfo.lottery_free_count - oldVipInfo.lottery_free_count;
 
@@ -63,13 +52,12 @@ var recountVipPrivilege = function(player, oldVip) {
     dg.receivedBless.count += curVipInfo.receive_bless_count - oldVipInfo.receive_bless_count;
     dg.challengeCount += curVipInfo.challenge_count - oldVipInfo.challenge_count;
     player.dailyGift = dg;
-    console.log(dg);
+
     var sp = utility.deepCopy(player.spiritPool);
     sp.collectCount += curVipInfo.spirit_collect_count - oldVipInfo.spirit_collect_count;
     player.spiritPool = sp;
     console.log(sp);
     player.save();
-    console.log('message');
 };
 
 var addEvents = function(player) {
@@ -172,7 +160,8 @@ var Player = (function(_super) {
         'energy',
         'elixir',
         'spiritor',
-        'spiritPool'
+        'spiritPool',
+        'signIn'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -225,6 +214,10 @@ var Player = (function(_super) {
             lv: 0,
             exp: 0,
             collectCount: spiritConfig.MAX_COLLECT_COUNT
+        },
+        signIn: {
+            months: {},
+            flag: 0
         },
         cards: {},
         rank: {},
@@ -510,6 +503,47 @@ var Player = (function(_super) {
         this.set('pass', pass);
     };
 
+    Player.prototype.signToday = function() {
+        var d = new Date();
+        var key = util.format('%d%d', d.getFullYear(), d.getMonth()+1);
+        var si = utility.deepCopy(this.signIn);
+
+        if (!_.has(si, key)) {
+            var _months = Object.keys(si.months);
+            if (_months.length >= 12) {
+                delete si.months[_months[0]];
+            }
+            si.months[key] = 0;
+        }
+
+        si.months[key] = utility.mark(si.months[key], d.getDay()+1);
+        this.signIn = si;
+    };
+
+    Player.prototype.signDays = function() {
+        var i, days = 0;
+        var d = new Date();
+        var key = util.format('%d%d', d.getFullYear(), d.getMonth()+1);
+        console.log(this.signIn.months[key], key);
+        for (i = 1; i <= 31; i++) {
+            if (utility.hasMark(this.signIn.months[key], i)) {
+                days += 1;
+            } 
+        }
+        console.log('sidn days: ', days);
+        return days;
+    };
+
+    Player.prototype.setSignInFlag = function(id) {
+        var si = utility.deepCopy(this.signIn);
+        si.flag = utility.mark(parseInt(si.flag), id);
+        this.signIn = si;
+    };
+
+    Player.prototype.hasSignInFlag = function(id) {
+        return utility.hasMark(parseInt(this.signIn.flag), id);
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,
@@ -540,7 +574,8 @@ var Player = (function(_super) {
                 return card.toJson();
             }),
             rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
-            friends: this.friends
+            friends: this.friends,
+            signIn: utility.deepCopy(this.signIn)
         };
     };
 

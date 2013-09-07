@@ -199,7 +199,9 @@ var MainLayer = cc.Layer.extend({
 
     _onClickConfigLayer: function () {
         cc.log("MainLayer _onClickConfigLayerItem");
-        MainScene.getInstance().switchLayer(ConfigLayer);
+//        MainScene.getInstance().switchLayer(ConfigLayer);
+
+        this.addChild(SignInLayer.create(), 1);
     }
 });
 

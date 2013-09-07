@@ -28,6 +28,7 @@ var gameData = {
     spiritPool: null,
     friend: null,
     shop: null,
+    signIn: null,
 
     gameInit: function () {
         cc.log("gameData init");
@@ -48,6 +49,7 @@ var gameData = {
         this.spiritPool = SpiritPool.create();
         this.friend = Friend.create();
         this.shop = Shop.create();
+        this.signIn = SignIn.create();
     },
 
     gameEnd: function () {

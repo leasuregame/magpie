@@ -61,8 +61,6 @@ var Shop = Entity.extend({
 
         vipBoxList.sort(this._cmp);
 
-        cc.log(vipBoxList);
-
         return vipBoxList;
     },
 

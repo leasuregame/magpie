@@ -74,6 +74,7 @@
             'src/model/spiritPool.js',
             'src/model/friend.js',
             'src/model/shop.js',
+            'src/model/signIn.js',
 
             'src/model/battleLogPool.js',
             'src/model/battleLog.js',
@@ -122,6 +123,7 @@
             'src/view/mainModule/mainScene.js',
             'src/view/mainModule/messageLabel.js',
             'src/view/mainModule/messageLayer.js',
+            'src/view/mainModule/monthLabel.js',
             'src/view/mainModule/passiveSkillAfreshLabel.js',
             'src/view/mainModule/passLabel.js',
             'src/view/mainModule/passLayer.js',
@@ -133,6 +135,7 @@
             'src/view/mainModule/pveLayer.js',
             'src/view/mainModule/rankLayer.js',
             'src/view/mainModule/shopLayer.js',
+            'src/view/mainModule/signInLayer.js',
             'src/view/mainModule/skillUpgradeLabel.js',
             'src/view/mainModule/spiritDetails.js',
             'src/view/mainModule/spiritNode.js',

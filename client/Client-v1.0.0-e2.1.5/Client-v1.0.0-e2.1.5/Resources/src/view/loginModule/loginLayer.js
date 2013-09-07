@@ -45,12 +45,7 @@ var LoginLayer = cc.Layer.extend({
         this._passwordEditBox.setMaxLength(18);
         this.addChild(this._passwordEditBox);
 
-<<<<<<< HEAD:client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/Resources/src/view/loginModule/signInLayer.js
-        this._accountEditBox.setText("junyu");
-//        this._accountEditBox.setText("liusheng");
-=======
         this._accountEditBox.setText("chenchen");
->>>>>>> master:client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/Resources/src/view/loginModule/loginLayer.js
         this._passwordEditBox.setText("1");
 
         this.loginButton = cc.MenuItemFont.create("登录", this._onClickLogin, this);
@@ -70,7 +65,7 @@ var LoginLayer = cc.Layer.extend({
             this.loginButton.setEnabled(connectSuccess);
         }, 0.5);
 
-        return true;
+        return true
     },
 
     _onClickLogin: function () {

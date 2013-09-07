@@ -46,20 +46,12 @@ var SignInLayer = LazyLayer.extend({
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(600, 750));
-        bgSprite.setPosition(cc.p(364, 580));
+        bgSprite.setPosition(cc.p(362, 580));
         this.addChild(bgSprite);
 
         var titleLabel = cc.Sprite.create(main_scene_image.icon187);
         titleLabel.setPosition(cc.p(360, 920));
         this.addChild(titleLabel);
-
-        var titleIcon1 = cc.Sprite.create(main_scene_image.icon171);
-        titleIcon1.setPosition(cc.p(260, 920));
-        this.addChild(titleIcon1);
-
-        var titleIcon2 = cc.Sprite.create(main_scene_image.icon171);
-        titleIcon2.setPosition(cc.p(460, 920));
-        this.addChild(titleIcon2);
 
         var closeItem = cc.MenuItemImage.create(
             main_scene_image.button37,
@@ -77,7 +69,7 @@ var SignInLayer = LazyLayer.extend({
         );
         this._turnLeftItem.setRotation(180);
         this._turnLeftItem.setScale(0.8);
-        this._turnLeftItem.setPosition(cc.p(90, 700));
+        this._turnLeftItem.setPosition(cc.p(87, 700));
 
         this._turnRightItem = cc.MenuItemImage.create(
             main_scene_image.icon37,
@@ -86,25 +78,25 @@ var SignInLayer = LazyLayer.extend({
             this
         );
         this._turnRightItem.setScale(0.8);
-        this._turnRightItem.setPosition(cc.p(630, 700));
+        this._turnRightItem.setPosition(cc.p(631, 700));
 
         this._signInItem = cc.MenuItemImage.create(
             main_scene_image.button41,
             main_scene_image.button41s,
-            main_scene_image.button9d,
+            main_scene_image.button20d,
             this._onClickSignIn,
             this
         );
         this._signInItem.setPosition(cc.p(560, 470));
 
         this._remedySignInItem = cc.MenuItemImage.create(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.button9d,
+            main_scene_image.button20,
+            main_scene_image.button20s,
+            main_scene_image.button20d,
             this._onClickRemedySignIn,
             this
         );
-        this._remedySignInItem.setPosition(cc.p(420, 470));
+        this._remedySignInItem.setPosition(cc.p(435, 470));
 
         var menu = cc.Menu.create(
             closeItem,
@@ -121,7 +113,7 @@ var SignInLayer = LazyLayer.extend({
         this.addChild(signInIcon);
 
         var remedySignInIcon = cc.Sprite.create(main_scene_image.icon184);
-        remedySignInIcon.setPosition(cc.p(420, 470));
+        remedySignInIcon.setPosition(cc.p(435, 470));
         this.addChild(remedySignInIcon);
 
         var scrollViewLayer = MarkLayer.create(cc.rect(105, 510, 510, 366));
@@ -146,11 +138,11 @@ var SignInLayer = LazyLayer.extend({
         this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
 
         var signInCountIcon = cc.Sprite.create(main_scene_image.icon188);
-        signInCountIcon.setPosition(cc.p(220, 470));
+        signInCountIcon.setPosition(cc.p(235, 470));
         this.addChild(signInCountIcon);
 
         this._signInCountLabel = cc.LabelTTF.create(30, "黑体", 20);
-        this._signInCountLabel.setPosition(cc.p(315, 470));
+        this._signInCountLabel.setPosition(cc.p(330, 470));
         this.addChild(this._signInCountLabel);
 
         var rewardList = gameData.signIn.getRewardList();
@@ -164,7 +156,6 @@ var SignInLayer = LazyLayer.extend({
             var rewardItem = cc.MenuItemImage.create(
                 main_scene_image.button40,
                 main_scene_image.button40s,
-                main_scene_image.button40d,
                 this._onClickReceiveReward(i),
                 this
             );
@@ -186,10 +177,10 @@ var SignInLayer = LazyLayer.extend({
             rewardLabel.setVisible(i == 0);
 
             var rewardBgSprite = cc.Scale9Sprite.create(main_scene_image.icon185);
-            rewardBgSprite.setContentSize(cc.size(546, 96));
+            rewardBgSprite.setContentSize(cc.size(512, 96));
             rewardLabel.addChild(rewardBgSprite);
 
-            var offset = cc.p(-223, 0);
+            var offset = cc.p(-209, 0);
             for (var key in rewardList[i]) {
                 if (rewardGoodsUrl[key] != undefined && rewardList[i][key] > 0) {
                     var goodsSprite = cc.Sprite.create(main_scene_image[rewardGoodsUrl[key]]);
@@ -201,7 +192,7 @@ var SignInLayer = LazyLayer.extend({
                     valueLabel.setPosition(cc.p(offset.x + 31, offset.y - 33));
                     rewardLabel.addChild(valueLabel);
 
-                    offset.x += 90;
+                    offset.x += 84;
                 }
             }
 
@@ -228,30 +219,23 @@ var SignInLayer = LazyLayer.extend({
         this._turnRightItem.setVisible(this._page != 0);
         this._turnLeftItem.setVisible(this._page != MAX_SIGN_IN_HISTORY - 1);
 
-        var isThisMonth = (this._page == 0);
-        this._signInItem.setEnabled(isThisMonth);
-        this._remedySignInItem.setEnabled(isThisMonth);
+        this._signInItem.setEnabled(signIn.canSignIn(this._page));
+        this._remedySignInItem.setEnabled(signIn.canRemedySignIn(this._page));
 
         var monthMark = signIn.getMonthMark(this._page);
-
         var rewardCount = [5, 10, 18, 25, monthMark.days];
         var len = rewardCount.length;
         var count = monthMark.count;
-        var flag = signIn.get("flag");
+        var isThisMonth = (this._page == 0);
 
         this._signInCountLabel.setString(count);
 
-        for(var i = 0; i < len; ++i) {
-            if(count < rewardCount[i]) {
+        for (var i = 0; i < len; ++i) {
+            if (count < rewardCount[i]) {
                 break;
             }
 
-            if(isThisMonth) {
-                if(!signIn.canReceive(i)) {
-                    this._elementList[i].rewardIcon.setVisible(false);
-                    this._elementList[i].alreadyRewardLabel.setVisible(true);
-                }
-            } else {
+            if (!isThisMonth || !signIn.canReceive(i)) {
                 this._elementList[i].rewardIcon.setVisible(false);
                 this._elementList[i].alreadyRewardLabel.setVisible(true);
             }
@@ -264,13 +248,18 @@ var SignInLayer = LazyLayer.extend({
         this.removeFromParent();
     },
 
-    _onClickSignIn: function() {
+    _onClickSignIn: function () {
         cc.log("SignInLayer _onClickSignIn");
 
+        var that = this;
+        gameData.signIn.signIn(function (data) {
+            cc.log(data);
 
+            that.update();
+        });
     },
 
-    _onClickRemedySignIn: function() {
+    _onClickRemedySignIn: function () {
         cc.log("SignInLayer _onClickRemedySignIn");
 
 
@@ -281,16 +270,19 @@ var SignInLayer = LazyLayer.extend({
             cc.log("SignInLayer _onClickReward: " + id);
 
             var len = this._elementList.length;
-            for(var i = 0; i < len; ++i) {
+            for (var i = 0; i < len; ++i) {
                 var element = this._elementList[i];
+                element.rewardItem.setEnabled(i != id);
+                element.rewardLabel.setVisible(i == id);
+            }
 
-                if(i != id) {
-                    element.rewardItem.setEnabled(true);
-                    element.rewardLabel.setVisible(false);
-                } else {
-                    element.rewardItem.setEnabled(false);
-                    element.rewardLabel.setVisible(true);
-                }
+            if (this._page == 0) {
+                var that = this;
+                gameData.signIn.receiveReward(function (data) {
+                    cc.log(data);
+
+                    that.update();
+                }, id + 1);
             }
         }
     },

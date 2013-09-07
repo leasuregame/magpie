@@ -183,6 +183,7 @@ var main_scene_image = {
     button19s: main_scene_path + "button19s.png",
     button20: main_scene_path + "button20.png",
     button20s: main_scene_path + "button20s.png",
+    button20d: main_scene_path + "button20d.png",
     button21: main_scene_path + "button21.png",
     button21s: main_scene_path + "button21s.png",
     button22: main_scene_path + "button22.png",

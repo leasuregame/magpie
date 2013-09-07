@@ -123,7 +123,7 @@
             'src/view/mainModule/mainScene.js',
             'src/view/mainModule/messageLabel.js',
             'src/view/mainModule/messageLayer.js',
-            'src/view/mainModule/monthLayer.js',
+            'src/view/mainModule/monthLabel.js',
             'src/view/mainModule/passiveSkillAfreshLabel.js',
             'src/view/mainModule/passLabel.js',
             'src/view/mainModule/passLayer.js',

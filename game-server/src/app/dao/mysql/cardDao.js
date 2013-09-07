@@ -13,6 +13,9 @@
  * select
  * delete
  * */
+
+setup = require('./setup');
+dbClient = require('pomelo').app.get('dbClient');
 var Card = require("../../domain/entity/card");
 var passiveSkillDao = require('./passiveSkillDao');
 var async = require('async');

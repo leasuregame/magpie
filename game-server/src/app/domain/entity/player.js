@@ -42,7 +42,11 @@ var addEvents = function(player) {
         achieve.levelTo(player, lv);
     });
 
-    player.on('add.card', function(card) {
+    player.on('pass.change', function(pass) {
+        achieve.passTo(player, pass.layer);
+    });
+
+    player.on('add.card', function(card) { 
         if (player.isLineUpCard(card)) {
             //player.activeGroupEffect();
             player.activeSpiritorEffect();
@@ -187,7 +191,20 @@ var Player = (function(_super) {
     };
 
     Player.prototype.achieve = function(id) {
-        
+        var dt = table.getTableItem('achievement', id);
+        var ach = utility.deepCopy(this.achievement);
+        if (!_.has(ach, id)){
+            ach[id] = {
+                method: dt !== null ? dt.method : 'not found',
+                isAchieve: true,
+                got: 0,
+                need: dt !== null ? dt.need : 0
+            };
+        } else {
+            ach[id].isAchieve = true;
+        }
+        // reset achievement
+        this.achievement = ach;
     };
 
     Player.prototype.activeSpiritorEffect = function() {

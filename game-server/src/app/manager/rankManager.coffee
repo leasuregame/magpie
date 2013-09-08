@@ -1,6 +1,7 @@
 app = require('pomelo').app
 dao = app.get('dao')
 job = require('../dao/job')
+achieve = require('../domain/achievement')
 _ = require('underscore')
 
 Manager = module.exports = 
@@ -30,6 +31,10 @@ Manager = module.exports =
         defender.incCount('lose')
 
         player.increase('elixir', rankData.win_elixir)
+        ### check achievement ###
+        achieve.winCount(player, challenger.counts.win)
+        achieve.winningStreak(player, challenger.counts.winningStreak)
+        achieve.rankingTo(player, targetRanking)
       else
         challenger.incCount('lose')
         defender.incCount('win')

@@ -207,11 +207,11 @@ describe("Player Object", function () {
             });
 
             player.consumePower(50);
-            player.get('power').should.be.equal(50);
+            player.get('power').value.should.be.equal(50);
             player.changedFields.should.include('power');
 
             player.consumePower(60);
-            player.get('power').should.be.equal(0);
+            player.get('power').value.should.be.equal(0);
             player.changedFields.should.include('power');
         });
     });
@@ -540,10 +540,11 @@ describe("Player Object", function () {
     describe('.incPass', function () {
         it('should can incPass', function () {
             var player = new Player();
-            player.pass.layer = 10;
+            player.pass.layer = 48;
             player.incPass();
-            player.pass.layer.should.equal(11);
-
+            player.incPass();
+            player.pass.layer.should.equal(50);
+            player.achievement.should.equal('');
             player.pass.layer = 100;
             player.incPass();
             player.pass.layer.should.equal(100);
@@ -639,6 +640,10 @@ describe("Player Object", function () {
             });
 
         });
+    });
+
+    describe('lv.change event', function(){
+        
     });
 
 });

@@ -25,6 +25,19 @@ var Card = require('./card');
 var util = require('util');
 var achieve = require('../achievement');
 
+
+var defaultMark = function() {
+    var i, result = [];
+    for (i = 0; i < 100; i++) {
+        result.push(0);
+    }
+    return result;
+};
+
+var NOW = function() {
+    return Date.now();
+};
+
 var addEvents = function(player) {
     // 经验值改变，判断是否升级
     player.on('exp.change', function(exp) {
@@ -197,8 +210,8 @@ var Player = (function(_super) {
             ach[id] = {
                 method: dt !== null ? dt.method : 'not found',
                 isAchieve: true,
-                got: 0,
-                need: dt !== null ? dt.need : 0
+                got: dt !== null ? dt.args : 0,
+                need: dt !== null ? dt.args : 0
             };
         } else {
             ach[id].isAchieve = true;
@@ -501,11 +514,29 @@ var Player = (function(_super) {
         this.signIn = si;
     };
 
+    Player.prototype.signFirstUnsignDay = function() {
+        var key = util.format('%d%d', d.getFullYear(), d.getMonth()+1);
+        var si = utility.deepCopy(this.signIn);
+
+        if(!_.has(si, key)) {
+            return;
+        }
+        var firsUnsignDay = 0;
+        for(var i = 1; i <= 31; i++) {
+            if (!utility.hasMark(si.months[key], i)) {
+                utility.mark(si.months[key], i);
+                firstUnsignDay = i;
+                break;
+            }
+        }
+        return firstUnsignDay;
+    };
+
     Player.prototype.signDays = function() {
         var i, days = 0;
         var d = new Date();
         var key = util.format('%d%d', d.getFullYear(), d.getMonth()+1);
-        console.log(this.signIn.months[key], key);
+        
         for (i = 1; i <= 31; i++) {
             if (utility.hasMark(this.signIn.months[key], i)) {
                 days += 1;
@@ -636,17 +667,6 @@ var getMaxPower = function(lv) {
     return max_power;
 };
 
-var defaultMark = function() {
-    var i, result = [];
-    for (i = 0; i < 100; i++) {
-        result.push(0);
-    }
-    return result;
-};
-
-var NOW = function() {
-    return Date.now();
-};
 
 var recountVipPrivilege = function(player, oldVip) {
     var curVip = player.vip;

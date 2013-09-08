@@ -2,7 +2,6 @@ var table = require('../manager/table');
 var logger = require('pomelo-logger').getLogger(__filename);
 var utility = require('../common/utility');
 var _ = require('underscore');
-var Achievement = module.exports;
 
 Achievement = function() {}
 
@@ -14,33 +13,20 @@ Achievement.passTo = function(player, layer) {
 	checkIsReached(player, 'passTo', layer);
 };
 
-Achievement.winCount = function(player, count) {
-	var idMap = {
-		50: 5,
-		5000: 6
-	};
-	if (palyer.rank.counts.win == count) {
-		reachAchievement(player, idMap[layer]);
-	}
+Achievement.winCount = function(player, ranking) {
+	checkIsReached(player, 'winCount', ranking);
 };
 
-Achievement.winningStreak = function(player, count) {
-	var id = 7;
-	if (player.rank.counts.winningStreak == count) {
-		reachAchievement(player, id);
-	}
+Achievement.winningStreak = function(player, ranking) {
+	checkIsReached(player, 'winningStreak', ranking);
 };
 
 Achievement.rankingTo = function(player, rk) {
-	var id = 8;
-	if (player.rank.ranking == rk) {
-		reachAchievement(player, id);
-	}
+	checkIsReached(player, 'rankingTo', rk)
 };
 
 Achievement.friends = function(player, count) {
-	var id = 10;
-
+	checkIsReached(player, 'friends', count);
 };
 
 var checkIsReached = function(player, method, need) {
@@ -52,25 +38,45 @@ var checkIsReached = function(player, method, need) {
 	}
 };
 
-var updateAchievement = (player, method, got) {
+var updateAchievement = function(player, method, got) {
 	var ach = utility.deepCopy(player.achievement);
-	var items = _.where(_.values(ach), {method: method});
+	var items = _.where(_.values(ach), {
+		method: method
+	});
 	if (!_.isEmpty(items)) {
 		items.forEach(function(i) {
 			i.got = got;
 		})
+	} else {
+		table.getTable('achievement')
+			.filter(function(id, row) {
+				return row.method == method;
+			})
+			.forEach(function(r) {
+				if (_.isUndefined(ach[r.id])) {
+					ach[r.id] = {
+						method: r.method,
+						isAchieve: false,
+						got: got,
+						need: r.args
+					}
+				}
+			});
 	}
 	// reset achievement of player
 	player.achievement = ach;
 };
 
 var reachedAchievementId = function(methodName, need) {
-		var rows = table.getTable('achievement').filter(function(row) {
-			return row.method = methodName;
-		});
-		var reached = _.findWhere(rows, {need: need});
-		return reached !== null ? reached.id : null;
-	};
+	var rows = table.getTable('achievement').filter(function(id, row) {
+		return row.method == methodName;
+	});
+
+	var reached = _.findWhere(rows, {
+		args: need
+	});
+	return !_.isUndefined(reached) ? reached.id : null;
+};
 
 var reachAchievement = function(player, id) {
 	data = table.getTableItem('achievement', id);
@@ -82,5 +88,7 @@ var reachAchievement = function(player, id) {
 	} else {
 		logger.warn('can not find achievement data by id ' + id);
 	}
-	
+
 };
+
+module.exports = Achievement;

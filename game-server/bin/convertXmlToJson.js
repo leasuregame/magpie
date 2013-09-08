@@ -35,7 +35,8 @@ var tabledata = require("../app/common/loadtable")(
   '../data/rank.xml',
   '../data/lottery.xml',
   '../data/spirit.xml',
-  '../data/vip.xml'
+  '../data/vip.xml',
+  '../data/achievement.xml'
 );
 
 files.forEach(function(filepath) {

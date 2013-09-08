@@ -95,6 +95,7 @@
             'src/view/loginModule/registerLayer.js',
 
 
+            'src/view/mainModule/abilityRankLayer.js',
             'src/view/mainModule/activityLayer.js',
             'src/view/mainModule/battleMessageLayer.js',
             'src/view/mainModule/cardDetails.js',
@@ -117,6 +118,7 @@
             'src/view/mainModule/lineUpLabel.js',
             'src/view/mainModule/lineUpLayer.js',
             'src/view/mainModule/lotteryLayer.js',
+            'src/view/mainModule/lvRankLayer.js',
             'src/view/mainModule/mainBgLayer.js',
             'src/view/mainModule/mainLayer.js',
             'src/view/mainModule/mainMenuLayer.js',
@@ -127,6 +129,7 @@
             'src/view/mainModule/passiveSkillAfreshLabel.js',
             'src/view/mainModule/passLabel.js',
             'src/view/mainModule/passLayer.js',
+            'src/view/mainModule/passRankLayer.js',
             'src/view/mainModule/paymentLayer.js',
             'src/view/mainModule/playerDetails.js',
             'src/view/mainModule/playerHeaderLabel.js',
@@ -147,6 +150,7 @@
             'src/view/mainModule/tournamentLayer.js',
             'src/view/mainModule/tournamentLabel.js',
             'src/view/mainModule/tournamentMessageLabel.js',
+            'src/view/mainModule/tournamentRankLayer.js',
             'src/view/mainModule/treasureHuntLayer.js',
             'src/view/mainModule/vipLayer.js',
             'src/view/mainModule/vipPrivilegeLayer.js',

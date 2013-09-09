@@ -55,10 +55,12 @@ var nameChanged = {
     "vip特权": "vip_privilege",
     "vip_box": "vip礼包赠品",
     "vip礼包赠品": "vip_box",
-    "vip": "vip"
+    "vip": "vip",
+    "achievement": "成就配置表",
+    "成就配置表": "achievement"
 };
 
-outputTables = {
+var outputTables = {
     "skills": {
         "colComment": {
             "type": {
@@ -82,46 +84,46 @@ outputTables = {
                 "scope": 1,
                 "star3": "130,5",
                 "rate3": 30,
-                "star4": "135,5",
-                "rate4": 40,
-                "star5": "140,5",
-                "rate5": 50
+                "star4": "140,5",
+                "rate4": 35,
+                "star5": "150,5",
+                "rate5": 40
             },
             "2": {
                 "id": 2,
                 "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
                 "type": 2,
                 "scope": 2,
-                "star3": "40,5",
+                "star3": "35,5",
                 "rate3": 30,
                 "star4": "45,5",
-                "rate4": 40,
-                "star5": "50,5",
-                "rate5": 50
+                "rate4": 35,
+                "star5": "55,5",
+                "rate5": 40
             },
             "3": {
                 "id": 3,
                 "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
                 "type": 2,
                 "scope": 3,
-                "star3": "40,5",
+                "star3": "35,5",
                 "rate3": 30,
                 "star4": "45,5",
-                "rate4": 40,
-                "star5": "50,5",
-                "rate5": 50
+                "rate4": 35,
+                "star5": "55,5",
+                "rate5": 40
             },
             "4": {
                 "id": 4,
                 "description": "纵向攻击，对敌方纵列每张卡牌造成一定伤害。。",
                 "type": 2,
                 "scope": 4,
-                "star3": "50,5",
+                "star3": "45,5",
                 "rate3": 30,
                 "star4": "55,5",
-                "rate4": 40,
-                "star5": "60,5",
-                "rate5": 50
+                "rate4": 35,
+                "star5": "65,5",
+                "rate5": 40
             },
             "5": {
                 "id": 5,
@@ -129,12 +131,12 @@ outputTables = {
                 "type": 2,
                 "scope": 5,
                 "target_num": 2,
-                "star3": "50,5",
+                "star3": "45,5",
                 "rate3": 30,
-                "star4": "55,5",
-                "rate4": 40,
-                "star5": "60,5",
-                "rate5": 50
+                "star4": "50,5",
+                "rate4": 35,
+                "star5": "55,5",
+                "rate5": 40
             },
             "6": {
                 "id": 6,
@@ -142,48 +144,48 @@ outputTables = {
                 "type": 2,
                 "scope": 5,
                 "target_num": 3,
-                "star3": "40,5",
+                "star3": "35,5",
                 "rate3": 30,
                 "star4": "45,5",
-                "rate4": 40,
-                "star5": "50,5",
-                "rate5": 50
+                "rate4": 35,
+                "star5": "55,5",
+                "rate5": 40
             },
             "7": {
                 "id": 7,
                 "description": "为当前血量最低的上阵卡牌恢复生命值。治疗量取决于拥有该治疗技能卡牌的生命值上限。",
                 "type": 3,
                 "scope": 7,
-                "star3": "30,5",
+                "star3": "40,5",
                 "rate3": 30,
-                "star4": "35,5",
-                "rate4": 40,
-                "star5": "40,5",
-                "rate5": 50
+                "star4": "50,5",
+                "rate4": 35,
+                "star5": "60,5",
+                "rate5": 40
             },
             "8": {
                 "id": 8,
                 "description": "为前排卡牌恢复生命值。治疗量取决于拥有该治疗技能卡牌的生命值上限。",
                 "type": 4,
                 "scope": 2,
-                "star3": "15,5",
+                "star3": "25,5",
                 "rate3": 30,
-                "star4": "20,5",
-                "rate4": 40,
-                "star5": "25,5",
-                "rate5": 50
+                "star4": "35,5",
+                "rate4": 35,
+                "star5": "45,5",
+                "rate5": 40
             },
             "9": {
                 "id": 9,
                 "description": "为后排卡牌恢复生命值。治疗量取决于拥有该治疗技能卡牌的生命值上限。",
                 "type": 4,
                 "scope": 3,
-                "star3": "15,5",
+                "star3": "25,5",
                 "rate3": 30,
-                "star4": "20,5",
-                "rate4": 40,
-                "star5": "25,5",
-                "rate5": 50
+                "star4": "35,5",
+                "rate4": 35,
+                "star5": "45,5",
+                "rate5": 40
             },
             "10": {
                 "id": 10,
@@ -192,10 +194,10 @@ outputTables = {
                 "scope": 6,
                 "star3": "10,5",
                 "rate3": 30,
-                "star4": "15,5",
-                "rate4": 40,
-                "star5": "20,5",
-                "rate5": 50
+                "star4": "20,5",
+                "rate4": 35,
+                "star5": "30,5",
+                "rate5": 40
             }
         }
     },
@@ -6322,7 +6324,14 @@ outputTables = {
         }
     },
     "task_card": {
-        "colComment": {},
+        "colComment": {
+            "card_id": {
+                "table": "怪物卡牌配置表",
+                "key_index": "name",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
         "rows": {
             "10000": {
                 "id": 10000,
@@ -6973,7 +6982,14 @@ outputTables = {
         }
     },
     "task_config": {
-        "colComment": {},
+        "colComment": {
+            "chapter_id": {
+                "table": "大章表",
+                "key_index": "chapter",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
         "rows": {
             "1": {
                 "id": 1,
@@ -8133,7 +8149,14 @@ outputTables = {
         }
     },
     "task": {
-        "colComment": {},
+        "colComment": {
+            "chapter_id": {
+                "table": "大章表",
+                "key_index": "chapter",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
         "rows": {
             "1": {
                 "id": 1,
@@ -15291,45 +15314,44 @@ outputTables = {
                 "money": 10000,
                 "energy": 200,
                 "skillPoint": 0,
-                "spirit": 0,
+                "elixir": 0,
                 "lottery_free_count": 0
             },
             "2": {
                 "id": 2,
                 "count": 10,
                 "money": 20000,
-                "energy": 500,
+                "energy": 300,
                 "skillPoint": 0,
-                "spirit": 0,
+                "elixir": 0,
                 "lottery_free_count": 0
             },
             "3": {
                 "id": 3,
-                "count": 18,
+                "count": 15,
                 "money": 30000,
-                "energy": 800,
+                "energy": 500,
                 "skillPoint": 1000,
-                "spirit": 0,
-                "lottery_free_count": 3
+                "elixir": 0,
+                "lottery_free_count": 5
             },
             "4": {
                 "id": 4,
-                "count": 25,
+                "count": 20,
                 "money": 50000,
-                "energy": 1000,
+                "energy": 800,
                 "skillPoint": 2000,
-                "spirit": 500,
-                "lottery_free_count": 5
+                "elixir": 1000,
+                "lottery_free_count": 10
             },
             "5": {
                 "id": 5,
-                "count": -1,
+                "count": 25,
                 "money": 100000,
-                "energy": 2000,
-                "skillPoint": 5000,
-                "spirit": 1000,
-                "lottery_free_count": 10,
-                "gold": 100
+                "energy": 1000,
+                "skillPoint": 3000,
+                "elixir": 2000,
+                "lottery_free_count": 15
             }
         }
     },
@@ -15731,6 +15753,234 @@ outputTables = {
                 "name": "Vip12",
                 "cash": 50000,
                 "total_cash": 96860
+            }
+        }
+    },
+    "achievement": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "method": "levelTo",
+                "need": 50,
+                "name": "升级达人",
+                "desc": "角色等级达到50级",
+                "gold": 10,
+                "energy": 100
+            },
+            "2": {
+                "id": 2,
+                "method": "levelTo",
+                "need": 90,
+                "name": "疯狂升级",
+                "desc": "角色等级达到90级",
+                "gold": 100,
+                "energy": 1000
+            },
+            "3": {
+                "id": 3,
+                "method": "passTo",
+                "need": 50,
+                "name": "一半！",
+                "desc": "天道闯过50层",
+                "gold": 10,
+                "energy": 100
+            },
+            "4": {
+                "id": 4,
+                "method": "passTo",
+                "need": 100,
+                "name": "通关！",
+                "desc": "天道闯过100层",
+                "gold": 100,
+                "energy": 1000
+            },
+            "5": {
+                "id": 5,
+                "method": "winCount",
+                "need": 50,
+                "name": "小试牛刀",
+                "desc": "竞技获胜次数达到50场",
+                "gold": 10,
+                "energy": 100
+            },
+            "6": {
+                "id": 6,
+                "method": "winCount",
+                "need": 5000,
+                "name": "已经超神了",
+                "desc": "竞技获胜次数达到5000场",
+                "gold": 100,
+                "energy": 1000
+            },
+            "7": {
+                "id": 7,
+                "method": "winningStreak",
+                "need": 50,
+                "name": "所向披靡",
+                "desc": "竞技最高连胜达到50次",
+                "gold": 100,
+                "energy": 1000
+            },
+            "8": {
+                "id": 8,
+                "method": "rankingTo",
+                "need": 1,
+                "name": "寂寞",
+                "desc": "竞技排名达到第一",
+                "gold": 100,
+                "energy": 1000
+            },
+            "9": {
+                "id": 9,
+                "need": 1,
+                "name": "霸气外射！",
+                "desc": "以1敌5，战胜对方",
+                "gold": 10,
+                "energy": 100
+            },
+            "10": {
+                "id": 10,
+                "method": "friends",
+                "need": 20,
+                "name": "我们约会吧",
+                "desc": "拥有20个好友",
+                "gold": 10,
+                "energy": 100
+            },
+            "11": {
+                "id": 11,
+                "method": "gaveBless",
+                "need": 500,
+                "name": "无私奉献",
+                "desc": "为好友送出祝福达到500次",
+                "gold": 10,
+                "energy": 100
+            },
+            "12": {
+                "id": 12,
+                "method": "receivedBless",
+                "need": 100,
+                "name": "爱是相互的",
+                "desc": "收到好友祝福次数达到100次",
+                "gold": 300,
+                "energy": 2000
+            },
+            "13": {
+                "id": 13,
+                "method": "star5card",
+                "need": 1,
+                "name": "质的飞跃",
+                "desc": "获得1张5星卡",
+                "gold": 10,
+                "energy": 100
+            },
+            "14": {
+                "id": 14,
+                "method": "star5cardLevelTo",
+                "need": 60,
+                "name": "这就是实力",
+                "desc": "将1张5星卡强化到满级",
+                "gold": 50,
+                "energy": 500
+            },
+            "15": {
+                "id": 15,
+                "method": "star5card",
+                "need": 5,
+                "name": "你就是神！",
+                "desc": "获得5张5星卡",
+                "gold": 100,
+                "energy": 1000
+            },
+            "16": {
+                "id": 16,
+                "method": "psTo",
+                "need": 10,
+                "name": "但求最好",
+                "desc": "拥有1个10%的被动属性",
+                "gold": 10,
+                "energy": 100
+            },
+            "17": {
+                "id": 17,
+                "method": "elixirTo",
+                "need": 100000,
+                "name": "一大波仙丹",
+                "desc": "累计获得100000仙丹",
+                "gold": 50,
+                "energy": 500
+            },
+            "18": {
+                "id": 18,
+                "method": "energyTo",
+                "need": 100000,
+                "name": "活力无限",
+                "desc": "累计获得100000活力值",
+                "gold": 100,
+                "energy": 1000
+            },
+            "19": {
+                "id": 19,
+                "method": "luckyCardCount",
+                "need": 9999,
+                "name": "抽卡狂魔",
+                "desc": "抽卡总次数达到9999",
+                "gold": 100,
+                "energy": 500
+            },
+            "20": {
+                "id": 20,
+                "method": "highLuckyCardCount",
+                "need": 8888,
+                "name": "钱就是个屁",
+                "desc": "高级抽卡总次数达到8888",
+                "gold": 100,
+                "energy": 1000
+            },
+            "21": {
+                "id": 21,
+                "need": 1,
+                "name": "买彩票去吧",
+                "desc": "只消耗一张素材卡进阶成功",
+                "gold": 50,
+                "energy": 100
+            },
+            "22": {
+                "id": 22,
+                "method": "powerConsume",
+                "need": 10000,
+                "name": "孜孜不倦",
+                "desc": "累计消耗体力10000点",
+                "gold": 10,
+                "energy": 100
+            },
+            "23": {
+                "id": 23,
+                "method": "vip",
+                "need": 1,
+                "name": "我是VIP！",
+                "desc": "成为VIP用户",
+                "gold": 50,
+                "energy": 500
+            },
+            "24": {
+                "id": 24,
+                "method": "moneyConsume",
+                "need": 10000000,
+                "name": "不差钱",
+                "desc": "累计消耗仙币1000万",
+                "gold": 10,
+                "energy": 100
+            },
+            "25": {
+                "id": 25,
+                "method": "goldConsume",
+                "need": 100000,
+                "name": "挥金如土",
+                "desc": "累计消耗元宝100000",
+                "gold": 50,
+                "energy": 500
             }
         }
     }

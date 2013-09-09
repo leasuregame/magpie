@@ -32,6 +32,84 @@ var AchievementLayer = cc.Layer.extend({
         titleIcon.setPosition(cc.p(360, 1000));
         this.addChild(titleIcon);
 
+        var achievement = gameData.achievement.get("achievement");
+        var len = gameData.achievement.get("length");
+        cc.log(achievement);
+        var scrollViewHeight = len * 100;
+        if (scrollViewHeight < 700) {
+            scrollViewHeight = 700;
+        }
+
+        var scrollViewLayer = MarkLayer.create(cc.rect(54, 228, 609, 700));
+        var menu = LazyMenu.create();
+        menu.setPosition(cc.p(0, 0));
+        scrollViewLayer.addChild(menu);
+
+        var y = scrollViewHeight;
+        for (var key in achievement) {
+            y -= 100;
+
+            var bgSprite = cc.Sprite.create(main_scene_image.button42);
+            bgSprite.setAnchorPoint(cc.p(0, 0));
+            bgSprite.setPosition(cc.p(0, y));
+            scrollViewLayer.addChild(bgSprite);
+
+            var nameIcon = cc.Sprite.create(main_scene_image.icon211);
+            nameIcon.setPosition(cc.p(120, y + 72));
+            scrollViewLayer.addChild(nameIcon);
+
+            var nameLabel = StrokeLabel.create(achievement[key].name, "黑体", 25);
+            nameLabel.setColor(cc.c3b(255, 224, 147));
+            nameLabel.setAnchorPoint(cc.p(0, 0.5));
+            nameLabel.setPosition(cc.p(45, y + 69));
+            scrollViewLayer.addChild(nameLabel, 1);
+
+            var countLabel = cc.LabelTTF.create(
+                "(" + achievement[key].count + "/" + achievement[key].need + ")",
+                "黑体",
+                20
+            );
+            countLabel.setColor(cc.c3b(45, 18, 1));
+            countLabel.setAnchorPoint(cc.p(0, 0.5));
+            countLabel.setPosition(cc.p(200, y + 69));
+            scrollViewLayer.addChild(countLabel);
+
+            var descriptionLabel = cc.LabelTTF.create(achievement[key].description, "黑体", 20);
+            descriptionLabel.setColor(cc.c3b(45, 18, 1));
+            descriptionLabel.setAnchorPoint(cc.p(0, 0.5));
+            descriptionLabel.setPosition(cc.p(45, y + 34));
+            scrollViewLayer.addChild(descriptionLabel);
+
+            var energyIcon = cc.Sprite.create(main_scene_image.icon213);
+            energyIcon.setPosition(cc.p(410, y + 40));
+            scrollViewLayer.addChild(energyIcon);
+
+            var energyLabel = cc.LabelTTF.create(achievement[key].energy, "Arial", 25);
+            energyLabel.setColor(cc.c3b(99, 62, 21));
+            energyLabel.setAnchorPoint(cc.p(0, 0.5));
+            energyLabel.setPosition(cc.p(430, y + 40));
+            scrollViewLayer.addChild(energyLabel);
+
+            var goldIcon = cc.Sprite.create(main_scene_image.icon214);
+            goldIcon.setPosition(cc.p(510, y + 40));
+            scrollViewLayer.addChild(goldIcon);
+
+            var goldLabel = cc.LabelTTF.create(achievement[key].gold, "Arial", 25);
+            goldLabel.setColor(cc.c3b(99, 62, 21));
+            goldLabel.setAnchorPoint(cc.p(0, 0.5));
+            goldLabel.setPosition(cc.p(530, y + 40));
+            scrollViewLayer.addChild(goldLabel);
+        }
+
+        var scrollView = cc.ScrollView.create(cc.size(609, 700), scrollViewLayer);
+        scrollView.setPosition(cc.p(54, 228));
+        scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        scrollView.updateInset();
+        this.addChild(scrollView);
+
+        scrollView.setContentSize(cc.size(609, scrollViewHeight));
+        scrollView.setContentOffset(scrollView.minContainerOffset());
+
         return true;
     },
 

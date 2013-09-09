@@ -833,4 +833,55 @@ describe("Player Object", function() {
         });
     });
 
+    describe('give.bless event', function() {
+        it('when give bless, should be emit give.bless event', function() {
+            var ply = new Player();
+
+            ply.giveBlessOnce();
+            ply.achievement.should.eql({
+                '11': {
+                    method: 'gaveBless',
+                    isAchieve: false,
+                    got: 1,
+                    need: 500
+                }
+            });
+
+            ply.giveBlessOnce();
+            ply.achievement.should.eql({
+                '11': {
+                    method: 'gaveBless',
+                    isAchieve: false,
+                    got: 2,
+                    need: 500
+                }
+            });
+        });
+    });
+
+    describe('receive.bless event', function() {
+        it('when receive bless, should be emit receive.bless event', function() {
+            var ply = new Player();
+
+            ply.receiveBlessOnce();
+            ply.achievement.should.eql({
+                '12': {
+                    method: 'receivedBless',
+                    isAchieve: false,
+                    got: 1,
+                    need: 100
+                }
+            });
+
+            ply.receiveBlessOnce();
+            ply.achievement.should.eql({
+                '12': {
+                    method: 'receivedBless',
+                    isAchieve: false,
+                    got: 2,
+                    need: 100
+                }
+            });
+        });
+    });
 });

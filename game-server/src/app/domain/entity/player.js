@@ -64,10 +64,6 @@ var addEvents = function(player) {
         achieve.receivedBless(player);
     });
 
-    player.on('receive.bless', function(){
-
-    });
-
     player.on('pass.change', function(pass) {
         achieve.passTo(player, pass.layer);
     });

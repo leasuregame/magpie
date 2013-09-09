@@ -22,6 +22,7 @@ mergeMessages = (myMessages, systemMessages) ->
 changeGroupNameAndSort = (messages) ->
   results = {}
   for k, v of messages
+    continue if msgConfig.TYPE_MAP[k] is null
     name = msgConfig.TYPE_MAP[k]
     if typeof results[name] is 'undefined'
       results[name] = v
@@ -237,7 +238,7 @@ Handler::accept = (msg, session, next) ->
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, cb
 
-    (res) ->
+    (res, cb) ->
       player = res
       if player.friends.length >= 20
         return cb({code: 501, msg: 'friend count is the max'})
@@ -353,23 +354,23 @@ Handler::giveBless = (msg, session, next) ->
       cb()
 
     (cb) ->
-      playerManager.getPlayer id: friendId, (err, res) ->
+      dao.player.fetchOne {
+        where: id: friendId
+        sync: true
+      }, (err, ply) ->
         if err
           return cb(err)
 
-        if res.dailyGift.receivedBlessCount <= 0
+        if ply.dailyGift.receivedBlessCount <= 0
           return cb({code: 501, '今日对方接收祝福的次数已经达到上限'})
 
-        res.dailyGift.receivedBless.count--
-        res.dailyGift.receivedBless.givers.push(playerId)
-        dao.player.update {
-          where: id: friendId
-          data: {
-            dailyGift: res.dailyGift
-          }
-        }, cb
+        ply.dailyGift.receivedBless.count--
+        ply.dailyGift.receivedBless.givers.push(playerId)
+        ply.receiveBlessOnce()
+        ply.save()
+        cb()
 
-    (res, cb) ->
+    (cb) ->
       dao.message.create data: {
         type: msgConfig.MESSAGETYPE.BLESS
         sender: playerId
@@ -411,7 +412,6 @@ Handler::receiveBless = (msg, session, next) ->
 
     (player, cb) ->
       player.increase('energy', message.options.energy)
-      player.receiveBlessOnce()
       player.save()
       cb()
 

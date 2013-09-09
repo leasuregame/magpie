@@ -221,6 +221,7 @@ var main_scene_image = {
     button39s: main_scene_path + "button39s.png",
     button40: main_scene_path + "button40.png",
     button40s: main_scene_path + "button40s.png",
+    button40d: main_scene_path + "button40d.png",
     button41: main_scene_path + "button41.png",
     button41s: main_scene_path + "button41s.png",
     button42: main_scene_path + "button42.png",
@@ -438,8 +439,7 @@ var main_scene_image = {
     icon211: main_scene_path + "icon211.png",
     icon212: main_scene_path + "icon212.png",
     icon213: main_scene_path + "icon213.png",
-    icon214: main_scene_path + "icon214.png",
-    icon215: main_scene_path + "icon215.png"
+    icon214: main_scene_path + "icon214.png"
 };
 
 var main_scene_res = [

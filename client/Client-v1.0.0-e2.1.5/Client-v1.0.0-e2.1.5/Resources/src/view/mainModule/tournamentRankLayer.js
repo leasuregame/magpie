@@ -54,6 +54,10 @@ var TournamentRankLayer = cc.Layer.extend({
             rankLabel.setPosition(cc.p(60, y + 55));
             scrollViewLayer.addChild(rankLabel);
 
+            var nameIcon = cc.Sprite.create(main_scene_image.icon209);
+            nameIcon.setPosition(cc.p(180, y + 70));
+            scrollViewLayer.addChild(nameIcon);
+
             var nameLabel = cc.LabelTTF.create("天龙八部", "黑体", 22);
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
             nameLabel.setPosition(cc.p(115, y + 70));

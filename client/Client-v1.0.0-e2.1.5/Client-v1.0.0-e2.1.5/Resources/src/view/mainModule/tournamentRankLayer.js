@@ -31,7 +31,7 @@ var TournamentRankLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
 
-        for(var i = 0; i < len; ++i) {
+        for (var i = 0; i < len; ++i) {
             var y = scrollViewHeight - 100 - 100 * i;
 
             var playerItem = cc.MenuItemImage.create(
@@ -44,7 +44,7 @@ var TournamentRankLayer = cc.Layer.extend({
             playerItem.setPosition(cc.p(0, y));
             menu.addChild(playerItem);
 
-            if(i < 3) {
+            if (i < 3) {
                 var rankIcon = cc.Sprite.create(main_scene_image["icon" + (201 + i)]);
                 rankIcon.setPosition(cc.p(60, y + 53));
                 scrollViewLayer.addChild(rankIcon);
@@ -96,8 +96,8 @@ var TournamentRankLayer = cc.Layer.extend({
         return true;
     },
 
-    _onClickPlayer: function(id) {
-        return function() {
+    _onClickPlayer: function (id) {
+        return function () {
             cc.log("AbilityRankLayer _onClickPlayer: " + id);
 
 

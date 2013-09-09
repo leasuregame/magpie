@@ -112,7 +112,7 @@ var MainLayer = cc.Layer.extend({
         var achievementLayerItem = cc.MenuItemImage.create(
             main_scene_image.button18,
             main_scene_image.button18s,
-            this._onClickRankLayer,
+            this._onClickAchievementLayer,
             this
         );
         achievementLayerItem.setPosition(cc.p(360, 250));
@@ -197,8 +197,13 @@ var MainLayer = cc.Layer.extend({
     },
 
     _onClickRankLayer: function () {
-        cc.log("MainLayer _onClickRankLayerItem");
+        cc.log("MainLayer _onClickRankLayer");
         MainScene.getInstance().switchLayer(RankLayer);
+    },
+
+    _onClickAchievementLayer: function () {
+        cc.log("MainLayer _onClickAchievementLayer");
+        MainScene.getInstance().switchLayer(AchievementLayer);
     },
 
     _onClickFriendLayer: function () {

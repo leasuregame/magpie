@@ -84,6 +84,7 @@ var Player = Entity.extend({
         gameData.message.init();
         gameData.signIn.init();
         gameData.rank.init();
+        gameData.achievement.init();
 
         cc.log(this);
 

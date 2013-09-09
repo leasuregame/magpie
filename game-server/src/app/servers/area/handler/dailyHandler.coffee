@@ -71,6 +71,19 @@ Handler::signIn = (msg, session, next) ->
       }
     })
 
+Handler::reSignIn = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    day = player.signFirstUnsignDay()
+    player.decrease('gold', 10)
+    player.save()
+
+    next(null, {code: 200, msg: day: day})
+
 Handler::getSignInGift = (msg, session, next) ->
   playerId = session.get('playerId')
   id = msg.id

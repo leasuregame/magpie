@@ -79,7 +79,7 @@ var RankLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
-        var abilityRankIcon = cc.Sprite.create(main_scene_image.icon197);
+        var abilityRankIcon = cc.Sprite.create(main_scene_image.icon196);
         abilityRankIcon.setPosition(cc.p(105, 1000));
         this.addChild(abilityRankIcon, 2);
 

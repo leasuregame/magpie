@@ -175,11 +175,11 @@ var reachAchievement = function(player, id) {
 
 var sendMessage = function(player, achId) {
 	messageService.pushByPid(player.id, {
-		route: 'onAchieve'
+		route: 'onAchieve',
 		msg: {
 			achieveId: achId
 		}
-	})
+	});
 };
 
 module.exports = Achievement;

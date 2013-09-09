@@ -24,7 +24,7 @@ var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 var util = require('util');
 var achieve = require('../achievement');
-var MAX_LEVEL = require('../../../config/data.card').MAX_LEVEL;
+var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL;
 
 var defaultMark = function() {
     var i, result = [];
@@ -271,11 +271,9 @@ var Player = (function(_super) {
             var _hp = parseInt(card.init_hp * spiritConfig.hp_inc / 100);
             var _atk = parseInt(card.init_atk * spiritConfig.atk_inc / 100);
 
-            card.hp += _hp;
             card.incs.spirit_hp += _hp;
-
-            card.atk += _atk;
             card.incs.spirit_atk += _atk;
+            card.recountHpAndAtk();
         }
     };
 

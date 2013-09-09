@@ -15,6 +15,9 @@ _ = require 'underscore'
 LOTTERY_BY_GOLD = 1
 LOTTERY_BY_ENERGY = 0
 
+ELIXIR_TYPE_HP = 0
+ELIXIR_TYPE_ATK = 1
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -407,6 +410,7 @@ Handler::smeltElixir = (msg, session, next) ->
 Handler::useElixir = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   elixir = msg.elixir
+  type = if msg.type isnt null then msg.type else ELIXIR_TYPE_HP
   cardId = msg.cardId
 
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
@@ -430,7 +434,8 @@ Handler::useElixir = (msg, session, next) ->
     if card.elixir + elixir > limit
       return next(null, {code: 501, msg: "使用的仙丹已经超出了卡牌的最大仙丹容量"})
 
-    card.increase('elixir', elixir)
+    card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
+    card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK
     player.decrease('elixir', elixir)
     
     _jobs = []

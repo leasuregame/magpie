@@ -18,7 +18,8 @@ var AbilityRankLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        var len = 10;
+        var abilityRankList = gameData.rank.get("abilityRankList");
+        var len = abilityRankList.length;
 
         var scrollViewHeight = len * 100;
         if (scrollViewHeight < 700) {
@@ -36,7 +37,7 @@ var AbilityRankLayer = cc.Layer.extend({
             var playerItem = cc.MenuItemImage.create(
                 main_scene_image.button42,
                 main_scene_image.button42,
-                this._onClickPlayer(i),
+                this._onClickPlayer(abilityRankList[i].id),
                 this
             );
             playerItem.setAnchorPoint(cc.p(0, 0));
@@ -49,7 +50,7 @@ var AbilityRankLayer = cc.Layer.extend({
                 scrollViewLayer.addChild(rankIcon);
             }
 
-            var rankLabel = cc.LabelTTF.create(i, "Arial", 55);
+            var rankLabel = cc.LabelTTF.create(i + 1, "Arial", 55);
             rankLabel.setColor(cc.c3b(255, 252, 175));
             rankLabel.setPosition(cc.p(60, y + 55));
             scrollViewLayer.addChild(rankLabel);
@@ -58,7 +59,7 @@ var AbilityRankLayer = cc.Layer.extend({
             nameIcon.setPosition(cc.p(180, y + 70));
             scrollViewLayer.addChild(nameIcon);
 
-            var nameLabel = cc.LabelTTF.create("天龙八部", "黑体", 22);
+            var nameLabel = cc.LabelTTF.create(abilityRankList[i].name, "黑体", 22);
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
             nameLabel.setPosition(cc.p(115, y + 70));
             scrollViewLayer.addChild(nameLabel);
@@ -67,19 +68,19 @@ var AbilityRankLayer = cc.Layer.extend({
             abilityIcon.setPosition(cc.p(420, y + 60));
             scrollViewLayer.addChild(abilityIcon);
 
-            var abilityLabel = cc.LabelTTF.create(20456, "Arial", 35);
+            var abilityLabel = cc.LabelTTF.create(abilityRankList[i].ability, "Arial", 35);
             abilityLabel.setColor(cc.c3b(255, 252, 175));
             abilityLabel.setAnchorPoint(cc.p(0, 0.5));
-            abilityLabel.setPosition(cc.p(465, y + 60));
+            abilityLabel.setPosition(cc.p(465, y + 57));
             scrollViewLayer.addChild(abilityLabel);
 
             var lvIcon = cc.Sprite.create(main_scene_image.icon208);
             lvIcon.setPosition(cc.p(140, y + 35));
             scrollViewLayer.addChild(lvIcon);
 
-            var lvLabel = cc.LabelTTF.create(135, "Arial", 22);
+            var lvLabel = cc.LabelTTF.create(abilityRankList[i].lv, "Arial", 22);
             lvLabel.setAnchorPoint(cc.p(0, 0.5));
-            lvLabel.setPosition(cc.p(175, y + 35));
+            lvLabel.setPosition(cc.p(175, y + 34));
             scrollViewLayer.addChild(lvLabel);
         }
 

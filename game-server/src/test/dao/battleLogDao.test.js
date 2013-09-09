@@ -16,7 +16,7 @@ require('./setup');
 app = require("pomelo").app;
 var dao = app.get('dao');
 var should = require("should");
-var BattleLog = require("../../app/domain/battleLog");
+var BattleLog = require("../../app/domain/entity/battleLog");
 
 describe("Battle Log Data Access Object", function () {
 

@@ -257,6 +257,7 @@ var Player = (function(_super) {
                 ability += card.ability();
             }
         });
+        this.set('ability', ability);
         return ability;
     };
 
@@ -309,7 +310,8 @@ var Player = (function(_super) {
     };
 
     Player.prototype.isLineUpCard = function(card) {
-        return _.has(this.cards, card.id);
+       // return _.has(this.cards, card.id);
+        return _.has(_.values(this.lineUpObj()), card.id);
     };
 
     Player.prototype.hasCard = function(id) {
@@ -394,11 +396,11 @@ var Player = (function(_super) {
         dg[name] = value;
         this.dailyGift = dg;
     };
-
+   /*
     Player.prototype.hasGive = function(gift) {
         return _.contains(this.dailyGift.power, gift);
     };
-
+   */
     Player.prototype.updateLineUp = function(lineupObj) {
         this.set('lineUp', objToLineUp(lineupObj));
     };
@@ -415,7 +417,7 @@ var Player = (function(_super) {
             return cb({
                 code: 501,
                 msg: '找不到目标卡牌'
-            }, null);
+            });
         }
         var source_cards = this.getCards(sources);
         if (source_cards.length == 0) {
@@ -474,7 +476,12 @@ var Player = (function(_super) {
             logger.warn('无效的关卡层数 ', layer);
             return;
         }
+
         var pass = _.clone(this.pass);
+        if(pass.layer  + 1 < layer) {
+            logger.warn('未达到该关卡层数',layer);
+            return;
+        }
         pass.mark[layer - 1] = 1;
         this.set('pass', pass);
     };
@@ -490,6 +497,8 @@ var Player = (function(_super) {
 
     Player.prototype.incPass = function() {
         var pass = _.clone(this.pass);
+        if(pass.layer >= 100)
+            return;
         pass.layer++;
         this.set('pass', pass);
     };

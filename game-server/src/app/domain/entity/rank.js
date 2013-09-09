@@ -45,8 +45,8 @@ var Rank = (function(_super) {
 	Rank.prototype.pushRecent = function(id) {
 		this._modifyCount('recentChallenger', function(counts, name) {
 			var recentChallenger = counts[name];
-			if (recentChallenger.length > 3) {
-				recentChallenger.pop();
+			if (recentChallenger.length >= 3) {
+				recentChallenger.shift();
 			}
 
 			if (recentChallenger.indexOf(id) < 0) {

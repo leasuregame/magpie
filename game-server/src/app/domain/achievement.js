@@ -29,13 +29,28 @@ Achievement.friends = function(player, count) {
 	checkIsReached(player, 'friends', count);
 };
 
+Achievement.gaveBless = function(player) {
+
+};
+
+var incAchievement = function(player, method) {
+	
+
+};
+
 var checkIsReached = function(player, method, need) {
 	var id = reachedAchievementId(method, need);
 	if (id) {
 		reachAchievement(player, id);
-	} else {
-		updateAchievement(player, method, need);
 	}
+	updateAchievement(player, method, need);
+};
+
+var getAchievements = function(player, method) {
+	var ach = utility.deepCopy(player.achievement);
+	return _.where(_.values(ach), {
+		method: method
+	});
 };
 
 var updateAchievement = function(player, method, got) {
@@ -43,9 +58,12 @@ var updateAchievement = function(player, method, got) {
 	var items = _.where(_.values(ach), {
 		method: method
 	});
+
 	if (!_.isEmpty(items)) {
 		items.forEach(function(i) {
-			i.got = got;
+			if (!i.isAchieve) {
+				i.got = got;
+			}
 		})
 	} else {
 		table.getTable('achievement')
@@ -58,7 +76,7 @@ var updateAchievement = function(player, method, got) {
 						method: r.method,
 						isAchieve: false,
 						got: got,
-						need: r.args
+						need: r.need
 					}
 				}
 			});
@@ -73,7 +91,7 @@ var reachedAchievementId = function(methodName, need) {
 	});
 
 	var reached = _.findWhere(rows, {
-		args: need
+		need: need
 	});
 	return !_.isUndefined(reached) ? reached.id : null;
 };

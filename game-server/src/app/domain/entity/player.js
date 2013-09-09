@@ -42,9 +42,10 @@ var addEvents = function(player) {
     // 经验值改变，判断是否升级
     player.on('exp.change', function(exp) {
         var upgradeInfo = table.getTableItem('player_upgrade', player.lv);
+        console.log(exp, upgradeInfo.exp);
         if (exp >= upgradeInfo.exp) {
-            player.set('exp', exp - upgradeInfo.exp);
             player.increase('lv');
+            player.set('exp', exp - upgradeInfo.exp);
             player.resumePower(getMaxPower(player.lv));
             player.save();
         }
@@ -53,6 +54,18 @@ var addEvents = function(player) {
     // 玩家级别改变，判断是否达到成就
     player.on('lv.change', function(lv) {
         achieve.levelTo(player, lv);
+    });
+
+    player.on('give.bless', function() {
+        achieve.gaveBless(player);
+    });
+
+    player.on('receive.bless', function(){
+        achieve.receivedBless(player);
+    });
+
+    player.on('receive.bless', function(){
+
     });
 
     player.on('pass.change', function(pass) {
@@ -210,11 +223,12 @@ var Player = (function(_super) {
             ach[id] = {
                 method: dt !== null ? dt.method : 'not found',
                 isAchieve: true,
-                got: dt !== null ? dt.args : 0,
-                need: dt !== null ? dt.args : 0
+                got: dt !== null ? dt.need : 0,
+                need: dt !== null ? dt.need : 0
             };
         } else {
             ach[id].isAchieve = true;
+            ach[id].got = dt.need;
         }
         // reset achievement
         this.achievement = ach;
@@ -554,6 +568,14 @@ var Player = (function(_super) {
 
     Player.prototype.hasSignInFlag = function(id) {
         return utility.hasMark(parseInt(this.signIn.flag), id);
+    };
+
+    Player.prototype.giveBlessOnce = function(){
+        this.emit('give.bless');
+    };
+
+    Player.prototype.receiveBlessOnce = function(){
+        this.emit('receive.bless');
     };
 
     Player.prototype.toJson = function() {

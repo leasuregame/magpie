@@ -348,6 +348,7 @@ Handler::giveBless = (msg, session, next) ->
       player.dailyGift.gaveBless.count--
       player.dailyGift.gaveBless.receivers.push(friendId)
       player.updateGift 'gaveBless', player.dailyGift.gaveBless
+      player.giveBlessOnce()
       player.save()
       cb()
 
@@ -410,6 +411,7 @@ Handler::receiveBless = (msg, session, next) ->
 
     (player, cb) ->
       player.increase('energy', message.options.energy)
+      player.receiveBlessOnce()
       player.save()
       cb()
 

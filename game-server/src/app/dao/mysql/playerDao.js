@@ -22,6 +22,7 @@ var friendDao = require('./friendDao');
 var passiveSkillDao = require("./passiveSkillDao")
 var async = require('async');
 var dbClient = require('pomelo').app.get('dbClient');
+var logger = require('pomelo-logger').getLogger(__filename);
 
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
@@ -140,9 +141,9 @@ var PlayerDao = (function(_super) {
     };
 
     PlayerDao.orderByRanking = function(limit, cb) {
-        var sql = 'select id, name, vl, ability, r.ranking from player as p \
+        var sql = 'select p.id, p.name, p.lv, p.ability, r.ranking from player as p \
             join rank as r on r.playerId = p.id \
-            order by r.ranking DESC \
+            order by r.ranking \
             limit ' + limit;
 
         dbClient.query(sql, [], function(err, res) {

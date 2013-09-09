@@ -3,6 +3,7 @@ playerManager = require '../../../manager/playerManager'
 msgConfig = require '../../../../config/data/message'
 logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async'
+achieve = require '../../../domain/achievement'
 
 SYSTEM = -1
 
@@ -21,6 +22,7 @@ mergeMessages = (myMessages, systemMessages) ->
 changeGroupNameAndSort = (messages) ->
   results = {}
   for k, v of messages
+    continue if msgConfig.TYPE_MAP[k] is null
     name = msgConfig.TYPE_MAP[k]
     if typeof results[name] is 'undefined'
       results[name] = v
@@ -214,6 +216,7 @@ Handler::accept = (msg, session, next) ->
   msgId = msg.msgId
 
   message = null
+  player = null
   async.waterfall [
     (cb) ->
       dao.message.fetchOne where: id: msgId, cb
@@ -230,13 +233,23 @@ Handler::accept = (msg, session, next) ->
       if isFinalStatus(message.status)
         return cb({code: 200, msg: '已处理'})
 
+      cb()
+
+    (cb) ->
+      playerManager.getPlayerInfo pid: playerId, cb
+
+    (res, cb) ->
+      player = res
+      if player.friends.length >= 20
+        return cb({code: 501, msg: 'friend count is the max'})
+      
       dao.friend.create {
         data: 
-          playerId: message.sender 
+          playerId: message.sender
           friendId: message.receiver
       }, cb
 
-    (friend, cb) ->  
+    (friend, cb) ->
       message.status = msgConfig.MESSAGESTATUS.ACCEPT
       dao.message.update {
         where: id: msgId
@@ -244,33 +257,42 @@ Handler::accept = (msg, session, next) ->
       }, cb
 
     (updated, cb) ->
-      playerManager.getPlayer id: message.sender, cb
+      dao.player.fetchOne {
+        where: id: message.sender
+        sync: true
+      }, cb
   ], (err, sender) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    next(null, {code: 200, msg: {
+    _result = {
       id: sender.id
       name: sender.name
       lv: sender.lv
       ability: sender.ability
-    }})
+    }
+    next(null, {code: 200, msg: _result})
+
+    player.friends.push _result
+
+    achieve.friends(player, player.friends.length)
+    dao.friend.getFriends sender.id, (err, senderFriends) ->
+      if err
+        return next(null, {code: err.code or 500, msg: err.msg or err})
+
+      achieve.friends(sender, senderFriends.length)
 
     _message = message.toJson()
-    playerManager.getPlayerInfo pid: playerId, (err, res) ->
-      if err
-        logger.error 'fail to get player info: ', err
-
-      _message.friend = {
-        id: playerId
-        name: playerName
-        lv: res.lv
-        ability: res.ability
-      }
-      sendMessage @app, message.sender, {
-        route: 'onMessage'
-        msg: _message
-      }
+    _message.friend = {
+      id: playerId
+      name: playerName
+      lv: player.lv
+      ability: player.ability
+    }
+    sendMessage @app, message.sender, {
+      route: 'onMessage'
+      msg: _message
+    }
 
 Handler::reject = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -327,27 +349,28 @@ Handler::giveBless = (msg, session, next) ->
       player.dailyGift.gaveBless.count--
       player.dailyGift.gaveBless.receivers.push(friendId)
       player.updateGift 'gaveBless', player.dailyGift.gaveBless
+      player.giveBlessOnce()
       player.save()
       cb()
 
     (cb) ->
-      playerManager.getPlayer id: friendId, (err, res) ->
+      dao.player.fetchOne {
+        where: id: friendId
+        sync: true
+      }, (err, ply) ->
         if err
           return cb(err)
 
-        if res.dailyGift.receivedBlessCount <= 0
+        if ply.dailyGift.receivedBlessCount <= 0
           return cb({code: 501, '今日对方接收祝福的次数已经达到上限'})
 
-        res.dailyGift.receivedBless.count--
-        res.dailyGift.receivedBless.givers.push(playerId)
-        dao.player.update {
-          where: id: friendId
-          data: {
-            dailyGift: res.dailyGift
-          }
-        }, cb
+        ply.dailyGift.receivedBless.count--
+        ply.dailyGift.receivedBless.givers.push(playerId)
+        ply.receiveBlessOnce()
+        ply.save()
+        cb()
 
-    (res, cb) ->
+    (cb) ->
       dao.message.create data: {
         type: msgConfig.MESSAGETYPE.BLESS
         sender: playerId

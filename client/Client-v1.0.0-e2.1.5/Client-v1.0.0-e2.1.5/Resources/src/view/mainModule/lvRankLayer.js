@@ -43,7 +43,13 @@ var LvRankLayer = cc.Layer.extend({
             playerItem.setPosition(cc.p(0, y));
             menu.addChild(playerItem);
 
-            var rankLabel = cc.LabelTTF.create(i, "Arial", 58);
+            if(i < 3) {
+                var rankIcon = cc.Sprite.create(main_scene_image["icon" + (201 + i)]);
+                rankIcon.setPosition(cc.p(60, y + 53));
+                scrollViewLayer.addChild(rankIcon);
+            }
+
+            var rankLabel = cc.LabelTTF.create(i, "Arial", 55);
             rankLabel.setColor(cc.c3b(255, 252, 175));
             rankLabel.setPosition(cc.p(60, y + 55));
             scrollViewLayer.addChild(rankLabel);
@@ -57,7 +63,7 @@ var LvRankLayer = cc.Layer.extend({
             lvIcon.setPosition(cc.p(420, y + 60));
             scrollViewLayer.addChild(lvIcon);
 
-            var lvLabel = cc.LabelTTF.create(135, "Arial", 38);
+            var lvLabel = cc.LabelTTF.create(135, "Arial", 35);
             lvLabel.setColor(cc.c3b(255, 252, 175));
             lvLabel.setAnchorPoint(cc.p(0, 0.5));
             lvLabel.setPosition(cc.p(465, y + 60));

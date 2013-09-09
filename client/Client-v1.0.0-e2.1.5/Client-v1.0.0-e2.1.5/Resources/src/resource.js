@@ -178,7 +178,8 @@ var main_scene_image = {
     button16s: main_scene_path + "button16s.png",
     button17: main_scene_path + "button17.png",
     button17s: main_scene_path + "button17s.png",
-//    button18: main_scene_path + "button18.png",
+    button18: main_scene_path + "button18.png",
+    button18s: main_scene_path + "button18s.png",
     button19: main_scene_path + "button19.png",
     button19s: main_scene_path + "button19s.png",
     button20: main_scene_path + "button20.png",
@@ -419,7 +420,7 @@ var main_scene_image = {
     icon193: main_scene_path + "icon193.png",
     icon194: main_scene_path + "icon194.png",
     icon195: main_scene_path + "icon195.png",
-//    icon196: main_scene_path + "icon196.png",
+    icon196: main_scene_path + "icon196.png",
     icon197: main_scene_path + "icon197.png",
     icon198: main_scene_path + "icon198.png",
     icon199: main_scene_path + "icon199.png",
@@ -431,7 +432,14 @@ var main_scene_image = {
     icon205: main_scene_path + "icon205.png",
     icon206: main_scene_path + "icon206.png",
     icon207: main_scene_path + "icon207.png",
-    icon208: main_scene_path + "icon208.png"
+    icon208: main_scene_path + "icon208.png",
+    icon209: main_scene_path + "icon209.png",
+    icon210: main_scene_path + "icon210.png",
+    icon211: main_scene_path + "icon211.png",
+    icon212: main_scene_path + "icon212.png",
+    icon213: main_scene_path + "icon213.png",
+    icon214: main_scene_path + "icon214.png",
+    icon215: main_scene_path + "icon215.png"
 };
 
 var main_scene_res = [
@@ -469,6 +477,19 @@ for (var cardId = 1001; cardId <= 1003; ++cardId) {
 
 for (var taskId = 1; taskId <= 5; ++taskId) {
     main_scene_image["task" + taskId] = main_scene_path + "task" + taskId + ".png";
+}
+
+var effectConfig = [
+    4,
+    7,
+    9,
+    14
+];
+
+for (var effectId = 0; effectId < effectConfig.length; ++effectId) {
+    for (var frameI = 0; frameI < effectConfig[effectId]; ++frameI) {
+        main_scene_image["effect" + effectId + "_frame" + frameI] = "res/effect/" + effectId + "/" + frameI + ".png";
+    }
 }
 
 for (var key in main_scene_image) {

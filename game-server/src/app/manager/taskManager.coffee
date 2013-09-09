@@ -190,7 +190,7 @@ class Manager
     if (player.exp + taskData.exp_obtain) >= exp_to_upgrade.exp
       player.set('exp', 0)
       player.increase('lv')
-      player.resumePower('power', MAX_POWER) 
+      player.resumePower(MAX_POWER) 
       data.upgrade = true
     else
       player.increase('exp', taskData.exp_obtain)

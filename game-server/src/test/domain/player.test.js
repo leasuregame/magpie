@@ -77,7 +77,9 @@ describe("Player Object", function () {
             it("should can be add a card", function () {
                 var player = new Player();
                 var cardId = 4;
-                player.addCard(new Card({id: cardId}));
+                player.addCard(new Card({
+                    id: cardId
+                }));
                 player.cards.should.not.eql({});
                 player.cards[cardId].should.be.an.instanceOf(Card);
             });
@@ -86,46 +88,65 @@ describe("Player Object", function () {
                 var player = new Player();
 
                 (function () {
+
                     player.addCard(1)
-                }).should.throw('should only can add a Card instance');
+                }).should.
+                throw ('should only can add a Card instance');
             });
         });
 
+
         describe(".addCards()", function () {
             it("should can be add multiple cards", function () {
+
                 var player1 = new Player();
 
                 player1.addCards([
-                    new Card({id: 1}),
-                    new Card({id: 2})
+                    new Card({
+                        id: 1
+                    }),
+                    new Card({
+                        id: 2
+                    })
                 ]);
                 _.keys(player1.cards).length.should.be.equal(2);
                 player1.cards[1].should.be.an.instanceOf(Card);
                 player1.cards[2].should.be.an.instanceOf(Card);
             });
 
+
             it("should only can add Card instances", function () {
                 var player = new Player();
                 (function () {
                     player.addCards([1, 2])
                 }).should.throw('should only can add a Card instance');
+
             })
         });
 
-        var myPlayer = new Player(
-            {
-                id: 1,
-                name: 'arthur',
-                lineUp: '00:1,01:2,02:3,10:4,11:5',
-                cards: {
-                    1: new Card({id: 1}),
-                    2: new Card({id: 2}),
-                    3: new Card({id: 3}),
-                    4: new Card({id: 4}),
-                    5: new Card({id: 5})
-                }
+        var myPlayer = new Player({
+            id: 1,
+            name: 'arthur',
+            lineUp: '00:1,01:2,02:3,10:4,11:5',
+            cards: {
+                1: new Card({
+                    id: 1
+                }),
+                2: new Card({
+                    id: 2
+                }),
+                3: new Card({
+                    id: 3
+                }),
+                4: new Card({
+                    id: 4
+                }),
+                5: new Card({
+                    id: 5
+                })
             }
-        );
+        });
+
 
         describe('.getCard()', function () {
             it('should can be get a card by id', function () {
@@ -134,32 +155,39 @@ describe("Player Object", function () {
             });
         });
 
+
         describe('.hasCard()', function () {
             it('should can check if has card by id', function () {
                 myPlayer.hasCard(2).should.be.equal(true);
             });
         });
 
+
         describe('.getCards()', function () {
             it('should can get card list by id list', function () {
                 var cards = myPlayer.getCards([1, 2, 3]);
                 cards.length.should.be.equal(3);
                 cards.map(function (c) {
+
                     return c.id;
                 }).should.be.eql([1, 2, 3]);
             });
         });
 
+
         describe('.popCards()', function () {
             it('should can remove cards by id list', function () {
+
                 myPlayer.popCards([1, 2]);
                 _.keys(myPlayer.cards).should.eql(['3', '4', '5']);
             });
         });
     });
 
+
     describe('.lineUpObj()', function () {
         it('should can return correct line up object', function () {
+
             var player = new Player({
                 lineUp: '00:1,01:2,02:3,10:4,11:5'
             });
@@ -172,6 +200,7 @@ describe("Player Object", function () {
             });
         });
     });
+
 
     describe('.activeCards()', function () {
         it('should can get all active cards', function () {
@@ -187,8 +216,9 @@ describe("Player Object", function () {
                         4: new Card({id: 4}),
                         5: new Card({id: 5})
                     }
-                }
-            );
+
+
+            });
             var cards = player.activeCards();
             cards.length.should.be.equal(5);
             cards.map(function (c) {
@@ -197,8 +227,10 @@ describe("Player Object", function () {
         });
     });
 
+
     describe('.consumePower()', function () {
         it('should can consume power with the given value', function () {
+
             var player = new Player({
                 power: {
                     time: 0,
@@ -216,8 +248,10 @@ describe("Player Object", function () {
         });
     });
 
+
     describe('.givePower()', function () {
         it('should can give power with the given value', function () {
+
             var player = new Player({
                 lv: 30,
                 power: {
@@ -236,6 +270,7 @@ describe("Player Object", function () {
 
         });
     });
+
 
     describe('.resumePower(),', function () {
 
@@ -275,6 +310,7 @@ describe("Player Object", function () {
         });
     });
 
+
     describe('.getAbility()', function () {
         it('should can get the correct ability', function () {
             var player = new Player({
@@ -288,6 +324,7 @@ describe("Player Object", function () {
                     4: new Card({id: 4, tableId: 19, star: 4}),
                     5: new Card({id: 5, tableId: 25, star: 5}),
                     6: new Card({id: 6, tableId: 30, star: 5})
+
                 }
             });
 
@@ -324,6 +361,7 @@ describe("Player Object", function () {
                 player.activeSpiritorEffect();
                 player.activeCards().map(function (c) {
                     return c.toJson();
+
                 }).should.eql([
                         {
                             id: 1,
@@ -356,6 +394,7 @@ describe("Player Object", function () {
                             passiveSkills: []
                         }
                     ]);
+
             });
         });
 
@@ -408,9 +447,11 @@ describe("Player Object", function () {
         });
     });
 
+
     describe('.isVip()', function () {
 
         it('should can get true while player is Vip', function () {
+
 
             var player = new Player({
                 id: 1,
@@ -427,6 +468,7 @@ describe("Player Object", function () {
 
     });
 
+
     describe('.isLineUpCard()', function () {
 
         it('should can get true when cardId in lineUpObj', function () {
@@ -436,6 +478,7 @@ describe("Player Object", function () {
                 name: 'arthur',
                 lineUp: '00:1,01:2,02:3,10:4,11:5',
                 cards: {
+
                     1: new Card({id: 1, tableId: 1, star: 1}),
                     2: new Card({id: 2, tableId: 7, star: 2}),
                     3: new Card({id: 3, tableId: 13, star: 3}),
@@ -488,7 +531,9 @@ describe("Player Object", function () {
             });
 
             player.set('money', 500);
+
             player.strengthen(1, [2, 3, 4], function (err, res, target) {
+
                 res.should.eql({
                     exp_obtain: 300,
                     cur_lv: 3,
@@ -502,9 +547,11 @@ describe("Player Object", function () {
         });
     });
 
+
     describe('.setPassMark()', function () {
 
         it('should can set passmark with given layer', function () {
+
 
             var player = new Player();
             player.pass.layer = 10;
@@ -524,6 +571,7 @@ describe("Player Object", function () {
 
     });
 
+
     describe('.hasPassMark()', function () {
 
         it('should can get has passmark with given layer', function () {
@@ -540,13 +588,14 @@ describe("Player Object", function () {
 
     });
 
-    describe('.incPass', function () {
-        it('should can incPass', function () {
+    describe('.incPass', function() {
+        it('should can incPass', function() {
             var player = new Player();
-            player.pass.layer = 10;
+            player.pass.layer = 48;
             player.incPass();
-            player.pass.layer.should.equal(11);
-
+            player.incPass();
+            player.pass.layer.should.equal(50);
+            player.achievement.should.equal('');
             player.pass.layer = 100;
             player.incPass();
             player.pass.layer.should.equal(100);
@@ -556,12 +605,14 @@ describe("Player Object", function () {
 
     describe('.updateGift()', function () {
         it('should can update gift by given name and value', function () {
+
             var player = new Player();
             player.updateGift('lotteryCount', 10);
             player.updateGift('lotteryFreeCount', 2);
             player.updateGift('powerGiven', [12, 24]);
             player.updateGift('powerBuyCount', 5);
             player.updateGift('challengeCount', 12);
+
             player.updateGift('receivedBless', {count: 2, givers: [2, 3]});
             player.updateGift('gaveBless', {count: 2, receivers: [4, 5]});
 
@@ -583,6 +634,7 @@ describe("Player Object", function () {
 
         })
     });
+
 
     describe('cash change', function () {
         it('should can recount Vip privilege by given player', function () {
@@ -615,6 +667,7 @@ describe("Player Object", function () {
                 lv:0,
                 exp:0,
                 collectCount:15
+
             });
 
             player.cash = 26860;
@@ -636,11 +689,157 @@ describe("Player Object", function () {
             });
 
             player.spiritPool.should.eql({
-                lv:0,
-                exp:0,
-                collectCount:20
+                lv: 0,
+                exp: 0,
+                collectCount: 20
             });
 
+        });
+    });
+
+    describe('lv.change event', function() {
+        it('when lv change should be emit lv.change event', function() {
+            var ply = new Player({
+                lv: 48
+            });
+
+            ply.lv.should.equal(48);
+            ply.increase('lv');
+            ply.lv.should.equal(49);
+            ply.increase('lv');
+            ply.achievement.should.eql({
+                '1': {
+                    method: 'levelTo',
+                    isAchieve: true,
+                    got: 50,
+                    need: 50
+                },
+                '2': {
+                    method: 'levelTo',
+                    isAchieve: false,
+                    got: 50,
+                    need: 90
+                }
+            });
+
+            ply.set('lv', 90);
+            ply.lv.should.equal(90);
+            ply.achievement.should.eql({
+                '1': {
+                    method: 'levelTo',
+                    isAchieve: true,
+                    got: 50,
+                    need: 50
+                },
+                '2': {
+                    method: 'levelTo',
+                    isAchieve: true,
+                    got: 90,
+                    need: 90
+                }
+            })
+        });
+    });
+
+    describe('exp.change event', function() {
+        it('when exp change should be emit exp.change event', function() {
+            var ply = new Player({
+                exp: 10
+            });
+
+            ply.increase('exp', 100);
+            ply.exp.should.equal(7);
+            ply.lv.should.equal(4);
+
+            ply.achievement.should.eql({
+                '1': {
+                    method: 'levelTo',
+                    isAchieve: false,
+                    got: 4,
+                    need: 50
+                },
+                '2': {
+                    method: 'levelTo',
+                    isAchieve: false,
+                    got: 4,
+                    need: 90
+                }
+            })
+        });
+    });
+
+    describe('pass.change event', function() {
+        it('when pass change should be emit pass.change event', function() {
+            var ply = new Player();
+
+            ply.incPass();
+            ply.pass.layer.should.equal(1);
+            ply.achievement.should.eql({
+                '3': {
+                    method: 'passTo',
+                    isAchieve: false,
+                    got: 1,
+                    need: 50
+                },
+                '4': {
+                    method: 'passTo',
+                    isAchieve: false,
+                    got: 1,
+                    need: 100
+                }
+            });
+        });
+    });
+
+    describe('give.bless event', function() {
+        it('when give bless, should be emit give.bless event', function() {
+            var ply = new Player();
+
+            ply.giveBlessOnce();
+            ply.achievement.should.eql({
+                '11': {
+                    method: 'gaveBless',
+                    isAchieve: false,
+                    got: 1,
+                    need: 500
+                }
+            });
+
+            ply.giveBlessOnce();
+            ply.achievement.should.eql({
+                '11': {
+                    method: 'gaveBless',
+                    isAchieve: false,
+                    got: 2,
+                    need: 500
+                }
+            });
+        });
+    });
+
+    describe('receive.bless event', function() {
+        it('when receive bless, should be emit receive.bless event', function() {
+            var ply = new Player();
+
+            ply.receiveBlessOnce();
+            ply.achievement.should.eql({
+                '12': {
+                    method: 'receivedBless',
+                    isAchieve: false,
+                    got: 1,
+                    need: 100
+                }
+            });
+
+            ply.receiveBlessOnce();
+            ply.achievement.should.eql({
+                '12': {
+                    method: 'receivedBless',
+                    isAchieve: false,
+                    got: 2,
+                    need: 100
+                }
+            });
         });
     });
 

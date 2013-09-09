@@ -20,7 +20,8 @@ module.exports = {
         DATA_DIR + 'rank.xml',
         DATA_DIR + 'lottery.xml',
         DATA_DIR + 'spirit.xml',
-        DATA_DIR + 'vip.xml'
+        DATA_DIR + 'vip.xml',
+        DATA_DIR + 'achievement.xml'
       );
       this.loadTableData(data.exports);
     }

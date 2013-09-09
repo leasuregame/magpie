@@ -143,7 +143,7 @@ var PlayerDao = (function(_super) {
     PlayerDao.orderByRanking = function(limit, cb) {
         var sql = 'select p.id, p.name, p.lv, p.ability, r.ranking from player as p \
             join rank as r on r.playerId = p.id \
-            order by r.ranking DESC \
+            order by r.ranking \
             limit ' + limit;
 
         dbClient.query(sql, [], function(err, res) {

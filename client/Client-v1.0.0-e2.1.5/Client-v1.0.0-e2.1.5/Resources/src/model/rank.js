@@ -13,20 +13,33 @@
 
 
 var Rank = Entity.extend({
-    _rankList: null,
-
+    _abilityRank: null,
+    _lvRank: null,
+    _tournamentRank: null,
+    _passRank: null,
 
     init: function () {
+        cc.log("Rank init");
 
         return true;
+    },
+
+    update: function () {
+        cc.log("Rank update");
+    },
+
+    sync: function () {
+        cc.log("Rank init");
+
+
     }
 });
 
 
-Rank.create = function (data) {
+Rank.create = function () {
     var ret = new Rank();
 
-    if (ret && ret.init(data)) {
+    if (ret) {
         return ret;
     }
 

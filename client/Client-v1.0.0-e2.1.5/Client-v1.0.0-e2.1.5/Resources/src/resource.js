@@ -419,7 +419,7 @@ var main_scene_image = {
     icon193: main_scene_path + "icon193.png",
     icon194: main_scene_path + "icon194.png",
     icon195: main_scene_path + "icon195.png",
-//    icon196: main_scene_path + "icon196.png",
+    icon196: main_scene_path + "icon196.png",
     icon197: main_scene_path + "icon197.png",
     icon198: main_scene_path + "icon198.png",
     icon199: main_scene_path + "icon199.png",
@@ -469,6 +469,19 @@ for (var cardId = 1001; cardId <= 1003; ++cardId) {
 
 for (var taskId = 1; taskId <= 5; ++taskId) {
     main_scene_image["task" + taskId] = main_scene_path + "task" + taskId + ".png";
+}
+
+var effectConfig = [
+    4,
+    7,
+    9,
+    14
+];
+
+for (var effectId = 0; effectId < effectConfig.length; ++effectId) {
+    for (var frameI = 0; frameI < effectConfig[effectId]; ++frameI) {
+        main_scene_image["effect" + effectId + "_frame" + frameI] = "res/effect/" + effectId + "/" + frameI + ".png";
+    }
 }
 
 for (var key in main_scene_image) {

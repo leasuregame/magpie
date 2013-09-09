@@ -86,7 +86,7 @@ var ShopLayer = cc.Layer.extend({
         this.addChild(propsIcon, 2);
 
         var treasureHuntIcon = cc.Sprite.create(main_scene_image.icon104);
-        treasureHuntIcon.setPosition(cc.p(554, 1005));
+        treasureHuntIcon.setPosition(cc.p(554, 1000));
         this.addChild(treasureHuntIcon, 2);
 
         this._onClickLotteryLayer();

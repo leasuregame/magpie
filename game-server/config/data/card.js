@@ -1,4 +1,5 @@
 module.exports = {
+  // 经验卡牌配置表ID 
   EXP_CARD_ID: 30000,
 /*
  * 抽卡参数配置

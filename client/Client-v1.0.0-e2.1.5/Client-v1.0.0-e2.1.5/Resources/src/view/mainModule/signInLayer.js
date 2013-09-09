@@ -116,6 +116,9 @@ var SignInLayer = LazyLayer.extend({
         remedySignInIcon.setPosition(cc.p(435, 470));
         this.addChild(remedySignInIcon);
 
+        this.effectTest1(1, 0.1, cc.p(560, 470));
+        this.effectTest1(2, 0.1, cc.p(435, 470));
+
         var scrollViewLayer = MarkLayer.create(cc.rect(105, 510, 510, 366));
 
         for (var i = 0; i < MAX_SIGN_IN_HISTORY; ++i) {
@@ -156,6 +159,7 @@ var SignInLayer = LazyLayer.extend({
             var rewardItem = cc.MenuItemImage.create(
                 main_scene_image.button40,
                 main_scene_image.button40s,
+                main_scene_image.button40d,
                 this._onClickReceiveReward(i),
                 this
             );
@@ -202,6 +206,8 @@ var SignInLayer = LazyLayer.extend({
                 alreadyRewardLabel: alreadyRewardLabel,
                 rewardLabel: rewardLabel
             };
+
+            this.effectTest(i % 4, 0.1, point);
         }
 
         return true;
@@ -333,6 +339,55 @@ var SignInLayer = LazyLayer.extend({
         cc.log("SignInLayer onTouchCancelled");
 
         this.onTouchEnded(touch, event);
+    },
+
+    effectTest: function (id, time, point) {
+        cc.log("LotteryLayer update");
+
+        var frames = [];
+
+        for (var i = 0; i < effectConfig[id]; ++i) {
+            var frame = cc.SpriteFrame.create(
+                main_scene_image["effect" + id + "_frame" + i],
+                cc.rect(0, 0, 124, 60)
+            );
+
+            frames.push(frame);
+        }
+
+        var animation = cc.Animation.create(frames, time);
+        var animate = cc.Animate.create(animation);
+
+        var testSprite = cc.Sprite.createWithSpriteFrame(frames[0]);
+        testSprite.setPosition(point);
+        this.addChild(testSprite);
+        testSprite.setScaleX(0.85);
+
+        testSprite.runAction(cc.RepeatForever.create(animate));
+    },
+
+    effectTest1: function (id, time, point) {
+        cc.log("LotteryLayer update");
+
+        var frames = [];
+
+        for (var i = 0; i < effectConfig[id]; ++i) {
+            var frame = cc.SpriteFrame.create(
+                main_scene_image["effect" + id + "_frame" + i],
+                cc.rect(0, 0, 124, 60)
+            );
+
+            frames.push(frame);
+        }
+
+        var animation = cc.Animation.create(frames, time);
+        var animate = cc.Animate.create(animation);
+
+        var testSprite = cc.Sprite.createWithSpriteFrame(frames[0]);
+        testSprite.setPosition(point);
+        this.addChild(testSprite);
+
+        testSprite.runAction(cc.RepeatForever.create(animate));
     }
 });
 

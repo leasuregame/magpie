@@ -11,38 +11,32 @@ module.exports = (app) ->
 
 Handler = (@app) ->
 
-Handler::playerLevel = (msg, session, next) ->
-	dao.player.orderBy 'lv DESC, ability DESC', 50, (err, results) ->
+Handler::orderList = (msg, session, next) ->
+	async.parallel [
+		(cb) ->
+			dao.player.orderBy 'lv DESC, ability DESC', 50, cb
+
+		(cb) ->
+			dao.player.orderBy 'ability DESC, lv DESC', 50, cb
+
+		(cb) ->
+			dao.player.orderByRanking 50, cb
+	], (err, results) ->
 		if err
 			return next(null, {
 				code: err.code or 501
 				msg: err.msg or err
 				}
 			)
-
-		next(null, {code: 200, msg: results})
-
-Handler::playerAbility = (msg, session, next) ->
-	dao.player.orderBy 'ability DESC, lv DESC', 50, (err, results) ->
-		if err
-			return next(null, {
-				code: err.code or 501
-				msg: err.msg or err
-				}
-			)
-
-		next(null, {code: 200, msg: results})
-
-Handler::playerRanking = (msg, session, next) ->
-	dao.player.orderByRanking 50, (err, results) ->
-		if err
-			return next(null, {
-				code: err.code or 501
-				msg: err.msg or err
-				}
-			)
-
-		next(null, {code: 200, msg: results})
+		next(null, {
+			code: 200,
+			msg: {
+				level: results[0]
+				ability: results[1]
+				ranking: results[2]
+				pass: []
+			}
+		})
 
 Handler::playerPass = (msg, session, next) ->
 	

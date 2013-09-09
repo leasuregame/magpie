@@ -261,9 +261,9 @@ var Player = (function(_super) {
         return ability;
     };
 
-   // Player.prototype.updateAbility = function() {
-   //     this.set('ability', this.getAbility());
-   // };
+    Player.prototype.updateAbility = function() {
+        this.set('ability', this.getAbility());
+    };
 
     Player.prototype.activeGroupEffect = function() {
         var cardIds = _.values(this.lineUpObj());

@@ -17,7 +17,7 @@ class Manager
 
   @getPlayerInfo: (params, cb) ->
     _player = area.getPlayer(params.pid)
-    console.log '-get player form area cache-', _player?.id, _player?.name
+    console.log '-get player form area cache-', _player?.id, _player?.name, _player?.achievement
     return cb(null, _player) if _player?
 
     sync = params.sync? and params.sync or true

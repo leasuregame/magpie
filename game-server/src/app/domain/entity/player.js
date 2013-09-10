@@ -24,7 +24,7 @@ var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 var util = require('util');
 var achieve = require('../achievement');
-
+var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL;
 
 var defaultMark = function() {
     var i, result = [];
@@ -42,7 +42,6 @@ var addEvents = function(player) {
     // 经验值改变，判断是否升级
     player.on('exp.change', function(exp) {
         var upgradeInfo = table.getTableItem('player_upgrade', player.lv);
-        console.log(exp, upgradeInfo.exp);
         if (exp >= upgradeInfo.exp) {
             player.increase('lv');
             player.set('exp', exp - upgradeInfo.exp);
@@ -65,8 +64,31 @@ var addEvents = function(player) {
     });
 
     player.on('pass.change', function(pass) {
+        if (typeof pass == 'string'){
+            pass = JSON.parse(pass);
+        }        
         achieve.passTo(player, pass.layer);
     });
+
+    player.on('elixir.increase', function(elixir) {
+        achieve.elixirTo(player, elixir);
+    });
+
+    player.on('energy.increase', function(energy) {
+        achieve.energyTo(player, energy);
+    })
+
+    player.on('money.consume', function(money) {
+        achieve.moneyConsume(player, money);
+    });
+
+    player.on('gold.consume', function(gold) {
+        achieve.goldConsume(player, gold);
+    });
+
+    player.on('power.consume', function(power) {
+        achieve.powerConsume(player, power);
+    })
 
     player.on('add.card', function(card) { 
         if (player.isLineUpCard(card)) {
@@ -97,7 +119,9 @@ var addEvents = function(player) {
                 break;
             }
         }
-
+        if (oldVip == 0 && player.vip > 0) {
+            achieve.vip(player);
+        }
         recountVipPrivilege(player, oldVip);
     });
 };
@@ -110,6 +134,7 @@ var Player = (function(_super) {
     utility.extends(Player, _super);
 
     function Player(param) {
+        addEvents(this);
         Player.__super__.constructor.apply(this, arguments);
     }
 
@@ -119,7 +144,7 @@ var Player = (function(_super) {
         // this.friends || (this.friends = []);
 
         // executeVipPrivilege(this);
-        addEvents(this);
+        
     };
 
     Player.FIELDS = [
@@ -212,6 +237,16 @@ var Player = (function(_super) {
         friends: []
     };
 
+    Player.increase = function(name, val) {
+        Player.__super__.increase.apply(this, arguments);
+        this.emit(name + '.increase', val == null ? 1 : val);
+    };
+
+    Player.decrease = function(name, val) {
+        Player.__super__.decrease.apply(this, arguments);
+        this.emit(name + '.consume', val == null ? 1 : val);
+    };
+
     Player.prototype.achieve = function(id) {
         var dt = table.getTableItem('achievement', id);
         var ach = utility.deepCopy(this.achievement);
@@ -219,8 +254,7 @@ var Player = (function(_super) {
             ach[id] = {
                 method: dt !== null ? dt.method : 'not found',
                 isAchieve: true,
-                got: dt !== null ? dt.need : 0,
-                need: dt !== null ? dt.need : 0
+                got: dt !== null ? dt.need : 0
             };
         } else {
             ach[id].isAchieve = true;
@@ -239,11 +273,9 @@ var Player = (function(_super) {
             var _hp = parseInt(card.init_hp * spiritConfig.hp_inc / 100);
             var _atk = parseInt(card.init_atk * spiritConfig.atk_inc / 100);
 
-            card.hp += _hp;
             card.incs.spirit_hp += _hp;
-
-            card.atk += _atk;
             card.incs.spirit_atk += _atk;
+            card.recountHpAndAtk();
         }
     };
 
@@ -366,9 +398,14 @@ var Player = (function(_super) {
         if (this.power.value <= 0) return;
 
         var power = _.clone(this.power);
+        var cVal = value;
+        if (value > power.value) {
+            cVal = power.value;
+        }
         power.value = _.max([power.value - value, 0]);
         power.time = Date.now();
         this.updatePower(power);
+        this.emit('power.consume', cVal);
     };
 
     Player.prototype.resumePower = function(value) {
@@ -466,6 +503,11 @@ var Player = (function(_super) {
 
         this.decrease('money', moneyConsume);
         targetCard.upgrade(upgraded_lv, exp_remain);
+
+        // 第一张满级五星卡
+        if (targetCard.star == 5 && targetCard.lv == MAX_LEVEL[5]) {
+            achieve.star5cardFullLevel(this);
+        }
 
         return cb(null, {
             exp_obtain: expObtain,

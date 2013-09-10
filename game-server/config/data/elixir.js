@@ -30,7 +30,7 @@ module.exports = {
   5点仙丹可以加成3点生命力
    */
   exchange: {
-    atk: {elixir: 5, atk: 1},
-    hp: {elixir: 5, hp: 3}
+    atk: 5,
+    hp: 5
   }
 }

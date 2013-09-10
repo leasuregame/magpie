@@ -1,0 +1,221 @@
+describe("Area Server", function() {
+	describe("Achieve Handler", function() {
+		describe("area.achieveHandler.achievements", function() {
+			beforeAll(function() {
+				doAjax('/loaddata/csv', {}, function() {});
+			});
+
+			describe('when get achievements from server', function() {
+
+				describe('when player level is less than 50', function() {
+					beforeEach(function() {
+						loginWith('arthur', '1', 1);
+					});
+
+					it('default value of achievements is empty', function() {
+						console.log('message');
+						request('area.achieveHandler.achievements', {}, function(data) {
+							expect(data.code).toEqual(200);
+							expect(data.msg).toEqual({
+								1: {
+									method: 'levelTo',
+									isAchieve: false,
+									got: 40
+								},
+								2: {
+									method: 'levelTo',
+									isAchieve: false,
+									got: 40
+								},
+								3: {
+									method: 'passTo',
+									isAchieve: false,
+									got: 24
+								},
+								4: {
+									method: 'passTo',
+									isAchieve: false,
+									got: 24
+								}
+							});
+						});
+					});
+				});
+
+
+				describe('when player level is 50', function() {
+					beforeEach(function() {
+						doAjax('/update/player/100', {
+							lv: 50
+						}, function(res) {
+							loginWith('arthur', '1', 1);
+						});
+					});
+
+					it('获得成就：升级达人', function() {
+						console.log('message');
+						request('area.achieveHandler.achievements', {}, function(data) {
+							expect(data.code).toEqual(200);
+							expect(data.msg).toEqual({
+								1: {
+									method: 'levelTo',
+									isAchieve: true,
+									got: 50
+								},
+								2: {
+									method: 'levelTo',
+									isAchieve: false,
+									got: 50
+								},
+								3: {
+									method: 'passTo',
+									isAchieve: false,
+									got: 24
+								},
+								4: {
+									method: 'passTo',
+									isAchieve: false,
+									got: 24
+								}
+							});
+						});
+					});
+				});
+
+				describe('when player level is 70', function() {
+					beforeEach(function() {
+						doAjax('/update/player/100', {
+							lv: 70
+						}, function(res) {
+							loginWith('arthur', '1', 1);
+						});
+					});
+
+					it('获得成就：升级达人，但未获得：疯狂升级', function() {
+						console.log('message');
+						request('area.achieveHandler.achievements', {}, function(data) {
+							expect(data.code).toEqual(200);
+							expect(data.msg).toEqual({
+								1: {
+									method: 'levelTo',
+									isAchieve: true,
+									got: 50
+								},
+								2: {
+									method: 'levelTo',
+									isAchieve: false,
+									got: 70
+								},
+								3: {
+									method: 'passTo',
+									isAchieve: false,
+									got: 24
+								},
+								4: {
+									method: 'passTo',
+									isAchieve: false,
+									got: 24
+								}
+							});
+						});
+					});
+				});
+
+				describe('when player level is 90', function() {
+					beforeEach(function() {
+						doAjax('/update/player/100', {
+							lv: 90
+						}, function(res) {
+							loginWith('arthur', '1', 1);
+						});
+					});
+
+					it('获得成就：升级达人，疯狂升级', function() {
+						console.log('message');
+						request('area.achieveHandler.achievements', {}, function(data) {
+							expect(data.code).toEqual(200);
+							expect(data.msg).toEqual({
+								1: {
+									method: 'levelTo',
+									isAchieve: true,
+									got: 50
+								},
+								2: {
+									method: 'levelTo',
+									isAchieve: true,
+									got: 90
+								},
+								3: {
+									method: 'passTo',
+									isAchieve: false,
+									got: 24
+								},
+								4: {
+									method: 'passTo',
+									isAchieve: false,
+									got: 24
+								}
+							});
+						});
+					});
+				});
+
+				describe('when player pass layer is 50', function() {
+					beforeEach(function() {
+						doAjax('/update/player/100', {
+							pass: JSON.stringify({
+								layer: 50,
+								mark: []
+							})
+						}, function(res) {
+							loginWith('arthur', '1', 1);
+						});
+					});
+
+					it('获得成就：一半！', function() {
+						console.log('message');
+						request('area.achieveHandler.achievements', {}, function(data) {
+							expect(data.code).toEqual(200);
+							expect(data.msg[3]).toEqual({
+								method: 'passTo',
+								isAchieve: true,
+								got: 50
+							});
+						});
+					});
+				});
+
+				describe('when player pass layer is 100', function() {
+					beforeEach(function() {
+						doAjax('/update/player/100', {
+							pass: JSON.stringify({
+								layer: 100,
+								mark: []
+							})
+						}, function(res) {
+							loginWith('arthur', '1', 1);
+						});
+					});
+
+					it('获得成就：一半！', function() {
+						console.log('message');
+						request('area.achieveHandler.achievements', {}, function(data) {
+							expect(data.code).toEqual(200);
+							expect(data.msg[3]).toEqual({
+								method: 'passTo',
+								isAchieve: true,
+								got: 50
+							});
+							expect(data.msg[4]).toEqual({
+								method: 'passTo',
+								isAchieve: true,
+								got: 100
+							});
+						});
+					});
+				});
+
+			});
+		});
+	});
+});

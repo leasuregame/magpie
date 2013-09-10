@@ -15,6 +15,7 @@
 var utility = require('../../common/utility');
 var Entity = require('./entity');
 var table = require('../../manager/table');
+var elixirConfig = require('../../../config/data/elixir');
 var _ = require("underscore");
 
 var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL
@@ -32,14 +33,27 @@ var addEvents = function(card) {
         }).forEach(function(ps) {
             var _key = _pro[ps.name];
             var _val = parseInt(card['init_' + _key] * ps.value / 100);
-            card[_key] += _val;
             card.incs['ps_' + _key] += _val;
         });
+        card.recountHpAndAtk();
     });
 
-    card.on('elixir.change', function(){
-
+    card.on('elixirHp.change', function(elixir) {
+        card.incs.elixir_hp = parseInt(elixir / elixirConfig.exchange.hp);
+        card.recountHpAndAtk();
     });
+
+    card.on('elixirAtk.change', function(elixir) {
+        card.incs.elixir_atk = parseInt(elixir / elixirConfig.exchange.atk)
+        card.recountHpAndAtk();
+    });
+};
+
+var countElixirEffect = function(card) {
+    card.incs.elixir_hp = parseInt(card.elixirHp / elixirConfig.exchange.hp);
+    card.incs.elixir_atk = parseInt(card.elixirAtk / elixirConfig.exchange.atk)
+
+    card.recountHpAndAtk();
 };
 
 /*
@@ -73,6 +87,7 @@ var Card = (function(_super) {
             this.cardConfig = cardConfig;
         }
 
+        countElixirEffect(this);
         addEvents(this);
     }
 
@@ -86,7 +101,8 @@ var Card = (function(_super) {
         'exp',
         'skillLv',
         'skillPoint',
-        'elixir',
+        'elixirHp',
+        'elixirAtk',
         'hpAddition',
         'atkAddition'
     ];
@@ -97,7 +113,8 @@ var Card = (function(_super) {
         exp: 0,
         skillLv: 0,
         skillPoint: 0,
-        elixir: 0,
+        elixirHp: 0,
+        elixirAtk: 0,
         hpAddition: 0,
         atkAddition: 0,
         init_hp: 0,
@@ -118,6 +135,21 @@ var Card = (function(_super) {
 
     Card.prototype.init = function() {
         this.passiveSkills = this.passiveSkills || {};
+    };
+
+    Card.prototype.recountHpAndAtk = function() {
+        var hp = this.init_hp,
+            atk = this.init_atk;
+
+        hp += this.incs.elixir_hp;
+        hp += this.incs.spirit_hp;
+        hp += this.incs.ps_hp;
+        atk += this.incs.elixir_atk;
+        atk += this.incs.spirit_atk;
+        atk += this.incs.ps_atk;
+
+        this.hp = hp;
+        this.atk = atk;
     };
 
     Card.prototype.activeGroupEffect = function() {
@@ -242,22 +274,15 @@ var Card = (function(_super) {
     Card.prototype.toJson = function() {
         return {
             id: this.id,
-            createTime: this.createTime,
-            playerId: this.playerId,
             tableId: this.tableId,
-            init_hp: this.init_hp,
-            init_atk: this.init_atk,
             hp: this.hp,
             atk: this.atk,
-            incs: this.incs,
-            star: this.star,
             lv: this.lv,
             exp: this.exp,
             skillLv: this.skillLv,
             skillPoint: this.skillPoint,
-            elixir: this.elixir,
-            hpAddition: this.hpAddition,
-            atkAddition: this.atkAddition,
+            elixirHp: this.elixirHp,
+            elixirAtk: this.elixirAtk,
             passiveSkills: _.values(this.passiveSkills).map(function(ps) {
                 return ps.toJson();
             }) || []

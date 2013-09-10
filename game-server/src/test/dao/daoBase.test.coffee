@@ -1,7 +1,8 @@
-require './setup'
+setup = require './setup'
 dbClient = require('pomelo').app.get('dbClient')
 DaoBase = require('../../app/dao/mysql/daoBase')
-battleLog = require('../../app/domain/battleLog')
+battleLog = require('../../app/domain/entity/battleLog')
+sinon = require('sinon');
 DaoBase.table = 'battleLog'
 DaoBase.domain = battleLog
 should = require 'should'
@@ -37,6 +38,17 @@ describe "DaoBase", ->
       res.battleLog.should.be.equal 'battleLog'
       done()
 
+  it "fetchOne with id not exist",(done) ->
+
+    DaoBase.fetchOne {
+      where:{id:10000}
+    },(err,res) ->
+      should.strictEqual res,null
+      err.code.should.be.equal 404
+      err.msg.should.be.equal 'can not find battleLog'
+      done()
+
+
   it 'fetchMany', (done) ->
     DaoBase.fetchMany where: id: _insertId, (err, res) ->
       should.strictEqual err, null
@@ -47,6 +59,15 @@ describe "DaoBase", ->
       res.enemy.should.be.equal 1
       res.battleLog.should.be.equal 'battleLog'
       done()
+
+  it 'update', (done) ->
+      DaoBase.update {
+        where:{id:_insertId},
+        data:{own:2}
+      },(err,res)->
+        should.strictEqual err,null
+        res.should.be.equal true
+        done()
 
   it 'delete', (done) ->
     DaoBase.delete where: id: _insertId, (err, res) ->

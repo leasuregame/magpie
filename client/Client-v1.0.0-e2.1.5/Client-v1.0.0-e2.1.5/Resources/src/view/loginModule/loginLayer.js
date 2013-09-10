@@ -65,7 +65,7 @@ var LoginLayer = cc.Layer.extend({
             this.loginButton.setEnabled(connectSuccess);
         }, 0.5);
 
-        return true;
+        return true
     },
 
     _onClickLogin: function () {

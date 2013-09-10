@@ -30,12 +30,22 @@ Achievement.friends = function(player, count) {
 };
 
 Achievement.gaveBless = function(player) {
-
+	checkIsReached_alpha(player, 'gaveBless');
 };
 
-var incAchievement = function(player, method) {
-	
+Achievement.receivedBless = function(player) {
+	checkIsReached_alpha(player, 'receivedBless');
+}
 
+var checkIsReached_alpha = function(player, method) {
+	var need = 1;
+	var items = _.where(_.values(player.achievement), {
+		method: method
+	});	
+	if (!_.isEmpty(items)) {
+		need = items[0].got + 1;
+	}
+	checkIsReached(player, method, need);
 };
 
 var checkIsReached = function(player, method, need) {

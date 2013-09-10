@@ -21,23 +21,23 @@ var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL
 var GROUP_EFFECT_ATK = 1
 var GROUP_EFFECT_HP = 2
 
-var addEvents = function(card) {
-    card.on('add.passiveSkill', function() {
+var addEvents = function (card) {
+    card.on('add.passiveSkill', function () {
         var _pro = {
             'atk_improve': 'atk',
             'hp_improve': 'hp'
         };
-        _.values(card.passiveSkills).filter(function(ps) {
+        _.values(card.passiveSkills).filter(function (ps) {
             return _.keys(_pro).indexOf(ps.name) > -1;
-        }).forEach(function(ps) {
-            var _key = _pro[ps.name];
-            var _val = parseInt(card['init_' + _key] * ps.value / 100);
-            card[_key] += _val;
-            card.incs['ps_' + _key] += _val;
-        });
+        }).forEach(function (ps) {
+                var _key = _pro[ps.name];
+                var _val = parseInt(card['init_' + _key] * ps.value / 100);
+                card[_key] += _val;
+                card.incs['ps_' + _key] += _val;
+            });
     });
 
-    card.on('elixir.change', function(){
+    card.on('elixir.change', function () {
 
     });
 };
@@ -46,7 +46,7 @@ var addEvents = function(card) {
  * Card 与 card 表对应的数据类，提供简单操作
  * @param {object} param 数据库 card 表中的一行记录
  * */
-var Card = (function(_super) {
+var Card = (function (_super) {
     utility.extends(Card, _super);
 
     function Card(param) {
@@ -116,11 +116,11 @@ var Card = (function(_super) {
         }
     };
 
-    Card.prototype.init = function() {
+    Card.prototype.init = function () {
         this.passiveSkills = this.passiveSkills || {};
     };
 
-    Card.prototype.activeGroupEffect = function() {
+    Card.prototype.activeGroupEffect = function () {
         var _property = {};
         _property[GROUP_EFFECT_ATK] = 'atk';
         _property[GROUP_EFFECT_HP] = 'hp';
@@ -138,16 +138,34 @@ var Card = (function(_super) {
         return this;
     };
 
-    Card.prototype.ability = function() {
+    Card.prototype.ability = function () {
         // 1点攻击力=1点战斗力
         // 3点生命值=1点战斗力
         var _abi = this.atk + parseInt(this.hp / 3);
 
         // 技能增强效果 技能攻击个数 * 技能增强效果 * 触发概率
+       //加血效果 3:1
         if (this.skill) {
-            _abi += parseInt(this.skill.target_num) *
-                utility.parseEffect(this.skill['star' + this.star])[0] *
-                this.skill['rate' + this.star];
+
+            var target_num = 1;
+
+            if (this.skill['id'] == 5 || this.skill['id'] == 6)
+                target_num = parseInt(this.skill.target_num);
+            else if (this.skill['id'] == 2 || this.skill['id'] == 3 || this.skill['id'] == 8 || this.skill['id'] == 9)
+                target_num = 3;
+            else if (this.skill['id'] == 4)
+                target_num = 2;
+            else if(this.skill['id'] == 10)
+                target_num = 5;
+
+            if(this.skill['id'] > 6)  //加血技能
+                _abi += (target_num *
+                    utility.parseEffect(this.skill['star' + this.star])[0] *
+                    this.skill['rate' + this.star]) / 3;
+            else
+                _abi += target_num *
+                    utility.parseEffect(this.skill['star' + this.star])[0] *
+                    this.skill['rate' + this.star];
         }
 
         // 0.1%暴击率=10点战斗力
@@ -156,15 +174,15 @@ var Card = (function(_super) {
         var should_inc_ps = ['dmg_reduce', 'crit', 'dodge']
         if (this.star >= 3) {
             var ps_values = _.values(this.passiveSkills)
-                .filter(function(ps) {
+                .filter(function (ps) {
                     return should_inc_ps.indexOf(ps.name) > -1;
                 })
-                .map(function(ps) {
+                .map(function (ps) {
                     return ps.value;
                 });
             var sum = 0;
             if (ps_values.length > 0) {
-                sum += _.reduce(ps_values, function(x, y) {
+                sum += _.reduce(ps_values, function (x, y) {
                     return x + y;
                 });
             }
@@ -173,24 +191,24 @@ var Card = (function(_super) {
         return parseInt(_abi);
     };
 
-    Card.prototype.addPassiveSkill = function(ps) {
+    Card.prototype.addPassiveSkill = function (ps) {
         if (typeof ps.id !== 'undefined' && ps.id !== null) {
             this.passiveSkills[ps.id] = ps;
             this.emit('add.passiveSkill');
         }
     };
 
-    Card.prototype.addPassiveSkills = function(passiveSkills) {
+    Card.prototype.addPassiveSkills = function (passiveSkills) {
         self = this;
-        passiveSkills.forEach(function(ps) {
+        passiveSkills.forEach(function (ps) {
             self.addPassiveSkill(ps);
         });
     };
 
-    Card.prototype.eatCards = function(cards) {
+    Card.prototype.eatCards = function (cards) {
         var totalExp = 0;
-        cards.forEach(function(card) {
-            var row = table.getTable('card_grow').findOne(function(id) {
+        cards.forEach(function (card) {
+            var row = table.getTable('card_grow').findOne(function (id) {
                 return parseInt(id) == card.lv;
             });
             if (row !== null) {
@@ -200,13 +218,13 @@ var Card = (function(_super) {
         return totalExp;
     };
 
-    Card.prototype.vitual_upgrade = function(exp) {
+    Card.prototype.vitual_upgrade = function (exp) {
         var _this = this;
-        var rows = table.getTable('card_grow').filter(function(id, item) {
+        var rows = table.getTable('card_grow').filter(function (id, item) {
             return parseInt(item.lv) >= _this.lv;
         });
 
-        rows.sort(function(x, y) {
+        rows.sort(function (x, y) {
             return x.lv - y.lv;
         });
 
@@ -230,7 +248,7 @@ var Card = (function(_super) {
         return [upgraded_lv, exp];
     };
 
-    Card.prototype.upgrade = function(lv, exp) {
+    Card.prototype.upgrade = function (lv, exp) {
         if (this.lv == MAX_LEVEL[this.star]) {
             return;
         }
@@ -239,7 +257,7 @@ var Card = (function(_super) {
     };
 
 
-    Card.prototype.toJson = function() {
+    Card.prototype.toJson = function () {
         return {
             id: this.id,
             createTime: this.createTime,
@@ -258,7 +276,7 @@ var Card = (function(_super) {
             elixir: this.elixir,
             hpAddition: this.hpAddition,
             atkAddition: this.atkAddition,
-            passiveSkills: _.values(this.passiveSkills).map(function(ps) {
+            passiveSkills: _.values(this.passiveSkills).map(function (ps) {
                 return ps.toJson();
             }) || []
         };

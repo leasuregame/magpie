@@ -16,7 +16,7 @@ require('./setup');
 app = require("pomelo").app;
 var dao = app.get('dao');
 var should = require("should");
-var Card = require("../../app/domain/card");
+var Card = require("../../app/domain/entity/card");
 
 describe("Card Data Access Object", function () {
     var data = {
@@ -183,4 +183,7 @@ describe("Card Data Access Object", function () {
             });
         });
     });
+
+
+
 });

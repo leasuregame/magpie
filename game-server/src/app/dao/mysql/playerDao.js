@@ -85,12 +85,14 @@ var PlayerDao = (function(_super) {
     };
 
     PlayerDao.getPlayerDetails = function(ids, cb) {
+        var start = Date.now();
         var _this = this;
 
         async.parallel([
             function(callback) {
                 _this.fetchMany({
-                    where: " id in (" + ids.toString() + ")"
+                    where: " id in (" + ids.toString() + ")",
+                    fields: ['id', 'name', 'lv', 'ability', 'lineUp']
                 }, callback);
             },
             function(callback) {
@@ -134,7 +136,8 @@ var PlayerDao = (function(_super) {
                     p.set('rank', _ranks[0]);
                 }
             });
-
+            var end = Date.now();
+            console.log('get player details time: ', (end - start)/1000);
             return cb(null, players);
         });
 

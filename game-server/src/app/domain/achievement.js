@@ -156,16 +156,9 @@ var reachedAchievements = function(methodName, need) {
 };
 
 var reachAchievement = function(player, id) {
-	data = table.getTableItem('achievement', id);
-	if (data) {
-		player.increase('gold', data.gold);
-		player.increase('energy', data.energy);
-		player.achieve(id);
-		player.save();
-		sendMessage(player, id)
-	} else {
-		logger.warn('can not find achievement data by id ' + id);
-	}
+	player.achieve(id);
+	player.save();
+	sendMessage(player, id)
 };
 
 var sendMessage = function(player, achId) {

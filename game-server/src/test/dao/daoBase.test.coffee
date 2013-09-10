@@ -1,4 +1,5 @@
-setup = require './setup'
+setup = require ('./setup')
+setup(1);
 dbClient = require('pomelo').app.get('dbClient')
 DaoBase = require('../../app/dao/mysql/daoBase')
 battleLog = require('../../app/domain/entity/battleLog')
@@ -68,6 +69,15 @@ describe "DaoBase", ->
         should.strictEqual err,null
         res.should.be.equal true
         done()
+
+  it 'update with id not exist',(done) ->
+    DaoBase.update {
+      where:{id:10000},
+      data:{own:2}
+    },(err,res) ->
+      should.strictEqual res,false
+      should.strictEqual err,null
+      done()
 
   it 'delete', (done) ->
     DaoBase.delete where: id: _insertId, (err, res) ->

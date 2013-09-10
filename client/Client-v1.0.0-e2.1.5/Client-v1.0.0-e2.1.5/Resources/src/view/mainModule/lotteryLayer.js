@@ -92,23 +92,9 @@ var LotteryLayer = cc.Layer.extend({
             sprite: null
         });
 
-        this.xxx = function() {
+        this.xxx = function () {
             cc.log("xxxxx");
         };
-
-        playEffect({
-            effectId: 6,
-            target: this,
-            delay: 0.1,
-            loops: 2,
-            position: null,
-            anchorPoint: null,
-            scale: 1,
-            scaleX: 1,
-            scaleY: 1,
-            sprite: null,
-            cb: this.xxx
-        });
 
         return true;
     },
@@ -125,6 +111,19 @@ var LotteryLayer = cc.Layer.extend({
     _onClickLottery: function (type, level) {
         return function () {
             cc.log("LotteryLayer _onClickLottery");
+
+            playEffect({
+                effectId: 5 + level,
+                target: this,
+                delay: 0.16,
+                loops: 1,
+                position: null,
+                anchorPoint: null,
+                scale: 1,
+                scaleX: 1,
+                scaleY: 1,
+                sprite: null
+            });
 
             var that = this;
             gameData.lottery.lottery(function (data) {

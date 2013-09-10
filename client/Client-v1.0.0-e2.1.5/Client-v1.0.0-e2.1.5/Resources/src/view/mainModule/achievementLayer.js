@@ -13,6 +13,8 @@
 
 
 var AchievementLayer = cc.Layer.extend({
+    _scrollViewElement: {},
+
     init: function () {
         cc.log("AchievementLayer init");
 
@@ -43,7 +45,9 @@ var AchievementLayer = cc.Layer.extend({
         var scrollViewLayer = MarkLayer.create(cc.rect(54, 228, 609, 700));
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(menu);
+        scrollViewLayer.addChild(menu, 1);
+
+        this._scrollViewElement = {};
 
         var y = scrollViewHeight;
         for (var key in achievement) {
@@ -99,6 +103,37 @@ var AchievementLayer = cc.Layer.extend({
             goldLabel.setAnchorPoint(cc.p(0, 0.5));
             goldLabel.setPosition(cc.p(530, y + 40));
             scrollViewLayer.addChild(goldLabel);
+
+            var isAchieveIcon = cc.Sprite.create(main_scene_image.icon212);
+            isAchieveIcon.setPosition(cc.p(510, y + 40));
+            scrollViewLayer.addChild(isAchieveIcon);
+            isAchieveIcon.setVisible(false);
+
+            var receiverItem = cc.MenuItemImage.create(
+                main_scene_image.button9,
+                main_scene_image.button9s,
+                main_scene_image.button9d,
+                this._onClickReceiver(parseInt(key)),
+                this
+            );
+            receiverItem.setPosition(cc.p(510, y + 40));
+            menu.addChild(receiverItem);
+            receiverItem.setVisible(false);
+
+            var receiverIcon = cc.Sprite.create(main_scene_image.icon123);
+            receiverIcon.setPosition(cc.p(510, y + 40));
+            scrollViewLayer.addChild(receiverIcon, 1);
+            receiverIcon.setVisible(false);
+
+            this._scrollViewElement[key] = {
+                energyIcon: energyIcon,
+                energyLabel: energyLabel,
+                goldIcon: goldIcon,
+                goldLabel: goldLabel,
+                isAchieveIcon: isAchieveIcon,
+                receiverItem: receiverItem,
+                receiverIcon: receiverIcon
+            };
         }
 
         var scrollView = cc.ScrollView.create(cc.size(609, 700), scrollViewLayer);
@@ -115,6 +150,14 @@ var AchievementLayer = cc.Layer.extend({
 
     update: function () {
         cc.log("AchievementLayer update");
+    },
+
+    _onClickReceiver: function (id) {
+        return function () {
+            cc.log("AchievementLayer _onClickReceiver: " + id);
+
+        }
+
     }
 });
 

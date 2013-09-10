@@ -22,7 +22,7 @@ var Achievement = Entity.extend({
         this.sync();
     },
 
-    update: function () {
+    update: function (data) {
         cc.log("Achievement update");
 
         this._achievement = {};
@@ -33,12 +33,13 @@ var Achievement = Entity.extend({
         for (var key in table) {
             this._achievement[key] = {
                 id: table[key].id,
-                count: 0,
                 need: table[key].need,
                 name: table[key].name,
                 description: table[key].desc,
                 gold: table[key].gold,
-                energy: table[key].energy
+                energy: table[key].energy,
+                count: data[key].got || 0,
+                isAchieve: data[key].isAchieve || false
             };
 
             this._length += 1;
@@ -48,7 +49,23 @@ var Achievement = Entity.extend({
     sync: function () {
         cc.log("Achievement sync");
 
-        this.update();
+        var that = this;
+        lzWindow.pomelo.request("area.achieveHandler.achievements", {}, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("sync success");
+
+                var msg = data.msg;
+
+                that.update(msg);
+            } else {
+                cc.log("sync fail");
+
+                that.sync();
+            }
+        });
     }
 });
 

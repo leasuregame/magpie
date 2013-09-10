@@ -48,7 +48,7 @@ var StrokeLabel = cc.Node.extend({
 
         var fontSize = this._strLabel.getFontSize();
         var offset = fontSize / 20;
-        cc.log(offset);
+
         this._strBgLabel[0].setPosition(cc.p(0, offset));
         this._strBgLabel[1].setPosition(cc.p(0, -offset));
         this._strBgLabel[2].setPosition(cc.p(-offset, 0));

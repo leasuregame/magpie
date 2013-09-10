@@ -55,10 +55,12 @@ var nameChanged = {
     "vip特权": "vip_privilege",
     "vip_box": "vip礼包赠品",
     "vip礼包赠品": "vip_box",
-    "vip": "vip"
+    "vip": "vip",
+    "achievement": "成就配置表",
+    "成就配置表": "achievement"
 };
 
-outputTables = {
+var outputTables = {
     "skills": {
         "colComment": {
             "type": {
@@ -82,46 +84,46 @@ outputTables = {
                 "scope": 1,
                 "star3": "130,5",
                 "rate3": 30,
-                "star4": "135,5",
-                "rate4": 40,
-                "star5": "140,5",
-                "rate5": 50
+                "star4": "140,5",
+                "rate4": 35,
+                "star5": "150,5",
+                "rate5": 40
             },
             "2": {
                 "id": 2,
                 "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
                 "type": 2,
                 "scope": 2,
-                "star3": "40,5",
+                "star3": "35,5",
                 "rate3": 30,
                 "star4": "45,5",
-                "rate4": 40,
-                "star5": "50,5",
-                "rate5": 50
+                "rate4": 35,
+                "star5": "55,5",
+                "rate5": 40
             },
             "3": {
                 "id": 3,
                 "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
                 "type": 2,
                 "scope": 3,
-                "star3": "40,5",
+                "star3": "35,5",
                 "rate3": 30,
                 "star4": "45,5",
-                "rate4": 40,
-                "star5": "50,5",
-                "rate5": 50
+                "rate4": 35,
+                "star5": "55,5",
+                "rate5": 40
             },
             "4": {
                 "id": 4,
                 "description": "纵向攻击，对敌方纵列每张卡牌造成一定伤害。。",
                 "type": 2,
                 "scope": 4,
-                "star3": "50,5",
+                "star3": "45,5",
                 "rate3": 30,
                 "star4": "55,5",
-                "rate4": 40,
-                "star5": "60,5",
-                "rate5": 50
+                "rate4": 35,
+                "star5": "65,5",
+                "rate5": 40
             },
             "5": {
                 "id": 5,
@@ -129,12 +131,12 @@ outputTables = {
                 "type": 2,
                 "scope": 5,
                 "target_num": 2,
-                "star3": "50,5",
+                "star3": "45,5",
                 "rate3": 30,
-                "star4": "55,5",
-                "rate4": 40,
-                "star5": "60,5",
-                "rate5": 50
+                "star4": "50,5",
+                "rate4": 35,
+                "star5": "55,5",
+                "rate5": 40
             },
             "6": {
                 "id": 6,
@@ -142,48 +144,48 @@ outputTables = {
                 "type": 2,
                 "scope": 5,
                 "target_num": 3,
-                "star3": "40,5",
+                "star3": "35,5",
                 "rate3": 30,
                 "star4": "45,5",
-                "rate4": 40,
-                "star5": "50,5",
-                "rate5": 50
+                "rate4": 35,
+                "star5": "55,5",
+                "rate5": 40
             },
             "7": {
                 "id": 7,
                 "description": "为当前血量最低的上阵卡牌恢复生命值。治疗量取决于拥有该治疗技能卡牌的生命值上限。",
                 "type": 3,
                 "scope": 7,
-                "star3": "30,5",
+                "star3": "40,5",
                 "rate3": 30,
-                "star4": "35,5",
-                "rate4": 40,
-                "star5": "40,5",
-                "rate5": 50
+                "star4": "50,5",
+                "rate4": 35,
+                "star5": "60,5",
+                "rate5": 40
             },
             "8": {
                 "id": 8,
                 "description": "为前排卡牌恢复生命值。治疗量取决于拥有该治疗技能卡牌的生命值上限。",
                 "type": 4,
                 "scope": 2,
-                "star3": "15,5",
+                "star3": "25,5",
                 "rate3": 30,
-                "star4": "20,5",
-                "rate4": 40,
-                "star5": "25,5",
-                "rate5": 50
+                "star4": "35,5",
+                "rate4": 35,
+                "star5": "45,5",
+                "rate5": 40
             },
             "9": {
                 "id": 9,
                 "description": "为后排卡牌恢复生命值。治疗量取决于拥有该治疗技能卡牌的生命值上限。",
                 "type": 4,
                 "scope": 3,
-                "star3": "15,5",
+                "star3": "25,5",
                 "rate3": 30,
-                "star4": "20,5",
-                "rate4": 40,
-                "star5": "25,5",
-                "rate5": 50
+                "star4": "35,5",
+                "rate4": 35,
+                "star5": "45,5",
+                "rate5": 40
             },
             "10": {
                 "id": 10,
@@ -192,10 +194,10 @@ outputTables = {
                 "scope": 6,
                 "star3": "10,5",
                 "rate3": 30,
-                "star4": "15,5",
-                "rate4": 40,
-                "star5": "20,5",
-                "rate5": 50
+                "star4": "20,5",
+                "rate4": 35,
+                "star5": "30,5",
+                "rate5": 40
             }
         }
     },
@@ -1192,7 +1194,7 @@ outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 59,
-                "hp": 120,
+                "hp": 103,
                 "description": "不要老是跟我提五百年后的事情，烦不烦啊！",
                 "url": 1
             },
@@ -1202,8 +1204,8 @@ outputTables = {
                 "name": "美猴王·孙悟空",
                 "star": 2,
                 "lv": 1,
-                "atk": 100,
-                "hp": 195,
+                "atk": 109,
+                "hp": 125,
                 "description": "凭什么我是妖，你是仙，户口本上有写么？",
                 "url": 2
             },
@@ -1213,8 +1215,8 @@ outputTables = {
                 "name": "齐天大圣·孙悟空",
                 "star": 3,
                 "lv": 1,
-                "atk": 149,
-                "hp": 355,
+                "atk": 155,
+                "hp": 352,
                 "skill_name": "七十二变",
                 "skill_id": 3,
                 "description": "从今往后一万年，你们都会记住我的名字，齐天大圣孙悟空。",
@@ -1226,8 +1228,8 @@ outputTables = {
                 "name": "行者·孙悟空",
                 "star": 4,
                 "lv": 1,
-                "atk": 238,
-                "hp": 516,
+                "atk": 210,
+                "hp": 503,
                 "skill_name": "七十二变",
                 "skill_id": 3,
                 "description": "你是谁的亲戚，麻烦打架前先报上来，免得俺老孙白费力气。",
@@ -1239,8 +1241,8 @@ outputTables = {
                 "name": "斗战圣佛·孙悟空",
                 "star": 5,
                 "lv": 1,
-                "atk": 378,
-                "hp": 821,
+                "atk": 280,
+                "hp": 651,
                 "skill_name": "七十二变",
                 "skill_id": 3,
                 "description": "一沙一世界，一树一菩提，妖即是色，色即是空，空即是佛。",
@@ -1253,7 +1255,7 @@ outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 45,
-                "hp": 140,
+                "hp": 129,
                 "description": "当你不能够再拥有，你唯一可以做的，就是令自己不要忘记。",
                 "url": 6
             },
@@ -1263,8 +1265,8 @@ outputTables = {
                 "name": "高庄主·猪八戒",
                 "star": 2,
                 "lv": 1,
-                "atk": 79,
-                "hp": 221,
+                "atk": 91,
+                "hp": 275,
                 "description": "第一次见到翠兰，我就想起了你，就像每次抬头看到月亮一样。",
                 "url": 1
             },
@@ -1274,8 +1276,8 @@ outputTables = {
                 "name": "二师兄·猪八戒",
                 "star": 3,
                 "lv": 1,
-                "atk": 118,
-                "hp": 390,
+                "atk": 142,
+                "hp": 398,
                 "skill_name": "倒打一耙",
                 "skill_id": 5,
                 "description": "猴子说我呆，沙僧说我二，其实我只是不想做这些无意义的事情。",
@@ -1287,8 +1289,8 @@ outputTables = {
                 "name": "净坛使者·猪八戒",
                 "star": 4,
                 "lv": 1,
-                "atk": 199,
-                "hp": 552,
+                "atk": 182,
+                "hp": 543,
                 "skill_name": "倒打一耙",
                 "skill_id": 5,
                 "description": "连如来也当我是个吃货，其实我唯有不停的吃，才能让自己不去想她。",
@@ -1300,8 +1302,8 @@ outputTables = {
                 "name": "天蓬元帅·猪八戒",
                 "star": 5,
                 "lv": 1,
-                "atk": 327,
-                "hp": 878,
+                "atk": 255,
+                "hp": 713,
                 "skill_name": "倒打一耙",
                 "skill_id": 5,
                 "description": "那年，我管银河系。",
@@ -1314,7 +1316,7 @@ outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 51,
-                "hp": 129,
+                "hp": 122,
                 "description": "昨日像那东流水，离我远去不可留，今日乱我心，多烦忧。",
                 "url": 5
             },
@@ -1324,8 +1326,8 @@ outputTables = {
                 "name": "骷髅九·沙悟净",
                 "star": 2,
                 "lv": 1,
-                "atk": 82,
-                "hp": 208,
+                "atk": 97,
+                "hp": 246,
                 "description": "我脖子上九个骷髅可不是塑料的，哥也是在道上混的。",
                 "url": 6
             },
@@ -1335,8 +1337,8 @@ outputTables = {
                 "name": "沙和尚·沙悟净",
                 "star": 3,
                 "lv": 1,
-                "atk": 123,
-                "hp": 357,
+                "atk": 148,
+                "hp": 372,
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "description": "大师兄，师傅被抓走了！大师兄，二师兄和师傅被抓走了！",
@@ -1348,8 +1350,8 @@ outputTables = {
                 "name": "卷帘大将·沙悟净",
                 "star": 4,
                 "lv": 1,
-                "atk": 209,
-                "hp": 526,
+                "atk": 202,
+                "hp": 518,
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "description": "我这职位就像领导司机，比较敏感，容易说错话做错事。",
@@ -1361,8 +1363,8 @@ outputTables = {
                 "name": "金身罗汉·沙悟净",
                 "star": 5,
                 "lv": 1,
-                "atk": 327,
-                "hp": 825,
+                "atk": 273,
+                "hp": 674,
                 "skill_name": "流沙搅风",
                 "skill_id": 1,
                 "description": "我是要告诉人家，我失去的东西一定要拿回来！",
@@ -1374,8 +1376,8 @@ outputTables = {
                 "name": "大力·牛魔王",
                 "star": 1,
                 "lv": 1,
-                "atk": 47,
-                "hp": 131,
+                "atk": 50,
+                "hp": 121,
                 "description": "力气大不是罪，不能什么脏活累活都叫我做啊！",
                 "url": 4
             },
@@ -1385,8 +1387,8 @@ outputTables = {
                 "name": "芭蕉洞主·牛魔王",
                 "star": 2,
                 "lv": 1,
-                "atk": 75,
-                "hp": 211,
+                "atk": 95,
+                "hp": 151,
                 "description": "我按照芭蕉叶的样子，给你铸了把扇子，妹纸，你喜欢么？",
                 "url": 5
             },
@@ -1396,8 +1398,8 @@ outputTables = {
                 "name": "平天大圣·牛魔王",
                 "star": 3,
                 "lv": 1,
-                "atk": 120,
-                "hp": 367,
+                "atk": 151,
+                "hp": 373,
                 "skill_name": "群牛乱舞",
                 "skill_id": 5,
                 "description": "看清楚是平天不是齐天！猴子是我小弟，不要总拿他压我！",
@@ -1409,8 +1411,8 @@ outputTables = {
                 "name": "众神之神·牛魔王",
                 "star": 4,
                 "lv": 1,
-                "atk": 199,
-                "hp": 530,
+                "atk": 203,
+                "hp": 520,
                 "skill_name": "群牛乱舞",
                 "skill_id": 5,
                 "description": "我宁愿做一日英雄，都不想成世做条虫，放马过来吧！",
@@ -1422,8 +1424,8 @@ outputTables = {
                 "name": "放下屠刀·牛魔王",
                 "star": 5,
                 "lv": 1,
-                "atk": 321,
-                "hp": 829,
+                "atk": 275,
+                "hp": 675,
                 "skill_name": "群牛乱舞",
                 "skill_id": 5,
                 "description": "孩子被你们带走了，老婆也离我而去，你要我放下，我还有什么可放？",
@@ -1435,8 +1437,8 @@ outputTables = {
                 "name": "唐僧·金蝉子",
                 "star": 1,
                 "lv": 1,
-                "atk": 53,
-                "hp": 121,
+                "atk": 49,
+                "hp": 120,
                 "description": "那年，我徒步去阿三国，没有导游，只有三个同样不认识路的驴友。",
                 "url": 3
             },
@@ -1446,8 +1448,8 @@ outputTables = {
                 "name": "普渡众佛·金蝉子",
                 "star": 2,
                 "lv": 1,
-                "atk": 82,
-                "hp": 195,
+                "atk": 99,
+                "hp": 249,
                 "description": "江湖谣言吃了我的肉可以长生不老，你看我年龄就知道是假的了。",
                 "url": 4
             },
@@ -1457,8 +1459,8 @@ outputTables = {
                 "name": "燃灯道人·金蝉子",
                 "star": 3,
                 "lv": 1,
-                "atk": 119,
-                "hp": 354,
+                "atk": 148,
+                "hp": 377,
                 "skill_name": "普度众生",
                 "skill_id": 10,
                 "description": "我知道在雷音寺宣传道教等于去踢馆，所以如来直接把我给转世到了人间。",
@@ -1470,8 +1472,8 @@ outputTables = {
                 "name": "功德佛·金蝉子",
                 "star": 4,
                 "lv": 1,
-                "atk": 195,
-                "hp": 517,
+                "atk": 201,
+                "hp": 522,
                 "skill_name": "普度众生",
                 "skill_id": 10,
                 "description": "我心里清楚，我的功德是奶了雷音寺这帮人，而不是因为取经。",
@@ -1483,8 +1485,8 @@ outputTables = {
                 "name": "真身·金蝉子",
                 "star": 5,
                 "lv": 1,
-                "atk": 328,
-                "hp": 822,
+                "atk": 272,
+                "hp": 676,
                 "skill_name": "普度众生",
                 "skill_id": 10,
                 "description": "我吃素，却总是被人当肉吃，我只想做回我自己。",
@@ -1496,8 +1498,8 @@ outputTables = {
                 "name": "龟兹公主·铁扇公主",
                 "star": 1,
                 "lv": 1,
-                "atk": 61,
-                "hp": 115,
+                "atk": 60,
+                "hp": 105,
                 "description": "那一年，我在龟兹，那一年，我是公主。",
                 "url": 2
             },
@@ -1507,8 +1509,8 @@ outputTables = {
                 "name": "罗刹女·铁扇公主",
                 "star": 2,
                 "lv": 1,
-                "atk": 95,
-                "hp": 186,
+                "atk": 111,
+                "hp": 225,
                 "description": "嫁给老牛后，我有了另一个名字，罗莎女。",
                 "url": 3
             },
@@ -1518,7 +1520,7 @@ outputTables = {
                 "name": "芭蕉扇·铁扇公主",
                 "star": 3,
                 "lv": 1,
-                "atk": 141,
+                "atk": 161,
                 "hp": 341,
                 "skill_name": "浴火重生",
                 "skill_id": 2,
@@ -1531,8 +1533,8 @@ outputTables = {
                 "name": "牛夫人·铁扇公主",
                 "star": 4,
                 "lv": 1,
-                "atk": 234,
-                "hp": 519,
+                "atk": 216,
+                "hp": 501,
                 "skill_name": "浴火重生",
                 "skill_id": 2,
                 "description": "以前看月亮的时候叫人家小甜甜，原来都是假的。",
@@ -1544,8 +1546,8 @@ outputTables = {
                 "name": "情比金坚·铁扇公主",
                 "star": 5,
                 "lv": 1,
-                "atk": 375,
-                "hp": 813,
+                "atk": 288,
+                "hp": 630,
                 "skill_name": "浴火重生",
                 "skill_id": 2,
                 "description": "孩子已被掳走，再不能让他们把我们夫妻分离了。",
@@ -1557,8 +1559,8 @@ outputTables = {
                 "name": "天将·巨灵神",
                 "star": 1,
                 "lv": 1,
-                "atk": 51,
-                "hp": 130,
+                "atk": 53,
+                "hp": 125,
                 "description": "当天将不是那么容易的，得通过天将考试，录取比例很低。",
                 "url": 1
             },
@@ -1568,8 +1570,8 @@ outputTables = {
                 "name": "门卫·巨灵神",
                 "star": 2,
                 "lv": 1,
-                "atk": 82,
-                "hp": 220,
+                "atk": 101,
+                "hp": 251,
                 "description": "我不喜欢门卫这个称呼，我更喜欢大家叫我天宫天门守将。",
                 "url": 2
             },
@@ -1579,8 +1581,8 @@ outputTables = {
                 "name": "搬山救民·巨灵神",
                 "star": 3,
                 "lv": 1,
-                "atk": 123,
-                "hp": 390,
+                "atk": 151,
+                "hp": 371,
                 "skill_name": "雷霆之怒",
                 "skill_id": 3,
                 "description": "想搬家么？找我吧！什么？房子很大？我可以把你家对面那条河一起搬走。",
@@ -1592,8 +1594,8 @@ outputTables = {
                 "name": "急先锋·巨灵神",
                 "star": 4,
                 "lv": 1,
-                "atk": 204,
-                "hp": 550,
+                "atk": 205,
+                "hp": 519,
                 "skill_name": "雷霆之怒",
                 "skill_id": 3,
                 "description": "先锋这个职业，基本就是送死+被黑锅的意思，你懂的。",
@@ -1605,8 +1607,8 @@ outputTables = {
                 "name": "神斧·巨灵神",
                 "star": 5,
                 "lv": 1,
-                "atk": 336,
-                "hp": 855,
+                "atk": 277,
+                "hp": 677,
                 "skill_name": "雷霆之怒",
                 "skill_id": 3,
                 "description": "斧头帮知道吧，那是我开创的。",
@@ -1618,8 +1620,8 @@ outputTables = {
                 "name": "神二代·红孩儿",
                 "star": 1,
                 "lv": 1,
-                "atk": 56,
-                "hp": 134,
+                "atk": 49,
+                "hp": 122,
                 "description": "我爸是牛魔，我妈是铁扇，我是神二代！",
                 "url": 6
             },
@@ -1629,8 +1631,8 @@ outputTables = {
                 "name": "火云洞·红孩儿",
                 "star": 2,
                 "lv": 1,
-                "atk": 86,
-                "hp": 226,
+                "atk": 100,
+                "hp": 248,
                 "description": "我有一所房子，面朝大海，春暖花开，4M宽带，能叫外卖。",
                 "url": 1
             },
@@ -1640,8 +1642,8 @@ outputTables = {
                 "name": "三味真火·红孩儿",
                 "star": 3,
                 "lv": 1,
-                "atk": 129,
-                "hp": 393,
+                "atk": 145,
+                "hp": 376,
                 "skill_name": "三味真火",
                 "skill_id": 3,
                 "description": "这门神功的唯一的缺点是使用前要先把自己打出鼻血来……",
@@ -1653,8 +1655,8 @@ outputTables = {
                 "name": "圣婴大王·红孩儿",
                 "star": 4,
                 "lv": 1,
-                "atk": 209,
-                "hp": 556,
+                "atk": 206,
+                "hp": 519,
                 "skill_name": "三味真火",
                 "skill_id": 3,
                 "description": "虽然我长个正太样儿，却有颗大叔的心。",
@@ -1666,8 +1668,8 @@ outputTables = {
                 "name": "善财童子·红孩儿",
                 "star": 5,
                 "lv": 1,
-                "atk": 333,
-                "hp": 859,
+                "atk": 273,
+                "hp": 671,
                 "skill_name": "三味真火",
                 "skill_id": 3,
                 "description": "厌倦了打打杀杀、尔虞我诈的日子，我决定从事更有前途的金融行业。",
@@ -1679,8 +1681,8 @@ outputTables = {
                 "name": "冀州侯·黄飞虎",
                 "star": 1,
                 "lv": 1,
-                "atk": 53,
-                "hp": 139,
+                "atk": 43,
+                "hp": 113,
                 "description": "我爹说，老虎要会飞，谁都挡不住，所以我叫黄飞虎。",
                 "url": 5
             },
@@ -1690,8 +1692,8 @@ outputTables = {
                 "name": "夜奔·黄飞虎",
                 "star": 2,
                 "lv": 1,
-                "atk": 86,
-                "hp": 223,
+                "atk": 106,
+                "hp": 244,
                 "description": "领导给我戴个绿帽子也就忍了，还杀我妹妹，下一个是不是轮到我了？",
                 "url": 6
             },
@@ -1701,8 +1703,8 @@ outputTables = {
                 "name": "复仇·黄飞虎",
                 "star": 3,
                 "lv": 1,
-                "atk": 127,
-                "hp": 392,
+                "atk": 156,
+                "hp": 371,
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "description": "当仇恨成为了信仰，我就变成了复仇的恶魔。",
@@ -1714,8 +1716,8 @@ outputTables = {
                 "name": "武成王·黄飞虎",
                 "star": 4,
                 "lv": 1,
-                "atk": 206,
-                "hp": 556,
+                "atk": 204,
+                "hp": 525,
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "description": "我对这次的任命很满意，感谢姬总对我的信任！",
@@ -1727,8 +1729,8 @@ outputTables = {
                 "name": "仁圣大帝·黄飞虎",
                 "star": 5,
                 "lv": 1,
-                "atk": 337,
-                "hp": 857,
+                "atk": 278,
+                "hp": 680,
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "description": "嫌我名字长？和慈禧比起来，我这个只能算缩写。",
@@ -1741,7 +1743,7 @@ outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 53,
-                "hp": 140,
+                "hp": 119,
                 "description": "我爹战斗力强，排到我，已经是第一百个孩子了。",
                 "url": 4
             },
@@ -1751,8 +1753,8 @@ outputTables = {
                 "name": "羽人·雷震子",
                 "star": 2,
                 "lv": 1,
-                "atk": 86,
-                "hp": 227,
+                "atk": 103,
+                "hp": 244,
                 "description": "虽然我有一对翅膀，但请不要叫我鸟人，你可以叫我X-man。",
                 "url": 5
             },
@@ -1762,8 +1764,8 @@ outputTables = {
                 "name": "救父·雷震子",
                 "star": 3,
                 "lv": 1,
-                "atk": 129,
-                "hp": 389,
+                "atk": 151,
+                "hp": 373,
                 "skill_name": "雷音破",
                 "skill_id": 1,
                 "description": "走的匆忙，忘记问师父我爹长啥样了，这是要闹哪样呀！",
@@ -1775,8 +1777,8 @@ outputTables = {
                 "name": "出五关·雷震子",
                 "star": 4,
                 "lv": 1,
-                "atk": 208,
-                "hp": 559,
+                "atk": 206,
+                "hp": 519,
                 "skill_name": "雷音破",
                 "skill_id": 1,
                 "description": "一条命通五关不难，难的是还要背个人一起过，不服你试试？",
@@ -1788,8 +1790,8 @@ outputTables = {
                 "name": "金刚·雷震子",
                 "star": 5,
                 "lv": 1,
-                "atk": 331,
-                "hp": 860,
+                "atk": 281,
+                "hp": 651,
                 "skill_name": "雷音破",
                 "skill_id": 1,
                 "description": "你感觉不到我的体温，因为我全身都是金刚，没有血肉。",
@@ -1801,8 +1803,8 @@ outputTables = {
                 "name": "羽麟奴·妲己",
                 "star": 1,
                 "lv": 1,
-                "atk": 55,
-                "hp": 120,
+                "atk": 59,
+                "hp": 125,
                 "description": "那年我和大家一起高歌：从我羽麟，北平成汤！",
                 "url": 3
             },
@@ -1812,8 +1814,8 @@ outputTables = {
                 "name": "轩辕坟·妲己",
                 "star": 2,
                 "lv": 1,
-                "atk": 85,
-                "hp": 195,
+                "atk": 111,
+                "hp": 255,
                 "description": "南巢一役后，我躲进了轩辕坟，千年修行，千年孤独。",
                 "url": 4
             },
@@ -1823,8 +1825,8 @@ outputTables = {
                 "name": "彰德夫人·妲己",
                 "star": 3,
                 "lv": 1,
-                "atk": 140,
-                "hp": 354,
+                "atk": 161,
+                "hp": 368,
                 "skill_name": "红颜祸水",
                 "skill_id": 6,
                 "description": "商朝的后宫也演甄嬛传啊有木有，刚进宫皇后就训话，本宫心累啊！",
@@ -1836,7 +1838,7 @@ outputTables = {
                 "name": "醉生梦死·妲己",
                 "star": 4,
                 "lv": 1,
-                "atk": 235,
+                "atk": 216,
                 "hp": 516,
                 "skill_name": "红颜祸水",
                 "skill_id": 6,
@@ -1849,8 +1851,8 @@ outputTables = {
                 "name": "九尾天狐·妲己",
                 "star": 5,
                 "lv": 1,
-                "atk": 370,
-                "hp": 823,
+                "atk": 283,
+                "hp": 670,
                 "skill_name": "红颜祸水",
                 "skill_id": 6,
                 "description": "千年修白，万年修黑。女娲娘娘，真的是这样子的么？",
@@ -1862,8 +1864,8 @@ outputTables = {
                 "name": "隐士·姜子牙",
                 "star": 1,
                 "lv": 1,
-                "atk": 54,
-                "hp": 125,
+                "atk": 60,
+                "hp": 121,
                 "description": "山上啥都有，一分钱不用花，还能赚个隐居的好名声。",
                 "url": 2
             },
@@ -1873,8 +1875,8 @@ outputTables = {
                 "name": "渔者·姜子牙",
                 "star": 2,
                 "lv": 1,
-                "atk": 88,
-                "hp": 190,
+                "atk": 115,
+                "hp": 260,
                 "description": "我每次打开陌陌，向周围的美女打招呼，嘴里都会默念“愿者上钩”。",
                 "url": 3
             },
@@ -1884,8 +1886,8 @@ outputTables = {
                 "name": "占卜师·姜子牙",
                 "star": 3,
                 "lv": 1,
-                "atk": 145,
-                "hp": 350,
+                "atk": 162,
+                "hp": 370,
                 "skill_name": "太公之悲",
                 "skill_id": 7,
                 "description": "施主印堂发黑，带有凶兆，必有大波，不如让贫道为你算上一卦。",
@@ -1897,8 +1899,8 @@ outputTables = {
                 "name": "尚父·姜子牙",
                 "star": 4,
                 "lv": 1,
-                "atk": 240,
-                "hp": 515,
+                "atk": 219,
+                "hp": 522,
                 "skill_name": "太公之悲",
                 "skill_id": 7,
                 "description": "我孙子和姬发差不多大，他封我为尚父，我总觉得哪里不对劲。",
@@ -1910,8 +1912,8 @@ outputTables = {
                 "name": "齐祖·姜子牙",
                 "star": 5,
                 "lv": 1,
-                "atk": 375,
-                "hp": 821,
+                "atk": 285,
+                "hp": 677,
                 "skill_name": "太公之悲",
                 "skill_id": 7,
                 "description": "齐祖是说我是齐国创始人，不是说我长的像齐达内。",
@@ -1923,8 +1925,8 @@ outputTables = {
                 "name": "总兵·李靖",
                 "star": 1,
                 "lv": 1,
-                "atk": 58,
-                "hp": 120,
+                "atk": 62,
+                "hp": 130,
                 "description": "兄弟我在陈塘关当总兵的时候，吃西瓜从来不花钱。",
                 "url": 1
             },
@@ -1934,8 +1936,8 @@ outputTables = {
                 "name": "人父·李靖",
                 "star": 2,
                 "lv": 1,
-                "atk": 87,
-                "hp": 192,
+                "atk": 113,
+                "hp": 259,
                 "description": "我有三子一女，但我还是最喜欢我的干女儿，你懂的。",
                 "url": 2
             },
@@ -1945,8 +1947,8 @@ outputTables = {
                 "name": "降魔大元帅·李靖",
                 "star": 3,
                 "lv": 1,
-                "atk": 149,
-                "hp": 355,
+                "atk": 155,
+                "hp": 380,
                 "skill_name": "失魂引",
                 "skill_id": 1,
                 "description": "这帮天兵天将下凡连城管都打不过，还想我去收孙悟空！",
@@ -1958,8 +1960,8 @@ outputTables = {
                 "name": "保卫天庭·李靖",
                 "star": 4,
                 "lv": 1,
-                "atk": 241,
-                "hp": 511,
+                "atk": 219,
+                "hp": 529,
                 "skill_name": "失魂引",
                 "skill_id": 1,
                 "description": "天庭的九门提督可不好当，你知道隆科多是怎么挂的么？",
@@ -1971,8 +1973,8 @@ outputTables = {
                 "name": "托塔天王·李靖",
                 "star": 5,
                 "lv": 1,
-                "atk": 379,
-                "hp": 828,
+                "atk": 288,
+                "hp": 680,
                 "skill_name": "失魂引",
                 "skill_id": 1,
                 "description": "每天托着个十几斤重的塔走来走去，我的手臂都快骨质增生了。",
@@ -1985,7 +1987,7 @@ outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 51,
-                "hp": 130,
+                "hp": 122,
                 "description": "天下武功，无坚不破，唯快不破，所以先下手总是没错。",
                 "url": 6
             },
@@ -1995,8 +1997,8 @@ outputTables = {
                 "name": "神鞭·赵公民",
                 "star": 2,
                 "lv": 1,
-                "atk": 81,
-                "hp": 221,
+                "atk": 99,
+                "hp": 243,
                 "description": "想歪的给我面壁去，我说的是武器。",
                 "url": 1
             },
@@ -2006,8 +2008,8 @@ outputTables = {
                 "name": "大罗金仙·赵公明",
                 "star": 3,
                 "lv": 1,
-                "atk": 123,
-                "hp": 375,
+                "atk": 149,
+                "hp": 374,
                 "skill_name": "五音诀",
                 "skill_id": 8,
                 "description": "我能有今天的成就，要感谢我的粑粑和麻麻，还有CCTV。",
@@ -2019,8 +2021,8 @@ outputTables = {
                 "name": "玄坛真君·赵公明",
                 "star": 4,
                 "lv": 1,
-                "atk": 202,
-                "hp": 512,
+                "atk": 205,
+                "hp": 518,
                 "skill_name": "五音诀",
                 "skill_id": 8,
                 "description": "当不当教主真的不重要，看一看这花花世界，就像梦一场。",
@@ -2032,8 +2034,8 @@ outputTables = {
                 "name": "财神·赵公明",
                 "star": 5,
                 "lv": 1,
-                "atk": 332,
-                "hp": 815,
+                "atk": 271,
+                "hp": 672,
                 "skill_name": "五音诀",
                 "skill_id": 8,
                 "description": "我就是一ATM，关键还得你卡里有钱，不然我也帮不了你。",
@@ -2045,8 +2047,8 @@ outputTables = {
                 "name": "异类·申公豹",
                 "star": 1,
                 "lv": 1,
-                "atk": 53,
-                "hp": 126,
+                "atk": 48,
+                "hp": 121,
                 "description": "虽然我们是修炼成仙，但我知道他们看不起我的异类出身。",
                 "url": 5
             },
@@ -2056,8 +2058,8 @@ outputTables = {
                 "name": "铁齿铜牙·申公豹",
                 "star": 2,
                 "lv": 1,
-                "atk": 83,
-                "hp": 224,
+                "atk": 102,
+                "hp": 244,
                 "description": "就算我能把死的说成活的，也无法改变阐教的种族主义思想。",
                 "url": 6
             },
@@ -2067,8 +2069,8 @@ outputTables = {
                 "name": "雷公鞭·申公豹",
                 "star": 3,
                 "lv": 1,
-                "atk": 125,
-                "hp": 374,
+                "atk": 144,
+                "hp": 369,
                 "skill_name": "玄冥寒",
                 "skill_id": 1,
                 "description": "没有人能分辨出这究竟是一道影，还是一堵墙，其实它是我的鞭。",
@@ -2080,8 +2082,8 @@ outputTables = {
                 "name": "万妖之王·申公豹",
                 "star": 4,
                 "lv": 1,
-                "atk": 205,
-                "hp": 516,
+                "atk": 206,
+                "hp": 525,
                 "skill_name": "玄冥寒",
                 "skill_id": 1,
                 "description": "只有和它们在一起，我才能感觉到那种无私的信任与关怀。",
@@ -2093,8 +2095,8 @@ outputTables = {
                 "name": "分水将军·申公豹",
                 "star": 5,
                 "lv": 1,
-                "atk": 336,
-                "hp": 820,
+                "atk": 279,
+                "hp": 666,
                 "skill_name": "玄冥寒",
                 "skill_id": 1,
                 "description": "成王败寇，我的实力无需封神榜上的职位来证明。",
@@ -2106,8 +2108,8 @@ outputTables = {
                 "name": "瞬移·土行孙",
                 "star": 1,
                 "lv": 1,
-                "atk": 55,
-                "hp": 121,
+                "atk": 49,
+                "hp": 120,
                 "description": "我可以瞬间从移动到你面前，但你不能站在水泥地上！",
                 "url": 4
             },
@@ -2117,8 +2119,8 @@ outputTables = {
                 "name": "遁神·土行孙",
                 "star": 2,
                 "lv": 1,
-                "atk": 85,
-                "hp": 228,
+                "atk": 103,
+                "hp": 247,
                 "description": "我不仅会土遁，水遁、火遁、尿遁也是样样精通。",
                 "url": 5
             },
@@ -2128,8 +2130,8 @@ outputTables = {
                 "name": "捆仙绳·土行孙",
                 "star": 3,
                 "lv": 1,
-                "atk": 126,
-                "hp": 375,
+                "atk": 156,
+                "hp": 380,
                 "skill_name": "土遁",
                 "skill_id": 1,
                 "description": "我这根捆仙绳，平时可以当领带，战时可以当武器，多功能用途。",
@@ -2141,7 +2143,7 @@ outputTables = {
                 "name": "地行仙·土行孙",
                 "star": 4,
                 "lv": 1,
-                "atk": 201,
+                "atk": 210,
                 "hp": 520,
                 "skill_name": "土遁",
                 "skill_id": 1,
@@ -2154,8 +2156,8 @@ outputTables = {
                 "name": "土府星君·土行孙",
                 "star": 5,
                 "lv": 1,
-                "atk": 330,
-                "hp": 825,
+                "atk": 277,
+                "hp": 681,
                 "skill_name": "土遁",
                 "skill_id": 1,
                 "description": "我最大的成就不是封神，而是娶了心中的女神邓婵玉。",
@@ -2167,8 +2169,8 @@ outputTables = {
                 "name": "捕蛇者·法海",
                 "star": 1,
                 "lv": 1,
-                "atk": 56,
-                "hp": 129,
+                "atk": 50,
+                "hp": 123,
                 "description": "我只是把捉到的白蛇卖了而已，谁想会记恨我几辈子。",
                 "url": 3
             },
@@ -2178,8 +2180,8 @@ outputTables = {
                 "name": "苦修·法海",
                 "star": 2,
                 "lv": 1,
-                "atk": 88,
-                "hp": 226,
+                "atk": 104,
+                "hp": 251,
                 "description": "好不容易炼成的丹药被她偷吃了，我这辈子又白练了。",
                 "url": 4
             },
@@ -2189,8 +2191,8 @@ outputTables = {
                 "name": "金山住持·法海",
                 "star": 3,
                 "lv": 1,
-                "atk": 122,
-                "hp": 375,
+                "atk": 144,
+                "hp": 384,
                 "skill_name": "苦海无边",
                 "skill_id": 9,
                 "description": "没想到隔了几辈子再遇到白蛇，已经修炼成了女神模样。",
@@ -2202,8 +2204,8 @@ outputTables = {
                 "name": "雷峰塔·法海",
                 "star": 4,
                 "lv": 1,
-                "atk": 203,
-                "hp": 519,
+                "atk": 209,
+                "hp": 525,
                 "skill_name": "苦海无边",
                 "skill_id": 9,
                 "description": "人蛇恋是不会有结果的，她应该呆在我的身边修炼。",
@@ -2215,8 +2217,8 @@ outputTables = {
                 "name": "升仙·法海",
                 "star": 5,
                 "lv": 1,
-                "atk": 340,
-                "hp": 830,
+                "atk": 279,
+                "hp": 685,
                 "skill_name": "苦海无边",
                 "skill_id": 9,
                 "description": "没想到会和他们一起升仙，看着他们甜蜜的样子，我有点失落。",
@@ -2228,8 +2230,8 @@ outputTables = {
                 "name": "青城山·白素贞",
                 "star": 1,
                 "lv": 1,
-                "atk": 58,
-                "hp": 122,
+                "atk": 55,
+                "hp": 131,
                 "description": "我在青城山宅了1800多年才修炼成女神，你会羡慕我么？",
                 "url": 2
             },
@@ -2239,8 +2241,8 @@ outputTables = {
                 "name": "断桥·白素贞",
                 "star": 2,
                 "lv": 1,
-                "atk": 88,
-                "hp": 222,
+                "atk": 106,
+                "hp": 254,
                 "description": "为什么会一见钟情呢，或许因为他是我下山后见得第一个男人。",
                 "url": 3
             },
@@ -2250,8 +2252,8 @@ outputTables = {
                 "name": "盗草·白素贞",
                 "star": 3,
                 "lv": 1,
-                "atk": 129,
-                "hp": 380,
+                "atk": 143,
+                "hp": 369,
                 "skill_name": "水漫金山",
                 "skill_id": 4,
                 "description": "没灵芝仙草许仙就活不了，许仙不在了我就得回青城山继续宅了！",
@@ -2263,7 +2265,7 @@ outputTables = {
                 "name": "水漫金山·白素贞",
                 "star": 4,
                 "lv": 1,
-                "atk": 207,
+                "atk": 206,
                 "hp": 524,
                 "skill_name": "水漫金山",
                 "skill_id": 4,
@@ -2276,8 +2278,8 @@ outputTables = {
                 "name": "紫微星·白素贞",
                 "star": 5,
                 "lv": 1,
-                "atk": 339,
-                "hp": 831,
+                "atk": 265,
+                "hp": 689,
                 "skill_name": "水漫金山",
                 "skill_id": 4,
                 "description": "尔康，你不能恨我，你不能因为我这么爱你而恨我。",
@@ -2300,8 +2302,8 @@ outputTables = {
                 "name": "变身·小青",
                 "star": 2,
                 "lv": 1,
-                "atk": 83,
-                "hp": 224,
+                "atk": 106,
+                "hp": 244,
                 "description": "既然无法娶女神，我宁愿化为女儿身终身跟随。",
                 "url": 2
             },
@@ -2311,8 +2313,8 @@ outputTables = {
                 "name": "斗法海·小青",
                 "star": 3,
                 "lv": 1,
-                "atk": 125,
-                "hp": 374,
+                "atk": 152,
+                "hp": 372,
                 "skill_name": "黯然销魂",
                 "skill_id": 4,
                 "description": "法海你不懂爱，姐姐不要你，我也不会从。",
@@ -2324,8 +2326,8 @@ outputTables = {
                 "name": "烧塔·小青",
                 "star": 4,
                 "lv": 1,
-                "atk": 205,
-                "hp": 516,
+                "atk": 203,
+                "hp": 515,
                 "skill_name": "黯然销魂",
                 "skill_id": 4,
                 "description": "法海，要么你跟我走，要么你放过我姐姐！",
@@ -2337,8 +2339,8 @@ outputTables = {
                 "name": "青蛇大仙·小青",
                 "star": 5,
                 "lv": 1,
-                "atk": 336,
-                "hp": 820,
+                "atk": 268,
+                "hp": 677,
                 "skill_name": "黯然销魂",
                 "skill_id": 4,
                 "description": "一起升仙的那天，我和他是最落寞的，只羡鸳鸯不羡仙。",
@@ -2351,7 +2353,7 @@ outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 60,
-                "hp": 120,
+                "hp": 118,
                 "description": "洞宾走后，家里要我嫁人，内心犹如奔过一万头草泥马。",
                 "url": 6
             },
@@ -2361,8 +2363,8 @@ outputTables = {
                 "name": "辟谷·何仙姑",
                 "star": 2,
                 "lv": 1,
-                "atk": 100,
-                "hp": 190,
+                "atk": 111,
+                "hp": 239,
                 "description": "一开始我只是想节食减肥，后来发现习惯了就不饿了……",
                 "url": 1
             },
@@ -2372,8 +2374,8 @@ outputTables = {
                 "name": "凌风驾云·何仙姑",
                 "star": 3,
                 "lv": 1,
-                "atk": 150,
-                "hp": 345,
+                "atk": 161,
+                "hp": 370,
                 "skill_name": "莲花心经",
                 "skill_id": 7,
                 "description": "那天我花7分钱买了本《筋斗云》，然后我就会飞了。",
@@ -2385,8 +2387,8 @@ outputTables = {
                 "name": "风凰台·何仙姑",
                 "star": 4,
                 "lv": 1,
-                "atk": 240,
-                "hp": 510,
+                "atk": 221,
+                "hp": 522,
                 "skill_name": "莲花心经",
                 "skill_id": 7,
                 "description": "凤凰台上凤凰花，凤凰花开飞凤凰。",
@@ -2398,8 +2400,8 @@ outputTables = {
                 "name": "碧波仙子·何仙姑",
                 "star": 5,
                 "lv": 1,
-                "atk": 380,
-                "hp": 801,
+                "atk": 290,
+                "hp": 662,
                 "skill_name": "莲花心经",
                 "skill_id": 7,
                 "description": "让我们荡起双桨，小船儿推开波浪~~~轻点！",
@@ -2411,8 +2413,8 @@ outputTables = {
                 "name": "黄粱梦·吕洞宾",
                 "star": 1,
                 "lv": 1,
-                "atk": 51,
-                "hp": 140,
+                "atk": 55,
+                "hp": 122,
                 "description": "黄粱一梦告诉我：睡前一定要吃饱，不然美梦都会被饿醒。",
                 "url": 5
             },
@@ -2422,8 +2424,8 @@ outputTables = {
                 "name": "双修·吕洞宾",
                 "star": 2,
                 "lv": 1,
-                "atk": 82,
-                "hp": 230,
+                "atk": 108,
+                "hp": 240,
                 "description": "双修就像结对编程，要两个人一起搞，你懂的。",
                 "url": 6
             },
@@ -2433,8 +2435,8 @@ outputTables = {
                 "name": "纯阳子·吕洞宾",
                 "star": 3,
                 "lv": 1,
-                "atk": 131,
-                "hp": 408,
+                "atk": 155,
+                "hp": 360,
                 "skill_name": "流云诀",
                 "skill_id": 8,
                 "description": "开导劝化风尘女子是我的业余爱好，虽然她们都说我虚伪。",
@@ -2446,8 +2448,8 @@ outputTables = {
                 "name": "剑仙·吕洞宾",
                 "star": 4,
                 "lv": 1,
-                "atk": 222,
-                "hp": 572,
+                "atk": 210,
+                "hp": 512,
                 "skill_name": "流云诀",
                 "skill_id": 8,
                 "description": "这年头，我一跟人说自己是剑仙，他们就流露出诡异的笑容。",
@@ -2459,8 +2461,8 @@ outputTables = {
                 "name": "吕祖·吕洞宾",
                 "star": 5,
                 "lv": 1,
-                "atk": 351,
-                "hp": 875,
+                "atk": 280,
+                "hp": 676,
                 "skill_name": "流云诀",
                 "skill_id": 8,
                 "description": "我有个徒孙叫王重阳，他拿过一个叫华山论剑的武术冠军。",
@@ -2472,8 +2474,8 @@ outputTables = {
                 "name": "神游·铁拐李",
                 "star": 1,
                 "lv": 1,
-                "atk": 52,
-                "hp": 141,
+                "atk": 56,
+                "hp": 137,
                 "description": "你可以把神游理解为隐形人，想去哪就去哪……你懂的！",
                 "url": 4
             },
@@ -2483,8 +2485,8 @@ outputTables = {
                 "name": "借尸还魂·铁拐李",
                 "star": 2,
                 "lv": 1,
-                "atk": 82,
-                "hp": 232,
+                "atk": 111,
+                "hp": 241,
                 "description": "为了不辜负大家对神仙相貌的期待，我只能说自己以前是很帅的。",
                 "url": 5
             },
@@ -2494,8 +2496,8 @@ outputTables = {
                 "name": "化龙·铁拐李",
                 "star": 3,
                 "lv": 1,
-                "atk": 135,
-                "hp": 712,
+                "atk": 159,
+                "hp": 358,
                 "skill_name": "流星拐",
                 "skill_id": 1,
                 "description": "扮猪吃老虎是我的最爱，比如在大街上的人堆里变条龙飞走。",
@@ -2507,8 +2509,8 @@ outputTables = {
                 "name": "呼风唤雨·铁拐李",
                 "star": 4,
                 "lv": 1,
-                "atk": 226,
-                "hp": 575,
+                "atk": 221,
+                "hp": 516,
                 "skill_name": "流星拐",
                 "skill_id": 1,
                 "description": "有人找我求雨，我都要求他舔我的烂腿，没办法，好这口。",
@@ -2520,8 +2522,8 @@ outputTables = {
                 "name": "东华教主·铁拐李",
                 "star": 5,
                 "lv": 1,
-                "atk": 353,
-                "hp": 872,
+                "atk": 276,
+                "hp": 683,
                 "skill_name": "流星拐",
                 "skill_id": 1,
                 "description": "我们教主圈从不缺新闻，最近的咆哮教主你知道么？",
@@ -2533,8 +2535,8 @@ outputTables = {
                 "name": "散汉·汉钟离",
                 "star": 1,
                 "lv": 1,
-                "atk": 55,
-                "hp": 144,
+                "atk": 52,
+                "hp": 129,
                 "description": "以前管我们这种人叫散汉，现在叫屌丝。",
                 "url": 3
             },
@@ -2544,8 +2546,8 @@ outputTables = {
                 "name": "征讨将军·汉钟离",
                 "star": 2,
                 "lv": 1,
-                "atk": 85,
-                "hp": 231,
+                "atk": 105,
+                "hp": 242,
                 "description": "我学文的，偏要我去当领兵打仗，真当我是袁崇焕啊。",
                 "url": 4
             },
@@ -2555,8 +2557,8 @@ outputTables = {
                 "name": "十日试·汉钟离",
                 "star": 3,
                 "lv": 1,
-                "atk": 138,
-                "hp": 711,
+                "atk": 160,
+                "hp": 363,
                 "skill_name": "行云流水",
                 "skill_id": 9,
                 "description": "《十日谈》这样的少儿不宜的书籍都能出名，何况我的是日试呢！",
@@ -2568,8 +2570,8 @@ outputTables = {
                 "name": "炼金术·汉钟离",
                 "star": 4,
                 "lv": 1,
-                "atk": 227,
-                "hp": 574,
+                "atk": 211,
+                "hp": 522,
                 "skill_name": "行云流水",
                 "skill_id": 9,
                 "description": "呐，当差人是要拜关二哥，你要是炒黄金，当然得拜我啦。",
@@ -2581,8 +2583,8 @@ outputTables = {
                 "name": "正阳真人·汉钟离",
                 "star": 5,
                 "lv": 1,
-                "atk": 349,
-                "hp": 873,
+                "atk": 282,
+                "hp": 674,
                 "skill_name": "行云流水",
                 "skill_id": 9,
                 "description": "当了神仙，就跟童话里说的一样，从此过上了幸福的生活。",
@@ -2594,8 +2596,8 @@ outputTables = {
                 "name": "驴友·张果老",
                 "star": 1,
                 "lv": 1,
-                "atk": 48,
-                "hp": 145,
+                "atk": 39,
+                "hp": 128,
                 "description": "骑驴比骑马有个性多了，况且有户口的马，那才是驴嘛！",
                 "url": 2
             },
@@ -2605,8 +2607,8 @@ outputTables = {
                 "name": "歌手·张果老",
                 "star": 2,
                 "lv": 1,
-                "atk": 75,
-                "hp": 230,
+                "atk": 89,
+                "hp": 269,
                 "description": "我的歌路很广，穷则乞讨时用，达则可开演唱会。",
                 "url": 3
             },
@@ -2616,8 +2618,8 @@ outputTables = {
                 "name": "通玄先生·张果老",
                 "star": 3,
                 "lv": 1,
-                "atk": 116,
-                "hp": 405,
+                "atk": 138,
+                "hp": 388,
                 "skill_name": "人驴合一",
                 "skill_id": 1,
                 "description": "我也不记得我多少岁了，名字里就有个老字，咱能不比老么？",
@@ -2629,8 +2631,8 @@ outputTables = {
                 "name": "广宗道人·张果老",
                 "star": 4,
                 "lv": 1,
-                "atk": 198,
-                "hp": 598,
+                "atk": 182,
+                "hp": 555,
                 "skill_name": "人驴合一",
                 "skill_id": 1,
                 "description": "折个驴、变个狗啥的我最在行了，人都说我可以去马戏团工作。",
@@ -2642,8 +2644,8 @@ outputTables = {
                 "name": "冲妙真人·张果老",
                 "star": 5,
                 "lv": 1,
-                "atk": 323,
-                "hp": 902,
+                "atk": 249,
+                "hp": 709,
                 "skill_name": "人驴合一",
                 "skill_id": 1,
                 "description": "我总觉得我的封号有点娘，不过他们说听起来很有冲劲。",
@@ -2655,8 +2657,8 @@ outputTables = {
                 "name": "不羁·韩湘子",
                 "star": 1,
                 "lv": 1,
-                "atk": 46,
-                "hp": 146,
+                "atk": 41,
+                "hp": 130,
                 "description": "原谅我这一生不羁放纵爱自由，也会怕有一天会跌倒。",
                 "url": 6
             },
@@ -2666,8 +2668,8 @@ outputTables = {
                 "name": "天花引·韩湘子",
                 "star": 2,
                 "lv": 1,
-                "atk": 76,
-                "hp": 231,
+                "atk": 92,
+                "hp": 275,
                 "description": "我一辈子只写了这一曲，却流传了几辈子。"
             },
             "123": {
@@ -2676,8 +2678,8 @@ outputTables = {
                 "name": "点化·韩湘子",
                 "star": 3,
                 "lv": 1,
-                "atk": 114,
-                "hp": 408,
+                "atk": 144,
+                "hp": 390,
                 "skill_name": "天籁之音",
                 "skill_id": 9,
                 "description": "不要信什么只可意会不可言传的烂话，那是人家不想告诉你。"
@@ -2688,8 +2690,8 @@ outputTables = {
                 "name": "箫中情·韩湘子",
                 "star": 4,
                 "lv": 1,
-                "atk": 196,
-                "hp": 600,
+                "atk": 179,
+                "hp": 556,
                 "skill_name": "天籁之音",
                 "skill_id": 9,
                 "description": "你会吹箫？是呀！你会吹箫啊？哈哈，有空教你啊！"
@@ -2700,8 +2702,8 @@ outputTables = {
                 "name": "尸解仙·韩湘子",
                 "star": 5,
                 "lv": 1,
-                "atk": 327,
-                "hp": 910,
+                "atk": 255,
+                "hp": 702,
                 "skill_name": "天籁之音",
                 "skill_id": 9,
                 "description": "离开的那天，我的爱与肉身一起，在风中化去了。"
@@ -2712,8 +2714,8 @@ outputTables = {
                 "name": "行医采药·蓝采和",
                 "star": 1,
                 "lv": 1,
-                "atk": 49,
-                "hp": 144,
+                "atk": 40,
+                "hp": 130,
                 "description": "我们那时候行医不用上学，有点植物学基础，会烹饪就行。"
             },
             "127": {
@@ -2722,8 +2724,8 @@ outputTables = {
                 "name": "流浪汉·蓝采和",
                 "star": 2,
                 "lv": 1,
-                "atk": 77,
-                "hp": 238,
+                "atk": 90,
+                "hp": 270,
                 "description": "想和你就这样流浪，一起看雪看星星看月亮，从诗词歌赋谈到人生哲学。"
             },
             "128": {
@@ -2732,8 +2734,8 @@ outputTables = {
                 "name": "万花篮·蓝采和",
                 "star": 3,
                 "lv": 1,
-                "atk": 112,
-                "hp": 410,
+                "atk": 140,
+                "hp": 390,
                 "skill_name": "吐气如兰",
                 "skill_id": 7,
                 "description": "这些年看到好玩的好看的东西，就对着他们念咒语：快到篮里来！"
@@ -2744,8 +2746,8 @@ outputTables = {
                 "name": "阴阳体·蓝采和",
                 "star": 4,
                 "lv": 1,
-                "atk": 195,
-                "hp": 602,
+                "atk": 180,
+                "hp": 560,
                 "skill_name": "吐气如兰",
                 "skill_id": 7,
                 "description": "他们说我是阴阳调和于一体，其实我只是有点伪娘控而已。"
@@ -2756,8 +2758,8 @@ outputTables = {
                 "name": "度仙·蓝采和",
                 "star": 5,
                 "lv": 1,
-                "atk": 327,
-                "hp": 908,
+                "atk": 250,
+                "hp": 710,
                 "skill_name": "吐气如兰",
                 "skill_id": 7,
                 "description": "汉钟离要我跟他走，我知道他的意思，但我还是从了。"
@@ -2768,8 +2770,8 @@ outputTables = {
                 "name": "农夫·牛郎",
                 "star": 1,
                 "lv": 1,
-                "atk": 42,
-                "hp": 141,
+                "atk": 43,
+                "hp": 125,
                 "description": "给地主打工不轻松，不过地主也不容易，省吃俭用才有了这么多地。"
             },
             "132": {
@@ -2778,8 +2780,8 @@ outputTables = {
                 "name": "神牛·牛郎",
                 "star": 2,
                 "lv": 1,
-                "atk": 73,
-                "hp": 238,
+                "atk": 92,
+                "hp": 266,
                 "description": "大哥，你是神牛早点说嘛，能不能给我变个十万八万花花先！"
             },
             "133": {
@@ -2788,8 +2790,8 @@ outputTables = {
                 "name": "更衣室の恋·牛郎",
                 "star": 3,
                 "lv": 1,
-                "atk": 119,
-                "hp": 412,
+                "atk": 144,
+                "hp": 384,
                 "skill_name": "织女情",
                 "skill_id": 9,
                 "description": "死牛给我出的馊主意，要我去偷妹纸的衣服，岛国动作片看多了吧！"
@@ -2800,8 +2802,8 @@ outputTables = {
                 "name": "天庭驸马·牛郎",
                 "star": 4,
                 "lv": 1,
-                "atk": 203,
-                "hp": 604,
+                "atk": 186,
+                "hp": 549,
                 "skill_name": "织女情",
                 "skill_id": 9,
                 "description": "我们驸马界一直都是比较低调的，除了出了个叫陈世美的。"
@@ -2812,8 +2814,8 @@ outputTables = {
                 "name": "牵牛星·牛郎",
                 "star": 5,
                 "lv": 1,
-                "atk": 322,
-                "hp": 908,
+                "atk": 255,
+                "hp": 719,
                 "skill_name": "织女情",
                 "skill_id": 9,
                 "description": "一年才见一次面，见面的时候还被围观，这让我们夫妻情何以堪啊！"
@@ -2824,8 +2826,8 @@ outputTables = {
                 "name": "女红·织女",
                 "star": 1,
                 "lv": 1,
-                "atk": 43,
-                "hp": 140,
+                "atk": 42,
+                "hp": 122,
                 "description": "我做的针线是极好的，针脚密色彩新，配上这图案，是最好不过的了。"
             },
             "137": {
@@ -2834,8 +2836,8 @@ outputTables = {
                 "name": "天浴·织女",
                 "star": 2,
                 "lv": 1,
-                "atk": 72,
-                "hp": 229,
+                "atk": 92,
+                "hp": 262,
                 "description": "我们七姐妹都有个重口味爱好：喜欢去水库里裸泳。"
             },
             "138": {
@@ -2844,8 +2846,8 @@ outputTables = {
                 "name": "天伦·织女",
                 "star": 3,
                 "lv": 1,
-                "atk": 111,
-                "hp": 403,
+                "atk": 132,
+                "hp": 382,
                 "skill_name": "鹊桥泪",
                 "skill_id": 4,
                 "description": "突然有一天有了家有了孩子，你会觉得这世界变得不一样了。"
@@ -2856,8 +2858,8 @@ outputTables = {
                 "name": "七仙姑·织女",
                 "star": 4,
                 "lv": 1,
-                "atk": 189,
-                "hp": 592,
+                "atk": 182,
+                "hp": 552,
                 "skill_name": "鹊桥泪",
                 "skill_id": 4,
                 "description": "牛郎走的第一天，想他；牛郎走的第二天，想他想他；牛郎走的第三天，想他想他想他。"
@@ -2868,8 +2870,8 @@ outputTables = {
                 "name": "七星娘娘·织女",
                 "star": 5,
                 "lv": 1,
-                "atk": 331,
-                "hp": 901,
+                "atk": 242,
+                "hp": 712,
                 "skill_name": "鹊桥泪",
                 "skill_id": 4,
                 "description": "这是个集御姐、人妻、熟女、OL于一身的封号，牛郎肯定会喜欢的。"
@@ -2880,8 +2882,8 @@ outputTables = {
                 "name": "决斗·吴刚",
                 "star": 1,
                 "lv": 1,
-                "atk": 47,
-                "hp": 150,
+                "atk": 33,
+                "hp": 123,
                 "description": "偷情也就算了，还生了三个娃，让我喜当爹三次！"
             },
             "142": {
@@ -2890,8 +2892,8 @@ outputTables = {
                 "name": "刺配·吴刚",
                 "star": 2,
                 "lv": 1,
-                "atk": 79,
-                "hp": 229,
+                "atk": 83,
+                "hp": 263,
                 "description": "我被发配到月球，成为当地第一个原住民，比嫦娥都早。"
             },
             "143": {
@@ -2900,8 +2902,8 @@ outputTables = {
                 "name": "樵夫·吴刚",
                 "star": 3,
                 "lv": 1,
-                "atk": 122,
-                "hp": 394,
+                "atk": 133,
+                "hp": 383,
                 "skill_name": "桂花情",
                 "skill_id": 7,
                 "description": "无聊的时候我就砍砍桂花树，反正砍得没有长得快。"
@@ -2912,8 +2914,8 @@ outputTables = {
                 "name": "逆袭·吴刚",
                 "star": 4,
                 "lv": 1,
-                "atk": 203,
-                "hp": 604,
+                "atk": 183,
+                "hp": 553,
                 "skill_name": "桂花情",
                 "skill_id": 7,
                 "description": "你能理解单身几百年后突然来一个女神和你共处的感受么？"
@@ -2924,8 +2926,8 @@ outputTables = {
                 "name": "桂花仙·吴刚",
                 "star": 5,
                 "lv": 1,
-                "atk": 332,
-                "hp": 911,
+                "atk": 243,
+                "hp": 703,
                 "skill_name": "桂花情",
                 "skill_id": 7,
                 "description": "桂花树下桃花仙，桂花仙人种桂花；从此不砍桂花树，抱得嫦娥躲在家。"
@@ -2936,8 +2938,8 @@ outputTables = {
                 "name": "天书·鬼谷子",
                 "star": 1,
                 "lv": 1,
-                "atk": 40,
-                "hp": 151,
+                "atk": 46,
+                "hp": 133,
                 "description": "不是说好发教材的么？咋发下来的都是白纸？太黑了！"
             },
             "147": {
@@ -2946,8 +2948,8 @@ outputTables = {
                 "name": "纵横术·鬼谷子",
                 "star": 2,
                 "lv": 1,
-                "atk": 80,
-                "hp": 232,
+                "atk": 95,
+                "hp": 262,
                 "description": "作为靠嘴皮子吃饭的鼻祖，我深知其中的不易啊！"
             },
             "148": {
@@ -2956,8 +2958,8 @@ outputTables = {
                 "name": "鬼谷井·鬼谷子",
                 "star": 3,
                 "lv": 1,
-                "atk": 119,
-                "hp": 412,
+                "atk": 145,
+                "hp": 385,
                 "skill_name": "鬼脚七",
                 "skill_id": 2,
                 "description": "我发现一口井，每天晚上播天气预报，然后我就出名了。"
@@ -2968,8 +2970,8 @@ outputTables = {
                 "name": "斩草撒豆·鬼谷子",
                 "star": 4,
                 "lv": 1,
-                "atk": 203,
-                "hp": 608,
+                "atk": 188,
+                "hp": 556,
                 "skill_name": "鬼脚七",
                 "skill_id": 2,
                 "description": "只要你有了想象力，草就可以变成马，豆就可以变成兵。"
@@ -2980,8 +2982,8 @@ outputTables = {
                 "name": "玄微真人·鬼谷子",
                 "star": 5,
                 "lv": 1,
-                "atk": 333,
-                "hp": 909,
+                "atk": 244,
+                "hp": 721,
                 "skill_name": "鬼脚七",
                 "skill_id": 2,
                 "description": "当了神仙后，玉帝给我分了一套别墅，有产权的哦！"
@@ -2993,7 +2995,7 @@ outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 50,
-                "hp": 145,
+                "hp": 131,
                 "description": "相比梅花三弄，我更喜欢保安三问：你是谁？你从哪里来？你要去哪里？"
             },
             "152": {
@@ -3002,8 +3004,8 @@ outputTables = {
                 "name": "爱别离·黑无常",
                 "star": 2,
                 "lv": 1,
-                "atk": 75,
-                "hp": 243,
+                "atk": 102,
+                "hp": 279,
                 "description": "我能想到最浪漫的事，就是和你一起卖卖电脑。"
             },
             "153": {
@@ -3012,8 +3014,8 @@ outputTables = {
                 "name": "怨憎会·黑无常",
                 "star": 3,
                 "lv": 1,
-                "atk": 115,
-                "hp": 432,
+                "atk": 149,
+                "hp": 378,
                 "skill_name": "招魂蟠",
                 "skill_id": 2,
                 "description": "别老练少林72绝技了，多看苍老师的片子可以下火去戾气。"
@@ -3024,8 +3026,8 @@ outputTables = {
                 "name": "求不得·黑无常",
                 "star": 4,
                 "lv": 1,
-                "atk": 192,
-                "hp": 592,
+                "atk": 201,
+                "hp": 549,
                 "skill_name": "招魂蟠",
                 "skill_id": 2,
                 "description": "巨龙巨龙你差两年，永永远远的差两年。"
@@ -3036,8 +3038,8 @@ outputTables = {
                 "name": "五阴盛·黑无常",
                 "star": 5,
                 "lv": 1,
-                "atk": 318,
-                "hp": 938,
+                "atk": 265,
+                "hp": 719,
                 "skill_name": "招魂蟠",
                 "skill_id": 2,
                 "description": "抽刀断水水更流，举杯消愁愁更愁，吃多吃少难吃足。"
@@ -3048,8 +3050,8 @@ outputTables = {
                 "name": "地狱道·白无常",
                 "star": 1,
                 "lv": 1,
-                "atk": 55,
-                "hp": 144,
+                "atk": 53,
+                "hp": 126,
                 "description": "在这里先八寒再八热，经历冰火九重天！……别想歪了。"
             },
             "157": {
@@ -3058,8 +3060,8 @@ outputTables = {
                 "name": "恶鬼道·白无常",
                 "star": 2,
                 "lv": 1,
-                "atk": 79,
-                "hp": 242,
+                "atk": 105,
+                "hp": 277,
                 "description": "咱这儿天天饿着不给你吃饭，但就是饿不死，减肥者禁入！"
             },
             "158": {
@@ -3068,8 +3070,8 @@ outputTables = {
                 "name": "畜生道·白无常",
                 "star": 3,
                 "lv": 1,
-                "atk": 117,
-                "hp": 430,
+                "atk": 154,
+                "hp": 369,
                 "skill_name": "哭丧棒",
                 "skill_id": 1,
                 "description": "我们这儿都是牛啊马啊狗啊啥的，重口味者禁入！"
@@ -3080,8 +3082,8 @@ outputTables = {
                 "name": "阿修罗道·白无常",
                 "star": 4,
                 "lv": 1,
-                "atk": 197,
-                "hp": 590,
+                "atk": 206,
+                "hp": 556,
                 "skill_name": "哭丧棒",
                 "skill_id": 1,
                 "description": "这里打斗比较激烈一些，需要用到皮鞭、绳索、蜡烛等物品。"
@@ -3092,8 +3094,8 @@ outputTables = {
                 "name": "人间道·白无常",
                 "star": 5,
                 "lv": 1,
-                "atk": 320,
-                "hp": 940,
+                "atk": 266,
+                "hp": 666,
                 "skill_name": "哭丧棒",
                 "skill_id": 1,
                 "description": "我们终于回归正常了，各位有特殊癖好的也可以再回去。"
@@ -3104,8 +3106,8 @@ outputTables = {
                 "name": "科员·日游神",
                 "star": 1,
                 "lv": 1,
-                "atk": 56,
-                "hp": 129,
+                "atk": 62,
+                "hp": 125,
                 "description": "我怎么也是个有编制的神，可不是临时工。"
             },
             "162": {
@@ -3114,8 +3116,8 @@ outputTables = {
                 "name": "副科长·日游神",
                 "star": 2,
                 "lv": 1,
-                "atk": 85,
-                "hp": 208,
+                "atk": 112,
+                "hp": 244,
                 "description": "终于走上领导岗位了，虽然还是要整天出来巡街。"
             },
             "163": {
@@ -3124,8 +3126,8 @@ outputTables = {
                 "name": "科长·日游神",
                 "star": 3,
                 "lv": 1,
-                "atk": 135,
-                "hp": 355,
+                "atk": 159,
+                "hp": 374,
                 "skill_name": "日炎拳",
                 "skill_id": 1,
                 "description": "这次能提拔，多亏巨灵神他们给我指了条路。"
@@ -3136,8 +3138,8 @@ outputTables = {
                 "name": "副处长·日游神",
                 "star": 4,
                 "lv": 1,
-                "atk": 228,
-                "hp": 518,
+                "atk": 222,
+                "hp": 519,
                 "skill_name": "日炎拳",
                 "skill_id": 1,
                 "description": "众仙们，我们要以高度负责的精神，认真组织和开展好学习实践活动！"
@@ -3148,8 +3150,8 @@ outputTables = {
                 "name": "处长·日游神",
                 "star": 5,
                 "lv": 1,
-                "atk": 352,
-                "hp": 830,
+                "atk": 268,
+                "hp": 669,
                 "skill_name": "日炎拳",
                 "skill_id": 1,
                 "description": "再过两年要退居二线了，我儿子的仙籍得抓紧办了。"
@@ -3160,8 +3162,8 @@ outputTables = {
                 "name": "士官·夜游神",
                 "star": 1,
                 "lv": 1,
-                "atk": 58,
-                "hp": 124,
+                "atk": 60,
+                "hp": 122,
                 "description": "终于吃上公家饭了，偶尔还可以欺负一下新神仙。"
             },
             "167": {
@@ -3170,8 +3172,8 @@ outputTables = {
                 "name": "中尉·夜游神",
                 "star": 2,
                 "lv": 1,
-                "atk": 89,
-                "hp": 207,
+                "atk": 115,
+                "hp": 246,
                 "skill_id": 1,
                 "description": "相比副连这个很娘的称呼，我更喜欢大家叫我captain。"
             },
@@ -3181,8 +3183,8 @@ outputTables = {
                 "name": "少校·夜游神",
                 "star": 3,
                 "lv": 1,
-                "atk": 137,
-                "hp": 253,
+                "atk": 162,
+                "hp": 373,
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "description": "其实神仙的夜生活很丰富的，很庆幸我负责夜里的巡逻，你懂的。"
@@ -3193,7 +3195,7 @@ outputTables = {
                 "name": "上校·夜游神",
                 "star": 4,
                 "lv": 1,
-                "atk": 230,
+                "atk": 223,
                 "hp": 515,
                 "skill_name": "流星击",
                 "skill_id": 1,
@@ -3205,8 +3207,8 @@ outputTables = {
                 "name": "大校·夜游神",
                 "star": 5,
                 "lv": 1,
-                "atk": 360,
-                "hp": 824,
+                "atk": 279,
+                "hp": 668,
                 "skill_name": "流星击",
                 "description": "笑什么笑，是大校不是大笑，严肃点！"
             },
@@ -3216,7 +3218,7 @@ outputTables = {
                 "name": "瑶草·瑶姬",
                 "star": 1,
                 "lv": 1,
-                "atk": 45,
+                "atk": 48,
                 "hp": 135,
                 "description": "我是一株吃了会让你幸福的草，唯一不幸福的就是我本身。"
             },
@@ -3226,8 +3228,8 @@ outputTables = {
                 "name": "神女峰·瑶姬",
                 "star": 2,
                 "lv": 1,
-                "atk": 76,
-                "hp": 236,
+                "atk": 95,
+                "hp": 256,
                 "description": "我化作一道险峰，等着真心的你来攀登。"
             },
             "173": {
@@ -3236,8 +3238,8 @@ outputTables = {
                 "name": "巫山云雨·瑶姬",
                 "star": 3,
                 "lv": 1,
-                "atk": 116,
-                "hp": 426,
+                "atk": 145,
+                "hp": 380,
                 "skill_name": "巫山云雨",
                 "skill_id": 8,
                 "description": "巫山朝云暮雨的天气很适合野合么？什么大家都跑我这儿来？"
@@ -3248,8 +3250,8 @@ outputTables = {
                 "name": "神女赋·瑶姬",
                 "star": 4,
                 "lv": 1,
-                "atk": 204,
-                "hp": 587,
+                "atk": 201,
+                "hp": 535,
                 "skill_name": "巫山云雨",
                 "skill_id": 8,
                 "description": "我鄙视那些YY我的文章，再经典也是对我的伤害。"
@@ -3260,8 +3262,8 @@ outputTables = {
                 "name": "巫山神女·瑶姬",
                 "star": 5,
                 "lv": 1,
-                "atk": 321,
-                "hp": 934,
+                "atk": 275,
+                "hp": 730,
                 "skill_name": "巫山云雨",
                 "skill_id": 8,
                 "description": "曾经沧海难为水，除却巫山不是云。"
@@ -3272,8 +3274,8 @@ outputTables = {
                 "name": "公主驾到·精卫",
                 "star": 1,
                 "lv": 1,
-                "atk": 47,
-                "hp": 132,
+                "atk": 45,
+                "hp": 136,
                 "description": "虽然咱们部落没多少人，但我也算是个公主呀！"
             },
             "177": {
@@ -3282,8 +3284,8 @@ outputTables = {
                 "name": "海泳·精卫",
                 "star": 2,
                 "lv": 1,
-                "atk": 73,
-                "hp": 230,
+                "atk": 106,
+                "hp": 258,
                 "description": "这么多姐姐在湖里洗个澡就泡到了帅哥，那我必须得去海里啊。"
             },
             "178": {
@@ -3292,8 +3294,8 @@ outputTables = {
                 "name": "东海遇·精卫",
                 "star": 3,
                 "lv": 1,
-                "atk": 112,
-                "hp": 430,
+                "atk": 151,
+                "hp": 381,
                 "skill_name": "碧波滔天",
                 "skill_id": 3,
                 "description": "不喜欢就是不喜欢，龙王太子又如何！"
@@ -3305,7 +3307,7 @@ outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 200,
-                "hp": 585,
+                "hp": 536,
                 "skill_name": "碧波滔天",
                 "skill_id": 3,
                 "description": "再逼我就跳海，死了我也不放过你！"
@@ -3316,8 +3318,8 @@ outputTables = {
                 "name": "化鸟·精卫",
                 "star": 5,
                 "lv": 1,
-                "atk": 329,
-                "hp": 931,
+                "atk": 280,
+                "hp": 721,
                 "skill_name": "碧波滔天",
                 "skill_id": 3,
                 "description": "我知道海不可能被填平，我只是想告诉后面的姐妹他是个什么样的男人。"
@@ -3328,8 +3330,8 @@ outputTables = {
                 "name": "巨人·夸父",
                 "star": 1,
                 "lv": 1,
-                "atk": 43,
-                "hp": 135,
+                "atk": 53,
+                "hp": 133,
                 "description": "不是每一瓶牛奶都可以叫特仑苏，不是每一个巨人都可以成为夸父。"
             },
             "182": {
@@ -3338,8 +3340,8 @@ outputTables = {
                 "name": "守护者·夸父",
                 "star": 2,
                 "lv": 1,
-                "atk": 70,
-                "hp": 233,
+                "atk": 99,
+                "hp": 261,
                 "description": "我不是你的优乐美，我是你的守护神！"
             },
             "183": {
@@ -3348,8 +3350,8 @@ outputTables = {
                 "name": "星降术·夸父",
                 "star": 3,
                 "lv": 1,
-                "atk": 110,
-                "hp": 431,
+                "atk": 150,
+                "hp": 391,
                 "skill_name": "大地之怒",
                 "skill_id": 5,
                 "description": "快使用星将术，哼哼哈嘿，快爆发小宇宙，伊莫拉沙！"
@@ -3360,8 +3362,8 @@ outputTables = {
                 "name": "神行·夸父",
                 "star": 4,
                 "lv": 1,
-                "atk": 207,
-                "hp": 588,
+                "atk": 202,
+                "hp": 540,
                 "skill_name": "大地之怒",
                 "skill_id": 5,
                 "description": "田径运动员比赛前都会拜拜我，我是他们这行的祖师爷。"
@@ -3372,8 +3374,8 @@ outputTables = {
                 "name": "逐日·夸父",
                 "star": 5,
                 "lv": 1,
-                "atk": 331,
-                "hp": 934,
+                "atk": 279,
+                "hp": 731,
                 "skill_name": "大地之怒",
                 "skill_id": 5,
                 "description": "别问我为什么要追日，除非你不抗日！"
@@ -3384,8 +3386,8 @@ outputTables = {
                 "name": "箭客·后羿",
                 "star": 1,
                 "lv": 1,
-                "atk": 46,
-                "hp": 130,
+                "atk": 44,
+                "hp": 141,
                 "description": "我喜欢射，我喜欢箭，我是箭客！"
             },
             "187": {
@@ -3394,8 +3396,8 @@ outputTables = {
                 "name": "失嫦娥·后羿",
                 "star": 2,
                 "lv": 1,
-                "atk": 75,
-                "hp": 231,
+                "atk": 93,
+                "hp": 261,
                 "description": "那天，她要我跟她走，我没答应，她太自信了，以为我一定会跟她走。"
             },
             "188": {
@@ -3404,8 +3406,8 @@ outputTables = {
                 "name": "七弦·后羿",
                 "star": 3,
                 "lv": 1,
-                "atk": 114,
-                "hp": 428,
+                "atk": 144,
+                "hp": 388,
                 "skill_name": "穿云箭",
                 "skill_id": 4,
                 "description": "当我第一次见到宓妃时，她在弹一把七弦琴，后来她有一个好听的名字：洛神。"
@@ -3416,8 +3418,8 @@ outputTables = {
                 "name": "射日·后羿",
                 "star": 4,
                 "lv": 1,
-                "atk": 202,
-                "hp": 565,
+                "atk": 205,
+                "hp": 541,
                 "skill_name": "穿云箭",
                 "skill_id": 4,
                 "description": "唯有射下那九个太阳，才能压下我内心的怒火。"
@@ -3428,8 +3430,8 @@ outputTables = {
                 "name": "宗布神·后羿",
                 "star": 5,
                 "lv": 1,
-                "atk": 324,
-                "hp": 939,
+                "atk": 277,
+                "hp": 729,
                 "skill_name": "穿云箭",
                 "skill_id": 4,
                 "description": "有人在我坟前的桃树下唱歌：我在这儿等着你回来……"
@@ -3440,8 +3442,8 @@ outputTables = {
                 "name": "郎才女貌·嫦娥",
                 "star": 1,
                 "lv": 1,
-                "atk": 57,
-                "hp": 130,
+                "atk": 62,
+                "hp": 122,
                 "description": "后羿是个神射手，嫁给他我很幸福，你懂的。"
             },
             "192": {
@@ -3450,8 +3452,8 @@ outputTables = {
                 "name": "奔月·嫦娥",
                 "star": 2,
                 "lv": 1,
-                "atk": 84,
-                "hp": 221,
+                "atk": 105,
+                "hp": 233,
                 "description": "老公出差不在家，我出去happy嗑个药就飞到了月亮上。"
             },
             "193": {
@@ -3460,8 +3462,8 @@ outputTables = {
                 "name": "捣药·嫦娥",
                 "star": 3,
                 "lv": 1,
-                "atk": 141,
-                "hp": 385,
+                "atk": 159,
+                "hp": 352,
                 "skill_name": "天音玄",
                 "skill_id": 10,
                 "description": "天杀的王母，跟我演甄嬛传，让我天天在月宫捣药！"
@@ -3472,8 +3474,8 @@ outputTables = {
                 "name": "真爱·嫦娥",
                 "star": 4,
                 "lv": 1,
-                "atk": 230,
-                "hp": 546,
+                "atk": 212,
+                "hp": 502,
                 "skill_name": "天音玄",
                 "skill_id": 10,
                 "description": "命运让我离开了后羿，却又给我送来了吴刚，我只能呵呵。"
@@ -3484,8 +3486,8 @@ outputTables = {
                 "name": "月光女神·嫦娥",
                 "star": 5,
                 "lv": 1,
-                "atk": 360,
-                "hp": 852,
+                "atk": 290,
+                "hp": 647,
                 "skill_name": "天音玄",
                 "skill_id": 10,
                 "description": "想我的时候，打一盘Luna地图或是看看钱包。"
@@ -3496,8 +3498,8 @@ outputTables = {
                 "name": "无名巨人·刑天",
                 "star": 1,
                 "lv": 1,
-                "atk": 58,
-                "hp": 129,
+                "atk": 61,
+                "hp": 120,
                 "description": "我的身材和我的名字一样威武。"
             },
             "197": {
@@ -3506,8 +3508,8 @@ outputTables = {
                 "name": "文艺青年·刑天",
                 "star": 2,
                 "lv": 1,
-                "atk": 86,
-                "hp": 220,
+                "atk": 103,
+                "hp": 230,
                 "description": "业余时间我也写写诗歌，在微博上发发鸡汤文。"
             },
             "198": {
@@ -3516,8 +3518,8 @@ outputTables = {
                 "name": "求战·刑天",
                 "star": 3,
                 "lv": 1,
-                "atk": 145,
-                "hp": 383,
+                "atk": 160,
+                "hp": 350,
                 "skill_name": "天杀",
                 "skill_id": 1,
                 "description": "出来混的就是要讲义气嘛，打个架婆婆妈妈的最不爽了。"
@@ -3528,8 +3530,8 @@ outputTables = {
                 "name": "永不妥协·刑天",
                 "star": 4,
                 "lv": 1,
-                "atk": 233,
-                "hp": 542,
+                "atk": 215,
+                "hp": 500,
                 "skill_name": "天杀",
                 "skill_id": 1,
                 "description": "虽千万人吾往矣，这才是亮剑精神！"
@@ -3540,8 +3542,8 @@ outputTables = {
                 "name": "无首战神·刑天",
                 "star": 5,
                 "lv": 1,
-                "atk": 364,
-                "hp": 848,
+                "atk": 299,
+                "hp": 644,
                 "skill_name": "天杀",
                 "skill_id": 1,
                 "description": "自从没了脑袋，打架灵活多了，也不用护头护脑了。"
@@ -3552,8 +3554,8 @@ outputTables = {
                 "name": "拜师·沉香",
                 "star": 1,
                 "lv": 1,
-                "atk": 53,
-                "hp": 133,
+                "atk": 55,
+                "hp": 119,
                 "description": "我师父早年跳霹雳舞，成仙后大家都叫他霹雳大仙。"
             },
             "202": {
@@ -3562,8 +3564,8 @@ outputTables = {
                 "name": "宣花斧·沉香",
                 "star": 2,
                 "lv": 1,
-                "atk": 82,
-                "hp": 225,
+                "atk": 109,
+                "hp": 234,
                 "description": "幸福生活不能光靠手，所以师父给了我把宣花斧。"
             },
             "203": {
@@ -3572,8 +3574,8 @@ outputTables = {
                 "name": "战三眼·沉香",
                 "star": 3,
                 "lv": 1,
-                "atk": 141,
-                "hp": 386,
+                "atk": 162,
+                "hp": 355,
                 "skill_name": "开山裂地",
                 "skill_id": 6,
                 "description": "你能救母，我也能救母，我是沉香，我为我自己代言。"
@@ -3584,8 +3586,8 @@ outputTables = {
                 "name": "劈山·沉香",
                 "star": 4,
                 "lv": 1,
-                "atk": 231,
-                "hp": 547,
+                "atk": 221,
+                "hp": 498,
                 "skill_name": "开山裂地",
                 "skill_id": 6,
                 "description": "别人走路我爬山，别人劈柴我劈山。"
@@ -3596,8 +3598,8 @@ outputTables = {
                 "name": "宝莲灯·沉香",
                 "star": 5,
                 "lv": 1,
-                "atk": 362,
-                "hp": 851,
+                "atk": 296,
+                "hp": 644,
                 "skill_name": "开山裂地",
                 "skill_id": 6,
                 "description": "每次点上这个灯，都会发出悦耳的音乐：等灯等灯。"
@@ -3608,8 +3610,8 @@ outputTables = {
                 "name": "修缘·济公",
                 "star": 1,
                 "lv": 1,
-                "atk": 51,
-                "hp": 134,
+                "atk": 58,
+                "hp": 125,
                 "description": "呐，不要说我没有提醒你，修行呢，最要紧的是开心！"
             },
             "207": {
@@ -3618,8 +3620,8 @@ outputTables = {
                 "name": "颠·济公",
                 "star": 2,
                 "lv": 1,
-                "atk": 86,
-                "hp": 221,
+                "atk": 106,
+                "hp": 235,
                 "description": "别人笑我太疯癫，我笑他人看不穿。"
             },
             "208": {
@@ -3628,8 +3630,8 @@ outputTables = {
                 "name": "酒肉和尚·济公",
                 "star": 3,
                 "lv": 1,
-                "atk": 149,
-                "hp": 381,
+                "atk": 155,
+                "hp": 355,
                 "skill_name": "舍生取义",
                 "skill_id": 8,
                 "description": "别以为喝酒吃肉就能修成正果，你看鲁智深就知道了。"
@@ -3640,8 +3642,8 @@ outputTables = {
                 "name": "降龙罗汉·济公",
                 "star": 4,
                 "lv": 1,
-                "atk": 238,
-                "hp": 540,
+                "atk": 216,
+                "hp": 505,
                 "skill_name": "舍生取义",
                 "skill_id": 8,
                 "description": "左右两边是十八罗汉，降龙伏虎在这一边，至于求子就要拜观音大士。"
@@ -3652,8 +3654,8 @@ outputTables = {
                 "name": "降龙尊者·济公",
                 "star": 5,
                 "lv": 1,
-                "atk": 366,
-                "hp": 847,
+                "atk": 288,
+                "hp": 660,
                 "skill_name": "舍生取义",
                 "skill_id": 8,
                 "description": "我想代表天宫向凡间宣扬爱心，让他们明白只要有爱，哪里都是天堂。"
@@ -3664,7 +3666,7 @@ outputTables = {
                 "name": "错嫁·宓妃",
                 "star": 1,
                 "lv": 1,
-                "atk": 56,
+                "atk": 51,
                 "hp": 121,
                 "description": "嫁给河伯是我一生最大的错。"
             },
@@ -3674,8 +3676,8 @@ outputTables = {
                 "name": "洛书·宓妃",
                 "star": 2,
                 "lv": 1,
-                "atk": 87,
-                "hp": 221,
+                "atk": 101,
+                "hp": 251,
                 "description": "我献出洛书，只是想离开这个人。"
             },
             "213": {
@@ -3684,8 +3686,8 @@ outputTables = {
                 "name": "真爱·宓妃",
                 "star": 3,
                 "lv": 1,
-                "atk": 131,
-                "hp": 382,
+                "atk": 151,
+                "hp": 371,
                 "skill_name": "水乳之欢",
                 "skill_id": 2,
                 "description": "第一次见到他的时候，我就记住了他的名字：后羿。"
@@ -3696,8 +3698,8 @@ outputTables = {
                 "name": "洛水三千·宓妃",
                 "star": 4,
                 "lv": 1,
-                "atk": 215,
-                "hp": 545,
+                "atk": 201,
+                "hp": 521,
                 "skill_name": "水乳之欢",
                 "skill_id": 2,
                 "description": "既然无法陪伴左右，不如化为这护城的洛水守护你。"
@@ -3708,8 +3710,8 @@ outputTables = {
                 "name": "洛神·宓妃",
                 "star": 5,
                 "lv": 1,
-                "atk": 342,
-                "hp": 849,
+                "atk": 271,
+                "hp": 671,
                 "skill_name": "水乳之欢",
                 "skill_id": 2,
                 "description": "仿佛兮若轻云之蔽月，飘飘兮若流风之回雪。"
@@ -3720,8 +3722,8 @@ outputTables = {
                 "name": "长生之道·张道陵",
                 "star": 1,
                 "lv": 1,
-                "atk": 57,
-                "hp": 120,
+                "atk": 49,
+                "hp": 126,
                 "description": "大叔说我骨骼惊奇，是练丹的奇才，才卖我一本《九鼎炼丹秘方》。"
             },
             "217": {
@@ -3730,8 +3732,8 @@ outputTables = {
                 "name": "神医·张道陵",
                 "star": 2,
                 "lv": 1,
-                "atk": 89,
-                "hp": 217,
+                "atk": 106,
+                "hp": 248,
                 "description": "不听话就会生病，生病就要找我，找我就要听话，这个逻辑你懂的吧？"
             },
             "218": {
@@ -3740,8 +3742,8 @@ outputTables = {
                 "name": "授术·张道陵",
                 "star": 3,
                 "lv": 1,
-                "atk": 137,
-                "hp": 380,
+                "atk": 158,
+                "hp": 374,
                 "skill_name": "无米之炊",
                 "skill_id": 1,
                 "description": "考验徒弟说到底就是洗脑，能洗的就教，不能洗的咱就说考验没通过。"
@@ -3752,8 +3754,8 @@ outputTables = {
                 "name": "五斗米·张道陵",
                 "star": 4,
                 "lv": 1,
-                "atk": 220,
-                "hp": 550,
+                "atk": 203,
+                "hp": 531,
                 "skill_name": "无米之炊",
                 "skill_id": 1,
                 "description": "想入会？交五斗米。慢着，这是报名费，交学费后面排队去。"
@@ -3764,8 +3766,8 @@ outputTables = {
                 "name": "天师·张道陵",
                 "star": 5,
                 "lv": 1,
-                "atk": 347,
-                "hp": 845,
+                "atk": 274,
+                "hp": 678,
                 "skill_name": "无米之炊",
                 "skill_id": 1,
                 "description": "我是五斗米教扛把子，你知道什么叫不准勾引二嫂么？"
@@ -3776,8 +3778,8 @@ outputTables = {
                 "name": "日高一平·修罗王",
                 "star": 1,
                 "lv": 1,
-                "atk": 53,
-                "hp": 126,
+                "atk": 48,
+                "hp": 123,
                 "description": "师父曾经说过，如果把我和阿凯加起来，再除二就是十全十美了。"
             },
             "222": {
@@ -3786,8 +3788,8 @@ outputTables = {
                 "name": "变身·修罗王",
                 "star": 2,
                 "lv": 1,
-                "atk": 92,
-                "hp": 214,
+                "atk": 99,
+                "hp": 256,
                 "description": "我肚子一饿就会失去战意，连脱战甲的时间都等不了。"
             },
             "223": {
@@ -3796,8 +3798,8 @@ outputTables = {
                 "name": "魔破拳·修罗王",
                 "star": 3,
                 "lv": 1,
-                "atk": 133,
-                "hp": 388,
+                "atk": 153,
+                "hp": 374,
                 "skill_name": "五世修罗",
                 "skill_id": 6,
                 "description": "这拳打出来之前，得先做一次全身运动，比较费时间。"
@@ -3808,8 +3810,8 @@ outputTables = {
                 "name": "梵天战甲·修罗王",
                 "star": 4,
                 "lv": 1,
-                "atk": 224,
-                "hp": 545,
+                "atk": 203,
+                "hp": 531,
                 "skill_name": "五世修罗",
                 "skill_id": 6,
                 "description": "这战甲酷毙了！就是穿着太占地方，容易卡门，脱了也不能缩小存放。"
@@ -3820,8 +3822,8 @@ outputTables = {
                 "name": "创造神·修罗王",
                 "star": 5,
                 "lv": 1,
-                "atk": 343,
-                "hp": 851,
+                "atk": 274,
+                "hp": 675,
                 "skill_name": "五世修罗",
                 "skill_id": 6,
                 "description": "有创造神就会有破坏神，还会有调和神，我们都只是棋子。"
@@ -3832,8 +3834,8 @@ outputTables = {
                 "name": "力伽·迦楼罗王",
                 "star": 1,
                 "lv": 1,
-                "atk": 51,
-                "hp": 129,
+                "atk": 45,
+                "hp": 115,
                 "description": "我是迦楼罗王力迦，天空界最帅的男人，没有之一。"
             },
             "227": {
@@ -3842,8 +3844,8 @@ outputTables = {
                 "name": "凤凰·迦楼罗王",
                 "star": 2,
                 "lv": 1,
-                "atk": 87,
-                "hp": 211,
+                "atk": 106,
+                "hp": 256,
                 "description": "凤凰会涅槃，我没有那么容易死。"
             },
             "228": {
@@ -3852,8 +3854,8 @@ outputTables = {
                 "name": "羽吹雪·迦楼罗王",
                 "star": 3,
                 "lv": 1,
-                "atk": 133,
-                "hp": 384,
+                "atk": 155,
+                "hp": 379,
                 "skill_name": "罗汉印",
                 "skill_id": 1,
                 "description": "我吹的是血，不是雪。"
@@ -3864,8 +3866,8 @@ outputTables = {
                 "name": "火翼阵·迦楼罗王",
                 "star": 4,
                 "lv": 1,
-                "atk": 226,
-                "hp": 541,
+                "atk": 208,
+                "hp": 530,
                 "skill_name": "罗汉印",
                 "skill_id": 1,
                 "description": "就像飞蛾扑火，明知不可能，还是要义无反顾的燃烧自己。"
@@ -3876,8 +3878,8 @@ outputTables = {
                 "name": "众鸟之王·迦楼罗王",
                 "star": 5,
                 "lv": 1,
-                "atk": 344,
-                "hp": 849,
+                "atk": 280,
+                "hp": 689,
                 "skill_name": "罗汉印",
                 "skill_id": 1,
                 "description": "每个人都有一个大鸟梦，而我的是众鸟之王。"
@@ -3888,8 +3890,8 @@ outputTables = {
                 "name": "莲伽·紧那罗王",
                 "star": 1,
                 "lv": 1,
-                "atk": 59,
-                "hp": 121,
+                "atk": 55,
+                "hp": 116,
                 "description": "谁说女孩不能做神将，我就是神将中的神将——八部众！"
             },
             "232": {
@@ -3898,8 +3900,8 @@ outputTables = {
                 "name": "爱与恨·紧那罗王",
                 "star": 2,
                 "lv": 1,
-                "atk": 91,
-                "hp": 212,
+                "atk": 106,
+                "hp": 254,
                 "description": "我无法说服自己爱上一个浪子，对不起，马里千。"
             },
             "233": {
@@ -3908,8 +3910,8 @@ outputTables = {
                 "name": "天王情·紧那罗王",
                 "star": 3,
                 "lv": 1,
-                "atk": 134,
-                "hp": 386,
+                "atk": 147,
+                "hp": 376,
                 "skill_name": "八部众",
                 "skill_id": 1,
                 "description": "如果非要做一个选择，就让我死在乔伽的手下吧。"
@@ -3920,8 +3922,8 @@ outputTables = {
                 "name": "宿命·紧那罗王",
                 "star": 4,
                 "lv": 1,
-                "atk": 222,
-                "hp": 555,
+                "atk": 206,
+                "hp": 523,
                 "skill_name": "八部众",
                 "skill_id": 1,
                 "description": "屈服黑暗是他的宿命，执迷不悟是我的宿命。"
@@ -3932,8 +3934,8 @@ outputTables = {
                 "name": "无双环·紧那罗王",
                 "star": 5,
                 "lv": 1,
-                "atk": 349,
-                "hp": 841,
+                "atk": 265,
+                "hp": 670,
                 "skill_name": "八部众",
                 "skill_id": 1,
                 "description": "既然无法在一起，那就把我的武器叫做无双环吧。"
@@ -3945,7 +3947,7 @@ outputTables = {
                 "star": 1,
                 "lv": 1,
                 "atk": 44,
-                "hp": 130,
+                "hp": 133,
                 "description": "他们笑我三只眼，是嫉妒我比他们看的更清楚，可这也是我的烦恼。"
             },
             "237": {
@@ -3954,8 +3956,8 @@ outputTables = {
                 "name": "啸天·杨戬",
                 "star": 2,
                 "lv": 1,
-                "atk": 72,
-                "hp": 225,
+                "atk": 89,
+                "hp": 285,
                 "description": "当所有的人，离开我的时候，你劝我要安静从容。谢谢你，哮天犬。"
             },
             "238": {
@@ -3964,8 +3966,8 @@ outputTables = {
                 "name": "仙·杨戬",
                 "star": 3,
                 "lv": 1,
-                "atk": 113,
-                "hp": 420,
+                "atk": 138,
+                "hp": 402,
                 "skill_name": "三只眼",
                 "skill_id": 4,
                 "description": "在小庙里当神仙没什么不好，大庙里的神仙很大，心眼却很小。"
@@ -3976,8 +3978,8 @@ outputTables = {
                 "name": "神·杨戬",
                 "star": 4,
                 "lv": 1,
-                "atk": 193,
-                "hp": 595,
+                "atk": 180,
+                "hp": 555,
                 "skill_name": "三只眼",
                 "skill_id": 4,
                 "description": "英雄惜英雄只是电影里的桥段，你挑衅我的狗我就跟你拼命！"
@@ -3988,8 +3990,8 @@ outputTables = {
                 "name": "二郎神·杨戬",
                 "star": 5,
                 "lv": 1,
-                "atk": 321,
-                "hp": 920,
+                "atk": 250,
+                "hp": 718,
                 "skill_name": "三只眼",
                 "skill_id": 4,
                 "description": "很多年之后，我有个绰号叫“二郎神”，其实我不二。"
@@ -4000,8 +4002,8 @@ outputTables = {
                 "name": "异人·哪吒",
                 "star": 1,
                 "lv": 1,
-                "atk": 49,
-                "hp": 128,
+                "atk": 46,
+                "hp": 140,
                 "description": "他们说我爹不喜欢我，是因为我不姓李，可名字是谁起的呢？"
             },
             "242": {
@@ -4010,8 +4012,8 @@ outputTables = {
                 "name": "小仙·哪吒",
                 "star": 2,
                 "lv": 1,
-                "atk": 78,
-                "hp": 221,
+                "atk": 92,
+                "hp": 290,
                 "description": "我知道我的兵器看起来有点娘，你如果不服，可以来试试。"
             },
             "243": {
@@ -4020,8 +4022,8 @@ outputTables = {
                 "name": "神臂·哪吒",
                 "star": 3,
                 "lv": 1,
-                "atk": 119,
-                "hp": 591,
+                "atk": 141,
+                "hp": 410,
                 "skill_name": "龙骨枪",
                 "skill_id": 1,
                 "description": "我家有一把乾坤弓，拿来咱们一起去打麻雀吧！"
@@ -4033,7 +4035,7 @@ outputTables = {
                 "star": 4,
                 "lv": 1,
                 "atk": 192,
-                "hp": 597,
+                "hp": 560,
                 "skill_name": "龙骨枪",
                 "skill_id": 1,
                 "description": "公海里的海鲜是不是谁都可以捕捞？我想捉条龙。"
@@ -4044,8 +4046,8 @@ outputTables = {
                 "name": "不死·哪吒",
                 "star": 5,
                 "lv": 1,
-                "atk": 328,
-                "hp": 915,
+                "atk": 262,
+                "hp": 720,
                 "skill_name": "龙骨枪",
                 "skill_id": 1,
                 "description": "那年开始，我忘记了很多事情，师父说，那就好。"
@@ -4056,8 +4058,8 @@ outputTables = {
                 "name": "灯芯·紫霞",
                 "star": 1,
                 "lv": 1,
-                "atk": 41,
-                "hp": 132,
+                "atk": 55,
+                "hp": 136,
                 "description": "我本是日月神灯的灯芯，负责白天点亮，觉得有点浪费，就跑出来了。"
             },
             "247": {
@@ -4066,8 +4068,8 @@ outputTables = {
                 "name": "盘丝大仙·紫霞",
                 "star": 2,
                 "lv": 1,
-                "atk": 75,
-                "hp": 226,
+                "atk": 91,
+                "hp": 290,
                 "description": "要不是一时性起，我才不会起这么个像蜘蛛精一样的名字呢。"
             },
             "248": {
@@ -4076,8 +4078,8 @@ outputTables = {
                 "name": "紫青宝剑·紫霞",
                 "star": 3,
                 "lv": 1,
-                "atk": 115,
-                "hp": 597,
+                "atk": 141,
+                "hp": 410,
                 "skill_name": "月光宝盒",
                 "skill_id": 10,
                 "description": "拔出宝剑就能娶我，你还不明白我那颗恨嫁的心么？"
@@ -4088,8 +4090,8 @@ outputTables = {
                 "name": "月光宝盒·紫霞",
                 "star": 4,
                 "lv": 1,
-                "atk": 194,
-                "hp": 593,
+                "atk": 185,
+                "hp": 556,
                 "skill_name": "月光宝盒",
                 "skill_id": 10,
                 "description": "回到过去我可以当什么都没发生，虽然不能拥有，但我可以不去忘记。"
@@ -4100,8 +4102,8 @@ outputTables = {
                 "name": "七色云彩·紫霞",
                 "star": 5,
                 "lv": 1,
-                "atk": 322,
-                "hp": 920,
+                "atk": 255,
+                "hp": 725,
                 "skill_name": "月光宝盒",
                 "skill_id": 10,
                 "description": "意中人你驾着七色云彩慢慢飞，小心前面带刺的玫瑰。"
@@ -4112,10 +4114,10 @@ outputTables = {
                 "name": "恶·鬼谷子",
                 "star": 1,
                 "lv": 1,
-                "atk": 59,
-                "hp": 120,
+                "atk": 5,
+                "hp": 10,
                 "url": 1,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10001": {
                 "id": 10001,
@@ -4123,10 +4125,10 @@ outputTables = {
                 "name": "恶·黑无常",
                 "star": 1,
                 "lv": 1,
-                "atk": 100,
-                "hp": 195,
+                "atk": 5,
+                "hp": 10,
                 "url": 2,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10002": {
                 "id": 10002,
@@ -4134,10 +4136,10 @@ outputTables = {
                 "name": "恶·白无常",
                 "star": 1,
                 "lv": 1,
-                "atk": 45,
-                "hp": 140,
+                "atk": 5,
+                "hp": 10,
                 "url": 3,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10003": {
                 "id": 10003,
@@ -4145,10 +4147,10 @@ outputTables = {
                 "name": "恶·日游神",
                 "star": 1,
                 "lv": 1,
-                "atk": 79,
-                "hp": 221,
+                "atk": 5,
+                "hp": 10,
                 "url": 4,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10004": {
                 "id": 10004,
@@ -4156,10 +4158,10 @@ outputTables = {
                 "name": "恶·夜游神",
                 "star": 1,
                 "lv": 1,
-                "atk": 51,
-                "hp": 129,
+                "atk": 5,
+                "hp": 10,
                 "url": 5,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10005": {
                 "id": 10005,
@@ -4167,10 +4169,10 @@ outputTables = {
                 "name": "恶·宓妃",
                 "star": 1,
                 "lv": 1,
-                "atk": 82,
-                "hp": 208,
+                "atk": 5,
+                "hp": 10,
                 "url": 6,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10006": {
                 "id": 10006,
@@ -4178,10 +4180,10 @@ outputTables = {
                 "name": "恶·张道陵",
                 "star": 1,
                 "lv": 1,
-                "atk": 47,
-                "hp": 131,
+                "atk": 5,
+                "hp": 10,
                 "url": 1,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10007": {
                 "id": 10007,
@@ -4189,10 +4191,10 @@ outputTables = {
                 "name": "恶·修罗王",
                 "star": 1,
                 "lv": 1,
-                "atk": 75,
-                "hp": 211,
+                "atk": 5,
+                "hp": 10,
                 "url": 2,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10008": {
                 "id": 10008,
@@ -4200,10 +4202,10 @@ outputTables = {
                 "name": "恶·迦楼罗王",
                 "star": 1,
                 "lv": 1,
-                "atk": 53,
-                "hp": 121,
+                "atk": 5,
+                "hp": 10,
                 "url": 3,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10009": {
                 "id": 10009,
@@ -4211,10 +4213,10 @@ outputTables = {
                 "name": "恶·紧那罗王",
                 "star": 1,
                 "lv": 1,
-                "atk": 82,
-                "hp": 195,
+                "atk": 5,
+                "hp": 10,
                 "url": 4,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10010": {
                 "id": 10010,
@@ -4222,10 +4224,10 @@ outputTables = {
                 "name": "恶·紫霞",
                 "star": 1,
                 "lv": 1,
-                "atk": 61,
-                "hp": 115,
+                "atk": 5,
+                "hp": 10,
                 "url": 5,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10011": {
                 "id": 10011,
@@ -4233,10 +4235,10 @@ outputTables = {
                 "name": "恶·金蝉子",
                 "star": 1,
                 "lv": 1,
-                "atk": 95,
-                "hp": 186,
+                "atk": 5,
+                "hp": 10,
                 "url": 6,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10012": {
                 "id": 10012,
@@ -4244,10 +4246,10 @@ outputTables = {
                 "name": "恶·铁扇公主",
                 "star": 1,
                 "lv": 1,
-                "atk": 51,
-                "hp": 130,
+                "atk": 5,
+                "hp": 10,
                 "url": 1,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10013": {
                 "id": 10013,
@@ -4255,10 +4257,10 @@ outputTables = {
                 "name": "恶·沙僧",
                 "star": 1,
                 "lv": 1,
-                "atk": 82,
-                "hp": 220,
+                "atk": 5,
+                "hp": 10,
                 "url": 2,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10014": {
                 "id": 10014,
@@ -4266,10 +4268,10 @@ outputTables = {
                 "name": "恶·牛魔王",
                 "star": 1,
                 "lv": 1,
-                "atk": 56,
-                "hp": 134,
+                "atk": 5,
+                "hp": 10,
                 "url": 3,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10015": {
                 "id": 10015,
@@ -4277,10 +4279,10 @@ outputTables = {
                 "name": "恶·巨灵神",
                 "star": 1,
                 "lv": 1,
-                "atk": 86,
-                "hp": 226,
+                "atk": 5,
+                "hp": 10,
                 "url": 4,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10016": {
                 "id": 10016,
@@ -4288,10 +4290,10 @@ outputTables = {
                 "name": "恶·红孩儿",
                 "star": 1,
                 "lv": 1,
-                "atk": 53,
-                "hp": 139,
+                "atk": 5,
+                "hp": 10,
                 "url": 5,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10017": {
                 "id": 10017,
@@ -4299,10 +4301,10 @@ outputTables = {
                 "name": "恶·黄飞虎",
                 "star": 1,
                 "lv": 1,
-                "atk": 86,
-                "hp": 223,
+                "atk": 5,
+                "hp": 10,
                 "url": 6,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10018": {
                 "id": 10018,
@@ -4310,10 +4312,10 @@ outputTables = {
                 "name": "恶·孙悟空",
                 "star": 1,
                 "lv": 1,
-                "atk": 53,
-                "hp": 140,
+                "atk": 5,
+                "hp": 10,
                 "url": 1,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10019": {
                 "id": 10019,
@@ -4321,10 +4323,10 @@ outputTables = {
                 "name": "恶·猪八戒",
                 "star": 1,
                 "lv": 1,
-                "atk": 86,
-                "hp": 227,
+                "atk": 5,
+                "hp": 10,
                 "url": 2,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10020": {
                 "id": 10020,
@@ -4332,10 +4334,10 @@ outputTables = {
                 "name": "恶·杨戬",
                 "star": 1,
                 "lv": 1,
-                "atk": 55,
-                "hp": 120,
+                "atk": 5,
+                "hp": 10,
                 "url": 3,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10021": {
                 "id": 10021,
@@ -4343,10 +4345,10 @@ outputTables = {
                 "name": "恶·哪吒",
                 "star": 1,
                 "lv": 1,
-                "atk": 85,
-                "hp": 195,
+                "atk": 5,
+                "hp": 10,
                 "url": 4,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10022": {
                 "id": 10022,
@@ -4354,10 +4356,10 @@ outputTables = {
                 "name": "恶·赵公明",
                 "star": 1,
                 "lv": 1,
-                "atk": 54,
-                "hp": 125,
+                "atk": 5,
+                "hp": 10,
                 "url": 5,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10023": {
                 "id": 10023,
@@ -4365,10 +4367,10 @@ outputTables = {
                 "name": "恶·申公豹",
                 "star": 1,
                 "lv": 1,
-                "atk": 88,
-                "hp": 190,
+                "atk": 5,
+                "hp": 10,
                 "url": 6,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10024": {
                 "id": 10024,
@@ -4376,10 +4378,10 @@ outputTables = {
                 "name": "恶·土行孙",
                 "star": 1,
                 "lv": 1,
-                "atk": 58,
-                "hp": 120,
+                "atk": 5,
+                "hp": 10,
                 "url": 1,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10025": {
                 "id": 10025,
@@ -4387,10 +4389,10 @@ outputTables = {
                 "name": "恶·法海",
                 "star": 1,
                 "lv": 1,
-                "atk": 87,
-                "hp": 192,
+                "atk": 5,
+                "hp": 10,
                 "url": 2,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10026": {
                 "id": 10026,
@@ -4398,10 +4400,10 @@ outputTables = {
                 "name": "恶·雷震子",
                 "star": 1,
                 "lv": 1,
-                "atk": 51,
-                "hp": 130,
+                "atk": 5,
+                "hp": 10,
                 "url": 3,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10027": {
                 "id": 10027,
@@ -4409,10 +4411,10 @@ outputTables = {
                 "name": "恶·妲己",
                 "star": 1,
                 "lv": 1,
-                "atk": 81,
-                "hp": 221,
+                "atk": 5,
+                "hp": 10,
                 "url": 4,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10028": {
                 "id": 10028,
@@ -4420,10 +4422,10 @@ outputTables = {
                 "name": "恶·姜子牙",
                 "star": 1,
                 "lv": 1,
-                "atk": 53,
-                "hp": 126,
+                "atk": 5,
+                "hp": 10,
                 "url": 5,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10029": {
                 "id": 10029,
@@ -4431,10 +4433,10 @@ outputTables = {
                 "name": "恶·李靖",
                 "star": 1,
                 "lv": 1,
-                "atk": 83,
-                "hp": 224,
+                "atk": 5,
+                "hp": 10,
                 "url": 6,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10030": {
                 "id": 10030,
@@ -4442,10 +4444,10 @@ outputTables = {
                 "name": "恶·白素贞",
                 "star": 1,
                 "lv": 1,
-                "atk": 55,
-                "hp": 121,
+                "atk": 5,
+                "hp": 10,
                 "url": 1,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10031": {
                 "id": 10031,
@@ -4453,10 +4455,10 @@ outputTables = {
                 "name": "恶·小青",
                 "star": 1,
                 "lv": 1,
-                "atk": 85,
-                "hp": 228,
+                "atk": 5,
+                "hp": 10,
                 "url": 2,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10032": {
                 "id": 10032,
@@ -4464,10 +4466,10 @@ outputTables = {
                 "name": "恶·何仙姑",
                 "star": 1,
                 "lv": 1,
-                "atk": 56,
-                "hp": 129,
+                "atk": 5,
+                "hp": 10,
                 "url": 3,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10033": {
                 "id": 10033,
@@ -4475,10 +4477,10 @@ outputTables = {
                 "name": "恶·吕洞宾",
                 "star": 1,
                 "lv": 1,
-                "atk": 88,
-                "hp": 226,
+                "atk": 5,
+                "hp": 10,
                 "url": 4,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10034": {
                 "id": 10034,
@@ -4486,10 +4488,10 @@ outputTables = {
                 "name": "恶·铁拐李",
                 "star": 1,
                 "lv": 1,
-                "atk": 58,
-                "hp": 122,
+                "atk": 5,
+                "hp": 10,
                 "url": 5,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10035": {
                 "id": 10035,
@@ -4497,10 +4499,10 @@ outputTables = {
                 "name": "恶·汉钟离",
                 "star": 1,
                 "lv": 1,
-                "atk": 88,
-                "hp": 222,
+                "atk": 5,
+                "hp": 10,
                 "url": 6,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10036": {
                 "id": 10036,
@@ -4508,10 +4510,10 @@ outputTables = {
                 "name": "恶·张果老",
                 "star": 1,
                 "lv": 1,
-                "atk": 53,
-                "hp": 126,
+                "atk": 5,
+                "hp": 10,
                 "url": 1,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10037": {
                 "id": 10037,
@@ -4519,10 +4521,10 @@ outputTables = {
                 "name": "恶·蓝采和",
                 "star": 1,
                 "lv": 1,
-                "atk": 83,
-                "hp": 224,
+                "atk": 5,
+                "hp": 10,
                 "url": 2,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10038": {
                 "id": 10038,
@@ -4530,10 +4532,10 @@ outputTables = {
                 "name": "恶·韩湘子",
                 "star": 1,
                 "lv": 1,
-                "atk": 60,
-                "hp": 120,
+                "atk": 5,
+                "hp": 10,
                 "url": 3,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10039": {
                 "id": 10039,
@@ -4541,10 +4543,10 @@ outputTables = {
                 "name": "恶·牛郎",
                 "star": 1,
                 "lv": 1,
-                "atk": 100,
-                "hp": 190,
+                "atk": 5,
+                "hp": 10,
                 "url": 4,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10040": {
                 "id": 10040,
@@ -4552,10 +4554,10 @@ outputTables = {
                 "name": "恶·织女",
                 "star": 1,
                 "lv": 1,
-                "atk": 51,
-                "hp": 140,
+                "atk": 5,
+                "hp": 10,
                 "url": 5,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10041": {
                 "id": 10041,
@@ -4563,10 +4565,10 @@ outputTables = {
                 "name": "恶·吴刚",
                 "star": 1,
                 "lv": 1,
-                "atk": 82,
-                "hp": 230,
+                "atk": 5,
+                "hp": 10,
                 "url": 6,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10042": {
                 "id": 10042,
@@ -4574,10 +4576,10 @@ outputTables = {
                 "name": "恶·刑天",
                 "star": 1,
                 "lv": 1,
-                "atk": 52,
-                "hp": 141,
+                "atk": 5,
+                "hp": 10,
                 "url": 1,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10043": {
                 "id": 10043,
@@ -4585,10 +4587,10 @@ outputTables = {
                 "name": "恶·沉香",
                 "star": 1,
                 "lv": 1,
-                "atk": 82,
-                "hp": 232,
+                "atk": 5,
+                "hp": 10,
                 "url": 2,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10044": {
                 "id": 10044,
@@ -4596,10 +4598,10 @@ outputTables = {
                 "name": "恶·济公",
                 "star": 1,
                 "lv": 1,
-                "atk": 55,
-                "hp": 144,
+                "atk": 5,
+                "hp": 10,
                 "url": 3,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10045": {
                 "id": 10045,
@@ -4607,10 +4609,10 @@ outputTables = {
                 "name": "恶·瑶姬",
                 "star": 1,
                 "lv": 1,
-                "atk": 85,
-                "hp": 231,
+                "atk": 5,
+                "hp": 10,
                 "url": 4,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10046": {
                 "id": 10046,
@@ -4618,10 +4620,10 @@ outputTables = {
                 "name": "恶·精卫",
                 "star": 1,
                 "lv": 1,
-                "atk": 48,
-                "hp": 145,
+                "atk": 5,
+                "hp": 10,
                 "url": 5,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10047": {
                 "id": 10047,
@@ -4629,10 +4631,10 @@ outputTables = {
                 "name": "恶·后羿",
                 "star": 1,
                 "lv": 1,
-                "atk": 75,
-                "hp": 230,
+                "atk": 5,
+                "hp": 10,
                 "url": 6,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10048": {
                 "id": 10048,
@@ -4640,10 +4642,10 @@ outputTables = {
                 "name": "恶·嫦娥",
                 "star": 1,
                 "lv": 1,
-                "atk": 46,
-                "hp": 146,
+                "atk": 5,
+                "hp": 10,
                 "url": 1,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10049": {
                 "id": 10049,
@@ -4651,10 +4653,10 @@ outputTables = {
                 "name": "恶·夸父",
                 "star": 1,
                 "lv": 1,
-                "atk": 76,
-                "hp": 231,
+                "atk": 5,
+                "hp": 10,
                 "url": 2,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "10050": {
                 "id": 10050,
@@ -4662,10 +4664,10 @@ outputTables = {
                 "name": "恶·后羿",
                 "star": 1,
                 "lv": 1,
-                "atk": 76,
-                "hp": 231,
+                "atk": 5,
+                "hp": 10,
                 "url": 2,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20000": {
                 "id": 20000,
@@ -4673,10 +4675,10 @@ outputTables = {
                 "name": "战·牛魔王",
                 "star": 1,
                 "lv": 1,
-                "atk": 246,
-                "hp": 739,
+                "atk": 5,
+                "hp": 10,
                 "url": 5,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20001": {
                 "id": 20001,
@@ -4684,10 +4686,10 @@ outputTables = {
                 "name": "战·哪吒",
                 "star": 1,
                 "lv": 1,
-                "atk": 246,
-                "hp": 739,
+                "atk": 5,
+                "hp": 10,
                 "url": 6,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20002": {
                 "id": 20002,
@@ -4695,10 +4697,10 @@ outputTables = {
                 "name": "战·后羿",
                 "star": 1,
                 "lv": 1,
-                "atk": 386,
-                "hp": 1157,
+                "atk": 5,
+                "hp": 10,
                 "url": 1,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20003": {
                 "id": 20003,
@@ -4706,10 +4708,10 @@ outputTables = {
                 "name": "战·孙悟空",
                 "star": 1,
                 "lv": 1,
-                "atk": 590,
-                "hp": 1770,
+                "atk": 5,
+                "hp": 10,
                 "url": 2,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20004": {
                 "id": 20004,
@@ -4717,10 +4719,10 @@ outputTables = {
                 "name": "战·巨灵神",
                 "star": 1,
                 "lv": 1,
-                "atk": 881,
-                "hp": 2644,
+                "atk": 5,
+                "hp": 10,
                 "url": 3,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20005": {
                 "id": 20005,
@@ -4728,10 +4730,10 @@ outputTables = {
                 "name": "战·铁扇公主",
                 "star": 1,
                 "lv": 1,
-                "atk": 1286,
-                "hp": 3857,
+                "atk": 5,
+                "hp": 10,
                 "url": 4,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20006": {
                 "id": 20006,
@@ -4739,10 +4741,10 @@ outputTables = {
                 "name": "战·红孩儿",
                 "star": 1,
                 "lv": 1,
-                "atk": 1952,
-                "hp": 5856,
+                "atk": 5,
+                "hp": 10,
                 "url": 5,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20007": {
                 "id": 20007,
@@ -4750,10 +4752,10 @@ outputTables = {
                 "name": "战·济公",
                 "star": 1,
                 "lv": 1,
-                "atk": 2703,
-                "hp": 8108,
+                "atk": 5,
+                "hp": 10,
                 "url": 6,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20008": {
                 "id": 20008,
@@ -4761,10 +4763,10 @@ outputTables = {
                 "name": "战·黄飞虎",
                 "star": 1,
                 "lv": 1,
-                "atk": 3653,
-                "hp": 10959,
+                "atk": 5,
+                "hp": 10,
                 "url": 1,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20009": {
                 "id": 20009,
@@ -4772,10 +4774,10 @@ outputTables = {
                 "name": "战·刑天",
                 "star": 1,
                 "lv": 1,
-                "atk": 4586,
-                "hp": 13759,
+                "atk": 5,
+                "hp": 10,
                 "url": 2,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20010": {
                 "id": 20010,
@@ -4783,10 +4785,10 @@ outputTables = {
                 "name": "战·妲己",
                 "star": 1,
                 "lv": 1,
-                "atk": 5664,
-                "hp": 14727,
+                "atk": 5,
+                "hp": 10,
                 "url": 3,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20011": {
                 "id": 20011,
@@ -4794,10 +4796,10 @@ outputTables = {
                 "name": "战·申公豹",
                 "star": 1,
                 "lv": 1,
-                "atk": 7160,
-                "hp": 18617,
+                "atk": 5,
+                "hp": 10,
                 "url": 4,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20012": {
                 "id": 20012,
@@ -4805,10 +4807,10 @@ outputTables = {
                 "name": "战·法海",
                 "star": 1,
                 "lv": 1,
-                "atk": 8913,
-                "hp": 23173,
+                "atk": 5,
+                "hp": 10,
                 "url": 5,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20013": {
                 "id": 20013,
@@ -4816,10 +4818,10 @@ outputTables = {
                 "name": "战·何仙姑",
                 "star": 1,
                 "lv": 1,
-                "atk": 10922,
-                "hp": 28397,
+                "atk": 5,
+                "hp": 10,
                 "url": 6,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20014": {
                 "id": 20014,
@@ -4827,10 +4829,10 @@ outputTables = {
                 "name": "战·土行孙",
                 "star": 1,
                 "lv": 1,
-                "atk": 13177,
-                "hp": 34261,
+                "atk": 5,
+                "hp": 10,
                 "url": 1,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20015": {
                 "id": 20015,
@@ -4838,10 +4840,10 @@ outputTables = {
                 "name": "战·白素贞",
                 "star": 1,
                 "lv": 1,
-                "atk": 15078,
-                "hp": 39203,
+                "atk": 5,
+                "hp": 10,
                 "url": 2,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20016": {
                 "id": 20016,
@@ -4849,10 +4851,10 @@ outputTables = {
                 "name": "战·修罗王",
                 "star": 1,
                 "lv": 1,
-                "atk": 17322,
-                "hp": 43304,
+                "atk": 5,
+                "hp": 10,
                 "url": 3,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20017": {
                 "id": 20017,
@@ -4860,10 +4862,10 @@ outputTables = {
                 "name": "战·吕洞宾",
                 "star": 1,
                 "lv": 1,
-                "atk": 20154,
-                "hp": 50385,
+                "atk": 5,
+                "hp": 10,
                 "url": 4,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20018": {
                 "id": 20018,
@@ -4871,10 +4873,10 @@ outputTables = {
                 "name": "战·鬼谷子",
                 "star": 1,
                 "lv": 1,
-                "atk": 22305,
-                "hp": 55763,
+                "atk": 5,
+                "hp": 10,
                 "url": 5,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20019": {
                 "id": 20019,
@@ -4882,10 +4884,10 @@ outputTables = {
                 "name": "战·日游神",
                 "star": 1,
                 "lv": 1,
-                "atk": 25569,
-                "hp": 63922,
+                "atk": 5,
+                "hp": 10,
                 "url": 6,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20020": {
                 "id": 20020,
@@ -4893,10 +4895,10 @@ outputTables = {
                 "name": "战·夸父",
                 "star": 1,
                 "lv": 1,
-                "atk": 29049,
-                "hp": 72624,
+                "atk": 5,
+                "hp": 10,
                 "url": 6,
-                "description": "怪物卡牌，不可进阶。"
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "30000": {
                 "id": 30000,
@@ -5522,202 +5524,202 @@ outputTables = {
             "1": {
                 "id": 1,
                 "layer": 1,
-                "card_count": 2,
-                "cards": "20000#20000",
-                "formation": "1:20000,2:20000"
+                "card_count": 3,
+                "cards": "20000#20000#20000",
+                "formation": "1:20000,2:20000,3:20000"
             },
             "2": {
                 "id": 2,
                 "layer": 2,
-                "card_count": 2,
-                "cards": "20000#20000",
-                "formation": "1:20000,2:20000"
+                "card_count": 3,
+                "cards": "20000#20000#20000",
+                "formation": "1:20000,2:20000,3:20000"
             },
             "3": {
                 "id": 3,
                 "layer": 3,
-                "card_count": 2,
-                "cards": "20000#20000",
-                "formation": "1:20000,2:20000"
+                "card_count": 3,
+                "cards": "20000#20000#20000",
+                "formation": "1:20000,2:20000,3:20000"
             },
             "4": {
                 "id": 4,
                 "layer": 4,
-                "card_count": 2,
-                "cards": "20000#20000",
-                "formation": "1:20000,2:20000"
+                "card_count": 3,
+                "cards": "20000#20000#20000",
+                "formation": "1:20000,2:20000,3:20000"
             },
             "5": {
                 "id": 5,
                 "layer": 5,
-                "card_count": 2,
-                "cards": "20000#20001",
-                "formation": "1:20000,2:20001",
+                "card_count": 3,
+                "cards": "20000#20000#20001",
+                "formation": "1:20000,2:20000,3:20001",
                 "boss_id": 20001,
                 "trigger_rate": 50,
                 "boss_attr": 180,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "6": {
                 "id": 6,
                 "layer": 6,
-                "card_count": 3,
-                "cards": "20001#20001#20001",
-                "formation": "1:20001,2:20001,3:20001"
+                "card_count": 4,
+                "cards": "20001#20001#20001#20001",
+                "formation": "1:20001,2:20001,3:20001,4:20001"
             },
             "7": {
                 "id": 7,
                 "layer": 7,
-                "card_count": 3,
-                "cards": "20001#20001#20001",
-                "formation": "1:20001,2:20001,3:20001"
+                "card_count": 4,
+                "cards": "20001#20001#20001#20001",
+                "formation": "1:20001,2:20001,3:20001,4:20001"
             },
             "8": {
                 "id": 8,
                 "layer": 8,
-                "card_count": 3,
-                "cards": "20001#20001#20001",
-                "formation": "1:20001,2:20001,3:20001"
+                "card_count": 4,
+                "cards": "20001#20001#20001#20001",
+                "formation": "1:20001,2:20001,3:20001,4:20001"
             },
             "9": {
                 "id": 9,
                 "layer": 9,
-                "card_count": 3,
-                "cards": "20001#20001#20001",
-                "formation": "1:20001,2:20001,3:20001"
+                "card_count": 4,
+                "cards": "20001#20001#20001#20001",
+                "formation": "1:20001,2:20001,3:20001,4:20001"
             },
             "10": {
                 "id": 10,
                 "layer": 10,
-                "card_count": 3,
-                "cards": "20001#20001#20002",
-                "formation": "1:20001,2:20001,3:20002",
+                "card_count": 4,
+                "cards": "20001#20001#20001#20002",
+                "formation": "1:20001,2:20001,3:20001,4:20002",
                 "boss_id": 20002,
                 "trigger_rate": 50,
                 "boss_attr": 70,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "11": {
                 "id": 11,
                 "layer": 11,
-                "card_count": 4,
-                "cards": "20002#20002#20002#20002",
-                "formation": "1:20002,2:20002,3:20002,4:20002"
+                "card_count": 5,
+                "cards": "20002#20002#20002#20002#20002",
+                "formation": "1:20002,2:20002,3:20002,4:20002,5:20002"
             },
             "12": {
                 "id": 12,
                 "layer": 12,
-                "card_count": 4,
-                "cards": "20002#20002#20002#20002",
-                "formation": "1:20002,2:20002,3:20002,4:20002"
+                "card_count": 5,
+                "cards": "20002#20002#20002#20002#20002",
+                "formation": "1:20002,2:20002,3:20002,4:20002,5:20002"
             },
             "13": {
                 "id": 13,
                 "layer": 13,
-                "card_count": 4,
-                "cards": "20002#20002#20002#20002",
-                "formation": "1:20002,2:20002,3:20002,4:20002"
+                "card_count": 5,
+                "cards": "20002#20002#20002#20002#20002",
+                "formation": "1:20002,2:20002,3:20002,4:20002,5:20002"
             },
             "14": {
                 "id": 14,
                 "layer": 14,
-                "card_count": 4,
-                "cards": "20002#20002#20002#20002",
-                "formation": "1:20002,2:20002,3:20002,4:20002"
+                "card_count": 5,
+                "cards": "20002#20002#20002#20002#20002",
+                "formation": "1:20002,2:20002,3:20002,4:20002,5:20002"
             },
             "15": {
                 "id": 15,
                 "layer": 15,
-                "card_count": 4,
-                "cards": "20002#20002#20002#20003",
-                "formation": "1:20002,2:20002,3:20002,4:20003",
+                "card_count": 5,
+                "cards": "20002#20002#20002#20002#20003",
+                "formation": "1:20002,2:20002,3:20002,4:20002,5:20003",
                 "boss_id": 20003,
                 "trigger_rate": 50,
                 "boss_attr": 70,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "16": {
                 "id": 16,
                 "layer": 16,
-                "card_count": 4,
+                "card_count": 5,
                 "cards": "20003#20003#20003#20003#20003",
                 "formation": "1:20003,2:20003,3:20003,4:20003,5:20003"
             },
             "17": {
                 "id": 17,
                 "layer": 17,
-                "card_count": 4,
+                "card_count": 5,
                 "cards": "20003#20003#20003#20003#20003",
                 "formation": "1:20003,2:20003,3:20003,4:20003,5:20003"
             },
             "18": {
                 "id": 18,
                 "layer": 18,
-                "card_count": 4,
+                "card_count": 5,
                 "cards": "20003#20003#20003#20003#20003",
                 "formation": "1:20003,2:20003,3:20003,4:20003,5:20003"
             },
             "19": {
                 "id": 19,
                 "layer": 19,
-                "card_count": 4,
+                "card_count": 5,
                 "cards": "20003#20003#20003#20003#20003",
                 "formation": "1:20003,2:20003,3:20003,4:20003,5:20003"
             },
             "20": {
                 "id": 20,
                 "layer": 20,
-                "card_count": 4,
+                "card_count": 5,
                 "cards": "20003#20003#20003#20003#20004",
                 "formation": "1:20003,2:20003,3:20003,4:20003,5:20004",
                 "boss_id": 20004,
                 "trigger_rate": 50,
                 "boss_attr": 80,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "21": {
                 "id": 21,
                 "layer": 21,
-                "card_count": 4,
+                "card_count": 5,
                 "cards": "20004#20004#20004#20004#20004",
                 "formation": "1:20004,2:20004,3:20004,4:20004,5:20004"
             },
             "22": {
                 "id": 22,
                 "layer": 22,
-                "card_count": 4,
+                "card_count": 5,
                 "cards": "20004#20004#20004#20004#20004",
                 "formation": "1:20004,2:20004,3:20004,4:20004,5:20004"
             },
             "23": {
                 "id": 23,
                 "layer": 23,
-                "card_count": 4,
+                "card_count": 5,
                 "cards": "20004#20004#20004#20004#20004",
                 "formation": "1:20004,2:20004,3:20004,4:20004,5:20004"
             },
             "24": {
                 "id": 24,
                 "layer": 24,
-                "card_count": 4,
+                "card_count": 5,
                 "cards": "20004#20004#20004#20004#20004",
                 "formation": "1:20004,2:20004,3:20004,4:20004,5:20004"
             },
             "25": {
                 "id": 25,
                 "layer": 25,
-                "card_count": 4,
+                "card_count": 5,
                 "cards": "20004#20004#20004#20004#20005",
                 "formation": "1:20004,2:20004,3:20004,4:20004,5:20005",
                 "boss_id": 20005,
                 "trigger_rate": 50,
                 "boss_attr": 80,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "26": {
                 "id": 26,
@@ -5756,8 +5758,8 @@ outputTables = {
                 "boss_id": 20006,
                 "trigger_rate": 50,
                 "boss_attr": 70,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "31": {
                 "id": 31,
@@ -5796,8 +5798,8 @@ outputTables = {
                 "boss_id": 20007,
                 "trigger_rate": 50,
                 "boss_attr": 60,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "36": {
                 "id": 36,
@@ -5836,8 +5838,8 @@ outputTables = {
                 "boss_id": 20008,
                 "trigger_rate": 50,
                 "boss_attr": 45,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "41": {
                 "id": 41,
@@ -5876,8 +5878,8 @@ outputTables = {
                 "boss_id": 20009,
                 "trigger_rate": 50,
                 "boss_attr": 45,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "46": {
                 "id": 46,
@@ -5916,8 +5918,8 @@ outputTables = {
                 "boss_id": 20010,
                 "trigger_rate": 70,
                 "boss_attr": 40,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "51": {
                 "id": 51,
@@ -5956,8 +5958,8 @@ outputTables = {
                 "boss_id": 20011,
                 "trigger_rate": 50,
                 "boss_attr": 180,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "56": {
                 "id": 56,
@@ -5996,8 +5998,8 @@ outputTables = {
                 "boss_id": 20012,
                 "trigger_rate": 50,
                 "boss_attr": 70,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "61": {
                 "id": 61,
@@ -6036,8 +6038,8 @@ outputTables = {
                 "boss_id": 20013,
                 "trigger_rate": 50,
                 "boss_attr": 70,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "66": {
                 "id": 66,
@@ -6076,8 +6078,8 @@ outputTables = {
                 "boss_id": 20014,
                 "trigger_rate": 50,
                 "boss_attr": 80,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "71": {
                 "id": 71,
@@ -6116,8 +6118,8 @@ outputTables = {
                 "boss_id": 20015,
                 "trigger_rate": 50,
                 "boss_attr": 80,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "76": {
                 "id": 76,
@@ -6156,8 +6158,8 @@ outputTables = {
                 "boss_id": 20016,
                 "trigger_rate": 50,
                 "boss_attr": 70,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "81": {
                 "id": 81,
@@ -6196,8 +6198,8 @@ outputTables = {
                 "boss_id": 20017,
                 "trigger_rate": 50,
                 "boss_attr": 60,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "86": {
                 "id": 86,
@@ -6236,8 +6238,8 @@ outputTables = {
                 "boss_id": 20018,
                 "trigger_rate": 50,
                 "boss_attr": 45,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "91": {
                 "id": 91,
@@ -6276,8 +6278,8 @@ outputTables = {
                 "boss_id": 20019,
                 "trigger_rate": 50,
                 "boss_attr": 45,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             },
             "96": {
                 "id": 96,
@@ -6316,27 +6318,34 @@ outputTables = {
                 "boss_id": 20020,
                 "trigger_rate": 50,
                 "boss_attr": 40,
-                "atk_inc": 10,
-                "hp_inc": 10
+                "atk_inc": 50,
+                "hp_inc": 50
             }
         }
     },
     "task_card": {
-        "colComment": {},
+        "colComment": {
+            "card_id": {
+                "table": "怪物卡牌配置表",
+                "key_index": "name",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
         "rows": {
             "10000": {
                 "id": 10000,
                 "card_id": "恶·鬼谷子",
                 "atk": 50,
-                "hp": 108,
+                "hp": 113,
                 "dodge_rate": 15,
                 "crit_rate": 20
             },
             "10001": {
                 "id": 10001,
                 "card_id": "恶·黑无常",
-                "atk": 92,
-                "hp": 356,
+                "atk": 149,
+                "hp": 372,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 1
@@ -6344,8 +6353,8 @@ outputTables = {
             "10002": {
                 "id": 10002,
                 "card_id": "恶·白无常",
-                "atk": 102,
-                "hp": 392,
+                "atk": 163,
+                "hp": 409,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 2
@@ -6353,8 +6362,8 @@ outputTables = {
             "10003": {
                 "id": 10003,
                 "card_id": "恶·日游神",
-                "atk": 111,
-                "hp": 430,
+                "atk": 179,
+                "hp": 448,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 3
@@ -6362,8 +6371,8 @@ outputTables = {
             "10004": {
                 "id": 10004,
                 "card_id": "恶·夜游神",
-                "atk": 122,
-                "hp": 472,
+                "atk": 196,
+                "hp": 491,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 4
@@ -6371,8 +6380,8 @@ outputTables = {
             "10005": {
                 "id": 10005,
                 "card_id": "恶·宓妃",
-                "atk": 134,
-                "hp": 517,
+                "atk": 215,
+                "hp": 538,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 5
@@ -6380,8 +6389,8 @@ outputTables = {
             "10006": {
                 "id": 10006,
                 "card_id": "恶·张道陵",
-                "atk": 147,
-                "hp": 566,
+                "atk": 236,
+                "hp": 590,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 6
@@ -6389,8 +6398,8 @@ outputTables = {
             "10007": {
                 "id": 10007,
                 "card_id": "恶·修罗王",
-                "atk": 161,
-                "hp": 619,
+                "atk": 258,
+                "hp": 645,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 7
@@ -6398,8 +6407,8 @@ outputTables = {
             "10008": {
                 "id": 10008,
                 "card_id": "恶·迦楼罗王",
-                "atk": 176,
-                "hp": 677,
+                "atk": 283,
+                "hp": 706,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 8
@@ -6407,8 +6416,8 @@ outputTables = {
             "10009": {
                 "id": 10009,
                 "card_id": "恶·紧那罗王",
-                "atk": 192,
-                "hp": 739,
+                "atk": 309,
+                "hp": 770,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 9
@@ -6416,8 +6425,8 @@ outputTables = {
             "10010": {
                 "id": 10010,
                 "card_id": "恶·紫霞",
-                "atk": 209,
-                "hp": 807,
+                "atk": 337,
+                "hp": 841,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 10
@@ -6425,8 +6434,8 @@ outputTables = {
             "10011": {
                 "id": 10011,
                 "card_id": "恶·金蝉子",
-                "atk": 228,
-                "hp": 879,
+                "atk": 367,
+                "hp": 916,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 1
@@ -6434,8 +6443,8 @@ outputTables = {
             "10012": {
                 "id": 10012,
                 "card_id": "恶·铁扇公主",
-                "atk": 248,
-                "hp": 957,
+                "atk": 400,
+                "hp": 998,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 2
@@ -6443,8 +6452,8 @@ outputTables = {
             "10013": {
                 "id": 10013,
                 "card_id": "恶·沙僧",
-                "atk": 270,
-                "hp": 1042,
+                "atk": 435,
+                "hp": 1086,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 3
@@ -6452,8 +6461,8 @@ outputTables = {
             "10014": {
                 "id": 10014,
                 "card_id": "恶·牛魔王",
-                "atk": 294,
-                "hp": 1132,
+                "atk": 473,
+                "hp": 1181,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 4
@@ -6461,8 +6470,8 @@ outputTables = {
             "10015": {
                 "id": 10015,
                 "card_id": "恶·巨灵神",
-                "atk": 319,
-                "hp": 1230,
+                "atk": 513,
+                "hp": 1283,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 5
@@ -6470,8 +6479,8 @@ outputTables = {
             "10016": {
                 "id": 10016,
                 "card_id": "恶·红孩儿",
-                "atk": 346,
-                "hp": 1334,
+                "atk": 556,
+                "hp": 1391,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 6
@@ -6479,8 +6488,8 @@ outputTables = {
             "10017": {
                 "id": 10017,
                 "card_id": "恶·黄飞虎",
-                "atk": 375,
-                "hp": 1446,
+                "atk": 603,
+                "hp": 1508,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 7
@@ -6488,8 +6497,8 @@ outputTables = {
             "10018": {
                 "id": 10018,
                 "card_id": "恶·孙悟空",
-                "atk": 406,
-                "hp": 1566,
+                "atk": 653,
+                "hp": 1634,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 8
@@ -6497,8 +6506,8 @@ outputTables = {
             "10019": {
                 "id": 10019,
                 "card_id": "恶·猪八戒",
-                "atk": 439,
-                "hp": 1695,
+                "atk": 707,
+                "hp": 1768,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 9
@@ -6506,8 +6515,8 @@ outputTables = {
             "10020": {
                 "id": 10020,
                 "card_id": "恶·杨戬",
-                "atk": 475,
-                "hp": 1832,
+                "atk": 765,
+                "hp": 1911,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 10
@@ -6515,8 +6524,8 @@ outputTables = {
             "10021": {
                 "id": 10021,
                 "card_id": "恶·哪吒",
-                "atk": 513,
-                "hp": 1979,
+                "atk": 826,
+                "hp": 2064,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 1
@@ -6524,8 +6533,8 @@ outputTables = {
             "10022": {
                 "id": 10022,
                 "card_id": "恶·赵公明",
-                "atk": 553,
-                "hp": 2135,
+                "atk": 892,
+                "hp": 2227,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 2
@@ -6533,8 +6542,8 @@ outputTables = {
             "10023": {
                 "id": 10023,
                 "card_id": "恶·申公豹",
-                "atk": 597,
-                "hp": 2301,
+                "atk": 961,
+                "hp": 2400,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 3
@@ -6542,8 +6551,8 @@ outputTables = {
             "10024": {
                 "id": 10024,
                 "card_id": "恶·土行孙",
-                "atk": 643,
-                "hp": 2479,
+                "atk": 1035,
+                "hp": 2585,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 4
@@ -6551,8 +6560,8 @@ outputTables = {
             "10025": {
                 "id": 10025,
                 "card_id": "恶·法海",
-                "atk": 691,
-                "hp": 2667,
+                "atk": 1113,
+                "hp": 2781,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 5
@@ -6560,8 +6569,8 @@ outputTables = {
             "10026": {
                 "id": 10026,
                 "card_id": "恶·雷震子",
-                "atk": 743,
-                "hp": 2867,
+                "atk": 1197,
+                "hp": 2990,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 6
@@ -6569,8 +6578,8 @@ outputTables = {
             "10027": {
                 "id": 10027,
                 "card_id": "恶·妲己",
-                "atk": 798,
-                "hp": 3079,
+                "atk": 1285,
+                "hp": 3211,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 7
@@ -6578,8 +6587,8 @@ outputTables = {
             "10028": {
                 "id": 10028,
                 "card_id": "恶·姜子牙",
-                "atk": 857,
-                "hp": 3304,
+                "atk": 1379,
+                "hp": 3445,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 8
@@ -6587,8 +6596,8 @@ outputTables = {
             "10029": {
                 "id": 10029,
                 "card_id": "恶·李靖",
-                "atk": 918,
-                "hp": 3542,
+                "atk": 1478,
+                "hp": 3694,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 9
@@ -6596,8 +6605,8 @@ outputTables = {
             "10030": {
                 "id": 10030,
                 "card_id": "恶·白素贞",
-                "atk": 983,
-                "hp": 3793,
+                "atk": 1583,
+                "hp": 3956,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 10
@@ -6605,8 +6614,8 @@ outputTables = {
             "10031": {
                 "id": 10031,
                 "card_id": "恶·小青",
-                "atk": 1052,
-                "hp": 4059,
+                "atk": 1694,
+                "hp": 4233,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 1
@@ -6614,8 +6623,8 @@ outputTables = {
             "10032": {
                 "id": 10032,
                 "card_id": "恶·何仙姑",
-                "atk": 1125,
-                "hp": 4339,
+                "atk": 1811,
+                "hp": 4525,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 2
@@ -6623,8 +6632,8 @@ outputTables = {
             "10033": {
                 "id": 10033,
                 "card_id": "恶·吕洞宾",
-                "atk": 1201,
-                "hp": 4634,
+                "atk": 1934,
+                "hp": 4833,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 3
@@ -6632,8 +6641,8 @@ outputTables = {
             "10034": {
                 "id": 10034,
                 "card_id": "恶·铁拐李",
-                "atk": 1282,
-                "hp": 4945,
+                "atk": 2064,
+                "hp": 5157,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 4
@@ -6641,8 +6650,8 @@ outputTables = {
             "10035": {
                 "id": 10035,
                 "card_id": "恶·汉钟离",
-                "atk": 1367,
-                "hp": 5271,
+                "atk": 2200,
+                "hp": 5497,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 5
@@ -6650,8 +6659,8 @@ outputTables = {
             "10036": {
                 "id": 10036,
                 "card_id": "恶·张果老",
-                "atk": 1455,
-                "hp": 5613,
+                "atk": 2343,
+                "hp": 5855,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 6
@@ -6659,8 +6668,8 @@ outputTables = {
             "10037": {
                 "id": 10037,
                 "card_id": "恶·蓝采和",
-                "atk": 1548,
-                "hp": 5973,
+                "atk": 2493,
+                "hp": 6229,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 7
@@ -6668,8 +6677,8 @@ outputTables = {
             "10038": {
                 "id": 10038,
                 "card_id": "恶·韩湘子",
-                "atk": 1646,
-                "hp": 6349,
+                "atk": 2651,
+                "hp": 6621,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 8
@@ -6677,8 +6686,8 @@ outputTables = {
             "10039": {
                 "id": 10039,
                 "card_id": "恶·牛郎",
-                "atk": 1748,
-                "hp": 6743,
+                "atk": 2815,
+                "hp": 7032,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 9
@@ -6686,8 +6695,8 @@ outputTables = {
             "10040": {
                 "id": 10040,
                 "card_id": "恶·织女",
-                "atk": 1855,
-                "hp": 7154,
+                "atk": 2987,
+                "hp": 7461,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 10
@@ -6695,8 +6704,8 @@ outputTables = {
             "10041": {
                 "id": 10041,
                 "card_id": "恶·吴刚",
-                "atk": 1966,
-                "hp": 7583,
+                "atk": 3166,
+                "hp": 7908,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 1
@@ -6704,8 +6713,8 @@ outputTables = {
             "10042": {
                 "id": 10042,
                 "card_id": "恶·刑天",
-                "atk": 2082,
-                "hp": 8031,
+                "atk": 3353,
+                "hp": 8375,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 2
@@ -6713,8 +6722,8 @@ outputTables = {
             "10043": {
                 "id": 10043,
                 "card_id": "恶·沉香",
-                "atk": 2203,
-                "hp": 8496,
+                "atk": 3548,
+                "hp": 8861,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 3
@@ -6722,8 +6731,8 @@ outputTables = {
             "10044": {
                 "id": 10044,
                 "card_id": "恶·济公",
-                "atk": 2328,
-                "hp": 8981,
+                "atk": 3750,
+                "hp": 9365,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 4
@@ -6731,8 +6740,8 @@ outputTables = {
             "10045": {
                 "id": 10045,
                 "card_id": "恶·瑶姬",
-                "atk": 2459,
-                "hp": 9484,
+                "atk": 3960,
+                "hp": 9890,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 5
@@ -6740,8 +6749,8 @@ outputTables = {
             "10046": {
                 "id": 10046,
                 "card_id": "恶·精卫",
-                "atk": 2594,
-                "hp": 10005,
+                "atk": 4178,
+                "hp": 10434,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 6
@@ -6749,8 +6758,8 @@ outputTables = {
             "10047": {
                 "id": 10047,
                 "card_id": "恶·后羿",
-                "atk": 2734,
-                "hp": 10545,
+                "atk": 4404,
+                "hp": 10997,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 7
@@ -6758,8 +6767,8 @@ outputTables = {
             "10048": {
                 "id": 10048,
                 "card_id": "恶·嫦娥",
-                "atk": 2897,
-                "hp": 11104,
+                "atk": 4637,
+                "hp": 11580,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 8
@@ -6767,8 +6776,8 @@ outputTables = {
             "10049": {
                 "id": 10049,
                 "card_id": "恶·夸父",
-                "atk": 3029,
-                "hp": 11682,
+                "atk": 4878,
+                "hp": 12182,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 9
@@ -6776,8 +6785,8 @@ outputTables = {
             "10050": {
                 "id": 10050,
                 "card_id": "恶·后羿",
-                "atk": 3520,
-                "hp": 12340,
+                "atk": 5200,
+                "hp": 14500,
                 "dodge_rate": 15,
                 "crit_rate": 20,
                 "skill_id": 10
@@ -6785,16 +6794,16 @@ outputTables = {
             "20000": {
                 "id": 20000,
                 "card_id": "战·牛魔王",
-                "atk": 246,
-                "hp": 739,
+                "atk": 309,
+                "hp": 770,
                 "dodge_rate": 20,
                 "crit_rate": 25
             },
             "20001": {
                 "id": 20001,
                 "card_id": "战·哪吒",
-                "atk": 385,
-                "hp": 1158,
+                "atk": 483,
+                "hp": 1207,
                 "dodge_rate": 20,
                 "crit_rate": 25,
                 "skill_id": 1
@@ -6802,8 +6811,8 @@ outputTables = {
             "20002": {
                 "id": 20002,
                 "card_id": "战·后羿",
-                "atk": 588,
-                "hp": 1771,
+                "atk": 739,
+                "hp": 1846,
                 "dodge_rate": 20,
                 "crit_rate": 25,
                 "skill_id": 2
@@ -6811,8 +6820,8 @@ outputTables = {
             "20003": {
                 "id": 20003,
                 "card_id": "战·孙悟空",
-                "atk": 877,
-                "hp": 2646,
+                "atk": 1104,
+                "hp": 2757,
                 "dodge_rate": 20,
                 "crit_rate": 25,
                 "skill_id": 3
@@ -6820,8 +6829,8 @@ outputTables = {
             "20004": {
                 "id": 20004,
                 "card_id": "战·巨灵神",
-                "atk": 1280,
-                "hp": 3858,
+                "atk": 1609,
+                "hp": 4022,
                 "dodge_rate": 20,
                 "crit_rate": 25,
                 "skill_id": 4
@@ -6829,8 +6838,8 @@ outputTables = {
             "20005": {
                 "id": 20005,
                 "card_id": "战·铁扇公主",
-                "atk": 1944,
-                "hp": 5859,
+                "atk": 2444,
+                "hp": 6108,
                 "dodge_rate": 20,
                 "crit_rate": 25,
                 "skill_id": 5
@@ -6838,8 +6847,8 @@ outputTables = {
             "20006": {
                 "id": 20006,
                 "card_id": "战·红孩儿",
-                "atk": 2691,
-                "hp": 8111,
+                "atk": 3385,
+                "hp": 8456,
                 "dodge_rate": 20,
                 "crit_rate": 25,
                 "skill_id": 6
@@ -6847,8 +6856,8 @@ outputTables = {
             "20007": {
                 "id": 20007,
                 "card_id": "战·济公",
-                "atk": 3637,
-                "hp": 10963,
+                "atk": 4576,
+                "hp": 11429,
                 "dodge_rate": 20,
                 "crit_rate": 25,
                 "skill_id": 7
@@ -6856,8 +6865,8 @@ outputTables = {
             "20008": {
                 "id": 20008,
                 "card_id": "战·黄飞虎",
-                "atk": 4565,
-                "hp": 13764,
+                "atk": 5745,
+                "hp": 14348,
                 "dodge_rate": 20,
                 "crit_rate": 25,
                 "skill_id": 8
@@ -6919,8 +6928,8 @@ outputTables = {
             "20015": {
                 "id": 20015,
                 "card_id": "战·白素贞",
-                "atk": 17309,
-                "hp": 43327,
+                "atk": 14141,
+                "hp": 35453,
                 "dodge_rate": 20,
                 "crit_rate": 25,
                 "skill_id": 5
@@ -6928,8 +6937,8 @@ outputTables = {
             "20016": {
                 "id": 20016,
                 "card_id": "战·修罗王",
-                "atk": 20140,
-                "hp": 50412,
+                "atk": 16454,
+                "hp": 41251,
                 "dodge_rate": 20,
                 "crit_rate": 25,
                 "skill_id": 6
@@ -6937,8 +6946,8 @@ outputTables = {
             "20017": {
                 "id": 20017,
                 "card_id": "战·吕洞宾",
-                "atk": 22289,
-                "hp": 55793,
+                "atk": 18209,
+                "hp": 45654,
                 "dodge_rate": 20,
                 "crit_rate": 25,
                 "skill_id": 7
@@ -6946,8 +6955,8 @@ outputTables = {
             "20018": {
                 "id": 20018,
                 "card_id": "战·鬼谷子",
-                "atk": 25550,
-                "hp": 63955,
+                "atk": 20873,
+                "hp": 52333,
                 "dodge_rate": 20,
                 "crit_rate": 25,
                 "skill_id": 8
@@ -6955,8 +6964,8 @@ outputTables = {
             "20019": {
                 "id": 20019,
                 "card_id": "战·日游神",
-                "atk": 29029,
-                "hp": 72662,
+                "atk": 23715,
+                "hp": 59457,
                 "dodge_rate": 20,
                 "crit_rate": 25,
                 "skill_id": 9
@@ -6964,8 +6973,8 @@ outputTables = {
             "20020": {
                 "id": 20020,
                 "card_id": "战·夸父",
-                "atk": 35042,
-                "hp": 81263,
+                "atk": 25695,
+                "hp": 65346,
                 "dodge_rate": 20,
                 "crit_rate": 25,
                 "skill_id": 10
@@ -6973,7 +6982,14 @@ outputTables = {
         }
     },
     "task_config": {
-        "colComment": {},
+        "colComment": {
+            "chapter_id": {
+                "table": "大章表",
+                "key_index": "chapter",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
         "rows": {
             "1": {
                 "id": 1,
@@ -7017,12 +7033,12 @@ outputTables = {
             "4": {
                 "id": 4,
                 "chapter_id": "绝情池",
-                "card_count": 3,
-                "cards": "10003#10003#10004",
+                "card_count": 4,
+                "cards": "10003#10003#10003#10004",
                 "boss_id": 10004,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "formation": "1:10003,2:10003,3:10004",
+                "formation": "1:10003,2:10003,3:10003,4:10004",
                 "atk_inc": 5,
                 "hp_inc": 5,
                 "max_drop_card_number": 1
@@ -7030,12 +7046,12 @@ outputTables = {
             "5": {
                 "id": 5,
                 "chapter_id": "哭丧岩",
-                "card_count": 3,
-                "cards": "10004#10004#10005",
+                "card_count": 4,
+                "cards": "10004#10004#10004#10005",
                 "boss_id": 10005,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "formation": "1:10004,2:10004,3:10005",
+                "formation": "1:10004,2:10004,3:10004,4:10005",
                 "atk_inc": 5,
                 "hp_inc": 5,
                 "max_drop_card_number": 1
@@ -7043,12 +7059,12 @@ outputTables = {
             "6": {
                 "id": 6,
                 "chapter_id": "杏花村",
-                "card_count": 4,
-                "cards": "10005#10005#10005#10006",
+                "card_count": 5,
+                "cards": "10005#10005#10005#10005#10006",
                 "boss_id": 10006,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "formation": "1:10005,2:10005,3:10005,4:10006",
+                "formation": "1:10005,2:10005,3:10005,4:10005,5:10006",
                 "atk_inc": 5,
                 "hp_inc": 5,
                 "max_drop_card_number": 1
@@ -7056,12 +7072,12 @@ outputTables = {
             "7": {
                 "id": 7,
                 "chapter_id": "窦娥冢",
-                "card_count": 4,
-                "cards": "10006#10006#10006#10007",
+                "card_count": 5,
+                "cards": "10006#10006#10006#10006#10007",
                 "boss_id": 10007,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "formation": "1:10006,2:10006,3:10006,4:10007",
+                "formation": "1:10006,2:10006,3:10006,4:10006,5:10007",
                 "atk_inc": 5,
                 "hp_inc": 5,
                 "max_drop_card_number": 1
@@ -7069,12 +7085,12 @@ outputTables = {
             "8": {
                 "id": 8,
                 "chapter_id": "柳风堂",
-                "card_count": 4,
-                "cards": "10007#10007#10007#10008",
+                "card_count": 5,
+                "cards": "10007#10007#10007#10007#10008",
                 "boss_id": 10008,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "formation": "1:10007,2:10007,3:10007,4:10008",
+                "formation": "1:10007,2:10007,3:10007,4:10007,5:10008",
                 "atk_inc": 5,
                 "hp_inc": 5,
                 "max_drop_card_number": 1
@@ -7082,12 +7098,12 @@ outputTables = {
             "9": {
                 "id": 9,
                 "chapter_id": "陶然居",
-                "card_count": 4,
-                "cards": "10008#10008#10008#10009",
+                "card_count": 5,
+                "cards": "10008#10008#10008#10008#10009",
                 "boss_id": 10009,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "formation": "1:10008,2:10008,3:10008,4:10009",
+                "formation": "1:10008,2:10008,3:10008,4:10008,5:10009",
                 "atk_inc": 5,
                 "hp_inc": 5,
                 "max_drop_card_number": 1
@@ -7095,12 +7111,12 @@ outputTables = {
             "10": {
                 "id": 10,
                 "chapter_id": "忘情河",
-                "card_count": 4,
-                "cards": "10009#10009#10009#10010",
+                "card_count": 5,
+                "cards": "10009#10009#10009#10009#10010",
                 "boss_id": 10010,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "formation": "1:10009,2:10009,3:10009,4:10010",
+                "formation": "1:10009,2:10009,3:10009,4:10009,5:10010",
                 "atk_inc": 5,
                 "hp_inc": 5,
                 "max_drop_card_number": 1
@@ -7108,12 +7124,12 @@ outputTables = {
             "11": {
                 "id": 11,
                 "chapter_id": "南天门",
-                "card_count": 4,
-                "cards": "10010#10010#10010#10011",
+                "card_count": 5,
+                "cards": "10010#10010#10010#10010#10011",
                 "boss_id": 10011,
                 "trigger_rate": 30,
                 "boss_attr": 180,
-                "formation": "1:10010,2:10010,3:10010,4:10011",
+                "formation": "1:10010,2:10010,3:10010,4:10010,5:10011",
                 "atk_inc": 5,
                 "hp_inc": 5,
                 "max_drop_card_number": 1
@@ -7121,12 +7137,12 @@ outputTables = {
             "12": {
                 "id": 12,
                 "chapter_id": "凌霄殿",
-                "card_count": 4,
-                "cards": "10011#10011#10011#10012",
+                "card_count": 5,
+                "cards": "10011#10011#10011#10011#10012",
                 "boss_id": 10012,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "formation": "1:10011,2:10011,3:10011,4:10012",
+                "formation": "1:10011,2:10011,3:10011,4:10011,5:10012",
                 "atk_inc": 5,
                 "hp_inc": 5,
                 "max_drop_card_number": 1
@@ -7134,12 +7150,12 @@ outputTables = {
             "13": {
                 "id": 13,
                 "chapter_id": "冷月宫",
-                "card_count": 4,
-                "cards": "10012#10012#10012#10013",
+                "card_count": 5,
+                "cards": "10012#10012#10012#10012#10013",
                 "boss_id": 10013,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "formation": "1:10012,2:10012,3:10012,4:10013",
+                "formation": "1:10012,2:10012,3:10012,4:10012,5:10013",
                 "atk_inc": 5,
                 "hp_inc": 5,
                 "max_drop_card_number": 1
@@ -7147,12 +7163,12 @@ outputTables = {
             "14": {
                 "id": 14,
                 "chapter_id": "蟠桃园",
-                "card_count": 4,
-                "cards": "10013#10013#10013#10014",
+                "card_count": 5,
+                "cards": "10013#10013#10013#10013#10014",
                 "boss_id": 10014,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "formation": "1:10013,2:10013,3:10013,4:10014",
+                "formation": "1:10013,2:10013,3:10013,4:10013,5:10014",
                 "atk_inc": 5,
                 "hp_inc": 5,
                 "max_drop_card_number": 1
@@ -7160,12 +7176,12 @@ outputTables = {
             "15": {
                 "id": 15,
                 "chapter_id": "王母峰",
-                "card_count": 4,
-                "cards": "10014#10014#10014#10015",
+                "card_count": 5,
+                "cards": "10014#10014#10014#10014#10015",
                 "boss_id": 10015,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "formation": "1:10014,2:10014,3:10014,4:10015",
+                "formation": "1:10014,2:10014,3:10014,4:10014,5:10015",
                 "atk_inc": 5,
                 "hp_inc": 5,
                 "max_drop_card_number": 1
@@ -8133,7 +8149,14 @@ outputTables = {
         }
     },
     "task": {
-        "colComment": {},
+        "colComment": {
+            "chapter_id": {
+                "table": "大章表",
+                "key_index": "chapter",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
         "rows": {
             "1": {
                 "id": 1,
@@ -15291,45 +15314,44 @@ outputTables = {
                 "money": 10000,
                 "energy": 200,
                 "skillPoint": 0,
-                "spirit": 0,
+                "elixir": 0,
                 "lottery_free_count": 0
             },
             "2": {
                 "id": 2,
                 "count": 10,
                 "money": 20000,
-                "energy": 500,
+                "energy": 300,
                 "skillPoint": 0,
-                "spirit": 0,
+                "elixir": 0,
                 "lottery_free_count": 0
             },
             "3": {
                 "id": 3,
-                "count": 18,
+                "count": 15,
                 "money": 30000,
-                "energy": 800,
+                "energy": 500,
                 "skillPoint": 1000,
-                "spirit": 0,
-                "lottery_free_count": 3
+                "elixir": 0,
+                "lottery_free_count": 5
             },
             "4": {
                 "id": 4,
-                "count": 25,
+                "count": 20,
                 "money": 50000,
-                "energy": 1000,
+                "energy": 800,
                 "skillPoint": 2000,
-                "spirit": 500,
-                "lottery_free_count": 5
+                "elixir": 1000,
+                "lottery_free_count": 10
             },
             "5": {
                 "id": 5,
-                "count": -1,
+                "count": 25,
                 "money": 100000,
-                "energy": 2000,
-                "skillPoint": 5000,
-                "spirit": 1000,
-                "lottery_free_count": 10,
-                "gold": 100
+                "energy": 1000,
+                "skillPoint": 3000,
+                "elixir": 2000,
+                "lottery_free_count": 15
             }
         }
     },
@@ -15731,6 +15753,234 @@ outputTables = {
                 "name": "Vip12",
                 "cash": 50000,
                 "total_cash": 96860
+            }
+        }
+    },
+    "achievement": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "method": "levelTo",
+                "need": 50,
+                "name": "升级达人",
+                "desc": "角色等级达到50级",
+                "gold": 10,
+                "energy": 100
+            },
+            "2": {
+                "id": 2,
+                "method": "levelTo",
+                "need": 90,
+                "name": "疯狂升级",
+                "desc": "角色等级达到90级",
+                "gold": 100,
+                "energy": 1000
+            },
+            "3": {
+                "id": 3,
+                "method": "passTo",
+                "need": 50,
+                "name": "一半！",
+                "desc": "天道闯过50层",
+                "gold": 10,
+                "energy": 100
+            },
+            "4": {
+                "id": 4,
+                "method": "passTo",
+                "need": 100,
+                "name": "通关！",
+                "desc": "天道闯过100层",
+                "gold": 100,
+                "energy": 1000
+            },
+            "5": {
+                "id": 5,
+                "method": "winCount",
+                "need": 50,
+                "name": "小试牛刀",
+                "desc": "竞技获胜次数达到50场",
+                "gold": 10,
+                "energy": 100
+            },
+            "6": {
+                "id": 6,
+                "method": "winCount",
+                "need": 5000,
+                "name": "已经超神了",
+                "desc": "竞技获胜次数达到5000场",
+                "gold": 100,
+                "energy": 1000
+            },
+            "7": {
+                "id": 7,
+                "method": "winningStreak",
+                "need": 50,
+                "name": "所向披靡",
+                "desc": "竞技最高连胜达到50次",
+                "gold": 100,
+                "energy": 1000
+            },
+            "8": {
+                "id": 8,
+                "method": "rankingTo",
+                "need": 1,
+                "name": "寂寞",
+                "desc": "竞技排名达到第一",
+                "gold": 100,
+                "energy": 1000
+            },
+            "9": {
+                "id": 9,
+                "need": 1,
+                "name": "霸气外射！",
+                "desc": "以1敌5，战胜对方",
+                "gold": 10,
+                "energy": 100
+            },
+            "10": {
+                "id": 10,
+                "method": "friends",
+                "need": 20,
+                "name": "我们约会吧",
+                "desc": "拥有20个好友",
+                "gold": 10,
+                "energy": 100
+            },
+            "11": {
+                "id": 11,
+                "method": "gaveBless",
+                "need": 500,
+                "name": "无私奉献",
+                "desc": "为好友送出祝福达到500次",
+                "gold": 10,
+                "energy": 100
+            },
+            "12": {
+                "id": 12,
+                "method": "receivedBless",
+                "need": 100,
+                "name": "爱是相互的",
+                "desc": "收到好友祝福次数达到100次",
+                "gold": 300,
+                "energy": 2000
+            },
+            "13": {
+                "id": 13,
+                "method": "star5card",
+                "need": 1,
+                "name": "质的飞跃",
+                "desc": "获得1张5星卡",
+                "gold": 10,
+                "energy": 100
+            },
+            "14": {
+                "id": 14,
+                "method": "star5cardLevelTo",
+                "need": 60,
+                "name": "这就是实力",
+                "desc": "将1张5星卡强化到满级",
+                "gold": 50,
+                "energy": 500
+            },
+            "15": {
+                "id": 15,
+                "method": "star5card",
+                "need": 5,
+                "name": "你就是神！",
+                "desc": "获得5张5星卡",
+                "gold": 100,
+                "energy": 1000
+            },
+            "16": {
+                "id": 16,
+                "method": "psTo",
+                "need": 10,
+                "name": "但求最好",
+                "desc": "拥有1个10%的被动属性",
+                "gold": 10,
+                "energy": 100
+            },
+            "17": {
+                "id": 17,
+                "method": "elixirTo",
+                "need": 100000,
+                "name": "一大波仙丹",
+                "desc": "累计获得100000仙丹",
+                "gold": 50,
+                "energy": 500
+            },
+            "18": {
+                "id": 18,
+                "method": "energyTo",
+                "need": 100000,
+                "name": "活力无限",
+                "desc": "累计获得100000活力值",
+                "gold": 100,
+                "energy": 1000
+            },
+            "19": {
+                "id": 19,
+                "method": "luckyCardCount",
+                "need": 9999,
+                "name": "抽卡狂魔",
+                "desc": "抽卡总次数达到9999",
+                "gold": 100,
+                "energy": 500
+            },
+            "20": {
+                "id": 20,
+                "method": "highLuckyCardCount",
+                "need": 8888,
+                "name": "钱就是个屁",
+                "desc": "高级抽卡总次数达到8888",
+                "gold": 100,
+                "energy": 1000
+            },
+            "21": {
+                "id": 21,
+                "need": 1,
+                "name": "买彩票去吧",
+                "desc": "只消耗一张素材卡进阶成功",
+                "gold": 50,
+                "energy": 100
+            },
+            "22": {
+                "id": 22,
+                "method": "powerConsume",
+                "need": 10000,
+                "name": "孜孜不倦",
+                "desc": "累计消耗体力10000点",
+                "gold": 10,
+                "energy": 100
+            },
+            "23": {
+                "id": 23,
+                "method": "vip",
+                "need": 1,
+                "name": "我是VIP！",
+                "desc": "成为VIP用户",
+                "gold": 50,
+                "energy": 500
+            },
+            "24": {
+                "id": 24,
+                "method": "moneyConsume",
+                "need": 10000000,
+                "name": "不差钱",
+                "desc": "累计消耗仙币1000万",
+                "gold": 10,
+                "energy": 100
+            },
+            "25": {
+                "id": 25,
+                "method": "goldConsume",
+                "need": 100000,
+                "name": "挥金如土",
+                "desc": "累计消耗元宝100000",
+                "gold": 50,
+                "energy": 500
             }
         }
     }

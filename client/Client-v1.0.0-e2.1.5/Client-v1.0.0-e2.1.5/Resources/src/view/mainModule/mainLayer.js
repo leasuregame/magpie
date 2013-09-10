@@ -99,7 +99,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickCardLibraryLayer,
             this
         );
-        cardLibraryLayerItem.setPosition(cc.p(135, 250));
+        cardLibraryLayerItem.setPosition(cc.p(120, 250));
 
         var rankLayerItem = cc.MenuItemImage.create(
             main_scene_image.button27,
@@ -107,7 +107,15 @@ var MainLayer = cc.Layer.extend({
             this._onClickRankLayer,
             this
         );
-        rankLayerItem.setPosition(cc.p(285, 250));
+        rankLayerItem.setPosition(cc.p(240, 250));
+
+        var achievementLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button18,
+            main_scene_image.button18s,
+            this._onClickAchievementLayer,
+            this
+        );
+        achievementLayerItem.setPosition(cc.p(360, 250));
 
         var friendLayerItem = cc.MenuItemImage.create(
             main_scene_image.button28,
@@ -115,7 +123,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickFriendLayer,
             this
         );
-        friendLayerItem.setPosition(cc.p(435, 250));
+        friendLayerItem.setPosition(cc.p(480, 250));
 
         var configLayerItem = cc.MenuItemImage.create(
             main_scene_image.button29,
@@ -123,7 +131,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickConfigLayer,
             this
         );
-        configLayerItem.setPosition(cc.p(585, 250));
+        configLayerItem.setPosition(cc.p(600, 250));
 
         var functionMenu = cc.Menu.create(
             spiritLayerItem,
@@ -133,12 +141,26 @@ var MainLayer = cc.Layer.extend({
             evolutionLayerItem,
             cardLibraryLayerItem,
             rankLayerItem,
+            achievementLayerItem,
             friendLayerItem,
             configLayerItem
         );
         functionMenu.setPosition(cc.p(0, 0));
 
         this.addChild(functionMenu);
+
+        playEffect({
+            effectId: 5,
+            target: this,
+            delay: 0.1,
+            loops: 0,
+            position: cc.p(360, 800),
+            anchorPoint: null,
+            scale: 1,
+            scaleX: 1,
+            scaleY: 1,
+            sprite: null
+        });
 
         return true;
     },
@@ -188,8 +210,13 @@ var MainLayer = cc.Layer.extend({
     },
 
     _onClickRankLayer: function () {
-        cc.log("MainLayer _onClickRankLayerItem");
+        cc.log("MainLayer _onClickRankLayer");
         MainScene.getInstance().switchLayer(RankLayer);
+    },
+
+    _onClickAchievementLayer: function () {
+        cc.log("MainLayer _onClickAchievementLayer");
+        MainScene.getInstance().switchLayer(AchievementLayer);
     },
 
     _onClickFriendLayer: function () {

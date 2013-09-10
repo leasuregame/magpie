@@ -38,6 +38,16 @@ var Message = Entity.extend({
         return true;
     },
 
+    update: function (data) {
+        cc.log("Message update");
+
+        this._friendMessage = data.friend || [];
+        this._battleMessage = data.battle || [];
+        this._systemMessage = data.system || [];
+
+        this._sort();
+    },
+
     sync: function () {
         cc.log("Message sync");
 
@@ -51,11 +61,7 @@ var Message = Entity.extend({
 
                 var msg = data.msg;
 
-                that._friendMessage = msg.friend || [];
-                that._battleMessage = msg.battle || [];
-                that._systemMessage = msg.system || [];
-
-                that._sort();
+                that.update(msg);
             } else {
                 cc.log("sync fail");
 

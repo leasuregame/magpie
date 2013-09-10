@@ -35,27 +35,29 @@ AppDelegate::~AppDelegate()
 bool AppDelegate::applicationDidFinishLaunching()
 {
     // initialize director
-    CCDirector *pDirector = CCDirector::sharedDirector();
-    pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
+    CCDirector* pDirector = CCDirector::sharedDirector();
+    CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
+    
+    pDirector->setOpenGLView(pEGLView);
     
     // turn on display FPS
     pDirector->setDisplayStats(true);
     
-    CCSize screenSize = CCEGLView::sharedOpenGLView()->getFrameSize();
+    CCSize screenSize = pEGLView->getFrameSize();
     
     if (screenSize.height > 960)
     {
-        CCEGLView::sharedOpenGLView()->setDesignResolutionSize(0, 0, 720, 1136, kResolutionNoBorder);
+        pEGLView->setDesignResolutionSize(0, 0, 720, 1136, kResolutionNoBorder);
     }
     else if (screenSize.height > 480)
     {
-        CCEGLView::sharedOpenGLView()->setFrameSize(720, 1136);
-        CCEGLView::sharedOpenGLView()->setDesignResolutionSize(40, 88, 720, 1136, kResolutionNoBorder);
+        pEGLView->setFrameSize(720, 1136);
+        pEGLView->setDesignResolutionSize(40, 88, 720, 1136, kResolutionNoBorder);
     }
     else
     {
-        CCEGLView::sharedOpenGLView()->setFrameSize(360, 568);
-        CCEGLView::sharedOpenGLView()->setDesignResolutionSize(20, 44, 360, 568, kResolutionNoBorder);
+        pEGLView->setFrameSize(360, 568);
+        pEGLView->setDesignResolutionSize(20, 44, 360, 568, kResolutionNoBorder);
     }
     
     // set FPS. the default value is 1.0/60 if you don't call this

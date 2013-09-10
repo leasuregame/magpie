@@ -28,8 +28,8 @@ var Card = Entity.extend({
     _vip: 0,                // vip等级
     _exp: 0,                // 当前经验
     _skillLv: 0,            // 技能等级
-    _hpAddition: 0,         // 生命培养量
-    _atkAddition: 0,        // 攻击培养量
+    _hpAddition: 0,         // 生命加成
+    _atkAddition: 0,        // 攻击加成
     _elixir: 0,             // 已经消耗的仙丹
     _passiveSkill: {},      // 被动技能
 
@@ -57,10 +57,16 @@ var Card = Entity.extend({
 
     init: function (data) {
         cc.log("Card init");
+        cc.log("=============================================");
+        cc.log(data);
 
         this._passiveSkill = {};
 
-        return this.update(data);
+        this.update(data);
+
+        cc.log(this);
+        cc.log("=============================================");
+        return true;
     },
 
     // 更新卡牌数据
@@ -85,8 +91,6 @@ var Card = Entity.extend({
         this._loadSkillTable();
 
         this._ability = this._getCardAbility();
-
-        return true;
     },
 
     _updatePassiveSkill: function (data) {

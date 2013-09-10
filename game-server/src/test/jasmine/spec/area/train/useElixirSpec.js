@@ -64,6 +64,7 @@ describe("Area Server", function() {
             elixir: 500,
             cardId: 100
           }, function(data) {
+            console.log(data);
             expect(data).toEqual({
               code: 200
             });
@@ -74,7 +75,7 @@ describe("Area Server", function() {
           });
 
           doAjax('/card/' + 100, function(res) {
-            expect(res.data.elixir).toEqual(before_card.elixir + 500);
+            expect(res.data.elixirHp).toEqual(before_card.elixirHp + 500);
           });
 
         });

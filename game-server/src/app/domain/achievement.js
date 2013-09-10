@@ -1,7 +1,7 @@
 var table = require('../manager/table');
 var logger = require('pomelo-logger').getLogger(__filename);
 var utility = require('../common/utility');
-var messageService = require('pomelo').app.get('messageService')
+var messageService = require('pomelo').app.get('messageService');
 var _ = require('underscore');
 
 Achievement = function() {}
@@ -22,8 +22,8 @@ Achievement.winningStreak = function(player, ranking) {
 	checkIsReached(player, 'winningStreak', ranking);
 };
 
-Achievement.rankingTo = function(player, rk) {
-	checkIsReached(player, 'rankingTo', rk)
+Achievement.rankingToOne = function(player) {
+	checkIsReached(player, 'rankingTo', 1)
 };
 
 Achievement.friends = function(player, count) {
@@ -91,10 +91,10 @@ Achievement.v587 = function(player) {
 };
 
 var checkIsReached_alpha = function(player, method, incVal) {
-	var need = 1;
+	var need = incVal;
 	var items = _.where(_.values(player.achievement), {
 		method: method
-	});	
+	});
 	if (!_.isEmpty(items)) {
 		need = items[0].got + incVal;
 	}
@@ -102,10 +102,13 @@ var checkIsReached_alpha = function(player, method, incVal) {
 };
 
 var checkIsReached = function(player, method, need) {
-	var id = reachedAchievementId(method, need);
-	if (id) {
-		reachAchievement(player, id);
-	}
+	var achs = reachedAchievements(method, need);
+	achs.forEach(function(ach) {
+		if ( (typeof player.achievement[ach.id] == 'undefined') || 
+			(typeof player.achievement[ach.id] != 'undefined' && !player.achievement[ach.id].isAchieve) ) {
+			reachAchievement(player, ach.id);
+		}
+	});
 	updateAchievement(player, method, need);
 };
 
@@ -127,36 +130,29 @@ var updateAchievement = function(player, method, got) {
 			if (!i.isAchieve) {
 				i.got = got;
 			}
-		})
-	} else {
-		table.getTable('achievement')
-			.filter(function(id, row) {
-				return row.method == method;
-			})
-			.forEach(function(r) {
-				if (_.isUndefined(ach[r.id])) {
-					ach[r.id] = {
-						method: r.method,
-						isAchieve: false,
-						got: got,
-						need: r.need
-					}
-				}
-			});
+		});
 	}
+	table.getTable('achievement')
+		.filter(function(id, row) {
+			return row.method == method;
+		})
+		.forEach(function(r) {
+			if (_.isUndefined(ach[r.id])) {
+				ach[r.id] = {
+					method: r.method,
+					isAchieve: false,
+					got: got
+				}
+			}
+		});
 	// reset achievement of player
 	player.achievement = ach;
 };
 
-var reachedAchievementId = function(methodName, need) {
-	var rows = table.getTable('achievement').filter(function(id, row) {
-		return row.method == methodName;
+var reachedAchievements = function(methodName, need) {
+	return table.getTable('achievement').filter(function(id, row) {
+		return row.method == methodName && need >= row.need;
 	});
-
-	var reached = _.findWhere(rows, {
-		need: need
-	});
-	return !_.isUndefined(reached) ? reached.id : null;
 };
 
 var reachAchievement = function(player, id) {
@@ -170,16 +166,19 @@ var reachAchievement = function(player, id) {
 	} else {
 		logger.warn('can not find achievement data by id ' + id);
 	}
-
 };
 
 var sendMessage = function(player, achId) {
-	messageService.pushByPid(player.id, {
-		route: 'onAchieve',
-		msg: {
-			achieveId: achId
-		}
-	});
+	if (messageService != null && typeof(messageService.pushByPid) != 'undefined') {
+		messageService.pushByPid(player.id, {
+			route: 'onAchieve',
+			msg: {
+				achieveId: achId
+			}
+		}, function(err, res) {
+			logger.info('push message(route: onAchieve):', err, res);
+		});
+	}
 };
 
 module.exports = Achievement;

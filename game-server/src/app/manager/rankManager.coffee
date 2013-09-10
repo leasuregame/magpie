@@ -34,7 +34,7 @@ Manager = module.exports =
         ### check achievement ###
         achieve.winCount(player, challenger.counts.win)
         achieve.winningStreak(player, challenger.counts.winningStreak)
-        achieve.rankingTo(player, targetRanking)
+        achieve.rankingToOne(player) if targetRanking is 1
       else
         challenger.incCount('lose')
         defender.incCount('win')

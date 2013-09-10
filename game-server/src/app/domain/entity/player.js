@@ -42,7 +42,6 @@ var addEvents = function(player) {
     // 经验值改变，判断是否升级
     player.on('exp.change', function(exp) {
         var upgradeInfo = table.getTableItem('player_upgrade', player.lv);
-        console.log(exp, upgradeInfo.exp);
         if (exp >= upgradeInfo.exp) {
             player.increase('lv');
             player.set('exp', exp - upgradeInfo.exp);
@@ -65,6 +64,9 @@ var addEvents = function(player) {
     });
 
     player.on('pass.change', function(pass) {
+        if (typeof pass == 'string'){
+            pass = JSON.parse(pass);
+        }        
         achieve.passTo(player, pass.layer);
     });
 
@@ -132,6 +134,7 @@ var Player = (function(_super) {
     utility.extends(Player, _super);
 
     function Player(param) {
+        addEvents(this);
         Player.__super__.constructor.apply(this, arguments);
     }
 
@@ -141,7 +144,7 @@ var Player = (function(_super) {
         // this.friends || (this.friends = []);
 
         // executeVipPrivilege(this);
-        addEvents(this);
+        
     };
 
     Player.FIELDS = [
@@ -251,8 +254,7 @@ var Player = (function(_super) {
             ach[id] = {
                 method: dt !== null ? dt.method : 'not found',
                 isAchieve: true,
-                got: dt !== null ? dt.need : 0,
-                need: dt !== null ? dt.need : 0
+                got: dt !== null ? dt.need : 0
             };
         } else {
             ach[id].isAchieve = true;

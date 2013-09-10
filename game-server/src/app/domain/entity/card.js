@@ -274,21 +274,15 @@ var Card = (function(_super) {
     Card.prototype.toJson = function() {
         return {
             id: this.id,
-            createTime: this.createTime,
-            playerId: this.playerId,
             tableId: this.tableId,
             hp: this.hp,
             atk: this.atk,
-            incs: this.incs,
-            star: this.star,
             lv: this.lv,
             exp: this.exp,
             skillLv: this.skillLv,
             skillPoint: this.skillPoint,
             elixirHp: this.elixirHp,
             elixirAtk: this.elixirAtk,
-            hpAddition: this.hpAddition,
-            atkAddition: this.atkAddition,
             passiveSkills: _.values(this.passiveSkills).map(function(ps) {
                 return ps.toJson();
             }) || []

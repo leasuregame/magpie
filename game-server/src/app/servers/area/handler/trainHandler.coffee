@@ -410,7 +410,7 @@ Handler::smeltElixir = (msg, session, next) ->
 Handler::useElixir = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   elixir = msg.elixir
-  type = if msg.type isnt null then msg.type else ELIXIR_TYPE_HP
+  type = if typeof msg.type isnt 'undefined' then msg.type else ELIXIR_TYPE_HP
   cardId = msg.cardId
 
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
@@ -428,7 +428,7 @@ Handler::useElixir = (msg, session, next) ->
       return next(null, {code: 501, msg: '不能对3星以下的卡牌使用仙丹'})
 
     limit = elixirConfig.limit[card.star]
-    if card.elixir >= limit
+    if (card.elixirHp + card.elixirAtk) >= limit
       return next(null, {code: 501, msg: "卡牌仙丹容量已满"})
 
     if card.elixir + elixir > limit

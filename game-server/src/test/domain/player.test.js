@@ -745,6 +745,8 @@ describe("Player Object", function() {
                 lv: 48
             });
 
+            ply.achievement.should.eql('');
+
             ply.lv.should.equal(48);
             ply.increase('lv');
             ply.lv.should.equal(49);

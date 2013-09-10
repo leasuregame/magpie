@@ -96,6 +96,7 @@
             'src/view/loginModule/registerScene.js',
             'src/view/loginModule/registerLayer.js',
 
+            'src/view/mainModule/effect.js',
 
             'src/view/mainModule/abilityRankLayer.js',
             'src/view/mainModule/achievementLayer.js',

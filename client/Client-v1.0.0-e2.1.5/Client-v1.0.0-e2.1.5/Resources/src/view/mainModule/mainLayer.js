@@ -149,6 +149,19 @@ var MainLayer = cc.Layer.extend({
 
         this.addChild(functionMenu);
 
+        playEffect({
+            effectId: 5,
+            target: this,
+            delay: 0.1,
+            loops: 0,
+            position: cc.p(360, 800),
+            anchorPoint: null,
+            scale: 1,
+            scaleX: 1,
+            scaleY: 1,
+            sprite: null
+        });
+
         return true;
     },
 

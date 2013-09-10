@@ -14,9 +14,8 @@
 
 
 require('./setup');
-app = require("pomelo").app;
-var dao = app.get('dao');
 var should = require("should");
+var User = require('../../app/domain/entity/user');
 
 describe("User Object", function () {
     var data = {
@@ -28,7 +27,7 @@ describe("User Object", function () {
         lastLoginTime: "34346456",
         lastLoginDevice: "ipad"
     };
-
+    /*
     describe("#save", function () {
         var user = null;
 
@@ -70,4 +69,38 @@ describe("User Object", function () {
             });
         });
     });
+    */
+
+    var user;
+    beforeEach(function(){
+        user = new User({
+            id: 1,
+            createTime: 0,
+            account: 5,
+            name: 'Mike',
+            loginCount: 5,
+            lastLoginTime: 0,
+            lastLoginDevice: 0,
+            lastLoginArea: 1,
+            roles: 1
+        });
+    });
+
+    describe('.toJson()',function(){
+        it('should can toJson',function(){
+            user.toJson().should.eql({
+                id: 1,
+                createTime: 0,
+                account: 5,
+                name: 'Mike',
+                loginCount: 5,
+                lastLoginTime: 0,
+                lastLoginDevice: 0,
+                lastLoginArea: 1,
+                roles: 1
+            });
+        });
+    });
+
+
 });

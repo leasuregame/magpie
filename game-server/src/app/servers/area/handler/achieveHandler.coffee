@@ -14,4 +14,10 @@ Handler::achievements = (msg, session, next) ->
 		if err
       		return next(null, {code: err.code or 500, msg: err.msg or err})
 
-      	next(null, {code: 200, msg: player.achievement})
+      	results = {}
+      	for k, v of player.achievement
+      		results[k] = {
+      			isAchive: v.isAchieve
+      			got: v.got
+      		}
+      	next(null, {code: 200, msg: results})

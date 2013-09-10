@@ -1,0 +1,35 @@
+<%- include header%>
+
+     <form class="form-inline span10" role="form" >
+         <fieldset>
+             <legend>模拟战斗</legend>
+             <div class="form-inline span5">
+                 <legend>攻</legend>
+                 <table class = "table table-bordered table-hover table-responsive" id = "attackCards">
+                    <thead id = "th">
+                        <th>序号</th><th>技能等级</th><th>配置表ID</th><th>提升血量</th><th>提升攻击</th><th>闪避</th><th>暴击</th><th>减伤</th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                 </table>
+
+                 <legend>守</legend>
+                 <table class = "table table-bordered table-hover" id = "defendCards">
+                        <thead id = "th">
+                            <th>序号</th><th>技能等级</th><th>配置表ID</th><th>提升血量</th><th>提升攻击</th><th>闪避</th><th>暴击</th><th>减伤</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                 </table>
+                 <button type="button" class="btn btn-primary" id = "btnBattle" >开始战斗</button>
+             </div>
+             <div class="form-inline span5">
+             <legend>战报</legend>
+             </div>
+          </fieldset>
+     </from>
+
+     <script src="/javascripts/simBattle.js"></script>
+
+<%- include footer%>

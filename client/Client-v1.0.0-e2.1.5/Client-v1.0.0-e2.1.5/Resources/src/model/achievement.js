@@ -37,10 +37,13 @@ var Achievement = Entity.extend({
                 name: table[key].name,
                 description: table[key].desc,
                 gold: table[key].gold,
-                energy: table[key].energy,
-                count: data[key].got || 0,
-                isAchieve: data[key].isAchieve || false
+                energy: table[key].energy
             };
+
+            if (data[key]) {
+                this._achievement[key].count = data[key].got || 0;
+                this._achievement[key].isAchieve = data[key].isAchieve || 0;
+            }
 
             this._length += 1;
         }

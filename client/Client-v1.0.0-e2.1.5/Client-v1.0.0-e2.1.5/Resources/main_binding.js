@@ -73,6 +73,7 @@ var appFiles = [
     'src/controls/lazyMenu.js',
     'src/controls/markLayer.js',
     'src/controls/strokeLabel.js',
+    'src/controls/LzMenuItem.js',
 
     'src/view/loginModule/loginScene.js',
     'src/view/loginModule/loginLayer.js',

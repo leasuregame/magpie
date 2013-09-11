@@ -24,6 +24,7 @@ var Achievement = Entity.extend({
 
     update: function (data) {
         cc.log("Achievement update");
+        cc.log(data);
 
         this._achievement = {};
         this._length = 0;
@@ -34,6 +35,7 @@ var Achievement = Entity.extend({
             this._achievement[key] = {
                 id: table[key].id,
                 need: table[key].need,
+                count: 0,
                 name: table[key].name,
                 description: table[key].desc,
                 gold: table[key].gold,
@@ -42,12 +44,14 @@ var Achievement = Entity.extend({
 
             if (data[key]) {
                 this._achievement[key].count = data[key].got || 0;
-                this._achievement[key].isAchieve = data[key].isAchieve || 0;
+                this._achievement[key].isReceiver = data[key].isTake || false;
+                this._achievement[key].isAchieve = data[key].isAchieve || false;
             }
 
             this._length += 1;
         }
     },
+
 
     sync: function () {
         cc.log("Achievement sync");
@@ -69,6 +73,39 @@ var Achievement = Entity.extend({
                 that.sync();
             }
         });
+    },
+
+    receiver: function (cb, id) {
+        cc.log("Achievement receiver");
+
+        var that = this;
+        lzWindow.pomelo.request("area.achieveHandler.getReward", {
+            id: id
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("receiver success");
+
+                that._achievement[id].isReceiver = true;
+
+                gameData.player.adds({
+                    money: that._achievement[id].money,
+                    energy: that._achievement[id].energy
+                });
+
+                cb();
+            } else {
+                cc.log("receiver fail");
+            }
+        });
+    },
+
+    setAchieve: function (id) {
+        cc.log("Achievement setAchieve");
+
+        this._achievement[id].isAchieve = true;
     }
 });
 

@@ -41,4 +41,11 @@ lzWindow.pomelo.init({
 
         gameData.message.push(data.msg);
     });
+
+    lzWindow.pomelo.on("onAchieve", function (data) {
+        cc.log("***** on achieve:");
+        cc.log(data);
+
+        gameData.achievement.setAchieve(data.msg.achieveId);
+    });
 });

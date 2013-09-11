@@ -84,56 +84,54 @@ var AchievementLayer = cc.Layer.extend({
             descriptionLabel.setPosition(cc.p(45, y + 34));
             scrollViewLayer.addChild(descriptionLabel);
 
-            var energyIcon = cc.Sprite.create(main_scene_image.icon213);
-            energyIcon.setPosition(cc.p(410, y + 40));
-            scrollViewLayer.addChild(energyIcon);
+            var isReceiver = achievement[key].isReceiver;
+            var isAchieve = achievement[key].isAchieve;
 
-            var energyLabel = cc.LabelTTF.create(achievement[key].energy, "Arial", 25);
-            energyLabel.setColor(cc.c3b(99, 62, 21));
-            energyLabel.setAnchorPoint(cc.p(0, 0.5));
-            energyLabel.setPosition(cc.p(430, y + 40));
-            scrollViewLayer.addChild(energyLabel);
+            this._scrollViewElement[key] = {};
 
-            var goldIcon = cc.Sprite.create(main_scene_image.icon214);
-            goldIcon.setPosition(cc.p(510, y + 40));
-            scrollViewLayer.addChild(goldIcon);
+            var isReceiverIcon = cc.Sprite.create(main_scene_image.icon212);
+            isReceiverIcon.setPosition(cc.p(510, y + 40));
+            scrollViewLayer.addChild(isReceiverIcon);
 
-            var goldLabel = cc.LabelTTF.create(achievement[key].gold, "Arial", 25);
-            goldLabel.setColor(cc.c3b(99, 62, 21));
-            goldLabel.setAnchorPoint(cc.p(0, 0.5));
-            goldLabel.setPosition(cc.p(530, y + 40));
-            scrollViewLayer.addChild(goldLabel);
+            if (!isReceiver) {
+                isReceiverIcon.setVisible(false);
 
-            var isAchieveIcon = cc.Sprite.create(main_scene_image.icon212);
-            isAchieveIcon.setPosition(cc.p(510, y + 40));
-            scrollViewLayer.addChild(isAchieveIcon);
-            isAchieveIcon.setVisible(false);
+                if (isAchieve) {
+                    var receiverItem = cc.MenuItemImage.createWithStr(
+                        main_scene_image.button9,
+                        main_scene_image.button9s,
+                        main_scene_image.button9d,
+                        main_scene_image.icon123,
+                        this._onClickReceiver(parseInt(key)),
+                        this
+                    );
+                    receiverItem.setPosition(cc.p(510, y + 40));
+                    menu.addChild(receiverItem);
 
-            var receiverItem = cc.MenuItemImage.create(
-                main_scene_image.button9,
-                main_scene_image.button9s,
-                main_scene_image.button9d,
-                this._onClickReceiver(parseInt(key)),
-                this
-            );
-            receiverItem.setPosition(cc.p(510, y + 40));
-            menu.addChild(receiverItem);
-            receiverItem.setVisible(false);
+                    this._scrollViewElement[key].isReceiverIcon = isReceiverIcon;
+                    this._scrollViewElement[key].receiverItem = receiverItem;
+                } else{
+                    var energyIcon = cc.Sprite.create(main_scene_image.icon213);
+                    energyIcon.setPosition(cc.p(410, y + 40));
+                    scrollViewLayer.addChild(energyIcon);
 
-            var receiverIcon = cc.Sprite.create(main_scene_image.icon123);
-            receiverIcon.setPosition(cc.p(510, y + 40));
-            scrollViewLayer.addChild(receiverIcon, 1);
-            receiverIcon.setVisible(false);
+                    var energyLabel = cc.LabelTTF.create(achievement[key].energy, "Arial", 25);
+                    energyLabel.setColor(cc.c3b(99, 62, 21));
+                    energyLabel.setAnchorPoint(cc.p(0, 0.5));
+                    energyLabel.setPosition(cc.p(430, y + 40));
+                    scrollViewLayer.addChild(energyLabel);
 
-            this._scrollViewElement[key] = {
-                energyIcon: energyIcon,
-                energyLabel: energyLabel,
-                goldIcon: goldIcon,
-                goldLabel: goldLabel,
-                isAchieveIcon: isAchieveIcon,
-                receiverItem: receiverItem,
-                receiverIcon: receiverIcon
-            };
+                    var goldIcon = cc.Sprite.create(main_scene_image.icon214);
+                    goldIcon.setPosition(cc.p(510, y + 40));
+                    scrollViewLayer.addChild(goldIcon);
+
+                    var goldLabel = cc.LabelTTF.create(achievement[key].gold, "Arial", 25);
+                    goldLabel.setColor(cc.c3b(99, 62, 21));
+                    goldLabel.setAnchorPoint(cc.p(0, 0.5));
+                    goldLabel.setPosition(cc.p(530, y + 40));
+                    scrollViewLayer.addChild(goldLabel);
+                }
+            }
         }
 
         var scrollView = cc.ScrollView.create(cc.size(609, 700), scrollViewLayer);
@@ -148,14 +146,17 @@ var AchievementLayer = cc.Layer.extend({
         return true;
     },
 
-    update: function () {
-        cc.log("AchievementLayer update");
-    },
-
     _onClickReceiver: function (id) {
         return function () {
             cc.log("AchievementLayer _onClickReceiver: " + id);
 
+            var that = this;
+            gameData.achievement.receiver(function (data) {
+                cc.log(data);
+
+                that._scrollViewElement[id].receiverItem.setVisible(false);
+                that._scrollViewElement[id].isReceiverIcon.setVisible(true);
+            }, id);
         }
 
     }

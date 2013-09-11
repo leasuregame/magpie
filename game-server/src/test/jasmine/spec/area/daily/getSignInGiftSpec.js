@@ -6,7 +6,7 @@ describe('Area Server', function() {
 
 		describe('area.dailyHandler.getSignInGift', function() {
 
-			describe('when had get sign in gift', function() {
+			describe('when had got sign in gift', function() {
 				beforeEach(function() {
 					doAjax('/update/player/100', {
 						signIn: JSON.stringify({
@@ -21,7 +21,7 @@ describe('Area Server', function() {
 
 				});
 
-				it('should can get sign in gift', function() {
+				it('should can not get sign in gift again', function() {
 					request('area.dailyHandler.getSignInGift', {
 						id: 1
 					}, function(data) {
@@ -41,8 +41,9 @@ describe('Area Server', function() {
 							},
 							flag: 0
 						})
-					}, function() {});
-					loginWith('arthur', '1', 1);
+					}, function() {
+						loginWith('arthur', '1', 1);
+					});					
 				});
 
 				it('should can get sign in gift', function() {

@@ -27,6 +27,6 @@ Area.getPlayers = ->
 
 Area.powerConsume = ->
   for p in @getPlayers()
-    p.emit('power.consume')
+    p.emit('power.resume')
     p.emit('power.give')
   return

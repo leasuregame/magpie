@@ -37,7 +37,8 @@ describe("Area Server", function() {
 							'open_box_card',
 							'battle_log',
 							'fragment',
-							'task'
+							'task',
+							'power'
 						]);
 
 						var res = data.msg;

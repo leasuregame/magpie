@@ -210,7 +210,7 @@ Data.prototype.loadDataForRankingList = function(callback) {
         name: 'james' + id,
         userId: id,
         areaId: 1,
-        createTime: Date.now()
+        ability: id + _.random(10000)
       };
 
       self.db.player.create({

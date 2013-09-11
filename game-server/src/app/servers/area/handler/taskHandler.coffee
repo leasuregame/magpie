@@ -69,6 +69,7 @@ Handler::explore = (msg, session, next) ->
 
     player.save()
     data.task = player.task
+    data.power = player.power
     next(null, {code: 200, msg: data})
 
 ###
@@ -89,7 +90,13 @@ Handler::wipeOut = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
     player.save()
-    next(null, {code: 200, msg: {rewards: rewards, pass: player.pass}})
+    next(null, {code: 200, msg: {
+      rewards: rewards, 
+      pass: player.pass,
+      power: player.power,
+      exp: player.exp,
+      lv: player.lv
+    }})
 
 ###
 精英关卡，闯关
@@ -149,4 +156,10 @@ Handler::passBarrier = (msg, session, next) ->
     if err 
       return next(err, {code: err.code or 500, msg: err.msg or ''})
     
-    next(null, {code: 200, msg: {battleLog: bl, pass: player.pass}})
+    next(null, {code: 200, msg: {
+      battleLog: bl, 
+      pass: player.pass,
+      power: player.power,
+      exp: player.exp,
+      lv: player.lv
+    }})

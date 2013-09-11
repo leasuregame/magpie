@@ -13,21 +13,11 @@ app.set('views', __dirname + '/views')
 app.engine('html', require('ejs').renderFile);
 
 app.get('/test', function(req, res) {
-  var debug = req.query.debug || false;
-  var dir = __dirname + '/spec';
-  util.walk(dir, function(err, files){
-    files = files.filter(function(f) {
-      return /Spec.js$/.test(f);
-    });
-    if (debug) {
-      files = [];
-    }
-    //files = ['fightSpec.js', 'playerSpec.js', 'userSpec.js'];
-    res.render('SpecRunner.html', {
-      files: files.map(function(f) { return f.substr(dir.length+1)})
-    });
-  });
+  responseRunner(req, res, 'SpecRunner')
+});
 
+app.get('/test/html', function(req, res) {
+  responseRunner(req, res, 'htmlRunner');
 });
 
 app.get('/message/add', function(req, res) {
@@ -93,9 +83,10 @@ app.get('/addPlayer', function(req, res) {
   var userId = req.query.userId;
   var areaId = req.query.areaId;
   var name = req.query.name;
+  var lv = req.lv || 1;
   var ct = Date.now();
 
-  mysql.magpiedb1.query('insert into player (userId, areaId, name, createTime) values (?,?,?,?)', [userId, areaId, name, Date.now()], function(err, result) {
+  mysql.magpiedb1.query('insert into player (userId, areaId, name, lv, createTime) values (?,?,?,?,?)', [userId, areaId, name, lv, Date.now()], function(err, result) {
     if (err) {
       res.send({
         code: 500,
@@ -210,6 +201,22 @@ var command = function(req, res, cmd, args) {
   });
   ps.on('close', function(code) {
     res.send('done');
+  });
+};
+
+var responseRunner = function(req, res, runner) {
+  var debug = req.query.debug || false;
+  var dir = __dirname + '/spec';
+  util.walk(dir, function(err, files){
+    files = files.filter(function(f) {
+      return /Spec.js$/.test(f);
+    });
+    if (debug) {
+      files = [];
+    }
+    res.render(runner + '.html', {
+      files: files.map(function(f) { return f.substr(dir.length+1)})
+    });
   });
 };
 

@@ -76,6 +76,7 @@
             'src/model/friend.js',
             'src/model/shop.js',
             'src/model/signIn.js',
+            'src/model/achievement.js',
 
             'src/model/battleLogPool.js',
             'src/model/battleLog.js',
@@ -95,8 +96,10 @@
             'src/view/loginModule/registerScene.js',
             'src/view/loginModule/registerLayer.js',
 
+            'src/view/mainModule/effect.js',
 
             'src/view/mainModule/abilityRankLayer.js',
+            'src/view/mainModule/achievementLayer.js',
             'src/view/mainModule/activityLayer.js',
             'src/view/mainModule/battleMessageLayer.js',
             'src/view/mainModule/cardDetails.js',

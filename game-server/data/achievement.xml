@@ -8,7 +8,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-09-06T06:32:57Z</Created>
-  <LastSaved>2013-09-06T08:38:54Z</LastSaved>
+  <LastSaved>2013-09-10T09:11:45Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -16,7 +16,7 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11500</WindowHeight>
+  <WindowHeight>7740</WindowHeight>
   <WindowWidth>25600</WindowWidth>
   <WindowTopX>10940</WindowTopX>
   <WindowTopY>560</WindowTopY>
@@ -126,7 +126,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">8</Data></Cell>
-    <Cell><Data ss:Type="String">rankingTo</Data></Cell>
+    <Cell><Data ss:Type="String">rankingToOne</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">寂寞</Data></Cell>
     <Cell><Data ss:Type="String">竞技场排名达到第1名</Data></Cell>
@@ -135,7 +135,9 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">9</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">霸气外射！</Data></Cell>
+    <Cell><Data ss:Type="String">v587</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">霸气外射！</Data></Cell>
     <Cell><Data ss:Type="String">己方只上阵1张卡牌，对方上阵5张卡，在这种情况下，战胜对方</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
@@ -178,8 +180,8 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">14</Data></Cell>
-    <Cell><Data ss:Type="String">star5cardLevelTo</Data></Cell>
-    <Cell><Data ss:Type="Number">60</Data></Cell>
+    <Cell><Data ss:Type="String">star5cardFullLevel</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">这就是实力</Data></Cell>
     <Cell><Data ss:Type="String">将1张5星卡强化到满级</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
@@ -196,8 +198,8 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">16</Data></Cell>
-    <Cell><Data ss:Type="String">psTo</Data></Cell>
-    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="String">psTo10</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">但求最好</Data></Cell>
     <Cell><Data ss:Type="String">拥有1个10%加成效果的被动技能</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
@@ -241,7 +243,9 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">21</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">买彩票去吧</Data></Cell>
+    <Cell><Data ss:Type="String">fun</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">买彩票去吧</Data></Cell>
     <Cell><Data ss:Type="String">在卡牌进阶中，只用1张素材卡，成功进阶该卡牌星级</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
@@ -258,7 +262,8 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">23</Data></Cell>
     <Cell><Data ss:Type="String">vip</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">我是VIP！</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">我是VIP！</Data></Cell>
     <Cell><Data ss:Type="String">成为VIP用户</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">500</Data></Cell>
@@ -284,13 +289,19 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -312,6 +323,12 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>

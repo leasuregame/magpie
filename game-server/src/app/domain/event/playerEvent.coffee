@@ -2,7 +2,7 @@ playerConfig = require('../../../config/data/player')
 _ = require 'underscore'
 
 exports.addEvents = (player) ->
-  player.on 'power.consume', ->
+  player.on 'power.resume', ->
     ply = player
     interval = playerConfig.POWER_RESUME.interval
     power = ply.power
@@ -20,7 +20,7 @@ exports.addEvents = (player) ->
     interval = playerConfig.POWER_GIVE.interval
     cur_hour = (new Date()).getHours()
 
-    if _.contains(hours, cur_hour) and not player.hasGive(cur_hour)
+    if _.contains(hours, cur_hour) and not _.contains(player.dailyGift.powerGiven, cur_hour)
       player.givePower(cur_hour, givePoint)
       player.save()
 

@@ -12,18 +12,11 @@
  * */
 
 
-var BG_LABEL_COUNT = 4;
+var BG_LABEL_COUNT = 5;
 
 var StrokeLabel = cc.Node.extend({
     _strLabel: null,
     _strBgLabel: [],
-
-    onEnter: function () {
-        cc.log("StrokeLabel onEnter");
-
-        this._super();
-        this.update();
-    },
 
     init: function (arg) {
         cc.log("StrokeLabel init");
@@ -45,6 +38,8 @@ var StrokeLabel = cc.Node.extend({
             this._strBgLabel[i].setColor(cc.c3b(47, 7, 8));
         }
 
+        this.update();
+
         return true;
     },
 
@@ -58,6 +53,7 @@ var StrokeLabel = cc.Node.extend({
         this._strBgLabel[1].setPosition(cc.p(0, -offset));
         this._strBgLabel[2].setPosition(cc.p(-offset, 0));
         this._strBgLabel[3].setPosition(cc.p(offset, 0));
+        this._strBgLabel[4].setPosition(cc.p(offset * 1.5, -offset * 1.5));
     },
 
     setAnchorPoint: function (point) {

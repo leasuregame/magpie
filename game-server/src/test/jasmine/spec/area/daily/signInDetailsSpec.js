@@ -11,7 +11,13 @@ describe('Area Server', function() {
 				it('should can return sign in info', function() {
 					request('area.dailyHandler.signInDetails', {}, function(data) {
 						console.log(data);
-						expect(data).toEqual('');
+						expect(data).toEqual({
+							code: 200,
+							msg: {
+								months: {},
+								flag: 0
+							}
+						});
 					});
 				});
 			});

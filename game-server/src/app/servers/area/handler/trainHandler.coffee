@@ -9,10 +9,14 @@ elixirConfig = require '../../../../config/data/elixir'
 starUpgradeConfig = require '../../../../config/data/starUpgrade'
 utility = require '../../../common/utility'
 job = require '../../../dao/job'
+achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 
 LOTTERY_BY_GOLD = 1
 LOTTERY_BY_ENERGY = 0
+
+ELIXIR_TYPE_HP = 0
+ELIXIR_TYPE_ATK = 1
 
 module.exports = (app) ->
   new Handler(app)
@@ -139,6 +143,17 @@ Handler::luckyCard = (msg, session, next) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
 
+    ### 获得五星卡成就 ###
+    if cardEnt.star is 5
+      achieve.star5card(player)
+
+    ### 抽奖次数成就 ###
+    achieve.luckyCardCount(player)
+
+    ### 高级抽奖次数成就 ###
+    if level is 3
+      achieve.highLuckyCardCount(player)
+
     player.save()
     next(null, {
       code: 200, 
@@ -236,6 +251,14 @@ Handler::starUpgrade = (msg, session, next) ->
         card.increase('star')
         card.increase('tableId')
 
+        # 获得so lucky成就
+        if card_count is 1
+          achieve.soLucky(player)
+
+        # 获得五星卡成就
+        if card.star is 5
+          achieve.star5card(player)
+
         # 卡牌星级进阶，添加一个被动属性
         ps_data = {}
         if card.star >= 3
@@ -323,6 +346,11 @@ Handler::passSkillAfresh  = (msg, session, next) ->
 
     passSkills.forEach (ps) -> ps.save()
     player.save()
+
+    # 拥有了百分之10的被动属性成就
+    if (passSkills.filter (ps) -> parseInt(ps.value) is 10).length > 0
+      achieve.psTo10(player)
+
     next(null, {code: 200, msg: passSkills.map (p) -> p.toJson()})
 
 Handler::smeltElixir = (msg, session, next) ->
@@ -382,6 +410,7 @@ Handler::smeltElixir = (msg, session, next) ->
 Handler::useElixir = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   elixir = msg.elixir
+  type = if typeof msg.type isnt 'undefined' then msg.type else ELIXIR_TYPE_HP
   cardId = msg.cardId
 
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
@@ -399,13 +428,14 @@ Handler::useElixir = (msg, session, next) ->
       return next(null, {code: 501, msg: '不能对3星以下的卡牌使用仙丹'})
 
     limit = elixirConfig.limit[card.star]
-    if card.elixir >= limit
+    if (card.elixirHp + card.elixirAtk) >= limit
       return next(null, {code: 501, msg: "卡牌仙丹容量已满"})
 
     if card.elixir + elixir > limit
       return next(null, {code: 501, msg: "使用的仙丹已经超出了卡牌的最大仙丹容量"})
 
-    card.increase('elixir', elixir)
+    card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
+    card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK
     player.decrease('elixir', elixir)
     
     _jobs = []

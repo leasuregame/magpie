@@ -24,7 +24,7 @@ var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 var util = require('util');
 var achieve = require('../achievement');
-
+var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL;
 
 var defaultMark = function() {
     var i, result = [];
@@ -42,7 +42,7 @@ var addEvents = function(player) {
     // 经验值改变，判断是否升级
     player.on('exp.change', function(exp) {
         var upgradeInfo = table.getTableItem('player_upgrade', player.lv);
-        console.log(exp, upgradeInfo.exp);
+        console.log(upgradeInfo);
         if (exp >= upgradeInfo.exp) {
             player.increase('lv');
             player.set('exp', exp - upgradeInfo.exp);
@@ -60,15 +60,38 @@ var addEvents = function(player) {
         achieve.gaveBless(player);
     });
 
-    player.on('receive.bless', function(){
+    player.on('receive.bless', function() {
         achieve.receivedBless(player);
     });
 
     player.on('pass.change', function(pass) {
+        if (typeof pass == 'string') {
+            pass = JSON.parse(pass);
+        }
         achieve.passTo(player, pass.layer);
     });
 
-    player.on('add.card', function(card) { 
+    player.on('elixir.increase', function(elixir) {
+        achieve.elixirTo(player, elixir);
+    });
+
+    player.on('energy.increase', function(energy) {
+        achieve.energyTo(player, energy);
+    });
+
+    player.on('money.consume', function(money) {
+        achieve.moneyConsume(player, money);
+    });
+
+    player.on('gold.consume', function(gold) {
+        achieve.goldConsume(player, gold);
+    });
+
+    player.on('power.consume', function(power) {
+        achieve.powerConsume(player, power);
+    });
+
+    player.on('add.card', function(card) {
         if (player.isLineUpCard(card)) {
             //player.activeGroupEffect();
             player.activeSpiritorEffect();
@@ -97,9 +120,26 @@ var addEvents = function(player) {
                 break;
             }
         }
-
+        if (oldVip == 0 && player.vip > 0) {
+            achieve.vip(player);
+        }
         recountVipPrivilege(player, oldVip);
     });
+};
+
+var correctPower = function(player) {
+    var interval, power, now, times, resumePoint;
+
+    interval = playerConfig.POWER_RESUME.interval;
+    power = player.power;
+    now = Date.now();
+
+    if ((power.time + interval) <= now) {
+        times = parseInt((now - power.time) / interval);
+        resumePoint = playerConfig.POWER_RESUME.point;
+        player.resumePower(resumePoint * times);
+        player.save();
+    }
 };
 
 /*
@@ -110,6 +150,7 @@ var Player = (function(_super) {
     utility.extends(Player, _super);
 
     function Player(param) {
+        addEvents(this);
         Player.__super__.constructor.apply(this, arguments);
     }
 
@@ -119,7 +160,7 @@ var Player = (function(_super) {
         // this.friends || (this.friends = []);
 
         // executeVipPrivilege(this);
-        addEvents(this);
+        correctPower(this);
     };
 
     Player.FIELDS = [
@@ -212,15 +253,25 @@ var Player = (function(_super) {
         friends: []
     };
 
+    Player.prototype.increase = function(name, val) {
+        Player.__super__.increase.apply(this, arguments);
+        this.emit(name + '.increase', val == null ? 1 : val);
+    };
+
+    Player.prototype.decrease = function(name, val) {
+        Player.__super__.decrease.apply(this, arguments);
+        this.emit(name + '.consume', val == null ? 1 : val);
+    };
+
     Player.prototype.achieve = function(id) {
         var dt = table.getTableItem('achievement', id);
         var ach = utility.deepCopy(this.achievement);
-        if (!_.has(ach, id)){
+        if (!_.has(ach, id)) {
             ach[id] = {
-                method: dt !== null ? dt.method : 'not found',
+                method: dt != null ? dt.method : 'not found',
                 isAchieve: true,
-                got: dt !== null ? dt.need : 0,
-                need: dt !== null ? dt.need : 0
+                isTake: false,
+                got: dt != null ? dt.need : 0
             };
         } else {
             ach[id].isAchieve = true;
@@ -239,11 +290,9 @@ var Player = (function(_super) {
             var _hp = parseInt(card.init_hp * spiritConfig.hp_inc / 100);
             var _atk = parseInt(card.init_atk * spiritConfig.atk_inc / 100);
 
-            card.hp += _hp;
             card.incs.spirit_hp += _hp;
-
-            card.atk += _atk;
             card.incs.spirit_atk += _atk;
+            card.recountHpAndAtk();
         }
     };
 
@@ -368,9 +417,14 @@ var Player = (function(_super) {
         if (this.power.value <= 0) return;
 
         var power = _.clone(this.power);
+        var cVal = value;
+        if (value > power.value) {
+            cVal = power.value;
+        }
         power.value = _.max([power.value - value, 0]);
         power.time = Date.now();
         this.updatePower(power);
+        this.emit('power.consume', cVal);
     };
 
     Player.prototype.resumePower = function(value) {
@@ -402,7 +456,7 @@ var Player = (function(_super) {
         dg[name] = value;
         this.dailyGift = dg;
     };
-   /*
+    /*
     Player.prototype.hasGive = function(gift) {
         return _.contains(this.dailyGift.power, gift);
     };
@@ -469,6 +523,11 @@ var Player = (function(_super) {
         this.decrease('money', moneyConsume);
         targetCard.upgrade(upgraded_lv, exp_remain);
 
+        // 第一张满级五星卡
+        if (targetCard.star == 5 && targetCard.lv == MAX_LEVEL[5]) {
+            achieve.star5cardFullLevel(this);
+        }
+
         return cb(null, {
             exp_obtain: expObtain,
             cur_lv: targetCard.lv,
@@ -484,8 +543,8 @@ var Player = (function(_super) {
         }
 
         var pass = _.clone(this.pass);
-        if(pass.layer  + 1 < layer) {
-            logger.warn('未达到该关卡层数',layer);
+        if (pass.layer + 1 < layer) {
+            logger.warn('未达到该关卡层数', layer);
             return;
         }
         pass.mark[layer - 1] = 1;
@@ -503,7 +562,7 @@ var Player = (function(_super) {
 
     Player.prototype.incPass = function() {
         var pass = _.clone(this.pass);
-        if(pass.layer >= 100)
+        if (pass.layer >= 100)
             return;
         pass.layer++;
         this.set('pass', pass);
@@ -511,7 +570,7 @@ var Player = (function(_super) {
 
     Player.prototype.signToday = function() {
         var d = new Date();
-        var key = util.format('%d%d', d.getFullYear(), d.getMonth()+1);
+        var key = util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
         var si = utility.deepCopy(this.signIn);
 
         if (!_.has(si, key)) {
@@ -522,19 +581,19 @@ var Player = (function(_super) {
             si.months[key] = 0;
         }
 
-        si.months[key] = utility.mark(si.months[key], d.getDay()+1);
+        si.months[key] = utility.mark(si.months[key], d.getDay() + 1);
         this.signIn = si;
     };
 
     Player.prototype.signFirstUnsignDay = function() {
-        var key = util.format('%d%d', d.getFullYear(), d.getMonth()+1);
+        var key = util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
         var si = utility.deepCopy(this.signIn);
 
-        if(!_.has(si, key)) {
+        if (!_.has(si, key)) {
             return;
         }
         var firsUnsignDay = 0;
-        for(var i = 1; i <= 31; i++) {
+        for (var i = 1; i <= 31; i++) {
             if (!utility.hasMark(si.months[key], i)) {
                 utility.mark(si.months[key], i);
                 firstUnsignDay = i;
@@ -547,12 +606,12 @@ var Player = (function(_super) {
     Player.prototype.signDays = function() {
         var i, days = 0;
         var d = new Date();
-        var key = util.format('%d%d', d.getFullYear(), d.getMonth()+1);
-        
+        var key = util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
+
         for (i = 1; i <= 31; i++) {
             if (utility.hasMark(this.signIn.months[key], i)) {
                 days += 1;
-            } 
+            }
         }
         console.log('sidn days: ', days);
         return days;
@@ -568,11 +627,11 @@ var Player = (function(_super) {
         return utility.hasMark(parseInt(this.signIn.flag), id);
     };
 
-    Player.prototype.giveBlessOnce = function(){
+    Player.prototype.giveBlessOnce = function() {
         this.emit('give.bless');
     };
 
-    Player.prototype.receiveBlessOnce = function(){
+    Player.prototype.receiveBlessOnce = function() {
         this.emit('receive.bless');
     };
 

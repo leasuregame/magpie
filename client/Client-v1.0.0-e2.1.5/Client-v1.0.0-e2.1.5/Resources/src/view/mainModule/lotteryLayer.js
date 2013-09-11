@@ -77,12 +77,24 @@ var LotteryLayer = cc.Layer.extend({
             var energyLotteryIcon = cc.Sprite.create(main_scene_image["icon" + (141 + i)]);
             energyLotteryIcon.setPosition(cc.p(x, 450));
             this.addChild(energyLotteryIcon);
-
-            this.effectTest(i - 1, 0.1, cc.p(x, 340));
-            this.effectTest(i, 0.1, cc.p(x, 450));
         }
 
+        playEffect({
+            effectId: 4,
+            target: this,
+            delay: 0.1,
+            loops: 0,
+            position: cc.p(360, 450),
+            anchorPoint: null,
+            scale: 1,
+            scaleX: 1,
+            scaleY: 1,
+            sprite: null
+        });
 
+        this.xxx = function () {
+            cc.log("xxxxx");
+        };
 
         return true;
     },
@@ -96,34 +108,22 @@ var LotteryLayer = cc.Layer.extend({
         this._energyLabel.setString(player.get("energy"));
     },
 
-    effectTest: function (id, time, point) {
-        cc.log("LotteryLayer update");
-
-        var frames = [];
-
-        for (var i = 0; i < effectConfig[id]; ++i) {
-            var frame = cc.SpriteFrame.create(
-                main_scene_image["effect" + id + "_frame" + i],
-                cc.rect(0, 0, 124, 60)
-            );
-
-            frames.push(frame);
-        }
-
-        var animation = cc.Animation.create(frames, time);
-        var animate = cc.Animate.create(animation);
-
-        var testSprite = cc.Sprite.createWithSpriteFrame(frames[0]);
-        testSprite.setPosition(point);
-        this.addChild(testSprite);
-        testSprite.setScale(1.3);
-
-        testSprite.runAction(cc.RepeatForever.create(animate));
-    },
-
     _onClickLottery: function (type, level) {
         return function () {
             cc.log("LotteryLayer _onClickLottery");
+
+            playEffect({
+                effectId: 5 + level,
+                target: this,
+                delay: 0.16,
+                loops: 1,
+                position: null,
+                anchorPoint: null,
+                scale: 1,
+                scaleX: 1,
+                scaleY: 1,
+                sprite: null
+            });
 
             var that = this;
             gameData.lottery.lottery(function (data) {

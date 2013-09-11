@@ -14,6 +14,8 @@
 
 var SERVER_HOST = "124.238.236.33";
 //var SERVER_HOST = "192.168.1.8";
+//var SERVER_HOST = "192.168.1.23";
+
 var SERVER_PORT = 3010;
 var connectSuccess = false;
 
@@ -24,16 +26,19 @@ lzWindow.pomelo.init({
     handshakeCallback: function () {
     }
 }, function () {
-    cc.log('connect success!');
+    cc.log("connect success!");
     connectSuccess = true;
 
-    lzWindow.pomelo.on('close', function (data) {
-        cc.log('*****close');
+    lzWindow.pomelo.on("close", function (data) {
+        cc.log("***** on close:");
         cc.log(data);
         connectSuccess = false;
     });
 
-    lzWindow.pomelo.on('onMessage', function (data) {
-        cc.log('***** on chart: ', data);
+    lzWindow.pomelo.on("onMessage", function (data) {
+        cc.log("***** on message:");
+        cc.log(data);
+
+        gameData.message.push(data.msg);
     });
 });

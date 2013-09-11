@@ -13,20 +13,57 @@
 
 
 var Rank = Entity.extend({
-    _rankList: null,
-
+    _abilityRankList: [],
+    _lvRankList: [],
+    _passRankList: [],
+    _tournamentRankList: [],
 
     init: function () {
+        cc.log("Rank init");
+
+
+        this.sync();
 
         return true;
+    },
+
+    update: function (data) {
+        cc.log("Rank update");
+
+        this._abilityRankList = data.ability || [];
+        this._lvRankList = data.level || [];
+        this._passRankList = data.pass || [];
+        this._tournamentRankList = data.ranking || [];
+    },
+
+    sync: function () {
+        cc.log("Rank sync");
+
+        var that = this;
+        lzWindow.pomelo.request("area.topHandler.orderList", {}, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("rank sync success");
+
+                var msg = data.msg;
+
+                that.update(msg);
+            } else {
+                cc.log("rank sync fail");
+
+                that.sync();
+            }
+        });
     }
 });
 
 
-Rank.create = function (data) {
+Rank.create = function () {
     var ret = new Rank();
 
-    if (ret && ret.init(data)) {
+    if (ret) {
         return ret;
     }
 

@@ -13,143 +13,125 @@
 
 
 var LotteryLayer = cc.Layer.extend({
+    _goldLabel: null,
+    _energyLabel: null,
+
+    onEnter: function () {
+        cc.log("LotteryLayer onEnter");
+
+        this._super();
+        this.update();
+    },
+
     init: function () {
         cc.log("LotteryLayer init");
 
         if (!this._super())  return false;
 
-        var bgSprite = cc.Sprite.create(main_scene_image.bg11);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg19);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
 
-        this.label = cc.LabelTTF.create("抽奖结果：", "黑体", 32);
-        this.label.setPosition(cc.p(120, 650));
-        this.addChild(this.label);
+        this._goldLabel = cc.LabelTTF.create(0, "黑体", 20);
+        this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._goldLabel.setPosition(cc.p(470, 934));
+        this.addChild(this._goldLabel);
 
-        var textLabel = cc.LabelTTF.create("初级抽卡", "黑体", 32);
-        textLabel.setPosition(GAME_WIDTH_MIDPOINT - 200, 900);
-        this.addChild(textLabel);
+        this._energyLabel = cc.LabelTTF.create(0, "黑体", 20);
+        this._energyLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._energyLabel.setPosition(cc.p(580, 934));
+        this.addChild(this._energyLabel);
 
-        var textLabel = cc.LabelTTF.create("可获得1,2,3星", "黑体", 25);
-        textLabel.setPosition(GAME_WIDTH_MIDPOINT - 200, 850);
-        this.addChild(textLabel);
-
-        var textLabel = cc.LabelTTF.create("中级抽卡", "黑体", 32);
-        textLabel.setPosition(GAME_WIDTH_MIDPOINT, 900);
-        this.addChild(textLabel);
-
-        var textLabel = cc.LabelTTF.create("可获得2,3,4星", "黑体", 25);
-        textLabel.setPosition(GAME_WIDTH_MIDPOINT, 850);
-        this.addChild(textLabel);
-
-        var textLabel = cc.LabelTTF.create("高级抽卡", "黑体", 32);
-        textLabel.setPosition(GAME_WIDTH_MIDPOINT + 200, 900);
-        this.addChild(textLabel);
-
-        var textLabel = cc.LabelTTF.create("可获得3,4,5星", "黑体", 25);
-        textLabel.setPosition(GAME_WIDTH_MIDPOINT + 200, 850);
-        this.addChild(textLabel);
-
-        var lotteryItem1 = cc.MenuItemFont.create("抽奖", this._onClickLottery1, this);
-        lotteryItem1.setPosition(GAME_WIDTH_MIDPOINT - 200, 800);
-
-        var lotteryItem2 = cc.MenuItemFont.create("抽奖", this._onClickLottery2, this);
-        lotteryItem2.setPosition(GAME_WIDTH_MIDPOINT, 800);
-
-        var lotteryItem3 = cc.MenuItemFont.create("抽奖", this._onClickLottery3, this);
-        lotteryItem3.setPosition(GAME_WIDTH_MIDPOINT + 200, 800);
-
-        var menu = cc.Menu.create(lotteryItem1, lotteryItem2, lotteryItem3);
-        menu.setPosition(0, 0);
-
+        var menu = cc.Menu.create();
+        menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        for (var i = 1; i <= 3; ++i) {
+            var x = i * 210 - 60;
 
-        var textLabel = cc.LabelTTF.create("活力抽卡", "黑体", 32);
-        textLabel.setPosition(GAME_WIDTH_MIDPOINT, 500);
-        this.addChild(textLabel);
+            var goldLotteryItem = cc.MenuItemImage.create(
+                main_scene_image.button9,
+                main_scene_image.button9s,
+                main_scene_image.button9d,
+                this._onClickLottery(LOTTERY_BY_GOLD, i),
+                this
+            );
+            goldLotteryItem.setPosition(cc.p(x, 340));
+            menu.addChild(goldLotteryItem);
 
-        var textLabel = cc.LabelTTF.create("初级抽卡", "黑体", 32);
-        textLabel.setPosition(GAME_WIDTH_MIDPOINT - 200, 400);
-        this.addChild(textLabel);
+            var energyLotteryItem = cc.MenuItemImage.create(
+                main_scene_image.button9,
+                main_scene_image.button9s,
+                main_scene_image.button9d,
+                this._onClickLottery(LOTTERY_BY_ENERGY, i),
+                this
+            );
+            energyLotteryItem.setPosition(cc.p(x, 450));
+            menu.addChild(energyLotteryItem);
 
-        var textLabel = cc.LabelTTF.create("10活力/次", "黑体", 25);
-        textLabel.setPosition(GAME_WIDTH_MIDPOINT - 200, 350);
-        this.addChild(textLabel);
+            var goldLotteryIcon = cc.Sprite.create(main_scene_image["icon" + (138 + i)]);
+            goldLotteryIcon.setPosition(cc.p(x, 340));
+            this.addChild(goldLotteryIcon);
 
-        var textLabel = cc.LabelTTF.create("中级抽卡", "黑体", 32);
-        textLabel.setPosition(GAME_WIDTH_MIDPOINT, 400);
-        this.addChild(textLabel);
+            var energyLotteryIcon = cc.Sprite.create(main_scene_image["icon" + (141 + i)]);
+            energyLotteryIcon.setPosition(cc.p(x, 450));
+            this.addChild(energyLotteryIcon);
+        }
 
-        var textLabel = cc.LabelTTF.create("70活力/次", "黑体", 25);
-        textLabel.setPosition(GAME_WIDTH_MIDPOINT, 350);
-        this.addChild(textLabel);
+        playEffect({
+            effectId: 4,
+            target: this,
+            delay: 0.1,
+            loops: 0,
+            position: cc.p(360, 450),
+            anchorPoint: null,
+            scale: 1,
+            scaleX: 1,
+            scaleY: 1,
+            sprite: null
+        });
 
-        var textLabel = cc.LabelTTF.create("高级抽卡", "黑体", 32);
-        textLabel.setPosition(GAME_WIDTH_MIDPOINT + 200, 400);
-        this.addChild(textLabel);
-
-        var textLabel = cc.LabelTTF.create("100活力/次", "黑体", 25);
-        textLabel.setPosition(GAME_WIDTH_MIDPOINT + 200, 350);
-        this.addChild(textLabel);
-
-        var lotteryItem1 = cc.MenuItemFont.create("抽奖", this._onClickEnergyLottery1, this);
-        lotteryItem1.setPosition(GAME_WIDTH_MIDPOINT - 200, 300);
-
-        var lotteryItem2 = cc.MenuItemFont.create("抽奖", this._onClickEnergyLottery2, this);
-        lotteryItem2.setPosition(GAME_WIDTH_MIDPOINT, 300);
-
-        var lotteryItem3 = cc.MenuItemFont.create("抽奖", this._onClickEnergyLottery3, this);
-        lotteryItem3.setPosition(GAME_WIDTH_MIDPOINT + 200, 300);
-
-        var menu = cc.Menu.create(lotteryItem1, lotteryItem2, lotteryItem3);
-        menu.setPosition(0, 0);
-
-        this.addChild(menu);
-
-        var textLabel = cc.LabelTTF.create("祝福好友，每日登陆，升级，均可获得活力值", "黑体", 25);
-        textLabel.setPosition(GAME_WIDTH_MIDPOINT, 220);
-        this.addChild(textLabel);
+        this.xxx = function () {
+            cc.log("xxxxx");
+        };
 
         return true;
     },
 
-    _onClickLottery1: function () {
-        cc.log("LotteryLayer _onClickLottery1");
-        this._lottery(LOTTERY_BY_GOLD, 1);
+    update: function () {
+        cc.log("LotteryLayer update");
+
+        var player = gameData.player;
+
+        this._goldLabel.setString(player.get("gold"));
+        this._energyLabel.setString(player.get("energy"));
     },
 
-    _onClickLottery2: function () {
-        cc.log("LotteryLayer _onClickLottery2");
-        this._lottery(LOTTERY_BY_GOLD, 2);
-    },
+    _onClickLottery: function (type, level) {
+        return function () {
+            cc.log("LotteryLayer _onClickLottery");
 
-    _onClickLottery3: function () {
-        cc.log("LotteryLayer _onClickLottery3");
-        this._lottery(LOTTERY_BY_GOLD, 3);
-    },
+            playEffect({
+                effectId: 5 + level,
+                target: this,
+                delay: 0.16,
+                loops: 1,
+                position: null,
+                anchorPoint: null,
+                scale: 1,
+                scaleX: 1,
+                scaleY: 1,
+                sprite: null
+            });
 
-    _onClickEnergyLottery1: function () {
-        cc.log("LotteryLayer _onClickEnergyLottery1");
-        this._lottery(LOTTERY_BY_ENERGY, 1);
-    },
+            var that = this;
+            gameData.lottery.lottery(function (data) {
+                cc.log(data);
 
-    _onClickEnergyLottery2: function () {
-        cc.log("LotteryLayer _onClickEnergyLottery2");
-        this._lottery(LOTTERY_BY_ENERGY, 2);
-    },
-
-    _onClickEnergyLottery3: function () {
-        cc.log("LotteryLayer _onClickEnergyLottery3");
-        this._lottery(LOTTERY_BY_ENERGY, 3);
-    },
-
-    _lottery: function (type, level) {
-        cc.log("LotteryLayer _lottery");
-        gameData.lottery.lottery(function (data) {
-            cc.log(data);
-        }, type, level);
+                that.update();
+            }, type, level);
+        }
     }
 });
 

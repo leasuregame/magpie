@@ -32,6 +32,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
+
 (function () {
     var d = document;
     var c = {
@@ -73,6 +74,9 @@
             'src/model/spirit.js',
             'src/model/spiritPool.js',
             'src/model/friend.js',
+            'src/model/shop.js',
+            'src/model/signIn.js',
+            'src/model/achievement.js',
 
             'src/model/battleLogPool.js',
             'src/model/battleLog.js',
@@ -85,13 +89,17 @@
             'src/controls/shyLayer.js',
             'src/controls/lazyMenu.js',
             'src/controls/markLayer.js',
+            'src/controls/strokeLabel.js',
 
-            'src/view/loginModule/signInScene.js',
-            'src/view/loginModule/signInLayer.js',
-            'src/view/loginModule/signUpScene.js',
-            'src/view/loginModule/signUpLayer.js',
+            'src/view/loginModule/loginScene.js',
+            'src/view/loginModule/loginLayer.js',
+            'src/view/loginModule/registerScene.js',
+            'src/view/loginModule/registerLayer.js',
 
+            'src/view/mainModule/effect.js',
 
+            'src/view/mainModule/abilityRankLayer.js',
+            'src/view/mainModule/achievementLayer.js',
             'src/view/mainModule/activityLayer.js',
             'src/view/mainModule/battleMessageLayer.js',
             'src/view/mainModule/cardDetails.js',
@@ -114,21 +122,27 @@
             'src/view/mainModule/lineUpLabel.js',
             'src/view/mainModule/lineUpLayer.js',
             'src/view/mainModule/lotteryLayer.js',
+            'src/view/mainModule/lvRankLayer.js',
             'src/view/mainModule/mainBgLayer.js',
             'src/view/mainModule/mainLayer.js',
             'src/view/mainModule/mainMenuLayer.js',
             'src/view/mainModule/mainScene.js',
             'src/view/mainModule/messageLabel.js',
             'src/view/mainModule/messageLayer.js',
+            'src/view/mainModule/monthLabel.js',
             'src/view/mainModule/passiveSkillAfreshLabel.js',
             'src/view/mainModule/passLabel.js',
             'src/view/mainModule/passLayer.js',
+            'src/view/mainModule/passRankLayer.js',
+            'src/view/mainModule/paymentLayer.js',
             'src/view/mainModule/playerDetails.js',
             'src/view/mainModule/playerHeaderLabel.js',
             'src/view/mainModule/playerTournamentLabel.js',
+            'src/view/mainModule/propsLayer.js',
             'src/view/mainModule/pveLayer.js',
             'src/view/mainModule/rankLayer.js',
             'src/view/mainModule/shopLayer.js',
+            'src/view/mainModule/signInLayer.js',
             'src/view/mainModule/skillUpgradeLabel.js',
             'src/view/mainModule/spiritDetails.js',
             'src/view/mainModule/spiritNode.js',
@@ -140,7 +154,10 @@
             'src/view/mainModule/tournamentLayer.js',
             'src/view/mainModule/tournamentLabel.js',
             'src/view/mainModule/tournamentMessageLabel.js',
+            'src/view/mainModule/tournamentRankLayer.js',
             'src/view/mainModule/treasureHuntLayer.js',
+            'src/view/mainModule/vipLayer.js',
+            'src/view/mainModule/vipPrivilegeLayer.js',
 
             'src/view/battleModule/actionFactory.js',
             'src/view/battleModule/effectsFactory.js',

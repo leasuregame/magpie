@@ -25,24 +25,22 @@ var Card = Entity.extend({
     _createTime: 0,         // 创建时间
     _tableId: 0,            // 数据表对应ID
     _lv: 0,                 // 卡牌等级
+    _vip: 0,                // vip等级
     _exp: 0,                // 当前经验
     _skillLv: 0,            // 技能等级
-    _hpAddition: 0,         // 生命培养量
-    _atkAddition: 0,        // 攻击培养量
-    _elixir: 0,             // 已经消耗的仙丹
     _passiveSkill: {},      // 被动技能
 
-    _kindId: 0,             // 系列号
     _name: "",              // 卡牌名称
     _description: "",       // 卡牌描述
     _star: 0,               // 卡牌星级
     _maxLv: 0,              // 卡牌最大等级
     _maxExp: 0,             // 最大经验
-    _hpInit: 0,             // 卡牌初始生命值
-    _atkInit: 0,            // 卡牌初始攻击值
+    _initHp: 0,             // 卡牌初始生命值
+    _initAtk: 0,            // 卡牌初始攻击值
+    _psHp: 0,
+    _psAtk: 0,
     _hp: 0,                 // 卡牌总生命值
     _atk: 0,                // 卡牌总攻击力
-    _ability: 0,            // 战斗力
     _skillId: 0,            // 数据库表对应技能ID
 
     _skillName: "",         // 技能名称
@@ -56,10 +54,16 @@ var Card = Entity.extend({
 
     init: function (data) {
         cc.log("Card init");
+        cc.log("=============================================");
+        cc.log(data);
 
         this._passiveSkill = {};
 
-        return this.update(data);
+        this.update(data);
+
+        cc.log(this);
+        cc.log("=============================================");
+        return true;
     },
 
     // 更新卡牌数据
@@ -73,8 +77,6 @@ var Card = Entity.extend({
             this.set("lv", data.lv);
             this.set("exp", data.exp);
             this.set("skillLv", data.skillLv);
-            this.set("hpAddition", data.hpAddition);
-            this.set("atkAddition", data.atkAddition);
             this.set("elixir", data.elixir);
 
             this._updatePassiveSkill(data.passiveSkills);
@@ -82,10 +84,6 @@ var Card = Entity.extend({
 
         this._loadCardTable();
         this._loadSkillTable();
-
-        this._ability = this._getCardAbility();
-
-        return true;
     },
 
     _updatePassiveSkill: function (data) {
@@ -111,28 +109,28 @@ var Card = Entity.extend({
         // 读取卡牌配置表
         var cardTable = outputTables.cards.rows[this._tableId];
 
-        this._kindId = cardTable.number;
         this._name = cardTable.name;
         this._description = cardTable.description;
         this._star = cardTable.star;
         this._hpInit = cardTable.hp;
         this._atkInit = cardTable.atk;
         this._skillId = cardTable.skill_id;
+        this._skillName = cardTable.skill_name;
 
         // 读取等级加成表
         var factorsTable = outputTables.factors.rows[this._lv];
         var multiple = factorsTable.factor;
 
-        this._hpInit *= multiple;
-        this._atkInit *= multiple;
+        this._initHp *= multiple;
+        this._initAtk *= multiple;
 
-        this._hpInit = Math.round(this._hpInit);
-        this._atkInit = Math.round(this._atkInit);
+        this._initHp = Math.floor(this._hpInit);
+        this._initAtk = Math.floor(this._atkInit);
 
-        this._hp = this._hpInit + this._hpAddition;
-        this._atk = this._atkInit + this._atkAddition;
+        this._hp = this._initHp;
+        this._atk = this._initAtk;
 
-        this._url = "card" + (this._kindId % 6 + 1);
+        this._url = "card" + (cardTable.number % 6 + 1);
 
         // 读取卡牌升级配置表
         var cardGrowTable = outputTables.card_grow.rows[this._lv];
@@ -166,21 +164,13 @@ var Card = Entity.extend({
 
         if (!this._skillRate) this._skillRate = 0;
 
-        this._skillName = skillTable.name;
         this._skillDescription = skillTable.description;
         this._skillType = skillTable.type;
         this._skillMaxLv = 5;
     },
 
-    // 计算单个卡牌战斗力
-    _getCardAbility: function () {
-        cc.log("Card _getCardAbility");
-
-        return 0;
-    },
-
     addExp: function (exp) {
-        cc.log("Card addExp " + exp);
+        cc.log("Card addExp: " + exp);
 
         var needMoney = 0;
         var cardGrow = outputTables.card_grow.rows;
@@ -197,9 +187,6 @@ var Card = Entity.extend({
             if (this._exp < this._maxExp) {
                 break;
             }
-
-            cc.log("this._exp: " + this._exp);
-            cc.log("this._maxExp: " + this._maxExp);
 
             needMoney += cardGrow[this._lv].money_need;
 

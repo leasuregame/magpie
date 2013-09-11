@@ -47,7 +47,9 @@ var player = function(app) {
 
         var playerName = req.body.playerName;//query['playerName'];
         var area = JSON.parse(req.body.area);//JSON.parse(query['area']);
-        var db = getDB(area["id"]);
+
+        var env = app.settings.env;
+        var db = getDB(area["id"],env);
         dbClient.init(db);
 
         var player = {

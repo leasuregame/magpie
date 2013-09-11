@@ -16,8 +16,7 @@ function tryMkdir(file) {
 }
 
 var files = [
-  '../../client/Client/Client/Resources/src/table/table.json',
-  '../../client/Client-v1.0.0-e2.1.4/Client-v1.0.0-e2.1.4/Resources/src/table/table.json',
+  '../../client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/Resources/src/table/table.json',
   '../../gm/config/table/table.json'
 ];
 

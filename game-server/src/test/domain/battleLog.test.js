@@ -18,8 +18,10 @@ require('./setup');
 app = require("pomelo").app;
 var dao = app.get('dao');
 var should = require("should");
+var BattleLog = require('../../app/domain/entity/battleLog');
 
 describe("BattleLog Object", function () {
+    /*
     var data = {
         id: 234590,
         own: 1,
@@ -65,4 +67,26 @@ describe("BattleLog Object", function () {
             });
         });
     });
+    */
+    describe('.toJson()',function(){
+        it('should can to Json',function(){
+            var battleLog = new BattleLog({
+                id: 1,
+                own: 'lala',
+                enemy: 'nana',
+                battleLog: 'win',
+                createTime: 0
+            });
+
+            battleLog.toJson().should.eql({
+                id: 1,
+                own: 'lala',
+                enemy: 'nana',
+                battleLog: 'win',
+                createTime: 0
+            });
+
+        });
+    });
+
 });

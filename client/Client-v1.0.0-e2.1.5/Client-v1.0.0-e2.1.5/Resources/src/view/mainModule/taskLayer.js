@@ -22,6 +22,7 @@ var TaskLayer = cc.Layer.extend({
     _turnRightSprite: null,
     _scrollViewLayer: null,
     _scrollView: null,
+    _beganOffset: null,
     _locate: [
         cc.p(160, 550),
         cc.p(200, 270),
@@ -42,6 +43,8 @@ var TaskLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this.setTouchEnabled(true);
+
         this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
         this._turnLeftSprite.setRotation(180);
         this._turnLeftSprite.setPosition(cc.p(80, 570));
@@ -55,6 +58,7 @@ var TaskLayer = cc.Layer.extend({
 
 
         // 读配置表
+        var chapterTitleTable = outputTables.chapter_title.rows;
         var chapterTable = outputTables.chapter.rows;
 
         this._scrollViewLayer = MarkLayer.create(cc.rect(40, 198, 640, 744));
@@ -84,8 +88,8 @@ var TaskLayer = cc.Layer.extend({
             wipeOutIcon.setPosition(cc.p(530 + offsetX, 50));
             this._scrollViewLayer.addChild(wipeOutIcon, 1);
 
-            var titlesLabel = cc.LabelTTF.create("第 " + i + " 大章", "黑体", 30);
-            titlesLabel.setPosition(cc.p(320 + offsetX, 738));
+            var titlesLabel = cc.LabelTTF.create(chapterTitleTable[i].name, "黑体", 30);
+            titlesLabel.setPosition(cc.p(320 + offsetX, 745));
             this._scrollViewLayer.addChild(titlesLabel);
 
             for (var j = 1; j <= TASK_SECTION_COUNT; ++j) {
@@ -121,6 +125,8 @@ var TaskLayer = cc.Layer.extend({
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
 
+        this._beganOffset = cc.p(0, 0);
+
         return true;
     },
 
@@ -144,6 +150,44 @@ var TaskLayer = cc.Layer.extend({
                 cc.log(data);
             });
         }
+    },
+
+    /**
+     * when a touch finished
+     * @param {cc.Touch} touches
+     * @param {event} event
+     */
+    onTouchesEnded: function (touches, event) {
+        cc.log("TaskLayer onTouchesEnded");
+
+        this._scrollView.unscheduleAllCallbacks();
+        this._scrollView.stopAllActions();
+
+        var endOffset = this._scrollView.getContentOffset();
+        var offset = this._beganOffset;
+
+        if (this._beganOffset.x - endOffset.x > 100) {
+            offset = cc.p(Math.floor(endOffset.x / 640) * 640, 0);
+        } else if (this._beganOffset.x - endOffset.x < -100) {
+            offset = cc.p(Math.ceil(endOffset.x / 640) * 640, 0);
+        } else {
+            if (Math.abs(offset.x) % 640 > 320) {
+                offset = cc.p(Math.floor(offset.x / 640) * 640, 0);
+            } else {
+                offset = cc.p(Math.ceil(offset.x / 640) * 640, 0);
+            }
+        }
+
+        this._scrollView.setContentOffset(offset, true);
+        this._beganOffset = offset;
+    },
+
+    /**
+     * @param touch
+     * @param event
+     */
+    onTouchesCancelled: function (touch, event) {
+        this.onTouchesEnded(touch, event);
     }
 });
 

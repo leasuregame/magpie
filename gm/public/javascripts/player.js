@@ -46,33 +46,33 @@ $(document).ready(function(){
 function updatePlayerData() {
    // console.log(player);
     var data = {};
-    data.lv = $("#lv").val();
-    data.money = $("#money").val();
-    data.gold = $("#gold").val();
+    data.lv = parseInt($("#lv").val());
+    data.money = parseInt($("#money").val());
+    data.gold = parseInt($("#gold").val());
 
     var power = {
         time : Date.now(),
-        value : $("#power").val()
+        value : parseInt($("#power").val())
     };
 
     data.power = power;
 
-    data.skillPoint = $("#skillPoint").val();
-    data.fragments = $("#fragments").val();
-    data.energy = $("#energy").val();
-    data.elixir = $("#elixir").val();
+    data.skillPoint = parseInt($("#skillPoint").val());
+    data.fragments = parseInt($("#fragments").val());
+    data.energy = parseInt($("#energy").val());
+    data.elixir = parseInt($("#elixir").val());
 
     var spiritor = {
-        lv:$("#spiritor").val(),
+        lv:parseInt($("#spiritor").val()),
         spirit:JSON.parse(player.spiritor).spirit
     };
 
     data.spiritor = JSON.stringify(spiritor);
 
     var spiritPool = {
-        lv:$("#spiritPoolLv").val(),
+        lv:parseInt($("#spiritPoolLv").val()),
         exp:JSON.parse(player.spiritPool).exp,
-        collectCount:$("#spiritPoolCount").val()
+        collectCount:parseInt($("#spiritPoolCount").val())
     };
 
     data.spiritPool = JSON.stringify(spiritPool);
@@ -81,13 +81,20 @@ function updatePlayerData() {
     var task = {
         id:$("#taskId").val(),
         progress:0
+        //hasWin:false
+
     };
-
     data.task = JSON.stringify(task);
-
+    var mark = JSON.parse(player.pass).mark;
+  //  console.log(mark);
+    var layer = parseInt($("#layer").val());
+    for(var i = 0;i < mark.length;i++)
+        mark[i] = 0;
+    for(var i = 0;i < layer;i++)
+        mark[i] = 1;
     var pass = {
-        layer:$("#layer").val(),
-        mark:JSON.parse(player.pass).mark
+        layer:layer,
+        mark:mark
     };
 
     data.pass = JSON.stringify(pass);

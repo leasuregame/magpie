@@ -102,7 +102,7 @@ describe("Card Object", function() {
                     tableId: 3,
                     star: 3
                 });
-                card.ability().should.equal(4197);
+                card.ability().should.equal(3867);
 
                 card = new Card({
                     id: 1,
@@ -110,7 +110,7 @@ describe("Card Object", function() {
                     star: 3,
                     lv: 10
                 });
-                card.ability().should.equal(4540);
+                card.ability().should.equal(4210);
 
                 card = new Card({
                     id: 1,
@@ -124,12 +124,28 @@ describe("Card Object", function() {
                         })
                     }
                 });
-                card.ability().should.equal(5540);
+                card.ability().should.equal(5210);
+
+
+                card = new Card({
+                    id: 1,
+                    tableId: 23,
+                    star: 3,
+                    lv: 10,
+                    passiveSkills: {
+                        1: new PassiveSkill({
+                            name: 'crit',
+                            value: 10
+                        })
+                    }
+                });
+                card.ability().should.equal(2040);
+
             });
 
         });
     });
-
+    /*
     describe('.activeGroupEffect()', function() {
         it('should can active group effect', function() {
             var card = new Card({
@@ -142,7 +158,7 @@ describe("Card Object", function() {
             card.hpAddition.should.equal(0);
         })
     });
-
+    */
     describe('.addPassiveSkill()', function() {
         describe('when add a passive skill', function() {
             it('should can be add correct', function() {
@@ -186,7 +202,7 @@ describe("Card Object", function() {
                     star: 3,
                     lv: 1,
                     exp: 0,
-                    skillLv: 1,
+                    skillLv: 0,
                     skillPoint: 0,
                     elixir: 0,
                     hpAddition: 0,
@@ -194,13 +210,13 @@ describe("Card Object", function() {
                     passiveSkills: [{
                         id: 1,
                         cardId: undefined,
-                        createTime: undefined,
+                      //  createTime: undefined,
                         name: 'hp_improve',
                         value: 5.3
                     }, {
                         id: 2,
                         cardId: undefined,
-                        createTime: undefined,
+                     //   createTime: undefined,
                         name: 'atk_improve',
                         value: 10
                     }]
@@ -208,4 +224,50 @@ describe("Card Object", function() {
             });
         });
     });
+
+
+    describe('eatCards()',function(){
+
+        it('should counts when eat cards',function(){
+            var card = new Card();
+            var cards = [
+                {lv:1},
+                {lv:3},
+                {lv:60}
+            ]
+            card.eatCards(cards).should.equal(306253);
+        });
+    });
+
+    describe('.vitual_upgrade',function(){
+
+        var card;
+
+        beforeEach(function(){
+            card = new Card({
+                id:1,
+                lv:10,
+                star:5,
+                exp:10
+            });
+        });
+
+        it('should can not upgrade when exp not enough',function(){
+
+            card.vitual_upgrade(100).should.eql([0,110]);
+        });
+
+        it('should can be upgrade when exp enough',function(){
+            card.vitual_upgrade(1000).should.eql([3,146]);
+        });
+
+        it('should can be upgrade when exp enough to up max grade',function(){
+            card.vitual_upgrade(1000000).should.eql([50,0]);
+        });
+
+    });
+
+
+
+
 });

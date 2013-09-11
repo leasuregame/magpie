@@ -24,10 +24,14 @@ var simBattle = function (app) {
         var query = url.query;
         var attack = JSON.parse(query['attack']);
         var defend = JSON.parse(query['defend']);
+        var times = parseInt(query['times']);
        // console.log(Battle);
-        Battle.startBattle(attack,defend);
-        var log = Battle.getBattleLog();
-        res.send({type:'error',info:log});
+        //console.log(times);
+        Battle.startBattle(attack,defend,times,function(err,report){
+            console.log(report)
+            res.send({type:'success',info:report});
+        });
+
         //console.log(attack);
         //console.log(defend);
 

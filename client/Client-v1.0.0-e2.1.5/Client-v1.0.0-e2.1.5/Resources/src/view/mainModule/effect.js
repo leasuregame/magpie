@@ -29,7 +29,13 @@ var playEffect = function (arg) {
     var scaleY = arg.scaleY;
     var sprite = arg.sprite;
     var zOrder = arg.zOrder;
-    var cb = arg.cb || null;
+    var cb = arg.cb || function () {
+        if (isNewSprite) {
+            sprite.removeFromParent();
+        } else {
+            sprite.setVisible(false);
+        }
+    };
 
     if (!effectId) return;
     if (!target && !sprite) return;
@@ -85,17 +91,7 @@ var playEffect = function (arg) {
     if (loops > 0) {
         var repeatAction = cc.Repeat.create(animate, loops);
 
-        var callFuncAction = cc.CallFunc.create(function () {
-            if (isNewSprite) {
-                sprite.removeFromParent();
-            } else {
-                sprite.setVisible(false);
-            }
-
-            if (cb) {
-                cb.call(target);
-            }
-        });
+        var callFuncAction = cc.CallFunc.create(cb);
 
         action = cc.Sequence.create(repeatAction, callFuncAction);
     } else {

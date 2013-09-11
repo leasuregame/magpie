@@ -77,7 +77,25 @@ Array.prototype.distinct = function () {
 };
 
 
+/*
+ * 获取介于两数之间的随机数[a, b)
+ * */
+lz.random = function (a, b) {
+    var len = arguments.length;
+
+    if (len == 0) {
+        return 0;
+    }
+
+    if (len == 1) {
+        b = a;
+        a = 0;
+    }
+
+    return (Math.random() * (b - a) + a);
+};
+
 // 获取不大于原数的随机数
 Number.prototype.getRandom = function () {
     return Math.floor(Math.random() * this);
-}
+};

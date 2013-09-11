@@ -69,6 +69,7 @@ var main_scene_image = {
     ladder2: main_scene_path + "ladder2.png",
     tower1: main_scene_path + "tower1.png",
     tower2: main_scene_path + "tower2.png",
+    cloud: main_scene_path + "cloud.png",
 
     card0: main_scene_path + "card0.png",
 

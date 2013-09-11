@@ -162,6 +162,14 @@ var MainLayer = cc.Layer.extend({
             sprite: null
         });
 
+//        var layer = cc.Sprite.create(main_scene_image.pvp_bg1);
+//        layer.setAnchorPoint(cc.p(0, 0));
+//        layer.setPosition(cc.p(40, 0));
+//        this.addChild(layer);
+//
+//        var layer = BattleBeganLayer.create();
+//        this.addChild(layer);
+
         return true;
     },
 

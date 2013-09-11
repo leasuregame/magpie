@@ -161,6 +161,7 @@
             'src/view/mainModule/vipPrivilegeLayer.js',
 
             'src/view/battleModule/actionFactory.js',
+            'src/view/battleModule/battleBeganLayer.js',
             'src/view/battleModule/effectsFactory.js',
             'src/view/battleModule/skillFactory.js',
             'src/view/battleModule/battleCardNode.js',

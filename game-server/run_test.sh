@@ -1,6 +1,7 @@
 PATH=/usr/local/bin:/opt/node/bin:$PATH
 
 npm install
+npm install forever -g
 
 rm -r ./test ./app
 make build
@@ -13,7 +14,7 @@ XUNIT_FILE="test/TESTS-mapping.xml" ./node_modules/.bin/mocha -R xunit-file  --r
 ./node_modules/.bin/pomelo start development --daemon
 ./node_modules/.bin/forever start ./test/jasmine/app.js
 
-#java -jar ./test/jasmine/selenium-server-standalone-2.33.0.jar
+#java -jar selenium-server-standalone-2.33.0.jar
 node ./test/jasmine/runner.js
 
 

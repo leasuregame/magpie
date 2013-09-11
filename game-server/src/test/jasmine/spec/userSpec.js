@@ -112,7 +112,8 @@ describe("Connector Server", function() {
             doAjax('/addPlayer', {
               userId: addedUserId,
               areaId: 1,
-              name: 'player1'
+              name: 'player1',
+              lv: 3
             }, function(data) {
               playerId = data.playerId;
               createTime = data.ct;

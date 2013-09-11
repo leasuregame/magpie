@@ -42,6 +42,7 @@ var addEvents = function(player) {
     // 经验值改变，判断是否升级
     player.on('exp.change', function(exp) {
         var upgradeInfo = table.getTableItem('player_upgrade', player.lv);
+        console.log(upgradeInfo);
         if (exp >= upgradeInfo.exp) {
             player.increase('lv');
             player.set('exp', exp - upgradeInfo.exp);
@@ -76,7 +77,7 @@ var addEvents = function(player) {
 
     player.on('energy.increase', function(energy) {
         achieve.energyTo(player, energy);
-    })
+    });
 
     player.on('money.consume', function(money) {
         achieve.moneyConsume(player, money);
@@ -88,7 +89,7 @@ var addEvents = function(player) {
 
     player.on('power.consume', function(power) {
         achieve.powerConsume(player, power);
-    })
+    });
 
     player.on('add.card', function(card) {
         if (player.isLineUpCard(card)) {
@@ -267,10 +268,10 @@ var Player = (function(_super) {
         var ach = utility.deepCopy(this.achievement);
         if (!_.has(ach, id)) {
             ach[id] = {
-                method: dt !== null ? dt.method : 'not found',
+                method: dt != null ? dt.method : 'not found',
                 isAchieve: true,
                 isTake: false,
-                got: dt !== null ? dt.need : 0
+                got: dt != null ? dt.need : 0
             };
         } else {
             ach[id].isAchieve = true;

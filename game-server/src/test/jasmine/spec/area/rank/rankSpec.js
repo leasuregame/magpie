@@ -117,13 +117,16 @@ describe("Area Server", function() {
 
         describe("when my ranking is " + (id - 9999), function() {
           beforeEach(function() {
+            console.log(Date.now());
             loginWith('user4', '1', 1);
           });
 
           it('should can be return correct ranking list for (' + (id - 9999) + ')', function() {
+            var s = Date.now();
             request('area.rankHandler.rankingList', {
               playerId: id
             }, function(data) {
+              console.log(Date.now(), (Date.now() - s)/1000, data);
               var cur_ranking = id - 9999;
               //expect(data).toEqual('');
               //expect(data.msg[data.msg.length - 1].ranking).toEqual(cur_ranking);
@@ -133,7 +136,7 @@ describe("Area Server", function() {
               }).sort(function(a, b) {
                 return a - b;
               })).toEqual(genRankings(cur_ranking, index));
-              console.log(data);
+              
             });
           });
 

@@ -59,14 +59,14 @@ var addEvents = function(player) {
         achieve.gaveBless(player);
     });
 
-    player.on('receive.bless', function(){
+    player.on('receive.bless', function() {
         achieve.receivedBless(player);
     });
 
     player.on('pass.change', function(pass) {
-        if (typeof pass == 'string'){
+        if (typeof pass == 'string') {
             pass = JSON.parse(pass);
-        }        
+        }
         achieve.passTo(player, pass.layer);
     });
 
@@ -90,7 +90,7 @@ var addEvents = function(player) {
         achieve.powerConsume(player, power);
     })
 
-    player.on('add.card', function(card) { 
+    player.on('add.card', function(card) {
         if (player.isLineUpCard(card)) {
             //player.activeGroupEffect();
             player.activeSpiritorEffect();
@@ -126,6 +126,21 @@ var addEvents = function(player) {
     });
 };
 
+var correctPower = function(player) {
+    var interval, power, now, times, resumePoint;
+
+    interval = playerConfig.POWER_RESUME.interval;
+    power = player.power;
+    now = Date.now();
+
+    if ((power.time + interval) <= now) {
+        times = parseInt((now - power.time) / interval);
+        resumePoint = playerConfig.POWER_RESUME.point;
+        player.resumePower(resumePoint * times);
+        player.save();
+    }
+};
+
 /*
  * Player 与 player 表对应的数据类，提供简单操作
  * @param {object} param 数据库 player 表中的一行记录
@@ -144,7 +159,7 @@ var Player = (function(_super) {
         // this.friends || (this.friends = []);
 
         // executeVipPrivilege(this);
-        
+        correctPower(this);
     };
 
     Player.FIELDS = [
@@ -250,10 +265,11 @@ var Player = (function(_super) {
     Player.prototype.achieve = function(id) {
         var dt = table.getTableItem('achievement', id);
         var ach = utility.deepCopy(this.achievement);
-        if (!_.has(ach, id)){
+        if (!_.has(ach, id)) {
             ach[id] = {
                 method: dt !== null ? dt.method : 'not found',
                 isAchieve: true,
+                isTake: false,
                 got: dt !== null ? dt.need : 0
             };
         } else {
@@ -439,7 +455,7 @@ var Player = (function(_super) {
         dg[name] = value;
         this.dailyGift = dg;
     };
-   /*
+    /*
     Player.prototype.hasGive = function(gift) {
         return _.contains(this.dailyGift.power, gift);
     };
@@ -526,8 +542,8 @@ var Player = (function(_super) {
         }
 
         var pass = _.clone(this.pass);
-        if(pass.layer  + 1 < layer) {
-            logger.warn('未达到该关卡层数',layer);
+        if (pass.layer + 1 < layer) {
+            logger.warn('未达到该关卡层数', layer);
             return;
         }
         pass.mark[layer - 1] = 1;
@@ -545,7 +561,7 @@ var Player = (function(_super) {
 
     Player.prototype.incPass = function() {
         var pass = _.clone(this.pass);
-        if(pass.layer >= 100)
+        if (pass.layer >= 100)
             return;
         pass.layer++;
         this.set('pass', pass);
@@ -553,7 +569,7 @@ var Player = (function(_super) {
 
     Player.prototype.signToday = function() {
         var d = new Date();
-        var key = util.format('%d%d', d.getFullYear(), d.getMonth()+1);
+        var key = util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
         var si = utility.deepCopy(this.signIn);
 
         if (!_.has(si, key)) {
@@ -564,19 +580,19 @@ var Player = (function(_super) {
             si.months[key] = 0;
         }
 
-        si.months[key] = utility.mark(si.months[key], d.getDay()+1);
+        si.months[key] = utility.mark(si.months[key], d.getDay() + 1);
         this.signIn = si;
     };
 
     Player.prototype.signFirstUnsignDay = function() {
-        var key = util.format('%d%d', d.getFullYear(), d.getMonth()+1);
+        var key = util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
         var si = utility.deepCopy(this.signIn);
 
-        if(!_.has(si, key)) {
+        if (!_.has(si, key)) {
             return;
         }
         var firsUnsignDay = 0;
-        for(var i = 1; i <= 31; i++) {
+        for (var i = 1; i <= 31; i++) {
             if (!utility.hasMark(si.months[key], i)) {
                 utility.mark(si.months[key], i);
                 firstUnsignDay = i;
@@ -589,12 +605,12 @@ var Player = (function(_super) {
     Player.prototype.signDays = function() {
         var i, days = 0;
         var d = new Date();
-        var key = util.format('%d%d', d.getFullYear(), d.getMonth()+1);
-        
+        var key = util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
+
         for (i = 1; i <= 31; i++) {
             if (utility.hasMark(this.signIn.months[key], i)) {
                 days += 1;
-            } 
+            }
         }
         console.log('sidn days: ', days);
         return days;
@@ -610,11 +626,11 @@ var Player = (function(_super) {
         return utility.hasMark(parseInt(this.signIn.flag), id);
     };
 
-    Player.prototype.giveBlessOnce = function(){
+    Player.prototype.giveBlessOnce = function() {
         this.emit('give.bless');
     };
 
-    Player.prototype.receiveBlessOnce = function(){
+    Player.prototype.receiveBlessOnce = function() {
         this.emit('receive.bless');
     };
 

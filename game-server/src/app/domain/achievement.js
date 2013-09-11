@@ -112,13 +112,6 @@ var checkIsReached = function(player, method, need) {
 	updateAchievement(player, method, need);
 };
 
-var getAchievements = function(player, method) {
-	var ach = utility.deepCopy(player.achievement);
-	return _.where(_.values(ach), {
-		method: method
-	});
-};
-
 var updateAchievement = function(player, method, got) {
 	var ach = utility.deepCopy(player.achievement);
 	var items = _.where(_.values(ach), {
@@ -141,6 +134,7 @@ var updateAchievement = function(player, method, got) {
 				ach[r.id] = {
 					method: r.method,
 					isAchieve: false,
+					isTake: false,
 					got: got
 				}
 			}
@@ -156,16 +150,9 @@ var reachedAchievements = function(methodName, need) {
 };
 
 var reachAchievement = function(player, id) {
-	data = table.getTableItem('achievement', id);
-	if (data) {
-		player.increase('gold', data.gold);
-		player.increase('energy', data.energy);
-		player.achieve(id);
-		player.save();
-		sendMessage(player, id)
-	} else {
-		logger.warn('can not find achievement data by id ' + id);
-	}
+	player.achieve(id);
+	player.save();
+	sendMessage(player, id)
 };
 
 var sendMessage = function(player, achId) {

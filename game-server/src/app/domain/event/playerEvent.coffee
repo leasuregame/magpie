@@ -2,7 +2,7 @@ playerConfig = require('../../../config/data/player')
 _ = require 'underscore'
 
 exports.addEvents = (player) ->
-  player.on 'power.consume', ->
+  player.on 'power.resume', ->
     ply = player
     interval = playerConfig.POWER_RESUME.interval
     power = ply.power

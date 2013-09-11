@@ -49,7 +49,9 @@ class Manager
   @rankingList: (rankings, cb) ->
     async.waterfall [
       (callback) ->
-        dao.rank.fetchMany where: " ranking in (#{rankings.toString()}) ", callback
+        dao.rank.fetchMany {
+          where: " ranking in (#{rankings.toString()}) "
+        }, callback
 
       (ranks, callback) ->
         _ids = ranks.map (r)-> r.playerId

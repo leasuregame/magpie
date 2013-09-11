@@ -99,7 +99,13 @@ Handler::challenge = (msg, session, next) ->
         return next(null, {code: err.code, msg: err.msg or err.message})
 
       bl.rewards = rewards
-      next(null, {code: 200, msg: {battleLog: bl, counts: player.rank?.counts}})
+      next(null, {code: 200, msg: {
+        battleLog: bl, 
+        counts: player.rank?.counts,
+        power: player.power,
+        lv: player.lv,
+        exp: player.exp
+      }})
 
       saveBattleLog(bl, playerName)
 

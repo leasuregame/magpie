@@ -197,21 +197,41 @@ describe("Area Server", function() {
 						});
 					});
 
-					it('获得成就：一半！', function() {
+					it('获得成就：通关！', function() {
 						console.log('message');
 						request('area.achieveHandler.achievements', {}, function(data) {
 							expect(data.code).toEqual(200);
 							expect(data.msg[3]).toEqual({
-								method: 'passTo',
 								isAchieve: true,
+								isTake: false,
 								got: 50
 							});
 							expect(data.msg[4]).toEqual({
-								method: 'passTo',
 								isAchieve: true,
+								isTake: false,
 								got: 100
 							});
 						});
+
+						request('area.achieveHandler.getReward', {id: 4}, function(data){
+							expect(data).toEqual({code: 200});
+						});
+
+						request('area.achieveHandler.achievements', {}, function(data) {
+							expect(data.code).toEqual(200);
+							expect(data.msg[3]).toEqual({
+								isAchieve: true,
+								isTake: false,
+								got: 50
+							});
+							expect(data.msg[4]).toEqual({
+								isAchieve: true,
+								isTake: true,
+								got: 100
+							});
+						});
+
+
 					});
 				});
 

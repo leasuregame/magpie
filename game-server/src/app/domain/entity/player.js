@@ -269,6 +269,7 @@ var Player = (function(_super) {
             ach[id] = {
                 method: dt !== null ? dt.method : 'not found',
                 isAchieve: true,
+                isTake: false,
                 got: dt !== null ? dt.need : 0
             };
         } else {

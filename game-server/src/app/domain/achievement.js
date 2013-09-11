@@ -112,13 +112,6 @@ var checkIsReached = function(player, method, need) {
 	updateAchievement(player, method, need);
 };
 
-var getAchievements = function(player, method) {
-	var ach = utility.deepCopy(player.achievement);
-	return _.where(_.values(ach), {
-		method: method
-	});
-};
-
 var updateAchievement = function(player, method, got) {
 	var ach = utility.deepCopy(player.achievement);
 	var items = _.where(_.values(ach), {
@@ -141,6 +134,7 @@ var updateAchievement = function(player, method, got) {
 				ach[r.id] = {
 					method: r.method,
 					isAchieve: false,
+					isTake: false,
 					got: got
 				}
 			}

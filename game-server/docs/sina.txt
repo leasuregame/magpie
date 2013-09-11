@@ -56,4 +56,4 @@ make build
 
 cd ../gm && make runserver2
 
-cat ./logs/node-log-logic-server-1.log
+cat ./logs/node-log-area-server-1.log

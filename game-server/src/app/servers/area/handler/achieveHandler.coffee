@@ -42,6 +42,6 @@ Handler::getReward = (msg, session, next) ->
 
 setAchievementRewardStatus = (player, id) ->
   ach = utility.deepCopy(player.achievement)
-  if _.has(ach, id)
+  if _.has(ach, id) and not ach[id].isTake
     ach[id].isTake = true
   player.achievement = ach

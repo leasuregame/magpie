@@ -252,12 +252,12 @@ var Player = (function(_super) {
         friends: []
     };
 
-    Player.increase = function(name, val) {
+    Player.prototype.increase = function(name, val) {
         Player.__super__.increase.apply(this, arguments);
         this.emit(name + '.increase', val == null ? 1 : val);
     };
 
-    Player.decrease = function(name, val) {
+    Player.prototype.decrease = function(name, val) {
         Player.__super__.decrease.apply(this, arguments);
         this.emit(name + '.consume', val == null ? 1 : val);
     };

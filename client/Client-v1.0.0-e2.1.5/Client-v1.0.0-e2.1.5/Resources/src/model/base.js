@@ -12,8 +12,11 @@
  * */
 
 
-// 命名空间
+/*
+ * 命名空间
+ * */
 var lz = {};
+
 
 /**
  * copy an new object
@@ -34,6 +37,33 @@ lz.clone = function (obj) {
         }
     }
     return newObj;
+};
+
+
+/*
+ * 格式化字符串，分隔成段
+ * */
+lz.format = function (str, length) {
+    cc.log("CardDetails _getDescription");
+
+    if (!length || length <= 0) return [];
+
+    var strList = [];
+    var len = str.length;
+
+    for (var i = 0; len > 0; ++i) {
+        var index = i * length;
+
+        if (len < length) {
+            strList[i] = str.substring(index);
+        } else {
+            strList[i] = str.substring(index, index + length);
+        }
+
+        len -= length;
+    }
+
+    return strList;
 };
 
 lz.getColor = function (colorType) {

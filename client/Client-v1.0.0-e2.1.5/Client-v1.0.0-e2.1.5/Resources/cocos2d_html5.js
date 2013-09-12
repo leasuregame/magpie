@@ -105,7 +105,6 @@
             'src/view/mainModule/battleMessageLayer.js',
             'src/view/mainModule/cardDetails.js',
             'src/view/mainModule/cardEvolutionLabel.js',
-            'src/view/mainModule/cardNode.js',
             'src/view/mainModule/cardFullNode.js',
             'src/view/mainModule/cardHalfNode.js',
             'src/view/mainModule/cardHeadNode.js',

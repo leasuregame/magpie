@@ -19,7 +19,7 @@ module.exports = {
       var files = util.walkSync(DATA_DIR).filter(function(file) {
         return /.xml$/.test(file);
       });
-      console.log('message', files);
+      
       var data = this._readTables.apply(this, files);
       this.loadTableData(data.exports);
     }

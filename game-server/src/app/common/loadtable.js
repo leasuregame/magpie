@@ -53,7 +53,6 @@ function analyzeTable(alltable, tablename) {
       uniCol = 'id';
     }
     if (columns[i].Comment) {
-      //console.log(columns[i].Comment['Data']['B']);
       var ssdata = columns[i].Comment['ss:Data'] || columns[i].Comment['Data'];
       var cmt = ssdata['#'];
       //var cmt = columns[i].Comment['Data']['#'];
@@ -63,6 +62,10 @@ function analyzeTable(alltable, tablename) {
 
       if (!cmt && ssdata['B'] && ssdata['B']['Font'])
         cmt = ssdata['B']['Font']['#'];
+
+      if (!cmt && ssdata) {
+        cmt = ssdata;
+      }
       //console.log(cmt);
       if (cmt) {
         var params = cmt.split('|');

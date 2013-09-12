@@ -12,13 +12,13 @@
  * */
 
 
-var MAX_CLOUD_COUNT = 150;
-var CLOUD_RADIUS = 223;
+var MAX_CLOUD_COUNT = 75;
+var CLOUD_RADIUS = 225;
 var CLEAR_CLOUD_DELAY = 0.2;
-var MIN_CLOUD_OPACITY = 200;
+var MIN_CLOUD_OPACITY = 180;
 var MAX_CLOUD_OPACITY = 255;
-var MIN_CLOUD_SCALE = 0.8;
-var MAX_CLOUD_SCALE = 1;
+var MIN_CLOUD_SCALE = 0.7;
+var MAX_CLOUD_SCALE = 1.3;
 var MIN_CLOUD_ROTATION = 0;
 var MAX_CLOUD_ROTATION = 360;
 var MIN_CLOUD_POSITION_X = 40;
@@ -26,10 +26,10 @@ var MID_CLOUD_POSITION_X = 360;
 var MAX_CLOUD_POSITION_X = 680;
 var MIN_CLOUD_POSITION_Y = 0;
 var MAX_CLOUD_POSITION_Y = 1136;
-var MIN_CLOUD_SPEED = 150;
-var MAX_CLOUD_SPEED = 170;
-var MIN_CLOUD_FADE_OUT_TIME = 1.4;
-var MAX_CLOUD_FADE_OUT_TIME = 1.6;
+var MIN_CLOUD_SPEED = 300;
+var MAX_CLOUD_SPEED = 380;
+var MIN_CLOUD_FADE_OUT_TIME = 1.3;
+var MAX_CLOUD_FADE_OUT_TIME = 1.7;
 
 var BattleBeganLayer = cc.Layer.extend({
     _cloud: null,
@@ -61,7 +61,6 @@ var BattleBeganLayer = cc.Layer.extend({
         }
 
         return true;
-
     },
 
     _began: function () {
@@ -78,11 +77,11 @@ var BattleBeganLayer = cc.Layer.extend({
             var x = point.x;
 
             if (x > MID_CLOUD_POSITION_X) {
-                x = MAX_CLOUD_POSITION_X - x;
                 point.x = MAX_CLOUD_POSITION_X + CLOUD_RADIUS;
+                x = point.x - x;
             } else {
-                x = x - MIN_CLOUD_POSITION_X;
                 point.x = MIN_CLOUD_POSITION_X - CLOUD_RADIUS;
+                x = x - point.x;
             }
 
             var moveTime = x / this._getRandomSpeed();
@@ -97,6 +96,8 @@ var BattleBeganLayer = cc.Layer.extend({
 
             cloud.runAction(action);
         }
+
+        cc.log(time);
 
         this.scheduleOnce(function () {
             this.removeFromParent();
@@ -140,4 +141,4 @@ BattleBeganLayer.create = function () {
     }
 
     return null;
-}
+};

@@ -167,8 +167,8 @@ var MainLayer = cc.Layer.extend({
 //        layer.setPosition(cc.p(40, 0));
 //        this.addChild(layer);
 //
-//        var layer = BattleBeganLayer.create();
-//        this.addChild(layer);
+        var layer = BattleBeganLayer.create();
+        this.addChild(layer);
 
         return true;
     },

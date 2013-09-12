@@ -21,7 +21,7 @@ var CardLibraryLayer = cc.Layer.extend({
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(GAME_BG_POINT);
-        this.addChild(bgSprite);
+        this.addChild(bgSprite, -1);
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
@@ -42,11 +42,12 @@ var CardLibraryLayer = cc.Layer.extend({
 
         var cardLibrary = gameData.cardLibrary.get("cardLibrary");
         var len = cardLibrary.length;
-        cc.log(cardLibrary);
+
         var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 733));
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
+
         var scrollViewHeight = Math.ceil(len / 4) * 143 + 35;
 
         for (var i = 0; i < len; ++i) {
@@ -54,7 +55,7 @@ var CardLibraryLayer = cc.Layer.extend({
             var index = i % 4;
 
             var cardItem = CardHeadNode.getCardHeadItem(cardLibrary[i].card);
-            cardItem.setPosition(cc.p(94 + 148 * index, scrollViewHeight - (89 + 143 * row)));
+            cardItem.setPosition(cc.p(94 + 148 * index, scrollViewHeight - 89 - 143 * row));
             menu.addChild(cardItem);
         }
 

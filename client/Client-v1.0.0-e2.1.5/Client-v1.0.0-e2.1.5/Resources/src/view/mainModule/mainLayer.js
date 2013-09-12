@@ -34,24 +34,19 @@ var MainLayer = cc.Layer.extend({
         playerHeaderLabel.setPosition(cc.p(40, 890));
         this.addChild(playerHeaderLabel);
 
-        this._abilityLabel = cc.LabelTTF.create("0", '黑体', 22);
+        this._abilityLabel = cc.LabelTTF.create(0, '黑体', 22);
         this._abilityLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._abilityLabel.setPosition(cc.p(300, 700));
         this.addChild(this._abilityLabel);
 
-        this._rankLabel = cc.LabelTTF.create("0", '黑体', 22);
+        this._rankLabel = cc.LabelTTF.create(0, '黑体', 22);
         this._rankLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._rankLabel.setPosition(cc.p(530, 700));
         this.addChild(this._rankLabel);
 
         var lineUpLabel = LineUpLabel.create();
-        lineUpLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 800));
+        lineUpLabel.setPosition(cc.p(40, 800));
         this.addChild(lineUpLabel);
-
-//        var activityLayerItem = cc.MenuItemFont.create("活动入口", this._onClickActivityLayer, this);
-//        activityLayerItem.setFontSize(40);
-//        activityLayerItem.setAnchorPoint(cc.p(0.5, 0.5));
-//        activityLayerItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 650));
 
         var spiritLayerItem = cc.MenuItemImage.create(
             main_scene_image.button5,
@@ -59,7 +54,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickSpiritLayer,
             this
         );
-        spiritLayerItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 500));
+        spiritLayerItem.setPosition(cc.p(360, 500));
 
         var pveLayerItem = cc.MenuItemImage.create(
             main_scene_image.button1,
@@ -149,27 +144,6 @@ var MainLayer = cc.Layer.extend({
 
         this.addChild(functionMenu);
 
-        playEffect({
-            effectId: 5,
-            target: this,
-            delay: 0.1,
-            loops: 0,
-            position: cc.p(360, 800),
-            anchorPoint: null,
-            scale: 1,
-            scaleX: 1,
-            scaleY: 1,
-            sprite: null
-        });
-
-//        var layer = cc.Sprite.create(main_scene_image.pvp_bg1);
-//        layer.setAnchorPoint(cc.p(0, 0));
-//        layer.setPosition(cc.p(40, 0));
-//        this.addChild(layer);
-//
-        var layer = BattleBeganLayer.create();
-        this.addChild(layer);
-
         return true;
     },
 
@@ -182,58 +156,62 @@ var MainLayer = cc.Layer.extend({
         this._rankLabel.setString(player.get("rank"));
     },
 
-    _onClickActivityLayer: function () {
-        cc.log("MainLayer _onClickActivityLayer");
-        MainScene.getInstance().switchLayer(ActivityLayer);
-    },
-
     _onClickSpiritLayer: function () {
-        cc.log("MainLayer _onClickGamblingLayer");
+        cc.log("MainLayer _onClickSpiritLayer");
+
         MainScene.getInstance().switchLayer(SpiritPoolLayer);
     },
 
     _onClickPveLayer: function () {
         cc.log("MainLayer _onClickPveLayer");
+
         MainScene.getInstance().switchLayer(PveLayer);
     },
 
     _onClickTournamentLayer: function () {
         cc.log("MainLayer _onClickTournamentLayer");
+
         MainScene.getInstance().switchLayer(TournamentLayer);
     },
 
     _onClickStrengthenLayer: function () {
         cc.log("MainLayer _onClickStrengthenLayer");
+
         MainScene.getInstance().switchLayer(StrengthenLayer);
     },
 
     _onClickEvolutionLayer: function () {
         cc.log("MainLayer _onClickEvolutionLayer");
+
         MainScene.getInstance().switchLayer(EvolutionLayer);
     },
 
     _onClickCardLibraryLayer: function () {
         cc.log("MainLayer _onClickCardLibraryLayer");
+
         MainScene.getInstance().switchLayer(CardLibraryLayer);
     },
 
     _onClickRankLayer: function () {
         cc.log("MainLayer _onClickRankLayer");
+
         MainScene.getInstance().switchLayer(RankLayer);
     },
 
     _onClickAchievementLayer: function () {
         cc.log("MainLayer _onClickAchievementLayer");
+
         MainScene.getInstance().switchLayer(AchievementLayer);
     },
 
     _onClickFriendLayer: function () {
-        cc.log("MainLayer _onClickFriendLayerItem");
+        cc.log("MainLayer _onClickFriendLayer");
+
         MainScene.getInstance().switchLayer(FriendLayer);
     },
 
     _onClickConfigLayer: function () {
-        cc.log("MainLayer _onClickConfigLayerItem");
+        cc.log("MainLayer _onClickConfigLayer");
 //        MainScene.getInstance().switchLayer(ConfigLayer);
 
         this.addChild(SignInLayer.create(), 1);

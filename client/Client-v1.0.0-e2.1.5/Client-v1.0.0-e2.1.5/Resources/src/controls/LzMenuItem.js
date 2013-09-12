@@ -11,7 +11,7 @@
  * lz menu item
  * */
 
-cc.MenuItemImage.createWithStr = function (normalImage, selectedImage, three, four, five, six) {
+cc.MenuItemImage.createWithIcon = function (normalImage, selectedImage, three, four, five, six) {
     var len = arguments.length;
     var ret = null;
     var strImage = null;

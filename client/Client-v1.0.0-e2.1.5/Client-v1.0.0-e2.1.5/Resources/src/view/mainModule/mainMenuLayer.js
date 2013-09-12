@@ -18,60 +18,59 @@ var MainMenuLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        var mainLayerItem = cc.MenuItemImage.create(
+        var mainLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button7,
             main_scene_image.button7s,
+            main_scene_image.icon5,
             this._onClickMainLayer,
             this
         );
         mainLayerItem.setPosition(cc.p(93, 141));
 
-        var pveLayerItem = cc.MenuItemImage.create(
+        var pveLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button7,
             main_scene_image.button7s,
+            main_scene_image.icon6,
             this._onClickPveLayer,
             this
         );
         pveLayerItem.setPosition(cc.p(200, 141));
 
-        var tournamentLayerItem = cc.MenuItemImage.create(
+        var tournamentLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button7,
             main_scene_image.button7s,
+            main_scene_image.icon7,
             this._onClickTournamentLayer,
             this
         );
         tournamentLayerItem.setPosition(cc.p(307, 141));
 
-        var rankingLayerItem = cc.MenuItemImage.create(
+        var rankingLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button7,
             main_scene_image.button7s,
+            main_scene_image.icon8,
             this._onClickCardListLayer,
             this
         );
         rankingLayerItem.setPosition(cc.p(414, 141));
 
-        var shopLayerItem = cc.MenuItemImage.create(
+        var shopLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button7,
             main_scene_image.button7s,
+            main_scene_image.icon9,
             this._onClickShopLayer,
             this
         );
         shopLayerItem.setPosition(cc.p(521, 141));
 
-        var messageLayerItem = cc.MenuItemImage.create(
+        var messageLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button7,
             main_scene_image.button7s,
+            main_scene_image.icon10,
             this._onClickMessageLayer,
             this
         );
         messageLayerItem.setPosition(cc.p(628, 141));
-
-        var itemIcon = null;
-        for (var i = 0; i < 6; ++i) {
-            itemIcon = cc.Sprite.create(main_scene_image["icon" + (i + 5)]);
-            itemIcon.setPosition(cc.p(93 + i * 107, 141));
-            this.addChild(itemIcon, 1);
-        }
 
 
         var mainMenu = cc.Menu.create(
@@ -90,31 +89,37 @@ var MainMenuLayer = cc.Layer.extend({
 
     _onClickMainLayer: function () {
         cc.log("MainMenuLayer _onClickMainLayer");
+
         MainScene.getInstance().switchLayer(MainLayer);
     },
 
     _onClickPveLayer: function () {
         cc.log("MainMenuLayer _onClickPveLayer");
+
         MainScene.getInstance().switchLayer(PveLayer);
     },
 
     _onClickTournamentLayer: function () {
         cc.log("MainMenuLayer _onClickTournamentLayer");
+
         MainScene.getInstance().switchLayer(TournamentLayer);
     },
 
     _onClickCardListLayer: function () {
         cc.log("MainMenuLayer _onClickCardListLayer");
+
         MainScene.getInstance().switchLayer(CardListLayer);
     },
 
     _onClickShopLayer: function () {
         cc.log("MainMenuLayer _onClickShopLayer");
+
         MainScene.getInstance().switchLayer(ShopLayer);
     },
 
     _onClickMessageLayer: function () {
         cc.log("MainMenuLayer _onClickMessageLayer");
+
         MainScene.getInstance().switchLayer(MessageLayer);
     }
 });

@@ -20,7 +20,7 @@ exports.addEvents = (player) ->
     interval = playerConfig.POWER_GIVE.interval
     cur_hour = (new Date()).getHours()
 
-    if _.contains(hours, cur_hour) and not player.hasGive(cur_hour)
+    if _.contains(hours, cur_hour) and not _.contains(player.dailyGift.powerGiven, cur_hour)
       player.givePower(cur_hour, givePoint)
       player.save()
 

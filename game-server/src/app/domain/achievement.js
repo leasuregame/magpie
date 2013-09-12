@@ -23,7 +23,7 @@ Achievement.winningStreak = function(player, ranking) {
 };
 
 Achievement.rankingToOne = function(player) {
-	checkIsReached(player, 'rankingTo', 1)
+	checkIsReached(player, 'rankingToOne', 1)
 };
 
 Achievement.friends = function(player, count) {
@@ -127,18 +127,17 @@ var updateAchievement = function(player, method, got) {
 	}
 	table.getTable('achievement')
 		.filter(function(id, row) {
-			return row.method == method;
+			return row.method == method && !_.has(ach, id);
 		})
 		.forEach(function(r) {
-			if (_.isUndefined(ach[r.id])) {
-				ach[r.id] = {
-					method: r.method,
-					isAchieve: false,
-					isTake: false,
-					got: got
-				}
+			ach[r.id] = {
+				method: r.method,
+				isAchieve: false,
+				isTake: false,
+				got: got
 			}
 		});
+	console.log('update achievement: (fuck)', ach);
 	// reset achievement of player
 	player.achievement = ach;
 };
@@ -152,7 +151,7 @@ var reachedAchievements = function(methodName, need) {
 var reachAchievement = function(player, id) {
 	player.achieve(id);
 	player.save();
-	sendMessage(player, id)
+	sendMessage(player, id);
 };
 
 var sendMessage = function(player, achId) {

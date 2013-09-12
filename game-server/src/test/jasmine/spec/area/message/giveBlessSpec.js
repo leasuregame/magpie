@@ -13,24 +13,56 @@ describe("Area Server", function() {
 				doAjax('/loaddata/csv', {}, function() {});
 			});
 
-			beforeEach(function() {
-				loginWith(arthur.account, arthur.password, arthur.areaId);
-			});
+			describe('when a player is my friend', function() {
+				beforeEach(function() {
+					loginWith(arthur.account, arthur.password, arthur.areaId);
+				});
 
-			describe('when a player is my friend', function(){
-				it('should can give bless to him', function(){
-					request('area.messageHandler.giveBless', {friendId: 1}, function(data){
-						expect(data).toEqual('');
+				it('should can give bless to him', function() {
+					request('area.messageHandler.giveBless', {
+						friendId: 1
+					}, function(data) {
+						expect(data).toEqual({
+							code: 3004
+						});
 					});
 				});
 			});
 
-			describe('when receive bless from a friend', function(){
-				it('should can get energy', function(){
-					request('area.messageHandler.receiveBless', {msgId: 1}, function(data){
-						expect(data).toEqual('');
+			describe('when receive bless from a friend', function() {
+				describe('when the message is not mine', function() {
+					beforeEach(function() {
+						loginWith(arthur.account, arthur.password, arthur.areaId);
+					});
+
+					it('should can not handler the messages that not sended to me', function() {
+						request('area.messageHandler.receiveBless', {
+							msgId: 1
+						}, function(data) {
+							expect(data).toEqual({
+								code: 501,
+								msg: '你没有权限处理此消息'
+							});
+						});
 					});
 				});
+
+				describe('when the message is mine', function(){
+					beforeEach(function() {
+						loginWith('1', '1', 1);
+					});
+
+					it('should can not handler the messages that not sended to me', function() {
+						request('area.messageHandler.receiveBless', {
+							msgId: 1
+						}, function(data) {
+							expect(data).toEqual({
+								code: 200
+							});
+						});
+					});
+				});
+
 			});
 
 

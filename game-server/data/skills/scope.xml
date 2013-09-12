@@ -19,11 +19,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8760</WindowHeight>
+  <WindowHeight>5000</WindowHeight>
   <WindowWidth>28800</WindowWidth>
-  <WindowTopX>120</WindowTopX>
-  <WindowTopY>140</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <WindowTopX>9620</WindowTopX>
+  <WindowTopY>1300</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -36,7 +35,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s69">
+  <Style ss:ID="s62">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
@@ -44,16 +43,16 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s71">
+  <Style ss:ID="s63">
    <Alignment ss:Vertical="Bottom"/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="卡牌范围表">
   <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="9" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s69" ss:DefaultColumnWidth="97"
+   x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="97"
    ss:DefaultRowHeight="19">
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="133"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="133"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">名称</Data></Cell>
@@ -74,13 +73,13 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell><Data ss:Type="String">crossways_front</Data></Cell>
+    <Cell><Data ss:Type="String">crosswaysFront</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">前排所有</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="String">crossways_back</Data></Cell>
+    <Cell><Data ss:Type="String">crosswaysBack</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">后排所有</Data></Cell>
    </Row>
@@ -116,12 +115,12 @@
    </PageSetup>
    <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>2</ActiveCol>
-     <RangeSelection>R3C3:R3C4</RangeSelection>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -131,18 +130,18 @@
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Row>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">export_name</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">export_name</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">卡牌范围表</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">scope</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">卡牌范围表</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">scope</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

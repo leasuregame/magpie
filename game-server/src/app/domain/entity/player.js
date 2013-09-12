@@ -41,6 +41,10 @@ var NOW = function() {
 var addEvents = function(player) {
     // 经验值改变，判断是否升级
     player.on('exp.change', function(exp) {
+        if (player.lv <= 0) {
+            return;
+        }
+
         var upgradeInfo = table.getTableItem('player_upgrade', player.lv);
         console.log(upgradeInfo);
         if (exp >= upgradeInfo.exp) {
@@ -65,10 +69,10 @@ var addEvents = function(player) {
     });
 
     player.on('pass.change', function(pass) {
-        if (typeof pass == 'string') {
+        if (typeof pass == 'string' && /^[\{\[].*[\]\}]$/.test(pass)) {
             pass = JSON.parse(pass);
         }
-        achieve.passTo(player, pass.layer);
+        achieve.passTo(player, pass.layer || 0);
     });
 
     player.on('elixir.increase', function(elixir) {

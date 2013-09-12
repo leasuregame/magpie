@@ -16,10 +16,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>10680</WindowHeight>
+  <WindowHeight>6920</WindowHeight>
   <WindowWidth>25600</WindowWidth>
   <WindowTopX>12920</WindowTopX>
   <WindowTopY>1880</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -247,8 +248,7 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <Zoom>130</Zoom>
-   <PageLayoutZoom>130</PageLayoutZoom>
-   <Selected/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -263,33 +263,23 @@
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="130"/>
-   <Column ss:AutoFitWidth="0" ss:Width="117"/>
-   <Column ss:AutoFitWidth="0" ss:Width="125"/>
-   <Row ss:AutoFitHeight="0">
+   <Row>
     <Cell ss:StyleID="s62"><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">export_name</Data></Cell>
     <Cell><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row>
     <Cell><Data ss:Type="String">寻宝配置表</Data></Cell>
     <Cell><Data ss:Type="String">treasure_hunt</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <Unsynced/>
-   <Print>
-    <ValidPrinterInfo/>
-    <PaperSizeIndex>9</PaperSizeIndex>
-    <HorizontalResolution>-4</HorizontalResolution>
-    <VerticalResolution>-4</VerticalResolution>
-   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>11</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <RangeSelection>R1C1:R2C3</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

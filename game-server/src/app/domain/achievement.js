@@ -1,7 +1,13 @@
 var table = require('../manager/table');
 var logger = require('pomelo-logger').getLogger(__filename);
 var utility = require('../common/utility');
-var messageService = require('pomelo').app.get('messageService');
+var messageService = null;
+
+var app = require('pomelo').app;
+if (typeof app !== "undefined" && app !== null) {
+    messageService = app.get('messageService');
+}
+
 var _ = require('underscore');
 
 Achievement = function() {}

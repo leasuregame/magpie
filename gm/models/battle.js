@@ -42,6 +42,7 @@ Battle.startBattle = function(attack,defend,times,cb) {
                 var battleLog = new battle(attacker,defender);
                // console.log(battleLog);
                 Battle.analyzeBattleLog(battleLog);
+
              }
             cb(null,null);
         },
@@ -51,13 +52,13 @@ Battle.startBattle = function(attack,defend,times,cb) {
                 var card = report.attack.cards[i];
                 card.crit_rate = (card.crit * 100/ card.hit).toFixed(4);
                 card.dodge_rate = (card.dodge * 100/ card.hurt).toFixed(4);
-                card.skill_rate = (card.skill_rate * 100/ card.attack_times).toFixed(4)
+                card.skill_rate = (card.skill * 100/ card.attack_times).toFixed(4)
             }
             for(var i = 0;i < report.defend.cards.length;i++){
                 var card = report.defend.cards[i];
                 card.crit_rate = (card.crit * 100/ card.hit).toFixed(4);
                 card.dodge_rate = (card.dodge * 100/ card.hurt).toFixed(4);
-                card.skill_rate = (card.skill_rate * 100/ card.attack_times).toFixed(4)
+                card.skill_rate = (card.skill * 100/ card.attack_times).toFixed(4)
             }
 
             report.attack.rate = (report.attack.win * 100/ times).toFixed(4);
@@ -65,8 +66,6 @@ Battle.startBattle = function(attack,defend,times,cb) {
             cb(null,report);
         }
     ],function(err,results){
-       // console.log("err = " + err);
-       // console.log(results);
         return cb(err,report);
     });
 
@@ -105,7 +104,7 @@ Battle.init = function() {
         }
     };
 
-    for(var i = 0;i < 5;i++) {
+    for(var i = 0;i < 6;i++) {
         report.attack.cards[i] = {
             hit:0,
             hurt:0,
@@ -114,6 +113,7 @@ Battle.init = function() {
             dodge:0,
             dodge_rate:0,
             attack_times:0,
+            skill:0,
             skill_rate:0
         };
         report.defend.cards[i] = {
@@ -124,6 +124,7 @@ Battle.init = function() {
             dodge:0,
             dodge_rate:0,
             attack_times:0,
+            skill:0,
             skill_rate:0
         };
     }
@@ -146,13 +147,15 @@ Battle.count = function(a,d,e){
             var id = (d[i] < 0) ? (d[i] * -1 - 6) : (d[i] -6);
             if(e[i] == 0) {
                 report.defend.cards[id].dodge++;
-            }else if(e[i] < 0) {
+            }else if(e[i] <= 0) {
                 report.defend.cards[id].hurt++;
             }
         }
         report.attack.cards[a].attack_times++;
-        if(isSkill)
-            report.attack.cards[a].skill_rate++;
+        if(isSkill) {
+            report.attack.cards[a].skill++;
+           // console.log(a);
+        }
         report.attack.cards[a].hit += d.length;
     }
 
@@ -164,13 +167,15 @@ Battle.count = function(a,d,e){
             var id = (d[i] < 0) ? (d[i] * -1) : (d[i]);
             if(e[i] == 0) {
                 report.attack.cards[id].dodge++;
-            }else if(e[i] < 0) {
+            }else if(e[i] <= 0) {
                 report.attack.cards[id].hurt++;
             }
         }
         report.defend.cards[a - 6].attack_times++;
-        if(isSkill)
-            report.defend.cards[a - 6].skill_rate++;
+        if(isSkill) {
+            report.defend.cards[a - 6].skill++;
+            //console.log(a);
+        }
         report.defend.cards[a - 6].hit += d.length;
     }
 

@@ -78,7 +78,7 @@ function submitBattle() {
         cards.push(card);
         attack.lineUp += '' + (i < 3 ? 0 : 1) + i % 3 +':' + i + ',';
     }
-
+    attack.lineUp = attack.lineUp.substring(0,attack.lineUp.length - 1);
     attack.cards = cards;
 
     cards = [];
@@ -90,7 +90,7 @@ function submitBattle() {
         var ii = i - 5;
         defend.lineUp += '' + (ii < 3 ? 0 : 1) + ii % 3 +':' + i + ',';
     }
-
+    defend.lineUp = defend.lineUp.substring(0,defend.lineUp.length - 1);
     defend.cards = cards;
 
    // console.log(attack);
@@ -178,21 +178,21 @@ function setReport(report) {
     $("#attackReport tbody tr").remove();
     $("#defendReport tbody tr").remove();
     var inner = "";
-    for(var i = 0;i < report.attack.cards.length;i++) {
+    for(var i = 1;i < report.attack.cards.length;i++) {
         var card = report.attack.cards[i];
         if(isNaN(card.crit_rate))
             continue;
-        inner += "<tr><td>" + (i + 1) + "</td><td>" + card.crit + "</td><td>" + card.crit_rate+ "</td><td>" + card.dodge + "</td><td>" + card.dodge_rate + "</td><td>" + card.skill_rate + "</td><tr>"
+        inner += "<tr><td>" + i + "</td><td>" + card.crit + "</td><td>" + card.crit_rate+ "</td><td>" + card.dodge + "</td><td>" + card.dodge_rate + "</td><td>" + card.skill + "</td><td>" + card.skill_rate + "</td><tr>"
     }
 
     $("#attackReport").append(inner);
 
     var inner = "";
-    for(var i = 0;i < report.defend.cards.length;i++) {
+    for(var i = 1;i < report.defend.cards.length;i++) {
         var card = report.defend.cards[i];
         if(isNaN(card.crit_rate))
             continue;
-        inner += "<tr><td>" + (i + 1) + "</td><td>" + card.crit + "</td><td>" + card.crit_rate + "</td><td>" + card.dodge + "</td><td>" + card.dodge_rate + "</td><td>" + card.skill_rate + "</td><tr>"
+        inner += "<tr><td>" + i + "</td><td>" + card.crit + "</td><td>" + card.crit_rate + "</td><td>" + card.dodge + "</td><td>" + card.dodge_rate + "</td><td>" + card.skill + "</td><td>" + card.skill_rate + "</td><tr>"
     }
 
     $("#defendReport").append(inner);

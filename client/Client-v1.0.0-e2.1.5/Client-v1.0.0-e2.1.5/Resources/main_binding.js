@@ -74,6 +74,7 @@ var appFiles = [
     'src/controls/markLayer.js',
     'src/controls/strokeLabel.js',
     'src/controls/LzMenuItem.js',
+    'src/controls/tipLayer.js',
 
     'src/view/loginModule/loginScene.js',
     'src/view/loginModule/loginLayer.js',

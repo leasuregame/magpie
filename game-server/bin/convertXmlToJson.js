@@ -44,12 +44,12 @@ var outputFiles = [
   '../../gm/config/table/table.json'
 ];
 
-for (var i = files.length - 1; i >= 0; i--) {
-  files[i] = path.resolve(__dirname, files[i]);
-  tryMkdir(files[i]);
+for (var i = outputFiles.length - 1; i >= 0; i--) {
+  outputFiles[i] = path.resolve(__dirname, outputFiles[i]);
+  tryMkdir(outputFiles[i]);
 };
 
-console.log('start write to ', files);
+console.log('start write to ', outputFiles);
 process.chdir(__dirname);
 
 var DATA_DIR = path.join(__dirname, '..', 'data');
@@ -60,7 +60,7 @@ walk(DATA_DIR, function(err, files) {
   files = files.filter(function(file) {
     return /.xml$/.test(file);
   });
-  var tabledata = loadtable.apply(loadtable, [files[0]]);
+  var tabledata = loadtable.apply(loadtable, files);
 
   outputFiles.forEach(function(filepath) {
     fs.writeFileSync(filepath, JSON.stringify(tabledata.client));

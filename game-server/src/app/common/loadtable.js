@@ -459,7 +459,7 @@ module.exports = function() {
     }
     
     // 需要合并的表
-    if (typeof row[2] !== 'undefined') {
+    if (typeof row[2] != 'undefined' && typeof row[2].Data != 'undefined') {
       needMergeTables.push({
         from: row[1].Data['#'], 
         to: row[2].Data['#']

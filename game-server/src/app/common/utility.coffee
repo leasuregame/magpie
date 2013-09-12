@@ -1,3 +1,4 @@
+fs = require('fs')
 _ = require 'underscore'
 
 Utility = 
@@ -75,5 +76,37 @@ Utility =
 
   mark: (val, bit) ->
     val = val | (1 << (bit-1))
+
+  walk: (dir, done) ->
+    results = []
+    fs.readdir dir, (err, list) ->
+      return done(err) if err
+      pending = list.length
+      return done(null, results) if not pending
+
+      list.forEach (file) ->
+        file = dir + '/' + file
+        console.log '-c-', file
+        fs.stat file, (err, stat) ->
+          if stat and stat.isDirectory()
+            Utility.walk file, (err, res) ->
+              results = results.concat res
+              done(null, results) if not --pending
+          else
+            results.push file
+            done(null, results) if not --pending
+
+  walkSync: (dir) ->
+    results = []
+    list = fs.readdirSync(dir)
+    for item in list
+      file = "#{dir}/#{item}"
+      stat = fs.statSync(file)
+      if stat and stat.isDirectory()
+        res = Utility.walkSync file
+        results = results.concat res
+      else
+        results.push file
+    results
 
 module.exports = Utility

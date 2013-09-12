@@ -86,7 +86,6 @@ Utility =
 
       list.forEach (file) ->
         file = dir + '/' + file
-        console.log '-c-', file
         fs.stat file, (err, stat) ->
           if stat and stat.isDirectory()
             Utility.walk file, (err, res) ->

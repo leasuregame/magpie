@@ -46,7 +46,6 @@ var addEvents = function(player) {
         }
 
         var upgradeInfo = table.getTableItem('player_upgrade', player.lv);
-        console.log(upgradeInfo);
         if (exp >= upgradeInfo.exp) {
             player.increase('lv');
             player.set('exp', exp - upgradeInfo.exp);
@@ -617,7 +616,6 @@ var Player = (function(_super) {
                 days += 1;
             }
         }
-        console.log('sidn days: ', days);
         return days;
     };
 
@@ -771,7 +769,6 @@ var recountVipPrivilege = function(player, oldVip) {
     var sp = utility.deepCopy(player.spiritPool);
     sp.collectCount += curVipInfo.spirit_collect_count - oldVipInfo.spirit_collect_count;
     player.spiritPool = sp;
-    console.log(sp);
     player.save();
 };
 

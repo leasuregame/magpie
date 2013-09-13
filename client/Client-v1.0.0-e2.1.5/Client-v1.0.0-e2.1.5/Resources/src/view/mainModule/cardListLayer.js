@@ -341,7 +341,6 @@ var CardListLayer = cc.Layer.extend({
                 this._cardLabel[lineUp[i]].select();
             }
         }
-
     },
 
     _initMaster: function () {
@@ -745,7 +744,7 @@ var CardListLayer = cc.Layer.extend({
                 }
             }
 
-            if (!isLineUpCard) {
+            if (!isLineUpCard && lineUp[key] != SPIRIT_ID) {
                 delete lineUp[key];
             }
         }
@@ -753,11 +752,13 @@ var CardListLayer = cc.Layer.extend({
         len = cardList.length;
         for (i = 0, key = 1; i < len && key < MAX_LINE_UP_SIZE; ++i) {
             while (key < MAX_LINE_UP_SIZE) {
-                if (!lineUp[key]) {
-                    lineUp[key++] = cardList[i];
+                if (lineUp[key] == undefined) {
+                    lineUp[key] = cardList[i];
+                    key += 1;
                     break;
                 }
-                key++;
+
+                key += 1;
             }
         }
 

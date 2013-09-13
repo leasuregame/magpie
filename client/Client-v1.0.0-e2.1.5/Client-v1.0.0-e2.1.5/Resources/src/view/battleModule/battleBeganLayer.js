@@ -33,19 +33,15 @@ var MAX_CLOUD_FADE_OUT_TIME = 1.7;
 
 var BattleBeganLayer = cc.Layer.extend({
     _cloud: null,
-
-    onEnter: function () {
-        cc.log("BattleBeganLayer onEnter");
-
-        this._super();
-
-        this.scheduleOnce(this._began, CLEAR_CLOUD_DELAY);
-    },
+    _cb: null,
 
     init: function () {
         cc.log("BattleBeganLayer init");
 
         if (!this._super()) return false;
+
+        var spriteSheet = cc.SpriteBatchNode.create(main_scene_image.cloud, MAX_CLOUD_COUNT);
+        this.addChild(spriteSheet);
 
         this._cloud = [];
 
@@ -55,12 +51,20 @@ var BattleBeganLayer = cc.Layer.extend({
             cloud.setScale(this._getRandomScale());
             cloud.setOpacity(this._getRandomOpacity());
             cloud.setPosition(this._getRandomPosition());
-            this.addChild(cloud);
+            spriteSheet.addChild(cloud);
 
             this._cloud[i] = cloud;
         }
 
         return true;
+    },
+
+    play: function (cb) {
+        cc.log("BattleBeganLayer play");
+
+        this._cb = cb || null;
+
+        this.scheduleOnce(this._began, CLEAR_CLOUD_DELAY);
     },
 
     _began: function () {
@@ -97,9 +101,11 @@ var BattleBeganLayer = cc.Layer.extend({
             cloud.runAction(action);
         }
 
-        cc.log(time);
-
         this.scheduleOnce(function () {
+            if (this._cb) {
+                this._cb();
+            }
+
             this.removeFromParent();
         }, time);
     },
@@ -138,6 +144,21 @@ BattleBeganLayer.create = function () {
 
     if (ret && ret.init()) {
         return ret;
+    }
+
+    return null;
+};
+
+
+BattleBeganLayer.play = function (cb) {
+    var battleBeganLayer = BattleBeganLayer.create();
+
+    if (battleBeganLayer) {
+        cc.Director.getInstance().getRunningScene().addChild(battleBeganLayer, 1);
+
+        battleBeganLayer.play(cb);
+
+        return battleBeganLayer;
     }
 
     return null;

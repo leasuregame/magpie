@@ -14,6 +14,7 @@
 
 var MAX_LINE_UP_CARD = 5;
 var MAX_LINE_UP_SIZE = 6;
+var SPIRIT_ID = -1;
 
 var LineUp = Entity.extend({
     _lineUp: {},
@@ -61,10 +62,8 @@ var LineUp = Entity.extend({
 
         var lineUpList = [];
 
-        for (var i = 1; i < MAX_LINE_UP_SIZE; ++i) {
-            if (this._lineUp[i] !== undefined) {
-                lineUpList.push(this._lineUp[i]);
-            }
+        for (var key in this._lineUp) {
+            lineUpList.push(this._lineUp[key]);
         }
 
         return lineUpList;

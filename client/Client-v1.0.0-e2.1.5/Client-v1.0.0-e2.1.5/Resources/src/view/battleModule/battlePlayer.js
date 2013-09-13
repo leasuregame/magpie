@@ -13,6 +13,7 @@
 var BattlePlayer = cc.Class.extend({
     _scheduler: null,
     _battleLog: null,
+    _battleLayer: null,
     _battleNode: null,
     _tipLabel: null,
 
@@ -35,25 +36,47 @@ var BattlePlayer = cc.Class.extend({
         }
 
         cc.Director.getInstance().replaceScene(BattleScene.create(this._battleLog));
+    },
+
+    began: function () {
+        cc.log("BattlePlayer began");
 
         if (this._battleNode == null || this._tipLabel == null) {
             cc.log("battle element is undefined");
+
+            this.end();
+
             return;
         }
 
-        this._battleLog.recover();
-        this.playAStep();
+        var that = this;
+        BattleBeganLayer.play(function () {
+            playEffect({
+                effectId: 12,
+                target: that._battleLayer,
+                delay: 0.1,
+                loops: 1,
+                position: null,
+                anchorPoint: null,
+                scale: 1,
+                clear: true,
+                cb: function () {
+                    that._battleLog.recover();
+                    that._playAStep();
+                }
+            });
+        });
     },
 
-    playAStep: function () {
-        this._scheduler.unscheduleCallbackForTarget(this, this.playAStep);
+    _playAStep: function () {
+        this._scheduler.unscheduleCallbackForTarget(this, this._playAStep);
 
         if (!this._battleLog.hasNextBattleStep()) {
             this.end();
             return;
         }
 
-        cc.log("\n\n\nBattlePlayer playAStep " + this._battleLog.getBattleStepIndex());
+        cc.log("\n\n\nBattlePlayer _playAStep " + this._battleLog.getBattleStepIndex());
 
         var battleStep = this._battleLog.getBattleStep();
 
@@ -70,12 +93,13 @@ var BattlePlayer = cc.Class.extend({
         var delay = SkillFactory.normalAttack(this._battleNode, battleStep);
 
         cc.log("set next round");
-        this._scheduler.scheduleCallbackForTarget(this, this.playAStep, delay, 1, 0, false);
+        this._scheduler.scheduleCallbackForTarget(this, this._playAStep, delay, 1, 0, false);
     },
 
-    setBattleElement: function (battleNode, tipLabel) {
+    setBattleElement: function (battleLayer, battleNode, tipLabel) {
         cc.log("BattlePlayer setBattleElement");
 
+        this._battleLayer = battleLayer;
         this._battleNode = battleNode;
         this._tipLabel = tipLabel;
     },

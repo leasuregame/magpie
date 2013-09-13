@@ -90,7 +90,11 @@ var BatterLayer = cc.Layer.extend({
 
         this._tipLabel.setString("");
 
-        BattlePlayer.getInstance().setBattleElement(this._battleNode, this._tipLabel);
+        BattlePlayer.getInstance().setBattleElement(this, this._battleNode, this._tipLabel);
+
+        this.scheduleOnce(function () {
+            BattlePlayer.getInstance().began();
+        });
 
         return true;
     },

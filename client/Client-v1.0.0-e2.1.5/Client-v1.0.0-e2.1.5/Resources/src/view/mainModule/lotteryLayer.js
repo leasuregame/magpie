@@ -79,19 +79,6 @@ var LotteryLayer = cc.Layer.extend({
             this.addChild(energyLotteryIcon);
         }
 
-        playEffect({
-            effectId: 4,
-            target: this,
-            delay: 0.1,
-            loops: 0,
-            position: cc.p(360, 450),
-            anchorPoint: null,
-            scale: 1,
-            scaleX: 1,
-            scaleY: 1,
-            sprite: null
-        });
-
         return true;
     },
 
@@ -126,7 +113,7 @@ var LotteryLayer = cc.Layer.extend({
                 scaleX: 1,
                 scaleY: 1,
                 sprite: null,
-                cb: function() {
+                cb: function () {
                     cc.log("End");
 
                     var cardFullNode = CardFullNode.create(
@@ -136,7 +123,7 @@ var LotteryLayer = cc.Layer.extend({
                     cardFullNode.setPosition(effectSprite.getPosition());
                     bgLayer.addChild(cardFullNode);
 
-                    that.scheduleOnce(function() {
+                    that.scheduleOnce(function () {
                         bgLayer.removeFromParent();
                         LazyLayer.closeCloudLayer();
                     }, 5);

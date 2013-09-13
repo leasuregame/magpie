@@ -47,7 +47,8 @@ var OperateConfig = {
 var CardConfig = {
     lv:1,
     skillLv:0,
-    elixir:0,
+    elixirHp:0,
+    elixirAtk:0,
     star:1,
     tableId:1,
     name:'',
@@ -278,7 +279,8 @@ function setCard(id) {
 
     $("#lv").val(card.lv);
     $("#skillLv").val(card.skillLv);
-    $("#elixir").val(card.elixir);
+    $("#elixirHp").val(card.elixirHp);
+    $("#elixirAtk").val(card.elixirAtk);
     $("#starList").val(card.star);
     $("#tableId").val(card.tableId);
     $("#name").val(card.name);
@@ -313,7 +315,8 @@ function getData() {
     var data = {
         lv:$("#lv").val(),
         skillLv:$("#skillLv").val(),
-        elixir:$("#elixir").val(),
+        elixirHp:$("#elixirHp").val(),
+        elixirAtk:$("#elixirAtk").val(),
         star:$("#starList").val(),
         passSkills:[]
 
@@ -356,7 +359,7 @@ function getData() {
 function setCardsList() {
     var inner = "";
     cards.forEach(function(card){
-        inner += "<tr id =" + card.id +"><td>" + card.name + "</td><td>" + card.lv + "</td><td>" + card.skillLv + "</td><td>" + card.elixir + "</td><td>" + card.star + "</td>";
+        inner += "<tr id =" + card.id +"><td>" + card.name + "</td><td>" + card.lv + "</td><td>" + card.skillLv + "</td><td>" + card.elixirHp + "</td><td>" + card.elixirAtk + "</td><td>" + card.star + "</td>";
 
         for(var i = 0;i < 3;i++) {
             if(card.passSkills.length > i)
@@ -379,7 +382,7 @@ function setCardsList() {
 //添加一行
 function addRow(card){
     var inner = "";
-        inner += "<tr id =" + card.id +"><td>" + card.name + "</td><td>" + card.lv + "</td><td>" + card.skillLv + "</td><td>" + card.elixir + "</td><td>" + card.star + "</td>";
+        inner += "<tr id =" + card.id +"><td>" + card.name + "</td><td>" + card.lv + "</td><td>" + card.skillLv + "</td><td>" + card.elixirHp + "</td><td>" + card.elixirAtk + "</td><td>"  + card.star + "</td>";
 
         for(var i = 0;i < 3;i++) {
             if(card.passSkills.length > i)

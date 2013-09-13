@@ -52,13 +52,11 @@ var BattlePlayer = cc.Class.extend({
         var that = this;
         BattleBeganLayer.play(function () {
             playEffect({
-                effectId: 12,
+                effectId: 14,
                 target: that._battleLayer,
                 delay: 0.1,
                 loops: 1,
-                position: null,
-                anchorPoint: null,
-                scale: 1,
+                scale: 1.77,
                 clear: true,
                 cb: function () {
                     that._battleLog.recover();

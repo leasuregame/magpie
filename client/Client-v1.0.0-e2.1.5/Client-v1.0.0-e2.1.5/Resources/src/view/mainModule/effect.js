@@ -27,28 +27,32 @@ var playEffect = function (arg) {
     var scale = arg.scale;
     var scaleX = arg.scaleX;
     var scaleY = arg.scaleY;
-    var sprite = arg.sprite;
     var zOrder = arg.zOrder;
     var clear = arg.clear || (arg.cb ? false : true);
     var cb = arg.cb || null;
 
-    if (!effectId) return;
-    if (!target && !sprite) return;
+    if (!effectId || !target) {
+        return;
+    }
 
     var frames = [];
     var rect = effectRect[effectId];
-    var isNewSprite = false;
 
-    if (sprite && sprite instanceof cc.Sprite) {
-        sprite.setVisible(true);
-    } else {
-        isNewSprite = true;
-        sprite = cc.Sprite.create();
-        target.addChild(sprite);
+    for (var i = 0; i < effectConfig[effectId]; ++i) {
+        var frame = cc.SpriteFrame.create(
+            main_scene_image["effect" + effectId + "_frame" + i],
+            rect
+        );
+
+        frames.push(frame);
     }
 
-    sprite.setTextureRect(rect);
+    var animation = cc.Animation.create(frames, delay);
+    var animate = cc.Animate.create(animation);
+
+    var sprite = cc.Sprite.createWithSpriteFrame(frames[0]);
     sprite.setPosition(position);
+    target.addChild(sprite);
 
     if (anchorPoint) {
         sprite.setAnchorPoint(anchorPoint);
@@ -70,18 +74,6 @@ var playEffect = function (arg) {
         sprite.setZOrder(zOrder);
     }
 
-    for (var i = 0; i < effectConfig[effectId]; ++i) {
-        var frame = cc.SpriteFrame.create(
-            main_scene_image["effect" + effectId + "_frame" + i],
-            rect
-        );
-
-        frames.push(frame);
-    }
-
-    var animation = cc.Animation.create(frames, delay);
-    var animate = cc.Animate.create(animation);
-
     var action = null;
     if (loops > 0) {
         var repeatAction = cc.Repeat.create(animate, loops);
@@ -92,11 +84,7 @@ var playEffect = function (arg) {
             }
 
             if (clear) {
-                if (isNewSprite) {
-                    sprite.removeFromParent();
-                } else {
-                    sprite.setVisible(false);
-                }
+                sprite.removeFromParent();
             }
         });
 

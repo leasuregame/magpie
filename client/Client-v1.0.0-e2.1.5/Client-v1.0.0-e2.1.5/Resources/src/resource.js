@@ -493,6 +493,9 @@ var effectConfig = [
     4,
     5,
     7,
+    10,
+    10,
+    10,
     10
 ];
 
@@ -509,7 +512,10 @@ var effectRect = [
     cc.rect(0, 0, 600, 713),
     cc.rect(0, 0, 600, 713),
     cc.rect(0, 0, 450, 260),
-    cc.rect(0, 0, 450, 260)
+    cc.rect(0, 0, 450, 260),
+    cc.rect(0, 0, 361, 218),
+    cc.rect(0, 0, 361, 218),
+    cc.rect(0, 0, 253, 218)
 ];
 
 for (var effectId = 0; effectId < effectConfig.length; ++effectId) {

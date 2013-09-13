@@ -18,6 +18,9 @@ var AbilityRankLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this.layer = SkyDialog.create();
+        this.addChild(this.layer);
+
         var abilityRankList = gameData.rank.get("abilityRankList");
         var len = abilityRankList.length;
 
@@ -100,7 +103,7 @@ var AbilityRankLayer = cc.Layer.extend({
         return function () {
             cc.log("AbilityRankLayer _onClickPlayer: " + id);
 
-
+            this.layer.show();
         }
     }
 });

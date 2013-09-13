@@ -87,6 +87,7 @@
             'src/controls/progress.js',
             'src/controls/lazyLayer.js',
             'src/controls/shyLayer.js',
+            'src/controls/skyDialog.js',
             'src/controls/lazyMenu.js',
             'src/controls/markLayer.js',
             'src/controls/strokeLabel.js',

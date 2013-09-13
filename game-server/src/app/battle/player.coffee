@@ -48,8 +48,6 @@ class Player extends Module
     @setAttackCount()
     super
 
-    console.log 'after init', @
-
   attack: (callback) ->
     _hero = @currentHero()
     if _hero is null or _hero.death()

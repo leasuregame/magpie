@@ -157,8 +157,12 @@ Handler::luckyCard = (msg, session, next) ->
     player.save()
     next(null, {
       code: 200, 
-      msg: {card: cardEnt.toJson(), consume: consumeVal, hasFragment: fragment}
-      })
+      msg: {
+        card: cardEnt.toJson(), 
+        consume: consumeVal, 
+        hasFragment: fragment
+      }
+    })
 
 Handler::skillUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId

@@ -43,14 +43,15 @@ describe("Area Server", function() {
 
 			var checkCard = function(card, min_star, max_star) {
 				console.log('star: ', card.star);
-				expect(card.star).toBeLessThan(max_star);
-				expect(card.star).toBeGreaterThan(min_star);
+				//expect(card.star).toBeLessThan(max_star);
+				//expect(card.star).toBeGreaterThan(min_star);
 
-				expect(card.star % 5).toEqual(card.tableId % 5);
-
+				//expect(card.star % 5).toEqual(card.tableId % 5);
+				var card_star = card.tableId % 5;
+				if (card_star == 0) card_star = 5;
 				var ps_names = ['crit', 'dodge', 'atk_improve', 'hp_improve', 'dmg_reduce'];
-				if (card.star >= 3) {
-					expect(card.passiveSkills.length).toEqual(card.star - 2);
+				if (card_star >= 3) {
+					expect(card.passiveSkills.length).toEqual(card_star - 2);
 					for (var i = 0; i < card.passiveSkills.length; i++) {
 						var ps = card.passiveSkills[i];
 						expect(ps.cardId).toEqual(card.id);
@@ -77,75 +78,92 @@ describe("Area Server", function() {
 						});
 					});
 
-					var test = function(test_name, type) {
-						it(test_name, function() {
-							request('area.trainHandler.luckyCard', {
-								type: type,
-								level: level
-							}, function(data) {
-								console.log(name, test_name, data);
-								expect(data.code).toEqual(200);
-								expect(data.msg).hasProperties([
-									'card',
-									'consume',
-									'hasFragment'
-								]);
+					var doIt = function(type) {
+						request('area.trainHandler.luckyCard', {
+							type: type,
+							level: level
+						}, function(data) {
+							console.log(name, test_name, data);
+							expect(data.code).toEqual(200);
+							expect(data.msg).hasProperties([
+								'card',
+								'consume',
+								'hasFragment'
+							]);
 
-								var card = data.msg.card;
-								var scope = CARD_SCOPE[level];
-								checkCard(card, scope.from, scope.to);
+							var card = data.msg.card;
+							var scope = CARD_SCOPE[level];
+							checkCard(card, scope.from, scope.to);
 
-								doAjax('/card/' + card.id, {}, function(res) {
-									expect(res.data).toEqual({
+							doAjax('/card/' + card.id, {}, function(res) {
+								expect(_.pick(res.data,
+									'id', 'tableId', 'lv', 'exp', 'skillLv', 'skillPoint', 'elixirHp', 'elixirAtk'
+								))
+									.toEqual({
 										id: card.id,
-										createTime: card.createTime,
-										playerId: card.playerId,
 										tableId: card.tableId,
-										star: card.star,
 										lv: card.lv,
 										exp: card.exp,
 										skillLv: card.skillLv,
 										skillPoint: card.skillPoint,
-										elixir: card.elixir,
-										hpAddition: card.hpAddition,
-										atkAddition: card.atkAddition
+										elixirHp: card.elixirHp,
+										elixirAtk: card.elixirAtk,
+									});
+							});
+
+							card.passiveSkills.forEach(function(ps) {
+								doAjax('/passiveSkill/' + ps.id, {}, function(res) {
+									expect(res.data).toEqual({
+										id: ps.id,
+										createTime: ps.createTime,
+										cardId: ps.cardId,
+										name: ps.name,
+										value: ps.value
 									});
 								});
+							});
 
-								card.passiveSkills.forEach(function(ps) {
-									doAjax('/passiveSkill/' + ps.id, {}, function(res) {
-										expect(res.data).toEqual({
-											id: ps.id,
-											createTime: ps.createTime,
-											cardId: ps.cardId,
-											name: ps.name,
-											value: ps.value
-										});
-									});
-								});
+							doAjax('/player/' + arthur.playerId, {}, function(res) {
+								if (type == LOTTERY_TYPE.GOLD) {
+									expect(res.data.gold).toEqual(before_gold - data.msg.consume);
+								} else {
+									expect(res.data.energy).toEqual(before_energy - data.msg.consume);
+								}
 
-								doAjax('/player/' + arthur.playerId, {}, function(res) {
-									if (type == LOTTERY_TYPE.GOLD) {
-										expect(res.data.gold).toEqual(before_gold - data.msg.consume);
-									} else {
-										expect(res.data.energy).toEqual(before_energy - data.msg.consume);
-									}
-
-									if (data.msg.hasFragment) {
-										expect(res.data.fragments).toEqual(before_fragments + 1);
-									} else {
-										expect(res.data.fragments).toEqual(before_fragments);
-									}
-
-								});
+								if (data.msg.hasFragment) {
+									expect(res.data.fragments).toEqual(before_fragments + 1);
+								} else {
+									expect(res.data.fragments).toEqual(before_fragments);
+								}
 
 							});
+
 						});
 					};
 
-					test("元宝抽卡 >> should can be get a lucky card", LOTTERY_TYPE.GOLD);
-					test("活力值抽卡 >> should can be get a lucky card", LOTTERY_TYPE.ENERGY);
+					var test = function(test_name, type) {
+						it(test_name, function() {
+							doIt(type);
+						});
+					};
 
+					var test100times = function(test_name, type) {
+
+						for (var i = 0; i < 100; i++) {
+							(function(i) {
+								it(test_name + ' >> gold, 100 times, time ' + i, function() {
+									doIt(type);
+								});
+							})(i);
+
+						}
+
+					};
+
+					test("元宝抽卡 >> should can be get a lucky card", LOTTERY_TYPE.GOLD);
+					test100times('元宝抽卡', LOTTERY_TYPE.GOLD);
+					test("活力值抽卡 >> should can be get a lucky card", LOTTERY_TYPE.ENERGY);
+					test100times('活力值抽卡', LOTTERY_TYPE.ENERGY);
 				});
 			};
 

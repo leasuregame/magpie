@@ -16,7 +16,9 @@ class SpecialProperty
     !!_.findWhere @_attrs, {name: name}
 
   get: (name) ->
-    (_.findWhere @_attrs, {name: name})?['value']
+    _.where(@_attrs, {name: name})
+    .map((i) -> i.value)
+    .reduce(((x, y) -> x+y), 0)
 
   isCrit: ->
     @_hit('crit')

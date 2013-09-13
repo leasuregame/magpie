@@ -17,9 +17,7 @@ Handler::attack = (msg, session, next)->
     #console.log 'players for fight: ', err, results
     p_data = results[playerId]
     attacker = new Player(p_data)
-    console.log 'before set line up'
     attacker.setLineUp p_data.get('lineUp') #or random_liveup(attacker.heros) #
-    console.log 'after set line up'
     t_data = results[targetId]
     defender = new Player(t_data)
     defender.setLineUp t_data.get('lineUp') #or random_liveup(defender.heros) #

@@ -35,7 +35,6 @@ class Service
 		if not record 
 			return cb(null, Code.MESSAGE.FA_USER_NOT_ONLINE)
 		console.log 'push message by playerId:', pid, msg, record
-		console.log @app.get('channelService').getChannel(CHANNEL_NAME).getMembers()
 		@app.get('channelService').pushMessageByUids(msg.route, msg, [{uid: record.uid, sid: record.sid}], cb)
 
 	pushMessage: (msg, cb) ->

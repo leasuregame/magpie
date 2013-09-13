@@ -143,9 +143,11 @@ describe("Connector Server", function() {
                 areaId: 1,
                 name: 'player1',
                 power: '',
-                lv: 0,
-                exp: 0,
+                lv: 1,
                 vip: 0,
+                vipBox: '',
+                cash: 0,
+                exp: 0,
                 money: 0,
                 gold: 0,
                 lineUp: {},
@@ -157,13 +159,14 @@ describe("Connector Server", function() {
                 },
                 dailyGift: {},
                 skillPoint: 0,
-                elixir: 0,
                 energy: 0,
+                elixir: 0,
                 spiritor: '',
                 spiritPool: {},
                 cards: [],
                 rank: {},
-                friends: []
+                friends: [],
+                signIn: {}
               });
             });
           });

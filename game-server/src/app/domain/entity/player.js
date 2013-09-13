@@ -41,8 +41,11 @@ var NOW = function() {
 var addEvents = function(player) {
     // 经验值改变，判断是否升级
     player.on('exp.change', function(exp) {
+        if (player.lv <= 0) {
+            return;
+        }
+
         var upgradeInfo = table.getTableItem('player_upgrade', player.lv);
-        console.log(upgradeInfo);
         if (exp >= upgradeInfo.exp) {
             player.increase('lv');
             player.set('exp', exp - upgradeInfo.exp);
@@ -65,10 +68,10 @@ var addEvents = function(player) {
     });
 
     player.on('pass.change', function(pass) {
-        if (typeof pass == 'string') {
+        if (typeof pass == 'string' && /^[\{\[].*[\]\}]$/.test(pass)) {
             pass = JSON.parse(pass);
         }
-        achieve.passTo(player, pass.layer);
+        achieve.passTo(player, pass.layer || 0);
     });
 
     player.on('elixir.increase', function(elixir) {
@@ -613,7 +616,6 @@ var Player = (function(_super) {
                 days += 1;
             }
         }
-        console.log('sidn days: ', days);
         return days;
     };
 
@@ -767,7 +769,6 @@ var recountVipPrivilege = function(player, oldVip) {
     var sp = utility.deepCopy(player.spiritPool);
     sp.collectCount += curVipInfo.spirit_collect_count - oldVipInfo.spirit_collect_count;
     player.spiritPool = sp;
-    console.log(sp);
     player.save();
 };
 

@@ -44,7 +44,7 @@ describe("Area Server", function() {
 								id: 100,
 								name: 'Attacker',
 								lv: 40,
-								ability: 109800
+								ability: 111283
 							}
 						});
 					});
@@ -107,103 +107,9 @@ describe("Area Server", function() {
 
 				it('should can return message list for current login user', function() {
 					request('area.messageHandler.messageList', {}, function(data) {
-						expect(data).toEqual({
-							code: 200,
-							msg: {
-								friend: [{
-										id: 4,
-										msgId: null,
-										sender: null,
-										receiver: 100,
-										type: 1,
-										status: 0,
-										options: '',
-										content: '',
-										createTime: 1378887742490
-									}, {
-										id: 3,
-										msgId: null,
-										sender: null,
-										receiver: 100,
-										type: 1,
-										status: 0,
-										options: '',
-										content: '',
-										createTime: 1378887742478
-									}, {
-										id: 2,
-										msgId: null,
-										sender: null,
-										receiver: 100,
-										type: 1,
-										status: 0,
-										options: '',
-										content: '',
-										createTime: 1378887742466
-									},
-									[{
-										id: 5,
-										sender: null,
-										receiver: 100,
-										type: 2,
-										status: 0,
-										text: '',
-										content: 'undefined 给你发了一条留言',
-										createTime: 1378887742502
-									}, {
-										id: 6,
-										sender: null,
-										receiver: 100,
-										type: 2,
-										status: 0,
-										text: '',
-										content: 'undefined 给你发了一条留言',
-										createTime: 1378887742513
-									}, {
-										id: 7,
-										sender: null,
-										receiver: 100,
-										type: 2,
-										status: 0,
-										text: '',
-										content: 'undefined 给你发了一条留言',
-										createTime: 1378887742525
-									}]
-								],
-								battle: [{
-									id: 9,
-									msgId: null,
-									sender: null,
-									receiver: 100,
-									type: 3,
-									status: 0,
-									options: '',
-									content: '',
-									createTime: 1378887742548
-								}, {
-									id: 8,
-									msgId: null,
-									sender: null,
-									receiver: 100,
-									type: 3,
-									status: 0,
-									options: '',
-									content: '',
-									createTime: 1378887742536
-								}],
-								system: [{
-									id: 10,
-									msgId: null,
-									sender: null,
-									receiver: 100,
-									type: 4,
-									status: 0,
-									options: '',
-									content: '',
-									createTime: 1378887742561
-								}]
-							}
-						});
+						expect(data.friend.length).toEqual(6);
+						expect(data.battle.length).toEqual(2);
+						expect(data.system.length).toEqual(1);
 					});
 				});
 			});

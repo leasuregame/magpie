@@ -143,7 +143,6 @@ var updateAchievement = function(player, method, got) {
 				got: got
 			}
 		});
-	console.log('update achievement: (fuck)', ach);
 	// reset achievement of player
 	player.achievement = ach;
 };

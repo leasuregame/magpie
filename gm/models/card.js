@@ -24,7 +24,8 @@ Card.update = function(data,cb){
         data:{
             lv:data.lv,
             skillLv:data.skillLv,
-            elixir:data.elixir,
+            elixirHp:data.elixirHp,
+            elixirAtk:data.elixirAtk,
             star:data.star,
             tableId:data.tableId
         }
@@ -108,7 +109,8 @@ Card.create = function(card,cb){
         data:{
             lv:card.lv,
             skillLv:card.skillLv,
-            elixir:card.elixir,
+            elixirHp:card.elixirHp,
+            elixirAtk:card.elixirAtk,
             tableId:card.tableId,
             playerId:card.playerId,
             star:card.star,

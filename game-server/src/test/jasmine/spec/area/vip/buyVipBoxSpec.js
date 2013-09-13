@@ -42,22 +42,16 @@ describe("Area Server", function() {
 
 				describe("当玩家元宝不足时", function() {
 					beforeEach(function() {
-						loginWith('poorman', '1', 1);
+						loginWith('poorVip', '1', 1);
 					});
 
 					it("不能购买vip礼包", function() {
-						request('area.vipHandler.buyVip', {
-							id: 1
-						}, function(data) {
-							expect(data.code).toEqual(200);
-						});
-
 						request('area.vipHandler.buyVipBox', {
 							boxId: 1
 						}, function(data) {
 							expect(data).toEqual({
 								code: 501,
-								msg: '元宝不足'
+								msg: '元宝不足'	
 							});
 						});
 					});

@@ -14,6 +14,8 @@ var Entity = require('./entity');
 var utility = require('../../common/utility');
 var _ = require('underscore');
 
+RANKINGS = [1, 10, 50, 100, 500, 1000, 5000]
+
 var Rank = (function(_super) {
 	utility.extends(Rank, _super);
 
@@ -24,13 +26,12 @@ var Rank = (function(_super) {
 	Rank.FIELDS = ['id', 'createTime', 'playerId', 'ranking', 'counts'];
 	Rank.DEFAULT_VALUES = {
         ranking: 0,
-        counts: {
-            challenge: 0,
-            win: 0,
-            lose: 0,
-            winningStreak: 0,
-            recentChallenger: []
-        }
+        challengeCount: 0,
+        winCount: 0,
+        loseCount: 0,
+        winningStreak: 0,
+        recentChallenger: [],
+        gotRewards: []
     };
 
 	Rank.prototype.toJson = function() {
@@ -38,50 +39,50 @@ var Rank = (function(_super) {
 			id: this.id,
 			playerId: this.playerId,
 			ranking: this.ranking,
-			counts: this.counts
+			counts: {
+				challenge: this.challengeCount,
+				win: this.winCount,
+				lose: this.loseCount,
+				winningStreak: this.winningStreak,
+				recentChallenger: this.recentChallenger
+			},
+			gotRewards: this.gotRewards
 		};
 	};
 
 	Rank.prototype.pushRecent = function(id) {
-		this._modifyCount('recentChallenger', function(counts, name) {
-			var recentChallenger = counts[name];
-			if (recentChallenger.length >= 3) {
-				recentChallenger.shift();
-			}
-
-			if (recentChallenger.indexOf(id) < 0) {
-				recentChallenger.push(id);
-			}
-		});
+		var rc = _.clone(this.recentChallenger);	
+		if (rc.length >= 3) {
+			rc = rc.slice(-3);
+			rc.shift();
+		}
+		if (rc.indexOf(id) < 0) {
+			rc.push(id);
+		}
+		// 更新最近挑战的玩家信息
+		this.recentChallenger = rc;
 	};
 
 	Rank.prototype.incCount = function(name) {
-		this._modifyCount(name, function(counts, name) {
-			counts[name]++;
-		});
+		this.increase(name);
 	};
 
 	Rank.prototype.resetCount = function(name) {
-		this._modifyCount(name, function(counts, name) {
-			counts[name] = 0;
-		});
+		if (['winCount', 'loseCount', 'winningStreak', 'challengeCount'].indexOf(name) > 0) {
+			this.set(name, 0);
+		}		
 	};
 
-	Rank.prototype._modifyCount = function(name, fn) {
-		if (typeof this.counts !== 'object') {
-			this.counts = {
-				challenge: 0,
-				win: 0,
-				lose: 0,
-				winningStreak: 0,
-		        recentChallenger: []
-			};
+	Rank.prototype.getRankingReward = function() {
+		if (this.canGetRankingReward()) {
+			var rew = _.clone(this.gotRewards);
+			rew.push(ranking);
+			this.gotRewards = rew;
 		}
-		var counts = _.clone(this.counts);
-		if (counts.hasOwnProperty(name)) {
-			fn(counts, name);
-		}
-		this.set('counts', counts);
+	};
+
+	Rank.prototype.canGetRankingReward = function() {
+		return RANKINGS.indexOf(this.ranking) > 0 && this.gotRewards.indexOf(ranking) < 0; 
 	};
 
 	return Rank;

@@ -155,7 +155,7 @@ var doAjax = function(url, params, cb) {
   }, "The ajax request should be completed", 60000);
 };
 
-var request = function(route, msg, cb) {
+var request = function(route, msg, cb, timeout) {
   var ok = false;
   runs(function() {
     pomelo.request(route, msg, function(data) {
@@ -166,7 +166,7 @@ var request = function(route, msg, cb) {
 
   waitsFor(function() {
     return ok;
-  });
+  }, 'Socket request should be completed', timeout || 5000);
 };
 
 var initPomelo = function() {

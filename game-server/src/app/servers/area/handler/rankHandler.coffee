@@ -72,23 +72,11 @@ Handler::challenge = (msg, session, next) ->
       @app.rpc.battle.fightRemote.pvp session, {playerId: playerId, targetId: targetId}, cb
 
     (bl, cb) =>
-      rankData = table.getTableItem 'rank', player.lv
-      _results = if bl.winner is 'own' then 'win' else 'lose'
-      
-      rewards = {
-        exp: rankData[_results + '_exp']
-        money: rankData[_results + '_money']
-        elixir: rankData[_results + '_elixir']
-      }
-
-      player.increase('exp', rewards.exp)
-      player.increase('money', rewards.money)
-
-      isWin = _results == 'win'
+      isWin =  bl.winner == 'winner'
       if isWin and isV587(bl)
         achieve.v587(player)
 
-      rankManager.exchangeRankings player, targetId, rankData, isWin, (err, res) ->
+      rankManager.exchangeRankings player, targetId, isWin, (err, res, rewards) ->
         if err and not res
           return cb(err)
         else

@@ -49,15 +49,24 @@ describe("Area Server", function() {
 						expect(data.code).toEqual(200);
 						expect(data.msg).hasProperties([
 							'pass',
-							'rewards'
+							'rewards',
+							'power',
+							'exp',
+							'lv'
 						]);
+						expect(data.msg.pass.layer).toEqual(24);
+						expect(data.msg.pass.mark.flter(
+							function(i) {return i == 1;}
+						).length).toEqual(23);
+
+						// 获得扫荡经验后，角色升级了，所以剩余的经验改变，等级变高
+						expect(data.msg.exp).toEqual(1247);
+						expect(data.msg.lv).toEqual(45);
 
 						doAjax('/player/' + arthur.playerId, {}, function(res) {
-							expect(data.msg.rewards).toEqual({
-								exp_obtain: res.data.exp - before_data.exp,
-								money_obtain: res.data.money - before_data.money,
-								gold_obtain: res.data.gold - before_data.gold
-							});
+							//expect(data.msg.rewards.exp_obtain).toEqual(res.data.exp - before_data.exp);
+							expect(data.msg.rewards.money_obtain).toEqual(res.data.money - before_data.money);
+							expect(data.msg.rewards.gold_obtain).toEqual(res.data.gold - before_data.gold);
 						});
 					});
 				});
@@ -86,7 +95,10 @@ describe("Area Server", function() {
 						expect(data.code).toEqual(200);
 						expect(_.keys(data.msg).sort()).toEqual([
 							'pass',
-							'rewards'
+							'rewards',
+							'power',
+							'exp',
+							'lv'
 						].sort());
 
 						doAjax('/player/' + papa.playerId, {}, function(res) {

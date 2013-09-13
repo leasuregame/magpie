@@ -85,6 +85,9 @@ Handler::challenge = (msg, session, next) ->
       player.increase('money', rewards.money)
 
       isWin = _results == 'win'
+      if isWin and isV587(bl)
+        achieve.v587(player)
+
       rankManager.exchangeRankings player, targetId, rankData, isWin, (err, res) ->
         if err and not res
           return cb(err)
@@ -96,7 +99,13 @@ Handler::challenge = (msg, session, next) ->
         return next(null, {code: err.code, msg: err.msg or err.message})
 
       bl.rewards = rewards
-      next(null, {code: 200, msg: {battleLog: bl, counts: player.rank?.counts}})
+      next(null, {code: 200, msg: {
+        battleLog: bl, 
+        counts: player.rank?.counts,
+        power: player.power,
+        lv: player.lv,
+        exp: player.exp
+      }})
 
       saveBattleLog(bl, playerName)
 
@@ -117,6 +126,11 @@ Handler::grantTitle = (msg, session, next) ->
 
     next null, {code: 200}
 
+
+isV587 = (bl) ->
+  ownCardCount = (_.values(bl.own.cards).filter (c) -> _.isObject(c)).length
+  enemyCardCount = (_.values(bl.enemy.cards).filter (c) -> _.isObject(c)).length
+  return ownCardCount is 1 and enemyCardCount is 5
 
 genRankings = (ranking) ->
   top10 = {}

@@ -58,7 +58,6 @@ var FriendDao = (function(_super) {
             options.friendId,
             options.playerId
         );
-        console.log(condition);
         FriendDao.delete({where: condition}, cb);            
     };
 

@@ -55,8 +55,10 @@ describe("Connector Server", function() {
                   value: 50
                 },
                 lv: 1,
-                exp: 0,
                 vip: 0,
+                vipBox: [],
+                cash: 0,
+                exp: 0,
                 money: 0,
                 gold: 0,
                 lineUp: {
@@ -100,7 +102,11 @@ describe("Connector Server", function() {
                   collectCount: 15
                 },
                 rank: {},
-                friends: []
+                friends: [],
+                signIn: {
+                  months: {},
+                  flag: 0
+                }
               }
             }
           });

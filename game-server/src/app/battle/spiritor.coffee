@@ -17,9 +17,7 @@ class Spiritor extends Module
     @rate = spirit.rate
 
   trigger: () ->
-    console.log @
     res = utility.hitRate @rate
-    console.log 'trigger: ', res
     res
 
   angry: (heros, cb) ->

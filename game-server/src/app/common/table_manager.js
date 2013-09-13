@@ -2,27 +2,25 @@ var _ = require("underscore");
 var fs = require("fs");
 var loadtable = require("./loadtable");
 var path = require('path');
+var util = require('./utility');
 
-DATA_DIR = path.join(__dirname, '../../data/');
+DATA_DIR = path.join(__dirname, '..', '..', 'data');
 
 module.exports = {
   _tables: {}, //下划线表示不应该直接访问
   //获取数据表格
 
   cacheTables: function() {
-    if (fs.existsSync(DATA_DIR + 'table.json')){
-      this.loadTableData(JSON.parse(fs.readFileSync(DATA_DIR + 'table.json')));
+    var self = this;
+    var jsontable = path.join(DATA_DIR, 'table.json');
+    if (fs.existsSync(jsontable)){
+      this.loadTableData(JSON.parse(fs.readFileSync(jsontable)));
     } else {
-      data = this._readTables(
-        DATA_DIR + 'skills.xml',
-        DATA_DIR + 'cards.xml',
-        DATA_DIR + 'tasks.xml',
-        DATA_DIR + 'rank.xml',
-        DATA_DIR + 'lottery.xml',
-        DATA_DIR + 'spirit.xml',
-        DATA_DIR + 'vip.xml',
-        DATA_DIR + 'achievement.xml'
-      );
+      var files = util.walkSync(DATA_DIR).filter(function(file) {
+        return /.xml$/.test(file);
+      });
+      
+      var data = this._readTables.apply(this, files);
       this.loadTableData(data.exports);
     }
   },

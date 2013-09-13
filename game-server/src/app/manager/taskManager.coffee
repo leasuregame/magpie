@@ -188,13 +188,12 @@ class Manager
 
     # 判断是否升级
     if (player.exp + taskData.exp_obtain) >= exp_to_upgrade.exp
-      player.set('exp', 0)
-      player.increase('lv')
-      player.resumePower(MAX_POWER) 
       data.upgrade = true
-    else
-      player.increase('exp', taskData.exp_obtain)
-      player.consumePower(taskData.power_consume)
+
+    ### consume power first, then add exp
+    because exp change where check if upgrade player level ###
+    player.consumePower(taskData.power_consume)
+    player.increase('exp', taskData.exp_obtain)
 
     cb(null, data)
 

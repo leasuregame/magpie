@@ -1,6 +1,7 @@
 var table = require('../manager/table');
 var logger = require('pomelo-logger').getLogger(__filename);
 var utility = require('../common/utility');
+var messageService = require('pomelo').app.get('messageService');
 var _ = require('underscore');
 
 Achievement = function() {}
@@ -21,46 +22,94 @@ Achievement.winningStreak = function(player, ranking) {
 	checkIsReached(player, 'winningStreak', ranking);
 };
 
-Achievement.rankingTo = function(player, rk) {
-	checkIsReached(player, 'rankingTo', rk)
+Achievement.rankingToOne = function(player) {
+	checkIsReached(player, 'rankingToOne', 1)
 };
 
 Achievement.friends = function(player, count) {
 	checkIsReached(player, 'friends', count);
 };
 
+Achievement.elixirTo = function(player, eli) {
+	checkIsReached(player, 'elixirTo', eli);
+};
+
+Achievement.energyTo = function(player, energy) {
+	checkIsReached(player, 'energyTo', energy);
+};
+
+Achievement.powerConsume = function(player, power) {
+	checkIsReached_alpha(player, 'powerConsume', power);
+};
+
+Achievement.moneyConsume = function(player, money) {
+	checkIsReached_alpha(player, 'moneyConsume', money);
+};
+
+Achievement.goldConsume = function(player, gold) {
+	checkIsReached_alpha(player, 'goldConsume', gold);
+};
+
 Achievement.gaveBless = function(player) {
-	checkIsReached_alpha(player, 'gaveBless');
+	checkIsReached_alpha(player, 'gaveBless', 1);
 };
 
 Achievement.receivedBless = function(player) {
-	checkIsReached_alpha(player, 'receivedBless');
-}
+	checkIsReached_alpha(player, 'receivedBless', 1);
+};
 
-var checkIsReached_alpha = function(player, method) {
-	var need = 1;
+Achievement.vip = function(player) {
+	checkIsReached_alpha(player, 'vip', 1);
+};
+
+Achievement.star5card = function(player) {
+	checkIsReached_alpha(player, 'star5card', 1);
+};
+
+Achievement.star5cardFullLevel = function(player) {
+	checkIsReached_alpha(player, 'star5cardLevelTo', 1);
+};
+
+Achievement.psTo10 = function(player) {
+	checkIsReached_alpha(player, 'psTo10', 1);
+};
+
+Achievement.luckyCardCount = function(player) {
+	checkIsReached_alpha(player, 'luckyCardCount', 1);
+};
+
+Achievement.highLuckyCardCount = function(player) {
+	checkIsReached_alpha(player, 'highLuckyCardCount', 1);
+};
+
+Achievement.soLucky = function(player) {
+	checkIsReached_alpha(player, 'soLucky', 1);
+};
+
+Achievement.v587 = function(player) {
+	checkIsReached_alpha(player, 'v587', 1);
+};
+
+var checkIsReached_alpha = function(player, method, incVal) {
+	var need = incVal;
 	var items = _.where(_.values(player.achievement), {
 		method: method
-	});	
+	});
 	if (!_.isEmpty(items)) {
-		need = items[0].got + 1;
+		need = items[0].got + incVal;
 	}
 	checkIsReached(player, method, need);
 };
 
 var checkIsReached = function(player, method, need) {
-	var id = reachedAchievementId(method, need);
-	if (id) {
-		reachAchievement(player, id);
-	}
-	updateAchievement(player, method, need);
-};
-
-var getAchievements = function(player, method) {
-	var ach = utility.deepCopy(player.achievement);
-	return _.where(_.values(ach), {
-		method: method
+	var achs = reachedAchievements(method, need);
+	achs.forEach(function(ach) {
+		if ( (typeof player.achievement[ach.id] == 'undefined') || 
+			(typeof player.achievement[ach.id] != 'undefined' && !player.achievement[ach.id].isAchieve) ) {
+			reachAchievement(player, ach.id);
+		}
 	});
+	updateAchievement(player, method, need);
 };
 
 var updateAchievement = function(player, method, got) {
@@ -74,49 +123,47 @@ var updateAchievement = function(player, method, got) {
 			if (!i.isAchieve) {
 				i.got = got;
 			}
-		})
-	} else {
-		table.getTable('achievement')
-			.filter(function(id, row) {
-				return row.method == method;
-			})
-			.forEach(function(r) {
-				if (_.isUndefined(ach[r.id])) {
-					ach[r.id] = {
-						method: r.method,
-						isAchieve: false,
-						got: got,
-						need: r.need
-					}
-				}
-			});
+		});
 	}
+	table.getTable('achievement')
+		.filter(function(id, row) {
+			return row.method == method && !_.has(ach, id);
+		})
+		.forEach(function(r) {
+			ach[r.id] = {
+				method: r.method,
+				isAchieve: false,
+				isTake: false,
+				got: got
+			}
+		});
 	// reset achievement of player
 	player.achievement = ach;
 };
 
-var reachedAchievementId = function(methodName, need) {
-	var rows = table.getTable('achievement').filter(function(id, row) {
-		return row.method == methodName;
+var reachedAchievements = function(methodName, need) {
+	return table.getTable('achievement').filter(function(id, row) {
+		return row.method == methodName && need >= row.need;
 	});
-
-	var reached = _.findWhere(rows, {
-		need: need
-	});
-	return !_.isUndefined(reached) ? reached.id : null;
 };
 
 var reachAchievement = function(player, id) {
-	data = table.getTableItem('achievement', id);
-	if (data) {
-		player.increase('gold', data.gold);
-		player.increase('energy', data.energy);
-		player.achieve(id);
-		player.save();
-	} else {
-		logger.warn('can not find achievement data by id ' + id);
-	}
+	player.achieve(id);
+	player.save();
+	sendMessage(player, id);
+};
 
+var sendMessage = function(player, achId) {
+	if (messageService != null && typeof(messageService.pushByPid) != 'undefined') {
+		messageService.pushByPid(player.id, {
+			route: 'onAchieve',
+			msg: {
+				achieveId: achId
+			}
+		}, function(err, res) {
+			logger.info('push message(route: onAchieve):', err, res);
+		});
+	}
 };
 
 module.exports = Achievement;

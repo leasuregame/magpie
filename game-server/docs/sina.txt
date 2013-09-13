@@ -11,6 +11,12 @@ ssh -l root -p 8022 124.238.236.33
 http://124.238.236.33/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/Resources/
 
 cd /dev/shm/magpie
+更新代码：
+git pull origin master
+账号：
+wuzhanghai@leasuregame.com
+密码：
+wuzhanghai34
 
 start nginx 
 /usr/local/nginx/sbin/nginx
@@ -48,4 +54,6 @@ node ./bin/dao.js all production
 make build
 ./node_modules/.bin/pomelo start production --daemon
 
-cat ./logs/node-log-logic-server-1.log
+cd ../gm && make runserver2
+
+cat ./logs/node-log-area-server-1.log

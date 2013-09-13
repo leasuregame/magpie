@@ -1,68 +1,115 @@
+<!DOCTYPE html>
 <%- include header%>
 
-     <form class="form-inline span10" role="form" >
-         <fieldset>
-             <legend>模拟战斗</legend>
-             <div class="form-inline span6">
-                 <legend>攻:元神等级
-                    <input type="text" class="input-mmini" id="attackSpiritorLv">
-                 </legend>
-                 <table class = "table table-bordered table-hover table-responsive" id = "attackCards">
-                    <thead id = "th">
-                        <th>序号</th><th>卡牌等级</th><th>技能等级</th><th>配置表ID</th><th colspan="2">被动技能1</th><th colspan="2">被动技能2</th><th colspan="2">被动技能3</th>
-                    </thead>
-                    <tbody>
+<form class="form-inline span10" role="form">
+    <style>
+        .table th {
+            text-align: center;
+            vertical-align: middle;
+            border-top: 1px solid #dddddd;
+        }
 
-                    </tbody>
-                 </table>
+        .table td {
+            height: 32px;
+            padding: 3px;
+            line-height: 10px;
+            text-align: center;
+            vertical-align: middle;
+            border-top: 1px solid #dddddd;
+        }
+    </style>
+    <fieldset>
+        <legend>模拟战斗</legend>
+        <div class="form-inline span6">
 
-                 <legend>守:元神等级
-                    <input type="text" class="input-mmini" id="defendSpiritorLv">
-                 </legend>
-                 <table class = "table table-bordered table-hover" id = "defendCards">
-                    <thead id = "th">
-                        <th>序号</th><th>卡牌等级</th><th>技能等级</th><th>配置表ID</th><th colspan="2">被动技能1</th><th colspan="2">被动技能2</th><th colspan="2">被动技能3</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                 </table>
-                 模拟战斗场数:<input type="text" class="input-mini" id="times">
-                 <button type="button" class="btn btn-primary" id = "btnBattle" >开始战斗</button>
-             </div>
-             <div class="form-inline span5">
-                 <legend id = "tip">战报
+            <legend>攻:元神等级
+                <input type="text" class="input-mmini" id="attackSpiritorLv">
+            </legend>
+            <table class="table table-bordered table-hover table-responsive" id="attackCards" cellpadding="5">
+                <thead id="th">
+                <th>序号</th>
+                <th>卡牌等级</th>
+                <th>技能等级</th>
+                <th>配置表ID</th>
+                <th colspan="2">被动技能1</th>
+                <th colspan="2">被动技能2</th>
+                <th colspan="2">被动技能3</th>
+                </thead>
+                <tbody>
 
-                 </legend>
-                 <div class="form-inline">
-                    攻胜：<input type="text" class="input-mini" id="attackWin" disabled = "disabled">
-                    胜率:<input type="text" class="input-mini" id="attackRate" disabled = "disabled">
-                    防胜：<input type="text" class="input-mini" id="defendWin" disabled = "disabled">
-                    胜率:<input type="text" class="input-mini" id="defendRate" disabled = "disabled">
-                 </div>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-inline span5">
+            <legend>攻</legend>
+            <table class="table table-bordered table-hover table-responsive" id="attackReport">
+                <thead id="th">
+                <th>序号</th>
+                <th>暴击次数</th>
+                <th>暴击率</th>
+                <th>闪避次数</th>
+                <th>闪避率</th>
+                <th>技能触发次数</th>
+                <th>技能触发率</th>
+                </thead>
+                <tbody>
 
-                 <legend>攻</legend>
-                 <table class = "table table-bordered table-hover table-responsive" id = "attackReport">
-                    <thead id = "th">
-                        <th>序号</th><th>暴击次数</th><th>暴击率</th><th>闪避次数</th><th>闪避率</th><th>技能触发次数</th><th>技能触发率</th><th>平均回合数</th>
-                    </thead>
-                    <tbody>
+                </tbody>
+            </table>
 
-                    </tbody>
-                 </table>
 
-                 <legend>守</legend>
-                 <table class = "table table-bordered table-hover" id = "defendReport">
-                        <thead id = "th">
-                            <th>序号</th><th>暴击次数</th><th>暴击率</th><th>闪避次数</th><th>闪避率</th><th>技能触发次数</th><th>技能触发率</th><th>平均回合数</th>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                 </table>
+        </div>
 
-             </div>
-          </fieldset>
-     </from>
+        <div class="form-inline span6">
+            <legend>守:元神等级
+                <input type="text" class="input-mmini" id="defendSpiritorLv">
+            </legend>
+            <table class="table table-bordered table-hover" id="defendCards">
+                <thead id="th">
+                <th>序号</th>
+                <th>卡牌等级</th>
+                <th>技能等级</th>
+                <th>配置表ID</th>
+                <th colspan="2">被动技能1</th>
+                <th colspan="2">被动技能2</th>
+                <th colspan="2">被动技能3</th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            模拟战斗场数:<input type="text" class="input-mini" id="times">
+            <button type="button" class="btn btn-primary" id="btnBattle">开始战斗</button>
+        </div>
+        <div class="form-inline span5">
 
-     <script src="/javascripts/simBattle.js"></script>
+            <legend>守</legend>
+            <table class="table table-bordered table-hover" id="defendReport">
+                <thead id="th">
+                <th>序号</th>
+                <th>暴击次数</th>
+                <th>暴击率</th>
+                <th>闪避次数</th>
+                <th>闪避率</th>
+                <th>技能触发次数</th>
+                <th>技能触发率</th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div>
 
-<%- include footer%>
+                攻胜：<input type="text" class="input-mini" id="attackWin" disabled="disabled">
+                胜率:<input type="text" class="input-mini" id="attackRate" disabled="disabled">
+                防胜：<input type="text" class="input-mini" id="defendWin" disabled="disabled">
+                胜率:<input type="text" class="input-mini" id="defendRate" disabled="disabled">
+                平均回合数：<input type="text" class="input-mini" id="aveRound" disabled="disabled">
+
+            </div>
+
+        </div>
+    </fieldset>
+    </from>
+
+    <script src="/javascripts/simBattle.js"></script>
+
+    <%- include footer%>

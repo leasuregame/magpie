@@ -7,19 +7,21 @@
  */
 
 $(document).ready(function () {
-    for(var i = 0;i < 5;i++)
+    for(var i = 0;i < 6;i++)
         $("#attackCards").append(setInnerHtml(i));
-    for(var i = 5;i < 10;i++)
+    for(var i = 6;i < 12;i++)
         $("#defendCards").append(setInnerHtml(i));
     $("#btnBattle").click(function(){
-        $("#tip").html("战报：正在模拟中，请稍等……");
+       // $("#tip").html("战报：正在模拟中，请稍等……");
         submitBattle();
     });
+
+  //  $("table td").css("height","32px");
 
 });
 
 function setInnerHtml(id) {
-    var inner = "<tr><td>" + (id % 5 + 1) + "</td>";
+    var inner = "<tr><td>" + (id % 6 + 1) + "</td>";
     inner += '<td><input type="text" class="input-mmini" id="cardLv' + id + '"></td>'
         +'<td><input type="text" class="input-mmini" id="skillLv' + id + '"></td>'
         + '<td><input type="text" class="input-mmini" id="tableId' + id + '"></td>'
@@ -71,10 +73,16 @@ function submitBattle() {
     };
 
     var cards = [];
-    for(var i = 0;i < 5;i++) {
+    var spirit = false;
+    for(var i = 0;i < 6;i++) {
         var card = getCard(i);
-        if(card == null)
+        if(card == null) {
+            if(!spirit) {
+                attack.lineUp += '' + (i < 3 ? 0 : 1) + i % 3 +':-1' + ',';
+                spirit = true;
+            }
             continue;
+        }
         cards.push(card);
         attack.lineUp += '' + (i < 3 ? 0 : 1) + i % 3 +':' + i + ',';
     }
@@ -82,19 +90,25 @@ function submitBattle() {
     attack.cards = cards;
 
     cards = [];
-    for(var i = 5;i < 10;i++) {
+    spirit = false;
+    for(var i = 6;i < 12;i++) {
         var card = getCard(i);
-        if(card == null)
+        if(card == null) {
+            if(!spirit) {
+                defend.lineUp += '' + (i < 3 ? 0 : 1) + i % 3 +':-1' + ',';
+                spirit = true;
+            }
             continue;
+        }
         cards.push(card);
-        var ii = i - 5;
+        var ii = i - 6;
         defend.lineUp += '' + (ii < 3 ? 0 : 1) + ii % 3 +':' + i + ',';
     }
     defend.lineUp = defend.lineUp.substring(0,defend.lineUp.length - 1);
     defend.cards = cards;
 
-   // console.log(attack);
-   // console.log(defend);
+    console.log(attack);
+    console.log(defend);
 
     var times = parseInt($("#times").val());
 
@@ -123,7 +137,7 @@ function getCard(id){
     var skillName3 = $("#skillName3" + id).val();
     var skillValue3 = $("#skillValue3" + id).val();
 
-    if(lv == '' && skillLv == '' && tableId == '') {
+    if(lv == '' || skillLv == '' || tableId == '') {
         return null;
     }
 
@@ -175,24 +189,34 @@ function setReport(report) {
 
     $("#defendWin").val(report.defend.win);
     $("#defendRate").val(report.defend.rate);
+
+    $("#aveRound").val(report.ave_round);
+
     $("#attackReport tbody tr").remove();
     $("#defendReport tbody tr").remove();
     var inner = "";
-    for(var i = 1;i < report.attack.cards.length;i++) {
+    for(var i = 1;i <= 6;i++) {
         var card = report.attack.cards[i];
-        if(isNaN(card.crit_rate))
-            continue;
-        inner += "<tr><td>" + i + "</td><td>" + card.crit + "</td><td>" + card.crit_rate+ "</td><td>" + card.dodge + "</td><td>" + card.dodge_rate + "</td><td>" + card.skill + "</td><td>" + card.skill_rate + "</td><tr>"
+       // if(isNaN(card.crit_rate))
+        //    continue;
+        if(card.hit == 0 && card.hurt == 0)
+            inner += "<tr><td>" + (i) + "</td><td>" + "</td><td>" + "</td><td>" +"</td><td>" + "</td><td>" +"</td><td>" +  "</td><tr>";
+        else
+            inner += "<tr><td>" + (i)+ "</td><td>" + card.crit + "</td><td>" + card.crit_rate+ "</td><td>" + card.dodge + "</td><td>" + card.dodge_rate + "</td><td>" + card.skill + "</td><td>" + card.skill_rate + "</td><tr>";
     }
 
     $("#attackReport").append(inner);
 
     var inner = "";
-    for(var i = 1;i < report.defend.cards.length;i++) {
+    for(var i = 1;i <= 6;i++) {
         var card = report.defend.cards[i];
-        if(isNaN(card.crit_rate))
-            continue;
-        inner += "<tr><td>" + i + "</td><td>" + card.crit + "</td><td>" + card.crit_rate + "</td><td>" + card.dodge + "</td><td>" + card.dodge_rate + "</td><td>" + card.skill + "</td><td>" + card.skill_rate + "</td><tr>"
+      //  if(isNaN(card.crit_rate))
+         //   continue;
+        if(card.hit == 0 && card.hurt == 0)
+            inner += "<tr><td>" + (i) + "</td><td>" + "</td><td>" + "</td><td>" +"</td><td>" + "</td><td>" +"</td><td>" +  "</td><tr>";
+        else
+            inner += "<tr><td>" + (i)+ "</td><td>" + card.crit + "</td><td>" + card.crit_rate+ "</td><td>" + card.dodge + "</td><td>" + card.dodge_rate + "</td><td>" + card.skill + "</td><td>" + card.skill_rate + "</td><tr>";
+
     }
 
     $("#defendReport").append(inner);

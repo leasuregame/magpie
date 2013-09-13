@@ -51,7 +51,7 @@ class Battle extends Base
   end: ->
     battleLog.setWinner( 'own' ) if @defender.death()
     battleLog.setWinner( 'enemy' ) if @attacker.death()
-
+    battleLog.set('round_num',@round.round_num - 1)
     log.info '    >>> 战斗结束 <<<    '
 
 class Round extends Base

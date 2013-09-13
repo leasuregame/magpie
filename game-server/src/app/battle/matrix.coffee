@@ -127,10 +127,10 @@ class Matrix
     @set(row, col, null)
     @
 
-  crossways_front: ->
+  crosswaysFront: ->
     @row(0)
 
-  crossways_back: ->
+  crosswaysBack: ->
     @row(1)
 
   lengthways: (colIndex) ->

@@ -11,6 +11,8 @@ var Battle = require('../models/battle');
 
 var simBattle = function (app) {
 
+    app.get('/simBattle',checkLogin);
+
     app.get('/simBattle', function (req, res) {
         res.render('simBattle',{
             user:req.session.user,
@@ -36,6 +38,14 @@ var simBattle = function (app) {
         //console.log(defend);
 
     });
+
+    function checkLogin(req, res, next){
+        if(!req.session.user){
+            req.flash('error','请先登录');
+            return res.redirect('/login');
+        }
+        next();
+    }
 
 };
 

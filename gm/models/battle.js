@@ -20,7 +20,9 @@ var report = {
         win:0,
         rate:0,
         cards:[]
-    }
+    },
+    round:0,
+    ave_round:0
 };
 
 
@@ -40,7 +42,7 @@ Battle.startBattle = function(attack,defend,times,cb) {
                 var attacker = Battle.clone(attack);
                 var defender = Battle.clone(defend);
                 var battleLog = new battle(attacker,defender);
-               // console.log(battleLog);
+              //  console.log(battleLog);
                 Battle.analyzeBattleLog(battleLog);
 
              }
@@ -50,19 +52,20 @@ Battle.startBattle = function(attack,defend,times,cb) {
           //  console.log("step3");
             for(var i = 0;i < report.attack.cards.length;i++){
                 var card = report.attack.cards[i];
-                card.crit_rate = (card.crit * 100/ card.hit).toFixed(4);
-                card.dodge_rate = (card.dodge * 100/ card.hurt).toFixed(4);
-                card.skill_rate = (card.skill * 100/ card.attack_times).toFixed(4)
+                card.crit_rate = (card.hit != 0) ? (card.crit * 100 / card.hit).toFixed(4) : (0.0000);
+                card.dodge_rate = (card.hurt != 0) ? (card.dodge * 100 / card.hurt).toFixed(4) : (0.0000);
+                card.skill_rate = (card.attack_times != 0) ? (card.skill * 100 / card.attack_times).toFixed(4) : (0.0000);
             }
             for(var i = 0;i < report.defend.cards.length;i++){
                 var card = report.defend.cards[i];
-                card.crit_rate = (card.crit * 100/ card.hit).toFixed(4);
-                card.dodge_rate = (card.dodge * 100/ card.hurt).toFixed(4);
-                card.skill_rate = (card.skill * 100/ card.attack_times).toFixed(4)
+                card.crit_rate = (card.hit != 0) ? (card.crit * 100 / card.hit).toFixed(4) : (0.0000);
+                card.dodge_rate = (card.hurt != 0) ? (card.dodge * 100 / card.hurt).toFixed(4) : (0.0000);
+                card.skill_rate = (card.attack_times != 0) ? (card.skill * 100 / card.attack_times).toFixed(4) : (0.0000);
             }
 
-            report.attack.rate = (report.attack.win * 100/ times).toFixed(4);
-            report.defend.rate = (report.defend.win * 100/ times).toFixed(4);
+            report.attack.rate = (report.attack.win * 100 / times).toFixed(4);
+            report.defend.rate = (report.defend.win * 100 / times).toFixed(4);
+            report.ave_round = (report.round / times).toFixed(4);
             cb(null,report);
         }
     ],function(err,results){
@@ -80,6 +83,8 @@ Battle.analyzeBattleLog = function(battleLog) {
     }else if(win == "enemy"){
         report.defend.win++;
     }
+
+    report.round += battleLog.result.round_num;
 
     var steps = battleLog.steps;
     for(var i = 0;i < steps.length;i++) {
@@ -101,10 +106,13 @@ Battle.init = function() {
             win:0,
             rate:0,
             cards:[]
-        }
+        },
+        round:0,
+        ave_round:0
+
     };
 
-    for(var i = 0;i < 6;i++) {
+    for(var i = 0;i <= 6;i++) {
         report.attack.cards[i] = {
             hit:0,
             hurt:0,
@@ -139,12 +147,12 @@ Battle.count = function(a,d,e){
         isSkill = true;
     }
 
-    if(a < 6) {
+    if(a <= 6) {
         for(var i = 0;i < d.length;i++) {
             if(d[i] < 0) {
                 report.attack.cards[a].crit++;
             }
-            var id = (d[i] < 0) ? (d[i] * -1 - 6) : (d[i] -6);
+            var id = (d[i] < 0) ? (d[i] * -1 - 6) : (d[i] - 6);
             if(e[i] == 0) {
                 report.defend.cards[id].dodge++;
             }else if(e[i] <= 0) {
@@ -168,6 +176,8 @@ Battle.count = function(a,d,e){
             if(e[i] == 0) {
                 report.attack.cards[id].dodge++;
             }else if(e[i] <= 0) {
+               // if(report.attack.cards[id].hurt == "undefined")
+               // console.log(id);
                 report.attack.cards[id].hurt++;
             }
         }

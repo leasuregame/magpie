@@ -97,7 +97,7 @@ var AchievementLayer = cc.Layer.extend({
                 isReceiverIcon.setVisible(false);
 
                 if (isAchieve) {
-                    var receiverItem = cc.MenuItemImage.createWithStr(
+                    var receiverItem = cc.MenuItemImage.createWithIcon(
                         main_scene_image.button9,
                         main_scene_image.button9s,
                         main_scene_image.button9d,
@@ -110,7 +110,7 @@ var AchievementLayer = cc.Layer.extend({
 
                     this._scrollViewElement[key].isReceiverIcon = isReceiverIcon;
                     this._scrollViewElement[key].receiverItem = receiverItem;
-                } else{
+                } else {
                     var energyIcon = cc.Sprite.create(main_scene_image.icon213);
                     energyIcon.setPosition(cc.p(410, y + 40));
                     scrollViewLayer.addChild(energyIcon);

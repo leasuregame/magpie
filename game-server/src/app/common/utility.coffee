@@ -3,11 +3,12 @@ _ = require 'underscore'
 
 Utility = 
   hitRate: (rate) ->
+    rate = rate * 100
     rate = parseInt(rate)
-    if isNaN(rate) or rate < 0 and rate > 100
+    if isNaN(rate) or rate < 1 and rate > 10000
       throw new Error("Invilid argument: can't pass #{rate} to int")
 
-    rd = _.random(0, 100)
+    rd = _.random(1, 10000)
     if rd <= rate then true else false
 
   ###
@@ -22,9 +23,9 @@ Utility =
       for r in rates
         _rates.push _r += r
 
-      rd = _.random(0, maxVal)
+      rd = _.random(1, maxVal * 100)
       for r, i in _rates
-        if rd <= r
+        if rd <= r * 100
           return values[i]
     else if values.length > 0
       return values[_.random(0, (values.length - 1))]

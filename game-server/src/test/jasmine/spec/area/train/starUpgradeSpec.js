@@ -82,7 +82,8 @@ describe("Area Server", function() {
 							expect(typeof data.msg.upgrade).toEqual('boolean');
 
 							doAjax('/card/' + 11, {}, function(res) {
-								expect(res.data.star).toEqual(data.msg.card.star);
+								expect(res.data.tableId).toEqual(data.msg.card.tableId);
+								expect(res.data.star % 5).toEqual(data.msg.card.tableId % 5);
 							});
 
 							doAjax('/card/' + 4, {}, function(res) {

@@ -432,10 +432,11 @@ Handler::useElixir = (msg, session, next) ->
       return next(null, {code: 501, msg: '不能对3星以下的卡牌使用仙丹'})
 
     limit = elixirConfig.limit[card.star]
+    console.log 'elixir: ', limit, card.elixirHp, card.elixirAtk
     if (card.elixirHp + card.elixirAtk) >= limit
       return next(null, {code: 501, msg: "卡牌仙丹容量已满"})
 
-    if card.elixir + elixir > limit
+    if (card.elixirHp + card.elixirAtk + elixir) > limit
       return next(null, {code: 501, msg: "使用的仙丹已经超出了卡牌的最大仙丹容量"})
 
     card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
@@ -474,6 +475,9 @@ Handler::changeLineUp = (msg, session, next) ->
   tids = _.values(lineupObj)
   if _.uniq(tids).length isnt tids.length
     return next(null, {code: 501, msg: '上阵卡牌的角色不能重复'})
+
+  if -1 not in tids
+    return next(null, {code: 501, msg: '阵型中缺少元神信息'})
 
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err

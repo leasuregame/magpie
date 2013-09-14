@@ -78,7 +78,7 @@ describe("Area Server", function() {
 						});
 					});
 
-					var doIt = function(type) {
+					var doIt = function(type, timeout) {
 						request('area.trainHandler.luckyCard', {
 							type: type,
 							level: level
@@ -138,32 +138,29 @@ describe("Area Server", function() {
 
 							});
 
-						});
+						}, timeout);
 					};
 
 					var test = function(test_name, type) {
 						it(test_name, function() {
-							doIt(type);
+							doIt(type, 5000);
 						});
 					};
 
 					var test100times = function(test_name, type) {
-
-						for (var i = 0; i < 100; i++) {
-							(function(i) {
-								it(test_name + ' >> gold, 100 times, time ' + i, function() {
-									doIt(type);
-								});
-							})(i);
-
-						}
-
+						it(test_name + ' >> gold, 100 times', function() {
+							for (var i = 0; i < 50; i++) {
+								(function(i) {
+									doIt(type, 15000);
+								})(i);
+							}
+						});
 					};
 
 					test("元宝抽卡 >> should can be get a lucky card", LOTTERY_TYPE.GOLD);
 					test100times('元宝抽卡', LOTTERY_TYPE.GOLD);
 					test("活力值抽卡 >> should can be get a lucky card", LOTTERY_TYPE.ENERGY);
-					test100times('活力值抽卡', LOTTERY_TYPE.ENERGY);
+					//test100times('活力值抽卡', LOTTERY_TYPE.ENERGY);
 				});
 			};
 

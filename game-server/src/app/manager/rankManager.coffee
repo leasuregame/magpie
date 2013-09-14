@@ -40,10 +40,10 @@ Manager = module.exports =
 
       # update rank info
       player.rank = challenger
-      updateAll(player, challenger, defender, rewards, cb)
+      updateAll(player, challenger, defender, targetId, rewards, cb)
       
 
-updateAll = (player, challenger, defender, rewards, cb) ->
+updateAll = (player, challenger, defender, targetId, rewards, cb) ->
   jobs = [
     {
       type: 'update',

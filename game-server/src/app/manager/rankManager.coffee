@@ -27,7 +27,7 @@ Manager = module.exports =
       countRewards(player, challenger, isWin, rewards)
 
       if isWin        
-        exchangeRanking(defender, challenger)
+        exchangeRanking(challenger, defender)
         updateRankInfo(challenger, defender)
         
         ### 首次达到排名奖励 1, 10, 50, 100, 500, 1000, 5000 ###
@@ -40,32 +40,35 @@ Manager = module.exports =
 
       # update rank info
       player.rank = challenger
+      updateAll(player, challenger, defender, rewards, cb)
+      
 
-      jobs = [
-        {
-          type: 'update',
-          options: 
-            table: 'player',
-            where: {id: player.id}
-            data: player.getSaveData()
-        }
-        {
-          type: 'update',
-          options: 
-            table: 'rank',
-            where: {playerId: player.id}
-            data: challenger.getSaveData()
-        }
-        {
-          type: 'update',
-          options: 
-            table: 'rank',
-            where: {playerId: targetId}
-            data: defender.getSaveData()
-        }
-      ]
+updateAll = (player, challenger, defender, rewards, cb) ->
+  jobs = [
+    {
+      type: 'update',
+      options: 
+        table: 'player',
+        where: {id: player.id}
+        data: player.getSaveData()
+    }
+    {
+      type: 'update',
+      options: 
+        table: 'rank',
+        where: {playerId: player.id}
+        data: challenger.getSaveData()
+    }
+    {
+      type: 'update',
+      options: 
+        table: 'rank',
+        where: {playerId: targetId}
+        data: defender.getSaveData()
+    }
+  ]
 
-      job.multJobs jobs, (err, res) -> cb(err, res, rewards) 
+  job.multJobs jobs, (err, res) -> cb(err, res, rewards) 
 
 exchangeRanking = (cha, def) ->
   if cha.ranking > def.ranking
@@ -77,7 +80,7 @@ updateRankInfo = (winner, loser) ->
   winner.increase 'winCount'
   winner.increase 'winningStreak'
   loser.resetCount 'winningStreak'
-  loser.increase 'lose'
+  loser.increase 'loseCount'
 
 checkAchievement = (player, challenger) ->
   achieve.winCount(player, challenger.winCount)

@@ -76,8 +76,6 @@ CREATE TABLE IF NOT EXISTS `card` (
   `skillPoint` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的技能点
   `elixirHp` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
   `elixirAtk` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
-  `hpAddition` INT(10) UNSIGNED DEFAULT '0',
-  `atkAddition` INT(10) UNSIGNED DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -115,13 +113,11 @@ CREATE TABLE IF NOT EXISTS `rank` (
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
   `playerId` INT(10) UNSIGNED NOT NULL,
   `ranking` INT(10) UNSIGNED DEFAULT '0',   -- 排名
-  -- counts = {challenge: 0, win: 0, lose: 0, winingStreak: 0}
-  `counts` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',  -- 挑战统计数
-  `challegeCount` BIGINT(20) UNSIGNED DEFAULT '0',
+  `challengeCount` BIGINT(20) UNSIGNED DEFAULT '0',
   `winCount` INT(10) UNSIGNED DEFAULT '0',
   `loseCount` INT(10) UNSIGNED DEFAULT '0',
-  `winingStreak` INT(10) UNSIGNED DEFAULT '0',
-  `recentChalleger` VARCHAR(100)  COLLATE utf8_unicode_ci DEFAULT '',
+  `winningStreak` INT(10) UNSIGNED DEFAULT '0',
+  `recentChallenger` VARCHAR(100)  COLLATE utf8_unicode_ci DEFAULT '',
   `gotRewards` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

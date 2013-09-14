@@ -13,13 +13,11 @@ var checkChallengeResults = function(rankId, ranking, challenger, isWin, data) {
 
   doAjax('/rank/' + rankId, {}, function(res) {
     console.log(res);
-    expect(JSON.parse(res.data.counts)).toEqual({
-      challenge: challenge,
-      win: win,
-      lose: lose,
-      winningStreak: winningStreak,
-      recentChallenger: recentChallenger
-    });
+    expect(res.data.challengeCount).toEqual(challenge);
+    expect(res.data.winCount).toEqual(win);
+    expect(res.data.loseCount).toEqual(lose);
+    expect(res.data.winningStreak).toEqual(winningStreak);
+    expect(res.data.recentChallenger).toEqual(JSON.stringify(recentChallenger));
     expect(res.data.ranking).toEqual(ranking);
   });
 };
@@ -27,13 +25,13 @@ var checkChallengeResults = function(rankId, ranking, challenger, isWin, data) {
 describe("Area Server", function() {
 
   describe("Rank Handler", function() {
-    beforeAll(function() {
-      doAjax('/loaddata/all', {}, function(data) {
-        expect(data).toEqual('done');
-      });
-    });
 
-    describe("challenge", function() {
+    describe("challenge 1", function() {
+      beforeAll(function() {
+        doAjax('/loaddata/csv', {}, function(data) {
+          expect(data).toEqual('done');
+        });
+      });
       describe("高排位挑战低排位", function() {
         beforeEach(function() {
           loginWith('user4', '1', 1);
@@ -50,7 +48,7 @@ describe("Area Server", function() {
 
             var isWin = data.msg.battleLog.winner == 'own';
             expect(data.msg.battleLog.rewards).hasProperties([
-              'exp', 'money', 'elixir'
+              'exp', 'money', 'elixir', 'ranking_elixir'
             ]);
 
             if (isWin) {
@@ -59,6 +57,75 @@ describe("Area Server", function() {
             } else {
               checkChallengeResults(1, 20001, 101, !isWin, data);
               checkChallengeResults(2, 20000, null, isWin, data);
+            }
+          });
+        });
+
+      });
+
+      describe("低排位挑战高排位", function() {
+        beforeEach(function() {
+          loginWith('1', '1', 1);
+        });
+
+        it("should can be return battle log", function() {
+          request('area.rankHandler.challenge', {
+            targetId: 2
+          }, function(data) {
+            console.log(data);
+            expect(data.code).toEqual(200);
+            expect(data.msg.battleLog).toBeBattleLog();
+            expect(['own', 'enemy']).toContain(data.msg.battleLog.winner);
+
+            var isWin = data.msg.battleLog.winner == 'own';
+            expect(data.msg.battleLog.rewards).hasProperties([
+              'exp', 'money', 'elixir', 'ranking_elixir'
+            ]);
+
+            if (isWin) {
+              checkChallengeResults(5, 20002, null, isWin, data);
+              checkChallengeResults(4, 20003, 1, !isWin, data);
+            } else {
+              checkChallengeResults(5, 20003, null, isWin, data);
+              checkChallengeResults(4, 20002, 1, !isWin, data);
+            }
+          });
+        });
+
+      });
+    });
+
+    describe("challenge 2", function() {
+      beforeAll(function() {
+        doAjax('/loaddata/csv', {}, function(data) {
+          expect(data).toEqual('done');
+        });
+      });
+      describe("高排位挑战低排位", function() {
+        beforeEach(function() {
+          loginWith('2', '1', 1);
+        });
+
+        it("should can be return battle log", function() {
+          request('area.rankHandler.challenge', {
+            targetId: 1
+          }, function(data) {
+            console.log(data);
+            expect(data.code).toEqual(200);
+            expect(data.msg.battleLog).toBeBattleLog();
+            expect(['own', 'enemy']).toContain(data.msg.battleLog.winner);
+
+            var isWin = data.msg.battleLog.winner == 'own';
+            expect(data.msg.battleLog.rewards).hasProperties([
+              'exp', 'money', 'elixir', 'ranking_elixir'
+            ]);
+
+            if (isWin) {
+              checkChallengeResults(5, 20003, 2, !isWin, data);
+              checkChallengeResults(4, 20002, null, isWin, data);
+            } else {
+              checkChallengeResults(5, 20003, 2, !isWin, data);
+              checkChallengeResults(4, 20002, null, isWin, data);
             }
           });
         });
@@ -81,7 +148,7 @@ describe("Area Server", function() {
 
             var isWin = data.msg.battleLog.winner == 'own';
             expect(data.msg.battleLog.rewards).hasProperties([
-              'exp', 'money', 'elixir'
+              'exp', 'money', 'elixir', 'ranking_elixir'
             ]);
 
             if (isWin) {
@@ -98,6 +165,12 @@ describe("Area Server", function() {
     });
 
     describe("ranking list", function() {
+      beforeAll(function() {
+        doAjax('/loaddata/all', {}, function(data) {
+          expect(data).toEqual('done');
+        });
+      });
+
       var ids = [20000, 17000, 15000, 13000, 11000, 10700, 10300, 10199, 10013, 10001];
       var steps = [100, 80, 60, 40, 20, 15, 10, 5, 1, 1];
 
@@ -126,7 +199,7 @@ describe("Area Server", function() {
             request('area.rankHandler.rankingList', {
               playerId: id
             }, function(data) {
-              console.log(Date.now(), (Date.now() - s)/1000, data);
+              console.log(Date.now(), (Date.now() - s) / 1000, data);
               var cur_ranking = id - 9999;
               //expect(data).toEqual('');
               //expect(data.msg[data.msg.length - 1].ranking).toEqual(cur_ranking);
@@ -136,7 +209,7 @@ describe("Area Server", function() {
               }).sort(function(a, b) {
                 return a - b;
               })).toEqual(genRankings(cur_ranking, index));
-              
+
             });
           });
 

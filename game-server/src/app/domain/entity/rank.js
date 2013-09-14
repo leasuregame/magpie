@@ -23,16 +23,19 @@ var Rank = (function(_super) {
 		Rank.__super__.constructor.apply(this, arguments);
 	}
 
-	Rank.FIELDS = ['id', 'createTime', 'playerId', 'ranking', 'counts'];
+	Rank.FIELDS = [
+		'id', 'createTime', 'playerId', 'ranking', 'challengeCount', 'winCount', 
+		'loseCount', 'winningStreak', 'recentChallenger', 'gotRewards'
+	];
 	Rank.DEFAULT_VALUES = {
-        ranking: 0,
-        challengeCount: 0,
-        winCount: 0,
-        loseCount: 0,
-        winningStreak: 0,
-        recentChallenger: [],
-        gotRewards: []
-    };
+		ranking: 0,
+		challengeCount: 0,
+		winCount: 0,
+		loseCount: 0,
+		winningStreak: 0,
+		recentChallenger: [],
+		gotRewards: []
+	};
 
 	Rank.prototype.toJson = function() {
 		return {
@@ -51,7 +54,7 @@ var Rank = (function(_super) {
 	};
 
 	Rank.prototype.pushRecent = function(id) {
-		var rc = _.clone(this.recentChallenger);	
+		var rc = _.clone(this.recentChallenger);
 		if (rc.length >= 3) {
 			rc = rc.slice(-3);
 			rc.shift();
@@ -70,7 +73,7 @@ var Rank = (function(_super) {
 	Rank.prototype.resetCount = function(name) {
 		if (['winCount', 'loseCount', 'winningStreak', 'challengeCount'].indexOf(name) > 0) {
 			this.set(name, 0);
-		}		
+		}
 	};
 
 	Rank.prototype.getRankingReward = function() {
@@ -82,7 +85,7 @@ var Rank = (function(_super) {
 	};
 
 	Rank.prototype.canGetRankingReward = function() {
-		return RANKINGS.indexOf(this.ranking) > 0 && this.gotRewards.indexOf(ranking) < 0; 
+		return RANKINGS.indexOf(this.ranking) > 0 && this.gotRewards.indexOf(ranking) < 0;
 	};
 
 	return Rank;

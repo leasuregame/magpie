@@ -46,7 +46,7 @@ Handler::rankingList = (msg, session, next) ->
       return next(null, {code: err.code, msg: err.message})
 
     rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK \
-      for p in players when p.id isnt playerId and p.id in player.rank.counts.recentChallenger
+      for p in players when p.id isnt playerId and p.id in player.rank.recentChallenger
 
     players = filterPlayersInfo(players, rankings)
     players.sort (x, y) -> x.ranking - y.ranking
@@ -72,7 +72,7 @@ Handler::challenge = (msg, session, next) ->
       @app.rpc.battle.fightRemote.pvp session, {playerId: playerId, targetId: targetId}, cb
 
     (bl, cb) =>
-      isWin =  bl.winner == 'winner'
+      isWin =  bl.winner == 'own'
       if isWin and isV587(bl)
         achieve.v587(player)
 

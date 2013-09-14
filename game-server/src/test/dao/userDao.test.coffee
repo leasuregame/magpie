@@ -1,4 +1,5 @@
-require './setup'
+setup = require ('./setup')
+setup('userdb')
 app = require('pomelo').app
 dao = app.get('dao')
 should = require 'should'
@@ -9,8 +10,11 @@ describe "User Data Access Object", ->
   from = ''
 
   describe "#createUser", ->
-    after ->
-      app.get('dbClient').delete 'delete from user where account = ?', [account], ->
+    before (done) ->
+      app.get('dbClient').delete 'delete from user',-> done()
+
+    after (done) ->
+      app.get('dbClient').delete 'delete from user where account = ?', [account], -> done()
 
     it "should can be create user when user not exists", (done) ->
       dao.user.createUser data:{account: account, password: password}, (err, res) ->

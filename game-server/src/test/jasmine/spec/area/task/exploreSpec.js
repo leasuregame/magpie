@@ -94,7 +94,14 @@ describe("Area Server", function() {
 					password: '1'
 				};
 				beforeEach(function() {
-					loginWith(mike.account, mike.password, mike.areaId);
+					doAjax('/update/player/102', {
+						power: JSON.stringify({
+							time: Date.now(),
+							value: 0
+						})
+					}, function(){
+						loginWith(mike.account, mike.password, mike.areaId);
+					});					
 				});
 
 				it('should can not explore', function() {

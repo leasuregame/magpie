@@ -27,17 +27,20 @@ describe("Area Server", function() {
               2: 4,
               3: 3,
               4: 2,
-              5: 1
+              5: 1,
+              6: -1
             }
           },
           function(data) {
+            console.log(data);
             expect(data.code).toEqual(200);
             expect(data.msg.lineUp).toEqual({
               1: 5,
               2: 4,
               3: 3,
               4: 2,
-              5: 1
+              5: 1, 
+              6: -1
             });
           }
         );

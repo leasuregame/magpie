@@ -7,7 +7,7 @@ Utility =
     if isNaN(rate) or rate < 0 and rate > 100
       throw new Error("Invilid argument: can't pass #{rate} to int")
 
-    rd = _.random(0, 100)
+    rd = _.random(1, 100)
     if rd <= rate then true else false
 
   ###
@@ -16,20 +16,23 @@ Utility =
   @param {array} rates, the option parameter, if given, will return the value for the rates
   ###
   randomValue: (values, rates, maxVal=100) ->
+    if values.length isnt rates.length
+      throw new Error("Invalid arguments: values and rates are not have same elements")
+
     if rates?
       _rates = []
       _r = 0
       for r in rates
         _rates.push _r += r
 
-      rd = _.random(0, maxVal)
+      rd = _.random(1, maxVal)
       for r, i in _rates
         if rd <= r
           return values[i]
     else if values.length > 0
       return values[_.random(0, (values.length - 1))]
     else # default
-      values[0]
+      return
 
   parseEffect: (value) ->
     pattern = /^\d+,\d+$/

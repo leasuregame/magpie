@@ -12,11 +12,11 @@
  * */
 
 
-var SkyDialogLayer = LazyLayer.extend({
+var TouchLayer = LazyLayer.extend({
     _touch: null,
 
     getTouchPoint: function () {
-        cc.log("LazyLayer getTouchPoint");
+        cc.log("TouchLayer getTouchPoint");
 
         return this._touch;
     },
@@ -27,7 +27,7 @@ var SkyDialogLayer = LazyLayer.extend({
      * @param {event} event
      */
     onTouchBegan: function (touch, event) {
-        cc.log("SkyDialogLayer onTouchBegan");
+        cc.log("TouchLayer onTouchBegan");
 
         this._touch = touch.getLocation();
 
@@ -36,8 +36,8 @@ var SkyDialogLayer = LazyLayer.extend({
 });
 
 
-SkyDialogLayer.create = function () {
-    var ret = new SkyDialogLayer();
+TouchLayer.create = function () {
+    var ret = new TouchLayer();
 
     if (ret && ret.init()) {
         return ret;
@@ -48,19 +48,25 @@ SkyDialogLayer.create = function () {
 
 
 var SkyDialog = cc.Layer.extend({
-    _skyDialogLayer: null,
+    _touchLayer: null,
     _counter: 0,
     _label: null,
+    _arrowSprite: null,
+    _rect: cc.rect(40, 88, 640, 960),
 
     init: function (label) {
         cc.log("SkyDialog init");
 
         if (!this._super()) return false;
 
-        this._skyDialogLayer = SkyDialogLayer.create();
-        this.addChild(this._skyDialogLayer);
+        this._touchLayer = TouchLayer.create();
+        this.addChild(this._touchLayer);
 
         this.setTouchEnabled(true);
+
+        this._arrowSprite = cc.Sprite.create(main_scene_image.icon215);
+        this._arrowSprite.setAnchorPoint(cc.p(0, 0.5));
+        this.addChild(this._arrowSprite, 1);
 
         this._counter = 0;
         this._label = label || null;
@@ -75,9 +81,21 @@ var SkyDialog = cc.Layer.extend({
 
         if (label) {
             if (label != this._label) {
+                this.addChild(label);
+
+                if (this._label) {
+                    this.removeChild(this._label);
+                }
+
                 this._label = label;
             }
         }
+    },
+
+    setRect: function (rect) {
+        cc.log("SkyDialog setRect");
+
+        this._rect = rect || this._rect;
     },
 
     show: function () {
@@ -106,7 +124,35 @@ var SkyDialog = cc.Layer.extend({
         cc.log("SkyDialog onTouchesEnded");
 
         if (this.setVisible()) {
-            cc.log(this._skyDialogLayer.getTouchPoint());
+            var point = this._touchLayer.getTouchPoint();
+
+            if (point) {
+                var size = this._label.getContentSize();
+
+                var x = point.x + 30;
+                var y = point.y;
+                var y0 = size.height / 2;
+
+                if (size.width + x > this._rect.x + this._rect.width) {
+                    x = point.x - 25;
+                    this._arrowSprite.setRotation(180);
+                    this._label.setAnchorPoint(cc.p(1, 0.5));
+                } else {
+                    this._arrowSprite.setRotation(0);
+                    this._label.setAnchorPoint(cc.p(0, 0.5));
+                }
+
+                if (y0 + y > this._rect.y + this._rect.height) {
+                    y = this._rect.y + this._rect.height - y0;
+                }
+
+                if (y - y0 < this._rect.y) {
+                    y = this._rect.y + y0;
+                }
+
+                this._arrowSprite.setPosition(point);
+                this._label.setPosition(cc.p(x, y));
+            }
         }
 
         this.close();

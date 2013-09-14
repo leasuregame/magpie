@@ -480,8 +480,8 @@ a:focus {
 }
 
 .row-fluid .span1 {
-  width: 6.382978723404255%;
-  *width: 6.329787234042553%;
+  width: 10.382978723404255%;
+  *width: 10.329787234042553%;
 }
 
 .row-fluid .offset12 {
@@ -1283,6 +1283,10 @@ textarea::-webkit-input-placeholder {
 
 .input-lmini {
     width: 30px;
+}
+
+.input-mmini {
+    width: 45px;
 }
 
 .input-mini {

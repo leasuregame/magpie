@@ -12,7 +12,8 @@
  * */
 
 
-require('./setup');
+setup = require ('./setup')
+setup(1);
 app = require("pomelo").app;
 var dao = app.get('dao');
 var should = require("should");

@@ -163,13 +163,14 @@
 
             'src/view/battleModule/actionFactory.js',
             'src/view/battleModule/battleBeganLayer.js',
-            'src/view/battleModule/effectsFactory.js',
-            'src/view/battleModule/skillFactory.js',
             'src/view/battleModule/battleCardNode.js',
-            'src/view/battleModule/battleSpiritNode.js',
+            'src/view/battleModule/battleEndLayer.js',
             'src/view/battleModule/battleLayer.js',
-            'src/view/battleModule/battleScene.js',
             'src/view/battleModule/battlePlayer.js',
+            'src/view/battleModule/battleScene.js',
+            'src/view/battleModule/battleSpiritNode.js',
+            'src/view/battleModule/cloudLayer.js',
+            'src/view/battleModule/skillFactory.js',
 
             'src/myApp.js'                   //add your own files in order here
         ]

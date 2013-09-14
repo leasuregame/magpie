@@ -15,20 +15,20 @@
 var BatterLayer = cc.Layer.extend({
     _battleLog: null,
     _battleNode: null,
-    _locate: [
-        cc.p(130, 450),
-        cc.p(355, 450),
-        cc.p(590, 450),
-        cc.p(130, 250),
-        cc.p(355, 250),
-        cc.p(590, 250),
-        cc.p(130, 750),
-        cc.p(355, 750),
-        cc.p(590, 750),
-        cc.p(130, 950),
-        cc.p(355, 950),
-        cc.p(590, 950)
-    ],
+    _locate: {
+        1: cc.p(130, 450),
+        2: cc.p(355, 450),
+        3: cc.p(590, 450),
+        4: cc.p(130, 250),
+        5: cc.p(355, 250),
+        6: cc.p(590, 250),
+        7: cc.p(130, 750),
+        8: cc.p(355, 750),
+        9: cc.p(590, 750),
+        10: cc.p(130, 950),
+        11: cc.p(355, 950),
+        12: cc.p(590, 950)
+    },
 
     init: function (battleLog) {
         cc.log("BatterLayer init");
@@ -37,35 +37,36 @@ var BatterLayer = cc.Layer.extend({
 
         this._battleLog = battleLog;
 
-        var url = main_scene_image.pve_bg1;
+        var bgSprite = null;
 
         if (this._battleLog.get("type") == PVP_BATTLE_LOG) {
-            url = main_scene_image.pvp_bg1;
+            bgSprite = cc.Sprite.create(main_scene_image.pvp_bg1);
+        } else {
+            bgSprite = cc.Sprite.create(main_scene_image.pve_bg1);
         }
 
-        var bgSprite = cc.Sprite.create(url);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(cc.p(40, 0));
         this.addChild(bgSprite);
 
-        this._cardList = [];
-        this._tipLabel = cc.LabelTTF.create("", '黑体', 30);
+        this._tipLabel = cc.LabelTTF.create("", "黑体", 30);
         this._tipLabel.setAnchorPoint(cc.p(0, 0));
         this._tipLabel.setPosition(150, 20);
         this.addChild(this._tipLabel);
 
-        for (var i = 0; i < 12; ++i) {
-            label = cc.LabelTTF.create(i, '黑体', 60);
+        for (var i = 1; i <= 12; ++i) {
+            label = cc.LabelTTF.create(i, "黑体", 60);
             label.setColor(cc.c3b(255, 255, 0));
             this.addChild(label, 1);
             label.setPosition(this._locate[i].x - 70, this._locate[i].y + 50);
         }
 
-        var backItem = cc.MenuItemFont.create("结束战斗", this._onClickBack, this);
-        backItem.setPosition(cc.p(250, -460));
-
-        var menu = cc.Menu.create(backItem);
+        this._backItem = cc.MenuItemFont.create("结束战斗", this.end, this);
+        this._backItem.setPosition(cc.p(250, -460));
+        var menu = cc.Menu.create(this._backItem);
         this.addChild(menu);
+
+        this._backItem.setVisible(false);
 
         var battleNode = battleLog.getBattleNode();
 
@@ -84,26 +85,59 @@ var BatterLayer = cc.Layer.extend({
 
                 this._battleNode[key].setPosition(this._locate[key]);
                 this.addChild(this._battleNode[key]);
-
             }
         }
 
         this._tipLabel.setString("");
 
-        BattlePlayer.getInstance().setBattleElement(this, this._battleNode, this._tipLabel);
-
-        this.scheduleOnce(function () {
-            BattlePlayer.getInstance().began();
-        });
-
         return true;
     },
 
-    _onClickBack: function () {
-        cc.log("BattleLayer _onClickBack");
+    play: function () {
+        cc.log("BatterLayer play");
 
-        this.stopAllActions();
-        BattlePlayer.getInstance().end();
+        this._backItem.setVisible(true);
+
+        this._battleLog.recover();
+        this._playAStep();
+    },
+
+    end: function () {
+        cc.log("BatterLayer end");
+
+        this._backItem.setVisible(false);
+
+        this.unscheduleAllCallbacks();
+
+        BattlePlayer.getInstance().next();
+    },
+
+    _playAStep: function () {
+        this.unschedule(this._playAStep);
+
+        if (!this._battleLog.hasNextBattleStep()) {
+            this.end();
+            return;
+        }
+
+        cc.log("\n\n\nBattlePlayer _playAStep " + this._battleLog.getBattleStepIndex());
+
+        var battleStep = this._battleLog.getBattleStep();
+
+        if (battleStep.isSpiritAtk()) {
+            battleStep.set("attacker", this._battleLog.getSpirit(battleStep.get("attacker")));
+        }
+
+        var str = battleStep.get("attacker") + (battleStep.get("isSkill") ? " 用技能 揍了 " : " 用普攻 揍了 ");
+        str += battleStep.get("target");
+        str += " 伤害为 " + battleStep.get("effect");
+        cc.log(str);
+        this._tipLabel.setString(str);
+
+        var delay = SkillFactory.normalAttack(this._battleNode, battleStep);
+
+        cc.log("set next round schedule");
+        this.schedule(this._playAStep, delay, 1, 0);
     }
 });
 

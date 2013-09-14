@@ -46,7 +46,7 @@ Handler::explore = (msg, session, next) ->
           if battleLog.winner is 'own'
             async.parallel [
               (callback) ->
-                taskManager.obtainBattleRewards(player, chapterId, battleLog, callback)
+                taskManager.obtainBattleRewards(player, data, chapterId, battleLog, callback)
 
               (callback) ->
                 taskManager.countExploreResult player, data, taskId, callback

@@ -96,12 +96,7 @@ class Manager
     _obj = taskRate.open_box.star
 
     _rd_star = utility.randomValue(_.keys(_obj), _.values(_obj))
-    if _rd_star is -1
-      data.fragment = true
-      return cb()
-    else
-      _card_table_id = randomCard(_rd_star)
-      
+    _card_table_id = randomCard(_rd_star)
     
     async.waterfall [
       (cb) ->
@@ -128,7 +123,7 @@ class Manager
   @fightToMonster: (app, session, args, cb) ->
     app.rpc.battle.fightRemote.pve( session, args, cb )
 
-  @obtainBattleRewards: (player, taskId, battleLog, cb) ->
+  @obtainBattleRewards: (player, data, taskId, battleLog, cb) ->
     taskData = table.getTableItem 'task_config', taskId
 
     task = _.clone(player.task)
@@ -148,14 +143,13 @@ class Manager
           spirit.total = spiritConfig.SPIRIT.TASK.OTHER
       battleLog.rewards.spirit = spirit
 
-    # 奖励掉落卡牌
-    ids = taskData.cards.split('#').map (id) ->
-      _row = table.getTableItem 'task_card', id
-      _row.card_id
+    if utility.hitRate(taskRate.fragment_rate)
+      data.fragment = true
 
-    _cards = getRewardCards(ids, taskData.max_drop_card_number)
-    
-    saveCardsInfo player.id, _cards, (results) ->
+    saveExpCardsInfo player.id, taskData.max_drop_card_number, (err, results) ->
+      if err
+        logger.error('save exp card for task error: ', err)
+
       battleLog.rewards.cards = results.map (card) -> card.toJson()
 
       # 将掉落的卡牌添加到玩家信息
@@ -230,56 +224,17 @@ bornPassiveSkill = () ->
     value: parseFloat (value/100).toFixed(1)
   }
 
-getRewardCards = (cardIds, count) ->
-  # countCardId = (id, star) ->
-  #   _card = table.getTableItem 'cards', id
-  #   if _card.star isnt star
-  #     _card_id = if _card.star > star then (id - 1) else (id + 1)
-  #     return _card_id
-  #   else
-  #     return id
-
+saveExpCardsInfo = (playerId, count, cb) ->
   cd = taskRate.card_drop
-  _cards = []
-  for i in [1..count]
-    _id = utility.randomValue cardIds
-    _star = 1 #utility.randomValue _.keys(cd.star), _.values(cd.star)
-    _level = utility.randomValue _.keys(cd.level), _.values(cd.level)
-
-    #_id = countCardId(parseInt(_id), parseInt(_star))
-    _cards.push {
-      id: _id
-      star: parseInt(_star)
-      lv: parseInt(_level)
-    }
-  
-  _cards
-
-saveCardsInfo = (playerId, cards, cb) ->
   results = []
-  async.each cards
-    , (card, callback) ->
-      dao.card.create(
+  async.times count
+    , (n, callback) ->
+      dao.card.createExpCard(
         data: {
-          playerId: playerId, 
-          tableId: card.id, 
-          star: card.star,
-          lv: card.lv
-        }, 
-        (err, card) ->
-          if err and not card
-            return callback(err)
-
-          results.push card
-          if card.star >= 3
-            createPassiveSkillForCard card, card.star - 2, callback
-          else 
-            callback()
+          playerId: playerId,
+          lv: parseInt utility.randomValue _.keys(cd.level), _.values(cd.level)
+        }, callback
       )
-    , (err) ->
-      if err
-        console.log err
-
-      cb(results)
+    , cb
 
 module.exports = Manager

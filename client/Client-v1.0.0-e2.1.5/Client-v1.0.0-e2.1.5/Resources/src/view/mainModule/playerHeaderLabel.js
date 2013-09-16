@@ -80,7 +80,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
 
         var player = gameData.player;
 
-        this._expProgress.setAllValue(player.get("maxExp"), player.get("exp"));
+        this._expProgress.setAllValue(player.get("exp"), player.get("maxExp"));
         this._nameLabel.setString(player.get("name"));
         this._lvLabel.setString(player.get("lv"));
         this._goldLabel.setString(player.get("gold"));

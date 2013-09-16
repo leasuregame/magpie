@@ -199,9 +199,9 @@ var ExploreLayer = cc.Layer.extend({
             exploreLabel.expLabel.setString(exp + "/" + maxExp);
             exploreLabel.progressLabel.setString(section + "/" + maxSection);
 
-            exploreLabel.powerProgress.setAllValue(maxPower, power);
-            exploreLabel.expProgress.setAllValue(maxExp, exp);
-            exploreLabel.sectionProgress.setAllValue(maxSection, section);
+            exploreLabel.powerProgress.setAllValue(power, maxPower);
+            exploreLabel.expProgress.setAllValue(exp, maxExp);
+            exploreLabel.sectionProgress.setAllValue(section, maxSection);
         }
     },
 

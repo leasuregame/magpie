@@ -267,7 +267,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._cardCountLabel.setString("0");
 
             this._lvLabel.setString(this._leadCard.get("lv"));
-            this._yellowProgress.setAllValue(this._leadCard.get("maxExp"), this._leadCard.get("exp"));
+            this._yellowProgress.setAllValue(this._leadCard.get("exp"), this._leadCard.get("maxExp"));
             this._greenProgress.setAllValue(0, 0);
 
             this._selectRetinueCardItem.setEnabled(true);
@@ -319,15 +319,15 @@ var CardUpgradeLabel = cc.Layer.extend({
             var ProgressCallFuncAction = cc.CallFunc.create(function () {
                 if (this._leadCard.get("lv") < dummyCard.get("lv")) {
                     if (isDummyCardProgress) {
-                        this._yellowProgress.setAllValue(this._leadCard.get("maxExp"), this._leadCard.get("exp"));
+                        this._yellowProgress.setAllValue(this._leadCard.get("exp"), this._leadCard.get("maxExp"));
                         this._greenProgress.setAllValue(this._leadCard.get("maxExp"), this._leadCard.get("maxExp"));
                     } else {
                         this._yellowProgress.setAllValue(0, 0);
-                        this._greenProgress.setAllValue(dummyCard.get("maxExp"), dummyCard.get("exp"));
+                        this._greenProgress.setAllValue(dummyCard.get("exp"), dummyCard.get("maxExp"));
                     }
                 } else {
-                    this._yellowProgress.setAllValue(this._leadCard.get("maxExp"), this._leadCard.get("exp"));
-                    this._greenProgress.setAllValue(dummyCard.get("maxExp"), dummyCard.get("exp"));
+                    this._yellowProgress.setAllValue(this._leadCard.get("exp"), this._leadCard.get("maxExp"));
+                    this._greenProgress.setAllValue(dummyCard.get("exp"), dummyCard.get("maxExp"));
                 }
 
                 isDummyCardProgress = !isDummyCardProgress;
@@ -416,12 +416,12 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._hpAdditionLabel.setString(this._leadCard.get("hp") - dummyCard.get("hp"));
             this._atkLabel.setString(dummyCard.get("atk"));
             this._atkAdditionLabel.setString(this._leadCard.get("atk") - dummyCard.get("atk"));
-            this._yellowProgress.setAllValue(dummyCard.get("maxExp"), dummyCard.get("exp"));
+            this._yellowProgress.setAllValue(dummyCard.get("exp"), dummyCard.get("maxExp"));
 
             if (this._leadCard.get("lv") > dummyCard.get("lv")) {
                 this._greenProgress.setAllValue(dummyCard.get("maxExp"), dummyCard.get("maxExp"));
             } else {
-                this._greenProgress.setAllValue(this._leadCard.get("maxExp"), this._leadCard.get("exp"));
+                this._greenProgress.setAllValue(this._leadCard.get("exp"), this._leadCard.get("maxExp"));
             }
             this._expLabel.setString(exp);
             this._maxExpLabel.setString(dummyCard.getCardFullLvExp());

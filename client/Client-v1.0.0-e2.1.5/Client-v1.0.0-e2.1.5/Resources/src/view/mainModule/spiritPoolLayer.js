@@ -125,7 +125,7 @@ var SpiritPoolLayer = cc.Layer.extend({
 
         this._lvLabel.setString(spiritPool.get("lv"));
         this._expLabel.setString(spiritPool.get("exp") + " / " + spiritPool.get("maxExp"));
-        this._expProgress.setAllValue(spiritPool.get("maxExp"), spiritPool.get("exp"));
+        this._expProgress.setAllValue(spiritPool.get("exp"), spiritPool.get("maxExp"));
         this._countLabel.setString(spiritPool.get("collectCount") + " 次");
     },
 

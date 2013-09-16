@@ -104,7 +104,7 @@ var SpiritDetails = LazyLayer.extend({
 
         var spirit = gameData.spirit;
 
-        this._expProgress.setAllValue(spirit.get("maxExp"), spirit.get("exp"));
+        this._expProgress.setAllValue(spirit.get("exp"), spirit.get("maxExp"));
 
         this._lvLabel.setString(spirit.get("lv"));
         this._expLabel.setString(spirit.get("exp") + " / " + spirit.get("maxExp"));

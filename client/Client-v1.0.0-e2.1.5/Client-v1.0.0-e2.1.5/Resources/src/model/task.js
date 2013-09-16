@@ -15,7 +15,7 @@
 var Task = Entity.extend({
     _id: 0,
     _progress: 0,
-    _points: 0,          // 最大层数
+    _maxProgress: 0,          // 最大层数
 
     init: function (data) {
         cc.log("Task init");
@@ -32,16 +32,16 @@ var Task = Entity.extend({
 
         if (this._id != data.id) {
             this._id = data.id;
-            this._points = outputTables.task.rows[this._id].points;
+            this._maxProgress = outputTables.task.rows[this._id].points;
         }
 
         this._progress = data.progress;
     },
 
-    getPercentage: function () {
-        cc.log("Task getPercentage");
+    getProgress: function () {
+        cc.log("Task getProgress");
 
-        return (this._progress / this._points);
+        return (this._progress / this._maxProgress);
     },
 
     getChapter: function () {
@@ -125,8 +125,9 @@ var Task = Entity.extend({
         cc.log("Task wipeOut");
 
         var that = this;
-
-        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {playerId: gameData.player.get("id"), type: "task"}, function (data) {
+        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {
+            type: "task"
+        }, function (data) {
             cc.log(data);
 
             if (data.code == 200) {

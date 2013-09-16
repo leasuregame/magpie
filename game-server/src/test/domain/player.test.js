@@ -255,7 +255,7 @@ describe("Player Object", function () {
             var player = new Player({
                 lv: 30,
                 power: {
-                    time: 0,
+                    time: Date.now(),
                     value: 5
                 }
             });
@@ -278,7 +278,7 @@ describe("Player Object", function () {
             var player = new Player({
                 lv: 30,
                 power: {
-                    time: 0,
+                    time: Date.now(),
                     value: 5
                 }
             });
@@ -844,5 +844,47 @@ describe("Player Object", function () {
             });
         });
     });
+
+    describe('.setTaskMark()', function(){
+        it('should can set the right task mark', function(){
+            var ply = new Player();
+            ply.task.should.eql({
+                id: 1,
+                progress: 0,
+                hasWin: false,
+                mark: []
+            });
+
+            ply.setTaskMark(1);
+            ply.task.mark.should.eql([1]);
+
+            ply.setTaskMark(10);
+            ply.task.mark.should.eql([513]);
+            ply.task.mark[0].toString(2).should.equal('1000000001');
+
+            for(var i = 1; i <= 30; i++) {
+                ply.setTaskMark(i);
+            }
+
+            ply.task.mark.length.should.equal(1);
+            ply.task.mark.should.eql([1073741823]);
+            ply.task.mark[0].toString(2).should.equal('111111111111111111111111111111');
+        
+            ply.setTaskMark(31);
+            ply.task.mark.should.eql([1073741823, 1]);
+            ply.setTaskMark(50);
+            ply.task.mark.should.eql([1073741823, 524289]);
+            ply.setTaskMark(60);
+            ply.task.mark.should.eql([1073741823, 536870912 + 524289]);
+        });
+    });
+
+    describe('.hasTaskMark()', function(){
+        it('should can check if has mark for the given chapeter', function(){
+            var ply = new Player();
+            ply.hasMark(1).should.equal(0);
+        });
+    });
+
 
 });

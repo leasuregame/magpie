@@ -16,6 +16,7 @@ var utility = require('../../common/utility');
 var Entity = require('./entity');
 var table = require('../../manager/table');
 var elixirConfig = require('../../../config/data/elixir');
+var cardConfig = require('../../../config/data/card'); 
 var _ = require("underscore");
 
 var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL
@@ -28,13 +29,15 @@ var addEvents = function (card) {
             'atk_improve': 'atk',
             'hp_improve': 'hp'
         };
+        var incs = {};
         _.values(card.passiveSkills).filter(function (ps) {
             return _.keys(_pro).indexOf(ps.name) > -1;
         }).forEach(function(ps) {
             var _key = _pro[ps.name];
             var _val = parseInt(card['init_' + _key] * ps.value / 100);
-            card.incs['ps_' + _key] += _val;
+            incs['ps_' + _key] && (incs['ps_' + _key] += _val) || (incs['ps_' + _key] = _val);
         });
+        _.extend(card.incs, incs);
         card.recountHpAndAtk();
     });
 
@@ -67,11 +70,11 @@ var Card = (function (_super) {
         Card.__super__.constructor.apply(this, arguments);
 
         if (this.tableId) {
-            var cardConfig = table.getTableItem('cards', this.tableId);
+            var cardData = table.getTableItem('cards', this.tableId);
             var factor = table.getTableItem('factors', this.lv).factor;
 
-            var _hp = parseInt(cardConfig.hp * factor),
-                _atk = parseInt(cardConfig.atk * factor);
+            var _hp = parseInt(cardData.hp * factor),
+                _atk = parseInt(cardData.atk * factor);
             this.set({
                 init_hp: _hp,
                 hp: _hp,
@@ -80,11 +83,11 @@ var Card = (function (_super) {
             });
 
             // 同步配置表中卡牌的星级到数据库
-            this.set('star', cardConfig.star);
-            if (cardConfig.star >= 3) {
-                this.skill = table.getTableItem('skills', cardConfig.skill_id);
+            this.set('star', cardData.star);
+            if (cardData.star >= 3) {
+                this.skill = table.getTableItem('skills', cardData.skill_id);
             }
-            this.cardConfig = cardConfig;
+            this.cardData = cardData;
         }
 
         countElixirEffect(this);
@@ -151,7 +154,7 @@ var Card = (function (_super) {
         _property[GROUP_EFFECT_ATK] = 'atk';
         _property[GROUP_EFFECT_HP] = 'hp';
 
-        var type = parseInt(this.cardConfig.effetc_type);
+        var type = parseInt(this.cardData.effetc_type);
         var effect_val = 20;
         if (type == GROUP_EFFECT_HP) {
             effect_val = 25;
@@ -165,54 +168,34 @@ var Card = (function (_super) {
     };
 
     Card.prototype.ability = function () {
+        var ae = cardConfig.ABILIGY_EXCHANGE;
+
         // 1点攻击力=1点战斗力
         // 3点生命值=1点战斗力
-        var _abi = this.atk + parseInt(this.hp / 3);
+        var _abi = parseInt(this.atk / ae.atk) + parseInt(this.hp / ae.hp);
 
-        // 技能增强效果 技能攻击个数 * 技能增强效果 * 触发概率
-       //加血效果 3:1
-        if (this.skill) {
-
-            var target_num = 1;
-
-            if (this.skill['id'] == 5 || this.skill['id'] == 6)
-                target_num = parseInt(this.skill.target_num);
-            else if (this.skill['id'] == 2 || this.skill['id'] == 3 || this.skill['id'] == 8 || this.skill['id'] == 9)
-                target_num = 3;
-            else if (this.skill['id'] == 4)
-                target_num = 2;
-            else if(this.skill['id'] == 10)
-                target_num = 5;
-
-            if(this.skill['id'] > 6)  //加血技能
-                _abi += (target_num *
-                    utility.parseEffect(this.skill['star' + this.star])[0] *
-                    this.skill['rate' + this.star]) / 3;
-            else
-                _abi += target_num *
-                    utility.parseEffect(this.skill['star' + this.star])[0] *
-                    this.skill['rate' + this.star];
+        // 技能增强效果 
+        if (this.skill && this.skillLv > 0) {
+            _abi += ae.star[this.star] * this.skillLv;
         }
 
         // 0.1%暴击率=10点战斗力
         // 0.1%闪避率=10点战斗力
         // 0.1%减伤率=10点战斗力
-        var should_inc_ps = ['dmg_reduce', 'crit', 'dodge']
+        var should_inc_ps = ['dmg_reduce', 'crit', 'dodge'];
         if (this.star >= 3) {
-            var ps_values = _.values(this.passiveSkills)
+            var sum = _.values(this.passiveSkills)
                 .filter(function (ps) {
                     return should_inc_ps.indexOf(ps.name) > -1;
                 })
                 .map(function (ps) {
-                    return ps.value;
-                });
-            var sum = 0;
-            if (ps_values.length > 0) {
-                sum += _.reduce(ps_values, function (x, y) {
+                    return ps.value * ae[ps.name];
+                })
+                .reduce(function(x, y) {
                     return x + y;
-                });
-            }
-            _abi += sum * 100;
+                }, 0);
+
+            _abi += sum;
         }
         return parseInt(_abi);
     };

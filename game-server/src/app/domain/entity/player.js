@@ -13,6 +13,7 @@
 
 
 var utility = require('../../common/utility');
+var MarkGroup = require('../../common/markGroup');
 var Entity = require('./entity');
 var playerConfig = require('../../../config/data/player');
 var msgConfig = require('../../../config/data/message');
@@ -25,6 +26,7 @@ var Card = require('./card');
 var util = require('util');
 var achieve = require('../achievement');
 var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL;
+var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
 
 var defaultMark = function() {
     var i, result = [];
@@ -155,6 +157,8 @@ var Player = (function(_super) {
     function Player(param) {
         addEvents(this);
         Player.__super__.constructor.apply(this, arguments);
+        this.taskMark = new MarkGroup(this.task.mark);
+        //this.passMark = new MarkGroup(this.pass.mark)
     }
 
     Player.prototype.init = function() {
@@ -212,7 +216,8 @@ var Player = (function(_super) {
         task: {
             id: 1,
             progress: 0,
-            hasWin: false
+            hasWin: false,
+            mark: []
         },
         pass: {
             layer: 0,
@@ -315,6 +320,11 @@ var Player = (function(_super) {
                 ability += card.ability();
             }
         });
+        // 元神加成的战斗力
+        if (this.spiritor.lv > 0) {
+            ability += this.spiritor.lv * SPIRITOR_PER_LV;
+        }
+
         this.set('ability', ability);
         return ability;
     };
@@ -537,6 +547,17 @@ var Player = (function(_super) {
             cur_exp: targetCard.exp,
             money_consume: parseInt(moneyConsume)
         }, targetCard);
+    };
+
+    Player.prototype.setTaskMark = function(chapter) {
+        this.taskMark.mark(chapter);
+        var task = utility.deepCopy(this.task);
+        task.mark = this.taskMark.value;
+        this.task = task;
+    };
+
+    Player.prototype.hasTaskMark = function(chapter) {
+        return this.taskMark.hasMark(chapter);
     };
 
     Player.prototype.setPassMark = function(layer) {

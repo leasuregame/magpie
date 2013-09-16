@@ -482,43 +482,17 @@ for (var taskId = 1; taskId <= 5; ++taskId) {
 }
 
 var effectConfig = [
-    4,
-    7,
-    9,
-    14,
-    10,
-    10,
-    19,
-    8,
-    12,
-    4,
-    5,
-    7,
     10,
     10,
     10,
-    10,
-    10
+    5
 ];
 
 var effectRect = [
-    cc.rect(0, 0, 124, 60),
-    cc.rect(0, 0, 124, 60),
-    cc.rect(0, 0, 124, 60),
-    cc.rect(0, 0, 124, 60),
     cc.rect(0, 0, 160, 80),
     cc.rect(0, 0, 132, 132),
-    cc.rect(0, 0, 600, 713),
-    cc.rect(0, 0, 600, 713),
-    cc.rect(0, 0, 600, 713),
-    cc.rect(0, 0, 600, 713),
-    cc.rect(0, 0, 600, 713),
-    cc.rect(0, 0, 450, 260),
-    cc.rect(0, 0, 450, 260),
-    cc.rect(0, 0, 361, 218),
-    cc.rect(0, 0, 361, 218),
-    cc.rect(0, 0, 253, 218),
-    cc.rect(0, 0, 640, 218)
+    cc.rect(0, 0, 640, 218),
+    cc.rect(0, 0, 600, 713)
 ];
 
 for (var effectId = 0; effectId < effectConfig.length; ++effectId) {

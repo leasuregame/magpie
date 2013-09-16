@@ -95,46 +95,33 @@ var LotteryLayer = cc.Layer.extend({
         return function () {
             cc.log("LotteryLayer _onClickLottery");
 
-            LazyLayer.showCloudLayer();
-
-            var bgLayer = cc.LayerColor.create(cc.c4b(0, 0, 0, 255), 640, 960);
-            bgLayer.setPosition(GAME_ZERO);
-            this.addChild(bgLayer, 5);
-
-            var that = this;
-            var effectSprite = playEffect({
-                effectId: 7 + level,
-                target: bgLayer,
-                delay: 0.16,
-                loops: 1,
-                position: null,
-                anchorPoint: null,
-                scale: 1,
-                scaleX: 1,
-                scaleY: 1,
-                sprite: null,
-                cb: function () {
-                    cc.log("End");
-
-                    var cardFullNode = CardFullNode.create(
-                        gameData.cardList.getCardByIndex(41)
-                    );
-
-                    cardFullNode.setPosition(effectSprite.getPosition());
-                    bgLayer.addChild(cardFullNode);
-
-                    that.scheduleOnce(function () {
-                        bgLayer.removeFromParent();
-                        LazyLayer.closeCloudLayer();
-                    }, 5);
-                }
-            });
-
             var that = this;
             gameData.lottery.lottery(function (data) {
                 cc.log(data);
 
+                LazyLayer.showCloudLayer();
+
                 that.update();
+
+                var blackLayer = cc.LayerColor.create(cc.c4b(0, 0, 0, 255), 720, 1136);
+                that.addChild(blackLayer);
+
+                var effectSprite = playEffect({
+                    effectId: 3,
+                    target: blackLayer,
+                    delay: 0.16,
+                    loops: 1,
+                    cb: function () {
+                        var cardFullNode = CardFullNode.create(data);
+                        cardFullNode.setPosition(effectSprite.getPosition());
+                        blackLayer.addChild(cardFullNode);
+
+                        that.scheduleOnce(function () {
+                            blackLayer.removeFromParent();
+                            LazyLayer.closeCloudLayer();
+                        }, 2);
+                    }
+                });
             }, type, level);
         }
     }

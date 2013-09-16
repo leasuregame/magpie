@@ -35,7 +35,7 @@ var BattleBeganLayer = cc.Layer.extend({
         var that = this;
         this._cloudLayer.play(function () {
             playEffect({
-                effectId: 16,
+                effectId: 2,
                 target: that,
                 loops: 1,
                 clear: true,

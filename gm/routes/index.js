@@ -9,6 +9,7 @@ var card = require('./card');
 var rank = require('./rank');
 var simBattle = require('./simBattle');
 var lottery = require('./lottery');
+var passSkillAfresh = require('./passSkillAfresh');
 var logger = require('../logger').logger('user');
 
 var routes = function(app){
@@ -115,6 +116,7 @@ var routes = function(app){
     rank(app);
     simBattle(app);
     lottery(app);
+    passSkillAfresh(app);
     app.get('/reward',checkLogin);
 
     //全服、个人补偿奖赏

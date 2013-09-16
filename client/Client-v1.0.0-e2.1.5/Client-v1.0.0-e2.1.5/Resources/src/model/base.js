@@ -12,8 +12,11 @@
  * */
 
 
-// 命名空间
+/*
+ * 命名空间
+ * */
 var lz = {};
+
 
 /**
  * copy an new object
@@ -34,6 +37,33 @@ lz.clone = function (obj) {
         }
     }
     return newObj;
+};
+
+
+/*
+ * 格式化字符串，分隔成段
+ * */
+lz.format = function (str, length) {
+    cc.log("CardDetails _getDescription");
+
+    if (!length || length <= 0) return [];
+
+    var strList = [];
+    var len = str.length;
+
+    for (var i = 0; len > 0; ++i) {
+        var index = i * length;
+
+        if (len < length) {
+            strList[i] = str.substring(index);
+        } else {
+            strList[i] = str.substring(index, index + length);
+        }
+
+        len -= length;
+    }
+
+    return strList;
 };
 
 lz.getColor = function (colorType) {
@@ -77,7 +107,25 @@ Array.prototype.distinct = function () {
 };
 
 
+/*
+ * 获取介于两数之间的随机数[a, b)
+ * */
+lz.random = function (a, b) {
+    var len = arguments.length;
+
+    if (len == 0) {
+        return 0;
+    }
+
+    if (len == 1) {
+        b = a;
+        a = 0;
+    }
+
+    return (Math.random() * (b - a) + a);
+};
+
 // 获取不大于原数的随机数
 Number.prototype.getRandom = function () {
     return Math.floor(Math.random() * this);
-}
+};

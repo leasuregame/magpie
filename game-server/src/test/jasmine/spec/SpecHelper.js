@@ -10,7 +10,8 @@ beforeEach(function() {
           'own',
           'winner',
           'steps',
-          'rewards'
+          'rewards',
+          'round_num'
         ].sort()
       );
 
@@ -46,13 +47,14 @@ beforeEach(function() {
             }
           })
         });
+        console.log('伤害', dmage);
 
         // 检查 死亡人数的一致性
         if (isWin) {
           var death_man = 0;
           _.each(dmage, function(val, key) {
             k = parseInt(key);
-            if (k >= 6 && battleLog.enemy.cards[k].hp <= val) {
+            if (k > 6 && battleLog.enemy.cards[k].hp <= val) {
               death_man++;
             }
           })
@@ -67,7 +69,7 @@ beforeEach(function() {
           var death_man = 0;
           _.each(dmage, function(val, key) {
             k = parseInt(key);
-            if (k <= 5 && battleLog.own.cards[k].hp <= val) {
+            if (k <= 6 && battleLog.own.cards[k].hp <= val) {
               death_man++;
             }
           })
@@ -155,7 +157,7 @@ var doAjax = function(url, params, cb) {
   }, "The ajax request should be completed", 60000);
 };
 
-var request = function(route, msg, cb) {
+var request = function(route, msg, cb, timeout) {
   var ok = false;
   runs(function() {
     pomelo.request(route, msg, function(data) {
@@ -166,7 +168,7 @@ var request = function(route, msg, cb) {
 
   waitsFor(function() {
     return ok;
-  });
+  }, 'Socket request should be completed', timeout || 5000);
 };
 
 var initPomelo = function() {

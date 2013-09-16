@@ -18,6 +18,7 @@ function setPlayer(p,a) {
 };
 
 function setPlayerData() {
+    $("#vip").val(player.vip);
     $("#lv").val(player.lv);
     $("#money").val(player.money);
     $("#gold").val(player.gold);
@@ -46,6 +47,7 @@ $(document).ready(function(){
 function updatePlayerData() {
    // console.log(player);
     var data = {};
+    data.vip = parseInt($("#vip").val());
     data.lv = parseInt($("#lv").val());
     data.money = parseInt($("#money").val());
     data.gold = parseInt($("#gold").val());

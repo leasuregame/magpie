@@ -12,7 +12,8 @@
  * */
 
 
-require('./setup');
+setup = require ('./setup')
+setup(1);
 app = require("pomelo").app;
 var dao = app.get('dao');
 var should = require("should");
@@ -183,6 +184,24 @@ describe("Card Data Access Object", function () {
             });
         });
     });
+
+    describe("#createExpCard",function(){
+
+        after(function(done){
+            app.get("dbClient")["delete"]("delete from card",[],function(){
+                done();
+            })
+        });
+
+        it("should can get exp card by given options",function(){
+           dao.card.createExpCard({data:{playerId:1000} },function (err,res){
+               should.strictEqual(err,null);
+               res.playerId.should.be.equal(1000);
+               res.tableId.should.be.equal(30000);
+           })
+        })
+
+    })
 
 
 

@@ -1,4 +1,5 @@
-require './setup'
+setup = require ('./setup')
+setup(1);
 app = require('pomelo').app
 dao = app.get('dao')
 should = require 'should'

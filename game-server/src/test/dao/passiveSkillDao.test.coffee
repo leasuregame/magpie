@@ -1,4 +1,5 @@
-require './setup'
+setup = require ('./setup')
+setup(1);
 app = require('pomelo').app
 dao = require('../../app/dao').init('mysql')
 dbClient = app.get('dbClient')
@@ -37,7 +38,7 @@ describe "Passive Skill Data Access Object", ->
 
     describe "when exists", ->
       before (done) ->
-        dbClient.insert 'insert into passiveSkill (id, cardId, name, value, createTime) value (?, ?, ?, ?, ?)', 
+        dbClient.insert 'insert into passiveSkill (id, cardId, name, value) value (?, ?, ?, ?)',
           [id, cardId, name, value, Date.now()], -> done()
 
       after (done) ->
@@ -56,7 +57,7 @@ describe "Passive Skill Data Access Object", ->
 
   describe "#deletePassiveSkill", ->
     before (done) ->
-      dbClient.insert 'insert into passiveSkill (id, cardId, name, value, createTime) value (?, ?, ?, ?, ?)', 
+      dbClient.insert 'insert into passiveSkill (id, cardId, name, value) value (?, ?, ?, ?)',
         [id, cardId, name, value, Date.now()], -> done()
 
     it "should can be delete a passive skill", (done) ->
@@ -74,7 +75,7 @@ describe "Passive Skill Data Access Object", ->
   describe "#getPassiveSkill", ->
 
     before (done) ->
-      dbClient.insert 'insert into passiveSkill (id, cardId, name, value, createTime) value (?, ?, ?, ?, ?)', 
+      dbClient.insert 'insert into passiveSkill (id, cardId, name, value) value (?, ?, ?, ?)',
         [id, cardId, name, value, Date.now()], -> done()
 
     after (done) ->
@@ -105,4 +106,24 @@ describe "Passive Skill Data Access Object", ->
       dao.passiveSkill.fetchOne where: id: id+1000, (err, res) ->
         should.strictEqual null, res
         err.should.eql {code: 404, msg: 'can not find passiveSkill'}
+        done()
+
+  describe "#updatePassiveSkill",->
+    before (done) ->
+      dbClient.insert 'insert into passiveSkill (id, cardId, name, value) value (?, ?, ?, ?)',
+        [id, cardId, name, value, Date.now()], -> done()
+
+    after (done) ->
+      dbClient.delete 'delete from passiveSkill where id =?', [id], -> done()
+
+    it "should can update a passive skill with card id", (done) ->
+      dao.passiveSkill.update {where:{id:id},data:{value:10}},(err,res) ->
+        should.strictEqual null,err
+        res.should.be.equal true
+        done()
+
+    it "should can not update a passive skill with card id not exists", (done)->
+      dao.passiveSkill.update {where:{id:id + 1000},data:{value:10}},(err,res) ->
+        should.strictEqual null,err
+        res.should.be.equal false
         done()

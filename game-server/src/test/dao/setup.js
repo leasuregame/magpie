@@ -7,13 +7,18 @@
  */
 
 
-var pomelo = require('pomelo');
-var app = pomelo.createApp();
+var setup = function(key) {
+    var pomelo = require('pomelo');
+    var app = pomelo.createApp();
 
-var mysqlConfig = require('../../config/mysql1.json');
-app.set('mysql', mysqlConfig.development['1']);
-//app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
-app.set('dbClient', require('../../app/dao/mysql/mysql').init(app));
-var dao = require('../../app/dao').init('mysql');
-app.set('dao', dao);
+    var mysqlConfig = require('../../config/mysql1.json');
+    app.set('mysql', mysqlConfig.development[key]);
+    //app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
+    app.set('dbClient', require('../../app/dao/mysql/mysql').init(app));
+    var dao = require('../../app/dao').init('mysql');
+    app.set('dao', dao);
+}
+
+module.exports = setup;
+
 

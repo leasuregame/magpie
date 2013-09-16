@@ -7,6 +7,7 @@ var User =  require('../models/user');
 var player = require('./player');
 var card = require('./card');
 var rank = require('./rank');
+var simBattle = require('./simBattle');
 var logger = require('../logger').logger('user');
 
 var routes = function(app){
@@ -111,6 +112,7 @@ var routes = function(app){
     player(app);
     card(app);
     rank(app);
+    simBattle(app);
 
     app.get('/reward',checkLogin);
 

@@ -235,7 +235,7 @@ class Hero extends Module
     @hp <= 0
 
   setIdx: (idx, atker)->
-    @idx = if atker then idx else idx + 6
+    @idx = if atker then idx + 1 else idx + 7
 
   setPos: (pos) ->
     @pos = pos

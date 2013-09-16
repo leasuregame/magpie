@@ -41,7 +41,7 @@ cc.MenuItemImage.createWithIcon = function (normalImage, selectedImage, three, f
     if (ret) {
         ret._iconImage = null;
 
-        ret.setIconImage = function (iconImage) {
+        ret.setIconImage = function (iconImage, position) {
             if (typeof iconImage == "string") {
                 iconImage = cc.Sprite.create(iconImage);
             }
@@ -52,7 +52,7 @@ cc.MenuItemImage.createWithIcon = function (normalImage, selectedImage, three, f
             if (iconImage) {
                 var contentSize = ret.getContentSize();
                 var iconImageSize = iconImage.getContentSize();
-                var position = cc.p(
+                var position = position || cc.p(
                     contentSize.width / 2 - iconImageSize.width / 2,
                     contentSize.height / 2 - iconImageSize.height / 2
                 );
@@ -67,6 +67,18 @@ cc.MenuItemImage.createWithIcon = function (normalImage, selectedImage, three, f
             }
 
             ret._iconImage = iconImage;
+        };
+
+        ret.showIconImage = function () {
+            if (ret._iconImage) {
+                ret._iconImage.setVisible(true);
+            }
+        };
+
+        ret.hidIconImage = function () {
+            if (ret._iconImage) {
+                ret._iconImage.setVisible(false);
+            }
         };
 
         ret._oldSetColor = ret.setColor;

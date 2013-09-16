@@ -16,6 +16,7 @@ var TaskLayer = cc.Layer.extend({
     _index: 0,
     _wipeOutItem: null,
     _sectionItem: {},
+    _lockIcon: {},
     _scrollView: null,
     _locate: [
         cc.p(160, 550),
@@ -137,6 +138,7 @@ var TaskLayer = cc.Layer.extend({
                 var sectionItem = cc.MenuItemImage.createWithIcon(
                     main_scene_image["task" + index],
                     main_scene_image["task" + index],
+                    main_scene_image.icon200,
                     this._onClickSection(index),
                     this
                 );
@@ -185,10 +187,10 @@ var TaskLayer = cc.Layer.extend({
                 var index = parseInt(key);
 
                 if (index > section) {
-                    sectionItem.setIconImage(main_scene_image.icon200);
+                    sectionItem.showIconImage();
                     sectionItem.setColor(cc.c3b(150, 150, 150));
                 } else {
-                    sectionItem.setIconImage(null);
+                    sectionItem.hidIconImage();
                 }
             }
         }

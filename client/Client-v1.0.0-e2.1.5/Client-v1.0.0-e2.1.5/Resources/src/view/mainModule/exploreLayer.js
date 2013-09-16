@@ -223,14 +223,6 @@ var ExploreLayer = cc.Layer.extend({
         }
     },
 
-    _showSprite: function (sprite) {
-        cc.log("ExploreLayer _showSprite");
-    },
-
-    _hitSprite: function (sprite) {
-        cc.log("ExploreLayer _showSprite");
-    },
-
     _getDescription: function (str) {
         cc.log("ExploreLayer _getDescription");
 

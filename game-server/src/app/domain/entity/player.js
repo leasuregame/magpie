@@ -158,7 +158,7 @@ var Player = (function(_super) {
         addEvents(this);
         Player.__super__.constructor.apply(this, arguments);
         this.taskMark = new MarkGroup(this.task.mark);
-        //this.passMark = new MarkGroup(this.pass.mark)
+        this.passMark = new MarkGroup(this.pass.mark)
     }
 
     Player.prototype.init = function() {
@@ -221,7 +221,7 @@ var Player = (function(_super) {
         },
         pass: {
             layer: 0,
-            mark: defaultMark()
+            mark: []
         },
         dailyGift: {
             lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
@@ -566,13 +566,14 @@ var Player = (function(_super) {
             return;
         }
 
-        var pass = _.clone(this.pass);
+        var pass = utility.deepCopy(this.pass);
         if (pass.layer + 1 < layer) {
             logger.warn('未达到该关卡层数', layer);
             return;
         }
-        pass.mark[layer - 1] = 1;
-        this.set('pass', pass);
+        this.passMark.mark(layer);
+        pass.mark = this.passMark.value;
+        this.pass = pass;
     };
 
     Player.prototype.hasPassMark = function(layer) {
@@ -580,8 +581,7 @@ var Player = (function(_super) {
             logger.warn('无效的关卡层数 ', layer);
             return;
         }
-        var mark = this.pass.mark[layer - 1];
-        return (mark === 1);
+        return this.passMark.hasMark(layer);
     };
 
     Player.prototype.incPass = function() {

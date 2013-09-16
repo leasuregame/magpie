@@ -76,19 +76,15 @@ class Manager
   @wipeOutTask: (player, cb) ->
     taskData = table.getTableItem('task', player.task.id)
     chapterId = taskData.chapter_id
-    rewards = {exp_obtain: 0, money_obtain: 0, gold_obtain: 0}
-    for id in _.range(1, chapterId)
-      wipeOutData = table.getTableItem('wipe_out', id)
-      rewards.exp_obtain += parseInt(wipeOutData.exp_obtain)
-      rewards.money_obtain += parseInt(wipeOutData.money_obtain)
-
-      # 一定概率获得元宝
-      if utility.hitRate(taskRate.wipe_out_gold_rate)
-        rewards.gold_obtain += taskRate.wipe_out_gold_obtain
+    rewards = {exp_obtain: 0, money_obtain: 0}
+    for id in _.range(1, chapterId) 
+      if not player.hasTaskMark(id)
+        wipeOutData = table.getTableItem('wipe_out', id)
+        rewards.exp_obtain += parseInt(wipeOutData.exp_obtain)
+        rewards.money_obtain += parseInt(wipeOutData.money_obtain)
 
     player.increase('exp',  rewards.exp_obtain)
     player.increase('money', rewards.money_obtain)
-    player.increase('gold', rewards.gold_obtain)
 
     cb(null, player, rewards)
 

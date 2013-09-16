@@ -197,6 +197,7 @@ var Card = (function (_super) {
 
             _abi += sum;
         }
+        console.log('abi: ', _abi);
         return parseInt(_abi);
     };
 

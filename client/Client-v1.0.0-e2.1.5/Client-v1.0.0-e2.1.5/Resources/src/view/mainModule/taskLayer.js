@@ -103,10 +103,11 @@ var TaskLayer = cc.Layer.extend({
             this._onClickWipeOut,
             this
         );
-        this._wipeOutItem.setPosition(cc.p(530 + x, 50));
+        this._wipeOutItem.setPosition(cc.p(595, 230));
 
         var menu = cc.Menu.create(this._wipeOutItem);
-        this.addChild(menu);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu, 1);
 
         // 读配置表
         var chapterTitleTable = outputTables.chapter_title.rows;
@@ -133,7 +134,7 @@ var TaskLayer = cc.Layer.extend({
             for (var j = 1; j <= TASK_SECTION_COUNT; ++j) {
                 var index = 5 * (i - 1) + j;
 
-                var sectionItem = cc.MenuItemImage.create(
+                var sectionItem = cc.MenuItemImage.createWithIcon(
                     main_scene_image["task" + index],
                     main_scene_image["task" + index],
                     this._onClickSection(index),
@@ -147,11 +148,11 @@ var TaskLayer = cc.Layer.extend({
 
                 var sectionNameBgSprite = cc.Sprite.create(main_scene_image.icon3);
                 sectionNameBgSprite.setPosition(point);
-                scrollViewLayer.addChild(sectionNameBgSprite);
+                scrollViewLayer.addChild(sectionNameBgSprite, 1);
 
                 var sectionNameLabel = cc.LabelTTF.create(chapterTable[index].chapter, "黑体", 25);
                 sectionNameLabel.setPosition(point);
-                scrollViewLayer.addChild(sectionNameLabel);
+                scrollViewLayer.addChild(sectionNameLabel, 1);
 
                 this._sectionItem[index] = sectionItem;
             }
@@ -159,7 +160,7 @@ var TaskLayer = cc.Layer.extend({
 
         this._scrollView = cc.ScrollView.create(cc.size(640, 768), scrollViewLayer);
         this._scrollView.setPosition(GAME_BG_POINT);
-        this._scrollView.setBounceable(false);
+        this._scrollView.setBounceable(true);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
@@ -172,8 +173,9 @@ var TaskLayer = cc.Layer.extend({
 
         var task = gameData.task;
 
-        this._scrollView.setContentSize(cc.size(640 * task.getChapter(), 768));
+
         this._scrollView.setContentOffset(this._getScrollViewOffset(), true);
+
 
         var section = task.getSection();
         for (var key in this._sectionItem) {
@@ -182,11 +184,11 @@ var TaskLayer = cc.Layer.extend({
             if (sectionItem != undefined) {
                 var index = parseInt(key);
 
-                if (index <= section) {
-                    sectionItem.setEnabled(true);
-                } else {
-                    sectionItem.setEnabled(false);
+                if (index > section) {
+                    sectionItem.setIconImage(main_scene_image.icon200);
                     sectionItem.setColor(cc.c3b(150, 150, 150));
+                } else {
+                    sectionItem.setIconImage(null);
                 }
             }
         }
@@ -195,12 +197,21 @@ var TaskLayer = cc.Layer.extend({
     _getScrollViewOffset: function () {
         cc.log("TaskLayer _getScrollViewOffset");
 
+        this._index = Math.max(this._index, 1);
+        this._index = Math.min(this._index, TASK_CHAPTER_COUNT);
+
         return cc.p(-640 * (this._index - 1), 0);
     },
 
     _onClickSection: function (id) {
         return function () {
             cc.log("TaskLayer _onClickSection " + id);
+
+            if (id > gameData.task.getSection()) {
+                TipLayer.tip("当前关卡未打开");
+
+                return;
+            }
 
             MainScene.getInstance().switch(ExploreLayer.create(id));
         }

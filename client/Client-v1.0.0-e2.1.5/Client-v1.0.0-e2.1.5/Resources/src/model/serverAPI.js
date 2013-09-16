@@ -34,11 +34,4 @@ lzWindow.pomelo.init({
         cc.log(data);
         connectSuccess = false;
     });
-
-    lzWindow.pomelo.on("onMessage", function (data) {
-        cc.log("***** on message:");
-        cc.log(data);
-
-        gameData.message.push(data.msg);
-    });
 });

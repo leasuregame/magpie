@@ -79,7 +79,9 @@ var LazyLayer = cc.Layer.extend({
             cloudLayer.retain();
         }
 
-        cc.Director.getInstance().getRunningScene().addChild(cloudLayer);
+        if (cloudLayer.getParent() == null) {
+            cc.Director.getInstance().getRunningScene().addChild(cloudLayer);
+        }
     };
 
     LazyLayer.closeCloudLayer = function () {

@@ -21,7 +21,6 @@ var Rank = Entity.extend({
     init: function () {
         cc.log("Rank init");
 
-
         this.sync();
 
         return true;

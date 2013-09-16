@@ -68,6 +68,16 @@ var BattleCardNode = cc.Node.extend({
         this._tipLabel = cc.LabelTTF.create("", '黑体', 60);
         this.addChild(this._tipLabel);
 
+        this._hpLabel = cc.LabelTTF.create(this._hp, '黑体', 25);
+        this._hpLabel.setColor(cc.c3b(255, 0, 0));
+        this._hpLabel.setPosition(cc.p(-40, -100));
+        this.addChild(this._hpLabel);
+
+        this._atkLabel = cc.LabelTTF.create(data.atk, '黑体', 25);
+        this._atkLabel.setColor(cc.c3b(105, 218, 255));
+        this._atkLabel.setPosition(cc.p(40, -100));
+        this.addChild(this._atkLabel);
+
         return true;
     },
 
@@ -97,6 +107,8 @@ var BattleCardNode = cc.Node.extend({
         }
 
         this._hpProgress.setAllValue(this._maxHp, this._hp, 0.5);
+
+        this._hpLabel.setString(this._hp);
     },
 
     setOpacity: function (opacity) {

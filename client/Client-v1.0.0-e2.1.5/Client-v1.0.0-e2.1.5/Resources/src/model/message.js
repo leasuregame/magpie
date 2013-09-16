@@ -62,6 +62,13 @@ var Message = Entity.extend({
                 var msg = data.msg;
 
                 that.update(msg);
+
+                lzWindow.pomelo.on("onMessage", function (data) {
+                    cc.log("***** on message:");
+                    cc.log(data);
+
+                    gameData.message.push(data.msg);
+                });
             } else {
                 cc.log("sync fail");
 

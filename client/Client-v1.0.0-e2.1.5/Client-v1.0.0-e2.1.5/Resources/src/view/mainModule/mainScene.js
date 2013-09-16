@@ -15,12 +15,6 @@
 var MainScene = cc.Scene.extend({
     _nowLayer: null,
 
-    onEnter: function () {
-        cc.log("MainScene onEnter");
-
-        this._super();
-    },
-
     init: function () {
         cc.log("MainScene init");
 
@@ -37,7 +31,7 @@ var MainScene = cc.Scene.extend({
     },
 
     switchLayer: function (runLayer) {
-        cc.log("MainScene switchMenu");
+        cc.log("MainScene switchLayer");
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
         if (!(this._nowLayer instanceof runLayer)) {
@@ -46,7 +40,12 @@ var MainScene = cc.Scene.extend({
     },
 
     switch: function (layerObject) {
-        if (this._nowLayer != null) this.removeChild(this._nowLayer);
+        cc.log("MainScene switch");
+
+        if (this._nowLayer != null) {
+            this.removeChild(this._nowLayer);
+        }
+
         this._nowLayer = layerObject;
         this.addChild(this._nowLayer);
     }

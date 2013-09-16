@@ -68,11 +68,9 @@ var Lottery = Entity.extend({
                     player.add("fragment", 1);
                 }
 
-                cb("success");
+                cb(card);
             } else {
                 cc.log("lottery fail");
-
-                cb("fail");
             }
         });
     }

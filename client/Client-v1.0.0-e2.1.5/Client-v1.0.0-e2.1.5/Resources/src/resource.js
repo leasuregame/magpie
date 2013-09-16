@@ -69,6 +69,7 @@ var main_scene_image = {
     ladder2: main_scene_path + "ladder2.png",
     tower1: main_scene_path + "tower1.png",
     tower2: main_scene_path + "tower2.png",
+    cloud: main_scene_path + "cloud.png",
 
     card0: main_scene_path + "card0.png",
 
@@ -439,7 +440,8 @@ var main_scene_image = {
     icon211: main_scene_path + "icon211.png",
     icon212: main_scene_path + "icon212.png",
     icon213: main_scene_path + "icon213.png",
-    icon214: main_scene_path + "icon214.png"
+    icon214: main_scene_path + "icon214.png",
+    icon215: main_scene_path + "icon215.png"
 };
 
 var main_scene_res = [
@@ -480,26 +482,16 @@ for (var taskId = 1; taskId <= 5; ++taskId) {
 }
 
 var effectConfig = [
-    4,
-    7,
-    9,
-    14,
     10,
-    8,
-    19,
-    8,
-    12
+    10,
+    10,
+    5
 ];
 
 var effectRect = [
-    cc.rect(0, 0, 124, 60),
-    cc.rect(0, 0, 124, 60),
-    cc.rect(0, 0, 124, 60),
-    cc.rect(0, 0, 124, 60),
     cc.rect(0, 0, 160, 80),
     cc.rect(0, 0, 132, 132),
-    cc.rect(0, 0, 600, 713),
-    cc.rect(0, 0, 600, 713),
+    cc.rect(0, 0, 640, 218),
     cc.rect(0, 0, 600, 713)
 ];
 

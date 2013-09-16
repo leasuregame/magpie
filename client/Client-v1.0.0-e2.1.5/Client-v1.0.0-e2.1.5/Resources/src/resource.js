@@ -477,7 +477,7 @@ for (var cardId = 1001; cardId <= 1003; ++cardId) {
     main_scene_image["card" + cardId + "_full1"] = main_scene_path + "card" + cardId + "_full1.png";
 }
 
-for (var taskId = 1; taskId <= 5; ++taskId) {
+for (var taskId = 1; taskId <= 50; ++taskId) {
     main_scene_image["task" + taskId] = main_scene_path + "task" + taskId + ".png";
 }
 

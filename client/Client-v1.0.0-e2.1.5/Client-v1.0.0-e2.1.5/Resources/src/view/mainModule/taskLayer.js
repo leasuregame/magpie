@@ -12,24 +12,69 @@
  * */
 
 
-var TASK_CHAPTER_COUNT = 10;
-var TASK_SECTION_COUNT = 5;
-
 var TaskLayer = cc.Layer.extend({
     _index: 0,
-
-    _turnLeftItem: null,
-    _turnRightItem: null,
-
+    _wipeOutItem: null,
     _sectionItem: {},
-    _wipeOutItemList: {},
-    _scrollViewLayer: null,
     _scrollView: null,
-    _beganOffset: null,
     _locate: [
         cc.p(160, 550),
         cc.p(200, 270),
         cc.p(440, 440),
+        cc.p(480, 260),
+        cc.p(360, 70),
+
+        cc.p(160, 550),
+        cc.p(200, 270),
+        cc.p(440, 470),
+        cc.p(480, 260),
+        cc.p(340, 70),
+
+        cc.p(160, 550),
+        cc.p(210, 315),
+        cc.p(415, 480),
+        cc.p(480, 260),
+        cc.p(360, 70),
+
+        cc.p(160, 550),
+        cc.p(200, 290),
+        cc.p(420, 470),
+        cc.p(480, 260),
+        cc.p(360, 70),
+
+        cc.p(155, 550),
+        cc.p(200, 270),
+        cc.p(420, 470),
+        cc.p(480, 260),
+        cc.p(360, 70),
+
+        cc.p(160, 550),
+        cc.p(200, 290),
+        cc.p(440, 470),
+        cc.p(480, 260),
+        cc.p(360, 70),
+
+        cc.p(160, 550),
+        cc.p(200, 270),
+        cc.p(440, 450),
+        cc.p(480, 260),
+        cc.p(360, 70),
+
+        cc.p(160, 550),
+        cc.p(200, 270),
+        cc.p(440, 440),
+        cc.p(480, 260),
+        cc.p(360, 70),
+
+        cc.p(140, 550),
+        cc.p(200, 270),
+        cc.p(420, 470),
+        cc.p(480, 260),
+        cc.p(360, 70),
+
+        cc.p(140, 550),
+        cc.p(200, 270),
+        cc.p(430, 460),
         cc.p(480, 260),
         cc.p(360, 70)
     ],
@@ -48,7 +93,20 @@ var TaskLayer = cc.Layer.extend({
 
         this.setTouchEnabled(true);
 
-        this._index = 0;
+        this._index = gameData.task.getChapter();
+
+        this._wipeOutItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            main_scene_image.icon15,
+            this._onClickWipeOut,
+            this
+        );
+        this._wipeOutItem.setPosition(cc.p(530 + x, 50));
+
+        var menu = cc.Menu.create(this._wipeOutItem);
+        this.addChild(menu);
 
         // 读配置表
         var chapterTitleTable = outputTables.chapter_title.rows;
@@ -68,16 +126,6 @@ var TaskLayer = cc.Layer.extend({
             bgSprite.setPosition(x, 0);
             scrollViewLayer.addChild(bgSprite);
 
-            var wipeOutItem = cc.MenuItemImage.createWithIcon(
-                main_scene_image.button9,
-                main_scene_image.button9s,
-                main_scene_image.icon15,
-                this._onClickWipeOut(i),
-                this
-            );
-            wipeOutItem.setPosition(cc.p(530 + x, 50));
-            lazyMenu.addChild(wipeOutItem);
-
             var titlesLabel = StrokeLabel.create(chapterTitleTable[i].name, "黑体", 30);
             titlesLabel.setPosition(cc.p(320 + x, 745));
             scrollViewLayer.addChild(titlesLabel);
@@ -86,16 +134,16 @@ var TaskLayer = cc.Layer.extend({
                 var index = 5 * (i - 1) + j;
 
                 var sectionItem = cc.MenuItemImage.create(
-                    main_scene_image["task" + ((index - 1) % 5 + 1)],
-                    main_scene_image["task" + ((index - 1) % 5 + 1)],
+                    main_scene_image["task" + index],
+                    main_scene_image["task" + index],
                     this._onClickSection(index),
                     this
                 );
                 sectionItem.setAnchorPoint(cc.p(0.5, 0));
-                sectionItem.setPosition(cc.p(this._locate[j - 1].x + x, this._locate[j - 1].y));
+                sectionItem.setPosition(cc.p(this._locate[index - 1].x + x, this._locate[index - 1].y));
                 lazyMenu.addChild(sectionItem);
 
-                var point = cc.p(this._locate[j - 1].x + x, this._locate[j - 1].y - 20);
+                var point = cc.p(this._locate[index - 1].x + x, this._locate[index - 1].y - 20);
 
                 var sectionNameBgSprite = cc.Sprite.create(main_scene_image.icon3);
                 sectionNameBgSprite.setPosition(point);
@@ -104,18 +152,17 @@ var TaskLayer = cc.Layer.extend({
                 var sectionNameLabel = cc.LabelTTF.create(chapterTable[index].chapter, "黑体", 25);
                 sectionNameLabel.setPosition(point);
                 scrollViewLayer.addChild(sectionNameLabel);
+
+                this._sectionItem[index] = sectionItem;
             }
         }
 
         this._scrollView = cc.ScrollView.create(cc.size(640, 768), scrollViewLayer);
-        this._scrollView.setContentSize(cc.size(640 * TASK_CHAPTER_COUNT, 768));
         this._scrollView.setPosition(GAME_BG_POINT);
         this._scrollView.setBounceable(false);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
-
-        this._beganOffset = this._scrollView.getContentOffset();
 
         return true;
     },
@@ -123,8 +170,32 @@ var TaskLayer = cc.Layer.extend({
     update: function () {
         cc.log("TaskLayer update");
 
-        var offset = cc.p(-640 * this._index, 0);
-        this._scrollView.setContentOffset(offset, true);
+        var task = gameData.task;
+
+        this._scrollView.setContentSize(cc.size(640 * task.getChapter(), 768));
+        this._scrollView.setContentOffset(this._getScrollViewOffset(), true);
+
+        var section = task.getSection();
+        for (var key in this._sectionItem) {
+            var sectionItem = this._sectionItem[key];
+
+            if (sectionItem != undefined) {
+                var index = parseInt(key);
+
+                if (index <= section) {
+                    sectionItem.setEnabled(true);
+                } else {
+                    sectionItem.setEnabled(false);
+                    sectionItem.setColor(cc.c3b(150, 150, 150));
+                }
+            }
+        }
+    },
+
+    _getScrollViewOffset: function () {
+        cc.log("TaskLayer _getScrollViewOffset");
+
+        return cc.p(-640 * (this._index - 1), 0);
     },
 
     _onClickSection: function (id) {
@@ -154,23 +225,17 @@ var TaskLayer = cc.Layer.extend({
         this._scrollView.unscheduleAllCallbacks();
         this._scrollView.stopAllActions();
 
+        var beganOffset = this._getScrollViewOffset();
         var endOffset = this._scrollView.getContentOffset();
-        var offset = this._beganOffset;
+        var len = beganOffset.x - endOffset.x;
 
-        if (this._beganOffset.x - endOffset.x > 100) {
-            offset = cc.p(Math.floor(endOffset.x / 640) * 640, 0);
-        } else if (this._beganOffset.x - endOffset.x < -100) {
-            offset = cc.p(Math.ceil(endOffset.x / 640) * 640, 0);
-        } else {
-            if (Math.abs(offset.x) % 640 > 320) {
-                offset = cc.p(Math.floor(offset.x / 640) * 640, 0);
-            } else {
-                offset = cc.p(Math.ceil(offset.x / 640) * 640, 0);
-            }
+        if (len > 30) {
+            this._index = 1 - Math.floor(endOffset.x / 640);
+        } else if (len < -30) {
+            this._index = 1 - Math.ceil(endOffset.x / 640);
         }
 
-        this._scrollView.setContentOffset(offset, true);
-        this._beganOffset = offset;
+        this.update();
     },
 
     /**

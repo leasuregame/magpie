@@ -12,6 +12,9 @@
  * */
 
 
+var TASK_CHAPTER_COUNT = 10;
+var TASK_SECTION_COUNT = 5;
+
 var Task = Entity.extend({
     _id: 0,
     _progress: 0,
@@ -38,22 +41,16 @@ var Task = Entity.extend({
         this._progress = data.progress;
     },
 
-    getProgress: function () {
-        cc.log("Task getProgress");
-
-        return (this._progress / this._maxProgress);
-    },
-
     getChapter: function () {
         cc.log("Task getChapter");
 
-        return ((this._id / 10 - 1) / 5 + 1);
+        return Math.ceil((this.getSection()) / TASK_SECTION_COUNT);
     },
 
     getSection: function () {
         cc.log("Task getSection");
 
-        return ((this._id / 10 - 1) % 5 + 1);
+        return Math.ceil((this._id) / TASK_CHAPTER_COUNT);
     },
 
     getProgress: function (index) {

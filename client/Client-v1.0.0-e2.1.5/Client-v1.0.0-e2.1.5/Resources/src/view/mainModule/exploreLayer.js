@@ -61,17 +61,6 @@ var ExploreLayer = cc.Layer.extend({
         line2Icon.setPosition(cc.p(360, 797));
         this.addChild(line2Icon);
 
-        this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
-        this._turnLeftSprite.setRotation(180);
-        this._turnLeftSprite.setPosition(cc.p(60, 520));
-//        this._turnLeftSprite.setVisible(false);
-        this.addChild(this._turnLeftSprite, 1);
-
-        this._turnRightSprite = cc.Sprite.create(main_scene_image.icon37);
-        this._turnRightSprite.setPosition(cc.p(660, 520));
-//        this._turnRightSprite.setVisible(false);
-        this.addChild(this._turnRightSprite, 1);
-
         var titleIndex = Math.floor((this._index - 1) / 5) + 1;
         var titleLabel = cc.LabelTTF.create(outputTables.chapter_title.rows[titleIndex].name, "黑体", 40);
         titleLabel.setPosition(cc.p(360, 1005));

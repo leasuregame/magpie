@@ -129,6 +129,7 @@ var TaskLayer = cc.Layer.extend({
             scrollViewLayer.addChild(bgSprite);
 
             var titlesLabel = StrokeLabel.create(chapterTitleTable[i].name, "黑体", 30);
+            titlesLabel.setColor(cc.c3b(255, 240, 170));
             titlesLabel.setPosition(cc.p(320 + x, 745));
             scrollViewLayer.addChild(titlesLabel);
 
@@ -153,6 +154,7 @@ var TaskLayer = cc.Layer.extend({
                 scrollViewLayer.addChild(sectionNameBgSprite, 1);
 
                 var sectionNameLabel = cc.LabelTTF.create(chapterTable[index].chapter, "黑体", 25);
+                sectionNameLabel.setColor(cc.c3b(255, 240, 170));
                 sectionNameLabel.setPosition(point);
                 scrollViewLayer.addChild(sectionNameLabel, 1);
 

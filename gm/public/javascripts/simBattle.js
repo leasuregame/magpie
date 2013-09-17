@@ -118,10 +118,12 @@ function submitBattle() {
         url:url,
         type:"post",
         success:function(msg) {
-            $("#tip").html("战报：模拟战斗结束！！！");
+          //  $("#tip").html("战报：模拟战斗结束！！！");
           //  console.log(msg.info);
-            var report = msg.info;
-            setReport(report);
+            if(msg.type == "sussess") {
+                var report = msg.info;
+                setReport(report);
+            }
         }
     });
 };

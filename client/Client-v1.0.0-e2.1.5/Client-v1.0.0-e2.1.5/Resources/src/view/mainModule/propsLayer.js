@@ -44,12 +44,12 @@ var PropsLayer = cc.Layer.extend({
         moneyIcon.setPosition(cc.p(410, 934));
         this.addChild(moneyIcon);
 
-        this._goldLabel = cc.LabelTTF.create(0, "黑体", 20);
+        this._goldLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
         this._goldLabel.setPosition(cc.p(288, 932));
         this.addChild(this._goldLabel);
 
-        this._moneyLabel = cc.LabelTTF.create(0, "黑体", 20);
+        this._moneyLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
         this._moneyLabel.setPosition(cc.p(435, 932));
         this.addChild(this._moneyLabel);
@@ -90,7 +90,7 @@ var PropsLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        var nameLabel = StrokeLabel.create("经验卡", "黑体", 25);
+        var nameLabel = StrokeLabel.create("经验卡", "STHeitiTC-Medium", 25);
         nameLabel.setColor(cc.c3b(255, 252, 175));
         nameLabel.setAnchorPoint(cc.p(0, 0.5));
         nameLabel.setPosition(cc.p(200, 850));
@@ -142,7 +142,7 @@ var PropsLayer = cc.Layer.extend({
         bgSprite.setPosition(cc.p(360, 580));
         lazyLayer.addChild(bgSprite);
 
-        var titleLabel = StrokeLabel.create("购买道具", "黑体", 30);
+        var titleLabel = StrokeLabel.create("购买道具", "STHeitiTC-Medium", 30);
         titleLabel.setColor(cc.c3b(255, 252, 175));
         titleLabel.setPosition(cc.p(360, 700));
         lazyLayer.addChild(titleLabel);

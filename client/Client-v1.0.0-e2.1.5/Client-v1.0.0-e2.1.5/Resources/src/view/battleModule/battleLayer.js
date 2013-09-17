@@ -49,13 +49,13 @@ var BatterLayer = cc.Layer.extend({
         bgSprite.setPosition(cc.p(40, 0));
         this.addChild(bgSprite);
 
-        this._tipLabel = cc.LabelTTF.create("", "黑体", 30);
+        this._tipLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 30);
         this._tipLabel.setAnchorPoint(cc.p(0, 0));
         this._tipLabel.setPosition(150, 20);
         this.addChild(this._tipLabel);
 
         for (var i = 1; i <= 12; ++i) {
-            label = cc.LabelTTF.create(i, "黑体", 60);
+            label = cc.LabelTTF.create(i, "STHeitiTC-Medium", 60);
             label.setColor(cc.c3b(255, 255, 0));
             this.addChild(label, 1);
             label.setPosition(this._locate[i].x - 70, this._locate[i].y + 50);

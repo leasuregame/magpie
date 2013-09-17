@@ -14,6 +14,7 @@
 
 var TASK_CHAPTER_COUNT = 10;
 var TASK_SECTION_COUNT = 5;
+var TASK_POINTS_COUNT = 10;
 
 var Task = Entity.extend({
     _id: 0,
@@ -58,13 +59,13 @@ var Task = Entity.extend({
 
         var progress = {};
         if (index == this._id) {
-            progress.points = this._points;
+            progress.maxProgress = this._maxProgress;
             progress.progress = this._progress;
         } else {
-            progress.points = outputTables.task.rows[index].points;
+            progress.maxProgress = outputTables.task.rows[index].points;
 
             if (index < this._id) {
-                progress.progress = progress.points;
+                progress.progress = progress.maxProgress;
             } else {
                 progress.progress = 0;
             }
@@ -94,11 +95,11 @@ var Task = Entity.extend({
                 var msg = data.msg;
 
                 var player = gameData.player;
-                player.update({
+
+                player.adds({
                     exp: msg.exp_obtain,
                     money: msg.money_obtain,
-                    power: -msg.power_consume,
-                    fragment: msg.fragment ? 1 : 0
+                    power: -msg.power_consume
                 });
 
                 var backData = {
@@ -113,7 +114,7 @@ var Task = Entity.extend({
 
                 cb(backData);
             } else {
-                cc.log("fail");
+                cc.log("explore fail");
             }
         });
     },

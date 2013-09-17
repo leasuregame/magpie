@@ -70,11 +70,14 @@ var main_scene_image = {
     tower1: main_scene_path + "tower1.png",
     tower2: main_scene_path + "tower2.png",
     cloud: main_scene_path + "cloud.png",
+    gameFrame: main_scene_path + "gameFrame.png",
 
     card0: main_scene_path + "card0.png",
 
     spirit1: main_scene_path + "spirit1.png",
+    spirit_side1: main_scene_path + "spirit_side1.png",
 
+    progress1: main_scene_path + "progress1.png",
     progress2: main_scene_path + "progress2.png",
     progress3: main_scene_path + "progress3.png",
     progress4: main_scene_path + "progress4.png",
@@ -441,7 +444,9 @@ var main_scene_image = {
     icon212: main_scene_path + "icon212.png",
     icon213: main_scene_path + "icon213.png",
     icon214: main_scene_path + "icon214.png",
-    icon215: main_scene_path + "icon215.png"
+    icon215: main_scene_path + "icon215.png",
+    icon216: main_scene_path + "icon216.png",
+    icon217: main_scene_path + "icon217.png"
 };
 
 var main_scene_res = [

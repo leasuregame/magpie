@@ -141,7 +141,7 @@ var SignInLayer = LazyLayer.extend({
         signInCountIcon.setPosition(cc.p(235, 470));
         this.addChild(signInCountIcon);
 
-        this._signInCountLabel = cc.LabelTTF.create(30, "黑体", 20);
+        this._signInCountLabel = cc.LabelTTF.create(30, "STHeitiTC-Medium", 20);
         this._signInCountLabel.setPosition(cc.p(330, 470));
         this.addChild(this._signInCountLabel);
 
@@ -188,7 +188,7 @@ var SignInLayer = LazyLayer.extend({
                     goodsSprite.setPosition(offset);
                     rewardLabel.addChild(goodsSprite);
 
-                    var valueLabel = cc.LabelTTF.create("+" + rewardList[i][key], "黑体", 16);
+                    var valueLabel = cc.LabelTTF.create("+" + rewardList[i][key], "STHeitiTC-Medium", 16);
                     valueLabel.setAnchorPoint(cc.p(1, 0));
                     valueLabel.setPosition(cc.p(offset.x + 31, offset.y - 33));
                     rewardLabel.addChild(valueLabel);

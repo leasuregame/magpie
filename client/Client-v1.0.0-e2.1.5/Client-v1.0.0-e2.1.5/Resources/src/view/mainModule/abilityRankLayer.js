@@ -64,7 +64,7 @@ var AbilityRankLayer = cc.Layer.extend({
             nameIcon.setPosition(cc.p(180, y + 70));
             scrollViewLayer.addChild(nameIcon);
 
-            var nameLabel = cc.LabelTTF.create(this._abilityRankList[i].name, "黑体", 22);
+            var nameLabel = cc.LabelTTF.create(this._abilityRankList[i].name, "STHeitiTC-Medium", 22);
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
             nameLabel.setPosition(cc.p(115, y + 70));
             scrollViewLayer.addChild(nameLabel);
@@ -104,7 +104,7 @@ var AbilityRankLayer = cc.Layer.extend({
         var label = cc.Scale9Sprite.create(main_scene_image.bg16);
         label.setContentSize(cc.size(200, 270));
 
-        this._nameLabel = cc.LabelTTF.create("", "黑体", 22);
+        this._nameLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
         this._nameLabel.setPosition(cc.p(98, 230));
         label.addChild(this._nameLabel);
 

@@ -18,6 +18,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
     _nameLabel: null,
     _expProgress: null,
     _lvLabel: null,
+    _vipSprite: null,
     _goldLabel: null,
     _moneyLabel: null,
     _powerLabel: null,
@@ -53,10 +54,6 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this._lvLabel.setPosition(cc.p(60, 60));
         this.addChild(this._lvLabel, 2);
 
-        var vipSprite = cc.Sprite.create(main_scene_image.vip5);
-        vipSprite.setPosition(cc.p(410, 83));
-        this.addChild(vipSprite, 2);
-
         this._goldLabel = cc.LabelTTF.create("0", '黑体', 22);
         this._goldLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._goldLabel.setPosition(cc.p(580, 83));
@@ -79,6 +76,18 @@ var PlayerHeaderLabel = cc.Layer.extend({
         cc.log("PlayerHeaderLabel update");
 
         var player = gameData.player;
+
+        if (this._vipSprite) {
+            this._vipSprite.removeFromParent();
+        }
+
+        var vipLv = player.get("vip");
+
+        if (vipLv) {
+            this._vipSprite = cc.Sprite.create(main_scene_image["vip" + vipLv]);
+            this._vipSprite.setPosition(cc.p(60, 60));
+            this.addChild(this._vipSprite, 2);
+        }
 
         this._expProgress.setAllValue(player.get("exp"), player.get("maxExp"));
         this._nameLabel.setString(player.get("name"));

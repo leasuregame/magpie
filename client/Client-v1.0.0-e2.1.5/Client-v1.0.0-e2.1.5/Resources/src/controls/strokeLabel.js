@@ -24,7 +24,7 @@ var StrokeLabel = cc.Node.extend({
         if (!this._super()) return false;
 
         var string = arg[0];
-        var fontName = arg[1] || "黑体";
+        var fontName = arg[1] || "STHeitiTC-Medium";
         var fontSize = arg[2] || 20;
         var dimensions = arg[3] || cc.size(0, arg[2]);
         var alignment = arg[4] || cc.TEXT_ALIGNMENT_LEFT;

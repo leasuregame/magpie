@@ -42,6 +42,22 @@ var Player = Entity.extend({
     init: function (data) {
         cc.log("Player init");
 
+        this.update(data);
+
+        gameData.cardLibrary.init();
+        gameData.message.init();
+        gameData.signIn.init();
+        gameData.rank.init();
+        gameData.achievement.init();
+
+        cc.log(this);
+
+        return true;
+    },
+
+    update: function (data) {
+        cc.log("Player update");
+
         this.set("id", data.id);
         this.set("createTime", data.createTime);
         this.set("userId", data.userId);
@@ -58,55 +74,36 @@ var Player = Entity.extend({
         this.set("energy", data.energy);
         this.set("vip", data.vip);
         this.set("cash", data.cash);
-        this.set("maxExp", outputTables.player_upgrade.rows[this._lv].exp);
 
-        gameData.cardList.init(data.cards);
-        gameData.lineUp.init(data.lineUp);
-        gameData.task.init(data.task);
-        gameData.pass.init(data.pass);
-        gameData.spirit.init(data.spiritor);
-        gameData.spiritPool.init(data.spiritPool);
-        gameData.cardLibrary.init();
-        gameData.friend.init({
+        if(this._lv) {
+            this.set("maxExp", outputTables.player_upgrade.rows[this._lv].exp);
+        }
+
+        if(data.cards) gameData.cardList.init(data.cards);
+        if(data.lineUp) gameData.lineUp.init(data.lineUp);
+        if(data.task) gameData.task.init(data.task);
+        if(data.pass) gameData.pass.init(data.pass);
+        if(data.spiritor) gameData.spirit.init(data.spiritor);
+        if(data.spiritPool) gameData.spiritPool.init(data.spiritPool);
+
+
+        if(data.friends) gameData.friend.init({
             friendList: data.friends,
             giveBlessCount: data.dailyGift.gaveBless.count,
             giveBlessList: data.dailyGift.gaveBless.receivers,
             receiveBlessCount: data.dailyGift.receivedBless.count,
             receiveBlessList: data.dailyGift.receivedBless.givers
         });
-        gameData.treasureHunt.init({
+
+        if(data.dailyGift.lotteryCount && data.dailyGift.lotteryFreeCount) gameData.treasureHunt.init({
             count: data.dailyGift.lotteryCount,
             freeCount: data.dailyGift.lotteryFreeCount
         });
-        gameData.shop.init({
+
+        if(data.vipBox) gameData.shop.init({
             useVipBoxList: data.vipBox
         });
-        gameData.message.init();
-        gameData.signIn.init();
-        gameData.rank.init();
-        gameData.achievement.init();
 
-        cc.log(this);
-
-        return true;
-    },
-
-    update: function (data) {
-        cc.log("Player update");
-
-        if (data) {
-            this.adds(data);
-        }
-
-        var table = outputTables.player_upgrade.rows;
-
-        this._maxExp = table[this._lv].exp;
-
-        if (this._exp >= this._maxExp) {
-            this._lv += 1;
-            this._exp -= this._maxExp;
-            this._maxExp = table[this._lv].exp;
-        }
     }
 });
 

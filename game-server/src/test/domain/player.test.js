@@ -255,7 +255,7 @@ describe("Player Object", function () {
             var player = new Player({
                 lv: 30,
                 power: {
-                    time: 0,
+                    time: Date.now(),
                     value: 5
                 }
             });
@@ -278,7 +278,7 @@ describe("Player Object", function () {
             var player = new Player({
                 lv: 30,
                 power: {
-                    time: 0,
+                    time: Date.now(),
                     value: 5
                 }
             });
@@ -324,11 +324,10 @@ describe("Player Object", function () {
                     4: new Card({id: 4, tableId: 19, star: 4}),
                     5: new Card({id: 5, tableId: 25, star: 5}),
                     6: new Card({id: 6, tableId: 30, star: 5})
-
                 }
             });
 
-
+            console.log('-a-', player.activeCards());
             player.getAbility().should.equal(11436);
             player.ability.should.equal(11436);
             player.lineUp = '00:1,01:2,02:3,10:4,11:6';
@@ -554,19 +553,33 @@ describe("Player Object", function () {
 
 
             var player = new Player();
-            player.pass.layer = 10;
+            player.pass.should.eql({layer: 0, mark: []});
+
             player.setPassMark(-1);
-            //  player.pass.layer.should.equal(10);
-
             player.setPassMark(101);
-            //  player.pass.layer.should.equal(10);
-
             player.setPassMark(11);
-            //player.pass.layer.should.equal(10);
-            player.pass.mark[10].should.equal(1);
-
             player.setPassMark(12);
 
+            player = new Player({pass: {layer: 10, mark: []}});
+            player.setPassMark(1);
+            player.pass.should.eql({layer: 10, mark: [1]});
+            player.hasPassMark(1).should.equal(1);
+            for(var i =1; i <= 10; i++) {
+                player.setPassMark(i);
+            }
+            player.pass.mark.should.eql([1023]);
+            player.pass.mark[0].toString(2).should.equal('1111111111');
+
+            player = new Player({pass: {layer: 100, mark: []}});
+            for(var i = 1; i <= 100; i++) {
+                player.setPassMark(i);
+            }
+            player.pass.mark.should.eql([
+                1073741823,
+                1073741823,
+                1073741823,
+                1023
+            ]);
         });
 
     });
@@ -577,13 +590,41 @@ describe("Player Object", function () {
         it('should can get has passmark with given layer', function () {
 
             var player = new Player();
-            player.pass.layer = 10;
+            for(var i = 1; i <= 100; i++) {
+                player.hasPassMark(i).should.equal(0);
+            }
 
-            player.hasPassMark(11).should.equal(false);
-            player.setPassMark(11);
-            player.hasPassMark(11).should.equal(true);
-            player.hasPassMark(12).should.equal(false);
+            var player = new Player({
+                pass: {
+                    layer: 50,
+                    mark: [1023]
+                }
+            });
+            for (var i = 1; i <= 10; i++) {
+                player.hasPassMark(i).should.equal(1);
+            }
+            for (var i = 11; i <= 100; i++) {
+                player.hasPassMark(i).should.equal(0);
+            }
 
+            var player = new Player({
+                pass: {
+                    layer: 100,
+                    mark: []
+                }
+            });
+            for(var i = 1; i <= 100; i++) {
+                player.setPassMark(i);
+            }
+            player.pass.mark.should.eql([
+                1073741823,
+                1073741823,
+                1073741823,
+                1023
+            ]);
+            for(var i = 1; i <= 100; i++) {
+                player.hasPassMark(i).should.equal(1);
+            }
         });
 
     });
@@ -844,5 +885,65 @@ describe("Player Object", function () {
             });
         });
     });
+
+    describe('.setTaskMark()', function(){
+        it('should can set the right task mark', function(){
+            var ply = new Player();
+            ply.task.should.eql({
+                id: 1,
+                progress: 0,
+                hasWin: false,
+                mark: []
+            });
+
+            ply.setTaskMark(1);
+            ply.task.mark.should.eql([1]);
+
+            ply.setTaskMark(10);
+            ply.task.mark.should.eql([513]);
+            ply.task.mark[0].toString(2).should.equal('1000000001');
+
+            for(var i = 1; i <= 30; i++) {
+                ply.setTaskMark(i);
+            }
+
+            ply.task.mark.length.should.equal(1);
+            ply.task.mark.should.eql([1073741823]);
+            ply.task.mark[0].toString(2).should.equal('111111111111111111111111111111');
+        
+            ply.setTaskMark(31);
+            ply.task.mark.should.eql([1073741823, 1]);
+            ply.setTaskMark(50);
+            ply.task.mark.should.eql([1073741823, 524289]);
+            ply.setTaskMark(60);
+            ply.task.mark.should.eql([1073741823, 537395201]);
+
+            for(var i = 31; i <= 60; i++) {
+                ply.setTaskMark(i);
+            }
+            ply.task.mark.should.eql([1073741823, 1073741823]);
+        });
+    });
+
+    describe('.hasTaskMark()', function(){
+        it('should can check if has mark for the given chapeter', function(){
+            var ply = new Player();
+            ply.hasTaskMark(1).should.equal(0);
+
+            for(var i = 1; i <= 50; i++) {
+                ply.hasTaskMark(i).should.equal(0);
+            }
+
+            ply.setTaskMark(1);
+            ply.hasTaskMark(1).should.equal(1);
+
+            for(var i = 1; i <= 50; i++){
+                ply.setTaskMark(i);
+                ply.hasTaskMark(i).should.equal(1);
+            }
+            ply.task.mark.should.eql([1073741823, 1048575]);
+        });
+    });
+
 
 });

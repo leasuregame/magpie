@@ -170,53 +170,37 @@ describe("Card Object", function() {
 
                 card.addPassiveSkill(new PassiveSkill({
                     id: 1,
+                    cardId: 1,
                     name: 'hp_improve',
                     value: 5.3
                 }));
 
                 card.addPassiveSkill(new PassiveSkill({
                     id: 2,
+                    cardId: 1,
                     name: 'atk_improve',
                     value: 10
                 }));
-
+                console.log(card.attributes);
                 card.toJson().should.eql({
                     id: 1,
-                    createTime: undefined,
-                    playerId: undefined,
                     tableId: 3,
-                    init_hp: 355,
-                    init_atk: 149,
-                    hp: 391,
-                    atk: 163,
-                    incs: {
-                        group_hp: 0,
-                        group_atk: 0,
-                        spirit_hp: 0,
-                        spirit_atk: 0,
-                        ps_hp: 36,
-                        ps_atk: 14,
-                        elixir_hp: 0,
-                        elixir_atk: 0
-                    },
-                    star: 3,
+                    hp: 370,
+                    atk: 170,
                     lv: 1,
                     exp: 0,
                     skillLv: 0,
                     skillPoint: 0,
-                    elixir: 0,
-                    hpAddition: 0,
-                    atkAddition: 0,
+                    elixirHp: 0,
+                    elixirAtk: 0,
                     passiveSkills: [{
                         id: 1,
-                        cardId: undefined,
-                      //  createTime: undefined,
+                        cardId: 1,
                         name: 'hp_improve',
                         value: 5.3
                     }, {
                         id: 2,
-                        cardId: undefined,
-                     //   createTime: undefined,
+                        cardId: 1,
                         name: 'atk_improve',
                         value: 10
                     }]

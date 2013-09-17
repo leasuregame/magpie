@@ -124,11 +124,12 @@ describe("Area Server", function() {
 								'pass',
 								'power',
 								'exp',
-								'lv'
+								'lv',
+								'spiritor'
 							]);
 							expect(data.msg.battleLog.winner).toEqual('own')
 							expect(data.msg.battleLog.rewards).hasProperties(['exp', 'skillPoint', 'spirit'])
-							expect(data.msg.pass).hasProperties(['layer', 'mark'])
+							expect(data.msg.pass).hasProperties(['layer', 'mark', 'mystical'])
 							expect(data.msg.battleLog).toBeBattleLog();
 
 							expect(data.msg.battleLog.rewards).hasProperties([

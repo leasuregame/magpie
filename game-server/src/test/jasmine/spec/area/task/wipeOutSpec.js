@@ -81,7 +81,6 @@ describe("Area Server", function() {
 						before_data = {
 							exp: res.data.exp,
 							money: res.data.money,
-							gold: res.data.gold,
 							skill_point: res.data.skillPoint
 						}
 					});
@@ -105,7 +104,6 @@ describe("Area Server", function() {
 							expect(data.msg.rewards).toEqual({
 								exp_obtain: res.data.exp - before_data.exp,
 								money_obtain: res.data.money - before_data.money,
-								gold_obtain: res.data.gold - before_data.gold,
 								skill_point: res.data.skillPoint - before_data.skill_point
 							});
 						});

@@ -9,7 +9,7 @@
   <Author>gaobin</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-09-11T20:04:48Z</Created>
-  <LastSaved>2013-09-17T02:24:50Z</LastSaved>
+  <LastSaved>2013-09-17T06:22:01Z</LastSaved>
   <Version>14.0</Version>
  </DocumentProperties>
  <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
@@ -19,10 +19,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8380</WindowHeight>
+  <WindowHeight>8640</WindowHeight>
   <WindowWidth>32520</WindowWidth>
-  <WindowTopX>1840</WindowTopX>
-  <WindowTopY>7300</WindowTopY>
+  <WindowTopX>1080</WindowTopX>
+  <WindowTopY>3840</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -1653,8 +1653,13 @@
  <Worksheet ss:Name="神秘关卡配置表">
   <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="82"/>
-   <Column ss:Index="8" ss:Width="69"/>
+   <Column ss:Width="75"/>
+   <Column ss:Width="39"/>
+   <Column ss:Width="33"/>
+   <Column ss:Index="5" ss:Width="105"/>
+   <Column ss:Width="81"/>
+   <Column ss:Width="75"/>
+   <Column ss:Width="69"/>
    <Column ss:Width="183"/>
    <Column ss:Width="243"/>
    <Column ss:Index="14" ss:Width="105" ss:Span="1"/>
@@ -1797,6 +1802,7 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
@@ -1804,13 +1810,13 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <Zoom>145</Zoom>
-   <PageLayoutZoom>145</PageLayoutZoom>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>10</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1839,12 +1845,18 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>11</ActiveRow>
-     <ActiveCol>10</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -221,7 +221,12 @@ var Player = (function(_super) {
         },
         pass: {
             layer: 0,
-            mark: []
+            mark: [],
+            mystical: {
+                diff: 1,
+                isTrigger: false,
+                isClear: false
+            }
         },
         dailyGift: {
             lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
@@ -306,10 +311,30 @@ var Player = (function(_super) {
 
     Player.prototype.incSpirit = function(val) {
         var spiritor = _.clone(this.spiritor);
+        var total_spirit = spiritor.spirit + val;
         var spiritorData = table.getTableItem('spirit', spiritor.lv)
-        if spiritor.spirit + lv >= spiritorData.spirit_need
-          spiritor.lv += 1
-          spiritor.spirit -= spiritorData.spirit_need
+        
+        while(!!spiritorData && total_spirit >= spiritorData.spirit_need) {
+            spiritor.lv += 1;
+            total_spirit -= spiritorData.spirit_need;
+            spiritorData = table.getTableItem('spirit', spiritor.lv);
+        }
+        spiritor.spirit = total_spirit;
+        this.set('spiritor', spiritor);
+    };
+
+    Player.prototype.incSpiritPoolExp = function(exp) {
+        var sp = _.clone(this.spiritPool);
+        var total_exp = sp.exp + exp;
+        var spData = table.getTableItem('spirit_pool', sp.lv);
+
+        while(!!spData && total_exp >= spData.exp_need) {
+            sp.lv += 1;
+            total_exp -= spData.exp_need;
+            spData = table.getTableItem('spirit_pool', sp.lv);
+        }
+        sp.exp = total_exp;
+        this.set('spiritPool', sp);
     };
 
     Player.prototype.save = function() {
@@ -467,13 +492,13 @@ var Player = (function(_super) {
         this.updatePower(power);
 
         // 更新dailyGift的power
-        var dg = _.clone(this.dailyGift);
+        var dg = utility.deepCopy(this.dailyGift);
         dg.powerGiven.push(hour);
         this.dailyGift = dg;
     };
 
     Player.prototype.updateGift = function(name, value) {
-        dg = _.clone(this.dailyGift);
+        dg = utility.deepCopy(this.dailyGift);
         dg[name] = value;
         this.dailyGift = dg;
     };
@@ -593,10 +618,25 @@ var Player = (function(_super) {
     };
 
     Player.prototype.incPass = function() {
-        var pass = _.clone(this.pass);
+        var pass = utility.deepCopy(this.pass);
         if (pass.layer >= 100)
             return;
         pass.layer++;
+        this.set('pass', pass);
+    };
+
+    Player.prototype.triggerMysticalPass = function(){
+        var pass = utility.deepCopy(this.pass);
+        pass.mystical.isTrigger = true;
+        pass.mystical.isClear = false;
+        this.set('pass', pass);
+    };
+
+    Player.prototype.clearMysticalPass = function(){
+        var pass = utility.deepCopy(this.pass);
+        pass.mystical.isClear = true;
+        pass.mystical.diff += 1;
+        pass.mystical.isTrigger = false;
         this.set('pass', pass);
     };
 
@@ -805,7 +845,7 @@ var executeVipPrivilege = function(player) {
     if (!player.isVip()) return;
 
     var pri = table.getTableItem('vip_privilege', player.vip);
-    var dg = _.clone(player.dailyGift);
+    var dg = utility.deepCopy(player.dailyGift);
     dg.lotteryFreeCount += pri.lottery_free_count;
     // 好友上限 ++
     dg.powerBuyCount += pri.buy_power_count;

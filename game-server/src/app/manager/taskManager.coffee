@@ -24,6 +24,7 @@ class Manager
       open_box_card: null
       battle_log: null
       fragment: false
+      isMomo: false
     }
 
     ### 检查是否体力充足 ###
@@ -41,14 +42,16 @@ class Manager
 
     cb(null, data, taskData.chapter_id, taskData.section_id)
 
-  @wipeOut: (player, type, cb) ->
-    funs = {task: @wipeOutTask, pass: @wipeOutPass}
-    funs[type](player, cb)
+  @wipeOut: (player, type, taskId, cb) ->
+    if type is 'pass'
+      @wipeOutPass player, cb
+    else if type is 'task'
+      @wipeOutTask player, taskId, cb
 
   @wipeOutPass: (player, cb) ->
     layer = player.pass.layer
 
-    rewards = {exp_obtain: 0, money_obtain: 0, skill_point: 0, gold_obtain: 0}
+    rewards = {exp_obtain: 0, money_obtain: 0, skill_point: 0}
     isWipeOut = false
     for id in _.range(1, layer)
       if not player.hasPassMark(id)
@@ -56,33 +59,32 @@ class Manager
         rewards.exp_obtain += parseInt(data.exp)
         rewards.money_obtain += parseInt(data.money)
         rewards.skill_point += parseInt(data.skill_point)
-
-        # 一定概率获得元宝，百分之5的概率获得10元宝
-        if utility.hitRate(5)
-          rewards.gold_obtain += 10
-
         # 标记为已扫荡
         player.setPassMark(id)
         isWipeOut = true
 
     player.increase('exp',  rewards.exp_obtain)
     player.increase('money', rewards.money_obtain)
-    player.increase('gold', rewards.gold_obtain)
     player.increase('skillPoint', rewards.skill_point)
 
     return cb({code: 501, msg: "没有关卡可以扫荡"}) if not isWipeOut
     cb(null, player, rewards)
 
-  @wipeOutTask: (player, cb) ->
-    taskData = table.getTableItem('task', player.task.id)
-    chapterId = taskData.chapter_id
+  @wipeOutTask: (player, taskId, cb) ->
     rewards = {exp_obtain: 0, money_obtain: 0}
-    for id in _.range(1, chapterId) 
-      if not player.hasTaskMark(id)
-        wipeOutData = table.getTableItem('wipe_out', id)
-        rewards.exp_obtain += parseInt(wipeOutData.exp_obtain)
-        rewards.money_obtain += parseInt(wipeOutData.money_obtain)
+    taskData = table.getTableItem('task', taskId or player.task.id)
+    chapterId = taskData.chapter_id
+    
+    count_ = (id, rewards) ->
+      wipeOutData = table.getTableItem('wipe_out', id)
+      rewards.exp_obtain += parseInt(wipeOutData.exp_obtain)
+      rewards.money_obtain += parseInt(wipeOutData.money_obtain)
 
+    if taskId and not player.hasTaskMark(chapterId)
+      count_(chapterId, rewards)
+    else
+      count_(id, rewards) for id in _.range(1, chapterId) when not player.hasTaskMark(id)
+          
     player.increase('exp',  rewards.exp_obtain)
     player.increase('money', rewards.money_obtain)
 
@@ -122,7 +124,7 @@ class Manager
   @obtainBattleRewards: (player, data, taskId, battleLog, cb) ->
     taskData = table.getTableItem 'task_config', taskId
 
-    task = _.clone(player.task)
+    task = utility.deepCopy(player.task)
     if not task.hasWin
       ### 标记为已经赢得战斗 ###
       task.hasWin = true
@@ -168,12 +170,14 @@ class Manager
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
     if taskId == player.task.id
-      task = _.clone(player.task)
+      task = utility.deepCopy(player.task)
       task.progress += 1
       if task.progress > taskData.points
         task.progress = 0
         task.id += 1
         task.hasWin = false
+        ### 一大关结束，触发摸一摸功能 ###
+        data.isMomo = true
       player.set('task', task)
 
     # 判断是否升级

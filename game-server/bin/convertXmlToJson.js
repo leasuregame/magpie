@@ -40,8 +40,8 @@ var walk = function(dir, done) {
 };
 
 var outputFiles = [
-  '../../client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/Resources/src/table/table.json',
-  '../../gm/config/table/table.json'
+  '../../client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/Resources/src/table/table.json'
+  //'../../gm/config/table/table.json'
 ];
 
 for (var i = outputFiles.length - 1; i >= 0; i--) {
@@ -66,8 +66,7 @@ walk(DATA_DIR, function(err, files) {
     fs.writeFileSync(filepath, JSON.stringify(tabledata.client));
   });
 
-  fs.writeFileSync('../data/table1.json', JSON.stringify(tabledata.exports));
-  fs.writeFileSync('../../gm/config/table/table1.json', JSON.stringify(tabledata.exports));
+  fs.writeFileSync('../../gm/config/table/table.json', JSON.stringify(tabledata.exports));
 
   console.log('complete');
 

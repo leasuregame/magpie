@@ -119,8 +119,8 @@ function submitBattle() {
         type:"post",
         success:function(msg) {
           //  $("#tip").html("战报：模拟战斗结束！！！");
-          //  console.log(msg.info);
-            if(msg.type == "sussess") {
+            console.log(msg);
+            if(msg.type == "success") {
                 var report = msg.info;
                 setReport(report);
             }

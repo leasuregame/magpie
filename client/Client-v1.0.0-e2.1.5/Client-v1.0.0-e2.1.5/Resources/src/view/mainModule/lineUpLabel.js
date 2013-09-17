@@ -53,7 +53,7 @@ var LineUpLabel = cc.Layer.extend({
         this.removeAllChildren();
 
         var lineUpCardList = this._lineUp.getLineUpCardList();
-        cc.log(lineUpCardList);
+
         var menu = cc.Menu.create();
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);

@@ -87,9 +87,12 @@
             'src/controls/progress.js',
             'src/controls/lazyLayer.js',
             'src/controls/shyLayer.js',
+            'src/controls/skyDialog.js',
             'src/controls/lazyMenu.js',
             'src/controls/markLayer.js',
             'src/controls/strokeLabel.js',
+            'src/controls/LzMenuItem.js',
+            'src/controls/tipLayer.js',
 
             'src/view/loginModule/loginScene.js',
             'src/view/loginModule/loginLayer.js',
@@ -104,7 +107,6 @@
             'src/view/mainModule/battleMessageLayer.js',
             'src/view/mainModule/cardDetails.js',
             'src/view/mainModule/cardEvolutionLabel.js',
-            'src/view/mainModule/cardNode.js',
             'src/view/mainModule/cardFullNode.js',
             'src/view/mainModule/cardHalfNode.js',
             'src/view/mainModule/cardHeadNode.js',
@@ -160,13 +162,15 @@
             'src/view/mainModule/vipPrivilegeLayer.js',
 
             'src/view/battleModule/actionFactory.js',
-            'src/view/battleModule/effectsFactory.js',
-            'src/view/battleModule/skillFactory.js',
+            'src/view/battleModule/battleBeganLayer.js',
             'src/view/battleModule/battleCardNode.js',
-            'src/view/battleModule/battleSpiritNode.js',
+            'src/view/battleModule/battleEndLayer.js',
             'src/view/battleModule/battleLayer.js',
-            'src/view/battleModule/battleScene.js',
             'src/view/battleModule/battlePlayer.js',
+            'src/view/battleModule/battleScene.js',
+            'src/view/battleModule/battleSpiritNode.js',
+            'src/view/battleModule/cloudLayer.js',
+            'src/view/battleModule/skillFactory.js',
 
             'src/myApp.js'                   //add your own files in order here
         ]

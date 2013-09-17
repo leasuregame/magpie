@@ -12,11 +12,18 @@
  * */
 
 
-var CardHeadNode = CardNode.extend({
+var CardHeadNode = cc.Node.extend({
+    _card: null,
+    _frameSprite: null,
+    _cardSprite: null,
+    _iconSprite: null,
+
     init: function (card) {
         cc.log("CardHeadNode init");
 
-        if (!this._super(card)) return false;
+        if (!this._super()) return false;
+
+        this._card = card;
 
         var url = "";
         var star = 1;
@@ -32,12 +39,12 @@ var CardHeadNode = CardNode.extend({
         this._frameSprite = cc.Sprite.create(main_scene_image["card_item_bg" + star]);
         this._frameSprite.setAnchorPoint(cc.p(0, 0));
         this.addChild(this._frameSprite);
-        cc.log(url);
+
         if (url) {
-            this._heroSprite = cc.Sprite.create(main_scene_image[url + "_head" + index]);
-            this._heroSprite.setAnchorPoint(cc.p(0, 0));
-            this._heroSprite.setPosition(cc.p(6, 12));
-            this.addChild(this._heroSprite);
+            this._cardSprite = cc.Sprite.create(main_scene_image[url + "_head" + index]);
+            this._cardSprite.setAnchorPoint(cc.p(0, 0));
+            this._cardSprite.setPosition(cc.p(6, 12));
+            this.addChild(this._cardSprite);
         }
 
         this._iconSprite = cc.Sprite.create(main_scene_image.card_item_frame);
@@ -48,6 +55,12 @@ var CardHeadNode = CardNode.extend({
         this.setContentSize(cc.size(108, 108));
 
         return true;
+    },
+
+    getId: function () {
+        cc.log("CardNode getId");
+
+        return this._card.get("id");
     }
 });
 
@@ -67,7 +80,7 @@ CardHeadNode.getCardHeadItem = function (card, cb, target) {
     card = card || null;
     cb = cb || function () {
         var cardDetails = CardDetails.create(card);
-        MainScene.getInstance().addChild(cardDetails, 1);
+        cc.Director.getInstance().getRunningScene().addChild(cardDetails, 1);
     };
     target = target || this;
 

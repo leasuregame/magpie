@@ -18,7 +18,7 @@ var BattleLog = Entity.extend({
     _own: null,
     _enemy: null,
     _winner: "",
-    _rewards: null,
+    _reward: null,
     _battleStep: null,
     _battleStepLen: 0,
     _index: -1,
@@ -33,7 +33,7 @@ var BattleLog = Entity.extend({
         this.set("own", battleLog.own);
         this.set("enemy", battleLog.enemy);
         this.set("winner", battleLog.winner);
-        this.set("rewards", battleLog.rewards);
+        this.set("reward", battleLog.rewards);
         this.set("battleStep", battleLog.steps);
         this.set("battleStepLen", battleLog.steps.length);
 
@@ -43,16 +43,15 @@ var BattleLog = Entity.extend({
     getBattleNode: function () {
         cc.log("BattleLog getBattleNode");
 
+        var key;
         var battleNode = {};
 
-        for (var i = 0; i < 12; ++i) {
-            if (this._own.cards[i] != undefined) {
-                battleNode[i] = this._own.cards[i];
-            }
+        for (key in this._own.cards) {
+            battleNode[key] = this._own.cards[key];
+        }
 
-            if (this._enemy.cards[i] != undefined) {
-                battleNode[i] = this._enemy.cards[i];
-            }
+        for (key in this._enemy.cards) {
+            battleNode[key] = this._enemy.cards[key];
         }
 
         return battleNode;

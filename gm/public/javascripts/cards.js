@@ -62,21 +62,28 @@ function setPlayerId(id) {
 
 function setCards(data) {
     cards = data;
-
     init();
 };
 
 function init(){
 
-    setCardsList();//设置卡牌列表
-    setCard(cards[0].id);//设置默认显示的卡牌
-
-    setRowCss(cards[0].id);
     $("#tip").hide();
     //eventHandle();
     $("#divCardId").hide();
 
     $("#divTableId").hide();
+
+    setCardsList();//设置卡牌列表
+    if(cards.length != 0) {
+        operate = OperateConfig.UPDATE;
+        setCard(cards[0].id);//设置默认显示的卡牌
+        setRowCss(cards[0].id);
+    }
+    else {
+        operate = OperateConfig.ADD
+        setCard(-1);
+    }
+
 
     $("#btnAddCard").click(function(){
 

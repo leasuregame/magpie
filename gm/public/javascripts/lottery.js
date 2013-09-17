@@ -21,9 +21,9 @@ function submitLottery(){
     var level = $("#level").val();
     var type = $("#type").val();
     var times = $("#times").val();
-    console.log("level="+ level);
-    console.log("type=" + type);
-    console.log("times=" + times);
+  //  console.log("level="+ level);
+  //  console.log("type=" + type);
+  //  console.log("times=" + times);
     var url = "/lottery?level=" + level + "&type=" + type + "&times=" + times;
     $.ajax({
         url:url,

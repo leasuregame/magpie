@@ -79,23 +79,6 @@ var LotteryLayer = cc.Layer.extend({
             this.addChild(energyLotteryIcon);
         }
 
-        playEffect({
-            effectId: 4,
-            target: this,
-            delay: 0.1,
-            loops: 0,
-            position: cc.p(360, 450),
-            anchorPoint: null,
-            scale: 1,
-            scaleX: 1,
-            scaleY: 1,
-            sprite: null
-        });
-
-        this.xxx = function () {
-            cc.log("xxxxx");
-        };
-
         return true;
     },
 
@@ -112,24 +95,33 @@ var LotteryLayer = cc.Layer.extend({
         return function () {
             cc.log("LotteryLayer _onClickLottery");
 
-            playEffect({
-                effectId: 5 + level,
-                target: this,
-                delay: 0.16,
-                loops: 1,
-                position: null,
-                anchorPoint: null,
-                scale: 1,
-                scaleX: 1,
-                scaleY: 1,
-                sprite: null
-            });
-
             var that = this;
             gameData.lottery.lottery(function (data) {
                 cc.log(data);
 
+                LazyLayer.showCloudLayer();
+
                 that.update();
+
+                var blackLayer = cc.LayerColor.create(cc.c4b(0, 0, 0, 255), 720, 1136);
+                that.addChild(blackLayer);
+
+                var effectSprite = playEffect({
+                    effectId: 3,
+                    target: blackLayer,
+                    delay: 0.16,
+                    loops: 1,
+                    cb: function () {
+                        var cardFullNode = CardFullNode.create(data);
+                        cardFullNode.setPosition(effectSprite.getPosition());
+                        blackLayer.addChild(cardFullNode);
+
+                        that.scheduleOnce(function () {
+                            blackLayer.removeFromParent();
+                            LazyLayer.closeCloudLayer();
+                        }, 2);
+                    }
+                });
             }, type, level);
         }
     }

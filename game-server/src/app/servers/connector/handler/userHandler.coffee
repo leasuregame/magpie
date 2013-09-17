@@ -38,7 +38,6 @@ Handler::login = (msg, session, next) ->
 
     (cb) =>
       # check whether has create player in the login area
-
       if _.contains user.roles, areaId
         @app.rpc.area.playerRemote.getPlayerByUserId session, user.id, @app.getServerId(), (err, res) ->
           if err
@@ -58,7 +57,7 @@ Handler::login = (msg, session, next) ->
     if err
       logger.error 'fail to login: ', err
       return next(null, {code: err.code or 500, msg: err.msg or err})
-    console.log(player);
+
     next(null, {code: 200, msg: {user: user, player: player}})
 
 onUserLeave = (app, session, reason) ->

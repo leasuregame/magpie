@@ -9,6 +9,7 @@ Utility =
       throw new Error("Invilid argument: can't pass #{rate} to int")
 
     rd = _.random(1, 10000)
+
     if rd <= rate then true else false
 
   ###
@@ -17,6 +18,9 @@ Utility =
   @param {array} rates, the option parameter, if given, will return the value for the rates
   ###
   randomValue: (values, rates, maxVal=100) ->
+    if values.length isnt rates.length
+      throw new Error("Invalid arguments: values and rates are not have same elements")
+
     if rates?
       _rates = []
       _r = 0
@@ -24,13 +28,14 @@ Utility =
         _rates.push _r += r
 
       rd = _.random(1, maxVal * 100)
+
       for r, i in _rates
         if rd <= r * 100
           return values[i]
     else if values.length > 0
       return values[_.random(0, (values.length - 1))]
     else # default
-      values[0]
+      return
 
   parseEffect: (value) ->
     pattern = /^\d+,\d+$/

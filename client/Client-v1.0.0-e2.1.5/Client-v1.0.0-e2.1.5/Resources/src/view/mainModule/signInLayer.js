@@ -206,30 +206,6 @@ var SignInLayer = LazyLayer.extend({
 
         }
 
-        playEffect({
-            effectId: 4,
-            target: this,
-            delay: 0.1,
-            loops: 0,
-            position: cc.p(435, 470),
-            anchorPoint: null,
-            scaleX: 0.79,
-            scaleY: 0.76,
-            sprite: null
-        });
-
-        playEffect({
-            effectId: 4,
-            target: this,
-            delay: 0.1,
-            loops: 0,
-            position: cc.p(360, 380),
-            anchorPoint: null,
-            scaleX: 0.68,
-            scaleY: 0.76,
-            sprite: null
-        });
-
         return true;
     },
 

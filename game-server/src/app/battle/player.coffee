@@ -20,7 +20,7 @@ copyAttrs = (self, ent) ->
   _refs = if ent.lineUpObj? then ent.lineUpObj() else []
   _.each _refs, (v, k) -> 
     if v is -1 
-      self.spiritorIdx = k - 1
+      self.spiritorIdx = parseInt(k)
 
 defaultEntity = 
   id: 0
@@ -123,6 +123,7 @@ class Player extends Module
     cobj[c.idx] = {
       tableId: c.card_id
       hp: c.hp
+      atk: c.atk
     } for c in @heros
     cobj[if @is_attacker then @spiritorIdx else @spiritorIdx + 6] = @spiritor.lv
     cobj

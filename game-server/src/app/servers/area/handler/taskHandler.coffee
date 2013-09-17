@@ -163,3 +163,9 @@ Handler::passBarrier = (msg, session, next) ->
       exp: player.exp,
       lv: player.lv
     }})
+
+Handler::mysticalPass = (msg, session, next) ->
+  playerId = session.get('playerId')
+  level = if msg.level? then msg.level else 1
+
+  

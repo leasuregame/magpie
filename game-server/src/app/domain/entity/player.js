@@ -304,6 +304,14 @@ var Player = (function(_super) {
         }
     };
 
+    Player.prototype.incSpirit = function(val) {
+        var spiritor = _.clone(this.spiritor);
+        var spiritorData = table.getTableItem('spirit', spiritor.lv)
+        if spiritor.spirit + lv >= spiritorData.spirit_need
+          spiritor.lv += 1
+          spiritor.spirit -= spiritorData.spirit_need
+    };
+
     Player.prototype.save = function() {
         Player.__super__.save.apply(this, arguments);
         // update all cards info

@@ -58,6 +58,8 @@ var card = function(app) {
         var query = url.query;
 
         var data = JSON.parse(query['card']);
+        var lineUp = query['lineUp'];
+       // console.log(lineUp);
         logger.info("[update]" + JSON.stringify(data));
         Card.update(data,function(err,cardName){
             if(err) {
@@ -65,8 +67,17 @@ var card = function(app) {
                 res.send({type:"fail",info:err});
             }
            else {
-                logger.info("[update]" + "success");
-                res.send({type:"success",info:cardName});
+
+                Player.update({where:{id:data.playerId},data:{lineUp:lineUp}},function(err,isOk){
+                    if(isOk) {
+                        logger.info("[update]" + "success");
+                        res.send({type:"success",info:cardName});
+                    }else {
+                        logger.error("[update]" + err);
+                        res.send({type:"fail",info:err});
+                    }
+                });
+
             }
         });
     });
@@ -82,6 +93,7 @@ var card = function(app) {
                 logger.error("[add]" + err);
                res.send({type:"fail",info:"添加卡牌出错"});
             } else{
+
                 logger.info("[add]" + "success");
                 res.send({type:"success",info:card});
             }
@@ -94,6 +106,7 @@ var card = function(app) {
         var query = url.query;
 
         var cardId = query["cardId"];
+        var lineUp = query['lineUp'];
       //  console.log(cardId);
         logger.info("[del]cardId = " + cardId);
         Card.delete(cardId,function(err,isOK){
@@ -102,8 +115,16 @@ var card = function(app) {
                 logger.error("[del]" + err);
                 res.send({type:"fail",info:err});
             } else{
-                logger.info("[del] " + "success");
-                res.send({type:"success",info:"删除成功"});
+                Player.update({where:{id:req.session.player.id},data:{lineUp:lineUp}},function(err,isOk){
+                    if(isOk) {
+                        logger.info("[del] " + "success");
+                        res.send({type:"success",info:"删除成功"});
+                    }else {
+                        logger.error("[del]" + err);
+                        res.send({type:"fail",info:err});
+                    }
+                });
+
             }
         });
     });

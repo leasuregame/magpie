@@ -125,7 +125,7 @@ function analyze(data) {
 };
 
 function explore(taskId){
-    console.log(taskId,maxId)
+    console.log(taskId,maxId);
     if(taskId > maxId) {
         console.log("stop");
         return;

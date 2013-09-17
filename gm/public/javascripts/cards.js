@@ -410,12 +410,13 @@ function updateRow(data) {
     row.eq(0).html(data.name);
     row.eq(1).html(data.lv);
     row.eq(2).html(data.skillLv);
-    row.eq(3).html(data.elixir);
-    row.eq(4).html(data.star);
+    row.eq(3).html(data.elixirHp);
+    row.eq(4).html(data.elixirAtk)
+    row.eq(5).html(data.star);
 
     for(var i = 0;i < 3;i++) {
         if(data.passSkills.length > i)
-            row.eq(i + 5).html(data.passSkills[i].name);
+            row.eq(i + 6).html(data.passSkills[i].name);
     }
 
 };

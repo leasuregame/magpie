@@ -80,7 +80,7 @@ var card = function(app) {
         Card.create(card,function(err,card){
             if(err) {
                 logger.error("[add]" + err);
-               res.send({type:"fail",info:err});
+               res.send({type:"fail",info:"添加卡牌出错"});
             } else{
                 logger.info("[add]" + "success");
                 res.send({type:"success",info:card});

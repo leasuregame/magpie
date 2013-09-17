@@ -1,0 +1,49 @@
+<%-include header%>
+    <div class="from-inline span6">
+        <fieldset>
+            <legend>
+                模拟探索
+            </legend>
+            <div class = "from-inline span3">
+                <label for="area">服务器:</label>
+                <select id="areaId" class="form-control input-small" name="areaId">
+                </select>
+                <label for="player">玩家:</label>
+                <input type="text" class="input-small" id="player" name="player">
+                <label for="passNum">关卡数:</label>
+                <input type="text" class="input-small" id="passNum" name="passNum">
+                <div>
+                    <button type="button" id = "btnOk" class="btn btn-primary">确定</button>
+                </div>
+
+                <div class="alert" id = "tip">
+
+                </div>
+            </div>
+            <div class = "from-inline span3">
+                <table class="table table-bordered table-hover table-responsive" id="result">
+                    <thead>
+                        <th colspan="3">战斗</th><th colspan="5">卡牌等级</th>
+                        <th colspan="2">宝箱</th><th colspan="4">卡牌星级</th>
+                        <th colspan="2">无</th>
+                    </thead>
+                    <thead>
+                        <th>次数</th><th>概率</th>
+                        <th>次数</th><th>概率</th>
+                        <th>次数</th><th>概率</th>
+                    </thead>
+                </table>
+            </div>
+        </fieldset>
+    </div>
+    <script src="/javascripts/lib/build/build.js" type="text/javascript">
+
+     </script>
+     <script type="text/javascript">
+         require('boot');
+     </script>
+     <script src="/javascripts/explore.js"></script>
+     <script>
+        setAreas(<%- JSON.stringify(areas) %>);
+     </script>
+<%-include footer%>

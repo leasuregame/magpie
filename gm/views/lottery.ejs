@@ -1,0 +1,41 @@
+<%-include header%>
+    <div class="from-inline span6">
+        <fieldset>
+            <legend>
+                模拟抽卡
+            </legend>
+            <div class="from-inline span3">
+                <label for="level">抽卡级别:</label>
+                <select id="level" class="form-control input-small" name="level">
+                    <option value = "1">低级抽卡</option>
+                    <option value = "2">中级抽卡</option>
+                    <option value = "3">高级抽卡</option>
+                </select>
+                <label for="type">抽卡类型:</label>
+                <select id="type" class="form-control input-small" name="type">
+                    <option value = "0">友情</option>
+                    <option value = "1">元宝</option>
+                </select>
+                <div class="control-group">
+                    <label class="control-label" for="times">抽卡次数:</label>
+                    <input type="text" class="input-small" id="times" name="times">
+                </div>
+                <div class = "form-group">
+                    <button type="button" class="btn btn-primary" id = "btnOK" >确定</button>
+                    <button type="button" class="btn btn-primary" id = "btnReset" >重置</button>
+                </div>
+            </div>
+            <div class="from-inline span3">
+                <table class="table table-bordered table-hover table-responsive" id="result">
+                    <thead>
+                        <th>类别</th><th>数目</th><th>概率</th>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+    </div>
+    <script src="/javascripts/lottery.js"></script>
+<%-include footer%>

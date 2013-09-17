@@ -1,5 +1,6 @@
 battleLog = require './battle_log'
 async = require 'async'
+_ = require 'underscore'
 log = require('pomelo-logger').getLogger(__filename)
 
 class Base
@@ -32,15 +33,11 @@ class Battle extends Base
     @attacker.death() or @defender.death() or @round.round_num > 10
 
   start: ->
-    _enm = {
-      id: @defender.id
-      cards: @defender.getCards()
-    }
-    battleLog.set('enemy', _enm)
-    battleLog.set('own', {
-      id: @attacker.id
-      cards: @attacker.getCards()
-    })
+    cards = _.extend {}, @defender.getCards(), @attacker.getCards()
+    battleLog.set('cards', cards)
+    battleLog.set('ownId', @attacker.id)
+    battleLog.set('enemyId', @defender.id)
+    
     log.info '    >>> 战斗开始 <<<    '
 
   execute: ->

@@ -158,7 +158,8 @@ var Player = (function(_super) {
         addEvents(this);
         Player.__super__.constructor.apply(this, arguments);
         this.taskMark = new MarkGroup(this.task.mark);
-        this.passMark = new MarkGroup(this.pass.mark)
+        this.passMark = new MarkGroup(this.pass.mark);
+        this.momoMark = new MarkGroup(this.task.momo);
     }
 
     Player.prototype.init = function() {
@@ -217,7 +218,8 @@ var Player = (function(_super) {
             id: 1,
             progress: 0,
             hasWin: false,
-            mark: []
+            mark: [],
+            momo: []
         },
         pass: {
             layer: 0,
@@ -313,8 +315,8 @@ var Player = (function(_super) {
         var spiritor = _.clone(this.spiritor);
         var total_spirit = spiritor.spirit + val;
         var spiritorData = table.getTableItem('spirit', spiritor.lv)
-        
-        while(!!spiritorData && total_spirit >= spiritorData.spirit_need) {
+
+        while ( !! spiritorData && total_spirit >= spiritorData.spirit_need) {
             spiritor.lv += 1;
             total_spirit -= spiritorData.spirit_need;
             spiritorData = table.getTableItem('spirit', spiritor.lv);
@@ -328,7 +330,7 @@ var Player = (function(_super) {
         var total_exp = sp.exp + exp;
         var spData = table.getTableItem('spirit_pool', sp.lv);
 
-        while(!!spData && total_exp >= spData.exp_need) {
+        while ( !! spData && total_exp >= spData.exp_need) {
             sp.lv += 1;
             total_exp -= spData.exp_need;
             spData = table.getTableItem('spirit_pool', sp.lv);
@@ -411,8 +413,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.isLineUpCard = function(card) {
-       // return _.has(this.cards, card.id);
-        return _.has(_.values(this.lineUpObj()), card.id);
+        return _.contains(_.values(this.lineUpObj()), card.id);
     };
 
     Player.prototype.hasCard = function(id) {
@@ -582,6 +583,27 @@ var Player = (function(_super) {
         }, targetCard);
     };
 
+    Player.prototype.setMomoMark = function() {
+        var taskData = table.getTableItem('task', this.task.id);
+        if (taskData) {
+            var chapterId = taskData.chapter_id;
+            this.momoMark.mark(chapterId - 1);
+            var task = utility.deepCopy(this.task);
+            task.momo = this.momoMark.value;
+            this.task = task;
+        }
+    };
+
+    Player.prototype.hasMomoMark = function() {
+        var taskData = table.getTableItem('task', this.task.id);
+        if (taskData) {
+            var chapterId = taskData.chapter_id;
+            return this.momoMark.hasMark(chapterId - 1);
+        } else {
+            return true; // 不存在的关卡，当做已经领取了 哈哈
+        }
+    };
+
     Player.prototype.setTaskMark = function(chapter) {
         this.taskMark.mark(chapter);
         var task = utility.deepCopy(this.task);
@@ -625,14 +647,14 @@ var Player = (function(_super) {
         this.set('pass', pass);
     };
 
-    Player.prototype.triggerMysticalPass = function(){
+    Player.prototype.triggerMysticalPass = function() {
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isTrigger = true;
         pass.mystical.isClear = false;
         this.set('pass', pass);
     };
 
-    Player.prototype.clearMysticalPass = function(){
+    Player.prototype.clearMysticalPass = function() {
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isClear = true;
         pass.mystical.diff += 1;
@@ -784,7 +806,6 @@ var lineUpToObj = function(self, lineUp) {
                 num = parseInt(_ref[1]);
 
             _results[positionConvert(pos)] = num;
-
         });
     }
     return _results;

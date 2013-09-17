@@ -79,23 +79,48 @@ function initResult(){
     result = {
         fight:{
             times:0,
-            rate:0
+            rate:0,
+            cards_num:0,
+            cards_ave:0,
+            cards:[]
         },
         box:{
             times:0,
-            rate:0
+            rate:0,
+            cards_num:0,
+            cards:[]
         },
         none:{
             times:0,
             rate:0
         }
     };
+
+    for(var i = 0;i < 5;i++) {
+        result.fight.cards[i] = {
+            num:0,
+            rate:0
+        }
+    }
+
+    for(var i = 0;i < 4;i++) {
+        result.box.cards[i] = {
+            num:0,
+            rate:0
+        }
+    }
 }
 
 function analyze(data) {
 
     result[data.result].times++;
+    if(data.result == "fight") {
 
+    }else if(data.result == "box") {
+
+    }else {
+
+    }
 
 };
 

@@ -10,7 +10,7 @@ var Url = require('url');
 var Area = require('../models/area');
 var getDB = require('../models/getDatabase');
 var dbClient = require('../models/dao/mysql/mysql');
-var Explore = require('../models/Explore');
+var Explore = require('../models/explore');
 
 var explore = function(app) {
 

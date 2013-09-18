@@ -8,12 +8,12 @@ module.exports = {
 	},
 	SPIRIT: {
 		TASK: {
-			BOSS: 5,
+			BOSS: 3,
 			OTHER: 1
 		},
 		PASS: {
-			BOSS: 10,
-			OTHER: 2
+			BOSS: 5,
+			OTHER: 1
 		}
 	}
 };

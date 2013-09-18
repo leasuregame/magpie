@@ -32,14 +32,11 @@
           <li><a href="/login">登录</a></li>
           <% } else { %>
           <li><a href="/playerLogin">选择玩家</a></li>
-          <li><a href="/playerData">玩家数据修改</a></li>
-          <li><a href='/cardData'>卡牌操作</a></li>
-          <li><a href='/rank'>竞技场</a></li>
-          <!--
-          <li><a href="/reward">补偿或奖励</a></li>
-          -->
-          <li><a href="/simBattle">模拟战斗</a></li>
+
           <li><a href="/login">重新登录</a></li>
+          <!--
+          <li><a href="/explore">探索</a></li>
+          -->
            <% if(user.isRoot == 1) { %>
             <li><a href="/reg">添加GM用户</a></li>
            <% } %>
@@ -61,7 +58,7 @@
           <div class="form-inline span1">
             <div class="well sidebar-nav">
               <ul class="nav nav-list">
-                <li><a href="/playerLogin">选择玩家</a></li>
+
                 <li><a href="/playerData">玩家数据修改</a></li>
                 <li><a href='/cardData'>卡牌操作</a></li>
                 <li><a href='/rank'>竞技场</a></li>
@@ -69,6 +66,11 @@
                 <li><a title="补偿奖赏" href="/reward">补偿奖赏</a></span>
                  -->
                 <li><a title="模拟战斗" href="/simBattle">模拟战斗</a></li>
+                <li><a href="/lottery">模拟抽卡</a></li>
+                <li><a href='/passSkillAfresh'>模拟洗练</a></li>
+                <!--
+                <li><a href="/explore">探索</a></li>
+                -->
                 <% if(user.isRoot == 1) {%>
                      <li><a title="添加GM用户" href="/reg">添加GM用户</a></li>
                 <% } %>

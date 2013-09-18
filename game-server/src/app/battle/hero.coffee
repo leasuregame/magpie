@@ -26,6 +26,9 @@ class Hero extends Module
     @hp = attrs.hp
     @atk = attrs.atk
     @init_atk = attrs.init_atk
+    @spirit_hp = attrs.incs.spirit_hp
+    @spirit_atk = attrs.incs.spirit_atk
+
     @card_id = attrs.tableId
     @skill_lv = attrs.skillLv or 0
     @sp_value = attrs.passiveSkills or []

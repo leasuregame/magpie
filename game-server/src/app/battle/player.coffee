@@ -124,6 +124,8 @@ class Player extends Module
       tableId: c.card_id
       hp: c.hp
       atk: c.atk
+      spiritHp: c.spirit_hp
+      spiritAtk: c.spirit_atk
     } for c in @heros
     cobj[if @is_attacker then @spiritorIdx else @spiritorIdx + 6] = @spiritor.lv
     cobj

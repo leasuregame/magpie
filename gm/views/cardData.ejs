@@ -1,6 +1,6 @@
 <%- include header %>
 
-     <div class="form-inline span6">
+     <div class="form-inline span7">
         <fieldset>
             <legend><%=area["name"]%>:<%=player["name"]%>拥有的卡牌
             <button type="button" class="btn btn-primary" id = "btnAddCard">添加卡牌</button>
@@ -8,7 +8,7 @@
             <div >
                 <table class = "table table-bordered table-hover" id = "cardsList">
                     <thead id = "th">
-                        <th>卡牌名字</th><th>卡牌等级</th><th>技能等级</th><th>消耗生命仙丹</th><th>消耗攻击仙丹</th><th>星级</th><th>被动技能1</th><th>被动技能2</th><th>被动技能3</th><th></th><th></th>
+                        <th>卡牌名字</th><th>卡牌等级</th><th>技能等级</th><th>消耗生命仙丹</th><th>消耗攻击仙丹</th><th>星级</th><th>被动技能1</th><th>被动技能2</th><th>被动技能3</th><th>站位</th><th></th><th></th>
                     </thead>
                     <tbody>
                     </tbody>
@@ -30,7 +30,7 @@
 
      </div>
 
-     <form  id = "cardShow" class="form-inline span4" method = "post">
+     <form  id = "cardShow" class="form-inline span3" method = "post">
         <fieldset>
             <legend id = "operateName"></legend>
 
@@ -127,6 +127,12 @@
                          </div>
                  </div>
 
+                 <div class="from-group">
+                     <div class="control-group" id="divPos">
+                         <label class="control-label" for="pos">站位:</label>
+                         <input type="text" class="input-small" id="pos" name="pos">
+                     </div>
+                 </div>
 
                 <div class = "form-group">
                      <button type="button" class="btn btn-primary" id = "btnOK" >确定</button>
@@ -145,8 +151,8 @@
      <script src="/javascripts/cards.js"></script>
 
      <script type="text/javascript">
-          setCards(<%- JSON.stringify(player.cards) %>);
-          setPlayerId(<%= player.id %>);
+
+          setPlayer(<%- JSON.stringify(player) %>);
      </script>
 
 <%- include footer %>

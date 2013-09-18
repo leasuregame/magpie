@@ -12,6 +12,9 @@ var cards = [];
 var playerId;
 var operate = 1;
 var lastSelectId = null;
+var EMPTY = -2;
+var lineUp = [EMPTY,EMPTY,EMPTY,EMPTY,EMPTY,EMPTY];
+var matrixOrder = ['00', '01', '02', '10', '11', '12'];
 
 //星级对应的最大等级
 var MaxLevelConfig = [
@@ -55,28 +58,81 @@ var CardConfig = {
     passSkills:[]
 };
 
-function setPlayerId(id) {
+function setPlayer(player) {
     //console.log(id);
-    playerId = id;
+    playerId = player.id;
+    var line = player.lineUp.split(',');
+    console.log(line);
+    setLineUp(line);
+    setCards(player.cards);
+    init();
+}
+
+//设置阵型
+function setLineUp(line){
+
+    for(var i = 0;i < line.length;i++) {
+        var l = line[i].split(':'),pos = l[0],id = l[1];
+        lineUp[positionToNumber(pos)] = parseInt(id);
+    }
+    console.log(lineUp);
+};
+
+function numberToPosition(num) {
+    return matrixOrder[num];
+};
+
+function positionToNumber(pos) {
+    return matrixOrder.indexOf(pos);
+};
+
+//获取站位
+function getPos(id) {
+    for(var i = 0;i < lineUp.length;i++) {
+        if(lineUp[i] == id) {
+            return i + 1;
+        }
+    }
+    return '';
+};
+
+function getLineUp(){
+    var line = "";
+    for(var i = 0;i < lineUp.length;i++) {
+        if(lineUp[i] == EMPTY)
+            continue;
+        line += numberToPosition(i) + ":" + lineUp[i] + ",";
+    }
+    line = line.substring(0,line.length - 1);
+    console.log(line);
+    return line;
 }
 
 function setCards(data) {
-    cards = data;
 
-    init();
+    cards = data;
+    //init();
 };
 
 function init(){
 
-    setCardsList();//设置卡牌列表
-    setCard(cards[0].id);//设置默认显示的卡牌
-
-    setRowCss(cards[0].id);
     $("#tip").hide();
     //eventHandle();
     $("#divCardId").hide();
-
+    $("#divPos").hide();
     $("#divTableId").hide();
+
+    setCardsList();//设置卡牌列表
+    if(cards.length != 0) {
+        operate = OperateConfig.UPDATE;
+        setCard(cards[0].id);//设置默认显示的卡牌
+        setRowCss(cards[0].id);
+    }
+    else {
+        operate = OperateConfig.ADD
+        setCard(-1);
+    }
+
 
     $("#btnAddCard").click(function(){
 
@@ -205,7 +261,27 @@ function submitUpdate(){
         }
     }
 
-    var url = "/updateCard?card=" + JSON.stringify(data);
+    //更新站位处理
+    var pos = $("#pos").val();
+    var id = null;
+    if(pos == '') {
+        var p = getPos(data.id);
+        if(p != '') {
+            lineUp[p - 1] = EMPTY;
+        }
+    }else {
+        var oldPos = getPos(data.id);
+        if(oldPos == '') {
+            id = lineUp[pos - 1];
+            lineUp[pos - 1] = data.id; //设置为当前的id
+        }else { //交换两张卡牌站位
+            id = lineUp[pos - 1];
+            lineUp[pos - 1] = data.id;
+            lineUp[oldPos - 1] = id;
+        }
+    }
+
+    var url = "/updateCard?card=" + JSON.stringify(data) + '&lineUp=' + getLineUp();
     $.ajax({
         url:url,
         type:"post",
@@ -218,6 +294,9 @@ function submitUpdate(){
                         cards[i].name = msg.info;
                        // console.log(cards[i]);
                         updateRow(cards[i]);
+                        if(id != null) {
+                            $("tr[id = "+ id +  "]").children().eq(9).html(getPos(id));
+                        }
                         setShowMsg({type:msg.type,info:"更新成功"});
                         break;
                     }
@@ -232,7 +311,14 @@ function submitUpdate(){
 
 //提交删除
 function submitDel(id){
-    var url = "/delCard?cardId=" + id;
+
+    //阵型处理
+    var pos = getPos(id);
+    if(pos != '') {
+        lineUp[pos - 1] = EMPTY;
+    }
+
+    var url = "/delCard?cardId=" + id + "&lineUp=" + getLineUp();
     $.ajax({
         url:url,
         type:"post",
@@ -283,16 +369,23 @@ function setCard(id) {
     $("#elixirAtk").val(card.elixirAtk);
     $("#starList").val(card.star);
     $("#tableId").val(card.tableId);
+    //站位
+    var pos = getPos(id);
+    $("#pos").val(pos);
+
+
     $("#name").val(card.name);
 
     if(operate == OperateConfig.ADD) {
         $("#divCardName").hide();
         $("#divTableId").show();
+        $("#divPos").hide();
         $("#operateName").html("添加卡牌");
     }
     else {
         $("#divCardName").show();
         $("#divTableId").hide();
+        $("#divPos").show();
         $("#operateName").html("更新卡牌");
     }
     setPassSkill(passSkills,card.star);
@@ -368,6 +461,8 @@ function setCardsList() {
                 inner += "<td></td>";
         }
 
+        inner += '<td>' + getPos(card.id) + '</td>';
+
         inner += '<td><button type="button" class="btn btn-primary btnUpdateCard" id = "btnUpdateCard" value=' + card.id + '>' + "更新" + '</button></td>';
         inner += '<td><button type="button" class="btn btn-primary btnDelCard" id = "btnDelCard" value=' + card.id +'>' + "删除" + '</button></td>';
         inner += "</tr>";
@@ -383,13 +478,14 @@ function setCardsList() {
 function addRow(card){
     var inner = "";
         inner += "<tr id =" + card.id +"><td>" + card.name + "</td><td>" + card.lv + "</td><td>" + card.skillLv + "</td><td>" + card.elixirHp + "</td><td>" + card.elixirAtk + "</td><td>"  + card.star + "</td>";
-
         for(var i = 0;i < 3;i++) {
             if(card.passSkills.length > i)
                 inner += "<td>" + card.passSkills[i].name + "</td>";
             else
                 inner += "<td></td>";
         }
+
+        inner += "<td></td>";
 
         inner += '<td><button type="button" class="btn btn-primary btnUpdateCard" id = "btnUpdateCard" value=' + card.id + '>' + "更新" + '</button></td>';
         inner += '<td><button type="button" class="btn btn-primary btnDelCard" id = "btnDelCard" value=' + card.id +'>' + "删除" + '</button></td>';
@@ -405,18 +501,21 @@ function addRow(card){
 function updateRow(data) {
 
     var row = $("tr[id = "+ data.id +  "]").children();
-    $("#name").val(data.name);
-   // console.log(data.name);
+
     row.eq(0).html(data.name);
     row.eq(1).html(data.lv);
     row.eq(2).html(data.skillLv);
-    row.eq(3).html(data.elixir);
-    row.eq(4).html(data.star);
+    row.eq(3).html(data.elixirHp);
+    row.eq(4).html(data.elixirAtk)
+    row.eq(5).html(data.star);
 
     for(var i = 0;i < 3;i++) {
         if(data.passSkills.length > i)
-            row.eq(i + 5).html(data.passSkills[i].name);
+            row.eq(i + 6).html(data.passSkills[i].name);
     }
+
+    row.eq(9).html(getPos(data.id));
+
 
 };
 

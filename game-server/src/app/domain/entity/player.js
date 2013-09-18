@@ -13,6 +13,7 @@
 
 
 var utility = require('../../common/utility');
+var MarkGroup = require('../../common/markGroup');
 var Entity = require('./entity');
 var playerConfig = require('../../../config/data/player');
 var msgConfig = require('../../../config/data/message');
@@ -25,6 +26,7 @@ var Card = require('./card');
 var util = require('util');
 var achieve = require('../achievement');
 var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL;
+var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
 
 var defaultMark = function() {
     var i, result = [];
@@ -155,6 +157,9 @@ var Player = (function(_super) {
     function Player(param) {
         addEvents(this);
         Player.__super__.constructor.apply(this, arguments);
+        this.taskMark = new MarkGroup(this.task.mark);
+        this.passMark = new MarkGroup(this.pass.mark);
+        this.momoMark = new MarkGroup(this.task.momo);
     }
 
     Player.prototype.init = function() {
@@ -212,11 +217,18 @@ var Player = (function(_super) {
         task: {
             id: 1,
             progress: 0,
-            hasWin: false
+            hasWin: false,
+            mark: [],
+            momo: []
         },
         pass: {
             layer: 0,
-            mark: defaultMark()
+            mark: [],
+            mystical: {
+                diff: 1,
+                isTrigger: false,
+                isClear: false
+            }
         },
         dailyGift: {
             lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
@@ -299,6 +311,34 @@ var Player = (function(_super) {
         }
     };
 
+    Player.prototype.incSpirit = function(val) {
+        var spiritor = _.clone(this.spiritor);
+        var total_spirit = spiritor.spirit + val;
+        var spiritorData = table.getTableItem('spirit', spiritor.lv)
+
+        while ( !! spiritorData && total_spirit >= spiritorData.spirit_need) {
+            spiritor.lv += 1;
+            total_spirit -= spiritorData.spirit_need;
+            spiritorData = table.getTableItem('spirit', spiritor.lv);
+        }
+        spiritor.spirit = total_spirit;
+        this.set('spiritor', spiritor);
+    };
+
+    Player.prototype.incSpiritPoolExp = function(exp) {
+        var sp = _.clone(this.spiritPool);
+        var total_exp = sp.exp + exp;
+        var spData = table.getTableItem('spirit_pool', sp.lv);
+
+        while ( !! spData && total_exp >= spData.exp_need) {
+            sp.lv += 1;
+            total_exp -= spData.exp_need;
+            spData = table.getTableItem('spirit_pool', sp.lv);
+        }
+        sp.exp = total_exp;
+        this.set('spiritPool', sp);
+    };
+
     Player.prototype.save = function() {
         Player.__super__.save.apply(this, arguments);
         // update all cards info
@@ -315,6 +355,11 @@ var Player = (function(_super) {
                 ability += card.ability();
             }
         });
+        // 元神加成的战斗力
+        if (this.spiritor.lv > 0) {
+            ability += this.spiritor.lv * SPIRITOR_PER_LV;
+        }
+
         this.set('ability', ability);
         return ability;
     };
@@ -368,8 +413,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.isLineUpCard = function(card) {
-       // return _.has(this.cards, card.id);
-        return _.has(_.values(this.lineUpObj()), card.id);
+        return _.contains(_.values(this.lineUpObj()), card.id);
     };
 
     Player.prototype.hasCard = function(id) {
@@ -449,13 +493,13 @@ var Player = (function(_super) {
         this.updatePower(power);
 
         // 更新dailyGift的power
-        var dg = _.clone(this.dailyGift);
+        var dg = utility.deepCopy(this.dailyGift);
         dg.powerGiven.push(hour);
         this.dailyGift = dg;
     };
 
     Player.prototype.updateGift = function(name, value) {
-        dg = _.clone(this.dailyGift);
+        dg = utility.deepCopy(this.dailyGift);
         dg[name] = value;
         this.dailyGift = dg;
     };
@@ -539,19 +583,52 @@ var Player = (function(_super) {
         }, targetCard);
     };
 
+    Player.prototype.setMomoMark = function() {
+        var taskData = table.getTableItem('task', this.task.id);
+        if (taskData) {
+            var chapterId = taskData.chapter_id;
+            this.momoMark.mark(chapterId - 1);
+            var task = utility.deepCopy(this.task);
+            task.momo = this.momoMark.value;
+            this.task = task;
+        }
+    };
+
+    Player.prototype.hasMomoMark = function() {
+        var taskData = table.getTableItem('task', this.task.id);
+        if (taskData) {
+            var chapterId = taskData.chapter_id;
+            return this.momoMark.hasMark(chapterId - 1);
+        } else {
+            return true; // 不存在的关卡，当做已经领取了 哈哈
+        }
+    };
+
+    Player.prototype.setTaskMark = function(chapter) {
+        this.taskMark.mark(chapter);
+        var task = utility.deepCopy(this.task);
+        task.mark = this.taskMark.value;
+        this.task = task;
+    };
+
+    Player.prototype.hasTaskMark = function(chapter) {
+        return this.taskMark.hasMark(chapter);
+    };
+
     Player.prototype.setPassMark = function(layer) {
         if (layer < 1 || layer > 100) {
             logger.warn('无效的关卡层数 ', layer);
             return;
         }
 
-        var pass = _.clone(this.pass);
+        var pass = utility.deepCopy(this.pass);
         if (pass.layer + 1 < layer) {
             logger.warn('未达到该关卡层数', layer);
             return;
         }
-        pass.mark[layer - 1] = 1;
-        this.set('pass', pass);
+        this.passMark.mark(layer);
+        pass.mark = this.passMark.value;
+        this.pass = pass;
     };
 
     Player.prototype.hasPassMark = function(layer) {
@@ -559,15 +636,29 @@ var Player = (function(_super) {
             logger.warn('无效的关卡层数 ', layer);
             return;
         }
-        var mark = this.pass.mark[layer - 1];
-        return (mark === 1);
+        return this.passMark.hasMark(layer);
     };
 
     Player.prototype.incPass = function() {
-        var pass = _.clone(this.pass);
+        var pass = utility.deepCopy(this.pass);
         if (pass.layer >= 100)
             return;
         pass.layer++;
+        this.set('pass', pass);
+    };
+
+    Player.prototype.triggerMysticalPass = function() {
+        var pass = utility.deepCopy(this.pass);
+        pass.mystical.isTrigger = true;
+        pass.mystical.isClear = false;
+        this.set('pass', pass);
+    };
+
+    Player.prototype.clearMysticalPass = function() {
+        var pass = utility.deepCopy(this.pass);
+        pass.mystical.isClear = true;
+        pass.mystical.diff += 1;
+        pass.mystical.isTrigger = false;
         this.set('pass', pass);
     };
 
@@ -715,7 +806,6 @@ var lineUpToObj = function(self, lineUp) {
                 num = parseInt(_ref[1]);
 
             _results[positionConvert(pos)] = num;
-
         });
     }
     return _results;
@@ -776,7 +866,7 @@ var executeVipPrivilege = function(player) {
     if (!player.isVip()) return;
 
     var pri = table.getTableItem('vip_privilege', player.vip);
-    var dg = _.clone(player.dailyGift);
+    var dg = utility.deepCopy(player.dailyGift);
     dg.lotteryFreeCount += pri.lottery_free_count;
     // 好友上限 ++
     dg.powerBuyCount += pri.buy_power_count;

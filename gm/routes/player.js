@@ -25,12 +25,12 @@ var player = function(app) {
         var query = url.query;
 
         var target = query["target"] || 'playerLogin';
-
-        if(!req.session.player)
-            target = 'playerLogin';
+        console.log(target);
+      //  if(!req.session.player)
+        //    target = 'playerLogin';
         Area.getAreasList(function(areas) {
 
-            res.render(target,{
+            res.render('playerLogin',{
                 title : '玩家数据修改',
                 user : req.session.user,
                 player:req.session.player,

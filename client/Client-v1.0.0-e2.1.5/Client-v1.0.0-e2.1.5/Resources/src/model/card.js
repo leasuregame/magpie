@@ -62,8 +62,11 @@ var Card = Entity.extend({
 
         cc.log(this);
 
-        if (data != undefined && data.hp != undefined) cc.Assert(data.hp == this._hp, "Card hp error");
-        if (data != undefined && data.atk != undefined) cc.Assert(data.atk == this._atk, "Card atk error");
+        if (data != undefined && data.hp != undefined && SETTING_IS_BROWSER)
+            cc.Assert(data.hp == this._hp, "Card hp error");
+
+        if (data != undefined && data.atk != undefined && SETTING_IS_BROWSER)
+            cc.Assert(data.atk == this._atk, "Card atk error");
 
         cc.log("=============================================");
         return true;

@@ -42,4 +42,4 @@ GameFrame.create = function() {
     }
 
     return null;
-}
+};

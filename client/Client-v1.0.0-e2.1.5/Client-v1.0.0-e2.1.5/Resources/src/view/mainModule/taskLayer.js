@@ -14,6 +14,8 @@
 
 var TaskLayer = cc.Layer.extend({
     _index: 0,
+    _turnLeftSprite: null,
+    _turnRightSprite: null,
     _wipeOutItem: null,
     _sectionItem: {},
     _lockIcon: {},
@@ -110,6 +112,15 @@ var TaskLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
+        this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
+        this._turnLeftSprite.setRotation(180);
+        this._turnLeftSprite.setPosition(cc.p(80, 550));
+        this.addChild(this._turnLeftSprite, 2);
+
+        this._turnRightSprite = cc.Sprite.create(main_scene_image.icon37);
+        this._turnRightSprite.setPosition(cc.p(640, 550));
+        this.addChild(this._turnRightSprite, 2);
+
         // 读配置表
         var chapterTitleTable = outputTables.chapter_title.rows;
         var chapterTable = outputTables.chapter.rows;
@@ -176,9 +187,10 @@ var TaskLayer = cc.Layer.extend({
 
         var task = gameData.task;
 
-
         this._scrollView.setContentOffset(this._getScrollViewOffset(), true);
 
+        this._turnLeftSprite.setVisible(this._index > 1);
+        this._turnRightSprite.setVisible(this._index < TASK_CHAPTER_COUNT);
 
         var section = task.getSection();
         for (var key in this._sectionItem) {

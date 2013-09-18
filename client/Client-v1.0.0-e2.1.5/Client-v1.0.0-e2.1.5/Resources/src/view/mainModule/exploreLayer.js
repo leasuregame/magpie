@@ -17,6 +17,8 @@ var ExploreLayer = cc.Layer.extend({
     _sectionId: 0,
     _spirit: null,
     _spiritShadow: null,
+    _turnLeftSprite: null,
+    _turnRightSprite: null,
     _mapLabel: null,
     _exploreItem: null,
     _scrollView: null,
@@ -84,6 +86,15 @@ var ExploreLayer = cc.Layer.extend({
         this._spirit.setPosition(cc.p(360, 790));
         this.addChild(this._spirit);
 
+        this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
+        this._turnLeftSprite.setRotation(180);
+        this._turnLeftSprite.setPosition(cc.p(80, 550));
+        this.addChild(this._turnLeftSprite, 2);
+
+        this._turnRightSprite = cc.Sprite.create(main_scene_image.icon37);
+        this._turnRightSprite.setPosition(cc.p(640, 550));
+        this.addChild(this._turnRightSprite, 2);
+
         var backItem = cc.MenuItemImage.create(
             main_scene_image.button8,
             main_scene_image.button8s,
@@ -100,6 +111,7 @@ var ExploreLayer = cc.Layer.extend({
             this
         );
         this._exploreItem.setPosition(cc.p(360, 370));
+
 
         var menu = cc.Menu.create(backItem, this._exploreItem);
         menu.setPosition(cc.p(0, 0));
@@ -126,59 +138,60 @@ var ExploreLayer = cc.Layer.extend({
 
             var nameLabel = cc.LabelTTF.create(chapterTable[id].section_name + " " + i + " / 10", "STHeitiTC-Medium", 25);
             nameLabel.setColor(cc.c3b(255, 240, 170));
-            nameLabel.setPosition(cc.p(x + 320, 468));
+            nameLabel.setPosition(cc.p(x + 320, 470));
             scrollViewLayer.addChild(nameLabel);
 
             var exploreExpLabel = cc.LabelTTF.create(chapterTable[id].exp_obtain, "STHeitiTC-Medium", 20);
             exploreExpLabel.setColor(cc.c3b(255, 240, 170));
             exploreExpLabel.setAnchorPoint(cc.p(0, 0.5));
-            exploreExpLabel.setPosition(cc.p(255 + x, 410));
+            exploreExpLabel.setPosition(cc.p(275 + x, 408));
             scrollViewLayer.addChild(exploreExpLabel);
 
             var exploreMoneyLabel = cc.LabelTTF.create(chapterTable[id].coins_obtain, "STHeitiTC-Medium", 20);
             exploreMoneyLabel.setColor(cc.c3b(255, 240, 170));
             exploreMoneyLabel.setAnchorPoint(cc.p(0, 0.5));
-            exploreMoneyLabel.setPosition(cc.p(405 + x, 410));
+            exploreMoneyLabel.setPosition(cc.p(425 + x, 408));
             scrollViewLayer.addChild(exploreMoneyLabel);
-
-            var powerLabel = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 20);
-            powerLabel.setColor(cc.c3b(255, 240, 170));
-            powerLabel.setAnchorPoint(cc.p(0, 0.5));
-            powerLabel.setPosition(cc.p(450 + x, 361));
-            scrollViewLayer.addChild(powerLabel);
-
-            var expLabel = cc.LabelTTF.create("999999", "STHeitiTC-Medium", 20);
-            expLabel.setColor(cc.c3b(255, 240, 170));
-            expLabel.setAnchorPoint(cc.p(0, 0.5));
-            expLabel.setPosition(cc.p(450 + x, 320));
-            scrollViewLayer.addChild(expLabel);
-
-            var progressLabel = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 20);
-            progressLabel.setColor(cc.c3b(255, 240, 170));
-            progressLabel.setAnchorPoint(cc.p(0, 0.5));
-            progressLabel.setPosition(cc.p(450 + x, 280));
-            scrollViewLayer.addChild(progressLabel);
 
             var descriptionLabel = cc.Node.create();
             descriptionLabel.setPosition(cc.p(230, 270));
             this.addChild(descriptionLabel);
 
             var powerProgress = Progress.create(null, main_scene_image.progress1, 200, 200);
-            powerProgress.setPosition(cc.p(320 + x, 362));
+            powerProgress.setPosition(cc.p(320 + x, 360));
             scrollViewLayer.addChild(powerProgress);
 
             var expProgress = Progress.create(null, main_scene_image.progress2, 200, 200);
-            expProgress.setPosition(cc.p(320 + x, 321));
+            expProgress.setPosition(cc.p(320 + x, 319));
             scrollViewLayer.addChild(expProgress);
 
             var sectionProgress = Progress.create(null, main_scene_image.progress3, 200, 200);
-            sectionProgress.setPosition(cc.p(320 + x, 281));
+            sectionProgress.setPosition(cc.p(320 + x, 278));
             scrollViewLayer.addChild(sectionProgress);
+
+            var powerLabel = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 20);
+            powerLabel.setColor(cc.c3b(255, 240, 170));
+            powerLabel.setAnchorPoint(cc.p(0, 0.5));
+            powerLabel.setPosition(cc.p(465 + x, 360));
+            scrollViewLayer.addChild(powerLabel);
+
+            var expLabel = cc.LabelTTF.create("999999", "STHeitiTC-Medium", 20);
+            expLabel.setColor(cc.c3b(255, 240, 170));
+            expLabel.setAnchorPoint(cc.p(0, 0.5));
+            expLabel.setPosition(cc.p(465 + x, 319));
+            scrollViewLayer.addChild(expLabel);
+
+            var progressLabel = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 20);
+            progressLabel.setColor(cc.c3b(255, 240, 170));
+            progressLabel.setAnchorPoint(cc.p(0, 0.5));
+            progressLabel.setPosition(cc.p(465 + x, 278));
+            scrollViewLayer.addChild(progressLabel);
 
             var description = lz.format(chapterTable[id].description, 20);
             var len = description.length;
             for (var j = 0; j < len; ++j) {
                 var storyLabel = cc.LabelTTF.create(description[j], "STHeitiTC-Medium", 20);
+                storyLabel.setColor(cc.c3b(255, 240, 170));
                 storyLabel.setAnchorPoint(cc.p(0, 0));
                 storyLabel.setPosition(cc.p(0, -30 * j));
                 descriptionLabel.addChild(storyLabel);
@@ -209,6 +222,9 @@ var ExploreLayer = cc.Layer.extend({
         cc.log("ExploreLayer update");
 
         this._scrollView.setContentOffset(this._getScrollViewOffset(), true);
+
+        this._turnLeftSprite.setVisible(this._index > 1);
+        this._turnRightSprite.setVisible(this._index < TASK_POINTS_COUNT);
 
         var player = gameData.player;
 
@@ -343,12 +359,13 @@ var ExploreLayer = cc.Layer.extend({
     onTouchesEnded: function (touches, event) {
         cc.log("TaskLayer onTouchesEnded");
 
-        this._scrollView.unscheduleAllCallbacks();
-        this._scrollView.stopAllActions();
-
         var beganOffset = this._getScrollViewOffset();
         var endOffset = this._scrollView.getContentOffset();
+
         var len = beganOffset.x - endOffset.x;
+
+        this._scrollView.unscheduleAllCallbacks();
+        this._scrollView.stopAllActions();
 
         if (len > 30) {
             this._index = 1 - Math.floor(endOffset.x / 640);

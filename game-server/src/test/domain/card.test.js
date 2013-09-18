@@ -251,6 +251,41 @@ describe("Card Object", function() {
 
     });
 
+    describe('check hp and atk', function(){
+        describe('card with no passive skill', function(){
+            it('should can count the correct hp and atk', function(){
+                var card = new Card({
+                    tableId: 1,
+                    lv: 1
+                });
+                card.hp.should.equal(103);
+                card.atk.should.equal(59);
+
+                card.lv = 10;
+                card.hp.should.equal(parseInt(103 * 2.282));
+                card.atk.should.equal(parseInt(59 * 2.282));
+
+                card.lv = 50;
+                card.hp.should.equal(parseInt(103 * 36.080));
+                card.atk.should.equal(parseInt(59 * 36.080));
+
+                card.addPassiveSkill({id: 1, name: 'hp_improve', value: 5});
+                card.hp.should.equal(parseInt(103 * 36.080) + 185);
+                
+                card.addPassiveSkill({id: 2, name: 'atk_improve', value: 5});
+                card.atk.should.equal(parseInt(59 * 36.080) + 106);
+
+                card.elixirHp = 1000;
+                card.hp.should.equal(parseInt(103 * 36.080) + 185 + 200);
+                card.atk.should.equal(parseInt(59 * 36.080) + 106);
+
+                card.elixirAtk = 1000;
+                card.hp.should.equal(parseInt(103 * 36.080) + 185 + 200);
+                card.atk.should.equal(parseInt(59 * 36.080) + 106 + 100);
+            });
+        });
+    });
+
 
 
 

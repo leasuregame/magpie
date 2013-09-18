@@ -1,5 +1,6 @@
 playerManager = require '../../../manager/playerManager'
 taskManager = require '../../../manager/taskManager'
+fightManager = require '../../../manager/fightManager'
 table = require '../../../manager/table'
 taskRate = require '../../../../config/data/taskRate'
 async = require 'async'
@@ -37,8 +38,6 @@ Handler::explore = (msg, session, next) ->
     (data, chapterId, sectionId, cb) =>
       if data.result is 'fight'
         taskManager.fightToMonster(
-          @app, 
-          session, 
           {pid: player.id, tableId: chapterId, sectionId: sectionId, table: 'task_config'}
         , (err, battleLog) ->
           data.battle_log = battleLog
@@ -70,6 +69,8 @@ Handler::explore = (msg, session, next) ->
     player.save()
     data.task = player.task
     data.power = player.power
+    data.lv = player.lv
+    data.exp = player.exp
     next(null, {code: 200, msg: data})
 
 Handler::updateMomoResult = (msg, session, next) ->
@@ -80,7 +81,12 @@ Handler::updateMomoResult = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg})
 
-    player.increase('gold', gold)
+    if player.hasMomoMark()
+      return next(null, {code: 501, msg: '不能重复领取摸一摸奖励'})
+
+    player.setMomoMark()
+    player.increase 'gold', _.min([gold, 120])
+    player.save()
     next(null, {code: 200})
 
 ###
@@ -89,9 +95,9 @@ Handler::updateMomoResult = (msg, session, next) ->
 Handler::wipeOut = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   type = msg.type or 'task'
-  taskId = msg.taskId
+  chapterId = msg.chapterId
 
-  if taskId? and (taskId < 1 or taskId > 500)
+  if chapterId? and (chapterId < 1 or chapterId > 50)
     return next(null, {code: 501, msg: '无效的任务Id'})
 
   async.waterfall [
@@ -99,7 +105,7 @@ Handler::wipeOut = (msg, session, next) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
 
     (player, cb) ->
-      taskManager.wipeOut player, type, taskId, cb
+      taskManager.wipeOut player, type, chapterId, cb
   ], (err, player, rewards) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
@@ -107,7 +113,7 @@ Handler::wipeOut = (msg, session, next) ->
     player.save()
     next(null, {code: 200, msg: {
       rewards: rewards, 
-      pass: player.pass,
+      mark: player[type]?.mark,
       power: player.power,
       exp: player.exp,
       lv: player.lv
@@ -134,7 +140,7 @@ Handler::passBarrier = (msg, session, next) ->
       cb(null)
 
     (cb) =>
-      @app.rpc.battle.fightRemote.pve( session, {pid: player.id, tableId: layer, table: 'pass_config'}, cb )
+      fightManager.pve( {pid: player.id, tableId: layer, table: 'pass_config'}, cb )
 
     (bl, cb) ->
       if bl.winner is 'own'
@@ -216,7 +222,9 @@ Handler::mysticalPass = (msg, session, next) ->
 
 countSpirit = (player, bl, rewards) ->
   spirit = rewards.spirit
-  _.each bl.enemy.cards, (v, k) ->
+  _.each bl.cards, (v, k) ->
+    return if k <= 6
+    
     if v.boss?
       spirit[k] = spiritConfig.SPIRIT.PASS.BOSS
       spirit.total += spiritConfig.SPIRIT.PASS.BOSS

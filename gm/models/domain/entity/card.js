@@ -87,9 +87,7 @@ var Card = (function(_super) {
         'skillLv',
         'skillPoint',
         'elixirHp',
-        'elixirAtk',
-        'hpAddition',
-        'atkAddition'
+        'elixirAtk'
     ];
 
     Card.DEFAULT_VALUES = {
@@ -100,8 +98,6 @@ var Card = (function(_super) {
         skillPoint: 0,
         elixirHp: 0,
         elixirAtk:0,
-        hpAddition: 0,
-        atkAddition: 0,
         init_hp: 0,
         init_atk: 0,
         hp: 0,

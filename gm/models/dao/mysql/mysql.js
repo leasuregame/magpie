@@ -91,7 +91,8 @@ sqlclient = {
         }
     },
     shutdown: function () {
-        return NND.shutdown();
+        NND.shutdown();
+        _pool = null;
     }
 };
 

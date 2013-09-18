@@ -21,6 +21,9 @@ var flash = require('connect-flash');
 app.set('port', process.env.PORT || 3003);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+app.set('basepath', __dirname + '/public');
+
+//app.set('basepath',__dirname + '/lib');
 
 app.use(flash());
 app.use(express.favicon());

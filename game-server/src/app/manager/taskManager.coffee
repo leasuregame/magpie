@@ -6,6 +6,7 @@ utility = require '../common/utility'
 dao = require('pomelo').app.get('dao')
 async = require('async')
 _ = require 'underscore'
+fightManager = require './fightManager'
 logger = require('pomelo-logger').getLogger(__filename)
 
 MAX_POWER = 200
@@ -23,7 +24,6 @@ class Manager
       upgrade: false
       open_box_card: null
       battle_log: null
-      fragment: false
       isMomo: false
     }
 
@@ -42,11 +42,11 @@ class Manager
 
     cb(null, data, taskData.chapter_id, taskData.section_id)
 
-  @wipeOut: (player, type, taskId, cb) ->
+  @wipeOut: (player, type, chapterId, cb) ->
     if type is 'pass'
       @wipeOutPass player, cb
     else if type is 'task'
-      @wipeOutTask player, taskId, cb
+      @wipeOutTask player, chapterId, cb
 
   @wipeOutPass: (player, cb) ->
     layer = player.pass.layer
@@ -70,19 +70,19 @@ class Manager
     return cb({code: 501, msg: "没有关卡可以扫荡"}) if not isWipeOut
     cb(null, player, rewards)
 
-  @wipeOutTask: (player, taskId, cb) ->
+  @wipeOutTask: (player, chapterId, cb) ->
     rewards = {exp_obtain: 0, money_obtain: 0}
-    taskData = table.getTableItem('task', taskId or player.task.id)
-    chapterId = taskData.chapter_id
-    
+
     count_ = (id, rewards) ->
       wipeOutData = table.getTableItem('wipe_out', id)
       rewards.exp_obtain += parseInt(wipeOutData.exp_obtain)
       rewards.money_obtain += parseInt(wipeOutData.money_obtain)
 
-    if taskId and not player.hasTaskMark(chapterId)
+    if chapterId? and not player.hasTaskMark(chapterId)
       count_(chapterId, rewards)
     else
+      taskData = table.getTableItem('task', player.task.id)
+      chapterId = taskData.chapter_id
       count_(id, rewards) for id in _.range(1, chapterId) when not player.hasTaskMark(id)
           
     player.increase('exp',  rewards.exp_obtain)
@@ -118,8 +118,8 @@ class Manager
       data.open_box_card = card.toJson()
       cb()
 
-  @fightToMonster: (app, session, args, cb) ->
-    app.rpc.battle.fightRemote.pve( session, args, cb )
+  @fightToMonster: (args, cb) ->
+    fightManager.pve( args, cb )
 
   @obtainBattleRewards: (player, data, taskId, battleLog, cb) ->
     taskData = table.getTableItem 'task_config', taskId
@@ -142,7 +142,9 @@ class Manager
       battleLog.rewards.spirit = spirit
 
     if utility.hitRate(taskRate.fragment_rate)
-      data.fragment = true
+      battleLog.rewards.fragment = true
+    else
+      battleLog.rewards.fragment = false
 
     saveExpCardsInfo player.id, taskData.max_drop_card_number, (err, results) ->
       if err

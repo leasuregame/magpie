@@ -9,7 +9,7 @@
   <Author>gaobin</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-09-11T20:04:48Z</Created>
-  <LastSaved>2013-09-17T06:22:01Z</LastSaved>
+  <LastSaved>2013-09-17T06:33:46Z</LastSaved>
   <Version>14.0</Version>
  </DocumentProperties>
  <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
@@ -21,8 +21,8 @@
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <WindowHeight>8640</WindowHeight>
   <WindowWidth>32520</WindowWidth>
-  <WindowTopX>1080</WindowTopX>
-  <WindowTopY>3840</WindowTopY>
+  <WindowTopX>4780</WindowTopX>
+  <WindowTopY>2940</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -1654,9 +1654,9 @@
   <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
    <Column ss:Width="75"/>
-   <Column ss:Width="39"/>
-   <Column ss:Width="33"/>
-   <Column ss:Index="5" ss:Width="105"/>
+   <Column ss:Width="39" ss:Span="1"/>
+   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="74"/>
+   <Column ss:AutoFitWidth="0" ss:Width="151"/>
    <Column ss:Width="81"/>
    <Column ss:Width="75"/>
    <Column ss:Width="69"/>
@@ -1815,8 +1815,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

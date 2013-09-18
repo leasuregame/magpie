@@ -29,15 +29,18 @@ var addEvents = function (card) {
             'atk_improve': 'atk',
             'hp_improve': 'hp'
         };
-        var incs = {};
+        var total = {atk_improve: 0, hp_improve: 0};
         _.values(card.passiveSkills).filter(function (ps) {
             return _.keys(_pro).indexOf(ps.name) > -1;
         }).forEach(function(ps) {
             var _key = _pro[ps.name];
-            var _val = parseInt(card['init_' + _key] * ps.value / 100);
-            incs['ps_' + _key] && (incs['ps_' + _key] += _val) || (incs['ps_' + _key] = _val);
+            total[ps.name] += ps.value;
         });
-        _.extend(card.incs, incs);
+
+        _.extend(card.incs, {
+            ps_hp: parseInt((total.hp_improve * card.init_hp) / 100),
+            atk_hp: parseInt((total.atk_improve * card.init_atk) / 100)
+        });
         card.recountHpAndAtk();
     });
 
@@ -49,6 +52,10 @@ var addEvents = function (card) {
     card.on('elixirAtk.change', function(elixir) {
         card.incs.elixir_atk = parseInt(elixir / elixirConfig.exchange.atk)
         card.recountHpAndAtk();
+    });
+
+    card.on('lv.change', function(lv){
+        
     });
 };
 
@@ -139,10 +146,10 @@ var Card = (function (_super) {
             atk = this.init_atk;
 
         hp += this.incs.elixir_hp;
-        hp += this.incs.spirit_hp;
+        //hp += this.incs.spirit_hp;
         hp += this.incs.ps_hp;
         atk += this.incs.elixir_atk;
-        atk += this.incs.spirit_atk;
+        //atk += this.incs.spirit_atk;
         atk += this.incs.ps_atk;
 
         this.hp = hp;
@@ -197,7 +204,7 @@ var Card = (function (_super) {
 
             _abi += sum;
         }
-        console.log('abi: ', _abi);
+
         return parseInt(_abi);
     };
 

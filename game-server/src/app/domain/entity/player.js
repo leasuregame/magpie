@@ -314,7 +314,7 @@ var Player = (function(_super) {
     Player.prototype.incSpirit = function(val) {
         var spiritor = _.clone(this.spiritor);
         var total_spirit = spiritor.spirit + val;
-        var spiritorData = table.getTableItem('spirit', spiritor.lv)
+        var spiritorData = table.getTableItem('spirit', spiritor.lv);
 
         while ( !! spiritorData && total_spirit >= spiritorData.spirit_need) {
             spiritor.lv += 1;

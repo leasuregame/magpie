@@ -1,9 +1,9 @@
-table = require './manager/table'
+table = require './table'
 Battle = require '../battle/battle'
 battleLog = require '../battle/battle_log'
 Player = require '../battle/player'
 VirtualPlayer = require '../battle/virtual_player'
-playerManager = require './manager/playerManager'
+playerManager = require './playerManager'
 async = require 'async'
 
 class Manager

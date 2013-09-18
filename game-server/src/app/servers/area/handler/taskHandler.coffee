@@ -222,7 +222,9 @@ Handler::mysticalPass = (msg, session, next) ->
 
 countSpirit = (player, bl, rewards) ->
   spirit = rewards.spirit
-  _.each bl.enemy.cards, (v, k) ->
+  _.each bl.cards, (v, k) ->
+    return if k <= 6
+    
     if v.boss?
       spirit[k] = spiritConfig.SPIRIT.PASS.BOSS
       spirit.total += spiritConfig.SPIRIT.PASS.BOSS

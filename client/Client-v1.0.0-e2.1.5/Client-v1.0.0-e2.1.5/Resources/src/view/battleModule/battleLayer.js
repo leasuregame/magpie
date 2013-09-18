@@ -29,6 +29,7 @@ var BatterLayer = cc.Layer.extend({
         11: cc.p(355, 950),
         12: cc.p(590, 950)
     },
+    _rotation: {},
 
     init: function (battleLog) {
         cc.log("BatterLayer init");
@@ -58,7 +59,7 @@ var BatterLayer = cc.Layer.extend({
             label = cc.LabelTTF.create(i, "STHeitiTC-Medium", 60);
             label.setColor(cc.c3b(255, 255, 0));
             this.addChild(label, 1);
-            label.setPosition(this._locate[i].x - 70, this._locate[i].y + 50);
+            label.setPosition(cc.p(this._locate[i].x - 70, this._locate[i].y + 50));
         }
 
         this._backItem = cc.MenuItemFont.create("结束战斗", this.end, this);
@@ -134,10 +135,41 @@ var BatterLayer = cc.Layer.extend({
         cc.log(str);
         this._tipLabel.setString(str);
 
-        var delay = SkillFactory.normalAttack(this._battleNode, battleStep);
+        var delay = this._normalAttack(battleStep);
 
         cc.log("set next round schedule");
         this.schedule(this._playAStep, delay, 1, 0);
+    },
+
+    _normalAttack: function (battleStep) {
+        cc.log(battleStep);
+
+        var attacker = battleStep.get("attacker");
+        var attackerLocate = this._locate[attacker];
+
+        this._battleNode[attacker].atk();
+
+        battleStep.recover();
+        while (battleStep.hasNextTarget()) {
+            var target = battleStep.getTarget();
+            var targetLocate = this._locate[target];
+
+            this._battleNode[target].defend(battleStep.getEffect(), battleStep.isCrit());
+
+            var effectSprite = playEffect({
+                effectId: 4,
+                target: this,
+                loops: 1,
+                zOrder: 10,
+                rotation: lz.getAngle(attackerLocate, targetLocate),
+                position: attackerLocate
+            });
+
+            var moveAction = cc.EaseSineIn.create(cc.MoveTo.create(1, targetLocate));
+            effectSprite.runAction(moveAction);
+        }
+
+        return 2.0;
     }
 });
 

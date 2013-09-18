@@ -84,6 +84,10 @@ lz.getColor = function (colorType) {
     return color;
 };
 
+lz.getAngle = function (p1, p2) {
+    return (90 - Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI);
+};
+
 
 /*
  * 数组去重

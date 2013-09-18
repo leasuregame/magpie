@@ -270,7 +270,6 @@ var ExploreLayer = cc.Layer.extend({
             cc.log(data);
 
 
-
             if (data.result == "fight") {
                 BattlePlayer.getInstance().play(data.battleLogId);
             } else {

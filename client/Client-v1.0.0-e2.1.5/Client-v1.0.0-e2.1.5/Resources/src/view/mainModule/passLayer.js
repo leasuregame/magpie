@@ -22,7 +22,7 @@ var PassLayer = cc.Layer.extend({
     _moneyObtainLabel: null,
     _passLabelList: [],
     _ladderList: [],
-    _nowPassTop: 0,
+    _nowTop: 0,
 
     onEnter: function () {
         cc.log("PassLayer onEnter");
@@ -36,7 +36,7 @@ var PassLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        this._nowPassTop = gameData.pass.get("passTop");
+        this._nowTop = gameData.pass.get("top");
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg5);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -57,7 +57,7 @@ var PassLayer = cc.Layer.extend({
                 var ladderSprite = cc.Sprite.create(main_scene_image["ladder" + ((i) % 2 + 1)]);
                 ladderSprite.setAnchorPoint(cc.p(0, 0));
                 ladderSprite.setPosition(cc.p(80, 110 + 185 * (i - 2)));
-                if (i > this._nowPassTop + 1) {
+                if (i > this._nowTop + 1) {
                     ladderSprite.setVisible(false);
                 }
                 scrollViewLayer.addChild(ladderSprite);
@@ -72,8 +72,8 @@ var PassLayer = cc.Layer.extend({
 
         this._cardSprite = cc.Sprite.create(main_scene_image.card0);
         this._cardSprite.setAnchorPoint(cc.p(0, 0));
-        this._cardSprite.setPosition(this._getCardLocation(this._nowPassTop));
-        if (this._nowPassTop < 1) {
+        this._cardSprite.setPosition(this._getCardLocation(this._nowTop));
+        if (this._nowTop < 1) {
             this._cardSprite.setVisible(false);
         }
         scrollViewLayer.addChild(this._cardSprite, 1);
@@ -84,7 +84,7 @@ var PassLayer = cc.Layer.extend({
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
-        this._locate(this._nowPassTop);
+        this._locate(this._nowTop);
 
         var tipLabel = cc.Sprite.create(main_scene_image.bg6);
         tipLabel.setAnchorPoint(cc.p(0, 0));
@@ -111,7 +111,7 @@ var PassLayer = cc.Layer.extend({
         towerBgSprite.setPosition(cc.p(530, 260));
         this.addChild(towerBgSprite);
 
-        var len = this._nowPassTop / MAX_PASS_COUNT * 209;
+        var len = this._nowTop / MAX_PASS_COUNT * 209;
         this._towerSprite = cc.Sprite.create(main_scene_image.tower2, cc.rect(0, 209 - len, 94, len));
         this._towerSprite.setAnchorPoint(cc.p(0, 0));
         this._towerSprite.setPosition(cc.p(530, 260));
@@ -123,18 +123,18 @@ var PassLayer = cc.Layer.extend({
     update: function () {
         cc.log("PassLayer update");
 
-        var passTop = gameData.pass.get("passTop");
+        var top = gameData.pass.get("top");
 
-        if (passTop != this._nowPassTop) {
-            this._nowPassTop = passTop;
+        if (top != this._nowTop) {
+            this._nowTop = top;
 
-            this._locate(this._nowPassTop);
+            this._locate(this._nowTop);
 
-            var len = this._nowPassTop / MAX_PASS_COUNT * 209;
+            var len = this._nowTop / MAX_PASS_COUNT * 209;
             this._towerSprite.setTextureRect(cc.rect(0, 209 - len * 209, 94, len));
 
             for (var i = 2; i <= MAX_PASS_COUNT; ++i) {
-                if (i <= this._nowPassTop) {
+                if (i <= this._nowTop) {
                     this._ladderList[i].setVisible(true);
                 } else {
                     this._ladderList[i].setVisible(false);
@@ -210,9 +210,9 @@ var PassLayer = cc.Layer.extend({
 
         LazyLayer.showCloudLayer();
 
-        this._cardWalk(this._nowPassTop);
+        this._cardWalk(this._nowTop);
 
-        if (this._nowPassTop == 100) {
+        if (this._nowTop == 100) {
             this.scheduleOnce(function () {
                 LazyLayer.closeCloudLayer();
             }, 2);
@@ -220,7 +220,7 @@ var PassLayer = cc.Layer.extend({
         }
 
         this.scheduleOnce(function () {
-            this._showLadder(this._nowPassTop + 1);
+            this._showLadder(this._nowTop + 1);
         }, 2);
         this.scheduleOnce(function () {
             LazyLayer.closeCloudLayer();
@@ -237,14 +237,14 @@ var PassLayer = cc.Layer.extend({
         this._cardWalk(1, 0.3);
         var index = 2;
         this.schedule(function () {
-            if (index > this._nowPassTop) {
+            if (index > this._nowTop) {
                 LazyLayer.closeCloudLayer();
                 return;
             }
 
             this._cardWalk(index, 0.3);
             index += 1;
-        }, 0.4, this._nowPassTop);
+        }, 0.4, this._nowTop);
     },
 
     _onClickWipeOut: function () {

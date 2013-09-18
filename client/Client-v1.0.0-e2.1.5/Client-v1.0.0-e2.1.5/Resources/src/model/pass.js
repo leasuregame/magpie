@@ -14,10 +14,11 @@
 
 var MAX_PASS_COUNT = 100;
 var PASS_BOSS_SPACE = 5;
+var EACH_NUM_BIT = 30;
 
 var Pass = Entity.extend({
-    _passTop: 0,
-    _passMark: [],
+    _top: 0,
+    _mark: [],
 
     init: function (data) {
         cc.log("Pass init");
@@ -32,15 +33,15 @@ var Pass = Entity.extend({
     update: function (data) {
         cc.log("Pass update");
 
-        this.set("passTop", data.layer);
-        this.set("passMark", data.mark);
+        this.set("top", data.layer);
+        this.set("mark", data.mark);
     },
 
     canWipeOut: function () {
         cc.log("Pass canWipOut");
 
-        for (var i = 1; i <= this._passTop; ++i) {
-            if (this.getPassMarkByIndex(i)) {
+        for (var i = 1; i <= this._top; ++i) {
+            if (this.getMarkByIndex(i)) {
                 return true
             }
         }
@@ -48,10 +49,17 @@ var Pass = Entity.extend({
         return false;
     },
 
-    getPassMarkByIndex: function (index) {
-        cc.log("Pass getPassMarkByIndex " + index);
+    getMarkByIndex: function (index) {
+        cc.log("Pass getMarkByIndex " + index);
 
-        return (this._passMark[index - 1] == 0);
+        var offset = (index - 1) % EACH_NUM_BIT;
+        index = Math.floor((index - 1) / EACH_NUM_BIT);
+
+        if (this._mark[index]) {
+            return (this._mark[index] >> offset & 1 == 0);
+        }
+
+        return true;
     },
 
     defiance: function (cb, index) {
@@ -71,6 +79,7 @@ var Pass = Entity.extend({
                 that.update(msg.pass);
 
                 var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
+
                 cb(battleLogId);
             } else {
                 cc.log("defiance fail");

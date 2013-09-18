@@ -282,17 +282,17 @@ var ExploreLayer = cc.Layer.extend({
     _playAnimation: function () {
         cc.log("ExploreLayer _playAnimation");
 
-        var scaleAction1 = cc.ScaleTo.create(0.2, 1, 0.96);
-        var scaleAction2 = cc.ScaleTo.create(0.2, 1, 1.04);
-        var scaleAction3 = cc.ScaleTo.create(0.5, 1, 1);
-        var scaleAction4 = cc.ScaleTo.create(0.5, 1, 1.04);
+        var scaleAction1 = cc.ScaleTo.create(0.1, 1, 0.96);
+        var scaleAction2 = cc.ScaleTo.create(0.1, 1, 1.04);
+        var scaleAction3 = cc.ScaleTo.create(0.25, 1, 1);
+        var scaleAction4 = cc.ScaleTo.create(0.25, 1, 1.04);
         var scaleAction5 = cc.ScaleTo.create(0.2, 1, 1);
 
-        var waitAction1 = cc.DelayTime.create(0.2);
-        var waitAction2 = cc.DelayTime.create(0.4);
+        var waitAction1 = cc.DelayTime.create(0.1);
+        var waitAction2 = cc.DelayTime.create(0.2);
 
-        var moveAction1 = cc.EaseSineOut.create(cc.MoveBy.create(0.5, cc.p(0, 35)));
-        var moveAction2 = cc.EaseSineIn.create(cc.MoveBy.create(0.5, cc.p(0, -35)));
+        var moveAction1 = cc.EaseSineOut.create(cc.MoveBy.create(0.25, cc.p(0, 35)));
+        var moveAction2 = cc.EaseSineIn.create(cc.MoveBy.create(0.25, cc.p(0, -35)));
 
         var scaleAction = cc.Sequence.create(
             scaleAction1,
@@ -311,29 +311,29 @@ var ExploreLayer = cc.Layer.extend({
 
         var spiritAction = cc.Spawn.create(scaleAction, moveAction);
 
-        var repeatAction = cc.Repeat.create(spiritAction, 5);
+        var repeatAction = cc.Repeat.create(spiritAction, 2);
 
         this._spirit.runAction(repeatAction);
 
 
         var mapAction = cc.Sequence.create(
-            cc.EaseSineOut.create(cc.MoveBy.create(0.2, cc.p(-5, 0))),
-            cc.MoveBy.create(0.7, cc.p(-35, 0)),
-            cc.MoveBy.create(0.7, cc.p(-35, 0))
+            cc.EaseSineOut.create(cc.MoveBy.create(0.1, cc.p(-5, 0))),
+            cc.MoveBy.create(0.35, cc.p(-35, 0)),
+            cc.MoveBy.create(0.35, cc.p(-35, 0))
         );
 
         this._mapLabel.setPosition(cc.p(40, 766));
-        this._mapLabel.runAction(cc.Repeat.create(mapAction, 5));
+        this._mapLabel.runAction(cc.Repeat.create(mapAction, 2));
 
 
         var spiritShadowAction = cc.Sequence.create(
-            cc.ScaleTo.create(0.2, 1.2, 1.2),
-            cc.ScaleTo.create(0.2, 1, 1),
-            cc.ScaleTo.create(0.5, 0.5, 0.5),
-            cc.ScaleTo.create(0.5, 1, 1),
-            cc.ScaleTo.create(0.2, 1.1, 1.1)
+            cc.ScaleTo.create(0.1, 1.2, 1.2),
+            cc.ScaleTo.create(0.1, 1, 1),
+            cc.ScaleTo.create(0.25, 0.5, 0.5),
+            cc.ScaleTo.create(0.25, 1, 1),
+            cc.ScaleTo.create(0.1, 1.1, 1.1)
         );
-        this._spiritShadow.runAction(cc.Repeat.create(spiritShadowAction, 5));
+        this._spiritShadow.runAction(cc.Repeat.create(spiritShadowAction, 2));
     },
 
     /**

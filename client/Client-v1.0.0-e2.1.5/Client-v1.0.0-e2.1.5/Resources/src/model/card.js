@@ -62,8 +62,8 @@ var Card = Entity.extend({
 
         cc.log(this);
 
-        cc.Assert(data.hp == this._hp, "Card hp error");
-        cc.Assert(data.atk == this._atk, "Card atk error");
+        if (data != undefined && data.hp != undefined) cc.Assert(data.hp == this._hp, "Card hp error");
+        if (data != undefined && data.atk != undefined) cc.Assert(data.atk == this._atk, "Card atk error");
 
         cc.log("=============================================");
         return true;
@@ -184,18 +184,21 @@ var Card = Entity.extend({
         var elixirHp = Math.floor(this._elixirHp / eachConsume) * elixirTable.hp;
         var elixirAtk = Math.floor(this._elixirAtk / eachConsume) * elixirTable.atk;
 
-        var psHp = 0;
-        var psAtk = 0;
+        var psHpMultiple = 0;
+        var psAtkMultiple = 0;
 
         for (var key in this._passiveSkill) {
             if (this._passiveSkill[key].name == "hp_improve") {
-                psHp += this._initHp * this._passiveSkill[key].value / 100;
+                psHpMultiple += this._passiveSkill[key].value;
             }
 
             if (this._passiveSkill[key].name == "atk_improve") {
-                psAtk += this._initAtk * this._passiveSkill[key].value / 100;
+                psAtkMultiple += this._passiveSkill[key].value;
             }
         }
+
+        var psHp = Math.floor(this._initHp * psHpMultiple / 100);
+        var psAtk = Math.floor(this._initAtk * psAtkMultiple / 100);
 
         this._hp = this._initHp + elixirHp + psHp;
         this._atk = this._initAtk + elixirAtk + psAtk;

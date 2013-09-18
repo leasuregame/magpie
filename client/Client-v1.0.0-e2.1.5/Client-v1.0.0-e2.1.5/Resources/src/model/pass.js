@@ -56,7 +56,7 @@ var Pass = Entity.extend({
         index = Math.floor((index - 1) / EACH_NUM_BIT);
 
         if (this._mark[index]) {
-            return (this._mark[index] >> offset & 1 == 0);
+            return ((this._mark[index] >> offset & 1) == 0);
         }
 
         return true;
@@ -78,6 +78,13 @@ var Pass = Entity.extend({
 
                 that.update(msg.pass);
 
+                gameData.player.update({
+                    lv: msg.lv,
+                    exp: msg.exp
+                });
+
+                gameData.spirit.update(msg.spiritor);
+
                 var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
 
                 cb(battleLogId);
@@ -91,9 +98,7 @@ var Pass = Entity.extend({
         cc.log("Pass wipeOut");
 
         var that = this;
-
         lzWindow.pomelo.request("logic.taskHandler.wipeOut", {
-            playerId: gameData.player.get("id"),
             type: "pass"
         }, function (data) {
             cc.log(data);
@@ -108,10 +113,19 @@ var Pass = Entity.extend({
                 var rewards = msg.rewards;
                 var player = gameData.player;
 
-                player.add("exp", rewards.exp_obtain || 0);
-                player.add("gold", rewards.gold_obtain || 0);
-                player.add("money", rewards.money_obtain || 0);
-                player.add("skillPoint", rewards.skill_point || 0);
+                that.update({
+                    mark: msg.mark
+                });
+
+                player.adds({
+                    money: rewards.money_obtain || 0,
+                    skillPoint: rewards.skill_point || 0
+                });
+
+                player.update({
+                    lv: msg.lv,
+                    exp: msg.exp
+                });
 
                 cb(rewards);
             } else {

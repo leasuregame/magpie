@@ -140,9 +140,9 @@ var PassLayer = cc.Layer.extend({
                     this._ladderList[i].setVisible(false);
                 }
             }
-            this._defianceAnimation();
-        }
 
+            this.scheduleOnce(this._defianceAnimation)
+        }
     },
 
     _getOffset: function (index) {
@@ -179,7 +179,6 @@ var PassLayer = cc.Layer.extend({
         cc.log("PassLayer _cardWalk");
 
         duration = duration || 2;
-
         var lowIndex = index > 1 ? index - 1 : 1;
 
         this._cardSprite.setPosition(this._getCardLocation(lowIndex));
@@ -222,6 +221,7 @@ var PassLayer = cc.Layer.extend({
         this.scheduleOnce(function () {
             this._showLadder(this._nowTop + 1);
         }, 2);
+
         this.scheduleOnce(function () {
             LazyLayer.closeCloudLayer();
         }, 4.5);

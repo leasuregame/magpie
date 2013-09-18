@@ -63,7 +63,6 @@ var Player = Entity.extend({
         this.set("userId", data.userId);
         this.set("areaId", data.areaId);
         this.set("name", data.name);
-        this.set("power", data.power.value);
         this.set("lv", data.lv);
         this.set("exp", data.exp);
         this.set("gold", data.gold);
@@ -75,19 +74,23 @@ var Player = Entity.extend({
         this.set("vip", data.vip);
         this.set("cash", data.cash);
 
-        if(this._lv) {
+        if(data.power) {
+            this.set("power", data.power.value);
+        }
+
+        if (this._lv) {
             this.set("maxExp", outputTables.player_upgrade.rows[this._lv].exp);
         }
 
-        if(data.cards) gameData.cardList.init(data.cards);
-        if(data.lineUp) gameData.lineUp.init(data.lineUp);
-        if(data.task) gameData.task.init(data.task);
-        if(data.pass) gameData.pass.init(data.pass);
-        if(data.spiritor) gameData.spirit.init(data.spiritor);
-        if(data.spiritPool) gameData.spiritPool.init(data.spiritPool);
+        if (data.cards) gameData.cardList.init(data.cards);
+        if (data.lineUp) gameData.lineUp.init(data.lineUp);
+        if (data.task) gameData.task.init(data.task);
+        if (data.pass) gameData.pass.init(data.pass);
+        if (data.spiritor) gameData.spirit.init(data.spiritor);
+        if (data.spiritPool) gameData.spiritPool.init(data.spiritPool);
 
 
-        if(data.friends) gameData.friend.init({
+        if (data.friends) gameData.friend.init({
             friendList: data.friends,
             giveBlessCount: data.dailyGift.gaveBless.count,
             giveBlessList: data.dailyGift.gaveBless.receivers,
@@ -95,12 +98,12 @@ var Player = Entity.extend({
             receiveBlessList: data.dailyGift.receivedBless.givers
         });
 
-        if(data.dailyGift.lotteryCount && data.dailyGift.lotteryFreeCount) gameData.treasureHunt.init({
+        if (data.dailyGift) gameData.treasureHunt.init({
             count: data.dailyGift.lotteryCount,
             freeCount: data.dailyGift.lotteryFreeCount
         });
 
-        if(data.vipBox) gameData.shop.init({
+        if (data.vipBox) gameData.shop.init({
             useVipBoxList: data.vipBox
         });
 

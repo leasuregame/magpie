@@ -99,7 +99,7 @@ var ExploreLayer = cc.Layer.extend({
             this._onClickExplore,
             this
         );
-        this._exploreItem.setPosition(cc.p(360, 350));
+        this._exploreItem.setPosition(cc.p(360, 370));
 
         var menu = cc.Menu.create(backItem, this._exploreItem);
         menu.setPosition(cc.p(0, 0));
@@ -121,7 +121,7 @@ var ExploreLayer = cc.Layer.extend({
             var x = 640 * (i - 1);
 
             var exploreBgSprite = cc.Sprite.create(main_scene_image.bg10);
-            exploreBgSprite.setPosition(cc.p(x + 320, 350));
+            exploreBgSprite.setPosition(cc.p(x + 320, 370));
             scrollViewLayer.addChild(exploreBgSprite);
 
             var nameLabel = cc.LabelTTF.create(chapterTable[id].section_name + " " + i + " / 10", "STHeitiTC-Medium", 25);
@@ -164,15 +164,15 @@ var ExploreLayer = cc.Layer.extend({
             this.addChild(descriptionLabel);
 
             var powerProgress = Progress.create(null, main_scene_image.progress1, 200, 200);
-            powerProgress.setPosition(cc.p(300 + x, 362));
+            powerProgress.setPosition(cc.p(320 + x, 362));
             scrollViewLayer.addChild(powerProgress);
 
             var expProgress = Progress.create(null, main_scene_image.progress2, 200, 200);
-            expProgress.setPosition(cc.p(300 + x, 321));
+            expProgress.setPosition(cc.p(320 + x, 321));
             scrollViewLayer.addChild(expProgress);
 
             var sectionProgress = Progress.create(null, main_scene_image.progress3, 200, 200);
-            sectionProgress.setPosition(cc.p(300 + x, 281));
+            sectionProgress.setPosition(cc.p(320 + x, 281));
             scrollViewLayer.addChild(sectionProgress);
 
             var description = lz.format(chapterTable[id].description, 20);
@@ -265,18 +265,18 @@ var ExploreLayer = cc.Layer.extend({
 
         this._playAnimation();
 
-//        var that = this;
-//        gameData.task.explore(function (data) {
-//            cc.log(data);
-//
-//
-//
-//            if (data.result == "fight") {
-//                BattlePlayer.getInstance().play(data.battleLogId);
-//            } else {
-//                that.update();
-//            }
-//        }, this._index);
+        var that = this;
+        gameData.task.explore(function (data) {
+            cc.log(data);
+
+
+
+            if (data.result == "fight") {
+                BattlePlayer.getInstance().play(data.battleLogId);
+            } else {
+                that.update();
+            }
+        }, this._index);
     },
 
     _playAnimation: function () {
@@ -284,15 +284,15 @@ var ExploreLayer = cc.Layer.extend({
 
         var scaleAction1 = cc.ScaleTo.create(0.1, 1, 0.96);
         var scaleAction2 = cc.ScaleTo.create(0.1, 1, 1.04);
-        var scaleAction3 = cc.ScaleTo.create(0.25, 1, 1);
-        var scaleAction4 = cc.ScaleTo.create(0.25, 1, 1.04);
-        var scaleAction5 = cc.ScaleTo.create(0.2, 1, 1);
+        var scaleAction3 = cc.ScaleTo.create(0.3, 1, 1);
+        var scaleAction4 = cc.ScaleTo.create(0.3, 1, 1.04);
+        var scaleAction5 = cc.ScaleTo.create(0.1, 1, 1);
 
         var waitAction1 = cc.DelayTime.create(0.1);
         var waitAction2 = cc.DelayTime.create(0.2);
 
-        var moveAction1 = cc.EaseSineOut.create(cc.MoveBy.create(0.25, cc.p(0, 35)));
-        var moveAction2 = cc.EaseSineIn.create(cc.MoveBy.create(0.25, cc.p(0, -35)));
+        var moveAction1 = cc.EaseSineOut.create(cc.MoveBy.create(0.3, cc.p(0, 35)));
+        var moveAction2 = cc.EaseSineIn.create(cc.MoveBy.create(0.3, cc.p(0, -35)));
 
         var scaleAction = cc.Sequence.create(
             scaleAction1,

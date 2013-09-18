@@ -77,6 +77,7 @@ class Manager
       wipeOutData = table.getTableItem('wipe_out', id)
       rewards.exp_obtain += parseInt(wipeOutData.exp_obtain)
       rewards.money_obtain += parseInt(wipeOutData.money_obtain)
+      player.setTaskMark(id)
 
     if chapterId? and not player.hasTaskMark(chapterId)
       count_(chapterId, rewards)

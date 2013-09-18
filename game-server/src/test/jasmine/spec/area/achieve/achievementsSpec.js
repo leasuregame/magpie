@@ -1,13 +1,13 @@
 describe("Area Server", function() {
 	describe("Achieve Handler", function() {
 		describe("area.achieveHandler.achievements", function() {
-			beforeAll(function() {
-				doAjax('/loaddata/csv', {}, function() {});
-			});
 
 			describe('when get achievements from server', function() {
 
 				describe('when player level is less than 50', function() {
+					beforeAll(function() {
+						doAjax('/loaddata/csv', {}, function() {});
+					});
 					beforeEach(function() {
 						loginWith('arthur', '1', 1);
 					});
@@ -44,6 +44,9 @@ describe("Area Server", function() {
 
 
 				describe('when player level is 50', function() {
+					beforeAll(function() {
+						doAjax('/loaddata/csv', {}, function() {});
+					});
 					beforeEach(function() {
 						doAjax('/update/player/100', {
 							lv: 50
@@ -83,6 +86,9 @@ describe("Area Server", function() {
 				});
 
 				describe('when player level is 70', function() {
+					beforeAll(function() {
+						doAjax('/loaddata/csv', {}, function() {});
+					});
 					beforeEach(function() {
 						doAjax('/update/player/100', {
 							lv: 70
@@ -122,6 +128,9 @@ describe("Area Server", function() {
 				});
 
 				describe('when player level is 90', function() {
+					beforeAll(function() {
+						doAjax('/loaddata/csv', {}, function() {});
+					});
 					beforeEach(function() {
 						doAjax('/update/player/100', {
 							lv: 90
@@ -161,6 +170,9 @@ describe("Area Server", function() {
 				});
 
 				describe('when player pass layer is 50', function() {
+					beforeAll(function() {
+						doAjax('/loaddata/csv', {}, function() {});
+					});
 					beforeEach(function() {
 						doAjax('/update/player/100', {
 							pass: JSON.stringify({
@@ -186,6 +198,9 @@ describe("Area Server", function() {
 				});
 
 				describe('when player pass layer is 100', function() {
+					beforeAll(function() {
+						doAjax('/loaddata/csv', {}, function() {});
+					});
 					beforeEach(function() {
 						doAjax('/update/player/100', {
 							pass: JSON.stringify({

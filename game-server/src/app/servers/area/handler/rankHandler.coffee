@@ -1,6 +1,7 @@
 app = require('pomelo').app
 playerManager = require '../../../manager/playerManager'
 rankManager = require '../../../manager/rankManager'
+fightManager = require '../../../manager/fightManager'
 table = require '../../../manager/table'
 async = require 'async'
 logger = require('pomelo-logger').getLogger(__filename)
@@ -69,7 +70,7 @@ Handler::challenge = (msg, session, next) ->
       cb()
 
     (cb) =>
-      @app.rpc.battle.fightRemote.pvp session, {playerId: playerId, targetId: targetId}, cb
+      fightManager.pvp {playerId: playerId, targetId: targetId}, cb
 
     (bl, cb) =>
       isWin =  bl.winner == 'own'

@@ -1,5 +1,6 @@
 playerManager = require '../../../manager/playerManager'
 taskManager = require '../../../manager/taskManager'
+fightManager = require '../../../manager/fightManager'
 table = require '../../../manager/table'
 taskRate = require '../../../../config/data/taskRate'
 async = require 'async'
@@ -37,8 +38,6 @@ Handler::explore = (msg, session, next) ->
     (data, chapterId, sectionId, cb) =>
       if data.result is 'fight'
         taskManager.fightToMonster(
-          @app, 
-          session, 
           {pid: player.id, tableId: chapterId, sectionId: sectionId, table: 'task_config'}
         , (err, battleLog) ->
           data.battle_log = battleLog
@@ -141,7 +140,7 @@ Handler::passBarrier = (msg, session, next) ->
       cb(null)
 
     (cb) =>
-      @app.rpc.battle.fightRemote.pve( session, {pid: player.id, tableId: layer, table: 'pass_config'}, cb )
+      fightManager.pve( {pid: player.id, tableId: layer, table: 'pass_config'}, cb )
 
     (bl, cb) ->
       if bl.winner is 'own'

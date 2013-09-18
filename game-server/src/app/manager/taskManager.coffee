@@ -6,6 +6,7 @@ utility = require '../common/utility'
 dao = require('pomelo').app.get('dao')
 async = require('async')
 _ = require 'underscore'
+fightManager = require './fightManager'
 logger = require('pomelo-logger').getLogger(__filename)
 
 MAX_POWER = 200
@@ -117,8 +118,8 @@ class Manager
       data.open_box_card = card.toJson()
       cb()
 
-  @fightToMonster: (app, session, args, cb) ->
-    app.rpc.battle.fightRemote.pve( session, args, cb )
+  @fightToMonster: (args, cb) ->
+    fightManager.pve( args, cb )
 
   @obtainBattleRewards: (player, data, taskId, battleLog, cb) ->
     taskData = table.getTableItem 'task_config', taskId

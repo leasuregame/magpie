@@ -23,7 +23,7 @@ Handler::explore = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   taskId = msg.taskId
   player = null
-
+  console.log("req success");
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -32,7 +32,7 @@ Handler::explore = (msg, session, next) ->
       player = _player
       if taskId > player.task.id 
         return cb({code: 501, msg: '不能探索此关'})
-        
+      console.log("taskId = " + taskId);
       taskManager.explore player, taskId, cb
 
     (data, chapterId, sectionId, cb) =>

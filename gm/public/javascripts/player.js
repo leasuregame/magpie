@@ -81,7 +81,7 @@ function updatePlayerData() {
 
 
     var task = {
-        id:$("#taskId").val(),
+        id:parseInt($("#taskId").val()),
         progress:0
         //hasWin:false
 

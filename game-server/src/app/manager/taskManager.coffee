@@ -215,7 +215,7 @@ class Manager
 
 randomCard = (star) ->
   ids = _.range(parseInt(star), 250, 5)
-  index = _.random(0, ids.length)
+  index = _.random(0, ids.length - 1)
   ids[index]
 
 bornPassiveSkill = () ->

@@ -16,6 +16,7 @@ var TaskLayer = cc.Layer.extend({
     _index: 0,
     _turnLeftSprite: null,
     _turnRightSprite: null,
+    _markSprite: null,
     _wipeOutItem: null,
     _sectionItem: {},
     _lockIcon: {},
@@ -131,6 +132,17 @@ var TaskLayer = cc.Layer.extend({
         lazyMenu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(lazyMenu, 1);
 
+        this._markSprite = cc.Sprite.create(main_scene_image.icon218);
+        this._markSprite.setPosition(cc.p(80, 550));
+        scrollViewLayer.addChild(this._markSprite, 2);
+
+        var moveAction1 = cc.MoveBy.create(1, cc.p(0, 20));
+        var moveAction2 = cc.MoveBy.create(1, cc.p(0, -20));
+        var moveAction = cc.Sequence.create(moveAction1, moveAction2);
+        var repeatForeverAction = cc.RepeatForever.create(moveAction);
+
+        this._markSprite.runAction(repeatForeverAction);
+
         for (var i = 1; i <= TASK_CHAPTER_COUNT; ++i) {
             var x = 640 * (i - 1);
 
@@ -192,18 +204,34 @@ var TaskLayer = cc.Layer.extend({
         this._turnLeftSprite.setVisible(this._index > 1);
         this._turnRightSprite.setVisible(this._index < TASK_CHAPTER_COUNT);
 
+        this._wipeOutItem.setEnabled(task.canWipeOut());
+
         var section = task.getSection();
+
+        var size = this._sectionItem[section].getContentSize();
+        var point = this._sectionItem[section].getPosition();
+        this._markSprite.setPosition(cc.p(point.x, point.y + size.height - 30));
+
+        var minIndex = Math.max(this._index - 2, 0) * TASK_SECTION_COUNT + 1;
+        var maxIndex = Math.min(this._index + 1, TASK_CHAPTER_COUNT) * TASK_SECTION_COUNT;
+
         for (var key in this._sectionItem) {
             var sectionItem = this._sectionItem[key];
 
             if (sectionItem != undefined) {
                 var index = parseInt(key);
 
-                if (index > section) {
-                    sectionItem.showIconImage();
-                    sectionItem.setColor(cc.c3b(150, 150, 150));
+                if (index >= minIndex && index <= maxIndex) {
+                    sectionItem.setVisible(true);
+
+                    if (index > section) {
+                        sectionItem.showIconImage();
+                        sectionItem.setColor(cc.c3b(130, 130, 130));
+                    } else {
+                        sectionItem.hidIconImage();
+                    }
                 } else {
-                    sectionItem.hidIconImage();
+                    sectionItem.setVisible(false);
                 }
             }
         }
@@ -222,22 +250,44 @@ var TaskLayer = cc.Layer.extend({
         return function () {
             cc.log("TaskLayer _onClickSection " + id);
 
-            if (id > gameData.task.getSection()) {
+            var task = gameData.task;
+
+            if (id > task.getSection()) {
                 TipLayer.tip("当前关卡未打开");
 
                 return;
             }
 
+//            if (task.getMarkByIndex(id)) {
+//                this._onClickWipeOut(id);
+//
+//                return;
+//            }
+
             MainScene.getInstance().switch(ExploreLayer.create(id));
         }
     },
 
-    _onClickWipeOut: function () {
-        cc.log("TaskLayer _onClickWipeOut");
+    _onClickWipeOut: function (id) {
+        cc.log("TaskLayer _onClickWipeOut: " + id);
 
-        gameData.task.wipeOut(function (data) {
+        var that = this;
+        var cb = function (data) {
             cc.log(data);
-        });
+
+            for (var key in data) {
+                var str = (gameGoodsName[key] || key) + " + " + data[key];
+                TipLayer.tip(str);
+            }
+
+            that.update();
+        };
+
+        if (id) {
+            gameData.task.wipeOut(cb, id);
+        } else {
+            gameData.task.wipeOut(cb);
+        }
     },
 
     /**

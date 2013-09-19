@@ -133,6 +133,7 @@ var appFiles = [
     'src/view/mainModule/spiritDetails.js',
     'src/view/mainModule/spiritNode.js',
     'src/view/mainModule/spiritPoolLayer.js',
+    'src/view/mainModule/spiritSideNode.js',
     'src/view/mainModule/starLabel.js',
     'src/view/mainModule/strengthenLayer.js',
     'src/view/mainModule/systemMessageLayer.js',

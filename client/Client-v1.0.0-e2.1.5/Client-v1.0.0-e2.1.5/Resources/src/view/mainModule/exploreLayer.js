@@ -14,15 +14,19 @@
 
 var ExploreLayer = cc.Layer.extend({
     _index: 0,
+    _maxIndex: 0,
     _sectionId: 0,
-    _spirit: null,
+    _spiritNode: null,
     _spiritShadow: null,
     _turnLeftSprite: null,
     _turnRightSprite: null,
-    _mapLabel: null,
+    _mapLabel1: null,
+    _mapLabel2: null,
+    _mapLabel3: null,
     _exploreItem: null,
     _scrollView: null,
     _element: {},
+    _reward: null,
 
     onEnter: function () {
         cc.log("ExploreLayer onEnter");
@@ -40,6 +44,8 @@ var ExploreLayer = cc.Layer.extend({
 
         this._sectionId = sectionId;
 
+        this._index = gameData.task.getPoints();
+
         var bgSprite = cc.Sprite.create(main_scene_image.bg9);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(GAME_BG_POINT);
@@ -50,10 +56,20 @@ var ExploreLayer = cc.Layer.extend({
         headIcon.setPosition(cc.p(40, 962));
         this.addChild(headIcon);
 
-        this._mapLabel = cc.Sprite.create(main_scene_image.bg4);
-        this._mapLabel.setAnchorPoint(cc.p(0, 0));
-        this._mapLabel.setPosition(cc.p(40, 766));
-        this.addChild(this._mapLabel);
+        this._mapLabel1 = cc.Sprite.create(main_scene_image.bg4);
+        this._mapLabel1.setAnchorPoint(cc.p(0, 0));
+        this._mapLabel1.setPosition(cc.p(40, 766));
+        this.addChild(this._mapLabel1);
+
+        this._mapLabel2 = cc.Sprite.create(main_scene_image.bg4);
+        this._mapLabel2.setAnchorPoint(cc.p(0, 0));
+        this._mapLabel2.setPosition(cc.p(680, 766));
+        this.addChild(this._mapLabel2);
+
+        this._mapLabel3 = cc.Sprite.create(main_scene_image.bg4);
+        this._mapLabel3.setAnchorPoint(cc.p(0, 0));
+        this._mapLabel3.setPosition(cc.p(1320, 766));
+        this.addChild(this._mapLabel3);
 
         var line1Icon = cc.Sprite.create(main_scene_image.icon96);
         line1Icon.setAnchorPoint(cc.p(0.5, 0));
@@ -81,10 +97,10 @@ var ExploreLayer = cc.Layer.extend({
         this._spiritShadow.setPosition(cc.p(360, 786));
         this.addChild(this._spiritShadow);
 
-        this._spirit = cc.Sprite.create(main_scene_image.spirit_side1);
-        this._spirit.setAnchorPoint(cc.p(0.5, 0));
-        this._spirit.setPosition(cc.p(360, 790));
-        this.addChild(this._spirit);
+        this._spiritNode = SpiritSideNode.create();
+        this._spiritNode.setAnchorPoint(cc.p(0.5, 0));
+        this._spiritNode.setPosition(cc.p(360, 828));
+        this.addChild(this._spiritNode);
 
         this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
         this._turnLeftSprite.setRotation(180);
@@ -106,6 +122,7 @@ var ExploreLayer = cc.Layer.extend({
         this._exploreItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
+            main_scene_image.button9d,
             main_scene_image.icon38,
             this._onClickExplore,
             this
@@ -157,15 +174,15 @@ var ExploreLayer = cc.Layer.extend({
             descriptionLabel.setPosition(cc.p(230, 270));
             this.addChild(descriptionLabel);
 
-            var powerProgress = Progress.create(null, main_scene_image.progress1, 200, 200);
+            var powerProgress = Progress.create(null, main_scene_image.progress1, 0, 0);
             powerProgress.setPosition(cc.p(320 + x, 360));
             scrollViewLayer.addChild(powerProgress);
 
-            var expProgress = Progress.create(null, main_scene_image.progress2, 200, 200);
+            var expProgress = Progress.create(null, main_scene_image.progress2, 0, 0);
             expProgress.setPosition(cc.p(320 + x, 319));
             scrollViewLayer.addChild(expProgress);
 
-            var sectionProgress = Progress.create(null, main_scene_image.progress3, 200, 200);
+            var sectionProgress = Progress.create(null, main_scene_image.progress3, 0, 0);
             sectionProgress.setPosition(cc.p(320 + x, 278));
             scrollViewLayer.addChild(sectionProgress);
 
@@ -221,10 +238,18 @@ var ExploreLayer = cc.Layer.extend({
     update: function () {
         cc.log("ExploreLayer update");
 
+        var task = gameData.task;
+
+        this._maxIndex = task.getPoints();
+
+        if (task.getSection() == this._sectionId) {
+            this._scrollView.setContentSize(cc.size(640 * this._maxIndex, 569));
+        }
+
         this._scrollView.setContentOffset(this._getScrollViewOffset(), true);
 
         this._turnLeftSprite.setVisible(this._index > 1);
-        this._turnRightSprite.setVisible(this._index < TASK_POINTS_COUNT);
+        this._turnRightSprite.setVisible(this._index < this._maxIndex);
 
         var player = gameData.player;
 
@@ -234,9 +259,11 @@ var ExploreLayer = cc.Layer.extend({
         var exp = player.get("exp");
         var maxExp = player.get("maxExp");
 
-        var progress = gameData.task.getProgress(this._getTaskId());
+        var progress = task.getProgress(this._getTaskId());
         var value = progress.progress;
         var maxValue = progress.maxProgress;
+
+        var time = this._showReward();
 
         var element = this._element[this._index];
 
@@ -244,12 +271,31 @@ var ExploreLayer = cc.Layer.extend({
         element.expLabel.setString(maxExp - exp);
         element.progressLabel.setString(value + "/" + maxValue);
 
-        element.powerProgress.setAllValue(power, maxPower, 0.1);
-        element.expProgress.setAllValue(exp, maxExp, 0.1);
-        element.sectionProgress.setAllValue(value, maxValue, 0.1);
+        element.powerProgress.setAllValue(power, maxPower, time);
+        element.expProgress.setAllValue(exp, maxExp, time);
+        element.sectionProgress.setAllValue(value, maxValue, time);
 
         for (var i = 1; i <= TASK_POINTS_COUNT; ++i) {
             this._element[i].descriptionLabel.setVisible(i == this._index);
+        }
+
+        var point1 = this._mapLabel1.getPosition();
+        var point2 = this._mapLabel2.getPosition();
+        var point3 = this._mapLabel3.getPosition();
+
+        if (point1.x < -600) {
+            point1.x += 1920;
+            this._mapLabel1.setPosition(point1);
+        }
+
+        if (point2.x < -600) {
+            point2.x += 1920;
+            this._mapLabel2.setPosition(point2);
+        }
+
+        if (point3.x < -600) {
+            point3.x += 1920;
+            this._mapLabel3.setPosition(point3);
         }
     },
 
@@ -257,7 +303,7 @@ var ExploreLayer = cc.Layer.extend({
         cc.log("ExploreLayer _getScrollViewOffset");
 
         this._index = Math.max(this._index, 1);
-        this._index = Math.min(this._index, TASK_POINTS_COUNT);
+        this._index = Math.min(this._index, this._maxIndex);
 
         return cc.p(-640 * (this._index - 1), 0);
     },
@@ -279,76 +325,196 @@ var ExploreLayer = cc.Layer.extend({
     _onClickExplore: function () {
         cc.log("ExploreLayer _onClickExplore");
 
-        this._playAnimation();
-
         var that = this;
         gameData.task.explore(function (data) {
             cc.log(data);
 
+            that._reward = data;
 
-            if (data.result == "fight") {
-                BattlePlayer.getInstance().play(data.battleLogId);
-            } else {
-                that.update();
+            that._playAnimation();
+        }, this._getTaskId());
+    },
+
+    _lock: function () {
+        cc.log("ExploreLayer _lock");
+
+        LazyLayer.showCloudLayer();
+        this._exploreItem.setEnabled(false);
+        this.setTouchEnabled(false);
+    },
+
+    _unlock: function () {
+        cc.log("ExploreLayer _unlock");
+
+        LazyLayer.closeCloudLayer();
+        this._exploreItem.setEnabled(true);
+        this.setTouchEnabled(true);
+    },
+
+    _toNext: function () {
+        cc.log("ExploreLayer _next");
+
+        this._index += 1;
+
+        if (this._index > this._maxIndex) {
+            this._onClickBack();
+        }
+
+        this.update();
+    },
+
+    _showReward: function () {
+        cc.log("ExploreLayer _showReward");
+
+        if (this._reward) {
+            var fadeAction = cc.Sequence.create(
+                cc.FadeIn.create(0.3),
+                cc.DelayTime.create(0.4),
+                cc.FadeOut.create(0.3)
+            );
+
+            var moveAction = cc.MoveBy.create(0.5, cc.p(0, 20));
+
+            var scaleAction = cc.ScaleTo.create(0.5, 1.5, 1.5);
+
+            var action = cc.Spawn.create(
+                fadeAction,
+                moveAction,
+                scaleAction
+            );
+
+            var x = 640 * (this._index - 1) + 320;
+            if (this._reward.power) {
+                var powerLabel = cc.LabelTTF.create("-" + this._reward.power, "STHeitiTC-Medium", 15);
+                powerLabel.setColor(cc.c3b(255, 240, 170));
+                powerLabel.setPosition(cc.p(x, 365));
+                this._scrollView.addChild(powerLabel, 2);
+                powerLabel.setAnchorPoint(cc.p(0.5, 0.5));
+
+                powerLabel.runAction(action.copy());
             }
-        }, this._index);
+
+            if (this._reward.exp) {
+                var expLabel = cc.LabelTTF.create("+" + this._reward.exp, "STHeitiTC-Medium", 15);
+                expLabel.setColor(cc.c3b(255, 240, 170));
+                expLabel.setPosition(cc.p(x, 324));
+                this._scrollView.addChild(expLabel, 2);
+                expLabel.setAnchorPoint(cc.p(0.5, 0.5));
+
+                expLabel.runAction(action.copy());
+            }
+
+
+            if (this._reward.progress) {
+                var progressLabel = cc.LabelTTF.create("+" + this._reward.progress, "STHeitiTC-Medium", 15);
+                progressLabel.setColor(cc.c3b(255, 240, 170));
+                progressLabel.setPosition(cc.p(x, 283));
+                this._scrollView.addChild(progressLabel, 2);
+                progressLabel.setAnchorPoint(cc.p(0.5, 0.5));
+
+                progressLabel.runAction(action);
+            }
+
+            this.scheduleOnce(function () {
+                this._unlock();
+
+                if (powerLabel) powerLabel.removeFromParent();
+                if (expLabel) expLabel.removeFromParent();
+                if (progressLabel) progressLabel.removeFromParent();
+
+
+                var toNext = this._reward.toNext;
+
+                this._reward = null;
+
+                cc.log(toNext);
+
+                if (toNext) this._toNext();
+            }, 1);
+
+            return 1;
+        }
+
+        return 0;
     },
 
     _playAnimation: function () {
         cc.log("ExploreLayer _playAnimation");
 
-        var scaleAction1 = cc.ScaleTo.create(0.1, 1, 0.96);
-        var scaleAction2 = cc.ScaleTo.create(0.1, 1, 1.04);
-        var scaleAction3 = cc.ScaleTo.create(0.3, 1, 1);
-        var scaleAction4 = cc.ScaleTo.create(0.3, 1, 1.04);
-        var scaleAction5 = cc.ScaleTo.create(0.1, 1, 1);
+        this._lock();
 
-        var waitAction1 = cc.DelayTime.create(0.1);
-        var waitAction2 = cc.DelayTime.create(0.2);
+        var callFuncAction = cc.CallFunc.create(function () {
+            if (this._reward) {
+                if (this._reward.result == "fight") {
+                    this._spiritNode.encounterBattle();
 
-        var moveAction1 = cc.EaseSineOut.create(cc.MoveBy.create(0.3, cc.p(0, 35)));
-        var moveAction2 = cc.EaseSineIn.create(cc.MoveBy.create(0.3, cc.p(0, -35)));
+                    this.scheduleOnce(function () {
+                        BattlePlayer.getInstance().play(this._reward.battleLogId);
+                        this._spiritNode.normal();
+                    }, 1);
+                } else if (this._reward.result == "box") {
+                    this._spiritNode.encounterBox();
 
-        var scaleAction = cc.Sequence.create(
-            scaleAction1,
-            scaleAction2,
-            scaleAction3,
-            scaleAction4,
-            scaleAction5
+                    this.scheduleOnce(function () {
+                        this._spiritNode.normal();
+                        this.update();
+                    }, 1);
+                } else {
+                    this.update();
+                }
+            } else {
+                this._unlock();
+            }
+        }, this);
+
+        var spiritScaleAction = cc.Sequence.create(
+            cc.ScaleTo.create(0.1, 1, 0.96),
+            cc.ScaleTo.create(0.1, 1, 1.04),
+            cc.ScaleTo.create(0.3, 1, 1),
+            cc.ScaleTo.create(0.3, 1, 1.04),
+            cc.ScaleTo.create(0.1, 1, 1)
         );
 
-        var moveAction = cc.Sequence.create(
-            waitAction2.copy(),
-            moveAction1,
-            moveAction2.copy(),
-            waitAction1.copy()
+        var spiritMoveAction = cc.Sequence.create(
+            cc.DelayTime.create(0.2),
+            cc.EaseSineOut.create(cc.MoveBy.create(0.3, cc.p(0, 35))),
+            cc.EaseSineIn.create(cc.MoveBy.create(0.3, cc.p(0, -35))),
+            cc.DelayTime.create(0.1)
         );
 
-        var spiritAction = cc.Spawn.create(scaleAction, moveAction);
-
-        var repeatAction = cc.Repeat.create(spiritAction, 2);
-
-        this._spirit.runAction(repeatAction);
-
-
-        var mapAction = cc.Sequence.create(
-            cc.EaseSineOut.create(cc.MoveBy.create(0.1, cc.p(-5, 0))),
-            cc.MoveBy.create(0.35, cc.p(-35, 0)),
-            cc.MoveBy.create(0.35, cc.p(-35, 0))
+        var spiritRepeatAction = cc.Repeat.create(
+            cc.Spawn.create(spiritScaleAction, spiritMoveAction),
+            2
         );
 
-        this._mapLabel.setPosition(cc.p(40, 766));
-        this._mapLabel.runAction(cc.Repeat.create(mapAction, 2));
+        var spiritAction = cc.Sequence.create(spiritRepeatAction, callFuncAction);
 
+        this._spiritNode.runAction(spiritAction);
 
-        var spiritShadowAction = cc.Sequence.create(
-            cc.ScaleTo.create(0.1, 1.2, 1.2),
+        var spiritShadowScaleAction = cc.Sequence.create(
+            cc.ScaleTo.create(0.1, 1.1, 1.1),
             cc.ScaleTo.create(0.1, 1, 1),
-            cc.ScaleTo.create(0.25, 0.5, 0.5),
-            cc.ScaleTo.create(0.25, 1, 1),
+            cc.ScaleTo.create(0.3, 0.4, 0.4),
+            cc.ScaleTo.create(0.3, 1, 1),
             cc.ScaleTo.create(0.1, 1.1, 1.1)
         );
-        this._spiritShadow.runAction(cc.Repeat.create(spiritShadowAction, 2));
+
+        var spiritShadowAction = cc.Repeat.create(spiritShadowScaleAction, 2);
+
+        this._spiritShadow.runAction(spiritShadowAction);
+
+        var mapMoveAction = cc.Sequence.create(
+            cc.EaseSineIn.create(cc.MoveBy.create(0.2, cc.p(-6, 0))),
+            cc.MoveBy.create(0.3, cc.p(-35, 0)),
+            cc.MoveBy.create(0.3, cc.p(-35, 0)),
+            cc.EaseSineOut.create(cc.MoveBy.create(0.1, cc.p(-6, 0)))
+        );
+
+        var mapAction = cc.Repeat.create(mapMoveAction, 2);
+
+        this._mapLabel1.runAction(mapAction.copy());
+        this._mapLabel2.runAction(mapAction.copy());
+        this._mapLabel3.runAction(mapAction);
     },
 
     /**

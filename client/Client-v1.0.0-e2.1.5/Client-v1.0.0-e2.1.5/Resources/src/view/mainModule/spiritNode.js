@@ -23,13 +23,15 @@ var SpiritNode = cc.Node.extend({
 
         this._spirit = gameData.spirit;
 
-        this._spiritSprite = cc.Sprite.create(main_scene_image.spirit1);
+        var spiritLv = this._spirit.get("lv");
+
+        this._spiritSprite = cc.Sprite.create(main_scene_image["spirit" + spiritLv]);
         this.addChild(this._spiritSprite);
 
         return true;
     },
 
-    getId: function() {
+    getId: function () {
         cc.log("SpiritNode getId");
 
         return -1;
@@ -64,5 +66,5 @@ SpiritNode.getSpiritItem = function (cb, target) {
 
     spiritItem.setScale(0.8);
 
-   return spiritItem;
+    return spiritItem;
 };

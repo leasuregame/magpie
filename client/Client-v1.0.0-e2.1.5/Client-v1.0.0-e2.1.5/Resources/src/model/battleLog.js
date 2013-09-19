@@ -59,15 +59,15 @@ var BattleLog = Entity.extend({
         cc.log("BattleLog getSpirit: " + id);
 
         var i;
-        if(id > 6) {
-            for(i = 6; i < 12; ++i) {
-                if(this._card[i] != undefined && typeof(this._card[i]) == "number") {
+        if (id > 6) {
+            for (i = 6; i < 12; ++i) {
+                if (this._card[i] != undefined && typeof(this._card[i]) == "number") {
                     return i;
                 }
             }
         } else {
-            for(i = 1; i <= 6; ++i) {
-                if(this._card[i] != undefined && typeof(this._card[i]) == "number") {
+            for (i = 1; i <= 6; ++i) {
+                if (this._card[i] != undefined && typeof(this._card[i]) == "number") {
                     return i;
                 }
             }

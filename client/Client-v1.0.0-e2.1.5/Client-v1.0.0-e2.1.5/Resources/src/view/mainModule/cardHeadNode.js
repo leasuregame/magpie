@@ -25,32 +25,22 @@ var CardHeadNode = cc.Node.extend({
 
         this._card = card;
 
-        var url = "";
+        var url = "icon11";
         var star = 1;
-        var index = 1;
 
         if (this._card) {
-            url = this._card.get("url");
             star = this._card.get("star");
-            index = Math.floor((star - 1) / 2) + 1;
+            url = this._card.get("url") + "_head" + (Math.floor((star - 1) / 2) + 1);
         }
 
+        this._cardSprite = cc.Sprite.create(main_scene_image[url]);
+        this._cardSprite.setAnchorPoint(cc.p(0, 0));
+        this._cardSprite.setPosition(cc.p(6, 12));
+        this.addChild(this._cardSprite);
 
         this._frameSprite = cc.Sprite.create(main_scene_image["card_item_bg" + star]);
         this._frameSprite.setAnchorPoint(cc.p(0, 0));
         this.addChild(this._frameSprite);
-
-        if (url) {
-            this._cardSprite = cc.Sprite.create(main_scene_image[url + "_head" + index]);
-            this._cardSprite.setAnchorPoint(cc.p(0, 0));
-            this._cardSprite.setPosition(cc.p(6, 12));
-            this.addChild(this._cardSprite);
-        }
-
-        this._iconSprite = cc.Sprite.create(main_scene_image.card_item_frame);
-        this._iconSprite.setAnchorPoint(cc.p(0, 0));
-        this._iconSprite.setPosition(cc.p(6, 12));
-        this.addChild(this._iconSprite);
 
         this.setContentSize(cc.size(108, 108));
 

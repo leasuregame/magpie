@@ -28,13 +28,13 @@ class Service
 		if not record 
 			return cb(null, Code.MESSAGE.FA_USER_NOT_ONLINE)
 
-		@app.get('channelService').pushMessageByUids(msg.route, [{uid: record.uid, sid: record.sid}], cb)
+		@app.get('channelService').pushMessageByUids(msg.route, msg, [{uid: record.uid, sid: record.sid}], cb)
 
 	pushByPid: (pid, msg, cb) ->
 		record = @pidMap[pid]
 		if not record 
 			return cb(null, Code.MESSAGE.FA_USER_NOT_ONLINE)
-		console.log 'push message by playerId:', pid, msg, record
+		
 		@app.get('channelService').pushMessageByUids(msg.route, msg, [{uid: record.uid, sid: record.sid}], cb)
 
 	pushMessage: (msg, cb) ->
@@ -51,4 +51,6 @@ addRecord = (self, uid, sid, pid, playerName) ->
 
 removeRecord = (self, uid) ->
 	record = self.uidMap[uid]
-	delete self.uidMap[uid] if recode
+	if record
+		delete self.uidMap[uid] 
+		delete self.pidMap[record.pid]

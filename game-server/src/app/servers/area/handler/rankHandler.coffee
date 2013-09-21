@@ -1,6 +1,7 @@
 app = require('pomelo').app
 playerManager = require '../../../manager/playerManager'
 rankManager = require '../../../manager/rankManager'
+fightManager = require '../../../manager/fightManager'
 table = require '../../../manager/table'
 async = require 'async'
 logger = require('pomelo-logger').getLogger(__filename)
@@ -69,7 +70,7 @@ Handler::challenge = (msg, session, next) ->
       cb()
 
     (cb) =>
-      @app.rpc.battle.fightRemote.pvp session, {playerId: playerId, targetId: targetId}, cb
+      fightManager.pvp {playerId: playerId, targetId: targetId}, cb
 
     (bl, cb) =>
       isWin =  bl.winner == 'own'
@@ -97,27 +98,17 @@ Handler::challenge = (msg, session, next) ->
 
       saveBattleLog(bl, playerName)
 
-Handler::grantTitle = (msg, session, next) ->
-  playerId = session.get('playerId') or msg.playerId
-  honnorPoint = msg.honnorPoint
-
-  rankManager.getRank playerId, (err, rank) ->
-    if err
-      return next(null, {code: 500, msg: err.msg})
-
-    titleConfig = table.getTableItem 'title', rank.rank + 1
-    if honnorPoint < parseInt(titleConfig.honnorPoint_need)
-      return next(null, {code: 501, msg: '荣誉点不够'})
-
-    rank.grantTitle titleConfig.title, honnorPoint
-    rank.save()
-
-    next null, {code: 200}
-
 
 isV587 = (bl) ->
-  ownCardCount = (_.values(bl.own.cards).filter (c) -> _.isObject(c)).length
-  enemyCardCount = (_.values(bl.enemy.cards).filter (c) -> _.isObject(c)).length
+  ownCardCount = enemyCardCount = 0
+  
+  for k, v of bl.cards
+    if k <= 6 and _.isObject(v)
+      ownCardCount += 1
+    
+    if k > 6 and _.isObject(v)
+      enemyCardCount += 1
+
   return ownCardCount is 1 and enemyCardCount is 5
 
 genRankings = (ranking) ->
@@ -152,8 +143,8 @@ filterPlayersInfo = (players, rankings) ->
     }
     
 saveBattleLog = (bl, playerName) ->
-  playerId = bl.own.id
-  targetId = bl.enemy.id
+  playerId = bl.ownId
+  targetId = bl.enemyId
 
   if bl.winner is 'own'
     result = '你输了'

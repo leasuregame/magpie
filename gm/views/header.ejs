@@ -34,9 +34,6 @@
           <li><a href="/playerLogin">选择玩家</a></li>
 
           <li><a href="/login">重新登录</a></li>
-          <!--
-          <li><a href="/explore">探索</a></li>
-          -->
            <% if(user.isRoot == 1) { %>
             <li><a href="/reg">添加GM用户</a></li>
            <% } %>
@@ -68,9 +65,7 @@
                 <li><a title="模拟战斗" href="/simBattle">模拟战斗</a></li>
                 <li><a href="/lottery">模拟抽卡</a></li>
                 <li><a href='/passSkillAfresh'>模拟洗练</a></li>
-                <!--
                 <li><a href="/explore">探索</a></li>
-                -->
                 <% if(user.isRoot == 1) {%>
                      <li><a title="添加GM用户" href="/reg">添加GM用户</a></li>
                 <% } %>

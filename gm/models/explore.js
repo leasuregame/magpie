@@ -9,99 +9,69 @@
 
 var playerDao = require('./dao/mysql/playerDao');
 var userDao = require('./dao/mysql/userDao');
+var cardDao = require('./dao/mysql/cardDao');
 var getDB = require('./getDatabase');
 var dbClient = require('./dao/mysql/mysql');
 var async = require('async');
 //var pomelo = window.pomelo;
-var Explore = function(){};
+var Explore = function () {
+};
 
 var maxId = 500;
 var result = [];
 
-Explore.simulate = function(env,areaId,playerName,next){
+Explore.simulate = function (env, areaId, playerId, cb) {
 
-    //var db = getDB(areaId,env);
-    //dbClient.init(db);
     var options = {
-        where :{
-            name : playerName,
-            areaId : areaId
+        where: {
+            id: playerId,
+            areaId: areaId
         },
-        data:{
-            power:{
-                time:Date.now(),
-                value:100000
+        data: {
+            power: {
+                time: Date.now(),
+                value: 100000
             },
-            task:{
-                id:1,
-                progress:0
+            task: {
+                id: 1,
+                progress: 0
             }
         }
     };
 
-    async.waterfall([
-        function(cb) {
-            var db = getDB(areaId,env);
-            dbClient.init(db);
-            return playerDao.update(options,cb);
-        },
-        function(isOk,cb){
-           // console.log(isOk);
-            if(isOk) {
-                var player = {
-                    where :{
-                        name : playerName,
-                        areaId : areaId
-                    }
-                };
-              return playerDao.getPlayerInfo(player,cb);
-            }
-            else
-                return cb("没有该玩家信息",null);
-        },
-        function(player,cb) {
-        //    if(isOk) {
-                dbClient.shutdown();
-                var db = getDB('userdb',env);
-                dbClient.init(db);
-                //console.log(dd);
-                return userDao.getUserByAccount({where:{id:player.userId}},cb);
+    dbClient.shutdown();
+    var db = getDB(areaId, env);
+    dbClient.init(db);
 
-        }
+    return playerDao.update(options, cb);
 
-    ],function(err,data){
+
+};
+
+Explore.getUserByAccount = function (env, uid, aid,cb) {
+    dbClient.shutdown();
+    var db = getDB('userdb', env);
+    dbClient.init(db);
+    userDao.getUserByAccount({where: {id: uid}}, function(err,user){
+
         dbClient.shutdown();
-        var db = getDB(areaId,env);
+        var db = getDB(aid, env);
         dbClient.init(db);
-        if(err) {
-            return next(err,null);
+        return cb(err,user);
+    });
+};
+
+Explore.delCards = function (pid, cb) {
+
+    cardDao.deleteExploreCards(pid, function (err, isOK) {
+        if (!err) {
+            cb(null, true);
+        } else {
+            cb(err, false);
         }
+    })
 
-        return next(null,data);
-    });
-
-};
-
-Explore.queryEntry = function(callback) {
-    var route = 'gate.gateHandler.queryEntry';
-    pomelo.init({
-        host: window.location.hostname,
-        port: 3009,
-        log: true
-    }, function() {
-        pomelo.request(route, {
-            //uid: uid
-        }, function(data) {
-            pomelo.disconnect();
-            if(data.code === 500) {
-            //    showError(LOGIN_ERROR);
-                return;
-            }
-            callback(data.host, data.port);
-        });
-    });
-};
-
+}
 
 
 module.exports = Explore;

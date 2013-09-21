@@ -31,6 +31,6 @@ module.exports = {
    */
   exchange: {
     atk: 5,
-    hp: 5
+    hp: 10
   }
 }

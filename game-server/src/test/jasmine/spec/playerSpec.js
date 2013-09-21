@@ -68,11 +68,18 @@ describe("Connector Server", function() {
                 task: {
                   id: 1,
                   progress: 0,
-                  hasWin: false
+                  hasWin: false,
+                  mark: [],
+                  momo: []
                 },
                 pass: {
                   layer: 0,
-                  mark: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                  mark: [],
+                  mystical: {
+                    diff: 1,
+                    isTrigger: false,
+                    isClear: false
+                  }
                 },
                 dailyGift: {
                   lotteryCount: 500,

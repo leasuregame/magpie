@@ -1,13 +1,13 @@
 describe("Area Server", function() {
 	describe("Achieve Handler", function() {
 		describe("area.achieveHandler.achievements", function() {
-			beforeAll(function() {
-				doAjax('/loaddata/csv', {}, function() {});
-			});
 
 			describe('when get achievements from server', function() {
 
 				describe('when player level is less than 50', function() {
+					beforeAll(function() {
+						doAjax('/loaddata/csv', {}, function() {});
+					});
 					beforeEach(function() {
 						loginWith('arthur', '1', 1);
 					});
@@ -18,23 +18,23 @@ describe("Area Server", function() {
 							expect(data.code).toEqual(200);
 							expect(data.msg).toEqual({
 								1: {
-									method: 'levelTo',
 									isAchieve: false,
+									isTake: false,
 									got: 40
 								},
 								2: {
-									method: 'levelTo',
 									isAchieve: false,
+									isTake: false,
 									got: 40
 								},
 								3: {
-									method: 'passTo',
 									isAchieve: false,
+									isTake: false,
 									got: 24
 								},
 								4: {
-									method: 'passTo',
 									isAchieve: false,
+									isTake: false,
 									got: 24
 								}
 							});
@@ -44,6 +44,9 @@ describe("Area Server", function() {
 
 
 				describe('when player level is 50', function() {
+					beforeAll(function() {
+						doAjax('/loaddata/csv', {}, function() {});
+					});
 					beforeEach(function() {
 						doAjax('/update/player/100', {
 							lv: 50
@@ -58,23 +61,23 @@ describe("Area Server", function() {
 							expect(data.code).toEqual(200);
 							expect(data.msg).toEqual({
 								1: {
-									method: 'levelTo',
 									isAchieve: true,
+									isTake: false,
 									got: 50
 								},
 								2: {
-									method: 'levelTo',
 									isAchieve: false,
+									isTake: false,
 									got: 50
 								},
 								3: {
-									method: 'passTo',
 									isAchieve: false,
+									isTake: false,
 									got: 24
 								},
 								4: {
-									method: 'passTo',
 									isAchieve: false,
+									isTake: false,
 									got: 24
 								}
 							});
@@ -83,6 +86,9 @@ describe("Area Server", function() {
 				});
 
 				describe('when player level is 70', function() {
+					beforeAll(function() {
+						doAjax('/loaddata/csv', {}, function() {});
+					});
 					beforeEach(function() {
 						doAjax('/update/player/100', {
 							lv: 70
@@ -97,23 +103,23 @@ describe("Area Server", function() {
 							expect(data.code).toEqual(200);
 							expect(data.msg).toEqual({
 								1: {
-									method: 'levelTo',
 									isAchieve: true,
+									isTake: false,
 									got: 50
 								},
 								2: {
-									method: 'levelTo',
 									isAchieve: false,
+									isTake: false,
 									got: 70
 								},
 								3: {
-									method: 'passTo',
 									isAchieve: false,
+									isTake: false,
 									got: 24
 								},
 								4: {
-									method: 'passTo',
 									isAchieve: false,
+									isTake: false,
 									got: 24
 								}
 							});
@@ -122,6 +128,9 @@ describe("Area Server", function() {
 				});
 
 				describe('when player level is 90', function() {
+					beforeAll(function() {
+						doAjax('/loaddata/csv', {}, function() {});
+					});
 					beforeEach(function() {
 						doAjax('/update/player/100', {
 							lv: 90
@@ -136,23 +145,23 @@ describe("Area Server", function() {
 							expect(data.code).toEqual(200);
 							expect(data.msg).toEqual({
 								1: {
-									method: 'levelTo',
 									isAchieve: true,
+									isTake: false,
 									got: 50
 								},
 								2: {
-									method: 'levelTo',
 									isAchieve: true,
+									isTake: false,
 									got: 90
 								},
 								3: {
-									method: 'passTo',
 									isAchieve: false,
+									isTake: false,
 									got: 24
 								},
 								4: {
-									method: 'passTo',
 									isAchieve: false,
+									isTake: false,
 									got: 24
 								}
 							});
@@ -161,6 +170,9 @@ describe("Area Server", function() {
 				});
 
 				describe('when player pass layer is 50', function() {
+					beforeAll(function() {
+						doAjax('/loaddata/csv', {}, function() {});
+					});
 					beforeEach(function() {
 						doAjax('/update/player/100', {
 							pass: JSON.stringify({
@@ -177,8 +189,8 @@ describe("Area Server", function() {
 						request('area.achieveHandler.achievements', {}, function(data) {
 							expect(data.code).toEqual(200);
 							expect(data.msg[3]).toEqual({
-								method: 'passTo',
 								isAchieve: true,
+								isTake: false,
 								got: 50
 							});
 						});
@@ -186,6 +198,9 @@ describe("Area Server", function() {
 				});
 
 				describe('when player pass layer is 100', function() {
+					beforeAll(function() {
+						doAjax('/loaddata/csv', {}, function() {});
+					});
 					beforeEach(function() {
 						doAjax('/update/player/100', {
 							pass: JSON.stringify({
@@ -213,8 +228,12 @@ describe("Area Server", function() {
 							});
 						});
 
-						request('area.achieveHandler.getReward', {id: 4}, function(data){
-							expect(data).toEqual({code: 200});
+						request('area.achieveHandler.getReward', {
+							id: 4
+						}, function(data) {
+							expect(data).toEqual({
+								code: 200
+							});
 						});
 
 						request('area.achieveHandler.achievements', {}, function(data) {

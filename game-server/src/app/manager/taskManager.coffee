@@ -6,6 +6,7 @@ utility = require '../common/utility'
 dao = require('pomelo').app.get('dao')
 async = require('async')
 _ = require 'underscore'
+fightManager = require './fightManager'
 logger = require('pomelo-logger').getLogger(__filename)
 
 MAX_POWER = 200
@@ -23,7 +24,7 @@ class Manager
       upgrade: false
       open_box_card: null
       battle_log: null
-      fragment: false
+      isMomo: false
     }
 
     ### 检查是否体力充足 ###
@@ -41,14 +42,16 @@ class Manager
 
     cb(null, data, taskData.chapter_id, taskData.section_id)
 
-  @wipeOut: (player, type, cb) ->
-    funs = {task: @wipeOutTask, pass: @wipeOutPass}
-    funs[type](player, cb)
+  @wipeOut: (player, type, chapterId, cb) ->
+    if type is 'pass'
+      @wipeOutPass player, cb
+    else if type is 'task'
+      @wipeOutTask player, chapterId, cb
 
   @wipeOutPass: (player, cb) ->
     layer = player.pass.layer
 
-    rewards = {exp_obtain: 0, money_obtain: 0, skill_point: 0, gold_obtain: 0}
+    rewards = {exp_obtain: 0, money_obtain: 0, skill_point: 0}
     isWipeOut = false
     for id in _.range(1, layer)
       if not player.hasPassMark(id)
@@ -56,39 +59,35 @@ class Manager
         rewards.exp_obtain += parseInt(data.exp)
         rewards.money_obtain += parseInt(data.money)
         rewards.skill_point += parseInt(data.skill_point)
-
-        # 一定概率获得元宝，百分之5的概率获得10元宝
-        if utility.hitRate(5)
-          rewards.gold_obtain += 10
-
         # 标记为已扫荡
         player.setPassMark(id)
         isWipeOut = true
 
     player.increase('exp',  rewards.exp_obtain)
     player.increase('money', rewards.money_obtain)
-    player.increase('gold', rewards.gold_obtain)
     player.increase('skillPoint', rewards.skill_point)
 
     return cb({code: 501, msg: "没有关卡可以扫荡"}) if not isWipeOut
     cb(null, player, rewards)
 
-  @wipeOutTask: (player, cb) ->
-    taskData = table.getTableItem('task', player.task.id)
-    chapterId = taskData.chapter_id
-    rewards = {exp_obtain: 0, money_obtain: 0, gold_obtain: 0}
-    for id in _.range(1, chapterId)
+  @wipeOutTask: (player, chapterId, cb) ->
+    rewards = {exp_obtain: 0, money_obtain: 0}
+
+    count_ = (id, rewards) ->
       wipeOutData = table.getTableItem('wipe_out', id)
       rewards.exp_obtain += parseInt(wipeOutData.exp_obtain)
       rewards.money_obtain += parseInt(wipeOutData.money_obtain)
+      player.setTaskMark(id)
 
-      # 一定概率获得元宝
-      if utility.hitRate(taskRate.wipe_out_gold_rate)
-        rewards.gold_obtain += taskRate.wipe_out_gold_obtain
-
+    if chapterId? and not player.hasTaskMark(chapterId)
+      count_(chapterId, rewards)
+    else
+      taskData = table.getTableItem('task', player.task.id)
+      chapterId = taskData.chapter_id
+      count_(id, rewards) for id in _.range(1, chapterId) when not player.hasTaskMark(id)
+          
     player.increase('exp',  rewards.exp_obtain)
     player.increase('money', rewards.money_obtain)
-    player.increase('gold', rewards.gold_obtain)
 
     cb(null, player, rewards)
 
@@ -96,12 +95,7 @@ class Manager
     _obj = taskRate.open_box.star
 
     _rd_star = utility.randomValue(_.keys(_obj), _.values(_obj))
-    if _rd_star is -1
-      data.fragment = true
-      return cb()
-    else
-      _card_table_id = randomCard(_rd_star)
-      
+    _card_table_id = randomCard(_rd_star)
     
     async.waterfall [
       (cb) ->
@@ -125,13 +119,13 @@ class Manager
       data.open_box_card = card.toJson()
       cb()
 
-  @fightToMonster: (app, session, args, cb) ->
-    app.rpc.battle.fightRemote.pve( session, args, cb )
+  @fightToMonster: (args, cb) ->
+    fightManager.pve( args, cb )
 
-  @obtainBattleRewards: (player, taskId, battleLog, cb) ->
+  @obtainBattleRewards: (player, data, taskId, battleLog, cb) ->
     taskData = table.getTableItem 'task_config', taskId
 
-    task = _.clone(player.task)
+    task = utility.deepCopy(player.task)
     if not task.hasWin
       ### 标记为已经赢得战斗 ###
       task.hasWin = true
@@ -148,14 +142,15 @@ class Manager
           spirit.total = spiritConfig.SPIRIT.TASK.OTHER
       battleLog.rewards.spirit = spirit
 
-    # 奖励掉落卡牌
-    ids = taskData.cards.split('#').map (id) ->
-      _row = table.getTableItem 'task_card', id
-      _row.card_id
+    if utility.hitRate(taskRate.fragment_rate)
+      battleLog.rewards.fragment = true
+    else
+      battleLog.rewards.fragment = false
 
-    _cards = getRewardCards(ids, taskData.max_drop_card_number)
-    
-    saveCardsInfo player.id, _cards, (results) ->
+    saveExpCardsInfo player.id, taskData.max_drop_card_number, (err, results) ->
+      if err
+        logger.error('save exp card for task error: ', err)
+
       battleLog.rewards.cards = results.map (card) -> card.toJson()
 
       # 将掉落的卡牌添加到玩家信息
@@ -178,12 +173,14 @@ class Manager
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
     if taskId == player.task.id
-      task = _.clone(player.task)
+      task = utility.deepCopy(player.task)
       task.progress += 1
       if task.progress > taskData.points
         task.progress = 0
         task.id += 1
         task.hasWin = false
+        ### 一大关结束，触发摸一摸功能 ###
+        data.isMomo = true
       player.set('task', task)
 
     # 判断是否升级
@@ -218,7 +215,7 @@ class Manager
 
 randomCard = (star) ->
   ids = _.range(parseInt(star), 250, 5)
-  index = _.random(0, ids.length)
+  index = _.random(0, ids.length - 1)
   ids[index]
 
 bornPassiveSkill = () ->
@@ -230,56 +227,17 @@ bornPassiveSkill = () ->
     value: parseFloat (value/100).toFixed(1)
   }
 
-getRewardCards = (cardIds, count) ->
-  # countCardId = (id, star) ->
-  #   _card = table.getTableItem 'cards', id
-  #   if _card.star isnt star
-  #     _card_id = if _card.star > star then (id - 1) else (id + 1)
-  #     return _card_id
-  #   else
-  #     return id
-
+saveExpCardsInfo = (playerId, count, cb) ->
   cd = taskRate.card_drop
-  _cards = []
-  for i in [1..count]
-    _id = utility.randomValue cardIds
-    _star = 1 #utility.randomValue _.keys(cd.star), _.values(cd.star)
-    _level = utility.randomValue _.keys(cd.level), _.values(cd.level)
-
-    #_id = countCardId(parseInt(_id), parseInt(_star))
-    _cards.push {
-      id: _id
-      star: parseInt(_star)
-      lv: parseInt(_level)
-    }
-  
-  _cards
-
-saveCardsInfo = (playerId, cards, cb) ->
   results = []
-  async.each cards
-    , (card, callback) ->
-      dao.card.create(
+  async.times count
+    , (n, callback) ->
+      dao.card.createExpCard(
         data: {
-          playerId: playerId, 
-          tableId: card.id, 
-          star: card.star,
-          lv: card.lv
-        }, 
-        (err, card) ->
-          if err and not card
-            return callback(err)
-
-          results.push card
-          if card.star >= 3
-            createPassiveSkillForCard card, card.star - 2, callback
-          else 
-            callback()
+          playerId: playerId,
+          lv: parseInt utility.randomValue _.keys(cd.level), _.values(cd.level)
+        }, callback
       )
-    , (err) ->
-      if err
-        console.log err
-
-      cb(results)
+    , cb
 
 module.exports = Manager

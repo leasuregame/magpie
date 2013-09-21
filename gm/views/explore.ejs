@@ -1,71 +1,97 @@
 <%-include header%>
-    <div class="from-inline span10">
+    <div class="form-inline span10">
         <fieldset>
             <legend>
                 模拟探索
             </legend>
-            <div class = "from-inline span2">
-                <label for="area">服务器:</label>
-                <select id="areaId" class="form-control input-small" name="areaId">
-                </select>
-                <label for="player">玩家:</label>
-                <input type="text" class="input-small" id="player" name="player">
-                <label for="passNum">关卡数:</label>
-                <input type="text" class="input-small" id="passNum" name="passNum">
-                <div>
-                    <button type="button" id = "btnOk" class="btn btn-primary">确定</button>
+            <from class = "form-horizonta span2" role="form">
+                <div class="control-group">
+                    <label for="area" >服务器:</label>
+                    <input type="text" class="input-small" id="area" name="areaName" value= "<%=area["name"] %>" disabled = "disabled">
                 </div>
+                <div class="control-group">
+                    <label for="player">玩家:</label>
+                    <input type="text" class="input-small" id="player" name="playerName" value = "<%= player["name"]%>" disabled = "disabled">
+                </div>
+
+                <div class="control-group">
+                    <label for="taskId">关卡Id:</label>
+                    <input type="text" class="input-small" id="taskId" name="taskId" disabled = "disabled">
+                </div>
+
+                <div class="control-group">
+                    <label for="progress">进度:</label>
+                    <input type="text" class="input-small" id="progress" name="progress" disabled = "disabled">
+                </div>
+
+                <div class="control-group">
+                      <label for="passNum">探索次数:</label>
+                      <input type="text" class="input-small" id="exploreNum" name="exploreNum" disabled = "disabled">
+                </div>
+
+                <div class="control-group">
+                    <button type="button" id = "btnStart" class="btn btn-primary">从头探索</button>
+                    <button type="button" id = "btnGoOn" class="btn btn-primary">继续探索</button>
+                </div>
+
 
                 <div class="alert" id = "tip">
 
                 </div>
-            </div>
-            <div class = "from-inline span6">
-                <table class="table table-bordered table-hover table-responsive" id="fightResult">
-                    <thead>
-                        <th colspan="3">战斗</th><th colspan="2">1级卡牌</th><th colspan="2">2级卡牌</th><th colspan="2">3级卡牌</th><th colspan="2">4级卡牌</th><th colspan="2">5级卡牌</th>
+            </from>
 
-                    </thead>
-                    <thead>
-                        <th>次数</th><th>概率</th><th>平均卡牌数量</th>
-                        <th>数量</th><th>概率</th>
-                        <th>数量</th><th>概率</th>
-                        <th>数量</th><th>概率</th>
-                        <th>数量</th><th>概率</th>
-                        <th>数量</th><th>概率</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+            <from class = "from-inline span8">
 
+                <div class = "from-inline span12">
+                    <table class="table table-bordered table-hover table-responsive" id="fightResult">
+                        <thead>
+                            <th colspan="3">战斗</th><th colspan="2">1级卡牌</th><th colspan="2">2级卡牌</th><th colspan="2">3级卡牌</th><th colspan="2">4级卡牌</th><th colspan="2">5级卡牌</th><th colspan="2">10级卡牌</th>
 
-                <table class="table table-bordered table-hover table-responsive" id="boxResult">
-                    <thead>
-                        <th colspan="2">宝箱</th><th colspan="2">1星卡牌</th><th colspan="2">2星卡牌</th><th colspan="2">3星卡牌</th><th colspan="2">4星卡牌</th>
+                        </thead>
+                        <thead>
+                            <th>次数</th><th>概率</th><th>平均卡牌数量</th>
+                            <th>数量</th><th>概率</th>
+                            <th>数量</th><th>概率</th>
+                            <th>数量</th><th>概率</th>
+                            <th>数量</th><th>概率</th>
+                            <th>数量</th><th>概率</th>
+                            <th>数量</th><th>概率</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
 
-                    </thead>
-                    <thead>
-                        <th>次数</th><th>概率</th>
-                        <th>数量</th><th>概率</th>
-                        <th>数量</th><th>概率</th>
-                        <th>数量</th><th>概率</th>
-                        <th>数量</th><th>概率</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                <div class = "from-inline span10">
+                    <table class="table table-bordered table-hover table-responsive" id="boxResult">
+                        <thead>
+                            <th colspan="2">宝箱</th><th colspan="2">1星卡牌</th><th colspan="2">2星卡牌</th><th colspan="2">3星卡牌</th><th colspan="2">4星卡牌</th>
+
+                        </thead>
+                        <thead>
+                            <th>次数</th><th>概率</th>
+                            <th>数量</th><th>概率</th>
+                            <th>数量</th><th>概率</th>
+                            <th>数量</th><th>概率</th>
+                            <th>数量</th><th>概率</th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
 
                 <div class = "from-inline span3">
-                <table class="table table-bordered table-hover table-responsive" id="noneResult">
-                    <thead>
-                        <th colspan="2">无触发事件</th>
-                         <thead>
-                            <th>次数</th><th>概率</th>
-                          </thead>
-                    </thead>
-                </table>
+                    <table class="table table-bordered table-hover table-responsive" id="noneResult">
+                        <thead>
+                            <th colspan="2">无触发事件</th>
+                             <thead>
+                                <th>次数</th><th>概率</th>
+                              </thead>
+                        </thead>
+                    </table>
                 </div>
-            </div>
+            </from>
         </fieldset>
     </div>
     <script src="/javascripts/lib/build/build.js" type="text/javascript">
@@ -76,6 +102,7 @@
      </script>
      <script src="/javascripts/explore.js"></script>
      <script>
-        setAreas(<%- JSON.stringify(areas) %>);
+        setUser(<%- JSON.stringify(gameUser) %>);
+        setData(<%- JSON.stringify(player) %>);
      </script>
 <%-include footer%>

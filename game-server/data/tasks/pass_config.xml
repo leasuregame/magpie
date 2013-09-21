@@ -7,7 +7,7 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>gaobin</Author>
-  <Created>2013-09-11T20:04:48Z</Created>
+  <Created>2013-09-18T16:36:05Z</Created>
   <Version>14.0</Version>
  </DocumentProperties>
  <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
@@ -17,10 +17,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11800</WindowHeight>
+  <WindowHeight>11220</WindowHeight>
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>140</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -68,7 +69,7 @@
    <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
     ss:Color="#000000"/>
   </Style>
-  <Style ss:ID="s68">
+  <Style ss:ID="s73">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
@@ -171,7 +172,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20000#20000#20001</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20000,2:20000,3:20001</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20001</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">180</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -236,7 +237,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20001#20001#20001#20002</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20001,2:20001,3:20001,4:20002</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20002</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">70</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -301,7 +302,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20002#20002#20002#20002#20003</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20002,2:20002,3:20002,4:20002,5:20003</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20003</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">70</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -366,7 +367,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20003#20003#20003#20003#20004</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20003,2:20003,3:20003,4:20003,5:20004</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20004</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">80</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -431,7 +432,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20004#20004#20004#20004#20005</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20004,2:20004,3:20004,4:20004,5:20005</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20005</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">80</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -496,7 +497,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20005#20005#20005#20005#20006</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20005,2:20005,3:20005,4:20005,5:20006</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20006</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">70</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -561,7 +562,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20006#20006#20006#20006#20007</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20006,2:20006,3:20006,4:20006,5:20007</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20007</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">60</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -626,7 +627,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20007#20007#20007#20007#20008</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20007,2:20007,3:20007,4:20007,5:20008</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20008</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">45</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -691,7 +692,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20008#20008#20008#20008#20009</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20008,2:20008,3:20008,4:20008,5:20009</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20009</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">45</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -756,7 +757,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20009#20009#20009#20009#20010</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20009,2:20009,3:20009,4:20009,5:20010</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20010</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">70</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">40</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -821,7 +822,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20010#20010#20010#20010#20011</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20010,2:20010,3:20010,4:20010,5:20011</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20011</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">180</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -886,7 +887,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20011#20011#20011#20011#20012</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20011,2:20011,3:20011,4:20011,5:20012</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20012</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">70</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -951,7 +952,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20012#20012#20012#20012#20013</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20012,2:20012,3:20012,4:20012,5:20013</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20013</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">70</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -1016,7 +1017,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20013#20013#20013#20013#20014</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20013,2:20013,3:20013,4:20013,5:20014</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20014</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">80</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -1081,7 +1082,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20014#20014#20014#20014#20015</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20014,2:20014,3:20014,4:20014,5:20015</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20015</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">80</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -1146,7 +1147,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20015#20015#20015#20015#20016</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20015,2:20015,3:20015,4:20015,5:20016</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20016</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">70</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -1211,7 +1212,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20016#20016#20016#20016#20017</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20016,2:20016,3:20016,4:20016,5:20017</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20017</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">60</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -1276,7 +1277,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20017#20017#20017#20017#20018</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20017,2:20017,3:20017,4:20017,5:20018</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20018</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">45</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -1341,7 +1342,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20018#20018#20018#20018#20019</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20018,2:20018,3:20018,4:20018,5:20019</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20019</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">45</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -1406,7 +1407,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">20019#20019#20019#20019#20020</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">1:20019,2:20019,3:20019,4:20019,5:20020</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">20020</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">40</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
@@ -1420,12 +1421,147 @@
    <Unsynced/>
    <PageBreakZoom>100</PageBreakZoom>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>7</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="神秘关卡配置表">
+  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+   <Row>
+    <Cell><Data ss:Type="String">id/难度系数</Data></Cell>
+    <Cell><Data ss:Type="String">层数</Data></Cell>
+    <Cell><Data ss:Type="String">名称</Data></Cell>
+    <Cell><Data ss:Type="String">触发区间开始层数</Data></Cell>
+    <Cell><Data ss:Type="String">触发区间结束层数</Data></Cell>
+    <Cell><Data ss:Type="String">触发概率</Data></Cell>
+    <Cell><Data ss:Type="String">技能点奖励</Data></Cell>
+    <Cell><Data ss:Type="String">卡牌数量</Data></Cell>
+    <Cell><Data ss:Type="String">所有卡牌id</Data></Cell>
+    <Cell><Data ss:Type="String">阵型</Data></Cell>
+    <Cell><Data ss:Type="String">boss卡牌id</Data></Cell>
+    <Cell><Data ss:Type="String">boss暴击率</Data></Cell>
+    <Cell><Data ss:Type="String">boss闪避率</Data></Cell>
+    <Cell><Data ss:Type="String">boos技能触发概率</Data></Cell>
+    <Cell><Data ss:Type="String">boos技能加成效果</Data></Cell>
+    <Cell><Data ss:Type="String">BOSS攻击加成</Data></Cell>
+    <Cell><Data ss:Type="String">BOSS生命加成</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">layer</Data></Cell>
+    <Cell><Data ss:Type="String">name</Data></Cell>
+    <Cell><Data ss:Type="String">layer_from</Data></Cell>
+    <Cell><Data ss:Type="String">layer_to</Data></Cell>
+    <Cell><Data ss:Type="String">trigger_rate</Data></Cell>
+    <Cell><Data ss:Type="String">skill_point</Data></Cell>
+    <Cell><Data ss:Type="String">card_count</Data></Cell>
+    <Cell><Data ss:Type="String">cards</Data></Cell>
+    <Cell><Data ss:Type="String">formation</Data></Cell>
+    <Cell><Data ss:Type="String">boss_id</Data></Cell>
+    <Cell><Data ss:Type="String">boss_crit</Data></Cell>
+    <Cell><Data ss:Type="String">boss_dodge</Data></Cell>
+    <Cell><Data ss:Type="String">trigger_rate</Data></Cell>
+    <Cell><Data ss:Type="String">boss_attr</Data></Cell>
+    <Cell><Data ss:Type="String">atk_inc</Data></Cell>
+    <Cell><Data ss:Type="String">hp_inc</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">1000</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="String">30001#30002#30003#30004#30005</Data></Cell>
+    <Cell><Data ss:Type="String">1:30001,2:30002,3:30003,4:30004,5:30005</Data></Cell>
+    <Cell><Data ss:Type="Number">30001</Data></Cell>
+    <Cell ss:Index="14"><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">70</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="Number">31</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">2000</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="String">30001#30002#30003#30004#30005</Data></Cell>
+    <Cell><Data ss:Type="String">1:30001,2:30002,3:30003,4:30004,5:30005</Data></Cell>
+    <Cell><Data ss:Type="Number">30002</Data></Cell>
+    <Cell ss:Index="14"><Data ss:Type="Number">70</Data></Cell>
+    <Cell><Data ss:Type="Number">40</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="Number">51</Data></Cell>
+    <Cell><Data ss:Type="Number">70</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">3000</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="String">30001#30002#30003#30004#30005</Data></Cell>
+    <Cell><Data ss:Type="String">1:30001,2:30002,3:30003,4:30004,5:30005</Data></Cell>
+    <Cell><Data ss:Type="Number">30003</Data></Cell>
+    <Cell ss:Index="14"><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">80</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="Number">71</Data></Cell>
+    <Cell><Data ss:Type="Number">90</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">4000</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="String">30001#30002#30003#30004#30005</Data></Cell>
+    <Cell><Data ss:Type="String">1:30001,2:30002,3:30003,4:30004,5:30005</Data></Cell>
+    <Cell><Data ss:Type="Number">30004</Data></Cell>
+    <Cell ss:Index="14"><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">45</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="Number">91</Data></Cell>
+    <Cell><Data ss:Type="Number">100</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">5000</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="String">30001#30002#30003#30004#30005</Data></Cell>
+    <Cell><Data ss:Type="String">1:30001,2:30002,3:30003,4:30004,5:30005</Data></Cell>
+    <Cell><Data ss:Type="Number">30005</Data></Cell>
+    <Cell ss:Index="14"><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">40</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <RangeSelection>R3C1:R102C1</RangeSelection>
+     <ActiveRow>28</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1433,26 +1569,36 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="export">
-  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:Width="129"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">export_name</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">merge_to</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">关卡卡牌配置表</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">pass_config</Data></Cell>
-    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">关卡卡牌配置表</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">pass_config</Data></Cell>
+    <Cell ss:StyleID="s73"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">神秘关卡配置表</Data></Cell>
+    <Cell><Data ss:Type="String">mystical_pass_config</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.51180555555555596"/>
+    <Footer x:Margin="0.51180555555555596"/>
+   </PageSetup>
    <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1C1:R2C3</RangeSelection>
+     <ActiveRow>13</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

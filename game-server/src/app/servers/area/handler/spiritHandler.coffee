@@ -21,38 +21,27 @@ Handler::collect = (msg, session, next) ->
     
     spiritPool = _.clone(player.spiritPool)
     if spiritPool.collectCount <= 0
-      return next(null, {code: 501, msg: '不能采集，已经达到每天最大采集次数'})
-
-    spiritPollData = table.getTableItem('spirit_pool', spiritPool.lv)
-    spiritPool.exp += spiritConfig.EXP_PER_COLLECT
-
-    ### 判断灵气池是否升级 ###
-    if spiritPool.exp >= spiritPollData.exp_need
-      spiritPool.lv += 1
-      spiritPool.exp -= spiritPollData.exp_need
+      return next(null, {code: 501, msg: '不能采集，已经达到每天最大采集次数'})   
     spiritPool.collectCount -= 1
+    player.set('spiritPool', spiritPool)
 
-    ### 获得灵气，并判断元神是否升级 ###
-    spiritor = _.clone(player.spiritor)
-    spiritor.spirit += spiritPollData.spirit_obtain * times
-    spiritorData = table.getTableItem('spirit', spiritor.lv)
-    if spiritor.spirit >= spiritorData.spirit_need
-      spiritor.lv += 1
-      spiritor.spirit -= spiritorData.spirit_need
-
+    ### 获得灵气 ###
+    spiritPollData = table.getTableItem('spirit_pool', player.spiritor.lv);
+    spirit_obtain = spiritPollData.spirit_obtain * times
+    
     ### 每次采集都已一定的概率获得额外数量的灵气 ###
     if utility.hitRate(spiritConfig.REWORD.RATE)
       [from, to] = spiritConfig.REWORD.VALUE.split('~')
       rd = _.random(parseInt(from), parseInt(to))
-      spiritor.spirit += rd
+      spirit_obtain += rd
       rewardSpirit = rd
 
     ### 消耗元宝，增加灵气产量 ###
     if isGold
       player.decrease('gold', spiritConfig.BUY_SPIRIT_GOLD)
 
-    player.set('spiritPool', spiritPool)
-    player.set('spiritor', spiritor)
+    player.incSpirit(spirit_obtain)
+    player.incSpiritPoolExp(spiritConfig.EXP_PER_COLLECT)
     player.save()
     next(null, {code: 200, msg: {
       spiritor: player.spiritor, 

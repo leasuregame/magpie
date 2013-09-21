@@ -170,53 +170,37 @@ describe("Card Object", function() {
 
                 card.addPassiveSkill(new PassiveSkill({
                     id: 1,
+                    cardId: 1,
                     name: 'hp_improve',
                     value: 5.3
                 }));
 
                 card.addPassiveSkill(new PassiveSkill({
                     id: 2,
+                    cardId: 1,
                     name: 'atk_improve',
                     value: 10
                 }));
-
+                console.log(card.attributes);
                 card.toJson().should.eql({
                     id: 1,
-                    createTime: undefined,
-                    playerId: undefined,
                     tableId: 3,
-                    init_hp: 355,
-                    init_atk: 149,
-                    hp: 391,
-                    atk: 163,
-                    incs: {
-                        group_hp: 0,
-                        group_atk: 0,
-                        spirit_hp: 0,
-                        spirit_atk: 0,
-                        ps_hp: 36,
-                        ps_atk: 14,
-                        elixir_hp: 0,
-                        elixir_atk: 0
-                    },
-                    star: 3,
+                    hp: 370,
+                    atk: 170,
                     lv: 1,
                     exp: 0,
                     skillLv: 0,
                     skillPoint: 0,
-                    elixir: 0,
-                    hpAddition: 0,
-                    atkAddition: 0,
+                    elixirHp: 0,
+                    elixirAtk: 0,
                     passiveSkills: [{
                         id: 1,
-                        cardId: undefined,
-                      //  createTime: undefined,
+                        cardId: 1,
                         name: 'hp_improve',
                         value: 5.3
                     }, {
                         id: 2,
-                        cardId: undefined,
-                     //   createTime: undefined,
+                        cardId: 1,
                         name: 'atk_improve',
                         value: 10
                     }]
@@ -265,6 +249,41 @@ describe("Card Object", function() {
             card.vitual_upgrade(1000000).should.eql([50,0]);
         });
 
+    });
+
+    describe('check hp and atk', function(){
+        describe('card with no passive skill', function(){
+            it('should can count the correct hp and atk', function(){
+                var card = new Card({
+                    tableId: 1,
+                    lv: 1
+                });
+                card.hp.should.equal(103);
+                card.atk.should.equal(59);
+
+                card.lv = 10;
+                card.hp.should.equal(parseInt(103 * 2.282));
+                card.atk.should.equal(parseInt(59 * 2.282));
+
+                card.lv = 50;
+                card.hp.should.equal(parseInt(103 * 36.080));
+                card.atk.should.equal(parseInt(59 * 36.080));
+
+                card.addPassiveSkill({id: 1, name: 'hp_improve', value: 5});
+                card.hp.should.equal(parseInt(103 * 36.080) + 185);
+                
+                card.addPassiveSkill({id: 2, name: 'atk_improve', value: 5});
+                card.atk.should.equal(parseInt(59 * 36.080) + 106);
+
+                card.elixirHp = 1000;
+                card.hp.should.equal(parseInt(103 * 36.080) + 185 + 200);
+                card.atk.should.equal(parseInt(59 * 36.080) + 106);
+
+                card.elixirAtk = 1000;
+                card.hp.should.equal(parseInt(103 * 36.080) + 185 + 200);
+                card.atk.should.equal(parseInt(59 * 36.080) + 106 + 100);
+            });
+        });
     });
 
 

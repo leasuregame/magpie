@@ -133,7 +133,10 @@ class Manager
 
       ### the first time win, obtain some spirit ###
       spirit = {total: 0}
-      _.each battleLog.enemy.cards, (v, k) ->
+      _.each battleLog.cards, (v, k) ->
+        ### 只计算敌方卡牌 ###
+        return if k > 6
+
         if v.boss?
           spirit[k] = spiritConfig.SPIRIT.TASK.BOSS
           spirit.total += spiritConfig.SPIRIT.TASK.BOSS

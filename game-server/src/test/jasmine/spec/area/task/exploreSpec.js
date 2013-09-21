@@ -36,9 +36,11 @@ describe("Area Server", function() {
 							'upgrade',
 							'open_box_card',
 							'battle_log',
-							'fragment',
+							'lv',
+							'exp',
 							'task',
-							'power'
+							'power',
+							'isMomo'
 						]);
 
 						var res = data.msg;
@@ -49,38 +51,61 @@ describe("Area Server", function() {
 									'spirit', 'cards'
 								]);
 								if (res.battle_log.winner == 'own') {
-									expect(res.task).toEqual({id: 250, progress: 3, hasWin: true});
+									expect(res.task).toEqual({
+										id: 250,
+										progress: 3,
+										hasWin: true,
+										mark: [],
+										momo: []
+									});
 								} else {
-									expect(res.task).toEqual({id: 250, progress: 2});
+									expect(res.task).toEqual({
+										id: 250,
+										progress: 2,
+										hasWin: false,
+										mark: [],
+										momo: []
+									});
 								}
 								break;
 							case 'box':
 								if (!res.fregment) {
 									expect(typeof res.open_box_card).toEqual('object');
 									expect(res.open_box_card).hasProperties([
-										'id', 'lv', 'exp', 'star', 'tableId', 
+										'id', 'lv', 'exp', 'star', 'tableId',
 										'skillLv', 'hpAddition', 'atkAddition',
-										'passiveSkills', 'playerId', 'skillPoint', 
+										'passiveSkills', 'playerId', 'skillPoint',
 										'elixir', 'createTime',
 										'init_hp', 'init_atk', 'hp', 'atk', 'incs'
 									]);
 								} else {
 									expect(res.open_box_card).toEqual(null);
 								}
-								expect(res.task).toEqual({id: 250, progress: 3});
+								expect(res.task).toEqual({
+									id: 250,
+									progress: 3,
+									hasWin: false,
+									mark: [],
+									momo: []
+								});
 								break;
 							default:
 								expect(res.result).toEqual('none');
 								expect(res.battle_log).toEqual(null);
 								expect(res.open_box_card).toEqual(null);
-								expect(res.task).toEqual({id: 250, progress: 3});
+								expect(res.task).toEqual({
+									id: 250,
+									progress: 3,
+									hasWin: false,
+									mark: [],
+									momo: []
+								});
 						}
 
 						expect(res.power_consume).toEqual(5);
 						expect(res.exp_obtain).toEqual(145);
 						expect(res.money_obtain).toEqual(290);
 						expect(typeof res.upgrade).toEqual('boolean');
-						expect(typeof res.fragment).toEqual('boolean');
 					});
 				});
 			});
@@ -99,9 +124,9 @@ describe("Area Server", function() {
 							time: Date.now(),
 							value: 0
 						})
-					}, function(){
+					}, function() {
 						loginWith(mike.account, mike.password, mike.areaId);
-					});					
+					});
 				});
 
 				it('should can not explore', function() {

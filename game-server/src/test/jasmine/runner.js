@@ -1,39 +1,48 @@
 var et = require("elementtree");
 var fs = require('fs');
+var path = require('path');
+var RESULT_PATH = path.join(__dirname, '..', 'TESTS-jasmine-api-test.xml' );
 
 // Use webdriverjs to create a Selenium Client
 var client = require('webdriverjs').remote({
     desiredCapabilities: {
         // You may choose other browsers
         // http://code.google.com/p/selenium/wiki/DesiredCapabilities
-        browserName: 'safari', //'firefox'
+        browserName: 'firefox', //'safari'
     },
     // webdriverjs has a lot of output which is generally useless
     // However, if anything goes wrong, remove this to see more details
     // logLevel: 'silent'
 });
- 
-client.init()
-.url('http://127.0.0.1:3000/test')
-.waitFor(".runner .description", 60000 * 10)
-.execute(
-    "var results = []; " + 
-    "$('.jasmine_reporter .spec').each( function( i, el ) { " + 
-        "var suites = $('> .description', el ).text();" + 
-        "$( el ).parents( '.suite' ).each( function( j, su ) {" + 
-            "suites = $( '> .description', su ).text() + ' > ' + suites;" + 
-        "});" + 
-        "results[i] = { " + 
-            "'name': suites, " +
-            "'result': $( el ).hasClass( 'passed' ), "+
-            "'errorMessage': $( '> .messages > .resultMessage ', el ).text(), " +
-            "'stackTrace': $('> .messages > .stackTrace ', el).text() " + "};" +
-    "});" + 
-    "return JSON.stringify(results);", 
-[], function(err, res) {
-    ConvertJasmineResults(JSON.parse(res.value));
-})
-.end();
+
+var Run = function() {
+    client.init()
+        .url('http://127.0.0.1:3000/test')
+        .waitFor(".runner .description", 60000 * 10)
+        .execute(
+            "var results = []; " +
+            "$('.jasmine_reporter .spec:not(div.skipped)').each( function( i, el ) { " +
+                "var el = $('> .description', el );" +
+                "var suites = el.text();" +
+                "var href = el.attr('href');" +
+                "$( el ).parents( '.suite' ).each( function( j, su ) {" +
+                    "suites = $( '> .description', su ).text() + ' > ' + suites;" +
+                "});" +
+                "results[i] = { " +
+                    "'name': suites, " +
+                    "'url': href, " +
+                    "'result': $( el ).hasClass( 'passed' ), " +
+                    "'errorMessage': $( '> .messages > .resultMessage ', el ).text(), " +
+                    "'stackTrace': $('> .messages > .stackTrace ', el).text() " + 
+                "};" +
+            "});" +
+            "return JSON.stringify(results);", 
+            [], 
+            function(err, res) {
+                ConvertJasmineResults(JSON.parse(res.value));
+            })
+        .end();
+};
 
 var ConvertJasmineResults = function(results) {
     console.log('message, ', results);
@@ -51,7 +60,10 @@ var ConvertJasmineResults = function(results) {
         res = results[i];
         var testcase = subElement(suite, 'testcase');
         testcase.set("name", res.name);
+        testcase.set("url", res.url);
+        testcase.set('passed', 'true');
         if (!res.result) {
+            testcase.set('passed', 'false');
             var failure = subElement(testcase, 'failure');
             failure.set('message', res.errorMessage)
             failure.text = res.stackTrace;
@@ -65,8 +77,10 @@ var ConvertJasmineResults = function(results) {
     suite.set("errors", errors);
 
     var etree = new ElementTree(suite);
-    var xml = etree.write({'xml_declaration': false});
-    fs.writeFile(__dirname + '/../TESTS-jasmine-api-test.xml', xml, function(err) {
+    var xml = etree.write({
+        'xml_declaration': false
+    });
+    fs.writeFile(RESULT_PATH, xml, function(err) {
         if (err) {
             console.log(err);
         } else {
@@ -74,3 +88,5 @@ var ConvertJasmineResults = function(results) {
         }
     });
 };
+
+Run();

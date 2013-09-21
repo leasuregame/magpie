@@ -66,7 +66,7 @@ var ConvertJasmineResults = function(results) {
         if (!res.result) {
             testcase.set('passed', 'false');
             var failure = subElement(testcase, 'failure');
-            failure.set('message', TEST_URL + res.url + res.errorMessage)
+            failure.set('message', TEST_URL + res.url + '\n' + res.errorMessage)
             failure.text = res.stackTrace;
 
             failures++;

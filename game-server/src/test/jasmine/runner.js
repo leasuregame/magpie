@@ -8,7 +8,7 @@ var client = require('webdriverjs').remote({
     desiredCapabilities: {
         // You may choose other browsers
         // http://code.google.com/p/selenium/wiki/DesiredCapabilities
-        browserName: 'firefox', //'safari'
+        browserName: 'safari', //'firefox'
     },
     // webdriverjs has a lot of output which is generally useless
     // However, if anything goes wrong, remove this to see more details
@@ -22,9 +22,9 @@ var Run = function() {
         .execute(
             "var results = []; " +
             "$('.jasmine_reporter .spec:not(div.skipped)').each( function( i, el ) { " +
-                "var el = $('> .description', el );" +
-                "var suites = el.text();" +
-                "var href = el.attr('href');" +
+                "var tc = $('> .description', el );" +
+                "var suites = tc.text();" +
+                "var href = tc.attr('href');" +
                 "$( el ).parents( '.suite' ).each( function( j, su ) {" +
                     "suites = $( '> .description', su ).text() + ' > ' + suites;" +
                 "});" +

@@ -44,7 +44,7 @@ describe("Area Server", function() {
 								id: 100,
 								name: 'Attacker',
 								lv: 40,
-								ability: 157592
+								ability: 94475
 							}
 						});
 					});

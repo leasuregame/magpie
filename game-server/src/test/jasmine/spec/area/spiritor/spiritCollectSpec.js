@@ -23,9 +23,8 @@ describe('Area Server', function() {
 					request('area.spiritHandler.collect', {
 						isGold: false
 					}, function(data) {
-						console.log(data.msg.rewardSpirit);
+						console.log(data);
 						rs = data.msg.rewardSpirit
-						delete data.msg.rewardSpirit
 
 						if (rs > 0) {
 							expect(rs).toBeLessThan(51);
@@ -38,14 +37,15 @@ describe('Area Server', function() {
 							code: 200,
 							msg: {
 								spiritor: {
-									lv: 0,
-									spirit: 8 + rs
+									lv: 4,
+									spirit: 18 + rs
 								},
 								spiritPool: {
 									lv: 0,
 									exp: 5,
 									collectCount: 14
-								}
+								},
+								rewardSpirit: rs
 							}
 						});
 

@@ -167,6 +167,11 @@ function countResult() {
 }
 
 function showResult(task) {
+
+    $("#fightResult tbody tr").remove();
+    $("#boxResult tbody tr").remove();
+    $("#noneResult tbody tr").remove();
+
     //战斗表
     var fight = result['fight'];
     var inner = "<tr><td>" + fight.times + "</td><td>" + fight.rate + "</td><td>" + fight.cards_ave + "</td>";

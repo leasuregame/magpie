@@ -214,6 +214,7 @@ var responseRunner = function(req, res, runner) {
     if (debug) {
       files = [];
     }
+    
     res.render(runner + '.html', {
       files: files.map(function(f) { return f.substr(dir.length+1)})
     });

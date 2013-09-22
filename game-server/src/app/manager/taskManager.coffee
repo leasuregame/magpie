@@ -133,7 +133,10 @@ class Manager
 
       ### the first time win, obtain some spirit ###
       spirit = {total: 0}
-      _.each battleLog.enemy.cards, (v, k) ->
+      _.each battleLog.cards, (v, k) ->
+        ### 只计算敌方卡牌 ###
+        return if k > 6
+
         if v.boss?
           spirit[k] = spiritConfig.SPIRIT.TASK.BOSS
           spirit.total += spiritConfig.SPIRIT.TASK.BOSS
@@ -169,13 +172,13 @@ class Manager
 
     # 更新玩家money
     player.increase('money', taskData.coins_obtain)
-
+    console.log 'count explore result: ', taskId, player.task
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
-    if taskId == player.task.id
+    if taskId is player.task.id
       task = utility.deepCopy(player.task)
       task.progress += 1
-      if task.progress > taskData.points
+      if task.progress >= taskData.points
         task.progress = 0
         task.id += 1
         task.hasWin = false

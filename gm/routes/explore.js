@@ -7,8 +7,6 @@
  */
 
 var Url = require('url');
-var Area = require('../models/area');
-var getDB = require('../models/getDatabase');
 var dbClient = require('../models/dao/mysql/mysql');
 var Explore = require('../models/explore');
 
@@ -17,22 +15,26 @@ var explore = function (app) {
 
     app.get('/explore', function (req, res) {
 
-        var player = req.session.player;
-        var env = app.settings.env;
-        Explore.getUserByAccount(env,player.userId,player.areaId,function(err,user){
-            if(!err) {
-                res.render('explore', {
-                    user: req.session.user,
-                   // areas: areas,
-                    gameUser:user,
-                    player : req.session.player,
-                    area : req.session.area,
-                    success: req.flash('success').toString(),
-                    error: req.flash('error').toString()
-                });
-            }
-        });
-
+        if(!req.session.player) {
+            res.redirect('/playerLogin?target=explore');
+        }
+        else {
+            var player = req.session.player;
+            var env = app.settings.env;
+            Explore.getUserByAccount(env,player.userId,player.areaId,function(err,user){
+                if(!err) {
+                    res.render('explore', {
+                        user: req.session.user,
+                       // areas: areas,
+                        gameUser:user,
+                        player : req.session.player,
+                        area : req.session.area,
+                        success: req.flash('success').toString(),
+                        error: req.flash('error').toString()
+                    });
+                }
+            });
+        }
 
     });
 
@@ -43,13 +45,14 @@ var explore = function (app) {
         var query = url.query;
         var areaId = query["areaId"];
         var playerId = query["playerId"];
+        var task = query["task"];
 
         var env = app.settings.env;
         //var db = getDB(areaId,env);
         //dbClient.init(db);
 
         // var passNum = query["passNum"];
-        Explore.simulate(env, areaId, playerId, function (err, result) {
+        Explore.simulate(env, areaId, playerId,task, function (err, result) {
             if (err) {
                 res.send({type: "error", info: err});
             }

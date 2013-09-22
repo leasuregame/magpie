@@ -20,8 +20,9 @@ var Explore = function () {
 var maxId = 500;
 var result = [];
 
-Explore.simulate = function (env, areaId, playerId, cb) {
+Explore.simulate = function (env, areaId, playerId,task, cb) {
 
+    //console.log(JSON.parse(task));
     var options = {
         where: {
             id: playerId,
@@ -32,10 +33,7 @@ Explore.simulate = function (env, areaId, playerId, cb) {
                 time: Date.now(),
                 value: 100000
             },
-            task: {
-                id: 1,
-                progress: 0
-            }
+            task:JSON.parse(task)
         }
     };
 

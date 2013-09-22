@@ -1,0 +1,4 @@
+查看内存使用情况：df -h
+查看文件内存:du -sh 文件名
+查看node进程 ps -ef|grep node
+删除和关键字有关的文件：rm -rf 关键字*

@@ -90,13 +90,10 @@ function updatePlayerData() {
     var mark = JSON.parse(player.pass).mark;
   //  console.log(mark);
     var layer = parseInt($("#layer").val());
-    for(var i = 0;i < mark.length;i++)
-        mark[i] = 0;
-    for(var i = 0;i < layer;i++)
-        mark[i] = 1;
+
     var pass = {
         layer:layer,
-        mark:mark
+        mark:[]
     };
 
     data.pass = JSON.stringify(pass);

@@ -31,7 +31,7 @@ class Manager
     if player.power.value < taskData.power_consume
       return cb({code: 501,msg: '体力不足'}, null, null)
 
-    data.result = utility.randomValue( 
+    data.result = utility.randomValue(
       ['fight','box', 'none'],
       [taskRate.fight, taskRate.precious_box, (100 - taskRate.fight - taskRate.precious_box)]
     )
@@ -183,7 +183,8 @@ class Manager
         task.id += 1
         task.hasWin = false
         ### 一大关结束，触发摸一摸功能 ###
-        data.isMomo = true
+        if task.id % 10 is 0
+          data.isMomo = true
       player.set('task', task)
 
     # 判断是否升级

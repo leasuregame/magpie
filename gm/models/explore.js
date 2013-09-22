@@ -22,7 +22,7 @@ var result = [];
 
 Explore.simulate = function (env, areaId, playerId,task, cb) {
 
-    console.log(task);
+    //console.log(JSON.parse(task));
     var options = {
         where: {
             id: playerId,
@@ -33,7 +33,7 @@ Explore.simulate = function (env, areaId, playerId,task, cb) {
                 time: Date.now(),
                 value: 100000
             },
-            task: task
+            task:JSON.parse(task)
         }
     };
 

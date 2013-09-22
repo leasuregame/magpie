@@ -15,6 +15,12 @@ var times = 0;
 var tid = 0;
 var user;
 
+var TYPE = {
+    ONEPASS:0,
+    START:1,
+    GOON:2
+}
+
 function setUser(u) {
     user = u;
 };
@@ -33,18 +39,34 @@ function setData(player) {
 $(document).ready(function () {
     $("#tip").hide();
     $("#btnStart").click(function () {
-        submitStart();
+        submitStart(TYPE.START);
+    });
+    $("#btnbtnOnePass").click(function() {
+        submitStart(TYPE.ONEPASS);
     });
     $("#btnGoOn").click(function(){
         times = 0;
-        submitExplore(parseInt(user.account), user.password, areaId);
-        //explore(tid);
+        submitExplore(user.account, user.password, areaId);
     });
 });
 
-function submitStart() {
+function submitStart(type) {
 
-    var url = "/explore?areaId=" + areaId + "&playerId=" + playerId;
+    var task;
+
+    if(type == TYPE.START) {
+        task = {
+            id: 1,
+            progress: 0
+        }
+    }else {
+        task = {
+            id: parseInt($("#taskId").val()),
+            progress:parseInt($("#progress").val())
+        }
+    }
+
+    var url = "/explore?areaId=" + areaId + "&playerId=" + playerId + "&task=" + task;
    // console.log(url);
     $.ajax({
         url: url,
@@ -56,28 +78,44 @@ function submitStart() {
             } else {
               //  var user = msg.info;
                 times = 0;
-                submitExplore(parseInt(user.account), user.password, areaId);
+
+                login(user.account, user.password, areaId, function (err, taskId, pid) {
+
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        initResult();
+                        playerId = pid;
+                        if(type == TYPE.ONEPASS)
+                            maxId = taskId + 1;
+                        else
+                            maxId = 500;
+                        explore(taskId);
+                    }
+                });
+
+               // submitExplore(user.account, user.password, areaId);
             }
         }
     });
-
-
-
 };
 
-function submitExplore(account, password, areaId) {
-    login(account, password, areaId, function (err, taskId, pid) {
 
-        if (err) {
-            console.log(err);
-        }
-        else {
-            initResult();
-            playerId = pid;
-            explore(taskId);
-        }
-    });
-};
+//
+//function submitExplore(account, password, areaId) {
+//    login(account, password, areaId, function (err, taskId, pid) {
+//
+//        if (err) {
+//            console.log(err);
+//        }
+//        else {
+//            initResult();
+//            playerId = pid;
+//            explore(taskId);
+//        }
+//    });
+//};
 
 var result = {};
 

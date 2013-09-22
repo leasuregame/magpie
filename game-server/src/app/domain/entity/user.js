@@ -50,15 +50,11 @@ var User = (function (_super) {
 
     User.prototype.upLastLoginTime = function () {
         this.set("lastLoginTime", Date.now());
-    }
+    };
 
-    /*
-     * 判断登录
-     * */
-    User.prototype.login = function () {
-        // 细节未实现
+    User.prototype.updateLoginTime = function(){
+        
 
-        return true;
     };
 
     User.prototype.toJson = function() {

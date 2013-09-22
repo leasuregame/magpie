@@ -23,7 +23,7 @@ Handler::explore = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   taskId = msg.taskId
   player = null
-  console.log("req success");
+  console.log("req success", msg, playerId);
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb

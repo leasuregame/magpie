@@ -172,10 +172,10 @@ class Manager
 
     # 更新玩家money
     player.increase('money', taskData.coins_obtain)
-
+    console.log 'count explore result: ', taskId, player.task
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
-    if taskId == player.task.id
+    if taskId is player.task.id
       task = utility.deepCopy(player.task)
       task.progress += 1
       if task.progress > taskData.points

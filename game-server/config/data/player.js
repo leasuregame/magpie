@@ -11,7 +11,7 @@ module.exports = {
     "100": 200
   },
   "POWER_RESUME": {
-    "interval": 10000,
+    "interval": 60000 * 10,
     "point": 5
   },
   "POWER_GIVE": {

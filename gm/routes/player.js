@@ -48,6 +48,10 @@ var player = function(app) {
         var playerName = req.body.playerName;//query['playerName'];
         var area = JSON.parse(req.body.area);//JSON.parse(query['area']);
 
+        //dbClient.shutdown();
+        var env = app.settings.env;
+        var db = getDB(area.id,env);
+        dbClient.init(db);
 
         var player = {
             where :{
@@ -83,10 +87,7 @@ var player = function(app) {
 
     app.get('/playerData',function(req,res){
         if(req.session.player) {
-            dbClient.shutdown();
-            var env = app.settings.env;
-            var db = getDB(req.session.area.id,env);
-            dbClient.init(db);
+
 
             var player = {
                 where :{

@@ -96,9 +96,12 @@ Handler::wipeOut = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   type = msg.type or 'task'
   chapterId = msg.chapterId
+  console.log 'wipe out:', msg
+  if type is 'task' and chapterId? and (chapterId < 1 or chapterId > 50)
+    return next(null, {code: 501, msg: '无效参数：chapterId'})
 
-  if chapterId? and (chapterId < 1 or chapterId > 50)
-    return next(null, {code: 501, msg: '无效的任务Id'})
+  if ['task', 'pass'].indexOf(type) < 0
+    return next(null, {code: 501, msg: '无效参数：type'})
 
   async.waterfall [
     (cb) ->

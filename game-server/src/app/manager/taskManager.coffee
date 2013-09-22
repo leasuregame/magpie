@@ -178,7 +178,7 @@ class Manager
     if taskId is player.task.id
       task = utility.deepCopy(player.task)
       task.progress += 1
-      if task.progress > taskData.points
+      if task.progress >= taskData.points
         task.progress = 0
         task.id += 1
         task.hasWin = false

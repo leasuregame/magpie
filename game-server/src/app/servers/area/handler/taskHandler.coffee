@@ -76,7 +76,7 @@ Handler::explore = (msg, session, next) ->
 Handler::updateMomoResult = (msg, session, next) ->
   playerId = session.get('playerId')
   gold = msg.gold
-
+  console.log("gold = ",gold)
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg})
@@ -87,7 +87,7 @@ Handler::updateMomoResult = (msg, session, next) ->
       return next(null,{code: 501,msg: '获取的元宝数大于实际值'})
     player.clearMonoGift();
     #player.setMomoMark()
-    console.log("gold = ",gold)
+
     player.increase 'gold', gold
     player.save()
     next(null, {code: 200})
@@ -158,7 +158,7 @@ Handler::passBarrier = (msg, session, next) ->
           spirit: {total: 0}
 
         countSpirit(player, bl, rewards) if player.pass.layer is layer-1
-        checkMysticalPass(player)
+        #checkMysticalPass(player)
         updatePlayer(player, rewards, layer)   
       
       cb(null, bl)
@@ -244,7 +244,8 @@ checkMysticalPass = (player) ->
   return if player.pass.mystical.isTrigger
 
   mpc = table.getTableItem 'mystical_pass_config', player.pass.mystical.diff
-  if mpc and (player.pass.layer >= mpc.layer_start and player.pass.layer <= mpc.layer_end) and utility.hitRate(mpc.trigger_rate)
+  if mpc and (player.pass.layer >= mpc.layer_from and player.pass.layer <= mpc.layer_to) and utility.hitRate(mpc.trigger_rate)
+    console.log("触发成功！！！",player.pass.layer);
     player.triggerMysticalPass()
 
 updatePlayer = (player, rewards, layer) ->

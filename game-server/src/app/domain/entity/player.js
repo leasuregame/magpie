@@ -692,6 +692,7 @@ var Player = (function(_super) {
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isTrigger = true;
         pass.mystical.isClear = false;
+        console.log("神秘关卡 = ",pass);
         this.set('pass', pass);
     };
 
@@ -787,7 +788,7 @@ var Player = (function(_super) {
             lineUp: this.lineUpObj(),
             ability: this.getAbility(),
             task: this.task,
-            pass: checkPass(this.pass),
+            pass: utility.deepCopy(checkPass(this.pass)),
             dailyGift: utility.deepCopy(this.dailyGift),
             skillPoint: this.skillPoint,
             energy: this.energy,
@@ -831,9 +832,15 @@ var checkPass = function(pass) {
     if (typeof pass !== 'object') {
         pass = {
             layer: 0,
-            mark: defaultMark()
+            mark: defaultMark(),
+            mystical: {
+                diff: 1,
+                isTrigger: false,
+                isClear: false
+            }
         };
     }
+    console.log("pass = ",pass);
     return pass;
 };
 

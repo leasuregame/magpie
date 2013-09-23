@@ -12,11 +12,17 @@
  * */
 
 
-var GoldLayer = cc.Layer.extend({
+var GoldLayer = LazyLayer.extend({
     init: function () {
         cc.log("GoldLayer init");
 
         if (!this._super()) return false;
+
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
+        bgLayer.setPosition(GAME_ZERO);
+        this.addChild(bgLayer);
+
+
 
         return true;
     }

@@ -159,7 +159,8 @@ var Player = (function(_super) {
         Player.__super__.constructor.apply(this, arguments);
         this.taskMark = new MarkGroup(this.task.mark);
         this.passMark = new MarkGroup(this.pass.mark);
-        this.momoMark = new MarkGroup(this.task.momo);
+        this.momo = this.task.momo;
+        //this.momoMark = new MarkGroup(this.task.momo);
     }
 
     Player.prototype.init = function() {
@@ -604,6 +605,44 @@ var Player = (function(_super) {
         } else {
             return true; // 不存在的关卡，当做已经领取了 哈哈
         }
+    };
+
+    /*
+     元宝数量  元宝个数
+
+     1--5       6个
+
+     2--10      2个
+
+     5--20      1个
+
+     5--50      1个
+
+     */
+    Player.prototype.createMonoGift = function() {  //产生摸一摸奖励
+        var task = utility.deepCopy(this.task);
+        task.momo = new Array(10);
+        for(var i = 0;i < 6;i++) {
+            task.momo[i] = _.random(1,5);
+        }
+        for(var i = 6;i < 8;i++) {
+            task.momo[i] = _.random(2,10);
+        }
+        task.momo[8] = _.random(5,20);
+        task.momo[9] = _.random(5,50);
+        this.task = task;
+        return task.momo;
+    };
+
+    Player.prototype.clearMonoGift = function() {   //领取清除摸一摸奖励
+        this.task.momo = [];
+    };
+
+    Player.prototype.getMonoGiftTotal = function() { //摸一摸产生奖励总和
+        var value = 0;
+        for(var i = 0;i < this.task.momo.length;i++)
+            value += this.task.momo[i];
+        return value;
     };
 
     Player.prototype.setTaskMark = function(chapter) {

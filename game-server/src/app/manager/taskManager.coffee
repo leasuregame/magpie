@@ -24,7 +24,7 @@ class Manager
       upgrade: false
       open_box_card: null
       battle_log: null
-      isMomo: false
+      #isMomo: false
     }
 
     ### 检查是否体力充足 ###
@@ -184,7 +184,10 @@ class Manager
         task.hasWin = false
         ### 一大关结束，触发摸一摸功能 ###
         if task.id % 10 is 0
-          data.isMomo = true
+          data.momo = player.createMonoGift();
+          task.momo = data.momo;
+          console.log(data.momo);
+        #data.isMomo = true
       player.set('task', task)
 
     # 判断是否升级

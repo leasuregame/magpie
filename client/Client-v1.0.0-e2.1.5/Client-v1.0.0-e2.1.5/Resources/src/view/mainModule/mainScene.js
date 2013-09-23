@@ -28,6 +28,9 @@ var MainScene = cc.Scene.extend({
 
         var mainMenuLayer = MainMenuLayer.create(this);
         this.addChild(mainMenuLayer, -1);
+
+        var gameFrame = GameFrame.create();
+        this.addChild(gameFrame, 1);
     },
 
     switchLayer: function (runLayer) {

@@ -82,7 +82,7 @@ var TournamentLayer = cc.Layer.extend({
         cc.log("TournamentLayer update");
 
         var player = gameData.player;
-        this._expProgress.setAllValue(player.get("maxPower"), player.get("power"));
+        this._expProgress.setAllValue(player.get("power"), player.get("maxPower"));
         this._nameLabel.setString(player.get("name"));
         this._lvLabel.setString(player.get("lv"));
         this._rankLabel.setString(player.get("rank"));

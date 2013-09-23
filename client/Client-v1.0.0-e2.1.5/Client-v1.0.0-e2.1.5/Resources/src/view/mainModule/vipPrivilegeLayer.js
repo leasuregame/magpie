@@ -40,7 +40,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
         if (nextVipCash) {
             var tipLabel = cc.LabelTTF.create(
                 "您现在是VIP" + vip + "再冲" + nextVipCash + "元RMB可以享受VIP" + (vip + 1),
-                "黑体",
+                "STHeitiTC-Medium",
                 22
             );
             tipLabel.setPosition(cc.p(360, 880));
@@ -97,7 +97,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
                     var vipPrivilegeLabel = cc.LabelTTF.create(
                         vipPrivilegeDescription[key] + " + " + vipPrivilege[key],
-                        "黑体",
+                        "STHeitiTC-Medium",
                         20
                     );
                     vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));

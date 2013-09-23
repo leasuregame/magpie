@@ -27,6 +27,7 @@ var playEffect = function (arg) {
     var scale = arg.scale;
     var scaleX = arg.scaleX;
     var scaleY = arg.scaleY;
+    var rotation = arg.rotation;
     var zOrder = arg.zOrder;
     var clear = arg.clear || (arg.cb ? false : true);
     var cb = arg.cb || null;
@@ -68,6 +69,10 @@ var playEffect = function (arg) {
 
     if (scaleY) {
         sprite.setScaleY(scaleY);
+    }
+
+    if (rotation) {
+        sprite.setRotation(rotation);
     }
 
     if (zOrder) {

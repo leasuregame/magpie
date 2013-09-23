@@ -21,18 +21,18 @@ var LoginLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        var accountLabel = cc.LabelTTF.create("账号:", "黑体", 30);
+        var accountLabel = cc.LabelTTF.create("账号:", "STHeitiTC-Medium", 30);
         accountLabel.setPosition(cc.p(150, 500));
         this.addChild(accountLabel);
 
-        var passwordLabel = cc.LabelTTF.create("密码:", "黑体", 30);
+        var passwordLabel = cc.LabelTTF.create("密码:", "STHeitiTC-Medium", 30);
         passwordLabel.setPosition(cc.p(150, 400));
         this.addChild(passwordLabel);
 
         this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit2));
         this._accountEditBox.setPosition(cc.p(380, 500));
         this._accountEditBox.setDelegate(this);
-        this._accountEditBox.setFont("黑体", 25);
+        this._accountEditBox.setFont("STHeitiTC-Medium", 25);
         this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._accountEditBox.setMaxLength(18);
         this.addChild(this._accountEditBox);

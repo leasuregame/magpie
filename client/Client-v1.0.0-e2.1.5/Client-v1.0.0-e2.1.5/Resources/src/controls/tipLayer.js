@@ -30,9 +30,9 @@ var TipLayer = cc.Layer.extend({
 
         if (!str) return;
 
-        color = color || cc.c3b(255, 255, 255);
-        fontName = fontName || "黑体";
-        fontSize = fontSize || 20;
+        color = color || cc.c3b(255, 240, 170);
+        fontName = fontName || "STHeitiTC-Medium";
+        fontSize = fontSize || 30;
 
         var strLabel = cc.LabelTTF.create(str, fontName, fontSize);
         strLabel.setColor(color);

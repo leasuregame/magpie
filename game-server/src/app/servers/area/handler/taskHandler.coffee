@@ -87,7 +87,8 @@ Handler::updateMomoResult = (msg, session, next) ->
       return next(null,{code: 501,msg: '获取的元宝数大于实际值'})
     player.clearMonoGift();
     #player.setMomoMark()
-    player.increase 'gold', _.min([gold, 120])
+    console.log("gold = ",gold)
+    player.increase 'gold', gold
     player.save()
     next(null, {code: 200})
 

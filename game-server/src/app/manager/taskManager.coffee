@@ -116,6 +116,7 @@ class Manager
         return cb(err)
 
       player.addCard card
+      console.log(card.toJson());
       data.open_box_card = card.toJson()
       cb()
 
@@ -183,9 +184,9 @@ class Manager
         task.id += 1
         task.hasWin = false
         ### 一大关结束，触发摸一摸功能 ###
-        if task.id % 10 is 0
+        if task.id % 10 is 1 && task.id != 1
           data.momo = player.createMonoGift();
-          task.momo = data.momo;
+          #task.momo = data.momo;
           console.log(data.momo);
         #data.isMomo = true
       player.set('task', task)
@@ -218,6 +219,7 @@ class Manager
           return cb(err) 
 
         card.addPassiveSkills pss
+
         cb(null, card)
 
 randomCard = (star) ->

@@ -47,15 +47,15 @@ var PveLayer = cc.Layer.extend({
 
         var menu = cc.Menu.create(this._taskLayerItem, this._passLayerItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu, 1);
+        this.addChild(menu);
 
         var taskIcon = cc.Sprite.create(main_scene_image.icon16);
         taskIcon.setPosition(cc.p(105, 1000));
-        this.addChild(taskIcon, 2);
+        this.addChild(taskIcon);
 
         var passIcon = cc.Sprite.create(main_scene_image.icon17);
         passIcon.setPosition(cc.p(254, 1000));
-        this.addChild(passIcon, 2);
+        this.addChild(passIcon);
 
         this._onClickTaskLayer();
 
@@ -79,7 +79,7 @@ var PveLayer = cc.Layer.extend({
     },
 
     switchLayer: function (runLayer) {
-        cc.log("PveLayer switchMenu");
+        cc.log("PveLayer switchLayer");
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
         if (!(this._nowLayer instanceof runLayer)) {

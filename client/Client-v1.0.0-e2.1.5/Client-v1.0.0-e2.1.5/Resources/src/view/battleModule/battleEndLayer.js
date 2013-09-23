@@ -43,7 +43,7 @@ var BattleEndLayer = cc.Layer.extend({
             str += "获得 " + key + " 数量 " + reward[key] + "\n";
         }
 
-        var rewardLabel = cc.LabelTTF.create(str, "黑体", 20);
+        var rewardLabel = cc.LabelTTF.create(str, "STHeitiTC-Medium", 20);
         rewardLabel.setAnchorPoint(cc.p(0.5, 1));
         rewardLabel.setPosition(cc.p(360, 590));
         this.addChild(rewardLabel);

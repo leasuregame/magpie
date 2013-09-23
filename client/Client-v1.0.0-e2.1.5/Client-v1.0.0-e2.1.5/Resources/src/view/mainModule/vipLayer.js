@@ -91,12 +91,12 @@ var VipLayer = cc.Layer.extend({
         moneyIcon.setPosition(cc.p(410, 934));
         this.addChild(moneyIcon);
 
-        this._goldLabel = cc.LabelTTF.create(0, "黑体", 20);
+        this._goldLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
         this._goldLabel.setPosition(cc.p(288, 932));
         this.addChild(this._goldLabel);
 
-        this._moneyLabel = cc.LabelTTF.create(0, "黑体", 20);
+        this._moneyLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
         this._moneyLabel.setPosition(cc.p(435, 932));
         this.addChild(this._moneyLabel);
@@ -183,7 +183,7 @@ var VipLayer = cc.Layer.extend({
             vipLvIcon.setPosition(cc.p(130, y + 60));
             scrollViewLayer.addChild(vipLvIcon, 1);
 
-            var titleLabel = cc.LabelTTF.create("尊享礼包", "黑体", 20);
+            var titleLabel = cc.LabelTTF.create("尊享礼包", "STHeitiTC-Medium", 20);
             titleLabel.setColor(cc.c3b(255, 252, 175));
             titleLabel.setPosition(cc.p(310, y + 140));
             scrollViewLayer.addChild(titleLabel);
@@ -192,7 +192,7 @@ var VipLayer = cc.Layer.extend({
 
             var descriptionLabel1 = cc.LabelTTF.create(
                 "VIP" + vipBox.id + "尊享礼包，原价" + cost + "魔石，只能购买一次",
-                "黑体",
+                "STHeitiTC-Medium",
                 20
             );
             descriptionLabel1.setAnchorPoint(cc.p(0, 0.5));
@@ -200,13 +200,13 @@ var VipLayer = cc.Layer.extend({
             descriptionLabel1.setPosition(cc.p(170, y + 105));
             scrollViewLayer.addChild(descriptionLabel1);
 
-            var descriptionLabel2 = cc.LabelTTF.create("点击图表可预览礼包内容。", "黑体", 20);
+            var descriptionLabel2 = cc.LabelTTF.create("点击图表可预览礼包内容。", "STHeitiTC-Medium", 20);
             descriptionLabel2.setAnchorPoint(cc.p(0, 0.5));
             descriptionLabel2.setColor(cc.c3b(255, 252, 175));
             descriptionLabel2.setPosition(cc.p(170, y + 75));
             scrollViewLayer.addChild(descriptionLabel2);
 
-            var costIcon = cc.LabelTTF.create("原价:", "黑体", 20);
+            var costIcon = cc.LabelTTF.create("原价:", "STHeitiTC-Medium", 20);
             costIcon.setColor(cc.c3b(255, 252, 175));
             costIcon.setAnchorPoint(cc.p(0, 0.5));
             costIcon.setPosition(cc.p(170, y + 35));
@@ -216,7 +216,7 @@ var VipLayer = cc.Layer.extend({
             costGoldIcon.setPosition(cc.p(235, y + 35));
             scrollViewLayer.addChild(costGoldIcon);
 
-            var costLabel = cc.LabelTTF.create(cost, "黑体", 20);
+            var costLabel = cc.LabelTTF.create(cost, "STHeitiTC-Medium", 20);
             costLabel.setColor(cc.c3b(255, 252, 175));
             costLabel.setPosition(cc.p(275, y + 35));
             scrollViewLayer.addChild(costLabel);
@@ -233,7 +233,7 @@ var VipLayer = cc.Layer.extend({
             goldIcon.setPosition(cc.p(385, y + 35));
             scrollViewLayer.addChild(goldIcon);
 
-            var specialOfferLabel = cc.LabelTTF.create(vipBox.price, "黑体", 20);
+            var specialOfferLabel = cc.LabelTTF.create(vipBox.price, "STHeitiTC-Medium", 20);
             specialOfferLabel.setColor(cc.c3b(225, 121, 60));
             specialOfferLabel.setPosition(cc.p(420, y + 35));
             scrollViewLayer.addChild(specialOfferLabel);
@@ -269,13 +269,13 @@ var VipLayer = cc.Layer.extend({
                 goodsSprite.setPosition(point);
                 lazyLayer.addChild(goodsSprite);
 
-                var nameLabel = StrokeLabel.create(goods.name, "黑体", 25);
+                var nameLabel = StrokeLabel.create(goods.name, "STHeitiTC-Medium", 25);
                 nameLabel.setColor(cc.c3b(255, 252, 175));
                 nameLabel.setAnchorPoint(cc.p(0, 0.5));
                 nameLabel.setPosition(cc.p(point.x + 50, point.y + 20));
                 lazyLayer.addChild(nameLabel);
 
-                var countLabel = StrokeLabel.create("X" + data[key], "黑体", 25);
+                var countLabel = StrokeLabel.create("X" + data[key], "STHeitiTC-Medium", 25);
                 countLabel.setColor(cc.c3b(225, 121, 60));
                 countLabel.setAnchorPoint(cc.p(0, 0.5));
                 countLabel.setPosition(cc.p(point.x + 50, point.y - 20));

@@ -33,12 +33,12 @@ var LotteryLayer = cc.Layer.extend({
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
 
-        this._goldLabel = cc.LabelTTF.create(0, "黑体", 20);
+        this._goldLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
         this._goldLabel.setPosition(cc.p(470, 934));
         this.addChild(this._goldLabel);
 
-        this._energyLabel = cc.LabelTTF.create(0, "黑体", 20);
+        this._energyLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._energyLabel.setAnchorPoint(cc.p(0, 0.5));
         this._energyLabel.setPosition(cc.p(580, 934));
         this.addChild(this._energyLabel);

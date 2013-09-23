@@ -22,12 +22,13 @@ var passiveSkillDescription = {
 
 var Card = Entity.extend({
     _id: 0,                 // 数据库对应ID
-    _createTime: 0,         // 创建时间
     _tableId: 0,            // 数据表对应ID
     _lv: 0,                 // 卡牌等级
-    _vip: 0,                // vip等级
     _exp: 0,                // 当前经验
     _skillLv: 0,            // 技能等级
+    _elixirHp: 0,           // 生命值仙丹
+    _elixirAtk: 0,          // 攻击力仙丹
+    _skillPoint: 0,         // 技能点
     _passiveSkill: {},      // 被动技能
 
     _name: "",              // 卡牌名称
@@ -37,8 +38,6 @@ var Card = Entity.extend({
     _maxExp: 0,             // 最大经验
     _initHp: 0,             // 卡牌初始生命值
     _initAtk: 0,            // 卡牌初始攻击值
-    _psHp: 0,
-    _psAtk: 0,
     _hp: 0,                 // 卡牌总生命值
     _atk: 0,                // 卡牌总攻击力
     _skillId: 0,            // 数据库表对应技能ID
@@ -62,6 +61,13 @@ var Card = Entity.extend({
         this.update(data);
 
         cc.log(this);
+
+        if (data != undefined && data.hp != undefined && SETTING_IS_BROWSER)
+            cc.Assert(data.hp == this._hp, "Card hp error");
+
+        if (data != undefined && data.atk != undefined && SETTING_IS_BROWSER)
+            cc.Assert(data.atk == this._atk, "Card atk error");
+
         cc.log("=============================================");
         return true;
     },
@@ -72,18 +78,20 @@ var Card = Entity.extend({
 
         if (data) {
             this.set("id", data.id);
-            this.set("createTime", data.createTime);
             this.set("tableId", data.tableId);
             this.set("lv", data.lv);
             this.set("exp", data.exp);
             this.set("skillLv", data.skillLv);
-            this.set("elixir", data.elixir);
+            this.set("elixirHp", data.elixirHp);
+            this.set("elixirAtk", data.elixirAtk);
+            this.set("skillPoint", data.skillPoint);
 
             this._updatePassiveSkill(data.passiveSkills);
         }
 
         this._loadCardTable();
         this._loadSkillTable();
+        this._calculateAddition();
     },
 
     _updatePassiveSkill: function (data) {
@@ -94,7 +102,6 @@ var Card = Entity.extend({
             for (var i = 0; i < len; ++i) {
                 this._passiveSkill[data[i].id] = {
                     id: data[i].id,
-                    createTime: data[i].createTime,
                     name: data[i].name,
                     value: data[i].value,
                     description: passiveSkillDescription[data[i].name]
@@ -112,8 +119,8 @@ var Card = Entity.extend({
         this._name = cardTable.name;
         this._description = cardTable.description;
         this._star = cardTable.star;
-        this._hpInit = cardTable.hp;
-        this._atkInit = cardTable.atk;
+        this._initHp = cardTable.hp;
+        this._initAtk = cardTable.atk;
         this._skillId = cardTable.skill_id;
         this._skillName = cardTable.skill_name;
 
@@ -124,8 +131,8 @@ var Card = Entity.extend({
         this._initHp *= multiple;
         this._initAtk *= multiple;
 
-        this._initHp = Math.floor(this._hpInit);
-        this._initAtk = Math.floor(this._atkInit);
+        this._initHp = Math.floor(this._initHp);
+        this._initAtk = Math.floor(this._initAtk);
 
         this._hp = this._initHp;
         this._atk = this._initAtk;
@@ -167,6 +174,37 @@ var Card = Entity.extend({
         this._skillDescription = skillTable.description;
         this._skillType = skillTable.type;
         this._skillMaxLv = 5;
+    },
+
+    _calculateAddition: function () {
+        cc.log("Card _calculateAddition");
+
+        // 读取仙丹配置表
+        var elixirTable = outputTables.elixir.rows[1];
+
+        var eachConsume = elixirTable.elixir;
+
+        var elixirHp = Math.floor(this._elixirHp / eachConsume) * elixirTable.hp;
+        var elixirAtk = Math.floor(this._elixirAtk / eachConsume) * elixirTable.atk;
+
+        var psHpMultiple = 0;
+        var psAtkMultiple = 0;
+
+        for (var key in this._passiveSkill) {
+            if (this._passiveSkill[key].name == "hp_improve") {
+                psHpMultiple += this._passiveSkill[key].value;
+            }
+
+            if (this._passiveSkill[key].name == "atk_improve") {
+                psAtkMultiple += this._passiveSkill[key].value;
+            }
+        }
+
+        var psHp = Math.floor(this._initHp * psHpMultiple / 100);
+        var psAtk = Math.floor(this._initAtk * psAtkMultiple / 100);
+
+        this._hp = this._initHp + elixirHp + psHp;
+        this._atk = this._initAtk + elixirAtk + psAtk;
     },
 
     addExp: function (exp) {
@@ -439,7 +477,8 @@ var Card = Entity.extend({
         var that = this;
         lzWindow.pomelo.request("area.trainHandler.useElixir", {
             cardId: this._id,
-            elixir: elixir
+            elixir: elixir,
+            type: trainType
         }, function (data) {
             cc.log(data);
 

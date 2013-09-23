@@ -51,8 +51,7 @@ var PassLabel = cc.Node.extend({
     update: function () {
         cc.log("PassLabel update");
 
-        cc.log(gameData.pass.getPassMarkByIndex(this._index));
-        this._passItem.setEnabled(gameData.pass.getPassMarkByIndex(this._index));
+        this._passItem.setEnabled(gameData.pass.getMarkByIndex(this._index));
     },
 
     _onClickDefiance: function () {

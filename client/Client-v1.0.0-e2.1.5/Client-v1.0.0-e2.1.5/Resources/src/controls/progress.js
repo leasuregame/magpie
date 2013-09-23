@@ -163,12 +163,12 @@ var Progress = cc.Node.extend({
         }
     },
 
-    setAllValue: function (maxValue, value, duration) {
+    setAllValue: function (value, maxValue, duration) {
         cc.log("Progress setAllValue");
 
-        if (this._maxValue != maxValue || this._value != value) {
-            this._maxValue = maxValue;
+        if (this._value != value || this._maxValue != maxValue) {
             this._value = value;
+            this._maxValue = maxValue;
             this.update(duration);
         }
     },

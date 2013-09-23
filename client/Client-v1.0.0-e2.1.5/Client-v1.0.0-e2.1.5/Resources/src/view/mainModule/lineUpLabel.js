@@ -37,7 +37,7 @@ var LineUpLabel = cc.Layer.extend({
             cardBg.setPosition(cc.p(i * 100 - 70, 35));
             this.addChild(cardBg);
 
-            var label = cc.LabelTTF.create("xx", "黑体", 30);
+            var label = cc.LabelTTF.create("xx", "STHeitiTC-Medium", 30);
             label.setPosition(cc.p(i * 100 - 30, 75));
             this.addChild(label);
 

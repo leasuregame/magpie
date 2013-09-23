@@ -45,7 +45,7 @@ var MonthLabel = cc.Node.extend({
             label.setPosition(point);
             this.addChild(label);
 
-            var dayLabel = cc.LabelTTF.create(i + 1, "黑体", 40);
+            var dayLabel = cc.LabelTTF.create(i + 1, "STHeitiTC-Medium", 40);
             dayLabel.setColor(cc.c3b(255, 252, 175));
             dayLabel.setPosition(point);
             this.addChild(dayLabel);
@@ -58,7 +58,7 @@ var MonthLabel = cc.Node.extend({
             this._hookList[i] = hookLabel;
         }
 
-        var dateLabel = cc.LabelTTF.create(monthMark.year + " . " + monthMark.month, "黑体", 20);
+        var dateLabel = cc.LabelTTF.create(monthMark.year + " . " + monthMark.month, "STHeitiTC-Medium", 20);
         dateLabel.setColor(cc.c3b(255, 252, 175));
         dateLabel.setPosition(cc.p(450, 25));
         this.addChild(dateLabel);

@@ -54,19 +54,19 @@ var FriendLayer = cc.Layer.extend({
         lineIcon.setPosition(cc.p(360, 887));
         this.addChild(lineIcon);
 
-        var blessingCountIcon = cc.LabelTTF.create("今日可送祝福：", "黑体", 22);
+        var blessingCountIcon = cc.LabelTTF.create("今日可送祝福：", "STHeitiTC-Medium", 22);
         blessingCountIcon.setPosition(cc.p(130, 943));
         this.addChild(blessingCountIcon);
 
-        var receiveCountIcon = cc.LabelTTF.create("今日可领祝福：", "黑体", 22);
+        var receiveCountIcon = cc.LabelTTF.create("今日可领祝福：", "STHeitiTC-Medium", 22);
         receiveCountIcon.setPosition(cc.p(130, 909));
         this.addChild(receiveCountIcon);
 
-        this._giveBlessCountLabel = cc.LabelTTF.create("15", "黑体", 22);
+        this._giveBlessCountLabel = cc.LabelTTF.create("15", "STHeitiTC-Medium", 22);
         this._giveBlessCountLabel.setPosition(cc.p(215, 941));
         this.addChild(this._giveBlessCountLabel);
 
-        this._receiveBlessCountLabel = cc.LabelTTF.create("15", "黑体", 22);
+        this._receiveBlessCountLabel = cc.LabelTTF.create("15", "STHeitiTC-Medium", 22);
         this._receiveBlessCountLabel.setPosition(cc.p(215, 907));
         this.addChild(this._receiveBlessCountLabel);
 
@@ -92,16 +92,16 @@ var FriendLayer = cc.Layer.extend({
         friendCountIcon.setPosition(cc.p(565, 227));
         this.addChild(friendCountIcon);
 
-        var slashIcon = cc.LabelTTF.create("/", "黑体", 22);
+        var slashIcon = cc.LabelTTF.create("/", "STHeitiTC-Medium", 22);
         slashIcon.setPosition(cc.p(565, 227));
         this.addChild(slashIcon);
 
-        this._friendCountLabel = cc.LabelTTF.create("0", "黑体", 22);
+        this._friendCountLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._friendCountLabel.setAnchorPoint(cc.p(1, 0.5));
         this._friendCountLabel.setPosition(cc.p(550, 227));
         this.addChild(this._friendCountLabel);
 
-        this._maxFriendCountLabel = cc.LabelTTF.create("0", "黑体", 22);
+        this._maxFriendCountLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._maxFriendCountLabel.setAnchorPoint(cc.p(0, 0.5));
         this._maxFriendCountLabel.setPosition(cc.p(580, 227));
         this.addChild(this._maxFriendCountLabel);
@@ -202,7 +202,7 @@ var FriendLayer = cc.Layer.extend({
         this._nameEditBox = cc.EditBox.create(cc.size(305, 49), cc.Scale9Sprite.create(main_scene_image.edit3));
         this._nameEditBox.setPosition(cc.p(360, 600));
         this._nameEditBox.setDelegate(this);
-        this._nameEditBox.setFont("黑体", 35);
+        this._nameEditBox.setFont("STHeitiTC-Medium", 35);
         this._nameEditBox.setFontColor(cc.c3b(255, 255, 255));
         this._nameEditBox.setMaxLength(18);
         this._addFriendLayer.addChild(this._nameEditBox);
@@ -279,15 +279,15 @@ var FriendLayer = cc.Layer.extend({
         for (var i = 0; i < len; ++i) {
             var id = friendList[i].id;
 
-            var nameLabel = cc.LabelTTF.create(friendList[i].name, "黑体", 22);
+            var nameLabel = cc.LabelTTF.create(friendList[i].name, "STHeitiTC-Medium", 22);
             nameLabel.setPosition(cc.p(100, scrollViewHeight - 25 - 127 * i));
             scrollViewLayer.addChild(nameLabel);
 
-            var lvLabel = cc.LabelTTF.create(friendList[i].lv, "黑体", 22);
+            var lvLabel = cc.LabelTTF.create(friendList[i].lv, "STHeitiTC-Medium", 22);
             lvLabel.setPosition(cc.p(115, scrollViewHeight - 70 - 127 * i));
             scrollViewLayer.addChild(lvLabel);
 
-            var abilityLabel = cc.LabelTTF.create(friendList[i].ability, "黑体", 22);
+            var abilityLabel = cc.LabelTTF.create(friendList[i].ability, "STHeitiTC-Medium", 22);
             abilityLabel.setPosition(cc.p(300, scrollViewHeight - 55 - 127 * i));
             scrollViewLayer.addChild(abilityLabel);
 

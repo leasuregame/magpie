@@ -29,7 +29,7 @@ var TournamentMessageLabel = cc.Node.extend({
         bgSprite.setAnchorPoint(cc.p(0, 0));
         this.addChild(bgSprite, -1);
 
-        this._messageLabel = cc.LabelTTF.create("竞技消息：", "黑体", 22);
+        this._messageLabel = cc.LabelTTF.create("竞技消息：", "STHeitiTC-Medium", 22);
         this._messageLabel.setAnchorPoint(cc.p(0, 0));
         this._messageLabel.setPosition(cc.p(20, 5));
         this.addChild(this._messageLabel);

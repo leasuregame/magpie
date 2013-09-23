@@ -63,17 +63,17 @@ var SpiritPoolLayer = cc.Layer.extend({
         expIcon.setPosition(cc.p(480, 290));
         this.addChild(expIcon);
 
-        this._lvLabel = cc.LabelTTF.create("0", "黑体", 25);
+        this._lvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
         this._lvLabel.setAnchorPoint(cc.p(0, 0.5));
         this._lvLabel.setPosition(cc.p(190, 288));
         this.addChild(this._lvLabel);
 
-        this._expLabel = cc.LabelTTF.create("0/0", "黑体", 25);
+        this._expLabel = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 25);
         this._expLabel.setAnchorPoint(cc.p(0, 0.5));
         this._expLabel.setPosition(cc.p(515, 288));
         this.addChild(this._expLabel);
 
-        this._countLabel = cc.LabelTTF.create("0 次", "黑体", 25);
+        this._countLabel = cc.LabelTTF.create("0 次", "STHeitiTC-Medium", 25);
         this._countLabel.setAnchorPoint(cc.p(0, 0.5));
         this._countLabel.setPosition(cc.p(535, 850));
         this.addChild(this._countLabel);
@@ -125,7 +125,7 @@ var SpiritPoolLayer = cc.Layer.extend({
 
         this._lvLabel.setString(spiritPool.get("lv"));
         this._expLabel.setString(spiritPool.get("exp") + " / " + spiritPool.get("maxExp"));
-        this._expProgress.setAllValue(spiritPool.get("maxExp"), spiritPool.get("exp"));
+        this._expProgress.setAllValue(spiritPool.get("exp"), spiritPool.get("maxExp"));
         this._countLabel.setString(spiritPool.get("collectCount") + " 次");
     },
 

@@ -49,6 +49,7 @@ var Player = Entity.extend({
         gameData.signIn.init();
         gameData.rank.init();
         gameData.achievement.init();
+        gameData.speak.init();
 
         cc.log(this);
 
@@ -74,7 +75,7 @@ var Player = Entity.extend({
         this.set("vip", data.vip);
         this.set("cash", data.cash);
 
-        if(data.power) {
+        if (data.power) {
             this.set("power", data.power.value);
         }
 

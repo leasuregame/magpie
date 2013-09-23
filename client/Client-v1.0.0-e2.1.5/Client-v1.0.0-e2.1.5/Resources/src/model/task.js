@@ -137,7 +137,7 @@ var Task = Entity.extend({
                     power: msg.power_consume,
                     exp: msg.exp_obtain,
                     money: msg.money_obtain,
-                    isComplete: msg.isMomo
+                    goldList: msg.momo
                 };
 
                 if (msg.task.id > that._id) {
@@ -220,6 +220,25 @@ var Task = Entity.extend({
                 cb(cbData);
             } else {
                 cc.log("wipeOut fail");
+            }
+        });
+    },
+
+    obtainGold: function (gold) {
+        cc.log("Task obtainGold: " + gold);
+
+        var that = this;
+        lzWindow.pomelo.request("area.taskHandler.updateMomoResult", {
+            gold: gold
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("obtainGold success.");
+
+                gameData.player.add("gold", gold);
+            } else {
+                cc.log("obtainGold fail");
             }
         });
     }

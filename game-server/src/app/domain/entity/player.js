@@ -302,11 +302,13 @@ var Player = (function(_super) {
         var cards = this.activeCards();
         for (var i = 0; i < cards.length; i++) {
             var card = cards[i];
+            var incs = {spirit_hp: 0, spirit_atk: 0};
             var _hp = parseInt(card.init_hp * spiritConfig.hp_inc / 100);
             var _atk = parseInt(card.init_atk * spiritConfig.atk_inc / 100);
 
-            card.incs.spirit_hp += _hp;
-            card.incs.spirit_atk += _atk;
+            incs.spirit_hp += _hp;
+            incs.spirit_atk += _atk;
+            _.extend(card.incs, incs);
             card.recountHpAndAtk();
         }
     };
@@ -314,7 +316,7 @@ var Player = (function(_super) {
     Player.prototype.incSpirit = function(val) {
         var spiritor = _.clone(this.spiritor);
         var total_spirit = spiritor.spirit + val;
-        var spiritorData = table.getTableItem('spirit', spiritor.lv)
+        var spiritorData = table.getTableItem('spirit', spiritor.lv);
 
         while ( !! spiritorData && total_spirit >= spiritorData.spirit_need) {
             spiritor.lv += 1;

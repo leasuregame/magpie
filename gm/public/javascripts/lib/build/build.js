@@ -1438,6 +1438,7 @@ require.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", fu
   };
 
   pomelo.request = function(route, msg, cb) {
+    console.log("msg= ",msg);
     if(arguments.length === 2 && typeof msg === 'function') {
       cb = msg;
       msg = {};
@@ -1450,6 +1451,9 @@ require.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", fu
     }
 
     reqId++;
+    if(reqId % 128 == 0)
+        reqId++;
+    console.log("reqId",reqId);
     sendMessage(reqId, route, msg);
 
     callbacks[reqId] = cb;

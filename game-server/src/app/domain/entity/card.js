@@ -15,7 +15,7 @@
 var utility = require('../../common/utility');
 var Entity = require('./entity');
 var table = require('../../manager/table');
-var elixirConfig = require('../../../config/data/elixir');
+var elixirConfig = table.getTableItem('elixir', 1);
 var cardConfig = require('../../../config/data/card'); 
 var _ = require("underscore");
 
@@ -29,34 +29,57 @@ var addEvents = function (card) {
             'atk_improve': 'atk',
             'hp_improve': 'hp'
         };
-        var incs = {};
+        var total = {atk_improve: 0, hp_improve: 0};
         _.values(card.passiveSkills).filter(function (ps) {
             return _.keys(_pro).indexOf(ps.name) > -1;
         }).forEach(function(ps) {
-            var _key = _pro[ps.name];
-            var _val = parseInt(card['init_' + _key] * ps.value / 100);
-            incs['ps_' + _key] && (incs['ps_' + _key] += _val) || (incs['ps_' + _key] = _val);
+            total[ps.name] += ps.value;
         });
-        _.extend(card.incs, incs);
+
+        _.extend(card.incs, {
+            ps_hp: parseInt((total.hp_improve * card.init_hp) / 100),
+            ps_atk: parseInt((total.atk_improve * card.init_atk) / 100)
+        });
         card.recountHpAndAtk();
     });
 
     card.on('elixirHp.change', function(elixir) {
-        card.incs.elixir_hp = parseInt(elixir / elixirConfig.exchange.hp);
+        card.incs.elixir_hp = parseInt(elixir / elixirConfig.elixir * elixirConfig.hp);
         card.recountHpAndAtk();
     });
 
     card.on('elixirAtk.change', function(elixir) {
-        card.incs.elixir_atk = parseInt(elixir / elixirConfig.exchange.atk)
+        card.incs.elixir_atk = parseInt(elixir / elixirConfig.elixir * elixirConfig.atk);
+        card.recountHpAndAtk();
+    });
+
+    card.on('lv.change', function(lv){
+        countHpAtk(card);
         card.recountHpAndAtk();
     });
 };
 
 var countElixirEffect = function(card) {
-    card.incs.elixir_hp = parseInt(card.elixirHp / elixirConfig.exchange.hp);
-    card.incs.elixir_atk = parseInt(card.elixirAtk / elixirConfig.exchange.atk)
+    card.incs.elixir_hp = parseInt(card.elixirHp / elixirConfig.elixir * elixirConfig.hp);
+    card.incs.elixir_atk = parseInt(card.elixirAtk / elixirConfig.elixir * elixirConfig.atk);
 
     card.recountHpAndAtk();
+};
+
+var countHpAtk = function(card) {
+    if (card.tableId) {
+        var cardData = table.getTableItem('cards', card.tableId);
+        var factor = table.getTableItem('factors', card.lv).factor;
+
+        var _hp = parseInt(cardData.hp * factor),
+            _atk = parseInt(cardData.atk * factor);
+        card.set({
+            init_hp: _hp,
+            hp: _hp,
+            init_atk: _atk,
+            atk: _atk
+        });
+    }
 };
 
 /*
@@ -71,17 +94,6 @@ var Card = (function (_super) {
 
         if (this.tableId) {
             var cardData = table.getTableItem('cards', this.tableId);
-            var factor = table.getTableItem('factors', this.lv).factor;
-
-            var _hp = parseInt(cardData.hp * factor),
-                _atk = parseInt(cardData.atk * factor);
-            this.set({
-                init_hp: _hp,
-                hp: _hp,
-                init_atk: _atk,
-                atk: _atk
-            });
-
             // 同步配置表中卡牌的星级到数据库
             this.set('star', cardData.star);
             if (cardData.star >= 3) {
@@ -90,6 +102,7 @@ var Card = (function (_super) {
             this.cardData = cardData;
         }
 
+        countHpAtk(this);
         countElixirEffect(this);
         addEvents(this);
     }
@@ -139,10 +152,10 @@ var Card = (function (_super) {
             atk = this.init_atk;
 
         hp += this.incs.elixir_hp;
-        hp += this.incs.spirit_hp;
+        //hp += this.incs.spirit_hp;
         hp += this.incs.ps_hp;
         atk += this.incs.elixir_atk;
-        atk += this.incs.spirit_atk;
+        //atk += this.incs.spirit_atk;
         atk += this.incs.ps_atk;
 
         this.hp = hp;
@@ -197,7 +210,7 @@ var Card = (function (_super) {
 
             _abi += sum;
         }
-        console.log('abi: ', _abi);
+
         return parseInt(_abi);
     };
 

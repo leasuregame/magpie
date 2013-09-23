@@ -8,7 +8,7 @@
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
-  <Created>2013-09-11T19:50:52Z</Created>
+  <Created>2013-09-18T15:14:32Z</Created>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -21,9 +21,8 @@
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <WindowHeight>8760</WindowHeight>
   <WindowWidth>28800</WindowWidth>
-  <WindowTopX>120</WindowTopX>
-  <WindowTopY>140</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <WindowTopX>880</WindowTopX>
+  <WindowTopY>5180</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -37,18 +36,33 @@
    <NumberFormat/>
    <Protection/>
   </Style>
+  <Style ss:ID="s65">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
   <Style ss:ID="s66">
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
    <NumberFormat/>
   </Style>
   <Style ss:ID="s67">
    <Alignment ss:Vertical="Bottom"/>
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
+    ss:Color="#000000"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="元神配置表">
   <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="13" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="108" ss:Span="2"/>
-   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="124"/>
+   x:FullRows="1" ss:StyleID="s65" ss:DefaultColumnWidth="97"
+   ss:DefaultRowHeight="19">
+   <Column ss:Index="3" ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="108"
+    ss:Span="2"/>
+   <Column ss:Index="6" ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="124"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">等级</Data></Cell>
@@ -83,7 +97,7 @@
     <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="Number">55</Data></Cell>
-    <Cell><Data ss:Type="Number">100</Data></Cell>
+    <Cell><Data ss:Type="Number">30</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -173,17 +187,13 @@
     <Footer x:Margin="0.51180555555555596"/>
    </PageSetup>
    <Unsynced/>
-   <Print>
-    <ValidPrinterInfo/>
-    <PaperSizeIndex>9</PaperSizeIndex>
-    <VerticalResolution>0</VerticalResolution>
-   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>10</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -192,24 +202,30 @@
  </Worksheet>
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Row>
+   x:FullRows="1" ss:StyleID="s65" ss:DefaultColumnWidth="97"
+   ss:DefaultRowHeight="19">
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s67"><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">export_name</Data></Cell>
     <Cell><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">元神配置表</Data></Cell>
     <Cell><Data ss:Type="String">spirit</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.51180555555555596"/>
+    <Footer x:Margin="0.51180555555555596"/>
+   </PageSetup>
+   <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1C1:R2C3</RangeSelection>
+     <ActiveRow>14</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

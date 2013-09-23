@@ -17,6 +17,7 @@ var Card = require("../../domain/entity/card");
 var passiveSkillDao = require('./passiveSkillDao');
 var async = require('async');
 var DaoBase = require("./daoBase");
+var dbClient = require('./mysql');
 var utility = require("../../common/utility");
 
 var CardDao = (function(_super) {
@@ -96,6 +97,27 @@ var CardDao = (function(_super) {
 			}
 		]);
 	};
+
+    CardDao.deleteExploreCards = function(pid,cb){
+        var sql = "delete from card where playerId = ? and lv < ?";
+        console.log(sql);
+        var args = [pid,11];
+        dbClient.query(sql,args,function(err,res){
+            if(err) {
+                //logger.error("[SQL ERROR, when delete cards]", err.stack);
+                return cb({
+                    code: err.code,
+                    msg: err.message
+                });
+            }
+            if (!!res && res.affectedRows > 0) {
+                console.log(res.affectedRows);
+                return cb(null, true);
+            } else {
+                return cb(null, false);
+            }
+        })
+    }
 
 	return CardDao;
 })(DaoBase);

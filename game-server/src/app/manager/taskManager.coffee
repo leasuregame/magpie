@@ -31,7 +31,7 @@ class Manager
     if player.power.value < taskData.power_consume
       return cb({code: 501,msg: '体力不足'}, null, null)
 
-    data.result = utility.randomValue( 
+    data.result = utility.randomValue(
       ['fight','box', 'none'],
       [taskRate.fight, taskRate.precious_box, (100 - taskRate.fight - taskRate.precious_box)]
     )
@@ -77,6 +77,7 @@ class Manager
       wipeOutData = table.getTableItem('wipe_out', id)
       rewards.exp_obtain += parseInt(wipeOutData.exp_obtain)
       rewards.money_obtain += parseInt(wipeOutData.money_obtain)
+      player.setTaskMark(id)
 
     if chapterId? and not player.hasTaskMark(chapterId)
       count_(chapterId, rewards)
@@ -132,7 +133,10 @@ class Manager
 
       ### the first time win, obtain some spirit ###
       spirit = {total: 0}
-      _.each battleLog.enemy.cards, (v, k) ->
+      _.each battleLog.cards, (v, k) ->
+        ### 只计算敌方卡牌 ###
+        return if k > 6
+
         if v.boss?
           spirit[k] = spiritConfig.SPIRIT.TASK.BOSS
           spirit.total += spiritConfig.SPIRIT.TASK.BOSS
@@ -168,18 +172,19 @@ class Manager
 
     # 更新玩家money
     player.increase('money', taskData.coins_obtain)
-
+    console.log 'count explore result: ', taskId, player.task
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
-    if taskId == player.task.id
+    if taskId is player.task.id
       task = utility.deepCopy(player.task)
       task.progress += 1
-      if task.progress > taskData.points
+      if task.progress >= taskData.points
         task.progress = 0
         task.id += 1
         task.hasWin = false
         ### 一大关结束，触发摸一摸功能 ###
-        data.isMomo = true
+        if task.id % 10 is 0
+          data.isMomo = true
       player.set('task', task)
 
     # 判断是否升级
@@ -214,7 +219,7 @@ class Manager
 
 randomCard = (star) ->
   ids = _.range(parseInt(star), 250, 5)
-  index = _.random(0, ids.length)
+  index = _.random(0, ids.length - 1)
   ids[index]
 
 bornPassiveSkill = () ->

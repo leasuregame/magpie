@@ -26,6 +26,7 @@ Handler::collect = (msg, session, next) ->
     player.set('spiritPool', spiritPool)
 
     ### 获得灵气 ###
+    spiritPollData = table.getTableItem('spirit_pool', player.spiritPool.lv);
     spirit_obtain = spiritPollData.spirit_obtain * times
     
     ### 每次采集都已一定的概率获得额外数量的灵气 ###

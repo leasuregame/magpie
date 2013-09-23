@@ -11,6 +11,7 @@ XUNIT_FILE="test/TESTS-domain.xml" ./node_modules/.bin/mocha -R xunit-file  --re
 XUNIT_FILE="test/TESTS-battle.xml" ./node_modules/.bin/mocha -R xunit-file  --require should --recursive ./test/battle
 XUNIT_FILE="test/TESTS-mapping.xml" ./node_modules/.bin/mocha -R xunit-file  --require should --recursive ./test/mapping
 
+make newdb
 ./node_modules/.bin/pomelo start development --daemon
 ./node_modules/.bin/forever start ./test/jasmine/app.js
 

@@ -304,16 +304,14 @@ var TaskLayer = cc.Layer.extend({
         var beganOffset = this._getScrollViewOffset();
         var endOffset = this._scrollView.getContentOffset();
         var len = beganOffset.x - endOffset.x;
-        var index = this._index;
 
-        if (len > 30) {
-            index = 1 - Math.floor(endOffset.x / 640);
-        } else if (len < -30) {
-            index = 1 - Math.ceil(endOffset.x / 640);
-        }
+        if (len !== 0) {
+            if (len > 30) {
+                this._index = 1 - Math.floor(endOffset.x / 640);
+            } else if (len < -30) {
+                this._index = 1 - Math.ceil(endOffset.x / 640);
+            }
 
-        if (this._index !== index) {
-            this._index = index;
             this.update();
         }
     },

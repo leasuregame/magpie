@@ -97,7 +97,7 @@ TipLayer.create = function () {
         }
 
         if (tipLayer.getParent() == null) {
-            cc.Director.getInstance().getRunningScene().addChild(tipLayer);
+            cc.Director.getInstance().getRunningScene().addChild(tipLayer, 10);
         }
 
         tipLayer.tip(str, color, fontName, fontSize);

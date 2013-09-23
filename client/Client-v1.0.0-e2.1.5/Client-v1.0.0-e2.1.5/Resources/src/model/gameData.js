@@ -30,6 +30,7 @@ var gameData = {
     shop: null,
     signIn: null,
     achievement: null,
+    speak: null,
 
     gameInit: function () {
         cc.log("gameData init");
@@ -52,6 +53,7 @@ var gameData = {
         this.shop = Shop.create();
         this.signIn = SignIn.create();
         this.achievement = Achievement.create();
+        this.speak = Speak.create();
     },
 
     gameEnd: function () {

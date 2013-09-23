@@ -159,7 +159,7 @@ var Player = (function(_super) {
         Player.__super__.constructor.apply(this, arguments);
         this.taskMark = new MarkGroup(this.task.mark);
         this.passMark = new MarkGroup(this.pass.mark);
-        this.momo = this.task.momo;
+        this.momo = [];
         //this.momoMark = new MarkGroup(this.task.momo);
     }
 
@@ -620,28 +620,29 @@ var Player = (function(_super) {
 
      */
     Player.prototype.createMonoGift = function() {  //产生摸一摸奖励
-        var task = utility.deepCopy(this.task);
-        task.momo = new Array(10);
+       // var task = utility.deepCopy(this.task);
+        this.momo = new Array(10);
         for(var i = 0;i < 6;i++) {
-            task.momo[i] = _.random(1,5);
+            this.momo[i] = _.random(1,5);
         }
         for(var i = 6;i < 8;i++) {
-            task.momo[i] = _.random(2,10);
+            this.momo[i] = _.random(2,10);
         }
-        task.momo[8] = _.random(5,20);
-        task.momo[9] = _.random(5,50);
-        this.task = task;
-        return task.momo;
+        this.momo[8] = _.random(5,20);
+        this.momo[9] = _.random(5,50);
+
+        return this.momo;
     };
 
     Player.prototype.clearMonoGift = function() {   //领取清除摸一摸奖励
-        this.task.momo = [];
+        this.momo = [];
     };
 
     Player.prototype.getMonoGiftTotal = function() { //摸一摸产生奖励总和
         var value = 0;
-        for(var i = 0;i < this.task.momo.length;i++)
-            value += this.task.momo[i];
+        for(var i = 0;i < this.momo.length;i++)
+            value += this.momo[i];
+        //console.log("total = ",value);
         return value;
     };
 
@@ -692,6 +693,7 @@ var Player = (function(_super) {
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isTrigger = true;
         pass.mystical.isClear = false;
+        console.log("神秘关卡 = ",pass);
         this.set('pass', pass);
     };
 
@@ -787,7 +789,7 @@ var Player = (function(_super) {
             lineUp: this.lineUpObj(),
             ability: this.getAbility(),
             task: this.task,
-            pass: checkPass(this.pass),
+            pass: utility.deepCopy(checkPass(this.pass)),
             dailyGift: utility.deepCopy(this.dailyGift),
             skillPoint: this.skillPoint,
             energy: this.energy,
@@ -831,9 +833,15 @@ var checkPass = function(pass) {
     if (typeof pass !== 'object') {
         pass = {
             layer: 0,
-            mark: defaultMark()
+            mark: defaultMark(),
+            mystical: {
+                diff: 1,
+                isTrigger: false,
+                isClear: false
+            }
         };
     }
+    console.log("pass = ",pass);
     return pass;
 };
 

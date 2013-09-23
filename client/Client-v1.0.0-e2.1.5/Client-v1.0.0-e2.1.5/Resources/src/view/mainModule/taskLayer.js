@@ -133,7 +133,7 @@ var TaskLayer = cc.Layer.extend({
         scrollViewLayer.addChild(lazyMenu, 1);
 
         this._markSprite = cc.Sprite.create(main_scene_image.icon218);
-        this._markSprite.setPosition(cc.p(80, 550));
+        this._markSprite.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(this._markSprite, 2);
 
         var moveAction1 = cc.MoveBy.create(1, cc.p(0, 20));
@@ -258,21 +258,21 @@ var TaskLayer = cc.Layer.extend({
                 return;
             }
 
-//            if (task.getMarkByIndex(id)) {
-//                this._onClickWipeOut(id);
-//
-//                return;
-//            }
+            if (task.getMarkByIndex(id)) {
+                this._wipOut(id);
+
+                return;
+            }
 
             MainScene.getInstance().switch(ExploreLayer.create(id));
         }
     },
 
-    _onClickWipeOut: function (id) {
-        cc.log("TaskLayer _onClickWipeOut: " + id);
+    _wipOut: function (id) {
+        cc.log("TaskLayer _wipOut: " + id);
 
         var that = this;
-        var cb = function (data) {
+        gameData.task.wipeOut(function (data) {
             cc.log(data);
 
             for (var key in data) {
@@ -281,13 +281,13 @@ var TaskLayer = cc.Layer.extend({
             }
 
             that.update();
-        };
+        }, id);
+    },
 
-        if (id) {
-            gameData.task.wipeOut(cb, id);
-        } else {
-            gameData.task.wipeOut(cb);
-        }
+    _onClickWipeOut: function () {
+        cc.log("TaskLayer _onClickWipeOut");
+
+        this._wipOut();
     },
 
     /**
@@ -304,14 +304,18 @@ var TaskLayer = cc.Layer.extend({
         var beganOffset = this._getScrollViewOffset();
         var endOffset = this._scrollView.getContentOffset();
         var len = beganOffset.x - endOffset.x;
+        var index = this._index;
 
         if (len > 30) {
-            this._index = 1 - Math.floor(endOffset.x / 640);
+            index = 1 - Math.floor(endOffset.x / 640);
         } else if (len < -30) {
-            this._index = 1 - Math.ceil(endOffset.x / 640);
+            index = 1 - Math.ceil(endOffset.x / 640);
         }
 
-        this.update();
+        if (this._index !== index) {
+            this._index = index;
+            this.update();
+        }
     },
 
     /**

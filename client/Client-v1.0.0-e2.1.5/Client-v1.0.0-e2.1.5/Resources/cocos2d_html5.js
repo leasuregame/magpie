@@ -122,6 +122,7 @@
             'src/view/mainModule/friendMessageLayer.js',
             'src/view/mainModule/gamblingLayer.js',
             'src/view/mainModule/gameFrame.js',
+            'src/view/mainModule/goldLayer.js',
             'src/view/mainModule/lineUpLabel.js',
             'src/view/mainModule/lineUpLayer.js',
             'src/view/mainModule/lotteryLayer.js',

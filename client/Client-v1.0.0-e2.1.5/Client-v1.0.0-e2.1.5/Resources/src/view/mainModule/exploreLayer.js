@@ -20,9 +20,9 @@ var ExploreLayer = cc.Layer.extend({
     _spiritShadow: null,
     _turnLeftSprite: null,
     _turnRightSprite: null,
-    _mapLabel1: null,
-    _mapLabel2: null,
-    _mapLabel3: null,
+    _mapLabel: [],
+    _closeBoxSprite: null,
+    _openBoxSprite: null,
     _exploreItem: null,
     _scrollView: null,
     _element: {},
@@ -54,33 +54,25 @@ var ExploreLayer = cc.Layer.extend({
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
         headIcon.setPosition(cc.p(40, 962));
-        this.addChild(headIcon);
+        this.addChild(headIcon, 1);
 
-        this._mapLabel1 = cc.Sprite.create(main_scene_image.bg4);
-        this._mapLabel1.setAnchorPoint(cc.p(0, 0));
-        this._mapLabel1.setPosition(cc.p(40, 766));
-        this.addChild(this._mapLabel1);
-
-        this._mapLabel2 = cc.Sprite.create(main_scene_image.bg4);
-        this._mapLabel2.setAnchorPoint(cc.p(0, 0));
-        this._mapLabel2.setPosition(cc.p(680, 766));
-        this.addChild(this._mapLabel2);
-
-        this._mapLabel3 = cc.Sprite.create(main_scene_image.bg4);
-        this._mapLabel3.setAnchorPoint(cc.p(0, 0));
-        this._mapLabel3.setPosition(cc.p(1320, 766));
-        this.addChild(this._mapLabel3);
+        for (var i = 0; i < 3; ++i) {
+            this._mapLabel[i] = cc.Sprite.create(main_scene_image.bg4);
+            this._mapLabel[i].setAnchorPoint(cc.p(0, 0));
+            this._mapLabel[i].setPosition(cc.p(40 + i * 640, 766));
+            this.addChild(this._mapLabel[i]);
+        }
 
         var line1Icon = cc.Sprite.create(main_scene_image.icon96);
         line1Icon.setAnchorPoint(cc.p(0.5, 0));
         line1Icon.setPosition(cc.p(360, 928));
-        this.addChild(line1Icon);
+        this.addChild(line1Icon, 1);
 
         var line2Icon = cc.Sprite.create(main_scene_image.icon96);
         line2Icon.setRotation(180);
         line2Icon.setAnchorPoint(cc.p(0.5, 0));
         line2Icon.setPosition(cc.p(360, 797));
-        this.addChild(line2Icon);
+        this.addChild(line2Icon, 1);
 
         var descriptionIcon = cc.Sprite.create(main_scene_image.icon216);
         descriptionIcon.setPosition(cc.p(120, 250));
@@ -91,15 +83,14 @@ var ExploreLayer = cc.Layer.extend({
         var titleLabel = StrokeLabel.create(outputTables.chapter_title.rows[chapter].name, "STHeitiTC-Medium", 40);
         titleLabel.setColor(cc.c3b(255, 240, 170));
         titleLabel.setPosition(cc.p(360, 1005));
-        this.addChild(titleLabel);
+        this.addChild(titleLabel, 1);
 
         this._spiritShadow = cc.Sprite.create(main_scene_image.icon217);
-        this._spiritShadow.setPosition(cc.p(360, 786));
+        this._spiritShadow.setPosition(cc.p(350, 786));
         this.addChild(this._spiritShadow);
 
         this._spiritNode = SpiritSideNode.create();
-        this._spiritNode.setAnchorPoint(cc.p(0.5, 0));
-        this._spiritNode.setPosition(cc.p(360, 828));
+        this._spiritNode.setPosition(cc.p(360, 783));
         this.addChild(this._spiritNode);
 
         this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
@@ -110,6 +101,16 @@ var ExploreLayer = cc.Layer.extend({
         this._turnRightSprite = cc.Sprite.create(main_scene_image.icon37);
         this._turnRightSprite.setPosition(cc.p(640, 550));
         this.addChild(this._turnRightSprite, 2);
+
+        this._closeBoxSprite = cc.Sprite.create(main_scene_image.icon219);
+        this._closeBoxSprite.setPosition(cc.p(360, 1025));
+        this.addChild(this._closeBoxSprite);
+        this._closeBoxSprite.setVisible(false);
+
+        this._openBoxSprite = cc.Sprite.create(main_scene_image.icon220);
+        this._openBoxSprite.setPosition(cc.p(360, 860));
+        this.addChild(this._openBoxSprite);
+        this._openBoxSprite.setVisible(false);
 
         var backItem = cc.MenuItemImage.create(
             main_scene_image.button8,
@@ -132,7 +133,7 @@ var ExploreLayer = cc.Layer.extend({
 
         var menu = cc.Menu.create(backItem, this._exploreItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this.addChild(menu, 1);
 
         // 读配置表
         var chapterTable = outputTables.task.rows;
@@ -279,23 +280,13 @@ var ExploreLayer = cc.Layer.extend({
             this._element[i].descriptionLabel.setVisible(i == this._index);
         }
 
-        var point1 = this._mapLabel1.getPosition();
-        var point2 = this._mapLabel2.getPosition();
-        var point3 = this._mapLabel3.getPosition();
+        for (var i = 0; i < 3; ++i) {
+            var point = this._mapLabel[i].getPosition();
 
-        if (point1.x < -600) {
-            point1.x += 1920;
-            this._mapLabel1.setPosition(point1);
-        }
-
-        if (point2.x < -600) {
-            point2.x += 1920;
-            this._mapLabel2.setPosition(point2);
-        }
-
-        if (point3.x < -600) {
-            point3.x += 1920;
-            this._mapLabel3.setPosition(point3);
+            if (point.x < -600) {
+                point.x += 1920;
+                this._mapLabel[i].setPosition(point);
+            }
         }
     },
 
@@ -325,6 +316,8 @@ var ExploreLayer = cc.Layer.extend({
     _onClickExplore: function () {
         cc.log("ExploreLayer _onClickExplore");
 
+        this._lock();
+
         var that = this;
         gameData.task.explore(function (data) {
             cc.log(data);
@@ -339,7 +332,6 @@ var ExploreLayer = cc.Layer.extend({
         cc.log("ExploreLayer _lock");
 
         LazyLayer.showCloudLayer();
-        this._exploreItem.setEnabled(false);
         this.setTouchEnabled(false);
     },
 
@@ -347,20 +339,25 @@ var ExploreLayer = cc.Layer.extend({
         cc.log("ExploreLayer _unlock");
 
         LazyLayer.closeCloudLayer();
-        this._exploreItem.setEnabled(true);
         this.setTouchEnabled(true);
     },
 
     _toNext: function () {
         cc.log("ExploreLayer _next");
 
-        this._index += 1;
+        TipLayer.tip("恭喜您，本关已完成");
 
-        if (this._index > this._maxIndex) {
-            this._onClickBack();
-        }
+        this.scheduleOnce(function () {
+            this._index += 1;
 
-        this.update();
+            if (this._index > this._maxIndex) {
+                this._onClickBack();
+            }
+
+            this.update();
+
+            this._unlock();
+        }, 1);
     },
 
     _showReward: function () {
@@ -369,8 +366,8 @@ var ExploreLayer = cc.Layer.extend({
         if (this._reward) {
             var fadeAction = cc.Sequence.create(
                 cc.FadeIn.create(0.3),
-                cc.DelayTime.create(0.4),
-                cc.FadeOut.create(0.3)
+                cc.DelayTime.create(0.6),
+                cc.FadeOut.create(0.1)
             );
 
             var moveAction = cc.MoveBy.create(0.5, cc.p(0, 20));
@@ -416,8 +413,6 @@ var ExploreLayer = cc.Layer.extend({
             }
 
             this.scheduleOnce(function () {
-                this._unlock();
-
                 if (powerLabel) powerLabel.removeFromParent();
                 if (expLabel) expLabel.removeFromParent();
                 if (progressLabel) progressLabel.removeFromParent();
@@ -429,7 +424,11 @@ var ExploreLayer = cc.Layer.extend({
 
                 cc.log(toNext);
 
-                if (toNext) this._toNext();
+                if (toNext) {
+                    this._toNext();
+                } else {
+                    this._unlock();
+                }
             }, 1);
 
             return 1;
@@ -440,8 +439,6 @@ var ExploreLayer = cc.Layer.extend({
 
     _playAnimation: function () {
         cc.log("ExploreLayer _playAnimation");
-
-        this._lock();
 
         var callFuncAction = cc.CallFunc.create(function () {
             if (this._reward) {
@@ -456,8 +453,8 @@ var ExploreLayer = cc.Layer.extend({
                     this._spiritNode.encounterBox();
 
                     this.scheduleOnce(function () {
+                        this._showBox();
                         this._spiritNode.normal();
-                        this.update();
                     }, 1);
                 } else {
                     this.update();
@@ -468,17 +465,17 @@ var ExploreLayer = cc.Layer.extend({
         }, this);
 
         var spiritScaleAction = cc.Sequence.create(
-            cc.ScaleTo.create(0.1, 1, 0.96),
-            cc.ScaleTo.create(0.1, 1, 1.04),
-            cc.ScaleTo.create(0.3, 1, 1),
-            cc.ScaleTo.create(0.3, 1, 1.04),
+            cc.ScaleTo.create(0.2, 1, 0.92),
+            cc.ScaleTo.create(0.2, 1, 1.08),
+            cc.ScaleTo.create(0.2, 1, 1),
+            cc.ScaleTo.create(0.2, 1, 1.08),
             cc.ScaleTo.create(0.1, 1, 1)
         );
 
         var spiritMoveAction = cc.Sequence.create(
-            cc.DelayTime.create(0.2),
-            cc.EaseSineOut.create(cc.MoveBy.create(0.3, cc.p(0, 35))),
-            cc.EaseSineIn.create(cc.MoveBy.create(0.3, cc.p(0, -35))),
+            cc.DelayTime.create(0.4),
+            cc.EaseSineOut.create(cc.MoveBy.create(0.2, cc.p(0, 60))),
+            cc.EaseSineIn.create(cc.MoveBy.create(0.2, cc.p(0, -60))),
             cc.DelayTime.create(0.1)
         );
 
@@ -492,10 +489,10 @@ var ExploreLayer = cc.Layer.extend({
         this._spiritNode.runAction(spiritAction);
 
         var spiritShadowScaleAction = cc.Sequence.create(
-            cc.ScaleTo.create(0.1, 1.1, 1.1),
-            cc.ScaleTo.create(0.1, 1, 1),
-            cc.ScaleTo.create(0.3, 0.4, 0.4),
-            cc.ScaleTo.create(0.3, 1, 1),
+            cc.ScaleTo.create(0.2, 1.1, 1.1),
+            cc.ScaleTo.create(0.2, 1, 1),
+            cc.ScaleTo.create(0.2, 0.4, 0.4),
+            cc.ScaleTo.create(0.2, 1, 1),
             cc.ScaleTo.create(0.1, 1.1, 1.1)
         );
 
@@ -504,17 +501,58 @@ var ExploreLayer = cc.Layer.extend({
         this._spiritShadow.runAction(spiritShadowAction);
 
         var mapMoveAction = cc.Sequence.create(
-            cc.EaseSineIn.create(cc.MoveBy.create(0.2, cc.p(-6, 0))),
-            cc.MoveBy.create(0.3, cc.p(-35, 0)),
-            cc.MoveBy.create(0.3, cc.p(-35, 0)),
+            cc.EaseSineIn.create(cc.MoveBy.create(0.4, cc.p(-6, 0))),
+            cc.MoveBy.create(0.2, cc.p(-40, 0)),
+            cc.MoveBy.create(0.2, cc.p(-40, 0)),
             cc.EaseSineOut.create(cc.MoveBy.create(0.1, cc.p(-6, 0)))
         );
 
         var mapAction = cc.Repeat.create(mapMoveAction, 2);
 
-        this._mapLabel1.runAction(mapAction.copy());
-        this._mapLabel2.runAction(mapAction.copy());
-        this._mapLabel3.runAction(mapAction);
+        for (var i = 0; i < 3; ++i) {
+            this._mapLabel[i].runAction(mapAction.copy());
+        }
+    },
+
+    _showBox: function () {
+        cc.log("TaskLayer _openBox");
+
+        var boxAction = cc.Sequence.create(
+            cc.Spawn.create(
+                cc.MoveBy.create(0.3, cc.p(0, -165)),
+                cc.ScaleTo.create(0.3, 1, 1)
+            ),
+            cc.CallFunc.create(
+                this._openBox,
+                this
+            )
+        );
+
+        this._closeBoxSprite.setPosition(cc.p(360, 1025));
+        this._closeBoxSprite.setScale(0.9);
+        this._closeBoxSprite.setVisible(true);
+
+        this._openBoxSprite.setVisible(false);
+
+        this._closeBoxSprite.runAction(boxAction);
+    },
+
+    _openBox: function () {
+        cc.log("TaskLayer _openBox");
+
+        this._closeBoxSprite.setVisible(false);
+        this._openBoxSprite.setVisible(true);
+
+        var that = this;
+        var cb = function () {
+            that._openBoxSprite.setVisible(false);
+            that.update();
+        };
+
+        this.scheduleOnce(function () {
+            var cardDetails = CardDetails.create(this._reward.card, cb);
+            cc.Director.getInstance().getRunningScene().addChild(cardDetails, 1);
+        }, 0.5);
     },
 
     /**

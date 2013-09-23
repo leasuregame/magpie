@@ -462,7 +462,9 @@ var main_scene_image = {
     icon215: main_scene_path + "icon215.png",
     icon216: main_scene_path + "icon216.png",
     icon217: main_scene_path + "icon217.png",
-    icon218: main_scene_path + "icon218.png"
+    icon218: main_scene_path + "icon218.png",
+    icon219: main_scene_path + "icon219.png",
+    icon220: main_scene_path + "icon220.png"
 };
 
 var main_scene_res = [
@@ -507,7 +509,8 @@ var effectConfig = [
     10,
     10,
     5,
-    10
+    7,
+    12
 ];
 
 var effectRect = [
@@ -515,7 +518,8 @@ var effectRect = [
     cc.rect(0, 0, 132, 132),
     cc.rect(0, 0, 640, 218),
     cc.rect(0, 0, 600, 713),
-    cc.rect(0, 0, 111, 155)
+    cc.rect(0, 0, 80, 550),
+    cc.rect(0, 0, 210, 200)
 ];
 
 for (var effectId = 0; effectId < effectConfig.length; ++effectId) {

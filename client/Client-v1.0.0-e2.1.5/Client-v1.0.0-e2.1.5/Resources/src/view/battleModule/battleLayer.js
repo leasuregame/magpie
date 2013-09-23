@@ -157,15 +157,16 @@ var BatterLayer = cc.Layer.extend({
             this._battleNode[target].defend(battleStep.getEffect(), battleStep.isCrit());
 
             var effectSprite = playEffect({
-                effectId: 4,
+                effectId: 5,
                 target: this,
                 loops: 1,
+                delay: 0.025,
                 zOrder: 10,
                 rotation: lz.getAngle(attackerLocate, targetLocate),
                 position: attackerLocate
             });
 
-            var moveAction = cc.EaseSineIn.create(cc.MoveTo.create(1, targetLocate));
+            var moveAction = cc.EaseSineIn.create(cc.MoveTo.create(0.3, targetLocate));
             effectSprite.runAction(moveAction);
         }
 

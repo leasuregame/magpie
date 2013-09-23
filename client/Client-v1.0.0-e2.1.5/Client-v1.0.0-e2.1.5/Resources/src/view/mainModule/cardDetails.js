@@ -15,13 +15,15 @@
 var CardDetails = LazyLayer.extend({
     _card: null,
     _menu: null,
+    _cb: null,
 
-    init: function (card) {
+    init: function (card, cb) {
         cc.log("CardDetails init");
 
         if (!this._super()) return false;
 
         this._card = card;
+        this._cb = cb;
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 240), 640, 960);
         bgLayer.setPosition(GAME_ZERO);
@@ -211,14 +213,18 @@ var CardDetails = LazyLayer.extend({
 
         this._menu.setEnabled(false);
         this.removeFromParent();
+
+        if(this._cb) {
+            this._cb();
+        }
     }
 });
 
 
-CardDetails.create = function (card) {
+CardDetails.create = function (card, cb) {
     var ret = new CardDetails();
 
-    if (ret && ret.init(card)) {
+    if (ret && ret.init(card, cb)) {
         return ret;
     }
 

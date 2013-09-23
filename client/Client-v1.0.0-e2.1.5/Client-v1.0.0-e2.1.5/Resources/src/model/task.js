@@ -97,8 +97,13 @@ var Task = Entity.extend({
     getMarkByIndex: function (index) {
         cc.log("Task getMarkByIndex " + index);
 
+        if (index >= this.getSection()) {
+            return false;
+        }
+
         var offset = (index - 1) % EACH_NUM_BIT;
         index = Math.floor((index - 1) / EACH_NUM_BIT);
+
 
         if (this._mark[index]) {
             return ((this._mark[index] >> offset & 1) == 0);
@@ -117,7 +122,7 @@ var Task = Entity.extend({
 
         var that = this;
         lzWindow.pomelo.request("area.taskHandler.explore", {
-            id: id
+            taskId: id
         }, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
@@ -180,13 +185,8 @@ var Task = Entity.extend({
 
         cc.log(param);
 
-        cb({
-            exp: 100,
-            money: 200
-        });
-
         var that = this;
-        lzWindow.pomelo.request("logic.taskHandler.wipeOut", param, function (data) {
+        lzWindow.pomelo.request("area.taskHandler.wipeOut", param, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
@@ -207,6 +207,7 @@ var Task = Entity.extend({
                 });
 
                 player.update({
+                    power: msg.power,
                     lv: msg.lv,
                     exp: msg.exp
                 });

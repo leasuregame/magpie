@@ -64,7 +64,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this._moneyLabel.setPosition(cc.p(580, 36));
         this.addChild(this._moneyLabel);
 
-        this._powerLabel = cc.LabelTTF.create("0", '黑体', 22);
+        this._powerLabel = cc.LabelTTF.create("0/0", '黑体', 22);
         this._powerLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._powerLabel.setPosition(cc.p(420, 36));
         this.addChild(this._powerLabel);
@@ -94,7 +94,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this._lvLabel.setString(player.get("lv"));
         this._goldLabel.setString(player.get("gold"));
         this._moneyLabel.setString(player.get("money"));
-        this._powerLabel.setString(player.get("power"));
+        this._powerLabel.setString(player.get("power") + "/" + player.get("maxPower"));
     },
 
     _onClickPlayerDetails: function () {

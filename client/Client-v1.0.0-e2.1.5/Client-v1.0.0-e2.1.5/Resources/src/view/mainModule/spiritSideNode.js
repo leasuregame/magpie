@@ -24,18 +24,22 @@ var SpiritSideNode = cc.Node.extend({
         if (!this._super()) return false;
 
         this._spiritSprite = cc.Sprite.create(main_scene_image.spirit_side);
+        this._spiritSprite.setAnchorPoint(cc.p(0.5, 0));
         this.addChild(this._spiritSprite);
 
         this._spiritFaceSprite1 = cc.Sprite.create(main_scene_image.spirit_face1);
-        this._spiritFaceSprite1.setPosition(cc.p(10, -5));
+        this._spiritFaceSprite1.setAnchorPoint(cc.p(0.5, 0));
+        this._spiritFaceSprite1.setPosition(cc.p(10, 11));
         this.addChild(this._spiritFaceSprite1);
 
         this._spiritFaceSprite2 = cc.Sprite.create(main_scene_image.spirit_face2);
-        this._spiritFaceSprite2.setPosition(cc.p(48, 8));
+        this._spiritFaceSprite2.setAnchorPoint(cc.p(0.5, 0));
+        this._spiritFaceSprite2.setPosition(cc.p(47, 7));
         this.addChild(this._spiritFaceSprite2);
 
         this._spiritFaceSprite3 = cc.Sprite.create(main_scene_image.spirit_face3);
-        this._spiritFaceSprite3.setPosition(cc.p(30, 10));
+        this._spiritFaceSprite3.setAnchorPoint(cc.p(0.5, 0));
+        this._spiritFaceSprite3.setPosition(cc.p(30, 9));
         this.addChild(this._spiritFaceSprite3);
 
         this.normal();

@@ -37,7 +37,7 @@ class Manager
     )
 
     ### 判断最后一小关，如果没有在这一个章节中获得战斗的胜利，则触发战斗 ###
-    if player.task.progress is taskData.points and not player.task.hasWin
+    if player.task.progress is (taskData.points - 1) and not player.task.hasWin
       data.result = 'fight'
 
     cb(null, data, taskData.chapter_id, taskData.section_id)

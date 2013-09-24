@@ -17,10 +17,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11220</WindowHeight>
-  <WindowWidth>28800</WindowWidth>
-  <WindowTopX>120</WindowTopX>
-  <WindowTopY>140</WindowTopY>
+  <WindowHeight>11200</WindowHeight>
+  <WindowWidth>37320</WindowWidth>
+  <WindowTopX>7860</WindowTopX>
+  <WindowTopY>3220</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -69,7 +69,7 @@
    <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
     ss:Color="#000000"/>
   </Style>
-  <Style ss:ID="s73">
+  <Style ss:ID="s68">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
@@ -1421,6 +1421,7 @@
    <Unsynced/>
    <PageBreakZoom>100</PageBreakZoom>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <TopRowVisible>107</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -1435,7 +1436,9 @@
  <Worksheet ss:Name="神秘关卡配置表">
   <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
-   <Row>
+   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="90"/>
+   <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="123"/>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id/难度系数</Data></Cell>
     <Cell><Data ss:Type="String">层数</Data></Cell>
     <Cell><Data ss:Type="String">名称</Data></Cell>
@@ -1454,7 +1457,7 @@
     <Cell><Data ss:Type="String">BOSS攻击加成</Data></Cell>
     <Cell><Data ss:Type="String">BOSS生命加成</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">layer</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
@@ -1468,12 +1471,12 @@
     <Cell><Data ss:Type="String">boss_id</Data></Cell>
     <Cell><Data ss:Type="String">boss_crit</Data></Cell>
     <Cell><Data ss:Type="String">boss_dodge</Data></Cell>
-    <Cell><Data ss:Type="String">trigger_rate</Data></Cell>
+    <Cell><Data ss:Type="String">boss_trigger_rate</Data></Cell>
     <Cell><Data ss:Type="String">boss_attr</Data></Cell>
     <Cell><Data ss:Type="String">atk_inc</Data></Cell>
     <Cell><Data ss:Type="String">hp_inc</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="Number">1</Data></Cell>
@@ -1489,7 +1492,7 @@
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="Number">31</Data></Cell>
@@ -1505,7 +1508,7 @@
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="Number">51</Data></Cell>
@@ -1521,7 +1524,7 @@
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="Number">71</Data></Cell>
@@ -1537,7 +1540,7 @@
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="Number">91</Data></Cell>
@@ -1555,13 +1558,14 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>28</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>13</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1573,14 +1577,14 @@
    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:Width="129"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s73"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">export_name</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">merge_to</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s73"><Data ss:Type="String">关卡卡牌配置表</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">pass_config</Data></Cell>
-    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">关卡卡牌配置表</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">pass_config</Data></Cell>
+    <Cell ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">神秘关卡配置表</Data></Cell>

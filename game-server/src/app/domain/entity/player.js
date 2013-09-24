@@ -219,8 +219,8 @@ var Player = (function(_super) {
             id: 1,
             progress: 0,
             hasWin: false,
-            mark: [],
-            momo: []
+            mark: []
+            //momo: []
         },
         pass: {
             layer: 0,
@@ -229,7 +229,8 @@ var Player = (function(_super) {
                 diff: 1,
                 isTrigger: false,
                 isClear: false
-            }
+            },
+            isReset:false
         },
         dailyGift: {
             lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
@@ -679,6 +680,21 @@ var Player = (function(_super) {
             return;
         }
         return this.passMark.hasMark(layer);
+    };
+
+    //重置关卡
+    Player.prototype.resetPassMark = function(){
+
+        if(this.pass.isReset == false) {
+            this.pass.isReset = true;
+            var pass = utility.deepCopy(this.pass);
+            this.passMark.mark = [];
+            pass.mark = this.passMark.value;
+            this.pass = pass;
+            console.log("reset pass mark:",this.pass);
+            return true;
+        }
+        return false;
     };
 
     Player.prototype.incPass = function() {

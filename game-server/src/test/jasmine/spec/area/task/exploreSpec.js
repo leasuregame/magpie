@@ -40,7 +40,7 @@ describe("Area Server", function() {
 							'exp',
 							'task',
 							'power',
-							'isMomo'
+							'momo'
 						]);
 
 						var res = data.msg;

@@ -143,8 +143,11 @@ class Manager
           spirit.total += spiritConfig.SPIRIT.TASK.BOSS
         else
           spirit[k] = spiritConfig.SPIRIT.TASK.OTHER
-          spirit.total = spiritConfig.SPIRIT.TASK.OTHER
+          spirit.total += spiritConfig.SPIRIT.TASK.OTHER
       battleLog.rewards.spirit = spirit
+
+      player.incSpirit spirit.total
+      data["spiritor"] = player.spiritor
 
     if utility.hitRate(taskRate.fragment_rate)
       battleLog.rewards.fragment = true

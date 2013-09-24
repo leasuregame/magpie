@@ -14,7 +14,7 @@
 
 var PassLayer = cc.Layer.extend({
     _scrollView: null,
-    _cardSprite: null,
+    _spirit: null,
     _towerSprite: null,
     _skillPointLabel: null,
     _skillPointObtainLabel: null,
@@ -22,7 +22,7 @@ var PassLayer = cc.Layer.extend({
     _moneyObtainLabel: null,
     _passLabelList: [],
     _ladderList: [],
-    _nowTop: 0,
+    _top: 0,
 
     onEnter: function () {
         cc.log("PassLayer onEnter");
@@ -36,7 +36,7 @@ var PassLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        this._nowTop = gameData.pass.get("top");
+        this._top = gameData.pass.get("top");
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg5);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -57,7 +57,7 @@ var PassLayer = cc.Layer.extend({
                 var ladderSprite = cc.Sprite.create(main_scene_image["ladder" + ((i) % 2 + 1)]);
                 ladderSprite.setAnchorPoint(cc.p(0, 0));
                 ladderSprite.setPosition(cc.p(80, 110 + 185 * (i - 2)));
-                if (i > this._nowTop + 1) {
+                if (i > this._top + 1) {
                     ladderSprite.setVisible(false);
                 }
                 scrollViewLayer.addChild(ladderSprite);
@@ -70,13 +70,13 @@ var PassLayer = cc.Layer.extend({
             scrollViewLayer.addChild(numLabel);
         }
 
-        this._cardSprite = cc.Sprite.create(main_scene_image.card0);
-        this._cardSprite.setAnchorPoint(cc.p(0, 0));
-        this._cardSprite.setPosition(this._getCardLocation(this._nowTop));
-        if (this._nowTop < 1) {
-            this._cardSprite.setVisible(false);
+        this._spirit = SpiritNode.create();
+        this._spirit.setAnchorPoint(cc.p(0, 0));
+        this._spirit.setPosition(this._getCardLocation(this._top));
+        if (this._top < 1) {
+            this._spirit.setVisible(false);
         }
-        scrollViewLayer.addChild(this._cardSprite, 1);
+        scrollViewLayer.addChild(this._spirit, 1);
 
         this._scrollView = cc.ScrollView.create(cc.size(330, 743), scrollViewLayer);
         this._scrollView.setContentSize(cc.size(300, 18620));
@@ -84,7 +84,7 @@ var PassLayer = cc.Layer.extend({
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
-        this._locate(this._nowTop);
+        this._locate(this._top);
 
         var tipLabel = cc.Sprite.create(main_scene_image.bg6);
         tipLabel.setAnchorPoint(cc.p(0, 0));
@@ -106,13 +106,13 @@ var PassLayer = cc.Layer.extend({
         wipeOutIconSprite.setPosition(cc.p(543, 34));
         tipLabel.addChild(wipeOutIconSprite);
 
-        var towerBgSprite = cc.Sprite.create(main_scene_image.tower1);
+        var towerBgSprite = cc.Sprite.create(main_scene_image.icon224);
         towerBgSprite.setAnchorPoint(cc.p(0, 0));
         towerBgSprite.setPosition(cc.p(530, 260));
         this.addChild(towerBgSprite);
 
-        var len = this._nowTop / MAX_PASS_COUNT * 209;
-        this._towerSprite = cc.Sprite.create(main_scene_image.tower2, cc.rect(0, 209 - len, 94, len));
+        var len = this._top / MAX_PASS_COUNT * 209;
+        this._towerSprite = cc.Sprite.create(main_scene_image.icon225, cc.rect(0, 209 - len, 94, len));
         this._towerSprite.setAnchorPoint(cc.p(0, 0));
         this._towerSprite.setPosition(cc.p(530, 260));
         this.addChild(this._towerSprite);
@@ -125,16 +125,16 @@ var PassLayer = cc.Layer.extend({
 
         var top = gameData.pass.get("top");
 
-        if (top != this._nowTop) {
-            this._nowTop = top;
+        if (top != this._top) {
+            this._top = top;
 
-            this._locate(this._nowTop);
+            this._locate(this._top);
 
-            var len = this._nowTop / MAX_PASS_COUNT * 209;
+            var len = this._top / MAX_PASS_COUNT * 209;
             this._towerSprite.setTextureRect(cc.rect(0, 209 - len * 209, 94, len));
 
             for (var i = 2; i <= MAX_PASS_COUNT; ++i) {
-                if (i <= this._nowTop) {
+                if (i <= this._top) {
                     this._ladderList[i].setVisible(true);
                 } else {
                     this._ladderList[i].setVisible(false);
@@ -209,9 +209,9 @@ var PassLayer = cc.Layer.extend({
 
         LazyLayer.showCloudLayer();
 
-        this._cardWalk(this._nowTop);
+        this._cardWalk(this._top);
 
-        if (this._nowTop == 100) {
+        if (this._top == 100) {
             this.scheduleOnce(function () {
                 LazyLayer.closeCloudLayer();
             }, 2);
@@ -219,7 +219,7 @@ var PassLayer = cc.Layer.extend({
         }
 
         this.scheduleOnce(function () {
-            this._showLadder(this._nowTop + 1);
+            this._showLadder(this._top + 1);
         }, 2);
 
         this.scheduleOnce(function () {
@@ -237,14 +237,14 @@ var PassLayer = cc.Layer.extend({
         this._cardWalk(1, 0.3);
         var index = 2;
         this.schedule(function () {
-            if (index > this._nowTop) {
+            if (index > this._top) {
                 LazyLayer.closeCloudLayer();
                 return;
             }
 
             this._cardWalk(index, 0.3);
             index += 1;
-        }, 0.4, this._nowTop);
+        }, 0.4, this._top);
     },
 
     _onClickWipeOut: function () {

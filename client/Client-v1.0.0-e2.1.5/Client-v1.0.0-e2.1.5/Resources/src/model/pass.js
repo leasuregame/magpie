@@ -17,123 +17,135 @@ var PASS_BOSS_SPACE = 5;
 var EACH_NUM_BIT = 30;
 
 var Pass = Entity.extend({
-    _top: 0,
-    _mark: [],
+        _top: 0,
+        _mark: [],
+        _hasMystical: false,
+        _canReset: false,
 
-    init: function (data) {
-        cc.log("Pass init");
+        init: function (data) {
+            cc.log("Pass init");
 
-        this.update(data);
+            this.update(data);
 
-        cc.log(this);
+            cc.log(this);
 
-        return true;
-    },
+            return true;
+        },
 
-    update: function (data) {
-        cc.log("Pass update");
+        update: function (data) {
+            cc.log("Pass update");
 
-        this.set("top", data.layer);
-        this.set("mark", data.mark);
-    },
+            this.set("top", data.layer);
+            this.set("mark", data.mark);
+            this.set("hasMystical", data.hasMystical);
+            this.set("canReset", data.canReset);
+        },
 
-    canWipeOut: function () {
-        cc.log("Pass canWipOut");
+        canWipeOut: function () {
+            cc.log("Pass canWipOut");
 
-        for (var i = 1; i <= this._top; ++i) {
-            if (this.getMarkByIndex(i)) {
-                return true
+            for (var i = 1; i <= this._top; ++i) {
+                if (this.getMarkByIndex(i)) {
+                    return true
+                }
             }
+
+            return false;
+        },
+
+        getMarkByIndex: function (index) {
+            cc.log("Pass getMarkByIndex " + index);
+
+            var offset = (index - 1) % EACH_NUM_BIT;
+            index = Math.floor((index - 1) / EACH_NUM_BIT);
+
+            if (this._mark[index]) {
+                return ((this._mark[index] >> offset & 1) == 0);
+            }
+
+            return true;
+        },
+
+        defiance: function (cb, index) {
+            cc.log("Pass defiance " + index);
+
+            var that = this;
+            lzWindow.pomelo.request("area.taskHandler.passBarrier", {
+                layer: index
+            }, function (data) {
+                cc.log(data);
+
+                if (data.code == 200) {
+                    cc.log("defiance success");
+
+                    var msg = data.msg;
+
+                    that.update(msg.pass);
+
+                    gameData.player.update({
+                        power: msg.power,
+                        lv: msg.lv,
+                        exp: msg.exp
+                    });
+
+                    gameData.spirit.update(msg.spiritor);
+
+                    var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
+
+                    cb(battleLogId);
+                } else {
+                    cc.log("defiance fail");
+                }
+            });
+        },
+
+        wipeOut: function (cb) {
+            cc.log("Pass wipeOut");
+
+            var that = this;
+            lzWindow.pomelo.request("area.taskHandler.wipeOut", {
+                type: "pass"
+            }, function (data) {
+                cc.log(data);
+
+                if (data.code == 200) {
+                    cc.log("wipeOut success.");
+
+                    var msg = data.msg;
+
+                    that.update({
+                        mark: msg.mark
+                    });
+
+                    var reward = msg.rewards;
+                    var player = gameData.player;
+
+                    player.adds({
+                        exp: reward.exp_obtain,
+                        money: reward.money_obtain,
+                        skillPoint: reward.skill_point
+                    });
+
+                    player.update({
+                        power: msg.power,
+                        lv: msg.lv,
+                        exp: msg.exp
+                    });
+
+                    var cbData = {
+                        exp: reward.exp_obtain,
+                        money: reward.money_obtain,
+                        skillPoint: reward.skill_point
+                    };
+
+                    cb(cbData);
+                } else {
+                    cc.log("wipeOut fail");
+                }
+            });
         }
-
-        return false;
-    },
-
-    getMarkByIndex: function (index) {
-        cc.log("Pass getMarkByIndex " + index);
-
-        var offset = (index - 1) % EACH_NUM_BIT;
-        index = Math.floor((index - 1) / EACH_NUM_BIT);
-
-        if (this._mark[index]) {
-            return ((this._mark[index] >> offset & 1) == 0);
-        }
-
-        return true;
-    },
-
-    defiance: function (cb, index) {
-        cc.log("Pass defiance " + index);
-
-        var that = this;
-        lzWindow.pomelo.request("area.taskHandler.passBarrier", {
-            layer: index
-        }, function (data) {
-            cc.log(data);
-
-            if (data.code == 200) {
-                cc.log("defiance success");
-
-                var msg = data.msg;
-
-                that.update(msg.pass);
-
-                gameData.player.update({
-                    lv: msg.lv,
-                    exp: msg.exp
-                });
-
-                gameData.spirit.update(msg.spiritor);
-
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
-
-                cb(battleLogId);
-            } else {
-                cc.log("defiance fail");
-            }
-        });
-    },
-
-    wipeOut: function (cb) {
-        cc.log("Pass wipeOut");
-
-        var that = this;
-        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {
-            type: "pass"
-        }, function (data) {
-            cc.log(data);
-
-            if (data.code == 200) {
-                cc.log("wipeOut success.");
-
-                var msg = data.msg;
-
-                that.update(msg.pass);
-
-                var rewards = msg.rewards;
-                var player = gameData.player;
-
-                that.update({
-                    mark: msg.mark
-                });
-
-                player.adds({
-                    money: rewards.money_obtain || 0,
-                    skillPoint: rewards.skill_point || 0
-                });
-
-                player.update({
-                    lv: msg.lv,
-                    exp: msg.exp
-                });
-
-                cb(rewards);
-            } else {
-                cc.log("wipeOut fail");
-            }
-        });
-    }
-});
+    })
+    ;
 
 
 Pass.create = function (data) {

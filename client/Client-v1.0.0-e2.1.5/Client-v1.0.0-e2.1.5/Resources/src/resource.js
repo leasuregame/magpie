@@ -67,8 +67,6 @@ var main_scene_image = {
     star2: main_scene_path + "star2.png",
     ladder1: main_scene_path + "ladder1.png",
     ladder2: main_scene_path + "ladder2.png",
-    tower1: main_scene_path + "tower1.png",
-    tower2: main_scene_path + "tower2.png",
     cloud: main_scene_path + "cloud.png",
     gameFrame: main_scene_path + "gameFrame.png",
 
@@ -466,7 +464,10 @@ var main_scene_image = {
     icon219: main_scene_path + "icon219.png",
     icon220: main_scene_path + "icon220.png",
     icon221: main_scene_path + "icon221.png",
-    icon222: main_scene_path + "icon222.png"
+    icon222: main_scene_path + "icon222.png",
+    icon223: main_scene_path + "icon223.png",
+    icon224: main_scene_path + "icon224.png",
+    icon225: main_scene_path + "icon225.png"
 };
 
 var main_scene_res = [

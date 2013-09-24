@@ -35,6 +35,32 @@ var SpiritNode = cc.Node.extend({
         cc.log("SpiritNode getId");
 
         return -1;
+    },
+
+    _speak: function (str) {
+        cc.log("SpiritNode speak");
+
+        if (str) {
+            var bubbleNode = BubbleNode.create(str);
+            bubbleNode.setPosition(cc.p(45, 30));
+            this.addChild(bubbleNode);
+
+            this.scheduleOnce(function () {
+                bubbleNode.removeFromParent();
+            }, 3);
+        }
+    },
+
+    passWinSpeak: function () {
+        cc.log("SpiritNode passWinSpeak");
+
+        this._speak(gameData.speak.getPassWinSpiritSpeak());
+    },
+
+    passFailSpeak: function () {
+        cc.log("SpiritNode passFailSpeak");
+
+        this._speak(gameData.speak.getPassFailSpiritSpeak());
     }
 });
 

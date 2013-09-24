@@ -527,8 +527,8 @@ var effectRect = [
     cc.rect(0, 0, 80, 550),
     cc.rect(0, 0, 210, 200),
     cc.rect(0, 0, 65, 200),
-    cc.rect(0, 0, 85, 230),
-    cc.rect(0, 0, 90, 230)
+    cc.rect(0, 0, 130, 300),
+    cc.rect(0, 0, 120, 300)
 ];
 
 for (var effectId = 0; effectId < effectConfig.length; ++effectId) {

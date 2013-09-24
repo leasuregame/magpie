@@ -140,6 +140,8 @@ var Task = Entity.extend({
                     goldList: msg.momo
                 };
 
+                gameData.spirit.update(msg.spiritor);
+
                 if (msg.task.id > that._id) {
                     cbData.toNext = true;
                     cbData.progress = 1;

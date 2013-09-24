@@ -7,9 +7,7 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>gaobin</Author>
-  <LastAuthor>gaobin</LastAuthor>
   <Created>2013-09-11T19:34:09Z</Created>
-  <LastSaved>2013-09-22T09:26:26Z</LastSaved>
   <Version>14.0</Version>
  </DocumentProperties>
  <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
@@ -19,10 +17,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6500</WindowHeight>
+  <WindowHeight>10260</WindowHeight>
   <WindowWidth>28800</WindowWidth>
-  <WindowTopX>10520</WindowTopX>
-  <WindowTopY>2360</WindowTopY>
+  <WindowTopX>780</WindowTopX>
+  <WindowTopY>920</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -109,7 +108,8 @@
   <Style ss:ID="s73" ss:Parent="s66">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="10.5" ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Modern" ss:Size="10.5"
+    ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
   </Style>
@@ -121,11 +121,7 @@
   <Style ss:ID="s76" ss:Parent="s65">
    <Interior/>
   </Style>
-  <Style ss:ID="s77" ss:Parent="s64">
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
-   <Interior/>
-  </Style>
-  <Style ss:ID="s78">
+  <Style ss:ID="s77">
    <Alignment ss:Vertical="Bottom"/>
    <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
     ss:Color="#000000"/>
@@ -1006,124 +1002,40 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30001</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30001</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽灵</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30002</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30002</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽神</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30003</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30003</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽魂</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30004</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30004</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽仙</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30005</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30005</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽鬼</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="s68"/>
+    <Cell ss:Index="7" ss:StyleID="s76"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30006</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30006</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽大鬼</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="s68"/>
+    <Cell ss:Index="7" ss:StyleID="s76"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30007</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30007</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽二鬼</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="s68"/>
+    <Cell ss:Index="7" ss:StyleID="s76"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30008</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30008</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽三鬼</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="s68"/>
+    <Cell ss:Index="7" ss:StyleID="s76"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30009</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30009</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽四鬼</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="s68"/>
+    <Cell ss:Index="7" ss:StyleID="s76"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30010</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30010</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽五鬼</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="s68"/>
+    <Cell ss:Index="7" ss:StyleID="s76"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:Index="4" ss:StyleID="s68"/>
@@ -1163,13 +1075,11 @@
    </Print>
    <PageBreakZoom>100</PageBreakZoom>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
-   <TopRowVisible>73</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>75</ActiveRow>
-     <RangeSelection>R76C1:R85C10</RangeSelection>
+     <ActiveRow>16</ActiveRow>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1177,7 +1087,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="神秘关卡卡牌配置表">
-  <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="12" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
    <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="82"/>
    <Column ss:Index="9" ss:Width="57"/>
@@ -1211,126 +1121,65 @@
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s75"><Data ss:Type="Number">30001</Data></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="Number">30001</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽灵</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">战·修罗王</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s75"><Data ss:Type="Number">30002</Data></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="Number">30002</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽神</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">战·吕洞宾</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s75"><Data ss:Type="Number">30003</Data></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="Number">30003</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽魂</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">战·鬼谷子</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s75"><Data ss:Type="Number">30004</Data></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="Number">30004</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽仙</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">战·日游神</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="Number">6</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell ss:StyleID="s75"><Data ss:Type="Number">30005</Data></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="Number">30005</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽鬼</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">战·夸父</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30006</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30006</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽大鬼</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30007</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30007</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽二鬼</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30008</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30008</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽三鬼</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30009</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30009</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽四鬼</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30010</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="Number">30010</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">战·幽五鬼</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="Number">6</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
@@ -1338,11 +1187,12 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <RangeSelection>R3C1:R12C10</RangeSelection>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1355,8 +1205,8 @@
    <Column ss:Width="117"/>
    <Column ss:AutoFitWidth="0" ss:Width="261"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s78"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">export_name</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">

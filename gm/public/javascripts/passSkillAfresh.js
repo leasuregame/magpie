@@ -27,6 +27,7 @@ var submitRequest = function() {
         type:"post",
         success:function(msg){
             if(msg.type == "success") {
+                console.log(msg.info);
                 setResult(msg.info);
             }
         }

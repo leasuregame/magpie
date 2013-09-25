@@ -61,12 +61,16 @@ function submitStart(type) {
     if (type == TYPE.START) {
         task = {
             id: 1,
-            progress: 0
+            progress: 0,
+            hasWin: false,
+            mark: []
         }
     } else {
         task = {
             id: parseInt($("#taskId").val()),
-            progress: parseInt($("#progress").val())
+            progress: parseInt($("#progress").val()),
+            hasWin: false,
+            mark: []
         }
     }
 
@@ -130,7 +134,9 @@ function initResult() {
             rate: 0,
             cards_num: 0,
             cards_ave: 0,
-            cards: []
+            cards: [],
+            fragment_num:0,
+            fragment_rate:0
         },
         box: {
             times: 0,
@@ -174,6 +180,7 @@ function analyze(data) {
             else
                 result['fight'].cards[card.lv].num++; //级别
         }
+        result['fight'].fragment_num += rewards.fragment;
     } else if (data.result == "box") {
         var star = data.open_box_card.tableId % 5;
         if (star == 0) star = 5;
@@ -195,6 +202,7 @@ function countResult() {
     for (var lv = 1; lv <= 6; lv++) {
         fight.cards[lv].rate = fight.cards_num? (fight.cards[lv].num * 100 / fight.cards_num).toFixed(4) : 0;
     }
+    fight.fragment_rate = fight.times ? (fight.fragment_num * 100/fight.times).toFixed(4) : 0;
 
     var box = result['box'];
     box.rate = times ? (box.times * 100 / times).toFixed(4) : 0;
@@ -221,6 +229,9 @@ function showResult(task) {
     for (var lv = 1; lv <= 6; lv++) {
         inner += "<td>" + fight.cards[lv].num + "</td><td>" + fight.cards[lv].rate + "</td>";
     }
+
+    inner += "<td>" + fight.fragment_num + "</td><td>" + fight.fragment_rate + "</td>";
+
     inner += "</tr>";
     $("#fightResult").append(inner);
 

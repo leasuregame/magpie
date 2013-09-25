@@ -82,8 +82,9 @@ function updatePlayerData() {
 
     var task = {
         id:parseInt($("#taskId").val()),
-        progress:0
-        //hasWin:false
+        progress:0,
+        hasWin: false,
+        mark: []
 
     };
     data.task = JSON.stringify(task);
@@ -93,7 +94,9 @@ function updatePlayerData() {
 
     var pass = {
         layer:layer,
-        mark:[]
+        mark:[],
+        mystical:JSON.parse(player.pass).mystical,
+        isReset:false
     };
 
     data.pass = JSON.stringify(pass);

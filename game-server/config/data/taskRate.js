@@ -3,7 +3,7 @@ module.exports = {
   "wipe_out_gold_obtain": 10,      
   "fight": 20,
   "precious_box": 5,
-  "fragment_rate": 80,
+  "fragment_rate": 1,
   "card_drop": {            
     // "star": {
     //   "1": 50,

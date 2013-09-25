@@ -150,9 +150,9 @@ class Manager
       data["spiritor"] = player.spiritor
 
     if utility.hitRate(taskRate.fragment_rate)
-      battleLog.rewards.fragment = true
+      battleLog.rewards.fragment = 1
     else
-      battleLog.rewards.fragment = false
+      battleLog.rewards.fragment = 0
 
     saveExpCardsInfo player.id, taskData.max_drop_card_number, (err, results) ->
       if err

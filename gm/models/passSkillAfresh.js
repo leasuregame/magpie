@@ -42,6 +42,7 @@ PassSkillAfresh.simulate = function (type, times, cb) {
 };
 
 PassSkillAfresh.init = function (type) {
+    result = [];
     var d = DEFAULT[type];
     for (var i = 0; i < d.length; i++) {
         result[i] = {

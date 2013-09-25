@@ -121,7 +121,7 @@ var PassLayer = cc.Layer.extend({
             scrollViewLayer.addChild(passNameBgSprite);
             passNameBgSprite.setScale(0.8);
 
-            var passNameLabel = cc.LabelTTF.create("第" + i + "关", "STHeitiTC-Medium", 20);
+            var passNameLabel = cc.LabelTTF.create("第" + i + "层", "STHeitiTC-Medium", 20);
             passNameLabel.setColor(cc.c3b(255, 240, 170));
             passNameLabel.setPosition(passNamePoint);
             scrollViewLayer.addChild(passNameLabel);

@@ -17,21 +17,54 @@ var User = Entity.extend({
     _createTime: 0,         // 创建时间
     _account: "",           // 账号
     _password: "",          // 密码
+    _area: 1,               // 区
     _name: "",              // 名字
     _loginCount: 0,         // 总登录次数
+    _lastLoginArea: 0,      // 最后登录的区
     _lastLoginTime: 0,      // 最后登录时间
     _lastLoginDevice: "",   // 最后登录设备
 
-    init: function (data) {
+    init: function () {
         cc.log("User init");
 
-        this._id = data.id;
+        this._load();
 
         return true;
     },
 
+    update: function (data) {
+        cc.log("User update");
+
+        if (!data) return;
+
+        this.set("id", data.id);
+        this.set("createTime", data.createTime);
+        this.set("account", data.account);
+        this.set("name", data.name);
+        this.set("loginCount", data.loginCount);
+        this.set("lastLoginArea", data.lastLoginArea);
+        this.set("lastLoginTime", data.lastLoginTime);
+        this.set("lastLoginDevice", data.lastLoginDevice);
+    },
+
+    _load: function () {
+        cc.log("User _load");
+
+        this._account = sys.localStorage.getItem("account") || "chenchen";
+        this._password = sys.localStorage.getItem("password") || "1";
+        this._area = parseInt(sys.localStorage.getItem("area")) || 1;
+    },
+
     login: function (cb) {
         cc.log("User login");
+
+        sys.localStorage.setItem("account", this._account);
+        sys.localStorage.setItem("password", this._password);
+        sys.localStorage.setItem("area", this._area);
+
+        cc.log(this._account);
+        cc.log(this._password);
+        cc.log(this._area);
 
         var that = this;
         lzWindow.pomelo.request("connector.userHandler.login", {
@@ -46,14 +79,15 @@ var User = Entity.extend({
             if (data.code == 200) {
                 cc.log("sign in success");
 
-                that.init(msg.user);
+                that.update(msg.user);
+
                 gameData.player.init(msg.player);
 
                 cb("success");
             } else {
                 cc.log("sign in fail");
 
-                cb("fail");
+                TipLayer.tip("登录失败");
             }
         });
     },
@@ -98,10 +132,10 @@ var User = Entity.extend({
 
 
 User.create = function () {
-    var user = new User();
+    var ret = new User();
 
-    if (user) {
-        return user;
+    if (ret && ret.init()) {
+        return ret;
     }
 
     return null;

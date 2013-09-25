@@ -57,7 +57,7 @@ var SpiritNode = cc.Node.extend({
             this.scheduleOnce(function () {
                 this._bubbleNode.removeFromParent();
                 this._bubbleNode = null;
-            }, 5);
+            }, 2.5);
         }
     },
 

@@ -216,6 +216,8 @@ var PassLayer = cc.Layer.extend({
             } else {
                 this._spirit.passFailSpeak();
             }
+
+            this._isWin = null;
         }
 
         var top = pass.getTop();
@@ -484,10 +486,11 @@ var PassLayer = cc.Layer.extend({
     _onClickWipeOut: function () {
         cc.log("PassLayer _onClickWipeOut");
 
+        var that = this;
         gameData.pass.wipeOut(function (data) {
             cc.log(data);
 
-            this._wipeOutAnimation(data);
+            that._wipeOutAnimation(data);
         });
     },
 

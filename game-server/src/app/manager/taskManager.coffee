@@ -53,7 +53,7 @@ class Manager
 
     rewards = {exp_obtain: 0, money_obtain: 0, skill_point: 0}
     isWipeOut = false
-    for id in _.range(1, layer)
+    for id in _.range(1, layer + 1)
       if not player.hasPassMark(id)
         data = table.getTableItem('pass_reward', id)
         rewards.exp_obtain += parseInt(data.exp)

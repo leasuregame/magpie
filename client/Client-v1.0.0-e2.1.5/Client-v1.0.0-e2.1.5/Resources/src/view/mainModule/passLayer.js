@@ -207,15 +207,18 @@ var PassLayer = cc.Layer.extend({
         this._blackHoleRotate();
 
         for (var i = 1; i <= MAX_PASS_COUNT; ++i) {
-            this._element[i].passItem.setEnabled(pass.getMarkByIndex(i));
+            var mark = pass.getMarkByIndex(i);
+
+            this._element[i].passItem.setEnabled(mark);
+
+            if (i > 1) {
+                var color = mark ? cc.c3b(255, 255, 255) : cc.c3b(130, 130, 130);
+                this._element[i].ladderSprite.setColor(color);
+            }
         }
 
         if (this._isWin != null) {
-            if (this._isWin) {
-                this._spirit.passWinSpeak();
-            } else {
-                this._spirit.passFailSpeak();
-            }
+            this._spirit.speak(this._isWin);
 
             this._isWin = null;
         }

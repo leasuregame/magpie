@@ -16,7 +16,6 @@ var ExploreLayer = cc.Layer.extend({
     _index: 0,
     _maxIndex: 0,
     _sectionId: 0,
-    _bubbleNode: null,
     _spiritNode: null,
     _spiritShadow: null,
     _turnLeftSprite: null,
@@ -45,7 +44,12 @@ var ExploreLayer = cc.Layer.extend({
 
         this._sectionId = sectionId;
 
-        this._index = gameData.task.getPoints();
+        this._maxIndex = TASK_POINTS_COUNT;
+        this._index = this._maxIndex;
+
+        if (this._sectionId == gameData.task.getSection()) {
+            this._index = gameData.task.getPoints();
+        }
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg9);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -86,14 +90,6 @@ var ExploreLayer = cc.Layer.extend({
         titleLabel.setPosition(cc.p(360, 1005));
         this.addChild(titleLabel, 1);
 
-        var str = gameData.speak.getSpiritSpeak();
-        cc.log(str);
-        if (str) {
-            this._bubbleNode = BubbleNode.create(str);
-            this._bubbleNode.setPosition(cc.p(400, 810));
-            this.addChild(this._bubbleNode);
-        }
-
         this._spiritShadow = cc.Sprite.create(main_scene_image.icon217);
         this._spiritShadow.setPosition(cc.p(350, 786));
         this.addChild(this._spiritShadow);
@@ -101,6 +97,8 @@ var ExploreLayer = cc.Layer.extend({
         this._spiritNode = SpiritSideNode.create();
         this._spiritNode.setPosition(cc.p(360, 783));
         this.addChild(this._spiritNode);
+
+        this._spiritNode.speak();
 
         this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
         this._turnLeftSprite.setRotation(180);
@@ -188,7 +186,7 @@ var ExploreLayer = cc.Layer.extend({
             powerProgress.setPosition(cc.p(320 + x, 360));
             scrollViewLayer.addChild(powerProgress);
 
-            var expProgress = Progress.create(null, main_scene_image.progress2, 0, 0);
+            var expProgress = Progress.create(null, main_scene_image.progress2, 0, 0, false, true);
             expProgress.setPosition(cc.p(320 + x, 319));
             scrollViewLayer.addChild(expProgress);
 
@@ -250,9 +248,8 @@ var ExploreLayer = cc.Layer.extend({
 
         var task = gameData.task;
 
-        this._maxIndex = task.getPoints();
-
         if (task.getSection() == this._sectionId) {
+            this._maxIndex = task.getPoints();
             this._scrollView.setContentSize(cc.size(640 * this._maxIndex, 569));
         }
 
@@ -324,11 +321,6 @@ var ExploreLayer = cc.Layer.extend({
 
     _onClickExplore: function () {
         cc.log("ExploreLayer _onClickExplore");
-
-        if (this._bubbleNode) {
-            this._bubbleNode.removeFromParent();
-            this._bubbleNode = null;
-        }
 
         this._lock();
 

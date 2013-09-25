@@ -33,6 +33,8 @@ var BattlePlayer = cc.Class.extend({
 
             this._battleScene.play();
         }
+
+        return battleLog.isWin();
     },
 
     next: function () {

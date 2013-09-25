@@ -44,10 +44,6 @@ var BubbleNode = cc.Node.extend({
         var scaleAction = cc.ScaleTo.create(0.2, 1, 1);
 
         this.runAction(scaleAction);
-
-        this.scheduleOnce(function () {
-            this.removeFromParent();
-        }, 3);
     }
 });
 

@@ -19,7 +19,6 @@ var TaskLayer = cc.Layer.extend({
     _markSprite: null,
     _wipeOutItem: null,
     _sectionItem: {},
-    _lockIcon: {},
     _scrollView: null,
     _locate: [
         cc.p(160, 550),

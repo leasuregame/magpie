@@ -19,6 +19,8 @@ var EACH_NUM_BIT = 30;
 var Pass = Entity.extend({
     _top: 0,
     _mark: [],
+    _hasMystical: false,
+    _canReset: false,
 
     init: function (data) {
         cc.log("Pass init");
@@ -33,8 +35,22 @@ var Pass = Entity.extend({
     update: function (data) {
         cc.log("Pass update");
 
+        if (!data) return;
+
         this.set("top", data.layer);
         this.set("mark", data.mark);
+        this.set("hasMystical", data.hasMystical);
+        this.set("canReset", data.canReset);
+    },
+
+    getTop: function () {
+        cc.log("Pass getLocal");
+
+        if (this._top < MAX_PASS_COUNT) {
+            return (this._top + 1);
+        }
+
+        return MAX_PASS_COUNT;
     },
 
     canWipeOut: function () {
@@ -47,6 +63,26 @@ var Pass = Entity.extend({
         }
 
         return false;
+    },
+
+    canReset: function () {
+        cc.log("Pass canReset");
+
+        if (this._top == 0) {
+            return false;
+        }
+
+        if (this.canWipeOut()) {
+            return false;
+        }
+
+        return this._canReset;
+    },
+
+    isBossPass: function (index) {
+        cc.log("Pass isBossPass: " + index);
+
+        return (index % PASS_BOSS_SPACE == 0);
     },
 
     getMarkByIndex: function (index) {
@@ -79,6 +115,7 @@ var Pass = Entity.extend({
                 that.update(msg.pass);
 
                 gameData.player.update({
+                    power: msg.power,
                     lv: msg.lv,
                     exp: msg.exp
                 });
@@ -98,38 +135,99 @@ var Pass = Entity.extend({
         cc.log("Pass wipeOut");
 
         var that = this;
-        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {
+        lzWindow.pomelo.request("area.taskHandler.wipeOut", {
             type: "pass"
         }, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
-                cc.log("wipeOut success.");
+                cc.log("wipeOut success");
 
                 var msg = data.msg;
-
-                that.update(msg.pass);
-
-                var rewards = msg.rewards;
-                var player = gameData.player;
 
                 that.update({
                     mark: msg.mark
                 });
 
+                var reward = msg.rewards;
+                var player = gameData.player;
+
                 player.adds({
-                    money: rewards.money_obtain || 0,
-                    skillPoint: rewards.skill_point || 0
+                    exp: reward.exp_obtain,
+                    money: reward.money_obtain,
+                    skillPoint: reward.skill_point
                 });
 
                 player.update({
+                    power: msg.power,
                     lv: msg.lv,
                     exp: msg.exp
                 });
 
-                cb(rewards);
+                var cbData = {
+                    exp: reward.exp_obtain,
+                    money: reward.money_obtain,
+                    skillPoint: reward.skill_point
+                };
+
+                cb(cbData);
             } else {
                 cc.log("wipeOut fail");
+            }
+        });
+    },
+
+    mystical: function (cb) {
+        cc.log("Pass mystical");
+
+        var that = this;
+        lzWindow.pomelo.request("area.taskHandler.mysticalPass", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("mystical success");
+
+                var msg = data.msg;
+
+                that.update({
+                    hasMystical: msg.hasMystical || false
+                });
+
+                gameData.spirit.update(msg.spiritor);
+
+                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
+
+                cb(battleLogId);
+            } else {
+                cc.log("mystical fail");
+            }
+        });
+    },
+
+    reset: function (cb) {
+        cc.log("Pass reset");
+
+        var that = this;
+        lzWindow.pomelo.request("area.taskHandler.resetPassMark", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("reset success");
+
+                var msg = data.msg;
+
+                that.update({
+                    mark: [],
+                    canReset: msg.canReset || false
+                });
+
+                gameData.player.update({
+                    gold: msg.gold
+                });
+
+                cb();
+            } else {
+                cc.log("reset fail");
             }
         });
     }

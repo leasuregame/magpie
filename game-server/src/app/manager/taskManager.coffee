@@ -24,7 +24,7 @@ class Manager
       upgrade: false
       open_box_card: null
       battle_log: null
-      isMomo: false
+      #isMomo: false
     }
 
     ### 检查是否体力充足 ###
@@ -37,7 +37,7 @@ class Manager
     )
 
     ### 判断最后一小关，如果没有在这一个章节中获得战斗的胜利，则触发战斗 ###
-    if player.task.progress is taskData.points and not player.task.hasWin
+    if player.task.progress is (taskData.points - 1) and not player.task.hasWin
       data.result = 'fight'
 
     cb(null, data, taskData.chapter_id, taskData.section_id)
@@ -116,6 +116,7 @@ class Manager
         return cb(err)
 
       player.addCard card
+      console.log(card.toJson());
       data.open_box_card = card.toJson()
       cb()
 
@@ -142,8 +143,11 @@ class Manager
           spirit.total += spiritConfig.SPIRIT.TASK.BOSS
         else
           spirit[k] = spiritConfig.SPIRIT.TASK.OTHER
-          spirit.total = spiritConfig.SPIRIT.TASK.OTHER
+          spirit.total += spiritConfig.SPIRIT.TASK.OTHER
       battleLog.rewards.spirit = spirit
+
+      player.incSpirit spirit.total
+      data["spiritor"] = player.spiritor
 
     if utility.hitRate(taskRate.fragment_rate)
       battleLog.rewards.fragment = true
@@ -183,8 +187,11 @@ class Manager
         task.id += 1
         task.hasWin = false
         ### 一大关结束，触发摸一摸功能 ###
-        if task.id % 10 is 0
-          data.isMomo = true
+        if task.id % 10 is 1 && task.id != 1
+          data.momo = player.createMonoGift();
+          #task.momo = data.momo;
+          console.log(data.momo);
+        #data.isMomo = true
       player.set('task', task)
 
     # 判断是否升级
@@ -215,6 +222,7 @@ class Manager
           return cb(err) 
 
         card.addPassiveSkills pss
+
         cb(null, card)
 
 randomCard = (star) ->

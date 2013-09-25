@@ -12,10 +12,15 @@
  * */
 
 
+var TASK_CHAPTER_COUNT = 10;
+var TASK_SECTION_COUNT = 5;
+var TASK_POINTS_COUNT = 10;
+
 var Task = Entity.extend({
     _id: 0,
     _progress: 0,
-    _points: 0,          // 最大层数
+    _maxProgress: 0,          // 最大层数
+    _mark: [],
 
     init: function (data) {
         cc.log("Task init");
@@ -30,30 +35,29 @@ var Task = Entity.extend({
     update: function (data) {
         cc.log("Task update");
 
-        if (this._id != data.id) {
-            this._id = data.id;
-            this._points = outputTables.task.rows[this._id].points;
-        }
+        this.set("id", data.id);
+        this.set("progress", data.progress);
+        this.set("mark", data.mark);
 
-        this._progress = data.progress;
-    },
-
-    getPercentage: function () {
-        cc.log("Task getPercentage");
-
-        return (this._progress / this._points);
+        this._maxProgress = outputTables.task.rows[this._id].points;
     },
 
     getChapter: function () {
         cc.log("Task getChapter");
 
-        return ((this._id / 10 - 1) / 5 + 1);
+        return Math.ceil((this.getSection()) / TASK_SECTION_COUNT);
     },
 
     getSection: function () {
         cc.log("Task getSection");
 
-        return ((this._id / 10 - 1) % 5 + 1);
+        return Math.ceil((this._id) / TASK_CHAPTER_COUNT);
+    },
+
+    getPoints: function () {
+        cc.log("Task getPoints");
+
+        return ((this._id - 1) % TASK_POINTS_COUNT + 1);
     },
 
     getProgress: function (index) {
@@ -61,19 +65,51 @@ var Task = Entity.extend({
 
         var progress = {};
         if (index == this._id) {
-            progress.points = this._points;
+            progress.maxProgress = this._maxProgress;
             progress.progress = this._progress;
         } else {
-            progress.points = outputTables.task.rows[index].points;
+            progress.maxProgress = outputTables.task.rows[index].points;
 
             if (index < this._id) {
-                progress.progress = progress.points;
+                progress.progress = progress.maxProgress;
             } else {
                 progress.progress = 0;
             }
         }
 
         return progress;
+    },
+
+    canWipeOut: function () {
+        cc.log("Task canWipOut");
+
+        var section = this.getSection();
+
+        for (var i = 1; i <= section; ++i) {
+            if (this.getMarkByIndex(i)) {
+                return true
+            }
+        }
+
+        return false;
+    },
+
+    getMarkByIndex: function (index) {
+        cc.log("Task getMarkByIndex " + index);
+
+        if (index >= this.getSection()) {
+            return false;
+        }
+
+        var offset = (index - 1) % EACH_NUM_BIT;
+        index = Math.floor((index - 1) / EACH_NUM_BIT);
+
+
+        if (this._mark[index]) {
+            return ((this._mark[index] >> offset & 1) == 0);
+        }
+
+        return true;
     },
 
     /*
@@ -86,7 +122,7 @@ var Task = Entity.extend({
 
         var that = this;
         lzWindow.pomelo.request("area.taskHandler.explore", {
-            id: id
+            taskId: id
         }, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
@@ -96,47 +132,113 @@ var Task = Entity.extend({
 
                 var msg = data.msg;
 
-                var player = gameData.player;
-                player.update({
+                var cbData = {
+                    result: msg.result,
+                    power: msg.power_consume,
                     exp: msg.exp_obtain,
                     money: msg.money_obtain,
-                    power: -msg.power_consume,
-                    fragment: msg.fragment ? 1 : 0
-                });
-
-                var backData = {
-                    result: msg.result
+                    goldList: msg.momo
                 };
 
-                if (msg.result == "fight") {
-                    backData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battle_log, PVE_BATTLE_LOG);
-                } else if (msg.result == "box") {
-                    backData.card = msg.open_box_card;
+                if (msg.task.id > that._id) {
+                    cbData.toNext = true;
+                    cbData.progress = 1;
+                } else if (msg.task.progress > that._progress) {
+                    cbData.progress = 1;
                 }
 
-                cb(backData);
+                that.update(msg.task);
+
+                var player = gameData.player;
+
+                player.add("money", msg.money_obtain);
+
+                player.update({
+                    power: msg.power,
+                    lv: msg.lv,
+                    exp: msg.exp
+                });
+
+                if (msg.result == "fight") {
+                    cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battle_log, PVE_BATTLE_LOG);
+                } else if (msg.result == "box") {
+                    var card = Card.create(msg.open_box_card);
+                    gameData.cardList.push(card);
+                    cbData.card = card;
+                }
+
+                cb(cbData);
             } else {
-                cc.log("fail");
+                cc.log("explore fail");
             }
         });
     },
 
-    wipeOut: function (cb) {
-        cc.log("Task wipeOut");
+    wipeOut: function (cb, id) {
+        cc.log("Task wipeOut: " + id);
+
+        var param = {type: "task"};
+
+        if (id) {
+            param.chapterId = id;
+        }
+
+        cc.log(param);
 
         var that = this;
-
-        lzWindow.pomelo.request("logic.taskHandler.wipeOut", {playerId: gameData.player.get("id"), type: "task"}, function (data) {
+        lzWindow.pomelo.request("area.taskHandler.wipeOut", param, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
-                cc.log("Task success.");
+                cc.log("wipeOut success.");
 
-                cb("success");
+                var msg = data.msg;
+
+                that.update({
+                    mark: msg.mark
+                });
+
+                var reward = msg.rewards;
+                var player = gameData.player;
+
+                player.adds({
+                    exp: reward.exp_obtain,
+                    money: reward.money_obtain
+                });
+
+                player.update({
+                    power: msg.power,
+                    lv: msg.lv,
+                    exp: msg.exp
+                });
+
+                var cbData = {
+                    exp: reward.exp_obtain,
+                    money: reward.money_obtain
+                };
+
+                cb(cbData);
             } else {
-                cc.log("Task fail");
+                cc.log("wipeOut fail");
+            }
+        });
+    },
 
-                cb("fail");
+    obtainGold: function (gold) {
+        cc.log("Task obtainGold: " + gold);
+
+        var that = this;
+        lzWindow.pomelo.request("area.taskHandler.updateMomoResult", {
+            gold: gold
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("obtainGold success.");
+
+                gameData.player.add("gold", gold);
+            } else {
+                cc.log("obtainGold fail");
             }
         });
     }

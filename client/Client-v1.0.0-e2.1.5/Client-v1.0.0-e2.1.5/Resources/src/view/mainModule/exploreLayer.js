@@ -14,12 +14,20 @@
 
 var ExploreLayer = cc.Layer.extend({
     _index: 0,
+    _maxIndex: 0,
+    _sectionId: 0,
+    _bubbleNode: null,
+    _spiritNode: null,
+    _spiritShadow: null,
     _turnLeftSprite: null,
     _turnRightSprite: null,
+    _mapLabel: [],
+    _closeBoxSprite: null,
+    _openBoxSprite: null,
+    _exploreItem: null,
     _scrollView: null,
-    _exploreLabelList: {},
-    _scrollViewLayer: null,
-    _mapLabel: null,
+    _element: {},
+    _reward: null,
 
     onEnter: function () {
         cc.log("ExploreLayer onEnter");
@@ -28,12 +36,16 @@ var ExploreLayer = cc.Layer.extend({
         this.update();
     },
 
-    init: function (index) {
+    init: function (sectionId) {
         cc.log("ExploreLayer init");
 
         if (!this._super()) return false;
 
-        this._index = index;
+        this.setTouchEnabled(true);
+
+        this._sectionId = sectionId;
+
+        this._index = gameData.task.getPoints();
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg9);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -43,136 +55,189 @@ var ExploreLayer = cc.Layer.extend({
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
         headIcon.setPosition(cc.p(40, 962));
-        this.addChild(headIcon);
+        this.addChild(headIcon, 1);
 
-        this._mapLabel = cc.Sprite.create(main_scene_image.bg4, cc.rect(0, 0, 640, 193));
-        this._mapLabel.setAnchorPoint(cc.p(0, 0));
-        this._mapLabel.setPosition(cc.p(40, 766));
-        this.addChild(this._mapLabel);
+        for (var i = 0; i < 3; ++i) {
+            this._mapLabel[i] = cc.Sprite.create(main_scene_image.bg4);
+            this._mapLabel[i].setAnchorPoint(cc.p(0, 0));
+            this._mapLabel[i].setPosition(cc.p(40 + i * 640, 766));
+            this.addChild(this._mapLabel[i]);
+        }
 
         var line1Icon = cc.Sprite.create(main_scene_image.icon96);
         line1Icon.setAnchorPoint(cc.p(0.5, 0));
         line1Icon.setPosition(cc.p(360, 928));
-        this.addChild(line1Icon);
+        this.addChild(line1Icon, 1);
 
         var line2Icon = cc.Sprite.create(main_scene_image.icon96);
         line2Icon.setRotation(180);
         line2Icon.setAnchorPoint(cc.p(0.5, 0));
         line2Icon.setPosition(cc.p(360, 797));
-        this.addChild(line2Icon);
+        this.addChild(line2Icon, 1);
+
+        var descriptionIcon = cc.Sprite.create(main_scene_image.icon216);
+        descriptionIcon.setPosition(cc.p(120, 250));
+        this.addChild(descriptionIcon);
+
+        var chapter = Math.ceil((this._sectionId) / TASK_SECTION_COUNT);
+
+        var titleLabel = StrokeLabel.create(outputTables.chapter_title.rows[chapter].name, "STHeitiTC-Medium", 40);
+        titleLabel.setColor(cc.c3b(255, 240, 170));
+        titleLabel.setPosition(cc.p(360, 1005));
+        this.addChild(titleLabel, 1);
+
+        var str = gameData.speak.getSpiritSpeak();
+        cc.log(str);
+        if (str) {
+            this._bubbleNode = BubbleNode.create(str);
+            this._bubbleNode.setPosition(cc.p(400, 810));
+            this.addChild(this._bubbleNode);
+        }
+
+        this._spiritShadow = cc.Sprite.create(main_scene_image.icon217);
+        this._spiritShadow.setPosition(cc.p(350, 786));
+        this.addChild(this._spiritShadow);
+
+        this._spiritNode = SpiritSideNode.create();
+        this._spiritNode.setPosition(cc.p(360, 783));
+        this.addChild(this._spiritNode);
 
         this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
         this._turnLeftSprite.setRotation(180);
-        this._turnLeftSprite.setPosition(cc.p(60, 520));
-//        this._turnLeftSprite.setVisible(false);
-        this.addChild(this._turnLeftSprite, 1);
+        this._turnLeftSprite.setPosition(cc.p(80, 550));
+        this.addChild(this._turnLeftSprite, 2);
 
         this._turnRightSprite = cc.Sprite.create(main_scene_image.icon37);
-        this._turnRightSprite.setPosition(cc.p(660, 520));
-//        this._turnRightSprite.setVisible(false);
-        this.addChild(this._turnRightSprite, 1);
+        this._turnRightSprite.setPosition(cc.p(640, 550));
+        this.addChild(this._turnRightSprite, 2);
 
-        var titleIndex = Math.floor((this._index - 1) / 5) + 1;
-        var titleLabel = cc.LabelTTF.create(outputTables.chapter_title.rows[titleIndex].name, "黑体", 40);
-        titleLabel.setPosition(cc.p(360, 1005));
-        this.addChild(titleLabel);
+        this._closeBoxSprite = cc.Sprite.create(main_scene_image.icon219);
+        this._closeBoxSprite.setPosition(cc.p(360, 1025));
+        this.addChild(this._closeBoxSprite);
+        this._closeBoxSprite.setVisible(false);
 
-        var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
-            MainScene.getInstance().switchLayer(PveLayer);
-        }, this);
+        this._openBoxSprite = cc.Sprite.create(main_scene_image.icon220);
+        this._openBoxSprite.setPosition(cc.p(360, 860));
+        this.addChild(this._openBoxSprite);
+        this._openBoxSprite.setVisible(false);
+
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            this._onClickBack,
+            this
+        );
         backItem.setPosition(cc.p(100, 1005));
 
-        var menu = cc.Menu.create(backItem);
+        this._exploreItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            main_scene_image.icon38,
+            this._onClickExplore,
+            this
+        );
+        this._exploreItem.setPosition(cc.p(360, 370));
+
+
+        var menu = cc.Menu.create(backItem, this._exploreItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this.addChild(menu, 1);
 
         // 读配置表
         var chapterTable = outputTables.task.rows;
 
-        this._scrollViewLayer = MarkLayer.create(cc.rect(92, 380, 537, 276));
+        var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 569));
 
         var lazyMenu = LazyMenu.create();
         lazyMenu.setPosition(cc.p(0, 0));
-        this._scrollViewLayer.addChild(lazyMenu, 1);
+        scrollViewLayer.addChild(lazyMenu, 1);
 
-        for (var i = 1; i <= 10; ++i) {
-            var id = i + 10 * (this._index - 1);
-            var offsetX = 493 * (i - 1);
+        this._element = {};
 
-            cc.log(id);
+        for (var i = 1; i <= TASK_POINTS_COUNT; ++i) {
+            var id = this._getTaskId(i);
+            var x = 640 * (i - 1);
 
             var exploreBgSprite = cc.Sprite.create(main_scene_image.bg10);
-            exploreBgSprite.setAnchorPoint(cc.p(0, 0));
-            exploreBgSprite.setPosition(cc.p(offsetX, 180));
-            this._scrollViewLayer.addChild(exploreBgSprite);
+            exploreBgSprite.setPosition(cc.p(x + 320, 370));
+            scrollViewLayer.addChild(exploreBgSprite);
 
-            var exploreItem = cc.MenuItemImage.create(
-                main_scene_image.button9,
-                main_scene_image.button9s,
-                this._onClickExplore(id),
-                this
-            );
-            exploreItem.setPosition(cc.p(246 + offsetX, 235));
-            lazyMenu.addChild(exploreItem);
+            var nameLabel = cc.LabelTTF.create(chapterTable[id].section_name + " " + i + " / 10", "STHeitiTC-Medium", 25);
+            nameLabel.setColor(cc.c3b(255, 240, 170));
+            nameLabel.setPosition(cc.p(x + 320, 470));
+            scrollViewLayer.addChild(nameLabel);
 
-            var exploreIcon = cc.Sprite.create(main_scene_image.icon38);
-            exploreIcon.setPosition(cc.p(246 + offsetX, 235));
-            this._scrollViewLayer.addChild(exploreIcon, 1);
+            var exploreExpLabel = cc.LabelTTF.create(chapterTable[id].exp_obtain, "STHeitiTC-Medium", 20);
+            exploreExpLabel.setColor(cc.c3b(255, 240, 170));
+            exploreExpLabel.setAnchorPoint(cc.p(0, 0.5));
+            exploreExpLabel.setPosition(cc.p(275 + x, 408));
+            scrollViewLayer.addChild(exploreExpLabel);
 
-            var powerLabel = cc.LabelTTF.create("0/0", "黑体", 20);
-            powerLabel.setPosition(cc.p(420 + offsetX, 381));
-            this._scrollViewLayer.addChild(powerLabel);
+            var exploreMoneyLabel = cc.LabelTTF.create(chapterTable[id].coins_obtain, "STHeitiTC-Medium", 20);
+            exploreMoneyLabel.setColor(cc.c3b(255, 240, 170));
+            exploreMoneyLabel.setAnchorPoint(cc.p(0, 0.5));
+            exploreMoneyLabel.setPosition(cc.p(425 + x, 408));
+            scrollViewLayer.addChild(exploreMoneyLabel);
 
-            var expLabel = cc.LabelTTF.create("0/0", "黑体", 20);
-            expLabel.setPosition(cc.p(420 + offsetX, 333));
-            this._scrollViewLayer.addChild(expLabel);
+            var descriptionLabel = cc.Node.create();
+            descriptionLabel.setPosition(cc.p(230, 270));
+            this.addChild(descriptionLabel);
 
-            var progressLabel = cc.LabelTTF.create("0/0", "黑体", 20);
-            progressLabel.setPosition(cc.p(420 + offsetX, 294));
-            this._scrollViewLayer.addChild(progressLabel);
+            var powerProgress = Progress.create(null, main_scene_image.progress1, 0, 0);
+            powerProgress.setPosition(cc.p(320 + x, 360));
+            scrollViewLayer.addChild(powerProgress);
 
-            var nameLabel = cc.LabelTTF.create(chapterTable[id].section_name + " " + i + " / 10", "黑体", 25);
-            nameLabel.setPosition(cc.p(246 + offsetX, 432));
-            this._scrollViewLayer.addChild(nameLabel);
+            var expProgress = Progress.create(null, main_scene_image.progress2, 0, 0);
+            expProgress.setPosition(cc.p(320 + x, 319));
+            scrollViewLayer.addChild(expProgress);
 
-            var description = this._getDescription(chapterTable[id].description);
+            var sectionProgress = Progress.create(null, main_scene_image.progress3, 0, 0);
+            sectionProgress.setPosition(cc.p(320 + x, 278));
+            scrollViewLayer.addChild(sectionProgress);
+
+            var powerLabel = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 20);
+            powerLabel.setColor(cc.c3b(255, 240, 170));
+            powerLabel.setAnchorPoint(cc.p(0, 0.5));
+            powerLabel.setPosition(cc.p(465 + x, 360));
+            scrollViewLayer.addChild(powerLabel);
+
+            var expLabel = cc.LabelTTF.create("999999", "STHeitiTC-Medium", 20);
+            expLabel.setColor(cc.c3b(255, 240, 170));
+            expLabel.setAnchorPoint(cc.p(0, 0.5));
+            expLabel.setPosition(cc.p(465 + x, 319));
+            scrollViewLayer.addChild(expLabel);
+
+            var progressLabel = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 20);
+            progressLabel.setColor(cc.c3b(255, 240, 170));
+            progressLabel.setAnchorPoint(cc.p(0, 0.5));
+            progressLabel.setPosition(cc.p(465 + x, 278));
+            scrollViewLayer.addChild(progressLabel);
+
+            var description = lz.format(chapterTable[id].description, 20);
             var len = description.length;
             for (var j = 0; j < len; ++j) {
-                var storyLabel = cc.LabelTTF.create(description[j], "黑体", 20);
-                storyLabel.setAnchorPoint(cc.p(0, 0.5));
-                storyLabel.setPosition(cc.p(50 + offsetX, 85 - j * 30));
-                this._scrollViewLayer.addChild(storyLabel);
+                var storyLabel = cc.LabelTTF.create(description[j], "STHeitiTC-Medium", 20);
+                storyLabel.setColor(cc.c3b(255, 240, 170));
+                storyLabel.setAnchorPoint(cc.p(0, 0));
+                storyLabel.setPosition(cc.p(0, -30 * j));
+                descriptionLabel.addChild(storyLabel);
             }
 
-
-            var powerProgress = Progress.create(null, main_scene_image.progress2, 200, 200);
-            powerProgress.setPosition(cc.p(240 + offsetX, 382));
-            this._scrollViewLayer.addChild(powerProgress);
-
-            var expProgress = Progress.create(null, main_scene_image.progress3, 200, 200);
-            expProgress.setPosition(cc.p(240 + offsetX, 335));
-            this._scrollViewLayer.addChild(expProgress);
-
-            var sectionProgress = Progress.create(null, main_scene_image.progress3, 200, 200);
-            sectionProgress.setPosition(cc.p(240 + offsetX, 297));
-            this._scrollViewLayer.addChild(sectionProgress);
-
-            cc.log("xx");
-
-            this._exploreLabelList[i] = {
+            this._element[i] = {
                 powerLabel: powerLabel,
                 expLabel: expLabel,
                 progressLabel: progressLabel,
                 powerProgress: powerProgress,
                 expProgress: expProgress,
-                sectionProgress: sectionProgress
+                sectionProgress: sectionProgress,
+                descriptionLabel: descriptionLabel
             }
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(493, 556), this._scrollViewLayer);
-        this._scrollView.setContentSize(cc.size(5370, 556));
-        this._scrollView.setPosition(cc.p(113, 200));
-        this._scrollView.setBounceable(false);
+        this._scrollView = cc.ScrollView.create(cc.size(640, 569), scrollViewLayer);
+        this._scrollView.setContentSize(cc.size(6400, 569));
+        this._scrollView.setPosition(GAME_BG_POINT);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
@@ -182,80 +247,376 @@ var ExploreLayer = cc.Layer.extend({
 
     update: function () {
         cc.log("ExploreLayer update");
-        cc.log(this._exploreLabelList);
-        for (var i = 1; i <= 10; ++i) {
-            var exploreLabel = this._exploreLabelList[i];
-            var player = gameData.player;
-            var task = gameData.task;
-            var progress = task.getProgress(i + 10 * (this._index - 1));
-            var power = player.get("power");
-            var maxPower = player.get("maxPower");
-            var exp = player.get("exp");
-            var maxExp = player.get("maxExp");
-            var section = progress.progress;
-            var maxSection = progress.points;
 
-            exploreLabel.powerLabel.setString(power + "/" + maxPower);
-            exploreLabel.expLabel.setString(exp + "/" + maxExp);
-            exploreLabel.progressLabel.setString(section + "/" + maxSection);
+        var task = gameData.task;
 
-            exploreLabel.powerProgress.setAllValue(maxPower, power);
-            exploreLabel.expProgress.setAllValue(maxExp, exp);
-            exploreLabel.sectionProgress.setAllValue(maxSection, section);
+        this._maxIndex = task.getPoints();
+
+        if (task.getSection() == this._sectionId) {
+            this._scrollView.setContentSize(cc.size(640 * this._maxIndex, 569));
+        }
+
+        this._scrollView.setContentOffset(this._getScrollViewOffset(), true);
+
+        this._turnLeftSprite.setVisible(this._index > 1);
+        this._turnRightSprite.setVisible(this._index < this._maxIndex);
+
+        var player = gameData.player;
+
+        var power = player.get("power");
+        var maxPower = player.get("maxPower");
+
+        var exp = player.get("exp");
+        var maxExp = player.get("maxExp");
+
+        var progress = task.getProgress(this._getTaskId());
+        var value = progress.progress;
+        var maxValue = progress.maxProgress;
+
+        var time = this._showReward();
+
+        var element = this._element[this._index];
+
+        element.powerLabel.setString(power + "/" + maxPower);
+        element.expLabel.setString(maxExp - exp);
+        element.progressLabel.setString(value + "/" + maxValue);
+
+        element.powerProgress.setAllValue(power, maxPower, time);
+        element.expProgress.setAllValue(exp, maxExp, time);
+        element.sectionProgress.setAllValue(value, maxValue, time);
+
+        for (var i = 1; i <= TASK_POINTS_COUNT; ++i) {
+            this._element[i].descriptionLabel.setVisible(i == this._index);
+        }
+
+        for (var i = 0; i < 3; ++i) {
+            var point = this._mapLabel[i].getPosition();
+
+            if (point.x < -600) {
+                point.x += 1920;
+                this._mapLabel[i].setPosition(point);
+            }
         }
     },
 
-    _onClickExplore: function (id) {
-        return function () {
-            cc.log("ExploreLayer _onClickExplore " + id);
+    _getScrollViewOffset: function () {
+        cc.log("ExploreLayer _getScrollViewOffset");
 
-            var that = this;
-            gameData.task.explore(function (data) {
-                cc.log("ExploreLayer _onClickExplore yes");
-                cc.log(data);
+        this._index = Math.max(this._index, 1);
+        this._index = Math.min(this._index, this._maxIndex);
 
-                if (data.result == "fight") {
-                    BattlePlayer.getInstance().play(data.battleLogId);
-                } else {
-                    that.update();
-                }
-            }, id);
+        return cc.p(-640 * (this._index - 1), 0);
+    },
+
+    _getTaskId: function (index) {
+        cc.log("ExploreLayer _getTaskId");
+
+        index = index || this._index;
+
+        return (this._sectionId - 1) * TASK_POINTS_COUNT + index;
+    },
+
+    _onClickBack: function () {
+        cc.log("ExploreLayer _onClickBack");
+
+        MainScene.getInstance().switchLayer(PveLayer);
+    },
+
+    _onClickExplore: function () {
+        cc.log("ExploreLayer _onClickExplore");
+
+        if (this._bubbleNode) {
+            this._bubbleNode.removeFromParent();
+            this._bubbleNode = null;
         }
+
+        this._lock();
+
+        var that = this;
+        gameData.task.explore(function (data) {
+            cc.log(data);
+
+            that._reward = data;
+
+            that._playAnimation();
+        }, this._getTaskId());
     },
 
-    _showSprite: function (sprite) {
-        cc.log("ExploreLayer _showSprite");
+    _lock: function () {
+        cc.log("ExploreLayer _lock");
+
+        LazyLayer.showCloudLayer();
+        this.setTouchEnabled(false);
     },
 
-    _hitSprite: function (sprite) {
-        cc.log("ExploreLayer _showSprite");
+    _unlock: function () {
+        cc.log("ExploreLayer _unlock");
+
+        LazyLayer.closeCloudLayer();
+        this.setTouchEnabled(true);
     },
 
-    _getDescription: function (str) {
-        cc.log("ExploreLayer _getDescription");
+    _toNext: function () {
+        cc.log("ExploreLayer _next");
 
-        var description = [];
-        var len = str.length;
+        TipLayer.tip("恭喜您，本关已完成");
 
-        for (var i = 0; len > 0; ++i) {
-            if (len < 20) {
-                description[i] = str.substring(i * 20);
-            } else {
-                description[i] = str.substring(i * 20, i * 20 + 20);
+        this.scheduleOnce(function () {
+            this._index += 1;
+
+            if (this._index > this._maxIndex) {
+                this._onClickBack();
             }
 
-            len -= 6;
+            this.update();
+
+            this._unlock();
+        }, 1);
+    },
+
+    _showReward: function () {
+        cc.log("ExploreLayer _showReward");
+
+        if (this._reward) {
+            var fadeAction = cc.Sequence.create(
+                cc.FadeIn.create(0.3),
+                cc.DelayTime.create(0.6),
+                cc.FadeOut.create(0.1)
+            );
+
+            var moveAction = cc.MoveBy.create(0.5, cc.p(0, 20));
+
+            var scaleAction = cc.ScaleTo.create(0.5, 1.5, 1.5);
+
+            var action = cc.Spawn.create(
+                fadeAction,
+                moveAction,
+                scaleAction
+            );
+
+            var x = 640 * (this._index - 1) + 320;
+            if (this._reward.power) {
+                var powerLabel = cc.LabelTTF.create("-" + this._reward.power, "STHeitiTC-Medium", 15);
+                powerLabel.setColor(cc.c3b(255, 240, 170));
+                powerLabel.setPosition(cc.p(x, 365));
+                this._scrollView.addChild(powerLabel, 2);
+                powerLabel.setAnchorPoint(cc.p(0.5, 0.5));
+
+                powerLabel.runAction(action.copy());
+            }
+
+            if (this._reward.exp) {
+                var expLabel = cc.LabelTTF.create("+" + this._reward.exp, "STHeitiTC-Medium", 15);
+                expLabel.setColor(cc.c3b(255, 240, 170));
+                expLabel.setPosition(cc.p(x, 324));
+                this._scrollView.addChild(expLabel, 2);
+                expLabel.setAnchorPoint(cc.p(0.5, 0.5));
+
+                expLabel.runAction(action.copy());
+            }
+
+
+            if (this._reward.progress) {
+                var progressLabel = cc.LabelTTF.create("+" + this._reward.progress, "STHeitiTC-Medium", 15);
+                progressLabel.setColor(cc.c3b(255, 240, 170));
+                progressLabel.setPosition(cc.p(x, 283));
+                this._scrollView.addChild(progressLabel, 2);
+                progressLabel.setAnchorPoint(cc.p(0.5, 0.5));
+
+                progressLabel.runAction(action);
+            }
+
+            this.scheduleOnce(function () {
+                if (powerLabel) powerLabel.removeFromParent();
+                if (expLabel) expLabel.removeFromParent();
+                if (progressLabel) progressLabel.removeFromParent();
+
+
+                var toNext = this._reward.toNext;
+                var goldList = this._reward.goldList;
+
+                this._reward = null;
+
+                var that = this;
+                var cb = function () {
+                    if (toNext) {
+                        that._toNext();
+                    } else {
+                        that._unlock();
+                    }
+                };
+
+                if (goldList) {
+                    GoldLayer.play(goldList, cb);
+                } else {
+                    cb();
+                }
+            }, 1);
+
+            return 1;
         }
 
-        return description;
+        return 0;
+    },
+
+    _playAnimation: function () {
+        cc.log("ExploreLayer _playAnimation");
+
+        var callFuncAction = cc.CallFunc.create(function () {
+            if (this._reward) {
+                if (this._reward.result == "fight") {
+                    this._spiritNode.encounterBattle();
+
+                    this.scheduleOnce(function () {
+                        BattlePlayer.getInstance().play(this._reward.battleLogId);
+                        this._spiritNode.normal();
+                    }, 1);
+                } else if (this._reward.result == "box") {
+                    this._spiritNode.encounterBox();
+
+                    this.scheduleOnce(function () {
+                        this._showBox();
+                        this._spiritNode.normal();
+                    }, 1);
+                } else {
+                    this.update();
+                }
+            } else {
+                this._unlock();
+            }
+        }, this);
+
+        var spiritScaleAction = cc.Sequence.create(
+            cc.ScaleTo.create(0.1, 1, 0.92),
+            cc.ScaleTo.create(0.1, 1, 1.08),
+            cc.ScaleTo.create(0.3, 1, 1),
+            cc.ScaleTo.create(0.3, 1, 1.08),
+            cc.ScaleTo.create(0.1, 1, 1)
+        );
+
+        var spiritMoveAction = cc.Sequence.create(
+            cc.DelayTime.create(0.2),
+            cc.EaseSineOut.create(cc.MoveBy.create(0.3, cc.p(0, 60))),
+            cc.EaseSineIn.create(cc.MoveBy.create(0.3, cc.p(0, -60))),
+            cc.DelayTime.create(0.1)
+        );
+
+        var spiritRepeatAction = cc.Repeat.create(
+            cc.Spawn.create(spiritScaleAction, spiritMoveAction),
+            2
+        );
+
+        var spiritAction = cc.Sequence.create(spiritRepeatAction, callFuncAction);
+
+        this._spiritNode.runAction(spiritAction);
+
+        var spiritShadowScaleAction = cc.Sequence.create(
+            cc.ScaleTo.create(0.1, 1.1, 1.1),
+            cc.ScaleTo.create(0.1, 1, 1),
+            cc.ScaleTo.create(0.3, 0.4, 0.4),
+            cc.ScaleTo.create(0.3, 1, 1),
+            cc.ScaleTo.create(0.1, 1.1, 1.1)
+        );
+
+        var spiritShadowAction = cc.Repeat.create(spiritShadowScaleAction, 2);
+
+        this._spiritShadow.runAction(spiritShadowAction);
+
+        var mapMoveAction = cc.Sequence.create(
+            cc.EaseSineIn.create(cc.MoveBy.create(0.2, cc.p(-6, 0))),
+            cc.MoveBy.create(0.3, cc.p(-40, 0)),
+            cc.MoveBy.create(0.3, cc.p(-40, 0)),
+            cc.EaseSineOut.create(cc.MoveBy.create(0.1, cc.p(-6, 0)))
+        );
+
+        var mapAction = cc.Repeat.create(mapMoveAction, 2);
+
+        for (var i = 0; i < 3; ++i) {
+            this._mapLabel[i].runAction(mapAction.copy());
+        }
+    },
+
+    _showBox: function () {
+        cc.log("TaskLayer _openBox");
+
+        var boxAction = cc.Sequence.create(
+            cc.Spawn.create(
+                cc.MoveBy.create(0.3, cc.p(0, -165)),
+                cc.ScaleTo.create(0.3, 1, 1)
+            ),
+            cc.CallFunc.create(
+                this._openBox,
+                this
+            )
+        );
+
+        this._closeBoxSprite.setPosition(cc.p(360, 1025));
+        this._closeBoxSprite.setScale(0.9);
+        this._closeBoxSprite.setVisible(true);
+
+        this._openBoxSprite.setVisible(false);
+
+        this._closeBoxSprite.runAction(boxAction);
+    },
+
+    _openBox: function () {
+        cc.log("TaskLayer _openBox");
+
+        this._closeBoxSprite.setVisible(false);
+        this._openBoxSprite.setVisible(true);
+
+        var that = this;
+        var cb = function () {
+            that._openBoxSprite.setVisible(false);
+            that.update();
+        };
+
+        this.scheduleOnce(function () {
+            var cardDetails = CardDetails.create(this._reward.card, cb);
+            cc.Director.getInstance().getRunningScene().addChild(cardDetails, 1);
+        }, 0.5);
+    },
+
+    /**
+     * when a touch finished
+     * @param {cc.Touch} touches
+     * @param {event} event
+     */
+    onTouchesEnded: function (touches, event) {
+        cc.log("TaskLayer onTouchesEnded");
+
+        this._scrollView.unscheduleAllCallbacks();
+        this._scrollView.stopAllActions();
+
+        var beganOffset = this._getScrollViewOffset();
+        var endOffset = this._scrollView.getContentOffset();
+        var len = beganOffset.x - endOffset.x;
+
+        if (len !== 0) {
+            if (len > 30) {
+                this._index = 1 - Math.floor(endOffset.x / 640);
+            } else if (len < -30) {
+                this._index = 1 - Math.ceil(endOffset.x / 640);
+            }
+
+            this.update();
+        }
+    },
+
+    /**
+     * @param touch
+     * @param event
+     */
+    onTouchesCancelled: function (touch, event) {
+        this.onTouchesEnded(touch, event);
     }
 });
 
 
-ExploreLayer.create = function (index) {
+ExploreLayer.create = function (sectionId) {
     var ret = new ExploreLayer();
 
-    if (ret && ret.init(index)) {
+    if (ret && ret.init(sectionId)) {
         return ret;
     }
 

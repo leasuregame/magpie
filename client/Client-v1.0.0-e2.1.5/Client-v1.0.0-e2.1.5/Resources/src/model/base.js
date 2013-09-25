@@ -84,6 +84,10 @@ lz.getColor = function (colorType) {
     return color;
 };
 
+lz.getAngle = function (p1, p2) {
+    return (90 - Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI);
+};
+
 
 /*
  * 数组去重
@@ -111,18 +115,21 @@ Array.prototype.distinct = function () {
  * 获取介于两数之间的随机数[a, b)
  * */
 lz.random = function (a, b) {
-    var len = arguments.length;
-
-    if (len == 0) {
-        return 0;
-    }
-
-    if (len == 1) {
+    if (b == undefined) {
         b = a;
         a = 0;
     }
 
     return (Math.random() * (b - a) + a);
+};
+
+/*
+ * 获取整形随机数[a, b - 1]
+ * */
+lz.randomInt = function (a, b) {
+    var randNum = lz.random(a, b);
+
+    return Math.floor(randNum);
 };
 
 // 获取不大于原数的随机数

@@ -506,11 +506,11 @@ var CardListLayer = cc.Layer.extend({
         tipLabel.setPosition(cc.p(100, 920));
         this._otherLabel.addChild(tipLabel);
 
-        var countLabel = cc.LabelTTF.create("0", "黑体", 25);
+        var countLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
         countLabel.setPosition(cc.p(247, 920));
         this.addChild(countLabel);
 
-        var expLabel = cc.LabelTTF.create("0", "黑体", 25);
+        var expLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
         expLabel.setPosition(cc.p(425, 920));
         this.addChild(expLabel);
 
@@ -549,11 +549,11 @@ var CardListLayer = cc.Layer.extend({
         tipLabel.setPosition(cc.p(100, 920));
         this._otherLabel.addChild(tipLabel);
 
-        var countLabel = cc.LabelTTF.create("0", "黑体", 25);
+        var countLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
         countLabel.setPosition(cc.p(247, 920));
         this.addChild(countLabel);
 
-        var rateLabel = cc.LabelTTF.create("0", "黑体", 25);
+        var rateLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
         rateLabel.setPosition(cc.p(425, 920));
         this.addChild(rateLabel);
 
@@ -614,11 +614,11 @@ var CardListLayer = cc.Layer.extend({
         tipLabel.setPosition(cc.p(100, 920));
         this._otherLabel.addChild(tipLabel);
 
-        var countLabel = cc.LabelTTF.create("0", "黑体", 25);
+        var countLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
         countLabel.setPosition(cc.p(247, 920));
         this.addChild(countLabel);
 
-        var moneyLabel = cc.LabelTTF.create("0", "黑体", 25);
+        var moneyLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
         moneyLabel.setPosition(cc.p(425, 920));
         this.addChild(moneyLabel);
 

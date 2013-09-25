@@ -45,32 +45,32 @@ var SpiritDetails = LazyLayer.extend({
         tipIcon.setPosition(cc.p(360, 400));
         this.addChild(tipIcon);
 
-        this._passiveHarmLabel = cc.LabelTTF.create("0%", "黑体", 23);
+        this._passiveHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 23);
         this._passiveHarmLabel.setAnchorPoint(cc.p(0, 0.5));
         this._passiveHarmLabel.setPosition(cc.p(520, 485));
         this.addChild(this._passiveHarmLabel);
 
-        this._skillHarmLabel = cc.LabelTTF.create("0%", "黑体", 23);
+        this._skillHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 23);
         this._skillHarmLabel.setAnchorPoint(cc.p(0, 0.5));
         this._skillHarmLabel.setPosition(cc.p(520, 226));
         this.addChild(this._skillHarmLabel);
 
-        var lvIcon = cc.LabelTTF.create("LV.", "黑体", 40);
+        var lvIcon = cc.LabelTTF.create("LV.", "STHeitiTC-Medium", 40);
         lvIcon.setAnchorPoint(cc.p(0, 0));
         lvIcon.setPosition(cc.p(90, 715));
         this.addChild(lvIcon);
 
-        this._lvLabel = cc.LabelTTF.create("0", "黑体", 28);
+        this._lvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 28);
         this._lvLabel.setAnchorPoint(cc.p(0, 0));
         this._lvLabel.setPosition(cc.p(160, 715));
         this.addChild(this._lvLabel);
 
-        var expIcon = cc.LabelTTF.create("EXP.", "黑体", 36);
+        var expIcon = cc.LabelTTF.create("EXP.", "STHeitiTC-Medium", 36);
         expIcon.setAnchorPoint(cc.p(0, 0));
         expIcon.setPosition(cc.p(415, 715));
         this.addChild(expIcon);
 
-        this._expLabel = cc.LabelTTF.create("0 / 0", "黑体", 28);
+        this._expLabel = cc.LabelTTF.create("0 / 0", "STHeitiTC-Medium", 28);
         this._expLabel.setAnchorPoint(cc.p(0, 0));
         this._expLabel.setPosition(cc.p(500, 715));
         this.addChild(this._expLabel);
@@ -104,7 +104,7 @@ var SpiritDetails = LazyLayer.extend({
 
         var spirit = gameData.spirit;
 
-        this._expProgress.setAllValue(spirit.get("maxExp"), spirit.get("exp"));
+        this._expProgress.setAllValue(spirit.get("exp"), spirit.get("maxExp"));
 
         this._lvLabel.setString(spirit.get("lv"));
         this._expLabel.setString(spirit.get("exp") + " / " + spirit.get("maxExp"));

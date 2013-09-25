@@ -29,7 +29,7 @@ var BattleLogPool = Entity.extend({
         battleLog.type = battleType || PVE_BATTLE_LOG;
         battleLog.id = battleLog.id || 0;
 
-        if (battleLog.own.id !== gameData.player.get("id")) {
+        if (battleLog.ownId !== gameData.player.get("id")) {
             if (battleLog.winner == "own") {
                 battleLog.winner = "enemy";
             } else if (battleLog.winner == "enemy") {

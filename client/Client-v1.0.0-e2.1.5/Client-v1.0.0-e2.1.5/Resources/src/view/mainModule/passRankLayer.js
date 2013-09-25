@@ -59,7 +59,7 @@ var PassRankLayer = cc.Layer.extend({
             nameIcon.setPosition(cc.p(180, y + 70));
             scrollViewLayer.addChild(nameIcon);
 
-            var nameLabel = cc.LabelTTF.create(passRankList[i].name, "黑体", 22);
+            var nameLabel = cc.LabelTTF.create(passRankList[i].name, "STHeitiTC-Medium", 22);
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
             nameLabel.setPosition(cc.p(115, y + 70));
             scrollViewLayer.addChild(nameLabel);

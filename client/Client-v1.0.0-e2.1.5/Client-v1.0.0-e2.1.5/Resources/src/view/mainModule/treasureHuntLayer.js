@@ -84,7 +84,7 @@ var TreasureHuntLayer = cc.Layer.extend({
             iconSprite.setPosition(cc.p(point.x + 1, point.y - 1));
             this.addChild(iconSprite);
 
-            var valueLabel = cc.LabelTTF.create("+" + table[i].value, "黑体", 16);
+            var valueLabel = cc.LabelTTF.create("+" + table[i].value, "STHeitiTC-Medium", 16);
             valueLabel.setAnchorPoint(cc.p(1, 0));
             valueLabel.setPosition(cc.p(point.x + 33, point.y - 35));
             this.addChild(valueLabel);
@@ -115,15 +115,15 @@ var TreasureHuntLayer = cc.Layer.extend({
         helpLabel.setPosition(cc.p(360, 370));
         this.addChild(helpLabel);
 
-        this._freeCountLabel = cc.LabelTTF.create("0", "黑体", 25);
+        this._freeCountLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
         this._freeCountLabel.setPosition(cc.p(420, 397));
         this.addChild(this._freeCountLabel);
 
-        this._countLabel = cc.LabelTTF.create("0", "黑体", 25);
+        this._countLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
         this._countLabel.setPosition(cc.p(420, 343));
         this.addChild(this._countLabel);
 
-        this._goldLabel = cc.LabelTTF.create(0, "黑体", 20);
+        this._goldLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
         this._goldLabel.setPosition(cc.p(580, 933));
         this.addChild(this._goldLabel);

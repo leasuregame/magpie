@@ -159,7 +159,8 @@ var Player = (function(_super) {
         Player.__super__.constructor.apply(this, arguments);
         this.taskMark = new MarkGroup(this.task.mark);
         this.passMark = new MarkGroup(this.pass.mark);
-        this.momoMark = new MarkGroup(this.task.momo);
+        this.momo = [];
+        //this.momoMark = new MarkGroup(this.task.momo);
     }
 
     Player.prototype.init = function() {
@@ -218,8 +219,8 @@ var Player = (function(_super) {
             id: 1,
             progress: 0,
             hasWin: false,
-            mark: [],
-            momo: []
+            mark: []
+            //momo: []
         },
         pass: {
             layer: 0,
@@ -228,7 +229,8 @@ var Player = (function(_super) {
                 diff: 1,
                 isTrigger: false,
                 isClear: false
-            }
+            },
+            isReset:false
         },
         dailyGift: {
             lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
@@ -606,6 +608,45 @@ var Player = (function(_super) {
         }
     };
 
+    /*
+     元宝数量  元宝个数
+
+     1--5       6个
+
+     2--10      2个
+
+     5--20      1个
+
+     5--50      1个
+
+     */
+    Player.prototype.createMonoGift = function() {  //产生摸一摸奖励
+       // var task = utility.deepCopy(this.task);
+        this.momo = new Array(10);
+        for(var i = 0;i < 6;i++) {
+            this.momo[i] = _.random(1,5);
+        }
+        for(var i = 6;i < 8;i++) {
+            this.momo[i] = _.random(2,10);
+        }
+        this.momo[8] = _.random(5,20);
+        this.momo[9] = _.random(5,50);
+
+        return this.momo;
+    };
+
+    Player.prototype.clearMonoGift = function() {   //领取清除摸一摸奖励
+        this.momo = [];
+    };
+
+    Player.prototype.getMonoGiftTotal = function() { //摸一摸产生奖励总和
+        var value = 0;
+        for(var i = 0;i < this.momo.length;i++)
+            value += this.momo[i];
+        //console.log("total = ",value);
+        return value;
+    };
+
     Player.prototype.setTaskMark = function(chapter) {
         this.taskMark.mark(chapter);
         var task = utility.deepCopy(this.task);
@@ -641,6 +682,21 @@ var Player = (function(_super) {
         return this.passMark.hasMark(layer);
     };
 
+    //重置关卡
+    Player.prototype.resetPassMark = function(){
+
+        if(this.pass.isReset == false) {
+            this.pass.isReset = true;
+            var pass = utility.deepCopy(this.pass);
+            this.passMark.mark = [];
+            pass.mark = this.passMark.value;
+            this.pass = pass;
+            console.log("reset pass mark:",this.pass);
+            return true;
+        }
+        return false;
+    };
+
     Player.prototype.incPass = function() {
         var pass = utility.deepCopy(this.pass);
         if (pass.layer >= 100)
@@ -653,6 +709,7 @@ var Player = (function(_super) {
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isTrigger = true;
         pass.mystical.isClear = false;
+        console.log("神秘关卡 = ",pass);
         this.set('pass', pass);
     };
 
@@ -748,7 +805,7 @@ var Player = (function(_super) {
             lineUp: this.lineUpObj(),
             ability: this.getAbility(),
             task: this.task,
-            pass: checkPass(this.pass),
+            pass: utility.deepCopy(checkPass(this.pass)),
             dailyGift: utility.deepCopy(this.dailyGift),
             skillPoint: this.skillPoint,
             energy: this.energy,
@@ -792,9 +849,15 @@ var checkPass = function(pass) {
     if (typeof pass !== 'object') {
         pass = {
             layer: 0,
-            mark: defaultMark()
+            mark: defaultMark(),
+            mystical: {
+                diff: 1,
+                isTrigger: false,
+                isClear: false
+            }
         };
     }
+    console.log("pass = ",pass);
     return pass;
 };
 

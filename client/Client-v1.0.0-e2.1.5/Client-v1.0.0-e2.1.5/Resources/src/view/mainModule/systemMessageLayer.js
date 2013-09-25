@@ -71,12 +71,12 @@ var SystemMessageLayer = cc.Layer.extend({
             msgBgSprite.setPosition(cc.p(0, y));
             scrollViewLayer.addChild(msgBgSprite);
 
-            var msgLabel = cc.LabelTTF.create(systemMessageList[i].content, "黑体", 22);
+            var msgLabel = cc.LabelTTF.create(systemMessageList[i].content, "STHeitiTC-Medium", 22);
             msgLabel.setAnchorPoint(cc.p(0, 0.5));
             msgLabel.setPosition(cc.p(20, y + 60));
             scrollViewLayer.addChild(msgLabel);
 
-            var timeLabel = cc.LabelTTF.create(this._getTimeStr(systemMessageList[i].createTime), "黑体", 16);
+            var timeLabel = cc.LabelTTF.create(this._getTimeStr(systemMessageList[i].createTime), "STHeitiTC-Medium", 16);
             timeLabel.setAnchorPoint(cc.p(1, 0));
             timeLabel.setPosition(cc.p(580, y + 13));
             scrollViewLayer.addChild(timeLabel);

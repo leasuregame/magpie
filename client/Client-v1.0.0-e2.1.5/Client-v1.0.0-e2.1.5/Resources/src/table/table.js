@@ -1,40 +1,6 @@
 var nameChanged = {
     "achievement": "成就配置表",
     "成就配置表": "achievement",
-    "treasure_hunt": "寻宝配置表",
-    "寻宝配置表": "treasure_hunt",
-    "spirit": "元神配置表",
-    "元神配置表": "spirit",
-    "spirit_pool": "灵气池配置表",
-    "灵气池配置表": "spirit_pool",
-    "chapter": "大章表",
-    "大章表": "chapter",
-    "chapter_title": "总章表",
-    "总章表": "chapter_title",
-    "pass_config": "关卡卡牌配置表",
-    "关卡卡牌配置表": "pass_config",
-    "pass_reward": "关卡产出表",
-    "关卡产出表": "pass_reward",
-    "player_upgrade": "玩家升级经验表",
-    "玩家升级经验表": "player_upgrade",
-    "task": "任务奖励表",
-    "任务奖励表": "task",
-    "task_config": "任务卡牌配置表",
-    "任务卡牌配置表": "task_config",
-    "task_card": "任务怪物属性表",
-    "任务怪物属性表": "task_card",
-    "wipe_out": "任务扫荡产出表",
-    "任务扫荡产出表": "wipe_out",
-    "recharge": "充值类型",
-    "充值类型": "recharge",
-    "signIn_rewards": "签到奖励",
-    "签到奖励": "signIn_rewards",
-    "vip": "vip等级配置表",
-    "vip等级配置表": "vip",
-    "vip_box": "vip礼包赠品",
-    "vip礼包赠品": "vip_box",
-    "vip_privilege": "vip特权",
-    "vip特权": "vip_privilege",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
     "card_lv_limit": "卡牌等级限制表",
@@ -47,6 +13,8 @@ var nameChanged = {
     "基础属性成长表": "factors",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
+    "treasure_hunt": "寻宝配置表",
+    "寻宝配置表": "treasure_hunt",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
@@ -55,12 +23,53 @@ var nameChanged = {
     "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
-    "jiacheng": "竞技排名奖励加成系数",
-    "竞技排名奖励加成系数": "jiacheng",
     "rank": "竞技产出表",
-    "竞技产出表": "rank"
+    "竞技产出表": "rank",
+    "ranking_reward": "排名奖励",
+    "排名奖励": "ranking_reward",
+    "ranking_reward_factor": "竞技排名奖励加成系数",
+    "竞技排名奖励加成系数": "ranking_reward_factor",
+    "spirit": "元神配置表",
+    "元神配置表": "spirit",
+    "passFailSpiritSpeak": "爬塔失败喊话配置表",
+    "爬塔失败喊话配置表": "passFailSpiritSpeak",
+    "passWinSpiritSpeak": "爬塔胜利喊话配置表",
+    "爬塔胜利喊话配置表": "passWinSpiritSpeak",
+    "spiritSpeak": "精灵喊话配置表",
+    "精灵喊话配置表": "spiritSpeak",
+    "spirit_pool": "灵气池配置表",
+    "灵气池配置表": "spirit_pool",
+    "chapter": "大章表",
+    "大章表": "chapter",
+    "chapter_title": "总章表",
+    "总章表": "chapter_title",
+    "mystical_pass_config": "神秘关卡配置表",
+    "神秘关卡配置表": "mystical_pass_config",
+    "pass_config": "关卡卡牌配置表",
+    "关卡卡牌配置表": "pass_config",
+    "pass_reward": "关卡产出表",
+    "关卡产出表": "pass_reward",
+    "player_upgrade": "玩家升级经验表",
+    "玩家升级经验表": "player_upgrade",
+    "task": "任务奖励表",
+    "任务奖励表": "task",
+    "task_card": "任务怪物属性表",
+    "任务怪物属性表": "task_card",
+    "task_config": "任务卡牌配置表",
+    "任务卡牌配置表": "task_config",
+    "wipe_out": "任务扫荡产出表",
+    "任务扫荡产出表": "wipe_out",
+    "recharge": "充值类型",
+    "充值类型": "recharge",
+    "signIn_rewards": "签到奖励",
+    "签到奖励": "signIn_rewards",
+    "vip": "vip等级配置表",
+    "vip等级配置表": "vip",
+    "vip_box": "vip礼包赠品",
+    "vip礼包赠品": "vip_box",
+    "vip_privilege": "vip特权",
+    "vip特权": "vip_privilege"
 };
-
 var outputTables = {
     "achievement": {
         "colComment": {},
@@ -292,6 +301,4666 @@ var outputTables = {
             }
         }
     },
+    "card_grow": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "lv": 0,
+                "exp_need": 100,
+                "money_need": 110,
+                "cur_exp": 0
+            },
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "exp_need": 110,
+                "money_need": 115,
+                "cur_exp": 100
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "exp_need": 121,
+                "money_need": 132,
+                "cur_exp": 210
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "exp_need": 133,
+                "money_need": 152,
+                "cur_exp": 331
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "exp_need": 146,
+                "money_need": 175,
+                "cur_exp": 464
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "exp_need": 161,
+                "money_need": 201,
+                "cur_exp": 610
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "exp_need": 177,
+                "money_need": 231,
+                "cur_exp": 771
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "exp_need": 195,
+                "money_need": 266,
+                "cur_exp": 948
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "exp_need": 215,
+                "money_need": 306,
+                "cur_exp": 1143
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "exp_need": 237,
+                "money_need": 352,
+                "cur_exp": 1358
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "exp_need": 261,
+                "money_need": 405,
+                "cur_exp": 1595
+            },
+            "11": {
+                "id": 11,
+                "lv": 11,
+                "exp_need": 287,
+                "money_need": 466,
+                "cur_exp": 1856
+            },
+            "12": {
+                "id": 12,
+                "lv": 12,
+                "exp_need": 316,
+                "money_need": 536,
+                "cur_exp": 2143
+            },
+            "13": {
+                "id": 13,
+                "lv": 13,
+                "exp_need": 348,
+                "money_need": 616,
+                "cur_exp": 2459
+            },
+            "14": {
+                "id": 14,
+                "lv": 14,
+                "exp_need": 383,
+                "money_need": 708,
+                "cur_exp": 2807
+            },
+            "15": {
+                "id": 15,
+                "lv": 15,
+                "exp_need": 421,
+                "money_need": 814,
+                "cur_exp": 3190
+            },
+            "16": {
+                "id": 16,
+                "lv": 16,
+                "exp_need": 463,
+                "money_need": 936,
+                "cur_exp": 3611
+            },
+            "17": {
+                "id": 17,
+                "lv": 17,
+                "exp_need": 509,
+                "money_need": 1076,
+                "cur_exp": 4074
+            },
+            "18": {
+                "id": 18,
+                "lv": 18,
+                "exp_need": 560,
+                "money_need": 1237,
+                "cur_exp": 4583
+            },
+            "19": {
+                "id": 19,
+                "lv": 19,
+                "exp_need": 616,
+                "money_need": 1423,
+                "cur_exp": 5143
+            },
+            "20": {
+                "id": 20,
+                "lv": 20,
+                "exp_need": 678,
+                "money_need": 1636,
+                "cur_exp": 5759
+            },
+            "21": {
+                "id": 21,
+                "lv": 21,
+                "exp_need": 746,
+                "money_need": 1881,
+                "cur_exp": 6437
+            },
+            "22": {
+                "id": 22,
+                "lv": 22,
+                "exp_need": 821,
+                "money_need": 2163,
+                "cur_exp": 7183
+            },
+            "23": {
+                "id": 23,
+                "lv": 23,
+                "exp_need": 903,
+                "money_need": 2487,
+                "cur_exp": 8004
+            },
+            "24": {
+                "id": 24,
+                "lv": 24,
+                "exp_need": 993,
+                "money_need": 2860,
+                "cur_exp": 8907
+            },
+            "25": {
+                "id": 25,
+                "lv": 25,
+                "exp_need": 1092,
+                "money_need": 3289,
+                "cur_exp": 9900
+            },
+            "26": {
+                "id": 26,
+                "lv": 26,
+                "exp_need": 1201,
+                "money_need": 3782,
+                "cur_exp": 10992
+            },
+            "27": {
+                "id": 27,
+                "lv": 27,
+                "exp_need": 1321,
+                "money_need": 4349,
+                "cur_exp": 12193
+            },
+            "28": {
+                "id": 28,
+                "lv": 28,
+                "exp_need": 1453,
+                "money_need": 5001,
+                "cur_exp": 13514
+            },
+            "29": {
+                "id": 29,
+                "lv": 29,
+                "exp_need": 1598,
+                "money_need": 5751,
+                "cur_exp": 14967
+            },
+            "30": {
+                "id": 30,
+                "lv": 30,
+                "exp_need": 1758,
+                "money_need": 6614,
+                "cur_exp": 16565
+            },
+            "31": {
+                "id": 31,
+                "lv": 31,
+                "exp_need": 1934,
+                "money_need": 7606,
+                "cur_exp": 18323
+            },
+            "32": {
+                "id": 32,
+                "lv": 32,
+                "exp_need": 2127,
+                "money_need": 8747,
+                "cur_exp": 20257
+            },
+            "33": {
+                "id": 33,
+                "lv": 33,
+                "exp_need": 2340,
+                "money_need": 10059,
+                "cur_exp": 22384
+            },
+            "34": {
+                "id": 34,
+                "lv": 34,
+                "exp_need": 2574,
+                "money_need": 11568,
+                "cur_exp": 24724
+            },
+            "35": {
+                "id": 35,
+                "lv": 35,
+                "exp_need": 2831,
+                "money_need": 13303,
+                "cur_exp": 27298
+            },
+            "36": {
+                "id": 36,
+                "lv": 36,
+                "exp_need": 3114,
+                "money_need": 15298,
+                "cur_exp": 30129
+            },
+            "37": {
+                "id": 37,
+                "lv": 37,
+                "exp_need": 3425,
+                "money_need": 17593,
+                "cur_exp": 33243
+            },
+            "38": {
+                "id": 38,
+                "lv": 38,
+                "exp_need": 3768,
+                "money_need": 20232,
+                "cur_exp": 36668
+            },
+            "39": {
+                "id": 39,
+                "lv": 39,
+                "exp_need": 4145,
+                "money_need": 23267,
+                "cur_exp": 40436
+            },
+            "40": {
+                "id": 40,
+                "lv": 40,
+                "exp_need": 4560,
+                "money_need": 26757,
+                "cur_exp": 44581
+            },
+            "41": {
+                "id": 41,
+                "lv": 41,
+                "exp_need": 5016,
+                "money_need": 30771,
+                "cur_exp": 49141
+            },
+            "42": {
+                "id": 42,
+                "lv": 42,
+                "exp_need": 5518,
+                "money_need": 35387,
+                "cur_exp": 54157
+            },
+            "43": {
+                "id": 43,
+                "lv": 43,
+                "exp_need": 6070,
+                "money_need": 40695,
+                "cur_exp": 59675
+            },
+            "44": {
+                "id": 44,
+                "lv": 44,
+                "exp_need": 6677,
+                "money_need": 46799,
+                "cur_exp": 65745
+            },
+            "45": {
+                "id": 45,
+                "lv": 45,
+                "exp_need": 7345,
+                "money_need": 53819,
+                "cur_exp": 72422
+            },
+            "46": {
+                "id": 46,
+                "lv": 46,
+                "exp_need": 8080,
+                "money_need": 61892,
+                "cur_exp": 79767
+            },
+            "47": {
+                "id": 47,
+                "lv": 47,
+                "exp_need": 8888,
+                "money_need": 71176,
+                "cur_exp": 87847
+            },
+            "48": {
+                "id": 48,
+                "lv": 48,
+                "exp_need": 9777,
+                "money_need": 81852,
+                "cur_exp": 96735
+            },
+            "49": {
+                "id": 49,
+                "lv": 49,
+                "exp_need": 10755,
+                "money_need": 94130,
+                "cur_exp": 106512
+            },
+            "50": {
+                "id": 50,
+                "lv": 50,
+                "exp_need": 11831,
+                "money_need": 108250,
+                "cur_exp": 117267
+            },
+            "51": {
+                "id": 51,
+                "lv": 51,
+                "exp_need": 13014,
+                "money_need": 124488,
+                "cur_exp": 129098
+            },
+            "52": {
+                "id": 52,
+                "lv": 52,
+                "exp_need": 14315,
+                "money_need": 143161,
+                "cur_exp": 142112
+            },
+            "53": {
+                "id": 53,
+                "lv": 53,
+                "exp_need": 15747,
+                "money_need": 164635,
+                "cur_exp": 156427
+            },
+            "54": {
+                "id": 54,
+                "lv": 54,
+                "exp_need": 17322,
+                "money_need": 189330,
+                "cur_exp": 172174
+            },
+            "55": {
+                "id": 55,
+                "lv": 55,
+                "exp_need": 19054,
+                "money_need": 217730,
+                "cur_exp": 189496
+            },
+            "56": {
+                "id": 56,
+                "lv": 56,
+                "exp_need": 20959,
+                "money_need": 250390,
+                "cur_exp": 208550
+            },
+            "57": {
+                "id": 57,
+                "lv": 57,
+                "exp_need": 23055,
+                "money_need": 287949,
+                "cur_exp": 229509
+            },
+            "58": {
+                "id": 58,
+                "lv": 58,
+                "exp_need": 25361,
+                "money_need": 331141,
+                "cur_exp": 252564
+            },
+            "59": {
+                "id": 59,
+                "lv": 59,
+                "exp_need": 27897,
+                "money_need": 380812,
+                "cur_exp": 277925
+            },
+            "60": {
+                "id": 60,
+                "lv": 60,
+                "exp_need": 30687,
+                "money_need": 437934,
+                "cur_exp": 305822
+            }
+        }
+    },
+    "card_lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "max_lv": 30
+            },
+            "2": {
+                "id": 2,
+                "max_lv": 40
+            },
+            "3": {
+                "id": 3,
+                "max_lv": 50
+            },
+            "4": {
+                "id": 4,
+                "max_lv": 55
+            },
+            "5": {
+                "id": 5,
+                "max_lv": 60
+            }
+        }
+    },
+    "cards": {
+        "colComment": {
+            "skill_id": {
+                "table": "技能配置表",
+                "key_index": "id",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "1": {
+                "id": 1,
+                "number": 1,
+                "name": "石猴·孙悟空",
+                "star": 1,
+                "lv": 1,
+                "atk": 59,
+                "hp": 103,
+                "description": "不要老是跟我提五百年后的事情，烦不烦啊！",
+                "url": 1
+            },
+            "2": {
+                "id": 2,
+                "number": 1,
+                "name": "美猴王·孙悟空",
+                "star": 2,
+                "lv": 1,
+                "atk": 109,
+                "hp": 125,
+                "description": "凭什么我是妖，你是仙，户口本上有写么？",
+                "url": 2
+            },
+            "3": {
+                "id": 3,
+                "number": 1,
+                "name": "齐天大圣·孙悟空",
+                "star": 3,
+                "lv": 1,
+                "atk": 155,
+                "hp": 352,
+                "skill_name": "七十二变",
+                "skill_id": 3,
+                "description": "从今往后一万年，你们都会记住我的名字，齐天大圣孙悟空。",
+                "url": 3
+            },
+            "4": {
+                "id": 4,
+                "number": 1,
+                "name": "行者·孙悟空",
+                "star": 4,
+                "lv": 1,
+                "atk": 210,
+                "hp": 503,
+                "skill_name": "七十二变",
+                "skill_id": 3,
+                "description": "你是谁的亲戚，麻烦打架前先报上来，免得俺老孙白费力气。",
+                "url": 4
+            },
+            "5": {
+                "id": 5,
+                "number": 1,
+                "name": "斗战圣佛·孙悟空",
+                "star": 5,
+                "lv": 1,
+                "atk": 280,
+                "hp": 651,
+                "skill_name": "七十二变",
+                "skill_id": 3,
+                "description": "一沙一世界，一树一菩提，妖即是色，色即是空，空即是佛。",
+                "url": 5
+            },
+            "6": {
+                "id": 6,
+                "number": 2,
+                "name": "猪刚鬣·猪八戒",
+                "star": 1,
+                "lv": 1,
+                "atk": 45,
+                "hp": 129,
+                "description": "当你不能够再拥有，你唯一可以做的，就是令自己不要忘记。",
+                "url": 6
+            },
+            "7": {
+                "id": 7,
+                "number": 2,
+                "name": "高庄主·猪八戒",
+                "star": 2,
+                "lv": 1,
+                "atk": 91,
+                "hp": 275,
+                "description": "第一次见到翠兰，我就想起了你，就像每次抬头看到月亮一样。",
+                "url": 1
+            },
+            "8": {
+                "id": 8,
+                "number": 2,
+                "name": "二师兄·猪八戒",
+                "star": 3,
+                "lv": 1,
+                "atk": 142,
+                "hp": 398,
+                "skill_name": "倒打一耙",
+                "skill_id": 5,
+                "description": "猴子说我呆，沙僧说我二，其实我只是不想做这些无意义的事情。",
+                "url": 2
+            },
+            "9": {
+                "id": 9,
+                "number": 2,
+                "name": "净坛使者·猪八戒",
+                "star": 4,
+                "lv": 1,
+                "atk": 182,
+                "hp": 543,
+                "skill_name": "倒打一耙",
+                "skill_id": 5,
+                "description": "连如来也当我是个吃货，其实我唯有不停的吃，才能让自己不去想她。",
+                "url": 3
+            },
+            "10": {
+                "id": 10,
+                "number": 2,
+                "name": "天蓬元帅·猪八戒",
+                "star": 5,
+                "lv": 1,
+                "atk": 255,
+                "hp": 713,
+                "skill_name": "倒打一耙",
+                "skill_id": 5,
+                "description": "那年，我管银河系。",
+                "url": 4
+            },
+            "11": {
+                "id": 11,
+                "number": 3,
+                "name": "流沙河·沙悟净",
+                "star": 1,
+                "lv": 1,
+                "atk": 51,
+                "hp": 122,
+                "description": "昨日像那东流水，离我远去不可留，今日乱我心，多烦忧。",
+                "url": 5
+            },
+            "12": {
+                "id": 12,
+                "number": 3,
+                "name": "骷髅九·沙悟净",
+                "star": 2,
+                "lv": 1,
+                "atk": 97,
+                "hp": 246,
+                "description": "我脖子上九个骷髅可不是塑料的，哥也是在道上混的。",
+                "url": 6
+            },
+            "13": {
+                "id": 13,
+                "number": 3,
+                "name": "沙和尚·沙悟净",
+                "star": 3,
+                "lv": 1,
+                "atk": 148,
+                "hp": 372,
+                "skill_name": "流沙搅风",
+                "skill_id": 1,
+                "description": "大师兄，师傅被抓走了！大师兄，二师兄和师傅被抓走了！",
+                "url": 1
+            },
+            "14": {
+                "id": 14,
+                "number": 3,
+                "name": "卷帘大将·沙悟净",
+                "star": 4,
+                "lv": 1,
+                "atk": 202,
+                "hp": 518,
+                "skill_name": "流沙搅风",
+                "skill_id": 1,
+                "description": "我这职位就像领导司机，比较敏感，容易说错话做错事。",
+                "url": 2
+            },
+            "15": {
+                "id": 15,
+                "number": 3,
+                "name": "金身罗汉·沙悟净",
+                "star": 5,
+                "lv": 1,
+                "atk": 273,
+                "hp": 674,
+                "skill_name": "流沙搅风",
+                "skill_id": 1,
+                "description": "我是要告诉人家，我失去的东西一定要拿回来！",
+                "url": 3
+            },
+            "16": {
+                "id": 16,
+                "number": 4,
+                "name": "大力·牛魔王",
+                "star": 1,
+                "lv": 1,
+                "atk": 50,
+                "hp": 121,
+                "description": "力气大不是罪，不能什么脏活累活都叫我做啊！",
+                "url": 4
+            },
+            "17": {
+                "id": 17,
+                "number": 4,
+                "name": "芭蕉洞主·牛魔王",
+                "star": 2,
+                "lv": 1,
+                "atk": 95,
+                "hp": 151,
+                "description": "我按照芭蕉叶的样子，给你铸了把扇子，妹纸，你喜欢么？",
+                "url": 5
+            },
+            "18": {
+                "id": 18,
+                "number": 4,
+                "name": "平天大圣·牛魔王",
+                "star": 3,
+                "lv": 1,
+                "atk": 151,
+                "hp": 373,
+                "skill_name": "群牛乱舞",
+                "skill_id": 5,
+                "description": "看清楚是平天不是齐天！猴子是我小弟，不要总拿他压我！",
+                "url": 6
+            },
+            "19": {
+                "id": 19,
+                "number": 4,
+                "name": "众神之神·牛魔王",
+                "star": 4,
+                "lv": 1,
+                "atk": 203,
+                "hp": 520,
+                "skill_name": "群牛乱舞",
+                "skill_id": 5,
+                "description": "我宁愿做一日英雄，都不想成世做条虫，放马过来吧！",
+                "url": 1
+            },
+            "20": {
+                "id": 20,
+                "number": 4,
+                "name": "放下屠刀·牛魔王",
+                "star": 5,
+                "lv": 1,
+                "atk": 275,
+                "hp": 675,
+                "skill_name": "群牛乱舞",
+                "skill_id": 5,
+                "description": "孩子被你们带走了，老婆也离我而去，你要我放下，我还有什么可放？",
+                "url": 2
+            },
+            "21": {
+                "id": 21,
+                "number": 5,
+                "name": "唐僧·金蝉子",
+                "star": 1,
+                "lv": 1,
+                "atk": 49,
+                "hp": 120,
+                "description": "那年，我徒步去阿三国，没有导游，只有三个同样不认识路的驴友。",
+                "url": 3
+            },
+            "22": {
+                "id": 22,
+                "number": 5,
+                "name": "普渡众佛·金蝉子",
+                "star": 2,
+                "lv": 1,
+                "atk": 99,
+                "hp": 249,
+                "description": "江湖谣言吃了我的肉可以长生不老，你看我年龄就知道是假的了。",
+                "url": 4
+            },
+            "23": {
+                "id": 23,
+                "number": 5,
+                "name": "燃灯道人·金蝉子",
+                "star": 3,
+                "lv": 1,
+                "atk": 148,
+                "hp": 377,
+                "skill_name": "普度众生",
+                "skill_id": 10,
+                "description": "我知道在雷音寺宣传道教等于去踢馆，所以如来直接把我给转世到了人间。",
+                "url": 5
+            },
+            "24": {
+                "id": 24,
+                "number": 5,
+                "name": "功德佛·金蝉子",
+                "star": 4,
+                "lv": 1,
+                "atk": 201,
+                "hp": 522,
+                "skill_name": "普度众生",
+                "skill_id": 10,
+                "description": "我心里清楚，我的功德是奶了雷音寺这帮人，而不是因为取经。",
+                "url": 6
+            },
+            "25": {
+                "id": 25,
+                "number": 5,
+                "name": "真身·金蝉子",
+                "star": 5,
+                "lv": 1,
+                "atk": 272,
+                "hp": 676,
+                "skill_name": "普度众生",
+                "skill_id": 10,
+                "description": "我吃素，却总是被人当肉吃，我只想做回我自己。",
+                "url": 1
+            },
+            "26": {
+                "id": 26,
+                "number": 6,
+                "name": "龟兹公主·铁扇公主",
+                "star": 1,
+                "lv": 1,
+                "atk": 60,
+                "hp": 105,
+                "description": "那一年，我在龟兹，那一年，我是公主。",
+                "url": 2
+            },
+            "27": {
+                "id": 27,
+                "number": 6,
+                "name": "罗刹女·铁扇公主",
+                "star": 2,
+                "lv": 1,
+                "atk": 111,
+                "hp": 225,
+                "description": "嫁给老牛后，我有了另一个名字，罗莎女。",
+                "url": 3
+            },
+            "28": {
+                "id": 28,
+                "number": 6,
+                "name": "芭蕉扇·铁扇公主",
+                "star": 3,
+                "lv": 1,
+                "atk": 161,
+                "hp": 341,
+                "skill_name": "浴火重生",
+                "skill_id": 2,
+                "description": "你热么？我给你扇扇？",
+                "url": 4
+            },
+            "29": {
+                "id": 29,
+                "number": 6,
+                "name": "牛夫人·铁扇公主",
+                "star": 4,
+                "lv": 1,
+                "atk": 216,
+                "hp": 501,
+                "skill_name": "浴火重生",
+                "skill_id": 2,
+                "description": "以前看月亮的时候叫人家小甜甜，原来都是假的。",
+                "url": 5
+            },
+            "30": {
+                "id": 30,
+                "number": 6,
+                "name": "情比金坚·铁扇公主",
+                "star": 5,
+                "lv": 1,
+                "atk": 288,
+                "hp": 630,
+                "skill_name": "浴火重生",
+                "skill_id": 2,
+                "description": "孩子已被掳走，再不能让他们把我们夫妻分离了。",
+                "url": 6
+            },
+            "31": {
+                "id": 31,
+                "number": 7,
+                "name": "天将·巨灵神",
+                "star": 1,
+                "lv": 1,
+                "atk": 53,
+                "hp": 125,
+                "description": "当天将不是那么容易的，得通过天将考试，录取比例很低。",
+                "url": 1
+            },
+            "32": {
+                "id": 32,
+                "number": 7,
+                "name": "门卫·巨灵神",
+                "star": 2,
+                "lv": 1,
+                "atk": 101,
+                "hp": 251,
+                "description": "我不喜欢门卫这个称呼，我更喜欢大家叫我天宫天门守将。",
+                "url": 2
+            },
+            "33": {
+                "id": 33,
+                "number": 7,
+                "name": "搬山救民·巨灵神",
+                "star": 3,
+                "lv": 1,
+                "atk": 151,
+                "hp": 371,
+                "skill_name": "雷霆之怒",
+                "skill_id": 3,
+                "description": "想搬家么？找我吧！什么？房子很大？我可以把你家对面那条河一起搬走。",
+                "url": 3
+            },
+            "34": {
+                "id": 34,
+                "number": 7,
+                "name": "急先锋·巨灵神",
+                "star": 4,
+                "lv": 1,
+                "atk": 205,
+                "hp": 519,
+                "skill_name": "雷霆之怒",
+                "skill_id": 3,
+                "description": "先锋这个职业，基本就是送死+被黑锅的意思，你懂的。",
+                "url": 4
+            },
+            "35": {
+                "id": 35,
+                "number": 7,
+                "name": "神斧·巨灵神",
+                "star": 5,
+                "lv": 1,
+                "atk": 277,
+                "hp": 677,
+                "skill_name": "雷霆之怒",
+                "skill_id": 3,
+                "description": "斧头帮知道吧，那是我开创的。",
+                "url": 5
+            },
+            "36": {
+                "id": 36,
+                "number": 8,
+                "name": "神二代·红孩儿",
+                "star": 1,
+                "lv": 1,
+                "atk": 49,
+                "hp": 122,
+                "description": "我爸是牛魔，我妈是铁扇，我是神二代！",
+                "url": 6
+            },
+            "37": {
+                "id": 37,
+                "number": 8,
+                "name": "火云洞·红孩儿",
+                "star": 2,
+                "lv": 1,
+                "atk": 100,
+                "hp": 248,
+                "description": "我有一所房子，面朝大海，春暖花开，4M宽带，能叫外卖。",
+                "url": 1
+            },
+            "38": {
+                "id": 38,
+                "number": 8,
+                "name": "三味真火·红孩儿",
+                "star": 3,
+                "lv": 1,
+                "atk": 145,
+                "hp": 376,
+                "skill_name": "三味真火",
+                "skill_id": 3,
+                "description": "这门神功的唯一的缺点是使用前要先把自己打出鼻血来……",
+                "url": 2
+            },
+            "39": {
+                "id": 39,
+                "number": 8,
+                "name": "圣婴大王·红孩儿",
+                "star": 4,
+                "lv": 1,
+                "atk": 206,
+                "hp": 519,
+                "skill_name": "三味真火",
+                "skill_id": 3,
+                "description": "虽然我长个正太样儿，却有颗大叔的心。",
+                "url": 3
+            },
+            "40": {
+                "id": 40,
+                "number": 8,
+                "name": "善财童子·红孩儿",
+                "star": 5,
+                "lv": 1,
+                "atk": 273,
+                "hp": 671,
+                "skill_name": "三味真火",
+                "skill_id": 3,
+                "description": "厌倦了打打杀杀、尔虞我诈的日子，我决定从事更有前途的金融行业。",
+                "url": 4
+            },
+            "41": {
+                "id": 41,
+                "number": 9,
+                "name": "冀州侯·黄飞虎",
+                "star": 1,
+                "lv": 1,
+                "atk": 43,
+                "hp": 113,
+                "description": "我爹说，老虎要会飞，谁都挡不住，所以我叫黄飞虎。",
+                "url": 5
+            },
+            "42": {
+                "id": 42,
+                "number": 9,
+                "name": "夜奔·黄飞虎",
+                "star": 2,
+                "lv": 1,
+                "atk": 106,
+                "hp": 244,
+                "description": "领导给我戴个绿帽子也就忍了，还杀我妹妹，下一个是不是轮到我了？",
+                "url": 6
+            },
+            "43": {
+                "id": 43,
+                "number": 9,
+                "name": "复仇·黄飞虎",
+                "star": 3,
+                "lv": 1,
+                "atk": 156,
+                "hp": 371,
+                "skill_name": "兽之元神",
+                "skill_id": 1,
+                "description": "当仇恨成为了信仰，我就变成了复仇的恶魔。",
+                "url": 1
+            },
+            "44": {
+                "id": 44,
+                "number": 9,
+                "name": "武成王·黄飞虎",
+                "star": 4,
+                "lv": 1,
+                "atk": 204,
+                "hp": 525,
+                "skill_name": "兽之元神",
+                "skill_id": 1,
+                "description": "我对这次的任命很满意，感谢姬总对我的信任！",
+                "url": 2
+            },
+            "45": {
+                "id": 45,
+                "number": 9,
+                "name": "仁圣大帝·黄飞虎",
+                "star": 5,
+                "lv": 1,
+                "atk": 278,
+                "hp": 680,
+                "skill_name": "兽之元神",
+                "skill_id": 1,
+                "description": "嫌我名字长？和慈禧比起来，我这个只能算缩写。",
+                "url": 3
+            },
+            "46": {
+                "id": 46,
+                "number": 10,
+                "name": "阿哥·雷震子",
+                "star": 1,
+                "lv": 1,
+                "atk": 53,
+                "hp": 119,
+                "description": "我爹战斗力强，排到我，已经是第一百个孩子了。",
+                "url": 4
+            },
+            "47": {
+                "id": 47,
+                "number": 10,
+                "name": "羽人·雷震子",
+                "star": 2,
+                "lv": 1,
+                "atk": 103,
+                "hp": 244,
+                "description": "虽然我有一对翅膀，但请不要叫我鸟人，你可以叫我X-man。",
+                "url": 5
+            },
+            "48": {
+                "id": 48,
+                "number": 10,
+                "name": "救父·雷震子",
+                "star": 3,
+                "lv": 1,
+                "atk": 151,
+                "hp": 373,
+                "skill_name": "雷音破",
+                "skill_id": 1,
+                "description": "走的匆忙，忘记问师父我爹长啥样了，这是要闹哪样呀！",
+                "url": 6
+            },
+            "49": {
+                "id": 49,
+                "number": 10,
+                "name": "出五关·雷震子",
+                "star": 4,
+                "lv": 1,
+                "atk": 206,
+                "hp": 519,
+                "skill_name": "雷音破",
+                "skill_id": 1,
+                "description": "一条命通五关不难，难的是还要背个人一起过，不服你试试？",
+                "url": 1
+            },
+            "50": {
+                "id": 50,
+                "number": 10,
+                "name": "金刚·雷震子",
+                "star": 5,
+                "lv": 1,
+                "atk": 281,
+                "hp": 651,
+                "skill_name": "雷音破",
+                "skill_id": 1,
+                "description": "你感觉不到我的体温，因为我全身都是金刚，没有血肉。",
+                "url": 2
+            },
+            "51": {
+                "id": 51,
+                "number": 11,
+                "name": "羽麟奴·妲己",
+                "star": 1,
+                "lv": 1,
+                "atk": 59,
+                "hp": 125,
+                "description": "那年我和大家一起高歌：从我羽麟，北平成汤！",
+                "url": 3
+            },
+            "52": {
+                "id": 52,
+                "number": 11,
+                "name": "轩辕坟·妲己",
+                "star": 2,
+                "lv": 1,
+                "atk": 111,
+                "hp": 255,
+                "description": "南巢一役后，我躲进了轩辕坟，千年修行，千年孤独。",
+                "url": 4
+            },
+            "53": {
+                "id": 53,
+                "number": 11,
+                "name": "彰德夫人·妲己",
+                "star": 3,
+                "lv": 1,
+                "atk": 161,
+                "hp": 368,
+                "skill_name": "红颜祸水",
+                "skill_id": 6,
+                "description": "商朝的后宫也演甄嬛传啊有木有，刚进宫皇后就训话，本宫心累啊！",
+                "url": 5
+            },
+            "54": {
+                "id": 54,
+                "number": 11,
+                "name": "醉生梦死·妲己",
+                "star": 4,
+                "lv": 1,
+                "atk": 216,
+                "hp": 516,
+                "skill_name": "红颜祸水",
+                "skill_id": 6,
+                "description": "我不懂什么红颜祸水，我只是棋盘中的一颗棋子，但我知道我们是真爱！",
+                "url": 6
+            },
+            "55": {
+                "id": 55,
+                "number": 11,
+                "name": "九尾天狐·妲己",
+                "star": 5,
+                "lv": 1,
+                "atk": 283,
+                "hp": 670,
+                "skill_name": "红颜祸水",
+                "skill_id": 6,
+                "description": "千年修白，万年修黑。女娲娘娘，真的是这样子的么？",
+                "url": 1
+            },
+            "56": {
+                "id": 56,
+                "number": 12,
+                "name": "隐士·姜子牙",
+                "star": 1,
+                "lv": 1,
+                "atk": 60,
+                "hp": 121,
+                "description": "山上啥都有，一分钱不用花，还能赚个隐居的好名声。",
+                "url": 2
+            },
+            "57": {
+                "id": 57,
+                "number": 12,
+                "name": "渔者·姜子牙",
+                "star": 2,
+                "lv": 1,
+                "atk": 115,
+                "hp": 260,
+                "description": "我每次打开陌陌，向周围的美女打招呼，嘴里都会默念“愿者上钩”。",
+                "url": 3
+            },
+            "58": {
+                "id": 58,
+                "number": 12,
+                "name": "占卜师·姜子牙",
+                "star": 3,
+                "lv": 1,
+                "atk": 162,
+                "hp": 370,
+                "skill_name": "太公之悲",
+                "skill_id": 7,
+                "description": "施主印堂发黑，带有凶兆，必有大波，不如让贫道为你算上一卦。",
+                "url": 4
+            },
+            "59": {
+                "id": 59,
+                "number": 12,
+                "name": "尚父·姜子牙",
+                "star": 4,
+                "lv": 1,
+                "atk": 219,
+                "hp": 522,
+                "skill_name": "太公之悲",
+                "skill_id": 7,
+                "description": "我孙子和姬发差不多大，他封我为尚父，我总觉得哪里不对劲。",
+                "url": 5
+            },
+            "60": {
+                "id": 60,
+                "number": 12,
+                "name": "齐祖·姜子牙",
+                "star": 5,
+                "lv": 1,
+                "atk": 285,
+                "hp": 677,
+                "skill_name": "太公之悲",
+                "skill_id": 7,
+                "description": "齐祖是说我是齐国创始人，不是说我长的像齐达内。",
+                "url": 6
+            },
+            "61": {
+                "id": 61,
+                "number": 13,
+                "name": "总兵·李靖",
+                "star": 1,
+                "lv": 1,
+                "atk": 62,
+                "hp": 130,
+                "description": "兄弟我在陈塘关当总兵的时候，吃西瓜从来不花钱。",
+                "url": 1
+            },
+            "62": {
+                "id": 62,
+                "number": 13,
+                "name": "人父·李靖",
+                "star": 2,
+                "lv": 1,
+                "atk": 113,
+                "hp": 259,
+                "description": "我有三子一女，但我还是最喜欢我的干女儿，你懂的。",
+                "url": 2
+            },
+            "63": {
+                "id": 63,
+                "number": 13,
+                "name": "降魔大元帅·李靖",
+                "star": 3,
+                "lv": 1,
+                "atk": 155,
+                "hp": 380,
+                "skill_name": "失魂引",
+                "skill_id": 1,
+                "description": "这帮天兵天将下凡连城管都打不过，还想我去收孙悟空！",
+                "url": 3
+            },
+            "64": {
+                "id": 64,
+                "number": 13,
+                "name": "保卫天庭·李靖",
+                "star": 4,
+                "lv": 1,
+                "atk": 219,
+                "hp": 529,
+                "skill_name": "失魂引",
+                "skill_id": 1,
+                "description": "天庭的九门提督可不好当，你知道隆科多是怎么挂的么？",
+                "url": 4
+            },
+            "65": {
+                "id": 65,
+                "number": 13,
+                "name": "托塔天王·李靖",
+                "star": 5,
+                "lv": 1,
+                "atk": 288,
+                "hp": 680,
+                "skill_name": "失魂引",
+                "skill_id": 1,
+                "description": "每天托着个十几斤重的塔走来走去，我的手臂都快骨质增生了。",
+                "url": 5
+            },
+            "66": {
+                "id": 66,
+                "number": 14,
+                "name": "快枪手·赵公民",
+                "star": 1,
+                "lv": 1,
+                "atk": 51,
+                "hp": 122,
+                "description": "天下武功，无坚不破，唯快不破，所以先下手总是没错。",
+                "url": 6
+            },
+            "67": {
+                "id": 67,
+                "number": 14,
+                "name": "神鞭·赵公民",
+                "star": 2,
+                "lv": 1,
+                "atk": 99,
+                "hp": 243,
+                "description": "想歪的给我面壁去，我说的是武器。",
+                "url": 1
+            },
+            "68": {
+                "id": 68,
+                "number": 14,
+                "name": "大罗金仙·赵公明",
+                "star": 3,
+                "lv": 1,
+                "atk": 149,
+                "hp": 374,
+                "skill_name": "五音诀",
+                "skill_id": 8,
+                "description": "我能有今天的成就，要感谢我的粑粑和麻麻，还有CCTV。",
+                "url": 2
+            },
+            "69": {
+                "id": 69,
+                "number": 14,
+                "name": "玄坛真君·赵公明",
+                "star": 4,
+                "lv": 1,
+                "atk": 205,
+                "hp": 518,
+                "skill_name": "五音诀",
+                "skill_id": 8,
+                "description": "当不当教主真的不重要，看一看这花花世界，就像梦一场。",
+                "url": 3
+            },
+            "70": {
+                "id": 70,
+                "number": 14,
+                "name": "财神·赵公明",
+                "star": 5,
+                "lv": 1,
+                "atk": 271,
+                "hp": 672,
+                "skill_name": "五音诀",
+                "skill_id": 8,
+                "description": "我就是一ATM，关键还得你卡里有钱，不然我也帮不了你。",
+                "url": 4
+            },
+            "71": {
+                "id": 71,
+                "number": 15,
+                "name": "异类·申公豹",
+                "star": 1,
+                "lv": 1,
+                "atk": 48,
+                "hp": 121,
+                "description": "虽然我们是修炼成仙，但我知道他们看不起我的异类出身。",
+                "url": 5
+            },
+            "72": {
+                "id": 72,
+                "number": 15,
+                "name": "铁齿铜牙·申公豹",
+                "star": 2,
+                "lv": 1,
+                "atk": 102,
+                "hp": 244,
+                "description": "就算我能把死的说成活的，也无法改变阐教的种族主义思想。",
+                "url": 6
+            },
+            "73": {
+                "id": 73,
+                "number": 15,
+                "name": "雷公鞭·申公豹",
+                "star": 3,
+                "lv": 1,
+                "atk": 144,
+                "hp": 369,
+                "skill_name": "玄冥寒",
+                "skill_id": 1,
+                "description": "没有人能分辨出这究竟是一道影，还是一堵墙，其实它是我的鞭。",
+                "url": 1
+            },
+            "74": {
+                "id": 74,
+                "number": 15,
+                "name": "万妖之王·申公豹",
+                "star": 4,
+                "lv": 1,
+                "atk": 206,
+                "hp": 525,
+                "skill_name": "玄冥寒",
+                "skill_id": 1,
+                "description": "只有和它们在一起，我才能感觉到那种无私的信任与关怀。",
+                "url": 2
+            },
+            "75": {
+                "id": 75,
+                "number": 15,
+                "name": "分水将军·申公豹",
+                "star": 5,
+                "lv": 1,
+                "atk": 279,
+                "hp": 666,
+                "skill_name": "玄冥寒",
+                "skill_id": 1,
+                "description": "成王败寇，我的实力无需封神榜上的职位来证明。",
+                "url": 3
+            },
+            "76": {
+                "id": 76,
+                "number": 16,
+                "name": "瞬移·土行孙",
+                "star": 1,
+                "lv": 1,
+                "atk": 49,
+                "hp": 120,
+                "description": "我可以瞬间从移动到你面前，但你不能站在水泥地上！",
+                "url": 4
+            },
+            "77": {
+                "id": 77,
+                "number": 16,
+                "name": "遁神·土行孙",
+                "star": 2,
+                "lv": 1,
+                "atk": 103,
+                "hp": 247,
+                "description": "我不仅会土遁，水遁、火遁、尿遁也是样样精通。",
+                "url": 5
+            },
+            "78": {
+                "id": 78,
+                "number": 16,
+                "name": "捆仙绳·土行孙",
+                "star": 3,
+                "lv": 1,
+                "atk": 156,
+                "hp": 380,
+                "skill_name": "土遁",
+                "skill_id": 1,
+                "description": "我这根捆仙绳，平时可以当领带，战时可以当武器，多功能用途。",
+                "url": 6
+            },
+            "79": {
+                "id": 79,
+                "number": 16,
+                "name": "地行仙·土行孙",
+                "star": 4,
+                "lv": 1,
+                "atk": 210,
+                "hp": 520,
+                "skill_name": "土遁",
+                "skill_id": 1,
+                "description": "地行比飞行安全多了，最多撞个石头啥的，不会坠机。",
+                "url": 1
+            },
+            "80": {
+                "id": 80,
+                "number": 16,
+                "name": "土府星君·土行孙",
+                "star": 5,
+                "lv": 1,
+                "atk": 277,
+                "hp": 681,
+                "skill_name": "土遁",
+                "skill_id": 1,
+                "description": "我最大的成就不是封神，而是娶了心中的女神邓婵玉。",
+                "url": 2
+            },
+            "81": {
+                "id": 81,
+                "number": 17,
+                "name": "捕蛇者·法海",
+                "star": 1,
+                "lv": 1,
+                "atk": 50,
+                "hp": 123,
+                "description": "我只是把捉到的白蛇卖了而已，谁想会记恨我几辈子。",
+                "url": 3
+            },
+            "82": {
+                "id": 82,
+                "number": 17,
+                "name": "苦修·法海",
+                "star": 2,
+                "lv": 1,
+                "atk": 104,
+                "hp": 251,
+                "description": "好不容易炼成的丹药被她偷吃了，我这辈子又白练了。",
+                "url": 4
+            },
+            "83": {
+                "id": 83,
+                "number": 17,
+                "name": "金山住持·法海",
+                "star": 3,
+                "lv": 1,
+                "atk": 144,
+                "hp": 384,
+                "skill_name": "苦海无边",
+                "skill_id": 9,
+                "description": "没想到隔了几辈子再遇到白蛇，已经修炼成了女神模样。",
+                "url": 5
+            },
+            "84": {
+                "id": 84,
+                "number": 17,
+                "name": "雷峰塔·法海",
+                "star": 4,
+                "lv": 1,
+                "atk": 209,
+                "hp": 525,
+                "skill_name": "苦海无边",
+                "skill_id": 9,
+                "description": "人蛇恋是不会有结果的，她应该呆在我的身边修炼。",
+                "url": 6
+            },
+            "85": {
+                "id": 85,
+                "number": 17,
+                "name": "升仙·法海",
+                "star": 5,
+                "lv": 1,
+                "atk": 279,
+                "hp": 685,
+                "skill_name": "苦海无边",
+                "skill_id": 9,
+                "description": "没想到会和他们一起升仙，看着他们甜蜜的样子，我有点失落。",
+                "url": 1
+            },
+            "86": {
+                "id": 86,
+                "number": 18,
+                "name": "青城山·白素贞",
+                "star": 1,
+                "lv": 1,
+                "atk": 55,
+                "hp": 131,
+                "description": "我在青城山宅了1800多年才修炼成女神，你会羡慕我么？",
+                "url": 2
+            },
+            "87": {
+                "id": 87,
+                "number": 18,
+                "name": "断桥·白素贞",
+                "star": 2,
+                "lv": 1,
+                "atk": 106,
+                "hp": 254,
+                "description": "为什么会一见钟情呢，或许因为他是我下山后见得第一个男人。",
+                "url": 3
+            },
+            "88": {
+                "id": 88,
+                "number": 18,
+                "name": "盗草·白素贞",
+                "star": 3,
+                "lv": 1,
+                "atk": 143,
+                "hp": 369,
+                "skill_name": "水漫金山",
+                "skill_id": 4,
+                "description": "没灵芝仙草许仙就活不了，许仙不在了我就得回青城山继续宅了！",
+                "url": 4
+            },
+            "89": {
+                "id": 89,
+                "number": 18,
+                "name": "水漫金山·白素贞",
+                "star": 4,
+                "lv": 1,
+                "atk": 206,
+                "hp": 524,
+                "skill_name": "水漫金山",
+                "skill_id": 4,
+                "description": "白素贞你住手吧，许仙真的不在珠海金山！",
+                "url": 5
+            },
+            "90": {
+                "id": 90,
+                "number": 18,
+                "name": "紫微星·白素贞",
+                "star": 5,
+                "lv": 1,
+                "atk": 265,
+                "hp": 689,
+                "skill_name": "水漫金山",
+                "skill_id": 4,
+                "description": "尔康，你不能恨我，你不能因为我这么爱你而恨我。",
+                "url": 6
+            },
+            "91": {
+                "id": 91,
+                "number": 19,
+                "name": "青蛇·小青",
+                "star": 1,
+                "lv": 1,
+                "atk": 53,
+                "hp": 126,
+                "description": "我修行了一千年，孤独了一千年。",
+                "url": 1
+            },
+            "92": {
+                "id": 92,
+                "number": 19,
+                "name": "变身·小青",
+                "star": 2,
+                "lv": 1,
+                "atk": 106,
+                "hp": 244,
+                "description": "既然无法娶女神，我宁愿化为女儿身终身跟随。",
+                "url": 2
+            },
+            "93": {
+                "id": 93,
+                "number": 19,
+                "name": "斗法海·小青",
+                "star": 3,
+                "lv": 1,
+                "atk": 152,
+                "hp": 372,
+                "skill_name": "黯然销魂",
+                "skill_id": 4,
+                "description": "法海你不懂爱，姐姐不要你，我也不会从。",
+                "url": 3
+            },
+            "94": {
+                "id": 94,
+                "number": 19,
+                "name": "烧塔·小青",
+                "star": 4,
+                "lv": 1,
+                "atk": 203,
+                "hp": 515,
+                "skill_name": "黯然销魂",
+                "skill_id": 4,
+                "description": "法海，要么你跟我走，要么你放过我姐姐！",
+                "url": 4
+            },
+            "95": {
+                "id": 95,
+                "number": 19,
+                "name": "青蛇大仙·小青",
+                "star": 5,
+                "lv": 1,
+                "atk": 268,
+                "hp": 677,
+                "skill_name": "黯然销魂",
+                "skill_id": 4,
+                "description": "一起升仙的那天，我和他是最落寞的，只羡鸳鸯不羡仙。",
+                "url": 5
+            },
+            "96": {
+                "id": 96,
+                "number": 20,
+                "name": "秀姑·何仙姑",
+                "star": 1,
+                "lv": 1,
+                "atk": 60,
+                "hp": 118,
+                "description": "洞宾走后，家里要我嫁人，内心犹如奔过一万头草泥马。",
+                "url": 6
+            },
+            "97": {
+                "id": 97,
+                "number": 20,
+                "name": "辟谷·何仙姑",
+                "star": 2,
+                "lv": 1,
+                "atk": 111,
+                "hp": 239,
+                "description": "一开始我只是想节食减肥，后来发现习惯了就不饿了……",
+                "url": 1
+            },
+            "98": {
+                "id": 98,
+                "number": 20,
+                "name": "凌风驾云·何仙姑",
+                "star": 3,
+                "lv": 1,
+                "atk": 161,
+                "hp": 370,
+                "skill_name": "莲花心经",
+                "skill_id": 7,
+                "description": "那天我花7分钱买了本《筋斗云》，然后我就会飞了。",
+                "url": 2
+            },
+            "99": {
+                "id": 99,
+                "number": 20,
+                "name": "风凰台·何仙姑",
+                "star": 4,
+                "lv": 1,
+                "atk": 221,
+                "hp": 522,
+                "skill_name": "莲花心经",
+                "skill_id": 7,
+                "description": "凤凰台上凤凰花，凤凰花开飞凤凰。",
+                "url": 3
+            },
+            "100": {
+                "id": 100,
+                "number": 20,
+                "name": "碧波仙子·何仙姑",
+                "star": 5,
+                "lv": 1,
+                "atk": 290,
+                "hp": 662,
+                "skill_name": "莲花心经",
+                "skill_id": 7,
+                "description": "让我们荡起双桨，小船儿推开波浪~~~轻点！",
+                "url": 4
+            },
+            "101": {
+                "id": 101,
+                "number": 21,
+                "name": "黄粱梦·吕洞宾",
+                "star": 1,
+                "lv": 1,
+                "atk": 55,
+                "hp": 122,
+                "description": "黄粱一梦告诉我：睡前一定要吃饱，不然美梦都会被饿醒。",
+                "url": 5
+            },
+            "102": {
+                "id": 102,
+                "number": 21,
+                "name": "双修·吕洞宾",
+                "star": 2,
+                "lv": 1,
+                "atk": 108,
+                "hp": 240,
+                "description": "双修就像结对编程，要两个人一起搞，你懂的。",
+                "url": 6
+            },
+            "103": {
+                "id": 103,
+                "number": 21,
+                "name": "纯阳子·吕洞宾",
+                "star": 3,
+                "lv": 1,
+                "atk": 155,
+                "hp": 360,
+                "skill_name": "流云诀",
+                "skill_id": 1,
+                "description": "开导劝化风尘女子是我的业余爱好，虽然她们都说我虚伪。",
+                "url": 1
+            },
+            "104": {
+                "id": 104,
+                "number": 21,
+                "name": "剑仙·吕洞宾",
+                "star": 4,
+                "lv": 1,
+                "atk": 210,
+                "hp": 512,
+                "skill_name": "流云诀",
+                "skill_id": 1,
+                "description": "这年头，我一跟人说自己是剑仙，他们就流露出诡异的笑容。",
+                "url": 2
+            },
+            "105": {
+                "id": 105,
+                "number": 21,
+                "name": "吕祖·吕洞宾",
+                "star": 5,
+                "lv": 1,
+                "atk": 280,
+                "hp": 676,
+                "skill_name": "流云诀",
+                "skill_id": 1,
+                "description": "我有个徒孙叫王重阳，他拿过一个叫华山论剑的武术冠军。",
+                "url": 3
+            },
+            "106": {
+                "id": 106,
+                "number": 22,
+                "name": "神游·铁拐李",
+                "star": 1,
+                "lv": 1,
+                "atk": 56,
+                "hp": 137,
+                "description": "你可以把神游理解为隐形人，想去哪就去哪……你懂的！",
+                "url": 4
+            },
+            "107": {
+                "id": 107,
+                "number": 22,
+                "name": "借尸还魂·铁拐李",
+                "star": 2,
+                "lv": 1,
+                "atk": 111,
+                "hp": 241,
+                "description": "为了不辜负大家对神仙相貌的期待，我只能说自己以前是很帅的。",
+                "url": 5
+            },
+            "108": {
+                "id": 108,
+                "number": 22,
+                "name": "化龙·铁拐李",
+                "star": 3,
+                "lv": 1,
+                "atk": 159,
+                "hp": 358,
+                "skill_name": "流星拐",
+                "skill_id": 1,
+                "description": "扮猪吃老虎是我的最爱，比如在大街上的人堆里变条龙飞走。",
+                "url": 6
+            },
+            "109": {
+                "id": 109,
+                "number": 22,
+                "name": "呼风唤雨·铁拐李",
+                "star": 4,
+                "lv": 1,
+                "atk": 221,
+                "hp": 516,
+                "skill_name": "流星拐",
+                "skill_id": 1,
+                "description": "有人找我求雨，我都要求他舔我的烂腿，没办法，好这口。",
+                "url": 1
+            },
+            "110": {
+                "id": 110,
+                "number": 22,
+                "name": "东华教主·铁拐李",
+                "star": 5,
+                "lv": 1,
+                "atk": 276,
+                "hp": 683,
+                "skill_name": "流星拐",
+                "skill_id": 1,
+                "description": "我们教主圈从不缺新闻，最近的咆哮教主你知道么？",
+                "url": 2
+            },
+            "111": {
+                "id": 111,
+                "number": 23,
+                "name": "散汉·汉钟离",
+                "star": 1,
+                "lv": 1,
+                "atk": 52,
+                "hp": 129,
+                "description": "以前管我们这种人叫散汉，现在叫屌丝。",
+                "url": 3
+            },
+            "112": {
+                "id": 112,
+                "number": 23,
+                "name": "征讨将军·汉钟离",
+                "star": 2,
+                "lv": 1,
+                "atk": 105,
+                "hp": 242,
+                "description": "我学文的，偏要我去当领兵打仗，真当我是袁崇焕啊。",
+                "url": 4
+            },
+            "113": {
+                "id": 113,
+                "number": 23,
+                "name": "十日试·汉钟离",
+                "star": 3,
+                "lv": 1,
+                "atk": 160,
+                "hp": 363,
+                "skill_name": "行云流水",
+                "skill_id": 9,
+                "description": "《十日谈》这样的少儿不宜的书籍都能出名，何况我的是日试呢！",
+                "url": 5
+            },
+            "114": {
+                "id": 114,
+                "number": 23,
+                "name": "炼金术·汉钟离",
+                "star": 4,
+                "lv": 1,
+                "atk": 211,
+                "hp": 522,
+                "skill_name": "行云流水",
+                "skill_id": 9,
+                "description": "呐，当差人是要拜关二哥，你要是炒黄金，当然得拜我啦。",
+                "url": 6
+            },
+            "115": {
+                "id": 115,
+                "number": 23,
+                "name": "正阳真人·汉钟离",
+                "star": 5,
+                "lv": 1,
+                "atk": 282,
+                "hp": 674,
+                "skill_name": "行云流水",
+                "skill_id": 9,
+                "description": "当了神仙，就跟童话里说的一样，从此过上了幸福的生活。",
+                "url": 1
+            },
+            "116": {
+                "id": 116,
+                "number": 24,
+                "name": "驴友·张果老",
+                "star": 1,
+                "lv": 1,
+                "atk": 39,
+                "hp": 128,
+                "description": "骑驴比骑马有个性多了，况且有户口的马，那才是驴嘛！",
+                "url": 2
+            },
+            "117": {
+                "id": 117,
+                "number": 24,
+                "name": "歌手·张果老",
+                "star": 2,
+                "lv": 1,
+                "atk": 89,
+                "hp": 269,
+                "description": "我的歌路很广，穷则乞讨时用，达则可开演唱会。",
+                "url": 3
+            },
+            "118": {
+                "id": 118,
+                "number": 24,
+                "name": "通玄先生·张果老",
+                "star": 3,
+                "lv": 1,
+                "atk": 138,
+                "hp": 388,
+                "skill_name": "人驴合一",
+                "skill_id": 1,
+                "description": "我也不记得我多少岁了，名字里就有个老字，咱能不比老么？",
+                "url": 4
+            },
+            "119": {
+                "id": 119,
+                "number": 24,
+                "name": "广宗道人·张果老",
+                "star": 4,
+                "lv": 1,
+                "atk": 182,
+                "hp": 555,
+                "skill_name": "人驴合一",
+                "skill_id": 1,
+                "description": "折个驴、变个狗啥的我最在行了，人都说我可以去马戏团工作。",
+                "url": 5
+            },
+            "120": {
+                "id": 120,
+                "number": 24,
+                "name": "冲妙真人·张果老",
+                "star": 5,
+                "lv": 1,
+                "atk": 249,
+                "hp": 709,
+                "skill_name": "人驴合一",
+                "skill_id": 1,
+                "description": "我总觉得我的封号有点娘，不过他们说听起来很有冲劲。",
+                "url": 6
+            },
+            "121": {
+                "id": 121,
+                "number": 25,
+                "name": "不羁·韩湘子",
+                "star": 1,
+                "lv": 1,
+                "atk": 41,
+                "hp": 130,
+                "description": "原谅我这一生不羁放纵爱自由，也会怕有一天会跌倒。",
+                "url": 6
+            },
+            "122": {
+                "id": 122,
+                "number": 25,
+                "name": "天花引·韩湘子",
+                "star": 2,
+                "lv": 1,
+                "atk": 92,
+                "hp": 275,
+                "description": "我一辈子只写了这一曲，却流传了几辈子。"
+            },
+            "123": {
+                "id": 123,
+                "number": 25,
+                "name": "点化·韩湘子",
+                "star": 3,
+                "lv": 1,
+                "atk": 144,
+                "hp": 390,
+                "skill_name": "天籁之音",
+                "skill_id": 5,
+                "description": "不要信什么只可意会不可言传的烂话，那是人家不想告诉你。"
+            },
+            "124": {
+                "id": 124,
+                "number": 25,
+                "name": "箫中情·韩湘子",
+                "star": 4,
+                "lv": 1,
+                "atk": 179,
+                "hp": 556,
+                "skill_name": "天籁之音",
+                "skill_id": 5,
+                "description": "你会吹箫？是呀！你会吹箫啊？哈哈，有空教你啊！"
+            },
+            "125": {
+                "id": 125,
+                "number": 25,
+                "name": "尸解仙·韩湘子",
+                "star": 5,
+                "lv": 1,
+                "atk": 255,
+                "hp": 702,
+                "skill_name": "天籁之音",
+                "skill_id": 5,
+                "description": "离开的那天，我的爱与肉身一起，在风中化去了。"
+            },
+            "126": {
+                "id": 126,
+                "number": 26,
+                "name": "行医采药·蓝采和",
+                "star": 1,
+                "lv": 1,
+                "atk": 40,
+                "hp": 130,
+                "description": "我们那时候行医不用上学，有点植物学基础，会烹饪就行。"
+            },
+            "127": {
+                "id": 127,
+                "number": 26,
+                "name": "流浪汉·蓝采和",
+                "star": 2,
+                "lv": 1,
+                "atk": 90,
+                "hp": 270,
+                "description": "想和你就这样流浪，一起看雪看星星看月亮，从诗词歌赋谈到人生哲学。"
+            },
+            "128": {
+                "id": 128,
+                "number": 26,
+                "name": "万花篮·蓝采和",
+                "star": 3,
+                "lv": 1,
+                "atk": 140,
+                "hp": 390,
+                "skill_name": "吐气如兰",
+                "skill_id": 7,
+                "description": "这些年看到好玩的好看的东西，就对着他们念咒语：快到篮里来！"
+            },
+            "129": {
+                "id": 129,
+                "number": 26,
+                "name": "阴阳体·蓝采和",
+                "star": 4,
+                "lv": 1,
+                "atk": 180,
+                "hp": 560,
+                "skill_name": "吐气如兰",
+                "skill_id": 7,
+                "description": "他们说我是阴阳调和于一体，其实我只是有点伪娘控而已。"
+            },
+            "130": {
+                "id": 130,
+                "number": 26,
+                "name": "度仙·蓝采和",
+                "star": 5,
+                "lv": 1,
+                "atk": 250,
+                "hp": 710,
+                "skill_name": "吐气如兰",
+                "skill_id": 7,
+                "description": "汉钟离要我跟他走，我知道他的意思，但我还是从了。"
+            },
+            "131": {
+                "id": 131,
+                "number": 27,
+                "name": "农夫·牛郎",
+                "star": 1,
+                "lv": 1,
+                "atk": 43,
+                "hp": 125,
+                "description": "给地主打工不轻松，不过地主也不容易，省吃俭用才有了这么多地。"
+            },
+            "132": {
+                "id": 132,
+                "number": 27,
+                "name": "神牛·牛郎",
+                "star": 2,
+                "lv": 1,
+                "atk": 92,
+                "hp": 266,
+                "description": "大哥，你是神牛早点说嘛，能不能给我变个十万八万花花先！"
+            },
+            "133": {
+                "id": 133,
+                "number": 27,
+                "name": "更衣室の恋·牛郎",
+                "star": 3,
+                "lv": 1,
+                "atk": 144,
+                "hp": 384,
+                "skill_name": "织女情",
+                "skill_id": 9,
+                "description": "死牛给我出的馊主意，要我去偷妹纸的衣服，岛国动作片看多了吧！"
+            },
+            "134": {
+                "id": 134,
+                "number": 27,
+                "name": "天庭驸马·牛郎",
+                "star": 4,
+                "lv": 1,
+                "atk": 186,
+                "hp": 549,
+                "skill_name": "织女情",
+                "skill_id": 9,
+                "description": "我们驸马界一直都是比较低调的，除了出了个叫陈世美的。"
+            },
+            "135": {
+                "id": 135,
+                "number": 27,
+                "name": "牵牛星·牛郎",
+                "star": 5,
+                "lv": 1,
+                "atk": 255,
+                "hp": 719,
+                "skill_name": "织女情",
+                "skill_id": 9,
+                "description": "一年才见一次面，见面的时候还被围观，这让我们夫妻情何以堪啊！"
+            },
+            "136": {
+                "id": 136,
+                "number": 28,
+                "name": "女红·织女",
+                "star": 1,
+                "lv": 1,
+                "atk": 42,
+                "hp": 122,
+                "description": "我做的针线是极好的，针脚密色彩新，配上这图案，是最好不过的了。"
+            },
+            "137": {
+                "id": 137,
+                "number": 28,
+                "name": "天浴·织女",
+                "star": 2,
+                "lv": 1,
+                "atk": 92,
+                "hp": 262,
+                "description": "我们七姐妹都有个重口味爱好：喜欢去水库里裸泳。"
+            },
+            "138": {
+                "id": 138,
+                "number": 28,
+                "name": "天伦·织女",
+                "star": 3,
+                "lv": 1,
+                "atk": 132,
+                "hp": 382,
+                "skill_name": "鹊桥泪",
+                "skill_id": 4,
+                "description": "突然有一天有了家有了孩子，你会觉得这世界变得不一样了。"
+            },
+            "139": {
+                "id": 139,
+                "number": 28,
+                "name": "七仙姑·织女",
+                "star": 4,
+                "lv": 1,
+                "atk": 182,
+                "hp": 552,
+                "skill_name": "鹊桥泪",
+                "skill_id": 4,
+                "description": "牛郎走的第一天，想他；牛郎走的第二天，想他想他；牛郎走的第三天，想他想他想他。"
+            },
+            "140": {
+                "id": 140,
+                "number": 28,
+                "name": "七星娘娘·织女",
+                "star": 5,
+                "lv": 1,
+                "atk": 242,
+                "hp": 712,
+                "skill_name": "鹊桥泪",
+                "skill_id": 4,
+                "description": "这是个集御姐、人妻、熟女、OL于一身的封号，牛郎肯定会喜欢的。"
+            },
+            "141": {
+                "id": 141,
+                "number": 29,
+                "name": "决斗·吴刚",
+                "star": 1,
+                "lv": 1,
+                "atk": 33,
+                "hp": 123,
+                "description": "偷情也就算了，还生了三个娃，让我喜当爹三次！"
+            },
+            "142": {
+                "id": 142,
+                "number": 29,
+                "name": "刺配·吴刚",
+                "star": 2,
+                "lv": 1,
+                "atk": 83,
+                "hp": 263,
+                "description": "我被发配到月球，成为当地第一个原住民，比嫦娥都早。"
+            },
+            "143": {
+                "id": 143,
+                "number": 29,
+                "name": "樵夫·吴刚",
+                "star": 3,
+                "lv": 1,
+                "atk": 133,
+                "hp": 383,
+                "skill_name": "桂花情",
+                "skill_id": 1,
+                "description": "无聊的时候我就砍砍桂花树，反正砍得没有长得快。"
+            },
+            "144": {
+                "id": 144,
+                "number": 29,
+                "name": "逆袭·吴刚",
+                "star": 4,
+                "lv": 1,
+                "atk": 183,
+                "hp": 553,
+                "skill_name": "桂花情",
+                "skill_id": 1,
+                "description": "你能理解单身几百年后突然来一个女神和你共处的感受么？"
+            },
+            "145": {
+                "id": 145,
+                "number": 29,
+                "name": "桂花仙·吴刚",
+                "star": 5,
+                "lv": 1,
+                "atk": 243,
+                "hp": 703,
+                "skill_name": "桂花情",
+                "skill_id": 1,
+                "description": "桂花树下桃花仙，桂花仙人种桂花；从此不砍桂花树，抱得嫦娥躲在家。"
+            },
+            "146": {
+                "id": 146,
+                "number": 30,
+                "name": "天书·鬼谷子",
+                "star": 1,
+                "lv": 1,
+                "atk": 46,
+                "hp": 133,
+                "description": "不是说好发教材的么？咋发下来的都是白纸？太黑了！"
+            },
+            "147": {
+                "id": 147,
+                "number": 30,
+                "name": "纵横术·鬼谷子",
+                "star": 2,
+                "lv": 1,
+                "atk": 95,
+                "hp": 262,
+                "description": "作为靠嘴皮子吃饭的鼻祖，我深知其中的不易啊！"
+            },
+            "148": {
+                "id": 148,
+                "number": 30,
+                "name": "鬼谷井·鬼谷子",
+                "star": 3,
+                "lv": 1,
+                "atk": 145,
+                "hp": 385,
+                "skill_name": "鬼脚七",
+                "skill_id": 2,
+                "description": "我发现一口井，每天晚上播天气预报，然后我就出名了。"
+            },
+            "149": {
+                "id": 149,
+                "number": 30,
+                "name": "斩草撒豆·鬼谷子",
+                "star": 4,
+                "lv": 1,
+                "atk": 188,
+                "hp": 556,
+                "skill_name": "鬼脚七",
+                "skill_id": 2,
+                "description": "只要你有了想象力，草就可以变成马，豆就可以变成兵。"
+            },
+            "150": {
+                "id": 150,
+                "number": 30,
+                "name": "玄微真人·鬼谷子",
+                "star": 5,
+                "lv": 1,
+                "atk": 244,
+                "hp": 721,
+                "skill_name": "鬼脚七",
+                "skill_id": 2,
+                "description": "当了神仙后，玉帝给我分了一套别墅，有产权的哦！"
+            },
+            "151": {
+                "id": 151,
+                "number": 31,
+                "name": "生老病死·黑无常",
+                "star": 1,
+                "lv": 1,
+                "atk": 50,
+                "hp": 131,
+                "description": "相比梅花三弄，我更喜欢保安三问：你是谁？你从哪里来？你要去哪里？"
+            },
+            "152": {
+                "id": 152,
+                "number": 31,
+                "name": "爱别离·黑无常",
+                "star": 2,
+                "lv": 1,
+                "atk": 102,
+                "hp": 279,
+                "description": "我能想到最浪漫的事，就是和你一起卖卖电脑。"
+            },
+            "153": {
+                "id": 153,
+                "number": 31,
+                "name": "怨憎会·黑无常",
+                "star": 3,
+                "lv": 1,
+                "atk": 149,
+                "hp": 378,
+                "skill_name": "招魂蟠",
+                "skill_id": 2,
+                "description": "别老练少林72绝技了，多看苍老师的片子可以下火去戾气。"
+            },
+            "154": {
+                "id": 154,
+                "number": 31,
+                "name": "求不得·黑无常",
+                "star": 4,
+                "lv": 1,
+                "atk": 201,
+                "hp": 549,
+                "skill_name": "招魂蟠",
+                "skill_id": 2,
+                "description": "巨龙巨龙你差两年，永永远远的差两年。"
+            },
+            "155": {
+                "id": 155,
+                "number": 31,
+                "name": "五阴盛·黑无常",
+                "star": 5,
+                "lv": 1,
+                "atk": 265,
+                "hp": 719,
+                "skill_name": "招魂蟠",
+                "skill_id": 2,
+                "description": "抽刀断水水更流，举杯消愁愁更愁，吃多吃少难吃足。"
+            },
+            "156": {
+                "id": 156,
+                "number": 32,
+                "name": "地狱道·白无常",
+                "star": 1,
+                "lv": 1,
+                "atk": 53,
+                "hp": 126,
+                "description": "在这里先八寒再八热，经历冰火九重天！……别想歪了。"
+            },
+            "157": {
+                "id": 157,
+                "number": 32,
+                "name": "恶鬼道·白无常",
+                "star": 2,
+                "lv": 1,
+                "atk": 105,
+                "hp": 277,
+                "description": "咱这儿天天饿着不给你吃饭，但就是饿不死，减肥者禁入！"
+            },
+            "158": {
+                "id": 158,
+                "number": 32,
+                "name": "畜生道·白无常",
+                "star": 3,
+                "lv": 1,
+                "atk": 154,
+                "hp": 369,
+                "skill_name": "哭丧棒",
+                "skill_id": 1,
+                "description": "我们这儿都是牛啊马啊狗啊啥的，重口味者禁入！"
+            },
+            "159": {
+                "id": 159,
+                "number": 32,
+                "name": "阿修罗道·白无常",
+                "star": 4,
+                "lv": 1,
+                "atk": 206,
+                "hp": 556,
+                "skill_name": "哭丧棒",
+                "skill_id": 1,
+                "description": "这里打斗比较激烈一些，需要用到皮鞭、绳索、蜡烛等物品。"
+            },
+            "160": {
+                "id": 160,
+                "number": 32,
+                "name": "人间道·白无常",
+                "star": 5,
+                "lv": 1,
+                "atk": 266,
+                "hp": 666,
+                "skill_name": "哭丧棒",
+                "skill_id": 1,
+                "description": "我们终于回归正常了，各位有特殊癖好的也可以再回去。"
+            },
+            "161": {
+                "id": 161,
+                "number": 33,
+                "name": "科员·日游神",
+                "star": 1,
+                "lv": 1,
+                "atk": 62,
+                "hp": 125,
+                "description": "我怎么也是个有编制的神，可不是临时工。"
+            },
+            "162": {
+                "id": 162,
+                "number": 33,
+                "name": "副科长·日游神",
+                "star": 2,
+                "lv": 1,
+                "atk": 112,
+                "hp": 244,
+                "description": "终于走上领导岗位了，虽然还是要整天出来巡街。"
+            },
+            "163": {
+                "id": 163,
+                "number": 33,
+                "name": "科长·日游神",
+                "star": 3,
+                "lv": 1,
+                "atk": 159,
+                "hp": 374,
+                "skill_name": "日炎拳",
+                "skill_id": 1,
+                "description": "这次能提拔，多亏巨灵神他们给我指了条路。"
+            },
+            "164": {
+                "id": 164,
+                "number": 33,
+                "name": "副处长·日游神",
+                "star": 4,
+                "lv": 1,
+                "atk": 222,
+                "hp": 519,
+                "skill_name": "日炎拳",
+                "skill_id": 1,
+                "description": "众仙们，我们要以高度负责的精神，认真组织和开展好学习实践活动！"
+            },
+            "165": {
+                "id": 165,
+                "number": 33,
+                "name": "处长·日游神",
+                "star": 5,
+                "lv": 1,
+                "atk": 268,
+                "hp": 669,
+                "skill_name": "日炎拳",
+                "skill_id": 1,
+                "description": "再过两年要退居二线了，我儿子的仙籍得抓紧办了。"
+            },
+            "166": {
+                "id": 166,
+                "number": 34,
+                "name": "士官·夜游神",
+                "star": 1,
+                "lv": 1,
+                "atk": 60,
+                "hp": 122,
+                "description": "终于吃上公家饭了，偶尔还可以欺负一下新神仙。"
+            },
+            "167": {
+                "id": 167,
+                "number": 34,
+                "name": "中尉·夜游神",
+                "star": 2,
+                "lv": 1,
+                "atk": 115,
+                "hp": 246,
+                "skill_id": 1,
+                "description": "相比副连这个很娘的称呼，我更喜欢大家叫我captain。"
+            },
+            "168": {
+                "id": 168,
+                "number": 34,
+                "name": "少校·夜游神",
+                "star": 3,
+                "lv": 1,
+                "atk": 162,
+                "hp": 373,
+                "skill_name": "流星击",
+                "skill_id": 1,
+                "description": "其实神仙的夜生活很丰富的，很庆幸我负责夜里的巡逻，你懂的。"
+            },
+            "169": {
+                "id": 169,
+                "number": 34,
+                "name": "上校·夜游神",
+                "star": 4,
+                "lv": 1,
+                "atk": 223,
+                "hp": 515,
+                "skill_name": "流星击",
+                "skill_id": 1,
+                "description": "为啥那个唱歌的神仙升的比我快那么多!"
+            },
+            "170": {
+                "id": 170,
+                "number": 34,
+                "name": "大校·夜游神",
+                "star": 5,
+                "lv": 1,
+                "atk": 279,
+                "hp": 668,
+                "skill_name": "流星击",
+                "description": "笑什么笑，是大校不是大笑，严肃点！"
+            },
+            "171": {
+                "id": 171,
+                "number": 35,
+                "name": "瑶草·瑶姬",
+                "star": 1,
+                "lv": 1,
+                "atk": 48,
+                "hp": 135,
+                "description": "我是一株吃了会让你幸福的草，唯一不幸福的就是我本身。"
+            },
+            "172": {
+                "id": 172,
+                "number": 35,
+                "name": "神女峰·瑶姬",
+                "star": 2,
+                "lv": 1,
+                "atk": 95,
+                "hp": 256,
+                "description": "我化作一道险峰，等着真心的你来攀登。"
+            },
+            "173": {
+                "id": 173,
+                "number": 35,
+                "name": "巫山云雨·瑶姬",
+                "star": 3,
+                "lv": 1,
+                "atk": 145,
+                "hp": 380,
+                "skill_name": "巫山云雨",
+                "skill_id": 8,
+                "description": "巫山朝云暮雨的天气很适合野合么？什么大家都跑我这儿来？"
+            },
+            "174": {
+                "id": 174,
+                "number": 35,
+                "name": "神女赋·瑶姬",
+                "star": 4,
+                "lv": 1,
+                "atk": 201,
+                "hp": 535,
+                "skill_name": "巫山云雨",
+                "skill_id": 8,
+                "description": "我鄙视那些YY我的文章，再经典也是对我的伤害。"
+            },
+            "175": {
+                "id": 175,
+                "number": 35,
+                "name": "巫山神女·瑶姬",
+                "star": 5,
+                "lv": 1,
+                "atk": 275,
+                "hp": 730,
+                "skill_name": "巫山云雨",
+                "skill_id": 8,
+                "description": "曾经沧海难为水，除却巫山不是云。"
+            },
+            "176": {
+                "id": 176,
+                "number": 36,
+                "name": "公主驾到·精卫",
+                "star": 1,
+                "lv": 1,
+                "atk": 45,
+                "hp": 136,
+                "description": "虽然咱们部落没多少人，但我也算是个公主呀！"
+            },
+            "177": {
+                "id": 177,
+                "number": 36,
+                "name": "海泳·精卫",
+                "star": 2,
+                "lv": 1,
+                "atk": 106,
+                "hp": 258,
+                "description": "这么多姐姐在湖里洗个澡就泡到了帅哥，那我必须得去海里啊。"
+            },
+            "178": {
+                "id": 178,
+                "number": 36,
+                "name": "东海遇·精卫",
+                "star": 3,
+                "lv": 1,
+                "atk": 151,
+                "hp": 381,
+                "skill_name": "碧波滔天",
+                "skill_id": 3,
+                "description": "不喜欢就是不喜欢，龙王太子又如何！"
+            },
+            "179": {
+                "id": 179,
+                "number": 36,
+                "name": "逼婚·精卫",
+                "star": 4,
+                "lv": 1,
+                "atk": 200,
+                "hp": 536,
+                "skill_name": "碧波滔天",
+                "skill_id": 3,
+                "description": "再逼我就跳海，死了我也不放过你！"
+            },
+            "180": {
+                "id": 180,
+                "number": 36,
+                "name": "化鸟·精卫",
+                "star": 5,
+                "lv": 1,
+                "atk": 280,
+                "hp": 721,
+                "skill_name": "碧波滔天",
+                "skill_id": 3,
+                "description": "我知道海不可能被填平，我只是想告诉后面的姐妹他是个什么样的男人。"
+            },
+            "181": {
+                "id": 181,
+                "number": 37,
+                "name": "巨人·夸父",
+                "star": 1,
+                "lv": 1,
+                "atk": 53,
+                "hp": 133,
+                "description": "不是每一瓶牛奶都可以叫特仑苏，不是每一个巨人都可以成为夸父。"
+            },
+            "182": {
+                "id": 182,
+                "number": 37,
+                "name": "守护者·夸父",
+                "star": 2,
+                "lv": 1,
+                "atk": 99,
+                "hp": 261,
+                "description": "我不是你的优乐美，我是你的守护神！"
+            },
+            "183": {
+                "id": 183,
+                "number": 37,
+                "name": "星降术·夸父",
+                "star": 3,
+                "lv": 1,
+                "atk": 150,
+                "hp": 391,
+                "skill_name": "大地之怒",
+                "skill_id": 5,
+                "description": "快使用星将术，哼哼哈嘿，快爆发小宇宙，伊莫拉沙！"
+            },
+            "184": {
+                "id": 184,
+                "number": 37,
+                "name": "神行·夸父",
+                "star": 4,
+                "lv": 1,
+                "atk": 202,
+                "hp": 540,
+                "skill_name": "大地之怒",
+                "skill_id": 5,
+                "description": "田径运动员比赛前都会拜拜我，我是他们这行的祖师爷。"
+            },
+            "185": {
+                "id": 185,
+                "number": 37,
+                "name": "逐日·夸父",
+                "star": 5,
+                "lv": 1,
+                "atk": 279,
+                "hp": 731,
+                "skill_name": "大地之怒",
+                "skill_id": 5,
+                "description": "别问我为什么要追日，除非你不抗日！"
+            },
+            "186": {
+                "id": 186,
+                "number": 38,
+                "name": "箭客·后羿",
+                "star": 1,
+                "lv": 1,
+                "atk": 44,
+                "hp": 141,
+                "description": "我喜欢射，我喜欢箭，我是箭客！"
+            },
+            "187": {
+                "id": 187,
+                "number": 38,
+                "name": "失嫦娥·后羿",
+                "star": 2,
+                "lv": 1,
+                "atk": 93,
+                "hp": 261,
+                "description": "那天，她要我跟她走，我没答应，她太自信了，以为我一定会跟她走。"
+            },
+            "188": {
+                "id": 188,
+                "number": 38,
+                "name": "七弦·后羿",
+                "star": 3,
+                "lv": 1,
+                "atk": 144,
+                "hp": 388,
+                "skill_name": "穿云箭",
+                "skill_id": 4,
+                "description": "当我第一次见到宓妃时，她在弹一把七弦琴，后来她有一个好听的名字：洛神。"
+            },
+            "189": {
+                "id": 189,
+                "number": 38,
+                "name": "射日·后羿",
+                "star": 4,
+                "lv": 1,
+                "atk": 205,
+                "hp": 541,
+                "skill_name": "穿云箭",
+                "skill_id": 4,
+                "description": "唯有射下那九个太阳，才能压下我内心的怒火。"
+            },
+            "190": {
+                "id": 190,
+                "number": 38,
+                "name": "宗布神·后羿",
+                "star": 5,
+                "lv": 1,
+                "atk": 277,
+                "hp": 729,
+                "skill_name": "穿云箭",
+                "skill_id": 4,
+                "description": "有人在我坟前的桃树下唱歌：我在这儿等着你回来……"
+            },
+            "191": {
+                "id": 191,
+                "number": 39,
+                "name": "郎才女貌·嫦娥",
+                "star": 1,
+                "lv": 1,
+                "atk": 62,
+                "hp": 122,
+                "description": "后羿是个神射手，嫁给他我很幸福，你懂的。"
+            },
+            "192": {
+                "id": 192,
+                "number": 39,
+                "name": "奔月·嫦娥",
+                "star": 2,
+                "lv": 1,
+                "atk": 105,
+                "hp": 233,
+                "description": "老公出差不在家，我出去happy嗑个药就飞到了月亮上。"
+            },
+            "193": {
+                "id": 193,
+                "number": 39,
+                "name": "捣药·嫦娥",
+                "star": 3,
+                "lv": 1,
+                "atk": 159,
+                "hp": 352,
+                "skill_name": "天音玄",
+                "skill_id": 6,
+                "description": "天杀的王母，跟我演甄嬛传，让我天天在月宫捣药！"
+            },
+            "194": {
+                "id": 194,
+                "number": 39,
+                "name": "真爱·嫦娥",
+                "star": 4,
+                "lv": 1,
+                "atk": 212,
+                "hp": 502,
+                "skill_name": "天音玄",
+                "skill_id": 6,
+                "description": "命运让我离开了后羿，却又给我送来了吴刚，我只能呵呵。"
+            },
+            "195": {
+                "id": 195,
+                "number": 39,
+                "name": "月光女神·嫦娥",
+                "star": 5,
+                "lv": 1,
+                "atk": 290,
+                "hp": 647,
+                "skill_name": "天音玄",
+                "skill_id": 6,
+                "description": "想我的时候，打一盘Luna地图或是看看钱包。"
+            },
+            "196": {
+                "id": 196,
+                "number": 40,
+                "name": "无名巨人·刑天",
+                "star": 1,
+                "lv": 1,
+                "atk": 61,
+                "hp": 120,
+                "description": "我的身材和我的名字一样威武。"
+            },
+            "197": {
+                "id": 197,
+                "number": 40,
+                "name": "文艺青年·刑天",
+                "star": 2,
+                "lv": 1,
+                "atk": 103,
+                "hp": 230,
+                "description": "业余时间我也写写诗歌，在微博上发发鸡汤文。"
+            },
+            "198": {
+                "id": 198,
+                "number": 40,
+                "name": "求战·刑天",
+                "star": 3,
+                "lv": 1,
+                "atk": 160,
+                "hp": 350,
+                "skill_name": "天杀",
+                "skill_id": 1,
+                "description": "出来混的就是要讲义气嘛，打个架婆婆妈妈的最不爽了。"
+            },
+            "199": {
+                "id": 199,
+                "number": 40,
+                "name": "永不妥协·刑天",
+                "star": 4,
+                "lv": 1,
+                "atk": 215,
+                "hp": 500,
+                "skill_name": "天杀",
+                "skill_id": 1,
+                "description": "虽千万人吾往矣，这才是亮剑精神！"
+            },
+            "200": {
+                "id": 200,
+                "number": 40,
+                "name": "无首战神·刑天",
+                "star": 5,
+                "lv": 1,
+                "atk": 299,
+                "hp": 644,
+                "skill_name": "天杀",
+                "skill_id": 1,
+                "description": "自从没了脑袋，打架灵活多了，也不用护头护脑了。"
+            },
+            "201": {
+                "id": 201,
+                "number": 41,
+                "name": "拜师·沉香",
+                "star": 1,
+                "lv": 1,
+                "atk": 55,
+                "hp": 119,
+                "description": "我师父早年跳霹雳舞，成仙后大家都叫他霹雳大仙。"
+            },
+            "202": {
+                "id": 202,
+                "number": 41,
+                "name": "宣花斧·沉香",
+                "star": 2,
+                "lv": 1,
+                "atk": 109,
+                "hp": 234,
+                "description": "幸福生活不能光靠手，所以师父给了我把宣花斧。"
+            },
+            "203": {
+                "id": 203,
+                "number": 41,
+                "name": "战三眼·沉香",
+                "star": 3,
+                "lv": 1,
+                "atk": 162,
+                "hp": 355,
+                "skill_name": "开山裂地",
+                "skill_id": 6,
+                "description": "你能救母，我也能救母，我是沉香，我为我自己代言。"
+            },
+            "204": {
+                "id": 204,
+                "number": 41,
+                "name": "劈山·沉香",
+                "star": 4,
+                "lv": 1,
+                "atk": 221,
+                "hp": 498,
+                "skill_name": "开山裂地",
+                "skill_id": 6,
+                "description": "别人走路我爬山，别人劈柴我劈山。"
+            },
+            "205": {
+                "id": 205,
+                "number": 41,
+                "name": "宝莲灯·沉香",
+                "star": 5,
+                "lv": 1,
+                "atk": 296,
+                "hp": 644,
+                "skill_name": "开山裂地",
+                "skill_id": 6,
+                "description": "每次点上这个灯，都会发出悦耳的音乐：等灯等灯。"
+            },
+            "206": {
+                "id": 206,
+                "number": 42,
+                "name": "修缘·济公",
+                "star": 1,
+                "lv": 1,
+                "atk": 58,
+                "hp": 125,
+                "description": "呐，不要说我没有提醒你，修行呢，最要紧的是开心！"
+            },
+            "207": {
+                "id": 207,
+                "number": 42,
+                "name": "颠·济公",
+                "star": 2,
+                "lv": 1,
+                "atk": 106,
+                "hp": 235,
+                "description": "别人笑我太疯癫，我笑他人看不穿。"
+            },
+            "208": {
+                "id": 208,
+                "number": 42,
+                "name": "酒肉和尚·济公",
+                "star": 3,
+                "lv": 1,
+                "atk": 155,
+                "hp": 355,
+                "skill_name": "舍生取义",
+                "skill_id": 8,
+                "description": "别以为喝酒吃肉就能修成正果，你看鲁智深就知道了。"
+            },
+            "209": {
+                "id": 209,
+                "number": 42,
+                "name": "降龙罗汉·济公",
+                "star": 4,
+                "lv": 1,
+                "atk": 216,
+                "hp": 505,
+                "skill_name": "舍生取义",
+                "skill_id": 8,
+                "description": "左右两边是十八罗汉，降龙伏虎在这一边，至于求子就要拜观音大士。"
+            },
+            "210": {
+                "id": 210,
+                "number": 42,
+                "name": "降龙尊者·济公",
+                "star": 5,
+                "lv": 1,
+                "atk": 288,
+                "hp": 660,
+                "skill_name": "舍生取义",
+                "skill_id": 8,
+                "description": "我想代表天宫向凡间宣扬爱心，让他们明白只要有爱，哪里都是天堂。"
+            },
+            "211": {
+                "id": 211,
+                "number": 43,
+                "name": "错嫁·宓妃",
+                "star": 1,
+                "lv": 1,
+                "atk": 51,
+                "hp": 121,
+                "description": "嫁给河伯是我一生最大的错。"
+            },
+            "212": {
+                "id": 212,
+                "number": 43,
+                "name": "洛书·宓妃",
+                "star": 2,
+                "lv": 1,
+                "atk": 101,
+                "hp": 251,
+                "description": "我献出洛书，只是想离开这个人。"
+            },
+            "213": {
+                "id": 213,
+                "number": 43,
+                "name": "真爱·宓妃",
+                "star": 3,
+                "lv": 1,
+                "atk": 151,
+                "hp": 371,
+                "skill_name": "水乳之欢",
+                "skill_id": 2,
+                "description": "第一次见到他的时候，我就记住了他的名字：后羿。"
+            },
+            "214": {
+                "id": 214,
+                "number": 43,
+                "name": "洛水三千·宓妃",
+                "star": 4,
+                "lv": 1,
+                "atk": 201,
+                "hp": 521,
+                "skill_name": "水乳之欢",
+                "skill_id": 2,
+                "description": "既然无法陪伴左右，不如化为这护城的洛水守护你。"
+            },
+            "215": {
+                "id": 215,
+                "number": 43,
+                "name": "洛神·宓妃",
+                "star": 5,
+                "lv": 1,
+                "atk": 271,
+                "hp": 671,
+                "skill_name": "水乳之欢",
+                "skill_id": 2,
+                "description": "仿佛兮若轻云之蔽月，飘飘兮若流风之回雪。"
+            },
+            "216": {
+                "id": 216,
+                "number": 44,
+                "name": "长生之道·张道陵",
+                "star": 1,
+                "lv": 1,
+                "atk": 49,
+                "hp": 126,
+                "description": "大叔说我骨骼惊奇，是练丹的奇才，才卖我一本《九鼎炼丹秘方》。"
+            },
+            "217": {
+                "id": 217,
+                "number": 44,
+                "name": "神医·张道陵",
+                "star": 2,
+                "lv": 1,
+                "atk": 106,
+                "hp": 248,
+                "description": "不听话就会生病，生病就要找我，找我就要听话，这个逻辑你懂的吧？"
+            },
+            "218": {
+                "id": 218,
+                "number": 44,
+                "name": "授术·张道陵",
+                "star": 3,
+                "lv": 1,
+                "atk": 158,
+                "hp": 374,
+                "skill_name": "无米之炊",
+                "skill_id": 1,
+                "description": "考验徒弟说到底就是洗脑，能洗的就教，不能洗的咱就说考验没通过。"
+            },
+            "219": {
+                "id": 219,
+                "number": 44,
+                "name": "五斗米·张道陵",
+                "star": 4,
+                "lv": 1,
+                "atk": 203,
+                "hp": 531,
+                "skill_name": "无米之炊",
+                "skill_id": 1,
+                "description": "想入会？交五斗米。慢着，这是报名费，交学费后面排队去。"
+            },
+            "220": {
+                "id": 220,
+                "number": 44,
+                "name": "天师·张道陵",
+                "star": 5,
+                "lv": 1,
+                "atk": 274,
+                "hp": 678,
+                "skill_name": "无米之炊",
+                "skill_id": 1,
+                "description": "我是五斗米教扛把子，你知道什么叫不准勾引二嫂么？"
+            },
+            "221": {
+                "id": 221,
+                "number": 45,
+                "name": "日高一平·修罗王",
+                "star": 1,
+                "lv": 1,
+                "atk": 48,
+                "hp": 123,
+                "description": "师父曾经说过，如果把我和阿凯加起来，再除二就是十全十美了。"
+            },
+            "222": {
+                "id": 222,
+                "number": 45,
+                "name": "变身·修罗王",
+                "star": 2,
+                "lv": 1,
+                "atk": 99,
+                "hp": 256,
+                "description": "我肚子一饿就会失去战意，连脱战甲的时间都等不了。"
+            },
+            "223": {
+                "id": 223,
+                "number": 45,
+                "name": "魔破拳·修罗王",
+                "star": 3,
+                "lv": 1,
+                "atk": 153,
+                "hp": 374,
+                "skill_name": "五世修罗",
+                "skill_id": 6,
+                "description": "这拳打出来之前，得先做一次全身运动，比较费时间。"
+            },
+            "224": {
+                "id": 224,
+                "number": 45,
+                "name": "梵天战甲·修罗王",
+                "star": 4,
+                "lv": 1,
+                "atk": 203,
+                "hp": 531,
+                "skill_name": "五世修罗",
+                "skill_id": 6,
+                "description": "这战甲酷毙了！就是穿着太占地方，容易卡门，脱了也不能缩小存放。"
+            },
+            "225": {
+                "id": 225,
+                "number": 45,
+                "name": "创造神·修罗王",
+                "star": 5,
+                "lv": 1,
+                "atk": 274,
+                "hp": 675,
+                "skill_name": "五世修罗",
+                "skill_id": 6,
+                "description": "有创造神就会有破坏神，还会有调和神，我们都只是棋子。"
+            },
+            "226": {
+                "id": 226,
+                "number": 46,
+                "name": "力伽·迦楼罗王",
+                "star": 1,
+                "lv": 1,
+                "atk": 45,
+                "hp": 115,
+                "description": "我是迦楼罗王力迦，天空界最帅的男人，没有之一。"
+            },
+            "227": {
+                "id": 227,
+                "number": 46,
+                "name": "凤凰·迦楼罗王",
+                "star": 2,
+                "lv": 1,
+                "atk": 106,
+                "hp": 256,
+                "description": "凤凰会涅槃，我没有那么容易死。"
+            },
+            "228": {
+                "id": 228,
+                "number": 46,
+                "name": "羽吹雪·迦楼罗王",
+                "star": 3,
+                "lv": 1,
+                "atk": 155,
+                "hp": 379,
+                "skill_name": "罗汉印",
+                "skill_id": 1,
+                "description": "我吹的是血，不是雪。"
+            },
+            "229": {
+                "id": 229,
+                "number": 46,
+                "name": "火翼阵·迦楼罗王",
+                "star": 4,
+                "lv": 1,
+                "atk": 208,
+                "hp": 530,
+                "skill_name": "罗汉印",
+                "skill_id": 1,
+                "description": "就像飞蛾扑火，明知不可能，还是要义无反顾的燃烧自己。"
+            },
+            "230": {
+                "id": 230,
+                "number": 46,
+                "name": "众鸟之王·迦楼罗王",
+                "star": 5,
+                "lv": 1,
+                "atk": 280,
+                "hp": 689,
+                "skill_name": "罗汉印",
+                "skill_id": 1,
+                "description": "每个人都有一个大鸟梦，而我的是众鸟之王。"
+            },
+            "231": {
+                "id": 231,
+                "number": 47,
+                "name": "莲伽·紧那罗王",
+                "star": 1,
+                "lv": 1,
+                "atk": 55,
+                "hp": 116,
+                "description": "谁说女孩不能做神将，我就是神将中的神将——八部众！"
+            },
+            "232": {
+                "id": 232,
+                "number": 47,
+                "name": "爱与恨·紧那罗王",
+                "star": 2,
+                "lv": 1,
+                "atk": 106,
+                "hp": 254,
+                "description": "我无法说服自己爱上一个浪子，对不起，马里千。"
+            },
+            "233": {
+                "id": 233,
+                "number": 47,
+                "name": "天王情·紧那罗王",
+                "star": 3,
+                "lv": 1,
+                "atk": 147,
+                "hp": 376,
+                "skill_name": "八部众",
+                "skill_id": 1,
+                "description": "如果非要做一个选择，就让我死在乔伽的手下吧。"
+            },
+            "234": {
+                "id": 234,
+                "number": 47,
+                "name": "宿命·紧那罗王",
+                "star": 4,
+                "lv": 1,
+                "atk": 206,
+                "hp": 523,
+                "skill_name": "八部众",
+                "skill_id": 1,
+                "description": "屈服黑暗是他的宿命，执迷不悟是我的宿命。"
+            },
+            "235": {
+                "id": 235,
+                "number": 47,
+                "name": "无双环·紧那罗王",
+                "star": 5,
+                "lv": 1,
+                "atk": 265,
+                "hp": 670,
+                "skill_name": "八部众",
+                "skill_id": 1,
+                "description": "既然无法在一起，那就把我的武器叫做无双环吧。"
+            },
+            "236": {
+                "id": 236,
+                "number": 48,
+                "name": "三眼·杨戬",
+                "star": 1,
+                "lv": 1,
+                "atk": 44,
+                "hp": 133,
+                "description": "他们笑我三只眼，是嫉妒我比他们看的更清楚，可这也是我的烦恼。"
+            },
+            "237": {
+                "id": 237,
+                "number": 48,
+                "name": "啸天·杨戬",
+                "star": 2,
+                "lv": 1,
+                "atk": 89,
+                "hp": 285,
+                "description": "当所有的人，离开我的时候，你劝我要安静从容。谢谢你，哮天犬。"
+            },
+            "238": {
+                "id": 238,
+                "number": 48,
+                "name": "仙·杨戬",
+                "star": 3,
+                "lv": 1,
+                "atk": 138,
+                "hp": 402,
+                "skill_name": "三只眼",
+                "skill_id": 4,
+                "description": "在小庙里当神仙没什么不好，大庙里的神仙很大，心眼却很小。"
+            },
+            "239": {
+                "id": 239,
+                "number": 48,
+                "name": "神·杨戬",
+                "star": 4,
+                "lv": 1,
+                "atk": 180,
+                "hp": 555,
+                "skill_name": "三只眼",
+                "skill_id": 4,
+                "description": "英雄惜英雄只是电影里的桥段，你挑衅我的狗我就跟你拼命！"
+            },
+            "240": {
+                "id": 240,
+                "number": 48,
+                "name": "二郎神·杨戬",
+                "star": 5,
+                "lv": 1,
+                "atk": 250,
+                "hp": 718,
+                "skill_name": "三只眼",
+                "skill_id": 4,
+                "description": "很多年之后，我有个绰号叫“二郎神”，其实我不二。"
+            },
+            "241": {
+                "id": 241,
+                "number": 49,
+                "name": "异人·哪吒",
+                "star": 1,
+                "lv": 1,
+                "atk": 46,
+                "hp": 140,
+                "description": "他们说我爹不喜欢我，是因为我不姓李，可名字是谁起的呢？"
+            },
+            "242": {
+                "id": 242,
+                "number": 49,
+                "name": "小仙·哪吒",
+                "star": 2,
+                "lv": 1,
+                "atk": 92,
+                "hp": 290,
+                "description": "我知道我的兵器看起来有点娘，你如果不服，可以来试试。"
+            },
+            "243": {
+                "id": 243,
+                "number": 49,
+                "name": "神臂·哪吒",
+                "star": 3,
+                "lv": 1,
+                "atk": 141,
+                "hp": 410,
+                "skill_name": "龙骨枪",
+                "skill_id": 1,
+                "description": "我家有一把乾坤弓，拿来咱们一起去打麻雀吧！"
+            },
+            "244": {
+                "id": 244,
+                "number": 49,
+                "name": "擒龙·哪吒",
+                "star": 4,
+                "lv": 1,
+                "atk": 192,
+                "hp": 560,
+                "skill_name": "龙骨枪",
+                "skill_id": 1,
+                "description": "公海里的海鲜是不是谁都可以捕捞？我想捉条龙。"
+            },
+            "245": {
+                "id": 245,
+                "number": 49,
+                "name": "不死·哪吒",
+                "star": 5,
+                "lv": 1,
+                "atk": 262,
+                "hp": 720,
+                "skill_name": "龙骨枪",
+                "skill_id": 1,
+                "description": "那年开始，我忘记了很多事情，师父说，那就好。"
+            },
+            "246": {
+                "id": 246,
+                "number": 50,
+                "name": "灯芯·紫霞",
+                "star": 1,
+                "lv": 1,
+                "atk": 55,
+                "hp": 136,
+                "description": "我本是日月神灯的灯芯，负责白天点亮，觉得有点浪费，就跑出来了。"
+            },
+            "247": {
+                "id": 247,
+                "number": 50,
+                "name": "盘丝大仙·紫霞",
+                "star": 2,
+                "lv": 1,
+                "atk": 91,
+                "hp": 290,
+                "description": "要不是一时性起，我才不会起这么个像蜘蛛精一样的名字呢。"
+            },
+            "248": {
+                "id": 248,
+                "number": 50,
+                "name": "紫青宝剑·紫霞",
+                "star": 3,
+                "lv": 1,
+                "atk": 141,
+                "hp": 410,
+                "skill_name": "月光宝盒",
+                "skill_id": 1,
+                "description": "拔出宝剑就能娶我，你还不明白我那颗恨嫁的心么？"
+            },
+            "249": {
+                "id": 249,
+                "number": 50,
+                "name": "月光宝盒·紫霞",
+                "star": 4,
+                "lv": 1,
+                "atk": 185,
+                "hp": 556,
+                "skill_name": "月光宝盒",
+                "skill_id": 1,
+                "description": "回到过去我可以当什么都没发生，虽然不能拥有，但我可以不去忘记。"
+            },
+            "250": {
+                "id": 250,
+                "number": 50,
+                "name": "七色云彩·紫霞",
+                "star": 5,
+                "lv": 1,
+                "atk": 255,
+                "hp": 725,
+                "skill_name": "月光宝盒",
+                "skill_id": 1,
+                "description": "意中人你驾着七色云彩慢慢飞，小心前面带刺的玫瑰。"
+            },
+            "10000": {
+                "id": 10000,
+                "number": 10000,
+                "name": "恶·鬼谷子",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10001": {
+                "id": 10001,
+                "number": 10001,
+                "name": "恶·黑无常",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 2,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10002": {
+                "id": 10002,
+                "number": 10002,
+                "name": "恶·白无常",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 3,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10003": {
+                "id": 10003,
+                "number": 10003,
+                "name": "恶·日游神",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 4,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10004": {
+                "id": 10004,
+                "number": 10004,
+                "name": "恶·夜游神",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 5,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10005": {
+                "id": 10005,
+                "number": 10005,
+                "name": "恶·宓妃",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 6,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10006": {
+                "id": 10006,
+                "number": 10006,
+                "name": "恶·张道陵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10007": {
+                "id": 10007,
+                "number": 10007,
+                "name": "恶·修罗王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 2,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10008": {
+                "id": 10008,
+                "number": 10008,
+                "name": "恶·迦楼罗王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 3,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10009": {
+                "id": 10009,
+                "number": 10009,
+                "name": "恶·紧那罗王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 4,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10010": {
+                "id": 10010,
+                "number": 10010,
+                "name": "恶·紫霞",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 5,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10011": {
+                "id": 10011,
+                "number": 10011,
+                "name": "恶·金蝉子",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 6,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10012": {
+                "id": 10012,
+                "number": 10012,
+                "name": "恶·铁扇公主",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10013": {
+                "id": 10013,
+                "number": 10013,
+                "name": "恶·沙僧",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 2,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10014": {
+                "id": 10014,
+                "number": 10014,
+                "name": "恶·牛魔王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 3,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10015": {
+                "id": 10015,
+                "number": 10015,
+                "name": "恶·巨灵神",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 4,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10016": {
+                "id": 10016,
+                "number": 10016,
+                "name": "恶·红孩儿",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 5,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10017": {
+                "id": 10017,
+                "number": 10017,
+                "name": "恶·黄飞虎",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 6,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10018": {
+                "id": 10018,
+                "number": 10018,
+                "name": "恶·孙悟空",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10019": {
+                "id": 10019,
+                "number": 10019,
+                "name": "恶·猪八戒",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 2,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10020": {
+                "id": 10020,
+                "number": 10020,
+                "name": "恶·杨戬",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 3,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10021": {
+                "id": 10021,
+                "number": 10021,
+                "name": "恶·哪吒",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 4,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10022": {
+                "id": 10022,
+                "number": 10022,
+                "name": "恶·赵公明",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 5,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10023": {
+                "id": 10023,
+                "number": 10023,
+                "name": "恶·申公豹",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 6,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10024": {
+                "id": 10024,
+                "number": 10024,
+                "name": "恶·土行孙",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10025": {
+                "id": 10025,
+                "number": 10025,
+                "name": "恶·法海",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 2,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10026": {
+                "id": 10026,
+                "number": 10026,
+                "name": "恶·雷震子",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 3,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10027": {
+                "id": 10027,
+                "number": 10027,
+                "name": "恶·妲己",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 4,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10028": {
+                "id": 10028,
+                "number": 10028,
+                "name": "恶·姜子牙",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 5,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10029": {
+                "id": 10029,
+                "number": 10029,
+                "name": "恶·李靖",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 6,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10030": {
+                "id": 10030,
+                "number": 10030,
+                "name": "恶·白素贞",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10031": {
+                "id": 10031,
+                "number": 10031,
+                "name": "恶·小青",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 2,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10032": {
+                "id": 10032,
+                "number": 10032,
+                "name": "恶·何仙姑",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 3,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10033": {
+                "id": 10033,
+                "number": 10033,
+                "name": "恶·吕洞宾",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 4,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10034": {
+                "id": 10034,
+                "number": 10034,
+                "name": "恶·铁拐李",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 5,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10035": {
+                "id": 10035,
+                "number": 10035,
+                "name": "恶·汉钟离",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 6,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10036": {
+                "id": 10036,
+                "number": 10036,
+                "name": "恶·张果老",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10037": {
+                "id": 10037,
+                "number": 10037,
+                "name": "恶·蓝采和",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 2,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10038": {
+                "id": 10038,
+                "number": 10038,
+                "name": "恶·韩湘子",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 3,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10039": {
+                "id": 10039,
+                "number": 10039,
+                "name": "恶·牛郎",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 4,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10040": {
+                "id": 10040,
+                "number": 10040,
+                "name": "恶·织女",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 5,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10041": {
+                "id": 10041,
+                "number": 10041,
+                "name": "恶·吴刚",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 6,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10042": {
+                "id": 10042,
+                "number": 10042,
+                "name": "恶·刑天",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10043": {
+                "id": 10043,
+                "number": 10043,
+                "name": "恶·沉香",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 2,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10044": {
+                "id": 10044,
+                "number": 10044,
+                "name": "恶·济公",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 3,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10045": {
+                "id": 10045,
+                "number": 10045,
+                "name": "恶·瑶姬",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 4,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10046": {
+                "id": 10046,
+                "number": 10046,
+                "name": "恶·精卫",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 5,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10047": {
+                "id": 10047,
+                "number": 10047,
+                "name": "恶·后羿",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 6,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10048": {
+                "id": 10048,
+                "number": 10048,
+                "name": "恶·嫦娥",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10049": {
+                "id": 10049,
+                "number": 10049,
+                "name": "恶·夸父",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 2,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "10050": {
+                "id": 10050,
+                "number": 10050,
+                "name": "恶·后羿",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 2,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20000": {
+                "id": 20000,
+                "number": 20000,
+                "name": "战·牛魔王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 5,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20001": {
+                "id": 20001,
+                "number": 20001,
+                "name": "战·哪吒",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 6,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20002": {
+                "id": 20002,
+                "number": 20002,
+                "name": "战·后羿",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20003": {
+                "id": 20003,
+                "number": 20003,
+                "name": "战·孙悟空",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 2,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20004": {
+                "id": 20004,
+                "number": 20004,
+                "name": "战·巨灵神",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 3,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20005": {
+                "id": 20005,
+                "number": 20005,
+                "name": "战·铁扇公主",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 4,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20006": {
+                "id": 20006,
+                "number": 20006,
+                "name": "战·红孩儿",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 5,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20007": {
+                "id": 20007,
+                "number": 20007,
+                "name": "战·济公",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 6,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20008": {
+                "id": 20008,
+                "number": 20008,
+                "name": "战·黄飞虎",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20009": {
+                "id": 20009,
+                "number": 20009,
+                "name": "战·刑天",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 2,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20010": {
+                "id": 20010,
+                "number": 20010,
+                "name": "战·妲己",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 3,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20011": {
+                "id": 20011,
+                "number": 20011,
+                "name": "战·申公豹",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 4,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20012": {
+                "id": 20012,
+                "number": 20012,
+                "name": "战·法海",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 5,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20013": {
+                "id": 20013,
+                "number": 20013,
+                "name": "战·何仙姑",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 6,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20014": {
+                "id": 20014,
+                "number": 20014,
+                "name": "战·土行孙",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20015": {
+                "id": 20015,
+                "number": 20015,
+                "name": "战·白素贞",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 2,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20016": {
+                "id": 20016,
+                "number": 20016,
+                "name": "战·修罗王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 3,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20017": {
+                "id": 20017,
+                "number": 20017,
+                "name": "战·吕洞宾",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 4,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20018": {
+                "id": 20018,
+                "number": 20018,
+                "name": "战·鬼谷子",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 5,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20019": {
+                "id": 20019,
+                "number": 20019,
+                "name": "战·日游神",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 6,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20020": {
+                "id": 20020,
+                "number": 20020,
+                "name": "战·夸父",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 6,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30000": {
+                "id": 30000,
+                "number": 30000,
+                "name": "经验元灵",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30001": {
+                "id": 30001,
+                "number": 30001,
+                "name": "战·修罗王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 3,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30002": {
+                "id": 30002,
+                "number": 30002,
+                "name": "战·吕洞宾",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 4,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30003": {
+                "id": 30003,
+                "number": 30003,
+                "name": "战·鬼谷子",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 5,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30004": {
+                "id": 30004,
+                "number": 30004,
+                "name": "战·日游神",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 6,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30005": {
+                "id": 30005,
+                "number": 30005,
+                "name": "战·夸父",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 6,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            }
+        }
+    },
+    "elixir": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "elixir": 10,
+                "atk": 1,
+                "hp": 2,
+                "star3_max": 50000,
+                "star4_max": 80000,
+                "star5_max": 120000
+            }
+        }
+    },
+    "factors": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "base": 1.1,
+                "factor": 1
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "base": 1.099,
+                "factor": 1.1
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "base": 1.098,
+                "factor": 1.209
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "base": 1.097,
+                "factor": 1.327
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "base": 1.096,
+                "factor": 1.456
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "base": 1.095,
+                "factor": 1.596
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "base": 1.094,
+                "factor": 1.748
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "base": 1.093,
+                "factor": 1.912
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "base": 1.092,
+                "factor": 2.09
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "base": 1.091,
+                "factor": 2.282
+            },
+            "11": {
+                "id": 11,
+                "lv": 11,
+                "base": 1.09,
+                "factor": 2.49
+            },
+            "12": {
+                "id": 12,
+                "lv": 12,
+                "base": 1.089,
+                "factor": 2.714
+            },
+            "13": {
+                "id": 13,
+                "lv": 13,
+                "base": 1.088,
+                "factor": 2.956
+            },
+            "14": {
+                "id": 14,
+                "lv": 14,
+                "base": 1.087,
+                "factor": 3.216
+            },
+            "15": {
+                "id": 15,
+                "lv": 15,
+                "base": 1.086,
+                "factor": 3.496
+            },
+            "16": {
+                "id": 16,
+                "lv": 16,
+                "base": 1.085,
+                "factor": 3.797
+            },
+            "17": {
+                "id": 17,
+                "lv": 17,
+                "base": 1.084,
+                "factor": 4.12
+            },
+            "18": {
+                "id": 18,
+                "lv": 18,
+                "base": 1.083,
+                "factor": 4.466
+            },
+            "19": {
+                "id": 19,
+                "lv": 19,
+                "base": 1.082,
+                "factor": 4.837
+            },
+            "20": {
+                "id": 20,
+                "lv": 20,
+                "base": 1.081,
+                "factor": 5.234
+            },
+            "21": {
+                "id": 21,
+                "lv": 21,
+                "base": 1.08,
+                "factor": 5.658
+            },
+            "22": {
+                "id": 22,
+                "lv": 22,
+                "base": 1.079,
+                "factor": 6.111
+            },
+            "23": {
+                "id": 23,
+                "lv": 23,
+                "base": 1.078,
+                "factor": 6.594
+            },
+            "24": {
+                "id": 24,
+                "lv": 24,
+                "base": 1.077,
+                "factor": 7.108
+            },
+            "25": {
+                "id": 25,
+                "lv": 25,
+                "base": 1.076,
+                "factor": 7.655
+            },
+            "26": {
+                "id": 26,
+                "lv": 26,
+                "base": 1.075,
+                "factor": 8.237
+            },
+            "27": {
+                "id": 27,
+                "lv": 27,
+                "base": 1.074,
+                "factor": 8.855
+            },
+            "28": {
+                "id": 28,
+                "lv": 28,
+                "base": 1.073,
+                "factor": 9.51
+            },
+            "29": {
+                "id": 29,
+                "lv": 29,
+                "base": 1.072,
+                "factor": 10.204
+            },
+            "30": {
+                "id": 30,
+                "lv": 30,
+                "base": 1.071,
+                "factor": 10.939
+            },
+            "31": {
+                "id": 31,
+                "lv": 31,
+                "base": 1.07,
+                "factor": 11.716
+            },
+            "32": {
+                "id": 32,
+                "lv": 32,
+                "base": 1.069,
+                "factor": 12.536
+            },
+            "33": {
+                "id": 33,
+                "lv": 33,
+                "base": 1.068,
+                "factor": 13.401
+            },
+            "34": {
+                "id": 34,
+                "lv": 34,
+                "base": 1.067,
+                "factor": 14.312
+            },
+            "35": {
+                "id": 35,
+                "lv": 35,
+                "base": 1.066,
+                "factor": 15.271
+            },
+            "36": {
+                "id": 36,
+                "lv": 36,
+                "base": 1.065,
+                "factor": 16.279
+            },
+            "37": {
+                "id": 37,
+                "lv": 37,
+                "base": 1.064,
+                "factor": 17.337
+            },
+            "38": {
+                "id": 38,
+                "lv": 38,
+                "base": 1.063,
+                "factor": 18.447
+            },
+            "39": {
+                "id": 39,
+                "lv": 39,
+                "base": 1.062,
+                "factor": 19.609
+            },
+            "40": {
+                "id": 40,
+                "lv": 40,
+                "base": 1.061,
+                "factor": 20.825
+            },
+            "41": {
+                "id": 41,
+                "lv": 41,
+                "base": 1.06,
+                "factor": 22.095
+            },
+            "42": {
+                "id": 42,
+                "lv": 42,
+                "base": 1.059,
+                "factor": 23.421
+            },
+            "43": {
+                "id": 43,
+                "lv": 43,
+                "base": 1.058,
+                "factor": 24.803
+            },
+            "44": {
+                "id": 44,
+                "lv": 44,
+                "base": 1.057,
+                "factor": 26.242
+            },
+            "45": {
+                "id": 45,
+                "lv": 45,
+                "base": 1.05600000000001,
+                "factor": 27.738
+            },
+            "46": {
+                "id": 46,
+                "lv": 46,
+                "base": 1.05500000000001,
+                "factor": 29.291
+            },
+            "47": {
+                "id": 47,
+                "lv": 47,
+                "base": 1.05400000000001,
+                "factor": 30.902
+            },
+            "48": {
+                "id": 48,
+                "lv": 48,
+                "base": 1.05300000000001,
+                "factor": 32.571
+            },
+            "49": {
+                "id": 49,
+                "lv": 49,
+                "base": 1.05200000000001,
+                "factor": 34.297
+            },
+            "50": {
+                "id": 50,
+                "lv": 50,
+                "base": 1.05100000000001,
+                "factor": 36.08
+            },
+            "51": {
+                "id": 51,
+                "lv": 51,
+                "base": 1.05000000000001,
+                "factor": 37.92
+            },
+            "52": {
+                "id": 52,
+                "lv": 52,
+                "base": 1.04900000000001,
+                "factor": 39.816
+            },
+            "53": {
+                "id": 53,
+                "lv": 53,
+                "base": 1.04800000000001,
+                "factor": 41.767
+            },
+            "54": {
+                "id": 54,
+                "lv": 54,
+                "base": 1.04700000000001,
+                "factor": 43.772
+            },
+            "55": {
+                "id": 55,
+                "lv": 55,
+                "base": 1.04600000000001,
+                "factor": 45.829
+            },
+            "56": {
+                "id": 56,
+                "lv": 56,
+                "base": 1.04500000000001,
+                "factor": 47.937
+            },
+            "57": {
+                "id": 57,
+                "lv": 57,
+                "base": 1.04400000000001,
+                "factor": 50.094
+            },
+            "58": {
+                "id": 58,
+                "lv": 58,
+                "base": 1.04300000000001,
+                "factor": 52.298
+            },
+            "59": {
+                "id": 59,
+                "lv": 59,
+                "base": 1.04200000000001,
+                "factor": 54.547
+            },
+            "60": {
+                "id": 60,
+                "lv": 60,
+                "base": 1.04100000000001,
+                "factor": 56.838
+            }
+        }
+    },
+    "star_upgrade": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star": 1,
+                "money_need": 3000,
+                "rate_per_card": 7,
+                "max_num": 15
+            },
+            "2": {
+                "id": 2,
+                "star": 2,
+                "money_need": 5000,
+                "rate_per_card": 6,
+                "max_num": 17
+            },
+            "3": {
+                "id": 3,
+                "star": 3,
+                "money_need": 10000,
+                "rate_per_card": 5,
+                "max_num": 20
+            },
+            "4": {
+                "id": 4,
+                "star": 4,
+                "money_need": 20000,
+                "rate_per_card": 3,
+                "max_num": 34
+            }
+        }
+    },
     "treasure_hunt": {
         "colComment": {},
         "rows": {
@@ -477,6 +5146,1156 @@ var outputTables = {
             }
         }
     },
+    "scope": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "default",
+                "value": 1,
+                "desc": "默认出手顺序"
+            },
+            "2": {
+                "id": 2,
+                "name": "crosswaysFront",
+                "value": 2,
+                "desc": "前排所有"
+            },
+            "3": {
+                "id": 3,
+                "name": "crosswaysBack",
+                "value": 3,
+                "desc": "后排所有"
+            },
+            "4": {
+                "id": 4,
+                "name": "lengthways",
+                "value": 4,
+                "desc": "纵向所有"
+            },
+            "5": {
+                "id": 5,
+                "name": "random",
+                "value": 5,
+                "desc": "随机卡牌"
+            },
+            "6": {
+                "id": 6,
+                "name": "all",
+                "value": 6,
+                "desc": "所有卡牌"
+            },
+            "7": {
+                "id": 7,
+                "name": "hp_min",
+                "value": 7,
+                "desc": "血量最低卡牌"
+            }
+        }
+    },
+    "skill_type": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "single_fight",
+                "chinese": "单体攻击"
+            },
+            "2": {
+                "id": 2,
+                "name": "aoe",
+                "chinese": "群体攻击"
+            },
+            "3": {
+                "id": 3,
+                "name": "single_heal",
+                "chinese": "单体治疗"
+            },
+            "4": {
+                "id": 4,
+                "name": "mult_heal",
+                "chinese": "群体治疗"
+            }
+        }
+    },
+    "skill_upgrade": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": 5000,
+                "star4": 15000,
+                "star5": 50000
+            },
+            "2": {
+                "id": 2,
+                "star3": 10000,
+                "star4": 30000,
+                "star5": 80000
+            },
+            "3": {
+                "id": 3,
+                "star3": 15000,
+                "star4": 50000,
+                "star5": 120000
+            },
+            "4": {
+                "id": 4,
+                "star3": 20000,
+                "star4": 80000,
+                "star5": 200000
+            },
+            "5": {
+                "id": 5,
+                "star3": 30000,
+                "star4": 120000,
+                "star5": 300000
+            }
+        }
+    },
+    "skills": {
+        "colComment": {
+            "type": {
+                "table": "技能类型表",
+                "key_index": "id",
+                "value_index": "name",
+                "withPound": false
+            },
+            "scope": {
+                "table": "卡牌范围表",
+                "key_index": "id",
+                "value_index": "name",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "1": {
+                "id": 1,
+                "description": "单体攻击，对敌方卡牌造成大量伤害。",
+                "type": 1,
+                "scope": 1,
+                "star3": "130,5",
+                "rate3": 30,
+                "star4": "140,5",
+                "rate4": 35,
+                "star5": "150,5",
+                "rate5": 40
+            },
+            "2": {
+                "id": 2,
+                "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 2,
+                "star3": "35,5",
+                "rate3": 30,
+                "star4": "45,5",
+                "rate4": 35,
+                "star5": "55,5",
+                "rate5": 40
+            },
+            "3": {
+                "id": 3,
+                "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 3,
+                "star3": "35,5",
+                "rate3": 30,
+                "star4": "45,5",
+                "rate4": 35,
+                "star5": "55,5",
+                "rate5": 40
+            },
+            "4": {
+                "id": 4,
+                "description": "纵向攻击，对敌方纵列每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 4,
+                "star3": "45,5",
+                "rate3": 30,
+                "star4": "55,5",
+                "rate4": 35,
+                "star5": "65,5",
+                "rate5": 40
+            },
+            "5": {
+                "id": 5,
+                "description": "随机攻击敌方2张卡牌，对每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 5,
+                "target_num": 2,
+                "star3": "45,5",
+                "rate3": 30,
+                "star4": "55,5",
+                "rate4": 35,
+                "star5": "65,5",
+                "rate5": 40
+            },
+            "6": {
+                "id": 6,
+                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 5,
+                "target_num": 3,
+                "star3": "45,5",
+                "rate3": 30,
+                "star4": "55,5",
+                "rate4": 35,
+                "star5": "65,5",
+                "rate5": 40
+            },
+            "7": {
+                "id": 7,
+                "description": "为当前血量最低的上阵卡牌恢复生命值。",
+                "type": 3,
+                "scope": 7,
+                "star3": "50,5",
+                "rate3": 30,
+                "star4": "60,5",
+                "rate4": 35,
+                "star5": "70,5",
+                "rate5": 40
+            },
+            "8": {
+                "id": 8,
+                "description": "为前排每张卡牌恢复生命值。",
+                "type": 4,
+                "scope": 2,
+                "star3": "30,5",
+                "rate3": 30,
+                "star4": "40,5",
+                "rate4": 35,
+                "star5": "50,5",
+                "rate5": 40
+            },
+            "9": {
+                "id": 9,
+                "description": "为后排每张卡牌恢复生命值。",
+                "type": 4,
+                "scope": 3,
+                "star3": "30,5",
+                "rate3": 30,
+                "star4": "40,5",
+                "rate4": 35,
+                "star5": "50,5",
+                "rate5": 40
+            },
+            "10": {
+                "id": 10,
+                "description": "为当前上阵的所有卡牌恢复生命值。",
+                "type": 4,
+                "scope": 6,
+                "star3": "15,5",
+                "rate3": 30,
+                "star4": "25,5",
+                "rate4": 35,
+                "star5": "35,5",
+                "rate5": 40
+            }
+        }
+    },
+    "rank": {
+        "colComment": {},
+        "rows": {
+            "20": {
+                "id": 20,
+                "lv": 20,
+                "win_exp": 1,
+                "win_money": 50,
+                "win_elixir": 5,
+                "lose_exp": 1,
+                "lose_money": 25,
+                "lose_elixir": 3
+            },
+            "21": {
+                "id": 21,
+                "lv": 21,
+                "win_exp": 1,
+                "win_money": 60,
+                "win_elixir": 7,
+                "lose_exp": 1,
+                "lose_money": 30,
+                "lose_elixir": 4
+            },
+            "22": {
+                "id": 22,
+                "lv": 22,
+                "win_exp": 1,
+                "win_money": 70,
+                "win_elixir": 9,
+                "lose_exp": 1,
+                "lose_money": 35,
+                "lose_elixir": 5
+            },
+            "23": {
+                "id": 23,
+                "lv": 23,
+                "win_exp": 1,
+                "win_money": 80,
+                "win_elixir": 11,
+                "lose_exp": 1,
+                "lose_money": 40,
+                "lose_elixir": 6
+            },
+            "24": {
+                "id": 24,
+                "lv": 24,
+                "win_exp": 1,
+                "win_money": 90,
+                "win_elixir": 13,
+                "lose_exp": 1,
+                "lose_money": 45,
+                "lose_elixir": 7
+            },
+            "25": {
+                "id": 25,
+                "lv": 25,
+                "win_exp": 2,
+                "win_money": 100,
+                "win_elixir": 15,
+                "lose_exp": 1,
+                "lose_money": 50,
+                "lose_elixir": 8
+            },
+            "26": {
+                "id": 26,
+                "lv": 26,
+                "win_exp": 2,
+                "win_money": 110,
+                "win_elixir": 17,
+                "lose_exp": 1,
+                "lose_money": 55,
+                "lose_elixir": 9
+            },
+            "27": {
+                "id": 27,
+                "lv": 27,
+                "win_exp": 2,
+                "win_money": 120,
+                "win_elixir": 19,
+                "lose_exp": 1,
+                "lose_money": 60,
+                "lose_elixir": 10
+            },
+            "28": {
+                "id": 28,
+                "lv": 28,
+                "win_exp": 2,
+                "win_money": 130,
+                "win_elixir": 21,
+                "lose_exp": 1,
+                "lose_money": 65,
+                "lose_elixir": 11
+            },
+            "29": {
+                "id": 29,
+                "lv": 29,
+                "win_exp": 2,
+                "win_money": 140,
+                "win_elixir": 23,
+                "lose_exp": 1,
+                "lose_money": 70,
+                "lose_elixir": 12
+            },
+            "30": {
+                "id": 30,
+                "lv": 30,
+                "win_exp": 2,
+                "win_money": 150,
+                "win_elixir": 25,
+                "lose_exp": 1,
+                "lose_money": 75,
+                "lose_elixir": 13
+            },
+            "31": {
+                "id": 31,
+                "lv": 31,
+                "win_exp": 3,
+                "win_money": 160,
+                "win_elixir": 27,
+                "lose_exp": 1,
+                "lose_money": 80,
+                "lose_elixir": 14
+            },
+            "32": {
+                "id": 32,
+                "lv": 32,
+                "win_exp": 3,
+                "win_money": 170,
+                "win_elixir": 29,
+                "lose_exp": 1,
+                "lose_money": 85,
+                "lose_elixir": 15
+            },
+            "33": {
+                "id": 33,
+                "lv": 33,
+                "win_exp": 3,
+                "win_money": 180,
+                "win_elixir": 31,
+                "lose_exp": 2,
+                "lose_money": 90,
+                "lose_elixir": 16
+            },
+            "34": {
+                "id": 34,
+                "lv": 34,
+                "win_exp": 4,
+                "win_money": 190,
+                "win_elixir": 33,
+                "lose_exp": 2,
+                "lose_money": 95,
+                "lose_elixir": 17
+            },
+            "35": {
+                "id": 35,
+                "lv": 35,
+                "win_exp": 4,
+                "win_money": 200,
+                "win_elixir": 35,
+                "lose_exp": 2,
+                "lose_money": 100,
+                "lose_elixir": 18
+            },
+            "36": {
+                "id": 36,
+                "lv": 36,
+                "win_exp": 4,
+                "win_money": 210,
+                "win_elixir": 37,
+                "lose_exp": 2,
+                "lose_money": 105,
+                "lose_elixir": 19
+            },
+            "37": {
+                "id": 37,
+                "lv": 37,
+                "win_exp": 5,
+                "win_money": 220,
+                "win_elixir": 39,
+                "lose_exp": 2,
+                "lose_money": 110,
+                "lose_elixir": 20
+            },
+            "38": {
+                "id": 38,
+                "lv": 38,
+                "win_exp": 5,
+                "win_money": 230,
+                "win_elixir": 41,
+                "lose_exp": 3,
+                "lose_money": 115,
+                "lose_elixir": 21
+            },
+            "39": {
+                "id": 39,
+                "lv": 39,
+                "win_exp": 6,
+                "win_money": 240,
+                "win_elixir": 43,
+                "lose_exp": 3,
+                "lose_money": 120,
+                "lose_elixir": 22
+            },
+            "40": {
+                "id": 40,
+                "lv": 40,
+                "win_exp": 6,
+                "win_money": 250,
+                "win_elixir": 45,
+                "lose_exp": 3,
+                "lose_money": 125,
+                "lose_elixir": 23
+            },
+            "41": {
+                "id": 41,
+                "lv": 41,
+                "win_exp": 7,
+                "win_money": 260,
+                "win_elixir": 47,
+                "lose_exp": 3,
+                "lose_money": 130,
+                "lose_elixir": 24
+            },
+            "42": {
+                "id": 42,
+                "lv": 42,
+                "win_exp": 8,
+                "win_money": 270,
+                "win_elixir": 49,
+                "lose_exp": 4,
+                "lose_money": 135,
+                "lose_elixir": 25
+            },
+            "43": {
+                "id": 43,
+                "lv": 43,
+                "win_exp": 8,
+                "win_money": 280,
+                "win_elixir": 51,
+                "lose_exp": 4,
+                "lose_money": 140,
+                "lose_elixir": 26
+            },
+            "44": {
+                "id": 44,
+                "lv": 44,
+                "win_exp": 9,
+                "win_money": 290,
+                "win_elixir": 53,
+                "lose_exp": 5,
+                "lose_money": 145,
+                "lose_elixir": 27
+            },
+            "45": {
+                "id": 45,
+                "lv": 45,
+                "win_exp": 10,
+                "win_money": 300,
+                "win_elixir": 55,
+                "lose_exp": 5,
+                "lose_money": 150,
+                "lose_elixir": 28
+            },
+            "46": {
+                "id": 46,
+                "lv": 46,
+                "win_exp": 11,
+                "win_money": 310,
+                "win_elixir": 57,
+                "lose_exp": 6,
+                "lose_money": 155,
+                "lose_elixir": 29
+            },
+            "47": {
+                "id": 47,
+                "lv": 47,
+                "win_exp": 12,
+                "win_money": 320,
+                "win_elixir": 59,
+                "lose_exp": 6,
+                "lose_money": 160,
+                "lose_elixir": 30
+            },
+            "48": {
+                "id": 48,
+                "lv": 48,
+                "win_exp": 13,
+                "win_money": 330,
+                "win_elixir": 61,
+                "lose_exp": 7,
+                "lose_money": 165,
+                "lose_elixir": 31
+            },
+            "49": {
+                "id": 49,
+                "lv": 49,
+                "win_exp": 15,
+                "win_money": 340,
+                "win_elixir": 63,
+                "lose_exp": 7,
+                "lose_money": 170,
+                "lose_elixir": 32
+            },
+            "50": {
+                "id": 50,
+                "lv": 50,
+                "win_exp": 16,
+                "win_money": 350,
+                "win_elixir": 65,
+                "lose_exp": 8,
+                "lose_money": 175,
+                "lose_elixir": 33
+            },
+            "51": {
+                "id": 51,
+                "lv": 51,
+                "win_exp": 18,
+                "win_money": 360,
+                "win_elixir": 67,
+                "lose_exp": 9,
+                "lose_money": 180,
+                "lose_elixir": 34
+            },
+            "52": {
+                "id": 52,
+                "lv": 52,
+                "win_exp": 20,
+                "win_money": 370,
+                "win_elixir": 69,
+                "lose_exp": 10,
+                "lose_money": 185,
+                "lose_elixir": 35
+            },
+            "53": {
+                "id": 53,
+                "lv": 53,
+                "win_exp": 22,
+                "win_money": 380,
+                "win_elixir": 71,
+                "lose_exp": 11,
+                "lose_money": 190,
+                "lose_elixir": 36
+            },
+            "54": {
+                "id": 54,
+                "lv": 54,
+                "win_exp": 24,
+                "win_money": 390,
+                "win_elixir": 73,
+                "lose_exp": 12,
+                "lose_money": 195,
+                "lose_elixir": 37
+            },
+            "55": {
+                "id": 55,
+                "lv": 55,
+                "win_exp": 26,
+                "win_money": 400,
+                "win_elixir": 75,
+                "lose_exp": 13,
+                "lose_money": 200,
+                "lose_elixir": 38
+            },
+            "56": {
+                "id": 56,
+                "lv": 56,
+                "win_exp": 29,
+                "win_money": 410,
+                "win_elixir": 77,
+                "lose_exp": 14,
+                "lose_money": 205,
+                "lose_elixir": 39
+            },
+            "57": {
+                "id": 57,
+                "lv": 57,
+                "win_exp": 32,
+                "win_money": 420,
+                "win_elixir": 79,
+                "lose_exp": 16,
+                "lose_money": 210,
+                "lose_elixir": 40
+            },
+            "58": {
+                "id": 58,
+                "lv": 58,
+                "win_exp": 35,
+                "win_money": 430,
+                "win_elixir": 81,
+                "lose_exp": 17,
+                "lose_money": 215,
+                "lose_elixir": 41
+            },
+            "59": {
+                "id": 59,
+                "lv": 59,
+                "win_exp": 38,
+                "win_money": 440,
+                "win_elixir": 83,
+                "lose_exp": 19,
+                "lose_money": 220,
+                "lose_elixir": 42
+            },
+            "60": {
+                "id": 60,
+                "lv": 60,
+                "win_exp": 42,
+                "win_money": 450,
+                "win_elixir": 85,
+                "lose_exp": 21,
+                "lose_money": 225,
+                "lose_elixir": 43
+            },
+            "61": {
+                "id": 61,
+                "lv": 61,
+                "win_exp": 47,
+                "win_money": 460,
+                "win_elixir": 87,
+                "lose_exp": 23,
+                "lose_money": 230,
+                "lose_elixir": 44
+            },
+            "62": {
+                "id": 62,
+                "lv": 62,
+                "win_exp": 51,
+                "win_money": 470,
+                "win_elixir": 89,
+                "lose_exp": 26,
+                "lose_money": 235,
+                "lose_elixir": 45
+            },
+            "63": {
+                "id": 63,
+                "lv": 63,
+                "win_exp": 56,
+                "win_money": 480,
+                "win_elixir": 91,
+                "lose_exp": 28,
+                "lose_money": 240,
+                "lose_elixir": 46
+            },
+            "64": {
+                "id": 64,
+                "lv": 64,
+                "win_exp": 62,
+                "win_money": 490,
+                "win_elixir": 93,
+                "lose_exp": 31,
+                "lose_money": 245,
+                "lose_elixir": 47
+            },
+            "65": {
+                "id": 65,
+                "lv": 65,
+                "win_exp": 68,
+                "win_money": 500,
+                "win_elixir": 95,
+                "lose_exp": 34,
+                "lose_money": 250,
+                "lose_elixir": 48
+            },
+            "66": {
+                "id": 66,
+                "lv": 66,
+                "win_exp": 75,
+                "win_money": 510,
+                "win_elixir": 97,
+                "lose_exp": 37,
+                "lose_money": 255,
+                "lose_elixir": 49
+            },
+            "67": {
+                "id": 67,
+                "lv": 67,
+                "win_exp": 82,
+                "win_money": 520,
+                "win_elixir": 99,
+                "lose_exp": 41,
+                "lose_money": 260,
+                "lose_elixir": 50
+            },
+            "68": {
+                "id": 68,
+                "lv": 68,
+                "win_exp": 91,
+                "win_money": 530,
+                "win_elixir": 101,
+                "lose_exp": 45,
+                "lose_money": 265,
+                "lose_elixir": 51
+            },
+            "69": {
+                "id": 69,
+                "lv": 69,
+                "win_exp": 100,
+                "win_money": 540,
+                "win_elixir": 103,
+                "lose_exp": 50,
+                "lose_money": 270,
+                "lose_elixir": 52
+            },
+            "70": {
+                "id": 70,
+                "lv": 70,
+                "win_exp": 110,
+                "win_money": 550,
+                "win_elixir": 105,
+                "lose_exp": 55,
+                "lose_money": 275,
+                "lose_elixir": 53
+            },
+            "71": {
+                "id": 71,
+                "lv": 71,
+                "win_exp": 121,
+                "win_money": 560,
+                "win_elixir": 107,
+                "lose_exp": 60,
+                "lose_money": 280,
+                "lose_elixir": 54
+            },
+            "72": {
+                "id": 72,
+                "lv": 72,
+                "win_exp": 133,
+                "win_money": 570,
+                "win_elixir": 109,
+                "lose_exp": 66,
+                "lose_money": 285,
+                "lose_elixir": 55
+            },
+            "73": {
+                "id": 73,
+                "lv": 73,
+                "win_exp": 146,
+                "win_money": 580,
+                "win_elixir": 111,
+                "lose_exp": 73,
+                "lose_money": 290,
+                "lose_elixir": 56
+            },
+            "74": {
+                "id": 74,
+                "lv": 74,
+                "win_exp": 161,
+                "win_money": 590,
+                "win_elixir": 113,
+                "lose_exp": 80,
+                "lose_money": 295,
+                "lose_elixir": 57
+            },
+            "75": {
+                "id": 75,
+                "lv": 75,
+                "win_exp": 177,
+                "win_money": 600,
+                "win_elixir": 115,
+                "lose_exp": 88,
+                "lose_money": 300,
+                "lose_elixir": 58
+            },
+            "76": {
+                "id": 76,
+                "lv": 76,
+                "win_exp": 194,
+                "win_money": 610,
+                "win_elixir": 117,
+                "lose_exp": 97,
+                "lose_money": 305,
+                "lose_elixir": 59
+            },
+            "77": {
+                "id": 77,
+                "lv": 77,
+                "win_exp": 214,
+                "win_money": 620,
+                "win_elixir": 119,
+                "lose_exp": 107,
+                "lose_money": 310,
+                "lose_elixir": 60
+            },
+            "78": {
+                "id": 78,
+                "lv": 78,
+                "win_exp": 235,
+                "win_money": 630,
+                "win_elixir": 121,
+                "lose_exp": 118,
+                "lose_money": 315,
+                "lose_elixir": 61
+            },
+            "79": {
+                "id": 79,
+                "lv": 79,
+                "win_exp": 259,
+                "win_money": 640,
+                "win_elixir": 123,
+                "lose_exp": 129,
+                "lose_money": 320,
+                "lose_elixir": 62
+            },
+            "80": {
+                "id": 80,
+                "lv": 80,
+                "win_exp": 284,
+                "win_money": 650,
+                "win_elixir": 125,
+                "lose_exp": 142,
+                "lose_money": 325,
+                "lose_elixir": 63
+            },
+            "81": {
+                "id": 81,
+                "lv": 81,
+                "win_exp": 313,
+                "win_money": 660,
+                "win_elixir": 127,
+                "lose_exp": 156,
+                "lose_money": 330,
+                "lose_elixir": 64
+            },
+            "82": {
+                "id": 82,
+                "lv": 82,
+                "win_exp": 344,
+                "win_money": 670,
+                "win_elixir": 129,
+                "lose_exp": 172,
+                "lose_money": 335,
+                "lose_elixir": 65
+            },
+            "83": {
+                "id": 83,
+                "lv": 83,
+                "win_exp": 379,
+                "win_money": 680,
+                "win_elixir": 131,
+                "lose_exp": 189,
+                "lose_money": 340,
+                "lose_elixir": 66
+            },
+            "84": {
+                "id": 84,
+                "lv": 84,
+                "win_exp": 416,
+                "win_money": 690,
+                "win_elixir": 133,
+                "lose_exp": 208,
+                "lose_money": 345,
+                "lose_elixir": 67
+            },
+            "85": {
+                "id": 85,
+                "lv": 85,
+                "win_exp": 458,
+                "win_money": 700,
+                "win_elixir": 135,
+                "lose_exp": 229,
+                "lose_money": 350,
+                "lose_elixir": 68
+            },
+            "86": {
+                "id": 86,
+                "lv": 86,
+                "win_exp": 504,
+                "win_money": 710,
+                "win_elixir": 137,
+                "lose_exp": 252,
+                "lose_money": 355,
+                "lose_elixir": 69
+            },
+            "87": {
+                "id": 87,
+                "lv": 87,
+                "win_exp": 554,
+                "win_money": 720,
+                "win_elixir": 139,
+                "lose_exp": 277,
+                "lose_money": 360,
+                "lose_elixir": 70
+            },
+            "88": {
+                "id": 88,
+                "lv": 88,
+                "win_exp": 610,
+                "win_money": 730,
+                "win_elixir": 141,
+                "lose_exp": 305,
+                "lose_money": 365,
+                "lose_elixir": 71
+            },
+            "89": {
+                "id": 89,
+                "lv": 89,
+                "win_exp": 671,
+                "win_money": 740,
+                "win_elixir": 143,
+                "lose_exp": 335,
+                "lose_money": 370,
+                "lose_elixir": 72
+            },
+            "90": {
+                "id": 90,
+                "lv": 90,
+                "win_exp": 738,
+                "win_money": 750,
+                "win_elixir": 145,
+                "lose_exp": 369,
+                "lose_money": 375,
+                "lose_elixir": 73
+            },
+            "91": {
+                "id": 91,
+                "lv": 91,
+                "win_exp": 811,
+                "win_money": 760,
+                "win_elixir": 147,
+                "lose_exp": 406,
+                "lose_money": 380,
+                "lose_elixir": 74
+            },
+            "92": {
+                "id": 92,
+                "lv": 92,
+                "win_exp": 893,
+                "win_money": 770,
+                "win_elixir": 149,
+                "lose_exp": 446,
+                "lose_money": 385,
+                "lose_elixir": 75
+            },
+            "93": {
+                "id": 93,
+                "lv": 93,
+                "win_exp": 982,
+                "win_money": 780,
+                "win_elixir": 151,
+                "lose_exp": 491,
+                "lose_money": 390,
+                "lose_elixir": 76
+            },
+            "94": {
+                "id": 94,
+                "lv": 94,
+                "win_exp": 1080,
+                "win_money": 790,
+                "win_elixir": 153,
+                "lose_exp": 540,
+                "lose_money": 395,
+                "lose_elixir": 77
+            },
+            "95": {
+                "id": 95,
+                "lv": 95,
+                "win_exp": 1188,
+                "win_money": 800,
+                "win_elixir": 155,
+                "lose_exp": 594,
+                "lose_money": 400,
+                "lose_elixir": 78
+            },
+            "96": {
+                "id": 96,
+                "lv": 96,
+                "win_exp": 1307,
+                "win_money": 810,
+                "win_elixir": 157,
+                "lose_exp": 653,
+                "lose_money": 405,
+                "lose_elixir": 79
+            },
+            "97": {
+                "id": 97,
+                "lv": 97,
+                "win_exp": 1438,
+                "win_money": 820,
+                "win_elixir": 159,
+                "lose_exp": 719,
+                "lose_money": 410,
+                "lose_elixir": 80
+            },
+            "98": {
+                "id": 98,
+                "lv": 98,
+                "win_exp": 1581,
+                "win_money": 830,
+                "win_elixir": 161,
+                "lose_exp": 791,
+                "lose_money": 415,
+                "lose_elixir": 81
+            },
+            "99": {
+                "id": 99,
+                "lv": 99,
+                "win_exp": 1739,
+                "win_money": 840,
+                "win_elixir": 163,
+                "lose_exp": 870,
+                "lose_money": 420,
+                "lose_elixir": 82
+            },
+            "100": {
+                "id": 100,
+                "lv": 100,
+                "win_exp": 0,
+                "win_money": 850,
+                "win_elixir": 165,
+                "lose_exp": 0,
+                "lose_money": 425,
+                "lose_elixir": 83
+            }
+        }
+    },
+    "ranking_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "elixir": 5000
+            },
+            "10": {
+                "id": 10,
+                "elixir": 3500
+            },
+            "50": {
+                "id": 50,
+                "elixir": 3000
+            },
+            "100": {
+                "id": 100,
+                "elixir": 2500
+            },
+            "500": {
+                "id": 500,
+                "elixir": 2000
+            },
+            "1000": {
+                "id": 1000,
+                "elixir": 1500
+            },
+            "5000": {
+                "id": 5000,
+                "elixir": 1000
+            }
+        }
+    },
+    "ranking_reward_factor": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "ranking": 1,
+                "percent": 100
+            },
+            "2": {
+                "id": 2,
+                "ranking": 11,
+                "percent": 90
+            },
+            "3": {
+                "id": 3,
+                "ranking": 51,
+                "percent": 80
+            },
+            "4": {
+                "id": 4,
+                "ranking": 101,
+                "percent": 70
+            },
+            "5": {
+                "id": 5,
+                "ranking": 201,
+                "percent": 60
+            },
+            "6": {
+                "id": 6,
+                "ranking": 501,
+                "percent": 50
+            },
+            "7": {
+                "id": 7,
+                "ranking": 1001,
+                "percent": 40
+            },
+            "8": {
+                "id": 8,
+                "ranking": 3001,
+                "percent": 30
+            },
+            "9": {
+                "id": 9,
+                "ranking": 5001,
+                "percent": 20
+            },
+            "10": {
+                "id": 10,
+                "ranking": 10001,
+                "percent": 10
+            }
+        }
+    },
     "spirit": {
         "colComment": {},
         "rows": {
@@ -578,6 +6397,281 @@ var outputTables = {
                 "atk_inc": 50,
                 "spirit_atk_pct": 100,
                 "rate": 30
+            }
+        }
+    },
+    "passFailSpiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "总结下，主人，为啥我们没打过？"
+            },
+            "2": {
+                "id": 2,
+                "text": "没事，主人，反正又不是只有我们打不过。"
+            },
+            "3": {
+                "id": 3,
+                "text": "我们是不是该提升下能力再来打？主人。"
+            },
+            "4": {
+                "id": 4,
+                "text": "胜败乃常事，不要气馁，主人。"
+            },
+            "5": {
+                "id": 5,
+                "text": "注意休息，主人，实在打不过就改天吧。"
+            }
+        }
+    },
+    "passWinSpiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "OK，下一层，让我们继续，主人。"
+            },
+            "2": {
+                "id": 2,
+                "text": "主人，你是最猛的，没有之一。"
+            },
+            "3": {
+                "id": 3,
+                "text": "无压力，让我们继续下一层。"
+            },
+            "4": {
+                "id": 4,
+                "text": "这太简单了，我简直感受不到挑战的存在。"
+            },
+            "5": {
+                "id": 5,
+                "text": "老天，来点真正的挑战吧。"
+            },
+            "6": {
+                "id": 6,
+                "text": "据说通关后可以看到嫦娥洗澡，让我们继续主人。"
+            },
+            "7": {
+                "id": 7,
+                "text": "胜利总是来的这么突然，唉……"
+            },
+            "8": {
+                "id": 8,
+                "text": "求败，求败，但求一败啊……"
+            },
+            "9": {
+                "id": 9,
+                "text": "没难度，没挑战，无压力。"
+            },
+            "10": {
+                "id": 10,
+                "text": "注意保持姿势，不要停，继续。"
+            }
+        }
+    },
+    "spiritSpeak": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "text": "主人，我是你的元神，不是你的宠物……"
+            },
+            "2": {
+                "id": 2,
+                "text": "我到底是公的还是母的啊，主人。"
+            },
+            "3": {
+                "id": 3,
+                "text": "作为你的元神，主人，我自豪，我傲娇。"
+            },
+            "4": {
+                "id": 4,
+                "text": "吃饭了没，主人。"
+            },
+            "5": {
+                "id": 5,
+                "text": "主人，我真的猜不透你耶……"
+            },
+            "6": {
+                "id": 6,
+                "text": "人活得其实是一个心态，主人，凡事随缘。"
+            },
+            "7": {
+                "id": 7,
+                "text": "主人，作为你的元神，我对自己的长相极度自信。"
+            },
+            "8": {
+                "id": 8,
+                "text": "主人，记得多采灵气，这样我才能更快成长。"
+            },
+            "9": {
+                "id": 9,
+                "text": "有时候想想，活着也真累，唉……"
+            },
+            "10": {
+                "id": 10,
+                "text": "房价要暴跌了，主人，最近记得别买房。"
+            },
+            "11": {
+                "id": 11,
+                "text": "仙界和人间也差不多，都一个屌样，没啥情趣。"
+            },
+            "12": {
+                "id": 12,
+                "text": "作为你的元神，主人，我知道你是有理想的人。"
+            },
+            "13": {
+                "id": 13,
+                "text": "尽量不要熬夜，主人，很伤身体的。"
+            },
+            "14": {
+                "id": 14,
+                "text": "相信我，主人，我可以决定一场战斗的胜负。"
+            },
+            "15": {
+                "id": 15,
+                "text": "主人，我喜欢吃山西臊子面，超赞的味道。"
+            },
+            "16": {
+                "id": 16,
+                "text": "主人，今天心情好么，祝你游戏愉快唷。"
+            },
+            "17": {
+                "id": 17,
+                "text": "主人，我今天很郁闷。"
+            },
+            "18": {
+                "id": 18,
+                "text": "主人，每次与你相遇，我都觉得很幸福。"
+            },
+            "19": {
+                "id": 19,
+                "text": "每次45度仰望星空，我都不禁陷入沉思……"
+            },
+            "20": {
+                "id": 20,
+                "text": "上班时间记得多看看电影，主人，调节心情。"
+            },
+            "21": {
+                "id": 21,
+                "text": "主人，不要太在意钱，钱就是个蛋。"
+            },
+            "22": {
+                "id": 22,
+                "text": "如果遇到相爱之人，主人，要珍惜之。"
+            },
+            "23": {
+                "id": 23,
+                "text": "主人，你是干啥的啊，当官的么？"
+            },
+            "24": {
+                "id": 24,
+                "text": "嫦娥其实长的很丑，主人，我亲眼见过。"
+            },
+            "25": {
+                "id": 25,
+                "text": "爱情是个什么东东，主人，你能告诉我么。"
+            },
+            "26": {
+                "id": 26,
+                "text": "主人，昨天我看到苍空井老师了，好激动。"
+            },
+            "27": {
+                "id": 27,
+                "text": "超级讨厌玉帝，讨厌死了。"
+            },
+            "28": {
+                "id": 28,
+                "text": "寂寞不是苦，是心灵的一种福音。"
+            },
+            "29": {
+                "id": 29,
+                "text": "主人，我今天好像感冒了，咳咳……"
+            },
+            "30": {
+                "id": 30,
+                "text": "人间好玩么，主人。很想去看一看。"
+            },
+            "31": {
+                "id": 31,
+                "text": "上天其实是没有好生之德的，主人。"
+            },
+            "32": {
+                "id": 32,
+                "text": "最近仙界妖气好重啊，主人，得多加小心。"
+            },
+            "33": {
+                "id": 33,
+                "text": "主人，我刚看到玉帝王母在野战，好猛。"
+            },
+            "34": {
+                "id": 34,
+                "text": "我的主人，这些日子，我总是空虚寂寞冷……"
+            },
+            "35": {
+                "id": 35,
+                "text": "主人，为什么神仙就没有恋爱自由呢？"
+            },
+            "36": {
+                "id": 36,
+                "text": "我喜欢听民族风，接地气，主人你觉得呢？"
+            },
+            "37": {
+                "id": 37,
+                "text": "最近总是感觉到一股浓重的杀气，主人要小心。"
+            },
+            "38": {
+                "id": 38,
+                "text": "主人，工作只是生活的一部分，但不是全部。"
+            },
+            "39": {
+                "id": 39,
+                "text": "主人，你玩这游戏花钱了没，可别被坑了。"
+            },
+            "40": {
+                "id": 40,
+                "text": "主人，我需要更多的灵气，更快的成长。"
+            },
+            "41": {
+                "id": 41,
+                "text": "主人，我被哮天犬咬了，你要替我报仇。"
+            },
+            "42": {
+                "id": 42,
+                "text": "生命的真谛在于心灵的自由，好难哦。"
+            },
+            "43": {
+                "id": 43,
+                "text": "你是个富有爱心的人，主人，我能感觉到。"
+            },
+            "44": {
+                "id": 44,
+                "text": "从来都没有真正的民主，仙界也是，主人。"
+            },
+            "45": {
+                "id": 45,
+                "text": "有没有从宝箱中得到过5星卡，主人。"
+            },
+            "46": {
+                "id": 46,
+                "text": "昨晚天庭停电了，主人。"
+            },
+            "47": {
+                "id": 47,
+                "text": "王母的蟠桃有杀虫剂，最好别吃，主人。"
+            },
+            "48": {
+                "id": 48,
+                "text": "主人，不知道为什么，今天我很想喝酒。"
+            },
+            "49": {
+                "id": 49,
+                "text": "最近人间股市怎么样，主人，我买了不少。"
+            },
+            "50": {
+                "id": 50,
+                "text": "上天从来都不是公平的，怎么可能公平呢？"
             }
         }
     },
@@ -899,6 +6993,86 @@ var outputTables = {
             "10": {
                 "id": 10,
                 "name": "尊者之身"
+            }
+        }
+    },
+    "mystical_pass_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "layer": 1,
+                "layer_from": 1,
+                "layer_to": 30,
+                "trigger_rate": [10, 50],
+                "skill_point": 1000,
+                "card_count": 5,
+                "cards": "30001#30002#30003#30004#30005",
+                "formation": "1:30001,2:30002,3:30003,4:30004,5:30005",
+                "boss_id": 30001,
+                "boss_attr": 70,
+                "atk_inc": 50,
+                "hp_inc": 50
+            },
+            "2": {
+                "id": 2,
+                "layer": 2,
+                "layer_from": 31,
+                "layer_to": 50,
+                "trigger_rate": [10, 70],
+                "skill_point": 2000,
+                "card_count": 5,
+                "cards": "30001#30002#30003#30004#30005",
+                "formation": "1:30001,2:30002,3:30003,4:30004,5:30005",
+                "boss_id": 30002,
+                "boss_attr": 40,
+                "atk_inc": 50,
+                "hp_inc": 50
+            },
+            "3": {
+                "id": 3,
+                "layer": 3,
+                "layer_from": 51,
+                "layer_to": 70,
+                "trigger_rate": [10, 50],
+                "skill_point": 3000,
+                "card_count": 5,
+                "cards": "30001#30002#30003#30004#30005",
+                "formation": "1:30001,2:30002,3:30003,4:30004,5:30005",
+                "boss_id": 30003,
+                "boss_attr": 80,
+                "atk_inc": 50,
+                "hp_inc": 50
+            },
+            "4": {
+                "id": 4,
+                "layer": 4,
+                "layer_from": 71,
+                "layer_to": 90,
+                "trigger_rate": [10, 50],
+                "skill_point": 4000,
+                "card_count": 5,
+                "cards": "30001#30002#30003#30004#30005",
+                "formation": "1:30001,2:30002,3:30003,4:30004,5:30005",
+                "boss_id": 30004,
+                "boss_attr": 45,
+                "atk_inc": 50,
+                "hp_inc": 50
+            },
+            "5": {
+                "id": 5,
+                "layer": 5,
+                "layer_from": 91,
+                "layer_to": 100,
+                "trigger_rate": [10, 50],
+                "skill_point": 5000,
+                "card_count": 5,
+                "cards": "30001#30002#30003#30004#30005",
+                "formation": "1:30001,2:30002,3:30003,4:30004,5:30005",
+                "boss_id": 30005,
+                "boss_attr": 40,
+                "atk_inc": 50,
+                "hp_inc": 50
             }
         }
     },
@@ -1712,603 +7886,603 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "exp": 1.5,
+                "exp": 10,
                 "money": 20,
                 "skill_point": 10
             },
             "2": {
                 "id": 2,
-                "exp": 1.575,
+                "exp": 11,
                 "money": 30,
                 "skill_point": 15
             },
             "3": {
                 "id": 3,
-                "exp": 1.7325,
+                "exp": 12,
                 "money": 40,
                 "skill_point": 20
             },
             "4": {
                 "id": 4,
-                "exp": 1.90575,
+                "exp": 13,
                 "money": 50,
                 "skill_point": 25
             },
             "5": {
                 "id": 5,
-                "exp": 2.096325,
+                "exp": 14,
                 "money": 60,
-                "skill_point": 30
+                "skill_point": 60
             },
             "6": {
                 "id": 6,
-                "exp": 2.3059575,
+                "exp": 15,
                 "money": 70,
                 "skill_point": 35
             },
             "7": {
                 "id": 7,
-                "exp": 2.53655325,
+                "exp": 16,
                 "money": 80,
                 "skill_point": 40
             },
             "8": {
                 "id": 8,
-                "exp": 2.790208575,
+                "exp": 17,
                 "money": 90,
                 "skill_point": 45
             },
             "9": {
                 "id": 9,
-                "exp": 3.0692294325,
+                "exp": 18,
                 "money": 100,
                 "skill_point": 50
             },
             "10": {
                 "id": 10,
-                "exp": 3.37615237575,
+                "exp": 19,
                 "money": 110,
-                "skill_point": 55
+                "skill_point": 110
             },
             "11": {
                 "id": 11,
-                "exp": 3.713767613325,
+                "exp": 20,
                 "money": 120,
                 "skill_point": 60
             },
             "12": {
                 "id": 12,
-                "exp": 4.0851443746575,
+                "exp": 21,
                 "money": 130,
                 "skill_point": 65
             },
             "13": {
                 "id": 13,
-                "exp": 4.49365881212325,
+                "exp": 22,
                 "money": 140,
                 "skill_point": 70
             },
             "14": {
                 "id": 14,
-                "exp": 4.94302469333558,
+                "exp": 23,
                 "money": 150,
                 "skill_point": 75
             },
             "15": {
                 "id": 15,
-                "exp": 5.43732716266914,
+                "exp": 24,
                 "money": 160,
-                "skill_point": 80
+                "skill_point": 160
             },
             "16": {
                 "id": 16,
-                "exp": 5.98105987893605,
+                "exp": 25,
                 "money": 170,
                 "skill_point": 85
             },
             "17": {
                 "id": 17,
-                "exp": 6.57916586682966,
+                "exp": 26,
                 "money": 180,
                 "skill_point": 90
             },
             "18": {
                 "id": 18,
-                "exp": 7.23708245351263,
+                "exp": 27,
                 "money": 190,
                 "skill_point": 95
             },
             "19": {
                 "id": 19,
-                "exp": 7.96079069886389,
+                "exp": 28,
                 "money": 200,
                 "skill_point": 100
             },
             "20": {
                 "id": 20,
-                "exp": 8.75686976875028,
+                "exp": 29,
                 "money": 210,
-                "skill_point": 105
+                "skill_point": 210
             },
             "21": {
                 "id": 21,
-                "exp": 9.63255674562531,
+                "exp": 30,
                 "money": 220,
                 "skill_point": 110
             },
             "22": {
                 "id": 22,
-                "exp": 10.5958124201878,
+                "exp": 31,
                 "money": 230,
                 "skill_point": 115
             },
             "23": {
                 "id": 23,
-                "exp": 11.6553936622066,
+                "exp": 32,
                 "money": 240,
                 "skill_point": 120
             },
             "24": {
                 "id": 24,
-                "exp": 12.8209330284273,
+                "exp": 33,
                 "money": 250,
                 "skill_point": 125
             },
             "25": {
                 "id": 25,
-                "exp": 14.10302633127,
+                "exp": 34,
                 "money": 260,
-                "skill_point": 130
+                "skill_point": 260
             },
             "26": {
                 "id": 26,
-                "exp": 15.513328964397,
+                "exp": 35,
                 "money": 270,
                 "skill_point": 135
             },
             "27": {
                 "id": 27,
-                "exp": 17.0646618608367,
+                "exp": 36,
                 "money": 280,
                 "skill_point": 140
             },
             "28": {
                 "id": 28,
-                "exp": 18.7711280469204,
+                "exp": 37,
                 "money": 290,
                 "skill_point": 145
             },
             "29": {
                 "id": 29,
-                "exp": 20.6482408516124,
+                "exp": 38,
                 "money": 300,
                 "skill_point": 150
             },
             "30": {
                 "id": 30,
-                "exp": 22.7130649367737,
+                "exp": 39,
                 "money": 310,
-                "skill_point": 155
+                "skill_point": 310
             },
             "31": {
                 "id": 31,
-                "exp": 24.984371430451,
+                "exp": 40,
                 "money": 320,
                 "skill_point": 160
             },
             "32": {
                 "id": 32,
-                "exp": 27.4828085734962,
+                "exp": 41,
                 "money": 330,
                 "skill_point": 165
             },
             "33": {
                 "id": 33,
-                "exp": 30.2310894308458,
+                "exp": 42,
                 "money": 340,
                 "skill_point": 170
             },
             "34": {
                 "id": 34,
-                "exp": 33.2541983739304,
+                "exp": 43,
                 "money": 350,
                 "skill_point": 175
             },
             "35": {
                 "id": 35,
-                "exp": 36.5796182113234,
+                "exp": 44,
                 "money": 360,
-                "skill_point": 180
+                "skill_point": 360
             },
             "36": {
                 "id": 36,
-                "exp": 40.2375800324557,
+                "exp": 45,
                 "money": 370,
                 "skill_point": 185
             },
             "37": {
                 "id": 37,
-                "exp": 44.2613380357013,
+                "exp": 46,
                 "money": 380,
                 "skill_point": 190
             },
             "38": {
                 "id": 38,
-                "exp": 48.6874718392714,
+                "exp": 47,
                 "money": 390,
                 "skill_point": 195
             },
             "39": {
                 "id": 39,
-                "exp": 53.5562190231986,
+                "exp": 48,
                 "money": 400,
                 "skill_point": 200
             },
             "40": {
                 "id": 40,
-                "exp": 58.9118409255184,
+                "exp": 49,
                 "money": 410,
-                "skill_point": 205
+                "skill_point": 410
             },
             "41": {
                 "id": 41,
-                "exp": 64.8030250180703,
+                "exp": 50,
                 "money": 420,
                 "skill_point": 210
             },
             "42": {
                 "id": 42,
-                "exp": 71.2833275198773,
+                "exp": 51,
                 "money": 430,
                 "skill_point": 215
             },
             "43": {
                 "id": 43,
-                "exp": 78.4116602718651,
+                "exp": 52,
                 "money": 440,
                 "skill_point": 220
             },
             "44": {
                 "id": 44,
-                "exp": 86.2528262990516,
+                "exp": 53,
                 "money": 450,
                 "skill_point": 225
             },
             "45": {
                 "id": 45,
-                "exp": 94.8781089289567,
+                "exp": 54,
                 "money": 460,
-                "skill_point": 230
+                "skill_point": 460
             },
             "46": {
                 "id": 46,
-                "exp": 104.365919821852,
+                "exp": 55,
                 "money": 470,
                 "skill_point": 235
             },
             "47": {
                 "id": 47,
-                "exp": 114.802511804038,
+                "exp": 56,
                 "money": 480,
                 "skill_point": 240
             },
             "48": {
                 "id": 48,
-                "exp": 126.282762984441,
+                "exp": 57,
                 "money": 490,
                 "skill_point": 245
             },
             "49": {
                 "id": 49,
-                "exp": 138.911039282886,
+                "exp": 58,
                 "money": 500,
                 "skill_point": 250
             },
             "50": {
                 "id": 50,
-                "exp": 152.802143211174,
+                "exp": 59,
                 "money": 510,
-                "skill_point": 255
+                "skill_point": 510
             },
             "51": {
                 "id": 51,
-                "exp": 168.082357532292,
+                "exp": 60,
                 "money": 520,
                 "skill_point": 260
             },
             "52": {
                 "id": 52,
-                "exp": 184.890593285521,
+                "exp": 61,
                 "money": 530,
                 "skill_point": 265
             },
             "53": {
                 "id": 53,
-                "exp": 203.379652614073,
+                "exp": 62,
                 "money": 540,
                 "skill_point": 270
             },
             "54": {
                 "id": 54,
-                "exp": 223.71761787548,
+                "exp": 63,
                 "money": 550,
                 "skill_point": 275
             },
             "55": {
                 "id": 55,
-                "exp": 246.089379663028,
+                "exp": 64,
                 "money": 560,
-                "skill_point": 280
+                "skill_point": 560
             },
             "56": {
                 "id": 56,
-                "exp": 270.698317629331,
+                "exp": 65,
                 "money": 570,
                 "skill_point": 285
             },
             "57": {
                 "id": 57,
-                "exp": 297.768149392264,
+                "exp": 66,
                 "money": 580,
                 "skill_point": 290
             },
             "58": {
                 "id": 58,
-                "exp": 327.544964331491,
+                "exp": 67,
                 "money": 590,
                 "skill_point": 295
             },
             "59": {
                 "id": 59,
-                "exp": 360.29946076464,
+                "exp": 68,
                 "money": 600,
                 "skill_point": 300
             },
             "60": {
                 "id": 60,
-                "exp": 396.329406841104,
+                "exp": 69,
                 "money": 610,
-                "skill_point": 305
+                "skill_point": 610
             },
             "61": {
                 "id": 61,
-                "exp": 435.962347525214,
+                "exp": 70,
                 "money": 620,
                 "skill_point": 310
             },
             "62": {
                 "id": 62,
-                "exp": 479.558582277736,
+                "exp": 71,
                 "money": 630,
                 "skill_point": 315
             },
             "63": {
                 "id": 63,
-                "exp": 527.514440505509,
+                "exp": 72,
                 "money": 640,
                 "skill_point": 320
             },
             "64": {
                 "id": 64,
-                "exp": 580.265884556061,
+                "exp": 73,
                 "money": 650,
                 "skill_point": 325
             },
             "65": {
                 "id": 65,
-                "exp": 638.292473011667,
+                "exp": 74,
                 "money": 660,
-                "skill_point": 330
+                "skill_point": 660
             },
             "66": {
                 "id": 66,
-                "exp": 702.121720312833,
+                "exp": 75,
                 "money": 670,
                 "skill_point": 335
             },
             "67": {
                 "id": 67,
-                "exp": 772.333892344116,
+                "exp": 76,
                 "money": 680,
                 "skill_point": 340
             },
             "68": {
                 "id": 68,
-                "exp": 849.567281578528,
+                "exp": 77,
                 "money": 690,
                 "skill_point": 345
             },
             "69": {
                 "id": 69,
-                "exp": 934.524009736381,
+                "exp": 78,
                 "money": 700,
                 "skill_point": 350
             },
             "70": {
                 "id": 70,
-                "exp": 1027.97641071002,
+                "exp": 79,
                 "money": 710,
-                "skill_point": 355
+                "skill_point": 710
             },
             "71": {
                 "id": 71,
-                "exp": 1130.77405178102,
+                "exp": 80,
                 "money": 720,
                 "skill_point": 360
             },
             "72": {
                 "id": 72,
-                "exp": 1243.85145695912,
+                "exp": 81,
                 "money": 730,
                 "skill_point": 365
             },
             "73": {
                 "id": 73,
-                "exp": 1368.23660265504,
+                "exp": 82,
                 "money": 740,
                 "skill_point": 370
             },
             "74": {
                 "id": 74,
-                "exp": 1505.06026292054,
+                "exp": 83,
                 "money": 750,
                 "skill_point": 375
             },
             "75": {
                 "id": 75,
-                "exp": 1655.56628921259,
+                "exp": 84,
                 "money": 760,
-                "skill_point": 380
+                "skill_point": 760
             },
             "76": {
                 "id": 76,
-                "exp": 1821.12291813385,
+                "exp": 85,
                 "money": 770,
                 "skill_point": 385
             },
             "77": {
                 "id": 77,
-                "exp": 2003.23520994724,
+                "exp": 86,
                 "money": 780,
                 "skill_point": 390
             },
             "78": {
                 "id": 78,
-                "exp": 2203.55873094196,
+                "exp": 87,
                 "money": 790,
                 "skill_point": 395
             },
             "79": {
                 "id": 79,
-                "exp": 2423.91460403616,
+                "exp": 88,
                 "money": 800,
                 "skill_point": 400
             },
             "80": {
                 "id": 80,
-                "exp": 2666.30606443977,
+                "exp": 89,
                 "money": 810,
-                "skill_point": 405
+                "skill_point": 810
             },
             "81": {
                 "id": 81,
-                "exp": 2932.93667088375,
+                "exp": 90,
                 "money": 820,
                 "skill_point": 410
             },
             "82": {
                 "id": 82,
-                "exp": 3226.23033797213,
+                "exp": 91,
                 "money": 830,
                 "skill_point": 415
             },
             "83": {
                 "id": 83,
-                "exp": 3548.85337176934,
+                "exp": 92,
                 "money": 840,
                 "skill_point": 420
             },
             "84": {
                 "id": 84,
-                "exp": 3903.73870894628,
+                "exp": 93,
                 "money": 850,
                 "skill_point": 425
             },
             "85": {
                 "id": 85,
-                "exp": 4294.1125798409,
+                "exp": 94,
                 "money": 860,
-                "skill_point": 430
+                "skill_point": 860
             },
             "86": {
                 "id": 86,
-                "exp": 4723.52383782499,
+                "exp": 95,
                 "money": 870,
                 "skill_point": 435
             },
             "87": {
                 "id": 87,
-                "exp": 5195.8762216075,
+                "exp": 96,
                 "money": 880,
                 "skill_point": 440
             },
             "88": {
                 "id": 88,
-                "exp": 5715.46384376824,
+                "exp": 97,
                 "money": 890,
                 "skill_point": 445
             },
             "89": {
                 "id": 89,
-                "exp": 6287.01022814507,
+                "exp": 98,
                 "money": 900,
                 "skill_point": 450
             },
             "90": {
                 "id": 90,
-                "exp": 6915.71125095958,
+                "exp": 99,
                 "money": 910,
-                "skill_point": 455
+                "skill_point": 910
             },
             "91": {
                 "id": 91,
-                "exp": 7607.28237605553,
+                "exp": 100,
                 "money": 920,
                 "skill_point": 460
             },
             "92": {
                 "id": 92,
-                "exp": 8368.01061366108,
+                "exp": 101,
                 "money": 930,
                 "skill_point": 465
             },
             "93": {
                 "id": 93,
-                "exp": 9204.81167502719,
+                "exp": 102,
                 "money": 940,
                 "skill_point": 470
             },
             "94": {
                 "id": 94,
-                "exp": 10125.2928425299,
+                "exp": 103,
                 "money": 950,
                 "skill_point": 475
             },
             "95": {
                 "id": 95,
-                "exp": 11137.8221267829,
+                "exp": 104,
                 "money": 960,
-                "skill_point": 480
+                "skill_point": 960
             },
             "96": {
                 "id": 96,
-                "exp": 12251.6043394612,
+                "exp": 105,
                 "money": 970,
                 "skill_point": 485
             },
             "97": {
                 "id": 97,
-                "exp": 13476.7647734073,
+                "exp": 106,
                 "money": 980,
                 "skill_point": 490
             },
             "98": {
                 "id": 98,
-                "exp": 14824.4412507481,
+                "exp": 107,
                 "money": 990,
                 "skill_point": 495
             },
             "99": {
                 "id": 99,
-                "exp": 16306.8853758229,
+                "exp": 108,
                 "money": 1000,
                 "skill_point": 500
             },
             "100": {
                 "id": 100,
-                "exp": 17937.5739134051,
+                "exp": 109,
                 "money": 1010,
-                "skill_point": 505
+                "skill_point": 1010
             }
         }
     },
@@ -8229,6 +14403,664 @@ var outputTables = {
             }
         }
     },
+    "task_card": {
+        "colComment": {
+            "card_id": {
+                "table": "怪物卡牌配置表",
+                "key_index": "name",
+                "value_index": "id",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "10000": {
+                "id": 10000,
+                "card_id": "恶·鬼谷子",
+                "atk": 50,
+                "hp": 113,
+                "dodge_rate": 15,
+                "crit_rate": 20
+            },
+            "10001": {
+                "id": 10001,
+                "card_id": "恶·黑无常",
+                "atk": 149,
+                "hp": 372,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 1
+            },
+            "10002": {
+                "id": 10002,
+                "card_id": "恶·白无常",
+                "atk": 163,
+                "hp": 409,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 2
+            },
+            "10003": {
+                "id": 10003,
+                "card_id": "恶·日游神",
+                "atk": 179,
+                "hp": 448,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 3
+            },
+            "10004": {
+                "id": 10004,
+                "card_id": "恶·夜游神",
+                "atk": 196,
+                "hp": 491,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 4
+            },
+            "10005": {
+                "id": 10005,
+                "card_id": "恶·宓妃",
+                "atk": 215,
+                "hp": 538,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 5
+            },
+            "10006": {
+                "id": 10006,
+                "card_id": "恶·张道陵",
+                "atk": 236,
+                "hp": 590,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 6
+            },
+            "10007": {
+                "id": 10007,
+                "card_id": "恶·修罗王",
+                "atk": 258,
+                "hp": 645,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 7
+            },
+            "10008": {
+                "id": 10008,
+                "card_id": "恶·迦楼罗王",
+                "atk": 283,
+                "hp": 706,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 8
+            },
+            "10009": {
+                "id": 10009,
+                "card_id": "恶·紧那罗王",
+                "atk": 309,
+                "hp": 770,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 9
+            },
+            "10010": {
+                "id": 10010,
+                "card_id": "恶·紫霞",
+                "atk": 337,
+                "hp": 841,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 10
+            },
+            "10011": {
+                "id": 10011,
+                "card_id": "恶·金蝉子",
+                "atk": 367,
+                "hp": 916,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 1
+            },
+            "10012": {
+                "id": 10012,
+                "card_id": "恶·铁扇公主",
+                "atk": 400,
+                "hp": 998,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 2
+            },
+            "10013": {
+                "id": 10013,
+                "card_id": "恶·沙僧",
+                "atk": 435,
+                "hp": 1086,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 3
+            },
+            "10014": {
+                "id": 10014,
+                "card_id": "恶·牛魔王",
+                "atk": 473,
+                "hp": 1181,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 4
+            },
+            "10015": {
+                "id": 10015,
+                "card_id": "恶·巨灵神",
+                "atk": 513,
+                "hp": 1283,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 5
+            },
+            "10016": {
+                "id": 10016,
+                "card_id": "恶·红孩儿",
+                "atk": 556,
+                "hp": 1391,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 6
+            },
+            "10017": {
+                "id": 10017,
+                "card_id": "恶·黄飞虎",
+                "atk": 603,
+                "hp": 1508,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 7
+            },
+            "10018": {
+                "id": 10018,
+                "card_id": "恶·孙悟空",
+                "atk": 653,
+                "hp": 1634,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 8
+            },
+            "10019": {
+                "id": 10019,
+                "card_id": "恶·猪八戒",
+                "atk": 707,
+                "hp": 1768,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 9
+            },
+            "10020": {
+                "id": 10020,
+                "card_id": "恶·杨戬",
+                "atk": 765,
+                "hp": 1911,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 10
+            },
+            "10021": {
+                "id": 10021,
+                "card_id": "恶·哪吒",
+                "atk": 826,
+                "hp": 2064,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 1
+            },
+            "10022": {
+                "id": 10022,
+                "card_id": "恶·赵公明",
+                "atk": 892,
+                "hp": 2227,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 2
+            },
+            "10023": {
+                "id": 10023,
+                "card_id": "恶·申公豹",
+                "atk": 961,
+                "hp": 2400,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 3
+            },
+            "10024": {
+                "id": 10024,
+                "card_id": "恶·土行孙",
+                "atk": 1035,
+                "hp": 2585,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 4
+            },
+            "10025": {
+                "id": 10025,
+                "card_id": "恶·法海",
+                "atk": 1113,
+                "hp": 2781,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 5
+            },
+            "10026": {
+                "id": 10026,
+                "card_id": "恶·雷震子",
+                "atk": 1197,
+                "hp": 2990,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 6
+            },
+            "10027": {
+                "id": 10027,
+                "card_id": "恶·妲己",
+                "atk": 1285,
+                "hp": 3211,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 7
+            },
+            "10028": {
+                "id": 10028,
+                "card_id": "恶·姜子牙",
+                "atk": 1379,
+                "hp": 3445,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 8
+            },
+            "10029": {
+                "id": 10029,
+                "card_id": "恶·李靖",
+                "atk": 1478,
+                "hp": 3694,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 9
+            },
+            "10030": {
+                "id": 10030,
+                "card_id": "恶·白素贞",
+                "atk": 1583,
+                "hp": 3956,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 10
+            },
+            "10031": {
+                "id": 10031,
+                "card_id": "恶·小青",
+                "atk": 1694,
+                "hp": 4233,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 1
+            },
+            "10032": {
+                "id": 10032,
+                "card_id": "恶·何仙姑",
+                "atk": 1811,
+                "hp": 4525,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 2
+            },
+            "10033": {
+                "id": 10033,
+                "card_id": "恶·吕洞宾",
+                "atk": 1934,
+                "hp": 4833,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 3
+            },
+            "10034": {
+                "id": 10034,
+                "card_id": "恶·铁拐李",
+                "atk": 2064,
+                "hp": 5157,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 4
+            },
+            "10035": {
+                "id": 10035,
+                "card_id": "恶·汉钟离",
+                "atk": 2200,
+                "hp": 5497,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 5
+            },
+            "10036": {
+                "id": 10036,
+                "card_id": "恶·张果老",
+                "atk": 2343,
+                "hp": 5855,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 6
+            },
+            "10037": {
+                "id": 10037,
+                "card_id": "恶·蓝采和",
+                "atk": 2493,
+                "hp": 6229,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 7
+            },
+            "10038": {
+                "id": 10038,
+                "card_id": "恶·韩湘子",
+                "atk": 2651,
+                "hp": 6621,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 8
+            },
+            "10039": {
+                "id": 10039,
+                "card_id": "恶·牛郎",
+                "atk": 2815,
+                "hp": 7032,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 9
+            },
+            "10040": {
+                "id": 10040,
+                "card_id": "恶·织女",
+                "atk": 2987,
+                "hp": 7461,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 10
+            },
+            "10041": {
+                "id": 10041,
+                "card_id": "恶·吴刚",
+                "atk": 3166,
+                "hp": 7908,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 1
+            },
+            "10042": {
+                "id": 10042,
+                "card_id": "恶·刑天",
+                "atk": 3353,
+                "hp": 8375,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 2
+            },
+            "10043": {
+                "id": 10043,
+                "card_id": "恶·沉香",
+                "atk": 3548,
+                "hp": 8861,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 3
+            },
+            "10044": {
+                "id": 10044,
+                "card_id": "恶·济公",
+                "atk": 3750,
+                "hp": 9365,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 4
+            },
+            "10045": {
+                "id": 10045,
+                "card_id": "恶·瑶姬",
+                "atk": 3960,
+                "hp": 9890,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 5
+            },
+            "10046": {
+                "id": 10046,
+                "card_id": "恶·精卫",
+                "atk": 4178,
+                "hp": 10434,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 6
+            },
+            "10047": {
+                "id": 10047,
+                "card_id": "恶·后羿",
+                "atk": 4404,
+                "hp": 10997,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 7
+            },
+            "10048": {
+                "id": 10048,
+                "card_id": "恶·嫦娥",
+                "atk": 4637,
+                "hp": 11580,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 8
+            },
+            "10049": {
+                "id": 10049,
+                "card_id": "恶·夸父",
+                "atk": 4878,
+                "hp": 12182,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 9
+            },
+            "10050": {
+                "id": 10050,
+                "card_id": "恶·后羿",
+                "atk": 5200,
+                "hp": 14500,
+                "dodge_rate": 15,
+                "crit_rate": 20,
+                "skill_id": 10
+            },
+            "20000": {
+                "id": 20000,
+                "card_id": "战·牛魔王",
+                "atk": 309,
+                "hp": 770,
+                "dodge_rate": 20,
+                "crit_rate": 25
+            },
+            "20001": {
+                "id": 20001,
+                "card_id": "战·哪吒",
+                "atk": 483,
+                "hp": 1207,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 1
+            },
+            "20002": {
+                "id": 20002,
+                "card_id": "战·后羿",
+                "atk": 739,
+                "hp": 1846,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 2
+            },
+            "20003": {
+                "id": 20003,
+                "card_id": "战·孙悟空",
+                "atk": 1104,
+                "hp": 2757,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 3
+            },
+            "20004": {
+                "id": 20004,
+                "card_id": "战·巨灵神",
+                "atk": 1609,
+                "hp": 4022,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 4
+            },
+            "20005": {
+                "id": 20005,
+                "card_id": "战·铁扇公主",
+                "atk": 2444,
+                "hp": 6108,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 5
+            },
+            "20006": {
+                "id": 20006,
+                "card_id": "战·红孩儿",
+                "atk": 3385,
+                "hp": 8456,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 6
+            },
+            "20007": {
+                "id": 20007,
+                "card_id": "战·济公",
+                "atk": 4576,
+                "hp": 11429,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 7
+            },
+            "20008": {
+                "id": 20008,
+                "card_id": "战·黄飞虎",
+                "atk": 5745,
+                "hp": 14348,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 8
+            },
+            "20009": {
+                "id": 20009,
+                "card_id": "战·刑天",
+                "atk": 5686,
+                "hp": 14769,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 9
+            },
+            "20010": {
+                "id": 20010,
+                "card_id": "战·妲己",
+                "atk": 7189,
+                "hp": 18669,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 10
+            },
+            "20011": {
+                "id": 20011,
+                "card_id": "战·申公豹",
+                "atk": 8947,
+                "hp": 23238,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 1
+            },
+            "20012": {
+                "id": 20012,
+                "card_id": "战·法海",
+                "atk": 10963,
+                "hp": 28478,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 2
+            },
+            "20013": {
+                "id": 20013,
+                "card_id": "战·何仙姑",
+                "atk": 13227,
+                "hp": 34359,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 3
+            },
+            "20014": {
+                "id": 20014,
+                "card_id": "战·土行孙",
+                "atk": 15136,
+                "hp": 39315,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 4
+            },
+            "20015": {
+                "id": 20015,
+                "card_id": "战·白素贞",
+                "atk": 14141,
+                "hp": 35453,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 5
+            },
+            "20016": {
+                "id": 20016,
+                "card_id": "战·修罗王",
+                "atk": 16454,
+                "hp": 41251,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 6
+            },
+            "20017": {
+                "id": 20017,
+                "card_id": "战·吕洞宾",
+                "atk": 18209,
+                "hp": 45654,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 7
+            },
+            "20018": {
+                "id": 20018,
+                "card_id": "战·鬼谷子",
+                "atk": 20873,
+                "hp": 52333,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 8
+            },
+            "20019": {
+                "id": 20019,
+                "card_id": "战·日游神",
+                "atk": 23715,
+                "hp": 59457,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 9
+            },
+            "20020": {
+                "id": 20020,
+                "card_id": "战·夸父",
+                "atk": 25695,
+                "hp": 65346,
+                "dodge_rate": 20,
+                "crit_rate": 25,
+                "skill_id": 10
+            }
+        }
+    },
     "task_config": {
         "colComment": {
             "chapter_id": {
@@ -8891,916 +15723,258 @@ var outputTables = {
             }
         }
     },
-    "task_card": {
-        "colComment": {
-            "card_id": {
-                "table": "怪物卡牌配置表",
-                "key_index": "name",
-                "value_index": "id",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "10000": {
-                "id": 10000,
-                "card_id": "恶·鬼谷子",
-                "atk": 50,
-                "hp": 113,
-                "dodge_rate": 15,
-                "crit_rate": 20
-            },
-            "10001": {
-                "id": 10001,
-                "card_id": "恶·黑无常",
-                "atk": 149,
-                "hp": 372,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 1
-            },
-            "10002": {
-                "id": 10002,
-                "card_id": "恶·白无常",
-                "atk": 163,
-                "hp": 409,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 2
-            },
-            "10003": {
-                "id": 10003,
-                "card_id": "恶·日游神",
-                "atk": 179,
-                "hp": 448,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 3
-            },
-            "10004": {
-                "id": 10004,
-                "card_id": "恶·夜游神",
-                "atk": 196,
-                "hp": 491,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 4
-            },
-            "10005": {
-                "id": 10005,
-                "card_id": "恶·宓妃",
-                "atk": 215,
-                "hp": 538,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 5
-            },
-            "10006": {
-                "id": 10006,
-                "card_id": "恶·张道陵",
-                "atk": 236,
-                "hp": 590,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 6
-            },
-            "10007": {
-                "id": 10007,
-                "card_id": "恶·修罗王",
-                "atk": 258,
-                "hp": 645,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 7
-            },
-            "10008": {
-                "id": 10008,
-                "card_id": "恶·迦楼罗王",
-                "atk": 283,
-                "hp": 706,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 8
-            },
-            "10009": {
-                "id": 10009,
-                "card_id": "恶·紧那罗王",
-                "atk": 309,
-                "hp": 770,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 9
-            },
-            "10010": {
-                "id": 10010,
-                "card_id": "恶·紫霞",
-                "atk": 337,
-                "hp": 841,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 10
-            },
-            "10011": {
-                "id": 10011,
-                "card_id": "恶·金蝉子",
-                "atk": 367,
-                "hp": 916,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 1
-            },
-            "10012": {
-                "id": 10012,
-                "card_id": "恶·铁扇公主",
-                "atk": 400,
-                "hp": 998,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 2
-            },
-            "10013": {
-                "id": 10013,
-                "card_id": "恶·沙僧",
-                "atk": 435,
-                "hp": 1086,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 3
-            },
-            "10014": {
-                "id": 10014,
-                "card_id": "恶·牛魔王",
-                "atk": 473,
-                "hp": 1181,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 4
-            },
-            "10015": {
-                "id": 10015,
-                "card_id": "恶·巨灵神",
-                "atk": 513,
-                "hp": 1283,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 5
-            },
-            "10016": {
-                "id": 10016,
-                "card_id": "恶·红孩儿",
-                "atk": 556,
-                "hp": 1391,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 6
-            },
-            "10017": {
-                "id": 10017,
-                "card_id": "恶·黄飞虎",
-                "atk": 603,
-                "hp": 1508,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 7
-            },
-            "10018": {
-                "id": 10018,
-                "card_id": "恶·孙悟空",
-                "atk": 653,
-                "hp": 1634,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 8
-            },
-            "10019": {
-                "id": 10019,
-                "card_id": "恶·猪八戒",
-                "atk": 707,
-                "hp": 1768,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 9
-            },
-            "10020": {
-                "id": 10020,
-                "card_id": "恶·杨戬",
-                "atk": 765,
-                "hp": 1911,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 10
-            },
-            "10021": {
-                "id": 10021,
-                "card_id": "恶·哪吒",
-                "atk": 826,
-                "hp": 2064,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 1
-            },
-            "10022": {
-                "id": 10022,
-                "card_id": "恶·赵公明",
-                "atk": 892,
-                "hp": 2227,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 2
-            },
-            "10023": {
-                "id": 10023,
-                "card_id": "恶·申公豹",
-                "atk": 961,
-                "hp": 2400,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 3
-            },
-            "10024": {
-                "id": 10024,
-                "card_id": "恶·土行孙",
-                "atk": 1035,
-                "hp": 2585,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 4
-            },
-            "10025": {
-                "id": 10025,
-                "card_id": "恶·法海",
-                "atk": 1113,
-                "hp": 2781,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 5
-            },
-            "10026": {
-                "id": 10026,
-                "card_id": "恶·雷震子",
-                "atk": 1197,
-                "hp": 2990,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 6
-            },
-            "10027": {
-                "id": 10027,
-                "card_id": "恶·妲己",
-                "atk": 1285,
-                "hp": 3211,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 7
-            },
-            "10028": {
-                "id": 10028,
-                "card_id": "恶·姜子牙",
-                "atk": 1379,
-                "hp": 3445,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 8
-            },
-            "10029": {
-                "id": 10029,
-                "card_id": "恶·李靖",
-                "atk": 1478,
-                "hp": 3694,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 9
-            },
-            "10030": {
-                "id": 10030,
-                "card_id": "恶·白素贞",
-                "atk": 1583,
-                "hp": 3956,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 10
-            },
-            "10031": {
-                "id": 10031,
-                "card_id": "恶·小青",
-                "atk": 1694,
-                "hp": 4233,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 1
-            },
-            "10032": {
-                "id": 10032,
-                "card_id": "恶·何仙姑",
-                "atk": 1811,
-                "hp": 4525,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 2
-            },
-            "10033": {
-                "id": 10033,
-                "card_id": "恶·吕洞宾",
-                "atk": 1934,
-                "hp": 4833,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 3
-            },
-            "10034": {
-                "id": 10034,
-                "card_id": "恶·铁拐李",
-                "atk": 2064,
-                "hp": 5157,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 4
-            },
-            "10035": {
-                "id": 10035,
-                "card_id": "恶·汉钟离",
-                "atk": 2200,
-                "hp": 5497,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 5
-            },
-            "10036": {
-                "id": 10036,
-                "card_id": "恶·张果老",
-                "atk": 2343,
-                "hp": 5855,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 6
-            },
-            "10037": {
-                "id": 10037,
-                "card_id": "恶·蓝采和",
-                "atk": 2493,
-                "hp": 6229,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 7
-            },
-            "10038": {
-                "id": 10038,
-                "card_id": "恶·韩湘子",
-                "atk": 2651,
-                "hp": 6621,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 8
-            },
-            "10039": {
-                "id": 10039,
-                "card_id": "恶·牛郎",
-                "atk": 2815,
-                "hp": 7032,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 9
-            },
-            "10040": {
-                "id": 10040,
-                "card_id": "恶·织女",
-                "atk": 2987,
-                "hp": 7461,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 10
-            },
-            "10041": {
-                "id": 10041,
-                "card_id": "恶·吴刚",
-                "atk": 3166,
-                "hp": 7908,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 1
-            },
-            "10042": {
-                "id": 10042,
-                "card_id": "恶·刑天",
-                "atk": 3353,
-                "hp": 8375,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 2
-            },
-            "10043": {
-                "id": 10043,
-                "card_id": "恶·沉香",
-                "atk": 3548,
-                "hp": 8861,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 3
-            },
-            "10044": {
-                "id": 10044,
-                "card_id": "恶·济公",
-                "atk": 3750,
-                "hp": 9365,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 4
-            },
-            "10045": {
-                "id": 10045,
-                "card_id": "恶·瑶姬",
-                "atk": 3960,
-                "hp": 9890,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 5
-            },
-            "10046": {
-                "id": 10046,
-                "card_id": "恶·精卫",
-                "atk": 4178,
-                "hp": 10434,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 6
-            },
-            "10047": {
-                "id": 10047,
-                "card_id": "恶·后羿",
-                "atk": 4404,
-                "hp": 10997,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 7
-            },
-            "10048": {
-                "id": 10048,
-                "card_id": "恶·嫦娥",
-                "atk": 4637,
-                "hp": 11580,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 8
-            },
-            "10049": {
-                "id": 10049,
-                "card_id": "恶·夸父",
-                "atk": 4878,
-                "hp": 12182,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 9
-            },
-            "10050": {
-                "id": 10050,
-                "card_id": "恶·后羿",
-                "atk": 5200,
-                "hp": 14500,
-                "dodge_rate": 15,
-                "crit_rate": 20,
-                "skill_id": 10
-            },
-            "20000": {
-                "id": 20000,
-                "card_id": "战·牛魔王",
-                "atk": 309,
-                "hp": 770,
-                "dodge_rate": 20,
-                "crit_rate": 25
-            },
-            "20001": {
-                "id": 20001,
-                "card_id": "战·哪吒",
-                "atk": 483,
-                "hp": 1207,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 1
-            },
-            "20002": {
-                "id": 20002,
-                "card_id": "战·后羿",
-                "atk": 739,
-                "hp": 1846,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 2
-            },
-            "20003": {
-                "id": 20003,
-                "card_id": "战·孙悟空",
-                "atk": 1104,
-                "hp": 2757,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 3
-            },
-            "20004": {
-                "id": 20004,
-                "card_id": "战·巨灵神",
-                "atk": 1609,
-                "hp": 4022,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 4
-            },
-            "20005": {
-                "id": 20005,
-                "card_id": "战·铁扇公主",
-                "atk": 2444,
-                "hp": 6108,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 5
-            },
-            "20006": {
-                "id": 20006,
-                "card_id": "战·红孩儿",
-                "atk": 3385,
-                "hp": 8456,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 6
-            },
-            "20007": {
-                "id": 20007,
-                "card_id": "战·济公",
-                "atk": 4576,
-                "hp": 11429,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 7
-            },
-            "20008": {
-                "id": 20008,
-                "card_id": "战·黄飞虎",
-                "atk": 5745,
-                "hp": 14348,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 8
-            },
-            "20009": {
-                "id": 20009,
-                "card_id": "战·刑天",
-                "atk": 5686,
-                "hp": 14769,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 9
-            },
-            "20010": {
-                "id": 20010,
-                "card_id": "战·妲己",
-                "atk": 7189,
-                "hp": 18669,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 10
-            },
-            "20011": {
-                "id": 20011,
-                "card_id": "战·申公豹",
-                "atk": 8947,
-                "hp": 23238,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 1
-            },
-            "20012": {
-                "id": 20012,
-                "card_id": "战·法海",
-                "atk": 10963,
-                "hp": 28478,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 2
-            },
-            "20013": {
-                "id": 20013,
-                "card_id": "战·何仙姑",
-                "atk": 13227,
-                "hp": 34359,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 3
-            },
-            "20014": {
-                "id": 20014,
-                "card_id": "战·土行孙",
-                "atk": 15136,
-                "hp": 39315,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 4
-            },
-            "20015": {
-                "id": 20015,
-                "card_id": "战·白素贞",
-                "atk": 14141,
-                "hp": 35453,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 5
-            },
-            "20016": {
-                "id": 20016,
-                "card_id": "战·修罗王",
-                "atk": 16454,
-                "hp": 41251,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 6
-            },
-            "20017": {
-                "id": 20017,
-                "card_id": "战·吕洞宾",
-                "atk": 18209,
-                "hp": 45654,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 7
-            },
-            "20018": {
-                "id": 20018,
-                "card_id": "战·鬼谷子",
-                "atk": 20873,
-                "hp": 52333,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 8
-            },
-            "20019": {
-                "id": 20019,
-                "card_id": "战·日游神",
-                "atk": 23715,
-                "hp": 59457,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 9
-            },
-            "20020": {
-                "id": 20020,
-                "card_id": "战·夸父",
-                "atk": 25695,
-                "hp": 65346,
-                "dodge_rate": 20,
-                "crit_rate": 25,
-                "skill_id": 10
-            }
-        }
-    },
     "wipe_out": {
         "colComment": {},
         "rows": {
             "1": {
                 "id": 1,
-                "money_obtain": 550,
-                "exp_obtain": 100
+                "money_obtain": 750,
+                "exp_obtain": 50
             },
             "2": {
                 "id": 2,
-                "money_obtain": 660,
-                "exp_obtain": 120
+                "money_obtain": 780,
+                "exp_obtain": 52
             },
             "3": {
                 "id": 3,
-                "money_obtain": 770,
-                "exp_obtain": 140
+                "money_obtain": 810,
+                "exp_obtain": 54
             },
             "4": {
                 "id": 4,
-                "money_obtain": 880,
-                "exp_obtain": 160
+                "money_obtain": 840,
+                "exp_obtain": 56
             },
             "5": {
                 "id": 5,
-                "money_obtain": 990,
-                "exp_obtain": 180
+                "money_obtain": 870,
+                "exp_obtain": 58
             },
             "6": {
                 "id": 6,
-                "money_obtain": 1100,
-                "exp_obtain": 200
+                "money_obtain": 900,
+                "exp_obtain": 60
             },
             "7": {
                 "id": 7,
-                "money_obtain": 1210,
-                "exp_obtain": 220
+                "money_obtain": 930,
+                "exp_obtain": 62
             },
             "8": {
                 "id": 8,
-                "money_obtain": 1320,
-                "exp_obtain": 240
+                "money_obtain": 960,
+                "exp_obtain": 64
             },
             "9": {
                 "id": 9,
-                "money_obtain": 1430,
-                "exp_obtain": 260
+                "money_obtain": 990,
+                "exp_obtain": 66
             },
             "10": {
                 "id": 10,
-                "money_obtain": 1540,
-                "exp_obtain": 280
+                "money_obtain": 1020,
+                "exp_obtain": 68
             },
             "11": {
                 "id": 11,
-                "money_obtain": 1650,
-                "exp_obtain": 300
+                "money_obtain": 1050,
+                "exp_obtain": 70
             },
             "12": {
                 "id": 12,
-                "money_obtain": 1760,
-                "exp_obtain": 320
+                "money_obtain": 1080,
+                "exp_obtain": 72
             },
             "13": {
                 "id": 13,
-                "money_obtain": 1870,
-                "exp_obtain": 340
+                "money_obtain": 1110,
+                "exp_obtain": 74
             },
             "14": {
                 "id": 14,
-                "money_obtain": 1980,
-                "exp_obtain": 360
+                "money_obtain": 1140,
+                "exp_obtain": 76
             },
             "15": {
                 "id": 15,
-                "money_obtain": 2090,
-                "exp_obtain": 380
+                "money_obtain": 1170,
+                "exp_obtain": 78
             },
             "16": {
                 "id": 16,
-                "money_obtain": 2200,
-                "exp_obtain": 400
+                "money_obtain": 1200,
+                "exp_obtain": 80
             },
             "17": {
                 "id": 17,
-                "money_obtain": 2310,
-                "exp_obtain": 420
+                "money_obtain": 1230,
+                "exp_obtain": 82
             },
             "18": {
                 "id": 18,
-                "money_obtain": 2420,
-                "exp_obtain": 440
+                "money_obtain": 1260,
+                "exp_obtain": 84
             },
             "19": {
                 "id": 19,
-                "money_obtain": 2530,
-                "exp_obtain": 460
+                "money_obtain": 1290,
+                "exp_obtain": 86
             },
             "20": {
                 "id": 20,
-                "money_obtain": 2640,
-                "exp_obtain": 480
+                "money_obtain": 1320,
+                "exp_obtain": 88
             },
             "21": {
                 "id": 21,
-                "money_obtain": 2750,
-                "exp_obtain": 500
+                "money_obtain": 1350,
+                "exp_obtain": 90
             },
             "22": {
                 "id": 22,
-                "money_obtain": 2860,
-                "exp_obtain": 520
+                "money_obtain": 1380,
+                "exp_obtain": 92
             },
             "23": {
                 "id": 23,
-                "money_obtain": 2970,
-                "exp_obtain": 540
+                "money_obtain": 1410,
+                "exp_obtain": 94
             },
             "24": {
                 "id": 24,
-                "money_obtain": 3080,
-                "exp_obtain": 560
+                "money_obtain": 1440,
+                "exp_obtain": 96
             },
             "25": {
                 "id": 25,
-                "money_obtain": 3190,
-                "exp_obtain": 580
+                "money_obtain": 1470,
+                "exp_obtain": 98
             },
             "26": {
                 "id": 26,
-                "money_obtain": 3300,
-                "exp_obtain": 600
+                "money_obtain": 1500,
+                "exp_obtain": 100
             },
             "27": {
                 "id": 27,
-                "money_obtain": 3410,
-                "exp_obtain": 620
+                "money_obtain": 1530,
+                "exp_obtain": 102
             },
             "28": {
                 "id": 28,
-                "money_obtain": 3520,
-                "exp_obtain": 640
+                "money_obtain": 1560,
+                "exp_obtain": 104
             },
             "29": {
                 "id": 29,
-                "money_obtain": 3630,
-                "exp_obtain": 660
+                "money_obtain": 1590,
+                "exp_obtain": 106
             },
             "30": {
                 "id": 30,
-                "money_obtain": 3740,
-                "exp_obtain": 680
+                "money_obtain": 1620,
+                "exp_obtain": 108
             },
             "31": {
                 "id": 31,
-                "money_obtain": 3850,
-                "exp_obtain": 700
+                "money_obtain": 1650,
+                "exp_obtain": 110
             },
             "32": {
                 "id": 32,
-                "money_obtain": 3960,
-                "exp_obtain": 720
+                "money_obtain": 1680,
+                "exp_obtain": 112
             },
             "33": {
                 "id": 33,
-                "money_obtain": 4070,
-                "exp_obtain": 740
+                "money_obtain": 1710,
+                "exp_obtain": 114
             },
             "34": {
                 "id": 34,
-                "money_obtain": 4180,
-                "exp_obtain": 760
+                "money_obtain": 1740,
+                "exp_obtain": 116
             },
             "35": {
                 "id": 35,
-                "money_obtain": 4290,
-                "exp_obtain": 780
+                "money_obtain": 1770,
+                "exp_obtain": 118
             },
             "36": {
                 "id": 36,
-                "money_obtain": 4400,
-                "exp_obtain": 800
+                "money_obtain": 1800,
+                "exp_obtain": 120
             },
             "37": {
                 "id": 37,
-                "money_obtain": 4510,
-                "exp_obtain": 820
+                "money_obtain": 1830,
+                "exp_obtain": 122
             },
             "38": {
                 "id": 38,
-                "money_obtain": 4620,
-                "exp_obtain": 840
+                "money_obtain": 1860,
+                "exp_obtain": 124
             },
             "39": {
                 "id": 39,
-                "money_obtain": 4730,
-                "exp_obtain": 860
+                "money_obtain": 1890,
+                "exp_obtain": 126
             },
             "40": {
                 "id": 40,
-                "money_obtain": 4840,
-                "exp_obtain": 880
+                "money_obtain": 1920,
+                "exp_obtain": 128
             },
             "41": {
                 "id": 41,
-                "money_obtain": 4950,
-                "exp_obtain": 900
+                "money_obtain": 1950,
+                "exp_obtain": 130
             },
             "42": {
                 "id": 42,
-                "money_obtain": 5060,
-                "exp_obtain": 920
+                "money_obtain": 1980,
+                "exp_obtain": 132
             },
             "43": {
                 "id": 43,
-                "money_obtain": 5170,
-                "exp_obtain": 940
+                "money_obtain": 2010,
+                "exp_obtain": 134
             },
             "44": {
                 "id": 44,
-                "money_obtain": 5280,
-                "exp_obtain": 960
+                "money_obtain": 2040,
+                "exp_obtain": 136
             },
             "45": {
                 "id": 45,
-                "money_obtain": 5390,
-                "exp_obtain": 980
+                "money_obtain": 2070,
+                "exp_obtain": 138
             },
             "46": {
                 "id": 46,
-                "money_obtain": 5500,
-                "exp_obtain": 1000
+                "money_obtain": 2100,
+                "exp_obtain": 140
             },
             "47": {
                 "id": 47,
-                "money_obtain": 5610,
-                "exp_obtain": 1020
+                "money_obtain": 2130,
+                "exp_obtain": 142
             },
             "48": {
                 "id": 48,
-                "money_obtain": 5720,
-                "exp_obtain": 1040
+                "money_obtain": 2160,
+                "exp_obtain": 144
             },
             "49": {
                 "id": 49,
-                "money_obtain": 5830,
-                "exp_obtain": 1060
+                "money_obtain": 2190,
+                "exp_obtain": 146
             },
             "50": {
                 "id": 50,
-                "money_obtain": 5940,
-                "exp_obtain": 1080
+                "money_obtain": 2220,
+                "exp_obtain": 148
             }
         }
     },
@@ -9850,7 +16024,7 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "count": 5,
-                "money": 10000,
+                "money": 5000,
                 "energy": 200,
                 "skillPoint": 0,
                 "elixir": 0,
@@ -9859,7 +16033,7 @@ var outputTables = {
             "2": {
                 "id": 2,
                 "count": 10,
-                "money": 20000,
+                "money": 10000,
                 "energy": 300,
                 "skillPoint": 0,
                 "elixir": 0,
@@ -9868,7 +16042,7 @@ var outputTables = {
             "3": {
                 "id": 3,
                 "count": 15,
-                "money": 30000,
+                "money": 20000,
                 "energy": 500,
                 "skillPoint": 1000,
                 "elixir": 0,
@@ -9877,7 +16051,7 @@ var outputTables = {
             "4": {
                 "id": 4,
                 "count": 20,
-                "money": 50000,
+                "money": 30000,
                 "energy": 800,
                 "skillPoint": 2000,
                 "elixir": 1000,
@@ -9886,7 +16060,7 @@ var outputTables = {
             "5": {
                 "id": 5,
                 "count": 25,
-                "money": 100000,
+                "money": 50000,
                 "energy": 1000,
                 "skillPoint": 3000,
                 "elixir": 2000,
@@ -10252,5728 +16426,6 @@ var outputTables = {
                 "receive_bless_count": 12,
                 "challenge_count": 7,
                 "spirit_collect_count": 7
-            }
-        }
-    },
-    "card_grow": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "lv": 0,
-                "exp_need": 100,
-                "money_need": 110,
-                "cur_exp": 0
-            },
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "exp_need": 110,
-                "money_need": 115,
-                "cur_exp": 100
-            },
-            "2": {
-                "id": 2,
-                "lv": 2,
-                "exp_need": 121,
-                "money_need": 132,
-                "cur_exp": 210
-            },
-            "3": {
-                "id": 3,
-                "lv": 3,
-                "exp_need": 133,
-                "money_need": 152,
-                "cur_exp": 331
-            },
-            "4": {
-                "id": 4,
-                "lv": 4,
-                "exp_need": 146,
-                "money_need": 175,
-                "cur_exp": 464
-            },
-            "5": {
-                "id": 5,
-                "lv": 5,
-                "exp_need": 161,
-                "money_need": 201,
-                "cur_exp": 610
-            },
-            "6": {
-                "id": 6,
-                "lv": 6,
-                "exp_need": 177,
-                "money_need": 231,
-                "cur_exp": 771
-            },
-            "7": {
-                "id": 7,
-                "lv": 7,
-                "exp_need": 195,
-                "money_need": 266,
-                "cur_exp": 948
-            },
-            "8": {
-                "id": 8,
-                "lv": 8,
-                "exp_need": 215,
-                "money_need": 306,
-                "cur_exp": 1143
-            },
-            "9": {
-                "id": 9,
-                "lv": 9,
-                "exp_need": 237,
-                "money_need": 352,
-                "cur_exp": 1358
-            },
-            "10": {
-                "id": 10,
-                "lv": 10,
-                "exp_need": 261,
-                "money_need": 405,
-                "cur_exp": 1595
-            },
-            "11": {
-                "id": 11,
-                "lv": 11,
-                "exp_need": 287,
-                "money_need": 466,
-                "cur_exp": 1856
-            },
-            "12": {
-                "id": 12,
-                "lv": 12,
-                "exp_need": 316,
-                "money_need": 536,
-                "cur_exp": 2143
-            },
-            "13": {
-                "id": 13,
-                "lv": 13,
-                "exp_need": 348,
-                "money_need": 616,
-                "cur_exp": 2459
-            },
-            "14": {
-                "id": 14,
-                "lv": 14,
-                "exp_need": 383,
-                "money_need": 708,
-                "cur_exp": 2807
-            },
-            "15": {
-                "id": 15,
-                "lv": 15,
-                "exp_need": 421,
-                "money_need": 814,
-                "cur_exp": 3190
-            },
-            "16": {
-                "id": 16,
-                "lv": 16,
-                "exp_need": 463,
-                "money_need": 936,
-                "cur_exp": 3611
-            },
-            "17": {
-                "id": 17,
-                "lv": 17,
-                "exp_need": 509,
-                "money_need": 1076,
-                "cur_exp": 4074
-            },
-            "18": {
-                "id": 18,
-                "lv": 18,
-                "exp_need": 560,
-                "money_need": 1237,
-                "cur_exp": 4583
-            },
-            "19": {
-                "id": 19,
-                "lv": 19,
-                "exp_need": 616,
-                "money_need": 1423,
-                "cur_exp": 5143
-            },
-            "20": {
-                "id": 20,
-                "lv": 20,
-                "exp_need": 678,
-                "money_need": 1636,
-                "cur_exp": 5759
-            },
-            "21": {
-                "id": 21,
-                "lv": 21,
-                "exp_need": 746,
-                "money_need": 1881,
-                "cur_exp": 6437
-            },
-            "22": {
-                "id": 22,
-                "lv": 22,
-                "exp_need": 821,
-                "money_need": 2163,
-                "cur_exp": 7183
-            },
-            "23": {
-                "id": 23,
-                "lv": 23,
-                "exp_need": 903,
-                "money_need": 2487,
-                "cur_exp": 8004
-            },
-            "24": {
-                "id": 24,
-                "lv": 24,
-                "exp_need": 993,
-                "money_need": 2860,
-                "cur_exp": 8907
-            },
-            "25": {
-                "id": 25,
-                "lv": 25,
-                "exp_need": 1092,
-                "money_need": 3289,
-                "cur_exp": 9900
-            },
-            "26": {
-                "id": 26,
-                "lv": 26,
-                "exp_need": 1201,
-                "money_need": 3782,
-                "cur_exp": 10992
-            },
-            "27": {
-                "id": 27,
-                "lv": 27,
-                "exp_need": 1321,
-                "money_need": 4349,
-                "cur_exp": 12193
-            },
-            "28": {
-                "id": 28,
-                "lv": 28,
-                "exp_need": 1453,
-                "money_need": 5001,
-                "cur_exp": 13514
-            },
-            "29": {
-                "id": 29,
-                "lv": 29,
-                "exp_need": 1598,
-                "money_need": 5751,
-                "cur_exp": 14967
-            },
-            "30": {
-                "id": 30,
-                "lv": 30,
-                "exp_need": 1758,
-                "money_need": 6614,
-                "cur_exp": 16565
-            },
-            "31": {
-                "id": 31,
-                "lv": 31,
-                "exp_need": 1934,
-                "money_need": 7606,
-                "cur_exp": 18323
-            },
-            "32": {
-                "id": 32,
-                "lv": 32,
-                "exp_need": 2127,
-                "money_need": 8747,
-                "cur_exp": 20257
-            },
-            "33": {
-                "id": 33,
-                "lv": 33,
-                "exp_need": 2340,
-                "money_need": 10059,
-                "cur_exp": 22384
-            },
-            "34": {
-                "id": 34,
-                "lv": 34,
-                "exp_need": 2574,
-                "money_need": 11568,
-                "cur_exp": 24724
-            },
-            "35": {
-                "id": 35,
-                "lv": 35,
-                "exp_need": 2831,
-                "money_need": 13303,
-                "cur_exp": 27298
-            },
-            "36": {
-                "id": 36,
-                "lv": 36,
-                "exp_need": 3114,
-                "money_need": 15298,
-                "cur_exp": 30129
-            },
-            "37": {
-                "id": 37,
-                "lv": 37,
-                "exp_need": 3425,
-                "money_need": 17593,
-                "cur_exp": 33243
-            },
-            "38": {
-                "id": 38,
-                "lv": 38,
-                "exp_need": 3768,
-                "money_need": 20232,
-                "cur_exp": 36668
-            },
-            "39": {
-                "id": 39,
-                "lv": 39,
-                "exp_need": 4145,
-                "money_need": 23267,
-                "cur_exp": 40436
-            },
-            "40": {
-                "id": 40,
-                "lv": 40,
-                "exp_need": 4560,
-                "money_need": 26757,
-                "cur_exp": 44581
-            },
-            "41": {
-                "id": 41,
-                "lv": 41,
-                "exp_need": 5016,
-                "money_need": 30771,
-                "cur_exp": 49141
-            },
-            "42": {
-                "id": 42,
-                "lv": 42,
-                "exp_need": 5518,
-                "money_need": 35387,
-                "cur_exp": 54157
-            },
-            "43": {
-                "id": 43,
-                "lv": 43,
-                "exp_need": 6070,
-                "money_need": 40695,
-                "cur_exp": 59675
-            },
-            "44": {
-                "id": 44,
-                "lv": 44,
-                "exp_need": 6677,
-                "money_need": 46799,
-                "cur_exp": 65745
-            },
-            "45": {
-                "id": 45,
-                "lv": 45,
-                "exp_need": 7345,
-                "money_need": 53819,
-                "cur_exp": 72422
-            },
-            "46": {
-                "id": 46,
-                "lv": 46,
-                "exp_need": 8080,
-                "money_need": 61892,
-                "cur_exp": 79767
-            },
-            "47": {
-                "id": 47,
-                "lv": 47,
-                "exp_need": 8888,
-                "money_need": 71176,
-                "cur_exp": 87847
-            },
-            "48": {
-                "id": 48,
-                "lv": 48,
-                "exp_need": 9777,
-                "money_need": 81852,
-                "cur_exp": 96735
-            },
-            "49": {
-                "id": 49,
-                "lv": 49,
-                "exp_need": 10755,
-                "money_need": 94130,
-                "cur_exp": 106512
-            },
-            "50": {
-                "id": 50,
-                "lv": 50,
-                "exp_need": 11831,
-                "money_need": 108250,
-                "cur_exp": 117267
-            },
-            "51": {
-                "id": 51,
-                "lv": 51,
-                "exp_need": 13014,
-                "money_need": 124488,
-                "cur_exp": 129098
-            },
-            "52": {
-                "id": 52,
-                "lv": 52,
-                "exp_need": 14315,
-                "money_need": 143161,
-                "cur_exp": 142112
-            },
-            "53": {
-                "id": 53,
-                "lv": 53,
-                "exp_need": 15747,
-                "money_need": 164635,
-                "cur_exp": 156427
-            },
-            "54": {
-                "id": 54,
-                "lv": 54,
-                "exp_need": 17322,
-                "money_need": 189330,
-                "cur_exp": 172174
-            },
-            "55": {
-                "id": 55,
-                "lv": 55,
-                "exp_need": 19054,
-                "money_need": 217730,
-                "cur_exp": 189496
-            },
-            "56": {
-                "id": 56,
-                "lv": 56,
-                "exp_need": 20959,
-                "money_need": 250390,
-                "cur_exp": 208550
-            },
-            "57": {
-                "id": 57,
-                "lv": 57,
-                "exp_need": 23055,
-                "money_need": 287949,
-                "cur_exp": 229509
-            },
-            "58": {
-                "id": 58,
-                "lv": 58,
-                "exp_need": 25361,
-                "money_need": 331141,
-                "cur_exp": 252564
-            },
-            "59": {
-                "id": 59,
-                "lv": 59,
-                "exp_need": 27897,
-                "money_need": 380812,
-                "cur_exp": 277925
-            },
-            "60": {
-                "id": 60,
-                "lv": 60,
-                "exp_need": 30687,
-                "money_need": 437934,
-                "cur_exp": 305822
-            }
-        }
-    },
-    "card_lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "max_lv": 30
-            },
-            "2": {
-                "id": 2,
-                "max_lv": 40
-            },
-            "3": {
-                "id": 3,
-                "max_lv": 50
-            },
-            "4": {
-                "id": 4,
-                "max_lv": 55
-            },
-            "5": {
-                "id": 5,
-                "max_lv": 60
-            }
-        }
-    },
-    "cards": {
-        "colComment": {
-            "skill_id": {
-                "table": "技能配置表",
-                "key_index": "id",
-                "value_index": "id",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "1": {
-                "id": 1,
-                "number": 1,
-                "name": "石猴·孙悟空",
-                "star": 1,
-                "lv": 1,
-                "atk": 59,
-                "hp": 103,
-                "description": "不要老是跟我提五百年后的事情，烦不烦啊！",
-                "url": 1
-            },
-            "2": {
-                "id": 2,
-                "number": 1,
-                "name": "美猴王·孙悟空",
-                "star": 2,
-                "lv": 1,
-                "atk": 109,
-                "hp": 125,
-                "description": "凭什么我是妖，你是仙，户口本上有写么？",
-                "url": 2
-            },
-            "3": {
-                "id": 3,
-                "number": 1,
-                "name": "齐天大圣·孙悟空",
-                "star": 3,
-                "lv": 1,
-                "atk": 155,
-                "hp": 352,
-                "skill_name": "七十二变",
-                "skill_id": 3,
-                "description": "从今往后一万年，你们都会记住我的名字，齐天大圣孙悟空。",
-                "url": 3
-            },
-            "4": {
-                "id": 4,
-                "number": 1,
-                "name": "行者·孙悟空",
-                "star": 4,
-                "lv": 1,
-                "atk": 210,
-                "hp": 503,
-                "skill_name": "七十二变",
-                "skill_id": 3,
-                "description": "你是谁的亲戚，麻烦打架前先报上来，免得俺老孙白费力气。",
-                "url": 4
-            },
-            "5": {
-                "id": 5,
-                "number": 1,
-                "name": "斗战圣佛·孙悟空",
-                "star": 5,
-                "lv": 1,
-                "atk": 280,
-                "hp": 651,
-                "skill_name": "七十二变",
-                "skill_id": 3,
-                "description": "一沙一世界，一树一菩提，妖即是色，色即是空，空即是佛。",
-                "url": 5
-            },
-            "6": {
-                "id": 6,
-                "number": 2,
-                "name": "猪刚鬣·猪八戒",
-                "star": 1,
-                "lv": 1,
-                "atk": 45,
-                "hp": 129,
-                "description": "当你不能够再拥有，你唯一可以做的，就是令自己不要忘记。",
-                "url": 6
-            },
-            "7": {
-                "id": 7,
-                "number": 2,
-                "name": "高庄主·猪八戒",
-                "star": 2,
-                "lv": 1,
-                "atk": 91,
-                "hp": 275,
-                "description": "第一次见到翠兰，我就想起了你，就像每次抬头看到月亮一样。",
-                "url": 1
-            },
-            "8": {
-                "id": 8,
-                "number": 2,
-                "name": "二师兄·猪八戒",
-                "star": 3,
-                "lv": 1,
-                "atk": 142,
-                "hp": 398,
-                "skill_name": "倒打一耙",
-                "skill_id": 5,
-                "description": "猴子说我呆，沙僧说我二，其实我只是不想做这些无意义的事情。",
-                "url": 2
-            },
-            "9": {
-                "id": 9,
-                "number": 2,
-                "name": "净坛使者·猪八戒",
-                "star": 4,
-                "lv": 1,
-                "atk": 182,
-                "hp": 543,
-                "skill_name": "倒打一耙",
-                "skill_id": 5,
-                "description": "连如来也当我是个吃货，其实我唯有不停的吃，才能让自己不去想她。",
-                "url": 3
-            },
-            "10": {
-                "id": 10,
-                "number": 2,
-                "name": "天蓬元帅·猪八戒",
-                "star": 5,
-                "lv": 1,
-                "atk": 255,
-                "hp": 713,
-                "skill_name": "倒打一耙",
-                "skill_id": 5,
-                "description": "那年，我管银河系。",
-                "url": 4
-            },
-            "11": {
-                "id": 11,
-                "number": 3,
-                "name": "流沙河·沙悟净",
-                "star": 1,
-                "lv": 1,
-                "atk": 51,
-                "hp": 122,
-                "description": "昨日像那东流水，离我远去不可留，今日乱我心，多烦忧。",
-                "url": 5
-            },
-            "12": {
-                "id": 12,
-                "number": 3,
-                "name": "骷髅九·沙悟净",
-                "star": 2,
-                "lv": 1,
-                "atk": 97,
-                "hp": 246,
-                "description": "我脖子上九个骷髅可不是塑料的，哥也是在道上混的。",
-                "url": 6
-            },
-            "13": {
-                "id": 13,
-                "number": 3,
-                "name": "沙和尚·沙悟净",
-                "star": 3,
-                "lv": 1,
-                "atk": 148,
-                "hp": 372,
-                "skill_name": "流沙搅风",
-                "skill_id": 1,
-                "description": "大师兄，师傅被抓走了！大师兄，二师兄和师傅被抓走了！",
-                "url": 1
-            },
-            "14": {
-                "id": 14,
-                "number": 3,
-                "name": "卷帘大将·沙悟净",
-                "star": 4,
-                "lv": 1,
-                "atk": 202,
-                "hp": 518,
-                "skill_name": "流沙搅风",
-                "skill_id": 1,
-                "description": "我这职位就像领导司机，比较敏感，容易说错话做错事。",
-                "url": 2
-            },
-            "15": {
-                "id": 15,
-                "number": 3,
-                "name": "金身罗汉·沙悟净",
-                "star": 5,
-                "lv": 1,
-                "atk": 273,
-                "hp": 674,
-                "skill_name": "流沙搅风",
-                "skill_id": 1,
-                "description": "我是要告诉人家，我失去的东西一定要拿回来！",
-                "url": 3
-            },
-            "16": {
-                "id": 16,
-                "number": 4,
-                "name": "大力·牛魔王",
-                "star": 1,
-                "lv": 1,
-                "atk": 50,
-                "hp": 121,
-                "description": "力气大不是罪，不能什么脏活累活都叫我做啊！",
-                "url": 4
-            },
-            "17": {
-                "id": 17,
-                "number": 4,
-                "name": "芭蕉洞主·牛魔王",
-                "star": 2,
-                "lv": 1,
-                "atk": 95,
-                "hp": 151,
-                "description": "我按照芭蕉叶的样子，给你铸了把扇子，妹纸，你喜欢么？",
-                "url": 5
-            },
-            "18": {
-                "id": 18,
-                "number": 4,
-                "name": "平天大圣·牛魔王",
-                "star": 3,
-                "lv": 1,
-                "atk": 151,
-                "hp": 373,
-                "skill_name": "群牛乱舞",
-                "skill_id": 5,
-                "description": "看清楚是平天不是齐天！猴子是我小弟，不要总拿他压我！",
-                "url": 6
-            },
-            "19": {
-                "id": 19,
-                "number": 4,
-                "name": "众神之神·牛魔王",
-                "star": 4,
-                "lv": 1,
-                "atk": 203,
-                "hp": 520,
-                "skill_name": "群牛乱舞",
-                "skill_id": 5,
-                "description": "我宁愿做一日英雄，都不想成世做条虫，放马过来吧！",
-                "url": 1
-            },
-            "20": {
-                "id": 20,
-                "number": 4,
-                "name": "放下屠刀·牛魔王",
-                "star": 5,
-                "lv": 1,
-                "atk": 275,
-                "hp": 675,
-                "skill_name": "群牛乱舞",
-                "skill_id": 5,
-                "description": "孩子被你们带走了，老婆也离我而去，你要我放下，我还有什么可放？",
-                "url": 2
-            },
-            "21": {
-                "id": 21,
-                "number": 5,
-                "name": "唐僧·金蝉子",
-                "star": 1,
-                "lv": 1,
-                "atk": 49,
-                "hp": 120,
-                "description": "那年，我徒步去阿三国，没有导游，只有三个同样不认识路的驴友。",
-                "url": 3
-            },
-            "22": {
-                "id": 22,
-                "number": 5,
-                "name": "普渡众佛·金蝉子",
-                "star": 2,
-                "lv": 1,
-                "atk": 99,
-                "hp": 249,
-                "description": "江湖谣言吃了我的肉可以长生不老，你看我年龄就知道是假的了。",
-                "url": 4
-            },
-            "23": {
-                "id": 23,
-                "number": 5,
-                "name": "燃灯道人·金蝉子",
-                "star": 3,
-                "lv": 1,
-                "atk": 148,
-                "hp": 377,
-                "skill_name": "普度众生",
-                "skill_id": 10,
-                "description": "我知道在雷音寺宣传道教等于去踢馆，所以如来直接把我给转世到了人间。",
-                "url": 5
-            },
-            "24": {
-                "id": 24,
-                "number": 5,
-                "name": "功德佛·金蝉子",
-                "star": 4,
-                "lv": 1,
-                "atk": 201,
-                "hp": 522,
-                "skill_name": "普度众生",
-                "skill_id": 10,
-                "description": "我心里清楚，我的功德是奶了雷音寺这帮人，而不是因为取经。",
-                "url": 6
-            },
-            "25": {
-                "id": 25,
-                "number": 5,
-                "name": "真身·金蝉子",
-                "star": 5,
-                "lv": 1,
-                "atk": 272,
-                "hp": 676,
-                "skill_name": "普度众生",
-                "skill_id": 10,
-                "description": "我吃素，却总是被人当肉吃，我只想做回我自己。",
-                "url": 1
-            },
-            "26": {
-                "id": 26,
-                "number": 6,
-                "name": "龟兹公主·铁扇公主",
-                "star": 1,
-                "lv": 1,
-                "atk": 60,
-                "hp": 105,
-                "description": "那一年，我在龟兹，那一年，我是公主。",
-                "url": 2
-            },
-            "27": {
-                "id": 27,
-                "number": 6,
-                "name": "罗刹女·铁扇公主",
-                "star": 2,
-                "lv": 1,
-                "atk": 111,
-                "hp": 225,
-                "description": "嫁给老牛后，我有了另一个名字，罗莎女。",
-                "url": 3
-            },
-            "28": {
-                "id": 28,
-                "number": 6,
-                "name": "芭蕉扇·铁扇公主",
-                "star": 3,
-                "lv": 1,
-                "atk": 161,
-                "hp": 341,
-                "skill_name": "浴火重生",
-                "skill_id": 2,
-                "description": "你热么？我给你扇扇？",
-                "url": 4
-            },
-            "29": {
-                "id": 29,
-                "number": 6,
-                "name": "牛夫人·铁扇公主",
-                "star": 4,
-                "lv": 1,
-                "atk": 216,
-                "hp": 501,
-                "skill_name": "浴火重生",
-                "skill_id": 2,
-                "description": "以前看月亮的时候叫人家小甜甜，原来都是假的。",
-                "url": 5
-            },
-            "30": {
-                "id": 30,
-                "number": 6,
-                "name": "情比金坚·铁扇公主",
-                "star": 5,
-                "lv": 1,
-                "atk": 288,
-                "hp": 630,
-                "skill_name": "浴火重生",
-                "skill_id": 2,
-                "description": "孩子已被掳走，再不能让他们把我们夫妻分离了。",
-                "url": 6
-            },
-            "31": {
-                "id": 31,
-                "number": 7,
-                "name": "天将·巨灵神",
-                "star": 1,
-                "lv": 1,
-                "atk": 53,
-                "hp": 125,
-                "description": "当天将不是那么容易的，得通过天将考试，录取比例很低。",
-                "url": 1
-            },
-            "32": {
-                "id": 32,
-                "number": 7,
-                "name": "门卫·巨灵神",
-                "star": 2,
-                "lv": 1,
-                "atk": 101,
-                "hp": 251,
-                "description": "我不喜欢门卫这个称呼，我更喜欢大家叫我天宫天门守将。",
-                "url": 2
-            },
-            "33": {
-                "id": 33,
-                "number": 7,
-                "name": "搬山救民·巨灵神",
-                "star": 3,
-                "lv": 1,
-                "atk": 151,
-                "hp": 371,
-                "skill_name": "雷霆之怒",
-                "skill_id": 3,
-                "description": "想搬家么？找我吧！什么？房子很大？我可以把你家对面那条河一起搬走。",
-                "url": 3
-            },
-            "34": {
-                "id": 34,
-                "number": 7,
-                "name": "急先锋·巨灵神",
-                "star": 4,
-                "lv": 1,
-                "atk": 205,
-                "hp": 519,
-                "skill_name": "雷霆之怒",
-                "skill_id": 3,
-                "description": "先锋这个职业，基本就是送死+被黑锅的意思，你懂的。",
-                "url": 4
-            },
-            "35": {
-                "id": 35,
-                "number": 7,
-                "name": "神斧·巨灵神",
-                "star": 5,
-                "lv": 1,
-                "atk": 277,
-                "hp": 677,
-                "skill_name": "雷霆之怒",
-                "skill_id": 3,
-                "description": "斧头帮知道吧，那是我开创的。",
-                "url": 5
-            },
-            "36": {
-                "id": 36,
-                "number": 8,
-                "name": "神二代·红孩儿",
-                "star": 1,
-                "lv": 1,
-                "atk": 49,
-                "hp": 122,
-                "description": "我爸是牛魔，我妈是铁扇，我是神二代！",
-                "url": 6
-            },
-            "37": {
-                "id": 37,
-                "number": 8,
-                "name": "火云洞·红孩儿",
-                "star": 2,
-                "lv": 1,
-                "atk": 100,
-                "hp": 248,
-                "description": "我有一所房子，面朝大海，春暖花开，4M宽带，能叫外卖。",
-                "url": 1
-            },
-            "38": {
-                "id": 38,
-                "number": 8,
-                "name": "三味真火·红孩儿",
-                "star": 3,
-                "lv": 1,
-                "atk": 145,
-                "hp": 376,
-                "skill_name": "三味真火",
-                "skill_id": 3,
-                "description": "这门神功的唯一的缺点是使用前要先把自己打出鼻血来……",
-                "url": 2
-            },
-            "39": {
-                "id": 39,
-                "number": 8,
-                "name": "圣婴大王·红孩儿",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 519,
-                "skill_name": "三味真火",
-                "skill_id": 3,
-                "description": "虽然我长个正太样儿，却有颗大叔的心。",
-                "url": 3
-            },
-            "40": {
-                "id": 40,
-                "number": 8,
-                "name": "善财童子·红孩儿",
-                "star": 5,
-                "lv": 1,
-                "atk": 273,
-                "hp": 671,
-                "skill_name": "三味真火",
-                "skill_id": 3,
-                "description": "厌倦了打打杀杀、尔虞我诈的日子，我决定从事更有前途的金融行业。",
-                "url": 4
-            },
-            "41": {
-                "id": 41,
-                "number": 9,
-                "name": "冀州侯·黄飞虎",
-                "star": 1,
-                "lv": 1,
-                "atk": 43,
-                "hp": 113,
-                "description": "我爹说，老虎要会飞，谁都挡不住，所以我叫黄飞虎。",
-                "url": 5
-            },
-            "42": {
-                "id": 42,
-                "number": 9,
-                "name": "夜奔·黄飞虎",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 244,
-                "description": "领导给我戴个绿帽子也就忍了，还杀我妹妹，下一个是不是轮到我了？",
-                "url": 6
-            },
-            "43": {
-                "id": 43,
-                "number": 9,
-                "name": "复仇·黄飞虎",
-                "star": 3,
-                "lv": 1,
-                "atk": 156,
-                "hp": 371,
-                "skill_name": "兽之元神",
-                "skill_id": 1,
-                "description": "当仇恨成为了信仰，我就变成了复仇的恶魔。",
-                "url": 1
-            },
-            "44": {
-                "id": 44,
-                "number": 9,
-                "name": "武成王·黄飞虎",
-                "star": 4,
-                "lv": 1,
-                "atk": 204,
-                "hp": 525,
-                "skill_name": "兽之元神",
-                "skill_id": 1,
-                "description": "我对这次的任命很满意，感谢姬总对我的信任！",
-                "url": 2
-            },
-            "45": {
-                "id": 45,
-                "number": 9,
-                "name": "仁圣大帝·黄飞虎",
-                "star": 5,
-                "lv": 1,
-                "atk": 278,
-                "hp": 680,
-                "skill_name": "兽之元神",
-                "skill_id": 1,
-                "description": "嫌我名字长？和慈禧比起来，我这个只能算缩写。",
-                "url": 3
-            },
-            "46": {
-                "id": 46,
-                "number": 10,
-                "name": "阿哥·雷震子",
-                "star": 1,
-                "lv": 1,
-                "atk": 53,
-                "hp": 119,
-                "description": "我爹战斗力强，排到我，已经是第一百个孩子了。",
-                "url": 4
-            },
-            "47": {
-                "id": 47,
-                "number": 10,
-                "name": "羽人·雷震子",
-                "star": 2,
-                "lv": 1,
-                "atk": 103,
-                "hp": 244,
-                "description": "虽然我有一对翅膀，但请不要叫我鸟人，你可以叫我X-man。",
-                "url": 5
-            },
-            "48": {
-                "id": 48,
-                "number": 10,
-                "name": "救父·雷震子",
-                "star": 3,
-                "lv": 1,
-                "atk": 151,
-                "hp": 373,
-                "skill_name": "雷音破",
-                "skill_id": 1,
-                "description": "走的匆忙，忘记问师父我爹长啥样了，这是要闹哪样呀！",
-                "url": 6
-            },
-            "49": {
-                "id": 49,
-                "number": 10,
-                "name": "出五关·雷震子",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 519,
-                "skill_name": "雷音破",
-                "skill_id": 1,
-                "description": "一条命通五关不难，难的是还要背个人一起过，不服你试试？",
-                "url": 1
-            },
-            "50": {
-                "id": 50,
-                "number": 10,
-                "name": "金刚·雷震子",
-                "star": 5,
-                "lv": 1,
-                "atk": 281,
-                "hp": 651,
-                "skill_name": "雷音破",
-                "skill_id": 1,
-                "description": "你感觉不到我的体温，因为我全身都是金刚，没有血肉。",
-                "url": 2
-            },
-            "51": {
-                "id": 51,
-                "number": 11,
-                "name": "羽麟奴·妲己",
-                "star": 1,
-                "lv": 1,
-                "atk": 59,
-                "hp": 125,
-                "description": "那年我和大家一起高歌：从我羽麟，北平成汤！",
-                "url": 3
-            },
-            "52": {
-                "id": 52,
-                "number": 11,
-                "name": "轩辕坟·妲己",
-                "star": 2,
-                "lv": 1,
-                "atk": 111,
-                "hp": 255,
-                "description": "南巢一役后，我躲进了轩辕坟，千年修行，千年孤独。",
-                "url": 4
-            },
-            "53": {
-                "id": 53,
-                "number": 11,
-                "name": "彰德夫人·妲己",
-                "star": 3,
-                "lv": 1,
-                "atk": 161,
-                "hp": 368,
-                "skill_name": "红颜祸水",
-                "skill_id": 6,
-                "description": "商朝的后宫也演甄嬛传啊有木有，刚进宫皇后就训话，本宫心累啊！",
-                "url": 5
-            },
-            "54": {
-                "id": 54,
-                "number": 11,
-                "name": "醉生梦死·妲己",
-                "star": 4,
-                "lv": 1,
-                "atk": 216,
-                "hp": 516,
-                "skill_name": "红颜祸水",
-                "skill_id": 6,
-                "description": "我不懂什么红颜祸水，我只是棋盘中的一颗棋子，但我知道我们是真爱！",
-                "url": 6
-            },
-            "55": {
-                "id": 55,
-                "number": 11,
-                "name": "九尾天狐·妲己",
-                "star": 5,
-                "lv": 1,
-                "atk": 283,
-                "hp": 670,
-                "skill_name": "红颜祸水",
-                "skill_id": 6,
-                "description": "千年修白，万年修黑。女娲娘娘，真的是这样子的么？",
-                "url": 1
-            },
-            "56": {
-                "id": 56,
-                "number": 12,
-                "name": "隐士·姜子牙",
-                "star": 1,
-                "lv": 1,
-                "atk": 60,
-                "hp": 121,
-                "description": "山上啥都有，一分钱不用花，还能赚个隐居的好名声。",
-                "url": 2
-            },
-            "57": {
-                "id": 57,
-                "number": 12,
-                "name": "渔者·姜子牙",
-                "star": 2,
-                "lv": 1,
-                "atk": 115,
-                "hp": 260,
-                "description": "我每次打开陌陌，向周围的美女打招呼，嘴里都会默念“愿者上钩”。",
-                "url": 3
-            },
-            "58": {
-                "id": 58,
-                "number": 12,
-                "name": "占卜师·姜子牙",
-                "star": 3,
-                "lv": 1,
-                "atk": 162,
-                "hp": 370,
-                "skill_name": "太公之悲",
-                "skill_id": 7,
-                "description": "施主印堂发黑，带有凶兆，必有大波，不如让贫道为你算上一卦。",
-                "url": 4
-            },
-            "59": {
-                "id": 59,
-                "number": 12,
-                "name": "尚父·姜子牙",
-                "star": 4,
-                "lv": 1,
-                "atk": 219,
-                "hp": 522,
-                "skill_name": "太公之悲",
-                "skill_id": 7,
-                "description": "我孙子和姬发差不多大，他封我为尚父，我总觉得哪里不对劲。",
-                "url": 5
-            },
-            "60": {
-                "id": 60,
-                "number": 12,
-                "name": "齐祖·姜子牙",
-                "star": 5,
-                "lv": 1,
-                "atk": 285,
-                "hp": 677,
-                "skill_name": "太公之悲",
-                "skill_id": 7,
-                "description": "齐祖是说我是齐国创始人，不是说我长的像齐达内。",
-                "url": 6
-            },
-            "61": {
-                "id": 61,
-                "number": 13,
-                "name": "总兵·李靖",
-                "star": 1,
-                "lv": 1,
-                "atk": 62,
-                "hp": 130,
-                "description": "兄弟我在陈塘关当总兵的时候，吃西瓜从来不花钱。",
-                "url": 1
-            },
-            "62": {
-                "id": 62,
-                "number": 13,
-                "name": "人父·李靖",
-                "star": 2,
-                "lv": 1,
-                "atk": 113,
-                "hp": 259,
-                "description": "我有三子一女，但我还是最喜欢我的干女儿，你懂的。",
-                "url": 2
-            },
-            "63": {
-                "id": 63,
-                "number": 13,
-                "name": "降魔大元帅·李靖",
-                "star": 3,
-                "lv": 1,
-                "atk": 155,
-                "hp": 380,
-                "skill_name": "失魂引",
-                "skill_id": 1,
-                "description": "这帮天兵天将下凡连城管都打不过，还想我去收孙悟空！",
-                "url": 3
-            },
-            "64": {
-                "id": 64,
-                "number": 13,
-                "name": "保卫天庭·李靖",
-                "star": 4,
-                "lv": 1,
-                "atk": 219,
-                "hp": 529,
-                "skill_name": "失魂引",
-                "skill_id": 1,
-                "description": "天庭的九门提督可不好当，你知道隆科多是怎么挂的么？",
-                "url": 4
-            },
-            "65": {
-                "id": 65,
-                "number": 13,
-                "name": "托塔天王·李靖",
-                "star": 5,
-                "lv": 1,
-                "atk": 288,
-                "hp": 680,
-                "skill_name": "失魂引",
-                "skill_id": 1,
-                "description": "每天托着个十几斤重的塔走来走去，我的手臂都快骨质增生了。",
-                "url": 5
-            },
-            "66": {
-                "id": 66,
-                "number": 14,
-                "name": "快枪手·赵公民",
-                "star": 1,
-                "lv": 1,
-                "atk": 51,
-                "hp": 122,
-                "description": "天下武功，无坚不破，唯快不破，所以先下手总是没错。",
-                "url": 6
-            },
-            "67": {
-                "id": 67,
-                "number": 14,
-                "name": "神鞭·赵公民",
-                "star": 2,
-                "lv": 1,
-                "atk": 99,
-                "hp": 243,
-                "description": "想歪的给我面壁去，我说的是武器。",
-                "url": 1
-            },
-            "68": {
-                "id": 68,
-                "number": 14,
-                "name": "大罗金仙·赵公明",
-                "star": 3,
-                "lv": 1,
-                "atk": 149,
-                "hp": 374,
-                "skill_name": "五音诀",
-                "skill_id": 8,
-                "description": "我能有今天的成就，要感谢我的粑粑和麻麻，还有CCTV。",
-                "url": 2
-            },
-            "69": {
-                "id": 69,
-                "number": 14,
-                "name": "玄坛真君·赵公明",
-                "star": 4,
-                "lv": 1,
-                "atk": 205,
-                "hp": 518,
-                "skill_name": "五音诀",
-                "skill_id": 8,
-                "description": "当不当教主真的不重要，看一看这花花世界，就像梦一场。",
-                "url": 3
-            },
-            "70": {
-                "id": 70,
-                "number": 14,
-                "name": "财神·赵公明",
-                "star": 5,
-                "lv": 1,
-                "atk": 271,
-                "hp": 672,
-                "skill_name": "五音诀",
-                "skill_id": 8,
-                "description": "我就是一ATM，关键还得你卡里有钱，不然我也帮不了你。",
-                "url": 4
-            },
-            "71": {
-                "id": 71,
-                "number": 15,
-                "name": "异类·申公豹",
-                "star": 1,
-                "lv": 1,
-                "atk": 48,
-                "hp": 121,
-                "description": "虽然我们是修炼成仙，但我知道他们看不起我的异类出身。",
-                "url": 5
-            },
-            "72": {
-                "id": 72,
-                "number": 15,
-                "name": "铁齿铜牙·申公豹",
-                "star": 2,
-                "lv": 1,
-                "atk": 102,
-                "hp": 244,
-                "description": "就算我能把死的说成活的，也无法改变阐教的种族主义思想。",
-                "url": 6
-            },
-            "73": {
-                "id": 73,
-                "number": 15,
-                "name": "雷公鞭·申公豹",
-                "star": 3,
-                "lv": 1,
-                "atk": 144,
-                "hp": 369,
-                "skill_name": "玄冥寒",
-                "skill_id": 1,
-                "description": "没有人能分辨出这究竟是一道影，还是一堵墙，其实它是我的鞭。",
-                "url": 1
-            },
-            "74": {
-                "id": 74,
-                "number": 15,
-                "name": "万妖之王·申公豹",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 525,
-                "skill_name": "玄冥寒",
-                "skill_id": 1,
-                "description": "只有和它们在一起，我才能感觉到那种无私的信任与关怀。",
-                "url": 2
-            },
-            "75": {
-                "id": 75,
-                "number": 15,
-                "name": "分水将军·申公豹",
-                "star": 5,
-                "lv": 1,
-                "atk": 279,
-                "hp": 666,
-                "skill_name": "玄冥寒",
-                "skill_id": 1,
-                "description": "成王败寇，我的实力无需封神榜上的职位来证明。",
-                "url": 3
-            },
-            "76": {
-                "id": 76,
-                "number": 16,
-                "name": "瞬移·土行孙",
-                "star": 1,
-                "lv": 1,
-                "atk": 49,
-                "hp": 120,
-                "description": "我可以瞬间从移动到你面前，但你不能站在水泥地上！",
-                "url": 4
-            },
-            "77": {
-                "id": 77,
-                "number": 16,
-                "name": "遁神·土行孙",
-                "star": 2,
-                "lv": 1,
-                "atk": 103,
-                "hp": 247,
-                "description": "我不仅会土遁，水遁、火遁、尿遁也是样样精通。",
-                "url": 5
-            },
-            "78": {
-                "id": 78,
-                "number": 16,
-                "name": "捆仙绳·土行孙",
-                "star": 3,
-                "lv": 1,
-                "atk": 156,
-                "hp": 380,
-                "skill_name": "土遁",
-                "skill_id": 1,
-                "description": "我这根捆仙绳，平时可以当领带，战时可以当武器，多功能用途。",
-                "url": 6
-            },
-            "79": {
-                "id": 79,
-                "number": 16,
-                "name": "地行仙·土行孙",
-                "star": 4,
-                "lv": 1,
-                "atk": 210,
-                "hp": 520,
-                "skill_name": "土遁",
-                "skill_id": 1,
-                "description": "地行比飞行安全多了，最多撞个石头啥的，不会坠机。",
-                "url": 1
-            },
-            "80": {
-                "id": 80,
-                "number": 16,
-                "name": "土府星君·土行孙",
-                "star": 5,
-                "lv": 1,
-                "atk": 277,
-                "hp": 681,
-                "skill_name": "土遁",
-                "skill_id": 1,
-                "description": "我最大的成就不是封神，而是娶了心中的女神邓婵玉。",
-                "url": 2
-            },
-            "81": {
-                "id": 81,
-                "number": 17,
-                "name": "捕蛇者·法海",
-                "star": 1,
-                "lv": 1,
-                "atk": 50,
-                "hp": 123,
-                "description": "我只是把捉到的白蛇卖了而已，谁想会记恨我几辈子。",
-                "url": 3
-            },
-            "82": {
-                "id": 82,
-                "number": 17,
-                "name": "苦修·法海",
-                "star": 2,
-                "lv": 1,
-                "atk": 104,
-                "hp": 251,
-                "description": "好不容易炼成的丹药被她偷吃了，我这辈子又白练了。",
-                "url": 4
-            },
-            "83": {
-                "id": 83,
-                "number": 17,
-                "name": "金山住持·法海",
-                "star": 3,
-                "lv": 1,
-                "atk": 144,
-                "hp": 384,
-                "skill_name": "苦海无边",
-                "skill_id": 9,
-                "description": "没想到隔了几辈子再遇到白蛇，已经修炼成了女神模样。",
-                "url": 5
-            },
-            "84": {
-                "id": 84,
-                "number": 17,
-                "name": "雷峰塔·法海",
-                "star": 4,
-                "lv": 1,
-                "atk": 209,
-                "hp": 525,
-                "skill_name": "苦海无边",
-                "skill_id": 9,
-                "description": "人蛇恋是不会有结果的，她应该呆在我的身边修炼。",
-                "url": 6
-            },
-            "85": {
-                "id": 85,
-                "number": 17,
-                "name": "升仙·法海",
-                "star": 5,
-                "lv": 1,
-                "atk": 279,
-                "hp": 685,
-                "skill_name": "苦海无边",
-                "skill_id": 9,
-                "description": "没想到会和他们一起升仙，看着他们甜蜜的样子，我有点失落。",
-                "url": 1
-            },
-            "86": {
-                "id": 86,
-                "number": 18,
-                "name": "青城山·白素贞",
-                "star": 1,
-                "lv": 1,
-                "atk": 55,
-                "hp": 131,
-                "description": "我在青城山宅了1800多年才修炼成女神，你会羡慕我么？",
-                "url": 2
-            },
-            "87": {
-                "id": 87,
-                "number": 18,
-                "name": "断桥·白素贞",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 254,
-                "description": "为什么会一见钟情呢，或许因为他是我下山后见得第一个男人。",
-                "url": 3
-            },
-            "88": {
-                "id": 88,
-                "number": 18,
-                "name": "盗草·白素贞",
-                "star": 3,
-                "lv": 1,
-                "atk": 143,
-                "hp": 369,
-                "skill_name": "水漫金山",
-                "skill_id": 4,
-                "description": "没灵芝仙草许仙就活不了，许仙不在了我就得回青城山继续宅了！",
-                "url": 4
-            },
-            "89": {
-                "id": 89,
-                "number": 18,
-                "name": "水漫金山·白素贞",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 524,
-                "skill_name": "水漫金山",
-                "skill_id": 4,
-                "description": "白素贞你住手吧，许仙真的不在珠海金山！",
-                "url": 5
-            },
-            "90": {
-                "id": 90,
-                "number": 18,
-                "name": "紫微星·白素贞",
-                "star": 5,
-                "lv": 1,
-                "atk": 265,
-                "hp": 689,
-                "skill_name": "水漫金山",
-                "skill_id": 4,
-                "description": "尔康，你不能恨我，你不能因为我这么爱你而恨我。",
-                "url": 6
-            },
-            "91": {
-                "id": 91,
-                "number": 19,
-                "name": "青蛇·小青",
-                "star": 1,
-                "lv": 1,
-                "atk": 53,
-                "hp": 126,
-                "description": "我修行了一千年，孤独了一千年。",
-                "url": 1
-            },
-            "92": {
-                "id": 92,
-                "number": 19,
-                "name": "变身·小青",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 244,
-                "description": "既然无法娶女神，我宁愿化为女儿身终身跟随。",
-                "url": 2
-            },
-            "93": {
-                "id": 93,
-                "number": 19,
-                "name": "斗法海·小青",
-                "star": 3,
-                "lv": 1,
-                "atk": 152,
-                "hp": 372,
-                "skill_name": "黯然销魂",
-                "skill_id": 4,
-                "description": "法海你不懂爱，姐姐不要你，我也不会从。",
-                "url": 3
-            },
-            "94": {
-                "id": 94,
-                "number": 19,
-                "name": "烧塔·小青",
-                "star": 4,
-                "lv": 1,
-                "atk": 203,
-                "hp": 515,
-                "skill_name": "黯然销魂",
-                "skill_id": 4,
-                "description": "法海，要么你跟我走，要么你放过我姐姐！",
-                "url": 4
-            },
-            "95": {
-                "id": 95,
-                "number": 19,
-                "name": "青蛇大仙·小青",
-                "star": 5,
-                "lv": 1,
-                "atk": 268,
-                "hp": 677,
-                "skill_name": "黯然销魂",
-                "skill_id": 4,
-                "description": "一起升仙的那天，我和他是最落寞的，只羡鸳鸯不羡仙。",
-                "url": 5
-            },
-            "96": {
-                "id": 96,
-                "number": 20,
-                "name": "秀姑·何仙姑",
-                "star": 1,
-                "lv": 1,
-                "atk": 60,
-                "hp": 118,
-                "description": "洞宾走后，家里要我嫁人，内心犹如奔过一万头草泥马。",
-                "url": 6
-            },
-            "97": {
-                "id": 97,
-                "number": 20,
-                "name": "辟谷·何仙姑",
-                "star": 2,
-                "lv": 1,
-                "atk": 111,
-                "hp": 239,
-                "description": "一开始我只是想节食减肥，后来发现习惯了就不饿了……",
-                "url": 1
-            },
-            "98": {
-                "id": 98,
-                "number": 20,
-                "name": "凌风驾云·何仙姑",
-                "star": 3,
-                "lv": 1,
-                "atk": 161,
-                "hp": 370,
-                "skill_name": "莲花心经",
-                "skill_id": 7,
-                "description": "那天我花7分钱买了本《筋斗云》，然后我就会飞了。",
-                "url": 2
-            },
-            "99": {
-                "id": 99,
-                "number": 20,
-                "name": "风凰台·何仙姑",
-                "star": 4,
-                "lv": 1,
-                "atk": 221,
-                "hp": 522,
-                "skill_name": "莲花心经",
-                "skill_id": 7,
-                "description": "凤凰台上凤凰花，凤凰花开飞凤凰。",
-                "url": 3
-            },
-            "100": {
-                "id": 100,
-                "number": 20,
-                "name": "碧波仙子·何仙姑",
-                "star": 5,
-                "lv": 1,
-                "atk": 290,
-                "hp": 662,
-                "skill_name": "莲花心经",
-                "skill_id": 7,
-                "description": "让我们荡起双桨，小船儿推开波浪~~~轻点！",
-                "url": 4
-            },
-            "101": {
-                "id": 101,
-                "number": 21,
-                "name": "黄粱梦·吕洞宾",
-                "star": 1,
-                "lv": 1,
-                "atk": 55,
-                "hp": 122,
-                "description": "黄粱一梦告诉我：睡前一定要吃饱，不然美梦都会被饿醒。",
-                "url": 5
-            },
-            "102": {
-                "id": 102,
-                "number": 21,
-                "name": "双修·吕洞宾",
-                "star": 2,
-                "lv": 1,
-                "atk": 108,
-                "hp": 240,
-                "description": "双修就像结对编程，要两个人一起搞，你懂的。",
-                "url": 6
-            },
-            "103": {
-                "id": 103,
-                "number": 21,
-                "name": "纯阳子·吕洞宾",
-                "star": 3,
-                "lv": 1,
-                "atk": 155,
-                "hp": 360,
-                "skill_name": "流云诀",
-                "skill_id": 8,
-                "description": "开导劝化风尘女子是我的业余爱好，虽然她们都说我虚伪。",
-                "url": 1
-            },
-            "104": {
-                "id": 104,
-                "number": 21,
-                "name": "剑仙·吕洞宾",
-                "star": 4,
-                "lv": 1,
-                "atk": 210,
-                "hp": 512,
-                "skill_name": "流云诀",
-                "skill_id": 8,
-                "description": "这年头，我一跟人说自己是剑仙，他们就流露出诡异的笑容。",
-                "url": 2
-            },
-            "105": {
-                "id": 105,
-                "number": 21,
-                "name": "吕祖·吕洞宾",
-                "star": 5,
-                "lv": 1,
-                "atk": 280,
-                "hp": 676,
-                "skill_name": "流云诀",
-                "skill_id": 8,
-                "description": "我有个徒孙叫王重阳，他拿过一个叫华山论剑的武术冠军。",
-                "url": 3
-            },
-            "106": {
-                "id": 106,
-                "number": 22,
-                "name": "神游·铁拐李",
-                "star": 1,
-                "lv": 1,
-                "atk": 56,
-                "hp": 137,
-                "description": "你可以把神游理解为隐形人，想去哪就去哪……你懂的！",
-                "url": 4
-            },
-            "107": {
-                "id": 107,
-                "number": 22,
-                "name": "借尸还魂·铁拐李",
-                "star": 2,
-                "lv": 1,
-                "atk": 111,
-                "hp": 241,
-                "description": "为了不辜负大家对神仙相貌的期待，我只能说自己以前是很帅的。",
-                "url": 5
-            },
-            "108": {
-                "id": 108,
-                "number": 22,
-                "name": "化龙·铁拐李",
-                "star": 3,
-                "lv": 1,
-                "atk": 159,
-                "hp": 358,
-                "skill_name": "流星拐",
-                "skill_id": 1,
-                "description": "扮猪吃老虎是我的最爱，比如在大街上的人堆里变条龙飞走。",
-                "url": 6
-            },
-            "109": {
-                "id": 109,
-                "number": 22,
-                "name": "呼风唤雨·铁拐李",
-                "star": 4,
-                "lv": 1,
-                "atk": 221,
-                "hp": 516,
-                "skill_name": "流星拐",
-                "skill_id": 1,
-                "description": "有人找我求雨，我都要求他舔我的烂腿，没办法，好这口。",
-                "url": 1
-            },
-            "110": {
-                "id": 110,
-                "number": 22,
-                "name": "东华教主·铁拐李",
-                "star": 5,
-                "lv": 1,
-                "atk": 276,
-                "hp": 683,
-                "skill_name": "流星拐",
-                "skill_id": 1,
-                "description": "我们教主圈从不缺新闻，最近的咆哮教主你知道么？",
-                "url": 2
-            },
-            "111": {
-                "id": 111,
-                "number": 23,
-                "name": "散汉·汉钟离",
-                "star": 1,
-                "lv": 1,
-                "atk": 52,
-                "hp": 129,
-                "description": "以前管我们这种人叫散汉，现在叫屌丝。",
-                "url": 3
-            },
-            "112": {
-                "id": 112,
-                "number": 23,
-                "name": "征讨将军·汉钟离",
-                "star": 2,
-                "lv": 1,
-                "atk": 105,
-                "hp": 242,
-                "description": "我学文的，偏要我去当领兵打仗，真当我是袁崇焕啊。",
-                "url": 4
-            },
-            "113": {
-                "id": 113,
-                "number": 23,
-                "name": "十日试·汉钟离",
-                "star": 3,
-                "lv": 1,
-                "atk": 160,
-                "hp": 363,
-                "skill_name": "行云流水",
-                "skill_id": 9,
-                "description": "《十日谈》这样的少儿不宜的书籍都能出名，何况我的是日试呢！",
-                "url": 5
-            },
-            "114": {
-                "id": 114,
-                "number": 23,
-                "name": "炼金术·汉钟离",
-                "star": 4,
-                "lv": 1,
-                "atk": 211,
-                "hp": 522,
-                "skill_name": "行云流水",
-                "skill_id": 9,
-                "description": "呐，当差人是要拜关二哥，你要是炒黄金，当然得拜我啦。",
-                "url": 6
-            },
-            "115": {
-                "id": 115,
-                "number": 23,
-                "name": "正阳真人·汉钟离",
-                "star": 5,
-                "lv": 1,
-                "atk": 282,
-                "hp": 674,
-                "skill_name": "行云流水",
-                "skill_id": 9,
-                "description": "当了神仙，就跟童话里说的一样，从此过上了幸福的生活。",
-                "url": 1
-            },
-            "116": {
-                "id": 116,
-                "number": 24,
-                "name": "驴友·张果老",
-                "star": 1,
-                "lv": 1,
-                "atk": 39,
-                "hp": 128,
-                "description": "骑驴比骑马有个性多了，况且有户口的马，那才是驴嘛！",
-                "url": 2
-            },
-            "117": {
-                "id": 117,
-                "number": 24,
-                "name": "歌手·张果老",
-                "star": 2,
-                "lv": 1,
-                "atk": 89,
-                "hp": 269,
-                "description": "我的歌路很广，穷则乞讨时用，达则可开演唱会。",
-                "url": 3
-            },
-            "118": {
-                "id": 118,
-                "number": 24,
-                "name": "通玄先生·张果老",
-                "star": 3,
-                "lv": 1,
-                "atk": 138,
-                "hp": 388,
-                "skill_name": "人驴合一",
-                "skill_id": 1,
-                "description": "我也不记得我多少岁了，名字里就有个老字，咱能不比老么？",
-                "url": 4
-            },
-            "119": {
-                "id": 119,
-                "number": 24,
-                "name": "广宗道人·张果老",
-                "star": 4,
-                "lv": 1,
-                "atk": 182,
-                "hp": 555,
-                "skill_name": "人驴合一",
-                "skill_id": 1,
-                "description": "折个驴、变个狗啥的我最在行了，人都说我可以去马戏团工作。",
-                "url": 5
-            },
-            "120": {
-                "id": 120,
-                "number": 24,
-                "name": "冲妙真人·张果老",
-                "star": 5,
-                "lv": 1,
-                "atk": 249,
-                "hp": 709,
-                "skill_name": "人驴合一",
-                "skill_id": 1,
-                "description": "我总觉得我的封号有点娘，不过他们说听起来很有冲劲。",
-                "url": 6
-            },
-            "121": {
-                "id": 121,
-                "number": 25,
-                "name": "不羁·韩湘子",
-                "star": 1,
-                "lv": 1,
-                "atk": 41,
-                "hp": 130,
-                "description": "原谅我这一生不羁放纵爱自由，也会怕有一天会跌倒。",
-                "url": 6
-            },
-            "122": {
-                "id": 122,
-                "number": 25,
-                "name": "天花引·韩湘子",
-                "star": 2,
-                "lv": 1,
-                "atk": 92,
-                "hp": 275,
-                "description": "我一辈子只写了这一曲，却流传了几辈子。"
-            },
-            "123": {
-                "id": 123,
-                "number": 25,
-                "name": "点化·韩湘子",
-                "star": 3,
-                "lv": 1,
-                "atk": 144,
-                "hp": 390,
-                "skill_name": "天籁之音",
-                "skill_id": 9,
-                "description": "不要信什么只可意会不可言传的烂话，那是人家不想告诉你。"
-            },
-            "124": {
-                "id": 124,
-                "number": 25,
-                "name": "箫中情·韩湘子",
-                "star": 4,
-                "lv": 1,
-                "atk": 179,
-                "hp": 556,
-                "skill_name": "天籁之音",
-                "skill_id": 9,
-                "description": "你会吹箫？是呀！你会吹箫啊？哈哈，有空教你啊！"
-            },
-            "125": {
-                "id": 125,
-                "number": 25,
-                "name": "尸解仙·韩湘子",
-                "star": 5,
-                "lv": 1,
-                "atk": 255,
-                "hp": 702,
-                "skill_name": "天籁之音",
-                "skill_id": 9,
-                "description": "离开的那天，我的爱与肉身一起，在风中化去了。"
-            },
-            "126": {
-                "id": 126,
-                "number": 26,
-                "name": "行医采药·蓝采和",
-                "star": 1,
-                "lv": 1,
-                "atk": 40,
-                "hp": 130,
-                "description": "我们那时候行医不用上学，有点植物学基础，会烹饪就行。"
-            },
-            "127": {
-                "id": 127,
-                "number": 26,
-                "name": "流浪汉·蓝采和",
-                "star": 2,
-                "lv": 1,
-                "atk": 90,
-                "hp": 270,
-                "description": "想和你就这样流浪，一起看雪看星星看月亮，从诗词歌赋谈到人生哲学。"
-            },
-            "128": {
-                "id": 128,
-                "number": 26,
-                "name": "万花篮·蓝采和",
-                "star": 3,
-                "lv": 1,
-                "atk": 140,
-                "hp": 390,
-                "skill_name": "吐气如兰",
-                "skill_id": 7,
-                "description": "这些年看到好玩的好看的东西，就对着他们念咒语：快到篮里来！"
-            },
-            "129": {
-                "id": 129,
-                "number": 26,
-                "name": "阴阳体·蓝采和",
-                "star": 4,
-                "lv": 1,
-                "atk": 180,
-                "hp": 560,
-                "skill_name": "吐气如兰",
-                "skill_id": 7,
-                "description": "他们说我是阴阳调和于一体，其实我只是有点伪娘控而已。"
-            },
-            "130": {
-                "id": 130,
-                "number": 26,
-                "name": "度仙·蓝采和",
-                "star": 5,
-                "lv": 1,
-                "atk": 250,
-                "hp": 710,
-                "skill_name": "吐气如兰",
-                "skill_id": 7,
-                "description": "汉钟离要我跟他走，我知道他的意思，但我还是从了。"
-            },
-            "131": {
-                "id": 131,
-                "number": 27,
-                "name": "农夫·牛郎",
-                "star": 1,
-                "lv": 1,
-                "atk": 43,
-                "hp": 125,
-                "description": "给地主打工不轻松，不过地主也不容易，省吃俭用才有了这么多地。"
-            },
-            "132": {
-                "id": 132,
-                "number": 27,
-                "name": "神牛·牛郎",
-                "star": 2,
-                "lv": 1,
-                "atk": 92,
-                "hp": 266,
-                "description": "大哥，你是神牛早点说嘛，能不能给我变个十万八万花花先！"
-            },
-            "133": {
-                "id": 133,
-                "number": 27,
-                "name": "更衣室の恋·牛郎",
-                "star": 3,
-                "lv": 1,
-                "atk": 144,
-                "hp": 384,
-                "skill_name": "织女情",
-                "skill_id": 9,
-                "description": "死牛给我出的馊主意，要我去偷妹纸的衣服，岛国动作片看多了吧！"
-            },
-            "134": {
-                "id": 134,
-                "number": 27,
-                "name": "天庭驸马·牛郎",
-                "star": 4,
-                "lv": 1,
-                "atk": 186,
-                "hp": 549,
-                "skill_name": "织女情",
-                "skill_id": 9,
-                "description": "我们驸马界一直都是比较低调的，除了出了个叫陈世美的。"
-            },
-            "135": {
-                "id": 135,
-                "number": 27,
-                "name": "牵牛星·牛郎",
-                "star": 5,
-                "lv": 1,
-                "atk": 255,
-                "hp": 719,
-                "skill_name": "织女情",
-                "skill_id": 9,
-                "description": "一年才见一次面，见面的时候还被围观，这让我们夫妻情何以堪啊！"
-            },
-            "136": {
-                "id": 136,
-                "number": 28,
-                "name": "女红·织女",
-                "star": 1,
-                "lv": 1,
-                "atk": 42,
-                "hp": 122,
-                "description": "我做的针线是极好的，针脚密色彩新，配上这图案，是最好不过的了。"
-            },
-            "137": {
-                "id": 137,
-                "number": 28,
-                "name": "天浴·织女",
-                "star": 2,
-                "lv": 1,
-                "atk": 92,
-                "hp": 262,
-                "description": "我们七姐妹都有个重口味爱好：喜欢去水库里裸泳。"
-            },
-            "138": {
-                "id": 138,
-                "number": 28,
-                "name": "天伦·织女",
-                "star": 3,
-                "lv": 1,
-                "atk": 132,
-                "hp": 382,
-                "skill_name": "鹊桥泪",
-                "skill_id": 4,
-                "description": "突然有一天有了家有了孩子，你会觉得这世界变得不一样了。"
-            },
-            "139": {
-                "id": 139,
-                "number": 28,
-                "name": "七仙姑·织女",
-                "star": 4,
-                "lv": 1,
-                "atk": 182,
-                "hp": 552,
-                "skill_name": "鹊桥泪",
-                "skill_id": 4,
-                "description": "牛郎走的第一天，想他；牛郎走的第二天，想他想他；牛郎走的第三天，想他想他想他。"
-            },
-            "140": {
-                "id": 140,
-                "number": 28,
-                "name": "七星娘娘·织女",
-                "star": 5,
-                "lv": 1,
-                "atk": 242,
-                "hp": 712,
-                "skill_name": "鹊桥泪",
-                "skill_id": 4,
-                "description": "这是个集御姐、人妻、熟女、OL于一身的封号，牛郎肯定会喜欢的。"
-            },
-            "141": {
-                "id": 141,
-                "number": 29,
-                "name": "决斗·吴刚",
-                "star": 1,
-                "lv": 1,
-                "atk": 33,
-                "hp": 123,
-                "description": "偷情也就算了，还生了三个娃，让我喜当爹三次！"
-            },
-            "142": {
-                "id": 142,
-                "number": 29,
-                "name": "刺配·吴刚",
-                "star": 2,
-                "lv": 1,
-                "atk": 83,
-                "hp": 263,
-                "description": "我被发配到月球，成为当地第一个原住民，比嫦娥都早。"
-            },
-            "143": {
-                "id": 143,
-                "number": 29,
-                "name": "樵夫·吴刚",
-                "star": 3,
-                "lv": 1,
-                "atk": 133,
-                "hp": 383,
-                "skill_name": "桂花情",
-                "skill_id": 7,
-                "description": "无聊的时候我就砍砍桂花树，反正砍得没有长得快。"
-            },
-            "144": {
-                "id": 144,
-                "number": 29,
-                "name": "逆袭·吴刚",
-                "star": 4,
-                "lv": 1,
-                "atk": 183,
-                "hp": 553,
-                "skill_name": "桂花情",
-                "skill_id": 7,
-                "description": "你能理解单身几百年后突然来一个女神和你共处的感受么？"
-            },
-            "145": {
-                "id": 145,
-                "number": 29,
-                "name": "桂花仙·吴刚",
-                "star": 5,
-                "lv": 1,
-                "atk": 243,
-                "hp": 703,
-                "skill_name": "桂花情",
-                "skill_id": 7,
-                "description": "桂花树下桃花仙，桂花仙人种桂花；从此不砍桂花树，抱得嫦娥躲在家。"
-            },
-            "146": {
-                "id": 146,
-                "number": 30,
-                "name": "天书·鬼谷子",
-                "star": 1,
-                "lv": 1,
-                "atk": 46,
-                "hp": 133,
-                "description": "不是说好发教材的么？咋发下来的都是白纸？太黑了！"
-            },
-            "147": {
-                "id": 147,
-                "number": 30,
-                "name": "纵横术·鬼谷子",
-                "star": 2,
-                "lv": 1,
-                "atk": 95,
-                "hp": 262,
-                "description": "作为靠嘴皮子吃饭的鼻祖，我深知其中的不易啊！"
-            },
-            "148": {
-                "id": 148,
-                "number": 30,
-                "name": "鬼谷井·鬼谷子",
-                "star": 3,
-                "lv": 1,
-                "atk": 145,
-                "hp": 385,
-                "skill_name": "鬼脚七",
-                "skill_id": 2,
-                "description": "我发现一口井，每天晚上播天气预报，然后我就出名了。"
-            },
-            "149": {
-                "id": 149,
-                "number": 30,
-                "name": "斩草撒豆·鬼谷子",
-                "star": 4,
-                "lv": 1,
-                "atk": 188,
-                "hp": 556,
-                "skill_name": "鬼脚七",
-                "skill_id": 2,
-                "description": "只要你有了想象力，草就可以变成马，豆就可以变成兵。"
-            },
-            "150": {
-                "id": 150,
-                "number": 30,
-                "name": "玄微真人·鬼谷子",
-                "star": 5,
-                "lv": 1,
-                "atk": 244,
-                "hp": 721,
-                "skill_name": "鬼脚七",
-                "skill_id": 2,
-                "description": "当了神仙后，玉帝给我分了一套别墅，有产权的哦！"
-            },
-            "151": {
-                "id": 151,
-                "number": 31,
-                "name": "生老病死·黑无常",
-                "star": 1,
-                "lv": 1,
-                "atk": 50,
-                "hp": 131,
-                "description": "相比梅花三弄，我更喜欢保安三问：你是谁？你从哪里来？你要去哪里？"
-            },
-            "152": {
-                "id": 152,
-                "number": 31,
-                "name": "爱别离·黑无常",
-                "star": 2,
-                "lv": 1,
-                "atk": 102,
-                "hp": 279,
-                "description": "我能想到最浪漫的事，就是和你一起卖卖电脑。"
-            },
-            "153": {
-                "id": 153,
-                "number": 31,
-                "name": "怨憎会·黑无常",
-                "star": 3,
-                "lv": 1,
-                "atk": 149,
-                "hp": 378,
-                "skill_name": "招魂蟠",
-                "skill_id": 2,
-                "description": "别老练少林72绝技了，多看苍老师的片子可以下火去戾气。"
-            },
-            "154": {
-                "id": 154,
-                "number": 31,
-                "name": "求不得·黑无常",
-                "star": 4,
-                "lv": 1,
-                "atk": 201,
-                "hp": 549,
-                "skill_name": "招魂蟠",
-                "skill_id": 2,
-                "description": "巨龙巨龙你差两年，永永远远的差两年。"
-            },
-            "155": {
-                "id": 155,
-                "number": 31,
-                "name": "五阴盛·黑无常",
-                "star": 5,
-                "lv": 1,
-                "atk": 265,
-                "hp": 719,
-                "skill_name": "招魂蟠",
-                "skill_id": 2,
-                "description": "抽刀断水水更流，举杯消愁愁更愁，吃多吃少难吃足。"
-            },
-            "156": {
-                "id": 156,
-                "number": 32,
-                "name": "地狱道·白无常",
-                "star": 1,
-                "lv": 1,
-                "atk": 53,
-                "hp": 126,
-                "description": "在这里先八寒再八热，经历冰火九重天！……别想歪了。"
-            },
-            "157": {
-                "id": 157,
-                "number": 32,
-                "name": "恶鬼道·白无常",
-                "star": 2,
-                "lv": 1,
-                "atk": 105,
-                "hp": 277,
-                "description": "咱这儿天天饿着不给你吃饭，但就是饿不死，减肥者禁入！"
-            },
-            "158": {
-                "id": 158,
-                "number": 32,
-                "name": "畜生道·白无常",
-                "star": 3,
-                "lv": 1,
-                "atk": 154,
-                "hp": 369,
-                "skill_name": "哭丧棒",
-                "skill_id": 1,
-                "description": "我们这儿都是牛啊马啊狗啊啥的，重口味者禁入！"
-            },
-            "159": {
-                "id": 159,
-                "number": 32,
-                "name": "阿修罗道·白无常",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 556,
-                "skill_name": "哭丧棒",
-                "skill_id": 1,
-                "description": "这里打斗比较激烈一些，需要用到皮鞭、绳索、蜡烛等物品。"
-            },
-            "160": {
-                "id": 160,
-                "number": 32,
-                "name": "人间道·白无常",
-                "star": 5,
-                "lv": 1,
-                "atk": 266,
-                "hp": 666,
-                "skill_name": "哭丧棒",
-                "skill_id": 1,
-                "description": "我们终于回归正常了，各位有特殊癖好的也可以再回去。"
-            },
-            "161": {
-                "id": 161,
-                "number": 33,
-                "name": "科员·日游神",
-                "star": 1,
-                "lv": 1,
-                "atk": 62,
-                "hp": 125,
-                "description": "我怎么也是个有编制的神，可不是临时工。"
-            },
-            "162": {
-                "id": 162,
-                "number": 33,
-                "name": "副科长·日游神",
-                "star": 2,
-                "lv": 1,
-                "atk": 112,
-                "hp": 244,
-                "description": "终于走上领导岗位了，虽然还是要整天出来巡街。"
-            },
-            "163": {
-                "id": 163,
-                "number": 33,
-                "name": "科长·日游神",
-                "star": 3,
-                "lv": 1,
-                "atk": 159,
-                "hp": 374,
-                "skill_name": "日炎拳",
-                "skill_id": 1,
-                "description": "这次能提拔，多亏巨灵神他们给我指了条路。"
-            },
-            "164": {
-                "id": 164,
-                "number": 33,
-                "name": "副处长·日游神",
-                "star": 4,
-                "lv": 1,
-                "atk": 222,
-                "hp": 519,
-                "skill_name": "日炎拳",
-                "skill_id": 1,
-                "description": "众仙们，我们要以高度负责的精神，认真组织和开展好学习实践活动！"
-            },
-            "165": {
-                "id": 165,
-                "number": 33,
-                "name": "处长·日游神",
-                "star": 5,
-                "lv": 1,
-                "atk": 268,
-                "hp": 669,
-                "skill_name": "日炎拳",
-                "skill_id": 1,
-                "description": "再过两年要退居二线了，我儿子的仙籍得抓紧办了。"
-            },
-            "166": {
-                "id": 166,
-                "number": 34,
-                "name": "士官·夜游神",
-                "star": 1,
-                "lv": 1,
-                "atk": 60,
-                "hp": 122,
-                "description": "终于吃上公家饭了，偶尔还可以欺负一下新神仙。"
-            },
-            "167": {
-                "id": 167,
-                "number": 34,
-                "name": "中尉·夜游神",
-                "star": 2,
-                "lv": 1,
-                "atk": 115,
-                "hp": 246,
-                "skill_id": 1,
-                "description": "相比副连这个很娘的称呼，我更喜欢大家叫我captain。"
-            },
-            "168": {
-                "id": 168,
-                "number": 34,
-                "name": "少校·夜游神",
-                "star": 3,
-                "lv": 1,
-                "atk": 162,
-                "hp": 373,
-                "skill_name": "流星击",
-                "skill_id": 1,
-                "description": "其实神仙的夜生活很丰富的，很庆幸我负责夜里的巡逻，你懂的。"
-            },
-            "169": {
-                "id": 169,
-                "number": 34,
-                "name": "上校·夜游神",
-                "star": 4,
-                "lv": 1,
-                "atk": 223,
-                "hp": 515,
-                "skill_name": "流星击",
-                "skill_id": 1,
-                "description": "为啥那个唱歌的神仙升的比我快那么多!"
-            },
-            "170": {
-                "id": 170,
-                "number": 34,
-                "name": "大校·夜游神",
-                "star": 5,
-                "lv": 1,
-                "atk": 279,
-                "hp": 668,
-                "skill_name": "流星击",
-                "description": "笑什么笑，是大校不是大笑，严肃点！"
-            },
-            "171": {
-                "id": 171,
-                "number": 35,
-                "name": "瑶草·瑶姬",
-                "star": 1,
-                "lv": 1,
-                "atk": 48,
-                "hp": 135,
-                "description": "我是一株吃了会让你幸福的草，唯一不幸福的就是我本身。"
-            },
-            "172": {
-                "id": 172,
-                "number": 35,
-                "name": "神女峰·瑶姬",
-                "star": 2,
-                "lv": 1,
-                "atk": 95,
-                "hp": 256,
-                "description": "我化作一道险峰，等着真心的你来攀登。"
-            },
-            "173": {
-                "id": 173,
-                "number": 35,
-                "name": "巫山云雨·瑶姬",
-                "star": 3,
-                "lv": 1,
-                "atk": 145,
-                "hp": 380,
-                "skill_name": "巫山云雨",
-                "skill_id": 8,
-                "description": "巫山朝云暮雨的天气很适合野合么？什么大家都跑我这儿来？"
-            },
-            "174": {
-                "id": 174,
-                "number": 35,
-                "name": "神女赋·瑶姬",
-                "star": 4,
-                "lv": 1,
-                "atk": 201,
-                "hp": 535,
-                "skill_name": "巫山云雨",
-                "skill_id": 8,
-                "description": "我鄙视那些YY我的文章，再经典也是对我的伤害。"
-            },
-            "175": {
-                "id": 175,
-                "number": 35,
-                "name": "巫山神女·瑶姬",
-                "star": 5,
-                "lv": 1,
-                "atk": 275,
-                "hp": 730,
-                "skill_name": "巫山云雨",
-                "skill_id": 8,
-                "description": "曾经沧海难为水，除却巫山不是云。"
-            },
-            "176": {
-                "id": 176,
-                "number": 36,
-                "name": "公主驾到·精卫",
-                "star": 1,
-                "lv": 1,
-                "atk": 45,
-                "hp": 136,
-                "description": "虽然咱们部落没多少人，但我也算是个公主呀！"
-            },
-            "177": {
-                "id": 177,
-                "number": 36,
-                "name": "海泳·精卫",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 258,
-                "description": "这么多姐姐在湖里洗个澡就泡到了帅哥，那我必须得去海里啊。"
-            },
-            "178": {
-                "id": 178,
-                "number": 36,
-                "name": "东海遇·精卫",
-                "star": 3,
-                "lv": 1,
-                "atk": 151,
-                "hp": 381,
-                "skill_name": "碧波滔天",
-                "skill_id": 3,
-                "description": "不喜欢就是不喜欢，龙王太子又如何！"
-            },
-            "179": {
-                "id": 179,
-                "number": 36,
-                "name": "逼婚·精卫",
-                "star": 4,
-                "lv": 1,
-                "atk": 200,
-                "hp": 536,
-                "skill_name": "碧波滔天",
-                "skill_id": 3,
-                "description": "再逼我就跳海，死了我也不放过你！"
-            },
-            "180": {
-                "id": 180,
-                "number": 36,
-                "name": "化鸟·精卫",
-                "star": 5,
-                "lv": 1,
-                "atk": 280,
-                "hp": 721,
-                "skill_name": "碧波滔天",
-                "skill_id": 3,
-                "description": "我知道海不可能被填平，我只是想告诉后面的姐妹他是个什么样的男人。"
-            },
-            "181": {
-                "id": 181,
-                "number": 37,
-                "name": "巨人·夸父",
-                "star": 1,
-                "lv": 1,
-                "atk": 53,
-                "hp": 133,
-                "description": "不是每一瓶牛奶都可以叫特仑苏，不是每一个巨人都可以成为夸父。"
-            },
-            "182": {
-                "id": 182,
-                "number": 37,
-                "name": "守护者·夸父",
-                "star": 2,
-                "lv": 1,
-                "atk": 99,
-                "hp": 261,
-                "description": "我不是你的优乐美，我是你的守护神！"
-            },
-            "183": {
-                "id": 183,
-                "number": 37,
-                "name": "星降术·夸父",
-                "star": 3,
-                "lv": 1,
-                "atk": 150,
-                "hp": 391,
-                "skill_name": "大地之怒",
-                "skill_id": 5,
-                "description": "快使用星将术，哼哼哈嘿，快爆发小宇宙，伊莫拉沙！"
-            },
-            "184": {
-                "id": 184,
-                "number": 37,
-                "name": "神行·夸父",
-                "star": 4,
-                "lv": 1,
-                "atk": 202,
-                "hp": 540,
-                "skill_name": "大地之怒",
-                "skill_id": 5,
-                "description": "田径运动员比赛前都会拜拜我，我是他们这行的祖师爷。"
-            },
-            "185": {
-                "id": 185,
-                "number": 37,
-                "name": "逐日·夸父",
-                "star": 5,
-                "lv": 1,
-                "atk": 279,
-                "hp": 731,
-                "skill_name": "大地之怒",
-                "skill_id": 5,
-                "description": "别问我为什么要追日，除非你不抗日！"
-            },
-            "186": {
-                "id": 186,
-                "number": 38,
-                "name": "箭客·后羿",
-                "star": 1,
-                "lv": 1,
-                "atk": 44,
-                "hp": 141,
-                "description": "我喜欢射，我喜欢箭，我是箭客！"
-            },
-            "187": {
-                "id": 187,
-                "number": 38,
-                "name": "失嫦娥·后羿",
-                "star": 2,
-                "lv": 1,
-                "atk": 93,
-                "hp": 261,
-                "description": "那天，她要我跟她走，我没答应，她太自信了，以为我一定会跟她走。"
-            },
-            "188": {
-                "id": 188,
-                "number": 38,
-                "name": "七弦·后羿",
-                "star": 3,
-                "lv": 1,
-                "atk": 144,
-                "hp": 388,
-                "skill_name": "穿云箭",
-                "skill_id": 4,
-                "description": "当我第一次见到宓妃时，她在弹一把七弦琴，后来她有一个好听的名字：洛神。"
-            },
-            "189": {
-                "id": 189,
-                "number": 38,
-                "name": "射日·后羿",
-                "star": 4,
-                "lv": 1,
-                "atk": 205,
-                "hp": 541,
-                "skill_name": "穿云箭",
-                "skill_id": 4,
-                "description": "唯有射下那九个太阳，才能压下我内心的怒火。"
-            },
-            "190": {
-                "id": 190,
-                "number": 38,
-                "name": "宗布神·后羿",
-                "star": 5,
-                "lv": 1,
-                "atk": 277,
-                "hp": 729,
-                "skill_name": "穿云箭",
-                "skill_id": 4,
-                "description": "有人在我坟前的桃树下唱歌：我在这儿等着你回来……"
-            },
-            "191": {
-                "id": 191,
-                "number": 39,
-                "name": "郎才女貌·嫦娥",
-                "star": 1,
-                "lv": 1,
-                "atk": 62,
-                "hp": 122,
-                "description": "后羿是个神射手，嫁给他我很幸福，你懂的。"
-            },
-            "192": {
-                "id": 192,
-                "number": 39,
-                "name": "奔月·嫦娥",
-                "star": 2,
-                "lv": 1,
-                "atk": 105,
-                "hp": 233,
-                "description": "老公出差不在家，我出去happy嗑个药就飞到了月亮上。"
-            },
-            "193": {
-                "id": 193,
-                "number": 39,
-                "name": "捣药·嫦娥",
-                "star": 3,
-                "lv": 1,
-                "atk": 159,
-                "hp": 352,
-                "skill_name": "天音玄",
-                "skill_id": 10,
-                "description": "天杀的王母，跟我演甄嬛传，让我天天在月宫捣药！"
-            },
-            "194": {
-                "id": 194,
-                "number": 39,
-                "name": "真爱·嫦娥",
-                "star": 4,
-                "lv": 1,
-                "atk": 212,
-                "hp": 502,
-                "skill_name": "天音玄",
-                "skill_id": 10,
-                "description": "命运让我离开了后羿，却又给我送来了吴刚，我只能呵呵。"
-            },
-            "195": {
-                "id": 195,
-                "number": 39,
-                "name": "月光女神·嫦娥",
-                "star": 5,
-                "lv": 1,
-                "atk": 290,
-                "hp": 647,
-                "skill_name": "天音玄",
-                "skill_id": 10,
-                "description": "想我的时候，打一盘Luna地图或是看看钱包。"
-            },
-            "196": {
-                "id": 196,
-                "number": 40,
-                "name": "无名巨人·刑天",
-                "star": 1,
-                "lv": 1,
-                "atk": 61,
-                "hp": 120,
-                "description": "我的身材和我的名字一样威武。"
-            },
-            "197": {
-                "id": 197,
-                "number": 40,
-                "name": "文艺青年·刑天",
-                "star": 2,
-                "lv": 1,
-                "atk": 103,
-                "hp": 230,
-                "description": "业余时间我也写写诗歌，在微博上发发鸡汤文。"
-            },
-            "198": {
-                "id": 198,
-                "number": 40,
-                "name": "求战·刑天",
-                "star": 3,
-                "lv": 1,
-                "atk": 160,
-                "hp": 350,
-                "skill_name": "天杀",
-                "skill_id": 1,
-                "description": "出来混的就是要讲义气嘛，打个架婆婆妈妈的最不爽了。"
-            },
-            "199": {
-                "id": 199,
-                "number": 40,
-                "name": "永不妥协·刑天",
-                "star": 4,
-                "lv": 1,
-                "atk": 215,
-                "hp": 500,
-                "skill_name": "天杀",
-                "skill_id": 1,
-                "description": "虽千万人吾往矣，这才是亮剑精神！"
-            },
-            "200": {
-                "id": 200,
-                "number": 40,
-                "name": "无首战神·刑天",
-                "star": 5,
-                "lv": 1,
-                "atk": 299,
-                "hp": 644,
-                "skill_name": "天杀",
-                "skill_id": 1,
-                "description": "自从没了脑袋，打架灵活多了，也不用护头护脑了。"
-            },
-            "201": {
-                "id": 201,
-                "number": 41,
-                "name": "拜师·沉香",
-                "star": 1,
-                "lv": 1,
-                "atk": 55,
-                "hp": 119,
-                "description": "我师父早年跳霹雳舞，成仙后大家都叫他霹雳大仙。"
-            },
-            "202": {
-                "id": 202,
-                "number": 41,
-                "name": "宣花斧·沉香",
-                "star": 2,
-                "lv": 1,
-                "atk": 109,
-                "hp": 234,
-                "description": "幸福生活不能光靠手，所以师父给了我把宣花斧。"
-            },
-            "203": {
-                "id": 203,
-                "number": 41,
-                "name": "战三眼·沉香",
-                "star": 3,
-                "lv": 1,
-                "atk": 162,
-                "hp": 355,
-                "skill_name": "开山裂地",
-                "skill_id": 6,
-                "description": "你能救母，我也能救母，我是沉香，我为我自己代言。"
-            },
-            "204": {
-                "id": 204,
-                "number": 41,
-                "name": "劈山·沉香",
-                "star": 4,
-                "lv": 1,
-                "atk": 221,
-                "hp": 498,
-                "skill_name": "开山裂地",
-                "skill_id": 6,
-                "description": "别人走路我爬山，别人劈柴我劈山。"
-            },
-            "205": {
-                "id": 205,
-                "number": 41,
-                "name": "宝莲灯·沉香",
-                "star": 5,
-                "lv": 1,
-                "atk": 296,
-                "hp": 644,
-                "skill_name": "开山裂地",
-                "skill_id": 6,
-                "description": "每次点上这个灯，都会发出悦耳的音乐：等灯等灯。"
-            },
-            "206": {
-                "id": 206,
-                "number": 42,
-                "name": "修缘·济公",
-                "star": 1,
-                "lv": 1,
-                "atk": 58,
-                "hp": 125,
-                "description": "呐，不要说我没有提醒你，修行呢，最要紧的是开心！"
-            },
-            "207": {
-                "id": 207,
-                "number": 42,
-                "name": "颠·济公",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 235,
-                "description": "别人笑我太疯癫，我笑他人看不穿。"
-            },
-            "208": {
-                "id": 208,
-                "number": 42,
-                "name": "酒肉和尚·济公",
-                "star": 3,
-                "lv": 1,
-                "atk": 155,
-                "hp": 355,
-                "skill_name": "舍生取义",
-                "skill_id": 8,
-                "description": "别以为喝酒吃肉就能修成正果，你看鲁智深就知道了。"
-            },
-            "209": {
-                "id": 209,
-                "number": 42,
-                "name": "降龙罗汉·济公",
-                "star": 4,
-                "lv": 1,
-                "atk": 216,
-                "hp": 505,
-                "skill_name": "舍生取义",
-                "skill_id": 8,
-                "description": "左右两边是十八罗汉，降龙伏虎在这一边，至于求子就要拜观音大士。"
-            },
-            "210": {
-                "id": 210,
-                "number": 42,
-                "name": "降龙尊者·济公",
-                "star": 5,
-                "lv": 1,
-                "atk": 288,
-                "hp": 660,
-                "skill_name": "舍生取义",
-                "skill_id": 8,
-                "description": "我想代表天宫向凡间宣扬爱心，让他们明白只要有爱，哪里都是天堂。"
-            },
-            "211": {
-                "id": 211,
-                "number": 43,
-                "name": "错嫁·宓妃",
-                "star": 1,
-                "lv": 1,
-                "atk": 51,
-                "hp": 121,
-                "description": "嫁给河伯是我一生最大的错。"
-            },
-            "212": {
-                "id": 212,
-                "number": 43,
-                "name": "洛书·宓妃",
-                "star": 2,
-                "lv": 1,
-                "atk": 101,
-                "hp": 251,
-                "description": "我献出洛书，只是想离开这个人。"
-            },
-            "213": {
-                "id": 213,
-                "number": 43,
-                "name": "真爱·宓妃",
-                "star": 3,
-                "lv": 1,
-                "atk": 151,
-                "hp": 371,
-                "skill_name": "水乳之欢",
-                "skill_id": 2,
-                "description": "第一次见到他的时候，我就记住了他的名字：后羿。"
-            },
-            "214": {
-                "id": 214,
-                "number": 43,
-                "name": "洛水三千·宓妃",
-                "star": 4,
-                "lv": 1,
-                "atk": 201,
-                "hp": 521,
-                "skill_name": "水乳之欢",
-                "skill_id": 2,
-                "description": "既然无法陪伴左右，不如化为这护城的洛水守护你。"
-            },
-            "215": {
-                "id": 215,
-                "number": 43,
-                "name": "洛神·宓妃",
-                "star": 5,
-                "lv": 1,
-                "atk": 271,
-                "hp": 671,
-                "skill_name": "水乳之欢",
-                "skill_id": 2,
-                "description": "仿佛兮若轻云之蔽月，飘飘兮若流风之回雪。"
-            },
-            "216": {
-                "id": 216,
-                "number": 44,
-                "name": "长生之道·张道陵",
-                "star": 1,
-                "lv": 1,
-                "atk": 49,
-                "hp": 126,
-                "description": "大叔说我骨骼惊奇，是练丹的奇才，才卖我一本《九鼎炼丹秘方》。"
-            },
-            "217": {
-                "id": 217,
-                "number": 44,
-                "name": "神医·张道陵",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 248,
-                "description": "不听话就会生病，生病就要找我，找我就要听话，这个逻辑你懂的吧？"
-            },
-            "218": {
-                "id": 218,
-                "number": 44,
-                "name": "授术·张道陵",
-                "star": 3,
-                "lv": 1,
-                "atk": 158,
-                "hp": 374,
-                "skill_name": "无米之炊",
-                "skill_id": 1,
-                "description": "考验徒弟说到底就是洗脑，能洗的就教，不能洗的咱就说考验没通过。"
-            },
-            "219": {
-                "id": 219,
-                "number": 44,
-                "name": "五斗米·张道陵",
-                "star": 4,
-                "lv": 1,
-                "atk": 203,
-                "hp": 531,
-                "skill_name": "无米之炊",
-                "skill_id": 1,
-                "description": "想入会？交五斗米。慢着，这是报名费，交学费后面排队去。"
-            },
-            "220": {
-                "id": 220,
-                "number": 44,
-                "name": "天师·张道陵",
-                "star": 5,
-                "lv": 1,
-                "atk": 274,
-                "hp": 678,
-                "skill_name": "无米之炊",
-                "skill_id": 1,
-                "description": "我是五斗米教扛把子，你知道什么叫不准勾引二嫂么？"
-            },
-            "221": {
-                "id": 221,
-                "number": 45,
-                "name": "日高一平·修罗王",
-                "star": 1,
-                "lv": 1,
-                "atk": 48,
-                "hp": 123,
-                "description": "师父曾经说过，如果把我和阿凯加起来，再除二就是十全十美了。"
-            },
-            "222": {
-                "id": 222,
-                "number": 45,
-                "name": "变身·修罗王",
-                "star": 2,
-                "lv": 1,
-                "atk": 99,
-                "hp": 256,
-                "description": "我肚子一饿就会失去战意，连脱战甲的时间都等不了。"
-            },
-            "223": {
-                "id": 223,
-                "number": 45,
-                "name": "魔破拳·修罗王",
-                "star": 3,
-                "lv": 1,
-                "atk": 153,
-                "hp": 374,
-                "skill_name": "五世修罗",
-                "skill_id": 6,
-                "description": "这拳打出来之前，得先做一次全身运动，比较费时间。"
-            },
-            "224": {
-                "id": 224,
-                "number": 45,
-                "name": "梵天战甲·修罗王",
-                "star": 4,
-                "lv": 1,
-                "atk": 203,
-                "hp": 531,
-                "skill_name": "五世修罗",
-                "skill_id": 6,
-                "description": "这战甲酷毙了！就是穿着太占地方，容易卡门，脱了也不能缩小存放。"
-            },
-            "225": {
-                "id": 225,
-                "number": 45,
-                "name": "创造神·修罗王",
-                "star": 5,
-                "lv": 1,
-                "atk": 274,
-                "hp": 675,
-                "skill_name": "五世修罗",
-                "skill_id": 6,
-                "description": "有创造神就会有破坏神，还会有调和神，我们都只是棋子。"
-            },
-            "226": {
-                "id": 226,
-                "number": 46,
-                "name": "力伽·迦楼罗王",
-                "star": 1,
-                "lv": 1,
-                "atk": 45,
-                "hp": 115,
-                "description": "我是迦楼罗王力迦，天空界最帅的男人，没有之一。"
-            },
-            "227": {
-                "id": 227,
-                "number": 46,
-                "name": "凤凰·迦楼罗王",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 256,
-                "description": "凤凰会涅槃，我没有那么容易死。"
-            },
-            "228": {
-                "id": 228,
-                "number": 46,
-                "name": "羽吹雪·迦楼罗王",
-                "star": 3,
-                "lv": 1,
-                "atk": 155,
-                "hp": 379,
-                "skill_name": "罗汉印",
-                "skill_id": 1,
-                "description": "我吹的是血，不是雪。"
-            },
-            "229": {
-                "id": 229,
-                "number": 46,
-                "name": "火翼阵·迦楼罗王",
-                "star": 4,
-                "lv": 1,
-                "atk": 208,
-                "hp": 530,
-                "skill_name": "罗汉印",
-                "skill_id": 1,
-                "description": "就像飞蛾扑火，明知不可能，还是要义无反顾的燃烧自己。"
-            },
-            "230": {
-                "id": 230,
-                "number": 46,
-                "name": "众鸟之王·迦楼罗王",
-                "star": 5,
-                "lv": 1,
-                "atk": 280,
-                "hp": 689,
-                "skill_name": "罗汉印",
-                "skill_id": 1,
-                "description": "每个人都有一个大鸟梦，而我的是众鸟之王。"
-            },
-            "231": {
-                "id": 231,
-                "number": 47,
-                "name": "莲伽·紧那罗王",
-                "star": 1,
-                "lv": 1,
-                "atk": 55,
-                "hp": 116,
-                "description": "谁说女孩不能做神将，我就是神将中的神将——八部众！"
-            },
-            "232": {
-                "id": 232,
-                "number": 47,
-                "name": "爱与恨·紧那罗王",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 254,
-                "description": "我无法说服自己爱上一个浪子，对不起，马里千。"
-            },
-            "233": {
-                "id": 233,
-                "number": 47,
-                "name": "天王情·紧那罗王",
-                "star": 3,
-                "lv": 1,
-                "atk": 147,
-                "hp": 376,
-                "skill_name": "八部众",
-                "skill_id": 1,
-                "description": "如果非要做一个选择，就让我死在乔伽的手下吧。"
-            },
-            "234": {
-                "id": 234,
-                "number": 47,
-                "name": "宿命·紧那罗王",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 523,
-                "skill_name": "八部众",
-                "skill_id": 1,
-                "description": "屈服黑暗是他的宿命，执迷不悟是我的宿命。"
-            },
-            "235": {
-                "id": 235,
-                "number": 47,
-                "name": "无双环·紧那罗王",
-                "star": 5,
-                "lv": 1,
-                "atk": 265,
-                "hp": 670,
-                "skill_name": "八部众",
-                "skill_id": 1,
-                "description": "既然无法在一起，那就把我的武器叫做无双环吧。"
-            },
-            "236": {
-                "id": 236,
-                "number": 48,
-                "name": "三眼·杨戬",
-                "star": 1,
-                "lv": 1,
-                "atk": 44,
-                "hp": 133,
-                "description": "他们笑我三只眼，是嫉妒我比他们看的更清楚，可这也是我的烦恼。"
-            },
-            "237": {
-                "id": 237,
-                "number": 48,
-                "name": "啸天·杨戬",
-                "star": 2,
-                "lv": 1,
-                "atk": 89,
-                "hp": 285,
-                "description": "当所有的人，离开我的时候，你劝我要安静从容。谢谢你，哮天犬。"
-            },
-            "238": {
-                "id": 238,
-                "number": 48,
-                "name": "仙·杨戬",
-                "star": 3,
-                "lv": 1,
-                "atk": 138,
-                "hp": 402,
-                "skill_name": "三只眼",
-                "skill_id": 4,
-                "description": "在小庙里当神仙没什么不好，大庙里的神仙很大，心眼却很小。"
-            },
-            "239": {
-                "id": 239,
-                "number": 48,
-                "name": "神·杨戬",
-                "star": 4,
-                "lv": 1,
-                "atk": 180,
-                "hp": 555,
-                "skill_name": "三只眼",
-                "skill_id": 4,
-                "description": "英雄惜英雄只是电影里的桥段，你挑衅我的狗我就跟你拼命！"
-            },
-            "240": {
-                "id": 240,
-                "number": 48,
-                "name": "二郎神·杨戬",
-                "star": 5,
-                "lv": 1,
-                "atk": 250,
-                "hp": 718,
-                "skill_name": "三只眼",
-                "skill_id": 4,
-                "description": "很多年之后，我有个绰号叫“二郎神”，其实我不二。"
-            },
-            "241": {
-                "id": 241,
-                "number": 49,
-                "name": "异人·哪吒",
-                "star": 1,
-                "lv": 1,
-                "atk": 46,
-                "hp": 140,
-                "description": "他们说我爹不喜欢我，是因为我不姓李，可名字是谁起的呢？"
-            },
-            "242": {
-                "id": 242,
-                "number": 49,
-                "name": "小仙·哪吒",
-                "star": 2,
-                "lv": 1,
-                "atk": 92,
-                "hp": 290,
-                "description": "我知道我的兵器看起来有点娘，你如果不服，可以来试试。"
-            },
-            "243": {
-                "id": 243,
-                "number": 49,
-                "name": "神臂·哪吒",
-                "star": 3,
-                "lv": 1,
-                "atk": 141,
-                "hp": 410,
-                "skill_name": "龙骨枪",
-                "skill_id": 1,
-                "description": "我家有一把乾坤弓，拿来咱们一起去打麻雀吧！"
-            },
-            "244": {
-                "id": 244,
-                "number": 49,
-                "name": "擒龙·哪吒",
-                "star": 4,
-                "lv": 1,
-                "atk": 192,
-                "hp": 560,
-                "skill_name": "龙骨枪",
-                "skill_id": 1,
-                "description": "公海里的海鲜是不是谁都可以捕捞？我想捉条龙。"
-            },
-            "245": {
-                "id": 245,
-                "number": 49,
-                "name": "不死·哪吒",
-                "star": 5,
-                "lv": 1,
-                "atk": 262,
-                "hp": 720,
-                "skill_name": "龙骨枪",
-                "skill_id": 1,
-                "description": "那年开始，我忘记了很多事情，师父说，那就好。"
-            },
-            "246": {
-                "id": 246,
-                "number": 50,
-                "name": "灯芯·紫霞",
-                "star": 1,
-                "lv": 1,
-                "atk": 55,
-                "hp": 136,
-                "description": "我本是日月神灯的灯芯，负责白天点亮，觉得有点浪费，就跑出来了。"
-            },
-            "247": {
-                "id": 247,
-                "number": 50,
-                "name": "盘丝大仙·紫霞",
-                "star": 2,
-                "lv": 1,
-                "atk": 91,
-                "hp": 290,
-                "description": "要不是一时性起，我才不会起这么个像蜘蛛精一样的名字呢。"
-            },
-            "248": {
-                "id": 248,
-                "number": 50,
-                "name": "紫青宝剑·紫霞",
-                "star": 3,
-                "lv": 1,
-                "atk": 141,
-                "hp": 410,
-                "skill_name": "月光宝盒",
-                "skill_id": 10,
-                "description": "拔出宝剑就能娶我，你还不明白我那颗恨嫁的心么？"
-            },
-            "249": {
-                "id": 249,
-                "number": 50,
-                "name": "月光宝盒·紫霞",
-                "star": 4,
-                "lv": 1,
-                "atk": 185,
-                "hp": 556,
-                "skill_name": "月光宝盒",
-                "skill_id": 10,
-                "description": "回到过去我可以当什么都没发生，虽然不能拥有，但我可以不去忘记。"
-            },
-            "250": {
-                "id": 250,
-                "number": 50,
-                "name": "七色云彩·紫霞",
-                "star": 5,
-                "lv": 1,
-                "atk": 255,
-                "hp": 725,
-                "skill_name": "月光宝盒",
-                "skill_id": 10,
-                "description": "意中人你驾着七色云彩慢慢飞，小心前面带刺的玫瑰。"
-            },
-            "10000": {
-                "id": 10000,
-                "number": 10000,
-                "name": "恶·鬼谷子",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 1,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10001": {
-                "id": 10001,
-                "number": 10001,
-                "name": "恶·黑无常",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 2,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10002": {
-                "id": 10002,
-                "number": 10002,
-                "name": "恶·白无常",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 3,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10003": {
-                "id": 10003,
-                "number": 10003,
-                "name": "恶·日游神",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 4,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10004": {
-                "id": 10004,
-                "number": 10004,
-                "name": "恶·夜游神",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 5,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10005": {
-                "id": 10005,
-                "number": 10005,
-                "name": "恶·宓妃",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 6,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10006": {
-                "id": 10006,
-                "number": 10006,
-                "name": "恶·张道陵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 1,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10007": {
-                "id": 10007,
-                "number": 10007,
-                "name": "恶·修罗王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 2,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10008": {
-                "id": 10008,
-                "number": 10008,
-                "name": "恶·迦楼罗王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 3,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10009": {
-                "id": 10009,
-                "number": 10009,
-                "name": "恶·紧那罗王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 4,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10010": {
-                "id": 10010,
-                "number": 10010,
-                "name": "恶·紫霞",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 5,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10011": {
-                "id": 10011,
-                "number": 10011,
-                "name": "恶·金蝉子",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 6,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10012": {
-                "id": 10012,
-                "number": 10012,
-                "name": "恶·铁扇公主",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 1,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10013": {
-                "id": 10013,
-                "number": 10013,
-                "name": "恶·沙僧",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 2,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10014": {
-                "id": 10014,
-                "number": 10014,
-                "name": "恶·牛魔王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 3,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10015": {
-                "id": 10015,
-                "number": 10015,
-                "name": "恶·巨灵神",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 4,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10016": {
-                "id": 10016,
-                "number": 10016,
-                "name": "恶·红孩儿",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 5,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10017": {
-                "id": 10017,
-                "number": 10017,
-                "name": "恶·黄飞虎",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 6,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10018": {
-                "id": 10018,
-                "number": 10018,
-                "name": "恶·孙悟空",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 1,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10019": {
-                "id": 10019,
-                "number": 10019,
-                "name": "恶·猪八戒",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 2,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10020": {
-                "id": 10020,
-                "number": 10020,
-                "name": "恶·杨戬",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 3,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10021": {
-                "id": 10021,
-                "number": 10021,
-                "name": "恶·哪吒",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 4,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10022": {
-                "id": 10022,
-                "number": 10022,
-                "name": "恶·赵公明",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 5,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10023": {
-                "id": 10023,
-                "number": 10023,
-                "name": "恶·申公豹",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 6,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10024": {
-                "id": 10024,
-                "number": 10024,
-                "name": "恶·土行孙",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 1,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10025": {
-                "id": 10025,
-                "number": 10025,
-                "name": "恶·法海",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 2,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10026": {
-                "id": 10026,
-                "number": 10026,
-                "name": "恶·雷震子",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 3,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10027": {
-                "id": 10027,
-                "number": 10027,
-                "name": "恶·妲己",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 4,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10028": {
-                "id": 10028,
-                "number": 10028,
-                "name": "恶·姜子牙",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 5,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10029": {
-                "id": 10029,
-                "number": 10029,
-                "name": "恶·李靖",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 6,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10030": {
-                "id": 10030,
-                "number": 10030,
-                "name": "恶·白素贞",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 1,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10031": {
-                "id": 10031,
-                "number": 10031,
-                "name": "恶·小青",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 2,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10032": {
-                "id": 10032,
-                "number": 10032,
-                "name": "恶·何仙姑",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 3,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10033": {
-                "id": 10033,
-                "number": 10033,
-                "name": "恶·吕洞宾",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 4,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10034": {
-                "id": 10034,
-                "number": 10034,
-                "name": "恶·铁拐李",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 5,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10035": {
-                "id": 10035,
-                "number": 10035,
-                "name": "恶·汉钟离",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 6,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10036": {
-                "id": 10036,
-                "number": 10036,
-                "name": "恶·张果老",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 1,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10037": {
-                "id": 10037,
-                "number": 10037,
-                "name": "恶·蓝采和",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 2,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10038": {
-                "id": 10038,
-                "number": 10038,
-                "name": "恶·韩湘子",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 3,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10039": {
-                "id": 10039,
-                "number": 10039,
-                "name": "恶·牛郎",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 4,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10040": {
-                "id": 10040,
-                "number": 10040,
-                "name": "恶·织女",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 5,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10041": {
-                "id": 10041,
-                "number": 10041,
-                "name": "恶·吴刚",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 6,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10042": {
-                "id": 10042,
-                "number": 10042,
-                "name": "恶·刑天",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 1,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10043": {
-                "id": 10043,
-                "number": 10043,
-                "name": "恶·沉香",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 2,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10044": {
-                "id": 10044,
-                "number": 10044,
-                "name": "恶·济公",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 3,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10045": {
-                "id": 10045,
-                "number": 10045,
-                "name": "恶·瑶姬",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 4,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10046": {
-                "id": 10046,
-                "number": 10046,
-                "name": "恶·精卫",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 5,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10047": {
-                "id": 10047,
-                "number": 10047,
-                "name": "恶·后羿",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 6,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10048": {
-                "id": 10048,
-                "number": 10048,
-                "name": "恶·嫦娥",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 1,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10049": {
-                "id": 10049,
-                "number": 10049,
-                "name": "恶·夸父",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 2,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "10050": {
-                "id": 10050,
-                "number": 10050,
-                "name": "恶·后羿",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 2,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20000": {
-                "id": 20000,
-                "number": 20000,
-                "name": "战·牛魔王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 5,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20001": {
-                "id": 20001,
-                "number": 20001,
-                "name": "战·哪吒",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 6,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20002": {
-                "id": 20002,
-                "number": 20002,
-                "name": "战·后羿",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 1,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20003": {
-                "id": 20003,
-                "number": 20003,
-                "name": "战·孙悟空",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 2,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20004": {
-                "id": 20004,
-                "number": 20004,
-                "name": "战·巨灵神",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 3,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20005": {
-                "id": 20005,
-                "number": 20005,
-                "name": "战·铁扇公主",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 4,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20006": {
-                "id": 20006,
-                "number": 20006,
-                "name": "战·红孩儿",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 5,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20007": {
-                "id": 20007,
-                "number": 20007,
-                "name": "战·济公",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 6,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20008": {
-                "id": 20008,
-                "number": 20008,
-                "name": "战·黄飞虎",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 1,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20009": {
-                "id": 20009,
-                "number": 20009,
-                "name": "战·刑天",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 2,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20010": {
-                "id": 20010,
-                "number": 20010,
-                "name": "战·妲己",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 3,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20011": {
-                "id": 20011,
-                "number": 20011,
-                "name": "战·申公豹",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 4,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20012": {
-                "id": 20012,
-                "number": 20012,
-                "name": "战·法海",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 5,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20013": {
-                "id": 20013,
-                "number": 20013,
-                "name": "战·何仙姑",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 6,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20014": {
-                "id": 20014,
-                "number": 20014,
-                "name": "战·土行孙",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 1,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20015": {
-                "id": 20015,
-                "number": 20015,
-                "name": "战·白素贞",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 2,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20016": {
-                "id": 20016,
-                "number": 20016,
-                "name": "战·修罗王",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 3,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20017": {
-                "id": 20017,
-                "number": 20017,
-                "name": "战·吕洞宾",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 4,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20018": {
-                "id": 20018,
-                "number": 20018,
-                "name": "战·鬼谷子",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 5,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20019": {
-                "id": 20019,
-                "number": 20019,
-                "name": "战·日游神",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 6,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20020": {
-                "id": 20020,
-                "number": 20020,
-                "name": "战·夸父",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 6,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30000": {
-                "id": 30000,
-                "number": 30000,
-                "name": "经验元灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 1,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            }
-        }
-    },
-    "elixir": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "elixir": 5,
-                "atk": 1,
-                "hp": 3,
-                "star3_max": 20000,
-                "star4_max": 50000,
-                "star5_max": 10000
-            }
-        }
-    },
-    "factors": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "base": 1.1,
-                "factor": 1
-            },
-            "2": {
-                "id": 2,
-                "lv": 2,
-                "base": 1.099,
-                "factor": 1.1
-            },
-            "3": {
-                "id": 3,
-                "lv": 3,
-                "base": 1.098,
-                "factor": 1.209
-            },
-            "4": {
-                "id": 4,
-                "lv": 4,
-                "base": 1.097,
-                "factor": 1.327
-            },
-            "5": {
-                "id": 5,
-                "lv": 5,
-                "base": 1.096,
-                "factor": 1.456
-            },
-            "6": {
-                "id": 6,
-                "lv": 6,
-                "base": 1.095,
-                "factor": 1.596
-            },
-            "7": {
-                "id": 7,
-                "lv": 7,
-                "base": 1.094,
-                "factor": 1.748
-            },
-            "8": {
-                "id": 8,
-                "lv": 8,
-                "base": 1.093,
-                "factor": 1.912
-            },
-            "9": {
-                "id": 9,
-                "lv": 9,
-                "base": 1.092,
-                "factor": 2.09
-            },
-            "10": {
-                "id": 10,
-                "lv": 10,
-                "base": 1.091,
-                "factor": 2.282
-            },
-            "11": {
-                "id": 11,
-                "lv": 11,
-                "base": 1.09,
-                "factor": 2.49
-            },
-            "12": {
-                "id": 12,
-                "lv": 12,
-                "base": 1.089,
-                "factor": 2.714
-            },
-            "13": {
-                "id": 13,
-                "lv": 13,
-                "base": 1.088,
-                "factor": 2.956
-            },
-            "14": {
-                "id": 14,
-                "lv": 14,
-                "base": 1.087,
-                "factor": 3.216
-            },
-            "15": {
-                "id": 15,
-                "lv": 15,
-                "base": 1.086,
-                "factor": 3.496
-            },
-            "16": {
-                "id": 16,
-                "lv": 16,
-                "base": 1.085,
-                "factor": 3.797
-            },
-            "17": {
-                "id": 17,
-                "lv": 17,
-                "base": 1.084,
-                "factor": 4.12
-            },
-            "18": {
-                "id": 18,
-                "lv": 18,
-                "base": 1.083,
-                "factor": 4.466
-            },
-            "19": {
-                "id": 19,
-                "lv": 19,
-                "base": 1.082,
-                "factor": 4.837
-            },
-            "20": {
-                "id": 20,
-                "lv": 20,
-                "base": 1.081,
-                "factor": 5.234
-            },
-            "21": {
-                "id": 21,
-                "lv": 21,
-                "base": 1.08,
-                "factor": 5.658
-            },
-            "22": {
-                "id": 22,
-                "lv": 22,
-                "base": 1.079,
-                "factor": 6.111
-            },
-            "23": {
-                "id": 23,
-                "lv": 23,
-                "base": 1.078,
-                "factor": 6.594
-            },
-            "24": {
-                "id": 24,
-                "lv": 24,
-                "base": 1.077,
-                "factor": 7.108
-            },
-            "25": {
-                "id": 25,
-                "lv": 25,
-                "base": 1.076,
-                "factor": 7.655
-            },
-            "26": {
-                "id": 26,
-                "lv": 26,
-                "base": 1.075,
-                "factor": 8.237
-            },
-            "27": {
-                "id": 27,
-                "lv": 27,
-                "base": 1.074,
-                "factor": 8.855
-            },
-            "28": {
-                "id": 28,
-                "lv": 28,
-                "base": 1.073,
-                "factor": 9.51
-            },
-            "29": {
-                "id": 29,
-                "lv": 29,
-                "base": 1.072,
-                "factor": 10.204
-            },
-            "30": {
-                "id": 30,
-                "lv": 30,
-                "base": 1.071,
-                "factor": 10.939
-            },
-            "31": {
-                "id": 31,
-                "lv": 31,
-                "base": 1.07,
-                "factor": 11.716
-            },
-            "32": {
-                "id": 32,
-                "lv": 32,
-                "base": 1.069,
-                "factor": 12.536
-            },
-            "33": {
-                "id": 33,
-                "lv": 33,
-                "base": 1.068,
-                "factor": 13.401
-            },
-            "34": {
-                "id": 34,
-                "lv": 34,
-                "base": 1.067,
-                "factor": 14.312
-            },
-            "35": {
-                "id": 35,
-                "lv": 35,
-                "base": 1.066,
-                "factor": 15.271
-            },
-            "36": {
-                "id": 36,
-                "lv": 36,
-                "base": 1.065,
-                "factor": 16.279
-            },
-            "37": {
-                "id": 37,
-                "lv": 37,
-                "base": 1.064,
-                "factor": 17.337
-            },
-            "38": {
-                "id": 38,
-                "lv": 38,
-                "base": 1.063,
-                "factor": 18.447
-            },
-            "39": {
-                "id": 39,
-                "lv": 39,
-                "base": 1.062,
-                "factor": 19.609
-            },
-            "40": {
-                "id": 40,
-                "lv": 40,
-                "base": 1.061,
-                "factor": 20.825
-            },
-            "41": {
-                "id": 41,
-                "lv": 41,
-                "base": 1.06,
-                "factor": 22.095
-            },
-            "42": {
-                "id": 42,
-                "lv": 42,
-                "base": 1.059,
-                "factor": 23.421
-            },
-            "43": {
-                "id": 43,
-                "lv": 43,
-                "base": 1.058,
-                "factor": 24.803
-            },
-            "44": {
-                "id": 44,
-                "lv": 44,
-                "base": 1.057,
-                "factor": 26.242
-            },
-            "45": {
-                "id": 45,
-                "lv": 45,
-                "base": 1.05600000000001,
-                "factor": 27.738
-            },
-            "46": {
-                "id": 46,
-                "lv": 46,
-                "base": 1.05500000000001,
-                "factor": 29.291
-            },
-            "47": {
-                "id": 47,
-                "lv": 47,
-                "base": 1.05400000000001,
-                "factor": 30.902
-            },
-            "48": {
-                "id": 48,
-                "lv": 48,
-                "base": 1.05300000000001,
-                "factor": 32.571
-            },
-            "49": {
-                "id": 49,
-                "lv": 49,
-                "base": 1.05200000000001,
-                "factor": 34.297
-            },
-            "50": {
-                "id": 50,
-                "lv": 50,
-                "base": 1.05100000000001,
-                "factor": 36.08
-            },
-            "51": {
-                "id": 51,
-                "lv": 51,
-                "base": 1.05000000000001,
-                "factor": 37.92
-            },
-            "52": {
-                "id": 52,
-                "lv": 52,
-                "base": 1.04900000000001,
-                "factor": 39.816
-            },
-            "53": {
-                "id": 53,
-                "lv": 53,
-                "base": 1.04800000000001,
-                "factor": 41.767
-            },
-            "54": {
-                "id": 54,
-                "lv": 54,
-                "base": 1.04700000000001,
-                "factor": 43.772
-            },
-            "55": {
-                "id": 55,
-                "lv": 55,
-                "base": 1.04600000000001,
-                "factor": 45.829
-            },
-            "56": {
-                "id": 56,
-                "lv": 56,
-                "base": 1.04500000000001,
-                "factor": 47.937
-            },
-            "57": {
-                "id": 57,
-                "lv": 57,
-                "base": 1.04400000000001,
-                "factor": 50.094
-            },
-            "58": {
-                "id": 58,
-                "lv": 58,
-                "base": 1.04300000000001,
-                "factor": 52.298
-            },
-            "59": {
-                "id": 59,
-                "lv": 59,
-                "base": 1.04200000000001,
-                "factor": 54.547
-            },
-            "60": {
-                "id": 60,
-                "lv": 60,
-                "base": 1.04100000000001,
-                "factor": 56.838
-            }
-        }
-    },
-    "star_upgrade": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star": 1,
-                "money_need": 3000,
-                "rate_per_card": 7,
-                "max_num": 15
-            },
-            "2": {
-                "id": 2,
-                "star": 2,
-                "money_need": 5000,
-                "rate_per_card": 6,
-                "max_num": 17
-            },
-            "3": {
-                "id": 3,
-                "star": 3,
-                "money_need": 10000,
-                "rate_per_card": 5,
-                "max_num": 20
-            },
-            "4": {
-                "id": 4,
-                "star": 4,
-                "money_need": 20000,
-                "rate_per_card": 3,
-                "max_num": 34
-            }
-        }
-    },
-    "scope": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "default",
-                "value": 1,
-                "desc": "默认出手顺序"
-            },
-            "2": {
-                "id": 2,
-                "name": "crosswaysFront",
-                "value": 2,
-                "desc": "前排所有"
-            },
-            "3": {
-                "id": 3,
-                "name": "crosswaysBack",
-                "value": 3,
-                "desc": "后排所有"
-            },
-            "4": {
-                "id": 4,
-                "name": "lengthways",
-                "value": 4,
-                "desc": "纵向所有"
-            },
-            "5": {
-                "id": 5,
-                "name": "random",
-                "value": 5,
-                "desc": "随机卡牌"
-            },
-            "6": {
-                "id": 6,
-                "name": "all",
-                "value": 6,
-                "desc": "所有卡牌"
-            },
-            "7": {
-                "id": 7,
-                "name": "hp_min",
-                "value": 7,
-                "desc": "血量最低卡牌"
-            }
-        }
-    },
-    "skill_type": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "single_fight",
-                "chinese": "单体攻击"
-            },
-            "2": {
-                "id": 2,
-                "name": "aoe",
-                "chinese": "群体攻击"
-            },
-            "3": {
-                "id": 3,
-                "name": "single_heal",
-                "chinese": "单体治疗"
-            },
-            "4": {
-                "id": 4,
-                "name": "mult_heal",
-                "chinese": "群体治疗"
-            }
-        }
-    },
-    "skill_upgrade": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": 3000,
-                "star4": 5000,
-                "star5": 10000
-            },
-            "2": {
-                "id": 2,
-                "star3": 6000,
-                "star4": 15000,
-                "star5": 30000
-            },
-            "3": {
-                "id": 3,
-                "star3": 9000,
-                "star4": 30000,
-                "star5": 60000
-            },
-            "4": {
-                "id": 4,
-                "star3": 12000,
-                "star4": 80000,
-                "star5": 120000
-            },
-            "5": {
-                "id": 5,
-                "star3": 15000,
-                "star4": 120000,
-                "star5": 200000
-            }
-        }
-    },
-    "skills": {
-        "colComment": {
-            "type": {
-                "table": "技能类型表",
-                "key_index": "id",
-                "value_index": "name",
-                "withPound": false
-            },
-            "scope": {
-                "table": "卡牌范围表",
-                "key_index": "id",
-                "value_index": "name",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "1": {
-                "id": 1,
-                "description": "单体攻击，对敌方卡牌造成大量伤害。",
-                "type": 1,
-                "scope": 1,
-                "star3": "130,5",
-                "rate3": 30,
-                "star4": "140,5",
-                "rate4": 35,
-                "star5": "150,5",
-                "rate5": 40
-            },
-            "2": {
-                "id": 2,
-                "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 2,
-                "star3": "35,5",
-                "rate3": 30,
-                "star4": "45,5",
-                "rate4": 35,
-                "star5": "55,5",
-                "rate5": 40
-            },
-            "3": {
-                "id": 3,
-                "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 3,
-                "star3": "35,5",
-                "rate3": 30,
-                "star4": "45,5",
-                "rate4": 35,
-                "star5": "55,5",
-                "rate5": 40
-            },
-            "4": {
-                "id": 4,
-                "description": "纵向攻击，对敌方纵列每张卡牌造成一定伤害。。",
-                "type": 2,
-                "scope": 4,
-                "star3": "45,5",
-                "rate3": 30,
-                "star4": "55,5",
-                "rate4": 35,
-                "star5": "65,5",
-                "rate5": 40
-            },
-            "5": {
-                "id": 5,
-                "description": "随机攻击敌方2张卡牌，对每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 5,
-                "target_num": 2,
-                "star3": "45,5",
-                "rate3": 30,
-                "star4": "55,5",
-                "rate4": 35,
-                "star5": "65,5",
-                "rate5": 40
-            },
-            "6": {
-                "id": 6,
-                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 5,
-                "target_num": 3,
-                "star3": "45,5",
-                "rate3": 30,
-                "star4": "55,5",
-                "rate4": 35,
-                "star5": "65,5",
-                "rate5": 40
-            },
-            "7": {
-                "id": 7,
-                "description": "为当前血量最低的上阵卡牌恢复生命值。",
-                "type": 3,
-                "scope": 7,
-                "star3": "50,5",
-                "rate3": 30,
-                "star4": "60,5",
-                "rate4": 35,
-                "star5": "70,5",
-                "rate5": 40
-            },
-            "8": {
-                "id": 8,
-                "description": "为前排每张卡牌恢复生命值。",
-                "type": 4,
-                "scope": 2,
-                "star3": "30,5",
-                "rate3": 30,
-                "star4": "40,5",
-                "rate4": 35,
-                "star5": "50,5",
-                "rate5": 40
-            },
-            "9": {
-                "id": 9,
-                "description": "为后排每张卡牌恢复生命值。",
-                "type": 4,
-                "scope": 3,
-                "star3": "30,5",
-                "rate3": 30,
-                "star4": "40,5",
-                "rate4": 35,
-                "star5": "50,5",
-                "rate5": 40
-            },
-            "10": {
-                "id": 10,
-                "description": "为当前上阵的所有卡牌恢复生命值。",
-                "type": 4,
-                "scope": 6,
-                "star3": "15,5",
-                "rate3": 30,
-                "star4": "25,5",
-                "rate4": 35,
-                "star5": "35,5",
-                "rate5": 40
-            }
-        }
-    },
-    "jiacheng": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rnking": "1--10",
-                "percent": 100
-            },
-            "2": {
-                "id": 2,
-                "rnking": "11-50",
-                "percent": 90
-            },
-            "3": {
-                "id": 3,
-                "rnking": "51-100",
-                "percent": 80
-            },
-            "4": {
-                "id": 4,
-                "rnking": "101-200",
-                "percent": 70
-            },
-            "5": {
-                "id": 5,
-                "rnking": "201-500",
-                "percent": 60
-            },
-            "6": {
-                "id": 6,
-                "rnking": "501-1000",
-                "percent": 50
-            },
-            "7": {
-                "id": 7,
-                "rnking": "1001-3000",
-                "percent": 40
-            },
-            "8": {
-                "id": 8,
-                "rnking": "3001--5000",
-                "percent": 30
-            },
-            "9": {
-                "id": 9,
-                "rnking": "5001-10000",
-                "percent": 20
-            },
-            "10": {
-                "id": 10,
-                "rnking": "10001---",
-                "percent": 10
-            }
-        }
-    },
-    "rank": {
-        "colComment": {},
-        "rows": {
-            "20": {
-                "id": 20,
-                "lv": 20,
-                "win_exp": 1,
-                "win_money": 50,
-                "win_elixir": 5,
-                "lose_exp": 1,
-                "lose_money": 25,
-                "lose_elixir": 3
-            },
-            "21": {
-                "id": 21,
-                "lv": 21,
-                "win_exp": 1,
-                "win_money": 60,
-                "win_elixir": 7,
-                "lose_exp": 1,
-                "lose_money": 30,
-                "lose_elixir": 4
-            },
-            "22": {
-                "id": 22,
-                "lv": 22,
-                "win_exp": 1,
-                "win_money": 70,
-                "win_elixir": 9,
-                "lose_exp": 1,
-                "lose_money": 35,
-                "lose_elixir": 5
-            },
-            "23": {
-                "id": 23,
-                "lv": 23,
-                "win_exp": 1,
-                "win_money": 80,
-                "win_elixir": 11,
-                "lose_exp": 1,
-                "lose_money": 40,
-                "lose_elixir": 6
-            },
-            "24": {
-                "id": 24,
-                "lv": 24,
-                "win_exp": 1,
-                "win_money": 90,
-                "win_elixir": 13,
-                "lose_exp": 1,
-                "lose_money": 45,
-                "lose_elixir": 7
-            },
-            "25": {
-                "id": 25,
-                "lv": 25,
-                "win_exp": 2,
-                "win_money": 100,
-                "win_elixir": 15,
-                "lose_exp": 1,
-                "lose_money": 50,
-                "lose_elixir": 8
-            },
-            "26": {
-                "id": 26,
-                "lv": 26,
-                "win_exp": 2,
-                "win_money": 110,
-                "win_elixir": 17,
-                "lose_exp": 1,
-                "lose_money": 55,
-                "lose_elixir": 9
-            },
-            "27": {
-                "id": 27,
-                "lv": 27,
-                "win_exp": 2,
-                "win_money": 120,
-                "win_elixir": 19,
-                "lose_exp": 1,
-                "lose_money": 60,
-                "lose_elixir": 10
-            },
-            "28": {
-                "id": 28,
-                "lv": 28,
-                "win_exp": 2,
-                "win_money": 130,
-                "win_elixir": 21,
-                "lose_exp": 1,
-                "lose_money": 65,
-                "lose_elixir": 11
-            },
-            "29": {
-                "id": 29,
-                "lv": 29,
-                "win_exp": 2,
-                "win_money": 140,
-                "win_elixir": 23,
-                "lose_exp": 1,
-                "lose_money": 70,
-                "lose_elixir": 12
-            },
-            "30": {
-                "id": 30,
-                "lv": 30,
-                "win_exp": 2,
-                "win_money": 150,
-                "win_elixir": 25,
-                "lose_exp": 1,
-                "lose_money": 75,
-                "lose_elixir": 13
-            },
-            "31": {
-                "id": 31,
-                "lv": 31,
-                "win_exp": 3,
-                "win_money": 160,
-                "win_elixir": 27,
-                "lose_exp": 1,
-                "lose_money": 80,
-                "lose_elixir": 14
-            },
-            "32": {
-                "id": 32,
-                "lv": 32,
-                "win_exp": 3,
-                "win_money": 170,
-                "win_elixir": 29,
-                "lose_exp": 1,
-                "lose_money": 85,
-                "lose_elixir": 15
-            },
-            "33": {
-                "id": 33,
-                "lv": 33,
-                "win_exp": 3,
-                "win_money": 180,
-                "win_elixir": 31,
-                "lose_exp": 2,
-                "lose_money": 90,
-                "lose_elixir": 16
-            },
-            "34": {
-                "id": 34,
-                "lv": 34,
-                "win_exp": 4,
-                "win_money": 190,
-                "win_elixir": 33,
-                "lose_exp": 2,
-                "lose_money": 95,
-                "lose_elixir": 17
-            },
-            "35": {
-                "id": 35,
-                "lv": 35,
-                "win_exp": 4,
-                "win_money": 200,
-                "win_elixir": 35,
-                "lose_exp": 2,
-                "lose_money": 100,
-                "lose_elixir": 18
-            },
-            "36": {
-                "id": 36,
-                "lv": 36,
-                "win_exp": 4,
-                "win_money": 210,
-                "win_elixir": 37,
-                "lose_exp": 2,
-                "lose_money": 105,
-                "lose_elixir": 19
-            },
-            "37": {
-                "id": 37,
-                "lv": 37,
-                "win_exp": 5,
-                "win_money": 220,
-                "win_elixir": 39,
-                "lose_exp": 2,
-                "lose_money": 110,
-                "lose_elixir": 20
-            },
-            "38": {
-                "id": 38,
-                "lv": 38,
-                "win_exp": 5,
-                "win_money": 230,
-                "win_elixir": 41,
-                "lose_exp": 3,
-                "lose_money": 115,
-                "lose_elixir": 21
-            },
-            "39": {
-                "id": 39,
-                "lv": 39,
-                "win_exp": 6,
-                "win_money": 240,
-                "win_elixir": 43,
-                "lose_exp": 3,
-                "lose_money": 120,
-                "lose_elixir": 22
-            },
-            "40": {
-                "id": 40,
-                "lv": 40,
-                "win_exp": 6,
-                "win_money": 250,
-                "win_elixir": 45,
-                "lose_exp": 3,
-                "lose_money": 125,
-                "lose_elixir": 23
-            },
-            "41": {
-                "id": 41,
-                "lv": 41,
-                "win_exp": 7,
-                "win_money": 260,
-                "win_elixir": 47,
-                "lose_exp": 3,
-                "lose_money": 130,
-                "lose_elixir": 24
-            },
-            "42": {
-                "id": 42,
-                "lv": 42,
-                "win_exp": 8,
-                "win_money": 270,
-                "win_elixir": 49,
-                "lose_exp": 4,
-                "lose_money": 135,
-                "lose_elixir": 25
-            },
-            "43": {
-                "id": 43,
-                "lv": 43,
-                "win_exp": 8,
-                "win_money": 280,
-                "win_elixir": 51,
-                "lose_exp": 4,
-                "lose_money": 140,
-                "lose_elixir": 26
-            },
-            "44": {
-                "id": 44,
-                "lv": 44,
-                "win_exp": 9,
-                "win_money": 290,
-                "win_elixir": 53,
-                "lose_exp": 5,
-                "lose_money": 145,
-                "lose_elixir": 27
-            },
-            "45": {
-                "id": 45,
-                "lv": 45,
-                "win_exp": 10,
-                "win_money": 300,
-                "win_elixir": 55,
-                "lose_exp": 5,
-                "lose_money": 150,
-                "lose_elixir": 28
-            },
-            "46": {
-                "id": 46,
-                "lv": 46,
-                "win_exp": 11,
-                "win_money": 310,
-                "win_elixir": 57,
-                "lose_exp": 6,
-                "lose_money": 155,
-                "lose_elixir": 29
-            },
-            "47": {
-                "id": 47,
-                "lv": 47,
-                "win_exp": 12,
-                "win_money": 320,
-                "win_elixir": 59,
-                "lose_exp": 6,
-                "lose_money": 160,
-                "lose_elixir": 30
-            },
-            "48": {
-                "id": 48,
-                "lv": 48,
-                "win_exp": 13,
-                "win_money": 330,
-                "win_elixir": 61,
-                "lose_exp": 7,
-                "lose_money": 165,
-                "lose_elixir": 31
-            },
-            "49": {
-                "id": 49,
-                "lv": 49,
-                "win_exp": 15,
-                "win_money": 340,
-                "win_elixir": 63,
-                "lose_exp": 7,
-                "lose_money": 170,
-                "lose_elixir": 32
-            },
-            "50": {
-                "id": 50,
-                "lv": 50,
-                "win_exp": 16,
-                "win_money": 350,
-                "win_elixir": 65,
-                "lose_exp": 8,
-                "lose_money": 175,
-                "lose_elixir": 33
-            },
-            "51": {
-                "id": 51,
-                "lv": 51,
-                "win_exp": 18,
-                "win_money": 360,
-                "win_elixir": 67,
-                "lose_exp": 9,
-                "lose_money": 180,
-                "lose_elixir": 34
-            },
-            "52": {
-                "id": 52,
-                "lv": 52,
-                "win_exp": 20,
-                "win_money": 370,
-                "win_elixir": 69,
-                "lose_exp": 10,
-                "lose_money": 185,
-                "lose_elixir": 35
-            },
-            "53": {
-                "id": 53,
-                "lv": 53,
-                "win_exp": 22,
-                "win_money": 380,
-                "win_elixir": 71,
-                "lose_exp": 11,
-                "lose_money": 190,
-                "lose_elixir": 36
-            },
-            "54": {
-                "id": 54,
-                "lv": 54,
-                "win_exp": 24,
-                "win_money": 390,
-                "win_elixir": 73,
-                "lose_exp": 12,
-                "lose_money": 195,
-                "lose_elixir": 37
-            },
-            "55": {
-                "id": 55,
-                "lv": 55,
-                "win_exp": 26,
-                "win_money": 400,
-                "win_elixir": 75,
-                "lose_exp": 13,
-                "lose_money": 200,
-                "lose_elixir": 38
-            },
-            "56": {
-                "id": 56,
-                "lv": 56,
-                "win_exp": 29,
-                "win_money": 410,
-                "win_elixir": 77,
-                "lose_exp": 14,
-                "lose_money": 205,
-                "lose_elixir": 39
-            },
-            "57": {
-                "id": 57,
-                "lv": 57,
-                "win_exp": 32,
-                "win_money": 420,
-                "win_elixir": 79,
-                "lose_exp": 16,
-                "lose_money": 210,
-                "lose_elixir": 40
-            },
-            "58": {
-                "id": 58,
-                "lv": 58,
-                "win_exp": 35,
-                "win_money": 430,
-                "win_elixir": 81,
-                "lose_exp": 17,
-                "lose_money": 215,
-                "lose_elixir": 41
-            },
-            "59": {
-                "id": 59,
-                "lv": 59,
-                "win_exp": 38,
-                "win_money": 440,
-                "win_elixir": 83,
-                "lose_exp": 19,
-                "lose_money": 220,
-                "lose_elixir": 42
-            },
-            "60": {
-                "id": 60,
-                "lv": 60,
-                "win_exp": 42,
-                "win_money": 450,
-                "win_elixir": 85,
-                "lose_exp": 21,
-                "lose_money": 225,
-                "lose_elixir": 43
-            },
-            "61": {
-                "id": 61,
-                "lv": 61,
-                "win_exp": 47,
-                "win_money": 460,
-                "win_elixir": 87,
-                "lose_exp": 23,
-                "lose_money": 230,
-                "lose_elixir": 44
-            },
-            "62": {
-                "id": 62,
-                "lv": 62,
-                "win_exp": 51,
-                "win_money": 470,
-                "win_elixir": 89,
-                "lose_exp": 26,
-                "lose_money": 235,
-                "lose_elixir": 45
-            },
-            "63": {
-                "id": 63,
-                "lv": 63,
-                "win_exp": 56,
-                "win_money": 480,
-                "win_elixir": 91,
-                "lose_exp": 28,
-                "lose_money": 240,
-                "lose_elixir": 46
-            },
-            "64": {
-                "id": 64,
-                "lv": 64,
-                "win_exp": 62,
-                "win_money": 490,
-                "win_elixir": 93,
-                "lose_exp": 31,
-                "lose_money": 245,
-                "lose_elixir": 47
-            },
-            "65": {
-                "id": 65,
-                "lv": 65,
-                "win_exp": 68,
-                "win_money": 500,
-                "win_elixir": 95,
-                "lose_exp": 34,
-                "lose_money": 250,
-                "lose_elixir": 48
-            },
-            "66": {
-                "id": 66,
-                "lv": 66,
-                "win_exp": 75,
-                "win_money": 510,
-                "win_elixir": 97,
-                "lose_exp": 37,
-                "lose_money": 255,
-                "lose_elixir": 49
-            },
-            "67": {
-                "id": 67,
-                "lv": 67,
-                "win_exp": 82,
-                "win_money": 520,
-                "win_elixir": 99,
-                "lose_exp": 41,
-                "lose_money": 260,
-                "lose_elixir": 50
-            },
-            "68": {
-                "id": 68,
-                "lv": 68,
-                "win_exp": 91,
-                "win_money": 530,
-                "win_elixir": 101,
-                "lose_exp": 45,
-                "lose_money": 265,
-                "lose_elixir": 51
-            },
-            "69": {
-                "id": 69,
-                "lv": 69,
-                "win_exp": 100,
-                "win_money": 540,
-                "win_elixir": 103,
-                "lose_exp": 50,
-                "lose_money": 270,
-                "lose_elixir": 52
-            },
-            "70": {
-                "id": 70,
-                "lv": 70,
-                "win_exp": 110,
-                "win_money": 550,
-                "win_elixir": 105,
-                "lose_exp": 55,
-                "lose_money": 275,
-                "lose_elixir": 53
-            },
-            "71": {
-                "id": 71,
-                "lv": 71,
-                "win_exp": 121,
-                "win_money": 560,
-                "win_elixir": 107,
-                "lose_exp": 60,
-                "lose_money": 280,
-                "lose_elixir": 54
-            },
-            "72": {
-                "id": 72,
-                "lv": 72,
-                "win_exp": 133,
-                "win_money": 570,
-                "win_elixir": 109,
-                "lose_exp": 66,
-                "lose_money": 285,
-                "lose_elixir": 55
-            },
-            "73": {
-                "id": 73,
-                "lv": 73,
-                "win_exp": 146,
-                "win_money": 580,
-                "win_elixir": 111,
-                "lose_exp": 73,
-                "lose_money": 290,
-                "lose_elixir": 56
-            },
-            "74": {
-                "id": 74,
-                "lv": 74,
-                "win_exp": 161,
-                "win_money": 590,
-                "win_elixir": 113,
-                "lose_exp": 80,
-                "lose_money": 295,
-                "lose_elixir": 57
-            },
-            "75": {
-                "id": 75,
-                "lv": 75,
-                "win_exp": 177,
-                "win_money": 600,
-                "win_elixir": 115,
-                "lose_exp": 88,
-                "lose_money": 300,
-                "lose_elixir": 58
-            },
-            "76": {
-                "id": 76,
-                "lv": 76,
-                "win_exp": 194,
-                "win_money": 610,
-                "win_elixir": 117,
-                "lose_exp": 97,
-                "lose_money": 305,
-                "lose_elixir": 59
-            },
-            "77": {
-                "id": 77,
-                "lv": 77,
-                "win_exp": 214,
-                "win_money": 620,
-                "win_elixir": 119,
-                "lose_exp": 107,
-                "lose_money": 310,
-                "lose_elixir": 60
-            },
-            "78": {
-                "id": 78,
-                "lv": 78,
-                "win_exp": 235,
-                "win_money": 630,
-                "win_elixir": 121,
-                "lose_exp": 118,
-                "lose_money": 315,
-                "lose_elixir": 61
-            },
-            "79": {
-                "id": 79,
-                "lv": 79,
-                "win_exp": 259,
-                "win_money": 640,
-                "win_elixir": 123,
-                "lose_exp": 129,
-                "lose_money": 320,
-                "lose_elixir": 62
-            },
-            "80": {
-                "id": 80,
-                "lv": 80,
-                "win_exp": 284,
-                "win_money": 650,
-                "win_elixir": 125,
-                "lose_exp": 142,
-                "lose_money": 325,
-                "lose_elixir": 63
-            },
-            "81": {
-                "id": 81,
-                "lv": 81,
-                "win_exp": 313,
-                "win_money": 660,
-                "win_elixir": 127,
-                "lose_exp": 156,
-                "lose_money": 330,
-                "lose_elixir": 64
-            },
-            "82": {
-                "id": 82,
-                "lv": 82,
-                "win_exp": 344,
-                "win_money": 670,
-                "win_elixir": 129,
-                "lose_exp": 172,
-                "lose_money": 335,
-                "lose_elixir": 65
-            },
-            "83": {
-                "id": 83,
-                "lv": 83,
-                "win_exp": 379,
-                "win_money": 680,
-                "win_elixir": 131,
-                "lose_exp": 189,
-                "lose_money": 340,
-                "lose_elixir": 66
-            },
-            "84": {
-                "id": 84,
-                "lv": 84,
-                "win_exp": 416,
-                "win_money": 690,
-                "win_elixir": 133,
-                "lose_exp": 208,
-                "lose_money": 345,
-                "lose_elixir": 67
-            },
-            "85": {
-                "id": 85,
-                "lv": 85,
-                "win_exp": 458,
-                "win_money": 700,
-                "win_elixir": 135,
-                "lose_exp": 229,
-                "lose_money": 350,
-                "lose_elixir": 68
-            },
-            "86": {
-                "id": 86,
-                "lv": 86,
-                "win_exp": 504,
-                "win_money": 710,
-                "win_elixir": 137,
-                "lose_exp": 252,
-                "lose_money": 355,
-                "lose_elixir": 69
-            },
-            "87": {
-                "id": 87,
-                "lv": 87,
-                "win_exp": 554,
-                "win_money": 720,
-                "win_elixir": 139,
-                "lose_exp": 277,
-                "lose_money": 360,
-                "lose_elixir": 70
-            },
-            "88": {
-                "id": 88,
-                "lv": 88,
-                "win_exp": 610,
-                "win_money": 730,
-                "win_elixir": 141,
-                "lose_exp": 305,
-                "lose_money": 365,
-                "lose_elixir": 71
-            },
-            "89": {
-                "id": 89,
-                "lv": 89,
-                "win_exp": 671,
-                "win_money": 740,
-                "win_elixir": 143,
-                "lose_exp": 335,
-                "lose_money": 370,
-                "lose_elixir": 72
-            },
-            "90": {
-                "id": 90,
-                "lv": 90,
-                "win_exp": 738,
-                "win_money": 750,
-                "win_elixir": 145,
-                "lose_exp": 369,
-                "lose_money": 375,
-                "lose_elixir": 73
-            },
-            "91": {
-                "id": 91,
-                "lv": 91,
-                "win_exp": 811,
-                "win_money": 760,
-                "win_elixir": 147,
-                "lose_exp": 406,
-                "lose_money": 380,
-                "lose_elixir": 74
-            },
-            "92": {
-                "id": 92,
-                "lv": 92,
-                "win_exp": 893,
-                "win_money": 770,
-                "win_elixir": 149,
-                "lose_exp": 446,
-                "lose_money": 385,
-                "lose_elixir": 75
-            },
-            "93": {
-                "id": 93,
-                "lv": 93,
-                "win_exp": 982,
-                "win_money": 780,
-                "win_elixir": 151,
-                "lose_exp": 491,
-                "lose_money": 390,
-                "lose_elixir": 76
-            },
-            "94": {
-                "id": 94,
-                "lv": 94,
-                "win_exp": 1080,
-                "win_money": 790,
-                "win_elixir": 153,
-                "lose_exp": 540,
-                "lose_money": 395,
-                "lose_elixir": 77
-            },
-            "95": {
-                "id": 95,
-                "lv": 95,
-                "win_exp": 1188,
-                "win_money": 800,
-                "win_elixir": 155,
-                "lose_exp": 594,
-                "lose_money": 400,
-                "lose_elixir": 78
-            },
-            "96": {
-                "id": 96,
-                "lv": 96,
-                "win_exp": 1307,
-                "win_money": 810,
-                "win_elixir": 157,
-                "lose_exp": 653,
-                "lose_money": 405,
-                "lose_elixir": 79
-            },
-            "97": {
-                "id": 97,
-                "lv": 97,
-                "win_exp": 1438,
-                "win_money": 820,
-                "win_elixir": 159,
-                "lose_exp": 719,
-                "lose_money": 410,
-                "lose_elixir": 80
-            },
-            "98": {
-                "id": 98,
-                "lv": 98,
-                "win_exp": 1581,
-                "win_money": 830,
-                "win_elixir": 161,
-                "lose_exp": 791,
-                "lose_money": 415,
-                "lose_elixir": 81
-            },
-            "99": {
-                "id": 99,
-                "lv": 99,
-                "win_exp": 1739,
-                "win_money": 840,
-                "win_elixir": 163,
-                "lose_exp": 870,
-                "lose_money": 420,
-                "lose_elixir": 82
-            },
-            "100": {
-                "id": 100,
-                "lv": 100,
-                "win_exp": 0,
-                "win_money": 850,
-                "win_elixir": 165,
-                "lose_exp": 0,
-                "lose_money": 425,
-                "lose_elixir": 83
             }
         }
     }

@@ -14,6 +14,7 @@
 
 var PassLayer = cc.Layer.extend({
     _top: 0,
+    _isWin: null,
     _spirit: null,
     _towerSprite: null,
     _topLabel: null,
@@ -23,6 +24,7 @@ var PassLayer = cc.Layer.extend({
     _mysticalItem: null,
     _scrollView: null,
     _element: {},
+    _blackHoleSprite: [],
 
     onEnter: function () {
         cc.log("PassLayer onEnter");
@@ -46,6 +48,25 @@ var PassLayer = cc.Layer.extend({
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
 
+        this._mysticalItem = cc.MenuItemImage.create(
+            main_scene_image.button43,
+            main_scene_image.button43,
+            this._onClickMystical,
+            this
+        );
+        this._mysticalItem.setPosition(cc.p(580, 610));
+        this._mysticalItem.setVisible(false);
+
+        var mysticalItemMenu = cc.Menu.create(this._mysticalItem);
+        mysticalItemMenu.setPosition(cc.p(0, 0));
+        this.addChild(mysticalItemMenu);
+
+        for (var i = 0; i < 6; ++i) {
+            this._blackHoleSprite[i] = cc.Sprite.create(main_scene_image["icon" + (228 + i)]);
+            this._blackHoleSprite[i].setPosition(cc.p(82, 125));
+            this._mysticalItem.addChild(this._blackHoleSprite[i]);
+        }
+
         var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 768));
 
         var lazyMenu = LazyMenu.create();
@@ -56,6 +77,8 @@ var PassLayer = cc.Layer.extend({
             var flag = (i - 1) % 2;
 
             var passItem = null;
+            var passNamePoint = null;
+
             if (pass.isBossPass(i)) {
                 passItem = cc.MenuItemImage.create(
                     main_scene_image["button13"],
@@ -66,6 +89,8 @@ var PassLayer = cc.Layer.extend({
                 );
                 passItem.setPosition(cc.p(125 + flag * 210, 100 + 185 * (i - 1)));
 
+                passNamePoint = cc.p(65 + 340 * flag, 20 + 185 * (i - 1));
+
             } else {
                 passItem = cc.MenuItemImage.create(
                     main_scene_image["button14"],
@@ -75,6 +100,8 @@ var PassLayer = cc.Layer.extend({
                     this
                 );
                 passItem.setPosition(cc.p(140 + flag * 180, 100 + 185 * (i - 1)));
+
+                passNamePoint = cc.p(72 + 310 * flag, 50 + 185 * (i - 1));
             }
             lazyMenu.addChild(passItem);
 
@@ -89,13 +116,12 @@ var PassLayer = cc.Layer.extend({
                 }
             }
 
-            var passNamePoint = cc.p(250 - 40 * flag, 80 + 185 * (i - 1));
-
             var passNameBgSprite = cc.Sprite.create(main_scene_image.icon3);
             passNameBgSprite.setPosition(passNamePoint);
             scrollViewLayer.addChild(passNameBgSprite);
+            passNameBgSprite.setScale(0.8);
 
-            var passNameLabel = cc.LabelTTF.create("第" + i + "关", "STHeitiTC-Medium", 25);
+            var passNameLabel = cc.LabelTTF.create("第" + i + "关", "STHeitiTC-Medium", 20);
             passNameLabel.setColor(cc.c3b(255, 240, 170));
             passNameLabel.setPosition(passNamePoint);
             scrollViewLayer.addChild(passNameLabel);
@@ -166,20 +192,9 @@ var PassLayer = cc.Layer.extend({
         );
         this._wipeOutItem.setPosition(cc.p(580, 928));
 
-        this._mysticalItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.button9d,
-            main_scene_image.icon15,
-            this._onClickWipeOut,
-            this
-        );
-        this._wipeOutItem.setPosition(cc.p(580, 928));
-
         var menu = cc.Menu.create(this._resetItem, this._wipeOutItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
-
 
         return true;
     },
@@ -187,28 +202,38 @@ var PassLayer = cc.Layer.extend({
     update: function () {
         cc.log("PassLayer update");
 
-
         var pass = gameData.pass;
+
+        this._blackHoleRotate();
 
         for (var i = 1; i <= MAX_PASS_COUNT; ++i) {
             this._element[i].passItem.setEnabled(pass.getMarkByIndex(i));
         }
 
+        if (this._isWin != null) {
+            if (this._isWin) {
+                this._spirit.passWinSpeak();
+            } else {
+                this._spirit.passFailSpeak();
+            }
+        }
+
         var top = pass.getTop();
 
         if (top != this._top) {
-            this._top = top;
-
             this._locate(this._top);
+
+            this._top = top;
 
             this._defianceAnimation();
         }
 
         this._wipeOutItem.setVisible(pass.canWipeOut());
         this._resetItem.setEnabled(pass.canReset());
+        this._mysticalItem.setVisible(pass.get("hasMystical"));
 
         this._skillPointLabel.setString(gameData.player.get("skillPoint"));
-        this._topLabel.setString(this._top);
+        this._topLabel.setString(pass.get("top"));
 
         var height = this._top / MAX_PASS_COUNT * 211;
         this._towerSprite.setTextureRect(cc.rect(0, 211 - height, 104, height));
@@ -229,8 +254,6 @@ var PassLayer = cc.Layer.extend({
         cc.log("PassLayer _locate");
 
         var offset = this._getOffset(index);
-
-        cc.log(offset);
 
         if (duration) {
             this._scrollView.setContentOffsetInDuration(offset, duration);
@@ -277,6 +300,129 @@ var PassLayer = cc.Layer.extend({
         ladderSprite.runAction(action);
     },
 
+    _reset: function () {
+        cc.log("PassLayer _reset");
+
+        var that = this;
+        gameData.pass.reset(function (data) {
+            cc.log(data);
+
+            that.update();
+        });
+    },
+
+    _showReset: function () {
+        cc.log("PassLayer _showWipeOutReward");
+
+        var layer = LazyLayer.create();
+        this.addChild(layer);
+
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
+        bgLayer.setPosition(GAME_ZERO);
+        layer.addChild(bgLayer);
+
+        var bgSprite = cc.Sprite.create(main_scene_image.bg16);
+        bgSprite.setPosition(cc.p(360, 580));
+        layer.addChild(bgSprite);
+
+        var rewardLabel = cc.LabelTTF.create("是否消耗 200 魔石重置关卡?", "STHeitiTC-Medium", 25);
+        rewardLabel.setColor(cc.c3b(255, 240, 170));
+        rewardLabel.setAnchorPoint(cc.p(0.5, 1));
+        rewardLabel.setPosition(cc.p(360, 650));
+        layer.addChild(rewardLabel);
+
+        var okItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon95,
+            function () {
+                this._reset();
+                layer.removeFromParent();
+            },
+            this
+        );
+        okItem.setPosition(cc.p(260, 530));
+
+        var closeItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon36,
+            function () {
+                layer.removeFromParent();
+            },
+            this
+        );
+        closeItem.setPosition(cc.p(460, 530));
+
+        var menu = cc.Menu.create(okItem, closeItem);
+        menu.setPosition(cc.p(0, 0));
+        layer.addChild(menu);
+    },
+
+    _showWipeOutReward: function (reward) {
+        cc.log("PassLayer _showWipeOutReward");
+
+        var layer = LazyLayer.create();
+        this.addChild(layer);
+
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
+        bgLayer.setPosition(GAME_ZERO);
+        layer.addChild(bgLayer);
+
+        var bgSprite = cc.Sprite.create(main_scene_image.bg17);
+        bgSprite.setPosition(cc.p(360, 580));
+        layer.addChild(bgSprite);
+
+        var obtainSprite = cc.Sprite.create(main_scene_image.icon226);
+        obtainSprite.setPosition(cc.p(360, 718));
+        layer.addChild(obtainSprite);
+
+        var offsetY = 655;
+        for (var key in reward) {
+            var str = lz.getNameWithKey(key) + " : " + reward[key];
+            var rewardLabel = cc.LabelTTF.create(str, "STHeitiTC-Medium", 20);
+            rewardLabel.setColor(cc.c3b(255, 240, 170));
+            rewardLabel.setAnchorPoint(cc.p(0.5, 1));
+            rewardLabel.setPosition(cc.p(360, offsetY));
+            layer.addChild(rewardLabel);
+
+            offsetY -= 45;
+        }
+
+        var closeItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon95,
+            function () {
+                layer.removeFromParent();
+                this.update();
+            },
+            this
+        );
+        closeItem.setPosition(cc.p(360, 415));
+
+        var menu = cc.Menu.create(closeItem);
+        menu.setPosition(cc.p(0, 0));
+        layer.addChild(menu);
+    },
+
+    _blackHoleRotate: function () {
+        cc.log("PassLayer _blackHoleRotate");
+
+        var deltaAngleList = [10, 15, 20, 25, 30, 35];
+        var len = this._blackHoleSprite.length;
+
+        for (var i = 0; i < len; ++i) {
+            this._blackHoleSprite[i].stopAllActions();
+
+            this._blackHoleSprite[i].runAction(
+                cc.RepeatForever.create(
+                    cc.RotateBy.create(1, deltaAngleList[i])
+                )
+            );
+        }
+    },
+
     _defianceAnimation: function () {
         cc.log("PassLayer _defianceAnimation");
 
@@ -298,47 +444,39 @@ var PassLayer = cc.Layer.extend({
         }, 4.5);
     },
 
-    _wipeOutAnimation: function () {
+    _wipeOutAnimation: function (reward) {
         cc.log("PassLayer _wipeOutAnimation");
 
         LazyLayer.showCloudLayer();
 
         this._locate(1);
 
-        this._spiritWalk(1, 0.3);
-        var index = 2;
+        this._spiritWalk(2, 0.3);
+        var index = 3;
         this.schedule(function () {
             if (index > this._top) {
                 LazyLayer.closeCloudLayer();
+                this._showWipeOutReward(reward);
                 return;
             }
 
             this._spiritWalk(index, 0.3);
             index += 1;
-        }, 0.4, this._top);
+        }, 0.4, this._top - 2);
     },
 
     _onClickDefiance: function (id) {
         return function () {
             cc.log("PassLayer _onClickDefiance: " + id);
 
-            var pass = gameData.pass;
-
-            if (pass.canDefiance(id)) {
+            if (id > this._top) {
                 TipLayer.tip("请先挑战前面关卡");
-
                 return;
             }
 
             var that = this;
-            pass.defiance(function (battleLogId) {
-                var isWin = BattlePlayer.getInstance().play(battleLogId);
-
-                if (isWin) {
-                    that._spirit.passWinSpeak();
-                } else {
-                    that._spirit.passFailSpeak();
-                }
+            gameData.pass.defiance(function (battleLogId) {
+                that._isWin = BattlePlayer.getInstance().play(battleLogId);
             }, id);
         }
     },
@@ -346,9 +484,10 @@ var PassLayer = cc.Layer.extend({
     _onClickWipeOut: function () {
         cc.log("PassLayer _onClickWipeOut");
 
-        this._wipeOutAnimation();
         gameData.pass.wipeOut(function (data) {
             cc.log(data);
+
+            this._wipeOutAnimation(data);
         });
     },
 
@@ -356,13 +495,15 @@ var PassLayer = cc.Layer.extend({
         cc.log("PassLayer _onClickMystical");
 
         var that = this;
+        gameData.pass.mystical(function (battleLogId) {
+            that._isWin = BattlePlayer.getInstance().play(battleLogId);
+        });
     },
 
     _onClickReset: function () {
         cc.log("PassLayer _onClickReset");
 
-        var that = this;
-
+        this._showReset();
     }
 });
 

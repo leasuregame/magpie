@@ -35,6 +35,8 @@ var Pass = Entity.extend({
     update: function (data) {
         cc.log("Pass update");
 
+        if (!data) return;
+
         this.set("top", data.layer);
         this.set("mark", data.mark);
         this.set("hasMystical", data.hasMystical);
@@ -66,21 +68,15 @@ var Pass = Entity.extend({
     canReset: function () {
         cc.log("Pass canReset");
 
+        if (this._top == 0) {
+            return false;
+        }
+
         if (this.canWipeOut()) {
             return false;
         }
 
         return this._canReset;
-    },
-
-    canDefiance: function (index) {
-        cc.log("Pass canDefiance " + index);
-
-        if (index < this._top + 1) {
-            return this.getMarkByIndex(index);
-        }
-
-        return false;
     },
 
     isBossPass: function (index) {
@@ -193,6 +189,10 @@ var Pass = Entity.extend({
 
                 var msg = data.msg;
 
+                that.update({
+                    hasMystical: msg.hasMystical || false
+                });
+
                 gameData.spirit.update(msg.spiritor);
 
                 var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
@@ -208,16 +208,17 @@ var Pass = Entity.extend({
         cc.log("Pass reset");
 
         var that = this;
-        lzWindow.pomelo.request("area.taskHandler.wipeOut", {}, function (data) {
+        lzWindow.pomelo.request("area.taskHandler.resetPassMark", {}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
-                cc.log("wipeOut success");
+                cc.log("reset success");
 
                 var msg = data.msg;
 
                 that.update({
-                    mark: []
+                    mark: [],
+                    canReset: msg.canReset || false
                 });
 
                 gameData.player.update({
@@ -226,7 +227,7 @@ var Pass = Entity.extend({
 
                 cb();
             } else {
-                cc.log("wipeOut fail");
+                cc.log("reset fail");
             }
         });
     }

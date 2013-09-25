@@ -15,6 +15,7 @@
 var SpiritNode = cc.Node.extend({
     _spirit: null,
     _spiritSprite: null,
+    _bubbleNode: null,
 
     init: function () {
         cc.log("SpiritNode init");
@@ -25,7 +26,7 @@ var SpiritNode = cc.Node.extend({
 
         var spiritLv = this._spirit.get("lv");
 
-        if(spiritLv < 1) {
+        if (spiritLv < 1) {
             spiritLv = 1;
         }
 
@@ -44,14 +45,19 @@ var SpiritNode = cc.Node.extend({
     _speak: function (str) {
         cc.log("SpiritNode speak");
 
+        if (this._bubbleNode) {
+            this._bubbleNode.removeFromParent();
+        }
+
         if (str) {
-            var bubbleNode = BubbleNode.create(str);
-            bubbleNode.setPosition(cc.p(45, 30));
-            this.addChild(bubbleNode);
+            this._bubbleNode = BubbleNode.create(str);
+            this._bubbleNode.setPosition(cc.p(45, 30));
+            this.addChild(this._bubbleNode);
 
             this.scheduleOnce(function () {
-                bubbleNode.removeFromParent();
-            }, 3);
+                this._bubbleNode.removeFromParent();
+                this._bubbleNode = null;
+            }, 5);
         }
     },
 

@@ -242,6 +242,7 @@ var main_scene_image = {
     button41: main_scene_path + "button41.png",
     button41s: main_scene_path + "button41s.png",
     button42: main_scene_path + "button42.png",
+    button43: main_scene_path + "button43.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -467,7 +468,15 @@ var main_scene_image = {
     icon222: main_scene_path + "icon222.png",
     icon223: main_scene_path + "icon223.png",
     icon224: main_scene_path + "icon224.png",
-    icon225: main_scene_path + "icon225.png"
+    icon225: main_scene_path + "icon225.png",
+    icon226: main_scene_path + "icon226.png",
+    icon227: main_scene_path + "icon227.png",
+    icon228: main_scene_path + "icon228.png",
+    icon229: main_scene_path + "icon229.png",
+    icon230: main_scene_path + "icon230.png",
+    icon231: main_scene_path + "icon231.png",
+    icon232: main_scene_path + "icon232.png",
+    icon233: main_scene_path + "icon233.png"
 };
 
 var main_scene_res = [

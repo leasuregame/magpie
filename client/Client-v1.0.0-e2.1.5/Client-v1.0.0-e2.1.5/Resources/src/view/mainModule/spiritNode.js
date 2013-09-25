@@ -25,6 +25,10 @@ var SpiritNode = cc.Node.extend({
 
         var spiritLv = this._spirit.get("lv");
 
+        if(spiritLv < 1) {
+            spiritLv = 1;
+        }
+
         this._spiritSprite = cc.Sprite.create(main_scene_image["spirit" + spiritLv]);
         this.addChild(this._spiritSprite);
 

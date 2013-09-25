@@ -21,7 +21,13 @@ var BattleSpiritNode = cc.Node.extend({
 
         if (!this._super()) return false;
 
-        this._spiritSprite = cc.Sprite.create(main_scene_image.spirit1);
+        var spiritLv = gameData.spirit.get("lv");
+
+        if (spiritLv < 1) {
+            spiritLv = 1;
+        }
+
+        this._spiritSprite = cc.Sprite.create(main_scene_image["spirit" + spiritLv]);
         this.addChild(this._spiritSprite);
 
         this._tipLabel = cc.LabelTTF.create("", '黑体', 60);

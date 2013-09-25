@@ -63,6 +63,16 @@ var Pass = Entity.extend({
         return false;
     },
 
+    canReset: function () {
+        cc.log("Pass canReset");
+
+        if (this.canWipeOut()) {
+            return false;
+        }
+
+        return this._canReset;
+    },
+
     canDefiance: function (index) {
         cc.log("Pass canDefiance " + index);
 

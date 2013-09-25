@@ -20,6 +20,7 @@ var PassLayer = cc.Layer.extend({
     _skillPointLabel: null,
     _wipeOutItem: null,
     _resetItem: null,
+    _mysticalItem: null,
     _scrollView: null,
     _element: {},
 
@@ -34,7 +35,6 @@ var PassLayer = cc.Layer.extend({
         cc.log("PassLayer init");
 
         if (!this._super()) return false;
-
 
         var pass = gameData.pass;
 
@@ -81,7 +81,7 @@ var PassLayer = cc.Layer.extend({
             if (i > 1) {
                 var ladderSprite = cc.Sprite.create(main_scene_image["ladder" + (2 - flag)]);
                 ladderSprite.setAnchorPoint(cc.p(0, 0));
-                ladderSprite.setPosition(cc.p(138 + 27 * flag, 132 + 185 * (i - 2)));
+                ladderSprite.setPosition(cc.p(140 + 16 * flag, 132 + 185 * (i - 2)));
                 scrollViewLayer.addChild(ladderSprite);
 
                 if (i > this._top) {
@@ -136,15 +136,15 @@ var PassLayer = cc.Layer.extend({
         this._skillPointLabel.setPosition(cc.p(583, 837));
         this.addChild(this._skillPointLabel);
 
-        this._wipeOutItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.button9d,
-            main_scene_image.icon15,
-            this._onClickWipeOut,
-            this
-        );
-        this._wipeOutItem.setPosition(cc.p(580, 928));
+        this._towerSprite = cc.Sprite.create(main_scene_image.icon225);
+        this._towerSprite.setAnchorPoint(cc.p(0, 0));
+        this._towerSprite.setPosition(cc.p(524, 226));
+        this.addChild(this._towerSprite);
+
+        var towerBgSprite = cc.Sprite.create(main_scene_image.icon224);
+        towerBgSprite.setAnchorPoint(cc.p(0, 0));
+        towerBgSprite.setPosition(cc.p(510, 220));
+        this.addChild(towerBgSprite);
 
         this._resetItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -156,19 +156,30 @@ var PassLayer = cc.Layer.extend({
         );
         this._resetItem.setPosition(cc.p(580, 928));
 
-        var menu = cc.Menu.create(this._wipeOutItem, this._resetItem);
+        this._wipeOutItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            main_scene_image.icon15,
+            this._onClickWipeOut,
+            this
+        );
+        this._wipeOutItem.setPosition(cc.p(580, 928));
+
+        this._mysticalItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            main_scene_image.icon15,
+            this._onClickWipeOut,
+            this
+        );
+        this._wipeOutItem.setPosition(cc.p(580, 928));
+
+        var menu = cc.Menu.create(this._resetItem, this._wipeOutItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._towerSprite = cc.Sprite.create(main_scene_image.icon225);
-        this._towerSprite.setAnchorPoint(cc.p(0, 0));
-        this._towerSprite.setPosition(cc.p(524, 226));
-        this.addChild(this._towerSprite);
-
-        var towerBgSprite = cc.Sprite.create(main_scene_image.icon224);
-        towerBgSprite.setAnchorPoint(cc.p(0, 0));
-        towerBgSprite.setPosition(cc.p(510, 220));
-        this.addChild(towerBgSprite);
 
         return true;
     },
@@ -177,11 +188,13 @@ var PassLayer = cc.Layer.extend({
         cc.log("PassLayer update");
 
 
+        var pass = gameData.pass;
+
         for (var i = 1; i <= MAX_PASS_COUNT; ++i) {
-            this._element[i].passItem.setEnabled(gameData.pass.getMarkByIndex(i));
+            this._element[i].passItem.setEnabled(pass.getMarkByIndex(i));
         }
 
-        var top = gameData.pass.getTop();
+        var top = pass.getTop();
 
         if (top != this._top) {
             this._top = top;
@@ -190,6 +203,9 @@ var PassLayer = cc.Layer.extend({
 
             this._defianceAnimation();
         }
+
+        this._wipeOutItem.setVisible(pass.canWipeOut());
+        this._resetItem.setEnabled(pass.canReset());
 
         this._skillPointLabel.setString(gameData.player.get("skillPoint"));
         this._topLabel.setString(this._top);
@@ -212,12 +228,14 @@ var PassLayer = cc.Layer.extend({
     _locate: function (index, duration) {
         cc.log("PassLayer _locate");
 
-        var offsetPoint = this._getOffset(index);
+        var offset = this._getOffset(index);
+
+        cc.log(offset);
 
         if (duration) {
-            this._scrollView.setContentOffsetInDuration(offsetPoint, duration);
+            this._scrollView.setContentOffsetInDuration(offset, duration);
         } else {
-            this._scrollView.setContentOffset(offsetPoint);
+            this._scrollView.setContentOffset(offset);
         }
     },
 
@@ -239,7 +257,7 @@ var PassLayer = cc.Layer.extend({
         duration = duration || 2;
 
         this._spirit.setPosition(this._getCardLocation(index - 1));
-        var jumpAction = cc.JumpTo.create(duration, this._getCardLocation(index), 25, 5);
+        var jumpAction = cc.JumpTo.create(duration, this._getCardLocation(index), 30, 5);
         this._spirit.runAction(jumpAction);
 
         this._locate(index, duration);

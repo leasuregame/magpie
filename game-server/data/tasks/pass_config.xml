@@ -7,7 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>gaobin</Author>
+  <LastAuthor>junyu lu</LastAuthor>
   <Created>2013-09-18T16:36:05Z</Created>
+  <LastSaved>2013-09-25T01:54:05Z</LastSaved>
   <Version>14.0</Version>
  </DocumentProperties>
  <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
@@ -17,10 +19,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11220</WindowHeight>
-  <WindowWidth>28800</WindowWidth>
-  <WindowTopX>120</WindowTopX>
-  <WindowTopY>140</WindowTopY>
+  <WindowHeight>7460</WindowHeight>
+  <WindowWidth>32540</WindowWidth>
+  <WindowTopX>3900</WindowTopX>
+  <WindowTopY>5360</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -45,8 +47,7 @@
   <Style ss:ID="s63">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="16"
-    ss:Color="#000000"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="16" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
    <Protection/>
@@ -69,7 +70,7 @@
    <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
     ss:Color="#000000"/>
   </Style>
-  <Style ss:ID="s73">
+  <Style ss:ID="s68">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
@@ -85,7 +86,11 @@
    <Column ss:Index="2" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Span="2"/>
    <Column ss:Index="5" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="191"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="256"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Span="4"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="86"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="74"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="64"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0"/>
    <Row ss:AutoFitHeight="0" ss:Height="14">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">层数</Data></Cell>
@@ -1424,7 +1429,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
+     <ActiveRow>1</ActiveRow>
      <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
@@ -1435,7 +1440,10 @@
  <Worksheet ss:Name="神秘关卡配置表">
   <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
-   <Row>
+   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="83"/>
+   <Column ss:Index="9" ss:Width="197"/>
+   <Column ss:Width="263"/>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id/难度系数</Data></Cell>
     <Cell><Data ss:Type="String">层数</Data></Cell>
     <Cell><Data ss:Type="String">名称</Data></Cell>
@@ -1454,13 +1462,13 @@
     <Cell><Data ss:Type="String">BOSS攻击加成</Data></Cell>
     <Cell><Data ss:Type="String">BOSS生命加成</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">layer</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
     <Cell><Data ss:Type="String">layer_from</Data></Cell>
     <Cell><Data ss:Type="String">layer_to</Data></Cell>
-    <Cell><Data ss:Type="String">trigger_rate</Data></Cell>
+    <Cell><Data ss:Type="String">rate</Data></Cell>
     <Cell><Data ss:Type="String">skill_point</Data></Cell>
     <Cell><Data ss:Type="String">card_count</Data></Cell>
     <Cell><Data ss:Type="String">cards</Data></Cell>
@@ -1473,7 +1481,7 @@
     <Cell><Data ss:Type="String">atk_inc</Data></Cell>
     <Cell><Data ss:Type="String">hp_inc</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="Number">1</Data></Cell>
@@ -1481,15 +1489,15 @@
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">1000</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="String">30001#30002#30003#30004#30005</Data></Cell>
-    <Cell><Data ss:Type="String">1:30001,2:30002,3:30003,4:30004,5:30005</Data></Cell>
-    <Cell><Data ss:Type="Number">30001</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="Number">50</Data></Cell>
-    <Cell><Data ss:Type="Number">70</Data></Cell>
+    <Cell><Data ss:Type="String">30001#30001#30001#30001#30002</Data></Cell>
+    <Cell><Data ss:Type="String">1:30001,2:30001,3:30001,4:30001,5:30002</Data></Cell>
+    <Cell><Data ss:Type="Number">30002</Data></Cell>
+    <Cell ss:Index="14"><Data ss:Type="Number">40</Data></Cell>
+    <Cell><Data ss:Type="Number">150</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="Number">31</Data></Cell>
@@ -1497,15 +1505,15 @@
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">2000</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="String">30001#30002#30003#30004#30005</Data></Cell>
-    <Cell><Data ss:Type="String">1:30001,2:30002,3:30003,4:30004,5:30005</Data></Cell>
-    <Cell><Data ss:Type="Number">30002</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="Number">70</Data></Cell>
+    <Cell><Data ss:Type="String">30003#30003#30003#30003#30004</Data></Cell>
+    <Cell><Data ss:Type="String">1:30003,2:30003,3:30003,4:30003,5:30004</Data></Cell>
+    <Cell><Data ss:Type="Number">30004</Data></Cell>
+    <Cell ss:Index="14"><Data ss:Type="Number">40</Data></Cell>
     <Cell><Data ss:Type="Number">40</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="Number">51</Data></Cell>
@@ -1513,15 +1521,15 @@
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">3000</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="String">30001#30002#30003#30004#30005</Data></Cell>
-    <Cell><Data ss:Type="String">1:30001,2:30002,3:30003,4:30004,5:30005</Data></Cell>
-    <Cell><Data ss:Type="Number">30003</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="Number">50</Data></Cell>
-    <Cell><Data ss:Type="Number">80</Data></Cell>
+    <Cell><Data ss:Type="String">30005#30005#30005#30005#30006</Data></Cell>
+    <Cell><Data ss:Type="String">1:30005,2:30005,3:30005,4:30005,5:30006</Data></Cell>
+    <Cell><Data ss:Type="Number">30006</Data></Cell>
+    <Cell ss:Index="14"><Data ss:Type="Number">40</Data></Cell>
+    <Cell><Data ss:Type="Number">40</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="Number">71</Data></Cell>
@@ -1529,15 +1537,15 @@
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">4000</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="String">30001#30002#30003#30004#30005</Data></Cell>
-    <Cell><Data ss:Type="String">1:30001,2:30002,3:30003,4:30004,5:30005</Data></Cell>
-    <Cell><Data ss:Type="Number">30004</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="Number">50</Data></Cell>
-    <Cell><Data ss:Type="Number">45</Data></Cell>
+    <Cell><Data ss:Type="String">30007#30007#30007#30007#30008</Data></Cell>
+    <Cell><Data ss:Type="String">1:30007,2:30007,3:30007,4:30007,5:30008</Data></Cell>
+    <Cell><Data ss:Type="Number">30008</Data></Cell>
+    <Cell ss:Index="14"><Data ss:Type="Number">40</Data></Cell>
+    <Cell><Data ss:Type="Number">40</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="Number">91</Data></Cell>
@@ -1545,23 +1553,24 @@
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">5000</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="String">30001#30002#30003#30004#30005</Data></Cell>
-    <Cell><Data ss:Type="String">1:30001,2:30002,3:30003,4:30004,5:30005</Data></Cell>
-    <Cell><Data ss:Type="Number">30005</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="String">30009#30009#30009#30009#30010</Data></Cell>
+    <Cell><Data ss:Type="String">1:30009,2:30009,3:30009,4:30009,5:30010</Data></Cell>
+    <Cell><Data ss:Type="Number">30010</Data></Cell>
+    <Cell ss:Index="14"><Data ss:Type="Number">40</Data></Cell>
     <Cell><Data ss:Type="Number">40</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>28</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>10</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1573,14 +1582,14 @@
    x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:Width="129"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s73"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">export_name</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">merge_to</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s73"><Data ss:Type="String">关卡卡牌配置表</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">pass_config</Data></Cell>
-    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">关卡卡牌配置表</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">pass_config</Data></Cell>
+    <Cell ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">神秘关卡配置表</Data></Cell>

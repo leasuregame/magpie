@@ -1,4 +1,5 @@
 async = require 'async'
+utility = require '../../../common/utility'
 logger = require('pomelo-logger').getLogger(__filename)
 _ = require 'underscore'
 
@@ -58,7 +59,18 @@ Handler::login = (msg, session, next) ->
       logger.error 'fail to login: ', err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    next(null, {code: 200, msg: {user: user, player: player}})
+    #pass返回格式改成与passBarrier接口一样
+    hasMystical = false
+    hasMystical = true if player.pass.mystical.isTrigger and not player.pass.mystical.isClear
+    oPlayer = utility.deepCopy(player);
+    oPlayer.pass = {
+        canReset: if player.pass.resetTimes then true else false
+        layer: player.pass.layer,
+        mark: player.pass.mark,
+        hasMystical:hasMystical
+    }
+
+    next(null, {code: 200, msg: {user: user, player: oPlayer}})
 
 onUserLeave = (app, session, reason) ->
   console.log 'user leave: ', session.uid

@@ -37,7 +37,7 @@ var PassiveSkill = (function(_super) {
 
     PassiveSkill.DEFAULT_VALUES = {
         name: '',
-        value: 0
+        value: 0.0
     };
 
     PassiveSkill.born = function() {
@@ -46,7 +46,7 @@ var PassiveSkill = (function(_super) {
         var value = _.random(100, psConfig.INIT_MAX * 100);
         return {
             name: name,
-            value: parseFloat(value / 100).toFixed(1)
+            value: parseFloat((value / 100).toFixed(1))
         };
     };
 

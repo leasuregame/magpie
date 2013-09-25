@@ -30,6 +30,7 @@ function submitLottery(){
         type:"post",
         success:function(msg){
             if(msg.type == "success") {
+                console.log(msg);
                 var result = msg.info;
                 setResult(result);
             }

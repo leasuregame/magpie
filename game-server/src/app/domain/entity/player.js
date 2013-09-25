@@ -688,8 +688,8 @@ var Player = (function(_super) {
         if(this.pass.resetTimes > 0) {
             this.pass.resetTimes--;
             var pass = utility.deepCopy(this.pass);
-            //this.passMark.mark = [];
-            pass.mark = [];
+            this.passMark.value = [];
+            pass.mark = this.passMark.value;
             this.pass = pass;
             console.log("reset pass mark:",this.pass);
             return true;

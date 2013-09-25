@@ -121,7 +121,7 @@ var PassLayer = cc.Layer.extend({
             scrollViewLayer.addChild(passNameBgSprite);
             passNameBgSprite.setScale(0.8);
 
-            var passNameLabel = cc.LabelTTF.create("第" + i + "关", "STHeitiTC-Medium", 20);
+            var passNameLabel = cc.LabelTTF.create("第" + i + "层", "STHeitiTC-Medium", 20);
             passNameLabel.setColor(cc.c3b(255, 240, 170));
             passNameLabel.setPosition(passNamePoint);
             scrollViewLayer.addChild(passNameLabel);
@@ -207,15 +207,20 @@ var PassLayer = cc.Layer.extend({
         this._blackHoleRotate();
 
         for (var i = 1; i <= MAX_PASS_COUNT; ++i) {
-            this._element[i].passItem.setEnabled(pass.getMarkByIndex(i));
+            var mark = pass.getMarkByIndex(i);
+
+            this._element[i].passItem.setEnabled(mark);
+
+            if (i > 1) {
+                var color = mark ? cc.c3b(255, 255, 255) : cc.c3b(130, 130, 130);
+                this._element[i].ladderSprite.setColor(color);
+            }
         }
 
         if (this._isWin != null) {
-            if (this._isWin) {
-                this._spirit.passWinSpeak();
-            } else {
-                this._spirit.passFailSpeak();
-            }
+            this._spirit.speak(this._isWin);
+
+            this._isWin = null;
         }
 
         var top = pass.getTop();
@@ -484,10 +489,11 @@ var PassLayer = cc.Layer.extend({
     _onClickWipeOut: function () {
         cc.log("PassLayer _onClickWipeOut");
 
+        var that = this;
         gameData.pass.wipeOut(function (data) {
             cc.log(data);
 
-            this._wipeOutAnimation(data);
+            that._wipeOutAnimation(data);
         });
     },
 

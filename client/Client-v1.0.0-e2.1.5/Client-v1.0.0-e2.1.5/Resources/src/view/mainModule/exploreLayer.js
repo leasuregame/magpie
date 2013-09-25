@@ -429,19 +429,14 @@ var ExploreLayer = cc.Layer.extend({
 
                 this._reward = null;
 
-                var that = this;
-                var cb = function () {
-                    if (toNext) {
-                        that._toNext();
-                    } else {
-                        that._unlock();
-                    }
-                };
+                if (toNext) {
+                    this._toNext();
+                } else {
+                    this._unlock();
+                }
 
                 if (goldList) {
-                    GoldLayer.play(goldList, cb);
-                } else {
-                    cb();
+                    GoldLayer.play(goldList);
                 }
             }, 1);
 

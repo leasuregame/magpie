@@ -42,35 +42,33 @@ var SpiritNode = cc.Node.extend({
         return -1;
     },
 
-    _speak: function (str) {
+    speak: function (isWin) {
         cc.log("SpiritNode speak");
 
         if (this._bubbleNode) {
             this._bubbleNode.removeFromParent();
         }
 
-        if (str) {
-            this._bubbleNode = BubbleNode.create(str);
-            this._bubbleNode.setPosition(cc.p(45, 30));
-            this.addChild(this._bubbleNode);
+        if (Math.random() < 0.2) {
+            var str;
 
-            this.scheduleOnce(function () {
-                this._bubbleNode.removeFromParent();
-                this._bubbleNode = null;
-            }, 5);
+            if (isWin) {
+                str = gameData.speak.getPassWinSpiritSpeak();
+            } else {
+                str = gameData.speak.getPassFailSpiritSpeak();
+            }
+
+            if (str) {
+                this._bubbleNode = BubbleNode.create(str);
+                this._bubbleNode.setPosition(cc.p(45, 30));
+                this.addChild(this._bubbleNode);
+
+                this.scheduleOnce(function () {
+                    this._bubbleNode.removeFromParent();
+                    this._bubbleNode = null;
+                }, 2.5);
+            }
         }
-    },
-
-    passWinSpeak: function () {
-        cc.log("SpiritNode passWinSpeak");
-
-        this._speak(gameData.speak.getPassWinSpiritSpeak());
-    },
-
-    passFailSpeak: function () {
-        cc.log("SpiritNode passFailSpeak");
-
-        this._speak(gameData.speak.getPassFailSpiritSpeak());
     }
 });
 

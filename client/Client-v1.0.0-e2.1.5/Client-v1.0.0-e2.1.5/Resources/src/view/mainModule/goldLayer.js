@@ -25,19 +25,17 @@ var MIN_GOLD_ROTATION = -450;
 var MAX_GOLD_ROTATION = 450;
 
 var GoldLayer = LazyLayer.extend({
-    _cb: null,
     _gold: 0,
     _goldList: [],
     _goldItem: [],
     _goldBoxItem: null,
     _length: 0,
 
-    init: function (cb, data) {
+    init: function (data) {
         cc.log("GoldLayer init");
 
         if (!this._super()) return false;
 
-        this._cb = cb || null;
         this._gold = 0;
         this._goldList = data || [];
 
@@ -243,10 +241,6 @@ var GoldLayer = LazyLayer.extend({
 
         this.scheduleOnce(function () {
             this.removeFromParent();
-
-            if (this._cb) {
-                this._cb();
-            }
         }, 2);
     },
 
@@ -266,10 +260,10 @@ var GoldLayer = LazyLayer.extend({
 });
 
 
-GoldLayer.create = function (cb, data) {
+GoldLayer.create = function (data) {
     var ret = new GoldLayer();
 
-    if (ret && ret.init(cb, data)) {
+    if (ret && ret.init(data)) {
         return ret;
     }
 
@@ -277,8 +271,8 @@ GoldLayer.create = function (cb, data) {
 };
 
 
-GoldLayer.play = function (cb, data) {
-    var goldLayer = GoldLayer.create(data, cb);
+GoldLayer.play = function (data) {
+    var goldLayer = GoldLayer.create(data);
 
     cc.Director.getInstance().getRunningScene().addChild(goldLayer, 2);
 };

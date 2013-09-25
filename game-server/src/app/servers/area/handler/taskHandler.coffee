@@ -133,7 +133,7 @@ Handler::passBarrier = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   layer = msg.layer
   player = null
-  hasMystical = false
+
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -159,9 +159,9 @@ Handler::passBarrier = (msg, session, next) ->
           spirit: {total: 0}
 
         countSpirit(player, bl, rewards) if player.pass.layer is layer-1
-        hasMystical = checkMysticalPass(player)
-        updatePlayer(player, rewards, layer)   
-      
+        updatePlayer(player, rewards, layer)
+        checkMysticalPass(player)
+
       cb(null, bl)
 
   ], (err, bl) ->
@@ -177,7 +177,7 @@ Handler::passBarrier = (msg, session, next) ->
         canReset: if player.pass.resetTimes > 0 then true else false
         layer: player.pass.layer,
         mark: player.pass.mark,
-        hasMystical: hasMystical,
+        hasMystical:player.hasMysticalPass()
       }
       power: player.power,
       exp: player.exp,
@@ -211,12 +211,11 @@ Handler::resetPassMark = (msg, session, next) ->
       player.decrease 'gold',200
       cb(null,player.gold)
   ],(err,gold) ->
+
     if err
-      console.log("err = ", err)
       return next(err, {code: err.code or 500, msg: err.msg or ''})
 
     player.save()
-
 
     next(null,{code: 200,msg: {
       canReset:if player.pass.resetTimes > 0 then true else false
@@ -270,10 +269,11 @@ Handler::mysticalPass = (msg, session, next) ->
   ], (err, bl) ->
     if err 
       return next(err, {code: err.code or 500, msg: err.msg or ''})
-    
+
     next(null, {code: 200, msg: {
-      battleLog: bl, 
+      battleLog: bl,
       spiritor: player.spiritor
+      hasMystical: player.hasMysticalPass()
     }})
 
 countSpirit = (player, bl, rewards) ->
@@ -291,7 +291,7 @@ countSpirit = (player, bl, rewards) ->
   bl.rewards = rewards
 
 checkMysticalPass = (player) ->
-  return true if player.pass.mystical.isTrigger
+  return if player.pass.mystical.isTrigger
 
   mpc = table.getTableItem 'mystical_pass_config', player.pass.mystical.diff
 
@@ -303,9 +303,10 @@ checkMysticalPass = (player) ->
   if mpc and (player.pass.layer >= mpc.layer_from and player.pass.layer <= mpc.layer_to) and utility.hitRate(mpc.rate)
     console.log("触发成功！！！",player.pass.layer);
     player.triggerMysticalPass()
-    return true
+    #return true
 
-  return false
+  #return false
+
 
 updatePlayer = (player, rewards, layer) ->
   player.increase('exp', rewards.exp)

@@ -182,7 +182,7 @@ describe("Area Server", function() {
                             isTrigger: false,
                             isClear: false
                         },
-                        isReset:false
+                        resetTimes:2
                     })
                 }, function() {
                     loginWith(mike.account, mike.password, mike.areaId);
@@ -195,8 +195,10 @@ describe("Area Server", function() {
                     expect(data.code).toEqual(200);
                     expect(data.msg).toBeDefined();
                     expect(data.msg).hasProperties([
-                        'gold'
+                        'gold',
+                        'canReset'
                     ]);
+                    expect(data.msg.canReset).toEqual(true)
 
                     doAjax('/player/' + mike.playerId, {}, function(res) {
                         //expect(JSON.parse(res.data.pass.mark)).toEqual(data.msg.passMark);
@@ -228,7 +230,7 @@ describe("Area Server", function() {
                             isTrigger: false,
                             isClear: false
                         },
-                        isReset:false
+                        resetTimes:0
                     })
                 }, function() {
                     loginWith(mike.account, mike.password, mike.areaId);
@@ -247,14 +249,14 @@ describe("Area Server", function() {
                             isTrigger: false,
                             isClear: false
                         },
-                        isReset:true
+                        resetTimes:0
                     })
                 },function(){
                     loginWith(mike.account, mike.password, mike.areaId);
                     request('area.taskHandler.resetPassMark', {}, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(501);
-                        expect(data.msg).toEqual('不能再重置关卡');
+                        expect(data.msg).toEqual('重置关卡次数已用光');
                     });
                 });
             });

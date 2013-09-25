@@ -688,8 +688,8 @@ var Player = (function(_super) {
         if(this.pass.resetTimes > 0) {
             this.pass.resetTimes--;
             var pass = utility.deepCopy(this.pass);
-            this.passMark.mark = [];
-            pass.mark = this.passMark.value;
+            //this.passMark.mark = [];
+            pass.mark = [];
             this.pass = pass;
             console.log("reset pass mark:",this.pass);
             return true;
@@ -719,6 +719,12 @@ var Player = (function(_super) {
         pass.mystical.diff += 1;
         pass.mystical.isTrigger = false;
         this.set('pass', pass);
+    };
+
+    Player.prototype.hasMysticalPass = function() {
+        if(this.pass.mystical.isTrigger && !this.pass.mystical.isClear)
+            return true;
+        return false;
     };
 
     Player.prototype.signToday = function() {

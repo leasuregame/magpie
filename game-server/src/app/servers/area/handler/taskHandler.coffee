@@ -295,11 +295,6 @@ checkMysticalPass = (player) ->
 
   mpc = table.getTableItem 'mystical_pass_config', player.pass.mystical.diff
 
-  #当前玩家到达层数已经超过原本的难度，添加难度
-  if(player.pass.layer > mpc.layer_to)
-    player.pass.mystical.diff++
-    mpc = table.getTableItem 'mystical_pass_config', player.pass.mystical.diff
-
   if mpc and (player.pass.layer >= mpc.layer_from and player.pass.layer <= mpc.layer_to) and utility.hitRate(mpc.rate)
     console.log("触发成功！！！",player.pass.layer);
     player.triggerMysticalPass()

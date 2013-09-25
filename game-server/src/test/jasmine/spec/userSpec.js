@@ -1,3 +1,54 @@
+describe('TEST',function() {
+    it("should can be login, and return player info", function() {
+        request('connector.userHandler.login', {
+            account: '2',
+            password: '1',
+            areaId: 1
+        }, function(data) {
+            console.log(data);
+            console.log('after login');
+            expect(data.msg.user.id).toEqual(addedUserId);
+            expect(data.msg.user.account).toEqual('testaccount');
+            expect(data.msg.player).toEqual({
+                id: playerId,
+                createTime: createTime,
+                userId: addedUserId,
+                areaId: 1,
+                name: 'player1',
+                power: '',
+                lv: 1,
+                vip: 0,
+                vipBox: '',
+                cash: 0,
+                exp: 0,
+                money: 0,
+                gold: 0,
+                lineUp: {},
+                ability: 0,
+                task: '',
+                pass: {
+                    layer: 0,
+                    mark: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                },
+                dailyGift: {},
+                skillPoint: 0,
+                energy: 0,
+                elixir: 0,
+                spiritor: '',
+                spiritPool: {},
+                cards: [],
+                rank: {},
+                friends: [],
+                signIn: {}
+            });
+        });
+    });
+});
+
+
+
+
+
 describe("Connector Server", function() {
 
   describe("User Handler", function() {

@@ -230,7 +230,7 @@ var Player = (function(_super) {
                 isTrigger: false,
                 isClear: false
             },
-            isReset:false
+            resetTimes:1
         },
         dailyGift: {
             lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
@@ -685,8 +685,8 @@ var Player = (function(_super) {
     //重置关卡
     Player.prototype.resetPassMark = function(){
 
-        if(this.pass.isReset == false) {
-            this.pass.isReset = true;
+        if(this.pass.resetTimes > 0) {
+            this.pass.resetTimes--;
             var pass = utility.deepCopy(this.pass);
             this.passMark.mark = [];
             pass.mark = this.passMark.value;
@@ -854,7 +854,8 @@ var checkPass = function(pass) {
                 diff: 1,
                 isTrigger: false,
                 isClear: false
-            }
+            },
+            resetTimes:0
         };
     }
     console.log("pass = ",pass);

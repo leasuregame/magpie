@@ -174,7 +174,7 @@ Handler::passBarrier = (msg, session, next) ->
       battleLog: bl, 
       #pass: player.pass,
       pass:{
-        canReset: !player.pass.isReset
+        canReset: if player.pass.resetTimes > 0 then true else false
         layer: player.pass.layer,
         mark: player.pass.mark,
         hasMystical: hasMystical,
@@ -205,7 +205,7 @@ Handler::resetPassMark = (msg, session, next) ->
          cb()
 
       else
-        return cb({code: 501,msg: '不能再重置关卡'})
+        return cb({code: 501,msg: '重置关卡次数已用光'})
 
     (cb) ->
       player.decrease 'gold',200
@@ -217,8 +217,9 @@ Handler::resetPassMark = (msg, session, next) ->
 
     player.save()
 
+
     next(null,{code: 200,msg: {
-      #passMark:player.pass.mark
+      canReset:if player.pass.resetTimes > 0 then true else false
       gold:gold
     }})
 

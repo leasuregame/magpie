@@ -64,7 +64,7 @@ Handler::login = (msg, session, next) ->
     hasMystical = true if player.pass.mystical.isTrigger and not player.pass.mystical.isClear
     oPlayer = utility.deepCopy(player);
     oPlayer.pass = {
-        canReset: !player.pass.isReset
+        canReset: if player.pass.resetTimes then true else false
         layer: player.pass.layer,
         mark: player.pass.mark,
         hasMystical:hasMystical

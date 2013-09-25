@@ -96,7 +96,7 @@ function updatePlayerData() {
         layer:layer,
         mark:[],
         mystical:JSON.parse(player.pass).mystical,
-        isReset:false
+        resetTimes:JSON.parse(player.pass).resetTimes
     };
 
     data.pass = JSON.stringify(pass);

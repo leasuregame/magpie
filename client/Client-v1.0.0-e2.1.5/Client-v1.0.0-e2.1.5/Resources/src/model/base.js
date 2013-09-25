@@ -115,18 +115,38 @@ Array.prototype.distinct = function () {
  * 获取介于两数之间的随机数[a, b)
  * */
 lz.random = function (a, b) {
-    var len = arguments.length;
-
-    if (len == 0) {
-        return 0;
-    }
-
-    if (len == 1) {
+    if (b == undefined) {
         b = a;
         a = 0;
     }
 
     return (Math.random() * (b - a) + a);
+};
+
+/*
+ * 获取整形随机数[a, b - 1]
+ * */
+lz.randomInt = function (a, b) {
+    var randNum = lz.random(a, b);
+
+    return Math.floor(randNum);
+};
+
+var gameGoodsName = {
+    "exp": "经验",
+    "money": "铜板",
+    "gold": "黄金",
+    "power": "体力",
+    "elixir": "仙丹",
+    "fragment": "卡魂",
+    "energy": "活力",
+    "skillPoint": "技能点",
+    "spirit": "灵气"
+};
+
+
+lz.getNameWithKey = function (key) {
+    return gameGoodsName[key] || key;
 };
 
 // 获取不大于原数的随机数

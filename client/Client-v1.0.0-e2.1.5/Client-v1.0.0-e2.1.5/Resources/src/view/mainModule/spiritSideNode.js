@@ -47,6 +47,21 @@ var SpiritSideNode = cc.Node.extend({
         return true;
     },
 
+    speak: function () {
+        cc.log("SpiritSideNode speak");
+
+        var str = gameData.speak.getSpiritSpeak();
+        if (str) {
+            var bubbleNode = BubbleNode.create(str);
+            bubbleNode.setPosition(cc.p(45, 30));
+            this.addChild(bubbleNode);
+
+            this.scheduleOnce(function () {
+                bubbleNode.removeFromParent();
+            }, 3);
+        }
+    },
+
     normal: function () {
         cc.log("SpiritSideNode normal");
 

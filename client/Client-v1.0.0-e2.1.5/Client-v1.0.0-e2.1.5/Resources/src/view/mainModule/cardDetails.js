@@ -214,7 +214,7 @@ var CardDetails = LazyLayer.extend({
         this._menu.setEnabled(false);
         this.removeFromParent();
 
-        if(this._cb) {
+        if (this._cb) {
             this._cb();
         }
     }

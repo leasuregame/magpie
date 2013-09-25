@@ -44,7 +44,12 @@ var ExploreLayer = cc.Layer.extend({
 
         this._sectionId = sectionId;
 
-        this._index = gameData.task.getPoints();
+        this._maxIndex = TASK_POINTS_COUNT;
+        this._index = this._maxIndex;
+
+        if (this._sectionId == gameData.task.getSection()) {
+            this._index = gameData.task.getPoints();
+        }
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg9);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -92,6 +97,8 @@ var ExploreLayer = cc.Layer.extend({
         this._spiritNode = SpiritSideNode.create();
         this._spiritNode.setPosition(cc.p(360, 783));
         this.addChild(this._spiritNode);
+
+        this._spiritNode.speak();
 
         this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
         this._turnLeftSprite.setRotation(180);
@@ -179,7 +186,7 @@ var ExploreLayer = cc.Layer.extend({
             powerProgress.setPosition(cc.p(320 + x, 360));
             scrollViewLayer.addChild(powerProgress);
 
-            var expProgress = Progress.create(null, main_scene_image.progress2, 0, 0);
+            var expProgress = Progress.create(null, main_scene_image.progress2, 0, 0, false, true);
             expProgress.setPosition(cc.p(320 + x, 319));
             scrollViewLayer.addChild(expProgress);
 
@@ -241,9 +248,8 @@ var ExploreLayer = cc.Layer.extend({
 
         var task = gameData.task;
 
-        this._maxIndex = task.getPoints();
-
         if (task.getSection() == this._sectionId) {
+            this._maxIndex = task.getPoints();
             this._scrollView.setContentSize(cc.size(640 * this._maxIndex, 569));
         }
 
@@ -419,15 +425,23 @@ var ExploreLayer = cc.Layer.extend({
 
 
                 var toNext = this._reward.toNext;
+                var goldList = this._reward.goldList;
 
                 this._reward = null;
 
-                cc.log(toNext);
+                var that = this;
+                var cb = function () {
+                    if (toNext) {
+                        that._toNext();
+                    } else {
+                        that._unlock();
+                    }
+                };
 
-                if (toNext) {
-                    this._toNext();
+                if (goldList) {
+                    GoldLayer.play(goldList, cb);
                 } else {
-                    this._unlock();
+                    cb();
                 }
             }, 1);
 
@@ -465,17 +479,17 @@ var ExploreLayer = cc.Layer.extend({
         }, this);
 
         var spiritScaleAction = cc.Sequence.create(
-            cc.ScaleTo.create(0.2, 1, 0.92),
-            cc.ScaleTo.create(0.2, 1, 1.08),
-            cc.ScaleTo.create(0.2, 1, 1),
-            cc.ScaleTo.create(0.2, 1, 1.08),
+            cc.ScaleTo.create(0.1, 1, 0.92),
+            cc.ScaleTo.create(0.1, 1, 1.08),
+            cc.ScaleTo.create(0.3, 1, 1),
+            cc.ScaleTo.create(0.3, 1, 1.08),
             cc.ScaleTo.create(0.1, 1, 1)
         );
 
         var spiritMoveAction = cc.Sequence.create(
-            cc.DelayTime.create(0.4),
-            cc.EaseSineOut.create(cc.MoveBy.create(0.2, cc.p(0, 60))),
-            cc.EaseSineIn.create(cc.MoveBy.create(0.2, cc.p(0, -60))),
+            cc.DelayTime.create(0.2),
+            cc.EaseSineOut.create(cc.MoveBy.create(0.3, cc.p(0, 60))),
+            cc.EaseSineIn.create(cc.MoveBy.create(0.3, cc.p(0, -60))),
             cc.DelayTime.create(0.1)
         );
 
@@ -489,10 +503,10 @@ var ExploreLayer = cc.Layer.extend({
         this._spiritNode.runAction(spiritAction);
 
         var spiritShadowScaleAction = cc.Sequence.create(
-            cc.ScaleTo.create(0.2, 1.1, 1.1),
-            cc.ScaleTo.create(0.2, 1, 1),
-            cc.ScaleTo.create(0.2, 0.4, 0.4),
-            cc.ScaleTo.create(0.2, 1, 1),
+            cc.ScaleTo.create(0.1, 1.1, 1.1),
+            cc.ScaleTo.create(0.1, 1, 1),
+            cc.ScaleTo.create(0.3, 0.4, 0.4),
+            cc.ScaleTo.create(0.3, 1, 1),
             cc.ScaleTo.create(0.1, 1.1, 1.1)
         );
 
@@ -501,9 +515,9 @@ var ExploreLayer = cc.Layer.extend({
         this._spiritShadow.runAction(spiritShadowAction);
 
         var mapMoveAction = cc.Sequence.create(
-            cc.EaseSineIn.create(cc.MoveBy.create(0.4, cc.p(-6, 0))),
-            cc.MoveBy.create(0.2, cc.p(-40, 0)),
-            cc.MoveBy.create(0.2, cc.p(-40, 0)),
+            cc.EaseSineIn.create(cc.MoveBy.create(0.2, cc.p(-6, 0))),
+            cc.MoveBy.create(0.3, cc.p(-40, 0)),
+            cc.MoveBy.create(0.3, cc.p(-40, 0)),
             cc.EaseSineOut.create(cc.MoveBy.create(0.1, cc.p(-6, 0)))
         );
 
@@ -563,21 +577,22 @@ var ExploreLayer = cc.Layer.extend({
     onTouchesEnded: function (touches, event) {
         cc.log("TaskLayer onTouchesEnded");
 
-        var beganOffset = this._getScrollViewOffset();
-        var endOffset = this._scrollView.getContentOffset();
-
-        var len = beganOffset.x - endOffset.x;
-
         this._scrollView.unscheduleAllCallbacks();
         this._scrollView.stopAllActions();
 
-        if (len > 30) {
-            this._index = 1 - Math.floor(endOffset.x / 640);
-        } else if (len < -30) {
-            this._index = 1 - Math.ceil(endOffset.x / 640);
-        }
+        var beganOffset = this._getScrollViewOffset();
+        var endOffset = this._scrollView.getContentOffset();
+        var len = beganOffset.x - endOffset.x;
 
-        this.update();
+        if (len !== 0) {
+            if (len > 30) {
+                this._index = 1 - Math.floor(endOffset.x / 640);
+            } else if (len < -30) {
+                this._index = 1 - Math.ceil(endOffset.x / 640);
+            }
+
+            this.update();
+        }
     },
 
     /**

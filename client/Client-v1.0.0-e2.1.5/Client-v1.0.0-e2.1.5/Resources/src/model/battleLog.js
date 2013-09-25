@@ -42,6 +42,10 @@ var BattleLog = Entity.extend({
         return true;
     },
 
+    isWin: function () {
+        return (this._winner === "own");
+    },
+
     getBattleNode: function () {
         cc.log("BattleLog getBattleNode");
 

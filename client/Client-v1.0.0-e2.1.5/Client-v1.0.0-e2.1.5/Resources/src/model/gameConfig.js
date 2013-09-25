@@ -23,14 +23,3 @@ var GAME_WIDTH_MIDPOINT = 360;
 var GAME_HEIGHT_MIDPOINT = 568;
 
 var GAME_COMBAT_SPEED = 1.0;
-
-var gameGoodsName = {
-    "exp": "经验",
-    "money": "铜板",
-    "gold": "黄金",
-    "power": "体力",
-    "elixir": "仙丹",
-    "fragment": "卡魂",
-    "energy": "活力",
-    "skillPoint": "技能点"
-};

@@ -67,8 +67,6 @@ var main_scene_image = {
     star2: main_scene_path + "star2.png",
     ladder1: main_scene_path + "ladder1.png",
     ladder2: main_scene_path + "ladder2.png",
-    tower1: main_scene_path + "tower1.png",
-    tower2: main_scene_path + "tower2.png",
     cloud: main_scene_path + "cloud.png",
     gameFrame: main_scene_path + "gameFrame.png",
 
@@ -244,6 +242,7 @@ var main_scene_image = {
     button41: main_scene_path + "button41.png",
     button41s: main_scene_path + "button41s.png",
     button42: main_scene_path + "button42.png",
+    button43: main_scene_path + "button43.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -466,7 +465,18 @@ var main_scene_image = {
     icon219: main_scene_path + "icon219.png",
     icon220: main_scene_path + "icon220.png",
     icon221: main_scene_path + "icon221.png",
-    icon222: main_scene_path + "icon222.png"
+    icon222: main_scene_path + "icon222.png",
+    icon223: main_scene_path + "icon223.png",
+    icon224: main_scene_path + "icon224.png",
+    icon225: main_scene_path + "icon225.png",
+    icon226: main_scene_path + "icon226.png",
+    icon227: main_scene_path + "icon227.png",
+    icon228: main_scene_path + "icon228.png",
+    icon229: main_scene_path + "icon229.png",
+    icon230: main_scene_path + "icon230.png",
+    icon231: main_scene_path + "icon231.png",
+    icon232: main_scene_path + "icon232.png",
+    icon233: main_scene_path + "icon233.png"
 };
 
 var main_scene_res = [
@@ -526,8 +536,8 @@ var effectRect = [
     cc.rect(0, 0, 80, 550),
     cc.rect(0, 0, 210, 200),
     cc.rect(0, 0, 65, 200),
-    cc.rect(0, 0, 85, 230),
-    cc.rect(0, 0, 90, 230)
+    cc.rect(0, 0, 130, 300),
+    cc.rect(0, 0, 120, 300)
 ];
 
 for (var effectId = 0; effectId < effectConfig.length; ++effectId) {

@@ -13,16 +13,18 @@
 
 
 var PassLayer = cc.Layer.extend({
-    _scrollView: null,
-    _cardSprite: null,
+    _top: 0,
+    _isWin: null,
+    _spirit: null,
     _towerSprite: null,
+    _topLabel: null,
     _skillPointLabel: null,
-    _skillPointObtainLabel: null,
-    _expObtainLabel: null,
-    _moneyObtainLabel: null,
-    _passLabelList: [],
-    _ladderList: [],
-    _nowTop: 0,
+    _wipeOutItem: null,
+    _resetItem: null,
+    _mysticalItem: null,
+    _scrollView: null,
+    _element: {},
+    _blackHoleSprite: [],
 
     onEnter: function () {
         cc.log("PassLayer onEnter");
@@ -36,86 +38,163 @@ var PassLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        this._nowTop = gameData.pass.get("top");
+        var pass = gameData.pass;
+
+        this._top = pass.getTop();
+        this._element = {};
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg5);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(100, 200, 330, 750));
-        var menu = LazyMenu.create();
-        menu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(menu);
+        this._mysticalItem = cc.MenuItemImage.create(
+            main_scene_image.button43,
+            main_scene_image.button43,
+            this._onClickMystical,
+            this
+        );
+        this._mysticalItem.setPosition(cc.p(580, 610));
+        this._mysticalItem.setVisible(false);
+
+        var mysticalItemMenu = cc.Menu.create(this._mysticalItem);
+        mysticalItemMenu.setPosition(cc.p(0, 0));
+        this.addChild(mysticalItemMenu);
+
+        for (var i = 0; i < 6; ++i) {
+            this._blackHoleSprite[i] = cc.Sprite.create(main_scene_image["icon" + (228 + i)]);
+            this._blackHoleSprite[i].setPosition(cc.p(82, 125));
+            this._mysticalItem.addChild(this._blackHoleSprite[i]);
+        }
+
+        var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 768));
+
+        var lazyMenu = LazyMenu.create();
+        lazyMenu.setPosition(cc.p(0, 0));
+        scrollViewLayer.addChild(lazyMenu);
 
         for (var i = 1; i <= MAX_PASS_COUNT; ++i) {
-            var passLabel = PassLabel.create(i);
-            passLabel.setPosition(cc.p(20 + (i - 1) % 2 * 140, 20 + 185 * (i - 1)));
-            scrollViewLayer.addChild(passLabel);
+            var flag = (i - 1) % 2;
+
+            var passItem = null;
+            var passNamePoint = null;
+
+            if (pass.isBossPass(i)) {
+                passItem = cc.MenuItemImage.create(
+                    main_scene_image["button13"],
+                    main_scene_image["button13s"],
+                    main_scene_image["button13d"],
+                    this._onClickDefiance(i),
+                    this
+                );
+                passItem.setPosition(cc.p(125 + flag * 210, 100 + 185 * (i - 1)));
+
+                passNamePoint = cc.p(65 + 340 * flag, 20 + 185 * (i - 1));
+
+            } else {
+                passItem = cc.MenuItemImage.create(
+                    main_scene_image["button14"],
+                    main_scene_image["button14s"],
+                    main_scene_image["button14d"],
+                    this._onClickDefiance(i),
+                    this
+                );
+                passItem.setPosition(cc.p(140 + flag * 180, 100 + 185 * (i - 1)));
+
+                passNamePoint = cc.p(72 + 310 * flag, 50 + 185 * (i - 1));
+            }
+            lazyMenu.addChild(passItem);
 
             if (i > 1) {
-                var ladderSprite = cc.Sprite.create(main_scene_image["ladder" + ((i) % 2 + 1)]);
+                var ladderSprite = cc.Sprite.create(main_scene_image["ladder" + (2 - flag)]);
                 ladderSprite.setAnchorPoint(cc.p(0, 0));
-                ladderSprite.setPosition(cc.p(80, 110 + 185 * (i - 2)));
-                if (i > this._nowTop + 1) {
+                ladderSprite.setPosition(cc.p(140 + 16 * flag, 132 + 185 * (i - 2)));
+                scrollViewLayer.addChild(ladderSprite);
+
+                if (i > this._top) {
                     ladderSprite.setVisible(false);
                 }
-                scrollViewLayer.addChild(ladderSprite);
-                this._ladderList[i] = ladderSprite;
             }
 
-            var numLabel = cc.LabelTTF.create("第" + i + "关", "STHeitiTC-Medium", 25);
-            numLabel.setAnchorPoint(cc.p(0, 0));
-            numLabel.setPosition(cc.p((i - 1) % 2 * 240, 20 + 185 * (i - 1)));
-            scrollViewLayer.addChild(numLabel);
+            var passNameBgSprite = cc.Sprite.create(main_scene_image.icon3);
+            passNameBgSprite.setPosition(passNamePoint);
+            scrollViewLayer.addChild(passNameBgSprite);
+            passNameBgSprite.setScale(0.8);
+
+            var passNameLabel = cc.LabelTTF.create("第" + i + "关", "STHeitiTC-Medium", 20);
+            passNameLabel.setColor(cc.c3b(255, 240, 170));
+            passNameLabel.setPosition(passNamePoint);
+            scrollViewLayer.addChild(passNameLabel);
+
+            this._element[i] = {
+                passItem: passItem,
+                ladderSprite: ladderSprite
+            };
         }
 
-        this._cardSprite = cc.Sprite.create(main_scene_image.card0);
-        this._cardSprite.setAnchorPoint(cc.p(0, 0));
-        this._cardSprite.setPosition(this._getCardLocation(this._nowTop));
-        if (this._nowTop < 1) {
-            this._cardSprite.setVisible(false);
-        }
-        scrollViewLayer.addChild(this._cardSprite, 1);
+        this._spirit = SpiritNode.create();
+        this._spirit.setAnchorPoint(cc.p(0, 0));
+        this._spirit.setPosition(this._getCardLocation(this._top));
+        scrollViewLayer.addChild(this._spirit, 1);
 
-        this._scrollView = cc.ScrollView.create(cc.size(330, 743), scrollViewLayer);
-        this._scrollView.setContentSize(cc.size(300, 18620));
-        this._scrollView.setPosition(cc.p(100, 200));
+        this._scrollView = cc.ScrollView.create(cc.size(640, 768), scrollViewLayer);
+        this._scrollView.setContentSize(cc.size(640, 18620));
+        this._scrollView.setPosition(GAME_BG_POINT);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
-        this._locate(this._nowTop);
+        this._locate(this._top);
 
         var tipLabel = cc.Sprite.create(main_scene_image.bg6);
         tipLabel.setAnchorPoint(cc.p(0, 0));
-        tipLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 894));
+        tipLabel.setPosition(cc.p(40, 894));
         this.addChild(tipLabel);
 
-        var wipeOutItem = cc.MenuItemImage.create(
+        this._topLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
+        this._topLabel.setColor(cc.c3b(255, 240, 170));
+        this._topLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._topLabel.setPosition(cc.p(190, 928));
+        this.addChild(this._topLabel);
+
+        this._skillPointLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 20);
+        this._skillPointLabel.setColor(cc.c3b(255, 240, 170));
+        this._skillPointLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._skillPointLabel.setPosition(cc.p(583, 837));
+        this.addChild(this._skillPointLabel);
+
+        this._towerSprite = cc.Sprite.create(main_scene_image.icon225);
+        this._towerSprite.setAnchorPoint(cc.p(0, 0));
+        this._towerSprite.setPosition(cc.p(524, 226));
+        this.addChild(this._towerSprite);
+
+        var towerBgSprite = cc.Sprite.create(main_scene_image.icon224);
+        towerBgSprite.setAnchorPoint(cc.p(0, 0));
+        towerBgSprite.setPosition(cc.p(510, 220));
+        this.addChild(towerBgSprite);
+
+        this._resetItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
+            main_scene_image.button9d,
+            main_scene_image.icon223,
+            this._onClickReset,
+            this
+        );
+        this._resetItem.setPosition(cc.p(580, 928));
+
+        this._wipeOutItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            main_scene_image.icon15,
             this._onClickWipeOut,
             this
         );
-        wipeOutItem.setPosition(cc.p(543, 34));
-        var wipeOutMenu = cc.Menu.create(wipeOutItem);
-        wipeOutMenu.setPosition(cc.p(0, 0));
-        tipLabel.addChild(wipeOutMenu);
+        this._wipeOutItem.setPosition(cc.p(580, 928));
 
-        var wipeOutIconSprite = cc.Sprite.create(main_scene_image.icon15);
-        wipeOutIconSprite.setPosition(cc.p(543, 34));
-        tipLabel.addChild(wipeOutIconSprite);
-
-        var towerBgSprite = cc.Sprite.create(main_scene_image.tower1);
-        towerBgSprite.setAnchorPoint(cc.p(0, 0));
-        towerBgSprite.setPosition(cc.p(530, 260));
-        this.addChild(towerBgSprite);
-
-        var len = this._nowTop / MAX_PASS_COUNT * 209;
-        this._towerSprite = cc.Sprite.create(main_scene_image.tower2, cc.rect(0, 209 - len, 94, len));
-        this._towerSprite.setAnchorPoint(cc.p(0, 0));
-        this._towerSprite.setPosition(cc.p(530, 260));
-        this.addChild(this._towerSprite);
+        var menu = cc.Menu.create(this._resetItem, this._wipeOutItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu);
 
         return true;
     },
@@ -123,69 +202,86 @@ var PassLayer = cc.Layer.extend({
     update: function () {
         cc.log("PassLayer update");
 
-        var top = gameData.pass.get("top");
+        var pass = gameData.pass;
 
-        if (top != this._nowTop) {
-            this._nowTop = top;
+        this._blackHoleRotate();
 
-            this._locate(this._nowTop);
-
-            var len = this._nowTop / MAX_PASS_COUNT * 209;
-            this._towerSprite.setTextureRect(cc.rect(0, 209 - len * 209, 94, len));
-
-            for (var i = 2; i <= MAX_PASS_COUNT; ++i) {
-                if (i <= this._nowTop) {
-                    this._ladderList[i].setVisible(true);
-                } else {
-                    this._ladderList[i].setVisible(false);
-                }
-            }
-
-            this.scheduleOnce(this._defianceAnimation)
+        for (var i = 1; i <= MAX_PASS_COUNT; ++i) {
+            this._element[i].passItem.setEnabled(pass.getMarkByIndex(i));
         }
+
+        if (this._isWin != null) {
+            if (this._isWin) {
+                this._spirit.passWinSpeak();
+            } else {
+                this._spirit.passFailSpeak();
+            }
+        }
+
+        var top = pass.getTop();
+
+        if (top != this._top) {
+            this._locate(this._top);
+
+            this._top = top;
+
+            this._defianceAnimation();
+        }
+
+        this._wipeOutItem.setVisible(pass.canWipeOut());
+        this._resetItem.setEnabled(pass.canReset());
+        this._mysticalItem.setVisible(pass.get("hasMystical"));
+
+        this._skillPointLabel.setString(gameData.player.get("skillPoint"));
+        this._topLabel.setString(pass.get("top"));
+
+        var height = this._top / MAX_PASS_COUNT * 211;
+        this._towerSprite.setTextureRect(cc.rect(0, 211 - height, 104, height));
     },
 
     _getOffset: function (index) {
         cc.log("PassLayer _getOffset");
 
-        var len = 140 - 185 * (index - 1);
+        var height = 140 - 185 * (index - 1);
 
-        len = len < 0 ? len : 0;
-        len = len > -17870 ? len : -17870;
+        height = height < 0 ? height : 0;
+        height = height > -17870 ? height : -17870;
 
-        return cc.p(0, len);
+        return cc.p(0, height);
     },
 
     _locate: function (index, duration) {
         cc.log("PassLayer _locate");
 
-        var offsetPoint = this._getOffset(index);
+        var offset = this._getOffset(index);
 
         if (duration) {
-            this._scrollView.setContentOffsetInDuration(offsetPoint, duration);
+            this._scrollView.setContentOffsetInDuration(offset, duration);
         } else {
-            this._scrollView.setContentOffset(offsetPoint);
+            this._scrollView.setContentOffset(offset);
         }
     },
 
     _getCardLocation: function (index) {
         cc.log("PassLayer _getCardLocation");
 
+        var flag = (index - 1) % 2;
 
-        return cc.p(50 + (index - 1) % 2 * 140, 80 + 185 * (index - 1));
+        if (gameData.pass.isBossPass(index)) {
+            return cc.p(125 + flag * 210, 168 + 185 * (index - 1));
+        } else {
+            return cc.p(140 + flag * 180, 168 + 185 * (index - 1));
+        }
     },
 
-    _cardWalk: function (index, duration) {
-        cc.log("PassLayer _cardWalk");
+    _spiritWalk: function (index, duration) {
+        cc.log("PassLayer _spiritWalk");
 
         duration = duration || 2;
-        var lowIndex = index > 1 ? index - 1 : 1;
 
-        this._cardSprite.setPosition(this._getCardLocation(lowIndex));
-        this._cardSprite.setVisible(true);
-
-        var jumpAction = cc.JumpTo.create(duration, this._getCardLocation(index), 20, 5);
-        this._cardSprite.runAction(jumpAction);
+        this._spirit.setPosition(this._getCardLocation(index - 1));
+        var jumpAction = cc.JumpTo.create(duration, this._getCardLocation(index), 30, 5);
+        this._spirit.runAction(jumpAction);
 
         this._locate(index, duration);
     },
@@ -193,15 +289,138 @@ var PassLayer = cc.Layer.extend({
     _showLadder: function (index) {
         cc.log("PassLayer _showLadder");
 
-        var ladderSprite = this._ladderList[index];
+        var ladderSprite = this._element[index].ladderSprite;
 
         ladderSprite.stopAllActions();
 
         var showAction = cc.Show.create();
         var fadeInAction = cc.FadeIn.create(1.5);
-        var blinkAction = cc.Blink.create(1, 3);
+        var blinkAction = cc.Blink.create(1, 2);
         var action = cc.Sequence.create(showAction, fadeInAction, blinkAction);
         ladderSprite.runAction(action);
+    },
+
+    _reset: function () {
+        cc.log("PassLayer _reset");
+
+        var that = this;
+        gameData.pass.reset(function (data) {
+            cc.log(data);
+
+            that.update();
+        });
+    },
+
+    _showReset: function () {
+        cc.log("PassLayer _showWipeOutReward");
+
+        var layer = LazyLayer.create();
+        this.addChild(layer);
+
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
+        bgLayer.setPosition(GAME_ZERO);
+        layer.addChild(bgLayer);
+
+        var bgSprite = cc.Sprite.create(main_scene_image.bg16);
+        bgSprite.setPosition(cc.p(360, 580));
+        layer.addChild(bgSprite);
+
+        var rewardLabel = cc.LabelTTF.create("是否消耗 200 魔石重置关卡?", "STHeitiTC-Medium", 25);
+        rewardLabel.setColor(cc.c3b(255, 240, 170));
+        rewardLabel.setAnchorPoint(cc.p(0.5, 1));
+        rewardLabel.setPosition(cc.p(360, 650));
+        layer.addChild(rewardLabel);
+
+        var okItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon95,
+            function () {
+                this._reset();
+                layer.removeFromParent();
+            },
+            this
+        );
+        okItem.setPosition(cc.p(260, 530));
+
+        var closeItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon36,
+            function () {
+                layer.removeFromParent();
+            },
+            this
+        );
+        closeItem.setPosition(cc.p(460, 530));
+
+        var menu = cc.Menu.create(okItem, closeItem);
+        menu.setPosition(cc.p(0, 0));
+        layer.addChild(menu);
+    },
+
+    _showWipeOutReward: function (reward) {
+        cc.log("PassLayer _showWipeOutReward");
+
+        var layer = LazyLayer.create();
+        this.addChild(layer);
+
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
+        bgLayer.setPosition(GAME_ZERO);
+        layer.addChild(bgLayer);
+
+        var bgSprite = cc.Sprite.create(main_scene_image.bg17);
+        bgSprite.setPosition(cc.p(360, 580));
+        layer.addChild(bgSprite);
+
+        var obtainSprite = cc.Sprite.create(main_scene_image.icon226);
+        obtainSprite.setPosition(cc.p(360, 718));
+        layer.addChild(obtainSprite);
+
+        var offsetY = 655;
+        for (var key in reward) {
+            var str = lz.getNameWithKey(key) + " : " + reward[key];
+            var rewardLabel = cc.LabelTTF.create(str, "STHeitiTC-Medium", 20);
+            rewardLabel.setColor(cc.c3b(255, 240, 170));
+            rewardLabel.setAnchorPoint(cc.p(0.5, 1));
+            rewardLabel.setPosition(cc.p(360, offsetY));
+            layer.addChild(rewardLabel);
+
+            offsetY -= 45;
+        }
+
+        var closeItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon95,
+            function () {
+                layer.removeFromParent();
+                this.update();
+            },
+            this
+        );
+        closeItem.setPosition(cc.p(360, 415));
+
+        var menu = cc.Menu.create(closeItem);
+        menu.setPosition(cc.p(0, 0));
+        layer.addChild(menu);
+    },
+
+    _blackHoleRotate: function () {
+        cc.log("PassLayer _blackHoleRotate");
+
+        var deltaAngleList = [10, 15, 20, 25, 30, 35];
+        var len = this._blackHoleSprite.length;
+
+        for (var i = 0; i < len; ++i) {
+            this._blackHoleSprite[i].stopAllActions();
+
+            this._blackHoleSprite[i].runAction(
+                cc.RepeatForever.create(
+                    cc.RotateBy.create(1, deltaAngleList[i])
+                )
+            );
+        }
     },
 
     _defianceAnimation: function () {
@@ -209,51 +428,82 @@ var PassLayer = cc.Layer.extend({
 
         LazyLayer.showCloudLayer();
 
-        this._cardWalk(this._nowTop);
-
-        if (this._nowTop == 100) {
-            this.scheduleOnce(function () {
-                LazyLayer.closeCloudLayer();
-            }, 2);
+        if (this._top >= MAX_PASS_COUNT) {
+            LazyLayer.closeCloudLayer();
             return;
         }
 
+        this._showLadder(this._top);
+
         this.scheduleOnce(function () {
-            this._showLadder(this._nowTop + 1);
-        }, 2);
+            this._spiritWalk(this._top);
+        }, 2.5);
 
         this.scheduleOnce(function () {
             LazyLayer.closeCloudLayer();
         }, 4.5);
     },
 
-    _wipeOutAnimation: function () {
+    _wipeOutAnimation: function (reward) {
         cc.log("PassLayer _wipeOutAnimation");
 
         LazyLayer.showCloudLayer();
 
         this._locate(1);
 
-        this._cardWalk(1, 0.3);
-        var index = 2;
+        this._spiritWalk(2, 0.3);
+        var index = 3;
         this.schedule(function () {
-            if (index > this._nowTop) {
+            if (index > this._top) {
                 LazyLayer.closeCloudLayer();
+                this._showWipeOutReward(reward);
                 return;
             }
 
-            this._cardWalk(index, 0.3);
+            this._spiritWalk(index, 0.3);
             index += 1;
-        }, 0.4, this._nowTop);
+        }, 0.4, this._top - 2);
+    },
+
+    _onClickDefiance: function (id) {
+        return function () {
+            cc.log("PassLayer _onClickDefiance: " + id);
+
+            if (id > this._top) {
+                TipLayer.tip("请先挑战前面关卡");
+                return;
+            }
+
+            var that = this;
+            gameData.pass.defiance(function (battleLogId) {
+                that._isWin = BattlePlayer.getInstance().play(battleLogId);
+            }, id);
+        }
     },
 
     _onClickWipeOut: function () {
         cc.log("PassLayer _onClickWipeOut");
 
-        this._wipeOutAnimation();
         gameData.pass.wipeOut(function (data) {
             cc.log(data);
+
+            this._wipeOutAnimation(data);
         });
+    },
+
+    _onClickMystical: function () {
+        cc.log("PassLayer _onClickMystical");
+
+        var that = this;
+        gameData.pass.mystical(function (battleLogId) {
+            that._isWin = BattlePlayer.getInstance().play(battleLogId);
+        });
+    },
+
+    _onClickReset: function () {
+        cc.log("PassLayer _onClickReset");
+
+        this._showReset();
     }
 });
 

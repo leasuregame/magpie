@@ -157,7 +157,7 @@ var BatterLayer = cc.Layer.extend({
             this._battleNode[target].defend(battleStep.getEffect(), battleStep.isCrit());
 
             var effectSprite = playEffect({
-                effectId: 8,
+                effectId: 7,
                 target: this,
                 loops: 1,
                 delay: 0.025,

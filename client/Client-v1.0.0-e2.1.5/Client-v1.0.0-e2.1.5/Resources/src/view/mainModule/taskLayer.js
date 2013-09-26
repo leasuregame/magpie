@@ -187,6 +187,7 @@ var TaskLayer = cc.Layer.extend({
         this._scrollView = cc.ScrollView.create(cc.size(640, 768), scrollViewLayer);
         this._scrollView.setPosition(GAME_BG_POINT);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
+        this._scrollView.setBounceable(false);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
 

@@ -237,6 +237,7 @@ var ExploreLayer = cc.Layer.extend({
         this._scrollView.setContentSize(cc.size(6400, 569));
         this._scrollView.setPosition(GAME_BG_POINT);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
+        this._scrollView.setBounceable(false);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
 

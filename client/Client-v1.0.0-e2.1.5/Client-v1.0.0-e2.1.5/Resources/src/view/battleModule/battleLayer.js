@@ -156,6 +156,20 @@ var BatterLayer = cc.Layer.extend({
 
             this._battleNode[target].defend(battleStep.getEffect(), battleStep.isCrit());
 
+            var cb = function (target, position) {
+                return function () {
+                    playEffect({
+                        effectId: 10,
+                        target: target,
+                        loops: 1,
+                        delay: 0.03,
+                        zOrder: 10,
+                        position: position
+                    })
+                };
+
+            }(this, targetLocate);
+
             var effectSprite = playEffect({
                 effectId: 7,
                 target: this,
@@ -163,10 +177,13 @@ var BatterLayer = cc.Layer.extend({
                 delay: 0.025,
                 zOrder: 10,
                 rotation: lz.getAngle(attackerLocate, targetLocate),
-                position: attackerLocate
+                position: attackerLocate,
+                clear: true,
+                cb: cb
             });
 
             var moveAction = cc.EaseSineIn.create(cc.MoveTo.create(0.45, targetLocate));
+
             effectSprite.runAction(moveAction);
         }
 

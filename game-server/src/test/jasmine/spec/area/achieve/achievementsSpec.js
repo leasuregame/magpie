@@ -177,7 +177,9 @@ describe("Area Server", function() {
 						doAjax('/update/player/100', {
 							pass: JSON.stringify({
 								layer: 50,
-								mark: []
+								mark: [],
+                                mystical: { "diff": 1, "isTrigger": true, "isClear": false },
+                                isReset:true
 							})
 						}, function(res) {
 							loginWith('arthur', '1', 1);
@@ -205,7 +207,9 @@ describe("Area Server", function() {
 						doAjax('/update/player/100', {
 							pass: JSON.stringify({
 								layer: 100,
-								mark: []
+								mark: [],
+                                mystical: { "diff": 1, "isTrigger": true, "isClear": false },
+                                isReset:true
 							})
 						}, function(res) {
 							loginWith('arthur', '1', 1);

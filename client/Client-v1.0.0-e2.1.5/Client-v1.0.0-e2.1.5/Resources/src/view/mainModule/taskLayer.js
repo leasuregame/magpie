@@ -225,7 +225,7 @@ var TaskLayer = cc.Layer.extend({
 
                     if (index > section) {
                         sectionItem.showIconImage();
-                        sectionItem.setColor(cc.c3b(255, 239, 131));
+                        sectionItem.setColor(cc.c3b(130, 130, 130));
                     } else {
                         sectionItem.hidIconImage();
                     }

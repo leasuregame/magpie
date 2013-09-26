@@ -32,13 +32,13 @@ Handler::explore = (msg, session, next) ->
       player = _player
       if taskId > player.task.id 
         return cb({code: 501, msg: '不能探索此关'})
-      console.log("taskId = " + taskId);
+
       taskManager.explore player, taskId, cb
 
     (data, chapterId, sectionId, cb) =>
       if data.result is 'fight'
         taskManager.fightToMonster(
-          {pid: player.id, tableId: chapterId, sectionId: sectionId, table: 'task_config'}
+          {pid: player.id, tableId: taskId, sectionId: sectionId, table: 'task_config'}
         , (err, battleLog) ->
           data.battle_log = battleLog
 
@@ -172,13 +172,7 @@ Handler::passBarrier = (msg, session, next) ->
 
     next(null, {code: 200, msg: {
       battleLog: bl, 
-      #pass: player.pass,
-      pass:{
-        canReset: if player.pass.resetTimes > 0 then true else false
-        layer: player.pass.layer,
-        mark: player.pass.mark,
-        hasMystical:player.hasMysticalPass()
-      }
+      pass: player.getPass(),
       power: player.power,
       exp: player.exp,
       lv: player.lv,

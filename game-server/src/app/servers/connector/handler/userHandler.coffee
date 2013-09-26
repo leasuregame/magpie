@@ -59,16 +59,7 @@ Handler::login = (msg, session, next) ->
       logger.error 'fail to login: ', err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    #pass返回格式改成与passBarrier接口一样
-    oPlayer = utility.deepCopy(player);
-    oPlayer.pass = {
-        canReset: if player.pass.resetTimes then true else false
-        layer: player.pass.layer,
-        mark: player.pass.mark,
-        hasMystical:if player.pass.mystical.isTrigger and not player.pass.mystical.isClear then true else false
-    }
-
-    next(null, {code: 200, msg: {user: user, player: oPlayer}})
+    next(null, {code: 200, msg: {user: user, player: player}})
 
 onUserLeave = (app, session, reason) ->
   console.log 'user leave: ', session.uid

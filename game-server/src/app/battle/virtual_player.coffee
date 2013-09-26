@@ -7,14 +7,14 @@ class VirtualPlayer extends Player
   init: (data) ->
     @data = data
     cards = parseCards data
-    console.log cards
+
     if data.is_random? and data.is_random is 1
       lineUp = randomLineUp cards
     else if data.formation?
       lineUp = genLineUp cards, data.formation
     else
       lineUp = defaultLineUp data.cards
-    console.log lineUp
+    
     super(
       cards: cards
       lineUp: lineUp
@@ -64,14 +64,16 @@ parseCards = (data) ->
       id: realId++
       tableId: parseInt(id)
       sectionId: data.sectionId
+      atk_inc: data.atk_inc
+      hp_inc: data.hp_inc
     }
     if not hasOneBoss and data.boss_id? and parseInt(id) is parseInt(data.boss_id)
       _obj.boss = {
         id: data.boss_id
         skill_trigger_rate: data.trigger_rate
         attr_inc: data.boss_attr
-        point_atk_inc: data.atk_inc
-        point_hp_inc: data.hp_inc
+        boss_atk_inc: data.boss_atk_inc
+        boss_hp_inc: data.boss_hp_inc
       }
       hasOneBoss = true
 

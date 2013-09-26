@@ -89,19 +89,19 @@ var PaymentLayer = LazyLayer.extend({
             paymentIcon.setPosition(cc.p(421, y + 50));
             scrollViewLayer.addChild(paymentIcon, 1);
 
-            var equalIcon = StrokeLabel.create("=", "黑体", 40);
+            var equalIcon = StrokeLabel.create("=", "STHeitiTC-Medium", 40);
             equalIcon.setPosition(cc.p(125, y + 50));
             scrollViewLayer.addChild(equalIcon);
 
-            var cashLabel = StrokeLabel.create(paymentTypeList[i].cash, "黑体", 28);
+            var cashLabel = StrokeLabel.create(paymentTypeList[i].cash, "STHeitiTC-Medium", 28);
             cashLabel.setPosition(cc.p(76, y + 50));
             scrollViewLayer.addChild(cashLabel);
 
-            var goldLabel = StrokeLabel.create(paymentTypeList[i].cash * 10, "黑体", 28);
+            var goldLabel = StrokeLabel.create(paymentTypeList[i].cash * 10, "STHeitiTC-Medium", 28);
             goldLabel.setPosition(cc.p(205, y + 50));
             scrollViewLayer.addChild(goldLabel);
 
-            var otherGoldLabel = StrokeLabel.create(paymentTypeList[i].gold, "黑体", 28);
+            var otherGoldLabel = StrokeLabel.create(paymentTypeList[i].gold, "STHeitiTC-Medium", 28);
             otherGoldLabel.setPosition(cc.p(320, y + 50));
             scrollViewLayer.addChild(otherGoldLabel);
 

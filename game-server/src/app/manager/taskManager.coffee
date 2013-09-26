@@ -24,20 +24,20 @@ class Manager
       upgrade: false
       open_box_card: null
       battle_log: null
-      isMomo: false
+      #isMomo: false
     }
 
     ### 检查是否体力充足 ###
     if player.power.value < taskData.power_consume
       return cb({code: 501,msg: '体力不足'}, null, null)
 
-    data.result = utility.randomValue( 
+    data.result = utility.randomValue(
       ['fight','box', 'none'],
       [taskRate.fight, taskRate.precious_box, (100 - taskRate.fight - taskRate.precious_box)]
     )
 
     ### 判断最后一小关，如果没有在这一个章节中获得战斗的胜利，则触发战斗 ###
-    if player.task.progress is taskData.points and not player.task.hasWin
+    if player.task.progress is (taskData.points - 1) and not player.task.hasWin
       data.result = 'fight'
 
     cb(null, data, taskData.chapter_id, taskData.section_id)
@@ -53,7 +53,7 @@ class Manager
 
     rewards = {exp_obtain: 0, money_obtain: 0, skill_point: 0}
     isWipeOut = false
-    for id in _.range(1, layer)
+    for id in _.range(1, layer + 1)
       if not player.hasPassMark(id)
         data = table.getTableItem('pass_reward', id)
         rewards.exp_obtain += parseInt(data.exp)
@@ -116,6 +116,7 @@ class Manager
         return cb(err)
 
       player.addCard card
+      console.log(card.toJson());
       data.open_box_card = card.toJson()
       cb()
 
@@ -133,19 +134,25 @@ class Manager
 
       ### the first time win, obtain some spirit ###
       spirit = {total: 0}
-      _.each battleLog.enemy.cards, (v, k) ->
+      _.each battleLog.cards, (v, k) ->
+        ### 只计算敌方卡牌 ###
+        return if k > 6
+
         if v.boss?
           spirit[k] = spiritConfig.SPIRIT.TASK.BOSS
           spirit.total += spiritConfig.SPIRIT.TASK.BOSS
         else
           spirit[k] = spiritConfig.SPIRIT.TASK.OTHER
-          spirit.total = spiritConfig.SPIRIT.TASK.OTHER
+          spirit.total += spiritConfig.SPIRIT.TASK.OTHER
       battleLog.rewards.spirit = spirit
 
+      player.incSpirit spirit.total
+      data["spiritor"] = player.spiritor
+
     if utility.hitRate(taskRate.fragment_rate)
-      battleLog.rewards.fragment = true
+      battleLog.rewards.fragment = 1
     else
-      battleLog.rewards.fragment = false
+      battleLog.rewards.fragment = 0
 
     saveExpCardsInfo player.id, taskData.max_drop_card_number, (err, results) ->
       if err
@@ -169,18 +176,22 @@ class Manager
 
     # 更新玩家money
     player.increase('money', taskData.coins_obtain)
-
+    console.log 'count explore result: ', taskId, player.task
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
-    if taskId == player.task.id
+    if taskId is player.task.id
       task = utility.deepCopy(player.task)
       task.progress += 1
-      if task.progress > taskData.points
+      if task.progress >= taskData.points
         task.progress = 0
         task.id += 1
         task.hasWin = false
         ### 一大关结束，触发摸一摸功能 ###
-        data.isMomo = true
+        if task.id % 10 is 1 && task.id != 1
+          data.momo = player.createMonoGift();
+          #task.momo = data.momo;
+          console.log(data.momo);
+        #data.isMomo = true
       player.set('task', task)
 
     # 判断是否升级
@@ -211,11 +222,12 @@ class Manager
           return cb(err) 
 
         card.addPassiveSkills pss
+
         cb(null, card)
 
 randomCard = (star) ->
   ids = _.range(parseInt(star), 250, 5)
-  index = _.random(0, ids.length)
+  index = _.random(0, ids.length - 1)
   ids[index]
 
 bornPassiveSkill = () ->

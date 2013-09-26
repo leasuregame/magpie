@@ -35,6 +35,9 @@ var BattleScene = cc.Scene.extend({
         this.addChild(battleEndLayer, 1);
         this._battleProcess.push(battleEndLayer);
 
+        var gameFrame = GameFrame.create();
+        this.addChild(gameFrame, 1);
+
         return true;
     },
 
@@ -46,11 +49,10 @@ var BattleScene = cc.Scene.extend({
     },
 
     next: function () {
-        cc.log("BattleScene next");
+        cc.log("BattleScene next: " + this._index + " / " + this._battleProcess.length);
 
         if (this._index < this._battleProcess.length) {
-            this._battleProcess[this._index].play();
-            this._index += 1;
+            this._battleProcess[this._index++].play();
         } else {
             this.end();
         }

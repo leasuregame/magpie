@@ -15,8 +15,9 @@
 var BattleLog = Entity.extend({
     _id: 0,
     _type: PVE_BATTLE_LOG,
-    _own: null,
-    _enemy: null,
+    _card: null,
+    _ownId: 0,
+    _enemyId: 0,
     _winner: "",
     _reward: null,
     _battleStep: null,
@@ -27,11 +28,12 @@ var BattleLog = Entity.extend({
         cc.log("BattleLog init");
 
         var battleLog = BattleLogPool.getInstance().getBattleLogById(id);
-        cc.log(battleLog);
+
         this.set("id", battleLog.id);
         this.set("type", battleLog.type);
-        this.set("own", battleLog.own);
-        this.set("enemy", battleLog.enemy);
+        this.set("card", battleLog.cards);
+        this.set("ownId", battleLog.ownId);
+        this.set("enemyId", battleLog.enemyId);
         this.set("winner", battleLog.winner);
         this.set("reward", battleLog.rewards);
         this.set("battleStep", battleLog.steps);
@@ -40,45 +42,38 @@ var BattleLog = Entity.extend({
         return true;
     },
 
+    isWin: function () {
+        return (this._winner === "own");
+    },
+
     getBattleNode: function () {
         cc.log("BattleLog getBattleNode");
 
         var key;
         var battleNode = {};
 
-        for (key in this._own.cards) {
-            battleNode[key] = this._own.cards[key];
-        }
-
-        for (key in this._enemy.cards) {
-            battleNode[key] = this._enemy.cards[key];
+        for (key in this._card) {
+            battleNode[key] = this._card[key];
         }
 
         return battleNode;
     },
 
     getSpirit: function (id) {
-        cc.log("BattleLog getThisCardSpirit: " + id);
+        cc.log("BattleLog getSpirit: " + id);
 
-        if (id < 6) {
-            return this._getOwnSpirit();
-        } else {
-            return this._getEnemySpirit();
-        }
-    },
-
-    _getOwnSpirit: function () {
-        for (var key in this._own.cards) {
-            if (typeof (this._own.cards[key]) == "number") {
-                return key;
+        var i;
+        if (id > 6) {
+            for (i = 6; i < 12; ++i) {
+                if (this._card[i] != undefined && typeof(this._card[i]) == "number") {
+                    return i;
+                }
             }
-        }
-    },
-
-    _getEnemySpirit: function () {
-        for (var key in this._enemy.cards) {
-            if (typeof (this._enemy.cards[key]) == "number") {
-                return key;
+        } else {
+            for (i = 1; i <= 6; ++i) {
+                if (this._card[i] != undefined && typeof(this._card[i]) == "number") {
+                    return i;
+                }
             }
         }
     },

@@ -23,43 +23,58 @@ var BattleEndLayer = cc.Layer.extend({
 
         this._battleLog = battleLog;
 
-        var bgSprite = null;
-
-        if (this._battleLog.get("winner") == "own") {
-            bgSprite = cc.Sprite.create(main_scene_image.bg17);
-        } else {
-            bgSprite = cc.Sprite.create(main_scene_image.bg18);
-        }
-
-        bgSprite.setPosition(cc.p(360, 580));
-        this.addChild(bgSprite);
-
         var reward = this._battleLog.get("reward");
 
-        cc.log(reward);
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
+        bgLayer.setPosition(cc.p(40, 0));
+        this.addChild(bgLayer);
 
-        var str = "";
-        for (var key in reward) {
-            str += "获得 " + key + " 数量 " + reward[key] + "\n";
+        if (this._battleLog.get("winner") == "own") {
+            var winBgSprite = cc.Sprite.create(main_scene_image.bg17);
+            winBgSprite.setPosition(cc.p(360, 580));
+            this.addChild(winBgSprite);
+
+            var obtainSprite = cc.Sprite.create(main_scene_image.icon227);
+            obtainSprite.setPosition(cc.p(360, 718));
+            this.addChild(obtainSprite);
+        } else {
+            var failBgSprite = cc.Sprite.create(main_scene_image.bg18);
+            failBgSprite.setPosition(cc.p(360, 580));
+            this.addChild(failBgSprite);
         }
 
-        var rewardLabel = cc.LabelTTF.create(str, "黑体", 20);
-        rewardLabel.setAnchorPoint(cc.p(0.5, 1));
-        rewardLabel.setPosition(cc.p(360, 590));
-        this.addChild(rewardLabel);
+        var offsetY = 655;
+        for (var key in reward) {
+            var str = lz.getNameWithKey(key) + " : ";
 
-        var endItem = cc.MenuItemImage.createWithIcon(
+            if (typeof (reward[key]) == "object") {
+                str += reward[key].total;
+            } else {
+                str += reward[key] || 0;
+            }
+
+            var rewardLabel = cc.LabelTTF.create(str, "STHeitiTC-Medium", 20);
+            rewardLabel.setColor(cc.c3b(255, 240, 170));
+            rewardLabel.setAnchorPoint(cc.p(0.5, 1));
+            rewardLabel.setPosition(cc.p(360, offsetY));
+            this.addChild(rewardLabel);
+
+            offsetY -= 45;
+        }
+
+        var okItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.icon95,
             this.end,
             this
         );
-        endItem.setPosition(cc.p(360, 400));
+        okItem.setPosition(cc.p(360, 415));
 
-        var menu = cc.Menu.create(endItem);
+        var menu = cc.Menu.create(okItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
+
 
         this.setVisible(false);
 

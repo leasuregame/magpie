@@ -2,6 +2,7 @@ var et = require("elementtree");
 var fs = require('fs');
 var path = require('path');
 var RESULT_PATH = path.join(__dirname, '..', 'TESTS-jasmine-api-test.xml' );
+var TEST_URL = 'http://127.0.0.1:3000/test';
 
 // Use webdriverjs to create a Selenium Client
 var client = require('webdriverjs').remote({
@@ -17,7 +18,7 @@ var client = require('webdriverjs').remote({
 
 var Run = function() {
     client.init()
-        .url('http://127.0.0.1:3000/test')
+        .url(TEST_URL)
         .waitFor(".runner .description", 60000 * 10)
         .execute(
             "var results = []; " +
@@ -65,7 +66,7 @@ var ConvertJasmineResults = function(results) {
         if (!res.result) {
             testcase.set('passed', 'false');
             var failure = subElement(testcase, 'failure');
-            failure.set('message', res.errorMessage)
+            failure.set('message', TEST_URL + res.url + '\n' + res.errorMessage)
             failure.text = res.stackTrace;
 
             failures++;

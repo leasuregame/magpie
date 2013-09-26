@@ -62,7 +62,7 @@ var AchievementLayer = cc.Layer.extend({
             nameIcon.setPosition(cc.p(120, y + 72));
             scrollViewLayer.addChild(nameIcon);
 
-            var nameLabel = StrokeLabel.create(achievement[key].name, "黑体", 25);
+            var nameLabel = StrokeLabel.create(achievement[key].name, "STHeitiTC-Medium", 25);
             nameLabel.setColor(cc.c3b(255, 224, 147));
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
             nameLabel.setPosition(cc.p(45, y + 69));
@@ -70,7 +70,7 @@ var AchievementLayer = cc.Layer.extend({
 
             var countLabel = cc.LabelTTF.create(
                 "(" + achievement[key].count + "/" + achievement[key].need + ")",
-                "黑体",
+                "STHeitiTC-Medium",
                 20
             );
             countLabel.setColor(cc.c3b(45, 18, 1));
@@ -78,7 +78,7 @@ var AchievementLayer = cc.Layer.extend({
             countLabel.setPosition(cc.p(200, y + 69));
             scrollViewLayer.addChild(countLabel);
 
-            var descriptionLabel = cc.LabelTTF.create(achievement[key].description, "黑体", 20);
+            var descriptionLabel = cc.LabelTTF.create(achievement[key].description, "STHeitiTC-Medium", 20);
             descriptionLabel.setColor(cc.c3b(45, 18, 1));
             descriptionLabel.setAnchorPoint(cc.p(0, 0.5));
             descriptionLabel.setPosition(cc.p(45, y + 34));

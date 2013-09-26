@@ -40,8 +40,19 @@ describe("Area Server", function() {
 						}
 					});
 				});
+				
+				it('扫荡其中一个已通的任务大关', function(){
+					request('area.taskHandler.wipeOut', {
+						type: 'task',
+						chapterId: 1
+					}, function(data) {
+						console.log('扫荡其中一个已通的任务大关', data);
+						expect(data.msg).toEqual({});
+					});
+				});
 
-				it("任务 should can be 扫荡", function() {
+
+				it("扫荡全部已通的任务大关", function() {
 					request('area.taskHandler.wipeOut', {
 						type: 'task'
 					}, function(data) {
@@ -71,6 +82,7 @@ describe("Area Server", function() {
 						});
 					});
 				});
+				
 			});
 
 			describe("关卡扫荡", function() {

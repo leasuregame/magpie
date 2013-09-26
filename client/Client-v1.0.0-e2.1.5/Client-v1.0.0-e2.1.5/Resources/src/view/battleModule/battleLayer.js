@@ -29,6 +29,7 @@ var BatterLayer = cc.Layer.extend({
         11: cc.p(355, 950),
         12: cc.p(590, 950)
     },
+    _rotation: {},
 
     init: function (battleLog) {
         cc.log("BatterLayer init");
@@ -49,16 +50,16 @@ var BatterLayer = cc.Layer.extend({
         bgSprite.setPosition(cc.p(40, 0));
         this.addChild(bgSprite);
 
-        this._tipLabel = cc.LabelTTF.create("", "黑体", 30);
+        this._tipLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 30);
         this._tipLabel.setAnchorPoint(cc.p(0, 0));
         this._tipLabel.setPosition(150, 20);
         this.addChild(this._tipLabel);
 
         for (var i = 1; i <= 12; ++i) {
-            label = cc.LabelTTF.create(i, "黑体", 60);
+            label = cc.LabelTTF.create(i, "STHeitiTC-Medium", 60);
             label.setColor(cc.c3b(255, 255, 0));
             this.addChild(label, 1);
-            label.setPosition(this._locate[i].x - 70, this._locate[i].y + 50);
+            label.setPosition(cc.p(this._locate[i].x - 70, this._locate[i].y + 50));
         }
 
         this._backItem = cc.MenuItemFont.create("结束战斗", this.end, this);
@@ -134,10 +135,42 @@ var BatterLayer = cc.Layer.extend({
         cc.log(str);
         this._tipLabel.setString(str);
 
-        var delay = SkillFactory.normalAttack(this._battleNode, battleStep);
+        var delay = this._normalAttack(battleStep);
 
         cc.log("set next round schedule");
         this.schedule(this._playAStep, delay, 1, 0);
+    },
+
+    _normalAttack: function (battleStep) {
+        cc.log(battleStep);
+
+        var attacker = battleStep.get("attacker");
+        var attackerLocate = this._locate[attacker];
+
+        this._battleNode[attacker].atk();
+
+        battleStep.recover();
+        while (battleStep.hasNextTarget()) {
+            var target = battleStep.getTarget();
+            var targetLocate = this._locate[target];
+
+            this._battleNode[target].defend(battleStep.getEffect(), battleStep.isCrit());
+
+            var effectSprite = playEffect({
+                effectId: 7,
+                target: this,
+                loops: 1,
+                delay: 0.025,
+                zOrder: 10,
+                rotation: lz.getAngle(attackerLocate, targetLocate),
+                position: attackerLocate
+            });
+
+            var moveAction = cc.EaseSineIn.create(cc.MoveTo.create(0.45, targetLocate));
+            effectSprite.runAction(moveAction);
+        }
+
+        return 2.0;
     }
 });
 

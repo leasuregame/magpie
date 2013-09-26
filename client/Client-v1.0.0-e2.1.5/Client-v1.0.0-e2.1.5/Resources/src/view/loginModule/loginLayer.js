@@ -21,18 +21,20 @@ var LoginLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        var accountLabel = cc.LabelTTF.create("账号:", "黑体", 30);
+        user = gameData.user;
+
+        var accountLabel = cc.LabelTTF.create("账号:", "STHeitiTC-Medium", 30);
         accountLabel.setPosition(cc.p(150, 500));
         this.addChild(accountLabel);
 
-        var passwordLabel = cc.LabelTTF.create("密码:", "黑体", 30);
+        var passwordLabel = cc.LabelTTF.create("密码:", "STHeitiTC-Medium", 30);
         passwordLabel.setPosition(cc.p(150, 400));
         this.addChild(passwordLabel);
 
         this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit2));
         this._accountEditBox.setPosition(cc.p(380, 500));
         this._accountEditBox.setDelegate(this);
-        this._accountEditBox.setFont("黑体", 25);
+        this._accountEditBox.setFont("STHeitiTC-Medium", 25);
         this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._accountEditBox.setMaxLength(18);
         this.addChild(this._accountEditBox);
@@ -45,8 +47,8 @@ var LoginLayer = cc.Layer.extend({
         this._passwordEditBox.setMaxLength(18);
         this.addChild(this._passwordEditBox);
 
-        this._accountEditBox.setText("chenchen");
-        this._passwordEditBox.setText("1");
+        this._accountEditBox.setText(user.get("account"));
+        this._passwordEditBox.setText(user.get("password"));
 
         this.loginButton = cc.MenuItemFont.create("登录", this._onClickLogin, this);
         this.loginButton.setFontSize(45);
@@ -81,8 +83,9 @@ var LoginLayer = cc.Layer.extend({
         user.set("account", this._accountEditBox.getText());
         user.set("password", this._passwordEditBox.getText());
 
-        user.login(function (msg) {
-            cc.log(msg);
+        user.login(function (data) {
+            cc.log(data);
+
             cc.Director.getInstance().replaceScene(MainScene.getInstance());
 //            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, MainScene.getInstance(), true));
         });

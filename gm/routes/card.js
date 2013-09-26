@@ -7,6 +7,7 @@
  */
 
 var dbClient = require('../models/dao/mysql/mysql');
+var getDB = require('../models/getDatabase');
 var Player = require('../models/player');
 var Card = require('../models/card');
 var logger = require('../logger').logger('card');
@@ -20,6 +21,7 @@ var card = function(app) {
     app.get('/cardData',function(req , res){
 
         if(req.session.player) {
+
             var player = {
                 where :{
                     name : req.session.player.name,

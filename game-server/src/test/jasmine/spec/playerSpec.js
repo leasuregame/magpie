@@ -69,8 +69,8 @@ describe("Connector Server", function() {
                   id: 1,
                   progress: 0,
                   hasWin: false,
-                  mark: [],
-                  momo: []
+                  mark: []
+                 // momo: []
                 },
                 pass: {
                   layer: 0,
@@ -79,7 +79,8 @@ describe("Connector Server", function() {
                     diff: 1,
                     isTrigger: false,
                     isClear: false
-                  }
+                  },
+                  resetTimes: 1
                 },
                 dailyGift: {
                   lotteryCount: 500,

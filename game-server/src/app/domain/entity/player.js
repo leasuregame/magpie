@@ -855,7 +855,7 @@ var checkPass = function(pass) {
     if (typeof pass !== 'object') {
         pass = {
             layer: 0,
-            mark: defaultMark(),
+            mark: [],
             mystical: {
                 diff: 1,
                 isTrigger: false,

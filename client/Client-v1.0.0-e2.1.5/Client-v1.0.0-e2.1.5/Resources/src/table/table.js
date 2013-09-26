@@ -15,6 +15,12 @@ var nameChanged = {
     "卡牌进阶配置表": "star_upgrade",
     "treasure_hunt": "寻宝配置表",
     "寻宝配置表": "treasure_hunt",
+    "rank": "竞技产出表",
+    "竞技产出表": "rank",
+    "ranking_reward": "排名奖励",
+    "排名奖励": "ranking_reward",
+    "ranking_reward_factor": "竞技排名奖励加成系数",
+    "竞技排名奖励加成系数": "ranking_reward_factor",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
@@ -23,20 +29,14 @@ var nameChanged = {
     "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
-    "rank": "竞技产出表",
-    "竞技产出表": "rank",
-    "ranking_reward": "排名奖励",
-    "排名奖励": "ranking_reward",
-    "ranking_reward_factor": "竞技排名奖励加成系数",
-    "竞技排名奖励加成系数": "ranking_reward_factor",
-    "spirit": "元神配置表",
-    "元神配置表": "spirit",
     "passFailSpiritSpeak": "爬塔失败喊话配置表",
     "爬塔失败喊话配置表": "passFailSpiritSpeak",
     "passWinSpiritSpeak": "爬塔胜利喊话配置表",
     "爬塔胜利喊话配置表": "passWinSpiritSpeak",
     "spiritSpeak": "精灵喊话配置表",
     "精灵喊话配置表": "spiritSpeak",
+    "spirit": "元神配置表",
+    "元神配置表": "spirit",
     "spirit_pool": "灵气池配置表",
     "灵气池配置表": "spirit_pool",
     "chapter": "大章表",
@@ -70,6 +70,7 @@ var nameChanged = {
     "vip_privilege": "vip特权",
     "vip特权": "vip_privilege"
 };
+
 var outputTables = {
     "achievement": {
         "colComment": {},
@@ -97,7 +98,7 @@ var outputTables = {
                 "method": "passTo",
                 "need": 50,
                 "name": "一半！",
-                "desc": "精英关卡闯到50层",
+                "desc": "天道闯过50层",
                 "gold": 10,
                 "energy": 100
             },
@@ -106,7 +107,7 @@ var outputTables = {
                 "method": "passTo",
                 "need": 100,
                 "name": "通关！",
-                "desc": "精英关卡闯过100层",
+                "desc": "天道闯过100层",
                 "gold": 100,
                 "energy": 1000
             },
@@ -115,7 +116,7 @@ var outputTables = {
                 "method": "winCount",
                 "need": 50,
                 "name": "小试牛刀",
-                "desc": "竞技场中获胜总场次达到50场",
+                "desc": "竞技获胜次数达到50场",
                 "gold": 10,
                 "energy": 100
             },
@@ -124,7 +125,7 @@ var outputTables = {
                 "method": "winCount",
                 "need": 5000,
                 "name": "已经超神了",
-                "desc": "竞技场中获胜总场次达到5000场",
+                "desc": "竞技获胜次数达到5000场",
                 "gold": 100,
                 "energy": 1000
             },
@@ -133,7 +134,7 @@ var outputTables = {
                 "method": "winningStreak",
                 "need": 50,
                 "name": "所向披靡",
-                "desc": "竞技场中最高连胜场次达到50场",
+                "desc": "竞技最高连胜达到50次",
                 "gold": 100,
                 "energy": 1000
             },
@@ -142,7 +143,7 @@ var outputTables = {
                 "method": "rankingToOne",
                 "need": 1,
                 "name": "寂寞",
-                "desc": "竞技场排名达到第1名",
+                "desc": "竞技排名达到第1",
                 "gold": 100,
                 "energy": 1000
             },
@@ -151,7 +152,7 @@ var outputTables = {
                 "method": "v587",
                 "need": 1,
                 "name": "霸气外射！",
-                "desc": "己方只上阵1张卡牌，对方上阵5张卡，在这种情况下，战胜对方",
+                "desc": "以1敌5，战胜对方",
                 "gold": 10,
                 "energy": 100
             },
@@ -169,7 +170,7 @@ var outputTables = {
                 "method": "gaveBless",
                 "need": 500,
                 "name": "无私奉献",
-                "desc": "为好友送出祝福总次数达到500次",
+                "desc": "为好友送出祝福达到500次",
                 "gold": 10,
                 "energy": 100
             },
@@ -178,7 +179,7 @@ var outputTables = {
                 "method": "receivedBless",
                 "need": 100,
                 "name": "爱是相互的",
-                "desc": "收到好友祝福总次数达到100次",
+                "desc": "收到好友祝福次数达到100次",
                 "gold": 300,
                 "energy": 2000
             },
@@ -214,7 +215,7 @@ var outputTables = {
                 "method": "psTo10",
                 "need": 1,
                 "name": "但求最好",
-                "desc": "拥有1个10%加成效果的被动技能",
+                "desc": "拥有1个10%的被动属性",
                 "gold": 10,
                 "energy": 100
             },
@@ -223,7 +224,7 @@ var outputTables = {
                 "method": "elixirTo",
                 "need": 100000,
                 "name": "一大波仙丹",
-                "desc": "拥有100000颗仙丹",
+                "desc": "累计获得100000仙丹",
                 "gold": 50,
                 "energy": 500
             },
@@ -232,7 +233,7 @@ var outputTables = {
                 "method": "energyTo",
                 "need": 100000,
                 "name": "活力无限",
-                "desc": "拥有100000点活力值",
+                "desc": "累计获得100000活力值",
                 "gold": 100,
                 "energy": 1000
             },
@@ -241,7 +242,7 @@ var outputTables = {
                 "method": "luckyCardCount",
                 "need": 9999,
                 "name": "抽卡狂魔",
-                "desc": "抽卡总次数达到9999次",
+                "desc": "抽卡总次数达到9999",
                 "gold": 100,
                 "energy": 500
             },
@@ -250,7 +251,7 @@ var outputTables = {
                 "method": "highLuckyCardCount",
                 "need": 8888,
                 "name": "钱就是个屁",
-                "desc": "高级抽卡总次数达到8888次",
+                "desc": "高级抽卡总次数达到8888",
                 "gold": 100,
                 "energy": 1000
             },
@@ -259,7 +260,7 @@ var outputTables = {
                 "method": "fun",
                 "need": 1,
                 "name": "买彩票去吧",
-                "desc": "在卡牌进阶中，只用1张素材卡，成功进阶该卡牌星级",
+                "desc": "用1张素材卡成功进阶该卡牌",
                 "gold": 50,
                 "energy": 100
             },
@@ -268,7 +269,7 @@ var outputTables = {
                 "method": "powerConsume",
                 "need": 10000,
                 "name": "孜孜不倦",
-                "desc": "体力总消耗数量达到10000点",
+                "desc": "累计消耗体力10000点",
                 "gold": 10,
                 "energy": 100
             },
@@ -286,7 +287,7 @@ var outputTables = {
                 "method": "moneyConsume",
                 "need": 10000000,
                 "name": "不差钱",
-                "desc": "消耗铜板总数量达到1000万",
+                "desc": "累计消耗仙币1000万",
                 "gold": 10,
                 "energy": 100
             },
@@ -295,7 +296,7 @@ var outputTables = {
                 "method": "goldConsume",
                 "need": 100000,
                 "name": "挥金如土",
-                "desc": "消耗元宝总数量达到100000",
+                "desc": "累计消耗元宝100000",
                 "gold": 50,
                 "energy": 500
             }
@@ -4495,56 +4496,111 @@ var outputTables = {
             "30001": {
                 "id": 30001,
                 "number": 30001,
-                "name": "战·修罗王",
+                "name": "战·幽灵",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 3,
+                "url": 1,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "30002": {
                 "id": 30002,
                 "number": 30002,
-                "name": "战·吕洞宾",
+                "name": "战·幽神",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 4,
+                "url": 1,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "30003": {
                 "id": 30003,
                 "number": 30003,
-                "name": "战·鬼谷子",
+                "name": "战·幽魂",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 5,
+                "url": 1,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "30004": {
                 "id": 30004,
                 "number": 30004,
-                "name": "战·日游神",
+                "name": "战·幽仙",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 6,
+                "url": 1,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "30005": {
                 "id": 30005,
                 "number": 30005,
-                "name": "战·夸父",
+                "name": "战·幽鬼",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 6,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30006": {
+                "id": 30006,
+                "number": 30006,
+                "name": "战·幽大鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30007": {
+                "id": 30007,
+                "number": 30007,
+                "name": "战·幽二鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30008": {
+                "id": 30008,
+                "number": 30008,
+                "name": "战·幽三鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30009": {
+                "id": 30009,
+                "number": 30009,
+                "name": "战·幽四鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30010": {
+                "id": 30010,
+                "number": 30010,
+                "name": "战·幽五鬼",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 1,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             }
         }
@@ -4956,8 +5012,8 @@ var outputTables = {
                 "id": 4,
                 "star": 4,
                 "money_need": 20000,
-                "rate_per_card": 3,
-                "max_num": 34
+                "rate_per_card": 2,
+                "max_num": 50
             }
         }
     },
@@ -5143,253 +5199,6 @@ var outputTables = {
                 "type_rate": 10,
                 "value_rate": 1,
                 "rate": 0.1
-            }
-        }
-    },
-    "scope": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "default",
-                "value": 1,
-                "desc": "默认出手顺序"
-            },
-            "2": {
-                "id": 2,
-                "name": "crosswaysFront",
-                "value": 2,
-                "desc": "前排所有"
-            },
-            "3": {
-                "id": 3,
-                "name": "crosswaysBack",
-                "value": 3,
-                "desc": "后排所有"
-            },
-            "4": {
-                "id": 4,
-                "name": "lengthways",
-                "value": 4,
-                "desc": "纵向所有"
-            },
-            "5": {
-                "id": 5,
-                "name": "random",
-                "value": 5,
-                "desc": "随机卡牌"
-            },
-            "6": {
-                "id": 6,
-                "name": "all",
-                "value": 6,
-                "desc": "所有卡牌"
-            },
-            "7": {
-                "id": 7,
-                "name": "hp_min",
-                "value": 7,
-                "desc": "血量最低卡牌"
-            }
-        }
-    },
-    "skill_type": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "single_fight",
-                "chinese": "单体攻击"
-            },
-            "2": {
-                "id": 2,
-                "name": "aoe",
-                "chinese": "群体攻击"
-            },
-            "3": {
-                "id": 3,
-                "name": "single_heal",
-                "chinese": "单体治疗"
-            },
-            "4": {
-                "id": 4,
-                "name": "mult_heal",
-                "chinese": "群体治疗"
-            }
-        }
-    },
-    "skill_upgrade": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": 5000,
-                "star4": 15000,
-                "star5": 50000
-            },
-            "2": {
-                "id": 2,
-                "star3": 10000,
-                "star4": 30000,
-                "star5": 80000
-            },
-            "3": {
-                "id": 3,
-                "star3": 15000,
-                "star4": 50000,
-                "star5": 120000
-            },
-            "4": {
-                "id": 4,
-                "star3": 20000,
-                "star4": 80000,
-                "star5": 200000
-            },
-            "5": {
-                "id": 5,
-                "star3": 30000,
-                "star4": 120000,
-                "star5": 300000
-            }
-        }
-    },
-    "skills": {
-        "colComment": {
-            "type": {
-                "table": "技能类型表",
-                "key_index": "id",
-                "value_index": "name",
-                "withPound": false
-            },
-            "scope": {
-                "table": "卡牌范围表",
-                "key_index": "id",
-                "value_index": "name",
-                "withPound": false
-            }
-        },
-        "rows": {
-            "1": {
-                "id": 1,
-                "description": "单体攻击，对敌方卡牌造成大量伤害。",
-                "type": 1,
-                "scope": 1,
-                "star3": "130,5",
-                "rate3": 30,
-                "star4": "140,5",
-                "rate4": 35,
-                "star5": "150,5",
-                "rate5": 40
-            },
-            "2": {
-                "id": 2,
-                "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 2,
-                "star3": "35,5",
-                "rate3": 30,
-                "star4": "45,5",
-                "rate4": 35,
-                "star5": "55,5",
-                "rate5": 40
-            },
-            "3": {
-                "id": 3,
-                "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 3,
-                "star3": "35,5",
-                "rate3": 30,
-                "star4": "45,5",
-                "rate4": 35,
-                "star5": "55,5",
-                "rate5": 40
-            },
-            "4": {
-                "id": 4,
-                "description": "纵向攻击，对敌方纵列每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 4,
-                "star3": "45,5",
-                "rate3": 30,
-                "star4": "55,5",
-                "rate4": 35,
-                "star5": "65,5",
-                "rate5": 40
-            },
-            "5": {
-                "id": 5,
-                "description": "随机攻击敌方2张卡牌，对每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 5,
-                "target_num": 2,
-                "star3": "45,5",
-                "rate3": 30,
-                "star4": "55,5",
-                "rate4": 35,
-                "star5": "65,5",
-                "rate5": 40
-            },
-            "6": {
-                "id": 6,
-                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
-                "type": 2,
-                "scope": 5,
-                "target_num": 3,
-                "star3": "45,5",
-                "rate3": 30,
-                "star4": "55,5",
-                "rate4": 35,
-                "star5": "65,5",
-                "rate5": 40
-            },
-            "7": {
-                "id": 7,
-                "description": "为当前血量最低的上阵卡牌恢复生命值。",
-                "type": 3,
-                "scope": 7,
-                "star3": "50,5",
-                "rate3": 30,
-                "star4": "60,5",
-                "rate4": 35,
-                "star5": "70,5",
-                "rate5": 40
-            },
-            "8": {
-                "id": 8,
-                "description": "为前排每张卡牌恢复生命值。",
-                "type": 4,
-                "scope": 2,
-                "star3": "30,5",
-                "rate3": 30,
-                "star4": "40,5",
-                "rate4": 35,
-                "star5": "50,5",
-                "rate5": 40
-            },
-            "9": {
-                "id": 9,
-                "description": "为后排每张卡牌恢复生命值。",
-                "type": 4,
-                "scope": 3,
-                "star3": "30,5",
-                "rate3": 30,
-                "star4": "40,5",
-                "rate4": 35,
-                "star5": "50,5",
-                "rate5": 40
-            },
-            "10": {
-                "id": 10,
-                "description": "为当前上阵的所有卡牌恢复生命值。",
-                "type": 4,
-                "scope": 6,
-                "star3": "15,5",
-                "rate3": 30,
-                "star4": "25,5",
-                "rate4": 35,
-                "star5": "35,5",
-                "rate5": 40
             }
         }
     },
@@ -6296,107 +6105,250 @@ var outputTables = {
             }
         }
     },
-    "spirit": {
+    "scope": {
         "colComment": {},
         "rows": {
-            "0": {
-                "id": 0,
-                "lv": 0,
-                "spirit_need": 50,
-                "hp_inc": 0,
-                "atk_inc": 0,
-                "spirit_atk_pct": 0,
-                "rate": 0
-            },
             "1": {
                 "id": 1,
-                "lv": 1,
-                "spirit_need": 900,
-                "hp_inc": 5,
-                "atk_inc": 5,
-                "spirit_atk_pct": 55,
-                "rate": 100
+                "name": "default",
+                "value": 1,
+                "desc": "默认出手顺序"
             },
             "2": {
                 "id": 2,
-                "lv": 2,
-                "spirit_need": 2040,
-                "hp_inc": 10,
-                "atk_inc": 10,
-                "spirit_atk_pct": 60,
-                "rate": 30
+                "name": "crosswaysFront",
+                "value": 2,
+                "desc": "前排所有"
             },
             "3": {
                 "id": 3,
-                "lv": 3,
-                "spirit_need": 4180,
-                "hp_inc": 15,
-                "atk_inc": 15,
-                "spirit_atk_pct": 65,
-                "rate": 30
+                "name": "crosswaysBack",
+                "value": 3,
+                "desc": "后排所有"
             },
             "4": {
                 "id": 4,
-                "lv": 4,
-                "spirit_need": 6720,
-                "hp_inc": 20,
-                "atk_inc": 20,
-                "spirit_atk_pct": 70,
-                "rate": 30
+                "name": "lengthways",
+                "value": 4,
+                "desc": "纵向所有"
             },
             "5": {
                 "id": 5,
-                "lv": 5,
-                "spirit_need": 9660,
-                "hp_inc": 25,
-                "atk_inc": 25,
-                "spirit_atk_pct": 75,
-                "rate": 30
+                "name": "random",
+                "value": 5,
+                "desc": "随机卡牌"
             },
             "6": {
                 "id": 6,
-                "lv": 6,
-                "spirit_need": 13000,
-                "hp_inc": 30,
-                "atk_inc": 30,
-                "spirit_atk_pct": 80,
-                "rate": 30
+                "name": "all",
+                "value": 6,
+                "desc": "所有卡牌"
             },
             "7": {
                 "id": 7,
-                "lv": 7,
-                "spirit_need": 16740,
-                "hp_inc": 35,
-                "atk_inc": 35,
-                "spirit_atk_pct": 85,
-                "rate": 30
+                "name": "hp_min",
+                "value": 7,
+                "desc": "血量最低卡牌"
+            }
+        }
+    },
+    "skill_type": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "single_fight",
+                "chinese": "单体攻击"
+            },
+            "2": {
+                "id": 2,
+                "name": "aoe",
+                "chinese": "群体攻击"
+            },
+            "3": {
+                "id": 3,
+                "name": "single_heal",
+                "chinese": "单体治疗"
+            },
+            "4": {
+                "id": 4,
+                "name": "mult_heal",
+                "chinese": "群体治疗"
+            }
+        }
+    },
+    "skill_upgrade": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": 5000,
+                "star4": 15000,
+                "star5": 50000
+            },
+            "2": {
+                "id": 2,
+                "star3": 10000,
+                "star4": 30000,
+                "star5": 80000
+            },
+            "3": {
+                "id": 3,
+                "star3": 15000,
+                "star4": 50000,
+                "star5": 120000
+            },
+            "4": {
+                "id": 4,
+                "star3": 20000,
+                "star4": 80000,
+                "star5": 200000
+            },
+            "5": {
+                "id": 5,
+                "star3": 30000,
+                "star4": 120000,
+                "star5": 300000
+            }
+        }
+    },
+    "skills": {
+        "colComment": {
+            "type": {
+                "table": "技能类型表",
+                "key_index": "id",
+                "value_index": "name",
+                "withPound": false
+            },
+            "scope": {
+                "table": "卡牌范围表",
+                "key_index": "id",
+                "value_index": "name",
+                "withPound": false
+            }
+        },
+        "rows": {
+            "1": {
+                "id": 1,
+                "description": "单体攻击，对敌方卡牌造成大量伤害。",
+                "type": 1,
+                "scope": 1,
+                "star3": "150,5",
+                "rate3": 30,
+                "star4": "160,5",
+                "rate4": 35,
+                "star5": "170,5",
+                "rate5": 40
+            },
+            "2": {
+                "id": 2,
+                "description": "横向攻击，对敌方前排每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 2,
+                "star3": "40,5",
+                "rate3": 30,
+                "star4": "50,5",
+                "rate4": 35,
+                "star5": "60,5",
+                "rate5": 40
+            },
+            "3": {
+                "id": 3,
+                "description": "横向攻击，对敌方后排每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 3,
+                "star3": "40,5",
+                "rate3": 30,
+                "star4": "50,5",
+                "rate4": 35,
+                "star5": "60,5",
+                "rate5": 40
+            },
+            "4": {
+                "id": 4,
+                "description": "纵向攻击，对敌方纵列每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 4,
+                "star3": "50,5",
+                "rate3": 30,
+                "star4": "60,5",
+                "rate4": 35,
+                "star5": "70,5",
+                "rate5": 40
+            },
+            "5": {
+                "id": 5,
+                "description": "随机攻击敌方2张卡牌，对每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 5,
+                "target_num": 2,
+                "star3": "50,5",
+                "rate3": 30,
+                "star4": "60,5",
+                "rate4": 35,
+                "star5": "70,5",
+                "rate5": 40
+            },
+            "6": {
+                "id": 6,
+                "description": "随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。",
+                "type": 2,
+                "scope": 5,
+                "target_num": 3,
+                "star3": "40,5",
+                "rate3": 30,
+                "star4": "50,5",
+                "rate4": 35,
+                "star5": "60,5",
+                "rate5": 40
+            },
+            "7": {
+                "id": 7,
+                "description": "为当前血量最低的上阵卡牌恢复生命值。",
+                "type": 3,
+                "scope": 7,
+                "star3": "50,5",
+                "rate3": 30,
+                "star4": "60,5",
+                "rate4": 35,
+                "star5": "70,5",
+                "rate5": 40
             },
             "8": {
                 "id": 8,
-                "lv": 8,
-                "spirit_need": 20880,
-                "hp_inc": 40,
-                "atk_inc": 40,
-                "spirit_atk_pct": 90,
-                "rate": 30
+                "description": "为前排每张卡牌恢复生命值。",
+                "type": 4,
+                "scope": 2,
+                "star3": "35,5",
+                "rate3": 30,
+                "star4": "45,5",
+                "rate4": 35,
+                "star5": "55,5",
+                "rate5": 40
             },
             "9": {
                 "id": 9,
-                "lv": 9,
-                "spirit_need": 25420,
-                "hp_inc": 45,
-                "atk_inc": 45,
-                "spirit_atk_pct": 95,
-                "rate": 30
+                "description": "为后排每张卡牌恢复生命值。",
+                "type": 4,
+                "scope": 3,
+                "star3": "35,5",
+                "rate3": 30,
+                "star4": "45,5",
+                "rate4": 35,
+                "star5": "55,5",
+                "rate5": 40
             },
             "10": {
                 "id": 10,
-                "lv": 10,
-                "spirit_need": 0,
-                "hp_inc": 50,
-                "atk_inc": 50,
-                "spirit_atk_pct": 100,
-                "rate": 30
+                "description": "为当前上阵的所有卡牌恢复生命值。",
+                "type": 4,
+                "scope": 6,
+                "star3": "20,5",
+                "rate3": 30,
+                "star4": "30,5",
+                "rate4": 35,
+                "star5": "40,5",
+                "rate5": 40
             }
         }
     },
@@ -6672,6 +6624,110 @@ var outputTables = {
             "50": {
                 "id": 50,
                 "text": "上天从来都不是公平的，怎么可能公平呢？"
+            }
+        }
+    },
+    "spirit": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "lv": 0,
+                "spirit_need": 50,
+                "hp_inc": 0,
+                "atk_inc": 0,
+                "spirit_atk_pct": 0,
+                "rate": 0
+            },
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "spirit_need": 900,
+                "hp_inc": 5,
+                "atk_inc": 5,
+                "spirit_atk_pct": 55,
+                "rate": 30
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "spirit_need": 2040,
+                "hp_inc": 10,
+                "atk_inc": 10,
+                "spirit_atk_pct": 60,
+                "rate": 30
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "spirit_need": 4180,
+                "hp_inc": 15,
+                "atk_inc": 15,
+                "spirit_atk_pct": 65,
+                "rate": 30
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "spirit_need": 6720,
+                "hp_inc": 20,
+                "atk_inc": 20,
+                "spirit_atk_pct": 70,
+                "rate": 30
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "spirit_need": 9660,
+                "hp_inc": 25,
+                "atk_inc": 25,
+                "spirit_atk_pct": 75,
+                "rate": 30
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "spirit_need": 13000,
+                "hp_inc": 30,
+                "atk_inc": 30,
+                "spirit_atk_pct": 80,
+                "rate": 30
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "spirit_need": 16740,
+                "hp_inc": 35,
+                "atk_inc": 35,
+                "spirit_atk_pct": 85,
+                "rate": 30
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "spirit_need": 20880,
+                "hp_inc": 40,
+                "atk_inc": 40,
+                "spirit_atk_pct": 90,
+                "rate": 30
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "spirit_need": 25420,
+                "hp_inc": 45,
+                "atk_inc": 45,
+                "spirit_atk_pct": 95,
+                "rate": 30
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "spirit_need": 0,
+                "hp_inc": 50,
+                "atk_inc": 50,
+                "spirit_atk_pct": 100,
+                "rate": 30
             }
         }
     },
@@ -7004,13 +7060,14 @@ var outputTables = {
                 "layer": 1,
                 "layer_from": 1,
                 "layer_to": 30,
-                "trigger_rate": [10, 50],
+                "rate": 10,
                 "skill_point": 1000,
                 "card_count": 5,
-                "cards": "30001#30002#30003#30004#30005",
-                "formation": "1:30001,2:30002,3:30003,4:30004,5:30005",
-                "boss_id": 30001,
-                "boss_attr": 70,
+                "cards": "30001#30001#30001#30001#30002",
+                "formation": "1:30001,2:30001,3:30001,4:30001,5:30002",
+                "boss_id": 30002,
+                "trigger_rate": 40,
+                "boss_attr": 150,
                 "atk_inc": 50,
                 "hp_inc": 50
             },
@@ -7019,12 +7076,13 @@ var outputTables = {
                 "layer": 2,
                 "layer_from": 31,
                 "layer_to": 50,
-                "trigger_rate": [10, 70],
+                "rate": 10,
                 "skill_point": 2000,
                 "card_count": 5,
-                "cards": "30001#30002#30003#30004#30005",
-                "formation": "1:30001,2:30002,3:30003,4:30004,5:30005",
-                "boss_id": 30002,
+                "cards": "30003#30003#30003#30003#30004",
+                "formation": "1:30003,2:30003,3:30003,4:30003,5:30004",
+                "boss_id": 30004,
+                "trigger_rate": 40,
                 "boss_attr": 40,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7034,13 +7092,14 @@ var outputTables = {
                 "layer": 3,
                 "layer_from": 51,
                 "layer_to": 70,
-                "trigger_rate": [10, 50],
+                "rate": 10,
                 "skill_point": 3000,
                 "card_count": 5,
-                "cards": "30001#30002#30003#30004#30005",
-                "formation": "1:30001,2:30002,3:30003,4:30004,5:30005",
-                "boss_id": 30003,
-                "boss_attr": 80,
+                "cards": "30005#30005#30005#30005#30006",
+                "formation": "1:30005,2:30005,3:30005,4:30005,5:30006",
+                "boss_id": 30006,
+                "trigger_rate": 40,
+                "boss_attr": 40,
                 "atk_inc": 50,
                 "hp_inc": 50
             },
@@ -7049,13 +7108,14 @@ var outputTables = {
                 "layer": 4,
                 "layer_from": 71,
                 "layer_to": 90,
-                "trigger_rate": [10, 50],
+                "rate": 10,
                 "skill_point": 4000,
                 "card_count": 5,
-                "cards": "30001#30002#30003#30004#30005",
-                "formation": "1:30001,2:30002,3:30003,4:30004,5:30005",
-                "boss_id": 30004,
-                "boss_attr": 45,
+                "cards": "30007#30007#30007#30007#30008",
+                "formation": "1:30007,2:30007,3:30007,4:30007,5:30008",
+                "boss_id": 30008,
+                "trigger_rate": 40,
+                "boss_attr": 40,
                 "atk_inc": 50,
                 "hp_inc": 50
             },
@@ -7064,12 +7124,13 @@ var outputTables = {
                 "layer": 5,
                 "layer_from": 91,
                 "layer_to": 100,
-                "trigger_rate": [10, 50],
+                "rate": 10,
                 "skill_point": 5000,
                 "card_count": 5,
-                "cards": "30001#30002#30003#30004#30005",
-                "formation": "1:30001,2:30002,3:30003,4:30004,5:30005",
-                "boss_id": 30005,
+                "cards": "30009#30009#30009#30009#30010",
+                "formation": "1:30009,2:30009,3:30009,4:30009,5:30010",
+                "boss_id": 30010,
+                "trigger_rate": 40,
                 "boss_attr": 40,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7114,7 +7175,7 @@ var outputTables = {
                 "cards": "20000#20000#20001",
                 "formation": "1:20000,2:20000,3:20001",
                 "boss_id": 20001,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 180,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7154,7 +7215,7 @@ var outputTables = {
                 "cards": "20001#20001#20001#20002",
                 "formation": "1:20001,2:20001,3:20001,4:20002",
                 "boss_id": 20002,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 70,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7194,7 +7255,7 @@ var outputTables = {
                 "cards": "20002#20002#20002#20002#20003",
                 "formation": "1:20002,2:20002,3:20002,4:20002,5:20003",
                 "boss_id": 20003,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 70,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7234,7 +7295,7 @@ var outputTables = {
                 "cards": "20003#20003#20003#20003#20004",
                 "formation": "1:20003,2:20003,3:20003,4:20003,5:20004",
                 "boss_id": 20004,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 80,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7274,7 +7335,7 @@ var outputTables = {
                 "cards": "20004#20004#20004#20004#20005",
                 "formation": "1:20004,2:20004,3:20004,4:20004,5:20005",
                 "boss_id": 20005,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 80,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7314,7 +7375,7 @@ var outputTables = {
                 "cards": "20005#20005#20005#20005#20006",
                 "formation": "1:20005,2:20005,3:20005,4:20005,5:20006",
                 "boss_id": 20006,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 70,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7354,7 +7415,7 @@ var outputTables = {
                 "cards": "20006#20006#20006#20006#20007",
                 "formation": "1:20006,2:20006,3:20006,4:20006,5:20007",
                 "boss_id": 20007,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 60,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7394,7 +7455,7 @@ var outputTables = {
                 "cards": "20007#20007#20007#20007#20008",
                 "formation": "1:20007,2:20007,3:20007,4:20007,5:20008",
                 "boss_id": 20008,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 45,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7434,7 +7495,7 @@ var outputTables = {
                 "cards": "20008#20008#20008#20008#20009",
                 "formation": "1:20008,2:20008,3:20008,4:20008,5:20009",
                 "boss_id": 20009,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 45,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7474,7 +7535,7 @@ var outputTables = {
                 "cards": "20009#20009#20009#20009#20010",
                 "formation": "1:20009,2:20009,3:20009,4:20009,5:20010",
                 "boss_id": 20010,
-                "trigger_rate": 70,
+                "trigger_rate": 30,
                 "boss_attr": 40,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7514,7 +7575,7 @@ var outputTables = {
                 "cards": "20010#20010#20010#20010#20011",
                 "formation": "1:20010,2:20010,3:20010,4:20010,5:20011",
                 "boss_id": 20011,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 180,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7554,7 +7615,7 @@ var outputTables = {
                 "cards": "20011#20011#20011#20011#20012",
                 "formation": "1:20011,2:20011,3:20011,4:20011,5:20012",
                 "boss_id": 20012,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 70,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7594,7 +7655,7 @@ var outputTables = {
                 "cards": "20012#20012#20012#20012#20013",
                 "formation": "1:20012,2:20012,3:20012,4:20012,5:20013",
                 "boss_id": 20013,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 70,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7634,7 +7695,7 @@ var outputTables = {
                 "cards": "20013#20013#20013#20013#20014",
                 "formation": "1:20013,2:20013,3:20013,4:20013,5:20014",
                 "boss_id": 20014,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 80,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7674,7 +7735,7 @@ var outputTables = {
                 "cards": "20014#20014#20014#20014#20015",
                 "formation": "1:20014,2:20014,3:20014,4:20014,5:20015",
                 "boss_id": 20015,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 80,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7714,7 +7775,7 @@ var outputTables = {
                 "cards": "20015#20015#20015#20015#20016",
                 "formation": "1:20015,2:20015,3:20015,4:20015,5:20016",
                 "boss_id": 20016,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 70,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7754,7 +7815,7 @@ var outputTables = {
                 "cards": "20016#20016#20016#20016#20017",
                 "formation": "1:20016,2:20016,3:20016,4:20016,5:20017",
                 "boss_id": 20017,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 60,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7794,7 +7855,7 @@ var outputTables = {
                 "cards": "20017#20017#20017#20017#20018",
                 "formation": "1:20017,2:20017,3:20017,4:20017,5:20018",
                 "boss_id": 20018,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 45,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7834,7 +7895,7 @@ var outputTables = {
                 "cards": "20018#20018#20018#20018#20019",
                 "formation": "1:20018,2:20018,3:20018,4:20018,5:20019",
                 "boss_id": 20019,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 45,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -7874,7 +7935,7 @@ var outputTables = {
                 "cards": "20019#20019#20019#20019#20020",
                 "formation": "1:20019,2:20019,3:20019,4:20019,5:20020",
                 "boss_id": 20020,
-                "trigger_rate": 50,
+                "trigger_rate": 30,
                 "boss_attr": 40,
                 "atk_inc": 50,
                 "hp_inc": 50
@@ -14874,190 +14935,275 @@ var outputTables = {
             "20000": {
                 "id": 20000,
                 "card_id": "战·牛魔王",
-                "atk": 309,
-                "hp": 770,
-                "dodge_rate": 20,
-                "crit_rate": 25
+                "atk": 240,
+                "hp": 599,
+                "dodge_rate": 5,
+                "crit_rate": 5
             },
             "20001": {
                 "id": 20001,
                 "card_id": "战·哪吒",
-                "atk": 483,
-                "hp": 1207,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 378,
+                "hp": 945,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 1
             },
             "20002": {
                 "id": 20002,
                 "card_id": "战·后羿",
-                "atk": 739,
-                "hp": 1846,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 582,
+                "hp": 1453,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 2
             },
             "20003": {
                 "id": 20003,
                 "card_id": "战·孙悟空",
-                "atk": 1104,
-                "hp": 2757,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 874,
+                "hp": 2183,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 3
             },
             "20004": {
                 "id": 20004,
                 "card_id": "战·巨灵神",
-                "atk": 1609,
-                "hp": 4022,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 1281,
+                "hp": 3201,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 4
             },
             "20005": {
                 "id": 20005,
                 "card_id": "战·铁扇公主",
-                "atk": 2444,
-                "hp": 6108,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 1955,
+                "hp": 4886,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 5
             },
             "20006": {
                 "id": 20006,
                 "card_id": "战·红孩儿",
-                "atk": 3385,
-                "hp": 8456,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 2722,
+                "hp": 6798,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 6
             },
             "20007": {
                 "id": 20007,
                 "card_id": "战·济公",
-                "atk": 4576,
-                "hp": 11429,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 3696,
+                "hp": 9231,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 7
             },
             "20008": {
                 "id": 20008,
                 "card_id": "战·黄飞虎",
-                "atk": 5745,
-                "hp": 14348,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 4661,
+                "hp": 11641,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 8
             },
             "20009": {
                 "id": 20009,
                 "card_id": "战·刑天",
-                "atk": 5686,
-                "hp": 14769,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 5172,
+                "hp": 13431,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 9
             },
             "20010": {
                 "id": 20010,
                 "card_id": "战·妲己",
-                "atk": 7189,
-                "hp": 18669,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 5882,
+                "hp": 15275,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 10
             },
             "20011": {
                 "id": 20011,
                 "card_id": "战·申公豹",
-                "atk": 8947,
-                "hp": 23238,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 7349,
+                "hp": 19088,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 1
             },
             "20012": {
                 "id": 20012,
                 "card_id": "战·法海",
-                "atk": 10963,
-                "hp": 28478,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 9040,
+                "hp": 23482,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 2
             },
             "20013": {
                 "id": 20013,
                 "card_id": "战·何仙姑",
-                "atk": 13227,
-                "hp": 34359,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 10947,
+                "hp": 28435,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 3
             },
             "20014": {
                 "id": 20014,
                 "card_id": "战·土行孙",
-                "atk": 15136,
-                "hp": 39315,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 12570,
+                "hp": 32652,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 4
             },
             "20015": {
                 "id": 20015,
                 "card_id": "战·白素贞",
-                "atk": 14141,
-                "hp": 35453,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 11784,
+                "hp": 29544,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 5
             },
             "20016": {
                 "id": 20016,
                 "card_id": "战·修罗王",
-                "atk": 16454,
-                "hp": 41251,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 13757,
+                "hp": 34488,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 6
             },
             "20017": {
                 "id": 20017,
                 "card_id": "战·吕洞宾",
-                "atk": 18209,
-                "hp": 45654,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 15272,
+                "hp": 38291,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 7
             },
             "20018": {
                 "id": 20018,
                 "card_id": "战·鬼谷子",
-                "atk": 20873,
-                "hp": 52333,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 17560,
+                "hp": 44026,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 8
             },
             "20019": {
                 "id": 20019,
                 "card_id": "战·日游神",
-                "atk": 23715,
-                "hp": 59457,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 20009,
+                "hp": 50167,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 9
             },
             "20020": {
                 "id": 20020,
                 "card_id": "战·夸父",
-                "atk": 25695,
-                "hp": 65346,
-                "dodge_rate": 20,
-                "crit_rate": 25,
+                "atk": 25360,
+                "hp": 61203,
+                "dodge_rate": 5,
+                "crit_rate": 5,
                 "skill_id": 10
+            },
+            "30001": {
+                "id": 30001,
+                "card_id": "战·幽灵",
+                "atk": 1281,
+                "hp": 3201,
+                "dodge_rate": 5,
+                "crit_rate": 5
+            },
+            "30002": {
+                "id": 30002,
+                "card_id": "战·幽神",
+                "atk": 1300,
+                "hp": 3400,
+                "dodge_rate": 5,
+                "crit_rate": 5,
+                "skill_id": 1
+            },
+            "30003": {
+                "id": 30003,
+                "card_id": "战·幽魂",
+                "atk": 4661,
+                "hp": 11641,
+                "dodge_rate": 5,
+                "crit_rate": 5
+            },
+            "30004": {
+                "id": 30004,
+                "card_id": "战·幽仙",
+                "atk": 4800,
+                "hp": 12000,
+                "dodge_rate": 5,
+                "crit_rate": 5,
+                "skill_id": 2
+            },
+            "30005": {
+                "id": 30005,
+                "card_id": "战·幽鬼",
+                "atk": 9040,
+                "hp": 23482,
+                "dodge_rate": 5,
+                "crit_rate": 5
+            },
+            "30006": {
+                "id": 30006,
+                "card_id": "战·幽大鬼",
+                "atk": 9500,
+                "hp": 25000,
+                "dodge_rate": 5,
+                "crit_rate": 5,
+                "skill_id": 3
+            },
+            "30007": {
+                "id": 30007,
+                "card_id": "战·幽二鬼",
+                "atk": 13757,
+                "hp": 34488,
+                "dodge_rate": 5,
+                "crit_rate": 5
+            },
+            "30008": {
+                "id": 30008,
+                "card_id": "战·幽三鬼",
+                "atk": 14000,
+                "hp": 35000,
+                "dodge_rate": 5,
+                "crit_rate": 5,
+                "skill_id": 4
+            },
+            "30009": {
+                "id": 30009,
+                "card_id": "战·幽四鬼",
+                "atk": 25360,
+                "hp": 61203,
+                "dodge_rate": 5,
+                "crit_rate": 5
+            },
+            "30010": {
+                "id": 30010,
+                "card_id": "战·幽五鬼",
+                "atk": 26000,
+                "hp": 63000,
+                "dodge_rate": 5,
+                "crit_rate": 5,
+                "skill_id": 5
             }
         }
     },
@@ -15352,7 +15498,7 @@ var outputTables = {
                 "boss_id": 10022,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "formation": "1:10022,2:10022,3:10022,4:10022,5:10022",
+                "formation": "1:10021,2:10021,3:10021,4:10021,5:10022",
                 "atk_inc": 5,
                 "hp_inc": 5,
                 "max_drop_card_number": 1

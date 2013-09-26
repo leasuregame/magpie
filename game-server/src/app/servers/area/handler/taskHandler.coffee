@@ -76,16 +76,20 @@ Handler::explore = (msg, session, next) ->
 Handler::updateMomoResult = (msg, session, next) ->
   playerId = session.get('playerId')
   gold = msg.gold
+  console.log("gold = ",gold)
 
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg})
 
-    if player.hasMomoMark()
-      return next(null, {code: 501, msg: '不能重复领取摸一摸奖励'})
+    #if player.hasMomoMark()
+      #return next(null, {code: 501, msg: '不能重复领取摸一摸奖励'})
+    if gold > player.getMonoGiftTotal()
+      return next(null,{code: 501,msg: '获取的元宝数大于实际值'})
+    player.clearMonoGift();
+    #player.setMomoMark()
 
-    player.setMomoMark()
-    player.increase 'gold', _.min([gold, 120])
+    player.increase 'gold', gold
     player.save()
     next(null, {code: 200})
 
@@ -155,27 +159,75 @@ Handler::passBarrier = (msg, session, next) ->
           spirit: {total: 0}
 
         countSpirit(player, bl, rewards) if player.pass.layer is layer-1
+        updatePlayer(player, rewards, layer)
         checkMysticalPass(player)
-        updatePlayer(player, rewards, layer)   
-      
+
       cb(null, bl)
 
   ], (err, bl) ->
     if err 
       return next(err, {code: err.code or 500, msg: err.msg or ''})
-    
+
+    player.save()
+
     next(null, {code: 200, msg: {
       battleLog: bl, 
-      pass: player.pass,
+      #pass: player.pass,
+      pass:{
+        canReset: if player.pass.resetTimes > 0 then true else false
+        layer: player.pass.layer,
+        mark: player.pass.mark,
+        hasMystical:player.hasMysticalPass()
+      }
       power: player.power,
       exp: player.exp,
       lv: player.lv,
       spiritor: player.spiritor
     }})
 
+###
+  重置关卡
+###
+Handler::resetPassMark = (msg, session, next) ->
+
+  playerId = session.get('playerId')
+  player = null
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+    (res,cb) ->
+      player = res
+      console.log("gold = " , player.gold)
+      if player.gold < 200
+        return cb({code: 501,msg: '元宝不足'})
+
+      if player.resetPassMark()
+         cb()
+
+      else
+        return cb({code: 501,msg: '重置关卡次数已用光'})
+
+    (cb) ->
+      player.decrease 'gold',200
+      cb(null,player.gold)
+  ],(err,gold) ->
+
+    if err
+      return next(err, {code: err.code or 500, msg: err.msg or ''})
+
+    player.save()
+
+    next(null,{code: 200,msg: {
+      canReset:if player.pass.resetTimes > 0 then true else false
+      gold:gold
+    }})
+
+###
+  神秘关卡
+###
 Handler::mysticalPass = (msg, session, next) ->
   playerId = session.get('playerId')
-  diff = if msg.diff? then msg.diff else 1
+  #diff = if msg.diff? then msg.diff else 1
 
   player = null
   async.waterfall [
@@ -184,7 +236,7 @@ Handler::mysticalPass = (msg, session, next) ->
 
     (res, cb) ->
       player = res
-      if not player.pass.mystical.isTrigger or player.pass.mystical.diff isnt diff or player.pass.mystical.isClear
+      if not player.pass.mystical.isTrigger or player.pass.mystical.isClear
         return cb({code: 501, msg: '不能闯此神秘关卡'})
 
       cb()
@@ -194,7 +246,7 @@ Handler::mysticalPass = (msg, session, next) ->
         session,
         {
           pid: player.id,
-          tableId: diff,
+          tableId: player.pass.mystical.diff,
           table: 'mystical_pass_config'
         },
         cb
@@ -202,7 +254,7 @@ Handler::mysticalPass = (msg, session, next) ->
 
     (bl, cb) ->
       if bl.winner is 'own'
-        mpcData = table.getTableItem('mystical_pass_config', diff)
+        mpcData = table.getTableItem('mystical_pass_config', player.pass.mystical.diff)
         rewards = 
           skillPoint: mpcData.skill_point
           spirit: total: 0
@@ -217,10 +269,11 @@ Handler::mysticalPass = (msg, session, next) ->
   ], (err, bl) ->
     if err 
       return next(err, {code: err.code or 500, msg: err.msg or ''})
-    
+
     next(null, {code: 200, msg: {
-      battleLog: bl, 
+      battleLog: bl,
       spiritor: player.spiritor
+      hasMystical: player.hasMysticalPass()
     }})
 
 countSpirit = (player, bl, rewards) ->
@@ -241,8 +294,14 @@ checkMysticalPass = (player) ->
   return if player.pass.mystical.isTrigger
 
   mpc = table.getTableItem 'mystical_pass_config', player.pass.mystical.diff
-  if mpc and (player.pass.layer >= mpc.layer_start and player.pass.layer <= mpc.layer_end) and utility.hitRate(mpc.trigger_rate)
+
+  if mpc and (player.pass.layer >= mpc.layer_from and player.pass.layer <= mpc.layer_to) and utility.hitRate(mpc.rate)
+    console.log("触发成功！！！",player.pass.layer);
     player.triggerMysticalPass()
+    #return true
+
+  #return false
+
 
 updatePlayer = (player, rewards, layer) ->
   player.increase('exp', rewards.exp)

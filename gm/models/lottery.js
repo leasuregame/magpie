@@ -52,7 +52,7 @@ Lottery.analyzeResult = function(res) {
     var card = res[0];
     var fragment = res[2];
     result.level[card.star - 1].num++;
-    result.fragment.num += fragment ? 1 : 0;
+    result.fragment.num += fragment;
 };
 
 

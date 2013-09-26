@@ -95,7 +95,7 @@ Handler::luckyCard = (msg, session, next) ->
 
   player = null
   consumeVal = 0
-  fragment = false
+  fragment = 0
   passiveSkills = []
   async.waterfall [
     (cb) ->
@@ -136,7 +136,7 @@ Handler::luckyCard = (msg, session, next) ->
         player.decrease('energy', consumeVal)
 
       if fragment
-        player.increase('fragments')
+        player.increase('fragments',fragment)
 
       cb(null, cardEnt, player)
   ], (err, cardEnt, player) ->
@@ -159,8 +159,8 @@ Handler::luckyCard = (msg, session, next) ->
       code: 200, 
       msg: {
         card: cardEnt.toJson(), 
-        consume: consumeVal, 
-        hasFragment: fragment
+        consume: consumeVal,
+        fragment: fragment
       }
     })
 

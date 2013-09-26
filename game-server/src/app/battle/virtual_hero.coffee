@@ -16,7 +16,8 @@ class VirtualHero extends Hero
 
   loadCardInfo: ->
     card_config = tab.getTableItem('task_card', @card_id)
-
+    #console.log("card_config = ",card_config)
+    #console.log("card_id = ",@card_id)
     card = tab.getTableItem('cards', card_config.card_id)
     if not card
       throw new Error("配置表错误：不能从表 cards 中找到卡牌信息，卡牌id为 #{@card_id}")

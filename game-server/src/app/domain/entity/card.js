@@ -217,6 +217,7 @@ var Card = (function (_super) {
     Card.prototype.addPassiveSkill = function (ps) {
         if (typeof ps.id !== 'undefined' && ps.id !== null) {
             this.passiveSkills[ps.id] = ps;
+            console.log("ps",this.passiveSkills);
             this.emit('add.passiveSkill');
         }
     };

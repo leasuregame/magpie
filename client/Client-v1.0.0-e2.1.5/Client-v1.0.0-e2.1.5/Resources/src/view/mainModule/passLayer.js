@@ -394,7 +394,7 @@ var PassLayer = cc.Layer.extend({
             offsetY -= 45;
         }
 
-        var closeItem = cc.MenuItemImage.createWithIcon(
+        var okItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.icon95,
@@ -404,9 +404,9 @@ var PassLayer = cc.Layer.extend({
             },
             this
         );
-        closeItem.setPosition(cc.p(360, 415));
+        okItem.setPosition(cc.p(360, 415));
 
-        var menu = cc.Menu.create(closeItem);
+        var menu = cc.Menu.create(okItem);
         menu.setPosition(cc.p(0, 0));
         layer.addChild(menu);
     },

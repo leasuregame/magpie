@@ -21,8 +21,10 @@ var Progress = cc.Node.extend({
     _bgSprite: null,
     _progressSprite: null,
     _progress: null,
+    _slashesLabel: null,
     _valueLabel: null,
     _maxValueLabel: null,
+    _fontColor: null,
 
     init: function (value, maxValue, showValue, showFull) {
         cc.log("Progress init");
@@ -44,10 +46,10 @@ var Progress = cc.Node.extend({
         this.addChild(this._progress);
 
         if (this._showValue) {
-            var slashesLabel = cc.LabelTTF.create("/", "Times New Roman", 22);
-            slashesLabel.setAnchorPoint(cc.p(0.5, 0.5));
-            slashesLabel.setPosition(cc.p(0, 0));
-            this.addChild(slashesLabel);
+            this._slashesLabel = cc.LabelTTF.create("/", "Times New Roman", 22);
+            this._slashesLabel.setAnchorPoint(cc.p(0.5, 0.5));
+            this._slashesLabel.setPosition(cc.p(0, 0));
+            this.addChild(this._slashesLabel);
 
             this._valueLabel = cc.LabelTTF.create("", "Times New Roman", 22);
             this._valueLabel.setAnchorPoint(cc.p(1, 0.5));
@@ -206,6 +208,18 @@ var Progress = cc.Node.extend({
 
         if (this._value != value || this._maxValue != maxValue) {
             this.update(value, maxValue, duration);
+        }
+    },
+
+    setFontColor: function (color) {
+        cc.log("Progress setFontColor");
+
+        if (this._showValue && this._fontColor != color) {
+            this._fontColor = color;
+
+            this._slashesLabel.setColor(color);
+            this._valueLabel.setColor(color);
+            this._maxValueLabel.setColor(color);
         }
     },
 

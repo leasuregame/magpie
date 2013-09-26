@@ -51,6 +51,8 @@ var Speak = Entity.extend({
             return null;
         }
 
+        this._isSpeak = true;
+
         var len = this._spiritSpeakText.length;
         var index = lz.randomInt(len);
 

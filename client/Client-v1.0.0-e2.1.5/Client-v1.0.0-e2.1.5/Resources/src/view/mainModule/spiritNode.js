@@ -15,6 +15,7 @@
 var SpiritNode = cc.Node.extend({
     _spirit: null,
     _spiritSprite: null,
+    _bubbleNode: null,
 
     init: function () {
         cc.log("SpiritNode init");
@@ -24,6 +25,10 @@ var SpiritNode = cc.Node.extend({
         this._spirit = gameData.spirit;
 
         var spiritLv = this._spirit.get("lv");
+
+        if (spiritLv < 1) {
+            spiritLv = 1;
+        }
 
         this._spiritSprite = cc.Sprite.create(main_scene_image["spirit" + spiritLv]);
         this.addChild(this._spiritSprite);
@@ -35,6 +40,35 @@ var SpiritNode = cc.Node.extend({
         cc.log("SpiritNode getId");
 
         return -1;
+    },
+
+    speak: function (isWin) {
+        cc.log("SpiritNode speak");
+
+        if (this._bubbleNode) {
+            this._bubbleNode.removeFromParent();
+        }
+
+        if (Math.random() < 0.2) {
+            var str;
+
+            if (isWin) {
+                str = gameData.speak.getPassWinSpiritSpeak();
+            } else {
+                str = gameData.speak.getPassFailSpiritSpeak();
+            }
+
+            if (str) {
+                this._bubbleNode = BubbleNode.create(str);
+                this._bubbleNode.setPosition(cc.p(45, 30));
+                this.addChild(this._bubbleNode);
+
+                this.scheduleOnce(function () {
+                    this._bubbleNode.removeFromParent();
+                    this._bubbleNode = null;
+                }, 2.5);
+            }
+        }
     }
 });
 

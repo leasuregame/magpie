@@ -21,6 +21,8 @@ var LoginLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        user = gameData.user;
+
         var accountLabel = cc.LabelTTF.create("账号:", "STHeitiTC-Medium", 30);
         accountLabel.setPosition(cc.p(150, 500));
         this.addChild(accountLabel);
@@ -45,8 +47,8 @@ var LoginLayer = cc.Layer.extend({
         this._passwordEditBox.setMaxLength(18);
         this.addChild(this._passwordEditBox);
 
-        this._accountEditBox.setText("chenchen");
-        this._passwordEditBox.setText("1");
+        this._accountEditBox.setText(user.get("account"));
+        this._passwordEditBox.setText(user.get("password"));
 
         this.loginButton = cc.MenuItemFont.create("登录", this._onClickLogin, this);
         this.loginButton.setFontSize(45);
@@ -81,8 +83,9 @@ var LoginLayer = cc.Layer.extend({
         user.set("account", this._accountEditBox.getText());
         user.set("password", this._passwordEditBox.getText());
 
-        user.login(function (msg) {
-            cc.log(msg);
+        user.login(function (data) {
+            cc.log(data);
+
             cc.Director.getInstance().replaceScene(MainScene.getInstance());
 //            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, MainScene.getInstance(), true));
         });

@@ -57,7 +57,7 @@ var gen_card_level = function(star) {
 };
 
 var gen_card_fragment = function(level) {
-  return utility.hitRate(cardConfig.FRAGMENT[level]);
+  return utility.hitRate(cardConfig.FRAGMENT[level]) ? 1 : 0;
 };
 
 var newCard = function(level) {

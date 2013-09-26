@@ -33,6 +33,8 @@ var Spirit = Entity.extend({
     update: function (data) {
         cc.log("Spirit update");
 
+        if (!data) return;
+
         this.set("lv", data.lv);
         this.set("exp", data.spirit);
 

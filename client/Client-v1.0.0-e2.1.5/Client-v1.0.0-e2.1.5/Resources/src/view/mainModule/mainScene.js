@@ -18,7 +18,7 @@ var MainScene = cc.Scene.extend({
     init: function () {
         cc.log("MainScene init");
 
-        this.retain();
+//        this.retain();
 
         var mainBgLayer = MainBgLayer.create();
         this.addChild(mainBgLayer, -1);

@@ -15,12 +15,6 @@
 var BattlePlayer = cc.Class.extend({
     _battleScene: null,
 
-    init: function () {
-        cc.log("BattlePlayer init");
-
-        this._scheduler = cc.Director.getInstance().getScheduler();
-    },
-
     play: function (id) {
         cc.log("BattlePlayer play");
 
@@ -29,7 +23,7 @@ var BattlePlayer = cc.Class.extend({
         this._battleScene = BattleScene.create(battleLog);
 
         if (this._battleScene) {
-            cc.Director.getInstance().replaceScene(this._battleScene);
+            cc.Director.getInstance().pushScene(this._battleScene);
 
             this._battleScene.play();
         }
@@ -46,7 +40,7 @@ var BattlePlayer = cc.Class.extend({
     end: function () {
         cc.log("BattlePlayer end");
 
-        cc.Director.getInstance().replaceScene(MainScene.getInstance());
+        cc.Director.getInstance().popScene();
 //      cc.Director.getInstance().replaceScene(cc.TransitionTurnOffTiles.create(1, MainScene.getInstance()));
     }
 });

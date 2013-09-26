@@ -134,7 +134,10 @@ class Player extends Module
     @aliveHeros().length is 0
 
   currentHero: ->
-    @matrix.current()
+    item = @matrix.current()
+    if item is null or item.death()
+      item = @matrix.next()
+    item
 
   nextHero: ->
     res = @matrix.next()

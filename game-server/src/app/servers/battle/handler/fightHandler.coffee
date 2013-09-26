@@ -30,15 +30,16 @@ Handler::attack = (msg, session, next)->
 
   #@app.get('channelService').pushMessageByUids('onChart', {msg: 'a message from battle server'}, [{uid: session.uid, sid: 'connector-server-1'}])
 
-random_liveup = (heros)->
-  ids = _.map heros, (h) -> h.card_id
+random_lineup = (ids)->
+  #ids = _.map heros, (h) -> h.card_id
   pos = ['00', '01', '02', '10', '11', '12']
 
   _res = []
-  while(true)
-    r = _.random(0, 5)
-    _res.push r if r not in _res
-    break if _res.length >= ids.length
+  idxs = _.range(0, ids.length)
+  for i in ids
+    r = _.random(0, idxs.length-1)
+    _res.push idxs[r]
+    idxs.splice(r, 1)
 
   lu = ''
   for i in [0..._res.length]

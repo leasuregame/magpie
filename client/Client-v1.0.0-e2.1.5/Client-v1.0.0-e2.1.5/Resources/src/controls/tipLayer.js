@@ -15,6 +15,13 @@
 var TipLayer = cc.Layer.extend({
     _tipLabel: [],
 
+    onEnter: function () {
+        cc.log("TipLayer onEnter");
+
+        this._super();
+        this.update();
+    },
+
     init: function () {
         cc.log("TipLayer init");
 
@@ -23,6 +30,19 @@ var TipLayer = cc.Layer.extend({
         this._tipLabel = [];
 
         return true;
+    },
+
+    update: function () {
+        cc.log("TipLayer update");
+
+        cc.log(this._tipLabel);
+
+        var len = this._tipLabel.length;
+        for (var i = 0; i < len; ++i) {
+            this._tipLabel[i].label.removeFromParent();
+        }
+
+        this._tipLabel = [];
     },
 
     tip: function (str, color, fontName, fontSize) {

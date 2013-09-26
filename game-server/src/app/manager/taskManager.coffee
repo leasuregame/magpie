@@ -212,7 +212,7 @@ class Manager
         ps_data.cardId = card.id
         dao.passiveSkill.create data: ps_data, (err, ps) ->
           if err
-            logger.error 'faild to create passiveSkill, ', + err
+            logger.error 'faild to create passiveSkill, ', err
             return next(err)
 
           card.addPassiveSkill ps

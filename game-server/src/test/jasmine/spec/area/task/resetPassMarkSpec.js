@@ -22,7 +22,7 @@ describe("Area Server", function() {
                             isTrigger: false,
                             isClear: false
                         },
-                        isReset:false
+                        resetTimes:2
                     })
                 }, function() {
                     loginWith(mike.account, mike.password, mike.areaId);
@@ -35,8 +35,10 @@ describe("Area Server", function() {
                     expect(data.code).toEqual(200);
                     expect(data.msg).toBeDefined();
                     expect(data.msg).hasProperties([
-                        'gold'
+                        'gold',
+                        'canReset'
                     ]);
+                    expect(data.msg.canReset).toEqual(true)
 
                     doAjax('/player/' + mike.playerId, {}, function(res) {
                         //expect(JSON.parse(res.data.pass.mark)).toEqual(data.msg.passMark);
@@ -56,24 +58,49 @@ describe("Area Server", function() {
                 account: 'mike',
                 password: '1'
             };
-            /*
-             beforeEach(function() {
-             doAjax('/update/player/102', {
-             pass: JSON.stringify({
-             layer:30,
-             mark:[1073741823],
-             mystical: {
-             diff: 1,
-             isTrigger: false,
-             isClear: false
-             },
-             isReset:false
-             })
-             }, function() {
-             loginWith(mike.account, mike.password, mike.areaId);
-             });
-             });
-             */
+
+            beforeEach(function() {
+                doAjax('/update/player/102', {
+                    gold:10000,
+                    pass: JSON.stringify({
+                        layer:30,
+                        mark:[1073741823],
+                        mystical: {
+                            diff: 1,
+                            isTrigger: false,
+                            isClear: false
+                        },
+                        resetTimes:0
+                    })
+                }, function() {
+                    loginWith(mike.account, mike.password, mike.areaId);
+                });
+            });
+
+
+            it('when gold is already enough',function(){
+                doAjax('/update/player/102', {
+
+                    pass: JSON.stringify({
+                        layer:30,
+                        mark:[1073741823],
+                        mystical: {
+                            diff: 1,
+                            isTrigger: false,
+                            isClear: false
+                        },
+                        resetTimes:0
+                    })
+                },function(){
+                    loginWith(mike.account, mike.password, mike.areaId);
+                    request('area.taskHandler.resetPassMark', {}, function(data) {
+                        console.log(data);
+                        expect(data.code).toEqual(501);
+                        expect(data.msg).toEqual('重置关卡次数已用光');
+                    });
+                });
+            });
+
             it('when gold is not enough',function(){
                 doAjax('/update/player/102', {
                     gold:180
@@ -83,30 +110,6 @@ describe("Area Server", function() {
                         console.log(data);
                         expect(data.code).toEqual(501);
                         expect(data.msg).toEqual('元宝不足');
-                    });
-                });
-            });
-
-
-            it('when gold is already enough',function(){
-                doAjax('/update/player/102', {
-                    gold: 200,
-                    pass: JSON.stringify({
-                        layer:30,
-                        mark:[1073741823],
-                        mystical: {
-                            diff: 1,
-                            isTrigger: false,
-                            isClear: false
-                        },
-                        isReset:true
-                    })
-                },function(){
-                    loginWith(mike.account, mike.password, mike.areaId);
-                    request('area.taskHandler.resetPassMark', {}, function(data) {
-                        console.log(data);
-                        expect(data.code).toEqual(501);
-                        expect(data.msg).toEqual('不能再重置关卡');
                     });
                 });
             });

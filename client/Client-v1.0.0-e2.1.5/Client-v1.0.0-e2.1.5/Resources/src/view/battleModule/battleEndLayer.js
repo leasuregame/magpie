@@ -54,7 +54,7 @@ var BattleEndLayer = cc.Layer.extend({
             }
 
             var rewardLabel = cc.LabelTTF.create(str, "STHeitiTC-Medium", 20);
-            rewardLabel.setColor(cc.c3b(255, 240, 170));
+            rewardLabel.setColor(cc.c3b(255, 239, 131));
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
             rewardLabel.setPosition(cc.p(360, offsetY));
             this.addChild(rewardLabel);

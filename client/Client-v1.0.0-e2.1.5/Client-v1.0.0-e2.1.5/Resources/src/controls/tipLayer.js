@@ -50,7 +50,7 @@ var TipLayer = cc.Layer.extend({
 
         if (!str) return;
 
-        color = color || cc.c3b(255, 240, 170);
+        color = color || cc.c3b(255, 239, 131);
         fontName = fontName || "STHeitiTC-Medium";
         fontSize = fontSize || 25;
 

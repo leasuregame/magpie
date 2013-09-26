@@ -29,11 +29,15 @@ var playEffect = function (arg) {
     var scaleY = arg.scaleY;
     var rotation = arg.rotation;
     var zOrder = arg.zOrder;
-    var clear = arg.clear || (arg.cb ? false : true);
+    var clear = arg.clear;
     var cb = arg.cb || null;
 
     if (!effectId || !target) {
         return;
+    }
+
+    if (clear == undefined) {
+        clear = arg.cb ? false : true;
     }
 
     var frames = [];
@@ -91,7 +95,7 @@ var playEffect = function (arg) {
             if (clear) {
                 sprite.removeFromParent();
             }
-        });
+        }, this);
 
         action = cc.Sequence.create(repeatAction, callFuncAction);
     } else {

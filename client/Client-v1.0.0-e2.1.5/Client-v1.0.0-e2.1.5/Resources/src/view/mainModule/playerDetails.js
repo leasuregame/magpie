@@ -21,6 +21,8 @@ var PlayerDetails = LazyLayer.extend({
 
         this._super();
         this.update();
+
+        this.schedule(this.update, 5, null);
     },
 
     init: function () {
@@ -107,7 +109,7 @@ var PlayerDetails = LazyLayer.extend({
         moneyIcon.setPosition(170, 678);
         this.addChild(moneyIcon);
 
-        var moneyIconLabel = cc.LabelTTF.create("金    币:", "STHeitiTC-Medium", 25);
+        var moneyIconLabel = cc.LabelTTF.create("仙    币:", "STHeitiTC-Medium", 25);
         moneyIconLabel.setColor(cc.c3b(255, 239, 131));
         moneyIconLabel.setAnchorPoint(cc.p(1, 0.5));
         moneyIconLabel.setPosition(cc.p(280, 678));
@@ -123,7 +125,7 @@ var PlayerDetails = LazyLayer.extend({
         goldIcon.setPosition(170, 632);
         this.addChild(goldIcon);
 
-        var goldIconLabel = cc.LabelTTF.create("宝    石:", "STHeitiTC-Medium", 25);
+        var goldIconLabel = cc.LabelTTF.create("魔    石:", "STHeitiTC-Medium", 25);
         goldIconLabel.setColor(cc.c3b(255, 239, 131));
         goldIconLabel.setAnchorPoint(cc.p(1, 0.5));
         goldIconLabel.setPosition(cc.p(280, 632));
@@ -225,8 +227,6 @@ var PlayerDetails = LazyLayer.extend({
         this._menu = cc.Menu.create(okItem, closeItem);
         this._menu.setPosition(cc.p(0, 0));
         this.addChild(this._menu);
-
-        this.schedule(this.update, 5, null);
 
         return true;
     },

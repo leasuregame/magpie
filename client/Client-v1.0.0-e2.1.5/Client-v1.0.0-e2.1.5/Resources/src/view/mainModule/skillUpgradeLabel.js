@@ -236,7 +236,7 @@ var SkillUpgradeLabel = cc.Node.extend({
                 that._retinueCard = [];
             }
 
-            that.getParent()._backToThisLayer();
+            that.getParent().backToThisLayer();
 
             cc.log("this._leadCard :");
             cc.log(that._leadCard);
@@ -244,7 +244,7 @@ var SkillUpgradeLabel = cc.Node.extend({
             leadCard: this._leadCard
         });
 
-        this.getParent()._switchToCardListLayer(cardListLayer);
+        this.getParent().switchToCardListLayer(cardListLayer);
     },
 
     _onClickUpgrade: function () {

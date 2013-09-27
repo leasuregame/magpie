@@ -464,7 +464,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                 }
             }
 
-            that.getParent()._backToThisLayer();
+            that.getParent().backToThisLayer();
 
             cc.log("this._leadCard :");
             cc.log(that._leadCard);
@@ -472,7 +472,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             leadCard: this._leadCard
         });
 
-        this.getParent()._switchToCardListLayer(cardListLayer);
+        this.getParent().switchToCardListLayer(cardListLayer);
     },
 
     _onClickLock: function (index) {

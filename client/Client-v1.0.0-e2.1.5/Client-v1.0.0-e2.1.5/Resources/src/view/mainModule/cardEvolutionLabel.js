@@ -214,7 +214,7 @@ var CardEvolutionLayer = cc.Layer.extend({
                 that._retinueCard = [];
             }
 
-            that.getParent()._backToThisLayer();
+            that.getParent().backToThisLayer();
 
             cc.log("this._leadCard :");
             cc.log(that._leadCard);
@@ -222,7 +222,7 @@ var CardEvolutionLayer = cc.Layer.extend({
             leadCard: this._leadCard
         });
 
-        this.getParent()._switchToCardListLayer(cardListLayer);
+        this.getParent().switchToCardListLayer(cardListLayer);
     },
 
     _onClickSelectRetinueCard: function () {
@@ -235,7 +235,7 @@ var CardEvolutionLayer = cc.Layer.extend({
             if (data) {
                 that._retinueCard = data;
             }
-            that.getParent()._backToThisLayer();
+            that.getParent().backToThisLayer();
 
             cc.log("this._retinueCard :");
             cc.log(that._retinueCard);
@@ -244,7 +244,7 @@ var CardEvolutionLayer = cc.Layer.extend({
             retinueCard: this._retinueCard
         });
 
-        this.getParent()._switchToCardListLayer(cardListLayer);
+        this.getParent().switchToCardListLayer(cardListLayer);
     },
 
     _onClickEvolution: function () {

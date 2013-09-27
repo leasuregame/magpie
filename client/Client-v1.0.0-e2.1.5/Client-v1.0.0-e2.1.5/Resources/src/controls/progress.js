@@ -88,8 +88,6 @@ var Progress = cc.Node.extend({
     update: function (value, maxValue, duration) {
         cc.log("Progress update");
 
-        this._progress.stopAllActions();
-
         if (this._showFull) {
             this._updateShowFull(value, maxValue, duration);
         } else {
@@ -160,9 +158,14 @@ var Progress = cc.Node.extend({
         this._update(value, maxValue, duration);
     },
 
+    /**
+     * opacity setter
+     * @param {Number} opacity
+     */
     setOpacity: function (opacity) {
-        if (this._bgSprite) this._bgSprite.setOpacity(opacity);
         this._progress.setOpacity(opacity);
+
+        if (this._bgSprite) this._bgSprite.setOpacity(opacity);
     },
 
     getValue: function () {
@@ -204,8 +207,6 @@ var Progress = cc.Node.extend({
     },
 
     setAllValue: function (value, maxValue, duration) {
-        cc.log("Progress setAllValue");
-
         if (this._value != value || this._maxValue != maxValue) {
             this.update(value, maxValue, duration);
         }
@@ -239,30 +240,26 @@ var Progress = cc.Node.extend({
 
         this._progress.setSprite(progressSprite);
     }
-})
+});
 
 
 /*
  * 创建函数
  * */
 Progress.create = function (bgFileName, progressFileName, value, maxValue, showValue, showFull) {
-    showValue = showValue || false;
-
     var progress = new Progress();
     if (progress && progress.initWithFile(bgFileName, progressFileName, value, maxValue, showValue, showFull)) {
         return progress;
     }
 
     return null;
-}
+};
 
 Progress.createWithSpriteFrameName = function (bgSpriteFrameName, progressSpriteFrameName, value, maxValue, showValue, showFull) {
-    showValue = showValue || false;
-
     var progress = new Progress();
     if (progress && progress.initWithSpriteFrameName(bgSpriteFrameName, progressSpriteFrameName, value, maxValue, showValue, showFull)) {
         return progress;
     }
 
     return null;
-}
+};

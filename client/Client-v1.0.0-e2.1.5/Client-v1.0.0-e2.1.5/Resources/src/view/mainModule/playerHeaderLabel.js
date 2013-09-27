@@ -27,6 +27,8 @@ var PlayerHeaderLabel = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        this.schedule(this.update, 1, null);
     },
 
     init: function () {
@@ -82,8 +84,6 @@ var PlayerHeaderLabel = cc.Layer.extend({
             vipSprite.setPosition(cc.p(410, 83));
             this.addChild(vipSprite);
         }
-
-        this.schedule(this.update, 1, null);
 
         return true;
     },

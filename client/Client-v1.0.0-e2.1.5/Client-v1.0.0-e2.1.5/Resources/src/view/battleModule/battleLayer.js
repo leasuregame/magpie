@@ -162,7 +162,7 @@ var BatterLayer = cc.Layer.extend({
                         effectId: 7,
                         target: target,
                         loops: 1,
-                        delay: 0.03,
+                        delay: 0.05,
                         zOrder: 10,
                         position: position
                     })

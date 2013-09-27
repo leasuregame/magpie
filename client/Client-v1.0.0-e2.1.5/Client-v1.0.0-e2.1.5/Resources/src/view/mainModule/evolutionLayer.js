@@ -71,16 +71,16 @@ var EvolutionLayer = cc.Layer.extend({
         return true;
     },
 
-    _switchToCardListLayer: function (cardListLayer) {
-        cc.log("EvolutionLayer _switchToCardListLayer");
+    switchToCardListLayer: function (cardListLayer) {
+        cc.log("EvolutionLayer switchToCardListLayer");
 
         this.retain();
         this.setVisible(false);
         MainScene.getInstance().switch(cardListLayer);
     },
 
-    _backToThisLayer: function () {
-        cc.log("EvolutionLayer _backToThisLayer");
+    backToThisLayer: function () {
+        cc.log("EvolutionLayer backToThisLayer");
 
         this.setVisible(true);
         MainScene.getInstance().switch(this);

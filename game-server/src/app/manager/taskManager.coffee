@@ -166,7 +166,7 @@ class Manager
       cb()
 
   @countExploreResult: (player, data, taskId, cb) ->
-    taskData = table.getTableItem('task', player.task.id)
+    taskData = table.getTableItem('task', taskId)
     exp_to_upgrade = table.getTableItem('player_upgrade', player.lv)
 
     _.extend data, {

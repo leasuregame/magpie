@@ -287,6 +287,7 @@ var Card = (function (_super) {
             tableId: this.tableId,
             hp: this.hp,
             atk: this.atk,
+            ability: this.ability(),
             lv: this.lv,
             exp: this.exp,
             skillLv: this.skillLv,

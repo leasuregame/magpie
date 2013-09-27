@@ -266,7 +266,7 @@ var checkExploreResult = function(data, task, oldTask) {
 					'id', 'lv', 'exp', 'tableId',
 					'skillLv', 'elixirHp', 'elixirAtk',
 					'passiveSkills', 'skillPoint',
-					'hp', 'atk'
+					'hp', 'atk', 'ability'
 				]);
 			} else {
 				expect(res.open_box_card).toEqual(null);

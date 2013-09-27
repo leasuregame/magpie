@@ -64,8 +64,6 @@ parseCards = (data) ->
       id: realId++
       tableId: parseInt(id)
       sectionId: data.sectionId
-      atk_inc: data.atk_inc
-      hp_inc: data.hp_inc
     }
     if not hasOneBoss and data.boss_id? and parseInt(id) is parseInt(data.boss_id)
       _obj.boss = {
@@ -74,6 +72,8 @@ parseCards = (data) ->
         attr_inc: data.boss_attr
         boss_atk_inc: data.boss_atk_inc
         boss_hp_inc: data.boss_hp_inc
+        boss_crit: data.boss_crit
+        boss_dodge: data.dodge
       }
       hasOneBoss = true
 

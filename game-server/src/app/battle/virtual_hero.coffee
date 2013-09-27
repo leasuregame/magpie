@@ -25,19 +25,19 @@ class VirtualHero extends Hero
     @name = card.name
     @init_atk = @atk = parseInt(card_config.atk)
     @init_hp = @hp = parseInt(card_config.hp)
-    
-    @atk += parseInt(@atk * (100 + (@cData.atk_inc or 0) *  (@cData.sectionId or 1)) / 100)
-    @hp += parseInt(@hp * (100 + (@cData.hp_inc or 0) * (@cData.sectionId or 1)) / 100)
 
     if @boss?
-      @atk += parseInt(@atk * (100 + (@boss.boss_atk_inc or 0)) / 100)
-      @hp += parseInt(@hp * (100 + (@boss.boss_hp_inc or 0)) / 100)
+      bf = if @cData.sectionId then (@cData.sectionId - 1) else 1
+      atk_inc = if @boss.boss_atk_inc then (@boss.boss_atk_inc * bf) else 0
+      hp_inc = if @boss.boss_hp_inc then (@boss.boss_hp_inc * bf) else 0
+      @atk += parseInt(@atk * atk_inc / 100)
+      @hp += parseInt(@hp * hp_inc / 100)
 
     @star = 3
     @skill_id = card_config.skill_id
     @sp_value = [
-      {name: 'crit', value: if @cData.boss_crit then @cData.boss_crit else card_config.crit_rate}
-      {name: 'dodge', value: if @cData.boss_dodge then @cData.boss_dodge else card_config.dodge_rate}
+      {name: 'crit', value: if @boss?.boss_crit then @boss.boss_crit else card_config.crit_rate}
+      {name: 'dodge', value: if @boss?.boss_dodge then @boss.boss_dodge else card_config.dodge_rate}
     ]
 
   loadSkill: ->

@@ -70,17 +70,13 @@ describe("Connector Server", function() {
                   progress: 0,
                   hasWin: false,
                   mark: []
-                 // momo: []
+                  // momo: []
                 },
                 pass: {
+                  canReset: true,
                   layer: 0,
                   mark: [],
-                  mystical: {
-                    diff: 1,
-                    isTrigger: false,
-                    isClear: false
-                  },
-                  resetTimes: 1
+                  hasMystical: false
                 },
                 dailyGift: {
                   lotteryCount: 500,

@@ -83,7 +83,7 @@ describe("Area Server", function() {
 							type: type,
 							level: level
 						}, function(data) {
-							console.log(name, test_name, data);
+							console.log(name, data);
 							expect(data.code).toEqual(200);
 							expect(data.msg).hasProperties([
 								'card',

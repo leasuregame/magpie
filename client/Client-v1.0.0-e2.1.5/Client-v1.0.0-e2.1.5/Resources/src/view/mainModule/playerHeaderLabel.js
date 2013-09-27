@@ -46,17 +46,17 @@ var PlayerHeaderLabel = cc.Layer.extend({
 
         this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0, true);
         this._expProgress.setPosition(cc.p(214, 36));
-        this.addChild(this._expProgress, 2);
+        this.addChild(this._expProgress);
         this._expProgress.setFontColor(cc.c3b(255, 239, 131));
 
         var lvBg = cc.Sprite.create(main_scene_image.lv_bg);
         lvBg.setPosition(cc.p(60, 60));
-        this.addChild(lvBg, 2);
+        this.addChild(lvBg);
 
         this._lvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 45);
         this._lvLabel.setColor(cc.c3b(255, 239, 131));
         this._lvLabel.setPosition(cc.p(60, 60));
-        this.addChild(this._lvLabel, 2);
+        this.addChild(this._lvLabel);
 
         this._goldLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._goldLabel.setColor(cc.c3b(255, 239, 131));
@@ -79,8 +79,8 @@ var PlayerHeaderLabel = cc.Layer.extend({
         var vipLv = player.get("vip");
         if (vipLv) {
             var vipSprite = cc.Sprite.create(main_scene_image["vip" + vipLv]);
-            vipSprite.setPosition(cc.p(75, 60));
-            this.addChild(vipSprite, 2);
+            vipSprite.setPosition(cc.p(410, 83));
+            this.addChild(vipSprite);
         }
 
         this.schedule(this.update, 1, null);

@@ -159,7 +159,7 @@ var BatterLayer = cc.Layer.extend({
             var cb = function (target, position) {
                 return function () {
                     playEffect({
-                        effectId: 10,
+                        effectId: 7,
                         target: target,
                         loops: 1,
                         delay: 0.03,
@@ -170,8 +170,8 @@ var BatterLayer = cc.Layer.extend({
 
             }(this, targetLocate);
 
-            var effectSprite = playEffect({
-                effectId: 7,
+            var ret = playEffect({
+                effectId: 4,
                 target: this,
                 loops: 1,
                 delay: 0.025,
@@ -182,7 +182,10 @@ var BatterLayer = cc.Layer.extend({
                 cb: cb
             });
 
-            var moveAction = cc.EaseSineIn.create(cc.MoveTo.create(0.45, targetLocate));
+            var effectSprite = ret.sprite;
+            var time = ret.time;
+
+            var moveAction = cc.EaseSineIn.create(cc.MoveTo.create(time, targetLocate));
 
             effectSprite.runAction(moveAction);
         }

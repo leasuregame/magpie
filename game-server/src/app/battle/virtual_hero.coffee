@@ -30,8 +30,8 @@ class VirtualHero extends Hero
     @hp += parseInt(@hp * (100 + (@cData.hp_inc or 0) * (@cData.sectionId or 1)) / 100)
 
     if @boss?
-      @atk += parseInt(@atk * (100 + @boss.boss_atk_inc) / 100)
-      @hp += parseInt(@hp * (100 + @boss.boss_hp_inc) / 100)
+      @atk += parseInt(@atk * (100 + (@boss.boss_atk_inc or 0)) / 100)
+      @hp += parseInt(@hp * (100 + (@boss.boss_hp_inc or 0)) / 100)
 
     @star = 3
     @skill_id = card_config.skill_id

@@ -13,7 +13,7 @@ class VirtualPlayer extends Player
     else if data.formation?
       lineUp = genLineUp cards, data.formation
     else
-      lineUp = defaultLineUp data.cards
+      lineUp = defaultLineUp cards
     
     super(
       cards: cards
@@ -25,15 +25,15 @@ class VirtualPlayer extends Player
     @heros = if @cards? then new VHero(c, @) for c in @cards else []
 
   bindCards: ->
+    _hero = (id) =>
+      for h in @heros
+        return if h.id is parseInt(id) then h
+      null
+    
     if @lineUp? and @lineUp != ''
       @parseLineUp().forEach (item) =>
         [pos, id] = item 
-        
-        _hero = (id) =>
-          for h in @heros
-            return if h.id is parseInt(id) then h
-          null
-        _h = _hero(id)
+        _h = _hero(id)      
 
         if _h
           @matrix.set(pos, _h)
@@ -57,7 +57,7 @@ class VirtualPlayer extends Player
 parseCards = (data) ->
   cards = []
   card_ids = data.cards.split('#')
-  realId = 0
+  realId = 1
   hasOneBoss = false
   for id in card_ids
     _obj = {
@@ -111,10 +111,10 @@ genLineUp = (cards, formation) ->
 
   arr.join(',')
 
-defaultLineUp = (cards_str) ->
+defaultLineUp = (cards) ->
   lu = ''
-  for id, idx in cards_str.split('#')
-    lu += "#{idx+1}:id,"
+  for c in cards
+    lu += "#{c.id}:#{c.id},"
   lu[0...-1]
 
 module.exports = VirtualPlayer

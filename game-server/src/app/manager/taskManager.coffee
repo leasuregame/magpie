@@ -24,7 +24,8 @@ class Manager
       upgrade: false
       open_box_card: null
       battle_log: null
-      #isMomo: false
+      spiritor: null
+      momo: null
     }
 
     ### 检查是否体力充足 ###

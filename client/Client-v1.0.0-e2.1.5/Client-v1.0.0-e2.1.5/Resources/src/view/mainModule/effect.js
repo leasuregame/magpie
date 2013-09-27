@@ -41,9 +41,11 @@ var playEffect = function (arg) {
     }
 
     var frames = [];
+    var len = effectConfig[effectId];
     var rect = effectRect[effectId];
 
-    for (var i = 0; i < effectConfig[effectId]; ++i) {
+
+    for (var i = 0; i < len; ++i) {
         var frame = cc.SpriteFrame.create(
             main_scene_image["effect" + effectId + "_frame" + i],
             rect
@@ -104,7 +106,10 @@ var playEffect = function (arg) {
 
     sprite.runAction(action);
 
-    return sprite;
+    return {
+        sprite: sprite,
+        time: (len * delay)
+    };
 };
 
 

@@ -323,8 +323,6 @@ var ExploreLayer = cc.Layer.extend({
     _onClickExplore: function () {
         cc.log("ExploreLayer _onClickExplore");
 
-        this._lock();
-
         var that = this;
         gameData.task.explore(function (data) {
             cc.log(data);
@@ -449,6 +447,8 @@ var ExploreLayer = cc.Layer.extend({
 
     _playAnimation: function () {
         cc.log("ExploreLayer _playAnimation");
+
+        this._lock();
 
         var callFuncAction = cc.CallFunc.create(function () {
             if (this._reward) {

@@ -172,6 +172,8 @@ var Task = Entity.extend({
                 cb(cbData);
             } else {
                 cc.log("explore fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },

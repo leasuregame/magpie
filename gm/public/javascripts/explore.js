@@ -313,7 +313,8 @@ function isStop(data, id) {
 
 function login(account, password, areaId, cb) {
     // queryEntry(function(host,port){
-    var host = "127.0.0.1";
+    //var host = "127.0.0.1";
+    var host = ip;
     var port = 3010;
     pomelo.init({
         host: host,

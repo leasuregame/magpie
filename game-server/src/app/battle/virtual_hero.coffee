@@ -11,7 +11,6 @@ class VirtualHero extends Hero
     # cardInfo = tab.getTableItem('cards', data.tableId)
     # data.init_hp = data.hp = parseInt(cardInfo.hp)
     # data.init_atk = data.atk = parseInt(cardInfo.atk)
-
     super(data, player)
 
   loadCardInfo: ->
@@ -25,24 +24,27 @@ class VirtualHero extends Hero
     @name = card.name
     @init_atk = @atk = parseInt(card_config.atk)
     @init_hp = @hp = parseInt(card_config.hp)
-    
+
     if @boss?
-      @atk += parseInt(@atk * @boss.point_atk_inc * (@cData.sectionId or 1) / 100)
-      @hp += parseInt(@hp * @boss.point_hp_inc * (@cData.sectionId or 1) / 100)
+      bf = if @cData.sectionId then (@cData.sectionId - 1) else 1
+      atk_inc = if @boss.boss_atk_inc then (@boss.boss_atk_inc * bf) else 0
+      hp_inc = if @boss.boss_hp_inc then (@boss.boss_hp_inc * bf) else 0
+      @atk += parseInt(@atk * atk_inc / 100)
+      @hp += parseInt(@hp * hp_inc / 100)
 
     @star = 3
     @skill_id = card_config.skill_id
     @sp_value = [
-      {name: 'crit', value: card_config.crit_rate}
-      {name: 'dodge', value: card_config.dodge_rate}
+      {name: 'crit', value: if @boss?.boss_crit then @boss.boss_crit else card_config.crit_rate}
+      {name: 'dodge', value: if @boss?.boss_dodge then @boss.boss_dodge else card_config.dodge_rate}
     ]
 
   loadSkill: ->
     return if not @boss
     @skill_setting = tab.getTableItem('skills', @skill_id)
     if @skill_setting?
-      @skill_setting.star3 = @boss.attr_inc + ',0'
       @skill_setting.rate3 = @boss.skill_trigger_rate
+      @skill_inc = @skill_setting.star3_inc_min
       @skill = new Skill(@, @skill_setting)
 
 module.exports = VirtualHero

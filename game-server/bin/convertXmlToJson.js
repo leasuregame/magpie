@@ -67,6 +67,7 @@ walk(DATA_DIR, function(err, files) {
   });
 
   fs.writeFileSync('../../gm/config/table/table.json', JSON.stringify(tabledata.exports));
+  fs.writeFileSync('../../game-server/data/table.json', JSON.stringify(tabledata.exports));
 
   console.log('complete');
 

@@ -47,7 +47,24 @@ describe("Area Server", function() {
 						chapterId: 1
 					}, function(data) {
 						console.log('扫荡其中一个已通的任务大关', data);
-						expect(data.msg).toEqual({});
+                        expect(data.msg).hasProperties([
+                            'rewards',
+                            'power',
+                            'exp',
+                            'lv',
+                            'mark'
+                        ]);
+
+                        expect(data.msg.rewards).toEqual({
+                            exp_obtain: 50,
+                            money_obtain: 750
+                        });
+                        expect(data.msg.mark).toEqual([1]);
+
+                        expect(data,msg.exp).toEqual(1050);
+                        expect(data.msg.lv).toEqual(40);
+
+
 					});
 				});
 
@@ -67,8 +84,8 @@ describe("Area Server", function() {
 						]);
 
 						expect(data.msg.rewards).toEqual({
-							exp_obtain: 1752,
-							money_obtain: 26280
+							exp_obtain: 1702,
+							money_obtain: 25530
 						});
 						expect(data.msg.mark).toEqual([16777215]);
 
@@ -119,13 +136,13 @@ describe("Area Server", function() {
 						].sort());
 
 						expect(data.msg.rewards).toEqual({
-							exp_obtain: 516,
-							money_obtain: 3240,
-							skill_point: 1890
+							exp_obtain: 550,
+							money_obtain: 3500,
+							skill_point: 2150
 						});
 
-						expect(data.msg.mark).toEqual([16777215]);
-						expect(data.msg.exp).toEqual(259);
+						expect(data.msg.mark).toEqual([33554431]);
+						expect(data.msg.exp).toEqual(293);
 						expect(data.msg.lv).toEqual(41);
 
 						doAjax('/player/' + papa.playerId, {}, function(res) {

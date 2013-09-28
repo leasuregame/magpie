@@ -705,6 +705,16 @@ var Player = (function(_super) {
         this.set('pass', pass);
     };
 
+    Player.prototype.getPass = function(){
+        checkPass(this);
+        return {
+            canReset: this.pass.resetTimes > 0 ? true : false,
+            layer: this.pass.layer,
+            mark: this.pass.mark,
+            hasMystical: this.hasMysticalPass()
+        };
+    };
+
     Player.prototype.triggerMysticalPass = function() {
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isTrigger = true;
@@ -811,7 +821,7 @@ var Player = (function(_super) {
             lineUp: this.lineUpObj(),
             ability: this.getAbility(),
             task: this.task,
-            pass: utility.deepCopy(checkPass(this.pass)),
+            pass: this.getPass(),
             dailyGift: utility.deepCopy(this.dailyGift),
             skillPoint: this.skillPoint,
             energy: this.energy,
@@ -851,11 +861,11 @@ var Player = (function(_super) {
 //     return dg;
 // };
 
-var checkPass = function(pass) {
-    if (typeof pass !== 'object') {
-        pass = {
+var checkPass = function(player) {
+    if (typeof player.pass !== 'object') {
+        player.pass = {
             layer: 0,
-            mark: defaultMark(),
+            mark: [],
             mystical: {
                 diff: 1,
                 isTrigger: false,
@@ -864,8 +874,6 @@ var checkPass = function(pass) {
             resetTimes:0
         };
     }
-    console.log("pass = ",pass);
-    return pass;
 };
 
 var lineUpToObj = function(self, lineUp) {

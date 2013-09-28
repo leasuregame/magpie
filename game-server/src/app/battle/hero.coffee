@@ -31,6 +31,7 @@ class Hero extends Module
 
     @card_id = attrs.tableId
     @skill_lv = attrs.skillLv or 0
+    @skill_inc = attrs.skillInc
     @sp_value = attrs.passiveSkills or []
     
     @dmg = 0 # 每次所受伤害的值，默认值为0
@@ -88,6 +89,8 @@ class Hero extends Module
     if @sp? then @sp.isCrit() else false
 
   usingSkill: (callback, enemys = @skill.getTargets(), percent = 100, isSpiritor = false) ->
+    return if @player.enemy.death()
+
     if not enemys or not enemys.length > 0
       log.warn '技能攻击时，攻击的对方卡牌不能为空'
       return

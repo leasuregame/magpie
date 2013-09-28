@@ -28,7 +28,7 @@ exports.addEvents = (player) ->
     player.updateAbility()
     #player.activeGroupEffect()
     player.activeSpiritorEffect()
-    player.save()
+    player.save()  
 
   player.emit('lineUp.change')
 

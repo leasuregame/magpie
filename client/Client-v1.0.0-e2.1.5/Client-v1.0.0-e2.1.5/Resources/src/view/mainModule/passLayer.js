@@ -138,7 +138,7 @@ var PassLayer = cc.Layer.extend({
         scrollViewLayer.addChild(this._spirit, 1);
 
         this._scrollView = cc.ScrollView.create(cc.size(640, 768), scrollViewLayer);
-        this._scrollView.setContentSize(cc.size(640, 18620));
+        this._scrollView.setContentSize(cc.size(640, 18700));
         this._scrollView.setPosition(GAME_BG_POINT);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
@@ -172,16 +172,6 @@ var PassLayer = cc.Layer.extend({
         towerBgSprite.setPosition(cc.p(510, 220));
         this.addChild(towerBgSprite);
 
-        this._resetItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.button9d,
-            main_scene_image.icon223,
-            this._onClickReset,
-            this
-        );
-        this._resetItem.setPosition(cc.p(580, 928));
-
         this._wipeOutItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
@@ -192,7 +182,17 @@ var PassLayer = cc.Layer.extend({
         );
         this._wipeOutItem.setPosition(cc.p(580, 928));
 
-        var menu = cc.Menu.create(this._resetItem, this._wipeOutItem);
+        this._resetItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            main_scene_image.icon223,
+            this._onClickReset,
+            this
+        );
+        this._resetItem.setPosition(cc.p(580, 928));
+
+        var menu = cc.Menu.create(this._wipeOutItem, this._resetItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -233,8 +233,8 @@ var PassLayer = cc.Layer.extend({
             this._defianceAnimation();
         }
 
-        this._wipeOutItem.setVisible(pass.canWipeOut());
-        this._resetItem.setEnabled(pass.canReset());
+        this._wipeOutItem.setEnabled(pass.canWipeOut());
+        this._resetItem.setVisible(pass.canReset());
         this._mysticalItem.setVisible(pass.get("hasMystical"));
 
         this._skillPointLabel.setString(gameData.player.get("skillPoint"));
@@ -247,12 +247,15 @@ var PassLayer = cc.Layer.extend({
     _getOffset: function (index) {
         cc.log("PassLayer _getOffset");
 
-        var height = 140 - 185 * (index - 1);
+        var offsetY = 140 - 185 * (index - 1);
 
-        height = height < 0 ? height : 0;
-        height = height > -17870 ? height : -17870;
+        var maxOffset = this._scrollView.maxContainerOffset();
+        var minOffset = this._scrollView.minContainerOffset();
 
-        return cc.p(0, height);
+        offsetY = Math.min(offsetY, maxOffset.y);
+        offsetY = Math.max(offsetY, minOffset.y);
+
+        return cc.p(0, offsetY);
     },
 
     _locate: function (index, duration) {
@@ -279,13 +282,15 @@ var PassLayer = cc.Layer.extend({
         }
     },
 
-    _spiritWalk: function (index, duration) {
+    _spiritWalk: function (index, duration, height, jumps) {
         cc.log("PassLayer _spiritWalk");
 
         duration = duration || 2;
+        height = height || 35;
+        jumps = jumps || 5;
 
         this._spirit.setPosition(this._getCardLocation(index - 1));
-        var jumpAction = cc.JumpTo.create(duration, this._getCardLocation(index), 30, 5);
+        var jumpAction = cc.JumpTo.create(duration, this._getCardLocation(index), height, jumps);
         this._spirit.runAction(jumpAction);
 
         this._locate(index, duration);
@@ -433,7 +438,7 @@ var PassLayer = cc.Layer.extend({
 
         LazyLayer.showCloudLayer();
 
-        if (this._top >= MAX_PASS_COUNT) {
+        if (this._top > MAX_PASS_COUNT) {
             LazyLayer.closeCloudLayer();
             return;
         }
@@ -456,18 +461,24 @@ var PassLayer = cc.Layer.extend({
 
         this._locate(1);
 
-        this._spiritWalk(2, 0.3);
-        var index = 3;
+        this._element[1].passItem.setEnabled(false);
+
+        this._spiritWalk(2, 0.5, 50, 1);
+        var index = 2;
         this.schedule(function () {
+            this._element[index].passItem.setEnabled(false);
+            this._element[index].ladderSprite.setColor(cc.c3b(160, 160, 160));
+
+            index += 1;
+
             if (index > this._top) {
                 LazyLayer.closeCloudLayer();
                 this._showWipeOutReward(reward);
                 return;
             }
 
-            this._spiritWalk(index, 0.3);
-            index += 1;
-        }, 0.4, this._top - 2);
+            this._spiritWalk(index, 0.5, 50, 1);
+        }, 0.6, this._top - 2);
     },
 
     _onClickDefiance: function (id) {

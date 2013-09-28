@@ -18,7 +18,8 @@ var table = require('../../manager/table');
 var elixirConfig = table.getTableItem('elixir', 1);
 var cardConfig = require('../../../config/data/card'); 
 var _ = require("underscore");
-
+var dao = require('pomelo').app.get('dao');
+var passiveSkillDao = require('../../dao/mysql/passiveSkillDao');
 var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL
 var GROUP_EFFECT_ATK = 1
 var GROUP_EFFECT_HP = 2
@@ -284,6 +285,10 @@ var Card = (function (_super) {
 
 
     Card.prototype.toJson = function () {
+        //作为当前游戏数据测试所用，以后要删除
+        genSkillInc(this);
+        initPassiveSkill(this);
+        //
         return {
             id: this.id,
             tableId: this.tableId,
@@ -305,5 +310,54 @@ var Card = (function (_super) {
 
     return Card;
 })(Entity);
+
+//作为当前游戏数据测试所用，以后要删除
+var genSkillInc = function(card) {
+    if(card.star < 3 || card.skillInc != 0)
+        return;
+    var cdata, max, min, skill;
+    cdata = table.getTableItem('cards', card.tableId);
+    skill = cdata.skill_id_linktarget;
+    if (skill != null) {
+        min = skill["star" + card.star + "_inc_min"] * 10;
+        max = skill["star" + card.star + "_inc_max"] * 10;
+        return card.skillInc = _.random(min, max) / 10;
+    } else {
+        throw new Error('can not file skill info of card: ' + card.tableId);
+    }
+};
+
+//作为当前游戏数据测试所用，以后要删除
+var initPassiveSkill = function(card) {
+    var count, end, index, results, start, _ref;
+    var ps = _.keys(card.passiveSkills);
+    if(card.star < 3 || ps.length != 0)
+        return;
+    count = card.star - 2;
+    results = [];
+    while (count-- > 0) {
+        index = _.random(cardConfig.PASSIVESKILL.TYPE.length - 1);
+        _ref = cardConfig.PASSIVESKILL.VALUE_SCOPE.split('-'), start = _ref[0], end = _ref[1];
+        results.push({
+            name: cardConfig.PASSIVESKILL.TYPE[index],
+            value: parseFloat(_.random(parseInt(start) * 10, parseInt(end) * 10) / 10).toFixed(1)
+        });
+    }
+
+    results.forEach(function(p){
+        p.cardId = card.id;
+        passiveSkillDao.create({
+            data: p
+        }, function(err, res) {
+           /* if (err) {
+                return callback(err);
+            }
+            */
+            card.addPassiveSkill(res);
+           // return callback();
+        });
+    });
+
+};
 
 module.exports = Card;

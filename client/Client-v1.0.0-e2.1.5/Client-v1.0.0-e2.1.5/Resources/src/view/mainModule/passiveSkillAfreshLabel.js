@@ -26,8 +26,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _nameLabel: null,
     _lvLabel: null,
     _resLabel: null,
-    _useMoneyIcon: null,
-    _useGoldIcon: null,
+    _useMoneyItem: null,
+    _useGoldItem: null,
     _useType: USE_NULL,
     _stopTypeLabel: null,
     _stopUntilBlueIcon: null,
@@ -55,7 +55,6 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this.update();
     },
 
-
     init: function () {
         cc.log("PassiveSkillAfreshLabel init");
 
@@ -73,17 +72,17 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         cardItemBgSprite.setPosition(cc.p(328, 725));
         this.addChild(cardItemBgSprite);
 
-        this._nameLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 23);
+        this._nameLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
+        this._nameLabel.setColor(cc.c3b(255, 239, 131));
         this._nameLabel.setAnchorPoint(cc.p(0, 0.5));
         this._nameLabel.setPosition(cc.p(243, 742));
         this.addChild(this._nameLabel);
-        this._nameLabel.setVisible(false);
 
-        this._lvLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 23);
+        this._lvLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
+        this._lvLabel.setColor(cc.c3b(255, 239, 131));
         this._lvLabel.setAnchorPoint(cc.p(0, 0.5));
         this._lvLabel.setPosition(cc.p(245, 708));
         this.addChild(this._lvLabel);
-        this._lvLabel.setVisible(false);
 
         this._resLabel = cc.Node.create();
         this._resLabel.setAnchorPoint(cc.p(0, 0));
@@ -107,7 +106,6 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             nameLabel.setPosition(cc.p(80, 152 + 78 * (2 - i)));
             this._resLabel.addChild(nameLabel);
             nameLabel.setVisible(false);
-//            nameLabel.setTexture(this._passiveSkillNameTexture.atk_reduce);
 
             var valueLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 28);
             valueLabel.setPosition(cc.p(190, 152 + 78 * (2 - i)));
@@ -138,33 +136,25 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             }
         }
 
-        var useMoneyItem = cc.MenuItemImage.create(
+        this._useMoneyItem = cc.MenuItemImage.create(
             main_scene_image.button25,
             main_scene_image.button25s,
+            main_scene_image.button25d,
             this._onClickUseMoney,
             this
         );
-        useMoneyItem.setPosition(cc.p(67, 92));
-        resMenu.addChild(useMoneyItem);
+        this._useMoneyItem.setPosition(cc.p(67, 92));
+        resMenu.addChild(this._useMoneyItem);
 
-        var useGoldItem = cc.MenuItemImage.create(
+        this._useGoldItem = cc.MenuItemImage.create(
             main_scene_image.button25,
             main_scene_image.button25s,
+            main_scene_image.button25d,
             this._onClickUseGold,
             this
         );
-        useGoldItem.setPosition(cc.p(291, 92));
-        resMenu.addChild(useGoldItem);
-
-        this._useMoneyIcon = cc.Sprite.create(main_scene_image.icon75);
-        this._useMoneyIcon.setPosition(cc.p(67, 92));
-        this._resLabel.addChild(this._useMoneyIcon);
-        this._useMoneyIcon.setVisible(false);
-
-        this._useGoldIcon = cc.Sprite.create(main_scene_image.icon75);
-        this._useGoldIcon.setPosition(cc.p(291, 92));
-        this._resLabel.addChild(this._useGoldIcon);
-        this._useGoldIcon.setVisible(false);
+        this._useGoldItem.setPosition(cc.p(291, 92));
+        resMenu.addChild(this_useGoldItem);
 
 
         this._stopTypeLabel = cc.Node.create();
@@ -490,17 +480,9 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _onClickUseMoney: function () {
         cc.log("PassiveSkillAfreshLabel _onClickUseMoney");
 
-        if (this._useType == USE_NULL) {
-            this._useType = USE_MONEY;
-            this._useMoneyIcon.setVisible(true);
-        } else if (this._useType == USE_MONEY) {
-            this._useType = USE_NULL;
-            this._useMoneyIcon.setVisible(false);
-        } else if (this._useType == USE_GOLD) {
-            this._useType = USE_MONEY;
-            this._useMoneyIcon.setVisible(true);
-            this._useGoldIcon.setVisible(false);
-        }
+        this._useType = USE_MONEY;
+        this._useMoneyItem.setEnabled(false);
+        this._useGoldItem.setEnabled(true);
 
         this.update();
     },
@@ -508,17 +490,9 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _onClickUseGold: function () {
         cc.log("PassiveSkillAfreshLabel _onClickUseGold");
 
-        if (this._useType == USE_NULL) {
-            this._useType = USE_GOLD;
-            this._useGoldIcon.setVisible(true);
-        } else if (this._useType == USE_MONEY) {
-            this._useType = USE_GOLD;
-            this._useMoneyIcon.setVisible(false);
-            this._useGoldIcon.setVisible(true);
-        } else if (this._useType == USE_GOLD) {
-            this._useType = USE_NULL;
-            this._useGoldIcon.setVisible(false);
-        }
+        this._useType = USE_GOLD;
+        this._useMoneyItem.setEnabled(true);
+        this._useGoldItem.setEnabled(false);
 
         this.update();
     },

@@ -46,32 +46,30 @@ function submit() {
     if (areaId == ALL) {  //全部服务器
         var len = areas.length;
         var id = 0;
-       // initConnect(function(){
-       //     dealAll(id,mail);
-      //  });
+
         async.whilst(
-            function(){ alert(1);return id < len; },
+            function(){ return id < len; },
             function(cb){
-                $.when(dealAll(id,mail)).then(function(){
-                        id++;
-                      //  disconnect();
-                        cb();
-                    });
-
-
-                //id++;
+                dealAll(areas[id].id,mail,function(err){
+                    if(err)
+                        cb(err);
+                    id++;
+                    cb();
+                });
             },
             function(err){
-                //id++;
-                alert(3);
-               // disconnect();
+               console.log("err = ",err);
             }
         );
 
     } else { //指定服务器
         if (playerName == '') {
-            $.when(connectServer(areaId)).then(sendMail(mail));
-
+           // $.when(connectServer(areaId)).then(sendMail(mail));
+           dealAll(areaId,mail,function(err){
+                if(err) {
+                    console.log("err = ",err);
+                }
+           });
         } else { //指定玩家
             var url = "/playerId?name=" + playerName + "&areaId=" + areaId;
             $.ajax({
@@ -81,7 +79,12 @@ function submit() {
                     console.log(data);
                     if (data.type == 'success') {
                         mail['playerId'] = data.info;
-                        $.when(connectServer(areaId)).then(sendMail(mail));
+                        //$.when(connectServer(areaId)).then(sendMail(mail));
+                        dealAll(areaId,mail,function(err){
+                            if(err) {
+                                console.log("err = ",err);
+                            }
+                        });
                     }
                 }
             });
@@ -91,19 +94,41 @@ function submit() {
 };
 
 
-function dealAll(id,mail) {
-
-    var dfd = $.Deferred();
-    initConnect(function(){
-        console.log(id);
-        $.when(connectServer(areas[id].id)).then(sendMail(mail,function(){ dfd.resolve();}));
-
+function dealAll(id,mail,cb) {
+    async.waterfall([
+        function(callback){
+            initConnect(function(){
+                callback();
+            });
+        },
+        function(callback){
+            connectServer(id,function(code){
+                if(code == 200) {
+                    callback();
+                }else {
+                    cb('error');
+                }
+            });
+        },
+        function(callback){
+            sendMail(mail,function(code){
+                if(code == 200) {
+                    callback();
+                }else {
+                    cb('error');
+                }
+            })
+        },
+        function(callback){
+            disconnect();
+            callback();
+        }
+    ],function(err){
+        if(err) {
+            cb(err);
+        }
+        cb(null);
     });
-    alert(2);
-    //disconnect();
-    return dfd.promise();
-
-
 };
 
 function getData() {
@@ -146,13 +171,13 @@ function initConnect(cb) {
         port: port,
         log: true
     }, function () {
-        cb()
+        cb();
     });
 };
 
-function connectServer(areaId) {
+function connectServer(areaId,cb) {
 
-    var dfd = $.Deferred();
+  //  var dfd = $.Deferred();
 
     var route = "connector.entryHandler.entryForGM";
     pomelo.request(route, {
@@ -161,14 +186,17 @@ function connectServer(areaId) {
         if (data.code === 200) {
             console.log(data);
 
-            dfd.resolve();
+         //   dfd.resolve();
         } else {
             console.log(data);
           //  cb(data.code);
         }
+
+        cb(data.code);
+
     });
 
-   return dfd.promise();
+   //return dfd.promise();
 };
 
 
@@ -179,8 +207,8 @@ function sendMail(mail,cb) {
 
     pomelo.request('area.messageHandler.sysMsg', mail, function (data) {
         console.log(data);
-        alert("sendMail");
-        cb();
+       // alert("sendMail");
+        cb(data.code);
     });
     //return dfd.promise();
 };

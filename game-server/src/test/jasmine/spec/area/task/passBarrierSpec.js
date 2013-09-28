@@ -129,7 +129,6 @@ describe("Area Server", function() {
 							]);
 							expect(data.msg.battleLog.winner).toEqual('own');
 							//expect(data.msg.battleLog.rewards).hasProperties(['exp', 'skillPoint', 'spirit'])
-                            console.log(data.msg.pass)
 							expect(data.msg.pass).hasProperties(['layer', 'mark', 'hasMystical','canReset']);
 							expect(data.msg.battleLog).toBeBattleLog();
 
@@ -138,7 +137,11 @@ describe("Area Server", function() {
 							]);
 
 							doAjax('/player/' + passer.playerId, {}, function(res) {
-								expect(JSON.parse(res.data.pass)).toEqual(data.msg.pass);
+								var pass = JSON.parse(res.data.pass);
+								expect(pass.mark).toEqual(data.msg.pass.mark);
+								expect(pass.layer).toEqual(data.msg.pass.layer);
+								expect(pass.resetTimes > 0).toEqual(data.msg.pass.canReset);
+								expect(pass.mystical.isTrigger && !pass.mystical.isClear).toEqual(data.msg.pass.hasMystical);
 							});
 						});
 					});
@@ -157,176 +160,3 @@ describe("Area Server", function() {
 	});
 });
 
-
-describe("Area Server", function() {
-
-    describe("Task Handler", function() {
-
-        describe('area.taskHandler.resetPassMark',function() {
-
-            var mike = {
-                id: 102,
-                playerId: 102,
-                areaId: 1,
-                account: 'mike',
-                password: '1'
-            };
-
-            beforeEach(function() {
-                doAjax('/update/player/102', {
-                    pass: JSON.stringify({
-                        layer:30,
-                        mark:[1073741823],
-                        mystical: {
-                            diff: 1,
-                            isTrigger: false,
-                            isClear: false
-                        },
-                        resetTimes:2
-                    })
-                }, function() {
-                    loginWith(mike.account, mike.password, mike.areaId);
-                });
-            });
-
-            it('should can reset pass mark',function(){
-                request('area.taskHandler.resetPassMark', {}, function(data) {
-                    console.log(data);
-                    expect(data.code).toEqual(200);
-                    expect(data.msg).toBeDefined();
-                    expect(data.msg).hasProperties([
-                        'gold',
-                        'canReset'
-                    ]);
-                    expect(data.msg.canReset).toEqual(true)
-
-                    doAjax('/player/' + mike.playerId, {}, function(res) {
-                        //expect(JSON.parse(res.data.pass.mark)).toEqual(data.msg.passMark);
-                        expect(res.data.gold).toEqual(data.msg.gold);
-                    });
-
-                });
-            });
-        });
-
-        describe('can not reset pass mark',function(){
-
-            var mike = {
-                id: 102,
-                playerId: 102,
-                areaId: 1,
-                account: 'mike',
-                password: '1'
-            };
-
-            beforeEach(function() {
-                doAjax('/update/player/102', {
-                    gold:10000,
-                    pass: JSON.stringify({
-                        layer:30,
-                        mark:[1073741823],
-                        mystical: {
-                            diff: 1,
-                            isTrigger: false,
-                            isClear: false
-                        },
-                        resetTimes:0
-                    })
-                }, function() {
-                    loginWith(mike.account, mike.password, mike.areaId);
-                });
-            });
-
-
-            it('when gold is already enough',function(){
-                doAjax('/update/player/102', {
-
-                    pass: JSON.stringify({
-                        layer:30,
-                        mark:[1073741823],
-                        mystical: {
-                            diff: 1,
-                            isTrigger: false,
-                            isClear: false
-                        },
-                        resetTimes:0
-                    })
-                },function(){
-                    loginWith(mike.account, mike.password, mike.areaId);
-                    request('area.taskHandler.resetPassMark', {}, function(data) {
-                        console.log(data);
-                        expect(data.code).toEqual(501);
-                        expect(data.msg).toEqual('重置关卡次数已用光');
-                    });
-                });
-            });
-
-            it('when gold is not enough',function(){
-                doAjax('/update/player/102', {
-                    gold:180
-                },function(){
-                    loginWith(mike.account, mike.password, mike.areaId);
-                    request('area.taskHandler.resetPassMark', {}, function(data) {
-                        console.log(data);
-                        expect(data.code).toEqual(501);
-                        expect(data.msg).toEqual('元宝不足');
-                    });
-                });
-            });
-
-
-        });
-    });
-
-});
-
-
-describe("Area Server", function () {
-
-    describe("Task Handler", function () {
-
-        beforeAll(function () {
-            doAjax('/loaddata/csv', {}, function (data) {
-                expect(data).toEqual('done');
-            });
-        });
-
-        describe("area.taskHandler.mysticalPass", function () {
-            var arthur = {
-                id: 100,
-                playerId: 100,
-                areaId: 1,
-                account: 'arthur',
-                password: '1'
-            };
-            beforeEach(function () {
-                doAjax('/update/player/100', {
-                    pass: JSON.stringify({
-                        "layer": 5,
-                        "mark": [],
-                        "mystical": { "diff": 1, "isTrigger": true, "isClear": false },
-                        isReset:true
-                    })
-                }, function () {
-                    loginWith(arthur.account, arthur.password, arthur.areaId);
-                });
-
-            });
-
-            it("should can be return the true result", function () {
-                request('area.taskHandler.mysticalPass',{}, function (data) {
-                    console.log(data);
-                    expect(data.code).toEqual(200);
-                    expect(data.msg).toBeDefined();
-                    expect(data.msg).hasProperties([
-                        "battleLog",
-                        "spiritor"
-                    ]);
-                });
-            })
-
-        });
-
-    });
-
-});

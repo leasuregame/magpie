@@ -24,7 +24,8 @@ class Manager
       upgrade: false
       open_box_card: null
       battle_log: null
-      #isMomo: false
+      spiritor: null
+      momo: null
     }
 
     ### 检查是否体力充足 ###
@@ -165,7 +166,7 @@ class Manager
       cb()
 
   @countExploreResult: (player, data, taskId, cb) ->
-    taskData = table.getTableItem('task', player.task.id)
+    taskData = table.getTableItem('task', taskId)
     exp_to_upgrade = table.getTableItem('player_upgrade', player.lv)
 
     _.extend data, {
@@ -212,7 +213,7 @@ class Manager
         ps_data.cardId = card.id
         dao.passiveSkill.create data: ps_data, (err, ps) ->
           if err
-            logger.error 'faild to create passiveSkill, ', + err
+            logger.error 'faild to create passiveSkill, ', err
             return next(err)
 
           card.addPassiveSkill ps

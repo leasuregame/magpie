@@ -8,6 +8,7 @@ passSkillConfig = require '../../../../config/data/passSkill'
 elixirConfig = require '../../../../config/data/elixir'
 starUpgradeConfig = require '../../../../config/data/starUpgrade'
 utility = require '../../../common/utility'
+entityUtil = require '../../../util/entityUtil'
 job = require '../../../dao/job'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
@@ -240,6 +241,7 @@ Handler::starUpgrade = (msg, session, next) ->
         player.decrease('money', money_consume)
         card.increase('star')
         card.increase('tableId')
+        entityUtil.resetSkillIncForCard(card)
 
         # 获得so lucky成就
         if card_count is 1

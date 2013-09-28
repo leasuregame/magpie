@@ -133,7 +133,7 @@ describe("Area Server", function() {
 							expect(data.msg.battleLog).toBeBattleLog();
 
 							expect(data.msg.battleLog.rewards).hasProperties([
-								'spirit', 'skillPoint', 'exp'
+								'totalSpirit', 'skillPoint', 'exp'
 							]);
 
 							doAjax('/player/' + passer.playerId, {}, function(res) {

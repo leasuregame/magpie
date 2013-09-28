@@ -152,14 +152,14 @@ Handler::passBarrier = (msg, session, next) ->
     (bl, cb) ->
       if bl.winner is 'own'
         rdata = table.getTableItem 'pass_reward', layer
-        rewards = 
+        bl.rewards = 
           exp: rdata.exp
           money: rdata.coins
           skillPoint: rdata.skill_point
-          spirit: {total: 0}
+          totalSpirit: 0
 
-        countSpirit(player, bl, rewards) if player.pass.layer is layer-1
-        updatePlayer(player, rewards, layer)
+        countSpirit(player, bl) if player.pass.layer is layer-1
+        updatePlayer(player, bl.rewards, layer)
         checkMysticalPass(player)
 
       cb(null, bl)
@@ -249,14 +249,14 @@ Handler::mysticalPass = (msg, session, next) ->
     (bl, cb) ->
       if bl.winner is 'own'
         mpcData = table.getTableItem('mystical_pass_config', player.pass.mystical.diff)
-        rewards = 
+        bl.rewards = 
           skillPoint: mpcData.skill_point
-          spirit: total: 0
+          totalSpirit: 0
 
-        countSpirit(player, bl, rewards)
+        countSpirit(player, bl)
         player.increase('skillPoint', mpcData.skill_point)
         player.clearMysticalPass()        
-        player.incSpirit(rewards.spirit.total)
+        player.incSpirit(bl.rewards.totalSpirit)
         player.save()
 
       cb(null, bl)
@@ -270,19 +270,19 @@ Handler::mysticalPass = (msg, session, next) ->
       hasMystical: player.hasMysticalPass()
     }})
 
-countSpirit = (player, bl, rewards) ->
-  spirit = rewards.spirit
+countSpirit = (player, bl) ->
+  totalSpirit = 0
   _.each bl.cards, (v, k) ->
     return if k <= 6
     
     if v.boss?
-      spirit[k] = spiritConfig.SPIRIT.PASS.BOSS
-      spirit.total += spiritConfig.SPIRIT.PASS.BOSS
-    else 
-      spirit[k] = spiritConfig.SPIRIT.PASS.OTHER
-      spirit.total += spiritConfig.SPIRIT.PASS.OTHER
+      v.spirit = spiritConfig.SPIRIT.TASK.BOSS
+      totalSpirit += spiritConfig.SPIRIT.TASK.BOSS
+    else
+      v.spirit = spiritConfig.SPIRIT.TASK.OTHER
+      totalSpirit += spiritConfig.SPIRIT.TASK.OTHER
 
-  bl.rewards = rewards
+  bl.rewards.totalSpirit = totalSpirit
 
 checkMysticalPass = (player) ->
   return if player.pass.mystical.isTrigger
@@ -301,7 +301,7 @@ updatePlayer = (player, rewards, layer) ->
   player.increase('exp', rewards.exp)
   player.increase('money', rewards.money)
   player.increase('skillPoint', rewards.skillPoint)
-  player.incSpirit(rewards.spirit.total)
+  player.incSpirit(rewards.totalSpirit)
   player.incPass() if player.pass.layer is layer-1
   player.setPassMark(layer)
   player.save()

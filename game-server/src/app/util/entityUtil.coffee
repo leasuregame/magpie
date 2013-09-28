@@ -9,16 +9,10 @@ module.exports =
     if data.star is null
       data.star = data.tableId%5 or 5
 
+    ps = []
     if data.star >= 3
       ps = initPassiveSkill(data.star)
-      cdata = table.getTableItem('card', data.tableId)
-      skill = cdata.skill_id_linktarget
-      if skill?
-        min = skill["star#{data.star}_inc_min"] * 10
-        max = skill["star#{data.star}_inc_max"] * 10
-        data.skillInc = _.random(min, max) / 10
-      else 
-        throw new Error('can not file skill info of card: ' + data.tableId)
+      genSkillInc(data)
     
     async.waterfall [
       (cb) ->
@@ -26,10 +20,11 @@ module.exports =
 
       (card, cb) ->
         if ps.length is 0
-          return cb(null)
+          return cb(null, card)
 
         async.each ps, (p, callback) ->
-          dao.passiveSkill.create data: ps, (err, res) ->
+          p.cardId = card.id
+          dao.passiveSkill.create data: p, (err, res) ->
             return callback(err) if err
             card.addPassiveSkill(res)
             callback()
@@ -39,18 +34,30 @@ module.exports =
     ], (err, card) ->
       if err
         return done(err)
-
+      console.log 'create card: ', card
       done(null, card)
+
+  resetSkillIncForCard: (card) ->
+    genSkillInc(card) if card.star >= 3
+
+genSkillInc = (card) ->
+  cdata = table.getTableItem('cards', card.tableId)
+  skill = cdata.skill_id_linktarget
+  if skill?
+    min = skill["star#{card.star}_inc_min"] * 10
+    max = skill["star#{card.star}_inc_max"] * 10
+    card.skillInc = _.random(min, max) / 10
+  else
+    throw new Error('can not file skill info of card: ' + card.tableId)
 
 initPassiveSkill = (star) ->
   count = star - 2
-  
   results = []
   while count-- > 0
     index = _.random(cardConfig.PASSIVESKILL.TYPE.length-1)
     [start, end] = cardConfig.PASSIVESKILL.VALUE_SCOPE.split('-')
     results.push(
       name: cardConfig.PASSIVESKILL.TYPE[index],
-      value: _.random(start, end)
+      value: parseFloat(_.random(parseInt(start) * 10, parseInt(end) * 10) / 10).toFixed(1)
     )
   results

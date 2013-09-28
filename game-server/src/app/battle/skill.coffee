@@ -36,11 +36,9 @@ class Skill extends Module
 
   getRate: ->
     parseInt(@['rate' + @hero.star])
-    # [base_val, lv_grow] = utility.parseEffect @['rate' + @hero.star]
-    # base_val + lv_grow * (@lv - 1)
 
   effectValue: ->
-    [base_val, lv_grow] = utility.parseEffect @['star' + @hero.star]
+    [base_val, lv_grow] = [@hero.skill_inc, @['star' + @hero.star + '_grow']]
     ( base_val + lv_grow * @lv ) / 100
 
   get_round_num: ->

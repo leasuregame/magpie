@@ -171,14 +171,16 @@ function init(){
 //事件处理
 function eventHandle(){
     $(document).ready(function(){
-
+        $(".btnUpdateCard").unbind("click");
+        $(".btnDelCard").unbind("click")
         $(".btnUpdateCard").bind("click",function(){
             operate = OperateConfig.UPDATE;
             setRowCss(this.value);
             setCard(this.value);
         });
 
-        $(".btnDelCard").click(function(){
+        $(".btnDelCard").bind("click",function(){
+
             submitDel(this.value);
 
         });
@@ -231,7 +233,7 @@ function submitAdd() {
         url:url,
         type:"post",
         success:function(msg){
-          //  console.log(msg);
+            console.log(msg);
             if(msg.type == "success") {
                 cards[cards.length] = msg.info;
            // updateCardsList();
@@ -323,7 +325,7 @@ function submitDel(id){
         url:url,
         type:"post",
         success:function(msg){
-            //console.log(msg);
+            console.log(msg);
             var row = $("tr[id =" + id + "]");
             var index = row.index();
             if(index == 0) {
@@ -342,6 +344,7 @@ function submitDel(id){
                 //console.log(row.index());
                 }
                 setShowMsg(msg);
+
                 delRow(id);
 
             }else {
@@ -477,7 +480,7 @@ function setCardsList() {
 //添加一行
 function addRow(card){
     var inner = "";
-        inner += "<tr id =" + card.id +"><td>" + card.name + "</td><td>" + card.lv + "</td><td>" + card.skillLv + "</td><td>" + card.elixirHp + "</td><td>" + card.elixirAtk + "</td><td>"  + card.star + "</td>";
+            inner += "<tr id =" + card.id +"><td>" + card.name + "</td><td>" + card.lv + "</td><td>" + card.skillLv + "</td><td>" + card.elixirHp + "</td><td>" + card.elixirAtk + "</td><td>"  + card.star + "</td>";
         for(var i = 0;i < 3;i++) {
             if(card.passSkills.length > i)
                 inner += "<td>" + card.passSkills[i].name + "</td>";
@@ -492,9 +495,9 @@ function addRow(card){
         inner += "</tr>";
 
 
-        $("#cardsList").prepend(inner);
+        $("#cardsList").append(inner);
         eventHandle();
-    setPagination();
+    updatePagination(1);
 };
 
 //更新指定行
@@ -522,7 +525,8 @@ function updateRow(data) {
 //删除指定行
 function delRow(id){
     $("tr[id =" + id + "]").remove();
-    setPagination();
+    console.log("id = ",id);
+    updatePagination(-1);
 };
 
 //设置选中行的背景色
@@ -632,85 +636,16 @@ function updatePassSkill(star) {
 
 //分页显示功能
 function setPagination() {
-    /*
+
     var total = $("#cardsList tbody tr").length;//总条数
 
-    var current_items = 10;//每页显示10条
-    var current_page = 1;//当前页面
-    var total_page = Math.ceil(total / current_items);//总页面数
-   // console.log(total_page);
+    var current_items = 15;//每页显示15条
+    //pagination("#cardsList tbody tr",current_items,total);
+    Pagination.init("#cardsList tbody tr",current_items,total);
+};
 
-    $(".current_page").val(current_page);
-    $(".total").text(total_page);
-
-    showPage(current_page);
-
-    //下一页
-    $(".next").click(function(){
-        if(current_page >= total_page) {
-            return false;
-        }else {
-            $(".current_page").text(++current_page);
-            showPage(current_page);
-        }
-
-    });
-
-
-    //上一页
-    $(".prev").click(function(){
-        if(current_page <= 1) {
-            return false;
-        }else {
-            $(".current_page").text(--current_page);
-            showPage(current_page);
-        }
-    });
-
-    //首页
-    $(".page_first").click(function(){
-        current_page = 1;
-        $(".current_page").text(current_page);
-        showPage(current_page);
-    });
-
-    //末页
-    $(".page_last").click(function(){
-        current_page = total_page;
-        $(".current_page").text(current_page);
-        showPage(current_page);
-    });
-
-    //输入框
-    $(".current_page").change(function(){
-        var val = $(".current_page").val();
-        if(val < 1 || val > total_page) {
-            $(".current_page").val(current_page)
-            return;
-        }else {
-            current_page = val;
-            showPage(current_page);
-        }
-
-    });
-
-    function showPage(page) {
-        $("#cardsList tbody tr").hide();
-        $.each($("#cardsList tbody tr"),function(index,item){
-            var start = current_items * (current_page - 1);
-            var end = current_items * current_page;
-            if(index >= start && index < end || index == 0)
-                $(this).show();
-        });
-
-
-    };
-    */
-    var total = $("#cardsList tbody tr").length;//总条数
-
-    var current_items = 10;//每页显示10条
-   pagination("#cardsList tbody tr",current_items,total);
-
+function updatePagination(val) {
+    Pagination.update(val);
 };
 
 

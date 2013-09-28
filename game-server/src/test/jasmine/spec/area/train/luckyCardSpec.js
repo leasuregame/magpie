@@ -70,25 +70,25 @@ describe("Area Server", function() {
 
 					beforeEach(function() {
 						loginWith(arthur.account, arthur.password, arthur.areaId);
+					});
 
+					var doIt = function(type, timeout) {
 						doAjax('/player/' + arthur.playerId, {}, function(res) {
 							before_gold = res.data.gold;
 							before_energy = res.data.energy;
 							before_fragments = res.data.fragments;
 						});
-					});
-
-					var doIt = function(type, timeout) {
+						
 						request('area.trainHandler.luckyCard', {
 							type: type,
 							level: level
 						}, function(data) {
-							console.log(name, test_name, data);
+							console.log(name, data);
 							expect(data.code).toEqual(200);
 							expect(data.msg).hasProperties([
 								'card',
 								'consume',
-								'hasFragment'
+								'fragment'
 							]);
 
 							var card = data.msg.card;
@@ -115,7 +115,6 @@ describe("Area Server", function() {
 								doAjax('/passiveSkill/' + ps.id, {}, function(res) {
 									expect(res.data).toEqual({
 										id: ps.id,
-										createTime: ps.createTime,
 										cardId: ps.cardId,
 										name: ps.name,
 										value: ps.value
@@ -130,7 +129,7 @@ describe("Area Server", function() {
 									expect(res.data.energy).toEqual(before_energy - data.msg.consume);
 								}
 
-								if (data.msg.hasFragment) {
+								if (data.msg.fragment) {
 									expect(res.data.fragments).toEqual(before_fragments + 1);
 								} else {
 									expect(res.data.fragments).toEqual(before_fragments);
@@ -149,7 +148,7 @@ describe("Area Server", function() {
 
 					var test100times = function(test_name, type) {
 						it(test_name + ' >> gold, 100 times', function() {
-							for (var i = 0; i < 50; i++) {
+							for (var i = 0; i < 100; i++) {
 								(function(i) {
 									doIt(type, 15000);
 								})(i);
@@ -160,7 +159,7 @@ describe("Area Server", function() {
 					test("元宝抽卡 >> should can be get a lucky card", LOTTERY_TYPE.GOLD);
 					test100times('元宝抽卡', LOTTERY_TYPE.GOLD);
 					test("活力值抽卡 >> should can be get a lucky card", LOTTERY_TYPE.ENERGY);
-					//test100times('活力值抽卡', LOTTERY_TYPE.ENERGY);
+					test100times('活力值抽卡', LOTTERY_TYPE.ENERGY);
 				});
 			};
 

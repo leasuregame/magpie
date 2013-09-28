@@ -26,6 +26,7 @@ var Card = Entity.extend({
     _lv: 0,                 // 卡牌等级
     _exp: 0,                // 当前经验
     _skillLv: 0,            // 技能等级
+    _skillInc: 0,           // 技能初始伤害
     _elixirHp: 0,           // 生命值仙丹
     _elixirAtk: 0,          // 攻击力仙丹
     _skillPoint: 0,         // 技能点
@@ -53,22 +54,28 @@ var Card = Entity.extend({
 
     init: function (data) {
         cc.log("Card init");
-        cc.log("=============================================");
-        cc.log(data);
 
         this._passiveSkill = {};
 
         this.update(data);
 
-        cc.log(this);
+        if (data.skillInc) {
+            cc.log("=============================================");
+            cc.log(data);
 
-        if (data != undefined && data.hp != undefined && SETTING_IS_BROWSER)
-            cc.Assert(data.hp == this._hp, "Card hp error");
 
-        if (data != undefined && data.atk != undefined && SETTING_IS_BROWSER)
-            cc.Assert(data.atk == this._atk, "Card atk error");
+            cc.log(this);
 
-        cc.log("=============================================");
+            if (data != undefined && data.hp != undefined && SETTING_IS_BROWSER)
+                cc.Assert(data.hp == this._hp, "Card hp error");
+
+            if (data != undefined && data.atk != undefined && SETTING_IS_BROWSER)
+                cc.Assert(data.atk == this._atk, "Card atk error");
+
+            cc.log("=============================================");
+        }
+
+
         return true;
     },
 
@@ -82,6 +89,7 @@ var Card = Entity.extend({
             this.set("lv", data.lv);
             this.set("exp", data.exp);
             this.set("skillLv", data.skillLv);
+            this.set("skillInc", data.skillInc);
             this.set("elixirHp", data.elixirHp);
             this.set("elixirAtk", data.elixirAtk);
             this.set("skillPoint", data.skillPoint);
@@ -122,7 +130,7 @@ var Card = Entity.extend({
         this._initHp = cardTable.hp;
         this._initAtk = cardTable.atk;
         this._skillId = cardTable.skill_id;
-        this._skillName = cardTable.skill_name;
+        this._skillName = cardTable.skill_name || "三星以上拥有技能";
 
         // 读取等级加成表
         var factorsTable = outputTables.factors.rows[this._lv];
@@ -153,24 +161,21 @@ var Card = Entity.extend({
     _loadSkillTable: function () {
         cc.log("Card _loadSkillTable");
 
+        this._skillDescription = "你的卡牌弱爆了，赶紧升星吧。";
+
         if (!this._skillId) return;
 
         // 读取技能配置表
         var skillTable = outputTables.skills.rows[this._skillId];
 
-        var skillHarmString = skillTable["star" + this._star];
-        var skillHarm = [0, 0];
+        var skillHarmGrow = skillTable["star" + this._star + "_grow"] || 0;
 
-        if (skillHarmString) {
-            skillHarm = skillHarmString.split(",", 2);
+        if (!this._skillInc) {
+            this._skillInc = skillTable["star" + this._star + "_inc_max"] || 0;
         }
 
-        this._skillHarm = parseInt(skillHarm[0]) + parseInt(skillHarm[1]) * this._skillLv;
-
-        this._skillRate = skillTable["rate" + this._star];
-
-        if (!this._skillRate) this._skillRate = 0;
-
+        this._skillHarm = this._skillInc + skillHarmGrow * this._skillLv;
+        this._skillRate = skillTable["rate" + this._star] || 0;
         this._skillDescription = skillTable.description;
         this._skillType = skillTable.type;
         this._skillMaxLv = 5;
@@ -315,14 +320,11 @@ var Card = Entity.extend({
 
         if (this.canUpgradeSkill()) {
             // 读取技能配置表
-            var skillHarmString = outputTables.skills.rows[this._skillId]["star" + this._star];
-            var skillHarm = [0, 0];
+            var skillTable = outputTables.skills.rows[this._skillId];
 
-            if (skillHarmString) {
-                skillHarm = skillHarmString.split(",", 2);
-            }
+            var skillHarmGrow = skillTable["star" + this._star + "_grow"] || 0;
 
-            return (parseInt(skillHarm[0]) + parseInt(skillHarm[1]) * (this._skillLv + 1));
+            return (this._skillInc + skillHarmGrow * (this._skillLv + 1));
         }
 
         return 0;

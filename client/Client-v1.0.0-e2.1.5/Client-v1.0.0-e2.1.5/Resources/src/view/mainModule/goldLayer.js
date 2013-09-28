@@ -48,7 +48,7 @@ var GoldLayer = LazyLayer.extend({
         this.addChild(goldIcon);
 
         this._goldLabel = cc.LabelTTF.create(this._gold, "STHeitiTC-Medium", 20);
-        this._goldLabel.setColor(cc.c3b(255, 240, 170));
+        this._goldLabel.setColor(cc.c3b(255, 239, 131));
         this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
         this._goldLabel.setPosition(cc.p(600, 1000));
         this.addChild(this._goldLabel);
@@ -234,7 +234,7 @@ var GoldLayer = LazyLayer.extend({
             gameData.task.obtainGold(this._gold);
 
             var tipLabel = cc.LabelTTF.create("恭喜您，获得 " + this._gold + " 元宝", "STHeitiTC-Medium", 35);
-            tipLabel.setColor(cc.c3b(255, 240, 170));
+            tipLabel.setColor(cc.c3b(255, 239, 131));
             tipLabel.setPosition(cc.p(360, 550));
             this.addChild(tipLabel);
         }

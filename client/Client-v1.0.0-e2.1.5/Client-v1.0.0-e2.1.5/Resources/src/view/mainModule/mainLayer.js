@@ -34,15 +34,19 @@ var MainLayer = cc.Layer.extend({
         playerHeaderLabel.setPosition(cc.p(40, 890));
         this.addChild(playerHeaderLabel);
 
-        this._abilityLabel = cc.LabelTTF.create(0, '黑体', 22);
-        this._abilityLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._abilityLabel.setPosition(cc.p(300, 700));
-        this.addChild(this._abilityLabel);
+        var player = gameData.player;
 
-        this._rankLabel = cc.LabelTTF.create(0, '黑体', 22);
-        this._rankLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._rankLabel.setPosition(cc.p(530, 700));
-        this.addChild(this._rankLabel);
+        var abilityLabel = cc.LabelTTF.create(player.get("ability"), "STHeitiTC-Medium", 22);
+        abilityLabel.setColor(cc.c3b(255, 239, 131));
+        abilityLabel.setAnchorPoint(cc.p(0.5, 0.5));
+        abilityLabel.setPosition(cc.p(300, 700));
+        this.addChild(abilityLabel);
+
+        var rankLabel = cc.LabelTTF.create(player.get("rank"), "STHeitiTC-Medium", 22);
+        rankLabel.setColor(cc.c3b(255, 239, 131));
+        rankLabel.setAnchorPoint(cc.p(0.5, 0.5));
+        rankLabel.setPosition(cc.p(530, 700));
+        this.addChild(rankLabel);
 
         var lineUpLabel = LineUpLabel.create();
         lineUpLabel.setPosition(cc.p(40, 800));
@@ -145,15 +149,6 @@ var MainLayer = cc.Layer.extend({
         this.addChild(functionMenu);
 
         return true;
-    },
-
-    update: function () {
-        cc.log("MainLayer update");
-
-        var player = gameData.player;
-
-        this._abilityLabel.setString(player.get("ability"));
-        this._rankLabel.setString(player.get("rank"));
     },
 
     _onClickSpiritLayer: function () {

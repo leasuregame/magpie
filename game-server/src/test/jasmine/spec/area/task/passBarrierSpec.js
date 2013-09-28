@@ -129,16 +129,19 @@ describe("Area Server", function() {
 							]);
 							expect(data.msg.battleLog.winner).toEqual('own');
 							//expect(data.msg.battleLog.rewards).hasProperties(['exp', 'skillPoint', 'spirit'])
-                            console.log(data.msg.pass)
 							expect(data.msg.pass).hasProperties(['layer', 'mark', 'hasMystical','canReset']);
 							expect(data.msg.battleLog).toBeBattleLog();
 
 							expect(data.msg.battleLog.rewards).hasProperties([
-								'spirit', 'skillPoint', 'exp'
+								'totalSpirit', 'skillPoint', 'exp'
 							]);
 
 							doAjax('/player/' + passer.playerId, {}, function(res) {
-								expect(JSON.parse(res.data.pass)).toEqual(data.msg.pass);
+								var pass = JSON.parse(res.data.pass);
+								expect(pass.mark).toEqual(data.msg.pass.mark);
+								expect(pass.layer).toEqual(data.msg.pass.layer);
+								expect(pass.resetTimes > 0).toEqual(data.msg.pass.canReset);
+								expect(pass.mystical.isTrigger && !pass.mystical.isClear).toEqual(data.msg.pass.hasMystical);
 							});
 						});
 					});

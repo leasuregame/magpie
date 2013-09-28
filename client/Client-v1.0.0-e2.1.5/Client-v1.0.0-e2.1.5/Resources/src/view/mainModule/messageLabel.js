@@ -30,8 +30,9 @@ var MessageLabel = cc.Node.extend({
         this.addChild(bgSprite, -1);
 
         this._messageLabel = cc.LabelTTF.create("系统消息：", "STHeitiTC-Medium", 20);
-        this._messageLabel.setAnchorPoint(cc.p(0, 0));
-        this._messageLabel.setPosition(cc.p(20, 5));
+        this._messageLabel.setColor(cc.c3b(255, 239, 131));
+        this._messageLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._messageLabel.setPosition(cc.p(20, 18));
         this.addChild(this._messageLabel);
 
         return true;

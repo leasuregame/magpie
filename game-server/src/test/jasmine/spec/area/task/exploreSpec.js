@@ -39,7 +39,7 @@ describe("Area Server", function() {
 							'lv',
 							'exp',
 							'task',
-							'power',
+							'power'
 							//'momo'
 						]);
 

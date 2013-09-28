@@ -6,9 +6,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>arthur wu</Author>
-  <LastAuthor>arthur wu</LastAuthor>
+  <LastAuthor>晨晨 林</LastAuthor>
   <Created>2013-09-06T06:32:57Z</Created>
-  <LastSaved>2013-09-10T09:11:45Z</LastSaved>
+  <LastSaved>2013-09-26T02:34:12Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>12420</WindowHeight>
-  <WindowWidth>25600</WindowWidth>
-  <WindowTopX>10940</WindowTopX>
-  <WindowTopY>560</WindowTopY>
+  <WindowHeight>15060</WindowHeight>
+  <WindowWidth>28860</WindowWidth>
+  <WindowTopX>2140</WindowTopX>
+  <WindowTopY>0</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -84,7 +84,7 @@
     <Cell><Data ss:Type="String">passTo</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="String">一半！</Data></Cell>
-    <Cell><Data ss:Type="String">精英关卡闯到50层</Data></Cell>
+    <Cell><Data ss:Type="String">天道闯过50层</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
    </Row>
@@ -93,7 +93,7 @@
     <Cell><Data ss:Type="String">passTo</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="String">通关！</Data></Cell>
-    <Cell><Data ss:Type="String">精英关卡闯过100层</Data></Cell>
+    <Cell><Data ss:Type="String">天道闯过100层</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">1000</Data></Cell>
    </Row>
@@ -102,7 +102,7 @@
     <Cell><Data ss:Type="String">winCount</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="String">小试牛刀</Data></Cell>
-    <Cell><Data ss:Type="String">竞技场中获胜总场次达到50场</Data></Cell>
+    <Cell><Data ss:Type="String">竞技获胜次数达到50场</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
    </Row>
@@ -111,7 +111,7 @@
     <Cell><Data ss:Type="String">winCount</Data></Cell>
     <Cell><Data ss:Type="Number">5000</Data></Cell>
     <Cell><Data ss:Type="String">已经超神了</Data></Cell>
-    <Cell><Data ss:Type="String">竞技场中获胜总场次达到5000场</Data></Cell>
+    <Cell><Data ss:Type="String">竞技获胜次数达到5000场</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">1000</Data></Cell>
    </Row>
@@ -120,7 +120,7 @@
     <Cell><Data ss:Type="String">winningStreak</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="String">所向披靡</Data></Cell>
-    <Cell><Data ss:Type="String">竞技场中最高连胜场次达到50场</Data></Cell>
+    <Cell><Data ss:Type="String">竞技最高连胜达到50次</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">1000</Data></Cell>
    </Row>
@@ -129,7 +129,7 @@
     <Cell><Data ss:Type="String">rankingToOne</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">寂寞</Data></Cell>
-    <Cell><Data ss:Type="String">竞技场排名达到第1名</Data></Cell>
+    <Cell><Data ss:Type="String">竞技排名达到第1</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">1000</Data></Cell>
    </Row>
@@ -138,7 +138,7 @@
     <Cell><Data ss:Type="String">v587</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">霸气外射！</Data></Cell>
-    <Cell><Data ss:Type="String">己方只上阵1张卡牌，对方上阵5张卡，在这种情况下，战胜对方</Data></Cell>
+    <Cell><Data ss:Type="String">以1敌5，战胜对方</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
    </Row>
@@ -156,7 +156,7 @@
     <Cell><Data ss:Type="String">gaveBless</Data></Cell>
     <Cell><Data ss:Type="Number">500</Data></Cell>
     <Cell><Data ss:Type="String">无私奉献</Data></Cell>
-    <Cell><Data ss:Type="String">为好友送出祝福总次数达到500次</Data></Cell>
+    <Cell><Data ss:Type="String">为好友送出祝福达到500次</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
    </Row>
@@ -165,7 +165,7 @@
     <Cell><Data ss:Type="String">receivedBless</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="String">爱是相互的</Data></Cell>
-    <Cell><Data ss:Type="String">收到好友祝福总次数达到100次</Data></Cell>
+    <Cell><Data ss:Type="String">收到好友祝福次数达到100次</Data></Cell>
     <Cell><Data ss:Type="Number">300</Data></Cell>
     <Cell><Data ss:Type="Number">2000</Data></Cell>
    </Row>
@@ -201,7 +201,7 @@
     <Cell><Data ss:Type="String">psTo10</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">但求最好</Data></Cell>
-    <Cell><Data ss:Type="String">拥有1个10%加成效果的被动技能</Data></Cell>
+    <Cell><Data ss:Type="String">拥有1个10%的被动属性</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
    </Row>
@@ -210,7 +210,7 @@
     <Cell><Data ss:Type="String">elixirTo</Data></Cell>
     <Cell><Data ss:Type="Number">100000</Data></Cell>
     <Cell><Data ss:Type="String">一大波仙丹</Data></Cell>
-    <Cell><Data ss:Type="String">拥有100000颗仙丹</Data></Cell>
+    <Cell><Data ss:Type="String">累计获得100000仙丹</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">500</Data></Cell>
    </Row>
@@ -219,7 +219,7 @@
     <Cell><Data ss:Type="String">energyTo</Data></Cell>
     <Cell><Data ss:Type="Number">100000</Data></Cell>
     <Cell><Data ss:Type="String">活力无限</Data></Cell>
-    <Cell><Data ss:Type="String">拥有100000点活力值</Data></Cell>
+    <Cell><Data ss:Type="String">累计获得100000活力值</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">1000</Data></Cell>
    </Row>
@@ -228,7 +228,7 @@
     <Cell><Data ss:Type="String">luckyCardCount</Data></Cell>
     <Cell><Data ss:Type="Number">9999</Data></Cell>
     <Cell><Data ss:Type="String">抽卡狂魔</Data></Cell>
-    <Cell><Data ss:Type="String">抽卡总次数达到9999次</Data></Cell>
+    <Cell><Data ss:Type="String">抽卡总次数达到9999</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">500</Data></Cell>
    </Row>
@@ -237,7 +237,7 @@
     <Cell><Data ss:Type="String">highLuckyCardCount</Data></Cell>
     <Cell><Data ss:Type="Number">8888</Data></Cell>
     <Cell><Data ss:Type="String">钱就是个屁</Data></Cell>
-    <Cell><Data ss:Type="String">高级抽卡总次数达到8888次</Data></Cell>
+    <Cell><Data ss:Type="String">高级抽卡总次数达到8888</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">1000</Data></Cell>
    </Row>
@@ -246,7 +246,7 @@
     <Cell><Data ss:Type="String">fun</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">买彩票去吧</Data></Cell>
-    <Cell><Data ss:Type="String">在卡牌进阶中，只用1张素材卡，成功进阶该卡牌星级</Data></Cell>
+    <Cell><Data ss:Type="String">用1张素材卡成功进阶该卡牌</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
    </Row>
@@ -255,7 +255,7 @@
     <Cell><Data ss:Type="String">powerConsume</Data></Cell>
     <Cell><Data ss:Type="Number">10000</Data></Cell>
     <Cell><Data ss:Type="String">孜孜不倦</Data></Cell>
-    <Cell><Data ss:Type="String">体力总消耗数量达到10000点</Data></Cell>
+    <Cell><Data ss:Type="String">累计消耗体力10000点</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
    </Row>
@@ -273,7 +273,7 @@
     <Cell><Data ss:Type="String">moneyConsume</Data></Cell>
     <Cell><Data ss:Type="Number">10000000</Data></Cell>
     <Cell><Data ss:Type="String">不差钱</Data></Cell>
-    <Cell><Data ss:Type="String">消耗铜板总数量达到1000万</Data></Cell>
+    <Cell><Data ss:Type="String">累计消耗仙币1000万</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
    </Row>
@@ -282,7 +282,7 @@
     <Cell><Data ss:Type="String">goldConsume</Data></Cell>
     <Cell><Data ss:Type="Number">100000</Data></Cell>
     <Cell><Data ss:Type="String">挥金如土</Data></Cell>
-    <Cell><Data ss:Type="String">消耗元宝总数量达到100000</Data></Cell>
+    <Cell><Data ss:Type="String">累计消耗元宝100000</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">500</Data></Cell>
    </Row>
@@ -297,12 +297,11 @@
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
-   <LeftColumnVisible>5</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>7</ActiveCol>
-     <RangeSelection>C8:C21</RangeSelection>
+     <ActiveRow>30</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

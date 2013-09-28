@@ -73,8 +73,13 @@ var BattleLog = Entity.extend({
                                 spirit.add("exp", this._reward[key]);
                                 break;
                             case "cards" :
-                                var card = Card.create(this._reward[key]);
-                                cardList.push(card);
+                                var cards = this._reward[key];
+                                var len = cards.length;
+
+                                for (var i = 0; i < len; ++i) {
+                                    var card = Card.create(cards[i]);
+                                    cardList.push(card);
+                                }
                                 break;
                         }
                     }

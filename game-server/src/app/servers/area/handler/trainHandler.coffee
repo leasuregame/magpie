@@ -96,36 +96,22 @@ Handler::luckyCard = (msg, session, next) ->
   player = null
   consumeVal = 0
   fragment = 0
-  passiveSkills = []
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
 
     (res, cb) ->
       player = res
-      [card, consumeVal, fragment, passiveSkills] = lottery(level, type);
+      [card, consumeVal, fragment] = lottery(level, type);
 
       if player[typeMapping[type]] < consumeVal
         return cb({code: 501, msg: '没有足够的资源来完成本次抽卡'}, null)
 
       card.playerId = player.id
-      dao.card.create data:card, cb
+      cb(null, card)
 
     (card, cb) ->
-      if passiveSkills.length is 0
-        return cb(null, card)
-
-      async.each passiveSkills,
-        (ps, callback) ->
-          ps.cardId = card.id
-          dao.passiveSkill.create data: ps, (err, res) ->
-            return callback(err) if err
-            card.addPassiveSkill(res)
-            callback()
-        (err) ->
-          return cb(err) if err
-
-          cb(null, card)
+      entityUtil.createCard card, cb
         
     (cardEnt, cb) ->
       player.addCard(cardEnt);

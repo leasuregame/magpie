@@ -73,6 +73,7 @@ CREATE TABLE IF NOT EXISTS `card` (
   `lv` SMALLINT(5) UNSIGNED DEFAULT '1',
   `exp` INT(10) UNSIGNED DEFAULT '0',
   `skillLv` TINYINT(3) UNSIGNED DEFAULT '1',
+  `skillInc` SMALLINT(5) UNSIGNED DEFAULT '0',
   `skillPoint` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的技能点
   `elixirHp` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
   `elixirAtk` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数

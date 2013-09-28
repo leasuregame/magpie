@@ -22,9 +22,9 @@ var lottery = function(level, type) {
   var card = newCard(level);
   var fragment = gen_card_fragment(level);
   var consume_val = consume(level, type);
-  var pss = initPassiveSkill(card.star);
+  //var pss = initPassiveSkill(card.star);
 
-  return [card, consume_val, fragment, pss];
+  return [card, consume_val, fragment];
 };
 
 /*

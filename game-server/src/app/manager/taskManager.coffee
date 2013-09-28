@@ -117,7 +117,6 @@ class Manager
         return cb(err)
 
       player.addCard card
-      console.log(card.toJson());
       data.open_box_card = card.toJson()
       cb()
 

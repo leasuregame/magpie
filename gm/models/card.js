@@ -119,6 +119,63 @@ Card.create = function(card,cb){
     };
     var passSkills = card.passSkills;
 
+    async.waterfall([
+        function(callback){
+            cardDao.create(options, function(err,card){
+              if(err) {
+                  return cb(err,null);
+              }
+              else callback(null,card);
+            })
+        },
+        function(card,callback){
+            var cardId = card["insertId"];
+            passSkills.forEach(function(pss){
+                if(!(pss.name == '' || pss.value == '')) {
+                    var options = {
+                        data:{
+                            cardId:cardId,
+                            name:pss.name,
+                            value:pss.value
+
+                        }
+                    }
+                    passiveSkillDao.create(options,function(err,res){
+                        if(err){
+                            //error = err;
+                            return cb(err,null);
+                        }else {
+                            console.log(res);
+                        }
+                    });
+                }
+
+            });
+            callback(null,cardId);
+        },
+        function(cardId,callback){
+            var options = {
+                where:{
+                    id:cardId
+                }
+            };
+            cardDao.getCardInfo(options,function(err,card){
+
+                if(err) {
+                    return cb(err,null);
+                }
+
+                card.name = Card.getName(card.tableId);
+                console.log(card);
+                //callback(null,card);
+                return cb(null,card);
+                //  res.send(card);
+            });
+
+        }
+
+    ]);
+    /*
     cardDao.create(options, function(err,card){
         if(err) {
             //console.log("create=" + err);
@@ -159,18 +216,18 @@ Card.create = function(card,cb){
             cardDao.getCardInfo(options,function(err,card){
 
                 if(err) {
-                        return cb(err,null);
+                    return cb(err,null);
                 }
 
                 card.name = Card.getName(card.tableId);
                 console.log(card);
                 return cb(null,card);
-                  //  res.send(card);
+                //  res.send(card);
             });
 
         }
 
-    });
+    });  */
 };
 
 Card.delete = function(cardId,cb){

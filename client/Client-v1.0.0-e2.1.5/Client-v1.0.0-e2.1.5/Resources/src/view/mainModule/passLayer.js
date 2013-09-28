@@ -387,10 +387,12 @@ var PassLayer = cc.Layer.extend({
         obtainSprite.setPosition(cc.p(360, 718));
         layer.addChild(obtainSprite);
 
+        var str = lz.getRewardString(reward);
+        var len = str.length;
+
         var offsetY = 655;
-        for (var key in reward) {
-            var str = lz.getNameWithKey(key) + " : " + reward[key];
-            var rewardLabel = cc.LabelTTF.create(str, "STHeitiTC-Medium", 20);
+        for(var i = 0; i < len; ++i) {
+            var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
             rewardLabel.setColor(cc.c3b(255, 239, 131));
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
             rewardLabel.setPosition(cc.p(360, offsetY));

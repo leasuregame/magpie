@@ -185,17 +185,22 @@ var TaskLayer = cc.Layer.extend({
         }
 
         this._scrollView = cc.ScrollView.create(cc.size(640, 768), scrollViewLayer);
+        this._scrollView.setContentSize(cc.size(6400, 768));
         this._scrollView.setPosition(GAME_BG_POINT);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         this._scrollView.setBounceable(false);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
 
+        this._scrollView.setContentOffset(this._getScrollViewOffset());
+
         return true;
     },
 
     update: function () {
         cc.log("TaskLayer update");
+
+        cc.log(this._index);
 
         var task = gameData.task;
 

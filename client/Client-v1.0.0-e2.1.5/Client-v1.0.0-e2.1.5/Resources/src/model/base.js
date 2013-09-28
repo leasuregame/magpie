@@ -163,12 +163,28 @@ var gameGoodsName = {
     "fragment": "卡魂",
     "energy": "活力",
     "skillPoint": "技能点",
-    "spirit": "灵气"
+    "totalSpirit": "灵气",
+    "cards": "经验卡"
 };
 
-
-lz.getNameWithKey = function (key) {
+lz.getNameByKey = function (key) {
     return gameGoodsName[key] || key;
+};
+
+lz.getRewardString = function (data) {
+    var str = [];
+
+    for (var key in data) {
+        if (typeof(data[key]) == "object") {
+            str.push(lz.getNameByKey(key) + " : " + 1);
+        } else if (typeof(data[key]) == "number") {
+            if (data[key] > 0) {
+                str.push(lz.getNameByKey(key) + " : " + data[key]);
+            }
+        }
+    }
+
+    return str;
 };
 
 // 获取不大于原数的随机数

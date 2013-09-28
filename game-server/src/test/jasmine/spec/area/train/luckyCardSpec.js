@@ -115,7 +115,6 @@ describe("Area Server", function() {
 								doAjax('/passiveSkill/' + ps.id, {}, function(res) {
 									expect(res.data).toEqual({
 										id: ps.id,
-										createTime: ps.createTime,
 										cardId: ps.cardId,
 										name: ps.name,
 										value: ps.value

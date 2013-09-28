@@ -116,6 +116,7 @@ var Card = (function (_super) {
         'lv',
         'exp',
         'skillLv',
+        'skillInc',
         'skillPoint',
         'elixirHp',
         'elixirAtk'
@@ -126,6 +127,7 @@ var Card = (function (_super) {
         lv: 1,
         exp: 0,
         skillLv: 0,
+        skillInc: 0,
         skillPoint: 0,
         elixirHp: 0,
         elixirAtk: 0,
@@ -291,6 +293,7 @@ var Card = (function (_super) {
             lv: this.lv,
             exp: this.exp,
             skillLv: this.skillLv,
+            skillInc: this.skillInc,
             skillPoint: this.skillPoint,
             elixirHp: this.elixirHp,
             elixirAtk: this.elixirAtk,

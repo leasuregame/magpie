@@ -72,7 +72,7 @@ var PassiveSkill = (function(_super) {
             id: this.id,
             cardId: this.cardId,
             name: this.name,
-            value: this.value
+            value: parseFloat(this.value)
         };
     };
 

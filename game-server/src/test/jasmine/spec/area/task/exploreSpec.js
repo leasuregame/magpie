@@ -57,7 +57,7 @@ describe("Area Server", function() {
 										mark: []
 									});
 									expect(res.battle_log.rewards).hasProperties([
-										'fragment', 'spirit', 'cards'
+										'fragment', 'totalSpirit', 'cards'
 									]);
 								} else {
 									expect(res.task).toEqual({
@@ -72,11 +72,10 @@ describe("Area Server", function() {
 								if (!res.fregment) {
 									expect(typeof res.open_box_card).toEqual('object');
 									expect(res.open_box_card).hasProperties([
-										'id', 'lv', 'exp', 'star', 'tableId',
-										'skillLv', 'hpAddition', 'atkAddition',
-										'passiveSkills', 'playerId', 'skillPoint',
-										'elixir', 'createTime',
-										'init_hp', 'init_atk', 'hp', 'atk', 'incs'
+										'id', 'lv', 'exp', 'tableId',
+										'skillLv', 'elixirHp', 'elixirAtk',
+										'passiveSkills', 'skillPoint',
+										'hp', 'atk', 'ability', 'skillInc'
 									]);
 								} else {
 									expect(res.open_box_card).toEqual(null);
@@ -245,7 +244,7 @@ var checkExploreResult = function(data, task, oldTask) {
 					]);
 				} else {
 					expect(res.battle_log.rewards).hasProperties([
-						'spirit', 'cards', 'fragment'
+						'totalSpirit', 'cards', 'fragment'
 					]);
 				}
 
@@ -266,7 +265,7 @@ var checkExploreResult = function(data, task, oldTask) {
 					'id', 'lv', 'exp', 'tableId',
 					'skillLv', 'elixirHp', 'elixirAtk',
 					'passiveSkills', 'skillPoint',
-					'hp', 'atk', 'ability'
+					'hp', 'atk', 'ability', 'skillInc'
 				]);
 			} else {
 				expect(res.open_box_card).toEqual(null);

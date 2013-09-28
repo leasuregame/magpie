@@ -3,6 +3,7 @@ taskRate = require '../../config/data/taskRate'
 psConfig = require '../../config/data/passSkill'
 spiritConfig = require '../../config/data/spirit'
 utility = require '../common/utility'
+entityUtil = require '../util/entityUtil'
 dao = require('pomelo').app.get('dao')
 async = require('async')
 _ = require 'underscore'
@@ -98,26 +99,16 @@ class Manager
     _rd_star = utility.randomValue(_.keys(_obj), _.values(_obj))
     _card_table_id = randomCard(_rd_star)
     
-    async.waterfall [
-      (cb) ->
-        dao.card.create data: {
-          playerId: player.id, 
-          tableId: _card_table_id
-          star: _rd_star
-        }, cb
-
-      (card, cb) =>
-        return cb(null, card) if card.star < 3
-
-        times = card.star - 2
-        @createPassiveSkillForCard card, times, cb
-    ], (err, card) ->
+    entityUtil.createCard {
+      star: _rd_star
+      tableId: _card_table_id
+      playerId: player.id
+    }, (err, card) ->
       if err
         logger.error 'faild to create card. ' + err
         return cb(err)
 
       player.addCard card
-      console.log(card.toJson());
       data.open_box_card = card.toJson()
       cb()
 
@@ -134,20 +125,20 @@ class Manager
       player.task = task
 
       ### the first time win, obtain some spirit ###
-      spirit = {total: 0}
+      totalSpirit = 0
       _.each battleLog.cards, (v, k) ->
         ### 只计算敌方卡牌 ###
-        return if k > 6
+        return if k <= 6
 
         if v.boss?
-          spirit[k] = spiritConfig.SPIRIT.TASK.BOSS
-          spirit.total += spiritConfig.SPIRIT.TASK.BOSS
+          v.spirit = spiritConfig.SPIRIT.TASK.BOSS
+          totalSpirit += spiritConfig.SPIRIT.TASK.BOSS
         else
-          spirit[k] = spiritConfig.SPIRIT.TASK.OTHER
-          spirit.total += spiritConfig.SPIRIT.TASK.OTHER
-      battleLog.rewards.spirit = spirit
+          v.spirit = spiritConfig.SPIRIT.TASK.OTHER
+          totalSpirit += spiritConfig.SPIRIT.TASK.OTHER
+      battleLog.rewards.totalSpirit = totalSpirit
 
-      player.incSpirit spirit.total
+      player.incSpirit totalSpirit
       data["spiritor"] = player.spiritor
 
     if utility.hitRate(taskRate.fragment_rate)

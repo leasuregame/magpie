@@ -11,7 +11,6 @@ class VirtualHero extends Hero
     # cardInfo = tab.getTableItem('cards', data.tableId)
     # data.init_hp = data.hp = parseInt(cardInfo.hp)
     # data.init_atk = data.atk = parseInt(cardInfo.atk)
-
     super(data, player)
 
   loadCardInfo: ->
@@ -44,8 +43,8 @@ class VirtualHero extends Hero
     return if not @boss
     @skill_setting = tab.getTableItem('skills', @skill_id)
     if @skill_setting?
-      @skill_setting.star3 = @boss.attr_inc + ',0'
       @skill_setting.rate3 = @boss.skill_trigger_rate
+      @skill_inc = @skill_setting.star3_inc_min
       @skill = new Skill(@, @skill_setting)
 
 module.exports = VirtualHero

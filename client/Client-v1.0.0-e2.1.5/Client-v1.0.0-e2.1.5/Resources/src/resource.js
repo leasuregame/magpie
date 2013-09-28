@@ -525,6 +525,7 @@ var effectConfig = [
     14,
     6,
     6,
+    6,
     6
 ];
 
@@ -536,6 +537,7 @@ var effectRect = [
     cc.rect(0, 0, 90, 205),
     cc.rect(0, 0, 120, 275),
     cc.rect(0, 0, 120, 290),
+    cc.rect(0, 0, 115, 108),
     cc.rect(0, 0, 115, 108)
 ];
 

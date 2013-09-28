@@ -20,10 +20,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6660</WindowHeight>
+  <WindowHeight>9560</WindowHeight>
   <WindowWidth>31800</WindowWidth>
-  <WindowTopX>1000</WindowTopX>
-  <WindowTopY>7140</WindowTopY>
+  <WindowTopX>5260</WindowTopX>
+  <WindowTopY>2180</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -79,35 +79,27 @@
    <Interior/>
    <NumberFormat ss:Format="@"/>
   </Style>
-  <Style ss:ID="s74" ss:Parent="s62">
+  <Style ss:ID="s71">
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
+  </Style>
+  <Style ss:ID="s72">
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s74">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s75" ss:Parent="s62">
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
    <Interior/>
   </Style>
-  <Style ss:ID="s75">
+  <Style ss:ID="s76">
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Color="#000000"/>
    <Interior/>
    <NumberFormat/>
   </Style>
-  <Style ss:ID="s76">
-   <Alignment ss:Vertical="Bottom"/>
-  </Style>
   <Style ss:ID="s77">
-   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12"/>
-  </Style>
-  <Style ss:ID="s78">
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Modern" ss:Size="12"
-    ss:Color="#000000"/>
-  </Style>
-  <Style ss:ID="s80">
-   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Modern" ss:Size="12"
-    ss:Color="#000000"/>
-   <NumberFormat ss:Format="@"/>
-  </Style>
-  <Style ss:ID="s82">
-   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
-   <Font ss:FontName="宋体" x:CharSet="134" x:Family="Modern" ss:Size="12"
-    ss:Color="#000000"/>
+   <Alignment ss:Vertical="Bottom"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="技能配置表">
@@ -180,219 +172,219 @@
     <Cell ss:StyleID="s66"><Data ss:Type="String">effect_id</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">单体攻击，对敌方卡牌造成大量伤害。</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">145</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">150</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="Number">155</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">160</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">165</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">170</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">单体攻击，对敌方卡牌造成大量伤害。</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">145</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">150</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="Number">155</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">160</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">165</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">170</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
     <Cell ss:StyleID="s75"/>
-    <Cell ss:StyleID="s74"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">横向攻击，对敌方前排每张卡牌造成一定伤害。</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">45</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">55</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">60</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s74"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">横向攻击，对敌方后排每张卡牌造成一定伤害。</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">45</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">55</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">60</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s76"/>
     <Cell ss:StyleID="s75"/>
-    <Cell ss:StyleID="s74"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">纵向攻击，对敌方纵列每张卡牌造成一定伤害。</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">45</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">55</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">60</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">65</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">70</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">横向攻击，对敌方前排每张卡牌造成一定伤害。</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
     <Cell ss:StyleID="s75"/>
-    <Cell ss:StyleID="s74"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">随机攻击敌方2张卡牌，对每张卡牌造成一定伤害。</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">45</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">55</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">60</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">65</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">70</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">横向攻击，对敌方后排每张卡牌造成一定伤害。</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
     <Cell ss:StyleID="s75"/>
-    <Cell ss:StyleID="s74"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">45</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">55</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">60</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s76"/>
     <Cell ss:StyleID="s75"/>
-    <Cell ss:StyleID="s74"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">为当前血量最低的上阵卡牌恢复生命值。</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">45</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">55</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">60</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">65</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">70</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">纵向攻击，对敌方纵列每张卡牌造成一定伤害。</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">65</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">70</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
     <Cell ss:StyleID="s75"/>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s75"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">为前排每张卡牌恢复生命值。</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">45</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">55</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">随机攻击敌方2张卡牌，对每张卡牌造成一定伤害。</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">65</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">70</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s75"/>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s75"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">随机攻击敌方3张卡牌，对每张卡牌造成一定伤害。</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s75"/>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s75"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">为当前血量最低的上阵卡牌恢复生命值。</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">7</Data></Cell>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">60</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">65</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">70</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s75"/>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s75"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">8</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">为前排每张卡牌恢复生命值。</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
     <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s75"/>
+    <Cell ss:StyleID="s76"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">9</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">为后排每张卡牌恢复生命值。</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">45</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">55</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">9</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">为后排每张卡牌恢复生命值。</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
     <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s75"/>
+    <Cell ss:StyleID="s76"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">为当前上阵的所有卡牌恢复生命值。</Data></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s78"/>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">20</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">25</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">30</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">35</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">45</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">为当前上阵的所有卡牌恢复生命值。</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">6</Data></Cell>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="Number">40</Data></Cell>
     <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s75"/>
+    <Cell ss:StyleID="s76"/>
    </Row>
    <Row ss:Index="15" ss:AutoFitHeight="0">
     <Cell ss:Index="7" ss:StyleID="s70"/>
@@ -461,14 +453,20 @@
     <Footer x:Margin="0.51180555555555596"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <Zoom>115</Zoom>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>13</ActiveCol>
+     <ActiveRow>13</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -479,8 +477,8 @@
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">export_name</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">技能配置表</Data></Cell>

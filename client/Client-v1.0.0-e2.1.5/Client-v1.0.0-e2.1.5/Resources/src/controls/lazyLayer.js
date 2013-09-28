@@ -72,6 +72,7 @@ var LazyLayer = cc.Layer.extend({
 
 (function () {
     var cloudLayer = null;
+    var isUse = false;
 
     LazyLayer.showCloudLayer = function () {
         cc.log("LazyLayer showCloudLayer");
@@ -81,16 +82,18 @@ var LazyLayer = cc.Layer.extend({
             cloudLayer.retain();
         }
 
-        if (cloudLayer.getParent() == null) {
+        if (!isUse) {
             MainScene.getInstance().addChild(cloudLayer, 10000);
+            isUse = true;
         }
     };
 
     LazyLayer.closeCloudLayer = function () {
         cc.log("LazyLayer closeCloudLayer");
 
-        if (cloudLayer) {
+        if (isUse) {
             cloudLayer.removeFromParent();
+            isUse = false;
         }
     };
 })();

@@ -23,8 +23,6 @@ var BattleEndLayer = cc.Layer.extend({
 
         this._battleLog = battleLog;
 
-        var reward = this._battleLog.get("reward");
-
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
         bgLayer.setPosition(cc.p(40, 0));
         this.addChild(bgLayer);
@@ -43,17 +41,12 @@ var BattleEndLayer = cc.Layer.extend({
             this.addChild(failBgSprite);
         }
 
+        var str = lz.getRewardString(this._battleLog.get("reward"));
+        var len = str.length;
+
         var offsetY = 655;
-        for (var key in reward) {
-            var str = lz.getNameWithKey(key) + " : ";
-
-            if (typeof (reward[key]) == "object") {
-                str += reward[key].total;
-            } else {
-                str += reward[key] || 0;
-            }
-
-            var rewardLabel = cc.LabelTTF.create(str, "STHeitiTC-Medium", 20);
+        for(var i = 0; i < len; ++i) {
+            var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
             rewardLabel.setColor(cc.c3b(255, 239, 131));
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
             rewardLabel.setPosition(cc.p(360, offsetY));

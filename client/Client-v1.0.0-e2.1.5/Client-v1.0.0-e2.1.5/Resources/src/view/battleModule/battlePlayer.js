@@ -15,10 +15,10 @@
 var BattlePlayer = cc.Class.extend({
     _battleScene: null,
 
-    play: function (id) {
+    play: function (id, isPlayback) {
         cc.log("BattlePlayer play");
 
-        var battleLog = BattleLog.create(id);
+        var battleLog = BattleLog.create(id, isPlayback);
 
         this._battleScene = BattleScene.create(battleLog);
 

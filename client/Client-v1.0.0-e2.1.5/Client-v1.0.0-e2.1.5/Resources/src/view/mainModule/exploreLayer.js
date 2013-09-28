@@ -45,7 +45,7 @@ var ExploreLayer = cc.Layer.extend({
         this._sectionId = sectionId;
 
         this._maxIndex = TASK_POINTS_COUNT;
-        this._index = this._maxIndex;
+        this._index = 1;
 
         if (this._sectionId == gameData.task.getSection()) {
             this._index = gameData.task.getPoints();
@@ -241,6 +241,8 @@ var ExploreLayer = cc.Layer.extend({
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
 
+        this._scrollView.setContentOffset(this._getScrollViewOffset());
+
         return true;
     },
 
@@ -297,6 +299,7 @@ var ExploreLayer = cc.Layer.extend({
         }
     },
 
+
     _getScrollViewOffset: function () {
         cc.log("ExploreLayer _getScrollViewOffset");
 
@@ -317,19 +320,27 @@ var ExploreLayer = cc.Layer.extend({
     _onClickBack: function () {
         cc.log("ExploreLayer _onClickBack");
 
+        this._unlock();
         MainScene.getInstance().switchLayer(PveLayer);
     },
 
     _onClickExplore: function () {
         cc.log("ExploreLayer _onClickExplore");
 
+        this._lock();
+
         var that = this;
         gameData.task.explore(function (data) {
             cc.log(data);
 
-            that._reward = data;
+            if (data) {
+                that._reward = data;
 
-            that._playAnimation();
+                that._playAnimation();
+            } else {
+                that._unlock();
+            }
+
         }, this._getTaskId());
     },
 
@@ -361,7 +372,7 @@ var ExploreLayer = cc.Layer.extend({
 
             this.update();
 
-            this._unlock();
+            this.scheduleOnce(this._unlock, 1);
         }, 1);
     },
 
@@ -447,8 +458,6 @@ var ExploreLayer = cc.Layer.extend({
 
     _playAnimation: function () {
         cc.log("ExploreLayer _playAnimation");
-
-        this._lock();
 
         var callFuncAction = cc.CallFunc.create(function () {
             if (this._reward) {

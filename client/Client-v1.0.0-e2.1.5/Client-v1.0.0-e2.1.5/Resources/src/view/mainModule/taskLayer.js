@@ -151,7 +151,7 @@ var TaskLayer = cc.Layer.extend({
             scrollViewLayer.addChild(bgSprite);
 
             var titlesLabel = StrokeLabel.create(chapterTitleTable[i].name, "STHeitiTC-Medium", 30);
-            titlesLabel.setColor(cc.c3b(255, 240, 170));
+            titlesLabel.setColor(cc.c3b(255, 239, 131));
             titlesLabel.setPosition(cc.p(320 + x, 745));
             scrollViewLayer.addChild(titlesLabel);
 
@@ -176,7 +176,7 @@ var TaskLayer = cc.Layer.extend({
                 scrollViewLayer.addChild(sectionNameBgSprite, 1);
 
                 var sectionNameLabel = cc.LabelTTF.create(chapterTable[index].chapter, "STHeitiTC-Medium", 25);
-                sectionNameLabel.setColor(cc.c3b(255, 240, 170));
+                sectionNameLabel.setColor(cc.c3b(255, 239, 131));
                 sectionNameLabel.setPosition(point);
                 scrollViewLayer.addChild(sectionNameLabel, 1);
 
@@ -185,16 +185,22 @@ var TaskLayer = cc.Layer.extend({
         }
 
         this._scrollView = cc.ScrollView.create(cc.size(640, 768), scrollViewLayer);
+        this._scrollView.setContentSize(cc.size(6400, 768));
         this._scrollView.setPosition(GAME_BG_POINT);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
+        this._scrollView.setBounceable(false);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
+
+        this._scrollView.setContentOffset(this._getScrollViewOffset());
 
         return true;
     },
 
     update: function () {
         cc.log("TaskLayer update");
+
+        cc.log(this._index);
 
         var task = gameData.task;
 

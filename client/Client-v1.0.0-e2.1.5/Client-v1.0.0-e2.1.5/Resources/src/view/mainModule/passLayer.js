@@ -122,7 +122,7 @@ var PassLayer = cc.Layer.extend({
             passNameBgSprite.setScale(0.8);
 
             var passNameLabel = cc.LabelTTF.create("第" + i + "层", "STHeitiTC-Medium", 20);
-            passNameLabel.setColor(cc.c3b(255, 240, 170));
+            passNameLabel.setColor(cc.c3b(255, 239, 131));
             passNameLabel.setPosition(passNamePoint);
             scrollViewLayer.addChild(passNameLabel);
 
@@ -138,7 +138,7 @@ var PassLayer = cc.Layer.extend({
         scrollViewLayer.addChild(this._spirit, 1);
 
         this._scrollView = cc.ScrollView.create(cc.size(640, 768), scrollViewLayer);
-        this._scrollView.setContentSize(cc.size(640, 18620));
+        this._scrollView.setContentSize(cc.size(640, 18700));
         this._scrollView.setPosition(GAME_BG_POINT);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
@@ -151,13 +151,13 @@ var PassLayer = cc.Layer.extend({
         this.addChild(tipLabel);
 
         this._topLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
-        this._topLabel.setColor(cc.c3b(255, 240, 170));
+        this._topLabel.setColor(cc.c3b(255, 239, 131));
         this._topLabel.setAnchorPoint(cc.p(0, 0.5));
         this._topLabel.setPosition(cc.p(190, 928));
         this.addChild(this._topLabel);
 
         this._skillPointLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 20);
-        this._skillPointLabel.setColor(cc.c3b(255, 240, 170));
+        this._skillPointLabel.setColor(cc.c3b(255, 239, 131));
         this._skillPointLabel.setAnchorPoint(cc.p(0, 0.5));
         this._skillPointLabel.setPosition(cc.p(583, 837));
         this.addChild(this._skillPointLabel);
@@ -172,16 +172,6 @@ var PassLayer = cc.Layer.extend({
         towerBgSprite.setPosition(cc.p(510, 220));
         this.addChild(towerBgSprite);
 
-        this._resetItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.button9d,
-            main_scene_image.icon223,
-            this._onClickReset,
-            this
-        );
-        this._resetItem.setPosition(cc.p(580, 928));
-
         this._wipeOutItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
@@ -192,7 +182,17 @@ var PassLayer = cc.Layer.extend({
         );
         this._wipeOutItem.setPosition(cc.p(580, 928));
 
-        var menu = cc.Menu.create(this._resetItem, this._wipeOutItem);
+        this._resetItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            main_scene_image.icon223,
+            this._onClickReset,
+            this
+        );
+        this._resetItem.setPosition(cc.p(580, 928));
+
+        var menu = cc.Menu.create(this._wipeOutItem, this._resetItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -212,7 +212,7 @@ var PassLayer = cc.Layer.extend({
             this._element[i].passItem.setEnabled(mark);
 
             if (i > 1) {
-                var color = mark ? cc.c3b(255, 255, 255) : cc.c3b(130, 130, 130);
+                var color = mark ? cc.c3b(255, 255, 255) : cc.c3b(160, 160, 160);
                 this._element[i].ladderSprite.setColor(color);
             }
         }
@@ -233,8 +233,8 @@ var PassLayer = cc.Layer.extend({
             this._defianceAnimation();
         }
 
-        this._wipeOutItem.setVisible(pass.canWipeOut());
-        this._resetItem.setEnabled(pass.canReset());
+        this._wipeOutItem.setEnabled(pass.canWipeOut());
+        this._resetItem.setVisible(pass.canReset());
         this._mysticalItem.setVisible(pass.get("hasMystical"));
 
         this._skillPointLabel.setString(gameData.player.get("skillPoint"));
@@ -247,12 +247,15 @@ var PassLayer = cc.Layer.extend({
     _getOffset: function (index) {
         cc.log("PassLayer _getOffset");
 
-        var height = 140 - 185 * (index - 1);
+        var offsetY = 140 - 185 * (index - 1);
 
-        height = height < 0 ? height : 0;
-        height = height > -17870 ? height : -17870;
+        var maxOffset = this._scrollView.maxContainerOffset();
+        var minOffset = this._scrollView.minContainerOffset();
 
-        return cc.p(0, height);
+        offsetY = Math.min(offsetY, maxOffset.y);
+        offsetY = Math.max(offsetY, minOffset.y);
+
+        return cc.p(0, offsetY);
     },
 
     _locate: function (index, duration) {
@@ -279,13 +282,15 @@ var PassLayer = cc.Layer.extend({
         }
     },
 
-    _spiritWalk: function (index, duration) {
+    _spiritWalk: function (index, duration, height, jumps) {
         cc.log("PassLayer _spiritWalk");
 
         duration = duration || 2;
+        height = height || 35;
+        jumps = jumps || 5;
 
         this._spirit.setPosition(this._getCardLocation(index - 1));
-        var jumpAction = cc.JumpTo.create(duration, this._getCardLocation(index), 30, 5);
+        var jumpAction = cc.JumpTo.create(duration, this._getCardLocation(index), height, jumps);
         this._spirit.runAction(jumpAction);
 
         this._locate(index, duration);
@@ -331,7 +336,7 @@ var PassLayer = cc.Layer.extend({
         layer.addChild(bgSprite);
 
         var rewardLabel = cc.LabelTTF.create("是否消耗 200 魔石重置关卡?", "STHeitiTC-Medium", 25);
-        rewardLabel.setColor(cc.c3b(255, 240, 170));
+        rewardLabel.setColor(cc.c3b(255, 239, 131));
         rewardLabel.setAnchorPoint(cc.p(0.5, 1));
         rewardLabel.setPosition(cc.p(360, 650));
         layer.addChild(rewardLabel);
@@ -382,11 +387,13 @@ var PassLayer = cc.Layer.extend({
         obtainSprite.setPosition(cc.p(360, 718));
         layer.addChild(obtainSprite);
 
+        var str = lz.getRewardString(reward);
+        var len = str.length;
+
         var offsetY = 655;
-        for (var key in reward) {
-            var str = lz.getNameWithKey(key) + " : " + reward[key];
-            var rewardLabel = cc.LabelTTF.create(str, "STHeitiTC-Medium", 20);
-            rewardLabel.setColor(cc.c3b(255, 240, 170));
+        for(var i = 0; i < len; ++i) {
+            var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
+            rewardLabel.setColor(cc.c3b(255, 239, 131));
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
             rewardLabel.setPosition(cc.p(360, offsetY));
             layer.addChild(rewardLabel);
@@ -394,7 +401,7 @@ var PassLayer = cc.Layer.extend({
             offsetY -= 45;
         }
 
-        var closeItem = cc.MenuItemImage.createWithIcon(
+        var okItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.icon95,
@@ -404,9 +411,9 @@ var PassLayer = cc.Layer.extend({
             },
             this
         );
-        closeItem.setPosition(cc.p(360, 415));
+        okItem.setPosition(cc.p(360, 415));
 
-        var menu = cc.Menu.create(closeItem);
+        var menu = cc.Menu.create(okItem);
         menu.setPosition(cc.p(0, 0));
         layer.addChild(menu);
     },
@@ -433,7 +440,7 @@ var PassLayer = cc.Layer.extend({
 
         LazyLayer.showCloudLayer();
 
-        if (this._top >= MAX_PASS_COUNT) {
+        if (this._top > MAX_PASS_COUNT) {
             LazyLayer.closeCloudLayer();
             return;
         }
@@ -456,18 +463,24 @@ var PassLayer = cc.Layer.extend({
 
         this._locate(1);
 
-        this._spiritWalk(2, 0.3);
-        var index = 3;
+        this._element[1].passItem.setEnabled(false);
+
+        this._spiritWalk(2, 0.5, 50, 1);
+        var index = 2;
         this.schedule(function () {
+            this._element[index].passItem.setEnabled(false);
+            this._element[index].ladderSprite.setColor(cc.c3b(160, 160, 160));
+
+            index += 1;
+
             if (index > this._top) {
                 LazyLayer.closeCloudLayer();
                 this._showWipeOutReward(reward);
                 return;
             }
 
-            this._spiritWalk(index, 0.3);
-            index += 1;
-        }, 0.4, this._top - 2);
+            this._spiritWalk(index, 0.5, 50, 1);
+        }, 0.6, this._top - 2);
     },
 
     _onClickDefiance: function (id) {

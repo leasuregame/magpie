@@ -22,7 +22,7 @@ var SkillUpgradeLabel = cc.Node.extend({
     _resLabel: null,
     _arrowLabel1: null,
     _arrowLabel2: null,
-    _skillNameLabel: null,
+    _nameLabel: null,
     _skillLvLabel: null,
     _nextSkillLvLabel: null,
     _skillHarmLabel: null,
@@ -43,62 +43,91 @@ var SkillUpgradeLabel = cc.Node.extend({
         if (!this._super()) return false;
 
         var cardItemBgSprite = cc.Sprite.create(main_scene_image.icon61);
-        cardItemBgSprite.setPosition(cc.p(360, 632));
+        cardItemBgSprite.setPosition(cc.p(366, 632));
         this.addChild(cardItemBgSprite);
+
+        var skillPointIcon = cc.LabelTTF.create("技能点:", "STHeitiTC-Medium", 22);
+        skillPointIcon.setColor(cc.c3b(255, 239, 131));
+        skillPointIcon.setPosition(cc.p(535, 760));
+        this.addChild(skillPointIcon);
+
+        this._skillPointLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+        this._skillPointLabel.setColor(cc.c3b(255, 239, 131));
+        this._skillPointLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._skillPointLabel.setPosition(cc.p(585, 758));
+        this.addChild(this._skillPointLabel);
+
+        this._resLabel = cc.Node.create();
+        this._resLabel.setPosition(cc.p(360, 510));
+        this.addChild(this._resLabel);
+
+        var resLabelBgSprite = cc.Sprite.create(main_scene_image.icon49);
+        this._resLabel.addChild(resLabelBgSprite);
+
+        this._nameLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
+        this._nameLabel.setColor(cc.c3b(255, 239, 131));
+        this._nameLabel.setPosition(cc.p(0, 40));
+        this._resLabel.addChild(this._nameLabel);
+
+        var skillLvIcon = cc.LabelTTF.create("技能等级:", "STHeitiTC-Medium", 22);
+        skillLvIcon.setColor(cc.c3b(255, 239, 131));
+        skillLvIcon.setPosition(cc.p(-85, 2));
+        this._resLabel.addChild(skillLvIcon);
+
+        this._skillLvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+        this._skillLvLabel.setPosition(cc.p(0, 0));
+        this._resLabel.addChild(this._skillLvLabel);
+
+        this._nextSkillLvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+        this._nextSkillLvLabel.setColor(cc.c3b(118, 238, 60));
+        this._nextSkillLvLabel.setPosition(cc.p(90, 0));
+        this._resLabel.addChild(this._nextSkillLvLabel);
+
+        var skillHarmIcon = cc.LabelTTF.create("技能伤害:", "STHeitiTC-Medium", 22);
+        skillHarmIcon.setColor(cc.c3b(255, 239, 131));
+        skillHarmIcon.setPosition(cc.p(-85, -33));
+        this._resLabel.addChild(skillHarmIcon);
+
+        this._skillHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
+        this._skillHarmLabel.setPosition(cc.p(0, -35));
+        this._resLabel.addChild(this._skillHarmLabel);
+
+        this._nextSkillHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
+        this._nextSkillHarmLabel.setColor(cc.c3b(118, 238, 60));
+        this._nextSkillHarmLabel.setPosition(cc.p(90, -35));
+        this._resLabel.addChild(this._nextSkillHarmLabel);
+
+        this._arrowLabel1 = cc.Sprite.create(main_scene_image.icon63);
+        this._arrowLabel1.setPosition(cc.p(45, 0));
+        this._resLabel.addChild(this._arrowLabel1);
+
+        this._arrowLabel2 = cc.Sprite.create(main_scene_image.icon63);
+        this._arrowLabel2.setPosition(cc.p(45, -35));
+        this._resLabel.addChild(this._arrowLabel2);
 
         var helpBgSprite = cc.Sprite.create(main_scene_image.icon50);
         helpBgSprite.setPosition(cc.p(360, 380));
         this.addChild(helpBgSprite);
 
-        this._resLabel = cc.Node.create();
-        this._resLabel.setPosition(cc.p(202, 445));
-        this.addChild(this._resLabel, 1);
-
-        var resLabelBgSprite = cc.Sprite.create(main_scene_image.icon49);
-        resLabelBgSprite.setAnchorPoint(cc.p(0, 0));
-        this._resLabel.addChild(resLabelBgSprite);
-
-        var resLabelIcon = cc.Sprite.create(main_scene_image.icon62);
-        resLabelIcon.setPosition(cc.p(130, 70));
-        this._resLabel.addChild(resLabelIcon);
-
-        this._skillNameLabel = cc.LabelTTF.create("xxxx", "STHeitiTC-Medium", 40);
-        this._skillNameLabel.setPosition(cc.p(158, 118));
-        this._resLabel.addChild(this._skillNameLabel);
-
-        this._skillLvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._skillLvLabel.setPosition(cc.p(125, 85));
-        this._resLabel.addChild(this._skillLvLabel);
-
-        this._nextSkillLvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._nextSkillLvLabel.setColor(cc.c3b(118, 238, 60));
-        this._nextSkillLvLabel.setPosition(cc.p(190, 85));
-        this._resLabel.addChild(this._nextSkillLvLabel);
-
-        this._skillHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
-        this._skillHarmLabel.setPosition(cc.p(115, 30));
-        this._resLabel.addChild(this._skillHarmLabel);
-
-        this._nextSkillHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
-        this._nextSkillHarmLabel.setColor(cc.c3b(118, 238, 60));
-        this._nextSkillHarmLabel.setPosition(cc.p(200, 30));
-        this._resLabel.addChild(this._nextSkillHarmLabel);
-
-        this._arrowLabel1 = cc.Sprite.create(main_scene_image.icon63);
-        this._arrowLabel1.setPosition(cc.p(158, 85));
-        this._resLabel.addChild(this._arrowLabel1);
-
-        this._arrowLabel2 = cc.Sprite.create(main_scene_image.icon63);
-        this._arrowLabel2.setPosition(cc.p(158, 30));
-        this._resLabel.addChild(this._arrowLabel2);
-
-        this._tipLabel = cc.Sprite.create(main_scene_image.icon65);
+        this._tipLabel = cc.LabelTTF.create("技能通过消耗技能点提升等级", "STHeitiTC-Medium", 22);
+        this._tipLabel.setColor(cc.c3b(255, 239, 131));
         this._tipLabel.setPosition(cc.p(360, 380));
         this.addChild(this._tipLabel);
 
-        this._helpLabel = cc.Sprite.create(main_scene_image.icon64);
-        this._helpLabel.setPosition(cc.p(320, 380));
+        this._helpLabel = cc.Node.create();
+        this._helpLabel.setPosition(cc.p(360, 380));
         this.addChild(this._helpLabel);
+
+        var needSkillPointIcon = cc.LabelTTF.create("升级还需技能点:", "STHeitiTC-Medium", 22);
+        needSkillPointIcon.setColor(cc.c3b(255, 239, 131));
+        needSkillPointIcon.setPosition(cc.p(-44, 0));
+        this._helpLabel.addChild(needSkillPointIcon);
+
+        this._needSkillPointLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+        this._needSkillPointLabel.setColor(cc.c3b(255, 239, 131));
+        this._needSkillPointLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._needSkillPointLabel.setPosition(cc.p(44, -2));
+        this._helpLabel.addChild(this._needSkillPointLabel);
 
         var selectLeadCardItem = cc.MenuItemImage.create(
             main_scene_image.card_frame1,
@@ -107,45 +136,34 @@ var SkillUpgradeLabel = cc.Node.extend({
             this
         );
         selectLeadCardItem.setScale(1.1);
-        selectLeadCardItem.setPosition(cc.p(354, 685));
+        selectLeadCardItem.setPosition(cc.p(360, 685));
 
-        this._upgradeItem = cc.MenuItemImage.create(
+        this._upgradeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.button9d,
+            main_scene_image.icon52,
             this._onClickUpgrade,
             this
         );
         this._upgradeItem.setPosition(cc.p(360, 270));
 
-
         var menu = cc.Menu.create(selectLeadCardItem, this._upgradeItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._skillPointLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
-        this._skillPointLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._skillPointLabel.setPosition(cc.p(243, 382));
-        this.addChild(this._skillPointLabel);
-
-        this._needSkillPointLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
-        this._needSkillPointLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._needSkillPointLabel.setPosition(cc.p(512, 382));
-        this.addChild(this._needSkillPointLabel);
-
         this._selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon51);
-        this._selectLeadCardIcon.setPosition(cc.p(354, 685));
+        this._selectLeadCardIcon.setPosition(cc.p(360, 685));
         this.addChild(this._selectLeadCardIcon);
-
-        var upgradeIcon = cc.Sprite.create(main_scene_image.icon52);
-        upgradeIcon.setPosition(cc.p(360, 270));
-        this.addChild(upgradeIcon);
 
         return true;
     },
 
     update: function () {
         cc.log("SkillUpgradeLabel update");
+
+        var skillPoint = gameData.player.get("skillPoint");
+        this._skillPointLabel.setString(skillPoint);
 
         if (this._leadCardHalfNode != null) {
             this._leadCardHalfNode.removeFromParent();
@@ -156,48 +174,40 @@ var SkillUpgradeLabel = cc.Node.extend({
             this._resLabel.setVisible(false);
             this._tipLabel.setVisible(true);
             this._helpLabel.setVisible(false);
-            this._skillPointLabel.setVisible(false);
-            this._needSkillPointLabel.setVisible(false);
 
             this._selectLeadCardIcon.stopAllActions();
-            this._selectLeadCardIcon.setOpacity(255);
+            this._selectLeadCardIcon.setOpacity(254);
 
-            var selectLeadCardIconAction = cc.Sequence.create(
-                cc.FadeOut.create(1),
-                cc.FadeIn.create(1)
+            this._selectLeadCardIcon.runAction(
+                cc.RepeatForever.create(
+                    cc.Sequence.create(
+                        cc.FadeOut.create(1),
+                        cc.FadeIn.create(1)
+                    )
+                )
             );
-
-            this._selectLeadCardIcon.runAction(cc.RepeatForever.create(selectLeadCardIconAction));
 
             this._upgradeItem.setEnabled(false);
         } else {
             this._leadCardHalfNode = CardHalfNode.create(this._leadCard);
             this._leadCardHalfNode.setScale(1.1);
-            this._leadCardHalfNode.setPosition(cc.p(354, 685));
+            this._leadCardHalfNode.setPosition(cc.p(360, 685));
             this.addChild(this._leadCardHalfNode, 1);
 
-            var skillPoint = gameData.player.get("skillPoint");
+            this._nameLabel.setString(this._leadCard.get("name"));
+
             var upgradeNeedSkillPoint = this._leadCard.getUpgradeNeedSKillPoint();
 
-            this._skillPointLabel.setString(skillPoint);
-            this._skillPointLabel.setVisible(true);
             if (upgradeNeedSkillPoint > skillPoint) {
-                this._skillPointLabel.setColor(cc.RED);
+                this._needSkillPointLabel.setColor(cc.c3b(255, 40, 40));
             } else {
-                this._skillPointLabel.setColor(cc.WHITE);
+                this._needSkillPointLabel.setColor(cc.c3b(255, 239, 131));
             }
 
             this._needSkillPointLabel.setString(upgradeNeedSkillPoint);
-            this._needSkillPointLabel.setVisible(true);
 
             this._skillLvLabel.setString(this._leadCard.get("skillLv"));
-            this._skillLvLabel.setVisible(true);
-
             this._skillHarmLabel.setString(this._leadCard.get("skillHarm") + "%");
-            this._skillHarmLabel.setVisible(true);
-
-            this._skillNameLabel.setString(this._leadCard.get("skillName"));
-            this._skillHarmLabel.setVisible(true);
 
             if (this._leadCard.canUpgradeSkill()) {
                 this._arrowLabel1.setVisible(true);
@@ -212,9 +222,6 @@ var SkillUpgradeLabel = cc.Node.extend({
                 this._nextSkillLvLabel.setString("已满级");
                 this._nextSkillHarmLabel.setString("已满级");
             }
-
-            this._nextSkillLvLabel.setVisible(true);
-            this._nextSkillHarmLabel.setVisible(true);
 
             this._resLabel.setVisible(true);
             this._tipLabel.setVisible(false);
@@ -236,7 +243,7 @@ var SkillUpgradeLabel = cc.Node.extend({
                 that._retinueCard = [];
             }
 
-            that.getParent()._backToThisLayer();
+            that.getParent().backToThisLayer();
 
             cc.log("this._leadCard :");
             cc.log(that._leadCard);
@@ -244,11 +251,21 @@ var SkillUpgradeLabel = cc.Node.extend({
             leadCard: this._leadCard
         });
 
-        this.getParent()._switchToCardListLayer(cardListLayer);
+        this.getParent().switchToCardListLayer(cardListLayer);
     },
 
     _onClickUpgrade: function () {
         cc.log("SkillUpgradeLabel _onClickUpgrade");
+
+        if (!this._leadCard.canUpgradeSkill()) {
+            TipLayer.tip("技能不可升级");
+            return;
+        }
+
+        if (gameData.player.get("skillPoint") < this._leadCard.getUpgradeNeedSKillPoint()) {
+            TipLayer.tip("技能点不足");
+            return;
+        }
 
         var that = this;
         this._leadCard.upgradeSkill(function (data) {

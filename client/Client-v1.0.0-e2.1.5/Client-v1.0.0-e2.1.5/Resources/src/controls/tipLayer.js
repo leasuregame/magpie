@@ -15,6 +15,13 @@
 var TipLayer = cc.Layer.extend({
     _tipLabel: [],
 
+    onEnter: function () {
+        cc.log("TipLayer onEnter");
+
+        this._super();
+        this.update();
+    },
+
     init: function () {
         cc.log("TipLayer init");
 
@@ -25,19 +32,42 @@ var TipLayer = cc.Layer.extend({
         return true;
     },
 
+    update: function () {
+        cc.log("TipLayer update");
+
+        cc.log(this._tipLabel);
+
+        var len = this._tipLabel.length;
+        for (var i = 0; i < len; ++i) {
+            this._tipLabel[i].label.removeFromParent();
+        }
+
+        this._tipLabel = [];
+    },
+
     tip: function (str, color, fontName, fontSize) {
         cc.log("TipLayer tip: " + str);
 
         if (!str) return;
 
-        color = color || cc.c3b(255, 240, 170);
+        color = color || cc.c3b(255, 239, 131);
         fontName = fontName || "STHeitiTC-Medium";
-        fontSize = fontSize || 30;
+        fontSize = fontSize || 25;
+
+        var label = cc.Node.create();
+        label.setPosition(cc.p(360, 550));
+        this.addChild(label);
 
         var strLabel = cc.LabelTTF.create(str, fontName, fontSize);
         strLabel.setColor(color);
-        strLabel.setPosition(cc.p(360, 550));
-        this.addChild(strLabel);
+        label.addChild(strLabel, 1);
+
+        var strLabelSize = strLabel.getContentSize();
+        var bgLabelSize = cc.size(strLabelSize.width + 60, strLabelSize.height + 30);
+
+        var bgLabel = cc.Scale9Sprite.create(main_scene_image.icon3);
+        bgLabel.setContentSize(bgLabelSize);
+        label.addChild(bgLabel);
 
         var len = this._tipLabel.length;
 
@@ -49,11 +79,9 @@ var TipLayer = cc.Layer.extend({
 
         var moveAction = cc.MoveTo.create(1.5, cc.p(360, 700));
         var callFuncAction = cc.CallFunc.create(function () {
-
             this._tipLabel.shift();
 
-            strLabel.stopAllActions();
-            strLabel.removeFromParent();
+            label.removeFromParent();
 
             if (!this._tipLabel.length) {
                 this.removeFromParent();
@@ -66,12 +94,12 @@ var TipLayer = cc.Layer.extend({
         var speedAction = cc.Speed.create(sequenceAction, speed);
 
         this._tipLabel.push({
-            label: strLabel,
+            label: label,
             action: speedAction,
             speed: speed
         });
 
-        strLabel.runAction(speedAction);
+        label.runAction(speedAction);
     }
 });
 

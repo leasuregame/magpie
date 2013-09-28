@@ -80,7 +80,7 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         this._nextSkillLvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._nextSkillLvLabel.setColor(cc.c3b(118, 238, 60));
-        this._nextSkillLvLabel.setPosition(cc.p(90, 0));
+        this._nextSkillLvLabel.setPosition(cc.p(100, 0));
         this._resLabel.addChild(this._nextSkillLvLabel);
 
         var skillHarmIcon = cc.LabelTTF.create("技能伤害:", "STHeitiTC-Medium", 22);
@@ -94,15 +94,15 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         this._nextSkillHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
         this._nextSkillHarmLabel.setColor(cc.c3b(118, 238, 60));
-        this._nextSkillHarmLabel.setPosition(cc.p(90, -35));
+        this._nextSkillHarmLabel.setPosition(cc.p(100, -35));
         this._resLabel.addChild(this._nextSkillHarmLabel);
 
         this._arrowLabel1 = cc.Sprite.create(main_scene_image.icon63);
-        this._arrowLabel1.setPosition(cc.p(45, 0));
+        this._arrowLabel1.setPosition(cc.p(50, 0));
         this._resLabel.addChild(this._arrowLabel1);
 
         this._arrowLabel2 = cc.Sprite.create(main_scene_image.icon63);
-        this._arrowLabel2.setPosition(cc.p(45, -35));
+        this._arrowLabel2.setPosition(cc.p(50, -35));
         this._resLabel.addChild(this._arrowLabel2);
 
         var helpBgSprite = cc.Sprite.create(main_scene_image.icon50);

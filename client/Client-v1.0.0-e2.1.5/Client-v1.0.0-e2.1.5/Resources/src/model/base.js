@@ -175,11 +175,13 @@ lz.getRewardString = function (data) {
     var str = [];
 
     for (var key in data) {
-        if (typeof(data[key]) == "object") {
-            str.push(lz.getNameByKey(key) + " : " + 1);
-        } else if (typeof(data[key]) == "number") {
-            if (data[key] > 0) {
-                str.push(lz.getNameByKey(key) + " : " + data[key]);
+        if (data[key]) {
+            if (key == "cards") {
+                str.push(lz.getNameByKey(key) + " : " + data[key].length);
+            } else {
+                if (data[key] > 0) {
+                    str.push(lz.getNameByKey(key) + " : " + data[key]);
+                }
             }
         }
     }

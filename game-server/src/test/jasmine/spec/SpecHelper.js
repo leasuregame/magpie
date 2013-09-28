@@ -6,8 +6,8 @@ beforeEach(function() {
 
       var keys_ok = _.isEqual(
         _.keys(battleLog).sort(), [
-          'enemy',
-          'own',
+          'cards',
+          'ownId',
           'winner',
           'steps',
           'rewards',
@@ -16,8 +16,15 @@ beforeEach(function() {
       );
 
       var cards_ok = false;
-      var enemy_card_length = _.values(battleLog.enemy.cards).filter(function(val){return _.isObject(val)}).length;
-      var own_card_length = _.values(battleLog.own.cards).filter(function(val){return _.isObject(val)}).length;
+      var enemy_card_length = own_card_length = 0;
+      _.each(battleLog.cards, function(val, id) {
+        if(id <= 6 && _.isObject(val)) {
+          own_card_length += 1;
+        }
+        if(id > 6 && _.isObject(val)) {
+          enemy_card_length += 1;
+        }
+      });
 
       cards_ok = enemy_card_length > 0 && own_card_length > 0;
 
@@ -54,7 +61,7 @@ beforeEach(function() {
           var death_man = 0;
           _.each(dmage, function(val, key) {
             k = parseInt(key);
-            if (k > 6 && battleLog.enemy.cards[k].hp <= val) {
+            if (k > 6 && battleLog.cards[k].hp <= val) {
               death_man++;
             }
           })
@@ -69,7 +76,7 @@ beforeEach(function() {
           var death_man = 0;
           _.each(dmage, function(val, key) {
             k = parseInt(key);
-            if (k <= 6 && battleLog.own.cards[k].hp <= val) {
+            if (k <= 6 && battleLog.cards[k].hp <= val) {
               death_man++;
             }
           })
@@ -98,8 +105,8 @@ beforeEach(function() {
       if (!rewards_ok) {
         console.log('战斗奖励不正确');
       }
-
-      return keys_ok && cards_ok && steps_ok;
+      console.log(keys_ok, cards_ok, steps_ok);
+      return cards_ok && steps_ok;
     },
     hasProperties: function(expectedProperties) {
       var obj = this.actual;
@@ -158,6 +165,7 @@ var doAjax = function(url, params, cb) {
 };
 
 var request = function(route, msg, cb, timeout) {
+  console.log('msg: ', msg);
   var ok = false;
   runs(function() {
     pomelo.request(route, msg, function(data) {

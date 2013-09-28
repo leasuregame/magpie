@@ -7,14 +7,14 @@ class VirtualPlayer extends Player
   init: (data) ->
     @data = data
     cards = parseCards data
-    console.log cards
+
     if data.is_random? and data.is_random is 1
       lineUp = randomLineUp cards
     else if data.formation?
       lineUp = genLineUp cards, data.formation
     else
-      lineUp = defaultLineUp data.cards
-    console.log lineUp
+      lineUp = defaultLineUp cards
+    
     super(
       cards: cards
       lineUp: lineUp
@@ -25,15 +25,15 @@ class VirtualPlayer extends Player
     @heros = if @cards? then new VHero(c, @) for c in @cards else []
 
   bindCards: ->
+    _hero = (id) =>
+      for h in @heros
+        return if h.id is parseInt(id) then h
+      null
+    
     if @lineUp? and @lineUp != ''
       @parseLineUp().forEach (item) =>
         [pos, id] = item 
-        
-        _hero = (id) =>
-          for h in @heros
-            return if h.id is parseInt(id) then h
-          null
-        _h = _hero(id)
+        _h = _hero(id)      
 
         if _h
           @matrix.set(pos, _h)
@@ -57,7 +57,7 @@ class VirtualPlayer extends Player
 parseCards = (data) ->
   cards = []
   card_ids = data.cards.split('#')
-  realId = 0
+  realId = 1
   hasOneBoss = false
   for id in card_ids
     _obj = {
@@ -70,8 +70,10 @@ parseCards = (data) ->
         id: data.boss_id
         skill_trigger_rate: data.trigger_rate
         attr_inc: data.boss_attr
-        point_atk_inc: data.atk_inc
-        point_hp_inc: data.hp_inc
+        boss_atk_inc: data.boss_atk_inc
+        boss_hp_inc: data.boss_hp_inc
+        boss_crit: data.boss_crit
+        boss_dodge: data.dodge
       }
       hasOneBoss = true
 
@@ -109,10 +111,10 @@ genLineUp = (cards, formation) ->
 
   arr.join(',')
 
-defaultLineUp = (cards_str) ->
+defaultLineUp = (cards) ->
   lu = ''
-  for id, idx in cards_str.split('#')
-    lu += "#{idx+1}:id,"
+  for c in cards
+    lu += "#{c.id}:#{c.id},"
   lu[0...-1]
 
 module.exports = VirtualPlayer

@@ -30,7 +30,7 @@ class Battle extends Base
     @round = new Round(@attacker, @defender)
 
   isOver: ->
-    @attacker.death() or @defender.death() or @round.round_num > 10
+    @attacker.death() or @defender.death() or @round.round_num >= 30
 
   start: ->
     cards = _.extend {}, @defender.getCards(), @attacker.getCards()

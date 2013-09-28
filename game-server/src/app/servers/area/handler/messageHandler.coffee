@@ -55,13 +55,14 @@ module.exports = (app) ->
 Handler = (@app) ->
 
 Handler::sysMsg = (msg, session, next) ->
+  console.log("msg = ",msg);
   content = msg.content
   options = msg.options or {}
-
+  receiver = msg.playerId or SYSTEM
   dao.message.create data: {
     options: options
     sender: SYSTEM
-    receiver: SYSTEM
+    receiver: receiver
     content: content
     type: msgConfig.MESSAGETYPE.SYSTEM
     status: msgConfig.MESSAGESTATUS.UNHANDLED
@@ -72,7 +73,7 @@ Handler::sysMsg = (msg, session, next) ->
     sendMessage @app, null, {
       route: 'onMessage'
       msg: res.toJson()
-    }, next
+    }, next(null,{code:200,msg:'邮件发送成功'})
 
 Handler::handleSysMsg = (msg, session, next) ->
   playerId = session.get('playerId')

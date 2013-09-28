@@ -9,10 +9,9 @@ var card = require('./card');
 var rank = require('./rank');
 var simBattle = require('./simBattle');
 var lottery = require('./lottery');
-
 var passSkillAfresh = require('./passSkillAfresh');
 var explore = require('./explore');
-
+var Area = require('../models/area');
 var logger = require('../logger').logger('user');
 
 var routes = function(app){
@@ -128,11 +127,14 @@ var routes = function(app){
 
     //全服、个人补偿奖赏
     app.get('/reward',function(req , res){
-        res.render('reward',{
-            title : '补偿奖赏',
-            user : req.session.user,
-            success:req.flash('success').toString(),
-            error:req.flash('error').toString()
+        Area.getAreasList(function(areas) {
+            res.render('reward',{
+                title : '补偿奖赏',
+                user : req.session.user,
+                areas:areas,
+                success:req.flash('success').toString(),
+                error:req.flash('error').toString()
+            });
         });
     });
 

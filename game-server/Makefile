@@ -66,6 +66,7 @@ restartserver: build
 newdb:
 	sh ./bin/initMysql.sh magpie_area_1
 	sh ./bin/initMysql.sh magpie_area_2
+	sh ./bin/initMysql.sh magpie_area_3
 
 inittables: 
 	mysql -uroot -p1easure114E -e "drop database if exists $(db);create database $(db);use $(db);source ./config/schema/init.sql;GRANT ALL PRIVILEGES ON $(db).* to dev@localhost IDENTIFIED BY '1';" 

@@ -18,8 +18,8 @@ var table = require('../../manager/table');
 var elixirConfig = table.getTableItem('elixir', 1);
 var cardConfig = require('../../../config/data/card'); 
 var _ = require("underscore");
-var dao = require('pomelo').app.get('dao');
-var passiveSkillDao = require('../../dao/mysql/passiveSkillDao');
+//var dao = require('pomelo').app.get('dao');
+//var passiveSkillDao = require('../../dao/mysql/passiveSkillDao');
 var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL
 var GROUP_EFFECT_ATK = 1
 var GROUP_EFFECT_HP = 2
@@ -287,7 +287,7 @@ var Card = (function (_super) {
     Card.prototype.toJson = function () {
         //作为当前游戏数据测试所用，以后要删除
         genSkillInc(this);
-        initPassiveSkill(this);
+      //  initPassiveSkill(this);
         //
         return {
             id: this.id,
@@ -326,7 +326,7 @@ var genSkillInc = function(card) {
         throw new Error('can not file skill info of card: ' + card.tableId);
     }
 };
-
+/*
 //作为当前游戏数据测试所用，以后要删除
 var initPassiveSkill = function(card) {
     var count, end, index, results, start, _ref;
@@ -349,15 +349,16 @@ var initPassiveSkill = function(card) {
         passiveSkillDao.create({
             data: p
         }, function(err, res) {
-           /* if (err) {
+           if (err) {
                 return callback(err);
             }
-            */
+
             card.addPassiveSkill(res);
            // return callback();
         });
     });
 
 };
+*/
 
 module.exports = Card;

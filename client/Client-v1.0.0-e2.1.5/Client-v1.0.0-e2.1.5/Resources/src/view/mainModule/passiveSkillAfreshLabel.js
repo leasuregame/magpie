@@ -93,24 +93,42 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         resLabelBgSprite.setAnchorPoint(cc.p(0, 0));
         this._resLabel.addChild(resLabelBgSprite);
 
-        var resLabelIcon = cc.Sprite.create(main_scene_image.icon67);
-        resLabelIcon.setAnchorPoint(cc.p(0, 0));
-        this._resLabel.addChild(resLabelIcon);
+        var tipLabel = cc.LabelTTF.create("最高加成10.0%", "STHeitiTC-Medium", 18);
+        tipLabel.setColor(cc.c3b(255, 239, 131));
+        tipLabel.setPosition(cc.p(380, 349));
+        this._resLabel.addChild(tipLabel);
+
+        this._tipLabel = cc.LabelTTF.create("魔石洗练获得金色属性概率提升10倍", "STHeitiTC-Medium", 18);
+        this._tipLabel.setColor(cc.c3b(255, 239, 131));
+        this._tipLabel.setPosition(cc.p(227, 50));
+        this._resLabel.addChild(this._tipLabel);
 
         var resMenu = cc.Menu.create();
         resMenu.setPosition(cc.p(0, 0));
         this._resLabel.addChild(resMenu);
 
         for (var i = 0; i < 3; ++i) {
+            var y = 308 - 78 * i;
+
+            var passiveSkillBgSprite = cc.Sprite.create(main_scene_image.icon65);
+            passiveSkillBgSprite.setAnchorPoint(cc.p(0, 0.5));
+            passiveSkillBgSprite.setPosition(cc.p(0, y));
+            this._resLabel.addChild(passiveSkillBgSprite);
+
             var nameLabel = cc.Sprite.createWithTexture(this._passiveSkillNameTexture.atk_improve);
-            nameLabel.setPosition(cc.p(80, 152 + 78 * (2 - i)));
+            nameLabel.setPosition(cc.p(80, y));
             this._resLabel.addChild(nameLabel);
             nameLabel.setVisible(false);
 
             var valueLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 28);
-            valueLabel.setPosition(cc.p(190, 152 + 78 * (2 - i)));
+            valueLabel.setPosition(cc.p(190, y));
             this._resLabel.addChild(valueLabel);
             valueLabel.setVisible(false);
+
+            var lockIcon = cc.Sprite.create(main_scene_image.icon200);
+            lockIcon.setPosition(cc.p(310, y));
+            this._resLabel.addChild(lockIcon);
+            lockIcon.setScale(0.8);
 
             var lockItem = cc.MenuItemImage.create(
                 main_scene_image.button24,
@@ -118,12 +136,12 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                 this._onClickLock(i),
                 this
             );
-            lockItem.setPosition(cc.p(370, 152 + 78 * (2 - i)));
+            lockItem.setPosition(cc.p(385, y));
             resMenu.addChild(lockItem);
             lockItem.setVisible(false);
 
             var hookLabel = cc.Sprite.create(main_scene_image.icon20);
-            hookLabel.setPosition(cc.p(350, 152 + 78 * (2 - i)));
+            hookLabel.setPosition(cc.p(350, y));
             this._resLabel.addChild(hookLabel);
             hookLabel.setVisible(false);
 
@@ -131,6 +149,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                 nameLabel: nameLabel,
                 valueLabel: valueLabel,
                 hookLabel: hookLabel,
+                lockIcon: lockIcon,
                 lockItem: lockItem,
                 isLock: false
             }
@@ -154,7 +173,30 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this
         );
         this._useGoldItem.setPosition(cc.p(291, 92));
-        resMenu.addChild(this_useGoldItem);
+        resMenu.addChild(this._useGoldItem);
+
+        var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
+        moneyIcon.setPosition(cc.p(67, 92));
+        this._resLabel.addChild(moneyIcon);
+
+        var moneyLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 28);
+        moneyLabel.setPosition(cc.p(190, y));
+        this._resLabel.addChild(moneyLabel);
+        moneyLabel.setVisible(false);
+
+        var goldIcon = cc.Sprite.create(main_scene_image.icon148);
+        goldIcon.setPosition(cc.p(291, 92));
+        this._resLabel.addChild(goldIcon);
+
+        var goldLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 28);
+        goldLabel.setPosition(cc.p(190, y));
+        this._resLabel.addChild(goldLabel);
+        goldLabel.setVisible(false);
+
+
+
+
+
 
 
         this._stopTypeLabel = cc.Node.create();
@@ -167,9 +209,25 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         stopTypeBgSprite.setAnchorPoint(cc.p(0, 0));
         this._stopTypeLabel.addChild(stopTypeBgSprite);
 
-        var stopTypeIcon = cc.Sprite.create(main_scene_image.icon74);
-        stopTypeIcon.setPosition(cc.p(255, 137));
-        this._stopTypeLabel.addChild(stopTypeIcon);
+        var stopUntilBlueIcon = cc.LabelTTF.create(
+            "出现黄色属性以上停止洗练 (5.0% - 10.0%)",
+            "STHeitiTC-Medium",
+            20
+        );
+        stopUntilBlueIcon.setColor(cc.c3b(255, 239, 131));
+        stopUntilBlueIcon.setAnchorPoint(cc.p(0, 0.5));
+        stopUntilBlueIcon.setPosition(cc.p(100, 178));
+        this._stopTypeLabel.addChild(stopUntilBlueIcon);
+
+        var stopUntilYellowIcon = cc.LabelTTF.create(
+            "出现金色属性以上停止洗练 (8.0% - 10.0%)",
+            "STHeitiTC-Medium",
+            20
+        );
+        stopUntilYellowIcon.setColor(cc.c3b(255, 239, 131));
+        stopUntilYellowIcon.setAnchorPoint(cc.p(0, 0.5));
+        stopUntilYellowIcon.setPosition(cc.p(100, 96));
+        this._stopTypeLabel.addChild(stopUntilYellowIcon);
 
         var stopTypeMenu = cc.Menu.create();
         stopTypeMenu.setPosition(cc.p(0, 0));
@@ -178,6 +236,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         var stopUntilBlueItem = cc.MenuItemImage.create(
             main_scene_image.button25,
             main_scene_image.button25s,
+            main_scene_image.button25d,
             this._onClickStopUntilBlue,
             this
         );
@@ -187,6 +246,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         var stopUntilYellowItem = cc.MenuItemImage.create(
             main_scene_image.button25,
             main_scene_image.button25s,
+            main_scene_image.button25d,
             this._onClickStopUntilYellow,
             this
         );

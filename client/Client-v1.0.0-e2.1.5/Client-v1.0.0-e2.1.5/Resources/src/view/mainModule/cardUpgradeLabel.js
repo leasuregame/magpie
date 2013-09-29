@@ -58,32 +58,32 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         var hpIcon = cc.LabelTTF.create("攻击:", "STHeitiTC-Medium", 22);
         hpIcon.setColor(cc.c3b(255, 239, 131));
-        hpIcon.setPosition(cc.p(-85, 45));
+        hpIcon.setPosition(cc.p(-85, 40));
         this._resLabel.addChild(hpIcon);
 
         this._hpLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._hpLabel.setColor(cc.c3b(255, 239, 131));
-        this._hpLabel.setPosition(cc.p(0, 43));
+        this._hpLabel.setPosition(cc.p(0, 38));
         this._resLabel.addChild(this._hpLabel);
 
         this._hpAdditionLabel = cc.LabelTTF.create("+ 0", "STHeitiTC-Medium", 22);
         this._hpAdditionLabel.setColor(cc.c3b(118, 238, 60));
-        this._hpAdditionLabel.setPosition(cc.p(85, 43));
+        this._hpAdditionLabel.setPosition(cc.p(85, 38));
         this._resLabel.addChild(this._hpAdditionLabel);
 
         var atkIcon = cc.LabelTTF.create("生命:", "STHeitiTC-Medium", 22);
         atkIcon.setColor(cc.c3b(255, 239, 131));
-        atkIcon.setPosition(cc.p(-85, 10));
+        atkIcon.setPosition(cc.p(-85, 5));
         this._resLabel.addChild(atkIcon);
 
         this._atkLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._atkLabel.setColor(cc.c3b(255, 239, 131));
-        this._atkLabel.setPosition(cc.p(0, 8));
+        this._atkLabel.setPosition(cc.p(0, 3));
         this._resLabel.addChild(this._atkLabel);
 
         this._atkAdditionLabel = cc.LabelTTF.create("+ 0", "STHeitiTC-Medium", 22);
         this._atkAdditionLabel.setColor(cc.c3b(118, 238, 60));
-        this._atkAdditionLabel.setPosition(cc.p(85, 8));
+        this._atkAdditionLabel.setPosition(cc.p(85, 3));
         this._resLabel.addChild(this._atkAdditionLabel);
 
         this._lvLabel = StrokeLabel.create("0", "STHeitiTC-Medium", 35);

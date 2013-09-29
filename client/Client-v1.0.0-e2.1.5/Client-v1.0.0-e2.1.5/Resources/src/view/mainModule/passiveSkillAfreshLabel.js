@@ -418,12 +418,14 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._selectLeadCardIcon.stopAllActions();
         this._selectLeadCardIcon.setOpacity(255);
 
-        var selectLeadCardIconAction = cc.Sequence.create(
-            cc.FadeOut.create(2),
-            cc.FadeIn.create(2)
+        this._selectLeadCardIcon.runAction(
+            cc.RepeatForever.create(
+                cc.Sequence.create(
+                    cc.FadeOut.create(2),
+                    cc.FadeIn.create(2)
+                )
+            )
         );
-
-        this._selectLeadCardIcon.runAction(cc.RepeatForever.create(selectLeadCardIconAction));
 
         this._nameLabel.setString("");
         this._nameLabel.setVisible(false);

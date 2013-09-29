@@ -18,7 +18,6 @@ var table = require('../../manager/table');
 var elixirConfig = table.getTableItem('elixir', 1);
 var cardConfig = require('../../../config/data/card'); 
 var _ = require("underscore");
-
 var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL
 var GROUP_EFFECT_ATK = 1
 var GROUP_EFFECT_HP = 2
@@ -284,6 +283,7 @@ var Card = (function (_super) {
 
 
     Card.prototype.toJson = function () {
+
         return {
             id: this.id,
             tableId: this.tableId,
@@ -305,5 +305,7 @@ var Card = (function (_super) {
 
     return Card;
 })(Entity);
+
+
 
 module.exports = Card;

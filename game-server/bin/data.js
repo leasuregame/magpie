@@ -3,6 +3,8 @@ var path = require('path');
 var fs = require('fs');
 var async = require('async');
 var _ = require('underscore');
+var table = require('../app/manager/table');
+var cardConfig = require('../config/data/card');
 
 module.exports = function(db, dir) {
 	return new Data(db, dir);
@@ -41,6 +43,33 @@ Data.prototype.importCsvToSql = function(table, filepath, callback) {
       if (table == 'friend') {
         where = {playerId: row.playerId, friendId: row.friendId};
       }
+      if(table == 'card') {
+          genSkillInc(row);
+          var ps = initPassiveSkill(row);
+          ps.forEach(function(p){
+              p.cardId = row.id;
+              /*self.db.passiveSkill.fetchOne({
+                  where:{cardId:row.id}
+              },function(err,ps){
+                   if(err) {
+                       console.log(err);
+                   }else {
+                       console.log(ps);
+                   }
+              }) */
+              self.db.passiveSkill.create({
+                  data:p
+              },function(err,res){
+                  if(err) {
+                      console.log(err);
+                  }else {
+                      //console.log("ps = ",res);
+                  }
+
+              })
+          });
+
+      }
       self.db[table].delete({
         where: where
       }, function(err, res) {
@@ -53,6 +82,8 @@ Data.prototype.importCsvToSql = function(table, filepath, callback) {
           cb(null, true);
         });
       });
+
+
     })
     .on('error', function(error) {
       console.log(error.message);
@@ -267,3 +298,59 @@ var random_lineup = function(cards) {
 
   return lu + '12:-1';
 };
+
+var genSkillInc = function(card) {
+    if(parseInt(card.star) < 3) {
+       // console.log("card = ",card);
+        card.skillInc = 0.0;
+        return;
+    }
+    var cdata, max, min, skill;
+    cdata = table.getTableItem('cards', card.tableId);
+    skill = cdata.skill_id_linktarget;
+    if (skill != null) {
+        min = skill["star" + card.star + "_inc_min"] * 10;
+        max = skill["star" + card.star + "_inc_max"] * 10;
+        card.skillInc = _.random(min, max) / 10;
+        //console.log("skillInc = ",card.skillInc);
+    } else {
+        throw new Error('can not file skill info of card: ' + card.tableId);
+    }
+};
+
+var initPassiveSkill = function(card) {
+    var count, end, index, results, start, _ref;
+   // var ps = _.keys(card.passiveSkills);
+
+    results = [];
+    if(card.star < 3)
+        return results;
+    count = card.star - 2;
+
+    while (count-- > 0) {
+        index = _.random(cardConfig.PASSIVESKILL.TYPE.length - 1);
+        _ref = cardConfig.PASSIVESKILL.VALUE_SCOPE.split('-'), start = _ref[0], end = _ref[1];
+        results.push({
+            name: cardConfig.PASSIVESKILL.TYPE[index],
+            value: parseFloat(_.random(parseInt(start) * 10, parseInt(end) * 10) / 10).toFixed(1)
+        });
+    }
+
+    return results;
+
+    /*results.forEach(function(p){
+        p.cardId = card.id;
+        passiveSkillDao.create({
+            data: p
+        }, function(err, res) {
+            if (err) {
+                return callback(err);
+            }
+
+            card.addPassiveSkill(res);
+            // return callback();
+        });
+    });
+   */
+};
+

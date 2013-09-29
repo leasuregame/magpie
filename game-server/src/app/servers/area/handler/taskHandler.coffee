@@ -38,7 +38,8 @@ Handler::explore = (msg, session, next) ->
     (data, chapterId, sectionId, cb) =>
       if data.result is 'fight'
         taskManager.fightToMonster(
-          {pid: player.id, tableId: taskId, sectionId: sectionId, table: 'task_config'}
+          #{pid: player.id, tableId: taskId, sectionId: sectionId, table: 'task_config'}
+          {pid: player.id, tableId: taskId, table: 'task_config'}
         , (err, battleLog) ->
           data.battle_log = battleLog
 

@@ -159,15 +159,14 @@ var BatterLayer = cc.Layer.extend({
             var cb = function (target, position) {
                 return function () {
                     playEffect({
-                        effectId: 8,
+                        effectId: 10,
                         target: target,
                         loops: 1,
-                        delay: 0.05,
+                        delay: 0.07,
                         zOrder: 10,
                         position: position
                     })
                 };
-
             }(this, targetLocate);
 
             var ret = playEffect({
@@ -177,6 +176,7 @@ var BatterLayer = cc.Layer.extend({
                 delay: 0.07,
                 zOrder: 10,
                 rotation: lz.getAngle(attackerLocate, targetLocate),
+                anchorPoint:  cc.p(0.5, 0.8),
                 position: attackerLocate,
                 clear: true,
                 cb: cb

@@ -43,7 +43,7 @@ var NOW = function() {
 var addEvents = function(player) {
     // 经验值改变，判断是否升级
     player.on('exp.change', function(exp) {
-        if (player.lv <= 0) {
+        if (player.lv <= 0 || player.lv >= playerConfig.MAX_PLAYER_LV) {
             return;
         }
 
@@ -256,7 +256,7 @@ var Player = (function(_super) {
             spirit: 0
         },
         spiritPool: {
-            lv: 0,
+            lv: 1,
             exp: 0,
             collectCount: spiritConfig.MAX_COLLECT_COUNT
         },
@@ -320,7 +320,7 @@ var Player = (function(_super) {
         var total_spirit = spiritor.spirit + val;
         var spiritorData = table.getTableItem('spirit', spiritor.lv);
 
-        while ( !! spiritorData && total_spirit >= spiritorData.spirit_need) {
+        while ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < playerConfig.MAX_SPIRITOR_LV) {
             spiritor.lv += 1;
             total_spirit -= spiritorData.spirit_need;
             spiritorData = table.getTableItem('spirit', spiritor.lv);
@@ -334,7 +334,7 @@ var Player = (function(_super) {
         var total_exp = sp.exp + exp;
         var spData = table.getTableItem('spirit_pool', sp.lv);
 
-        while ( !! spData && total_exp >= spData.exp_need) {
+        while ( !! spData && total_exp >= spData.exp_need && sp.lv < playerConfig.MAX_SPIRITPOOL_LV) {
             sp.lv += 1;
             total_exp -= spData.exp_need;
             spData = table.getTableItem('spirit_pool', sp.lv);

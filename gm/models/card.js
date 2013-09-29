@@ -163,18 +163,25 @@ Card.create = function(card,cb){
 
                 if(err) {
                     return cb(err,null);
-                }
+                }else {
 
-                card.name = Card.getName(card.tableId);
-                console.log(card);
-                //callback(null,card);
-                return cb(null,card);
-                //  res.send(card);
+                    card.name = Card.getName(card.tableId);
+                    console.log(card);
+                    //callback(null,card);
+                    callback(null,card);
+                    //  res.send(card);
+                }
             });
 
         }
 
-    ]);
+    ],function(err,card){
+        if(err) {
+            return cb(err,null);
+        }else {
+            return cb(null,card);
+        }
+    });
     /*
     cardDao.create(options, function(err,card){
         if(err) {

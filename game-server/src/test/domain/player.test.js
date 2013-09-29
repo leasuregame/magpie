@@ -945,5 +945,96 @@ describe("Player Object", function () {
         });
     });
 
+    describe('.incSpirit',function(){
+        it('should can inc spirit when spirit lv is not max',function(){
+            var player = new Player();
+            player.spiritor = {
+                lv: 0,
+                spirit: 0
+            };
+
+            player.incSpirit(1000);
+
+            player.spiritor.should.eql({
+                lv:2,
+                spirit:50
+            });
+        });
+
+        it('should can not inc spirit when spirit lv is max',function(){
+            var player = new Player();
+            player.spiritor = {
+                lv: 10,
+                spirit: 0
+            };
+
+            player.incSpirit(1000);
+
+            player.spiritor.should.eql({
+                lv:10,
+                spirit:1000
+            });
+        })
+    });
+
+
+    describe('.incSpiritPoolExp',function(){
+        it('should can inc SpiritPool when SpiritPool lv is not max',function(){
+            var player = new Player();
+            player.spiritPool = {
+                lv: 0,
+                exp: 0,
+                collectCount: 5
+            };
+            player.incSpiritPoolExp(300);
+
+            player.spiritPool.should.eql({
+                lv: 2,
+                exp: 25,
+                collectCount: 5
+            });
+        });
+
+        it('should can not inc SpiritPool when SpiritPool lv is max',function(){
+            var player = new Player();
+            player.spiritPool = {
+                lv: 10,
+                exp: 0,
+                collectCount: 5
+            };
+            player.incSpiritPoolExp(10000);
+
+            player.spiritPool.should.eql({
+                lv: 10,
+                exp: 10000,
+                collectCount: 5
+            });
+        });
+    });
+
+    describe('.exp.change',function(){
+        it('should can inc player lv when player lv is not max and exp enough',function(){
+
+            var player = new Player();
+            player.lv = 1;
+            player.exp = 0;
+
+            player.increase('exp',70);
+            player.lv.should.eql(3);
+            player.exp.should.eql(4);
+
+        });
+
+        it('should can inc player lv when player exp is enough but lv is max',function(){
+            var player = new Player();
+            player.lv = 100;
+            player.exp = 0;
+
+            player.increase('exp',500000);
+            player.lv.should.eql(100);
+            player.exp.should.eql(500000);
+        });
+
+    });
 
 });

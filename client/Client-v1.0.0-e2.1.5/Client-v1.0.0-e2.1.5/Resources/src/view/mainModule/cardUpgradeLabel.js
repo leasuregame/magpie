@@ -126,7 +126,7 @@ var CardUpgradeLabel = cc.Layer.extend({
         moneyIcon.setPosition(cc.p(-160, -20));
         this._helpLabel.addChild(moneyIcon);
 
-        var cardCountIcon = cc.LabelTTF.create("卡牌数量:", "STHeitiTC-Medium", 22);
+        var cardCountIcon = cc.LabelTTF.create("从牌数量:", "STHeitiTC-Medium", 22);
         cardCountIcon.setColor(cc.c3b(255, 239, 131));
         cardCountIcon.setPosition(cc.p(120, -20));
         this._helpLabel.addChild(cardCountIcon);

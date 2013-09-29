@@ -36,6 +36,11 @@ var SpiritDetails = LazyLayer.extend({
         bgLayer.setPosition(GAME_ZERO);
         this.addChild(bgLayer);
 
+        var spiritNodeBgSprite = cc.Sprite.create(main_scene_image.icon234);
+        spiritNodeBgSprite.setPosition(cc.p(360, 835));
+        this.addChild(spiritNodeBgSprite);
+
+
         var spiritNode = SpiritNode.create();
         spiritNode.setScale(2.0);
         spiritNode.setPosition(cc.p(360, 900));

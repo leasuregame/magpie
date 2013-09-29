@@ -287,7 +287,7 @@ var PassLayer = cc.Layer.extend({
 
         duration = duration || 2;
         height = height || 35;
-        jumps = jumps || 5;
+        jumps = jumps || 3;
 
         this._spirit.setPosition(this._getCardLocation(index - 1));
         var jumpAction = cc.JumpTo.create(duration, this._getCardLocation(index), height, jumps);

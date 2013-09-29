@@ -621,6 +621,9 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._cancelItem.setVisible(false);
         this._shyLayer.setVisible(true);
 
+        this._tipLabel.setFontSize(22);
+        this._setTip();
+
         this.schedule(this._repeatAfresh, 2, null, 0);
         this.schedule(this._setTip, 1, null, 0);
     },
@@ -651,6 +654,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this.unschedule(this._repeatAfresh);
         this.unschedule(this._setTip);
 
+        this._tipLabel.setFontSize(18);
         this._tipLabel.setString("魔石洗炼获得金色属性概率提升10倍");
     }
 });

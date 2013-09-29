@@ -505,7 +505,7 @@ var Card = Entity.extend({
             } else {
                 cc.log("train fail");
 
-                cb(null);
+                TipLayer.tip(data.msg);
             }
         });
     },

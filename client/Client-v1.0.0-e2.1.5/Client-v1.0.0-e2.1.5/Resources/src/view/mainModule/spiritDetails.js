@@ -14,11 +14,12 @@
 
 var SpiritDetails = LazyLayer.extend({
     _menu: null,
-    _expProgress: null,
+    _spiritNode: null,
     _lvLabel: null,
     _expLabel: null,
     _passiveHarmLabel: null,
     _skillHarmLabel: null,
+    _upgradeItem: null,
 
     onEnter: function () {
         cc.log("SpiritDetails onEnter");
@@ -32,72 +33,146 @@ var SpiritDetails = LazyLayer.extend({
 
         if (!this._super()) return false;
 
-        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
-        bgLayer.setPosition(GAME_ZERO);
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 255), 640, 1136);
+        bgLayer.setPosition(cc.p(40, 0));
         this.addChild(bgLayer);
 
         var spiritNodeBgSprite = cc.Sprite.create(main_scene_image.icon234);
-        spiritNodeBgSprite.setPosition(cc.p(360, 835));
+        spiritNodeBgSprite.setPosition(cc.p(360, 730));
         this.addChild(spiritNodeBgSprite);
 
+        var cloudSprite = cc.Sprite.create(main_scene_image.icon237);
+        cloudSprite.setPosition(cc.p(560, 580));
+        this.addChild(cloudSprite);
 
-        var spiritNode = SpiritNode.create();
-        spiritNode.setScale(2.0);
-        spiritNode.setPosition(cc.p(360, 900));
-        this.addChild(spiritNode);
+        cloudSprite.runAction(
+            cc.RepeatForever.create(
+                cc.Sequence.create(
+                    cc.MoveTo.create(lz.random(6, 12), cc.p(160, 580)),
+                    cc.MoveTo.create(lz.random(6, 12), cc.p(560, 580))
+                )
+            )
+        );
 
-        var tipIcon = cc.Sprite.create(main_scene_image.icon115);
-        tipIcon.setPosition(cc.p(360, 400));
-        this.addChild(tipIcon);
+        var cloudSprite1 = cc.Sprite.create(main_scene_image.icon238);
+        cloudSprite1.setPosition(cc.p(600, 330));
+        this.addChild(cloudSprite1);
+
+        var cloudSprite2 = cc.Sprite.create(main_scene_image.icon239);
+        cloudSprite2.setPosition(cc.p(120, 190));
+        this.addChild(cloudSprite2);
+
+        var lineSprite1 = cc.Sprite.create(main_scene_image.icon240);
+        lineSprite1.setPosition(cc.p(125, 300));
+        this.addChild(lineSprite1);
+
+        var lineSprite2 = cc.Sprite.create(main_scene_image.icon240);
+        lineSprite2.setPosition(cc.p(595, 300));
+        this.addChild(lineSprite2);
+
+        var stoneSprite1 = cc.Sprite.create(main_scene_image.icon235);
+        stoneSprite1.setPosition(cc.p(160, 820));
+        this.addChild(stoneSprite1);
+
+        stoneSprite1.runAction(
+            cc.RepeatForever.create(
+                cc.Sequence.create(
+                    cc.MoveTo.create(lz.random(5, 10), cc.p(160, 700)),
+                    cc.MoveTo.create(lz.random(8, 16), cc.p(160, 820))
+                )
+            )
+        );
+
+        var stoneSprite2 = cc.Sprite.create(main_scene_image.icon236);
+        stoneSprite2.setPosition(cc.p(560, 660));
+        this.addChild(stoneSprite2);
+
+        stoneSprite2.runAction(
+            cc.RepeatForever.create(
+                cc.Sequence.create(
+                    cc.MoveTo.create(lz.random(4, 8), cc.p(560, 740)),
+                    cc.MoveTo.create(lz.random(3, 6), cc.p(560, 660))
+                )
+            )
+        );
+
+        var passiveIcon = cc.LabelTTF.create("元神守护", "STHeitiTC-Medium", 30);
+        passiveIcon.setColor(cc.c3b(255, 248, 69));
+        passiveIcon.setPosition(cc.p(200, 440));
+        this.addChild(passiveIcon);
+
+        var passiveDescription = cc.LabelTTF.create("所有上阵卡牌基础生命值和攻击力获得额外加成", "STHeitiTC-Medium", 20);
+        passiveDescription.setColor(cc.c3b(255, 239, 131));
+        passiveDescription.setAnchorPoint(cc.p(0, 0.5));
+        passiveDescription.setPosition(cc.p(140, 400));
+        this.addChild(passiveDescription);
+
+        var passiveHarmIcon = cc.LabelTTF.create("当前加成效果:", "STHeitiTC-Medium", 20);
+        passiveHarmIcon.setColor(cc.c3b(146, 180, 83));
+        passiveHarmIcon.setPosition(cc.p(420, 370));
+        this.addChild(passiveHarmIcon);
+
+        var skillIcon = cc.LabelTTF.create("元神之怒", "STHeitiTC-Medium", 30);
+        skillIcon.setColor(cc.c3b(255, 248, 69));
+        skillIcon.setPosition(cc.p(200, 320));
+        this.addChild(skillIcon);
+
+        var skillDescription1 = cc.LabelTTF.create("每次我方卡牌阵亡，将有一定概率触发元神之怒，", "STHeitiTC-Medium", 20);
+        skillDescription1.setColor(cc.c3b(255, 239, 131));
+        skillDescription1.setAnchorPoint(cc.p(0, 0.5));
+        skillDescription1.setPosition(cc.p(140, 280));
+        this.addChild(skillDescription1);
+
+        var skillDescription2 = cc.LabelTTF.create("元神将释放阵亡卡牌的技能效果，最高可达100%", "STHeitiTC-Medium", 20);
+        skillDescription2.setColor(cc.c3b(255, 239, 131));
+        skillDescription2.setAnchorPoint(cc.p(0, 0.5));
+        skillDescription2.setPosition(cc.p(140, 250));
+        this.addChild(skillDescription2);
+
+        var skillHarmIcon = cc.LabelTTF.create("当前加成效果:", "STHeitiTC-Medium", 20);
+        skillHarmIcon.setColor(cc.c3b(146, 180, 83));
+        skillHarmIcon.setPosition(cc.p(420, 220));
+        this.addChild(skillHarmIcon);
+
 
         this._passiveHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 23);
-        this._passiveHarmLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._passiveHarmLabel.setPosition(cc.p(520, 485));
+        this._passiveHarmLabel.setColor(cc.c3b(255, 239, 131));
+        this._passiveHarmLabel.setPosition(cc.p(520, 370));
         this.addChild(this._passiveHarmLabel);
 
         this._skillHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 23);
-        this._skillHarmLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._skillHarmLabel.setPosition(cc.p(520, 226));
+        this._skillHarmLabel.setColor(cc.c3b(255, 239, 131));
+        this._skillHarmLabel.setPosition(cc.p(520, 220));
         this.addChild(this._skillHarmLabel);
 
-        var lvIcon = cc.LabelTTF.create("LV.", "STHeitiTC-Medium", 40);
-        lvIcon.setAnchorPoint(cc.p(0, 0));
-        lvIcon.setPosition(cc.p(90, 715));
-        this.addChild(lvIcon);
-
-        this._lvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 28);
-        this._lvLabel.setAnchorPoint(cc.p(0, 0));
-        this._lvLabel.setPosition(cc.p(160, 715));
+        this._lvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 40);
+        this._lvLabel.setColor(cc.c3b(255, 239, 131));
+        this._lvLabel.setPosition(cc.p(360, 990));
         this.addChild(this._lvLabel);
 
-        var expIcon = cc.LabelTTF.create("EXP.", "STHeitiTC-Medium", 36);
-        expIcon.setAnchorPoint(cc.p(0, 0));
-        expIcon.setPosition(cc.p(415, 715));
-        this.addChild(expIcon);
-
-        this._expLabel = cc.LabelTTF.create("0 / 0", "STHeitiTC-Medium", 28);
-        this._expLabel.setAnchorPoint(cc.p(0, 0));
-        this._expLabel.setPosition(cc.p(500, 715));
+        this._expLabel = cc.LabelTTF.create("0 / 0", "STHeitiTC-Medium", 22);
+        this._expLabel.setColor(cc.c3b(255, 239, 131));
+        this._expLabel.setPosition(cc.p(360, 940));
         this.addChild(this._expLabel);
 
-        this._expProgress = Progress.create(
-            main_scene_image.progress9,
-            main_scene_image.progress10,
-            0,
-            0
-        );
-        this._expProgress.setPosition(cc.p(360, 700));
-        this.addChild(this._expProgress);
-
-        var closeItem = cc.MenuItemImage.create(
-            main_scene_image.button0,
-            main_scene_image.button0s,
+        this._upgradeItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon52,
             this._onClickClose,
             this
         );
-        closeItem.setPosition(cc.p(620, 1000));
+        this._upgradeItem.setPosition(cc.p(360, 520));
 
-        this._menu = cc.Menu.create(closeItem);
+        var closeItem = cc.MenuItemImage.create(
+            main_scene_image.button17,
+            main_scene_image.button17s,
+            this._onClickClose,
+            this
+        );
+        closeItem.setPosition(cc.p(360, 130));
+
+        this._menu = cc.Menu.create(this._upgradeItem, closeItem);
         this._menu.setPosition(cc.p(0, 0));
         this.addChild(this._menu);
 
@@ -109,12 +184,32 @@ var SpiritDetails = LazyLayer.extend({
 
         var spirit = gameData.spirit;
 
-        this._expProgress.setAllValue(spirit.get("exp"), spirit.get("maxExp"));
+        if (this._spiritNode != null) {
+            this._spiritNode.removeFromParent();
+            this._spiritNode = null;
+        }
 
-        this._lvLabel.setString(spirit.get("lv"));
-        this._expLabel.setString(spirit.get("exp") + " / " + spirit.get("maxExp"));
+        this._spiritNode = SpiritNode.create();
+        this._spiritNode.setScale(2.0);
+        this._spiritNode.setPosition(cc.p(360, 740));
+        this.addChild(this._spiritNode);
+
+        this._upgradeItem.setVisible(spirit.canUpgrade());
+
+        this._lvLabel.setString("LV.  " + spirit.get("lv"));
+        this._expLabel.setString("经验:    " + spirit.get("exp") + " / " + spirit.get("maxExp"));
         this._passiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
         this._skillHarmLabel.setString(spirit.get("skillHarm") + "%");
+    },
+
+
+    _onClickUpgrade: function () {
+        cc.log("PlayerDetails _onClickUpgrade");
+
+        var that = this;
+        gameData.spirit.upgrade(function (data) {
+            cc.log(data);
+        });
     },
 
     _onClickClose: function () {

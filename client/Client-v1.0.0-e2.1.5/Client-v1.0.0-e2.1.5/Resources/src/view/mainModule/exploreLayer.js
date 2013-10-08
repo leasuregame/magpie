@@ -212,7 +212,7 @@ var ExploreLayer = cc.Layer.extend({
             progressLabel.setPosition(cc.p(465 + x, 278));
             scrollViewLayer.addChild(progressLabel);
 
-            var description = lz.format(chapterTable[id].description, 20);
+            var description = lz.format("～～" + chapterTable[id].description, 20);
             var len = description.length;
             for (var j = 0; j < len; ++j) {
                 var storyLabel = cc.LabelTTF.create(description[j], "STHeitiTC-Medium", 20);

@@ -201,7 +201,7 @@ var CardDetails = LazyLayer.extend({
 
                 y -= 40;
 
-                passiveSkillIcon = cc.Sprite.create(main_scene_image.button25);
+                passiveSkillIcon = cc.Sprite.create(main_scene_image.button25d);
                 passiveSkillIcon.setAnchorPoint(cc.p(0, 0.5));
                 passiveSkillIcon.setPosition(cc.p(100, y));
                 this.addChild(passiveSkillIcon);

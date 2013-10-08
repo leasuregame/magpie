@@ -119,6 +119,7 @@ CREATE TABLE IF NOT EXISTS `rank` (
   `loseCount` INT(10) UNSIGNED DEFAULT '0',
   `winningStreak` INT(10) UNSIGNED DEFAULT '0',
   `recentChallenger` VARCHAR(100)  COLLATE utf8_unicode_ci DEFAULT '',
+  `historyRanking` INT(10) UNSIGNED DEFAULT '0',
   `gotRewards` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

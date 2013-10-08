@@ -21,7 +21,7 @@ Handler::buyVip = (msg, session, next) ->
 
     data = table.getTableItem('recharge', id)
     player.increase('cash', data.cash)
-    player.increase('gold', data.gold)
+    player.increase('gold', (data.cash * 10) + data.gold)
     player.save()
     next(null, {code: 200, msg: {
       player: {

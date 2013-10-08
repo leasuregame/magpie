@@ -155,7 +155,7 @@ Handler::passBarrier = (msg, session, next) ->
         rdata = table.getTableItem 'pass_reward', layer
         bl.rewards = 
           exp: rdata.exp
-          money: rdata.coins
+          money: rdata.money
           skillPoint: rdata.skill_point
           totalSpirit: 0
 

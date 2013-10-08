@@ -59,7 +59,7 @@ class Hero extends Module
   loadSpecialProperty: ->
     return if @star < 3
     @sp = new SpecialProperty(@sp_value)
-    @sp.takeEffect(@)
+    #@sp.takeEffect(@)
 
   loadSkill: ->
     return if @star < 3
@@ -124,8 +124,8 @@ class Hero extends Module
       else if @isCrit()
         # 暴击
         _dmg *= @crit_factor
-        _e = -_dmg
-        _d = -enemy.idx
+        _e = -parseInt(_dmg)
+        _d = -enemy.idx # 负索引代表暴击
         log.debug enemy.idx, '暴击'
       else
         _e = -_dmg
@@ -178,7 +178,7 @@ class Hero extends Module
       else if @isCrit()
         # 暴击
         _dmg *= @crit_factor 
-        _e = -_dmg
+        _e = -parseInt(_dmg)
         _d = -_hero.idx # 负索引代表暴击
 
       _step = {a: @idx, d: [_d], e: [_e], r: []}

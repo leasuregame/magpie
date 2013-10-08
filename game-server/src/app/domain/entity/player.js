@@ -347,8 +347,12 @@ var Player = (function(_super) {
         Player.__super__.save.apply(this, arguments);
         // update all cards info
         _.values(this.cards).forEach(function(card) {
-            card.save()
+            card.save();
         });
+
+        if (!_.isEmpty(this.rank)) {
+            this.rank.save();
+        }
     };
 
     Player.prototype.getAbility = function() {

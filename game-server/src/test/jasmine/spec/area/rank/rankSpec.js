@@ -164,6 +164,57 @@ describe("Area Server", function() {
       });
     });
 
+    describe("get ranking rewards", function(){
+      beforeAll(function() {
+        doAjax('/loaddata/csv', {}, function(data) {
+          expect(data).toEqual('done');
+        });
+      });
+
+      describe('when ranking is 1', function(){
+        beforeAll(function(){
+          doAjax('/update/rank/' + 5, {
+            ranking: 100
+          }, function(){
+            loginWith('1', '1', 1);
+          });
+        });
+
+        it('should can get rankng reward', function(){
+          request('area.rankHandler.getRankingReward', {
+            ranking: 1
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({});
+          });
+
+          request('area.rankHandler.getRankingReward', {
+            ranking: 100
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({});
+          });
+
+          request('area.rankHandler.getRankingReward', {
+            ranking: 500
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({});
+          });
+
+          request('area.rankHandler.getRankingReward', {
+            ranking: 1000
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({});
+          });
+
+        });
+
+
+      });
+    });
+
     describe("ranking list", function() {
       beforeAll(function() {
         doAjax('/loaddata/all', {}, function(data) {

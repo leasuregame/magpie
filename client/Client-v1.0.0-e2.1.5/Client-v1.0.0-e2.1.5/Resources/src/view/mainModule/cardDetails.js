@@ -50,72 +50,75 @@ var CardDetails = LazyLayer.extend({
         line3Icon.setPosition(cc.p(360, 180));
         this.addChild(line3Icon);
 
+        var nameLabel = StrokeLabel.create(this._card.get("name"), "STHeitiTC-Medium", 35);
+        nameLabel.setColor(cc.c3b(255, 239, 131));
+        nameLabel.setPosition(cc.p(340, 1020));
+        this.addChild(nameLabel);
+
+
+        var star = this._card.get("star");
+        for (var i = 0; i < MAX_CARD_STAR; ++i) {
+            var starBgSprite = cc.Sprite.create(main_scene_image.star3);
+            starBgSprite.setPosition(cc.p(420 + i * 50, 950));
+            this.addChild(starBgSprite);
+
+            if (i < star) {
+                var starIcon = cc.Sprite.create(main_scene_image.star2);
+                starIcon.setPosition(cc.p(420 + i * 50, 950));
+                this.addChild(starIcon);
+            }
+        }
+
         var lvBgSprite = cc.Sprite.create(main_scene_image.icon35);
-        lvBgSprite.setPosition(cc.p(560, 910));
+        lvBgSprite.setPosition(cc.p(530, 860));
         this.addChild(lvBgSprite);
 
         var hpBgSprite = cc.Sprite.create(main_scene_image.icon35);
-        hpBgSprite.setPosition(cc.p(560, 850));
+        hpBgSprite.setPosition(cc.p(530, 780));
         this.addChild(hpBgSprite);
 
         var atkBgSprite = cc.Sprite.create(main_scene_image.icon35);
-        atkBgSprite.setPosition(cc.p(560, 790));
+        atkBgSprite.setPosition(cc.p(530, 700));
         this.addChild(atkBgSprite);
 
         var lvIcon = cc.LabelTTF.create("LV:", "STHeitiTC-Medium", 20);
         lvIcon.setColor(cc.c3b(255, 239, 131));
         lvIcon.setAnchorPoint(cc.p(0, 0.5));
-        lvIcon.setPosition(cc.p(500, 910));
+        lvIcon.setPosition(cc.p(470, 860));
         this.addChild(lvIcon);
 
         var hpIcon = cc.LabelTTF.create("生命:", "STHeitiTC-Medium", 20);
         hpIcon.setColor(cc.c3b(255, 239, 131));
         hpIcon.setAnchorPoint(cc.p(0, 0.5));
-        hpIcon.setPosition(cc.p(500, 850));
+        hpIcon.setPosition(cc.p(470, 780));
         this.addChild(hpIcon);
 
         var atkIcon = cc.LabelTTF.create("攻击:", "STHeitiTC-Medium", 20);
         atkIcon.setColor(cc.c3b(255, 239, 131));
         atkIcon.setAnchorPoint(cc.p(0, 0.5));
-        atkIcon.setPosition(cc.p(500, 790));
+        atkIcon.setPosition(cc.p(470, 700));
         this.addChild(atkIcon);
-
-        var nameLabel = StrokeLabel.create(this._card.get("name"), "STHeitiTC-Medium", 35);
-        nameLabel.setColor(cc.c3b(255, 239, 131));
-        nameLabel.setPosition(cc.p(360, 1020));
-        this.addChild(nameLabel);
-
-        var star = this._card.get("star");
-        for (var i = 0; i < star; ++i) {
-            var starIcon = cc.Sprite.create(main_scene_image.star2);
-            starIcon.setPosition(cc.p(610 - i * 50, 970));
-            this.addChild(starIcon);
-        }
 
         var lvLabel = cc.LabelTTF.create(this._card.get("lv") + " / " + this._card.get("maxLv"), "STHeitiTC-Medium", 20);
         lvLabel.setColor(cc.c3b(255, 239, 131));
-        lvLabel.setPosition(cc.p(588, 908));
+        lvLabel.setPosition(cc.p(568, 858));
         this.addChild(lvLabel);
 
         var hpLabel = cc.LabelTTF.create(this._card.get("hp"), "STHeitiTC-Medium", 20);
         hpLabel.setColor(cc.c3b(255, 239, 131));
-        hpLabel.setPosition(cc.p(588, 848));
+        hpLabel.setPosition(cc.p(568, 778));
         this.addChild(hpLabel);
 
         var atkLabel = cc.LabelTTF.create(this._card.get("atk"), "STHeitiTC-Medium", 20);
         atkLabel.setColor(cc.c3b(255, 239, 131));
-        atkLabel.setPosition(cc.p(588, 788));
+        atkLabel.setPosition(cc.p(568, 698));
         this.addChild(atkLabel);
 
-        var description = lz.format(this._card.get("description"), 6);
-        var len = description.length;
-        for (var i = 0; i < len; ++i) {
-            var descriptionLabel = cc.LabelTTF.create(description[i], "STHeitiTC-Medium", 20);
-            descriptionLabel.setColor(cc.c3b(255, 239, 131));
-            descriptionLabel.setAnchorPoint(cc.p(0, 0.5));
-            descriptionLabel.setPosition(cc.p(495, 730 - i * 30));
-            this.addChild(descriptionLabel);
-        }
+        var descriptionLabel = cc.LabelTTF.create(this._card.get("description"), "STHeitiTC-Medium", 20);
+        descriptionLabel.setColor(cc.c3b(255, 239, 131));
+        descriptionLabel.setAnchorPoint(cc.p(0, 0.5));
+        descriptionLabel.setPosition(cc.p(60, 570));
+        this.addChild(descriptionLabel);
 
         var skillIcon = cc.LabelTTF.create("主动技能:", "STHeitiTC-Medium", 30);
         skillIcon.setColor(cc.c3b(255, 248, 69));
@@ -239,9 +242,10 @@ var CardDetails = LazyLayer.extend({
             this.addChild(tipDescriptionLabel);
         }
 
-        var closeItem = cc.MenuItemImage.create(
-            main_scene_image.button17,
-            main_scene_image.button17s,
+        var closeItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon36,
             this._onClickClose,
             this
         );

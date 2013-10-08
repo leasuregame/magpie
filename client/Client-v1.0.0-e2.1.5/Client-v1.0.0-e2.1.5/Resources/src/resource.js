@@ -65,6 +65,7 @@ var main_scene_image = {
     main_message_bg: main_scene_path + "main_message_bg.png",
     star1: main_scene_path + "star1.png",
     star2: main_scene_path + "star2.png",
+    star3: main_scene_path + "star3.png",
     ladder1: main_scene_path + "ladder1.png",
     ladder2: main_scene_path + "ladder2.png",
     cloud: main_scene_path + "cloud.png",

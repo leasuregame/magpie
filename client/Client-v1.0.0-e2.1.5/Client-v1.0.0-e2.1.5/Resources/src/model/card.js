@@ -12,6 +12,8 @@
  * */
 
 
+var MAX_CARD_STAR = 5;
+
 var passiveSkillDescription = {
     atk_improve: "攻击",
     hp_improve: "生命",

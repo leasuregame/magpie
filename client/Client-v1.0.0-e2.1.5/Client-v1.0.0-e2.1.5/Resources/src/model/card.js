@@ -132,7 +132,7 @@ var Card = Entity.extend({
         this._initHp = cardTable.hp;
         this._initAtk = cardTable.atk;
         this._skillId = cardTable.skill_id;
-        this._skillName = cardTable.skill_name || "三星以上拥有技能";
+        this._skillName = cardTable.skill_name || "无";
 
         // 读取等级加成表
         var factorsTable = outputTables.factors.rows[this._lv];
@@ -163,8 +163,6 @@ var Card = Entity.extend({
     _loadSkillTable: function () {
         cc.log("Card _loadSkillTable");
 
-        this._skillDescription = "你的卡牌弱爆了，赶紧升星吧。";
-
         if (!this._skillId) return;
 
         // 读取技能配置表
@@ -181,6 +179,32 @@ var Card = Entity.extend({
         this._skillDescription = skillTable.description;
         this._skillType = skillTable.type;
         this._skillMaxLv = 5;
+    },
+
+    getSkillType: function () {
+        cc.log("Card _getSkillType");
+
+        if (this._skillType == 1 || this._skillType == 2) {
+            return "攻击";
+        }
+
+        if (this._skillType == 3 || this._skillType == 4) {
+            return "治疗";
+        }
+
+        return "";
+    },
+
+    hasSkill: function () {
+        return (!!this._skillId);
+    },
+
+    hasPassiveSkill: function () {
+        for (var key in this._passiveSkill) {
+            return true;
+        }
+
+        return false;
     },
 
     _calculateAddition: function () {

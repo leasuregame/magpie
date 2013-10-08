@@ -51,7 +51,7 @@ var routes = function(app){
         User.get(name,function(err,user){
             if(!user) {
                 req.flash('error','用户不存在');
-                logger.error("[login]" + user.name + "不存在");
+                logger.error("[login]" + name + "不存在");
                 return res.redirect('/login');
             }
 

@@ -146,10 +146,14 @@ function init(){
         if(operate == OperateConfig.ADD) {
             if(checkTableId() == false)
                 return;
+            if(checkSkillLv() == false)
+                return;
             submitAdd();
         }
         else if(operate == OperateConfig.UPDATE) {
             if(checkLv() == false)
+                return;
+            if(checkSkillLv() == false)
                 return;
             submitUpdate();
         }
@@ -223,7 +227,23 @@ function checkLv() {
     }
 
     return true;
-}
+};
+
+function checkSkillLv() {
+    var lv = $("#skillLv").val();
+    if(lv < 0 || lv > 5) {
+        var msg = {
+            type:"error",
+            info:"技能等级0-5级"
+        }
+        setShowMsg(msg);
+        return false;
+    }
+
+    return true;
+};
+
+
 
 //提交添加
 function submitAdd() {

@@ -489,6 +489,14 @@ var Player = (function(_super) {
         this.updatePower(power);
     };
 
+    //直接添加体力，不受上限限制
+    Player.prototype.addPower = function(value) {
+        var power = _.clone(this.power);
+        power.value += value;
+        power.time = Date.now();
+        this.updatePower(power);
+    };
+
     Player.prototype.givePower = function(hour, value) {
         var max_power = getMaxPower(this.lv);
         var power = _.clone(this.power);

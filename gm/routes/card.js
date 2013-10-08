@@ -48,7 +48,7 @@ var card = function(app) {
             });
 
         }else {
-            res.redirect('/playerLogin?target=card');
+            res.redirect('/playerLogin?target=cardData');
         }
 
     });

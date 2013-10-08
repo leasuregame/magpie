@@ -12,6 +12,7 @@ var lottery = require('./lottery');
 
 var passSkillAfresh = require('./passSkillAfresh');
 var explore = require('./explore');
+var buyVip = require('./buyVip');
 
 var logger = require('../logger').logger('user');
 
@@ -122,6 +123,8 @@ var routes = function(app){
 
     passSkillAfresh(app);
     explore(app);
+    buyVip(app);
+
 
 
     app.get('/reward',checkLogin);

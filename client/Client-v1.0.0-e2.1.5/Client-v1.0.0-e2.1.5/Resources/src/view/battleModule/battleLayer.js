@@ -69,7 +69,7 @@ var BatterLayer = cc.Layer.extend({
 
         this._backItem.setVisible(false);
 
-        var battleNode = battleLog.getBattleNode();
+        var battleNode = battleLog.get("card");
 
         cc.log(battleNode);
 
@@ -135,7 +135,13 @@ var BatterLayer = cc.Layer.extend({
         cc.log(str);
         this._tipLabel.setString(str);
 
-        var delay = this._normalAttack(battleStep);
+        var delay;
+
+        if(battleStep.get("isSkill")) {
+            delay = this._aoeAttack(battleStep);
+        } else {
+            delay = this._normalAttack(battleStep);
+        }
 
         cc.log("set next round schedule");
         this.schedule(this._playAStep, delay, 1, 0);
@@ -159,7 +165,7 @@ var BatterLayer = cc.Layer.extend({
             var cb = function (target, position) {
                 return function () {
                     playEffect({
-                        effectId: 10,
+                        effectId: 5,
                         target: target,
                         loops: 1,
                         delay: 0.07,
@@ -170,14 +176,65 @@ var BatterLayer = cc.Layer.extend({
             }(this, targetLocate);
 
             var ret = playEffect({
-                effectId: 6,
+                effectId: 4,
                 target: this,
                 loops: 1,
                 delay: 0.07,
                 zOrder: 10,
                 rotation: lz.getAngle(attackerLocate, targetLocate),
-                anchorPoint:  cc.p(0.5, 0.8),
+                anchorPoint: cc.p(0.5, 0.8),
                 position: attackerLocate,
+                clear: true,
+                cb: cb
+            });
+
+            var effectSprite = ret.sprite;
+            var time = ret.time;
+
+            var moveAction = cc.EaseSineIn.create(cc.MoveTo.create(time, targetLocate));
+
+            effectSprite.runAction(moveAction);
+        }
+
+        return 2.0;
+    },
+
+    _aoeAttack: function(battleStep) {
+        cc.log(battleStep);
+
+        var attacker = battleStep.get("attacker");
+
+        this._battleNode[attacker].atk();
+
+        battleStep.recover();
+        while (battleStep.hasNextTarget()) {
+            var target = battleStep.getTarget();
+            var targetLocate = this._locate[target];
+
+            this._battleNode[target].defend(battleStep.getEffect(), battleStep.isCrit());
+
+            var cb = function (target, position) {
+                return function () {
+                    playEffect({
+                        effectId: 8,
+                        target: target,
+                        loops: 1,
+                        delay: 0.06,
+                        zOrder: 10,
+                        position: position
+                    })
+                };
+            }(this, targetLocate);
+
+            var ret = playEffect({
+                effectId: 7,
+                target: this,
+                loops: 1,
+                delay: 0.04,
+                zOrder: 10,
+                rotation: 180,
+                anchorPoint:  cc.p(0.5, 0.8),
+                position: cc.p(targetLocate.x, targetLocate.y + 120),
                 clear: true,
                 cb: cb
             });

@@ -471,7 +471,7 @@ var Player = (function(_super) {
     Player.prototype.consumePower = function(value) {
         if (this.power.value <= 0) return;
 
-        var power = _.clone(this.power);
+        var power = utility.deepCopy(this.power);
         var cVal = value;
         if (value > power.value) {
             cVal = power.value;
@@ -487,7 +487,7 @@ var Player = (function(_super) {
 
         if (this.power.value >= max_power) return;
 
-        var power = _.clone(this.power);
+        var power = utility.deepCopy(this.power);
         power.value = _.min([max_power, power.value + value]);
         power.time = Date.now();
         this.updatePower(power);
@@ -495,7 +495,7 @@ var Player = (function(_super) {
 
     Player.prototype.givePower = function(hour, value) {
         var max_power = getMaxPower(this.lv);
-        var power = _.clone(this.power);
+        var power = utility.deepCopy(this.power);
         power.value = _.min([power.value + value, max_power + 50]);
         power.time = Date.now();
         this.updatePower(power);
@@ -596,7 +596,7 @@ var Player = (function(_super) {
         if (taskData) {
             var chapterId = taskData.chapter_id;
             this.momoMark.mark(chapterId - 1);
-            var task = utility.deepCopy(this.task);
+            var task = (this.task);
             task.momo = this.momoMark.value;
             this.task = task;
         }

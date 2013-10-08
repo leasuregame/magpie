@@ -475,3 +475,23 @@ Handler::changeLineUp = (msg, session, next) ->
     player.save()
     next(null, { code: 200, msg: {lineUp: player.lineUpObj()} })
 
+Handler::sellCards = (msg, session, next) ->
+  playerId = session.get('playerId')
+  cardIds = if msg.ids? then msg.ids else []
+
+  if cardIds.length is 0
+    return next(null, {code: 200, msg: price: 0})
+
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    cards = player.popCards cardIds
+    price = cards.reduce(
+      (x, y) ->
+        x.price() + y.price()
+      , 0
+    )
+    player.increase('money', price)
+    next(null, {code: 200, msg: price: price})
+

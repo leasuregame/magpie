@@ -25,6 +25,7 @@ var Card = Entity.extend({
     _tableId: 0,            // 数据表对应ID
     _lv: 0,                 // 卡牌等级
     _exp: 0,                // 当前经验
+    _ability: 0,            // 战斗力
     _skillLv: 0,            // 技能等级
     _skillInc: 0,           // 技能初始伤害
     _elixirHp: 0,           // 生命值仙丹
@@ -88,6 +89,7 @@ var Card = Entity.extend({
             this.set("tableId", data.tableId);
             this.set("lv", data.lv);
             this.set("exp", data.exp);
+            this.set("ability", data.ability);
             this.set("skillLv", data.skillLv);
             this.set("skillInc", data.skillInc);
             this.set("elixirHp", data.elixirHp);

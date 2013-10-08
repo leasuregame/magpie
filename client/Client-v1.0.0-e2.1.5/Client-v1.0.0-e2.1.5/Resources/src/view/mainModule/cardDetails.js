@@ -114,11 +114,15 @@ var CardDetails = LazyLayer.extend({
         atkLabel.setPosition(cc.p(568, 698));
         this.addChild(atkLabel);
 
-        var descriptionLabel = cc.LabelTTF.create(this._card.get("description"), "STHeitiTC-Medium", 20);
-        descriptionLabel.setColor(cc.c3b(255, 239, 131));
-        descriptionLabel.setAnchorPoint(cc.p(0, 0.5));
-        descriptionLabel.setPosition(cc.p(60, 570));
-        this.addChild(descriptionLabel);
+        var description = lz.format(this._card.get("description"), 28);
+        var len = description.length;
+        for (var i = 0; i < len; ++i) {
+            var descriptionLabel = cc.LabelTTF.create(description[i], "STHeitiTC-Medium", 20);
+            descriptionLabel.setColor(cc.c3b(255, 239, 131));
+            descriptionLabel.setAnchorPoint(cc.p(0, 0.5));
+            descriptionLabel.setPosition(cc.p(80, 540 + (len - i) * 30));
+            this.addChild(descriptionLabel);
+        }
 
         var skillIcon = cc.LabelTTF.create("主动技能:", "STHeitiTC-Medium", 30);
         skillIcon.setColor(cc.c3b(255, 248, 69));

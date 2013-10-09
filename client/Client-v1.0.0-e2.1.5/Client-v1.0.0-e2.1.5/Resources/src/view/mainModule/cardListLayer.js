@@ -275,9 +275,10 @@ var CardListLayer = cc.Layer.extend({
         titleLabel.setPosition(cc.p(360, 1000));
         this._otherLabel.addChild(titleLabel);
 
-        var lineUpItem = cc.MenuItemImage.create(
-            main_scene_image.button16,
-            main_scene_image.button16s,
+        var lineUpItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon24,
             this._onClickLineUp,
             this);
         lineUpItem.setPosition(cc.p(120, 926));
@@ -305,34 +306,37 @@ var CardListLayer = cc.Layer.extend({
         titleLabel.setPosition(cc.p(360, 1000));
         this._otherLabel.addChild(titleLabel);
 
-        var changeLineUpItem = cc.MenuItemImage.create(
+        var okItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
+            main_scene_image.icon21,
             this._onClickChangeLineUp,
             this
         );
-        changeLineUpItem.setPosition(cc.p(600, 926));
+        okItem.setPosition(cc.p(600, 926));
 
-        var lineUpItem = cc.MenuItemImage.create(
-            main_scene_image.button16,
-            main_scene_image.button16s,
+        var lineUpItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon24,
             this._onClickLineUp,
             this
         );
         lineUpItem.setPosition(cc.p(120, 926));
 
-        var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
-            MainScene.getInstance().switchLayer(MainLayer);
-        }, this);
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            function () {
+                MainScene.getInstance().switchLayer(MainLayer);
+            },
+            this
+        );
         backItem.setPosition(cc.p(100, 1005));
 
-        var menu = cc.Menu.create(changeLineUpItem, lineUpItem, backItem);
+        var menu = cc.Menu.create(okItem, lineUpItem, backItem);
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
-
-        var okLabel = cc.Sprite.create(main_scene_image.icon21);
-        okLabel.setPosition(cc.p(600, 926));
-        this._otherLabel.addChild(okLabel);
 
         this._maxSelectCount = MAX_LINE_UP_CARD;
 
@@ -353,9 +357,10 @@ var CardListLayer = cc.Layer.extend({
         titleLabel.setPosition(cc.p(360, 1000));
         this._otherLabel.addChild(titleLabel);
 
-        var okItem = cc.MenuItemImage.create(
+        var okItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
+            main_scene_image.icon21,
             this._onClickOk,
             this
         );
@@ -370,21 +375,17 @@ var CardListLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
 
-        var okLabel = cc.Sprite.create(main_scene_image.icon21);
-        okLabel.setPosition(cc.p(600, 926));
-        this._otherLabel.addChild(okLabel);
-
         this._maxSelectCount = 1;
-
-        if (this._otherData.leadCard) {
-            this._cardLabel[this._otherData.leadCard.get("id")].select();
-        }
     },
 
     _initCardUpgradeMaster: function () {
         cc.log("CardListLayer _initCardUpgradeMaster");
 
         this._initMaster();
+
+        if (this._otherData.leadCard) {
+            this._cardLabel[this._otherData.leadCard.get("id")].select();
+        }
     },
 
     _initCardEvolutionMaster: function () {
@@ -398,6 +399,10 @@ var CardListLayer = cc.Layer.extend({
             if (!cardList[key].canEvolution()) {
                 this._excludeList.push(key);
             }
+        }
+
+        if (this._otherData.leadCard && this._otherData.leadCard.canEvolution()) {
+            this._cardLabel[this._otherData.leadCard.get("id")].select();
         }
     },
 
@@ -413,6 +418,10 @@ var CardListLayer = cc.Layer.extend({
                 this._excludeList.push(key);
             }
         }
+
+        if (this._otherData.leadCard && this._otherData.leadCard.canUpgradeSkill()) {
+            this._cardLabel[this._otherData.leadCard.get("id")].select();
+        }
     },
 
     _initPassiveSkillAfreshMaster: function () {
@@ -426,6 +435,10 @@ var CardListLayer = cc.Layer.extend({
             if (!cardList[key].canAfreshPassiveSkill()) {
                 this._excludeList.push(key);
             }
+        }
+
+        if (this._otherData.leadCard && this._otherData.leadCard.canAfreshPassiveSkill()) {
+            this._cardLabel[this._otherData.leadCard.get("id")].select();
         }
     },
 
@@ -441,6 +454,10 @@ var CardListLayer = cc.Layer.extend({
                 this._excludeList.push(key);
             }
         }
+
+        if (this._otherData.leadCard && this._otherData.leadCard.canTrain()) {
+            this._cardLabel[this._otherData.leadCard.get("id")].select();
+        }
     },
 
     _initRetinue: function () {
@@ -454,26 +471,28 @@ var CardListLayer = cc.Layer.extend({
         titleLabel.setPosition(cc.p(360, 1000));
         this._otherLabel.addChild(titleLabel);
 
-        var okItem = cc.MenuItemImage.create(
+        var okItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
+            main_scene_image.icon21,
             this._onClickOk,
             this
         );
         okItem.setPosition(cc.p(600, 926));
 
-        var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
-            this._cb(null);
-        }, this);
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            function () {
+                this._cb(null);
+            },
+            this
+        );
         backItem.setPosition(cc.p(100, 1005));
 
         var menu = cc.Menu.create(okItem, backItem);
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
-
-        var okLabel = cc.Sprite.create(main_scene_image.icon21);
-        okLabel.setPosition(cc.p(600, 926));
-        this._otherLabel.addChild(okLabel);
 
         var lineUp = gameData.lineUp.getLineUpList();
         var len = lineUp.length;
@@ -586,23 +605,28 @@ var CardListLayer = cc.Layer.extend({
         titleLabel.setPosition(cc.p(360, 1000));
         this._otherLabel.addChild(titleLabel);
 
-        var okItem = cc.MenuItemImage.create(main_scene_image.button9, main_scene_image.button9s, function () {
-            cc.log("sell card");
-        }, this);
+        var okItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon21,
+            this._onClickSellOk,
+            this
+        );
         okItem.setPosition(cc.p(600, 926));
 
-        var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
-            MainScene.getInstance().switch(CardListLayer.create());
-        }, this);
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            function () {
+                MainScene.getInstance().switch(CardListLayer.create());
+            },
+            this
+        );
         backItem.setPosition(cc.p(100, 1005));
 
         var menu = cc.Menu.create(okItem, backItem);
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
-
-        var okLabel = cc.Sprite.create(main_scene_image.icon21);
-        okLabel.setPosition(cc.p(600, 926));
-        this._otherLabel.addChild(okLabel);
 
         var lineUp = gameData.lineUp.getLineUpList();
         var len = lineUp.length;
@@ -724,6 +748,12 @@ var CardListLayer = cc.Layer.extend({
         MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_SELL));
     },
 
+    _onClickSellOk: function () {
+        cc.log("CardListLayer _onClickSellOk");
+
+        MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_SELL));
+    },
+
     _onClickChangeLineUp: function () {
         cc.log("CardListLayer _onClickChangeLineUp");
 
@@ -770,6 +800,7 @@ var CardListLayer = cc.Layer.extend({
         }
 
         gameData.lineUp.changeLineUp(function (data) {
+            MainScene.getInstance().switchLayer(MainLayer);
         }, lineUp);
     },
 

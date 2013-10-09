@@ -541,6 +541,8 @@ var Card = Entity.extend({
     getSellCardMoney: function () {
         cc.log("Card getSellCardMoney");
 
+
+
         return 0;
     }
 });

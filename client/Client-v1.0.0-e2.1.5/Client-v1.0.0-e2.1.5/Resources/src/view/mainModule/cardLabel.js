@@ -17,7 +17,6 @@ var CardLabel = cc.Node.extend({
     _card: null,
     _selectType: null,
     _isSelect: false,
-    _otherLabel: null,
     _starLabel: null,
     _useLabel: null,
     _hookLabel: null,
@@ -31,8 +30,6 @@ var CardLabel = cc.Node.extend({
 
         this._target = target;
         this._card = card;
-
-        var star = this._card.get("star");
 
         this._cardItem = cc.MenuItemImage.create(
             main_scene_image.button15,
@@ -73,8 +70,8 @@ var CardLabel = cc.Node.extend({
         abilityLabel.setPosition(cc.p(260, 28));
         this.addChild(abilityLabel);
 
-        this._starLabel = StarLabel.create(star);
-        this._starLabel.setPosition(cc.p(145, 48));
+        this._starLabel = StarLabel.create(this._card.get("star"));
+        this._starLabel.setPosition(cc.p(142, 65));
         this.addChild(this._starLabel);
 
         this._useLabel = cc.Sprite.create(main_scene_image.icon26);
@@ -89,9 +86,6 @@ var CardLabel = cc.Node.extend({
         this._hookLabel = cc.Sprite.create(main_scene_image.icon20);
         this._hookLabel.setPosition(cc.p(545, 62));
         this.addChild(this._hookLabel);
-
-        this._otherLabel = cc.Node.create();
-        this.addChild(this._otherLabel);
 
         selectType = selectType || SELECT_TYPE_DEFAULT;
         this.setSelectType(selectType);
@@ -132,59 +126,37 @@ var CardLabel = cc.Node.extend({
     _initCardUpgradeRetinue: function () {
         cc.log("CardLabel _initCardUpgradeRetinue");
 
-        this._clearOtherLabel();
+        this._starLabel.setVisible(false);
 
-        var expLabel = cc.LabelTTF.create(this._card.getCardExp(), "STHeitiTC-Medium", 35);
-        expLabel.setPosition(cc.p(380, 64));
-        this._otherLabel.addChild(expLabel);
-
-        var expIcon = cc.Sprite.create(main_scene_image.icon29);
-        expIcon.setPosition(cc.p(470, 64));
-        this._otherLabel.addChild(expIcon);
-
-        this._otherLabel.setOpacity = function (opacity) {
-            expLabel.setOpacity(opacity);
-            expIcon.setOpacity(opacity);
-        };
-
-        this._blinkOtherLabel();
+        var expLabel = cc.LabelTTF.create("经验: " + this._card.getCardExp(), "STHeitiTC-Medium", 20);
+        expLabel.setColor(cc.c3b(56, 3, 5));
+        expLabel.setAnchorPoint(cc.p(0, 0.5));
+        expLabel.setPosition(cc.p(142, 65));
+        this.addChild(expLabel);
     },
 
     _initCardEvolutionRetinue: function () {
         cc.log("CardLabel _initCardEvolutionRetinue");
 
-        this._clearOtherLabel();
+        this._starLabel.setVisible(false);
 
-        var rateLabel = cc.LabelTTF.create(this._card.getPreCardRate() + "%", "STHeitiTC-Medium", 35);
-        rateLabel.setPosition(cc.p(380, 64));
-        this._otherLabel.addChild(rateLabel);
-
-        this._otherLabel.setOpacity = function (opacity) {
-            rateLabel.setOpacity(opacity);
-        };
-
-        this._blinkOtherLabel();
+        var rateLabel = cc.LabelTTF.create("概率: " + this._card.getPreCardRate() + "%", "STHeitiTC-Medium", 20);
+        rateLabel.setColor(cc.c3b(56, 3, 5));
+        rateLabel.setAnchorPoint(cc.p(0, 0.5));
+        rateLabel.setPosition(cc.p(142, 65));
+        this.addChild(rateLabel);
     },
 
     _initSell: function () {
         cc.log("CardLabel _initSell");
 
-        this._clearOtherLabel();
+        this._starLabel.setVisible(false);
 
-        var moneyLabel = cc.LabelTTF.create(this._card.getSellCardMoney(), "STHeitiTC-Medium", 35);
-        moneyLabel.setPosition(cc.p(380, 64));
-        this._otherLabel.addChild(moneyLabel);
-
-        var moneyIcon = cc.Sprite.create(main_scene_image.icon30);
-        moneyIcon.setPosition(cc.p(470, 64));
-        this._otherLabel.addChild(moneyIcon);
-
-        this._otherLabel.setOpacity = function (opacity) {
-            moneyLabel.setOpacity(opacity);
-            moneyIcon.setOpacity(opacity);
-        };
-
-        this._blinkOtherLabel();
+        var moneyLabel = cc.LabelTTF.create("售价: " + this._card.getSellCardMoney(), "STHeitiTC-Medium", 20);
+        moneyLabel.setColor(cc.c3b(56, 3, 5));
+        moneyLabel.setAnchorPoint(cc.p(0, 0.5));
+        moneyLabel.setPosition(cc.p(142, 65));
+        this.addChild(moneyLabel);
     },
 
     _updateHookLabel: function () {
@@ -198,53 +170,6 @@ var CardLabel = cc.Node.extend({
             this._hookBgLabel.setVisible(true);
             this._hookLabel.setVisible(this._isSelect);
         }
-    },
-
-    _clearOtherLabel: function () {
-        cc.log("CardLabel _clearOtherLabel");
-
-        this._starLabel.stopAllActions();
-        this._starLabel.setOpacity(255);
-
-        if (this._otherLabel) {
-            this._otherLabel.stopAllActions();
-            this._otherLabel.removeAllChildren();
-        }
-
-        this._otherLabel.setOpacity = function (opacity) {
-        };
-    },
-
-    _blinkOtherLabel: function () {
-        cc.log("CardLabel _blinkOtherLabel");
-
-        this._starLabel.setOpacity(0);
-        this._otherLabel.setOpacity(255);
-
-        var fadeOutAction = cc.FadeOut.create(1);
-        var fadeInAction = cc.FadeIn.create(1);
-        var delayTimeAction = cc.DelayTime.create(1);
-
-        var starLabelAction = cc.Sequence.create(
-            delayTimeAction.copy(),
-            delayTimeAction.copy(),
-            fadeInAction.copy(),
-            delayTimeAction.copy(),
-            fadeOutAction.copy(),
-            delayTimeAction.copy()
-        );
-
-        var otherLabelAction = cc.Sequence.create(
-            delayTimeAction.copy(),
-            fadeOutAction,
-            delayTimeAction.copy(),
-            delayTimeAction.copy(),
-            delayTimeAction,
-            fadeInAction
-        );
-
-        this._starLabel.runAction(cc.RepeatForever.create(starLabelAction));
-        this._otherLabel.runAction(cc.RepeatForever.create(otherLabelAction));
     },
 
     setSelectType: function (selectType) {

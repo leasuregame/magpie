@@ -200,7 +200,7 @@ var ExploreLayer = cc.Layer.extend({
             powerLabel.setPosition(cc.p(465 + x, 360));
             scrollViewLayer.addChild(powerLabel);
 
-            var expLabel = cc.LabelTTF.create("999999", "STHeitiTC-Medium", 20);
+            var expLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
             expLabel.setColor(cc.c3b(255, 239, 131));
             expLabel.setAnchorPoint(cc.p(0, 0.5));
             expLabel.setPosition(cc.p(465 + x, 319));

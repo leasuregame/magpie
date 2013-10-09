@@ -856,13 +856,9 @@ var Player = (function(_super) {
             }),
             rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
             friends: this.friends,
-<<<<<<< HEAD
             signIn: utility.deepCopy(this.signIn),
-            cardBook: this.cardBook
-=======
-            friends: this.friendsCount,
-            signIn: utility.deepCopy(this.signIn)
->>>>>>> 450f5a81e0d4a4a120e0e85758a201ea8ac272a8
+            cardBook: this.cardBook,
+            friendsCount: this.friendsCount
         };
     };
 

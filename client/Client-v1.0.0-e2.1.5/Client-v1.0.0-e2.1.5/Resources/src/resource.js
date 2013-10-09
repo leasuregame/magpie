@@ -532,9 +532,12 @@ var effectConfig = [
     5,
     6,
     7,
+    5,
     8,
+    6,
     8,
-    6
+    3,
+    3
 ];
 
 var effectRect = [
@@ -546,7 +549,10 @@ var effectRect = [
     cc.rect(0, 0, 182, 171),
     cc.rect(0, 0, 170, 185),
     cc.rect(0, 0, 83, 261),
-    cc.rect(0, 0, 251, 279)
+    cc.rect(0, 0, 251, 279),
+    cc.rect(0, 0, 175, 215),
+    cc.rect(0, 0, 180, 196),
+    cc.rect(0, 0, 175, 215)
 
 ];
 

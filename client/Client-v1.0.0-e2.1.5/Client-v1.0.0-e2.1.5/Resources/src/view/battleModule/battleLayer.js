@@ -124,9 +124,23 @@ var BatterLayer = cc.Layer.extend({
         cc.log("\n\n\nBattlePlayer _playAStep " + this._battleLog.getBattleStepIndex());
 
         var battleStep = this._battleLog.getBattleStep();
+        var skillType = this._battleNode[battleStep.get("attacker")].getSkillType();
+        var delay;
 
         if (battleStep.isSpiritAtk()) {
             battleStep.set("attacker", this._battleLog.getSpirit(battleStep.get("attacker")));
+        }
+
+        if (battleStep.isSkill()) {
+            if (skillType === 2) {
+                delay = this._aoe(battleStep);
+            } else if (skillType === 3 || skillType === 4) {
+                delay = this._heal(battleStep);
+            } else {
+                delay = this._aoe(battleStep);
+            }
+        } else {
+            delay = this._normalAttack(battleStep);
         }
 
         var str = battleStep.get("attacker") + (battleStep.get("isSkill") ? " 用技能 揍了 " : " 用普攻 揍了 ");
@@ -135,13 +149,6 @@ var BatterLayer = cc.Layer.extend({
         cc.log(str);
         this._tipLabel.setString(str);
 
-        var delay;
-
-        if(battleStep.get("isSkill")) {
-            delay = this._aoeAttack(battleStep);
-        } else {
-            delay = this._normalAttack(battleStep);
-        }
 
         cc.log("set next round schedule");
         this.schedule(this._playAStep, delay, 1, 0);
@@ -199,7 +206,7 @@ var BatterLayer = cc.Layer.extend({
         return 2.0;
     },
 
-    _aoeAttack: function(battleStep) {
+    _aoe: function (battleStep) {
         cc.log(battleStep);
 
         var attacker = battleStep.get("attacker");
@@ -232,8 +239,7 @@ var BatterLayer = cc.Layer.extend({
                 loops: 1,
                 delay: 0.04,
                 zOrder: 10,
-                rotation: 180,
-                anchorPoint:  cc.p(0.5, 0.8),
+                anchorPoint: cc.p(0.5, 0.2),
                 position: cc.p(targetLocate.x, targetLocate.y + 120),
                 clear: true,
                 cb: cb
@@ -245,6 +251,33 @@ var BatterLayer = cc.Layer.extend({
             var moveAction = cc.EaseSineIn.create(cc.MoveTo.create(time, targetLocate));
 
             effectSprite.runAction(moveAction);
+        }
+
+        return 2.0;
+    },
+
+    _heal: function (battleStep) {
+        var attacker = battleStep.get("attacker");
+
+        this._battleNode[attacker].atk();
+
+        battleStep.recover();
+        while (battleStep.hasNextTarget()) {
+            var target = battleStep.getTarget();
+            var targetLocate = this._locate[target];
+
+            this._battleNode[target].heal(battleStep.getEffect(), battleStep.isCrit());
+
+            playEffect({
+                effectId: 9,
+                target: this,
+                loops: 1,
+                delay: 0.07,
+                zOrder: 10,
+                anchorPoint: cc.p(0.5, 0.4),
+                position: targetLocate,
+                clear: true
+            });
         }
 
         return 2.0;

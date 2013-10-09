@@ -270,10 +270,10 @@ var SkillUpgradeLabel = cc.Node.extend({
         var that = this;
         this._leadCard.upgradeSkill(function (data) {
             playEffect({
-                effectId: 6,
+                effectId: 10,
                 target: that,
                 loops: 1,
-                delay: 0.1,
+                delay: 0.3,
                 zOrder: 10,
                 position: cc.p(360, 685),
                 clear: true

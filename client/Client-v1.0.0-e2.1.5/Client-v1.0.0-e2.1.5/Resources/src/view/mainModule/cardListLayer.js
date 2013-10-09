@@ -39,6 +39,8 @@ var CardListLayer = cc.Layer.extend({
     _otherData: {},                 // 可变数据
     _otherLabel: null,              // 可变模块
     _isSelectAllLow: false,         // 是否选择全部低星卡
+    _sortItem1: null,
+    _sortItem2: null,
 
     onEnter: function () {
         cc.log("CardListLayer onEnter");
@@ -66,15 +68,15 @@ var CardListLayer = cc.Layer.extend({
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 962));
+        headIcon.setPosition(cc.p(40, 968));
         this.addChild(headIcon);
 
         var lineIcon = cc.Sprite.create(main_scene_image.icon18);
-        lineIcon.setPosition(cc.p(360, 887));
+        lineIcon.setPosition(cc.p(360, 893));
         this.addChild(lineIcon);
 
         var cardList = gameData.cardList.get("cardList");
-        var scrollViewLayer = MarkLayer.create(cc.rect(67, 260, 586, 620));
+        var scrollViewLayer = MarkLayer.create(cc.rect(67, 266, 586, 620));
 
         for (var key in cardList) {
             var card = cardList[key];
@@ -89,19 +91,26 @@ var CardListLayer = cc.Layer.extend({
         }
 
         this._scrollView = cc.ScrollView.create(cc.size(594, 620), scrollViewLayer);
-        this._scrollView.setPosition(cc.p(60, 260));
-//        this._scrollView.setBounceable(false);
+        this._scrollView.setPosition(cc.p(60, 266));
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
 
-        var sortItem = cc.MenuItemImage.create(
+        this._sortItem1 = cc.MenuItemImage.create(
             main_scene_image.button30,
             main_scene_image.button30,
             this._onClickSortType,
             this
         );
-        sortItem.setPosition(cc.p(100, 230));
+        this._sortItem1.setPosition(cc.p(130, 230));
+
+        this._sortItem2 = cc.MenuItemImage.create(
+            main_scene_image.button31,
+            main_scene_image.button31,
+            this._onClickSortType,
+            this
+        );
+        this._sortItem2.setPosition(cc.p(130, 230));
 
         this._onSelectAllLowItem = cc.MenuItemImage.create(
             main_scene_image.button32,
@@ -112,13 +121,9 @@ var CardListLayer = cc.Layer.extend({
         this._onSelectAllLowItem.setPosition(cc.p(300, 230));
         this._onSelectAllLowItem.setVisible(false);
 
-        var menu = cc.Menu.create(sortItem, this._onSelectAllLowItem);
+        var menu = cc.Menu.create(this._sortItem1, this._sortItem2, this._onSelectAllLowItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
-
-        this._sortIcon = cc.Sprite.create(main_scene_image.button31);
-        this._sortIcon.setPosition(cc.p(100, 230));
-        this.addChild(this._sortIcon);
 
         this._selectAllLowHookIcon = cc.Sprite.create(main_scene_image.icon20);
         this._selectAllLowHookIcon.setPosition(cc.p(235, 230));
@@ -137,7 +142,8 @@ var CardListLayer = cc.Layer.extend({
     update: function () {
         cc.log("CardListLayer update");
 
-        this._sortIcon.setVisible(this._sortType == SORT_TYPE_LITER);
+        this._sortItem1.setVisible(this._sortType == SORT_TYPE_DROP);
+        this._sortItem2.setVisible(this._sortType == SORT_TYPE_LITER);
 
         this._updateScrollViewHeight();
         this._sortCardLabel();
@@ -148,11 +154,11 @@ var CardListLayer = cc.Layer.extend({
 
         var cardCount = gameData.cardList.get("count");
 
-        this._scrollViewHeight = 124 * cardCount;
+        this._scrollViewHeight = 135 * cardCount;
 
         if (this._scrollViewHeight < 620) this._scrollViewHeight = 620;
 
-        this._scrollView.setContentSize(cc.size(594, this._scrollViewHeight));
+        this._scrollView.setContentSize(cc.size(585, this._scrollViewHeight));
         this._scrollView.updateInset();
 
         var offsetPoint = this._scrollView.minContainerOffset();
@@ -207,7 +213,7 @@ var CardListLayer = cc.Layer.extend({
     _getCardLocation: function (index) {
         cc.log("CardListLayer _getCardLocation");
 
-        return cc.p(0, this._scrollViewHeight - index * 124);
+        return cc.p(0, this._scrollViewHeight - index * 135);
     },
 
     selectCallback: function (cardId) {
@@ -274,23 +280,20 @@ var CardListLayer = cc.Layer.extend({
             main_scene_image.button16s,
             this._onClickLineUp,
             this);
-        lineUpItem.setPosition(cc.p(120, 920));
+        lineUpItem.setPosition(cc.p(120, 926));
 
-        var sellItem = cc.MenuItemImage.create(
+        var sellItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
+            main_scene_image.icon22,
             this._onClickSell,
             this
         );
-        sellItem.setPosition(cc.p(600, 920));
+        sellItem.setPosition(cc.p(600, 926));
 
         var menu = cc.Menu.create(sellItem, lineUpItem);
         menu.setPosition(cc.p(0, 0));
         this._otherLabel.addChild(menu);
-
-        var sellLabel = cc.Sprite.create(main_scene_image.icon22);
-        sellLabel.setPosition(cc.p(600, 920));
-        this._otherLabel.addChild(sellLabel);
     },
 
     _initLineUp: function () {
@@ -308,7 +311,7 @@ var CardListLayer = cc.Layer.extend({
             this._onClickChangeLineUp,
             this
         );
-        changeLineUpItem.setPosition(cc.p(600, 920));
+        changeLineUpItem.setPosition(cc.p(600, 926));
 
         var lineUpItem = cc.MenuItemImage.create(
             main_scene_image.button16,
@@ -316,7 +319,7 @@ var CardListLayer = cc.Layer.extend({
             this._onClickLineUp,
             this
         );
-        lineUpItem.setPosition(cc.p(120, 920));
+        lineUpItem.setPosition(cc.p(120, 926));
 
         var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
             MainScene.getInstance().switchLayer(MainLayer);
@@ -328,7 +331,7 @@ var CardListLayer = cc.Layer.extend({
         this._otherLabel.addChild(menu);
 
         var okLabel = cc.Sprite.create(main_scene_image.icon21);
-        okLabel.setPosition(cc.p(600, 920));
+        okLabel.setPosition(cc.p(600, 926));
         this._otherLabel.addChild(okLabel);
 
         this._maxSelectCount = MAX_LINE_UP_CARD;
@@ -503,15 +506,15 @@ var CardListLayer = cc.Layer.extend({
 
         var tipLabel = cc.Sprite.create(main_scene_image.icon58);
         tipLabel.setAnchorPoint(cc.p(0, 0.5));
-        tipLabel.setPosition(cc.p(100, 920));
+        tipLabel.setPosition(cc.p(100, 926));
         this._otherLabel.addChild(tipLabel);
 
         var countLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
-        countLabel.setPosition(cc.p(247, 920));
+        countLabel.setPosition(cc.p(247, 926));
         this.addChild(countLabel);
 
         var expLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
-        expLabel.setPosition(cc.p(425, 920));
+        expLabel.setPosition(cc.p(425, 926));
         this.addChild(expLabel);
 
         this._updateTip = function () {
@@ -546,15 +549,15 @@ var CardListLayer = cc.Layer.extend({
 
         var tipLabel = cc.Sprite.create(main_scene_image.icon94);
         tipLabel.setAnchorPoint(cc.p(0, 0.5));
-        tipLabel.setPosition(cc.p(100, 920));
+        tipLabel.setPosition(cc.p(100, 926));
         this._otherLabel.addChild(tipLabel);
 
         var countLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
-        countLabel.setPosition(cc.p(247, 920));
+        countLabel.setPosition(cc.p(247, 926));
         this.addChild(countLabel);
 
         var rateLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
-        rateLabel.setPosition(cc.p(425, 920));
+        rateLabel.setPosition(cc.p(425, 926));
         this.addChild(rateLabel);
 
         this._updateTip = function () {
@@ -611,15 +614,15 @@ var CardListLayer = cc.Layer.extend({
 
         var tipLabel = cc.Sprite.create(main_scene_image.icon57);
         tipLabel.setAnchorPoint(cc.p(0, 0.5));
-        tipLabel.setPosition(cc.p(100, 920));
+        tipLabel.setPosition(cc.p(100, 926));
         this._otherLabel.addChild(tipLabel);
 
         var countLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
-        countLabel.setPosition(cc.p(247, 920));
+        countLabel.setPosition(cc.p(247, 926));
         this.addChild(countLabel);
 
         var moneyLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
-        moneyLabel.setPosition(cc.p(425, 920));
+        moneyLabel.setPosition(cc.p(425, 926));
         this.addChild(moneyLabel);
 
         this._updateTip = function () {

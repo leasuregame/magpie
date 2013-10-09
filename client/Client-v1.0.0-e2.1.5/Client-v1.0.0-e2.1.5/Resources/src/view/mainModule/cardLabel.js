@@ -49,37 +49,36 @@ var CardLabel = cc.Node.extend({
         this.addChild(cardItemMenu);
 
         var cardHeadItem = CardHeadNode.getCardHeadItem(this._card);
-        cardHeadItem.setPosition(cc.p(80, 60));
+        cardHeadItem.setPosition(cc.p(70, 63));
 
         var cardHeadItemMenu = LazyMenu.create(cardHeadItem);
         cardHeadItemMenu.setPosition(cc.p(0, 0));
         this.addChild(cardHeadItemMenu);
 
-        var nameLabel = cc.LabelTTF.create(this._card.get("name"), "STHeitiTC-Medium", 22);
+        var nameLabel = cc.LabelTTF.create(this._card.get("name"), "STHeitiTC-Medium", 20);
+        nameLabel.setColor(cc.c3b(255, 242, 206));
         nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        nameLabel.setPosition(cc.p(170, 88));
+        nameLabel.setPosition(cc.p(150, 100));
         this.addChild(nameLabel);
 
-        var lvBgSprite = cc.Sprite.create(main_scene_image.icon28);
-        lvBgSprite.setPosition(cc.p(80, 27));
-        this.addChild(lvBgSprite);
-
         var lvLabel = cc.LabelTTF.create(this._card.get("lv"), "STHeitiTC-Medium", 22);
+        lvLabel.setColor(cc.c3b(56, 3, 5));
         lvLabel.setAnchorPoint(cc.p(0, 0.5));
-        lvLabel.setPosition(cc.p(90, 27));
+        lvLabel.setPosition(cc.p(180, 28));
         this.addChild(lvLabel);
 
         var abilityLabel = cc.LabelTTF.create(this._card.get("ability"), "STHeitiTC-Medium", 22);
+        abilityLabel.setColor(cc.c3b(56, 3, 5));
         abilityLabel.setAnchorPoint(cc.p(0, 0.5));
-        abilityLabel.setPosition(cc.p(200, 40));
+        abilityLabel.setPosition(cc.p(260, 28));
         this.addChild(abilityLabel);
 
         this._starLabel = StarLabel.create(star);
-        this._starLabel.setPosition(cc.p(325, 41));
+        this._starLabel.setPosition(cc.p(145, 48));
         this.addChild(this._starLabel);
 
         this._useLabel = cc.Sprite.create(main_scene_image.icon26);
-        this._useLabel.setPosition(cc.p(280, 40));
+        this._useLabel.setPosition(cc.p(400, 100));
         this.addChild(this._useLabel);
         this._useLabel.setVisible(gameData.lineUp.isLineUpCard(this._card.get("id")));
 

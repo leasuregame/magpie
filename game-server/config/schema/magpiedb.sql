@@ -28,7 +28,8 @@ CREATE TABLE IF NOT EXISTS `player` (
   `spiritor` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `spiritPool` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `signIn` VARCHAR(200) COLLATE utf8_unicode_ci DEFAULT '',
-  `achievement` VARCHAR(20000) COLLATE utf8_unicode_ci DEFAULT '',
+  `achievement` TEXT COLLATE utf8_unicode_ci,
+  `cardBook` TEXT COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

@@ -168,7 +168,6 @@ class Manager
 
     # 更新玩家money
     player.increase('money', taskData.coins_obtain)
-    console.log 'count explore result: ', taskId, player.task
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
     if taskId is player.task.id
@@ -181,9 +180,6 @@ class Manager
         ### 一大关结束，触发摸一摸功能 ###
         if task.id % 10 is 1 && task.id != 1
           data.momo = player.createMonoGift();
-          #task.momo = data.momo;
-          console.log(data.momo);
-        #data.isMomo = true
       player.set('task', task)
 
     # 判断是否升级

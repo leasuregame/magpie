@@ -218,7 +218,6 @@ var Card = (function (_super) {
     Card.prototype.addPassiveSkill = function (ps) {
         if (typeof ps.id !== 'undefined' && ps.id !== null) {
             this.passiveSkills[ps.id] = ps;
-            console.log("ps",this.passiveSkills);
             this.emit('add.passiveSkill');
         }
     };
@@ -283,7 +282,7 @@ var Card = (function (_super) {
 
     Card.prototype.price = function() {
         cfg = table.getTableItem('card_price', 1);
-        return (cfg.grow_per_lv * this.lv) + cfg['star' + this.star];
+        return (cfg.grow_per_lv * (this.lv - 1)) + cfg['star' + this.star];
     };
 
     Card.prototype.toJson = function () {

@@ -23,7 +23,6 @@ Handler::explore = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   taskId = msg.taskId
   player = null
-  console.log("req success", msg, playerId);
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -77,18 +76,14 @@ Handler::explore = (msg, session, next) ->
 Handler::updateMomoResult = (msg, session, next) ->
   playerId = session.get('playerId')
   gold = msg.gold
-  console.log("gold = ",gold)
 
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg})
 
-    #if player.hasMomoMark()
-      #return next(null, {code: 501, msg: '不能重复领取摸一摸奖励'})
     if gold > player.getMonoGiftTotal()
       return next(null,{code: 501,msg: '获取的元宝数大于实际值'})
-    player.clearMonoGift();
-    #player.setMomoMark()
+    player.clearMonoGift()
 
     player.increase 'gold', gold
     player.save()
@@ -291,11 +286,7 @@ checkMysticalPass = (player) ->
   mpc = table.getTableItem 'mystical_pass_config', player.pass.mystical.diff
 
   if mpc and (player.pass.layer >= mpc.layer_from and player.pass.layer <= mpc.layer_to) and utility.hitRate(mpc.rate)
-    console.log("触发成功！！！",player.pass.layer);
     player.triggerMysticalPass()
-    #return true
-
-  #return false
 
 
 updatePlayer = (player, rewards, layer) ->

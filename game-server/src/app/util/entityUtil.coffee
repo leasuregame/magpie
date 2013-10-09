@@ -34,7 +34,6 @@ module.exports =
     ], (err, card) ->
       if err
         return done(err)
-      console.log 'create card: ', card
       done(null, card)
 
   resetSkillIncForCard: (card) ->
@@ -44,9 +43,9 @@ genSkillInc = (card) ->
   cdata = table.getTableItem('cards', card.tableId)
   skill = cdata.skill_id_linktarget
   if skill?
-    min = skill["star#{card.star}_inc_min"] * 10
-    max = skill["star#{card.star}_inc_max"] * 10
-    card.skillInc = _.random(min, max) / 10
+    min = skill["star#{card.star}_inc_min"]
+    max = skill["star#{card.star}_inc_max"]
+    card.skillInc = _.random(min, max)
   else
     throw new Error('can not file skill info of card: ' + card.tableId)
 

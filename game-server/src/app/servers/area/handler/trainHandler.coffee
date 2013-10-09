@@ -420,7 +420,6 @@ Handler::useElixir = (msg, session, next) ->
       return next(null, {code: 501, msg: '不能对3星以下的卡牌使用仙丹'})
 
     limit = elixirConfig.limit[card.star]
-    console.log 'elixir: ', limit, card.elixirHp, card.elixirAtk
     if (card.elixirHp + card.elixirAtk) >= limit
       return next(null, {code: 501, msg: "卡牌仙丹容量已满"})
 
@@ -506,4 +505,7 @@ Handler::sellCards = (msg, session, next) ->
     player.increase('money', price)
     player.save()
     next(null, {code: 200, msg: price: price})
+
+Handler::exchangeCard = (msg, session, next) ->
+  playerId = session.get('playerId')
 

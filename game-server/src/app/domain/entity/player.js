@@ -101,6 +101,11 @@ var addEvents = function(player) {
             //player.activeGroupEffect();
             player.activeSpiritorEffect();
         }
+        if (!player.cardBookMark.hasMark(card.tableId)) {
+            player.cardBookMark.mark(card.tableId);
+            player.cardBook = player.cardBookMark.value;
+            player.save();
+        }
     });
 
     player.on('cash.change', function(cash) {
@@ -130,6 +135,9 @@ var addEvents = function(player) {
         }
         recountVipPrivilege(player, oldVip);
     });
+
+    // player.emit('exp.change', player.exp);
+    // player.emit('cash.change', player.cash);
 };
 
 var correctPower = function(player) {
@@ -159,6 +167,7 @@ var Player = (function(_super) {
         Player.__super__.constructor.apply(this, arguments);
         this.taskMark = new MarkGroup(this.task.mark);
         this.passMark = new MarkGroup(this.pass.mark);
+        this.cardBookMark = new MarkGroup(this.cardBook);
         this.momo = [];
         //this.momoMark = new MarkGroup(this.task.momo);
     }
@@ -198,7 +207,8 @@ var Player = (function(_super) {
         'spiritor',
         'spiritPool',
         'signIn',
-        'achievement'
+        'achievement',
+        'cardBook'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -265,6 +275,7 @@ var Player = (function(_super) {
             flag: 0
         },
         achievement: {},
+        cardBook: [],
         cards: {},
         rank: {},
         friends: []
@@ -647,7 +658,6 @@ var Player = (function(_super) {
         var value = 0;
         for(var i = 0;i < this.momo.length;i++)
             value += this.momo[i];
-        //console.log("total = ",value);
         return value;
     };
 
@@ -695,7 +705,6 @@ var Player = (function(_super) {
             this.passMark.value = [];
             pass.mark = this.passMark.value;
             this.pass = pass;
-            console.log("reset pass mark:",this.pass);
             return true;
         }
         return false;
@@ -723,7 +732,6 @@ var Player = (function(_super) {
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isTrigger = true;
         pass.mystical.isClear = false;
-        console.log("神秘关卡 = ",pass);
         this.set('pass', pass);
     };
 
@@ -838,7 +846,8 @@ var Player = (function(_super) {
             }),
             rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
             friends: this.friends,
-            signIn: utility.deepCopy(this.signIn)
+            signIn: utility.deepCopy(this.signIn),
+            cardBook: this.cardBook
         };
     };
 

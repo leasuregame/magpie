@@ -287,7 +287,7 @@ describe("Area Server", function() {
       });
 
       var ids = [20000, 17000, 15000, 13000, 11000, 10700, 10300, 10199, 10013, 10001];
-      var steps = [100, 80, 60, 40, 20, 15, 10, 5, 1, 1];
+      var steps = [106, 83, 62, 41, 19, 14, 11, 5, 1, 1];
 
       var genRankings = function(rank, stepIndex) {
         var top10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

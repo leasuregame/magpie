@@ -506,6 +506,26 @@ Handler::sellCards = (msg, session, next) ->
     player.save()
     next(null, {code: 200, msg: price: price})
 
+Handler::getCardBookEnergy = (msg, session, next) ->
+  playerId = session.get('playerId')
+  tableId = msg.tableId
+
+  ENERGY = 10
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    if not player.cardBookMark.hasMark(tableId) or player.cardBookFlag.hasMark(tableId)
+      return next(null, {code: 501, msg: '不能领取，已经领过或者还没有点亮该卡牌'})
+
+    player.cardBookFlag.mark(tableId)
+    player.increase('energy', ENERGY)
+    cardBook = utility.deepCopy(player.cardBook)
+    cardBook.flag = player.cardBookFlag.value
+    player.cardBook = cardBook
+    player.save()
+    return next(null, {code: 200, msg: energy: ENERGY})
+
 Handler::exchangeCard = (msg, session, next) ->
   playerId = session.get('playerId')
 

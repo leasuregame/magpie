@@ -103,7 +103,9 @@ var addEvents = function(player) {
         }
         if (!player.cardBookMark.hasMark(card.tableId)) {
             player.cardBookMark.mark(card.tableId);
-            player.cardBook = player.cardBookMark.value;
+            cardBook = utility.deepCopy(player.cardBook);
+            cardBook.mark = player.cardBookMark.value;
+            player.cardBook = cardBook;
             player.save();
         }
     });
@@ -167,7 +169,8 @@ var Player = (function(_super) {
         Player.__super__.constructor.apply(this, arguments);
         this.taskMark = new MarkGroup(this.task.mark);
         this.passMark = new MarkGroup(this.pass.mark);
-        this.cardBookMark = new MarkGroup(this.cardBook);
+        this.cardBookMark = new MarkGroup(this.cardBook.mark);
+        this.cardBookFlag = new MarkGroup(this.cardBook.flag);
         this.momo = [];
         //this.momoMark = new MarkGroup(this.task.momo);
     }
@@ -276,7 +279,10 @@ var Player = (function(_super) {
             flag: 0
         },
         achievement: {},
-        cardBook: [],
+        cardBook: {
+            mark: [],
+            flag: []
+        },
         cards: {},
         rank: {},
         friends: [],

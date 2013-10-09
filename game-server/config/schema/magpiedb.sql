@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `spiritPool` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `signIn` VARCHAR(200) COLLATE utf8_unicode_ci DEFAULT '',
   `achievement` VARCHAR(20000) COLLATE utf8_unicode_ci DEFAULT '',
+  `friendsCount` SMALLINT(3) UNSIGNED DEFAULT '20',-- 好友上限
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

@@ -22,12 +22,10 @@ class Hero extends Module
     @player = player
     @id = attrs.id
     @lv = attrs.lv
-    @init_hp = attrs.init_hp
+    @init_hp = attrs.hp
     @hp = attrs.hp
     @atk = attrs.atk
-    @init_atk = attrs.init_atk
-    @spirit_hp = attrs.incs?.spirit_hp
-    @spirit_atk = attrs.incs?.spirit_atk
+    @init_atk = attrs.atk
 
     @card_id = attrs.tableId
     @skill_lv = attrs.skillLv or 0
@@ -150,14 +148,15 @@ class Hero extends Module
     _hp = parseInt(@atk * @skill.effectValue() * percent / 100)
     
     for enemy in enemys      
-      enemy.damageOnly -_hp
+      realHp = _.min([_hp, enemy.init_hp - enemy.hp])
+      enemy.damageOnly -realHp
 
       _step.d.push enemy.idx
-      _step.e.push _hp
+      _step.e.push realHp
       # debug
       _step['dhp'] = enemy.hp
 
-      log.info "#{enemy.idx} 加血 #{_hp}"
+      log.info "#{enemy.idx} 加血 #{realHp}"
 
     @log _step
     callback enemys

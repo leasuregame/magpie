@@ -482,16 +482,28 @@ Handler::sellCards = (msg, session, next) ->
   if cardIds.length is 0
     return next(null, {code: 200, msg: price: 0})
 
-  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+  price = 0
+  player = null
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+
+    (res, cb) ->
+      player = res
+      cards = player.popCards cardIds
+      if _.isEmpty(cards)
+        return cb({code: 501, msg: '找不到卡牌'})
+
+      price += c.price() for c in cards
+      cb(null, price)
+
+    (price, cb) ->
+      dao.card.delete where: " id in (#{cardIds.toString()}) ", cb
+  ], (err, res) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
-    cards = player.popCards cardIds
-    price = cards.reduce(
-      (x, y) ->
-        x.price() + y.price()
-      , 0
-    )
     player.increase('money', price)
+    player.save()
     next(null, {code: 200, msg: price: price})
 

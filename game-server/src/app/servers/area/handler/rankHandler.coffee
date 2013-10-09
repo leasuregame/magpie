@@ -117,7 +117,7 @@ Handler::getRankingReward = (msg, session, next) ->
       return next(null, {code: 501, msg: "找不到#{ranking}的排名奖励"})
     player.increase('elixir', rewardData.elixir)
     player.save()
-    next(null, {code: 200, msg: player.rank?.rankingRewards()})
+    next(null, {code: 200, msg: rankingRewards: player.rank?.rankingRewards()})
 
 isV587 = (bl) ->
   ownCardCount = enemyCardCount = 0

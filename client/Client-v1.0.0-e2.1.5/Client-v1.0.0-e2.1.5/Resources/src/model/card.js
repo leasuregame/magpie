@@ -541,9 +541,13 @@ var Card = Entity.extend({
     getSellCardMoney: function () {
         cc.log("Card getSellCardMoney");
 
+        var table = outputTables.card_price.rows[1];
 
+        var price = table["star" + this._star];
 
-        return 0;
+        price += Math.max(this._lv - 1, 0) * table.grow_per_lv;
+
+        return price;
     }
 });
 

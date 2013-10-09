@@ -751,7 +751,17 @@ var CardListLayer = cc.Layer.extend({
     _onClickSellOk: function () {
         cc.log("CardListLayer _onClickSellOk");
 
-        MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_SELL));
+        var selectCardList = this._getSelectCardList();
+        var cardIdList = [];
+        var len = selectCardList.length;
+
+        for (var i = 0; i < len; ++i) {
+            cardIdList.push(selectCardList[i].get("id"));
+        }
+
+        gameData.cardList.sell(function () {
+            MainScene.getInstance().switch(CardListLayer.create());
+        }, cardIdList);
     },
 
     _onClickChangeLineUp: function () {

@@ -164,7 +164,7 @@ describe("Area Server", function() {
       });
     });
 
-    describe("get ranking rewards", function(){
+    describe("获取排名奖励", function(){
       beforeAll(function() {
         doAjax('/loaddata/csv', {}, function(data) {
           expect(data).toEqual('done');
@@ -185,34 +185,98 @@ describe("Area Server", function() {
             ranking: 1
           }, function(data) {
             console.log(data);
-            expect(data).toEqual({});
+            expect(data).toEqual({ code : 501, msg : '不能领取该排名奖励' });
           });
 
           request('area.rankHandler.getRankingReward', {
             ranking: 100
           }, function(data) {
             console.log(data);
-            expect(data).toEqual({});
+            expect(data).toEqual({ code : 200, msg : { rankingRewards : [ 5000, 1000, 500 ] } });
           });
 
           request('area.rankHandler.getRankingReward', {
             ranking: 500
           }, function(data) {
             console.log(data);
-            expect(data).toEqual({});
+            expect(data).toEqual( { code : 200, msg : { rankingRewards : [ 5000, 1000 ] } });
           });
 
           request('area.rankHandler.getRankingReward', {
             ranking: 1000
           }, function(data) {
             console.log(data);
-            expect(data).toEqual({});
+            expect(data).toEqual( { code : 200, msg : { rankingRewards : [ 5000 ] } });
+          });
+
+          request('area.rankHandler.getRankingReward', {
+            ranking: 5000
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual( { code : 200, msg : { rankingRewards : [ ] } });
+          });
+
+          request('area.rankHandler.getRankingReward', {
+            ranking: 5000
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual( { code : 200, msg : { rankingRewards : [ ] } });
           });
 
         });
 
+      });
+
+      describe('when ranking is 5000', function(){
+        beforeAll(function(){
+          doAjax('/update/rank/' + 5, {
+            ranking: 5000
+          }, function(){
+            loginWith('1', '1', 1);
+          });
+        });
+
+        it('should only can get ranking reward of 5000', function(){
+          request('area.rankHandler.getRankingReward', {
+            ranking: 5000
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({ code : 200, msg : { rankingRewards : [ ] } });
+          });
+
+          request('area.rankHandler.getRankingReward', {
+            ranking: 1000
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({ code : 200, msg : { rankingRewards : [ ] } });
+          });
+        });
 
       });
+
+      describe('when ranking parameter is not right', function(){
+        beforeAll(function(){
+          loginWith('1', '1', 1);
+        });
+
+        it('should can not get ranking reward', function(){
+          request('area.rankHandler.getRankingReward', {
+            ranking: 5001
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual( { code : 501, msg : '找不到5001的排名奖励' });
+          });
+
+          request('area.rankHandler.getRankingReward', {
+            ranking: 1001
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({ code : 501, msg : '找不到1001的排名奖励' });
+          });
+        });
+
+      });
+
     });
 
     describe("ranking list", function() {

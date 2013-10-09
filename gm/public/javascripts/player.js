@@ -48,7 +48,16 @@ function updatePlayerData() {
    // console.log(player);
     var data = {};
     data.vip = parseInt($("#vip").val());
-    data.lv = parseInt($("#lv").val());
+    var lv = parseInt($("#lv").val());
+    if(lv < 1 || lv > 100) {
+        var msg = {
+            type:"error",
+            info:"玩家等级在1-100级"
+        }
+        setShowMsg(msg);
+        return;
+    }
+    data.lv = lv;
     data.money = parseInt($("#money").val());
     data.gold = parseInt($("#gold").val());
 
@@ -64,15 +73,35 @@ function updatePlayerData() {
     data.energy = parseInt($("#energy").val());
     data.elixir = parseInt($("#elixir").val());
 
+    lv = parseInt($("#spiritor").val());
+    if(lv > 10 || lv < 0) {
+        var msg = {
+            type:"error",
+            info:"元神等级在0-10级"
+        }
+        setShowMsg(msg);
+        return;
+    }
+
     var spiritor = {
-        lv:parseInt($("#spiritor").val()),
+        lv:lv,
         spirit:JSON.parse(player.spiritor).spirit
     };
 
     data.spiritor = JSON.stringify(spiritor);
 
+    lv = parseInt($("#spiritPoolLv").val());
+    if(lv > 10 || lv < 0) {
+        var msg = {
+            type:"error",
+            info:"灵气池等级在1-10级"
+        }
+        setShowMsg(msg);
+        return;
+    }
+
     var spiritPool = {
-        lv:parseInt($("#spiritPoolLv").val()),
+        lv:lv,
         exp:JSON.parse(player.spiritPool).exp,
         collectCount:parseInt($("#spiritPoolCount").val())
     };

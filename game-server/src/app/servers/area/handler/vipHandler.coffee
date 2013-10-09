@@ -80,7 +80,7 @@ openVipBox = (player, boxInfo, next) ->
     return
 
   setIfExist ['energy', 'money', 'skillPoint', 'elixir', 'fragments']
-  player.resumePower(boxInfo.power)
+  player.addPower(boxInfo.power)
 
   vb = _.clone(player.vipBox)
   vb.push boxInfo.id

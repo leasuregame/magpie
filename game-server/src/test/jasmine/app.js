@@ -102,6 +102,30 @@ app.get('/addPlayer', function(req, res) {
   });
 });
 
+app.get('/addPlayerbyId', function(req, res) {
+    var userId = req.query.userId;
+    var areaId = req.query.areaId;
+    var name = req.query.name;
+    var id = req.query.id;
+    var lv = req.lv || 1;
+    var ct = Date.now();
+
+    mysql.magpiedb1.query('insert into player (id,userId, areaId, name, lv, createTime) values (?,?,?,?,?,?)', [id,userId, areaId, name, lv, Date.now()], function(err, result) {
+        if (err) {
+            res.send({
+                code: 500,
+                msg: 'faild to add player with parameters: ' + JSON.stringify(req.query)
+            });
+        } else {
+            res.send({
+                code: 200,
+                playerId: result.insertId,
+                ct: ct
+            });
+        }
+    });
+});
+
 app.get('/removePlayer', function(req, res) {
   var playerId = req.query.playerId;
   mysql.magpiedb1.query('delete from player where id = ?', [playerId], function(err, results) {
@@ -116,6 +140,24 @@ app.get('/removePlayer', function(req, res) {
       });
     }
   });
+});
+
+app.get('/addFriend',function(req, res){
+    var playerId = req.query.playerId;
+    var friendId = req.query.friendId;
+    mysql.magpiedb1.query('insert into friend (playerId,friendId) values (?,?)', [playerId,friendId], function(err, result) {
+        if (err) {
+            res.send({
+                code: 500,
+                msg: 'faild to add friend with parameters: ' + JSON.stringify(req.query)
+            });
+        } else {
+            res.send({
+                code: 200,
+                result:result
+            });
+        }
+    });
 });
 
 app.get('/loaddata/rank', function(req, res) {

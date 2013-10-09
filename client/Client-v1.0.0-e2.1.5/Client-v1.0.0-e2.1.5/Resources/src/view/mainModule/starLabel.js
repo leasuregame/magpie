@@ -24,7 +24,7 @@ var StarLabel = cc.Node.extend({
 
         for (var i = 0; i < this._count; ++i) {
             var starSprite = cc.Sprite.create(main_scene_image.star1);
-            starSprite.setAnchorPoint(cc.p(0, 0));
+            starSprite.setAnchorPoint(cc.p(0, 0.5));
             starSprite.setPosition(cc.p(40 * i, 0));
             this.addChild(starSprite);
         }

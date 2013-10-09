@@ -46,7 +46,11 @@ var PlayerHeaderLabel = cc.Layer.extend({
         nameLabel.setPosition(cc.p(130, 83));
         this.addChild(nameLabel);
 
-        this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0, true);
+        var expBg = cc.Sprite.create(main_scene_image.exp_bg);
+        expBg.setPosition(cc.p(210, 36));
+        this.addChild(expBg);
+
+        this._expProgress = Progress.create(null, main_scene_image.exp, 1, 1, true);
         this._expProgress.setPosition(cc.p(214, 36));
         this.addChild(this._expProgress);
         this._expProgress.setFontColor(cc.c3b(255, 239, 131));
@@ -57,7 +61,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
 
         this._lvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 45);
         this._lvLabel.setColor(cc.c3b(255, 239, 131));
-        this._lvLabel.setPosition(cc.p(60, 60));
+        this._lvLabel.setPosition(cc.p(57, 58));
         this.addChild(this._lvLabel);
 
         this._goldLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);

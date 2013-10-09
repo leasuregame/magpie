@@ -1,10 +1,14 @@
 var nameChanged = {
     "achievement": "成就配置表",
     "成就配置表": "achievement",
+    "treasure_hunt": "寻宝配置表",
+    "寻宝配置表": "treasure_hunt",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
     "card_lv_limit": "卡牌等级限制表",
     "卡牌等级限制表": "card_lv_limit",
+    "card_price": "卡牌价格配置表",
+    "卡牌价格配置表": "card_price",
     "cards": "神仙卡牌配置表",
     "神仙卡牌配置表": "cards",
     "elixir": "仙丹配置表",
@@ -13,8 +17,6 @@ var nameChanged = {
     "基础属性成长表": "factors",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
-    "treasure_hunt": "寻宝配置表",
-    "寻宝配置表": "treasure_hunt",
     "rank": "竞技产出表",
     "竞技产出表": "rank",
     "ranking_reward": "排名奖励",
@@ -299,6 +301,191 @@ var outputTables = {
                 "desc": "累计消耗元宝100000",
                 "gold": 50,
                 "energy": 500
+            }
+        }
+    },
+    "treasure_hunt": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "type": "power",
+                "value": 10,
+                "name": "体力",
+                "type_rate": 30,
+                "value_rate": 60,
+                "rate": 18
+            },
+            "1": {
+                "id": 1,
+                "type": "power",
+                "value": 50,
+                "name": "体力",
+                "type_rate": 30,
+                "value_rate": 30,
+                "rate": 9
+            },
+            "2": {
+                "id": 2,
+                "type": "power",
+                "value": 100,
+                "name": "体力",
+                "type_rate": 30,
+                "value_rate": 10,
+                "rate": 3
+            },
+            "3": {
+                "id": 3,
+                "type": "elixir",
+                "value": 10,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 60,
+                "rate": 9
+            },
+            "4": {
+                "id": 4,
+                "type": "elixir",
+                "value": 100,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 39,
+                "rate": 5.85
+            },
+            "5": {
+                "id": 5,
+                "type": "elixir",
+                "value": 5000,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "6": {
+                "id": 6,
+                "type": "spirit",
+                "value": 50,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 60,
+                "rate": 6
+            },
+            "7": {
+                "id": 7,
+                "type": "spirit",
+                "value": 100,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 39,
+                "rate": 3.9
+            },
+            "8": {
+                "id": 8,
+                "type": "spirit",
+                "value": 1000,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "9": {
+                "id": 9,
+                "type": "skillPoint",
+                "value": 100,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 60,
+                "rate": 6
+            },
+            "10": {
+                "id": 10,
+                "type": "skillPoint",
+                "value": 500,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 39,
+                "rate": 3.9
+            },
+            "11": {
+                "id": 11,
+                "type": "skillPoint",
+                "value": 10000,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "12": {
+                "id": 12,
+                "type": "energy",
+                "value": 50,
+                "name": "活力",
+                "type_rate": 10,
+                "value_rate": 60,
+                "rate": 6
+            },
+            "13": {
+                "id": 13,
+                "type": "energy",
+                "value": 100,
+                "name": "活力",
+                "type_rate": 10,
+                "value_rate": 39,
+                "rate": 3.9
+            },
+            "14": {
+                "id": 14,
+                "type": "energy",
+                "value": 5000,
+                "name": "活力",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "15": {
+                "id": 15,
+                "type": "money",
+                "value": 1000,
+                "name": "铜板",
+                "type_rate": 15,
+                "value_rate": 60,
+                "rate": 9
+            },
+            "16": {
+                "id": 16,
+                "type": "money",
+                "value": 10000,
+                "name": "铜板",
+                "type_rate": 15,
+                "value_rate": 39,
+                "rate": 5.85
+            },
+            "17": {
+                "id": 17,
+                "type": "money",
+                "value": 200000,
+                "name": "铜板",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "18": {
+                "id": 18,
+                "type": "gold",
+                "value": 10,
+                "name": "元宝",
+                "type_rate": 10,
+                "value_rate": 99,
+                "rate": 9.9
+            },
+            "19": {
+                "id": 19,
+                "type": "gold",
+                "value": 500,
+                "name": "元宝",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
             }
         }
     },
@@ -756,6 +943,20 @@ var outputTables = {
             "5": {
                 "id": 5,
                 "max_lv": 60
+            }
+        }
+    },
+    "card_price": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "grow_per_lv": 10,
+                "star1": 500,
+                "star2": 700,
+                "star3": 900,
+                "star4": 1100,
+                "star5": 1300
             }
         }
     },
@@ -10192,191 +10393,6 @@ var outputTables = {
                 "money_need": 20000,
                 "rate_per_card": 2,
                 "max_num": 50
-            }
-        }
-    },
-    "treasure_hunt": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "type": "power",
-                "value": 10,
-                "name": "体力",
-                "type_rate": 30,
-                "value_rate": 60,
-                "rate": 18
-            },
-            "1": {
-                "id": 1,
-                "type": "power",
-                "value": 50,
-                "name": "体力",
-                "type_rate": 30,
-                "value_rate": 30,
-                "rate": 9
-            },
-            "2": {
-                "id": 2,
-                "type": "power",
-                "value": 100,
-                "name": "体力",
-                "type_rate": 30,
-                "value_rate": 10,
-                "rate": 3
-            },
-            "3": {
-                "id": 3,
-                "type": "elixir",
-                "value": 10,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 60,
-                "rate": 9
-            },
-            "4": {
-                "id": 4,
-                "type": "elixir",
-                "value": 100,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 39,
-                "rate": 5.85
-            },
-            "5": {
-                "id": 5,
-                "type": "elixir",
-                "value": 5000,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "6": {
-                "id": 6,
-                "type": "spirit",
-                "value": 50,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 60,
-                "rate": 6
-            },
-            "7": {
-                "id": 7,
-                "type": "spirit",
-                "value": 100,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 39,
-                "rate": 3.9
-            },
-            "8": {
-                "id": 8,
-                "type": "spirit",
-                "value": 1000,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "9": {
-                "id": 9,
-                "type": "skillPoint",
-                "value": 100,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 60,
-                "rate": 6
-            },
-            "10": {
-                "id": 10,
-                "type": "skillPoint",
-                "value": 500,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 39,
-                "rate": 3.9
-            },
-            "11": {
-                "id": 11,
-                "type": "skillPoint",
-                "value": 10000,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "12": {
-                "id": 12,
-                "type": "energy",
-                "value": 50,
-                "name": "活力",
-                "type_rate": 10,
-                "value_rate": 60,
-                "rate": 6
-            },
-            "13": {
-                "id": 13,
-                "type": "energy",
-                "value": 100,
-                "name": "活力",
-                "type_rate": 10,
-                "value_rate": 39,
-                "rate": 3.9
-            },
-            "14": {
-                "id": 14,
-                "type": "energy",
-                "value": 5000,
-                "name": "活力",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "15": {
-                "id": 15,
-                "type": "money",
-                "value": 1000,
-                "name": "铜板",
-                "type_rate": 15,
-                "value_rate": 60,
-                "rate": 9
-            },
-            "16": {
-                "id": 16,
-                "type": "money",
-                "value": 10000,
-                "name": "铜板",
-                "type_rate": 15,
-                "value_rate": 39,
-                "rate": 5.85
-            },
-            "17": {
-                "id": 17,
-                "type": "money",
-                "value": 200000,
-                "name": "铜板",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "18": {
-                "id": 18,
-                "type": "gold",
-                "value": 10,
-                "name": "元宝",
-                "type_rate": 10,
-                "value_rate": 99,
-                "rate": 9.9
-            },
-            "19": {
-                "id": 19,
-                "type": "gold",
-                "value": 500,
-                "name": "元宝",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
             }
         }
     },

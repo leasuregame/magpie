@@ -282,7 +282,7 @@ var TaskLayer = cc.Layer.extend({
 
             for (var key in data) {
                 var str = (gameGoodsName[key] || key) + " + " + data[key];
-                TipLayer.tip(str);
+                TipLayer.tipNoBg(str);
             }
 
             that.update();

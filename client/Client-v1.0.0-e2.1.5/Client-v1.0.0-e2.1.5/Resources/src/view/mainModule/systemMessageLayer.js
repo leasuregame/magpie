@@ -61,7 +61,7 @@ var SystemMessageLayer = cc.Layer.extend({
 
             var id = systemMessageList[i].id;
 
-            var hasBeenReceiveIcon = cc.Sprite.create(main_scene_image.icon136);
+            var hasBeenReceiveIcon = cc.Sprite.create(main_scene_image.icon138);
             hasBeenReceiveIcon.setPosition(cc.p(530, y + 60));
             scrollViewLayer.addChild(hasBeenReceiveIcon, 1);
             hasBeenReceiveIcon.setVisible(false);

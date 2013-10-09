@@ -82,7 +82,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         tipLabel.setPosition(cc.p(380, 349));
         this._resLabel.addChild(tipLabel);
 
-        this._tipLabel = cc.LabelTTF.create("魔石洗炼获得金色属性概率提升10倍", "STHeitiTC-Medium", 18);
+        this._tipLabel = cc.LabelTTF.create("魔石洗炼获得金色属性概率提升100倍", "STHeitiTC-Medium", 18);
         this._tipLabel.setColor(cc.c3b(255, 239, 131));
         this._tipLabel.setPosition(cc.p(227, 45));
         this._resLabel.addChild(this._tipLabel);
@@ -111,7 +111,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             var lockIcon = cc.Sprite.create(main_scene_image.icon200);
             lockIcon.setPosition(cc.p(310, y));
             this._resLabel.addChild(lockIcon);
-            lockIcon.setScale(0.8);
+            lockIcon.setScale(0.6);
 
             var lockItem = cc.MenuItemImage.create(
                 main_scene_image.button24,

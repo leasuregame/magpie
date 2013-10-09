@@ -281,6 +281,10 @@ var Card = (function (_super) {
         return this.set('exp', exp);
     };
 
+    Card.prototype.price = function() {
+        cfg = table.getTableItem('card_price', 1);
+        return (cfg.grow_per_lv * this.lv) + cfg['star' + this.star];
+    };
 
     Card.prototype.toJson = function () {
 

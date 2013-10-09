@@ -191,7 +191,7 @@ class Manager
       data.upgrade = true
 
     ### consume power first, then add exp
-    because exp change where check if upgrade player level ###
+    because exp change will check if upgrade player level ###
     player.consumePower(taskData.power_consume)
     player.increase('exp', taskData.exp_obtain)
 

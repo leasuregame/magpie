@@ -475,3 +475,35 @@ Handler::changeLineUp = (msg, session, next) ->
     player.save()
     next(null, { code: 200, msg: {lineUp: player.lineUpObj()} })
 
+Handler::sellCards = (msg, session, next) ->
+  playerId = session.get('playerId')
+  cardIds = if msg.ids? then msg.ids else []
+
+  if cardIds.length is 0
+    return next(null, {code: 200, msg: price: 0})
+
+  price = 0
+  player = null
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+
+    (res, cb) ->
+      player = res
+      cards = player.popCards cardIds
+      if _.isEmpty(cards)
+        return cb({code: 501, msg: '找不到卡牌'})
+
+      price += c.price() for c in cards
+      cb(null, price)
+
+    (price, cb) ->
+      dao.card.delete where: " id in (#{cardIds.toString()}) ", cb
+  ], (err, res) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    player.increase('money', price)
+    player.save()
+    next(null, {code: 200, msg: price: price})
+

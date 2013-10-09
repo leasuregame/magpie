@@ -208,7 +208,8 @@ var Player = (function(_super) {
         'spiritPool',
         'signIn',
         'achievement',
-        'cardBook'
+        'cardBook',
+        'friendsCount'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -278,7 +279,8 @@ var Player = (function(_super) {
         cardBook: [],
         cards: {},
         rank: {},
-        friends: []
+        friends: [],
+        friendsCount: 20
     };
 
     Player.prototype.increase = function(name, val) {
@@ -500,6 +502,14 @@ var Player = (function(_super) {
 
         var power = utility.deepCopy(this.power);
         power.value = _.min([max_power, power.value + value]);
+        power.time = Date.now();
+        this.updatePower(power);
+    };
+
+    //直接添加体力，不受上限限制
+    Player.prototype.addPower = function(value) {
+        var power = _.clone(this.power);
+        power.value += value;
         power.time = Date.now();
         this.updatePower(power);
     };
@@ -846,8 +856,13 @@ var Player = (function(_super) {
             }),
             rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
             friends: this.friends,
+<<<<<<< HEAD
             signIn: utility.deepCopy(this.signIn),
             cardBook: this.cardBook
+=======
+            friends: this.friendsCount,
+            signIn: utility.deepCopy(this.signIn)
+>>>>>>> 450f5a81e0d4a4a120e0e85758a201ea8ac272a8
         };
     };
 
@@ -940,6 +955,7 @@ var recountVipPrivilege = function(player, oldVip) {
     var oldVipInfo = table.getTableItem('vip_privilege', oldVip);
     var curVipInfo = table.getTableItem('vip_privilege', curVip);
 
+    player.friendsCount += curVipInfo.friend_count - oldVipInfo.friend_count;
     var dg = utility.deepCopy(player.dailyGift);
     dg.lotteryFreeCount += curVipInfo.lottery_free_count - oldVipInfo.lottery_free_count;
 

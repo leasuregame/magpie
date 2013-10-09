@@ -201,7 +201,7 @@ var GoldLayer = LazyLayer.extend({
 
         var waitTime = time - scaleTime;
 
-        TipLayer.tip("元宝 + " + this._goldList[index]);
+        TipLayer.tipNoBg("元宝 + " + this._goldList[index]);
 
         var action = cc.Sequence.create(
             cc.EaseExponentialOut.create(

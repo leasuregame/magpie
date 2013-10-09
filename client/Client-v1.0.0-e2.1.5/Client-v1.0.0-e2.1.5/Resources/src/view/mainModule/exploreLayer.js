@@ -347,6 +347,7 @@ var ExploreLayer = cc.Layer.extend({
     _lock: function () {
         cc.log("ExploreLayer _lock");
 
+        this._exploreItem.setEnabled(false);
         LazyLayer.showCloudLayer();
         this.setTouchEnabled(false);
     },
@@ -354,6 +355,7 @@ var ExploreLayer = cc.Layer.extend({
     _unlock: function () {
         cc.log("ExploreLayer _unlock");
 
+        this._exploreItem.setEnabled(true);
         LazyLayer.closeCloudLayer();
         this.setTouchEnabled(true);
     },

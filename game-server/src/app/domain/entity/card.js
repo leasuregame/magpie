@@ -16,8 +16,9 @@ var utility = require('../../common/utility');
 var Entity = require('./entity');
 var table = require('../../manager/table');
 var elixirConfig = table.getTableItem('elixir', 1);
-var cardConfig = require('../../../config/data/card'); 
+var cardConfig = require('../../../config/data/card');
 var _ = require("underscore");
+var psConfig = require('../../../config/data/passSkill');
 var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL
 var GROUP_EFFECT_ATK = 1
 var GROUP_EFFECT_HP = 2
@@ -32,8 +33,8 @@ var addEvents = function (card) {
         _.values(card.passiveSkills).filter(function (ps) {
             return _.keys(_pro).indexOf(ps.name) > -1;
         }).forEach(function(ps) {
-            total[ps.name] += ps.value;
-        });
+                total[ps.name] += ps.value;
+            });
 
         _.extend(card.incs, {
             ps_hp: parseInt((total.hp_improve * card.init_hp) / 100),
@@ -118,7 +119,8 @@ var Card = (function (_super) {
         'skillInc',
         'skillPoint',
         'elixirHp',
-        'elixirAtk'
+        'elixirAtk',
+        'passiveSkills'
     ];
 
     Card.DEFAULT_VALUES = {
@@ -141,11 +143,12 @@ var Card = (function (_super) {
             ps_atk: 0,
             elixir_hp: 0,
             elixir_atk: 0
-        }
+        },
+        passiveSkills:[]
     };
 
     Card.prototype.init = function () {
-        this.passiveSkills = this.passiveSkills || {};
+        this.passiveSkills = this.passiveSkills || [];
     };
 
     Card.prototype.recountHpAndAtk = function() {
@@ -161,6 +164,7 @@ var Card = (function (_super) {
 
         this.hp = hp;
         this.atk = atk;
+        //console.log('hp and atk',this.hp,this.atk);
     };
 
     Card.prototype.activeGroupEffect = function() {
@@ -216,9 +220,20 @@ var Card = (function (_super) {
     };
 
     Card.prototype.addPassiveSkill = function (ps) {
+        var pss = _.clone(this.passiveSkills);
         if (typeof ps.id !== 'undefined' && ps.id !== null) {
             this.passiveSkills[ps.id] = ps;
-            console.log("ps",this.passiveSkills);
+            if(pss.length == this.star - 2) {
+                for(var i = 0;i < pss.length;i++) {
+                    if(pss[i].id == ps.id) {
+                        pss[i] = ps;
+                        break;
+                    }
+                }
+            }else if(pss.length < this.star - 2) {
+                pss[pss.length] = ps;
+            }
+            this.passiveSkills = pss;
             this.emit('add.passiveSkill');
         }
     };
@@ -228,6 +243,49 @@ var Card = (function (_super) {
         passiveSkills.forEach(function (ps) {
             self.addPassiveSkill(ps);
         });
+    };
+
+    //产生被动技能
+    Card.prototype.bornPassiveSkill = function() {
+        var born_rates = psConfig.BORN_RATES;
+        var name = utility.randomValue(_.keys(born_rates), _.values(born_rates));
+        var value = _.random(100, psConfig.INIT_MAX * 100);
+        var id;
+        if(this.passiveSkills.length == 0)
+            id = 0;
+        else {
+            var maxId = 0;
+            this.passiveSkills.forEach(function(ps){
+                if(ps.id > maxId)
+                    maxId = ps.id;
+            });
+            id = maxId + 1;
+        }
+        var ps = {
+            id:id,
+            name: name,
+            value: parseFloat((value / 100).toFixed(1))
+        };
+        this.addPassiveSkill(ps);
+    };
+
+    Card.prototype.afreshPassiveSkill = function(type,ps) {
+        var born_rates = psConfig.BORN_RATES
+        var value_obj = psConfig.AFRESH[type]
+
+        var name = utility.randomValue(_.keys(born_rates), _.values(born_rates))
+        var valueScope = utility.randomValue(_.keys(value_obj), _.values(value_obj))
+        var _ref = valueScope.split('~'),
+            start = _ref[0],
+            end = _ref[1];
+        var value = _.random(start * 100, end * 100)
+
+        var p = _.clone(ps);
+
+        p.name = name;
+        p.value =  parseFloat((value / 100).toFixed(1));
+        this.addPassiveSkill(p);
+
     };
 
     Card.prototype.eatCards = function (cards) {
@@ -283,11 +341,10 @@ var Card = (function (_super) {
 
     Card.prototype.price = function() {
         cfg = table.getTableItem('card_price', 1);
-        return (cfg.grow_per_lv * this.lv) + cfg['star' + this.star];
+        return (cfg.grow_per_lv * (this.lv - 1)) + cfg['star' + this.star];
     };
 
     Card.prototype.toJson = function () {
-
         return {
             id: this.id,
             tableId: this.tableId,
@@ -301,15 +358,15 @@ var Card = (function (_super) {
             skillPoint: this.skillPoint,
             elixirHp: this.elixirHp,
             elixirAtk: this.elixirAtk,
-            passiveSkills: _.values(this.passiveSkills).map(function(ps) {
-                return ps.toJson();
-            }) || []
+            passiveSkills:this.passiveSkills
+            /* passiveSkills: _.values(this.passiveSkills).map(function(ps) {
+             return ps.toJson();
+             }) || []
+             */
         };
     };
 
     return Card;
 })(Entity);
-
-
 
 module.exports = Card;

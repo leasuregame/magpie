@@ -17,6 +17,7 @@ Card.table = "cards";
 
 Card.update = function(data,cb){
 
+    console.log(data);
     var card = {
         where:{
             id:data.id
@@ -27,18 +28,17 @@ Card.update = function(data,cb){
             elixirHp:data.elixirHp,
             elixirAtk:data.elixirAtk,
             star:data.star,
-            tableId:data.tableId
+            tableId:data.tableId,
+            passiveSkills:data.passiveSkills
         }
     };
-
-    var passSkills = data.passSkills;
 
     cardDao.update(card,function(err,isOK){
         if(err) {
             console.log(err);
             return cb(err,null);
         }else {
-            passSkills.forEach(function(pss){
+            /*passSkills.forEach(function(pss){
                 if(pss.id == '' && pss.name != '' && pss.value !='') {
                     var options = {
                         data:{
@@ -94,6 +94,7 @@ Card.update = function(data,cb){
                     });
                 }
             });
+            */
             var name = Card.getName(data.tableId);
             return cb(null,name);
         }
@@ -104,9 +105,10 @@ Card.update = function(data,cb){
 
 
 Card.create = function(card,cb){
-    var time = Date.now();
+    //var time = Date.now();
     var options = {
-        data:{
+        data: card
+        /*{
             lv:card.lv,
             skillLv:card.skillLv,
             elixirHp:card.elixirHp,
@@ -114,10 +116,14 @@ Card.create = function(card,cb){
             tableId:card.tableId,
             playerId:card.playerId,
             star:card.star,
-            createTime:time
-        }
+            createTime:time,
+            passiveSkills:card.passiveSkills
+        }*/
     };
-    var passSkills = card.passSkills;
+
+    options.data['createTime'] =  Date.now();
+
+ //   var passSkills = card.passSkills;
 
     async.waterfall([
         function(callback){
@@ -131,9 +137,9 @@ Card.create = function(card,cb){
                   return cb(err,null);
               }
               else callback(null,card);
-            })
+            });
         },
-        function(card,callback){
+      /*  function(card,callback){
             var cardId = card["insertId"];
             passSkills.forEach(function(pss){
                 if(!(pss.name == '' || pss.value == '')) {
@@ -157,8 +163,9 @@ Card.create = function(card,cb){
 
             });
             callback(null,cardId);
-        },
-        function(cardId,callback){
+        },*/
+        function(card,callback){
+            var cardId = card["insertId"];
             var options = {
                 where:{
                     id:cardId
@@ -187,7 +194,6 @@ Card.create = function(card,cb){
             return cb(null,card);
         }
     });
-
 };
 
 Card.delete = function(cardId,cb){
@@ -203,7 +209,7 @@ Card.delete = function(cardId,cb){
             console.log(err);
             return cb(err,false);
         }else {
-            var options = {
+            /*var options = {
                 where:{
                     cardId:cardId
                 }
@@ -216,6 +222,8 @@ Card.delete = function(cardId,cb){
                     return cb(null,true);
                 }
             });
+            */
+            return cb(null,true);
         }
     });
 };

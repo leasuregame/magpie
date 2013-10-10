@@ -43,13 +43,15 @@ describe("Area Server", function() {
 							'exp_obtain',
 							'money_consume',
 							'cur_lv',
-							'cur_exp'
+							'cur_exp',
+                            'ability'
 						]);
 
 						expect(data.msg.exp_obtain).toEqual(254534);
 						expect(data.msg.money_consume).toEqual(729864);
 						expect(data.msg.cur_lv).toEqual(55);
 						expect(data.msg.cur_exp).toEqual(0);
+
 
 						doAjax('/player/' + arthur.playerId, {}, function(res) {
 							var _player = res.data;

@@ -36,7 +36,7 @@ describe("Area Server", function() {
               expect(data).toEqual({
                 code: 200,
                 msg: {
-                  price: 6070
+                  price: 6010
                 }
               });
 

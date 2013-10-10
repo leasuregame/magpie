@@ -6,7 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-var passSkill = require('../../game-server/app/domain/entity/passiveSkill');
+var passSkill = require('./domain/entity/passiveSkill');
 var PassSkillAfresh = function () {
 };
 

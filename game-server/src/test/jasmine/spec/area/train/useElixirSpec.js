@@ -65,9 +65,10 @@ describe("Area Server", function() {
             cardId: 100
           }, function(data) {
             console.log(data);
-            expect(data).toEqual({
-              code: 200
-            });
+            expect(data.code).toEqual(200);
+            expect(data.msg.hp).toEqual(18248);
+            expect(data.msg.atk).toEqual(7576);
+
           });
 
           doAjax('/player/' + arthur.playerId, function(res) {

@@ -23,13 +23,15 @@ describe("Area Server", function() {
         request('area.trainHandler.passSkillAfresh', {
           playerId: arthur.playerId,
           cardId: 101,
-          psIds: [6]
+          psIds: [0]
         }, function(data) {
           expect(data.code).toEqual(200);
 
-          doAjax('/passiveSkill/' + 6, {}, function(res) {
-            expect(res.data.name).toEqual(data.msg[0].name);
-            expect(res.data.value).toEqual(data.msg[0].value);
+          doAjax('/card/' + 101, {}, function(res) {
+            console.log(res);
+            var pss = res._data.passiveSkills;
+            expect(pss[0].name).toEqual(data.msg[0].name);
+            expect(pss[0].value).toEqual(data.msg[0].value);
           });
 
           console.log(data);
@@ -45,7 +47,7 @@ describe("Area Server", function() {
       it("should can not afrash", function() {
         request('area.trainHandler.passSkillAfresh', {
           cardId: 164,
-          psIds: [7]
+          psIds: [0]
         }, function(data) {
           expect(data.code).toEqual(501);
           expect(data.msg).toEqual('铜板/元宝不足，不能洗炼');

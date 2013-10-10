@@ -24,9 +24,11 @@ var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 var util = require('util');
+var entityUtil = require('../../util/entityUtil');
 var achieve = require('../achievement');
 var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL;
 var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
+
 
 var defaultMark = function() {
     var i, result = [];
@@ -101,6 +103,10 @@ var addEvents = function(player) {
             //player.activeGroupEffect();
             player.activeSpiritorEffect();
         }
+
+        if (!player.cardBookMark.hasMark(card.tableId)) {
+            entityUtil.lightUpACard(player, card.tableId);
+        }
     });
 
     player.on('cash.change', function(cash) {
@@ -159,6 +165,8 @@ var Player = (function(_super) {
         Player.__super__.constructor.apply(this, arguments);
         this.taskMark = new MarkGroup(this.task.mark);
         this.passMark = new MarkGroup(this.pass.mark);
+        this.cardBookMark = new MarkGroup(this.cardBook.mark);
+        this.cardBookFlag = new MarkGroup(this.cardBook.flag);
         this.momo = [];
         //this.momoMark = new MarkGroup(this.task.momo);
     }
@@ -199,6 +207,7 @@ var Player = (function(_super) {
         'spiritPool',
         'signIn',
         'achievement',
+        'cardBook',
         'friendsCount'
     ];
 
@@ -266,6 +275,10 @@ var Player = (function(_super) {
             flag: 0
         },
         achievement: {},
+        cardBook: {
+            mark: [],
+            flag: []
+        },
         cards: {},
         rank: {},
         friends: [],
@@ -597,6 +610,7 @@ var Player = (function(_super) {
             exp_obtain: expObtain,
             cur_lv: targetCard.lv,
             cur_exp: targetCard.exp,
+            ability: targetCard.ability(),
             money_consume: parseInt(moneyConsume)
         }, targetCard);
     };
@@ -657,7 +671,6 @@ var Player = (function(_super) {
         var value = 0;
         for(var i = 0;i < this.momo.length;i++)
             value += this.momo[i];
-        //console.log("total = ",value);
         return value;
     };
 
@@ -705,7 +718,6 @@ var Player = (function(_super) {
             this.passMark.value = [];
             pass.mark = this.passMark.value;
             this.pass = pass;
-            console.log("reset pass mark:",this.pass);
             return true;
         }
         return false;
@@ -733,7 +745,6 @@ var Player = (function(_super) {
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isTrigger = true;
         pass.mystical.isClear = false;
-        console.log("神秘关卡 = ",pass);
         this.set('pass', pass);
     };
 
@@ -848,8 +859,8 @@ var Player = (function(_super) {
             }),
             rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
             friends: this.friends,
-            friends: this.friendsCount,
-            signIn: utility.deepCopy(this.signIn)
+            signIn: utility.deepCopy(this.signIn),
+            friendsCount: this.friendsCount
         };
     };
 

@@ -148,7 +148,7 @@ var Card = (function (_super) {
     };
 
     Card.prototype.init = function () {
-        this.passiveSkills = this.passiveSkills || {};
+        this.passiveSkills = this.passiveSkills || [];
     };
 
     Card.prototype.recountHpAndAtk = function() {
@@ -164,6 +164,7 @@ var Card = (function (_super) {
 
         this.hp = hp;
         this.atk = atk;
+        //console.log('hp and atk',this.hp,this.atk);
     };
 
     Card.prototype.activeGroupEffect = function() {
@@ -219,15 +220,12 @@ var Card = (function (_super) {
     };
 
     Card.prototype.addPassiveSkill = function (ps) {
-       // if (typeof ps.id !== 'undefined' && ps.id !== null) {
-        var len = this.passiveSkills.length;
-        if(len >= this.star - 2)
-            return;
-        ps.id = len;
-        this.passiveSkills[len++] = ps;
-        console.log("ps = ",this.passiveSkills);
-        this.emit('add.passiveSkill');
-      // }
+        var pss = _.clone(this.passiveSkills);
+        if (typeof ps.id !== 'undefined' && ps.id !== null) {
+            pss[ps.id] = ps;
+            this.passiveSkills = pss;
+            this.emit('add.passiveSkill');
+        }
     };
 
     Card.prototype.addPassiveSkills = function (passiveSkills) {
@@ -242,7 +240,9 @@ var Card = (function (_super) {
         var born_rates = psConfig.BORN_RATES;
         var name = utility.randomValue(_.keys(born_rates), _.values(born_rates));
         var value = _.random(100, psConfig.INIT_MAX * 100);
+        var id = this.passiveSkills.length;
         var ps = {
+            id:id,
             name: name,
             value: parseFloat((value / 100).toFixed(1))
         };
@@ -264,12 +264,8 @@ var Card = (function (_super) {
 
         p.name = name;
         p.value =  parseFloat((value / 100).toFixed(1));
+        this.addPassiveSkill(p);
 
-        var pss = _.clone(this.passiveSkills);
-        pss[ps.id] = p;
-
-        this.set('passiveSkills',pss);
-        //ps = p;
     };
 
     Card.prototype.eatCards = function (cards) {

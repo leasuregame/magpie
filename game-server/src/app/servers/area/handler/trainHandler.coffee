@@ -54,7 +54,6 @@ Handler::strengthen = (msg, session, next) ->
         options: 
           table: 'card'
           where: id: targetCard.id
-          data: targetCard.getSaveData()
           data: cardData
       } if not _.isEmpty(cardData)
 
@@ -191,7 +190,7 @@ Handler::skillUpgrade = (msg, session, next) ->
 
     card.save()
     player.save()
-    next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need}})
+    next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need,ability: card.ability()}})
 
 Handler::starUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -274,6 +273,7 @@ Handler::starUpgrade = (msg, session, next) ->
       } if not _.isEmpty(playerData)
 
       cardData = card.getSaveData()
+      console.log 'cardData',cardData
       _jobs.push {
         type: 'update'
         options:
@@ -334,19 +334,27 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       console.log 'ps = ',card.passiveSkills
       card.save()
       player.decrease(_pros[type], money_need)
-      cb(null, player, card.passiveSkills)
-  ], (err, player, passSkills) ->
+      cb(null, player, card)
+  ], (err, player, card) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
 
     #passSkills.forEach (ps) -> ps.save()
     player.save()
 
+    passSkills = card.passiveSkills
     # 拥有了百分之10的被动属性成就
     if (passSkills.filter (ps) -> parseInt(ps.value) is 10).length > 0
       achieve.psTo10(player)
 
-    next(null, {code: 200, msg: passSkills})
+    result = {
+      hp: card.hp,
+      atk:card.atk,
+      ability: card.ability(),
+      passSkills:card.passiveSkills
+    }
+
+    next(null, {code: 200, msg: result})
 
 Handler::smeltElixir = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -457,7 +465,13 @@ Handler::useElixir = (msg, session, next) ->
       if err
         return next(null, {code: err.code or 500, msg: err.msg or ''})
 
-      return next(null, {code: 200})
+      result = {
+        hp: card.hp,
+        atk:card.atk,
+        ability: card.ability(),
+      }
+
+      return next(null, {code: 200,msg:result})
 
 Handler::changeLineUp = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId

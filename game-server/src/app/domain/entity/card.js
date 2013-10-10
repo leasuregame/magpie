@@ -286,7 +286,6 @@ var Card = (function (_super) {
     };
 
     Card.prototype.toJson = function () {
-
         return {
             id: this.id,
             tableId: this.tableId,
@@ -308,7 +307,5 @@ var Card = (function (_super) {
 
     return Card;
 })(Entity);
-
-
 
 module.exports = Card;

@@ -187,7 +187,6 @@ Card.create = function(card,cb){
             return cb(null,card);
         }
     });
-
 };
 
 Card.delete = function(cardId,cb){

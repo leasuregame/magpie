@@ -448,7 +448,7 @@ function getData() {
         data.passiveSkills[id++] = {
             id: 0,
             name: $("#skill1Name").val(),
-            value: $("#skill1Value").val()
+            value: parseFloat($("#skill1Value").val())
         }
     }
 
@@ -456,7 +456,7 @@ function getData() {
         data.passiveSkills[id++] = {
             id: 1,
             name: $("#skill2Name").val(),
-            value: $("#skill2Value").val()
+            value: parseFloat($("#skill2Value").val())
         }
     }
 
@@ -464,7 +464,7 @@ function getData() {
         data.passiveSkills[id++] = {
             id: 2,
             name: $("#skill3Name").val(),
-            value: $("#skill3Value").val()
+            value: parseFloat($("#skill3Value").val())
         }
     }
     data.playerId = playerId;

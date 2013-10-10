@@ -64,7 +64,7 @@ describe("Area Server", function() {
       it("should can not afrash", function() {
         request('area.trainHandler.passSkillAfresh', {
           cardId: 104,
-          psIds: [0]
+          psIds: [7]
         }, function(data) {
           expect(data.code).toEqual(501);
           expect(data.msg).toEqual('找不到被动属性');

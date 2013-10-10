@@ -222,7 +222,16 @@ var Card = (function (_super) {
     Card.prototype.addPassiveSkill = function (ps) {
         var pss = _.clone(this.passiveSkills);
         if (typeof ps.id !== 'undefined' && ps.id !== null) {
-            pss[ps.id] = ps;
+            if(pss.length == this.star - 2) {
+                for(var i = 0;i < pss.length;i++) {
+                    if(pss[i].id == ps.id) {
+                        pss[i] = ps;
+                        break;
+                    }
+                }
+            }else if(pss.length < this.star - 2) {
+                pss[pss.length] = ps;
+            }
             this.passiveSkills = pss;
             this.emit('add.passiveSkill');
         }
@@ -240,7 +249,17 @@ var Card = (function (_super) {
         var born_rates = psConfig.BORN_RATES;
         var name = utility.randomValue(_.keys(born_rates), _.values(born_rates));
         var value = _.random(100, psConfig.INIT_MAX * 100);
-        var id = this.passiveSkills.length;
+        var id;
+        if(this.passiveSkills.length == 0)
+            id = 0;
+        else {
+            var maxId = 0;
+            this.passiveSkills.forEach(function(ps){
+                if(ps.id > maxId)
+                    maxId = ps.id;
+            });
+            id = maxId + 1;
+        }
         var ps = {
             id:id,
             name: name,

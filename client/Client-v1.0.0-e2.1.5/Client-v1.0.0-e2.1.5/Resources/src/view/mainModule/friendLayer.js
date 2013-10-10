@@ -43,7 +43,7 @@ var FriendLayer = cc.Layer.extend({
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 962));
+        headIcon.setPosition(cc.p(40, 968));
         this.addChild(headIcon);
 
         var titleIcon = cc.Sprite.create(main_scene_image.icon118);

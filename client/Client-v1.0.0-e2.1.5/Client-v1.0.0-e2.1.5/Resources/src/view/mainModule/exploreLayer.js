@@ -58,7 +58,7 @@ var ExploreLayer = cc.Layer.extend({
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 962));
+        headIcon.setPosition(cc.p(40, 968));
         this.addChild(headIcon, 1);
 
         for (var i = 0; i < 3; ++i) {
@@ -200,7 +200,7 @@ var ExploreLayer = cc.Layer.extend({
             powerLabel.setPosition(cc.p(465 + x, 360));
             scrollViewLayer.addChild(powerLabel);
 
-            var expLabel = cc.LabelTTF.create("999999", "STHeitiTC-Medium", 20);
+            var expLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
             expLabel.setColor(cc.c3b(255, 239, 131));
             expLabel.setAnchorPoint(cc.p(0, 0.5));
             expLabel.setPosition(cc.p(465 + x, 319));
@@ -212,7 +212,7 @@ var ExploreLayer = cc.Layer.extend({
             progressLabel.setPosition(cc.p(465 + x, 278));
             scrollViewLayer.addChild(progressLabel);
 
-            var description = lz.format(chapterTable[id].description, 20);
+            var description = lz.format("～～" + chapterTable[id].description, 20);
             var len = description.length;
             for (var j = 0; j < len; ++j) {
                 var storyLabel = cc.LabelTTF.create(description[j], "STHeitiTC-Medium", 20);
@@ -347,6 +347,7 @@ var ExploreLayer = cc.Layer.extend({
     _lock: function () {
         cc.log("ExploreLayer _lock");
 
+        this._exploreItem.setEnabled(false);
         LazyLayer.showCloudLayer();
         this.setTouchEnabled(false);
     },
@@ -354,6 +355,7 @@ var ExploreLayer = cc.Layer.extend({
     _unlock: function () {
         cc.log("ExploreLayer _unlock");
 
+        this._exploreItem.setEnabled(true);
         LazyLayer.closeCloudLayer();
         this.setTouchEnabled(true);
     },

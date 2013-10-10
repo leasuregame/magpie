@@ -65,6 +65,7 @@ var main_scene_image = {
     main_message_bg: main_scene_path + "main_message_bg.png",
     star1: main_scene_path + "star1.png",
     star2: main_scene_path + "star2.png",
+    star3: main_scene_path + "star3.png",
     ladder1: main_scene_path + "ladder1.png",
     ladder2: main_scene_path + "ladder2.png",
     cloud: main_scene_path + "cloud.png",
@@ -529,13 +530,14 @@ var effectConfig = [
     10,
     10,
     5,
-    14,
     6,
+    7,
+    5,
+    8,
     6,
-    6,
-    6,
-    6,
-    7
+    8,
+    3,
+    3
 ];
 
 var effectRect = [
@@ -543,13 +545,15 @@ var effectRect = [
     cc.rect(0, 0, 132, 132),
     cc.rect(0, 0, 640, 218),
     cc.rect(0, 0, 600, 713),
-    cc.rect(0, 0, 90, 205),
     cc.rect(0, 0, 120, 275),
-    cc.rect(0, 0, 120, 275),
-    cc.rect(0, 0, 115, 108),
-    cc.rect(0, 0, 115, 108),
-    cc.rect(0, 0, 115, 108),
-    cc.rect(0, 0, 182, 171)
+    cc.rect(0, 0, 182, 171),
+    cc.rect(0, 0, 170, 185),
+    cc.rect(0, 0, 83, 261),
+    cc.rect(0, 0, 251, 279),
+    cc.rect(0, 0, 175, 215),
+    cc.rect(0, 0, 180, 196),
+    cc.rect(0, 0, 175, 215)
+
 ];
 
 for (var effectId = 0; effectId < effectConfig.length; ++effectId) {

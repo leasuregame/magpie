@@ -16,7 +16,7 @@
 
 dbClient = require('pomelo').app.get('dbClient');
 var Card = require("../../domain/entity/card");
-var passiveSkillDao = require('./passiveSkillDao');
+//var passiveSkillDao = require('./passiveSkillDao');
 var async = require('async');
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
@@ -37,24 +37,24 @@ var CardDao = (function(_super) {
 		async.parallel([
 			function(callback) {
 				_this.fetchOne(options, callback);
-			},
-			function(callback) {
+			}
+			/*function(callback) {
 				passiveSkillDao.fetchMany({
 					where: {
 						cardId: options.where.id
 					},
 					sync: options.sync
 				}, callback);
-			}
+			} */
 		], function(err, results) {
 			if (err !== null) {
 				return cb(err, null)
 			}
 
 			var card = results[0];
-			var pss = results[1];
+			//var pss = results[1];
 
-			card.addPassiveSkills(pss);
+			//card.addPassiveSkills(pss);
 			return cb(null, card);
 		});
 	};
@@ -75,7 +75,7 @@ var CardDao = (function(_super) {
 					return cb(null, []);
 				}
 
-				passiveSkillDao.fetchMany({
+				/*passiveSkillDao.fetchMany({
 					sync: options.sync,
 					where: ' cardId in (' + ids.toString() + ')'
 				}, function(err, pss) {
@@ -93,7 +93,8 @@ var CardDao = (function(_super) {
 					});
 					return cb(null, cards);
 				});
-
+                */
+                return cb(null, cards);
 			}
 		]);
 	};

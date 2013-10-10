@@ -93,19 +93,6 @@ var BattleLog = Entity.extend({
             return (this._winner === "own");
         },
 
-        getBattleNode: function () {
-            cc.log("BattleLog getBattleNode");
-
-            var key;
-            var battleNode = {};
-
-            for (key in this._card) {
-                battleNode[key] = this._card[key];
-            }
-
-            return battleNode;
-        },
-
         getSpirit: function (id) {
             cc.log("BattleLog getSpirit: " + id);
 

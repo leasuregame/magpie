@@ -114,7 +114,7 @@ var BattleCardNode = cc.Node.extend({
     setOpacity: function (opacity) {
         this._frameSprite.setOpacity(opacity);
         this._heroSprite.setOpacity(opacity);
-        if(this._iconSprite) this._iconSprite.setOpacity(opacity);
+        if (this._iconSprite) this._iconSprite.setOpacity(opacity);
     },
 
     getColor: function () {
@@ -124,7 +124,11 @@ var BattleCardNode = cc.Node.extend({
     setColor: function (color3) {
         this._frameSprite.setColor(color3);
         this._heroSprite.setColor(color3);
-        if(this._iconSprite)this._iconSprite.setColor(color3);
+        if (this._iconSprite)this._iconSprite.setColor(color3);
+    },
+
+    getSkillType: function() {
+        return this._skillType;
     },
 
     _tip: function (value, isCrit) {
@@ -230,6 +234,15 @@ var BattleCardNode = cc.Node.extend({
         var d = cc.Sequence.create(cc.Spawn.create(a, b), callFuncAction);
 
         this.runAction(d);
+    },
+
+    heal: function (value, isCrit) {
+        cc.log("BattleCardNode heal");
+
+        this.scheduleOnce(function () {
+            this._tip(value, isCrit);
+            this._updateHp(value);
+        }, 0.5 / GAME_COMBAT_SPEED);
     },
 
     _dead: function () {

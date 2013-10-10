@@ -106,9 +106,8 @@ var BattleCardNode = cc.Node.extend({
 
         this._hp += value;
 
-        if (this._hp < 0) {
-            this._hp = 0;
-        }
+        this._hp = Math.min(this._hp, this._maxHp);
+        this._hp = Math.max(this._hp, 0);
 
         this._hpProgress.setAllValue(this._hp, this._maxHp, 0.5);
 

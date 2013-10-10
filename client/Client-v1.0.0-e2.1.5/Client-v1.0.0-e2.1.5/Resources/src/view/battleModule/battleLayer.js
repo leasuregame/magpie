@@ -17,18 +17,18 @@ var BatterLayer = cc.Layer.extend({
     _battleNode: null,
     _spiritNode: [],
     _locate: {
-        1: cc.p(130, 450),
+        1: cc.p(150, 450),
         2: cc.p(355, 450),
-        3: cc.p(590, 450),
-        4: cc.p(130, 250),
+        3: cc.p(570, 450),
+        4: cc.p(150, 250),
         5: cc.p(355, 250),
-        6: cc.p(590, 250),
-        7: cc.p(130, 750),
+        6: cc.p(570, 250),
+        7: cc.p(150, 750),
         8: cc.p(355, 750),
-        9: cc.p(590, 750),
-        10: cc.p(130, 950),
+        9: cc.p(570, 750),
+        10: cc.p(150, 950),
         11: cc.p(355, 950),
-        12: cc.p(590, 950)
+        12: cc.p(570, 950)
     },
     _rotation: {},
 
@@ -342,68 +342,76 @@ var BatterLayer = cc.Layer.extend({
     _collectSpirit: function () {
         cc.log("BatterLayer collectSpirit");
 
+        var len = this._spiritNode.length;
+
+
         if (this._battleLog.isWin()) {
-            var len = this._spiritNode.length;
-            for (var i = 0; i < len; ++i) {
-                var spirit = this._spiritNode[i];
-
-
-                spirit.stopAllActions();
-
+            if (len) {
                 var index = this._battleLog.getSpirit(1);
-                var point1 = spirit.getPosition();
-                var point2 = this._locate[index];
 
-                var pointArray = [
-                    point1,
-                    cc.p(lz.random(50, 670), (point1.y + point2.y) / 2),
-                    point2
-                ];
+                for (var i = 0; i < len; ++i) {
+                    var spirit = this._spiritNode[i];
 
-                spirit.runAction(cc.Sequence.create(
-                    cc.Spawn.create(
-                        cc.CardinalSplineTo.create(2, pointArray, 0),
-                        cc.Sequence.create(
-                            cc.DelayTime.create(1.5),
-                            cc.CallFunc.create(function () {
-                                this._battleNode[index].runAction(
-                                    cc.Sequence.create(
-                                        cc.ScaleTo.create(0.5, 1.4, 1.4),
-                                        cc.ScaleTo.create(0.3, 1, 1)
-                                    )
-                                );
-                            }, this),
-                            cc.ScaleTo.create(0.5, 0, 0)
-                        )
-                    ),
+                    spirit.stopAllActions();
+                    var point1 = spirit.getPosition();
+                    var point2 = this._locate[index];
 
-                    cc.CallFunc.create(function () {
-                        spirit.removeFromParent();
-                    }, this)
-                ));
+                    var pointArray = [
+                        point1,
+                        cc.p(lz.random(50, 670), (point1.y + point2.y) / 2),
+                        point2
+                    ];
+
+                    spirit.runAction(cc.Sequence.create(
+                        cc.Spawn.create(
+                            cc.CardinalSplineTo.create(2, pointArray, 0),
+                            cc.Sequence.create(
+                                cc.DelayTime.create(1.5),
+                                cc.CallFunc.create(function () {
+                                    this._battleNode[index].runAction(
+                                        cc.Sequence.create(
+                                            cc.ScaleTo.create(0.5, 1.4, 1.4),
+                                            cc.ScaleTo.create(0.3, 1, 1)
+                                        )
+                                    );
+                                }, this),
+                                cc.ScaleTo.create(0.5, 0.3, 0.3)
+                            )
+                        ),
+                        cc.Hide.create()
+                    ));
+                }
+
+                this.scheduleOnce(function () {
+                    this.end();
+                }, 4);
+            } else {
+                this.end();
             }
 
-            this.scheduleOnce(function () {
-                this.end();
-            }, 4);
         } else {
-            var len = this._spiritNode.length;
-            for (var i = 0; i < len; ++i) {
-                var spirit = this._spiritNode[i];
+            if (len) {
+                for (var i = 0; i < len; ++i) {
+                    var spirit = this._spiritNode[i];
 
-                spirit.stopAllActions();
+                    spirit.stopAllActions();
 
-                spirit.runAction(
-                    cc.Spawn.create(
-                        cc.ScaleTo.create(1, 5, 5),
-                        cc.FadeOut.create(1)
-                    )
-                );
+                    spirit.runAction(
+                        cc.Spawn.create(
+                            cc.ScaleTo.create(1, 5, 5),
+                            cc.FadeOut.create(1)
+                        )
+                    );
+                }
+
+                this.scheduleOnce(function () {
+                    this.end();
+                }, 2);
+            } else {
+                this.end();
             }
 
-            this.scheduleOnce(function () {
-                this.end();
-            }, 2);
+
         }
     }
 });

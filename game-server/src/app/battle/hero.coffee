@@ -27,12 +27,12 @@ class Hero extends Module
     @player = player
     @id = attrs.id
     @lv = attrs.lv
-    @init_hp = attrs.hp + attrs.incs.spirit_hp
-    @hp = attrs.hp + attrs.incs.spirit_hp
-    @atk = attrs.atk + attrs.incs.spirit_atk
-    @init_atk = attrs.atk + attrs.incs.spirit_atk
-    @spirit_hp = attrs.incs.spirit_hp
-    @spirit_atk = attrs.incs.spirit_atk
+    @init_hp = attrs.hp + (attrs.incs?.spirit_hp or 0)
+    @hp = attrs.hp + (attrs.incs?.spirit_hp or 0)
+    @atk = attrs.atk + (attrs.incs?.spirit_atk or 0)
+    @init_atk = attrs.atk + (attrs.incs?.spirit_atk or 0)
+    @spirit_hp = attrs.incs?.spirit_hp or 0
+    @spirit_atk = attrs.incs?.spirit_atk or 0
     @hp_only = attrs.hp
     @atk_only = attrs.atk
 

@@ -45,8 +45,9 @@ Data.prototype.importCsvToSql = function(table, filepath, callback) {
       }
       if(table == 'card') {
           genSkillInc(row);
-          var ps = initPassiveSkill(row);
-          ps.forEach(function(p){
+          initPassiveSkill(row);
+
+          /*ps.forEach(function(p){
               p.cardId = row.id;
               /*self.db.passiveSkill.fetchOne({
                   where:{cardId:row.id}
@@ -56,7 +57,7 @@ Data.prototype.importCsvToSql = function(table, filepath, callback) {
                    }else {
                        console.log(ps);
                    }
-              }) */
+              })
               self.db.passiveSkill.create({
                   data:p
               },function(err,res){
@@ -68,6 +69,7 @@ Data.prototype.importCsvToSql = function(table, filepath, callback) {
 
               })
           });
+          */
 
       }
       self.db[table].delete({
@@ -327,30 +329,16 @@ var initPassiveSkill = function(card) {
         return results;
     count = card.star - 2;
 
-    while (count-- > 0) {
+    for(var i = 0;i < count; i++) {
         index = _.random(cardConfig.PASSIVESKILL.TYPE.length - 1);
         _ref = cardConfig.PASSIVESKILL.VALUE_SCOPE.split('-'), start = _ref[0], end = _ref[1];
         results.push({
+            id:i,
             name: cardConfig.PASSIVESKILL.TYPE[index],
-            value: parseFloat(_.random(parseInt(start) * 10, parseInt(end) * 10) / 10).toFixed(1)
+            value: parseFloat(parseFloat(_.random(parseInt(start) * 10, parseInt(end) * 10) / 10).toFixed(1))
         });
     }
 
-    return results;
-
-    /*results.forEach(function(p){
-        p.cardId = card.id;
-        passiveSkillDao.create({
-            data: p
-        }, function(err, res) {
-            if (err) {
-                return callback(err);
-            }
-
-            card.addPassiveSkill(res);
-            // return callback();
-        });
-    });
-   */
+    card.passiveSkills = results;
 };
 

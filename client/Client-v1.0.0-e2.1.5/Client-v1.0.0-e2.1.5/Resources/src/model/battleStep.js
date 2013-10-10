@@ -59,6 +59,10 @@ var BattleStep = Entity.extend({
         return this._target[this._index];
     },
 
+    isSkill: function () {
+        return this._isSkill;
+    },
+
     getEffect: function () {
         return this._effect[this._index];
     },

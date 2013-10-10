@@ -285,7 +285,7 @@ var PassLayer = cc.Layer.extend({
     _spiritWalk: function (index, duration, height, jumps) {
         cc.log("PassLayer _spiritWalk");
 
-        duration = duration || 2;
+        duration = duration || 1;
         height = height || 35;
         jumps = jumps || 3;
 
@@ -391,7 +391,7 @@ var PassLayer = cc.Layer.extend({
         var len = str.length;
 
         var offsetY = 655;
-        for(var i = 0; i < len; ++i) {
+        for (var i = 0; i < len; ++i) {
             var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
             rewardLabel.setColor(cc.c3b(255, 239, 131));
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
@@ -453,7 +453,7 @@ var PassLayer = cc.Layer.extend({
 
         this.scheduleOnce(function () {
             LazyLayer.closeCloudLayer();
-        }, 4.5);
+        }, 3.5);
     },
 
     _wipeOutAnimation: function (reward) {

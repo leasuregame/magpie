@@ -40,28 +40,28 @@ var CardTrainLabel = cc.Layer.extend({
         cardItemBgSprite.setPosition(cc.p(364, 613));
         this.addChild(cardItemBgSprite);
 
-        var elixirIcon = cc.LabelTTF.create("仙       丹:", "STHeitiTC-Medium", 22);
+        var elixirIcon = cc.LabelTTF.create("仙丹:", "STHeitiTC-Medium", 20);
         elixirIcon.setColor(cc.c3b(255, 239, 131));
-        elixirIcon.setAnchorPoint(cc.p(1, 0.5));
-        elixirIcon.setPosition(cc.p(590, 750));
+        elixirIcon.setAnchorPoint(cc.p(0, 0.5));
+        elixirIcon.setPosition(cc.p(510, 755));
         this.addChild(elixirIcon);
 
-        this._elixirLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+        this._elixirLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
         this._elixirLabel.setColor(cc.c3b(255, 248, 69));
         this._elixirLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._elixirLabel.setPosition(cc.p(605, 748));
+        this._elixirLabel.setPosition(cc.p(605, 753));
         this.addChild(this._elixirLabel);
 
-        var needElixirIcon = cc.LabelTTF.create("消耗仙丹:", "STHeitiTC-Medium", 22);
+        var needElixirIcon = cc.LabelTTF.create("消耗仙丹:", "STHeitiTC-Medium", 20);
         needElixirIcon.setColor(cc.c3b(255, 239, 131));
-        needElixirIcon.setAnchorPoint(cc.p(1, 0.5));
-        needElixirIcon.setPosition(cc.p(590, 698));
+        needElixirIcon.setAnchorPoint(cc.p(0, 0.5));
+        needElixirIcon.setPosition(cc.p(510, 724));
         this.addChild(needElixirIcon);
 
-        this._needElixirLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+        this._needElixirLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
         this._needElixirLabel.setColor(cc.c3b(255, 248, 69));
         this._needElixirLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._needElixirLabel.setPosition(cc.p(605, 700));
+        this._needElixirLabel.setPosition(cc.p(605, 722));
         this.addChild(this._needElixirLabel);
 
         this._resLabel = cc.Node.create();
@@ -115,7 +115,7 @@ var CardTrainLabel = cc.Layer.extend({
         tipLabelBgSprite.setPosition(cc.p(0, 0));
         this._tipLabel.addChild(tipLabelBgSprite);
 
-        var tipLabel = cc.LabelTTF.create("每消耗 10 点仙丹可提升 1 点攻击或 3 点生命", "STHeitiTC-Medium", 22);
+        var tipLabel = cc.LabelTTF.create("每消耗 10 点仙丹可提升 1 点攻击或 2 点生命", "STHeitiTC-Medium", 22);
         tipLabel.setColor(cc.c3b(255, 239, 131));
         tipLabel.setPosition(cc.p(0, 0));
         this._tipLabel.addChild(tipLabel);

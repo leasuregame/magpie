@@ -71,7 +71,9 @@ var Shop = Entity.extend({
         var vipPrivilegeList = [];
 
         for (var key in table) {
-            vipPrivilegeList.push(table[key]);
+            if (table[key].id != 0) {
+                vipPrivilegeList.push(table[key]);
+            }
         }
 
         vipPrivilegeList.sort(this._cmp);

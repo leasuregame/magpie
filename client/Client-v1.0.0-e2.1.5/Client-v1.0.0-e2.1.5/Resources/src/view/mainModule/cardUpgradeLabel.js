@@ -56,7 +56,7 @@ var CardUpgradeLabel = cc.Layer.extend({
         var resLabelBgSprite = cc.Sprite.create(main_scene_image.icon49);
         this._resLabel.addChild(resLabelBgSprite);
 
-        var hpIcon = cc.LabelTTF.create("攻击:", "STHeitiTC-Medium", 22);
+        var hpIcon = cc.LabelTTF.create("生命:", "STHeitiTC-Medium", 22);
         hpIcon.setColor(cc.c3b(255, 239, 131));
         hpIcon.setPosition(cc.p(-85, 40));
         this._resLabel.addChild(hpIcon);
@@ -71,7 +71,7 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._hpAdditionLabel.setPosition(cc.p(85, 38));
         this._resLabel.addChild(this._hpAdditionLabel);
 
-        var atkIcon = cc.LabelTTF.create("生命:", "STHeitiTC-Medium", 22);
+        var atkIcon = cc.LabelTTF.create("攻击:", "STHeitiTC-Medium", 22);
         atkIcon.setColor(cc.c3b(255, 239, 131));
         atkIcon.setPosition(cc.p(-85, 5));
         this._resLabel.addChild(atkIcon);

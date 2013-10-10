@@ -6,7 +6,7 @@ _ = require 'underscore'
 
 module.exports = 
   createCard: (data, done) ->
-    if data.star is null
+    unless data.star
       data.star = data.tableId%5 or 5
 
     ps = []
@@ -41,6 +41,7 @@ module.exports =
 
   resetSkillIncForCard: (card) ->
     genSkillInc(card) if card.star >= 3
+
 
 genSkillInc = (card) ->
   cdata = table.getTableItem('cards', card.tableId)

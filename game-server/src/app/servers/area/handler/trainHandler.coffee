@@ -7,6 +7,7 @@ table = require '../../../manager/table'
 passSkillConfig = require '../../../../config/data/passSkill'
 elixirConfig = require '../../../../config/data/elixir'
 starUpgradeConfig = require '../../../../config/data/starUpgrade'
+cardConfig = require '../../../../config/data/card'
 utility = require '../../../common/utility'
 entityUtil = require '../../../util/entityUtil'
 job = require '../../../dao/job'
@@ -523,11 +524,20 @@ Handler::sellCards = (msg, session, next) ->
     player.save()
     next(null, {code: 200, msg: price: price})
 
+Handler::getCardBook = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    next(null, {code: 200, msg: cardBook: player.cardBook})
+
 Handler::getCardBookEnergy = (msg, session, next) ->
   playerId = session.get('playerId')
   tableId = msg.tableId
 
-  ENERGY = 10
+  ENERGY = cardConfig.LIGHT_UP_ENERGY[cardStar(tableId)]
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
@@ -545,4 +555,32 @@ Handler::getCardBookEnergy = (msg, session, next) ->
 
 Handler::exchangeCard = (msg, session, next) ->
   playerId = session.get('playerId')
+  tableId = msg.tableId
 
+  star = cardStar(tableId)
+  if star not in [4, 5]
+    return next(null, {code: 501, msg: '只能兑换4星，5星卡牌'})
+
+  player = null
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+
+    (res, cb) ->
+      player = res
+      if player.fragments < cardConfig.CARD_EXCHANGE[star]
+        return cb({code: 501, msg: '卡牌碎片不足'})
+
+      entityUtil.createCard {
+        tableId: tableId
+        playerId: player.id
+      }, cb
+  ], (err, card) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    player.addCard(card)
+    next(null, {code: 200, msg: card: card.toJson()})
+
+cardStar = (tableId) ->
+  tableId % 5 or 5

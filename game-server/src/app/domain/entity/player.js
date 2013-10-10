@@ -101,13 +101,6 @@ var addEvents = function(player) {
             //player.activeGroupEffect();
             player.activeSpiritorEffect();
         }
-        if (!player.cardBookMark.hasMark(card.tableId)) {
-            player.cardBookMark.mark(card.tableId);
-            cardBook = utility.deepCopy(player.cardBook);
-            cardBook.mark = player.cardBookMark.value;
-            player.cardBook = cardBook;
-            player.save();
-        }
     });
 
     player.on('cash.change', function(cash) {

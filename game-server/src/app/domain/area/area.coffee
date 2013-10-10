@@ -5,10 +5,11 @@ logger = require('pomelo-logger').getLogger(__filename)
 Area = module.exports
 
 Area.init = (opts) ->
+  @app = opts.app
   timer.run()
   
 Area.addPlayer = (player) ->
-  eventManager.addEventToPlayer(player)
+  eventManager.addEventToPlayer(@app, player)
   players.put player
 
 Area.removePlayer = (playerId) ->

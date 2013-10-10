@@ -1,7 +1,12 @@
 playerConfig = require('../../../config/data/player')
+utility = require '../../common/utility'
 _ = require 'underscore'
 
-exports.addEvents = (player) ->
+exports.addEvents = (app, player) ->
+  player.on 'add.card', (card) ->
+    if not player.cardBookMark.hasMark(card.tableId)
+      lightUpACard(app, player, card.tableId)
+
   player.on 'power.resume', ->
     ply = player
     interval = playerConfig.POWER_RESUME.interval
@@ -33,3 +38,15 @@ exports.addEvents = (player) ->
   player.emit('lineUp.change')
 
   return
+
+lightUpACard = (app, player, tableId) ->
+  player.cardBookMark.mark(tableId)
+  cardBook = utility.deepCopy(player.cardBook)
+  cardBook.mark = player.cardBookMark.value
+  player.cardBook = cardBook
+  player.save()
+
+  app.get('messageService').pushByPid player.id, {
+    route: 'onLightUpCard'
+    msg: tableId: tableId
+  }, () ->

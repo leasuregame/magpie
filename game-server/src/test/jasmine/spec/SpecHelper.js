@@ -189,9 +189,9 @@ var initPomelo = function() {
       console.log('connect success!');
       inited = true;
 
-      // pomelo.on('onMessage', function(data){
-      //   console.log('Receive a message: ', data);
-      // });
+      pomelo.on('onLightUpCard', function(data){
+        console.log('Receive a message: ', data.msg);
+      });
     });
   });
   waitsFor(function() {
@@ -245,6 +245,11 @@ var game = {
       pomelo.on('onBless', function(data) {
         console.log('receive a bless: ', data);
       });
+
+      pomelo.on('onLightUpCard', function(data){
+        console.log('Receive a message: ', data);
+      });
+
     });
   },
   login: function(name, pwd, areaId) {

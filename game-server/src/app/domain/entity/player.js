@@ -136,9 +136,6 @@ var addEvents = function(player) {
         }
         recountVipPrivilege(player, oldVip);
     });
-
-    // player.emit('exp.change', player.exp);
-    // player.emit('cash.change', player.cash);
 };
 
 var correctPower = function(player) {

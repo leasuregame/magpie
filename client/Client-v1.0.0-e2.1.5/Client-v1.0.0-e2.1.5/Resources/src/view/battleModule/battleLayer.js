@@ -15,6 +15,7 @@
 var BatterLayer = cc.Layer.extend({
     _battleLog: null,
     _battleNode: null,
+    _spiritNode: [],
     _locate: {
         1: cc.p(130, 450),
         2: cc.p(355, 450),
@@ -37,6 +38,7 @@ var BatterLayer = cc.Layer.extend({
         if (!this._super()) return false;
 
         this._battleLog = battleLog;
+        this._spiritNode = [];
 
         var bgSprite = null;
 
@@ -117,7 +119,7 @@ var BatterLayer = cc.Layer.extend({
         this.unschedule(this._playAStep);
 
         if (!this._battleLog.hasNextBattleStep()) {
-            this.end();
+            this.scheduleOnce(this._collectSpirit, 1.5)
             return;
         }
 
@@ -281,6 +283,128 @@ var BatterLayer = cc.Layer.extend({
         }
 
         return 2.0;
+    },
+
+    _addSpirit: function (index) {
+        var spirit = cc.Sprite.create(main_scene_image.icon247);
+
+        spirit.setOpacity(200);
+
+        var point = this._locate[index];
+        var offset = lz.random(-25, 25);
+        var pointArray1 = [
+            cc.p(point.x, point.y + 100),
+            cc.p(point.x + lz.random(-80, 80), point.y + (100 - offset) / 2),
+            cc.p(point.x + lz.random(-25, 25), point.y + offset)
+        ];
+
+        spirit.setPosition(pointArray1[0]);
+        spirit.setScale(0);
+        this.addChild(spirit, 1);
+        this._spiritNode.push(spirit);
+
+        var pointArray2 = [
+            pointArray1[2],
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            pointArray1[2]
+        ];
+
+        spirit.runAction(cc.Sequence.create(
+            cc.Spawn.create(
+                cc.CardinalSplineTo.create(2, pointArray1, 0),
+                cc.ScaleTo.create(1, 0.8, 0.8)
+            ),
+            cc.CallFunc.create(function () {
+                spirit.runAction(
+                    cc.RepeatForever.create(
+                        cc.CardinalSplineTo.create(20, pointArray2, 0)
+                    )
+                );
+            }, this)
+        ));
+    },
+
+    releaseSpirit: function (index, count) {
+        cc.log("BatterLayer releaseSpirit");
+
+        for (var i = 0; i < count; ++i) {
+            this._addSpirit(index);
+        }
+    },
+
+    _collectSpirit: function () {
+        cc.log("BatterLayer collectSpirit");
+
+        if (this._battleLog.isWin()) {
+            var len = this._spiritNode.length;
+            for (var i = 0; i < len; ++i) {
+                var spirit = this._spiritNode[i];
+
+
+                spirit.stopAllActions();
+
+                var index = this._battleLog.getSpirit(1);
+                var point1 = spirit.getPosition();
+                var point2 = this._locate[index];
+
+                var pointArray = [
+                    point1,
+                    cc.p(lz.random(50, 670), (point1.y + point2.y) / 2),
+                    point2
+                ];
+
+                spirit.runAction(cc.Sequence.create(
+                    cc.Spawn.create(
+                        cc.CardinalSplineTo.create(2, pointArray, 0),
+                        cc.Sequence.create(
+                            cc.DelayTime.create(1.5),
+                            cc.CallFunc.create(function () {
+                                this._battleNode[index].runAction(
+                                    cc.Sequence.create(
+                                        cc.ScaleTo.create(0.5, 1.4, 1.4),
+                                        cc.ScaleTo.create(0.3, 1, 1)
+                                    )
+                                );
+                            }, this),
+                            cc.ScaleTo.create(0.5, 0, 0)
+                        )
+                    ),
+
+                    cc.CallFunc.create(function () {
+                        spirit.removeFromParent();
+                    }, this)
+                ));
+            }
+
+            this.scheduleOnce(function () {
+                this.end();
+            }, 4);
+        } else {
+            var len = this._spiritNode.length;
+            for (var i = 0; i < len; ++i) {
+                var spirit = this._spiritNode[i];
+
+                spirit.stopAllActions();
+
+                spirit.runAction(
+                    cc.Spawn.create(
+                        cc.ScaleTo.create(1, 5, 5),
+                        cc.FadeOut.create(1)
+                    )
+                );
+            }
+
+            this.scheduleOnce(function () {
+                this.end();
+            }, 2);
+        }
     }
 });
 

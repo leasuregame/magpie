@@ -21,6 +21,7 @@ var MAX_CARD_TABLE_ID = 250;
 var CardLibrary = Entity.extend({
     _cardLibrary: [],
 
+
     init: function (data) {
         cc.log("CardLibrary init");
 

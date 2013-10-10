@@ -1,8 +1,4 @@
 var nameChanged = {
-    "achievement": "成就配置表",
-    "成就配置表": "achievement",
-    "treasure_hunt": "寻宝配置表",
-    "寻宝配置表": "treasure_hunt",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
     "card_lv_limit": "卡牌等级限制表",
@@ -17,6 +13,10 @@ var nameChanged = {
     "基础属性成长表": "factors",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
+    "achievement": "成就配置表",
+    "成就配置表": "achievement",
+    "treasure_hunt": "寻宝配置表",
+    "寻宝配置表": "treasure_hunt",
     "rank": "竞技产出表",
     "竞技产出表": "rank",
     "ranking_reward": "排名奖励",
@@ -74,421 +74,6 @@ var nameChanged = {
 };
 
 var outputTables = {
-    "achievement": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "method": "levelTo",
-                "need": 50,
-                "name": "升级达人",
-                "desc": "角色等级达到50级",
-                "gold": 10,
-                "energy": 100
-            },
-            "2": {
-                "id": 2,
-                "method": "levelTo",
-                "need": 90,
-                "name": "疯狂升级",
-                "desc": "角色等级达到90级",
-                "gold": 100,
-                "energy": 1000
-            },
-            "3": {
-                "id": 3,
-                "method": "passTo",
-                "need": 50,
-                "name": "一半！",
-                "desc": "天道闯过50层",
-                "gold": 10,
-                "energy": 100
-            },
-            "4": {
-                "id": 4,
-                "method": "passTo",
-                "need": 100,
-                "name": "通关！",
-                "desc": "天道闯过100层",
-                "gold": 100,
-                "energy": 1000
-            },
-            "5": {
-                "id": 5,
-                "method": "winCount",
-                "need": 50,
-                "name": "小试牛刀",
-                "desc": "竞技获胜次数达到50场",
-                "gold": 10,
-                "energy": 100
-            },
-            "6": {
-                "id": 6,
-                "method": "winCount",
-                "need": 5000,
-                "name": "已经超神了",
-                "desc": "竞技获胜次数达到5000场",
-                "gold": 100,
-                "energy": 1000
-            },
-            "7": {
-                "id": 7,
-                "method": "winningStreak",
-                "need": 50,
-                "name": "所向披靡",
-                "desc": "竞技最高连胜达到50次",
-                "gold": 100,
-                "energy": 1000
-            },
-            "8": {
-                "id": 8,
-                "method": "rankingToOne",
-                "need": 1,
-                "name": "寂寞",
-                "desc": "竞技排名达到第1",
-                "gold": 100,
-                "energy": 1000
-            },
-            "9": {
-                "id": 9,
-                "method": "v587",
-                "need": 1,
-                "name": "霸气外射！",
-                "desc": "以1敌5，战胜对方",
-                "gold": 10,
-                "energy": 100
-            },
-            "10": {
-                "id": 10,
-                "method": "friends",
-                "need": 20,
-                "name": "我们约会吧",
-                "desc": "拥有20个好友",
-                "gold": 10,
-                "energy": 100
-            },
-            "11": {
-                "id": 11,
-                "method": "gaveBless",
-                "need": 500,
-                "name": "无私奉献",
-                "desc": "为好友送出祝福达到500次",
-                "gold": 10,
-                "energy": 100
-            },
-            "12": {
-                "id": 12,
-                "method": "receivedBless",
-                "need": 100,
-                "name": "爱是相互的",
-                "desc": "收到好友祝福次数达到100次",
-                "gold": 300,
-                "energy": 2000
-            },
-            "13": {
-                "id": 13,
-                "method": "star5card",
-                "need": 1,
-                "name": "质的飞跃",
-                "desc": "获得1张5星卡",
-                "gold": 10,
-                "energy": 100
-            },
-            "14": {
-                "id": 14,
-                "method": "star5cardFullLevel",
-                "need": 1,
-                "name": "这就是实力",
-                "desc": "将1张5星卡强化到满级",
-                "gold": 50,
-                "energy": 500
-            },
-            "15": {
-                "id": 15,
-                "method": "star5card",
-                "need": 5,
-                "name": "你就是神！",
-                "desc": "获得5张5星卡",
-                "gold": 100,
-                "energy": 1000
-            },
-            "16": {
-                "id": 16,
-                "method": "psTo10",
-                "need": 1,
-                "name": "但求最好",
-                "desc": "拥有1个10%的被动属性",
-                "gold": 10,
-                "energy": 100
-            },
-            "17": {
-                "id": 17,
-                "method": "elixirTo",
-                "need": 100000,
-                "name": "一大波仙丹",
-                "desc": "累计获得100000仙丹",
-                "gold": 50,
-                "energy": 500
-            },
-            "18": {
-                "id": 18,
-                "method": "energyTo",
-                "need": 100000,
-                "name": "活力无限",
-                "desc": "累计获得100000活力值",
-                "gold": 100,
-                "energy": 1000
-            },
-            "19": {
-                "id": 19,
-                "method": "luckyCardCount",
-                "need": 9999,
-                "name": "抽卡狂魔",
-                "desc": "抽卡总次数达到9999",
-                "gold": 100,
-                "energy": 500
-            },
-            "20": {
-                "id": 20,
-                "method": "highLuckyCardCount",
-                "need": 8888,
-                "name": "钱就是个屁",
-                "desc": "高级抽卡总次数达到8888",
-                "gold": 100,
-                "energy": 1000
-            },
-            "21": {
-                "id": 21,
-                "method": "fun",
-                "need": 1,
-                "name": "买彩票去吧",
-                "desc": "用1张素材卡成功进阶该卡牌",
-                "gold": 50,
-                "energy": 100
-            },
-            "22": {
-                "id": 22,
-                "method": "powerConsume",
-                "need": 10000,
-                "name": "孜孜不倦",
-                "desc": "累计消耗体力10000点",
-                "gold": 10,
-                "energy": 100
-            },
-            "23": {
-                "id": 23,
-                "method": "vip",
-                "need": 1,
-                "name": "我是VIP！",
-                "desc": "成为VIP用户",
-                "gold": 50,
-                "energy": 500
-            },
-            "24": {
-                "id": 24,
-                "method": "moneyConsume",
-                "need": 10000000,
-                "name": "不差钱",
-                "desc": "累计消耗仙币1000万",
-                "gold": 10,
-                "energy": 100
-            },
-            "25": {
-                "id": 25,
-                "method": "goldConsume",
-                "need": 100000,
-                "name": "挥金如土",
-                "desc": "累计消耗元宝100000",
-                "gold": 50,
-                "energy": 500
-            }
-        }
-    },
-    "treasure_hunt": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "type": "power",
-                "value": 10,
-                "name": "体力",
-                "type_rate": 30,
-                "value_rate": 60,
-                "rate": 18
-            },
-            "1": {
-                "id": 1,
-                "type": "power",
-                "value": 50,
-                "name": "体力",
-                "type_rate": 30,
-                "value_rate": 30,
-                "rate": 9
-            },
-            "2": {
-                "id": 2,
-                "type": "power",
-                "value": 100,
-                "name": "体力",
-                "type_rate": 30,
-                "value_rate": 10,
-                "rate": 3
-            },
-            "3": {
-                "id": 3,
-                "type": "elixir",
-                "value": 10,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 60,
-                "rate": 9
-            },
-            "4": {
-                "id": 4,
-                "type": "elixir",
-                "value": 100,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 39,
-                "rate": 5.85
-            },
-            "5": {
-                "id": 5,
-                "type": "elixir",
-                "value": 5000,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "6": {
-                "id": 6,
-                "type": "spirit",
-                "value": 50,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 60,
-                "rate": 6
-            },
-            "7": {
-                "id": 7,
-                "type": "spirit",
-                "value": 100,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 39,
-                "rate": 3.9
-            },
-            "8": {
-                "id": 8,
-                "type": "spirit",
-                "value": 1000,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "9": {
-                "id": 9,
-                "type": "skillPoint",
-                "value": 100,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 60,
-                "rate": 6
-            },
-            "10": {
-                "id": 10,
-                "type": "skillPoint",
-                "value": 500,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 39,
-                "rate": 3.9
-            },
-            "11": {
-                "id": 11,
-                "type": "skillPoint",
-                "value": 10000,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "12": {
-                "id": 12,
-                "type": "energy",
-                "value": 50,
-                "name": "活力",
-                "type_rate": 10,
-                "value_rate": 60,
-                "rate": 6
-            },
-            "13": {
-                "id": 13,
-                "type": "energy",
-                "value": 100,
-                "name": "活力",
-                "type_rate": 10,
-                "value_rate": 39,
-                "rate": 3.9
-            },
-            "14": {
-                "id": 14,
-                "type": "energy",
-                "value": 5000,
-                "name": "活力",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "15": {
-                "id": 15,
-                "type": "money",
-                "value": 1000,
-                "name": "铜板",
-                "type_rate": 15,
-                "value_rate": 60,
-                "rate": 9
-            },
-            "16": {
-                "id": 16,
-                "type": "money",
-                "value": 10000,
-                "name": "铜板",
-                "type_rate": 15,
-                "value_rate": 39,
-                "rate": 5.85
-            },
-            "17": {
-                "id": 17,
-                "type": "money",
-                "value": 200000,
-                "name": "铜板",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "18": {
-                "id": 18,
-                "type": "gold",
-                "value": 10,
-                "name": "元宝",
-                "type_rate": 10,
-                "value_rate": 99,
-                "rate": 9.9
-            },
-            "19": {
-                "id": 19,
-                "type": "gold",
-                "value": 500,
-                "name": "元宝",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            }
-        }
-    },
     "card_grow": {
         "colComment": {},
         "rows": {
@@ -10396,6 +9981,421 @@ var outputTables = {
             }
         }
     },
+    "achievement": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "method": "levelTo",
+                "need": 50,
+                "name": "升级达人",
+                "desc": "角色等级达到50级",
+                "gold": 10,
+                "energy": 100
+            },
+            "2": {
+                "id": 2,
+                "method": "levelTo",
+                "need": 90,
+                "name": "疯狂升级",
+                "desc": "角色等级达到90级",
+                "gold": 100,
+                "energy": 1000
+            },
+            "3": {
+                "id": 3,
+                "method": "passTo",
+                "need": 50,
+                "name": "一半！",
+                "desc": "天道闯过50层",
+                "gold": 10,
+                "energy": 100
+            },
+            "4": {
+                "id": 4,
+                "method": "passTo",
+                "need": 100,
+                "name": "通关！",
+                "desc": "天道闯过100层",
+                "gold": 100,
+                "energy": 1000
+            },
+            "5": {
+                "id": 5,
+                "method": "winCount",
+                "need": 50,
+                "name": "小试牛刀",
+                "desc": "竞技获胜次数达到50场",
+                "gold": 10,
+                "energy": 100
+            },
+            "6": {
+                "id": 6,
+                "method": "winCount",
+                "need": 5000,
+                "name": "已经超神了",
+                "desc": "竞技获胜次数达到5000场",
+                "gold": 100,
+                "energy": 1000
+            },
+            "7": {
+                "id": 7,
+                "method": "winningStreak",
+                "need": 50,
+                "name": "所向披靡",
+                "desc": "竞技最高连胜达到50次",
+                "gold": 100,
+                "energy": 1000
+            },
+            "8": {
+                "id": 8,
+                "method": "rankingToOne",
+                "need": 1,
+                "name": "寂寞",
+                "desc": "竞技排名达到第1",
+                "gold": 100,
+                "energy": 1000
+            },
+            "9": {
+                "id": 9,
+                "method": "v587",
+                "need": 1,
+                "name": "霸气外射！",
+                "desc": "以1敌5，战胜对方",
+                "gold": 10,
+                "energy": 100
+            },
+            "10": {
+                "id": 10,
+                "method": "friends",
+                "need": 20,
+                "name": "我们约会吧",
+                "desc": "拥有20个好友",
+                "gold": 10,
+                "energy": 100
+            },
+            "11": {
+                "id": 11,
+                "method": "gaveBless",
+                "need": 500,
+                "name": "无私奉献",
+                "desc": "为好友送出祝福达到500次",
+                "gold": 10,
+                "energy": 100
+            },
+            "12": {
+                "id": 12,
+                "method": "receivedBless",
+                "need": 100,
+                "name": "爱是相互的",
+                "desc": "收到好友祝福次数达到100次",
+                "gold": 300,
+                "energy": 2000
+            },
+            "13": {
+                "id": 13,
+                "method": "star5card",
+                "need": 1,
+                "name": "质的飞跃",
+                "desc": "获得1张5星卡",
+                "gold": 10,
+                "energy": 100
+            },
+            "14": {
+                "id": 14,
+                "method": "star5cardFullLevel",
+                "need": 1,
+                "name": "这就是实力",
+                "desc": "将1张5星卡强化到满级",
+                "gold": 50,
+                "energy": 500
+            },
+            "15": {
+                "id": 15,
+                "method": "star5card",
+                "need": 5,
+                "name": "你就是神！",
+                "desc": "获得5张5星卡",
+                "gold": 100,
+                "energy": 1000
+            },
+            "16": {
+                "id": 16,
+                "method": "psTo10",
+                "need": 1,
+                "name": "但求最好",
+                "desc": "拥有1个10%的被动属性",
+                "gold": 10,
+                "energy": 100
+            },
+            "17": {
+                "id": 17,
+                "method": "elixirTo",
+                "need": 100000,
+                "name": "一大波仙丹",
+                "desc": "累计获得100000仙丹",
+                "gold": 50,
+                "energy": 500
+            },
+            "18": {
+                "id": 18,
+                "method": "energyTo",
+                "need": 100000,
+                "name": "活力无限",
+                "desc": "累计获得100000活力值",
+                "gold": 100,
+                "energy": 1000
+            },
+            "19": {
+                "id": 19,
+                "method": "luckyCardCount",
+                "need": 9999,
+                "name": "抽卡狂魔",
+                "desc": "抽卡总次数达到9999",
+                "gold": 100,
+                "energy": 500
+            },
+            "20": {
+                "id": 20,
+                "method": "highLuckyCardCount",
+                "need": 8888,
+                "name": "钱就是个屁",
+                "desc": "高级抽卡总次数达到8888",
+                "gold": 100,
+                "energy": 1000
+            },
+            "21": {
+                "id": 21,
+                "method": "fun",
+                "need": 1,
+                "name": "买彩票去吧",
+                "desc": "用1张素材卡成功进阶该卡牌",
+                "gold": 50,
+                "energy": 100
+            },
+            "22": {
+                "id": 22,
+                "method": "powerConsume",
+                "need": 10000,
+                "name": "孜孜不倦",
+                "desc": "累计消耗体力10000点",
+                "gold": 10,
+                "energy": 100
+            },
+            "23": {
+                "id": 23,
+                "method": "vip",
+                "need": 1,
+                "name": "我是VIP！",
+                "desc": "成为VIP用户",
+                "gold": 50,
+                "energy": 500
+            },
+            "24": {
+                "id": 24,
+                "method": "moneyConsume",
+                "need": 10000000,
+                "name": "不差钱",
+                "desc": "累计消耗仙币1000万",
+                "gold": 10,
+                "energy": 100
+            },
+            "25": {
+                "id": 25,
+                "method": "goldConsume",
+                "need": 100000,
+                "name": "挥金如土",
+                "desc": "累计消耗元宝100000",
+                "gold": 50,
+                "energy": 500
+            }
+        }
+    },
+    "treasure_hunt": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "type": "power",
+                "value": 10,
+                "name": "体力",
+                "type_rate": 30,
+                "value_rate": 60,
+                "rate": 18
+            },
+            "1": {
+                "id": 1,
+                "type": "power",
+                "value": 50,
+                "name": "体力",
+                "type_rate": 30,
+                "value_rate": 30,
+                "rate": 9
+            },
+            "2": {
+                "id": 2,
+                "type": "power",
+                "value": 100,
+                "name": "体力",
+                "type_rate": 30,
+                "value_rate": 10,
+                "rate": 3
+            },
+            "3": {
+                "id": 3,
+                "type": "elixir",
+                "value": 10,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 60,
+                "rate": 9
+            },
+            "4": {
+                "id": 4,
+                "type": "elixir",
+                "value": 100,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 39,
+                "rate": 5.85
+            },
+            "5": {
+                "id": 5,
+                "type": "elixir",
+                "value": 5000,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "6": {
+                "id": 6,
+                "type": "spirit",
+                "value": 50,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 60,
+                "rate": 6
+            },
+            "7": {
+                "id": 7,
+                "type": "spirit",
+                "value": 100,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 39,
+                "rate": 3.9
+            },
+            "8": {
+                "id": 8,
+                "type": "spirit",
+                "value": 1000,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "9": {
+                "id": 9,
+                "type": "skillPoint",
+                "value": 100,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 60,
+                "rate": 6
+            },
+            "10": {
+                "id": 10,
+                "type": "skillPoint",
+                "value": 500,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 39,
+                "rate": 3.9
+            },
+            "11": {
+                "id": 11,
+                "type": "skillPoint",
+                "value": 10000,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "12": {
+                "id": 12,
+                "type": "energy",
+                "value": 50,
+                "name": "活力",
+                "type_rate": 10,
+                "value_rate": 60,
+                "rate": 6
+            },
+            "13": {
+                "id": 13,
+                "type": "energy",
+                "value": 100,
+                "name": "活力",
+                "type_rate": 10,
+                "value_rate": 39,
+                "rate": 3.9
+            },
+            "14": {
+                "id": 14,
+                "type": "energy",
+                "value": 5000,
+                "name": "活力",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "15": {
+                "id": 15,
+                "type": "money",
+                "value": 1000,
+                "name": "铜板",
+                "type_rate": 15,
+                "value_rate": 60,
+                "rate": 9
+            },
+            "16": {
+                "id": 16,
+                "type": "money",
+                "value": 10000,
+                "name": "铜板",
+                "type_rate": 15,
+                "value_rate": 39,
+                "rate": 5.85
+            },
+            "17": {
+                "id": 17,
+                "type": "money",
+                "value": 200000,
+                "name": "铜板",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "18": {
+                "id": 18,
+                "type": "gold",
+                "value": 10,
+                "name": "元宝",
+                "type_rate": 10,
+                "value_rate": 99,
+                "rate": 9.9
+            },
+            "19": {
+                "id": 19,
+                "type": "gold",
+                "value": 500,
+                "name": "元宝",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            }
+        }
+    },
     "rank": {
         "colComment": {},
         "rows": {
@@ -11534,7 +11534,7 @@ var outputTables = {
             },
             "7": {
                 "id": 7,
-                "description": "为当前血量最低的上阵卡牌恢复生命值。",
+                "description": "为当前血量最低的上阵卡牌恢复生命值。治疗量取决于你的攻击力。",
                 "type": 3,
                 "scope": 7,
                 "star3_inc_min": 45,
@@ -11552,7 +11552,7 @@ var outputTables = {
             },
             "8": {
                 "id": 8,
-                "description": "为前排每张卡牌恢复生命值。",
+                "description": "为前排每张卡牌恢复生命值。治疗量取决于你的攻击力。",
                 "type": 4,
                 "scope": 2,
                 "star3_inc_min": 30,
@@ -11570,7 +11570,7 @@ var outputTables = {
             },
             "9": {
                 "id": 9,
-                "description": "为后排每张卡牌恢复生命值。",
+                "description": "为后排每张卡牌恢复生命值。治疗量取决于你的攻击力。",
                 "type": 4,
                 "scope": 3,
                 "star3_inc_min": 30,
@@ -11588,7 +11588,7 @@ var outputTables = {
             },
             "10": {
                 "id": 10,
-                "description": "为当前上阵的所有卡牌恢复生命值。",
+                "description": "为当前上阵的所有卡牌恢复生命值。治疗量取决于你的攻击力。",
                 "type": 4,
                 "scope": 6,
                 "star3_inc_min": 20,
@@ -11887,7 +11887,7 @@ var outputTables = {
             "0": {
                 "id": 0,
                 "lv": 0,
-                "spirit_need": 50,
+                "spirit_need": 110,
                 "hp_inc": 0,
                 "atk_inc": 0,
                 "spirit_atk_pct": 0,
@@ -24182,8 +24182,8 @@ var outputTables = {
             "20001": {
                 "id": 20001,
                 "card_id": "怪物512",
-                "atk": 693,
-                "hp": 1732,
+                "atk": 683,
+                "hp": 1706,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 1
@@ -24191,8 +24191,8 @@ var outputTables = {
             "20002": {
                 "id": 20002,
                 "card_id": "怪物513",
-                "atk": 1053,
-                "hp": 2632,
+                "atk": 1022,
+                "hp": 2553,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 2
@@ -24200,8 +24200,8 @@ var outputTables = {
             "20003": {
                 "id": 20003,
                 "card_id": "怪物514",
-                "atk": 1564,
-                "hp": 3906,
+                "atk": 1495,
+                "hp": 3734,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 3
@@ -24209,8 +24209,8 @@ var outputTables = {
             "20004": {
                 "id": 20004,
                 "card_id": "怪物515",
-                "atk": 2266,
-                "hp": 5664,
+                "atk": 2135,
+                "hp": 5335,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 4
@@ -24218,8 +24218,8 @@ var outputTables = {
             "20005": {
                 "id": 20005,
                 "card_id": "怪物516",
-                "atk": 3422,
-                "hp": 8551,
+                "atk": 3177,
+                "hp": 7940,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 5
@@ -24227,8 +24227,8 @@ var outputTables = {
             "20006": {
                 "id": 20006,
                 "card_id": "怪物517",
-                "atk": 4713,
-                "hp": 11772,
+                "atk": 4315,
+                "hp": 10777,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 6
@@ -24236,8 +24236,8 @@ var outputTables = {
             "20007": {
                 "id": 20007,
                 "card_id": "怪物518",
-                "atk": 6336,
-                "hp": 15824,
+                "atk": 5720,
+                "hp": 14286,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 7
@@ -24245,8 +24245,8 @@ var outputTables = {
             "20008": {
                 "id": 20008,
                 "card_id": "怪物519",
-                "atk": 7913,
-                "hp": 19763,
+                "atk": 7046,
+                "hp": 17597,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 8
@@ -24254,8 +24254,8 @@ var outputTables = {
             "20009": {
                 "id": 20009,
                 "card_id": "怪物520",
-                "atk": 8698,
-                "hp": 22589,
+                "atk": 7640,
+                "hp": 19842,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 9
@@ -24263,8 +24263,8 @@ var outputTables = {
             "20010": {
                 "id": 20010,
                 "card_id": "怪物521",
-                "atk": 9803,
-                "hp": 25458,
+                "atk": 8496,
+                "hp": 22064,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 10
@@ -24272,8 +24272,8 @@ var outputTables = {
             "20011": {
                 "id": 20011,
                 "card_id": "怪物522",
-                "atk": 12142,
-                "hp": 31537,
+                "atk": 10384,
+                "hp": 26972,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 1
@@ -24281,8 +24281,8 @@ var outputTables = {
             "20012": {
                 "id": 20012,
                 "card_id": "怪物523",
-                "atk": 14810,
-                "hp": 38471,
+                "atk": 12502,
+                "hp": 32475,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 2
@@ -24290,8 +24290,8 @@ var outputTables = {
             "20013": {
                 "id": 20013,
                 "card_id": "怪物524",
-                "atk": 17789,
-                "hp": 46207,
+                "atk": 14824,
+                "hp": 38506,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 3
@@ -24299,8 +24299,8 @@ var outputTables = {
             "20014": {
                 "id": 20014,
                 "card_id": "怪物525",
-                "atk": 20267,
-                "hp": 52642,
+                "atk": 16675,
+                "hp": 43313,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 4
@@ -24308,8 +24308,8 @@ var outputTables = {
             "20015": {
                 "id": 20015,
                 "card_id": "怪物526",
-                "atk": 18854,
-                "hp": 47270,
+                "atk": 19091,
+                "hp": 47863,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 5
@@ -24317,8 +24317,8 @@ var outputTables = {
             "20016": {
                 "id": 20016,
                 "card_id": "怪物527",
-                "atk": 21849,
-                "hp": 54775,
+                "atk": 22376,
+                "hp": 56100,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 6
@@ -24326,8 +24326,8 @@ var outputTables = {
             "20017": {
                 "id": 20017,
                 "card_id": "怪物528",
-                "atk": 24083,
-                "hp": 60382,
+                "atk": 25826,
+                "hp": 64749,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 7
@@ -24335,8 +24335,8 @@ var outputTables = {
             "20018": {
                 "id": 20018,
                 "card_id": "怪物529",
-                "atk": 27500,
-                "hp": 68946,
+                "atk": 28467,
+                "hp": 71373,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 8
@@ -24344,8 +24344,8 @@ var outputTables = {
             "20019": {
                 "id": 20019,
                 "card_id": "怪物530",
-                "atk": 31125,
-                "hp": 78038,
+                "atk": 31106,
+                "hp": 77991,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 9
@@ -24353,8 +24353,8 @@ var outputTables = {
             "20020": {
                 "id": 20020,
                 "card_id": "怪物531",
-                "atk": 35203,
-                "hp": 90265,
+                "atk": 33467,
+                "hp": 82553,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 10
@@ -24362,16 +24362,16 @@ var outputTables = {
             "30001": {
                 "id": 30001,
                 "card_id": "怪物532",
-                "atk": 3422,
-                "hp": 8551,
+                "atk": 3177,
+                "hp": 7940,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30002": {
                 "id": 30002,
                 "card_id": "怪物533",
-                "atk": 3500,
-                "hp": 10230,
+                "atk": 3327,
+                "hp": 8090,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 1
@@ -24379,16 +24379,16 @@ var outputTables = {
             "30003": {
                 "id": 30003,
                 "card_id": "怪物534",
-                "atk": 8698,
-                "hp": 22589,
+                "atk": 7640,
+                "hp": 19842,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30004": {
                 "id": 30004,
                 "card_id": "怪物535",
-                "atk": 9210,
-                "hp": 24620,
+                "atk": 7790,
+                "hp": 19992,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 2
@@ -24396,16 +24396,16 @@ var outputTables = {
             "30005": {
                 "id": 30005,
                 "card_id": "怪物536",
-                "atk": 17789,
-                "hp": 46207,
+                "atk": 14824,
+                "hp": 38506,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30006": {
                 "id": 30006,
                 "card_id": "怪物537",
-                "atk": 18245,
-                "hp": 48123,
+                "atk": 15144,
+                "hp": 38656,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 3
@@ -24413,16 +24413,16 @@ var outputTables = {
             "30007": {
                 "id": 30007,
                 "card_id": "怪物538",
-                "atk": 24083,
-                "hp": 60382,
+                "atk": 25826,
+                "hp": 64749,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30008": {
                 "id": 30008,
                 "card_id": "怪物539",
-                "atk": 25620,
-                "hp": 62135,
+                "atk": 25986,
+                "hp": 64909,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 4
@@ -24430,8 +24430,8 @@ var outputTables = {
             "30009": {
                 "id": 30009,
                 "card_id": "怪物540",
-                "atk": 31125,
-                "hp": 78038,
+                "atk": 31106,
+                "hp": 77991,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },

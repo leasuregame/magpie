@@ -54,7 +54,6 @@ Handler::strengthen = (msg, session, next) ->
         options: 
           table: 'card'
           where: id: targetCard.id
-          data: targetCard.getSaveData()
           data: cardData
       } if not _.isEmpty(cardData)
 
@@ -191,7 +190,7 @@ Handler::skillUpgrade = (msg, session, next) ->
 
     card.save()
     player.save()
-    next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need}})
+    next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need,ability: card.ability()}})
 
 Handler::starUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -252,15 +251,16 @@ Handler::starUpgrade = (msg, session, next) ->
           achieve.star5card(player)
 
         # 卡牌星级进阶，添加一个被动属性
-        ps_data = {}
+        #ps_data = {}
         if card.star >= 3
-          ps_data = require('../../../domain/entity/passiveSkill').born()
-          ps_data.cardId = card.id
-        return cb null, ps_data
+          card.bornPassiveSkill();
+          #ps_data = require('../../../domain/entity/passiveSkill').born()
+          #ps_data.cardId = card.id
+        return cb null
 
-      cb null, {}
+      cb null
 
-    (ps_data, cb) ->
+    (cb) ->
       _jobs = []
 
       playerData = player.getSaveData()
@@ -273,6 +273,7 @@ Handler::starUpgrade = (msg, session, next) ->
       } if not _.isEmpty(playerData)
 
       cardData = card.getSaveData()
+      console.log 'cardData',cardData
       _jobs.push {
         type: 'update'
         options:
@@ -287,14 +288,14 @@ Handler::starUpgrade = (msg, session, next) ->
           table: 'card'
           where: " id in (#{sources.toString()}) "
       }
-
+      ###
       _jobs.push {
         type: 'insert'
         options:
           table: 'passiveSkill'
           data: ps_data
       } if not _.isEmpty(ps_data)
-
+      ###
       job.multJobs _jobs, cb
   ], (err, result) ->
     if err and not result
@@ -329,21 +330,31 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       if _.isEmpty(passSkills)
         return cb({code: 501, msg: '找不到被动属性'})
 
-      ps.afresh(type) for ps in passSkills
+      card.afreshPassiveSkill(type,ps) for ps in passSkills
+      console.log 'ps = ',card.passiveSkills
+      card.save()
       player.decrease(_pros[type], money_need)
-      cb(null, player, passSkills)
-  ], (err, player, passSkills) ->
+      cb(null, player, card)
+  ], (err, player, card) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
 
-    passSkills.forEach (ps) -> ps.save()
+    #passSkills.forEach (ps) -> ps.save()
     player.save()
 
+    passSkills = card.passiveSkills
     # 拥有了百分之10的被动属性成就
     if (passSkills.filter (ps) -> parseInt(ps.value) is 10).length > 0
       achieve.psTo10(player)
 
-    next(null, {code: 200, msg: passSkills.map (p) -> p.toJson()})
+    result = {
+      hp: card.hp,
+      atk:card.atk,
+      ability: card.ability(),
+      passSkills:card.passiveSkills
+    }
+
+    next(null, {code: 200, msg: result})
 
 Handler::smeltElixir = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -420,7 +431,6 @@ Handler::useElixir = (msg, session, next) ->
       return next(null, {code: 501, msg: '不能对3星以下的卡牌使用仙丹'})
 
     limit = elixirConfig.limit[card.star]
-    console.log 'elixir: ', limit, card.elixirHp, card.elixirAtk
     if (card.elixirHp + card.elixirAtk) >= limit
       return next(null, {code: 501, msg: "卡牌仙丹容量已满"})
 
@@ -454,7 +464,13 @@ Handler::useElixir = (msg, session, next) ->
       if err
         return next(null, {code: err.code or 500, msg: err.msg or ''})
 
-      return next(null, {code: 200})
+      result = {
+        hp: card.hp,
+        atk:card.atk,
+        ability: card.ability(),
+      }
+
+      return next(null, {code: 200,msg:result})
 
 Handler::changeLineUp = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -474,4 +490,59 @@ Handler::changeLineUp = (msg, session, next) ->
     player.updateLineUp(lineupObj)
     player.save()
     next(null, { code: 200, msg: {lineUp: player.lineUpObj()} })
+
+Handler::sellCards = (msg, session, next) ->
+  playerId = session.get('playerId')
+  cardIds = if msg.ids? then msg.ids else []
+
+  if cardIds.length is 0
+    return next(null, {code: 200, msg: price: 0})
+
+  price = 0
+  player = null
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+
+    (res, cb) ->
+      player = res
+      cards = player.popCards cardIds
+      if _.isEmpty(cards)
+        return cb({code: 501, msg: '找不到卡牌'})
+
+      price += c.price() for c in cards
+      cb(null, price)
+
+    (price, cb) ->
+      dao.card.delete where: " id in (#{cardIds.toString()}) ", cb
+  ], (err, res) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    player.increase('money', price)
+    player.save()
+    next(null, {code: 200, msg: price: price})
+
+Handler::getCardBookEnergy = (msg, session, next) ->
+  playerId = session.get('playerId')
+  tableId = msg.tableId
+
+  ENERGY = 10
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    if not player.cardBookMark.hasMark(tableId) or player.cardBookFlag.hasMark(tableId)
+      return next(null, {code: 501, msg: '不能领取，已经领过或者还没有点亮该卡牌'})
+
+    player.cardBookFlag.mark(tableId)
+    player.increase('energy', ENERGY)
+    cardBook = utility.deepCopy(player.cardBook)
+    cardBook.flag = player.cardBookFlag.value
+    player.cardBook = cardBook
+    player.save()
+    return next(null, {code: 200, msg: energy: ENERGY})
+
+Handler::exchangeCard = (msg, session, next) ->
+  playerId = session.get('playerId')
 

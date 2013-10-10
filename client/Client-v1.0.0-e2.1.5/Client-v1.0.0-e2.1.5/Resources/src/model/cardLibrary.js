@@ -40,7 +40,7 @@ var CardLibrary = Entity.extend({
                 card: Card.create({
                     tableId: i,
                     lv: 1,
-                    skillLv: 1
+                    skillLv: 0
                 })
             })
         }

@@ -13,6 +13,7 @@
 
 var PlayerDao = require('../../playerDao');
 var _ = require('underscore');
+var logger = require('pomelo-logger').getLogger(__filename);
 
 playerSync = {
     /*

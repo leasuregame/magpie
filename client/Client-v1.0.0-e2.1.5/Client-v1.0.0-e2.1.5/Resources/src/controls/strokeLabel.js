@@ -67,8 +67,6 @@ var StrokeLabel = cc.Node.extend({
     },
 
     setString: function (text) {
-        cc.log("StrokeLabel setString");
-
         this._strLabel.setString(text);
 
         for (var i = 0; i < BG_LABEL_COUNT; ++i) {
@@ -88,6 +86,18 @@ var StrokeLabel = cc.Node.extend({
         for (var i = 0; i < BG_LABEL_COUNT; ++i) {
             this._strBgLabel[i].setColor(color3);
         }
+    },
+
+    setOpacity: function (opacity) {
+        this._strLabel.setOpacity(opacity);
+
+        for (var i = 0; i < BG_LABEL_COUNT; ++i) {
+            this._strBgLabel[i].setOpacity(opacity);
+        }
+    },
+
+    getOpacity: function () {
+        return this._strLabel.getOpacity();
     },
 
     setFontName: function (fontName) {

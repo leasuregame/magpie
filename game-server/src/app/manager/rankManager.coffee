@@ -31,10 +31,10 @@ Manager = module.exports =
         updateRankInfo(challenger, defender)
         
         ### 首次达到排名奖励 1, 10, 50, 100, 500, 1000, 5000 ###
-        if challenger.canGetRankingReward()
-          challenger.getRankingReward()
-          rewards.ranking_elixir = table.getTableItem(player.ranking).elixir
-          player.increase('elixir', rewards.ranking_elixir)
+        # if challenger.canGetRankingReward()
+        #   challenger.getRankingReward()
+          # rewards.ranking_elixir = table.getTableItem('ranking_reward', player.ranking).elixir
+          # player.increase('elixir', rewards.ranking_elixir)
       else
         updateRankInfo(defender, challenger)
 
@@ -90,7 +90,7 @@ checkAchievement = (player, challenger) ->
 rewardPercent = (ranking) ->
   pct = 0
   items = table.getTable('ranking_reward_factor').filter (id, row) ->
-    row.ranking < ranking
+    row.ranking <= ranking
 
   if items.length > 0
     items.sort (x, y) -> y.ranking - x.ranking

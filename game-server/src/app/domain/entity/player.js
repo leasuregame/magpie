@@ -43,7 +43,7 @@ var NOW = function() {
 var addEvents = function(player) {
     // 经验值改变，判断是否升级
     player.on('exp.change', function(exp) {
-        if (player.lv <= 0) {
+        if (player.lv <= 0 || player.lv >= playerConfig.MAX_PLAYER_LV) {
             return;
         }
 
@@ -101,6 +101,13 @@ var addEvents = function(player) {
             //player.activeGroupEffect();
             player.activeSpiritorEffect();
         }
+        if (!player.cardBookMark.hasMark(card.tableId)) {
+            player.cardBookMark.mark(card.tableId);
+            cardBook = utility.deepCopy(player.cardBook);
+            cardBook.mark = player.cardBookMark.value;
+            player.cardBook = cardBook;
+            player.save();
+        }
     });
 
     player.on('cash.change', function(cash) {
@@ -130,6 +137,9 @@ var addEvents = function(player) {
         }
         recountVipPrivilege(player, oldVip);
     });
+
+    // player.emit('exp.change', player.exp);
+    // player.emit('cash.change', player.cash);
 };
 
 var correctPower = function(player) {
@@ -159,6 +169,8 @@ var Player = (function(_super) {
         Player.__super__.constructor.apply(this, arguments);
         this.taskMark = new MarkGroup(this.task.mark);
         this.passMark = new MarkGroup(this.pass.mark);
+        this.cardBookMark = new MarkGroup(this.cardBook.mark);
+        this.cardBookFlag = new MarkGroup(this.cardBook.flag);
         this.momo = [];
         //this.momoMark = new MarkGroup(this.task.momo);
     }
@@ -198,7 +210,9 @@ var Player = (function(_super) {
         'spiritor',
         'spiritPool',
         'signIn',
-        'achievement'
+        'achievement',
+        'cardBook',
+        'friendsCount'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -256,7 +270,7 @@ var Player = (function(_super) {
             spirit: 0
         },
         spiritPool: {
-            lv: 0,
+            lv: 1,
             exp: 0,
             collectCount: spiritConfig.MAX_COLLECT_COUNT
         },
@@ -265,9 +279,14 @@ var Player = (function(_super) {
             flag: 0
         },
         achievement: {},
+        cardBook: {
+            mark: [],
+            flag: []
+        },
         cards: {},
         rank: {},
-        friends: []
+        friends: [],
+        friendsCount: 20
     };
 
     Player.prototype.increase = function(name, val) {
@@ -320,7 +339,7 @@ var Player = (function(_super) {
         var total_spirit = spiritor.spirit + val;
         var spiritorData = table.getTableItem('spirit', spiritor.lv);
 
-        while ( !! spiritorData && total_spirit >= spiritorData.spirit_need) {
+        while ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < playerConfig.MAX_SPIRITOR_LV) {
             spiritor.lv += 1;
             total_spirit -= spiritorData.spirit_need;
             spiritorData = table.getTableItem('spirit', spiritor.lv);
@@ -334,7 +353,7 @@ var Player = (function(_super) {
         var total_exp = sp.exp + exp;
         var spData = table.getTableItem('spirit_pool', sp.lv);
 
-        while ( !! spData && total_exp >= spData.exp_need) {
+        while ( !! spData && total_exp >= spData.exp_need && sp.lv < playerConfig.MAX_SPIRITPOOL_LV) {
             sp.lv += 1;
             total_exp -= spData.exp_need;
             spData = table.getTableItem('spirit_pool', sp.lv);
@@ -347,8 +366,12 @@ var Player = (function(_super) {
         Player.__super__.save.apply(this, arguments);
         // update all cards info
         _.values(this.cards).forEach(function(card) {
-            card.save()
+            card.save();
         });
+
+        if (!_.isEmpty(this.rank)) {
+            this.rank.save();
+        }
     };
 
     Player.prototype.getAbility = function() {
@@ -467,7 +490,7 @@ var Player = (function(_super) {
     Player.prototype.consumePower = function(value) {
         if (this.power.value <= 0) return;
 
-        var power = _.clone(this.power);
+        var power = utility.deepCopy(this.power);
         var cVal = value;
         if (value > power.value) {
             cVal = power.value;
@@ -483,15 +506,23 @@ var Player = (function(_super) {
 
         if (this.power.value >= max_power) return;
 
-        var power = _.clone(this.power);
+        var power = utility.deepCopy(this.power);
         power.value = _.min([max_power, power.value + value]);
+        power.time = Date.now();
+        this.updatePower(power);
+    };
+
+    //直接添加体力，不受上限限制
+    Player.prototype.addPower = function(value) {
+        var power = _.clone(this.power);
+        power.value += value;
         power.time = Date.now();
         this.updatePower(power);
     };
 
     Player.prototype.givePower = function(hour, value) {
         var max_power = getMaxPower(this.lv);
-        var power = _.clone(this.power);
+        var power = utility.deepCopy(this.power);
         power.value = _.min([power.value + value, max_power + 50]);
         power.time = Date.now();
         this.updatePower(power);
@@ -583,6 +614,7 @@ var Player = (function(_super) {
             exp_obtain: expObtain,
             cur_lv: targetCard.lv,
             cur_exp: targetCard.exp,
+            ability: targetCard.ability(),
             money_consume: parseInt(moneyConsume)
         }, targetCard);
     };
@@ -592,7 +624,7 @@ var Player = (function(_super) {
         if (taskData) {
             var chapterId = taskData.chapter_id;
             this.momoMark.mark(chapterId - 1);
-            var task = utility.deepCopy(this.task);
+            var task = (this.task);
             task.momo = this.momoMark.value;
             this.task = task;
         }
@@ -643,7 +675,6 @@ var Player = (function(_super) {
         var value = 0;
         for(var i = 0;i < this.momo.length;i++)
             value += this.momo[i];
-        //console.log("total = ",value);
         return value;
     };
 
@@ -691,7 +722,6 @@ var Player = (function(_super) {
             this.passMark.value = [];
             pass.mark = this.passMark.value;
             this.pass = pass;
-            console.log("reset pass mark:",this.pass);
             return true;
         }
         return false;
@@ -719,7 +749,6 @@ var Player = (function(_super) {
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isTrigger = true;
         pass.mystical.isClear = false;
-        console.log("神秘关卡 = ",pass);
         this.set('pass', pass);
     };
 
@@ -834,7 +863,9 @@ var Player = (function(_super) {
             }),
             rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
             friends: this.friends,
-            signIn: utility.deepCopy(this.signIn)
+            signIn: utility.deepCopy(this.signIn),
+            cardBook: this.cardBook,
+            friendsCount: this.friendsCount
         };
     };
 
@@ -927,6 +958,7 @@ var recountVipPrivilege = function(player, oldVip) {
     var oldVipInfo = table.getTableItem('vip_privilege', oldVip);
     var curVipInfo = table.getTableItem('vip_privilege', curVip);
 
+    player.friendsCount += curVipInfo.friend_count - oldVipInfo.friend_count;
     var dg = utility.deepCopy(player.dailyGift);
     dg.lotteryFreeCount += curVipInfo.lottery_free_count - oldVipInfo.lottery_free_count;
 

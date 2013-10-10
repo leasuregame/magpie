@@ -119,7 +119,7 @@ var Task = Entity.extend({
      * */
     explore: function (cb, id) {
         cc.log("Task explore " + id);
-
+         cc.log(this);
         var that = this;
         lzWindow.pomelo.request("area.taskHandler.explore", {
             taskId: id
@@ -172,6 +172,10 @@ var Task = Entity.extend({
                 cb(cbData);
             } else {
                 cc.log("explore fail");
+
+                TipLayer.tip(data.msg);
+
+                cb(null);
             }
         });
     },

@@ -45,7 +45,7 @@ var ExploreLayer = cc.Layer.extend({
         this._sectionId = sectionId;
 
         this._maxIndex = TASK_POINTS_COUNT;
-        this._index = this._maxIndex;
+        this._index = 1;
 
         if (this._sectionId == gameData.task.getSection()) {
             this._index = gameData.task.getPoints();
@@ -58,7 +58,7 @@ var ExploreLayer = cc.Layer.extend({
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 962));
+        headIcon.setPosition(cc.p(40, 968));
         this.addChild(headIcon, 1);
 
         for (var i = 0; i < 3; ++i) {
@@ -86,7 +86,7 @@ var ExploreLayer = cc.Layer.extend({
         var chapter = Math.ceil((this._sectionId) / TASK_SECTION_COUNT);
 
         var titleLabel = StrokeLabel.create(outputTables.chapter_title.rows[chapter].name, "STHeitiTC-Medium", 40);
-        titleLabel.setColor(cc.c3b(255, 240, 170));
+        titleLabel.setColor(cc.c3b(255, 239, 131));
         titleLabel.setPosition(cc.p(360, 1005));
         this.addChild(titleLabel, 1);
 
@@ -162,18 +162,18 @@ var ExploreLayer = cc.Layer.extend({
             scrollViewLayer.addChild(exploreBgSprite);
 
             var nameLabel = cc.LabelTTF.create(chapterTable[id].section_name + " " + i + " / 10", "STHeitiTC-Medium", 25);
-            nameLabel.setColor(cc.c3b(255, 240, 170));
+            nameLabel.setColor(cc.c3b(255, 239, 131));
             nameLabel.setPosition(cc.p(x + 320, 470));
             scrollViewLayer.addChild(nameLabel);
 
             var exploreExpLabel = cc.LabelTTF.create(chapterTable[id].exp_obtain, "STHeitiTC-Medium", 20);
-            exploreExpLabel.setColor(cc.c3b(255, 240, 170));
+            exploreExpLabel.setColor(cc.c3b(255, 239, 131));
             exploreExpLabel.setAnchorPoint(cc.p(0, 0.5));
             exploreExpLabel.setPosition(cc.p(275 + x, 408));
             scrollViewLayer.addChild(exploreExpLabel);
 
             var exploreMoneyLabel = cc.LabelTTF.create(chapterTable[id].coins_obtain, "STHeitiTC-Medium", 20);
-            exploreMoneyLabel.setColor(cc.c3b(255, 240, 170));
+            exploreMoneyLabel.setColor(cc.c3b(255, 239, 131));
             exploreMoneyLabel.setAnchorPoint(cc.p(0, 0.5));
             exploreMoneyLabel.setPosition(cc.p(425 + x, 408));
             scrollViewLayer.addChild(exploreMoneyLabel);
@@ -195,28 +195,28 @@ var ExploreLayer = cc.Layer.extend({
             scrollViewLayer.addChild(sectionProgress);
 
             var powerLabel = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 20);
-            powerLabel.setColor(cc.c3b(255, 240, 170));
+            powerLabel.setColor(cc.c3b(255, 239, 131));
             powerLabel.setAnchorPoint(cc.p(0, 0.5));
             powerLabel.setPosition(cc.p(465 + x, 360));
             scrollViewLayer.addChild(powerLabel);
 
-            var expLabel = cc.LabelTTF.create("999999", "STHeitiTC-Medium", 20);
-            expLabel.setColor(cc.c3b(255, 240, 170));
+            var expLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
+            expLabel.setColor(cc.c3b(255, 239, 131));
             expLabel.setAnchorPoint(cc.p(0, 0.5));
             expLabel.setPosition(cc.p(465 + x, 319));
             scrollViewLayer.addChild(expLabel);
 
             var progressLabel = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 20);
-            progressLabel.setColor(cc.c3b(255, 240, 170));
+            progressLabel.setColor(cc.c3b(255, 239, 131));
             progressLabel.setAnchorPoint(cc.p(0, 0.5));
             progressLabel.setPosition(cc.p(465 + x, 278));
             scrollViewLayer.addChild(progressLabel);
 
-            var description = lz.format(chapterTable[id].description, 20);
+            var description = lz.format("～～" + chapterTable[id].description, 20);
             var len = description.length;
             for (var j = 0; j < len; ++j) {
                 var storyLabel = cc.LabelTTF.create(description[j], "STHeitiTC-Medium", 20);
-                storyLabel.setColor(cc.c3b(255, 240, 170));
+                storyLabel.setColor(cc.c3b(255, 239, 131));
                 storyLabel.setAnchorPoint(cc.p(0, 0));
                 storyLabel.setPosition(cc.p(0, -30 * j));
                 descriptionLabel.addChild(storyLabel);
@@ -237,8 +237,11 @@ var ExploreLayer = cc.Layer.extend({
         this._scrollView.setContentSize(cc.size(6400, 569));
         this._scrollView.setPosition(GAME_BG_POINT);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
+        this._scrollView.setBounceable(false);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
+
+        this._scrollView.setContentOffset(this._getScrollViewOffset());
 
         return true;
     },
@@ -296,6 +299,7 @@ var ExploreLayer = cc.Layer.extend({
         }
     },
 
+
     _getScrollViewOffset: function () {
         cc.log("ExploreLayer _getScrollViewOffset");
 
@@ -316,6 +320,7 @@ var ExploreLayer = cc.Layer.extend({
     _onClickBack: function () {
         cc.log("ExploreLayer _onClickBack");
 
+        this._unlock();
         MainScene.getInstance().switchLayer(PveLayer);
     },
 
@@ -328,15 +333,21 @@ var ExploreLayer = cc.Layer.extend({
         gameData.task.explore(function (data) {
             cc.log(data);
 
-            that._reward = data;
+            if (data) {
+                that._reward = data;
 
-            that._playAnimation();
+                that._playAnimation();
+            } else {
+                that._unlock();
+            }
+
         }, this._getTaskId());
     },
 
     _lock: function () {
         cc.log("ExploreLayer _lock");
 
+        this._exploreItem.setEnabled(false);
         LazyLayer.showCloudLayer();
         this.setTouchEnabled(false);
     },
@@ -344,6 +355,7 @@ var ExploreLayer = cc.Layer.extend({
     _unlock: function () {
         cc.log("ExploreLayer _unlock");
 
+        this._exploreItem.setEnabled(true);
         LazyLayer.closeCloudLayer();
         this.setTouchEnabled(true);
     },
@@ -362,7 +374,7 @@ var ExploreLayer = cc.Layer.extend({
 
             this.update();
 
-            this._unlock();
+            this.scheduleOnce(this._unlock, 1);
         }, 1);
     },
 
@@ -389,7 +401,7 @@ var ExploreLayer = cc.Layer.extend({
             var x = 640 * (this._index - 1) + 320;
             if (this._reward.power) {
                 var powerLabel = cc.LabelTTF.create("-" + this._reward.power, "STHeitiTC-Medium", 15);
-                powerLabel.setColor(cc.c3b(255, 240, 170));
+                powerLabel.setColor(cc.c3b(255, 239, 131));
                 powerLabel.setPosition(cc.p(x, 365));
                 this._scrollView.addChild(powerLabel, 2);
                 powerLabel.setAnchorPoint(cc.p(0.5, 0.5));
@@ -399,7 +411,7 @@ var ExploreLayer = cc.Layer.extend({
 
             if (this._reward.exp) {
                 var expLabel = cc.LabelTTF.create("+" + this._reward.exp, "STHeitiTC-Medium", 15);
-                expLabel.setColor(cc.c3b(255, 240, 170));
+                expLabel.setColor(cc.c3b(255, 239, 131));
                 expLabel.setPosition(cc.p(x, 324));
                 this._scrollView.addChild(expLabel, 2);
                 expLabel.setAnchorPoint(cc.p(0.5, 0.5));
@@ -410,7 +422,7 @@ var ExploreLayer = cc.Layer.extend({
 
             if (this._reward.progress) {
                 var progressLabel = cc.LabelTTF.create("+" + this._reward.progress, "STHeitiTC-Medium", 15);
-                progressLabel.setColor(cc.c3b(255, 240, 170));
+                progressLabel.setColor(cc.c3b(255, 239, 131));
                 progressLabel.setPosition(cc.p(x, 283));
                 this._scrollView.addChild(progressLabel, 2);
                 progressLabel.setAnchorPoint(cc.p(0.5, 0.5));

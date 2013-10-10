@@ -41,7 +41,7 @@ cc.MenuItemImage.createWithIcon = function (normalImage, selectedImage, three, f
     if (ret) {
         ret._iconImage = null;
 
-        ret.setIconImage = function (iconImage, position) {
+        ret.setIconImage = function (iconImage, offset) {
             if (typeof iconImage == "string") {
                 iconImage = cc.Sprite.create(iconImage);
             }
@@ -52,9 +52,11 @@ cc.MenuItemImage.createWithIcon = function (normalImage, selectedImage, three, f
             if (iconImage) {
                 var contentSize = ret.getContentSize();
                 var iconImageSize = iconImage.getContentSize();
-                var position = position || cc.p(
-                    contentSize.width / 2 - iconImageSize.width / 2,
-                    contentSize.height / 2 - iconImageSize.height / 2
+
+                offset = offset || cc.p(0, 0);
+                var position = cc.p(
+                    contentSize.width / 2 - iconImageSize.width / 2 + offset.x,
+                    contentSize.height / 2 - iconImageSize.height / 2 + offset.y
                 );
 
                 ret.addChild(iconImage);
@@ -67,6 +69,15 @@ cc.MenuItemImage.createWithIcon = function (normalImage, selectedImage, three, f
             }
 
             ret._iconImage = iconImage;
+        };
+
+        ret.setOffset = function (offset) {
+            var position = this._iconImage.getPosition();
+
+            position.x += offset.x;
+            position.y += offset.y;
+
+            this._iconImage.setPosition(position);
         };
 
         ret.showIconImage = function () {

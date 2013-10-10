@@ -1,8 +1,12 @@
 dao = require('pomelo').app.get('dao')
+messageService = require('pomelo').app.get('messageService')
 table = require('../manager/table')
 cardConfig = require '../../config/data/card'
+utility = require '../common/utility'
 async = require 'async'
 _ = require 'underscore'
+
+EXP_CARD_ID = require('../../config/data/card').EXP_CARD_ID;
 
 module.exports = 
   createCard: (data, done) ->
@@ -42,6 +46,19 @@ module.exports =
   resetSkillIncForCard: (card) ->
     genSkillInc(card) if card.star >= 3
 
+  lightUpACard: (player, tableId) ->
+    return if tableId is EXP_CARD_ID
+
+    player.cardBookMark.mark(tableId)
+    cardBook = utility.deepCopy(player.cardBook)
+    cardBook.mark = player.cardBookMark.value
+    player.cardBook = cardBook
+    player.save()
+
+    messageService.pushByPid player.id, {
+      route: 'onLightUpCard'
+      msg: tableId: tableId
+    }, () ->
 
 genSkillInc = (card) ->
   cdata = table.getTableItem('cards', card.tableId)

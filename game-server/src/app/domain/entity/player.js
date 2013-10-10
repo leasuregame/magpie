@@ -24,9 +24,11 @@ var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 var util = require('util');
+var entityUtil = require('../../util/entityUtil');
 var achieve = require('../achievement');
 var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL;
 var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
+
 
 var defaultMark = function() {
     var i, result = [];
@@ -100,6 +102,10 @@ var addEvents = function(player) {
         if (player.isLineUpCard(card)) {
             //player.activeGroupEffect();
             player.activeSpiritorEffect();
+        }
+
+        if (!player.cardBookMark.hasMark(card.tableId)) {
+            entityUtil.lightUpACard(player, card.tableId);
         }
     });
 

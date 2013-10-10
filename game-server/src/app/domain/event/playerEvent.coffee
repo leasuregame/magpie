@@ -2,12 +2,7 @@ playerConfig = require('../../../config/data/player')
 utility = require '../../common/utility'
 _ = require 'underscore'
 
-EXP_CARD_ID = require('../../../config/data/card').EXP_CARD_ID
-
 exports.addEvents = (app, player) ->
-  player.on 'add.card', (card) ->
-    if not player.cardBookMark.hasMark(card.tableId)
-      lightUpACard(app, player, card.tableId)
 
   player.on 'power.resume', ->
     ply = player
@@ -35,22 +30,8 @@ exports.addEvents = (app, player) ->
     player.updateAbility()
     #player.activeGroupEffect()
     player.activeSpiritorEffect()
-    player.save()  
+    player.save()
 
   player.emit('lineUp.change')
 
   return
-
-lightUpACard = (app, player, tableId) ->
-  return if tableId is EXP_CARD_ID
-
-  player.cardBookMark.mark(tableId)
-  cardBook = utility.deepCopy(player.cardBook)
-  cardBook.mark = player.cardBookMark.value
-  player.cardBook = cardBook
-  player.save()
-
-  app.get('messageService').pushByPid player.id, {
-    route: 'onLightUpCard'
-    msg: tableId: tableId
-  }, () ->

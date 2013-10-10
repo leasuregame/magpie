@@ -13,7 +13,6 @@
 
 
 var SpiritNode = cc.Node.extend({
-    _spirit: null,
     _spiritSprite: null,
     _bubbleNode: null,
 
@@ -22,9 +21,7 @@ var SpiritNode = cc.Node.extend({
 
         if (!this._super()) return false;
 
-        this._spirit = gameData.spirit;
-
-        var spiritLv = this._spirit.get("lv");
+        var spiritLv = gameData.spirit.get("lv");
 
         if (spiritLv < 1) {
             spiritLv = 1;
@@ -69,6 +66,10 @@ var SpiritNode = cc.Node.extend({
                 }, 2.5);
             }
         }
+    },
+
+    setOpacity: function (opacity) {
+        this._spiritSprite.setOpacity(opacity);
     }
 });
 

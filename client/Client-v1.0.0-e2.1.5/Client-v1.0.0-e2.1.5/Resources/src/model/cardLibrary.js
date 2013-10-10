@@ -60,6 +60,27 @@ var CardLibrary = Entity.extend({
         } else {
             return tableIdA - tableIdB;
         }
+    },
+
+    receive: function(cb, tableId) {
+        cc.log("CardLibraryLayer receive");
+
+        var that = this;
+        lzWindow.pomelo.request("area.trainHandler.getCardBookEnergy", {
+            tableId: tableId
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("receive success");
+
+                var msg = data.msg;
+
+                cb();
+            } else {
+                cc.log("receive fail");
+            }
+        });
     }
 });
 

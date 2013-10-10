@@ -102,6 +102,7 @@ var appFiles = [
     'src/view/mainModule/cardUpgradeLabel.js',
     'src/view/mainModule/configLayer.js',
     'src/view/mainModule/evolutionLayer.js',
+    'src/view/mainModule/exchangeLayer.js',
     'src/view/mainModule/exploreLayer.js',
     'src/view/mainModule/friendLayer.js',
     'src/view/mainModule/friendMessageLayer.js',

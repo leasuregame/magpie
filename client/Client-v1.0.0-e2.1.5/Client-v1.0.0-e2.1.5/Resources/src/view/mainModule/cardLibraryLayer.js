@@ -29,14 +29,18 @@ var CardLibraryLayer = cc.Layer.extend({
         this.addChild(headIcon);
 
         var titleIcon = cc.Sprite.create(main_scene_image.icon116);
-        titleIcon.setPosition(cc.p(360, 1000));
+        titleIcon.setPosition(cc.p(360, 1008));
         this.addChild(titleIcon);
 
         var tipIcon = cc.Sprite.create(main_scene_image.main_message_bg);
         tipIcon.setPosition(cc.p(360, 945));
         this.addChild(tipIcon);
 
-        var tipLabel = cc.LabelTTF.create("每次获得新卡牌，点击该卡牌可领取仙丹。卡牌星级越高，可获得的仙丹越多。", "STHeitiTC-Medium", 17);
+        var tipLabel = cc.LabelTTF.create(
+            "每次获得新卡牌，点击该卡牌可领取仙丹。卡牌星级越高，可获得的仙丹越多。",
+            "STHeitiTC-Medium",
+            17
+        );
         tipLabel.setPosition(cc.p(360, 945));
         this.addChild(tipLabel);
 

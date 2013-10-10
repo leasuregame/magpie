@@ -24,11 +24,15 @@ var MainScene = cc.Scene.extend({
         this._nowLayer = MainLayer.create();
         this.addChild(this._nowLayer);
 
-        var mainMenuLayer = MainMenuLayer.create(this);
-        this.addChild(mainMenuLayer, -1);
+        var mainMenuLayer = MainMenuLayer.create();
+        this.addChild(mainMenuLayer, 1);
 
         var gameFrame = GameFrame.create();
-        this.addChild(gameFrame, 1);
+        this.addChild(gameFrame, 10);
+    },
+
+    getLayer: function() {
+        return this._nowLayer;
     },
 
     switchLayer: function (runLayer) {

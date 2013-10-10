@@ -2,6 +2,8 @@ playerConfig = require('../../../config/data/player')
 utility = require '../../common/utility'
 _ = require 'underscore'
 
+EXP_CARD_ID = require('../../../config/data/card').EXP_CARD_ID
+
 exports.addEvents = (app, player) ->
   player.on 'add.card', (card) ->
     if not player.cardBookMark.hasMark(card.tableId)
@@ -40,6 +42,8 @@ exports.addEvents = (app, player) ->
   return
 
 lightUpACard = (app, player, tableId) ->
+  return if tableId is EXP_CARD_ID
+
   player.cardBookMark.mark(tableId)
   cardBook = utility.deepCopy(player.cardBook)
   cardBook.mark = player.cardBookMark.value

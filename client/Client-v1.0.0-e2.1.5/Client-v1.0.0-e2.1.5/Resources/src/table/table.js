@@ -2801,7 +2801,6 @@ var outputTables = {
                 "lv": 1,
                 "atk": 115,
                 "hp": 246,
-                "skill_id": 1,
                 "description": "相比副连这个很娘的称呼，我更喜欢大家叫我captain。",
                 "url": 5
             },
@@ -2840,6 +2839,7 @@ var outputTables = {
                 "atk": 279,
                 "hp": 668,
                 "skill_name": "流星击",
+                "skill_id": 1,
                 "description": "笑什么笑，是大校不是大笑，严肃点！",
                 "url": 2
             },
@@ -24455,8 +24455,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "3": {
@@ -24468,8 +24468,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "4": {
@@ -24481,8 +24481,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "5": {
@@ -24494,8 +24494,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "6": {
@@ -24507,8 +24507,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "7": {
@@ -24520,8 +24520,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "8": {
@@ -24533,8 +24533,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "9": {
@@ -24546,8 +24546,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "10": {
@@ -24559,8 +24559,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "11": {
@@ -24585,8 +24585,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "13": {
@@ -24598,8 +24598,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "14": {
@@ -24611,8 +24611,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "15": {
@@ -24624,8 +24624,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "16": {
@@ -24637,8 +24637,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "17": {
@@ -24650,8 +24650,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "18": {
@@ -24663,8 +24663,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "19": {
@@ -24676,8 +24676,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "20": {
@@ -24689,8 +24689,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "21": {
@@ -24715,8 +24715,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "23": {
@@ -24728,8 +24728,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "24": {
@@ -24741,8 +24741,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "25": {
@@ -24754,8 +24754,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "26": {
@@ -24767,8 +24767,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "27": {
@@ -24780,8 +24780,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "28": {
@@ -24793,8 +24793,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "29": {
@@ -24806,8 +24806,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "30": {
@@ -24819,8 +24819,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "31": {
@@ -24845,8 +24845,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "33": {
@@ -24858,8 +24858,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "34": {
@@ -24871,8 +24871,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "35": {
@@ -24884,8 +24884,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "36": {
@@ -24897,8 +24897,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "37": {
@@ -24910,8 +24910,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "38": {
@@ -24923,8 +24923,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "39": {
@@ -24936,8 +24936,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "40": {
@@ -24949,8 +24949,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "41": {
@@ -24975,8 +24975,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "43": {
@@ -24988,8 +24988,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "44": {
@@ -25001,8 +25001,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "45": {
@@ -25014,8 +25014,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "46": {
@@ -25027,8 +25027,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "47": {
@@ -25040,8 +25040,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "48": {
@@ -25053,8 +25053,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "49": {
@@ -25066,8 +25066,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "50": {
@@ -25079,8 +25079,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "51": {
@@ -25105,8 +25105,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "53": {
@@ -25118,8 +25118,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "54": {
@@ -25131,8 +25131,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "55": {
@@ -25144,8 +25144,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "56": {
@@ -25157,8 +25157,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "57": {
@@ -25170,8 +25170,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "58": {
@@ -25183,8 +25183,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "59": {
@@ -25196,8 +25196,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "60": {
@@ -25209,8 +25209,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "61": {
@@ -25235,8 +25235,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "63": {
@@ -25248,8 +25248,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "64": {
@@ -25261,8 +25261,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "65": {
@@ -25274,8 +25274,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "66": {
@@ -25287,8 +25287,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "67": {
@@ -25300,8 +25300,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "68": {
@@ -25313,8 +25313,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "69": {
@@ -25326,8 +25326,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "70": {
@@ -25339,8 +25339,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "71": {
@@ -25365,8 +25365,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "73": {
@@ -25378,8 +25378,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "74": {
@@ -25391,8 +25391,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "75": {
@@ -25404,8 +25404,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "76": {
@@ -25417,8 +25417,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "77": {
@@ -25430,8 +25430,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "78": {
@@ -25443,8 +25443,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "79": {
@@ -25456,8 +25456,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "80": {
@@ -25469,8 +25469,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "81": {
@@ -25495,8 +25495,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "83": {
@@ -25508,8 +25508,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "84": {
@@ -25521,8 +25521,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "85": {
@@ -25534,8 +25534,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "86": {
@@ -25547,8 +25547,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "87": {
@@ -25560,8 +25560,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "88": {
@@ -25573,8 +25573,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "89": {
@@ -25586,8 +25586,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "90": {
@@ -25599,8 +25599,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "91": {
@@ -25625,8 +25625,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "93": {
@@ -25638,8 +25638,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "94": {
@@ -25651,8 +25651,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "95": {
@@ -25664,8 +25664,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "96": {
@@ -25677,8 +25677,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "97": {
@@ -25690,8 +25690,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "98": {
@@ -25703,8 +25703,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "99": {
@@ -25716,8 +25716,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "100": {
@@ -25729,8 +25729,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "101": {
@@ -25755,8 +25755,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "103": {
@@ -25768,8 +25768,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "104": {
@@ -25781,8 +25781,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "105": {
@@ -25794,8 +25794,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "106": {
@@ -25807,8 +25807,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "107": {
@@ -25820,8 +25820,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "108": {
@@ -25833,8 +25833,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "109": {
@@ -25846,8 +25846,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "110": {
@@ -25859,8 +25859,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "111": {
@@ -25885,8 +25885,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "113": {
@@ -25898,8 +25898,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "114": {
@@ -25911,8 +25911,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "115": {
@@ -25924,8 +25924,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "116": {
@@ -25937,8 +25937,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "117": {
@@ -25950,8 +25950,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "118": {
@@ -25963,8 +25963,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "119": {
@@ -25976,8 +25976,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "120": {
@@ -25989,8 +25989,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "121": {
@@ -26015,8 +26015,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "123": {
@@ -26028,8 +26028,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "124": {
@@ -26041,8 +26041,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "125": {
@@ -26054,8 +26054,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "126": {
@@ -26067,8 +26067,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "127": {
@@ -26080,8 +26080,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "128": {
@@ -26093,8 +26093,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "129": {
@@ -26106,8 +26106,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "130": {
@@ -26119,8 +26119,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "131": {
@@ -26145,8 +26145,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "133": {
@@ -26158,8 +26158,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "134": {
@@ -26171,8 +26171,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "135": {
@@ -26184,8 +26184,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "136": {
@@ -26197,8 +26197,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "137": {
@@ -26210,8 +26210,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "138": {
@@ -26223,8 +26223,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "139": {
@@ -26236,8 +26236,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "140": {
@@ -26249,8 +26249,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "141": {
@@ -26275,8 +26275,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "143": {
@@ -26288,8 +26288,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "144": {
@@ -26301,8 +26301,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "145": {
@@ -26314,8 +26314,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "146": {
@@ -26327,8 +26327,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "147": {
@@ -26340,8 +26340,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "148": {
@@ -26353,8 +26353,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "149": {
@@ -26366,8 +26366,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "150": {
@@ -26379,8 +26379,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "151": {
@@ -26405,8 +26405,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "153": {
@@ -26418,8 +26418,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "154": {
@@ -26431,8 +26431,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "155": {
@@ -26444,8 +26444,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "156": {
@@ -26457,8 +26457,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "157": {
@@ -26470,8 +26470,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "158": {
@@ -26483,8 +26483,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "159": {
@@ -26496,8 +26496,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "160": {
@@ -26509,8 +26509,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "161": {
@@ -26535,8 +26535,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "163": {
@@ -26548,8 +26548,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "164": {
@@ -26561,8 +26561,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "165": {
@@ -26574,8 +26574,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "166": {
@@ -26587,8 +26587,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "167": {
@@ -26600,8 +26600,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "168": {
@@ -26613,8 +26613,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "169": {
@@ -26626,8 +26626,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "170": {
@@ -26639,8 +26639,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "171": {
@@ -26665,8 +26665,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "173": {
@@ -26678,8 +26678,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "174": {
@@ -26691,8 +26691,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "175": {
@@ -26704,8 +26704,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "176": {
@@ -26717,8 +26717,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "177": {
@@ -26730,8 +26730,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "178": {
@@ -26743,8 +26743,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "179": {
@@ -26756,8 +26756,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "180": {
@@ -26769,8 +26769,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "181": {
@@ -26795,8 +26795,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "183": {
@@ -26808,8 +26808,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "184": {
@@ -26821,8 +26821,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "185": {
@@ -26834,8 +26834,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "186": {
@@ -26847,8 +26847,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "187": {
@@ -26860,8 +26860,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "188": {
@@ -26873,8 +26873,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "189": {
@@ -26886,8 +26886,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "190": {
@@ -26899,8 +26899,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "191": {
@@ -26925,8 +26925,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "193": {
@@ -26938,8 +26938,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "194": {
@@ -26951,8 +26951,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "195": {
@@ -26964,8 +26964,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "196": {
@@ -26977,8 +26977,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "197": {
@@ -26990,8 +26990,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "198": {
@@ -27003,8 +27003,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "199": {
@@ -27016,8 +27016,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "200": {
@@ -27029,8 +27029,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "201": {
@@ -27055,8 +27055,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "203": {
@@ -27068,8 +27068,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "204": {
@@ -27081,8 +27081,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "205": {
@@ -27094,8 +27094,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "206": {
@@ -27107,8 +27107,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "207": {
@@ -27120,8 +27120,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "208": {
@@ -27133,8 +27133,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "209": {
@@ -27146,8 +27146,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "210": {
@@ -27159,8 +27159,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "211": {
@@ -27185,8 +27185,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "213": {
@@ -27198,8 +27198,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "214": {
@@ -27211,8 +27211,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "215": {
@@ -27224,8 +27224,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "216": {
@@ -27237,8 +27237,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "217": {
@@ -27250,8 +27250,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "218": {
@@ -27263,8 +27263,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "219": {
@@ -27276,8 +27276,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "220": {
@@ -27289,8 +27289,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "221": {
@@ -27315,8 +27315,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "223": {
@@ -27328,8 +27328,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "224": {
@@ -27341,8 +27341,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "225": {
@@ -27354,8 +27354,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "226": {
@@ -27367,8 +27367,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "227": {
@@ -27380,8 +27380,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "228": {
@@ -27393,8 +27393,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "229": {
@@ -27406,8 +27406,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "230": {
@@ -27419,8 +27419,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "231": {
@@ -27445,8 +27445,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "233": {
@@ -27458,8 +27458,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "234": {
@@ -27471,8 +27471,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "235": {
@@ -27484,8 +27484,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "236": {
@@ -27497,8 +27497,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "237": {
@@ -27510,8 +27510,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "238": {
@@ -27523,8 +27523,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "239": {
@@ -27536,8 +27536,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "240": {
@@ -27549,8 +27549,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "241": {
@@ -27575,8 +27575,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "243": {
@@ -27588,8 +27588,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "244": {
@@ -27601,8 +27601,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "245": {
@@ -27614,8 +27614,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "246": {
@@ -27627,8 +27627,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "247": {
@@ -27640,8 +27640,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "248": {
@@ -27653,8 +27653,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "249": {
@@ -27666,8 +27666,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "250": {
@@ -27679,8 +27679,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "251": {
@@ -27705,8 +27705,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "253": {
@@ -27718,8 +27718,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "254": {
@@ -27731,8 +27731,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "255": {
@@ -27744,8 +27744,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "256": {
@@ -27757,8 +27757,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "257": {
@@ -27770,8 +27770,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "258": {
@@ -27783,8 +27783,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "259": {
@@ -27796,8 +27796,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "260": {
@@ -27809,8 +27809,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "261": {
@@ -27835,8 +27835,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "263": {
@@ -27848,8 +27848,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "264": {
@@ -27861,8 +27861,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "265": {
@@ -27874,8 +27874,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "266": {
@@ -27887,8 +27887,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "267": {
@@ -27900,8 +27900,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "268": {
@@ -27913,8 +27913,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "269": {
@@ -27926,8 +27926,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "270": {
@@ -27939,8 +27939,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "271": {
@@ -27965,8 +27965,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "273": {
@@ -27978,8 +27978,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "274": {
@@ -27991,8 +27991,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "275": {
@@ -28004,8 +28004,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "276": {
@@ -28017,8 +28017,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "277": {
@@ -28030,8 +28030,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "278": {
@@ -28043,8 +28043,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "279": {
@@ -28056,8 +28056,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "280": {
@@ -28069,8 +28069,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "281": {
@@ -28095,8 +28095,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "283": {
@@ -28108,8 +28108,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "284": {
@@ -28121,8 +28121,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "285": {
@@ -28134,8 +28134,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "286": {
@@ -28147,8 +28147,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "287": {
@@ -28160,8 +28160,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "288": {
@@ -28173,8 +28173,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "289": {
@@ -28186,8 +28186,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "290": {
@@ -28199,8 +28199,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "291": {
@@ -28225,8 +28225,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "293": {
@@ -28238,8 +28238,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "294": {
@@ -28251,8 +28251,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "295": {
@@ -28264,8 +28264,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "296": {
@@ -28277,8 +28277,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "297": {
@@ -28290,8 +28290,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "298": {
@@ -28303,8 +28303,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "299": {
@@ -28316,8 +28316,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "300": {
@@ -28329,8 +28329,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "301": {
@@ -28355,8 +28355,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "303": {
@@ -28368,8 +28368,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "304": {
@@ -28381,8 +28381,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "305": {
@@ -28394,8 +28394,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "306": {
@@ -28407,8 +28407,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "307": {
@@ -28420,8 +28420,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "308": {
@@ -28433,8 +28433,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "309": {
@@ -28446,8 +28446,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "310": {
@@ -28459,8 +28459,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "311": {
@@ -28485,8 +28485,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "313": {
@@ -28498,8 +28498,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "314": {
@@ -28511,8 +28511,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "315": {
@@ -28524,8 +28524,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "316": {
@@ -28537,8 +28537,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "317": {
@@ -28550,8 +28550,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "318": {
@@ -28563,8 +28563,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "319": {
@@ -28576,8 +28576,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "320": {
@@ -28589,8 +28589,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "321": {
@@ -28615,8 +28615,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "323": {
@@ -28628,8 +28628,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "324": {
@@ -28641,8 +28641,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "325": {
@@ -28654,8 +28654,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "326": {
@@ -28667,8 +28667,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "327": {
@@ -28680,8 +28680,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "328": {
@@ -28693,8 +28693,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "329": {
@@ -28706,8 +28706,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "330": {
@@ -28719,8 +28719,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "331": {
@@ -28745,8 +28745,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "333": {
@@ -28758,8 +28758,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "334": {
@@ -28771,8 +28771,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "335": {
@@ -28784,8 +28784,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "336": {
@@ -28797,8 +28797,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "337": {
@@ -28810,8 +28810,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "338": {
@@ -28823,8 +28823,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "339": {
@@ -28836,8 +28836,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "340": {
@@ -28849,8 +28849,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "341": {
@@ -28875,8 +28875,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "343": {
@@ -28888,8 +28888,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "344": {
@@ -28901,8 +28901,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "345": {
@@ -28914,8 +28914,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "346": {
@@ -28927,8 +28927,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "347": {
@@ -28940,8 +28940,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "348": {
@@ -28953,8 +28953,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "349": {
@@ -28966,8 +28966,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "350": {
@@ -28979,8 +28979,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "351": {
@@ -29005,8 +29005,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "353": {
@@ -29018,8 +29018,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "354": {
@@ -29031,8 +29031,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "355": {
@@ -29044,8 +29044,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "356": {
@@ -29057,8 +29057,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "357": {
@@ -29070,8 +29070,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "358": {
@@ -29083,8 +29083,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "359": {
@@ -29096,8 +29096,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "360": {
@@ -29109,8 +29109,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "361": {
@@ -29135,8 +29135,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "363": {
@@ -29148,8 +29148,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "364": {
@@ -29161,8 +29161,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "365": {
@@ -29174,8 +29174,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "366": {
@@ -29187,8 +29187,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "367": {
@@ -29200,8 +29200,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "368": {
@@ -29213,8 +29213,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "369": {
@@ -29226,8 +29226,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "370": {
@@ -29239,8 +29239,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "371": {
@@ -29265,8 +29265,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "373": {
@@ -29278,8 +29278,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "374": {
@@ -29291,8 +29291,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "375": {
@@ -29304,8 +29304,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "376": {
@@ -29317,8 +29317,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "377": {
@@ -29330,8 +29330,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "378": {
@@ -29343,8 +29343,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "379": {
@@ -29356,8 +29356,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "380": {
@@ -29369,8 +29369,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "381": {
@@ -29395,8 +29395,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "383": {
@@ -29408,8 +29408,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "384": {
@@ -29421,8 +29421,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "385": {
@@ -29434,8 +29434,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "386": {
@@ -29447,8 +29447,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "387": {
@@ -29460,8 +29460,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "388": {
@@ -29473,8 +29473,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "389": {
@@ -29486,8 +29486,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "390": {
@@ -29499,8 +29499,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "391": {
@@ -29525,8 +29525,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "393": {
@@ -29538,8 +29538,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "394": {
@@ -29551,8 +29551,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "395": {
@@ -29564,8 +29564,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "396": {
@@ -29577,8 +29577,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "397": {
@@ -29590,8 +29590,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "398": {
@@ -29603,8 +29603,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "399": {
@@ -29616,8 +29616,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "400": {
@@ -29629,8 +29629,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "401": {
@@ -29655,8 +29655,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "403": {
@@ -29668,8 +29668,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "404": {
@@ -29681,8 +29681,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "405": {
@@ -29694,8 +29694,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "406": {
@@ -29707,8 +29707,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "407": {
@@ -29720,8 +29720,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "408": {
@@ -29733,8 +29733,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "409": {
@@ -29746,8 +29746,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "410": {
@@ -29759,8 +29759,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "411": {
@@ -29785,8 +29785,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "413": {
@@ -29798,8 +29798,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "414": {
@@ -29811,8 +29811,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "415": {
@@ -29824,8 +29824,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "416": {
@@ -29837,8 +29837,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "417": {
@@ -29850,8 +29850,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "418": {
@@ -29863,8 +29863,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "419": {
@@ -29876,8 +29876,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "420": {
@@ -29889,8 +29889,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "421": {
@@ -29915,8 +29915,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "423": {
@@ -29928,8 +29928,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "424": {
@@ -29941,8 +29941,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "425": {
@@ -29954,8 +29954,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "426": {
@@ -29967,8 +29967,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "427": {
@@ -29980,8 +29980,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "428": {
@@ -29993,8 +29993,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "429": {
@@ -30006,8 +30006,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "430": {
@@ -30019,8 +30019,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "431": {
@@ -30045,8 +30045,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "433": {
@@ -30058,8 +30058,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "434": {
@@ -30071,8 +30071,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "435": {
@@ -30084,8 +30084,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "436": {
@@ -30097,8 +30097,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "437": {
@@ -30110,8 +30110,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "438": {
@@ -30123,8 +30123,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "439": {
@@ -30136,8 +30136,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "440": {
@@ -30149,8 +30149,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "441": {
@@ -30175,8 +30175,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "443": {
@@ -30188,8 +30188,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "444": {
@@ -30201,8 +30201,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "445": {
@@ -30214,8 +30214,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "446": {
@@ -30227,8 +30227,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "447": {
@@ -30240,8 +30240,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "448": {
@@ -30253,8 +30253,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "449": {
@@ -30266,8 +30266,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "450": {
@@ -30279,8 +30279,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "451": {
@@ -30305,8 +30305,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "453": {
@@ -30318,8 +30318,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "454": {
@@ -30331,8 +30331,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "455": {
@@ -30344,8 +30344,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "456": {
@@ -30357,8 +30357,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "457": {
@@ -30370,8 +30370,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "458": {
@@ -30383,8 +30383,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "459": {
@@ -30396,8 +30396,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "460": {
@@ -30409,8 +30409,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "461": {
@@ -30435,8 +30435,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "463": {
@@ -30448,8 +30448,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "464": {
@@ -30461,8 +30461,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "465": {
@@ -30474,8 +30474,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "466": {
@@ -30487,8 +30487,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "467": {
@@ -30500,8 +30500,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "468": {
@@ -30513,8 +30513,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "469": {
@@ -30526,8 +30526,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "470": {
@@ -30539,8 +30539,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "471": {
@@ -30565,8 +30565,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "473": {
@@ -30578,8 +30578,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "474": {
@@ -30591,8 +30591,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "475": {
@@ -30604,8 +30604,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "476": {
@@ -30617,8 +30617,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "477": {
@@ -30630,8 +30630,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "478": {
@@ -30643,8 +30643,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "479": {
@@ -30656,8 +30656,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "480": {
@@ -30669,8 +30669,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "481": {
@@ -30695,8 +30695,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "483": {
@@ -30708,8 +30708,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "484": {
@@ -30721,8 +30721,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "485": {
@@ -30734,8 +30734,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "486": {
@@ -30747,8 +30747,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "487": {
@@ -30760,8 +30760,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "488": {
@@ -30773,8 +30773,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "489": {
@@ -30786,8 +30786,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "490": {
@@ -30799,8 +30799,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             },
             "491": {
@@ -30825,8 +30825,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 10,
+                "hp_inc": 10,
                 "max_drop_card_number": 1
             },
             "493": {
@@ -30838,8 +30838,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 15,
+                "hp_inc": 15,
                 "max_drop_card_number": 1
             },
             "494": {
@@ -30851,8 +30851,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 20,
+                "hp_inc": 20,
                 "max_drop_card_number": 1
             },
             "495": {
@@ -30864,8 +30864,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 80,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 25,
+                "hp_inc": 25,
                 "max_drop_card_number": 1
             },
             "496": {
@@ -30877,8 +30877,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 70,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 30,
+                "hp_inc": 30,
                 "max_drop_card_number": 1
             },
             "497": {
@@ -30890,8 +30890,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 60,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 35,
+                "hp_inc": 35,
                 "max_drop_card_number": 1
             },
             "498": {
@@ -30903,8 +30903,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 40,
+                "hp_inc": 40,
                 "max_drop_card_number": 1
             },
             "499": {
@@ -30916,8 +30916,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 45,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 45,
+                "hp_inc": 45,
                 "max_drop_card_number": 1
             },
             "500": {
@@ -30929,8 +30929,8 @@ var outputTables = {
                 "is_random": 1,
                 "trigger_rate": 30,
                 "boss_attr": 40,
-                "atk_inc": 5,
-                "hp_inc": 5,
+                "atk_inc": 50,
+                "hp_inc": 50,
                 "max_drop_card_number": 1
             }
         }

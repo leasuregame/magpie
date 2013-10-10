@@ -15,8 +15,6 @@ class VirtualHero extends Hero
 
   loadCardInfo: ->
     card_config = tab.getTableItem('task_card', @card_id)
-    #console.log("card_config = ",card_config)
-    #console.log("card_id = ",@card_id)
     card = tab.getTableItem('cards', card_config.card_id)
     if not card
       throw new Error("配置表错误：不能从表 cards 中找到卡牌信息，卡牌id为 #{@card_id}")
@@ -26,9 +24,11 @@ class VirtualHero extends Hero
     @init_hp = @hp = parseInt(card_config.hp)
 
     if @boss?
-      bf = if @cData.sectionId then (@cData.sectionId - 1) else 1
-      atk_inc = if @boss.boss_atk_inc then (@boss.boss_atk_inc * bf) else 0
-      hp_inc = if @boss.boss_hp_inc then (@boss.boss_hp_inc * bf) else 0
+      #bf = if @cData.sectionId then (@cData.sectionId - 1) else 1
+      #atk_inc = if @boss.boss_atk_inc then (@boss.boss_atk_inc * bf) else 0
+      atk_inc = if @boss.atk_inc then (@boss.atk_inc) else 0
+      #hp_inc = if @boss.boss_hp_inc then (@boss.boss_hp_inc * bf) else 0
+      hp_inc = if @boss.hp_inc then (@boss.hp_inc) else 0
       @atk += parseInt(@atk * atk_inc / 100)
       @hp += parseInt(@hp * hp_inc / 100)
 

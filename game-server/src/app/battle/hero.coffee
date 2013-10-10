@@ -12,6 +12,11 @@ log = require('pomelo-logger').getLogger(__filename)
 
 STATE_ORIGIN = 0
 STATE_ATTACKED = 1
+FLOAT_SCOPE = 15
+
+floatUpOrDown = (val) ->
+  x = parseInt val * FLOAT_SCOPE / 100
+  return _.random val - x, val + x
 
 class Hero extends Module
   @include Events
@@ -22,12 +27,10 @@ class Hero extends Module
     @player = player
     @id = attrs.id
     @lv = attrs.lv
-    @init_hp = attrs.init_hp
+    @init_hp = attrs.hp
     @hp = attrs.hp
     @atk = attrs.atk
-    @init_atk = attrs.init_atk
-    @spirit_hp = attrs.incs?.spirit_hp
-    @spirit_atk = attrs.incs?.spirit_atk
+    @init_atk = attrs.atk
 
     @card_id = attrs.tableId
     @skill_lv = attrs.skillLv or 0
@@ -59,7 +62,7 @@ class Hero extends Module
   loadSpecialProperty: ->
     return if @star < 3
     @sp = new SpecialProperty(@sp_value)
-    @sp.takeEffect(@)
+    #@sp.takeEffect(@)
 
   loadSkill: ->
     return if @star < 3
@@ -123,18 +126,18 @@ class Hero extends Module
         continue
       else if @isCrit()
         # 暴击
-        _dmg *= @crit_factor
-        _e = -_dmg
-        _d = -enemy.idx
+        _dmg = parseInt _dmg * @crit_factor
+        _d = -enemy.idx # 负索引代表暴击
         log.debug enemy.idx, '暴击'
       else
-        _e = -_dmg
         _d = enemy.idx
 
-      log.debug "#{enemy.idx} 受到伤害 #{_e}"
+      log.debug "#{enemy.idx} 受到伤害 #{_dmg}"
+      ### 上下浮动15% ###
+      _dmg = floatUpOrDown(_dmg)
 
       _step.d.push _d
-      _step.e.push _e
+      _step.e.push -_dmg
       # debug
       _step['dhp'] = enemy.hp
 
@@ -148,16 +151,21 @@ class Hero extends Module
     _step.t = 1 if isSpiritor
     
     _hp = parseInt(@atk * @skill.effectValue() * percent / 100)
-    
+    if @isCrit()
+      _hp *= @crit_factor
+
     for enemy in enemys      
-      enemy.damageOnly -_hp
+      ### 上下浮动15% ###
+      _hp = floatUpOrDown(_hp)
+      realHp = _.min([_hp, enemy.init_hp - enemy.hp])
+      enemy.damageOnly -realHp
 
       _step.d.push enemy.idx
-      _step.e.push _hp
+      _step.e.push realHp
       # debug
       _step['dhp'] = enemy.hp
 
-      log.info "#{enemy.idx} 加血 #{_hp}"
+      log.info "#{enemy.idx} 加血 #{realHp}"
 
     @log _step
     callback enemys
@@ -169,21 +177,19 @@ class Hero extends Module
       _hero = _hero[0]
       
       _dmg = @atk
-
-      _e = -_dmg
       _d = _hero.idx
       if _hero.isDodge()
         _dmg = 0
-        _e = 0
       else if @isCrit()
         # 暴击
-        _dmg *= @crit_factor 
-        _e = -_dmg
+        _dmg = parseInt _dmg * @crit_factor 
         _d = -_hero.idx # 负索引代表暴击
+      ### 上下浮动15% ###
+      _dmg = floatUpOrDown(_dmg) 
 
-      _step = {a: @idx, d: [_d], e: [_e], r: []}
+      _step = {a: @idx, d: [_d], e: [-_dmg], r: []}
 
-      log.debug "#{_hero.idx} 受到伤害 #{_e}"
+      log.debug "#{_hero.idx} 受到伤害 #{_dmg}"
 
       _hero.damage _dmg, @, _step
       # debug

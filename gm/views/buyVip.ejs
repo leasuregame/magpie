@@ -1,0 +1,25 @@
+<%-include header%>
+    <form class="form-inline span5" role="form">
+        <fieldset>
+            <legend>充值VIP</legend>
+            <div class = "control-group">
+                <label for = "buyType">充值额度</label>
+                <select id = "buyType" class="form-control input-small">
+                </select>
+            </div>
+            <div class = "form-group">
+                <button type="button" class="btn btn-primary" id = "btnOK" >确定</button>
+            </div>
+            <div class="alert" id = "tip">
+
+            </div>
+        </fieldset>
+    </form>
+    <script src="/javascripts/config/recharge.js"></script>
+    <script src="/javascripts/underscore.js"></script>
+    <script src="/javascripts/buyVip.js"></script>
+    <script>
+        setData(<%- JSON.stringify(gameUser)%> , <%- JSON.stringify(player) %>);
+    </script>
+
+<%-include footer%>

@@ -23,7 +23,6 @@ Handler::explore = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   taskId = msg.taskId
   player = null
-  console.log("req success", msg, playerId);
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -38,7 +37,8 @@ Handler::explore = (msg, session, next) ->
     (data, chapterId, sectionId, cb) =>
       if data.result is 'fight'
         taskManager.fightToMonster(
-          {pid: player.id, tableId: taskId, sectionId: sectionId, table: 'task_config'}
+          #{pid: player.id, tableId: taskId, sectionId: sectionId, table: 'task_config'}
+          {pid: player.id, tableId: taskId, table: 'task_config'}
         , (err, battleLog) ->
           data.battle_log = battleLog
 
@@ -76,18 +76,14 @@ Handler::explore = (msg, session, next) ->
 Handler::updateMomoResult = (msg, session, next) ->
   playerId = session.get('playerId')
   gold = msg.gold
-  console.log("gold = ",gold)
 
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg})
 
-    #if player.hasMomoMark()
-      #return next(null, {code: 501, msg: '不能重复领取摸一摸奖励'})
     if gold > player.getMonoGiftTotal()
       return next(null,{code: 501,msg: '获取的元宝数大于实际值'})
-    player.clearMonoGift();
-    #player.setMomoMark()
+    player.clearMonoGift()
 
     player.increase 'gold', gold
     player.save()
@@ -154,7 +150,7 @@ Handler::passBarrier = (msg, session, next) ->
         rdata = table.getTableItem 'pass_reward', layer
         bl.rewards = 
           exp: rdata.exp
-          money: rdata.coins
+          money: rdata.money
           skillPoint: rdata.skill_point
           totalSpirit: 0
 
@@ -290,11 +286,7 @@ checkMysticalPass = (player) ->
   mpc = table.getTableItem 'mystical_pass_config', player.pass.mystical.diff
 
   if mpc and (player.pass.layer >= mpc.layer_from and player.pass.layer <= mpc.layer_to) and utility.hitRate(mpc.rate)
-    console.log("触发成功！！！",player.pass.layer);
     player.triggerMysticalPass()
-    #return true
-
-  #return false
 
 
 updatePlayer = (player, rewards, layer) ->

@@ -12,6 +12,7 @@ var lottery = require('./lottery');
 
 var passSkillAfresh = require('./passSkillAfresh');
 var explore = require('./explore');
+var buyVip = require('./buyVip');
 
 var logger = require('../logger').logger('user');
 
@@ -51,7 +52,7 @@ var routes = function(app){
         User.get(name,function(err,user){
             if(!user) {
                 req.flash('error','用户不存在');
-                logger.error("[login]" + user.name + "不存在");
+                logger.error("[login]" + name + "不存在");
                 return res.redirect('/login');
             }
 
@@ -122,6 +123,8 @@ var routes = function(app){
 
     passSkillAfresh(app);
     explore(app);
+    buyVip(app);
+
 
 
     app.get('/reward',checkLogin);

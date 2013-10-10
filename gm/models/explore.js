@@ -13,7 +13,6 @@ var cardDao = require('./dao/mysql/cardDao');
 var getDB = require('./getDatabase');
 var dbClient = require('./dao/mysql/mysql');
 var async = require('async');
-//var pomelo = window.pomelo;
 var Explore = function () {
 };
 

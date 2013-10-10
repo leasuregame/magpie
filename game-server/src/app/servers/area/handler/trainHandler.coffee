@@ -420,7 +420,6 @@ Handler::useElixir = (msg, session, next) ->
       return next(null, {code: 501, msg: '不能对3星以下的卡牌使用仙丹'})
 
     limit = elixirConfig.limit[card.star]
-    console.log 'elixir: ', limit, card.elixirHp, card.elixirAtk
     if (card.elixirHp + card.elixirAtk) >= limit
       return next(null, {code: 501, msg: "卡牌仙丹容量已满"})
 
@@ -474,4 +473,59 @@ Handler::changeLineUp = (msg, session, next) ->
     player.updateLineUp(lineupObj)
     player.save()
     next(null, { code: 200, msg: {lineUp: player.lineUpObj()} })
+
+Handler::sellCards = (msg, session, next) ->
+  playerId = session.get('playerId')
+  cardIds = if msg.ids? then msg.ids else []
+
+  if cardIds.length is 0
+    return next(null, {code: 200, msg: price: 0})
+
+  price = 0
+  player = null
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+
+    (res, cb) ->
+      player = res
+      cards = player.popCards cardIds
+      if _.isEmpty(cards)
+        return cb({code: 501, msg: '找不到卡牌'})
+
+      price += c.price() for c in cards
+      cb(null, price)
+
+    (price, cb) ->
+      dao.card.delete where: " id in (#{cardIds.toString()}) ", cb
+  ], (err, res) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    player.increase('money', price)
+    player.save()
+    next(null, {code: 200, msg: price: price})
+
+Handler::getCardBookEnergy = (msg, session, next) ->
+  playerId = session.get('playerId')
+  tableId = msg.tableId
+
+  ENERGY = 10
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    if not player.cardBookMark.hasMark(tableId) or player.cardBookFlag.hasMark(tableId)
+      return next(null, {code: 501, msg: '不能领取，已经领过或者还没有点亮该卡牌'})
+
+    player.cardBookFlag.mark(tableId)
+    player.increase('energy', ENERGY)
+    cardBook = utility.deepCopy(player.cardBook)
+    cardBook.flag = player.cardBookFlag.value
+    player.cardBook = cardBook
+    player.save()
+    return next(null, {code: 200, msg: energy: ENERGY})
+
+Handler::exchangeCard = (msg, session, next) ->
+  playerId = session.get('playerId')
 

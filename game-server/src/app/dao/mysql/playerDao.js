@@ -158,8 +158,8 @@ var PlayerDao = (function(_super) {
 
     PlayerDao.orderByLayer = function(limit, cb) {
         orderBy(
-            ['id', 'name', 'lv', 'passLayer'],
-            'passLayer DESC, lv DESC', 
+            ['id', 'name', 'ability', 'passLayer'],
+            'passLayer DESC, ability DESC', 
             limit, 
             cb
         );

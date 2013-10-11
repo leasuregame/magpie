@@ -18,9 +18,15 @@ $(document).ready(function(){
 
 var submitRequest = function() {
 
-    var type = $("#type").val();
+    var type = parseInt($("#type").val());
     var times = $("#times").val();
-
+    PassSkillAfresh.simulate(type,times,function(err,result){
+        if(err) {
+            console.log(err);
+        }
+        setResult(result);
+    });
+    /*
     var url = "/passSkillAfresh?type=" + type + "&times=" + times;
     $.ajax({
         url:url,
@@ -32,7 +38,7 @@ var submitRequest = function() {
             }
         }
     });
-
+    */
 };
 
 var setResult = function(result) {

@@ -96,18 +96,10 @@ function submit() {
 
 function dealAll(id,mail,cb) {
     async.waterfall([
+
         function(callback){
-            initConnect(function(){
+            connect(id,function(){
                 callback();
-            });
-        },
-        function(callback){
-            connectServer(id,function(code){
-                if(code == 200) {
-                    callback();
-                }else {
-                    cb('error');
-                }
             });
         },
         function(callback){
@@ -160,43 +152,6 @@ function getData() {
 
     return data;
 
-};
-
-
-function initConnect(cb) {
-    var host = "127.0.0.1";
-    var port = 3010;
-    pomelo.init({
-        host: host,
-        port: port,
-        log: true
-    }, function () {
-        cb();
-    });
-};
-
-function connectServer(areaId,cb) {
-
-  //  var dfd = $.Deferred();
-
-    var route = "connector.entryHandler.entryForGM";
-    pomelo.request(route, {
-        areaId: areaId
-    }, function (data) {
-        if (data.code === 200) {
-            console.log(data);
-
-         //   dfd.resolve();
-        } else {
-            console.log(data);
-          //  cb(data.code);
-        }
-
-        cb(data.code);
-
-    });
-
-   //return dfd.promise();
 };
 
 

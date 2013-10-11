@@ -270,15 +270,15 @@ var Card = (function (_super) {
     };
 
     Card.prototype.afreshPassiveSkill = function(type,ps) {
-        var born_rates = psConfig.BORN_RATES
-        var value_obj = psConfig.AFRESH[type]
+        var born_rates = psConfig.BORN_RATES;
+        var value_obj = psConfig.AFRESH[type];
 
-        var name = utility.randomValue(_.keys(born_rates), _.values(born_rates))
-        var valueScope = utility.randomValue(_.keys(value_obj), _.values(value_obj))
+        var name = utility.randomValue(_.keys(born_rates), _.values(born_rates));
+        var valueScope = utility.randomValue(_.keys(value_obj), _.values(value_obj));
         var _ref = valueScope.split('~'),
             start = _ref[0],
             end = _ref[1];
-        var value = _.random(start * 100, end * 100)
+        var value = _.random(start * 100, end * 100);
 
         var p = _.clone(ps);
 

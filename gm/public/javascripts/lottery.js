@@ -21,10 +21,15 @@ function submitLottery(){
     var level = $("#level").val();
     var type = $("#type").val();
     var times = $("#times").val();
+    Lottery.simulate(level,type,times,function(err,result){
+        if(err)
+            console.log(err);
+        setResult(result);
+    });
   //  console.log("level="+ level);
   //  console.log("type=" + type);
   //  console.log("times=" + times);
-    var url = "/lottery?level=" + level + "&type=" + type + "&times=" + times;
+   /* var url = "/lottery?level=" + level + "&type=" + type + "&times=" + times;
     $.ajax({
         url:url,
         type:"post",
@@ -36,7 +41,7 @@ function submitLottery(){
             }
         }
     });
-
+    */
 };
 
 function setResult(result) {

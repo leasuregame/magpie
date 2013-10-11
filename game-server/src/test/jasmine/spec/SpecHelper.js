@@ -195,6 +195,10 @@ var initPomelo = function() {
   });
 };
 
+pomelo.on('onLightUpCard', function(data){
+  console.log('Receive a message: ', data.msg);
+});
+
 var loginWith = function(account, pwd, areaId) {
   request("connector.userHandler.login", {
     account: account,

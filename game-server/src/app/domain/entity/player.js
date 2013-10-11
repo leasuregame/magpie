@@ -70,11 +70,8 @@ var addEvents = function(player) {
         achieve.receivedBless(player);
     });
 
-    player.on('pass.change', function(pass) {
-        if (typeof pass == 'string' && /^[\{\[].*[\]\}]$/.test(pass)) {
-            pass = JSON.parse(pass);
-        }
-        achieve.passTo(player, pass.layer || 0);
+    player.on('passLayer.change', function(layer) {
+        achieve.passTo(player, layer);
     });
 
     player.on('elixir.increase', function(elixir) {
@@ -201,6 +198,7 @@ var Player = (function(_super) {
         'lineUp',
         'ability',
         'task',
+        'passLayer',
         'pass',
         'dailyGift',
         'fragments',
@@ -235,8 +233,8 @@ var Player = (function(_super) {
             mark: []
             //momo: []
         },
+        passLayer: 0,
         pass: {
-            layer: 0,
             mark: [],
             mystical: {
                 diff: 1,
@@ -695,7 +693,7 @@ var Player = (function(_super) {
         }
 
         var pass = utility.deepCopy(this.pass);
-        if (pass.layer + 1 < layer) {
+        if (this.passLayer + 1 < layer) {
             logger.warn('未达到该关卡层数', layer);
             return;
         }
@@ -727,18 +725,14 @@ var Player = (function(_super) {
     };
 
     Player.prototype.incPass = function() {
-        var pass = utility.deepCopy(this.pass);
-        if (pass.layer >= 100)
-            return;
-        pass.layer++;
-        this.set('pass', pass);
+        this.increase('passLayer');
     };
 
     Player.prototype.getPass = function(){
         checkPass(this);
         return {
             canReset: this.pass.resetTimes > 0 ? true : false,
-            layer: this.pass.layer,
+            layer: this.passLayer,
             mark: this.pass.mark,
             hasMystical: this.hasMysticalPass()
         };
@@ -893,7 +887,6 @@ var Player = (function(_super) {
 var checkPass = function(player) {
     if (typeof player.pass !== 'object') {
         player.pass = {
-            layer: 0,
             mark: [],
             mystical: {
                 diff: 1,

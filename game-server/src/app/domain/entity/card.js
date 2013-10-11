@@ -197,7 +197,7 @@ var Card = (function(_super) {
         var ae = cardConfig.ABILIGY_EXCHANGE;
 
         // 1点攻击力=1点战斗力
-        // 3点生命值=1点战斗力
+        // 2点生命值=1点战斗力
         var _abi = parseInt(this.atk / ae.atk) + parseInt(this.hp / ae.hp);
 
         // 技能增强效果 

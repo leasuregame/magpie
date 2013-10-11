@@ -36,21 +36,14 @@ describe("Area Server", function() {
 							console.log('闯关', data);
 							expect(data.code).toEqual(200);
 							expect(data.msg).toBeDefined();
-							expect(data.msg).hasProperties([
-								'battleLog',
-								'pass'
-							]);
-							expect(data.msg.battleLog.winner).toEqual('own')
-							expect(data.msg.battleLog.rewards).hasProperties(['exp', 'skillPoint', 'spirit'])
-							expect(data.msg.pass).hasProperties(['layer', 'mark'])
+							expect(data.msg.battleLog.winner).toEqual('own');
+							expect(data.msg.battleLog.rewards).hasProperties(['totalSpirit', 'exp', 'skillPoint', 'money']);
+							expect(data.msg.pass).hasProperties(['layer', 'mark', 'canReset', 'hasMystical']);
 							expect(data.msg.battleLog).toBeBattleLog();
 
-							expect(data.msg.battleLog.rewards).hasProperties([
-								'spirit', 'skillPoint', 'exp'
-							]);
-
 							doAjax('/player/' + arthur.playerId, {}, function(res) {
-								expect(JSON.parse(res.data.pass)).toEqual(data.msg.pass);
+								expect(_.extend(JSON.parse(res.data.pass), {layer: res.data.passLayer})).toEqual(data.msg.pass);
+								expect(res.data.passLayer).toEqual(data.msg.pass.layer);
 							});
 						});
 					});
@@ -139,7 +132,7 @@ describe("Area Server", function() {
 							doAjax('/player/' + passer.playerId, {}, function(res) {
 								var pass = JSON.parse(res.data.pass);
 								expect(pass.mark).toEqual(data.msg.pass.mark);
-								expect(pass.layer).toEqual(data.msg.pass.layer);
+								expect(res.data.passLayer).toEqual(data.msg.pass.layer);
 								expect(pass.resetTimes > 0).toEqual(data.msg.pass.canReset);
 								expect(pass.mystical.isTrigger && !pass.mystical.isClear).toEqual(data.msg.pass.hasMystical);
 							});

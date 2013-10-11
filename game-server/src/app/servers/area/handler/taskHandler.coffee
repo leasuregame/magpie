@@ -141,8 +141,8 @@ Handler::passBarrier = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
-      layer = if layer? then layer else player.pass.layer + 1
-      if layer > 100 or layer < 1 or layer > (player.pass.layer + 1)
+      layer = if layer? then layer else player.passLayer + 1
+      if layer > 100 or layer < 1 or layer > (player.passLayer + 1)
         return cb({code: 501, msg: '不能闯此关'})
 
       cb(null)
@@ -152,7 +152,7 @@ Handler::passBarrier = (msg, session, next) ->
 
     (bl, cb) ->
       ### 第一次经过layer层，才有灵气掉落 ###
-      countSpirit(player, bl, 'PASS') if player.pass.layer is layer-1
+      countSpirit(player, bl, 'PASS') if player.passLayer is layer-1
       if bl.winner is 'own'
         rdata = table.getTableItem 'pass_reward', layer
         _.extend bl.rewards, {
@@ -285,7 +285,7 @@ checkMysticalPass = (player) ->
 
   mpc = table.getTableItem 'mystical_pass_config', player.pass.mystical.diff
 
-  if mpc and (player.pass.layer >= mpc.layer_from and player.pass.layer <= mpc.layer_to) and utility.hitRate(mpc.rate)
+  if mpc and (player.passLayer >= mpc.layer_from and player.passLayer <= mpc.layer_to) and utility.hitRate(mpc.rate)
     player.triggerMysticalPass()
 
 
@@ -294,6 +294,6 @@ updatePlayer = (player, rewards, layer) ->
   player.increase('money', rewards.money)
   player.increase('skillPoint', rewards.skillPoint)
   player.incSpirit(rewards.totalSpirit)
-  player.incPass() if player.pass.layer is layer-1
+  player.incPass() if player.passLayer is layer-1
   player.setPassMark(layer)
   player.save()

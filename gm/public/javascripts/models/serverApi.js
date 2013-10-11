@@ -1,0 +1,63 @@
+/**
+ * Created with JetBrains WebStorm.
+ * User: lujunyu
+ * Date: 13-9-28
+ * Time: 下午6:54
+ * To change this template use File | Settings | File Templates.
+ */
+
+var pomelo = window.pomelo;
+var ip = "124.238.236.33";
+//var ip = "127.0.0.1";
+
+
+function initConnect(cb) {
+    var host = ip;
+    var port = 3010;
+    pomelo.init({
+        host: host,
+        port: port,
+        log: true
+    }, function () {
+        cb();
+    });
+};
+
+function connectServer(areaId,cb) {
+    var route = "connector.entryHandler.entryForGM";
+    pomelo.request(route, {
+        areaId: areaId
+    }, function (data) {
+        if (data.code === 200) {
+            console.log(data);
+
+            //   dfd.resolve();
+        } else {
+            console.log(data);
+            //  cb(data.code);
+        }
+
+        cb(data.code);
+
+    });
+
+};
+
+function connect(areaId,next) {
+    async.waterfall([
+        function(cb){
+            initConnect(function(){
+                cb();
+            })
+        },
+        function(cb){
+            connectServer(areaId,function(code){
+                if (code == 200) {
+                    next();
+                } else {
+                    cb('error');
+                }
+            });
+        }
+    ])
+};

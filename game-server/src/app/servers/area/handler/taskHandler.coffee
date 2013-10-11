@@ -238,15 +238,11 @@ Handler::mysticalPass = (msg, session, next) ->
       cb()
 
     (cb) =>
-      @app.rpc.battle.fightRemote.pve(
-        session,
-        {
-          pid: player.id,
-          tableId: player.pass.mystical.diff,
-          table: 'mystical_pass_config'
-        },
-        cb
-      )
+      fightManager.pve {
+        pid: player.id,
+        tableId: player.pass.mystical.diff,
+        table: 'mystical_pass_config'
+      }, cb
 
     (bl, cb) ->
       countSpirit(player, bl, 'PASS')

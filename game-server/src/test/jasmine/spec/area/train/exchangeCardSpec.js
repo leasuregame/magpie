@@ -60,7 +60,7 @@ describe("Area Server", function() {
           });
         };
 
-        for (var i = 1; i <= 250; i++) {
+        for (var i = 1; i <= 50; i++) {
           (function(i) {
             doTest(i);
           })(i);

@@ -4,6 +4,13 @@ _ = require 'underscore'
 
 exports.addEvents = (app, player) ->
 
+  player.on 'add.card', (card) ->
+    if card.isNewLightUp
+      app.get('messageService').pushByPid player.id, {
+        route: 'onLightUpCard'
+        msg: tableId: card.tableId
+      }, () ->
+
   player.on 'power.resume', ->
     ply = player
     interval = playerConfig.POWER_RESUME.interval

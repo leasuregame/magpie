@@ -258,7 +258,7 @@ var SkillUpgradeLabel = cc.Node.extend({
         cc.log("SkillUpgradeLabel _onClickUpgrade");
 
         playEffect({
-            effectId: 6,
+            effectId: 11,
             target: this,
             loops: 1,
             delay: 0.1,

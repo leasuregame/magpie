@@ -288,8 +288,6 @@ var BatterLayer = cc.Layer.extend({
     _addSpirit: function (index) {
         var spirit = cc.Sprite.create(main_scene_image.icon247);
 
-        spirit.setOpacity(200);
-
         var point = this._locate[index];
         var offset = lz.random(-25, 25);
         var pointArray1 = [
@@ -319,7 +317,7 @@ var BatterLayer = cc.Layer.extend({
         spirit.runAction(cc.Sequence.create(
             cc.Spawn.create(
                 cc.CardinalSplineTo.create(2, pointArray1, 0),
-                cc.ScaleTo.create(1, 0.8, 0.8)
+                cc.ScaleTo.create(1, 1, 1)
             ),
             cc.CallFunc.create(function () {
                 spirit.runAction(

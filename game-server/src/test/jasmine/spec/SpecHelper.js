@@ -188,10 +188,6 @@ var initPomelo = function() {
     }, function() {
       console.log('connect success!');
       inited = true;
-
-      pomelo.on('onLightUpCard', function(data){
-        console.log('Receive a message: ', data.msg);
-      });
     });
   });
   waitsFor(function() {

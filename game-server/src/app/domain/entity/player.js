@@ -24,11 +24,10 @@ var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 var util = require('util');
-var entityUtil = require('../../util/entityUtil');
 var achieve = require('../achievement');
 var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL;
 var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
-
+var EXP_CARD_ID = require('../../../config/data/card').EXP_CARD_ID;
 
 var defaultMark = function() {
     var i, result = [];
@@ -100,12 +99,16 @@ var addEvents = function(player) {
 
     player.on('add.card', function(card) {
         if (player.isLineUpCard(card)) {
-            //player.activeGroupEffect();
             player.activeSpiritorEffect();
         }
 
-        if (!player.cardBookMark.hasMark(card.tableId)) {
-            entityUtil.lightUpACard(player, card.tableId);
+        if (!player.cardBookMark.hasMark(card.tableId) && card.tableId != EXP_CARD_ID) {
+            card.isNewLightUp = true;
+            player.cardBookMark.mark(card.tableId);
+            var cardBook = utility.deepCopy(player.cardBook);
+            cardBook.mark = player.cardBookMark.value;
+            player.cardBook = cardBook;
+            player.save();
         }
     });
 
@@ -136,9 +139,6 @@ var addEvents = function(player) {
         }
         recountVipPrivilege(player, oldVip);
     });
-
-    // player.emit('exp.change', player.exp);
-    // player.emit('cash.change', player.cash);
 };
 
 var correctPower = function(player) {

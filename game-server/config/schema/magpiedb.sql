@@ -97,18 +97,6 @@ CREATE TABLE IF NOT EXISTS `battleLog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ---------------------------------
--- Table structure for passiveSkill
--- ---------------------------------
-DROP TABLE IF EXISTS `passiveSkill`;
-CREATE TABLE IF NOT EXISTS `passiveSkill` (
-  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `cardId` INT(10) UNSIGNED NOT NULL,
-  `name` VARCHAR(20) COLLATE utf8_unicode_ci NOT NULL,
-  `value` FLOAT(5,1) UNSIGNED DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ---------------------------------
 -- Table structure for rank
 -- ---------------------------------
 DROP TABLE IF EXISTS `rank`;

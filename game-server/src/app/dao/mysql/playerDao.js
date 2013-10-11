@@ -19,7 +19,6 @@ var Player = require("../../domain/entity/player");
 var cardDao = require("./cardDao");
 var rankDao = require("./rankDao");
 var friendDao = require('./friendDao');
-var passiveSkillDao = require("./passiveSkillDao")
 var async = require('async');
 var dbClient = require('pomelo').app.get('dbClient');
 var logger = require('pomelo-logger').getLogger(__filename);
@@ -105,13 +104,7 @@ var PlayerDao = (function(_super) {
                     where: ' playerId in (' + ids.toString() + ')'
                 }, callback);
             },
-            function(callback) {
-                passiveSkillDao.query(
-                    "select p.* from passiveSkill p join card c on c.id = p.cardId where c.playerId in (" + ids.toString() + ")",
-                    [],
-                    callback
-                );
-            }
+
         ], function(err, results) {
             if (err !== null) {
                 return cb(err, null);
@@ -120,13 +113,9 @@ var PlayerDao = (function(_super) {
             var players = results[0];
             var cards = results[1];
             var ranks = results[2];
-            var passiveSkills = results[3];
 
-            cards.forEach(function(c) {
-                c.addPassiveSkills(passiveSkills.filter(function(ps){
-                    return ps.cardId == c.id;
-                }));
-            });
+
+
 
             players.forEach(function(p){
                 p.addCards(cards.filter(function(c){ return c.playerId == p.id}));

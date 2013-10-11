@@ -77,9 +77,8 @@ var LazyLayer = cc.Layer.extend({
     LazyLayer.showCloudLayer = function () {
         cc.log("LazyLayer showCloudLayer");
 
-        if(cloudLayer) {
+        if (cloudLayer && cloudLayer.getParent()) {
             cloudLayer.removeFromParent();
-            cloudLayer = null;
         }
 
         cloudLayer = LazyLayer.create();
@@ -90,7 +89,6 @@ var LazyLayer = cc.Layer.extend({
         cc.log("LazyLayer closeCloudLayer");
 
         cloudLayer.removeFromParent();
-        cloudLayer = null;
     };
 })();
 

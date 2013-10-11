@@ -320,7 +320,6 @@ var ExploreLayer = cc.Layer.extend({
     _onClickBack: function () {
         cc.log("ExploreLayer _onClickBack");
 
-        this._unlock();
         MainScene.getInstance().switchLayer(PveLayer);
     },
 

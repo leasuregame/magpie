@@ -193,8 +193,8 @@ var SpiritDetails = LazyLayer.extend({
         }
 
         this._spiritNode = SpiritNode.create();
-        this._spiritNode.setScale(2.0);
-        this._spiritNode.setPosition(cc.p(360, 740));
+        this._spiritNode.setScale(1.2);
+        this._spiritNode.setPosition(cc.p(360, 720));
         this.addChild(this._spiritNode, 2);
 
 //        this._upgradeItem.setVisible(spirit.canUpgrade());

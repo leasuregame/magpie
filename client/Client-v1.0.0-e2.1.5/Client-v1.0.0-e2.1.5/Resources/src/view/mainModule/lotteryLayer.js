@@ -145,11 +145,11 @@ var LotteryLayer = cc.Layer.extend({
         return function () {
             cc.log("LotteryLayer _onClickLottery");
 
+            LazyLayer.showCloudLayer();
+
             var that = this;
             gameData.lottery.lottery(function (data) {
                 cc.log(data);
-
-                LazyLayer.showCloudLayer();
 
                 that.update();
 

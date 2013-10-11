@@ -153,8 +153,6 @@ var Task = Entity.extend({
 
                 var player = gameData.player;
 
-                player.add("money", msg.money_obtain);
-
                 player.update({
                     power: msg.power,
                     lv: msg.lv,
@@ -162,11 +160,18 @@ var Task = Entity.extend({
                 });
 
                 if (msg.result == "fight") {
+                    msg.battle_log.rewards.money = msg.money_obtain;
+                    msg.battle_log.rewards.exp = msg.exp_obtain;
+
                     cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battle_log, PVE_BATTLE_LOG);
-                } else if (msg.result == "box") {
-                    var card = Card.create(msg.open_box_card);
-                    gameData.cardList.push(card);
-                    cbData.card = card;
+                } else {
+                    player.add("money", msg.money_obtain);
+
+                    if (msg.result == "box") {
+                        var card = Card.create(msg.open_box_card);
+                        gameData.cardList.push(card);
+                        cbData.card = card;
+                    }
                 }
 
                 cb(cbData);

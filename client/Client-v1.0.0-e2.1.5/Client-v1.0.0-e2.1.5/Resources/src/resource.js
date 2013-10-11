@@ -513,10 +513,6 @@ for (var cardId = 1; cardId <= 6; ++cardId) {
     main_scene_image["card" + cardId + "_head2"] = main_scene_path + "card" + cardId + "_head2.png";
     main_scene_image["card" + cardId + "_head3"] = main_scene_path + "card" + cardId + "_head3.png";
 
-    main_scene_image["card" + cardId + "_head_lock1"] = main_scene_path + "card" + cardId + "_head_lock1.png";
-    main_scene_image["card" + cardId + "_head_lock2"] = main_scene_path + "card" + cardId + "_head_lock2.png";
-    main_scene_image["card" + cardId + "_head_lock3"] = main_scene_path + "card" + cardId + "_head_lock3.png";
-
     main_scene_image["card" + cardId + "_half1"] = main_scene_path + "card" + cardId + "_half1.png";
     main_scene_image["card" + cardId + "_half2"] = main_scene_path + "card" + cardId + "_half2.png";
     main_scene_image["card" + cardId + "_half3"] = main_scene_path + "card" + cardId + "_half3.png";

@@ -108,7 +108,7 @@ var playEffect = function (arg) {
 
     return {
         sprite: sprite,
-        time: (len * delay)
+        time: (len * delay * loops)
     };
 };
 

@@ -33,6 +33,8 @@ var SpiritDetails = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 255), 640, 1136);
         bgLayer.setPosition(cc.p(40, 0));
         this.addChild(bgLayer);
@@ -173,6 +175,7 @@ var SpiritDetails = LazyLayer.extend({
         closeItem.setPosition(cc.p(360, 130));
 
         this._menu = cc.Menu.create(this._upgradeItem, closeItem);
+        this._menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         this._menu.setPosition(cc.p(0, 0));
         this.addChild(this._menu);
 

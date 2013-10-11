@@ -22,6 +22,8 @@ var CardDetails = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+
         this._card = card;
         this._cb = cb;
 
@@ -256,6 +258,7 @@ var CardDetails = LazyLayer.extend({
         closeItem.setPosition(cc.p(360, 130));
 
         this._menu = cc.Menu.create(closeItem);
+        this._menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         this._menu.setPosition(cc.p(0, 0));
         this.addChild(this._menu);
 

@@ -12,6 +12,8 @@
  * */
 
 
+var MAIN_MENU_LAYER_HANDLER_PRIORITY = -200;
+
 var MainMenuLayer = cc.Layer.extend({
     init: function () {
         cc.log("MainMenuLayer init");
@@ -81,6 +83,7 @@ var MainMenuLayer = cc.Layer.extend({
             shopLayerItem,
             messageLayerItem
         );
+        mainMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         mainMenu.setPosition(cc.p(0, 0));
         this.addChild(mainMenu);
 

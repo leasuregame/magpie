@@ -5,16 +5,16 @@ describe('Area Server', function() {
 		});
 
 		describe('area.dailyHandler.getSignInGift', function() {
+			var now = new Date();
+			var mkey = now.getFullYear().toString() + (now.getMonth() + 1).toString();
 
 			describe('when had got sign in gift', function() {
 				beforeEach(function() {
+					var singIn = {months: {}, flag: 1};
+					singIn.months[mkey] = 31;
+
 					doAjax('/update/player/100', {
-						signIn: JSON.stringify({
-							months: {
-								20139: 31
-							},
-							flag: 1
-						})
+						signIn: JSON.stringify(singIn)
 					}, function() {
 						loginWith('arthur', '1', 1);
 					});
@@ -33,14 +33,12 @@ describe('Area Server', function() {
 			});
 
 			describe('when get sign in gift', function() {
+				var singIn = {months: {}, flag: 0};
+				singIn.months[mkey] = 31;
+
 				beforeEach(function() {
 					doAjax('/update/player/100', {
-						signIn: JSON.stringify({
-							months: {
-								20139: 31
-							},
-							flag: 0
-						})
+						signIn: JSON.stringify(singIn)
 					}, function() {
 						loginWith('arthur', '1', 1);
 					});					

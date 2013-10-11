@@ -29,17 +29,23 @@ var playEffect = function (arg) {
     var scaleY = arg.scaleY;
     var rotation = arg.rotation;
     var zOrder = arg.zOrder;
-    var clear = arg.clear || (arg.cb ? false : true);
+    var clear = arg.clear;
     var cb = arg.cb || null;
 
     if (!effectId || !target) {
         return;
     }
 
+    if (clear == undefined) {
+        clear = arg.cb ? false : true;
+    }
+
     var frames = [];
+    var len = effectConfig[effectId];
     var rect = effectRect[effectId];
 
-    for (var i = 0; i < effectConfig[effectId]; ++i) {
+
+    for (var i = 0; i < len; ++i) {
         var frame = cc.SpriteFrame.create(
             main_scene_image["effect" + effectId + "_frame" + i],
             rect
@@ -91,7 +97,7 @@ var playEffect = function (arg) {
             if (clear) {
                 sprite.removeFromParent();
             }
-        });
+        }, this);
 
         action = cc.Sequence.create(repeatAction, callFuncAction);
     } else {
@@ -100,7 +106,10 @@ var playEffect = function (arg) {
 
     sprite.runAction(action);
 
-    return sprite;
+    return {
+        sprite: sprite,
+        time: (len * delay)
+    };
 };
 
 

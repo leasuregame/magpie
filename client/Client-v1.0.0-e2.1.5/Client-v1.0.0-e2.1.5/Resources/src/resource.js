@@ -65,6 +65,7 @@ var main_scene_image = {
     main_message_bg: main_scene_path + "main_message_bg.png",
     star1: main_scene_path + "star1.png",
     star2: main_scene_path + "star2.png",
+    star3: main_scene_path + "star3.png",
     ladder1: main_scene_path + "ladder1.png",
     ladder2: main_scene_path + "ladder2.png",
     cloud: main_scene_path + "cloud.png",
@@ -214,6 +215,7 @@ var main_scene_image = {
     button24s: main_scene_path + "button24s.png",
     button25: main_scene_path + "button25.png",
     button25s: main_scene_path + "button25s.png",
+    button25d: main_scene_path + "button25d.png",
     button26: main_scene_path + "button26.png",
     button26s: main_scene_path + "button26s.png",
     button27: main_scene_path + "button27.png",
@@ -393,13 +395,13 @@ var main_scene_image = {
     icon147: main_scene_path + "icon147.png",
     icon148: main_scene_path + "icon148.png",
     icon149: main_scene_path + "icon149.png",
-//    icon150: main_scene_path + "icon150.png",
-//    icon151: main_scene_path + "icon151.png",
-//    icon152: main_scene_path + "icon152.png",
-//    icon153: main_scene_path + "icon153.png",
-//    icon154: main_scene_path + "icon154.png",
-//    icon155: main_scene_path + "icon155.png",
-//    icon156: main_scene_path + "icon156.png",
+    icon150: main_scene_path + "icon150.png",
+    icon151: main_scene_path + "icon151.png",
+    icon152: main_scene_path + "icon152.png",
+    icon153: main_scene_path + "icon153.png",
+    icon154: main_scene_path + "icon154.png",
+    icon155: main_scene_path + "icon155.png",
+    icon156: main_scene_path + "icon156.png",
     icon157: main_scene_path + "icon157.png",
     icon158: main_scene_path + "icon158.png",
     icon159: main_scene_path + "icon159.png",
@@ -476,7 +478,14 @@ var main_scene_image = {
     icon230: main_scene_path + "icon230.png",
     icon231: main_scene_path + "icon231.png",
     icon232: main_scene_path + "icon232.png",
-    icon233: main_scene_path + "icon233.png"
+    icon233: main_scene_path + "icon233.png",
+    icon234: main_scene_path + "icon234.png",
+    icon235: main_scene_path + "icon235.png",
+    icon236: main_scene_path + "icon236.png",
+    icon237: main_scene_path + "icon237.png",
+    icon238: main_scene_path + "icon238.png",
+    icon239: main_scene_path + "icon239.png",
+    icon240: main_scene_path + "icon240.png"
 };
 
 var main_scene_res = [
@@ -521,11 +530,14 @@ var effectConfig = [
     10,
     10,
     5,
+    6,
     7,
-    12,
-    18,
-    18,
-    18
+    5,
+    8,
+    6,
+    8,
+    3,
+    3
 ];
 
 var effectRect = [
@@ -533,11 +545,15 @@ var effectRect = [
     cc.rect(0, 0, 132, 132),
     cc.rect(0, 0, 640, 218),
     cc.rect(0, 0, 600, 713),
-    cc.rect(0, 0, 80, 550),
-    cc.rect(0, 0, 210, 200),
-    cc.rect(0, 0, 65, 200),
-    cc.rect(0, 0, 130, 300),
-    cc.rect(0, 0, 120, 300)
+    cc.rect(0, 0, 120, 275),
+    cc.rect(0, 0, 182, 171),
+    cc.rect(0, 0, 170, 185),
+    cc.rect(0, 0, 83, 261),
+    cc.rect(0, 0, 251, 279),
+    cc.rect(0, 0, 175, 215),
+    cc.rect(0, 0, 180, 196),
+    cc.rect(0, 0, 175, 215)
+
 ];
 
 for (var effectId = 0; effectId < effectConfig.length; ++effectId) {

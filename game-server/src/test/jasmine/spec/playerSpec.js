@@ -101,7 +101,7 @@ describe("Connector Server", function() {
                   spirit: 0
                 },
                 spiritPool: {
-                  lv: 0,
+                  lv: 1,
                   exp: 0,
                   collectCount: 15
                 },

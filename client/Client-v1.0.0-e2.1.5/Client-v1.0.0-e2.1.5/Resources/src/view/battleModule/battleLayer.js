@@ -69,7 +69,7 @@ var BatterLayer = cc.Layer.extend({
 
         this._backItem.setVisible(false);
 
-        var battleNode = battleLog.getBattleNode();
+        var battleNode = battleLog.get("card");
 
         cc.log(battleNode);
 
@@ -124,9 +124,23 @@ var BatterLayer = cc.Layer.extend({
         cc.log("\n\n\nBattlePlayer _playAStep " + this._battleLog.getBattleStepIndex());
 
         var battleStep = this._battleLog.getBattleStep();
+        var skillType = this._battleNode[battleStep.get("attacker")].getSkillType();
+        var delay;
 
         if (battleStep.isSpiritAtk()) {
             battleStep.set("attacker", this._battleLog.getSpirit(battleStep.get("attacker")));
+        }
+
+        if (battleStep.isSkill()) {
+            if (skillType === 2) {
+                delay = this._aoe(battleStep);
+            } else if (skillType === 3 || skillType === 4) {
+                delay = this._heal(battleStep);
+            } else {
+                delay = this._aoe(battleStep);
+            }
+        } else {
+            delay = this._normalAttack(battleStep);
         }
 
         var str = battleStep.get("attacker") + (battleStep.get("isSkill") ? " 用技能 揍了 " : " 用普攻 揍了 ");
@@ -135,7 +149,6 @@ var BatterLayer = cc.Layer.extend({
         cc.log(str);
         this._tipLabel.setString(str);
 
-        var delay = this._normalAttack(battleStep);
 
         cc.log("set next round schedule");
         this.schedule(this._playAStep, delay, 1, 0);
@@ -156,18 +169,115 @@ var BatterLayer = cc.Layer.extend({
 
             this._battleNode[target].defend(battleStep.getEffect(), battleStep.isCrit());
 
-            var effectSprite = playEffect({
+            var cb = function (target, position) {
+                return function () {
+                    playEffect({
+                        effectId: 5,
+                        target: target,
+                        loops: 1,
+                        delay: 0.07,
+                        zOrder: 10,
+                        position: position
+                    })
+                };
+            }(this, targetLocate);
+
+            var ret = playEffect({
+                effectId: 4,
+                target: this,
+                loops: 1,
+                delay: 0.07,
+                zOrder: 10,
+                rotation: lz.getAngle(attackerLocate, targetLocate),
+                anchorPoint: cc.p(0.5, 0.8),
+                position: attackerLocate,
+                clear: true,
+                cb: cb
+            });
+
+            var effectSprite = ret.sprite;
+            var time = ret.time;
+
+            var moveAction = cc.EaseSineIn.create(cc.MoveTo.create(time, targetLocate));
+
+            effectSprite.runAction(moveAction);
+        }
+
+        return 2.0;
+    },
+
+    _aoe: function (battleStep) {
+        cc.log(battleStep);
+
+        var attacker = battleStep.get("attacker");
+
+        this._battleNode[attacker].atk();
+
+        battleStep.recover();
+        while (battleStep.hasNextTarget()) {
+            var target = battleStep.getTarget();
+            var targetLocate = this._locate[target];
+
+            this._battleNode[target].defend(battleStep.getEffect(), battleStep.isCrit());
+
+            var cb = function (target, position) {
+                return function () {
+                    playEffect({
+                        effectId: 8,
+                        target: target,
+                        loops: 1,
+                        delay: 0.06,
+                        zOrder: 10,
+                        position: position
+                    })
+                };
+            }(this, targetLocate);
+
+            var ret = playEffect({
                 effectId: 7,
                 target: this,
                 loops: 1,
-                delay: 0.025,
+                delay: 0.04,
                 zOrder: 10,
-                rotation: lz.getAngle(attackerLocate, targetLocate),
-                position: attackerLocate
+                anchorPoint: cc.p(0.5, 0.2),
+                position: cc.p(targetLocate.x, targetLocate.y + 120),
+                clear: true,
+                cb: cb
             });
 
-            var moveAction = cc.EaseSineIn.create(cc.MoveTo.create(0.45, targetLocate));
+            var effectSprite = ret.sprite;
+            var time = ret.time;
+
+            var moveAction = cc.EaseSineIn.create(cc.MoveTo.create(time, targetLocate));
+
             effectSprite.runAction(moveAction);
+        }
+
+        return 2.0;
+    },
+
+    _heal: function (battleStep) {
+        var attacker = battleStep.get("attacker");
+
+        this._battleNode[attacker].atk();
+
+        battleStep.recover();
+        while (battleStep.hasNextTarget()) {
+            var target = battleStep.getTarget();
+            var targetLocate = this._locate[target];
+
+            this._battleNode[target].heal(battleStep.getEffect(), battleStep.isCrit());
+
+            playEffect({
+                effectId: 9,
+                target: this,
+                loops: 1,
+                delay: 0.07,
+                zOrder: 10,
+                anchorPoint: cc.p(0.5, 0.4),
+                position: targetLocate,
+                clear: true
+            });
         }
 
         return 2.0;

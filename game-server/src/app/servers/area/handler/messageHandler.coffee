@@ -4,6 +4,7 @@ msgConfig = require '../../../../config/data/message'
 logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async'
 achieve = require '../../../domain/achievement'
+_ = require 'underscore'
 
 SYSTEM = -1
 
@@ -44,7 +45,7 @@ sendMessage = (app, target, msg, next) ->
       code = 200
     next(null, {code: code}) if next?
 
-  if target isnt null
+  if target?
     app.get('messageService').pushByPid target, msg, callback
   else 
     app.get('messageService').pushMessage msg, callback
@@ -196,25 +197,32 @@ Handler::addFriend = (msg, session, next) ->
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, (err, ply) ->
         return cb(err) if err
-        if ply.friends.filter((f) -> f.name is friendName).length > 0
+        if _.filter(ply.friends,(f) -> f.name is friendName).length > 0
           cb({code: 501, msg: '对方已经是你的好友'})
+        else if ply.friends.length >= ply.friendsCount
+          cb({code: 501, msg: '您的好友已达上限'})
         else
           cb()
-
     (cb) ->
       playerManager.getPlayer name: friendName, cb
 
     (res, cb) ->
       friend = res
-      dao.message.fetchOne where: {
-        type: msgConfig.MESSAGETYPE.ADDFRIEND
-        sender: playerId
-        receiver: friend.id
-      }, (err, res) ->
-        if not err and !!res
-          cb(null, true)
-        else 
-          cb(null, false)
+      dao.friend.getFriends friend.id, (err, senderFriends) ->
+        if err
+          return next(null, {code: err.code or 500, msg: err.msg or err})
+        else if senderFriends.length >= friend.friendsCount
+          cb({code: 501, msg: '对方好友已达上限'})
+        else
+          dao.message.fetchOne where: {
+            type: msgConfig.MESSAGETYPE.ADDFRIEND
+            sender: playerId
+            receiver: friend.id
+          }, (err, res) ->
+            if not err and !!res
+              cb(null, true)
+            else
+              cb(null, false)
 
     (exist, cb) ->
       if not exist
@@ -266,14 +274,24 @@ Handler::accept = (msg, session, next) ->
 
     (res, cb) ->
       player = res
-      if player.friends.length >= 20
-        return cb({code: 501, msg: 'friend count is the max'})
-      
-      dao.friend.create {
-        data: 
-          playerId: message.sender
-          friendId: message.receiver
-      }, cb
+      if player.friends.length >= player.friendsCount
+        return cb({code: 501, msg: '您的好友已达上限'})
+      else
+        cb();
+    (cb) ->
+      playerManager.getPlayerInfo pid:message.sender, cb
+    (res, cb) ->
+      dao.friend.getFriends res.id, (err, senderFriends) ->
+        if err
+          return next(null, {code: err.code or 500, msg: err.msg or err})
+        else if senderFriends.length >= res.friendsCount
+          cb({code: 501, msg: '对方好友已达上限'})
+        else
+          dao.friend.create {
+            data:
+              playerId: message.sender
+              friendId: message.receiver
+          }, cb
 
     (friend, cb) ->
       message.status = msgConfig.MESSAGESTATUS.ACCEPT

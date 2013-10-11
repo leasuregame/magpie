@@ -38,10 +38,10 @@ describe('Area Server', function() {
 							msg: {
 								spiritor: {
 									lv: 4,
-									spirit: 18 + rs
+									spirit: 20 + rs
 								},
 								spiritPool: {
-									lv: 0,
+									lv: 1,
 									exp: 5,
 									collectCount: 14
 								},

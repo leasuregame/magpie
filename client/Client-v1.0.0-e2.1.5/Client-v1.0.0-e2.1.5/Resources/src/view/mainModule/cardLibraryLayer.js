@@ -47,7 +47,7 @@ var CardLibraryLayer = cc.Layer.extend({
         this.addChild(tipIcon);
 
         var tipLabel = cc.LabelTTF.create(
-            "每次获得新卡牌，点击该卡牌可领取活力。卡牌星级越高，可获得的活力越多。",
+            "每次获得新卡牌，点击该卡牌可领取活力点。星级越高奖励越高。",
             "STHeitiTC-Medium",
             17
         );
@@ -138,8 +138,12 @@ var CardLibraryLayer = cc.Layer.extend({
             var cardLibrary = gameData.cardLibrary;
 
             if (cardLibrary.getTypeById(id) == CARD_RECEIVE) {
-                cardLibrary.receive(function () {
+                cardLibrary.receive(function (data) {
+                    cc.log(data);
+
                     that.update();
+
+                    TipLayer.tipNoBg("活力点: " + data);
                 }, id);
             } else {
                 var cardDetails = CardDetails.create(card);

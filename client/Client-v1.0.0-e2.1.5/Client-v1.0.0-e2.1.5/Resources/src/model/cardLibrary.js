@@ -148,7 +148,7 @@ var CardLibrary = Entity.extend({
 
                 that._changeTypeById(id, CARD_EXIST);
 
-                cb();
+                cb(msg.energy);
             } else {
                 cc.log("receive fail");
             }

@@ -9,13 +9,13 @@ msgConfig = require '../../../../config/data/message'
 _ = require 'underscore'
 
 INTERVALS = 
-  10000: 100
-  7000: 80
-  5000: 60
-  3000: 40
-  1000: 20
-  700: 15
-  300: 10
+  10000: 106
+  7000: 83
+  5000: 62
+  3000: 41
+  1000: 19
+  700: 14
+  300: 11
   199: 5
   1: 1
 
@@ -91,6 +91,7 @@ Handler::challenge = (msg, session, next) ->
       next(null, {code: 200, msg: {
         battleLog: bl, 
         counts: player.rank?.counts,
+        rankingRewards: player.rank?.rankingRewards(),
         power: player.power,
         lv: player.lv,
         exp: player.exp
@@ -98,6 +99,35 @@ Handler::challenge = (msg, session, next) ->
 
       saveBattleLog(bl, playerName)
 
+Handler::fight = (msg, session, next) ->
+  playerId = session.get('playerId')
+  targetId = msg.targetId
+
+  fightManager.pvp {playerId: playerId, targetId: targetId}, (err, bl) ->
+    if err
+      return next(null, {code: 501, msg: err.msg or err})
+
+    next(null, {code: 200, msg: battleLog: bl})
+
+Handler::getRankingReward = (msg, session, next) ->
+  playerId = session.get('playerId')
+  ranking = msg.ranking
+
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {code: err.code, msg: err.msg or err.message})
+
+    rank = player.rank
+    if rank.historyRanking is 0 or rank.historyRanking > ranking
+      return next(null, {code: 501, msg: '不能领取该排名奖励'})
+
+    rank.getRankingReward(ranking)
+    rewardData = table.getTableItem('ranking_reward', ranking)
+    if not rewardData
+      return next(null, {code: 501, msg: "找不到#{ranking}的排名奖励"})
+    player.increase('elixir', rewardData.elixir)
+    player.save()
+    next(null, {code: 200, msg: rankingRewards: player.rank?.rankingRewards()})
 
 isV587 = (bl) ->
   ownCardCount = enemyCardCount = 0

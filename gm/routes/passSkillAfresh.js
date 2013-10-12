@@ -7,7 +7,7 @@
  */
 
 var Url = require("url");
-var PassSkillAfresh = require('../models/passSkillAfresh');
+//var PassSkillAfresh = require('../public/javascripts/models/passSkillAfresh');
 
 var passSkillAfresh = function (app) {
 
@@ -19,7 +19,7 @@ var passSkillAfresh = function (app) {
         });
     });
 
-    app.post('/passSkillAfresh', function (req, res) {
+    /*app.post('/passSkillAfresh', function (req, res) {
 
         var url = Url.parse(req.url,true);
         var query = url.query;
@@ -34,6 +34,7 @@ var passSkillAfresh = function (app) {
 
 
     });
+    */
 
 };
 

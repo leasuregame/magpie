@@ -13,9 +13,8 @@
 
 
 var PlayerHeaderLabel = cc.Layer.extend({
-    _selectRect: cc.rect(0, 0, GAME_WIDTH, 120),
+    _selectRect: cc.rect(0, 0, 640, 120),
     _isTouch: false,
-    _nameLabel: null,
     _expProgress: null,
     _lvLabel: null,
     _vipSprite: null,
@@ -28,6 +27,8 @@ var PlayerHeaderLabel = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        this.schedule(this.update, 1, null);
     },
 
     init: function () {
@@ -37,64 +38,68 @@ var PlayerHeaderLabel = cc.Layer.extend({
 
         this.setTouchEnabled(true);
 
-        this._nameLabel = cc.LabelTTF.create("null", '黑体', 30);
-        this._nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._nameLabel.setPosition(cc.p(130, 83));
-        this.addChild(this._nameLabel);
+        var player = gameData.player;
 
-        this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0, true);
+        var nameLabel = StrokeLabel.create(player.get("name"), "STHeitiTC-Medium", 30);
+        nameLabel.setColor(cc.c3b(255, 239, 131));
+        nameLabel.setAnchorPoint(cc.p(0, 0.5));
+        nameLabel.setPosition(cc.p(130, 83));
+        this.addChild(nameLabel);
+
+        var expBg = cc.Sprite.create(main_scene_image.exp_bg);
+        expBg.setPosition(cc.p(210, 36));
+        this.addChild(expBg);
+
+        this._expProgress = Progress.create(null, main_scene_image.exp, 1, 1, true);
         this._expProgress.setPosition(cc.p(214, 36));
-        this.addChild(this._expProgress, 2);
+        this.addChild(this._expProgress);
+        this._expProgress.setFontColor(cc.c3b(255, 239, 131));
 
         var lvBg = cc.Sprite.create(main_scene_image.lv_bg);
         lvBg.setPosition(cc.p(60, 60));
-        this.addChild(lvBg, 2);
+        this.addChild(lvBg);
 
-        this._lvLabel = cc.LabelTTF.create("0", '黑体', 45);
-        this._lvLabel.setPosition(cc.p(60, 60));
-        this.addChild(this._lvLabel, 2);
+        this._lvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 45);
+        this._lvLabel.setColor(cc.c3b(255, 239, 131));
+        this._lvLabel.setPosition(cc.p(57, 58));
+        this.addChild(this._lvLabel);
 
-        this._goldLabel = cc.LabelTTF.create("0", '黑体', 22);
+        this._goldLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+        this._goldLabel.setColor(cc.c3b(255, 239, 131));
         this._goldLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._goldLabel.setPosition(cc.p(580, 83));
         this.addChild(this._goldLabel);
 
-        this._moneyLabel = cc.LabelTTF.create("0", '黑体', 22);
+        this._moneyLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+        this._moneyLabel.setColor(cc.c3b(255, 239, 131));
         this._moneyLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._moneyLabel.setPosition(cc.p(580, 36));
         this.addChild(this._moneyLabel);
 
-        this._powerLabel = cc.LabelTTF.create("0/0", '黑体', 22);
+        this._powerLabel = cc.LabelTTF.create("0 / 0", "STHeitiTC-Medium", 22);
+        this._powerLabel.setColor(cc.c3b(255, 239, 131));
         this._powerLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._powerLabel.setPosition(cc.p(420, 36));
+        this._powerLabel.setPosition(cc.p(427, 36));
         this.addChild(this._powerLabel);
+
+        var vipLv = player.get("vip");
+        if (vipLv) {
+            var vipSprite = cc.Sprite.create(main_scene_image["vip" + vipLv]);
+            vipSprite.setPosition(cc.p(410, 83));
+            this.addChild(vipSprite);
+        }
 
         return true;
     },
 
     update: function () {
-        cc.log("PlayerHeaderLabel update");
-
         var player = gameData.player;
 
-        if (this._vipSprite) {
-            this._vipSprite.removeFromParent();
-        }
-
-        var vipLv = player.get("vip");
-
-        if (vipLv) {
-            this._vipSprite = cc.Sprite.create(main_scene_image["vip" + vipLv]);
-            this._vipSprite.setPosition(cc.p(60, 60));
-            this.addChild(this._vipSprite, 2);
-        }
-
         this._expProgress.setAllValue(player.get("exp"), player.get("maxExp"));
-        this._nameLabel.setString(player.get("name"));
         this._lvLabel.setString(player.get("lv"));
         this._goldLabel.setString(player.get("gold"));
         this._moneyLabel.setString(player.get("money"));
-        this._powerLabel.setString(player.get("power") + "/" + player.get("maxPower"));
+        this._powerLabel.setString(player.get("power") + " / " + player.get("maxPower"));
     },
 
     _onClickPlayerDetails: function () {
@@ -113,9 +118,6 @@ var PlayerHeaderLabel = cc.Layer.extend({
         }
     },
 
-    onTouchesMoved: function (touches, event) {
-        cc.log("PlayerHeaderLabel onTouchesMoved");
-    },
 
     onTouchesEnded: function (touches, event) {
         cc.log("PlayerHeaderLabel onTouchesEnded");

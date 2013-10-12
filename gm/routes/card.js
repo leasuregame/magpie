@@ -48,7 +48,7 @@ var card = function(app) {
             });
 
         }else {
-            res.redirect('/playerLogin?target=card');
+            res.redirect('/playerLogin?target=cardData');
         }
 
     });
@@ -90,14 +90,14 @@ var card = function(app) {
         var card = JSON.parse(query["card"]);
         logger.info("[add]" + JSON.stringify(card));
        // console.log(card);
-        Card.create(card,function(err,card){
+        Card.create(card,function(err,result){
             if(err) {
                 logger.error("[add]" + err);
                res.send({type:"fail",info:"添加卡牌出错"});
             } else{
 
                 logger.info("[add]" + "success");
-                res.send({type:"success",info:card});
+                res.send({type:"success",info:result});
             }
         });
     });
@@ -116,7 +116,7 @@ var card = function(app) {
             if(err) {
                 logger.error("[del]" + err);
                 res.send({type:"fail",info:err});
-            } else{
+            }else{
                 Player.update({where:{id:req.session.player.id},data:{lineUp:lineUp}},function(err,isOk){
                     if(isOk) {
                         logger.info("[del] " + "success");

@@ -11,7 +11,7 @@
 
 
 var Url = require('url');
-var Lottery = require('../models/lottery');
+//var Lottery = require('../models/lottery');
 
 var lottery = function(app){
 
@@ -24,7 +24,7 @@ var lottery = function(app){
         });
     });
 
-    app.post('/lottery',function(req,res){
+   /* app.post('/lottery',function(req,res){
 
 
         var url = Url.parse(req.url,true);
@@ -38,7 +38,7 @@ var lottery = function(app){
             res.send({type:'success',info:result});
         });
     });
-
+   */
 };
 
 module.exports = lottery;

@@ -70,8 +70,8 @@ parseCards = (data) ->
         id: data.boss_id
         skill_trigger_rate: data.trigger_rate
         attr_inc: data.boss_attr
-        boss_atk_inc: data.boss_atk_inc
-        boss_hp_inc: data.boss_hp_inc
+        atk_inc: data.atk_inc
+        hp_inc: data.hp_inc
         boss_crit: data.boss_crit
         boss_dodge: data.dodge
       }

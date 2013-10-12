@@ -12,7 +12,12 @@
 
 <script src="/javascripts/jquery.js" type="text/javascript"></script>
 <script src="/javascripts/bootstrap.js"></script>
-
+<script src="/javascripts/models/serverAPI.js" type="text/javascript"></script>
+<script src="/javascripts/async.js" type="text/javascript"></script>
+<script src="/javascripts/lib/build/build.js" type="text/javascript"></script>
+<script type="text/javascript">
+    require('boot');
+</script>
 
 </head>
 <body>
@@ -59,13 +64,12 @@
                 <li><a href="/playerData">玩家数据修改</a></li>
                 <li><a href='/cardData'>卡牌操作</a></li>
                 <li><a href='/rank'>竞技场</a></li>
-                <!--
-                <li><a title="补偿奖赏" href="/reward">补偿奖赏</a></span>
-                 -->
                 <li><a title="模拟战斗" href="/simBattle">模拟战斗</a></li>
                 <li><a href="/lottery">模拟抽卡</a></li>
                 <li><a href='/passSkillAfresh'>模拟洗练</a></li>
                 <li><a href="/explore">探索</a></li>
+                <li><a title="补偿奖赏" href="/reward">补偿奖赏</a></span>
+                <li><a href="/buyVip">充值VIP</a></li>
                 <% if(user.isRoot == 1) {%>
                      <li><a title="添加GM用户" href="/reg">添加GM用户</a></li>
                 <% } %>

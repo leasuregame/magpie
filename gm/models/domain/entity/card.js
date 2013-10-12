@@ -85,6 +85,7 @@ var Card = (function(_super) {
         'lv',
         'exp',
         'skillLv',
+        'skillInc',
         'skillPoint',
         'elixirHp',
         'elixirAtk'
@@ -95,6 +96,7 @@ var Card = (function(_super) {
         lv: 1,
         exp: 0,
         skillLv: 1,
+        skillInc:0.0,
         skillPoint: 0,
         elixirHp: 0,
         elixirAtk:0,
@@ -103,8 +105,6 @@ var Card = (function(_super) {
         hp: 0,
         atk: 0,
         incs: {
-            group_hp: 0,
-            group_atk: 0,
             spirit_hp: 0,
             spirit_atk: 0,
             ps_hp: 0,
@@ -254,8 +254,6 @@ var Card = (function(_super) {
             skillLv: this.skillLv,
             skillPoint: this.skillPoint,
             elixir: this.elixir,
-            hpAddition: this.hpAddition,
-            atkAddition: this.atkAddition,
             passiveSkills: _.values(this.passiveSkills).map(function(ps) {
                 return ps.toJson();
             }) || []

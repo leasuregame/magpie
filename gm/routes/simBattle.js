@@ -7,11 +7,11 @@
  */
 
 var Url = require('url');
-var Battle = require('../models/battle');
+//var Battle = require('../models/battle');
 
 var simBattle = function (app) {
 
-    app.get('/simBattle',checkLogin);
+   // app.get('/simBattle',checkLogin);
 
     app.get('/simBattle', function (req, res) {
         res.render('simBattle',{
@@ -21,7 +21,7 @@ var simBattle = function (app) {
         });
     });
 
-    app.post('/simBattle',function (req,res){
+   /* app.post('/simBattle',function (req,res){
         var url = Url.parse(req.url,true);
         var query = url.query;
         var attack = JSON.parse(query['attack']);
@@ -37,7 +37,7 @@ var simBattle = function (app) {
         });
 
     });
-
+    */
     function checkLogin(req, res, next){
         if(!req.session.user){
             req.flash('error','请先登录');

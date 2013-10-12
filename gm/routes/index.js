@@ -9,9 +9,11 @@ var card = require('./card');
 var rank = require('./rank');
 var simBattle = require('./simBattle');
 var lottery = require('./lottery');
-
 var passSkillAfresh = require('./passSkillAfresh');
 var explore = require('./explore');
+var Area = require('../models/area');
+
+var buyVip = require('./buyVip');
 
 var logger = require('../logger').logger('user');
 
@@ -51,7 +53,7 @@ var routes = function(app){
         User.get(name,function(err,user){
             if(!user) {
                 req.flash('error','用户不存在');
-                logger.error("[login]" + user.name + "不存在");
+                logger.error("[login]" + name + "不存在");
                 return res.redirect('/login');
             }
 
@@ -122,17 +124,22 @@ var routes = function(app){
 
     passSkillAfresh(app);
     explore(app);
+    buyVip(app);
+
 
 
     app.get('/reward',checkLogin);
 
     //全服、个人补偿奖赏
     app.get('/reward',function(req , res){
-        res.render('reward',{
-            title : '补偿奖赏',
-            user : req.session.user,
-            success:req.flash('success').toString(),
-            error:req.flash('error').toString()
+        Area.getAreasList(function(areas) {
+            res.render('reward',{
+                title : '补偿奖赏',
+                user : req.session.user,
+                areas:areas,
+                success:req.flash('success').toString(),
+                error:req.flash('error').toString()
+            });
         });
     });
 

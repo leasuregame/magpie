@@ -17,6 +17,7 @@ Card.table = "cards";
 
 Card.update = function(data,cb){
 
+    console.log(data);
     var card = {
         where:{
             id:data.id
@@ -27,18 +28,17 @@ Card.update = function(data,cb){
             elixirHp:data.elixirHp,
             elixirAtk:data.elixirAtk,
             star:data.star,
-            tableId:data.tableId
+            tableId:data.tableId,
+            passiveSkills:data.passiveSkills
         }
     };
-
-    var passSkills = data.passSkills;
 
     cardDao.update(card,function(err,isOK){
         if(err) {
             console.log(err);
             return cb(err,null);
         }else {
-            passSkills.forEach(function(pss){
+            /*passSkills.forEach(function(pss){
                 if(pss.id == '' && pss.name != '' && pss.value !='') {
                     var options = {
                         data:{
@@ -94,6 +94,7 @@ Card.update = function(data,cb){
                     });
                 }
             });
+            */
             var name = Card.getName(data.tableId);
             return cb(null,name);
         }
@@ -104,9 +105,10 @@ Card.update = function(data,cb){
 
 
 Card.create = function(card,cb){
-    var time = Date.now();
+    //var time = Date.now();
     var options = {
-        data:{
+        data: card
+        /*{
             lv:card.lv,
             skillLv:card.skillLv,
             elixirHp:card.elixirHp,
@@ -114,20 +116,31 @@ Card.create = function(card,cb){
             tableId:card.tableId,
             playerId:card.playerId,
             star:card.star,
-            createTime:time
-        }
+            createTime:time,
+            passiveSkills:card.passiveSkills
+        }*/
     };
-    var passSkills = card.passSkills;
 
-    cardDao.create(options, function(err,card){
-        if(err) {
-            //console.log("create=" + err);
-            return cb(err,null);
-        }else {
-           // console.log(card);
+    options.data['createTime'] =  Date.now();
+
+ //   var passSkills = card.passSkills;
+
+    async.waterfall([
+        function(callback){
+            genSkillInc(options.data);
+            console.log("after genSkillInc:",options.data);
+            callback();
+        },
+        function(callback){
+            cardDao.create(options, function(err,card){
+              if(err) {
+                  return cb(err,null);
+              }
+              else callback(null,card);
+            });
+        },
+      /*  function(card,callback){
             var cardId = card["insertId"];
-
-
             passSkills.forEach(function(pss){
                 if(!(pss.name == '' || pss.value == '')) {
                     var options = {
@@ -149,8 +162,10 @@ Card.create = function(card,cb){
                 }
 
             });
-
-
+            callback(null,cardId);
+        },*/
+        function(card,callback){
+            var cardId = card["insertId"];
             var options = {
                 where:{
                     id:cardId
@@ -159,17 +174,25 @@ Card.create = function(card,cb){
             cardDao.getCardInfo(options,function(err,card){
 
                 if(err) {
-                        return cb(err,null);
-                }
+                    return cb(err,null);
+                }else {
 
-                card.name = Card.getName(card.tableId);
-                console.log(card);
-                return cb(null,card);
-                  //  res.send(card);
+                    card.name = Card.getName(card.tableId);
+                    console.log(card);
+                    //callback(null,card);
+                    callback(null,card);
+                    //  res.send(card);
+                }
             });
 
         }
 
+    ],function(err,card){
+        if(err) {
+            return cb(err,null);
+        }else {
+            return cb(null,card);
+        }
     });
 };
 
@@ -186,7 +209,7 @@ Card.delete = function(cardId,cb){
             console.log(err);
             return cb(err,false);
         }else {
-            var options = {
+            /*var options = {
                 where:{
                     cardId:cardId
                 }
@@ -199,6 +222,8 @@ Card.delete = function(cardId,cb){
                     return cb(null,true);
                 }
             });
+            */
+            return cb(null,true);
         }
     });
 };
@@ -216,6 +241,22 @@ Card.setCardsName =function(cards) {
    cards.forEach(function(card){
        card.name = Card.getName(card.tableId);
    });
+};
+
+
+var genSkillInc = function(card) {
+    var cdata, max, min, skill;
+    if(card.star < 3)
+        return;
+    cdata = table.getTableItem('cards', card.tableId);
+    skill = cdata.skill_id_linktarget;
+    if (skill != null) {
+        min = skill["star" + card.star + "_inc_min"] * 10;
+        max = skill["star" + card.star + "_inc_max"] * 10;
+        return card.skillInc = _.random(min, max) / 10;
+    } else {
+        throw new Error('can not file skill info of card: ' + card.tableId);
+    }
 };
 
 

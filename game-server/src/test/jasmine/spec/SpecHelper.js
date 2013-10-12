@@ -188,16 +188,16 @@ var initPomelo = function() {
     }, function() {
       console.log('connect success!');
       inited = true;
-
-      // pomelo.on('onMessage', function(data){
-      //   console.log('Receive a message: ', data);
-      // });
     });
   });
   waitsFor(function() {
     return inited;
   });
 };
+
+pomelo.on('onLightUpCard', function(data){
+  console.log('Receive a message: ', data.msg);
+});
 
 var loginWith = function(account, pwd, areaId) {
   request("connector.userHandler.login", {
@@ -245,6 +245,11 @@ var game = {
       pomelo.on('onBless', function(data) {
         console.log('receive a bless: ', data);
       });
+
+      pomelo.on('onLightUpCard', function(data){
+        console.log('Receive a message: ', data);
+      });
+
     });
   },
   login: function(name, pwd, areaId) {

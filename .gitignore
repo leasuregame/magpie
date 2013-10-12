@@ -23,3 +23,5 @@ game-server/src/test/jasmine/selenium-server-standalone-2.33.0.jar
 *.xcuserstate
 
 game-server/selenium-server-standalone-2.33.0.jar
+
+*.csv#

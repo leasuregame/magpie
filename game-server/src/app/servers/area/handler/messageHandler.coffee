@@ -4,6 +4,7 @@ msgConfig = require '../../../../config/data/message'
 logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async'
 achieve = require '../../../domain/achievement'
+_ = require 'underscore'
 
 SYSTEM = -1
 
@@ -44,7 +45,7 @@ sendMessage = (app, target, msg, next) ->
       code = 200
     next(null, {code: code}) if next?
 
-  if target isnt null
+  if target?
     app.get('messageService').pushByPid target, msg, callback
   else 
     app.get('messageService').pushMessage msg, callback
@@ -55,13 +56,16 @@ module.exports = (app) ->
 Handler = (@app) ->
 
 Handler::sysMsg = (msg, session, next) ->
+  console.log("msg = ",msg);
   content = msg.content
   options = msg.options or {}
-
+  receiver = msg.playerId or SYSTEM
+ # msgId = msg.msgId or 0
   dao.message.create data: {
+  #  msgId:msgId
     options: options
     sender: SYSTEM
-    receiver: SYSTEM
+    receiver: receiver
     content: content
     type: msgConfig.MESSAGETYPE.SYSTEM
     status: msgConfig.MESSAGESTATUS.UNHANDLED
@@ -72,21 +76,44 @@ Handler::sysMsg = (msg, session, next) ->
     sendMessage @app, null, {
       route: 'onMessage'
       msg: res.toJson()
-    }, next
+    }, next(null,{code:200,msg:'邮件发送成功'})
 
 Handler::handleSysMsg = (msg, session, next) ->
   playerId = session.get('playerId')
   msgId = msg.msgId
 
-  dao.message.fetchOne where: id: msgId, (err, message) ->
+  async.waterfall [
+    (cb)->
+      dao.message.fetchOne where: id: msgId, (err, message) ->
+        console.log("message = ",message);
+        if err
+          return next(null, {code: err.code or 500, msg: err.msg or err})
+
+        if message.type isnt msgConfig.MESSAGETYPE.SYSTEM
+          return next(null, {code: 501, msg: '消息类型不匹配'})
+
+        cb(null,message)
+
+    (message,cb)->
+      options = message.options;
+      playerManager.getPlayerInfo {pid: playerId},(err,player)->
+        if err
+          return next(null, {code: err.code or 500, msg: err.msg or err})
+        else
+          player.increase "gold",options.gold if options.gold
+          player.increase "money",options.money if options.money
+          player.resumePower "power",options.power if options.power
+          player.increase "spirit",options.spirit if options.spirit
+          player.increase "skillPoint",options.skillPoint if options.skillPoint
+          player.increase "elixir",options.elixir if options.elixir
+
+
+          cb(null);
+  ],(err)->
     if err
-      return next(null, {code: err.code or 500, msg: err.msg or err})
+      next(null, {code: err.code or 500, msg: err.msg or err})
 
-    if message.type isnt msgConfig.MESSAGETYPE.SYSTEM
-      return next(null, {code: 501, msg: '消息类型不匹配'})
-
-    # do something 
-    next(null, {code: 200})
+    next(null, {code: 200,msg:'成功领取奖励'})
 
 Handler::leaveMessage = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -170,25 +197,32 @@ Handler::addFriend = (msg, session, next) ->
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, (err, ply) ->
         return cb(err) if err
-        if ply.friends.filter((f) -> f.name is friendName).length > 0
+        if _.filter(ply.friends,(f) -> f.name is friendName).length > 0
           cb({code: 501, msg: '对方已经是你的好友'})
+        else if ply.friends.length >= ply.friendsCount
+          cb({code: 501, msg: '您的好友已达上限'})
         else
           cb()
-
     (cb) ->
       playerManager.getPlayer name: friendName, cb
 
     (res, cb) ->
       friend = res
-      dao.message.fetchOne where: {
-        type: msgConfig.MESSAGETYPE.ADDFRIEND
-        sender: playerId
-        receiver: friend.id
-      }, (err, res) ->
-        if not err and !!res
-          cb(null, true)
-        else 
-          cb(null, false)
+      dao.friend.getFriends friend.id, (err, senderFriends) ->
+        if err
+          return next(null, {code: err.code or 500, msg: err.msg or err})
+        else if senderFriends.length >= friend.friendsCount
+          cb({code: 501, msg: '对方好友已达上限'})
+        else
+          dao.message.fetchOne where: {
+            type: msgConfig.MESSAGETYPE.ADDFRIEND
+            sender: playerId
+            receiver: friend.id
+          }, (err, res) ->
+            if not err and !!res
+              cb(null, true)
+            else
+              cb(null, false)
 
     (exist, cb) ->
       if not exist
@@ -240,14 +274,24 @@ Handler::accept = (msg, session, next) ->
 
     (res, cb) ->
       player = res
-      if player.friends.length >= 20
-        return cb({code: 501, msg: 'friend count is the max'})
-      
-      dao.friend.create {
-        data: 
-          playerId: message.sender
-          friendId: message.receiver
-      }, cb
+      if player.friends.length >= player.friendsCount
+        return cb({code: 501, msg: '您的好友已达上限'})
+      else
+        cb();
+    (cb) ->
+      playerManager.getPlayerInfo pid:message.sender, cb
+    (res, cb) ->
+      dao.friend.getFriends res.id, (err, senderFriends) ->
+        if err
+          return next(null, {code: err.code or 500, msg: err.msg or err})
+        else if senderFriends.length >= res.friendsCount
+          cb({code: 501, msg: '对方好友已达上限'})
+        else
+          dao.friend.create {
+            data:
+              playerId: message.sender
+              friendId: message.receiver
+          }, cb
 
     (friend, cb) ->
       message.status = msgConfig.MESSAGESTATUS.ACCEPT

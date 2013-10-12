@@ -21,6 +21,7 @@ var CardEvolutionLayer = cc.Layer.extend({
     _moneyLabel: null,
     _cardCountLabel: null,
     _resLabel: null,
+    _nameLabel: null,
     _evolutionRateLabel: null,
     _selectRetinueCardItem: null,
     _evolutionItem: null,
@@ -47,30 +48,68 @@ var CardEvolutionLayer = cc.Layer.extend({
         this.addChild(helpBgSprite);
 
         this._resLabel = cc.Node.create();
-        this._resLabel.setPosition(cc.p(202, 445));
-        this.addChild(this._resLabel, 1);
+        this._resLabel.setPosition(cc.p(360, 510));
+        this.addChild(this._resLabel);
 
         var resLabelBgSprite = cc.Sprite.create(main_scene_image.icon49);
-        resLabelBgSprite.setAnchorPoint(cc.p(0, 0));
         this._resLabel.addChild(resLabelBgSprite);
 
-        var resLabelIcon = cc.Sprite.create(main_scene_image.icon85);
-        resLabelIcon.setPosition(cc.p(118, 68));
-        this._resLabel.addChild(resLabelIcon);
+        this._nameLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
+        this._nameLabel.setColor(cc.c3b(255, 239, 131));
+        this._nameLabel.setPosition(cc.p(0, 25));
+        this._resLabel.addChild(this._nameLabel);
 
-        this._evolutionRateLabel = cc.LabelTTF.create("100%", "STHeitiTC-Medium", 30);
+        var evolutionRateIcon = cc.LabelTTF.create("成功概率:", "STHeitiTC-Medium", 22);
+        evolutionRateIcon.setColor(cc.c3b(255, 239, 131));
+        evolutionRateIcon.setPosition(cc.p(-30, -25));
+        this._resLabel.addChild(evolutionRateIcon);
+
+        this._evolutionRateLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
         this._evolutionRateLabel.setColor(cc.c3b(118, 238, 60));
         this._evolutionRateLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._evolutionRateLabel.setPosition(cc.p(180, 68));
+        this._evolutionRateLabel.setPosition(cc.p(30, -27));
         this._resLabel.addChild(this._evolutionRateLabel);
 
-        this._tipLabel = cc.Sprite.create(main_scene_image.icon86);
+        this._tipLabel = cc.Node.create();
         this._tipLabel.setPosition(cc.p(360, 380));
         this.addChild(this._tipLabel);
 
-        this._helpLabel = cc.Sprite.create(main_scene_image.icon87);
-        this._helpLabel.setPosition(cc.p(320, 380));
+        var tipLabel1 = cc.LabelTTF.create("满级卡牌消耗同星级卡牌进行升星", "STHeitiTC-Medium", 22);
+        tipLabel1.setColor(cc.c3b(255, 239, 131));
+        tipLabel1.setPosition(cc.p(0, 20));
+        this._tipLabel.addChild(tipLabel1);
+
+        var tipLabel2 = cc.LabelTTF.create("进阶失败主卡保留，从卡消失", "STHeitiTC-Medium", 22);
+        tipLabel2.setColor(cc.c3b(255, 239, 131));
+        tipLabel2.setPosition(cc.p(0, -20));
+        this._tipLabel.addChild(tipLabel2);
+
+
+        this._helpLabel = cc.Node.create();
+        this._helpLabel.setPosition(cc.p(360, 380));
         this.addChild(this._helpLabel);
+
+        var moneyIcon = cc.LabelTTF.create("消耗仙币:", "STHeitiTC-Medium", 22);
+        moneyIcon.setColor(cc.c3b(255, 239, 131));
+        moneyIcon.setPosition(cc.p(-160, 0));
+        this._helpLabel.addChild(moneyIcon);
+
+        var cardCountIcon = cc.LabelTTF.create("从牌数量:", "STHeitiTC-Medium", 22);
+        cardCountIcon.setColor(cc.c3b(255, 239, 131));
+        cardCountIcon.setPosition(cc.p(120, 0));
+        this._helpLabel.addChild(cardCountIcon);
+
+        this._moneyLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+        this._moneyLabel.setColor(cc.c3b(255, 239, 131));
+        this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._moneyLabel.setPosition(cc.p(-100, -2));
+        this._helpLabel.addChild(this._moneyLabel);
+
+        this._cardCountLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
+        this._cardCountLabel.setColor(cc.c3b(255, 239, 131));
+        this._cardCountLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._cardCountLabel.setPosition(cc.p(180, -2));
+        this._helpLabel.addChild(this._cardCountLabel);
 
         var selectLeadCardItem = cc.MenuItemImage.create(
             main_scene_image.card_frame1,
@@ -81,50 +120,33 @@ var CardEvolutionLayer = cc.Layer.extend({
         selectLeadCardItem.setScale(1.1);
         selectLeadCardItem.setPosition(cc.p(360, 685));
 
-        this._selectRetinueCardItem = cc.MenuItemImage.create(
+        this._evolutionItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.button9d,
-            this._onClickSelectRetinueCard,
-            this
-        );
-        this._selectRetinueCardItem.setPosition(cc.p(260, 270));
-
-        this._evolutionItem = cc.MenuItemImage.create(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.button9d,
+            main_scene_image.icon84,
             this._onClickEvolution,
             this
         );
-        this._evolutionItem.setPosition(cc.p(460, 270));
+        this._evolutionItem.setPosition(cc.p(260, 270));
 
+        this._selectRetinueCardItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            main_scene_image.icon53,
+            this._onClickSelectRetinueCard,
+            this
+        );
+        this._selectRetinueCardItem.setPosition(cc.p(460, 270));
 
         var menu = cc.Menu.create(selectLeadCardItem, this._selectRetinueCardItem, this._evolutionItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._moneyLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
-        this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._moneyLabel.setPosition(cc.p(493, 376));
-        this.addChild(this._moneyLabel);
-
-        this._cardCountLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
-        this._cardCountLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._cardCountLabel.setPosition(cc.p(255, 376));
-        this.addChild(this._cardCountLabel);
-
         this._selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon51);
         this._selectLeadCardIcon.setPosition(cc.p(360, 685));
         this.addChild(this._selectLeadCardIcon);
-
-        var selectRetinueCardIcon = cc.Sprite.create(main_scene_image.icon53);
-        selectRetinueCardIcon.setPosition(cc.p(260, 270));
-        this.addChild(selectRetinueCardIcon);
-
-        var evolutionIcon = cc.Sprite.create(main_scene_image.icon84);
-        evolutionIcon.setPosition(cc.p(460, 270));
-        this.addChild(evolutionIcon);
 
         return true;
     },
@@ -143,22 +165,16 @@ var CardEvolutionLayer = cc.Layer.extend({
             this._selectLeadCardIcon.stopAllActions();
             this._selectLeadCardIcon.setOpacity(255);
 
-            var selectLeadCardIconAction = cc.Sequence.create(
-                cc.FadeOut.create(1),
-                cc.FadeIn.create(1)
+            this._selectLeadCardIcon.runAction(
+                cc.RepeatForever.create(
+                    cc.Sequence.create(
+                        cc.FadeOut.create(1),
+                        cc.FadeIn.create(1)
+                    )
+                )
             );
 
-            this._selectLeadCardIcon.runAction(cc.RepeatForever.create(selectLeadCardIconAction));
-
-            this._evolutionRateLabel.setString("0%");
             this._resLabel.setVisible(false);
-
-            this._cardCountLabel.setString("0");
-            this._cardCountLabel.setVisible(false);
-
-            this._moneyLabel.setString("0");
-            this._moneyLabel.setVisible(false);
-
             this._helpLabel.setVisible(false);
             this._tipLabel.setVisible(true);
 
@@ -170,14 +186,12 @@ var CardEvolutionLayer = cc.Layer.extend({
             this._leadCardHalfNode.setPosition(cc.p(360, 685));
             this.addChild(this._leadCardHalfNode, 1);
 
+            this._resLabel.setVisible(true);
+
+            this._nameLabel.setString(this._leadCard.get("name"));
             this._evolutionRateLabel.setString("0%");
-            this._resLabel.setVisible(false);
-
             this._cardCountLabel.setString("0");
-            this._cardCountLabel.setVisible(true);
-
             this._moneyLabel.setString(this._leadCard.getEvolutionNeedMoney());
-            this._moneyLabel.setVisible(true);
 
             this._helpLabel.setVisible(true);
             this._tipLabel.setVisible(false);
@@ -190,13 +204,10 @@ var CardEvolutionLayer = cc.Layer.extend({
 
         if (cardCount > 0) {
             var rate = this._leadCard.getPreCardRate() * cardCount;
-            rate = rate < 100 ? rate : 100;
+            rate = Math.min(rate, 100);
 
             this._evolutionRateLabel.setString(rate + "%");
-            this._resLabel.setVisible(true);
-
             this._cardCountLabel.setString(cardCount);
-            this._cardCountLabel.setVisible(true);
 
             this._evolutionItem.setEnabled(true);
         }
@@ -214,7 +225,7 @@ var CardEvolutionLayer = cc.Layer.extend({
                 that._retinueCard = [];
             }
 
-            that.getParent()._backToThisLayer();
+            that.getParent().backToThisLayer();
 
             cc.log("this._leadCard :");
             cc.log(that._leadCard);
@@ -222,7 +233,7 @@ var CardEvolutionLayer = cc.Layer.extend({
             leadCard: this._leadCard
         });
 
-        this.getParent()._switchToCardListLayer(cardListLayer);
+        this.getParent().switchToCardListLayer(cardListLayer);
     },
 
     _onClickSelectRetinueCard: function () {
@@ -235,7 +246,7 @@ var CardEvolutionLayer = cc.Layer.extend({
             if (data) {
                 that._retinueCard = data;
             }
-            that.getParent()._backToThisLayer();
+            that.getParent().backToThisLayer();
 
             cc.log("this._retinueCard :");
             cc.log(that._retinueCard);
@@ -244,7 +255,7 @@ var CardEvolutionLayer = cc.Layer.extend({
             retinueCard: this._retinueCard
         });
 
-        this.getParent()._switchToCardListLayer(cardListLayer);
+        this.getParent().switchToCardListLayer(cardListLayer);
     },
 
     _onClickEvolution: function () {

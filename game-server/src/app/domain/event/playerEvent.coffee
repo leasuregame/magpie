@@ -1,7 +1,16 @@
 playerConfig = require('../../../config/data/player')
+utility = require '../../common/utility'
 _ = require 'underscore'
 
-exports.addEvents = (player) ->
+exports.addEvents = (app, player) ->
+
+  player.on 'add.card', (card) ->
+    if card.isNewLightUp
+      app.get('messageService').pushByPid player.id, {
+        route: 'onLightUpCard'
+        msg: tableId: card.tableId
+      }, () ->
+
   player.on 'power.resume', ->
     ply = player
     interval = playerConfig.POWER_RESUME.interval
@@ -28,7 +37,7 @@ exports.addEvents = (player) ->
     player.updateAbility()
     #player.activeGroupEffect()
     player.activeSpiritorEffect()
-    player.save()  
+    player.save()
 
   player.emit('lineUp.change')
 

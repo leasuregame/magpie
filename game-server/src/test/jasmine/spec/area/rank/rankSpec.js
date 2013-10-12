@@ -164,6 +164,121 @@ describe("Area Server", function() {
       });
     });
 
+    describe("获取排名奖励", function(){
+      beforeAll(function() {
+        doAjax('/loaddata/csv', {}, function(data) {
+          expect(data).toEqual('done');
+        });
+      });
+
+      describe('when ranking is 1', function(){
+        beforeAll(function(){
+          doAjax('/update/rank/' + 5, {
+            ranking: 100
+          }, function(){
+            loginWith('1', '1', 1);
+          });
+        });
+
+        it('should can get rankng reward', function(){
+          request('area.rankHandler.getRankingReward', {
+            ranking: 1
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({ code : 501, msg : '不能领取该排名奖励' });
+          });
+
+          request('area.rankHandler.getRankingReward', {
+            ranking: 100
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({ code : 200, msg : { rankingRewards : [ 5000, 1000, 500 ] } });
+          });
+
+          request('area.rankHandler.getRankingReward', {
+            ranking: 500
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual( { code : 200, msg : { rankingRewards : [ 5000, 1000 ] } });
+          });
+
+          request('area.rankHandler.getRankingReward', {
+            ranking: 1000
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual( { code : 200, msg : { rankingRewards : [ 5000 ] } });
+          });
+
+          request('area.rankHandler.getRankingReward', {
+            ranking: 5000
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual( { code : 200, msg : { rankingRewards : [ ] } });
+          });
+
+          request('area.rankHandler.getRankingReward', {
+            ranking: 5000
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual( { code : 200, msg : { rankingRewards : [ ] } });
+          });
+
+        });
+
+      });
+
+      describe('when ranking is 5000', function(){
+        beforeAll(function(){
+          doAjax('/update/rank/' + 5, {
+            ranking: 5000
+          }, function(){
+            loginWith('1', '1', 1);
+          });
+        });
+
+        it('should only can get ranking reward of 5000', function(){
+          request('area.rankHandler.getRankingReward', {
+            ranking: 5000
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({ code : 200, msg : { rankingRewards : [ ] } });
+          });
+
+          request('area.rankHandler.getRankingReward', {
+            ranking: 1000
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({ code : 200, msg : { rankingRewards : [ ] } });
+          });
+        });
+
+      });
+
+      describe('when ranking parameter is not right', function(){
+        beforeAll(function(){
+          loginWith('1', '1', 1);
+        });
+
+        it('should can not get ranking reward', function(){
+          request('area.rankHandler.getRankingReward', {
+            ranking: 5001
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual( { code : 501, msg : '找不到5001的排名奖励' });
+          });
+
+          request('area.rankHandler.getRankingReward', {
+            ranking: 1001
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({ code : 501, msg : '找不到1001的排名奖励' });
+          });
+        });
+
+      });
+
+    });
+
     describe("ranking list", function() {
       beforeAll(function() {
         doAjax('/loaddata/all', {}, function(data) {
@@ -172,7 +287,7 @@ describe("Area Server", function() {
       });
 
       var ids = [20000, 17000, 15000, 13000, 11000, 10700, 10300, 10199, 10013, 10001];
-      var steps = [100, 80, 60, 40, 20, 15, 10, 5, 1, 1];
+      var steps = [106, 83, 62, 41, 19, 14, 11, 5, 1, 1];
 
       var genRankings = function(rank, stepIndex) {
         var top10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

@@ -28,6 +28,9 @@ var player = function(app) {
         console.log(target);
       //  if(!req.session.player)
         //    target = 'playerLogin';
+
+
+
         Area.getAreasList(function(areas) {
 
             res.render('playerLogin',{
@@ -36,6 +39,7 @@ var player = function(app) {
                 player:req.session.player,
                 area:req.session.area,
                 areas:areas,
+                target:target,
                 success:req.flash('success').toString(),
                 error:req.flash('error').toString()
             });
@@ -47,6 +51,8 @@ var player = function(app) {
 
         var playerName = req.body.playerName;//query['playerName'];
         var area = JSON.parse(req.body.area);//JSON.parse(query['area']);
+        var target = req.body.target;
+        console.log("target = ",target);
 
         //dbClient.shutdown();
         var env = app.settings.env;
@@ -71,6 +77,9 @@ var player = function(app) {
                 logger.info("[playerLogin][playerData]" + JSON.stringify(Player));
                 req.session.player = Player;
                 req.session.area = area;
+                if(target != "playerLogin") {
+                    return res.redirect('/' + target);
+                }
                 res.render('playerData',{
                     title : '玩家数据修改',
                     user : req.session.user,
@@ -87,7 +96,6 @@ var player = function(app) {
 
     app.get('/playerData',function(req,res){
         if(req.session.player) {
-
 
             var player = {
                 where :{
@@ -152,6 +160,25 @@ var player = function(app) {
 
         });
 
+    });
+
+    app.get('/playerId',function(req,res){
+        var url = Url.parse(req.url,true);
+        var query = url.query;
+        var name =  query['name'];
+        var areaId = query['areaId'];
+
+        var env = app.settings.env;
+        var db = getDB(areaId,env);
+        dbClient.init(db);
+
+        Player.getPlayerId(name,areaId,function(err,id){
+            if(err) {
+                res.send({type:'error',info:err});
+            }else {
+                res.send({type:'success',info:id});
+            }
+        });
     });
 
     function checkLogin(req, res, next){

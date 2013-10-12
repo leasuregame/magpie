@@ -111,22 +111,15 @@ function submitBattle() {
     console.log(defend);
 
     var times = parseInt($("#times").val());
-
-    var url = "/simBattle?attack=" + JSON.stringify(attack) + "&defend=" + JSON.stringify(defend) + "&times=" + times;
-   // console.log(url);
-    $.ajax({
-        url:url,
-        type:"post",
-        success:function(msg) {
-          //  $("#tip").html("战报：模拟战斗结束！！！");
-            console.log(msg);
-            if(msg.type == "success") {
-                var report = msg.info;
-                setReport(report);
-            }
+    Battle.startBattle(attack,defend,times,function(err,report){
+        if(err) {
+            console.log(err);
         }
+        console.log('report = ',report);
+        setReport(report);
     });
 };
+
 
 function getCard(id){
     var lv = $("#cardLv" + id).val();
@@ -223,7 +216,23 @@ function setReport(report) {
 
     $("#defendReport").append(inner);
 
-}
+};
+
+function clone(obj) {
+    var newObj = (obj instanceof Array) ? [] : {};
+    for (var key in obj) {
+        var copy = obj[key];
+        if (copy instanceof Array) {
+            newObj[key] = Battle.clone(copy);
+        } else if (((typeof copy) == "object")) {
+            newObj[key] = Battle.clone(copy);
+        } else {
+            newObj[key] = copy;
+        }
+    }
+    return newObj;
+};
+
 
 
 

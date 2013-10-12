@@ -36,51 +36,47 @@ var EvolutionLayer = cc.Layer.extend({
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
 
-        this._cardEvolutionItem = cc.MenuItemImage.create(
+        this._cardEvolutionItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button22,
             main_scene_image.button22s,
             main_scene_image.button22d,
+            main_scene_image.icon81,
             this._onClickCardEvolution,
             this
         );
         this._cardEvolutionItem.setPosition(cc.p(110, 844));
+        this._cardEvolutionItem.setOffset(cc.p(-7, -2));
 
-        this._cardTrainItem = cc.MenuItemImage.create(
+        this._cardTrainItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button23,
             main_scene_image.button23s,
             main_scene_image.button23d,
+            main_scene_image.icon82,
             this._onClickCardTrain,
             this
         );
         this._cardTrainItem.setPosition(cc.p(254, 844));
+        this._cardTrainItem.setOffset(cc.p(0, -2));
 
         var menu = cc.Menu.create(this._cardEvolutionItem, this._cardTrainItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
-
-        var cardEvolutionIcon = cc.Sprite.create(main_scene_image.icon81);
-        cardEvolutionIcon.setPosition(cc.p(103, 842));
-        this.addChild(cardEvolutionIcon);
-
-        var cardTrainIcon = cc.Sprite.create(main_scene_image.icon82);
-        cardTrainIcon.setPosition(cc.p(254, 842));
-        this.addChild(cardTrainIcon);
 
         this._onClickCardEvolution();
 
         return true;
     },
 
-    _switchToCardListLayer: function (cardListLayer) {
-        cc.log("EvolutionLayer _switchToCardListLayer");
+    switchToCardListLayer: function (cardListLayer) {
+        cc.log("EvolutionLayer switchToCardListLayer");
 
         this.retain();
         this.setVisible(false);
         MainScene.getInstance().switch(cardListLayer);
     },
 
-    _backToThisLayer: function () {
-        cc.log("EvolutionLayer _backToThisLayer");
+    backToThisLayer: function () {
+        cc.log("EvolutionLayer backToThisLayer");
 
         this.setVisible(true);
         MainScene.getInstance().switch(this);

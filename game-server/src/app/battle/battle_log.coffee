@@ -46,7 +46,7 @@ analyze = (bl) ->
     results[k].hitCount = 0
     results[k].dmage = 0
     results[k].death = false
-  #console.log results
+
   for s in bl.steps
     results[Math.abs(s.a)].atkCount += 1 if not s.t
 

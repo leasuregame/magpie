@@ -21,6 +21,9 @@ Handler::orderList = (msg, session, next) ->
 
 		(cb) ->
 			dao.player.orderByRanking 50, cb
+
+		(cb) ->
+			dao.player.orderByLayer 50, cb
 	], (err, results) ->
 		if err
 			return next(null, {
@@ -34,9 +37,26 @@ Handler::orderList = (msg, session, next) ->
 				level: results[0]
 				ability: results[1]
 				ranking: results[2]
-				pass: []
+				pass: results[3]
 			}
 		})
+
+Handler::getActiveCards = (msg, session, next) ->
+	playerId = session.get('playerId')
+
+	playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+		if err
+			return next(null, {
+				code: err.code or 501
+				msg: err.msg or err
+				}
+			)
+
+		next(null, {code: 200, msg: {
+			cards: player.activeCards().map (c)-> c.toJson()
+			spiritor: player.spiritor
+			lineUp: player.lineUpObj()
+		}})
 
 Handler::playerPass = (msg, session, next) ->
 	

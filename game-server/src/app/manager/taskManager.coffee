@@ -51,7 +51,7 @@ class Manager
       @wipeOutTask player, chapterId, cb
 
   @wipeOutPass: (player, cb) ->
-    layer = player.pass.layer
+    layer = player.passLayer
 
     rewards = {exp_obtain: 0, money_obtain: 0, skill_point: 0}
     isWipeOut = false
@@ -124,23 +124,6 @@ class Manager
       task.hasWin = true
       player.task = task
 
-      ### the first time win, obtain some spirit ###
-      totalSpirit = 0
-      _.each battleLog.cards, (v, k) ->
-        ### 只计算敌方卡牌 ###
-        return if k <= 6
-
-        if v.boss?
-          v.spirit = spiritConfig.SPIRIT.TASK.BOSS
-          totalSpirit += spiritConfig.SPIRIT.TASK.BOSS
-        else
-          v.spirit = spiritConfig.SPIRIT.TASK.OTHER
-          totalSpirit += spiritConfig.SPIRIT.TASK.OTHER
-      battleLog.rewards.totalSpirit = totalSpirit
-
-      player.incSpirit totalSpirit
-      data["spiritor"] = player.spiritor
-
     if utility.hitRate(taskRate.fragment_rate)
       battleLog.rewards.fragment = 1
     else
@@ -168,7 +151,6 @@ class Manager
 
     # 更新玩家money
     player.increase('money', taskData.coins_obtain)
-    console.log 'count explore result: ', taskId, player.task
     # 更新任务的进度信息
     # 参数points为没小关所需要探索的层数
     if taskId is player.task.id
@@ -181,9 +163,6 @@ class Manager
         ### 一大关结束，触发摸一摸功能 ###
         if task.id % 10 is 1 && task.id != 1
           data.momo = player.createMonoGift();
-          #task.momo = data.momo;
-          console.log(data.momo);
-        #data.isMomo = true
       player.set('task', task)
 
     # 判断是否升级
@@ -191,7 +170,7 @@ class Manager
       data.upgrade = true
 
     ### consume power first, then add exp
-    because exp change where check if upgrade player level ###
+    because exp change will check if upgrade player level ###
     player.consumePower(taskData.power_consume)
     player.increase('exp', taskData.exp_obtain)
 

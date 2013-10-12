@@ -314,13 +314,7 @@ function isStop(data, id) {
 function login(account, password, areaId, cb) {
     // queryEntry(function(host,port){
     //var host = "127.0.0.1";
-    var host = "124.238.236.33";
-    var port = 3010;
-    pomelo.init({
-        host: host,
-        port: port,
-        log: true
-    }, function () {
+    initConnect(function(){
         var route = "connector.userHandler.login";
         pomelo.request(route, {
             account: account,
@@ -335,6 +329,27 @@ function login(account, password, areaId, cb) {
             }
         });
     });
+//    var host = ip;
+//    var port = 3010;
+//    pomelo.init({
+//        host: host,
+//        port: port,
+//        log: true
+//    }, function () {
+//        var route = "connector.userHandler.login";
+//        pomelo.request(route, {
+//            account: account,
+//            password: password,
+//            areaId: areaId
+//        }, function (data) {
+//            if (data.code === 200) {
+//                console.log(data);
+//                return cb(null, data.msg.player.task.id, data.msg.player.id);
+//            } else {
+//                return cb(data.msg, null, null);
+//            }
+//        });
+//    });
     // });
 };
 

@@ -1,9 +1,9 @@
 describe("Area Server", function() {
 	describe("Top Handler", function() {
 		describe("area.topHandler.orderList", function() {
-			// beforeAll(function() {
-			// 	doAjax('/loaddata/all', {}, function() {});
-			// });
+			beforeAll(function() {
+				doAjax('/loaddata/all', {}, function() {});
+			});
 
 
 			describe('when get order list from server', function(){

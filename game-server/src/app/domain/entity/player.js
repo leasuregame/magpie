@@ -479,9 +479,9 @@ var Player = (function(_super) {
     };
 
     Player.prototype.updatePower = function(power) {
-        if (this.power.value !== power.value) {
+        //if (this.power.value !== power.value) {
             this.set('power', power);
-        }
+        //}
     };
 
     Player.prototype.consumePower = function(value) {

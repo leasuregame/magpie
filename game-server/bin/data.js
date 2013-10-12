@@ -321,8 +321,10 @@ var genSkillInc = function(card) {
 };
 
 var initPassiveSkill = function(card) {
+    if (card.passiveSkills) return;
+
     var count, end, index, results, start, _ref;
-   // var ps = _.keys(card.passiveSkills);
+    // var ps = _.keys(card.passiveSkills);
 
     results = [];
     if(card.star < 3)

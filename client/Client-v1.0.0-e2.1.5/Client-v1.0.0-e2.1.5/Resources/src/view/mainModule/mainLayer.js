@@ -13,6 +13,22 @@
 
 
 var MainLayer = cc.Layer.extend({
+    _layer: [
+        SpiritPoolLayer,
+        LotteryLayer,
+        TreasureHuntLayer,
+        StrengthenLayer,
+        EvolutionLayer,
+        ActivityLayer,
+        CardLibraryLayer,
+        RankLayer,
+        AchievementLayer,
+        FriendLayer,
+        SignInLayer,
+        MessageLayer,
+        ConfigLayer
+    ],
+
     onEnter: function () {
         cc.log("MainLayer onEnter");
 
@@ -53,163 +69,163 @@ var MainLayer = cc.Layer.extend({
         this.addChild(lineUpLabel);
 
         var spiritLayerItem = cc.MenuItemImage.create(
-            main_scene_image.button5,
-            main_scene_image.button5s,
-            this._onClickSpiritLayer,
+            main_scene_image.button1,
+            main_scene_image.button1s,
+            this._onClickLayer(0),
             this
         );
         spiritLayerItem.setPosition(cc.p(360, 500));
 
-        var pveLayerItem = cc.MenuItemImage.create(
-            main_scene_image.button1,
-            main_scene_image.button1s,
-            this._onClickPveLayer,
-            this
-        );
-        pveLayerItem.setPosition(cc.p(180, 590));
-
-        var tournamentLayerItem = cc.MenuItemImage.create(
+        var lotteryLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
             main_scene_image.button2s,
-            this._onClickTournamentLayer,
+            main_scene_image.icon5,
+            this._onClickLayer(1),
             this
         );
-        tournamentLayerItem.setPosition(cc.p(180, 400));
+        lotteryLayerItem.setOffset(cc.p(-5, 5));
+        lotteryLayerItem.setPosition(cc.p(165, 600));
 
-        var strengthenLayerItem = cc.MenuItemImage.create(
-            main_scene_image.button3,
-            main_scene_image.button3s,
-            this._onClickStrengthenLayer,
+        var treasureHuntLayerItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button2,
+            main_scene_image.button2s,
+            main_scene_image.icon6,
+            this._onClickLayer(2),
             this
         );
-        strengthenLayerItem.setPosition(cc.p(555, 590));
+        treasureHuntLayerItem.setOffset(cc.p(-5, 5));
+        treasureHuntLayerItem.setPosition(cc.p(165, 410));
 
-        var evolutionLayerItem = cc.MenuItemImage.create(
-            main_scene_image.button4,
-            main_scene_image.button4s,
-            this._onClickEvolutionLayer,
+        var strengthenLayerItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button2,
+            main_scene_image.button2s,
+            main_scene_image.icon7,
+            this._onClickLayer(3),
             this
         );
-        evolutionLayerItem.setPosition(cc.p(555, 400));
+        strengthenLayerItem.setOffset(cc.p(-5, 5));
+        strengthenLayerItem.setPosition(cc.p(555, 600));
+
+        var evolutionLayerItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button2,
+            main_scene_image.button2s,
+            main_scene_image.icon8,
+            this._onClickLayer(4),
+            this
+        );
+        evolutionLayerItem.setOffset(cc.p(-5, 5));
+        evolutionLayerItem.setPosition(cc.p(555, 410));
+
+        var activityLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button52,
+            main_scene_image.button52s,
+            this._onClickLayer(5),
+            this
+        );
+        activityLayerItem.setPosition(cc.p(93, 245));
 
         var cardLibraryLayerItem = cc.MenuItemImage.create(
-            main_scene_image.button26,
-            main_scene_image.button26s,
-            this._onClickCardLibraryLayer,
+            main_scene_image.button53,
+            main_scene_image.button53s,
+            this._onClickLayer(6),
             this
         );
-        cardLibraryLayerItem.setPosition(cc.p(120, 250));
+        cardLibraryLayerItem.setPosition(cc.p(200, 245));
 
         var rankLayerItem = cc.MenuItemImage.create(
-            main_scene_image.button27,
-            main_scene_image.button27s,
-            this._onClickRankLayer,
+            main_scene_image.button54,
+            main_scene_image.button54s,
+            this._onClickLayer(7),
             this
         );
-        rankLayerItem.setPosition(cc.p(240, 250));
+        rankLayerItem.setPosition(cc.p(307, 245));
 
         var achievementLayerItem = cc.MenuItemImage.create(
-            main_scene_image.button18,
-            main_scene_image.button18s,
-            this._onClickAchievementLayer,
+            main_scene_image.button55,
+            main_scene_image.button55s,
+            this._onClickLayer(8),
             this
         );
-        achievementLayerItem.setPosition(cc.p(360, 250));
+        achievementLayerItem.setPosition(cc.p(414, 245));
 
         var friendLayerItem = cc.MenuItemImage.create(
-            main_scene_image.button28,
-            main_scene_image.button28s,
-            this._onClickFriendLayer,
+            main_scene_image.button56,
+            main_scene_image.button56s,
+            this._onClickLayer(9),
             this
         );
-        friendLayerItem.setPosition(cc.p(480, 250));
+        friendLayerItem.setPosition(cc.p(521, 245));
+
+        var otherItem = cc.MenuItemImage.create(
+            main_scene_image.button57,
+            main_scene_image.button57s,
+            this._onClickOther,
+            this
+        );
+        otherItem.setPosition(cc.p(628, 245));
+
+        var signInLayerItem = cc.MenuItemImage.create(
+            main_scene_image.button58,
+            main_scene_image.button58s,
+            this._onClickLayer(10),
+            this
+        );
+        signInLayerItem.setPosition(cc.p(414, 322));
+
+        var messageItem = cc.MenuItemImage.create(
+            main_scene_image.button59,
+            main_scene_image.button59,
+            this._onClickLayer(11),
+            this
+        );
+        messageItem.setPosition(cc.p(521, 322));
 
         var configLayerItem = cc.MenuItemImage.create(
-            main_scene_image.button29,
-            main_scene_image.button29s,
-            this._onClickConfigLayer,
+            main_scene_image.button60,
+            main_scene_image.button60,
+            this._onClickLayer(12),
             this
         );
-        configLayerItem.setPosition(cc.p(600, 250));
+        configLayerItem.setPosition(cc.p(628, 322));
 
-        var functionMenu = cc.Menu.create(
+        var menu = cc.Menu.create(
             spiritLayerItem,
-            pveLayerItem,
-            tournamentLayerItem,
+            lotteryLayerItem,
+            treasureHuntLayerItem,
             strengthenLayerItem,
             evolutionLayerItem,
+            activityLayerItem,
             cardLibraryLayerItem,
             rankLayerItem,
             achievementLayerItem,
             friendLayerItem,
+            otherItem
+        );
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu);
+
+        this._otherMenu = cc.Menu.create(
+            signInLayerItem,
+            messageItem,
             configLayerItem
         );
-        functionMenu.setPosition(cc.p(0, 0));
-
-        this.addChild(functionMenu);
+        this._otherMenu.setPosition(cc.p(0, 0));
+        this.addChild(this._otherMenu);
+        this._otherMenu.setVisible(false);
 
         return true;
     },
 
-    _onClickSpiritLayer: function () {
-        cc.log("MainLayer _onClickSpiritLayer");
+    _onClickLayer: function (index) {
+        return function () {
+            cc.log("MainMenuLayer _onClickLayer: " + index);
 
-        MainScene.getInstance().switchLayer(SpiritPoolLayer);
+            MainScene.getInstance().switchLayer(this._layer[index]);
+        }
     },
 
-    _onClickPveLayer: function () {
-        cc.log("MainLayer _onClickPveLayer");
-
-        MainScene.getInstance().switchLayer(PveLayer);
-    },
-
-    _onClickTournamentLayer: function () {
-        cc.log("MainLayer _onClickTournamentLayer");
-
-        MainScene.getInstance().switchLayer(TournamentLayer);
-    },
-
-    _onClickStrengthenLayer: function () {
-        cc.log("MainLayer _onClickStrengthenLayer");
-
-        MainScene.getInstance().switchLayer(StrengthenLayer);
-    },
-
-    _onClickEvolutionLayer: function () {
-        cc.log("MainLayer _onClickEvolutionLayer");
-
-        MainScene.getInstance().switchLayer(EvolutionLayer);
-    },
-
-    _onClickCardLibraryLayer: function () {
-        cc.log("MainLayer _onClickCardLibraryLayer");
-
-        MainScene.getInstance().switchLayer(CardLibraryLayer);
-    },
-
-    _onClickRankLayer: function () {
-        cc.log("MainLayer _onClickRankLayer");
-
-        MainScene.getInstance().switchLayer(RankLayer);
-    },
-
-    _onClickAchievementLayer: function () {
-        cc.log("MainLayer _onClickAchievementLayer");
-
-        MainScene.getInstance().switchLayer(AchievementLayer);
-    },
-
-    _onClickFriendLayer: function () {
-        cc.log("MainLayer _onClickFriendLayer");
-
-        MainScene.getInstance().switchLayer(FriendLayer);
-    },
-
-    _onClickConfigLayer: function () {
-        cc.log("MainLayer _onClickConfigLayer");
-//        MainScene.getInstance().switchLayer(ConfigLayer);
-
-        this.addChild(SignInLayer.create(), 1);
+    _onClickOther: function () {
+        this._otherMenu.setVisible(!this._otherMenu.isVisible());
     }
 });
 

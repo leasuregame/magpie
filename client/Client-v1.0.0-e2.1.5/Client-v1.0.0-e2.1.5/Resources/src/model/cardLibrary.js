@@ -121,8 +121,6 @@ var CardLibrary = Entity.extend({
     },
 
     _changeTypeById: function (id, type) {
-        cc.log("xxxxx: " + id);
-
         this._type[id] = type;
     },
 

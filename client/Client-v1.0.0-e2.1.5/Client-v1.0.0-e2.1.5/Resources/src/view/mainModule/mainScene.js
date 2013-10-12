@@ -14,6 +14,7 @@
 
 var MainScene = cc.Scene.extend({
     _nowLayer: null,
+    _mainMenuLayer: null,
 
     init: function () {
         cc.log("MainScene init");
@@ -21,17 +22,16 @@ var MainScene = cc.Scene.extend({
         var mainBgLayer = MainBgLayer.create();
         this.addChild(mainBgLayer, -1);
 
-        this._nowLayer = MainLayer.create();
-        this.addChild(this._nowLayer);
-
-        var mainMenuLayer = MainMenuLayer.create();
-        this.addChild(mainMenuLayer, 1);
+        this._mainMenuLayer = MainMenuLayer.create();
+        this.addChild(this._mainMenuLayer, 1);
 
         var gameFrame = GameFrame.create();
         this.addChild(gameFrame, 10);
+
+        this.switchLayer(MainLayer);
     },
 
-    getLayer: function() {
+    getLayer: function () {
         return this._nowLayer;
     },
 
@@ -53,6 +53,8 @@ var MainScene = cc.Scene.extend({
 
         this._nowLayer = layerObject;
         this.addChild(this._nowLayer);
+
+        this._mainMenuLayer.update();
     }
 });
 

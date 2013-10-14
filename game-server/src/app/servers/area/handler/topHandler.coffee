@@ -42,9 +42,12 @@ Handler::orderList = (msg, session, next) ->
 		})
 
 Handler::getActiveCards = (msg, session, next) ->
-	playerId = session.get('playerId')
+	playerId = msg.id
 
-	playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+	if not playerId
+		next(null, {code: 501, msg: 'id参数不能为空'})
+
+	dao.player.getLineUpInfo playerId, (err, player) ->
 		if err
 			return next(null, {
 				code: err.code or 501

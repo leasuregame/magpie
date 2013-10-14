@@ -165,6 +165,44 @@ var PlayerDao = (function(_super) {
         );
     };
 
+    PlayerDao.getLineUpInfo = function (playerId, done) {
+        var _this = this;
+
+        async.waterfall([
+            function(cb) {
+                _this.fetchOne({
+                    where: {id: playerId},
+                    fields: ['id', 'lineUp', 'spiritor']
+                }, cb);
+            },
+            function(player, cb) {
+                console.log(player.lineUpObj());
+                var ids = _.values(player.lineUpObj());
+                if (!_.isEmpty(ids)) {
+                    cardDao.fetchMany({
+                        where: ' id in (' + ids.toString() + ')'
+                    }, function(err, cards) {
+                        if (err) {
+                            cb(err);
+                        } else {
+                            cb(null, player, cards);
+                        }
+                    });
+                } else {
+                    logger.warn('line up cards is empty')
+                    cb(null, player, []);
+                }
+            }
+        ], function (err, player, cards) {
+            if (err) {
+                done(err);
+            } else {
+                player.addCards(cards);
+                done(null, player);
+            }
+        })
+    };
+
     return PlayerDao;
 })(DaoBase);
 

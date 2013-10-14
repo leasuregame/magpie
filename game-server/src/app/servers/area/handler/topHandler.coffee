@@ -55,10 +55,10 @@ Handler::getActiveCards = (msg, session, next) ->
 				}
 			)
 
+		lineUp = {}
+		lineUp[k] = player.cards[v]?.toJson() or (v is -1 and player.spiritor.lv or 0) for k, v of player.lineUpObj()
 		next(null, {code: 200, msg: {
-			cards: player.activeCards().map (c)-> c.toJson()
-			spiritor: player.spiritor
-			lineUp: player.lineUpObj()
+			lineUp: lineUp
 		}})
 
 Handler::playerPass = (msg, session, next) ->

@@ -168,10 +168,10 @@ describe("Area Server", function() {
 				};
 
 				var count = 1;
+				var totalCount = 500;
 
 
-
-				it('探索 =》第' + task.id + '关 =》第' + (task.progress + 1) + '层', function() {
+				it(toatlCount + '次', function() {
 					var doTest = function() {
 						if (count >= 500) {
 							return;

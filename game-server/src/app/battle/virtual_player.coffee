@@ -83,9 +83,9 @@ parseCards = (data) ->
     cards.push _obj
   cards
 
-randomLineUp = (ids) ->
-  #ids = _.map cards, (c) -> c.id
-  pos = ['1', '2', '3', '4', '5', '6']
+randomLineUp = (cards) ->
+  ids = _.map cards, (c) -> c.id
+  pos = ['00', '01', '02', '10', '11', '12']
   pos_copy = _.clone(pos)
 
   _res = []
@@ -96,7 +96,7 @@ randomLineUp = (ids) ->
 
   lu = ''
   for i in [0...ids.length]
-    lu += "#{pos[_res[i]-1]}:#{ids[i]},"
+    lu += "#{_res[i]}:#{ids[i]},"
 
   lu[0...-1]
 

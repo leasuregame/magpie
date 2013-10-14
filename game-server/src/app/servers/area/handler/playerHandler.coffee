@@ -29,11 +29,11 @@ Handler::getFriends = (msg, session, next) ->
     player = results[0]
     messages = results[1]
     friends = checkFriendsStatus(player, messages)
-    console.log JSON.stringify(friends);
     next(null, {code: 200, msg: {
       friends: friends
       giveCount: player.dailyGift.gaveBless.count
       receiveCount: player.dailyGift.receivedBless.count
+      friendsCount: player.friendsCount
     }})
 
 todayPeriod = () ->

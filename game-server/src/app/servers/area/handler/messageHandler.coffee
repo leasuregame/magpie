@@ -5,6 +5,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
+utility = require '../../../common/utility'
 
 SYSTEM = -1
 
@@ -92,17 +93,32 @@ Handler::handleSysMsg = (msg, session, next) ->
         if err
           return next(null, {code: err.code or 500, msg: err.msg or err})
 
-        if message.type isnt msgConfig.MESSAGETYPE.SYSTEM
+        else if message.type isnt msgConfig.MESSAGETYPE.SYSTEM
           return next(null, {code: 501, msg: '消息类型不匹配'})
 
-        cb(null,message)
+        else if message.status is msgConfig.MESSAGESTATUS.HANDLED
+          return next(null,{code: 501, msg: '该邮件已领取过'})
+        else
+          cb(null,message)
 
     (message,cb)->
-      dao.message.update {
-        data: {status: msgConfig.MESSAGESTATUS.HANDLED}
-        where: {id: msgId}
-      }, (err, res) ->
-        cb(err, message.options)
+      if message.receiver is playerId
+        dao.message.update {
+            data: {status: msgConfig.MESSAGESTATUS.HANDLED}
+            where: {id: msgId}
+        }, (err, res) ->
+          cb(err, message.options)
+      else
+        data = {}
+        data[k] = message[k] for k in _.keys(message.attributes) when k isnt 'id'
+        data.status = msgConfig.MESSAGESTATUS.HANDLED
+        data.msgId = message.id
+        data.receiver = playerId
+
+        dao.message.create {
+          data:data
+        },(err, res) ->
+          cb(err,res.options)
 
     (options, cb) ->
       playerManager.getPlayerInfo {pid: playerId},(err,player)->
@@ -170,6 +186,11 @@ Handler::messageList = (msg, session, next) ->
 
     systemMessages = results[0]
     myMessages = results[1]
+
+  #  sysMessages = for sysm in systemMessages when sysm.id isnt msm.msgId for msm in myMessages
+
+
+   # console.log('sysMessage',sysMessages)
     messages = mergeMessages(myMessages, systemMessages)
     messages = messages.map (m) -> 
       if m.type is msgConfig.MESSAGETYPE.MESSAGE then m.toLeaveMessage?() else m.toJson?()
@@ -472,3 +493,7 @@ Handler::receiveBless = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     next(null, {code: 200})
+
+
+
+

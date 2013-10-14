@@ -135,7 +135,7 @@ function getData() {
     }
 
     if ($("#power").val() != '') {
-        data['power'] = parseInt($("#power").val());
+        data['powerValue'] = parseInt($("#power").val());
     }
 
     if ($("#spirit").val() != '') {

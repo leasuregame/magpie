@@ -24,7 +24,7 @@ var Player = Entity.extend({
     _gold: 0,           // 元宝
     _money: 0,          // 金钱
     _elixir: 0,         // 仙丹
-    _fragment: 0,       // 碎片
+    _fragment: 0,       // 卡魂
     _energy: 0,         // 活力
     _skillPoint: 0,     // 技能点
     _ability: 0,        // 战斗力
@@ -50,6 +50,7 @@ var Player = Entity.extend({
         gameData.rank.init();
         gameData.achievement.init();
         gameData.speak.init();
+        gameData.exchange.init();
 
         cc.log(this);
 
@@ -69,6 +70,7 @@ var Player = Entity.extend({
         this.set("gold", data.gold);
         this.set("money", data.money);
         this.set("elixir", data.elixir);
+        this.set("fragment", data.fragments);
         this.set("skillPoint", data.skillPoint);
         this.set("ability", data.ability);
         this.set("energy", data.energy);

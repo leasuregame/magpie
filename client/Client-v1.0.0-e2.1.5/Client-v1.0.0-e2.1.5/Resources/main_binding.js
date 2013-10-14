@@ -61,6 +61,7 @@ var appFiles = [
     'src/model/shop.js',
     'src/model/signIn.js',
     'src/model/achievement.js',
+    'src/model/exchange.js',
 
     'src/model/battleLogPool.js',
     'src/model/battleLog.js',

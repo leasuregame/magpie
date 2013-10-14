@@ -25,18 +25,18 @@ describe("Area Server", function() {
           request('area.trainHandler.passSkillAfresh', {
             playerId: arthur.playerId,
             cardId: 101,
-            psIds: [0]
+            psIds: [0, 1]
           }, function(data) {
+            console.log('result: ', data);
             expect(data.code).toEqual(200);
 
             doAjax('/card/' + 101, {}, function(res) {
               console.log(res);
-              var pss = res.data.passiveSkills;
-              expect(pss[0].name).toEqual(data.msg[0].name);
-              expect(pss[0].value).toEqual(data.msg[0].value);
+              var pss = JSON.parse(res.data.passiveSkills);
+              expect(pss).toEqual(data.msg.passSkills);
             });
 
-            console.log(data);
+            
           });
         });
       });

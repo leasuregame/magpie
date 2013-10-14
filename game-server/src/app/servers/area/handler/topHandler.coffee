@@ -21,6 +21,9 @@ Handler::orderList = (msg, session, next) ->
 
 		(cb) ->
 			dao.player.orderByRanking 50, cb
+
+		(cb) ->
+			dao.player.orderByLayer 50, cb
 	], (err, results) ->
 		if err
 			return next(null, {
@@ -34,9 +37,29 @@ Handler::orderList = (msg, session, next) ->
 				level: results[0]
 				ability: results[1]
 				ranking: results[2]
-				pass: []
+				pass: results[3]
 			}
 		})
+
+Handler::getActiveCards = (msg, session, next) ->
+	playerId = msg.id
+
+	if not playerId
+		next(null, {code: 501, msg: 'id参数不能为空'})
+
+	dao.player.getLineUpInfo playerId, (err, player) ->
+		if err
+			return next(null, {
+				code: err.code or 501
+				msg: err.msg or err
+				}
+			)
+
+		lineUp = {}
+		lineUp[k] = player.cards[v]?.toJson() or (v is -1 and player.spiritor.lv or 0) for k, v of player.lineUpObj()
+		next(null, {code: 200, msg: {
+			lineUp: lineUp
+		}})
 
 Handler::playerPass = (msg, session, next) ->
 	

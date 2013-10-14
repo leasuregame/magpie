@@ -70,8 +70,13 @@ describe("Area Server", function() {
 
       describe('when fragments is not enought', function() {
         beforeEach(function() {
-          loginWith(user1.account, user1.password, user1.areaId);
+          doAjax('/update/player/' + user1.playerId, {
+            fragments: 10
+          }, function(res) {
+            loginWith(user1.account, user1.password, user1.areaId);
+          });
         });
+
 
         it('should can not exchange card that star is 1', function() {
           request('area.trainHandler.exchangeCard', {

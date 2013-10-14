@@ -82,10 +82,13 @@ Handler::handleSysMsg = (msg, session, next) ->
   playerId = session.get('playerId')
   msgId = msg.msgId
 
+  incValues = (obj, data) ->
+    obj.increase(k, data[k]) for k in _.keys(data) when obj.hasField k 
+    obj.addPower(data.powerValue) if _.has(data, 'powerValue')
+
   async.waterfall [
     (cb)->
       dao.message.fetchOne where: id: msgId, (err, message) ->
-        console.log("message = ",message);
         if err
           return next(null, {code: err.code or 500, msg: err.msg or err})
 
@@ -95,20 +98,20 @@ Handler::handleSysMsg = (msg, session, next) ->
         cb(null,message)
 
     (message,cb)->
-      options = message.options;
+      dao.message.update {
+        data: {status: msgConfig.MESSAGESTATUS.HANDLED}
+        where: {id: msgId}
+      }, (err, res) ->
+        cb(err, message.options)
+
+    (options, cb) ->
       playerManager.getPlayerInfo {pid: playerId},(err,player)->
         if err
-          return next(null, {code: err.code or 500, msg: err.msg or err})
+          return cb({code: err.code or 500, msg: err.msg or err})
         else
-          player.increase "gold",options.gold if options.gold
-          player.increase "money",options.money if options.money
-          player.resumePower "power",options.power if options.power
-          player.increase "spirit",options.spirit if options.spirit
-          player.increase "skillPoint",options.skillPoint if options.skillPoint
-          player.increase "elixir",options.elixir if options.elixir
-
-
-          cb(null);
+          incValues(player, options)
+          player.save()
+          cb()
   ],(err)->
     if err
       next(null, {code: err.code or 500, msg: err.msg or err})

@@ -51,7 +51,7 @@ class Manager
       @wipeOutTask player, chapterId, cb
 
   @wipeOutPass: (player, cb) ->
-    layer = player.pass.layer
+    layer = player.passLayer
 
     rewards = {exp_obtain: 0, money_obtain: 0, skill_point: 0}
     isWipeOut = false

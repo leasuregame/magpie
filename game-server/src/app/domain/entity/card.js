@@ -197,7 +197,7 @@ var Card = (function(_super) {
         var ae = cardConfig.ABILIGY_EXCHANGE;
 
         // 1点攻击力=1点战斗力
-        // 3点生命值=1点战斗力
+        // 2点生命值=1点战斗力
         var _abi = parseInt(this.atk / ae.atk) + parseInt(this.hp / ae.hp);
 
         // 技能增强效果 
@@ -230,7 +230,6 @@ var Card = (function(_super) {
     Card.prototype.addPassiveSkill = function(ps) {
         var pss = _.clone(this.passiveSkills);
         if (typeof ps.id !== 'undefined' && ps.id !== null) {
-            this.passiveSkills[ps.id] = ps;
             if (pss.length == this.star - 2) {
                 for (var i = 0; i < pss.length; i++) {
                     if (pss[i].id == ps.id) {
@@ -295,7 +294,6 @@ var Card = (function(_super) {
         p.name = name;
         p.value = parseFloat((value / 100).toFixed(1));
         this.addPassiveSkill(p);
-
     };
 
     Card.prototype.eatCards = function(cards) {

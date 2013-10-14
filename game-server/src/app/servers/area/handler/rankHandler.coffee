@@ -99,6 +99,16 @@ Handler::challenge = (msg, session, next) ->
 
       saveBattleLog(bl, playerName)
 
+Handler::fight = (msg, session, next) ->
+  playerId = session.get('playerId')
+  targetId = msg.targetId
+
+  fightManager.pvp {playerId: playerId, targetId: targetId}, (err, bl) ->
+    if err
+      return next(null, {code: 501, msg: err.msg or err})
+
+    next(null, {code: 200, msg: battleLog: bl})
+
 Handler::getRankingReward = (msg, session, next) ->
   playerId = session.get('playerId')
   ranking = msg.ranking

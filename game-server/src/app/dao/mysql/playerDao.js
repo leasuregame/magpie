@@ -104,7 +104,6 @@ var PlayerDao = (function(_super) {
                     where: ' playerId in (' + ids.toString() + ')'
                 }, callback);
             },
-
         ], function(err, results) {
             if (err !== null) {
                 return cb(err, null);
@@ -114,19 +113,20 @@ var PlayerDao = (function(_super) {
             var cards = results[1];
             var ranks = results[2];
 
+            players.forEach(function(p) {
+                p.addCards(cards.filter(function(c) {
+                    return c.playerId == p.id
+                }));
 
-
-
-            players.forEach(function(p){
-                p.addCards(cards.filter(function(c){ return c.playerId == p.id}));
-
-                _ranks = ranks.filter(function(r) { return r.playerId == p.id});
+                _ranks = ranks.filter(function(r) {
+                    return r.playerId == p.id
+                });
                 if (_ranks.length > 0) {
                     p.set('rank', _ranks[0]);
                 }
             });
             var end = Date.now();
-            console.log('get player details time: ', (end - start)/1000);
+            console.log('get player details time: ', (end - start) / 1000);
             return cb(null, players);
         });
 
@@ -144,7 +144,7 @@ var PlayerDao = (function(_super) {
                 logger.error(err.stack);
             }
 
-            if (!!res && res.length > 0) {
+            if ( !! res && res.length > 0) {
                 return cb(null, res);
             } else {
                 return cb(null, []);
@@ -152,25 +152,79 @@ var PlayerDao = (function(_super) {
         });
     };
 
-    PlayerDao.orderBy = function (orderby, limit, cb) {
-        var sql = 'select id, name, lv, ability from player \
-            order by ' + orderby + ' limit ' + limit;
+    PlayerDao.orderBy = function(orderby, limit, cb) {
+        orderBy(null, orderby, limit, cb);
+    };
 
-        dbClient.query(sql, [], function(err, res) {
+    PlayerDao.orderByLayer = function(limit, cb) {
+        orderBy(
+            ['id', 'name', 'ability', 'passLayer'],
+            'passLayer DESC, ability DESC', 
+            limit, 
+            cb
+        );
+    };
+
+    PlayerDao.getLineUpInfo = function (playerId, done) {
+        var _this = this;
+
+        async.waterfall([
+            function(cb) {
+                _this.fetchOne({
+                    where: {id: playerId},
+                    fields: ['id', 'lineUp', 'spiritor']
+                }, cb);
+            },
+            function(player, cb) {
+                console.log(player.lineUpObj());
+                var ids = _.values(player.lineUpObj());
+                if (!_.isEmpty(ids)) {
+                    cardDao.fetchMany({
+                        where: ' id in (' + ids.toString() + ')'
+                    }, function(err, cards) {
+                        if (err) {
+                            cb(err);
+                        } else {
+                            cb(null, player, cards);
+                        }
+                    });
+                } else {
+                    logger.warn('line up cards is empty')
+                    cb(null, player, []);
+                }
+            }
+        ], function (err, player, cards) {
             if (err) {
-                logger.error('[SQL OERROR, when fetch player order by ' + orderby + ']');
-                logger.error(err.stack);
-            }
-
-            if (!!res && res.length > 0) {
-                return cb(null, res);
+                done(err);
             } else {
-                return cb(null, []);
+                player.addCards(cards);
+                done(null, player);
             }
-        });
+        })
     };
 
     return PlayerDao;
 })(DaoBase);
+
+var orderBy = function(fields, orderby, limit, cb) {
+    if (!fields) {
+        fields = ['id', 'name', 'lv', 'ability'];
+    }
+    var sql = 'select ' + fields.toString() + ' from player \
+            order by ' + orderby + ' limit ' + limit;
+
+    dbClient.query(sql, [], function(err, res) {
+        if (err) {
+            logger.error('[SQL OERROR, when fetch player order by ' + orderby + ']');
+            logger.error(err.stack);
+        }
+
+        if ( !! res && res.length > 0) {
+            return cb(null, res);
+        } else {
+            return cb(null, []);
+        }
+    });
+};
 
 module.exports = PlayerDao;

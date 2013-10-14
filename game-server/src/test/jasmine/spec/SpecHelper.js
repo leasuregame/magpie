@@ -165,7 +165,7 @@ var doAjax = function(url, params, cb) {
 };
 
 var request = function(route, msg, cb, timeout) {
-  console.log('msg: ', msg);
+  console.log('msg: ', route, msg);
   var ok = false;
   runs(function() {
     pomelo.request(route, msg, function(data) {
@@ -194,6 +194,10 @@ var initPomelo = function() {
     return inited;
   });
 };
+
+pomelo.on('onLightUpCard', function(data){
+  console.log('Receive a message: ', data.msg);
+});
 
 var loginWith = function(account, pwd, areaId) {
   request("connector.userHandler.login", {

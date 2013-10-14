@@ -171,7 +171,7 @@ describe("Area Server", function() {
 				var totalCount = 500;
 
 
-				it(toatlCount + '次', function() {
+				it(totalCount + '次', function() {
 					var doTest = function() {
 						if (count >= 500) {
 							return;

@@ -230,7 +230,6 @@ var Card = (function(_super) {
     Card.prototype.addPassiveSkill = function(ps) {
         var pss = _.clone(this.passiveSkills);
         if (typeof ps.id !== 'undefined' && ps.id !== null) {
-            this.passiveSkills[ps.id] = ps;
             if (pss.length == this.star - 2) {
                 for (var i = 0; i < pss.length; i++) {
                     if (pss[i].id == ps.id) {
@@ -295,7 +294,6 @@ var Card = (function(_super) {
         p.name = name;
         p.value = parseFloat((value / 100).toFixed(1));
         this.addPassiveSkill(p);
-
     };
 
     Card.prototype.eatCards = function(cards) {

@@ -374,8 +374,11 @@ var FriendLayer = cc.Layer.extend({
 
             var element = this._scrollViewElement[id];
 
+            var that = this;
             gameData.friend.giveBless(function (data) {
                 cc.log(data);
+
+                that.update();
             }, id);
         }
 
@@ -411,21 +414,42 @@ var FriendLayer = cc.Layer.extend({
     _onClickSendMessage: function () {
         cc.log("FriendLayer _onClickSendMessage: " + this._selectFriend);
 
+
+        this._shyLayer.setVisible(false);
     },
 
     _onClickLineUp: function () {
         cc.log("FriendLayer _onClickLineUp: " + this._selectFriend);
 
+        var that = this;
+        gameData.player.playerDetail(function (data) {
+            that.update();
+        }, this._selectFriend);
+
+        this._shyLayer.setVisible(false);
     },
 
     _onClickBattle: function () {
         cc.log("FriendLayer _onClickBattle: " + this._selectFriend);
+        cc.log(this._selectFriend);
 
+        var that = this;
+        gameData.player.learn(function (battleLogId) {
+            BattlePlayer.getInstance().play(battleLogId);
+        }, this._selectFriend);
+
+        this._shyLayer.setVisible(false);
     },
 
     _onClickDeleteFriend: function () {
         cc.log("FriendLayer _onClickDeleteFriend: " + this._selectFriend);
 
+        var that = this;
+        gameData.friend.deleteFriend(function (data) {
+            that.update();
+        }, this._selectFriend);
+
+        this._shyLayer.setVisible(false);
     }
 });
 

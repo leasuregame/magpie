@@ -44,6 +44,20 @@ var Friend = Entity.extend({
         this._friendCount = this._friendList.length;
     },
 
+    delete: function(friendId) {
+        var len = this._friendList.length;
+
+        for(var i = 0; i < len; ++i) {
+            if(this._friendList[i].id === friendId) {
+                this._friendList.splice(i, 1);
+
+                break;
+            }
+        }
+
+        this._friendCount = this._friendList.length;
+    },
+
     addFriend: function (name) {
         cc.log("Friend addFriend: " + name);
 
@@ -74,6 +88,10 @@ var Friend = Entity.extend({
 
             if (data.code == 200) {
                 cc.log("deleteFriend success");
+
+                that.delete(friendId);
+
+                cb();
             } else {
                 cc.log("deleteFriend fail");
             }
@@ -121,29 +139,6 @@ var Friend = Entity.extend({
                 cb("success");
             } else {
                 cc.log("receiveBless fail");
-            }
-        });
-    },
-
-    sendMessage: function (cb, playerId, msg) {
-        cc.log("Friend sendMessage: " + palyerId + " " + msg);
-
-        var that = this;
-        lzWindow.pomelo.request("area.messageHandler.leaveMessage", {
-            friendId: friendId,
-            content: msg
-        }, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
-
-            if (data.code == 200) {
-                cc.log("sendMessage success");
-
-                cb("success");
-            } else {
-                cc.log("sendMessage fail");
-
-                cb("fail");
             }
         });
     }

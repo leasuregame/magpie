@@ -108,6 +108,73 @@ var Player = Entity.extend({
             useVipBoxList: data.vipBox
         });
 
+    },
+
+    sendMessage: function (cb, playerId, msg) {
+        cc.log("Player sendMessage: " + palyerId + " " + msg);
+
+        var that = this;
+        lzWindow.pomelo.request("area.messageHandler.leaveMessage", {
+            friendId: playerId,
+            content: msg
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("sendMessage success");
+
+                cb("success");
+            } else {
+                cc.log("sendMessage fail");
+            }
+        });
+    },
+
+    learn: function (cb, playerId) {
+        cc.log("Player learn: " + playerId);
+
+        var that = this;
+        lzWindow.pomelo.request("area.rankHandler.fight", {
+            targetId: playerId
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("learn success");
+
+                var msg = data.msg;
+
+                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
+
+                cb(battleLogId);
+            } else {
+                cc.log("learn fail");
+            }
+        });
+    },
+
+    playerDetail: function (cb, playerId) {
+        cc.log("Player playerDetail: " + palyerId);
+
+        var that = this;
+        lzWindow.pomelo.request("area.topHandler.getActiveCards", {
+            id: playerId
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("playerDetail success");
+
+                var msg = data.msg;
+
+                cb(msg);
+            } else {
+                cc.log("playerDetail fail");
+            }
+        });
     }
 });
 

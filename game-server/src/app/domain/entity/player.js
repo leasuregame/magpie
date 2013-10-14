@@ -855,7 +855,7 @@ var Player = (function(_super) {
                 return card.toJson();
             }),
             rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
-            friends: this.friends,
+            //friends: this.friends,
             signIn: utility.deepCopy(this.signIn),
             friendsCount: this.friendsCount
         };

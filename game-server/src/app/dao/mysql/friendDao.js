@@ -42,7 +42,15 @@ var FriendDao = (function(_super) {
             }
 
             if ( !!res && res.length > 0) {
-                cb(null, res);
+                console.log('aa--aa: ', res);
+                cb(null, res.map(function(r) {
+                    return {
+                        id: r.id,
+                        name: r.name,
+                        lv: r.lv,
+                        ability: r.ability
+                    }
+                }));
             } else {
                 cb(null, []);
             }

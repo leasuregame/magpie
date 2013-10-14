@@ -48,6 +48,15 @@ var PassLayer = cc.Layer.extend({
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
 
+        var headIcon = cc.Sprite.create(main_scene_image.icon2);
+        headIcon.setAnchorPoint(cc.p(0, 0));
+        headIcon.setPosition(cc.p(40, 968));
+        this.addChild(headIcon);
+
+        var titleIcon = cc.Sprite.create(main_scene_image.icon17);
+        titleIcon.setPosition(cc.p(360, 1008));
+        this.addChild(titleIcon);
+
         this._mysticalItem = cc.MenuItemImage.create(
             main_scene_image.button43,
             main_scene_image.button43,
@@ -67,7 +76,7 @@ var PassLayer = cc.Layer.extend({
             this._mysticalItem.addChild(this._blackHoleSprite[i]);
         }
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 768));
+        var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 774));
 
         var lazyMenu = LazyMenu.create();
         lazyMenu.setPosition(cc.p(0, 0));
@@ -137,7 +146,7 @@ var PassLayer = cc.Layer.extend({
         this._spirit.setPosition(this._getCardLocation(this._top));
         scrollViewLayer.addChild(this._spirit, 1);
 
-        this._scrollView = cc.ScrollView.create(cc.size(640, 768), scrollViewLayer);
+        this._scrollView = cc.ScrollView.create(cc.size(640, 774), scrollViewLayer);
         this._scrollView.setContentSize(cc.size(640, 18700));
         this._scrollView.setPosition(GAME_BG_POINT);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
@@ -147,13 +156,13 @@ var PassLayer = cc.Layer.extend({
 
         var tipLabel = cc.Sprite.create(main_scene_image.bg6);
         tipLabel.setAnchorPoint(cc.p(0, 0));
-        tipLabel.setPosition(cc.p(40, 894));
+        tipLabel.setPosition(cc.p(40, 900));
         this.addChild(tipLabel);
 
         this._topLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
         this._topLabel.setColor(cc.c3b(255, 239, 131));
         this._topLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._topLabel.setPosition(cc.p(190, 928));
+        this._topLabel.setPosition(cc.p(190, 934));
         this.addChild(this._topLabel);
 
         this._skillPointLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 20);
@@ -180,7 +189,7 @@ var PassLayer = cc.Layer.extend({
             this._onClickWipeOut,
             this
         );
-        this._wipeOutItem.setPosition(cc.p(580, 928));
+        this._wipeOutItem.setPosition(cc.p(580, 934));
 
         this._resetItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -190,7 +199,7 @@ var PassLayer = cc.Layer.extend({
             this._onClickReset,
             this
         );
-        this._resetItem.setPosition(cc.p(580, 928));
+        this._resetItem.setPosition(cc.p(580, 934));
 
         var menu = cc.Menu.create(this._wipeOutItem, this._resetItem);
         menu.setPosition(cc.p(0, 0));

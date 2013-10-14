@@ -98,6 +98,15 @@ var TaskLayer = cc.Layer.extend({
 
         this._index = gameData.task.getChapter();
 
+        var headIcon = cc.Sprite.create(main_scene_image.icon2);
+        headIcon.setAnchorPoint(cc.p(0, 0));
+        headIcon.setPosition(cc.p(40, 968));
+        this.addChild(headIcon);
+
+        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
+        titleIcon.setPosition(cc.p(360, 1008));
+        this.addChild(titleIcon);
+
         this._wipeOutItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,

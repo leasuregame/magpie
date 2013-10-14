@@ -68,6 +68,15 @@ var TreasureHuntLayer = cc.Layer.extend({
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
 
+        var headIcon = cc.Sprite.create(main_scene_image.icon2);
+        headIcon.setAnchorPoint(cc.p(0, 0));
+        headIcon.setPosition(cc.p(40, 968));
+        this.addChild(headIcon);
+
+        var titleIcon = cc.Sprite.create(main_scene_image.icon16);
+        titleIcon.setPosition(cc.p(360, 1008));
+        this.addChild(titleIcon);
+
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
         headLabel.setAnchorPoint(cc.p(0, 0));
         headLabel.setPosition(cc.p(40, 905));

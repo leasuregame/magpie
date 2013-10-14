@@ -91,7 +91,7 @@ var CardListLayer = cc.Layer.extend({
         }
 
         this._scrollView = cc.ScrollView.create(cc.size(594, 620), scrollViewLayer);
-        this._scrollView.setPosition(cc.p(60, 266));
+        this._scrollView.setPosition(cc.p(67, 266));
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
@@ -302,7 +302,7 @@ var CardListLayer = cc.Layer.extend({
 
         this._clearOtherLayer();
 
-        var titleLabel = cc.Sprite.create(main_scene_image.icon24);
+        var titleLabel = cc.Sprite.create(main_scene_image.icon250);
         titleLabel.setPosition(cc.p(360, 1008));
         this._otherLabel.addChild(titleLabel);
 

@@ -54,7 +54,7 @@ describe("Area Server", function() {
 					expect(card.passiveSkills.length).toEqual(card_star - 2);
 					for (var i = 0; i < card.passiveSkills.length; i++) {
 						var ps = card.passiveSkills[i];
-						expect(ps.cardId).toEqual(card.id);
+						//expect(ps.cardId).toEqual(card.id);
 						expect(ps.value).toBeLessThan(5);
 						expect(ps.value).toBeGreaterThan(0);
 						expect(ps_names).toContain(ps.name);
@@ -109,9 +109,20 @@ describe("Area Server", function() {
 										elixirHp: card.elixirHp,
 										elixirAtk: card.elixirAtk,
 									});
+                                var pss = JSON.parse(res.data.passiveSkills);
+                                for(var i = 0; i < card.passiveSkills.length;i++) {
+                                    var ps = card.passiveSkills[i];
+                                    expect(pss[i]).toEqual({
+                                        id: ps.id,
+                                        //cardId: ps.cardId,
+                                        name: ps.name,
+                                        value: ps.value
+                                    });
+                                }
+
 							});
 
-							card.passiveSkills.forEach(function(ps) {
+							/*card.passiveSkills.forEach(function(ps) {
 								doAjax('/passiveSkill/' + ps.id, {}, function(res) {
 									expect(res.data).toEqual({
 										id: ps.id,
@@ -121,7 +132,7 @@ describe("Area Server", function() {
 									});
 								});
 							});
-
+                            */
 							doAjax('/player/' + arthur.playerId, {}, function(res) {
 								if (type == LOTTERY_TYPE.GOLD) {
 									expect(res.data.gold).toEqual(before_gold - data.msg.consume);

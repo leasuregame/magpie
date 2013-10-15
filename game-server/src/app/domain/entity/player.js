@@ -27,6 +27,7 @@ var util = require('util');
 var achieve = require('../achievement');
 var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL;
 var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
+var EXP_CARD_ID = require('../../../config/data/card').EXP_CARD_ID;
 
 var defaultMark = function() {
     var i, result = [];
@@ -69,11 +70,8 @@ var addEvents = function(player) {
         achieve.receivedBless(player);
     });
 
-    player.on('pass.change', function(pass) {
-        if (typeof pass == 'string' && /^[\{\[].*[\]\}]$/.test(pass)) {
-            pass = JSON.parse(pass);
-        }
-        achieve.passTo(player, pass.layer || 0);
+    player.on('passLayer.change', function(layer) {
+        achieve.passTo(player, layer);
     });
 
     player.on('elixir.increase', function(elixir) {
@@ -98,12 +96,13 @@ var addEvents = function(player) {
 
     player.on('add.card', function(card) {
         if (player.isLineUpCard(card)) {
-            //player.activeGroupEffect();
             player.activeSpiritorEffect();
         }
-        if (!player.cardBookMark.hasMark(card.tableId)) {
+
+        if (!player.cardBookMark.hasMark(card.tableId) && card.tableId != EXP_CARD_ID) {
+            card.isNewLightUp = true;
             player.cardBookMark.mark(card.tableId);
-            cardBook = utility.deepCopy(player.cardBook);
+            var cardBook = utility.deepCopy(player.cardBook);
             cardBook.mark = player.cardBookMark.value;
             player.cardBook = cardBook;
             player.save();
@@ -137,9 +136,6 @@ var addEvents = function(player) {
         }
         recountVipPrivilege(player, oldVip);
     });
-
-    // player.emit('exp.change', player.exp);
-    // player.emit('cash.change', player.cash);
 };
 
 var correctPower = function(player) {
@@ -202,6 +198,7 @@ var Player = (function(_super) {
         'lineUp',
         'ability',
         'task',
+        'passLayer',
         'pass',
         'dailyGift',
         'fragments',
@@ -236,8 +233,8 @@ var Player = (function(_super) {
             mark: []
             //momo: []
         },
+        passLayer: 0,
         pass: {
-            layer: 0,
             mark: [],
             mystical: {
                 diff: 1,
@@ -482,9 +479,9 @@ var Player = (function(_super) {
     };
 
     Player.prototype.updatePower = function(power) {
-        if (this.power.value !== power.value) {
+        //if (this.power.value !== power.value) {
             this.set('power', power);
-        }
+        //}
     };
 
     Player.prototype.consumePower = function(value) {
@@ -614,6 +611,7 @@ var Player = (function(_super) {
             exp_obtain: expObtain,
             cur_lv: targetCard.lv,
             cur_exp: targetCard.exp,
+            ability: targetCard.ability(),
             money_consume: parseInt(moneyConsume)
         }, targetCard);
     };
@@ -695,7 +693,7 @@ var Player = (function(_super) {
         }
 
         var pass = utility.deepCopy(this.pass);
-        if (pass.layer + 1 < layer) {
+        if (this.passLayer + 1 < layer) {
             logger.warn('未达到该关卡层数', layer);
             return;
         }
@@ -727,18 +725,14 @@ var Player = (function(_super) {
     };
 
     Player.prototype.incPass = function() {
-        var pass = utility.deepCopy(this.pass);
-        if (pass.layer >= 100)
-            return;
-        pass.layer++;
-        this.set('pass', pass);
+        this.increase('passLayer');
     };
 
     Player.prototype.getPass = function(){
         checkPass(this);
         return {
             canReset: this.pass.resetTimes > 0 ? true : false,
-            layer: this.pass.layer,
+            layer: this.passLayer,
             mark: this.pass.mark,
             hasMystical: this.hasMysticalPass()
         };
@@ -853,7 +847,7 @@ var Player = (function(_super) {
             dailyGift: utility.deepCopy(this.dailyGift),
             skillPoint: this.skillPoint,
             energy: this.energy,
-            fregments: this.fregments,
+            fragments: this.fragments,
             elixir: this.elixir,
             spiritor: this.spiritor,
             spiritPool: utility.deepCopy(this.spiritPool),
@@ -861,9 +855,8 @@ var Player = (function(_super) {
                 return card.toJson();
             }),
             rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
-            friends: this.friends,
+            //friends: this.friends,
             signIn: utility.deepCopy(this.signIn),
-            cardBook: this.cardBook,
             friendsCount: this.friendsCount
         };
     };
@@ -894,7 +887,6 @@ var Player = (function(_super) {
 var checkPass = function(player) {
     if (typeof player.pass !== 'object') {
         player.pass = {
-            layer: 0,
             mark: [],
             mystical: {
                 diff: 1,

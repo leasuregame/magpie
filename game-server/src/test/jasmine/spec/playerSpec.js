@@ -110,7 +110,8 @@ describe("Connector Server", function() {
                 signIn: {
                   months: {},
                   flag: 0
-                }
+                },
+                friendsCount: 20
               }
             }
           });

@@ -38,11 +38,19 @@ class Manager
       cb(null, player)
 
   @getPlayers: (ids, cb) ->
-    dao.player.getPlayerDetails ids, (err, res) ->
+    results = {}
+    leftIds = []
+    for id in ids
+      cache = area.getPlayer(id) 
+      if cache 
+        results[cache.id] = cache 
+      else
+        leftIds.push id
+
+    dao.player.getPlayerDetails leftIds, (err, res) ->
       if err isnt null
         return cb(err, null)
 
-      results = {}
       res.map (r) -> results[r.id] = r
       return cb(null, results)
 

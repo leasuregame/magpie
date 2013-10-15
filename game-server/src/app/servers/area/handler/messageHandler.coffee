@@ -5,6 +5,7 @@ logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
+utility = require '../../../common/utility'
 
 SYSTEM = -1
 
@@ -45,7 +46,7 @@ sendMessage = (app, target, msg, next) ->
       code = 200
     next(null, {code: code}) if next?
 
-  if target isnt null
+  if target?
     app.get('messageService').pushByPid target, msg, callback
   else 
     app.get('messageService').pushMessage msg, callback
@@ -56,13 +57,16 @@ module.exports = (app) ->
 Handler = (@app) ->
 
 Handler::sysMsg = (msg, session, next) ->
+  console.log("msg = ",msg);
   content = msg.content
   options = msg.options or {}
-
+  receiver = msg.playerId or SYSTEM
+ # msgId = msg.msgId or 0
   dao.message.create data: {
+  #  msgId:msgId
     options: options
     sender: SYSTEM
-    receiver: SYSTEM
+    receiver: receiver
     content: content
     type: msgConfig.MESSAGETYPE.SYSTEM
     status: msgConfig.MESSAGESTATUS.UNHANDLED
@@ -73,21 +77,62 @@ Handler::sysMsg = (msg, session, next) ->
     sendMessage @app, null, {
       route: 'onMessage'
       msg: res.toJson()
-    }, next
+    }, next(null,{code:200,msg:'邮件发送成功'})
 
 Handler::handleSysMsg = (msg, session, next) ->
   playerId = session.get('playerId')
   msgId = msg.msgId
 
-  dao.message.fetchOne where: id: msgId, (err, message) ->
+  incValues = (obj, data) ->
+    obj.increase(k, data[k]) for k in _.keys(data) when obj.hasField k 
+    obj.addPower(data.powerValue) if _.has(data, 'powerValue')
+
+  async.waterfall [
+    (cb)->
+      dao.message.fetchOne where: id: msgId, (err, message) ->
+        if err
+          return next(null, {code: err.code or 500, msg: err.msg or err})
+
+        else if message.type isnt msgConfig.MESSAGETYPE.SYSTEM
+          return next(null, {code: 501, msg: '消息类型不匹配'})
+
+        else if message.status is msgConfig.MESSAGESTATUS.HANDLED
+          return next(null,{code: 501, msg: '该邮件已领取过'})
+        else
+          cb(null,message)
+
+    (message,cb)->
+      if message.receiver is playerId
+        dao.message.update {
+            data: {status: msgConfig.MESSAGESTATUS.HANDLED}
+            where: {id: msgId}
+        }, (err, res) ->
+          cb(err, message.options)
+      else
+        data = {}
+        data[k] = message[k] for k in _.keys(message.attributes) when k isnt 'id'
+        data.status = msgConfig.MESSAGESTATUS.HANDLED
+        data.msgId = message.id
+        data.receiver = playerId
+
+        dao.message.create {
+          data:data
+        },(err, res) ->
+          cb(err,res.options)
+
+    (options, cb) ->
+      playerManager.getPlayerInfo {pid: playerId},(err,player)->
+        if err
+          return cb({code: err.code or 500, msg: err.msg or err})
+        else
+          incValues(player, options)
+          player.save()
+          cb()
+  ],(err)->
     if err
-      return next(null, {code: err.code or 500, msg: err.msg or err})
+      next(null, {code: err.code or 500, msg: err.msg or err})
 
-    if message.type isnt msgConfig.MESSAGETYPE.SYSTEM
-      return next(null, {code: 501, msg: '消息类型不匹配'})
-
-    # do something 
-    next(null, {code: 200})
+    next(null, {code: 200,msg:'成功领取奖励'})
 
 Handler::leaveMessage = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -141,6 +186,11 @@ Handler::messageList = (msg, session, next) ->
 
     systemMessages = results[0]
     myMessages = results[1]
+
+  #  sysMessages = for sysm in systemMessages when sysm.id isnt msm.msgId for msm in myMessages
+
+
+   # console.log('sysMessage',sysMessages)
     messages = mergeMessages(myMessages, systemMessages)
     messages = messages.map (m) -> 
       if m.type is msgConfig.MESSAGETYPE.MESSAGE then m.toLeaveMessage?() else m.toJson?()
@@ -443,3 +493,7 @@ Handler::receiveBless = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     next(null, {code: 200})
+
+
+
+

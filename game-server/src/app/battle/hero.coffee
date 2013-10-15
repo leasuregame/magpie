@@ -27,10 +27,14 @@ class Hero extends Module
     @player = player
     @id = attrs.id
     @lv = attrs.lv
-    @init_hp = attrs.hp
-    @hp = attrs.hp
-    @atk = attrs.atk
-    @init_atk = attrs.atk
+    @init_hp = attrs.hp + (attrs.incs?.spirit_hp or 0)
+    @hp = attrs.hp + (attrs.incs?.spirit_hp or 0)
+    @atk = attrs.atk + (attrs.incs?.spirit_atk or 0)
+    @init_atk = attrs.atk + (attrs.incs?.spirit_atk or 0)
+    @spirit_hp = attrs.incs?.spirit_hp or 0
+    @spirit_atk = attrs.incs?.spirit_atk or 0
+    @hp_only = attrs.hp
+    @atk_only = attrs.atk
 
     @card_id = attrs.tableId
     @skill_lv = attrs.skillLv or 0
@@ -161,7 +165,7 @@ class Hero extends Module
       enemy.damageOnly -realHp
 
       _step.d.push enemy.idx
-      _step.e.push realHp
+      _step.e.push _hp
       # debug
       _step['dhp'] = enemy.hp
 

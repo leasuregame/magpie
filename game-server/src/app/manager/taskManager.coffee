@@ -51,7 +51,7 @@ class Manager
       @wipeOutTask player, chapterId, cb
 
   @wipeOutPass: (player, cb) ->
-    layer = player.pass.layer
+    layer = player.passLayer
 
     rewards = {exp_obtain: 0, money_obtain: 0, skill_point: 0}
     isWipeOut = false
@@ -123,23 +123,6 @@ class Manager
       ### 标记为已经赢得战斗 ###
       task.hasWin = true
       player.task = task
-
-      ### the first time win, obtain some spirit ###
-      totalSpirit = 0
-      _.each battleLog.cards, (v, k) ->
-        ### 只计算敌方卡牌 ###
-        return if k <= 6
-
-        if v.boss?
-          v.spirit = spiritConfig.SPIRIT.TASK.BOSS
-          totalSpirit += spiritConfig.SPIRIT.TASK.BOSS
-        else
-          v.spirit = spiritConfig.SPIRIT.TASK.OTHER
-          totalSpirit += spiritConfig.SPIRIT.TASK.OTHER
-      battleLog.rewards.totalSpirit = totalSpirit
-
-      player.incSpirit totalSpirit
-      data["spiritor"] = player.spiritor
 
     if utility.hitRate(taskRate.fragment_rate)
       battleLog.rewards.fragment = 1

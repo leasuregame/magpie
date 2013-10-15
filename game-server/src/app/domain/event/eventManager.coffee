@@ -1,5 +1,5 @@
 playerEvent = require('./playerEvent')
 Manager = module.exports
 
-Manager.addEventToPlayer = (player) ->
-	playerEvent.addEvents(player)
+Manager.addEventToPlayer = (app, player) ->
+	playerEvent.addEvents(app, player)

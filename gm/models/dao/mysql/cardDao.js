@@ -14,7 +14,6 @@
  * delete
  * */
 var Card = require("../../domain/entity/card");
-var passiveSkillDao = require('./passiveSkillDao');
 var async = require('async');
 var DaoBase = require("./daoBase");
 var dbClient = require('./mysql');
@@ -36,14 +35,6 @@ var CardDao = (function(_super) {
 		async.parallel([
 			function(callback) {
 				_this.fetchOne(options, callback);
-			},
-			function(callback) {
-				passiveSkillDao.fetchMany({
-					where: {
-						cardId: options.where.id
-					},
-					sync: options.sync
-				}, callback);
 			}
 		], function(err, results) {
 			if (err !== null) {
@@ -51,10 +42,6 @@ var CardDao = (function(_super) {
 			}
 
 			var card = results[0];
-			var pss = results[1];
-
-			//card.addPassiveSkills(pss);
-            card.passSkills = pss;
 			return cb(null, card);
 		});
 	};
@@ -67,33 +54,7 @@ var CardDao = (function(_super) {
 				_this.fetchMany(options, callback);
 			},
 			function(cards, callback) {
-				var ids = cards.map(function(c) {
-					return c.id;
-				});
-
-				if (ids.length == 0) {
-					return cb(null, []);
-				}
-
-				passiveSkillDao.fetchMany({
-					sync: options.sync,
-					where: ' cardId in (' + ids.toString() + ')'
-				}, function(err, pss) {
-					if (err) {
-						return cb(err);
-					}
-
-                    for(var i = 0;i < cards.length;i++) {
-                        cards[i].passSkills = [];
-                        for(var j = 0;j < pss.length;j++)
-                            if(cards[i].id == pss[j].cardId) {
-                                cards[i].passSkills.push(pss[j]);
-                            }
-                    }
-                  //  console.log(cards);
-					return cb(null, cards);
-				});
-
+                return cb(null, cards);
 			}
 		]);
 	};

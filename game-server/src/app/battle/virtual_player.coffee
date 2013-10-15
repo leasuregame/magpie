@@ -10,10 +10,13 @@ class VirtualPlayer extends Player
 
     if data.is_random? and data.is_random is 1
       lineUp = randomLineUp cards
+      console.log 'random lineup: ', lineUp
     else if data.formation?
       lineUp = genLineUp cards, data.formation
     else
       lineUp = defaultLineUp cards
+      console.log 'default Line Up: ', lineUp
+    console.log 'data: ', data
     
     super(
       cards: cards
@@ -82,18 +85,18 @@ parseCards = (data) ->
 
 randomLineUp = (cards) ->
   ids = _.map cards, (c) -> c.id
-  pos = ['1', '2', '3', '4', '5', '6']
+  pos = ['00', '01', '02', '10', '11', '12']
+  pos_copy = _.clone(pos)
 
   _res = []
-  idxs = _.range(0, ids.length)
   for i in ids
-    r = _.random(0, idxs.length-1)
-    _res.push idxs[r]
-    idxs.splice(r, 1)
+    r = _.random(0, pos_copy.length-1)
+    _res.push pos_copy[r]
+    pos_copy.splice(r, 1)
 
   lu = ''
-  for i in [0..._res.length]
-    lu += "#{pos[_res[i]]}:#{ids[i]},"
+  for i in [0...ids.length]
+    lu += "#{_res[i]}:#{ids[i]},"
 
   lu[0...-1]
 

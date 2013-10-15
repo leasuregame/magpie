@@ -62,7 +62,7 @@ var CardLibraryLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
 
-        var scrollViewHeight = Math.ceil(len / 4) * 143 + 35;
+        var scrollViewHeight = Math.ceil(len / 4) * 143 + 25;
 
         this._cardItem = {};
         this._effect = {};

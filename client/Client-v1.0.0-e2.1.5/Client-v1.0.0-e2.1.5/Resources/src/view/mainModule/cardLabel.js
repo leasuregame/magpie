@@ -46,11 +46,21 @@ var CardLabel = cc.Node.extend({
         this.addChild(cardItemMenu);
 
         var cardHeadItem = CardHeadNode.getCardHeadItem(this._card);
-        cardHeadItem.setPosition(cc.p(70, 63));
+        cardHeadItem.setPosition(cc.p(70, 65));
 
         var cardHeadItemMenu = LazyMenu.create(cardHeadItem);
         cardHeadItemMenu.setPosition(cc.p(0, 0));
         this.addChild(cardHeadItemMenu);
+
+        var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
+        nameIcon.setContentSize(cc.size(190, 30));
+        nameIcon.setAnchorPoint(cc.p(0, 0.5));
+        nameIcon.setPosition(cc.p(145, 100));
+        this.addChild(nameIcon);
+
+        var otherIcon = cc.Sprite.create(main_scene_image.icon30);
+        otherIcon.setPosition(cc.p(200, 34));
+        this.addChild(otherIcon);
 
         var nameLabel = cc.LabelTTF.create(this._card.get("name"), "STHeitiTC-Medium", 20);
         nameLabel.setColor(cc.c3b(255, 242, 206));

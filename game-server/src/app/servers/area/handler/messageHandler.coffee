@@ -97,10 +97,16 @@ Handler::handleSysMsg = (msg, session, next) ->
           return next(null, {code: 501, msg: '消息类型不匹配'})
 
         else if message.status is msgConfig.MESSAGESTATUS.HANDLED
-          return next(null,{code: 501, msg: '该邮件已领取过'})
+          return next(null, {code: 501, msg: '该邮件已领取过'})
+
         else
           cb(null,message)
-
+    (message,cb)->
+      dao.message.fetchOne where: msgId: message.id,(err,res) ->
+        if res isnt null
+          return next(null, {code: 501, msg: '该邮件已领取过'})
+        else
+          cb(null,message)
     (message,cb)->
       if message.receiver is playerId
         dao.message.update {

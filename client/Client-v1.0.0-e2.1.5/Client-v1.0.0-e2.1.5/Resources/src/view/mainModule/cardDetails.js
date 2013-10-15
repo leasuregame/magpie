@@ -270,6 +270,7 @@ var CardDetails = LazyLayer.extend({
         var closeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
+            main_scene_image.button9d,
             main_scene_image.icon36,
             this._onClickClose,
             this

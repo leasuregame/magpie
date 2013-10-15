@@ -166,9 +166,11 @@ var SpiritDetails = LazyLayer.extend({
         );
         this._upgradeItem.setPosition(cc.p(360, 520));
 
-        var closeItem = cc.MenuItemImage.create(
-            main_scene_image.button17,
-            main_scene_image.button17s,
+        var closeItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            main_scene_image.icon36,
             this._onClickClose,
             this
         );

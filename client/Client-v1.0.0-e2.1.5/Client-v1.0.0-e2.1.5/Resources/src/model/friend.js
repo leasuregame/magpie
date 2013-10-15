@@ -13,53 +13,78 @@
 
 
 var Friend = Entity.extend({
-    _giveBlessCount: 0,
-    _giveBlessList: [],
-    _receiveBlessCount: 0,
-    _receiveBlessList: [],
-    _friendCount: 0,
-    _maxFriendCount: 0,
     _friendList: [],
+    _giveCount: 0,
+    _receiveCount: 0,
+    _maxFriendCount: 0,
 
-    init: function (data) {
+    init: function () {
         cc.log("Friend init");
 
-        this.set("friendList", data.friendList);
-        this.set("giveBlessCount", data.giveBlessCount);
-        this.set("giveBlessList", data.giveBlessList);
-        this.set("receiveBlessCount", data.receiveBlessCount);
-        this.set("receiveBlessList", data.receiveBlessList);
-        this.set("friendCount", this._friendList.length);
-        this.set("maxFriendCount", 30);
-
-        cc.log(this);
+        this.sync();
 
         return true;
+    },
+
+    update: function (data) {
+        cc.log("friend update");
+
+        this.set("friendList", data.friends);
+        this.set("giveCount", data.giveCount);
+        this.set("receiveCount", data.receiveCount);
+        this.set("maxFriendCount", data.friendsCount);
+    },
+
+    sync: function () {
+        cc.log("friend sync");
+
+        var that = this;
+        lzWindow.pomelo.request("area.playerHandler.getFriends", {}, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("sync success");
+
+                var msg = data.msg;
+
+                that.update(msg);
+
+                lzWindow.pomelo.on("onBless", function (data) {
+                    cc.log("***** on bless:");
+                    cc.log(data);
+                });
+            } else {
+                cc.log("sync fail");
+
+                that.sync();
+            }
+        });
     },
 
     push: function (friend) {
         cc.log("friend push");
 
         this._friendList.push(friend);
-        this._friendCount = this._friendList.length;
     },
 
-    delete: function(friendId) {
+    delete: function (friendId) {
         var len = this._friendList.length;
 
-        for(var i = 0; i < len; ++i) {
-            if(this._friendList[i].id === friendId) {
+        for (var i = 0; i < len; ++i) {
+            if (this._friendList[i].id === friendId) {
                 this._friendList.splice(i, 1);
-
                 break;
             }
         }
-
-        this._friendCount = this._friendList.length;
     },
 
     addFriend: function (name) {
         cc.log("Friend addFriend: " + name);
+
+        if (this._friendList.length >= this._maxFriendCount) {
+            TipLayer.tip("好友已满");
+        }
 
         var that = this;
         lzWindow.pomelo.request("area.messageHandler.addFriend", {
@@ -70,8 +95,12 @@ var Friend = Entity.extend({
 
             if (data.code == 200) {
                 cc.log("addFriend success");
+
+                TipLayer.tip("请求已发送");
             } else {
                 cc.log("addFriend fail");
+
+                TipLayer.tip("添加好友失败");
             }
         });
     },
@@ -91,9 +120,13 @@ var Friend = Entity.extend({
 
                 that.delete(friendId);
 
+                TipLayer.tip("删除成功");
+
                 cb();
             } else {
                 cc.log("deleteFriend fail");
+
+                TipLayer.tip("删除失败");
             }
         });
     },
@@ -101,46 +134,75 @@ var Friend = Entity.extend({
     giveBless: function (cb, friendId) {
         cc.log("Friend giveBless: " + friendId);
 
-        var that = this;
-        lzWindow.pomelo.request("area.messageHandler.giveBless", {
-            friendId: friendId
-        }, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
+        var len = this._friendList.length;
+        var friend = null;
 
-            if (data.code == 200) {
-                cc.log("giveBless success");
-
-                that._giveBlessCount -= 1;
-
-                cb("success");
-            } else {
-                cc.log("giveBless fail");
+        for (var i = 0; i < len; ++i) {
+            if (this._friendList[i].id === friendId) {
+                friend = this._friendList[i];
+                break;
             }
-        });
+        }
+
+        if (friend) {
+            var that = this;
+            lzWindow.pomelo.request("area.messageHandler.giveBless", {
+                friendId: friendId
+            }, function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
+
+                if (data.code == 200) {
+                    cc.log("giveBless success");
+
+                    that._giveCount -= 1;
+                    friend.canGive = false;
+
+                    cb("success");
+                } else {
+                    cc.log("giveBless fail");
+                }
+            });
+        } else {
+            TipLayer.tip("祝福好友出错");
+        }
     },
 
     receiveBless: function (cb, friendId) {
         cc.log("Friend receiveBless: " + friendId);
 
-        var that = this;
-        lzWindow.pomelo.request("area.messageHandler.receiveBless", {
-            friendId: friendId
-        }, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
+        var len = this._friendList.length;
+        var friend = null;
 
-            if (data.code == 200) {
-                cc.log("receiveBless success");
-
-                that._receiveBlessCount -= 1;
-                gameData.player.add("energy", 5);
-
-                cb("success");
-            } else {
-                cc.log("receiveBless fail");
+        for (var i = 0; i < len; ++i) {
+            if (this._friendList[i].id === friendId) {
+                friend = this._friendList[i];
+                break;
             }
-        });
+        }
+
+        if (friend) {
+            var that = this;
+            lzWindow.pomelo.request("area.messageHandler.receiveBless", {
+                msgId: friend.msgId
+            }, function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
+
+                if (data.code == 200) {
+                    cc.log("receiveBless success");
+
+                    that._receiveCount -= 1;
+                    friend.canReceive = false;
+
+                    cb("success");
+                } else {
+                    cc.log("receiveBless fail");
+                }
+            });
+        } else {
+            TipLayer.tip("领取祝福出错");
+        }
     }
 });
 

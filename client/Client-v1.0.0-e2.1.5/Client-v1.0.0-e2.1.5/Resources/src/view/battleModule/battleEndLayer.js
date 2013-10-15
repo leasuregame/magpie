@@ -58,7 +58,7 @@ var BattleEndLayer = cc.Layer.extend({
         var okItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
-            main_scene_image.icon95,
+            main_scene_image.icon21,
             this.end,
             this
         );

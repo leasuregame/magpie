@@ -45,6 +45,7 @@ var Player = Entity.extend({
         this.update(data);
 
         gameData.cardLibrary.init();
+        gameData.friend.init();
         gameData.message.init();
         gameData.signIn.init();
         gameData.rank.init();
@@ -91,15 +92,6 @@ var Player = Entity.extend({
         if (data.pass) gameData.pass.init(data.pass);
         if (data.spiritor) gameData.spirit.init(data.spiritor);
         if (data.spiritPool) gameData.spiritPool.init(data.spiritPool);
-
-
-        if (data.friends) gameData.friend.init({
-            friendList: data.friends,
-            giveBlessCount: data.dailyGift.gaveBless.count,
-            giveBlessList: data.dailyGift.gaveBless.receivers,
-            receiveBlessCount: data.dailyGift.receivedBless.count,
-            receiveBlessList: data.dailyGift.receivedBless.givers
-        });
 
         if (data.dailyGift) gameData.treasureHunt.init({
             count: data.dailyGift.lotteryCount,

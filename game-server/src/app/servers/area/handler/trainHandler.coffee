@@ -563,8 +563,13 @@ Handler::exchangeCard = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
+    player.descrease('fragments', cardConfig.CARD_EXCHANGE[star])
     player.addCard(card)
-    next(null, {code: 200, msg: card: card.toJson()})
+    player.save()
+    next(null, {code: 200, msg: {
+      card: card.toJson(),
+      fragments: player.fragments
+    }})
 
 cardStar = (tableId) ->
   tableId % 5 or 5

@@ -46,31 +46,6 @@ Data.prototype.importCsvToSql = function(table, filepath, callback) {
       if(table == 'card') {
           genSkillInc(row);
           initPassiveSkill(row);
-
-          /*ps.forEach(function(p){
-              p.cardId = row.id;
-              /*self.db.passiveSkill.fetchOne({
-                  where:{cardId:row.id}
-              },function(err,ps){
-                   if(err) {
-                       console.log(err);
-                   }else {
-                       console.log(ps);
-                   }
-              })
-              self.db.passiveSkill.create({
-                  data:p
-              },function(err,res){
-                  if(err) {
-                      console.log(err);
-                  }else {
-                      //console.log("ps = ",res);
-                  }
-
-              })
-          });
-          */
-
       }
       self.db[table].delete({
         where: where
@@ -187,7 +162,8 @@ Data.prototype.dataForRanking = function(callback){
       var cardData = {
         playerId: row.id,
         star: row.card_star,
-        lv: row.card_lv
+        lv: row.card_lv,
+        skillLv: _.range(1,6)
       };
       async.parallel([
         function(cb) {
@@ -199,6 +175,8 @@ Data.prototype.dataForRanking = function(callback){
         function(cb) {
           async.times(row.card_count, function(n, next){
             cardData.tableId = ids[_.random(0, ids.length-1)];
+            genSkillInc(cardData);
+            initPassiveSkill(cardData);
             self.db.card.create({data: cardData}, next);
           }, cb)
         }

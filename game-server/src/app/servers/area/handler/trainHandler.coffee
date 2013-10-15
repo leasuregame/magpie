@@ -563,7 +563,7 @@ Handler::exchangeCard = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
-    player.descrease('fragments', cardConfig.CARD_EXCHANGE[star])
+    player.decrease('fragments', cardConfig.CARD_EXCHANGE[star])
     player.addCard(card)
     player.save()
     next(null, {code: 200, msg: {

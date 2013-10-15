@@ -55,8 +55,8 @@ describe("Area Server", function() {
                     expect(data.msg.card.passiveSkills.length).toEqual(star - 2);
 
                     doAjax('/player/' + user1.playerId, {}, function(res) {
-                      expect(data.fragments).toEqual(res.data.fragments);
-                      expect(data.fragments).toEqual(40 - (star == 4 ? 30 : 40));
+                      expect(data.msg.fragments).toEqual(res.data.fragments);
+                      expect(data.msg.fragments).toEqual(40 - (star == 4 ? 30 : 40));
                     });
                   }
                 }
@@ -65,7 +65,7 @@ describe("Area Server", function() {
           });
         };
 
-        for (var i = 1; i <= 50; i++) {
+        for (var i = 1; i <= 250; i++) {
           (function(i) {
             doTest(i);
           })(i);

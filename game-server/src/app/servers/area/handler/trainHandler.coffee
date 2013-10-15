@@ -541,6 +541,9 @@ Handler::exchangeCard = (msg, session, next) ->
   playerId = session.get('playerId')
   tableId = msg.tableId
 
+  unless tableId
+    return next(null, {code: 501, msg: 'tableId require'})
+
   star = cardStar(tableId)
   if star not in [4, 5]
     return next(null, {code: 501, msg: '只能兑换4星，5星卡牌'})

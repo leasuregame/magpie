@@ -106,6 +106,23 @@ describe("Area Server", function() {
         });
       });
 
+      describe('when args is empty', function() {
+        beforeEach(function(){
+          loginWith(user1.account, user1.password, user1.areaId);
+        });
+
+        it('should can not exhcange a card', function(){
+          request('area.trainHandler.exchangeCard', {}, function(data) {
+            console.log(data);
+            expect(data).toEqual({
+              code: 501,
+              msg: 'tableId require'
+            });
+          });
+        });
+
+      });
+
     });
   });
 });

@@ -209,7 +209,10 @@ var Player = (function(_super) {
         'signIn',
         'achievement',
         'cardBook',
-        'friendsCount'
+        'friendsCount',
+        'rowFragmentCount',
+        'highFragmentCount',
+        'highDrawCardCount'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -283,7 +286,11 @@ var Player = (function(_super) {
         cards: {},
         rank: {},
         friends: [],
-        friendsCount: 20
+        friendsCount: 20,
+        rowFragmentCount: 0,
+        highFragmentCount: 0,
+        highDrawCardCount: 0
+
     };
 
     Player.prototype.increase = function(name, val) {
@@ -857,7 +864,8 @@ var Player = (function(_super) {
             rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
             //friends: this.friends,
             signIn: utility.deepCopy(this.signIn),
-            friendsCount: this.friendsCount
+            friendsCount: this.friendsCount,
+
         };
     };
 

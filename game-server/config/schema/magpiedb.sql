@@ -32,6 +32,9 @@ CREATE TABLE IF NOT EXISTS `player` (
   `achievement` TEXT COLLATE utf8_unicode_ci,
   `cardBook` TEXT COLLATE utf8_unicode_ci,
   `friendsCount` SMALLINT(3) UNSIGNED DEFAULT '20',-- 好友上限
+  `rowFragmentCount` SMALLINT(3) UNSIGNED DEFAULT '0',-- 普通抽卡魂次数
+  `highFragmentCount` SMALLINT(3) UNSIGNED DEFAULT '0',-- 高级抽卡魂次数
+  `highDrawCardCount` SMALLINT(3) UNSIGNED DEFAULT '0',-- 高级抽卡次数
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

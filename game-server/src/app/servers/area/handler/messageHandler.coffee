@@ -458,7 +458,7 @@ Handler::giveBless = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     sendMessage @app, friendId, {
-      route: 'onMessage'
+      route: 'onBless'
       msg: res.toJson()
     }, next
 

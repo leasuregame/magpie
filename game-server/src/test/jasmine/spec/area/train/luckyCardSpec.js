@@ -109,8 +109,8 @@ describe("Area Server", function() {
 										elixirHp: card.elixirHp,
 										elixirAtk: card.elixirAtk,
 									});
-                                var pss = res.passiveSkills;
-                                for(var i = 0;i < card.passiveSkills.length;i++) {
+                                var pss = JSON.parse(res.data.passiveSkills);
+                                for(var i = 0; i < card.passiveSkills.length;i++) {
                                     var ps = card.passiveSkills[i];
                                     expect(pss[i]).toEqual({
                                         id: ps.id,

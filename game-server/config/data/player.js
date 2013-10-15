@@ -4,12 +4,6 @@ module.exports = {
     "lv": 1,
     "power": 50
   },
-  "POWER_LIMIT": {
-    "35": 50,
-    "50": 100,
-    "60": 150,
-    "100": 200
-  },
   "POWER_RESUME": {
     "interval": 60000 * 10,
     "point": 5
@@ -21,5 +15,6 @@ module.exports = {
   },
   "MAX_SPIRITOR_LV":10,
   "MAX_SPIRITPOOL_LV":10,
-  "MAX_PLAYER_LV":100
+  "MAX_PLAYER_LV":100,
+  "MAX_POWER": 150
 }

@@ -2,6 +2,8 @@
 _ = require 'underscore'
 async = require 'async'
 dao = require('pomelo').app.get('dao')
+areas = require '../../../../config/area.json'
+
 logger = require('pomelo-logger').getLogger(__filename)
 
 module.exports = (app) ->
@@ -61,6 +63,28 @@ Handler::entry = (msg, session, next) ->
       user.lastLoginArea = areaId
       user.save()
       next(null, {code: 200, msg: {user: user?.toJson(), player: player}})
+
+Handler::entryForGM = (msg,session,next)->
+  areaId = msg.areaId || null
+  async.waterfall [
+    (cb)->
+      if not areaId
+        cb({code:404,msg:'找不到服务器'})
+     # console.log("areaId = ",areaId)
+
+      return cb(null,areaId) for area in areas when areaId is area.id
+
+      cb({code:404,msg:'找不到服务器'})
+
+    (areaId,cb)->
+      session.set('areaId', areaId)
+      session.pushAll cb
+
+  ],(err)->
+    if err
+      return next(null,{code:err.code or 500,msg:err.msg or err})
+    console.log("areaId = ",session.get('areaId'));
+    next(null,{code:200,msg:'连接服务器成功'})
 
 onUserLeave = (app, session, reason) ->
   if not session or not session.uid

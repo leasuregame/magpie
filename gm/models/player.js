@@ -21,35 +21,42 @@ function Player(player) {
     this.gold = player.gold;
 };
 
-Player.update = function(options,cb){
+Player.update = function (options, cb) {
 
-    playerDao.update(options,function(err,isOK){
-        if(err) {
+    playerDao.update(options, function (err, isOK) {
+        if (err) {
             console.log(err);
-            return cb(err,false);
-        }else {
-            return cb(null,true);
+            return cb(err, false);
+        } else {
+            return cb(null, true);
         }
 
     });
 };
 
-Player.getPlayerInfo = function(options,cb){
+Player.getPlayerInfo = function (options, cb) {
 
-    playerDao.getPlayerInfo(options,function(err,player){
-        if(err) {
-            return cb(err,null);
-        }else {
+    playerDao.getPlayerInfo(options, function (err, player) {
+        if (err) {
+            return cb(err, null);
+        } else {
             console.log(player);
             card.setCardsName(player.cards);
-            return cb(null,player);
+            return cb(null, player);
         }
     });
 
 };
 
-
-
+Player.getPlayerId = function (name, areaId, cb) {
+    playerDao.getPlayerInfo({where: {name: name, areaId: areaId}}, function (err, player) {
+        if (err) {
+            return cb('没有该玩家信息', null);
+        } else {
+            return cb(null, player.id);
+        }
+    });
+};
 
 
 module.exports = Player;

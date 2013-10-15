@@ -252,11 +252,8 @@ Handler::starUpgrade = (msg, session, next) ->
           achieve.star5card(player)
 
         # 卡牌星级进阶，添加一个被动属性
-        #ps_data = {}
         if card.star >= 3
-          card.bornPassiveSkill();
-          #ps_data = require('../../../domain/entity/passiveSkill').born()
-          #ps_data.cardId = card.id
+          card.bornPassiveSkill()
         return cb null
 
       cb null
@@ -274,7 +271,6 @@ Handler::starUpgrade = (msg, session, next) ->
       } if not _.isEmpty(playerData)
 
       cardData = card.getSaveData()
-      console.log 'cardData',cardData
       _jobs.push {
         type: 'update'
         options:
@@ -289,14 +285,7 @@ Handler::starUpgrade = (msg, session, next) ->
           table: 'card'
           where: " id in (#{sources.toString()}) "
       }
-      ###
-      _jobs.push {
-        type: 'insert'
-        options:
-          table: 'passiveSkill'
-          data: ps_data
-      } if not _.isEmpty(ps_data)
-      ###
+
       job.multJobs _jobs, cb
   ], (err, result) ->
     if err and not result
@@ -326,33 +315,28 @@ Handler::passSkillAfresh  = (msg, session, next) ->
         return cb({code: 501, msg: '铜板/元宝不足，不能洗炼'})
 
       card = player.getCard(cardId)
-      passSkills = _.values(card.passiveSkills).filter (ps) -> _.contains(psIds, ps.id)
+      passSkills = card.passiveSkills.filter (ps) -> _.contains(psIds, ps.id)
 
       if _.isEmpty(passSkills)
         return cb({code: 501, msg: '找不到被动属性'})
 
-      card.afreshPassiveSkill(type,ps) for ps in passSkills
-      console.log 'ps = ',card.passiveSkills
-      card.save()
+      card.afreshPassiveSkill(type, ps) for ps in passSkills
       player.decrease(_pros[type], money_need)
       cb(null, player, card)
   ], (err, player, card) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
 
-    #passSkills.forEach (ps) -> ps.save()
     player.save()
-
-    passSkills = card.passiveSkills
     # 拥有了百分之10的被动属性成就
-    if (passSkills.filter (ps) -> parseInt(ps.value) is 10).length > 0
+    if (card.passiveSkills.filter (ps) -> parseInt(ps.value) is 10).length > 0
       achieve.psTo10(player)
 
     result = {
       hp: card.hp,
       atk:card.atk,
       ability: card.ability(),
-      passSkills:card.passiveSkills
+      passSkills: card.passiveSkills
     }
 
     next(null, {code: 200, msg: result})
@@ -557,6 +541,9 @@ Handler::exchangeCard = (msg, session, next) ->
   playerId = session.get('playerId')
   tableId = msg.tableId
 
+  unless tableId
+    return next(null, {code: 501, msg: 'tableId require'})
+
   star = cardStar(tableId)
   if star not in [4, 5]
     return next(null, {code: 501, msg: '只能兑换4星，5星卡牌'})
@@ -579,8 +566,13 @@ Handler::exchangeCard = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
+    player.decrease('fragments', cardConfig.CARD_EXCHANGE[star])
     player.addCard(card)
-    next(null, {code: 200, msg: card: card.toJson()})
+    player.save()
+    next(null, {code: 200, msg: {
+      card: card.toJson(),
+      fragments: player.fragments
+    }})
 
 cardStar = (tableId) ->
   tableId % 5 or 5

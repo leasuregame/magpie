@@ -169,7 +169,8 @@ describe("Connector Server", function() {
                 cards: [],
                 rank: {},
                 friends: [],
-                signIn: {}
+                signIn: {},
+                friendsCount: 20
               });
             });
           });

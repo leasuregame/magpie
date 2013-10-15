@@ -24,11 +24,10 @@ var _ = require("underscore");
 var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 var util = require('util');
-var entityUtil = require('../../util/entityUtil');
 var achieve = require('../achievement');
 var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL;
 var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
-
+var EXP_CARD_ID = require('../../../config/data/card').EXP_CARD_ID;
 
 var defaultMark = function() {
     var i, result = [];
@@ -53,7 +52,14 @@ var addEvents = function(player) {
         if (exp >= upgradeInfo.exp) {
             player.increase('lv');
             player.set('exp', exp - upgradeInfo.exp);
-            player.resumePower(getMaxPower(player.lv));
+            // 获得升级奖励
+            player.increase('money', upgradeInfo.money);
+            player.increase('energy', upgradeInfo.energy);
+            player.increase('skillPoint', upgradeInfo.skillPoint);
+            player.increase('elixir', upgradeInfo.elixir);
+            //升级后体力不再回复
+            //player.resumePower(getMaxPower(player.lv));
+            player.isUpgrade = true;
             player.save();
         }
     });
@@ -71,11 +77,8 @@ var addEvents = function(player) {
         achieve.receivedBless(player);
     });
 
-    player.on('pass.change', function(pass) {
-        if (typeof pass == 'string' && /^[\{\[].*[\]\}]$/.test(pass)) {
-            pass = JSON.parse(pass);
-        }
-        achieve.passTo(player, pass.layer || 0);
+    player.on('passLayer.change', function(layer) {
+        achieve.passTo(player, layer);
     });
 
     player.on('elixir.increase', function(elixir) {
@@ -100,12 +103,16 @@ var addEvents = function(player) {
 
     player.on('add.card', function(card) {
         if (player.isLineUpCard(card)) {
-            //player.activeGroupEffect();
             player.activeSpiritorEffect();
         }
 
-        if (!player.cardBookMark.hasMark(card.tableId)) {
-            entityUtil.lightUpACard(player, card.tableId);
+        if (!player.cardBookMark.hasMark(card.tableId) && card.tableId != EXP_CARD_ID) {
+            card.isNewLightUp = true;
+            player.cardBookMark.mark(card.tableId);
+            var cardBook = utility.deepCopy(player.cardBook);
+            cardBook.mark = player.cardBookMark.value;
+            player.cardBook = cardBook;
+            player.save();
         }
     });
 
@@ -198,6 +205,7 @@ var Player = (function(_super) {
         'lineUp',
         'ability',
         'task',
+        'passLayer',
         'pass',
         'dailyGift',
         'fragments',
@@ -232,8 +240,8 @@ var Player = (function(_super) {
             mark: []
             //momo: []
         },
+        passLayer: 0,
         pass: {
-            layer: 0,
             mark: [],
             mystical: {
                 diff: 1,
@@ -478,9 +486,9 @@ var Player = (function(_super) {
     };
 
     Player.prototype.updatePower = function(power) {
-        if (this.power.value !== power.value) {
+        //if (this.power.value !== power.value) {
             this.set('power', power);
-        }
+        //}
     };
 
     Player.prototype.consumePower = function(value) {
@@ -519,7 +527,7 @@ var Player = (function(_super) {
     Player.prototype.givePower = function(hour, value) {
         var max_power = getMaxPower(this.lv);
         var power = utility.deepCopy(this.power);
-        power.value = _.min([power.value + value, max_power + 50]);
+        power.value = _.min([power.value + value, max_power]);
         power.time = Date.now();
         this.updatePower(power);
 
@@ -692,7 +700,7 @@ var Player = (function(_super) {
         }
 
         var pass = utility.deepCopy(this.pass);
-        if (pass.layer + 1 < layer) {
+        if (this.passLayer + 1 < layer) {
             logger.warn('未达到该关卡层数', layer);
             return;
         }
@@ -724,18 +732,14 @@ var Player = (function(_super) {
     };
 
     Player.prototype.incPass = function() {
-        var pass = utility.deepCopy(this.pass);
-        if (pass.layer >= 100)
-            return;
-        pass.layer++;
-        this.set('pass', pass);
+        this.increase('passLayer');
     };
 
     Player.prototype.getPass = function(){
         checkPass(this);
         return {
             canReset: this.pass.resetTimes > 0 ? true : false,
-            layer: this.pass.layer,
+            layer: this.passLayer,
             mark: this.pass.mark,
             hasMystical: this.hasMysticalPass()
         };
@@ -850,7 +854,7 @@ var Player = (function(_super) {
             dailyGift: utility.deepCopy(this.dailyGift),
             skillPoint: this.skillPoint,
             energy: this.energy,
-            fregments: this.fregments,
+            fragments: this.fragments,
             elixir: this.elixir,
             spiritor: this.spiritor,
             spiritPool: utility.deepCopy(this.spiritPool),
@@ -858,7 +862,7 @@ var Player = (function(_super) {
                 return card.toJson();
             }),
             rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
-            friends: this.friends,
+            //friends: this.friends,
             signIn: utility.deepCopy(this.signIn),
             friendsCount: this.friendsCount
         };
@@ -890,7 +894,6 @@ var Player = (function(_super) {
 var checkPass = function(player) {
     if (typeof player.pass !== 'object') {
         player.pass = {
-            layer: 0,
             mark: [],
             mystical: {
                 diff: 1,
@@ -933,15 +936,17 @@ var positionConvert = function(val) {
 };
 
 var getMaxPower = function(lv) {
-    var max_power = 50;
-    var powerLimit = playerConfig.POWER_LIMIT;
-    for (var lv in powerLimit) {
-        if (this.lv <= parseInt(lv)) {
-            max_power = powerLimit[lv];
-            break;
-        }
-    }
-    return max_power;
+    // var max_power = 50;
+    // var powerLimit = playerConfig.POWER_LIMIT;
+    // for (var lv in powerLimit) {
+    //     if (this.lv <= parseInt(lv)) {
+    //         max_power = powerLimit[lv];
+    //         break;
+    //     }
+    // }
+    // return max_power;
+    
+    return playerConfig.MAX_POWER;
 };
 
 

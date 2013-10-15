@@ -59,9 +59,10 @@ Handler::signIn = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
+    sdata = table.getTableItem('daily_signin_rewards', 1)
     player.signToday()
-    player.increase('money', 2000)
-    player.increase('energy', 100)
+    player.increase('money', sdata.money)
+    player.increase('energy', sdata.energy)
     player.save()
     next(null, {
       code: 200, 

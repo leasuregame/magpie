@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `ability` INT(10) UNSIGNED DEFAULT '0',
   `task` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `pass` VARCHAR(500) COLLATE utf8_unicode_ci DEFAULT '',
+  `passLayer` SMALLINT(5) DEFAULT '0',
   `dailyGift` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '', -- 每日奖励
   `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
   `energy` INT(10) UNSIGNED DEFAULT '0',  -- 活力值
@@ -93,18 +94,6 @@ CREATE TABLE IF NOT EXISTS `battleLog` (
   `own` INT(10) UNSIGNED NOT NULL,
   `enemy` INT(10) UNSIGNED DEFAULT '0',
   `battleLog` VARCHAR(5000) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ---------------------------------
--- Table structure for passiveSkill
--- ---------------------------------
-DROP TABLE IF EXISTS `passiveSkill`;
-CREATE TABLE IF NOT EXISTS `passiveSkill` (
-  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `cardId` INT(10) UNSIGNED NOT NULL,
-  `name` VARCHAR(20) COLLATE utf8_unicode_ci NOT NULL,
-  `value` FLOAT(5,1) UNSIGNED DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

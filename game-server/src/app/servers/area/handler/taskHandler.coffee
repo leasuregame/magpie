@@ -135,6 +135,10 @@ Handler::passBarrier = (msg, session, next) ->
   layer = msg.layer
   player = null
 
+  fdata = table.getTableItem('function_limit', 1)
+  if fdata? and player.lv < fdata.rank
+    return next(null, {code: 501, msg: '10级开放'}) 
+
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb

@@ -527,7 +527,7 @@ var Player = (function(_super) {
     Player.prototype.givePower = function(hour, value) {
         var max_power = getMaxPower(this.lv);
         var power = utility.deepCopy(this.power);
-        power.value = _.min([power.value + value, max_power + 50]);
+        power.value = _.min([power.value + value, max_power]);
         power.time = Date.now();
         this.updatePower(power);
 
@@ -936,15 +936,17 @@ var positionConvert = function(val) {
 };
 
 var getMaxPower = function(lv) {
-    var max_power = 50;
-    var powerLimit = playerConfig.POWER_LIMIT;
-    for (var lv in powerLimit) {
-        if (this.lv <= parseInt(lv)) {
-            max_power = powerLimit[lv];
-            break;
-        }
-    }
-    return max_power;
+    // var max_power = 50;
+    // var powerLimit = playerConfig.POWER_LIMIT;
+    // for (var lv in powerLimit) {
+    //     if (this.lv <= parseInt(lv)) {
+    //         max_power = powerLimit[lv];
+    //         break;
+    //     }
+    // }
+    // return max_power;
+    
+    return playerConfig.MAX_POWER;
 };
 
 

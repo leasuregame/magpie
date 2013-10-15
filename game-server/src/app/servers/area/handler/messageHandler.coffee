@@ -36,15 +36,13 @@ changeGroupNameAndSort = (messages) ->
 
   results
 
-sendMessage = (app, target, msg, next) ->
+sendMessage = (app, target, msg, data, next) ->
   callback = (err, res) ->
     if err
       code = 500
-    else if res
-      code = res
     else 
       code = 200
-    next(null, {code: code}) if next?
+    next(null, {code: code, msg: data if data}) if next?
 
   if target?
     app.get('messageService').pushByPid target, msg, callback
@@ -77,7 +75,7 @@ Handler::sysMsg = (msg, session, next) ->
     sendMessage @app, null, {
       route: 'onMessage'
       msg: res.toJson()
-    }, next(null,{code:200,msg:'邮件发送成功'})
+    }, '邮件发送成功', next
 
 Handler::handleSysMsg = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -160,7 +158,7 @@ Handler::leaveMessage = (msg, session, next) ->
     sendMessage @app, friendId, {
       route: 'OnMessage'
       msg: res.toLeaveMessage()
-    }, next
+    }, null, next
 
 Handler::readMessage = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -272,7 +270,7 @@ Handler::addFriend = (msg, session, next) ->
     sendMessage @app, friend.id, {
       route: 'onMessage'
       msg: msg.toJson()
-    }, next if msg?
+    }, null, next if msg?
 
 Handler::accept = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -366,7 +364,7 @@ Handler::accept = (msg, session, next) ->
     sendMessage @app, message.sender, {
       route: 'onMessage'
       msg: _message
-    }
+    }, null, next
 
 Handler::reject = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -407,37 +405,31 @@ Handler::giveBless = (msg, session, next) ->
   friendId = msg.friendId
 
   if friendId is playerId 
-    return next(null, {code: 501, '不能给自己送祝福'})
+    return next(null, {code: 501, msg: '不能给自己送祝福'})
 
+  ENERGY = 5
+  player = null
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, cb
 
-    (player, cb) ->
+    (res, cb) ->
+      player = res
       if player.dailyGift.gaveBless.count <= 0
-        return cb({code: 501, '今日你送出祝福的次数已经达到上限'})
+        return cb({code: 501, msg: '今日你送出祝福的次数已经达到上限'})
 
       if _.contains player.dailyGift.gaveBless.receivers, friendId
-        return cb({code: 501, '一天只能给同一位好友送出一次祝福哦'})
+        return cb({code: 501, msg: '一天只能给同一位好友送出一次祝福哦'})
 
-      player.dailyGift.gaveBless.count--
-      player.dailyGift.gaveBless.receivers.push(friendId)
-      player.updateGift 'gaveBless', player.dailyGift.gaveBless
-      player.increase('energy', 5)
-      player.giveBlessOnce()
-      player.save()
       cb()
 
     (cb) ->
-      dao.player.fetchOne {
-        where: id: friendId
-        sync: true
-      }, (err, ply) ->
+      playerManager.getPlayerInfo {pid: friendId}, (err, ply) ->
         if err
           return cb(err)
 
         if ply.dailyGift.receivedBlessCount <= 0
-          return cb({code: 501, '今日对方接收祝福的次数已经达到上限'})
+          return cb({code: 501, msg: '今日对方接收祝福的次数已经达到上限'})
 
         ply.dailyGift.receivedBless.count--
         ply.dailyGift.receivedBless.givers.push(playerId)
@@ -450,7 +442,7 @@ Handler::giveBless = (msg, session, next) ->
         type: msgConfig.MESSAGETYPE.BLESS
         sender: playerId
         receiver: friendId
-        options: energy: 5
+        options: energy: ENERGY
         content: "#{playerName}为你送来了祝福，你获得了5点的活力值"
         status: msgConfig.MESSAGESTATUS.UNHANDLED
       }, cb
@@ -458,10 +450,17 @@ Handler::giveBless = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
+    player.dailyGift.gaveBless.count--
+    player.dailyGift.gaveBless.receivers.push(friendId)
+    player.updateGift 'gaveBless', player.dailyGift.gaveBless
+    player.increase('energy', ENERGY)
+    player.giveBlessOnce()
+    player.save()
+
     sendMessage @app, friendId, {
       route: 'onBless'
-      msg: res.toJson()
-    }, next
+      msg: {id: res.id, sender: res.sender}
+    }, {energy: ENERGY}, next
 
 Handler::receiveBless = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -499,7 +498,7 @@ Handler::receiveBless = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    next(null, {code: 200})
+    next(null, {code: 200, msg: {energy: message.options.energy}})
 
 
 

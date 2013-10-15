@@ -24,7 +24,7 @@ describe("Area Server", function () {
                         friendName: 'Mike'
                     }, function (data) {
                         expect(data).toEqual({
-                            code: 3004
+                            code: 200
                         }); // 对方不在线
                     });
                 });

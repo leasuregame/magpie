@@ -52,7 +52,14 @@ var addEvents = function(player) {
         if (exp >= upgradeInfo.exp) {
             player.increase('lv');
             player.set('exp', exp - upgradeInfo.exp);
-            player.resumePower(getMaxPower(player.lv));
+            // 获得升级奖励
+            player.increase('money', upgradeInfo.money);
+            player.increase('energy', upgradeInfo.energy);
+            player.increase('skillPoint', upgradeInfo.skillPoint);
+            player.increase('elixir', upgradeInfo.elixir);
+            //升级后体力不再回复
+            //player.resumePower(getMaxPower(player.lv));
+            player.isUpgrade = true;
             player.save();
         }
     });

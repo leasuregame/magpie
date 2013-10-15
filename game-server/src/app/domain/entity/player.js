@@ -847,7 +847,7 @@ var Player = (function(_super) {
             dailyGift: utility.deepCopy(this.dailyGift),
             skillPoint: this.skillPoint,
             energy: this.energy,
-            fregments: this.fregments,
+            fragments: this.fragments,
             elixir: this.elixir,
             spiritor: this.spiritor,
             spiritPool: utility.deepCopy(this.spiritPool),
@@ -855,7 +855,7 @@ var Player = (function(_super) {
                 return card.toJson();
             }),
             rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
-            friends: this.friends,
+            //friends: this.friends,
             signIn: utility.deepCopy(this.signIn),
             friendsCount: this.friendsCount
         };

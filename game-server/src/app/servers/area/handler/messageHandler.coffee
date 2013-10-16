@@ -8,6 +8,8 @@ _ = require 'underscore'
 utility = require '../../../common/utility'
 
 SYSTEM = -1
+ADD_FRIEND_MESSAGE = 1
+DELETE_FRIEND_MESSAGE = 2
 
 isFinalStatus = (status) ->
   _.contains msgConfig.FINALSTATUS, status
@@ -214,6 +216,13 @@ Handler::deleteFriend = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     next(null, {code: 200})
+    sendMessage @app, friendId, {
+      route: 'onFriendAction'
+      msg: {
+        type: DELETE_FRIEND_MESSAGE
+        friend: id: playerId
+      }
+    }
 
 Handler::addFriend = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -270,7 +279,7 @@ Handler::addFriend = (msg, session, next) ->
     sendMessage @app, friend.id, {
       route: 'onMessage'
       msg: msg.toJson()
-    }, null, next if msg?
+    }, null, next
 
 Handler::accept = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -355,14 +364,16 @@ Handler::accept = (msg, session, next) ->
       achieve.friends(sender, senderFriends.length)
 
     sendMessage @app, message.sender, {
-      route: 'onAccept'
-      msg: friend : {
-        id: playerId
-        name: playerName
-        lv: player.lv
-        ability: player.ability
-      }
-    }, null, next
+      route: 'onFriendAction'
+      msg:
+        type: ADD_FRIEND_MESSAGE 
+        friend : {
+          id: playerId
+          name: playerName
+          lv: player.lv
+          ability: player.ability
+        }
+    }
 
 Handler::reject = (msg, session, next) ->
   playerId = session.get('playerId')

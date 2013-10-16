@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
   `energy` INT(10) UNSIGNED DEFAULT '0',  -- 活力值
   `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数
+  `elixirPerLv` TEXT COLLATE utf8_unicode_ci,
   `spiritor` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `spiritPool` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `signIn` VARCHAR(200) COLLATE utf8_unicode_ci DEFAULT '',

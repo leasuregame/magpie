@@ -51,6 +51,8 @@ var addEvents = function(player) {
         var upgradeInfo = table.getTableItem('player_upgrade', player.lv);
         if (exp >= upgradeInfo.exp) {
             player.increase('lv');
+            // 清空每级仙丹使用详细信息
+            player.elixirPerLv = {};
             player.set('exp', exp - upgradeInfo.exp);
             // 获得升级奖励
             player.increase('money', upgradeInfo.money);
@@ -211,6 +213,7 @@ var Player = (function(_super) {
         'fragments',
         'energy',
         'elixir',
+        'elixirPerLv',
         'spiritor',
         'spiritPool',
         'signIn',
@@ -268,6 +271,7 @@ var Player = (function(_super) {
         fragments: 0,
         energy: 0,
         elixir: 0,
+        elixirPerLv: {},
         skillPoint: 0,
         spiritor: {
             lv: 0,
@@ -832,6 +836,27 @@ var Player = (function(_super) {
         this.emit('receive.bless');
     };
 
+    Player.prototype.isCanUseElixirForCard = function(cardId) {        
+        if (_.has(this.elixirPerLv, cardId)) {
+            return this.elixirPerLv[cardId] < elxirLimit(this.lv);
+        }
+        return true;
+    };
+
+    Player.prototype.canUseElixir = function(cardId) {
+        return elxirLimit(this.lv) - (this.elixirPerLv[cardId] || 0);
+    };
+
+    Player.prototype.useElixirForCard = function(cardId, elixir) {
+        var epl = utility.deepCopy(this.elixirPerLv);
+        if (_.has(epl, cardId)) {
+            epl[cardId] += elixir;
+        } else {
+            epl[cardId] = elixir;
+        }
+        this.elixirPerLv = epl;
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,
@@ -864,12 +889,21 @@ var Player = (function(_super) {
             rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
             //friends: this.friends,
             signIn: utility.deepCopy(this.signIn),
-            friendsCount: this.friendsCount
+            friendsCount: this.friendsCount,
+            elixirPerLv: this.elixirPerLv
         };
     };
 
     return Player;
 })(Entity);
+
+var elxirLimit = function(lv) {
+    var limit = 1000;
+    if (lv > 50 && lv <= 100) {
+        limit = 2000;
+    }
+    return limit;
+};
 
 // var processSpiritPoll = function(sp) {
 //     if (_.isEmpty(sp)) {

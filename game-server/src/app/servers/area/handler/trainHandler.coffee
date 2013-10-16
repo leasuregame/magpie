@@ -341,7 +341,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
 
     next(null, {code: 200, msg: result})
 
-Handler::smeltElixir = (msg, session, next) ->
+Handler::smeltElixir_is_discarded = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   cardIds = msg.cardIds
 
@@ -405,6 +405,9 @@ Handler::useElixir = (msg, session, next) ->
     if (err) 
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
+    if player.lv < 10
+      return next(null, {code: 501, msg: '10级开放'})
+
     if player.elixir < elixir
       return next(null, {code: 501, msg: '仙丹不足'})
 
@@ -422,9 +425,19 @@ Handler::useElixir = (msg, session, next) ->
     if (card.elixirHp + card.elixirAtk + elixir) > limit
       return next(null, {code: 501, msg: "使用的仙丹已经超出了卡牌的最大仙丹容量"})
 
+    if not player.isCanUseElixirForCard(cardId)
+      return next(null, {code: 501, msg: "消耗的仙丹已达到当前玩家级别的上限"})
+
+    can_use_elixir = player.canUseElixir(cardId)
+    if can_use_elixir < elixir
+      return next(null, {code: 501, msg: "最多还可以消耗#{can_use_elixir}点仙丹"})
+
+    console.log '0a0: ', player.elixirPerLv, can_use_elixir
+
     card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
     card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK
     player.decrease('elixir', elixir)
+    player.useElixirForCard(cardId, elixir)
     
     _jobs = []
     playerData = player.getSaveData()

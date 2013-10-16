@@ -23,7 +23,8 @@ describe("Area Server", function() {
 						friendId: 1
 					}, function(data) {
 						expect(data).toEqual({
-							code: 3004
+							code: 200,
+							msg: {energy: 5}
 						});
 					});
 				});
@@ -57,7 +58,8 @@ describe("Area Server", function() {
 							msgId: 1
 						}, function(data) {
 							expect(data).toEqual({
-								code: 200
+								code: 200,
+								msg: {energy: 5}
 							});
 						});
 					});

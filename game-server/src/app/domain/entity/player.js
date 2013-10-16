@@ -52,7 +52,14 @@ var addEvents = function(player) {
         if (exp >= upgradeInfo.exp) {
             player.increase('lv');
             player.set('exp', exp - upgradeInfo.exp);
-            player.resumePower(getMaxPower(player.lv));
+            // 获得升级奖励
+            player.increase('money', upgradeInfo.money);
+            player.increase('energy', upgradeInfo.energy);
+            player.increase('skillPoint', upgradeInfo.skillPoint);
+            player.increase('elixir', upgradeInfo.elixir);
+            //升级后体力不再回复
+            //player.resumePower(getMaxPower(player.lv));
+            player.isUpgrade = true;
             player.save();
         }
     });
@@ -527,7 +534,7 @@ var Player = (function(_super) {
     Player.prototype.givePower = function(hour, value) {
         var max_power = getMaxPower(this.lv);
         var power = utility.deepCopy(this.power);
-        power.value = _.min([power.value + value, max_power + 50]);
+        power.value = _.min([power.value + value, max_power]);
         power.time = Date.now();
         this.updatePower(power);
 
@@ -937,15 +944,17 @@ var positionConvert = function(val) {
 };
 
 var getMaxPower = function(lv) {
-    var max_power = 50;
-    var powerLimit = playerConfig.POWER_LIMIT;
-    for (var lv in powerLimit) {
-        if (this.lv <= parseInt(lv)) {
-            max_power = powerLimit[lv];
-            break;
-        }
-    }
-    return max_power;
+    // var max_power = 50;
+    // var powerLimit = playerConfig.POWER_LIMIT;
+    // for (var lv in powerLimit) {
+    //     if (this.lv <= parseInt(lv)) {
+    //         max_power = powerLimit[lv];
+    //         break;
+    //     }
+    // }
+    // return max_power;
+    
+    return playerConfig.MAX_POWER;
 };
 
 

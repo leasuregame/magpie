@@ -328,29 +328,30 @@ var FriendLayer = cc.Layer.extend({
 
             var point = cc.p(490, y + 63);
 
-            var giveBlessItem = cc.MenuItemImage.createWithIcon(
-                main_scene_image.button9,
-                main_scene_image.button9s,
-                main_scene_image.button9d,
-                main_scene_image.icon124,
-                this._onClickGiveBless(id),
-                this
-            );
-            giveBlessItem.setPosition(point);
-            menu.addChild(giveBlessItem);
+            if (receiveCount > 0 && friendList[i].canReceive) {
+                var receiveBlessItem = cc.MenuItemImage.createWithIcon(
+                    main_scene_image.button10,
+                    main_scene_image.button10s,
+                    main_scene_image.icon123,
+                    this._onClickReceiveBless(id),
+                    this
+                );
+                receiveBlessItem.setPosition(point);
+                menu.addChild(receiveBlessItem);
+            } else {
+                var giveBlessItem = cc.MenuItemImage.createWithIcon(
+                    main_scene_image.button9,
+                    main_scene_image.button9s,
+                    main_scene_image.button9d,
+                    main_scene_image.icon124,
+                    this._onClickGiveBless(id),
+                    this
+                );
+                giveBlessItem.setPosition(point);
+                menu.addChild(giveBlessItem);
 
-            var receiveBlessItem = cc.MenuItemImage.createWithIcon(
-                main_scene_image.button10,
-                main_scene_image.button10s,
-                main_scene_image.icon123,
-                this._onClickReceiveBless(id),
-                this
-            );
-            receiveBlessItem.setPosition(point);
-            menu.addChild(receiveBlessItem);
-
-            giveBlessItem.setEnabled(giveCount > 0 && friendList[i].canGive);
-            receiveBlessItem.setVisible(receiveCount > 0 && friendList[i].canReceive);
+                giveBlessItem.setEnabled(giveCount > 0 && friendList[i].canGive);
+            }
         }
 
         this._scrollView = cc.ScrollView.create(cc.size(591, 620), scrollViewLayer);
@@ -375,6 +376,7 @@ var FriendLayer = cc.Layer.extend({
         cc.log("name: " + this._nameEditBox.getText());
 
         gameData.friend.addFriend(this._nameEditBox.getText());
+
         this._onClickCancel();
     },
 

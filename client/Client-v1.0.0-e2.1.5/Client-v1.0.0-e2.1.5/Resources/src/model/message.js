@@ -79,7 +79,9 @@ var Message = Entity.extend({
     push: function (msg) {
         cc.log("Message push");
 
-        if (msg.type == ADD_FRIEND_MESSAGE || msg.type == LEAVE_MESSAGE) {
+        if (msg.type == ADD_FRIEND_MESSAGE) {
+            this._friendMessage.push(msg);
+        } else if (msg.type == LEAVE_MESSAGE) {
             this._friendMessage.push(msg);
         } else if (msg.type == BATTLE_MESSAGE) {
             this._battleMessage.push(msg);
@@ -93,63 +95,72 @@ var Message = Entity.extend({
     accept: function (msgId) {
         cc.log("Message accept: " + msgId);
 
-        var that = this;
-        lzWindow.pomelo.request("area.messageHandler.accept", {
-            msgId: msgId
-        }, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
-
-            if (data.code == 200) {
-                cc.log("accept success");
-
-                var msg = data.msg;
-
-                var len = that._friendMessage.length;
-                for (var i = 0; i < len; ++i) {
-                    if (that._friendMessage[i].id == msgId) {
-                        that._friendMessage[i].status = ACCEPT_STATUS;
-                        break;
-                    }
-                }
-
-                gameData.friend.push(msg);
-            } else {
-                cc.log("accept fail");
+        var len = this._friendMessage.length;
+        var message = null;
+        for (var i = 0; i < len; ++i) {
+            if (this._friendMessage[i].id == msgId) {
+                message = this._friendMessage[i];
+                break;
             }
-        });
+        }
+
+        if (message) {
+            var that = this;
+            lzWindow.pomelo.request("area.messageHandler.accept", {
+                msgId: msgId
+            }, function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
+
+                if (data.code == 200) {
+                    cc.log("accept success");
+
+                    var msg = data.msg;
+
+                    message.status = ACCEPT_STATUS;
+
+                    gameData.friend.push(msg);
+                } else {
+                    cc.log("accept fail");
+                }
+            });
+        } else {
+            TipLayer.tip("找不到这个消息");
+        }
     },
 
     reject: function (msgId) {
         cc.log("Message reject: " + msgId);
 
-        var that = this;
-        lzWindow.pomelo.request("area.messageHandler.reject", {
-            msgId: msgId
-        }, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
-
-            if (data.code == 200) {
-                cc.log("accept success");
-
-                var len = that._friendMessage.length;
-                for (var i = 0; i < len; ++i) {
-                    if (that._friendMessage[i].id == msgId) {
-                        that._friendMessage[i].status = REJECT_STATUS;
-                        break;
-                    }
-                }
-            } else {
-                cc.log("accept fail");
+        var len = this._friendMessage.length;
+        var message = null;
+        for (var i = 0; i < len; ++i) {
+            if (this._friendMessage[i].id == msgId) {
+                message = this._friendMessage[i];
+                break;
             }
-        });
-    },
+        }
 
-    playback: function (msgId) {
-        cc.log("Message playback: " + msgId);
+        if (message) {
+            var that = this;
+            lzWindow.pomelo.request("area.messageHandler.reject", {
+                msgId: msgId
+            }, function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
 
+                if (data.code == 200) {
+                    cc.log("reject success");
 
+                    message.status = REJECT_STATUS;
+
+                } else {
+                    cc.log("reject fail");
+                }
+            });
+        } else {
+            TipLayer.tip("找不到这个消息");
+        }
     },
 
     receive: function (msgId) {

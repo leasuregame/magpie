@@ -243,14 +243,3 @@ FriendMessageLayer.create = function () {
 
     return null;
 };
-
-//var a = {
-//    id: 100,
-//    sender: 2,
-//    receiver: 5,
-//    type: 2,
-//    status: 6,
-//    content: "xxx给你发来留言",
-//    createTime: 0,
-//    text: "xxxxxxxxxxxxxxx"
-//};

@@ -12,6 +12,9 @@
  * */
 
 
+var FRIEND_ACTION_ADD = 1;
+var FRIEND_ACTION_DELETE = 2;
+
 var Friend = Entity.extend({
     _friendList: [],
     _giveCount: 0,
@@ -53,6 +56,15 @@ var Friend = Entity.extend({
                 lzWindow.pomelo.on("onBless", function (data) {
                     cc.log("***** on bless:");
                     cc.log(data);
+
+                    that._onBless(data.msg);
+                });
+
+                lzWindow.pomelo.on("onFriendAction", function (data) {
+                    cc.log("***** on accept:");
+                    cc.log(data);
+
+                    that._onFriendAction(data.msg);
                 });
             } else {
                 cc.log("sync fail");
@@ -62,8 +74,38 @@ var Friend = Entity.extend({
         });
     },
 
+    _onBless: function (msg) {
+        cc.log("friend _onBless");
+
+        var len = this._friendList.length;
+        var friendId = msg.sender;
+
+        for (var i = 0; i < len; ++i) {
+            if (this._friendList[i].id === friendId) {
+                this._friendList[i].canReceive = true;
+                this._friendList[i].msgId = msg.id;
+                break;
+            }
+        }
+    },
+
+    _onFriendAction: function (msg) {
+        cc.log("friend _onFriendAction");
+
+        var type = msg.type;
+
+        if (type == FRIEND_ACTION_ADD) {
+            this.push(msg.friend);
+        } else if (type == FRIEND_ACTION_DELETE) {
+            this.delete(msg.friend.id);
+        }
+    },
+
     push: function (friend) {
         cc.log("friend push");
+
+        friend.canGive = friend.canGive || true;
+        friend.canReceive = friend.canReceive || false;
 
         this._friendList.push(friend);
     },
@@ -84,6 +126,8 @@ var Friend = Entity.extend({
 
         if (this._friendList.length >= this._maxFriendCount) {
             TipLayer.tip("好友已满");
+
+            return;
         }
 
         var that = this;
@@ -155,8 +199,14 @@ var Friend = Entity.extend({
                 if (data.code == 200) {
                     cc.log("giveBless success");
 
+                    var msg = data.msg;
+
                     that._giveCount -= 1;
                     friend.canGive = false;
+
+                    gameData.player.add("energy", msg.energy);
+
+                    TipLayer.tipNoBg(lz.getNameByKey("energy") + ": " + msg.energy);
 
                     cb("success");
                 } else {
@@ -181,7 +231,7 @@ var Friend = Entity.extend({
             }
         }
 
-        if (friend) {
+        if (friend && friend.msgId) {
             var that = this;
             lzWindow.pomelo.request("area.messageHandler.receiveBless", {
                 msgId: friend.msgId
@@ -192,8 +242,16 @@ var Friend = Entity.extend({
                 if (data.code == 200) {
                     cc.log("receiveBless success");
 
+                    var msg = data.msg;
+
                     that._receiveCount -= 1;
                     friend.canReceive = false;
+
+                    delete friend.msgId;
+
+                    gameData.player.add("energy", msg.energy);
+
+                    TipLayer.tipNoBg(lz.getNameByKey("energy") + ": " + msg.energy);
 
                     cb("success");
                 } else {

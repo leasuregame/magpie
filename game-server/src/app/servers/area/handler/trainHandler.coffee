@@ -230,8 +230,15 @@ Handler::starUpgrade = (msg, session, next) ->
       card = player.getCard(target)
       if card is null
         return cb({code: 501, msg: "找不到卡牌"})
+
+      if card.tableId >= 10000
+        return cb({code: 501, msg: "该卡牌不可以进阶"})
+
       if card.star is 5
         return cb({code: 501, msg: "卡牌星级已经是最高级了"})
+
+      if card.lv isnt cardConfig.MAX_LEVEL[card.star]
+        return cb({code: 501, msg: "未达到进阶等级"})
 
       starUpgradeConfig = table.getTableItem('star_upgrade', card.star)
       if not starUpgradeConfig
@@ -250,7 +257,23 @@ Handler::starUpgrade = (msg, session, next) ->
       if card_count > starUpgradeConfig.max_num
         return cb({code: 501, msg: "最多只能消耗#{starUpgradeConfig.max_num}张卡牌来进行升级"})
 
-      totalRate = _.min([card_count * starUpgradeConfig.rate_per_card, 100])
+      rate = 0
+
+      if card.star is 4
+        console.log 'star is 4 , before count...', rate, card.useCardsCounts, card_count
+        if card.useCardsCounts < 6 and card.useCardsCounts >= 0
+          count = if (card.useCardsCounts + card_count <= 6) then card_count else 6 - card.useCardsCounts
+          card.increase('useCardsCounts' , count)
+          card_count -= count
+
+        if card.useCardsCounts > 5
+          rate = card.useCardsCounts * starUpgradeConfig.rate_per_card
+          card.set('useCardsCounts',-1);
+
+        console.log 'star is 4 , after count...', rate, card.useCardsCounts, card_count
+
+      totalRate = _.min([card_count * starUpgradeConfig.rate_per_card + rate, 100])
+      console.log 'totalRate = ', totalRate
       if utility.hitRate(totalRate)
         is_upgrade = true
       

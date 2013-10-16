@@ -90,15 +90,15 @@ var LotteryLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        for (var i = 1; i <= 3; ++i) {
-            var x = i * 210 - 60;
+        for (var i = 0; i < 2; ++i) {
+            var x = 233 + 254 * i;
 
             var goldLotteryItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button9,
                 main_scene_image.button9s,
                 main_scene_image.button9d,
-                main_scene_image["icon" + (138 + i)],
-                this._onClickLottery(LOTTERY_BY_GOLD, i),
+                main_scene_image["icon" + (139 + i)],
+                this._onClickLottery(LOTTERY_BY_GOLD, i + 1),
                 this
             );
             goldLotteryItem.setPosition(cc.p(x, 470));
@@ -108,8 +108,8 @@ var LotteryLayer = cc.Layer.extend({
                 main_scene_image.button9,
                 main_scene_image.button9s,
                 main_scene_image.button9d,
-                main_scene_image["icon" + (141 + i)],
-                this._onClickLottery(LOTTERY_BY_ENERGY, i),
+                main_scene_image["icon" + (142 + i)],
+                this._onClickLottery(LOTTERY_BY_ENERGY, i + 1),
                 this
             );
             energyLotteryItem.setPosition(cc.p(x, 550));

@@ -2,6 +2,7 @@ var pomelo = require('pomelo');
 var area = require('./app/domain/area/area');
 var MessageService = require('./app/service/messageService');
 var routeUtil = require('./app/common/route');
+var argsFilter = require('./app/servers/area/filter/argsFilter');
 /**
  * Init app for client.
  */
@@ -87,6 +88,7 @@ app.configure('production|development', 'area', function() {
   app.set('messageService', new MessageService(app));
 
   area.init({app: app});  
+  //app.filter(argsFilter());
 });
 
 app.configure('production|development', 'area', function() {

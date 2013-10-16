@@ -163,7 +163,7 @@ Data.prototype.dataForRanking = function(callback){
         playerId: row.id,
         star: row.card_star,
         lv: row.card_lv,
-        skillLv: _.range(1,6)
+        skillLv: _.random(1,6)
       };
       async.parallel([
         function(cb) {

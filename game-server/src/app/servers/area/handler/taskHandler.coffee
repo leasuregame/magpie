@@ -141,6 +141,10 @@ Handler::passBarrier = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
+      fdata = table.getTableItem('function_limit', 1)
+      if fdata? and player.lv < fdata.pass
+        return next(null, {code: 501, msg: fdata.pass+'级开放'}) 
+
       layer = if layer? then layer else player.passLayer + 1
       if layer > 100 or layer < 1 or layer > (player.passLayer + 1)
         return cb({code: 501, msg: '不能闯此关'})

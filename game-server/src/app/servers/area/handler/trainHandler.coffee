@@ -14,6 +14,7 @@ job = require '../../../dao/job'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 
+MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
 LOTTERY_BY_GOLD = 1
 LOTTERY_BY_ENERGY = 0
 
@@ -103,6 +104,9 @@ Handler::luckyCard = (msg, session, next) ->
 
     (res, cb) ->
       player = res
+      if _.keys(player.cards).length >= MAX_CARD_COUNT
+        return cb({code: 501, msg: '卡牌容量已经达到最大值'})
+
       rfc = player.rowFragmentCount + 1 #普通抽卡魂次数
       hfc = player.highFragmentCount + 1 #高级抽卡魂次数
       hdcc = player.highDrawCardCount + 1 #高级抽卡次数
@@ -585,6 +589,9 @@ Handler::exchangeCard = (msg, session, next) ->
 
     (res, cb) ->
       player = res
+      if _.keys(player.cards).length >= MAX_CARD_COUNT
+        return cb({code: 501, msg: '卡牌容量已经达到最大值'})
+      
       if player.fragments < cardConfig.CARD_EXCHANGE[star]
         return cb({code: 501, msg: '卡牌碎片不足'})
 

@@ -1012,7 +1012,7 @@ describe("Player Object", function () {
         });
     });
 
-    describe('.exp.change',function(){
+    describe('exp.change event',function(){
         it('should can inc player lv when player lv is not max and exp enough',function(){
 
             var player = new Player();
@@ -1035,6 +1035,19 @@ describe("Player Object", function () {
             player.exp.should.eql(500000);
         });
 
+    });
+
+    describe('increase gold to the limit value', function(){
+        it('when gold is 999999, should can not increase gold', function() {
+            var player = new Player();
+            player.gold = 999999;
+
+            player.increase(10);
+            player.gold.should.eql(999999);
+
+            player.increase();
+            player.gold.should.eql(999999);
+        });
     });
 
 });

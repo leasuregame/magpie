@@ -151,7 +151,7 @@ Handler::leaveMessage = (msg, session, next) ->
     sender: playerId
     options: {playerName: playerName}
     receiver: friendId
-    content: content
+    content: content[0...50]
     status: msgConfig.MESSAGESTATUS.NOTICE
   }, (err, res) =>
     if err

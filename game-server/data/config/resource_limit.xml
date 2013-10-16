@@ -19,7 +19,6 @@
   <WindowWidth>25600</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -37,34 +36,34 @@
  <Worksheet ss:Name="资源限制表">
   <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="5" ss:Width="140"/>
+   <Column ss:Index="6" ss:Width="140"/>
    <Column ss:Width="92"/>
    <Row>
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">元宝上限</Data></Cell>
     <Cell><Data ss:Type="String">仙币上限</Data></Cell>
     <Cell><Data ss:Type="String">技能点上限</Data></Cell>
+    <Cell><Data ss:Type="String">活力值上限</Data></Cell>
     <Cell><Data ss:Type="String">卡牌默认数量上限</Data></Cell>
     <Cell><Data ss:Type="String">体力值上限</Data></Cell>
-    <Cell><Data ss:Type="String">活力值上限</Data></Cell>
    </Row>
    <Row>
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">gold</Data></Cell>
     <Cell><Data ss:Type="String">money</Data></Cell>
     <Cell><Data ss:Type="String">skillPoint</Data></Cell>
+    <Cell><Data ss:Type="String">energy</Data></Cell>
     <Cell><Data ss:Type="String">card_quantity</Data></Cell>
     <Cell><Data ss:Type="String">powerValue</Data></Cell>
-    <Cell><Data ss:Type="String">energy</Data></Cell>
    </Row>
    <Row>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">999999</Data></Cell>
     <Cell><Data ss:Type="Number">99999999</Data></Cell>
     <Cell><Data ss:Type="Number">99999</Data></Cell>
+    <Cell><Data ss:Type="Number">99999</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="Number">150</Data></Cell>
-    <Cell><Data ss:Type="Number">99999</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -75,11 +74,12 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -101,7 +101,6 @@
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

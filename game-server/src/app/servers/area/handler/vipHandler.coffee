@@ -6,6 +6,8 @@ logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async'
 _ = require 'underscore'
 
+MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -63,6 +65,9 @@ Handler::buyExpCard = (msg, session, next) ->
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    if _.keys(player.cards).length >= MAX_CARD_COUNT
+        return nexl(null, {code: 501, msg: '卡牌容量已经达到最大值'})
 
     if player.money < qty * PRICE
       return next(null, {code: 501, msg: '铜板不足'})

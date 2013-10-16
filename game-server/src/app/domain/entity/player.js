@@ -222,7 +222,8 @@ var Player = (function(_super) {
         'friendsCount',
         'rowFragmentCount',
         'highFragmentCount',
-        'highDrawCardCount'
+        'highDrawCardCount',
+        'cardsCount'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -300,12 +301,19 @@ var Player = (function(_super) {
         friendsCount: 20,
         rowFragmentCount: 0,
         highFragmentCount: 0,
-        highDrawCardCount: 0
-
+        highDrawCardCount: 0,
+        cardsCount: 100
     };
 
     Player.prototype.increase = function(name, val) {
-        Player.__super__.increase.apply(this, arguments);
+        var rdata = table.getTableItem('resource_limit', 1);
+        if (_.contains(['gold', 'money', 'skillPoint', 'energy'], name)) {
+            if ((this[name] + (val || 1)) > rdata[name]) {
+                val = rdata[name] - this[name];
+            }
+        }
+
+        Player.__super__.increase.apply(this, [name, val]);
         this.emit(name + '.increase', val == null ? 1 : val);
     };
 

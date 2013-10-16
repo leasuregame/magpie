@@ -354,16 +354,14 @@ Handler::accept = (msg, session, next) ->
 
       achieve.friends(sender, senderFriends.length)
 
-    _message = message.toJson()
-    _message.friend = {
-      id: playerId
-      name: playerName
-      lv: player.lv
-      ability: player.ability
-    }
     sendMessage @app, message.sender, {
-      route: 'onMessage'
-      msg: _message
+      route: 'onAccept'
+      msg: friend : {
+        id: playerId
+        name: playerName
+        lv: player.lv
+        ability: player.ability
+      }
     }, null, next
 
 Handler::reject = (msg, session, next) ->

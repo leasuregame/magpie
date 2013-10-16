@@ -65,8 +65,9 @@ Handler::challenge = (msg, session, next) ->
 
     (res, cb) ->
       player = res
-      if player.lv < 20
-        return cb({code: 501, msg: '20级开放'})
+      fdata = table.getTableItem('function_limit', 1)
+      if player.lv < fdata.rank
+        return cb({code: 501, msg: fdata.rank+'级开放'})
       cb()
 
     (cb) =>

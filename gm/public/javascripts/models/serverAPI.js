@@ -7,8 +7,8 @@
  */
 
 var pomelo = window.pomelo;
-//var ip = "124.238.236.33";
-var ip = "127.0.0.1";
+var ip = "124.238.236.33";
+//var ip = "127.0.0.1";
 
 
 function initConnect(cb) {

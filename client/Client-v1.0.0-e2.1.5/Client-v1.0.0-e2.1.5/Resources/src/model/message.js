@@ -182,6 +182,11 @@ var Message = Entity.extend({
         });
     },
 
+    playback: function () {
+        cc.log("Message playback");
+
+    },
+
     _sort: function () {
         cc.log("Message _sort");
 

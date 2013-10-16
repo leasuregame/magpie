@@ -103,7 +103,11 @@ Handler::luckyCard = (msg, session, next) ->
 
     (res, cb) ->
       player = res
-      [card, consumeVal, fragment] = lottery(level, type);
+      rfc = player.rowFragmentCount + 1 #普通抽卡魂次数
+      hfc = player.highFragmentCount + 1 #高级抽卡魂次数
+      hdcc = player.highDrawCardCount + 1 #高级抽卡次数
+
+      [card, consumeVal, fragment] = lottery(level, type, rfc, hfc, hdcc);
 
       if player[typeMapping[type]] < consumeVal
         return cb({code: 501, msg: '没有足够的资源来完成本次抽卡'}, null)
@@ -116,14 +120,27 @@ Handler::luckyCard = (msg, session, next) ->
         
     (cardEnt, cb) ->
       player.addCard(cardEnt);
+      if(level == 1)
+          player.increase('rowFragmentCount',1)
+      else
+          player.increase('highFragmentCount',1)
+          player.increase('highDrawCardCount',1);
+
       if type is LOTTERY_BY_GOLD
         player.decrease('gold', consumeVal)
 
       if type is LOTTERY_BY_ENERGY
         player.decrease('energy', consumeVal)
 
+      if level is 2 and cardEnt.star == 5 #抽到5星卡牌，高级抽卡次数变为0
+        player.set('highDrawCardCount',0)
+
       if fragment
         player.increase('fragments',fragment)
+        if level is 1
+          player.set('rowFragmentCount',0)
+        else
+          player.set('highFragmentCount',0)
 
       cb(null, cardEnt, player)
   ], (err, cardEnt, player) ->

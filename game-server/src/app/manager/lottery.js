@@ -29,9 +29,8 @@ var lottery = function (level, type, rFragments, hFragment, hCounts) {
 
 /*
  * 抽卡，传入参数抽卡种类
- * 1：低级抽卡
- * 2：中级抽卡
- * 3：高级抽卡
+ * 1：普通抽卡
+ * 2：高级抽卡
  * */
 var randomCardId = function (star) {
     return _.random(0, 49) * 5 + star;
@@ -43,37 +42,37 @@ var gen_card_star = function (level, hCounts) {
         "2": "HIGHT"
     };
     var rateObj = utility.deepCopy(cardConfig.STAR[levelMapping[level]]);
-    var margins = utility.deepCopy(cardConfig.HIGHT_DRAWCARD_MARGIN);
+    var margins = cardConfig.HIGHT_DRAWCARD_MARGIN;
 
     console.log('before count',rateObj);
 
     if (level == 2) { //高级抽卡特殊处理
 
-        if (hCounts == 240) {
+        if (hCounts == cardConfig.MAX_HIGHT_DRAWCARD_COUNT) {
             rateObj['3'] = rateObj['4'] = 0;
             rateObj['5'] = 100;
-        } else if(hCounts > margins[1].COUNTS) {
-            rateObj['3'] = rateObj['3'] - (margins[1].COUNTS - margins[0].COUNTS) * margins[0].MARGIN;
-            rateObj['5'] = rateObj['5'] + (margins[1].COUNTS - margins[0].COUNTS) * margins[0].MARGIN;
+        } else {
 
-            var count = hCounts - margins[1].COUNTS;
-            var rate = rateObj['3'] - margins[1].MARGIN * count;
-            rateObj['3'] = rate;
-            if(rate < 0) {
-                rateObj['3'] = 0;
-                rateObj['4'] += rate;
+            for(var i = margins.length - 1; i >= 0;i--) {
+                if(hCounts >= margins[i].COUNTS) {
+                    var ms = margins[i];
+                   // console.log('ms =',ms);
+                    var count = hCounts - ms.COUNTS;
+                    var rate = ms.MARGIN * count;
+                    rateObj['3'] = ms['3'] - rate;
+                    if(rateObj['3'] < 0) {
+                        rateObj['4'] = ms['4'] + rateObj['3'];
+                        rateObj['3'] = 0;
+                    }
+
+                    rateObj['5'] = ms['5'] + rate;
+                    break;
+                }
             }
-            rateObj['5'] += count * margins[1].MARGIN;
 
-            console.log('hCounts > margins[1].COUNTS',rateObj['3'],rateObj['4'],rateObj['5']);
-
-        } else if(hCounts > margins[0].COUNTS && hCounts < margins[1].COUNTS) {
-            var count = hCounts - margins[0].COUNTS;
-            rateObj['3'] = rateObj['3'] - (count * margins[0].MARGIN);
-            rateObj['5'] = rateObj['5'] + (count * margins[0].MARGIN);
-
-            console.log('hCounts > margins[0].COUNTS',rateObj['3'],rateObj['5']);
+            console.log('hCounts =',hCounts, 'after count...', rateObj['3'],rateObj['4'],rateObj['5']);
         }
+
     }
 
     console.log('after count',rateObj);

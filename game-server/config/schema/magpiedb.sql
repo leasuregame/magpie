@@ -86,6 +86,7 @@ CREATE TABLE IF NOT EXISTS `card` (
   `elixirHp` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
   `elixirAtk` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
   `passiveSkills` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
+  `useCardsCounts` SMALLINT(2) DEFAULT '0', -- 进阶消耗卡牌数
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

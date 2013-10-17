@@ -23,33 +23,52 @@ Handler::login = (msg, session, next) ->
   password = msg.password
   areaId = msg.areaId
 
-  user = null;
+  user = null
   player = null
+  uid = null
   async.waterfall [
-    (cb) =>
-      @app.rpc.auth.authRemote.auth session, account, password, areaId, cb
-
-    (res, cb) ->
-      user = res
-      session.bind user.id, cb
-
     (cb) =>
       session.set('areaId', areaId)
       session.pushAll cb
 
     (cb) =>
+      @app.rpc.auth.authRemote.auth session, account, password, areaId, cb
+
+    (res,cb) =>
       # check whether has create player in the login area
+      user = res
       if _.contains user.roles, areaId
         @app.rpc.area.playerRemote.getPlayerByUserId session, user.id, @app.getServerId(), (err, res) ->
           if err
             logger.error 'fail to get player by user id', err
           player = res
+          uid = player.id + '*' + areaId;
+          #console.log 'uid',uid
           cb()
       else
         cb()
 
     (cb) =>
+        sessionService = @app.get 'sessionService'
+        if sessionService.getByUid(uid)
+          channelService = @app.get('channelService');
+          channelService.pushMessageByUids('onKick', {msg:'账号在其他地方登陆'}, [{
+            uid: uid,
+            sid: @app.get('serverId')
+          }],(err)->
+            sessionService.kick(uid,cb);
+          )
+
+        else
+          cb()
+
+    (cb) =>
+      console.log 'uid',uid
+      session.bind(uid, cb);
+
+    (cb) =>
       if player?
+
         session.set('playerId', player.id)
         session.set('playerName', player.name)
         session.on('closed', onUserLeave.bind(null, @app))

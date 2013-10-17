@@ -53,8 +53,11 @@ app.configure('production|development', function() {
   app.filter(pomelo.filters.timeout());
 });
 
+
+
 // app configuration
 app.configure('production|development', 'connector', function() {
+
   app.set('connectorConfig', {
     connector: pomelo.connectors.hybridconnector,
     heartbeat: 3,

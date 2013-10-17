@@ -427,6 +427,14 @@ var FriendLayer = cc.Layer.extend({
         cc.log("FriendLayer _onClickSendMessage: " + this._selectFriend);
 
         this._shyLayer.setVisible(false);
+
+        var friend = gameData.friend.getFriend(this._selectFriend);
+
+        if (friend) {
+            SendMessageLayer.pop(friend.id, friend.name);
+        } else {
+            TipLayer.tip("找不到该好友");
+        }
     },
 
     _onClickLineUp: function () {

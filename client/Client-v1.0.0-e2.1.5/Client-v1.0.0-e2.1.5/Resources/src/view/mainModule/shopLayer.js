@@ -49,10 +49,8 @@ var ShopLayer = cc.Layer.extend({
         this._propsLayerItem.setOffset(cc.p(0, -5));
 
         var menu = cc.Menu.create(
-            this._lotteryLayerItem,
             this._vipLayerItem,
-            this._propsLayerItem,
-            this._treasureHuntLayerItem
+            this._propsLayerItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);

@@ -144,6 +144,8 @@
             'src/view/mainModule/propsLayer.js',
             'src/view/mainModule/pveLayer.js',
             'src/view/mainModule/rankLayer.js',
+            'src/view/mainModule/readMessageLayer.js',
+            'src/view/mainModule/sendMessageLayer.js',
             'src/view/mainModule/shopLayer.js',
             'src/view/mainModule/signInLayer.js',
             'src/view/mainModule/skillUpgradeLabel.js',

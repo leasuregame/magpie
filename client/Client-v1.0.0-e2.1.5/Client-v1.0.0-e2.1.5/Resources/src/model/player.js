@@ -105,7 +105,7 @@ var Player = Entity.extend({
     },
 
     sendMessage: function (cb, playerId, msg) {
-        cc.log("Player sendMessage: " + palyerId + " " + msg);
+        cc.log("Player sendMessage: " + playerId + " " + msg);
 
         var that = this;
         lzWindow.pomelo.request("area.messageHandler.leaveMessage", {

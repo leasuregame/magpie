@@ -36,8 +36,6 @@ var FriendMessageLayer = cc.Layer.extend({
 
         var friendMessageList = gameData.message.get("friendMessage");
 
-        cc.log(friendMessageList);
-
         var len = friendMessageList.length;
 
         if (this._scrollView != null) {
@@ -73,7 +71,11 @@ var FriendMessageLayer = cc.Layer.extend({
             msgLabel.setPosition(cc.p(20, y + 60));
             scrollViewLayer.addChild(msgLabel);
 
-            var timeLabel = cc.LabelTTF.create(this._getTimeStr(friendMessageList[i].createTime), "STHeitiTC-Medium", 16);
+            var timeLabel = cc.LabelTTF.create(
+                lz.getTimeStr(friendMessageList[i].createTime),
+                "STHeitiTC-Medium",
+                16
+            );
             timeLabel.setAnchorPoint(cc.p(1, 0));
             timeLabel.setPosition(cc.p(580, y + 13));
             scrollViewLayer.addChild(timeLabel);
@@ -91,39 +93,31 @@ var FriendMessageLayer = cc.Layer.extend({
                     hasBeenAcceptIcon.setVisible(false);
                     hasBeenRejectIcon.setVisible(false);
 
-                    var acceptItem = cc.MenuItemImage.create(
-                        main_scene_image.button20,
-                        main_scene_image.button20s,
+                    var acceptItem = cc.MenuItemImage.createWithIcon(
+                        main_scene_image.button9,
+                        main_scene_image.button9s,
+                        main_scene_image.icon131,
                         this._onClickAccept(id),
                         this
                     );
-                    acceptItem.setPosition(cc.p(400, y + 60));
+                    acceptItem.setPosition(cc.p(375, y + 62));
                     menu.addChild(acceptItem);
 
-                    var rejectItem = cc.MenuItemImage.create(
-                        main_scene_image.button20,
-                        main_scene_image.button20s,
+                    var rejectItem = cc.MenuItemImage.createWithIcon(
+                        main_scene_image.button9,
+                        main_scene_image.button9s,
+                        main_scene_image.icon133,
                         this._onClickReject(id),
                         this
                     );
-                    rejectItem.setPosition(cc.p(530, y + 60));
+                    rejectItem.setPosition(cc.p(520, y + 62));
                     menu.addChild(rejectItem);
-
-                    var acceptIcon = cc.Sprite.create(main_scene_image.icon131);
-                    acceptIcon.setPosition(cc.p(400, y + 60));
-                    scrollViewLayer.addChild(acceptIcon, 1);
-
-                    var rejectIcon = cc.Sprite.create(main_scene_image.icon133);
-                    rejectIcon.setPosition(cc.p(530, y + 60));
-                    scrollViewLayer.addChild(rejectIcon, 1);
 
                     this._scrollViewElement[id] = {
                         hasBeenAcceptIcon: hasBeenAcceptIcon,
                         hasBeenRejectIcon: hasBeenRejectIcon,
                         acceptItem: acceptItem,
-                        rejectItem: rejectItem,
-                        acceptIcon: acceptIcon,
-                        rejectIcon: rejectIcon
+                        rejectItem: rejectItem
                     };
                 } else if (status == ACCEPT_STATUS) {
                     hasBeenRejectIcon.setVisible(false);
@@ -131,34 +125,26 @@ var FriendMessageLayer = cc.Layer.extend({
                     hasBeenAcceptIcon.setVisible(false);
                 }
             } else if (type == LEAVE_MESSAGE) {
-                var addFriendItem = cc.MenuItemImage.create(
-                    main_scene_image.button20,
-                    main_scene_image.button20s,
-                    this._onClickAddFriend(id),
+                var addFriendItem = cc.MenuItemImage.createWithIcon(
+                    main_scene_image.button9,
+                    main_scene_image.button9s,
+                    main_scene_image.icon132,
+                    this._onClickAddFriend(friendMessageList[i].senderName),
                     this
                 );
-                addFriendItem.setPosition(cc.p(400, y + 60));
+                addFriendItem.setPosition(cc.p(375, y + 62));
                 menu.addChild(addFriendItem);
 
-                var readItem = cc.MenuItemImage.create(
-                    main_scene_image.button20,
-                    main_scene_image.button20s,
-                    this._onClickRead(friendMessageList[i].text),
+                var readItem = cc.MenuItemImage.createWithIcon(
+                    main_scene_image.button9,
+                    main_scene_image.button9s,
+                    main_scene_image.icon134,
+                    this._onClickRead(friendMessageList[i]),
                     this
                 );
-                readItem.setPosition(cc.p(530, y + 60));
+                readItem.setPosition(cc.p(520, y + 62));
                 menu.addChild(readItem);
-
-                var addFriendIcon = cc.Sprite.create(main_scene_image.icon132);
-                addFriendIcon.setPosition(cc.p(400, y + 60));
-                scrollViewLayer.addChild(addFriendIcon, 1);
-
-                var readIcon = cc.Sprite.create(main_scene_image.icon134);
-                readIcon.setPosition(cc.p(530, y + 60));
-                scrollViewLayer.addChild(readIcon, 1);
             }
-
-
         }
 
         this._scrollView = cc.ScrollView.create(cc.size(605, 742), scrollViewLayer);
@@ -181,8 +167,6 @@ var FriendMessageLayer = cc.Layer.extend({
 
             element.acceptItem.setVisible(false);
             element.rejectItem.setVisible(false);
-            element.acceptIcon.setVisible(false);
-            element.rejectIcon.setVisible(false);
             element.hasBeenAcceptIcon.setVisible(true);
         }
     },
@@ -197,39 +181,24 @@ var FriendMessageLayer = cc.Layer.extend({
 
             element.acceptItem.setVisible(false);
             element.rejectItem.setVisible(false);
-            element.acceptIcon.setVisible(false);
-            element.rejectIcon.setVisible(false);
             element.hasBeenRejectIcon.setVisible(true);
         }
     },
 
-    _onClickAddFriend: function () {
+    _onClickAddFriend: function (name) {
         return function () {
             cc.log("FriendMessageLayer _onClickAddFriend: ");
 
+            gameData.friend.addFriend(name);
         }
     },
 
-    _onClickRead: function (text) {
+    _onClickRead: function (message) {
         return function () {
-            cc.log("FriendMessageLayer _onClickRead: " + text);
+            cc.log("FriendMessageLayer _onClickRead: " + message);
+
+            ReadMessageLayer.pop(message.sender, message.senderName, message.text);
         }
-    },
-
-    _getTimeStr: function (time) {
-        cc.log("FriendMessageLayer _getTimeStr");
-
-        var date = new Date(time);
-        var today = new Date();
-        var timeStr = "";
-
-        if (today.toDateString() === date.toDateString()) {
-            timeStr = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
-        } else {
-            timeStr = date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay();
-        }
-
-        return timeStr;
     }
 });
 

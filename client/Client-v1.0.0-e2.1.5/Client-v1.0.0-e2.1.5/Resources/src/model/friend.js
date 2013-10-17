@@ -77,15 +77,11 @@ var Friend = Entity.extend({
     _onBless: function (msg) {
         cc.log("friend _onBless");
 
-        var len = this._friendList.length;
-        var friendId = msg.sender;
+        var friend = this.getFriend(msg.sender);
 
-        for (var i = 0; i < len; ++i) {
-            if (this._friendList[i].id === friendId) {
-                this._friendList[i].canReceive = true;
-                this._friendList[i].msgId = msg.id;
-                break;
-            }
+        if (friend) {
+            friend.canReceive = true;
+            friend.msgId = msg.id;
         }
     },
 
@@ -121,12 +117,39 @@ var Friend = Entity.extend({
         }
     },
 
+
+    /*
+     * param friend id or friend name
+     * */
+    getFriend: function (param) {
+        var key = "id";
+
+        if (typeof(param) == "string") {
+            key = "name"
+        }
+
+        var len = this._friendList.length;
+
+        for (var i = 0; i < len; ++i) {
+            if (this._friendList[i][key] == param) {
+                return this._friendList[i];
+            }
+        }
+
+        return null;
+    },
+
     addFriend: function (name) {
         cc.log("Friend addFriend: " + name);
 
         if (this._friendList.length >= this._maxFriendCount) {
             TipLayer.tip("好友已满");
+            return;
+        }
 
+        var friend = this.getFriend(name);
+        if (friend) {
+            TipLayer.tip("该好友已经存在");
             return;
         }
 
@@ -178,16 +201,7 @@ var Friend = Entity.extend({
     giveBless: function (cb, friendId) {
         cc.log("Friend giveBless: " + friendId);
 
-        var len = this._friendList.length;
-        var friend = null;
-
-        for (var i = 0; i < len; ++i) {
-            if (this._friendList[i].id === friendId) {
-                friend = this._friendList[i];
-                break;
-            }
-        }
-
+        var friend = this.getFriend(friendId);
         if (friend) {
             var that = this;
             lzWindow.pomelo.request("area.messageHandler.giveBless", {
@@ -221,16 +235,7 @@ var Friend = Entity.extend({
     receiveBless: function (cb, friendId) {
         cc.log("Friend receiveBless: " + friendId);
 
-        var len = this._friendList.length;
-        var friend = null;
-
-        for (var i = 0; i < len; ++i) {
-            if (this._friendList[i].id === friendId) {
-                friend = this._friendList[i];
-                break;
-            }
-        }
-
+        var friend = this.getFriend(friendId);
         if (friend && friend.msgId) {
             var that = this;
             lzWindow.pomelo.request("area.messageHandler.receiveBless", {

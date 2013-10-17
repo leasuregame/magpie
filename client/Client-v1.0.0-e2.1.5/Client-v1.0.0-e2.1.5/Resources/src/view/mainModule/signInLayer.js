@@ -53,13 +53,13 @@ var SignInLayer = LazyLayer.extend({
         titleLabel.setPosition(cc.p(360, 920));
         this.addChild(titleLabel);
 
-        var closeItem = cc.MenuItemImage.create(
-            main_scene_image.button37,
-            main_scene_image.button37s,
-            this._onClickClose,
-            this
-        );
-        closeItem.setPosition(cc.p(645, 940));
+//        var closeItem = cc.MenuItemImage.create(
+//            main_scene_image.button37,
+//            main_scene_image.button37s,
+//            this._onClickClose,
+//            this
+//        );
+//        closeItem.setPosition(cc.p(645, 940));
 
         this._turnLeftItem = cc.MenuItemImage.create(
             main_scene_image.icon37,
@@ -99,7 +99,7 @@ var SignInLayer = LazyLayer.extend({
         this._remedySignInItem.setPosition(cc.p(435, 470));
 
         var menu = cc.Menu.create(
-            closeItem,
+//            closeItem,
             this._turnLeftItem,
             this._turnRightItem,
             this._signInItem,

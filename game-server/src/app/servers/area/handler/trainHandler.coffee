@@ -529,6 +529,9 @@ Handler::changeLineUp = (msg, session, next) ->
     if err
       return next(null, {code: 500, msg: err.msg})
 
+    if not checkCardCount(player.lv, tids)
+      return next(null, {code: 501, msg: "上阵卡牌数量不对"})
+
     player.updateLineUp(lineupObj)
     player.save()
     next(null, { code: 200, msg: {lineUp: player.lineUpObj()} })
@@ -636,3 +639,12 @@ Handler::exchangeCard = (msg, session, next) ->
 
 cardStar = (tableId) ->
   tableId % 5 or 5
+
+checkCardCount = (playerLv, cardIds) ->
+  card_count = (cardIds.filter (id) -> id isnt -1).length
+  fdata = table.getTableItem('function_limit', 1)
+  lvMap = {4: fdata.card4_position, 5: fdata.card5_position}
+  for qty, lv of lvMap
+    if playerLv < lv and card_count >= qty
+      return false
+  return true

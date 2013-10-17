@@ -565,17 +565,13 @@ var Player = (function(_super) {
         dg[name] = value;
         this.dailyGift = dg;
     };
-    /*
-    Player.prototype.hasGive = function(gift) {
-        return _.contains(this.dailyGift.power, gift);
-    };
-   */
+    
     Player.prototype.updateLineUp = function(lineupObj) {
         this.set('lineUp', objToLineUp(lineupObj));
     };
 
     Player.prototype.lineUpObj = function() {
-        return lineUpToObj(this, this.lineUp);
+        return lineUpToObj(this.lineUp);
     };
 
     Player.prototype.strengthen = function(target, sources, cb) {
@@ -957,7 +953,7 @@ var checkPass = function(player) {
     }
 };
 
-var lineUpToObj = function(self, lineUp) {
+var lineUpToObj = function(lineUp) {
     var _results = {};
     if (_.isString(lineUp) && lineUp !== '') {
         var lines = lineUp.split(',');
@@ -981,6 +977,32 @@ var objToLineUp = function(obj) {
     }
     return _lineUp.slice(0, -1);
 };
+
+// var checkLineUp = function(player) {
+//     var obj = lineUpToObj(player.lineUp)
+//     var vals = _.values(obj)
+//     var card_count = vals.filter(function(v) {
+//         return v !== -1;
+//     }).length;
+
+//     var fdata = table.getTableItem('function_limit', 1);
+//     var lvMap = {
+//       4: fdata.card4_position,
+//       5: fdata.card5_position
+//     };
+
+//     var qty, lv, limit = 0;
+//     for (qty in lvMap) {
+//       lv = lvMap[qty];
+//       if (player.lv < lv && card_count >= qty) {
+//         limit = card_count - (qty - 1);
+//         for (var i = 0; i < limit; i++) {
+
+//         }
+
+//       }
+//     }
+// };
 
 var positionConvert = function(val) {
     var order = ['00', '01', '02', '10', '11', '12'];

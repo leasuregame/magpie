@@ -133,12 +133,12 @@ Handler::handleSysMsg = (msg, session, next) ->
         else
           incValues(player, options)
           player.save()
-          cb()
-  ],(err)->
+          cb(null, options)
+  ],(err, data)->
     if err
       next(null, {code: err.code or 500, msg: err.msg or err})
 
-    next(null, {code: 200,msg:'成功领取奖励'})
+    next(null, {code: 200, msg: data})
 
 Handler::leaveMessage = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -263,7 +263,7 @@ Handler::addFriend = (msg, session, next) ->
           type: msgConfig.MESSAGETYPE.ADDFRIEND
           sender: playerId
           receiver: friend.id
-          content: "#{playerName}请求加你为好友！"
+          content: "#{playerName}发来请求"
           status: msgConfig.MESSAGESTATUS.ASKING
         }, cb
       else 

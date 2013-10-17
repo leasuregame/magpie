@@ -299,6 +299,7 @@ describe("Player Object", function () {
             var player = new Player({
                 lineUp: '00:1,01:2,02:3,10:4,11:5'
             });
+            player.lineUpObj().should.be.equal('00:1,01:2,02:3,10:4,11:5');
             player.updateLineUp({
                 1: 5,
                 2: 4,
@@ -306,6 +307,7 @@ describe("Player Object", function () {
                 4: 3,
                 5: 1
             });
+            player.lv.should.be.equal(1);
             player.lineUp.should.be.equal('00:5,01:4,02:2,10:3,11:1');
         });
     });

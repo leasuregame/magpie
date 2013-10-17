@@ -568,9 +568,11 @@ var Player = (function(_super) {
     
     Player.prototype.updateLineUp = function(lineupObj) {
         this.set('lineUp', objToLineUp(lineupObj));
+        checkLineUp(this);
     };
 
     Player.prototype.lineUpObj = function() {
+        checkLineUp(this);
         return lineUpToObj(this.lineUp);
     };
 
@@ -978,31 +980,38 @@ var objToLineUp = function(obj) {
     return _lineUp.slice(0, -1);
 };
 
-// var checkLineUp = function(player) {
-//     var obj = lineUpToObj(player.lineUp)
-//     var vals = _.values(obj)
-//     var card_count = vals.filter(function(v) {
-//         return v !== -1;
-//     }).length;
+var checkLineUp = function(player) {
+    var obj = lineUpToObj(player.lineUp);
+    var obj_copy = _.clone(obj);
+    var vals = _.values(obj);
+    var card_count = vals.filter(function(v) {
+        return v !== -1;
+    }).length;
 
-//     var fdata = table.getTableItem('function_limit', 1);
-//     var lvMap = {
-//       4: fdata.card4_position,
-//       5: fdata.card5_position
-//     };
+    var fdata = table.getTableItem('function_limit', 1);
+    var lvMap = {
+      4: fdata.card4_position,
+      5: fdata.card5_position
+    };
 
-//     var qty, lv, limit = 0;
-//     for (qty in lvMap) {
-//       lv = lvMap[qty];
-//       if (player.lv < lv && card_count >= qty) {
-//         limit = card_count - (qty - 1);
-//         for (var i = 0; i < limit; i++) {
-
-//         }
-
-//       }
-//     }
-// };
+    var qty, lv, limit = 0;
+    for (qty in lvMap) {
+      lv = lvMap[qty];
+      if (player.lv < lv && card_count >= qty) {
+        limit = card_count - (qty - 1);
+        for (var i = 0; i < limit; i++) {
+            for (var j in obj_copy) {
+                if (obj_copy[j] !== -1) {
+                    delete obj_copy[j];
+                    break;
+                }
+            }
+        }
+        break;
+      }
+    }
+    player.lineUp = objToLineUp(obj_copy);
+};
 
 var positionConvert = function(val) {
     var order = ['00', '01', '02', '10', '11', '12'];

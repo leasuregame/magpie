@@ -1,4 +1,5 @@
 dao = require('pomelo').app.get('dao')
+_ = require 'underscore'
 
 module.exports = (app) ->
   new Handler(app)
@@ -11,4 +12,4 @@ Handler::playBack = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    next(null, {code: 200, msg: bl.toJson()})
+    next(null, {code: 200, msg: _.extend({}, bl.battleLog, id: bl.id)})

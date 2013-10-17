@@ -16,7 +16,7 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>15260</WindowHeight>
+  <WindowHeight>11500</WindowHeight>
   <WindowWidth>25600</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
@@ -39,7 +39,7 @@
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="6" ss:Width="140"/>
    <Column ss:Width="92"/>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">元宝上限</Data></Cell>
     <Cell><Data ss:Type="String">仙币上限</Data></Cell>
@@ -48,16 +48,16 @@
     <Cell><Data ss:Type="String">卡牌默认数量上限</Data></Cell>
     <Cell><Data ss:Type="String">体力值上限</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">gold</Data></Cell>
     <Cell><Data ss:Type="String">money</Data></Cell>
     <Cell><Data ss:Type="String">skillPoint</Data></Cell>
     <Cell><Data ss:Type="String">energy</Data></Cell>
     <Cell><Data ss:Type="String">card_count_limit</Data></Cell>
-    <Cell><Data ss:Type="String">powerValue</Data></Cell>
+    <Cell><Data ss:Type="String">power_value</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">999999</Data></Cell>
     <Cell><Data ss:Type="Number">99999999</Data></Cell>
@@ -68,6 +68,7 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
@@ -80,7 +81,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -90,17 +91,24 @@
  <Worksheet ss:Name="export">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell><Data ss:Type="String">export_name</Data></Cell>
     <Cell><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">资源限制表</Data></Cell>
     <Cell><Data ss:Type="String">resource_limit</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>

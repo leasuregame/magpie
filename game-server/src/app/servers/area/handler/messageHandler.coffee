@@ -26,7 +26,7 @@ mergeMessages = (myMessages, systemMessages) ->
 changeGroupNameAndSort = (messages) ->
   results = {}
   for k, v of messages
-    continue if msgConfig.TYPE_MAP[k] is null
+    continue if not msgConfig.TYPE_MAP[k]?
     name = msgConfig.TYPE_MAP[k]
     if typeof results[name] is 'undefined'
       results[name] = v
@@ -158,7 +158,7 @@ Handler::leaveMessage = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     sendMessage @app, friendId, {
-      route: 'OnMessage'
+      route: 'onMessage'
       msg: res.toLeaveMessage()
     }, null, next
 

@@ -29,6 +29,10 @@ var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL;
 var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
 var EXP_CARD_ID = require('../../../config/data/card').EXP_CARD_ID;
 
+var resData = table.getTableItem('resource_limit', 1);
+var MAX_POWER_VALUE = resData.power_value;
+var MAX_CARD_COUNT = resData.card_count_limit;
+
 var defaultMark = function() {
     var i, result = [];
     for (i = 0; i < 100; i++) {
@@ -994,7 +998,7 @@ var getMaxPower = function(lv) {
     // }
     // return max_power;
     
-    return playerConfig.MAX_POWER;
+    return MAX_POWER_VALUE;
 };
 
 

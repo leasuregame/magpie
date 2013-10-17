@@ -15,6 +15,10 @@ var result = {
     fragment:[]
 };
 
+var rFragments = 0;
+var hFragments = 0;
+var hCounts = 0;
+
 Lottery.simulate = function(level,type,times,next) {
 
     async.waterfall([
@@ -32,10 +36,28 @@ Lottery.simulate = function(level,type,times,next) {
                         pomelo.request('area.gmHandler.simulateLottery',
                             {
                                 level:level,
-                                type:type
+                                type:type,
+                                rFragments:rFragments,
+                                hFragments:hFragments,
+                                hCounts:hCounts
                             }, function (data) {
                                 console.log(data);
                                 Lottery.analyzeResult(data.msg);
+                                if(level == 2) {
+                                    hFragments++;
+                                    hCounts++;
+                                    if(data.msg[0].star == 5) {
+                                        hCounts = 0;
+                                    }
+                                    if(data.msg[2] == 1) {
+                                        hFragments = 0;
+                                    }
+                                }else {
+                                    rFragments++;
+                                    if(data.msg[2] == 1) {
+                                        rFragments = 0;
+                                    }
+                                }
                                 id++;
                                 callback();
 
@@ -67,6 +89,10 @@ Lottery.simulate = function(level,type,times,next) {
 
 
 Lottery.init = function() {
+
+    rFragments = 0;
+    hFragments = 0;
+    hCounts = 0;
 
     for(var i = 0;i < 5;i++) {
         result.level[i] = {

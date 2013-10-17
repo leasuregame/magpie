@@ -8,6 +8,8 @@ _ = require 'underscore'
 utility = require '../../../common/utility'
 
 SYSTEM = -1
+ADD_FRIEND_MESSAGE = 1
+DELETE_FRIEND_MESSAGE = 2
 
 isFinalStatus = (status) ->
   _.contains msgConfig.FINALSTATUS, status
@@ -24,27 +26,25 @@ mergeMessages = (myMessages, systemMessages) ->
 changeGroupNameAndSort = (messages) ->
   results = {}
   for k, v of messages
-    continue if msgConfig.TYPE_MAP[k] is null
+    continue if not msgConfig.TYPE_MAP[k]?
     name = msgConfig.TYPE_MAP[k]
     if typeof results[name] is 'undefined'
       results[name] = v
     else
-      results[name].push v
+      results[name] = results[name].concat(v)
 
   for n, items of results
     items.sort (x, y) -> x.createTime < y.createTime
 
   results
 
-sendMessage = (app, target, msg, next) ->
+sendMessage = (app, target, msg, data, next) ->
   callback = (err, res) ->
     if err
       code = 500
-    else if res
-      code = res
     else 
       code = 200
-    next(null, {code: code}) if next?
+    next(null, {code: code, msg: data if data }) if next?
 
   if target?
     app.get('messageService').pushByPid target, msg, callback
@@ -77,7 +77,7 @@ Handler::sysMsg = (msg, session, next) ->
     sendMessage @app, null, {
       route: 'onMessage'
       msg: res.toJson()
-    }, next(null,{code:200,msg:'邮件发送成功'})
+    }, '邮件发送成功', next
 
 Handler::handleSysMsg = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -97,10 +97,16 @@ Handler::handleSysMsg = (msg, session, next) ->
           return next(null, {code: 501, msg: '消息类型不匹配'})
 
         else if message.status is msgConfig.MESSAGESTATUS.HANDLED
-          return next(null,{code: 501, msg: '该邮件已领取过'})
+          return next(null, {code: 501, msg: '该邮件已领取过'})
+
         else
           cb(null,message)
-
+    (message,cb)->
+      dao.message.fetchOne where: msgId: message.id,(err,res) ->
+        if res isnt null
+          return next(null, {code: 501, msg: '该邮件已领取过'})
+        else
+          cb(null,message)
     (message,cb)->
       if message.receiver is playerId
         dao.message.update {
@@ -127,12 +133,12 @@ Handler::handleSysMsg = (msg, session, next) ->
         else
           incValues(player, options)
           player.save()
-          cb()
-  ],(err)->
+          cb(null, options)
+  ],(err, data)->
     if err
       next(null, {code: err.code or 500, msg: err.msg or err})
 
-    next(null, {code: 200,msg:'成功领取奖励'})
+    next(null, {code: 200, msg: data})
 
 Handler::leaveMessage = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -145,16 +151,16 @@ Handler::leaveMessage = (msg, session, next) ->
     sender: playerId
     options: {playerName: playerName}
     receiver: friendId
-    content: content
+    content: content[0...50]
     status: msgConfig.MESSAGESTATUS.NOTICE
   }, (err, res) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     sendMessage @app, friendId, {
-      route: 'OnMessage'
+      route: 'onMessage'
       msg: res.toLeaveMessage()
-    }, next
+    }, null, next
 
 Handler::readMessage = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -187,10 +193,6 @@ Handler::messageList = (msg, session, next) ->
     systemMessages = results[0]
     myMessages = results[1]
 
-  #  sysMessages = for sysm in systemMessages when sysm.id isnt msm.msgId for msm in myMessages
-
-
-   # console.log('sysMessage',sysMessages)
     messages = mergeMessages(myMessages, systemMessages)
     messages = messages.map (m) -> 
       if m.type is msgConfig.MESSAGETYPE.MESSAGE then m.toLeaveMessage?() else m.toJson?()
@@ -210,6 +212,13 @@ Handler::deleteFriend = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     next(null, {code: 200})
+    sendMessage @app, friendId, {
+      route: 'onFriendAction'
+      msg: {
+        type: DELETE_FRIEND_MESSAGE
+        friend: id: playerId
+      }
+    }
 
 Handler::addFriend = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -254,7 +263,7 @@ Handler::addFriend = (msg, session, next) ->
           type: msgConfig.MESSAGETYPE.ADDFRIEND
           sender: playerId
           receiver: friend.id
-          content: "#{playerName}请求加你为好友！"
+          content: "#{playerName}发来请求"
           status: msgConfig.MESSAGESTATUS.ASKING
         }, cb
       else 
@@ -266,7 +275,7 @@ Handler::addFriend = (msg, session, next) ->
     sendMessage @app, friend.id, {
       route: 'onMessage'
       msg: msg.toJson()
-    }, next if msg?
+    }, null, next
 
 Handler::accept = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -350,16 +359,16 @@ Handler::accept = (msg, session, next) ->
 
       achieve.friends(sender, senderFriends.length)
 
-    _message = message.toJson()
-    _message.friend = {
-      id: playerId
-      name: playerName
-      lv: player.lv
-      ability: player.ability
-    }
     sendMessage @app, message.sender, {
-      route: 'onMessage'
-      msg: _message
+      route: 'onFriendAction'
+      msg:
+        type: ADD_FRIEND_MESSAGE 
+        friend : {
+          id: playerId
+          name: playerName
+          lv: player.lv
+          ability: player.ability
+        }
     }
 
 Handler::reject = (msg, session, next) ->
@@ -401,36 +410,31 @@ Handler::giveBless = (msg, session, next) ->
   friendId = msg.friendId
 
   if friendId is playerId 
-    return next(null, {code: 501, '不能给自己送祝福'})
+    return next(null, {code: 501, msg: '不能给自己送祝福'})
 
+  ENERGY = 5
+  player = null
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, cb
 
-    (player, cb) ->
+    (res, cb) ->
+      player = res
       if player.dailyGift.gaveBless.count <= 0
-        return cb({code: 501, '今日你送出祝福的次数已经达到上限'})
+        return cb({code: 501, msg: '今日你送出祝福的次数已经达到上限'})
 
       if _.contains player.dailyGift.gaveBless.receivers, friendId
-        return cb({code: 501, '一天只能给同一位好友送出一次祝福哦'})
+        return cb({code: 501, msg: '一天只能给同一位好友送出一次祝福哦'})
 
-      player.dailyGift.gaveBless.count--
-      player.dailyGift.gaveBless.receivers.push(friendId)
-      player.updateGift 'gaveBless', player.dailyGift.gaveBless
-      player.giveBlessOnce()
-      player.save()
       cb()
 
     (cb) ->
-      dao.player.fetchOne {
-        where: id: friendId
-        sync: true
-      }, (err, ply) ->
+      playerManager.getPlayerInfo {pid: friendId}, (err, ply) ->
         if err
           return cb(err)
 
         if ply.dailyGift.receivedBlessCount <= 0
-          return cb({code: 501, '今日对方接收祝福的次数已经达到上限'})
+          return cb({code: 501, msg: '今日对方接收祝福的次数已经达到上限'})
 
         ply.dailyGift.receivedBless.count--
         ply.dailyGift.receivedBless.givers.push(playerId)
@@ -443,7 +447,7 @@ Handler::giveBless = (msg, session, next) ->
         type: msgConfig.MESSAGETYPE.BLESS
         sender: playerId
         receiver: friendId
-        options: energy: 5
+        options: energy: ENERGY
         content: "#{playerName}为你送来了祝福，你获得了5点的活力值"
         status: msgConfig.MESSAGESTATUS.UNHANDLED
       }, cb
@@ -451,10 +455,17 @@ Handler::giveBless = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
+    player.dailyGift.gaveBless.count--
+    player.dailyGift.gaveBless.receivers.push(friendId)
+    player.updateGift 'gaveBless', player.dailyGift.gaveBless
+    player.increase('energy', ENERGY)
+    player.giveBlessOnce()
+    player.save()
+
     sendMessage @app, friendId, {
-      route: 'onMessage'
-      msg: res.toJson()
-    }, next
+      route: 'onBless'
+      msg: {id: res.id, sender: res.sender}
+    }, {energy: ENERGY}, next
 
 Handler::receiveBless = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -492,7 +503,7 @@ Handler::receiveBless = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    next(null, {code: 200})
+    next(null, {code: 200, msg: {energy: message.options.energy}})
 
 
 

@@ -299,6 +299,7 @@ describe("Player Object", function () {
             var player = new Player({
                 lineUp: '00:1,01:2,02:3,10:4,11:5'
             });
+            player.lineUpObj().should.be.equal('00:1,01:2,02:3,10:4,11:5');
             player.updateLineUp({
                 1: 5,
                 2: 4,
@@ -306,6 +307,7 @@ describe("Player Object", function () {
                 4: 3,
                 5: 1
             });
+            player.lv.should.be.equal(1);
             player.lineUp.should.be.equal('00:5,01:4,02:2,10:3,11:1');
         });
     });
@@ -1012,7 +1014,7 @@ describe("Player Object", function () {
         });
     });
 
-    describe('.exp.change',function(){
+    describe('exp.change event',function(){
         it('should can inc player lv when player lv is not max and exp enough',function(){
 
             var player = new Player();
@@ -1035,6 +1037,19 @@ describe("Player Object", function () {
             player.exp.should.eql(500000);
         });
 
+    });
+
+    describe('increase gold to the limit value', function(){
+        it('when gold is 999999, should can not increase gold', function() {
+            var player = new Player();
+            player.gold = 999999;
+
+            player.increase(10);
+            player.gold.should.eql(999999);
+
+            player.increase();
+            player.gold.should.eql(999999);
+        });
     });
 
 });

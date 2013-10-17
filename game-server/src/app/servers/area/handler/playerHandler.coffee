@@ -49,12 +49,14 @@ checkFriendsStatus = (player, messages) ->
   friends = []
   for f in player.friends
     f = utility.deepCopy f
-    f.canReceive = true
+    f.canReceive = false
     f.canGive = true
 
-    matches = messages.filter (m) -> m.sender is f.id and m.status is msgConfig.MESSAGESTATUS.HANDLED
+    matches = messages.filter (m) -> m.sender is f.id and m.status is msgConfig.MESSAGESTATUS.UNHANDLED
     if _.contains(player.dailyGift.receivedBless.givers, f.id) and matches.length > 0
-      f.canReceive = false
+      f.canReceive = true
+      f.msgId = matches[0].id
+
     if _.contains(player.dailyGift.gaveBless.receivers, f.id)
       f.canGive = false
 

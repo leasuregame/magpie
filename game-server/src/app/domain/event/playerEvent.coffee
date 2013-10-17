@@ -1,4 +1,5 @@
 playerConfig = require('../../../config/data/player')
+table = require('../../manager/table')
 utility = require '../../common/utility'
 _ = require 'underscore'
 
@@ -6,9 +7,24 @@ exports.addEvents = (app, player) ->
 
   player.on 'add.card', (card) ->
     if card.isNewLightUp
+      card.isNewLightUp = false
       app.get('messageService').pushByPid player.id, {
         route: 'onLightUpCard'
         msg: tableId: card.tableId
+      }, () ->
+
+  player.on 'exp.change', ->
+    if player.isUpgrade
+      player.isUpgrade = false
+      data = table.getTableItem('player_upgrade', player.lv - 1)
+      app.get('messageService').pushByPid player.id, {
+        route: 'onPlayerUpgrade'
+        msg: {
+          money: data.money,
+          energy: data.energy,
+          skillPoint: data.skillPoint,
+          elixir: data.elixir 
+        }
       }, () ->
 
   player.on 'power.resume', ->

@@ -14,7 +14,6 @@ Handler = (@app) ->
 Handler::entry = (msg, session, next) ->
   account = msg.account
   areaId = msg.areaId
-
   user = null
   player = null
   async.waterfall [
@@ -43,6 +42,7 @@ Handler::entry = (msg, session, next) ->
           cb(null, user.id)
       else
         cb(null, user.id)
+
       
     (userId, cb) ->
       session.bind userId, cb

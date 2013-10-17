@@ -8,6 +8,7 @@
   <Author>arthur wu</Author>
   <LastAuthor>arthur wu</LastAuthor>
   <Created>2013-10-16T08:04:30Z</Created>
+  <LastSaved>2013-10-16T09:39:35Z</LastSaved>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
@@ -53,7 +54,7 @@
     <Cell><Data ss:Type="String">money</Data></Cell>
     <Cell><Data ss:Type="String">skillPoint</Data></Cell>
     <Cell><Data ss:Type="String">energy</Data></Cell>
-    <Cell><Data ss:Type="String">card_quantity</Data></Cell>
+    <Cell><Data ss:Type="String">card_count_limit</Data></Cell>
     <Cell><Data ss:Type="String">powerValue</Data></Cell>
    </Row>
    <Row>

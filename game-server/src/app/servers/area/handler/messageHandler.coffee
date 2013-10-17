@@ -31,7 +31,7 @@ changeGroupNameAndSort = (messages) ->
     if typeof results[name] is 'undefined'
       results[name] = v
     else
-      results[name].push v
+      results[name] = results[name].concat(v)
 
   for n, items of results
     items.sort (x, y) -> x.createTime < y.createTime
@@ -193,10 +193,6 @@ Handler::messageList = (msg, session, next) ->
     systemMessages = results[0]
     myMessages = results[1]
 
-  #  sysMessages = for sysm in systemMessages when sysm.id isnt msm.msgId for msm in myMessages
-
-
-   # console.log('sysMessage',sysMessages)
     messages = mergeMessages(myMessages, systemMessages)
     messages = messages.map (m) -> 
       if m.type is msgConfig.MESSAGETYPE.MESSAGE then m.toLeaveMessage?() else m.toJson?()

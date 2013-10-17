@@ -8,6 +8,8 @@ _ = require 'underscore'
 utility = require '../../../common/utility'
 
 SYSTEM = -1
+ADD_FRIEND_MESSAGE = 1
+DELETE_FRIEND_MESSAGE = 2
 
 isFinalStatus = (status) ->
   _.contains msgConfig.FINALSTATUS, status
@@ -24,12 +26,12 @@ mergeMessages = (myMessages, systemMessages) ->
 changeGroupNameAndSort = (messages) ->
   results = {}
   for k, v of messages
-    continue if msgConfig.TYPE_MAP[k] is null
+    continue if not msgConfig.TYPE_MAP[k]?
     name = msgConfig.TYPE_MAP[k]
     if typeof results[name] is 'undefined'
       results[name] = v
     else
-      results[name].push v
+      results[name] = results[name].concat(v)
 
   for n, items of results
     items.sort (x, y) -> x.createTime < y.createTime
@@ -149,14 +151,14 @@ Handler::leaveMessage = (msg, session, next) ->
     sender: playerId
     options: {playerName: playerName}
     receiver: friendId
-    content: content
+    content: content[0...50]
     status: msgConfig.MESSAGESTATUS.NOTICE
   }, (err, res) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     sendMessage @app, friendId, {
-      route: 'OnMessage'
+      route: 'onMessage'
       msg: res.toLeaveMessage()
     }, null, next
 
@@ -191,10 +193,6 @@ Handler::messageList = (msg, session, next) ->
     systemMessages = results[0]
     myMessages = results[1]
 
-  #  sysMessages = for sysm in systemMessages when sysm.id isnt msm.msgId for msm in myMessages
-
-
-   # console.log('sysMessage',sysMessages)
     messages = mergeMessages(myMessages, systemMessages)
     messages = messages.map (m) -> 
       if m.type is msgConfig.MESSAGETYPE.MESSAGE then m.toLeaveMessage?() else m.toJson?()
@@ -214,6 +212,13 @@ Handler::deleteFriend = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     next(null, {code: 200})
+    sendMessage @app, friendId, {
+      route: 'onFriendAction'
+      msg: {
+        type: DELETE_FRIEND_MESSAGE
+        friend: id: playerId
+      }
+    }
 
 Handler::addFriend = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -270,7 +275,7 @@ Handler::addFriend = (msg, session, next) ->
     sendMessage @app, friend.id, {
       route: 'onMessage'
       msg: msg.toJson()
-    }, null, next if msg?
+    }, null, next
 
 Handler::accept = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -355,14 +360,16 @@ Handler::accept = (msg, session, next) ->
       achieve.friends(sender, senderFriends.length)
 
     sendMessage @app, message.sender, {
-      route: 'onAccept'
-      msg: friend : {
-        id: playerId
-        name: playerName
-        lv: player.lv
-        ability: player.ability
-      }
-    }, null, next
+      route: 'onFriendAction'
+      msg:
+        type: ADD_FRIEND_MESSAGE 
+        friend : {
+          id: playerId
+          name: playerName
+          lv: player.lv
+          ability: player.ability
+        }
+    }
 
 Handler::reject = (msg, session, next) ->
   playerId = session.get('playerId')

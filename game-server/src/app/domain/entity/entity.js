@@ -115,14 +115,14 @@ var Entity = (function(_super) {
     };
 
     Entity.prototype.increase = function(name, val) {
-        if (typeof val == 'undefined') {
+        if (typeof val == 'undefined' || val == null) {
             val = 1;
         }
         this.set(name, parseInt(this[name]) + parseInt(val));
     };
 
     Entity.prototype.decrease = function(name, val) {
-        if (typeof val == 'undefined') {
+        if (typeof val == 'undefined' || val == null) {
             val = 1;
         }
         this.set(name, parseInt(this[name]) - parseInt(val));

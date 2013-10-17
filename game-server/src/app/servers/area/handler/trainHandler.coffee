@@ -14,6 +14,7 @@ job = require '../../../dao/job'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 
+MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
 LOTTERY_BY_GOLD = 1
 LOTTERY_BY_ENERGY = 0
 
@@ -103,6 +104,9 @@ Handler::luckyCard = (msg, session, next) ->
 
     (res, cb) ->
       player = res
+      if _.keys(player.cards).length >= MAX_CARD_COUNT
+        return cb({code: 501, msg: '卡牌容量已经达到最大值'})
+
       rfc = player.rowFragmentCount + 1 #普通抽卡魂次数
       hfc = player.highFragmentCount + 1 #高级抽卡魂次数
       hdcc = player.highDrawCardCount + 1 #高级抽卡次数
@@ -381,7 +385,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
 
     next(null, {code: 200, msg: result})
 
-Handler::smeltElixir = (msg, session, next) ->
+Handler::smeltElixir_is_discarded = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   cardIds = msg.cardIds
 
@@ -445,6 +449,9 @@ Handler::useElixir = (msg, session, next) ->
     if (err) 
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
+    if player.lv < 10
+      return next(null, {code: 501, msg: '10级开放'})
+
     if player.elixir < elixir
       return next(null, {code: 501, msg: '仙丹不足'})
 
@@ -462,9 +469,19 @@ Handler::useElixir = (msg, session, next) ->
     if (card.elixirHp + card.elixirAtk + elixir) > limit
       return next(null, {code: 501, msg: "使用的仙丹已经超出了卡牌的最大仙丹容量"})
 
+    if not player.isCanUseElixirForCard(cardId)
+      return next(null, {code: 501, msg: "消耗的仙丹已达到当前玩家级别的上限"})
+
+    can_use_elixir = player.canUseElixir(cardId)
+    if can_use_elixir < elixir
+      return next(null, {code: 501, msg: "最多还可以消耗#{can_use_elixir}点仙丹"})
+
+    console.log '0a0: ', player.elixirPerLv, can_use_elixir
+
     card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
     card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK
     player.decrease('elixir', elixir)
+    player.useElixirForCard(cardId, elixir)
     
     _jobs = []
     playerData = player.getSaveData()
@@ -595,6 +612,9 @@ Handler::exchangeCard = (msg, session, next) ->
 
     (res, cb) ->
       player = res
+      if _.keys(player.cards).length >= MAX_CARD_COUNT
+        return cb({code: 501, msg: '卡牌容量已经达到最大值'})
+      
       if player.fragments < cardConfig.CARD_EXCHANGE[star]
         return cb({code: 501, msg: '卡牌碎片不足'})
 

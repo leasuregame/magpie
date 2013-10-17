@@ -1,1 +1,7 @@
-id;msgId;sender;receiver;type;options;content;status1;;4;5;1;;arthur请求添加你为好友;12;;1;5;3;;liusheng在竞技场中击败了你;63;;3;5;3;;yangjuliusheng在竞技场中击败了你;64;;7;5;10;"{""energy"": 5}";junyu给你送来一个祝福;55;;6;5;10;"{""energy"": 6}";songsong给你送来一个祝福;56;;-1;-1;4;"{""gold"": 1000}";奖励1000元宝;57;;-1;-1;4;"{""power"": 100}";奖励100体力;58;;-1;-1;4;"{""skillPoint"": 100}";奖励100技能点;5
+id;msgId;sender;receiver;type;options;content;status
+1;;4;5;1;;arthur请求添加你为好友;1
+4;;7;5;10;"{""energy"": 5}";junyu给你送来一个祝福;5
+5;;6;5;10;"{""energy"": 5}";songsong给你送来一个祝福;5
+6;;-1;-1;4;"{""gold"": 1000}";奖励1000元宝;5
+7;;-1;-1;4;"{""powerValue"": 100}";奖励100体力;5
+8;;-1;-1;4;"{""skillPoint"": 100}";奖励100技能点;5

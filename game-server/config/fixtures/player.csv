@@ -9,7 +9,7 @@ id;createTime;userId;areaId;name;power;vip;lv;exp;money;gold;lineUp;ability;task
 103;0;103;1;player for pass wipeOut;"{""time"":0,""value"":1}";;40;1000;100000;10000;;;;0;;;;;;;25;"{ ""mark"" : [],  ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"
 104;0;104;1;user3;;;;;;0;;;;;;;;;;;;
 105;0;105;1;user2;;;;;;;;;;;;;;;;;;
-106;0;106;1;没钱的家伙;;;;;;;;;;;;;;;;;;
+106;0;106;1;没钱的家伙;;;10;;;;;;;;;;;;;;;
 107;0;107;1;user1;;;;;;;;;;;;;;;;;;
 108;0;108;1;user5;;;;;;;;;;;;;;;"{""lv"":1,""exp"":0,""collectCount"": 0}";;;
 110;0;110;1;Passer;"{""time"":0,""value"":50}";;60;100;10000000;100000;00:301,01:302,02:303,10:304,11:305,12:-1;;;;;;;;;;0;"{ ""mark"" : [], ""mystical"": { ""diff"": 1, ""isTrigger"": false, ""isClear"": false },""resetTimes"": 1}"

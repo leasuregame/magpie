@@ -11,6 +11,8 @@ spiritConfig = require '../../../../config/data/spirit'
 utility = require '../../../common/utility'
 dao = require('pomelo').app.get('dao')
 
+MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -29,6 +31,10 @@ Handler::explore = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
+
+      if _.keys(player.cards).length >= MAX_CARD_COUNT
+        return cb({code: 501, msg: '卡牌容量已经达到最大值'})
+
       if taskId > player.task.id 
         return cb({code: 501, msg: '不能探索此关'})
 

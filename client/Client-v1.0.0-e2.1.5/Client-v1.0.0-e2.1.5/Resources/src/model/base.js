@@ -17,7 +17,6 @@
  * */
 var lz = {};
 
-
 /**
  * copy an new object
  * @function

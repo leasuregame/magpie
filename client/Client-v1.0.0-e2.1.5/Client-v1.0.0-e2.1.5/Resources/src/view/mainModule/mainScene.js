@@ -62,4 +62,22 @@ var MainScene = cc.Scene.extend({
 /*
  * 单例
  * */
+(function () {
+    var _mainScene = null;
+
+    MainScene.getInstance = function () {
+        if (_mainScene == null) {
+            _mainScene = new MainScene();
+            _mainScene.init();
+        }
+
+        return _mainScene;
+    };
+
+    MainScene.destroy = function () {
+        _mainScene = null;
+    };
+})();
+
+
 MainScene.getInstance = singleton(MainScene);

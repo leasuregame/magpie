@@ -50,11 +50,11 @@
 
             'src/table/table.js',
 
-            'src/model/pomeloWebsocketClient.js',
+            'src/model/pomelo-client.js',
             'src/model/serverAPI.js',
 
-            'src/model/singleton.js',
             'src/model/base.js',
+            'src/model/singleton.js',
             'src/model/gameConfig.js',
 
             'src/model/entity.js',
@@ -98,6 +98,7 @@
 
             'src/view/loginModule/loginScene.js',
             'src/view/loginModule/loginLayer.js',
+            'src/view/loginModule/logoutLayer.js',
             'src/view/loginModule/registerScene.js',
             'src/view/loginModule/registerLayer.js',
 

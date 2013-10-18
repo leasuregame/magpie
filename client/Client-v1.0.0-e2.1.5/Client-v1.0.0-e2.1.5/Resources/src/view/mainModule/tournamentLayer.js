@@ -135,3 +135,14 @@ TournamentLayer.create = function () {
 
     return null;
 };
+
+TournamentLayer.canEnter = function () {
+    var limitLv = outputTables.function_limit.rows[1].rank;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("竞技场" + limitLv + "级开放");
+};

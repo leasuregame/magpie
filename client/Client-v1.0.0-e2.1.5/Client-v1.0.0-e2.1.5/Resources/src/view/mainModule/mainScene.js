@@ -37,6 +37,11 @@ var MainScene = cc.Scene.extend({
 
     switchLayer: function (runLayer) {
         cc.log("MainScene switchLayer");
+
+        if(runLayer.canEnter && !runLayer.canEnter()) {
+            return;
+        }
+
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
         if (!(this._nowLayer instanceof runLayer)) {
@@ -78,6 +83,3 @@ var MainScene = cc.Scene.extend({
         _mainScene = null;
     };
 })();
-
-
-MainScene.getInstance = singleton(MainScene);

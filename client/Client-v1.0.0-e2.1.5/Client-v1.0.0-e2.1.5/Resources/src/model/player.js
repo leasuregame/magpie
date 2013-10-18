@@ -57,6 +57,8 @@ var Player = Entity.extend({
 
         cc.log(this);
 
+        MAX_LINE_UP_CARD = 3;
+
         this.on("lvChange", this._lvChangeEvent);
 
         return true;
@@ -111,6 +113,17 @@ var Player = Entity.extend({
     _lvChangeEvent: function () {
         cc.log("Player _lvChangeEvent");
 
+        var table = outputTables.function_limit.rows[1];
+
+        MAX_LINE_UP_CARD = 3;
+
+        if (this._lv >= table.card4_position) {
+            MAX_LINE_UP_CARD = 4;
+        }
+
+        if (this._lv >= table.card5_position) {
+            MAX_LINE_UP_CARD = 5;
+        }
     },
 
     sendMessage: function (cb, playerId, msg) {

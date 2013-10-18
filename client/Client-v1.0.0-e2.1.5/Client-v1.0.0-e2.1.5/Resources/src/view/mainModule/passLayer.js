@@ -544,3 +544,14 @@ PassLayer.create = function () {
 
     return null;
 };
+
+PassLayer.canEnter = function () {
+    var limitLv = outputTables.function_limit.rows[1].pass;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("天道" + limitLv + "级开放");
+};

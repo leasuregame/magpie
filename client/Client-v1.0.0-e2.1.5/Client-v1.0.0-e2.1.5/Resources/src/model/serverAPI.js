@@ -19,19 +19,39 @@ var SERVER_HOST = "124.238.236.33";
 var SERVER_PORT = 3010;
 var connectSuccess = false;
 
-lzWindow.pomelo.init({
-    host: SERVER_HOST,
-    port: SERVER_PORT,
-    user: {},
-    handshakeCallback: function () {
-    }
-}, function () {
-    cc.log("connect success!");
-    connectSuccess = true;
+var linkSever = function () {
+    lzWindow.pomelo.init({
+        host: SERVER_HOST,
+        port: SERVER_PORT,
+        user: {},
+        handshakeCallback: function () {
+        }
+    }, function () {
+        cc.log("connect success!");
 
-    lzWindow.pomelo.on("close", function (data) {
-        cc.log("***** on close:");
-        cc.log(data);
-        connectSuccess = false;
+        if (connectSuccess) {
+
+        }
+
+        connectSuccess = true;
+
+        lzWindow.pomelo.on("close", function (data) {
+            cc.log("***** on close:");
+            cc.log(data);
+
+            linkSever();
+        });
+
+        lzWindow.pomelo.on("onKick", function (data) {
+            cc.log("***** on kick:");
+            cc.log(data);
+            connectSuccess = false;
+
+            LogoutLayer.pop("异地登录");
+        });
     });
-});
+};
+
+linkSever();
+
+

@@ -23,6 +23,29 @@ var PVP_BATTLE_LOG = 1;
 var BattleLogPool = Entity.extend({
     _battleLogPool: {},
 
+    init: function () {
+        cc.log("BattleLogPool init");
+
+        this._battleLogPool = {};
+        this._load();
+    },
+
+    _load: function () {
+        cc.log("BattleLogPool _load");
+
+        var battleLogPool = sys.localStorage.getItem("battleLogPool") || {};
+
+        for (var key in battleLogPool) {
+            if (battleLogPool[key]) {
+                this._battleLogPool[key] = battleLogPool[key];
+            }
+        }
+    },
+
+    _save: function () {
+        sys.localStorage.setItem("battleLogPool", this._battleLogPool);
+    },
+
     pushBattleLog: function (battleLog, battleType) {
         cc.log("BattleLogPool pushBattleLog");
 
@@ -39,6 +62,8 @@ var BattleLogPool = Entity.extend({
 
         this._battleLogPool[battleLog.id] = battleLog;
 
+        this._save();
+
         return battleLog.id;
     },
 
@@ -46,14 +71,8 @@ var BattleLogPool = Entity.extend({
         cc.log("BattleLogPool getBattleByBattleLogId");
 
         return this._battleLogPool[id];
-    },
-
-    _loadLocalBattleLogData: function () {
-        cc.log("BattleLogPool _loadLocalBattleLogData");
-
-        // 待添加
     }
-})
+});
 
 
 /*

@@ -72,29 +72,23 @@ var LazyLayer = cc.Layer.extend({
 
 (function () {
     var cloudLayer = null;
-    var isUse = false;
+    var zOrder = 10000;
 
     LazyLayer.showCloudLayer = function () {
         cc.log("LazyLayer showCloudLayer");
 
-        if (cloudLayer == null) {
-            cloudLayer = LazyLayer.create();
-            cloudLayer.retain();
+        if (cloudLayer && cloudLayer.getParent()) {
+            cloudLayer.removeFromParent();
         }
 
-        if (!isUse) {
-            MainScene.getInstance().addChild(cloudLayer, 10000);
-            isUse = true;
-        }
+        cloudLayer = LazyLayer.create();
+        MainScene.getInstance().getLayer().addChild(cloudLayer, zOrder);
     };
 
     LazyLayer.closeCloudLayer = function () {
         cc.log("LazyLayer closeCloudLayer");
 
-        if (isUse) {
-            cloudLayer.removeFromParent();
-            isUse = false;
-        }
+        cloudLayer.removeFromParent();
     };
 })();
 

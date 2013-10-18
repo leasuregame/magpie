@@ -91,7 +91,7 @@ var CardListLayer = cc.Layer.extend({
         }
 
         this._scrollView = cc.ScrollView.create(cc.size(594, 620), scrollViewLayer);
-        this._scrollView.setPosition(cc.p(60, 266));
+        this._scrollView.setPosition(cc.p(67, 266));
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
@@ -272,7 +272,7 @@ var CardListLayer = cc.Layer.extend({
         this._clearOtherLayer();
 
         var titleLabel = cc.Sprite.create(main_scene_image.icon23);
-        titleLabel.setPosition(cc.p(360, 1000));
+        titleLabel.setPosition(cc.p(360, 1008));
         this._otherLabel.addChild(titleLabel);
 
         var lineUpItem = cc.MenuItemImage.createWithIcon(
@@ -302,8 +302,8 @@ var CardListLayer = cc.Layer.extend({
 
         this._clearOtherLayer();
 
-        var titleLabel = cc.Sprite.create(main_scene_image.icon24);
-        titleLabel.setPosition(cc.p(360, 1000));
+        var titleLabel = cc.Sprite.create(main_scene_image.icon250);
+        titleLabel.setPosition(cc.p(360, 1008));
         this._otherLabel.addChild(titleLabel);
 
         var okItem = cc.MenuItemImage.createWithIcon(
@@ -332,7 +332,7 @@ var CardListLayer = cc.Layer.extend({
             },
             this
         );
-        backItem.setPosition(cc.p(100, 1005));
+        backItem.setPosition(cc.p(100, 1008));
 
         var menu = cc.Menu.create(okItem, lineUpItem, backItem);
         menu.setPosition(cc.p(0, 0));
@@ -354,7 +354,7 @@ var CardListLayer = cc.Layer.extend({
         cc.log("CardListLayer _initMaster");
 
         var titleLabel = cc.Sprite.create(main_scene_image.icon25);
-        titleLabel.setPosition(cc.p(360, 1000));
+        titleLabel.setPosition(cc.p(360, 1008));
         this._otherLabel.addChild(titleLabel);
 
         var okItem = cc.MenuItemImage.createWithIcon(
@@ -369,7 +369,7 @@ var CardListLayer = cc.Layer.extend({
         var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
             this._cb(null);
         }, this);
-        backItem.setPosition(cc.p(100, 1005));
+        backItem.setPosition(cc.p(100, 1008));
 
         var menu = cc.Menu.create(okItem, backItem);
         menu.setPosition(cc.p(0, 0));
@@ -468,7 +468,7 @@ var CardListLayer = cc.Layer.extend({
         this._sortType = SORT_TYPE_LITER;
 
         var titleLabel = cc.Sprite.create(main_scene_image.icon25);
-        titleLabel.setPosition(cc.p(360, 1000));
+        titleLabel.setPosition(cc.p(360, 1008));
         this._otherLabel.addChild(titleLabel);
 
         var okItem = cc.MenuItemImage.createWithIcon(
@@ -488,7 +488,7 @@ var CardListLayer = cc.Layer.extend({
             },
             this
         );
-        backItem.setPosition(cc.p(100, 1005));
+        backItem.setPosition(cc.p(100, 1008));
 
         var menu = cc.Menu.create(okItem, backItem);
         menu.setPosition(cc.p(0, 0));
@@ -602,7 +602,7 @@ var CardListLayer = cc.Layer.extend({
         this._onSelectAllLowItem.setVisible(true);
 
         var titleLabel = cc.Sprite.create(main_scene_image.icon23);
-        titleLabel.setPosition(cc.p(360, 1000));
+        titleLabel.setPosition(cc.p(360, 1008));
         this._otherLabel.addChild(titleLabel);
 
         var okItem = cc.MenuItemImage.createWithIcon(
@@ -622,7 +622,7 @@ var CardListLayer = cc.Layer.extend({
             },
             this
         );
-        backItem.setPosition(cc.p(100, 1005));
+        backItem.setPosition(cc.p(100, 1008));
 
         var menu = cc.Menu.create(okItem, backItem);
         menu.setPosition(cc.p(0, 0));

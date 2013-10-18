@@ -24,7 +24,7 @@ var Player = Entity.extend({
     _gold: 0,           // 元宝
     _money: 0,          // 金钱
     _elixir: 0,         // 仙丹
-    _fragment: 0,       // 碎片
+    _fragment: 0,       // 卡魂
     _energy: 0,         // 活力
     _skillPoint: 0,     // 技能点
     _ability: 0,        // 战斗力
@@ -45,11 +45,13 @@ var Player = Entity.extend({
         this.update(data);
 
         gameData.cardLibrary.init();
+        gameData.friend.init();
         gameData.message.init();
         gameData.signIn.init();
         gameData.rank.init();
         gameData.achievement.init();
         gameData.speak.init();
+        gameData.exchange.init();
 
         cc.log(this);
 
@@ -69,6 +71,7 @@ var Player = Entity.extend({
         this.set("gold", data.gold);
         this.set("money", data.money);
         this.set("elixir", data.elixir);
+        this.set("fragment", data.fragments);
         this.set("skillPoint", data.skillPoint);
         this.set("ability", data.ability);
         this.set("energy", data.energy);
@@ -90,15 +93,6 @@ var Player = Entity.extend({
         if (data.spiritor) gameData.spirit.init(data.spiritor);
         if (data.spiritPool) gameData.spiritPool.init(data.spiritPool);
 
-
-        if (data.friends) gameData.friend.init({
-            friendList: data.friends,
-            giveBlessCount: data.dailyGift.gaveBless.count,
-            giveBlessList: data.dailyGift.gaveBless.receivers,
-            receiveBlessCount: data.dailyGift.receivedBless.count,
-            receiveBlessList: data.dailyGift.receivedBless.givers
-        });
-
         if (data.dailyGift) gameData.treasureHunt.init({
             count: data.dailyGift.lotteryCount,
             freeCount: data.dailyGift.lotteryFreeCount
@@ -108,6 +102,73 @@ var Player = Entity.extend({
             useVipBoxList: data.vipBox
         });
 
+    },
+
+    sendMessage: function (cb, playerId, msg) {
+        cc.log("Player sendMessage: " + playerId + " " + msg);
+
+        var that = this;
+        lzWindow.pomelo.request("area.messageHandler.leaveMessage", {
+            friendId: playerId,
+            content: msg
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("sendMessage success");
+
+                cb("success");
+            } else {
+                cc.log("sendMessage fail");
+            }
+        });
+    },
+
+    learn: function (cb, playerId) {
+        cc.log("Player learn: " + playerId);
+
+        var that = this;
+        lzWindow.pomelo.request("area.rankHandler.fight", {
+            targetId: playerId
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("learn success");
+
+                var msg = data.msg;
+
+                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
+
+                cb(battleLogId);
+            } else {
+                cc.log("learn fail");
+            }
+        });
+    },
+
+    playerDetail: function (cb, playerId) {
+        cc.log("Player playerDetail: " + palyerId);
+
+        var that = this;
+        lzWindow.pomelo.request("area.topHandler.getActiveCards", {
+            id: playerId
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("playerDetail success");
+
+                var msg = data.msg;
+
+                cb(msg);
+            } else {
+                cc.log("playerDetail fail");
+            }
+        });
     }
 });
 

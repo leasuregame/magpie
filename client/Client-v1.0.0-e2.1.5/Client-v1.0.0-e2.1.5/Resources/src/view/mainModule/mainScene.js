@@ -14,6 +14,7 @@
 
 var MainScene = cc.Scene.extend({
     _nowLayer: null,
+    _mainMenuLayer: null,
 
     init: function () {
         cc.log("MainScene init");
@@ -21,14 +22,17 @@ var MainScene = cc.Scene.extend({
         var mainBgLayer = MainBgLayer.create();
         this.addChild(mainBgLayer, -1);
 
-        this._nowLayer = MainLayer.create();
-        this.addChild(this._nowLayer);
-
-        var mainMenuLayer = MainMenuLayer.create(this);
-        this.addChild(mainMenuLayer, -1);
+        this._mainMenuLayer = MainMenuLayer.create();
+        this.addChild(this._mainMenuLayer, 1);
 
         var gameFrame = GameFrame.create();
-        this.addChild(gameFrame, 1);
+        this.addChild(gameFrame, 10);
+
+        this.switchLayer(MainLayer);
+    },
+
+    getLayer: function () {
+        return this._nowLayer;
     },
 
     switchLayer: function (runLayer) {
@@ -49,6 +53,8 @@ var MainScene = cc.Scene.extend({
 
         this._nowLayer = layerObject;
         this.addChild(this._nowLayer);
+
+        this._mainMenuLayer.update();
     }
 });
 
@@ -56,4 +62,22 @@ var MainScene = cc.Scene.extend({
 /*
  * 单例
  * */
+(function () {
+    var _mainScene = null;
+
+    MainScene.getInstance = function () {
+        if (_mainScene == null) {
+            _mainScene = new MainScene();
+            _mainScene.init();
+        }
+
+        return _mainScene;
+    };
+
+    MainScene.destroy = function () {
+        _mainScene = null;
+    };
+})();
+
+
 MainScene.getInstance = singleton(MainScene);

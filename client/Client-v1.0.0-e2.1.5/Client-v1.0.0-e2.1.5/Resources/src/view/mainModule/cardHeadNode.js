@@ -16,7 +16,6 @@ var CardHeadNode = cc.Node.extend({
     _card: null,
     _frameSprite: null,
     _cardSprite: null,
-    _iconSprite: null,
 
     init: function (card) {
         cc.log("CardHeadNode init");
@@ -51,6 +50,11 @@ var CardHeadNode = cc.Node.extend({
         cc.log("CardNode getId");
 
         return this._card.get("id");
+    },
+
+    setColor: function (color3) {
+        this._frameSprite.setColor(color3);
+        this._cardSprite.setColor(color3);
     }
 });
 

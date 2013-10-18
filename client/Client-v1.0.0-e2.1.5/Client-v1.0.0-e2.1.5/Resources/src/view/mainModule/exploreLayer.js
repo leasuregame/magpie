@@ -87,7 +87,7 @@ var ExploreLayer = cc.Layer.extend({
 
         var titleLabel = StrokeLabel.create(outputTables.chapter_title.rows[chapter].name, "STHeitiTC-Medium", 40);
         titleLabel.setColor(cc.c3b(255, 239, 131));
-        titleLabel.setPosition(cc.p(360, 1005));
+        titleLabel.setPosition(cc.p(360, 1008));
         this.addChild(titleLabel, 1);
 
         this._spiritShadow = cc.Sprite.create(main_scene_image.icon217);
@@ -125,7 +125,7 @@ var ExploreLayer = cc.Layer.extend({
             this._onClickBack,
             this
         );
-        backItem.setPosition(cc.p(100, 1005));
+        backItem.setPosition(cc.p(100, 1008));
 
         this._exploreItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -320,7 +320,6 @@ var ExploreLayer = cc.Layer.extend({
     _onClickBack: function () {
         cc.log("ExploreLayer _onClickBack");
 
-        this._unlock();
         MainScene.getInstance().switchLayer(PveLayer);
     },
 

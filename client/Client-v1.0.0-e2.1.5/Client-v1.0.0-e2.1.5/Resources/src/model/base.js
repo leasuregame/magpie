@@ -17,7 +17,6 @@
  * */
 var lz = {};
 
-
 /**
  * copy an new object
  * @function
@@ -86,6 +85,11 @@ lz.format = function (str, length) {
     }
 
     return strList;
+};
+
+lz.getStrWidth = function (str, fonName, fontSize) {
+    var label = cc.LabelTTF.create(str, fonName, fontSize);
+    return label.getContentSize().width;
 };
 
 lz.getColor = function (colorType) {
@@ -158,7 +162,7 @@ var gameGoodsName = {
     "exp": "经验",
     "money": "铜板",
     "gold": "黄金",
-    "power": "体力",
+    "powerValue": "体力",
     "elixir": "仙丹",
     "fragment": "卡魂",
     "energy": "活力",
@@ -187,6 +191,22 @@ lz.getRewardString = function (data) {
     }
 
     return str;
+};
+
+lz.getTimeStr = function (time) {
+    cc.log("BattleMessageLayer _getTimeStr");
+
+    var date = new Date(time);
+    var today = new Date();
+    var timeStr = "";
+
+    if (today.toDateString() === date.toDateString()) {
+        timeStr = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
+    } else {
+        timeStr = date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay();
+    }
+
+    return timeStr;
 };
 
 // 获取不大于原数的随机数

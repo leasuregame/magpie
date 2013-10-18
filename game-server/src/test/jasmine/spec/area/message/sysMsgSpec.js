@@ -106,14 +106,14 @@ describe("Area Server", function() {
                     expect(data.msg).toEqual('成功领取奖励');
 
                     doAjax('/message/' + msgId, {}, function(res) {
-                        expect(res.data.status).toEqual(4);
+                        expect(res.data.status).toEqual(5);
                     });
 
                     doAjax('/player/' + arthur.playerId, {}, function(res) {
                         expect(res.data.gold).toEqual(before_player.gold + 100);
                         expect(res.data.money).toEqual(before_player.money + 100);
                         expect(JSON.parse(res.data.power).value)
-                        .toEqual(170);
+                        .toEqual(270);
                     });
                 });
             });

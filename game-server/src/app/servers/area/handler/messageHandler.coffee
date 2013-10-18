@@ -44,7 +44,7 @@ sendMessage = (app, target, msg, data, next) ->
       code = 500
     else 
       code = 200
-    next(null, {code: code, msg: data if data }) if next?
+    next(null, {code: code, msg: data if data}) if next?
 
   if target?
     app.get('messageService').pushByPid target, msg, callback

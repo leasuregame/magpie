@@ -125,15 +125,20 @@ var FriendMessageLayer = cc.Layer.extend({
                     hasBeenAcceptIcon.setVisible(false);
                 }
             } else if (type == LEAVE_MESSAGE) {
-                var addFriendItem = cc.MenuItemImage.createWithIcon(
-                    main_scene_image.button9,
-                    main_scene_image.button9s,
-                    main_scene_image.icon132,
-                    this._onClickAddFriend(friendMessageList[i].senderName),
-                    this
-                );
-                addFriendItem.setPosition(cc.p(375, y + 62));
-                menu.addChild(addFriendItem);
+                var name = friendMessageList[i].senderName;
+
+                if (!gameData.friend.getFriend(name)) {
+                    var addFriendItem = cc.MenuItemImage.createWithIcon(
+                        main_scene_image.button9,
+                        main_scene_image.button9s,
+                        main_scene_image.icon132,
+                        this._onClickAddFriend(name),
+                        this
+                    );
+                    addFriendItem.setPosition(cc.p(375, y + 62));
+                    menu.addChild(addFriendItem);
+                }
+
 
                 var readItem = cc.MenuItemImage.createWithIcon(
                     main_scene_image.button9,

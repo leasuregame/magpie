@@ -25,12 +25,12 @@ var SignInLayer = LazyLayer.extend({
     _turnLeftItem: null,
     _turnRightItem: null,
     _scrollView: null,
-    _thisMonty: null,
+    _montyLabel: [],
     _elementList: null,
     _signInCountLabel: null,
     _signInItem: null,
     _remedySignInItem: null,
-    _page: 0,
+    _index: 0,
 
     onEnter: function () {
         cc.log("SignInLayer onEnter");
@@ -43,6 +43,8 @@ var SignInLayer = LazyLayer.extend({
         cc.log("SignInLayer init");
 
         if (!this._super()) return false;
+
+        this._index = 0;
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(600, 750));
@@ -118,12 +120,13 @@ var SignInLayer = LazyLayer.extend({
 
         var scrollViewLayer = MarkLayer.create(cc.rect(105, 510, 510, 366));
 
+        this._montyLabel = [];
         for (var i = 0; i < MAX_SIGN_IN_HISTORY; ++i) {
             var monthLabel = MonthLabel.create(i);
             monthLabel.setPosition(cc.p((MAX_SIGN_IN_HISTORY - i - 1) * 510, 0));
             scrollViewLayer.addChild(monthLabel);
 
-            if (i == 0) this._thisMonty = monthLabel;
+            this._montyLabel[i] = monthLabel;
         }
 
         this._scrollView = cc.ScrollView.create(cc.size(510, 366), scrollViewLayer);
@@ -215,20 +218,22 @@ var SignInLayer = LazyLayer.extend({
         var signIn = gameData.signIn;
 
         var offset = this._scrollView.minContainerOffset();
-        offset.x += this._page * 510;
+        offset.x += this._index * 510;
         this._scrollView.setContentOffset(offset, true);
 
-        this._turnRightItem.setVisible(this._page != 0);
-        this._turnLeftItem.setVisible(this._page != MAX_SIGN_IN_HISTORY - 1);
+        this._montyLabel[this._index].update();
 
-        this._signInItem.setEnabled(signIn.canSignIn(this._page));
-        this._remedySignInItem.setEnabled(signIn.canRemedySignIn(this._page));
+        this._turnRightItem.setVisible(this._index != 0);
+        this._turnLeftItem.setVisible(this._index != MAX_SIGN_IN_HISTORY - 1);
 
-        var monthMark = signIn.getMonthMark(this._page);
+        this._signInItem.setEnabled(signIn.canSignIn(this._index));
+        this._remedySignInItem.setEnabled(signIn.canRemedySignIn(this._index));
+
+        var monthMark = signIn.getMonthMark(this._index);
         var rewardCount = [5, 10, 18, 25, monthMark.days];
         var len = rewardCount.length;
         var count = monthMark.count;
-        var isThisMonth = (this._page == 0);
+        var isThisMonth = (this._index == 0);
 
         this._signInCountLabel.setString(count);
 
@@ -278,7 +283,7 @@ var SignInLayer = LazyLayer.extend({
                 element.rewardLabel.setVisible(i == id);
             }
 
-            if (this._page == 0) {
+            if (this._index == 0) {
                 var that = this;
                 gameData.signIn.receiveReward(function (data) {
                     cc.log(data);
@@ -292,14 +297,14 @@ var SignInLayer = LazyLayer.extend({
     _onClickTurnLeft: function () {
         cc.log("SignInLayer _onClickTurnLeft");
 
-        this._page = Math.min(this._page + 1, MAX_SIGN_IN_HISTORY - 1);
+        this._index = Math.min(this._index + 1, MAX_SIGN_IN_HISTORY - 1);
         this.update();
     },
 
     _onClickTurnRight: function () {
         cc.log("SignInLayer _onClickTurnRight");
 
-        this._page = Math.max(this._page - 1, 0);
+        this._index = Math.max(this._index - 1, 0);
         this.update();
     },
 
@@ -316,12 +321,12 @@ var SignInLayer = LazyLayer.extend({
 
         var beganOffset = this._scrollView.minContainerOffset();
         var endOffset = this._scrollView.getContentOffset();
-        beganOffset.x += this._page * 510;
+        beganOffset.x += this._index * 510;
 
         if (beganOffset.x - endOffset.x > 80) {
-            this._page = MAX_SIGN_IN_HISTORY + Math.floor(endOffset.x / 510) - 1;
+            this._index = MAX_SIGN_IN_HISTORY + Math.floor(endOffset.x / 510) - 1;
         } else if (beganOffset.x - endOffset.x < -80) {
-            this._page = MAX_SIGN_IN_HISTORY + Math.ceil(endOffset.x / 510) - 1;
+            this._index = MAX_SIGN_IN_HISTORY + Math.ceil(endOffset.x / 510) - 1;
         }
 
         this.update();

@@ -40,6 +40,7 @@ var appFiles = [
     'src/model/singleton.js',
     'src/model/gameConfig.js',,
 
+    'src/model/event.js',
     'src/model/entity.js',
     'src/model/user.js',
     'src/model/player.js',

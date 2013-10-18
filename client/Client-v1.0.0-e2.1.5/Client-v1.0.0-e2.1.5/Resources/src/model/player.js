@@ -12,6 +12,8 @@
  * */
 
 
+var PLAYER_MAX_POWER = 150;
+
 var Player = Entity.extend({
     _id: 0,             // 数据库id
     _createTime: 0,     // 创建时间
@@ -35,7 +37,7 @@ var Player = Entity.extend({
     _tournamentCount: 0,
 
     _maxExp: 0,         // 最大经验
-    _maxPower: 200,     // 最大体力
+    _maxPower: PLAYER_MAX_POWER,     // 最大体力
 
     _playerLabel: null,
 
@@ -54,6 +56,8 @@ var Player = Entity.extend({
         gameData.exchange.init();
 
         cc.log(this);
+
+        this.on("lvChange", this._lvChangeEvent);
 
         return true;
     },
@@ -101,6 +105,11 @@ var Player = Entity.extend({
         if (data.vipBox) gameData.shop.init({
             useVipBoxList: data.vipBox
         });
+
+    },
+
+    _lvChangeEvent: function () {
+        cc.log("Player _lvChangeEvent");
 
     },
 

@@ -107,7 +107,9 @@ var SignIn = Entity.extend({
         cc.log("MonthLabel canReceive");
 
         if (index == 0) {
-            return (this._monthsMark[0].count < this._monthsMark[0].days);
+            var nowDay = new Date().getDate();
+
+            return (this._monthsMark[0].count < nowDay);
         }
 
         return false;
@@ -124,6 +126,31 @@ var SignIn = Entity.extend({
 
         var that = this;
         lzWindow.pomelo.request("area.dailyHandler.signIn", {}, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("signIn success");
+
+                var msg = data.msg;
+
+                gameData.player.adds(msg);
+
+                var day = new Date().getDate() - 1;
+                that._monthsMark[0].mark |= (1 << day);
+
+                cb();
+            } else {
+                cc.log("signIn fail");
+            }
+        });
+    },
+
+    remedySignIn: function(cb) {
+        cc.log("SignIn remedySignIn");
+
+        var that = this;
+        lzWindow.pomelo.request("area.dailyHandler.reSignIn", {}, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 
@@ -213,3 +240,12 @@ SignIn.create = function () {
 
     return null;
 };
+
+
+player = {
+    lv : 0,
+
+    lvChange: function() {
+
+    }
+}

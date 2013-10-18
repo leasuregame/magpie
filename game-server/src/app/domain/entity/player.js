@@ -306,7 +306,36 @@ var Player = (function(_super) {
         rowFragmentCount: 0,
         highFragmentCount: 0,
         highDrawCardCount: 0,
-        cardsCount: 100
+        cardsCount: 100,
+        isReset: false
+    };
+
+    Player.prototype.resetDate = function() {
+        var dg = {
+            lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
+            lotteryFreeCount: 0, // 每日免费抽奖次数
+            powerGiven: [], // 体力赠送情况
+            powerBuyCount: 6, // 购买体力次数
+            challengeCount: 10, // 每日有奖竞技次数
+            receivedBless: { // 接收的祝福
+                count: msgConfig.MAX_RECEIVE_COUNT,
+                givers: []
+            },
+            gaveBless: { // 送出的祝福
+                count: msgConfig.MAX_GIVE_COUNT,
+                receivers: []
+            }
+        };
+
+        var pass = utility.deepCopy(this.pass);
+        pass.resetTimes = 1;
+
+        var spiritPool = utility.deepCopy(this.spiritPool);
+        spiritPool.collectCount = spiritConfig.MAX_COLLECT_COUNT
+
+        this.dailyGift = dg;
+        this.pass = pass;
+        this.spiritPool = spiritPool;
     };
 
     Player.prototype.increase = function(name, val) {
@@ -795,7 +824,7 @@ var Player = (function(_super) {
         var key = util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
         var si = utility.deepCopy(this.signIn);
 
-        if (!_.has(si, key)) {
+        if (!_.has(si.months, key)) {
             var _months = Object.keys(si.months);
             if (_months.length >= 12) {
                 delete si.months[_months[0]];
@@ -808,21 +837,24 @@ var Player = (function(_super) {
     };
 
     Player.prototype.signFirstUnsignDay = function() {
+        var d = new Date();
         var key = util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
         var si = utility.deepCopy(this.signIn);
 
-        if (!_.has(si, key)) {
-            return;
+        if (!_.has(si.months, key)) {
+            si.months[key] = 0;
         }
-        var firsUnsignDay = 1;
-        for (var i = 1; i <= 31; i++) {
+
+        var firstUnsignDay = 31;
+        var count = d.getDate();
+        for (var i = 1; i < count; i++) {
             if (!utility.hasMark(si.months[key], i)) {
-                utility.mark(si.months[key], i);
+                si.months[key] = utility.mark(si.months[key], i);
+                this.signIn = si;
                 firstUnsignDay = i;
                 break;
             }
         }
-        this.signIn = si;
         return firstUnsignDay;
     };
 

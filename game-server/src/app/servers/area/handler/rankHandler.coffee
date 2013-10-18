@@ -65,8 +65,9 @@ Handler::challenge = (msg, session, next) ->
 
     (res, cb) ->
       player = res
-      if player.lv < 20
-        return cb({code: 501, msg: '20级开放'})
+      fdata = table.getTableItem('function_limit', 1)
+      if player.lv < fdata.rank
+        return cb({code: 501, msg: fdata.rank+'级开放'})
       cb()
 
     (cb) =>
@@ -177,9 +178,9 @@ saveBattleLog = (bl, playerName) ->
   targetId = bl.enemyId
 
   if bl.winner is 'own'
-    result = '你输了'
+    result = '输了'
   else
-    result = '你赢了'
+    result = '赢了'
 
   app.get('dao').battleLog.create data: {
     own: playerId
@@ -192,7 +193,7 @@ saveBattleLog = (bl, playerName) ->
     app.get('dao').message.create data: {
       sender: playerId
       receiver: targetId
-      content: "玩家#{playerName}在竞技场中挑战了你，" + result 
+      content: "#{playerName}挑战了你，" + result 
       type: msgConfig.MESSAGETYPE.BATTLENOTICE
       status: msgConfig.MESSAGESTATUS.NOTICE
       options: {battleLogId: res.id}

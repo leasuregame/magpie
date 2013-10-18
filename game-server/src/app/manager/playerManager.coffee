@@ -47,6 +47,9 @@ class Manager
       else
         leftIds.push id
 
+    if leftIds.length == 0
+      return cb(null, results)
+      
     dao.player.getPlayerDetails leftIds, (err, res) ->
       if err isnt null
         return cb(err, null)

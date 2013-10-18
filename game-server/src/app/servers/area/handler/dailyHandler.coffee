@@ -14,6 +14,10 @@ Handler::lottery = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
+    fdata = table.getTableItem('function_limit', 1)
+    if player.lv < fdata.lottery
+      return next(null, {code: 501, msg: fdata.lottery+'级开放'})
+
     if player.dailyGift.lotteryCount <= 0
       return next(null, {code: 501, msg: '您的抽奖次数已用完'})
 

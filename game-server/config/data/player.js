@@ -15,6 +15,5 @@ module.exports = {
   },
   "MAX_SPIRITOR_LV":10,
   "MAX_SPIRITPOOL_LV":10,
-  "MAX_PLAYER_LV":100,
-  "MAX_POWER": 150
+  "MAX_PLAYER_LV":100
 }

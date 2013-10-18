@@ -1,9 +1,10 @@
 var utility = require('../../common/utility');
 var Entity = require('./entity');
+var msgConfig = require('../../../config/data/message');
 var _ = require("underscore");
 var util = require('util');
 
-var Message = (function (_super) {
+var Message = (function(_super) {
     utility.extends(Message, _super);
 
     function Message(param) {
@@ -27,7 +28,7 @@ var Message = (function (_super) {
         content: ''
     };
 
-    Message.prototype.toJson = function(){
+    Message.prototype.toJson = function() {
         return {
             id: this.id,
             msgId: this.msgId,
@@ -35,7 +36,7 @@ var Message = (function (_super) {
             receiver: this.receiver,
             type: this.type,
             status: this.status,
-            options: this.options,
+            options: (this.type == msgConfig.MESSAGETYPE.BATTLENOTICE || this.type == msgConfig.MESSAGETYPE.MESSAGE) ? this.options : void 0,
             content: this.content,
             createTime: this.createTime
         }
@@ -50,7 +51,7 @@ var Message = (function (_super) {
             type: this.type,
             status: this.status,
             text: this.content,
-            content: util.format('%s 给你发了一条留言', this.options.playerName),
+            content: util.format('%s 给你留言', this.options.playerName),
             createTime: this.createTime
         };
     };

@@ -128,7 +128,8 @@ var Card = (function(_super) {
         'skillPoint',
         'elixirHp',
         'elixirAtk',
-        'passiveSkills'
+        'passiveSkills',
+        'useCardsCounts'
     ];
 
     Card.DEFAULT_VALUES = {
@@ -152,7 +153,8 @@ var Card = (function(_super) {
             elixir_hp: 0,
             elixir_atk: 0
         },
-        passiveSkills: []
+        passiveSkills: [],
+        useCardsCounts:0
     };
 
     Card.prototype.init = function() {

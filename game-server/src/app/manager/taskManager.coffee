@@ -10,8 +10,6 @@ _ = require 'underscore'
 fightManager = require './fightManager'
 logger = require('pomelo-logger').getLogger(__filename)
 
-MAX_POWER = 200
-
 class Manager
   @explore: (player, taskId, cb) ->
     task_id = taskId or player.task.id

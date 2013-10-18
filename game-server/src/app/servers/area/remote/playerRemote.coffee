@@ -14,6 +14,7 @@ Remote::createPlayer = (args, callback) ->
   userId = args.userId
   areaId = args.areaId
   serverId = args.serverId
+  uid = userId + '*' + areaId
   self = this
 
   dao.player.fetchOne where: {name: name}, (err, player) ->
@@ -34,7 +35,7 @@ Remote::createPlayer = (args, callback) ->
         return callback({code: 500, msg: err})
       
       area.addPlayer player
-      messageService.add(userId, serverId, player.id, player.name)
+      messageService.add(uid, serverId, player.id, player.name)
       callback(null, player.toJson())
 
 Remote::getPlayerByUserId = (userId, serverId, callback) ->
@@ -43,7 +44,9 @@ Remote::getPlayerByUserId = (userId, serverId, callback) ->
       return callback {code: 501, msg: 'can not find player by user id: ' + userId}
 
     area.addPlayer player
-    messageService.add(userId, serverId, player.id, player.name)
+    uid = userId + '*' + player.areaId
+    console.log 'getPlayerByUserId uid = ',uid
+    messageService.add(uid, serverId, player.id, player.name)
     return callback null, player.toJson()
 
 Remote::playerLeave = (playerId, uid, serverId, callback) ->

@@ -71,22 +71,54 @@ describe("Area Server", function() {
 					});
 				});
 
+                describe("when card's lv is not max",function(){
+
+                    it('should can not upgrade of card',function(){
+                        request('area.trainHandler.starUpgrade', {
+                            target: 11,
+                            sources: [4]
+                        }, function(data) {
+                            console.log(data);
+                            expect(data.code).toEqual(501);
+                            expect(data.msg).toEqual('未达到进阶等级');
+                        });
+                    });
+                });
+
+                describe("when card's tableId is 10000",function(){
+
+                    it('should can not upgrade of card',function(){
+                       // doAjax('/create/card', {tableId:10000,playerId:1,createTime:0,lv:30,star:1}, function(res) {
+                        //    console.log(res);
+                            request('area.trainHandler.starUpgrade', {
+                                target: 17,
+                                sources: [11]
+                            }, function(data) {
+                                console.log(data);
+                                expect(data.code).toEqual(501);
+                                expect(data.msg).toEqual('该卡牌不可以进阶');
+                            });
+                      //  });
+                    });
+
+                });
+
 				describe("when card's star is 1", function() {
 					it('should can upgrade star of card', function() {
 						request('area.trainHandler.starUpgrade', {
-							target: 11,
-							sources: [4]
+							target: 4,
+							sources: [11]
 						}, function(data) {
 							console.log(data);
 							expect(data.code).toEqual(200);
 							expect(typeof data.msg.upgrade).toEqual('boolean');
 
-							doAjax('/card/' + 11, {}, function(res) {
+							doAjax('/card/' + 4, {}, function(res) {
 								expect(res.data.tableId).toEqual(data.msg.card.tableId);
 								expect(res.data.star % 5).toEqual(data.msg.card.tableId % 5);
 							});
 
-							doAjax('/card/' + 4, {}, function(res) {
+							doAjax('/card/' + 11, {}, function(res) {
 								expect(res).toEqual({
 									code: 404,
 									data: 'card not exists'

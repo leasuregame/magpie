@@ -1,4 +1,5 @@
 playerConfig = require('../../../config/data/player')
+table = require('../../manager/table')
 utility = require '../../common/utility'
 _ = require 'underscore'
 
@@ -22,7 +23,7 @@ exports.addEvents = (app, player) ->
           money: data.money,
           energy: data.energy,
           skillPoint: data.skillPoint,
-          elixir: elixir 
+          elixir: data.elixir 
         }
       }, () ->
 
@@ -50,7 +51,6 @@ exports.addEvents = (app, player) ->
 
   player.on 'lineUp.change', ->
     player.updateAbility()
-    #player.activeGroupEffect()
     player.activeSpiritorEffect()
     player.save()
 

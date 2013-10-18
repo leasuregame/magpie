@@ -29,6 +29,10 @@ var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL;
 var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
 var EXP_CARD_ID = require('../../../config/data/card').EXP_CARD_ID;
 
+var resData = table.getTableItem('resource_limit', 1);
+var MAX_POWER_VALUE = resData.power_value;
+var MAX_CARD_COUNT = resData.card_count_limit;
+
 var defaultMark = function() {
     var i, result = [];
     for (i = 0; i < 100; i++) {
@@ -51,6 +55,8 @@ var addEvents = function(player) {
         var upgradeInfo = table.getTableItem('player_upgrade', player.lv);
         if (exp >= upgradeInfo.exp) {
             player.increase('lv');
+            // 清空每级仙丹使用详细信息
+            player.elixirPerLv = {};
             player.set('exp', exp - upgradeInfo.exp);
             // 获得升级奖励
             player.increase('money', upgradeInfo.money);
@@ -211,18 +217,23 @@ var Player = (function(_super) {
         'fragments',
         'energy',
         'elixir',
+        'elixirPerLv',
         'spiritor',
         'spiritPool',
         'signIn',
         'achievement',
         'cardBook',
-        'friendsCount'
+        'friendsCount',
+        'rowFragmentCount',
+        'highFragmentCount',
+        'highDrawCardCount',
+        'cardsCount'
     ];
 
     Player.DEFAULT_VALUES = {
         power: {
             time: 0,
-            value: 50
+            value: 150
         },
         lv: 1,
         vip: 0,
@@ -248,7 +259,7 @@ var Player = (function(_super) {
                 isTrigger: false,
                 isClear: false
             },
-            resetTimes:1
+            resetTimes: 1
         },
         dailyGift: {
             lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
@@ -268,6 +279,7 @@ var Player = (function(_super) {
         fragments: 0,
         energy: 0,
         elixir: 0,
+        elixirPerLv: {},
         skillPoint: 0,
         spiritor: {
             lv: 0,
@@ -290,11 +302,22 @@ var Player = (function(_super) {
         cards: {},
         rank: {},
         friends: [],
-        friendsCount: 20
+        friendsCount: 20,
+        rowFragmentCount: 0,
+        highFragmentCount: 0,
+        highDrawCardCount: 0,
+        cardsCount: 100
     };
 
     Player.prototype.increase = function(name, val) {
-        Player.__super__.increase.apply(this, arguments);
+        var rdata = table.getTableItem('resource_limit', 1);
+        if (_.contains(['gold', 'money', 'skillPoint', 'energy'], name)) {
+            if ((this[name] + (val || 1)) > rdata[name]) {
+                val = rdata[name] - this[name];
+            }
+        }
+
+        Player.__super__.increase.apply(this, [name, val]);
         this.emit(name + '.increase', val == null ? 1 : val);
     };
 
@@ -327,7 +350,10 @@ var Player = (function(_super) {
         var cards = this.activeCards();
         for (var i = 0; i < cards.length; i++) {
             var card = cards[i];
-            var incs = {spirit_hp: 0, spirit_atk: 0};
+            var incs = {
+                spirit_hp: 0,
+                spirit_atk: 0
+            };
             var _hp = parseInt(card.init_hp * spiritConfig.hp_inc / 100);
             var _atk = parseInt(card.init_atk * spiritConfig.atk_inc / 100);
 
@@ -400,7 +426,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.activeGroupEffect = function() {
-        var cardIds = _.values(this.lineUpObj());
+        var cardIds = _.values(lineUpToObj(this.lineUp));
         var cards = _.values(this.cards).filter(function(id, c) {
             return c.star >= 3 && cardIds.indexOf(c.id) > -1;
         });
@@ -444,7 +470,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.isLineUpCard = function(card) {
-        return _.contains(_.values(this.lineUpObj()), card.id);
+        return _.contains(_.values(lineUpToObj(this.lineUp)), card.id);
     };
 
     Player.prototype.hasCard = function(id) {
@@ -479,7 +505,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.activeCards = function() {
-        var cardIds = _.values(this.lineUpObj());
+        var cardIds = _.values(lineUpToObj(this.lineUp));
         return _.values(this.cards).filter(function(c) {
             return cardIds.indexOf(c.id) > -1;
         });
@@ -487,7 +513,7 @@ var Player = (function(_super) {
 
     Player.prototype.updatePower = function(power) {
         //if (this.power.value !== power.value) {
-            this.set('power', power);
+        this.set('power', power);
         //}
     };
 
@@ -542,17 +568,15 @@ var Player = (function(_super) {
         dg[name] = value;
         this.dailyGift = dg;
     };
-    /*
-    Player.prototype.hasGive = function(gift) {
-        return _.contains(this.dailyGift.power, gift);
-    };
-   */
+
     Player.prototype.updateLineUp = function(lineupObj) {
         this.set('lineUp', objToLineUp(lineupObj));
+        checkLineUp(this);
     };
 
     Player.prototype.lineUpObj = function() {
-        return lineUpToObj(this, this.lineUp);
+        checkLineUp(this);
+        return lineUpToObj(this.lineUp);
     };
 
     Player.prototype.strengthen = function(target, sources, cb) {
@@ -656,28 +680,28 @@ var Player = (function(_super) {
      5--50      1个
 
      */
-    Player.prototype.createMonoGift = function() {  //产生摸一摸奖励
-       // var task = utility.deepCopy(this.task);
+    Player.prototype.createMonoGift = function() { //产生摸一摸奖励
+        // var task = utility.deepCopy(this.task);
         this.momo = new Array(10);
-        for(var i = 0;i < 6;i++) {
-            this.momo[i] = _.random(1,5);
+        for (var i = 0; i < 6; i++) {
+            this.momo[i] = _.random(1, 5);
         }
-        for(var i = 6;i < 8;i++) {
-            this.momo[i] = _.random(2,10);
+        for (var i = 6; i < 8; i++) {
+            this.momo[i] = _.random(2, 10);
         }
-        this.momo[8] = _.random(5,20);
-        this.momo[9] = _.random(5,50);
+        this.momo[8] = _.random(5, 20);
+        this.momo[9] = _.random(5, 50);
 
         return this.momo;
     };
 
-    Player.prototype.clearMonoGift = function() {   //领取清除摸一摸奖励
+    Player.prototype.clearMonoGift = function() { //领取清除摸一摸奖励
         this.momo = [];
     };
 
     Player.prototype.getMonoGiftTotal = function() { //摸一摸产生奖励总和
         var value = 0;
-        for(var i = 0;i < this.momo.length;i++)
+        for (var i = 0; i < this.momo.length; i++)
             value += this.momo[i];
         return value;
     };
@@ -718,9 +742,9 @@ var Player = (function(_super) {
     };
 
     //重置关卡
-    Player.prototype.resetPassMark = function(){
+    Player.prototype.resetPassMark = function() {
 
-        if(this.pass.resetTimes > 0) {
+        if (this.pass.resetTimes > 0) {
             this.pass.resetTimes--;
             var pass = utility.deepCopy(this.pass);
             this.passMark.value = [];
@@ -735,7 +759,7 @@ var Player = (function(_super) {
         this.increase('passLayer');
     };
 
-    Player.prototype.getPass = function(){
+    Player.prototype.getPass = function() {
         checkPass(this);
         return {
             canReset: this.pass.resetTimes > 0 ? true : false,
@@ -761,7 +785,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.hasMysticalPass = function() {
-        if(this.pass.mystical.isTrigger && !this.pass.mystical.isClear)
+        if (this.pass.mystical.isTrigger && !this.pass.mystical.isClear)
             return true;
         return false;
     };
@@ -832,6 +856,27 @@ var Player = (function(_super) {
         this.emit('receive.bless');
     };
 
+    Player.prototype.isCanUseElixirForCard = function(cardId) {
+        if (_.has(this.elixirPerLv, cardId)) {
+            return this.elixirPerLv[cardId] < elxirLimit(this.lv);
+        }
+        return true;
+    };
+
+    Player.prototype.canUseElixir = function(cardId) {
+        return elxirLimit(this.lv) - (this.elixirPerLv[cardId] || 0);
+    };
+
+    Player.prototype.useElixirForCard = function(cardId, elixir) {
+        var epl = utility.deepCopy(this.elixirPerLv);
+        if (_.has(epl, cardId)) {
+            epl[cardId] += elixir;
+        } else {
+            epl[cardId] = elixir;
+        }
+        this.elixirPerLv = epl;
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,
@@ -871,6 +916,14 @@ var Player = (function(_super) {
     return Player;
 })(Entity);
 
+var elxirLimit = function(lv) {
+    var limit = 1000;
+    if (lv > 50 && lv <= 100) {
+        limit = 2000;
+    }
+    return limit;
+};
+
 // var processSpiritPoll = function(sp) {
 //     if (_.isEmpty(sp)) {
 //         return sp;
@@ -900,12 +953,12 @@ var checkPass = function(player) {
                 isTrigger: false,
                 isClear: false
             },
-            resetTimes:0
+            resetTimes: 0
         };
     }
 };
 
-var lineUpToObj = function(self, lineUp) {
+var lineUpToObj = function(lineUp) {
     var _results = {};
     if (_.isString(lineUp) && lineUp !== '') {
         var lines = lineUp.split(',');
@@ -930,6 +983,43 @@ var objToLineUp = function(obj) {
     return _lineUp.slice(0, -1);
 };
 
+var checkLineUp = function(player) {
+    var obj = lineUpToObj(player.lineUp);
+    var obj_copy = _.clone(obj);
+    var vals = _.values(obj);
+    var card_count = vals.filter(function(v) {
+        return v !== -1;
+    }).length;
+    console.log(obj, vals, card_count);
+
+    var fdata = table.getTableItem('function_limit', 1);
+    var lvMap = {
+        4: fdata.card4_position,
+        5: fdata.card5_position
+    };
+
+    var qty, lv, limit = 5;
+    for (qty in lvMap) {
+        lv = lvMap[qty];
+        if (player.lv < lv) {
+            limit = parseInt(qty) - 1;
+            break;
+        }
+    }
+
+    if (card_count > limit) {
+        for (var i = 0; i < card_count - limit; i++) {
+            for (j in obj_copy) {
+                if (obj_copy[j] !== -1) {
+                    delete obj_copy[j];
+                    break;
+                }
+            }
+        }
+    }
+    player.lineUp = objToLineUp(obj_copy);
+};
+
 var positionConvert = function(val) {
     var order = ['00', '01', '02', '10', '11', '12'];
     return order.indexOf(val) + 1;
@@ -945,8 +1035,8 @@ var getMaxPower = function(lv) {
     //     }
     // }
     // return max_power;
-    
-    return playerConfig.MAX_POWER;
+
+    return MAX_POWER_VALUE;
 };
 
 

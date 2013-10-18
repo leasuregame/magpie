@@ -803,7 +803,7 @@ var Player = (function(_super) {
             si.months[key] = 0;
         }
 
-        si.months[key] = utility.mark(si.months[key], d.getDay() + 1);
+        si.months[key] = utility.mark(si.months[key], d.getDate());
         this.signIn = si;
     };
 
@@ -814,7 +814,7 @@ var Player = (function(_super) {
         if (!_.has(si, key)) {
             return;
         }
-        var firsUnsignDay = 0;
+        var firsUnsignDay = 1;
         for (var i = 1; i <= 31; i++) {
             if (!utility.hasMark(si.months[key], i)) {
                 utility.mark(si.months[key], i);
@@ -822,6 +822,7 @@ var Player = (function(_super) {
                 break;
             }
         }
+        this.signIn = si;
         return firstUnsignDay;
     };
 

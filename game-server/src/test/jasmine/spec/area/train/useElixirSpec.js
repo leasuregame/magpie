@@ -115,12 +115,12 @@ describe("Area Server", function() {
         it('can not use elixir on card whose star is less then 3', function(){
           request('area.trainHandler.useElixir', {
             elixir: 500,
-            cardId: 102
+            cardId: 250
           }, function(data) {
             console.log(data);
             expect(data).toEqual({
               code: 501,
-              msg: '卡牌仙丹容量已满'
+              msg: '不能对3星以下的卡牌使用仙丹'
             });
           });
         });
@@ -134,6 +134,18 @@ describe("Area Server", function() {
             expect(data).toEqual({
               code: 501,
               msg: '使用的仙丹已经超出了卡牌的最大仙丹容量'
+            });
+          });
+        });
+        it('can not use elixir on card will more than the max elixir', function(){
+          request('area.trainHandler.useElixir', {
+            elixir: 50,
+            cardId: 102
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({
+              code: 501,
+              msg: '卡牌仙丹容量已满'
             });
           });
         });

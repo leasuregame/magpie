@@ -178,9 +178,9 @@ saveBattleLog = (bl, playerName) ->
   targetId = bl.enemyId
 
   if bl.winner is 'own'
-    result = '你输了'
+    result = '输了'
   else
-    result = '你赢了'
+    result = '赢了'
 
   app.get('dao').battleLog.create data: {
     own: playerId
@@ -193,7 +193,7 @@ saveBattleLog = (bl, playerName) ->
     app.get('dao').message.create data: {
       sender: playerId
       receiver: targetId
-      content: "玩家#{playerName}在竞技场中挑战了你，" + result 
+      content: "#{playerName}挑战了你，" + result 
       type: msgConfig.MESSAGETYPE.BATTLENOTICE
       status: msgConfig.MESSAGESTATUS.NOTICE
       options: {battleLogId: res.id}

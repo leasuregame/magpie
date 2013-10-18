@@ -444,6 +444,7 @@ Handler::useElixir = (msg, session, next) ->
   elixir = msg.elixir
   type = if typeof msg.type isnt 'undefined' then msg.type else ELIXIR_TYPE_HP
   cardId = msg.cardId
+  elixirLimit = table.getTable('elixir_limit')
 
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if (err) 
@@ -462,11 +463,12 @@ Handler::useElixir = (msg, session, next) ->
     if card.star < 3
       return next(null, {code: 501, msg: '不能对3星以下的卡牌使用仙丹'})
 
-    limit = elixirConfig.limit[card.star]
-    if (card.elixirHp + card.elixirAtk) >= limit
+    limit = elixirLimit.getItem(card.star)
+    console.log '-a-', card, limit
+    if (card.elixirHp + card.elixirAtk) >= limit.elixir_limit
       return next(null, {code: 501, msg: "卡牌仙丹容量已满"})
 
-    if (card.elixirHp + card.elixirAtk + elixir) > limit
+    if (card.elixirHp + card.elixirAtk + elixir) > limit.elixir_limit
       return next(null, {code: 501, msg: "使用的仙丹已经超出了卡牌的最大仙丹容量"})
 
     if not player.isCanUseElixirForCard(cardId)
@@ -528,6 +530,9 @@ Handler::changeLineUp = (msg, session, next) ->
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err
       return next(null, {code: 500, msg: err.msg})
+
+    if not checkCardCount(player.lv, tids)
+      return next(null, {code: 501, msg: "上阵卡牌数量不对"})
 
     player.updateLineUp(lineupObj)
     player.save()
@@ -636,3 +641,12 @@ Handler::exchangeCard = (msg, session, next) ->
 
 cardStar = (tableId) ->
   tableId % 5 or 5
+
+checkCardCount = (playerLv, cardIds) ->
+  card_count = (cardIds.filter (id) -> id isnt -1).length
+  fdata = table.getTableItem('function_limit', 1)
+  lvMap = {4: fdata.card4_position, 5: fdata.card5_position}
+  for qty, lv of lvMap
+    if playerLv < lv and card_count >= qty
+      return false
+  return true

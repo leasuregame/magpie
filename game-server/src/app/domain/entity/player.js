@@ -268,11 +268,11 @@ var Player = (function(_super) {
             powerBuyCount: 2, // 购买体力次数
             challengeCount: 15, // 每日有奖竞技次数
             receivedBless: { // 接收的祝福
-                count: msgConfig.MAX_RECEIVE_COUNT,
+                count: msgConfig.DEFAULT_RECEIVE_COUNT,
                 givers: []
             },
             gaveBless: { // 送出的祝福
-                count: msgConfig.MAX_GIVE_COUNT,
+                count: msgConfig.DEFAULT_GIVE_COUNT,
                 receivers: []
             }
         },
@@ -307,22 +307,53 @@ var Player = (function(_super) {
         highFragmentCount: 0,
         highDrawCardCount: 0,
         cardsCount: 100,
-        isReset: false
+        isReset: 0
     };
 
     Player.prototype.resetDate = function() {
+        var giveBlessMap = {
+            1: 5,
+            31: 10,
+            51: 15,
+            71: 20
+        };
+
+        var recieveBlessMap = {
+            1: 20,
+            31: 30,
+            51: 40,
+            71: 50
+        };
+
+        var realCount = function(lv, mapobj) {
+            var keys = Object.keys(mapobj);
+            var _i, _len, k, step = 5;
+
+            var _ref = keys.reverse();
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                k = _ref[_i];
+                if (lv >= k) {
+                    step = mapobj[k];
+                    break;
+                }
+            }
+            return step;
+        };
+
+        var vipPrivilege = table.getTableItem('vip_privilege', this.vip);
+
         var dg = {
-            lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
+            lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT + vipPrivilege.lottery_free_count, // 每日抽奖次数
             lotteryFreeCount: 0, // 每日免费抽奖次数
             powerGiven: [], // 体力赠送情况
-            powerBuyCount: 6, // 购买体力次数
-            challengeCount: 10, // 每日有奖竞技次数
+            powerBuyCount: 6 + vipPrivilege.buy_power_count, // 购买体力次数
+            challengeCount: 10 + vipPrivilege.challenge_count, // 每日有奖竞技次数
             receivedBless: { // 接收的祝福
-                count: msgConfig.MAX_RECEIVE_COUNT,
+                count: realCount(this.lv, recieveBlessMap) + vipPrivilege.receive_bless_count,
                 givers: []
             },
             gaveBless: { // 送出的祝福
-                count: msgConfig.MAX_GIVE_COUNT,
+                count: realCount(this.lv, giveBlessMap) + vipPrivilege.give_bless_count,
                 receivers: []
             }
         };
@@ -331,11 +362,12 @@ var Player = (function(_super) {
         pass.resetTimes = 1;
 
         var spiritPool = utility.deepCopy(this.spiritPool);
-        spiritPool.collectCount = spiritConfig.MAX_COLLECT_COUNT
+        spiritPool.collectCount = spiritConfig.MAX_COLLECT_COUNT + vipPrivilege.spirit_collect_count;
 
         this.dailyGift = dg;
         this.pass = pass;
         this.spiritPool = spiritPool;
+        this.isReset = 1;
     };
 
     Player.prototype.increase = function(name, val) {

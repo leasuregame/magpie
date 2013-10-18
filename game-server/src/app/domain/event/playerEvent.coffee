@@ -61,9 +61,10 @@ exports.addEvents = (app, player) ->
     day = now.getDate()
     start = new Date(year, month, day)
     end = new Date(year, month, day, 0, 10, 0)
-
+    
     if start <= now <= end and not player.isReset
       player.resetDate()
+      player.save()
 
   player.emit('lineUp.change')
 

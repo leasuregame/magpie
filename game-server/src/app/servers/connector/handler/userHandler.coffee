@@ -51,13 +51,13 @@ Handler::login = (msg, session, next) ->
     (cb) =>
         sessionService = @app.get 'sessionService'
         if sessionService.getByUid(uid)
-          channelService = @app.get('channelService');
-          channelService.pushMessageByUids('onKick', {msg:'账号在其他地方登陆'}, [{
-            uid: uid,
-            sid: @app.get('serverId')
-          }],(err)->
+       #   channelService = @app.get('channelService');
+      #    channelService.pushMessageByUids('onMessage', {msg:'账号在其他地方登陆'}, [{
+      #      uid: uid,
+      #     sid: @app.get('serverId')
+      #    }],(err)->
             sessionService.kick(uid,cb);
-          )
+      #    )
 
         else
           cb()

@@ -269,7 +269,12 @@ var SignInLayer = LazyLayer.extend({
     _onClickRemedySignIn: function () {
         cc.log("SignInLayer _onClickRemedySignIn");
 
+        var that = this;
+        gameData.signIn.remedySignIn(function (data) {
+            cc.log(data);
 
+            that.update();
+        });
     },
 
     _onClickReceiveReward: function (id) {

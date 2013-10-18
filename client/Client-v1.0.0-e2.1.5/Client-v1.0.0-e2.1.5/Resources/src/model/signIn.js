@@ -146,7 +146,7 @@ var SignIn = Entity.extend({
         });
     },
 
-    remedySignIn: function(cb) {
+    remedySignIn: function (cb) {
         cc.log("SignIn remedySignIn");
 
         var that = this;
@@ -155,18 +155,18 @@ var SignIn = Entity.extend({
             cc.log(data);
 
             if (data.code == 200) {
-                cc.log("signIn success");
+                cc.log("remedySignIn success");
 
                 var msg = data.msg;
 
                 gameData.player.adds(msg);
 
-                var day = new Date().getDate() - 1;
+                var day = msg.day - 1;
                 that._monthsMark[0].mark |= (1 << day);
 
                 cb();
             } else {
-                cc.log("signIn fail");
+                cc.log("remedySignIn fail");
             }
         });
     },
@@ -240,12 +240,3 @@ SignIn.create = function () {
 
     return null;
 };
-
-
-player = {
-    lv : 0,
-
-    lvChange: function() {
-
-    }
-}

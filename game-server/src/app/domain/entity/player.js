@@ -571,11 +571,11 @@ var Player = (function(_super) {
 
     Player.prototype.updateLineUp = function(lineupObj) {
         this.set('lineUp', objToLineUp(lineupObj));
-        //checkLineUp(this);
+        checkLineUp(this);
     };
 
     Player.prototype.lineUpObj = function() {
-        //checkLineUp(this);
+        checkLineUp(this);
         return lineUpToObj(this.lineUp);
     };
 

@@ -1,6 +1,16 @@
 var nameChanged = {
     "achievement": "成就配置表",
     "成就配置表": "achievement",
+    "function_limit": "功能开放等级限制",
+    "功能开放等级限制": "function_limit",
+    "elixir_limit": "仙丹培养限制表",
+    "仙丹培养限制表": "elixir_limit",
+    "resource_limit": "资源限制表",
+    "资源限制表": "resource_limit",
+    "daily_signin_rewards": "每日签到奖励",
+    "每日签到奖励": "daily_signin_rewards",
+    "signIn_rewards": "连续签到奖励",
+    "连续签到奖励": "signIn_rewards",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
     "card_lv_limit": "卡牌等级限制表",
@@ -15,14 +25,6 @@ var nameChanged = {
     "基础属性成长表": "factors",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
-    "function_limit": "功能开放等级限制",
-    "功能开放等级限制": "function_limit",
-    "resource_limit": "资源限制表",
-    "资源限制表": "resource_limit",
-    "daily_signin_rewards": "每日签到奖励",
-    "每日签到奖励": "daily_signin_rewards",
-    "signIn_rewards": "连续签到奖励",
-    "连续签到奖励": "signIn_rewards",
     "treasure_hunt": "寻宝配置表",
     "寻宝配置表": "treasure_hunt",
     "rank": "竞技产出表",
@@ -307,6 +309,111 @@ var outputTables = {
                 "desc": "累计消耗元宝100000",
                 "gold": 50,
                 "energy": 500
+            }
+        }
+    },
+    "function_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rank": 10,
+                "pass": 20,
+                "card4_position": 30,
+                "lottery": 40,
+                "card5_position": 50,
+                "ranking_list": 55
+            }
+        }
+    },
+    "elixir_limit": {
+        "colComment": {},
+        "rows": {
+            "3": {
+                "id": 3,
+                "elixir_limit": 10000
+            },
+            "4": {
+                "id": 4,
+                "elixir_limit": 25000
+            },
+            "5": {
+                "id": 5,
+                "elixir_limit": 50000
+            }
+        }
+    },
+    "resource_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "gold": 999999,
+                "money": 99999999,
+                "skillPoint": 99999,
+                "energy": 99999,
+                "card_count_limit": 100,
+                "power_value": 150
+            }
+        }
+    },
+    "daily_signin_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 1000,
+                "energy": 50
+            }
+        }
+    },
+    "signIn_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5,
+                "money": 5000,
+                "energy": 100,
+                "skillPoint": 0,
+                "elixir": 0,
+                "lottery_free_count": 0
+            },
+            "2": {
+                "id": 2,
+                "count": 10,
+                "money": 10000,
+                "energy": 200,
+                "skillPoint": 800,
+                "elixir": 0,
+                "lottery_free_count": 0
+            },
+            "3": {
+                "id": 3,
+                "count": 15,
+                "money": 20000,
+                "energy": 300,
+                "skillPoint": 1000,
+                "elixir": 500,
+                "lottery_free_count": 0
+            },
+            "4": {
+                "id": 4,
+                "count": 20,
+                "money": 30000,
+                "energy": 500,
+                "skillPoint": 2000,
+                "elixir": 1000,
+                "lottery_free_count": 5
+            },
+            "5": {
+                "id": 5,
+                "count": 25,
+                "money": 50000,
+                "energy": 800,
+                "skillPoint": 3000,
+                "elixir": 2000,
+                "lottery_free_count": 10
             }
         }
     },
@@ -10217,93 +10324,6 @@ var outputTables = {
             }
         }
     },
-    "function_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rank": 10,
-                "pass": 20,
-                "card4_position": 30,
-                "lottery": 40,
-                "card5_position": 50
-            }
-        }
-    },
-    "resource_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "gold": 999999,
-                "money": 99999999,
-                "skillPoint": 99999,
-                "energy": 99999,
-                "card_count_limit": 100,
-                "power_value": 150
-            }
-        }
-    },
-    "daily_signin_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 1000,
-                "energy": 50
-            }
-        }
-    },
-    "signIn_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5,
-                "money": 5000,
-                "energy": 100,
-                "skillPoint": 0,
-                "elixir": 0,
-                "lottery_free_count": 0
-            },
-            "2": {
-                "id": 2,
-                "count": 10,
-                "money": 10000,
-                "energy": 200,
-                "skillPoint": 800,
-                "elixir": 0,
-                "lottery_free_count": 0
-            },
-            "3": {
-                "id": 3,
-                "count": 15,
-                "money": 20000,
-                "energy": 300,
-                "skillPoint": 1000,
-                "elixir": 500,
-                "lottery_free_count": 0
-            },
-            "4": {
-                "id": 4,
-                "count": 20,
-                "money": 30000,
-                "energy": 500,
-                "skillPoint": 2000,
-                "elixir": 1000,
-                "lottery_free_count": 5
-            },
-            "5": {
-                "id": 5,
-                "count": 25,
-                "money": 50000,
-                "energy": 800,
-                "skillPoint": 3000,
-                "elixir": 2000,
-                "lottery_free_count": 10
-            }
-        }
-    },
     "treasure_hunt": {
         "colComment": {},
         "rows": {
@@ -11313,26 +11333,18 @@ var outputTables = {
             },
             "10": {
                 "id": 10,
-                "elixir": 3500
+                "elixir": 3000
             },
             "50": {
                 "id": 50,
-                "elixir": 3000
+                "elixir": 2500
             },
             "100": {
                 "id": 100,
-                "elixir": 2500
+                "elixir": 2000
             },
             "500": {
                 "id": 500,
-                "elixir": 2000
-            },
-            "1000": {
-                "id": 1000,
-                "elixir": 1500
-            },
-            "5000": {
-                "id": 5000,
                 "elixir": 1000
             }
         }

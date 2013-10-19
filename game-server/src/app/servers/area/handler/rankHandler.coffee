@@ -51,7 +51,13 @@ Handler::rankingList = (msg, session, next) ->
 
     players = filterPlayersInfo(players, rankings)
     players.sort (x, y) -> x.ranking - y.ranking
-    next(null, {code: 200, msg: players})
+    rank = {
+      ranking: player.getRank().ranking,
+      rankReward: player.getRank().rankReward,
+      rankList: players
+    }
+    next(null,{code: 200, msg: {rank: rank}})
+    #next(null, {code: 200, msg: players})
 
 Handler::challenge = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -90,10 +96,7 @@ Handler::challenge = (msg, session, next) ->
 
       bl.rewards = rewards
       next(null, {code: 200, msg: {
-        battleLog: bl, 
-        counts: player.rank?.counts,
-        rankingRewards: player.rank?.rankingRewards(),
-        power: player.power,
+        battleLog: bl,
         lv: player.lv,
         exp: player.exp
       }})
@@ -169,7 +172,7 @@ filterPlayersInfo = (players, rankings) ->
       ability: p.ability
       lv: p.lv
       ranking: p.rank.ranking
-      cards: p.activeCards().map (c) -> c.toJson()
+      cards: p.activeCards().map (c) -> c.tableId
       type: rankings[p.rank.ranking]
     }
     
@@ -178,9 +181,9 @@ saveBattleLog = (bl, playerName) ->
   targetId = bl.enemyId
 
   if bl.winner is 'own'
-    result = '输了'
+    result = '你输了'
   else
-    result = '赢了'
+    result = '你赢了'
 
   app.get('dao').battleLog.create data: {
     own: playerId

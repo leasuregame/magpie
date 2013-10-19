@@ -35,9 +35,14 @@ Handler::rankingList = (msg, session, next) ->
   async.waterfall [
     (cb) =>
       playerManager.getPlayerInfo {pid: playerId}, cb
-
     (res, cb) ->
       player = res
+      #fdata = table.getTableItem('function_limit', 1)
+      #if player.lv < fdata.rank
+      #   return cb({code: 501, msg: fdata.rank+'级开放'})
+      #else
+      cb()
+    (cb) ->
       rankings = genRankings(player.rank.ranking)
       playerManager.rankingList _.keys(rankings), (err, players) ->
         cb(err, players, rankings)
@@ -54,6 +59,7 @@ Handler::rankingList = (msg, session, next) ->
     rank = {
       ranking: player.getRank().ranking,
       rankReward: player.getRank().rankReward,
+      challengeCount: player.dailyGift.challengeCount,
       rankList: players
     }
     next(null,{code: 200, msg: {rank: rank}})

@@ -48,13 +48,13 @@ var MainLayer = cc.Layer.extend({
         var abilityLabel = cc.LabelTTF.create(player.get("ability"), "STHeitiTC-Medium", 22);
         abilityLabel.setColor(cc.c3b(255, 239, 131));
         abilityLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        abilityLabel.setPosition(cc.p(300, 700));
+        abilityLabel.setPosition(cc.p(300, 696));
         this.addChild(abilityLabel);
 
         var rankingLabel = cc.LabelTTF.create(gameData.tournament.get("ranking"), "STHeitiTC-Medium", 22);
         rankingLabel.setColor(cc.c3b(255, 239, 131));
         rankingLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        rankingLabel.setPosition(cc.p(530, 700));
+        rankingLabel.setPosition(cc.p(530, 696));
         this.addChild(rankingLabel);
 
         var lineUpLabel = LineUpLabel.create();

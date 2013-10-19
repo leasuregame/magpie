@@ -179,7 +179,6 @@ var TournamentLabel = cc.Node.extend({
                 gameData.tournament.defiance(function (id) {
                     BattlePlayer.getInstance().play(id);
                 }, this._player.playerId);
-
             }
         }
     }

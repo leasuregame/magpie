@@ -81,5 +81,11 @@ CardHeadNode.getCardHeadItem = function (card, cb, target) {
     target = target || this;
 
     var cardHeadNode = CardHeadNode.create(card);
-    return cc.MenuItemLabel.create(cardHeadNode, cb, target);
+    var cardItem = cc.MenuItemLabel.create(cardHeadNode, cb, target);
+
+    cardItem.setColor = function (color3) {
+        cardHeadNode.setColor(color3);
+    };
+
+    return cardItem;
 };

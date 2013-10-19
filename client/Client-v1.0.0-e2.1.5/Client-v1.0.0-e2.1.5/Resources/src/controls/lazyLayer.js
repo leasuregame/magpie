@@ -87,10 +87,6 @@ LazyLayer.create = function () {
     LazyLayer.showCloudLayer = function () {
         cc.log("LazyLayer showCloudLayer");
 
-        if (cloudLayer && cloudLayer.getParent()) {
-            cloudLayer.removeFromParent();
-        }
-
         cloudLayer = LazyLayer.create();
         MainScene.getInstance().getLayer().addChild(cloudLayer, zOrder);
     };

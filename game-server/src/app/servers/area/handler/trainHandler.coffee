@@ -122,7 +122,7 @@ Handler::luckyCard = (msg, session, next) ->
     (card, cb) ->
       entityUtil.createCard card, cb
         
-    (cardEnt, cb) ->
+    (cardEnt, cb) =>
       player.addCard(cardEnt);
       if(level == 1)
           player.increase('rowFragmentCount',1)
@@ -138,6 +138,12 @@ Handler::luckyCard = (msg, session, next) ->
 
       if level is 2 and cardEnt.star == 5 #抽到5星卡牌，高级抽卡次数变为0
         player.set('highDrawCardCount',0)
+        card = table.getTableItem('cards', cardEnt.tableId)
+        msg = {
+          route: 'onSystemMessage',
+          msg: player.name + '幸运的召唤到了5星卡' + card.name + '！！！'
+        }
+        @app.get('messageService').pushMessage(msg)
 
       if fragment
         player.increase('fragments',fragment)
@@ -252,7 +258,7 @@ Handler::starUpgrade = (msg, session, next) ->
 
       cb(null)
 
-    (cb) ->
+    (cb) =>
       money_consume = starUpgradeConfig.money_need
       
       if player.money < money_consume
@@ -294,6 +300,12 @@ Handler::starUpgrade = (msg, session, next) ->
         # 获得五星卡成就
         if card.star is 5
           achieve.star5card(player)
+          cardNmae = table.getTableItem('cards', card.tableId).name
+          msg = {
+            route: 'onSystemMessage',
+            msg: player.name + '成功的将' + cardNmae + '进阶为5星！！！'
+          }
+          @app.get('messageService').pushMessage(msg)
 
         # 卡牌星级进阶，添加一个被动属性
         if card.star >= 3
@@ -444,6 +456,7 @@ Handler::useElixir = (msg, session, next) ->
   elixir = msg.elixir
   type = if typeof msg.type isnt 'undefined' then msg.type else ELIXIR_TYPE_HP
   cardId = msg.cardId
+  elixirLimit = table.getTable('elixir_limit')
 
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if (err) 
@@ -462,11 +475,12 @@ Handler::useElixir = (msg, session, next) ->
     if card.star < 3
       return next(null, {code: 501, msg: '不能对3星以下的卡牌使用仙丹'})
 
-    limit = elixirConfig.limit[card.star]
-    if (card.elixirHp + card.elixirAtk) >= limit
+    limit = elixirLimit.getItem(card.star)
+    console.log '-a-', card, limit
+    if (card.elixirHp + card.elixirAtk) >= limit.elixir_limit
       return next(null, {code: 501, msg: "卡牌仙丹容量已满"})
 
-    if (card.elixirHp + card.elixirAtk + elixir) > limit
+    if (card.elixirHp + card.elixirAtk + elixir) > limit.elixir_limit
       return next(null, {code: 501, msg: "使用的仙丹已经超出了卡牌的最大仙丹容量"})
 
     if not player.isCanUseElixirForCard(cardId)

@@ -319,7 +319,7 @@ describe("Area Server", function() {
               //expect(data).toEqual('');
               //expect(data.msg[data.msg.length - 1].ranking).toEqual(cur_ranking);
 
-              expect(_.map(data.msg, function(p) {
+              expect(_.map(data.msg.rank.rankList, function(p) {
                 return p.ranking;
               }).sort(function(a, b) {
                 return a - b;

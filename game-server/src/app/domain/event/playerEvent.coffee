@@ -54,6 +54,18 @@ exports.addEvents = (app, player) ->
     player.activeSpiritorEffect()
     player.save()
 
+  player.on 'data.reset', ->
+    now = new Date();
+    year = now.getFullYear()
+    month = now.getMonth()
+    day = now.getDate()
+    start = new Date(year, month, day)
+    end = new Date(year, month, day, 0, 10, 0)
+    
+    if start <= now <= end and not player.isReset
+      player.resetDate()
+      player.save()
+
   player.emit('lineUp.change')
 
   return

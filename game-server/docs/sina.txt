@@ -50,6 +50,7 @@ make build && ./node_modules/.bin/pomelo stop && ./node_modules/.bin/pomelo star
 make inittables
 node ./bin/dao.js all production
 
+cd game-server
 pkill -9 -f node
 make build
 ./node_modules/.bin/pomelo start production --daemon

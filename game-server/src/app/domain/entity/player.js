@@ -878,6 +878,28 @@ var Player = (function(_super) {
         this.elixirPerLv = epl;
     };
 
+    Player.prototype.getRanking = function() {
+        var rank = {
+            ranking: 0
+        };
+        if(this.tank) {
+            rank.ranking = this.rank.ranking;
+        }
+        return rank;
+    };
+
+    Player.prototype.getRank = function() {
+        var rank = {
+            ranking: 0,
+            rankReward: []
+        };
+        if(this.rank) {
+            rank.ranking = this.rank.ranking;
+            rankReward =  this.rank.rankingRewards()
+        }
+        return rank;
+    }
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,
@@ -907,8 +929,9 @@ var Player = (function(_super) {
             cards: _.values(this.cards).map(function(card) {
                 return card.toJson();
             }),
-            rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
+            //rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
             //friends: this.friends,
+            rank: this.getRanking(),
             signIn: utility.deepCopy(this.signIn),
             friendsCount: this.friendsCount
         };

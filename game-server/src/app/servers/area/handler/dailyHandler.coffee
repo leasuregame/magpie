@@ -87,9 +87,12 @@ Handler::reSignIn = (msg, session, next) ->
       return next(null, {code: 501, msg: '没有日期可以补签'})
 
     day = player.signFirstUnsignDay()
+    if day >= (new Date).getDate()
+      return next(null, {code: 501, msg: '没有日期可以补签'})
+
     player.decrease('gold', 10)
     player.save()
-
+    
     next(null, {code: 200, msg: day: day})
 
 Handler::getSignInGift = (msg, session, next) ->

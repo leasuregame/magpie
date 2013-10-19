@@ -31,3 +31,8 @@ Area.powerConsume = ->
     p.emit('power.resume')
     p.emit('power.give')
   return
+
+Area.resetDate = ->
+  for p in @getPlayers()
+    p.emit('data.reset')
+  return

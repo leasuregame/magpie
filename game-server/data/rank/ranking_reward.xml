@@ -21,8 +21,8 @@
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <WindowHeight>8120</WindowHeight>
   <WindowWidth>28800</WindowWidth>
-  <WindowTopX>9400</WindowTopX>
-  <WindowTopY>2660</WindowTopY>
+  <WindowTopX>120</WindowTopX>
+  <WindowTopY>140</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -81,6 +81,7 @@
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="12" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="156"/>
+   <Column ss:Width="153"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">竞技排名</Data></Cell>
@@ -153,7 +154,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>11</ActiveRow>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
@@ -189,14 +190,15 @@
     <Cell ss:StyleID="s69"><Data ss:Type="Number">2000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">200</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">1500</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="Number">500</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="Number">1000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
    </Row>
   </Table>
@@ -211,8 +213,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

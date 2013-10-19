@@ -15,8 +15,8 @@ exp = module.exports = {
 		NOTICE: 6
 	},
 	FINALSTATUS: [2, 3, 4, 6],
-	MAX_GIVE_COUNT: 15,
-	MAX_RECEIVE_COUNT: 15
+	DEFAULT_GIVE_COUNT: 5,
+	DEFAULT_RECEIVE_COUNT: 5
 };
 
 exp.TYPE_MAP = {}

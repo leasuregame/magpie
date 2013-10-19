@@ -48,11 +48,11 @@ var TournamentLabel = cc.Node.extend({
         playerItemMenu.setPosition(cc.p(0, 0));
         this.addChild(playerItemMenu);
 
-        var playerNameLabel = cc.LabelTTF.create(this._player.name, '黑体', 25);
+        var playerNameLabel = cc.LabelTTF.create(this._player.name, "黑体", 25);
         playerNameLabel.setPosition(cc.p(95, 99));
         this.addChild(playerNameLabel);
 
-        var playerRankLabel = cc.LabelTTF.create(this._player.rank, '黑体', 35);
+        var playerRankLabel = cc.LabelTTF.create(this._player.ranking, "黑体", 35);
         playerRankLabel.setPosition(cc.p(95, 48));
         this.addChild(playerRankLabel);
 

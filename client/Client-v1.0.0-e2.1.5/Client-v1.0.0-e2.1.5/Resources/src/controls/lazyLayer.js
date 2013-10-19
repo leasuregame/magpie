@@ -70,6 +70,16 @@ var LazyLayer = cc.Layer.extend({
 });
 
 
+LazyLayer.create = function () {
+    var ret = new LazyLayer();
+
+    if (ret && ret.init()) {
+        return ret;
+    }
+
+    return null;
+};
+
 (function () {
     var cloudLayer = null;
     var zOrder = 10000;
@@ -89,15 +99,6 @@ var LazyLayer = cc.Layer.extend({
         cc.log("LazyLayer closeCloudLayer");
 
         cloudLayer.removeFromParent();
+        cloudLayer = null;
     };
 })();
-
-LazyLayer.create = function () {
-    var ret = new LazyLayer();
-
-    if (ret && ret.init()) {
-        return ret;
-    }
-
-    return null;
-};

@@ -327,7 +327,7 @@ TreasureHuntLayer.canEnter = function () {
     var limitLv = outputTables.function_limit.rows[1].lottery;
     var lv = gameData.player.get("lv");
 
-    if (lv > limitLv) {
+    if (lv >= limitLv) {
         return true;
     }
 

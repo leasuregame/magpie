@@ -17,7 +17,8 @@ var TournamentLayer = cc.Layer.extend({
     _nameLabel: null,
     _expProgress: null,
     _lvLabel: null,
-    _rankLabel: null,
+    _rankingLabel: null,
+    _countLabel: null,
     _abilityLabel: null,
 
     onEnter: function () {
@@ -46,7 +47,7 @@ var TournamentLayer = cc.Layer.extend({
         playerLabel.setPosition(cc.p(40, 873));
         this.addChild(playerLabel);
 
-        this._nameLabel = cc.LabelTTF.create("null", '黑体', 30);
+        this._nameLabel = cc.LabelTTF.create("null", "黑体", 30);
         this._nameLabel.setAnchorPoint(cc.p(0, 0.5));
         this._nameLabel.setPosition(cc.p(150, 974));
         this.addChild(this._nameLabel);
@@ -61,17 +62,21 @@ var TournamentLayer = cc.Layer.extend({
         lvBg.setScale(0.8);
         this.addChild(lvBg, 2);
 
-        this._lvLabel = cc.LabelTTF.create("0", '黑体', 45);
+        this._lvLabel = cc.LabelTTF.create("0", "黑体", 45);
         this._lvLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._lvLabel.setPosition(cc.p(100, 954));
         this._lvLabel.setScale(0.8);
         this.addChild(this._lvLabel, 2);
 
-        this._rankLabel = cc.LabelTTF.create(0, '黑体', 25);
-        this._rankLabel.setPosition(cc.p(440, 940));
-        this.addChild(this._rankLabel);
+        this._countLabel = cc.LabelTTF.create(0, "黑体", 22);
+        this._countLabel.setPosition(cc.p(555, 980));
+        this.addChild(this._countLabel);
 
-        this._abilityLabel = cc.LabelTTF.create(0, '黑体', 25);
+        this._rankingLabel = cc.LabelTTF.create(0, "黑体", 22);
+        this._rankingLabel.setPosition(cc.p(440, 940));
+        this.addChild(this._rankingLabel);
+
+        this._abilityLabel = cc.LabelTTF.create(0, "黑体", 22);
         this._abilityLabel.setPosition(cc.p(605, 940));
         this.addChild(this._abilityLabel);
 
@@ -85,7 +90,6 @@ var TournamentLayer = cc.Layer.extend({
         this._expProgress.setAllValue(player.get("power"), player.get("maxPower"));
         this._nameLabel.setString(player.get("name"));
         this._lvLabel.setString(player.get("lv"));
-        this._rankLabel.setString(player.get("rank"));
         this._abilityLabel.setString(player.get("ability"));
 
         if (this._rankScrollView != null) {
@@ -103,7 +107,12 @@ var TournamentLayer = cc.Layer.extend({
     _addRankScrollView: function () {
         cc.log("TournamentLayer _addRankScrollView");
 
-        var rankList = gameData.tournament.get("rankList");
+        var tournament = gameData.tournament;
+
+        this._rankingLabel.setString(tournament.get("ranking"));
+        this._countLabel.setString(tournament.get("count"));
+
+        var rankList = tournament.get("rankList");
         var len = rankList.length;
         var height = len * 135;
 

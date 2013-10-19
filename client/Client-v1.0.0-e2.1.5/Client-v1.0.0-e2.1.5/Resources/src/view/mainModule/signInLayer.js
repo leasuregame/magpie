@@ -16,8 +16,9 @@ var rewardGoodsUrl = {
     money: "icon108",
     energy: "icon110",
     skillPoint: "icon109",
-    spirit: "icon111",
+    elixir: "icon107",
     lottery_free_count: "icon182",
+    spirit: "icon111",
     gold: "icon112"
 };
 
@@ -263,6 +264,8 @@ var SignInLayer = LazyLayer.extend({
             cc.log(data);
 
             that.update();
+
+            lz.tipReward(data);
         });
     },
 
@@ -274,6 +277,8 @@ var SignInLayer = LazyLayer.extend({
             cc.log(data);
 
             that.update();
+
+            lz.tipReward(data);
         });
     },
 
@@ -294,6 +299,8 @@ var SignInLayer = LazyLayer.extend({
                     cc.log(data);
 
                     that.update();
+
+                    lz.tipReward(data);
                 }, id + 1);
             }
         }

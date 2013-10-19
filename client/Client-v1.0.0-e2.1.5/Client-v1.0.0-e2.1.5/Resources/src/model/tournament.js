@@ -13,12 +13,20 @@
 
 
 var Tournament = Entity.extend({
+    _ranking: 0,
+    _count: 0,
+    _rankReward: [],
     _rankList: [],
-    _length: 0,
 
-
-    init: function () {
+    init: function (data) {
         cc.log("Tournament init");
+
+        this._ranking = 0;
+        this._count = 0;
+        this._rankReward = [];
+        this._rankList = [];
+
+        this.update(data);
 
         return true;
     },
@@ -26,27 +34,40 @@ var Tournament = Entity.extend({
     update: function (data) {
         cc.log("Tournament update");
 
-        var len = data.length;
+        this.set("ranking", data.ranking);
+        this.set("count", data.challengeCount);
+        this.set("rankReward", data.rankReward);
 
-        for (var i = 0; i < len; ++i) {
-            player = data[i];
+        if (data.rankList) {
+            this._rankList = [];
 
-            var cards = player.cards;
-            var cardsLen = cards.length;
-            var cardList = [];
+            var rankList = data.rankList;
+            var len = rankList.length;
 
-            for (var j = 0; j < cardsLen; ++j) {
-                cardList[j] = Card.create(cards[j]);
-            }
+            for (var i = 0; i < len; ++i) {
+                var player = rankList[i];
 
-            this._rankList[i] = {
-                playerId: player.playerId,
-                name: player.name,
-                lv: player.lv,
-                ability: player.ability,
-                rank: player.ranking,
-                cardList: cardList,
-                type: player.type
+                var cards = player.cards;
+                var cardsLen = cards.length;
+                var cardList = [];
+
+                for (var j = 0; j < cardsLen; ++j) {
+                    cardList[j] = Card.create({
+                        tableId: cards[j],
+                        lv: 1,
+                        skillLv: 0
+                    });
+                }
+
+                this._rankList[i] = {
+                    playerId: player.playerId,
+                    name: player.name,
+                    lv: player.lv,
+                    ability: player.ability,
+                    ranking: player.ranking,
+                    cardList: cardList,
+                    type: player.type
+                }
             }
         }
     },
@@ -62,11 +83,14 @@ var Tournament = Entity.extend({
                 cc.log("Tournament sync success");
 
                 var msg = data.msg;
-                that.update(msg);
+
+                that.update(msg.rank);
 
                 cb();
             } else {
                 cc.log("Tournament sync fail");
+
+                TipLayer.tip("刷新榜单失败");
 
                 cb();
             }
@@ -77,13 +101,20 @@ var Tournament = Entity.extend({
         cc.log("Tournament defiance " + targetId);
 
         var that = this;
-        lzWindow.pomelo.request("area.rankHandler.challenge", {targetId: targetId}, function (data) {
+        lzWindow.pomelo.request("area.rankHandler.challenge", {
+            targetId: targetId
+        }, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
                 cc.log("Tournament defiance success");
 
                 var msg = data.msg;
+
+                gameData.player.sets({
+                    lv: msg.lv,
+                    exp: msg.exp
+                });
 
                 var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
 
@@ -92,11 +123,6 @@ var Tournament = Entity.extend({
                 cc.log("Tournament defiance fail");
             }
         });
-    },
-
-    addFriend: function () {
-        cc.log("Tournament addFriend");
-
     }
 });
 

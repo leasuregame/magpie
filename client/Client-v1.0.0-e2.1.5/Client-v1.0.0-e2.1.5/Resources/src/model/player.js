@@ -44,6 +44,10 @@ var Player = Entity.extend({
     init: function (data) {
         cc.log("Player init");
 
+        MAX_LINE_UP_CARD = 3;
+
+        this.on("lvChange", this._lvChangeEvent);
+
         this.update(data);
 
         gameData.cardLibrary.init();
@@ -56,10 +60,6 @@ var Player = Entity.extend({
         gameData.exchange.init();
 
         cc.log(this);
-
-        MAX_LINE_UP_CARD = 3;
-
-        this.on("lvChange", this._lvChangeEvent);
 
         return true;
     },
@@ -98,6 +98,7 @@ var Player = Entity.extend({
         if (data.pass) gameData.pass.init(data.pass);
         if (data.spiritor) gameData.spirit.init(data.spiritor);
         if (data.spiritPool) gameData.spiritPool.init(data.spiritPool);
+        if (data.rank) gameData.tournament.init(data.rank);
 
         if (data.dailyGift) gameData.treasureHunt.init({
             count: data.dailyGift.lotteryCount,

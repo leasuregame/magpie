@@ -168,7 +168,8 @@ var gameGoodsName = {
     "energy": "活力",
     "skillPoint": "技能点",
     "totalSpirit": "灵气",
-    "cards": "经验卡"
+    "cards": "经验卡",
+    "freeCount": "免费抽奖次数"
 };
 
 lz.getNameByKey = function (key) {
@@ -207,6 +208,16 @@ lz.getTimeStr = function (time) {
     }
 
     return timeStr;
+};
+
+lz.tipReward = function (reward) {
+    reward = reward || {};
+
+    var key;
+
+    for (key in reward) {
+        TipLayer.tipNoBg(lz.getNameByKey(key) + ": " + reward[key]);
+    }
 };
 
 // 获取不大于原数的随机数

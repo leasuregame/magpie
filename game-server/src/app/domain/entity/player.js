@@ -946,7 +946,7 @@ var Player = (function(_super) {
         var rank = {
             ranking: 0
         };
-        if(this.tank) {
+        if(this.rank) {
             rank.ranking = this.rank.ranking;
         }
         return rank;

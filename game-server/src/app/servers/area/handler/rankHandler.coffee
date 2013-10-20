@@ -47,12 +47,35 @@ Handler::rankingList = (msg, session, next) ->
       playerManager.rankingList _.keys(rankings), (err, players) ->
         cb(err, players, rankings)
 
+    (players,rankings,cb) ->
+
+      flag = []
+
+      for p in players when p.id isnt playerId and p.id in player.rank.recentChallenger
+        rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK
+        flag.push p.id
+
+      #console.log 'recentChallenger = ',player.rank.recentChallenger
+      #console.log 'flag = ',flag
+
+      plys = _.difference(player.rank.recentChallenger,flag)
+
+      #console.log 'plys = ',plys
+
+      playerManager.getPlayers plys, (err, ply) ->
+        rank = {}
+
+        for key , value of ply
+          players.push value
+          rank[value.rank.ranking] = STATUS_COUNTER_ATTACK
+
+        cb(err, players, _.extend(rankings,rank))
+
+
   ], (err, players, rankings) ->
+
     if err
       return next(null, {code: err.code, msg: err.message})
-
-    rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK \
-      for p in players when p.id isnt playerId and p.id in player.rank.recentChallenger
 
     players = filterPlayersInfo(players, rankings)
     players.sort (x, y) -> x.ranking - y.ranking
@@ -156,18 +179,22 @@ genRankings = (ranking) ->
   for r in [1..10]
     top10[r] = if ranking > 10 then STATUS_NORMAL else STATUS_CHALLENGE
 
-  return top10 if ranking <= 10
-
-  keys = Object.keys(INTERVALS)
-  step = 1
-  for k in keys.reverse()
-    if ranking >= k
-      step = INTERVALS[k]
-      break
-
   _results = {}
-  _results[ranking - step * i] = STATUS_CHALLENGE for i in [0...10]
 
+  if ranking <= 10
+    _results[11] = STATUS_CHALLENGE
+
+  else
+    keys = Object.keys(INTERVALS)
+    step = 1
+    for k in keys.reverse()
+      if ranking >= k
+        step = INTERVALS[k]
+        break
+
+    _results[ranking - step * i] = STATUS_CHALLENGE for i in [1...11]
+
+  _results[ranking] = STATUS_NORMAL
   _.extend(top10, _results)
 
 filterPlayersInfo = (players, rankings) ->

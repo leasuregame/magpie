@@ -1186,7 +1186,6 @@
 		90D49C3917CAF81800A22DB2 /* Client-v1.0.0-e2.1.5 */ = {
 			isa = PBXGroup;
 			children = (
-				909CF83717DECDDC0049D151 /* Default-568h@2x.png */,
 				90D49C3A17CAF81800A22DB2 /* Resources */,
 				90D49C5217CAF81800A22DB2 /* ios */,
 				90D49C5B17CAF81800A22DB2 /* libs */,
@@ -1199,6 +1198,7 @@
 		90D49C3A17CAF81800A22DB2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				909CF83717DECDDC0049D151 /* Default-568h@2x.png */,
 				90D4A08B17CAF82600A22DB2 /* CCB */,
 				90D49C3B17CAF81800A22DB2 /* CloseNormal.png */,
 				90D49C3D17CAF81800A22DB2 /* CloseSelected.png */,
@@ -3107,6 +3107,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3136,6 +3137,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Client-v1.0.0-e2.1.5/Prefix.pch";

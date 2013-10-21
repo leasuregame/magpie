@@ -51,9 +51,7 @@ Handler::rankingList = (msg, session, next) ->
         cb(err, players, rankings)
 
     (players,rankings,cb) ->
-
       flag = []
-
       for p in players when p.id isnt playerId and p.id in player.rank.recentChallenger
         rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK
         flag.push p.id
@@ -68,10 +66,7 @@ Handler::rankingList = (msg, session, next) ->
           rank[value.rank.ranking] = STATUS_COUNTER_ATTACK
 
         cb(err, players, _.extend(rankings,rank))
-
-
   ], (err, players, rankings) ->
-
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err.message})
 

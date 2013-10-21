@@ -1,7 +1,10 @@
 playerConfig = require('../../../config/data/player')
+msgConfig = require '../../../config/data/message'
 table = require('../../manager/table')
 utility = require '../../common/utility'
 _ = require 'underscore'
+
+SYSTEM = -1
 
 exports.addEvents = (app, player) ->
 
@@ -46,8 +49,24 @@ exports.addEvents = (app, player) ->
     cur_hour = (new Date()).getHours()
 
     if _.contains(hours, cur_hour) and not _.contains(player.dailyGift.powerGiven, cur_hour)
-      player.givePower(cur_hour, givePoint)
+      pg = player.dailyGift.powerGiven
+      pg.push cur_hour
+      player.updateGift('powerGiven', pg)
       player.save()
+
+      app.get('dao').message.create data: {
+        options: {powerValue: 50}
+        sender: SYSTEM
+        receiver: SYSTEM
+        content: '系统赠送50点体力'
+        type: msgConfig.MESSAGETYPE.SYSTEM
+        status: msgConfig.MESSAGESTATUS.UNHANDLED
+      }, (err, msg) ->
+        if not err
+          app.get('messageService').pushMessage {
+            route: 'onMessage'
+            msg: msg.toJson()
+          }, () ->
 
   player.on 'lineUp.change', ->
     player.updateAbility()

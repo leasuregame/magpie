@@ -52,7 +52,7 @@ Handler::rankingList = (msg, session, next) ->
 
     (players,rankings,cb) ->
       flag = []
-      for p in players when p.id isnt playerId and p.id in player.rank.recentChallenger
+      for p in players when p.id isnt playerId and p.id in player.rank.recentChallenger and p.rank.ranking < player.rank.ranking
         rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK
         flag.push p.id
 

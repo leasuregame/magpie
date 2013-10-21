@@ -6,6 +6,10 @@ async = require 'async'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 utility = require '../../../common/utility'
+table = require '../../../manager/table'
+
+resData = table.getTableItem('resource_limit', 1);
+MAX_POWER_VALUE = resData.power_value;
 
 SYSTEM = -1
 ADD_FRIEND_MESSAGE = 1
@@ -82,7 +86,7 @@ Handler::sysMsg = (msg, session, next) ->
 Handler::handleSysMsg = (msg, session, next) ->
   playerId = session.get('playerId')
   msgId = msg.msgId
-
+  player = null
   incValues = (obj, data) ->
     obj.increase(k, data[k]) for k in _.keys(data) when obj.hasField k 
     obj.addPower(data.powerValue) if _.has(data, 'powerValue')
@@ -107,6 +111,17 @@ Handler::handleSysMsg = (msg, session, next) ->
           return next(null, {code: 501, msg: '该邮件已领取过'})
         else
           cb(null,message)
+
+    (message,cb)->
+      playerManager.getPlayerInfo {pid: playerId},(err,res)->
+        if err
+          cb({code: err.code or 500, msg: err.msg or err})
+        player = res
+        if player.power.value >= MAX_POWER_VALUE and message.options['powerValue']
+          cb {code: 501, msg: "体力已达上限"}
+        else
+          cb(null,message)
+
     (message,cb)->
       if message.receiver is playerId
         dao.message.update {
@@ -127,13 +142,10 @@ Handler::handleSysMsg = (msg, session, next) ->
           cb(err,res.options)
 
     (options, cb) ->
-      playerManager.getPlayerInfo {pid: playerId},(err,player)->
-        if err
-          return cb({code: err.code or 500, msg: err.msg or err})
-        else
-          incValues(player, options)
-          player.save()
-          cb(null, options)
+      incValues(player, options)
+      player.save()
+      cb(null, options)
+
   ],(err, data)->
     if err
       next(null, {code: err.code or 500, msg: err.msg or err})

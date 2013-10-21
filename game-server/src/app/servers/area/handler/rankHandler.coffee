@@ -37,10 +37,6 @@ Handler::rankingList = (msg, session, next) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
     (res, cb) ->
       player = res
-      #fdata = table.getTableItem('function_limit', 1)
-      #if player.lv < fdata.rank
-      #   return cb({code: 501, msg: fdata.rank+'级开放'})
-      #else
       cb()
     (cb) ->
       rankings = genRankings(player.rank.ranking)
@@ -55,12 +51,8 @@ Handler::rankingList = (msg, session, next) ->
         rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK
         flag.push p.id
 
-      #console.log 'recentChallenger = ',player.rank.recentChallenger
-      #console.log 'flag = ',flag
-
       plys = _.difference(player.rank.recentChallenger,flag)
 
-      #console.log 'plys = ',plys
 
       playerManager.getPlayers plys, (err, ply) ->
         rank = {}

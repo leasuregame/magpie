@@ -56,29 +56,6 @@ Handler::buyVipBox = (msg, session, next) ->
 
     openVipBox(player, boxInfo, next)
 
-Handler::buyExpCard = (msg, session, next) ->
-  playerId = session.get('playerId')
-  qty = msg.qty
-
-  PRICE = 5000
-
-  playerManager.getPlayerInfo pid: playerId, (err, player) ->
-    if err
-      return next(null, {code: err.code or 500, msg: err.msg or err})
-
-    if _.keys(player.cards).length >= MAX_CARD_COUNT
-        return nexl(null, {code: 501, msg: '卡牌容量已经达到最大值'})
-
-    if player.money < qty * PRICE
-      return next(null, {code: 501, msg: '铜板不足'})
-
-    addExpCardFor player, qty, (err, cards) ->
-      if err
-        return next(null, err) 
-
-      player.decrease 'money', qty * PRICE
-      next(null, {code: 200, msg: {card: cards[0], cardIds: cards.map (c) -> c.id}})
-
 openVipBox = (player, boxInfo, next) ->
   setIfExist = (attrs) ->
     player.increase att, val for att, val of boxInfo when att in attrs
@@ -93,27 +70,10 @@ openVipBox = (player, boxInfo, next) ->
   player.save()
   
   if _.has boxInfo, 'exp_card'
-    addExpCardFor player, boxInfo.exp_card, (err, cards) ->
+    playerManager.addExpCardFor player, boxInfo.exp_card, (err, cards) ->
       return next(null, {code: err.code or 500, msg: err.msg or err}) if err
 
       next(null, {code: 200, msg: {card: cards[0], cardIds: cards.map (c) -> c.id}})
   else
     next(null, {code: 200, msg: {card: {}, cardIds: []}})
 
-addExpCardFor = (player, qty, cb) ->
-  async.times(
-    qty
-    , (n, callback) ->
-      dao.card.createExpCard data: {
-        playerId: player.id, 
-        lv: 6,
-        exp: 29
-      }, callback
-    , (err, cards) ->
-      if err
-        logger.error '[fail to create exp card]' + err
-        return cb({code: err.code or 500, msg: err.msg or err})
-
-      player.addCards cards
-      cb(null, cards.map (c) -> c.toJson())
-  )

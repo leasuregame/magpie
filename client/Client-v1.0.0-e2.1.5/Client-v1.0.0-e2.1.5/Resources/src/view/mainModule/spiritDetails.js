@@ -33,6 +33,8 @@ var SpiritDetails = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 255), 640, 1136);
         bgLayer.setPosition(cc.p(40, 0));
         this.addChild(bgLayer);
@@ -159,20 +161,23 @@ var SpiritDetails = LazyLayer.extend({
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.icon52,
-            this._onClickClose,
+            this._onClickUpgrade,
             this
         );
         this._upgradeItem.setPosition(cc.p(360, 520));
 
-        var closeItem = cc.MenuItemImage.create(
-            main_scene_image.button17,
-            main_scene_image.button17s,
+        var closeItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            main_scene_image.icon36,
             this._onClickClose,
             this
         );
         closeItem.setPosition(cc.p(360, 130));
 
         this._menu = cc.Menu.create(this._upgradeItem, closeItem);
+        this._menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         this._menu.setPosition(cc.p(0, 0));
         this.addChild(this._menu);
 
@@ -190,11 +195,11 @@ var SpiritDetails = LazyLayer.extend({
         }
 
         this._spiritNode = SpiritNode.create();
-        this._spiritNode.setScale(2.0);
-        this._spiritNode.setPosition(cc.p(360, 740));
-        this.addChild(this._spiritNode);
+        this._spiritNode.setScale(1.2);
+        this._spiritNode.setPosition(cc.p(360, 720));
+        this.addChild(this._spiritNode, 2);
 
-        this._upgradeItem.setVisible(spirit.canUpgrade());
+//        this._upgradeItem.setVisible(spirit.canUpgrade());
 
         this._lvLabel.setString("LV.  " + spirit.get("lv"));
         this._expLabel.setString("经验:    " + spirit.get("exp") + " / " + spirit.get("maxExp"));
@@ -202,14 +207,61 @@ var SpiritDetails = LazyLayer.extend({
         this._skillHarmLabel.setString(spirit.get("skillHarm") + "%");
     },
 
+    _play: function () {
+        var lazyLayer = LazyLayer.create();
+        this.addChild(lazyLayer, 3);
+
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 255), 640, 1136);
+        bgLayer.setPosition(cc.p(40, 0));
+        lazyLayer.addChild(bgLayer);
+
+        var that = this;
+
+        var cb = function () {
+            that.update();
+
+            lazyLayer.setZOrder(1);
+
+            that.scheduleOnce(function () {
+                bgLayer.runAction(
+                    cc.Sequence.create(
+                        cc.FadeOut.create(1),
+                        cc.CallFunc.create(function () {
+                            lazyLayer.removeFromParent();
+                        }, this)
+                    )
+                );
+            }, 2);
+        };
+
+        bgLayer.runAction(
+            cc.Sequence.create(
+                cc.FadeIn.create(1),
+                cc.CallFunc.create(function () {
+                    playEffect({
+                        effectId: 10,
+                        target: that,
+                        loops: 1,
+                        delay: 0.1,
+                        zOrder: 10,
+                        position: cc.p(360, 740),
+                        clear: true,
+                        cb: cb
+                    });
+                }, this)
+            )
+        );
+    },
 
     _onClickUpgrade: function () {
         cc.log("PlayerDetails _onClickUpgrade");
 
-        var that = this;
-        gameData.spirit.upgrade(function (data) {
-            cc.log(data);
-        });
+        this._play();
+
+//        var that = this;
+//        gameData.spirit.upgrade(function (data) {
+//            cc.log(data);
+//        });
     },
 
     _onClickClose: function () {

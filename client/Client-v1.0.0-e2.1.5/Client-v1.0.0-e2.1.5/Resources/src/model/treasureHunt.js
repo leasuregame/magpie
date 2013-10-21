@@ -44,15 +44,18 @@ var TreasureHunt = Entity.extend({
 
                 var table = outputTables.treasure_hunt.rows[msg.resourceId];
 
+                gameData.player.add(table.type, table.value);
+
+                if (that._freeCount > 0) {
+                    gameData.player.add("gold", -10);
+                }
+
                 that._count = msg.lotteryCount;
                 that._freeCount = msg.lotteryFreeCount;
 
-                var playerData = {};
-                playerData[table.type] = table.value;
-                gameData.player.update(playerData);
-                gameData.player.add("gold", -10);
+                var str = table.name + ": " + table.value;
 
-                cb(msg.resourceId);
+                cb(msg.resourceId, str);
             } else {
                 cc.log("treasureHunt fail");
 

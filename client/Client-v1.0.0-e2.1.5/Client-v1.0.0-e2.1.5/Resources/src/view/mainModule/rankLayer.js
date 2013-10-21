@@ -166,3 +166,14 @@ RankLayer.create = function () {
 
     return null;
 };
+
+RankLayer.canEnter = function () {
+    var limitLv = outputTables.function_limit.rows[1].ranking_list;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("排行榜" + limitLv + "级开放");
+};

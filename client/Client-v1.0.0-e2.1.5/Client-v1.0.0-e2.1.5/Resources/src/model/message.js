@@ -16,7 +16,6 @@ var ADD_FRIEND_MESSAGE = 1;
 var LEAVE_MESSAGE = 2;
 var BATTLE_MESSAGE = 3;
 var SYSTEM_MESSAGE = 4;
-var NOTICE_MESSAGE = 5;
 
 var ASKING_STATUS = 1;
 var ACCEPT_STATUS = 2;
@@ -80,7 +79,9 @@ var Message = Entity.extend({
     push: function (msg) {
         cc.log("Message push");
 
-        if (msg.type == ADD_FRIEND_MESSAGE || msg.type == LEAVE_MESSAGE) {
+        if (msg.type == ADD_FRIEND_MESSAGE) {
+            this._friendMessage.push(msg);
+        } else if (msg.type == LEAVE_MESSAGE) {
             this._friendMessage.push(msg);
         } else if (msg.type == BATTLE_MESSAGE) {
             this._battleMessage.push(msg);
@@ -94,80 +95,156 @@ var Message = Entity.extend({
     accept: function (msgId) {
         cc.log("Message accept: " + msgId);
 
-        var that = this;
-        lzWindow.pomelo.request("area.messageHandler.accept", {
-            msgId: msgId
-        }, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
-
-            if (data.code == 200) {
-                cc.log("accept success");
-
-                var msg = data.msg;
-
-                var len = that._friendMessage.length;
-                for (var i = 0; i < len; ++i) {
-                    if (that._friendMessage[i].id == msgId) {
-                        that._friendMessage[i].status = ACCEPT_STATUS;
-                        break;
-                    }
-                }
-
-                gameData.friend.push(msg);
-            } else {
-                cc.log("accept fail");
+        var len = this._friendMessage.length;
+        var message = null;
+        for (var i = 0; i < len; ++i) {
+            if (this._friendMessage[i].id == msgId) {
+                message = this._friendMessage[i];
+                break;
             }
-        });
+        }
+
+        if (message) {
+            var that = this;
+            lzWindow.pomelo.request("area.messageHandler.accept", {
+                msgId: msgId
+            }, function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
+
+                if (data.code == 200) {
+                    cc.log("accept success");
+
+                    var msg = data.msg;
+
+                    message.status = ACCEPT_STATUS;
+
+                    gameData.friend.push(msg);
+                } else {
+                    cc.log("accept fail");
+                }
+            });
+        } else {
+            TipLayer.tip("找不到这个消息");
+        }
     },
 
     reject: function (msgId) {
         cc.log("Message reject: " + msgId);
 
-        var that = this;
-        lzWindow.pomelo.request("area.messageHandler.reject", {
-            msgId: msgId
-        }, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
-
-            if (data.code == 200) {
-                cc.log("accept success");
-
-                var len = that._friendMessage.length;
-                for (var i = 0; i < len; ++i) {
-                    if (that._friendMessage[i].id == msgId) {
-                        that._friendMessage[i].status = REJECT_STATUS;
-                        break;
-                    }
-                }
-            } else {
-                cc.log("accept fail");
+        var len = this._friendMessage.length;
+        var message = null;
+        for (var i = 0; i < len; ++i) {
+            if (this._friendMessage[i].id == msgId) {
+                message = this._friendMessage[i];
+                break;
             }
-        });
+        }
+
+        if (message) {
+            var that = this;
+            lzWindow.pomelo.request("area.messageHandler.reject", {
+                msgId: msgId
+            }, function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
+
+                if (data.code == 200) {
+                    cc.log("reject success");
+
+                    message.status = REJECT_STATUS;
+
+                } else {
+                    cc.log("reject fail");
+                }
+            });
+        } else {
+            TipLayer.tip("找不到这个消息");
+        }
     },
 
-    playback: function (msgId) {
-        cc.log("Message playback: " + msgId);
-
-
-    },
-
-    receive: function (msgId) {
+    receive: function (cb, msgId) {
         cc.log("Message receive: " + msgId);
 
+        var len = this._systemMessage.length;
+        var message = null;
+        for (var i = 0; i < len; ++i) {
+            if (this._systemMessage[i].id == msgId) {
+                message = this._systemMessage[i];
+                break;
+            }
+        }
+
+        if (message) {
+            var that = this;
+            lzWindow.pomelo.request("area.messageHandler.handleSysMsg", {
+                msgId: msgId
+            }, function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
+
+                if (data.code == 200) {
+                    cc.log("receive success");
+
+                    var msg = data.msg;
+
+                    message.status = HANDLED_STATUS;
+
+                    gameData.player.adds({
+                        gold: msg.gold,
+                        money: msg.money,
+                        power: msg.powerValue,
+                        skillPoint: msg.skillPoint,
+                        elixir: msg.elixir
+                    });
+
+                    gameData.spirit.add("exp", msg.spirit);
+
+                    for (var key in msg) {
+                        TipLayer.tip(lz.getNameByKey(key) + ": " + msg[key]);
+                    }
+
+                    cb();
+                } else {
+                    cc.log("receive fail");
+                }
+            });
+        } else {
+            TipLayer.tip("找不到这个消息");
+        }
+    },
+
+    playback: function (id) {
+        cc.log("Message playback");
+
+        var battleLogPool = BattleLogPool.getInstance();
+
+        cc.log(battleLogPool.getBattleLogById(id));
+
+        if (battleLogPool.getBattleLogById(id)) {
+            BattlePlayer.getInstance().play(id, true);
+            return;
+        }
+
         var that = this;
-        lzWindow.pomelo.request("area.messageHandler.handleSysMsg", {
-            msgId: msgId
+        lzWindow.pomelo.request("area.battleHandler.playBack", {
+            battleLogId: id
         }, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 
             if (data.code == 200) {
-                cc.log("receive success");
+                cc.log("playback success");
 
+                var msg = data.msg;
+
+                var battleLogId = battleLogPool.pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
+
+                BattlePlayer.getInstance().play(battleLogId, true);
             } else {
-                cc.log("receive fail");
+                cc.log("playback fail");
+
+                TipLayer.tip("战斗回放出错");
             }
         });
     },

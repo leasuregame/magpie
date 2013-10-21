@@ -84,7 +84,7 @@ var LineUpLayer = LazyLayer.extend({
         this._menu.setPosition(cc.p(0, 0));
         this.addChild(this._menu);
 
-        var okLabel = cc.Sprite.create(main_scene_image.icon32);
+        var okLabel = cc.Sprite.create(main_scene_image.icon21);
         okLabel.setPosition(cc.p(360, 390));
         this.addChild(okLabel, 1);
 

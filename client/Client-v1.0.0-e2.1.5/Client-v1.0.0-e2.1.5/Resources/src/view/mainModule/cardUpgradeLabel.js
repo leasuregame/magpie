@@ -333,8 +333,6 @@ var CardUpgradeLabel = cc.Layer.extend({
     _upgrade: function (dummyCard, exp, money, cardCount) {
         cc.log("CardUpgradeLabel _upgrade");
 
-        LazyLayer.showCloudLayer();
-
         this._stopAllActions();
 
         var speed = 30;
@@ -374,7 +372,6 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._cardCountLabel.setString(Math.round(cardCount * factor));
 
             if (nowExp <= 0) {
-                LazyLayer.closeCloudLayer();
                 this._retinueCard = [];
                 this.update();
             }
@@ -443,6 +440,16 @@ var CardUpgradeLabel = cc.Layer.extend({
 
             that._retinueCard = [];
             that._upgrade(dummyCard, data.exp, data.money, len);
+
+            playEffect({
+                effectId: 11,
+                target: that,
+                loops: 1,
+                delay: 0.1,
+                zOrder: 10,
+                position: cc.p(275, 475),
+                clear: true
+            });
         }, cardIdList);
     }
 });

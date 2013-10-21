@@ -70,34 +70,6 @@ var LazyLayer = cc.Layer.extend({
 });
 
 
-(function () {
-    var cloudLayer = null;
-    var isUse = false;
-
-    LazyLayer.showCloudLayer = function () {
-        cc.log("LazyLayer showCloudLayer");
-
-        if (cloudLayer == null) {
-            cloudLayer = LazyLayer.create();
-            cloudLayer.retain();
-        }
-
-        if (!isUse) {
-            MainScene.getInstance().addChild(cloudLayer, 10000);
-            isUse = true;
-        }
-    };
-
-    LazyLayer.closeCloudLayer = function () {
-        cc.log("LazyLayer closeCloudLayer");
-
-        if (isUse) {
-            cloudLayer.removeFromParent();
-            isUse = false;
-        }
-    };
-})();
-
 LazyLayer.create = function () {
     var ret = new LazyLayer();
 
@@ -107,3 +79,22 @@ LazyLayer.create = function () {
 
     return null;
 };
+
+(function () {
+    var cloudLayer = null;
+    var zOrder = 10000;
+
+    LazyLayer.showCloudLayer = function () {
+        cc.log("LazyLayer showCloudLayer");
+
+        cloudLayer = LazyLayer.create();
+        MainScene.getInstance().getLayer().addChild(cloudLayer, zOrder);
+    };
+
+    LazyLayer.closeCloudLayer = function () {
+        cc.log("LazyLayer closeCloudLayer");
+
+        cloudLayer.removeFromParent();
+        cloudLayer = null;
+    };
+})();

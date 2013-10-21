@@ -10,16 +10,19 @@
 /*
  * pomelo websocket client
  * */
+
+
 cc.log("pomelo websocket client");
+
 var lzWindow = {};
 
 lzWindow.setTimeout = function (cb, timeout) {
 
-}
+};
 
 lzWindow.clearTimeout = function () {
 
-}
+};
 
 /**
  * lzRequire the given path.
@@ -1491,11 +1494,13 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             };
             var onerror = function (event) {
                 pomelo.emit('io-error', event);
-                console.error('socket error: ', event);
+                cc.log('socket error: ', event);
             };
             var onclose = function (event) {
+                pomelo.disconnect();
+
                 pomelo.emit('close', event);
-                console.error('socket close: ', event);
+                cc.log('socket close: ', event);
             };
             socket = new WebSocket(url);
             socket.binaryType = 'arraybuffer';
@@ -1593,7 +1598,7 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             if (gap > gapThreshold) {
                 heartbeatTimeoutId = setTimeout(heartbeatTimeoutCb, gap);
             } else {
-                console.error('server heartbeat timeout');
+                cc.log('server heartbeat timeout');
                 pomelo.emit('heartbeat timeout');
                 pomelo.disconnect();
             }
@@ -1772,139 +1777,3 @@ lzRequire.alias("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", "po
 
 
 lzRequire("boot");
-
-var ConnectSuccess = false;
-
-
-/*
- describe("Message # ", function() {
- var pomelo = window.pomelo;
- var inited = false;
- var userid;
-
- var request = function(route, msg, cb) {
- var ok = false;
- runs(function() {
- pomelo.request(route, msg, function(data) {
- ok = true;
- cb(data);
- });
- });
-
- waitsFor(function() {
- return ok;
- });
- };
-
- var intiPomelo = function() {
- runs(function() {
- pomelo.init({
- host: '127.0.0.1',
- port: '3010'
- }, function() {
- cc.log('connect success!');
- inited = true;
-
- pomelo.on('onMessage', function(data) {
- cc.log('***** on chart: ', data);
- });
- pomelo.on('onLogin', function(data) {
- cc.log('***** on login: ', data);
- });
- });
- });
- waitsFor(function() {
- return inited;
- });
- };
-
- describe("Set Up", function() {
- it("connect to server", function() {
- intiPomelo();
- });
- });
-
- describe("Message Handler", function() {
- beforeEach(function() {
- var ok = false;
- runs(function() {
- $.get('/adduser', {
- email: 'test_email_2@qq.com',
- password: '1'
- }, function(data) {
- userid = data.uid;
- ok = true;
- });
- });
-
- waitsFor(function() {
- return ok;
- });
- });
-
- // afterEach(function() {
- //   var ok = false;
- //   runs(function() {
- //     $.get('/removeuser', {
- //       uid: userid
- //     }, function(data) {
- //       ok = true;
- //     });
- //   });
-
- //   waitsFor(function() {
- //     return ok;
- //   });
- // });
-
- describe("when user login", function() {
- beforeEach(function() {
- request('connector.userHandler.login', {
- email: 'test_email_2@qq.com',
- password: '1'
- }, function(data) {
- if (data.code == 200) {
- cc.log('login success.');
- } else {
- cc.log('login faild.');
- }
- });
-
- pomelo.on('onChart', function(data) {
- cc.log('message: on chart: ', data);
- })
- });
-
- it("should can be receive message from server", function() {
- request('message.messageHandler.send', {
- content: 'send message content'
- }, function(data) {
- expect(data).toEqual({
- code: 200,
- msg: 'send message content'
- })
- });
- });
-
- it('test', function(){
- var send = function(){
- request('message.messageHandler.send', {
- content: 'send message content'
- }, function(data) {
- expect(data).toEqual({
- code: 200,
- msg: 'send message content'
- })
- });
- };
-
- send();
- send();
- send();
- });
-
- });
-
- });
-
- });              */

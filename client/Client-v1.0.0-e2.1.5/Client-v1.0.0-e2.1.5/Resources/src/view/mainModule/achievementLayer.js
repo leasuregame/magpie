@@ -31,7 +31,7 @@ var AchievementLayer = cc.Layer.extend({
         this.addChild(headIcon);
 
         var titleIcon = cc.Sprite.create(main_scene_image.icon210);
-        titleIcon.setPosition(cc.p(360, 1000));
+        titleIcon.setPosition(cc.p(360, 1008));
         this.addChild(titleIcon);
 
         var achievement = gameData.achievement.get("achievement");

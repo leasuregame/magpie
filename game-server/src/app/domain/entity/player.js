@@ -268,6 +268,7 @@ var Player = (function(_super) {
             powerGiven: [], // 体力赠送情况
             powerBuyCount: 6, // 购买体力次数
             challengeCount: 10, // 每日有奖竞技次数
+            challengeBuyCount: 10, //每日有奖竞技购买次数
             receivedBless: { // 接收的祝福
                 count: msgConfig.DEFAULT_RECEIVE_COUNT,
                 givers: []
@@ -349,6 +350,7 @@ var Player = (function(_super) {
             powerGiven: [], // 体力赠送情况
             powerBuyCount: 6 + vipPrivilege.buy_power_count, // 购买体力次数
             challengeCount: 10 + vipPrivilege.challenge_count, // 每日有奖竞技次数
+            challengeBuyCount: 10, //每日有奖竞技购买次数
             receivedBless: { // 接收的祝福
                 count: realCount(this.lv, recieveBlessMap) + vipPrivilege.receive_bless_count,
                 givers: []

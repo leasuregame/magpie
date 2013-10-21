@@ -78,6 +78,24 @@ class Manager
 
       addRankInfo(players, ranks)
       cb(null, players)
+
+  @addExpCardFor: (player, qty, cb) ->
+    async.times(
+      qty
+    , (n, callback) ->
+      dao.card.createExpCard data: {
+        playerId: player.id,
+        lv: 6,
+        exp: 29
+      }, callback
+    , (err, cards) ->
+      if err
+        logger.error '[fail to create exp card]' + err
+        return cb({code: err.code or 500, msg: err.msg or err})
+
+      player.addCards cards
+      cb(null, cards.map (c) -> c.toJson())
+    )
     
 
 addRankInfo = (players, ranks) ->

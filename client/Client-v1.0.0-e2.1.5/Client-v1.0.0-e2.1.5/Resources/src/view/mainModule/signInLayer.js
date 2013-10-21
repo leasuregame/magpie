@@ -145,7 +145,7 @@ var SignInLayer = LazyLayer.extend({
         signInCountIcon.setPosition(cc.p(235, 470));
         this.addChild(signInCountIcon);
 
-        this._signInCountLabel = cc.LabelTTF.create(30, "STHeitiTC-Medium", 20);
+        this._signInCountLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._signInCountLabel.setPosition(cc.p(330, 470));
         this.addChild(this._signInCountLabel);
 
@@ -294,14 +294,20 @@ var SignInLayer = LazyLayer.extend({
             }
 
             if (this._index == 0) {
-                var that = this;
-                gameData.signIn.receiveReward(function (data) {
-                    cc.log(data);
+                var monthMark = gameData.signIn.getMonthMark(0);
+                var table = outputTables.signIn_rewards.rows[id + 1];
+                var count = table.count != -1 ? table.count : monthMark.days;
 
-                    that.update();
+                if (monthMark.count >= count) {
+                    var that = this;
+                    gameData.signIn.receiveReward(function (data) {
+                        cc.log(data);
 
-                    lz.tipReward(data);
-                }, id + 1);
+                        that.update();
+
+                        lz.tipReward(data);
+                    }, id + 1);
+                }
             }
         }
     },

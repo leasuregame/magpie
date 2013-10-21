@@ -141,6 +141,7 @@ var SignIn = Entity.extend({
 
                 var day = new Date().getDate() - 1;
                 that._monthsMark[0].mark |= (1 << day);
+                that._monthsMark[0].count += 1;
 
                 cb(msg);
             } else {
@@ -170,6 +171,7 @@ var SignIn = Entity.extend({
 
                 var day = msg.day - 1;
                 that._monthsMark[0].mark |= (1 << day);
+                that._monthsMark[0].count += 1;
 
                 cb(msg.reward);
             } else {

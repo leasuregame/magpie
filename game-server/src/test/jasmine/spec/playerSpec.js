@@ -16,18 +16,11 @@ describe("Connector Server", function() {
       password: '1'
     };
 
-    var papa = {
-      id: 103,
-      playerId: 103,
-      areaId: 1,
-      account: 'papa',
-      password: '1'
-    };
-    beforeEach(function() {
-      loginWith(arthur.account, arthur.password, arthur.areaId);
-    });
-
     describe("when player not exists", function() {
+      beforeEach(function() {
+        loginWith('newAccount', '1', 1);
+      });
+
       it("should can be create player", function() {
         request('connector.playerHandler.createPlayer', {
           name: myName,
@@ -47,12 +40,12 @@ describe("Connector Server", function() {
               player: {
                 id: pid,
                 createTime: player.createTime,
-                userId: 100,
+                userId: 5,
                 areaId: 1,
                 name: 'wuzhanghai',
                 power: {
                   time: 0,
-                  value: 50
+                  value: 150
                 },
                 lv: 1,
                 vip: 0,
@@ -70,7 +63,6 @@ describe("Connector Server", function() {
                   progress: 0,
                   hasWin: false,
                   mark: []
-                  // momo: []
                 },
                 pass: {
                   canReset: true,
@@ -82,19 +74,20 @@ describe("Connector Server", function() {
                   lotteryCount: 500,
                   lotteryFreeCount: 0,
                   powerGiven: [],
-                  powerBuyCount: 2,
-                  challengeCount: 15,
+                  powerBuyCount: 6,
+                  challengeCount: 10,
                   receivedBless: {
-                    count: 15,
+                    count: 20,
                     givers: []
                   },
                   gaveBless: {
-                    count: 15,
+                    count: 5,
                     receivers: []
                   }
                 },
                 skillPoint: 0,
                 energy: 0,
+                fragments: 0,
                 elixir: 0,
                 spiritor: {
                   lv: 0,
@@ -106,12 +99,12 @@ describe("Connector Server", function() {
                   collectCount: 15
                 },
                 rank: {},
-                friends: [],
                 signIn: {
                   months: {},
                   flag: 0
                 },
-                friendsCount: 20
+                friendsCount: 20,
+                resetDate: '2013-10-19'
               }
             }
           });
@@ -121,6 +114,9 @@ describe("Connector Server", function() {
     });
 
     describe("when player exists", function() {
+      beforeEach(function() {
+        loginWith(arthur.account, arthur.password, arthur.areaId);
+      });
 
       it("should can not create duplicate player", function() {
         request('connector.playerHandler.createPlayer', {

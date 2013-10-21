@@ -227,7 +227,8 @@ var Player = (function(_super) {
         'rowFragmentCount',
         'highFragmentCount',
         'highDrawCardCount',
-        'cardsCount'
+        'cardsCount',
+        'resetDate'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -307,10 +308,10 @@ var Player = (function(_super) {
         highFragmentCount: 0,
         highDrawCardCount: 0,
         cardsCount: 100,
-        isReset: 0
+        resetDate: '1970-1-1'
     };
 
-    Player.prototype.resetDate = function() {
+    Player.prototype.resetData = function() {
         var giveBlessMap = {
             1: 5,
             31: 10,
@@ -367,7 +368,11 @@ var Player = (function(_super) {
         this.dailyGift = dg;
         this.pass = pass;
         this.spiritPool = spiritPool;
-        this.isReset = 1;
+        this.resetDate = utility.shortDateString();
+    };
+
+    Player.prototype.isReset = function() {
+        return this.resetDate === utility.shortDateString();
     };
 
     Player.prototype.increase = function(name, val) {

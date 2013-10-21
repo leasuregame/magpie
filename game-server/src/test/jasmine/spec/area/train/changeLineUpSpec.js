@@ -26,8 +26,6 @@ describe("Area Server", function() {
               1: 5,
               2: 4,
               3: 3,
-              4: 2,
-              5: 1,
               6: -1
             }
           },
@@ -38,12 +36,29 @@ describe("Area Server", function() {
               1: 5,
               2: 4,
               3: 3,
-              4: 2,
-              5: 1, 
               6: -1
             });
           }
         );
+
+        request(
+          'area.trainHandler.changeLineUp', {
+            lineUp: {
+              1: 5,
+              2: 4,
+              3: 3,
+              4: 2,
+              5: 1,
+              6: -1
+            }
+          },
+          function(data) {
+            console.log(data);
+            expect(data.code).toEqual(501);
+            expect(data.msg).toEqual('上阵卡牌数量不对');
+          }
+        );
+
       });
     });
   });

@@ -111,7 +111,7 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._selectFrame.setVisible(false);
 
         var treasureHuntBg = cc.Sprite.create(main_scene_image.icon253);
-        treasureHuntBg.setPosition(cc.p(360, 555));
+        treasureHuntBg.setPosition(cc.p(360, 588));
         this.addChild(treasureHuntBg);
 
         this._treasureHuntItem = cc.MenuItemImage.create(

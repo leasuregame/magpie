@@ -13,8 +13,8 @@
 
 
 var TournamentLayer = cc.Layer.extend({
-    _rankScrollView: null,
-    _nameLabel: null,
+    _scrollView: null,
+    _rankRewardItem: null,
     _expProgress: null,
     _lvLabel: null,
     _rankingLabel: null,
@@ -85,6 +85,17 @@ var TournamentLayer = cc.Layer.extend({
         this._abilityLabel.setPosition(cc.p(605, 975));
         this.addChild(this._abilityLabel);
 
+        this._rankRewardLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
+        this._rankRewardLabel.setColor(cc.c3b(255, 239, 131));
+
+        this._rankRewardItem = cc.MenuItemLabel.create(this._rankRewardLabel, this._onClickRankReward, this);
+        this._rankRewardItem.setPosition(cc.p(360, 960));
+        this._rankRewardItem.setVisible(false);
+
+        var menu = cc.Menu.create(this._rankRewardItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu);
+
         return true;
     },
 
@@ -97,8 +108,8 @@ var TournamentLayer = cc.Layer.extend({
         this._lvLabel.setString(player.get("lv"));
         this._abilityLabel.setString(player.get("ability"));
 
-        if (this._rankScrollView != null) {
-            this.removeChild(this._rankScrollView);
+        if (this._scrollView != null) {
+            this.removeChild(this._scrollView);
         }
 
         var that = this;
@@ -106,7 +117,24 @@ var TournamentLayer = cc.Layer.extend({
             cc.log("TournamentLayer update callback");
 
             that._addRankScrollView();
+            that._updateRankRewardItem();
         })
+    },
+
+    _updateRankRewardItem: function () {
+        cc.log("TournamentLayer _updateRankRewardItem");
+
+        var rewardRanking = gameData.tournament.getLastRankReward();
+
+        cc.log(rewardRanking);
+
+        if (rewardRanking) {
+            this._rankRewardLabel.setString("领取 " + rewardRanking + " 排名奖励");
+            this._rankRewardItem.setVisible(true);
+        } else {
+            this._rankRewardLabel.setString("");
+            this._rankRewardItem.setVisible(false);
+        }
     },
 
     _addRankScrollView: function () {
@@ -129,14 +157,23 @@ var TournamentLayer = cc.Layer.extend({
             scrollViewLayer.addChild(tournamentPlayerLabel);
         }
 
-        this._rankScrollView = cc.ScrollView.create(cc.size(612, 670), scrollViewLayer);
-        this._rankScrollView.setContentSize(cc.size(GAME_WIDTH, height));
-        this._rankScrollView.setPosition(cc.p(54, 198));
-        this._rankScrollView.setBounceable(false);
-        this._rankScrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
-        this._rankScrollView.updateInset();
+        this._scrollView = cc.ScrollView.create(cc.size(612, 670), scrollViewLayer);
+        this._scrollView.setContentSize(cc.size(GAME_WIDTH, height));
+        this._scrollView.setPosition(cc.p(54, 198));
+        this._scrollView.setBounceable(false);
+        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        this._scrollView.updateInset();
 
-        this.addChild(this._rankScrollView);
+        this.addChild(this._scrollView);
+    },
+
+    _onClickRankReward: function () {
+        cc.log("TournamentLayer _onClickRankReward");
+
+        var that = this;
+        gameData.tournament.receive(function () {
+            that._updateRankRewardItem();
+        });
     }
 });
 

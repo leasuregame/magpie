@@ -106,7 +106,7 @@ Handler::handleSysMsg = (msg, session, next) ->
         else
           cb(null,message)
     (message,cb)->
-      dao.message.fetchOne where: msgId: message.id,(err,res) ->
+      dao.message.fetchOne where: {msgId: message.id,receiver: playerId},(err,res) ->
         if res isnt null
           return next(null, {code: 501, msg: '该邮件已领取过'})
         else

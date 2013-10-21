@@ -411,15 +411,13 @@ describe("Area Server", function() {
                         }, function(data) {
                             console.log(data);
                             var rankList = data.msg.rank.rankList;
-                            expect(rankList.length).toEqual(24);
+                            expect(rankList.length).toEqual(22);
                             for (var i = 0; i < 10; i++)
                                 expect(rankList[i].type).toEqual(0);
                             for (var i = 10; i < 20; i++)
                                 expect(rankList[i].type).toEqual(1);
                             expect(rankList[20].type).toEqual(2);
                             expect(rankList[21].type).toEqual(0);
-                            expect(rankList[22].type).toEqual(2);
-                            expect(rankList[23].type).toEqual(2);
 
                         });
                     });

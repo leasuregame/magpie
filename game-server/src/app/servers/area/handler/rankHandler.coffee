@@ -37,10 +37,13 @@ Handler::rankingList = (msg, session, next) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
     (res, cb) ->
       player = res
-      #fdata = table.getTableItem('function_limit', 1)
-      #if player.lv < fdata.rank
-      #   return cb({code: 501, msg: fdata.rank+'级开放'})
-      #else
+      fdata = table.getTableItem('function_limit', 1)
+      if player.lv < fdata.rank
+        return cb({code: 501, msg: fdata.rank+'级开放'})
+      
+      if not player.rank?
+        return cb({code: 501, msg: '找不到竞技信息'})
+
       cb()
     (cb) ->
       rankings = genRankings(player.rank.ranking)
@@ -55,12 +58,7 @@ Handler::rankingList = (msg, session, next) ->
         rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK
         flag.push p.id
 
-      #console.log 'recentChallenger = ',player.rank.recentChallenger
-      #console.log 'flag = ',flag
-
       plys = _.difference(player.rank.recentChallenger,flag)
-
-      #console.log 'plys = ',plys
 
       playerManager.getPlayers plys, (err, ply) ->
         rank = {}
@@ -75,7 +73,7 @@ Handler::rankingList = (msg, session, next) ->
   ], (err, players, rankings) ->
 
     if err
-      return next(null, {code: err.code, msg: err.message})
+      return next(null, {code: err.code or 501, msg: err.msg or err.message})
 
     players = filterPlayersInfo(players, rankings)
     players.sort (x, y) -> x.ranking - y.ranking
@@ -86,7 +84,6 @@ Handler::rankingList = (msg, session, next) ->
       rankList: players
     }
     next(null,{code: 200, msg: {rank: rank}})
-    #next(null, {code: 200, msg: players})
 
 Handler::challenge = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -100,12 +97,6 @@ Handler::challenge = (msg, session, next) ->
 
     (res, cb) ->
       player = res
-      fdata = table.getTableItem('function_limit', 1)
-      if player.lv < fdata.rank
-        return cb({code: 501, msg: fdata.rank+'级开放'})
-      cb()
-
-    (cb) =>
       fightManager.pvp {playerId: playerId, targetId: targetId}, cb
 
     (bl, cb) =>

@@ -21,10 +21,10 @@ Manager = module.exports =
       defender = (ranks.filter (r) -> r.playerId == targetId)?[0]
       challenger.increase('challengeCount')
       defender.increase('challengeCount')
-
       
       rewards = {ranking_elixir: 0}
-      countRewards(player, challenger, isWin, rewards)
+      ###  获取竞技奖励，每天10次，还可额外购买10次 ###
+      countRewards(player, challenger, isWin, rewards) if player.dailyGift.challengeCount > 0
 
       if isWin
         exchangeRanking(challenger, defender)
@@ -114,3 +114,4 @@ countRewards = (player, challenger, isWin, rewards) ->
   player.increase('exp', rewards.exp)
   player.increase('money', rewards.money)
   player.increase('elixir', rewards.elixir)
+  player.updateGift('challengeCount', player.dailyGift.challengeCount-1)

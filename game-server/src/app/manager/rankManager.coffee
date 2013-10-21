@@ -21,15 +21,15 @@ Manager = module.exports =
       defender = (ranks.filter (r) -> r.playerId == targetId)?[0]
       challenger.increase('challengeCount')
       defender.increase('challengeCount')
-      defender.pushRecent(player.id)
+
       
       rewards = {ranking_elixir: 0}
       countRewards(player, challenger, isWin, rewards)
 
-      if isWin        
+      if isWin
         exchangeRanking(challenger, defender)
         updateRankInfo(challenger, defender)
-        
+        defender.pushRecent(player.id)
         ### 首次达到排名奖励 1, 10, 50, 100, 500, 1000, 5000 ###
         # if challenger.canGetRankingReward()
         #   challenger.getRankingReward()

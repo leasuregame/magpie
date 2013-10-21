@@ -44,8 +44,6 @@ Handler::login = (msg, session, next) ->
           if err
             logger.error 'fail to get player by user id', err
           player = res
-
-          #console.log 'uid',uid
           cb()
       else
         cb()
@@ -62,6 +60,7 @@ Handler::login = (msg, session, next) ->
       #    )
     (cb) =>
       console.log 'uid',uid
+      session.set('userId', user.id)
       session.bind(uid, cb);
 
     (cb) =>

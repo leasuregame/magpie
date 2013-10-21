@@ -9,11 +9,12 @@ Handler = (@app) ->
 Handler::createPlayer = (msg, session, next) ->
   name = msg.name
   areaId = session.get('areaId') or msg.areaId
+  userId = session.get('userId') or msg.userId
   uid = session.uid
 
   @app.rpc.area.playerRemote.createPlayer session, {
     name: name
-    userId: uid
+    userId: userId
     areaId: areaId
     serverId: @app.getServerId()
   }, (err, player) =>

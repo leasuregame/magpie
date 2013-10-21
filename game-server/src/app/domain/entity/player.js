@@ -227,7 +227,8 @@ var Player = (function(_super) {
         'rowFragmentCount',
         'highFragmentCount',
         'highDrawCardCount',
-        'cardsCount'
+        'cardsCount',
+        'resetDate'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -265,8 +266,8 @@ var Player = (function(_super) {
             lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: 0, // 每日免费抽奖次数
             powerGiven: [], // 体力赠送情况
-            powerBuyCount: 2, // 购买体力次数
-            challengeCount: 15, // 每日有奖竞技次数
+            powerBuyCount: 6, // 购买体力次数
+            challengeCount: 10, // 每日有奖竞技次数
             receivedBless: { // 接收的祝福
                 count: msgConfig.DEFAULT_RECEIVE_COUNT,
                 givers: []
@@ -307,10 +308,10 @@ var Player = (function(_super) {
         highFragmentCount: 0,
         highDrawCardCount: 0,
         cardsCount: 100,
-        isReset: 0
+        resetDate: '1970-1-1'
     };
 
-    Player.prototype.resetDate = function() {
+    Player.prototype.resetData = function() {
         var giveBlessMap = {
             1: 5,
             31: 10,
@@ -343,8 +344,8 @@ var Player = (function(_super) {
         var vipPrivilege = table.getTableItem('vip_privilege', this.vip);
 
         var dg = {
-            lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT + vipPrivilege.lottery_free_count, // 每日抽奖次数
-            lotteryFreeCount: 0, // 每日免费抽奖次数
+            lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
+            lotteryFreeCount: 0 + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
             powerGiven: [], // 体力赠送情况
             powerBuyCount: 6 + vipPrivilege.buy_power_count, // 购买体力次数
             challengeCount: 10 + vipPrivilege.challenge_count, // 每日有奖竞技次数
@@ -367,7 +368,11 @@ var Player = (function(_super) {
         this.dailyGift = dg;
         this.pass = pass;
         this.spiritPool = spiritPool;
-        this.isReset = 1;
+        this.resetDate = utility.shortDateString();
+    };
+
+    Player.prototype.isReset = function() {
+        return this.resetDate === utility.shortDateString();
     };
 
     Player.prototype.increase = function(name, val) {

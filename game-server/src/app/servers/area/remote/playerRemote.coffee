@@ -34,6 +34,10 @@ Remote::createPlayer = (args, callback) ->
       if err
         return callback({code: 500, msg: err})
       
+      ### 每天重置一次玩家的部分数据 ###
+      player.resetData() if not player.isReset()
+
+      ### 缓存登陆的玩家信息 ###
       area.addPlayer player
       messageService.add(uid, serverId, player.id, player.name)
       callback(null, player.toJson())
@@ -43,9 +47,13 @@ Remote::getPlayerByUserId = (userId, serverId, callback) ->
     if err and not player
       return callback {code: 501, msg: 'can not find player by user id: ' + userId}
 
+    ### 每天重置一次玩家的部分数据 ###
+    player.resetData() if not player.isReset()
+
+    ### 缓存登陆的玩家信息 ###
     area.addPlayer player
+    
     uid = userId + '*' + player.areaId
-    console.log 'getPlayerByUserId uid = ',uid
     messageService.add(uid, serverId, player.id, player.name)
     return callback null, player.toJson()
 

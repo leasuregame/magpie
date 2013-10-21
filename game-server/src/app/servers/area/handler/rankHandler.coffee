@@ -62,8 +62,9 @@ Handler::rankingList = (msg, session, next) ->
         rank = {}
 
         for key , value of ply
-          players.push value
-          rank[value.rank.ranking] = STATUS_COUNTER_ATTACK
+          if player.rank.ranking > value.rank.ranking
+            players.push value
+            rank[value.rank.ranking] = STATUS_COUNTER_ATTACK
 
         cb(err, players, _.extend(rankings,rank))
   ], (err, players, rankings) ->

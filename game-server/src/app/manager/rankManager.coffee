@@ -31,6 +31,8 @@ Manager = module.exports =
         exchangeRanking(challenger, defender)
         updateRankInfo(challenger, defender)
         defender.pushRecent(player.id)
+        challenger.recentChallenger = _.without(challenger.recentChallenger,targetId)
+
       else
         updateRankInfo(defender, challenger)
 

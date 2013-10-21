@@ -62,24 +62,24 @@ var TournamentLabel = cc.Node.extend({
 
             if (this._player.type == CAN_ADD_FRIEND) {
                 functionItem = cc.MenuItemImage.create(
-                    main_scene_image.button20,
-                    main_scene_image.button20s,
+                    main_scene_image.button9,
+                    main_scene_image.button9s,
                     this._onClickFunction,
                     this
                 );
                 functionLabel = cc.Sprite.create(main_scene_image.icon41);
             } else if (this._player.type == CAN_DEFIANCE) {
                 functionItem = cc.MenuItemImage.create(
-                    main_scene_image.button20,
-                    main_scene_image.button20s,
+                    main_scene_image.button9,
+                    main_scene_image.button9s,
                     this._onClickFunction,
                     this
                 );
                 functionLabel = cc.Sprite.create(main_scene_image.icon43);
             } else if (this._player.type == CAN_COUNTER_ATTACK) {
                 functionItem = cc.MenuItemImage.create(
-                    main_scene_image.button21,
-                    main_scene_image.button21s,
+                    main_scene_image.button11,
+                    main_scene_image.button11s,
                     this._onClickFunction,
                     this
                 );

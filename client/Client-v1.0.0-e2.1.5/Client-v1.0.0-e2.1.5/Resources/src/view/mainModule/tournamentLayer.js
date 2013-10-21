@@ -38,46 +38,51 @@ var TournamentLayer = cc.Layer.extend({
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
 
-        var tournamentMessageLabel = TournamentMessageLabel.create();
-        tournamentMessageLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 1013));
-        this.addChild(tournamentMessageLabel);
-
-        var playerLabel = cc.Sprite.create(main_scene_image.bg14);
+        var playerLabel = cc.Sprite.create(main_scene_image.icon31);
         playerLabel.setAnchorPoint(cc.p(0, 0));
-        playerLabel.setPosition(cc.p(40, 873));
+        playerLabel.setPosition(cc.p(40, 916));
         this.addChild(playerLabel);
 
-        this._nameLabel = cc.LabelTTF.create("null", "黑体", 30);
-        this._nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._nameLabel.setPosition(cc.p(150, 974));
-        this.addChild(this._nameLabel);
+        var nameLabel = StrokeLabel.create(gameData.player.get("name"), "STHeitiTC-Medium", 30);
+        nameLabel.setColor(cc.c3b(255, 239, 131));
+        nameLabel.setAnchorPoint(cc.p(0, 0.5));
+        nameLabel.setPosition(cc.p(160, 1013));
+        this.addChild(nameLabel);
 
-        this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0, true);
-        this._expProgress.setPosition(cc.p(225, 941));
+        var expBg = cc.Sprite.create(main_scene_image.exp_bg);
+        expBg.setPosition(cc.p(210, 975));
+        this.addChild(expBg);
+        expBg.setScale(0.8);
+
+        this._expProgress = Progress.create(null, main_scene_image.exp, 0, 0, true);
+        this._expProgress.setPosition(cc.p(214, 975));
+        this.addChild(this._expProgress);
+        this._expProgress.setFontColor(cc.c3b(255, 239, 131));
         this._expProgress.setScale(0.8);
-        this.addChild(this._expProgress, 2);
 
         var lvBg = cc.Sprite.create(main_scene_image.lv_bg);
-        lvBg.setPosition(cc.p(100, 954));
+        lvBg.setPosition(cc.p(90, 995));
+        this.addChild(lvBg);
         lvBg.setScale(0.8);
-        this.addChild(lvBg, 2);
 
-        this._lvLabel = cc.LabelTTF.create("0", "黑体", 45);
-        this._lvLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._lvLabel.setPosition(cc.p(100, 954));
-        this._lvLabel.setScale(0.8);
-        this.addChild(this._lvLabel, 2);
+        this._lvLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 38);
+        this._lvLabel.setColor(cc.c3b(255, 239, 131));
+        this._lvLabel.setPosition(cc.p(87, 993));
+        this.addChild(this._lvLabel);
 
-        this._countLabel = cc.LabelTTF.create(0, "黑体", 22);
-        this._countLabel.setPosition(cc.p(555, 980));
+        this._countLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
+        this._countLabel.setColor(cc.c3b(255, 239, 131));
+        this._countLabel.setPosition(cc.p(555, 1013));
         this.addChild(this._countLabel);
 
-        this._rankingLabel = cc.LabelTTF.create(0, "黑体", 22);
-        this._rankingLabel.setPosition(cc.p(440, 940));
+        this._rankingLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
+        this._rankingLabel.setColor(cc.c3b(255, 239, 131));
+        this._rankingLabel.setPosition(cc.p(430, 975));
         this.addChild(this._rankingLabel);
 
-        this._abilityLabel = cc.LabelTTF.create(0, "黑体", 22);
-        this._abilityLabel.setPosition(cc.p(605, 940));
+        this._abilityLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
+        this._abilityLabel.setColor(cc.c3b(255, 239, 131));
+        this._abilityLabel.setPosition(cc.p(605, 975));
         this.addChild(this._abilityLabel);
 
         return true;
@@ -87,8 +92,8 @@ var TournamentLayer = cc.Layer.extend({
         cc.log("TournamentLayer update");
 
         var player = gameData.player;
+
         this._expProgress.setAllValue(player.get("power"), player.get("maxPower"));
-        this._nameLabel.setString(player.get("name"));
         this._lvLabel.setString(player.get("lv"));
         this._abilityLabel.setString(player.get("ability"));
 

@@ -221,6 +221,7 @@ Data.prototype.loadDataForRankingList = function(callback) {
         name: 'james' + id,
         userId: id,
         areaId: 1,
+        lv: 20,
         ability: id + _.random(10000)
       };
 

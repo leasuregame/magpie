@@ -17,9 +17,8 @@ describe("Area Server", function() {
                     expect(data).toEqual('done');
                 });
             });
+
             describe('when can reset pass mark', function() {
-
-
 
                 beforeEach(function() {
                     doAjax('/update/player/102', {
@@ -47,13 +46,11 @@ describe("Area Server", function() {
                             'gold',
                             'canReset'
                         ]);
-                        expect(data.msg.canReset).toEqual(true)
+                        expect(data.msg.canReset).toEqual(false);
 
                         doAjax('/player/' + mike.playerId, {}, function(res) {
-                            //expect(JSON.parse(res.data.pass.mark)).toEqual(data.msg.passMark);
                             expect(res.data.gold).toEqual(data.msg.gold);
                         });
-
                     });
                 });
             });
@@ -68,53 +65,52 @@ describe("Area Server", function() {
                     password: '1'
                 };
 
-                beforeEach(function() {
-                    doAjax('/update/player/102', {
-                        gold: 10000,
-                        pass: JSON.stringify({
-                            layer: 30,
-                            mark: [1073741823],
-                            mystical: {
-                                diff: 1,
-                                isTrigger: false,
-                                isClear: false
-                            },
-                            resetTimes: 0
-                        })
-                    }, function() {
-                        loginWith(mike.account, mike.password, mike.areaId);
+
+
+                describe('when reset times is use out', function() {
+
+                    beforeEach(function() {
+                        doAjax('/update/player/102', {
+                            gold: 10000,
+                            pass: JSON.stringify({
+                                layer: 30,
+                                mark: [1073741823],
+                                mystical: {
+                                    diff: 1,
+                                    isTrigger: false,
+                                    isClear: false
+                                },
+                                resetTimes: 0
+                            })
+                        }, function() {
+                            loginWith(mike.account, mike.password, mike.areaId);
+                        });
                     });
-                });
 
+                    it('should can not reset pass mark', function() {
 
-                it('when gold is already enough', function() {
-                    doAjax('/update/player/102', {
-
-                        pass: JSON.stringify({
-                            layer: 30,
-                            mark: [1073741823],
-                            mystical: {
-                                diff: 1,
-                                isTrigger: false,
-                                isClear: false
-                            },
-                            resetTimes: 0
-                        })
-                    }, function() {
-                        loginWith(mike.account, mike.password, mike.areaId);
                         request('area.taskHandler.resetPassMark', {}, function(data) {
                             console.log(data);
                             expect(data.code).toEqual(501);
                             expect(data.msg).toEqual('重置关卡次数已用光');
                         });
                     });
+
                 });
 
-                it('when gold is not enough', function() {
-                    doAjax('/update/player/102', {
-                        gold: 180
-                    }, function() {
-                        loginWith(mike.account, mike.password, mike.areaId);
+                describe('when gold is not enough', function() {
+
+                    beforeEach(function() {
+                        doAjax('/update/player/102', {
+                            gold: 180
+                        }, function() {
+                            loginWith(mike.account, mike.password, mike.areaId);
+                        });
+                    });
+
+                    it('should can not reset pass mark', function() {
+
+
                         request('area.taskHandler.resetPassMark', {}, function(data) {
                             console.log(data);
                             expect(data.code).toEqual(501);

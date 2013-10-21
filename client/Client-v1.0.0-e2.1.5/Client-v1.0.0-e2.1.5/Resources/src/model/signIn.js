@@ -107,7 +107,9 @@ var SignIn = Entity.extend({
         cc.log("MonthLabel canReceive");
 
         if (index == 0) {
-            return (this._monthsMark[0].count < this._monthsMark[0].days);
+            var nowDay = new Date().getDate();
+
+            return (this._monthsMark[0].count < nowDay);
         }
 
         return false;
@@ -132,14 +134,48 @@ var SignIn = Entity.extend({
 
                 var msg = data.msg;
 
-                gameData.player.adds(msg);
+                gameData.player.adds({
+                    money: msg.money,
+                    energy: msg.energy
+                });
 
                 var day = new Date().getDate() - 1;
                 that._monthsMark[0].mark |= (1 << day);
+                that._monthsMark[0].count += 1;
 
-                cb();
+                cb(msg);
             } else {
                 cc.log("signIn fail");
+            }
+        });
+    },
+
+    remedySignIn: function (cb) {
+        cc.log("SignIn remedySignIn");
+
+        var that = this;
+        lzWindow.pomelo.request("area.dailyHandler.reSignIn", {}, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("remedySignIn success");
+
+                var msg = data.msg;
+
+                gameData.player.adds({
+                    money: msg.reward.money,
+                    energy: msg.reward.energy,
+                    gold: -msg.goldResume
+                });
+
+                var day = msg.day - 1;
+                that._monthsMark[0].mark |= (1 << day);
+                that._monthsMark[0].count += 1;
+
+                cb(msg.reward);
+            } else {
+                cc.log("remedySignIn fail");
             }
         });
     },
@@ -162,19 +198,22 @@ var SignIn = Entity.extend({
                 var table = outputTables.signIn_rewards.rows[id];
 
                 gameData.player.adds({
-                    money: table.money || 0,
-                    energy: table.energy || 0,
-                    skillPoint: table.skillPoint || 0,
-                    gold: table.gold || 0
+                    money: table.money,
+                    energy: table.energy,
+                    skillPoint: table.skillPoint,
+                    elixir: table.elixir,
+                    gold: table.gold
                 });
 
-                // 灵气不好处理
+                gameData.spirit.add("exp", table.spirit);
 
                 gameData.treasureHunt.add("freeCount", table.lottery_free_count);
 
-                cb();
+                cb(table);
             } else {
                 cc.log("signIn fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },

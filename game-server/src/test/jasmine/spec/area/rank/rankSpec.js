@@ -1,4 +1,4 @@
-var checkChallengeResults = function (rankId, ranking, challenger, isWin, data) {
+var checkChallengeResults = function(rankId, ranking, challenger, isWin, data) {
     var challenge = 1,
         win = 1,
         lose = 0,
@@ -11,7 +11,7 @@ var checkChallengeResults = function (rankId, ranking, challenger, isWin, data) 
         winningStreak = 0;
     }
 
-    doAjax('/rank/' + rankId, {}, function (res) {
+    doAjax('/rank/' + rankId, {}, function(res) {
         console.log(res);
         expect(res.data.challengeCount).toEqual(challenge);
         expect(res.data.winCount).toEqual(win);
@@ -22,25 +22,25 @@ var checkChallengeResults = function (rankId, ranking, challenger, isWin, data) 
     });
 };
 
-describe("Area Server", function () {
+describe("Area Server", function() {
 
-    describe("Rank Handler", function () {
+    describe("Rank Handler", function() {
 
-        describe("challenge 1", function () {
-            beforeAll(function () {
-                doAjax('/loaddata/csv', {}, function (data) {
+        describe("challenge 1", function() {
+            beforeAll(function() {
+                doAjax('/loaddata/csv', {}, function(data) {
                     expect(data).toEqual('done');
                 });
             });
-            describe("高排位挑战低排位", function () {
-                beforeEach(function () {
+            describe("高排位挑战低排位", function() {
+                beforeEach(function() {
                     loginWith('user4', '1', 1);
                 });
 
-                it("should can be return battle log", function () {
+                it("should can be return battle log", function() {
                     request('area.rankHandler.challenge', {
                         targetId: 100
-                    }, function (data) {
+                    }, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(200);
                         expect(data.msg.battleLog).toBeBattleLog();
@@ -63,15 +63,15 @@ describe("Area Server", function () {
 
             });
 
-            describe("低排位挑战高排位", function () {
-                beforeEach(function () {
+            describe("低排位挑战高排位", function() {
+                beforeEach(function() {
                     loginWith('1', '1', 1);
                 });
 
-                it("should can be return battle log", function () {
+                it("should can be return battle log", function() {
                     request('area.rankHandler.challenge', {
                         targetId: 2
-                    }, function (data) {
+                    }, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(200);
                         expect(data.msg.battleLog).toBeBattleLog();
@@ -95,21 +95,21 @@ describe("Area Server", function () {
             });
         });
 
-        describe("challenge 2", function () {
-            beforeAll(function () {
-                doAjax('/loaddata/csv', {}, function (data) {
+        describe("challenge 2", function() {
+            beforeAll(function() {
+                doAjax('/loaddata/csv', {}, function(data) {
                     expect(data).toEqual('done');
                 });
             });
-            describe("高排位挑战低排位", function () {
-                beforeEach(function () {
+            describe("高排位挑战低排位", function() {
+                beforeEach(function() {
                     loginWith('2', '1', 1);
                 });
 
-                it("should can be return battle log", function () {
+                it("should can be return battle log", function() {
                     request('area.rankHandler.challenge', {
                         targetId: 1
-                    }, function (data) {
+                    }, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(200);
                         expect(data.msg.battleLog).toBeBattleLog();
@@ -132,15 +132,15 @@ describe("Area Server", function () {
 
             });
 
-            describe("低排位挑战高排位", function () {
-                beforeEach(function () {
+            describe("低排位挑战高排位", function() {
+                beforeEach(function() {
                     loginWith('arthur', '1', 1);
                 });
 
-                it("should can be return battle log", function () {
+                it("should can be return battle log", function() {
                     request('area.rankHandler.challenge', {
                         targetId: 101
-                    }, function (data) {
+                    }, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(200);
                         expect(data.msg.battleLog).toBeBattleLog();
@@ -164,114 +164,122 @@ describe("Area Server", function () {
             });
         });
 
-        describe("获取排名奖励", function () {
-            beforeAll(function () {
-                doAjax('/loaddata/csv', {}, function (data) {
+        describe("获取排名奖励", function() {
+            beforeAll(function() {
+                doAjax('/loaddata/csv', {}, function(data) {
                     expect(data).toEqual('done');
                 });
             });
 
-            describe('when ranking is 1', function () {
-                beforeAll(function () {
+            describe('when ranking is 100', function() {
+                beforeAll(function() {
                     doAjax('/update/rank/' + 5, {
                         ranking: 100
-                    }, function () {
+                    }, function() {
                         loginWith('1', '1', 1);
                     });
                 });
 
-                it('should can get rankng reward', function () {
+                it('should can get rankng reward', function() {
                     request('area.rankHandler.getRankingReward', {
                         ranking: 1
-                    }, function (data) {
+                    }, function(data) {
                         console.log(data);
-                        expect(data).toEqual({ code: 501, msg: '不能领取该排名奖励' });
+                        expect(data).toEqual({
+                            code: 501,
+                            msg: '不能领取该排名奖励'
+                        });
                     });
 
                     request('area.rankHandler.getRankingReward', {
                         ranking: 100
-                    }, function (data) {
+                    }, function(data) {
                         console.log(data);
-                        expect(data).toEqual({ code: 200, msg: { rankingRewards: [ 5000, 1000, 500 ] } });
+                        expect(data).toEqual({
+                            code: 200,
+                            msg: {
+                                rankingRewards: [500]
+                            }
+                        });
                     });
 
                     request('area.rankHandler.getRankingReward', {
                         ranking: 500
-                    }, function (data) {
+                    }, function(data) {
                         console.log(data);
-                        expect(data).toEqual({ code: 200, msg: { rankingRewards: [ 5000, 1000 ] } });
-                    });
-
-                    request('area.rankHandler.getRankingReward', {
-                        ranking: 1000
-                    }, function (data) {
-                        console.log(data);
-                        expect(data).toEqual({ code: 200, msg: { rankingRewards: [ 5000 ] } });
-                    });
-
-                    request('area.rankHandler.getRankingReward', {
-                        ranking: 5000
-                    }, function (data) {
-                        console.log(data);
-                        expect(data).toEqual({ code: 200, msg: { rankingRewards: [ ] } });
-                    });
-
-                    request('area.rankHandler.getRankingReward', {
-                        ranking: 5000
-                    }, function (data) {
-                        console.log(data);
-                        expect(data).toEqual({ code: 200, msg: { rankingRewards: [ ] } });
+                        expect(data).toEqual({
+                            code: 200,
+                            msg: {
+                                rankingRewards: []
+                            }
+                        });
                     });
 
                 });
 
             });
 
-            describe('when ranking is 5000', function () {
-                beforeAll(function () {
+            describe('when ranking is 500', function() {
+                beforeAll(function() {
                     doAjax('/update/rank/' + 5, {
-                        ranking: 5000
-                    }, function () {
+                        ranking: 500
+                    }, function() {
                         loginWith('1', '1', 1);
                     });
                 });
 
-                it('should only can get ranking reward of 5000', function () {
+                it('should only can get ranking reward of 5000', function() {
                     request('area.rankHandler.getRankingReward', {
-                        ranking: 5000
-                    }, function (data) {
+                        ranking: 500
+                    }, function(data) {
                         console.log(data);
-                        expect(data).toEqual({ code: 200, msg: { rankingRewards: [ ] } });
+                        expect(data).toEqual({
+                            code: 200,
+                            msg: {
+                                rankingRewards: []
+                            }
+                        });
                     });
 
                     request('area.rankHandler.getRankingReward', {
-                        ranking: 1000
-                    }, function (data) {
+                        ranking: 100
+                    }, function(data) {
                         console.log(data);
-                        expect(data).toEqual({ code: 200, msg: { rankingRewards: [ ] } });
+                        expect(data).toEqual({
+                            code: 200,
+                            msg: {
+                                rankingRewards: []
+                            }
+                        });
                     });
                 });
 
             });
 
-            describe('when ranking parameter is not right', function () {
-                beforeAll(function () {
+            describe('when ranking parameter is not right', function() {
+                beforeAll(function() {
                     loginWith('1', '1', 1);
                 });
 
-                it('should can not get ranking reward', function () {
+                it('should can not get ranking reward', function() {
                     request('area.rankHandler.getRankingReward', {
-                        ranking: 5001
-                    }, function (data) {
+                        ranking: 501
+                    }, function(data) {
                         console.log(data);
-                        expect(data).toEqual({ code: 501, msg: '找不到5001的排名奖励' });
+                        expect(data).toEqual({
+                            code: 501,
+                            msg: '找不到501的排名奖励'
+                        });
                     });
 
                     request('area.rankHandler.getRankingReward', {
-                        ranking: 1001
-                    }, function (data) {
+                        ranking: 101
+                    }, function(data) {
                         console.log(data);
-                        expect(data).toEqual({ code: 501, msg: '找不到1001的排名奖励' });
+                        expect(data).toEqual({
+                            code: 501,
+                            msg: '找不到101的排名奖励'
+                        });
                     });
                 });
 
@@ -279,9 +287,9 @@ describe("Area Server", function () {
 
         });
 
-        describe("ranking list", function () {
-            beforeAll(function () {
-                doAjax('/loaddata/all', {}, function (data) {
+        describe("ranking list", function() {
+            beforeAll(function() {
+                doAjax('/loaddata/all', {}, function(data) {
                     expect(data).toEqual('done');
                 });
             });
@@ -289,42 +297,41 @@ describe("Area Server", function () {
             var ids = [20000, 17000, 15000, 13000, 11000, 10700, 10300, 10199, 10013, 10001];
             var steps = [106, 83, 62, 41, 19, 14, 11, 5, 1, 1];
 
-            var genRankings = function (rank, stepIndex) {
+            var genRankings = function(rank, stepIndex) {
                 var top10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
                 var results = [];
                 if (rank <= 10) {
                     results.push(11);
-                }
-                else
+                } else
                     for (var i = 0; i < 11; i++) {
                         results.push(rank - steps[stepIndex] * i);
                     }
                 return _.union(top10, results.reverse());
             };
 
-            ids.map(function (id, index) {
+            ids.map(function(id, index) {
 
-                describe("when my ranking is " + (id - 9999), function () {
-                    beforeEach(function () {
+                describe("when my ranking is " + (id - 9999), function() {
+                    beforeEach(function() {
                         console.log(Date.now());
                         loginWith('user4', '1', 1);
                     });
 
-                    it('should can be return correct ranking list for (' + (id - 9999) + ')', function () {
+                    it('should can be return correct ranking list for (' + (id - 9999) + ')', function() {
                         var s = Date.now();
                         request('area.rankHandler.rankingList', {
                             playerId: id
-                        }, function (data) {
+                        }, function(data) {
                             console.log(Date.now(), (Date.now() - s) / 1000, data);
                             var cur_ranking = id - 9999;
                             //expect(data).toEqual('');
                             //expect(data.msg[data.msg.length - 1].ranking).toEqual(cur_ranking);
 
-                            expect(_.map(data.msg.rank.rankList,function (p) {
+                            expect(_.map(data.msg.rank.rankList, function(p) {
                                 return p.ranking;
-                            }).sort(function (a, b) {
-                                    return a - b;
-                                })).toEqual(genRankings(cur_ranking, index));
+                            }).sort(function(a, b) {
+                                return a - b;
+                            })).toEqual(genRankings(cur_ranking, index));
 
                         });
                     });
@@ -333,18 +340,50 @@ describe("Area Server", function () {
 
             });
 
-            describe("when my recentChallenger has playerIds", function () {
+            describe("when rank info is empty", function() {
+                beforeEach(function() {
+                    loginWith('poorman', '1', 1);
+                });
 
-                describe("when players ranking is in top 10", function () {
+                it('should remain that can not find rank info', function() {
+                    request('area.rankHandler.rankingList', {}, function(data) {
+                        console.log(data);
+                        expect(data).toEqual({
+                            code: 501,
+                            msg: '找不到竞技信息'
+                        });
+                    });
+                });
+            });
 
-                    beforeEach(function () {
+            describe("when player level is less than 10", function() {
+                beforeEach(function() {
+                    loginWith('user1', '1', 1);
+                });
+
+                it('should remain that can not find rank info', function() {
+                    request('area.rankHandler.rankingList', {}, function(data) {
+                        console.log(data);
+                        expect(data).toEqual({
+                            code: 501,
+                            msg: '10级开放'
+                        });
+                    });
+                });
+            });
+
+            describe("when my recentChallenger has playerIds", function() {
+
+                describe("when players ranking is in top 10", function() {
+
+                    beforeEach(function() {
                         loginWith('3', '1', 1);
                     });
 
-                    it('should can be return correct ranking list', function () {
+                    it('should can be return correct ranking list', function() {
                         request('area.rankHandler.rankingList', {
                             playerId: 3
-                        }, function (data) {
+                        }, function(data) {
                             console.log(data);
                             var rankList = data.msg.rank.rankList;
                             expect(rankList.length).toEqual(21);
@@ -360,16 +399,16 @@ describe("Area Server", function () {
 
                 });
 
-                describe("when players ranking is not in top 10", function () {
+                describe("when players ranking is not in top 10", function() {
 
-                    beforeEach(function () {
+                    beforeEach(function() {
                         loginWith('4', '1', 1);
                     });
 
-                    it('should can be return correct ranking list', function () {
+                    it('should can be return correct ranking list', function() {
                         request('area.rankHandler.rankingList', {
                             playerId: 4
-                        }, function (data) {
+                        }, function(data) {
                             console.log(data);
                             var rankList = data.msg.rank.rankList;
                             expect(rankList.length).toEqual(24);
@@ -383,16 +422,13 @@ describe("Area Server", function () {
                             expect(rankList[23].type).toEqual(2);
 
                         });
-                    })
+                    });
 
                 });
 
             });
 
-
         });
-
-
 
     });
 });

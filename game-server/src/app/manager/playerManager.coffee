@@ -16,7 +16,7 @@ class Manager
       cb(null, player)
 
   @getPlayerInfo: (params, cb) ->
-    _player = area.getPlayer(params.pid)
+    _player = @getPlayerFromCache(params.pid)
     console.log '-get player form area cache-', _player?.id, _player?.name
     return cb(null, _player) if _player?
 
@@ -31,6 +31,9 @@ class Manager
 
       cb(null, player)
 
+  @getPlayerFromCache: (id) ->
+    return area.getPlayer(id)
+
   @getPlayer: (params, cb) ->
     dao.player.fetchOne where: params, (err, player) ->
       if err
@@ -41,7 +44,7 @@ class Manager
     results = {}
     leftIds = []
     for id in ids
-      cache = area.getPlayer(id) 
+      cache = @getPlayerFromCache(id) 
       if cache 
         results[cache.id] = cache 
       else

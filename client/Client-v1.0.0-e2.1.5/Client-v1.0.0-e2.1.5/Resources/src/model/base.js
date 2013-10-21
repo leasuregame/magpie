@@ -17,7 +17,6 @@
  * */
 var lz = {};
 
-
 /**
  * copy an new object
  * @function
@@ -86,6 +85,11 @@ lz.format = function (str, length) {
     }
 
     return strList;
+};
+
+lz.getStrWidth = function (str, fonName, fontSize) {
+    var label = cc.LabelTTF.create(str, fonName, fontSize);
+    return label.getContentSize().width;
 };
 
 lz.getColor = function (colorType) {
@@ -158,13 +162,15 @@ var gameGoodsName = {
     "exp": "经验",
     "money": "铜板",
     "gold": "黄金",
-    "power": "体力",
+    "powerValue": "体力",
     "elixir": "仙丹",
     "fragment": "卡魂",
     "energy": "活力",
     "skillPoint": "技能点",
     "totalSpirit": "灵气",
-    "cards": "经验卡"
+    "cards": "经验卡",
+    "freeCount": "免费抽奖次数",
+    "lottery_free_count": "免费抽奖次数"
 };
 
 lz.getNameByKey = function (key) {
@@ -187,6 +193,32 @@ lz.getRewardString = function (data) {
     }
 
     return str;
+};
+
+lz.getTimeStr = function (time) {
+    cc.log("BattleMessageLayer _getTimeStr");
+
+    var date = new Date(time);
+    var today = new Date();
+    var timeStr = "";
+
+    if (today.toDateString() === date.toDateString()) {
+        timeStr = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
+    } else {
+        timeStr = date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay();
+    }
+
+    return timeStr;
+};
+
+lz.tipReward = function (reward) {
+    reward = reward || {};
+
+    var key;
+
+    for (key in reward) {
+        TipLayer.tipNoBg(lz.getNameByKey(key) + ": " + reward[key]);
+    }
 };
 
 // 获取不大于原数的随机数

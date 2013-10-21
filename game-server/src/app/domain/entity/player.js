@@ -345,8 +345,8 @@ var Player = (function(_super) {
         var vipPrivilege = table.getTableItem('vip_privilege', this.vip);
 
         var dg = {
-            lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT + vipPrivilege.lottery_free_count, // 每日抽奖次数
-            lotteryFreeCount: 0, // 每日免费抽奖次数
+            lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
+            lotteryFreeCount: 0 + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
             powerGiven: [], // 体力赠送情况
             powerBuyCount: 6 + vipPrivilege.buy_power_count, // 购买体力次数
             challengeCount: 10 + vipPrivilege.challenge_count, // 每日有奖竞技次数

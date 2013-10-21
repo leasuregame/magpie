@@ -17,10 +17,19 @@ var CardDetails = LazyLayer.extend({
     _menu: null,
     _cb: null,
 
+    onEnter: function () {
+        cc.log("CardDetails onEnter");
+
+        this._super();
+        this.update();
+    },
+
     init: function (card, cb) {
         cc.log("CardDetails init");
 
         if (!this._super()) return false;
+
+        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
         this._card = card;
         this._cb = cb;
@@ -239,7 +248,19 @@ var CardDetails = LazyLayer.extend({
             tipLabel.setPosition(cc.p(250, 340));
             this.addChild(tipLabel);
 
-            var tipDescriptionLabel = cc.LabelTTF.create("三星以上拥有被动效果。", "STHeitiTC-Medium", 20);
+            var str = "三星以上拥有被动效果。";
+            var star = this._card.get("star");
+
+            if (star === 3) {
+                str = "三星卡拥有一个被动效果。"
+            } else if (star === 4) {
+                str = "四星卡拥有两个被动效果。"
+            } else if (star === 5) {
+                str = "五星卡拥有三个被动效果。"
+            }
+
+
+            var tipDescriptionLabel = cc.LabelTTF.create(str, "STHeitiTC-Medium", 20);
             tipDescriptionLabel.setColor(cc.c3b(255, 239, 131));
             tipDescriptionLabel.setAnchorPoint(cc.p(0, 0.5));
             tipDescriptionLabel.setPosition(cc.p(100, 300));
@@ -249,6 +270,7 @@ var CardDetails = LazyLayer.extend({
         var closeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
+            main_scene_image.button9d,
             main_scene_image.icon36,
             this._onClickClose,
             this
@@ -256,10 +278,24 @@ var CardDetails = LazyLayer.extend({
         closeItem.setPosition(cc.p(360, 130));
 
         this._menu = cc.Menu.create(closeItem);
+        this._menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         this._menu.setPosition(cc.p(0, 0));
         this.addChild(this._menu);
 
         return true;
+    },
+
+    update: function () {
+        cc.log("CardDetails update");
+
+        var children = this._menu.getChildren();
+        var len = children.length;
+
+        var x = 360 + (len - 1) * 200 / 2;
+
+        for (var i = 0; i < len; ++i) {
+            children[i].setPosition(cc.p(x - 200 * i, 130));
+        }
     },
 
     _onClickClose: function () {

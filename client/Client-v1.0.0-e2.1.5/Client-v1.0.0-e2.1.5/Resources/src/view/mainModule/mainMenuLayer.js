@@ -12,115 +12,86 @@
  * */
 
 
+var MAIN_MENU_LAYER_HANDLER_PRIORITY = -200;
+
 var MainMenuLayer = cc.Layer.extend({
+    _markSprite: null,
+    _layer: [
+        MainLayer,
+        TaskLayer,
+        PassLayer,
+        TournamentLayer,
+        CardListLayer,
+        ShopLayer
+    ],
+
+    onEnter: function () {
+        this._super();
+        this.update();
+    },
+
     init: function () {
         cc.log("MainMenuLayer init");
 
         if (!this._super()) return false;
 
-        var mainLayerItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button7,
-            main_scene_image.button7s,
-            main_scene_image.icon5,
-            this._onClickMainLayer,
-            this
-        );
-        mainLayerItem.setPosition(cc.p(93, 141));
+        var bgSprite = cc.Sprite.create(main_scene_image.icon10);
+        bgSprite.setAnchorPoint(cc.p(0, 0));
+        bgSprite.setPosition(cc.p(40, 88));
+        this.addChild(bgSprite, -1);
 
-        var pveLayerItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button7,
-            main_scene_image.button7s,
-            main_scene_image.icon6,
-            this._onClickPveLayer,
-            this
-        );
-        pveLayerItem.setPosition(cc.p(200, 141));
+        this._markSprite = cc.Sprite.create(main_scene_image.icon9);
+        this.addChild(this._markSprite);
 
-        var tournamentLayerItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button7,
-            main_scene_image.button7s,
-            main_scene_image.icon7,
-            this._onClickTournamentLayer,
-            this
-        );
-        tournamentLayerItem.setPosition(cc.p(307, 141));
-
-        var rankingLayerItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button7,
-            main_scene_image.button7s,
-            main_scene_image.icon8,
-            this._onClickCardListLayer,
-            this
-        );
-        rankingLayerItem.setPosition(cc.p(414, 141));
-
-        var shopLayerItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button7,
-            main_scene_image.button7s,
-            main_scene_image.icon9,
-            this._onClickShopLayer,
-            this
-        );
-        shopLayerItem.setPosition(cc.p(521, 141));
-
-        var messageLayerItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button7,
-            main_scene_image.button7s,
-            main_scene_image.icon10,
-            this._onClickMessageLayer,
-            this
-        );
-        messageLayerItem.setPosition(cc.p(628, 141));
-
-
-        var mainMenu = cc.Menu.create(
-            mainLayerItem,
-            pveLayerItem,
-            tournamentLayerItem,
-            rankingLayerItem,
-            shopLayerItem,
-            messageLayerItem
-        );
+        var mainMenu = cc.Menu.create();
+        mainMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         mainMenu.setPosition(cc.p(0, 0));
         this.addChild(mainMenu);
+
+        var len = this._layer.length;
+
+        for (var i = 0; i < len; ++i) {
+            var url = "button" + (46 + i);
+
+            var item = cc.MenuItemImage.create(
+                main_scene_image[url],
+                main_scene_image[url + "s"],
+                this._onClickLayer(i),
+                this
+            );
+            item.setPosition(cc.p(93 + 107 * i, 142));
+            mainMenu.addChild(item);
+        }
 
         return true;
     },
 
-    _onClickMainLayer: function () {
-        cc.log("MainMenuLayer _onClickMainLayer");
+    update: function () {
+        cc.log("MainMenuLayer update");
 
-        MainScene.getInstance().switchLayer(MainLayer);
+        var runLayer = MainScene.getInstance().getLayer();
+
+        var len = this._layer.length;
+
+        for (var i = 0; i < len; ++i) {
+            if (runLayer instanceof this._layer[i]) {
+                this._markSprite.setPosition(93 + 107 * i, 142);
+                this._markSprite.setVisible(true);
+
+                return;
+            }
+
+        }
+
+        this._markSprite.setVisible(false);
     },
 
-    _onClickPveLayer: function () {
-        cc.log("MainMenuLayer _onClickPveLayer");
+    _onClickLayer: function (index) {
+        return function () {
+            cc.log("MainMenuLayer _onClickLayer: " + index);
 
-        MainScene.getInstance().switchLayer(PveLayer);
-    },
-
-    _onClickTournamentLayer: function () {
-        cc.log("MainMenuLayer _onClickTournamentLayer");
-
-        MainScene.getInstance().switchLayer(TournamentLayer);
-    },
-
-    _onClickCardListLayer: function () {
-        cc.log("MainMenuLayer _onClickCardListLayer");
-
-        MainScene.getInstance().switchLayer(CardListLayer);
-    },
-
-    _onClickShopLayer: function () {
-        cc.log("MainMenuLayer _onClickShopLayer");
-
-        MainScene.getInstance().switchLayer(ShopLayer);
-    },
-
-    _onClickMessageLayer: function () {
-        cc.log("MainMenuLayer _onClickMessageLayer");
-
-        MainScene.getInstance().switchLayer(MessageLayer);
+            MainScene.getInstance().switchLayer(this._layer[index]);
+        }
     }
 });
 

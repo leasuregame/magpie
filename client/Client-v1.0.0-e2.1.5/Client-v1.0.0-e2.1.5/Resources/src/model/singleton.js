@@ -23,4 +23,4 @@ var singleton = function (cls) {
 
         return result;
     }
-}
+};

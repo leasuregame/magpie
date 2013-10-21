@@ -12,7 +12,7 @@
  * */
 
 
-var MAX_LINE_UP_CARD = 5;
+var MAX_LINE_UP_CARD = 3;
 var MAX_LINE_UP_SIZE = 6;
 var SPIRIT_ID = -1;
 

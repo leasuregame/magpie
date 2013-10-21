@@ -18,6 +18,8 @@ var BattlePlayer = cc.Class.extend({
     play: function (id, isPlayback) {
         cc.log("BattlePlayer play");
 
+        isPlayback = isPlayback || false;
+
         var battleLog = BattleLog.create(id, isPlayback);
 
         this._battleScene = BattleScene.create(battleLog);

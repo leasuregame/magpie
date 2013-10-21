@@ -68,7 +68,7 @@ var PassRankLayer = cc.Layer.extend({
             passIcon.setPosition(cc.p(420, y + 60));
             scrollViewLayer.addChild(passIcon);
 
-            var passLabel = cc.LabelTTF.create(99, "Arial", 35);
+            var passLabel = cc.LabelTTF.create(passRankList[i].passLayer, "Arial", 35);
             passLabel.setColor(cc.c3b(255, 252, 175));
             passLabel.setAnchorPoint(cc.p(0, 0.5));
             passLabel.setPosition(cc.p(465, y + 57));

@@ -37,7 +37,6 @@ var Lottery = Entity.extend({
             cc.log("lottery by energy");
         } else {
             cb("lottery type error");
-
             return;
         }
 
@@ -64,8 +63,8 @@ var Lottery = Entity.extend({
                     player.add("energy", -msg.consume);
                 }
 
-                if (msg.hasFragment) {
-                    player.add("fragment", 1);
+                if (msg.fragment > 0) {
+                    player.add("fragment", msg.fragment);
                 }
 
                 cb(card);

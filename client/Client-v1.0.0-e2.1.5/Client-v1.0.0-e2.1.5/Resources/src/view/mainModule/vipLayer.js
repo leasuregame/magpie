@@ -297,7 +297,7 @@ var VipLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         lazyLayer.addChild(menu);
 
-        var okIcon = cc.Sprite.create(main_scene_image.icon95);
+        var okIcon = cc.Sprite.create(main_scene_image.icon21);
         okIcon.setPosition(cc.p(360, 360));
         lazyLayer.addChild(okIcon);
     },

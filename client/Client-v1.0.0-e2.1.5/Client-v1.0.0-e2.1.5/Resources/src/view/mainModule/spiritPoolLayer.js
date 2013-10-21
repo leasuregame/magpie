@@ -44,7 +44,7 @@ var SpiritPoolLayer = cc.Layer.extend({
         this.addChild(headIcon);
 
         var titleIcon = cc.Sprite.create(main_scene_image.icon102);
-        titleIcon.setPosition(cc.p(360, 1000));
+        titleIcon.setPosition(cc.p(360, 1008));
         this.addChild(titleIcon);
 
         var spiritIcon = cc.Sprite.create(main_scene_image.icon101);

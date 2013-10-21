@@ -21,8 +21,8 @@ describe('Area Server', function() {
 						expect(data).toEqual({
 							code: 200,
 							msg: {
-								money: 2000,
-								energy: 100
+								money: 1000,
+								energy: 50
 							}
 						});
 					});
@@ -38,7 +38,7 @@ describe('Area Server', function() {
 			beforeEach(function() {
 				doAjax('/update/player/' + 100, {
 					signIn: JSON.stringify({
-						months: {201310: 1048575},
+						months: {201310: 0},
 						flag: 0
 					})
 				}, function(){
@@ -58,7 +58,12 @@ describe('Area Server', function() {
 						expect(data).toEqual({
 							code: 200,
 							msg: {
-								day: 1
+								day: 1,
+								goldResume: 10,
+								reward: {
+									money: 1000,
+									energy: 50
+								}
 							}
 						});
 					});

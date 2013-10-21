@@ -103,7 +103,11 @@ describe("Area Server", function() {
                 }, function(data) {
                     console.log(data);
                     expect(data.code).toEqual(200);
-                    expect(data.msg).toEqual('成功领取奖励');
+                    expect(data.msg).toEqual({
+                        gold: 100,
+                        money: 100,
+                        powerValue: 120
+                    });
 
                     doAjax('/message/' + msgId, {}, function(res) {
                         expect(res.data.status).toEqual(5);

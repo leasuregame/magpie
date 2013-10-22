@@ -105,7 +105,7 @@ var Rank = (function(_super) {
 	Rank.prototype.rankingRewards = function() {
 		return _.difference(RANKINGS(this.historyRanking), this.gotRewards)
 			.sort(function(x, y) { return y - x; });
-	}
+	};
 
 	return Rank;
 })(Entity);

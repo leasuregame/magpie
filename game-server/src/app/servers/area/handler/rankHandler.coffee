@@ -73,9 +73,10 @@ Handler::rankingList = (msg, session, next) ->
 
     players = filterPlayersInfo(players, rankings)
     players.sort (x, y) -> x.ranking - y.ranking
+    r = player.getRank()
     rank = {
-      ranking: player.getRank().ranking,
-      rankReward: player.getRank().rankReward,
+      ranking: r.ranking,
+      rankReward: r.rankReward,
       challengeCount: player.dailyGift.challengeCount,
       rankList: players
     }

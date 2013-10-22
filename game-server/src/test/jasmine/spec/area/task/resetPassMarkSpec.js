@@ -101,10 +101,10 @@ describe("Area Server", function() {
                 describe('when gold is not enough', function() {
 
                     beforeEach(function() {
-                        doAjax('/update/player/102', {
+                        doAjax('/update/player/101', {
                             gold: 180
                         }, function() {
-                            loginWith(mike.account, mike.password, mike.areaId);
+                            loginWith('user4', '1', 1);
                         });
                     });
 

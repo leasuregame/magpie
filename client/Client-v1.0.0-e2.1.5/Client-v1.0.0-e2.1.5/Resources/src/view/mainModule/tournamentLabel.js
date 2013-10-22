@@ -17,6 +17,7 @@ var CAN_DEFIANCE = 1;
 var CAN_COUNTER_ATTACK = 2;
 
 var TournamentLabel = cc.Node.extend({
+    _target: null,
     _player: null,
     _turnLeftSprite: null,
     _turnRightSprite: null,
@@ -28,97 +29,117 @@ var TournamentLabel = cc.Node.extend({
         this.update();
     },
 
-    init: function (data) {
+    init: function (target, data) {
         cc.log("TournamentLabel init");
 
         if (!this._super())return false;
 
+        this._target = target;
         this._player = data;
 
         var playerItem = cc.MenuItemImage.create(
-            main_scene_image.button19,
-            main_scene_image.button19s,
+            main_scene_image.button15,
+            main_scene_image.button15s,
             this._onClickPlayer,
             this
         );
         playerItem.setAnchorPoint(cc.p(0, 0));
         playerItem.setPosition(cc.p(0, 0));
+        playerItem.setScaleX(1.05);
 
         var playerItemMenu = LazyMenu.create(playerItem);
         playerItemMenu.setPosition(cc.p(0, 0));
         this.addChild(playerItemMenu);
 
-        var playerNameLabel = cc.LabelTTF.create(this._player.name, "STHeitiTC-Medium", 25);
-        playerNameLabel.setPosition(cc.p(95, 99));
-        this.addChild(playerNameLabel);
+        var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
+        nameIcon.setContentSize(cc.size(155, 35));
+        nameIcon.setAnchorPoint(cc.p(0, 0.5));
+        nameIcon.setPosition(cc.p(20, 99));
+        this.addChild(nameIcon);
 
-        var playerRankLabel = cc.LabelTTF.create(this._player.ranking, "STHeitiTC-Medium", 35);
-        playerRankLabel.setPosition(cc.p(95, 48));
-        this.addChild(playerRankLabel);
+        var nameLabel = cc.LabelTTF.create(this._player.name, "STHeitiTC-Medium", 22);
+        nameLabel.setColor(cc.c3b(255, 242, 206));
+        nameLabel.setAnchorPoint(cc.p(0, 0.5));
+        nameLabel.setPosition(cc.p(30, 99));
+        this.addChild(nameLabel);
+
+        var rankingLabel = StrokeLabel.create(this._player.ranking, "STHeitiTC-Medium", 38);
+        rankingLabel.setColor(cc.c3b(255, 242, 206));
+        rankingLabel.setPosition(cc.p(95, 42));
+        this.addChild(rankingLabel);
 
         if (this._player.playerId != gameData.player.get("id")) {
             var functionItem = null;
-            var functionLabel = null;
 
             if (this._player.type == CAN_ADD_FRIEND) {
-                functionItem = cc.MenuItemImage.create(
+                functionItem = cc.MenuItemImage.createWithIcon(
                     main_scene_image.button9,
                     main_scene_image.button9s,
+                    main_scene_image.icon41,
                     this._onClickFunction,
                     this
                 );
-                functionLabel = cc.Sprite.create(main_scene_image.icon41);
             } else if (this._player.type == CAN_DEFIANCE) {
-                functionItem = cc.MenuItemImage.create(
+                functionItem = cc.MenuItemImage.createWithIcon(
                     main_scene_image.button9,
                     main_scene_image.button9s,
+                    main_scene_image.icon43,
                     this._onClickFunction,
                     this
                 );
-                functionLabel = cc.Sprite.create(main_scene_image.icon43);
             } else if (this._player.type == CAN_COUNTER_ATTACK) {
-                functionItem = cc.MenuItemImage.create(
+                functionItem = cc.MenuItemImage.createWithIcon(
                     main_scene_image.button11,
                     main_scene_image.button11s,
+                    main_scene_image.icon40,
                     this._onClickFunction,
                     this
                 );
-                functionLabel = cc.Sprite.create(main_scene_image.icon40);
             }
 
-            if (functionItem) {
-                functionItem.setPosition(cc.p(530, 67));
+            functionItem.setPosition(cc.p(530, 67));
 
-                var functionItemMenu = LazyMenu.create(functionItem);
-                functionItemMenu.setPosition(cc.p(0, 0));
-                this.addChild(functionItemMenu);
-            }
-
-            if (functionLabel) {
-                functionLabel.setPosition(cc.p(530, 67));
-                this.addChild(functionLabel);
-            }
+            var functionItemMenu = LazyMenu.create(functionItem);
+            functionItemMenu.setPosition(cc.p(0, 0));
+            this.addChild(functionItemMenu);
+        } else {
+            playerItem.setEnabled(false);
         }
 
-        var tableView = cc.TableView.create(this, cc.size(226.8, 75.6));
-        tableView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
-        tableView.setPosition(cc.p(200, 15));
-        tableView.setDelegate(this);
-        this.addChild(tableView);
-        tableView.reloadData();
+        var cardList = this._player.cardList;
+        var len = cardList.length;
+        var scrollViewLayer = cc.Layer.create();
+        var scrollViewWidth = len * 75.6;
 
-        this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
-        this._turnLeftSprite.setRotation(180);
-        this._turnLeftSprite.setScale(0.5);
-        this._turnLeftSprite.setPosition(cc.p(183, 53));
-//        this._turnLeftSprite.setVisible(false);
-        this.addChild(this._turnLeftSprite, 1);
+        if (scrollViewWidth < 226.8) {
+            scrollViewWidth = 226.8;
+        }
 
-        this._turnRightSprite = cc.Sprite.create(main_scene_image.icon37);
-        this._turnRightSprite.setScale(0.5);
-        this._turnRightSprite.setPosition(cc.p(440, 53));
-//        this._turnRightSprite.setVisible(false);
-        this.addChild(this._turnRightSprite, 1);
+        for (var i = 0; i < len; ++i) {
+            var cardHeadNode = CardHeadNode.create(cardList[i]);
+            cardHeadNode.setScale(0.7);
+            cardHeadNode.setPosition(cc.p(i * 76.5, 0));
+            scrollViewLayer.addChild(cardHeadNode);
+        }
+
+        var scrollView = cc.ScrollView.create(cc.size(226.8, 75.6), scrollViewLayer);
+        scrollView.setContentSize(cc.size(scrollViewWidth, 75.6));
+        scrollView.setPosition(cc.p(206, 30));
+        scrollView.setBounceable(false);
+        scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
+        scrollView.updateInset();
+        this.addChild(scrollView);
+
+        var turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
+        turnLeftSprite.setRotation(180);
+        turnLeftSprite.setScale(0.5);
+        turnLeftSprite.setPosition(cc.p(192, 67));
+        this.addChild(turnLeftSprite, 1);
+
+        var turnRightSprite = cc.Sprite.create(main_scene_image.icon37);
+        turnRightSprite.setScale(0.5);
+        turnRightSprite.setPosition(cc.p(443, 67));
+        this.addChild(turnRightSprite, 1);
 
         return true;
     },
@@ -127,46 +148,12 @@ var TournamentLabel = cc.Node.extend({
         cc.log("TournamentLabel update");
     },
 
-    scrollViewDidScroll: function (view) {
-        cc.log("TournamentLabel update");
-    },
-
-    scrollViewDidZoom: function (view) {
-        cc.log("TournamentLabel update");
-    },
-
-    tableCellTouched: function (table, cell) {
-        cc.log("cell touched at index: " + cell.getIdx());
-
-        var index = cell.getIdx();
-        var cardDetails = CardDetails.create(this._player.cardList[index]);
-        MainScene.getInstance().addChild(cardDetails, 1);
-    },
-
-    cellSizeForTable: function (table) {
-        return cc.size(75.6, 75.6);
-    },
-
-    tableCellAtIndex: function (table, idx) {
-        cell = new cc.TableViewCell();
-
-        if (this._player.cardList[idx]) {
-            var cardHeadNode = CardHeadNode.create(this._player.cardList[idx]);
-            cardHeadNode.setScale(0.7);
-            cell.addChild(cardHeadNode);
-        }
-
-        return cell;
-    },
-
-    numberOfCellsInTableView: function (table) {
-        return this._player.cardList.length;
-    },
-
     _onClickPlayer: function () {
         cc.log("TournamentLabel _onClickPlayer");
 
+        var point = this.convertToWorldSpace(cc.p(185, 95));
 
+        this._target._onClickPlayer(this._player.playerId, point);
     },
 
     _onClickFunction: function () {
@@ -185,10 +172,10 @@ var TournamentLabel = cc.Node.extend({
 });
 
 
-TournamentLabel.create = function (data) {
+TournamentLabel.create = function (target, data) {
     var ret = new TournamentLabel();
 
-    if (ret && ret.init(data)) {
+    if (ret && ret.init(target, data)) {
         return ret;
     }
 

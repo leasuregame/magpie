@@ -108,6 +108,7 @@
             'src/view/mainModule/abilityRankLayer.js',
             'src/view/mainModule/achievementLayer.js',
             'src/view/mainModule/activityLayer.js',
+            'src/view/mainModule/amountLayer.js',
             'src/view/mainModule/battleMessageLayer.js',
             'src/view/mainModule/bubbleLabel.js',
             'src/view/mainModule/cardDetails.js',

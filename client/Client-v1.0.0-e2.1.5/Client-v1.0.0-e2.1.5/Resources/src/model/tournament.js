@@ -38,6 +38,7 @@ var Tournament = Entity.extend({
         this.set("count", data.challengeCount);
         this.set("rankReward", data.rankReward);
 
+
         if (data.rankList) {
             this._rankList = [];
 
@@ -75,7 +76,7 @@ var Tournament = Entity.extend({
     getLastRankReward: function () {
         cc.log("Tournament getLastRankReward");
 
-        return this._rankReward.pop();
+        return this._rankReward[0];
     },
 
     sync: function (cb) {
@@ -134,7 +135,7 @@ var Tournament = Entity.extend({
     receive: function (cb) {
         cc.log("Tournament receive");
 
-        var rewardRanking = gameData.player.getLastRankReward();
+        var rewardRanking = this.getLastRankReward();
 
         if (rewardRanking) {
             var that = this;

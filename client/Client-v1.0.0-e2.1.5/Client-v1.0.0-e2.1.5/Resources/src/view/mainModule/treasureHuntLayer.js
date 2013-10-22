@@ -332,4 +332,6 @@ TreasureHuntLayer.canEnter = function () {
     }
 
     TipLayer.tip("寻宝" + limitLv + "级开放");
+
+    return false;
 };

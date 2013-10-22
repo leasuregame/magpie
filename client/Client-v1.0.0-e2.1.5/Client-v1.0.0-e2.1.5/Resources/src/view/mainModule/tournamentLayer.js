@@ -13,8 +13,11 @@
 
 
 var TournamentLayer = cc.Layer.extend({
+    _rankList: [],
+    _selectId: 0,
     _scrollView: null,
     _rankRewardItem: null,
+    _menu: null,
     _expProgress: null,
     _lvLabel: null,
     _rankingLabel: null,
@@ -32,6 +35,8 @@ var TournamentLayer = cc.Layer.extend({
         cc.log("Tournament init");
 
         if (!this._super()) return false;
+
+        this._rankList = [];
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -85,16 +90,54 @@ var TournamentLayer = cc.Layer.extend({
         this._abilityLabel.setPosition(cc.p(605, 975));
         this.addChild(this._abilityLabel);
 
-        this._rankRewardLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
-        this._rankRewardLabel.setColor(cc.c3b(255, 239, 131));
+        var rewardIcon = cc.Sprite.create(main_scene_image.icon35);
+        rewardIcon.setPosition(cc.p(360, 910));
+        this.addChild(rewardIcon);
+        rewardIcon.setScaleX(2.2);
 
-        this._rankRewardItem = cc.MenuItemLabel.create(this._rankRewardLabel, this._onClickRankReward, this);
-        this._rankRewardItem.setPosition(cc.p(360, 960));
-        this._rankRewardItem.setVisible(false);
+        this._menu = cc.Menu.create();
+        this._menu.setPosition(cc.p(0, 0));
+        this.addChild(this._menu);
 
-        var menu = cc.Menu.create(this._rankRewardItem);
+        this._skyDialog = SkyDialog.create();
+        this.addChild(this._skyDialog, 10);
+
+        var label = cc.Scale9Sprite.create(main_scene_image.bg16);
+        label.setContentSize(cc.size(216, 270));
+
+        var detailItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon120,
+            this._onClickDetail,
+            this
+        );
+        detailItem.setPosition(cc.p(108, 210));
+
+        var sendMessageItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon119,
+            this._onClickSendMessage,
+            this
+        );
+        sendMessageItem.setPosition(cc.p(108, 135));
+
+        var addFriendItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon41,
+            this._onClickAddFriend,
+            this
+        );
+        addFriendItem.setPosition(cc.p(108, 60));
+
+        var menu = cc.Menu.create(detailItem, sendMessageItem, addFriendItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        label.addChild(menu);
+
+        this._skyDialog.setLabel(label);
+        this._skyDialog.setRect(cc.rect(40, 198, 612, 700));
 
         return true;
     },
@@ -109,7 +152,7 @@ var TournamentLayer = cc.Layer.extend({
         this._abilityLabel.setString(player.get("ability"));
 
         if (this._scrollView != null) {
-            this.removeChild(this._scrollView);
+            this._scrollView.removeFromParent();
         }
 
         var that = this;
@@ -124,16 +167,31 @@ var TournamentLayer = cc.Layer.extend({
     _updateRankRewardItem: function () {
         cc.log("TournamentLayer _updateRankRewardItem");
 
+        if (this._rankRewardItem != null) {
+            this._rankRewardItem.removeFromParent();
+        }
+
         var rewardRanking = gameData.tournament.getLastRankReward();
 
-        cc.log(rewardRanking);
-
         if (rewardRanking) {
-            this._rankRewardLabel.setString("领取 " + rewardRanking + " 排名奖励");
-            this._rankRewardItem.setVisible(true);
-        } else {
-            this._rankRewardLabel.setString("");
-            this._rankRewardItem.setVisible(false);
+            this._rankRewardItem = cc.MenuItemFont.create(
+                "你已达到第 " + rewardRanking + " 排名，点击领取奖励",
+                this._onClickRankReward,
+                this
+            );
+            this._rankRewardItem.setFontSize(26);
+            this._rankRewardItem.setColor(cc.c3b(255, 239, 131));
+            this._rankRewardItem.setPosition(cc.p(360, 910));
+            this._menu.addChild(this._rankRewardItem);
+
+            this._rankRewardItem.runAction(
+                cc.RepeatForever.create(
+                    cc.Sequence.create(
+                        cc.ScaleTo.create(2, 1.05, 1.05),
+                        cc.ScaleTo.create(2, 1, 1)
+                    )
+                )
+            );
         }
     },
 
@@ -145,26 +203,55 @@ var TournamentLayer = cc.Layer.extend({
         this._rankingLabel.setString(tournament.get("ranking"));
         this._countLabel.setString(tournament.get("count"));
 
-        var rankList = tournament.get("rankList");
-        var len = rankList.length;
+        this._rankList = tournament.get("rankList");
+        var len = this._rankList.length;
         var height = len * 135;
+        var playerId = gameData.player.get("id");
+        var own = len;
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(40, 198, 612, 670));
+        var scrollViewLayer = MarkLayer.create(cc.rect(40, 198, 621, 670));
 
         for (var i = 0; i < len; ++i) {
-            var tournamentPlayerLabel = TournamentLabel.create(rankList[i]);
+            if (playerId == this._rankList[i].playerId) {
+                own = i;
+            }
+
+            var tournamentPlayerLabel = TournamentLabel.create(this, this._rankList[i]);
             tournamentPlayerLabel.setPosition(cc.p(0, height - 135 * (i + 1)));
             scrollViewLayer.addChild(tournamentPlayerLabel);
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(612, 670), scrollViewLayer);
+        this._scrollView = cc.ScrollView.create(cc.size(621, 670), scrollViewLayer);
         this._scrollView.setContentSize(cc.size(GAME_WIDTH, height));
-        this._scrollView.setPosition(cc.p(54, 198));
+        this._scrollView.setPosition(cc.p(50, 198));
         this._scrollView.setBounceable(false);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
 
         this.addChild(this._scrollView);
+
+        var offsetY = this._scrollView.minContainerOffset().y;
+        offsetY = Math.min(offsetY + own * 135, 0);
+        this._scrollView.setContentOffset(cc.p(0, offsetY));
+    },
+
+    _getPlayer: function (id) {
+        var len = this._rankList.length;
+
+        for (var i = 0; i < len; ++i) {
+            if (this._rankList[i].playerId == id) {
+                return this._rankList[i];
+            }
+        }
+
+        return null;
+    },
+
+    _onClickPlayer: function (id, point) {
+        cc.log("TournamentLayer _onClickPlayer");
+
+        this._selectId = id;
+        this._skyDialog.show(point);
     },
 
     _onClickRankReward: function () {
@@ -174,6 +261,42 @@ var TournamentLayer = cc.Layer.extend({
         gameData.tournament.receive(function () {
             that._updateRankRewardItem();
         });
+    },
+
+    _onClickDetail: function () {
+        cc.log("TournamentLayer _onClickDetail: " + this._selectId);
+
+        var player = this._getPlayer(this._selectId);
+
+        if (player) {
+            cc.log("查询详细信息");
+        } else {
+            TipLayer.tip("找不到该玩家");
+        }
+    },
+
+    _onClickSendMessage: function () {
+        cc.log("TournamentLayer _onClickSendMessage: " + this._selectId);
+
+        var player = this._getPlayer(this._selectId);
+
+        if (player) {
+            SendMessageLayer.pop(player.playerId, player.name);
+        } else {
+            TipLayer.tip("找不到该玩家");
+        }
+    },
+
+    _onClickAddFriend: function () {
+        cc.log("TournamentLayer _onClickAddFriend: " + this._selectId);
+
+        var player = this._getPlayer(this._selectId);
+
+        if (player) {
+            gameData.friend.addFriend(player.name);
+        } else {
+            TipLayer.tip("找不到该玩家");
+        }
     }
 });
 
@@ -196,4 +319,6 @@ TournamentLayer.canEnter = function () {
     }
 
     TipLayer.tip("竞技场" + limitLv + "级开放");
+
+    return false;
 };

@@ -142,6 +142,11 @@ var Friend = Entity.extend({
     addFriend: function (name) {
         cc.log("Friend addFriend: " + name);
 
+        if (gameData.player.get("name") == name) {
+            TipLayer.tip("不能加自己为好友");
+            return;
+        }
+
         if (this._friendList.length >= this._maxFriendCount) {
             TipLayer.tip("好友已满");
             return;

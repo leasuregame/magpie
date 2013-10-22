@@ -19,7 +19,7 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8120</WindowHeight>
+  <WindowHeight>4360</WindowHeight>
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>140</WindowTopY>
@@ -45,14 +45,14 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s67" ss:Parent="s62">
+  <Style ss:ID="s63" ss:Parent="s62">
    <Interior/>
   </Style>
-  <Style ss:ID="s68" ss:Parent="s62">
+  <Style ss:ID="s64" ss:Parent="s62">
    <Interior/>
    <NumberFormat ss:Format="0_ "/>
   </Style>
-  <Style ss:ID="s69">
+  <Style ss:ID="s65">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" x:Family="Swiss" ss:Size="12"
@@ -61,11 +61,11 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s70">
+  <Style ss:ID="s66">
    <Alignment ss:Vertical="Bottom"/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
   </Style>
-  <Style ss:ID="s71">
+  <Style ss:ID="s67">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
@@ -73,7 +73,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s72">
+  <Style ss:ID="s68">
    <Font ss:FontName="宋体" x:CharSet="134" ss:Size="14" ss:Color="#000000"/>
   </Style>
  </Styles>
@@ -84,8 +84,8 @@
    <Column ss:Width="153"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">竞技排名</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">对应等级排名奖励加成系数</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">竞技排名</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">对应等级排名奖励加成系数</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
@@ -94,53 +94,53 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">55</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">55</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">11</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">11</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">50</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">51</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">45</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">51</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">45</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">101</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">40</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">101</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">40</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">201</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">35</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">201</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">35</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">6</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">501</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">30</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">501</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">30</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">7</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">1001</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">1001</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">25</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">3001</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">20</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">3001</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">20</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">9</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">5001</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">15</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">5001</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">15</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="Number">10001</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="Number">10001</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="Number">10</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -154,8 +154,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -166,40 +166,40 @@
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">排名</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">奖励仙丹</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">排名</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">奖励仙丹</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">elixir</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">elixir</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">5000</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">5000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">10</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">3000</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">3000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">50</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">2500</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">50</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">2500</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">100</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">2000</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">2000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">500</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">500</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="Number">1000</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -213,8 +213,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -227,19 +227,19 @@
    <Column ss:AutoFitWidth="0" ss:Width="149"/>
    <Column ss:AutoFitWidth="0" ss:Width="156"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s70"><Data ss:Type="String">sheet_name</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">export_name</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">merge_to</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">sheet_name</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">export_name</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s71"><Data ss:Type="String">竞技排名奖励加成系数</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">ranking_reward_factor</Data></Cell>
-    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">竞技排名奖励加成系数</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">ranking_reward_factor</Data></Cell>
+    <Cell ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s72"><Data ss:Type="String">排名奖励</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">ranking_reward</Data></Cell>
-    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">排名奖励</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">ranking_reward</Data></Cell>
+    <Cell ss:StyleID="s68"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">

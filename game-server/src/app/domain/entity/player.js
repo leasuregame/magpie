@@ -966,7 +966,7 @@ var Player = (function(_super) {
         };
         if(this.rank) {
             rank.ranking = this.rank.ranking;
-            rankReward =  this.rank.rankingRewards()
+            rank.rankReward =  this.rank.rankingRewards()
         }
         return rank;
     }

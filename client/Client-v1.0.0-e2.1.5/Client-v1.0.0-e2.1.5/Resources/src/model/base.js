@@ -250,9 +250,21 @@ lz.tipReward = function (reward) {
     reward = reward || {};
 
     var key;
+    var delay = 0;
 
     for (key in reward) {
-        TipLayer.tipNoBg(lz.getNameByKey(key) + ": " + reward[key]);
+        if (!reward[key]) return;
+
+        var fn = (function (key) {
+            return function () {
+                TipLayer.tipNoBg(lz.getNameByKey(key) + ": " + reward[key]);
+            }
+        })(key);
+
+
+        lz.scheduleOnce(fn, delay);
+
+        delay += 0.4;
     }
 };
 

@@ -75,8 +75,7 @@ CardHeadNode.create = function (card) {
 CardHeadNode.getCardHeadItem = function (card, cb, target) {
     card = card || null;
     cb = cb || function () {
-        var cardDetails = CardDetails.create(card);
-        cc.Director.getInstance().getRunningScene().addChild(cardDetails, 1);
+        CardDetails.pop(card);
     };
     target = target || this;
 

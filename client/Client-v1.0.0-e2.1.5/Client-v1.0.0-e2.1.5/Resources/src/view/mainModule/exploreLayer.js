@@ -570,8 +570,7 @@ var ExploreLayer = cc.Layer.extend({
         };
 
         this.scheduleOnce(function () {
-            var cardDetails = CardDetails.create(this._reward.card, cb);
-            cc.Director.getInstance().getRunningScene().addChild(cardDetails, 1);
+            CardDetails.pop(this._reward.card, cb);
         }, 0.5);
     },
 

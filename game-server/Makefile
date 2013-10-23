@@ -53,7 +53,7 @@ test-battle: build
 test-api: build
 	node ./test/jasmine/app.js
 
-runserver: build convert-data
+runserver: build
 	./node_modules/.bin/pomelo start development
 
 debug: 
@@ -66,7 +66,6 @@ restartserver: build
 newdb:
 	sh ./bin/initMysql.sh magpie_area_1
 	sh ./bin/initMysql.sh magpie_area_2
-	sh ./bin/initMysql.sh magpie_area_3
 
 inittables: 
 	mysql -uroot -p1easure114E -e "drop database if exists $(db);create database $(db);use $(db);source ./config/schema/init.sql;GRANT ALL PRIVILEGES ON $(db).* to dev@localhost IDENTIFIED BY '1';" 

@@ -106,7 +106,7 @@ Data.prototype.loadCsvDataToSql = function(callback) {
 Data.prototype.dataForRankingUser = function(callback) {
   var self = this, id;
   async.times(5000, function(n, next) {
-    id = n + 9;
+    id = n + 10;
     self.db.user.create({
       data: {
         id: id,
@@ -221,6 +221,7 @@ Data.prototype.loadDataForRankingList = function(callback) {
         name: 'james' + id,
         userId: id,
         areaId: 1,
+        lv: 20,
         ability: id + _.random(10000)
       };
 

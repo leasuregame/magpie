@@ -44,9 +44,7 @@ var TreasureHunt = Entity.extend({
 
                 var table = outputTables.treasure_hunt.rows[msg.resourceId];
 
-                var playerData = {};
-                playerData[table.type] = table.value;
-                gameData.player.update(playerData);
+                gameData.player.add(table.type, table.value);
 
                 if (that._freeCount > 0) {
                     gameData.player.add("gold", -10);
@@ -55,7 +53,7 @@ var TreasureHunt = Entity.extend({
                 that._count = msg.lotteryCount;
                 that._freeCount = msg.lotteryFreeCount;
 
-                var str = lz.getNameByKey(table.type) + ": " + table.value;
+                var str = table.name + ": " + table.value;
 
                 cb(msg.resourceId, str);
             } else {

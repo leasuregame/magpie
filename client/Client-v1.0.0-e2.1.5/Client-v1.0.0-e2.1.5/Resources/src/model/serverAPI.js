@@ -38,8 +38,6 @@ var linkSever = function () {
         lzWindow.pomelo.on("close", function (data) {
             cc.log("***** on close:");
             cc.log(data);
-
-            linkSever();
         });
 
         lzWindow.pomelo.on("onKick", function (data) {

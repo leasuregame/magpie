@@ -322,3 +322,14 @@ TreasureHuntLayer.create = function () {
 
     return null;
 };
+
+TreasureHuntLayer.canEnter = function () {
+    var limitLv = outputTables.function_limit.rows[1].lottery;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("寻宝" + limitLv + "级开放");
+};

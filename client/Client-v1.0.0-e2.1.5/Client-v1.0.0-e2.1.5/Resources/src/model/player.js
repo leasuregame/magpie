@@ -12,6 +12,8 @@
  * */
 
 
+var PLAYER_MAX_POWER = 150;
+
 var Player = Entity.extend({
     _id: 0,             // 数据库id
     _createTime: 0,     // 创建时间
@@ -35,12 +37,16 @@ var Player = Entity.extend({
     _tournamentCount: 0,
 
     _maxExp: 0,         // 最大经验
-    _maxPower: 200,     // 最大体力
+    _maxPower: PLAYER_MAX_POWER,     // 最大体力
 
     _playerLabel: null,
 
     init: function (data) {
         cc.log("Player init");
+
+        MAX_LINE_UP_CARD = 3;
+
+        this.on("lvChange", this._lvChangeEvent);
 
         this.update(data);
 
@@ -92,6 +98,7 @@ var Player = Entity.extend({
         if (data.pass) gameData.pass.init(data.pass);
         if (data.spiritor) gameData.spirit.init(data.spiritor);
         if (data.spiritPool) gameData.spiritPool.init(data.spiritPool);
+        if (data.rank) gameData.tournament.init(data.rank);
 
         if (data.dailyGift) gameData.treasureHunt.init({
             count: data.dailyGift.lotteryCount,
@@ -102,6 +109,22 @@ var Player = Entity.extend({
             useVipBoxList: data.vipBox
         });
 
+    },
+
+    _lvChangeEvent: function () {
+        cc.log("Player _lvChangeEvent");
+
+        var table = outputTables.function_limit.rows[1];
+
+        MAX_LINE_UP_CARD = 3;
+
+        if (this._lv >= table.card4_position) {
+            MAX_LINE_UP_CARD = 4;
+        }
+
+        if (this._lv >= table.card5_position) {
+            MAX_LINE_UP_CARD = 5;
+        }
     },
 
     sendMessage: function (cb, playerId, msg) {

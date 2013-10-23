@@ -203,19 +203,17 @@ Handler::resetPassMark = (msg, session, next) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
     (res,cb) ->
       player = res
-      console.log("gold = " , player.gold)
       if player.gold < 200
         return cb({code: 501,msg: '元宝不足'})
 
       if player.resetPassMark()
          cb()
-
       else
         return cb({code: 501,msg: '重置关卡次数已用光'})
 
     (cb) ->
-      player.decrease 'gold',200
-      cb(null,player.gold)
+      player.decrease 'gold', 200
+      cb(null, player.gold)
   ],(err,gold) ->
 
     if err
@@ -223,9 +221,9 @@ Handler::resetPassMark = (msg, session, next) ->
 
     player.save()
 
-    next(null,{code: 200,msg: {
-      canReset:if player.pass.resetTimes > 0 then true else false
-      gold:gold
+    next(null, {code: 200, msg: {
+      canReset: if player.pass.resetTimes > 0 then true else false
+      gold: gold
     }})
 
 ###

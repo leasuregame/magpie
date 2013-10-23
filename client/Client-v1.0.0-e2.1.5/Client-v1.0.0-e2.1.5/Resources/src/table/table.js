@@ -3,12 +3,14 @@ var nameChanged = {
     "成就配置表": "achievement",
     "function_limit": "功能开放等级限制",
     "功能开放等级限制": "function_limit",
+    "elixir_limit": "仙丹培养限制表",
+    "仙丹培养限制表": "elixir_limit",
+    "resource_limit": "资源限制表",
+    "资源限制表": "resource_limit",
     "daily_signin_rewards": "每日签到奖励",
     "每日签到奖励": "daily_signin_rewards",
     "signIn_rewards": "连续签到奖励",
     "连续签到奖励": "signIn_rewards",
-    "treasure_hunt": "寻宝配置表",
-    "寻宝配置表": "treasure_hunt",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
     "card_lv_limit": "卡牌等级限制表",
@@ -23,6 +25,8 @@ var nameChanged = {
     "基础属性成长表": "factors",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
+    "treasure_hunt": "寻宝配置表",
+    "寻宝配置表": "treasure_hunt",
     "rank": "竞技产出表",
     "竞技产出表": "rank",
     "ranking_reward": "排名奖励",
@@ -317,7 +321,39 @@ var outputTables = {
                 "pass": 20,
                 "card4_position": 30,
                 "lottery": 40,
-                "card5_position": 50
+                "card5_position": 50,
+                "ranking_list": 55
+            }
+        }
+    },
+    "elixir_limit": {
+        "colComment": {},
+        "rows": {
+            "3": {
+                "id": 3,
+                "elixir_limit": 10000
+            },
+            "4": {
+                "id": 4,
+                "elixir_limit": 25000
+            },
+            "5": {
+                "id": 5,
+                "elixir_limit": 50000
+            }
+        }
+    },
+    "resource_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "gold": 999999,
+                "money": 99999999,
+                "skillPoint": 99999,
+                "energy": 99999,
+                "card_count_limit": 100,
+                "power_value": 150
             }
         }
     },
@@ -378,191 +414,6 @@ var outputTables = {
                 "skillPoint": 3000,
                 "elixir": 2000,
                 "lottery_free_count": 10
-            }
-        }
-    },
-    "treasure_hunt": {
-        "colComment": {},
-        "rows": {
-            "0": {
-                "id": 0,
-                "type": "power",
-                "value": 10,
-                "name": "体力",
-                "type_rate": 30,
-                "value_rate": 60,
-                "rate": 18
-            },
-            "1": {
-                "id": 1,
-                "type": "power",
-                "value": 50,
-                "name": "体力",
-                "type_rate": 30,
-                "value_rate": 30,
-                "rate": 9
-            },
-            "2": {
-                "id": 2,
-                "type": "power",
-                "value": 100,
-                "name": "体力",
-                "type_rate": 30,
-                "value_rate": 10,
-                "rate": 3
-            },
-            "3": {
-                "id": 3,
-                "type": "elixir",
-                "value": 10,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 60,
-                "rate": 9
-            },
-            "4": {
-                "id": 4,
-                "type": "elixir",
-                "value": 100,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 39,
-                "rate": 5.85
-            },
-            "5": {
-                "id": 5,
-                "type": "elixir",
-                "value": 5000,
-                "name": "仙丹",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "6": {
-                "id": 6,
-                "type": "spirit",
-                "value": 50,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 60,
-                "rate": 6
-            },
-            "7": {
-                "id": 7,
-                "type": "spirit",
-                "value": 100,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 39,
-                "rate": 3.9
-            },
-            "8": {
-                "id": 8,
-                "type": "spirit",
-                "value": 1000,
-                "name": "灵气",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "9": {
-                "id": 9,
-                "type": "skillPoint",
-                "value": 100,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 60,
-                "rate": 6
-            },
-            "10": {
-                "id": 10,
-                "type": "skillPoint",
-                "value": 500,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 39,
-                "rate": 3.9
-            },
-            "11": {
-                "id": 11,
-                "type": "skillPoint",
-                "value": 10000,
-                "name": "技能点",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "12": {
-                "id": 12,
-                "type": "energy",
-                "value": 50,
-                "name": "活力",
-                "type_rate": 10,
-                "value_rate": 60,
-                "rate": 6
-            },
-            "13": {
-                "id": 13,
-                "type": "energy",
-                "value": 100,
-                "name": "活力",
-                "type_rate": 10,
-                "value_rate": 39,
-                "rate": 3.9
-            },
-            "14": {
-                "id": 14,
-                "type": "energy",
-                "value": 5000,
-                "name": "活力",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
-            },
-            "15": {
-                "id": 15,
-                "type": "money",
-                "value": 1000,
-                "name": "铜板",
-                "type_rate": 15,
-                "value_rate": 60,
-                "rate": 9
-            },
-            "16": {
-                "id": 16,
-                "type": "money",
-                "value": 10000,
-                "name": "铜板",
-                "type_rate": 15,
-                "value_rate": 39,
-                "rate": 5.85
-            },
-            "17": {
-                "id": 17,
-                "type": "money",
-                "value": 200000,
-                "name": "铜板",
-                "type_rate": 15,
-                "value_rate": 1,
-                "rate": 0.15
-            },
-            "18": {
-                "id": 18,
-                "type": "gold",
-                "value": 10,
-                "name": "元宝",
-                "type_rate": 10,
-                "value_rate": 99,
-                "rate": 9.9
-            },
-            "19": {
-                "id": 19,
-                "type": "gold",
-                "value": 500,
-                "name": "元宝",
-                "type_rate": 10,
-                "value_rate": 1,
-                "rate": 0.1
             }
         }
     },
@@ -10446,30 +10297,215 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "star": 1,
-                "money_need": 3000,
+                "money_need": 5000,
                 "rate_per_card": 7,
                 "max_num": 15
             },
             "2": {
                 "id": 2,
                 "star": 2,
-                "money_need": 5000,
+                "money_need": 10000,
                 "rate_per_card": 6,
                 "max_num": 17
             },
             "3": {
                 "id": 3,
                 "star": 3,
-                "money_need": 10000,
+                "money_need": 20000,
                 "rate_per_card": 5,
                 "max_num": 20
             },
             "4": {
                 "id": 4,
                 "star": 4,
-                "money_need": 20000,
-                "rate_per_card": 2,
-                "max_num": 50
+                "money_need": 50000,
+                "rate_per_card": 4,
+                "max_num": 25
+            }
+        }
+    },
+    "treasure_hunt": {
+        "colComment": {},
+        "rows": {
+            "0": {
+                "id": 0,
+                "type": "power",
+                "value": 10,
+                "name": "体力",
+                "type_rate": 30,
+                "value_rate": 60,
+                "rate": 18
+            },
+            "1": {
+                "id": 1,
+                "type": "power",
+                "value": 50,
+                "name": "体力",
+                "type_rate": 30,
+                "value_rate": 30,
+                "rate": 9
+            },
+            "2": {
+                "id": 2,
+                "type": "power",
+                "value": 100,
+                "name": "体力",
+                "type_rate": 30,
+                "value_rate": 10,
+                "rate": 3
+            },
+            "3": {
+                "id": 3,
+                "type": "elixir",
+                "value": 10,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 60,
+                "rate": 9
+            },
+            "4": {
+                "id": 4,
+                "type": "elixir",
+                "value": 100,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 39,
+                "rate": 5.85
+            },
+            "5": {
+                "id": 5,
+                "type": "elixir",
+                "value": 5000,
+                "name": "仙丹",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "6": {
+                "id": 6,
+                "type": "spirit",
+                "value": 50,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 60,
+                "rate": 6
+            },
+            "7": {
+                "id": 7,
+                "type": "spirit",
+                "value": 100,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 39,
+                "rate": 3.9
+            },
+            "8": {
+                "id": 8,
+                "type": "spirit",
+                "value": 1000,
+                "name": "灵气",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "9": {
+                "id": 9,
+                "type": "skillPoint",
+                "value": 100,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 60,
+                "rate": 6
+            },
+            "10": {
+                "id": 10,
+                "type": "skillPoint",
+                "value": 500,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 39,
+                "rate": 3.9
+            },
+            "11": {
+                "id": 11,
+                "type": "skillPoint",
+                "value": 10000,
+                "name": "技能点",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "12": {
+                "id": 12,
+                "type": "energy",
+                "value": 50,
+                "name": "活力",
+                "type_rate": 10,
+                "value_rate": 60,
+                "rate": 6
+            },
+            "13": {
+                "id": 13,
+                "type": "energy",
+                "value": 100,
+                "name": "活力",
+                "type_rate": 10,
+                "value_rate": 39,
+                "rate": 3.9
+            },
+            "14": {
+                "id": 14,
+                "type": "energy",
+                "value": 5000,
+                "name": "活力",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
+            },
+            "15": {
+                "id": 15,
+                "type": "money",
+                "value": 1000,
+                "name": "铜板",
+                "type_rate": 15,
+                "value_rate": 60,
+                "rate": 9
+            },
+            "16": {
+                "id": 16,
+                "type": "money",
+                "value": 10000,
+                "name": "铜板",
+                "type_rate": 15,
+                "value_rate": 39,
+                "rate": 5.85
+            },
+            "17": {
+                "id": 17,
+                "type": "money",
+                "value": 200000,
+                "name": "铜板",
+                "type_rate": 15,
+                "value_rate": 1,
+                "rate": 0.15
+            },
+            "18": {
+                "id": 18,
+                "type": "gold",
+                "value": 10,
+                "name": "元宝",
+                "type_rate": 10,
+                "value_rate": 99,
+                "rate": 9.9
+            },
+            "19": {
+                "id": 19,
+                "type": "gold",
+                "value": 500,
+                "name": "元宝",
+                "type_rate": 10,
+                "value_rate": 1,
+                "rate": 0.1
             }
         }
     },
@@ -10480,811 +10516,811 @@ var outputTables = {
                 "id": 20,
                 "lv": 20,
                 "win_exp": 1,
-                "win_money": 50,
-                "win_elixir": 5,
+                "win_money": 10,
+                "win_elixir": 100,
                 "lose_exp": 1,
-                "lose_money": 25,
-                "lose_elixir": 3
+                "lose_money": 5,
+                "lose_elixir": 50
             },
             "21": {
                 "id": 21,
                 "lv": 21,
-                "win_exp": 1,
-                "win_money": 60,
-                "win_elixir": 7,
+                "win_exp": 2,
+                "win_money": 11,
+                "win_elixir": 110,
                 "lose_exp": 1,
-                "lose_money": 30,
-                "lose_elixir": 4
+                "lose_money": 6,
+                "lose_elixir": 55
             },
             "22": {
                 "id": 22,
                 "lv": 22,
-                "win_exp": 1,
-                "win_money": 70,
-                "win_elixir": 9,
-                "lose_exp": 1,
-                "lose_money": 35,
-                "lose_elixir": 5
+                "win_exp": 3,
+                "win_money": 12,
+                "win_elixir": 120,
+                "lose_exp": 2,
+                "lose_money": 6,
+                "lose_elixir": 60
             },
             "23": {
                 "id": 23,
                 "lv": 23,
-                "win_exp": 1,
-                "win_money": 80,
-                "win_elixir": 11,
-                "lose_exp": 1,
-                "lose_money": 40,
-                "lose_elixir": 6
+                "win_exp": 4,
+                "win_money": 13,
+                "win_elixir": 130,
+                "lose_exp": 2,
+                "lose_money": 7,
+                "lose_elixir": 65
             },
             "24": {
                 "id": 24,
                 "lv": 24,
-                "win_exp": 1,
-                "win_money": 90,
-                "win_elixir": 13,
-                "lose_exp": 1,
-                "lose_money": 45,
-                "lose_elixir": 7
+                "win_exp": 5,
+                "win_money": 14,
+                "win_elixir": 140,
+                "lose_exp": 3,
+                "lose_money": 7,
+                "lose_elixir": 70
             },
             "25": {
                 "id": 25,
                 "lv": 25,
-                "win_exp": 2,
-                "win_money": 100,
-                "win_elixir": 15,
-                "lose_exp": 1,
-                "lose_money": 50,
-                "lose_elixir": 8
+                "win_exp": 6,
+                "win_money": 15,
+                "win_elixir": 150,
+                "lose_exp": 3,
+                "lose_money": 8,
+                "lose_elixir": 75
             },
             "26": {
                 "id": 26,
                 "lv": 26,
-                "win_exp": 2,
-                "win_money": 110,
-                "win_elixir": 17,
-                "lose_exp": 1,
-                "lose_money": 55,
-                "lose_elixir": 9
+                "win_exp": 7,
+                "win_money": 16,
+                "win_elixir": 160,
+                "lose_exp": 4,
+                "lose_money": 8,
+                "lose_elixir": 80
             },
             "27": {
                 "id": 27,
                 "lv": 27,
-                "win_exp": 2,
-                "win_money": 120,
-                "win_elixir": 19,
-                "lose_exp": 1,
-                "lose_money": 60,
-                "lose_elixir": 10
+                "win_exp": 8,
+                "win_money": 17,
+                "win_elixir": 170,
+                "lose_exp": 4,
+                "lose_money": 9,
+                "lose_elixir": 85
             },
             "28": {
                 "id": 28,
                 "lv": 28,
-                "win_exp": 2,
-                "win_money": 130,
-                "win_elixir": 21,
-                "lose_exp": 1,
-                "lose_money": 65,
-                "lose_elixir": 11
+                "win_exp": 9,
+                "win_money": 18,
+                "win_elixir": 180,
+                "lose_exp": 5,
+                "lose_money": 9,
+                "lose_elixir": 90
             },
             "29": {
                 "id": 29,
                 "lv": 29,
-                "win_exp": 2,
-                "win_money": 140,
-                "win_elixir": 23,
-                "lose_exp": 1,
-                "lose_money": 70,
-                "lose_elixir": 12
+                "win_exp": 10,
+                "win_money": 19,
+                "win_elixir": 190,
+                "lose_exp": 5,
+                "lose_money": 10,
+                "lose_elixir": 95
             },
             "30": {
                 "id": 30,
                 "lv": 30,
-                "win_exp": 2,
-                "win_money": 150,
-                "win_elixir": 25,
-                "lose_exp": 1,
-                "lose_money": 75,
-                "lose_elixir": 13
+                "win_exp": 11,
+                "win_money": 20,
+                "win_elixir": 200,
+                "lose_exp": 6,
+                "lose_money": 10,
+                "lose_elixir": 100
             },
             "31": {
                 "id": 31,
                 "lv": 31,
-                "win_exp": 3,
-                "win_money": 160,
-                "win_elixir": 27,
-                "lose_exp": 1,
-                "lose_money": 80,
-                "lose_elixir": 14
+                "win_exp": 12,
+                "win_money": 21,
+                "win_elixir": 210,
+                "lose_exp": 6,
+                "lose_money": 11,
+                "lose_elixir": 105
             },
             "32": {
                 "id": 32,
                 "lv": 32,
-                "win_exp": 3,
-                "win_money": 170,
-                "win_elixir": 29,
-                "lose_exp": 1,
-                "lose_money": 85,
-                "lose_elixir": 15
+                "win_exp": 13,
+                "win_money": 22,
+                "win_elixir": 220,
+                "lose_exp": 7,
+                "lose_money": 11,
+                "lose_elixir": 110
             },
             "33": {
                 "id": 33,
                 "lv": 33,
-                "win_exp": 3,
-                "win_money": 180,
-                "win_elixir": 31,
-                "lose_exp": 2,
-                "lose_money": 90,
-                "lose_elixir": 16
+                "win_exp": 14,
+                "win_money": 23,
+                "win_elixir": 230,
+                "lose_exp": 7,
+                "lose_money": 12,
+                "lose_elixir": 115
             },
             "34": {
                 "id": 34,
                 "lv": 34,
-                "win_exp": 4,
-                "win_money": 190,
-                "win_elixir": 33,
-                "lose_exp": 2,
-                "lose_money": 95,
-                "lose_elixir": 17
+                "win_exp": 15,
+                "win_money": 24,
+                "win_elixir": 240,
+                "lose_exp": 8,
+                "lose_money": 12,
+                "lose_elixir": 120
             },
             "35": {
                 "id": 35,
                 "lv": 35,
-                "win_exp": 4,
-                "win_money": 200,
-                "win_elixir": 35,
-                "lose_exp": 2,
-                "lose_money": 100,
-                "lose_elixir": 18
+                "win_exp": 16,
+                "win_money": 25,
+                "win_elixir": 250,
+                "lose_exp": 8,
+                "lose_money": 13,
+                "lose_elixir": 125
             },
             "36": {
                 "id": 36,
                 "lv": 36,
-                "win_exp": 4,
-                "win_money": 210,
-                "win_elixir": 37,
-                "lose_exp": 2,
-                "lose_money": 105,
-                "lose_elixir": 19
+                "win_exp": 17,
+                "win_money": 26,
+                "win_elixir": 260,
+                "lose_exp": 9,
+                "lose_money": 13,
+                "lose_elixir": 130
             },
             "37": {
                 "id": 37,
                 "lv": 37,
-                "win_exp": 5,
-                "win_money": 220,
-                "win_elixir": 39,
-                "lose_exp": 2,
-                "lose_money": 110,
-                "lose_elixir": 20
+                "win_exp": 18,
+                "win_money": 27,
+                "win_elixir": 270,
+                "lose_exp": 9,
+                "lose_money": 14,
+                "lose_elixir": 135
             },
             "38": {
                 "id": 38,
                 "lv": 38,
-                "win_exp": 5,
-                "win_money": 230,
-                "win_elixir": 41,
-                "lose_exp": 3,
-                "lose_money": 115,
-                "lose_elixir": 21
+                "win_exp": 19,
+                "win_money": 28,
+                "win_elixir": 280,
+                "lose_exp": 10,
+                "lose_money": 14,
+                "lose_elixir": 140
             },
             "39": {
                 "id": 39,
                 "lv": 39,
-                "win_exp": 6,
-                "win_money": 240,
-                "win_elixir": 43,
-                "lose_exp": 3,
-                "lose_money": 120,
-                "lose_elixir": 22
+                "win_exp": 20,
+                "win_money": 29,
+                "win_elixir": 290,
+                "lose_exp": 10,
+                "lose_money": 15,
+                "lose_elixir": 145
             },
             "40": {
                 "id": 40,
                 "lv": 40,
-                "win_exp": 6,
-                "win_money": 250,
-                "win_elixir": 45,
-                "lose_exp": 3,
-                "lose_money": 125,
-                "lose_elixir": 23
+                "win_exp": 21,
+                "win_money": 30,
+                "win_elixir": 300,
+                "lose_exp": 11,
+                "lose_money": 15,
+                "lose_elixir": 150
             },
             "41": {
                 "id": 41,
                 "lv": 41,
-                "win_exp": 7,
-                "win_money": 260,
-                "win_elixir": 47,
-                "lose_exp": 3,
-                "lose_money": 130,
-                "lose_elixir": 24
+                "win_exp": 22,
+                "win_money": 31,
+                "win_elixir": 310,
+                "lose_exp": 11,
+                "lose_money": 16,
+                "lose_elixir": 155
             },
             "42": {
                 "id": 42,
                 "lv": 42,
-                "win_exp": 8,
-                "win_money": 270,
-                "win_elixir": 49,
-                "lose_exp": 4,
-                "lose_money": 135,
-                "lose_elixir": 25
+                "win_exp": 23,
+                "win_money": 32,
+                "win_elixir": 320,
+                "lose_exp": 12,
+                "lose_money": 16,
+                "lose_elixir": 160
             },
             "43": {
                 "id": 43,
                 "lv": 43,
-                "win_exp": 8,
-                "win_money": 280,
-                "win_elixir": 51,
-                "lose_exp": 4,
-                "lose_money": 140,
-                "lose_elixir": 26
+                "win_exp": 24,
+                "win_money": 33,
+                "win_elixir": 330,
+                "lose_exp": 12,
+                "lose_money": 17,
+                "lose_elixir": 165
             },
             "44": {
                 "id": 44,
                 "lv": 44,
-                "win_exp": 9,
-                "win_money": 290,
-                "win_elixir": 53,
-                "lose_exp": 5,
-                "lose_money": 145,
-                "lose_elixir": 27
+                "win_exp": 25,
+                "win_money": 34,
+                "win_elixir": 340,
+                "lose_exp": 13,
+                "lose_money": 17,
+                "lose_elixir": 170
             },
             "45": {
                 "id": 45,
                 "lv": 45,
-                "win_exp": 10,
-                "win_money": 300,
-                "win_elixir": 55,
-                "lose_exp": 5,
-                "lose_money": 150,
-                "lose_elixir": 28
+                "win_exp": 26,
+                "win_money": 35,
+                "win_elixir": 350,
+                "lose_exp": 13,
+                "lose_money": 18,
+                "lose_elixir": 175
             },
             "46": {
                 "id": 46,
                 "lv": 46,
-                "win_exp": 11,
-                "win_money": 310,
-                "win_elixir": 57,
-                "lose_exp": 6,
-                "lose_money": 155,
-                "lose_elixir": 29
+                "win_exp": 27,
+                "win_money": 36,
+                "win_elixir": 360,
+                "lose_exp": 14,
+                "lose_money": 18,
+                "lose_elixir": 180
             },
             "47": {
                 "id": 47,
                 "lv": 47,
-                "win_exp": 12,
-                "win_money": 320,
-                "win_elixir": 59,
-                "lose_exp": 6,
-                "lose_money": 160,
-                "lose_elixir": 30
+                "win_exp": 28,
+                "win_money": 37,
+                "win_elixir": 370,
+                "lose_exp": 14,
+                "lose_money": 19,
+                "lose_elixir": 185
             },
             "48": {
                 "id": 48,
                 "lv": 48,
-                "win_exp": 13,
-                "win_money": 330,
-                "win_elixir": 61,
-                "lose_exp": 7,
-                "lose_money": 165,
-                "lose_elixir": 31
+                "win_exp": 29,
+                "win_money": 38,
+                "win_elixir": 380,
+                "lose_exp": 15,
+                "lose_money": 19,
+                "lose_elixir": 190
             },
             "49": {
                 "id": 49,
                 "lv": 49,
-                "win_exp": 15,
-                "win_money": 340,
-                "win_elixir": 63,
-                "lose_exp": 7,
-                "lose_money": 170,
-                "lose_elixir": 32
+                "win_exp": 30,
+                "win_money": 39,
+                "win_elixir": 390,
+                "lose_exp": 15,
+                "lose_money": 20,
+                "lose_elixir": 195
             },
             "50": {
                 "id": 50,
                 "lv": 50,
-                "win_exp": 16,
-                "win_money": 350,
-                "win_elixir": 65,
-                "lose_exp": 8,
-                "lose_money": 175,
-                "lose_elixir": 33
+                "win_exp": 31,
+                "win_money": 40,
+                "win_elixir": 400,
+                "lose_exp": 16,
+                "lose_money": 20,
+                "lose_elixir": 200
             },
             "51": {
                 "id": 51,
                 "lv": 51,
-                "win_exp": 18,
-                "win_money": 360,
-                "win_elixir": 67,
-                "lose_exp": 9,
-                "lose_money": 180,
-                "lose_elixir": 34
+                "win_exp": 32,
+                "win_money": 41,
+                "win_elixir": 410,
+                "lose_exp": 16,
+                "lose_money": 21,
+                "lose_elixir": 205
             },
             "52": {
                 "id": 52,
                 "lv": 52,
-                "win_exp": 20,
-                "win_money": 370,
-                "win_elixir": 69,
-                "lose_exp": 10,
-                "lose_money": 185,
-                "lose_elixir": 35
+                "win_exp": 33,
+                "win_money": 42,
+                "win_elixir": 420,
+                "lose_exp": 17,
+                "lose_money": 21,
+                "lose_elixir": 210
             },
             "53": {
                 "id": 53,
                 "lv": 53,
-                "win_exp": 22,
-                "win_money": 380,
-                "win_elixir": 71,
-                "lose_exp": 11,
-                "lose_money": 190,
-                "lose_elixir": 36
+                "win_exp": 34,
+                "win_money": 43,
+                "win_elixir": 430,
+                "lose_exp": 17,
+                "lose_money": 22,
+                "lose_elixir": 215
             },
             "54": {
                 "id": 54,
                 "lv": 54,
-                "win_exp": 24,
-                "win_money": 390,
-                "win_elixir": 73,
-                "lose_exp": 12,
-                "lose_money": 195,
-                "lose_elixir": 37
+                "win_exp": 35,
+                "win_money": 44,
+                "win_elixir": 440,
+                "lose_exp": 18,
+                "lose_money": 22,
+                "lose_elixir": 220
             },
             "55": {
                 "id": 55,
                 "lv": 55,
-                "win_exp": 26,
-                "win_money": 400,
-                "win_elixir": 75,
-                "lose_exp": 13,
-                "lose_money": 200,
-                "lose_elixir": 38
+                "win_exp": 36,
+                "win_money": 45,
+                "win_elixir": 450,
+                "lose_exp": 18,
+                "lose_money": 23,
+                "lose_elixir": 225
             },
             "56": {
                 "id": 56,
                 "lv": 56,
-                "win_exp": 29,
-                "win_money": 410,
-                "win_elixir": 77,
-                "lose_exp": 14,
-                "lose_money": 205,
-                "lose_elixir": 39
+                "win_exp": 37,
+                "win_money": 46,
+                "win_elixir": 460,
+                "lose_exp": 19,
+                "lose_money": 23,
+                "lose_elixir": 230
             },
             "57": {
                 "id": 57,
                 "lv": 57,
-                "win_exp": 32,
-                "win_money": 420,
-                "win_elixir": 79,
-                "lose_exp": 16,
-                "lose_money": 210,
-                "lose_elixir": 40
+                "win_exp": 38,
+                "win_money": 47,
+                "win_elixir": 470,
+                "lose_exp": 19,
+                "lose_money": 24,
+                "lose_elixir": 235
             },
             "58": {
                 "id": 58,
                 "lv": 58,
-                "win_exp": 35,
-                "win_money": 430,
-                "win_elixir": 81,
-                "lose_exp": 17,
-                "lose_money": 215,
-                "lose_elixir": 41
+                "win_exp": 39,
+                "win_money": 48,
+                "win_elixir": 480,
+                "lose_exp": 20,
+                "lose_money": 24,
+                "lose_elixir": 240
             },
             "59": {
                 "id": 59,
                 "lv": 59,
-                "win_exp": 38,
-                "win_money": 440,
-                "win_elixir": 83,
-                "lose_exp": 19,
-                "lose_money": 220,
-                "lose_elixir": 42
+                "win_exp": 40,
+                "win_money": 49,
+                "win_elixir": 490,
+                "lose_exp": 20,
+                "lose_money": 25,
+                "lose_elixir": 245
             },
             "60": {
                 "id": 60,
                 "lv": 60,
-                "win_exp": 42,
-                "win_money": 450,
-                "win_elixir": 85,
+                "win_exp": 41,
+                "win_money": 50,
+                "win_elixir": 500,
                 "lose_exp": 21,
-                "lose_money": 225,
-                "lose_elixir": 43
+                "lose_money": 25,
+                "lose_elixir": 250
             },
             "61": {
                 "id": 61,
                 "lv": 61,
-                "win_exp": 47,
-                "win_money": 460,
-                "win_elixir": 87,
-                "lose_exp": 23,
-                "lose_money": 230,
-                "lose_elixir": 44
+                "win_exp": 42,
+                "win_money": 51,
+                "win_elixir": 510,
+                "lose_exp": 21,
+                "lose_money": 26,
+                "lose_elixir": 255
             },
             "62": {
                 "id": 62,
                 "lv": 62,
-                "win_exp": 51,
-                "win_money": 470,
-                "win_elixir": 89,
-                "lose_exp": 26,
-                "lose_money": 235,
-                "lose_elixir": 45
+                "win_exp": 43,
+                "win_money": 52,
+                "win_elixir": 520,
+                "lose_exp": 22,
+                "lose_money": 26,
+                "lose_elixir": 260
             },
             "63": {
                 "id": 63,
                 "lv": 63,
-                "win_exp": 56,
-                "win_money": 480,
-                "win_elixir": 91,
-                "lose_exp": 28,
-                "lose_money": 240,
-                "lose_elixir": 46
+                "win_exp": 44,
+                "win_money": 53,
+                "win_elixir": 530,
+                "lose_exp": 22,
+                "lose_money": 27,
+                "lose_elixir": 265
             },
             "64": {
                 "id": 64,
                 "lv": 64,
-                "win_exp": 62,
-                "win_money": 490,
-                "win_elixir": 93,
-                "lose_exp": 31,
-                "lose_money": 245,
-                "lose_elixir": 47
+                "win_exp": 45,
+                "win_money": 54,
+                "win_elixir": 540,
+                "lose_exp": 23,
+                "lose_money": 27,
+                "lose_elixir": 270
             },
             "65": {
                 "id": 65,
                 "lv": 65,
-                "win_exp": 68,
-                "win_money": 500,
-                "win_elixir": 95,
-                "lose_exp": 34,
-                "lose_money": 250,
-                "lose_elixir": 48
+                "win_exp": 46,
+                "win_money": 55,
+                "win_elixir": 550,
+                "lose_exp": 23,
+                "lose_money": 28,
+                "lose_elixir": 275
             },
             "66": {
                 "id": 66,
                 "lv": 66,
-                "win_exp": 75,
-                "win_money": 510,
-                "win_elixir": 97,
-                "lose_exp": 37,
-                "lose_money": 255,
-                "lose_elixir": 49
+                "win_exp": 47,
+                "win_money": 56,
+                "win_elixir": 560,
+                "lose_exp": 24,
+                "lose_money": 28,
+                "lose_elixir": 280
             },
             "67": {
                 "id": 67,
                 "lv": 67,
-                "win_exp": 82,
-                "win_money": 520,
-                "win_elixir": 99,
-                "lose_exp": 41,
-                "lose_money": 260,
-                "lose_elixir": 50
+                "win_exp": 48,
+                "win_money": 57,
+                "win_elixir": 570,
+                "lose_exp": 24,
+                "lose_money": 29,
+                "lose_elixir": 285
             },
             "68": {
                 "id": 68,
                 "lv": 68,
-                "win_exp": 91,
-                "win_money": 530,
-                "win_elixir": 101,
-                "lose_exp": 45,
-                "lose_money": 265,
-                "lose_elixir": 51
+                "win_exp": 49,
+                "win_money": 58,
+                "win_elixir": 580,
+                "lose_exp": 25,
+                "lose_money": 29,
+                "lose_elixir": 290
             },
             "69": {
                 "id": 69,
                 "lv": 69,
-                "win_exp": 100,
-                "win_money": 540,
-                "win_elixir": 103,
-                "lose_exp": 50,
-                "lose_money": 270,
-                "lose_elixir": 52
+                "win_exp": 50,
+                "win_money": 59,
+                "win_elixir": 590,
+                "lose_exp": 25,
+                "lose_money": 30,
+                "lose_elixir": 295
             },
             "70": {
                 "id": 70,
                 "lv": 70,
-                "win_exp": 110,
-                "win_money": 550,
-                "win_elixir": 105,
-                "lose_exp": 55,
-                "lose_money": 275,
-                "lose_elixir": 53
+                "win_exp": 51,
+                "win_money": 60,
+                "win_elixir": 600,
+                "lose_exp": 26,
+                "lose_money": 30,
+                "lose_elixir": 300
             },
             "71": {
                 "id": 71,
                 "lv": 71,
-                "win_exp": 121,
-                "win_money": 560,
-                "win_elixir": 107,
-                "lose_exp": 60,
-                "lose_money": 280,
-                "lose_elixir": 54
+                "win_exp": 52,
+                "win_money": 61,
+                "win_elixir": 610,
+                "lose_exp": 26,
+                "lose_money": 31,
+                "lose_elixir": 305
             },
             "72": {
                 "id": 72,
                 "lv": 72,
-                "win_exp": 133,
-                "win_money": 570,
-                "win_elixir": 109,
-                "lose_exp": 66,
-                "lose_money": 285,
-                "lose_elixir": 55
+                "win_exp": 53,
+                "win_money": 62,
+                "win_elixir": 620,
+                "lose_exp": 27,
+                "lose_money": 31,
+                "lose_elixir": 310
             },
             "73": {
                 "id": 73,
                 "lv": 73,
-                "win_exp": 146,
-                "win_money": 580,
-                "win_elixir": 111,
-                "lose_exp": 73,
-                "lose_money": 290,
-                "lose_elixir": 56
+                "win_exp": 54,
+                "win_money": 63,
+                "win_elixir": 630,
+                "lose_exp": 27,
+                "lose_money": 32,
+                "lose_elixir": 315
             },
             "74": {
                 "id": 74,
                 "lv": 74,
-                "win_exp": 161,
-                "win_money": 590,
-                "win_elixir": 113,
-                "lose_exp": 80,
-                "lose_money": 295,
-                "lose_elixir": 57
+                "win_exp": 55,
+                "win_money": 64,
+                "win_elixir": 640,
+                "lose_exp": 28,
+                "lose_money": 32,
+                "lose_elixir": 320
             },
             "75": {
                 "id": 75,
                 "lv": 75,
-                "win_exp": 177,
-                "win_money": 600,
-                "win_elixir": 115,
-                "lose_exp": 88,
-                "lose_money": 300,
-                "lose_elixir": 58
+                "win_exp": 56,
+                "win_money": 65,
+                "win_elixir": 650,
+                "lose_exp": 28,
+                "lose_money": 33,
+                "lose_elixir": 325
             },
             "76": {
                 "id": 76,
                 "lv": 76,
-                "win_exp": 194,
-                "win_money": 610,
-                "win_elixir": 117,
-                "lose_exp": 97,
-                "lose_money": 305,
-                "lose_elixir": 59
+                "win_exp": 57,
+                "win_money": 66,
+                "win_elixir": 660,
+                "lose_exp": 29,
+                "lose_money": 33,
+                "lose_elixir": 330
             },
             "77": {
                 "id": 77,
                 "lv": 77,
-                "win_exp": 214,
-                "win_money": 620,
-                "win_elixir": 119,
-                "lose_exp": 107,
-                "lose_money": 310,
-                "lose_elixir": 60
+                "win_exp": 58,
+                "win_money": 67,
+                "win_elixir": 670,
+                "lose_exp": 29,
+                "lose_money": 34,
+                "lose_elixir": 335
             },
             "78": {
                 "id": 78,
                 "lv": 78,
-                "win_exp": 235,
-                "win_money": 630,
-                "win_elixir": 121,
-                "lose_exp": 118,
-                "lose_money": 315,
-                "lose_elixir": 61
+                "win_exp": 59,
+                "win_money": 68,
+                "win_elixir": 680,
+                "lose_exp": 30,
+                "lose_money": 34,
+                "lose_elixir": 340
             },
             "79": {
                 "id": 79,
                 "lv": 79,
-                "win_exp": 259,
-                "win_money": 640,
-                "win_elixir": 123,
-                "lose_exp": 129,
-                "lose_money": 320,
-                "lose_elixir": 62
+                "win_exp": 60,
+                "win_money": 69,
+                "win_elixir": 690,
+                "lose_exp": 30,
+                "lose_money": 35,
+                "lose_elixir": 345
             },
             "80": {
                 "id": 80,
                 "lv": 80,
-                "win_exp": 284,
-                "win_money": 650,
-                "win_elixir": 125,
-                "lose_exp": 142,
-                "lose_money": 325,
-                "lose_elixir": 63
+                "win_exp": 61,
+                "win_money": 70,
+                "win_elixir": 700,
+                "lose_exp": 31,
+                "lose_money": 35,
+                "lose_elixir": 350
             },
             "81": {
                 "id": 81,
                 "lv": 81,
-                "win_exp": 313,
-                "win_money": 660,
-                "win_elixir": 127,
-                "lose_exp": 156,
-                "lose_money": 330,
-                "lose_elixir": 64
+                "win_exp": 62,
+                "win_money": 71,
+                "win_elixir": 710,
+                "lose_exp": 31,
+                "lose_money": 36,
+                "lose_elixir": 355
             },
             "82": {
                 "id": 82,
                 "lv": 82,
-                "win_exp": 344,
-                "win_money": 670,
-                "win_elixir": 129,
-                "lose_exp": 172,
-                "lose_money": 335,
-                "lose_elixir": 65
+                "win_exp": 63,
+                "win_money": 72,
+                "win_elixir": 720,
+                "lose_exp": 32,
+                "lose_money": 36,
+                "lose_elixir": 360
             },
             "83": {
                 "id": 83,
                 "lv": 83,
-                "win_exp": 379,
-                "win_money": 680,
-                "win_elixir": 131,
-                "lose_exp": 189,
-                "lose_money": 340,
-                "lose_elixir": 66
+                "win_exp": 64,
+                "win_money": 73,
+                "win_elixir": 730,
+                "lose_exp": 32,
+                "lose_money": 37,
+                "lose_elixir": 365
             },
             "84": {
                 "id": 84,
                 "lv": 84,
-                "win_exp": 416,
-                "win_money": 690,
-                "win_elixir": 133,
-                "lose_exp": 208,
-                "lose_money": 345,
-                "lose_elixir": 67
+                "win_exp": 65,
+                "win_money": 74,
+                "win_elixir": 740,
+                "lose_exp": 33,
+                "lose_money": 37,
+                "lose_elixir": 370
             },
             "85": {
                 "id": 85,
                 "lv": 85,
-                "win_exp": 458,
-                "win_money": 700,
-                "win_elixir": 135,
-                "lose_exp": 229,
-                "lose_money": 350,
-                "lose_elixir": 68
+                "win_exp": 66,
+                "win_money": 75,
+                "win_elixir": 750,
+                "lose_exp": 33,
+                "lose_money": 38,
+                "lose_elixir": 375
             },
             "86": {
                 "id": 86,
                 "lv": 86,
-                "win_exp": 504,
-                "win_money": 710,
-                "win_elixir": 137,
-                "lose_exp": 252,
-                "lose_money": 355,
-                "lose_elixir": 69
+                "win_exp": 67,
+                "win_money": 76,
+                "win_elixir": 760,
+                "lose_exp": 34,
+                "lose_money": 38,
+                "lose_elixir": 380
             },
             "87": {
                 "id": 87,
                 "lv": 87,
-                "win_exp": 554,
-                "win_money": 720,
-                "win_elixir": 139,
-                "lose_exp": 277,
-                "lose_money": 360,
-                "lose_elixir": 70
+                "win_exp": 68,
+                "win_money": 77,
+                "win_elixir": 770,
+                "lose_exp": 34,
+                "lose_money": 39,
+                "lose_elixir": 385
             },
             "88": {
                 "id": 88,
                 "lv": 88,
-                "win_exp": 610,
-                "win_money": 730,
-                "win_elixir": 141,
-                "lose_exp": 305,
-                "lose_money": 365,
-                "lose_elixir": 71
+                "win_exp": 69,
+                "win_money": 78,
+                "win_elixir": 780,
+                "lose_exp": 35,
+                "lose_money": 39,
+                "lose_elixir": 390
             },
             "89": {
                 "id": 89,
                 "lv": 89,
-                "win_exp": 671,
-                "win_money": 740,
-                "win_elixir": 143,
-                "lose_exp": 335,
-                "lose_money": 370,
-                "lose_elixir": 72
+                "win_exp": 70,
+                "win_money": 79,
+                "win_elixir": 790,
+                "lose_exp": 35,
+                "lose_money": 40,
+                "lose_elixir": 395
             },
             "90": {
                 "id": 90,
                 "lv": 90,
-                "win_exp": 738,
-                "win_money": 750,
-                "win_elixir": 145,
-                "lose_exp": 369,
-                "lose_money": 375,
-                "lose_elixir": 73
+                "win_exp": 71,
+                "win_money": 80,
+                "win_elixir": 800,
+                "lose_exp": 36,
+                "lose_money": 40,
+                "lose_elixir": 400
             },
             "91": {
                 "id": 91,
                 "lv": 91,
-                "win_exp": 811,
-                "win_money": 760,
-                "win_elixir": 147,
-                "lose_exp": 406,
-                "lose_money": 380,
-                "lose_elixir": 74
+                "win_exp": 72,
+                "win_money": 81,
+                "win_elixir": 810,
+                "lose_exp": 36,
+                "lose_money": 41,
+                "lose_elixir": 405
             },
             "92": {
                 "id": 92,
                 "lv": 92,
-                "win_exp": 893,
-                "win_money": 770,
-                "win_elixir": 149,
-                "lose_exp": 446,
-                "lose_money": 385,
-                "lose_elixir": 75
+                "win_exp": 73,
+                "win_money": 82,
+                "win_elixir": 820,
+                "lose_exp": 37,
+                "lose_money": 41,
+                "lose_elixir": 410
             },
             "93": {
                 "id": 93,
                 "lv": 93,
-                "win_exp": 982,
-                "win_money": 780,
-                "win_elixir": 151,
-                "lose_exp": 491,
-                "lose_money": 390,
-                "lose_elixir": 76
+                "win_exp": 74,
+                "win_money": 83,
+                "win_elixir": 830,
+                "lose_exp": 37,
+                "lose_money": 42,
+                "lose_elixir": 415
             },
             "94": {
                 "id": 94,
                 "lv": 94,
-                "win_exp": 1080,
-                "win_money": 790,
-                "win_elixir": 153,
-                "lose_exp": 540,
-                "lose_money": 395,
-                "lose_elixir": 77
+                "win_exp": 75,
+                "win_money": 84,
+                "win_elixir": 840,
+                "lose_exp": 38,
+                "lose_money": 42,
+                "lose_elixir": 420
             },
             "95": {
                 "id": 95,
                 "lv": 95,
-                "win_exp": 1188,
-                "win_money": 800,
-                "win_elixir": 155,
-                "lose_exp": 594,
-                "lose_money": 400,
-                "lose_elixir": 78
+                "win_exp": 76,
+                "win_money": 85,
+                "win_elixir": 850,
+                "lose_exp": 38,
+                "lose_money": 43,
+                "lose_elixir": 425
             },
             "96": {
                 "id": 96,
                 "lv": 96,
-                "win_exp": 1307,
-                "win_money": 810,
-                "win_elixir": 157,
-                "lose_exp": 653,
-                "lose_money": 405,
-                "lose_elixir": 79
+                "win_exp": 77,
+                "win_money": 86,
+                "win_elixir": 860,
+                "lose_exp": 39,
+                "lose_money": 43,
+                "lose_elixir": 430
             },
             "97": {
                 "id": 97,
                 "lv": 97,
-                "win_exp": 1438,
-                "win_money": 820,
-                "win_elixir": 159,
-                "lose_exp": 719,
-                "lose_money": 410,
-                "lose_elixir": 80
+                "win_exp": 78,
+                "win_money": 87,
+                "win_elixir": 870,
+                "lose_exp": 39,
+                "lose_money": 44,
+                "lose_elixir": 435
             },
             "98": {
                 "id": 98,
                 "lv": 98,
-                "win_exp": 1581,
-                "win_money": 830,
-                "win_elixir": 161,
-                "lose_exp": 791,
-                "lose_money": 415,
-                "lose_elixir": 81
+                "win_exp": 79,
+                "win_money": 88,
+                "win_elixir": 880,
+                "lose_exp": 40,
+                "lose_money": 44,
+                "lose_elixir": 440
             },
             "99": {
                 "id": 99,
                 "lv": 99,
-                "win_exp": 1739,
-                "win_money": 840,
-                "win_elixir": 163,
-                "lose_exp": 870,
-                "lose_money": 420,
-                "lose_elixir": 82
+                "win_exp": 80,
+                "win_money": 89,
+                "win_elixir": 890,
+                "lose_exp": 40,
+                "lose_money": 45,
+                "lose_elixir": 445
             },
             "100": {
                 "id": 100,
                 "lv": 100,
-                "win_exp": 0,
-                "win_money": 850,
-                "win_elixir": 165,
-                "lose_exp": 0,
-                "lose_money": 425,
-                "lose_elixir": 83
+                "win_exp": 81,
+                "win_money": 90,
+                "win_elixir": 900,
+                "lose_exp": 41,
+                "lose_money": 45,
+                "lose_elixir": 450
             }
         }
     },
@@ -11297,26 +11333,18 @@ var outputTables = {
             },
             "10": {
                 "id": 10,
-                "elixir": 3500
+                "elixir": 3000
             },
             "50": {
                 "id": 50,
-                "elixir": 3000
+                "elixir": 2500
             },
             "100": {
                 "id": 100,
-                "elixir": 2500
+                "elixir": 2000
             },
             "500": {
                 "id": 500,
-                "elixir": 2000
-            },
-            "1000": {
-                "id": 1000,
-                "elixir": 1500
-            },
-            "5000": {
-                "id": 5000,
                 "elixir": 1000
             }
         }
@@ -11327,47 +11355,47 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "ranking": 1,
-                "percent": 100
+                "percent": 55
             },
             "2": {
                 "id": 2,
                 "ranking": 11,
-                "percent": 90
+                "percent": 50
             },
             "3": {
                 "id": 3,
                 "ranking": 51,
-                "percent": 80
+                "percent": 45
             },
             "4": {
                 "id": 4,
                 "ranking": 101,
-                "percent": 70
+                "percent": 40
             },
             "5": {
                 "id": 5,
                 "ranking": 201,
-                "percent": 60
+                "percent": 35
             },
             "6": {
                 "id": 6,
                 "ranking": 501,
-                "percent": 50
+                "percent": 30
             },
             "7": {
                 "id": 7,
                 "ranking": 1001,
-                "percent": 40
+                "percent": 25
             },
             "8": {
                 "id": 8,
                 "ranking": 3001,
-                "percent": 30
+                "percent": 20
             },
             "9": {
                 "id": 9,
                 "ranking": 5001,
-                "percent": 20
+                "percent": 15
             },
             "10": {
                 "id": 10,
@@ -24785,8 +24813,8 @@ var outputTables = {
             "20015": {
                 "id": 20015,
                 "card_id": "怪物526",
-                "atk": 19091,
-                "hp": 47863,
+                "atk": 25302,
+                "hp": 53301,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 5
@@ -24794,8 +24822,8 @@ var outputTables = {
             "20016": {
                 "id": 20016,
                 "card_id": "怪物527",
-                "atk": 22376,
-                "hp": 56100,
+                "atk": 31246,
+                "hp": 70256,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 6
@@ -24803,8 +24831,8 @@ var outputTables = {
             "20017": {
                 "id": 20017,
                 "card_id": "怪物528",
-                "atk": 25826,
-                "hp": 64749,
+                "atk": 37260,
+                "hp": 80256,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 7
@@ -24812,8 +24840,8 @@ var outputTables = {
             "20018": {
                 "id": 20018,
                 "card_id": "怪物529",
-                "atk": 28467,
-                "hp": 71373,
+                "atk": 42153,
+                "hp": 90256,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 8
@@ -24821,8 +24849,8 @@ var outputTables = {
             "20019": {
                 "id": 20019,
                 "card_id": "怪物530",
-                "atk": 31106,
-                "hp": 77991,
+                "atk": 48356,
+                "hp": 105623,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 9
@@ -24830,8 +24858,8 @@ var outputTables = {
             "20020": {
                 "id": 20020,
                 "card_id": "怪物531",
-                "atk": 33467,
-                "hp": 82553,
+                "atk": 50717,
+                "hp": 110185,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 10
@@ -24890,16 +24918,16 @@ var outputTables = {
             "30007": {
                 "id": 30007,
                 "card_id": "怪物538",
-                "atk": 25826,
-                "hp": 64749,
+                "atk": 37260,
+                "hp": 80256,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30008": {
                 "id": 30008,
                 "card_id": "怪物539",
-                "atk": 25986,
-                "hp": 64909,
+                "atk": 37420,
+                "hp": 80416,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 4
@@ -24907,16 +24935,16 @@ var outputTables = {
             "30009": {
                 "id": 30009,
                 "card_id": "怪物540",
-                "atk": 31106,
-                "hp": 77991,
+                "atk": 48356,
+                "hp": 105623,
                 "dodge_rate": 10,
                 "crit_rate": 10
             },
             "30010": {
                 "id": 30010,
                 "card_id": "怪物541",
-                "atk": 32156,
-                "hp": 81230,
+                "atk": 50717,
+                "hp": 110185,
                 "dodge_rate": 10,
                 "crit_rate": 10,
                 "skill_id": 5
@@ -31817,7 +31845,6 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "power": 100,
                 "energy": 500,
                 "money": 100000,
                 "skillPoint": 0,
@@ -31828,7 +31855,6 @@ var outputTables = {
             },
             "2": {
                 "id": 2,
-                "power": 120,
                 "energy": 600,
                 "money": 120000,
                 "skillPoint": 1000,
@@ -31839,7 +31865,6 @@ var outputTables = {
             },
             "3": {
                 "id": 3,
-                "power": 140,
                 "energy": 700,
                 "money": 150000,
                 "skillPoint": 1100,
@@ -31850,7 +31875,6 @@ var outputTables = {
             },
             "4": {
                 "id": 4,
-                "power": 160,
                 "energy": 800,
                 "money": 200000,
                 "skillPoint": 1200,
@@ -31861,7 +31885,6 @@ var outputTables = {
             },
             "5": {
                 "id": 5,
-                "power": 180,
                 "energy": 900,
                 "money": 250000,
                 "skillPoint": 2000,
@@ -31872,7 +31895,6 @@ var outputTables = {
             },
             "6": {
                 "id": 6,
-                "power": 200,
                 "energy": 1000,
                 "money": 300000,
                 "skillPoint": 2100,
@@ -31883,7 +31905,6 @@ var outputTables = {
             },
             "7": {
                 "id": 7,
-                "power": 200,
                 "energy": 1100,
                 "money": 350000,
                 "skillPoint": 2200,
@@ -31894,7 +31915,6 @@ var outputTables = {
             },
             "8": {
                 "id": 8,
-                "power": 200,
                 "energy": 1200,
                 "money": 400000,
                 "skillPoint": 5000,
@@ -31905,7 +31925,6 @@ var outputTables = {
             },
             "9": {
                 "id": 9,
-                "power": 200,
                 "energy": 1300,
                 "money": 450000,
                 "skillPoint": 5100,
@@ -31916,7 +31935,6 @@ var outputTables = {
             },
             "10": {
                 "id": 10,
-                "power": 200,
                 "energy": 1400,
                 "money": 500000,
                 "skillPoint": 10000,
@@ -31927,7 +31945,6 @@ var outputTables = {
             },
             "11": {
                 "id": 11,
-                "power": 200,
                 "energy": 1500,
                 "money": 550000,
                 "skillPoint": 11000,
@@ -31938,7 +31955,6 @@ var outputTables = {
             },
             "12": {
                 "id": 12,
-                "power": 200,
                 "energy": 1600,
                 "money": 600000,
                 "skillPoint": 15000,

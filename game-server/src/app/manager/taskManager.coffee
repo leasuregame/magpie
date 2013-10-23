@@ -71,11 +71,10 @@ class Manager
     cb(null, player, rewards)
 
   @wipeOutTask: (player, chapterId, cb) ->
-    rewards = {exp_obtain: 0, money_obtain: 0}
+    rewards = {money_obtain: 0}
 
     count_ = (id, rewards) ->
       wipeOutData = table.getTableItem('wipe_out', id)
-      rewards.exp_obtain += parseInt(wipeOutData.exp_obtain)
       rewards.money_obtain += parseInt(wipeOutData.money_obtain)
       player.setTaskMark(id)
 
@@ -86,7 +85,6 @@ class Manager
       chapterId = taskData.chapter_id
       count_(id, rewards) for id in _.range(1, chapterId) when not player.hasTaskMark(id)
           
-    player.increase('exp',  rewards.exp_obtain)
     player.increase('money', rewards.money_obtain)
 
     cb(null, player, rewards)

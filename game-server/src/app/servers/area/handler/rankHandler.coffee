@@ -35,28 +35,60 @@ Handler::rankingList = (msg, session, next) ->
   async.waterfall [
     (cb) =>
       playerManager.getPlayerInfo {pid: playerId}, cb
-
     (res, cb) ->
       player = res
+      fdata = table.getTableItem('function_limit', 1)
+      if player.lv < fdata.rank
+        return cb({code: 501, msg: fdata.rank+'级开放'})
+      
+      if not player.rank?
+        return cb({code: 501, msg: '找不到竞技信息'})
+
+      cb()
+    (cb) ->
       rankings = genRankings(player.rank.ranking)
       playerManager.rankingList _.keys(rankings), (err, players) ->
         cb(err, players, rankings)
 
+    (players,rankings,cb) ->
+      flag = []
+      for p in players when p.id isnt playerId and p.id in player.rank.recentChallenger and p.rank.ranking < player.rank.ranking
+        rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK
+        flag.push p.id
+
+      plys = _.difference(player.rank.recentChallenger,flag)
+
+      playerManager.getPlayers plys, (err, ply) ->
+        rank = {}
+
+        for key , value of ply
+          if player.rank.ranking > value.rank.ranking
+            players.push value
+            rank[value.rank.ranking] = STATUS_COUNTER_ATTACK
+
+        cb(err, players, _.extend(rankings,rank))
   ], (err, players, rankings) ->
     if err
-      return next(null, {code: err.code, msg: err.message})
-
-    rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK \
-      for p in players when p.id isnt playerId and p.id in player.rank.recentChallenger
+      return next(null, {code: err.code or 501, msg: err.msg or err.message})
 
     players = filterPlayersInfo(players, rankings)
     players.sort (x, y) -> x.ranking - y.ranking
-    next(null, {code: 200, msg: players})
+    r = player.getRank()
+    rank = {
+      ranking: r.ranking,
+      rankReward: r.rankReward,
+      challengeCount: player.dailyGift.challengeCount,
+      rankList: players
+    }
+    next(null,{code: 200, msg: {rank: rank}})
 
 Handler::challenge = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   playerName = session.get('playerName')
   targetId = msg.targetId
+
+  if playerId is targetId
+   return next null,{code: 501, msg: '不能挑战自己'}
 
   player = null
   async.waterfall [
@@ -65,12 +97,6 @@ Handler::challenge = (msg, session, next) ->
 
     (res, cb) ->
       player = res
-      fdata = table.getTableItem('function_limit', 1)
-      if player.lv < fdata.rank
-        return cb({code: 501, msg: fdata.rank+'级开放'})
-      cb()
-
-    (cb) =>
       fightManager.pvp {playerId: playerId, targetId: targetId}, cb
 
     (bl, cb) =>
@@ -90,10 +116,7 @@ Handler::challenge = (msg, session, next) ->
 
       bl.rewards = rewards
       next(null, {code: 200, msg: {
-        battleLog: bl, 
-        counts: player.rank?.counts,
-        rankingRewards: player.rank?.rankingRewards(),
-        power: player.power,
+        battleLog: bl,
         lv: player.lv,
         exp: player.exp
       }})
@@ -147,18 +170,22 @@ genRankings = (ranking) ->
   for r in [1..10]
     top10[r] = if ranking > 10 then STATUS_NORMAL else STATUS_CHALLENGE
 
-  return top10 if ranking <= 10
-
-  keys = Object.keys(INTERVALS)
-  step = 1
-  for k in keys.reverse()
-    if ranking >= k
-      step = INTERVALS[k]
-      break
-
   _results = {}
-  _results[ranking - step * i] = STATUS_CHALLENGE for i in [0...10]
 
+  if ranking <= 10
+    _results[11] = STATUS_CHALLENGE
+
+  else
+    keys = Object.keys(INTERVALS)
+    step = 1
+    for k in keys.reverse()
+      if ranking >= k
+        step = INTERVALS[k]
+        break
+
+    _results[ranking - step * i] = STATUS_CHALLENGE for i in [1...11]
+
+  _results[ranking] = STATUS_NORMAL
   _.extend(top10, _results)
 
 filterPlayersInfo = (players, rankings) ->
@@ -169,7 +196,7 @@ filterPlayersInfo = (players, rankings) ->
       ability: p.ability
       lv: p.lv
       ranking: p.rank.ranking
-      cards: p.activeCards().map (c) -> c.toJson()
+      cards: p.activeCards().map (c) -> c.tableId
       type: rankings[p.rank.ranking]
     }
     
@@ -178,9 +205,9 @@ saveBattleLog = (bl, playerName) ->
   targetId = bl.enemyId
 
   if bl.winner is 'own'
-    result = '输了'
+    result = '你输了'
   else
-    result = '赢了'
+    result = '你赢了'
 
   app.get('dao').battleLog.create data: {
     own: playerId

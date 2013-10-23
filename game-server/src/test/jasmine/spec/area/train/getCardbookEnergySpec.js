@@ -40,7 +40,7 @@ describe("Area Server", function() {
           doAjax('/player/' + user3.playerId, {}, function(res) {
             before_player = res.data;
           });
-        })
+        });
 
         for (var i = 1; i <= 5; i++) {
           (function(id) {

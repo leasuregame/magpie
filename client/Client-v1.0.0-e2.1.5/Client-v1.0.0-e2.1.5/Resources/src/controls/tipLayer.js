@@ -52,7 +52,7 @@ var TipLayer = cc.Layer.extend({
 
         var len = this._tipLabel.length;
 
-        if(len && str == this._tipLabel[len - 1].str) return;
+        if (len && (str == this._tipLabel[len - 1].str)) return;
 
         color = color || cc.c3b(255, 239, 131);
         fontName = fontName || "STHeitiTC-Medium";
@@ -83,7 +83,7 @@ var TipLayer = cc.Layer.extend({
 
         var moveAction = cc.MoveTo.create(1, cc.p(360, 650));
         var callFuncAction = cc.CallFunc.create(function () {
-            this.scheduleOnce(function() {
+            this.scheduleOnce(function () {
                 this._tipLabel.shift();
 
                 label.removeFromParent();

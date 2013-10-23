@@ -27,7 +27,9 @@ var CardHeadNode = cc.Node.extend({
         var url = "icon11";
         var star = 1;
 
-        if (this._card) {
+        if (this._card === -1) {
+            url = "icon12";
+        } else if (this._card) {
             star = this._card.get("star");
             url = this._card.get("url") + "_head" + (Math.floor((star - 1) / 2) + 1);
         }
@@ -79,5 +81,11 @@ CardHeadNode.getCardHeadItem = function (card, cb, target) {
     target = target || this;
 
     var cardHeadNode = CardHeadNode.create(card);
-    return cc.MenuItemLabel.create(cardHeadNode, cb, target);
+    var cardItem = cc.MenuItemLabel.create(cardHeadNode, cb, target);
+
+    cardItem.setColor = function (color3) {
+        cardHeadNode.setColor(color3);
+    };
+
+    return cardItem;
 };

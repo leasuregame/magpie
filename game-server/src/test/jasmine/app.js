@@ -161,6 +161,22 @@ app.get('/addFriend', function(req, res) {
   });
 });
 
+app.get('/clear/:table', function(req, res) {
+  var table = req.params.table;
+  mysql.magpiedb1.query('delete from ' + table, function(err, result) {
+    if (err) {
+      res.send({
+        code: 500,
+        msg: 'faild to delete data from ' + table
+      });
+    } else {
+      res.send({
+        code: 200
+      });
+    }
+  });
+});
+
 app.get('/loaddata/rank', function(req, res) {
   command(req, res, 'sh', [__dirname + '/script/load-data.sh', 'rank']);
 });

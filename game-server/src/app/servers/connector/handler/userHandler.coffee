@@ -39,6 +39,9 @@ Handler::login = (msg, session, next) ->
 
     (cb) =>
       # check whether has create player in the login area
+      user = res
+      uid = user.id + '*' + areaId;
+
       if _.contains user.roles, areaId
         @app.rpc.area.playerRemote.getPlayerByUserId session, user.id, @app.getServerId(), (err, res) ->
           if err
@@ -47,6 +50,21 @@ Handler::login = (msg, session, next) ->
           cb()
       else
         cb()
+
+    (cb) =>
+        sessionService = @app.get 'sessionService'
+        #if sessionService.getByUid(uid)
+       #   channelService = @app.get('channelService');
+      #    channelService.pushMessageByUids('onMessage', {msg:'账号在其他地方登陆'}, [{
+      #      uid: uid,
+      #     sid: @app.get('serverId')
+      #    }],(err)->
+        sessionService.kick(uid,cb);
+      #    )
+    (cb) =>
+      console.log 'uid',uid
+      session.set('userId', user.id)
+      session.bind(uid, cb);
 
     (cb) =>
       if player?

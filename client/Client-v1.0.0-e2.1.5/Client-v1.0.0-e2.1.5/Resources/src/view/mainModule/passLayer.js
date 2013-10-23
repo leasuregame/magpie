@@ -157,13 +157,13 @@ var PassLayer = cc.Layer.extend({
         var tipLabel = cc.Sprite.create(main_scene_image.bg6);
         tipLabel.setAnchorPoint(cc.p(0, 0));
         tipLabel.setPosition(cc.p(40, 900));
-        this.addChild(tipLabel);
+        this.addChild(tipLabel, 1);
 
         this._topLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
         this._topLabel.setColor(cc.c3b(255, 239, 131));
         this._topLabel.setAnchorPoint(cc.p(0, 0.5));
         this._topLabel.setPosition(cc.p(190, 934));
-        this.addChild(this._topLabel);
+        this.addChild(this._topLabel, 1);
 
         this._skillPointLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 20);
         this._skillPointLabel.setColor(cc.c3b(255, 239, 131));
@@ -203,7 +203,7 @@ var PassLayer = cc.Layer.extend({
 
         var menu = cc.Menu.create(this._wipeOutItem, this._resetItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this.addChild(menu, 1);
 
         return true;
     },
@@ -543,4 +543,15 @@ PassLayer.create = function () {
     }
 
     return null;
+};
+
+PassLayer.canEnter = function () {
+    var limitLv = outputTables.function_limit.rows[1].pass;
+    var lv = gameData.player.get("lv");
+
+    if (lv >= limitLv) {
+        return true;
+    }
+
+    TipLayer.tip("天道" + limitLv + "级开放");
 };

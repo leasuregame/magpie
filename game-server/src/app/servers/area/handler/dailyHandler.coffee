@@ -71,45 +71,70 @@ Handler::signIn = (msg, session, next) ->
     next(null, {
       code: 200, 
       msg: {
-        money: 2000, 
-        energy: 100
+        money: sdata.money
+        energy: sdata.energy
       }
     })
 
 Handler::reSignIn = (msg, session, next) ->
   playerId = session.get('playerId')
 
+  goldResume = 10
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    day = player.signFirstUnsignDay()
-    player.decrease('gold', 10)
-    player.save()
+    if player.signDays() >= 31
+      return next(null, {code: 501, msg: '没有日期可以补签'})
 
-    next(null, {code: 200, msg: day: day})
+    day = player.signFirstUnsignDay()
+    if day >= (new Date).getDate()
+      return next(null, {code: 501, msg: '没有日期可以补签'})
+
+    sdata = table.getTableItem('daily_signin_rewards', 1)
+    player.decrease('gold', goldResume)
+    player.save()
+    
+    next(null, {
+      code: 200
+      msg: 
+        day: day
+        goldResume: goldResume
+        reward: {
+          money: sdata.money
+          energy: sdata.energy
+        }
+      }
+    )
 
 Handler::getSignInGift = (msg, session, next) ->
   playerId = session.get('playerId')
   id = msg.id
 
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     rew = table.getTableItem('signIn_rewards', id)
-    if player.signDays() < rew.count
-      return next(null, {code: 501, msg: "签到次数不足#{rew.count}次"})
-    if player.hasSignInFlag(id) 
+    count = rew.count
+    if count is -1
+      d = new Date()
+      count = (new Date(d.getFullYear(), d.getMonth() + 1, 0)).getDate()
+
+    if player.signDays() < count
+      return next(null, {code: 501, msg: "签到次数不足#{count}次"})
+    if player.hasSignInFlag(id)
       return next(null, {code: 501, msg: '不能重复领取'})
 
     setIfExist = (attrs) ->
       player.increase att, val for att, val of rew when att in attrs
       return
 
-    setIfExist ['energy', 'money', 'skillPoint', 'elixir']
+    setIfExist ['energy', 'money', 'skillPoint', 'elixir', 'gold']
+    player.incSpirit(rew.spirit)
     if rew.lottery_free_count > 0
-      dg = player.dailyGift
+      dg = utility.deepCopy(player.dailyGift)
       dg.lotteryFreeCount += rew.lottery_free_count
       player.dailyGift = dg
 

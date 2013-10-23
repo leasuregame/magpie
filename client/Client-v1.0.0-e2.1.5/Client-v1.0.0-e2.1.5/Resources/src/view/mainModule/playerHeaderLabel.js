@@ -50,7 +50,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
         expBg.setPosition(cc.p(210, 36));
         this.addChild(expBg);
 
-        this._expProgress = Progress.create(null, main_scene_image.exp, 1, 1, true);
+        this._expProgress = Progress.create(null, main_scene_image.exp, 0, 0, true);
         this._expProgress.setPosition(cc.p(214, 36));
         this.addChild(this._expProgress);
         this._expProgress.setFontColor(cc.c3b(255, 239, 131));

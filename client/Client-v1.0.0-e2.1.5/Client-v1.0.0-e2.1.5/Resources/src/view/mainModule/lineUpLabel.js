@@ -31,19 +31,6 @@ var LineUpLabel = cc.Layer.extend({
         this._cardList = gameData.cardList;
         this._lineUp = gameData.lineUp;
 
-        this._lineUpCard = {};
-        for (var i = 1; i <= MAX_LINE_UP_SIZE; ++i) {
-            var cardBg = cc.LayerColor.create(cc.c4b(100, 20, 100, 200), 80, 80);
-            cardBg.setPosition(cc.p(i * 100 - 70, 35));
-            this.addChild(cardBg);
-
-            var label = cc.LabelTTF.create("xx", "STHeitiTC-Medium", 30);
-            label.setPosition(cc.p(i * 100 - 30, 75));
-            this.addChild(label);
-
-            this._lineUpCard[i] = label;
-        }
-
         return true;
     },
 
@@ -58,8 +45,16 @@ var LineUpLabel = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
-        for (var i = 0; i < MAX_LINE_UP_CARD; ++i) {
-            var cardHeadItem = CardHeadNode.getCardHeadItem(lineUpCardList[i], this._onClickCard, this);
+        for (var i = 0; i < 5; ++i) {
+            var cardHeadItem = null;
+
+            if (i < MAX_LINE_UP_CARD) {
+                cardHeadItem = CardHeadNode.getCardHeadItem(lineUpCardList[i], this._onClickCard, this);
+
+            } else {
+                cardHeadItem = CardHeadNode.getCardHeadItem(-1, this._onClickCard, this);
+            }
+
             cardHeadItem.setPosition(cc.p(79 + 122 * i, 0));
             menu.addChild(cardHeadItem);
         }

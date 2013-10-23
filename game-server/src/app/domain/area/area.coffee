@@ -1,6 +1,7 @@
 eventManager = require '../event/eventManager'
 players = require '../../manager/playerCache'
 timer = require './timer'
+areaUtil = require('../../util/areaUtil')
 logger = require('pomelo-logger').getLogger(__filename)
 Area = module.exports
 
@@ -27,7 +28,13 @@ Area.getPlayers = ->
   players.all()
 
 Area.powerConsume = ->
+  areaUtil.doGivePower(@app)
+
   for p in @getPlayers()
     p.emit('power.resume')
-    p.emit('power.give')
+  return
+
+Area.resetDate = ->
+  for p in @getPlayers()
+    p.emit('data.reset')
   return

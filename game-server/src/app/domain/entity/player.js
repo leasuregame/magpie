@@ -227,13 +227,14 @@ var Player = (function(_super) {
         'rowFragmentCount',
         'highFragmentCount',
         'highDrawCardCount',
-        'cardsCount'
+        'cardsCount',
+        'resetDate'
     ];
 
     Player.DEFAULT_VALUES = {
         power: {
             time: 0,
-            value: 50
+            value: 150
         },
         lv: 1,
         vip: 0,
@@ -259,20 +260,21 @@ var Player = (function(_super) {
                 isTrigger: false,
                 isClear: false
             },
-            resetTimes:1
+            resetTimes: 1
         },
         dailyGift: {
             lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: 0, // 每日免费抽奖次数
             powerGiven: [], // 体力赠送情况
-            powerBuyCount: 2, // 购买体力次数
-            challengeCount: 15, // 每日有奖竞技次数
+            powerBuyCount: 6, // 购买体力次数
+            challengeCount: 10, // 每日有奖竞技次数
+            challengeBuyCount: 10, //每日有奖竞技购买次数
             receivedBless: { // 接收的祝福
-                count: msgConfig.MAX_RECEIVE_COUNT,
+                count: msgConfig.DEFAULT_RECEIVE_COUNT,
                 givers: []
             },
             gaveBless: { // 送出的祝福
-                count: msgConfig.MAX_GIVE_COUNT,
+                count: msgConfig.DEFAULT_GIVE_COUNT,
                 receivers: []
             }
         },
@@ -306,7 +308,73 @@ var Player = (function(_super) {
         rowFragmentCount: 0,
         highFragmentCount: 0,
         highDrawCardCount: 0,
-        cardsCount: 100
+        cardsCount: 100,
+        resetDate: '1970-1-1'
+    };
+
+    Player.prototype.resetData = function() {
+        var giveBlessMap = {
+            1: 5,
+            31: 10,
+            51: 15,
+            71: 20
+        };
+
+        var recieveBlessMap = {
+            1: 20,
+            31: 30,
+            51: 40,
+            71: 50
+        };
+
+        var realCount = function(lv, mapobj) {
+            var keys = Object.keys(mapobj);
+            var _i, _len, k, step = 5;
+
+            var _ref = keys.reverse();
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                k = _ref[_i];
+                if (lv >= k) {
+                    step = mapobj[k];
+                    break;
+                }
+            }
+            return step;
+        };
+
+        var vipPrivilege = table.getTableItem('vip_privilege', this.vip);
+
+        var dg = {
+            lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
+            lotteryFreeCount: 0 + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
+            powerGiven: [], // 体力赠送情况
+            powerBuyCount: 6 + vipPrivilege.buy_power_count, // 购买体力次数
+            challengeCount: 10 + vipPrivilege.challenge_count, // 每日有奖竞技次数
+            challengeBuyCount: 10, //每日有奖竞技购买次数
+            receivedBless: { // 接收的祝福
+                count: realCount(this.lv, recieveBlessMap) + vipPrivilege.receive_bless_count,
+                givers: []
+            },
+            gaveBless: { // 送出的祝福
+                count: realCount(this.lv, giveBlessMap) + vipPrivilege.give_bless_count,
+                receivers: []
+            }
+        };
+
+        var pass = utility.deepCopy(this.pass);
+        pass.resetTimes = 1;
+
+        var spiritPool = utility.deepCopy(this.spiritPool);
+        spiritPool.collectCount = spiritConfig.MAX_COLLECT_COUNT + vipPrivilege.spirit_collect_count;
+
+        this.dailyGift = dg;
+        this.pass = pass;
+        this.spiritPool = spiritPool;
+        this.resetDate = utility.shortDateString();
+    };
+
+    Player.prototype.isReset = function() {
+        return this.resetDate === utility.shortDateString();
     };
 
     Player.prototype.increase = function(name, val) {
@@ -350,7 +418,10 @@ var Player = (function(_super) {
         var cards = this.activeCards();
         for (var i = 0; i < cards.length; i++) {
             var card = cards[i];
-            var incs = {spirit_hp: 0, spirit_atk: 0};
+            var incs = {
+                spirit_hp: 0,
+                spirit_atk: 0
+            };
             var _hp = parseInt(card.init_hp * spiritConfig.hp_inc / 100);
             var _atk = parseInt(card.init_atk * spiritConfig.atk_inc / 100);
 
@@ -423,7 +494,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.activeGroupEffect = function() {
-        var cardIds = _.values(this.lineUpObj());
+        var cardIds = _.values(lineUpToObj(this.lineUp));
         var cards = _.values(this.cards).filter(function(id, c) {
             return c.star >= 3 && cardIds.indexOf(c.id) > -1;
         });
@@ -467,7 +538,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.isLineUpCard = function(card) {
-        return _.contains(_.values(this.lineUpObj()), card.id);
+        return _.contains(_.values(lineUpToObj(this.lineUp)), card.id);
     };
 
     Player.prototype.hasCard = function(id) {
@@ -502,7 +573,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.activeCards = function() {
-        var cardIds = _.values(this.lineUpObj());
+        var cardIds = _.values(lineUpToObj(this.lineUp));
         return _.values(this.cards).filter(function(c) {
             return cardIds.indexOf(c.id) > -1;
         });
@@ -510,7 +581,7 @@ var Player = (function(_super) {
 
     Player.prototype.updatePower = function(power) {
         //if (this.power.value !== power.value) {
-            this.set('power', power);
+        this.set('power', power);
         //}
     };
 
@@ -565,7 +636,7 @@ var Player = (function(_super) {
         dg[name] = value;
         this.dailyGift = dg;
     };
-    
+
     Player.prototype.updateLineUp = function(lineupObj) {
         this.set('lineUp', objToLineUp(lineupObj));
         checkLineUp(this);
@@ -677,28 +748,28 @@ var Player = (function(_super) {
      5--50      1个
 
      */
-    Player.prototype.createMonoGift = function() {  //产生摸一摸奖励
-       // var task = utility.deepCopy(this.task);
+    Player.prototype.createMonoGift = function() { //产生摸一摸奖励
+        // var task = utility.deepCopy(this.task);
         this.momo = new Array(10);
-        for(var i = 0;i < 6;i++) {
-            this.momo[i] = _.random(1,5);
+        for (var i = 0; i < 6; i++) {
+            this.momo[i] = _.random(1, 5);
         }
-        for(var i = 6;i < 8;i++) {
-            this.momo[i] = _.random(2,10);
+        for (var i = 6; i < 8; i++) {
+            this.momo[i] = _.random(2, 10);
         }
-        this.momo[8] = _.random(5,20);
-        this.momo[9] = _.random(5,50);
+        this.momo[8] = _.random(5, 20);
+        this.momo[9] = _.random(5, 50);
 
         return this.momo;
     };
 
-    Player.prototype.clearMonoGift = function() {   //领取清除摸一摸奖励
+    Player.prototype.clearMonoGift = function() { //领取清除摸一摸奖励
         this.momo = [];
     };
 
     Player.prototype.getMonoGiftTotal = function() { //摸一摸产生奖励总和
         var value = 0;
-        for(var i = 0;i < this.momo.length;i++)
+        for (var i = 0; i < this.momo.length; i++)
             value += this.momo[i];
         return value;
     };
@@ -739,9 +810,9 @@ var Player = (function(_super) {
     };
 
     //重置关卡
-    Player.prototype.resetPassMark = function(){
+    Player.prototype.resetPassMark = function() {
 
-        if(this.pass.resetTimes > 0) {
+        if (this.pass.resetTimes > 0) {
             this.pass.resetTimes--;
             var pass = utility.deepCopy(this.pass);
             this.passMark.value = [];
@@ -756,7 +827,7 @@ var Player = (function(_super) {
         this.increase('passLayer');
     };
 
-    Player.prototype.getPass = function(){
+    Player.prototype.getPass = function() {
         checkPass(this);
         return {
             canReset: this.pass.resetTimes > 0 ? true : false,
@@ -782,7 +853,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.hasMysticalPass = function() {
-        if(this.pass.mystical.isTrigger && !this.pass.mystical.isClear)
+        if (this.pass.mystical.isTrigger && !this.pass.mystical.isClear)
             return true;
         return false;
     };
@@ -792,7 +863,7 @@ var Player = (function(_super) {
         var key = util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
         var si = utility.deepCopy(this.signIn);
 
-        if (!_.has(si, key)) {
+        if (!_.has(si.months, key)) {
             var _months = Object.keys(si.months);
             if (_months.length >= 12) {
                 delete si.months[_months[0]];
@@ -800,21 +871,25 @@ var Player = (function(_super) {
             si.months[key] = 0;
         }
 
-        si.months[key] = utility.mark(si.months[key], d.getDay() + 1);
+        si.months[key] = utility.mark(si.months[key], d.getDate());
         this.signIn = si;
     };
 
     Player.prototype.signFirstUnsignDay = function() {
+        var d = new Date();
         var key = util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
         var si = utility.deepCopy(this.signIn);
 
-        if (!_.has(si, key)) {
-            return;
+        if (!_.has(si.months, key)) {
+            si.months[key] = 0;
         }
-        var firsUnsignDay = 0;
-        for (var i = 1; i <= 31; i++) {
+
+        var firstUnsignDay = 31;
+        var count = d.getDate();
+        for (var i = 1; i < count; i++) {
             if (!utility.hasMark(si.months[key], i)) {
-                utility.mark(si.months[key], i);
+                si.months[key] = utility.mark(si.months[key], i);
+                this.signIn = si;
                 firstUnsignDay = i;
                 break;
             }
@@ -853,7 +928,7 @@ var Player = (function(_super) {
         this.emit('receive.bless');
     };
 
-    Player.prototype.isCanUseElixirForCard = function(cardId) {        
+    Player.prototype.isCanUseElixirForCard = function(cardId) {
         if (_.has(this.elixirPerLv, cardId)) {
             return this.elixirPerLv[cardId] < elxirLimit(this.lv);
         }
@@ -873,6 +948,28 @@ var Player = (function(_super) {
         }
         this.elixirPerLv = epl;
     };
+
+    Player.prototype.getRanking = function() {
+        var rank = {
+            ranking: 0
+        };
+        if(this.rank) {
+            rank.ranking = this.rank.ranking;
+        }
+        return rank;
+    };
+
+    Player.prototype.getRank = function() {
+        var rank = {
+            ranking: 0,
+            rankReward: []
+        };
+        if(this.rank) {
+            rank.ranking = this.rank.ranking;
+            rank.rankReward = this.rank.rankingRewards()
+        }
+        return rank;
+    }
 
     Player.prototype.toJson = function() {
         return {
@@ -900,11 +997,14 @@ var Player = (function(_super) {
             elixir: this.elixir,
             spiritor: this.spiritor,
             spiritPool: utility.deepCopy(this.spiritPool),
-            cards: _.values(this.cards).map(function(card) {
-                return card.toJson();
-            }),
-            rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
-            //friends: this.friends,
+            cards: _.values(this.cards)
+                .sort(function(x, y){
+                    return y.createTime - x.createTime;
+                })
+                .map(function(card) {
+                    return card.toJson();
+                }),
+            rank: this.getRanking(),
             signIn: utility.deepCopy(this.signIn),
             friendsCount: this.friendsCount
         };
@@ -950,7 +1050,7 @@ var checkPass = function(player) {
                 isTrigger: false,
                 isClear: false
             },
-            resetTimes:0
+            resetTimes: 0
         };
     }
 };
@@ -987,28 +1087,32 @@ var checkLineUp = function(player) {
     var card_count = vals.filter(function(v) {
         return v !== -1;
     }).length;
+    console.log(obj, vals, card_count);
 
     var fdata = table.getTableItem('function_limit', 1);
     var lvMap = {
-      4: fdata.card4_position,
-      5: fdata.card5_position
+        4: fdata.card4_position,
+        5: fdata.card5_position
     };
 
-    var qty, lv, limit = 0;
+    var qty, lv, limit = 5;
     for (qty in lvMap) {
-      lv = lvMap[qty];
-      if (player.lv < lv && card_count >= qty) {
-        limit = card_count - (qty - 1);
-        for (var i = 0; i < limit; i++) {
-            for (var j in obj_copy) {
+        lv = lvMap[qty];
+        if (player.lv < lv) {
+            limit = parseInt(qty) - 1;
+            break;
+        }
+    }
+
+    if (card_count > limit) {
+        for (var i = 0; i < card_count - limit; i++) {
+            for (j in obj_copy) {
                 if (obj_copy[j] !== -1) {
                     delete obj_copy[j];
                     break;
                 }
             }
         }
-        break;
-      }
     }
     player.lineUp = objToLineUp(obj_copy);
 };
@@ -1028,7 +1132,7 @@ var getMaxPower = function(lv) {
     //     }
     // }
     // return max_power;
-    
+
     return MAX_POWER_VALUE;
 };
 

@@ -143,8 +143,16 @@ var routes = function(app){
         });
     });
 
-    app.post('/reward',function(req , res){
-
+     app.get('/notice',function(req , res){
+        Area.getAreasList(function(areas) {
+            res.render('notice',{
+                title : '公告',
+                user : req.session.user,
+                areas:areas,
+                success:req.flash('success').toString(),
+                error:req.flash('error').toString()
+            });
+        });
     });
 
     app.get('/dataTest',checkLogin);

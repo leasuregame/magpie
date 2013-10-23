@@ -12,9 +12,9 @@
  * */
 
 
-var SERVER_HOST = "124.238.236.33";
+//var SERVER_HOST = "124.238.236.33";
 //var SERVER_HOST = "192.168.1.8";
-//var SERVER_HOST = "127.0.0.1";
+var SERVER_HOST = "127.0.0.1";
 
 var SERVER_PORT = 3010;
 var connectSuccess = false;

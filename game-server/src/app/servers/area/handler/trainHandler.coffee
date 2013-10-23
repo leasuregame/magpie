@@ -9,6 +9,7 @@ elixirConfig = require '../../../../config/data/elixir'
 starUpgradeConfig = require '../../../../config/data/starUpgrade'
 cardConfig = require '../../../../config/data/card'
 utility = require '../../../common/utility'
+msgQueue = require '../../../common/msgQueue'
 entityUtil = require '../../../util/entityUtil'
 job = require '../../../dao/job'
 achieve = require '../../../domain/achievement'
@@ -140,10 +141,12 @@ Handler::luckyCard = (msg, session, next) ->
         player.set('highDrawCardCount',0)
         card = table.getTableItem('cards', cardEnt.tableId)
         msg = {
-          route: 'onSystemMessage',
+          #route: 'onSystemMessage',
           msg: player.name + '幸运的召唤到了5星卡' + card.name + '！！！'
+          type: 0
         }
-        @app.get('messageService').pushMessage(msg)
+        #@app.get('messageService').pushMessage(msg)
+        msgQueue.push(msg)
 
       if fragment
         player.increase('fragments',fragment)
@@ -302,11 +305,12 @@ Handler::starUpgrade = (msg, session, next) ->
           achieve.star5card(player)
           cardNmae = table.getTableItem('cards', card.tableId).name
           msg = {
-            route: 'onSystemMessage',
+            #route: 'onSystemMessage',
             msg: player.name + '成功的将' + cardNmae + '进阶为5星！！！'
+            type: 0
           }
-          @app.get('messageService').pushMessage(msg)
-
+          #@app.get('messageService').pushMessage(msg)
+          msgQueue.push(msg);
         # 卡牌星级进阶，添加一个被动属性
         if card.star >= 3
           card.bornPassiveSkill()

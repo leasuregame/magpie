@@ -130,6 +130,12 @@ var SkyDialog = cc.Layer.extend({
             var point = this._point || this._touchLayer.getTouchPoint();
 
             if (point) {
+                if (cc.rectContainsPoint(this._rect, point)) {
+                    this._arrowSprite.setVisible(true);
+                } else {
+                    this._arrowSprite.setVisible(false);
+                }
+
                 var size = this._label.getContentSize();
 
                 var x = point.x + 30;

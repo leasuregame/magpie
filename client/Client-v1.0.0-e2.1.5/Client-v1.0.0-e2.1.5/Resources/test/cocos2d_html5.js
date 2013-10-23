@@ -47,7 +47,7 @@
         //SingleEngineFile:'',
         appFiles: [
             'resource.js',
-
+            'cocosBuilderClass.js',
             'mainScene.js',
             'mainLayer.js'
         ]

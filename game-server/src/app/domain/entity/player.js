@@ -249,8 +249,8 @@ var Player = (function(_super) {
             id: 1,
             progress: 0,
             hasWin: false,
-            mark: []
-            //momo: []
+            mark: [],
+            hasFragment: -1
         },
         passLayer: 0,
         pass: {
@@ -983,7 +983,15 @@ var Player = (function(_super) {
             rank.rankReward = this.rank.rankingRewards()
         }
         return rank;
-    }
+    };
+
+    Player.prototype.getTask = function(){
+        return {
+            id: this.task.id,
+            progress: this.task.progress,
+            mark: this.task.mark
+        };
+    };
 
     Player.prototype.toJson = function() {
         return {
@@ -1002,7 +1010,7 @@ var Player = (function(_super) {
             gold: this.gold,
             lineUp: this.lineUpObj(),
             ability: this.getAbility(),
-            task: this.task,
+            task: this.getTask(),
             pass: this.getPass(),
             dailyGift: utility.deepCopy(this.dailyGift),
             skillPoint: this.skillPoint,

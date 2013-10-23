@@ -87,6 +87,9 @@ Handler::challenge = (msg, session, next) ->
   playerName = session.get('playerName')
   targetId = msg.targetId
 
+  if playerId is targetId
+   return next null,{code: 501, msg: '不能挑战自己'}
+
   player = null
   async.waterfall [
     (cb) ->

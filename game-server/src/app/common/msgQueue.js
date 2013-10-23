@@ -8,15 +8,20 @@
 
 var queue = [];
 var loopQueue = []; //循环队列
-var timeTick = 30; // 时间戳：30秒
-var validTime = 10 * 60; //有效时间：10分钟
+var timeTick = 30; // 默认时间戳：30秒
+var validTime = 10 * 60; //默认有效时间：10分钟
 var len4Queue; //消息队列可容纳长度
-var route = 'onMessage';
+var route = 'onSystemMessage';
 var msgQueue = module.exports;
 var app = null;
 var oldTime = 0;
+
 msgQueue.init = function(opts) {
     app = opts.app;
+    if(opts.timeTick)
+        timeTick = opts.timeTick;
+    if(opts.vaildTime)
+        validTime = opts.validTime;
     len4Queue = validTime / timeTick;
     queue = [];
     loopQueue = [];

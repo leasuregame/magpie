@@ -31,6 +31,23 @@ describe("Area Server", function() {
                 });
             });
 
+            describe('when asking to add self', function() {
+                beforeEach(function() {
+                    loginWith(arthur.account, arthur.password, arthur.areaId);
+                });
+
+                it('should can send the message', function() {
+                    request('area.messageHandler.addFriend', {
+                        friendName: 'Attacker'
+                    }, function(data) {
+                        expect(data).toEqual({
+                            code: 501,
+                            msg: '不能加自己为好友'
+                        });
+                    });
+                });
+            });
+
             describe('when receive a friendship asking', function() {
                 beforeEach(function() {
                     loginWith('2', '1', 1);

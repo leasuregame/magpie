@@ -36,7 +36,7 @@ Handler::getFriends = (msg, session, next) ->
       friendsCount: player.friendsCount
     }})
 
-Handler::getLineUpinfo = (msg, session, next) ->
+Handler::getLineUpInfo = (msg, session, next) ->
   playerId = msg.playerId
 
   if not playerId

@@ -23,21 +23,18 @@ Handler::login = (msg, session, next) ->
   password = msg.password
   areaId = msg.areaId
 
-  user = null;
+  user = null
   player = null
+  uid = null
   async.waterfall [
-    (cb) =>
-      @app.rpc.auth.authRemote.auth session, account, password, areaId, cb
-
-    (res, cb) ->
-      user = res
-      session.bind user.id, cb
-
     (cb) =>
       session.set('areaId', areaId)
       session.pushAll cb
 
     (cb) =>
+      @app.rpc.auth.authRemote.auth session, account, password, areaId, cb
+
+    (res,cb) =>
       # check whether has create player in the login area
       user = res
       uid = user.id + '*' + areaId;
@@ -68,6 +65,7 @@ Handler::login = (msg, session, next) ->
 
     (cb) =>
       if player?
+
         session.set('playerId', player.id)
         session.set('playerName', player.name)
         session.on('closed', onUserLeave.bind(null, @app))
@@ -87,3 +85,4 @@ onUserLeave = (app, session, reason) ->
   app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), session.uid, app.getServerId(), (err) ->
     if err
       logger.error 'user leave error' + err
+

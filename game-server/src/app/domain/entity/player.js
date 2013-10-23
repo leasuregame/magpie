@@ -249,8 +249,8 @@ var Player = (function(_super) {
             id: 1,
             progress: 0,
             hasWin: false,
-            mark: []
-            //momo: []
+            mark: [],
+            hasFragment: -1
         },
         passLayer: 0,
         pass: {
@@ -268,6 +268,7 @@ var Player = (function(_super) {
             powerGiven: [], // 体力赠送情况
             powerBuyCount: 6, // 购买体力次数
             challengeCount: 10, // 每日有奖竞技次数
+            challengeBuyCount: 10, //每日有奖竞技购买次数
             receivedBless: { // 接收的祝福
                 count: msgConfig.DEFAULT_RECEIVE_COUNT,
                 givers: []
@@ -349,6 +350,7 @@ var Player = (function(_super) {
             powerGiven: [], // 体力赠送情况
             powerBuyCount: 6 + vipPrivilege.buy_power_count, // 购买体力次数
             challengeCount: 10 + vipPrivilege.challenge_count, // 每日有奖竞技次数
+            challengeBuyCount: 10, //每日有奖竞技购买次数
             receivedBless: { // 接收的祝福
                 count: realCount(this.lv, recieveBlessMap) + vipPrivilege.receive_bless_count,
                 givers: []
@@ -431,8 +433,22 @@ var Player = (function(_super) {
     };
 
     Player.prototype.incSpirit = function(val) {
+        var spiritor = _.clone(this.spiritor);        
+        spiritor.spirit = spiritor.spirit + val;
+        this.set('spiritor', spiritor);
+    };
+
+    Player.prototype.canUpgradeSpiritor = function(){
+        var spiritorData = table.getTableItem('spirit', this.spiritor.lv);
+        if (!!spiritorData && this.spiritor.spirit >= spiritorData.spirit_need) {
+            return true;
+        }
+        return false;
+    };
+
+    Player.prototype.spiritorUprade = function() {
         var spiritor = _.clone(this.spiritor);
-        var total_spirit = spiritor.spirit + val;
+        var total_spirit = spiritor.spirit;
         var spiritorData = table.getTableItem('spirit', spiritor.lv);
 
         while ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < playerConfig.MAX_SPIRITOR_LV) {
@@ -964,10 +980,18 @@ var Player = (function(_super) {
         };
         if(this.rank) {
             rank.ranking = this.rank.ranking;
-            rankReward =  this.rank.rankingRewards()
+            rank.rankReward = this.rank.rankingRewards()
         }
         return rank;
-    }
+    };
+
+    Player.prototype.getTask = function(){
+        return {
+            id: this.task.id,
+            progress: this.task.progress,
+            mark: this.task.mark
+        };
+    };
 
     Player.prototype.toJson = function() {
         return {
@@ -986,7 +1010,7 @@ var Player = (function(_super) {
             gold: this.gold,
             lineUp: this.lineUpObj(),
             ability: this.getAbility(),
-            task: this.task,
+            task: this.getTask(),
             pass: this.getPass(),
             dailyGift: utility.deepCopy(this.dailyGift),
             skillPoint: this.skillPoint,
@@ -995,11 +1019,13 @@ var Player = (function(_super) {
             elixir: this.elixir,
             spiritor: this.spiritor,
             spiritPool: utility.deepCopy(this.spiritPool),
-            cards: _.values(this.cards).map(function(card) {
-                return card.toJson();
-            }),
-            //rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
-            //friends: this.friends,
+            cards: _.values(this.cards)
+                .sort(function(x, y){
+                    return y.createTime - x.createTime;
+                })
+                .map(function(card) {
+                    return card.toJson();
+                }),
             rank: this.getRanking(),
             signIn: utility.deepCopy(this.signIn),
             friendsCount: this.friendsCount

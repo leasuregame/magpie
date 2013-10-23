@@ -16,8 +16,8 @@ class Manager
       cb(null, player)
 
   @getPlayerInfo: (params, cb) ->
-    _player = area.getPlayer(params.pid)
-    console.log '-get player form area cache-', _player?.id, _player?.name
+    _player = @getPlayerFromCache(params.pid)
+    console.log '-get player form area cache-', _player != null
     return cb(null, _player) if _player?
 
     sync = params.sync? and params.sync or true
@@ -31,6 +31,9 @@ class Manager
 
       cb(null, player)
 
+  @getPlayerFromCache: (id) ->
+    return area.getPlayer(id)
+
   @getPlayer: (params, cb) ->
     dao.player.fetchOne where: params, (err, player) ->
       if err
@@ -41,7 +44,7 @@ class Manager
     results = {}
     leftIds = []
     for id in ids
-      cache = area.getPlayer(id) 
+      cache = @getPlayerFromCache(id) 
       if cache 
         results[cache.id] = cache 
       else
@@ -75,6 +78,27 @@ class Manager
 
       addRankInfo(players, ranks)
       cb(null, players)
+
+  @addExpCardFor: (player, qty, cb) ->
+    async.times(
+      qty
+    , (n, callback) ->
+      dao.card.createExpCard data: {
+        playerId: player.id,
+        lv: 6,
+        exp: 29
+      }, callback
+    , (err, cards) ->
+      if err
+        logger.error '[fail to create exp card]' + err
+        return cb({code: err.code or 500, msg: err.msg or err})
+
+      player.addCards cards
+      cb(null, cards.map (c) -> c.toJson())
+    )
+
+  @upgrade: (player, exp, cb) ->
+    
     
 
 addRankInfo = (players, ranks) ->

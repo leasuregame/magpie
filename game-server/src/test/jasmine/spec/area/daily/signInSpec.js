@@ -21,8 +21,8 @@ describe('Area Server', function() {
 						expect(data).toEqual({
 							code: 200,
 							msg: {
-								money: 2000,
-								energy: 100
+								money: 1000,
+								energy: 50
 							}
 						});
 					});
@@ -36,13 +36,13 @@ describe('Area Server', function() {
 
 		describe('area.dailyHandler.reSignIn', function(){
 			beforeEach(function() {
-				doAjax('/update/player/' + 100, {
+				doAjax('/update/player/' + 101, {
 					signIn: JSON.stringify({
-						months: {201310: 1048575},
+						months: {201310: 0},
 						flag: 0
 					})
 				}, function(){
-					loginWith('arthur', '1', 1);
+					loginWith('user4', '1', 1);
 				});
 				
 			});
@@ -58,12 +58,17 @@ describe('Area Server', function() {
 						expect(data).toEqual({
 							code: 200,
 							msg: {
-								day: 1
+								day: 1,
+								goldResume: 10,
+								reward: {
+									money: 1000,
+									energy: 50
+								}
 							}
 						});
 					});
 					console.log(day, key);
-					doAjax('/player/' + 100, {}, function(res) {
+					doAjax('/player/' + 101, {}, function(res) {
 						expect(JSON.parse(res.data.signIn).months[key]).toEqual(1);
 					});
 				});

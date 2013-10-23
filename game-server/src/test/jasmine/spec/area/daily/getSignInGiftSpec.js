@@ -71,10 +71,10 @@ describe('Area Server', function() {
 				singIn.months[mkey] = 1;
 
 				beforeEach(function() {
-					doAjax('/update/player/101', {
+					doAjax('/update/player/102', {
 						signIn: JSON.stringify(singIn)
 					}, function() {
-						loginWith('user4', '1', 1);
+						loginWith('mike', '1', 1);
 					});
 				});
 

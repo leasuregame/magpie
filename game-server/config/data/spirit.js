@@ -3,8 +3,7 @@ module.exports = {
 	BUY_SPIRIT_GOLD: 20,
 	EXP_PER_COLLECT: 5,
 	REWORD: {
-		RATE: 10,
-		VALUE: '10~50'
+		RATE: 10
 	},
 	SPIRIT: {
 		TASK: {

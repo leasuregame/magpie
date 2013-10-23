@@ -33,7 +33,7 @@ describe("Area Server", function() {
             doAjax('/card/' + 101, {}, function(res) {
               console.log(res);
               var pss = JSON.parse(res.data.passiveSkills);
-              expect(pss).toEqual(data.msg.passSkills);
+              expect(pss).toEqual(data.msg.passiveSkills);
             });
 
             

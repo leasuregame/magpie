@@ -18,7 +18,7 @@ Handler::buyMoney = (msg, session, next) ->
     buy_money = playerConfig.BUY_MONEY[type]
 
     if !buy_money
-      next null, {code: 500, msg: "购买类型错误"}
+      return next null, {code: 500, msg: "购买类型错误"}
 
     async.waterfall [
        (cb) ->
@@ -140,6 +140,7 @@ Handler::buyExpCard = (msg, session, next) ->
         return next(null, err)
 
       player.decrease 'money', qty * PRICE
+      player.save()
       next(null, {code: 200, msg: {card: cards[0], cardIds: cards.map (c) -> c.id}})
 
 

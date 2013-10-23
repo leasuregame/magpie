@@ -151,7 +151,7 @@ module.exports = {
      * 卡牌碎片兑换配置信息
      */
     CARD_EXCHANGE: {
-        4: 30,
+        4: 15,
         5: 40
     }
 }

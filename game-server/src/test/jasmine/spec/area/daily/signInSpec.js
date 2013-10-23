@@ -36,13 +36,13 @@ describe('Area Server', function() {
 
 		describe('area.dailyHandler.reSignIn', function(){
 			beforeEach(function() {
-				doAjax('/update/player/' + 100, {
+				doAjax('/update/player/' + 101, {
 					signIn: JSON.stringify({
 						months: {201310: 0},
 						flag: 0
 					})
 				}, function(){
-					loginWith('arthur', '1', 1);
+					loginWith('user4', '1', 1);
 				});
 				
 			});
@@ -68,7 +68,7 @@ describe('Area Server', function() {
 						});
 					});
 					console.log(day, key);
-					doAjax('/player/' + 100, {}, function(res) {
+					doAjax('/player/' + 101, {}, function(res) {
 						expect(JSON.parse(res.data.signIn).months[key]).toEqual(1);
 					});
 				});

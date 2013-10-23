@@ -96,6 +96,9 @@ class Manager
       player.addCards cards
       cb(null, cards.map (c) -> c.toJson())
     )
+
+  @upgrade: (player, exp, cb) ->
+    
     
 
 addRankInfo = (players, ranks) ->

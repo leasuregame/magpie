@@ -187,10 +187,10 @@ describe("Area Server", function() {
                 });
             });
 
-            describe('when ranking is 100', function() {
+            describe('when ranking is 1', function() {
                 beforeAll(function() {
                     doAjax('/update/rank/' + 5, {
-                        ranking: 100
+                        ranking: 1
                     }, function() {
                         loginWith('1', '1', 1);
                     });
@@ -202,31 +202,33 @@ describe("Area Server", function() {
                     }, function(data) {
                         console.log(data);
                         expect(data).toEqual({
-                            code: 501,
-                            msg: '不能领取该排名奖励'
-                        });
-                    });
-
-                    request('area.rankHandler.getRankingReward', {
-                        ranking: 100
-                    }, function(data) {
-                        console.log(data);
-                        expect(data).toEqual({
                             code: 200,
                             msg: {
-                                rankingRewards: [500]
+                                rankingRewards: [500, 100, 50, 10]
                             }
                         });
                     });
 
                     request('area.rankHandler.getRankingReward', {
-                        ranking: 500
+                        ranking: 10
                     }, function(data) {
                         console.log(data);
                         expect(data).toEqual({
                             code: 200,
                             msg: {
-                                rankingRewards: []
+                                rankingRewards: [500, 100, 50]
+                            }
+                        });
+                    });
+
+                    request('area.rankHandler.getRankingReward', {
+                        ranking: 50
+                    }, function(data) {
+                        console.log(data);
+                        expect(data).toEqual({
+                            code: 200,
+                            msg: {
+                                rankingRewards: [500, 100]
                             }
                         });
                     });
@@ -262,10 +264,8 @@ describe("Area Server", function() {
                     }, function(data) {
                         console.log(data);
                         expect(data).toEqual({
-                            code: 200,
-                            msg: {
-                                rankingRewards: []
-                            }
+                            code: 501,
+                            msg: '不能领取该排名奖励'
                         });
                     });
                 });

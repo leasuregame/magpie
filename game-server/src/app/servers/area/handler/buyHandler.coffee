@@ -15,7 +15,6 @@ Handler::buyMoney = (msg, session, next) ->
     playerId = session.get('playerId')
     player = null
     type = msg.type
-    #buy_money = playerConfig.BUY_MONEY[type]
     buy_money = table.getTableItem('product',type + 1)
     if buy_money.name isnt '铜板'
       return next null, {code: 500, msg: "购买类型错误"}
@@ -49,7 +48,6 @@ Handler::buyPower = (msg, session, next) ->
 
   playerId = session.get('playerId')
   player = null
-  #buy_power = playerConfig.BUY_POWER
   buy_power = table.getTableItem('product',1)
   async.waterfall [
     (cb) ->
@@ -88,7 +86,6 @@ Handler::buyChallengeCount = (msg, session, next) ->
 
   playerId = session.get('playerId')
   player = null
-  #buy_challengeCount = playerConfig.BUY_CHALLENGECOUNT
   buy_challengeCount = table.getTableItem('product',5)
   async.waterfall [
     (cb) ->

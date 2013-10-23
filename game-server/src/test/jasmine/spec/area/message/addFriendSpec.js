@@ -31,6 +31,22 @@ describe("Area Server", function() {
                 });
             });
 
+            describe('when add yourself as a friend', function(){
+                beforeEach(function() {
+                    loginWith(arthur.account, arthur.password, arthur.areaId);
+                });
+                it('should can not process', function(){
+                    request('area.messageHandler.addFriend', {
+                        friendName: 'Attacker'
+                    }, function(data) {
+                        expect(data).toEqual({
+                            code: 501,
+                            msg: '不能添加自己为好友'
+                        }); 
+                    });
+                });
+            });
+
             describe('when receive a friendship asking', function() {
                 beforeEach(function() {
                     loginWith('2', '1', 1);
@@ -46,7 +62,7 @@ describe("Area Server", function() {
                                 id: 100,
                                 name: 'Attacker',
                                 lv: 40,
-                                ability: 120525
+                                ability: 100341
                             }
                         });
                     });
@@ -63,6 +79,8 @@ describe("Area Server", function() {
                     });
                 });
             });
+
+            
         });
 
 

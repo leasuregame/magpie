@@ -237,6 +237,9 @@ Handler::addFriend = (msg, session, next) ->
   playerName = session.get('playerName')
   friendName = msg.friendName
 
+  if playerName is friendName
+    return next(null, {code: 501, msg: '不能添加自己为好友'})
+
   friend = null
   async.waterfall [
     (cb) ->

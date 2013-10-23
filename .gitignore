@@ -26,4 +26,3 @@ game-server/selenium-server-standalone-2.33.0.jar
 
 *.csv#
 
-game-server/config/powerGivenFlag.json

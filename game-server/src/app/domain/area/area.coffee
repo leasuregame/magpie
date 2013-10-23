@@ -15,11 +15,12 @@ Area.addPlayer = (player) ->
 
 Area.removePlayer = (playerId) ->
   _player = Area.getPlayer playerId
-  _player.emit 'persist', (err, res) ->
+  data = _player.allData()
+  _player.emit 'persist', data, (err, res) ->
     if err
       logger.error 'faild to persist player data.' + err
 
-    players.del playerId
+  players.del playerId
 
 Area.getPlayer = (playerId) ->
   players.get playerId

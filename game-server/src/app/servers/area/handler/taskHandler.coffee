@@ -81,7 +81,6 @@ Handler::explore = (msg, session, next) ->
     data.power = player.power
     data.lv = player.lv
     data.exp = player.exp
-    data.spiritor = player.spiritor
     next(null, {code: 200, msg: data})
 
 Handler::updateMomoResult = (msg, session, next) ->
@@ -187,8 +186,7 @@ Handler::passBarrier = (msg, session, next) ->
       pass: player.getPass(),
       power: player.power,
       exp: player.exp,
-      lv: player.lv,
-      spiritor: player.spiritor
+      lv: player.lv
     }})
 
 ###
@@ -269,8 +267,7 @@ Handler::mysticalPass = (msg, session, next) ->
       return next(err, {code: err.code or 500, msg: err.msg or ''})
 
     next(null, {code: 200, msg: {
-      battleLog: bl,
-      spiritor: player.spiritor
+      battleLog: bl
       hasMystical: player.hasMysticalPass()
     }})
 

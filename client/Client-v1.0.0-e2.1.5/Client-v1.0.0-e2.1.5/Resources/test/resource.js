@@ -5,6 +5,8 @@ if (typeof(navigator) != 'undefined') {
 
 // main scene res
 var main_scene_path = "../res/main/";
+var effect_scene_path = "../res/effect/";
+var ccb_scene_path = "../res/ccb/";
 
 var main_scene_image = {
     bg1: main_scene_path + "bg1.png",
@@ -504,7 +506,44 @@ var main_scene_image = {
     icon253: main_scene_path + "icon253.png",
     icon254: main_scene_path + "icon254.png",
     icon255: main_scene_path + "icon255.png",
-    icon256: main_scene_path + "icon256.png"
+    icon256: main_scene_path + "icon256.png",
+
+    00034: effect_scene_path + "00034.png",
+    ccbParticleFire: effect_scene_path + "ccbParticleFire.png",
+    ccbParticleSmoke: effect_scene_path + "ccbParticleSmoke.png",
+    ccbParticleSnow: effect_scene_path + "ccbParticleSnow.png",
+    ccbParticleStars: effect_scene_path + "ccbParticleStars.png",
+    empty: effect_scene_path + "empty.png",
+    hand: effect_scene_path + "hand.png",
+    HuoBao_1: effect_scene_path + "HuoBao_1.png",
+    Jia: effect_scene_path + "Jia.png",
+    jinengguang: effect_scene_path + "jinengguang.png",
+    jinengshengji: effect_scene_path + "jinengshengji.png",
+    JiZhong: effect_scene_path + "JiZhong.png",
+    LieBingZhang_Bing_8: effect_scene_path + "LieBingZhang_Bing_8.png",
+    light: effect_scene_path + "light.png",
+    screen: effect_scene_path + "screen.jpg",
+    tanxian: effect_scene_path + "tanxian.jpg",
+    xiantai: effect_scene_path + "xiantai.jpg",
+    xiulian: effect_scene_path + "xiulian.jpg",
+    yuanshen: effect_scene_path + "yuanshen.jpg",
+    zhaohuan: effect_scene_path + "zhaohuan.jpg",
+
+    teixiao3: ccb_scene_path + "teixiao3.ccbi",
+    texiao: ccb_scene_path + "texiao.ccbi",
+    texiao2: ccb_scene_path + "texiao2.ccbi",
+    tutorials1: ccb_scene_path + "tutorials1.ccbi",
+    tutorials2: ccb_scene_path + "tutorials2.ccbi",
+    tutorials3: ccb_scene_path + "tutorials3.ccbi",
+    tutorials4: ccb_scene_path + "tutorials4.ccbi",
+    tutorials5: ccb_scene_path + "tutorials5.ccbi",
+    tutorials6: ccb_scene_path + "tutorials6.ccbi",
+    tutorials7: ccb_scene_path + "tutorials7.ccbi",
+    tutorials8: ccb_scene_path + "tutorials8.ccbi",
+    tutorials9: ccb_scene_path + "tutorials9.ccbi",
+    tutorials10: ccb_scene_path + "tutorials10.ccbi",
+    tutorials11: ccb_scene_path + "tutorials11.ccbi",
+    tutorials12: ccb_scene_path + "tutorials12.ccbi"
 };
 
 var main_scene_res = [
@@ -574,7 +613,7 @@ var effectRect = [
 
 for (var effectId = 0; effectId < effectConfig.length; ++effectId) {
     for (var frameI = 0; frameI < effectConfig[effectId]; ++frameI) {
-        main_scene_image["effect" + effectId + "_frame" + frameI] = "../res/effect/" + effectId + "/" + frameI + ".png";
+        main_scene_image["effect" + effectId + "_frame" + frameI] = effect_scene_path + effectId + "/" + frameI + ".png";
     }
 }
 

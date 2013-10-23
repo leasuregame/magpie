@@ -146,8 +146,8 @@ var Card = Entity.extend({
         this._initHp = Math.floor(this._initHp);
         this._initAtk = Math.floor(this._initAtk);
 
-        this._hp = this._initHp;
-        this._atk = this._initAtk;
+//        this._hp = this._initHp;
+//        this._atk = this._initAtk;
 
         this._url = "card" + (cardTable.number % 6 + 1);
 

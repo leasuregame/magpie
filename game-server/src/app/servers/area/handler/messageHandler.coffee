@@ -158,6 +158,9 @@ Handler::leaveMessage = (msg, session, next) ->
   friendId = msg.friendId
   content = msg.content
 
+  if playerId is friendId
+    return next null,{code: 501,msg: '不能给自己留言'}
+
   dao.message.create data: {
     type: msgConfig.MESSAGETYPE.MESSAGE
     sender: playerId
@@ -249,7 +252,12 @@ Handler::addFriend = (msg, session, next) ->
         else
           cb()
     (cb) ->
-      playerManager.getPlayer name: friendName, cb
+      playerManager.getPlayer name: friendName, (err, ply) ->
+        return cb(err) if err
+        if ply.id is playerId
+          cb {code: 501, msg: '不能加自己为好友'}
+        else
+          cb(null, ply)
 
     (res, cb) ->
       friend = res

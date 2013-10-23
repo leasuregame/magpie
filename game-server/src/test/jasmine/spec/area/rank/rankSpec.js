@@ -93,6 +93,22 @@ describe("Area Server", function() {
                 });
 
             });
+
+            describe("挑战自己", function() {
+                beforeEach(function() {
+                    loginWith('1', '1', 1);
+                });
+
+                it("should can not be return battle log", function() {
+                    request('area.rankHandler.challenge', {
+                        targetId: 1
+                    }, function(data) {
+                        console.log(data);
+                        expect(data.code).toEqual(501);
+                        expect(data.msg).toEqual('不能挑战自己');
+                    });
+                });
+            });
         });
 
         describe("challenge 2", function() {

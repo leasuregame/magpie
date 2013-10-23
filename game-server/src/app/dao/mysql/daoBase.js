@@ -29,10 +29,10 @@ var addSyncEvent = function(syncKey, entity, cb) {
     );
   });
 
-  entity.on('persist', function(cb) {
-    app.get('sync').flush(syncKey, entity.id, {
-      id: entity.id,
-      data: entity.allData(),
+  entity.on('persist', function(data, cb) {
+    app.get('sync').flush(syncKey, data.id, {
+      id: data.id,
+      data: data,
       cb: cb
     });
   });

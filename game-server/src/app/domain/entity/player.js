@@ -441,8 +441,9 @@ var Player = (function(_super) {
     Player.prototype.canUpgradeSpiritor = function(){
         var spiritorData = table.getTableItem('spirit', this.spiritor.lv);
         if (!!spiritorData && this.spiritor.spirit >= spiritorData.spirit_need) {
-
+            return true;
         }
+        return false;
     };
 
     Player.prototype.spiritorUprade = function() {

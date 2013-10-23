@@ -2,7 +2,9 @@ playerManager = require '../../../manager/playerManager'
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
 spiritConfig = require '../../../../config/data/spirit'
+playerConfig = require '../../../../config/data/player'
 _ = require 'underscore'
+SPIRITOR_PER_LV = require('../../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
 
 module.exports = (app) ->
   new Handler(app)
@@ -14,7 +16,7 @@ Handler::collect = (msg, session, next) ->
   isGold = msg.isGold
   times = if isGold then 2 else 1
 
-  rewardSpirit = 0
+  isDouble = false
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
@@ -29,12 +31,10 @@ Handler::collect = (msg, session, next) ->
     spiritPollData = table.getTableItem('spirit_pool', player.spiritPool.lv);
     spirit_obtain = spiritPollData.spirit_obtain * times
     
-    ### 每次采集都已一定的概率获得额外数量的灵气 ###
-    if utility.hitRate(spiritConfig.REWORD.RATE)
-      [from, to] = spiritConfig.REWORD.VALUE.split('~')
-      rd = _.random(parseInt(from), parseInt(to))
-      spirit_obtain += rd
-      rewardSpirit = rd
+    ### 每次采集都已一定的概率获得翻倍的灵气 ###
+    if not isGold and utility.hitRate(spiritConfig.REWORD.RATE)
+      spirit_obtain += spiritPollData.spirit_obtain
+      isDouble = true
 
     ### 消耗元宝，增加灵气产量 ###
     if isGold
@@ -44,11 +44,10 @@ Handler::collect = (msg, session, next) ->
     player.incSpiritPoolExp(spiritConfig.EXP_PER_COLLECT)
     player.save()
     next(null, {code: 200, msg: {
-      spiritor: player.spiritor, 
-      spiritPool: player.spiritPool,
-      rewardSpirit: rewardSpirit
-      }
-    })
+      spirit_obtain: spirit_obtain
+      isDouble: isDouble
+      spiritPool: player.spiritPool
+    }})
 
 Handler::spiritorUpgrade = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -57,4 +56,15 @@ Handler::spiritorUpgrade = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    
+    if player.spiritor.lv >= playerConfig.MAX_SPIRITOR_LV
+      return next(null, {code: 501, msg: '元神等级已经是最高级别别'})
+
+    if not player.canUpgradeSpiritor()
+      return next(null, {code: 501, msg: '灵气不够，不能升级'})
+
+    player.spiritorUprade()
+    player.save()
+    next(null, {code: 200, msg: {
+      spiritor: player.spiritor,
+      ability: player.spiritor.lv * SPIRITOR_PER_LV
+    }})

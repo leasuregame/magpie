@@ -36,6 +36,29 @@ Handler::getFriends = (msg, session, next) ->
       friendsCount: player.friendsCount
     }})
 
+Handler::getLineUpinfo = (msg, session, next) ->
+  playerId = msg.playerId
+
+  if not playerId
+    next(null, {code: 501, msg: 'id参数不能为空'})
+
+  dao.player.getLineUpInfo playerId, (err, player) ->
+    if err
+      return next(null, {
+        code: err.code or 501
+        msg: err.msg or err
+        }
+      )
+
+    lineUp = {}
+    lineUp[k] = player.cards[v]?.toJson() or (v is -1 and player.spiritor.lv or 0) for k, v of player.lineUpObj()
+    next(null, {code: 200, msg: {
+      lineUp: lineUp
+      name: player.name
+      lv: player.lv
+      ability: player.ability
+    }})
+
 todayPeriod = () ->
   now = new Date()
   year = now.getFullYear()

@@ -19,47 +19,73 @@ describe("Area Server", function() {
         loginWith(user1.account, user1.password, user1.areaId);
       });
 
-      it("should can be change player's lineUp", function() {
-        request(
-          'area.trainHandler.changeLineUp', {
-            lineUp: {
-              1: 5,
-              2: 4,
-              3: 3,
-              6: -1
+      describe('when do change line up', function() {
+        it("should can be change player's lineUp", function() {
+          request(
+            'area.trainHandler.changeLineUp', {
+              lineUp: {
+                1: 5,
+                2: 4,
+                3: 3,
+                6: -1
+              }
+            },
+            function(data) {
+              console.log(data);
+              expect(data.code).toEqual(200);
+              expect(data.msg.lineUp).toEqual({
+                1: 5,
+                2: 4,
+                3: 3,
+                6: -1
+              });
             }
-          },
-          function(data) {
-            console.log(data);
-            expect(data.code).toEqual(200);
-            expect(data.msg.lineUp).toEqual({
-              1: 5,
-              2: 4,
-              3: 3,
-              6: -1
-            });
-          }
-        );
+          );
 
-        request(
-          'area.trainHandler.changeLineUp', {
-            lineUp: {
-              1: 5,
-              2: 4,
-              3: 3,
-              4: 2,
-              5: 1,
-              6: -1
+          request(
+            'area.trainHandler.changeLineUp', {
+              lineUp: {
+                1: 5,
+                2: 4,
+                3: 3,
+                4: 2,
+                5: 1,
+                6: -1
+              }
+            },
+            function(data) {
+              console.log(data);
+              expect(data.code).toEqual(501);
+              expect(data.msg).toEqual('上阵卡牌数量不对');
             }
-          },
-          function(data) {
-            console.log(data);
-            expect(data.code).toEqual(501);
-            expect(data.msg).toEqual('上阵卡牌数量不对');
-          }
-        );
+          );
+
+        });
 
       });
+
+      describe('when numbers of card are the same', function(){
+        it('should can not change line up', function(){
+          request(
+            'area.trainHandler.changeLineUp', {
+              lineUp: {
+                1: 18,
+                2: 4,
+                3: 3,
+                6: -1
+              }
+            },
+            function(data) {
+              console.log(data);
+              expect(data.code).toEqual(501);
+              expect(data.msg).toEqual("上阵卡牌不能是相同系列的卡牌");
+            }
+          );
+
+        });
+      });
+
+
     });
   });
 });

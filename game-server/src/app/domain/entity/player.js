@@ -997,11 +997,13 @@ var Player = (function(_super) {
             elixir: this.elixir,
             spiritor: this.spiritor,
             spiritPool: utility.deepCopy(this.spiritPool),
-            cards: _.values(this.cards).map(function(card) {
-                return card.toJson();
-            }),
-            //rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
-            //friends: this.friends,
+            cards: _.values(this.cards)
+                .sort(function(x, y){
+                    return y.createTime - x.createTime;
+                })
+                .map(function(card) {
+                    return card.toJson();
+                }),
             rank: this.getRanking(),
             signIn: utility.deepCopy(this.signIn),
             friendsCount: this.friendsCount

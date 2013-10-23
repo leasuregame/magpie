@@ -40,5 +40,4 @@ module.exports = {
   "BUY_CHALLENGECOUNT": {  // 购买有奖竞技次数
       "gold": 20
   }
-
 }

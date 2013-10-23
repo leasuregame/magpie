@@ -12,6 +12,14 @@
  * */
 
 
+var EffectAnimationManager = [];
+
+var EffectNode = function () {
+    cc.log("new");
+    cc.log(this);
+    EffectAnimationManager.push(this);
+};
+
 var MainLayer = cc.Layer.extend({
     _effectNode: null,
     _urlEditBox: null,
@@ -57,8 +65,6 @@ var MainLayer = cc.Layer.extend({
 
         if (main_scene_image[url]) {
             var node = cc.BuilderReader.load(main_scene_image[url], this);
-
-            cc.log(node);
 
             if (node != null) {
                 node.setPosition(cc.p(360, 500));

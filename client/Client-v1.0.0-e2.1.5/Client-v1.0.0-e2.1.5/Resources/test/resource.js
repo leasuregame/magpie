@@ -3,34 +3,8 @@ if (typeof(navigator) != 'undefined') {
     SETTING_IS_BROWSER = true;
 }
 
-// login scene res
-var login_scene_path = "res/login/";
-
-var login_scene_image = {
-    edit1: login_scene_path + "edit1.png",
-    edit2: login_scene_path + "edit2.png"
-};
-
-var login_scene_res = [
-    //image
-
-    //plist
-
-    //fnt
-
-    //tmx
-
-    //bgm
-
-    //effect
-];
-
-for (var key in login_scene_image) {
-    login_scene_res.push({src: login_scene_image[key]});
-}
-
 // main scene res
-var main_scene_path = "res/main/";
+var main_scene_path = "../res/main/";
 
 var main_scene_image = {
     bg1: main_scene_path + "bg1.png",
@@ -600,25 +574,10 @@ var effectRect = [
 
 for (var effectId = 0; effectId < effectConfig.length; ++effectId) {
     for (var frameI = 0; frameI < effectConfig[effectId]; ++frameI) {
-        main_scene_image["effect" + effectId + "_frame" + frameI] = "res/effect/" + effectId + "/" + frameI + ".png";
+        main_scene_image["effect" + effectId + "_frame" + frameI] = "../res/effect/" + effectId + "/" + frameI + ".png";
     }
 }
 
 for (var key in main_scene_image) {
     main_scene_res.push({src: main_scene_image[key]});
 }
-
-// battle scene res
-var battle_scene_res = [
-    //image
-
-    //plist
-
-    //fnt
-
-    //tmx
-
-    //bgm
-
-    //effect
-];

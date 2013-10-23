@@ -308,7 +308,8 @@ var Card = Entity.extend({
 
                 that.update({
                     lv: msg.cur_lv,
-                    exp: msg.cur_exp
+                    exp: msg.cur_exp,
+                    ability: msg.ability
                 });
 
                 gameData.player.add("money", -msg.money_consume);
@@ -373,7 +374,8 @@ var Card = Entity.extend({
                 var msg = data.msg;
 
                 that.update({
-                    skillLv: msg.skillLv
+                    skillLv: msg.skillLv,
+                    ability: msg.ability
                 });
 
                 gameData.player.add("skillPoint", -msg.skillPoint);
@@ -411,7 +413,7 @@ var Card = Entity.extend({
 
                 var msg = data.msg;
 
-                that._updatePassiveSkill(msg);
+                that.update(msg);
 
                 if (type == USE_MONEY) {
                     gameData.player.add("money", -20000);
@@ -517,17 +519,9 @@ var Card = Entity.extend({
 
                 var msg = data.msg;
 
+                that.update(msg);
+
                 gameData.player.add("elixir", -elixir);
-
-                this._elixir += elixir;
-
-                if (trainType == TRAIN_CARD_HP) {
-                    that._hpAddition += trainCount * 3;
-                    that._hp += trainCount * 3;
-                } else if (trainType == TRAIN_CARD_ATK) {
-                    that._atkAddition += trainCount;
-                    that._atk += trainCount;
-                }
 
                 cb();
             } else {

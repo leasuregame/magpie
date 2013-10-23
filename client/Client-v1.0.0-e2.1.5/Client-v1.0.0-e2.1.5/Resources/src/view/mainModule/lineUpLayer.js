@@ -57,7 +57,7 @@ var LineUpLayer = LazyLayer.extend({
 
         var player = gameData.player;
 
-        var nameLabel = cc.LabelTTF.create("玩家: " + player.get("name"), "STHeitiTC-Medium", 20);
+        var nameLabel = cc.LabelTTF.create(player.get("name"), "STHeitiTC-Medium", 20);
         nameLabel.setPosition(cc.p(220, 882));
         this.addChild(nameLabel);
 

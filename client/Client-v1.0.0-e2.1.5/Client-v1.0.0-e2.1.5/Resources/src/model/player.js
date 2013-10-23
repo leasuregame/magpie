@@ -148,7 +148,7 @@ var Player = Entity.extend({
         });
     },
 
-    learn: function (cb, playerId) {
+    fight: function (cb, playerId) {
         cc.log("Player learn: " + playerId);
 
         var that = this;
@@ -176,8 +176,8 @@ var Player = Entity.extend({
         cc.log("Player playerDetail: " + palyerId);
 
         var that = this;
-        lzWindow.pomelo.request("area.topHandler.getActiveCards", {
-            id: playerId
+        lzWindow.pomelo.request("area.playerHandler.getLineUpInfo", {
+            playerId: playerId
         }, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);

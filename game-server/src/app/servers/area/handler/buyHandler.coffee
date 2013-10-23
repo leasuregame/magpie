@@ -15,9 +15,9 @@ Handler::buyMoney = (msg, session, next) ->
     playerId = session.get('playerId')
     player = null
     type = msg.type
-    buy_money = playerConfig.BUY_MONEY[type]
-
-    if !buy_money
+    #buy_money = playerConfig.BUY_MONEY[type]
+    buy_money = table.getTableItem('product',type + 1)
+    if buy_money.name isnt '铜板'
       return next null, {code: 500, msg: "购买类型错误"}
 
     async.waterfall [
@@ -26,12 +26,12 @@ Handler::buyMoney = (msg, session, next) ->
        (res, cb) ->
 
          player = res
-         if player.gold < buy_money.gold
+         if player.gold < buy_money.consume
            cb {code: 501, msg: "元宝不足"}
 
          else
-           player.increase 'money', buy_money.money
-           player.decrease 'gold', buy_money.gold
+           player.increase 'money', buy_money.obtain
+           player.decrease 'gold', buy_money.consume
            cb()
 
     ],(err) ->
@@ -49,8 +49,8 @@ Handler::buyPower = (msg, session, next) ->
 
   playerId = session.get('playerId')
   player = null
-  buy_power = playerConfig.BUY_POWER
-
+  #buy_power = playerConfig.BUY_POWER
+  buy_power = table.getTableItem('product',1)
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid:playerId}, cb
@@ -64,13 +64,13 @@ Handler::buyPower = (msg, session, next) ->
       else if player.dailyGift.powerBuyCount <= 0
         cb {code: 501, msg: "购买次数已经用完"}
 
-      else if player.gold < buy_power.gold
+      else if player.gold < buy_power.consume
         cb {code: 501, msg: "元宝不足"}
 
       else
         player.updateGift 'powerBuyCount', player.dailyGift.powerBuyCount - 1
-        player.resumePower buy_power.power
-        player.decrease 'gold', buy_power.gold
+        player.resumePower buy_power.obtain
+        player.decrease 'gold', buy_power.consume
         cb()
 
   ],(err) ->
@@ -88,8 +88,8 @@ Handler::buyChallengeCount = (msg, session, next) ->
 
   playerId = session.get('playerId')
   player = null
-  buy_challengeCount = playerConfig.BUY_CHALLENGECOUNT
-
+  #buy_challengeCount = playerConfig.BUY_CHALLENGECOUNT
+  buy_challengeCount = table.getTableItem('product',5)
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid:playerId}, cb
@@ -99,13 +99,13 @@ Handler::buyChallengeCount = (msg, session, next) ->
       if player.dailyGift.challengeBuyCount <= 0
         cb {code: 501, msg: "购买次数已经用完"}
 
-      else if player.gold < buy_challengeCount.gold
+      else if player.gold < buy_challengeCount.consume
         cb  {code: 501, msg: "元宝不足"}
 
       else
         player.updateGift 'challengeBuyCount', player.dailyGift.challengeBuyCount - 1
-        player.updateGift 'challengeCount' , player.dailyGift.challengeCount + 1
-        player.decrease 'gold', buy_challengeCount.gold
+        player.updateGift 'challengeCount' , player.dailyGift.challengeCount + buy_challengeCount.obtain
+        player.decrease 'gold', buy_challengeCount.consume
         cb()
 
   ],(err) ->
@@ -123,7 +123,7 @@ Handler::buyExpCard = (msg, session, next) ->
   playerId = session.get('playerId')
   qty = msg.qty
 
-  PRICE = 5000
+  PRICE = table.getTableItem('product',6).consume
 
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err

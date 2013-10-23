@@ -433,8 +433,22 @@ var Player = (function(_super) {
     };
 
     Player.prototype.incSpirit = function(val) {
+        var spiritor = _.clone(this.spiritor);        
+        spiritor.spirit = spiritor.spirit + val;
+        this.set('spiritor', spiritor);
+    };
+
+    Player.prototype.canUpgradeSpiritor = function(){
+        var spiritorData = table.getTableItem('spirit', this.spiritor.lv);
+        if (!!spiritorData && this.spiritor.spirit >= spiritorData.spirit_need) {
+            return true;
+        }
+        return false;
+    };
+
+    Player.prototype.spiritorUprade = function() {
         var spiritor = _.clone(this.spiritor);
-        var total_spirit = spiritor.spirit + val;
+        var total_spirit = spiritor.spirit;
         var spiritorData = table.getTableItem('spirit', spiritor.lv);
 
         while ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < playerConfig.MAX_SPIRITOR_LV) {

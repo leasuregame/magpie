@@ -85,9 +85,6 @@ describe("Area Server", function() {
           }, function(data) {
             console.log(data);
             expect(data.code).toEqual(200);
-            expect(data.msg.hp).toEqual(18846);
-            expect(data.msg.atk).toEqual(7576);
-
           });
 
           doAjax('/player/' + arthur.playerId, function(res) {

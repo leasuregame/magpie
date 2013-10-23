@@ -175,8 +175,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.60550868511199951</real>
+							<real>0.65714758634567261</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -402,7 +402,7 @@
 						<key>value</key>
 						<array>
 							<real>150</real>
-							<real>120</real>
+							<real>144</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -429,7 +429,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>0.26666668057441711</real>
 							<real>0.40000000596046448</real>
 							<false/>
 							<integer>0</integer>
@@ -667,11 +667,11 @@
 		<key>displayName</key>
 		<string>CCNode</string>
 		<key>jsController</key>
-		<string>EffectNode</string>
+		<string>CocosBuilderClass</string>
 		<key>memberVarAssignmentName</key>
 		<string></string>
 		<key>memberVarAssignmentType</key>
-		<integer>0</integer>
+		<integer>2</integer>
 		<key>properties</key>
 		<array>
 			<dict>
@@ -764,7 +764,7 @@
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>0</integer>
+			<integer>-1</integer>
 			<key>length</key>
 			<real>0.3333333432674408</real>
 			<key>name</key>
@@ -772,11 +772,11 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.3333333432674408</real>
+			<real>0.033333335071802139</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>487.35113525390625</real>
+			<real>512</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

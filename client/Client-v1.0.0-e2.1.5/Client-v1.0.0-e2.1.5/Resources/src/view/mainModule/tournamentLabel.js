@@ -104,6 +104,12 @@ var TournamentLabel = cc.Node.extend({
             this.addChild(functionItemMenu);
         } else {
             playerItem.setEnabled(false);
+
+            var myselfSprite = cc.Sprite.create(main_scene_image.icon257);
+            myselfSprite.setScaleX(1.05);
+            myselfSprite.setAnchorPoint(cc.p(0, 0));
+            myselfSprite.setPosition(cc.p(0, 0));
+            this.addChild(myselfSprite);
         }
 
         var cardList = this._player.cardList;

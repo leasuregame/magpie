@@ -96,12 +96,12 @@ var CardTrainLabel = cc.Layer.extend({
         atkIcon.setPosition(cc.p(-85, -33));
         this._resLabel.addChild(atkIcon);
 
-        this._atkLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
+        this._atkLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
         this._atkLabel.setColor(cc.c3b(255, 239, 131));
         this._atkLabel.setPosition(cc.p(0, -35));
         this._resLabel.addChild(this._atkLabel);
 
-        this._atkAdditionLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
+        this._atkAdditionLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
         this._atkAdditionLabel.setColor(cc.c3b(118, 238, 60));
         this._atkAdditionLabel.setPosition(cc.p(85, -35));
         this._resLabel.addChild(this._atkAdditionLabel);
@@ -115,7 +115,7 @@ var CardTrainLabel = cc.Layer.extend({
         tipLabelBgSprite.setPosition(cc.p(0, 0));
         this._tipLabel.addChild(tipLabelBgSprite);
 
-        var tipLabel = cc.LabelTTF.create("每消耗 10 点仙丹可提升 1 点攻击或 2 点生命", "STHeitiTC-Medium", 22);
+        var tipLabel = cc.LabelTTF.create("每消耗 20 点仙丹可提升 1 点攻击或 2 点生命", "STHeitiTC-Medium", 22);
         tipLabel.setColor(cc.c3b(255, 239, 131));
         tipLabel.setPosition(cc.p(0, 0));
         this._tipLabel.addChild(tipLabel);
@@ -240,7 +240,7 @@ var CardTrainLabel = cc.Layer.extend({
         cc.log("CardTrainLabel update");
 
         var elixir = gameData.player.get("elixir");
-        var needElixir = this._trainCount * 10;
+        var needElixir = this._trainCount * 20;
 
         this._elixirLabel.setString(elixir);
         this._needElixirLabel.setString(needElixir);

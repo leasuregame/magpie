@@ -32,6 +32,13 @@ var Message = Entity.extend({
     init: function () {
         cc.log("Message init");
 
+        lzWindow.pomelo.on("onSystemMessage", function (data) {
+            cc.log("***** on system message:");
+            cc.log(data);
+
+            MessageLabel.getInstance().push(data.msg);
+        });
+
         this.sync();
 
         return true;

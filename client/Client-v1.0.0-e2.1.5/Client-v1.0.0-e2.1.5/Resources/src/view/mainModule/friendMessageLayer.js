@@ -131,7 +131,7 @@ var FriendMessageLayer = cc.Layer.extend({
                     var addFriendItem = cc.MenuItemImage.createWithIcon(
                         main_scene_image.button9,
                         main_scene_image.button9s,
-                        main_scene_image.icon132,
+                        main_scene_image.icon41,
                         this._onClickAddFriend(name),
                         this
                     );

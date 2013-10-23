@@ -38,6 +38,7 @@ var Tournament = Entity.extend({
         this.set("count", data.challengeCount);
         this.set("rankReward", data.rankReward);
 
+
         if (data.rankList) {
             this._rankList = [];
 
@@ -72,6 +73,12 @@ var Tournament = Entity.extend({
         }
     },
 
+    getLastRankReward: function () {
+        cc.log("Tournament getLastRankReward");
+
+        return this._rankReward[0];
+    },
+
     sync: function (cb) {
         cc.log("Tournament sync");
 
@@ -98,7 +105,7 @@ var Tournament = Entity.extend({
     },
 
     defiance: function (cb, targetId) {
-        cc.log("Tournament defiance " + targetId);
+        cc.log("Tournament defiance: " + targetId);
 
         var that = this;
         lzWindow.pomelo.request("area.rankHandler.challenge", {
@@ -123,6 +130,37 @@ var Tournament = Entity.extend({
                 cc.log("Tournament defiance fail");
             }
         });
+    },
+
+    receive: function (cb) {
+        cc.log("Tournament receive");
+
+        var rewardRanking = this.getLastRankReward();
+
+        if (rewardRanking) {
+            var that = this;
+            lzWindow.pomelo.request("area.rankHandler.getRankingReward", {
+                ranking: rewardRanking
+            }, function (data) {
+                cc.log(data);
+
+                if (data.code == 200) {
+                    cc.log("Tournament receive success");
+
+                    var msg = data.msg;
+
+                    that.update({
+                        rankReward: msg.rankingRewards
+                    });
+
+                    cb();
+                } else {
+                    cc.log("Tournament receive fail");
+
+                    TipLayer.tip("领取奖励出错");
+                }
+            });
+        }
     }
 });
 

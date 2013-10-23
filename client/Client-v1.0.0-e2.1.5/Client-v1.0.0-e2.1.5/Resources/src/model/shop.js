@@ -184,7 +184,75 @@ var Shop = Entity.extend({
         cc.log("Shop buyExpCard: " + count);
 
         var that = this;
-        lzWindow.pomelo.request("area.vipHandler.buyExpCard", {
+        lzWindow.pomelo.request("area.buyHandler.buyExpCard", {
+            qty: count
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("buyExpCard success");
+
+                var msg = data.msg;
+
+                var cardIdList = msg.cardIds;
+                var len = cardIdList.length;
+                var cardData = msg.card;
+
+                for (var i = 0; i < len; ++i) {
+                    cardData.id = cardIdList[i];
+                    var card = Card.create(cardData);
+                    gameData.cardList.push(card);
+                }
+
+                gameData.player.add("money", -5000 * count);
+
+                cb();
+            } else {
+                cc.log("buyExpCard fail");
+            }
+        });
+    },
+
+    buyMoney: function(cb, type, count) {
+        cc.log("Shop buyMoney: " + count);
+
+        var that = this;
+        lzWindow.pomelo.request("area.buyHandler.buyExpCard", {
+            qty: count
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("buyExpCard success");
+
+                var msg = data.msg;
+
+                var cardIdList = msg.cardIds;
+                var len = cardIdList.length;
+                var cardData = msg.card;
+
+                for (var i = 0; i < len; ++i) {
+                    cardData.id = cardIdList[i];
+                    var card = Card.create(cardData);
+                    gameData.cardList.push(card);
+                }
+
+                gameData.player.add("money", -5000 * count);
+
+                cb();
+            } else {
+                cc.log("buyExpCard fail");
+            }
+        });
+    },
+
+    buyPower: function() {
+        cc.log("Shop buyPower: " + count);
+
+        var that = this;
+        lzWindow.pomelo.request("area.buyHandler.buyExpCard", {
             qty: count
         }, function (data) {
             cc.log("pomelo websocket callback data:");

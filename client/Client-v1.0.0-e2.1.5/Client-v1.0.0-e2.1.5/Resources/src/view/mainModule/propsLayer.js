@@ -131,161 +131,43 @@ var PropsLayer = cc.Layer.extend({
         this._moneyLabel.setString(player.get("money"));
     },
 
-    _addTip: function () {
-        cc.log("PropsLayer _addTip");
-
-        var lazyLayer = LazyLayer.create();
-        this.addChild(lazyLayer, 1);
-
-        var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(cc.size(550, 300));
-        bgSprite.setPosition(cc.p(360, 580));
-        lazyLayer.addChild(bgSprite);
-
-        var titleLabel = StrokeLabel.create("购买道具", "STHeitiTC-Medium", 30);
-        titleLabel.setColor(cc.c3b(255, 252, 175));
-        titleLabel.setPosition(cc.p(360, 700));
-        lazyLayer.addChild(titleLabel);
-
-        var count = 0;
-        var maxCount = Math.floor(gameData.player.get("money") / 5000);
-
-        var countIcon = cc.Sprite.create(main_scene_image.icon117);
-        countIcon.setPosition(cc.p(360, 600));
-        lazyLayer.addChild(countIcon);
-
-        var countLabel = StrokeLabel.create(count);
-        countLabel.setColor(cc.c3b(255, 252, 175));
-        countLabel.setPosition(cc.p(360, 600));
-        lazyLayer.addChild(countLabel);
-
-        var addItem = cc.MenuItemImage.create(
-            main_scene_image.button39,
-            main_scene_image.button39s,
-            function () {
-                count++;
-                count = Math.min(count, maxCount);
-                countLabel.setString(count);
-            },
-            this
-        );
-        addItem.setPosition(cc.p(480, 600));
-
-        var addAddItem = cc.MenuItemImage.create(
-            main_scene_image.button39,
-            main_scene_image.button39s,
-            function () {
-                count += 10;
-                count = Math.min(count, maxCount);
-                countLabel.setString(count);
-            },
-            this
-        );
-        addAddItem.setPosition(cc.p(560, 600));
-
-        var subItem = cc.MenuItemImage.create(
-            main_scene_image.button39,
-            main_scene_image.button39s,
-            function () {
-                count--;
-                count = Math.max(count, 0);
-                countLabel.setString(count);
-            },
-            this
-        );
-        subItem.setPosition(cc.p(240, 600));
-
-        var subSubItem = cc.MenuItemImage.create(
-            main_scene_image.button39,
-            main_scene_image.button39s,
-            function () {
-                count -= 10;
-                count = Math.max(count, 0);
-                countLabel.setString(count);
-            },
-            this
-        );
-        subSubItem.setPosition(cc.p(160, 600));
-
-        var okItem = cc.MenuItemImage.create(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            function () {
-                this._onClickOk(count, lazyLayer);
-            },
-            this
-        );
-        okItem.setPosition(cc.p(260, 500));
-
-        var closeItem = cc.MenuItemImage.create(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            function () {
-                lazyLayer.removeFromParent();
-            },
-            this
-        );
-        closeItem.setPosition(cc.p(460, 500));
-
-        var menu = cc.Menu.create(
-            addItem,
-            addAddItem,
-            subItem,
-            subSubItem,
-            okItem,
-            closeItem
-        );
-        menu.setPosition(cc.p(0, 0));
-        lazyLayer.addChild(menu);
-
-        var okIcon = cc.Sprite.create(main_scene_image.icon21);
-        okIcon.setPosition(cc.p(260, 500));
-        lazyLayer.addChild(okIcon);
-
-        var closeIcon = cc.Sprite.create(main_scene_image.icon36);
-        closeIcon.setPosition(cc.p(460, 500));
-        lazyLayer.addChild(closeIcon);
-
-        var addIcon = cc.Sprite.create(main_scene_image.icon178);
-        addIcon.setPosition(cc.p(480, 600));
-        lazyLayer.addChild(addIcon);
-
-        var addAddIcon = cc.Sprite.create(main_scene_image.icon179);
-        addAddIcon.setPosition(cc.p(560, 600));
-        lazyLayer.addChild(addAddIcon);
-
-        var subIcon = cc.Sprite.create(main_scene_image.icon180);
-        subIcon.setPosition(cc.p(240, 600));
-        lazyLayer.addChild(subIcon);
-
-        var subSubIcon = cc.Sprite.create(main_scene_image.icon181);
-        subSubIcon.setPosition(cc.p(160, 600));
-        lazyLayer.addChild(subSubIcon);
-    },
-
     _onClickPayment: function () {
         cc.log("PropsLayer _onClickPayment");
 
-        var paymentLayer = PaymentLayer.create();
-        this.addChild(paymentLayer, 1);
+        PaymentLayer.pop();
     },
 
     _onClickBuy: function () {
         cc.log("PropsLayer _onClickBuy");
 
-        this._addTip();
+        var that = this;
+        AmountLayer.pop(
+            function (count) {
+                that._buyExpCard(count);
+            },
+            "购买经验卡",
+            1,
+            Math.floor(gameData.player.get("money") / 5000)
+        );
     },
 
-    _onClickOk: function (count, lazyLayer) {
+    _buyExpCard: function (count) {
         cc.log("PropsLayer _onClickOk");
 
         if (count > 0) {
             var that = this;
             gameData.shop.buyExpCard(function () {
                 that.update();
-                lazyLayer.removeFromParent();
             }, count);
         }
+    },
+
+    _buyMoney: function() {
+
+    },
+
+    _buyPower: function() {
+
     }
 });
 

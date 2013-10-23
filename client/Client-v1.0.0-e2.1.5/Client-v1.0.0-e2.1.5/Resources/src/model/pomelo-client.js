@@ -16,14 +16,6 @@ cc.log("pomelo websocket client");
 
 var lzWindow = {};
 
-lzWindow.setTimeout = function (cb, timeout) {
-
-};
-
-lzWindow.clearTimeout = function () {
-
-};
-
 function lzRequire(path, parent, orig) {
     var resolved = lzRequire.resolve(path);
 
@@ -1542,11 +1534,11 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             }
 
             if (heartbeatId) {
-                clearTimeout(heartbeatId);
+                lz.clearTimeout(heartbeatId);
                 heartbeatId = null;
             }
             if (heartbeatTimeoutId) {
-                clearTimeout(heartbeatTimeoutId);
+                lz.clearTimeout(heartbeatTimeoutId);
                 heartbeatTimeoutId = null;
             }
         };
@@ -1605,7 +1597,7 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
 
             var obj = Package.encode(Package.TYPE_HEARTBEAT);
             if (heartbeatTimeoutId) {
-                clearTimeout(heartbeatTimeoutId);
+                lz.clearTimeout(heartbeatTimeoutId);
                 heartbeatTimeoutId = null;
             }
 
@@ -1613,19 +1605,19 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
                 // already in a heartbeat interval
                 return;
             }
-            heartbeatId = setTimeout(function () {
+            heartbeatId = lz.setTimeout(function () {
                 heartbeatId = null;
                 send(obj);
 
                 nextHeartbeatTimeout = Date.now() + heartbeatTimeout;
-                heartbeatTimeoutId = setTimeout(heartbeatTimeoutCb, heartbeatTimeout);
+                heartbeatTimeoutId = lz.setTimeout(heartbeatTimeoutCb, heartbeatTimeout);
             }, heartbeatInterval);
         };
 
         var heartbeatTimeoutCb = function () {
             var gap = nextHeartbeatTimeout - Date.now();
             if (gap > gapThreshold) {
-                heartbeatTimeoutId = setTimeout(heartbeatTimeoutCb, gap);
+                heartbeatTimeoutId = lz.setTimeout(heartbeatTimeoutCb, gap);
             } else {
                 cc.log('server heartbeat timeout');
                 pomelo.emit('heartbeat timeout');

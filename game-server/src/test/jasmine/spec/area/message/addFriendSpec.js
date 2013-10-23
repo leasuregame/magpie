@@ -42,7 +42,7 @@ describe("Area Server", function() {
                     }, function(data) {
                         expect(data).toEqual({
                             code: 501,
-                            msg: '不能加自己为好友'
+                            msg: '不能添加自己为好友'
                         });
                     });
                 });

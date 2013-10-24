@@ -120,8 +120,6 @@ var Pass = Entity.extend({
                     exp: msg.exp
                 });
 
-                gameData.spirit.update(msg.spiritor);
-
                 var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
 
                 cb(battleLogId);
@@ -192,8 +190,6 @@ var Pass = Entity.extend({
                 that.update({
                     hasMystical: msg.hasMystical || false
                 });
-
-                gameData.spirit.update(msg.spiritor);
 
                 var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
 

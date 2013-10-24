@@ -1544,6 +1544,17 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
         };
 
         pomelo.request = function (route, msg, cb) {
+            if (!connectSuccess) {
+                TipLayer.tip("别闹了，断网了。。");
+
+                cb({
+                    code: 404,
+                    msg: "别闹了，断网了。。"
+                });
+
+                return;
+            }
+
             if (arguments.length === 2 && typeof msg === 'function') {
                 cb = msg;
                 msg = {};

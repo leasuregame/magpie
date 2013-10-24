@@ -21,6 +21,7 @@ var Spirit = Entity.extend({
     _rate: 0,
     _passiveHarm: 0,
     _skillHarm: 0,
+    _ability: 0,
 
     init: function (data) {
         cc.log("Spirit init");
@@ -39,6 +40,7 @@ var Spirit = Entity.extend({
 
         this.set("lv", data.lv);
         this.set("exp", data.spirit);
+        this.set("ability", data.ability);
 
         this._loadTable();
     },
@@ -63,7 +65,22 @@ var Spirit = Entity.extend({
     upgrade: function (cb) {
         cc.log("Spirit upgrade");
 
-        TipLayer.tip("等章海实现啊。。。。。");
+        var that = this;
+        lzWindow.pomelo.request("area.spiritHandler.spiritorUpgrade", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("upgrade success");
+
+                var msg = data.msg;
+
+                that.update(msg.spiritPool);
+
+                cb();
+            } else {
+                cc.log("upgrade fail");
+            }
+        });
     }
 });
 

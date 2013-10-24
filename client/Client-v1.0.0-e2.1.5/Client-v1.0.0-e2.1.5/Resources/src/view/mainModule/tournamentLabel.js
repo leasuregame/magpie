@@ -75,7 +75,7 @@ var TournamentLabel = cc.Node.extend({
                 functionItem = cc.MenuItemImage.createWithIcon(
                     main_scene_image.button9,
                     main_scene_image.button9s,
-                    main_scene_image.icon41,
+                    main_scene_image.icon120,
                     this._onClickFunction,
                     this
                 );
@@ -145,10 +145,6 @@ var TournamentLabel = cc.Node.extend({
         return true;
     },
 
-    update: function () {
-        cc.log("TournamentLabel update");
-    },
-
     _onClickPlayer: function () {
         cc.log("TournamentLabel _onClickPlayer");
 
@@ -162,7 +158,11 @@ var TournamentLabel = cc.Node.extend({
 
         if (this._player.playerId != gameData.player.get("id")) {
             if (this._player.type == CAN_ADD_FRIEND) {
-                gameData.tournament.addFriend(this._player.playerId);
+                gameData.player.playerDetail(function (data) {
+                    cc.log(data);
+
+                    LineUpDetail.pop(data);
+                }, this._player.playerId);
             } else {
                 gameData.tournament.defiance(function (id) {
                     BattlePlayer.getInstance().play(id);

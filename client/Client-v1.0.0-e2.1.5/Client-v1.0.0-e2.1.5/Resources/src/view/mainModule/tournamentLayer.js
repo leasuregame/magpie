@@ -137,7 +137,7 @@ var TournamentLayer = cc.Layer.extend({
         label.addChild(menu);
 
         this._skyDialog.setLabel(label);
-        this._skyDialog.setRect(cc.rect(40, 198, 612, 700));
+        this._skyDialog.setRect(cc.rect(40, 198, 640, 700));
 
         return true;
     },

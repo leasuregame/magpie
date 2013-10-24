@@ -1,20 +1,8 @@
 var nameChanged = {
     "achievement": "成就配置表",
     "成就配置表": "achievement",
-    "function_limit": "功能开放等级限制",
-    "功能开放等级限制": "function_limit",
-    "elixir_limit": "仙丹培养限制表",
-    "仙丹培养限制表": "elixir_limit",
-    "resource_limit": "资源限制表",
-    "资源限制表": "resource_limit",
-    "daily_signin_rewards": "每日签到奖励",
-    "每日签到奖励": "daily_signin_rewards",
-    "signIn_rewards": "连续签到奖励",
-    "连续签到奖励": "signIn_rewards",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
-    "card_lv_limit": "卡牌等级限制表",
-    "卡牌等级限制表": "card_lv_limit",
     "card_price": "卡牌价格配置表",
     "卡牌价格配置表": "card_price",
     "cards": "神仙卡牌配置表",
@@ -25,6 +13,22 @@ var nameChanged = {
     "基础属性成长表": "factors",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
+    "function_limit": "功能开放等级限制",
+    "功能开放等级限制": "function_limit",
+    "lv_limit": "等级限制表",
+    "等级限制表": "lv_limit",
+    "card_lv_limit": "卡牌等级限制表",
+    "卡牌等级限制表": "card_lv_limit",
+    "product": "道具配置表",
+    "道具配置表": "product",
+    "elixir_limit": "仙丹培养限制表",
+    "仙丹培养限制表": "elixir_limit",
+    "resource_limit": "资源限制表",
+    "资源限制表": "resource_limit",
+    "daily_signin_rewards": "每日签到奖励",
+    "每日签到奖励": "daily_signin_rewards",
+    "signIn_rewards": "连续签到奖励",
+    "连续签到奖励": "signIn_rewards",
     "treasure_hunt": "寻宝配置表",
     "寻宝配置表": "treasure_hunt",
     "rank": "竞技产出表",
@@ -309,111 +313,6 @@ var outputTables = {
                 "desc": "累计消耗元宝100000",
                 "gold": 50,
                 "energy": 500
-            }
-        }
-    },
-    "function_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rank": 10,
-                "pass": 20,
-                "card4_position": 30,
-                "lottery": 40,
-                "card5_position": 50,
-                "ranking_list": 55
-            }
-        }
-    },
-    "elixir_limit": {
-        "colComment": {},
-        "rows": {
-            "3": {
-                "id": 3,
-                "elixir_limit": 10000
-            },
-            "4": {
-                "id": 4,
-                "elixir_limit": 25000
-            },
-            "5": {
-                "id": 5,
-                "elixir_limit": 50000
-            }
-        }
-    },
-    "resource_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "gold": 999999,
-                "money": 99999999,
-                "skillPoint": 99999,
-                "energy": 99999,
-                "card_count_limit": 100,
-                "power_value": 150
-            }
-        }
-    },
-    "daily_signin_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 1000,
-                "energy": 50
-            }
-        }
-    },
-    "signIn_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5,
-                "money": 5000,
-                "energy": 100,
-                "skillPoint": 0,
-                "elixir": 0,
-                "lottery_free_count": 0
-            },
-            "2": {
-                "id": 2,
-                "count": 10,
-                "money": 10000,
-                "energy": 200,
-                "skillPoint": 800,
-                "elixir": 0,
-                "lottery_free_count": 0
-            },
-            "3": {
-                "id": 3,
-                "count": 15,
-                "money": 20000,
-                "energy": 300,
-                "skillPoint": 1000,
-                "elixir": 500,
-                "lottery_free_count": 0
-            },
-            "4": {
-                "id": 4,
-                "count": 20,
-                "money": 30000,
-                "energy": 500,
-                "skillPoint": 2000,
-                "elixir": 1000,
-                "lottery_free_count": 5
-            },
-            "5": {
-                "id": 5,
-                "count": 25,
-                "money": 50000,
-                "energy": 800,
-                "skillPoint": 3000,
-                "elixir": 2000,
-                "lottery_free_count": 10
             }
         }
     },
@@ -846,31 +745,6 @@ var outputTables = {
                 "exp_need": 30687,
                 "money_need": 437934,
                 "cur_exp": 305822
-            }
-        }
-    },
-    "card_lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "max_lv": 30
-            },
-            "2": {
-                "id": 2,
-                "max_lv": 40
-            },
-            "3": {
-                "id": 3,
-                "max_lv": 50
-            },
-            "4": {
-                "id": 4,
-                "max_lv": 55
-            },
-            "5": {
-                "id": 5,
-                "max_lv": 60
             }
         }
     },
@@ -9917,7 +9791,7 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "elixir": 10,
+                "elixir": 20,
                 "atk": 1,
                 "hp": 2,
                 "star3_max": 50000,
@@ -10324,6 +10198,211 @@ var outputTables = {
             }
         }
     },
+    "function_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rank": 10,
+                "pass": 20,
+                "card4_position": 30,
+                "lottery": 40,
+                "card5_position": 50,
+                "ranking_list": 55
+            }
+        }
+    },
+    "lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "player_lv_limit": 100,
+                "skill_lv_limit": 5,
+                "spirit_lv_limit": 10,
+                "spirit_pool_lv_limit": 10
+            }
+        }
+    },
+    "card_lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "max_lv": 30
+            },
+            "2": {
+                "id": 2,
+                "max_lv": 40
+            },
+            "3": {
+                "id": 3,
+                "max_lv": 50
+            },
+            "4": {
+                "id": 4,
+                "max_lv": 55
+            },
+            "5": {
+                "id": 5,
+                "max_lv": 60
+            }
+        }
+    },
+    "product": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "name": "体力",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "power",
+                "obtain": 50
+            },
+            "2": {
+                "id": 2,
+                "name": "铜板",
+                "consume_type": "gold",
+                "consume": 10,
+                "obtain_type": "money",
+                "obtain": 1200
+            },
+            "3": {
+                "id": 3,
+                "name": "铜板",
+                "consume_type": "gold",
+                "consume": 50,
+                "obtain_type": "money",
+                "obtain": 6000
+            },
+            "4": {
+                "id": 4,
+                "name": "铜板",
+                "consume_type": "gold",
+                "consume": 100,
+                "obtain_type": "money",
+                "obtain": 13000
+            },
+            "5": {
+                "id": 5,
+                "name": "有奖竞技次数",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "challengeCount",
+                "obtain": 1
+            },
+            "6": {
+                "id": 6,
+                "name": "经验卡",
+                "consume_type": "money",
+                "consume": 5000,
+                "obtain_type": "card",
+                "obtain": 1
+            }
+        }
+    },
+    "elixir_limit": {
+        "colComment": {},
+        "rows": {
+            "3": {
+                "id": 3,
+                "elixir_limit": 10000
+            },
+            "4": {
+                "id": 4,
+                "elixir_limit": 25000
+            },
+            "5": {
+                "id": 5,
+                "elixir_limit": 50000
+            }
+        }
+    },
+    "resource_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "gold": 999999,
+                "money": 99999999,
+                "skillPoint": 99999,
+                "energy": 99999,
+                "card_count_limit": 100,
+                "power_value": 150
+            }
+        }
+    },
+    "daily_signin_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 1000,
+                "energy": 50
+            }
+        }
+    },
+    "signIn_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5,
+                "money": 5000,
+                "energy": 100,
+                "skillPoint": 0,
+                "elixir": 0,
+                "lottery_free_count": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "2": {
+                "id": 2,
+                "count": 10,
+                "money": 10000,
+                "energy": 200,
+                "skillPoint": 800,
+                "elixir": 0,
+                "lottery_free_count": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "3": {
+                "id": 3,
+                "count": 18,
+                "money": 20000,
+                "energy": 300,
+                "skillPoint": 1000,
+                "elixir": 500,
+                "lottery_free_count": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "4": {
+                "id": 4,
+                "count": 25,
+                "money": 30000,
+                "energy": 500,
+                "skillPoint": 2000,
+                "elixir": 1000,
+                "lottery_free_count": 5,
+                "gold": 0,
+                "spirit": 0
+            },
+            "5": {
+                "id": 5,
+                "count": -1,
+                "money": 50000,
+                "energy": 800,
+                "skillPoint": 3000,
+                "elixir": 2000,
+                "lottery_free_count": 10,
+                "gold": 0,
+                "spirit": 0
+            }
+        }
+    },
     "treasure_hunt": {
         "colComment": {},
         "rows": {
@@ -10333,8 +10412,8 @@ var outputTables = {
                 "value": 10,
                 "name": "体力",
                 "type_rate": 30,
-                "value_rate": 60,
-                "rate": 18
+                "value_rate": 90,
+                "rate": 27
             },
             "1": {
                 "id": 1,
@@ -10342,8 +10421,8 @@ var outputTables = {
                 "value": 50,
                 "name": "体力",
                 "type_rate": 30,
-                "value_rate": 30,
-                "rate": 9
+                "value_rate": 10,
+                "rate": 3
             },
             "2": {
                 "id": 2,
@@ -10351,8 +10430,8 @@ var outputTables = {
                 "value": 100,
                 "name": "体力",
                 "type_rate": 30,
-                "value_rate": 10,
-                "rate": 3
+                "value_rate": 1,
+                "rate": 0.3
             },
             "3": {
                 "id": 3,
@@ -10360,8 +10439,8 @@ var outputTables = {
                 "value": 10,
                 "name": "仙丹",
                 "type_rate": 15,
-                "value_rate": 60,
-                "rate": 9
+                "value_rate": 90,
+                "rate": 13.5
             },
             "4": {
                 "id": 4,
@@ -10369,8 +10448,8 @@ var outputTables = {
                 "value": 100,
                 "name": "仙丹",
                 "type_rate": 15,
-                "value_rate": 39,
-                "rate": 5.85
+                "value_rate": 10,
+                "rate": 1.5
             },
             "5": {
                 "id": 5,
@@ -10387,8 +10466,8 @@ var outputTables = {
                 "value": 50,
                 "name": "灵气",
                 "type_rate": 10,
-                "value_rate": 60,
-                "rate": 6
+                "value_rate": 90,
+                "rate": 9
             },
             "7": {
                 "id": 7,
@@ -10396,8 +10475,8 @@ var outputTables = {
                 "value": 100,
                 "name": "灵气",
                 "type_rate": 10,
-                "value_rate": 39,
-                "rate": 3.9
+                "value_rate": 10,
+                "rate": 1
             },
             "8": {
                 "id": 8,
@@ -10414,8 +10493,8 @@ var outputTables = {
                 "value": 100,
                 "name": "技能点",
                 "type_rate": 10,
-                "value_rate": 60,
-                "rate": 6
+                "value_rate": 90,
+                "rate": 9
             },
             "10": {
                 "id": 10,
@@ -10423,8 +10502,8 @@ var outputTables = {
                 "value": 500,
                 "name": "技能点",
                 "type_rate": 10,
-                "value_rate": 39,
-                "rate": 3.9
+                "value_rate": 10,
+                "rate": 1
             },
             "11": {
                 "id": 11,
@@ -10441,8 +10520,8 @@ var outputTables = {
                 "value": 50,
                 "name": "活力",
                 "type_rate": 10,
-                "value_rate": 60,
-                "rate": 6
+                "value_rate": 90,
+                "rate": 9
             },
             "13": {
                 "id": 13,
@@ -10450,8 +10529,8 @@ var outputTables = {
                 "value": 100,
                 "name": "活力",
                 "type_rate": 10,
-                "value_rate": 39,
-                "rate": 3.9
+                "value_rate": 10,
+                "rate": 1
             },
             "14": {
                 "id": 14,
@@ -10468,8 +10547,8 @@ var outputTables = {
                 "value": 1000,
                 "name": "铜板",
                 "type_rate": 15,
-                "value_rate": 60,
-                "rate": 9
+                "value_rate": 90,
+                "rate": 13.5
             },
             "16": {
                 "id": 16,
@@ -10477,13 +10556,13 @@ var outputTables = {
                 "value": 10000,
                 "name": "铜板",
                 "type_rate": 15,
-                "value_rate": 39,
-                "rate": 5.85
+                "value_rate": 10,
+                "rate": 1.5
             },
             "17": {
                 "id": 17,
                 "type": "money",
-                "value": 200000,
+                "value": 100000,
                 "name": "铜板",
                 "type_rate": 15,
                 "value_rate": 1,
@@ -13241,602 +13320,602 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "exp": 10,
-                "money": 20,
+                "exp": 5,
+                "money": 8,
                 "skill_point": 10
             },
             "2": {
                 "id": 2,
-                "exp": 11,
-                "money": 30,
+                "exp": 6,
+                "money": 9,
                 "skill_point": 15
             },
             "3": {
                 "id": 3,
-                "exp": 12,
-                "money": 40,
+                "exp": 7,
+                "money": 10,
                 "skill_point": 20
             },
             "4": {
                 "id": 4,
-                "exp": 13,
-                "money": 50,
+                "exp": 8,
+                "money": 11,
                 "skill_point": 25
             },
             "5": {
                 "id": 5,
-                "exp": 14,
-                "money": 60,
+                "exp": 9,
+                "money": 12,
                 "skill_point": 60
             },
             "6": {
                 "id": 6,
-                "exp": 15,
-                "money": 70,
+                "exp": 10,
+                "money": 13,
                 "skill_point": 35
             },
             "7": {
                 "id": 7,
-                "exp": 16,
-                "money": 80,
+                "exp": 11,
+                "money": 14,
                 "skill_point": 40
             },
             "8": {
                 "id": 8,
-                "exp": 17,
-                "money": 90,
+                "exp": 12,
+                "money": 15,
                 "skill_point": 45
             },
             "9": {
                 "id": 9,
-                "exp": 18,
-                "money": 100,
+                "exp": 13,
+                "money": 16,
                 "skill_point": 50
             },
             "10": {
                 "id": 10,
-                "exp": 19,
-                "money": 110,
+                "exp": 14,
+                "money": 17,
                 "skill_point": 110
             },
             "11": {
                 "id": 11,
-                "exp": 20,
-                "money": 120,
+                "exp": 15,
+                "money": 18,
                 "skill_point": 60
             },
             "12": {
                 "id": 12,
-                "exp": 21,
-                "money": 130,
+                "exp": 16,
+                "money": 19,
                 "skill_point": 65
             },
             "13": {
                 "id": 13,
-                "exp": 22,
-                "money": 140,
+                "exp": 17,
+                "money": 20,
                 "skill_point": 70
             },
             "14": {
                 "id": 14,
-                "exp": 23,
-                "money": 150,
+                "exp": 18,
+                "money": 21,
                 "skill_point": 75
             },
             "15": {
                 "id": 15,
-                "exp": 24,
-                "money": 160,
+                "exp": 19,
+                "money": 22,
                 "skill_point": 160
             },
             "16": {
                 "id": 16,
-                "exp": 25,
-                "money": 170,
+                "exp": 20,
+                "money": 23,
                 "skill_point": 85
             },
             "17": {
                 "id": 17,
-                "exp": 26,
-                "money": 180,
+                "exp": 21,
+                "money": 24,
                 "skill_point": 90
             },
             "18": {
                 "id": 18,
-                "exp": 27,
-                "money": 190,
+                "exp": 22,
+                "money": 25,
                 "skill_point": 95
             },
             "19": {
                 "id": 19,
-                "exp": 28,
-                "money": 200,
+                "exp": 23,
+                "money": 26,
                 "skill_point": 100
             },
             "20": {
                 "id": 20,
-                "exp": 29,
-                "money": 210,
+                "exp": 24,
+                "money": 27,
                 "skill_point": 210
             },
             "21": {
                 "id": 21,
-                "exp": 30,
-                "money": 220,
+                "exp": 25,
+                "money": 28,
                 "skill_point": 110
             },
             "22": {
                 "id": 22,
-                "exp": 31,
-                "money": 230,
+                "exp": 26,
+                "money": 29,
                 "skill_point": 115
             },
             "23": {
                 "id": 23,
-                "exp": 32,
-                "money": 240,
+                "exp": 27,
+                "money": 30,
                 "skill_point": 120
             },
             "24": {
                 "id": 24,
-                "exp": 33,
-                "money": 250,
+                "exp": 28,
+                "money": 31,
                 "skill_point": 125
             },
             "25": {
                 "id": 25,
-                "exp": 34,
-                "money": 260,
+                "exp": 29,
+                "money": 32,
                 "skill_point": 260
             },
             "26": {
                 "id": 26,
-                "exp": 35,
-                "money": 270,
+                "exp": 30,
+                "money": 33,
                 "skill_point": 135
             },
             "27": {
                 "id": 27,
-                "exp": 36,
-                "money": 280,
+                "exp": 31,
+                "money": 34,
                 "skill_point": 140
             },
             "28": {
                 "id": 28,
-                "exp": 37,
-                "money": 290,
+                "exp": 32,
+                "money": 35,
                 "skill_point": 145
             },
             "29": {
                 "id": 29,
-                "exp": 38,
-                "money": 300,
+                "exp": 33,
+                "money": 36,
                 "skill_point": 150
             },
             "30": {
                 "id": 30,
-                "exp": 39,
-                "money": 310,
+                "exp": 34,
+                "money": 37,
                 "skill_point": 310
             },
             "31": {
                 "id": 31,
-                "exp": 40,
-                "money": 320,
+                "exp": 35,
+                "money": 38,
                 "skill_point": 160
             },
             "32": {
                 "id": 32,
-                "exp": 41,
-                "money": 330,
+                "exp": 36,
+                "money": 39,
                 "skill_point": 165
             },
             "33": {
                 "id": 33,
-                "exp": 42,
-                "money": 340,
+                "exp": 37,
+                "money": 40,
                 "skill_point": 170
             },
             "34": {
                 "id": 34,
-                "exp": 43,
-                "money": 350,
+                "exp": 38,
+                "money": 41,
                 "skill_point": 175
             },
             "35": {
                 "id": 35,
-                "exp": 44,
-                "money": 360,
+                "exp": 39,
+                "money": 42,
                 "skill_point": 360
             },
             "36": {
                 "id": 36,
-                "exp": 45,
-                "money": 370,
+                "exp": 40,
+                "money": 43,
                 "skill_point": 185
             },
             "37": {
                 "id": 37,
-                "exp": 46,
-                "money": 380,
+                "exp": 41,
+                "money": 44,
                 "skill_point": 190
             },
             "38": {
                 "id": 38,
-                "exp": 47,
-                "money": 390,
+                "exp": 42,
+                "money": 45,
                 "skill_point": 195
             },
             "39": {
                 "id": 39,
-                "exp": 48,
-                "money": 400,
+                "exp": 43,
+                "money": 46,
                 "skill_point": 200
             },
             "40": {
                 "id": 40,
-                "exp": 49,
-                "money": 410,
+                "exp": 44,
+                "money": 47,
                 "skill_point": 410
             },
             "41": {
                 "id": 41,
-                "exp": 50,
-                "money": 420,
+                "exp": 45,
+                "money": 48,
                 "skill_point": 210
             },
             "42": {
                 "id": 42,
-                "exp": 51,
-                "money": 430,
+                "exp": 46,
+                "money": 49,
                 "skill_point": 215
             },
             "43": {
                 "id": 43,
-                "exp": 52,
-                "money": 440,
+                "exp": 47,
+                "money": 50,
                 "skill_point": 220
             },
             "44": {
                 "id": 44,
-                "exp": 53,
-                "money": 450,
+                "exp": 48,
+                "money": 51,
                 "skill_point": 225
             },
             "45": {
                 "id": 45,
-                "exp": 54,
-                "money": 460,
+                "exp": 49,
+                "money": 52,
                 "skill_point": 460
             },
             "46": {
                 "id": 46,
-                "exp": 55,
-                "money": 470,
+                "exp": 50,
+                "money": 53,
                 "skill_point": 235
             },
             "47": {
                 "id": 47,
-                "exp": 56,
-                "money": 480,
+                "exp": 51,
+                "money": 54,
                 "skill_point": 240
             },
             "48": {
                 "id": 48,
-                "exp": 57,
-                "money": 490,
+                "exp": 52,
+                "money": 55,
                 "skill_point": 245
             },
             "49": {
                 "id": 49,
-                "exp": 58,
-                "money": 500,
+                "exp": 53,
+                "money": 56,
                 "skill_point": 250
             },
             "50": {
                 "id": 50,
-                "exp": 59,
-                "money": 510,
+                "exp": 54,
+                "money": 57,
                 "skill_point": 510
             },
             "51": {
                 "id": 51,
-                "exp": 60,
-                "money": 520,
+                "exp": 55,
+                "money": 58,
                 "skill_point": 260
             },
             "52": {
                 "id": 52,
-                "exp": 61,
-                "money": 530,
+                "exp": 56,
+                "money": 59,
                 "skill_point": 265
             },
             "53": {
                 "id": 53,
-                "exp": 62,
-                "money": 540,
+                "exp": 57,
+                "money": 60,
                 "skill_point": 270
             },
             "54": {
                 "id": 54,
-                "exp": 63,
-                "money": 550,
+                "exp": 58,
+                "money": 61,
                 "skill_point": 275
             },
             "55": {
                 "id": 55,
-                "exp": 64,
-                "money": 560,
+                "exp": 59,
+                "money": 62,
                 "skill_point": 560
             },
             "56": {
                 "id": 56,
-                "exp": 65,
-                "money": 570,
+                "exp": 60,
+                "money": 63,
                 "skill_point": 285
             },
             "57": {
                 "id": 57,
-                "exp": 66,
-                "money": 580,
+                "exp": 61,
+                "money": 64,
                 "skill_point": 290
             },
             "58": {
                 "id": 58,
-                "exp": 67,
-                "money": 590,
+                "exp": 62,
+                "money": 65,
                 "skill_point": 295
             },
             "59": {
                 "id": 59,
-                "exp": 68,
-                "money": 600,
+                "exp": 63,
+                "money": 66,
                 "skill_point": 300
             },
             "60": {
                 "id": 60,
-                "exp": 69,
-                "money": 610,
+                "exp": 64,
+                "money": 67,
                 "skill_point": 610
             },
             "61": {
                 "id": 61,
-                "exp": 70,
-                "money": 620,
+                "exp": 65,
+                "money": 68,
                 "skill_point": 310
             },
             "62": {
                 "id": 62,
-                "exp": 71,
-                "money": 630,
+                "exp": 66,
+                "money": 69,
                 "skill_point": 315
             },
             "63": {
                 "id": 63,
-                "exp": 72,
-                "money": 640,
+                "exp": 67,
+                "money": 70,
                 "skill_point": 320
             },
             "64": {
                 "id": 64,
-                "exp": 73,
-                "money": 650,
+                "exp": 68,
+                "money": 71,
                 "skill_point": 325
             },
             "65": {
                 "id": 65,
-                "exp": 74,
-                "money": 660,
+                "exp": 69,
+                "money": 72,
                 "skill_point": 660
             },
             "66": {
                 "id": 66,
-                "exp": 75,
-                "money": 670,
+                "exp": 70,
+                "money": 73,
                 "skill_point": 335
             },
             "67": {
                 "id": 67,
-                "exp": 76,
-                "money": 680,
+                "exp": 71,
+                "money": 74,
                 "skill_point": 340
             },
             "68": {
                 "id": 68,
-                "exp": 77,
-                "money": 690,
+                "exp": 72,
+                "money": 75,
                 "skill_point": 345
             },
             "69": {
                 "id": 69,
-                "exp": 78,
-                "money": 700,
+                "exp": 73,
+                "money": 76,
                 "skill_point": 350
             },
             "70": {
                 "id": 70,
-                "exp": 79,
-                "money": 710,
+                "exp": 74,
+                "money": 77,
                 "skill_point": 710
             },
             "71": {
                 "id": 71,
-                "exp": 80,
-                "money": 720,
+                "exp": 75,
+                "money": 78,
                 "skill_point": 360
             },
             "72": {
                 "id": 72,
-                "exp": 81,
-                "money": 730,
+                "exp": 76,
+                "money": 79,
                 "skill_point": 365
             },
             "73": {
                 "id": 73,
-                "exp": 82,
-                "money": 740,
+                "exp": 77,
+                "money": 80,
                 "skill_point": 370
             },
             "74": {
                 "id": 74,
-                "exp": 83,
-                "money": 750,
+                "exp": 78,
+                "money": 81,
                 "skill_point": 375
             },
             "75": {
                 "id": 75,
-                "exp": 84,
-                "money": 760,
+                "exp": 79,
+                "money": 82,
                 "skill_point": 760
             },
             "76": {
                 "id": 76,
-                "exp": 85,
-                "money": 770,
+                "exp": 80,
+                "money": 83,
                 "skill_point": 385
             },
             "77": {
                 "id": 77,
-                "exp": 86,
-                "money": 780,
+                "exp": 81,
+                "money": 84,
                 "skill_point": 390
             },
             "78": {
                 "id": 78,
-                "exp": 87,
-                "money": 790,
+                "exp": 82,
+                "money": 85,
                 "skill_point": 395
             },
             "79": {
                 "id": 79,
-                "exp": 88,
-                "money": 800,
+                "exp": 83,
+                "money": 86,
                 "skill_point": 400
             },
             "80": {
                 "id": 80,
-                "exp": 89,
-                "money": 810,
+                "exp": 84,
+                "money": 87,
                 "skill_point": 810
             },
             "81": {
                 "id": 81,
-                "exp": 90,
-                "money": 820,
+                "exp": 85,
+                "money": 88,
                 "skill_point": 410
             },
             "82": {
                 "id": 82,
-                "exp": 91,
-                "money": 830,
+                "exp": 86,
+                "money": 89,
                 "skill_point": 415
             },
             "83": {
                 "id": 83,
-                "exp": 92,
-                "money": 840,
+                "exp": 87,
+                "money": 90,
                 "skill_point": 420
             },
             "84": {
                 "id": 84,
-                "exp": 93,
-                "money": 850,
+                "exp": 88,
+                "money": 91,
                 "skill_point": 425
             },
             "85": {
                 "id": 85,
-                "exp": 94,
-                "money": 860,
+                "exp": 89,
+                "money": 92,
                 "skill_point": 860
             },
             "86": {
                 "id": 86,
-                "exp": 95,
-                "money": 870,
+                "exp": 90,
+                "money": 93,
                 "skill_point": 435
             },
             "87": {
                 "id": 87,
-                "exp": 96,
-                "money": 880,
+                "exp": 91,
+                "money": 94,
                 "skill_point": 440
             },
             "88": {
                 "id": 88,
-                "exp": 97,
-                "money": 890,
+                "exp": 92,
+                "money": 95,
                 "skill_point": 445
             },
             "89": {
                 "id": 89,
-                "exp": 98,
-                "money": 900,
+                "exp": 93,
+                "money": 96,
                 "skill_point": 450
             },
             "90": {
                 "id": 90,
-                "exp": 99,
-                "money": 910,
+                "exp": 94,
+                "money": 97,
                 "skill_point": 910
             },
             "91": {
                 "id": 91,
-                "exp": 100,
-                "money": 920,
+                "exp": 95,
+                "money": 98,
                 "skill_point": 460
             },
             "92": {
                 "id": 92,
-                "exp": 101,
-                "money": 930,
+                "exp": 96,
+                "money": 99,
                 "skill_point": 465
             },
             "93": {
                 "id": 93,
-                "exp": 102,
-                "money": 940,
+                "exp": 97,
+                "money": 100,
                 "skill_point": 470
             },
             "94": {
                 "id": 94,
-                "exp": 103,
-                "money": 950,
+                "exp": 98,
+                "money": 101,
                 "skill_point": 475
             },
             "95": {
                 "id": 95,
-                "exp": 104,
-                "money": 960,
+                "exp": 99,
+                "money": 102,
                 "skill_point": 960
             },
             "96": {
                 "id": 96,
-                "exp": 105,
-                "money": 970,
+                "exp": 100,
+                "money": 103,
                 "skill_point": 485
             },
             "97": {
                 "id": 97,
-                "exp": 106,
-                "money": 980,
+                "exp": 101,
+                "money": 104,
                 "skill_point": 490
             },
             "98": {
                 "id": 98,
-                "exp": 107,
-                "money": 990,
+                "exp": 102,
+                "money": 105,
                 "skill_point": 495
             },
             "99": {
                 "id": 99,
-                "exp": 108,
-                "money": 1000,
+                "exp": 103,
+                "money": 106,
                 "skill_point": 500
             },
             "100": {
                 "id": 100,
-                "exp": 109,
-                "money": 1010,
+                "exp": 104,
+                "money": 107,
                 "skill_point": 1010
             }
         }
@@ -31461,253 +31540,203 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "money_obtain": 750,
-                "exp_obtain": 50
+                "money_obtain": 750
             },
             "2": {
                 "id": 2,
-                "money_obtain": 780,
-                "exp_obtain": 52
+                "money_obtain": 780
             },
             "3": {
                 "id": 3,
-                "money_obtain": 810,
-                "exp_obtain": 54
+                "money_obtain": 810
             },
             "4": {
                 "id": 4,
-                "money_obtain": 840,
-                "exp_obtain": 56
+                "money_obtain": 840
             },
             "5": {
                 "id": 5,
-                "money_obtain": 870,
-                "exp_obtain": 58
+                "money_obtain": 870
             },
             "6": {
                 "id": 6,
-                "money_obtain": 900,
-                "exp_obtain": 60
+                "money_obtain": 900
             },
             "7": {
                 "id": 7,
-                "money_obtain": 930,
-                "exp_obtain": 62
+                "money_obtain": 930
             },
             "8": {
                 "id": 8,
-                "money_obtain": 960,
-                "exp_obtain": 64
+                "money_obtain": 960
             },
             "9": {
                 "id": 9,
-                "money_obtain": 990,
-                "exp_obtain": 66
+                "money_obtain": 990
             },
             "10": {
                 "id": 10,
-                "money_obtain": 1020,
-                "exp_obtain": 68
+                "money_obtain": 1020
             },
             "11": {
                 "id": 11,
-                "money_obtain": 1050,
-                "exp_obtain": 70
+                "money_obtain": 1050
             },
             "12": {
                 "id": 12,
-                "money_obtain": 1080,
-                "exp_obtain": 72
+                "money_obtain": 1080
             },
             "13": {
                 "id": 13,
-                "money_obtain": 1110,
-                "exp_obtain": 74
+                "money_obtain": 1110
             },
             "14": {
                 "id": 14,
-                "money_obtain": 1140,
-                "exp_obtain": 76
+                "money_obtain": 1140
             },
             "15": {
                 "id": 15,
-                "money_obtain": 1170,
-                "exp_obtain": 78
+                "money_obtain": 1170
             },
             "16": {
                 "id": 16,
-                "money_obtain": 1200,
-                "exp_obtain": 80
+                "money_obtain": 1200
             },
             "17": {
                 "id": 17,
-                "money_obtain": 1230,
-                "exp_obtain": 82
+                "money_obtain": 1230
             },
             "18": {
                 "id": 18,
-                "money_obtain": 1260,
-                "exp_obtain": 84
+                "money_obtain": 1260
             },
             "19": {
                 "id": 19,
-                "money_obtain": 1290,
-                "exp_obtain": 86
+                "money_obtain": 1290
             },
             "20": {
                 "id": 20,
-                "money_obtain": 1320,
-                "exp_obtain": 88
+                "money_obtain": 1320
             },
             "21": {
                 "id": 21,
-                "money_obtain": 1350,
-                "exp_obtain": 90
+                "money_obtain": 1350
             },
             "22": {
                 "id": 22,
-                "money_obtain": 1380,
-                "exp_obtain": 92
+                "money_obtain": 1380
             },
             "23": {
                 "id": 23,
-                "money_obtain": 1410,
-                "exp_obtain": 94
+                "money_obtain": 1410
             },
             "24": {
                 "id": 24,
-                "money_obtain": 1440,
-                "exp_obtain": 96
+                "money_obtain": 1440
             },
             "25": {
                 "id": 25,
-                "money_obtain": 1470,
-                "exp_obtain": 98
+                "money_obtain": 1470
             },
             "26": {
                 "id": 26,
-                "money_obtain": 1500,
-                "exp_obtain": 100
+                "money_obtain": 1500
             },
             "27": {
                 "id": 27,
-                "money_obtain": 1530,
-                "exp_obtain": 102
+                "money_obtain": 1530
             },
             "28": {
                 "id": 28,
-                "money_obtain": 1560,
-                "exp_obtain": 104
+                "money_obtain": 1560
             },
             "29": {
                 "id": 29,
-                "money_obtain": 1590,
-                "exp_obtain": 106
+                "money_obtain": 1590
             },
             "30": {
                 "id": 30,
-                "money_obtain": 1620,
-                "exp_obtain": 108
+                "money_obtain": 1620
             },
             "31": {
                 "id": 31,
-                "money_obtain": 1650,
-                "exp_obtain": 110
+                "money_obtain": 1650
             },
             "32": {
                 "id": 32,
-                "money_obtain": 1680,
-                "exp_obtain": 112
+                "money_obtain": 1680
             },
             "33": {
                 "id": 33,
-                "money_obtain": 1710,
-                "exp_obtain": 114
+                "money_obtain": 1710
             },
             "34": {
                 "id": 34,
-                "money_obtain": 1740,
-                "exp_obtain": 116
+                "money_obtain": 1740
             },
             "35": {
                 "id": 35,
-                "money_obtain": 1770,
-                "exp_obtain": 118
+                "money_obtain": 1770
             },
             "36": {
                 "id": 36,
-                "money_obtain": 1800,
-                "exp_obtain": 120
+                "money_obtain": 1800
             },
             "37": {
                 "id": 37,
-                "money_obtain": 1830,
-                "exp_obtain": 122
+                "money_obtain": 1830
             },
             "38": {
                 "id": 38,
-                "money_obtain": 1860,
-                "exp_obtain": 124
+                "money_obtain": 1860
             },
             "39": {
                 "id": 39,
-                "money_obtain": 1890,
-                "exp_obtain": 126
+                "money_obtain": 1890
             },
             "40": {
                 "id": 40,
-                "money_obtain": 1920,
-                "exp_obtain": 128
+                "money_obtain": 1920
             },
             "41": {
                 "id": 41,
-                "money_obtain": 1950,
-                "exp_obtain": 130
+                "money_obtain": 1950
             },
             "42": {
                 "id": 42,
-                "money_obtain": 1980,
-                "exp_obtain": 132
+                "money_obtain": 1980
             },
             "43": {
                 "id": 43,
-                "money_obtain": 2010,
-                "exp_obtain": 134
+                "money_obtain": 2010
             },
             "44": {
                 "id": 44,
-                "money_obtain": 2040,
-                "exp_obtain": 136
+                "money_obtain": 2040
             },
             "45": {
                 "id": 45,
-                "money_obtain": 2070,
-                "exp_obtain": 138
+                "money_obtain": 2070
             },
             "46": {
                 "id": 46,
-                "money_obtain": 2100,
-                "exp_obtain": 140
+                "money_obtain": 2100
             },
             "47": {
                 "id": 47,
-                "money_obtain": 2130,
-                "exp_obtain": 142
+                "money_obtain": 2130
             },
             "48": {
                 "id": 48,
-                "money_obtain": 2160,
-                "exp_obtain": 144
+                "money_obtain": 2160
             },
             "49": {
                 "id": 49,
-                "money_obtain": 2190,
-                "exp_obtain": 146
+                "money_obtain": 2190
             },
             "50": {
                 "id": 50,
-                "money_obtain": 2220,
-                "exp_obtain": 148
+                "money_obtain": 2220
             }
         }
     },

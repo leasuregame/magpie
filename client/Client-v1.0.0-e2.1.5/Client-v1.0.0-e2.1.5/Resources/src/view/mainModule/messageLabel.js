@@ -47,8 +47,6 @@ var MessageLabel = cc.Node.extend({
 
             var x = 640 + this._messageLabel.getContentSize().width;
 
-            cc.log(x);
-
             this._messageLabel.runAction(
                 cc.MoveBy.create(MESSAGE_MOVE_TIME, cc.p(-x, 0))
             );

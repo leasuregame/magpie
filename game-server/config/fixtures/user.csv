@@ -15,3 +15,6 @@ id;account;password;name;loginCount;lastLoginTime;lastLoginDevice;createTime;rol
 108;user5;1;user5;0;0;iapd;0;[1]
 110;passer;1;passer;1;0;ipad;0;[1]
 111;poorVip;1;poorVip;1;0;ipad;0;[1]
+112;112;1;buyMoney;1;0;ipad;0;[1]
+113;113;1;buyPower;1;0;ipad;0;[1]
+114;114;1;buyChallengeCount;1;0;ipad;0;[1]

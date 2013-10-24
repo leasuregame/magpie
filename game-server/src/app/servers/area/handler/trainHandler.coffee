@@ -9,6 +9,7 @@ elixirConfig = require '../../../../config/data/elixir'
 starUpgradeConfig = require '../../../../config/data/starUpgrade'
 cardConfig = require '../../../../config/data/card'
 utility = require '../../../common/utility'
+msgQueue = require '../../../common/msgQueue'
 entityUtil = require '../../../util/entityUtil'
 job = require '../../../dao/job'
 achieve = require '../../../domain/achievement'
@@ -140,10 +141,12 @@ Handler::luckyCard = (msg, session, next) ->
         player.set('highDrawCardCount',0)
         card = table.getTableItem('cards', cardEnt.tableId)
         msg = {
-          route: 'onSystemMessage',
+          #route: 'onSystemMessage',
           msg: player.name + '幸运的召唤到了5星卡' + card.name + '！！！'
+          type: 0
         }
-        @app.get('messageService').pushMessage(msg)
+        #@app.get('messageService').pushMessage(msg)
+        msgQueue.push(msg)
 
       if fragment
         player.increase('fragments',fragment)
@@ -302,11 +305,12 @@ Handler::starUpgrade = (msg, session, next) ->
           achieve.star5card(player)
           cardNmae = table.getTableItem('cards', card.tableId).name
           msg = {
-            route: 'onSystemMessage',
+            #route: 'onSystemMessage',
             msg: player.name + '成功的将' + cardNmae + '进阶为5星！！！'
+            type: 0
           }
-          @app.get('messageService').pushMessage(msg)
-
+          #@app.get('messageService').pushMessage(msg)
+          msgQueue.push(msg);
         # 卡牌星级进阶，添加一个被动属性
         if card.star >= 3
           card.bornPassiveSkill()
@@ -389,10 +393,8 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       achieve.psTo10(player)
 
     result = {
-      hp: card.hp,
-      atk:card.atk,
       ability: card.ability(),
-      passSkills: card.passiveSkills
+      passiveSkills: card.passiveSkills
     }
 
     next(null, {code: 200, msg: result})
@@ -521,8 +523,8 @@ Handler::useElixir = (msg, session, next) ->
         return next(null, {code: err.code or 500, msg: err.msg or ''})
 
       result = {
-        hp: card.hp,
-        atk:card.atk,
+        elixirHp: card.elixirHp,
+        elixirAtk:card.elixirAtk,
         ability: card.ability(),
       }
 
@@ -532,18 +534,25 @@ Handler::changeLineUp = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   lineupObj = msg.lineUp
 
-  tids = _.values(lineupObj)
-  if _.uniq(tids).length isnt tids.length
-    return next(null, {code: 501, msg: '上阵卡牌的角色不能重复'})
+  cids = _.values(lineupObj)
+  if _.uniq(cids).length isnt cids.length
+    return next(null, {code: 501, msg: '上阵卡牌的不能重复'})
 
-  if -1 not in tids
+  if -1 not in cids
     return next(null, {code: 501, msg: '阵型中缺少元神信息'})
 
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err
       return next(null, {code: 500, msg: err.msg})
 
-    if not checkCardCount(player.lv, tids)
+    tids = player.getCards(cids).map (i) -> i.tableId
+    nums = (
+      table.getTable('cards').filter (id, item) -> item.id in tids
+    ).map (item) -> item.number
+    if _.uniq(nums).length isnt nums.length
+      return next(null, {code: 501, msg: '上阵卡牌不能是相同系列的卡牌'})
+
+    if not checkCardCount(player.lv, cids)
       return next(null, {code: 501, msg: "上阵卡牌数量不对"})
 
     player.updateLineUp(lineupObj)

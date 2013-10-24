@@ -21,20 +21,20 @@ var LineUpLayer = LazyLayer.extend({
     _beganPoint: null,
     _oldPoint: null,
     _locate: {
-        1: cc.p(190, 760),
-        2: cc.p(360, 760),
-        3: cc.p(530, 760),
-        4: cc.p(190, 550),
-        5: cc.p(360, 550),
-        6: cc.p(530, 550)
+        1: cc.p(190, 730),
+        2: cc.p(360, 730),
+        3: cc.p(530, 730),
+        4: cc.p(190, 520),
+        5: cc.p(360, 520),
+        6: cc.p(530, 520)
     },
     _touchRect: {
-        1: cc.rect(123, 681, 135, 158),
-        2: cc.rect(293, 681, 135, 158),
-        3: cc.rect(463, 681, 135, 158),
-        4: cc.rect(123, 471, 135, 158),
-        5: cc.rect(293, 471, 135, 158),
-        6: cc.rect(463, 471, 135, 158)
+        1: cc.rect(123, 651, 135, 158),
+        2: cc.rect(293, 651, 135, 158),
+        3: cc.rect(463, 651, 135, 158),
+        4: cc.rect(123, 441, 135, 158),
+        5: cc.rect(293, 441, 135, 158),
+        6: cc.rect(463, 441, 135, 158)
     },
 
     init: function () {
@@ -47,26 +47,29 @@ var LineUpLayer = LazyLayer.extend({
         this.addChild(bgLayer, -1);
 
         var bgSprite = cc.Sprite.create(main_scene_image.icon32);
-        bgSprite.setPosition(cc.p(360, 700));
+        bgSprite.setPosition(cc.p(360, 670));
         this.addChild(bgSprite);
 
-        var titleLabel = cc.LabelTTF.create("调 整 阵 型", "STHeitiTC-Medium", 30);
+        var titleLabel = cc.LabelTTF.create("查 看 阵 型", "STHeitiTC-Medium", 30);
         titleLabel.setColor(cc.c3b(255, 239, 131));
-        titleLabel.setPosition(cc.p(190, 948));
+        titleLabel.setPosition(cc.p(190, 918));
         this.addChild(titleLabel);
 
         var player = gameData.player;
 
         var nameLabel = cc.LabelTTF.create(player.get("name"), "STHeitiTC-Medium", 20);
-        nameLabel.setPosition(cc.p(220, 882));
+        nameLabel.setColor(cc.c3b(255, 239, 131));
+        nameLabel.setPosition(cc.p(220, 852));
         this.addChild(nameLabel);
 
         var lvLabel = cc.LabelTTF.create("等级: " + player.get("lv"), "STHeitiTC-Medium", 20);
-        lvLabel.setPosition(cc.p(360, 882));
+        lvLabel.setColor(cc.c3b(255, 239, 131));
+        lvLabel.setPosition(cc.p(360, 852));
         this.addChild(lvLabel);
 
-        var abilityLabel = cc.LabelTTF.create("战斗力: " + player.get("ability"), "STHeitiTC-Medium", 20);
-        abilityLabel.setPosition(cc.p(500, 882));
+        var abilityLabel = cc.LabelTTF.create("战斗力: " + player.getAbility(), "STHeitiTC-Medium", 20);
+        abilityLabel.setColor(cc.c3b(255, 239, 131));
+        abilityLabel.setPosition(cc.p(500, 852));
         this.addChild(abilityLabel);
 
         var lineUp = gameData.lineUp;
@@ -81,7 +84,7 @@ var LineUpLayer = LazyLayer.extend({
 
             var id = lineUp.getLineUpByIndex(i);
 
-            if (id) {
+            if (id != undefined) {
                 var node = null;
 
                 if (id == -1) {
@@ -128,7 +131,11 @@ var LineUpLayer = LazyLayer.extend({
     _onClickCard: function () {
         cc.log("LineUpLayer _onClickCard");
 
-        LineUpDetailsLayer.pop(gameData.lineUp.getLineUpCardList());
+        var cardList = gameData.lineUp.getLineUpCardList();
+
+        if (cardList.length > 0) {
+            LineUpDetailsLayer.pop(cardList);
+        }
     },
 
     _setCard: function (index) {
@@ -298,4 +305,10 @@ LineUpLayer.create = function () {
     }
 
     return null;
+};
+
+LineUpLayer.pop = function () {
+    var lineUpLayer = LineUpLayer.create();
+
+    MainScene.getInstance().getLayer().addChild(lineUpLayer, 10);
 };

@@ -8,9 +8,11 @@ describe('Area Server', function() {
 			password: '1'
 		};
 
-
-
 		describe('area.spiritHandler.collect', function() {
+			beforeAll(function() {
+				doAjax('/loaddata/csv', {}, function() {});
+			});
+
 			function doTest(lv) {
 				var spiritMap = {
 					1: 10,
@@ -24,9 +26,6 @@ describe('Area Server', function() {
 					9: 26,
 					10: 28
 				};
-				beforeAll(function() {
-					doAjax('/loaddata/csv', {}, function() {});
-				});
 
 				describe("when spiritPool's level is " + lv, function() {
 					var totalSpirit = 0;
@@ -47,6 +46,9 @@ describe('Area Server', function() {
 
 					describe('and do collect spirit', function() {
 						beforeEach(function() {
+							doAjax('/player/' + arthur.playerId, {}, function(res) {
+								before_player = res.data;
+							});
 							loginWith(arthur.account, arthur.password, arthur.areaId);
 						});
 
@@ -55,34 +57,20 @@ describe('Area Server', function() {
 								isGold: false
 							}, function(data) {
 								console.log(data);
-								var rs = data.msg.rewardSpirit;
-								totalSpirit += rs;
-
-								if (rs > 0) {
-									expect(rs).toBeLessThan(51);
-									expect(rs).toBeGreaterThan(9)
+								expect(data.code).toEqual(200);
+								expect(data.msg.spiritPool).toEqual({
+									lv: lv,
+									exp: 5,
+									collectCount: 14
+								});
+								if (data.msg.isDouble) {
+									expect(data.msg.spirit_obtain).toEqual(spiritMap[lv] * 2);
 								} else {
-									expect(rs).toEqual(0);
+									expect(data.msg.spirit_obtain).toEqual(spiritMap[lv]);
 								}
 
-								expect(data).toEqual({
-									code: 200,
-									msg: {
-										spiritor: {
-											lv: 0,
-											spirit: spiritMap[lv] + totalSpirit
-										},
-										spiritPool: {
-											lv: lv,
-											exp: 5,
-											collectCount: 14
-										},
-										rewardSpirit: rs
-									}
-								});
-
 								doAjax('/player/' + arthur.playerId, {}, function(res) {
-									expect(JSON.parse(res.data.spiritor)).toEqual(data.msg.spiritor);
+									expect(JSON.parse(res.data.spiritor).spirit).toEqual(JSON.parse(before_player.spiritor).spirit + data.msg.spirit_obtain);
 									expect(JSON.parse(res.data.spiritPool)).toEqual(data.msg.spiritPool);
 								});
 							});
@@ -98,34 +86,22 @@ describe('Area Server', function() {
 								isGold: true
 							}, function(data) {
 								console.log(data);
-								var rs = data.msg.rewardSpirit;
-								totalSpirit += rs;
-
-								if (rs > 0) {
-									expect(rs).toBeLessThan(51);
-									expect(rs).toBeGreaterThan(9)
-								} else {
-									expect(rs).toEqual(0);
-								}
 
 								expect(data).toEqual({
 									code: 200,
 									msg: {
-										spiritor: {
-											lv: 0,
-											spirit: spiritMap[lv] * 3 + totalSpirit
-										},
+										spirit_obtain: spiritMap[lv] * 2,
+										isDouble: false,
 										spiritPool: {
 											lv: lv,
 											exp: 10,
 											collectCount: 13
-										},
-										rewardSpirit: rs
+										}
 									}
 								});
 
 								doAjax('/player/' + arthur.playerId, {}, function(res) {
-									expect(JSON.parse(res.data.spiritor)).toEqual(data.msg.spiritor);
+									expect(JSON.parse(res.data.spiritor).spirit).toEqual(data.msg.spirit_obtain + JSON.parse(before_player.spiritor).spirit);
 									expect(JSON.parse(res.data.spiritPool)).toEqual(data.msg.spiritPool);
 									expect(res.data.gold).toEqual(before_player.gold - 20);
 								});

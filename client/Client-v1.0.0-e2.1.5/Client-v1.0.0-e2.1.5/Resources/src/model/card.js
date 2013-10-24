@@ -146,8 +146,8 @@ var Card = Entity.extend({
         this._initHp = Math.floor(this._initHp);
         this._initAtk = Math.floor(this._initAtk);
 
-        this._hp = this._initHp;
-        this._atk = this._initAtk;
+//        this._hp = this._initHp;
+//        this._atk = this._initAtk;
 
         this._url = "card" + (cardTable.number % 6 + 1);
 
@@ -180,7 +180,7 @@ var Card = Entity.extend({
         this._skillRate = skillTable["rate" + this._star] || 0;
         this._skillDescription = skillTable.description;
         this._skillType = skillTable.type;
-        this._skillMaxLv = 5;
+        this._skillMaxLv = outputTables.lv_limit.rows[1].skill_lv_limit;
     },
 
     getSkillType: function () {

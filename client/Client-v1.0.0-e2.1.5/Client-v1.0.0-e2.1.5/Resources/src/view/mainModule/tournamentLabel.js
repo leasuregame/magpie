@@ -75,7 +75,7 @@ var TournamentLabel = cc.Node.extend({
                 functionItem = cc.MenuItemImage.createWithIcon(
                     main_scene_image.button9,
                     main_scene_image.button9s,
-                    main_scene_image.icon41,
+                    main_scene_image.icon120,
                     this._onClickFunction,
                     this
                 );
@@ -115,23 +115,18 @@ var TournamentLabel = cc.Node.extend({
         var cardList = this._player.cardList;
         var len = cardList.length;
         var scrollViewLayer = cc.Layer.create();
-        var scrollViewWidth = len * 75.6;
 
-        if (scrollViewWidth < 226.8) {
-            scrollViewWidth = 226.8;
-        }
-
-        for (var i = 0; i < len; ++i) {
-            var cardHeadNode = CardHeadNode.create(cardList[i]);
+        for (var i = 0; i < MAX_LINE_UP_SIZE - 1; ++i) {
+            var cardHeadNode = CardHeadNode.create(cardList[i] || -1);
             cardHeadNode.setScale(0.7);
-            cardHeadNode.setPosition(cc.p(i * 76.5, 0));
+            cardHeadNode.setPosition(cc.p(i * 75.6, 0));
             scrollViewLayer.addChild(cardHeadNode);
         }
 
         var scrollView = cc.ScrollView.create(cc.size(226.8, 75.6), scrollViewLayer);
-        scrollView.setContentSize(cc.size(scrollViewWidth, 75.6));
+        scrollView.setContentSize(cc.size(378, 75.6));
         scrollView.setPosition(cc.p(206, 30));
-        scrollView.setBounceable(false);
+//        scrollView.setBounceable(false);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         scrollView.updateInset();
         this.addChild(scrollView);
@@ -150,10 +145,6 @@ var TournamentLabel = cc.Node.extend({
         return true;
     },
 
-    update: function () {
-        cc.log("TournamentLabel update");
-    },
-
     _onClickPlayer: function () {
         cc.log("TournamentLabel _onClickPlayer");
 
@@ -167,7 +158,11 @@ var TournamentLabel = cc.Node.extend({
 
         if (this._player.playerId != gameData.player.get("id")) {
             if (this._player.type == CAN_ADD_FRIEND) {
-                gameData.tournament.addFriend(this._player.playerId);
+                gameData.player.playerDetail(function (data) {
+                    cc.log(data);
+
+                    LineUpDetail.pop(data);
+                }, this._player.playerId);
             } else {
                 gameData.tournament.defiance(function (id) {
                     BattlePlayer.getInstance().play(id);

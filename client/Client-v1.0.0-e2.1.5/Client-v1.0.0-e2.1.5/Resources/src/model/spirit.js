@@ -12,18 +12,20 @@
  * */
 
 
-var MAX_SPIRIT_LV = 10;
-
 var Spirit = Entity.extend({
     _lv: 0,
+    _maxLv: 0,
     _exp: 0,
     _maxExp: 0,
     _rate: 0,
     _passiveHarm: 0,
     _skillHarm: 0,
+    _ability: 0,
 
     init: function (data) {
         cc.log("Spirit init");
+
+        this._maxLv = outputTables.lv_limit.rows[1].spirit_lv_limit;
 
         this.update(data);
 
@@ -39,6 +41,7 @@ var Spirit = Entity.extend({
 
         this.set("lv", data.lv);
         this.set("exp", data.spirit);
+        this.set("ability", data.ability);
 
         this._loadTable();
     },
@@ -57,13 +60,30 @@ var Spirit = Entity.extend({
     canUpgrade: function () {
         cc.log("Spirit canUpgrade");
 
-        return (this._lv < MAX_SPIRIT_LV && this._exp > this._maxExp);
+        return (this._lv < this._maxLv && this._exp > this._maxExp);
     },
 
     upgrade: function (cb) {
         cc.log("Spirit upgrade");
 
-        TipLayer.tip("等章海实现啊。。。。。");
+        var that = this;
+        lzWindow.pomelo.request("area.spiritHandler.spiritorUpgrade", {}, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("upgrade success");
+
+                var msg = data.msg;
+
+                that.update(msg.spiritor);
+
+                cb(true);
+            } else {
+                cc.log("upgrade fail");
+
+                cb(false);
+            }
+        });
     }
 });
 

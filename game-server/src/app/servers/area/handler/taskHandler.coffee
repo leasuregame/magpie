@@ -52,6 +52,13 @@ Handler::explore = (msg, session, next) ->
             countSpirit(player, battleLog, 'TASK')
             player.incSpirit battleLog.totalSpirit if battleLog.winner is 'own'
 
+          ### 每次战斗结束都有20%的概率获得5元宝 ###
+          if utility.hitRate(taskRate.gold_obtain.rate)
+            player.increase('gold', taskRate.gold_obtain.value)
+            data.gold_obtain += taskRate.gold_obtain.value
+
+          checkFragment(battleLog, player, chapterId)
+
           if battleLog.winner is 'own'
             async.parallel [
               (callback) ->
@@ -77,11 +84,10 @@ Handler::explore = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg})
 
     player.save()
-    data.task = player.task
+    data.task = player.getTask()
     data.power = player.power
     data.lv = player.lv
     data.exp = player.exp
-    data.spiritor = player.spiritor
     next(null, {code: 200, msg: data})
 
 Handler::updateMomoResult = (msg, session, next) ->
@@ -187,8 +193,7 @@ Handler::passBarrier = (msg, session, next) ->
       pass: player.getPass(),
       power: player.power,
       exp: player.exp,
-      lv: player.lv,
-      spiritor: player.spiritor
+      lv: player.lv
     }})
 
 ###
@@ -203,19 +208,17 @@ Handler::resetPassMark = (msg, session, next) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
     (res,cb) ->
       player = res
-      console.log("gold = " , player.gold)
       if player.gold < 200
         return cb({code: 501,msg: '元宝不足'})
 
       if player.resetPassMark()
          cb()
-
       else
         return cb({code: 501,msg: '重置关卡次数已用光'})
 
     (cb) ->
-      player.decrease 'gold',200
-      cb(null,player.gold)
+      player.decrease 'gold', 200
+      cb(null, player.gold)
   ],(err,gold) ->
 
     if err
@@ -223,9 +226,9 @@ Handler::resetPassMark = (msg, session, next) ->
 
     player.save()
 
-    next(null,{code: 200,msg: {
-      canReset:if player.pass.resetTimes > 0 then true else false
-      gold:gold
+    next(null, {code: 200, msg: {
+      canReset: if player.pass.resetTimes > 0 then true else false
+      gold: gold
     }})
 
 ###
@@ -271,8 +274,7 @@ Handler::mysticalPass = (msg, session, next) ->
       return next(err, {code: err.code or 500, msg: err.msg or ''})
 
     next(null, {code: 200, msg: {
-      battleLog: bl,
-      spiritor: player.spiritor
+      battleLog: bl
       hasMystical: player.hasMysticalPass()
     }})
 
@@ -307,3 +309,16 @@ updatePlayer = (player, rewards, layer) ->
   player.incPass() if player.passLayer is layer-1
   player.setPassMark(layer)
   player.save()
+
+checkFragment = (battleLog, player, chapterId) ->  
+  if(
+    player.task.hasFragment != parseInt(chapterId) and 
+    ( utility.hitRate(taskRate.fragment_rate) or player.task.id%10 is 0 )
+    )
+    battleLog.rewards.fragment = 1
+    task = utility.deepCopy(player.task)
+    task.hasFragment = parseInt(chapterId)
+    player.set('task', task)
+  else 
+    battleLog.rewards.fragment = 0
+    

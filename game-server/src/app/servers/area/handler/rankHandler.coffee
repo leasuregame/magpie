@@ -37,10 +37,13 @@ Handler::rankingList = (msg, session, next) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
     (res, cb) ->
       player = res
-      #fdata = table.getTableItem('function_limit', 1)
-      #if player.lv < fdata.rank
-      #   return cb({code: 501, msg: fdata.rank+'级开放'})
-      #else
+      fdata = table.getTableItem('function_limit', 1)
+      if player.lv < fdata.rank
+        return cb({code: 501, msg: fdata.rank+'级开放'})
+      
+      if not player.rank?
+        return cb({code: 501, msg: '找不到竞技信息'})
+
       cb()
     (cb) ->
       rankings = genRankings(player.rank.ranking)
@@ -48,50 +51,44 @@ Handler::rankingList = (msg, session, next) ->
         cb(err, players, rankings)
 
     (players,rankings,cb) ->
-
       flag = []
-
-      for p in players when p.id isnt playerId and p.id in player.rank.recentChallenger
+      for p in players when p.id isnt playerId and p.id in player.rank.recentChallenger and p.rank.ranking < player.rank.ranking
         rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK
         flag.push p.id
 
-      #console.log 'recentChallenger = ',player.rank.recentChallenger
-      #console.log 'flag = ',flag
-
       plys = _.difference(player.rank.recentChallenger,flag)
-
-      #console.log 'plys = ',plys
 
       playerManager.getPlayers plys, (err, ply) ->
         rank = {}
 
         for key , value of ply
-          players.push value
-          rank[value.rank.ranking] = STATUS_COUNTER_ATTACK
+          if player.rank.ranking > value.rank.ranking
+            players.push value
+            rank[value.rank.ranking] = STATUS_COUNTER_ATTACK
 
         cb(err, players, _.extend(rankings,rank))
-
-
   ], (err, players, rankings) ->
-
     if err
-      return next(null, {code: err.code, msg: err.message})
+      return next(null, {code: err.code or 501, msg: err.msg or err.message})
 
     players = filterPlayersInfo(players, rankings)
     players.sort (x, y) -> x.ranking - y.ranking
+    r = player.getRank()
     rank = {
-      ranking: player.getRank().ranking,
-      rankReward: player.getRank().rankReward,
+      ranking: r.ranking,
+      rankReward: r.rankReward,
       challengeCount: player.dailyGift.challengeCount,
       rankList: players
     }
     next(null,{code: 200, msg: {rank: rank}})
-    #next(null, {code: 200, msg: players})
 
 Handler::challenge = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   playerName = session.get('playerName')
   targetId = msg.targetId
+
+  if playerId is targetId
+   return next null,{code: 501, msg: '不能挑战自己'}
 
   player = null
   async.waterfall [
@@ -100,12 +97,6 @@ Handler::challenge = (msg, session, next) ->
 
     (res, cb) ->
       player = res
-      fdata = table.getTableItem('function_limit', 1)
-      if player.lv < fdata.rank
-        return cb({code: 501, msg: fdata.rank+'级开放'})
-      cb()
-
-    (cb) =>
       fightManager.pvp {playerId: playerId, targetId: targetId}, cb
 
     (bl, cb) =>
@@ -160,7 +151,11 @@ Handler::getRankingReward = (msg, session, next) ->
       return next(null, {code: 501, msg: "找不到#{ranking}的排名奖励"})
     player.increase('elixir', rewardData.elixir)
     player.save()
-    next(null, {code: 200, msg: rankingRewards: player.rank?.rankingRewards()})
+    next(null, {
+      code: 200, 
+      msg: rankingRewards: player.rank?.rankingRewards()
+      elixir: rewardData.elixir
+    })
 
 isV587 = (bl) ->
   ownCardCount = enemyCardCount = 0

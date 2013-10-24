@@ -103,7 +103,7 @@ var TournamentLayer = cc.Layer.extend({
         this.addChild(this._skyDialog, 10);
 
         var label = cc.Scale9Sprite.create(main_scene_image.bg16);
-        label.setContentSize(cc.size(216, 270));
+        label.setContentSize(cc.size(216, 300));
 
         var detailItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -112,7 +112,7 @@ var TournamentLayer = cc.Layer.extend({
             this._onClickDetail,
             this
         );
-        detailItem.setPosition(cc.p(108, 210));
+        detailItem.setPosition(cc.p(108, 240));
 
         var sendMessageItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -121,7 +121,7 @@ var TournamentLayer = cc.Layer.extend({
             this._onClickSendMessage,
             this
         );
-        sendMessageItem.setPosition(cc.p(108, 135));
+        sendMessageItem.setPosition(cc.p(108, 150));
 
         var addFriendItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -137,7 +137,7 @@ var TournamentLayer = cc.Layer.extend({
         label.addChild(menu);
 
         this._skyDialog.setLabel(label);
-        this._skyDialog.setRect(cc.rect(40, 198, 612, 700));
+        this._skyDialog.setRect(cc.rect(40, 198, 640, 700));
 
         return true;
     },
@@ -149,7 +149,7 @@ var TournamentLayer = cc.Layer.extend({
 
         this._expProgress.setAllValue(player.get("power"), player.get("maxPower"));
         this._lvLabel.setString(player.get("lv"));
-        this._abilityLabel.setString(player.get("ability"));
+        this._abilityLabel.setString(player.getAbility());
 
         if (this._scrollView != null) {
             this._scrollView.removeFromParent();
@@ -269,7 +269,11 @@ var TournamentLayer = cc.Layer.extend({
         var player = this._getPlayer(this._selectId);
 
         if (player) {
-            cc.log("查询详细信息");
+            gameData.player.playerDetail(function (data) {
+                cc.log(data);
+
+                LineUpDetail.pop(data);
+            }, this._selectId);
         } else {
             TipLayer.tip("找不到该玩家");
         }

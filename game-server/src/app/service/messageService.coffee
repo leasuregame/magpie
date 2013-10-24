@@ -34,8 +34,7 @@ class Service
     record = @pidMap[pid]
     if not record
       return cb(null, Code.MESSAGE.FA_USER_NOT_ONLINE)
-    console.log 'record ',record
-    console.log 'msg',msg
+
     @app.get('channelService').pushMessageByUids(msg.route, msg, [{uid: record.uid, sid: record.sid}], cb)
 
   pushMessage: (msg, cb) ->

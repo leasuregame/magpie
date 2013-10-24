@@ -16,7 +16,7 @@ var AbilityRankLayer = cc.Layer.extend({
     _skyDialog: null,
     _abilityRankList: null,
     _selectId: 0,
-    _nameLabel: null,
+    _playerItem: {},
 
     init: function () {
         cc.log("AbilityRankLayer init");
@@ -36,56 +36,76 @@ var AbilityRankLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
 
+        this._playerItem = {};
+        var own = gameData.player.get("id");
+
         for (var i = 0; i < len; ++i) {
             var y = scrollViewHeight - 100 - 100 * i;
 
             var playerItem = cc.MenuItemImage.create(
-                main_scene_image.button42,
-                main_scene_image.button42,
+                main_scene_image.button15,
+                main_scene_image.button15s,
                 this._onClickPlayer(i),
                 this
             );
+            playerItem.setScale(1.04, 0.75);
             playerItem.setAnchorPoint(cc.p(0, 0));
             playerItem.setPosition(cc.p(0, y));
             menu.addChild(playerItem);
 
+            this._playerItem[i] = playerItem;
+
+            if (this._abilityRankList[i].id == own) {
+                playerItem.setEnabled(false);
+
+                var myselfSprite = cc.Sprite.create(main_scene_image.icon257);
+                myselfSprite.setScale(1.04, 0.75);
+                myselfSprite.setAnchorPoint(cc.p(0, 0));
+                myselfSprite.setPosition(cc.p(0, y));
+                scrollViewLayer.addChild(myselfSprite);
+            }
+
             if (i < 3) {
                 var rankIcon = cc.Sprite.create(main_scene_image["icon" + (201 + i)]);
-                rankIcon.setPosition(cc.p(60, y + 52));
+                rankIcon.setPosition(cc.p(60, y + 50));
                 scrollViewLayer.addChild(rankIcon);
             }
 
             var rankLabel = cc.LabelTTF.create(i + 1, "Arial", 55);
             rankLabel.setColor(cc.c3b(255, 252, 175));
-            rankLabel.setPosition(cc.p(60, y + 55));
+            rankLabel.setPosition(cc.p(60, y + 52));
             scrollViewLayer.addChild(rankLabel);
 
-            var nameIcon = cc.Sprite.create(main_scene_image.icon209);
-            nameIcon.setPosition(cc.p(180, y + 70));
+            var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
+            nameIcon.setContentSize(cc.size(155, 35));
+            nameIcon.setAnchorPoint(cc.p(0, 0.5));
+            nameIcon.setPosition(cc.p(105, y + 70));
             scrollViewLayer.addChild(nameIcon);
 
             var nameLabel = cc.LabelTTF.create(this._abilityRankList[i].name, "STHeitiTC-Medium", 22);
+            nameLabel.setColor(cc.c3b(255, 242, 206));
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
             nameLabel.setPosition(cc.p(115, y + 70));
             scrollViewLayer.addChild(nameLabel);
 
             var abilityIcon = cc.Sprite.create(main_scene_image.icon204);
-            abilityIcon.setPosition(cc.p(420, y + 60));
+            abilityIcon.setPosition(cc.p(420, y + 50));
             scrollViewLayer.addChild(abilityIcon);
 
             var abilityLabel = cc.LabelTTF.create(this._abilityRankList[i].ability, "Arial", 35);
-            abilityLabel.setColor(cc.c3b(255, 252, 175));
+            abilityLabel.setColor(cc.c3b(56, 3, 5));
             abilityLabel.setAnchorPoint(cc.p(0, 0.5));
-            abilityLabel.setPosition(cc.p(465, y + 57));
+            abilityLabel.setPosition(cc.p(465, y + 45));
             scrollViewLayer.addChild(abilityLabel);
 
             var lvIcon = cc.Sprite.create(main_scene_image.icon208);
-            lvIcon.setPosition(cc.p(140, y + 35));
+            lvIcon.setPosition(cc.p(140, y + 30));
             scrollViewLayer.addChild(lvIcon);
 
             var lvLabel = cc.LabelTTF.create(this._abilityRankList[i].lv, "Arial", 22);
+            lvLabel.setColor(cc.c3b(56, 3, 5));
             lvLabel.setAnchorPoint(cc.p(0, 0.5));
-            lvLabel.setPosition(cc.p(175, y + 34));
+            lvLabel.setPosition(cc.p(175, y + 27));
             scrollViewLayer.addChild(lvLabel);
         }
 
@@ -99,23 +119,10 @@ var AbilityRankLayer = cc.Layer.extend({
         scrollView.setContentOffset(scrollView.minContainerOffset());
 
         this._skyDialog = SkyDialog.create();
-        this.addChild(this._skyDialog);
+        this.addChild(this._skyDialog, 10);
 
         var label = cc.Scale9Sprite.create(main_scene_image.bg16);
-        label.setContentSize(cc.size(200, 270));
-
-        this._nameLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
-        this._nameLabel.setPosition(cc.p(98, 230));
-        label.addChild(this._nameLabel);
-
-        var sendMessageItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon119,
-            this._onClickSendMessage,
-            this
-        );
-        sendMessageItem.setPosition(cc.p(98, 180));
+        label.setContentSize(cc.size(216, 300));
 
         var detailItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -124,23 +131,32 @@ var AbilityRankLayer = cc.Layer.extend({
             this._onClickDetail,
             this
         );
-        detailItem.setPosition(cc.p(98, 120));
+        detailItem.setPosition(cc.p(108, 240));
 
-        var battleItem = cc.MenuItemImage.createWithIcon(
+        var sendMessageItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
-            main_scene_image.icon121,
-            this._onClickBattle,
+            main_scene_image.icon119,
+            this._onClickSendMessage,
             this
         );
-        battleItem.setPosition(cc.p(98, 60));
+        sendMessageItem.setPosition(cc.p(108, 150));
 
-        var menu = cc.Menu.create(sendMessageItem, detailItem, battleItem);
+        var addFriendItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon41,
+            this._onClickAddFriend,
+            this
+        );
+        addFriendItem.setPosition(cc.p(108, 60));
+
+        var menu = cc.Menu.create(detailItem, sendMessageItem, addFriendItem);
         menu.setPosition(cc.p(0, 0));
         label.addChild(menu);
 
         this._skyDialog.setLabel(label);
-        this._skyDialog.setRect(cc.rect(40, 194, 640, 768));
+        this._skyDialog.setRect(cc.rect(40, 198, 640, 768));
 
         return true;
     },
@@ -149,32 +165,34 @@ var AbilityRankLayer = cc.Layer.extend({
         return function () {
             cc.log("AbilityRankLayer _onClickPlayer");
 
-            var player = this._abilityRankList[index];
+            var point = this._playerItem[index].convertToWorldSpace(cc.p(255, 90));
 
-            cc.log(player);
-
-            this._selectId = player.id;
-
-            this._nameLabel.setString(player.name);
-
-
-            this._skyDialog.show();
+            this._selectId = index;
+            this._skyDialog.show(point);
         }
-    },
-
-    _onClickSendMessage: function () {
-        cc.log("AbilityRankLayer _onClickSendMessage: " + this._selectId);
-
     },
 
     _onClickDetail: function () {
         cc.log("AbilityRankLayer _onClickDetail: " + this._selectId);
 
+        gameData.player.playerDetail(function (data) {
+            cc.log(data);
+
+            LineUpDetail.pop(data);
+        }, this._abilityRankList[this._selectId].id);
     },
 
-    _onClickBattle: function () {
-        cc.log("AbilityRankLayer _onClickBattle: " + this._selectId);
+    _onClickSendMessage: function () {
+        cc.log("AbilityRankLayer _onClickSendMessage: " + this._selectId);
 
+        var player = this._abilityRankList[this._selectId];
+        SendMessageLayer.pop(player.id, player.name);
+    },
+
+    _onClickAddFriend: function () {
+        cc.log("AbilityRankLayer _onClickAddFriend: " + this._selectId);
+
+        gameData.friend.addFriend(this._abilityRankList[this._selectId].name);
     }
 });
 

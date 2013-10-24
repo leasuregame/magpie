@@ -1,6 +1,7 @@
 battle = require '../../../manager/simulateBattle'
 lottery = require '../../../manager/lottery'
 card = require '../../../domain/entity/card'
+msgQueue = require '../../../common/msgQueue'
 
 
 module.exports = (app) ->
@@ -37,6 +38,12 @@ Handler::simulatePassSkillAfresh = (msg,session,next)->
   c.afreshPassiveSkill(type,ps)
   console.log(c.passiveSkills);
   next null,{code:200,msg:c.passiveSkills}
+
+Handler::sendSysMessage = (msg,session,next)->
+  console.log 'msg = ',msg
+
+  msgQueue.push(msg)
+  next null,{code:200,msg:'发送成功'}
 
 
 

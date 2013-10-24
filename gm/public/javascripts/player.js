@@ -117,17 +117,18 @@ function updatePlayerData() {
 
     };
     data.task = JSON.stringify(task);
-    var mark = JSON.parse(player.pass).mark;
+   //var mark = JSON.parse(player.pass).mark;
   //  console.log(mark);
     var layer = parseInt($("#layer").val());
 
-   /* var pass = {
-        layer:layer,
+    var pass = {
         mark:[],
         mystical:JSON.parse(player.pass).mystical,
         resetTimes:JSON.parse(player.pass).resetTimes
     };
-   */
+
+    data.pass = JSON.stringify(pass);
+
     data.passLayer = layer;
 
     data.name = player.name;

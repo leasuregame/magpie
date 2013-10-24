@@ -42,14 +42,16 @@ describe("Area Server", function() {
 							expect(data.msg.battleLog).toBeBattleLog();
 
 							doAjax('/player/' + arthur.playerId, {}, function(res) {
-								expect(_.extend(JSON.parse(res.data.pass), {layer: res.data.passLayer})).toEqual(data.msg.pass);
+								expect(_.extend(JSON.parse(res.data.pass), {
+									layer: res.data.passLayer
+								})).toEqual(data.msg.pass);
 								expect(res.data.passLayer).toEqual(data.msg.pass.layer);
 							});
 						});
 					});
 				});
 
-				describe('Cases than can not pass', function() {
+				describe('Cases that can not pass', function() {
 					beforeEach(function() {
 						loginWith(mike.account, mike.password, mike.areaId);
 					});
@@ -97,12 +99,87 @@ describe("Area Server", function() {
 					});
 
 				});
+
+				describe('when player upgrade', function() {
+					describe('when player is vip', function() {
+						beforeEach(function() {
+							doAjax('/update/player/' + 100, {
+								exp: 625,
+								vip: 7,
+								lv: 30
+							}, function() {
+								loginWith('arthur', '1', 1);
+							});
+						});
+
+						it('should can upgrade player', function() {
+							request('area.taskHandler.passBarrier', {
+								layer: 1
+							}, function(data) {
+								console.log(data);
+								expect(data.code).toEqual(200);
+								expect(data.msg.upgradeInfo).toEqual({
+									lv: 31,
+									rewards: {
+										money: 300,
+										energy: 115,
+										skillPoint: 250,
+										elixir: 250
+									},
+									friendsCount: 60
+								});
+								expect(data.msg.exp).toEqual(3);
+							});
+						});
+					});
+
+					describe('when player is not vip', function() {
+						beforeEach(function() {
+							doAjax('/update/player/' + 101, {
+								exp: 625,
+								vip: 0,
+								lv: 30
+							}, function() {
+								loginWith('user4', '1', 1);
+							});
+						});
+
+						it('should can upgrade player', function() {
+							request('area.taskHandler.passBarrier', {
+								layer: 1
+							}, function(data) {
+								console.log(data);
+								expect(data.code).toEqual(200);
+								expect(data.msg.upgradeInfo).toEqual({
+									lv: 31,
+									rewards: {
+										money: 300,
+										energy: 115,
+										skillPoint: 250,
+										elixir: 250
+									},
+									friendsCount: 30
+								});
+								expect(data.msg.exp).toEqual(3);
+							});
+						});
+					});
+				});
 			});
 
 			describe("连续爬塔50层测试", function() {
+				beforeAll(function() {
+					doAjax('/update/player/' + passer.playerId, {
+						lv: 60,
+						exp: 10000
+					}, function() {});
+				})
 				beforeEach(function() {
 					loginWith(passer.account, passer.password, passer.areaId);
+
 				});
+
+				var curLv = 60;
 
 				function doPassBarrier(layer) {
 					it('爬塔第 ' + layer + ' 层', function() {
@@ -112,17 +189,35 @@ describe("Area Server", function() {
 							console.log('第' + layer + '层：', data);
 							expect(data.code).toEqual(200);
 							expect(data.msg).toBeDefined();
-							expect(data.msg).hasProperties([
-								'battleLog',
-								'pass',
-								'power',
-								'exp',
-								'lv',
-								'spiritor'
-							]);
+							if (data.msg.upgradeInfo) {
+								console.log('player upgraded: ', data.msg.upgradeInfo);
+								expect(data.msg).hasProperties([
+									'battleLog',
+									'pass',
+									'power',
+									'exp',
+									'lv',
+									'upgradeInfo'
+								]);
+
+								expect(data.msg.upgradeInfo).hasProperties(['lv', 'rewards', 'friendsCount']);
+								expect(data.msg.upgradeInfo.lv).toEqual(++curLv);
+								expect(data.msg.upgradeInfo.friendsCount).toEqual(20);
+								expect(data.msg.upgradeInfo.rewards).hasProperties([
+									'money', 'energy', 'skillPoint', 'elixir'
+								]);
+							} else {
+								expect(data.msg).hasProperties([
+									'battleLog',
+									'pass',
+									'power',
+									'exp',
+									'lv'
+								]);
+							}
 							expect(data.msg.battleLog.winner).toEqual('own');
 							//expect(data.msg.battleLog.rewards).hasProperties(['exp', 'skillPoint', 'spirit'])
-							expect(data.msg.pass).hasProperties(['layer', 'mark', 'hasMystical','canReset']);
+							expect(data.msg.pass).hasProperties(['layer', 'mark', 'hasMystical', 'canReset']);
 							expect(data.msg.battleLog).toBeBattleLog();
 
 							expect(data.msg.battleLog.rewards).hasProperties([
@@ -152,4 +247,3 @@ describe("Area Server", function() {
 		});
 	});
 });
-

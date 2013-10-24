@@ -1545,11 +1545,11 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
 
         pomelo.request = function (route, msg, cb) {
             if (!connectSuccess) {
-                TipLayer.tip("别闹了，断网了。。");
+                TipLayer.tip("断线啦、正在玩命地重连。。。");
 
                 cb({
                     code: 404,
-                    msg: "别闹了，断网了。。"
+                    msg: "断线啦、正在玩命地重连。。。"
                 });
 
                 return;

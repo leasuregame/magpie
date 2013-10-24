@@ -8,6 +8,8 @@ logger = require('pomelo-logger').getLogger(__filename)
 msgConfig = require '../../../../config/data/message'
 _ = require 'underscore'
 
+rankingConfig = table.getTableItem('ranking_list',1)
+
 INTERVALS = 
   10000: 106
   7000: 83
@@ -78,7 +80,8 @@ Handler::rankingList = (msg, session, next) ->
       ranking: r.ranking,
       rankReward: r.rankReward,
       challengeCount: player.dailyGift.challengeCount,
-      rankList: players
+      rankList: players,
+      time: Date.now()
     }
     next(null,{code: 200, msg: {rank: rank}})
 
@@ -170,15 +173,15 @@ isV587 = (bl) ->
   return ownCardCount is 1 and enemyCardCount is 5
 
 genRankings = (ranking) ->
-  top3 = {}
-  for r in [1..3]
-    top3[r] = if ranking > 3 then STATUS_NORMAL else STATUS_CHALLENGE
+  top = {}
+  for r in [1..rankingConfig.top]
+    top[r] = if ranking > rankingConfig.top then STATUS_NORMAL else STATUS_CHALLENGE
 
   _results = {}
 
-  if ranking <= 3
-    _results[4] = STATUS_CHALLENGE
-    _results[5] = STATUS_CHALLENGE
+  if ranking <= rankingConfig.top
+     for r in [rankingConfig.top + 1..rankingConfig.challenge_count - rankingConfig.top + 1]
+        _results[r] = STATUS_CHALLENGE
 
   else
     keys = Object.keys(INTERVALS)
@@ -187,11 +190,16 @@ genRankings = (ranking) ->
       if ranking >= k
         step = INTERVALS[k]
         break
-
-    _results[ranking - step * i] = STATUS_CHALLENGE for i in [1...6]
+        
+    for i in [1..rankingConfig.challenge_count]
+      r = ranking - step * i
+      if r > 0
+        _results[r] = STATUS_CHALLENGE 
+      else 
+        _results[ranking - r + 1]
 
   _results[ranking] = STATUS_NORMAL
-  _.extend(top3, _results)
+  _.extend(top, _results)
 
 filterPlayersInfo = (players, rankings) ->
   players.map (p) -> 

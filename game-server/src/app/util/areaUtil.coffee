@@ -5,6 +5,7 @@ msgConfig = require('../../config/data/message')
 utility = require('../common/utility')
 
 FLAG_FILE = path.join(__dirname, '..', '..', 'config', 'powerGivenFlag.json')
+DEFAULT_FLAG = powerGiven: [], date: '1970-1-1'
 SYSTEM = -1
 
 module.exports = 
@@ -16,6 +17,10 @@ module.exports =
     data.date = utility.shortDateString()
     @_writeFlag JSON.stringify(data)
     @_addSysMsg(app)
+
+  checkFlagFile: ->
+    if not fs.existsSync(FLAG_FILE)
+      fs.writeFileSync(FLAG_FILE, JSON.stringify(DEFAULT_FLAG))
 
   _readFlag: ->
     JSON.parse(fs.readFileSync(FLAG_FILE))

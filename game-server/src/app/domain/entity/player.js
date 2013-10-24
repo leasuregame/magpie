@@ -46,29 +46,29 @@ var NOW = function() {
 };
 
 var addEvents = function(player) {
-    // 经验值改变，判断是否升级
-    player.on('exp.change', function(exp) {
-        if (player.lv <= 0 || player.lv >= playerConfig.MAX_PLAYER_LV) {
-            return;
-        }
+    // // 经验值改变，判断是否升级
+    // player.on('exp.change', function(exp) {
+    //     if (player.lv <= 0 || player.lv >= playerConfig.MAX_PLAYER_LV) {
+    //         return;
+    //     }
 
-        var upgradeInfo = table.getTableItem('player_upgrade', player.lv);
-        if (exp >= upgradeInfo.exp) {
-            player.increase('lv');
-            // 清空每级仙丹使用详细信息
-            player.elixirPerLv = {};
-            player.set('exp', exp - upgradeInfo.exp);
-            // 获得升级奖励
-            player.increase('money', upgradeInfo.money);
-            player.increase('energy', upgradeInfo.energy);
-            player.increase('skillPoint', upgradeInfo.skillPoint);
-            player.increase('elixir', upgradeInfo.elixir);
-            //升级后体力不再回复
-            //player.resumePower(getMaxPower(player.lv));
-            player.isUpgrade = true;
-            player.save();
-        }
-    });
+    //     var upgradeInfo = table.getTableItem('player_upgrade', player.lv);
+    //     if (exp >= upgradeInfo.exp) {
+    //         player.increase('lv');
+    //         // 清空每级仙丹使用详细信息
+    //         player.elixirPerLv = {};
+    //         player.set('exp', exp - upgradeInfo.exp);
+    //         // 获得升级奖励
+    //         player.increase('money', upgradeInfo.money);
+    //         player.increase('energy', upgradeInfo.energy);
+    //         player.increase('skillPoint', upgradeInfo.skillPoint);
+    //         player.increase('elixir', upgradeInfo.elixir);
+    //         //升级后体力不再回复
+    //         //player.resumePower(getMaxPower(player.lv));
+    //         player.isUpgrade = true;
+    //         player.save();
+    //     }
+    // });
 
     // 玩家级别改变，判断是否达到成就
     player.on('lv.change', function(lv) {
@@ -993,6 +993,17 @@ var Player = (function(_super) {
         };
     };
 
+    Player.prototype.getSpiritor = function() {
+
+        var spiritor = {
+            lv: this.spiritor.lv,
+            spirit: this.spiritor.spirit,
+            ability: this.spiritor.lv * SPIRITOR_PER_LV
+        };
+
+        return spiritor;
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,
@@ -1017,7 +1028,7 @@ var Player = (function(_super) {
             energy: this.energy,
             fragments: this.fragments,
             elixir: this.elixir,
-            spiritor: this.spiritor,
+            spiritor: this.getSpiritor(),
             spiritPool: utility.deepCopy(this.spiritPool),
             cards: _.values(this.cards)
                 .sort(function(x, y){
@@ -1027,8 +1038,7 @@ var Player = (function(_super) {
                     return card.toJson();
                 }),
             rank: this.getRanking(),
-            signIn: utility.deepCopy(this.signIn),
-            friendsCount: this.friendsCount
+            signIn: utility.deepCopy(this.signIn)
         };
     };
 

@@ -8,6 +8,8 @@ logger = require('pomelo-logger').getLogger(__filename)
 msgConfig = require '../../../../config/data/message'
 _ = require 'underscore'
 
+rankingConfig = table.getTableItem('ranking_list',1)
+
 INTERVALS = 
   10000: 106
   7000: 83
@@ -30,7 +32,7 @@ Handler = (@app) ->
 
 Handler::rankingList = (msg, session, next) ->
   playerId = msg.playerId or session.get('playerId')
-  
+  start = Date.now()
   player = null
   async.waterfall [
     (cb) =>
@@ -78,7 +80,8 @@ Handler::rankingList = (msg, session, next) ->
       ranking: r.ranking,
       rankReward: r.rankReward,
       challengeCount: player.dailyGift.challengeCount,
-      rankList: players
+      rankList: players,
+      time: Date.now()  - start
     }
     next(null,{code: 200, msg: {rank: rank}})
 
@@ -104,20 +107,20 @@ Handler::challenge = (msg, session, next) ->
       if isWin and isV587(bl)
         achieve.v587(player)
 
-      rankManager.exchangeRankings player, targetId, isWin, (err, res, rewards) ->
+      rankManager.exchangeRankings player, targetId, isWin, (err, res, rewards, upgradeInfo) ->
         if err and not res
           return cb(err)
         else
-          return cb(null, rewards, bl)
+          return cb(null, rewards, bl, upgradeInfo)
 
-  ], (err, rewards, bl) ->
+  ], (err, rewards, bl, upgradeInfo) ->
       if err
         return next(null, {code: err.code, msg: err.msg or err.message})
 
       bl.rewards = rewards
       next(null, {code: 200, msg: {
         battleLog: bl,
-        lv: player.lv,
+        upgradeInfo: upgradeInfo if upgradeInfo
         exp: player.exp
       }})
 
@@ -170,14 +173,15 @@ isV587 = (bl) ->
   return ownCardCount is 1 and enemyCardCount is 5
 
 genRankings = (ranking) ->
-  top10 = {}
-  for r in [1..10]
-    top10[r] = if ranking > 10 then STATUS_NORMAL else STATUS_CHALLENGE
+  top = {}
+  for r in [1..rankingConfig.top]
+    top[r] = if ranking > rankingConfig.top then STATUS_NORMAL else STATUS_CHALLENGE
 
   _results = {}
 
-  if ranking <= 10
-    _results[11] = STATUS_CHALLENGE
+  if ranking <= rankingConfig.top
+     for r in [rankingConfig.top + 1..rankingConfig.challenge_count - rankingConfig.top + 1]
+        _results[r] = STATUS_CHALLENGE
 
   else
     keys = Object.keys(INTERVALS)
@@ -186,19 +190,22 @@ genRankings = (ranking) ->
       if ranking >= k
         step = INTERVALS[k]
         break
-
-    _results[ranking - step * i] = STATUS_CHALLENGE for i in [1...11]
+        
+    for i in [1..rankingConfig.challenge_count]
+      r = ranking - step * i
+      if r > 0
+        _results[r] = STATUS_CHALLENGE 
+      else 
+        _results[ranking - r + 1]
 
   _results[ranking] = STATUS_NORMAL
-  _.extend(top10, _results)
+  _.extend(top, _results)
 
 filterPlayersInfo = (players, rankings) ->
   players.map (p) -> 
     {
       playerId: p.id
       name: p.name
-      ability: p.ability
-      lv: p.lv
       ranking: p.rank.ranking
       cards: p.activeCards().map (c) -> c.tableId
       type: rankings[p.rank.ranking]

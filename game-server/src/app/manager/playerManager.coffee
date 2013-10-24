@@ -2,7 +2,7 @@ app = require('pomelo').app
 dao = app.get('dao')
 Cache = require '../common/cache'
 async = require 'async'
-area = require('../domain/area/area');
+area = require('../domain/area/area')
 _ = require 'underscore'
 
 class Manager 
@@ -97,10 +97,6 @@ class Manager
       player.addCards cards
       cb(null, cards.map (c) -> c.toJson())
     )
-
-  @upgrade: (player, exp, cb) ->
-    
-    
 
 addRankInfo = (players, ranks) ->
   for p in players

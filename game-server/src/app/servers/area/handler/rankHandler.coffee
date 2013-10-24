@@ -107,20 +107,20 @@ Handler::challenge = (msg, session, next) ->
       if isWin and isV587(bl)
         achieve.v587(player)
 
-      rankManager.exchangeRankings player, targetId, isWin, (err, res, rewards) ->
+      rankManager.exchangeRankings player, targetId, isWin, (err, res, rewards, upgradeInfo) ->
         if err and not res
           return cb(err)
         else
-          return cb(null, rewards, bl)
+          return cb(null, rewards, bl, upgradeInfo)
 
-  ], (err, rewards, bl) ->
+  ], (err, rewards, bl, upgradeInfo) ->
       if err
         return next(null, {code: err.code, msg: err.msg or err.message})
 
       bl.rewards = rewards
       next(null, {code: 200, msg: {
         battleLog: bl,
-        lv: player.lv,
+        upgradeInfo: upgradeInfo if upgradeInfo
         exp: player.exp
       }})
 

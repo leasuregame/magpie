@@ -33,6 +33,8 @@ var nameChanged = {
     "寻宝配置表": "treasure_hunt",
     "rank": "竞技产出表",
     "竞技产出表": "rank",
+    "ranking_list": "竞技排名配置表",
+    "竞技排名配置表": "ranking_list",
     "ranking_reward": "排名奖励",
     "排名奖励": "ranking_reward",
     "ranking_reward_factor": "竞技排名奖励加成系数",
@@ -10255,6 +10257,7 @@ var outputTables = {
             "1": {
                 "id": 1,
                 "name": "体力",
+                "disc": "每次购买可获得50点体力。每日最多购买6次。VIP可购买更多。",
                 "consume_type": "gold",
                 "consume": 20,
                 "obtain_type": "power",
@@ -10263,26 +10266,29 @@ var outputTables = {
             "2": {
                 "id": 2,
                 "name": "铜板",
+                "disc": "每次购买可获得1000仙币，每次额外赠送100仙币。",
                 "consume_type": "gold",
                 "consume": 10,
                 "obtain_type": "money",
-                "obtain": 1200
+                "obtain": 1100
             },
             "3": {
                 "id": 3,
                 "name": "铜板",
+                "disc": "每次购买可获得5000仙币，每次额外赠送1500仙币。",
                 "consume_type": "gold",
                 "consume": 50,
                 "obtain_type": "money",
-                "obtain": 6000
+                "obtain": 6500
             },
             "4": {
                 "id": 4,
                 "name": "铜板",
+                "disc": "每次购买可获得10000仙币，每次额外赠送5000仙币。",
                 "consume_type": "gold",
                 "consume": 100,
                 "obtain_type": "money",
-                "obtain": 13000
+                "obtain": 15000
             },
             "5": {
                 "id": 5,
@@ -10294,9 +10300,10 @@ var outputTables = {
             },
             "6": {
                 "id": 6,
-                "name": "经验卡",
+                "name": "经验元灵",
+                "disc": "每次购买可获得6级经验元灵1张，蕴含800点卡牌经验。",
                 "consume_type": "money",
-                "consume": 5000,
+                "consume": 2500,
                 "obtain_type": "card",
                 "obtain": 1
             }
@@ -11403,6 +11410,17 @@ var outputTables = {
             }
         }
     },
+    "ranking_list": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "top": 10,
+                "challenge_count": 10,
+                "beat_back_count": 3
+            }
+        }
+    },
     "ranking_reward": {
         "colComment": {},
         "rows": {
@@ -12071,7 +12089,7 @@ var outputTables = {
             "0": {
                 "id": 0,
                 "lv": 0,
-                "spirit_need": 110,
+                "spirit_need": 8,
                 "hp_inc": 0,
                 "atk_inc": 0,
                 "spirit_atk_pct": 0,

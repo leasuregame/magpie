@@ -817,7 +817,7 @@ var CardListLayer = cc.Layer.extend({
     _onClickLineUp: function () {
         cc.log("CardListLayer _onClickChangeLineUp");
 
-        this.addChild(LineUpLayer.create(), 1);
+        LineUpLayer.pop();
     },
 
     _onClickSortType: function () {

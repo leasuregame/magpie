@@ -173,7 +173,7 @@ var Player = Entity.extend({
     },
 
     playerDetail: function (cb, playerId) {
-        cc.log("Player playerDetail: " + palyerId);
+        cc.log("Player playerDetail: " + playerId);
 
         var that = this;
         lzWindow.pomelo.request("area.playerHandler.getLineUpInfo", {

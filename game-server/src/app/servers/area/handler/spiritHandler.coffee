@@ -65,6 +65,5 @@ Handler::spiritorUpgrade = (msg, session, next) ->
     player.spiritorUprade()
     player.save()
     next(null, {code: 200, msg: {
-      spiritor: player.spiritor,
-      ability: player.spiritor.lv * SPIRITOR_PER_LV
+      spiritor: player.getSpiritor()
     }})

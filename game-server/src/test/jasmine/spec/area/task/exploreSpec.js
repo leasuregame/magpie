@@ -149,7 +149,7 @@ describe("Area Server", function() {
 					doAjax('/update/player/' + passer.playerId, {
 						power: JSON.stringify({
 							time: Date.now(),
-							value: 100000
+							value: 10000000
 						})
 					}, function() {
 						loginWith(passer.account, passer.password, passer.areaId);
@@ -173,14 +173,15 @@ describe("Area Server", function() {
 
 				it(totalCount + '次', function() {
 					var doTest = function() {
-						if (count >= 500) {
+						if (count >= 14607) {
 							return;
 						}
 
 						request('area.taskHandler.explore', {
 							taskId: task.id
 						}, function(data) {
-							console.log(data);
+							console.log('第' + count + '次', data);
+							expect(data).toEqual({});
 							oldTask.id = task.id;
 							oldTask.progress = task.progress;
 							oldTask.hasWin = task.hasWin;
@@ -188,7 +189,7 @@ describe("Area Server", function() {
 							task.progress = data.msg.task.progress;
 							task.hasWin = data.msg.task.hasWin;
 
-							checkExploreResult(data, task, oldTask);
+							// checkExploreResult(data, task, oldTask);
 
 							count += 1;
 							doTest();

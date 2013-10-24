@@ -314,15 +314,16 @@ describe("Area Server", function() {
             var steps = [106, 83, 62, 41, 19, 14, 11, 5, 1, 1];
 
             var genRankings = function(rank, stepIndex) {
-                var top10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+                var top3 = [1, 2, 3];
                 var results = [];
-                if (rank <= 10) {
-                    results.push(11);
+                if (rank <= 3) {
+                    results.push(5);
+                    results.push(4);
                 } else
-                    for (var i = 0; i < 11; i++) {
+                    for (var i = 0; i < 6; i++) {
                         results.push(rank - steps[stepIndex] * i);
                     }
-                return _.union(top10, results.reverse());
+                return _.union(top3, results.reverse());
             };
 
             ids.map(function(id, index) {
@@ -402,14 +403,13 @@ describe("Area Server", function() {
                         }, function(data) {
                             console.log(data);
                             var rankList = data.msg.rank.rankList;
-                            expect(rankList.length).toEqual(21);
+                            expect(rankList.length).toEqual(9);
                             for (var i = 0; i < 3; i++)
                                 expect(rankList[i].type).toEqual(2);
-                            for (var i = 3; i < 10; i++)
-                                expect(rankList[i].type).toEqual(0);
-                            for (var i = 11; i < 20; i++)
+                            for (var i = 3; i < 8; i++)
                                 expect(rankList[i].type).toEqual(1);
-                            expect(rankList[20].type).toEqual(0);
+
+                            expect(rankList[9].type).toEqual(0);
                         });
                     })
 
@@ -427,13 +427,13 @@ describe("Area Server", function() {
                         }, function(data) {
                             console.log(data);
                             var rankList = data.msg.rank.rankList;
-                            expect(rankList.length).toEqual(22);
-                            for (var i = 0; i < 10; i++)
+                            expect(rankList.length).toEqual(10);
+                            for (var i = 0; i < 3; i++)
                                 expect(rankList[i].type).toEqual(0);
-                            for (var i = 10; i < 20; i++)
+                            for (var i = 3; i < 8; i++)
                                 expect(rankList[i].type).toEqual(1);
-                            expect(rankList[20].type).toEqual(2);
-                            expect(rankList[21].type).toEqual(0);
+                            expect(rankList[8].type).toEqual(2);
+                            expect(rankList[9].type).toEqual(0);
 
                         });
                     });

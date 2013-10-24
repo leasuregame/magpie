@@ -69,9 +69,9 @@ var Rank = (function(_super) {
 
 	Rank.prototype.pushRecent = function(id) {
 		var rc = _.clone(this.recentChallenger);
-		if (rc.length >= 3) {
-			rc = rc.slice(-3);
-			rc.shift();
+		var beatBackCount = table.getTableItem('ranking_list',1).beat_back_count
+		if (rc.length >= beatBackCount) {
+			rc = rc.splice(0,1);
 		}
 		if (rc.indexOf(id) < 0) {
 			rc.push(id);

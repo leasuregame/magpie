@@ -249,8 +249,8 @@ var Player = (function(_super) {
             id: 1,
             progress: 0,
             hasWin: false,
-            mark: []
-            //momo: []
+            mark: [],
+            hasFragment: -1
         },
         passLayer: 0,
         pass: {
@@ -983,7 +983,26 @@ var Player = (function(_super) {
             rank.rankReward = this.rank.rankingRewards()
         }
         return rank;
-    }
+    };
+
+    Player.prototype.getTask = function(){
+        return {
+            id: this.task.id,
+            progress: this.task.progress,
+            mark: this.task.mark
+        };
+    };
+
+    Player.prototype.getSpiritor = function() {
+
+        var spiritor = {
+            lv: this.spiritor.lv,
+            spirit: this.spiritor.spirit,
+            ability: this.spiritor.lv * SPIRITOR_PER_LV
+        };
+
+        return spiritor;
+    };
 
     Player.prototype.toJson = function() {
         return {
@@ -1002,14 +1021,14 @@ var Player = (function(_super) {
             gold: this.gold,
             lineUp: this.lineUpObj(),
             ability: this.getAbility(),
-            task: this.task,
+            task: this.getTask(),
             pass: this.getPass(),
             dailyGift: utility.deepCopy(this.dailyGift),
             skillPoint: this.skillPoint,
             energy: this.energy,
             fragments: this.fragments,
             elixir: this.elixir,
-            spiritor: this.spiritor,
+            spiritor: this.getSpiritor(),
             spiritPool: utility.deepCopy(this.spiritPool),
             cards: _.values(this.cards)
                 .sort(function(x, y){

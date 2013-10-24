@@ -993,6 +993,17 @@ var Player = (function(_super) {
         };
     };
 
+    Player.prototype.getSpiritor = function() {
+
+        var spiritor = {
+            lv: this.spiritor.lv,
+            spirit: this.spiritor.spirit,
+            ability: this.spiritor.lv * SPIRITOR_PER_LV
+        };
+
+        return spiritor;
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,
@@ -1017,7 +1028,7 @@ var Player = (function(_super) {
             energy: this.energy,
             fragments: this.fragments,
             elixir: this.elixir,
-            spiritor: this.spiritor,
+            spiritor: this.getSpiritor(),
             spiritPool: utility.deepCopy(this.spiritPool),
             cards: _.values(this.cards)
                 .sort(function(x, y){

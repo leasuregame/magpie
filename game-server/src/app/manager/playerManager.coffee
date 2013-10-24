@@ -69,6 +69,7 @@ class Manager
 
       (ranks, callback) ->
         _ids = ranks.map (r)-> r.playerId
+        console.log('player ids = ',_ids)
         dao.player.getPlayerDetails _ids, (err, results) ->
           callback(err, results, ranks)
           

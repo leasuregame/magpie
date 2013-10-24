@@ -45,8 +45,8 @@ var addEvents = function(card) {
 };
 
 var countElixirEffect = function(card) {
-    card.incs.elixir_hp = parseInt(card.elixirHp / elixirConfig.elixir * elixirConfig.hp);
-    card.incs.elixir_atk = parseInt(card.elixirAtk / elixirConfig.elixir * elixirConfig.atk);
+    card.incs.elixir_hp = parseInt(card.elixirHp / elixirConfig.elixir) * elixirConfig.hp;
+    card.incs.elixir_atk = parseInt(card.elixirAtk / elixirConfig.elixir) * elixirConfig.atk;
 
     card.recountHpAndAtk();
 };

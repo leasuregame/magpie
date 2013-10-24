@@ -10,19 +10,6 @@ describe("Area Server", function() {
     describe("Buy Handler", function() {
         describe("area.buyHandler.buyPower", function() {
 
-            beforeAll(function() {
-                doAjax('/loaddata/csv', {}, function() {
-                    doAjax('/update/player/' + 113 ,{
-                        power: {
-                            time: Date.now(),
-                            value: 0
-                        },
-                        gold: 130
-                    },function(){});
-                });
-
-            });
-
 
             var BUY_POWER = { //购买体力
                 "gold": 20,
@@ -34,13 +21,27 @@ describe("Area Server", function() {
 
             describe('购买成功',function() {
 
+
+                beforeAll(function() {
+                    doAjax('/update/player/' + 113 ,{
+                        power: {
+                            time: Date.now(),
+                            value: 0
+                        },
+                        gold: 130
+                    },function(){
+
+                    });
+
+                });
+
                 beforeEach(function() {
                     loginWith('113','1',1);
                 });
 
                 var buyPower = function(time) {
                     it('第' + time + '次购买' ,function() {
-                        request('area.buyHandler.buyPower',{},function(data) {
+                        request('area.buyHandler.buyPower',{time: 1},function(data) {
                             console.log(data);
                             expect(data.code).toEqual(200);
                             power += BUY_POWER.power;
@@ -68,12 +69,21 @@ describe("Area Server", function() {
             describe('当体力达到上限时', function() {
 
                 beforeEach(function() {
-                    loginWith('113','1',1);
+                    doAjax('/update/player/' + 113 ,{
+                        power: {
+                            time: Date.now(),
+                            value: 150
+                        },
+                        gold: 130
+                    },function(){
+                        loginWith('113','1',1);
+                    });
+
                 });
 
                 it('无法购买体力',function() {
 
-                    request('area.buyHandler.buyPower',{},function(data) {
+                    request('area.buyHandler.buyPower',{time: 1},function(data) {
 
                         console.log(data);
                         expect(data.code).toEqual(501);
@@ -81,8 +91,8 @@ describe("Area Server", function() {
                         doAjax('/player/113',{},function(msg) {
                             player = msg.data;
                             console.log(player);
-                            expect(power).toEqual(JSON.parse(player.power).value);
-                            expect(gold).toEqual(player.gold);
+                            expect(JSON.parse(player.power).value).toEqual('150'    );
+                            expect(player.gold).toEqual(130);
                         });
 
                     });
@@ -109,7 +119,7 @@ describe("Area Server", function() {
 
                 it('无法购买体力',function() {
 
-                    request('area.buyHandler.buyPower',{},function(data) {
+                    request('area.buyHandler.buyPower',{time: 1},function(data) {
 
                         console.log(data);
                         expect(data.code).toEqual(501);
@@ -148,7 +158,7 @@ describe("Area Server", function() {
 
                 it('无法购买体力',function() {
 
-                    request('area.buyHandler.buyPower',{},function(data) {
+                    request('area.buyHandler.buyPower',{time: 1},function(data) {
 
                         console.log(data);
                         expect(data.code).toEqual(501);
@@ -158,6 +168,46 @@ describe("Area Server", function() {
                             console.log(player);
                             expect(JSON.parse(player.power).value).toEqual('0');
                             expect(player.gold).toEqual(20);
+                        });
+
+                    });
+
+                });
+
+            });
+
+            describe('当购买次数多余所剩次数时',function() {
+
+                beforeEach(function() {
+                    doAjax('/player/113',{},function(msg) {
+                        player = msg.data;
+                        console.log(player);
+                        var dg = JSON.parse(player.dailyGift);
+
+                        dg.powerBuyCount = 5;
+
+                        doAjax('/update/player/' + 113 ,{
+                            dailyGift: dg,
+                            gold: 200
+                        },function(){
+                            loginWith('113','1',1);
+                        });
+                    });
+
+                });
+
+                it('无法购买体力',function() {
+
+                    request('area.buyHandler.buyPower',{time: 6},function(data) {
+
+                        console.log(data);
+                        expect(data.code).toEqual(501);
+                        expect(data.msg).toEqual('所剩购买次数不足');
+                        doAjax('/player/113',{},function(msg) {
+                            player = msg.data;
+                            console.log(player);
+                            expect(JSON.parse(player.power).value).toEqual('0');
+                            expect(player.gold).toEqual(200);
                         });
 
                     });

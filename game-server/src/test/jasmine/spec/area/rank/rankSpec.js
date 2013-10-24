@@ -180,6 +180,39 @@ describe("Area Server", function() {
             });
         });
 
+        describe('挑战后获得经验，玩家升级', function() {
+            beforeEach(function() {
+                doAjax('/update/player/1', {
+                    lv: 25,
+                    exp: 388
+                }, function() {
+                    loginWith('1', '1', 1);
+                });
+            });
+
+            it('player should be upgrated', function() {
+                request('area.rankHandler.challenge', {
+                    targetId: 101
+                }, function(data) {
+                    console.log(data);
+                    expect(data.msg.upgradeInfo).toEqual({
+                        lv: 26,
+                        rewards: {
+                            money: 250,
+                            energy: 90,
+                            skillPoint: 200,
+                            elixir: 200
+                        },
+                        friendsCount: 20
+                    });
+
+                    doAjax('/player/1', {}, function(res){
+                        expect(res.data.exp).toEqual(data.msg.exp);
+                    })
+                });
+            });
+        });
+
         describe("获取排名奖励", function() {
             beforeAll(function() {
                 doAjax('/loaddata/csv', {}, function(data) {

@@ -998,7 +998,7 @@ var Player = (function(_super) {
         var spiritor = {
             lv: this.spiritor.lv,
             spirit: this.spiritor.spirit,
-            ability: this.spiritor.spirit * SPIRITOR_PER_LV
+            ability: this.spiritor.lv * SPIRITOR_PER_LV
         };
 
         return spiritor;

@@ -10,6 +10,11 @@ Manager = module.exports =
   getRank: (playerId, cb) ->
     dao.rank.fetchOne sync: true, where: {playerId: playerId}, cb
 
+  getRankings: (ids, cb) ->
+    dao.rank.getRankingsByPids ids,(err,ranks) ->
+      rankings = ranks.map (r)-> r.ranking
+      cb(null,rankings)
+
   exchangeRankings: (player, targetId, isWin, cb) ->
     dao.rank.fetchMany where: " playerId in (#{[player.id, targetId].toString()}) ", (err, ranks) ->
       if err

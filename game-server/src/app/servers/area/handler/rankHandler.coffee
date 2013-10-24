@@ -32,7 +32,7 @@ Handler = (@app) ->
 
 Handler::rankingList = (msg, session, next) ->
   playerId = msg.playerId or session.get('playerId')
-  
+  start = Date.now()
   player = null
   async.waterfall [
     (cb) =>
@@ -47,42 +47,39 @@ Handler::rankingList = (msg, session, next) ->
         return cb({code: 501, msg: '找不到竞技信息'})
 
       cb()
-    (cb) ->
+
+    (cb)->
+      if player.rank.recentChallenger.length > 0
+        rankManager.getRankings(player.rank.recentChallenger,cb)
+      else
+        cb(null,[])
+
+    (beatBackRankings, cb) ->
+
       rankings = genRankings(player.rank.ranking)
-      playerManager.rankingList _.keys(rankings), (err, players) ->
-        cb(err, players, rankings)
+      for ranking in beatBackRankings
+        if ranking < player.rank.ranking
+          rankings[ranking] = STATUS_COUNTER_ATTACK
 
-    (players,rankings,cb) ->
-      flag = []
-      for p in players when p.id isnt playerId and p.id in player.rank.recentChallenger and p.rank.ranking < player.rank.ranking
-        rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK
-        flag.push p.id
+      playerManager.rankingList _.keys(rankings), (err, players, ranks) ->
+        cb(err, players, ranks, rankings)
 
-      plys = _.difference(player.rank.recentChallenger,flag)
-
-      playerManager.getPlayers plys, (err, ply) ->
-        rank = {}
-
-        for key , value of ply
-          if player.rank.ranking > value.rank.ranking
-            players.push value
-            rank[value.rank.ranking] = STATUS_COUNTER_ATTACK
-
-        cb(err, players, _.extend(rankings,rank))
-  ], (err, players, rankings) ->
+  ], (err, players, ranks, rankings) ->
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err.message})
 
-    players = filterPlayersInfo(players, rankings)
+    players = filterPlayersInfo(players, ranks, rankings)
     players.sort (x, y) -> x.ranking - y.ranking
     r = player.getRank()
     rank = {
       ranking: r.ranking,
       rankReward: r.rankReward,
-      challengeCount: player.dailyGift.challengeCount,
+      challengeCount: player.dailyGift. c,
       rankList: players,
-      time: Date.now()
+      time: (Date.now() - start) / 1000
     }
+    end = Date.now()
+    console.log '**********get rankingList useTime = ',(end - start) / 1000
     next(null,{code: 200, msg: {rank: rank}})
 
 Handler::challenge = (msg, session, next) ->
@@ -201,14 +198,14 @@ genRankings = (ranking) ->
   _results[ranking] = STATUS_NORMAL
   _.extend(top, _results)
 
-filterPlayersInfo = (players, rankings) ->
+filterPlayersInfo = (players, ranks, rankings) ->
   players.map (p) -> 
     {
       playerId: p.id
       name: p.name
-      ranking: p.rank.ranking
+      ranking: ranks[p.id]
       cards: p.activeCards().map (c) -> c.tableId
-      type: rankings[p.rank.ranking]
+      type: rankings[ranks[p.id]]
     }
     
 saveBattleLog = (bl, playerName) ->

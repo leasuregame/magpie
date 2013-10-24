@@ -158,6 +158,8 @@ var Player = Entity.extend({
                 cb("success");
             } else {
                 cc.log("sendMessage fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },
@@ -182,6 +184,8 @@ var Player = Entity.extend({
                 cb(battleLogId);
             } else {
                 cc.log("learn fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },
@@ -204,6 +208,8 @@ var Player = Entity.extend({
                 cb(msg);
             } else {
                 cc.log("playerDetail fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     }

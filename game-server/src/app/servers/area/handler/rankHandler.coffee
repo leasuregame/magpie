@@ -32,7 +32,7 @@ Handler = (@app) ->
 
 Handler::rankingList = (msg, session, next) ->
   playerId = msg.playerId or session.get('playerId')
-  
+  start = Date.now()
   player = null
   async.waterfall [
     (cb) =>
@@ -81,7 +81,7 @@ Handler::rankingList = (msg, session, next) ->
       rankReward: r.rankReward,
       challengeCount: player.dailyGift.challengeCount,
       rankList: players,
-      time: Date.now()
+      time: Date.now()  - start
     }
     next(null,{code: 200, msg: {rank: rank}})
 

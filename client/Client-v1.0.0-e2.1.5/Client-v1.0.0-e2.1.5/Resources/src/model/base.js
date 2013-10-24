@@ -204,6 +204,7 @@ var gameGoodsName = {
     "skillPoint": "技能点",
     "totalSpirit": "灵气",
     "cards": "经验卡",
+    "exp_card": "经验卡",
     "freeCount": "免费抽奖次数",
     "lottery_free_count": "免费抽奖次数"
 };

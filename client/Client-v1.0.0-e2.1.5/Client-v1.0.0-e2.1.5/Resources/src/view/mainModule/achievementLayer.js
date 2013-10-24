@@ -156,6 +156,8 @@ var AchievementLayer = cc.Layer.extend({
 
                 that._scrollViewElement[id].receiverItem.setVisible(false);
                 that._scrollViewElement[id].isReceiverIcon.setVisible(true);
+
+                lz.tipReward(data);
             }, id);
         }
 

@@ -131,6 +131,8 @@ var Shop = Entity.extend({
                 cb();
             } else {
                 cc.log("payment fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },
@@ -152,13 +154,12 @@ var Shop = Entity.extend({
                 var table = outputTables.vip_box.rows[id];
 
                 gameData.player.adds({
-                    power: table.power || 0,
                     energy: table.energy || 0,
                     money: table.money || 0,
                     skillPoint: table.skillPoint || 0,
                     elixir: table.elixir || 0,
                     fragment: table.fragments || 0,
-                    gold: table.price
+                    gold: -table.price
                 });
 
                 var cardIdList = msg.cardIds;
@@ -173,9 +174,18 @@ var Shop = Entity.extend({
 
                 that._useVipBoxList.push(id);
 
-                cb();
+                cb({
+                    energy: table.energy || 0,
+                    money: table.money || 0,
+                    skillPoint: table.skillPoint || 0,
+                    elixir: table.elixir || 0,
+                    fragment: table.fragments || 0,
+                    cards: table.exp_card || 0
+                });
             } else {
                 cc.log("buyVipBox fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },
@@ -214,7 +224,7 @@ var Shop = Entity.extend({
         });
     },
 
-    buyMoney: function(cb, type, count) {
+    buyMoney: function (cb, type, count) {
         cc.log("Shop buyMoney: " + count);
 
         var that = this;
@@ -248,7 +258,7 @@ var Shop = Entity.extend({
         });
     },
 
-    buyPower: function() {
+    buyPower: function () {
         cc.log("Shop buyPower: " + count);
 
         var that = this;

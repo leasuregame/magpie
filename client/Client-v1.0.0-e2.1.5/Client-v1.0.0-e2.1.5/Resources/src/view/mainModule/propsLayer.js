@@ -37,7 +37,7 @@ var PropsLayer = cc.Layer.extend({
         this.addChild(headLabel);
 
         var goldIcon = cc.Sprite.create(main_scene_image.icon148);
-        goldIcon.setPosition(cc.p(270, 934));
+        goldIcon.setPosition(cc.p(280, 934));
         this.addChild(goldIcon);
 
         var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
@@ -46,7 +46,7 @@ var PropsLayer = cc.Layer.extend({
 
         this._goldLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._goldLabel.setPosition(cc.p(288, 932));
+        this._goldLabel.setPosition(cc.p(310, 932));
         this.addChild(this._goldLabel);
 
         this._moneyLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);

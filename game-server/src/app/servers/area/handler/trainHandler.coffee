@@ -393,10 +393,8 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       achieve.psTo10(player)
 
     result = {
-      hp: card.hp,
-      atk:card.atk,
       ability: card.ability(),
-      passSkills: card.passiveSkills
+      passiveSkills: card.passiveSkills
     }
 
     next(null, {code: 200, msg: result})
@@ -525,8 +523,8 @@ Handler::useElixir = (msg, session, next) ->
         return next(null, {code: err.code or 500, msg: err.msg or ''})
 
       result = {
-        hp: card.hp,
-        atk:card.atk,
+        elixirHp: card.elixirHp,
+        elixirAtk:card.elixirAtk,
         ability: card.ability(),
       }
 

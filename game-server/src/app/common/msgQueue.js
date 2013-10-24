@@ -14,7 +14,7 @@ var len4Queue; //消息队列可容纳长度
 var route = 'onSystemMessage';
 var msgQueue = module.exports;
 var app = null;
-var oldTime = 0;
+
 
 msgQueue.init = function(opts) {
     app = opts.app;
@@ -25,8 +25,12 @@ msgQueue.init = function(opts) {
     len4Queue = validTime / timeTick;
     queue = [];
     loopQueue = [];
-    oldTime = Date.now();
-    setInterval(msgQueue.send,timeTick * 1000);
+    setInterval(msgQueue.dealSendAndLoopQueue,timeTick * 1000);
+};
+
+msgQueue.dealSendAndLoopQueue = function() {
+    msgQueue.send();
+    msgQueue.dealWithLoopQueue();
 };
 
 /*
@@ -41,6 +45,13 @@ msgQueue.init = function(opts) {
  */
 
 msgQueue.push = function(msg) {
+
+    if(msg.validDuration && msg.lastTime4send == 0) {
+        var time = Date.now();
+        msg.lastTime4send = time;
+        msg.validDuration = time + parseInt(msg.validDuration * 3600 * 1000);
+        msgQueue.pushMsg2LoopQueue(msg);
+    }
 
     if(queue.length == 0) {
         queue.splice(0, 0 ,msg);
@@ -62,6 +73,28 @@ msgQueue.push = function(msg) {
     }
 
     console.log('queue = ',queue);
+};
+
+msgQueue.pushMsg2LoopQueue = function(msg) {
+    loopQueue.push(msg);
+};
+
+//处理循环信息队列
+msgQueue.dealWithLoopQueue = function() {
+
+    var time = Date.now();
+    for(var i = 0;i < loopQueue.length;i++) {
+        var msg = loopQueue[i];
+        if(time > msg.validDuration) {
+            loopQueue.splice(i,1);
+            i--;
+        } else if(msg.lastTime4send + msg.tick * 1000 < time) {
+            msg.lastTime4send = time;
+            msgQueue.push(msg);
+        }
+
+    }
+
 };
 
 /*
@@ -91,10 +124,10 @@ msgQueue.send = function() {
 
     var msg = {
         route: route,
-        msg: m.msg
+        msg: m.msg,
+        type: m.type
     };
-    oldTime = Date.now() - oldTime;
-    console.log('***send*** time: ',oldTime, 'msg: ',msg);
+    console.log('***send*** time: ',Date.now(), 'msg: ',msg);
     queue.splice(0,1);
     app.get('messageService').pushMessage(msg,function(err,res){
         if(err) {

@@ -106,7 +106,7 @@ Data.prototype.loadCsvDataToSql = function(callback) {
 Data.prototype.dataForRankingUser = function(callback) {
   var self = this, id;
   async.times(5000, function(n, next) {
-    id = n + 10;
+    id = n + 11;
     self.db.user.create({
       data: {
         id: id,

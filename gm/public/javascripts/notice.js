@@ -28,14 +28,12 @@ $(document).ready(function () {
     $("#btnOk").click(function () {
         submit();
     });
+
 });
 
 function submit() {
 	var areaId = parseInt($("#area").val());
-	var msg = {
-		msg: $("#content").val(),
-		type: parseInt($("#type").val())
-	}	
+	var msg = getMsg();
 
 	if (areaId == ALL) {  //全部服务器
         var len = areas.length;
@@ -64,6 +62,20 @@ function submit() {
     } 
 
 };
+
+function getMsg() {
+    var msg = {};
+    msg.msg = $("#content").val();
+    msg.type = parseInt($("#type").val());
+    var validDuration = $("#validDuration").val();
+    if(validDuration != '') {
+        msg.lastTime4send = 0;
+        msg.validDuration = parseFloat(parseFloat(validDuration).toFixed(2));
+        msg.tick = parseInt($("#tick").val());
+    }
+    console.log(msg);
+    return msg;
+}
 
 function dealAll(id,msg,cb) {
     async.waterfall([

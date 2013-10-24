@@ -41,7 +41,8 @@ Handler::simulatePassSkillAfresh = (msg,session,next)->
 
 Handler::sendSysMessage = (msg,session,next)->
   console.log 'msg = ',msg
-  msgQueue.push({msg: msg.msg,type: msg.type})
+
+  msgQueue.push(msg)
   next null,{code:200,msg:'发送成功'}
 
 

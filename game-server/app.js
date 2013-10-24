@@ -4,6 +4,7 @@ var MessageService = require('./app/service/messageService');
 var routeUtil = require('./app/common/route');
 var msgQueue = require('./app/common/msgQueue');
 var argsFilter = require('./app/servers/area/filter/argsFilter');
+var areaUtil = require('./app/util/areaUtil');
 /**
  * Init app for client.
  */
@@ -93,6 +94,7 @@ app.configure('production|development', 'area', function() {
 
   area.init({app: app});
   msgQueue.init({app: app});
+  areaUtil.checkFlagFile();
   //app.filter(argsFilter());
 });
 

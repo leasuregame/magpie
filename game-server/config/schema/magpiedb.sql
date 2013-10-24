@@ -21,15 +21,23 @@ CREATE TABLE IF NOT EXISTS `player` (
   `ability` INT(10) UNSIGNED DEFAULT '0',
   `task` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `pass` VARCHAR(500) COLLATE utf8_unicode_ci DEFAULT '',
+  `passLayer` SMALLINT(5) DEFAULT '0',
   `dailyGift` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '', -- 每日奖励
   `fragments` INT(5) UNSIGNED DEFAULT '0', -- 卡牌碎片数
   `energy` INT(10) UNSIGNED DEFAULT '0',  -- 活力值
   `elixir` INT(10) UNSIGNED DEFAULT '0',  -- 仙丹数
+  `elixirPerLv` TEXT COLLATE utf8_unicode_ci,
   `spiritor` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `spiritPool` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   `signIn` VARCHAR(200) COLLATE utf8_unicode_ci DEFAULT '',
-  `achievement` VARCHAR(20000) COLLATE utf8_unicode_ci DEFAULT '',
+  `achievement` TEXT COLLATE utf8_unicode_ci,
+  `cardBook` TEXT COLLATE utf8_unicode_ci,
   `friendsCount` SMALLINT(3) UNSIGNED DEFAULT '20',-- 好友上限
+  `rowFragmentCount` SMALLINT(3) UNSIGNED DEFAULT '0',-- 普通抽卡魂次数
+  `highFragmentCount` SMALLINT(3) UNSIGNED DEFAULT '0',-- 高级抽卡魂次数
+  `highDrawCardCount` SMALLINT(3) UNSIGNED DEFAULT '0',-- 高级抽卡次数
+  `cardsCount` SMALLINT(5) UNSIGNED DEFAULT '0', -- 卡牌数量上限
+  `resetDate` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -78,6 +86,8 @@ CREATE TABLE IF NOT EXISTS `card` (
   `skillPoint` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的技能点
   `elixirHp` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
   `elixirAtk` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
+  `passiveSkills` VARCHAR(300) COLLATE utf8_unicode_ci DEFAULT '',
+  `useCardsCounts` SMALLINT(2) DEFAULT '0', -- 进阶消耗卡牌数
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -95,18 +105,6 @@ CREATE TABLE IF NOT EXISTS `battleLog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ---------------------------------
--- Table structure for passiveSkill
--- ---------------------------------
-DROP TABLE IF EXISTS `passiveSkill`;
-CREATE TABLE IF NOT EXISTS `passiveSkill` (
-  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `cardId` INT(10) UNSIGNED NOT NULL,
-  `name` VARCHAR(20) COLLATE utf8_unicode_ci NOT NULL,
-  `value` FLOAT(5,1) UNSIGNED DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ---------------------------------
 -- Table structure for rank
 -- ---------------------------------
 DROP TABLE IF EXISTS `rank`;
@@ -120,6 +118,7 @@ CREATE TABLE IF NOT EXISTS `rank` (
   `loseCount` INT(10) UNSIGNED DEFAULT '0',
   `winningStreak` INT(10) UNSIGNED DEFAULT '0',
   `recentChallenger` VARCHAR(100)  COLLATE utf8_unicode_ci DEFAULT '',
+  `historyRanking` INT(10) UNSIGNED DEFAULT '0',
   `gotRewards` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

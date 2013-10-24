@@ -58,7 +58,7 @@ var ExploreLayer = cc.Layer.extend({
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 962));
+        headIcon.setPosition(cc.p(40, 968));
         this.addChild(headIcon, 1);
 
         for (var i = 0; i < 3; ++i) {
@@ -87,7 +87,7 @@ var ExploreLayer = cc.Layer.extend({
 
         var titleLabel = StrokeLabel.create(outputTables.chapter_title.rows[chapter].name, "STHeitiTC-Medium", 40);
         titleLabel.setColor(cc.c3b(255, 239, 131));
-        titleLabel.setPosition(cc.p(360, 1005));
+        titleLabel.setPosition(cc.p(360, 1008));
         this.addChild(titleLabel, 1);
 
         this._spiritShadow = cc.Sprite.create(main_scene_image.icon217);
@@ -125,7 +125,7 @@ var ExploreLayer = cc.Layer.extend({
             this._onClickBack,
             this
         );
-        backItem.setPosition(cc.p(100, 1005));
+        backItem.setPosition(cc.p(100, 1008));
 
         this._exploreItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -200,7 +200,7 @@ var ExploreLayer = cc.Layer.extend({
             powerLabel.setPosition(cc.p(465 + x, 360));
             scrollViewLayer.addChild(powerLabel);
 
-            var expLabel = cc.LabelTTF.create("999999", "STHeitiTC-Medium", 20);
+            var expLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
             expLabel.setColor(cc.c3b(255, 239, 131));
             expLabel.setAnchorPoint(cc.p(0, 0.5));
             expLabel.setPosition(cc.p(465 + x, 319));
@@ -212,7 +212,7 @@ var ExploreLayer = cc.Layer.extend({
             progressLabel.setPosition(cc.p(465 + x, 278));
             scrollViewLayer.addChild(progressLabel);
 
-            var description = lz.format(chapterTable[id].description, 20);
+            var description = lz.format("～～" + chapterTable[id].description, 20);
             var len = description.length;
             for (var j = 0; j < len; ++j) {
                 var storyLabel = cc.LabelTTF.create(description[j], "STHeitiTC-Medium", 20);
@@ -320,7 +320,6 @@ var ExploreLayer = cc.Layer.extend({
     _onClickBack: function () {
         cc.log("ExploreLayer _onClickBack");
 
-        this._unlock();
         MainScene.getInstance().switchLayer(PveLayer);
     },
 
@@ -347,6 +346,7 @@ var ExploreLayer = cc.Layer.extend({
     _lock: function () {
         cc.log("ExploreLayer _lock");
 
+        this._exploreItem.setEnabled(false);
         LazyLayer.showCloudLayer();
         this.setTouchEnabled(false);
     },
@@ -354,6 +354,7 @@ var ExploreLayer = cc.Layer.extend({
     _unlock: function () {
         cc.log("ExploreLayer _unlock");
 
+        this._exploreItem.setEnabled(true);
         LazyLayer.closeCloudLayer();
         this.setTouchEnabled(true);
     },

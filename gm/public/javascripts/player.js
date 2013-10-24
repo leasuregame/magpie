@@ -31,7 +31,7 @@ function setPlayerData() {
     $("#spiritPoolLv").val(JSON.parse(player.spiritPool).lv);
     $("#spiritPoolCount").val(JSON.parse(player.spiritPool).collectCount);
     $("#taskId").val(JSON.parse(player.task).id);
-    $("#layer").val(JSON.parse(player.pass).layer);
+    $("#layer").val(player.passLayer);
 };
 
 $(document).ready(function(){
@@ -117,12 +117,11 @@ function updatePlayerData() {
 
     };
     data.task = JSON.stringify(task);
-    var mark = JSON.parse(player.pass).mark;
+   //var mark = JSON.parse(player.pass).mark;
   //  console.log(mark);
     var layer = parseInt($("#layer").val());
 
     var pass = {
-        layer:layer,
         mark:[],
         mystical:JSON.parse(player.pass).mystical,
         resetTimes:JSON.parse(player.pass).resetTimes
@@ -130,9 +129,11 @@ function updatePlayerData() {
 
     data.pass = JSON.stringify(pass);
 
+    data.passLayer = layer;
+
     data.name = player.name;
    // data.name = player.name;
-   console.log(data);
+    console.log(data);
     $.ajax({
         url:"/playerData?player=" + JSON.stringify(data) + "&area=" + JSON.stringify(area),
         type:"post",

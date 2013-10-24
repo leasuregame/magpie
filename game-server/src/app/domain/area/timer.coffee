@@ -9,3 +9,5 @@ count = 1
 tick = ->
 	#console.log 'tick', count++
 	area.powerConsume()
+
+	area.resetDate()

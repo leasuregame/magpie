@@ -27,7 +27,7 @@ var BattleEndLayer = cc.Layer.extend({
         bgLayer.setPosition(cc.p(40, 0));
         this.addChild(bgLayer);
 
-        if (this._battleLog.get("winner") == "own") {
+        if (this._battleLog.isWin()) {
             var winBgSprite = cc.Sprite.create(main_scene_image.bg17);
             winBgSprite.setPosition(cc.p(360, 580));
             this.addChild(winBgSprite);
@@ -45,7 +45,7 @@ var BattleEndLayer = cc.Layer.extend({
         var len = str.length;
 
         var offsetY = 655;
-        for(var i = 0; i < len; ++i) {
+        for (var i = 0; i < len; ++i) {
             var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
             rewardLabel.setColor(cc.c3b(255, 239, 131));
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
@@ -58,7 +58,7 @@ var BattleEndLayer = cc.Layer.extend({
         var okItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
-            main_scene_image.icon95,
+            main_scene_image.icon21,
             this.end,
             this
         );

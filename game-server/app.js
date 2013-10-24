@@ -2,6 +2,8 @@ var pomelo = require('pomelo');
 var area = require('./app/domain/area/area');
 var MessageService = require('./app/service/messageService');
 var routeUtil = require('./app/common/route');
+var msgQueue = require('./app/common/msgQueue');
+var argsFilter = require('./app/servers/area/filter/argsFilter');
 /**
  * Init app for client.
  */
@@ -52,8 +54,11 @@ app.configure('production|development', function() {
   app.filter(pomelo.filters.timeout());
 });
 
+
+
 // app configuration
 app.configure('production|development', 'connector', function() {
+
   app.set('connectorConfig', {
     connector: pomelo.connectors.hybridconnector,
     heartbeat: 3,
@@ -84,12 +89,14 @@ app.configure('production|development', 'connector|auth', function() {
 });
 
 app.configure('production|development', 'area', function() {
-  area.init();
-
   app.set('messageService', new MessageService(app));
+
+  area.init({app: app});
+  msgQueue.init({app: app});
+  //app.filter(argsFilter());
 });
 
-app.configure('production|development', 'area|battle', function() {
+app.configure('production|development', 'area', function() {
   var areaId = app.get('curServer').area;
   var mysqlConfig = require(app.getBase() + '/config/mysql1.json');
   var env = app.get('env');
@@ -110,12 +117,12 @@ app.configure('production|development', 'area|battle', function() {
   });
 });
 
-app.configure('production|development', 'connector|auth|area|battle', function() {
+app.configure('production|development', 'connector|auth|area', function() {
   var dao = require('./app/dao').init('mysql');
   app.set('dao', dao);
 });
 
-app.configure('development', 'connector|auth|battle|logic|area', function() {
+app.configure('development', 'connector|auth|area', function() {
   app.set('debug', true);
 });
 

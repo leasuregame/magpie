@@ -15,7 +15,7 @@
 var BattleLog = Entity.extend({
         _id: 0,
         _type: PVE_BATTLE_LOG,
-        _card: null,
+        _card: {},
         _ownId: 0,
         _enemyId: 0,
         _winner: "",
@@ -38,6 +38,10 @@ var BattleLog = Entity.extend({
             this.set("reward", battleLog.rewards);
             this.set("battleStep", battleLog.steps);
             this.set("battleStepLen", battleLog.steps.length);
+
+            for (var key in this._card) {
+                this._card[key].index = key;
+            }
 
             if (isPlayback) {
                 this._reward = {};
@@ -91,19 +95,6 @@ var BattleLog = Entity.extend({
 
         isWin: function () {
             return (this._winner === "own");
-        },
-
-        getBattleNode: function () {
-            cc.log("BattleLog getBattleNode");
-
-            var key;
-            var battleNode = {};
-
-            for (key in this._card) {
-                battleNode[key] = this._card[key];
-            }
-
-            return battleNode;
         },
 
         getSpirit: function (id) {

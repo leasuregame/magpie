@@ -90,6 +90,7 @@ var GamblingLayer = cc.Layer.extend({
     }
 });
 
+
 GamblingLayer.create = function () {
     var ret = new GamblingLayer();
 

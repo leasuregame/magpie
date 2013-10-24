@@ -23,13 +23,32 @@ describe("Area Server", function() {
 						friendId: 1
 					}, function(data) {
 						expect(data).toEqual({
-							code: 3004
+							code: 200,
+							msg: {energy: 5}
 						});
 					});
 				});
 			});
 
-			describe('when receive bless from a friend', function() {
+            describe('when a player is self', function() {
+                beforeEach(function() {
+                    loginWith(arthur.account, arthur.password, arthur.areaId);
+                });
+
+                it('should can give bless to him', function() {
+                    request('area.messageHandler.giveBless', {
+                        friendId: 100
+                    }, function(data) {
+                        expect(data).toEqual({
+                            code: 501,
+                            msg: '不能给自己送祝福'
+                        });
+                    });
+                });
+            });
+
+
+            describe('when receive bless from a friend', function() {
 				describe('when the message is not mine', function() {
 					beforeEach(function() {
 						loginWith(arthur.account, arthur.password, arthur.areaId);
@@ -57,7 +76,8 @@ describe("Area Server", function() {
 							msgId: 1
 						}, function(data) {
 							expect(data).toEqual({
-								code: 200
+								code: 200,
+								msg: {energy: 5}
 							});
 						});
 					});

@@ -45,10 +45,14 @@ var TipLayer = cc.Layer.extend({
         this._tipLabel = [];
     },
 
-    tip: function (str, color, fontName, fontSize) {
+    tip: function (hasBg, str, color, fontName, fontSize) {
         cc.log("TipLayer tip: " + str);
 
         if (!str) return;
+
+        var len = this._tipLabel.length;
+
+        if (len && (str == this._tipLabel[len - 1].str)) return;
 
         color = color || cc.c3b(255, 239, 131);
         fontName = fontName || "STHeitiTC-Medium";
@@ -65,11 +69,11 @@ var TipLayer = cc.Layer.extend({
         var strLabelSize = strLabel.getContentSize();
         var bgLabelSize = cc.size(strLabelSize.width + 60, strLabelSize.height + 30);
 
-        var bgLabel = cc.Scale9Sprite.create(main_scene_image.icon3);
-        bgLabel.setContentSize(bgLabelSize);
-        label.addChild(bgLabel);
-
-        var len = this._tipLabel.length;
+        if (hasBg) {
+            var bgLabel = cc.Scale9Sprite.create(main_scene_image.icon3);
+            bgLabel.setContentSize(bgLabelSize);
+            label.addChild(bgLabel);
+        }
 
         for (var i = 0; i < len; ++i) {
             var _tipLabel = this._tipLabel[i];
@@ -77,15 +81,17 @@ var TipLayer = cc.Layer.extend({
             _tipLabel.action.setSpeed(_tipLabel.speed);
         }
 
-        var moveAction = cc.MoveTo.create(1.5, cc.p(360, 700));
+        var moveAction = cc.MoveTo.create(1, cc.p(360, 650));
         var callFuncAction = cc.CallFunc.create(function () {
-            this._tipLabel.shift();
+            this.scheduleOnce(function () {
+                this._tipLabel.shift();
 
-            label.removeFromParent();
+                label.removeFromParent();
 
-            if (!this._tipLabel.length) {
-                this.removeFromParent();
-            }
+                if (!this._tipLabel.length) {
+                    this.removeFromParent();
+                }
+            }, 0.8);
         }, this);
 
         var speed = 1;
@@ -94,6 +100,7 @@ var TipLayer = cc.Layer.extend({
         var speedAction = cc.Speed.create(sequenceAction, speed);
 
         this._tipLabel.push({
+            str: str,
             label: label,
             action: speedAction,
             speed: speed
@@ -128,6 +135,19 @@ TipLayer.create = function () {
             cc.Director.getInstance().getRunningScene().addChild(tipLayer, 10);
         }
 
-        tipLayer.tip(str, color, fontName, fontSize);
+        tipLayer.tip(true, str, color, fontName, fontSize);
+    };
+
+    TipLayer.tipNoBg = function (str, color, fontName, fontSize) {
+        if (tipLayer == null) {
+            tipLayer = TipLayer.create();
+            tipLayer.retain();
+        }
+
+        if (tipLayer.getParent() == null) {
+            cc.Director.getInstance().getRunningScene().addChild(tipLayer, 10);
+        }
+
+        tipLayer.tip(false, str, color, fontName, fontSize);
     };
 })();

@@ -37,7 +37,7 @@ class SpecialProperty
 
   _hit: (type) ->
     return false if not @has(type) 
-    utility.hitRate parseInt(@get(type))
+    utility.hitRate @get(type)
 
 passive_propertys = 
   'atk_improve': 'atk'

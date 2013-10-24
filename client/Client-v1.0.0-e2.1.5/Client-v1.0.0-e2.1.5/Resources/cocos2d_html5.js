@@ -43,20 +43,21 @@
         frameRate: 60,
         loadExtension: true,
         tag: 'gameCanvas', //the dom element to run cocos2d on
-        engineDir: '../../../Cocos2d-html5-v2.1.5/cocos2d/',
+        engineDir: '../../../Cocos2d-html5-v2.2/cocos2d/',
         //SingleEngineFile:'',
         appFiles: [
             'src/resource.js',
 
             'src/table/table.js',
 
-            'src/model/pomeloWebsocketClient.js',
+            'src/model/pomelo-client.js',
             'src/model/serverAPI.js',
 
-            'src/model/singleton.js',
             'src/model/base.js',
+            'src/model/singleton.js',
             'src/model/gameConfig.js',
 
+            'src/model/event.js',
             'src/model/entity.js',
             'src/model/user.js',
             'src/model/player.js',
@@ -78,6 +79,7 @@
             'src/model/shop.js',
             'src/model/signIn.js',
             'src/model/achievement.js',
+            'src/model/exchange.js',
 
             'src/model/battleLogPool.js',
             'src/model/battleLog.js',
@@ -97,6 +99,7 @@
 
             'src/view/loginModule/loginScene.js',
             'src/view/loginModule/loginLayer.js',
+            'src/view/loginModule/logoutLayer.js',
             'src/view/loginModule/registerScene.js',
             'src/view/loginModule/registerLayer.js',
 
@@ -119,6 +122,7 @@
             'src/view/mainModule/cardUpgradeLabel.js',
             'src/view/mainModule/configLayer.js',
             'src/view/mainModule/evolutionLayer.js',
+            'src/view/mainModule/exchangeLayer.js',
             'src/view/mainModule/exploreLayer.js',
             'src/view/mainModule/friendLayer.js',
             'src/view/mainModule/friendMessageLayer.js',
@@ -129,10 +133,6 @@
             'src/view/mainModule/lineUpLayer.js',
             'src/view/mainModule/lotteryLayer.js',
             'src/view/mainModule/lvRankLayer.js',
-            'src/view/mainModule/mainBgLayer.js',
-            'src/view/mainModule/mainLayer.js',
-            'src/view/mainModule/mainMenuLayer.js',
-            'src/view/mainModule/mainScene.js',
             'src/view/mainModule/messageLabel.js',
             'src/view/mainModule/messageLayer.js',
             'src/view/mainModule/monthLabel.js',
@@ -146,6 +146,8 @@
             'src/view/mainModule/propsLayer.js',
             'src/view/mainModule/pveLayer.js',
             'src/view/mainModule/rankLayer.js',
+            'src/view/mainModule/readMessageLayer.js',
+            'src/view/mainModule/sendMessageLayer.js',
             'src/view/mainModule/shopLayer.js',
             'src/view/mainModule/signInLayer.js',
             'src/view/mainModule/skillUpgradeLabel.js',
@@ -164,6 +166,10 @@
             'src/view/mainModule/treasureHuntLayer.js',
             'src/view/mainModule/vipLayer.js',
             'src/view/mainModule/vipPrivilegeLayer.js',
+            'src/view/mainModule/mainBgLayer.js',
+            'src/view/mainModule/mainLayer.js',
+            'src/view/mainModule/mainMenuLayer.js',
+            'src/view/mainModule/mainScene.js',
 
             'src/view/battleModule/actionFactory.js',
             'src/view/battleModule/battleBeganLayer.js',

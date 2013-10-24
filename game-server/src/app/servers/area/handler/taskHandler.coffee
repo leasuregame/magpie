@@ -11,6 +11,8 @@ spiritConfig = require '../../../../config/data/spirit'
 utility = require '../../../common/utility'
 dao = require('pomelo').app.get('dao')
 
+MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -23,13 +25,16 @@ Handler::explore = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   taskId = msg.taskId
   player = null
-  console.log("req success", msg, playerId);
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
 
     (_player, cb) ->
       player = _player
+
+      if _.keys(player.cards).length >= MAX_CARD_COUNT
+        return cb({code: 501, msg: '卡牌容量已经达到最大值'})
+
       if taskId > player.task.id 
         return cb({code: 501, msg: '不能探索此关'})
 
@@ -42,6 +47,17 @@ Handler::explore = (msg, session, next) ->
           {pid: player.id, tableId: taskId, table: 'task_config'}
         , (err, battleLog) ->
           data.battle_log = battleLog
+
+          if not player.task.hasWin
+            countSpirit(player, battleLog, 'TASK')
+            player.incSpirit battleLog.totalSpirit if battleLog.winner is 'own'
+
+          ### 每次战斗结束都有20%的概率获得5元宝 ###
+          if utility.hitRate(taskRate.gold_obtain.rate)
+            player.increase('gold', taskRate.gold_obtain.value)
+            data.gold_obtain += taskRate.gold_obtain.value
+
+          checkFragment(battleLog, player, chapterId)
 
           if battleLog.winner is 'own'
             async.parallel [
@@ -68,7 +84,7 @@ Handler::explore = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg})
 
     player.save()
-    data.task = player.task
+    data.task = player.getTask()
     data.power = player.power
     data.lv = player.lv
     data.exp = player.exp
@@ -77,18 +93,14 @@ Handler::explore = (msg, session, next) ->
 Handler::updateMomoResult = (msg, session, next) ->
   playerId = session.get('playerId')
   gold = msg.gold
-  console.log("gold = ",gold)
 
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg})
 
-    #if player.hasMomoMark()
-      #return next(null, {code: 501, msg: '不能重复领取摸一摸奖励'})
     if gold > player.getMonoGiftTotal()
       return next(null,{code: 501,msg: '获取的元宝数大于实际值'})
-    player.clearMonoGift();
-    #player.setMomoMark()
+    player.clearMonoGift()
 
     player.increase 'gold', gold
     player.save()
@@ -141,8 +153,12 @@ Handler::passBarrier = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
-      layer = if layer? then layer else player.pass.layer + 1
-      if layer > 100 or layer < 1 or layer > (player.pass.layer + 1)
+      fdata = table.getTableItem('function_limit', 1)
+      if fdata? and player.lv < fdata.pass
+        return next(null, {code: 501, msg: fdata.pass+'级开放'}) 
+
+      layer = if layer? then layer else player.passLayer + 1
+      if layer > 100 or layer < 1 or layer > (player.passLayer + 1)
         return cb({code: 501, msg: '不能闯此关'})
 
       cb(null)
@@ -151,15 +167,16 @@ Handler::passBarrier = (msg, session, next) ->
       fightManager.pve( {pid: player.id, tableId: layer, table: 'pass_config'}, cb )
 
     (bl, cb) ->
+      ### 第一次经过layer层，才有灵气掉落 ###
+      countSpirit(player, bl, 'PASS') if player.passLayer is layer-1
       if bl.winner is 'own'
         rdata = table.getTableItem 'pass_reward', layer
-        bl.rewards = 
+        _.extend bl.rewards, {
           exp: rdata.exp
-          money: rdata.coins
+          money: rdata.money
           skillPoint: rdata.skill_point
-          totalSpirit: 0
-
-        countSpirit(player, bl) if player.pass.layer is layer-1
+        }
+        
         updatePlayer(player, bl.rewards, layer)
         checkMysticalPass(player)
 
@@ -176,8 +193,7 @@ Handler::passBarrier = (msg, session, next) ->
       pass: player.getPass(),
       power: player.power,
       exp: player.exp,
-      lv: player.lv,
-      spiritor: player.spiritor
+      lv: player.lv
     }})
 
 ###
@@ -192,19 +208,17 @@ Handler::resetPassMark = (msg, session, next) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
     (res,cb) ->
       player = res
-      console.log("gold = " , player.gold)
       if player.gold < 200
         return cb({code: 501,msg: '元宝不足'})
 
       if player.resetPassMark()
          cb()
-
       else
         return cb({code: 501,msg: '重置关卡次数已用光'})
 
     (cb) ->
-      player.decrease 'gold',200
-      cb(null,player.gold)
+      player.decrease 'gold', 200
+      cb(null, player.gold)
   ],(err,gold) ->
 
     if err
@@ -212,9 +226,9 @@ Handler::resetPassMark = (msg, session, next) ->
 
     player.save()
 
-    next(null,{code: 200,msg: {
-      canReset:if player.pass.resetTimes > 0 then true else false
-      gold:gold
+    next(null, {code: 200, msg: {
+      canReset: if player.pass.resetTimes > 0 then true else false
+      gold: gold
     }})
 
 ###
@@ -237,24 +251,18 @@ Handler::mysticalPass = (msg, session, next) ->
       cb()
 
     (cb) =>
-      @app.rpc.battle.fightRemote.pve(
-        session,
-        {
-          pid: player.id,
-          tableId: player.pass.mystical.diff,
-          table: 'mystical_pass_config'
-        },
-        cb
-      )
+      fightManager.pve {
+        pid: player.id,
+        tableId: player.pass.mystical.diff,
+        table: 'mystical_pass_config'
+      }, cb
 
     (bl, cb) ->
+      countSpirit(player, bl, 'PASS')
       if bl.winner is 'own'
         mpcData = table.getTableItem('mystical_pass_config', player.pass.mystical.diff)
-        bl.rewards = 
-          skillPoint: mpcData.skill_point
-          totalSpirit: 0
+        bl.rewards.skillPoint = mpcData.skill_point
 
-        countSpirit(player, bl)
         player.increase('skillPoint', mpcData.skill_point)
         player.clearMysticalPass()        
         player.incSpirit(bl.rewards.totalSpirit)
@@ -266,36 +274,31 @@ Handler::mysticalPass = (msg, session, next) ->
       return next(err, {code: err.code or 500, msg: err.msg or ''})
 
     next(null, {code: 200, msg: {
-      battleLog: bl,
-      spiritor: player.spiritor
+      battleLog: bl
       hasMystical: player.hasMysticalPass()
     }})
 
-countSpirit = (player, bl) ->
+countSpirit = (player, bl, type) ->
   totalSpirit = 0
   _.each bl.cards, (v, k) ->
     return if k <= 6
     
     if v.boss?
-      v.spirit = spiritConfig.SPIRIT.TASK.BOSS
-      totalSpirit += spiritConfig.SPIRIT.TASK.BOSS
+      v.spirit = spiritConfig.SPIRIT[type].BOSS
+      totalSpirit += spiritConfig.SPIRIT[type].BOSS
     else
-      v.spirit = spiritConfig.SPIRIT.TASK.OTHER
-      totalSpirit += spiritConfig.SPIRIT.TASK.OTHER
+      v.spirit = spiritConfig.SPIRIT[type].OTHER
+      totalSpirit += spiritConfig.SPIRIT[type].OTHER
 
-  bl.rewards.totalSpirit = totalSpirit
+  bl.rewards.totalSpirit = totalSpirit if bl.winner is 'own'
 
 checkMysticalPass = (player) ->
   return if player.pass.mystical.isTrigger
 
   mpc = table.getTableItem 'mystical_pass_config', player.pass.mystical.diff
 
-  if mpc and (player.pass.layer >= mpc.layer_from and player.pass.layer <= mpc.layer_to) and utility.hitRate(mpc.rate)
-    console.log("触发成功！！！",player.pass.layer);
+  if mpc and (player.passLayer >= mpc.layer_from and player.passLayer <= mpc.layer_to) and utility.hitRate(mpc.rate)
     player.triggerMysticalPass()
-    #return true
-
-  #return false
 
 
 updatePlayer = (player, rewards, layer) ->
@@ -303,6 +306,19 @@ updatePlayer = (player, rewards, layer) ->
   player.increase('money', rewards.money)
   player.increase('skillPoint', rewards.skillPoint)
   player.incSpirit(rewards.totalSpirit)
-  player.incPass() if player.pass.layer is layer-1
+  player.incPass() if player.passLayer is layer-1
   player.setPassMark(layer)
   player.save()
+
+checkFragment = (battleLog, player, chapterId) ->  
+  if(
+    player.task.hasFragment != parseInt(chapterId) and 
+    ( utility.hitRate(taskRate.fragment_rate) or player.task.id%10 is 0 )
+    )
+    battleLog.rewards.fragment = 1
+    task = utility.deepCopy(player.task)
+    task.hasFragment = parseInt(chapterId)
+    player.set('task', task)
+  else 
+    battleLog.rewards.fragment = 0
+    

@@ -15,19 +15,20 @@
 var BatterLayer = cc.Layer.extend({
     _battleLog: null,
     _battleNode: null,
+    _spiritNode: [],
     _locate: {
-        1: cc.p(130, 450),
+        1: cc.p(150, 450),
         2: cc.p(355, 450),
-        3: cc.p(590, 450),
-        4: cc.p(130, 250),
+        3: cc.p(570, 450),
+        4: cc.p(150, 250),
         5: cc.p(355, 250),
-        6: cc.p(590, 250),
-        7: cc.p(130, 750),
+        6: cc.p(570, 250),
+        7: cc.p(150, 750),
         8: cc.p(355, 750),
-        9: cc.p(590, 750),
-        10: cc.p(130, 950),
+        9: cc.p(570, 750),
+        10: cc.p(150, 950),
         11: cc.p(355, 950),
-        12: cc.p(590, 950)
+        12: cc.p(570, 950)
     },
     _rotation: {},
 
@@ -37,6 +38,7 @@ var BatterLayer = cc.Layer.extend({
         if (!this._super()) return false;
 
         this._battleLog = battleLog;
+        this._spiritNode = [];
 
         var bgSprite = null;
 
@@ -69,7 +71,7 @@ var BatterLayer = cc.Layer.extend({
 
         this._backItem.setVisible(false);
 
-        var battleNode = battleLog.getBattleNode();
+        var battleNode = battleLog.get("card");
 
         cc.log(battleNode);
 
@@ -117,16 +119,30 @@ var BatterLayer = cc.Layer.extend({
         this.unschedule(this._playAStep);
 
         if (!this._battleLog.hasNextBattleStep()) {
-            this.end();
+            this.scheduleOnce(this._collectSpirit, 1.5)
             return;
         }
 
         cc.log("\n\n\nBattlePlayer _playAStep " + this._battleLog.getBattleStepIndex());
 
         var battleStep = this._battleLog.getBattleStep();
+        var skillType = this._battleNode[battleStep.get("attacker")].getSkillType();
+        var delay;
 
         if (battleStep.isSpiritAtk()) {
             battleStep.set("attacker", this._battleLog.getSpirit(battleStep.get("attacker")));
+        }
+
+        if (battleStep.isSkill()) {
+            if (skillType === 2) {
+                delay = this._aoe(battleStep);
+            } else if (skillType === 3 || skillType === 4) {
+                delay = this._heal(battleStep);
+            } else {
+                delay = this._aoe(battleStep);
+            }
+        } else {
+            delay = this._normalAttack(battleStep);
         }
 
         var str = battleStep.get("attacker") + (battleStep.get("isSkill") ? " 用技能 揍了 " : " 用普攻 揍了 ");
@@ -135,7 +151,6 @@ var BatterLayer = cc.Layer.extend({
         cc.log(str);
         this._tipLabel.setString(str);
 
-        var delay = this._normalAttack(battleStep);
 
         cc.log("set next round schedule");
         this.schedule(this._playAStep, delay, 1, 0);
@@ -159,24 +174,24 @@ var BatterLayer = cc.Layer.extend({
             var cb = function (target, position) {
                 return function () {
                     playEffect({
-                        effectId: 8,
+                        effectId: 5,
                         target: target,
                         loops: 1,
-                        delay: 0.05,
+                        delay: 0.07,
                         zOrder: 10,
                         position: position
                     })
                 };
-
             }(this, targetLocate);
 
             var ret = playEffect({
-                effectId: 6,
+                effectId: 4,
                 target: this,
                 loops: 1,
                 delay: 0.07,
                 zOrder: 10,
                 rotation: lz.getAngle(attackerLocate, targetLocate),
+                anchorPoint: cc.p(0.5, 0.8),
                 position: attackerLocate,
                 clear: true,
                 cb: cb
@@ -191,6 +206,211 @@ var BatterLayer = cc.Layer.extend({
         }
 
         return 2.0;
+    },
+
+    _aoe: function (battleStep) {
+        cc.log(battleStep);
+
+        var attacker = battleStep.get("attacker");
+
+        this._battleNode[attacker].atk();
+
+        battleStep.recover();
+        while (battleStep.hasNextTarget()) {
+            var target = battleStep.getTarget();
+            var targetLocate = this._locate[target];
+
+            this._battleNode[target].defend(battleStep.getEffect(), battleStep.isCrit());
+
+            var cb = function (target, position) {
+                return function () {
+                    playEffect({
+                        effectId: 8,
+                        target: target,
+                        loops: 1,
+                        delay: 0.06,
+                        zOrder: 10,
+                        position: position
+                    })
+                };
+            }(this, targetLocate);
+
+            var ret = playEffect({
+                effectId: 7,
+                target: this,
+                loops: 1,
+                delay: 0.04,
+                zOrder: 10,
+                anchorPoint: cc.p(0.5, 0.2),
+                position: cc.p(targetLocate.x, targetLocate.y + 120),
+                clear: true,
+                cb: cb
+            });
+
+            var effectSprite = ret.sprite;
+            var time = ret.time;
+
+            var moveAction = cc.EaseSineIn.create(cc.MoveTo.create(time, targetLocate));
+
+            effectSprite.runAction(moveAction);
+        }
+
+        return 2.0;
+    },
+
+    _heal: function (battleStep) {
+        var attacker = battleStep.get("attacker");
+
+        this._battleNode[attacker].atk();
+
+        battleStep.recover();
+        while (battleStep.hasNextTarget()) {
+            var target = battleStep.getTarget();
+            var targetLocate = this._locate[target];
+
+            this._battleNode[target].heal(battleStep.getEffect(), battleStep.isCrit());
+
+            playEffect({
+                effectId: 9,
+                target: this,
+                loops: 1,
+                delay: 0.07,
+                zOrder: 10,
+                anchorPoint: cc.p(0.5, 0.4),
+                position: targetLocate,
+                clear: true
+            });
+        }
+
+        return 2.0;
+    },
+
+    _addSpirit: function (index) {
+        var spirit = cc.Sprite.create(main_scene_image.icon247);
+
+        var point = this._locate[index];
+        var offset = lz.random(-25, 25);
+        var pointArray1 = [
+            cc.p(point.x, point.y + 100),
+            cc.p(point.x + lz.random(-80, 80), point.y + (100 - offset) / 2),
+            cc.p(point.x + lz.random(-25, 25), point.y + offset)
+        ];
+
+        spirit.setPosition(pointArray1[0]);
+        spirit.setScale(0);
+        this.addChild(spirit, 1);
+        this._spiritNode.push(spirit);
+
+        var pointArray2 = [
+            pointArray1[2],
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            cc.p(point.x + lz.random(-25, 25), point.y + lz.random(-25, 25)),
+            pointArray1[2]
+        ];
+
+        spirit.runAction(cc.Sequence.create(
+            cc.Spawn.create(
+                cc.CardinalSplineTo.create(2, pointArray1, 0),
+                cc.ScaleTo.create(1, 1, 1)
+            ),
+            cc.CallFunc.create(function () {
+                spirit.runAction(
+                    cc.RepeatForever.create(
+                        cc.CardinalSplineTo.create(20, pointArray2, 0)
+                    )
+                );
+            }, this)
+        ));
+    },
+
+    releaseSpirit: function (index, count) {
+        cc.log("BatterLayer releaseSpirit");
+
+        for (var i = 0; i < count; ++i) {
+            this._addSpirit(index);
+        }
+    },
+
+    _collectSpirit: function () {
+        cc.log("BatterLayer collectSpirit");
+
+        var len = this._spiritNode.length;
+
+
+        if (this._battleLog.isWin()) {
+            if (len) {
+                var index = this._battleLog.getSpirit(1);
+
+                for (var i = 0; i < len; ++i) {
+                    var spirit = this._spiritNode[i];
+
+                    spirit.stopAllActions();
+                    var point1 = spirit.getPosition();
+                    var point2 = this._locate[index];
+
+                    var pointArray = [
+                        point1,
+                        cc.p(lz.random(50, 670), (point1.y + point2.y) / 2),
+                        point2
+                    ];
+
+                    spirit.runAction(cc.Sequence.create(
+                        cc.Spawn.create(
+                            cc.CardinalSplineTo.create(2, pointArray, 0),
+                            cc.Sequence.create(
+                                cc.DelayTime.create(1.5),
+                                cc.CallFunc.create(function () {
+                                    this._battleNode[index].runAction(
+                                        cc.Sequence.create(
+                                            cc.ScaleTo.create(0.5, 1.4, 1.4),
+                                            cc.ScaleTo.create(0.3, 1, 1)
+                                        )
+                                    );
+                                }, this),
+                                cc.ScaleTo.create(0.5, 0.3, 0.3)
+                            )
+                        ),
+                        cc.Hide.create()
+                    ));
+                }
+
+                this.scheduleOnce(function () {
+                    this.end();
+                }, 4);
+            } else {
+                this.end();
+            }
+
+        } else {
+            if (len) {
+                for (var i = 0; i < len; ++i) {
+                    var spirit = this._spiritNode[i];
+
+                    spirit.stopAllActions();
+
+                    spirit.runAction(
+                        cc.Spawn.create(
+                            cc.ScaleTo.create(1, 5, 5),
+                            cc.FadeOut.create(1)
+                        )
+                    );
+                }
+
+                this.scheduleOnce(function () {
+                    this.end();
+                }, 2);
+            } else {
+                this.end();
+            }
+
+
+        }
     }
 });
 

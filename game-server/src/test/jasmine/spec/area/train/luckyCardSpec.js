@@ -22,39 +22,35 @@ describe("Area Server", function() {
 
 			var GRADE = {
 				LOWER: 1,
-				MEDIUM: 2,
-				HIGHT: 3
+				//MEDIUM: 2,
+				HIGHT: 2
 			};
 
 			var CARD_SCOPE = {
-				"1": {
-					from: 0,
-					to: 6
-				},
-				"2": {
-					from: 1,
-					to: 6
-				},
-				"3": {
-					from: 2,
-					to: 6
-				}
+                "1": {
+                    from: 0,
+                    to: 5
+                },
+                "2": {
+                    from: 2,
+                    to: 6
+                }
 			};
 
 			var checkCard = function(card, min_star, max_star) {
-				console.log('star: ', card.star);
-				//expect(card.star).toBeLessThan(max_star);
-				//expect(card.star).toBeGreaterThan(min_star);
+                var card_star = card.tableId % 5;
+                if (card_star == 0) card_star = 5;
+				expect(card_star).toBeLessThan(max_star);
+				expect(card_star).toBeGreaterThan(min_star);
 
 				//expect(card.star % 5).toEqual(card.tableId % 5);
-				var card_star = card.tableId % 5;
-				if (card_star == 0) card_star = 5;
+
 				var ps_names = ['crit', 'dodge', 'atk_improve', 'hp_improve', 'dmg_reduce'];
 				if (card_star >= 3) {
 					expect(card.passiveSkills.length).toEqual(card_star - 2);
 					for (var i = 0; i < card.passiveSkills.length; i++) {
 						var ps = card.passiveSkills[i];
-						expect(ps.cardId).toEqual(card.id);
+						//expect(ps.cardId).toEqual(card.id);
 						expect(ps.value).toBeLessThan(5);
 						expect(ps.value).toBeGreaterThan(0);
 						expect(ps_names).toContain(ps.name);
@@ -67,6 +63,10 @@ describe("Area Server", function() {
 			var execute_suit = function(name, level) {
 				describe(name, function() {
 					var before_gold, before_energy, before_fragments;
+
+                    beforeAll(function(){
+                        doAjax('/clear/card', {}, function(){});
+                    });
 
 					beforeEach(function() {
 						loginWith(arthur.account, arthur.password, arthur.areaId);
@@ -93,7 +93,7 @@ describe("Area Server", function() {
 
 							var card = data.msg.card;
 							var scope = CARD_SCOPE[level];
-							checkCard(card, scope.from, scope.to);
+							checkCard(card, scope["from"], scope["to"]);
 
 							doAjax('/card/' + card.id, {}, function(res) {
 								expect(_.pick(res.data,
@@ -109,18 +109,19 @@ describe("Area Server", function() {
 										elixirHp: card.elixirHp,
 										elixirAtk: card.elixirAtk,
 									});
+                                var pss = JSON.parse(res.data.passiveSkills);
+                                for(var i = 0; i < card.passiveSkills.length;i++) {
+                                    var ps = card.passiveSkills[i];
+                                    expect(pss[i]).toEqual({
+                                        id: ps.id,
+                                        //cardId: ps.cardId,
+                                        name: ps.name,
+                                        value: ps.value
+                                    });
+                                }
+
 							});
 
-							card.passiveSkills.forEach(function(ps) {
-								doAjax('/passiveSkill/' + ps.id, {}, function(res) {
-									expect(res.data).toEqual({
-										id: ps.id,
-										cardId: ps.cardId,
-										name: ps.name,
-										value: ps.value
-									});
-								});
-							});
 
 							doAjax('/player/' + arthur.playerId, {}, function(res) {
 								if (type == LOTTERY_TYPE.GOLD) {
@@ -140,6 +141,7 @@ describe("Area Server", function() {
 						}, timeout);
 					};
 
+                    var LOTTERY_COUNT = 45;
 					var test = function(test_name, type) {
 						it(test_name, function() {
 							doIt(type, 5000);
@@ -147,8 +149,8 @@ describe("Area Server", function() {
 					};
 
 					var test100times = function(test_name, type) {
-						it(test_name + ' >> gold, 100 times', function() {
-							for (var i = 0; i < 100; i++) {
+						it(test_name + ' >> '+LOTTERY_COUNT+' times', function() {
+							for (var i = 0; i < LOTTERY_COUNT; i++) {
 								(function(i) {
 									doIt(type, 15000);
 								})(i);
@@ -163,8 +165,7 @@ describe("Area Server", function() {
 				});
 			};
 
-			execute_suit('低级抽卡', GRADE.LOWER);
-			execute_suit('中级抽卡', GRADE.MEDIUM);
+			execute_suit('普通抽卡', GRADE.LOWER);
 			execute_suit('高级抽卡', GRADE.HIGHT);
 
 			describe("when gold or energy is not enought", function() {
@@ -194,6 +195,180 @@ describe("Area Server", function() {
 				});
 
 			});
+
+            describe("当次数达到上限时",function(){
+
+                beforeAll(function() {
+                    doAjax('/update/player/100', {
+                        rowFragmentCount: 99,
+                        highFragmentCount: 39,
+                        highDrawCardCount: 239
+                    }, function(data) {
+                        //expect(data).toEqual('done');
+                        console.log(data);
+
+                    });
+                });
+
+                beforeEach(function(){
+                    loginWith(arthur.account, arthur.password, arthur.areaId);
+                })
+
+                it('普通抽卡可以获得卡魂',function(){
+
+                    request('area.trainHandler.luckyCard', {
+                        type: LOTTERY_TYPE.GOLD,
+                        level: 1
+                    }, function(data) {
+                        console.log(data);
+                        expect(data.code).toEqual(200);
+                       // expect(data.msg).toEqual('没有足够的资源来完成本次抽卡');
+                        expect(data.msg.fragment).toEqual(1);
+                    });
+                });
+
+                it('高级抽卡可以获得5星卡和卡魂',function(){
+                    request('area.trainHandler.luckyCard', {
+                        type: LOTTERY_TYPE.GOLD,
+                        level: 2
+                    }, function(data) {
+                        console.log(data);
+                        expect(data.code).toEqual(200);
+                        // expect(data.msg).toEqual('没有足够的资源来完成本次抽卡');
+                        expect(data.msg.fragment).toEqual(1);
+                        var star = data.msg.card.tableId % 5 + 5;
+                        expect(star).toEqual(5);
+                    });
+                });
+
+                it('记录可以归零',function(){
+                    doAjax('/player/' + arthur.playerId, {}, function(res) {
+                        res.rowFragmentCount.toEqual(0);
+                        res.highFragmentCount.toEqual(0);
+                        res.highDrawCardCount.toEqual(0);
+                    });
+                });
+
+            })
 		});
 	});
 });
+
+
+// describe("Area Server", function() {
+
+//     describe("Train Handler", function() {
+//         var arthur = {
+//             id: 100,
+//             playerId: 100,
+//             areaId: 1,
+//             account: 'arthur',
+//             password: '1'
+//         };
+//         beforeAll(function() {
+//             doAjax('/loaddata/csv', {}, function(data) {
+//                 expect(data).toEqual('done');
+//             });
+
+//             doAjax('/clear/card', {}, function(){});
+//         });
+
+//         describe("area.trainHandler.luckyCard", function() {
+//             var LOTTERY_TYPE = {
+//                 GOLD: 1,
+//                 ENERGY: 0
+//             };
+
+//             var GRADE = {
+//                 LOWER: 1,
+//                 HIGHT: 2
+//             };
+
+//             var execute_suit = function(name, level) {
+//                 describe(name, function() {
+//                     var before_gold, before_energy, before_fragments;
+
+//                     beforeEach(function() {
+//                         loginWith(arthur.account, arthur.password, arthur.areaId);
+//                     });
+
+//                     var doIt = function(type, timeout) {
+//                         doAjax('/player/' + arthur.playerId, {}, function(res) {
+//                             before_gold = res.data.gold;
+//                             before_energy = res.data.energy;
+//                             before_fragments = res.data.fragments;
+//                         });
+
+//                         request('area.trainHandler.luckyCard', {
+//                             type: type,
+//                             level: level
+//                         }, function(data) {
+//                             console.log(name, data);
+//                             expect(data.code).toEqual(200);
+//                             expect(data.msg).hasProperties([
+//                                 'card',
+//                                 'consume',
+//                                 'fragment'
+//                             ]);
+
+//                             expect(data.msg.fragment).toEqual(0);
+
+//                             var card = data.msg.card;
+//                             var scope = CARD_SCOPE[level];
+
+
+//                             doAjax('/player/' + arthur.playerId, {}, function(res) {
+//                                 if (type == LOTTERY_TYPE.GOLD) {
+//                                     expect(res.data.gold).toEqual(before_gold - data.msg.consume);
+//                                 } else {
+//                                     expect(res.data.energy).toEqual(before_energy - data.msg.consume);
+//                                 }
+
+//                                 if (data.msg.fragment) {
+//                                     expect(res.data.fragments).toEqual(before_fragments + 1);
+//                                 } else {
+//                                     expect(res.data.fragments).toEqual(before_fragments);
+//                                 }
+
+//                             });
+
+//                         }, timeout);
+//                     };
+
+//                     var test = function(test_name, type, times) {
+//                         it(test_name + ' >> should can not get fragment', function() {
+//                             for (var i = 0; i < times; i++) {
+//                                 (function(i) {
+//                                     doIt(type, 15000);
+//                                 })(i);
+//                             }
+//                         });
+//                     };
+
+//                     var times = 0;
+//                     if(level == GRADE.LOWER)
+//                         times = 50;
+//                     else
+//                         times = 20;
+//                     test(name, LOTTERY_TYPE.GOLD,times);
+
+//                 });
+//             };
+
+//             execute_suit('普通抽卡1', GRADE.LOWER);
+//             execute_suit('高级抽卡1', GRADE.HIGHT);
+
+//         });
+//     });
+// });
+
+
+
+
+
+
+
+
+
+
+

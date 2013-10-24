@@ -7,12 +7,15 @@ table = require '../../../manager/table'
 passSkillConfig = require '../../../../config/data/passSkill'
 elixirConfig = require '../../../../config/data/elixir'
 starUpgradeConfig = require '../../../../config/data/starUpgrade'
+cardConfig = require '../../../../config/data/card'
 utility = require '../../../common/utility'
+msgQueue = require '../../../common/msgQueue'
 entityUtil = require '../../../util/entityUtil'
 job = require '../../../dao/job'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 
+MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
 LOTTERY_BY_GOLD = 1
 LOTTERY_BY_ENERGY = 0
 
@@ -54,7 +57,6 @@ Handler::strengthen = (msg, session, next) ->
         options: 
           table: 'card'
           where: id: targetCard.id
-          data: targetCard.getSaveData()
           data: cardData
       } if not _.isEmpty(cardData)
 
@@ -103,7 +105,14 @@ Handler::luckyCard = (msg, session, next) ->
 
     (res, cb) ->
       player = res
-      [card, consumeVal, fragment] = lottery(level, type);
+      if _.keys(player.cards).length >= MAX_CARD_COUNT
+        return cb({code: 501, msg: '卡牌容量已经达到最大值'})
+
+      rfc = player.rowFragmentCount + 1 #普通抽卡魂次数
+      hfc = player.highFragmentCount + 1 #高级抽卡魂次数
+      hdcc = player.highDrawCardCount + 1 #高级抽卡次数
+
+      [card, consumeVal, fragment] = lottery(level, type, rfc, hfc, hdcc);
 
       if player[typeMapping[type]] < consumeVal
         return cb({code: 501, msg: '没有足够的资源来完成本次抽卡'}, null)
@@ -114,16 +123,37 @@ Handler::luckyCard = (msg, session, next) ->
     (card, cb) ->
       entityUtil.createCard card, cb
         
-    (cardEnt, cb) ->
+    (cardEnt, cb) =>
       player.addCard(cardEnt);
+      if(level == 1)
+          player.increase('rowFragmentCount',1)
+      else
+          player.increase('highFragmentCount',1)
+          player.increase('highDrawCardCount',1);
+
       if type is LOTTERY_BY_GOLD
         player.decrease('gold', consumeVal)
 
       if type is LOTTERY_BY_ENERGY
         player.decrease('energy', consumeVal)
 
+      if level is 2 and cardEnt.star == 5 #抽到5星卡牌，高级抽卡次数变为0
+        player.set('highDrawCardCount',0)
+        card = table.getTableItem('cards', cardEnt.tableId)
+        msg = {
+          #route: 'onSystemMessage',
+          msg: player.name + '幸运的召唤到了5星卡' + card.name + '！！！'
+          type: 0
+        }
+        #@app.get('messageService').pushMessage(msg)
+        msgQueue.push(msg)
+
       if fragment
         player.increase('fragments',fragment)
+        if level is 1
+          player.set('rowFragmentCount',0)
+        else
+          player.set('highFragmentCount',0)
 
       cb(null, cardEnt, player)
   ], (err, cardEnt, player) ->
@@ -191,7 +221,7 @@ Handler::skillUpgrade = (msg, session, next) ->
 
     card.save()
     player.save()
-    next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need}})
+    next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need,ability: card.ability()}})
 
 Handler::starUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -213,8 +243,15 @@ Handler::starUpgrade = (msg, session, next) ->
       card = player.getCard(target)
       if card is null
         return cb({code: 501, msg: "找不到卡牌"})
+
+      if card.tableId >= 10000
+        return cb({code: 501, msg: "该卡牌不可以进阶"})
+
       if card.star is 5
         return cb({code: 501, msg: "卡牌星级已经是最高级了"})
+
+      if card.lv isnt cardConfig.MAX_LEVEL[card.star]
+        return cb({code: 501, msg: "未达到进阶等级"})
 
       starUpgradeConfig = table.getTableItem('star_upgrade', card.star)
       if not starUpgradeConfig
@@ -224,7 +261,7 @@ Handler::starUpgrade = (msg, session, next) ->
 
       cb(null)
 
-    (cb) ->
+    (cb) =>
       money_consume = starUpgradeConfig.money_need
       
       if player.money < money_consume
@@ -233,7 +270,23 @@ Handler::starUpgrade = (msg, session, next) ->
       if card_count > starUpgradeConfig.max_num
         return cb({code: 501, msg: "最多只能消耗#{starUpgradeConfig.max_num}张卡牌来进行升级"})
 
-      totalRate = _.min([card_count * starUpgradeConfig.rate_per_card, 100])
+      rate = 0
+
+      if card.star is 4
+        console.log 'star is 4 , before count...', rate, card.useCardsCounts, card_count
+        if card.useCardsCounts < 6 and card.useCardsCounts >= 0
+          count = if (card.useCardsCounts + card_count <= 6) then card_count else 6 - card.useCardsCounts
+          card.increase('useCardsCounts' , count)
+          card_count -= count
+
+        if card.useCardsCounts > 5
+          rate = card.useCardsCounts * starUpgradeConfig.rate_per_card
+          card.set('useCardsCounts',-1);
+
+        console.log 'star is 4 , after count...', rate, card.useCardsCounts, card_count
+
+      totalRate = _.min([card_count * starUpgradeConfig.rate_per_card + rate, 100])
+      console.log 'totalRate = ', totalRate
       if utility.hitRate(totalRate)
         is_upgrade = true
       
@@ -250,17 +303,22 @@ Handler::starUpgrade = (msg, session, next) ->
         # 获得五星卡成就
         if card.star is 5
           achieve.star5card(player)
-
+          cardNmae = table.getTableItem('cards', card.tableId).name
+          msg = {
+            #route: 'onSystemMessage',
+            msg: player.name + '成功的将' + cardNmae + '进阶为5星！！！'
+            type: 0
+          }
+          #@app.get('messageService').pushMessage(msg)
+          msgQueue.push(msg);
         # 卡牌星级进阶，添加一个被动属性
-        ps_data = {}
         if card.star >= 3
-          ps_data = require('../../../domain/entity/passiveSkill').born()
-          ps_data.cardId = card.id
-        return cb null, ps_data
+          card.bornPassiveSkill()
+        return cb null
 
-      cb null, {}
+      cb null
 
-    (ps_data, cb) ->
+    (cb) ->
       _jobs = []
 
       playerData = player.getSaveData()
@@ -287,13 +345,6 @@ Handler::starUpgrade = (msg, session, next) ->
           table: 'card'
           where: " id in (#{sources.toString()}) "
       }
-
-      _jobs.push {
-        type: 'insert'
-        options:
-          table: 'passiveSkill'
-          data: ps_data
-      } if not _.isEmpty(ps_data)
 
       job.multJobs _jobs, cb
   ], (err, result) ->
@@ -324,28 +375,31 @@ Handler::passSkillAfresh  = (msg, session, next) ->
         return cb({code: 501, msg: '铜板/元宝不足，不能洗炼'})
 
       card = player.getCard(cardId)
-      passSkills = _.values(card.passiveSkills).filter (ps) -> _.contains(psIds, ps.id)
+      passSkills = card.passiveSkills.filter (ps) -> _.contains(psIds, ps.id)
 
       if _.isEmpty(passSkills)
         return cb({code: 501, msg: '找不到被动属性'})
 
-      ps.afresh(type) for ps in passSkills
+      card.afreshPassiveSkill(type, ps) for ps in passSkills
       player.decrease(_pros[type], money_need)
-      cb(null, player, passSkills)
-  ], (err, player, passSkills) ->
+      cb(null, player, card)
+  ], (err, player, card) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
 
-    passSkills.forEach (ps) -> ps.save()
     player.save()
-
     # 拥有了百分之10的被动属性成就
-    if (passSkills.filter (ps) -> parseInt(ps.value) is 10).length > 0
+    if (card.passiveSkills.filter (ps) -> parseInt(ps.value) is 10).length > 0
       achieve.psTo10(player)
 
-    next(null, {code: 200, msg: passSkills.map (p) -> p.toJson()})
+    result = {
+      ability: card.ability(),
+      passiveSkills: card.passiveSkills
+    }
 
-Handler::smeltElixir = (msg, session, next) ->
+    next(null, {code: 200, msg: result})
+
+Handler::smeltElixir_is_discarded = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   cardIds = msg.cardIds
 
@@ -404,10 +458,14 @@ Handler::useElixir = (msg, session, next) ->
   elixir = msg.elixir
   type = if typeof msg.type isnt 'undefined' then msg.type else ELIXIR_TYPE_HP
   cardId = msg.cardId
+  elixirLimit = table.getTable('elixir_limit')
 
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if (err) 
       return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    if player.lv < 10
+      return next(null, {code: 501, msg: '10级开放'})
 
     if player.elixir < elixir
       return next(null, {code: 501, msg: '仙丹不足'})
@@ -419,17 +477,27 @@ Handler::useElixir = (msg, session, next) ->
     if card.star < 3
       return next(null, {code: 501, msg: '不能对3星以下的卡牌使用仙丹'})
 
-    limit = elixirConfig.limit[card.star]
-    console.log 'elixir: ', limit, card.elixirHp, card.elixirAtk
-    if (card.elixirHp + card.elixirAtk) >= limit
+    limit = elixirLimit.getItem(card.star)
+    console.log '-a-', card, limit
+    if (card.elixirHp + card.elixirAtk) >= limit.elixir_limit
       return next(null, {code: 501, msg: "卡牌仙丹容量已满"})
 
-    if (card.elixirHp + card.elixirAtk + elixir) > limit
+    if (card.elixirHp + card.elixirAtk + elixir) > limit.elixir_limit
       return next(null, {code: 501, msg: "使用的仙丹已经超出了卡牌的最大仙丹容量"})
+
+    if not player.isCanUseElixirForCard(cardId)
+      return next(null, {code: 501, msg: "消耗的仙丹已达到当前玩家级别的上限"})
+
+    can_use_elixir = player.canUseElixir(cardId)
+    if can_use_elixir < elixir
+      return next(null, {code: 501, msg: "最多还可以消耗#{can_use_elixir}点仙丹"})
+
+    console.log '0a0: ', player.elixirPerLv, can_use_elixir
 
     card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
     card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK
     player.decrease('elixir', elixir)
+    player.useElixirForCard(cardId, elixir)
     
     _jobs = []
     playerData = player.getSaveData()
@@ -454,24 +522,152 @@ Handler::useElixir = (msg, session, next) ->
       if err
         return next(null, {code: err.code or 500, msg: err.msg or ''})
 
-      return next(null, {code: 200})
+      result = {
+        elixirHp: card.elixirHp,
+        elixirAtk:card.elixirAtk,
+        ability: card.ability(),
+      }
+
+      return next(null, {code: 200,msg:result})
 
 Handler::changeLineUp = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   lineupObj = msg.lineUp
 
-  tids = _.values(lineupObj)
-  if _.uniq(tids).length isnt tids.length
-    return next(null, {code: 501, msg: '上阵卡牌的角色不能重复'})
+  cids = _.values(lineupObj)
+  if _.uniq(cids).length isnt cids.length
+    return next(null, {code: 501, msg: '上阵卡牌的不能重复'})
 
-  if -1 not in tids
+  if -1 not in cids
     return next(null, {code: 501, msg: '阵型中缺少元神信息'})
 
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err
       return next(null, {code: 500, msg: err.msg})
 
+    tids = player.getCards(cids).map (i) -> i.tableId
+    nums = (
+      table.getTable('cards').filter (id, item) -> item.id in tids
+    ).map (item) -> item.number
+    if _.uniq(nums).length isnt nums.length
+      return next(null, {code: 501, msg: '上阵卡牌不能是相同系列的卡牌'})
+
+    if not checkCardCount(player.lv, cids)
+      return next(null, {code: 501, msg: "上阵卡牌数量不对"})
+
     player.updateLineUp(lineupObj)
     player.save()
     next(null, { code: 200, msg: {lineUp: player.lineUpObj()} })
 
+Handler::sellCards = (msg, session, next) ->
+  playerId = session.get('playerId')
+  cardIds = if msg.ids? then msg.ids else []
+
+  if cardIds.length is 0
+    return next(null, {code: 200, msg: price: 0})
+
+  price = 0
+  player = null
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+
+    (res, cb) ->
+      player = res
+      cards = player.popCards cardIds
+      if _.isEmpty(cards)
+        return cb({code: 501, msg: '找不到卡牌'})
+
+      price += c.price() for c in cards
+      cb(null, price)
+
+    (price, cb) ->
+      dao.card.delete where: " id in (#{cardIds.toString()}) ", cb
+  ], (err, res) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    player.increase('money', price)
+    player.save()
+    next(null, {code: 200, msg: price: price})
+
+Handler::getCardBook = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    next(null, {code: 200, msg: cardBook: player.cardBook})
+
+Handler::getCardBookEnergy = (msg, session, next) ->
+  playerId = session.get('playerId')
+  tableId = msg.tableId
+
+  ENERGY = cardConfig.LIGHT_UP_ENERGY[cardStar(tableId)]
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    if not player.cardBookMark.hasMark(tableId) or player.cardBookFlag.hasMark(tableId)
+      return next(null, {code: 501, msg: '不能领取，已经领过或者还没有点亮该卡牌'})
+
+    player.cardBookFlag.mark(tableId)
+    player.increase('energy', ENERGY)
+    cardBook = utility.deepCopy(player.cardBook)
+    cardBook.flag = player.cardBookFlag.value
+    player.cardBook = cardBook
+    player.save()
+    return next(null, {code: 200, msg: energy: ENERGY})
+
+Handler::exchangeCard = (msg, session, next) ->
+  playerId = session.get('playerId')
+  tableId = msg.tableId
+
+  unless tableId
+    return next(null, {code: 501, msg: 'tableId require'})
+
+  star = cardStar(tableId)
+  if star not in [4, 5]
+    return next(null, {code: 501, msg: '只能兑换4星，5星卡牌'})
+
+  player = null
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+
+    (res, cb) ->
+      player = res
+      if _.keys(player.cards).length >= MAX_CARD_COUNT
+        return cb({code: 501, msg: '卡牌容量已经达到最大值'})
+      
+      if player.fragments < cardConfig.CARD_EXCHANGE[star]
+        return cb({code: 501, msg: '卡牌碎片不足'})
+
+      entityUtil.createCard {
+        tableId: tableId
+        playerId: player.id
+      }, cb
+  ], (err, card) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or ''})
+
+    player.decrease('fragments', cardConfig.CARD_EXCHANGE[star])
+    player.addCard(card)
+    player.save()
+    next(null, {code: 200, msg: {
+      card: card.toJson(),
+      fragments: player.fragments
+    }})
+
+cardStar = (tableId) ->
+  tableId % 5 or 5
+
+checkCardCount = (playerLv, cardIds) ->
+  card_count = (cardIds.filter (id) -> id isnt -1).length
+  fdata = table.getTableItem('function_limit', 1)
+  lvMap = {4: fdata.card4_position, 5: fdata.card5_position}
+  for qty, lv of lvMap
+    if playerLv < lv and card_count >= qty
+      return false
+  return true

@@ -27,6 +27,11 @@ var util = require('util');
 var achieve = require('../achievement');
 var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL;
 var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
+var EXP_CARD_ID = require('../../../config/data/card').EXP_CARD_ID;
+
+var resData = table.getTableItem('resource_limit', 1);
+var MAX_POWER_VALUE = resData.power_value;
+var MAX_CARD_COUNT = resData.card_count_limit;
 
 var defaultMark = function() {
     var i, result = [];
@@ -50,8 +55,17 @@ var addEvents = function(player) {
         var upgradeInfo = table.getTableItem('player_upgrade', player.lv);
         if (exp >= upgradeInfo.exp) {
             player.increase('lv');
+            // 清空每级仙丹使用详细信息
+            player.elixirPerLv = {};
             player.set('exp', exp - upgradeInfo.exp);
-            player.resumePower(getMaxPower(player.lv));
+            // 获得升级奖励
+            player.increase('money', upgradeInfo.money);
+            player.increase('energy', upgradeInfo.energy);
+            player.increase('skillPoint', upgradeInfo.skillPoint);
+            player.increase('elixir', upgradeInfo.elixir);
+            //升级后体力不再回复
+            //player.resumePower(getMaxPower(player.lv));
+            player.isUpgrade = true;
             player.save();
         }
     });
@@ -69,11 +83,8 @@ var addEvents = function(player) {
         achieve.receivedBless(player);
     });
 
-    player.on('pass.change', function(pass) {
-        if (typeof pass == 'string' && /^[\{\[].*[\]\}]$/.test(pass)) {
-            pass = JSON.parse(pass);
-        }
-        achieve.passTo(player, pass.layer || 0);
+    player.on('passLayer.change', function(layer) {
+        achieve.passTo(player, layer);
     });
 
     player.on('elixir.increase', function(elixir) {
@@ -98,8 +109,16 @@ var addEvents = function(player) {
 
     player.on('add.card', function(card) {
         if (player.isLineUpCard(card)) {
-            //player.activeGroupEffect();
             player.activeSpiritorEffect();
+        }
+
+        if (!player.cardBookMark.hasMark(card.tableId) && card.tableId != EXP_CARD_ID) {
+            card.isNewLightUp = true;
+            player.cardBookMark.mark(card.tableId);
+            var cardBook = utility.deepCopy(player.cardBook);
+            cardBook.mark = player.cardBookMark.value;
+            player.cardBook = cardBook;
+            player.save();
         }
     });
 
@@ -159,6 +178,8 @@ var Player = (function(_super) {
         Player.__super__.constructor.apply(this, arguments);
         this.taskMark = new MarkGroup(this.task.mark);
         this.passMark = new MarkGroup(this.pass.mark);
+        this.cardBookMark = new MarkGroup(this.cardBook.mark);
+        this.cardBookFlag = new MarkGroup(this.cardBook.flag);
         this.momo = [];
         //this.momoMark = new MarkGroup(this.task.momo);
     }
@@ -190,22 +211,30 @@ var Player = (function(_super) {
         'lineUp',
         'ability',
         'task',
+        'passLayer',
         'pass',
         'dailyGift',
         'fragments',
         'energy',
         'elixir',
+        'elixirPerLv',
         'spiritor',
         'spiritPool',
         'signIn',
         'achievement',
-        'friendsCount'
+        'cardBook',
+        'friendsCount',
+        'rowFragmentCount',
+        'highFragmentCount',
+        'highDrawCardCount',
+        'cardsCount',
+        'resetDate'
     ];
 
     Player.DEFAULT_VALUES = {
         power: {
             time: 0,
-            value: 50
+            value: 150
         },
         lv: 1,
         vip: 0,
@@ -220,37 +249,39 @@ var Player = (function(_super) {
             id: 1,
             progress: 0,
             hasWin: false,
-            mark: []
-            //momo: []
+            mark: [],
+            hasFragment: -1
         },
+        passLayer: 0,
         pass: {
-            layer: 0,
             mark: [],
             mystical: {
                 diff: 1,
                 isTrigger: false,
                 isClear: false
             },
-            resetTimes:1
+            resetTimes: 1
         },
         dailyGift: {
             lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
             lotteryFreeCount: 0, // 每日免费抽奖次数
             powerGiven: [], // 体力赠送情况
-            powerBuyCount: 2, // 购买体力次数
-            challengeCount: 15, // 每日有奖竞技次数
+            powerBuyCount: 6, // 购买体力次数
+            challengeCount: 10, // 每日有奖竞技次数
+            challengeBuyCount: 10, //每日有奖竞技购买次数
             receivedBless: { // 接收的祝福
-                count: msgConfig.MAX_RECEIVE_COUNT,
+                count: msgConfig.DEFAULT_RECEIVE_COUNT,
                 givers: []
             },
             gaveBless: { // 送出的祝福
-                count: msgConfig.MAX_GIVE_COUNT,
+                count: msgConfig.DEFAULT_GIVE_COUNT,
                 receivers: []
             }
         },
         fragments: 0,
         energy: 0,
         elixir: 0,
+        elixirPerLv: {},
         skillPoint: 0,
         spiritor: {
             lv: 0,
@@ -266,14 +297,95 @@ var Player = (function(_super) {
             flag: 0
         },
         achievement: {},
+        cardBook: {
+            mark: [],
+            flag: []
+        },
         cards: {},
         rank: {},
         friends: [],
-        friendsCount: 20
+        friendsCount: 20,
+        rowFragmentCount: 0,
+        highFragmentCount: 0,
+        highDrawCardCount: 0,
+        cardsCount: 100,
+        resetDate: '1970-1-1'
+    };
+
+    Player.prototype.resetData = function() {
+        var giveBlessMap = {
+            1: 5,
+            31: 10,
+            51: 15,
+            71: 20
+        };
+
+        var recieveBlessMap = {
+            1: 20,
+            31: 30,
+            51: 40,
+            71: 50
+        };
+
+        var realCount = function(lv, mapobj) {
+            var keys = Object.keys(mapobj);
+            var _i, _len, k, step = 5;
+
+            var _ref = keys.reverse();
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                k = _ref[_i];
+                if (lv >= k) {
+                    step = mapobj[k];
+                    break;
+                }
+            }
+            return step;
+        };
+
+        var vipPrivilege = table.getTableItem('vip_privilege', this.vip);
+
+        var dg = {
+            lotteryCount: lotteryConfig.DAILY_LOTTERY_COUNT, // 每日抽奖次数
+            lotteryFreeCount: 0 + vipPrivilege.lottery_free_count, // 每日免费抽奖次数
+            powerGiven: [], // 体力赠送情况
+            powerBuyCount: 6 + vipPrivilege.buy_power_count, // 购买体力次数
+            challengeCount: 10 + vipPrivilege.challenge_count, // 每日有奖竞技次数
+            challengeBuyCount: 10, //每日有奖竞技购买次数
+            receivedBless: { // 接收的祝福
+                count: realCount(this.lv, recieveBlessMap) + vipPrivilege.receive_bless_count,
+                givers: []
+            },
+            gaveBless: { // 送出的祝福
+                count: realCount(this.lv, giveBlessMap) + vipPrivilege.give_bless_count,
+                receivers: []
+            }
+        };
+
+        var pass = utility.deepCopy(this.pass);
+        pass.resetTimes = 1;
+
+        var spiritPool = utility.deepCopy(this.spiritPool);
+        spiritPool.collectCount = spiritConfig.MAX_COLLECT_COUNT + vipPrivilege.spirit_collect_count;
+
+        this.dailyGift = dg;
+        this.pass = pass;
+        this.spiritPool = spiritPool;
+        this.resetDate = utility.shortDateString();
+    };
+
+    Player.prototype.isReset = function() {
+        return this.resetDate === utility.shortDateString();
     };
 
     Player.prototype.increase = function(name, val) {
-        Player.__super__.increase.apply(this, arguments);
+        var rdata = table.getTableItem('resource_limit', 1);
+        if (_.contains(['gold', 'money', 'skillPoint', 'energy'], name)) {
+            if ((this[name] + (val || 1)) > rdata[name]) {
+                val = rdata[name] - this[name];
+            }
+        }
+
+        Player.__super__.increase.apply(this, [name, val]);
         this.emit(name + '.increase', val == null ? 1 : val);
     };
 
@@ -306,7 +418,10 @@ var Player = (function(_super) {
         var cards = this.activeCards();
         for (var i = 0; i < cards.length; i++) {
             var card = cards[i];
-            var incs = {spirit_hp: 0, spirit_atk: 0};
+            var incs = {
+                spirit_hp: 0,
+                spirit_atk: 0
+            };
             var _hp = parseInt(card.init_hp * spiritConfig.hp_inc / 100);
             var _atk = parseInt(card.init_atk * spiritConfig.atk_inc / 100);
 
@@ -318,8 +433,22 @@ var Player = (function(_super) {
     };
 
     Player.prototype.incSpirit = function(val) {
+        var spiritor = _.clone(this.spiritor);        
+        spiritor.spirit = spiritor.spirit + val;
+        this.set('spiritor', spiritor);
+    };
+
+    Player.prototype.canUpgradeSpiritor = function(){
+        var spiritorData = table.getTableItem('spirit', this.spiritor.lv);
+        if (!!spiritorData && this.spiritor.spirit >= spiritorData.spirit_need) {
+            return true;
+        }
+        return false;
+    };
+
+    Player.prototype.spiritorUprade = function() {
         var spiritor = _.clone(this.spiritor);
-        var total_spirit = spiritor.spirit + val;
+        var total_spirit = spiritor.spirit;
         var spiritorData = table.getTableItem('spirit', spiritor.lv);
 
         while ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < playerConfig.MAX_SPIRITOR_LV) {
@@ -349,8 +478,12 @@ var Player = (function(_super) {
         Player.__super__.save.apply(this, arguments);
         // update all cards info
         _.values(this.cards).forEach(function(card) {
-            card.save()
+            card.save();
         });
+
+        if (!_.isEmpty(this.rank)) {
+            this.rank.save();
+        }
     };
 
     Player.prototype.getAbility = function() {
@@ -375,7 +508,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.activeGroupEffect = function() {
-        var cardIds = _.values(this.lineUpObj());
+        var cardIds = _.values(lineUpToObj(this.lineUp));
         var cards = _.values(this.cards).filter(function(id, c) {
             return c.star >= 3 && cardIds.indexOf(c.id) > -1;
         });
@@ -419,7 +552,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.isLineUpCard = function(card) {
-        return _.contains(_.values(this.lineUpObj()), card.id);
+        return _.contains(_.values(lineUpToObj(this.lineUp)), card.id);
     };
 
     Player.prototype.hasCard = function(id) {
@@ -454,22 +587,22 @@ var Player = (function(_super) {
     };
 
     Player.prototype.activeCards = function() {
-        var cardIds = _.values(this.lineUpObj());
+        var cardIds = _.values(lineUpToObj(this.lineUp));
         return _.values(this.cards).filter(function(c) {
             return cardIds.indexOf(c.id) > -1;
         });
     };
 
     Player.prototype.updatePower = function(power) {
-        if (this.power.value !== power.value) {
-            this.set('power', power);
-        }
+        //if (this.power.value !== power.value) {
+        this.set('power', power);
+        //}
     };
 
     Player.prototype.consumePower = function(value) {
         if (this.power.value <= 0) return;
 
-        var power = _.clone(this.power);
+        var power = utility.deepCopy(this.power);
         var cVal = value;
         if (value > power.value) {
             cVal = power.value;
@@ -485,7 +618,7 @@ var Player = (function(_super) {
 
         if (this.power.value >= max_power) return;
 
-        var power = _.clone(this.power);
+        var power = utility.deepCopy(this.power);
         power.value = _.min([max_power, power.value + value]);
         power.time = Date.now();
         this.updatePower(power);
@@ -501,8 +634,8 @@ var Player = (function(_super) {
 
     Player.prototype.givePower = function(hour, value) {
         var max_power = getMaxPower(this.lv);
-        var power = _.clone(this.power);
-        power.value = _.min([power.value + value, max_power + 50]);
+        var power = utility.deepCopy(this.power);
+        power.value = _.min([power.value + value, max_power]);
         power.time = Date.now();
         this.updatePower(power);
 
@@ -517,17 +650,15 @@ var Player = (function(_super) {
         dg[name] = value;
         this.dailyGift = dg;
     };
-    /*
-    Player.prototype.hasGive = function(gift) {
-        return _.contains(this.dailyGift.power, gift);
-    };
-   */
+
     Player.prototype.updateLineUp = function(lineupObj) {
         this.set('lineUp', objToLineUp(lineupObj));
+        checkLineUp(this);
     };
 
     Player.prototype.lineUpObj = function() {
-        return lineUpToObj(this, this.lineUp);
+        checkLineUp(this);
+        return lineUpToObj(this.lineUp);
     };
 
     Player.prototype.strengthen = function(target, sources, cb) {
@@ -593,6 +724,7 @@ var Player = (function(_super) {
             exp_obtain: expObtain,
             cur_lv: targetCard.lv,
             cur_exp: targetCard.exp,
+            ability: targetCard.ability(),
             money_consume: parseInt(moneyConsume)
         }, targetCard);
     };
@@ -602,7 +734,7 @@ var Player = (function(_super) {
         if (taskData) {
             var chapterId = taskData.chapter_id;
             this.momoMark.mark(chapterId - 1);
-            var task = utility.deepCopy(this.task);
+            var task = (this.task);
             task.momo = this.momoMark.value;
             this.task = task;
         }
@@ -630,30 +762,29 @@ var Player = (function(_super) {
      5--50      1个
 
      */
-    Player.prototype.createMonoGift = function() {  //产生摸一摸奖励
-       // var task = utility.deepCopy(this.task);
+    Player.prototype.createMonoGift = function() { //产生摸一摸奖励
+        // var task = utility.deepCopy(this.task);
         this.momo = new Array(10);
-        for(var i = 0;i < 6;i++) {
-            this.momo[i] = _.random(1,5);
+        for (var i = 0; i < 6; i++) {
+            this.momo[i] = _.random(1, 5);
         }
-        for(var i = 6;i < 8;i++) {
-            this.momo[i] = _.random(2,10);
+        for (var i = 6; i < 8; i++) {
+            this.momo[i] = _.random(2, 10);
         }
-        this.momo[8] = _.random(5,20);
-        this.momo[9] = _.random(5,50);
+        this.momo[8] = _.random(5, 20);
+        this.momo[9] = _.random(5, 50);
 
         return this.momo;
     };
 
-    Player.prototype.clearMonoGift = function() {   //领取清除摸一摸奖励
+    Player.prototype.clearMonoGift = function() { //领取清除摸一摸奖励
         this.momo = [];
     };
 
     Player.prototype.getMonoGiftTotal = function() { //摸一摸产生奖励总和
         var value = 0;
-        for(var i = 0;i < this.momo.length;i++)
+        for (var i = 0; i < this.momo.length; i++)
             value += this.momo[i];
-        //console.log("total = ",value);
         return value;
     };
 
@@ -675,7 +806,7 @@ var Player = (function(_super) {
         }
 
         var pass = utility.deepCopy(this.pass);
-        if (pass.layer + 1 < layer) {
+        if (this.passLayer + 1 < layer) {
             logger.warn('未达到该关卡层数', layer);
             return;
         }
@@ -693,33 +824,28 @@ var Player = (function(_super) {
     };
 
     //重置关卡
-    Player.prototype.resetPassMark = function(){
+    Player.prototype.resetPassMark = function() {
 
-        if(this.pass.resetTimes > 0) {
+        if (this.pass.resetTimes > 0) {
             this.pass.resetTimes--;
             var pass = utility.deepCopy(this.pass);
             this.passMark.value = [];
             pass.mark = this.passMark.value;
             this.pass = pass;
-            console.log("reset pass mark:",this.pass);
             return true;
         }
         return false;
     };
 
     Player.prototype.incPass = function() {
-        var pass = utility.deepCopy(this.pass);
-        if (pass.layer >= 100)
-            return;
-        pass.layer++;
-        this.set('pass', pass);
+        this.increase('passLayer');
     };
 
-    Player.prototype.getPass = function(){
+    Player.prototype.getPass = function() {
         checkPass(this);
         return {
             canReset: this.pass.resetTimes > 0 ? true : false,
-            layer: this.pass.layer,
+            layer: this.passLayer,
             mark: this.pass.mark,
             hasMystical: this.hasMysticalPass()
         };
@@ -729,7 +855,6 @@ var Player = (function(_super) {
         var pass = utility.deepCopy(this.pass);
         pass.mystical.isTrigger = true;
         pass.mystical.isClear = false;
-        console.log("神秘关卡 = ",pass);
         this.set('pass', pass);
     };
 
@@ -742,7 +867,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.hasMysticalPass = function() {
-        if(this.pass.mystical.isTrigger && !this.pass.mystical.isClear)
+        if (this.pass.mystical.isTrigger && !this.pass.mystical.isClear)
             return true;
         return false;
     };
@@ -752,7 +877,7 @@ var Player = (function(_super) {
         var key = util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
         var si = utility.deepCopy(this.signIn);
 
-        if (!_.has(si, key)) {
+        if (!_.has(si.months, key)) {
             var _months = Object.keys(si.months);
             if (_months.length >= 12) {
                 delete si.months[_months[0]];
@@ -760,21 +885,25 @@ var Player = (function(_super) {
             si.months[key] = 0;
         }
 
-        si.months[key] = utility.mark(si.months[key], d.getDay() + 1);
+        si.months[key] = utility.mark(si.months[key], d.getDate());
         this.signIn = si;
     };
 
     Player.prototype.signFirstUnsignDay = function() {
+        var d = new Date();
         var key = util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
         var si = utility.deepCopy(this.signIn);
 
-        if (!_.has(si, key)) {
-            return;
+        if (!_.has(si.months, key)) {
+            si.months[key] = 0;
         }
-        var firsUnsignDay = 0;
-        for (var i = 1; i <= 31; i++) {
+
+        var firstUnsignDay = 31;
+        var count = d.getDate();
+        for (var i = 1; i < count; i++) {
             if (!utility.hasMark(si.months[key], i)) {
-                utility.mark(si.months[key], i);
+                si.months[key] = utility.mark(si.months[key], i);
+                this.signIn = si;
                 firstUnsignDay = i;
                 break;
             }
@@ -813,6 +942,57 @@ var Player = (function(_super) {
         this.emit('receive.bless');
     };
 
+    Player.prototype.isCanUseElixirForCard = function(cardId) {
+        if (_.has(this.elixirPerLv, cardId)) {
+            return this.elixirPerLv[cardId] < elxirLimit(this.lv);
+        }
+        return true;
+    };
+
+    Player.prototype.canUseElixir = function(cardId) {
+        return elxirLimit(this.lv) - (this.elixirPerLv[cardId] || 0);
+    };
+
+    Player.prototype.useElixirForCard = function(cardId, elixir) {
+        var epl = utility.deepCopy(this.elixirPerLv);
+        if (_.has(epl, cardId)) {
+            epl[cardId] += elixir;
+        } else {
+            epl[cardId] = elixir;
+        }
+        this.elixirPerLv = epl;
+    };
+
+    Player.prototype.getRanking = function() {
+        var rank = {
+            ranking: 0
+        };
+        if(this.rank) {
+            rank.ranking = this.rank.ranking;
+        }
+        return rank;
+    };
+
+    Player.prototype.getRank = function() {
+        var rank = {
+            ranking: 0,
+            rankReward: []
+        };
+        if(this.rank) {
+            rank.ranking = this.rank.ranking;
+            rank.rankReward = this.rank.rankingRewards()
+        }
+        return rank;
+    };
+
+    Player.prototype.getTask = function(){
+        return {
+            id: this.task.id,
+            progress: this.task.progress,
+            mark: this.task.mark
+        };
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,
@@ -830,27 +1010,38 @@ var Player = (function(_super) {
             gold: this.gold,
             lineUp: this.lineUpObj(),
             ability: this.getAbility(),
-            task: this.task,
+            task: this.getTask(),
             pass: this.getPass(),
             dailyGift: utility.deepCopy(this.dailyGift),
             skillPoint: this.skillPoint,
             energy: this.energy,
-            fregments: this.fregments,
+            fragments: this.fragments,
             elixir: this.elixir,
             spiritor: this.spiritor,
             spiritPool: utility.deepCopy(this.spiritPool),
-            cards: _.values(this.cards).map(function(card) {
-                return card.toJson();
-            }),
-            rank: !_.isEmpty(this.rank) ? this.rank.toJson() : {},
-            friends: this.friends,
-            friends: this.friendsCount,
-            signIn: utility.deepCopy(this.signIn)
+            cards: _.values(this.cards)
+                .sort(function(x, y){
+                    return y.createTime - x.createTime;
+                })
+                .map(function(card) {
+                    return card.toJson();
+                }),
+            rank: this.getRanking(),
+            signIn: utility.deepCopy(this.signIn),
+            friendsCount: this.friendsCount
         };
     };
 
     return Player;
 })(Entity);
+
+var elxirLimit = function(lv) {
+    var limit = 1000;
+    if (lv > 50 && lv <= 100) {
+        limit = 2000;
+    }
+    return limit;
+};
 
 // var processSpiritPoll = function(sp) {
 //     if (_.isEmpty(sp)) {
@@ -875,19 +1066,18 @@ var Player = (function(_super) {
 var checkPass = function(player) {
     if (typeof player.pass !== 'object') {
         player.pass = {
-            layer: 0,
             mark: [],
             mystical: {
                 diff: 1,
                 isTrigger: false,
                 isClear: false
             },
-            resetTimes:0
+            resetTimes: 0
         };
     }
 };
 
-var lineUpToObj = function(self, lineUp) {
+var lineUpToObj = function(lineUp) {
     var _results = {};
     if (_.isString(lineUp) && lineUp !== '') {
         var lines = lineUp.split(',');
@@ -912,21 +1102,60 @@ var objToLineUp = function(obj) {
     return _lineUp.slice(0, -1);
 };
 
+var checkLineUp = function(player) {
+    var obj = lineUpToObj(player.lineUp);
+    var obj_copy = _.clone(obj);
+    var vals = _.values(obj);
+    var card_count = vals.filter(function(v) {
+        return v !== -1;
+    }).length;
+    console.log(obj, vals, card_count);
+
+    var fdata = table.getTableItem('function_limit', 1);
+    var lvMap = {
+        4: fdata.card4_position,
+        5: fdata.card5_position
+    };
+
+    var qty, lv, limit = 5;
+    for (qty in lvMap) {
+        lv = lvMap[qty];
+        if (player.lv < lv) {
+            limit = parseInt(qty) - 1;
+            break;
+        }
+    }
+
+    if (card_count > limit) {
+        for (var i = 0; i < card_count - limit; i++) {
+            for (j in obj_copy) {
+                if (obj_copy[j] !== -1) {
+                    delete obj_copy[j];
+                    break;
+                }
+            }
+        }
+    }
+    player.lineUp = objToLineUp(obj_copy);
+};
+
 var positionConvert = function(val) {
     var order = ['00', '01', '02', '10', '11', '12'];
     return order.indexOf(val) + 1;
 };
 
 var getMaxPower = function(lv) {
-    var max_power = 50;
-    var powerLimit = playerConfig.POWER_LIMIT;
-    for (var lv in powerLimit) {
-        if (this.lv <= parseInt(lv)) {
-            max_power = powerLimit[lv];
-            break;
-        }
-    }
-    return max_power;
+    // var max_power = 50;
+    // var powerLimit = playerConfig.POWER_LIMIT;
+    // for (var lv in powerLimit) {
+    //     if (this.lv <= parseInt(lv)) {
+    //         max_power = powerLimit[lv];
+    //         break;
+    //     }
+    // }
+    // return max_power;
+
+    return MAX_POWER_VALUE;
 };
 
 

@@ -44,6 +44,25 @@ describe("Area Server", function() {
         
       });
 
+      describe('when player level is less than 10', function(){
+        beforeEach(function() {
+          loginWith('user1', '1', 1);
+        });
+
+        it('should can not use elixir', function() {
+          request('area.trainHandler.useElixir', {
+            elixir: 1000,
+            cardId: 100
+          }, function(data) {
+            expect(data).toEqual({
+              code: 501,
+              msg: '10级开放'
+            });
+          });
+        });
+
+      });
+
       describe('when do userElixir', function() {
         var before_card, before_player;
 
@@ -65,9 +84,7 @@ describe("Area Server", function() {
             cardId: 100
           }, function(data) {
             console.log(data);
-            expect(data).toEqual({
-              code: 200
-            });
+            expect(data.code).toEqual(200);
           });
 
           doAjax('/player/' + arthur.playerId, function(res) {
@@ -95,12 +112,12 @@ describe("Area Server", function() {
         it('can not use elixir on card whose star is less then 3', function(){
           request('area.trainHandler.useElixir', {
             elixir: 500,
-            cardId: 102
+            cardId: 250
           }, function(data) {
             console.log(data);
             expect(data).toEqual({
               code: 501,
-              msg: '卡牌仙丹容量已满'
+              msg: '不能对3星以下的卡牌使用仙丹'
             });
           });
         });
@@ -117,7 +134,70 @@ describe("Area Server", function() {
             });
           });
         });
+        it('can not use elixir on card will more than the max elixir', function(){
+          request('area.trainHandler.useElixir', {
+            elixir: 50,
+            cardId: 102
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({
+              code: 501,
+              msg: '卡牌仙丹容量已满'
+            });
+          });
+        });
 
+      });
+
+      describe('当玩家等级小于50，而且将要使用的仙丹超过当前等级上限', function(){
+        beforeEach(function(){
+          doAjax('/update/player/' + arthur.playerId, {
+            elixirPerLv: JSON.stringify({
+              100: 600
+            })
+          }, function(res) {
+            loginWith(arthur.account, arthur.password, arthur.areaId);
+          });
+        });
+
+        it('should can not use elixir', function(){
+          request('area.trainHandler.useElixir', {
+            elixir: 500,
+            cardId: 100
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({
+              code: 501,
+              msg: '最多还可以消耗400点仙丹'
+            });
+          });
+        });
+      });
+
+      describe('当玩家等级小于50，而且使用的仙丹还已经达到等级上限', function(){
+        beforeEach(function(){
+          doAjax('/update/player/' + 1, {
+            elixirPerLv: JSON.stringify({
+              1: 1000
+            }),
+            elixir: 2000
+          }, function(res) {
+            loginWith('1', '1', 1);
+          });
+        });
+
+        it('should can not use elixir', function(){
+          request('area.trainHandler.useElixir', {
+            elixir: 500,
+            cardId: 1
+          }, function(data) {
+            console.log(data);
+            expect(data).toEqual({
+              code: 501,
+              msg: '消耗的仙丹已达到当前玩家级别的上限'
+            });
+          });
+        })
       });
 
     });

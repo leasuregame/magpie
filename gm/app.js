@@ -3,19 +3,15 @@
  * Module dependencies.
  */
 
+
+
 var express = require('express');
 var app = express();
-
-
-
-
 var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var flash = require('connect-flash');
-
-
 
 // all environments
 app.set('port', process.env.PORT || 3003);

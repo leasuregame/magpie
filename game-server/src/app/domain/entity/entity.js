@@ -110,15 +110,19 @@ var Entity = (function(_super) {
         return this.attributes[name];
     };
 
+    Entity.prototype.hasField = function(name) {
+        return this.constructor.FIELDS.indexOf(name) > -1;
+    };
+
     Entity.prototype.increase = function(name, val) {
-        if (typeof val == 'undefined') {
+        if (typeof val == 'undefined' || val == null) {
             val = 1;
         }
         this.set(name, parseInt(this[name]) + parseInt(val));
     };
 
     Entity.prototype.decrease = function(name, val) {
-        if (typeof val == 'undefined') {
+        if (typeof val == 'undefined' || val == null) {
             val = 1;
         }
         this.set(name, parseInt(this[name]) - parseInt(val));

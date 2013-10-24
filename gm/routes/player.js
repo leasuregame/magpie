@@ -97,7 +97,6 @@ var player = function(app) {
     app.get('/playerData',function(req,res){
         if(req.session.player) {
 
-
             var player = {
                 where :{
                     name : req.session.player.name,
@@ -161,6 +160,25 @@ var player = function(app) {
 
         });
 
+    });
+
+    app.get('/playerId',function(req,res){
+        var url = Url.parse(req.url,true);
+        var query = url.query;
+        var name =  query['name'];
+        var areaId = query['areaId'];
+
+        var env = app.settings.env;
+        var db = getDB(areaId,env);
+        dbClient.init(db);
+
+        Player.getPlayerId(name,areaId,function(err,id){
+            if(err) {
+                res.send({type:'error',info:err});
+            }else {
+                res.send({type:'success',info:id});
+            }
+        });
     });
 
     function checkLogin(req, res, next){

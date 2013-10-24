@@ -23,6 +23,7 @@ app.get('/test/html', function(req, res) {
 app.get('/message/add', function(req, res) {
   args = req.query;
   args.createTime = Date.now();
+  console.log('add message: ', args);
   mysql.magpiedb1.query("insert into message set ?", args, function(err, result) {
     if (err) {
       return res.send({
@@ -33,7 +34,7 @@ app.get('/message/add', function(req, res) {
 
     res.send({
       code: 200,
-      uid: result.insertId
+      insertId: result.insertId
     });
   });
 });
@@ -103,27 +104,27 @@ app.get('/addPlayer', function(req, res) {
 });
 
 app.get('/addPlayerbyId', function(req, res) {
-    var userId = req.query.userId;
-    var areaId = req.query.areaId;
-    var name = req.query.name;
-    var id = req.query.id;
-    var lv = req.lv || 1;
-    var ct = Date.now();
+  var userId = req.query.userId;
+  var areaId = req.query.areaId;
+  var name = req.query.name;
+  var id = req.query.id;
+  var lv = req.lv || 1;
+  var ct = Date.now();
 
-    mysql.magpiedb1.query('insert into player (id,userId, areaId, name, lv, createTime) values (?,?,?,?,?,?)', [id,userId, areaId, name, lv, Date.now()], function(err, result) {
-        if (err) {
-            res.send({
-                code: 500,
-                msg: 'faild to add player with parameters: ' + JSON.stringify(req.query)
-            });
-        } else {
-            res.send({
-                code: 200,
-                playerId: result.insertId,
-                ct: ct
-            });
-        }
-    });
+  mysql.magpiedb1.query('insert into player (id,userId, areaId, name, lv, createTime) values (?,?,?,?,?,?)', [id, userId, areaId, name, lv, Date.now()], function(err, result) {
+    if (err) {
+      res.send({
+        code: 500,
+        msg: 'faild to add player with parameters: ' + JSON.stringify(req.query)
+      });
+    } else {
+      res.send({
+        code: 200,
+        playerId: result.insertId,
+        ct: ct
+      });
+    }
+  });
 });
 
 app.get('/removePlayer', function(req, res) {
@@ -142,22 +143,38 @@ app.get('/removePlayer', function(req, res) {
   });
 });
 
-app.get('/addFriend',function(req, res){
-    var playerId = req.query.playerId;
-    var friendId = req.query.friendId;
-    mysql.magpiedb1.query('insert into friend (playerId,friendId) values (?,?)', [playerId,friendId], function(err, result) {
-        if (err) {
-            res.send({
-                code: 500,
-                msg: 'faild to add friend with parameters: ' + JSON.stringify(req.query)
-            });
-        } else {
-            res.send({
-                code: 200,
-                result:result
-            });
-        }
-    });
+app.get('/addFriend', function(req, res) {
+  var playerId = req.query.playerId;
+  var friendId = req.query.friendId;
+  mysql.magpiedb1.query('insert into friend (playerId,friendId) values (?,?)', [playerId, friendId], function(err, result) {
+    if (err) {
+      res.send({
+        code: 500,
+        msg: 'faild to add friend with parameters: ' + JSON.stringify(req.query)
+      });
+    } else {
+      res.send({
+        code: 200,
+        result: result
+      });
+    }
+  });
+});
+
+app.get('/clear/:table', function(req, res) {
+  var table = req.params.table;
+  mysql.magpiedb1.query('delete from ' + table, function(err, result) {
+    if (err) {
+      res.send({
+        code: 500,
+        msg: 'faild to delete data from ' + table
+      });
+    } else {
+      res.send({
+        code: 200
+      });
+    }
+  });
 });
 
 app.get('/loaddata/rank', function(req, res) {
@@ -208,8 +225,9 @@ app.get('/update/:table/:id', function(req, res) {
   var id = req.params.id;
   var data = req.query;
   console.log(data);
-  var _sets = ' set ', arg,
-      args = [];
+  var _sets = ' set ',
+    arg,
+    args = [];
   for (var key in data) {
     _sets += key + ' = ?,';
     arg = data[key];
@@ -228,11 +246,33 @@ app.get('/update/:table/:id', function(req, res) {
         msg: err
       })
     } else {
-      res.send({code: 200});
+      res.send({
+        code: 200
+      });
     }
   });
 });
-  
+
+app.get('/create/:table', function(req, res) {
+  var table = req.params.table;
+  var data = req.query;
+  console.log('create:', table, data);
+  mysql.magpiedb1.query("insert into "+ table +" set ?", data, function(err, result) {
+    if (err) {
+      return res.send({
+        code: 500,
+        msg: err
+      });
+    }
+
+    res.send({
+      code: 200,
+      insertId: result.insertId
+    });
+  });
+
+});
+
 var command = function(req, res, cmd, args) {
   var ps = spawn(cmd, args);
   ps.stdout.on('data', function(data) {
@@ -249,16 +289,18 @@ var command = function(req, res, cmd, args) {
 var responseRunner = function(req, res, runner) {
   var debug = req.query.debug || false;
   var dir = __dirname + '/spec';
-  util.walk(dir, function(err, files){
+  util.walk(dir, function(err, files) {
     files = files.filter(function(f) {
       return /Spec.js$/.test(f);
     });
     if (debug) {
       files = [];
     }
-    
+
     res.render(runner + '.html', {
-      files: files.map(function(f) { return f.substr(dir.length+1)})
+      files: files.map(function(f) {
+        return f.substr(dir.length + 1)
+      })
     });
   });
 };

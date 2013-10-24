@@ -45,30 +45,7 @@ Data.prototype.importCsvToSql = function(table, filepath, callback) {
       }
       if(table == 'card') {
           genSkillInc(row);
-          var ps = initPassiveSkill(row);
-          ps.forEach(function(p){
-              p.cardId = row.id;
-              /*self.db.passiveSkill.fetchOne({
-                  where:{cardId:row.id}
-              },function(err,ps){
-                   if(err) {
-                       console.log(err);
-                   }else {
-                       console.log(ps);
-                   }
-              }) */
-              self.db.passiveSkill.create({
-                  data:p
-              },function(err,res){
-                  if(err) {
-                      console.log(err);
-                  }else {
-                      //console.log("ps = ",res);
-                  }
-
-              })
-          });
-
+          initPassiveSkill(row);
       }
       self.db[table].delete({
         where: where
@@ -129,7 +106,7 @@ Data.prototype.loadCsvDataToSql = function(callback) {
 Data.prototype.dataForRankingUser = function(callback) {
   var self = this, id;
   async.times(5000, function(n, next) {
-    id = n + 9;
+    id = n + 11;
     self.db.user.create({
       data: {
         id: id,
@@ -185,7 +162,8 @@ Data.prototype.dataForRanking = function(callback){
       var cardData = {
         playerId: row.id,
         star: row.card_star,
-        lv: row.card_lv
+        lv: row.card_lv,
+        skillLv: _.random(1,6)
       };
       async.parallel([
         function(cb) {
@@ -197,6 +175,8 @@ Data.prototype.dataForRanking = function(callback){
         function(cb) {
           async.times(row.card_count, function(n, next){
             cardData.tableId = ids[_.random(0, ids.length-1)];
+            genSkillInc(cardData);
+            initPassiveSkill(cardData);
             self.db.card.create({data: cardData}, next);
           }, cb)
         }
@@ -241,6 +221,7 @@ Data.prototype.loadDataForRankingList = function(callback) {
         name: 'james' + id,
         userId: id,
         areaId: 1,
+        lv: 20,
         ability: id + _.random(10000)
       };
 
@@ -319,38 +300,26 @@ var genSkillInc = function(card) {
 };
 
 var initPassiveSkill = function(card) {
+    if (card.passiveSkills) return;
+
     var count, end, index, results, start, _ref;
-   // var ps = _.keys(card.passiveSkills);
+    // var ps = _.keys(card.passiveSkills);
 
     results = [];
     if(card.star < 3)
         return results;
     count = card.star - 2;
 
-    while (count-- > 0) {
+    for(var i = 0;i < count; i++) {
         index = _.random(cardConfig.PASSIVESKILL.TYPE.length - 1);
         _ref = cardConfig.PASSIVESKILL.VALUE_SCOPE.split('-'), start = _ref[0], end = _ref[1];
         results.push({
+            id:i,
             name: cardConfig.PASSIVESKILL.TYPE[index],
-            value: parseFloat(_.random(parseInt(start) * 10, parseInt(end) * 10) / 10).toFixed(1)
+            value: parseFloat(parseFloat(_.random(parseInt(start) * 10, parseInt(end) * 10) / 10).toFixed(1))
         });
     }
 
-    return results;
-
-    /*results.forEach(function(p){
-        p.cardId = card.id;
-        passiveSkillDao.create({
-            data: p
-        }, function(err, res) {
-            if (err) {
-                return callback(err);
-            }
-
-            card.addPassiveSkill(res);
-            // return callback();
-        });
-    });
-   */
+    card.passiveSkills = results;
 };
 

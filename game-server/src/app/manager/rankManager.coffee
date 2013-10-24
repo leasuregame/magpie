@@ -3,6 +3,7 @@ dao = app.get('dao')
 job = require('../dao/job')
 table = require('./table')
 achieve = require('../domain/achievement')
+playerManager = require('./playerManager')
 _ = require('underscore')
 
 Manager = module.exports = 
@@ -21,25 +22,22 @@ Manager = module.exports =
       defender = (ranks.filter (r) -> r.playerId == targetId)?[0]
       challenger.increase('challengeCount')
       defender.increase('challengeCount')
-      defender.pushRecent(player.id)
       
       rewards = {ranking_elixir: 0}
-      countRewards(player, challenger, isWin, rewards)
+      ###  获取竞技奖励，每天10次，还可额外购买10次 ###
+      countRewards(player, challenger, isWin, rewards) if player.dailyGift.challengeCount > 0
 
-      if isWin        
+      if isWin
         exchangeRanking(challenger, defender)
         updateRankInfo(challenger, defender)
-        
-        ### 首次达到排名奖励 1, 10, 50, 100, 500, 1000, 5000 ###
-        if challenger.canGetRankingReward()
-          challenger.getRankingReward()
-          rewards.ranking_elixir = table.getTableItem(player.ranking).elixir
-          player.increase('elixir', rewards.ranking_elixir)
+        defender.pushRecent(player.id)
+        challenger.recentChallenger = _.without(challenger.recentChallenger,targetId)
+
       else
         updateRankInfo(defender, challenger)
 
       # update rank info
-      player.rank = challenger
+      reflashRank(player, challenger, targetId, defender)
       updateAll(player, challenger, defender, targetId, rewards, cb)
       
 
@@ -82,6 +80,12 @@ updateRankInfo = (winner, loser) ->
   loser.resetCount 'winningStreak'
   loser.increase 'loseCount'
 
+reflashRank = (player, clg, targetId, def) ->
+  player.rank = clg
+
+  target = playerManager.getPlayerFromCache(targetId)
+  target.rank = def if target
+
 checkAchievement = (player, challenger) ->
   achieve.winCount(player, challenger.winCount)
   achieve.winningStreak(player, challenger.winningStreak)
@@ -90,7 +94,7 @@ checkAchievement = (player, challenger) ->
 rewardPercent = (ranking) ->
   pct = 0
   items = table.getTable('ranking_reward_factor').filter (id, row) ->
-    row.ranking < ranking
+    row.ranking <= ranking
 
   if items.length > 0
     items.sort (x, y) -> y.ranking - x.ranking
@@ -114,3 +118,4 @@ countRewards = (player, challenger, isWin, rewards) ->
   player.increase('exp', rewards.exp)
   player.increase('money', rewards.money)
   player.increase('elixir', rewards.elixir)
+  player.updateGift('challengeCount', player.dailyGift.challengeCount-1)

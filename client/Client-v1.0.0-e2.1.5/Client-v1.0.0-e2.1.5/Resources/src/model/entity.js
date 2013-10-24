@@ -12,10 +12,14 @@
  * */
 
 
-var Entity = cc.Class.extend({
+var Entity = Event.extend({
     set: function (name, value) {
         if (typeof value != "undefined") {
-            this["_" + name] = value;
+            if (this["_" + name] !== value) {
+                this["_" + name] = value;
+
+                this.emit(name + "Change");
+            }
         }
     },
 
@@ -29,7 +33,9 @@ var Entity = cc.Class.extend({
 
     add: function (name, value) {
         if (typeof value != "undefined") {
-            this["_" + name] += value;
+            if (value) {
+                this.set(name, this["_" + name] + value);
+            }
         }
     },
 

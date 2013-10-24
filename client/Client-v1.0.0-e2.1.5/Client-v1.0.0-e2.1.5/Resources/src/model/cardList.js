@@ -125,6 +125,32 @@ var CardList = Entity.extend({
         this._index.sort(this._sort(this._cardList, type));
 
         return this._index;
+    },
+
+    sell: function (cb, cardIdList) {
+        cc.log("CardList sell");
+        cc.log(cardIdList);
+
+        var that = this;
+        lzWindow.pomelo.request("area.trainHandler.sellCards", {
+            ids: cardIdList
+        }, function (data) {
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("sell success");
+
+                var msg = data.msg;
+
+                that.deleteById(cardIdList);
+
+                gameData.player.add("money", msg.price);
+
+                cb();
+            } else {
+                cc.log("upgrade fail");
+            }
+        });
     }
 });
 

@@ -1,3 +1,56 @@
 <%- include header %>
-   暂未实现
+    <from class="form-inline span6">
+        <fieldset>
+            <legend>补偿&奖励</legend>
+            <form class="form-inline span4">
+                <div class="control-group">
+                    <label for="areas">服务器</label>
+                    <select id="area" class="form-control input-small" name="area"></select>
+                </div>
+                <div class="control-group">
+                    <label for="playerName">玩家</label>
+                    <input type="text" class="input-small" id="playerName">
+                </div>
+                <div class="control-group">
+                    <label for="content">内容</label>
+                    <input type="text" class="input-middle" id="content">
+                </div>
+
+            </form>
+            <form class="form-horizonta span4">
+                <div class="control-group">
+                    <label for="gold">元宝</label>
+                    <input type="text" class="input-small" id="gold">
+                </div>
+                <div class="control-group">
+                    <label for="money">仙币</label>
+                    <input type="text" class="input-small" id="money">
+                </div>
+                <div class="control-group">
+                    <label for="power">体力点</label>
+                    <input type="text" class="input-small" id="power">
+                </div>
+                <div class="control-group">
+                    <label for="spirit">灵气</label>
+                    <input type="text" class="input-small" id="spirit">
+                </div>
+                <div class="control-group">
+                    <label for="skillPoint">技能点</label>
+                    <input type="text" class="input-small" id="skillPoint">
+                </div>
+                <div class="control-group">
+                    <label for="elixir">仙丹</label>
+                    <input type="text" class="input-small" id="elixir">
+                </div>
+            </form>
+            <div class="form-inline span6 control-group">
+                 <button type="button" id = "btnOk" class="btn btn-primary">确定</button>
+            </div>
+        </fieldset>
+    </from>
+
+    <script src="/javascripts/reward.js"></script>
+    <script>
+        setAreas(<%-JSON.stringify(areas)%>);
+    </script>
 <%- include footer %>

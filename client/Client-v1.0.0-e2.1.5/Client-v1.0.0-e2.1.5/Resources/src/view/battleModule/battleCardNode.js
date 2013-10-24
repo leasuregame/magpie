@@ -13,11 +13,13 @@
 
 
 var BattleCardNode = cc.Node.extend({
+    _index: 0,
     _tableId: 0,
     _hp: 0,
     _maxHp: 0,
     _star: 0,
     _boss: false,
+    _spirit: 0,
     _url: "",
     _skillId: 0,
     _skillType: 0,
@@ -32,10 +34,12 @@ var BattleCardNode = cc.Node.extend({
 
         if (!this._super()) return false;
 
+        this._index = data.index || 0;
         this._tableId = data.tableId;
         this._maxHp = data.hp;
         this._hp = this._maxHp;
         this._boss = data.boss || false;
+        this._spirit = data.spirit || 0;
 
         this._loadTable();
 
@@ -102,9 +106,8 @@ var BattleCardNode = cc.Node.extend({
 
         this._hp += value;
 
-        if (this._hp < 0) {
-            this._hp = 0;
-        }
+        this._hp = Math.min(this._hp, this._maxHp);
+        this._hp = Math.max(this._hp, 0);
 
         this._hpProgress.setAllValue(this._hp, this._maxHp, 0.5);
 
@@ -114,7 +117,7 @@ var BattleCardNode = cc.Node.extend({
     setOpacity: function (opacity) {
         this._frameSprite.setOpacity(opacity);
         this._heroSprite.setOpacity(opacity);
-        if(this._iconSprite) this._iconSprite.setOpacity(opacity);
+        if (this._iconSprite) this._iconSprite.setOpacity(opacity);
     },
 
     getColor: function () {
@@ -124,7 +127,11 @@ var BattleCardNode = cc.Node.extend({
     setColor: function (color3) {
         this._frameSprite.setColor(color3);
         this._heroSprite.setColor(color3);
-        if(this._iconSprite)this._iconSprite.setColor(color3);
+        if (this._iconSprite)this._iconSprite.setColor(color3);
+    },
+
+    getSkillType: function () {
+        return this._skillType;
     },
 
     _tip: function (value, isCrit) {
@@ -232,11 +239,38 @@ var BattleCardNode = cc.Node.extend({
         this.runAction(d);
     },
 
+    heal: function (value, isCrit) {
+        cc.log("BattleCardNode heal");
+
+        this.scheduleOnce(function () {
+            this._tip(value, isCrit);
+            this._updateHp(value);
+        }, 0.5 / GAME_COMBAT_SPEED);
+    },
+
     _dead: function () {
         cc.log("BattleCardNode dead");
 
         if (this._hp <= 0) {
-            this.setVisible(false);
+            this._frameSprite.setVisible(false);
+            this._heroSprite.setVisible(false);
+            if (this._iconSprite) this._iconSprite.setVisible(false);
+            this._hpProgress.setVisible(false);
+            this._tipLabel.setVisible(false);
+            this._hpLabel.setVisible(false);
+            this._atkLabel.setVisible(false);
+
+            var deadSprite = cc.Sprite.create(main_scene_image.icon248);
+            deadSprite.setPosition(cc.p(0, 100));
+            this.addChild(deadSprite);
+
+            deadSprite.runAction(cc.MoveTo.create(0.1, cc.p(0, 0)));
+
+            cc.log(this._spirit);
+
+            if (this._spirit > 0) {
+                this.getParent().releaseSpirit(this._index, this._spirit);
+            }
         }
     }
 });

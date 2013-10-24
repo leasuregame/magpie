@@ -60,11 +60,12 @@ var SystemMessageLayer = cc.Layer.extend({
             var y = scrollViewHeight - 107 - 127 * i;
 
             var id = systemMessageList[i].id;
+            var status = systemMessageList[i].status;
 
-            var hasBeenReceiveIcon = cc.Sprite.create(main_scene_image.icon136);
+            var hasBeenReceiveIcon = cc.Sprite.create(main_scene_image.icon138);
             hasBeenReceiveIcon.setPosition(cc.p(530, y + 60));
             scrollViewLayer.addChild(hasBeenReceiveIcon, 1);
-            hasBeenReceiveIcon.setVisible(false);
+            hasBeenReceiveIcon.setVisible(status == HANDLED_STATUS);
 
             var msgBgSprite = cc.Sprite.create(main_scene_image.icon127);
             msgBgSprite.setAnchorPoint(cc.p(0, 0));
@@ -76,30 +77,31 @@ var SystemMessageLayer = cc.Layer.extend({
             msgLabel.setPosition(cc.p(20, y + 60));
             scrollViewLayer.addChild(msgLabel);
 
-            var timeLabel = cc.LabelTTF.create(this._getTimeStr(systemMessageList[i].createTime), "STHeitiTC-Medium", 16);
+            var timeLabel = cc.LabelTTF.create(
+                lz.getTimeStr(systemMessageList[i].createTime),
+                "STHeitiTC-Medium",
+                16
+            );
             timeLabel.setAnchorPoint(cc.p(1, 0));
             timeLabel.setPosition(cc.p(580, y + 13));
             scrollViewLayer.addChild(timeLabel);
 
-            var receiveItem = cc.MenuItemImage.create(
-                main_scene_image.button20,
-                main_scene_image.button20s,
+            var receiveItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button10,
+                main_scene_image.button10s,
+                main_scene_image.icon123,
                 this._onClickReceive(id),
                 this
             );
-            receiveItem.setPosition(cc.p(530, y + 60));
+            receiveItem.setPosition(cc.p(520, y + 62));
             menu.addChild(receiveItem);
 
-            var receiveIcon = cc.Sprite.create(main_scene_image.icon123);
-            receiveIcon.setPosition(cc.p(530, y + 60));
-            scrollViewLayer.addChild(receiveIcon, 1);
+            receiveItem.setVisible(status == UNHANDLED_STATUS);
 
             this._scrollViewElement[id] = {
                 hasBeenReceiveIcon: hasBeenReceiveIcon,
-                receiveItem: receiveItem,
-                receiveIcon: receiveIcon
+                receiveItem: receiveItem
             };
-
         }
 
         this._scrollView = cc.ScrollView.create(cc.size(605, 742), scrollViewLayer);
@@ -116,30 +118,13 @@ var SystemMessageLayer = cc.Layer.extend({
         return function () {
             cc.log("SystemMessageLayer onClickPlayback: " + id);
 
-            gameData.message.receive(id);
-
             var element = this._scrollViewElement[id];
 
-            element.receiveItem.setVisible(false);
-            element.receiveIcon.setVisible(false);
-            element.hasBeenReceiveIcon.setVisible(true);
+            gameData.message.receive(function () {
+                element.receiveItem.setVisible(false);
+                element.hasBeenReceiveIcon.setVisible(true);
+            }, id);
         }
-    },
-
-    _getTimeStr: function (time) {
-        cc.log("SystemMessageLayer _getTimeStr");
-
-        var date = new Date(time);
-        var today = new Date();
-        var timeStr = "";
-
-        if (today.toDateString() === date.toDateString()) {
-            timeStr = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
-        } else {
-            timeStr = date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay();
-        }
-
-        return timeStr;
     }
 });
 
@@ -153,18 +138,3 @@ SystemMessageLayer.create = function () {
 
     return null;
 };
-
-
-/*
-
- gameData.message.push({
- id: 100,
- sender: 0,
- receiver: 5,
- type: 4,
- status: 6,
- content: "系统送来了一个美女",
- createTime: 3545234545
- })
-
- * */

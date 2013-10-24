@@ -6,6 +6,8 @@ logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async'
 _ = require 'underscore'
 
+MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -21,7 +23,7 @@ Handler::buyVip = (msg, session, next) ->
 
     data = table.getTableItem('recharge', id)
     player.increase('cash', data.cash)
-    player.increase('gold', data.gold)
+    player.increase('gold', (data.cash * 10) + data.gold)
     player.save()
     next(null, {code: 200, msg: {
       player: {
@@ -54,26 +56,6 @@ Handler::buyVipBox = (msg, session, next) ->
 
     openVipBox(player, boxInfo, next)
 
-Handler::buyExpCard = (msg, session, next) ->
-  playerId = session.get('playerId')
-  qty = msg.qty
-
-  PRICE = 5000
-
-  playerManager.getPlayerInfo pid: playerId, (err, player) ->
-    if err
-      return next(null, {code: err.code or 500, msg: err.msg or err})
-
-    if player.money < qty * PRICE
-      return next(null, {code: 501, msg: '铜板不足'})
-
-    addExpCardFor player, qty, (err, cards) ->
-      if err
-        return next(null, err) 
-
-      player.decrease 'money', qty * PRICE
-      next(null, {code: 200, msg: {card: cards[0], cardIds: cards.map (c) -> c.id}})
-
 openVipBox = (player, boxInfo, next) ->
   setIfExist = (attrs) ->
     player.increase att, val for att, val of boxInfo when att in attrs
@@ -88,27 +70,10 @@ openVipBox = (player, boxInfo, next) ->
   player.save()
   
   if _.has boxInfo, 'exp_card'
-    addExpCardFor player, boxInfo.exp_card, (err, cards) ->
+    playerManager.addExpCardFor player, boxInfo.exp_card, (err, cards) ->
       return next(null, {code: err.code or 500, msg: err.msg or err}) if err
 
       next(null, {code: 200, msg: {card: cards[0], cardIds: cards.map (c) -> c.id}})
   else
     next(null, {code: 200, msg: {card: {}, cardIds: []}})
 
-addExpCardFor = (player, qty, cb) ->
-  async.times(
-    qty
-    , (n, callback) ->
-      dao.card.createExpCard data: {
-        playerId: player.id, 
-        lv: 6,
-        exp: 29
-      }, callback
-    , (err, cards) ->
-      if err
-        logger.error '[fail to create exp card]' + err
-        return cb({code: err.code or 500, msg: err.msg or err})
-
-      player.addCards cards
-      cb(null, cards.map (c) -> c.toJson())
-  )

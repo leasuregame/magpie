@@ -11,7 +11,6 @@ ssh -l root -p 8022 124.238.236.33
 http://124.238.236.33/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/Resources/
 
 cd /dev/shm/magpie
-更新代码：
 git pull origin master
 账号：
 wuzhanghai@leasuregame.com
@@ -51,6 +50,7 @@ make build && ./node_modules/.bin/pomelo stop && ./node_modules/.bin/pomelo star
 make inittables
 node ./bin/dao.js all production
 
+cd game-server
 pkill -9 -f node
 make build
 ./node_modules/.bin/pomelo start production --daemon

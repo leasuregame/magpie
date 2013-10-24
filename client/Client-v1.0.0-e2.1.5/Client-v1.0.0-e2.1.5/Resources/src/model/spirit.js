@@ -12,6 +12,8 @@
  * */
 
 
+var MAX_SPIRIT_LV = 10;
+
 var Spirit = Entity.extend({
     _lv: 0,
     _exp: 0,
@@ -50,6 +52,18 @@ var Spirit = Entity.extend({
         this._passiveHarm = table.hp_inc;
         this._skillHarm = table.spirit_atk_pct;
         this._rate = table.rate;
+    },
+
+    canUpgrade: function () {
+        cc.log("Spirit canUpgrade");
+
+        return (this._lv < MAX_SPIRIT_LV && this._exp > this._maxExp);
+    },
+
+    upgrade: function (cb) {
+        cc.log("Spirit upgrade");
+
+        TipLayer.tip("等章海实现啊。。。。。");
     }
 });
 

@@ -14,6 +14,10 @@ Handler::lottery = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
+    fdata = table.getTableItem('function_limit', 1)
+    if player.lv < fdata.lottery
+      return next(null, {code: 501, msg: fdata.lottery+'级开放'})
+
     if player.dailyGift.lotteryCount <= 0
       return next(null, {code: 501, msg: '您的抽奖次数已用完'})
 
@@ -59,52 +63,78 @@ Handler::signIn = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
+    sdata = table.getTableItem('daily_signin_rewards', 1)
     player.signToday()
-    player.increase('money', 2000)
-    player.increase('energy', 100)
+    player.increase('money', sdata.money)
+    player.increase('energy', sdata.energy)
     player.save()
     next(null, {
       code: 200, 
       msg: {
-        money: 2000, 
-        energy: 100
+        money: sdata.money
+        energy: sdata.energy
       }
     })
 
 Handler::reSignIn = (msg, session, next) ->
   playerId = session.get('playerId')
 
+  goldResume = 10
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    day = player.signFirstUnsignDay()
-    player.decrease('gold', 10)
-    player.save()
+    if player.signDays() >= 31
+      return next(null, {code: 501, msg: '没有日期可以补签'})
 
-    next(null, {code: 200, msg: day: day})
+    day = player.signFirstUnsignDay()
+    if day >= (new Date).getDate()
+      return next(null, {code: 501, msg: '没有日期可以补签'})
+
+    sdata = table.getTableItem('daily_signin_rewards', 1)
+    player.decrease('gold', goldResume)
+    player.save()
+    
+    next(null, {
+      code: 200
+      msg: 
+        day: day
+        goldResume: goldResume
+        reward: {
+          money: sdata.money
+          energy: sdata.energy
+        }
+      }
+    )
 
 Handler::getSignInGift = (msg, session, next) ->
   playerId = session.get('playerId')
   id = msg.id
 
   playerManager.getPlayerInfo pid: playerId, (err, player) ->
+    
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     rew = table.getTableItem('signIn_rewards', id)
-    if player.signDays() < rew.count
-      return next(null, {code: 501, msg: "签到次数不足#{rew.count}次"})
-    if player.hasSignInFlag(id) 
+    count = rew.count
+    if count is -1
+      d = new Date()
+      count = (new Date(d.getFullYear(), d.getMonth() + 1, 0)).getDate()
+
+    if player.signDays() < count
+      return next(null, {code: 501, msg: "签到次数不足#{count}次"})
+    if player.hasSignInFlag(id)
       return next(null, {code: 501, msg: '不能重复领取'})
 
     setIfExist = (attrs) ->
       player.increase att, val for att, val of rew when att in attrs
       return
 
-    setIfExist ['energy', 'money', 'skillPoint', 'elixir']
+    setIfExist ['energy', 'money', 'skillPoint', 'elixir', 'gold']
+    player.incSpirit(rew.spirit)
     if rew.lottery_free_count > 0
-      dg = player.dailyGift
+      dg = utility.deepCopy(player.dailyGift)
       dg.lotteryFreeCount += rew.lottery_free_count
       player.dailyGift = dg
 

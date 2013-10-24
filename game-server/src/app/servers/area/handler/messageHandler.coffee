@@ -5,8 +5,15 @@ logger = require('pomelo-logger').getLogger(__filename)
 async = require 'async'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
+utility = require '../../../common/utility'
+table = require '../../../manager/table'
+
+resData = table.getTableItem('resource_limit', 1);
+MAX_POWER_VALUE = resData.power_value;
 
 SYSTEM = -1
+ADD_FRIEND_MESSAGE = 1
+DELETE_FRIEND_MESSAGE = 2
 
 isFinalStatus = (status) ->
   _.contains msgConfig.FINALSTATUS, status
@@ -23,29 +30,27 @@ mergeMessages = (myMessages, systemMessages) ->
 changeGroupNameAndSort = (messages) ->
   results = {}
   for k, v of messages
-    continue if msgConfig.TYPE_MAP[k] is null
+    continue if not msgConfig.TYPE_MAP[k]?
     name = msgConfig.TYPE_MAP[k]
     if typeof results[name] is 'undefined'
       results[name] = v
     else
-      results[name].push v
+      results[name] = results[name].concat(v)
 
   for n, items of results
     items.sort (x, y) -> x.createTime < y.createTime
 
   results
 
-sendMessage = (app, target, msg, next) ->
+sendMessage = (app, target, msg, data, next) ->
   callback = (err, res) ->
     if err
       code = 500
-    else if res
-      code = res
     else 
       code = 200
-    next(null, {code: code}) if next?
+    next(null, {code: code, msg: data if data}) if next?
 
-  if target isnt null
+  if target?
     app.get('messageService').pushByPid target, msg, callback
   else 
     app.get('messageService').pushMessage msg, callback
@@ -56,13 +61,16 @@ module.exports = (app) ->
 Handler = (@app) ->
 
 Handler::sysMsg = (msg, session, next) ->
+  console.log("msg = ",msg);
   content = msg.content
   options = msg.options or {}
-
+  receiver = msg.playerId or SYSTEM
+ # msgId = msg.msgId or 0
   dao.message.create data: {
+  #  msgId:msgId
     options: options
     sender: SYSTEM
-    receiver: SYSTEM
+    receiver: receiver
     content: content
     type: msgConfig.MESSAGETYPE.SYSTEM
     status: msgConfig.MESSAGESTATUS.UNHANDLED
@@ -73,21 +81,76 @@ Handler::sysMsg = (msg, session, next) ->
     sendMessage @app, null, {
       route: 'onMessage'
       msg: res.toJson()
-    }, next
+    }, '邮件发送成功', next
 
 Handler::handleSysMsg = (msg, session, next) ->
   playerId = session.get('playerId')
   msgId = msg.msgId
+  player = null
+  incValues = (obj, data) ->
+    obj.increase(k, data[k]) for k in _.keys(data) when obj.hasField k 
+    obj.addPower(data.powerValue) if _.has(data, 'powerValue')
 
-  dao.message.fetchOne where: id: msgId, (err, message) ->
+  async.waterfall [
+    (cb)->
+      dao.message.fetchOne where: id: msgId, (err, message) ->
+        if err
+          return next(null, {code: err.code or 500, msg: err.msg or err})
+
+        else if message.type isnt msgConfig.MESSAGETYPE.SYSTEM
+          return next(null, {code: 501, msg: '消息类型不匹配'})
+
+        else if message.status is msgConfig.MESSAGESTATUS.HANDLED
+          return next(null, {code: 501, msg: '该邮件已领取过'})
+
+        else
+          cb(null,message)
+    (message,cb)->
+      dao.message.fetchOne where: {msgId: message.id,receiver: playerId},(err,res) ->
+        if res isnt null
+          return next(null, {code: 501, msg: '该邮件已领取过'})
+        else
+          cb(null,message)
+
+    (message,cb)->
+      playerManager.getPlayerInfo {pid: playerId},(err,res)->
+        if err
+          cb({code: err.code or 500, msg: err.msg or err})
+        player = res
+        if player.power.value >= MAX_POWER_VALUE and message.options['powerValue']
+          cb {code: 501, msg: "体力已达上限"}
+        else
+          cb(null,message)
+
+    (message,cb)->
+      if message.receiver is playerId
+        dao.message.update {
+            data: {status: msgConfig.MESSAGESTATUS.HANDLED}
+            where: {id: msgId}
+        }, (err, res) ->
+          cb(err, message.options)
+      else
+        data = {}
+        data[k] = message[k] for k in _.keys(message.attributes) when k isnt 'id'
+        data.status = msgConfig.MESSAGESTATUS.HANDLED
+        data.msgId = message.id
+        data.receiver = playerId
+
+        dao.message.create {
+          data:data
+        },(err, res) ->
+          cb(err,res.options)
+
+    (options, cb) ->
+      incValues(player, options)
+      player.save()
+      cb(null, options)
+
+  ],(err, data)->
     if err
-      return next(null, {code: err.code or 500, msg: err.msg or err})
+      next(null, {code: err.code or 500, msg: err.msg or err})
 
-    if message.type isnt msgConfig.MESSAGETYPE.SYSTEM
-      return next(null, {code: 501, msg: '消息类型不匹配'})
-
-    # do something 
-    next(null, {code: 200})
+    next(null, {code: 200, msg: data})
 
 Handler::leaveMessage = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -95,21 +158,24 @@ Handler::leaveMessage = (msg, session, next) ->
   friendId = msg.friendId
   content = msg.content
 
+  if playerId is friendId
+    return next null,{code: 501,msg: '不能给自己留言'}
+
   dao.message.create data: {
     type: msgConfig.MESSAGETYPE.MESSAGE
     sender: playerId
     options: {playerName: playerName}
     receiver: friendId
-    content: content
+    content: content[0...50]
     status: msgConfig.MESSAGESTATUS.NOTICE
   }, (err, res) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     sendMessage @app, friendId, {
-      route: 'OnMessage'
+      route: 'onMessage'
       msg: res.toLeaveMessage()
-    }, next
+    }, null, next
 
 Handler::readMessage = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -141,6 +207,7 @@ Handler::messageList = (msg, session, next) ->
 
     systemMessages = results[0]
     myMessages = results[1]
+
     messages = mergeMessages(myMessages, systemMessages)
     messages = messages.map (m) -> 
       if m.type is msgConfig.MESSAGETYPE.MESSAGE then m.toLeaveMessage?() else m.toJson?()
@@ -160,11 +227,21 @@ Handler::deleteFriend = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     next(null, {code: 200})
+    sendMessage @app, friendId, {
+      route: 'onFriendAction'
+      msg: {
+        type: DELETE_FRIEND_MESSAGE
+        friend: id: playerId
+      }
+    }
 
 Handler::addFriend = (msg, session, next) ->
   playerId = session.get('playerId')
   playerName = session.get('playerName')
   friendName = msg.friendName
+
+  if playerName is friendName
+    return next(null, {code: 501, msg: '不能添加自己为好友'})
 
   friend = null
   async.waterfall [
@@ -178,7 +255,12 @@ Handler::addFriend = (msg, session, next) ->
         else
           cb()
     (cb) ->
-      playerManager.getPlayer name: friendName, cb
+      playerManager.getPlayer name: friendName, (err, ply) ->
+        return cb(err) if err
+        if ply.id is playerId
+          cb {code: 501, msg: '不能加自己为好友'}
+        else
+          cb(null, ply)
 
     (res, cb) ->
       friend = res
@@ -204,7 +286,7 @@ Handler::addFriend = (msg, session, next) ->
           type: msgConfig.MESSAGETYPE.ADDFRIEND
           sender: playerId
           receiver: friend.id
-          content: "#{playerName}请求加你为好友！"
+          content: "#{playerName}发来请求"
           status: msgConfig.MESSAGESTATUS.ASKING
         }, cb
       else 
@@ -216,7 +298,7 @@ Handler::addFriend = (msg, session, next) ->
     sendMessage @app, friend.id, {
       route: 'onMessage'
       msg: msg.toJson()
-    }, next if msg?
+    }, null, next
 
 Handler::accept = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -300,16 +382,16 @@ Handler::accept = (msg, session, next) ->
 
       achieve.friends(sender, senderFriends.length)
 
-    _message = message.toJson()
-    _message.friend = {
-      id: playerId
-      name: playerName
-      lv: player.lv
-      ability: player.ability
-    }
     sendMessage @app, message.sender, {
-      route: 'onMessage'
-      msg: _message
+      route: 'onFriendAction'
+      msg:
+        type: ADD_FRIEND_MESSAGE 
+        friend : {
+          id: playerId
+          name: playerName
+          lv: player.lv
+          ability: player.ability
+        }
     }
 
 Handler::reject = (msg, session, next) ->
@@ -351,36 +433,31 @@ Handler::giveBless = (msg, session, next) ->
   friendId = msg.friendId
 
   if friendId is playerId 
-    return next(null, {code: 501, '不能给自己送祝福'})
+    return next(null, {code: 501, msg: '不能给自己送祝福'})
 
+  ENERGY = 5
+  player = null
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo pid: playerId, cb
 
-    (player, cb) ->
+    (res, cb) ->
+      player = res
       if player.dailyGift.gaveBless.count <= 0
-        return cb({code: 501, '今日你送出祝福的次数已经达到上限'})
+        return cb({code: 501, msg: '今日你送出祝福的次数已经达到上限'})
 
       if _.contains player.dailyGift.gaveBless.receivers, friendId
-        return cb({code: 501, '一天只能给同一位好友送出一次祝福哦'})
+        return cb({code: 501, msg: '一天只能给同一位好友送出一次祝福哦'})
 
-      player.dailyGift.gaveBless.count--
-      player.dailyGift.gaveBless.receivers.push(friendId)
-      player.updateGift 'gaveBless', player.dailyGift.gaveBless
-      player.giveBlessOnce()
-      player.save()
       cb()
 
     (cb) ->
-      dao.player.fetchOne {
-        where: id: friendId
-        sync: true
-      }, (err, ply) ->
+      playerManager.getPlayerInfo {pid: friendId}, (err, ply) ->
         if err
           return cb(err)
 
         if ply.dailyGift.receivedBlessCount <= 0
-          return cb({code: 501, '今日对方接收祝福的次数已经达到上限'})
+          return cb({code: 501, msg: '今日对方接收祝福的次数已经达到上限'})
 
         ply.dailyGift.receivedBless.count--
         ply.dailyGift.receivedBless.givers.push(playerId)
@@ -393,7 +470,7 @@ Handler::giveBless = (msg, session, next) ->
         type: msgConfig.MESSAGETYPE.BLESS
         sender: playerId
         receiver: friendId
-        options: energy: 5
+        options: energy: ENERGY
         content: "#{playerName}为你送来了祝福，你获得了5点的活力值"
         status: msgConfig.MESSAGESTATUS.UNHANDLED
       }, cb
@@ -401,10 +478,17 @@ Handler::giveBless = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
+    player.dailyGift.gaveBless.count--
+    player.dailyGift.gaveBless.receivers.push(friendId)
+    player.updateGift 'gaveBless', player.dailyGift.gaveBless
+    player.increase('energy', ENERGY)
+    player.giveBlessOnce()
+    player.save()
+
     sendMessage @app, friendId, {
-      route: 'onMessage'
-      msg: res.toJson()
-    }, next
+      route: 'onBless'
+      msg: {id: res.id, sender: res.sender}
+    }, {energy: ENERGY}, next
 
 Handler::receiveBless = (msg, session, next) ->
   playerId = session.get('playerId')
@@ -442,4 +526,8 @@ Handler::receiveBless = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    next(null, {code: 200})
+    next(null, {code: 200, msg: {energy: message.options.energy}})
+
+
+
+

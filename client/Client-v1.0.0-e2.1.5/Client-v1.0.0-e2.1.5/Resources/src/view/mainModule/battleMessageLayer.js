@@ -66,24 +66,24 @@ var BattleMessageLayer = cc.Layer.extend({
             msgLabel.setPosition(cc.p(20, y + 60));
             scrollViewLayer.addChild(msgLabel);
 
-            var timeLabel = cc.LabelTTF.create(this._getTimeStr(battleMessageList[i].createTime), "STHeitiTC-Medium", 16);
+            var timeLabel = cc.LabelTTF.create(
+                lz.getTimeStr(battleMessageList[i].createTime),
+                "STHeitiTC-Medium",
+                16
+            );
             timeLabel.setAnchorPoint(cc.p(1, 0));
             timeLabel.setPosition(cc.p(580, y + 13));
             scrollViewLayer.addChild(timeLabel);
 
-            var playbackItem = cc.MenuItemImage.create(
-                main_scene_image.button20,
-                main_scene_image.button20s,
-                this._onClickPlayback(battleMessageList[i].id),
+            var playbackItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button9,
+                main_scene_image.button9s,
+                main_scene_image.icon135,
+                this._onClickPlayback(battleMessageList[i].options.battleLogId),
                 this
             );
-            playbackItem.setPosition(cc.p(530, y + 60));
+            playbackItem.setPosition(cc.p(520, y + 62));
             menu.addChild(playbackItem);
-
-            var playbackIcon = cc.Sprite.create(main_scene_image.icon135);
-            playbackIcon.setPosition(cc.p(530, y + 60));
-            scrollViewLayer.addChild(playbackIcon, 1);
-
         }
 
         this._scrollView = cc.ScrollView.create(cc.size(605, 742), scrollViewLayer);
@@ -102,22 +102,6 @@ var BattleMessageLayer = cc.Layer.extend({
 
             gameData.message.playback(id);
         }
-    },
-
-    _getTimeStr: function (time) {
-        cc.log("BattleMessageLayer _getTimeStr");
-
-        var date = new Date(time);
-        var today = new Date();
-        var timeStr = "";
-
-        if (today.toDateString() === date.toDateString()) {
-            timeStr = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
-        } else {
-            timeStr = date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay();
-        }
-
-        return timeStr;
     }
 });
 

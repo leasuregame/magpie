@@ -36,6 +36,8 @@ var GoldLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+
         this._gold = 0;
         this._goldList = data || [];
 
@@ -54,6 +56,7 @@ var GoldLayer = LazyLayer.extend({
         this.addChild(this._goldLabel);
 
         var menu = cc.Menu.create();
+        menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -201,7 +204,7 @@ var GoldLayer = LazyLayer.extend({
 
         var waitTime = time - scaleTime;
 
-        TipLayer.tip("元宝 + " + this._goldList[index]);
+        TipLayer.tipNoBg("元宝 + " + this._goldList[index]);
 
         var action = cc.Sequence.create(
             cc.EaseExponentialOut.create(

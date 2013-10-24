@@ -170,14 +170,15 @@ isV587 = (bl) ->
   return ownCardCount is 1 and enemyCardCount is 5
 
 genRankings = (ranking) ->
-  top10 = {}
-  for r in [1..10]
-    top10[r] = if ranking > 10 then STATUS_NORMAL else STATUS_CHALLENGE
+  top3 = {}
+  for r in [1..3]
+    top3[r] = if ranking > 3 then STATUS_NORMAL else STATUS_CHALLENGE
 
   _results = {}
 
-  if ranking <= 10
-    _results[11] = STATUS_CHALLENGE
+  if ranking <= 3
+    _results[4] = STATUS_CHALLENGE
+    _results[5] = STATUS_CHALLENGE
 
   else
     keys = Object.keys(INTERVALS)
@@ -187,10 +188,10 @@ genRankings = (ranking) ->
         step = INTERVALS[k]
         break
 
-    _results[ranking - step * i] = STATUS_CHALLENGE for i in [1...11]
+    _results[ranking - step * i] = STATUS_CHALLENGE for i in [1...6]
 
   _results[ranking] = STATUS_NORMAL
-  _.extend(top10, _results)
+  _.extend(top3, _results)
 
 filterPlayersInfo = (players, rankings) ->
   players.map (p) -> 

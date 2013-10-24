@@ -14,12 +14,15 @@
 
 var SpiritPool = Entity.extend({
     _lv: 0,
+    _maxLv: 0,
     _exp: 0,
     _maxExp: 0,
     _collectCount: 0,
 
     init: function (data) {
         cc.log("SpiritPool init");
+
+        this._maxLv = outputTables.lv_limit.rows[1].spirit_lv_limit;
 
         this.update(data);
 

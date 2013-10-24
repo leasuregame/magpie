@@ -140,7 +140,7 @@ var SpiritPoolLayer = cc.Layer.extend({
         var str = "灵气: " + data.spirit_obtain;
 
         if (data.isDouble) {
-            str = "天降甘霖,灵气爆发: " + data.spirit_obtain;
+            str = "天降甘霖 灵气爆发: " + data.spirit_obtain;
             spirit.setScale(1.5);
         }
 

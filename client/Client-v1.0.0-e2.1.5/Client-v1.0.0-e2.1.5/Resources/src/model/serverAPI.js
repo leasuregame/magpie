@@ -52,7 +52,7 @@ var linkSever = function (cb) {
                 }
             }
 
-            lzWindow.pomelo.off("close");
+            lzWindow.pomelo.off();
 
             linkSever(cb);
         });
@@ -62,8 +62,6 @@ var linkSever = function (cb) {
             cc.log(data);
 
             _isUnknow = false;
-
-            lzWindow.pomelo.off("onKick");
 
             LogoutLayer.pop("异地登录");
         });

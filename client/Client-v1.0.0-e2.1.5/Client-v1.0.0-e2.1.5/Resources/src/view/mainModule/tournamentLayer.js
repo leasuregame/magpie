@@ -149,7 +149,7 @@ var TournamentLayer = cc.Layer.extend({
 
         this._expProgress.setAllValue(player.get("power"), player.get("maxPower"));
         this._lvLabel.setString(player.get("lv"));
-        this._abilityLabel.setString(player.get("ability"));
+        this._abilityLabel.setString(player.getAbility());
 
         if (this._scrollView != null) {
             this._scrollView.removeFromParent();

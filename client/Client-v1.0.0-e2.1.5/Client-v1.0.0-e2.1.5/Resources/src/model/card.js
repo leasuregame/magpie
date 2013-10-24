@@ -180,7 +180,7 @@ var Card = Entity.extend({
         this._skillRate = skillTable["rate" + this._star] || 0;
         this._skillDescription = skillTable.description;
         this._skillType = skillTable.type;
-        this._skillMaxLv = 5;
+        this._skillMaxLv = outputTables.lv_limit.rows[1].skill_lv_limit;
     },
 
     getSkillType: function () {

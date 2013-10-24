@@ -12,10 +12,9 @@
  * */
 
 
-var MAX_SPIRIT_LV = 10;
-
 var Spirit = Entity.extend({
     _lv: 0,
+    _maxLv: 0,
     _exp: 0,
     _maxExp: 0,
     _rate: 0,
@@ -25,6 +24,8 @@ var Spirit = Entity.extend({
 
     init: function (data) {
         cc.log("Spirit init");
+
+        this._maxLv = outputTables.lv_limit.rows[1].spirit_lv_limit;
 
         this.update(data);
 
@@ -59,7 +60,7 @@ var Spirit = Entity.extend({
     canUpgrade: function () {
         cc.log("Spirit canUpgrade");
 
-        return (this._lv < MAX_SPIRIT_LV && this._exp > this._maxExp);
+        return (this._lv < this._maxLv && this._exp > this._maxExp);
     },
 
     upgrade: function (cb) {
@@ -74,11 +75,13 @@ var Spirit = Entity.extend({
 
                 var msg = data.msg;
 
-                that.update(msg.spiritPool);
+                that.update(msg.spiritor);
 
-                cb();
+                cb(true);
             } else {
                 cc.log("upgrade fail");
+
+                cb(false);
             }
         });
     }

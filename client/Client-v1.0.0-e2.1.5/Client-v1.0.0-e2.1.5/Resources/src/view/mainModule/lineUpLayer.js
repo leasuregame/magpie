@@ -67,7 +67,7 @@ var LineUpLayer = LazyLayer.extend({
         lvLabel.setPosition(cc.p(360, 852));
         this.addChild(lvLabel);
 
-        var abilityLabel = cc.LabelTTF.create("战斗力: " + player.get("ability"), "STHeitiTC-Medium", 20);
+        var abilityLabel = cc.LabelTTF.create("战斗力: " + player.getAbility(), "STHeitiTC-Medium", 20);
         abilityLabel.setColor(cc.c3b(255, 239, 131));
         abilityLabel.setPosition(cc.p(500, 852));
         this.addChild(abilityLabel);

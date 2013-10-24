@@ -199,7 +199,7 @@ var SpiritDetails = LazyLayer.extend({
         this._spiritNode.setPosition(cc.p(360, 720));
         this.addChild(this._spiritNode, 2);
 
-//        this._upgradeItem.setVisible(spirit.canUpgrade());
+        this._upgradeItem.setVisible(spirit.canUpgrade());
 
         this._lvLabel.setString("LV.  " + spirit.get("lv"));
         this._expLabel.setString("经验:    " + spirit.get("exp") + " / " + spirit.get("maxExp"));
@@ -209,6 +209,7 @@ var SpiritDetails = LazyLayer.extend({
 
     _play: function () {
         var lazyLayer = LazyLayer.create();
+        lazyLayer.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         this.addChild(lazyLayer, 3);
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 255), 640, 1136);
@@ -216,7 +217,6 @@ var SpiritDetails = LazyLayer.extend({
         lazyLayer.addChild(bgLayer);
 
         var that = this;
-
         var cb = function () {
             that.update();
 
@@ -256,12 +256,19 @@ var SpiritDetails = LazyLayer.extend({
     _onClickUpgrade: function () {
         cc.log("PlayerDetails _onClickUpgrade");
 
-        this._play();
+        LazyLayer.showCloudLayer();
 
-//        var that = this;
-//        gameData.spirit.upgrade(function (data) {
-//            cc.log(data);
-//        });
+        var that = this;
+        gameData.spirit.upgrade(function (success) {
+            cc.log(success);
+
+            if (success) {
+                that._play();
+            } else {
+                that.update();
+                TipLayer.tip("升级出错");
+            }
+        });
     },
 
     _onClickClose: function () {

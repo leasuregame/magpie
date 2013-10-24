@@ -82,6 +82,8 @@ var Tournament = Entity.extend({
     sync: function (cb) {
         cc.log("Tournament sync");
 
+        var time0 = Date.now();
+
         var that = this;
         lzWindow.pomelo.request("area.rankHandler.rankingList", {}, function (data) {
             cc.log(data);
@@ -89,7 +91,12 @@ var Tournament = Entity.extend({
             if (data.code == 200) {
                 cc.log("Tournament sync success");
 
+                var time = Date.now() - time0;
+
                 var msg = data.msg;
+
+                var str = "总时间: " + time / 1000 + "秒，数据传输时间: " + (time - msg.rank.time) / 1000 + " 秒";
+                TipLayer.tip(str);
 
                 that.update(msg.rank);
 

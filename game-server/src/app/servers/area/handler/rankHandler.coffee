@@ -197,8 +197,6 @@ filterPlayersInfo = (players, rankings) ->
     {
       playerId: p.id
       name: p.name
-      ability: p.ability
-      lv: p.lv
       ranking: p.rank.ranking
       cards: p.activeCards().map (c) -> c.tableId
       type: rankings[p.rank.ranking]

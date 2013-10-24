@@ -52,6 +52,13 @@ Handler::explore = (msg, session, next) ->
             countSpirit(player, battleLog, 'TASK')
             player.incSpirit battleLog.totalSpirit if battleLog.winner is 'own'
 
+          ### 每次战斗结束都有20%的概率获得5元宝 ###
+          if utility.hitRate(taskRate.gold_obtain.rate)
+            player.increase('gold', taskRate.gold_obtain.value)
+            data.gold_obtain += taskRate.gold_obtain.value
+
+          checkFragment(battleLog, player, chapterId)
+
           if battleLog.winner is 'own'
             async.parallel [
               (callback) ->
@@ -77,7 +84,7 @@ Handler::explore = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg})
 
     player.save()
-    data.task = player.task
+    data.task = player.getTask()
     data.power = player.power
     data.lv = player.lv
     data.exp = player.exp
@@ -302,3 +309,16 @@ updatePlayer = (player, rewards, layer) ->
   player.incPass() if player.passLayer is layer-1
   player.setPassMark(layer)
   player.save()
+
+checkFragment = (battleLog, player, chapterId) ->  
+  if(
+    player.task.hasFragment != parseInt(chapterId) and 
+    ( utility.hitRate(taskRate.fragment_rate) or player.task.id%10 is 0 )
+    )
+    battleLog.rewards.fragment = 1
+    task = utility.deepCopy(player.task)
+    task.hasFragment = parseInt(chapterId)
+    player.set('task', task)
+  else 
+    battleLog.rewards.fragment = 0
+    

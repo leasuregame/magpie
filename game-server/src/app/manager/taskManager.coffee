@@ -19,6 +19,7 @@ class Manager
       result: 'none'
       power_consume: 0
       exp_obtain: 0
+      gold_obtain: 0
       money_obtain: 0
       upgrade: false
       open_box_card: null
@@ -119,11 +120,6 @@ class Manager
       ### 标记为已经赢得战斗 ###
       task.hasWin = true
       player.task = task
-
-    if utility.hitRate(taskRate.fragment_rate)
-      battleLog.rewards.fragment = 1
-    else
-      battleLog.rewards.fragment = 0
 
     saveExpCardsInfo player.id, taskData.max_drop_card_number, (err, results) ->
       if err

@@ -57,13 +57,41 @@ describe("Area Server", function() {
 					});
 				});
 
+				describe('当资源达到上限时', function(){
+					beforeEach(function(){
+						doAjax('/update/player/' + 101, {
+							energy: 99999,
+							money: 99999999,
+							skillPoint: 9999999,
+							elixir: 999999,
+							vip: 1
+						}, function(res){
+							loginWith('user4', '1', 1);
+						});
+					});
+
+					it('不能购买vip礼包', function(){
+						request('area.vipHandler.buyVipBox', {
+							boxId: 1
+						}, function(data) {
+							expect(data).toEqual({
+								code: 501,
+								msg: '活力值，仙币，技能点，仙丹已经达到上限，不能购买'	
+							});
+						});
+					});
+				});
+
 				describe("当玩家可以购买vip礼包时", function() {
 					beforeAll(function(){
-						doAjax('/update/player/' + 100, {vip: 12}, function(){});
+						doAjax('/update/player/' + 1, {
+							vip: 12,
+							energy: 0
+						}, function(){});
 					});
 
 					beforeEach(function() {
-						loginWith('arthur', '1', 1);
+						loginWith('1', '1', 1);
 					});
 
 					var vipBoxInfo = {
@@ -86,7 +114,8 @@ describe("Area Server", function() {
 							request('area.vipHandler.buyVipBox', {
 								boxId: id
 							}, function(data) {
-								expect(data.boxInfo).toEqual(vipBoxInfo[id].bonxInfo);
+								console.log(data);
+								expect(data).toEqual({});
 							});
 						});
 					};

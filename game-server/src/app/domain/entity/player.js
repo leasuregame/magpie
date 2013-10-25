@@ -325,10 +325,10 @@ var Player = (function(_super) {
         };
 
         var recieveBlessMap = {
-            1: 20,
-            31: 30,
-            51: 40,
-            71: 50
+            1: 5,
+            31: 10,
+            51: 15,
+            71: 20
         };
 
         var realCount = function(lv, mapobj) {
@@ -980,11 +980,13 @@ var Player = (function(_super) {
     Player.prototype.getRank = function() {
         var rank = {
             ranking: 0,
-            rankReward: []
+            canGetReward: [],
+            notCanGetReward: []
         };
         if(this.rank) {
             rank.ranking = this.rank.ranking;
-            rank.rankReward = this.rank.rankingRewards()
+            rank.canGetReward = this.rank.rankingRewards();
+            rank.notCanGetReward = this.rank.rewardsNotHave();
         }
         return rank;
     };

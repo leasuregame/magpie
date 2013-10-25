@@ -87,7 +87,7 @@ Handler::rankingList = (msg, session, next) ->
       ranking: r.ranking,
       canGetReward: r.canGetReward,
       notCanGetReward: r.notCanGetReward,
-      challengeCount: player.dailyGift. c,
+      challengeCount: player.dailyGift.challengeCount,
       rankList: players,
       time: Date.now()  - start
     }

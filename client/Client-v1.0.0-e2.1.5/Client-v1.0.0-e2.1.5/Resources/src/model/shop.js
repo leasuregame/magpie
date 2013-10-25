@@ -131,6 +131,8 @@ var Shop = Entity.extend({
                 cb();
             } else {
                 cc.log("payment fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },
@@ -152,13 +154,12 @@ var Shop = Entity.extend({
                 var table = outputTables.vip_box.rows[id];
 
                 gameData.player.adds({
-                    power: table.power || 0,
                     energy: table.energy || 0,
                     money: table.money || 0,
                     skillPoint: table.skillPoint || 0,
                     elixir: table.elixir || 0,
                     fragment: table.fragments || 0,
-                    gold: table.price
+                    gold: -table.price
                 });
 
                 var cardIdList = msg.cardIds;
@@ -173,9 +174,18 @@ var Shop = Entity.extend({
 
                 that._useVipBoxList.push(id);
 
-                cb();
+                cb({
+                    energy: table.energy || 0,
+                    money: table.money || 0,
+                    skillPoint: table.skillPoint || 0,
+                    elixir: table.elixir || 0,
+                    fragment: table.fragments || 0,
+                    cards: table.exp_card || 0
+                });
             } else {
                 cc.log("buyVipBox fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },
@@ -184,7 +194,75 @@ var Shop = Entity.extend({
         cc.log("Shop buyExpCard: " + count);
 
         var that = this;
-        lzWindow.pomelo.request("area.vipHandler.buyExpCard", {
+        lzWindow.pomelo.request("area.buyHandler.buyExpCard", {
+            qty: count
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("buyExpCard success");
+
+                var msg = data.msg;
+
+                var cardIdList = msg.cardIds;
+                var len = cardIdList.length;
+                var cardData = msg.card;
+
+                for (var i = 0; i < len; ++i) {
+                    cardData.id = cardIdList[i];
+                    var card = Card.create(cardData);
+                    gameData.cardList.push(card);
+                }
+
+                gameData.player.add("money", -5000 * count);
+
+                cb();
+            } else {
+                cc.log("buyExpCard fail");
+            }
+        });
+    },
+
+    buyMoney: function (cb, type, count) {
+        cc.log("Shop buyMoney: " + count);
+
+        var that = this;
+        lzWindow.pomelo.request("area.buyHandler.buyExpCard", {
+            qty: count
+        }, function (data) {
+            cc.log("pomelo websocket callback data:");
+            cc.log(data);
+
+            if (data.code == 200) {
+                cc.log("buyExpCard success");
+
+                var msg = data.msg;
+
+                var cardIdList = msg.cardIds;
+                var len = cardIdList.length;
+                var cardData = msg.card;
+
+                for (var i = 0; i < len; ++i) {
+                    cardData.id = cardIdList[i];
+                    var card = Card.create(cardData);
+                    gameData.cardList.push(card);
+                }
+
+                gameData.player.add("money", -5000 * count);
+
+                cb();
+            } else {
+                cc.log("buyExpCard fail");
+            }
+        });
+    },
+
+    buyPower: function () {
+        cc.log("Shop buyPower: " + count);
+
+        var that = this;
+        lzWindow.pomelo.request("area.buyHandler.buyExpCard", {
             qty: count
         }, function (data) {
             cc.log("pomelo websocket callback data:");

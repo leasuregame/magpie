@@ -17,6 +17,7 @@ var SpiritPoolLayer = cc.Layer.extend({
     _expLabel: null,
     _countLabel: null,
     _expProgress: null,
+    _spiritItem: null,
     _spiritPoolItem: null,
     _hook: null,
     _useGold: false,
@@ -87,8 +88,8 @@ var SpiritPoolLayer = cc.Layer.extend({
         this._expProgress.setPosition(cc.p(360, 250));
         this.addChild(this._expProgress);
 
-        var spiritItem = SpiritNode.getSpiritItem();
-        spiritItem.setPosition(150, 890);
+        this._spiritItem = SpiritNode.getSpiritItem();
+        this._spiritItem.setPosition(150, 890);
 
         this._spiritPoolItem = cc.MenuItemImage.create(
             main_scene_image.icon97,
@@ -106,7 +107,7 @@ var SpiritPoolLayer = cc.Layer.extend({
         );
         useGoldItem.setPosition(cc.p(360, 380));
 
-        var menu = cc.Menu.create(spiritItem, this._spiritPoolItem, useGoldItem);
+        var menu = cc.Menu.create(this._spiritItem, this._spiritPoolItem, useGoldItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -129,13 +130,78 @@ var SpiritPoolLayer = cc.Layer.extend({
         this._countLabel.setString(spiritPool.get("collectCount") + " 次");
     },
 
+    _collectSpirit: function (data) {
+        cc.log("SpiritPoolLayer collectSpirit");
+
+        var spirit = cc.Sprite.create(main_scene_image.icon247);
+        spirit.setPosition(cc.p(360, 650));
+        this.addChild(spirit);
+
+        var str = "灵气: " + data.spirit_obtain;
+
+        if (data.isDouble) {
+            str = "天降甘霖 灵气爆发: " + data.spirit_obtain;
+            spirit.setScale(1.5);
+        }
+
+        var point1 = cc.p(360, 650);
+        var point2 = cc.p(150, 890);
+
+        var pointArray = [
+            point1,
+            cc.p(lz.random(point1.x, point2.x), lz.random(point1.y, point2.y)),
+            point2
+        ];
+
+        spirit.runAction(cc.Sequence.create(
+            cc.Spawn.create(
+                cc.CardinalSplineTo.create(2, pointArray, 0),
+                cc.Sequence.create(
+                    cc.DelayTime.create(1.5),
+                    cc.CallFunc.create(function () {
+                        this._spiritItem.runAction(
+                            cc.Sequence.create(
+                                cc.ScaleTo.create(0.5, 1.2, 1.24),
+                                cc.ScaleTo.create(0.3, 1, 1)
+                            )
+                        );
+                    }, this),
+                    cc.ScaleTo.create(0.5, 0.3, 0.3)
+                )
+            ),
+            cc.Hide.create()
+        ));
+
+        this.scheduleOnce(function () {
+            spirit.removeFromParent();
+            TipLayer.tipNoBg(str);
+            this.update();
+            LazyLayer.closeCloudLayer();
+        }, 2);
+    },
+
     _onClickSpiritPool: function () {
         cc.log("SpiritPoolLayer _onClickSoulTable");
 
+        var spiritPool = gameData.spiritPool;
+
+        if (!spiritPool.canCollect()) {
+            TipLayer.tip("今日已完成采集 明天再来吧");
+            return;
+        }
+
+        LazyLayer.showCloudLayer();
+
         var that = this;
-        gameData.spiritPool.collect(function (data) {
+        spiritPool.collect(function (data) {
             cc.log(data);
-            that.update();
+
+            if (data) {
+                that._collectSpirit(data);
+            } else {
+                that.update();
+                LazyLayer.closeCloudLayer();
+            }
         }, this._useGold);
     },
 

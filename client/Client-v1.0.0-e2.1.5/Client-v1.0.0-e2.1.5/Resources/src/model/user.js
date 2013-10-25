@@ -77,17 +77,19 @@ var User = Entity.extend({
             var msg = data.msg;
 
             if (data.code == 200) {
-                cc.log("sign in success");
+                cc.log("login success");
 
                 that.update(msg.user);
 
                 gameData.player.init(msg.player);
 
-                cb("success");
+                cb(true);
             } else {
-                cc.log("sign in fail");
+                cc.log("login fail");
 
-                TipLayer.tip("登录失败");
+                cb(false);
+
+                TipLayer.tip(data.msg);
             }
         });
     },
@@ -104,12 +106,12 @@ var User = Entity.extend({
             cc.log(data);
 
             if (data.code == 200) {
-                cc.log("sign up success");
+                cc.log("register success");
 
 
                 cb("success");
             } else {
-                cc.log("sign up fail");
+                cc.log("register fail");
 
                 cb("fail");
             }

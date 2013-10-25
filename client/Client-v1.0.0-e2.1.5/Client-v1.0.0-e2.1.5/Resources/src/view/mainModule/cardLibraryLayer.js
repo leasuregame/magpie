@@ -146,8 +146,7 @@ var CardLibraryLayer = cc.Layer.extend({
                     TipLayer.tipNoBg("活力点: " + data);
                 }, id);
             } else {
-                var cardDetails = CardDetails.create(card);
-                cc.Director.getInstance().getRunningScene().addChild(cardDetails, 1);
+                CardDetails.pop(card);
             }
         };
     }

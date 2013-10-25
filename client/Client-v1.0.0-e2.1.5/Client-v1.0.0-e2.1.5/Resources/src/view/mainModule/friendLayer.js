@@ -18,10 +18,11 @@ var FriendLayer = cc.Layer.extend({
     _receiveCountLabel: null,
     _friendCountLabel: null,
     _maxFriendCountLabel: null,
-    _shyLayer: null,
+    _skyDialog: null,
     _addFriendLayer: null,
     _nameEditBox: null,
     _scrollView: null,
+    _friendItem: {},
 
     onEnter: function () {
         cc.log("FriendLayer onEnter");
@@ -109,83 +110,57 @@ var FriendLayer = cc.Layer.extend({
         this.addChild(this._maxFriendCountLabel);
 
         this._addAddFriendLayer();
-        this._addFunctionLayer();
 
-        return true;
-    },
+        this._skyDialog = SkyDialog.create();
+        this.addChild(this._skyDialog, 10);
 
-    _addFunctionLayer: function () {
-        cc.log("FriendLayer _addFunctionLayer");
+        var label = cc.Scale9Sprite.create(main_scene_image.bg16);
+        label.setContentSize(cc.size(216, 390));
 
-        var that = this;
-        this._shyLayer = ShyLayer.create(function () {
-            that._shyLayer.setVisible(false);
-        });
-
-        var functionLabel = cc.Sprite.create(main_scene_image.bg16);
-        functionLabel.setPosition(cc.p(360, 600));
-        this._shyLayer.addChild(functionLabel);
-
-        var sendMessageItem = cc.MenuItemImage.create(
+        var detailItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
+            main_scene_image.icon120,
+            this._onClickDetail,
+            this
+        );
+        detailItem.setPosition(cc.p(108, 330));
+
+        var sendMessageItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon119,
             this._onClickSendMessage,
             this
         );
-        sendMessageItem.setPosition(cc.p(260, 660));
+        sendMessageItem.setPosition(cc.p(108, 240));
 
-        var lineUpItem = cc.MenuItemImage.create(
+        var battleItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
-            this._onClickLineUp,
+            main_scene_image.icon121,
+            this._onClickFight,
             this
         );
-        lineUpItem.setPosition(cc.p(460, 660));
+        battleItem.setPosition(cc.p(108, 150));
 
-        var battleItem = cc.MenuItemImage.create(
+        var deleteFriendItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
-            this._onClickBattle,
-            this
-        );
-        battleItem.setPosition(cc.p(260, 540));
-
-        var deleteFriendItem = cc.MenuItemImage.create(
-            main_scene_image.button9,
-            main_scene_image.button9s,
+            main_scene_image.icon122,
             this._onClickDeleteFriend,
             this
         );
-        deleteFriendItem.setPosition(cc.p(460, 540));
+        deleteFriendItem.setPosition(cc.p(108, 60));
 
-        var menu = cc.Menu.create(
-            sendMessageItem,
-            lineUpItem,
-            battleItem,
-            deleteFriendItem
-        );
-        menu.setPosition(cc.p(0, 0));
-        this._shyLayer.addChild(menu);
+        var skyDialogMenu = cc.Menu.create(detailItem, sendMessageItem, battleItem, deleteFriendItem);
+        skyDialogMenu.setPosition(cc.p(0, 0));
+        label.addChild(skyDialogMenu);
 
-        var sendMessageIcon = cc.Sprite.create(main_scene_image.icon119);
-        sendMessageIcon.setPosition(cc.p(260, 660));
-        this._shyLayer.addChild(sendMessageIcon);
+        this._skyDialog.setLabel(label);
+        this._skyDialog.setRect(cc.rect(40, 198, 640, 700));
 
-        var lineUpIcon = cc.Sprite.create(main_scene_image.icon120);
-        lineUpIcon.setPosition(cc.p(460, 660));
-        this._shyLayer.addChild(lineUpIcon);
-
-        var battleIcon = cc.Sprite.create(main_scene_image.icon121);
-        battleIcon.setPosition(cc.p(260, 540));
-        this._shyLayer.addChild(battleIcon);
-
-        var deleteFriendIcon = cc.Sprite.create(main_scene_image.icon122);
-        deleteFriendIcon.setPosition(cc.p(460, 540));
-        this._shyLayer.addChild(deleteFriendIcon);
-
-        this.addChild(this._shyLayer, 1);
-
-        this._shyLayer.setVisible(false);
+        return true;
     },
 
     _addAddFriendLayer: function () {
@@ -282,6 +257,8 @@ var FriendLayer = cc.Layer.extend({
             scrollViewHeight = 620;
         }
 
+        this._friendItem = {};
+
         for (var i = 0; i < len; ++i) {
             var id = friendList[i].id;
             var y = scrollViewHeight - 127 - 127 * i;
@@ -325,6 +302,8 @@ var FriendLayer = cc.Layer.extend({
             friendItem.setPosition(cc.p(0, y));
             friendMenu.addChild(friendItem);
             friendItem.setScaleY(0.9);
+
+            this._friendItem[id] = friendItem;
 
             var point = cc.p(490, y + 63);
 
@@ -418,15 +397,31 @@ var FriendLayer = cc.Layer.extend({
         return function () {
             cc.log("FriendLayer _onClickFriend: " + id);
 
+            var point = this._friendItem[id].convertToWorldSpace(cc.p(230, 98));
+
             this._selectFriend = id;
-            this._shyLayer.setVisible(true);
+            this._skyDialog.show(point);
+        }
+    },
+
+    _onClickDetail: function () {
+        cc.log("FriendLayer _onClickDetail: " + this._selectFriend);
+
+        var friend = gameData.friend.getFriend(this._selectFriend);
+
+        if (friend) {
+            gameData.player.playerDetail(function (data) {
+                cc.log(data);
+
+                LineUpDetail.pop(data);
+            }, this._selectFriend);
+        } else {
+            TipLayer.tip("找不到该玩家");
         }
     },
 
     _onClickSendMessage: function () {
         cc.log("FriendLayer _onClickSendMessage: " + this._selectFriend);
-
-        this._shyLayer.setVisible(false);
 
         var friend = gameData.friend.getFriend(this._selectFriend);
 
@@ -437,27 +432,14 @@ var FriendLayer = cc.Layer.extend({
         }
     },
 
-    _onClickLineUp: function () {
-        cc.log("FriendLayer _onClickLineUp: " + this._selectFriend);
-
-        var that = this;
-        gameData.player.playerDetail(function (data) {
-
-        }, this._selectFriend);
-
-        this._shyLayer.setVisible(false);
-    },
-
-    _onClickBattle: function () {
-        cc.log("FriendLayer _onClickBattle: " + this._selectFriend);
+    _onClickFight: function () {
+        cc.log("FriendLayer _onClickFight: " + this._selectFriend);
         cc.log(this._selectFriend);
 
         var that = this;
-        gameData.player.learn(function (battleLogId) {
+        gameData.player.fight(function (battleLogId) {
             BattlePlayer.getInstance().play(battleLogId);
         }, this._selectFriend);
-
-        this._shyLayer.setVisible(false);
     },
 
     _onClickDeleteFriend: function () {
@@ -467,8 +449,6 @@ var FriendLayer = cc.Layer.extend({
         gameData.friend.deleteFriend(function (data) {
             that.update();
         }, this._selectFriend);
-
-        this._shyLayer.setVisible(false);
     }
 });
 

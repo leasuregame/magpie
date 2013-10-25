@@ -12,8 +12,6 @@
  * */
 
 
-var PLAYER_MAX_POWER = 150;
-
 var Player = Entity.extend({
     _id: 0,             // 数据库id
     _createTime: 0,     // 创建时间
@@ -29,17 +27,19 @@ var Player = Entity.extend({
     _fragment: 0,       // 卡魂
     _energy: 0,         // 活力
     _skillPoint: 0,     // 技能点
-    _ability: 0,        // 战斗力
     _vip: 0,            // VIP等级
     _cash: 0,           // 付费
     _rank: 0,
     _maxTournamentCount: 0,
     _tournamentCount: 0,
 
+    _maxLv: 0,          // 最大等级
+    _maxPower: 0,       // 最大体力
+    _maxGold: 0,
+    _maxMoney: 0,
+    _maxSkillPoint: 0,
+    _maxEnergy: 0,
     _maxExp: 0,         // 最大经验
-    _maxPower: PLAYER_MAX_POWER,     // 最大体力
-
-    _playerLabel: null,
 
     init: function (data) {
         cc.log("Player init");
@@ -47,6 +47,9 @@ var Player = Entity.extend({
         MAX_LINE_UP_CARD = 3;
 
         this.on("lvChange", this._lvChangeEvent);
+
+        this._maxLv = outputTables.lv_limit.rows[1].player_lv_limit;
+        this._maxPower = outputTables.resource_limit.rows[1].power_value;
 
         this.update(data);
 
@@ -79,7 +82,6 @@ var Player = Entity.extend({
         this.set("elixir", data.elixir);
         this.set("fragment", data.fragments);
         this.set("skillPoint", data.skillPoint);
-        this.set("ability", data.ability);
         this.set("energy", data.energy);
         this.set("vip", data.vip);
         this.set("cash", data.cash);
@@ -127,6 +129,18 @@ var Player = Entity.extend({
         }
     },
 
+    getAbility: function () {
+        var lineUpCardList = gameData.lineUp.getLineUpCardList();
+        var len = lineUpCardList.length;
+        var ability = gameData.spirit.get("ability");
+
+        for (var i = 0; i < len; ++i) {
+            ability += lineUpCardList[i].get("ability");
+        }
+
+        return ability;
+    },
+
     sendMessage: function (cb, playerId, msg) {
         cc.log("Player sendMessage: " + playerId + " " + msg);
 
@@ -144,11 +158,13 @@ var Player = Entity.extend({
                 cb("success");
             } else {
                 cc.log("sendMessage fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },
 
-    learn: function (cb, playerId) {
+    fight: function (cb, playerId) {
         cc.log("Player learn: " + playerId);
 
         var that = this;
@@ -168,16 +184,18 @@ var Player = Entity.extend({
                 cb(battleLogId);
             } else {
                 cc.log("learn fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },
 
     playerDetail: function (cb, playerId) {
-        cc.log("Player playerDetail: " + palyerId);
+        cc.log("Player playerDetail: " + playerId);
 
         var that = this;
-        lzWindow.pomelo.request("area.topHandler.getActiveCards", {
-            id: playerId
+        lzWindow.pomelo.request("area.playerHandler.getLineUpInfo", {
+            playerId: playerId
         }, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
@@ -190,6 +208,8 @@ var Player = Entity.extend({
                 cb(msg);
             } else {
                 cc.log("playerDetail fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     }

@@ -19,7 +19,9 @@ var SERVER_HOST = "124.238.236.33";
 var SERVER_PORT = 3010;
 var connectSuccess = false;
 
-var linkSever = function () {
+var linkSever = function (cb) {
+    _isUnknow = true;
+
     lzWindow.pomelo.init({
         host: SERVER_HOST,
         port: SERVER_PORT,
@@ -29,21 +31,37 @@ var linkSever = function () {
     }, function () {
         cc.log("connect success!");
 
-        if (connectSuccess) {
-
-        }
-
         connectSuccess = true;
+
+        if (cb) {
+            cb();
+        }
 
         lzWindow.pomelo.on("close", function (data) {
             cc.log("***** on close:");
             cc.log(data);
+
+            connectSuccess = false;
+
+            var cb = null;
+            if (_isUnknow) {
+                TipLayer.tip("游戏与服务器断开链接，正在尝试重连");
+
+                cb = function () {
+                    gameData.user.login();
+                }
+            }
+
+            lzWindow.pomelo.off();
+
+            linkSever(cb);
         });
 
         lzWindow.pomelo.on("onKick", function (data) {
             cc.log("***** on kick:");
             cc.log(data);
-            connectSuccess = false;
+
+            _isUnknow = false;
 
             LogoutLayer.pop("异地登录");
         });

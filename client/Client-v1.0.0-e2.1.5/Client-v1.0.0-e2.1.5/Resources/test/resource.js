@@ -543,6 +543,7 @@ var main_scene_image = {
     PoWuZhan_Light: effect_scene_path + "PoWuZhan_Light.png",
     Chen_1: effect_scene_path + "Chen_1.png",
     Bing_Di: effect_scene_path + "Bing_Di.png",
+    tiaoshi: effect_scene_path + "tiaoshi.jpg",
 
 
     texiao6: ccb_scene_path + "texiao6.ccbi",
@@ -553,6 +554,8 @@ var main_scene_image = {
     texiao5: ccb_scene_path + "texiao5.ccbi",
     texiao7: ccb_scene_path + "texiao7.ccbi",
     texiao8: ccb_scene_path + "texiao8.ccbi",
+    texiao9: ccb_scene_path + "texiao9.ccbi",
+    ceshi.ccbi: ccb_scene_path + "ceshi.ccbi.ccbi",
     tutorials1: ccb_scene_path + "tutorials1.ccbi",
     tutorials2: ccb_scene_path + "tutorials2.ccbi",
     tutorials3: ccb_scene_path + "tutorials3.ccbi",

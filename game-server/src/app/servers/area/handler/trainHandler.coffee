@@ -250,7 +250,7 @@ Handler::starUpgrade = (msg, session, next) ->
       if card.star is 5
         return cb({code: 501, msg: "卡牌星级已经是最高级了"})
 
-      if card.lv isnt cardConfig.MAX_LEVEL[card.star]
+      if card.lv isnt table.getTableItem('card_lv_limit', card.star).max_lv
         return cb({code: 501, msg: "未达到进阶等级"})
 
       starUpgradeConfig = table.getTableItem('star_upgrade', card.star)

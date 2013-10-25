@@ -238,7 +238,8 @@ describe("Area Server", function() {
                             code: 200,
                             msg: {
                                 rankingRewards: [500, 100, 50, 10]
-                            }
+                            },
+                            elixir: 5000
                         });
                     });
 
@@ -250,7 +251,8 @@ describe("Area Server", function() {
                             code: 200,
                             msg: {
                                 rankingRewards: [500, 100, 50]
-                            }
+                            },
+                            elixir: 3000
                         });
                     });
 
@@ -262,7 +264,8 @@ describe("Area Server", function() {
                             code: 200,
                             msg: {
                                 rankingRewards: [500, 100]
-                            }
+                            },
+                            elixir: 2500
                         });
                     });
 
@@ -288,7 +291,8 @@ describe("Area Server", function() {
                             code: 200,
                             msg: {
                                 rankingRewards: []
-                            }
+                            },
+                            elixir: 1000
                         });
                     });
 

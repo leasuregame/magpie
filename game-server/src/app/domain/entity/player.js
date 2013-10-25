@@ -25,13 +25,17 @@ var logger = require('pomelo-logger').getLogger(__filename);
 var Card = require('./card');
 var util = require('util');
 var achieve = require('../achievement');
-var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL;
 var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
 var EXP_CARD_ID = require('../../../config/data/card').EXP_CARD_ID;
 
+var cardLvs = table.getTable('card_lv_limit');
 var resData = table.getTableItem('resource_limit', 1);
 var MAX_POWER_VALUE = resData.power_value;
 var MAX_CARD_COUNT = resData.card_count_limit;
+
+var lvLimit = table.getTableItem('lv_limit', 1);
+var MAX_SPIRITOR_LV = lvLimit.spirit_lv_limit;
+var MAX_SPIRITPOOL_LV = lvLimit.spirit_pool_lv_limit;
 
 var defaultMark = function() {
     var i, result = [];
@@ -451,7 +455,7 @@ var Player = (function(_super) {
         var total_spirit = spiritor.spirit;
         var spiritorData = table.getTableItem('spirit', spiritor.lv);
 
-        while ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < playerConfig.MAX_SPIRITOR_LV) {
+        while ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < MAX_SPIRITOR_LV) {
             spiritor.lv += 1;
             total_spirit -= spiritorData.spirit_need;
             spiritorData = table.getTableItem('spirit', spiritor.lv);
@@ -465,7 +469,7 @@ var Player = (function(_super) {
         var total_exp = sp.exp + exp;
         var spData = table.getTableItem('spirit_pool', sp.lv);
 
-        while ( !! spData && total_exp >= spData.exp_need && sp.lv < playerConfig.MAX_SPIRITPOOL_LV) {
+        while ( !! spData && total_exp >= spData.exp_need && sp.lv < MAX_SPIRITPOOL_LV) {
             sp.lv += 1;
             total_exp -= spData.exp_need;
             spData = table.getTableItem('spirit_pool', sp.lv);
@@ -716,7 +720,7 @@ var Player = (function(_super) {
         targetCard.upgrade(upgraded_lv, exp_remain);
 
         // 第一张满级五星卡
-        if (targetCard.star == 5 && targetCard.lv == MAX_LEVEL[5]) {
+        if (targetCard.star == 5 && targetCard.lv == cardLvs.getItem(5).max_lv) {
             achieve.star5cardFullLevel(this);
         }
 

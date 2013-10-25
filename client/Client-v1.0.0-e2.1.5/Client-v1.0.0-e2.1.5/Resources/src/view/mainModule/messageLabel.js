@@ -12,13 +12,10 @@
  * */
 
 
-var MessageLabel = cc.Node.extend({
-    onEnter: function () {
-        cc.log("MessageLabel onEnter");
+var MESSAGE_MOVE_TIME = 15;
 
-        this._super();
-        this.update();
-    },
+var MessageLabel = cc.Node.extend({
+    _messageLabel: null,
 
     init: function () {
         cc.log("MessageLabel init");
@@ -29,29 +26,41 @@ var MessageLabel = cc.Node.extend({
         bgSprite.setAnchorPoint(cc.p(0, 0));
         this.addChild(bgSprite, -1);
 
-        this._messageLabel = cc.LabelTTF.create("系统消息：", "STHeitiTC-Medium", 20);
-        this._messageLabel.setColor(cc.c3b(255, 239, 131));
-        this._messageLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._messageLabel.setPosition(cc.p(20, 18));
-        this.addChild(this._messageLabel);
+        this.retain();
 
         return true;
     },
 
-    update: function () {
+    push: function (msg) {
         cc.log("MessageLabel update");
 
-        this._messageLabel.setString("系统消息：xxxxxxxxxxxxxxxxxxxxxxx");
+        if (this.isRunning()) {
+            if (this._messageLabel) {
+                this._messageLabel.removeFromParent();
+            }
+
+            this._messageLabel = cc.LabelTTF.create(msg, "STHeitiTC-Medium", 20);
+            this._messageLabel.setColor(cc.c3b(255, 239, 131));
+            this._messageLabel.setAnchorPoint(cc.p(0, 0.5));
+            this._messageLabel.setPosition(cc.p(640, 18));
+            this.addChild(this._messageLabel);
+
+            var x = 640 + this._messageLabel.getContentSize().width;
+
+            this._messageLabel.runAction(
+                cc.MoveBy.create(MESSAGE_MOVE_TIME, cc.p(-x, 0))
+            );
+        }
+    },
+
+    onExit: function () {
+        this.release();
+        this._super();
     }
-})
+});
 
 
-MessageLabel.create = function () {
-    var ret = new MessageLabel();
-
-    if (ret && ret.init()) {
-        return ret;
-    }
-
-    return null;
-}
+/*
+ * 单例
+ * */
+MessageLabel.getInstance = singleton(MessageLabel);

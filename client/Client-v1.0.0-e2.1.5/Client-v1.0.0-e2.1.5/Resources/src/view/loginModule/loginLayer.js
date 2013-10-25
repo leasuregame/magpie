@@ -63,11 +63,16 @@ var LoginLayer = cc.Layer.extend({
         this.menu.setPosition(cc.p(0, 0));
         this.addChild(this.menu);
 
-        this.schedule(function () {
-            this.loginButton.setEnabled(connectSuccess);
-        }, 0.5);
+        this.schedule(this._changeLoginEnabled, 0.5);
 
         return true
+    },
+
+    _changeLoginEnabled: function () {
+        if (connectSuccess) {
+            this.unschedule(this._changeLoginEnabled);
+            this.loginButton.setEnabled(true);
+        }
     },
 
     _onClickLogin: function () {
@@ -83,10 +88,16 @@ var LoginLayer = cc.Layer.extend({
         user.set("account", this._accountEditBox.getText());
         user.set("password", this._passwordEditBox.getText());
 
-        user.login(function (data) {
-            cc.log(data);
+        var that = this;
+        user.login(function (success) {
+            cc.log(success);
 
-            cc.Director.getInstance().replaceScene(MainScene.getInstance());
+            if (success) {
+                cc.Director.getInstance().replaceScene(MainScene.getInstance());
+            } else {
+                that.loginButton.setEnabled(true);
+            }
+
 //            cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, MainScene.getInstance(), true));
         });
     },

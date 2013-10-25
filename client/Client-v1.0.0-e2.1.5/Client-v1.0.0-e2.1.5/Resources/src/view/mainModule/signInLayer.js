@@ -231,22 +231,15 @@ var SignInLayer = LazyLayer.extend({
         this._remedySignInItem.setEnabled(signIn.canRemedySignIn(this._index));
 
         var monthMark = signIn.getMonthMark(this._index);
-        var rewardCount = [5, 10, 18, 25, monthMark.days];
-        var len = rewardCount.length;
         var count = monthMark.count;
-        var isThisMonth = (this._index == 0);
 
         this._signInCountLabel.setString(count);
 
-        for (var i = 0; i < len; ++i) {
-            if (count < rewardCount[i]) {
-                break;
-            }
+        for (var i = 0; i < 5; ++i) {
+            var visible = signIn.canReceive(this._index, i);
 
-            if (!isThisMonth || !signIn.canReceive(i)) {
-                this._elementList[i].rewardIcon.setVisible(false);
-                this._elementList[i].alreadyRewardLabel.setVisible(true);
-            }
+            this._elementList[i].rewardIcon.setVisible(visible);
+            this._elementList[i].alreadyRewardLabel.setVisible(!visible);
         }
     },
 

@@ -18,7 +18,7 @@ var MainBgLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        var messagesLabel = MessageLabel.create();
+        var messagesLabel = MessageLabel.getInstance();
         messagesLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 1014));
         this.addChild(messagesLabel);
 

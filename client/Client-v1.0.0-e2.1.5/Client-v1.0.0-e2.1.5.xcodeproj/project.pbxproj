@@ -21,8 +21,6 @@
 		90D49C3417CAF81800A22DB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D49C3317CAF81800A22DB2 /* UIKit.framework */; };
 		90D49C3617CAF81800A22DB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D49C3517CAF81800A22DB2 /* Foundation.framework */; };
 		90D49C3817CAF81800A22DB2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D49C3717CAF81800A22DB2 /* CoreGraphics.framework */; };
-		90D49C3C17CAF81800A22DB2 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D49C3B17CAF81800A22DB2 /* CloseNormal.png */; };
-		90D49C3E17CAF81800A22DB2 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D49C3D17CAF81800A22DB2 /* CloseSelected.png */; };
 		90D49C4017CAF81800A22DB2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D49C3F17CAF81800A22DB2 /* Default.png */; };
 		90D49C4217CAF81800A22DB2 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D49C4117CAF81800A22DB2 /* HelloWorld.png */; };
 		90D49C4417CAF81800A22DB2 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D49C4317CAF81800A22DB2 /* Icon-72.png */; };
@@ -328,39 +326,6 @@
 		90D4A07B17CAF82600A22DB2 /* spine-cocos2dx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90D4A07A17CAF82600A22DB2 /* spine-cocos2dx.cpp */; };
 		90D4A08417CAF82600A22DB2 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D4A08317CAF82600A22DB2 /* libwebsockets.a */; };
 		90D4A08A17CAF82600A22DB2 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90D4A08917CAF82600A22DB2 /* AppDelegate.cpp */; };
-		90D4A08D17CAF82600A22DB2 /* Abadi40-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A08C17CAF82600A22DB2 /* Abadi40-hd.fnt */; };
-		90D4A08F17CAF82600A22DB2 /* Abadi40-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A08E17CAF82600A22DB2 /* Abadi40-hd.png */; };
-		90D4A09117CAF82600A22DB2 /* Abadi40-ipad.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A09017CAF82600A22DB2 /* Abadi40-ipad.fnt */; };
-		90D4A09317CAF82600A22DB2 /* Abadi40-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A09217CAF82600A22DB2 /* Abadi40-ipad.png */; };
-		90D4A09517CAF82600A22DB2 /* Abadi40.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A09417CAF82600A22DB2 /* Abadi40.fnt */; };
-		90D4A09717CAF82600A22DB2 /* Abadi40.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A09617CAF82600A22DB2 /* Abadi40.png */; };
-		90D4A09917CAF82600A22DB2 /* About.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A09817CAF82600A22DB2 /* About.ccbi */; };
-		90D4A09B17CAF82600A22DB2 /* coins-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A09A17CAF82600A22DB2 /* coins-hd.plist */; };
-		90D4A09D17CAF82600A22DB2 /* coins-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A09C17CAF82600A22DB2 /* coins-hd.png */; };
-		90D4A09F17CAF82600A22DB2 /* coins.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A09E17CAF82600A22DB2 /* coins.plist */; };
-		90D4A0A117CAF82600A22DB2 /* coins.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0A017CAF82600A22DB2 /* coins.png */; };
-		90D4A0A317CAF82600A22DB2 /* Gas40-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0A217CAF82600A22DB2 /* Gas40-hd.fnt */; };
-		90D4A0A517CAF82600A22DB2 /* Gas40-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0A417CAF82600A22DB2 /* Gas40-hd.png */; };
-		90D4A0A717CAF82600A22DB2 /* Gas40-ipad.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0A617CAF82600A22DB2 /* Gas40-ipad.fnt */; };
-		90D4A0A917CAF82600A22DB2 /* Gas40-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0A817CAF82600A22DB2 /* Gas40-ipad.png */; };
-		90D4A0AB17CAF82600A22DB2 /* Gas40.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0AA17CAF82600A22DB2 /* Gas40.fnt */; };
-		90D4A0AD17CAF82600A22DB2 /* Gas40.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0AC17CAF82600A22DB2 /* Gas40.png */; };
-		90D4A0AF17CAF82600A22DB2 /* HUD.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0AE17CAF82600A22DB2 /* HUD.ccbi */; };
-		90D4A0B117CAF82600A22DB2 /* konqa32-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0B017CAF82600A22DB2 /* konqa32-hd.fnt */; };
-		90D4A0B317CAF82600A22DB2 /* konqa32-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0B217CAF82600A22DB2 /* konqa32-hd.png */; };
-		90D4A0B517CAF82600A22DB2 /* konqa32-ipad.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0B417CAF82600A22DB2 /* konqa32-ipad.fnt */; };
-		90D4A0B717CAF82600A22DB2 /* konqa32-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0B617CAF82600A22DB2 /* konqa32-ipad.png */; };
-		90D4A0B917CAF82600A22DB2 /* konqa32.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0B817CAF82600A22DB2 /* konqa32.fnt */; };
-		90D4A0BB17CAF82600A22DB2 /* konqa32.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0BA17CAF82600A22DB2 /* konqa32.png */; };
-		90D4A0BD17CAF82600A22DB2 /* labels-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0BC17CAF82600A22DB2 /* labels-hd.plist */; };
-		90D4A0BF17CAF82600A22DB2 /* labels-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0BE17CAF82600A22DB2 /* labels-hd.png */; };
-		90D4A0C117CAF82600A22DB2 /* labels-ipad.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0C017CAF82600A22DB2 /* labels-ipad.plist */; };
-		90D4A0C317CAF82600A22DB2 /* labels-ipad.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0C217CAF82600A22DB2 /* labels-ipad.pvr.gz */; };
-		90D4A0C517CAF82600A22DB2 /* labels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0C417CAF82600A22DB2 /* labels.plist */; };
-		90D4A0C717CAF82600A22DB2 /* labels.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0C617CAF82600A22DB2 /* labels.png */; };
-		90D4A0C917CAF82600A22DB2 /* MainMenu.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0C817CAF82600A22DB2 /* MainMenu.ccbi */; };
-		90D4A0CB17CAF82600A22DB2 /* stars2.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0CA17CAF82600A22DB2 /* stars2.png */; };
-		90D4A0CD17CAF82600A22DB2 /* watermelon.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0CC17CAF82600A22DB2 /* watermelon.png */; };
 		90D4A0CF17CAF82600A22DB2 /* hello.js in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0CE17CAF82600A22DB2 /* hello.js */; };
 /* End PBXBuildFile section */
 
@@ -2681,8 +2646,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				906E946A17CDAD5D0038DF64 /* main_binding.js in Resources */,
-				90D49C3C17CAF81800A22DB2 /* CloseNormal.png in Resources */,
-				90D49C3E17CAF81800A22DB2 /* CloseSelected.png in Resources */,
 				90D49C4017CAF81800A22DB2 /* Default.png in Resources */,
 				90D49C4217CAF81800A22DB2 /* HelloWorld.png in Resources */,
 				90D49C4417CAF81800A22DB2 /* Icon-72.png in Resources */,
@@ -2715,39 +2678,6 @@
 				90D49EC917CAF82100A22DB2 /* obfuscate_exclude_chipmunk.js in Resources */,
 				90D49ECB17CAF82100A22DB2 /* obfuscate_exclude_cocos2d.js in Resources */,
 				90D49EE917CAF82100A22DB2 /* js.msg in Resources */,
-				90D4A08D17CAF82600A22DB2 /* Abadi40-hd.fnt in Resources */,
-				90D4A08F17CAF82600A22DB2 /* Abadi40-hd.png in Resources */,
-				90D4A09117CAF82600A22DB2 /* Abadi40-ipad.fnt in Resources */,
-				90D4A09317CAF82600A22DB2 /* Abadi40-ipad.png in Resources */,
-				90D4A09517CAF82600A22DB2 /* Abadi40.fnt in Resources */,
-				90D4A09717CAF82600A22DB2 /* Abadi40.png in Resources */,
-				90D4A09917CAF82600A22DB2 /* About.ccbi in Resources */,
-				90D4A09B17CAF82600A22DB2 /* coins-hd.plist in Resources */,
-				90D4A09D17CAF82600A22DB2 /* coins-hd.png in Resources */,
-				90D4A09F17CAF82600A22DB2 /* coins.plist in Resources */,
-				90D4A0A117CAF82600A22DB2 /* coins.png in Resources */,
-				90D4A0A317CAF82600A22DB2 /* Gas40-hd.fnt in Resources */,
-				90D4A0A517CAF82600A22DB2 /* Gas40-hd.png in Resources */,
-				90D4A0A717CAF82600A22DB2 /* Gas40-ipad.fnt in Resources */,
-				90D4A0A917CAF82600A22DB2 /* Gas40-ipad.png in Resources */,
-				90D4A0AB17CAF82600A22DB2 /* Gas40.fnt in Resources */,
-				90D4A0AD17CAF82600A22DB2 /* Gas40.png in Resources */,
-				90D4A0AF17CAF82600A22DB2 /* HUD.ccbi in Resources */,
-				90D4A0B117CAF82600A22DB2 /* konqa32-hd.fnt in Resources */,
-				90D4A0B317CAF82600A22DB2 /* konqa32-hd.png in Resources */,
-				90D4A0B517CAF82600A22DB2 /* konqa32-ipad.fnt in Resources */,
-				90D4A0B717CAF82600A22DB2 /* konqa32-ipad.png in Resources */,
-				90D4A0B917CAF82600A22DB2 /* konqa32.fnt in Resources */,
-				90D4A0BB17CAF82600A22DB2 /* konqa32.png in Resources */,
-				90D4A0BD17CAF82600A22DB2 /* labels-hd.plist in Resources */,
-				90D4A0BF17CAF82600A22DB2 /* labels-hd.png in Resources */,
-				90D4A0C117CAF82600A22DB2 /* labels-ipad.plist in Resources */,
-				90D4A0C317CAF82600A22DB2 /* labels-ipad.pvr.gz in Resources */,
-				90D4A0C517CAF82600A22DB2 /* labels.plist in Resources */,
-				90D4A0C717CAF82600A22DB2 /* labels.png in Resources */,
-				90D4A0C917CAF82600A22DB2 /* MainMenu.ccbi in Resources */,
-				90D4A0CB17CAF82600A22DB2 /* stars2.png in Resources */,
-				90D4A0CD17CAF82600A22DB2 /* watermelon.png in Resources */,
 				90D4A0CF17CAF82600A22DB2 /* hello.js in Resources */,
 				906E946217CDAD090038DF64 /* res in Resources */,
 				906E946317CDAD090038DF64 /* src in Resources */,

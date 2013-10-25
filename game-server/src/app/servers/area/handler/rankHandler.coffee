@@ -73,7 +73,8 @@ Handler::rankingList = (msg, session, next) ->
     r = player.getRank()
     rank = {
       ranking: r.ranking,
-      rankReward: r.rankReward,
+      canGetReward: r.canGetReward,
+      notCanGetReward: r.notCanGetReward,
       challengeCount: player.dailyGift. c,
       rankList: players,
       time: Date.now()  - start
@@ -153,8 +154,7 @@ Handler::getRankingReward = (msg, session, next) ->
     player.save()
     next(null, {
       code: 200, 
-      msg: rankingRewards: player.rank?.rankingRewards()
-      elixir: rewardData.elixir
+      msg: elixir: rewardData.elixir
     })
 
 isV587 = (bl) ->

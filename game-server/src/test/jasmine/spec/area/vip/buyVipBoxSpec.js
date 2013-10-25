@@ -84,11 +84,14 @@ describe("Area Server", function() {
 
 				describe("当玩家可以购买vip礼包时", function() {
 					beforeAll(function(){
-						doAjax('/update/player/' + 100, {vip: 12}, function(){});
+						doAjax('/update/player/' + 1, {
+							vip: 12,
+							energy: 0
+						}, function(){});
 					});
 
 					beforeEach(function() {
-						loginWith('arthur', '1', 1);
+						loginWith('1', '1', 1);
 					});
 
 					var vipBoxInfo = {
@@ -111,7 +114,8 @@ describe("Area Server", function() {
 							request('area.vipHandler.buyVipBox', {
 								boxId: id
 							}, function(data) {
-								expect(data.boxInfo).toEqual(vipBoxInfo[id].bonxInfo);
+								console.log(data);
+								expect(data).toEqual({});
 							});
 						});
 					};

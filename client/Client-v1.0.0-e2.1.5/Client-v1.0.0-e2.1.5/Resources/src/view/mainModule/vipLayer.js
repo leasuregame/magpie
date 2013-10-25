@@ -131,10 +131,10 @@ var VipLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
-        var scrollViewHeight = len * 176 + 20;
+        var scrollViewHeight = len * 180;
 
         for (var i = 0; i < len; ++i) {
-            var y = scrollViewHeight - 176 - i * 176;
+            var y = scrollViewHeight - 170 - i * 180;
 
             var vipBox = vipBoxList[i];
 
@@ -223,8 +223,8 @@ var VipLayer = cc.Layer.extend({
             scrollViewLayer.addChild(specialOfferLabel);
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(640, 711), scrollViewLayer);
-        this._scrollView.setPosition(GAME_BG_POINT);
+        this._scrollView = cc.ScrollView.create(cc.size(640, 680), scrollViewLayer);
+        this._scrollView.setPosition(cc.p(40, 210));
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);

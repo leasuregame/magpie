@@ -2,9 +2,9 @@ playerManager = require '../../../manager/playerManager'
 table = require '../../../manager/table'
 utility = require '../../../common/utility'
 spiritConfig = require '../../../../config/data/spirit'
-playerConfig = require '../../../../config/data/player'
 _ = require 'underscore'
-SPIRITOR_PER_LV = require('../../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
+SPIRITOR_PER_LV = require('../../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv
+MAX_SPIRITOR_LV = table.getTableItem('lv_limit', 1).spirit_lv_limit
 
 module.exports = (app) ->
   new Handler(app)
@@ -56,7 +56,7 @@ Handler::spiritorUpgrade = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    if player.spiritor.lv >= playerConfig.MAX_SPIRITOR_LV
+    if player.spiritor.lv >= MAX_SPIRITOR_LV
       return next(null, {code: 501, msg: '元神等级已经是最高级别别'})
 
     if not player.canUpgradeSpiritor()

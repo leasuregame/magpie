@@ -6,6 +6,8 @@ utility = require '../common/utility'
 async = require 'async'
 _ = require 'underscore'
 
+MAX_PLAYER_LV = table.getTableItem('lv_limit', 1).player_lv_limit
+
 module.exports = 
   createCard: (data, done) ->
     unless data.star
@@ -29,7 +31,7 @@ module.exports =
 
     isUpgrade = false
     rewards = money: 0, energy: 0, skillPoint: 0, elixir: 0
-    while(player.exp >= upgradeInfo.exp and player.lv < playerConfig.MAX_PLAYER_LV)
+    while(player.exp >= upgradeInfo.exp and player.lv < MAX_PLAYER_LV)
       isUpgrade = true
       player.increase 'lv'
       player.elixirPerLv = {}

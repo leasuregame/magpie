@@ -19,7 +19,7 @@ var elixirConfig = table.getTableItem('elixir', 1);
 var cardConfig = require('../../../config/data/card');
 var _ = require("underscore");
 var psConfig = require('../../../config/data/passSkill');
-var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL
+var cardLvs = table.getTable('card_lv_limit');
 var GROUP_EFFECT_ATK = 1
 var GROUP_EFFECT_HP = 2
 
@@ -332,9 +332,9 @@ var Card = (function(_super) {
                 break;
             }
         }
-
-        if ((this.lv + upgraded_lv) >= MAX_LEVEL[this.star]) {
-            upgraded_lv = MAX_LEVEL[this.star] - this.lv;
+        var max_lv = cardLvs.getItem(this.star).max_lv;
+        if ((this.lv + upgraded_lv) >= max_lv) {
+            upgraded_lv = max_lv - this.lv;
             exp = 0;
         }
 
@@ -342,7 +342,7 @@ var Card = (function(_super) {
     };
 
     Card.prototype.upgrade = function(lv, exp) {
-        if (this.lv == MAX_LEVEL[this.star]) {
+        if (this.lv >= cardLvs.getItem(this.star).max_lv) {
             return;
         }
         this.increase('lv', lv);

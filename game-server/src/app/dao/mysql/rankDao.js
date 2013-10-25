@@ -23,6 +23,22 @@ var RankDao = (function (_super) {
         }, cb);
     };
 
+    RankDao.getRankingsByPids = function(pids,cb) {
+
+        this.fetchMany({
+            where: " playerId in (" + pids.toString() + ")",
+            fields: ['ranking']
+        },cb)
+
+    };
+
+    RankDao.getPidsByRankings = function(rankings, cb) {
+        this.fetchMany({
+            where: " ranking in (" + rankings.toString() + ")",
+            fields: ['playerId','ranking']
+        },cb)
+    }
+
     RankDao.select = RankDao.fetchMany;
 
     return RankDao;

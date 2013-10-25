@@ -63,22 +63,24 @@ class Manager
   @rankingList: (rankings, cb) ->
     async.waterfall [
       (callback) ->
-        dao.rank.fetchMany {
-          where: " ranking in (#{rankings.toString()}) "
-        }, callback
+        dao.rank.getPidsByRankings rankings,callback
 
       (ranks, callback) ->
         _ids = ranks.map (r)-> r.playerId
-        console.log('player ids = ',_ids)
-        dao.player.getPlayerDetails _ids, (err, results) ->
+        dao.player.getLineUpInfoByIds _ids, (err, results) ->
           callback(err, results, ranks)
           
     ], (err, players, ranks) ->
       if err isnt null
         return cb(err, null)
 
-      addRankInfo(players, ranks)
-      cb(null, players)
+      results = {}
+
+      results[r.playerId] = r.ranking for r in ranks
+
+      #addRankInfo(players, ranks)
+
+      cb(null, players, results)
 
   @addExpCardFor: (player, qty, cb) ->
     async.times(

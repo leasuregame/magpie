@@ -149,7 +149,7 @@ var VipLayer = cc.Layer.extend({
                 this._onClickVipBoxDetails(vipBox),
                 this
             );
-            vipBoxDetailsItem.setScale(0.6, 0.6);
+            vipBoxDetailsItem.setScale(0.6);
             vipBoxDetailsItem.setPosition(cc.p(95, y + 82));
             menu.addChild(vipBoxDetailsItem);
 
@@ -160,7 +160,7 @@ var VipLayer = cc.Layer.extend({
                 this._onClickBuy(vipBox.id),
                 this
             );
-            buyItem.setPosition(cc.p(540, y + 40));
+            buyItem.setPosition(cc.p(525, y + 45));
             menu.addChild(buyItem);
 
             var vipLabel = cc.Sprite.create(main_scene_image["vip" + vipBox.id]);
@@ -175,54 +175,51 @@ var VipLayer = cc.Layer.extend({
 
             var cost = vipBox.price * 10;
 
-            var descriptionLabel1 = cc.LabelTTF.create(
-                "VIP" + vipBox.id + "尊享礼包，原价" + cost + "魔石，只能购买一次",
+            var descriptionLabel = cc.LabelTTF.create(
+                "只能购买一次，点击图表可预览礼包内容。",
                 "STHeitiTC-Medium",
-                20
+                18
             );
-            descriptionLabel1.setAnchorPoint(cc.p(0, 0.5));
-            descriptionLabel1.setColor(cc.c3b(74, 27, 27));
-            descriptionLabel1.setPosition(cc.p(170, y + 105));
-            scrollViewLayer.addChild(descriptionLabel1);
+            descriptionLabel.setAnchorPoint(cc.p(0, 0.5));
+            descriptionLabel.setColor(cc.c3b(74, 27, 27));
+            descriptionLabel.setPosition(cc.p(170, y + 105));
+            scrollViewLayer.addChild(descriptionLabel);
 
-            var descriptionLabel2 = cc.LabelTTF.create("点击图表可预览礼包内容。", "STHeitiTC-Medium", 20);
-            descriptionLabel2.setAnchorPoint(cc.p(0, 0.5));
-            descriptionLabel2.setColor(cc.c3b(74, 27, 27));
-            descriptionLabel2.setPosition(cc.p(170, y + 75));
-            scrollViewLayer.addChild(descriptionLabel2);
-
-            var costIcon = cc.LabelTTF.create("原价:", "STHeitiTC-Medium", 20);
+            var costIcon = cc.LabelTTF.create("原价", "STHeitiTC-Medium", 20);
             costIcon.setColor(cc.c3b(74, 27, 27));
             costIcon.setAnchorPoint(cc.p(0, 0.5));
-            costIcon.setPosition(cc.p(170, y + 35));
+            costIcon.setPosition(cc.p(175, y + 70));
             scrollViewLayer.addChild(costIcon);
 
             var costGoldIcon = cc.Sprite.create(main_scene_image.icon148);
-            costGoldIcon.setPosition(cc.p(240, y + 35));
+            costGoldIcon.setScale(0.7);
+            costGoldIcon.setPosition(cc.p(250, y + 70));
             scrollViewLayer.addChild(costGoldIcon);
 
             var costLabel = cc.LabelTTF.create(cost, "STHeitiTC-Medium", 20);
             costLabel.setColor(cc.c3b(74, 27, 27));
             costLabel.setAnchorPoint(cc.p(0, 0.5));
-            costLabel.setPosition(cc.p(263, y + 35));
+            costLabel.setPosition(cc.p(275, y + 67));
             scrollViewLayer.addChild(costLabel);
 
-            var deleteLine = cc.Sprite.create(main_scene_image.icon174);
-            deleteLine.setPosition(cc.p(240, y + 35));
-            scrollViewLayer.addChild(deleteLine);
-
-            var specialOfferIcon = cc.Sprite.create(main_scene_image.icon167);
-            specialOfferIcon.setPosition(cc.p(345, y + 35));
+            var specialOfferIcon = cc.LayerColor.create(cc.c4b(217, 59, 59, 255), 50, 30);
+            specialOfferIcon.setPosition(cc.p(170, y + 20));
             scrollViewLayer.addChild(specialOfferIcon);
 
+            var specialOfferIconLabel = cc.LabelTTF.create("现价", "STHeitiTC-Medium", 20);
+            specialOfferIconLabel.setAnchorPoint(cc.p(0, 0.5));
+            specialOfferIconLabel.setPosition(cc.p(175, y + 35));
+            scrollViewLayer.addChild(specialOfferIconLabel);
+
             var goldIcon = cc.Sprite.create(main_scene_image.icon148);
-            goldIcon.setPosition(cc.p(395, y + 35));
+            goldIcon.setScale(0.7);
+            goldIcon.setPosition(cc.p(250, y + 35));
             scrollViewLayer.addChild(goldIcon);
 
             var specialOfferLabel = cc.LabelTTF.create(vipBox.price, "STHeitiTC-Medium", 20);
             specialOfferLabel.setColor(cc.c3b(74, 27, 27));
             specialOfferLabel.setAnchorPoint(cc.p(0, 0.5));
-            specialOfferLabel.setPosition(cc.p(418, y + 35));
+            specialOfferLabel.setPosition(cc.p(275, y + 32));
             scrollViewLayer.addChild(specialOfferLabel);
         }
 

@@ -33,11 +33,15 @@ Handler = (@app) ->
 Handler::rankingList = (msg, session, next) ->
   playerId = msg.playerId or session.get('playerId')
   start = Date.now()
+  start2 = start
   player = null
   async.waterfall [
     (cb) =>
       playerManager.getPlayerInfo {pid: playerId}, cb
     (res, cb) ->
+      end = Date.now()
+      console.log 'step 1 useTime: ' , (end - start2) / 1000
+      start2 = Date.now()
       player = res
       fdata = table.getTableItem('function_limit', 1)
       if player.lv < fdata.rank
@@ -49,13 +53,18 @@ Handler::rankingList = (msg, session, next) ->
       cb()
 
     (cb)->
+      end = Date.now()
+      console.log 'step 2 useTime: ' , (end - start2) / 1000
+      start2 = Date.now()
       if player.rank.recentChallenger.length > 0
         rankManager.getRankings(player.rank.recentChallenger,cb)
       else
         cb(null,[])
 
     (beatBackRankings, cb) ->
-
+      end = Date.now()
+      console.log 'step 3 useTime: ' , (end - start2) / 1000
+      start2 = Date.now()
       rankings = genRankings(player.rank.ranking)
       for ranking in beatBackRankings
         if ranking < player.rank.ranking
@@ -65,6 +74,9 @@ Handler::rankingList = (msg, session, next) ->
         cb(err, players, ranks, rankings)
 
   ], (err, players, ranks, rankings) ->
+    end = Date.now()
+    console.log 'step 4 useTime: ' , (end - start2) / 1000
+    start2 = Date.now()
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err.message})
 
@@ -79,7 +91,8 @@ Handler::rankingList = (msg, session, next) ->
       rankList: players,
       time: Date.now()  - start
     }
-    end = Date.now()
+    end = Date.now();
+    console.log 'step 5 useTime: ' , (end - start2) / 1000
     console.log '**********get rankingList useTime = ',(end - start) / 1000
     next(null,{code: 200, msg: {rank: rank}})
 

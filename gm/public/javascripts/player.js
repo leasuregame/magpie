@@ -18,7 +18,7 @@ function setPlayer(p,a) {
 };
 
 function setPlayerData() {
-    $("#vip").val(player.vip);
+   // $("#vip").val(player.vip);
     $("#lv").val(player.lv);
     $("#money").val(player.money);
     $("#gold").val(player.gold);
@@ -47,7 +47,7 @@ $(document).ready(function(){
 function updatePlayerData() {
    // console.log(player);
     var data = {};
-    data.vip = parseInt($("#vip").val());
+    //data.vip = parseInt($("#vip").val());
     var lv = parseInt($("#lv").val());
     if(lv < 1 || lv > 100) {
         var msg = {

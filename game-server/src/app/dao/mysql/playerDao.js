@@ -185,7 +185,7 @@ var PlayerDao = (function(_super) {
 
                 });
             var end = Date.now();
-            console.log('get player details time: ', (end - start)/1000);
+            console.log('get player LineUpInfo By Ids time: ', (end - start)/1000);
             return cb(null, players);
         });
     };

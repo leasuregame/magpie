@@ -31,9 +31,10 @@ var PaymentLayer = LazyLayer.extend({
         );
         closeItem.setPosition(cc.p(605, 925));
 
-        var vipPrivilegeItem = cc.MenuItemImage.create(
+        var vipPrivilegeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button38,
             main_scene_image.button38s,
+            main_scene_image.icon164,
             this._onClickVipPrivilege,
             this
         );
@@ -45,10 +46,6 @@ var PaymentLayer = LazyLayer.extend({
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
-
-        var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon164);
-        vipPrivilegeIcon.setPosition(cc.p(530, 840));
-        this.addChild(vipPrivilegeIcon);
 
         var tipLabel = cc.Sprite.create(main_scene_image.icon160);
         tipLabel.setPosition(cc.p(260, 900));
@@ -74,23 +71,20 @@ var PaymentLayer = LazyLayer.extend({
             scrollViewLayer.addChild(bgSprite);
 
             var cashIcon = cc.Sprite.create(main_scene_image.icon173);
-            cashIcon.setPosition(cc.p(30, y + 50));
+            cashIcon.setPosition(cc.p(30, y + 52));
             scrollViewLayer.addChild(cashIcon);
 
             var goldIcon = cc.Sprite.create(main_scene_image.icon148);
-            goldIcon.setPosition(cc.p(150, y + 50));
+            goldIcon.setScale(0.7);
+            goldIcon.setPosition(cc.p(155, y + 52));
             scrollViewLayer.addChild(goldIcon);
 
             var otherGoldIcon = cc.Sprite.create(main_scene_image.icon166);
-            otherGoldIcon.setPosition(cc.p(270, y + 50));
+            otherGoldIcon.setPosition(cc.p(270, y + 53));
             scrollViewLayer.addChild(otherGoldIcon);
 
-            var paymentIcon = cc.Sprite.create(main_scene_image.icon159);
-            paymentIcon.setPosition(cc.p(421, y + 50));
-            scrollViewLayer.addChild(paymentIcon, 1);
-
             var equalIcon = StrokeLabel.create("=", "STHeitiTC-Medium", 40);
-            equalIcon.setPosition(cc.p(125, y + 50));
+            equalIcon.setPosition(cc.p(122, y + 47));
             scrollViewLayer.addChild(equalIcon);
 
             var cashLabel = StrokeLabel.create(paymentTypeList[i].cash, "STHeitiTC-Medium", 28);
@@ -98,16 +92,17 @@ var PaymentLayer = LazyLayer.extend({
             scrollViewLayer.addChild(cashLabel);
 
             var goldLabel = StrokeLabel.create(paymentTypeList[i].cash * 10, "STHeitiTC-Medium", 28);
-            goldLabel.setPosition(cc.p(205, y + 50));
+            goldLabel.setPosition(cc.p(210, y + 50));
             scrollViewLayer.addChild(goldLabel);
 
             var otherGoldLabel = StrokeLabel.create(paymentTypeList[i].gold, "STHeitiTC-Medium", 28);
             otherGoldLabel.setPosition(cc.p(320, y + 50));
             scrollViewLayer.addChild(otherGoldLabel);
 
-            var paymentItem = cc.MenuItemImage.create(
+            var paymentItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button21,
                 main_scene_image.button21s,
+                main_scene_image.icon159,
                 this._onClickPayment(paymentTypeList[i].id),
                 this
             );

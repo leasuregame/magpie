@@ -54,70 +54,90 @@ var PropsLayer = cc.Layer.extend({
         this._moneyLabel.setPosition(cc.p(435, 932));
         this.addChild(this._moneyLabel);
 
-        var paymentItem = cc.MenuItemImage.create(
+        var paymentItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button38,
             main_scene_image.button38s,
+            main_scene_image.icon159,
             this._onClickPayment,
             this
         );
         paymentItem.setPosition(cc.p(600, 934));
 
-        var paymentIcon = cc.Sprite.create(main_scene_image.icon159);
-        paymentIcon.setPosition(cc.p(600, 934));
-        this.addChild(paymentIcon, 1);
-
-        var label = cc.Sprite.create(main_scene_image.icon162);
-        label.setPosition(cc.p(360, 800));
-        this.addChild(label);
-
-        var expCardLabel = cc.Sprite.create(main_scene_image.icon146);
-        expCardLabel.setPosition(cc.p(120, 800));
-        this.addChild(expCardLabel);
-
-        var buyItem = cc.MenuItemImage.create(
-            main_scene_image.button20,
-            main_scene_image.button20s,
-            this._onClickBuy,
-            this
-        );
-        buyItem.setPosition(cc.p(570, 750));
-
-        var buyIcon = cc.Sprite.create(main_scene_image.icon163);
-        buyIcon.setPosition(cc.p(570, 750));
-        this.addChild(buyIcon, 1);
-
-        var menu = cc.Menu.create(paymentItem, buyItem);
+        var menu = cc.Menu.create(paymentItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        var nameLabel = StrokeLabel.create("经验卡", "STHeitiTC-Medium", 25);
-        nameLabel.setColor(cc.c3b(255, 252, 175));
-        nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        nameLabel.setPosition(cc.p(200, 850));
-        this.addChild(nameLabel);
+        var productList = gameData.shop.getProductList();
+        var len = productList.length;
 
-        var descriptionLabel1 = StrokeLabel.create("蕴含大量经验，可快速提升卡牌等级。");
-        descriptionLabel1.setAnchorPoint(cc.p(0, 0.5));
-        descriptionLabel1.setColor(cc.c3b(255, 252, 175));
-        descriptionLabel1.setPosition(cc.p(200, 800));
-        this.addChild(descriptionLabel1);
+        var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 711));
+        var menu = LazyMenu.create();
+        menu.setPosition(cc.p(0, 0));
+        scrollViewLayer.addChild(menu, 1);
 
-        var priceIcon = StrokeLabel.create("价格:");
-        priceIcon.setColor(cc.c3b(255, 252, 175));
-        priceIcon.setAnchorPoint(cc.p(0, 0.5));
-        priceIcon.setPosition(cc.p(200, 750));
-        this.addChild(priceIcon);
+        var scrollViewHeight = len * 180;
 
-        var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
-        moneyIcon.setPosition(cc.p(275, 750));
-        this.addChild(moneyIcon);
+        for (var i = 0; i < len; ++i) {
+            var y = scrollViewHeight - 170 - i * 180;
 
-        var priceLabel = StrokeLabel.create("5000");
-        priceLabel.setColor(cc.c3b(255, 252, 175));
-        priceLabel.setAnchorPoint(cc.p(0, 0.5));
-        priceLabel.setPosition(cc.p(305, 750));
-        this.addChild(priceLabel);
+            var product = productList[i];
 
+            var bgSprite = cc.Sprite.create(main_scene_image.icon162);
+            bgSprite.setAnchorPoint(cc.p(0, 0));
+            bgSprite.setPosition(cc.p(17, y));
+            scrollViewLayer.addChild(bgSprite);
+
+            var productSprite = cc.Sprite.create(main_scene_image[rewardGoodsUrl[product.obtain_type]]);
+            productSprite.setPosition(cc.p(95, y + 82));
+            scrollViewLayer.addChild(productSprite);
+
+            var buyItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button9,
+                main_scene_image.button9s,
+                main_scene_image.icon163,
+                this._onClickBuy(product.id),
+                this
+            );
+            buyItem.setPosition(cc.p(525, y + 45));
+            menu.addChild(buyItem);
+
+            var titleLabel = cc.LabelTTF.create(product.name, "STHeitiTC-Medium", 22);
+            titleLabel.setColor(cc.c3b(74, 27, 27));
+            titleLabel.setAnchorPoint(cc.p(0, 0.5));
+            titleLabel.setPosition(cc.p(170, y + 125));
+            scrollViewLayer.addChild(titleLabel);
+
+            var descriptionLabel = cc.LabelTTF.create(product.disc, "STHeitiTC-Medium", 18);
+            descriptionLabel.setAnchorPoint(cc.p(0, 0.5));
+            descriptionLabel.setColor(cc.c3b(74, 27, 27));
+            descriptionLabel.setPosition(cc.p(170, y + 85));
+            scrollViewLayer.addChild(descriptionLabel);
+
+            var costIcon = cc.LabelTTF.create("价格:", "STHeitiTC-Medium", 20);
+            costIcon.setColor(cc.c3b(74, 27, 27));
+            costIcon.setAnchorPoint(cc.p(0, 0.5));
+            costIcon.setPosition(cc.p(170, y + 45));
+            scrollViewLayer.addChild(costIcon);
+
+            var costTypeIcon = cc.Sprite.create(main_scene_image[gameGoodsIcon[product.consume_type]]);
+            costTypeIcon.setPosition(cc.p(245, y + 45));
+            scrollViewLayer.addChild(costTypeIcon);
+
+            var costLabel = cc.LabelTTF.create(product.consume, "STHeitiTC-Medium", 20);
+            costLabel.setColor(cc.c3b(74, 27, 27));
+            costLabel.setAnchorPoint(cc.p(0, 0.5));
+            costLabel.setPosition(cc.p(275, y + 42));
+            scrollViewLayer.addChild(costLabel);
+        }
+
+        this._scrollView = cc.ScrollView.create(cc.size(640, 680), scrollViewLayer);
+        this._scrollView.setPosition(cc.p(40, 210));
+        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        this._scrollView.updateInset();
+        this.addChild(this._scrollView);
+
+        this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
+        this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
 
         return true;
     },
@@ -137,37 +157,40 @@ var PropsLayer = cc.Layer.extend({
         PaymentLayer.pop();
     },
 
-    _onClickBuy: function () {
-        cc.log("PropsLayer _onClickBuy");
+    _onClickBuy: function (id) {
+        return function () {
+            cc.log("PropsLayer _onClickBuy");
 
-        var that = this;
-        AmountLayer.pop(
-            function (count) {
-                that._buyExpCard(count);
-            },
-            "购买经验卡",
-            1,
-            Math.floor(gameData.player.get("money") / 5000)
-        );
+            var product = gameData.shop.getProduct(id);
+
+            cc.log(product);
+
+            if(product.count <= 0) {
+                TipLayer.tip(product.tip);
+                return;
+            }
+
+            var that = this;
+            AmountLayer.pop(
+                function (count) {
+                    that._buyProduct(id, count);
+                },
+                product
+            );
+        }
     },
 
-    _buyExpCard: function (count) {
+    _buyProduct: function (id, count) {
         cc.log("PropsLayer _onClickOk");
 
         if (count > 0) {
             var that = this;
-            gameData.shop.buyExpCard(function () {
+            gameData.shop.buyProduct(function (data) {
                 that.update();
-            }, count);
+
+                lz.tipReward(data);
+            }, id, count);
         }
-    },
-
-    _buyMoney: function() {
-
-    },
-
-    _buyPower: function() {
-
     }
 });
 

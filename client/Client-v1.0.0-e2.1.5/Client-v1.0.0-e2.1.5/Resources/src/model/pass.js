@@ -114,8 +114,7 @@ var Pass = Entity.extend({
 
                 that.update(msg.pass);
 
-                gameData.player.update({
-                    power: msg.power,
+                gameData.player.sets({
                     lv: msg.lv,
                     exp: msg.exp
                 });
@@ -151,13 +150,11 @@ var Pass = Entity.extend({
                 var player = gameData.player;
 
                 player.adds({
-                    exp: reward.exp_obtain,
                     money: reward.money_obtain,
                     skillPoint: reward.skill_point
                 });
 
-                player.update({
-                    power: msg.power,
+                player.sets({
                     lv: msg.lv,
                     exp: msg.exp
                 });
@@ -217,7 +214,7 @@ var Pass = Entity.extend({
                     canReset: msg.canReset || false
                 });
 
-                gameData.player.update({
+                gameData.player.sets({
                     gold: msg.gold
                 });
 

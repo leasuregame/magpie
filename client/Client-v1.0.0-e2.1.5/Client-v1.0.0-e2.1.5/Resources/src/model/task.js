@@ -151,8 +151,8 @@ var Task = Entity.extend({
 
                 var player = gameData.player;
 
-                player.update({
-                    power: msg.power,
+                player.sets({
+                    power: msg.power.value,
                     lv: msg.lv,
                     exp: msg.exp
                 });
@@ -214,8 +214,7 @@ var Task = Entity.extend({
 
                 player.adds(reward);
 
-                player.update({
-                    power: msg.power,
+                player.sets({
                     lv: msg.lv,
                     exp: msg.exp
                 });

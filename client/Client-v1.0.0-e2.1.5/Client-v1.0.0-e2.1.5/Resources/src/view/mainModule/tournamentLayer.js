@@ -314,7 +314,36 @@ var TournamentLayer = cc.Layer.extend({
     _onClickBuyCount: function () {
         cc.log("TournamentLayer _onClickBuyCount");
 
+        var id = 6;
+        var product = gameData.shop.getProduct(id);
 
+        cc.log(product);
+
+        if (product.count <= 0) {
+            TipLayer.tip(product.tip);
+            return;
+        }
+
+        var that = this;
+        AmountLayer.pop(
+            function (count) {
+                that._buyCount(id, count);
+            },
+            product
+        );
+    },
+
+    _buyCount: function (id, count) {
+        cc.log("TournamentLayer _buyCount");
+
+        if (count > 0) {
+            var that = this;
+            gameData.shop.buyProduct(function (data) {
+                that.update();
+
+                lz.tipReward(data);
+            }, id, count);
+        }
     }
 });
 

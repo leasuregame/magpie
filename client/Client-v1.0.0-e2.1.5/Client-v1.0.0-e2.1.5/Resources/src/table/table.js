@@ -19,8 +19,6 @@ var nameChanged = {
     "等级限制表": "lv_limit",
     "card_lv_limit": "卡牌等级限制表",
     "卡牌等级限制表": "card_lv_limit",
-    "product": "道具配置表",
-    "道具配置表": "product",
     "elixir_limit": "仙丹培养限制表",
     "仙丹培养限制表": "elixir_limit",
     "resource_limit": "资源限制表",
@@ -31,6 +29,8 @@ var nameChanged = {
     "连续签到奖励": "signIn_rewards",
     "treasure_hunt": "寻宝配置表",
     "寻宝配置表": "treasure_hunt",
+    "product": "道具配置表",
+    "道具配置表": "product",
     "rank": "竞技产出表",
     "竞技产出表": "rank",
     "ranking_list": "竞技排名配置表",
@@ -10251,64 +10251,6 @@ var outputTables = {
             }
         }
     },
-    "product": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "体力",
-                "disc": "每次购买可获得50点体力。每日最多购买6次。VIP可购买更多。",
-                "consume_type": "gold",
-                "consume": 20,
-                "obtain_type": "power",
-                "obtain": 50
-            },
-            "2": {
-                "id": 2,
-                "name": "铜板",
-                "disc": "每次购买可获得1000仙币，每次额外赠送100仙币。",
-                "consume_type": "gold",
-                "consume": 10,
-                "obtain_type": "money",
-                "obtain": 1100
-            },
-            "3": {
-                "id": 3,
-                "name": "铜板",
-                "disc": "每次购买可获得5000仙币，每次额外赠送1500仙币。",
-                "consume_type": "gold",
-                "consume": 50,
-                "obtain_type": "money",
-                "obtain": 6500
-            },
-            "4": {
-                "id": 4,
-                "name": "铜板",
-                "disc": "每次购买可获得10000仙币，每次额外赠送5000仙币。",
-                "consume_type": "gold",
-                "consume": 100,
-                "obtain_type": "money",
-                "obtain": 15000
-            },
-            "5": {
-                "id": 5,
-                "name": "有奖竞技次数",
-                "consume_type": "gold",
-                "consume": 20,
-                "obtain_type": "challengeCount",
-                "obtain": 1
-            },
-            "6": {
-                "id": 6,
-                "name": "经验元灵",
-                "disc": "每次购买可获得6级经验元灵1张，蕴含800点卡牌经验。",
-                "consume_type": "money",
-                "consume": 2500,
-                "obtain_type": "card",
-                "obtain": 1
-            }
-        }
-    },
     "elixir_limit": {
         "colComment": {},
         "rows": {
@@ -10592,6 +10534,76 @@ var outputTables = {
                 "type_rate": 10,
                 "value_rate": 1,
                 "rate": 0.1
+            }
+        }
+    },
+    "product": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "method": "expCard",
+                "name": "经验元灵",
+                "disc": "每次购买可获得6级经验元灵1张，蕴含800点卡牌经验。",
+                "consume_type": "money",
+                "consume": 2500,
+                "obtain_type": "card",
+                "obtain": 1,
+                "isVisible": 1
+            },
+            "2": {
+                "id": 2,
+                "method": "money",
+                "name": "铜板",
+                "disc": "每次购买可获得1000仙币，每次额外赠送100仙币。",
+                "consume_type": "gold",
+                "consume": 10,
+                "obtain_type": "money",
+                "obtain": 1100,
+                "isVisible": 1
+            },
+            "3": {
+                "id": 3,
+                "method": "money",
+                "name": "铜板",
+                "disc": "每次购买可获得5000仙币，每次额外赠送1500仙币。",
+                "consume_type": "gold",
+                "consume": 50,
+                "obtain_type": "money",
+                "obtain": 6500,
+                "isVisible": 1
+            },
+            "4": {
+                "id": 4,
+                "method": "money",
+                "name": "铜板",
+                "disc": "每次购买可获得10000仙币，每次额外赠送5000仙币。",
+                "consume_type": "gold",
+                "consume": 100,
+                "obtain_type": "money",
+                "obtain": 15000,
+                "isVisible": 1
+            },
+            "5": {
+                "id": 5,
+                "method": "power",
+                "name": "体力",
+                "disc": "每次购买可获得50点体力。每日最多购买6次。VIP可购买更多。",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "power",
+                "obtain": 50,
+                "isVisible": 1
+            },
+            "6": {
+                "id": 6,
+                "method": "challengeCount",
+                "name": "有奖竞技次数",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "challengeCount",
+                "obtain": 1,
+                "isVisible": 0
             }
         }
     },

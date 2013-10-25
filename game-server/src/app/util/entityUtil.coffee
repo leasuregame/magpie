@@ -29,7 +29,7 @@ module.exports =
 
     isUpgrade = false
     rewards = money: 0, energy: 0, skillPoint: 0, elixir: 0
-    while(player.exp >= upgradeInfo.exp)
+    while(player.exp >= upgradeInfo.exp and player.lv < playerConfig.MAX_PLAYER_LV)
       isUpgrade = true
       player.increase 'lv'
       player.elixirPerLv = {}
@@ -43,10 +43,12 @@ module.exports =
 
       upgradeInfo = table.getTableItem 'player_upgrade', player.lv
 
-    player.increase('money', rewards.money)
-    player.increase('energy', rewards.energy)
-    player.increase('skillPoint', rewards.skillPoint)
-    player.increase('elixir', rewards.elixir)
+    if isUpgrade
+      player.increase('money', rewards.money)
+      player.increase('energy', rewards.energy)
+      player.increase('skillPoint', rewards.skillPoint)
+      player.increase('elixir', rewards.elixir)
+      
     cb(isUpgrade, rewards)
 
 genSkillInc = (card) ->

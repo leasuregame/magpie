@@ -28,7 +28,7 @@ describe("Area Server", function() {
 						before_card = res.data;
 					});
 				});
-				
+
 				describe("when card's star is 3", function() {
 
 					it("star of card should can be upgrade", function() {
@@ -51,7 +51,7 @@ describe("Area Server", function() {
 								} else {
 									expect(res.data.star).toEqual(before_card.star);
 									expect(data.msg.card.passiveSkills.length).toEqual(1);
-								}								
+								}
 							});
 
 							doAjax('/card/' + 2, {}, function(res) {
@@ -71,37 +71,19 @@ describe("Area Server", function() {
 					});
 				});
 
-                describe("when card's lv is not max",function(){
+				describe("when card's lv is not max", function() {
 
-                    it('should can not upgrade of card',function(){
-                        request('area.trainHandler.starUpgrade', {
-                            target: 11,
-                            sources: [4]
-                        }, function(data) {
-                            console.log(data);
-                            expect(data.code).toEqual(501);
-                            expect(data.msg).toEqual('未达到进阶等级');
-                        });
-                    });
-                });
-
-                describe("when card's tableId is 10000",function(){
-
-                    it('should can not upgrade of card',function(){
-                       // doAjax('/create/card', {tableId:10000,playerId:1,createTime:0,lv:30,star:1}, function(res) {
-                        //    console.log(res);
-                            request('area.trainHandler.starUpgrade', {
-                                target: 17,
-                                sources: [11]
-                            }, function(data) {
-                                console.log(data);
-                                expect(data.code).toEqual(501);
-                                expect(data.msg).toEqual('该卡牌不可以进阶');
-                            });
-                      //  });
-                    });
-
-                });
+					it('should can not upgrade of card', function() {
+						request('area.trainHandler.starUpgrade', {
+							target: 11,
+							sources: [4]
+						}, function(data) {
+							console.log(data);
+							expect(data.code).toEqual(501);
+							expect(data.msg).toEqual('未达到进阶等级');
+						});
+					});
+				});
 
 				describe("when card's star is 1", function() {
 					it('should can upgrade star of card', function() {
@@ -143,6 +125,28 @@ describe("Area Server", function() {
 						);
 					});
 				});
+			});
+
+			describe("when card's tableId is 10000", function() {
+				beforeEach(function(){
+					doAjax('/update/card/' + 6, {
+						tableId: 10000
+					}, function(){
+						loginWith('2', '1', 1);
+					});					
+				});
+
+				it('should can not upgrade star of card', function() {
+					request('area.trainHandler.starUpgrade', {
+						target: 6,
+						sources: [7]
+					}, function(data) {
+						console.log(data);
+						expect(data.code).toEqual(501);
+						expect(data.msg).toEqual('该卡牌不可以进阶');
+					});
+				});
+
 			});
 
 

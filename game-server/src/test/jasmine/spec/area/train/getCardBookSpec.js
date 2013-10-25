@@ -1,11 +1,11 @@
 describe("Area Server", function() {
 
   describe("Train Handler", function() {
-    var user1 = {
+    var user115 = {
       id: 1,
-      playerId: 1,
+      playerId: 115,
       areaId: 1,
-      account: '1',
+      account: '115',
       password: '1'
     };
     beforeAll(function() {
@@ -16,7 +16,7 @@ describe("Area Server", function() {
 
     describe("area.trainHandler.getCardBook", function() {
       beforeEach(function() {
-        loginWith(user1.account, user1.password, user1.areaId);
+        loginWith(user115.account, user115.password, user115.areaId);
       });
 
       it('should can get card book from server', function() {
@@ -25,7 +25,7 @@ describe("Area Server", function() {
             code: 200,
             msg: {
               cardBook: {
-                mark: [538054660, 2],
+                mark: [17318416],
                 flag: []
               }
             }

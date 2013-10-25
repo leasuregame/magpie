@@ -36,11 +36,9 @@ describe("Area Server", function() {
 							'gold_obtain',
 							'open_box_card',
 							'battle_log',
-							'lv',
 							'exp',
 							'task',
 							'power',
-							'spiritor',
 							'momo'
 						]);
 
@@ -105,7 +103,7 @@ describe("Area Server", function() {
 			describe('when player is upgrade', function() {
 				beforeEach(function() {
 					doAjax('/update/player/' + 1, {
-						exp: 39
+						exp: 388
 					}, function() {
 						loginWith('1', '1', 1);
 					});
@@ -118,12 +116,12 @@ describe("Area Server", function() {
 						console.log(data);
 						expect(data.code).toEqual(200);
 						expect(data.msg.upgradeInfo).toEqual({
-							lv: 2,
+							lv: 26,
 							rewards: {
-								money: 100,
-								energy: 10,
-								skillPoint: 10,
-								elixir: 10
+								money: 250,
+								energy: 90,
+								skillPoint: 200,
+								elixir: 200
 							},
 							friendsCount: 20
 						});
@@ -391,5 +389,4 @@ var checkExploreResult = function(data, task, oldTask) {
 	// expect(res.power_consume).toEqual(5);
 	// expect(res.exp_obtain).toEqual(145);
 	// expect(res.money_obtain).toEqual(290);
-	expect(typeof res.upgrade).toEqual('boolean');
 }

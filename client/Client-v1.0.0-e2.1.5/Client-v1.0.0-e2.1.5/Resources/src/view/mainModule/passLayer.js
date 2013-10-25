@@ -554,4 +554,6 @@ PassLayer.canEnter = function () {
     }
 
     TipLayer.tip("天道" + limitLv + "级开放");
+
+    return false;
 };

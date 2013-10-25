@@ -17,6 +17,64 @@
  * */
 var lz = {};
 
+(function () {
+    var _callback = {};
+    var _index = 0;
+
+
+    lz.schedule = function (fn, interval, repeat, delay) {
+        interval = interval || 0;
+        repeat = (repeat == null) ? cc.REPEAT_FOREVER : repeat;
+        delay = delay || 0;
+
+        cc.Director.getInstance().getScheduler().scheduleCallbackForTarget(lz, fn, interval, repeat, delay, false);
+    };
+
+    lz.scheduleOnce = function (fn, delay) {
+        lz.schedule(fn, 0.0, 0, delay);
+    };
+
+    lz.unschedule = function (fn) {
+        // explicit nil handling
+
+        cc.Director.getInstance().getScheduler().unscheduleCallbackForTarget(lz, fn);
+    };
+
+    lz.setTimeout = function (fn, delay) {
+//        cc.log("setTimeOut: " + _index);
+
+        var _fn = (function (index) {
+            return function () {
+                fn();
+
+//                cc.log("delete callback: " + index);
+
+                delete _callback[index];
+            }
+        })(_index);
+
+
+        _callback[_index] = _fn;
+        _index += 1;
+
+        delay = (delay || 0) / 1000;
+
+        lz.scheduleOnce(_fn, delay);
+
+        return (_index - 1);
+    };
+
+    lz.clearTimeout = function (index) {
+        if (_callback[index]) {
+//            cc.log("clearTimeout: " + index);
+
+            lz.unschedule(_callback[index]);
+
+            delete _callback[index];
+        }
+    };
+})();
+
 /**
  * copy an new object
  * @function
@@ -114,29 +172,6 @@ lz.getAngle = function (p1, p2) {
     return (90 - Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI);
 };
 
-
-/*
- * 数组去重
- * */
-Array.prototype.distinct = function () {
-    var arr = [],
-        obj = {},
-        i = 0,
-        len = this.length,
-        result;
-
-    for (; i < len; i++) {
-        result = this[i];
-        if (obj[result] !== result) {
-            arr.push(result);
-            obj[result] = result;
-        }
-    }
-
-    return arr;
-};
-
-
 /*
  * 获取介于两数之间的随机数[a, b)
  * */
@@ -169,6 +204,7 @@ var gameGoodsName = {
     "skillPoint": "技能点",
     "totalSpirit": "灵气",
     "cards": "经验卡",
+    "exp_card": "经验卡",
     "freeCount": "免费抽奖次数",
     "lottery_free_count": "免费抽奖次数"
 };
@@ -215,10 +251,43 @@ lz.tipReward = function (reward) {
     reward = reward || {};
 
     var key;
+    var delay = 0;
 
     for (key in reward) {
-        TipLayer.tipNoBg(lz.getNameByKey(key) + ": " + reward[key]);
+        if (!reward[key]) return;
+
+        var fn = (function (key) {
+            return function () {
+                TipLayer.tipNoBg(lz.getNameByKey(key) + ": " + reward[key]);
+            }
+        })(key);
+
+
+        lz.scheduleOnce(fn, delay);
+
+        delay += 0.4;
     }
+};
+
+/*
+ * 数组去重
+ * */
+Array.prototype.distinct = function () {
+    var arr = [],
+        obj = {},
+        i = 0,
+        len = this.length,
+        result;
+
+    for (; i < len; i++) {
+        result = this[i];
+        if (obj[result] !== result) {
+            arr.push(result);
+            obj[result] = result;
+        }
+    }
+
+    return arr;
 };
 
 // 获取不大于原数的随机数

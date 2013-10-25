@@ -140,8 +140,6 @@ var Task = Entity.extend({
                     goldList: msg.momo
                 };
 
-                gameData.spirit.update(msg.spiritor);
-
                 if (msg.task.id > that._id) {
                     cbData.toNext = true;
                     cbData.progress = 1;
@@ -209,13 +207,12 @@ var Task = Entity.extend({
                     mark: msg.mark
                 });
 
-                var reward = msg.rewards;
+                var reward = {
+                    money: msg.rewards.money_obtain
+                };
                 var player = gameData.player;
 
-                player.adds({
-                    exp: reward.exp_obtain,
-                    money: reward.money_obtain
-                });
+                player.adds(reward);
 
                 player.update({
                     power: msg.power,
@@ -223,14 +220,11 @@ var Task = Entity.extend({
                     exp: msg.exp
                 });
 
-                var cbData = {
-                    exp: reward.exp_obtain,
-                    money: reward.money_obtain
-                };
-
-                cb(cbData);
+                cb(reward);
             } else {
                 cc.log("wipeOut fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },
@@ -250,6 +244,8 @@ var Task = Entity.extend({
                 gameData.player.add("gold", gold);
             } else {
                 cc.log("obtainGold fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     }

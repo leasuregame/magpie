@@ -48,6 +48,24 @@ var CardHalfNode = cc.Node.extend({
         return true;
     },
 
+    up: function() {
+        this._frameSprite.setScale(1.05);
+        this._cardSprite.setScale(1.1);
+
+        if(this._iconSprite) {
+            this._iconSprite.setScale(1.05);
+        }
+    },
+
+    put: function() {
+        this._frameSprite.setScale(1);
+        this._cardSprite.setScale(1);
+
+        if(this._iconSprite) {
+            this._iconSprite.setScale(1);
+        }
+    },
+
     getId: function () {
         cc.log("CardNode getId");
 

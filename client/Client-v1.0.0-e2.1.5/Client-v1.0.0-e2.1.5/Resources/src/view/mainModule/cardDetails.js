@@ -34,8 +34,8 @@ var CardDetails = LazyLayer.extend({
         this._card = card;
         this._cb = cb;
 
-        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 240), 640, 960);
-        bgLayer.setPosition(GAME_ZERO);
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 240), 640, 1136);
+        bgLayer.setPosition(cc.p(40, 0));
         this.addChild(bgLayer, -1);
 
         var headBgSprite = cc.Sprite.create(main_scene_image.icon34);
@@ -298,6 +298,18 @@ var CardDetails = LazyLayer.extend({
         }
     },
 
+    hideMenu: function () {
+        cc.log("CardDetails hideMenu");
+
+        this._menu.setVisible(false);
+    },
+
+    showMenu: function () {
+        cc.log("CardDetails showMenu");
+
+        this._menu.setVisible(true);
+    },
+
     _onClickClose: function () {
         cc.log("CardDetails _onClickClose");
 
@@ -319,5 +331,11 @@ CardDetails.create = function (card, cb) {
     }
 
     return null;
+};
+
+CardDetails.pop = function (card, cb) {
+    var cardDetails = CardDetails.create(card, cb);
+
+    cc.Director.getInstance().getRunningScene().addChild(cardDetails, 1);
 };
 

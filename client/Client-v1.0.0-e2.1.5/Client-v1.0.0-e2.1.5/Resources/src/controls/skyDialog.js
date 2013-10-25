@@ -52,6 +52,7 @@ var SkyDialog = cc.Layer.extend({
     _counter: 0,
     _label: null,
     _arrowSprite: null,
+    _point: null,
     _rect: cc.rect(40, 88, 640, 960),
 
     init: function (label) {
@@ -70,6 +71,7 @@ var SkyDialog = cc.Layer.extend({
 
         this._counter = 0;
         this._label = label || null;
+        this._point = null;
 
         this.setVisible();
 
@@ -98,9 +100,10 @@ var SkyDialog = cc.Layer.extend({
         this._rect = rect || this._rect;
     },
 
-    show: function () {
+    show: function (point) {
         cc.log("SkyDialog show");
 
+        this._point = point || null;
         this._counter += 1;
     },
 
@@ -124,9 +127,15 @@ var SkyDialog = cc.Layer.extend({
         cc.log("SkyDialog onTouchesEnded");
 
         if (this.setVisible()) {
-            var point = this._touchLayer.getTouchPoint();
+            var point = this._point || this._touchLayer.getTouchPoint();
 
             if (point) {
+                if (cc.rectContainsPoint(this._rect, point)) {
+                    this._arrowSprite.setVisible(true);
+                } else {
+                    this._arrowSprite.setVisible(false);
+                }
+
                 var size = this._label.getContentSize();
 
                 var x = point.x + 30;

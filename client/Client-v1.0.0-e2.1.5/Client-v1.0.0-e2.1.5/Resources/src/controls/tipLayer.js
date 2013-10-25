@@ -81,7 +81,7 @@ var TipLayer = cc.Layer.extend({
             _tipLabel.action.setSpeed(_tipLabel.speed);
         }
 
-        var moveAction = cc.MoveTo.create(1, cc.p(360, 650));
+        var moveAction = cc.MoveTo.create(0.6, cc.p(360, 650));
         var callFuncAction = cc.CallFunc.create(function () {
             this.scheduleOnce(function () {
                 this._tipLabel.shift();
@@ -91,7 +91,7 @@ var TipLayer = cc.Layer.extend({
                 if (!this._tipLabel.length) {
                     this.removeFromParent();
                 }
-            }, 0.8);
+            }, 1);
         }, this);
 
         var speed = 1;

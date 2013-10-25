@@ -14,12 +14,15 @@
 
 var SpiritPool = Entity.extend({
     _lv: 0,
+    _maxLv: 0,
     _exp: 0,
     _maxExp: 0,
     _collectCount: 0,
 
     init: function (data) {
         cc.log("SpiritPool init");
+
+        this._maxLv = outputTables.lv_limit.rows[1].spirit_lv_limit;
 
         this.update(data);
 
@@ -46,6 +49,12 @@ var SpiritPool = Entity.extend({
         this._maxExp = table.exp_need;
     },
 
+    canCollect: function () {
+        cc.log("SpiritPool canCollect");
+
+        return (this._collectCount > 0);
+    },
+
     collect: function (cb, useGold) {
         cc.log("SpiritPool collect");
 
@@ -60,10 +69,11 @@ var SpiritPool = Entity.extend({
 
                 var msg = data.msg;
 
-                gameData.spirit.update(msg.spiritor);
+                gameData.spirit.add("exp", msg.spirit_obtain);
+
                 that.update(msg.spiritPool);
 
-                cb(msg.rewardSpirit);
+                cb(msg);
             } else {
                 cc.log("upgrade fail");
 

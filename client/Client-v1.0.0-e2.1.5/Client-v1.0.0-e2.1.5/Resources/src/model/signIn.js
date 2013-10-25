@@ -21,6 +21,9 @@ var SignIn = Entity.extend({
     init: function () {
         cc.log("SignIn init");
 
+        this._monthsMark = [];
+        this._flag = 0;
+
         this.sync();
     },
 
@@ -93,18 +96,18 @@ var SignIn = Entity.extend({
     },
 
     canSignIn: function (index) {
-        cc.log("MonthLabel canReceive");
+        cc.log("MonthLabel canSignIn");
 
         if (index == 0) {
             var day = new Date().getDate() - 1;
-            return ((this._monthsMark[0].mark >> day & 1) == 0);
+            return ((this._monthsMark[0].mark >> day & 1) != 1);
         }
 
         return false;
     },
 
     canRemedySignIn: function (index) {
-        cc.log("MonthLabel canReceive");
+        cc.log("MonthLabel canRemedySignIn");
 
         if (index == 0) {
             var nowDay = new Date().getDate();
@@ -115,10 +118,15 @@ var SignIn = Entity.extend({
         return false;
     },
 
-    canReceive: function (index) {
+    canReceive: function (index, i) {
         cc.log("MonthLabel canReceive");
 
-        return ((this._flag >> index & 1) == 1);
+        if (index == 0) {
+            return ((this._flag >> i & 1) != 1);
+        }
+
+
+        return false;
     },
 
     signIn: function (cb) {
@@ -209,7 +217,15 @@ var SignIn = Entity.extend({
 
                 gameData.treasureHunt.add("freeCount", table.lottery_free_count);
 
-                cb(table);
+                cb({
+                    money: table.money,
+                    energy: table.energy,
+                    skillPoint: table.skillPoint,
+                    elixir: table.elixir,
+                    gold: table.gold,
+                    spirit: table.spirit,
+                    freeCount: table.lottery_free_count
+                });
             } else {
                 cc.log("signIn fail");
 

@@ -13,8 +13,11 @@
 
 
 var TournamentLayer = cc.Layer.extend({
-    _rankScrollView: null,
-    _nameLabel: null,
+    _rankList: [],
+    _selectId: 0,
+    _scrollView: null,
+    _rankRewardItem: null,
+    _menu: null,
     _expProgress: null,
     _lvLabel: null,
     _rankingLabel: null,
@@ -33,52 +36,108 @@ var TournamentLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._rankList = [];
+
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(GAME_BG_POINT);
         this.addChild(bgSprite);
 
-        var tournamentMessageLabel = TournamentMessageLabel.create();
-        tournamentMessageLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 1013));
-        this.addChild(tournamentMessageLabel);
-
-        var playerLabel = cc.Sprite.create(main_scene_image.bg14);
+        var playerLabel = cc.Sprite.create(main_scene_image.icon31);
         playerLabel.setAnchorPoint(cc.p(0, 0));
-        playerLabel.setPosition(cc.p(40, 873));
+        playerLabel.setPosition(cc.p(40, 916));
         this.addChild(playerLabel);
 
-        this._nameLabel = cc.LabelTTF.create("null", "黑体", 30);
-        this._nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._nameLabel.setPosition(cc.p(150, 974));
-        this.addChild(this._nameLabel);
+        var nameLabel = StrokeLabel.create(gameData.player.get("name"), "STHeitiTC-Medium", 30);
+        nameLabel.setColor(cc.c3b(255, 239, 131));
+        nameLabel.setAnchorPoint(cc.p(0, 0.5));
+        nameLabel.setPosition(cc.p(160, 1013));
+        this.addChild(nameLabel);
 
-        this._expProgress = Progress.create(main_scene_image.exp_bg, main_scene_image.exp, 0, 0, true);
-        this._expProgress.setPosition(cc.p(225, 941));
+        var expBg = cc.Sprite.create(main_scene_image.exp_bg);
+        expBg.setPosition(cc.p(210, 975));
+        this.addChild(expBg);
+        expBg.setScale(0.8);
+
+        this._expProgress = Progress.create(null, main_scene_image.exp, 0, 0, true);
+        this._expProgress.setPosition(cc.p(214, 975));
+        this.addChild(this._expProgress);
+        this._expProgress.setFontColor(cc.c3b(255, 239, 131));
         this._expProgress.setScale(0.8);
-        this.addChild(this._expProgress, 2);
 
         var lvBg = cc.Sprite.create(main_scene_image.lv_bg);
-        lvBg.setPosition(cc.p(100, 954));
+        lvBg.setPosition(cc.p(90, 995));
+        this.addChild(lvBg);
         lvBg.setScale(0.8);
-        this.addChild(lvBg, 2);
 
-        this._lvLabel = cc.LabelTTF.create("0", "黑体", 45);
-        this._lvLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._lvLabel.setPosition(cc.p(100, 954));
-        this._lvLabel.setScale(0.8);
-        this.addChild(this._lvLabel, 2);
+        this._lvLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 38);
+        this._lvLabel.setColor(cc.c3b(255, 239, 131));
+        this._lvLabel.setPosition(cc.p(87, 993));
+        this.addChild(this._lvLabel);
 
-        this._countLabel = cc.LabelTTF.create(0, "黑体", 22);
-        this._countLabel.setPosition(cc.p(555, 980));
+        this._countLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
+        this._countLabel.setColor(cc.c3b(255, 239, 131));
+        this._countLabel.setPosition(cc.p(555, 1013));
         this.addChild(this._countLabel);
 
-        this._rankingLabel = cc.LabelTTF.create(0, "黑体", 22);
-        this._rankingLabel.setPosition(cc.p(440, 940));
+        this._rankingLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
+        this._rankingLabel.setColor(cc.c3b(255, 239, 131));
+        this._rankingLabel.setPosition(cc.p(430, 975));
         this.addChild(this._rankingLabel);
 
-        this._abilityLabel = cc.LabelTTF.create(0, "黑体", 22);
-        this._abilityLabel.setPosition(cc.p(605, 940));
+        this._abilityLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
+        this._abilityLabel.setColor(cc.c3b(255, 239, 131));
+        this._abilityLabel.setPosition(cc.p(605, 975));
         this.addChild(this._abilityLabel);
+
+        var rewardIcon = cc.Sprite.create(main_scene_image.icon35);
+        rewardIcon.setPosition(cc.p(360, 910));
+        this.addChild(rewardIcon);
+        rewardIcon.setScaleX(2.2);
+
+        this._menu = cc.Menu.create();
+        this._menu.setPosition(cc.p(0, 0));
+        this.addChild(this._menu);
+
+        this._skyDialog = SkyDialog.create();
+        this.addChild(this._skyDialog, 10);
+
+        var label = cc.Scale9Sprite.create(main_scene_image.bg16);
+        label.setContentSize(cc.size(216, 300));
+
+        var detailItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon120,
+            this._onClickDetail,
+            this
+        );
+        detailItem.setPosition(cc.p(108, 240));
+
+        var sendMessageItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon119,
+            this._onClickSendMessage,
+            this
+        );
+        sendMessageItem.setPosition(cc.p(108, 150));
+
+        var addFriendItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon41,
+            this._onClickAddFriend,
+            this
+        );
+        addFriendItem.setPosition(cc.p(108, 60));
+
+        var menu = cc.Menu.create(detailItem, sendMessageItem, addFriendItem);
+        menu.setPosition(cc.p(0, 0));
+        label.addChild(menu);
+
+        this._skyDialog.setLabel(label);
+        this._skyDialog.setRect(cc.rect(40, 198, 640, 700));
 
         return true;
     },
@@ -87,13 +146,13 @@ var TournamentLayer = cc.Layer.extend({
         cc.log("TournamentLayer update");
 
         var player = gameData.player;
-        this._expProgress.setAllValue(player.get("power"), player.get("maxPower"));
-        this._nameLabel.setString(player.get("name"));
-        this._lvLabel.setString(player.get("lv"));
-        this._abilityLabel.setString(player.get("ability"));
 
-        if (this._rankScrollView != null) {
-            this.removeChild(this._rankScrollView);
+        this._expProgress.setAllValue(player.get("power"), player.get("maxPower"));
+        this._lvLabel.setString(player.get("lv"));
+        this._abilityLabel.setString(player.getAbility());
+
+        if (this._scrollView != null) {
+            this._scrollView.removeFromParent();
         }
 
         var that = this;
@@ -101,7 +160,39 @@ var TournamentLayer = cc.Layer.extend({
             cc.log("TournamentLayer update callback");
 
             that._addRankScrollView();
+            that._updateRankRewardItem();
         })
+    },
+
+    _updateRankRewardItem: function () {
+        cc.log("TournamentLayer _updateRankRewardItem");
+
+        if (this._rankRewardItem != null) {
+            this._rankRewardItem.removeFromParent();
+        }
+
+        var rewardRanking = gameData.tournament.getLastRankReward();
+
+        if (rewardRanking) {
+            this._rankRewardItem = cc.MenuItemFont.create(
+                "你已达到第 " + rewardRanking + " 排名，点击领取奖励",
+                this._onClickRankReward,
+                this
+            );
+            this._rankRewardItem.setFontSize(26);
+            this._rankRewardItem.setColor(cc.c3b(255, 239, 131));
+            this._rankRewardItem.setPosition(cc.p(360, 910));
+            this._menu.addChild(this._rankRewardItem);
+
+            this._rankRewardItem.runAction(
+                cc.RepeatForever.create(
+                    cc.Sequence.create(
+                        cc.ScaleTo.create(2, 1.05, 1.05),
+                        cc.ScaleTo.create(2, 1, 1)
+                    )
+                )
+            );
+        }
     },
 
     _addRankScrollView: function () {
@@ -112,26 +203,104 @@ var TournamentLayer = cc.Layer.extend({
         this._rankingLabel.setString(tournament.get("ranking"));
         this._countLabel.setString(tournament.get("count"));
 
-        var rankList = tournament.get("rankList");
-        var len = rankList.length;
+        this._rankList = tournament.get("rankList");
+        var len = this._rankList.length;
         var height = len * 135;
+        var playerId = gameData.player.get("id");
+        var own = len;
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(40, 198, 612, 670));
+        var scrollViewLayer = MarkLayer.create(cc.rect(40, 198, 621, 670));
 
         for (var i = 0; i < len; ++i) {
-            var tournamentPlayerLabel = TournamentLabel.create(rankList[i]);
+            if (playerId == this._rankList[i].playerId) {
+                own = i;
+            }
+
+            var tournamentPlayerLabel = TournamentLabel.create(this, this._rankList[i]);
             tournamentPlayerLabel.setPosition(cc.p(0, height - 135 * (i + 1)));
             scrollViewLayer.addChild(tournamentPlayerLabel);
         }
 
-        this._rankScrollView = cc.ScrollView.create(cc.size(612, 670), scrollViewLayer);
-        this._rankScrollView.setContentSize(cc.size(GAME_WIDTH, height));
-        this._rankScrollView.setPosition(cc.p(54, 198));
-        this._rankScrollView.setBounceable(false);
-        this._rankScrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
-        this._rankScrollView.updateInset();
+        this._scrollView = cc.ScrollView.create(cc.size(621, 670), scrollViewLayer);
+        this._scrollView.setContentSize(cc.size(GAME_WIDTH, height));
+        this._scrollView.setPosition(cc.p(50, 198));
+        this._scrollView.setBounceable(false);
+        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        this._scrollView.updateInset();
 
-        this.addChild(this._rankScrollView);
+        this.addChild(this._scrollView);
+
+        var offsetY = this._scrollView.minContainerOffset().y;
+        offsetY = Math.min(offsetY + own * 135, 0);
+        this._scrollView.setContentOffset(cc.p(0, offsetY));
+    },
+
+    _getPlayer: function (id) {
+        var len = this._rankList.length;
+
+        for (var i = 0; i < len; ++i) {
+            if (this._rankList[i].playerId == id) {
+                return this._rankList[i];
+            }
+        }
+
+        return null;
+    },
+
+    _onClickPlayer: function (id, point) {
+        cc.log("TournamentLayer _onClickPlayer");
+
+        this._selectId = id;
+        this._skyDialog.show(point);
+    },
+
+    _onClickRankReward: function () {
+        cc.log("TournamentLayer _onClickRankReward");
+
+        var that = this;
+        gameData.tournament.receive(function () {
+            that._updateRankRewardItem();
+        });
+    },
+
+    _onClickDetail: function () {
+        cc.log("TournamentLayer _onClickDetail: " + this._selectId);
+
+        var player = this._getPlayer(this._selectId);
+
+        if (player) {
+            gameData.player.playerDetail(function (data) {
+                cc.log(data);
+
+                LineUpDetail.pop(data);
+            }, this._selectId);
+        } else {
+            TipLayer.tip("找不到该玩家");
+        }
+    },
+
+    _onClickSendMessage: function () {
+        cc.log("TournamentLayer _onClickSendMessage: " + this._selectId);
+
+        var player = this._getPlayer(this._selectId);
+
+        if (player) {
+            SendMessageLayer.pop(player.playerId, player.name);
+        } else {
+            TipLayer.tip("找不到该玩家");
+        }
+    },
+
+    _onClickAddFriend: function () {
+        cc.log("TournamentLayer _onClickAddFriend: " + this._selectId);
+
+        var player = this._getPlayer(this._selectId);
+
+        if (player) {
+            gameData.friend.addFriend(player.name);
+        } else {
+            TipLayer.tip("找不到该玩家");
+        }
     }
 });
 
@@ -154,4 +323,6 @@ TournamentLayer.canEnter = function () {
     }
 
     TipLayer.tip("竞技场" + limitLv + "级开放");
+
+    return false;
 };

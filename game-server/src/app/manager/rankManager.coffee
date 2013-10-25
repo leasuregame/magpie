@@ -57,14 +57,8 @@ Manager = module.exports =
       
 
 updateAll = (player, challenger, defender, targetId, rewards, upgradeInfo, cb) ->
+  
   jobs = [
-    {
-      type: 'update',
-      options: 
-        table: 'player',
-        where: {id: player.id}
-        data: player.getSaveData()
-    }
     {
       type: 'update',
       options: 
@@ -80,6 +74,15 @@ updateAll = (player, challenger, defender, targetId, rewards, upgradeInfo, cb) -
         data: defender.getSaveData()
     }
   ]
+
+  playerData = player.getSaveData()
+  jobs.push {
+    type: 'update',
+    options: 
+      table: 'player',
+      where: {id: player.id}
+      data: playerData
+  } if not _.isEmpty(playerData)
 
   job.multJobs jobs, (err, res) -> cb(err, res, rewards, upgradeInfo) 
 

@@ -48,6 +48,31 @@ describe("Area Server", function() {
                 });
             });
 
+            describe('when add a friend twice', function(){
+                beforeEach(function(){
+                    loginWith('1', '1', 1);
+                });
+
+                it('should can not send the second request', function(){
+                    request('area.messageHandler.addFriend', {
+                        friendName: 'Mike'
+                    }, function(data) {
+                        expect(data).toEqual({
+                            code: 200
+                        });
+                    });
+
+                    request('area.messageHandler.addFriend', {
+                        friendName: 'Mike'
+                    }, function(data) {
+                        expect(data).toEqual({
+                            code: 501,
+                            msg: '不能重复发送请求'
+                        });
+                    });
+                });
+            });
+
             describe('when receive a friendship asking', function() {
                 beforeEach(function() {
                     loginWith('2', '1', 1);

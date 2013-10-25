@@ -254,13 +254,9 @@ Handler::addFriend = (msg, session, next) ->
           cb({code: 501, msg: '您的好友已达上限'})
         else
           cb()
+
     (cb) ->
-      playerManager.getPlayer name: friendName, (err, ply) ->
-        return cb(err) if err
-        if ply.id is playerId
-          cb {code: 501, msg: '不能加自己为好友'}
-        else
-          cb(null, ply)
+      playerManager.getPlayer name: friendName, cb
 
     (res, cb) ->
       friend = res
@@ -290,7 +286,7 @@ Handler::addFriend = (msg, session, next) ->
           status: msgConfig.MESSAGESTATUS.ASKING
         }, cb
       else 
-        cb()
+        cb({code: 501, msg: '不能重复发送请求'})
   ], (err, msg) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})

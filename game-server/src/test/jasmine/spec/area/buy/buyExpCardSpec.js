@@ -1,6 +1,6 @@
 describe("Area Server", function() {
 	describe("Buy Handler", function() {
-		describe("area.buyHandler.buyProduct", function() {
+		describe("area.buyHandler.buyExpCard", function() {
 			beforeAll(function() {
 				doAjax('/loaddata/csv', {}, function() {});
 			});
@@ -13,7 +13,7 @@ describe("Area Server", function() {
 
 					it("不能购买经验卡牌", function() {
 						request("area.buyHandler.buyProduct", {
-                            id:6,
+                            id:1,
 							times: 1
 						}, function(data) {
 							expect(data).toEqual({
@@ -31,7 +31,7 @@ describe("Area Server", function() {
 
 					it("可以购买指定数量的经验卡牌", function() {
 						request("area.buyHandler.buyProduct", {
-                            id:6,
+                            id:1,
 							times: 1
 						}, function(data) {
 							expect(data.code).toEqual(200);

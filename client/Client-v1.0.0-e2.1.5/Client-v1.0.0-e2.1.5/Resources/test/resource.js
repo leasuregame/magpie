@@ -555,7 +555,7 @@ var main_scene_image = {
     texiao7: ccb_scene_path + "texiao7.ccbi",
     texiao8: ccb_scene_path + "texiao8.ccbi",
     texiao9: ccb_scene_path + "texiao9.ccbi",
-    ceshi.ccbi: ccb_scene_path + "ceshi.ccbi.ccbi",
+    ceshi: ccb_scene_path + "ceshi.ccbi",
     tutorials1: ccb_scene_path + "tutorials1.ccbi",
     tutorials2: ccb_scene_path + "tutorials2.ccbi",
     tutorials3: ccb_scene_path + "tutorials3.ccbi",

@@ -217,7 +217,7 @@ filterPlayersInfo = (players, ranks, rankings) ->
       playerId: p.id
       name: p.name
       ranking: ranks[p.id]
-      cards: p.activeCards().map (c) -> c.tableId
+      cards: p.cards.map (c) -> c.tableId
       type: rankings[ranks[p.id]]
     }
     

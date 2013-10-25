@@ -152,10 +152,9 @@ var PlayerDao = (function(_super) {
 
         async.waterfall([
             function(callback) {
-                _this.fetchMany({
-                    where: " id in (" + ids.toString() + ")",
-                    fields: ['id', 'name', 'lineUp']
-                }, function(err,plys){
+                var sql = "select id,name,lineUp from player where id in (" + ids.toString() + ")";
+                dbClient.query(sql,[],function(err,plys){
+                    //console.log('players = ',plys);
                     players = plys;
                     callback();
                 });
@@ -166,32 +165,36 @@ var PlayerDao = (function(_super) {
                 start2 = Date.now();
                 var cardIds = [];
                 players.forEach(function(p){
-                    cardIds = _.union(cardIds, _.without(_.values(p.lineUpObj()),-1));
+                    cardIds = cardIds.concat(_.without(getLineUpIds(p.lineUp),-1));
                 });
+                cardIds.sort(sort);
                 end = Date.now();
                 console.log('******union cardIds useTime : ', (end - start2)/1000);
                 start2 = Date.now();
                 callback(null,cardIds);
             },
             function(cardIds,callback) {
-                if(cardIds.length != 0)
-                    cardDao.fetchMany({
-                        where: ' id in (' + cardIds.toString() + ')',
-                        fields: ['playerId','tableId']
-                    }, function(err,res){
+                if(cardIds.length != 0) {
+                    var sql = "select playerId,tableId from card where id in (" + cardIds.toString() + ")";
+                    dbClient.query(sql,[],function(err,res){
                         cards = res;
                         callback();
                     });
+                }
+
                 else
                     callback();
             }
         ],function(err){
+            end = Date.now();
+            console.log('******select cards useTime : ', (end - start2)/1000);
+            start2 = Date.now();
             if(cards)
                 players.forEach(function(p){
-                    p.addCards(cards.filter(function(c){ return c.playerId == p.id}));
+                    p.cards = cards.filter(function(c){ return c.playerId == p.id});
 
                 });
-            var end = Date.now();
+            end = Date.now();
             console.log('get player LineUpInfo By Ids time: ', (end - start)/1000);
             return cb(null, players);
         });
@@ -290,6 +293,24 @@ var orderBy = function(fields, orderby, limit, cb) {
             return cb(null, []);
         }
     });
+};
+
+function sort(a, b) {
+    return a - b
+};
+
+function getLineUpIds(lineUp){
+    var ids = [];
+    if (_.isString(lineUp) && lineUp !== '') {
+        var lines = lineUp.split(',');
+        lines.forEach(function(l) {
+            var _ref = l.split(':'),
+                pos = _ref[0],
+                num = parseInt(_ref[1]);
+            ids.push(num)
+        });
+    };
+    return ids;
 };
 
 module.exports = PlayerDao;

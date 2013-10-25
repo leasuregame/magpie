@@ -145,7 +145,8 @@ var PlayerDao = (function(_super) {
     PlayerDao.getLineUpInfoByIds = function(ids,cb) {
         var start = Date.now();
         var _this = this;
-
+        var start2 = start;
+        var end;
         var players = null;
         var cards = null;
 
@@ -160,10 +161,16 @@ var PlayerDao = (function(_super) {
                 });
             },
             function(callback) {
+                end = Date.now();
+                console.log('******get playerIds useTime : ', (end - start2)/1000);
+                start2 = Date.now();
                 var cardIds = [];
                 players.forEach(function(p){
                     cardIds = _.union(cardIds, _.without(_.values(p.lineUpObj()),-1));
                 });
+                end = Date.now();
+                console.log('******union cardIds useTime : ', (end - start2)/1000);
+                start2 = Date.now();
                 callback(null,cardIds);
             },
             function(cardIds,callback) {

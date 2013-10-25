@@ -8,7 +8,7 @@
 
 describe("Area Server", function() {
     describe("Buy Handler", function() {
-        describe("area.buyHandler.buyPower", function() {
+        describe("area.buyHandler.buyProduct", function() {
 
 
             var BUY_POWER = { //购买体力
@@ -41,12 +41,16 @@ describe("Area Server", function() {
 
                 var buyPower = function(time) {
                     it('第' + time + '次购买' ,function() {
-                        request('area.buyHandler.buyPower',{time: 1},function(data) {
+                        request('area.buyHandler.buyProduct',{id:1,times: 1},function(data) {
                             console.log(data);
                             expect(data.code).toEqual(200);
                             power += BUY_POWER.power;
                             gold -= BUY_POWER.gold;
-                            expect(power).toEqual(data.msg.power);
+                            expect(50).toEqual(data.msg.power);
+                            expect(data.msg.consume).toEqual({
+                                "key": "gold",
+                                "value": gold
+                            });
                             doAjax('/player/113',{},function(msg) {
                                 player = msg.data;
                                 console.log(player);
@@ -83,7 +87,7 @@ describe("Area Server", function() {
 
                 it('无法购买体力',function() {
 
-                    request('area.buyHandler.buyPower',{time: 1},function(data) {
+                    request('area.buyHandler.buyProduct',{id:1, times: 1},function(data) {
 
                         console.log(data);
                         expect(data.code).toEqual(501);
@@ -91,7 +95,7 @@ describe("Area Server", function() {
                         doAjax('/player/113',{},function(msg) {
                             player = msg.data;
                             console.log(player);
-                            expect(JSON.parse(player.power).value).toEqual('150'    );
+                            expect(JSON.parse(player.power).value).toEqual('150');
                             expect(player.gold).toEqual(130);
                         });
 
@@ -119,7 +123,7 @@ describe("Area Server", function() {
 
                 it('无法购买体力',function() {
 
-                    request('area.buyHandler.buyPower',{time: 1},function(data) {
+                    request('area.buyHandler.buyProduct',{id:1, times: 1},function(data) {
 
                         console.log(data);
                         expect(data.code).toEqual(501);
@@ -148,6 +152,10 @@ describe("Area Server", function() {
 
                         doAjax('/update/player/' + 113 ,{
                             dailyGift: dg,
+                            power: {
+                                time: Date.now(),
+                                value: 0
+                            },
                             gold: 20
                         },function(){
                             loginWith('113','1',1);
@@ -158,7 +166,7 @@ describe("Area Server", function() {
 
                 it('无法购买体力',function() {
 
-                    request('area.buyHandler.buyPower',{time: 1},function(data) {
+                    request('area.buyHandler.buyProduct',{id:1, times: 1},function(data) {
 
                         console.log(data);
                         expect(data.code).toEqual(501);
@@ -176,7 +184,7 @@ describe("Area Server", function() {
 
             });
 
-            describe('当购买次数多余所剩次数时',function() {
+            describe('当购买次数多于所剩次数时',function() {
 
                 beforeEach(function() {
                     doAjax('/player/113',{},function(msg) {
@@ -188,6 +196,10 @@ describe("Area Server", function() {
 
                         doAjax('/update/player/' + 113 ,{
                             dailyGift: dg,
+                            power: {
+                                time: Date.now(),
+                                value: 0
+                            },
                             gold: 200
                         },function(){
                             loginWith('113','1',1);
@@ -198,7 +210,7 @@ describe("Area Server", function() {
 
                 it('无法购买体力',function() {
 
-                    request('area.buyHandler.buyPower',{time: 6},function(data) {
+                    request('area.buyHandler.buyProduct',{id:1 , times: 6},function(data) {
 
                         console.log(data);
                         expect(data.code).toEqual(501);

@@ -39,13 +39,9 @@ var MarkLayer = cc.Layer.extend({
     onTouchBegan: function (touch, event) {
         cc.log("MarkLayer onTouchBegan");
 
-        if (cc.rectContainsPoint(this._rect, touch.getLocation())) {
-            return false;
-        }
-
-        return true;
+        return (!cc.rectContainsPoint(this._rect, touch.getLocation()));
     }
-})
+});
 
 
 MarkLayer.create = function (rect) {
@@ -56,4 +52,4 @@ MarkLayer.create = function (rect) {
     }
 
     return null;
-}
+};

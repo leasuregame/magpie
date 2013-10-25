@@ -257,40 +257,30 @@ var SkillUpgradeLabel = cc.Node.extend({
     _onClickUpgrade: function () {
         cc.log("SkillUpgradeLabel _onClickUpgrade");
 
-        playEffect({
-            effectId: 11,
-            target: this,
-            loops: 1,
-            delay: 0.1,
-            zOrder: 10,
-            position: cc.p(360, 685),
-            clear: true
-        });
+        if (!this._leadCard.canUpgradeSkill()) {
+            TipLayer.tip("技能不可升级");
+            return;
+        }
 
-//        if (!this._leadCard.canUpgradeSkill()) {
-//            TipLayer.tip("技能不可升级");
-//            return;
-//        }
-//
-//        if (gameData.player.get("skillPoint") < this._leadCard.getUpgradeNeedSKillPoint()) {
-//            TipLayer.tip("技能点不足");
-//            return;
-//        }
-//
-//        var that = this;
-//        this._leadCard.upgradeSkill(function (data) {
-//            playEffect({
-//                effectId: 11,
-//                target: that,
-//                loops: 1,
-//                delay: 0.1,
-//                zOrder: 10,
-//                position: cc.p(360, 510),
-//                clear: true
-//            });
-//
-//            that.update();
-//        });
+        if (gameData.player.get("skillPoint") < this._leadCard.getUpgradeNeedSKillPoint()) {
+            TipLayer.tip("技能点不足");
+            return;
+        }
+
+        var that = this;
+        this._leadCard.upgradeSkill(function (data) {
+            playEffect({
+                effectId: 11,
+                target: that,
+                loops: 1,
+                delay: 0.1,
+                zOrder: 10,
+                position: cc.p(360, 510),
+                clear: true
+            });
+
+            that.update();
+        });
     }
 });
 

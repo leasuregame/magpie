@@ -72,7 +72,7 @@ var LineUp = Entity.extend({
     getLineUpByIndex: function (index) {
         cc.log("LineUp getLineUpByIndex: " + index);
 
-        return (this._lineUp[index] ? this._lineUp[index] : null);
+        return this._lineUp[index];
     },
 
     isLineUpCard: function (cardId) {

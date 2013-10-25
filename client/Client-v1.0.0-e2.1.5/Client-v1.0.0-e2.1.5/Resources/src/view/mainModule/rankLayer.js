@@ -176,4 +176,6 @@ RankLayer.canEnter = function () {
     }
 
     TipLayer.tip("排行榜" + limitLv + "级开放");
+
+    return false;
 };

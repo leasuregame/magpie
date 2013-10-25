@@ -125,7 +125,7 @@ var PlayerDao = (function(_super) {
                     callback();
                 });
             }
-        ],function(){
+        ],function(err){
 
             players.forEach(function(p){
                 p.addCards(cards.filter(function(c){ return c.playerId == p.id}));
@@ -140,6 +140,54 @@ var PlayerDao = (function(_super) {
             return cb(null, players);
         });
 
+    };
+
+    PlayerDao.getLineUpInfoByIds = function(ids,cb) {
+        var start = Date.now();
+        var _this = this;
+
+        var players = null;
+        var cards = null;
+
+        async.waterfall([
+            function(callback) {
+                _this.fetchMany({
+                    where: " id in (" + ids.toString() + ")",
+                    fields: ['id', 'name', 'lineUp']
+                }, function(err,plys){
+                    players = plys;
+                    callback();
+                });
+            },
+            function(callback) {
+                var cardIds = [];
+                players.forEach(function(p){
+                    cardIds = _.union(cardIds, _.without(_.values(p.lineUpObj()),-1));
+                });
+                callback(null,cardIds);
+            },
+            function(cardIds,callback) {
+                if(cardIds.length != 0)
+                    cardDao.fetchMany({
+                        where: ' id in (' + cardIds.toString() + ')',
+                        fields: ['playerId','tableId']
+                    }, function(err,res){
+                        cards = res;
+                        callback();
+                    });
+                else
+                    callback();
+            }
+        ],function(err){
+            if(cards)
+                players.forEach(function(p){
+                    p.addCards(cards.filter(function(c){ return c.playerId == p.id}));
+
+                });
+            var end = Date.now();
+            console.log('get player details time: ', (end - start)/1000);
+            return cb(null, players);
+        });
     };
 
     PlayerDao.orderByRanking = function(limit, cb) {

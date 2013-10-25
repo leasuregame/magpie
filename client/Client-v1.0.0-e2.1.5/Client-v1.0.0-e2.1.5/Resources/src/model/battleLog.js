@@ -73,7 +73,7 @@ var BattleLog = Entity.extend({
                             case "skillPoint" :
                                 player.add("skillPoint", this._reward[key]);
                                 break;
-                            case "spirit" :
+                            case "totalSpirit" :
                                 spirit.add("exp", this._reward[key]);
                                 break;
                             case "cards" :

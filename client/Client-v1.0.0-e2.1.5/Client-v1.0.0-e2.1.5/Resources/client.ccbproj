@@ -23,29 +23,29 @@
 	<key>javascriptBased</key>
 	<true/>
 	<key>javascriptMainCCB</key>
-	<string>MainScene</string>
+	<string></string>
 	<key>needRepublish</key>
-	<true/>
+	<false/>
 	<key>onlyPublishCCBs</key>
 	<false/>
 	<key>publishDirectory</key>
-	<string>Published-iOS</string>
+	<string>/res</string>
 	<key>publishDirectoryAndroid</key>
-	<string>Published-Android</string>
+	<string>/res</string>
 	<key>publishDirectoryHTML5</key>
 	<string>Published-HTML5</string>
 	<key>publishEnabledAndroid</key>
-	<false/>
-	<key>publishEnabledHTML5</key>
 	<true/>
+	<key>publishEnabledHTML5</key>
+	<false/>
 	<key>publishEnablediPhone</key>
 	<true/>
 	<key>publishResolutionHTML5_height</key>
-	<integer>320</integer>
+	<integer>1136</integer>
 	<key>publishResolutionHTML5_scale</key>
 	<integer>1</integer>
 	<key>publishResolutionHTML5_width</key>
-	<integer>480</integer>
+	<integer>640</integer>
 	<key>publishResolution_</key>
 	<true/>
 	<key>publishResolution_hd</key>

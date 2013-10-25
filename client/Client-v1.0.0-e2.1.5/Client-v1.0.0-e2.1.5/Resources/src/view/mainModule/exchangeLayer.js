@@ -81,7 +81,15 @@ var ExchangeLayer = cc.Layer.extend({
         this._selectStar4Item.setOffset(cc.p(-40, 0));
         this._selectStar4Item.hidIconImage();
 
-        var menu = cc.Menu.create(this._selectStar5Item, this._selectStar4Item);
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            this._onClickBack,
+            this
+        );
+        backItem.setPosition(cc.p(100, 1008));
+
+        var menu = cc.Menu.create(this._selectStar5Item, this._selectStar4Item, backItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -219,6 +227,12 @@ var ExchangeLayer = cc.Layer.extend({
         }
 
         this._update();
+    },
+
+    _onClickBack: function () {
+        cc.log("ExchangeLayer _onClickBack");
+
+        MainScene.getInstance().switchLayer(LotteryLayer);
     }
 });
 

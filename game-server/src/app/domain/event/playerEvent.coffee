@@ -16,19 +16,19 @@ exports.addEvents = (app, player) ->
         msg: tableId: card.tableId
       }, () ->
 
-  player.on 'exp.change', ->
-    if player.isUpgrade
-      player.isUpgrade = false
-      data = table.getTableItem('player_upgrade', player.lv - 1)
-      app.get('messageService').pushByPid player.id, {
-        route: 'onPlayerUpgrade'
-        msg: {
-          money: data.money,
-          energy: data.energy,
-          skillPoint: data.skillPoint,
-          elixir: data.elixir 
-        }
-      }, () ->
+  # player.on 'exp.change', ->
+  #   if player.isUpgrade
+  #     player.isUpgrade = false
+  #     data = table.getTableItem('player_upgrade', player.lv - 1)
+  #     app.get('messageService').pushByPid player.id, {
+  #       route: 'onPlayerUpgrade'
+  #       msg: {
+  #         money: data.money,
+  #         energy: data.energy,
+  #         skillPoint: data.skillPoint,
+  #         elixir: data.elixir 
+  #       }
+  #     }, () ->
 
   player.on 'power.resume', ->
     ply = player

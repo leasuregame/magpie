@@ -4,11 +4,17 @@ job = require('../dao/job')
 table = require('./table')
 achieve = require('../domain/achievement')
 playerManager = require('./playerManager')
+entityUtil = require '../util/entityUtil'
 _ = require('underscore')
 
 Manager = module.exports = 
   getRank: (playerId, cb) ->
     dao.rank.fetchOne sync: true, where: {playerId: playerId}, cb
+
+  getRankings: (ids, cb) ->
+    dao.rank.getRankingsByPids ids,(err,ranks) ->
+      rankings = ranks.map (r)-> r.ranking
+      cb(null,rankings)
 
   exchangeRankings: (player, targetId, isWin, cb) ->
     dao.rank.fetchMany where: " playerId in (#{[player.id, targetId].toString()}) ", (err, ranks) ->
@@ -25,7 +31,16 @@ Manager = module.exports =
       
       rewards = {ranking_elixir: 0}
       ###  获取竞技奖励，每天10次，还可额外购买10次 ###
-      countRewards(player, challenger, isWin, rewards) if player.dailyGift.challengeCount > 0
+      upgradeInfo = null
+      if player.dailyGift.challengeCount > 0
+        countRewards(player, challenger, isWin, rewards)
+        entityUtil.upgradePlayer player, rewards.exp, (isUpgrade, rew) ->
+          if isUpgrade
+            upgradeInfo = {
+              lv: player.lv
+              rewards: rew
+              friendsCount: player.friendsCount
+            }
 
       if isWin
         exchangeRanking(challenger, defender)
@@ -38,10 +53,10 @@ Manager = module.exports =
 
       # update rank info
       reflashRank(player, challenger, targetId, defender)
-      updateAll(player, challenger, defender, targetId, rewards, cb)
+      updateAll(player, challenger, defender, targetId, rewards, upgradeInfo, cb)
       
 
-updateAll = (player, challenger, defender, targetId, rewards, cb) ->
+updateAll = (player, challenger, defender, targetId, rewards, upgradeInfo, cb) ->
   jobs = [
     {
       type: 'update',
@@ -66,7 +81,7 @@ updateAll = (player, challenger, defender, targetId, rewards, cb) ->
     }
   ]
 
-  job.multJobs jobs, (err, res) -> cb(err, res, rewards) 
+  job.multJobs jobs, (err, res) -> cb(err, res, rewards, upgradeInfo) 
 
 exchangeRanking = (cha, def) ->
   if cha.ranking > def.ranking
@@ -115,7 +130,7 @@ countRewards = (player, challenger, isWin, rewards) ->
   rewards.money = parseInt rankData[_str+'money']*(1 + percent/100)
   rewards.elixir = parseInt rankData[_str+'elixir']*(1 + percent/100)
 
-  player.increase('exp', rewards.exp)
+  # player.increase('exp', rewards.exp)
   player.increase('money', rewards.money)
   player.increase('elixir', rewards.elixir)
   player.updateGift('challengeCount', player.dailyGift.challengeCount-1)

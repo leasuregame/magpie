@@ -119,8 +119,13 @@ describe('Area Server', function() {
 			}
 
 			describe('when collect count is the max', function() {
+				var n = new Date();
 				beforeEach(function() {
-					loginWith('user5', '1', 1);
+					doAjax('/update/player/' + 108, {
+						resetDate: n.getFullYear() + '-' + (n.getMonth() + 1) + '-' + n.getDate()
+					}, function(data) {
+						loginWith('user5', '1', 1);
+					});					
 				});
 
 				it('should can not collect spirit again in current day', function() {

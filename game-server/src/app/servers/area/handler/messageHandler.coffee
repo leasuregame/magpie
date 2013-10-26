@@ -219,12 +219,23 @@ Handler::deleteFriend = (msg, session, next) ->
   playerId = session.get('playerId')
   friendId = msg.friendId
 
-  dao.friend.deleteFriend {
-    playerId: playerId
-    friendId: friendId
-  }, (err, res) ->
+  async.parallel [
+    (cb) ->
+      dao.friend.deleteFriend {
+        playerId: playerId
+        friendId: friendId
+      }, cb
+
+    (cb) ->
+      playerManager.getPlayerInfo {pid: playerId}, cb
+  ], (err, results) =>
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    message = results[0]
+    player = results[1]
+    player.delFriend(friendId)
+    playerManager.delFriendIfOnline friendId, playerId
 
     next(null, {code: 200})
     sendMessage @app, friendId, {
@@ -270,6 +281,7 @@ Handler::addFriend = (msg, session, next) ->
             type: msgConfig.MESSAGETYPE.ADDFRIEND
             sender: playerId
             receiver: friend.id
+            status: msgConfig.MESSAGESTATUS.ASKING
           }, (err, res) ->
             if not err and !!res
               cb(null, true)
@@ -361,15 +373,24 @@ Handler::accept = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    _result = {
+    newFriend = {
       id: sender.id
       name: sender.name
       lv: sender.lv
       ability: sender.ability
     }
-    next(null, {code: 200, msg: _result})
 
-    player.friends.push _result
+    myInfo = {
+      id: playerId
+      name: playerName
+      lv: player.lv
+      ability: player.ability
+    }
+
+    next(null, {code: 200, msg: newFriend})
+
+    player.addFriend newFriend
+    playerManager.addFriendIfOnline sender.id, myInfo
 
     achieve.friends(player, player.friends.length)
     dao.friend.getFriends sender.id, (err, senderFriends) ->
@@ -382,12 +403,7 @@ Handler::accept = (msg, session, next) ->
       route: 'onFriendAction'
       msg:
         type: ADD_FRIEND_MESSAGE 
-        friend : {
-          id: playerId
-          name: playerName
-          lv: player.lv
-          ability: player.ability
-        }
+        friend : myInfo
     }
 
 Handler::reject = (msg, session, next) ->

@@ -144,8 +144,6 @@ var PlayerDao = (function(_super) {
 
     PlayerDao.getLineUpInfoByIds = function(ids,cb) {
         var start = Date.now();
-        var _this = this;
-        var start2 = start;
         var end;
         var players = null;
         var cards = null;
@@ -154,23 +152,16 @@ var PlayerDao = (function(_super) {
             function(callback) {
                 var sql = "select id,name,lineUp from player where id in (" + ids.toString() + ")";
                 dbClient.query(sql,[],function(err,plys){
-                    //console.log('players = ',plys);
                     players = plys;
                     callback();
                 });
             },
             function(callback) {
-                end = Date.now();
-                console.log('******get playerIds useTime : ', (end - start2)/1000);
-                start2 = Date.now();
                 var cardIds = [];
                 players.forEach(function(p){
                     cardIds = cardIds.concat(_.without(getLineUpIds(p.lineUp),-1));
                 });
                 cardIds.sort(sort);
-                end = Date.now();
-                console.log('******union cardIds useTime : ', (end - start2)/1000);
-                start2 = Date.now();
                 callback(null,cardIds);
             },
             function(cardIds,callback) {
@@ -181,14 +172,10 @@ var PlayerDao = (function(_super) {
                         callback();
                     });
                 }
-
                 else
                     callback();
             }
         ],function(err){
-            end = Date.now();
-            console.log('******select cards useTime : ', (end - start2)/1000);
-            start2 = Date.now();
             if(cards)
                 players.forEach(function(p){
                     p.cards = cards.filter(function(c){ return c.playerId == p.id});

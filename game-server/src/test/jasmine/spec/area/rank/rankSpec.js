@@ -337,11 +337,11 @@ describe("Area Server", function() {
         });
 
         describe("ranking list", function() {
-            // beforeAll(function() {
-            //     doAjax('/loaddata/all', {}, function(data) {
-            //         expect(data).toEqual('done');
-            //     });
-            // });
+            beforeAll(function() {
+                doAjax('/loaddata/all', {}, function(data) {
+                    expect(data).toEqual('done');
+                });
+            });
 
             var ids = [20000, 17000, 15000, 13000, 11000, 10700, 10300, 10199, 10013, 10001];
             var steps = [106, 83, 62, 41, 19, 14, 11, 5, 1, 1];
@@ -447,7 +447,7 @@ describe("Area Server", function() {
 
                             expect(rankList[20].type).toEqual(0);
                         });
-                    })
+                    });
 
                 });
 

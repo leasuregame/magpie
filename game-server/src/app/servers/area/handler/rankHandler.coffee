@@ -199,11 +199,12 @@ genRankings = (ranking) ->
 
 filterPlayersInfo = (players, ranks, rankings) ->
   players.map (p) -> 
+    console.log '-1-', p.id, p.name, p.cards
     {
       playerId: p.id
       name: p.name
       ranking: ranks[p.id]
-      cards: p.cards.map (c) -> c.tableId
+      cards: if p.cards? then p.cards.map (c) -> c.tableId else []
       type: rankings[ranks[p.id]]
     }
     

@@ -89,7 +89,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/调试背景.jpg</string>
+							<string>effect/tiaoshi.jpg</string>
 						</array>
 					</dict>
 					<dict>
@@ -1132,8 +1132,6 @@
 						<false/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

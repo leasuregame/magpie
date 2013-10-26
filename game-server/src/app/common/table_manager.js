@@ -15,7 +15,7 @@ module.exports = {
     var jsontable = path.join(DATA_DIR, 'table.json');
     if (fs.existsSync(jsontable)){
       this.loadTableData(JSON.parse(fs.readFileSync(jsontable)));
-      fs.watchaFile(jsontable, function(curr, prev) {
+      fs.fs.watchFile(jsontable, function(curr, prev) {
         self.reloadTables();
       });
     } else {

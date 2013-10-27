@@ -71,12 +71,12 @@ var TournamentRankLayer = cc.Layer.extend({
                 var rankIcon = cc.Sprite.create(main_scene_image["icon" + (201 + i)]);
                 rankIcon.setPosition(cc.p(60, y + 50));
                 scrollViewLayer.addChild(rankIcon);
+            } else {
+                var rankLabel = StrokeLabel.create(i + 1, "Arial", 55);
+                rankLabel.setColor(cc.c3b(255, 252, 175));
+                rankLabel.setPosition(cc.p(60, y + 52));
+                scrollViewLayer.addChild(rankLabel);
             }
-
-            var rankLabel = cc.LabelTTF.create(i + 1, "Arial", 55);
-            rankLabel.setColor(cc.c3b(255, 252, 175));
-            rankLabel.setPosition(cc.p(60, y + 50));
-            scrollViewLayer.addChild(rankLabel);
 
             var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
             nameIcon.setContentSize(cc.size(155, 35));

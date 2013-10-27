@@ -16,7 +16,8 @@ var TournamentLayer = cc.Layer.extend({
     _rankList: [],
     _selectId: 0,
     _scrollView: null,
-    _rankRewardItem: null,
+    _rewardLabel: null,
+    _rewardItem: null,
     _menu: null,
     _expProgress: null,
     _lvLabel: null,
@@ -48,10 +49,10 @@ var TournamentLayer = cc.Layer.extend({
         playerLabel.setPosition(cc.p(40, 916));
         this.addChild(playerLabel);
 
-        var nameLabel = StrokeLabel.create(gameData.player.get("name"), "STHeitiTC-Medium", 30);
+        var nameLabel = StrokeLabel.create(gameData.player.get("name"), "STHeitiTC-Medium", 28);
         nameLabel.setColor(cc.c3b(255, 239, 131));
         nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        nameLabel.setPosition(cc.p(160, 1013));
+        nameLabel.setPosition(cc.p(150, 1013));
         this.addChild(nameLabel);
 
         var expBg = cc.Sprite.create(main_scene_image.exp_bg);
@@ -91,9 +92,14 @@ var TournamentLayer = cc.Layer.extend({
         this.addChild(this._abilityLabel);
 
         var rewardIcon = cc.Sprite.create(main_scene_image.icon35);
-        rewardIcon.setPosition(cc.p(360, 910));
+        rewardIcon.setPosition(cc.p(360, 900));
         this.addChild(rewardIcon);
         rewardIcon.setScaleX(2.2);
+
+        this._rewardLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 24);
+        this._rewardLabel.setColor(cc.c3b(255, 239, 131));
+        this._rewardLabel.setPosition(cc.p(360, 900));
+        this.addChild(this._rewardLabel);
 
         var buyCountItem = cc.MenuItemImage.create(
             main_scene_image.button16,
@@ -103,9 +109,18 @@ var TournamentLayer = cc.Layer.extend({
         );
         buyCountItem.setPosition(cc.p(575, 1015));
 
-        this._menu = cc.Menu.create(buyCountItem);
-        this._menu.setPosition(cc.p(0, 0));
-        this.addChild(this._menu);
+        this._rewardItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button10,
+            main_scene_image.button10s,
+            main_scene_image.icon123,
+            this._onClickRankReward,
+            this
+        );
+        this._rewardItem.setPosition(cc.p(595, 900));
+
+        var menu = cc.Menu.create(buyCountItem, this._rewardItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu);
 
         this._skyDialog = SkyDialog.create();
         this.addChild(this._skyDialog, 10);
@@ -175,31 +190,24 @@ var TournamentLayer = cc.Layer.extend({
     _updateRankRewardItem: function () {
         cc.log("TournamentLayer _updateRankRewardItem");
 
-        if (this._rankRewardItem != null) {
-            this._rankRewardItem.removeFromParent();
-        }
+        var reward = gameData.tournament.getLastRankReward();
 
-        var rewardRanking = gameData.tournament.getLastRankReward();
+        if (reward) {
 
-        if (rewardRanking) {
-            this._rankRewardItem = cc.MenuItemFont.create(
-                "你已达到第 " + rewardRanking + " 排名，点击领取奖励",
-                this._onClickRankReward,
-                this
-            );
-            this._rankRewardItem.setFontSize(26);
-            this._rankRewardItem.setColor(cc.c3b(255, 239, 131));
-            this._rankRewardItem.setPosition(cc.p(360, 910));
-            this._menu.addChild(this._rankRewardItem);
+            this._rewardLabel.setVisible(true);
 
-            this._rankRewardItem.runAction(
-                cc.RepeatForever.create(
-                    cc.Sequence.create(
-                        cc.ScaleTo.create(2, 1.05, 1.05),
-                        cc.ScaleTo.create(2, 1, 1)
-                    )
-                )
-            );
+            if (reward.canReceive) {
+                this._rewardLabel.setString("您已达到" + reward.ranking + "名 点击领取奖励");
+
+                this._rewardItem.setVisible(true);
+            } else {
+                this._rewardLabel.setString("首次达到" + reward.ranking + "名 可领取大量仙丹奖励 继续努力");
+
+                this._rewardItem.setVisible(false);
+            }
+        } else {
+            this._rewardLabel.setVisible(false);
+            this._rewardItem.setVisible(false);
         }
     },
 

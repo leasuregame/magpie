@@ -15,7 +15,8 @@
 var Tournament = Entity.extend({
     _ranking: 0,
     _count: 0,
-    _rankReward: [],
+    _canGetReward: [],
+    _notCanGetReward: [],
     _rankList: [],
 
     init: function (data) {
@@ -23,7 +24,8 @@ var Tournament = Entity.extend({
 
         this._ranking = 0;
         this._count = 0;
-        this._rankReward = [];
+        this._canGetReward = [];
+        this._notCanGetReward = [];
         this._rankList = [];
 
         this.update(data);
@@ -36,7 +38,8 @@ var Tournament = Entity.extend({
 
         this.set("ranking", data.ranking);
         this.set("count", data.challengeCount);
-        this.set("rankReward", data.rankReward);
+        this.set("canGetReward", data.canGetReward);
+        this.set("notCanGetReward", data.notCanGetReward);
 
 
         if (data.rankList) {
@@ -76,7 +79,21 @@ var Tournament = Entity.extend({
     getLastRankReward: function () {
         cc.log("Tournament getLastRankReward");
 
-        return this._rankReward[0];
+        if (this._canGetReward.length > 0) {
+            return {
+                ranking: this._canGetReward[0],
+                canReceive: true
+            };
+        }
+
+        if (this._notCanGetReward.length > 0) {
+            return {
+                ranking: this._notCanGetReward[0],
+                canReceive: false
+            };
+        }
+
+        return  null;
     },
 
     sync: function (cb) {
@@ -142,12 +159,12 @@ var Tournament = Entity.extend({
     receive: function (cb) {
         cc.log("Tournament receive");
 
-        var rewardRanking = this.getLastRankReward();
+        var reward = this.getLastRankReward();
 
-        if (rewardRanking) {
+        if (reward && reward.canReceive) {
             var that = this;
             lzWindow.pomelo.request("area.rankHandler.getRankingReward", {
-                ranking: rewardRanking
+                ranking: reward.ranking
             }, function (data) {
                 cc.log(data);
 
@@ -157,7 +174,8 @@ var Tournament = Entity.extend({
                     var msg = data.msg;
 
                     that.update({
-                        rankReward: msg.rankingRewards
+                        canGetReward: msg.canGetReward,
+                        notCanGetReward: msg.notCanGetReward
                     });
 
                     cb();
@@ -167,6 +185,8 @@ var Tournament = Entity.extend({
                     TipLayer.tip("领取奖励出错");
                 }
             });
+        } else {
+            TipLayer.tip("领取奖励出错");
         }
     }
 });

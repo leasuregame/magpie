@@ -109,7 +109,7 @@ lz.clone = function (obj) {
     for (var key in obj) {
         var copy = obj[key];
         // Beware that typeof null == "object" !
-        if (((typeof copy) == "object") && copy && !(copy instanceof cc.Node) && !(copy instanceof HTMLElement)) {
+        if (((typeof copy) == "object") && copy && !(copy instanceof cc.Node)) {
             newObj[key] = lz.clone(copy);
         } else {
             newObj[key] = copy;

@@ -26,7 +26,6 @@ var TournamentLabel = cc.Node.extend({
         cc.log("TournamentLabel onEnter");
 
         this._super();
-        this.update();
     },
 
     init: function (target, data) {

@@ -54,7 +54,8 @@ var AchievementLayer = cc.Layer.extend({
             y -= 100;
 
             var bgSprite = cc.Sprite.create(main_scene_image.button15);
-            bgSprite.setScale(1.04, 0.75);
+            bgSprite.setScaleX(1.04);
+            bgSprite.setScaleY(0.75);
             bgSprite.setAnchorPoint(cc.p(0, 0));
             bgSprite.setPosition(cc.p(0, y));
             scrollViewLayer.addChild(bgSprite);
@@ -111,25 +112,25 @@ var AchievementLayer = cc.Layer.extend({
                     this._scrollViewElement[key].isReceiverIcon = isReceiverIcon;
                     this._scrollViewElement[key].receiverItem = receiverItem;
                 } else {
-                    var energyIcon = cc.Sprite.create(main_scene_image.icon213);
-                    energyIcon.setPosition(cc.p(410, y + 40));
-                    scrollViewLayer.addChild(energyIcon);
-
-                    var energyLabel = cc.LabelTTF.create(achievement[key].energy, "Arial", 25);
-                    energyLabel.setColor(cc.c3b(56, 3, 5));
-                    energyLabel.setAnchorPoint(cc.p(0, 0.5));
-                    energyLabel.setPosition(cc.p(430, y + 40));
-                    scrollViewLayer.addChild(energyLabel);
-
                     var goldIcon = cc.Sprite.create(main_scene_image.icon214);
-                    goldIcon.setPosition(cc.p(525, y + 40));
+                    goldIcon.setPosition(cc.p(410, y + 40));
                     scrollViewLayer.addChild(goldIcon);
 
                     var goldLabel = cc.LabelTTF.create(achievement[key].gold, "Arial", 25);
                     goldLabel.setColor(cc.c3b(56, 3, 5));
                     goldLabel.setAnchorPoint(cc.p(0, 0.5));
-                    goldLabel.setPosition(cc.p(545, y + 40));
+                    goldLabel.setPosition(cc.p(430, y + 40));
                     scrollViewLayer.addChild(goldLabel);
+
+                    var energyIcon = cc.Sprite.create(main_scene_image.icon213);
+                    energyIcon.setPosition(cc.p(510, y + 40));
+                    scrollViewLayer.addChild(energyIcon);
+
+                    var energyLabel = cc.LabelTTF.create(achievement[key].energy, "Arial", 25);
+                    energyLabel.setColor(cc.c3b(56, 3, 5));
+                    energyLabel.setAnchorPoint(cc.p(0, 0.5));
+                    energyLabel.setPosition(cc.p(530, y + 40));
+                    scrollViewLayer.addChild(energyLabel);
                 }
             }
         }

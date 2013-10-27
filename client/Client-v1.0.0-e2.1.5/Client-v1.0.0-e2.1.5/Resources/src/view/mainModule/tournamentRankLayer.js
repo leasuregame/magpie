@@ -48,7 +48,8 @@ var TournamentRankLayer = cc.Layer.extend({
                 this._onClickPlayer(i),
                 this
             );
-            playerItem.setScale(1.04, 0.75);
+            playerItem.setScaleX(1.04);
+            playerItem.setScaleY(0.75);
             playerItem.setAnchorPoint(cc.p(0, 0));
             playerItem.setPosition(cc.p(0, y));
             menu.addChild(playerItem);
@@ -59,7 +60,8 @@ var TournamentRankLayer = cc.Layer.extend({
                 playerItem.setEnabled(false);
 
                 var myselfSprite = cc.Sprite.create(main_scene_image.icon257);
-                myselfSprite.setScale(1.04, 0.75);
+                myselfSprite.setScaleX(1.04);
+                myselfSprite.setScaleY(0.75);
                 myselfSprite.setAnchorPoint(cc.p(0, 0));
                 myselfSprite.setPosition(cc.p(0, y));
                 scrollViewLayer.addChild(myselfSprite);

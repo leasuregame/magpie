@@ -61,7 +61,7 @@ var Friend = Entity.extend({
                 });
 
                 lzWindow.pomelo.on("onFriendAction", function (data) {
-                    cc.log("***** on accept:");
+                    cc.log("***** on friend action:");
                     cc.log(data);
 
                     that._onFriendAction(data.msg);

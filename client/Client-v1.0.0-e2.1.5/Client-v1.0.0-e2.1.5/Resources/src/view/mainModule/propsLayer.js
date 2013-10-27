@@ -165,7 +165,7 @@ var PropsLayer = cc.Layer.extend({
 
             cc.log(product);
 
-            if(product.count <= 0) {
+            if (product.count <= 0) {
                 TipLayer.tip(product.tip);
                 return;
             }

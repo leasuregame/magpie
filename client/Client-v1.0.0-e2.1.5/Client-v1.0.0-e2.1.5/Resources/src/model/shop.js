@@ -268,8 +268,10 @@ var Shop = Entity.extend({
         expCard: function (table) {
             var product = {
                 name: table.name,
-                type: table.consume_type,
+                consumeType: table.consume_type,
                 price: table.consume,
+                obtain: table.obtain,
+                unit: "张",
                 count: 0,
                 tip: ""
             };
@@ -300,8 +302,10 @@ var Shop = Entity.extend({
         money: function (table) {
             var product = {
                 name: table.name,
-                type: table.consume_type,
+                consumeType: table.consume_type,
                 price: table.consume,
+                obtain: table.obtain,
+                unit: "仙币",
                 count: 0,
                 tip: ""
             };
@@ -332,8 +336,10 @@ var Shop = Entity.extend({
         power: function (table) {
             var product = {
                 name: table.name,
-                type: table.consume_type,
+                consumeType: table.consume_type,
                 price: table.consume,
+                obtain: table.obtain,
+                unit: "点",
                 count: 0,
                 tip: ""
             };
@@ -371,8 +377,10 @@ var Shop = Entity.extend({
         challengeCount: function (table) {
             var product = {
                 name: table.name,
-                type: table.consume_type,
+                consumeType: table.consume_type,
                 price: table.consume,
+                obtain: table.obtain,
+                unit: "次",
                 count: 0,
                 tip: ""
             };

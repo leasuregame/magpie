@@ -15,6 +15,7 @@
 var AmountLayer = LazyLayer.extend({
     _cb: null,
     _price: 0,
+    _obtain: 0,
     _count: 0,
     _maxCount: 0,
     _countLabel: null,
@@ -35,9 +36,14 @@ var AmountLayer = LazyLayer.extend({
         this._cb = cb || function () {
         };
         this._price = data.price || 0;
+        this._obtain = data.obtain || 0;
         this._count = 1;
         this._maxCount = data.count || 0;
         tital = "购买" + data.name || "";
+
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 640, 1136);
+        bgLayer.setPosition(cc.p(40, 0));
+        this.addChild(bgLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(550, 300));
@@ -49,20 +55,37 @@ var AmountLayer = LazyLayer.extend({
         titleLabel.setPosition(cc.p(360, 690));
         this.addChild(titleLabel);
 
-        var consumeLabelIcon = StrokeLabel.create("消耗:", "STHeitiTC-Medium", 20);
+        var consumeLabelIcon = cc.LabelTTF.create("消耗:", "STHeitiTC-Medium", 20);
         consumeLabelIcon.setColor(cc.c3b(255, 252, 175));
-        consumeLabelIcon.setPosition(cc.p(300, 630));
+        consumeLabelIcon.setPosition(cc.p(160, 630));
         this.addChild(consumeLabelIcon);
 
-        var consumeIcon = cc.Sprite.create(main_scene_image[gameGoodsIcon[data.type]]);
-        consumeIcon.setPosition(cc.p(360, 630));
+        var consumeIcon = cc.Sprite.create(main_scene_image[gameGoodsIcon[data.consumeType]]);
+        consumeIcon.setScale(0.7);
+        consumeIcon.setPosition(cc.p(225, 630));
         this.addChild(consumeIcon);
 
-        this._consumeLabel = StrokeLabel.create(0, "STHeitiTC-Medium", 20);
+        this._consumeLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._consumeLabel.setColor(cc.c3b(255, 252, 175));
         this._consumeLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._consumeLabel.setPosition(cc.p(400, 627));
+        this._consumeLabel.setPosition(cc.p(250, 627));
         this.addChild(this._consumeLabel);
+
+        var obtainLabelIcon = cc.LabelTTF.create("获得:", "STHeitiTC-Medium", 20);
+        obtainLabelIcon.setColor(cc.c3b(255, 252, 175));
+        obtainLabelIcon.setPosition(cc.p(400, 630));
+        this.addChild(obtainLabelIcon);
+
+        this._obtainLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
+        this._obtainLabel.setColor(cc.c3b(255, 252, 175));
+        this._obtainLabel.setPosition(cc.p(480, 627));
+        this.addChild(this._obtainLabel);
+
+        var obtainIcon = cc.LabelTTF.create(data.unit, "STHeitiTC-Medium", 20);
+        obtainIcon.setColor(cc.c3b(255, 252, 175));
+        obtainIcon.setPosition(cc.p(560, 630));
+        this.addChild(obtainIcon);
+
 
         countIcom = cc.Sprite.create(main_scene_image.icon117);
         countIcom.setPosition(cc.p(360, 570));
@@ -145,8 +168,12 @@ var AmountLayer = LazyLayer.extend({
         this._count = Math.max(this._count, 0);
         this._count = Math.min(this._count, this._maxCount);
         this._countLabel.setString(this._count);
+
         var consume = this._price * this._count;
         this._consumeLabel.setString(consume);
+
+        var obtain = this._obtain * this._count;
+        this._obtainLabel.setString(obtain);
     },
 
     _onClickAdd: function () {

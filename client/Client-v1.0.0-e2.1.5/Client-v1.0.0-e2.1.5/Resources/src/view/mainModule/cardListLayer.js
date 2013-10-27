@@ -56,6 +56,8 @@ var CardListLayer = cc.Layer.extend({
 
         var cardCount = gameData.cardList.get("length");
 
+        this._cardLabel = {};
+        this._otherData = {};
         this._excludeList = [];
         this._cb = cb;
         this._otherData = otherData;
@@ -204,6 +206,8 @@ var CardListLayer = cc.Layer.extend({
 
         for (var key in this._cardLabel) {
             if (!flag[key]) {
+                cc.log(key);
+
                 this._cardLabel[key].removeFromParent();
                 delete this._cardLabel[key];
             }

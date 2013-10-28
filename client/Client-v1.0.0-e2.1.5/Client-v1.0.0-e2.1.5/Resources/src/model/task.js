@@ -215,14 +215,8 @@ var Task = Entity.extend({
                 var reward = {
                     money: msg.rewards.money_obtain
                 };
-                var player = gameData.player;
 
-                player.adds(reward);
-
-                player.sets({
-                    lv: msg.lv,
-                    exp: msg.exp
-                });
+                gameData.player.adds(reward);
 
                 cb(reward);
             } else {

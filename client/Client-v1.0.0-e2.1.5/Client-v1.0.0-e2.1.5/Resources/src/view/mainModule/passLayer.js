@@ -474,7 +474,7 @@ var PassLayer = cc.Layer.extend({
     _wipeOutAnimation: function (reward) {
         cc.log("PassLayer _wipeOutAnimation");
 
-        LazyLayer.showCloudLayer();
+        LazyLayer.showCloudAll();
 
         this._locate(1);
 
@@ -489,7 +489,7 @@ var PassLayer = cc.Layer.extend({
             index += 1;
 
             if (index > this._top) {
-                LazyLayer.closeCloudLayer();
+                LazyLayer.closeCloudAll();
                 this._showWipeOutReward(reward);
                 return;
             }

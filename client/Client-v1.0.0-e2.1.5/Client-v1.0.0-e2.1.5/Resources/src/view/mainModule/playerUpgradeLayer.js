@@ -18,6 +18,8 @@ var PlayerUpgradeLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
         bgLayer.setPosition(GAME_ZERO);
         this.addChild(bgLayer);
@@ -60,6 +62,7 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         okItem.setPosition(cc.p(360, 460));
 
         var menu = cc.Menu.create(okItem);
+        menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
         layer.addChild(menu);
 
@@ -95,5 +98,5 @@ PlayerUpgradeLayer.create = function (data) {
 PlayerUpgradeLayer.pop = function (data) {
     var playerUpgradeLayer = PlayerUpgradeLayer.create(data);
 
-    MainScene.getInstance().getLayer().addChild(playerUpgradeLayer, 10);
+    MainScene.getInstance().addChild(playerUpgradeLayer, 10);
 };

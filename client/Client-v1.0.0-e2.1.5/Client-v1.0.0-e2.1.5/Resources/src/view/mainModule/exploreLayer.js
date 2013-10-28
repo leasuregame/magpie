@@ -347,7 +347,7 @@ var ExploreLayer = cc.Layer.extend({
         cc.log("ExploreLayer _lock");
 
         this._exploreItem.setEnabled(false);
-        LazyLayer.showCloudLayer();
+        LazyLayer.showCloudAll();
         this.setTouchEnabled(false);
     },
 
@@ -355,7 +355,7 @@ var ExploreLayer = cc.Layer.extend({
         cc.log("ExploreLayer _unlock");
 
         this._exploreItem.setEnabled(true);
-        LazyLayer.closeCloudLayer();
+        LazyLayer.closeCloudAll();
         this.setTouchEnabled(true);
     },
 
@@ -368,6 +368,7 @@ var ExploreLayer = cc.Layer.extend({
             this._index += 1;
 
             if (this._index > this._maxIndex) {
+                this._unlock();
                 this._onClickBack();
             }
 
@@ -437,6 +438,7 @@ var ExploreLayer = cc.Layer.extend({
 
                 var toNext = this._reward.toNext;
                 var goldList = this._reward.goldList;
+                var upgradeReward = this._reward.upgradeReward;
 
                 this._reward = null;
 
@@ -447,7 +449,11 @@ var ExploreLayer = cc.Layer.extend({
                 }
 
                 if (goldList) {
-                    GoldLayer.play(goldList);
+                    GoldLayer.pop(goldList);
+                }
+
+                if (upgradeReward) {
+                    PlayerUpgradeLayer.pop(upgradeReward);
                 }
             }, 1);
 

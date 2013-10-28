@@ -274,7 +274,7 @@ GoldLayer.create = function (data) {
 };
 
 
-GoldLayer.play = function (data) {
+GoldLayer.pop = function (data) {
     var goldLayer = GoldLayer.create(data);
 
     cc.Director.getInstance().getRunningScene().addChild(goldLayer, 2);

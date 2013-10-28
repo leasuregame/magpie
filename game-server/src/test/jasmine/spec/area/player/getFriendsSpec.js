@@ -86,33 +86,10 @@ describe("Area Server", function() {
 					request('area.playerHandler.getFriends', {}, function(data) {
 						console.log(data);
 						expect(data.code).toEqual(200);
-						expect(data.msg).toEqual({
-							friends: [{
-								id: 100,
-								name: 'Attacker',
-								lv: 10,
-								ability: 81671,
-								canReceive: false,
-								canGive: true
-							}, {
-								id: 101,
-								name: 'Defender',
-								lv: 31,
-								ability: 95123,
-								canReceive: false,
-								canGive: true
-							}, {
-								id: 102,
-								name: 'Player power is not enough',
-								lv: 40,
-								ability: 0,
-								canReceive: false,
-								canGive: true
-							}],
-							giveCount: 15,
-							receiveCount: 15,
-							friendsCount: 40
-						});
+						expect(data.msg.giveCount).toEqual(15);
+						expect(data.msg.receiveCount).toEqual(15);
+						expect(data.msg.friendsCount).toEqual(40);
+						expect(data.msg.friends.length).toEqual(3);
 					});
 				});
 			});

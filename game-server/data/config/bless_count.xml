@@ -15,11 +15,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>15260</WindowHeight>
+  <WindowHeight>11500</WindowHeight>
   <WindowWidth>25600</WindowWidth>
-  <WindowTopX>2540</WindowTopX>
-  <WindowTopY>600</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
+  <WindowTopX>8320</WindowTopX>
+  <WindowTopY>1000</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -37,38 +37,38 @@
  <Worksheet ss:Name="祝福次数配置表">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">玩家等级</Data></Cell>
     <Cell><Data ss:Type="String">祝福次数</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">give_bless_count</Data></Cell>
+    <Cell><Data ss:Type="String">bless_count</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">31</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">51</Data></Cell>
     <Cell><Data ss:Type="Number">15</Data></Cell>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">70</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">71</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>5</ActiveRow>
-     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -78,33 +78,35 @@
  <Worksheet ss:Name="接收祝福次数配置表">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">玩家等级</Data></Cell>
     <Cell><Data ss:Type="String">可接收祝福次数</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">receive_bless_count</Data></Cell>
+    <Cell><Data ss:Type="String">bless_count</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">31</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">51</Data></Cell>
     <Cell><Data ss:Type="Number">15</Data></Cell>
    </Row>
-   <Row>
-    <Cell><Data ss:Type="Number">70</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">71</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -120,23 +122,23 @@
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
    <Column ss:Width="156"/>
    <Column ss:Width="173"/>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">sheet_name</Data></Cell>
     <Cell><Data ss:Type="String">export_name</Data></Cell>
     <Cell><Data ss:Type="String">merge_to</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">祝福次数配置表</Data></Cell>
     <Cell><Data ss:Type="String">give_bless_config</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">接收祝福次数配置表</Data></Cell>
     <Cell><Data ss:Type="String">receive_bless_config</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Unsynced/>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

@@ -39,8 +39,10 @@ var MAX_SPIRITPOOL_LV = lvLimit.spirit_pool_lv_limit;
 
 var giveBlessTab = table.getTable('give_bless_config');
 var receiveBlessTab = table.getTable('receive_bless_config');
-var DEFAULT_RECEIVE_COUNT = giveBlessTab.getItem(1).bless_count;
-var DEFAULT_GIVE_COUNT = receiveBlessTab.getItem(1).bless_count;
+var friendsCountTab = table.getTable('friends_config');
+var DEFAULT_RECEIVE_COUNT = giveBlessTab.getItem(1).count;
+var DEFAULT_GIVE_COUNT = receiveBlessTab.getItem(1).count;
+var DEFAULT_FRIENDS_COUNT = friendsCountTab.getItem(1).count;
 
 var defaultMark = function() {
     var i, result = [];
@@ -313,7 +315,7 @@ var Player = (function(_super) {
         cards: {},
         rank: {},
         friends: [],
-        friendsCount: 20,
+        friendsCount: DEFAULT_FRIENDS_COUNT,
         rowFragmentCount: 0,
         highFragmentCount: 0,
         highDrawCardCount: 0,
@@ -322,13 +324,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.resetData = function() {
-        var friendsCountMap = {
-            1: 20,
-            31: 30,
-            51: 40,
-            71: 50
 
-        };
         var realCount = function(lv, tab) {
             var keys = tab.map(function(i) {
                 return i.id;
@@ -339,7 +335,7 @@ var Player = (function(_super) {
             for (_i = 0, _len = _ref.length; _i < _len; _i++) {
                 k = _ref[_i];
                 if (lv >= k) {
-                    step = tab.getItem(k).bles_count;
+                    step = tab.getItem(k).count;
                     break;
                 }
             }
@@ -374,7 +370,7 @@ var Player = (function(_super) {
         this.dailyGift = dg;
         this.pass = pass;
         this.spiritPool = spiritPool;
-        this.friendsCount = realCount(this.lv, friendsCountMap) + vipPrivilege.friend_count;
+        this.friendsCount = realCount(this.lv, friendsCountTab) + vipPrivilege.friend_count;
         this.resetDate = utility.shortDateString();
     };
 

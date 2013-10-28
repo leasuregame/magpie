@@ -196,7 +196,6 @@ describe("Area Server", function() {
 									'pass',
 									'power',
 									'exp',
-									'lv',
 									'upgradeInfo'
 								]);
 
@@ -212,7 +211,6 @@ describe("Area Server", function() {
 									'pass',
 									'power',
 									'exp',
-									'lv'
 								]);
 							}
 							expect(data.msg.battleLog.winner).toEqual('own');

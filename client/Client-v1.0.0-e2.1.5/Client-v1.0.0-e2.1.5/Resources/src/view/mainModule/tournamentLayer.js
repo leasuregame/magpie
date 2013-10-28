@@ -77,7 +77,7 @@ var TournamentLayer = cc.Layer.extend({
 
         this._countLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
         this._countLabel.setColor(cc.c3b(255, 239, 131));
-        this._countLabel.setPosition(cc.p(555, 1013));
+        this._countLabel.setPosition(cc.p(530, 1013));
         this.addChild(this._countLabel);
 
         this._rankingLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
@@ -95,7 +95,15 @@ var TournamentLayer = cc.Layer.extend({
         this.addChild(rewardIcon);
         rewardIcon.setScaleX(2.2);
 
-        this._menu = cc.Menu.create();
+        var buyCountItem = cc.MenuItemImage.create(
+            main_scene_image.button16,
+            main_scene_image.button16s,
+            this._onClickBuyCount,
+            this
+        );
+        buyCountItem.setPosition(cc.p(575, 1015));
+
+        this._menu = cc.Menu.create(buyCountItem);
         this._menu.setPosition(cc.p(0, 0));
         this.addChild(this._menu);
 
@@ -301,6 +309,12 @@ var TournamentLayer = cc.Layer.extend({
         } else {
             TipLayer.tip("找不到该玩家");
         }
+    },
+
+    _onClickBuyCount: function () {
+        cc.log("TournamentLayer _onClickBuyCount");
+
+
     }
 });
 

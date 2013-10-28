@@ -242,6 +242,10 @@ var game = {
         console.log('reject add friend: ', data);
       });
 
+      pomelo.on('onFriendAction', function(data) {
+        console.log('reject onFriendAction: ', data);
+      });
+
       pomelo.on('onBless', function(data) {
         console.log('receive a bless: ', data);
       });

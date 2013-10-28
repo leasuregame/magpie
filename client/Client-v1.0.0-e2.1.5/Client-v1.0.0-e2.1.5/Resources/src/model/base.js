@@ -195,8 +195,8 @@ lz.randomInt = function (a, b) {
 
 var gameGoodsName = {
     "exp": "经验",
-    "money": "铜板",
-    "gold": "黄金",
+    "money": "仙币",
+    "gold": "魔石",
     "powerValue": "体力",
     "elixir": "仙丹",
     "fragment": "卡魂",

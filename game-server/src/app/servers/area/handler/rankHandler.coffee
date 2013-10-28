@@ -55,7 +55,6 @@ Handler::rankingList = (msg, session, next) ->
         cb(null,[])
 
     (beatBackRankings, cb) ->
-
       rankings = genRankings(player.rank.ranking)
       for ranking in beatBackRankings
         if ranking < player.rank.ranking
@@ -73,12 +72,13 @@ Handler::rankingList = (msg, session, next) ->
     r = player.getRank()
     rank = {
       ranking: r.ranking,
-      rankReward: r.rankReward,
-      challengeCount: player.dailyGift. c,
+      canGetReward: r.canGetReward,
+      notCanGetReward: r.notCanGetReward,
+      challengeCount: player.dailyGift.challengeCount,
       rankList: players,
       time: Date.now()  - start
     }
-    end = Date.now()
+    end = Date.now();
     console.log '**********get rankingList useTime = ',(end - start) / 1000
     next(null,{code: 200, msg: {rank: rank}})
 
@@ -141,20 +141,23 @@ Handler::getRankingReward = (msg, session, next) ->
     if err
       return next(null, {code: err.code, msg: err.msg or err.message})
 
+    rewardData = table.getTableItem('ranking_reward', ranking)
+    if not rewardData
+      return next(null, {code: 501, msg: "找不到#{ranking}的排名奖励"})
+
     rank = player.rank
     if rank.historyRanking is 0 or rank.historyRanking > ranking
       return next(null, {code: 501, msg: '不能领取该排名奖励'})
 
+    if rank.hasGotReward(ranking)
+      return next(null, {code: 501, msg: "不能重复领取#{ranking}的排名奖励"})
+
     rank.getRankingReward(ranking)
-    rewardData = table.getTableItem('ranking_reward', ranking)
-    if not rewardData
-      return next(null, {code: 501, msg: "找不到#{ranking}的排名奖励"})
     player.increase('elixir', rewardData.elixir)
     player.save()
     next(null, {
       code: 200, 
-      msg: rankingRewards: player.rank?.rankingRewards()
-      elixir: rewardData.elixir
+      msg: elixir: rewardData.elixir
     })
 
 isV587 = (bl) ->
@@ -200,11 +203,12 @@ genRankings = (ranking) ->
 
 filterPlayersInfo = (players, ranks, rankings) ->
   players.map (p) -> 
+    console.log '-1-', p.id, p.name, p.cards
     {
       playerId: p.id
       name: p.name
       ranking: ranks[p.id]
-      cards: p.activeCards().map (c) -> c.tableId
+      cards: if p.cards? then p.cards.map (c) -> c.tableId else []
       type: rankings[ranks[p.id]]
     }
     

@@ -160,7 +160,6 @@ class Manager
 
     ###  判断是否升级 ###
     entityUtil.upgradePlayer player, taskData.exp_obtain, (isUpgrade, rewards) ->
-      console.log 'check update....', isUpgrade, rewards
       if isUpgrade
         data.upgradeInfo = {
           lv: player.lv

@@ -8,7 +8,7 @@
 
 describe("Area Server", function() {
     describe("Buy Handler", function() {
-        describe("area.buyHandler.buyProduct", function() {
+        describe("area.buyHandler.buyMoney", function() {
 
 
 
@@ -59,7 +59,7 @@ describe("Area Server", function() {
                                 "value": gold
                             });
                             doAjax('/player/112',{},function(msg) {
-                                player = msg.data;
+                                var player = msg.data;
                                 console.log(player);
                                 expect(money).toEqual(player.money);
                                 expect(gold).toEqual(player.gold);
@@ -79,11 +79,12 @@ describe("Area Server", function() {
             });
 
 
-            describe("购买失败", function() {
+            describe("购买上限", function() {
 
                 beforeAll(function(){
                     doAjax('/update/player/' + 113 ,{
-                        gold: 1000000
+                        gold: 300,
+                        money: 99984998
                     },function(){
 
                     });
@@ -96,8 +97,8 @@ describe("Area Server", function() {
 
                 describe("购买完仙币超出上限", function() {
 
-                    it('购买类型：3,次数：10000',function(){
-                        request('area.buyHandler.buyProduct',{id: 4,times: 10000},function(data) {
+                    it('购买类型：3,次数：3',function(){
+                        request('area.buyHandler.buyProduct',{id: 4,times: 3},function(data) {
                             console.log(data);
                             expect(data.code).toEqual(501);
                             expect(data.msg).toEqual('超过仙币上限');
@@ -107,6 +108,22 @@ describe("Area Server", function() {
 
                 });
 
+                describe("购买完仙币刚好达到上限", function() {
+
+                    it('购买类型：3,次数：2',function(){
+                        request('area.buyHandler.buyProduct',{id: 4,times: 2},function(data) {
+                            console.log(data);
+                            expect(data.code).toEqual(200);
+                            expect(data.msg.money).toEqual(15001);
+                            expect(data.msg.consume).toEqual({
+                                "key": "gold",
+                                "value": 100
+                            });
+
+                        });
+                    });
+
+                });
 
 
             });

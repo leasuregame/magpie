@@ -100,6 +100,14 @@ class Manager
       cb(null, cards.map (c) -> c.toJson())
     )
 
+  @addFriendIfOnline: (pid, friend) ->
+    ply = @getPlayerFromCache pid
+    ply.addFriend friend if ply
+
+  @delFriendIfOnline: (pid, fid) ->
+    ply = @getPlayerFromCache pid
+    ply.delFriend fid if ply
+
 addRankInfo = (players, ranks) ->
   for p in players
     r = _.findWhere(ranks, {playerId: p.id})

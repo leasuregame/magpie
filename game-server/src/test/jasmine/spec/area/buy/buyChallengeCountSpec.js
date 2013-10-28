@@ -33,7 +33,7 @@ describe("Area Server", function() {
                     loginWith('114','1',1);
                 });
                 it('一次性购买11次',function() {
-                    request('area.buyHandler.buyProduct',{id:5,times: 11},function(data) {
+                    request('area.buyHandler.buyProduct',{id:6,times: 11},function(data) {
                         console.log(data);
                         expect(data).toEqual({
                             code: 501,
@@ -51,7 +51,7 @@ describe("Area Server", function() {
 
                 var buyPower = function(time) {
                     it('第' + time + '次购买' ,function() {
-                        request('area.buyHandler.buyProduct',{id:5,times: 1},function(data) {
+                        request('area.buyHandler.buyProduct',{id:6,times: 1},function(data) {
                             console.log(data);
                             expect(data.code).toEqual(200);
                             challengeCount++;
@@ -90,7 +90,7 @@ describe("Area Server", function() {
 
                 it('无法购买有奖竞技次数',function() {
 
-                    request('area.buyHandler.buyProduct',{id:5,times: 1},function(data) {
+                    request('area.buyHandler.buyProduct',{id:6,times: 1},function(data) {
 
                         console.log(data);
                         expect(data.code).toEqual(501);
@@ -132,7 +132,7 @@ describe("Area Server", function() {
 
                 it('无法购买有奖竞技次数',function() {
 
-                    request('area.buyHandler.buyProduct',{id:5,times: 1},function(data) {
+                    request('area.buyHandler.buyProduct',{id:6,times: 1},function(data) {
 
                         console.log(data);
                         expect(data.code).toEqual(501);

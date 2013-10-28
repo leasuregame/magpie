@@ -37,6 +37,13 @@ var lvLimit = table.getTableItem('lv_limit', 1);
 var MAX_SPIRITOR_LV = lvLimit.spirit_lv_limit;
 var MAX_SPIRITPOOL_LV = lvLimit.spirit_pool_lv_limit;
 
+var giveBlessTab = table.getTable('give_bless_config');
+var receiveBlessTab = table.getTable('receive_bless_config');
+var friendsCountTab = table.getTable('friends_config');
+var DEFAULT_RECEIVE_COUNT = giveBlessTab.getItem(1).count;
+var DEFAULT_GIVE_COUNT = receiveBlessTab.getItem(1).count;
+var DEFAULT_FRIENDS_COUNT = friendsCountTab.getItem(1).count;
+
 var defaultMark = function() {
     var i, result = [];
     for (i = 0; i < 100; i++) {
@@ -274,11 +281,11 @@ var Player = (function(_super) {
             challengeCount: 10, // 每日有奖竞技次数
             challengeBuyCount: 10, //每日有奖竞技购买次数
             receivedBless: { // 接收的祝福
-                count: msgConfig.DEFAULT_RECEIVE_COUNT,
+                count: DEFAULT_RECEIVE_COUNT,
                 givers: []
             },
             gaveBless: { // 送出的祝福
-                count: msgConfig.DEFAULT_GIVE_COUNT,
+                count: DEFAULT_GIVE_COUNT,
                 receivers: []
             }
         },
@@ -308,7 +315,7 @@ var Player = (function(_super) {
         cards: {},
         rank: {},
         friends: [],
-        friendsCount: 20,
+        friendsCount: DEFAULT_FRIENDS_COUNT,
         rowFragmentCount: 0,
         highFragmentCount: 0,
         highDrawCardCount: 0,
@@ -317,29 +324,18 @@ var Player = (function(_super) {
     };
 
     Player.prototype.resetData = function() {
-        var giveBlessMap = {
-            1: 5,
-            31: 10,
-            51: 15,
-            71: 20
-        };
 
-        var recieveBlessMap = {
-            1: 5,
-            31: 10,
-            51: 15,
-            71: 20
-        };
-
-        var realCount = function(lv, mapobj) {
-            var keys = Object.keys(mapobj);
+        var realCount = function(lv, tab) {
+            var keys = tab.map(function(i) {
+                return i.id;
+            });
             var _i, _len, k, step = 5;
 
             var _ref = keys.reverse();
             for (_i = 0, _len = _ref.length; _i < _len; _i++) {
                 k = _ref[_i];
                 if (lv >= k) {
-                    step = mapobj[k];
+                    step = tab.getItem(k).count;
                     break;
                 }
             }
@@ -354,13 +350,13 @@ var Player = (function(_super) {
             powerGiven: [], // 体力赠送情况
             powerBuyCount: 6 + vipPrivilege.buy_power_count, // 购买体力次数
             challengeCount: 10 + vipPrivilege.challenge_count, // 每日有奖竞技次数
-            challengeBuyCount: 10, //每日有奖竞技购买次数
+            challengeBuyCount: 10, // 每日有奖竞技购买次数
             receivedBless: { // 接收的祝福
-                count: realCount(this.lv, recieveBlessMap) + vipPrivilege.receive_bless_count,
+                count: realCount(this.lv, receiveBlessTab) + vipPrivilege.receive_bless_count,
                 givers: []
             },
             gaveBless: { // 送出的祝福
-                count: realCount(this.lv, giveBlessMap) + vipPrivilege.give_bless_count,
+                count: realCount(this.lv, giveBlessTab) + vipPrivilege.give_bless_count,
                 receivers: []
             }
         };
@@ -374,6 +370,7 @@ var Player = (function(_super) {
         this.dailyGift = dg;
         this.pass = pass;
         this.spiritPool = spiritPool;
+        this.friendsCount = realCount(this.lv, friendsCountTab) + vipPrivilege.friend_count;
         this.resetDate = utility.shortDateString();
     };
 
@@ -1010,6 +1007,21 @@ var Player = (function(_super) {
         return spiritor;
     };
 
+    Player.prototype.addFriend = function(friend) {
+        this.friends.push(friend);
+    };
+
+    Player.prototype.delFriend = function(fid) {
+        var i, fri;
+        for(i = 0; i < this.friends.length; i++) {
+            fri = this.friends[i];
+            if (fri.id == fid) {
+                this.friends.splice(i, 1);
+                break;
+            }
+        }
+    };
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,
@@ -1052,9 +1064,9 @@ var Player = (function(_super) {
 })(Entity);
 
 var elxirLimit = function(lv) {
-    var limit = 1000;
+    var limit = 2000;
     if (lv > 50 && lv <= 100) {
-        limit = 2000;
+        limit = 4000;
     }
     return limit;
 };

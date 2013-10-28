@@ -106,6 +106,10 @@ var Rank = (function(_super) {
 		return RANKINGS(this.historyRanking).indexOf(ranking) > -1 && this.gotRewards.indexOf(ranking) < 0;
 	};
 
+	Rank.prototype.hasGotReward = function(ranking) {
+		return this.gotRewards.indexOf(ranking) > -1;
+	};
+
 	Rank.prototype.rankingRewards = function() {
 		return _.difference(RANKINGS(this.historyRanking), this.gotRewards)
 			.sort(function(x, y) { return y - x; });

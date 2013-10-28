@@ -33,15 +33,11 @@ Handler = (@app) ->
 Handler::rankingList = (msg, session, next) ->
   playerId = msg.playerId or session.get('playerId')
   start = Date.now()
-  start2 = start
   player = null
   async.waterfall [
     (cb) =>
       playerManager.getPlayerInfo {pid: playerId}, cb
     (res, cb) ->
-      end = Date.now()
-      console.log 'step 1 useTime: ' , (end - start2) / 1000
-      start2 = Date.now()
       player = res
       fdata = table.getTableItem('function_limit', 1)
       if player.lv < fdata.rank
@@ -53,18 +49,12 @@ Handler::rankingList = (msg, session, next) ->
       cb()
 
     (cb)->
-      end = Date.now()
-      console.log 'step 2 useTime: ' , (end - start2) / 1000
-      start2 = Date.now()
       if player.rank.recentChallenger.length > 0
         rankManager.getRankings(player.rank.recentChallenger,cb)
       else
         cb(null,[])
 
     (beatBackRankings, cb) ->
-      end = Date.now()
-      console.log 'step 3 useTime: ' , (end - start2) / 1000
-      start2 = Date.now()
       rankings = genRankings(player.rank.ranking)
       for ranking in beatBackRankings
         if ranking < player.rank.ranking
@@ -74,9 +64,6 @@ Handler::rankingList = (msg, session, next) ->
         cb(err, players, ranks, rankings)
 
   ], (err, players, ranks, rankings) ->
-    end = Date.now()
-    console.log 'step 4 useTime: ' , (end - start2) / 1000
-    start2 = Date.now()
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err.message})
 
@@ -87,12 +74,11 @@ Handler::rankingList = (msg, session, next) ->
       ranking: r.ranking,
       canGetReward: r.canGetReward,
       notCanGetReward: r.notCanGetReward,
-      challengeCount: player.dailyGift. c,
+      challengeCount: player.dailyGift.challengeCount,
       rankList: players,
       time: Date.now()  - start
     }
     end = Date.now();
-    console.log 'step 5 useTime: ' , (end - start2) / 1000
     console.log '**********get rankingList useTime = ',(end - start) / 1000
     next(null,{code: 200, msg: {rank: rank}})
 
@@ -155,14 +141,18 @@ Handler::getRankingReward = (msg, session, next) ->
     if err
       return next(null, {code: err.code, msg: err.msg or err.message})
 
+    rewardData = table.getTableItem('ranking_reward', ranking)
+    if not rewardData
+      return next(null, {code: 501, msg: "找不到#{ranking}的排名奖励"})
+
     rank = player.rank
     if rank.historyRanking is 0 or rank.historyRanking > ranking
       return next(null, {code: 501, msg: '不能领取该排名奖励'})
 
+    if rank.hasGotReward(ranking)
+      return next(null, {code: 501, msg: "不能重复领取#{ranking}的排名奖励"})
+
     rank.getRankingReward(ranking)
-    rewardData = table.getTableItem('ranking_reward', ranking)
-    if not rewardData
-      return next(null, {code: 501, msg: "找不到#{ranking}的排名奖励"})
     player.increase('elixir', rewardData.elixir)
     player.save()
     next(null, {
@@ -213,11 +203,12 @@ genRankings = (ranking) ->
 
 filterPlayersInfo = (players, ranks, rankings) ->
   players.map (p) -> 
+    console.log '-1-', p.id, p.name, p.cards
     {
       playerId: p.id
       name: p.name
       ranking: ranks[p.id]
-      cards: p.activeCards().map (c) -> c.tableId
+      cards: if p.cards? then p.cards.map (c) -> c.tableId else []
       type: rankings[ranks[p.id]]
     }
     

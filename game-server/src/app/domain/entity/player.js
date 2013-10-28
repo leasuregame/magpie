@@ -39,8 +39,8 @@ var MAX_SPIRITPOOL_LV = lvLimit.spirit_pool_lv_limit;
 
 var giveBlessTab = table.getTable('give_bless_config');
 var receiveBlessTab = table.getTable('receive_bless_config');
-var DEFAULT_RECEIVE_COUNT = giveBlessTab.getItem(1).give_bless_count;
-var DEFAULT_GIVE_COUNT = receiveBlessTab.getItem(1).receive_bless_count;
+var DEFAULT_RECEIVE_COUNT = giveBlessTab.getItem(1).bless_count;
+var DEFAULT_GIVE_COUNT = receiveBlessTab.getItem(1).bless_count;
 
 var defaultMark = function() {
     var i, result = [];
@@ -339,7 +339,7 @@ var Player = (function(_super) {
             for (_i = 0, _len = _ref.length; _i < _len; _i++) {
                 k = _ref[_i];
                 if (lv >= k) {
-                    step = tab.getItem(k);
+                    step = tab.getItem(k).bles_count;
                     break;
                 }
             }

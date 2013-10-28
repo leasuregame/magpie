@@ -15,6 +15,7 @@
 var PassLayer = cc.Layer.extend({
     _top: 0,
     _isWin: null,
+    _upgradeReward: null,
     _spirit: null,
     _towerSprite: null,
     _topLabel: null,
@@ -210,6 +211,11 @@ var PassLayer = cc.Layer.extend({
 
     update: function () {
         cc.log("PassLayer update");
+
+        if (this._upgradeReward) {
+            PlayerUpgradeLayer.pop(this._upgradeReward);
+            this._upgradeReward = null;
+        }
 
         var pass = gameData.pass;
 
@@ -502,8 +508,12 @@ var PassLayer = cc.Layer.extend({
             }
 
             var that = this;
-            gameData.pass.defiance(function (battleLogId) {
-                that._isWin = BattlePlayer.getInstance().play(battleLogId);
+            gameData.pass.defiance(function (data) {
+                cc.log(data);
+
+                that._upgradeReward = data.upgradeReward || null;
+
+                that._isWin = BattlePlayer.getInstance().play(data.battleLogId);
             }, id);
         }
     },
@@ -515,7 +525,9 @@ var PassLayer = cc.Layer.extend({
         gameData.pass.wipeOut(function (data) {
             cc.log(data);
 
-            that._wipeOutAnimation(data);
+            that._upgradeReward = data.upgradeReward || null;
+
+            that._wipeOutAnimation(data.reward);
         });
     },
 

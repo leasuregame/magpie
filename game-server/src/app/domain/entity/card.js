@@ -89,6 +89,10 @@ var countHpAtk = function(card) {
     }
 };
 
+var checkSkillLv = function(card) {
+    table.getTableItem('skill_upgrade', )
+};
+
 /*
  * Card 与 card 表对应的数据类，提供简单操作
  * @param {object} param 数据库 card 表中的一行记录
@@ -108,6 +112,7 @@ var Card = (function(_super) {
             }
             this.cardData = cardData;
         }
+
 
         countHpAtk(this);
         countElixirEffect(this);

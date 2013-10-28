@@ -213,7 +213,7 @@ Handler::skillUpgrade = (msg, session, next) ->
       
       card.increase('skillLv')
       card.increase('skillPoint', sp_need)
-      player.decrease('skillPoint', sp_need);
+      player.decrease('skillPoint', sp_need)
       cb(null, player, card)
   ], (err, player, card) ->
     if err

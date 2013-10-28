@@ -141,14 +141,18 @@ Handler::getRankingReward = (msg, session, next) ->
     if err
       return next(null, {code: err.code, msg: err.msg or err.message})
 
+    rewardData = table.getTableItem('ranking_reward', ranking)
+    if not rewardData
+      return next(null, {code: 501, msg: "找不到#{ranking}的排名奖励"})
+
     rank = player.rank
     if rank.historyRanking is 0 or rank.historyRanking > ranking
       return next(null, {code: 501, msg: '不能领取该排名奖励'})
 
+    if rank.hasGotReward(ranking)
+      return next(null, {code: 501, msg: "不能重复领取#{ranking}的排名奖励"})
+
     rank.getRankingReward(ranking)
-    rewardData = table.getTableItem('ranking_reward', ranking)
-    if not rewardData
-      return next(null, {code: 501, msg: "找不到#{ranking}的排名奖励"})
     player.increase('elixir', rewardData.elixir)
     player.save()
     next(null, {

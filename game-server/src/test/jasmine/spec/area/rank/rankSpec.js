@@ -266,6 +266,30 @@ describe("Area Server", function() {
                         });
                     });
 
+                    request('area.rankHandler.getRankingReward', {
+                        ranking: 100
+                    }, function(data) {
+                        console.log(data);
+                        expect(data).toEqual({
+                            code: 200,
+                            msg: {
+                                elixir: 2000
+                            }                            
+                        });
+                    });
+
+                    request('area.rankHandler.getRankingReward', {
+                        ranking: 500
+                    }, function(data) {
+                        console.log(data);
+                        expect(data).toEqual({
+                            code: 200,
+                            msg: {
+                                elixir: 1000
+                            }                            
+                        });
+                    });
+
                 });
 
             });
@@ -279,7 +303,18 @@ describe("Area Server", function() {
                     });
                 });
 
-                it('should only can get ranking reward of 500', function() {
+                var before_player, before_rank;
+                beforeEach(function(){
+                    doAjax('/player/2', {}, function(res){
+                        before_player = res.data;
+                    });
+
+                    doAjax('/rank/4', {}, function(res) {
+                        before_rank = res.data;
+                    });
+                });
+
+                it('should can only get ranking reward of 500, once', function() {
                     request('area.rankHandler.getRankingReward', {
                         ranking: 500
                     }, function(data) {
@@ -293,6 +328,16 @@ describe("Area Server", function() {
                     });
 
                     request('area.rankHandler.getRankingReward', {
+                        ranking: 500
+                    }, function(data) {
+                        console.log(data);
+                        expect(data).toEqual({
+                            code: 501,
+                            msg: '不能重复领取500的排名奖励'                         
+                        });
+                    });
+
+                    request('area.rankHandler.getRankingReward', {
                         ranking: 100
                     }, function(data) {
                         console.log(data);
@@ -301,6 +346,15 @@ describe("Area Server", function() {
                             msg: '不能领取该排名奖励'
                         });
                     });
+
+                    doAjax('/player/2', {}, function(res){
+                        expect(res.data.elixir).toEqual(before_player.elixir + 1000);
+                    });
+
+                    doAjax('/rank/4', {}, function(res){
+                        expect(res.data.gotRewards).toEqual('[500]');
+                    });
+                    expect(before_rank.gotRewards).toEqual('[]');
                 });
 
             });

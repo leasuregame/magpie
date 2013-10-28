@@ -326,6 +326,11 @@ var ExploreLayer = cc.Layer.extend({
     _onClickExplore: function () {
         cc.log("ExploreLayer _onClickExplore");
 
+        if (gameData.player.get("power") <= 0) {
+            this._onBuyPower();
+            return;
+        }
+
         this._lock();
 
         var that = this;
@@ -578,6 +583,41 @@ var ExploreLayer = cc.Layer.extend({
         this.scheduleOnce(function () {
             CardDetails.pop(this._reward.card, cb);
         }, 0.5);
+    },
+
+    _onBuyPower: function () {
+        cc.log("TournamentLayer _onClickBuyCount");
+
+        var id = 5;
+        var product = gameData.shop.getProduct(id);
+
+        cc.log(product);
+
+        if (product.count <= 0) {
+            TipLayer.tip(product.tip);
+            return;
+        }
+
+        var that = this;
+        AmountLayer.pop(
+            function (count) {
+                that._buyPower(id, count);
+            },
+            product
+        );
+    },
+
+    _buyPower: function (id, count) {
+        cc.log("TournamentLayer _buyCount");
+
+        if (count > 0) {
+            var that = this;
+            gameData.shop.buyProduct(function (data) {
+                that.update();
+
+                lz.tipReward(data);
+            }, id, count);
+        }
     },
 
     /**

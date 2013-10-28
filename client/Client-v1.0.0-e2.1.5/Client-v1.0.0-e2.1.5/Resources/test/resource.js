@@ -539,7 +539,6 @@ var main_scene_image = {
     LiuYunZhang_30: effect_scene_path + "LiuYunZhang_30.png",
     light12: effect_scene_path + "light12.png",
     HuGuang_JiZhong: effect_scene_path + "HuGuang_JiZhong.png",
-    KuGuZhiShu_FanHui_1: effect_scene_path + "KuGuZhiShu_FanHui_1.png",
     PoWuZhan_Light: effect_scene_path + "PoWuZhan_Light.png",
     Chen_1: effect_scene_path + "Chen_1.png",
     Bing_Di: effect_scene_path + "Bing_Di.png",

@@ -114,6 +114,17 @@ var Player = Entity.extend({
 
     },
 
+    upgrade: function (data) {
+        cc.log("Player upgrade");
+
+        if (!data) return;
+
+        this.set("lv", data.lv);
+        this.adds(data.rewards);
+
+        gameData.friend.set("maxFriendCount", data.friendsCount);
+    },
+
     _lvChangeEvent: function () {
         cc.log("Player _lvChangeEvent");
 

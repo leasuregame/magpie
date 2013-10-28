@@ -16,7 +16,7 @@ var PlayerUpgradeLayer = LazyLayer.extend({
     init: function (data) {
         cc.log("PlayerUpgradeLayer init");
 
-        if (!this._uper()) return false;
+        if (!this._super()) return false;
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
         bgLayer.setPosition(GAME_ZERO);

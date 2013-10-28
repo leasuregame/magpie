@@ -66,7 +66,7 @@ var TipLayer = cc.Layer.extend({
                     this.scheduleOnce(function () {
                         this._str.shift();
                         label.removeFromParent();
-                    }, 1);
+                    }, 1.5);
                 }, this)
             )
         );

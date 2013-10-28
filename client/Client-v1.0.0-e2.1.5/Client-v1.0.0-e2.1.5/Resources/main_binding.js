@@ -66,6 +66,7 @@ var appFiles = [
     'src/model/battleLogPool.js',
     'src/model/battleLog.js',
     'src/model/battleStep.js',
+    'src/model/gameFlow.js',
 
     'src/model/gameData.js',
 

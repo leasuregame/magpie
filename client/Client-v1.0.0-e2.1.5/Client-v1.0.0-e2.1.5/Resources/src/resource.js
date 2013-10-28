@@ -532,7 +532,8 @@ var main_scene_image = {
     icon255: main_scene_path + "icon255.png",
     icon256: main_scene_path + "icon256.png",
     icon257: main_scene_path + "icon257.png",
-    icon258: main_scene_path + "icon258.png"
+    icon258: main_scene_path + "icon258.png",
+    icon259: main_scene_path + "icon259.png"
 };
 
 var main_scene_res = [

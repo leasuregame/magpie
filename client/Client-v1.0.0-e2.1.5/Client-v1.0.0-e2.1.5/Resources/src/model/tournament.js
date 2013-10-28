@@ -79,21 +79,19 @@ var Tournament = Entity.extend({
     getLastRankReward: function () {
         cc.log("Tournament getLastRankReward");
 
-        if (this._canGetReward.length > 0) {
-            return {
-                ranking: this._canGetReward[0],
-                canReceive: true
-            };
-        }
+        var table = outputTables.ranking_reward.rows;
+        var ranking = this._canGetReward[0] || this._notCanGetReward[0];
+        var canReceive = this._canGetReward[0] || false;
 
-        if (this._notCanGetReward.length > 0) {
+        if (ranking) {
             return {
-                ranking: this._notCanGetReward[0],
-                canReceive: false
-            };
+                ranking: ranking,
+                canReceive: canReceive,
+                elixir: table[ranking].elixir
+            }
+        } else {
+            return null;
         }
-
-        return  null;
     },
 
     sync: function (cb) {
@@ -159,12 +157,10 @@ var Tournament = Entity.extend({
     receive: function (cb) {
         cc.log("Tournament receive");
 
-        var reward = this.getLastRankReward();
-
-        if (reward && reward.canReceive) {
+        if (this._canGetReward.length > 0) {
             var that = this;
             lzWindow.pomelo.request("area.rankHandler.getRankingReward", {
-                ranking: reward.ranking
+                ranking: this._canGetReward[0]
             }, function (data) {
                 cc.log(data);
 
@@ -173,12 +169,11 @@ var Tournament = Entity.extend({
 
                     var msg = data.msg;
 
-                    that.update({
-                        canGetReward: msg.canGetReward,
-                        notCanGetReward: msg.notCanGetReward
-                    });
+                    that._canGetReward.shift();
 
-                    cb();
+                    cb({
+                        elixir: msg.elixir
+                    });
                 } else {
                     cc.log("Tournament receive fail");
 

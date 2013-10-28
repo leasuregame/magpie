@@ -111,19 +111,27 @@ var Pass = Entity.extend({
                 cc.log("defiance success");
 
                 var msg = data.msg;
+                var player = gameData.player;
+                var cbData = {};
+                var upgradeInfo = msg.upgradeInfo;
 
                 that.update(msg.pass);
 
-                gameData.player.sets({
-                    lv: msg.lv,
-                    exp: msg.exp
-                });
+                player.set("exp", msg.exp);
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
+                if (upgradeInfo) {
+                    player.upgrade(upgradeInfo);
 
-                cb(battleLogId);
+                    cbData.upgradeReward = upgradeInfo.rewards;
+                }
+
+                cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
+
+                cb(cbData);
             } else {
                 cc.log("defiance fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },
@@ -154,10 +162,7 @@ var Pass = Entity.extend({
                     skillPoint: reward.skill_point
                 });
 
-                player.sets({
-                    lv: msg.lv,
-                    exp: msg.exp
-                });
+                player.set("exp", msg.exp);
 
                 var cbData = {
                     exp: reward.exp_obtain,

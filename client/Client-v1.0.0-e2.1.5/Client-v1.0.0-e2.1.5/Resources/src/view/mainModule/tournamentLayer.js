@@ -193,18 +193,9 @@ var TournamentLayer = cc.Layer.extend({
         var reward = gameData.tournament.getLastRankReward();
 
         if (reward) {
-
+            this._rewardLabel.setString("首次达到" + reward.ranking + "名可领取" + reward.elixir + "仙丹");
             this._rewardLabel.setVisible(true);
-
-            if (reward.canReceive) {
-                this._rewardLabel.setString("您已达到" + reward.ranking + "名 点击领取奖励");
-
-                this._rewardItem.setVisible(true);
-            } else {
-                this._rewardLabel.setString("首次达到" + reward.ranking + "名 可领取大量仙丹奖励 继续努力");
-
-                this._rewardItem.setVisible(false);
-            }
+            this._rewardItem.setVisible(reward.canReceive);
         } else {
             this._rewardLabel.setVisible(false);
             this._rewardItem.setVisible(false);
@@ -274,7 +265,8 @@ var TournamentLayer = cc.Layer.extend({
         cc.log("TournamentLayer _onClickRankReward");
 
         var that = this;
-        gameData.tournament.receive(function () {
+        gameData.tournament.receive(function (reward) {
+            lz.tipReward(reward);
             that._updateRankRewardItem();
         });
     },

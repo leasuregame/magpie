@@ -153,9 +153,14 @@ var Task = Entity.extend({
 
                 player.sets({
                     power: msg.power.value,
-                    lv: msg.lv,
                     exp: msg.exp
                 });
+
+                if (msg.upgradeInfo) {
+                    player.upgrade(msg.upgradeInfo);
+
+                    cbData.upgradeReward = msg.upgradeInfo.rewards;
+                }
 
                 if (msg.result == "fight") {
                     msg.battle_log.rewards.money = msg.money_obtain;

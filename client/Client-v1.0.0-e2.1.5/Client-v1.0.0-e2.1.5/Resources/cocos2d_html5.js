@@ -56,6 +56,7 @@
             'src/model/base.js',
             'src/model/singleton.js',
             'src/model/gameConfig.js',
+            'src/model/gameFlow.js',
 
             'src/model/event.js',
             'src/model/entity.js',

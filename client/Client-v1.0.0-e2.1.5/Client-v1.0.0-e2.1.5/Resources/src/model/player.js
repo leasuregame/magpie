@@ -45,6 +45,7 @@ var Player = Entity.extend({
 
         MAX_LINE_UP_CARD = 3;
 
+        this.off();
         this.on("lvChange", this._lvChangeEvent);
 
         this._load();
@@ -93,7 +94,6 @@ var Player = Entity.extend({
         this.set("vip", data.vip);
         this.set("cash", data.cash);
         this.set("power", data.power.value);
-        this.set("maxExp", outputTables.player_upgrade.rows[this._lv].exp);
 
         gameData.cardList.init(data.cards);
         gameData.lineUp.init(data.lineUp);
@@ -127,6 +127,8 @@ var Player = Entity.extend({
 
     _lvChangeEvent: function () {
         cc.log("Player _lvChangeEvent");
+
+        this.set("maxExp", outputTables.player_upgrade.rows[this._lv].exp);
 
         var table = outputTables.function_limit.rows[1];
 

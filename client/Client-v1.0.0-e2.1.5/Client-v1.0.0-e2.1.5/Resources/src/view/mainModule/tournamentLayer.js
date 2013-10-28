@@ -24,6 +24,7 @@ var TournamentLayer = cc.Layer.extend({
     _rankingLabel: null,
     _countLabel: null,
     _abilityLabel: null,
+    _upgradeReward: null,
 
     onEnter: function () {
         cc.log("TournamentLayer onEnter");
@@ -168,6 +169,11 @@ var TournamentLayer = cc.Layer.extend({
     update: function () {
         cc.log("TournamentLayer update");
 
+        if (this._upgradeReward) {
+            PlayerUpgradeLayer.pop(this._upgradeReward);
+            this._upgradeReward = null;
+        }
+
         var player = gameData.player;
 
         this._expProgress.setAllValue(player.get("power"), player.get("maxPower"));
@@ -252,6 +258,12 @@ var TournamentLayer = cc.Layer.extend({
         }
 
         return null;
+    },
+
+    _setPlayerUpgradeReward: function (upgradeReward) {
+        cc.log("TournamentLayer _setPlayerUpgradeReward");
+
+        this._upgradeReward = upgradeReward || null;
     },
 
     _onClickPlayer: function (id, point) {

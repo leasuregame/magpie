@@ -129,6 +129,7 @@ var appFiles = [
     'src/view/mainModule/playerDetails.js',
     'src/view/mainModule/playerHeaderLabel.js',
     'src/view/mainModule/playerTournamentLabel.js',
+    'src/view/mainModule/playerUpgradeLayer.js',
     'src/view/mainModule/propsLayer.js',
     'src/view/mainModule/pveLayer.js',
     'src/view/mainModule/rankLayer.js',

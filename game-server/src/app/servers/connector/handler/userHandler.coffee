@@ -34,11 +34,13 @@ Handler::login = (msg, session, next) ->
     (cb) =>
       @app.rpc.auth.authRemote.auth session, account, password, areaId, cb
 
-    (res,cb) =>
-      # check whether has create player in the login area
+    (res, cb) =>
       user = res
       uid = user.id + '*' + areaId;
-
+      sessionService = @app.get 'sessionService'
+      sessionService.kick(uid,cb)
+    (cb) =>
+      # check whether has create player in the login area
       if _.contains user.roles, areaId
         @app.rpc.area.playerRemote.getPlayerByUserId session, user.id, @app.getServerId(), (err, res) ->
           if err
@@ -49,23 +51,10 @@ Handler::login = (msg, session, next) ->
         cb()
 
     (cb) =>
-        sessionService = @app.get 'sessionService'
-        #if sessionService.getByUid(uid)
-       #   channelService = @app.get('channelService');
-      #    channelService.pushMessageByUids('onMessage', {msg:'账号在其他地方登陆'}, [{
-      #      uid: uid,
-      #     sid: @app.get('serverId')
-      #    }],(err)->
-        sessionService.kick(uid,cb);
-      #    )
-    (cb) =>
-      console.log 'uid',uid
       session.set('userId', user.id)
       session.bind(uid, cb);
-
     (cb) =>
       if player?
-
         session.set('playerId', player.id)
         session.set('playerName', player.name)
         session.on('closed', onUserLeave.bind(null, @app))
@@ -78,10 +67,8 @@ Handler::login = (msg, session, next) ->
     next(null, {code: 200, msg: {user: user, player: player}})
 
 onUserLeave = (app, session, reason) ->
-  console.log 'user leave: ', session.uid
   if not session or not session.uid
     return
-
   app.rpc.area.playerRemote.playerLeave session, session.get('playerId'), session.uid, app.getServerId(), (err) ->
     if err
       logger.error 'user leave error' + err

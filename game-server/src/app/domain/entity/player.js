@@ -331,6 +331,14 @@ var Player = (function(_super) {
             71: 20
         };
 
+        var friendsCountMap = {
+            1: 20,
+            31: 30,
+            51: 40,
+            71: 50
+
+        };
+
         var realCount = function(lv, mapobj) {
             var keys = Object.keys(mapobj);
             var _i, _len, k, step = 5;
@@ -374,6 +382,7 @@ var Player = (function(_super) {
         this.dailyGift = dg;
         this.pass = pass;
         this.spiritPool = spiritPool;
+        this.friendsCount = realCount(this.lv, friendsCountMap) + vipPrivilege.friend_count;
         this.resetDate = utility.shortDateString();
     };
 

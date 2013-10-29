@@ -89,7 +89,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/empty.png</string>
+							<string>effect/new player/empty.png</string>
 						</array>
 					</dict>
 				</array>
@@ -648,7 +648,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/light.png</string>
+							<string>effect/new player/light.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -740,6 +740,24 @@
 									<integer>4</integer>
 									<key>value</key>
 									<array>
+										<real>0.85000002384185791</real>
+										<real>0.85000002384185791</real>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>scale</string>
+									<key>time</key>
+									<real>0.36666667461395264</real>
+									<key>type</key>
+									<integer>4</integer>
+									<key>value</key>
+									<array>
 										<real>1</real>
 										<real>1</real>
 									</array>
@@ -823,10 +841,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/hand.png</string>
+							<string>effect/new player/hand.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

@@ -122,6 +122,7 @@
             'src/view/mainModule/cardListLayer.js',
             'src/view/mainModule/cardTrainLabel.js',
             'src/view/mainModule/cardUpgradeLabel.js',
+            'src/view/mainModule/tipsLayer.js',
             'src/view/mainModule/configLayer.js',
             'src/view/mainModule/evolutionLayer.js',
             'src/view/mainModule/exchangeLayer.js',

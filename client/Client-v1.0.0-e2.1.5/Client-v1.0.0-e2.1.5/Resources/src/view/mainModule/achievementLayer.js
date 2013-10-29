@@ -107,7 +107,7 @@ var AchievementLayer = cc.Layer.extend({
                         this._onClickReceiver(parseInt(key)),
                         this
                     );
-                    receiverItem.setPosition(cc.p(510, y + 40));
+                    receiverItem.setPosition(cc.p(510, y + 50));
                     menu.addChild(receiverItem);
 
                     this._scrollViewElement[key].isReceiverIcon = isReceiverIcon;

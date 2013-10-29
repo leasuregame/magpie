@@ -326,28 +326,34 @@ var ExploreLayer = cc.Layer.extend({
     _onClickExplore: function () {
         cc.log("ExploreLayer _onClickExplore");
 
-        this._lock();
+        var task = gameData.task;
 
-        var that = this;
-        gameData.task.explore(function (data) {
-            cc.log(data);
+        if (task.canExplore()) {
+            this._lock();
 
-            if (data) {
-                that._reward = data;
+            var that = this;
+            gameData.task.explore(function (data) {
+                cc.log(data);
 
-                that._playAnimation();
-            } else {
-                that._unlock();
-            }
+                if (data) {
+                    that._reward = data;
 
-        }, this._getTaskId());
+                    that._playAnimation();
+                } else {
+                    that._unlock();
+                }
+
+            }, this._getTaskId());
+        } else {
+            this._onBuyPower();
+        }
     },
 
     _lock: function () {
         cc.log("ExploreLayer _lock");
 
         this._exploreItem.setEnabled(false);
-        LazyLayer.showCloudLayer();
+        LazyLayer.showCloudAll();
         this.setTouchEnabled(false);
     },
 
@@ -355,7 +361,7 @@ var ExploreLayer = cc.Layer.extend({
         cc.log("ExploreLayer _unlock");
 
         this._exploreItem.setEnabled(true);
-        LazyLayer.closeCloudLayer();
+        LazyLayer.closeCloudAll();
         this.setTouchEnabled(true);
     },
 
@@ -368,6 +374,7 @@ var ExploreLayer = cc.Layer.extend({
             this._index += 1;
 
             if (this._index > this._maxIndex) {
+                this._unlock();
                 this._onClickBack();
             }
 
@@ -437,6 +444,7 @@ var ExploreLayer = cc.Layer.extend({
 
                 var toNext = this._reward.toNext;
                 var goldList = this._reward.goldList;
+                var upgradeReward = this._reward.upgradeReward;
 
                 this._reward = null;
 
@@ -447,7 +455,11 @@ var ExploreLayer = cc.Layer.extend({
                 }
 
                 if (goldList) {
-                    GoldLayer.play(goldList);
+                    GoldLayer.pop(goldList);
+                }
+
+                if (upgradeReward) {
+                    PlayerUpgradeLayer.pop(upgradeReward);
                 }
             }, 1);
 
@@ -572,6 +584,41 @@ var ExploreLayer = cc.Layer.extend({
         this.scheduleOnce(function () {
             CardDetails.pop(this._reward.card, cb);
         }, 0.5);
+    },
+
+    _onBuyPower: function () {
+        cc.log("TournamentLayer _onClickBuyCount");
+
+        var id = 5;
+        var product = gameData.shop.getProduct(id);
+
+        cc.log(product);
+
+        if (product.count <= 0) {
+            TipLayer.tip(product.tip);
+            return;
+        }
+
+        var that = this;
+        AmountLayer.pop(
+            function (count) {
+                that._buyPower(id, count);
+            },
+            product
+        );
+    },
+
+    _buyPower: function (id, count) {
+        cc.log("TournamentLayer _buyCount");
+
+        if (count > 0) {
+            var that = this;
+            gameData.shop.buyProduct(function (data) {
+                that.update();
+
+                lz.tipReward(data);
+            }, id, count);
+        }
     },
 
     /**

@@ -44,9 +44,20 @@ var BattleEndLayer = cc.Layer.extend({
         var str = lz.getRewardString(this._battleLog.get("reward"));
         var len = str.length;
 
+        if (len == 0) {
+            str = [
+                "胜败乃常事",
+                "搞搞强化培养洗练",
+                "必能打过"
+            ];
+
+            len = 3;
+        }
+
         var offsetY = 655;
+        var rewardLabel;
         for (var i = 0; i < len; ++i) {
-            var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
+            rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
             rewardLabel.setColor(cc.c3b(255, 239, 131));
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
             rewardLabel.setPosition(cc.p(360, offsetY));

@@ -13,7 +13,7 @@
  * */
 
 
-var EXCHANGE_STAR4_CARD = 30;
+var EXCHANGE_STAR4_CARD = 15;
 var EXCHANGE_STAR5_CARD = 40;
 
 var SELECT_ALL_EXCHANGE_CARD = 0;
@@ -91,6 +91,28 @@ var Exchange = Entity.extend({
         }
 
         return cardList;
+    },
+
+    canExchange: function (star) {
+        cc.log("Exchange canExchange");
+
+        var fragment = gameData.player.get("fragment");
+
+        if (star == 4) {
+            if (fragment < EXCHANGE_STAR4_CARD) {
+                TipLayer.tip("卡魂不足兑换4星卡牌");
+                return false;
+            }
+        }
+
+        if (star == 5) {
+            if (fragment < EXCHANGE_STAR5_CARD) {
+                TipLayer.tip("卡魂不足兑换5星卡牌");
+                return false;
+            }
+        }
+
+        return true;
     },
 
     exchange: function (cb, id, star) {

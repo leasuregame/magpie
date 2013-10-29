@@ -626,8 +626,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._tipLabel.setFontSize(22);
         this._setTip();
 
-        this.schedule(this._repeatAfresh, 2, null, 0);
-        this.schedule(this._setTip, 1, null, 0);
+        this.schedule(this._repeatAfresh, 2);
+        this.schedule(this._setTip, 1);
     },
 
     _onClickCancel: function () {

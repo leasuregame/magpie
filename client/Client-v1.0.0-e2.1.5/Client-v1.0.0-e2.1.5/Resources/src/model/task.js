@@ -20,10 +20,16 @@ var Task = Entity.extend({
     _id: 0,
     _progress: 0,
     _maxProgress: 0,          // 最大层数
+    _powerNeed: 0,
     _mark: [],
 
     init: function (data) {
         cc.log("Task init");
+
+        this._mark = [];
+
+        this.off();
+        this.on("idChange", this._idChangeEvent);
 
         this.update(data);
 
@@ -38,8 +44,15 @@ var Task = Entity.extend({
         this.set("id", data.id);
         this.set("progress", data.progress);
         this.set("mark", data.mark);
+    },
 
-        this._maxProgress = outputTables.task.rows[this._id].points;
+    _idChangeEvent: function () {
+        cc.log("Task _idChangeEvent");
+
+        var table = outputTables.task.rows[this._id];
+
+        this._maxProgress = table.points;
+        this._powerNeed = table.power_consume;
     },
 
     getChapter: function () {
@@ -78,6 +91,12 @@ var Task = Entity.extend({
         }
 
         return progress;
+    },
+
+    canExplore: function () {
+        cc.log("Task canExplore");
+
+        return (gameData.player.get("power") >= this._powerNeed);
     },
 
     canWipeOut: function () {
@@ -151,11 +170,16 @@ var Task = Entity.extend({
 
                 var player = gameData.player;
 
-                player.update({
-                    power: msg.power,
-                    lv: msg.lv,
+                player.sets({
+                    power: msg.power.value,
                     exp: msg.exp
                 });
+
+                if (msg.upgradeInfo) {
+                    player.upgrade(msg.upgradeInfo);
+
+                    cbData.upgradeReward = msg.upgradeInfo.rewards;
+                }
 
                 if (msg.result == "fight") {
                     msg.battle_log.rewards.money = msg.money_obtain;
@@ -210,15 +234,8 @@ var Task = Entity.extend({
                 var reward = {
                     money: msg.rewards.money_obtain
                 };
-                var player = gameData.player;
 
-                player.adds(reward);
-
-                player.update({
-                    power: msg.power,
-                    lv: msg.lv,
-                    exp: msg.exp
-                });
+                gameData.player.adds(reward);
 
                 cb(reward);
             } else {

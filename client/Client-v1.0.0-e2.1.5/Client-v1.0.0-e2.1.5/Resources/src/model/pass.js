@@ -111,20 +111,27 @@ var Pass = Entity.extend({
                 cc.log("defiance success");
 
                 var msg = data.msg;
+                var player = gameData.player;
+                var cbData = {};
+                var upgradeInfo = msg.upgradeInfo;
 
                 that.update(msg.pass);
 
-                gameData.player.update({
-                    power: msg.power,
-                    lv: msg.lv,
-                    exp: msg.exp
-                });
+                player.set("exp", msg.exp);
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
+                if (upgradeInfo) {
+                    player.upgrade(upgradeInfo);
 
-                cb(battleLogId);
+                    cbData.upgradeReward = upgradeInfo.rewards;
+                }
+
+                cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
+
+                cb(cbData);
             } else {
                 cc.log("defiance fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },
@@ -142,27 +149,29 @@ var Pass = Entity.extend({
                 cc.log("wipeOut success");
 
                 var msg = data.msg;
+                var player = gameData.player;
+                var cbData = {};
+                var upgradeInfo = msg.upgradeInfo;
+                var reward = msg.rewards;
 
                 that.update({
                     mark: msg.mark
                 });
 
-                var reward = msg.rewards;
-                var player = gameData.player;
-
                 player.adds({
-                    exp: reward.exp_obtain,
                     money: reward.money_obtain,
                     skillPoint: reward.skill_point
                 });
 
-                player.update({
-                    power: msg.power,
-                    lv: msg.lv,
-                    exp: msg.exp
-                });
+                player.set("exp", msg.exp);
 
-                var cbData = {
+                if (upgradeInfo) {
+                    player.upgrade(upgradeInfo);
+
+                    cbData.upgradeReward = upgradeInfo.rewards;
+                }
+
+                cbData.reward = {
                     exp: reward.exp_obtain,
                     money: reward.money_obtain,
                     skillPoint: reward.skill_point
@@ -217,13 +226,15 @@ var Pass = Entity.extend({
                     canReset: msg.canReset || false
                 });
 
-                gameData.player.update({
+                gameData.player.sets({
                     gold: msg.gold
                 });
 
                 cb();
             } else {
                 cc.log("reset fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     }

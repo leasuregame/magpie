@@ -16,13 +16,15 @@ var TournamentLayer = cc.Layer.extend({
     _rankList: [],
     _selectId: 0,
     _scrollView: null,
-    _rankRewardItem: null,
+    _rewardLabel: null,
+    _rewardItem: null,
     _menu: null,
     _expProgress: null,
     _lvLabel: null,
     _rankingLabel: null,
     _countLabel: null,
     _abilityLabel: null,
+    _upgradeReward: null,
 
     onEnter: function () {
         cc.log("TournamentLayer onEnter");
@@ -48,10 +50,10 @@ var TournamentLayer = cc.Layer.extend({
         playerLabel.setPosition(cc.p(40, 916));
         this.addChild(playerLabel);
 
-        var nameLabel = StrokeLabel.create(gameData.player.get("name"), "STHeitiTC-Medium", 30);
+        var nameLabel = StrokeLabel.create(gameData.player.get("name"), "STHeitiTC-Medium", 28);
         nameLabel.setColor(cc.c3b(255, 239, 131));
         nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        nameLabel.setPosition(cc.p(160, 1013));
+        nameLabel.setPosition(cc.p(150, 1013));
         this.addChild(nameLabel);
 
         var expBg = cc.Sprite.create(main_scene_image.exp_bg);
@@ -85,15 +87,20 @@ var TournamentLayer = cc.Layer.extend({
         this._rankingLabel.setPosition(cc.p(430, 975));
         this.addChild(this._rankingLabel);
 
-        this._abilityLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
-        this._abilityLabel.setColor(cc.c3b(255, 239, 131));
-        this._abilityLabel.setPosition(cc.p(605, 975));
-        this.addChild(this._abilityLabel);
+        this._elixirLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
+        this._elixirLabel.setColor(cc.c3b(255, 239, 131));
+        this._elixirLabel.setPosition(cc.p(605, 975));
+        this.addChild(this._elixirLabel);
 
         var rewardIcon = cc.Sprite.create(main_scene_image.icon35);
-        rewardIcon.setPosition(cc.p(360, 910));
+        rewardIcon.setPosition(cc.p(360, 900));
         this.addChild(rewardIcon);
-        rewardIcon.setScaleX(2.2);
+        rewardIcon.setScaleX(2.5);
+
+        this._rewardLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
+        this._rewardLabel.setColor(cc.c3b(255, 239, 131));
+        this._rewardLabel.setPosition(cc.p(360, 900));
+        this.addChild(this._rewardLabel);
 
         var buyCountItem = cc.MenuItemImage.create(
             main_scene_image.button16,
@@ -103,9 +110,18 @@ var TournamentLayer = cc.Layer.extend({
         );
         buyCountItem.setPosition(cc.p(575, 1015));
 
-        this._menu = cc.Menu.create(buyCountItem);
-        this._menu.setPosition(cc.p(0, 0));
-        this.addChild(this._menu);
+        this._rewardItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button10,
+            main_scene_image.button10s,
+            main_scene_image.icon123,
+            this._onClickRankReward,
+            this
+        );
+        this._rewardItem.setPosition(cc.p(595, 900));
+
+        var menu = cc.Menu.create(buyCountItem, this._rewardItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu);
 
         this._skyDialog = SkyDialog.create();
         this.addChild(this._skyDialog, 10);
@@ -153,11 +169,16 @@ var TournamentLayer = cc.Layer.extend({
     update: function () {
         cc.log("TournamentLayer update");
 
+        if (this._upgradeReward) {
+            PlayerUpgradeLayer.pop(this._upgradeReward);
+            this._upgradeReward = null;
+        }
+
         var player = gameData.player;
 
         this._expProgress.setAllValue(player.get("power"), player.get("maxPower"));
         this._lvLabel.setString(player.get("lv"));
-        this._abilityLabel.setString(player.getAbility());
+        this._elixirLabel.setString(player.get("elixir"));
 
         if (this._scrollView != null) {
             this._scrollView.removeFromParent();
@@ -175,31 +196,17 @@ var TournamentLayer = cc.Layer.extend({
     _updateRankRewardItem: function () {
         cc.log("TournamentLayer _updateRankRewardItem");
 
-        if (this._rankRewardItem != null) {
-            this._rankRewardItem.removeFromParent();
-        }
+        this._elixirLabel.setString(gameData.player.get("elixir"));
 
-        var rewardRanking = gameData.tournament.getLastRankReward();
+        var reward = gameData.tournament.getLastRankReward();
 
-        if (rewardRanking) {
-            this._rankRewardItem = cc.MenuItemFont.create(
-                "你已达到第 " + rewardRanking + " 排名，点击领取奖励",
-                this._onClickRankReward,
-                this
-            );
-            this._rankRewardItem.setFontSize(26);
-            this._rankRewardItem.setColor(cc.c3b(255, 239, 131));
-            this._rankRewardItem.setPosition(cc.p(360, 910));
-            this._menu.addChild(this._rankRewardItem);
-
-            this._rankRewardItem.runAction(
-                cc.RepeatForever.create(
-                    cc.Sequence.create(
-                        cc.ScaleTo.create(2, 1.05, 1.05),
-                        cc.ScaleTo.create(2, 1, 1)
-                    )
-                )
-            );
+        if (reward) {
+            this._rewardLabel.setString("首次达到" + reward.ranking + " 奖励" + reward.elixir + "仙丹");
+            this._rewardLabel.setVisible(true);
+            this._rewardItem.setVisible(reward.canReceive);
+        } else {
+            this._rewardLabel.setVisible(false);
+            this._rewardItem.setVisible(false);
         }
     },
 
@@ -255,6 +262,12 @@ var TournamentLayer = cc.Layer.extend({
         return null;
     },
 
+    _setPlayerUpgradeReward: function (upgradeReward) {
+        cc.log("TournamentLayer _setPlayerUpgradeReward");
+
+        this._upgradeReward = upgradeReward || null;
+    },
+
     _onClickPlayer: function (id, point) {
         cc.log("TournamentLayer _onClickPlayer");
 
@@ -266,7 +279,8 @@ var TournamentLayer = cc.Layer.extend({
         cc.log("TournamentLayer _onClickRankReward");
 
         var that = this;
-        gameData.tournament.receive(function () {
+        gameData.tournament.receive(function (reward) {
+            lz.tipReward(reward);
             that._updateRankRewardItem();
         });
     },
@@ -314,7 +328,36 @@ var TournamentLayer = cc.Layer.extend({
     _onClickBuyCount: function () {
         cc.log("TournamentLayer _onClickBuyCount");
 
+        var id = 6;
+        var product = gameData.shop.getProduct(id);
 
+        cc.log(product);
+
+        if (product.count <= 0) {
+            TipLayer.tip(product.tip);
+            return;
+        }
+
+        var that = this;
+        AmountLayer.pop(
+            function (count) {
+                that._buyCount(id, count);
+            },
+            product
+        );
+    },
+
+    _buyCount: function (id, count) {
+        cc.log("TournamentLayer _buyCount");
+
+        if (count > 0) {
+            var that = this;
+            gameData.shop.buyProduct(function (data) {
+                that.update();
+
+                lz.tipReward(data);
+            }, id, count);
+        }
     }
 });
 

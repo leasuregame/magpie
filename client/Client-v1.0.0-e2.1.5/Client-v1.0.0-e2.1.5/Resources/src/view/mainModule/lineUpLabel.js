@@ -52,7 +52,7 @@ var LineUpLabel = cc.Layer.extend({
                 cardHeadItem = CardHeadNode.getCardHeadItem(lineUpCardList[i], this._onClickCard, this);
 
             } else {
-                cardHeadItem = CardHeadNode.getCardHeadItem(-1, this._onClickCard, this);
+                cardHeadItem = CardHeadNode.getCardHeadItem(-1, this._onClickLock(i), this);
             }
 
             cardHeadItem.setPosition(cc.p(79 + 122 * i, 0));
@@ -64,6 +64,20 @@ var LineUpLabel = cc.Layer.extend({
         cc.log("LineUpLabel _onClickCard");
 
         MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_LINEUP));
+    },
+
+    _onClickLock: function (index) {
+        var table = outputTables.function_limit.rows[1];
+
+        return function () {
+            cc.log("LineUpLabel _onClickLock");
+
+            if (index == 3) {
+                TipLayer.tip("第四个卡槽 " + table.card4_position + " 级开放");
+            } else if (index == 4) {
+                TipLayer.tip("第五个卡槽 " + table.card5_position + " 级开放");
+            }
+        }
     }
 });
 

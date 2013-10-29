@@ -167,8 +167,7 @@ describe("Area Server", function() {
 					request(
 						'area.trainHandler.starUpgrade', {
 							target: 165,
-							sources: [160, 161],
-							allInherit: true
+							sources: [160, 161]
 						},
 						function(data) {
 							expect(data.code).toEqual(501);
@@ -222,37 +221,86 @@ describe("Area Server", function() {
 
 				it('should can not upgrade star of card', function() {
 					request('area.trainHandler.starUpgrade', {
-							target: 200,
-							sources: [
-								201,
-								202,
-								203,
-								204,
-								205,
-								206,
-								207,
-								208,
-								209,
-								210,
-								211,
-								212,
-								213,
-								214,
-								215,
-								216,
-								217,
-								218,
-								219,
-								220,
-								221
-							],
-							allInherit: true
-						},
-						function(data) {
-							expect(data.code).toEqual(501);
-							expect(data.msg).toEqual('最多只能消耗20张卡牌来进行升级');
-							console.log(data);
+						target: 200,
+						sources: [
+							201,
+							202,
+							203,
+							204,
+							205,
+							206,
+							207,
+							208,
+							209,
+							210,
+							211,
+							212,
+							213,
+							214,
+							215,
+							216,
+							217,
+							218,
+							219,
+							220,
+							221
+						]
+					},
+					function(data) {
+						expect(data.code).toEqual(501);
+						expect(data.msg).toEqual('最多只能消耗20张卡牌来进行升级');
+						console.log(data);
+					});
+				});
+			});
+
+			describe("when 100 percent upgrade star of card", function(){
+				beforeEach(function(){
+					loginWith('arthur', '1', 1);
+				});
+
+				it('should can upgrade star of card', function(){
+					request('area.trainHandler.starUpgrade', {
+						target: 200,
+						sources: [
+							201,
+							202,
+							203,
+							204,
+							205,
+							206,
+							207,
+							208,
+							209,
+							210,
+							211,
+							212,
+							213,
+							214,
+							215,
+							216,
+							217,
+							218,
+							219,
+							220
+						]
+					},
+					function(data) {
+						expect(data.code).toEqual(200);
+						expect(data.msg.upgrade).toEqual(true);
+						expect(_.pick(data.msg.card, 
+							'id', 'tableId', 
+							'lv', 'exp', 'skillLv', 
+							'skillPoint')
+						).toEqual({
+							id: 200,
+							tableId: 4,
+							lv: 50,
+							exp: 100,
+							skillLv: 1,
+							skillPoint: 30000
 						});
+					});
 				});
 			});
 

@@ -295,7 +295,7 @@ var Player = (function(_super) {
         elixirPerLv: {},
         skillPoint: 0,
         spiritor: {
-            lv: 0,
+            lv: 1,
             spirit: 0
         },
         spiritPool: {

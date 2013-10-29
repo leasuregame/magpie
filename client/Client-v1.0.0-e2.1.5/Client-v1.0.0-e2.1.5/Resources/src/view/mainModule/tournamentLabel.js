@@ -67,7 +67,8 @@ var TournamentLabel = cc.Node.extend({
         rankingLabel.setPosition(cc.p(95, 42));
         this.addChild(rankingLabel);
 
-        if (this._player.playerId != gameData.player.get("id")) {
+        var player = gameData.player;
+        if (this._player.playerId != player.get("id")) {
             var functionItem = null;
 
             if (this._player.type == CAN_ADD_FRIEND) {
@@ -102,6 +103,16 @@ var TournamentLabel = cc.Node.extend({
             functionItemMenu.setPosition(cc.p(0, 0));
             this.addChild(functionItemMenu);
         } else {
+            var abilityIcon = cc.LabelTTF.create("战斗力", "STHeitiTC-Medium", 22);
+            abilityIcon.setColor(cc.c3b(56, 3, 5));
+            abilityIcon.setPosition(cc.p(530, 82));
+            this.addChild(abilityIcon);
+
+            var abilityLabel = cc.LabelTTF.create(player.getAbility(), "STHeitiTC-Medium", 22);
+            abilityLabel.setColor(cc.c3b(56, 3, 5));
+            abilityLabel.setPosition(cc.p(530, 48));
+            this.addChild(abilityLabel);
+
             playerItem.setEnabled(false);
 
             var myselfSprite = cc.Sprite.create(main_scene_image.icon257);

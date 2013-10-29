@@ -26,7 +26,7 @@ describe("Area Server", function() {
 						expect(data.msg.ranking.length).toEqual(50);
 						expect(data.msg.pass.length).toEqual(50);
 
-						expect(orders(data.msg.level, 'lv')).toEqual(60, 42, 40, 40, 40, 25, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20 );
+						expect(orders(data.msg.level, 'lv')).toEqual(42, 40, 40, 40, 25, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20 );
 						expect(orders(data.msg.ability, 'ability')).toEqual(
 							(function() {
 								var abis = data.msg.ability;

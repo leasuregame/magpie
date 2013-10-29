@@ -213,7 +213,7 @@ Handler::skillUpgrade = (msg, session, next) ->
       
       card.increase('skillLv')
       card.increase('skillPoint', sp_need)
-      player.decrease('skillPoint', sp_need);
+      player.decrease('skillPoint', sp_need)
       cb(null, player, card)
   ], (err, player, card) ->
     if err
@@ -221,7 +221,7 @@ Handler::skillUpgrade = (msg, session, next) ->
 
     card.save()
     player.save()
-    next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need,ability: card.ability()}})
+    next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need, ability: card.ability()}})
 
 Handler::starUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -250,7 +250,7 @@ Handler::starUpgrade = (msg, session, next) ->
       if card.star is 5
         return cb({code: 501, msg: "卡牌星级已经是最高级了"})
 
-      if card.lv isnt cardConfig.MAX_LEVEL[card.star]
+      if card.lv isnt table.getTableItem('card_lv_limit', card.star).max_lv
         return cb({code: 501, msg: "未达到进阶等级"})
 
       starUpgradeConfig = table.getTableItem('star_upgrade', card.star)
@@ -273,7 +273,6 @@ Handler::starUpgrade = (msg, session, next) ->
       rate = 0
 
       if card.star is 4
-        console.log 'star is 4 , before count...', rate, card.useCardsCounts, card_count
         if card.useCardsCounts < 6 and card.useCardsCounts >= 0
           count = if (card.useCardsCounts + card_count <= 6) then card_count else 6 - card.useCardsCounts
           card.increase('useCardsCounts' , count)
@@ -281,12 +280,10 @@ Handler::starUpgrade = (msg, session, next) ->
 
         if card.useCardsCounts > 5
           rate = card.useCardsCounts * starUpgradeConfig.rate_per_card
-          card.set('useCardsCounts',-1);
-
-        console.log 'star is 4 , after count...', rate, card.useCardsCounts, card_count
+          card.set('useCardsCounts',-1)
 
       totalRate = _.min([card_count * starUpgradeConfig.rate_per_card + rate, 100])
-      console.log 'totalRate = ', totalRate
+
       if utility.hitRate(totalRate)
         is_upgrade = true
       
@@ -294,6 +291,7 @@ Handler::starUpgrade = (msg, session, next) ->
         player.decrease('money', money_consume)
         card.increase('star')
         card.increase('tableId')
+        card.resetSkillLv()
         entityUtil.resetSkillIncForCard(card)
 
         # 获得so lucky成就
@@ -305,11 +303,9 @@ Handler::starUpgrade = (msg, session, next) ->
           achieve.star5card(player)
           cardNmae = table.getTableItem('cards', card.tableId).name
           msg = {
-            #route: 'onSystemMessage',
             msg: player.name + '成功的将' + cardNmae + '进阶为5星！！！'
             type: 0
           }
-          #@app.get('messageService').pushMessage(msg)
           msgQueue.push(msg);
         # 卡牌星级进阶，添加一个被动属性
         if card.star >= 3

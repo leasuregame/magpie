@@ -60,6 +60,7 @@ Remote::getPlayerByUserId = (userId, serverId, callback) ->
 Remote::playerLeave = (playerId, uid, serverId, callback) ->
   area.removePlayer playerId
   messageService.leave(uid, serverId)
+
   callback()
 
 initPlayer = (player, callback) ->

@@ -153,7 +153,7 @@ describe("Area Server", function() {
         beforeEach(function(){
           doAjax('/update/player/' + arthur.playerId, {
             elixirPerLv: JSON.stringify({
-              100: 600
+              100: 1600
             })
           }, function(res) {
             loginWith(arthur.account, arthur.password, arthur.areaId);
@@ -178,7 +178,7 @@ describe("Area Server", function() {
         beforeEach(function(){
           doAjax('/update/player/' + 1, {
             elixirPerLv: JSON.stringify({
-              1: 1000
+              1: 2000
             }),
             elixir: 2000
           }, function(res) {

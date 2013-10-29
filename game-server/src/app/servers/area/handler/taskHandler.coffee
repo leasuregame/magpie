@@ -227,6 +227,9 @@ Handler::resetPassMark = (msg, session, next) ->
       if player.gold < 200
         return cb({code: 501,msg: '元宝不足'})
 
+      if not player.canResetPassMark()
+        return cb({code: 501, msg: '没有关卡可以重置'})
+
       if player.resetPassMark()
          cb()
       else

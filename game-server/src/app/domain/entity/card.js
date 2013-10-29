@@ -19,7 +19,7 @@ var elixirConfig = table.getTableItem('elixir', 1);
 var cardConfig = require('../../../config/data/card');
 var _ = require("underscore");
 var psConfig = require('../../../config/data/passSkill');
-var MAX_LEVEL = require('../../../config/data/card').MAX_LEVEL
+var cardLvs = table.getTable('card_lv_limit');
 var GROUP_EFFECT_ATK = 1
 var GROUP_EFFECT_HP = 2
 
@@ -41,6 +41,10 @@ var addEvents = function(card) {
     card.on('lv.change', function(lv) {
         countHpAtk(card);
         card.recountHpAndAtk();
+    });
+
+    card.on('skillPoint.change', function() {
+        checkSkillLv(card);
     });
 };
 
@@ -89,6 +93,31 @@ var countHpAtk = function(card) {
     }
 };
 
+var checkSkillLv = function(card) {
+    if (card.star < 3) {
+        return;
+    }
+
+    var items, skillLv, i, el, sp = card.skillPoint;
+    items = table.getTable('skill_upgrade').map(function(row) {
+        return row['star' + card.star];
+    }).sort(function(x, y){
+        return x - y;
+    });
+
+    skillLv = 0;
+    for (i = 0; i < items.length; i++) {
+        el = items[i];
+        if (sp >= el) {
+            skillLv += 1;
+            sp -= el;
+        } else {
+            break;
+        }
+    }
+    card.skillLv = skillLv;
+};
+
 /*
  * Card 与 card 表对应的数据类，提供简单操作
  * @param {object} param 数据库 card 表中的一行记录
@@ -108,6 +137,7 @@ var Card = (function(_super) {
             }
             this.cardData = cardData;
         }
+
 
         countHpAtk(this);
         countElixirEffect(this);
@@ -332,9 +362,9 @@ var Card = (function(_super) {
                 break;
             }
         }
-
-        if ((this.lv + upgraded_lv) >= MAX_LEVEL[this.star]) {
-            upgraded_lv = MAX_LEVEL[this.star] - this.lv;
+        var max_lv = cardLvs.getItem(this.star).max_lv;
+        if ((this.lv + upgraded_lv) >= max_lv) {
+            upgraded_lv = max_lv - this.lv;
             exp = 0;
         }
 
@@ -342,7 +372,7 @@ var Card = (function(_super) {
     };
 
     Card.prototype.upgrade = function(lv, exp) {
-        if (this.lv == MAX_LEVEL[this.star]) {
+        if (this.lv >= cardLvs.getItem(this.star).max_lv) {
             return;
         }
         this.increase('lv', lv);
@@ -352,6 +382,10 @@ var Card = (function(_super) {
     Card.prototype.price = function() {
         cfg = table.getTableItem('card_price', 1);
         return (cfg.grow_per_lv * (this.lv - 1)) + cfg['star' + this.star];
+    };
+
+    Card.prototype.resetSkillLv = function(){
+        checkSkillLv(this);
     };
 
     Card.prototype.toJson = function() {

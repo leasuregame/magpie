@@ -4,7 +4,10 @@ cardConfig = require '../../config/data/card'
 playerConfig = require '../../config/data/player'
 utility = require '../common/utility'
 async = require 'async'
+logger = require('pomelo-logger').getLogger(__filename)
 _ = require 'underscore'
+
+MAX_PLAYER_LV = table.getTableItem('lv_limit', 1).player_lv_limit
 
 module.exports = 
   createCard: (data, done) ->
@@ -29,7 +32,7 @@ module.exports =
 
     isUpgrade = false
     rewards = money: 0, energy: 0, skillPoint: 0, elixir: 0
-    while(player.exp >= upgradeInfo.exp)
+    while(player.exp >= upgradeInfo.exp and player.lv < MAX_PLAYER_LV)
       isUpgrade = true
       player.increase 'lv'
       player.elixirPerLv = {}
@@ -43,10 +46,12 @@ module.exports =
 
       upgradeInfo = table.getTableItem 'player_upgrade', player.lv
 
-    player.increase('money', rewards.money)
-    player.increase('energy', rewards.energy)
-    player.increase('skillPoint', rewards.skillPoint)
-    player.increase('elixir', rewards.elixir)
+    if isUpgrade
+      player.increase('money', rewards.money)
+      player.increase('energy', rewards.energy)
+      player.increase('skillPoint', rewards.skillPoint)
+      player.increase('elixir', rewards.elixir)
+      
     cb(isUpgrade, rewards)
 
 genSkillInc = (card) ->
@@ -57,7 +62,7 @@ genSkillInc = (card) ->
     max = skill["star#{card.star}_inc_max"]
     card.skillInc = _.random(min, max)
   else
-    throw new Error('can not file skill info of card: ' + card.tableId)
+    logger.warn('can not file skill info of card: ' + card.tableId)
 
 updateFriendCount = (player) ->
   fl = playerConfig.FRIENDCOUNT_LIMIT

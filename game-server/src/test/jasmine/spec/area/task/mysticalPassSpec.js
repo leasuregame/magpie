@@ -41,7 +41,6 @@ describe("Area Server", function () {
                         expect(data.msg).toBeDefined();
                         expect(data.msg).hasProperties([
                             "battleLog",
-                            "spiritor",
                             "hasMystical"
                         ]);
                     });

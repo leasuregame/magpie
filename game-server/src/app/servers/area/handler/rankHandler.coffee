@@ -86,18 +86,25 @@ Handler::challenge = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   playerName = session.get('playerName')
   targetId = msg.targetId
+  ranking = msg.ranking
 
   if playerId is targetId
    return next null,{code: 501, msg: '不能挑战自己'}
 
   player = null
+  target = null
   async.waterfall [
     (cb) ->
-      playerManager.getPlayerInfo {pid: playerId}, cb
+      playerManager.getPlayers [playerId, targetId], cb
 
     (res, cb) ->
-      player = res
-      fightManager.pvp {playerId: playerId, targetId: targetId}, cb
+      player = res[playerId]
+      target = res[targetId]
+
+      if target.rank.ranking isnt ranking
+        return cb({code: 501, msg: '对方排名已发生改变'})
+
+      fightManager.pvp player, target, cb
 
     (bl, cb) =>
       isWin =  bl.winner == 'own'

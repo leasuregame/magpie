@@ -27,6 +27,7 @@ var util = require('util');
 var achieve = require('../achievement');
 var SPIRITOR_PER_LV = require('../../../config/data/card').ABILIGY_EXCHANGE.spiritor_per_lv;
 var EXP_CARD_ID = require('../../../config/data/card').EXP_CARD_ID;
+var DEFAULT_SPIRIT = require('../../../config/data/spirit').DEFAULT_SPIRIT;
 
 var cardLvs = table.getTable('card_lv_limit');
 var resData = table.getTableItem('resource_limit', 1);
@@ -295,8 +296,8 @@ var Player = (function(_super) {
         elixirPerLv: {},
         skillPoint: 0,
         spiritor: {
-            lv: 0,
-            spirit: 0
+            lv: 1,
+            spirit: DEFAULT_SPIRIT
         },
         spiritPool: {
             lv: 1,

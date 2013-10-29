@@ -39,7 +39,8 @@ describe("Area Server", function() {
 
                 it("should can be return battle log", function() {
                     request('area.rankHandler.challenge', {
-                        targetId: 100
+                        targetId: 100,
+                        ranking: 20001
                     }, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(200);
@@ -70,7 +71,8 @@ describe("Area Server", function() {
 
                 it("should can be return battle log", function() {
                     request('area.rankHandler.challenge', {
-                        targetId: 2
+                        targetId: 2,
+                        ranking: 20002
                     }, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(200);
@@ -101,11 +103,29 @@ describe("Area Server", function() {
 
                 it("should can not be return battle log", function() {
                     request('area.rankHandler.challenge', {
-                        targetId: 1
+                        targetId: 1,
+                        ranking: 20003
                     }, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(501);
                         expect(data.msg).toEqual('不能挑战自己');
+                    });
+                });
+            });
+
+            describe("对方名次发生变化时", function(){
+                beforeEach(function(){
+                    loginWith('1', '1', 1);
+                });
+
+                it('should can not challenge', function(){
+                    request('area.rankHandler.challenge', {
+                        targetId: 2,
+                        ranking: 100
+                    }, function(data) {
+                        console.log(data);
+                        expect(data.code).toEqual(501);
+                        expect(data.msg).toEqual('对方排名已发生改变');
                     });
                 });
             });

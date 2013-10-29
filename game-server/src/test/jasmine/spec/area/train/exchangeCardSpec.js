@@ -56,7 +56,7 @@ describe("Area Server", function() {
 
                     doAjax('/player/' + user1.playerId, {}, function(res) {
                       expect(data.msg.fragments).toEqual(res.data.fragments);
-                      expect(data.msg.fragments).toEqual(40 - (star == 4 ? 30 : 40));
+                      expect(data.msg.fragments).toEqual(40 - (star == 4 ? 15 : 40));
                     });
                   }
                 }

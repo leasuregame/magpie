@@ -237,8 +237,8 @@ describe("Area Server", function() {
                         expect(data).toEqual({
                             code: 200,
                             msg: {
-                                rankingRewards: [500, 100, 50, 10]
-                            }
+                                elixir: 5000
+                            }                            
                         });
                     });
 
@@ -249,8 +249,8 @@ describe("Area Server", function() {
                         expect(data).toEqual({
                             code: 200,
                             msg: {
-                                rankingRewards: [500, 100, 50]
-                            }
+                                elixir: 3000
+                            }                            
                         });
                     });
 
@@ -261,8 +261,32 @@ describe("Area Server", function() {
                         expect(data).toEqual({
                             code: 200,
                             msg: {
-                                rankingRewards: [500, 100]
-                            }
+                                elixir: 2500
+                            }                            
+                        });
+                    });
+
+                    request('area.rankHandler.getRankingReward', {
+                        ranking: 100
+                    }, function(data) {
+                        console.log(data);
+                        expect(data).toEqual({
+                            code: 200,
+                            msg: {
+                                elixir: 2000
+                            }                            
+                        });
+                    });
+
+                    request('area.rankHandler.getRankingReward', {
+                        ranking: 500
+                    }, function(data) {
+                        console.log(data);
+                        expect(data).toEqual({
+                            code: 200,
+                            msg: {
+                                elixir: 1000
+                            }                            
                         });
                     });
 
@@ -272,14 +296,25 @@ describe("Area Server", function() {
 
             describe('when ranking is 500', function() {
                 beforeAll(function() {
-                    doAjax('/update/rank/' + 5, {
+                    doAjax('/update/rank/' + 4, {
                         ranking: 500
                     }, function() {
-                        loginWith('1', '1', 1);
+                        loginWith('2', '1', 1);
                     });
                 });
 
-                it('should only can get ranking reward of 5000', function() {
+                var before_player, before_rank;
+                beforeEach(function(){
+                    doAjax('/player/2', {}, function(res){
+                        before_player = res.data;
+                    });
+
+                    doAjax('/rank/4', {}, function(res) {
+                        before_rank = res.data;
+                    });
+                });
+
+                it('should can only get ranking reward of 500, once', function() {
                     request('area.rankHandler.getRankingReward', {
                         ranking: 500
                     }, function(data) {
@@ -287,8 +322,18 @@ describe("Area Server", function() {
                         expect(data).toEqual({
                             code: 200,
                             msg: {
-                                rankingRewards: []
-                            }
+                                elixir: 1000
+                            }                            
+                        });
+                    });
+
+                    request('area.rankHandler.getRankingReward', {
+                        ranking: 500
+                    }, function(data) {
+                        console.log(data);
+                        expect(data).toEqual({
+                            code: 501,
+                            msg: '不能重复领取500的排名奖励'                         
                         });
                     });
 
@@ -301,6 +346,15 @@ describe("Area Server", function() {
                             msg: '不能领取该排名奖励'
                         });
                     });
+
+                    doAjax('/player/2', {}, function(res){
+                        expect(res.data.elixir).toEqual(before_player.elixir + 1000);
+                    });
+
+                    doAjax('/rank/4', {}, function(res){
+                        expect(res.data.gotRewards).toEqual('[500]');
+                    });
+                    expect(before_rank.gotRewards).toEqual('[]');
                 });
 
             });
@@ -382,6 +436,8 @@ describe("Area Server", function() {
                                 return a - b;
                             })).toEqual(genRankings(cur_ranking, index));
 
+                            expect(data.msg).toEqual({});
+
                         });
                     });
 
@@ -445,7 +501,7 @@ describe("Area Server", function() {
 
                             expect(rankList[20].type).toEqual(0);
                         });
-                    })
+                    });
 
                 });
 

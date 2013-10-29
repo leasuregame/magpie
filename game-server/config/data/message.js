@@ -14,9 +14,7 @@ exp = module.exports = {
 		UNHANDLED: 5,
 		NOTICE: 6
 	},
-	FINALSTATUS: [2, 3, 4, 6],
-	DEFAULT_GIVE_COUNT: 5,
-	DEFAULT_RECEIVE_COUNT: 5
+	FINALSTATUS: [2, 3, 4, 6]
 };
 
 exp.TYPE_MAP = {}

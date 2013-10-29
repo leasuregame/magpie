@@ -14,6 +14,7 @@ Area.addPlayer = (player) ->
   players.put player
 
 Area.removePlayer = (playerId) ->
+
   _player = Area.getPlayer playerId
   data = _player.allData()
   _player.emit 'persist', data, (err, res) ->

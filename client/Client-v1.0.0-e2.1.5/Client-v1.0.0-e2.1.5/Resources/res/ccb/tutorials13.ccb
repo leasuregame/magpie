@@ -444,8 +444,6 @@
 						<integer>255</integer>
 					</dict>
 				</array>
-				<key>seqExpanded</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -1363,8 +1361,8 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<real>1.662105917930603</real>
-							<real>1.6406735181808472</real>
+							<real>1</real>
+							<real>1</real>
 						</array>
 						<key>name</key>
 						<string>scale</string>
@@ -1372,8 +1370,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.662105917930603</real>
-							<real>1.6406735181808472</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>

@@ -33,14 +33,12 @@ describe("Area Server", function() {
 							'power_consume',
 							'exp_obtain',
 							'money_obtain',
-							'upgrade',
+							'gold_obtain',
 							'open_box_card',
 							'battle_log',
-							'lv',
 							'exp',
 							'task',
 							'power',
-							'spiritor',
 							'momo'
 						]);
 
@@ -53,7 +51,6 @@ describe("Area Server", function() {
 									expect(res.task).toEqual({
 										id: 250,
 										progress: 3,
-										hasWin: true,
 										mark: []
 									});
 									expect(res.battle_log.rewards).hasProperties([
@@ -63,7 +60,6 @@ describe("Area Server", function() {
 									expect(res.task).toEqual({
 										id: 250,
 										progress: 2,
-										hasWin: false,
 										mark: []
 									});
 								}
@@ -83,7 +79,6 @@ describe("Area Server", function() {
 								expect(res.task).toEqual({
 									id: 250,
 									progress: 3,
-									hasWin: false,
 									mark: []
 								});
 								break;
@@ -94,7 +89,6 @@ describe("Area Server", function() {
 								expect(res.task).toEqual({
 									id: 250,
 									progress: 3,
-									hasWin: false,
 									mark: []
 								});
 						}
@@ -102,9 +96,99 @@ describe("Area Server", function() {
 						expect(res.power_consume).toEqual(5);
 						expect(res.exp_obtain).toEqual(145);
 						expect(res.money_obtain).toEqual(290);
-						expect(typeof res.upgrade).toEqual('boolean');
 					});
 				});
+			});
+
+			describe('when player is upgrade', function() {
+				beforeEach(function() {
+					doAjax('/update/player/' + 1, {
+						exp: 388
+					}, function() {
+						loginWith('1', '1', 1);
+					});
+				});
+
+				it('should can upgrade player', function() {
+					request('area.taskHandler.explore', {
+						taskId: 1
+					}, function(data) {
+						console.log(data);
+						expect(data.code).toEqual(200);
+						expect(data.msg.upgradeInfo).toEqual({
+							lv: 26,
+							rewards: {
+								money: 250,
+								energy: 90,
+								skillPoint: 200,
+								elixir: 200
+							},
+							friendsCount: 20
+						});
+						expect(data.msg.exp).toEqual(2);
+					});
+				});
+			});
+
+			describe('when player level is upgrade from 30 to 31', function() {
+				describe('when player is vip', function() {
+					beforeEach(function() {
+						doAjax('/update/player/' + 2, {
+							exp: 625,
+							vip: 7,
+							lv: 30
+						}, function() {
+							loginWith('2', '1', 1);
+						});
+					});
+
+					it('should can upgrade player', function() {
+						request('area.taskHandler.explore', {
+							taskId: 1
+						}, function(data) {
+							console.log(data);
+							expect(data.code).toEqual(200);
+							expect(data.msg.upgradeInfo).toEqual({
+								lv: 31,
+								rewards: {
+									money : 300, energy : 115, skillPoint : 250, elixir : 250
+								},
+								friendsCount: 60
+							});
+							expect(data.msg.exp).toEqual(1);
+						});
+					});
+				});
+
+				describe('when player is not vip', function() {
+					beforeEach(function() {
+						doAjax('/update/player/' + 4, {
+							exp: 625,
+							vip: 0,
+							lv: 30
+						}, function() {
+							loginWith('4', '1', 1);
+						});
+					});
+
+					it('should can upgrade player', function() {
+						request('area.taskHandler.explore', {
+							taskId: 1
+						}, function(data) {
+							console.log(data);
+							expect(data.code).toEqual(200);
+							expect(data.msg.upgradeInfo).toEqual({
+								lv: 31,
+								rewards: {
+									money : 300, energy : 115, skillPoint : 250, elixir : 250
+								},
+								friendsCount: 30
+							});
+							expect(data.msg.exp).toEqual(1);
+						});
+					});
+				});
+
 			});
 
 			describe("when power is not enought", function() {
@@ -169,11 +253,11 @@ describe("Area Server", function() {
 
 				var count = 1;
 				var totalCount = 500;
-
+				var curLv = 10
 
 				it(totalCount + '次', function() {
 					var doTest = function() {
-						if (count >= 14607) {
+						if (count >= totalCount) {
 							return;
 						}
 
@@ -181,7 +265,7 @@ describe("Area Server", function() {
 							taskId: task.id
 						}, function(data) {
 							console.log('第' + count + '次', data);
-							expect(data).toEqual({});
+							//expect(data).toEqual({});
 							oldTask.id = task.id;
 							oldTask.progress = task.progress;
 							oldTask.hasWin = task.hasWin;
@@ -189,7 +273,21 @@ describe("Area Server", function() {
 							task.progress = data.msg.task.progress;
 							task.hasWin = data.msg.task.hasWin;
 
-							// checkExploreResult(data, task, oldTask);
+							checkExploreResult(data, task, oldTask);
+							if (data.msg.upgradeInfo) {
+								console.log('upgraded: ', data.msg.upgradeInfo);
+								expect(data.msg.upgradeInfo).hasProperties(['lv', 'rewards', 'friendsCount']);
+								expect(data.msg.upgradeInfo.lv).toEqual(++curLv);
+								expect(data.msg.upgradeInfo.rewards).hasProperties([
+									'money', 'energy', 'skillPoint', 'elixir'
+								]);
+								expect(data.msg.upgradeInfo.friendsCount).toEqual(20);
+							}
+
+							// doAjax('/player/' + passer.playerId, {}, function(res) {
+							// 	expect(res.data.lv).toEqual(data.msg.lv);
+							// 	expect(res.data.exp).toEqual(data.msg.exp);
+							// });
 
 							count += 1;
 							doTest();
@@ -211,21 +309,21 @@ describe("Area Server", function() {
 
 var checkExploreResult = function(data, task, oldTask) {
 	expect(data.code).toEqual(200);
-	expect(data.msg).hasProperties([
-		'result',
-		'power_consume',
-		'exp_obtain',
-		'money_obtain',
-		'upgrade',
-		'open_box_card',
-		'battle_log',
-		'lv',
-		'exp',
-		'task',
-		'power',
-		'spiritor',
-		'momo'
-	]);
+	// expect(data.msg).hasProperties([
+	// 	'result',
+	// 	'power_consume',
+	// 	'exp_obtain',
+	// 	'money_obtain',
+	// 	'upgrade',
+	// 	'open_box_card',
+	// 	'battle_log',
+	// 	'lv',
+	// 	'exp',
+	// 	'task',
+	// 	'power',
+	// 	'spiritor',
+	// 	'momo'
+	// ]);
 
 	var res = data.msg;
 	switch (res.result) {
@@ -236,25 +334,23 @@ var checkExploreResult = function(data, task, oldTask) {
 				expect(res.task).toEqual({
 					id: task.id,
 					progress: task.progress,
-					hasWin: task.hasWin,
 					mark: []
 				});
-				if (oldTask.hasWin) {
-					expect(res.battle_log.rewards).hasProperties([
-						'cards', 'fragment'
-					]);
-				} else {
-					expect(res.battle_log.rewards).hasProperties([
-						'totalSpirit', 'cards', 'fragment'
-					]);
-				}
+				// if (oldTask.hasWin) {
+				// 	expect(res.battle_log.rewards).hasProperties([
+				// 		'cards', 'fragment'
+				// 	]);
+				// } else {
+				// 	expect(res.battle_log.rewards).hasProperties([
+				// 		'totalSpirit', 'cards', 'fragment'
+				// 	]);
+				// }
 
 
 			} else {
 				expect(res.task).toEqual({
 					id: oldTask.id,
 					progress: oldTask.progress,
-					hasWin: oldTask.hasWin,
 					mark: []
 				});
 			}
@@ -293,5 +389,4 @@ var checkExploreResult = function(data, task, oldTask) {
 	// expect(res.power_consume).toEqual(5);
 	// expect(res.exp_obtain).toEqual(145);
 	// expect(res.money_obtain).toEqual(290);
-	expect(typeof res.upgrade).toEqual('boolean');
 }

@@ -21,10 +21,8 @@ class Manager
       exp_obtain: 0
       gold_obtain: 0
       money_obtain: 0
-      upgrade: false
       open_box_card: null
       battle_log: null
-      spiritor: null
       momo: null
     }
 
@@ -64,7 +62,7 @@ class Manager
         player.setPassMark(id)
         isWipeOut = true
 
-    player.increase('exp',  rewards.exp_obtain)
+    # player.increase('exp',  rewards.exp_obtain)
     player.increase('money', rewards.money_obtain)
     player.increase('skillPoint', rewards.skill_point)
 
@@ -133,7 +131,6 @@ class Manager
 
   @countExploreResult: (player, data, taskId, cb) ->
     taskData = table.getTableItem('task', taskId)
-    exp_to_upgrade = table.getTableItem('player_upgrade', player.lv)
 
     _.extend data, {
       power_consume: taskData.power_consume
@@ -157,16 +154,20 @@ class Manager
           data.momo = player.createMonoGift();
       player.set('task', task)
 
-    # 判断是否升级
-    if (player.exp + taskData.exp_obtain) >= exp_to_upgrade.exp
-      data.upgrade = true
-
     ### consume power first, then add exp
     because exp change will check if upgrade player level ###
     player.consumePower(taskData.power_consume)
-    player.increase('exp', taskData.exp_obtain)
 
-    cb(null, data)
+    ###  判断是否升级 ###
+    entityUtil.upgradePlayer player, taskData.exp_obtain, (isUpgrade, rewards) ->
+      if isUpgrade
+        data.upgradeInfo = {
+          lv: player.lv
+          rewards: rewards
+          friendsCount: player.friendsCount
+        }
+
+      cb(null, data)
 
   @createPassiveSkillForCard: (card, times, cb) ->
     async.times times

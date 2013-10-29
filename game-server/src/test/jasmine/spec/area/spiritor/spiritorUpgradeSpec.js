@@ -53,13 +53,13 @@ describe('Area Server', function() {
 
 			describe('when can upgrade spiritor', function() {
 				beforeEach(function() {
-					doAjax('/update/player/' + 100, {
+					doAjax('/update/player/' + 101, {
 						spiritor: JSON.stringify({
 							lv: 1,
 							spirit: 1000
 						})
 					}, function(res) {
-						loginWith('arthur', '1', 1);
+						loginWith('user4', '1', 1);
 					});
 				});
 
@@ -71,9 +71,9 @@ describe('Area Server', function() {
 							msg: {
 								spiritor: {
 									lv: 2,
-									spirit: 100
-								},
-								ability: 600
+									spirit: 100,
+									ability: 600
+								}								
 							}
 						});
 					});

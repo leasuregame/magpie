@@ -34,6 +34,10 @@ var Rank = (function(_super) {
 	function Rank(param) {
 		Rank.__super__.constructor.apply(this, arguments);
 		addEvents(this);
+
+		if (this.historyRanking == 0) {
+			this.historyRanking = this.ranking;
+		}
 	}
 
 	Rank.FIELDS = [
@@ -69,9 +73,9 @@ var Rank = (function(_super) {
 
 	Rank.prototype.pushRecent = function(id) {
 		var rc = _.clone(this.recentChallenger);
-		if (rc.length >= 3) {
-			rc = rc.slice(-3);
-			rc.shift();
+		var beatBackCount = table.getTableItem('ranking_list',1).beat_back_count
+		if (rc.length >= beatBackCount) {
+			rc = rc.splice(0,1);
 		}
 		if (rc.indexOf(id) < 0) {
 			rc.push(id);
@@ -102,9 +106,24 @@ var Rank = (function(_super) {
 		return RANKINGS(this.historyRanking).indexOf(ranking) > -1 && this.gotRewards.indexOf(ranking) < 0;
 	};
 
+	Rank.prototype.hasGotReward = function(ranking) {
+		return this.gotRewards.indexOf(ranking) > -1;
+	};
+
 	Rank.prototype.rankingRewards = function() {
 		return _.difference(RANKINGS(this.historyRanking), this.gotRewards)
 			.sort(function(x, y) { return y - x; });
+	};
+
+	Rank.prototype.rewardsNotHave = function(){
+		var self = this;
+		return table.getTable('ranking_reward')
+			.map(function(row) {
+				return row.id;
+			})
+			.filter(function(i) {
+				return i < self.historyRanking;
+			});
 	};
 
 	return Rank;

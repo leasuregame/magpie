@@ -87,49 +87,104 @@ var PlayerDao = (function(_super) {
         var start = Date.now();
         var _this = this;
 
-        async.parallel([
+        var players = null;
+        var cards = null;
+        var ranks = null;
+
+        async.waterfall([
             function(callback) {
                 _this.fetchMany({
                     where: " id in (" + ids.toString() + ")",
-                    fields: ['id', 'name', 'lv', 'ability', 'lineUp']
-                }, callback);
+                    fields: ['id', 'name', 'lineUp']
+                }, function(err,plys){
+                    players = plys;
+                    callback();
+                });
             },
             function(callback) {
+                var cardIds = [];
+                players.forEach(function(p){
+                    cardIds = _.union(cardIds,_.values(p.lineUpObj()));
+                });
+                callback(null,cardIds);
+            },
+            function(cardIds,callback) {
                 cardDao.fetchMany({
-                    where: ' playerId in (' + ids.toString() + ')'
-                }, callback);
+                    where: ' id in (' + cardIds.toString() + ')',
+                    fields: ['playerId','tableId']
+                }, function(err,res){
+                    cards = res;
+                    callback();
+                });
             },
             function(callback) {
                 rankDao.fetchMany({
                     where: ' playerId in (' + ids.toString() + ')'
-                }, callback);
-            },
-        ], function(err, results) {
-            if (err !== null) {
-                return cb(err, null);
-            }
-
-            var players = results[0];
-            var cards = results[1];
-            var ranks = results[2];
-
-            players.forEach(function(p) {
-                p.addCards(cards.filter(function(c) {
-                    return c.playerId == p.id
-                }));
-
-                _ranks = ranks.filter(function(r) {
-                    return r.playerId == p.id
+                }, function(err,res){
+                    ranks = res;
+                    callback();
                 });
+            }
+        ],function(err){
+
+            players.forEach(function(p){
+                p.addCards(cards.filter(function(c){ return c.playerId == p.id}));
+
+                _ranks = ranks.filter(function(r) { return r.playerId == p.id});
                 if (_ranks.length > 0) {
                     p.set('rank', _ranks[0]);
                 }
             });
             var end = Date.now();
-            console.log('get player details time: ', (end - start) / 1000);
+            console.log('get player details time: ', (end - start)/1000);
             return cb(null, players);
         });
 
+    };
+
+    PlayerDao.getLineUpInfoByIds = function(ids,cb) {
+        var start = Date.now();
+        var end;
+        var players = null;
+        var cards = null;
+
+        async.waterfall([
+            function(callback) {
+                var sql = "select id,name,lineUp from player where id in (" + ids.toString() + ")";
+                dbClient.query(sql,[],function(err,plys){
+                    players = plys;
+                    callback();
+                });
+            },
+            function(callback) {
+                var cardIds = [];
+                players.forEach(function(p){
+                    cardIds = cardIds.concat(_.without(getLineUpIds(p.lineUp),-1));
+                });
+                cardIds.sort(sort);
+                callback(null,cardIds);
+            },
+            function(cardIds,callback) {
+                if(cardIds.length != 0) {
+                    var sql = "select playerId,tableId from card where id in (" + cardIds.toString() + ")";
+                    dbClient.query(sql,[],function(err,res){
+                        cards = res;
+                        callback();
+                    });
+                }
+                else
+                    callback();
+            }
+        ],function(err){
+            if(cards)
+                players.forEach(function(p){
+                    p.cards = cards.filter(function(c){ return c.playerId == p.id});
+
+                });
+            end = Date.now();
+            console.log('get player LineUpInfo By Ids time: ', (end - start)/1000);
+            return cb(null, players);
+        });
     };
 
     PlayerDao.orderByRanking = function(limit, cb) {
@@ -225,6 +280,24 @@ var orderBy = function(fields, orderby, limit, cb) {
             return cb(null, []);
         }
     });
+};
+
+function sort(a, b) {
+    return a - b
+};
+
+function getLineUpIds(lineUp){
+    var ids = [];
+    if (_.isString(lineUp) && lineUp !== '') {
+        var lines = lineUp.split(',');
+        lines.forEach(function(l) {
+            var _ref = l.split(':'),
+                pos = _ref[0],
+                num = parseInt(_ref[1]);
+            ids.push(num)
+        });
+    };
+    return ids;
 };
 
 module.exports = PlayerDao;

@@ -14,6 +14,8 @@ var explore = require('./explore');
 var Area = require('../models/area');
 
 var buyVip = require('./buyVip');
+var testVip = require('./testVip');
+
 
 var logger = require('../logger').logger('user');
 
@@ -125,6 +127,7 @@ var routes = function(app){
     passSkillAfresh(app);
     explore(app);
     buyVip(app);
+    testVip(app);
 
 
 
@@ -143,7 +146,8 @@ var routes = function(app){
         });
     });
 
-     app.get('/notice',function(req , res){
+    app.get('/notice',checkLogin);
+    app.get('/notice',function(req , res){
         Area.getAreasList(function(areas) {
             res.render('notice',{
                 title : '公告',

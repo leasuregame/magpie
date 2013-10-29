@@ -35,10 +35,9 @@ var Player = Entity.extend({
 
     _maxLv: 0,          // 最大等级
     _maxPower: 0,       // 最大体力
-    _maxGold: 0,
-    _maxMoney: 0,
-    _maxSkillPoint: 0,
-    _maxEnergy: 0,
+    _maxMoney: 0,       // 最大金钱
+    _maxSkillPoint: 0,  // 最大技能点
+    _maxEnergy: 0,      // 最大活力
     _maxExp: 0,         // 最大经验
 
     init: function (data) {
@@ -46,11 +45,10 @@ var Player = Entity.extend({
 
         MAX_LINE_UP_CARD = 3;
 
+        this.off();
         this.on("lvChange", this._lvChangeEvent);
 
-        this._maxLv = outputTables.lv_limit.rows[1].player_lv_limit;
-        this._maxPower = outputTables.resource_limit.rows[1].power_value;
-
+        this._load();
         this.update(data);
 
         gameData.cardLibrary.init();
@@ -65,6 +63,16 @@ var Player = Entity.extend({
         cc.log(this);
 
         return true;
+    },
+
+    _load: function () {
+        this._maxLv = outputTables.lv_limit.rows[1].player_lv_limit;
+
+        var resourceLimitTable = outputTables.resource_limit.rows[1];
+        this._maxPower = resourceLimitTable.power_value;
+        this._maxMoney = resourceLimitTable.money;
+        this._skillPoint = resourceLimitTable.skillPoint;
+        this._maxEnergy = resourceLimitTable.energy;
     },
 
     update: function (data) {
@@ -85,36 +93,42 @@ var Player = Entity.extend({
         this.set("energy", data.energy);
         this.set("vip", data.vip);
         this.set("cash", data.cash);
+        this.set("power", data.power.value);
 
-        if (data.power) {
-            this.set("power", data.power.value);
-        }
-
-        if (this._lv) {
-            this.set("maxExp", outputTables.player_upgrade.rows[this._lv].exp);
-        }
-
-        if (data.cards) gameData.cardList.init(data.cards);
-        if (data.lineUp) gameData.lineUp.init(data.lineUp);
-        if (data.task) gameData.task.init(data.task);
-        if (data.pass) gameData.pass.init(data.pass);
-        if (data.spiritor) gameData.spirit.init(data.spiritor);
-        if (data.spiritPool) gameData.spiritPool.init(data.spiritPool);
-        if (data.rank) gameData.tournament.init(data.rank);
-
-        if (data.dailyGift) gameData.treasureHunt.init({
+        gameData.cardList.init(data.cards);
+        gameData.lineUp.init(data.lineUp);
+        gameData.task.init(data.task);
+        gameData.pass.init(data.pass);
+        gameData.spirit.init(data.spiritor);
+        gameData.spiritPool.init(data.spiritPool);
+        gameData.tournament.init(data.rank);
+        gameData.treasureHunt.init({
             count: data.dailyGift.lotteryCount,
             freeCount: data.dailyGift.lotteryFreeCount
         });
-
-        if (data.vipBox) gameData.shop.init({
-            useVipBoxList: data.vipBox
+        gameData.shop.init({
+            useVipBoxList: data.vipBox,
+            powerBuyCount: data.dailyGift.powerBuyCount,
+            challengeBuyCount: data.dailyGift.challengeBuyCount
         });
 
     },
 
+    upgrade: function (data) {
+        cc.log("Player upgrade");
+
+        if (!data) return;
+
+        this.set("lv", data.lv);
+        this.adds(data.rewards);
+
+        gameData.friend.set("maxFriendCount", data.friendsCount);
+    },
+
     _lvChangeEvent: function () {
         cc.log("Player _lvChangeEvent");
+
+        this.set("maxExp", outputTables.player_upgrade.rows[this._lv].exp);
 
         var table = outputTables.function_limit.rows[1];
 

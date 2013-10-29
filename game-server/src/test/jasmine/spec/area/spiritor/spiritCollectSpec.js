@@ -38,7 +38,7 @@ describe('Area Server', function() {
 								collectCount: 15
 							}),
 							spiritor: JSON.stringify({
-								lv: 0,
+								lv: 1,
 								spirit: 0
 							})
 						}, function() {});
@@ -119,8 +119,13 @@ describe('Area Server', function() {
 			}
 
 			describe('when collect count is the max', function() {
+				var n = new Date();
 				beforeEach(function() {
-					loginWith('user5', '1', 1);
+					doAjax('/update/player/' + 108, {
+						resetDate: n.getFullYear() + '-' + (n.getMonth() + 1) + '-' + n.getDate()
+					}, function(data) {
+						loginWith('user5', '1', 1);
+					});					
 				});
 
 				it('should can not collect spirit again in current day', function() {
@@ -131,6 +136,44 @@ describe('Area Server', function() {
 							code: 501,
 							msg: '不能采集，已经达到每天最大采集次数'
 						});
+					});
+				});
+			});
+
+			describe('when the first time collect spirit', function(){
+				beforeEach(function(){
+					loginWith('1', '1', 1);
+				});
+
+				it('should can upgrade spiritor', function(){
+					request('area.spiritHandler.collect', {
+						isGold: false
+					}, function(data) {
+						expect(data).toEqual({
+							code: 200,
+							msg: {
+								spirit_obtain: 10,
+								isDouble: false,
+								spiritPool: {
+									lv: 1,
+									exp: 5,
+									collectCount: 14
+								}
+							}
+						});
+					});
+
+					request('area.spiritHandler.spiritorUpgrade', {}, function(daa) {
+						expect(data).toEqual({
+							code: 200,
+							msg: {
+								spiritor: {
+									lv: 2,
+									spirit: 0,
+									ability: 600
+								}
+							}
+						})
 					});
 				});
 			});

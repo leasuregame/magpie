@@ -40,27 +40,24 @@ describe("Area Server", function() {
 						}
 					});
 				});
-				
-				it('扫荡其中一个已通的任务大关', function(){
+
+				it('扫荡其中一个已通的任务大关', function() {
 					request('area.taskHandler.wipeOut', {
 						type: 'task',
 						chapterId: 1
 					}, function(data) {
 						console.log('扫荡其中一个已通的任务大关', data);
-                        expect(data.msg).hasProperties([
-                            'rewards',
-                            'power',
-                            'exp',
-                            'lv',
-                            'mark'
-                        ]);
+						expect(data.msg).hasProperties([
+							'rewards',
+							'power',
+							'exp',
+							'mark'
+						]);
 
-                        expect(data.msg.rewards).toEqual({
-                            money_obtain: 750
-                        });
-                        expect(data.msg.mark).toEqual([1]);
-                        expect(data.msg.lv).toEqual(40);
-
+						expect(data.msg.rewards).toEqual({
+							money_obtain: 750
+						});
+						expect(data.msg.mark).toEqual([1]);
 
 					});
 				});
@@ -76,7 +73,6 @@ describe("Area Server", function() {
 							'rewards',
 							'power',
 							'exp',
-							'lv',
 							'mark'
 						]);
 
@@ -85,15 +81,12 @@ describe("Area Server", function() {
 						});
 						expect(data.msg.mark).toEqual([16777215]);
 
-						// 获得扫荡经验后，角色升级了，所以剩余的经验改变，等级变高
-						expect(data.msg.lv).toEqual(40);
-
 						doAjax('/player/' + arthur.playerId, {}, function(res) {
 							expect(data.msg.rewards.money_obtain).toEqual(res.data.money - before_data.money);
 						});
 					});
 				});
-				
+
 			});
 
 			describe("关卡扫荡", function() {
@@ -102,6 +95,7 @@ describe("Area Server", function() {
 						expect(data).toEqual('done');
 					});
 				});
+
 				beforeEach(function() {
 					loginWith(papa.account, papa.password, papa.areaId);
 
@@ -110,38 +104,56 @@ describe("Area Server", function() {
 						before_data = {
 							exp: res.data.exp,
 							money: res.data.money,
-							skill_point: res.data.skillPoint
+							skill_point: res.data.skillPoint,
+							energy: res.data.energy,
+							elixir: res.data.elixir
 						}
 					});
 				});
 
-				it("精英关卡 should can be 扫荡", function() {
-					request('area.taskHandler.wipeOut', {
-						type: 'pass'
-					}, function(data) {
-						console.log('关卡扫荡', data);
-						expect(data.code).toEqual(200);
-						expect(_.keys(data.msg).sort()).toEqual([
-							'mark',
-							'rewards',
-							'power',
-							'exp',
-							'lv'
-						].sort());
 
-						expect(data.msg.rewards).toEqual({
-							exp_obtain: 550,
-							money_obtain: 3500,
-							skill_point: 2150
-						});
+				describe('when have pass to be wipe out', function() {
 
-						expect(data.msg.mark).toEqual([33554431]);
-						expect(data.msg.exp).toEqual(293);
-						expect(data.msg.lv).toEqual(41);
+					it("精英关卡 should can be 扫荡", function() {
+						request('area.taskHandler.wipeOut', {
+							type: 'pass'
+						}, function(data) {
+							console.log('关卡扫荡', data);
+							expect(data.code).toEqual(200);
+							expect(_.keys(data.msg).sort()).toEqual([
+								'mark',
+								'rewards',
+								'power',
+								'exp',
+								'upgradeInfo'
+							].sort());
 
-						doAjax('/player/' + papa.playerId, {}, function(res) {
-							expect(res.data.money).toEqual(data.msg.rewards.money_obtain + before_data.money);
-							expect(res.data.skillPoint).toEqual(data.msg.rewards.skill_point + before_data.skill_point);
+							expect(data.msg.rewards).toEqual({
+								exp_obtain: 425,
+								money_obtain: 500,
+								skill_point: 2150
+							});
+
+							expect(data.msg.upgradeInfo).toEqual({
+								lv: 41,
+								friendsCount: 30,
+								rewards: {
+									elixir: 350,
+									energy: 165,
+									money: 400,
+									skillPoint: 350
+								}
+							});
+
+							expect(data.msg.mark).toEqual([33554431]);
+							expect(data.msg.exp).toEqual(297);
+
+							doAjax('/player/' + papa.playerId, {}, function(res) {
+								expect(res.data.money).toEqual(data.msg.rewards.money_obtain + before_data.money + 400);
+								expect(res.data.skillPoint).toEqual(data.msg.rewards.skill_point + before_data.skill_point + 350);
+								expect(res.data.elixir).toEqual(before_data.elixir + 350);
+								expect(res.data.energy).toEqual(before_data.energy + 165);
+							});
 						});
 					});
 				});

@@ -9,6 +9,7 @@ Card = require '../../../domain/entity/card'
 cardConfig = require '../../../../config/data/card'
 spiritConfig = require '../../../../config/data/spirit'
 utility = require '../../../common/utility'
+entityUtil = require '../../../util/entityUtil'
 dao = require('pomelo').app.get('dao')
 
 MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
@@ -86,7 +87,6 @@ Handler::explore = (msg, session, next) ->
     player.save()
     data.task = player.getTask()
     data.power = player.power
-    data.lv = player.lv
     data.exp = player.exp
     next(null, {code: 200, msg: data})
 
@@ -130,13 +130,21 @@ Handler::wipeOut = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
+    upgradeInfo = null
+    entityUtil.upgradePlayer player, rewards.exp_obtain, (isUpgrade, rew) ->
+      if isUpgrade
+        upgradeInfo = {
+          lv: player.lv
+          rewards: rew
+          friendsCount: player.friendsCount
+        }
     player.save()
     next(null, {code: 200, msg: {
-      rewards: rewards, 
-      mark: player[type]?.mark,
-      power: player.power,
-      exp: player.exp,
-      lv: player.lv
+      rewards: rewards
+      mark: player[type]?.mark
+      power: player.power
+      exp: player.exp
+      upgradeInfo: upgradeInfo if upgradeInfo
     }})
 
 ###
@@ -169,6 +177,7 @@ Handler::passBarrier = (msg, session, next) ->
     (bl, cb) ->
       ### 第一次经过layer层，才有灵气掉落 ###
       countSpirit(player, bl, 'PASS') if player.passLayer is layer-1
+      upgradeInfo = null
       if bl.winner is 'own'
         rdata = table.getTableItem 'pass_reward', layer
         _.extend bl.rewards, {
@@ -176,13 +185,20 @@ Handler::passBarrier = (msg, session, next) ->
           money: rdata.money
           skillPoint: rdata.skill_point
         }
-        
+
         updatePlayer(player, bl.rewards, layer)
         checkMysticalPass(player)
+        entityUtil.upgradePlayer player, bl.rewards.exp, (isUpgrade, rewards) ->
+          if isUpgrade
+            upgradeInfo = {
+              lv: player.lv
+              rewards: rewards
+              friendsCount: player.friendsCount
+            }
 
-      cb(null, bl)
+      cb(null, bl, upgradeInfo)
 
-  ], (err, bl) ->
+  ], (err, bl, upgradeInfo) ->
     if err 
       return next(err, {code: err.code or 500, msg: err.msg or ''})
 
@@ -190,10 +206,10 @@ Handler::passBarrier = (msg, session, next) ->
 
     next(null, {code: 200, msg: {
       battleLog: bl, 
+      upgradeInfo: upgradeInfo if upgradeInfo
       pass: player.getPass(),
       power: player.power,
-      exp: player.exp,
-      lv: player.lv
+      exp: player.exp
     }})
 
 ###
@@ -210,6 +226,9 @@ Handler::resetPassMark = (msg, session, next) ->
       player = res
       if player.gold < 200
         return cb({code: 501,msg: '元宝不足'})
+
+      if not player.canResetPassMark()
+        return cb({code: 501, msg: '没有关卡可以重置'})
 
       if player.resetPassMark()
          cb()
@@ -302,7 +321,6 @@ checkMysticalPass = (player) ->
 
 
 updatePlayer = (player, rewards, layer) ->
-  player.increase('exp', rewards.exp)
   player.increase('money', rewards.money)
   player.increase('skillPoint', rewards.skillPoint)
   player.incSpirit(rewards.totalSpirit)

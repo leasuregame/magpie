@@ -48,7 +48,9 @@ var linkSever = function (cb) {
                 TipLayer.tip("游戏与服务器断开链接，正在尝试重连");
 
                 cb = function () {
-                    gameData.user.login();
+                    gameData.user.login(function () {
+                        TipLayer.tip("重连成功");
+                    });
                 }
             }
 

@@ -28,7 +28,22 @@ describe("Area Server", function() {
             var challengeBuyCount = 10;
             var gold = 200;
 
-            describe('购买成功',function() {
+            describe('购买失败', function() {
+                beforeEach(function() {
+                    loginWith('114','1',1);
+                });
+                it('一次性购买11次',function() {
+                    request('area.buyHandler.buyProduct',{id:6,times: 11},function(data) {
+                        console.log(data);
+                        expect(data).toEqual({
+                            code: 501,
+                            msg: '超过购买次数上限'
+                        });
+                    });
+                })
+            });
+
+            describe('购买成功', function() {
 
                 beforeEach(function() {
                     loginWith('114','1',1);
@@ -36,13 +51,17 @@ describe("Area Server", function() {
 
                 var buyPower = function(time) {
                     it('第' + time + '次购买' ,function() {
-                        request('area.buyHandler.buyChallengeCount',{},function(data) {
+                        request('area.buyHandler.buyProduct',{id:6,times: 1},function(data) {
                             console.log(data);
                             expect(data.code).toEqual(200);
                             challengeCount++;
                             challengeBuyCount--;
-                            expect(data.msg.challengeCount).toEqual(challengeCount);
                             gold -= BUY_CHALLENGECOUNT.gold;
+                            expect(data.msg.challengeCount).toEqual(1);
+                            expect(data.msg.consume).toEqual({
+                                "key": "gold",
+                                "value": gold
+                            });
                             doAjax('/player/114',{},function(msg) {
                                 player = msg.data;
                                 console.log(player);
@@ -71,7 +90,7 @@ describe("Area Server", function() {
 
                 it('无法购买有奖竞技次数',function() {
 
-                    request('area.buyHandler.buyChallengeCount',{},function(data) {
+                    request('area.buyHandler.buyProduct',{id:6,times: 1},function(data) {
 
                         console.log(data);
                         expect(data.code).toEqual(501);
@@ -113,7 +132,7 @@ describe("Area Server", function() {
 
                 it('无法购买有奖竞技次数',function() {
 
-                    request('area.buyHandler.buyChallengeCount',{},function(data) {
+                    request('area.buyHandler.buyProduct',{id:6,times: 1},function(data) {
 
                         console.log(data);
                         expect(data.code).toEqual(501);

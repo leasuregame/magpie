@@ -8,6 +8,8 @@ logger = require('pomelo-logger').getLogger(__filename)
 msgConfig = require '../../../../config/data/message'
 _ = require 'underscore'
 
+rankingConfig = table.getTableItem('ranking_list',1)
+
 INTERVALS = 
   10000: 106
   7000: 83
@@ -30,7 +32,7 @@ Handler = (@app) ->
 
 Handler::rankingList = (msg, session, next) ->
   playerId = msg.playerId or session.get('playerId')
-  
+  start = Date.now()
   player = null
   async.waterfall [
     (cb) =>
@@ -45,79 +47,84 @@ Handler::rankingList = (msg, session, next) ->
         return cb({code: 501, msg: '找不到竞技信息'})
 
       cb()
-    (cb) ->
+
+    (cb)->
+      if player.rank.recentChallenger.length > 0
+        rankManager.getRankings(player.rank.recentChallenger,cb)
+      else
+        cb(null,[])
+
+    (beatBackRankings, cb) ->
       rankings = genRankings(player.rank.ranking)
-      playerManager.rankingList _.keys(rankings), (err, players) ->
-        cb(err, players, rankings)
+      for ranking in beatBackRankings
+        if ranking < player.rank.ranking
+          rankings[ranking] = STATUS_COUNTER_ATTACK
 
-    (players,rankings,cb) ->
-      flag = []
-      for p in players when p.id isnt playerId and p.id in player.rank.recentChallenger and p.rank.ranking < player.rank.ranking
-        rankings[p.rank.ranking] = STATUS_COUNTER_ATTACK
-        flag.push p.id
+      playerManager.rankingList _.keys(rankings), (err, players, ranks) ->
+        cb(err, players, ranks, rankings)
 
-      plys = _.difference(player.rank.recentChallenger,flag)
-
-      playerManager.getPlayers plys, (err, ply) ->
-        rank = {}
-
-        for key , value of ply
-          if player.rank.ranking > value.rank.ranking
-            players.push value
-            rank[value.rank.ranking] = STATUS_COUNTER_ATTACK
-
-        cb(err, players, _.extend(rankings,rank))
-  ], (err, players, rankings) ->
+  ], (err, players, ranks, rankings) ->
     if err
       return next(null, {code: err.code or 501, msg: err.msg or err.message})
 
-    players = filterPlayersInfo(players, rankings)
+    players = filterPlayersInfo(players, ranks, rankings)
     players.sort (x, y) -> x.ranking - y.ranking
     r = player.getRank()
     rank = {
       ranking: r.ranking,
-      rankReward: r.rankReward,
+      canGetReward: r.canGetReward,
+      notCanGetReward: r.notCanGetReward,
       challengeCount: player.dailyGift.challengeCount,
-      rankList: players
+      rankList: players,
+      time: Date.now()  - start
     }
+    end = Date.now();
+    console.log '**********get rankingList useTime = ',(end - start) / 1000
     next(null,{code: 200, msg: {rank: rank}})
 
 Handler::challenge = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   playerName = session.get('playerName')
   targetId = msg.targetId
+  ranking = msg.ranking
 
   if playerId is targetId
    return next null,{code: 501, msg: '不能挑战自己'}
 
   player = null
+  target = null
   async.waterfall [
     (cb) ->
-      playerManager.getPlayerInfo {pid: playerId}, cb
+      playerManager.getPlayers [playerId, targetId], cb
 
     (res, cb) ->
-      player = res
-      fightManager.pvp {playerId: playerId, targetId: targetId}, cb
+      player = res[playerId]
+      target = res[targetId]
+
+      if target.rank.ranking isnt ranking
+        return cb({code: 501, msg: '对方排名已发生改变'})
+
+      fightManager.pvp player, target, cb
 
     (bl, cb) =>
       isWin =  bl.winner == 'own'
       if isWin and isV587(bl)
         achieve.v587(player)
 
-      rankManager.exchangeRankings player, targetId, isWin, (err, res, rewards) ->
+      rankManager.exchangeRankings player, targetId, isWin, (err, res, rewards, upgradeInfo) ->
         if err and not res
           return cb(err)
         else
-          return cb(null, rewards, bl)
+          return cb(null, rewards, bl, upgradeInfo)
 
-  ], (err, rewards, bl) ->
+  ], (err, rewards, bl, upgradeInfo) ->
       if err
         return next(null, {code: err.code, msg: err.msg or err.message})
 
       bl.rewards = rewards
       next(null, {code: 200, msg: {
         battleLog: bl,
-        lv: player.lv,
+        upgradeInfo: upgradeInfo if upgradeInfo
         exp: player.exp
       }})
 
@@ -141,20 +148,23 @@ Handler::getRankingReward = (msg, session, next) ->
     if err
       return next(null, {code: err.code, msg: err.msg or err.message})
 
+    rewardData = table.getTableItem('ranking_reward', ranking)
+    if not rewardData
+      return next(null, {code: 501, msg: "找不到#{ranking}的排名奖励"})
+
     rank = player.rank
     if rank.historyRanking is 0 or rank.historyRanking > ranking
       return next(null, {code: 501, msg: '不能领取该排名奖励'})
 
+    if rank.hasGotReward(ranking)
+      return next(null, {code: 501, msg: "不能重复领取#{ranking}的排名奖励"})
+
     rank.getRankingReward(ranking)
-    rewardData = table.getTableItem('ranking_reward', ranking)
-    if not rewardData
-      return next(null, {code: 501, msg: "找不到#{ranking}的排名奖励"})
     player.increase('elixir', rewardData.elixir)
     player.save()
     next(null, {
       code: 200, 
-      msg: rankingRewards: player.rank?.rankingRewards()
-      elixir: rewardData.elixir
+      msg: elixir: rewardData.elixir
     })
 
 isV587 = (bl) ->
@@ -170,14 +180,15 @@ isV587 = (bl) ->
   return ownCardCount is 1 and enemyCardCount is 5
 
 genRankings = (ranking) ->
-  top10 = {}
-  for r in [1..10]
-    top10[r] = if ranking > 10 then STATUS_NORMAL else STATUS_CHALLENGE
+  top = {}
+  for r in [1..rankingConfig.top]
+    top[r] = if ranking > rankingConfig.top then STATUS_NORMAL else STATUS_CHALLENGE
 
   _results = {}
 
-  if ranking <= 10
-    _results[11] = STATUS_CHALLENGE
+  if ranking <= rankingConfig.top
+     for r in [rankingConfig.top + 1..rankingConfig.challenge_count - rankingConfig.top + 1]
+        _results[r] = STATUS_CHALLENGE
 
   else
     keys = Object.keys(INTERVALS)
@@ -186,22 +197,26 @@ genRankings = (ranking) ->
       if ranking >= k
         step = INTERVALS[k]
         break
-
-    _results[ranking - step * i] = STATUS_CHALLENGE for i in [1...11]
+        
+    for i in [1..rankingConfig.challenge_count]
+      r = ranking - step * i
+      if r > 0
+        _results[r] = STATUS_CHALLENGE 
+      else 
+        _results[ranking - r + 1]
 
   _results[ranking] = STATUS_NORMAL
-  _.extend(top10, _results)
+  _.extend(top, _results)
 
-filterPlayersInfo = (players, rankings) ->
+filterPlayersInfo = (players, ranks, rankings) ->
   players.map (p) -> 
+    console.log '-1-', p.id, p.name, p.cards
     {
       playerId: p.id
       name: p.name
-      ability: p.ability
-      lv: p.lv
-      ranking: p.rank.ranking
-      cards: p.activeCards().map (c) -> c.tableId
-      type: rankings[p.rank.ranking]
+      ranking: ranks[p.id]
+      cards: if p.cards? then p.cards.map (c) -> c.tableId else []
+      type: rankings[ranks[p.id]]
     }
     
 saveBattleLog = (bl, playerName) ->

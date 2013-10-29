@@ -2,24 +2,27 @@
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>arthur wu</Author>
   <LastAuthor>junyu lu</LastAuthor>
-  <Created>2013-10-22T03:46:42Z</Created>
-  <LastSaved>2013-10-23T09:30:43Z</LastSaved>
+  <Created>2013-10-23T17:49:37Z</Created>
   <Company>le zhi of zhuhai</Company>
   <Version>14.0</Version>
  </DocumentProperties>
+ <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <KSOProductBuildVer dt:dt="string">2052-9.1.0.4249</KSOProductBuildVer>
+ </CustomDocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11500</WindowHeight>
-  <WindowWidth>25600</WindowWidth>
-  <WindowTopX>19640</WindowTopX>
-  <WindowTopY>2060</WindowTopY>
+  <WindowHeight>8880</WindowHeight>
+  <WindowWidth>30400</WindowWidth>
+  <WindowTopX>5400</WindowTopX>
+  <WindowTopY>4220</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -35,80 +38,106 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="道具配置表">
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="8" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="8" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="97" ss:DefaultRowHeight="19">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="109"/>
-   <Column ss:AutoFitWidth="0" ss:Width="114"/>
-   <Column ss:Width="108"/>
-   <Column ss:Index="6" ss:Width="124"/>
+   <Column ss:Index="2" ss:Width="124"/>
+   <Column ss:AutoFitWidth="0" ss:Width="109"/>
+   <Column ss:AutoFitWidth="0" ss:Width="451"/>
+   <Column ss:AutoFitWidth="0" ss:Width="108"/>
+   <Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="124"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">名称</Data></Cell>
+    <Cell><Data ss:Type="String">类型名称</Data></Cell>
+    <Cell><Data ss:Type="String">显示名称</Data></Cell>
     <Cell><Data ss:Type="String">描述</Data></Cell>
     <Cell><Data ss:Type="String">消耗资源类型</Data></Cell>
     <Cell><Data ss:Type="String">消耗</Data></Cell>
     <Cell><Data ss:Type="String">获得资源类型</Data></Cell>
     <Cell><Data ss:Type="String">获得</Data></Cell>
+    <Cell><Data ss:Type="String">是否显示</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">method</Data></Cell>
     <Cell><Data ss:Type="String">name</Data></Cell>
     <Cell><Data ss:Type="String">disc</Data></Cell>
     <Cell><Data ss:Type="String">consume_type</Data></Cell>
     <Cell><Data ss:Type="String">consume</Data></Cell>
     <Cell><Data ss:Type="String">obtain_type</Data></Cell>
     <Cell><Data ss:Type="String">obtain</Data></Cell>
+    <Cell><Data ss:Type="String">isVisible</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="String">体力</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">gold</Data></Cell>
-    <Cell><Data ss:Type="Number">20</Data></Cell>
-    <Cell><Data ss:Type="String">power</Data></Cell>
-    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="String">expCard</Data></Cell>
+    <Cell><Data ss:Type="String">经验元灵</Data></Cell>
+    <Cell><Data ss:Type="String">每次购买可获得6级经验元灵1张，蕴含800点卡牌经验。</Data></Cell>
+    <Cell><Data ss:Type="String">money</Data></Cell>
+    <Cell><Data ss:Type="Number">2500</Data></Cell>
+    <Cell><Data ss:Type="String">card</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">money</Data></Cell>
     <Cell><Data ss:Type="String">铜板</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">gold</Data></Cell>
+    <Cell><Data ss:Type="String">每次购买可获得1000仙币，每次额外赠送100仙币。</Data></Cell>
+    <Cell><Data ss:Type="String">gold</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">money</Data></Cell>
-    <Cell><Data ss:Type="Number">1200</Data></Cell>
+    <Cell><Data ss:Type="Number">1100</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">money</Data></Cell>
     <Cell><Data ss:Type="String">铜板</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">gold</Data></Cell>
+    <Cell><Data ss:Type="String">每次购买可获得5000仙币，每次额外赠送1500仙币。</Data></Cell>
+    <Cell><Data ss:Type="String">gold</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="String">money</Data></Cell>
-    <Cell><Data ss:Type="Number">6000</Data></Cell>
+    <Cell><Data ss:Type="Number">6500</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="String">money</Data></Cell>
     <Cell><Data ss:Type="String">铜板</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">gold</Data></Cell>
+    <Cell><Data ss:Type="String">每次购买可获得10000仙币，每次额外赠送5000仙币。</Data></Cell>
+    <Cell><Data ss:Type="String">gold</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
     <Cell><Data ss:Type="String">money</Data></Cell>
-    <Cell><Data ss:Type="Number">13000</Data></Cell>
+    <Cell><Data ss:Type="Number">15000</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="String">有奖竞技次数</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">gold</Data></Cell>
+    <Cell><Data ss:Type="String">power</Data></Cell>
+    <Cell><Data ss:Type="String">体力</Data></Cell>
+    <Cell><Data ss:Type="String">每次购买可获得50点体力。每日最多购买6次。VIP可购买更多。</Data></Cell>
+    <Cell><Data ss:Type="String">gold</Data></Cell>
     <Cell><Data ss:Type="Number">20</Data></Cell>
-    <Cell><Data ss:Type="String">challengeCount</Data></Cell>
+    <Cell><Data ss:Type="String">power</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">6</Data></Cell>
-    <Cell><Data ss:Type="String">经验卡</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">money</Data></Cell>
-    <Cell><Data ss:Type="Number">5000</Data></Cell>
-    <Cell><Data ss:Type="String">card</Data></Cell>
+    <Cell><Data ss:Type="String">challengeCount</Data></Cell>
+    <Cell><Data ss:Type="String">有奖竞技次数</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">gold</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">challengeCount</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.51180555555555596"/>
+    <Footer x:Margin="0.51180555555555596"/>
+   </PageSetup>
    <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
@@ -121,7 +150,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>10</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
@@ -143,12 +172,15 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.51180555555555596"/>
+    <Footer x:Margin="0.51180555555555596"/>
+   </PageSetup>
    <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
-    <HorizontalResolution>-4</HorizontalResolution>
-    <VerticalResolution>-4</VerticalResolution>
+    <VerticalResolution>0</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>

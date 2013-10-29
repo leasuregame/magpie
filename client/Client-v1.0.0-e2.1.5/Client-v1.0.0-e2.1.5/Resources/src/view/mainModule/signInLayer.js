@@ -13,13 +13,15 @@
 
 
 var rewardGoodsUrl = {
+    power: "icon106",
     money: "icon108",
     energy: "icon110",
     skillPoint: "icon109",
     elixir: "icon107",
     lottery_free_count: "icon182",
     spirit: "icon111",
-    gold: "icon112"
+    gold: "icon112",
+    card: "icon146"
 };
 
 var SignInLayer = LazyLayer.extend({

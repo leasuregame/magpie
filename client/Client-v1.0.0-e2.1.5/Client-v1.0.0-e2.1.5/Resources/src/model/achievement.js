@@ -77,6 +77,8 @@ var Achievement = Entity.extend({
             } else {
                 cc.log("sync fail");
 
+                TipLayer.tip(data.msg);
+
                 that.sync();
             }
         });
@@ -97,14 +99,18 @@ var Achievement = Entity.extend({
 
                 that._achievement[id].isReceiver = true;
 
-                gameData.player.adds({
-                    money: that._achievement[id].money,
+                var reward = {
+                    gold: that._achievement[id].gold,
                     energy: that._achievement[id].energy
-                });
+                };
 
-                cb();
+                gameData.player.adds(reward);
+
+                cb(reward);
             } else {
                 cc.log("receiver fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },
@@ -112,7 +118,9 @@ var Achievement = Entity.extend({
     setAchieve: function (id) {
         cc.log("Achievement setAchieve");
 
-        this._achievement[id].isAchieve = true;
+        var achievement = this._achievement[id];
+        achievement.isAchieve = true;
+        achievement.count = achievement.need;
     }
 });
 

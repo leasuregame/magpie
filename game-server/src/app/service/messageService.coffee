@@ -54,3 +54,4 @@ removeRecord = (self, uid) ->
   if record
     delete self.uidMap[uid] 
     delete self.pidMap[record.pid]
+

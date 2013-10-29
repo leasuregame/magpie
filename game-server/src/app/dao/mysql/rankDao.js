@@ -1,6 +1,7 @@
 var Rank = require('../../domain/entity/rank');
 var DaoBase = require("./daoBase");
 var utility = require("../../common/utility");
+var dbClient = require('pomelo').app.get('dbClient');
 
 var RankDao = (function (_super) {
     utility.extends(RankDao, _super);
@@ -21,6 +22,16 @@ var RankDao = (function (_super) {
             orderby: 'ranking',
             limit: 10
         }, cb);
+    };
+
+    RankDao.getRankingsByPids = function(pids,cb) {
+        var sql = "select ranking from rank where id in (" + pids.toString() + ")";
+        dbClient.query(sql,[],cb);
+    };
+
+    RankDao.getPidsByRankings = function(rankings, cb) {
+        var sql = "select playerId,ranking from rank where ranking in (" + rankings.toString() + ")";
+        dbClient.query(sql,[],cb);
     };
 
     RankDao.select = RankDao.fetchMany;

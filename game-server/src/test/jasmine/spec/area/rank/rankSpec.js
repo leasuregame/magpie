@@ -39,7 +39,8 @@ describe("Area Server", function() {
 
                 it("should can be return battle log", function() {
                     request('area.rankHandler.challenge', {
-                        targetId: 100
+                        targetId: 100,
+                        ranking: 20001
                     }, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(200);
@@ -70,7 +71,8 @@ describe("Area Server", function() {
 
                 it("should can be return battle log", function() {
                     request('area.rankHandler.challenge', {
-                        targetId: 2
+                        targetId: 2,
+                        ranking: 20002
                     }, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(200);
@@ -101,11 +103,29 @@ describe("Area Server", function() {
 
                 it("should can not be return battle log", function() {
                     request('area.rankHandler.challenge', {
-                        targetId: 1
+                        targetId: 1,
+                        ranking: 20003
                     }, function(data) {
                         console.log(data);
                         expect(data.code).toEqual(501);
                         expect(data.msg).toEqual('不能挑战自己');
+                    });
+                });
+            });
+
+            describe("对方名次发生变化时", function(){
+                beforeEach(function(){
+                    loginWith('1', '1', 1);
+                });
+
+                it('should can not challenge', function(){
+                    request('area.rankHandler.challenge', {
+                        targetId: 2,
+                        ranking: 100
+                    }, function(data) {
+                        console.log(data);
+                        expect(data.code).toEqual(501);
+                        expect(data.msg).toEqual('对方排名已发生改变');
                     });
                 });
             });
@@ -180,6 +200,39 @@ describe("Area Server", function() {
             });
         });
 
+        describe('挑战后获得经验，玩家升级', function() {
+            beforeEach(function() {
+                doAjax('/update/player/1', {
+                    lv: 25,
+                    exp: 388
+                }, function() {
+                    loginWith('1', '1', 1);
+                });
+            });
+
+            it('player should be upgrated', function() {
+                request('area.rankHandler.challenge', {
+                    targetId: 101
+                }, function(data) {
+                    console.log(data);
+                    expect(data.msg.upgradeInfo).toEqual({
+                        lv: 26,
+                        rewards: {
+                            money: 250,
+                            energy: 90,
+                            skillPoint: 200,
+                            elixir: 200
+                        },
+                        friendsCount: 20
+                    });
+
+                    doAjax('/player/1', {}, function(res){
+                        expect(res.data.exp).toEqual(data.msg.exp);
+                    })
+                });
+            });
+        });
+
         describe("获取排名奖励", function() {
             beforeAll(function() {
                 doAjax('/loaddata/csv', {}, function(data) {
@@ -204,8 +257,8 @@ describe("Area Server", function() {
                         expect(data).toEqual({
                             code: 200,
                             msg: {
-                                rankingRewards: [500, 100, 50, 10]
-                            }
+                                elixir: 5000
+                            }                            
                         });
                     });
 
@@ -216,8 +269,8 @@ describe("Area Server", function() {
                         expect(data).toEqual({
                             code: 200,
                             msg: {
-                                rankingRewards: [500, 100, 50]
-                            }
+                                elixir: 3000
+                            }                            
                         });
                     });
 
@@ -228,8 +281,32 @@ describe("Area Server", function() {
                         expect(data).toEqual({
                             code: 200,
                             msg: {
-                                rankingRewards: [500, 100]
-                            }
+                                elixir: 2500
+                            }                            
+                        });
+                    });
+
+                    request('area.rankHandler.getRankingReward', {
+                        ranking: 100
+                    }, function(data) {
+                        console.log(data);
+                        expect(data).toEqual({
+                            code: 200,
+                            msg: {
+                                elixir: 2000
+                            }                            
+                        });
+                    });
+
+                    request('area.rankHandler.getRankingReward', {
+                        ranking: 500
+                    }, function(data) {
+                        console.log(data);
+                        expect(data).toEqual({
+                            code: 200,
+                            msg: {
+                                elixir: 1000
+                            }                            
                         });
                     });
 
@@ -239,14 +316,25 @@ describe("Area Server", function() {
 
             describe('when ranking is 500', function() {
                 beforeAll(function() {
-                    doAjax('/update/rank/' + 5, {
+                    doAjax('/update/rank/' + 4, {
                         ranking: 500
                     }, function() {
-                        loginWith('1', '1', 1);
+                        loginWith('2', '1', 1);
                     });
                 });
 
-                it('should only can get ranking reward of 5000', function() {
+                var before_player, before_rank;
+                beforeEach(function(){
+                    doAjax('/player/2', {}, function(res){
+                        before_player = res.data;
+                    });
+
+                    doAjax('/rank/4', {}, function(res) {
+                        before_rank = res.data;
+                    });
+                });
+
+                it('should can only get ranking reward of 500, once', function() {
                     request('area.rankHandler.getRankingReward', {
                         ranking: 500
                     }, function(data) {
@@ -254,8 +342,18 @@ describe("Area Server", function() {
                         expect(data).toEqual({
                             code: 200,
                             msg: {
-                                rankingRewards: []
-                            }
+                                elixir: 1000
+                            }                            
+                        });
+                    });
+
+                    request('area.rankHandler.getRankingReward', {
+                        ranking: 500
+                    }, function(data) {
+                        console.log(data);
+                        expect(data).toEqual({
+                            code: 501,
+                            msg: '不能重复领取500的排名奖励'                         
                         });
                     });
 
@@ -268,6 +366,15 @@ describe("Area Server", function() {
                             msg: '不能领取该排名奖励'
                         });
                     });
+
+                    doAjax('/player/2', {}, function(res){
+                        expect(res.data.elixir).toEqual(before_player.elixir + 1000);
+                    });
+
+                    doAjax('/rank/4', {}, function(res){
+                        expect(res.data.gotRewards).toEqual('[500]');
+                    });
+                    expect(before_rank.gotRewards).toEqual('[]');
                 });
 
             });
@@ -314,7 +421,7 @@ describe("Area Server", function() {
             var steps = [106, 83, 62, 41, 19, 14, 11, 5, 1, 1];
 
             var genRankings = function(rank, stepIndex) {
-                var top10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+                var top = [1, 2, 3,4,5,6,7,8,9,10];
                 var results = [];
                 if (rank <= 10) {
                     results.push(11);
@@ -322,7 +429,7 @@ describe("Area Server", function() {
                     for (var i = 0; i < 11; i++) {
                         results.push(rank - steps[stepIndex] * i);
                     }
-                return _.union(top10, results.reverse());
+                return _.union(top, results.reverse());
             };
 
             ids.map(function(id, index) {
@@ -348,6 +455,8 @@ describe("Area Server", function() {
                             }).sort(function(a, b) {
                                 return a - b;
                             })).toEqual(genRankings(cur_ranking, index));
+
+                            expect(data.msg).toEqual({});
 
                         });
                     });
@@ -405,13 +514,14 @@ describe("Area Server", function() {
                             expect(rankList.length).toEqual(21);
                             for (var i = 0; i < 3; i++)
                                 expect(rankList[i].type).toEqual(2);
-                            for (var i = 3; i < 10; i++)
+                            for (var i = 3;i < 10;i++)
                                 expect(rankList[i].type).toEqual(0);
-                            for (var i = 11; i < 20; i++)
+                            for (var i = 10; i < 20; i++)
                                 expect(rankList[i].type).toEqual(1);
+
                             expect(rankList[20].type).toEqual(0);
                         });
-                    })
+                    });
 
                 });
 

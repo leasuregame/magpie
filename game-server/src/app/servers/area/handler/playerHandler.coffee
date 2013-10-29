@@ -56,7 +56,7 @@ Handler::getLineUpInfo = (msg, session, next) ->
       lineUp: lineUp
       name: player.name
       lv: player.lv
-      ability: player.ability
+      ability: player.getAbility()
     }})
 
 todayPeriod = () ->

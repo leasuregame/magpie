@@ -22,7 +22,7 @@ var PlayerDetails = LazyLayer.extend({
         this._super();
         this.update();
 
-        this.schedule(this.update, 5, null);
+        this.schedule(this.update, 5);
     },
 
     init: function () {
@@ -222,7 +222,7 @@ var PlayerDetails = LazyLayer.extend({
             this._onClickClose,
             this
         );
-        closeItem.setPosition(cc.p(650, 930));
+        closeItem.setPosition(cc.p(640, 930));
 
         this._menu = cc.Menu.create(okItem, closeItem);
         this._menu.setPosition(cc.p(0, 0));

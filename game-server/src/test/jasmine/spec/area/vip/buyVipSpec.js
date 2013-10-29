@@ -8,7 +8,7 @@ describe("Area Server", function() {
 			describe("购买VIP", function() {
 				beforeEach(function() {
 					loginWith('arthur', '1', 1);
-				})
+				});
 
 				var buyVip = function(id, lv) {
 					it('充值类型id：' + id + ', vip ' + lv, function() {
@@ -49,7 +49,7 @@ describe("Area Server", function() {
 					(function(id, lv) {
 						buyVip(id, lv);
 					})(ids[i][0], ids[i][1]);
-				};
+				}
 			});
 		});
 	});

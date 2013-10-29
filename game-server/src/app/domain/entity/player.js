@@ -828,6 +828,15 @@ var Player = (function(_super) {
         return this.passMark.hasMark(layer);
     };
 
+    Player.prototype.canResetPassMark = function() {
+        for (var i = 1; i < this.passLayer; i++) {
+            if (this.passMark.hasMark(i)) {
+                return true;
+            }
+        }
+        return false;
+    };
+
     //重置关卡
     Player.prototype.resetPassMark = function() {
 

@@ -126,12 +126,13 @@ var Tournament = Entity.extend({
         });
     },
 
-    defiance: function (cb, targetId) {
+    defiance: function (cb, targetId, ranking) {
         cc.log("Tournament defiance: " + targetId);
 
         var that = this;
         lzWindow.pomelo.request("area.rankHandler.challenge", {
-            targetId: targetId
+            targetId: targetId,
+            ranking: ranking
         }, function (data) {
             cc.log(data);
 
@@ -159,7 +160,7 @@ var Tournament = Entity.extend({
 
                 TipLayer.tip(data.msg);
 
-                cb(null);
+                cb();
             }
         });
     },

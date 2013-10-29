@@ -326,26 +326,27 @@ var ExploreLayer = cc.Layer.extend({
     _onClickExplore: function () {
         cc.log("ExploreLayer _onClickExplore");
 
-        if (gameData.player.get("power") <= 0) {
+        var task = gameData.task;
+
+        if (task.canExplore()) {
+            this._lock();
+
+            var that = this;
+            gameData.task.explore(function (data) {
+                cc.log(data);
+
+                if (data) {
+                    that._reward = data;
+
+                    that._playAnimation();
+                } else {
+                    that._unlock();
+                }
+
+            }, this._getTaskId());
+        } else {
             this._onBuyPower();
-            return;
         }
-
-        this._lock();
-
-        var that = this;
-        gameData.task.explore(function (data) {
-            cc.log(data);
-
-            if (data) {
-                that._reward = data;
-
-                that._playAnimation();
-            } else {
-                that._unlock();
-            }
-
-        }, this._getTaskId());
     },
 
     _lock: function () {

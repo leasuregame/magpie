@@ -375,8 +375,6 @@ var main_scene_image = {
     icon98: main_scene_path + "icon98.png",
     icon99: main_scene_path + "icon99.png",
     icon100: main_scene_path + "icon100.png",
-    icon101: main_scene_path + "icon101.png",
-    icon102: main_scene_path + "icon102.png",
     icon103: main_scene_path + "icon103.png",
     icon104: main_scene_path + "icon104.png",
     icon105: main_scene_path + "icon105.png",

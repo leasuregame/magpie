@@ -174,7 +174,7 @@ var TournamentLabel = cc.Node.extend({
                     } else {
                         that._target.update();
                     }
-                }, this._player.playerId);
+                }, this._player.playerId, this._player.ranking);
             }
         }
     }

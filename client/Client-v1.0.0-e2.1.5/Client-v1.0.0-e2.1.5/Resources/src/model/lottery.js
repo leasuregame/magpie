@@ -70,6 +70,10 @@ var Lottery = Entity.extend({
                 cb(card);
             } else {
                 cc.log("lottery fail");
+
+                TipLayer.tip(data.msg);
+
+                cb();
             }
         });
     }

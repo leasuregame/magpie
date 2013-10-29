@@ -38,24 +38,17 @@ class Manager
         callback(null, bl.reports())
     )
 
-  @pvp: (args, callback) ->
-    targetId = args.targetId
-    playerId = args.playerId
-    playerManager.getPlayers [playerId, targetId], (err, results) ->
-      if err
-        return callback(err, null)
+  @pvp: (attEnt, defEnt, callback) ->
 
-      p_data = results[playerId]
-      attacker = new Player(p_data)
-      attacker.setLineUp p_data.get('lineUp')
-      t_data = results[targetId]
-      defender = new Player(t_data)
-      defender.setLineUp t_data.get('lineUp')
+    attacker = new Player(attEnt)
+    attacker.setLineUp attEnt.get('lineUp')
+    defender = new Player(defEnt)
+    defender.setLineUp defEnt.get('lineUp')
 
-      battleLog.clear()
-      battle = new Battle(attacker, defender)
-      battle.process()
+    battleLog.clear()
+    battle = new Battle(attacker, defender)
+    battle.process()
 
-      callback null, battleLog.reports()
+    callback null, battleLog.reports()
 
 module.exports = Manager

@@ -140,6 +140,44 @@ describe('Area Server', function() {
 				});
 			});
 
+			describe('when the first time collect spirit', function(){
+				beforeEach(function(){
+					loginWith('1', '1', 1);
+				});
+
+				it('should can upgrade spiritor', function(){
+					request('area.spiritHandler.collect', {
+						isGold: false
+					}, function(data) {
+						expect(data).toEqual({
+							code: 200,
+							msg: {
+								spirit_obtain: 10,
+								isDouble: false,
+								spiritPool: {
+									lv: 1,
+									exp: 5,
+									collectCount: 14
+								}
+							}
+						});
+					});
+
+					request('area.spiritHandler.spiritorUpgrade', {}, function(daa) {
+						expect(data).toEqual({
+							code: 200,
+							msg: {
+								spiritor: {
+									lv: 2,
+									spirit: 0,
+									ability: 600
+								}
+							}
+						})
+					});
+				});
+			});
+
 		});
 	});
 });

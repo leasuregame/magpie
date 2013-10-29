@@ -126,12 +126,13 @@ var Tournament = Entity.extend({
         });
     },
 
-    defiance: function (cb, targetId) {
+    defiance: function (cb, targetId, ranking) {
         cc.log("Tournament defiance: " + targetId);
 
         var that = this;
         lzWindow.pomelo.request("area.rankHandler.challenge", {
-            targetId: targetId
+            targetId: targetId,
+            ranking: ranking
         }, function (data) {
             cc.log(data);
 
@@ -139,17 +140,27 @@ var Tournament = Entity.extend({
                 cc.log("Tournament defiance success");
 
                 var msg = data.msg;
+                var player = gameData.player;
+                var cbData = {};
+                var upgradeInfo = msg.upgradeInfo;
 
-                gameData.player.sets({
-                    lv: msg.lv,
-                    exp: msg.exp
-                });
+                player.set("exp", msg.exp);
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
+                if (upgradeInfo) {
+                    player.upgrade(upgradeInfo);
 
-                cb(battleLogId);
+                    cbData.upgradeReward = upgradeInfo.rewards;
+                }
+
+                cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
+
+                cb(cbData);
             } else {
                 cc.log("Tournament defiance fail");
+
+                TipLayer.tip(data.msg);
+
+                cb();
             }
         });
     },

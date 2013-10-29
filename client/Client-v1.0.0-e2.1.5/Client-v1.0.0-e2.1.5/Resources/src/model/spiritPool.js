@@ -18,9 +18,13 @@ var SpiritPool = Entity.extend({
     _exp: 0,
     _maxExp: 0,
     _collectCount: 0,
+    _perObtain: 0,
 
     init: function (data) {
         cc.log("SpiritPool init");
+
+        this.off();
+        this.on("lvChange", this._lvChangeEvent);
 
         this._maxLv = outputTables.lv_limit.rows[1].spirit_lv_limit;
 
@@ -37,22 +41,31 @@ var SpiritPool = Entity.extend({
         this.set("lv", data.lv);
         this.set("exp", data.exp);
         this.set("collectCount", data.collectCount);
-
-        this._loadTable();
     },
 
-    _loadTable: function () {
-        cc.log("SpiritPool _loadTable");
+    _lvChangeEvent: function () {
+        cc.log("SpiritPool _lvChangeEvent");
 
         var table = outputTables.spirit_pool.rows[this._lv];
 
         this._maxExp = table.exp_need;
+        this._perObtain = table.spirit_obtain;
     },
 
-    canCollect: function () {
+    canCollect: function (useGold) {
         cc.log("SpiritPool canCollect");
 
-        return (this._collectCount > 0);
+        if (this._collectCount < 1) {
+            TipLayer.tip("采集次数已用完");
+            return false;
+        }
+
+        if (useGold && gameData.player.get("gold") < 20) {
+            TipLayer.tip("元宝不足");
+            return false;
+        }
+
+        return true;
     },
 
     collect: function (cb, useGold) {
@@ -70,6 +83,10 @@ var SpiritPool = Entity.extend({
                 var msg = data.msg;
 
                 gameData.spirit.add("exp", msg.spirit_obtain);
+
+                if (useGold) {
+                    gameData.player.add("gold", -20);
+                }
 
                 that.update(msg.spiritPool);
 

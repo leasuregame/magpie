@@ -149,13 +149,14 @@ var Pass = Entity.extend({
                 cc.log("wipeOut success");
 
                 var msg = data.msg;
+                var player = gameData.player;
+                var cbData = {};
+                var upgradeInfo = msg.upgradeInfo;
+                var reward = msg.rewards;
 
                 that.update({
                     mark: msg.mark
                 });
-
-                var reward = msg.rewards;
-                var player = gameData.player;
 
                 player.adds({
                     money: reward.money_obtain,
@@ -164,7 +165,13 @@ var Pass = Entity.extend({
 
                 player.set("exp", msg.exp);
 
-                var cbData = {
+                if (upgradeInfo) {
+                    player.upgrade(upgradeInfo);
+
+                    cbData.upgradeReward = upgradeInfo.rewards;
+                }
+
+                cbData.reward = {
                     exp: reward.exp_obtain,
                     money: reward.money_obtain,
                     skillPoint: reward.skill_point

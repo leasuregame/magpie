@@ -16,7 +16,7 @@ var SpiritPoolLayer = cc.Layer.extend({
     _lvLabel: null,
     _expLabel: null,
     _countLabel: null,
-    _expProgress: null,
+    _preObtainLabel: null,
     _spiritItem: null,
     _spiritPoolItem: null,
     _hook: null,
@@ -44,52 +44,63 @@ var SpiritPoolLayer = cc.Layer.extend({
         headIcon.setPosition(cc.p(40, 968));
         this.addChild(headIcon);
 
-        var titleIcon = cc.Sprite.create(main_scene_image.icon102);
+        var titleIcon = cc.Sprite.create(main_scene_image.icon100);
         titleIcon.setPosition(cc.p(360, 1008));
         this.addChild(titleIcon);
 
-        var spiritIcon = cc.Sprite.create(main_scene_image.icon101);
-        spiritIcon.setPosition(cc.p(150, 845));
+        var spiritIcon = cc.Sprite.create(main_scene_image.icon99);
+        spiritIcon.setPosition(cc.p(130, 880));
         this.addChild(spiritIcon);
 
         var countIcon = cc.Sprite.create(main_scene_image.icon98);
-        countIcon.setPosition(cc.p(550, 870));
+        countIcon.setPosition(cc.p(550, 930));
         this.addChild(countIcon);
 
-        var lvIcon = cc.Sprite.create(main_scene_image.icon100);
-        lvIcon.setPosition(cc.p(120, 290));
-        this.addChild(lvIcon);
+        var countLabelIcon = cc.LabelTTF.create("今日可采集次数:", "STHeitiTC-Medium", 20);
+        countLabelIcon.setAnchorPoint(cc.p(0, 0.5));
+        countLabelIcon.setPosition(cc.p(450, 930));
+        this.addChild(countLabelIcon);
 
-        var expIcon = cc.Sprite.create(main_scene_image.icon99);
-        expIcon.setPosition(cc.p(480, 290));
-        this.addChild(expIcon);
-
-        this._lvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
-        this._lvLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._lvLabel.setPosition(cc.p(190, 288));
-        this.addChild(this._lvLabel);
-
-        this._expLabel = cc.LabelTTF.create("0/0", "STHeitiTC-Medium", 25);
-        this._expLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._expLabel.setPosition(cc.p(515, 288));
-        this.addChild(this._expLabel);
-
-        this._countLabel = cc.LabelTTF.create("0 次", "STHeitiTC-Medium", 25);
+        this._countLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
         this._countLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._countLabel.setPosition(cc.p(535, 850));
+        this._countLabel.setPosition(cc.p(600, 930));
         this.addChild(this._countLabel);
 
-        this._expProgress = Progress.create(
-            main_scene_image.progress7,
-            main_scene_image.progress8,
-            0,
-            0
-        );
-        this._expProgress.setPosition(cc.p(360, 250));
-        this.addChild(this._expProgress);
+        var perObtainIcon = cc.Sprite.create(main_scene_image.icon98);
+        perObtainIcon.setPosition(cc.p(550, 880));
+        this.addChild(perObtainIcon);
+
+        var perObtainLabelIcon = cc.LabelTTF.create("每次可获得灵气:", "STHeitiTC-Medium", 20);
+        perObtainLabelIcon.setAnchorPoint(cc.p(0, 0.5));
+        perObtainLabelIcon.setPosition(cc.p(450, 880));
+        this.addChild(perObtainLabelIcon);
+
+        this._preObtainLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
+        this._preObtainLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._preObtainLabel.setPosition(cc.p(600, 880));
+        this.addChild(this._preObtainLabel);
+
+        var lvIcon = cc.LabelTTF.create("灵气池", "STHeitiTC-Medium", 30);
+        lvIcon.setColor(cc.c3b(255, 248, 69));
+        lvIcon.setPosition(cc.p(190, 288));
+        this.addChild(lvIcon);
+
+        this._lvLabel = cc.LabelTTF.create("LV.  0", "STHeitiTC-Medium", 22);
+        this._lvLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._lvLabel.setPosition(cc.p(270, 288));
+        this.addChild(this._lvLabel);
+
+        this._expLabel = cc.LabelTTF.create("经验  0 / 0", "STHeitiTC-Medium", 22);
+        this._expLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._expLabel.setPosition(cc.p(400, 288));
+        this.addChild(this._expLabel);
+
+        var tipLabel = cc.LabelTTF.create("灵气池等级越高，可获得的灵气越多", "STHeitiTC-Medium", 20);
+        tipLabel.setPosition(cc.p(360, 230));
+        this.addChild(tipLabel);
 
         this._spiritItem = SpiritNode.getSpiritItem();
-        this._spiritItem.setPosition(150, 890);
+        this._spiritItem.setPosition(130, 880);
 
         this._spiritPoolItem = cc.MenuItemImage.create(
             main_scene_image.icon97,
@@ -97,7 +108,7 @@ var SpiritPoolLayer = cc.Layer.extend({
             this._onClickSpiritPool,
             this
         );
-        this._spiritPoolItem.setPosition(cc.p(360, 650));
+        this._spiritPoolItem.setPosition(cc.p(360, 630));
 
         var useGoldItem = cc.MenuItemImage.create(
             main_scene_image.button34,
@@ -105,14 +116,14 @@ var SpiritPoolLayer = cc.Layer.extend({
             this._onClickUseGold,
             this
         );
-        useGoldItem.setPosition(cc.p(360, 380));
+        useGoldItem.setPosition(cc.p(360, 370));
 
         var menu = cc.Menu.create(this._spiritItem, this._spiritPoolItem, useGoldItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
         this._hook = cc.Sprite.create(main_scene_image.icon20);
-        this._hook.setPosition(cc.p(235, 382));
+        this._hook.setPosition(cc.p(235, 372));
         this.addChild(this._hook);
         this._hook.setVisible(this._useGold);
 
@@ -124,17 +135,17 @@ var SpiritPoolLayer = cc.Layer.extend({
 
         var spiritPool = gameData.spiritPool;
 
-        this._lvLabel.setString(spiritPool.get("lv"));
-        this._expLabel.setString(spiritPool.get("exp") + " / " + spiritPool.get("maxExp"));
-        this._expProgress.setAllValue(spiritPool.get("exp"), spiritPool.get("maxExp"));
-        this._countLabel.setString(spiritPool.get("collectCount") + " 次");
+        this._lvLabel.setString("LV.  " + spiritPool.get("lv"));
+        this._expLabel.setString("经验  " + spiritPool.get("exp") + " / " + spiritPool.get("maxExp"));
+        this._countLabel.setString(spiritPool.get("collectCount"));
+        this._preObtainLabel.setString(spiritPool.get("perObtain") + (this._useGold ? " x2" : ""));
     },
 
     _collectSpirit: function (data) {
         cc.log("SpiritPoolLayer collectSpirit");
 
         var spirit = cc.Sprite.create(main_scene_image.icon247);
-        spirit.setPosition(cc.p(360, 650));
+        spirit.setPosition(cc.p(360, 630));
         this.addChild(spirit);
 
         var str = "灵气: " + data.spirit_obtain;
@@ -144,8 +155,8 @@ var SpiritPoolLayer = cc.Layer.extend({
             spirit.setScale(1.5);
         }
 
-        var point1 = cc.p(360, 650);
-        var point2 = cc.p(150, 890);
+        var point1 = cc.p(360, 630);
+        var point2 = cc.p(130, 880);
 
         var pointArray = [
             point1,
@@ -185,24 +196,21 @@ var SpiritPoolLayer = cc.Layer.extend({
 
         var spiritPool = gameData.spiritPool;
 
-        if (!spiritPool.canCollect()) {
-            TipLayer.tip("今日已完成采集 明天再来吧");
-            return;
+        if (spiritPool.canCollect(this._useGold)) {
+            LazyLayer.showCloudLayer();
+
+            var that = this;
+            spiritPool.collect(function (data) {
+                cc.log(data);
+
+                if (data) {
+                    that._collectSpirit(data);
+                } else {
+                    that.update();
+                    LazyLayer.closeCloudLayer();
+                }
+            }, this._useGold);
         }
-
-        LazyLayer.showCloudLayer();
-
-        var that = this;
-        spiritPool.collect(function (data) {
-            cc.log(data);
-
-            if (data) {
-                that._collectSpirit(data);
-            } else {
-                that.update();
-                LazyLayer.closeCloudLayer();
-            }
-        }, this._useGold);
     },
 
     _onClickUseGold: function () {
@@ -210,6 +218,8 @@ var SpiritPoolLayer = cc.Layer.extend({
 
         this._useGold = !this._useGold;
         this._hook.setVisible(this._useGold);
+
+        this.update();
     }
 });
 

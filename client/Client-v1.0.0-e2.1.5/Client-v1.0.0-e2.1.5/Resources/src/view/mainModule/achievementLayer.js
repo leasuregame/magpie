@@ -60,14 +60,15 @@ var AchievementLayer = cc.Layer.extend({
             bgSprite.setPosition(cc.p(0, y));
             scrollViewLayer.addChild(bgSprite);
 
-            var nameIcon = cc.Sprite.create(main_scene_image.icon211);
-            nameIcon.setPosition(cc.p(120, y + 72));
+            var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
+            nameIcon.setContentSize(cc.size(140, 34));
+            nameIcon.setPosition(cc.p(95, y + 68));
             scrollViewLayer.addChild(nameIcon);
 
-            var nameLabel = StrokeLabel.create(achievement[key].name, "STHeitiTC-Medium", 25);
-            nameLabel.setColor(cc.c3b(255, 224, 147));
+            var nameLabel = cc.LabelTTF.create(achievement[key].name, "STHeitiTC-Medium", 25);
+            nameLabel.setColor(cc.c3b(255, 242, 206));
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
-            nameLabel.setPosition(cc.p(45, y + 69));
+            nameLabel.setPosition(cc.p(35, y + 68));
             scrollViewLayer.addChild(nameLabel, 1);
 
             var countLabel = cc.LabelTTF.create(
@@ -77,13 +78,13 @@ var AchievementLayer = cc.Layer.extend({
             );
             countLabel.setColor(cc.c3b(56, 3, 5));
             countLabel.setAnchorPoint(cc.p(0, 0.5));
-            countLabel.setPosition(cc.p(200, y + 69));
+            countLabel.setPosition(cc.p(180, y + 69));
             scrollViewLayer.addChild(countLabel);
 
             var descriptionLabel = cc.LabelTTF.create(achievement[key].description, "STHeitiTC-Medium", 20);
             descriptionLabel.setColor(cc.c3b(56, 3, 5));
             descriptionLabel.setAnchorPoint(cc.p(0, 0.5));
-            descriptionLabel.setPosition(cc.p(45, y + 30));
+            descriptionLabel.setPosition(cc.p(30, y + 30));
             scrollViewLayer.addChild(descriptionLabel);
 
             var isReceiver = achievement[key].isReceiver;

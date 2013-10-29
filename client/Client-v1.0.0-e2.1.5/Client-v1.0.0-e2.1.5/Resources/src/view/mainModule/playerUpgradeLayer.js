@@ -18,24 +18,31 @@ var PlayerUpgradeLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
         bgLayer.setPosition(GAME_ZERO);
-        layer.addChild(bgLayer);
+        this.addChild(bgLayer);
 
-        var bgSprite = cc.Sprite.create(main_scene_image.bg17);
-        bgSprite.setPosition(cc.p(360, 580));
+        var layer = cc.Layer.create();
+        layer.setPosition(cc.p(0, 0));
+        this.addChild(layer);
+
+        var bgSprite = cc.Scale9Sprite.create(main_scene_image.icon259);
+        bgSprite.setContentSize(cc.size(450, 400));
+        bgSprite.setPosition(cc.p(360, 600));
         layer.addChild(bgSprite);
 
         var obtainSprite = cc.Sprite.create(main_scene_image.icon258);
-        obtainSprite.setPosition(cc.p(360, 718));
+        obtainSprite.setPosition(cc.p(360, 820));
         layer.addChild(obtainSprite);
 
         var str = lz.getRewardString(data);
         var len = str.length;
 
-        var offsetY = 655;
+        var offsetY = 720;
         for (var i = 0; i < len; ++i) {
-            var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
+            var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 22);
             rewardLabel.setColor(cc.c3b(255, 239, 131));
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
             rewardLabel.setPosition(cc.p(360, offsetY));
@@ -43,6 +50,29 @@ var PlayerUpgradeLayer = LazyLayer.extend({
 
             offsetY -= 45;
         }
+
+        var okItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
+            main_scene_image.icon21,
+            this._onClickOk,
+            this
+        );
+        okItem.setPosition(cc.p(360, 460));
+
+        var menu = cc.Menu.create(okItem);
+        menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+        menu.setPosition(cc.p(0, 0));
+        layer.addChild(menu);
+
+        layer.setScale(0);
+        layer.runAction(
+            cc.Sequence.create(
+                cc.ScaleTo.create(0.3, 1.05, 1.05),
+                cc.ScaleTo.create(0.05, 1, 1)
+            )
+        );
 
         return true;
     },
@@ -68,5 +98,5 @@ PlayerUpgradeLayer.create = function (data) {
 PlayerUpgradeLayer.pop = function (data) {
     var playerUpgradeLayer = PlayerUpgradeLayer.create(data);
 
-    MainScene.getInstance().getLayer().addChild(playerUpgradeLayer, 10);
+    MainScene.getInstance().addChild(playerUpgradeLayer, 10);
 };

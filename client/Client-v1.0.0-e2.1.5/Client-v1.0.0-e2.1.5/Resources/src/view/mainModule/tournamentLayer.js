@@ -24,6 +24,7 @@ var TournamentLayer = cc.Layer.extend({
     _rankingLabel: null,
     _countLabel: null,
     _abilityLabel: null,
+    _upgradeReward: null,
 
     onEnter: function () {
         cc.log("TournamentLayer onEnter");
@@ -94,9 +95,9 @@ var TournamentLayer = cc.Layer.extend({
         var rewardIcon = cc.Sprite.create(main_scene_image.icon35);
         rewardIcon.setPosition(cc.p(360, 900));
         this.addChild(rewardIcon);
-        rewardIcon.setScaleX(2.2);
+        rewardIcon.setScaleX(2.5);
 
-        this._rewardLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 24);
+        this._rewardLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
         this._rewardLabel.setColor(cc.c3b(255, 239, 131));
         this._rewardLabel.setPosition(cc.p(360, 900));
         this.addChild(this._rewardLabel);
@@ -168,6 +169,11 @@ var TournamentLayer = cc.Layer.extend({
     update: function () {
         cc.log("TournamentLayer update");
 
+        if (this._upgradeReward) {
+            PlayerUpgradeLayer.pop(this._upgradeReward);
+            this._upgradeReward = null;
+        }
+
         var player = gameData.player;
 
         this._expProgress.setAllValue(player.get("power"), player.get("maxPower"));
@@ -193,7 +199,7 @@ var TournamentLayer = cc.Layer.extend({
         var reward = gameData.tournament.getLastRankReward();
 
         if (reward) {
-            this._rewardLabel.setString("首次达到" + reward.ranking + "名可领取" + reward.elixir + "仙丹");
+            this._rewardLabel.setString("首次达到" + reward.ranking + " 奖励" + reward.elixir + "仙丹");
             this._rewardLabel.setVisible(true);
             this._rewardItem.setVisible(reward.canReceive);
         } else {
@@ -252,6 +258,12 @@ var TournamentLayer = cc.Layer.extend({
         }
 
         return null;
+    },
+
+    _setPlayerUpgradeReward: function (upgradeReward) {
+        cc.log("TournamentLayer _setPlayerUpgradeReward");
+
+        this._upgradeReward = upgradeReward || null;
     },
 
     _onClickPlayer: function (id, point) {

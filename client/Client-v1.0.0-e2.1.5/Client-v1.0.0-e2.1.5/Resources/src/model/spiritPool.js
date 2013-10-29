@@ -94,7 +94,7 @@ var SpiritPool = Entity.extend({
             } else {
                 cc.log("upgrade fail");
 
-                cb(null);
+                cb();
             }
         });
     }

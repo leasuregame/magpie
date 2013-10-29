@@ -233,6 +233,8 @@ var Pass = Entity.extend({
                 cb();
             } else {
                 cc.log("reset fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     }

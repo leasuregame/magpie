@@ -1,9 +1,14 @@
 dao = require('pomelo').app.get('dao')
+table = require '../../../manager/table'
 playerManager = require '../../../manager/playerManager'
 utility = require '../../../common/utility'
 msgConfig = require '../../../../config/data/message'
+playerConfig = require '../../../../config/data/player'
 async = require 'async'
 _ = require 'underscore'
+
+resData = table.getTableItem('resource_limit', 1)
+MAX_POWER_VALUE = resData.power_value
 
 
 module.exports = (app) ->
@@ -58,6 +63,41 @@ Handler::getLineUpInfo = (msg, session, next) ->
       lv: player.lv
       ability: player.getAbility()
     }})
+
+Handler::givePower = (msg, session, next) -> 
+
+  cur_hour = new Date().getHour()
+  if not canGetPower(cur_hour)
+    return next(null, {code: 501, msg: '不在领取体力的时间段'})
+
+  playerId = session.get('playerId')
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {
+        code: err.code or 501
+        msg: err.msg or err
+        }
+      )      
+
+    if hasGetPower(player, cur_hour) 
+      return next(null, {code: 501, msg: '不能重复领取'})
+
+    if player.power.value >= MAX_POWER_VALUE
+      return next(null, {code: '体力已达上限'})
+
+    point = playerConfig.POWER_GIVE.point
+    player.givePower(cur_hour, point)
+    player.save()
+    next(null, {code: 200, msg: {powerValue: point}})
+
+Handler::getLevelReward = (msg, session, next) ->
+
+
+canGetPower = (hour) ->
+  _.contains playerConfig.POWER_GIVE.hours, hour
+
+hasGetPower = (player, hour) ->
+  _.contains player.dailyGift.powerGiven, hour
 
 todayPeriod = () ->
   now = new Date()

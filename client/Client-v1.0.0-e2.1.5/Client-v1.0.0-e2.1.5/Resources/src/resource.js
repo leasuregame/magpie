@@ -532,7 +532,19 @@ var main_scene_image = {
     icon257: main_scene_path + "icon257.png",
     icon258: main_scene_path + "icon258.png",
     icon259: main_scene_path + "icon259.png",
-    icon260: main_scene_path + "icon260.png"
+    icon260: main_scene_path + "icon260.png",
+    icon261: main_scene_path + "icon261.png",
+    icon262: main_scene_path + "icon262.png",
+    icon263: main_scene_path + "icon263.png",
+    icon264: main_scene_path + "icon264.png",
+    icon265: main_scene_path + "icon265.png",
+    icon266: main_scene_path + "icon266.png",
+    icon267: main_scene_path + "icon267.png",
+    icon268: main_scene_path + "icon268.png",
+    icon269: main_scene_path + "icon269.png",
+    icon270: main_scene_path + "icon270.png",
+    icon271: main_scene_path + "icon271.png",
+    icon272: main_scene_path + "icon272.png"
 };
 
 var main_scene_res = [

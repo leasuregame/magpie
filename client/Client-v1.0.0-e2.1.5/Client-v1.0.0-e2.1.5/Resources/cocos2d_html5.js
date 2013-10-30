@@ -81,6 +81,7 @@
             'src/model/signIn.js',
             'src/model/achievement.js',
             'src/model/exchange.js',
+            'src/model/activity.js',
 
             'src/model/battleLogPool.js',
             'src/model/battleLog.js',
@@ -108,6 +109,10 @@
 
             'src/view/mainModule/abilityRankLayer.js',
             'src/view/mainModule/achievementLayer.js',
+            'src/view/mainModule/rechargeLayer.js',
+            'src/view/mainModule/powerRewardLayer.js',
+            'src/view/mainModule/goldRewardLayer.js',
+            'src/view/mainModule/signInLayer.js',
             'src/view/mainModule/activityLayer.js',
             'src/view/mainModule/amountLayer.js',
             'src/view/mainModule/battleMessageLayer.js',
@@ -155,7 +160,6 @@
             'src/view/mainModule/readMessageLayer.js',
             'src/view/mainModule/sendMessageLayer.js',
             'src/view/mainModule/shopLayer.js',
-            'src/view/mainModule/signInLayer.js',
             'src/view/mainModule/skillUpgradeLabel.js',
             'src/view/mainModule/spiritDetails.js',
             'src/view/mainModule/spiritNode.js',

@@ -51,11 +51,11 @@ var SignInLayer = LazyLayer.extend({
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(600, 750));
-        bgSprite.setPosition(cc.p(362, 580));
+        bgSprite.setPosition(cc.p(362, 565));
         this.addChild(bgSprite);
 
         var titleLabel = cc.Sprite.create(main_scene_image.icon187);
-        titleLabel.setPosition(cc.p(360, 920));
+        titleLabel.setPosition(cc.p(360, 905));
         this.addChild(titleLabel);
 
 //        var closeItem = cc.MenuItemImage.create(

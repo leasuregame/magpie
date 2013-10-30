@@ -277,7 +277,7 @@ lz.tipReward = function (reward) {
 
         lz.scheduleOnce(fn, delay);
 
-        delay += 0.4;
+        delay += 0.6;
     }
 };
 

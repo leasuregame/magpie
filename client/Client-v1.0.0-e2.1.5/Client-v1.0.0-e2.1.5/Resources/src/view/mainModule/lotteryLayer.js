@@ -145,16 +145,21 @@ var LotteryLayer = cc.Layer.extend({
         return function () {
             cc.log("LotteryLayer _onClickLottery");
 
+            var lottery = gameData.lottery;
+
+            if (!lottery.canLottery(type, level)) {
+                return;
+            }
+
             LazyLayer.showCloudLayer();
 
             var that = this;
             gameData.lottery.lottery(function (data) {
                 cc.log(data);
 
+                that.update();
+
                 if (data) {
-
-                    that.update();
-
                     var blackLayer = cc.LayerColor.create(cc.c4b(0, 0, 0, 255), 720, 1136);
                     that.addChild(blackLayer);
 
@@ -175,7 +180,6 @@ var LotteryLayer = cc.Layer.extend({
                         }
                     });
                 } else {
-                    that.update();
                     LazyLayer.closeCloudLayer();
                 }
             }, type, level);

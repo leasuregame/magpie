@@ -66,6 +66,7 @@ var appFiles = [
     'src/model/battleLogPool.js',
     'src/model/battleLog.js',
     'src/model/battleStep.js',
+    'src/model/gameFlow.js',
 
     'src/model/gameData.js',
 
@@ -103,6 +104,7 @@ var appFiles = [
     'src/view/mainModule/cardListLayer.js',
     'src/view/mainModule/cardTrainLabel.js',
     'src/view/mainModule/cardUpgradeLabel.js',
+    'src/view/mainModule/tipsLayer.js',
     'src/view/mainModule/configLayer.js',
     'src/view/mainModule/evolutionLayer.js',
     'src/view/mainModule/exchangeLayer.js',
@@ -128,6 +130,7 @@ var appFiles = [
     'src/view/mainModule/playerDetails.js',
     'src/view/mainModule/playerHeaderLabel.js',
     'src/view/mainModule/playerTournamentLabel.js',
+    'src/view/mainModule/playerUpgradeLayer.js',
     'src/view/mainModule/propsLayer.js',
     'src/view/mainModule/pveLayer.js',
     'src/view/mainModule/rankLayer.js',

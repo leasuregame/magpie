@@ -15,7 +15,8 @@
 var Tournament = Entity.extend({
     _ranking: 0,
     _count: 0,
-    _rankReward: [],
+    _canGetReward: [],
+    _notCanGetReward: [],
     _rankList: [],
 
     init: function (data) {
@@ -23,7 +24,8 @@ var Tournament = Entity.extend({
 
         this._ranking = 0;
         this._count = 0;
-        this._rankReward = [];
+        this._canGetReward = [];
+        this._notCanGetReward = [];
         this._rankList = [];
 
         this.update(data);
@@ -36,7 +38,8 @@ var Tournament = Entity.extend({
 
         this.set("ranking", data.ranking);
         this.set("count", data.challengeCount);
-        this.set("rankReward", data.rankReward);
+        this.set("canGetReward", data.canGetReward);
+        this.set("notCanGetReward", data.notCanGetReward);
 
 
         if (data.rankList) {
@@ -76,7 +79,19 @@ var Tournament = Entity.extend({
     getLastRankReward: function () {
         cc.log("Tournament getLastRankReward");
 
-        return this._rankReward[0];
+        var table = outputTables.ranking_reward.rows;
+        var ranking = this._canGetReward[0] || this._notCanGetReward[0];
+        var canReceive = this._canGetReward[0] || false;
+
+        if (ranking) {
+            return {
+                ranking: ranking,
+                canReceive: canReceive,
+                elixir: table[ranking].elixir
+            }
+        } else {
+            return null;
+        }
     },
 
     sync: function (cb) {
@@ -111,12 +126,13 @@ var Tournament = Entity.extend({
         });
     },
 
-    defiance: function (cb, targetId) {
+    defiance: function (cb, targetId, ranking) {
         cc.log("Tournament defiance: " + targetId);
 
         var that = this;
         lzWindow.pomelo.request("area.rankHandler.challenge", {
-            targetId: targetId
+            targetId: targetId,
+            ranking: ranking
         }, function (data) {
             cc.log(data);
 
@@ -124,17 +140,27 @@ var Tournament = Entity.extend({
                 cc.log("Tournament defiance success");
 
                 var msg = data.msg;
+                var player = gameData.player;
+                var cbData = {};
+                var upgradeInfo = msg.upgradeInfo;
 
-                gameData.player.sets({
-                    lv: msg.lv,
-                    exp: msg.exp
-                });
+                player.set("exp", msg.exp);
 
-                var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
+                if (upgradeInfo) {
+                    player.upgrade(upgradeInfo);
 
-                cb(battleLogId);
+                    cbData.upgradeReward = upgradeInfo.rewards;
+                }
+
+                cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
+
+                cb(cbData);
             } else {
                 cc.log("Tournament defiance fail");
+
+                TipLayer.tip(data.msg);
+
+                cb();
             }
         });
     },
@@ -142,12 +168,10 @@ var Tournament = Entity.extend({
     receive: function (cb) {
         cc.log("Tournament receive");
 
-        var rewardRanking = this.getLastRankReward();
-
-        if (rewardRanking) {
+        if (this._canGetReward.length > 0) {
             var that = this;
             lzWindow.pomelo.request("area.rankHandler.getRankingReward", {
-                ranking: rewardRanking
+                ranking: this._canGetReward[0]
             }, function (data) {
                 cc.log(data);
 
@@ -156,17 +180,21 @@ var Tournament = Entity.extend({
 
                     var msg = data.msg;
 
-                    that.update({
-                        rankReward: msg.rankingRewards
-                    });
+                    gameData.player.add("elixir", msg.elixir);
 
-                    cb();
+                    that._canGetReward.shift();
+
+                    cb({
+                        elixir: msg.elixir
+                    });
                 } else {
                     cc.log("Tournament receive fail");
 
                     TipLayer.tip("领取奖励出错");
                 }
             });
+        } else {
+            TipLayer.tip("领取奖励出错");
         }
     }
 });

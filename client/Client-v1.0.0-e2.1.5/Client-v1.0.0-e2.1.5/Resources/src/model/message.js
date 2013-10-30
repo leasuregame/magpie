@@ -207,9 +207,7 @@ var Message = Entity.extend({
 
                     gameData.spirit.add("exp", msg.spirit);
 
-                    for (var key in msg) {
-                        TipLayer.tip(lz.getNameByKey(key) + ": " + msg[key]);
-                    }
+                    lz.tipReward(msg);
 
                     cb();
                 } else {

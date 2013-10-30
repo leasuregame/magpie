@@ -119,6 +119,42 @@ describe("Area Server", function() {
                     });
                 });
 
+                describe('when not pass to be reseted 1', function(){
+                    beforeEach(function(){
+                        doAjax('/update/player/100', {
+                            passLayer: 0
+                        }, function() {
+                            loginWith('arthur', '1', 1);
+                        });
+                    });
+
+                    it('should can not reset pass mark', function(){
+                        request('area.taskHandler.resetPassMark', {}, function(data) {
+                            console.log(data);
+                            expect(data.code).toEqual(501);
+                            expect(data.msg).toEqual('没有关卡可以重置');
+                        });
+                    });
+                });
+
+                describe('when not pass to be reseted 2', function(){
+                    beforeEach(function(){
+                        doAjax('/update/player/101', {
+                            gold: 1000,
+                            passLayer: 10
+                        }, function() {
+                            loginWith('user4', '1', 1);
+                        });
+                    });
+
+                    it('should can not reset pass mark', function(){
+                        request('area.taskHandler.resetPassMark', {}, function(data) {
+                            console.log(data);
+                            expect(data.code).toEqual(501);
+                            expect(data.msg).toEqual('没有关卡可以重置');
+                        });
+                    });
+                });
 
             });
 

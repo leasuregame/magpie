@@ -13,14 +13,18 @@ var nameChanged = {
     "基础属性成长表": "factors",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
+    "friends_config": "好友数量配置表",
+    "好友数量配置表": "friends_config",
+    "receive_bless_config": "接收祝福次数配置表",
+    "接收祝福次数配置表": "receive_bless_config",
+    "give_bless_config": "祝福次数配置表",
+    "祝福次数配置表": "give_bless_config",
     "function_limit": "功能开放等级限制",
     "功能开放等级限制": "function_limit",
     "lv_limit": "等级限制表",
     "等级限制表": "lv_limit",
     "card_lv_limit": "卡牌等级限制表",
     "卡牌等级限制表": "card_lv_limit",
-    "product": "道具配置表",
-    "道具配置表": "product",
     "elixir_limit": "仙丹培养限制表",
     "仙丹培养限制表": "elixir_limit",
     "resource_limit": "资源限制表",
@@ -39,6 +43,8 @@ var nameChanged = {
     "排名奖励": "ranking_reward",
     "ranking_reward_factor": "竞技排名奖励加成系数",
     "竞技排名奖励加成系数": "ranking_reward_factor",
+    "product": "道具配置表",
+    "道具配置表": "product",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
@@ -10200,6 +10206,69 @@ var outputTables = {
             }
         }
     },
+    "friends_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 20
+            },
+            "31": {
+                "id": 31,
+                "count": 30
+            },
+            "51": {
+                "id": 51,
+                "count": 40
+            },
+            "71": {
+                "id": 71,
+                "count": 50
+            }
+        }
+    },
+    "receive_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "give_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
     "function_limit": {
         "colComment": {},
         "rows": {
@@ -10251,64 +10320,6 @@ var outputTables = {
             }
         }
     },
-    "product": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "name": "体力",
-                "disc": "每次购买可获得50点体力。每日最多购买6次。VIP可购买更多。",
-                "consume_type": "gold",
-                "consume": 20,
-                "obtain_type": "power",
-                "obtain": 50
-            },
-            "2": {
-                "id": 2,
-                "name": "铜板",
-                "disc": "每次购买可获得1000仙币，每次额外赠送100仙币。",
-                "consume_type": "gold",
-                "consume": 10,
-                "obtain_type": "money",
-                "obtain": 1100
-            },
-            "3": {
-                "id": 3,
-                "name": "铜板",
-                "disc": "每次购买可获得5000仙币，每次额外赠送1500仙币。",
-                "consume_type": "gold",
-                "consume": 50,
-                "obtain_type": "money",
-                "obtain": 6500
-            },
-            "4": {
-                "id": 4,
-                "name": "铜板",
-                "disc": "每次购买可获得10000仙币，每次额外赠送5000仙币。",
-                "consume_type": "gold",
-                "consume": 100,
-                "obtain_type": "money",
-                "obtain": 15000
-            },
-            "5": {
-                "id": 5,
-                "name": "有奖竞技次数",
-                "consume_type": "gold",
-                "consume": 20,
-                "obtain_type": "challengeCount",
-                "obtain": 1
-            },
-            "6": {
-                "id": 6,
-                "name": "经验元灵",
-                "disc": "每次购买可获得6级经验元灵1张，蕴含800点卡牌经验。",
-                "consume_type": "money",
-                "consume": 2500,
-                "obtain_type": "card",
-                "obtain": 1
-            }
-        }
-    },
     "elixir_limit": {
         "colComment": {},
         "rows": {
@@ -10331,12 +10342,12 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "gold": 999999,
                 "money": 99999999,
-                "skillPoint": 99999,
+                "skillPoint": 9999999,
                 "energy": 99999,
                 "card_count_limit": 100,
-                "power_value": 150
+                "power_value": 150,
+                "elixir": 999999
             }
         }
     },
@@ -10361,8 +10372,7 @@ var outputTables = {
                 "skillPoint": 0,
                 "elixir": 0,
                 "lottery_free_count": 0,
-                "gold": 0,
-                "spirit": 0
+                "gold": 0
             },
             "2": {
                 "id": 2,
@@ -10372,8 +10382,7 @@ var outputTables = {
                 "skillPoint": 800,
                 "elixir": 0,
                 "lottery_free_count": 0,
-                "gold": 0,
-                "spirit": 0
+                "gold": 0
             },
             "3": {
                 "id": 3,
@@ -10381,10 +10390,9 @@ var outputTables = {
                 "money": 20000,
                 "energy": 300,
                 "skillPoint": 1000,
-                "elixir": 500,
+                "elixir": 1000,
                 "lottery_free_count": 0,
-                "gold": 0,
-                "spirit": 0
+                "gold": 0
             },
             "4": {
                 "id": 4,
@@ -10392,10 +10400,9 @@ var outputTables = {
                 "money": 30000,
                 "energy": 500,
                 "skillPoint": 2000,
-                "elixir": 1000,
+                "elixir": 2000,
                 "lottery_free_count": 5,
-                "gold": 0,
-                "spirit": 0
+                "gold": 0
             },
             "5": {
                 "id": 5,
@@ -10403,10 +10410,9 @@ var outputTables = {
                 "money": 50000,
                 "energy": 800,
                 "skillPoint": 3000,
-                "elixir": 2000,
+                "elixir": 3000,
                 "lottery_free_count": 10,
-                "gold": 0,
-                "spirit": 0
+                "gold": 300
             }
         }
     },
@@ -10428,8 +10434,8 @@ var outputTables = {
                 "value": 50,
                 "name": "体力",
                 "type_rate": 30,
-                "value_rate": 10,
-                "rate": 3
+                "value_rate": 9,
+                "rate": 2.7
             },
             "2": {
                 "id": 2,
@@ -10455,8 +10461,8 @@ var outputTables = {
                 "value": 100,
                 "name": "仙丹",
                 "type_rate": 15,
-                "value_rate": 10,
-                "rate": 1.5
+                "value_rate": 9,
+                "rate": 1.35
             },
             "5": {
                 "id": 5,
@@ -10482,8 +10488,8 @@ var outputTables = {
                 "value": 100,
                 "name": "灵气",
                 "type_rate": 10,
-                "value_rate": 10,
-                "rate": 1
+                "value_rate": 9,
+                "rate": 0.9
             },
             "8": {
                 "id": 8,
@@ -10509,8 +10515,8 @@ var outputTables = {
                 "value": 500,
                 "name": "技能点",
                 "type_rate": 10,
-                "value_rate": 10,
-                "rate": 1
+                "value_rate": 9,
+                "rate": 0.9
             },
             "11": {
                 "id": 11,
@@ -10536,8 +10542,8 @@ var outputTables = {
                 "value": 100,
                 "name": "活力",
                 "type_rate": 10,
-                "value_rate": 10,
-                "rate": 1
+                "value_rate": 9,
+                "rate": 0.9
             },
             "14": {
                 "id": 14,
@@ -10563,8 +10569,8 @@ var outputTables = {
                 "value": 10000,
                 "name": "铜板",
                 "type_rate": 15,
-                "value_rate": 10,
-                "rate": 1.5
+                "value_rate": 9,
+                "rate": 1.35
             },
             "17": {
                 "id": 17,
@@ -11501,6 +11507,76 @@ var outputTables = {
             }
         }
     },
+    "product": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "method": "expCard",
+                "name": "经验元灵",
+                "disc": "每次购买可获得6级经验元灵1张，蕴含800点卡牌经验。",
+                "consume_type": "money",
+                "consume": 2500,
+                "obtain_type": "card",
+                "obtain": 1,
+                "isVisible": 1
+            },
+            "2": {
+                "id": 2,
+                "method": "money",
+                "name": "铜板",
+                "disc": "每次购买可获得1000仙币，每次额外赠送100仙币。",
+                "consume_type": "gold",
+                "consume": 10,
+                "obtain_type": "money",
+                "obtain": 1100,
+                "isVisible": 1
+            },
+            "3": {
+                "id": 3,
+                "method": "money",
+                "name": "铜板",
+                "disc": "每次购买可获得5000仙币，每次额外赠送1500仙币。",
+                "consume_type": "gold",
+                "consume": 50,
+                "obtain_type": "money",
+                "obtain": 6500,
+                "isVisible": 1
+            },
+            "4": {
+                "id": 4,
+                "method": "money",
+                "name": "铜板",
+                "disc": "每次购买可获得10000仙币，每次额外赠送5000仙币。",
+                "consume_type": "gold",
+                "consume": 100,
+                "obtain_type": "money",
+                "obtain": 15000,
+                "isVisible": 1
+            },
+            "5": {
+                "id": 5,
+                "method": "power",
+                "name": "体力",
+                "disc": "每次购买可获得50点体力。每日最多购买6次。VIP可购买更多。",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "power",
+                "obtain": 50,
+                "isVisible": 1
+            },
+            "6": {
+                "id": 6,
+                "method": "challengeCount",
+                "name": "有奖竞技次数",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "challengeCount",
+                "obtain": 1,
+                "isVisible": 0
+            }
+        }
+    },
     "scope": {
         "colComment": {},
         "rows": {
@@ -12086,15 +12162,6 @@ var outputTables = {
     "spirit": {
         "colComment": {},
         "rows": {
-            "0": {
-                "id": 0,
-                "lv": 0,
-                "spirit_need": 8,
-                "hp_inc": 0,
-                "atk_inc": 0,
-                "spirit_atk_pct": 0,
-                "rate": 0
-            },
             "1": {
                 "id": 1,
                 "lv": 1,
@@ -12179,7 +12246,7 @@ var outputTables = {
             "10": {
                 "id": 10,
                 "lv": 10,
-                "spirit_need": 0,
+                "spirit_need": 32640,
                 "hp_inc": 50,
                 "atk_inc": 50,
                 "spirit_atk_pct": 100,
@@ -12190,12 +12257,6 @@ var outputTables = {
     "spirit_pool": {
         "colComment": {},
         "rows": {
-            "0": {
-                "id": 0,
-                "lv": 0,
-                "exp_need": 50,
-                "spirit_obtain": 8
-            },
             "1": {
                 "id": 1,
                 "lv": 1,
@@ -12253,7 +12314,7 @@ var outputTables = {
             "10": {
                 "id": 10,
                 "lv": 10,
-                "exp_need": 0,
+                "exp_need": 3500,
                 "spirit_obtain": 28
             }
         }
@@ -14762,7 +14823,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 3,
                 "coins_obtain": 30,
-                "description": "一声长叹，后裔的心中充满了愤懑。自从嫦娥撇下他独自奔月之后，他一直都买不起套像样的房，现在依旧住茅屋，而且还是小产权。"
+                "description": "一声长叹，后裔的心中充满愤懑。自嫦娥撇下他独自奔月之后，他一直都买不起套像样的房，现在依旧住茅屋，而且还是小产权。"
             },
             "2": {
                 "id": 2,
@@ -14795,7 +14856,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 5,
                 "coins_obtain": 50,
-                "description": "八戒问沙僧，二师兄，大师兄为什么对女人一点兴趣都没有呢？二师兄你告诉我嘛。沙僧瞪了八戒一眼说，早压断了。"
+                "description": "沙僧问八戒，二师兄，大师兄为什么对女人一点兴趣都没有呢？二师兄你告诉我嘛。八戒瞪了他一眼说，早压断了。"
             },
             "5": {
                 "id": 5,
@@ -31898,7 +31959,8 @@ var outputTables = {
                 "elixir": 0,
                 "fragments": 0,
                 "exp_card": 0,
-                "price": 10
+                "price": 18,
+                "true_price": 180
             },
             "2": {
                 "id": 2,
@@ -31908,107 +31970,118 @@ var outputTables = {
                 "elixir": 0,
                 "fragments": 0,
                 "exp_card": 0,
-                "price": 50
+                "price": 58,
+                "true_price": 580
             },
             "3": {
                 "id": 3,
                 "energy": 700,
                 "money": 150000,
                 "skillPoint": 1100,
-                "elixir": 1000,
+                "elixir": 2000,
                 "fragments": 0,
                 "exp_card": 0,
-                "price": 100
+                "price": 88,
+                "true_price": 880
             },
             "4": {
                 "id": 4,
                 "energy": 800,
                 "money": 200000,
                 "skillPoint": 1200,
-                "elixir": 1500,
+                "elixir": 3000,
                 "fragments": 3,
                 "exp_card": 0,
-                "price": 200
+                "price": 188,
+                "true_price": 1880
             },
             "5": {
                 "id": 5,
                 "energy": 900,
                 "money": 250000,
                 "skillPoint": 2000,
-                "elixir": 2000,
+                "elixir": 4000,
                 "fragments": 3,
                 "exp_card": 0,
-                "price": 300
+                "price": 288,
+                "true_price": 2880
             },
             "6": {
                 "id": 6,
                 "energy": 1000,
                 "money": 300000,
                 "skillPoint": 2100,
-                "elixir": 2500,
+                "elixir": 5000,
                 "fragments": 3,
                 "exp_card": 10,
-                "price": 400
+                "price": 388,
+                "true_price": 3880
             },
             "7": {
                 "id": 7,
                 "energy": 1100,
                 "money": 350000,
                 "skillPoint": 2200,
-                "elixir": 3000,
+                "elixir": 6000,
                 "fragments": 3,
                 "exp_card": 15,
-                "price": 500
+                "price": 488,
+                "true_price": 4880
             },
             "8": {
                 "id": 8,
                 "energy": 1200,
                 "money": 400000,
                 "skillPoint": 5000,
-                "elixir": 5000,
+                "elixir": 10000,
                 "fragments": 5,
-                "exp_card": 20,
-                "price": 600
+                "exp_card": 15,
+                "price": 588,
+                "true_price": 5880
             },
             "9": {
                 "id": 9,
                 "energy": 1300,
                 "money": 450000,
                 "skillPoint": 5100,
-                "elixir": 5500,
+                "elixir": 11000,
                 "fragments": 5,
                 "exp_card": 15,
-                "price": 700
+                "price": 688,
+                "true_price": 6880
             },
             "10": {
                 "id": 10,
                 "energy": 1400,
                 "money": 500000,
                 "skillPoint": 10000,
-                "elixir": 6000,
+                "elixir": 12000,
                 "fragments": 10,
                 "exp_card": 20,
-                "price": 800
+                "price": 788,
+                "true_price": 7880
             },
             "11": {
                 "id": 11,
                 "energy": 1500,
                 "money": 550000,
                 "skillPoint": 11000,
-                "elixir": 7000,
+                "elixir": 15000,
                 "fragments": 10,
                 "exp_card": 20,
-                "price": 900
+                "price": 888,
+                "true_price": 8880
             },
             "12": {
                 "id": 12,
                 "energy": 1600,
                 "money": 600000,
                 "skillPoint": 15000,
-                "elixir": 10000,
+                "elixir": 20000,
                 "fragments": 10,
                 "exp_card": 20,
-                "price": 1000
+                "price": 999,
+                "true_price": 9990
             }
         }
     },

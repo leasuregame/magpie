@@ -88,6 +88,7 @@ var CardList = Entity.extend({
 
     deleteById: function (cardId) {
         cc.log("CardList deleteById");
+        cc.log(cardId);
 
         if (cardId instanceof Array) {
             var len = cardId.length;

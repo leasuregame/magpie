@@ -22,7 +22,7 @@ var PlayerDetails = LazyLayer.extend({
         this._super();
         this.update();
 
-        this.schedule(this.update, 5, null);
+        this.schedule(this.update, 5);
     },
 
     init: function () {

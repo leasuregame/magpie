@@ -416,7 +416,10 @@ var Player = (function(_super) {
 
     Player.prototype.activeSpiritorEffect = function() {
         var spiritConfig = table.getTableItem('spirit', this.spiritor.lv);
-
+        if (typeof spiritConfig == 'undefined' || spiritConfig == null) {
+            logger.error('can not fine spirit config infi by level ' + this.spiritor.lv);
+            return;
+        }
         var cards = this.activeCards();
         for (var i = 0; i < cards.length; i++) {
             var card = cards[i];
@@ -823,6 +826,15 @@ var Player = (function(_super) {
             return;
         }
         return this.passMark.hasMark(layer);
+    };
+
+    Player.prototype.canResetPassMark = function() {
+        for (var i = 1; i < this.passLayer; i++) {
+            if (this.passMark.hasMark(i)) {
+                return true;
+            }
+        }
+        return false;
     };
 
     //重置关卡

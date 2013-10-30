@@ -38,7 +38,7 @@ describe('Area Server', function() {
 								collectCount: 15
 							}),
 							spiritor: JSON.stringify({
-								lv: 0,
+								lv: 1,
 								spirit: 0
 							})
 						}, function() {});

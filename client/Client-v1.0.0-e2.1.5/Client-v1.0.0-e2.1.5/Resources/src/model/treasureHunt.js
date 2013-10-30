@@ -29,6 +29,20 @@ var TreasureHunt = Entity.extend({
         this._freeCount = data.freeCount;
     },
 
+    canTreasureHunt: function () {
+        if (this._count <= 0) {
+            TipLayer.tip("今天寻宝次数已用完");
+            return false;
+        }
+
+        if (this._freeCount <= 0 && gameData.player.get("gold") < 10) {
+            TipLayer.tip("元宝不足");
+            return false;
+        }
+
+        return true;
+    },
+
     treasureHunt: function (cb) {
         cc.log("TreasureHunt treasureHunt");
 
@@ -46,7 +60,7 @@ var TreasureHunt = Entity.extend({
 
                 gameData.player.add(table.type, table.value);
 
-                if (that._freeCount > 0) {
+                if (that._freeCount <= 0) {
                     gameData.player.add("gold", -10);
                 }
 
@@ -55,11 +69,16 @@ var TreasureHunt = Entity.extend({
 
                 var str = table.name + ": " + table.value;
 
-                cb(msg.resourceId, str);
+                cb({
+                    id: msg.resourceId,
+                    str: str
+                });
             } else {
                 cc.log("treasureHunt fail");
 
-                cb(-1);
+                TipLayer.tip(data.msg);
+
+                cb();
             }
         });
     }

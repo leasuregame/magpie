@@ -28,7 +28,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this._super();
         this.update();
 
-        this.schedule(this.update, 1, null);
+        this.schedule(this.update, 1);
     },
 
     init: function () {
@@ -93,6 +93,8 @@ var PlayerHeaderLabel = cc.Layer.extend({
     },
 
     update: function () {
+        cc.log("PlayerHeaderLabel update");
+
         var player = gameData.player;
 
         this._expProgress.setAllValue(player.get("exp"), player.get("maxExp"));

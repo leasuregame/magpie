@@ -109,7 +109,7 @@ lz.clone = function (obj) {
     for (var key in obj) {
         var copy = obj[key];
         // Beware that typeof null == "object" !
-        if (((typeof copy) == "object") && copy && !(copy instanceof cc.Node) && !(copy instanceof HTMLElement)) {
+        if (((typeof copy) == "object") && copy && !(copy instanceof cc.Node)) {
             newObj[key] = lz.clone(copy);
         } else {
             newObj[key] = copy;
@@ -193,11 +193,22 @@ lz.randomInt = function (a, b) {
     return Math.floor(randNum);
 };
 
+var gameGoodsIcon = {
+    "money": "icon149",
+    "gold": "icon148",
+    "power": "icon150",
+    "elixir": "icon151",
+    "fragment": "icon145",
+    "energy": "icon154",
+    "skillPoint": "icon152"
+};
+
 var gameGoodsName = {
     "exp": "经验",
     "money": "仙币",
     "gold": "魔石",
     "powerValue": "体力",
+    "power": "体力",
     "elixir": "仙丹",
     "fragment": "卡魂",
     "energy": "活力",
@@ -206,7 +217,8 @@ var gameGoodsName = {
     "cards": "经验卡",
     "exp_card": "经验卡",
     "freeCount": "免费抽奖次数",
-    "lottery_free_count": "免费抽奖次数"
+    "lottery_free_count": "免费抽奖次数",
+    "challengeCount": "有奖竞技次数"
 };
 
 lz.getNameByKey = function (key) {

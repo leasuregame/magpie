@@ -151,27 +151,33 @@ var LotteryLayer = cc.Layer.extend({
             gameData.lottery.lottery(function (data) {
                 cc.log(data);
 
-                that.update();
+                if (data) {
 
-                var blackLayer = cc.LayerColor.create(cc.c4b(0, 0, 0, 255), 720, 1136);
-                that.addChild(blackLayer);
+                    that.update();
 
-                var ret = playEffect({
-                    effectId: 3,
-                    target: blackLayer,
-                    delay: 0.16,
-                    loops: 1,
-                    cb: function () {
-                        var cardFullNode = CardFullNode.create(data);
-                        cardFullNode.setPosition(ret.sprite.getPosition());
-                        blackLayer.addChild(cardFullNode);
+                    var blackLayer = cc.LayerColor.create(cc.c4b(0, 0, 0, 255), 720, 1136);
+                    that.addChild(blackLayer);
 
-                        that.scheduleOnce(function () {
-                            blackLayer.removeFromParent();
-                            LazyLayer.closeCloudLayer();
-                        }, 2);
-                    }
-                });
+                    var ret = playEffect({
+                        effectId: 3,
+                        target: blackLayer,
+                        delay: 0.16,
+                        loops: 1,
+                        cb: function () {
+                            var cardFullNode = CardFullNode.create(data);
+                            cardFullNode.setPosition(ret.sprite.getPosition());
+                            blackLayer.addChild(cardFullNode);
+
+                            that.scheduleOnce(function () {
+                                blackLayer.removeFromParent();
+                                LazyLayer.closeCloudLayer();
+                            }, 2);
+                        }
+                    });
+                } else {
+                    that.update();
+                    LazyLayer.closeCloudLayer();
+                }
             }, type, level);
         }
     },

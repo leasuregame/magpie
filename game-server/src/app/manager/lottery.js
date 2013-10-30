@@ -27,6 +27,12 @@ var lottery = function (level, type, rFragments, hFragment, hCounts) {
     return [card, consume_val, fragment];
 };
 
+var freeLottery = function(level) {
+    var star = level == 1 ? 3 : 4;
+    var card = freeCard(star);
+    return [card, 0, 0];
+};
+
 /*
  * 抽卡，传入参数抽卡种类
  * 1：普通抽卡
@@ -112,6 +118,14 @@ var newCard = function (level, hCounts) {
     };
 };
 
+var freeCard = function(star) {
+    return {
+        tableId: randomCardId(star),
+        star: star,
+        lv: parseInt(gen_card_level(star))
+    }
+};
+
 var consume = function (level, type) {
     var mapping = cardConfig.LOTTERY_CONSUME;
     return mapping[type][level]
@@ -133,4 +147,7 @@ var initPassiveSkill = function (star) {
     return results;
 };
 
-module.exports = lottery;
+module.exports = {
+    lottery: lottery,
+    freeLottery: freeLottery
+};

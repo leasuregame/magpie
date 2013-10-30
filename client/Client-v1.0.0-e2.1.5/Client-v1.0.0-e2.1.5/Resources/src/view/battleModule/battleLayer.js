@@ -171,38 +171,30 @@ var BatterLayer = cc.Layer.extend({
 
             this._battleNode[target].defend(battleStep.getEffect(), battleStep.isCrit());
 
-            var cb = function (target, position) {
+            var effectNode = cc.BuilderReader.load(main_scene_image.effect1, this);
+
+            var cb = function (effectNode, position) {
                 return function () {
-                    playEffect({
-                        effectId: 5,
-                        target: target,
-                        loops: 1,
-                        delay: 0.07,
-                        zOrder: 10,
-                        position: position
-                    })
+                    effectNode.removeFromParent();
                 };
-            }(this, targetLocate);
+            }(effectNode, targetLocate);
 
-            var ret = playEffect({
-                effectId: 4,
-                target: this,
-                loops: 1,
-                delay: 0.07,
-                zOrder: 10,
-                rotation: lz.getAngle(attackerLocate, targetLocate),
-                anchorPoint: cc.p(0.5, 0.8),
-                position: attackerLocate,
-                clear: true,
-                cb: cb
-            });
+            if (effectNode != null) {
+                effectNode.setPosition(attackerLocate);
+                this.addChild(effectNode);
 
-            var effectSprite = ret.sprite;
-            var time = ret.time;
+                cc.log(effectNode);
 
-            var moveAction = cc.EaseSineIn.create(cc.MoveTo.create(time, targetLocate));
+                effectNode.animationManager.setCompletedAnimationCallback(this, cb);
 
-            effectSprite.runAction(moveAction);
+                effectNode.setRotation(lz.getAngle(attackerLocate, targetLocate));
+
+                effectNode.runAction(
+                    cc.EaseSineIn.create(
+                        cc.MoveTo.create(0.5, targetLocate)
+                    )
+                );
+            }
         }
 
         return 2.0;

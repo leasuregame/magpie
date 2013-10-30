@@ -13,16 +13,24 @@
 
 
 var MainBgLayer = cc.Layer.extend({
+    _messagesLabel: null,
+
     init: function () {
         cc.log("MainBgLayer init");
 
         if (!this._super()) return false;
 
-        var messagesLabel = MessageLabel.getInstance();
-        messagesLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 1014));
-        this.addChild(messagesLabel);
+        this._messagesLabel = MessageLabel.create();
+        this._messagesLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 1014));
+        this.addChild(this._messagesLabel);
 
         return true;
+    },
+
+    changeMessage: function (msg) {
+        cc.log("MainBgLayer changeMessage");
+
+        this._messagesLabel.push(msg);
     }
 });
 

@@ -26,8 +26,6 @@ var MessageLabel = cc.Node.extend({
         bgSprite.setAnchorPoint(cc.p(0, 0));
         this.addChild(bgSprite, -1);
 
-        this.retain();
-
         return true;
     },
 
@@ -51,16 +49,16 @@ var MessageLabel = cc.Node.extend({
                 cc.MoveBy.create(MESSAGE_MOVE_TIME, cc.p(-x, 0))
             );
         }
-    },
-
-    onExit: function () {
-        this.release();
-        this._super();
     }
 });
 
 
-/*
- * 单例
- * */
-MessageLabel.getInstance = singleton(MessageLabel);
+MessageLabel.create = function () {
+    var ret = new MessageLabel();
+
+    if (ret && ret.init()) {
+        return ret;
+    }
+
+    return null;
+}

@@ -173,8 +173,6 @@ var VipLayer = cc.Layer.extend({
             titleLabel.setPosition(cc.p(340, y + 140));
             scrollViewLayer.addChild(titleLabel);
 
-            var cost = vipBox.price * 10;
-
             var descriptionLabel = cc.LabelTTF.create(
                 "只能购买一次，点击图表可预览礼包内容。",
                 "STHeitiTC-Medium",
@@ -196,7 +194,7 @@ var VipLayer = cc.Layer.extend({
             costGoldIcon.setPosition(cc.p(250, y + 70));
             scrollViewLayer.addChild(costGoldIcon);
 
-            var costLabel = cc.LabelTTF.create(cost, "STHeitiTC-Medium", 20);
+            var costLabel = cc.LabelTTF.create(vipBox.true_price, "STHeitiTC-Medium", 20);
             costLabel.setColor(cc.c3b(74, 27, 27));
             costLabel.setAnchorPoint(cc.p(0, 0.5));
             costLabel.setPosition(cc.p(275, y + 67));

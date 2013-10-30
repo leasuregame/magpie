@@ -25,6 +25,9 @@ var Spirit = Entity.extend({
     init: function (data) {
         cc.log("Spirit init");
 
+        this.off();
+        this.on("lvChange", this._lvChangeEven);
+
         this._maxLv = outputTables.lv_limit.rows[1].spirit_lv_limit;
 
         this.update(data);
@@ -42,12 +45,10 @@ var Spirit = Entity.extend({
         this.set("lv", data.lv);
         this.set("exp", data.spirit);
         this.set("ability", data.ability);
-
-        this._loadTable();
     },
 
-    _loadTable: function () {
-        cc.log("Spirit _loadTable");
+    _lvChangeEven: function () {
+        cc.log("Spirit _lvChangeEven");
 
         var table = outputTables.spirit.rows[this._lv];
 
@@ -60,7 +61,7 @@ var Spirit = Entity.extend({
     canUpgrade: function () {
         cc.log("Spirit canUpgrade");
 
-        return (this._lv < this._maxLv && this._exp > this._maxExp);
+        return (this._lv < this._maxLv && this._exp >= this._maxExp);
     },
 
     upgrade: function (cb) {

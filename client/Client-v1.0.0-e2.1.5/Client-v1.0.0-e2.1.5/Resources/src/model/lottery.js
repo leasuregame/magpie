@@ -16,29 +16,64 @@ var LOTTERY_BY_GOLD = 1;
 var LOTTERY_BY_ENERGY = 0;
 
 var Lottery = Entity.extend({
+    _freeLowLotteryCard: false,
+    _freeHighLotteryCard: false,
     _lotteryCount: 0,
 
     init: function (data) {
         cc.log("Lottery init");
 
+        this.update(data);
+
         return true;
     },
 
-    update: function () {
+    update: function (data) {
         cc.log("Lottery update");
+
+        if (data) {
+            this._freeLowLotteryCard = data.lowLuckyCaard == 1;
+            this._freeHighLotteryCard = data.highLuckyCaard == 1;
+        }
+    },
+
+    canLottery: function (type, level) {
+        var player = gameData.player;
+
+        if (type == LOTTERY_BY_ENERGY) {
+            var energy = player.get("energy");
+
+            if (level == 1 && energy < 200) {
+                TipLayer.tip("活力值不足");
+                return false;
+            }
+
+            if (level == 2 && energy < 1000) {
+                TipLayer.tip("活力值不足");
+                return false;
+            }
+        } else if (type == LOTTERY_BY_GOLD) {
+            var gold = player.get("gold");
+
+            if (level == 1 && gold < 39) {
+                TipLayer.tip("魔石不足");
+                return false;
+            }
+
+            if (level == 2 && gold < 199) {
+                TipLayer.tip("魔石不足");
+                return false;
+            }
+        } else {
+            TipLayer.tip("抽卡类型错误");
+            return false;
+        }
+
+        return true;
     },
 
     lottery: function (cb, type, level) {
         cc.log("Lottery lottery");
-
-        if (type == LOTTERY_BY_GOLD) {
-            cc.log("lottery by gold");
-        } else if (type == LOTTERY_BY_ENERGY) {
-            cc.log("lottery by energy");
-        } else {
-            cb("lottery type error");
-            return;
-        }
 
         var that = this;
         lzWindow.pomelo.request("area.trainHandler.luckyCard", {

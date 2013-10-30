@@ -233,7 +233,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/tuoying.png</string>
+									<string>effect/effect/p5.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -555,7 +555,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/00034.png</string>
+									<string>effect/effect/p1.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -803,7 +803,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/00034.png</string>
+									<string>effect/effect/p1.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1032,7 +1032,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/bo1.png</string>
+									<string>effect/effect/p2.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1226,7 +1226,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/bo1.png</string>
+									<string>effect/effect/p2.png</string>
 								</array>
 							</dict>
 							<dict>

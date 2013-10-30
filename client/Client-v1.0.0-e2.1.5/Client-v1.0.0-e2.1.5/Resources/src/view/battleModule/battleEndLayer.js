@@ -27,7 +27,9 @@ var BattleEndLayer = cc.Layer.extend({
         bgLayer.setPosition(cc.p(40, 0));
         this.addChild(bgLayer);
 
-        if (this._battleLog.isWin()) {
+        var isWin = this._battleLog.isWin();
+
+        if (isWin) {
             var winBgSprite = cc.Sprite.create(main_scene_image.bg17);
             winBgSprite.setPosition(cc.p(360, 580));
             this.addChild(winBgSprite);
@@ -44,7 +46,7 @@ var BattleEndLayer = cc.Layer.extend({
         var str = lz.getRewardString(this._battleLog.get("reward"));
         var len = str.length;
 
-        if (len == 0) {
+        if (!isWin && len == 0) {
             str = [
                 "胜败乃常事",
                 "搞搞强化培养洗练",

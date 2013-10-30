@@ -12,6 +12,8 @@
  * */
 
 
+cc.BuilderReader.setResourcePath("./res/");
+
 var MainScene = cc.Scene.extend({
     _nowLayer: null,
     _mainBgLayer: null,

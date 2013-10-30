@@ -94,7 +94,7 @@ app.configure('production|development', 'area', function() {
 
   area.init({app: app});
   msgQueue.init({app: app});
-  areaUtil.checkFlagFile();
+  areaUtil.checkFlagFile(app);
   //app.filter(argsFilter());
 });
 

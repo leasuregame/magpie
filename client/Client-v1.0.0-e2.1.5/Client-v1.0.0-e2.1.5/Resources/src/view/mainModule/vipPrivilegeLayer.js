@@ -36,6 +36,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
         var shop = gameData.shop;
         var vip = gameData.player.get("vip");
         var nextVipCash = shop.getNextVipCash();
+        var str
         cc.log(nextVipCash);
         if (nextVipCash) {
             var tipLabel = cc.LabelTTF.create(

@@ -36,7 +36,7 @@ var Message = Entity.extend({
             cc.log("***** on system message:");
             cc.log(data);
 
-            MessageLabel.getInstance().push(data.msg);
+            MainScene.getInstance().changeMessage(data.msg);
         });
 
         this.sync();

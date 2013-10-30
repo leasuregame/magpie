@@ -91,7 +91,34 @@ Handler::givePower = (msg, session, next) ->
     next(null, {code: 200, msg: {powerValue: point}})
 
 Handler::getLevelReward = (msg, session, next) ->
+  playerId = session.get('playerId')
+  lv = msg.lv
 
+  if typeof lv is 'undefined' or not _.isNumber(lv)
+    return next(null, {code: 501, msg: '参数错误'})
+
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {
+        code: err.code or 501
+        msg: err.msg or err
+        }
+      )    
+
+    if player.hasLevelReward(lv)
+      return next(null, {code: 501, msg: '不能重复领取'})
+
+    if player.lv < lv
+      return next(null, {code: 501, msg: "等级为达到#{lv}, 不能领取"})
+
+    data = table.getTableItem('player_upgrade_reward', lv)
+    if not data
+      return next(null, {code: 501, msg: "找不到等级为#{lv}的奖励"})
+
+    player.increase('gold', data.gold)
+    player.setLevelReward(lv)
+    player.save()
+    next(null, {code: 200, msg: {gold: data.gold}})
 
 canGetPower = (hour) ->
   _.contains playerConfig.POWER_GIVE.hours, hour

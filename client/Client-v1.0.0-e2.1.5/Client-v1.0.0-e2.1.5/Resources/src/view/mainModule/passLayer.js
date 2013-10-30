@@ -388,7 +388,8 @@ var PassLayer = cc.Layer.extend({
         cc.log("PassLayer _showWipeOutReward");
 
         var layer = LazyLayer.create();
-        this.addChild(layer);
+        layer.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+        MainScene.getInstance().addChild(layer, 10);
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
         bgLayer.setPosition(GAME_ZERO);
@@ -429,6 +430,7 @@ var PassLayer = cc.Layer.extend({
         okItem.setPosition(cc.p(360, 415));
 
         var menu = cc.Menu.create(okItem);
+        menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
         layer.addChild(menu);
     },
@@ -453,8 +455,6 @@ var PassLayer = cc.Layer.extend({
     _defianceAnimation: function () {
         cc.log("PassLayer _defianceAnimation");
 
-        LazyLayer.showCloudLayer();
-
         if (this._top > MAX_PASS_COUNT) {
             LazyLayer.closeCloudLayer();
             return;
@@ -473,8 +473,6 @@ var PassLayer = cc.Layer.extend({
 
     _wipeOutAnimation: function (reward) {
         cc.log("PassLayer _wipeOutAnimation");
-
-        LazyLayer.showCloudAll();
 
         this._locate(1);
 
@@ -507,13 +505,21 @@ var PassLayer = cc.Layer.extend({
                 return;
             }
 
+            LazyLayer.showCloudLayer();
+
             var that = this;
             gameData.pass.defiance(function (data) {
                 cc.log(data);
 
-                that._upgradeReward = data.upgradeReward || null;
+                if (data) {
+                    that._upgradeReward = data.upgradeReward || null;
 
-                that._isWin = BattlePlayer.getInstance().play(data.battleLogId);
+                    that._isWin = BattlePlayer.getInstance().play(data.battleLogId);
+                } else {
+                    that.update();
+
+                    LazyLayer.closeCloudLayer();
+                }
             }, id);
         }
     },
@@ -521,13 +527,22 @@ var PassLayer = cc.Layer.extend({
     _onClickWipeOut: function () {
         cc.log("PassLayer _onClickWipeOut");
 
+        LazyLayer.showCloudAll();
+
         var that = this;
         gameData.pass.wipeOut(function (data) {
             cc.log(data);
 
-            that._upgradeReward = data.upgradeReward || null;
+            if (data) {
+                that._upgradeReward = data.upgradeReward || null;
 
-            that._wipeOutAnimation(data.reward);
+                that._wipeOutAnimation(data.reward);
+            } else {
+                that.update();
+
+                LazyLayer.closeCloudAll();
+            }
+
         });
     },
 

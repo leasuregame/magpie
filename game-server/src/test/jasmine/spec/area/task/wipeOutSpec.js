@@ -51,7 +51,6 @@ describe("Area Server", function() {
 							'rewards',
 							'power',
 							'exp',
-							'lv',
 							'mark'
 						]);
 
@@ -59,8 +58,6 @@ describe("Area Server", function() {
 							money_obtain: 750
 						});
 						expect(data.msg.mark).toEqual([1]);
-						expect(data.msg.lv).toEqual(40);
-
 
 					});
 				});
@@ -76,7 +73,6 @@ describe("Area Server", function() {
 							'rewards',
 							'power',
 							'exp',
-							'lv',
 							'mark'
 						]);
 
@@ -84,9 +80,6 @@ describe("Area Server", function() {
 							money_obtain: 25530
 						});
 						expect(data.msg.mark).toEqual([16777215]);
-
-						// 获得扫荡经验后，角色升级了，所以剩余的经验改变，等级变高
-						expect(data.msg.lv).toEqual(40);
 
 						doAjax('/player/' + arthur.playerId, {}, function(res) {
 							expect(data.msg.rewards.money_obtain).toEqual(res.data.money - before_data.money);

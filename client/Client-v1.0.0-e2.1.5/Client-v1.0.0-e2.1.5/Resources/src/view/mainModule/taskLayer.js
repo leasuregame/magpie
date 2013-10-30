@@ -290,10 +290,7 @@ var TaskLayer = cc.Layer.extend({
         gameData.task.wipeOut(function (data) {
             cc.log(data);
 
-            for (var key in data) {
-                var str = (gameGoodsName[key] || key) + " + " + data[key];
-                TipLayer.tipNoBg(str);
-            }
+            lz.tipReward(data);
 
             that.update();
         }, id);

@@ -169,8 +169,6 @@ var TreasureHuntLayer = cc.Layer.extend({
 
         this._treasureHuntIcon1.setVisible(freeCount > 0);
         this._treasureHuntIcon2.setVisible(freeCount <= 0);
-
-        this._treasureHuntItem.setEnabled(count > 0);
     },
 
     _getIconUrl: function (type) {
@@ -237,7 +235,6 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._selectFrame.setVisible(true);
 
         if (this._slideCount > 0) {
-            LazyLayer.showCloudLayer();
             this._playAStep();
         }
     },
@@ -271,6 +268,8 @@ var TreasureHuntLayer = cc.Layer.extend({
     _end: function () {
         cc.log("TreasureHuntLayer _end");
 
+        this.update();
+
         var scaleAction1 = cc.ScaleTo.create(0.3, 1.2);
         var scaleAction2 = cc.ScaleTo.create(0.3, 1);
 
@@ -290,23 +289,36 @@ var TreasureHuntLayer = cc.Layer.extend({
             this._str = "";
 
             this._selectFrame.setVisible(false);
-            LazyLayer.closeCloudLayer();
+            this._treasureHuntItem.setEnabled(true);
         }, 1.8);
     },
 
     _onClickTreasureHunt: function () {
         cc.log("TreasureHuntLayer _onClickTreasureHunt");
 
+        var treasureHunt = gameData.treasureHunt;
+
+        if (!treasureHunt.canTreasureHunt()) {
+            return;
+        }
+
+        this._treasureHuntItem.setEnabled(false);
+
         var that = this;
-        gameData.treasureHunt.treasureHunt(function (id, str) {
-            cc.log(id);
+        gameData.treasureHunt.treasureHunt(function (data) {
+            cc.log(data);
 
-            that.update();
+            if (data) {
+                that._str = data.str;
 
-            that._str = str;
+                var id = data.id;
+                if (id >= 0 && id <= 19) {
+                    that._playAnimation(id);
+                }
+            } else {
+                that.update();
 
-            if (id >= 0 && id <= 19) {
-                that._playAnimation(id);
+                that._treasureHuntItem.setEnabled(true);
             }
         })
     }

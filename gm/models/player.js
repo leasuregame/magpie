@@ -8,7 +8,7 @@
 
 var playerDao = require('./dao/mysql/playerDao');
 var card = require('./card');
-
+var table = require('./manager/table');
 
 function Player(player) {
     this.id = player.id;
@@ -57,6 +57,35 @@ Player.getPlayerId = function (name, areaId, cb) {
         }
     });
 };
+
+Player.updateVip = function (id,vip,cb) {
+    var cash = 0;
+    if(vip > 0)
+        cash = table.getTableItem('vip',vip).total_cash;
+    var options = {
+        where:{
+            id:id
+        },
+        data:{
+            vip:vip,
+            cash:cash,
+            resetDate: '1970-1-1'
+        }
+    };
+    Player.update(options,function(err,isOK){
+        if(err) {
+            console.log(err);
+        }else {
+            cb(null,Player.getVipPrivilegeList(vip));
+        }
+    });
+};
+
+Player.getVipPrivilegeList = function(vip) {
+    var privilege = table.getTableItem('vip_privilege',vip);
+    console.log('privilege',privilege);
+    return privilege;
+}
 
 
 module.exports = Player;

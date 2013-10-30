@@ -43,7 +43,7 @@ products =
            if player.gold < gold
              cb {code: 501, msg: "元宝不足"}
 
-           else if player.money + money > RESOURE_LIMIT.money and times > 1
+           else if Math.ceil((RESOURE_LIMIT.money - player.money) * 1.0 / product.obtain) < times
              cb {code: 501, msg: "超过仙币上限"}
 
            else
@@ -90,7 +90,7 @@ products =
         else if player.dailyGift.powerBuyCount < times
           cb {code: 501, msg: "所剩购买次数不足"}
 
-        else if player.power.value + powerValue > RESOURE_LIMIT.power_value and times > 1
+        else if Math.ceil((RESOURE_LIMIT.power_value - player.power.value) * 1.0/ product.obtain) < times
           cb {code: 501, msg: "超过体力上限"}
 
         else if player.gold < gold

@@ -322,6 +322,8 @@ var Card = Entity.extend({
             } else {
                 cc.log("upgrade fail");
 
+                TipLayer.tip(data.msg);
+
                 cb(null);
             }
         });
@@ -384,6 +386,8 @@ var Card = Entity.extend({
             } else {
                 cc.log("upgradeSkill fail");
 
+                TipLayer.tip(data.msg);
+
                 cb();
             }
         });
@@ -424,6 +428,8 @@ var Card = Entity.extend({
                 cb();
             } else {
                 cc.log("passSkillAfresh fail");
+
+                TipLayer.tip(data.msg);
 
                 cb();
             }
@@ -491,7 +497,9 @@ var Card = Entity.extend({
             } else {
                 cc.log("evolution fail");
 
-                cb(null);
+                TipLayer.tip(data.msg);
+
+                cb();
             }
         });
     },
@@ -528,6 +536,8 @@ var Card = Entity.extend({
                 cc.log("train fail");
 
                 TipLayer.tip(data.msg);
+
+                cb();
             }
         });
     },

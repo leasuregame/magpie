@@ -26,11 +26,7 @@ Handler::buyVip = (msg, session, next) ->
     player.increase('gold', (data.cash * 10) + data.gold)
     player.save()
     next(null, {code: 200, msg: {
-      player: {
-        vip: player.vip
-        dailyGift: player.dailyGift
-        spiritPool: player.spiritPool
-      }
+      vip: player.vip
     }})
 
 Handler::buyVipBox = (msg, session, next) ->
@@ -54,7 +50,38 @@ Handler::buyVipBox = (msg, session, next) ->
     if player.gold < boxInfo.price
       return next(null, {code: 501, msg: '元宝不足'})
 
-    openVipBox(player, boxInfo, next)
+    checkResourceLimit player, boxInfo, (ok, msg) ->
+      if not ok
+        return next(null, {code: 501, msg: msg})
+
+      openVipBox(player, boxInfo, next)
+
+checkResourceLimit = (player, boxInfo, cb) ->
+  resLimit = table.getTableItem('resource_limit', 1)
+  maxValue = (keys) ->
+    key for key in keys when player[key] >= resLimit[key]
+
+  results = maxValue ['energy', 'money', 'skillPoint', 'elixir']
+  if _.keys(player.cards).length >= resLimit.card_count_limit
+    results.push 'card'
+    
+  if results.length > 0
+    cb(false, genMsg(results))
+  else 
+    cb(true)
+
+genMsg = (keys) ->
+  chiness = 
+    'energy': '活力值'
+    'money': '仙币'
+    'skillPoint': '技能点'
+    'elixir': '仙丹'
+    'card': '卡牌数量'
+
+  text = ''
+  text += chiness[key] + '，' for key in keys
+
+  return text[0...-1] + '已经达到上限，不能购买'
 
 openVipBox = (player, boxInfo, next) ->
   setIfExist = (attrs) ->

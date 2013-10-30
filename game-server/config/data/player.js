@@ -13,9 +13,6 @@ module.exports = {
     "point": 50,
     "interval": 60000
   },
-  "MAX_SPIRITOR_LV":10,
-  "MAX_SPIRITPOOL_LV":10,
-  "MAX_PLAYER_LV":100,
 
   "BUY_MONEY": { //购买仙币类型
     "1": {

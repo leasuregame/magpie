@@ -180,6 +180,8 @@ var Tournament = Entity.extend({
 
                     var msg = data.msg;
 
+                    gameData.player.add("elixir", msg.elixir);
+
                     that._canGetReward.shift();
 
                     cb({

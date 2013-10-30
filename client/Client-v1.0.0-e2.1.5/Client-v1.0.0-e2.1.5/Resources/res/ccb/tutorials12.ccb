@@ -89,7 +89,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/empty.png</string>
+							<string>effect/new player/empty.png</string>
 						</array>
 					</dict>
 				</array>
@@ -750,8 +750,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.8018301725387573</real>
-							<real>1.7945098876953125</real>
+							<real>0.93973320722579956</real>
+							<real>0.88540041446685791</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -772,7 +772,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/light.png</string>
+							<string>effect/new player/light.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -864,6 +864,24 @@
 									<integer>4</integer>
 									<key>value</key>
 									<array>
+										<real>0.85000002384185791</real>
+										<real>0.85000002384185791</real>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>scale</string>
+									<key>time</key>
+									<real>0.36666667461395264</real>
+									<key>type</key>
+									<integer>4</integer>
+									<key>value</key>
+									<array>
 										<real>1</real>
 										<real>1</real>
 									</array>
@@ -925,8 +943,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.85000002384185791</real>
+							<real>0.85000002384185791</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -947,7 +965,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/hand.png</string>
+							<string>effect/new player/hand.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1069,7 +1087,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.56666666269302368</real>
+			<real>0.30000001192092896</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

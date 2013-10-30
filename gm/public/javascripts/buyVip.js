@@ -24,6 +24,7 @@ function setData(u,p){
     user = u;
     playerId = parseInt(p.id);
     areaId = parseInt(p.areaId);
+    $("#VIP").val(p.vip);
 };
 
 function insertType(){
@@ -37,6 +38,7 @@ function insertType(){
     }
 
     $("#buyType").append(inner);
+
 };
 
 function submit() {
@@ -49,6 +51,8 @@ function submit() {
             console.log("id = ",id);
             pomelo.request(route,{id:id},function(data){
                 console.log(data);
+                var vip = data.msg.player.vip;
+                $("#VIP").val(vip);
                 if(data.code == 200) {
                     setShowMsg({type:"success",info:"充值成功"});
                 }else {

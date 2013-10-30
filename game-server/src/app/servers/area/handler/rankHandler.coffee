@@ -76,7 +76,7 @@ Handler::rankingList = (msg, session, next) ->
       notCanGetReward: r.notCanGetReward,
       challengeCount: player.dailyGift.challengeCount,
       rankList: players,
-      time: Date.now()  - start
+      time: Date.now() - start
     }
     end = Date.now();
     console.log '**********get rankingList useTime = ',(end - start) / 1000

@@ -425,13 +425,13 @@ var Card = Entity.extend({
                     gameData.player.add("gold", -10);
                 }
 
-                cb();
+                cb(data.code);
             } else {
                 cc.log("passSkillAfresh fail");
 
                 TipLayer.tip(data.msg);
 
-                cb();
+                cb(data.code);
             }
         });
     },

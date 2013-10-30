@@ -276,6 +276,17 @@
 						<key>value</key>
 						<integer>217</integer>
 					</dict>
+					<dict>
+						<key>name</key>
+						<string>blendFunc</string>
+						<key>type</key>
+						<string>Blendmode</string>
+						<key>value</key>
+						<array>
+							<integer>770</integer>
+							<integer>771</integer>
+						</array>
+					</dict>
 				</array>
 			</dict>
 			<dict>
@@ -388,6 +399,17 @@
 						<string>Byte</string>
 						<key>value</key>
 						<integer>217</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>blendFunc</string>
+						<key>type</key>
+						<string>Blendmode</string>
+						<key>value</key>
+						<array>
+							<integer>770</integer>
+							<integer>771</integer>
+						</array>
 					</dict>
 				</array>
 			</dict>
@@ -659,7 +681,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>564.3355712890625</real>
+							<real>562.3355712890625</real>
 							<real>833.0928955078125</real>
 							<integer>0</integer>
 						</array>
@@ -852,7 +874,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>590.84930419921875</real>
+							<real>588.84930419921875</real>
 							<real>803.649658203125</real>
 							<integer>0</integer>
 						</array>

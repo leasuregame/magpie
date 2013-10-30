@@ -262,7 +262,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/EX_6.png</string>
+									<string>effect/effect/p4.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -274,6 +274,17 @@
 								<string>Byte</string>
 								<key>value</key>
 								<integer>0</integer>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>blendFunc</string>
+								<key>type</key>
+								<string>Blendmode</string>
+								<key>value</key>
+								<array>
+									<integer>1</integer>
+									<integer>1</integer>
+								</array>
 							</dict>
 						</array>
 					</dict>
@@ -512,7 +523,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/EX_6.png</string>
+									<string>effect/effect/p4.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -773,7 +784,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/EX_2.png</string>
+									<string>effect/effect/p3.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1035,7 +1046,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/EX_2.png</string>
+									<string>effect/effect/p3.png</string>
 								</array>
 							</dict>
 							<dict>

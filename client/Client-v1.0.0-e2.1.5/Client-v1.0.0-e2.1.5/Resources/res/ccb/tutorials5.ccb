@@ -44,8 +44,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-26</real>
-							<real>-26</real>
+							<real>320</real>
+							<real>44</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -56,8 +56,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>0.5</real>
+							<real>0.5</real>
 						</array>
 					</dict>
 					<dict>
@@ -67,8 +67,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.80000001192092896</real>
-							<real>0.80000001192092896</real>
+							<real>1.2999999523162842</real>
+							<real>0.69999998807907104</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -89,7 +89,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/new player/empty.png</string>
+							<string>effect/NewPlayer/empty.png</string>
 						</array>
 					</dict>
 				</array>
@@ -117,10 +117,122 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>134</real>
+							<real>860</real>
 							<integer>0</integer>
 						</array>
 					</dict>
+					<dict>
+						<key>name</key>
+						<string>contentSize</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>100</real>
+							<real>100</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>6.4000000953674316</real>
+							<real>8.4600000381469727</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ignoreAnchorPointForPosition</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>touchEnabled</string>
+						<key>platform</key>
+						<string>iOS</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>mouseEnabled</string>
+						<key>platform</key>
+						<string>Mac</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>color</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>opacity</string>
+						<key>type</key>
+						<string>Byte</string>
+						<key>value</key>
+						<integer>217</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>blendFunc</string>
+						<key>type</key>
+						<string>Blendmode</string>
+						<key>value</key>
+						<array>
+							<integer>770</integer>
+							<integer>771</integer>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>baseClass</key>
+				<string>CCLayerColor</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CCLayerColor</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>0</integer>
+				<key>properties</key>
+				<array>
 					<dict>
 						<key>name</key>
 						<string>contentSize</string>
@@ -151,8 +263,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>6.4000000953674316</real>
-							<real>8.2600002288818359</real>
+							<real>1.8999999761581421</real>
+							<real>1.1399999856948853</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -275,8 +387,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>5.059999942779541</real>
-							<real>1.3400000333786011</real>
+							<real>1.8999999761581421</real>
+							<real>1.1399999856948853</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -486,8 +598,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>56.524284362792969</real>
-							<real>56.078441619873047</real>
+							<real>320.908447265625</real>
+							<real>49.166439056396484</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -514,8 +626,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.93973320722579956</real>
-							<real>0.88540041446685791</real>
+							<real>1.8018301725387573</real>
+							<real>1.7945098876953125</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -536,7 +648,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/new player/light.png</string>
+							<string>effect/NewPlayer/light.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -679,8 +791,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>68.543540954589844</real>
-							<real>90.894248962402344</real>
+							<real>332.92770385742188</real>
+							<real>78.798240661621094</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -707,8 +819,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.85000002384185791</real>
-							<real>0.85000002384185791</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -737,7 +849,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/new player/hand.png</string>
+							<string>effect/NewPlayer/hand.png</string>
 						</array>
 					</dict>
 				</array>
@@ -833,7 +945,7 @@
 			<key>height</key>
 			<integer>960</integer>
 			<key>name</key>
-			<string>iPhone</string>
+			<string>iPhone4</string>
 			<key>scale</key>
 			<real>1</real>
 			<key>width</key>
@@ -861,11 +973,11 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.30000001192092896</real>
+			<real>0.56666666269302368</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>428.93118286132812</real>
+			<real>418.06039428710938</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

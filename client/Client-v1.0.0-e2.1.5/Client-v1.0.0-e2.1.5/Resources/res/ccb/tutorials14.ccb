@@ -210,7 +210,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/new player/empty.png</string>
+							<string>effect/NewPlayer/empty.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -842,7 +842,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/new player/light.png</string>
+							<string>effect/NewPlayer/light.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1121,7 +1121,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/new player/hand.png</string>
+							<string>effect/NewPlayer/hand.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1499,7 +1499,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/new player/talking.png</string>
+							<string>effect/NewPlayer/talking.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1642,7 +1642,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/new player/yuanshen.png</string>
+							<string>effect/NewPlayer/yuanshen.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1667,6 +1667,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>

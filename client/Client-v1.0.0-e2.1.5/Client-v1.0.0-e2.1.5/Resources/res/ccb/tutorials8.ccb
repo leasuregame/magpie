@@ -44,7 +44,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>449.87997436523438</real>
+							<real>192.87997436523438</real>
 							<real>380</real>
 							<integer>0</integer>
 						</array>
@@ -89,7 +89,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/new player/empty.png</string>
+							<string>effect/NewPlayer/empty.png</string>
 						</array>
 					</dict>
 				</array>
@@ -117,7 +117,7 @@
 						<key>value</key>
 						<array>
 							<real>540</real>
-							<real>310</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -151,8 +151,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.57043814659118652</real>
-							<real>1.3999999761581421</real>
+							<real>6.4000000953674316</real>
+							<real>3.0983395576477051</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -240,8 +240,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>540</real>
-							<real>0.0</real>
+							<real>-100</real>
+							<real>450.00006103515625</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -275,11 +275,19 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>6.4000000953674316</real>
-							<real>3.0983395576477051</real>
+							<real>0.60000002384185791</real>
+							<real>1.3999999761581421</real>
 							<false/>
 							<integer>0</integer>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>rotation</string>
+						<key>type</key>
+						<string>Degrees</string>
+						<key>value</key>
+						<real>180</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -496,8 +504,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-100</real>
-							<real>450</real>
+							<real>540</real>
+							<real>310</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -531,19 +539,11 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>3.1706688404083252</real>
+							<real>3.1400001049041748</real>
 							<real>1.3999999761581421</real>
 							<false/>
 							<integer>0</integer>
 						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>rotation</string>
-						<key>type</key>
-						<string>Degrees</string>
-						<key>value</key>
-						<real>180</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -750,8 +750,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>449.49246215820312</real>
-							<real>379.21636962890625</real>
+							<real>196.49246215820312</real>
+							<real>378.21636962890625</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -800,7 +800,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/new player/light.png</string>
+							<string>effect/NewPlayer/light.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -943,8 +943,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>478.84930419921875</real>
-							<real>345.64968872070312</real>
+							<real>221.55972290039062</real>
+							<real>348.4593505859375</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -993,7 +993,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/new player/hand.png</string>
+							<string>effect/NewPlayer/hand.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1087,7 +1087,7 @@
 			<key>height</key>
 			<integer>960</integer>
 			<key>name</key>
-			<string>iPhone4</string>
+			<string>magpie</string>
 			<key>scale</key>
 			<real>1</real>
 			<key>width</key>
@@ -1119,7 +1119,7 @@
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>311.016845703125</real>
+			<real>444.58425903320312</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

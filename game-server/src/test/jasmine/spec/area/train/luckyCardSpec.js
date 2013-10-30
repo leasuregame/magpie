@@ -27,19 +27,19 @@ describe("Area Server", function() {
 			};
 
 			var CARD_SCOPE = {
-                "1": {
-                    from: 0,
-                    to: 5
-                },
-                "2": {
-                    from: 2,
-                    to: 6
-                }
+				"1": {
+					from: 0,
+					to: 5
+				},
+				"2": {
+					from: 2,
+					to: 6
+				}
 			};
 
 			var checkCard = function(card, min_star, max_star) {
-                var card_star = card.tableId % 5;
-                if (card_star == 0) card_star = 5;
+				var card_star = card.tableId % 5;
+				if (card_star == 0) card_star = 5;
 				expect(card_star).toBeLessThan(max_star);
 				expect(card_star).toBeGreaterThan(min_star);
 
@@ -64,9 +64,9 @@ describe("Area Server", function() {
 				describe(name, function() {
 					var before_gold, before_energy, before_fragments;
 
-                    beforeAll(function(){
-                        doAjax('/clear/card', {}, function(){});
-                    });
+					beforeAll(function() {
+						doAjax('/clear/card', {}, function() {});
+					});
 
 					beforeEach(function() {
 						loginWith(arthur.account, arthur.password, arthur.areaId);
@@ -78,7 +78,7 @@ describe("Area Server", function() {
 							before_energy = res.data.energy;
 							before_fragments = res.data.fragments;
 						});
-						
+
 						request('area.trainHandler.luckyCard', {
 							type: type,
 							level: level
@@ -109,16 +109,16 @@ describe("Area Server", function() {
 										elixirHp: card.elixirHp,
 										elixirAtk: card.elixirAtk,
 									});
-                                var pss = JSON.parse(res.data.passiveSkills);
-                                for(var i = 0; i < card.passiveSkills.length;i++) {
-                                    var ps = card.passiveSkills[i];
-                                    expect(pss[i]).toEqual({
-                                        id: ps.id,
-                                        //cardId: ps.cardId,
-                                        name: ps.name,
-                                        value: ps.value
-                                    });
-                                }
+								var pss = JSON.parse(res.data.passiveSkills);
+								for (var i = 0; i < card.passiveSkills.length; i++) {
+									var ps = card.passiveSkills[i];
+									expect(pss[i]).toEqual({
+										id: ps.id,
+										//cardId: ps.cardId,
+										name: ps.name,
+										value: ps.value
+									});
+								}
 
 							});
 
@@ -141,7 +141,7 @@ describe("Area Server", function() {
 						}, timeout);
 					};
 
-                    var LOTTERY_COUNT = 45;
+					var LOTTERY_COUNT = 45;
 					var test = function(test_name, type) {
 						it(test_name, function() {
 							doIt(type, 5000);
@@ -149,7 +149,7 @@ describe("Area Server", function() {
 					};
 
 					var test100times = function(test_name, type) {
-						it(test_name + ' >> '+LOTTERY_COUNT+' times', function() {
+						it(test_name + ' >> ' + LOTTERY_COUNT + ' times', function() {
 							for (var i = 0; i < LOTTERY_COUNT; i++) {
 								(function(i) {
 									doIt(type, 15000);
@@ -196,60 +196,119 @@ describe("Area Server", function() {
 
 			});
 
-            describe("当次数达到上限时",function(){
+			describe("当次数达到上限时", function() {
 
-                beforeAll(function() {
-                    doAjax('/update/player/100', {
-                        rowFragmentCount: 99,
-                        highFragmentCount: 39,
-                        highDrawCardCount: 239
-                    }, function(data) {
-                        //expect(data).toEqual('done');
-                        console.log(data);
+				beforeAll(function() {
+					doAjax('/update/player/100', {
+						rowFragmentCount: 99,
+						highFragmentCount: 39,
+						highDrawCardCount: 239
+					}, function(data) {
+						//expect(data).toEqual('done');
+						console.log(data);
 
-                    });
-                });
+					});
+				});
 
-                beforeEach(function(){
-                    loginWith(arthur.account, arthur.password, arthur.areaId);
-                })
+				beforeEach(function() {
+					loginWith(arthur.account, arthur.password, arthur.areaId);
+				})
 
-                it('普通抽卡可以获得卡魂',function(){
+				it('普通抽卡可以获得卡魂', function() {
 
-                    request('area.trainHandler.luckyCard', {
-                        type: LOTTERY_TYPE.GOLD,
-                        level: 1
-                    }, function(data) {
-                        console.log(data);
-                        expect(data.code).toEqual(200);
-                       // expect(data.msg).toEqual('没有足够的资源来完成本次抽卡');
-                        expect(data.msg.fragment).toEqual(1);
-                    });
-                });
+					request('area.trainHandler.luckyCard', {
+						type: LOTTERY_TYPE.GOLD,
+						level: 1
+					}, function(data) {
+						console.log(data);
+						expect(data.code).toEqual(200);
+						// expect(data.msg).toEqual('没有足够的资源来完成本次抽卡');
+						expect(data.msg.fragment).toEqual(1);
+					});
+				});
 
-                it('高级抽卡可以获得5星卡和卡魂',function(){
-                    request('area.trainHandler.luckyCard', {
-                        type: LOTTERY_TYPE.GOLD,
-                        level: 2
-                    }, function(data) {
-                        console.log(data);
-                        expect(data.code).toEqual(200);
-                        // expect(data.msg).toEqual('没有足够的资源来完成本次抽卡');
-                        expect(data.msg.fragment).toEqual(1);
-                        var star = data.msg.card.tableId % 5 + 5;
-                        expect(star).toEqual(5);
-                    });
-                });
+				it('高级抽卡可以获得5星卡和卡魂', function() {
+					request('area.trainHandler.luckyCard', {
+						type: LOTTERY_TYPE.GOLD,
+						level: 2
+					}, function(data) {
+						console.log(data);
+						expect(data.code).toEqual(200);
+						// expect(data.msg).toEqual('没有足够的资源来完成本次抽卡');
+						expect(data.msg.fragment).toEqual(1);
+						var star = data.msg.card.tableId % 5 || 5;
+						expect(star).toEqual(5);
+					});
+				});
 
-                it('记录可以归零',function(){
-                    doAjax('/player/' + arthur.playerId, {}, function(res) {
-                        res.rowFragmentCount.toEqual(0);
-                        res.highFragmentCount.toEqual(0);
-                        res.highDrawCardCount.toEqual(0);
-                    });
-                });
+				it('记录可以归零', function() {
+					doAjax('/player/' + arthur.playerId, {}, function(res) {
+						res.rowFragmentCount.toEqual(0);
+						res.highFragmentCount.toEqual(0);
+						res.highDrawCardCount.toEqual(0);
+					});
+				});
 
-            })
+			});
+
+			describe('第一次抽卡', function() {
+				describe('普通抽卡', function() {
+					beforeEach(function(){
+						loginWith('115', '1', 1);
+					});
+
+					it('只有第一次免费', function() {
+						request('area.trainHandler.luckyCard', {
+							type: LOTTERY_TYPE.GOLD,
+							level: 1
+						}, function(data) {
+							console.log(data);
+							expect(data.code).toEqual(200);
+							expect(data.msg.fragment).toEqual(0);
+							var star = data.msg.card.tableId % 5 || 5;
+							expect(star).toEqual(3);
+						});
+
+						request('area.trainHandler.luckyCard', {
+							type: LOTTERY_TYPE.GOLD,
+							level: 1
+						}, function(data) {
+							console.log(data);
+							expect(data.code).toEqual(501);
+							expect(data.msg).toEqual('没有足够的资源来完成本次抽卡');
+						});
+					});
+				});
+
+				describe('高级抽卡', function() {
+					beforeEach(function(){
+						loginWith('user5', '1', 1);
+					});
+
+					it('只有第一次免费', function() {
+						request('area.trainHandler.luckyCard', {
+							type: LOTTERY_TYPE.GOLD,
+							level: 2
+						}, function(data) {
+							console.log(data);
+							expect(data.code).toEqual(200);
+							expect(data.msg.fragment).toEqual(0);
+							var star = data.msg.card.tableId % 5 || 5;
+							expect(star).toEqual(4);
+						});
+
+						request('area.trainHandler.luckyCard', {
+							type: LOTTERY_TYPE.GOLD,
+							level: 2
+						}, function(data) {
+							console.log(data);
+							expect(data.code).toEqual(501);
+							expect(data.msg).toEqual('没有足够的资源来完成本次抽卡');
+						});
+					});
+				});
+			});
+
 		});
 	});
 });
@@ -361,14 +420,3 @@ describe("Area Server", function() {
 //         });
 //     });
 // });
-
-
-
-
-
-
-
-
-
-
-

@@ -240,7 +240,8 @@ var Player = (function(_super) {
         'highFragmentCount',
         'highDrawCardCount',
         'cardsCount',
-        'resetDate'
+        'resetDate',
+        'firstTime'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -321,7 +322,11 @@ var Player = (function(_super) {
         highFragmentCount: 0,
         highDrawCardCount: 0,
         cardsCount: 100,
-        resetDate: '1970-1-1'
+        resetDate: '1970-1-1',
+        firstTime: {
+            lowLuckyCard: 1,
+            highLuckyCard: 1
+        }
     };
 
     Player.prototype.resetData = function() {
@@ -1035,6 +1040,22 @@ var Player = (function(_super) {
         }
     };
 
+    Player.prototype.hasFirstTime = function(){
+        var ft = this.firstTime;
+        for (var key in ft) {
+            if (ft[key]) {
+                return true;
+            }
+        }
+        return false;
+    };
+
+    Player.prototype.setFirstTime = function(name, val) {
+        var ft = utility.deepCopy(this.firstTime);
+        ft[name] = val;
+        this.set('firstTime', ft);
+    }
+
     Player.prototype.toJson = function() {
         return {
             id: this.id,
@@ -1069,7 +1090,8 @@ var Player = (function(_super) {
                     return card.toJson();
                 }),
             rank: this.getRanking(),
-            signIn: utility.deepCopy(this.signIn)
+            signIn: utility.deepCopy(this.signIn),
+            firstTime: this.hasFirstTime() ? this.firstTime : void 0
         };
     };
 

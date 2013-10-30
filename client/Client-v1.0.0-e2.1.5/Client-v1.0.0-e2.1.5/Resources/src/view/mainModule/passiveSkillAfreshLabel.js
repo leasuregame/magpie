@@ -454,9 +454,9 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         cc.log("PassiveSkillAfreshLabel _afresh");
 
         var that = this;
-        this._leadCard.afreshPassiveSkill(function (code) {
+        this._leadCard.afreshPassiveSkill(function (isCanAfresh) {
             if (isRepeatAfresh) {
-                that._afreshCallBack(code);
+                that._afreshCallBack(isCanAfresh);
             }
 
             that.update(true);
@@ -469,7 +469,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._afresh(true);
     },
 
-    _afreshCallBack: function (code) {
+    _afreshCallBack: function (isCanAfresh) {
         cc.log("PassiveSkillAfreshLabel _afreshCallBack: " + this._stopType);
 
         var passiveSkill = this._leadCard.get("passiveSkill");
@@ -480,18 +480,20 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         }
 
         cc.log(maxValue);
-        cc.log(code);
-        if (this._stopType == STOP_UNTIL_BLUE && code == 200) {
-            if (maxValue >= 5.0) {
-                TipLayer.tip("人品爆发，出现蓝色属性，洗炼完毕");
-                this._onClickStop();
+        cc.log(isCanAfresh);
+        if(isCanAfresh) {
+            if (this._stopType == STOP_UNTIL_BLUE) {
+                if (maxValue >= 5.0) {
+                    TipLayer.tip("人品爆发，出现蓝色属性，洗炼完毕");
+                    this._onClickStop();
+                }
+            } else if (this._stopType == STOP_UNTIL_YELLOW) {
+                if (maxValue >= 8.0) {
+                    TipLayer.tip("人品爆发，惊现蓝色属性，洗炼完毕");
+                    this._onClickStop();
+                }
             }
-        } else if (this._stopType == STOP_UNTIL_YELLOW && code == 200) {
-            if (maxValue >= 8.0) {
-                TipLayer.tip("人品爆发，惊现蓝色属性，洗炼完毕");
-                this._onClickStop();
-            }
-        } else if(code != 200) {
+        } else {
             this._onClickStop();
         }
     },

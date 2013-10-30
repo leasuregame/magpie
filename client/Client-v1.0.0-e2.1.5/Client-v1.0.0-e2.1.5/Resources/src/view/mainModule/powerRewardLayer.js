@@ -82,7 +82,7 @@ var PowerRewardLayer = cc.Layer.extend({
         }
 
 
-        var getReward = cc.MenuItemImage.createWithIcon(
+        var btnGetReward = cc.MenuItemImage.createWithIcon(
             main_scene_image.button10,
             main_scene_image.button10s,
             main_scene_image.icon123,
@@ -90,9 +90,9 @@ var PowerRewardLayer = cc.Layer.extend({
             this
         );
 
-        getReward.setPosition(cc.p(355,270));
+        btnGetReward.setPosition(cc.p(355,270));
 
-        var menu = cc.Menu.create(getReward);
+        var menu = cc.Menu.create(btnGetReward);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
     },

@@ -82,6 +82,21 @@ var GoldRewardLayer = cc.Layer.extend({
             goldIcon.setAnchorPoint(cc.p(0, 0));
             goldIcon.setPosition(cc.p(190, y + 25));
             scrollViewLayer.addChild(goldIcon);
+
+            var btnGetReward = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button10,
+                main_scene_image.button10s,
+                main_scene_image.icon123,
+                this._onClickGetReward(i),
+                this
+            );
+
+            btnGetReward.setPosition(cc.p(500,y + 68));
+
+            var menu = cc.Menu.create(btnGetReward);
+            menu.setPosition(cc.p(0, 0));
+            scrollViewLayer.addChild(menu);
+
         }
 
         scrollView.setContentSize(cc.size(600, scrollViewHeight));
@@ -90,9 +105,12 @@ var GoldRewardLayer = cc.Layer.extend({
 
     },
 
-    _onClickGo2Payment: function() {
+    _onClickGetReward: function(index) {
 
-        MainScene.getInstance().switchLayer(ShopLayer);
+        return function() {
+            cc.log(index);
+        };
+        //MainScene.getInstance().switchLayer(ShopLayer);
     }
 
 

@@ -8,7 +8,7 @@
 
 var Activity = Entity.extend({
 
-
+    _goldRewardList: null,
     init: function () {
         cc.log("Activity init");
 
@@ -27,8 +27,10 @@ var Activity = Entity.extend({
 
     getPowerReward: function(cb) {
 
+    },
+
+    getGoldReward: function() {
+
     }
-
-
 
 });

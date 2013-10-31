@@ -66,7 +66,11 @@ Handler::getLineUpInfo = (msg, session, next) ->
 
 Handler::givePower = (msg, session, next) -> 
 
-  cur_hour = new Date().getHour()
+  cur_hour = new Date().getHours()
+
+  if @app.get('debug')
+    cur_hour = msg.hour
+
   if not canGetPower(cur_hour)
     return next(null, {code: 501, msg: '不在领取体力的时间段'})
 
@@ -83,15 +87,57 @@ Handler::givePower = (msg, session, next) ->
       return next(null, {code: 501, msg: '不能重复领取'})
 
     if player.power.value >= MAX_POWER_VALUE
-      return next(null, {code: '体力已达上限'})
+      return next(null, {code: 501, msg: '体力已达上限'})
 
     point = playerConfig.POWER_GIVE.point
     player.givePower(cur_hour, point)
     player.save()
     next(null, {code: 200, msg: {powerValue: point}})
 
-Handler::getLevelReward = (msg, session, next) ->
+Handler::getActivityInfo = (msg, session, next) ->
+  playerId = session.get('playerId')
 
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {
+        code: err.code or 501
+        msg: err.msg or err
+        }
+      )   
+
+    next(null, {code: 200, msg: {
+      levelReward: player.levelReward
+    }})
+
+Handler::getLevelReward = (msg, session, next) ->
+  playerId = session.get('playerId')
+  lv = msg.lv
+
+  if typeof lv is 'undefined' or not _.isNumber(lv)
+    return next(null, {code: 501, msg: '参数错误'})
+
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+    if err
+      return next(null, {
+        code: err.code or 501
+        msg: err.msg or err
+        }
+      )    
+
+    if player.hasLevelReward(lv)
+      return next(null, {code: 501, msg: '不能重复领取'})
+
+    if player.lv < lv
+      return next(null, {code: 501, msg: "等级未达到#{lv}级, 不能领取"})
+
+    data = table.getTableItem('player_upgrade_reward', lv)
+    if not data
+      return next(null, {code: 501, msg: "找不到等级为#{lv}的奖励"})
+
+    player.increase('gold', data.gold)
+    player.setLevelReward(lv)
+    player.save()
+    next(null, {code: 200, msg: {gold: data.gold}})
 
 canGetPower = (hour) ->
   _.contains playerConfig.POWER_GIVE.hours, hour

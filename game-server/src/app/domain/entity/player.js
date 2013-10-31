@@ -192,6 +192,7 @@ var Player = (function(_super) {
         this.passMark = new MarkGroup(this.pass.mark);
         this.cardBookMark = new MarkGroup(this.cardBook.mark);
         this.cardBookFlag = new MarkGroup(this.cardBook.flag);
+        this.levelRewardMark = new MarkGroup(this.levelReward);
         this.momo = [];
         //this.momoMark = new MarkGroup(this.task.momo);
     }
@@ -241,7 +242,8 @@ var Player = (function(_super) {
         'highDrawCardCount',
         'cardsCount',
         'resetDate',
-        'firstTime'
+        'firstTime',
+        'levelReward'
     ];
 
     Player.DEFAULT_VALUES = {
@@ -326,7 +328,8 @@ var Player = (function(_super) {
         firstTime: {
             lowLuckyCard: 1,
             highLuckyCard: 1
-        }
+        },
+        levelReward: []
     };
 
     Player.prototype.resetData = function() {
@@ -443,6 +446,10 @@ var Player = (function(_super) {
     };
 
     Player.prototype.incSpirit = function(val) {
+        if (typeof val !== 'number') {
+            logger.warn('can not increase spirit of player by value:', val);
+            return;
+        }
         var spiritor = _.clone(this.spiritor);        
         spiritor.spirit = spiritor.spirit + val;
         this.set('spiritor', spiritor);
@@ -1054,7 +1061,16 @@ var Player = (function(_super) {
         var ft = utility.deepCopy(this.firstTime);
         ft[name] = val;
         this.set('firstTime', ft);
-    }
+    };
+
+    Player.prototype.hasLevelReward = function(lv) {
+        return this.levelRewardMark.hasMark(lv);
+    };
+
+    Player.prototype.setLevelReward = function(lv) {
+        this.levelRewardMark.mark(lv);
+        this.levelReward = this.levelRewardMark.value;
+    };
 
     Player.prototype.toJson = function() {
         return {

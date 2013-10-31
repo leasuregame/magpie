@@ -531,6 +531,9 @@ var main_scene_image = {
     Chen_1: effect_scene_path + "Chen_1.png",
     Bing_Di: effect_scene_path + "Bing_Di.png",
     tiaoshi: effect_scene_path + "tiaoshi.jpg",
+    pk: effect_scene_path + "pk.png",
+    ZhenYeYin_Zhen: effect_scene_path + "ZhenYeYin_Zhen.png",
+
 
     // 新手图片
     empty: effect_scene_path + "NewPlayer/" + "empty.png",

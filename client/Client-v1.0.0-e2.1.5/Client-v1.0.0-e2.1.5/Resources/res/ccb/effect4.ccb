@@ -538,7 +538,7 @@
 									<dict>
 										<key>baseValue</key>
 										<array>
-											<string>effect/Bing_1.png</string>
+											<string>effect/effect/p6.png</string>
 											<string>Use regular file</string>
 										</array>
 										<key>name</key>
@@ -548,7 +548,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>effect/effect/p7.png</string>
+											<string>effect/effect/p6.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1125,8 +1125,6 @@
 								<false/>
 							</dict>
 						</array>
-						<key>seqExpanded</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -1367,6 +1365,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>seqExpanded</key>
+								<true/>
 							</dict>
 							<dict>
 								<key>animatedProperties</key>
@@ -1602,6 +1602,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>seqExpanded</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>

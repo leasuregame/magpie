@@ -281,6 +281,16 @@ lz.tipReward = function (reward) {
     }
 };
 
+lz.getTexture = function (filename) {
+    var texture = cc.TextureCache.getInstance().textureForKey(filename);
+
+    if (!texture) {
+        texture = cc.TextureCache.getInstance().addImage(filename);
+    }
+
+    return texture;
+};
+
 /*
  * 数组去重
  * */

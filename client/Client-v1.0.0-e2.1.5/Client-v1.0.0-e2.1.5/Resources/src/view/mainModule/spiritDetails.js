@@ -125,27 +125,26 @@ var SpiritDetails = LazyLayer.extend({
         skillDescription1.setPosition(cc.p(140, 280));
         this.addChild(skillDescription1);
 
-        var skillDescription2 = cc.LabelTTF.create("元神将释放阵亡卡牌的技能效果，最高可达100%", "STHeitiTC-Medium", 20);
+        var skillDescription2 = cc.LabelTTF.create("元神将释放阵亡卡牌的技能效果。", "STHeitiTC-Medium", 20);
         skillDescription2.setColor(cc.c3b(255, 239, 131));
         skillDescription2.setAnchorPoint(cc.p(0, 0.5));
         skillDescription2.setPosition(cc.p(140, 250));
         this.addChild(skillDescription2);
 
-        var skillHarmIcon = cc.LabelTTF.create("当前加成效果:", "STHeitiTC-Medium", 20);
-        skillHarmIcon.setColor(cc.c3b(146, 180, 83));
-        skillHarmIcon.setPosition(cc.p(420, 220));
-        this.addChild(skillHarmIcon);
-
+//        var skillHarmIcon = cc.LabelTTF.create("当前加成效果:", "STHeitiTC-Medium", 20);
+//        skillHarmIcon.setColor(cc.c3b(146, 180, 83));
+//        skillHarmIcon.setPosition(cc.p(420, 220));
+//        this.addChild(skillHarmIcon);
 
         this._passiveHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 23);
         this._passiveHarmLabel.setColor(cc.c3b(255, 239, 131));
         this._passiveHarmLabel.setPosition(cc.p(520, 370));
         this.addChild(this._passiveHarmLabel);
 
-        this._skillHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 23);
-        this._skillHarmLabel.setColor(cc.c3b(255, 239, 131));
-        this._skillHarmLabel.setPosition(cc.p(520, 220));
-        this.addChild(this._skillHarmLabel);
+//        this._skillHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 23);
+//        this._skillHarmLabel.setColor(cc.c3b(255, 239, 131));
+//        this._skillHarmLabel.setPosition(cc.p(520, 220));
+//        this.addChild(this._skillHarmLabel);
 
         this._lvLabel = cc.LabelTTF.create("LV.  0", "STHeitiTC-Medium", 40);
         this._lvLabel.setColor(cc.c3b(255, 239, 131));
@@ -204,7 +203,7 @@ var SpiritDetails = LazyLayer.extend({
         this._lvLabel.setString("LV.  " + spirit.get("lv"));
         this._expLabel.setString("灵气:    " + spirit.get("exp") + " / " + spirit.get("maxExp"));
         this._passiveHarmLabel.setString(spirit.get("passiveHarm") + "%");
-        this._skillHarmLabel.setString(spirit.get("skillHarm") + "%");
+//        this._skillHarmLabel.setString(spirit.get("skillHarm") + "%");
     },
 
     _play: function () {

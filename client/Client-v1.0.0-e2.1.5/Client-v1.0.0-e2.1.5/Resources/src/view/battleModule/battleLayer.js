@@ -156,6 +156,12 @@ var BatterLayer = cc.Layer.extend({
         this.schedule(this._playAStep, delay, 1, 0);
     },
 
+    callback: function () {
+        cc.log("=======================================");
+        cc.log("回调成功");
+        cc.log("=======================================");
+    },
+
     _normalAttack: function (battleStep) {
         cc.log(battleStep);
 

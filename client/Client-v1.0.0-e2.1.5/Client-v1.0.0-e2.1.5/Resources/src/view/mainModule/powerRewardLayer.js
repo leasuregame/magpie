@@ -99,8 +99,7 @@ var PowerRewardLayer = cc.Layer.extend({
 
     _onClickGetReward: function() {
         cc.log("PowerRewardLayer _onClickGetReward");
-
-        //MainScene.getInstance().switchLayer(ShopLayer);
+        gameData.activity.getPowerReward();
     }
 
 

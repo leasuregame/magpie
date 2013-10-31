@@ -45,7 +45,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>effect/LiuYunZhang_27.png</string>
+										<string>effect/effect/p9.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -63,7 +63,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>effect/LiuYunZhang_28.png</string>
+										<string>effect/effect/p10.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -81,7 +81,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>effect/LiuYunZhang_29.png</string>
+										<string>effect/effect/p11.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -99,7 +99,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>effect/LiuYunZhang_30.png</string>
+										<string>effect/effect/p12.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -252,7 +252,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/LiuYunZhang_27.png</string>
+							<string>effect/effect/p12.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -278,6 +278,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

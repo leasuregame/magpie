@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `cardsCount` SMALLINT(5) UNSIGNED DEFAULT '0', -- 卡牌数量上限
   `resetDate` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
   `firstTime` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
+  `levelReward` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

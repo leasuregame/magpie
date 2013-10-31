@@ -521,15 +521,9 @@ var main_scene_image = {
     zhaohuan: effect_scene_path + "zhaohuan.jpg",
     testBg: effect_scene_path + "testBg.png",
     LeiShe_JiZhong: effect_scene_path + "LeiShe_JiZhong.png",
-    LiuYunZhang_27: effect_scene_path + "LiuYunZhang_27.png",
-    LiuYunZhang_28: effect_scene_path + "LiuYunZhang_28.png",
-    LiuYunZhang_29: effect_scene_path + "LiuYunZhang_29.png",
-    LiuYunZhang_30: effect_scene_path + "LiuYunZhang_30.png",
     light12: effect_scene_path + "light12.png",
     HuGuang_JiZhong: effect_scene_path + "HuGuang_JiZhong.png",
     PoWuZhan_Light: effect_scene_path + "PoWuZhan_Light.png",
-    Chen_1: effect_scene_path + "Chen_1.png",
-    Bing_Di: effect_scene_path + "Bing_Di.png",
     tiaoshi: effect_scene_path + "tiaoshi.jpg",
     pk: effect_scene_path + "pk.png",
     ZhenYeYin_Zhen: effect_scene_path + "ZhenYeYin_Zhen.png",
@@ -552,13 +546,20 @@ var main_scene_image = {
     p3: effect_scene_path + "effect/" + "p3.png",
     p4: effect_scene_path + "effect/" + "p4.png",
     p5: effect_scene_path + "effect/" + "p5.png",
+    p6: effect_scene_path + "effect/" + "p6.png",
+    p7: effect_scene_path + "effect/" + "p7.png",
+    p8: effect_scene_path + "effect/" + "p8.png",
+    p9: effect_scene_path + "effect/" + "p9.png",
+    p10: effect_scene_path + "effect/" + "p10.png",
+    p11: effect_scene_path + "effect/" + "p11.png",
+    p12: effect_scene_path + "effect/" + "p12.png",
+    p13: effect_scene_path + "effect/" + "p13.png",
+    p14: effect_scene_path + "effect/" + "p14.png",
 
 
 
 
-    texiao6: ccb_scene_path + "texiao6.ccbi",
-    texiao3: ccb_scene_path + "texiao3.ccbi",
-    texiao4: ccb_scene_path + "texiao4.ccbi",
+
     texiao7: ccb_scene_path + "texiao7.ccbi",
     texiao8: ccb_scene_path + "texiao8.ccbi",
     texiao9: ccb_scene_path + "texiao9.ccbi",
@@ -585,6 +586,10 @@ var main_scene_image = {
     // 完成特效
     effect1: ccb_scene_path + "effect1.ccbi", 
     effect2: ccb_scene_path + "effect2.ccbi", 
+    effect3: ccb_scene_path + "effect3.ccbi", 
+    effect4: ccb_scene_path + "effect4.ccbi", 
+    effect5: ccb_scene_path + "effect5.ccbi",
+    effect6: ccb_scene_path + "effect6.ccbi", 
 };
 
 var main_scene_res = [

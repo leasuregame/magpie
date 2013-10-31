@@ -57,6 +57,7 @@ var gameData = {
         this.achievement = Achievement.create();
         this.speak = Speak.create();
         this.exchange = Exchange.create();
+        this.activity = Activity.create();
 
     },
 

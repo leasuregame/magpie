@@ -559,7 +559,18 @@ var main_scene_image = {
     p5: "res/effect/effect/p5.png",
 
     // 新手特效
-
+    tutorials1: "res/ccb/tutorials1.ccbi",
+    tutorials2: "res/ccb/tutorials2.ccbi",
+    tutorials3: "res/ccb/tutorials3.ccbi",
+    tutorials4: "res/ccb/tutorials4.ccbi",
+    tutorials5: "res/ccb/tutorials5.ccbi",
+    tutorials6: "res/ccb/tutorials6.ccbi",
+    tutorials7: "res/ccb/tutorials7.ccbi",
+    tutorials8: "res/ccb/tutorials8.ccbi",
+    tutorials9: "res/ccb/tutorials9.ccbi",
+    tutorials10: "res/ccb/tutorials10.ccbi",
+    tutorials11: "res/ccb/tutorials11.ccbi",
+    tutorials12: "res/ccb/tutorials12.ccbi",
 
     // 新手特效资源
     empty: "res/effect/NewPlayer/empty.png",

@@ -40,7 +40,7 @@
         box2d: false,
         chipmunk: false,
         showFPS: true,
-        frameRate: 60,
+        frameRate: 30,
         loadExtension: true,
         tag: 'gameCanvas', //the dom element to run cocos2d on
         engineDir: '../../../Cocos2d-html5-v2.2/cocos2d/',
@@ -107,6 +107,7 @@
 
             'src/view/mainModule/effect.js',
 
+            'src/view/mainModule/cocosBuilderClass.js',
             'src/view/mainModule/abilityRankLayer.js',
             'src/view/mainModule/achievementLayer.js',
             'src/view/mainModule/rechargeLayer.js',

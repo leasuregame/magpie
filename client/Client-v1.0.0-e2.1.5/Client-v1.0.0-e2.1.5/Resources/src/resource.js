@@ -544,7 +544,30 @@ var main_scene_image = {
     icon269: main_scene_path + "icon269.png",
     icon270: main_scene_path + "icon270.png",
     icon271: main_scene_path + "icon271.png",
-    icon272: main_scene_path + "icon272.png"
+    icon272: main_scene_path + "icon272.png",
+
+
+    // 特效
+    effect1: "res/ccb/effect1.ccbi",
+    effect2: "res/ccb/effect2.ccbi",
+
+    // 特效资源
+    p1: "res/effect/effect/p1.png",
+    p2: "res/effect/effect/p2.png",
+    p3: "res/effect/effect/p3.png",
+    p4: "res/effect/effect/p4.png",
+    p5: "res/effect/effect/p5.png",
+
+    // 新手特效
+
+
+    // 新手特效资源
+    empty: "res/effect/NewPlayer/empty.png",
+    hand: "res/effect/NewPlayer/hand.png",
+    light: "res/effect/NewPlayer/light.png",
+    talking: "res/effect/NewPlayer/talking.png",
+    yuanshen: "res/effect/NewPlayer/yuanshen.png"
+
 };
 
 var main_scene_res = [

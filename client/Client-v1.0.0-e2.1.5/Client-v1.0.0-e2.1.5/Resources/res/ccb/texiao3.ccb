@@ -854,8 +854,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.5</real>
-									<real>0.10000000149011612</real>
+									<real>4.6999998092651367</real>
+									<real>1.7000000476837158</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -876,7 +876,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/tuoying.png</string>
+									<string>effect/effect/p5.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1091,8 +1091,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>0.10000000149011612</real>
+									<real>3.7999999523162842</real>
+									<real>1.5</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1113,7 +1113,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/tuoying.png</string>
+									<string>effect/effect/p5.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1136,17 +1136,6 @@
 									<integer>177</integer>
 									<integer>242</integer>
 									<integer>38</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>blendFunc</string>
-								<key>type</key>
-								<string>Blendmode</string>
-								<key>value</key>
-								<array>
-									<integer>1</integer>
-									<integer>1</integer>
 								</array>
 							</dict>
 						</array>
@@ -1297,7 +1286,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

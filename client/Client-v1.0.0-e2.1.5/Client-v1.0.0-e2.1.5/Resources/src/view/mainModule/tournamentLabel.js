@@ -176,6 +176,8 @@ var TournamentLabel = cc.Node.extend({
                 }, this._player.playerId);
             } else {
                 gameData.tournament.defiance(function (data) {
+                    cc.log(data);
+
                     if (data) {
                         if (data.upgradeReward) {
                             that._target._setPlayerUpgradeReward(data.upgradeReward);

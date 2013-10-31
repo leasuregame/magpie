@@ -1078,7 +1078,7 @@
 								<key>value</key>
 								<array>
 									<real>50</real>
-									<real>30</real>
+									<real>50</real>
 								</array>
 							</dict>
 							<dict>
@@ -1088,7 +1088,7 @@
 								<string>FloatVar</string>
 								<key>value</key>
 								<array>
-									<real>30</real>
+									<real>50</real>
 									<real>20</real>
 								</array>
 							</dict>
@@ -1587,8 +1587,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-526.1455078125</real>
-									<real>16.017612457275391</real>
+									<real>-467.1455078125</real>
+									<real>1.0176124572753906</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1637,7 +1637,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>main/card3_half3.png</string>
+									<string>effect/hero2_full1.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1747,8 +1747,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1</real>
-												<real>1</real>
+												<real>0.0</real>
+												<real>0.0</real>
 											</array>
 										</dict>
 										<dict>
@@ -1765,8 +1765,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>4</real>
-												<real>4</real>
+												<real>1</real>
+												<real>1</real>
 											</array>
 										</dict>
 										<dict>
@@ -1783,8 +1783,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>4</real>
-												<real>4</real>
+												<real>1</real>
+												<real>1</real>
 											</array>
 										</dict>
 										<dict>
@@ -1801,8 +1801,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1</real>
-												<real>1</real>
+												<real>0.0</real>
+												<real>0.0</real>
 											</array>
 										</dict>
 									</array>
@@ -1814,13 +1814,13 @@
 							</dict>
 						</dict>
 						<key>baseClass</key>
-						<string>CCLabelTTF</string>
+						<string>CCLabelBMFont</string>
 						<key>children</key>
 						<array/>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>CCLabelTTF</string>
+						<string>CCLabelBMFont</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -1834,8 +1834,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-240</real>
-									<real>0.0</real>
+									<real>-161</real>
+									<real>-5</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1853,8 +1853,8 @@
 							<dict>
 								<key>baseValue</key>
 								<array>
-									<real>4</real>
-									<real>4</real>
+									<real>1</real>
+									<real>1</real>
 								</array>
 								<key>name</key>
 								<string>scale</string>
@@ -1862,8 +1862,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>0.0</real>
+									<real>0.0</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1878,22 +1878,11 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>fontName</string>
+								<string>fntFile</string>
 								<key>type</key>
-								<string>FontTTF</string>
+								<string>FntFile</string>
 								<key>value</key>
-								<string>Optima-Bold</string>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>fontSize</string>
-								<key>type</key>
-								<string>FloatScale</string>
-								<key>value</key>
-								<array>
-									<real>20</real>
-									<integer>0</integer>
-								</array>
+								<string>font/skillName.fnt</string>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -1907,51 +1896,11 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>color</string>
-								<key>type</key>
-								<string>Color3</string>
-								<key>value</key>
-								<array>
-									<integer>107</integer>
-									<integer>52</integer>
-									<integer>255</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>dimensions</string>
-								<key>type</key>
-								<string>Size</string>
-								<key>value</key>
-								<array>
-									<real>0.0</real>
-									<real>0.0</real>
-									<integer>0</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>horizontalAlignment</string>
-								<key>type</key>
-								<string>IntegerLabeled</string>
-								<key>value</key>
-								<integer>0</integer>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>verticalAlignment</string>
-								<key>type</key>
-								<string>IntegerLabeled</string>
-								<key>value</key>
-								<integer>0</integer>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>string</string>
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>神罗天征</string>
+								<string>七十二变</string>
 							</dict>
 						</array>
 						<key>seqExpanded</key>

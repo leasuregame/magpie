@@ -254,8 +254,8 @@
 								<key>value</key>
 								<array>
 									<integer>255</integer>
-									<integer>172</integer>
-									<integer>239</integer>
+									<integer>204</integer>
+									<integer>251</integer>
 								</array>
 							</dict>
 							<dict>
@@ -565,8 +565,8 @@
 								<key>value</key>
 								<array>
 									<integer>255</integer>
-									<integer>233</integer>
-									<integer>251</integer>
+									<integer>243</integer>
+									<integer>249</integer>
 								</array>
 							</dict>
 							<dict>
@@ -813,7 +813,7 @@
 								<key>value</key>
 								<array>
 									<integer>255</integer>
-									<integer>233</integer>
+									<integer>249</integer>
 									<integer>251</integer>
 								</array>
 							</dict>

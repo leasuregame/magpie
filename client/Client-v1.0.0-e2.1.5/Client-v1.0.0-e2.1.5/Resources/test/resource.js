@@ -535,6 +535,9 @@ var main_scene_image = {
     ZhenYeYin_Zhen: effect_scene_path + "ZhenYeYin_Zhen.png",
 
 
+
+
+
     // 新手图片
     empty: effect_scene_path + "NewPlayer/" + "empty.png",
     hand: effect_scene_path + "NewPlayer/" + "hand.png",
@@ -657,3 +660,8 @@ for (var effectId = 0; effectId < effectConfig.length; ++effectId) {
 for (var key in main_scene_image) {
     main_scene_res.push({src: main_scene_image[key]});
 }
+
+
+//字体
+main_scene_res.push({src: "../res/font/skillName.fnt"});
+main_scene_res.push({src: "../res/font/skillName.png"});

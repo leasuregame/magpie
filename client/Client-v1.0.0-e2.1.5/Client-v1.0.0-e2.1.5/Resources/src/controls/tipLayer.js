@@ -36,7 +36,7 @@ var TipLayer = cc.Layer.extend({
 
         this._str.push(str);
 
-        color = color || cc.c3b(255, 239, 131);
+        color = color || cc.c3b(255, 255, 255);
         fontName = fontName || "STHeitiTC-Medium";
         fontSize = fontSize || 25;
 
@@ -57,16 +57,19 @@ var TipLayer = cc.Layer.extend({
             label.addChild(bgLabel);
         }
 
+        label.setOpacity = function (opacity) {
+            strLabel.setOpacity(opacity);
+
+            if (bgLabel) bgLabel.setOpacity(opacity);
+        };
+
         label.runAction(
             cc.Sequence.create(
-                cc.EaseExponentialIn.create(
-                    cc.MoveTo.create(0.5, cc.p(360, 650))
-                ),
+                cc.MoveTo.create(1, cc.p(360, 650)),
+                cc.FadeOut.create(0.2),
                 cc.CallFunc.create(function () {
-                    this.scheduleOnce(function () {
-                        this._str.shift();
-                        label.removeFromParent();
-                    }, 1.5);
+                    this._str.shift();
+                    label.removeFromParent();
                 }, this)
             )
         );

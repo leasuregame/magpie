@@ -170,6 +170,8 @@ var SpiritPoolLayer = cc.Layer.extend({
                 cc.Sequence.create(
                     cc.DelayTime.create(1.5),
                     cc.CallFunc.create(function () {
+                        this._spiritItem.stopAllActions();
+
                         this._spiritItem.runAction(
                             cc.Sequence.create(
                                 cc.ScaleTo.create(0.5, 1.2, 1.24),
@@ -187,7 +189,6 @@ var SpiritPoolLayer = cc.Layer.extend({
             spirit.removeFromParent();
             TipLayer.tipNoBg(str);
             this.update();
-            LazyLayer.closeCloudLayer();
         }, 2);
     },
 
@@ -196,21 +197,24 @@ var SpiritPoolLayer = cc.Layer.extend({
 
         var spiritPool = gameData.spiritPool;
 
-        if (spiritPool.canCollect(this._useGold)) {
-            LazyLayer.showCloudLayer();
-
-            var that = this;
-            spiritPool.collect(function (data) {
-                cc.log(data);
-
-                if (data) {
-                    that._collectSpirit(data);
-                } else {
-                    that.update();
-                    LazyLayer.closeCloudLayer();
-                }
-            }, this._useGold);
+        if (!spiritPool.canCollect(this._useGold)) {
+            return;
         }
+
+        LazyLayer.showCloudLayer();
+
+        var that = this;
+        spiritPool.collect(function (data) {
+            cc.log(data);
+
+            LazyLayer.closeCloudLayer();
+
+            if (data) {
+                that._collectSpirit(data);
+            } else {
+                that.update();
+            }
+        }, this._useGold);
     },
 
     _onClickUseGold: function () {

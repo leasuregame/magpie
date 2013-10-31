@@ -436,11 +436,31 @@ var ExploreLayer = cc.Layer.extend({
                 progressLabel.runAction(action);
             }
 
+            if (this._reward.money) {
+                var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
+                moneyIcon.setScale(0.4);
+                moneyIcon.setPosition(x + 95, 415);
+                this._scrollView.addChild(moneyIcon);
+                moneyIcon.setAnchorPoint(cc.p(0.5, 0.5));
+
+                moneyIcon.runAction(
+                    cc.Spawn.create(
+                        cc.MoveBy.create(0.5, cc.p(0, 25)),
+                        cc.ScaleTo.create(0.5, 0.6, 0.6),
+                        cc.Sequence.create(
+                            cc.FadeIn.create(0.3),
+                            cc.DelayTime.create(0.6),
+                            cc.FadeOut.create(0.1)
+                        )
+                    )
+                );
+            }
+
             this.scheduleOnce(function () {
                 if (powerLabel) powerLabel.removeFromParent();
                 if (expLabel) expLabel.removeFromParent();
                 if (progressLabel) progressLabel.removeFromParent();
-
+                if (moneyIcon) moneyIcon.removeFromParent();
 
                 var toNext = this._reward.toNext;
                 var goldList = this._reward.goldList;

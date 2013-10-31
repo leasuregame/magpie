@@ -294,7 +294,7 @@ var main_scene_image = {
     icon41: main_scene_path + "icon41.png",
 //    icon42: main_scene_path + "icon42.png",
     icon43: main_scene_path + "icon43.png",
-//    icon44: main_scene_path + "icon44.png",
+    icon44: main_scene_path + "icon44.png",
     icon45: main_scene_path + "icon45.png",
     icon46: main_scene_path + "icon46.png",
     icon47: main_scene_path + "icon47.png",
@@ -577,6 +577,7 @@ var main_scene_image = {
     tutorials10: ccb_scene_path + "tutorials10.ccbi",
     tutorials11: ccb_scene_path + "tutorials11.ccbi",
     tutorials12: ccb_scene_path + "tutorials12.ccbi",
+    testBattleNode: ccb_scene_path + "testBattleNode.ccbi",
 
 
 

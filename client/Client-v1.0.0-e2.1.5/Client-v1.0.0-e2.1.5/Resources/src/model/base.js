@@ -277,8 +277,18 @@ lz.tipReward = function (reward) {
 
         lz.scheduleOnce(fn, delay);
 
-        delay += 0.4;
+        delay += 0.6;
     }
+};
+
+lz.getTexture = function (filename) {
+    var texture = cc.TextureCache.getInstance().textureForKey(filename);
+
+    if (!texture) {
+        texture = cc.TextureCache.getInstance().addImage(filename);
+    }
+
+    return texture;
 };
 
 /*

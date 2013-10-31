@@ -72,7 +72,7 @@ var TournamentLayer = cc.Layer.extend({
         this.addChild(lvBg);
         lvBg.setScale(0.8);
 
-        this._lvLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 38);
+        this._lvLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 36);
         this._lvLabel.setColor(cc.c3b(255, 239, 131));
         this._lvLabel.setPosition(cc.p(87, 993));
         this.addChild(this._lvLabel);
@@ -84,12 +84,12 @@ var TournamentLayer = cc.Layer.extend({
 
         this._rankingLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
         this._rankingLabel.setColor(cc.c3b(255, 239, 131));
-        this._rankingLabel.setPosition(cc.p(430, 975));
+        this._rankingLabel.setPosition(cc.p(430, 973));
         this.addChild(this._rankingLabel);
 
         this._elixirLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
         this._elixirLabel.setColor(cc.c3b(255, 239, 131));
-        this._elixirLabel.setPosition(cc.p(605, 975));
+        this._elixirLabel.setPosition(cc.p(605, 973));
         this.addChild(this._elixirLabel);
 
         var rewardIcon = cc.Sprite.create(main_scene_image.icon35);
@@ -111,13 +111,12 @@ var TournamentLayer = cc.Layer.extend({
         buyCountItem.setPosition(cc.p(575, 1015));
 
         this._rewardItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button10,
-            main_scene_image.button10s,
-            main_scene_image.icon123,
+            main_scene_image.button17,
+            main_scene_image.button17s,
             this._onClickRankReward,
             this
         );
-        this._rewardItem.setPosition(cc.p(595, 900));
+        this._rewardItem.setPosition(cc.p(160, 900));
 
         var menu = cc.Menu.create(buyCountItem, this._rewardItem);
         menu.setPosition(cc.p(0, 0));
@@ -176,9 +175,8 @@ var TournamentLayer = cc.Layer.extend({
 
         var player = gameData.player;
 
-        this._expProgress.setAllValue(player.get("power"), player.get("maxPower"));
+        this._expProgress.setAllValue(player.get("exp"), player.get("maxExp"));
         this._lvLabel.setString(player.get("lv"));
-        this._elixirLabel.setString(player.get("elixir"));
 
         if (this._scrollView != null) {
             this._scrollView.removeFromParent();
@@ -201,7 +199,7 @@ var TournamentLayer = cc.Layer.extend({
         var reward = gameData.tournament.getLastRankReward();
 
         if (reward) {
-            this._rewardLabel.setString("首次达到" + reward.ranking + " 奖励" + reward.elixir + "仙丹");
+            this._rewardLabel.setString("首次达到 " + reward.ranking + " 名  奖励 " + reward.elixir + " 仙丹");
             this._rewardLabel.setVisible(true);
             this._rewardItem.setVisible(reward.canReceive);
         } else {

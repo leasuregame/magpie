@@ -40,7 +40,7 @@
         box2d: false,
         chipmunk: false,
         showFPS: true,
-        frameRate: 60,
+        frameRate: 30,
         loadExtension: true,
         tag: 'gameCanvas', //the dom element to run cocos2d on
         engineDir: '../../../Cocos2d-html5-v2.2/cocos2d/',
@@ -81,6 +81,7 @@
             'src/model/signIn.js',
             'src/model/achievement.js',
             'src/model/exchange.js',
+            'src/model/activity.js',
 
             'src/model/battleLogPool.js',
             'src/model/battleLog.js',
@@ -106,8 +107,13 @@
 
             'src/view/mainModule/effect.js',
 
+            'src/view/mainModule/cocosBuilderClass.js',
             'src/view/mainModule/abilityRankLayer.js',
             'src/view/mainModule/achievementLayer.js',
+            'src/view/mainModule/rechargeLayer.js',
+            'src/view/mainModule/powerRewardLayer.js',
+            'src/view/mainModule/goldRewardLayer.js',
+            'src/view/mainModule/signInLayer.js',
             'src/view/mainModule/activityLayer.js',
             'src/view/mainModule/amountLayer.js',
             'src/view/mainModule/battleMessageLayer.js',
@@ -155,7 +161,6 @@
             'src/view/mainModule/readMessageLayer.js',
             'src/view/mainModule/sendMessageLayer.js',
             'src/view/mainModule/shopLayer.js',
-            'src/view/mainModule/signInLayer.js',
             'src/view/mainModule/skillUpgradeLabel.js',
             'src/view/mainModule/spiritDetails.js',
             'src/view/mainModule/spiritNode.js',

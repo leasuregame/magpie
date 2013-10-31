@@ -32,6 +32,7 @@ var gameData = {
     achievement: null,
     speak: null,
     exchange: null,
+    activity: null,
 
     gameInit: function () {
         cc.log("gameData init");
@@ -56,6 +57,7 @@ var gameData = {
         this.achievement = Achievement.create();
         this.speak = Speak.create();
         this.exchange = Exchange.create();
+
     },
 
     gameEnd: function () {

@@ -67,11 +67,25 @@ var MainLayer = cc.Layer.extend({
 
             var node = cc.BuilderReader.load(main_scene_image[url], this);
 
+            cc.log(node);
+            cc.log(this);
+
+            var texture = cc.TextureCache.getInstance().textureForKey(main_scene_image.card3_half2);
+
+            if (!texture) {
+                texture = cc.TextureCache.getInstance().addImage(main_scene_image.card3_half2);
+            }
+
+            this.cardHalf.setTexture(texture);
+
+
+
+
             if (node != null) {
                 node.setPosition(cc.p(360, 500));
                 this.addChild(node);
 
-                node.animationManager.setAnimationCompletedCallback(this, this._clearEffect);
+//                node.animationManager.setCompletedAnimationCallback(this, this._clearEffect);
 
                 this._effectNode = node;
             }
@@ -84,7 +98,7 @@ var MainLayer = cc.Layer.extend({
         this._changeEffect();
     },
 
-    testCallback: function () {
+    callback: function () {
         cc.log("回调成功");
     }
 });

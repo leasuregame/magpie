@@ -93,7 +93,7 @@ var AchievementLayer = cc.Layer.extend({
             this._scrollViewElement[key] = {};
 
             var isReceiverIcon = cc.Sprite.create(main_scene_image.icon212);
-            isReceiverIcon.setPosition(cc.p(510, y + 40));
+            isReceiverIcon.setPosition(cc.p(510, y + 50));
             scrollViewLayer.addChild(isReceiverIcon);
 
             if (!isReceiver) {
@@ -157,7 +157,17 @@ var AchievementLayer = cc.Layer.extend({
                 cc.log(data);
 
                 that._scrollViewElement[id].receiverItem.setVisible(false);
-                that._scrollViewElement[id].isReceiverIcon.setVisible(true);
+
+                var isReceiverIcon = that._scrollViewElement[id].isReceiverIcon;
+                isReceiverIcon.setVisible(true);
+
+                isReceiverIcon.setScale(1.5);
+                isReceiverIcon.runAction(
+                    cc.Sequence.create(
+                        cc.ScaleTo.create(0.3, 0.9, 0.9),
+                        cc.ScaleTo.create(0.1, 1, 1)
+                    )
+                );
 
                 lz.tipReward(data);
             }, id);

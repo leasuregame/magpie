@@ -14,7 +14,7 @@
 
 var BatterLayer = cc.Layer.extend({
     _battleLog: null,
-    _battleNode: null,
+    _battleNode: {},
     _spiritNode: [],
     _locate: {
         1: cc.p(150, 450),
@@ -30,7 +30,6 @@ var BatterLayer = cc.Layer.extend({
         11: cc.p(355, 950),
         12: cc.p(570, 950)
     },
-    _rotation: {},
 
     init: function (battleLog) {
         cc.log("BatterLayer init");
@@ -51,11 +50,6 @@ var BatterLayer = cc.Layer.extend({
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(cc.p(40, 0));
         this.addChild(bgSprite);
-
-        this._tipLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 30);
-        this._tipLabel.setAnchorPoint(cc.p(0, 0));
-        this._tipLabel.setPosition(150, 20);
-        this.addChild(this._tipLabel);
 
         for (var i = 1; i <= 12; ++i) {
             label = cc.LabelTTF.create(i, "STHeitiTC-Medium", 60);
@@ -91,8 +85,6 @@ var BatterLayer = cc.Layer.extend({
             }
         }
 
-        this._tipLabel.setString("");
-
         return true;
     },
 
@@ -119,7 +111,7 @@ var BatterLayer = cc.Layer.extend({
         this.unschedule(this._playAStep);
 
         if (!this._battleLog.hasNextBattleStep()) {
-            this.scheduleOnce(this._collectSpirit, 1.5)
+            this.scheduleOnce(this._collectSpirit, 1.5);
             return;
         }
 
@@ -149,11 +141,44 @@ var BatterLayer = cc.Layer.extend({
         str += battleStep.get("target");
         str += " 伤害为 " + battleStep.get("effect");
         cc.log(str);
-        this._tipLabel.setString(str);
-
 
         cc.log("set next round schedule");
         this.schedule(this._playAStep, delay, 1, 0);
+    },
+
+    nextStep: function () {
+        cc.log("BattleLayer nextStep");
+
+        if (!this._battleLog.hasNextBattleStep()) {
+            this.scheduleOnce(this._collectSpirit, 1);
+            return;
+        }
+
+        var battleStep = this._battleLog.getBattleStep();
+
+        if (battleStep.isSpiritAtk()) {
+            battleStep.set("attacker", this._battleLog.getSpirit(battleStep.get("attacker")));
+        }
+
+        if (battleStep.isSkill()) {
+            var skillType = this._battleNode[battleStep.get("attacker")].getSkillType();
+
+            if (skillType === 1) {
+                this._singleAtk(battleStep);
+            } else if (skillType === 2) {
+                this._aoeAtk(battleStep);
+            } else if (skillType === 3) {
+                this._heal(battleStep);
+            } else if (skillType === 4) {
+                this._heal(battleStep);
+            } else {
+                cc.log("技能类型出错");
+                this.end();
+            }
+        } else {
+            this._normalAtk(battleStep);
+        }
+
     },
 
     callback: function () {
@@ -162,7 +187,7 @@ var BatterLayer = cc.Layer.extend({
         cc.log("=======================================");
     },
 
-    _normalAttack: function (battleStep) {
+    _normalAtk: function (battleStep) {
         cc.log(battleStep);
 
         var attacker = battleStep.get("attacker");
@@ -206,7 +231,11 @@ var BatterLayer = cc.Layer.extend({
         return 2.0;
     },
 
-    _aoe: function (battleStep) {
+    _singleAtk: function () {
+
+    },
+
+    _aoeAtk: function (battleStep) {
         cc.log(battleStep);
 
         var attacker = battleStep.get("attacker");
@@ -340,6 +369,9 @@ var BatterLayer = cc.Layer.extend({
 
         var len = this._spiritNode.length;
 
+        if (!len) {
+            this.end();
+        }
 
         if (this._battleLog.isWin()) {
             if (len) {
@@ -381,10 +413,7 @@ var BatterLayer = cc.Layer.extend({
                 this.scheduleOnce(function () {
                     this.end();
                 }, 4);
-            } else {
-                this.end();
             }
-
         } else {
             if (len) {
                 for (var i = 0; i < len; ++i) {
@@ -403,11 +432,7 @@ var BatterLayer = cc.Layer.extend({
                 this.scheduleOnce(function () {
                     this.end();
                 }, 2);
-            } else {
-                this.end();
             }
-
-
         }
     }
 });

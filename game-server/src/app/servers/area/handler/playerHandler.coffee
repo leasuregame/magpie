@@ -111,10 +111,10 @@ Handler::getActivityInfo = (msg, session, next) ->
 
 Handler::getLevelReward = (msg, session, next) ->
   playerId = session.get('playerId')
-  lv = msg.lv
-
-  if typeof lv is 'undefined' or not _.isNumber(lv)
-    return next(null, {code: 501, msg: '参数错误'})
+  id = msg.id
+  data = table.getTableItem('player_upgrade_reward', id)
+  if not data
+    return next(null, {code: 501, msg: "找不到该奖励"})
 
   playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
     if err
@@ -124,18 +124,14 @@ Handler::getLevelReward = (msg, session, next) ->
         }
       )    
 
-    if player.hasLevelReward(lv)
+    if player.hasLevelReward(data.lv)
       return next(null, {code: 501, msg: '不能重复领取'})
 
-    if player.lv < lv
-      return next(null, {code: 501, msg: "等级未达到#{lv}级, 不能领取"})
-
-    data = table.getTableItem('player_upgrade_reward', lv)
-    if not data
-      return next(null, {code: 501, msg: "找不到等级为#{lv}的奖励"})
+    if player.lv < data.lv
+      return next(null, {code: 501, msg: "等级未达到#{data.lv}级, 不能领取"})    
 
     player.increase('gold', data.gold)
-    player.setLevelReward(lv)
+    player.setLevelReward(data.lv)
     player.save()
     next(null, {code: 200, msg: {gold: data.gold}})
 

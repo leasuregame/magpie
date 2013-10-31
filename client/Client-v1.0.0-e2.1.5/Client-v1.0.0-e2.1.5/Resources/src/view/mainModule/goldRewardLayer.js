@@ -8,6 +8,8 @@
 
 var GoldRewardLayer = cc.Layer.extend({
 
+    _scrollView: null,
+
     onEnter: function () {
         cc.log("GoldRewardLayer onEnter");
 
@@ -20,11 +22,6 @@ var GoldRewardLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        return true;
-    },
-
-    update: function() {
-        cc.log("GoldRewardLayer update");
         var lineIcon = cc.Sprite.create(main_scene_image.icon18);
         lineIcon.setAnchorPoint(cc.p(0,0));
         lineIcon.setPosition(cc.p(40, 875));
@@ -35,25 +32,46 @@ var GoldRewardLayer = cc.Layer.extend({
         sprite1.setPosition(cc.p(40, 875));
         this.addChild(sprite1);
 
+        return true;
+    },
+
+    update: function() {
+        cc.log("GoldRewardLayer update");
+
+        if (this._scrollView != null) {
+            this._scrollView.removeFromParent();
+        }
+
         var scrollViewLayer = MarkLayer.create(cc.rect(10, 194, 740, 711));
         var menu = LazyMenu.create();
         menu.setTouchPriority(-200);
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
-        var scrollViewHeight = 10 * 135;
+        //读配置表
+        var goldRewards = outputTables.player_upgrade_reward.rows;
+        var keys = Object.keys(goldRewards);
+        keys.sort(function (a,b) {
+            return parseInt(a) > parseInt(b);
+        });
 
-        var scrollView = cc.ScrollView.create(cc.size(620, 700), scrollViewLayer);
-        scrollView.setTouchPriority(-300);
-        scrollView.setPosition(cc.p(40, 160));
-        scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
-        scrollView.updateInset();
-        this.addChild(scrollView);
+        var len = keys.length;
+
+        var scrollViewHeight = len * 135;
+
+        this._scrollView = cc.ScrollView.create(cc.size(620, 700), scrollViewLayer);
+        this._scrollView.setTouchPriority(-300);
+        this._scrollView.setPosition(cc.p(40, 160));
+        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        this._scrollView.updateInset();
+        this.addChild(this._scrollView);
 
         var bgSpriteUrl = main_scene_image.button15;
         var iconSpriteUrl = main_scene_image.icon272;
         var goldIconUrl = main_scene_image.icon148;
-        for (var i = 0; i < 10; ++i) {
+
+        for (var i = 0; i < len; ++i) {
+            var key = keys[i];
             var y = scrollViewHeight - 135 - i * 135;
             var bgSprite = cc.Sprite.create(bgSpriteUrl);
             bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -66,13 +84,13 @@ var GoldRewardLayer = cc.Layer.extend({
             iconSprite.setPosition(cc.p(20, y + 20));
             scrollViewLayer.addChild(iconSprite);
 
-            var text = cc.LabelTTF.create('角色等级10级', "STHeitiTC-Medium", 20);
+            var text = cc.LabelTTF.create('角色等级' + goldRewards[key].id + '级', "STHeitiTC-Medium", 20);
             text.setAnchorPoint(cc.p(0, 0));
             text.setPosition(cc.p(140, y + 80));
             text.setColor(cc.c3b(97,11,9));
             scrollViewLayer.addChild(text);
 
-            var goldText = cc.LabelTTF.create('10', "STHeitiTC-Medium", 30);
+            var goldText = cc.LabelTTF.create(goldRewards[key].gold, "STHeitiTC-Medium", 30);
             goldText.setAnchorPoint(cc.p(0, 0));
             goldText.setPosition(cc.p(150, y + 30));
             goldText.setColor(cc.c3b(97,11,9));
@@ -80,14 +98,14 @@ var GoldRewardLayer = cc.Layer.extend({
 
             var goldIcon = cc.Sprite.create(goldIconUrl);
             goldIcon.setAnchorPoint(cc.p(0, 0));
-            goldIcon.setPosition(cc.p(190, y + 25));
+            goldIcon.setPosition(cc.p(200, y + 25));
             scrollViewLayer.addChild(goldIcon);
 
             var btnGetReward = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button10,
                 main_scene_image.button10s,
                 main_scene_image.icon123,
-                this._onClickGetReward(i),
+                this._onClickGetReward(goldRewards[key].id),
                 this
             );
 
@@ -99,8 +117,8 @@ var GoldRewardLayer = cc.Layer.extend({
 
         }
 
-        scrollView.setContentSize(cc.size(600, scrollViewHeight));
-        scrollView.setContentOffset(scrollView.minContainerOffset());
+        this._scrollView.setContentSize(cc.size(600, scrollViewHeight));
+        this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
 
 
     },
@@ -110,7 +128,7 @@ var GoldRewardLayer = cc.Layer.extend({
         return function() {
             cc.log(index);
         };
-        //MainScene.getInstance().switchLayer(ShopLayer);
+
     }
 
 

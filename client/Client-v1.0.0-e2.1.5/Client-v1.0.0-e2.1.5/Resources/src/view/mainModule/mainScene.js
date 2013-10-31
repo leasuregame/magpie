@@ -30,6 +30,7 @@ var MainScene = cc.Scene.extend({
         this.addChild(gameFrame, 10);
 
         this.switchLayer(MainLayer);
+
     },
 
     changeMessage: function (msg) {

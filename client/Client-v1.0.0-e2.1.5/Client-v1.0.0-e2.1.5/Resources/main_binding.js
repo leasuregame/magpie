@@ -186,12 +186,10 @@ for (var i = 0; i < appFiles.length; ++i) {
 
 
 var director = cc.Director.getInstance();
-director.setDisplayStats(true);
+director.setDisplayStats(false);
 
 // set FPS. the default value is 1.0/60 if you don't call this
-director.setAnimationInterval(1.0 / 60);
-
-//var test = lz.HttpClientPackage.getInstance();
+director.setAnimationInterval(1.0 / 30);
 
 // create a scene. it's an autorelease object
 var myScene = LoginScene.create();

@@ -531,6 +531,12 @@ var main_scene_image = {
     Chen_1: effect_scene_path + "Chen_1.png",
     Bing_Di: effect_scene_path + "Bing_Di.png",
     tiaoshi: effect_scene_path + "tiaoshi.jpg",
+    pk: effect_scene_path + "pk.png",
+    ZhenYeYin_Zhen: effect_scene_path + "ZhenYeYin_Zhen.png",
+
+
+
+
 
     // 新手图片
     empty: effect_scene_path + "NewPlayer/" + "empty.png",
@@ -655,3 +661,8 @@ for (var effectId = 0; effectId < effectConfig.length; ++effectId) {
 for (var key in main_scene_image) {
     main_scene_res.push({src: main_scene_image[key]});
 }
+
+
+//字体
+main_scene_res.push({src: "../res/font/skillName.fnt"});
+main_scene_res.push({src: "../res/font/skillName.png"});

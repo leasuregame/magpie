@@ -57,19 +57,19 @@ var ConfigLayer = cc.Layer.extend({
 
         var bgMusicOpenSprite = cc.Sprite.create(main_scene_image.icon27);
         bgMusicOpenSprite.setAnchorPoint(cc.p(0, 0.5));
-        bgMusicOpenSprite.setPosition(cc.p(410, 55));
+        bgMusicOpenSprite.setPosition(cc.p(470, 55));
         bgMusicItem.addChild(bgMusicOpenSprite);
 
         var bgMusicOpenSpriteTitle = StrokeLabel.create('开', "STHeitiTC-Medium", 30);
         //bgMusicOpenSpriteTitle.setColor(cc.c3b(255, 239, 131));
         bgMusicOpenSpriteTitle.setAnchorPoint(cc.p(0, 0.5));
-        bgMusicOpenSpriteTitle.setPosition(cc.p(470, 55));
+        bgMusicOpenSpriteTitle.setPosition(cc.p(530, 55));
         bgMusicItem.addChild(bgMusicOpenSpriteTitle);
 
 
         this.musicSelect = cc.Sprite.create(main_scene_image.icon20);
         this.musicSelect.setAnchorPoint(cc.p(0, 0.5));
-        this.musicSelect.setPosition(cc.p(410, 55));
+        this.musicSelect.setPosition(cc.p(470, 55));
         bgMusicItem.addChild(this.musicSelect);
 
 
@@ -92,19 +92,19 @@ var ConfigLayer = cc.Layer.extend({
 
         var soundOpenSprite = cc.Sprite.create(main_scene_image.icon27);
         soundOpenSprite.setAnchorPoint(cc.p(0, 0.5));
-        soundOpenSprite.setPosition(cc.p(410, 55));
+        soundOpenSprite.setPosition(cc.p(470, 55));
         soundItem.addChild(soundOpenSprite);
 
         var soundOpenSpriteTitle = StrokeLabel.create('开', "STHeitiTC-Medium", 30);
         //soundOpenSpriteTitle.setColor(cc.c3b(255, 239, 131));
         soundOpenSpriteTitle.setAnchorPoint(cc.p(0, 0.5));
-        soundOpenSpriteTitle.setPosition(cc.p(470, 55));
+        soundOpenSpriteTitle.setPosition(cc.p(530, 55));
         soundItem.addChild(soundOpenSpriteTitle);
 
 
         this.soundSelect = cc.Sprite.create(main_scene_image.icon20);
         this.soundSelect.setAnchorPoint(cc.p(0, 0.5));
-        this.soundSelect.setPosition(cc.p(410, 55));
+        this.soundSelect.setPosition(cc.p(470, 55));
         soundItem.addChild(this.soundSelect);
 
         var tipsItem = cc.MenuItemImage.create(

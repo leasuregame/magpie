@@ -446,6 +446,10 @@ var Player = (function(_super) {
     };
 
     Player.prototype.incSpirit = function(val) {
+        if (typeof val !== 'number') {
+            logger.warn('can not increase spirit of player by value:', val);
+            return;
+        }
         var spiritor = _.clone(this.spiritor);        
         spiritor.spirit = spiritor.spirit + val;
         this.set('spiritor', spiritor);

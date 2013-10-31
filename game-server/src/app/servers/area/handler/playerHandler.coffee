@@ -124,14 +124,14 @@ Handler::getLevelReward = (msg, session, next) ->
         }
       )    
 
-    if player.hasLevelReward(data.lv)
+    if player.hasLevelReward(id)
       return next(null, {code: 501, msg: '不能重复领取'})
 
     if player.lv < data.lv
       return next(null, {code: 501, msg: "等级未达到#{data.lv}级, 不能领取"})    
 
     player.increase('gold', data.gold)
-    player.setLevelReward(data.lv)
+    player.setLevelReward(id)
     player.save()
     next(null, {code: 200, msg: {gold: data.gold}})
 

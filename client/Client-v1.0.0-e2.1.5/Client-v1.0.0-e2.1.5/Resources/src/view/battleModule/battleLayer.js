@@ -192,19 +192,19 @@ var BatterLayer = cc.Layer.extend({
             }
 
             if (skillType === 1) {
-                this.singleAtk(battleStep);
+                this.heal(battleStep);
             } else if (skillType === 2) {
-                this.singleAtk(battleStep);
+                this.heal(battleStep);
             } else if (skillType === 3) {
-                this.singleAtk(battleStep);
+                this.heal(battleStep);
             } else if (skillType === 4) {
-                this.singleAtk(battleStep);
+                this.heal(battleStep);
             } else {
                 cc.log("技能类型出错");
                 this.end();
             }
         } else {
-            this.singleAtk(battleStep);
+            this.heal(battleStep);
         }
 
     },
@@ -406,21 +406,23 @@ var BatterLayer = cc.Layer.extend({
                     var effect = battleStep.getEffect();
                     var isCrit = battleStep.isCrit();
 
-                    var effect4Node = cc.BuilderReader.load(main_scene_image.effect4, that);
-                    effect4Node.setPosition(targetLocate);
-                    that.addChild(effect4Node);
+                    var effect6Node = cc.BuilderReader.load(main_scene_image.effect6, that);
+                    effect6Node.setPosition(targetLocate);
+                    that.addChild(effect6Node);
 
                     var nextStepCallback1 = that.nextStepCallback();
-                    effect4Node.animationManager.setCompletedAnimationCallback(that, function () {
-                        effect4Node.removeFromParent();
+                    effect6Node.animationManager.setCompletedAnimationCallback(that, function () {
+                        effect6Node.removeFromParent();
 
-                        var effect5Node = cc.BuilderReader.load(main_scene_image.effect5, that);
-                        effect5Node.setPosition(targetLocate);
-                        that.addChild(effect5Node);
+                        var effect7Node = cc.BuilderReader.load(main_scene_image.effect7, that);
+                        effect7Node.setPosition(targetLocate);
+                        that.addChild(effect7Node);
 
                         var nextStepCallback2 = that.nextStepCallback();
-                        effect5Node.animationManager.setCompletedAnimationCallback(that, function () {
-                            effect5Node.removeFromParent();
+                        effect7Node.animationManager.setCompletedAnimationCallback(that, function () {
+                            cc.log("-----------------");
+
+                            effect7Node.removeFromParent();
                             targetNode.dead();
                             nextStepCallback2();
                         });

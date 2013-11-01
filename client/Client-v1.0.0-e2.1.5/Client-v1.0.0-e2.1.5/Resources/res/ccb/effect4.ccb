@@ -2096,7 +2096,7 @@
 								<key>type</key>
 								<string>Texture</string>
 								<key>value</key>
-								<string>effect/ccbParticleFire.png</string>
+								<string>effect/effect/p18.png</string>
 							</dict>
 						</array>
 						<key>seqExpanded</key>

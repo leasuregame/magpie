@@ -222,8 +222,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.5</real>
-									<real>0.10000000149011612</real>
+									<real>4.6999998092651367</real>
+									<real>1.7000000476837158</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -459,8 +459,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>0.10000000149011612</real>
+									<real>3.7999999523162842</real>
+									<real>1.5</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -867,7 +867,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/Jia.png</string>
+						<string>effect/effect/p19.png</string>
 					</dict>
 				</array>
 			</dict>
@@ -1183,7 +1183,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/ccbParticleFire.png</string>
+						<string>effect/effect/p15.png</string>
 					</dict>
 				</array>
 			</dict>
@@ -1286,7 +1286,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

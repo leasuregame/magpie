@@ -15,8 +15,11 @@ var Activity = Entity.extend({
 
     init: function () {
         cc.log("Activity init");
-        _type = {};
+
+        this._type = {};
+
         this.sync();
+
         return true;
     },
 
@@ -26,9 +29,12 @@ var Activity = Entity.extend({
         lzWindow.pomelo.request('area.playerHandler.getActivityInfo', {}, function (data) {
             cc.log(data);
             if (data.code == 200) {
+                cc.log("sync success");
                 that.update(data.msg.levelReward);
             } else {
-                TipLayer.tip(data.msg);
+                cc.log("sync fail");
+
+                that.sync();
             }
         });
     },
@@ -48,7 +54,8 @@ var Activity = Entity.extend({
         }
     },
 
-    getPowerReward: function (cb) {
+    getPowerReward: function () {
+        cc.log("Activity getPowerReward");
         lzWindow.pomelo.request('area.playerHandler.givePower', {}, function (data) {
             cc.log(data);
             if (data.code == 200) {
@@ -60,7 +67,8 @@ var Activity = Entity.extend({
         });
     },
 
-    getGoldReward: function (id) {
+    getGoldReward: function (id,cb) {
+        cc.log("Activity getGoldReward");
         var that = this;
         lzWindow.pomelo.request('area.playerHandler.getLevelReward', {id: id}, function (data) {
             cc.log(data);
@@ -68,8 +76,10 @@ var Activity = Entity.extend({
                 TipLayer.tip('元宝: ' + data.msg.gold);
                 gameData.player.add('gold', data.msg.gold);
                 that._changeTypeById(id,GOLD_RECEIVE);
+                cb(true);
             } else {
                 TipLayer.tip(data.msg);
+                cb(false)
             }
         });
     },

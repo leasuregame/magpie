@@ -59,6 +59,7 @@ var Player = Entity.extend({
         gameData.achievement.init();
         gameData.speak.init();
         gameData.exchange.init();
+        gameData.activity.init();
 
         cc.log(this);
 

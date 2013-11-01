@@ -9,6 +9,7 @@
 var GoldRewardLayer = cc.Layer.extend({
 
     _scrollView: null,
+    _scrollViewElement: {},
 
     onEnter: function () {
         cc.log("GoldRewardLayer onEnter");
@@ -71,7 +72,6 @@ var GoldRewardLayer = cc.Layer.extend({
         var goldIconUrl = main_scene_image.icon148;
         var playerLv = gameData.player.get('lv');
 
-        cc.log(gameData.activity._type);
         for (var i = 0; i < len; ++i) {
             var key = keys[i];
             var y = scrollViewHeight - 135 - i * 135;
@@ -102,39 +102,31 @@ var GoldRewardLayer = cc.Layer.extend({
             goldIcon.setAnchorPoint(cc.p(0, 0));
             goldIcon.setPosition(cc.p(200, y + 25));
             scrollViewLayer.addChild(goldIcon);
-            if (playerLv >= goldRewards[key].lv) {
-                if (gameData.activity.getTypeById(goldRewards[key].id) == GOLD_NO_RECEIVE) {
-                    var btnGetReward = cc.MenuItemImage.createWithIcon(
-                        main_scene_image.button10,
-                        main_scene_image.button10s,
-                        main_scene_image.icon123,
-                        this._onClickGetReward(goldRewards[key].id),
-                        this
-                    );
-                    btnGetReward.setPosition(cc.p(500, y + 68));
-                    var menu = cc.Menu.create(btnGetReward);
-                    menu.setPosition(cc.p(0, 0));
-                    scrollViewLayer.addChild(menu);
-                } else {
-                    var sprite = cc.Sprite.create(main_scene_image.icon138);
-                    sprite.setPosition(cc.p(500, y + 68));
-                    scrollViewLayer.addChild(sprite);
-                }
+            var type = gameData.activity.getTypeById(goldRewards[key].id);
+            var btnGetReward = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button10,
+                main_scene_image.button10s,
+                main_scene_image.button9d,
+                main_scene_image.icon123,
+                this._onClickGetReward(goldRewards[key].id),
+                this
+            );
+            btnGetReward.setEnabled(playerLv >= goldRewards[key].lv);
+            btnGetReward.setPosition(cc.p(500, y + 68));
+            var menu = cc.Menu.create(btnGetReward);
+            menu.setPosition(cc.p(0, 0));
+            scrollViewLayer.addChild(menu);
+            btnGetReward.setVisible(type != GOLD_RECEIVE);
 
-            } else {
-                var btnGetReward = cc.MenuItemImage.createWithIcon(
-                    main_scene_image.button9d,
-                    null,
-                    main_scene_image.icon123,
-                    null,
-                    this
-                );
-                btnGetReward.setPosition(cc.p(500, y + 68));
-                var menu = cc.Menu.create(btnGetReward);
-                menu.setPosition(cc.p(0, 0));
-                scrollViewLayer.addChild(menu);
-            }
+            var hasBeenGainIcon = cc.Sprite.create(main_scene_image.icon138);
+            hasBeenGainIcon.setPosition(cc.p(500, y + 68));
+            scrollViewLayer.addChild(hasBeenGainIcon, 1);
+            hasBeenGainIcon.setVisible(type == GOLD_RECEIVE);
 
+            this._scrollViewElement[goldRewards[key].id] = {
+                hasBeenGainIcon: hasBeenGainIcon,
+                btnGetReward: btnGetReward
+            };
         }
 
         this._scrollView.setContentSize(cc.size(600, scrollViewHeight));
@@ -147,7 +139,13 @@ var GoldRewardLayer = cc.Layer.extend({
 
         return function () {
             cc.log(id);
-            gameData.activity.getGoldReward(id);
+            var element = this._scrollViewElement[id];
+            gameData.activity.getGoldReward(id, function (isOK) {
+                if (isOK) {
+                    element.btnGetReward.setVisible(false);
+                    element.hasBeenGainIcon.setVisible(true);
+                }
+            });
         };
 
     }

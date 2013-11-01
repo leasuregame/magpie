@@ -235,17 +235,19 @@ var PassLayer = cc.Layer.extend({
         if (this._isWin != null) {
             this._spirit.speak(this._isWin);
 
+            var top = pass.getTop();
+
+            if (top != this._top) {
+                this._locate(this._top);
+
+                this._top = top;
+
+                this._defianceAnimation();
+            } else {
+                LazyLayer.closeCloudLayer();
+            }
+
             this._isWin = null;
-        }
-
-        var top = pass.getTop();
-
-        if (top != this._top) {
-            this._locate(this._top);
-
-            this._top = top;
-
-            this._defianceAnimation();
         }
 
         this._wipeOutItem.setEnabled(pass.canWipeOut());

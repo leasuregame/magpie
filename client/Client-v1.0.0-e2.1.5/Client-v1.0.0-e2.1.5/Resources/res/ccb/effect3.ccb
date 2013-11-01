@@ -40,12 +40,12 @@
 									<key>name</key>
 									<string>displayFrame</string>
 									<key>time</key>
-									<real>0.033333335071802139</real>
+									<real>0.0</real>
 									<key>type</key>
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>effect/LiuYunZhang_27.png</string>
+										<string>effect/effect/p9.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -58,12 +58,12 @@
 									<key>name</key>
 									<string>displayFrame</string>
 									<key>time</key>
-									<real>0.10000000149011612</real>
+									<real>0.066666670143604279</real>
 									<key>type</key>
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>effect/LiuYunZhang_28.png</string>
+										<string>effect/effect/p10.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -76,12 +76,12 @@
 									<key>name</key>
 									<string>displayFrame</string>
 									<key>time</key>
-									<real>0.1666666716337204</real>
+									<real>0.13333334028720856</real>
 									<key>type</key>
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>effect/LiuYunZhang_29.png</string>
+										<string>effect/effect/p11.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -94,12 +94,12 @@
 									<key>name</key>
 									<string>displayFrame</string>
 									<key>time</key>
-									<real>0.23333333432674408</real>
+									<real>0.20000000298023224</real>
 									<key>type</key>
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>effect/LiuYunZhang_30.png</string>
+										<string>effect/effect/p12.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -203,7 +203,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>100</real>
+							<real>-10</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -242,7 +242,7 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<string>effect/LiuYunZhang_28.png</string>
+							<string>effect/effect/p9.png</string>
 							<string>Use regular file</string>
 						</array>
 						<key>name</key>
@@ -252,7 +252,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/LiuYunZhang_27.png</string>
+							<string>effect/effect/p9.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -278,6 +278,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

@@ -137,6 +137,7 @@ var main_scene_image = {
     card_frame4: main_scene_path + "card_frame4.png",
     card_frame5: main_scene_path + "card_frame5.png",
 
+    card_icon0: main_scene_path + "card_icon0.png",
     card_icon1: main_scene_path + "card_icon1.png",
     card_icon2: main_scene_path + "card_icon2.png",
     card_icon3: main_scene_path + "card_icon3.png",
@@ -190,8 +191,8 @@ var main_scene_image = {
     button15d: main_scene_path + "button15d.png",
     button16: main_scene_path + "button16.png",
     button16s: main_scene_path + "button16s.png",
-//    button17: main_scene_path + "button17.png",
-//    button17s: main_scene_path + "button17s.png",
+    button17: main_scene_path + "button17.png",
+    button17s: main_scene_path + "button17s.png",
 //    button18: main_scene_path + "button18.png",
 //    button18s: main_scene_path + "button18s.png",
     button19: main_scene_path + "button19.png",
@@ -548,8 +549,15 @@ var main_scene_image = {
 
 
     // 特效
+    battleNode: "res/ccb/battleNode.ccbi",
+
     effect1: "res/ccb/effect1.ccbi",
     effect2: "res/ccb/effect2.ccbi",
+    effect3: "res/ccb/effect3.ccbi",
+    effect4: "res/ccb/effect4.ccbi",
+    effect5: "res/ccb/effect5.ccbi",
+    effect6: "res/ccb/effect6.ccbi",
+
 
     // 特效资源
     p1: "res/effect/effect/p1.png",
@@ -557,6 +565,16 @@ var main_scene_image = {
     p3: "res/effect/effect/p3.png",
     p4: "res/effect/effect/p4.png",
     p5: "res/effect/effect/p5.png",
+    p6: "res/effect/effect/p6.png",
+    p7: "res/effect/effect/p7.png",
+    p8: "res/effect/effect/p8.png",
+    p9: "res/effect/effect/p9.png",
+    p10: "res/effect/effect/p10.png",
+    p11: "res/effect/effect/p11.png",
+    p12: "res/effect/effect/p12.png",
+    p13: "res/effect/effect/p13.png",
+    p14: "res/effect/effect/p14.png",
+
 
     // 新手特效
     tutorials1: "res/ccb/tutorials1.ccbi",

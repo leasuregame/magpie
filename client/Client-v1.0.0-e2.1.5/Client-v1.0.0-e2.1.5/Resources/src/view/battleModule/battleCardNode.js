@@ -23,9 +23,8 @@ var BattleCardNode = cc.Node.extend({
     _url: "",
     _skillId: 0,
     _skillType: 0,
-    _frameSprite: null,
-    _heroSprite: null,
-    _iconSprite: null,
+    _ccbNode: null,
+    _animationManager: null,
     _hpProgress: null,
     _tipLabel: null,
 
@@ -41,24 +40,29 @@ var BattleCardNode = cc.Node.extend({
         this._boss = data.boss || false;
         this._spirit = data.spirit || 0;
 
-        this._loadTable();
+        this._load();
 
-        this._frameSprite = cc.Sprite.create(main_scene_image["card_frame" + this._star]);
-        this.addChild(this._frameSprite, -1);
+        this._ccbNode = cc.BuilderReader.load(main_scene_image.battleNode, this);
+
+        var frameSpriteTexture = lz.getTexture(main_scene_image["card_frame" + this._star]);
 
         var index = Math.floor((this._star - 1) / 2) + 1;
-        this._heroSprite = cc.Sprite.create(main_scene_image[this._url + "_half" + index]);
-        this.addChild(this._heroSprite);
+        var cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + index]);
 
         if (this._skillType > 3) {
             this._skillType = 3;
         }
+        var iconSpriteTexture = lz.getTexture(main_scene_image["card_icon" + this._skillType]);
 
-        if (this._skillType) {
-            this._iconSprite = cc.Sprite.create(main_scene_image["card_icon" + this._skillType]);
-            this._iconSprite.setPosition(cc.p(47, -60));
-            this.addChild(this._iconSprite, 1);
-        }
+        this._animationManager = this._ccbNode.animationManager;
+
+        cc.log(this);
+
+        this._frameSprite.setTexture(frameSpriteTexture);
+        this._cardSprite.setTexture(cardSpriteTexture);
+        this._iconSprite.setTexture(iconSpriteTexture);
+
+        this.addChild(this._ccbNode);
 
         this._hpProgress = Progress.create(
             main_scene_image.progress11,
@@ -69,24 +73,14 @@ var BattleCardNode = cc.Node.extend({
         this._hpProgress.setPosition(cc.p(0, -100));
         this.addChild(this._hpProgress);
 
-        this._tipLabel = cc.LabelTTF.create("", '黑体', 60);
+        this._tipLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 60);
         this.addChild(this._tipLabel);
-
-        this._hpLabel = cc.LabelTTF.create(this._hp, '黑体', 25);
-        this._hpLabel.setColor(cc.c3b(255, 0, 0));
-        this._hpLabel.setPosition(cc.p(-40, -100));
-        this.addChild(this._hpLabel);
-
-        this._atkLabel = cc.LabelTTF.create(data.atk, '黑体', 25);
-        this._atkLabel.setColor(cc.c3b(105, 218, 255));
-        this._atkLabel.setPosition(cc.p(40, -100));
-        this.addChild(this._atkLabel);
 
         return true;
     },
 
-    _loadTable: function () {
-        cc.log("BattleCardNode _loadTable");
+    _load: function () {
+        cc.log("BattleCardNode _load");
 
         // 读取卡牌配置表
         var cardTable = outputTables.cards.rows[this._tableId];
@@ -101,7 +95,27 @@ var BattleCardNode = cc.Node.extend({
         }
     },
 
-    _updateHp: function (value) {
+    setOpacity: function (opacity) {
+        this._frameSprite.setOpacity(opacity);
+        this._cardSprite.setOpacity(opacity);
+        this._iconSprite.setOpacity(opacity);
+    },
+
+    getColor: function () {
+        return this._cardSprite.getColor();
+    },
+
+    setColor: function (color3) {
+        this._frameSprite.setColor(color3);
+        this._cardSprite.setColor(color3);
+        this._iconSprite.setColor(color3);
+    },
+
+    getSkillType: function () {
+        return this._skillType;
+    },
+
+    update: function (value, isCrit) {
         cc.log("BattleCardNode updateHp: " + value);
 
         this._hp += value;
@@ -109,29 +123,9 @@ var BattleCardNode = cc.Node.extend({
         this._hp = Math.min(this._hp, this._maxHp);
         this._hp = Math.max(this._hp, 0);
 
-        this._hpProgress.setAllValue(this._hp, this._maxHp, 0.5);
+        this._hpProgress.setAllValue(this._hp, this._maxHp, 0.3);
 
-        this._hpLabel.setString(this._hp);
-    },
-
-    setOpacity: function (opacity) {
-        this._frameSprite.setOpacity(opacity);
-        this._heroSprite.setOpacity(opacity);
-        if (this._iconSprite) this._iconSprite.setOpacity(opacity);
-    },
-
-    getColor: function () {
-        return this._heroSprite.getColor();
-    },
-
-    setColor: function (color3) {
-        this._frameSprite.setColor(color3);
-        this._heroSprite.setColor(color3);
-        if (this._iconSprite)this._iconSprite.setColor(color3);
-    },
-
-    getSkillType: function () {
-        return this._skillType;
+        this._tip(value, isCrit);
     },
 
     _tip: function (value, isCrit) {
@@ -171,102 +165,102 @@ var BattleCardNode = cc.Node.extend({
         this._tipLabel.runAction(a);
     },
 
-    atk: function () {
-        cc.log("BattleCardNode atk");
+    callback: function () {
+        cc.log("=========================");
+        cc.log("回调成功");
+        cc.log("=========================");
 
-        this.stopAllActions();
-
-        var a1 = cc.RotateBy.create(0.3 / GAME_COMBAT_SPEED, 30);
-        var a2 = cc.RotateBy.create(0.4 / GAME_COMBAT_SPEED, -60);
-        var a3 = cc.RotateBy.create(0.3 / GAME_COMBAT_SPEED, 30);
-        var a = cc.Sequence.create(a1, a2, a3);
-
-        var b1 = cc.ScaleTo.create(0.3 / GAME_COMBAT_SPEED, 1.2);
-        var b2 = cc.ScaleTo.create(0.3 / GAME_COMBAT_SPEED, 1.0);
-        var b = cc.Sequence.create(b1, b2);
-
-        this.runAction(cc.Spawn.create(a, b));
+        this.getParent().callback();
     },
 
-    defend: function (value, isCrit) {
-        cc.log("BattleCardNode defend");
+    runAnimations: function (name, tweenDuration, cb) {
+        cc.log("BattleCardNode runAnimations");
 
-        this.scheduleOnce(function () {
-            this._tip(value, isCrit);
+        tweenDuration = tweenDuration || 0;
+        cb = cb || function () {
+        };
 
-            if (value == 0) {
-                this.miss();
-            } else {
-                this._updateHp(value);
-                this.hit();
-            }
-        }, 0.5 / GAME_COMBAT_SPEED);
+        this._animationManager.runAnimationsForSequenceNamedTweenDuration(name, tweenDuration);
+        this._animationManager.setCompletedAnimationCallback(this, cb);
     },
 
-    miss: function () {
-        cc.log("BattleCardNode miss");
 
-        var a1 = cc.MoveBy.create(0.5 / GAME_COMBAT_SPEED, cc.p(-20, 0));
-        var a2 = cc.MoveBy.create(0.5 / GAME_COMBAT_SPEED, cc.p(20, 0));
-        var a = cc.Sequence.create(a1, a2);
+//    defend: function (value, isCrit) {
+//        cc.log("BattleCardNode defend");
+//
+//        this.scheduleOnce(function () {
+//            this._tip(value, isCrit);
+//
+//            if (value == 0) {
+//                this.miss();
+//            } else {
+//                this._updateHp(value);
+//                this.hit();
+//            }
+//        }, 0.5 / GAME_COMBAT_SPEED);
+//    },
+//
+//    miss: function () {
+//        cc.log("BattleCardNode miss");
+//
+//        var a1 = cc.MoveBy.create(0.5 / GAME_COMBAT_SPEED, cc.p(-20, 0));
+//        var a2 = cc.MoveBy.create(0.5 / GAME_COMBAT_SPEED, cc.p(20, 0));
+//        var a = cc.Sequence.create(a1, a2);
+//
+//        var b1 = cc.FadeOut.create(0.3 / GAME_COMBAT_SPEED);
+//        var b2 = cc.FadeIn.create(0.5 / GAME_COMBAT_SPEED);
+//        var b = cc.Sequence.create(b1, b2);
+//
+//        this.runAction(cc.Spawn.create(a, b));
+//    },
+//
+//    hit: function () {
+//        cc.log("BattleCardNode updateHp");
+//
+//        this.stopAllActions();
+//
+//        var callFuncAction = cc.CallFunc.create(this._dead, this);
+//
+//        var a1 = cc.TintTo.create(0.5 / GAME_COMBAT_SPEED, 0, 255, 255);
+//        var a2 = cc.TintTo.create(0.5 / GAME_COMBAT_SPEED, 255, 255, 255);
+//        var a = cc.Sequence.create(a1, a2);
+//
+//        var b1 = cc.MoveBy.create(0.01 / GAME_COMBAT_SPEED, cc.p(3, 0));
+//        var b2 = cc.MoveBy.create(0.02 / GAME_COMBAT_SPEED, cc.p(-6, 0));
+//        var b3 = cc.MoveBy.create(0.02 / GAME_COMBAT_SPEED, cc.p(6, 0));
+//        var b4 = cc.MoveBy.create(0.01 / GAME_COMBAT_SPEED, cc.p(-3, 0));
+//        var b = cc.Sequence.create(b1, b2, b3, b4);
+//
+//        var d = cc.Sequence.create(cc.Spawn.create(a, b), callFuncAction);
+//
+//        this.runAction(d);
+//    },
+//
+//    heal: function (value, isCrit) {
+//        cc.log("BattleCardNode heal");
+//
+//        this.scheduleOnce(function () {
+//            this._tip(value, isCrit);
+//            this._updateHp(value);
+//        }, 0.5 / GAME_COMBAT_SPEED);
+//    },
 
-        var b1 = cc.FadeOut.create(0.3 / GAME_COMBAT_SPEED);
-        var b2 = cc.FadeIn.create(0.5 / GAME_COMBAT_SPEED);
-        var b = cc.Sequence.create(b1, b2);
-
-        this.runAction(cc.Spawn.create(a, b));
-    },
-
-    hit: function () {
-        cc.log("BattleCardNode updateHp");
-
-        this.stopAllActions();
-
-        var callFuncAction = cc.CallFunc.create(this._dead, this);
-
-        var a1 = cc.TintTo.create(0.5 / GAME_COMBAT_SPEED, 0, 255, 255);
-        var a2 = cc.TintTo.create(0.5 / GAME_COMBAT_SPEED, 255, 255, 255);
-        var a = cc.Sequence.create(a1, a2);
-
-        var b1 = cc.MoveBy.create(0.01 / GAME_COMBAT_SPEED, cc.p(3, 0));
-        var b2 = cc.MoveBy.create(0.02 / GAME_COMBAT_SPEED, cc.p(-6, 0));
-        var b3 = cc.MoveBy.create(0.02 / GAME_COMBAT_SPEED, cc.p(6, 0));
-        var b4 = cc.MoveBy.create(0.01 / GAME_COMBAT_SPEED, cc.p(-3, 0));
-        var b = cc.Sequence.create(b1, b2, b3, b4);
-
-        var d = cc.Sequence.create(cc.Spawn.create(a, b), callFuncAction);
-
-        this.runAction(d);
-    },
-
-    heal: function (value, isCrit) {
-        cc.log("BattleCardNode heal");
-
-        this.scheduleOnce(function () {
-            this._tip(value, isCrit);
-            this._updateHp(value);
-        }, 0.5 / GAME_COMBAT_SPEED);
-    },
-
-    _dead: function () {
+    dead: function () {
         cc.log("BattleCardNode dead");
 
         if (this._hp <= 0) {
-            this._frameSprite.setVisible(false);
-            this._heroSprite.setVisible(false);
-            if (this._iconSprite) this._iconSprite.setVisible(false);
+            this.stopAllActions();
+            this._ccbNode.setVisible(false);
             this._hpProgress.setVisible(false);
             this._tipLabel.setVisible(false);
-            this._hpLabel.setVisible(false);
-            this._atkLabel.setVisible(false);
 
             var deadSprite = cc.Sprite.create(main_scene_image.icon248);
             deadSprite.setPosition(cc.p(0, 100));
             this.addChild(deadSprite);
 
-            deadSprite.runAction(cc.MoveTo.create(0.1, cc.p(0, 0)));
-
-            cc.log(this._spirit);
+            deadSprite.runAction(
+                cc.MoveTo.create(0.1, cc.p(0, 0))
+            );
 
             if (this._spirit > 0) {
                 this.getParent().releaseSpirit(this._index, this._spirit);

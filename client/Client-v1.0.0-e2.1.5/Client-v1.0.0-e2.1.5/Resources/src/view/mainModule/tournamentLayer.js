@@ -111,13 +111,12 @@ var TournamentLayer = cc.Layer.extend({
         buyCountItem.setPosition(cc.p(575, 1015));
 
         this._rewardItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button10,
-            main_scene_image.button10s,
-            main_scene_image.icon123,
+            main_scene_image.button17,
+            main_scene_image.button17s,
             this._onClickRankReward,
             this
         );
-        this._rewardItem.setPosition(cc.p(595, 900));
+        this._rewardItem.setPosition(cc.p(160, 900));
 
         var menu = cc.Menu.create(buyCountItem, this._rewardItem);
         menu.setPosition(cc.p(0, 0));
@@ -176,7 +175,7 @@ var TournamentLayer = cc.Layer.extend({
 
         var player = gameData.player;
 
-        this._expProgress.setAllValue(player.get("power"), player.get("maxPower"));
+        this._expProgress.setAllValue(player.get("exp"), player.get("maxExp"));
         this._lvLabel.setString(player.get("lv"));
 
         if (this._scrollView != null) {
@@ -200,7 +199,7 @@ var TournamentLayer = cc.Layer.extend({
         var reward = gameData.tournament.getLastRankReward();
 
         if (reward) {
-            this._rewardLabel.setString("首次达到" + reward.ranking + " 奖励" + reward.elixir + "仙丹");
+            this._rewardLabel.setString("首次达到 " + reward.ranking + " 名  奖励 " + reward.elixir + " 仙丹");
             this._rewardLabel.setVisible(true);
             this._rewardItem.setVisible(reward.canReceive);
         } else {

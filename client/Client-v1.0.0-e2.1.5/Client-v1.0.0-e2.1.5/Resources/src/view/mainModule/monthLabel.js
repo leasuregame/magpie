@@ -50,8 +50,8 @@ var MonthLabel = cc.Node.extend({
             dayLabel.setPosition(point);
             this.addChild(dayLabel);
 
-            var hookLabel = cc.Sprite.create(main_scene_image.icon195);
-            hookLabel.setPosition(point);
+            var hookLabel = cc.Sprite.create(main_scene_image.icon20);
+            hookLabel.setPosition(cc.p(point.x, point.y - 5));
             this.addChild(hookLabel);
             hookLabel.setVisible(false);
 

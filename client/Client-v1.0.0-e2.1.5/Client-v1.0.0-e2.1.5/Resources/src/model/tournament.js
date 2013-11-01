@@ -127,7 +127,7 @@ var Tournament = Entity.extend({
     },
 
     defiance: function (cb, targetId, ranking) {
-        cc.log("Tournament defiance: " + targetId);
+        cc.log("Tournament defiance: " + targetId + " ranking: " + ranking);
 
         var that = this;
         lzWindow.pomelo.request("area.rankHandler.challenge", {

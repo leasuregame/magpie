@@ -13,6 +13,8 @@ var nameChanged = {
     "基础属性成长表": "factors",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
+    "player_upgrade_reward": "玩家升级阶段奖励配置表",
+    "玩家升级阶段奖励配置表": "player_upgrade_reward",
     "friends_config": "好友数量配置表",
     "好友数量配置表": "friends_config",
     "receive_bless_config": "接收祝福次数配置表",
@@ -10203,6 +10205,61 @@ var outputTables = {
                 "money_need": 50000,
                 "rate_per_card": 4,
                 "max_num": 25
+            }
+        }
+    },
+    "player_upgrade_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 10,
+                "gold": 10
+            },
+            "2": {
+                "id": 2,
+                "lv": 20,
+                "gold": 20
+            },
+            "3": {
+                "id": 3,
+                "lv": 30,
+                "gold": 30
+            },
+            "4": {
+                "id": 4,
+                "lv": 40,
+                "gold": 40
+            },
+            "5": {
+                "id": 5,
+                "lv": 50,
+                "gold": 100
+            },
+            "6": {
+                "id": 6,
+                "lv": 60,
+                "gold": 150
+            },
+            "7": {
+                "id": 7,
+                "lv": 70,
+                "gold": 200
+            },
+            "8": {
+                "id": 8,
+                "lv": 80,
+                "gold": 260
+            },
+            "9": {
+                "id": 9,
+                "lv": 90,
+                "gold": 300
+            },
+            "10": {
+                "id": 10,
+                "lv": 100,
+                "gold": 500
             }
         }
     },
@@ -32220,4 +32277,4 @@ var outputTables = {
             }
         }
     }
-};
+}

@@ -24,7 +24,6 @@ var ConfigLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        var winSize = cc.Director.getInstance().getWinSize();
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(GAME_BG_POINT);
@@ -43,12 +42,12 @@ var ConfigLayer = cc.Layer.extend({
         var bgMusicItem = cc.MenuItemImage.create(
             main_scene_image.icon127,
             main_scene_image.icon127,
-            this.bgMusicSetting(),
+            this._onClickBgMusic(),
             this
         );
 
         bgMusicItem.setAnchorPoint(cc.p(0, 0));
-        bgMusicItem.setPosition(cc.p(55, winSize.height - 300));
+        bgMusicItem.setPosition(cc.p(55, 850));
 
         var bgMusicItemTitle = StrokeLabel.create('背景音乐', "STHeitiTC-Medium", 30);
         //bgMusicItemTitle.setColor(cc.c3b(255, 239, 131));
@@ -58,32 +57,31 @@ var ConfigLayer = cc.Layer.extend({
 
         var bgMusicOpenSprite = cc.Sprite.create(main_scene_image.icon27);
         bgMusicOpenSprite.setAnchorPoint(cc.p(0, 0.5));
-        bgMusicOpenSprite.setPosition(cc.p(410, 55));
+        bgMusicOpenSprite.setPosition(cc.p(470, 55));
         bgMusicItem.addChild(bgMusicOpenSprite);
 
         var bgMusicOpenSpriteTitle = StrokeLabel.create('开', "STHeitiTC-Medium", 30);
         //bgMusicOpenSpriteTitle.setColor(cc.c3b(255, 239, 131));
         bgMusicOpenSpriteTitle.setAnchorPoint(cc.p(0, 0.5));
-        bgMusicOpenSpriteTitle.setPosition(cc.p(470, 55));
+        bgMusicOpenSpriteTitle.setPosition(cc.p(530, 55));
         bgMusicItem.addChild(bgMusicOpenSpriteTitle);
-
 
 
         this.musicSelect = cc.Sprite.create(main_scene_image.icon20);
         this.musicSelect.setAnchorPoint(cc.p(0, 0.5));
-        this.musicSelect.setPosition(cc.p(410, 55));
+        this.musicSelect.setPosition(cc.p(470, 55));
         bgMusicItem.addChild(this.musicSelect);
 
 
         var soundItem = cc.MenuItemImage.create(
             main_scene_image.icon127,
             main_scene_image.icon127,
-            this.soundSetting(),
+            this._onClickSound(),
             this
 
         );
         soundItem.setAnchorPoint(cc.p(0, 0));
-        soundItem.setPosition(cc.p(55, winSize.height - 420));
+        soundItem.setPosition(cc.p(55, 730));
 
         var soundItemTitle = StrokeLabel.create('游戏音效', "STHeitiTC-Medium", 30);
         //soundItemTitle.setColor(cc.c3b(255, 239, 131));
@@ -94,29 +92,29 @@ var ConfigLayer = cc.Layer.extend({
 
         var soundOpenSprite = cc.Sprite.create(main_scene_image.icon27);
         soundOpenSprite.setAnchorPoint(cc.p(0, 0.5));
-        soundOpenSprite.setPosition(cc.p(410, 55));
+        soundOpenSprite.setPosition(cc.p(470, 55));
         soundItem.addChild(soundOpenSprite);
 
         var soundOpenSpriteTitle = StrokeLabel.create('开', "STHeitiTC-Medium", 30);
         //soundOpenSpriteTitle.setColor(cc.c3b(255, 239, 131));
         soundOpenSpriteTitle.setAnchorPoint(cc.p(0, 0.5));
-        soundOpenSpriteTitle.setPosition(cc.p(470, 55));
+        soundOpenSpriteTitle.setPosition(cc.p(530, 55));
         soundItem.addChild(soundOpenSpriteTitle);
 
 
         this.soundSelect = cc.Sprite.create(main_scene_image.icon20);
         this.soundSelect.setAnchorPoint(cc.p(0, 0.5));
-        this.soundSelect.setPosition(cc.p(410, 55));
+        this.soundSelect.setPosition(cc.p(470, 55));
         soundItem.addChild(this.soundSelect);
 
         var tipsItem = cc.MenuItemImage.create(
             main_scene_image.icon127,
             main_scene_image.icon127,
-            this.tipsItemClick,
+            this._onClickTips,
             this
         );
         tipsItem.setAnchorPoint(cc.p(0, 0));
-        tipsItem.setPosition(cc.p(55, winSize.height - 540));
+        tipsItem.setPosition(cc.p(55, 610));
 
         var tipsItemTitle = StrokeLabel.create('攻略', "STHeitiTC-Medium", 30);
         //tipsItemTitle.setColor(cc.c3b(255, 239, 131));
@@ -131,16 +129,13 @@ var ConfigLayer = cc.Layer.extend({
             this
         );
         QQGroup.setAnchorPoint(cc.p(0, 0));
-        QQGroup.setPosition(cc.p(55, winSize.height - 660));
+        QQGroup.setPosition(cc.p(55, 490));
 
         var QQGroupTitle = StrokeLabel.create('Q群： xxxxxxx', "STHeitiTC-Medium", 30);
         //feedbackItemTitle.setColor(cc.c3b(255, 239, 131));
         QQGroupTitle.setAnchorPoint(cc.p(0, 0.5));
         QQGroupTitle.setPosition(cc.p(40, 55));
         QQGroup.addChild(QQGroupTitle);
-
-
-
 
         var menu = cc.Menu.create(
             bgMusicItem,
@@ -155,7 +150,7 @@ var ConfigLayer = cc.Layer.extend({
         return true;
     },
 
-    bgMusicSetting: function () {
+    _onClickBgMusic: function () {
         return function () {
             cc.log('bgMusicSetting');
             this.musicOpen = !this.musicOpen;
@@ -163,7 +158,7 @@ var ConfigLayer = cc.Layer.extend({
         };
     },
 
-    soundSetting: function () {
+    _onClickSound: function () {
         return function () {
             cc.log('soundSetting');
             this.soundOpen = !this.soundOpen;
@@ -171,12 +166,10 @@ var ConfigLayer = cc.Layer.extend({
         };
     },
 
-    tipsItemClick: function () {
-
+    _onClickTips: function () {
         cc.log('tipsItemClick');
         var tipsLayer = TipsLayer.create();
         this.addChild(tipsLayer, 1);
-
     }
 });
 

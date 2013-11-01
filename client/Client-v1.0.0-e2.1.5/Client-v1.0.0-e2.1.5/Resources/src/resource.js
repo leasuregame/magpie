@@ -532,7 +532,53 @@ var main_scene_image = {
     icon257: main_scene_path + "icon257.png",
     icon258: main_scene_path + "icon258.png",
     icon259: main_scene_path + "icon259.png",
-    icon260: main_scene_path + "icon260.png"
+    icon260: main_scene_path + "icon260.png",
+    icon261: main_scene_path + "icon261.png",
+    icon262: main_scene_path + "icon262.png",
+    icon263: main_scene_path + "icon263.png",
+    icon264: main_scene_path + "icon264.png",
+    icon265: main_scene_path + "icon265.png",
+    icon266: main_scene_path + "icon266.png",
+    icon267: main_scene_path + "icon267.png",
+    icon268: main_scene_path + "icon268.png",
+    icon269: main_scene_path + "icon269.png",
+    icon270: main_scene_path + "icon270.png",
+    icon271: main_scene_path + "icon271.png",
+    icon272: main_scene_path + "icon272.png",
+
+
+    // 特效
+    effect1: "res/ccb/effect1.ccbi",
+    effect2: "res/ccb/effect2.ccbi",
+
+    // 特效资源
+    p1: "res/effect/effect/p1.png",
+    p2: "res/effect/effect/p2.png",
+    p3: "res/effect/effect/p3.png",
+    p4: "res/effect/effect/p4.png",
+    p5: "res/effect/effect/p5.png",
+
+    // 新手特效
+    tutorials1: "res/ccb/tutorials1.ccbi",
+    tutorials2: "res/ccb/tutorials2.ccbi",
+    tutorials3: "res/ccb/tutorials3.ccbi",
+    tutorials4: "res/ccb/tutorials4.ccbi",
+    tutorials5: "res/ccb/tutorials5.ccbi",
+    tutorials6: "res/ccb/tutorials6.ccbi",
+    tutorials7: "res/ccb/tutorials7.ccbi",
+    tutorials8: "res/ccb/tutorials8.ccbi",
+    tutorials9: "res/ccb/tutorials9.ccbi",
+    tutorials10: "res/ccb/tutorials10.ccbi",
+    tutorials11: "res/ccb/tutorials11.ccbi",
+    tutorials12: "res/ccb/tutorials12.ccbi",
+
+    // 新手特效资源
+    empty: "res/effect/NewPlayer/empty.png",
+    hand: "res/effect/NewPlayer/hand.png",
+    light: "res/effect/NewPlayer/light.png",
+    talking: "res/effect/NewPlayer/talking.png",
+    yuanshen: "res/effect/NewPlayer/yuanshen.png"
+
 };
 
 var main_scene_res = [

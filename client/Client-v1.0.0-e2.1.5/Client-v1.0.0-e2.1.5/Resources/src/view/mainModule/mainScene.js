@@ -12,6 +12,8 @@
  * */
 
 
+cc.BuilderReader.setResourcePath("./res/");
+
 var MainScene = cc.Scene.extend({
     _nowLayer: null,
     _mainBgLayer: null,
@@ -30,6 +32,7 @@ var MainScene = cc.Scene.extend({
         this.addChild(gameFrame, 10);
 
         this.switchLayer(MainLayer);
+
     },
 
     changeMessage: function (msg) {

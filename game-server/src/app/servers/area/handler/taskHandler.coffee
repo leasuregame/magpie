@@ -32,6 +32,7 @@ Handler::explore = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
+      taskId = player.task.id unless taskId?
 
       if _.keys(player.cards).length >= MAX_CARD_COUNT
         return cb({code: 501, msg: '卡牌容量已经达到最大值'})

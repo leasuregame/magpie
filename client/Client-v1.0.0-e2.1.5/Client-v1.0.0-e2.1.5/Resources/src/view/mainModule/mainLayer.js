@@ -157,13 +157,14 @@ var MainLayer = cc.Layer.extend({
         );
         otherItem.setPosition(cc.p(628, 245));
 
-        var signInLayerItem = cc.MenuItemImage.create(
+        /*var signInLayerItem = cc.MenuItemImage.create(
             main_scene_image.button58,
             main_scene_image.button58s,
             this._onClickLayer(10),
             this
         );
         signInLayerItem.setPosition(cc.p(414, 322));
+        */
 
         var messageItem = cc.MenuItemImage.create(
             main_scene_image.button59,
@@ -198,7 +199,7 @@ var MainLayer = cc.Layer.extend({
         this.addChild(menu);
 
         this._otherMenu = cc.Menu.create(
-            signInLayerItem,
+           // signInLayerItem,
             messageItem,
             configLayerItem
         );

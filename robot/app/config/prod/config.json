@@ -1,0 +1,8 @@
+{
+  "master": {"host": "127.0.0.1", "port":8888, "webport":8889, "interval":500},
+  "apps": [
+  	{"host": "127.0.0.1", "port": 3010}
+  ],
+  "mysql": {"host": "127.0.0.1", "user": "root", "password": "1", "database": "magpie_area_1"},
+  "clients": ["127.0.0.1"]
+}

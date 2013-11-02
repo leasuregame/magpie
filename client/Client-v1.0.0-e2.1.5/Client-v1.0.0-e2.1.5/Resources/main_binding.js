@@ -162,6 +162,7 @@ var appFiles = [
     'src/view/mainModule/mainBgLayer.js',
     'src/view/mainModule/mainLayer.js',
     'src/view/mainModule/mainMenuLayer.js',
+    'src/view/mainModule/noviceTeachingLayer.js',
     'src/view/mainModule/mainScene.js',
 
     'src/view/battleModule/actionFactory.js',

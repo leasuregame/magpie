@@ -31,7 +31,9 @@ var MainScene = cc.Scene.extend({
         var gameFrame = GameFrame.create();
         this.addChild(gameFrame, 10);
 
-        this.switchLayer(MainLayer);
+        var noviceTeachingLayer = NoviceTeachingLayer.create();
+        this.addChild(noviceTeachingLayer, 100);
+        //this.switchLayer(MainLayer);
     },
 
     changeMessage: function (msg) {

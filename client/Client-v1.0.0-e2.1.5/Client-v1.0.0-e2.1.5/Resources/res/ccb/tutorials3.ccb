@@ -1377,8 +1377,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>seqExpanded</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -1975,7 +1973,7 @@
 			<key>name</key>
 			<string>heimu_animation</string>
 			<key>offset</key>
-			<real>1.8484441041946411</real>
+			<real>0.0</real>
 			<key>position</key>
 			<real>2.6666667461395264</real>
 			<key>resolution</key>

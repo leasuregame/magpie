@@ -70,19 +70,19 @@ var MainLayer = cc.Layer.extend({
             cc.log(node);
             cc.log(this);
 
-            var texture = cc.TextureCache.getInstance().textureForKey(main_scene_image.card3_half2);
+            // var texture = cc.TextureCache.getInstance().textureForKey(main_scene_image.card3_half2);
 
-            if (!texture) {
-                texture = cc.TextureCache.getInstance().addImage(main_scene_image.card3_half2);
-            }
+            // if (!texture) {
+            //     texture = cc.TextureCache.getInstance().addImage(main_scene_image.card3_half2);
+            // }
 
-            this.cardHalf.setTexture(texture);
+            // this.cardHalf.setTexture(texture);
 
 
 
 
             if (node != null) {
-                node.setPosition(cc.p(360, 500));
+                node.setPosition(cc.p(40, 88));
                 this.addChild(node);
 
 //                node.animationManager.setCompletedAnimationCallback(this, this._clearEffect);

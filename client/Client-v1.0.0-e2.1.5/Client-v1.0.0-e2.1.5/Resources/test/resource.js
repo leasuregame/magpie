@@ -580,6 +580,10 @@ var main_scene_image = {
     tutorials10: ccb_scene_path + "tutorials10.ccbi",
     tutorials11: ccb_scene_path + "tutorials11.ccbi",
     tutorials12: ccb_scene_path + "tutorials12.ccbi",
+    tutorials13: ccb_scene_path + "tutorials13.ccbi",
+    tutorials14: ccb_scene_path + "tutorials14.ccbi",
+    tutorials15: ccb_scene_path + "tutorials15.ccbi",
+    tutorials16: ccb_scene_path + "tutorials16.ccbi",
     testBattleNode: ccb_scene_path + "testBattleNode.ccbi",
 
 

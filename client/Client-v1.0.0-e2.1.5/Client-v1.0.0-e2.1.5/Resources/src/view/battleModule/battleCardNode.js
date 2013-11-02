@@ -174,7 +174,7 @@ var BattleCardNode = cc.Node.extend({
     },
 
     runAnimations: function (name, tweenDuration, cb) {
-        cc.log("BattleCardNode runAnimations");
+        cc.log("BattleCardNode runAnimations: " + name);
 
         tweenDuration = tweenDuration || 0;
         cb = cb || function () {
@@ -183,67 +183,6 @@ var BattleCardNode = cc.Node.extend({
         this._animationManager.runAnimationsForSequenceNamedTweenDuration(name, tweenDuration);
         this._animationManager.setCompletedAnimationCallback(this, cb);
     },
-
-
-//    defend: function (value, isCrit) {
-//        cc.log("BattleCardNode defend");
-//
-//        this.scheduleOnce(function () {
-//            this._tip(value, isCrit);
-//
-//            if (value == 0) {
-//                this.miss();
-//            } else {
-//                this._updateHp(value);
-//                this.hit();
-//            }
-//        }, 0.5 / GAME_COMBAT_SPEED);
-//    },
-//
-//    miss: function () {
-//        cc.log("BattleCardNode miss");
-//
-//        var a1 = cc.MoveBy.create(0.5 / GAME_COMBAT_SPEED, cc.p(-20, 0));
-//        var a2 = cc.MoveBy.create(0.5 / GAME_COMBAT_SPEED, cc.p(20, 0));
-//        var a = cc.Sequence.create(a1, a2);
-//
-//        var b1 = cc.FadeOut.create(0.3 / GAME_COMBAT_SPEED);
-//        var b2 = cc.FadeIn.create(0.5 / GAME_COMBAT_SPEED);
-//        var b = cc.Sequence.create(b1, b2);
-//
-//        this.runAction(cc.Spawn.create(a, b));
-//    },
-//
-//    hit: function () {
-//        cc.log("BattleCardNode updateHp");
-//
-//        this.stopAllActions();
-//
-//        var callFuncAction = cc.CallFunc.create(this._dead, this);
-//
-//        var a1 = cc.TintTo.create(0.5 / GAME_COMBAT_SPEED, 0, 255, 255);
-//        var a2 = cc.TintTo.create(0.5 / GAME_COMBAT_SPEED, 255, 255, 255);
-//        var a = cc.Sequence.create(a1, a2);
-//
-//        var b1 = cc.MoveBy.create(0.01 / GAME_COMBAT_SPEED, cc.p(3, 0));
-//        var b2 = cc.MoveBy.create(0.02 / GAME_COMBAT_SPEED, cc.p(-6, 0));
-//        var b3 = cc.MoveBy.create(0.02 / GAME_COMBAT_SPEED, cc.p(6, 0));
-//        var b4 = cc.MoveBy.create(0.01 / GAME_COMBAT_SPEED, cc.p(-3, 0));
-//        var b = cc.Sequence.create(b1, b2, b3, b4);
-//
-//        var d = cc.Sequence.create(cc.Spawn.create(a, b), callFuncAction);
-//
-//        this.runAction(d);
-//    },
-//
-//    heal: function (value, isCrit) {
-//        cc.log("BattleCardNode heal");
-//
-//        this.scheduleOnce(function () {
-//            this._tip(value, isCrit);
-//            this._updateHp(value);
-//        }, 0.5 / GAME_COMBAT_SPEED);
-//    },
 
     dead: function () {
         cc.log("BattleCardNode dead");

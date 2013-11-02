@@ -557,6 +557,7 @@ var main_scene_image = {
     effect4: "res/ccb/effect4.ccbi",
     effect5: "res/ccb/effect5.ccbi",
     effect6: "res/ccb/effect6.ccbi",
+    effect7: "res/ccb/effect7.ccbi",
 
 
     // 特效资源
@@ -574,6 +575,12 @@ var main_scene_image = {
     p12: "res/effect/effect/p12.png",
     p13: "res/effect/effect/p13.png",
     p14: "res/effect/effect/p14.png",
+    p15: "res/effect/effect/p15.png",
+    p16: "res/effect/effect/p16.png",
+    p17: "res/effect/effect/p17.png",
+    p18: "res/effect/effect/p18.png",
+    p19: "res/effect/effect/p19.png",
+    p20: "res/effect/effect/p20.png",
 
 
     // 新手特效

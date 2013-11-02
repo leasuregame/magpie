@@ -106,59 +106,22 @@ var BatterLayer = cc.Layer.extend({
         BattlePlayer.getInstance().next();
     },
 
-    _playAStep: function () {
-        this.unschedule(this._playAStep);
-
-        if (!this._battleLog.hasNextBattleStep()) {
-            this.scheduleOnce(this._collectSpirit, 1.5);
-            return;
-        }
-
-        cc.log("\n\n\nBattlePlayer _playAStep " + this._battleLog.getBattleStepIndex());
-
-        var battleStep = this._battleLog.getBattleStep();
-        var skillType = this._battleNode[battleStep.get("attacker")].getSkillType();
-        var delay;
-
-        if (battleStep.isSpiritAtk()) {
-            battleStep.set("attacker", this._battleLog.getSpirit(battleStep.get("attacker")));
-        }
-
-        if (battleStep.isSkill()) {
-            if (skillType === 2) {
-                delay = this._aoe(battleStep);
-            } else if (skillType === 3 || skillType === 4) {
-                delay = this._heal(battleStep);
-            } else {
-                delay = this._aoe(battleStep);
-            }
-        } else {
-            delay = this._normalAttack(battleStep);
-        }
-
-        var str = battleStep.get("attacker") + (battleStep.get("isSkill") ? " 用技能 揍了 " : " 用普攻 揍了 ");
-        str += battleStep.get("target");
-        str += " 伤害为 " + battleStep.get("effect");
-        cc.log(str);
-
-        cc.log("set next round schedule");
-        this.schedule(this._playAStep, delay, 1, 0);
-    },
-
     callback: function () {
 
     },
 
     nextStepCallback: function () {
-        cc.log("BattleLayer nextStep");
-
         this._counter += 1;
+
+        cc.log(this._counter);
 
         var that = this;
         return function () {
-            cc.log(this);
+            cc.log("BattleLayer nextStepCallback");
 
             that._counter -= 1;
+
+            cc.log(that._counter);
 
             if (that._counter == 0) {
                 cc.log("xxxxxxxxxxxx进入下回合");
@@ -373,27 +336,12 @@ var BatterLayer = cc.Layer.extend({
 
                         nextStepCallback1();
                     });
-
-                    targetNode.runAnimations(
-                        "def_2_" + that._getDirection(attacker),
-                        0,
-                        that.nextStepCallback()
-                    );
                 })();
             }
         };
     },
 
     heal: function (battleStep) {
-        var attacker = battleStep.get("attacker");
-        var attackerLocate = this._locate[attacker];
-
-        this._battleNode[attacker].runAnimations(
-            "atk_4_" + this._getDirection(attacker),
-            0,
-            this.nextStepCallback()
-        );
-
         battleStep.recover();
         this.callback = function () {
             while (battleStep.hasNextTarget()) {
@@ -420,32 +368,38 @@ var BatterLayer = cc.Layer.extend({
 
                         var nextStepCallback2 = that.nextStepCallback();
                         effect7Node.animationManager.setCompletedAnimationCallback(that, function () {
-                            cc.log("-----------------");
-
                             effect7Node.removeFromParent();
                             targetNode.dead();
                             nextStepCallback2();
                         });
 
+                        cc.log("xx----------------target" + target);
+                        var nextStepCallback3 = that.nextStepCallback();
                         targetNode.runAnimations(
                             "def_4_" + that._getDirection(target),
                             0,
-                            that.nextStepCallback()
+                            function() {
+                                cc.log("----------------target" + target);
+                                nextStepCallback3();
+                            }
                         );
 
                         targetNode.update(effect, isCrit);
 
                         nextStepCallback1();
                     });
-
-                    targetNode.runAnimations(
-                        "def_2_" + that._getDirection(attacker),
-                        0,
-                        that.nextStepCallback()
-                    );
                 })();
             }
         };
+
+        var attacker = battleStep.get("attacker");
+        var attackerLocate = this._locate[attacker];
+
+        this._battleNode[attacker].runAnimations(
+            "atk_4_" + this._getDirection(attacker),
+            0,
+            this.nextStepCallback()
+        );
     },
 
     _addSpirit: function (index) {

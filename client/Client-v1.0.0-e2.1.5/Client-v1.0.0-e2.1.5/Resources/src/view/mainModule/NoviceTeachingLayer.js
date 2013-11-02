@@ -63,7 +63,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
     _load: function () {
         cc.log("NoviceTeachingLayer _load");
         MainScene.getInstance().switchLayer(this._layer[this._layerOrder[this._step]]);
-        this._rect = this._rectOrder[this._step];
+       // this._rect = this._rectOrder[this._step];
         this._changeEffect(this._effectOrder[this._step]);
     },
 
@@ -111,7 +111,10 @@ var NoviceTeachingLayer = LazyLayer.extend({
                 node.setPosition(cc.p(40, 88));
                 this.addChild(node);
                 this._effectNode = node;
-                //node.animationManager.setCompletedAnimationCallback(this,this._clearEffect());
+
+                this._rect = this._rectOrder[this._step];
+                //node.animationManager.setCompletedAnimationCallback(this,function(){
+                // });
             }
         } else {
             cc.log("特效" + url + "找不到,可能配置出错");

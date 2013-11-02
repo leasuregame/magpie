@@ -5,7 +5,10 @@ dao = app.get('dao')
 
 module.exports = 
   auth: (account, password, areaId, cb) ->
-    dao.user.fetchOne where: account: account, (err, user) ->
+    dao.user.fetchOne {
+      where: account: account
+      sync: true
+    }, (err, user) ->
       if err
         return cb(err)
 
@@ -13,6 +16,8 @@ module.exports =
         return cb({code: 501, msg: '密码不正确'})
 
       user.lastLoginArea = areaId
+      user.lastLoginTime = Date.now()
+      user.loginCount += 1
       user.save()
       cb(null, user.toJson())
 

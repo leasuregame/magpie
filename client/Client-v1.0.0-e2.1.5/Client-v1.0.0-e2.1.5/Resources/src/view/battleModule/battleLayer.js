@@ -118,8 +118,6 @@ var BatterLayer = cc.Layer.extend({
             that._counter -= 1;
 
             if (that._counter == 0) {
-
-
                 that.nextStep();
             }
         }
@@ -127,6 +125,12 @@ var BatterLayer = cc.Layer.extend({
 
     nextStep: function () {
         cc.log("BattleLayer nextStep");
+
+        for (var key in this._battleNode) {
+            if (this._battleNode[key].die) {
+                this._battleNode[key].die();
+            }
+        }
 
         if (this._isEnd) {
             return;
@@ -146,8 +150,6 @@ var BatterLayer = cc.Layer.extend({
 
             if (battleStep.isSpiritAtk()) {
                 battleStep.set("attacker", this._battleLog.getSpirit(battleStep.get("attacker")));
-                this.nextStep();
-                return;
             }
 
             if (skillType === 1) {
@@ -208,7 +210,6 @@ var BatterLayer = cc.Layer.extend({
                         var nextStepCallback2 = that.nextStepCallback();
                         effect2Node.animationManager.setCompletedAnimationCallback(that, function () {
                             effect2Node.removeFromParent();
-                            targetNode.dead();
                             nextStepCallback2();
                         });
 
@@ -268,7 +269,6 @@ var BatterLayer = cc.Layer.extend({
                     var nextStepCallback = that.nextStepCallback();
                     effect3Node.animationManager.setCompletedAnimationCallback(that, function () {
                         effect3Node.removeFromParent();
-                        targetNode.dead();
                         nextStepCallback();
                     });
 
@@ -321,7 +321,6 @@ var BatterLayer = cc.Layer.extend({
                         var nextStepCallback2 = that.nextStepCallback();
                         effect5Node.animationManager.setCompletedAnimationCallback(that, function () {
                             effect5Node.removeFromParent();
-                            targetNode.dead();
                             nextStepCallback2();
                         });
 
@@ -369,7 +368,6 @@ var BatterLayer = cc.Layer.extend({
                     var nextStepCallback = that.nextStepCallback();
                     effect7Node.animationManager.setCompletedAnimationCallback(that, function () {
                         effect7Node.removeFromParent();
-                        targetNode.dead();
                         nextStepCallback();
                     });
 
@@ -393,7 +391,6 @@ var BatterLayer = cc.Layer.extend({
             effect6Node.removeFromParent();
             nextStepCallback();
         });
-        this.addChild(effect6Node);
 
         this._battleNode[attacker].runAnimations(
             "atk_4_" + this._getDirection(attacker),

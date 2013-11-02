@@ -23,6 +23,7 @@ var BattleCardNode = cc.Node.extend({
     _url: "",
     _skillId: 0,
     _skillType: 0,
+    _isDie: false,
     _ccbNode: null,
     _animationManager: null,
     _hpProgress: null,
@@ -39,6 +40,7 @@ var BattleCardNode = cc.Node.extend({
         this._hp = this._maxHp;
         this._boss = data.boss || false;
         this._spirit = data.spirit || 0;
+        this._isDie = false;
 
         this._load();
 
@@ -55,10 +57,6 @@ var BattleCardNode = cc.Node.extend({
         var iconSpriteTexture = lz.getTexture(main_scene_image["card_icon" + this._skillType]);
 
         this._animationManager = this._ccbNode.animationManager;
-
-        cc.log(this._animationManager.getSequenceDuration("def_4_1"));
-//        cc.log(this._animationManager.getSequences()[14].getName());
-//        cc.log(this._animationManager.getSequences()[14].getDuration());
 
         this._frameSprite.setTexture(frameSpriteTexture);
         this._cardSprite.setTexture(cardSpriteTexture);
@@ -95,22 +93,6 @@ var BattleCardNode = cc.Node.extend({
             var skillTable = outputTables.skills.rows[this._skillId];
             this._skillType = skillTable.type;
         }
-    },
-
-    setOpacity: function (opacity) {
-        this._frameSprite.setOpacity(opacity);
-        this._cardSprite.setOpacity(opacity);
-        this._iconSprite.setOpacity(opacity);
-    },
-
-    getColor: function () {
-        return this._cardSprite.getColor();
-    },
-
-    setColor: function (color3) {
-        this._frameSprite.setColor(color3);
-        this._cardSprite.setColor(color3);
-        this._iconSprite.setColor(color3);
     },
 
     getSkillType: function () {
@@ -168,39 +150,35 @@ var BattleCardNode = cc.Node.extend({
     },
 
     callback: function () {
-        cc.log("=========================");
-        cc.log("回调成功");
-        cc.log("=========================");
-
         this.getParent().callback();
     },
 
     runAnimations: function (name, tweenDuration, cb) {
         cc.log("BattleCardNode runAnimations: " + name);
 
+        if (this._animationManager.getRunningSequenceName()) {
+            if (this._cb) {
+                this._cb();
+            }
+        }
+
         tweenDuration = tweenDuration || 0;
-        cb = cb || function () {
+        this._cb = cb || function () {
         };
 
         this._animationManager.runAnimationsForSequenceNamedTweenDuration(name, tweenDuration);
-        this._animationManager.setCompletedAnimationCallback(this, cb);
+        this._animationManager.setCompletedAnimationCallback(this, this._cb);
     },
 
-    dead: function () {
-        cc.log("BattleCardNode dead");
+    die: function () {
+        cc.log("BattleCardNode die");
 
-        if (this._hp <= 0) {
-            this._ccbNode.setVisible(false);
+        if (!this._isDie && this._hp <= 0) {
+            this._isDie = true;
+
+            this.runAnimations("die_1");
+
             this._hpProgress.setVisible(false);
-            this._tipLabel.setVisible(false);
-
-            var deadSprite = cc.Sprite.create(main_scene_image.icon248);
-            deadSprite.setPosition(cc.p(0, 100));
-            this.addChild(deadSprite);
-
-            deadSprite.runAction(
-                cc.MoveTo.create(0.1, cc.p(0, 0))
-            );
 
             if (this._spirit > 0) {
                 this.getParent().releaseSpirit(this._index, this._spirit);

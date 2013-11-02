@@ -230,8 +230,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.30000001192092896</real>
-									<real>0.30000001192092896</real>
+									<real>2</real>
+									<real>2</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -244,7 +244,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>10</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -492,8 +492,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.30000001192092896</real>
-									<real>0.30000001192092896</real>
+									<real>2</real>
+									<real>2</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -506,7 +506,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>-10</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -765,8 +765,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.30000001192092896</real>
-									<real>0.30000001192092896</real>
+									<real>1.7000000476837158</real>
+									<real>1.7000000476837158</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -779,7 +779,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>80</real>
+								<real>100</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1038,8 +1038,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.30000001192092896</real>
-									<real>0.30000001192092896</real>
+									<real>1.7000000476837158</real>
+									<real>1.7000000476837158</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1052,7 +1052,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>80</real>
+								<real>100</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1974,7 +1974,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

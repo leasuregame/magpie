@@ -550,6 +550,7 @@ var main_scene_image = {
 
     // 特效
     battleNode: "res/ccb/battleNode.ccbi",
+    spiritNode: "res/ccb/spiritNode.ccbi",
 
     effect1: "res/ccb/effect1.ccbi",
     effect2: "res/ccb/effect2.ccbi",
@@ -558,6 +559,9 @@ var main_scene_image = {
     effect5: "res/ccb/effect5.ccbi",
     effect6: "res/ccb/effect6.ccbi",
     effect7: "res/ccb/effect7.ccbi",
+    effect8: "res/ccb/effect8.ccbi",
+    effect9: "res/ccb/effect9.ccbi",
+    effect10: "res/ccb/effect10.ccbi",
 
 
     // 特效资源
@@ -581,6 +585,14 @@ var main_scene_image = {
     p18: "res/effect/effect/p18.png",
     p19: "res/effect/effect/p19.png",
     p20: "res/effect/effect/p20.png",
+    p21: "res/effect/effect/p21.png",
+    p22: "res/effect/effect/p22.png",
+    p23: "res/effect/effect/p23.png",
+    p24: "res/effect/effect/p24.png",
+    p25: "res/effect/effect/p25.png",
+    p26: "res/effect/effect/p26.png",
+    p27: "res/effect/effect/p27.png",
+    p28: "res/effect/effect/p28.png",
 
 
     // 新手特效

@@ -62,7 +62,9 @@ public:
     void setAutoPlaySequenceId(int autoPlaySequenceId);
     
     CCNode* getRootNode();
-    void setRootNode(CCNode* pRootNode); // weak reference    
+    void setRootNode(CCNode* pRootNode); // weak reference
+    
+    float getSequenceDuration(const std::string &name);
     
 
     void addDocumentCallbackNode(CCNode *node);

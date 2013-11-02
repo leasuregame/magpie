@@ -56,7 +56,9 @@ var BattleCardNode = cc.Node.extend({
 
         this._animationManager = this._ccbNode.animationManager;
 
-        cc.log(this);
+        cc.log(this._animationManager.getSequenceDuration("def_4_1"));
+//        cc.log(this._animationManager.getSequences()[14].getName());
+//        cc.log(this._animationManager.getSequences()[14].getDuration());
 
         this._frameSprite.setTexture(frameSpriteTexture);
         this._cardSprite.setTexture(cardSpriteTexture);
@@ -188,7 +190,6 @@ var BattleCardNode = cc.Node.extend({
         cc.log("BattleCardNode dead");
 
         if (this._hp <= 0) {
-            this.stopAllActions();
             this._ccbNode.setVisible(false);
             this._hpProgress.setVisible(false);
             this._tipLabel.setVisible(false);

@@ -508,7 +508,6 @@ var main_scene_image = {
 
     
     
-    HuoBao_1: effect_scene_path + "HuoBao_1.png",
     screen: effect_scene_path + "screen.jpg",
     tanxian: effect_scene_path + "tanxian.jpg",
     xiantai: effect_scene_path + "xiantai.jpg",
@@ -557,13 +556,15 @@ var main_scene_image = {
     p18: effect_scene_path + "effect/" + "p18.png",
     p19: effect_scene_path + "effect/" + "p19.png",
     p20: effect_scene_path + "effect/" + "p20.png",
+    p21: effect_scene_path + "effect/" + "p21.png",
+    p22: effect_scene_path + "effect/" + "p22.png",
+    p23: effect_scene_path + "effect/" + "p23.png",
 
 
 
 
 
     texiao7: ccb_scene_path + "texiao7.ccbi",
-    texiao8: ccb_scene_path + "texiao8.ccbi",
     texiao9: ccb_scene_path + "texiao9.ccbi",
     ceshi: ccb_scene_path + "ceshi.ccbi",
     ceshi2: ccb_scene_path + "ceshi2.ccbi",
@@ -593,6 +594,8 @@ var main_scene_image = {
     effect5: ccb_scene_path + "effect5.ccbi",
     effect6: ccb_scene_path + "effect6.ccbi", 
     effect7: ccb_scene_path + "effect7.ccbi", 
+    effect8: ccb_scene_path + "effect8.ccbi", 
+    effect9: ccb_scene_path + "effect9.ccbi", 
 };
 
 var main_scene_res = [

@@ -82,7 +82,7 @@ var MainLayer = cc.Layer.extend({
 
 
             if (node != null) {
-                node.setPosition(cc.p(40, 88));
+                node.setPosition(cc.p(360, 568));
                 this.addChild(node);
 
 //                node.animationManager.setCompletedAnimationCallback(this, this._clearEffect);

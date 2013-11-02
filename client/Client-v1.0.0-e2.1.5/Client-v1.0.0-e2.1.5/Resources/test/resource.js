@@ -559,15 +559,18 @@ var main_scene_image = {
     p21: effect_scene_path + "effect/" + "p21.png",
     p22: effect_scene_path + "effect/" + "p22.png",
     p23: effect_scene_path + "effect/" + "p23.png",
+    p24: effect_scene_path + "effect/" + "p24.png",
+    p25: effect_scene_path + "effect/" + "p25.png",
+    p26: effect_scene_path + "effect/" + "p26.png",
+    p27: effect_scene_path + "effect/" + "p27.png",
+    p28: effect_scene_path + "effect/" + "p28.png",
 
 
 
 
 
-    texiao7: ccb_scene_path + "texiao7.ccbi",
+    texiao8: ccb_scene_path + "texiao8.ccbi",
     texiao9: ccb_scene_path + "texiao9.ccbi",
-    ceshi: ccb_scene_path + "ceshi.ccbi",
-    ceshi2: ccb_scene_path + "ceshi2.ccbi",
     tutorials1: ccb_scene_path + "tutorials1.ccbi",
     tutorials2: ccb_scene_path + "tutorials2.ccbi",
     tutorials3: ccb_scene_path + "tutorials3.ccbi",
@@ -585,6 +588,8 @@ var main_scene_image = {
     tutorials15: ccb_scene_path + "tutorials15.ccbi",
     tutorials16: ccb_scene_path + "tutorials16.ccbi",
     testBattleNode: ccb_scene_path + "testBattleNode.ccbi",
+    spiritNode: ccb_scene_path + "spiritNode.ccbi",
+    battleNode: ccb_scene_path + "battleNode.ccbi",
 
 
 
@@ -600,6 +605,8 @@ var main_scene_image = {
     effect7: ccb_scene_path + "effect7.ccbi", 
     effect8: ccb_scene_path + "effect8.ccbi", 
     effect9: ccb_scene_path + "effect9.ccbi", 
+    effect10: ccb_scene_path + "effect10.ccbi", 
+    
 };
 
 var main_scene_res = [

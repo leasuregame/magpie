@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>8</integer>
+	<integer>9</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -1904,8 +1904,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.64999997615814209</real>
+							<real>0.64999997615814209</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -3815,8 +3815,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>2</real>
-							<real>2</real>
+							<real>0.5</real>
+							<real>0.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -4151,6 +4151,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -4439,6 +4441,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -4922,7 +4926,24 @@
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.53333336114883423</real>
+						<key>type</key>
+						<integer>10</integer>
+						<key>value</key>
+						<array>
+							<string>showAddition</string>
+							<integer>2</integer>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>10</integer>
 			</dict>
@@ -4935,7 +4956,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.80000001192092896</real>
+			<real>0.53333336114883423</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -4956,7 +4977,24 @@
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.53333336114883423</real>
+						<key>type</key>
+						<integer>10</integer>
+						<key>value</key>
+						<array>
+							<string>showAddition</string>
+							<integer>2</integer>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>10</integer>
 			</dict>
@@ -4969,7 +5007,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.80000001192092896</real>
+			<real>0.53333336114883423</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

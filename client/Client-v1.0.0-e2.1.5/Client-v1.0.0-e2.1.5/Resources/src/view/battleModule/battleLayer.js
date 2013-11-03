@@ -19,18 +19,18 @@ var BatterLayer = cc.Layer.extend({
     _battleNode: {},
     _spiritNode: [],
     _locate: {
-        1: cc.p(160, 450),
-        2: cc.p(360, 450),
-        3: cc.p(560, 450),
-        4: cc.p(160, 250),
-        5: cc.p(360, 250),
-        6: cc.p(560, 250),
-        7: cc.p(160, 750),
-        8: cc.p(360, 750),
-        9: cc.p(560, 750),
-        10: cc.p(160, 950),
-        11: cc.p(360, 950),
-        12: cc.p(560, 950)
+        1: cc.p(160, 440),
+        2: cc.p(360, 440),
+        3: cc.p(560, 440),
+        4: cc.p(160, 240),
+        5: cc.p(360, 240),
+        6: cc.p(560, 240),
+        7: cc.p(160, 740),
+        8: cc.p(360, 740),
+        9: cc.p(560, 740),
+        10: cc.p(160, 940),
+        11: cc.p(360, 940),
+        12: cc.p(560, 940)
     },
 
     init: function (battleLog) {
@@ -54,14 +54,13 @@ var BatterLayer = cc.Layer.extend({
         bgSprite.setPosition(cc.p(40, 0));
         this.addChild(bgSprite);
 
-        this._backItem = cc.MenuItemFont.create("结束战斗", this.end, this);
-        this._backItem.setPosition(cc.p(250, -460));
-        var menu = cc.Menu.create(this._backItem);
-        this.addChild(menu);
+        return true;
+    },
 
-        this._backItem.setVisible(false);
+    play: function () {
+        cc.log("BatterLayer play");
 
-        var battleNode = battleLog.get("card");
+        var battleNode = this._battleLog.get("card");
 
         cc.log(battleNode);
 
@@ -70,27 +69,31 @@ var BatterLayer = cc.Layer.extend({
             if (battleNode[key] != undefined) {
                 cc.log(battleNode[key]);
 
+                var index = parseInt(key);
+
                 if (typeof(battleNode[key]) == "number") {
-                    this._battleNode[key] = BattleSpiritNode.create(battleNode[key]);
+                    this._battleNode[key] = BattleSpiritNode.create(battleNode[key], index);
                 } else {
-                    this._battleNode[key] = BattleCardNode.create(battleNode[key]);
+                    this._battleNode[key] = BattleCardNode.create(battleNode[key], index);
                 }
 
                 this._battleNode[key].setPosition(this._locate[key]);
                 this.addChild(this._battleNode[key]);
+
+                cc.log(this._battleNode[key]);
+
+                if (index < 7) {
+                    this._battleNode[key].runAnimations("beg_1", 0, this.showSpiritAdditionCallback());
+                }
             }
         }
 
-        return true;
-    },
-
-    play: function () {
-        cc.log("BatterLayer play");
-
-        this._backItem.setVisible(true);
+        this._backItem = cc.MenuItemFont.create("结束战斗", this.end, this);
+        this._backItem.setPosition(cc.p(250, -460));
+        var menu = cc.Menu.create(this._backItem);
+        this.addChild(menu);
 
         this._battleLog.recover();
-        this.nextStep();
     },
 
     end: function () {
@@ -104,6 +107,97 @@ var BatterLayer = cc.Layer.extend({
         this.unscheduleAllCallbacks();
 
         BattlePlayer.getInstance().next();
+    },
+
+    _getDirection: function (index) {
+        if (index <= 6) {
+            return 1;
+        }
+
+        return 2;
+    },
+
+    showSpiritAdditionCallback: function () {
+        this._counter += 1;
+
+        var that = this;
+        return function () {
+            that._counter -= 1;
+
+            if (that._counter == 0) {
+                that.showSpiritAddition();
+            }
+        }
+    },
+
+    showSpiritAddition: function () {
+        cc.log("BattleLayer showSpiritAddition");
+
+        var that = this;
+
+        for (var key in this._battleNode) {
+            if (this._battleNode[key] instanceof BattleSpiritNode) {
+                (function () {
+                    var index = parseInt(key);
+                    var effect8Node = cc.BuilderReader.load(main_scene_image.effect8, that);
+                    effect8Node.setPosition(that._locate[index]);
+                    that.addChild(effect8Node);
+
+                    var nextStepCallback = that.nextStepCallback();
+                    effect8Node.animationManager.setCompletedAnimationCallback(that, function () {
+                        effect8Node.removeFromParent();
+                        nextStepCallback();
+                    });
+
+                    that._battleNode[index].runAnimations(
+                        "buf_1_" + that._getDirection(index),
+                        0,
+                        that.nextStepCallback()
+                    );
+                })();
+            }
+        }
+    },
+
+    showAddition: function (startIndex) {
+        cc.log("BattleLayer showOwnAddition");
+
+        var that = this;
+        var endIndex = startIndex + 6;
+
+        for (var i = startIndex; i < endIndex; ++i) {
+            if (this._battleNode[i] && (this._battleNode[i] instanceof BattleCardNode)) {
+                (function () {
+                    var cardNode = that._battleNode[i];
+                    var locate = that._locate[i];
+
+                    var effect9Node = cc.BuilderReader.load(main_scene_image.effect9, that);
+                    effect9Node.setPosition(locate);
+                    that.addChild(effect9Node);
+
+                    var nextStepCallback1 = that.nextStepCallback();
+                    effect9Node.animationManager.setCompletedAnimationCallback(that, function () {
+                        effect9Node.removeFromParent();
+
+                        var effect10Node = cc.BuilderReader.load(main_scene_image.effect10, that);
+                        effect10Node.setPosition(locate);
+                        that.addChild(effect10Node);
+
+                        var nextStepCallback2 = that.nextStepCallback();
+                        effect10Node.animationManager.setCompletedAnimationCallback(that, function () {
+                            effect10Node.removeFromParent();
+                            nextStepCallback2();
+                        });
+
+                        cardNode._tip(cardNode.getSpiritAtk(), false);
+
+                        nextStepCallback1();
+                    });
+
+                    cardNode.update(cardNode.getSpiritHp(), false);
+                })();
+            }
+        }
     },
 
     callback: function () {
@@ -141,41 +235,46 @@ var BatterLayer = cc.Layer.extend({
             return;
         }
 
-        var battleStep = this._battleLog.getBattleStep();
+        this.attack(this._battleLog.getBattleStep());
+    },
 
+    attack: function (battleStep) {
+        cc.log("BattleLayer attack");
         cc.log(battleStep);
 
-        if (battleStep.isSkill()) {
-            var skillType = this._battleNode[battleStep.get("attacker")].getSkillType();
 
-            if (battleStep.isSpiritAtk()) {
+        if (battleStep.isSkill()) {
+            var atkNode = this._battleNode[battleStep.get("attacker")];
+            var skillType = atkNode.getSkillType();
+            var isSpiritAtk = battleStep.isSpiritAtk();
+            var ccbNode = atkNode.getSubtitleNode();
+
+            if (isSpiritAtk) {
                 battleStep.set("attacker", this._battleLog.getSpirit(battleStep.get("attacker")));
             }
 
-            if (skillType === 1) {
-                this.singleAtk(battleStep);
-            } else if (skillType === 2) {
-                this.aoeAtk(battleStep);
-            } else if (skillType === 3) {
-                this.heal(battleStep);
-            } else if (skillType === 4) {
-                this.heal(battleStep);
+            if (ccbNode) {
+                ccbNode.setPosition(cc.p(360, 590));
+                this.addChild(ccbNode);
+
+                ccbNode.animationManager.setCompletedAnimationCallback(this, function () {
+                    if (skillType === 1) {
+                        this.singleAtk(battleStep);
+                    } else if (skillType === 2) {
+                        this.aoeAtk(battleStep);
+                    } else if (skillType === 3) {
+                        this.heal(battleStep);
+                    } else if (skillType === 4) {
+                        this.heal(battleStep);
+                    }
+                });
             } else {
-                cc.log("技能类型出错");
+                cc.log("错误的技能类型");
                 this.end();
             }
         } else {
             this.normalAtk(battleStep);
         }
-
-    },
-
-    _getDirection: function (index) {
-        if (index <= 6) {
-            return 1;
-        }
-
-        return 2;
     },
 
     normalAtk: function (battleStep) {

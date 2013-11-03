@@ -38,9 +38,11 @@ var BattleBeganLayer = cc.Layer.extend({
                 effectId: 2,
                 target: that,
                 loops: 1,
-                clear: true,
-                cb: that.end
+                position: cc.p(360, 590),
+                clear: true
             });
+
+            that.end();
         });
     },
 

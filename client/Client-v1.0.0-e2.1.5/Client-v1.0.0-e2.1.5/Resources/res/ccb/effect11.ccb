@@ -367,7 +367,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/pk.png</string>
+									<string>effect/effect/p29.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -808,7 +808,7 @@
 								<key>type</key>
 								<string>Texture</string>
 								<key>value</key>
-								<string>effect/ZhenYeYin_Zhen.png</string>
+								<string>effect/effect/p30.png</string>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -1228,7 +1228,7 @@
 								<key>type</key>
 								<string>Texture</string>
 								<key>value</key>
-								<string>effect/ZhenYeYin_Zhen.png</string>
+								<string>effect/effect/p30.png</string>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -1573,7 +1573,7 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>card3_head2</string>
+						<string>card</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -1637,7 +1637,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/hero2_full1.png</string>
+									<string>effect/effect/p31.png</string>
 								</array>
 							</dict>
 							<dict>

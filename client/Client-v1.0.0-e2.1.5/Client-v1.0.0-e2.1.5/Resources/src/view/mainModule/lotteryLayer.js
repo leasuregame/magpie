@@ -151,6 +151,10 @@ var LotteryLayer = cc.Layer.extend({
                 return;
             }
 
+            if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+                NoviceTeachingLayer.getInstance().clearAndSave();
+            }
+
             LazyLayer.showCloudLayer();
 
             var that = this;
@@ -176,6 +180,9 @@ var LotteryLayer = cc.Layer.extend({
                             that.scheduleOnce(function () {
                                 blackLayer.removeFromParent();
                                 LazyLayer.closeCloudLayer();
+                                if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+                                    NoviceTeachingLayer.getInstance().next();
+                                }
                             }, 2);
                         }
                     });

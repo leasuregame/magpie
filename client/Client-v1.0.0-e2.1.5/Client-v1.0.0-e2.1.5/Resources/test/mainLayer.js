@@ -70,17 +70,6 @@ var MainLayer = cc.Layer.extend({
             cc.log(node);
             cc.log(this);
 
-            // var texture = cc.TextureCache.getInstance().textureForKey(main_scene_image.card3_half2);
-
-            // if (!texture) {
-            //     texture = cc.TextureCache.getInstance().addImage(main_scene_image.card3_half2);
-            // }
-
-            // this.cardHalf.setTexture(texture);
-
-
-
-
             if (node != null) {
                 node.setPosition(cc.p(360, 568));
                 this.addChild(node);

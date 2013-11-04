@@ -32,6 +32,13 @@ var MainScene = cc.Scene.extend({
         this.addChild(gameFrame, 10);
 
         this.switchLayer(MainLayer);
+
+//        var noviceTeachingLayer = NoviceTeachingLayer.getInstance();
+//        if(!noviceTeachingLayer.isNoviceTaught()) {
+//            this.addChild(noviceTeachingLayer, 5);
+//        } else {
+
+//        }
     },
 
     changeMessage: function (msg) {

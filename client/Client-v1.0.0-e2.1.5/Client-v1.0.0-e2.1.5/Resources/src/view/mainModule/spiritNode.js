@@ -98,6 +98,10 @@ SpiritNode.create = function (spiritLv) {
 SpiritNode.getSpiritItem = function (cb, target) {
     cb = cb || function () {
         var spiritDetails = SpiritDetails.create();
+        if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+            NoviceTeachingLayer.getInstance().clearAndSave();
+            NoviceTeachingLayer.getInstance().next();
+        }
         MainScene.getInstance().addChild(spiritDetails, 1);
     };
     target = target || this;

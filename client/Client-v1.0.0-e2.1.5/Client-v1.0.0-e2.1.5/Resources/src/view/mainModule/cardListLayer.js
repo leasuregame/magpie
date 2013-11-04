@@ -744,6 +744,7 @@ var CardListLayer = cc.Layer.extend({
         cc.log("CardListLayer _onClickOk");
 
         this._cb(this._getSelectCardList());
+
     },
 
     _onClickSell: function () {
@@ -815,7 +816,12 @@ var CardListLayer = cc.Layer.extend({
 
         gameData.lineUp.changeLineUp(function (data) {
             MainScene.getInstance().switchLayer(MainLayer);
+            if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+                NoviceTeachingLayer.getInstance().clearAndSave();
+                NoviceTeachingLayer.getInstance().next();
+            }
         }, lineUp);
+
     },
 
     _onClickLineUp: function () {
@@ -854,6 +860,7 @@ var CardListLayer = cc.Layer.extend({
                 }
             }
         }
+
     }
 });
 

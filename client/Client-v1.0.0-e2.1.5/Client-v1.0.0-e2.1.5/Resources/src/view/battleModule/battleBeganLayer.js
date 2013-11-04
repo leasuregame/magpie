@@ -34,14 +34,6 @@ var BattleBeganLayer = cc.Layer.extend({
 
         var that = this;
         this._cloudLayer.play(function () {
-            playEffect({
-                effectId: 2,
-                target: that,
-                loops: 1,
-                position: cc.p(360, 590),
-                clear: true
-            });
-
             that.end();
         });
     },

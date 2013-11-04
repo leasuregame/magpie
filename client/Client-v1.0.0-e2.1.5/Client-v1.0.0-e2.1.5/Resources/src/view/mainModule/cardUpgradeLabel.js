@@ -62,7 +62,6 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._resLabel.addChild(hpIcon);
 
         this._hpLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._hpLabel.setColor(cc.c3b(255, 239, 131));
         this._hpLabel.setPosition(cc.p(0, 38));
         this._resLabel.addChild(this._hpLabel);
 
@@ -77,7 +76,6 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._resLabel.addChild(atkIcon);
 
         this._atkLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._atkLabel.setColor(cc.c3b(255, 239, 131));
         this._atkLabel.setPosition(cc.p(0, 3));
         this._resLabel.addChild(this._atkLabel);
 
@@ -87,7 +85,6 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._resLabel.addChild(this._atkAdditionLabel);
 
         this._lvLabel = StrokeLabel.create("0", "STHeitiTC-Medium", 35);
-        this._lvLabel.setColor(cc.c3b(255, 239, 131));
         this._lvLabel.setPosition(cc.p(-85, -35));
         this._resLabel.addChild(this._lvLabel);
 
@@ -108,7 +105,6 @@ var CardUpgradeLabel = cc.Layer.extend({
         this.addChild(helpBgSprite);
 
         this._tipLabel = cc.LabelTTF.create("主卡通过吞噬从卡提升等级", "STHeitiTC-Medium", 22);
-        this._tipLabel.setColor(cc.c3b(255, 239, 131));
         this._tipLabel.setPosition(cc.p(360, 380));
         this.addChild(this._tipLabel);
 
@@ -117,35 +113,28 @@ var CardUpgradeLabel = cc.Layer.extend({
         this.addChild(this._helpLabel);
 
         var expIcon = cc.LabelTTF.create("获得经验:", "STHeitiTC-Medium", 22);
-        expIcon.setColor(cc.c3b(255, 239, 131));
         expIcon.setPosition(cc.p(-160, 20));
         this._helpLabel.addChild(expIcon);
 
         var moneyIcon = cc.LabelTTF.create("消耗仙币:", "STHeitiTC-Medium", 22);
-        moneyIcon.setColor(cc.c3b(255, 239, 131));
         moneyIcon.setPosition(cc.p(-160, -20));
         this._helpLabel.addChild(moneyIcon);
 
         var cardCountIcon = cc.LabelTTF.create("从牌数量:", "STHeitiTC-Medium", 22);
-        cardCountIcon.setColor(cc.c3b(255, 239, 131));
         cardCountIcon.setPosition(cc.p(120, -20));
         this._helpLabel.addChild(cardCountIcon);
 
-
         this._expLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._expLabel.setColor(cc.c3b(255, 239, 131));
         this._expLabel.setAnchorPoint(cc.p(0, 0.5));
         this._expLabel.setPosition(cc.p(-100, 18));
         this._helpLabel.addChild(this._expLabel);
 
         this._moneyLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._moneyLabel.setColor(cc.c3b(255, 239, 131));
         this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
         this._moneyLabel.setPosition(cc.p(-100, -22));
         this._helpLabel.addChild(this._moneyLabel);
 
         this._cardCountLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._cardCountLabel.setColor(cc.c3b(255, 239, 131));
         this._cardCountLabel.setAnchorPoint(cc.p(0, 0.5));
         this._cardCountLabel.setPosition(cc.p(180, -22));
         this._helpLabel.addChild(this._cardCountLabel);

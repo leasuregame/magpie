@@ -104,13 +104,12 @@ var SpiritDetails = LazyLayer.extend({
         this.addChild(passiveIcon);
 
         var passiveDescription = cc.LabelTTF.create("所有上阵卡牌基础生命值和攻击力获得额外加成", "STHeitiTC-Medium", 20);
-        passiveDescription.setColor(cc.c3b(255, 239, 131));
         passiveDescription.setAnchorPoint(cc.p(0, 0.5));
         passiveDescription.setPosition(cc.p(140, 400));
         this.addChild(passiveDescription);
 
         var passiveHarmIcon = cc.LabelTTF.create("当前加成效果:", "STHeitiTC-Medium", 20);
-        passiveHarmIcon.setColor(cc.c3b(146, 180, 83));
+        passiveHarmIcon.setColor(cc.c3b(162, 235, 47));
         passiveHarmIcon.setPosition(cc.p(420, 370));
         this.addChild(passiveHarmIcon);
 
@@ -120,13 +119,11 @@ var SpiritDetails = LazyLayer.extend({
         this.addChild(skillIcon);
 
         var skillDescription1 = cc.LabelTTF.create("每次我方卡牌阵亡，将有一定概率触发元神之怒，", "STHeitiTC-Medium", 20);
-        skillDescription1.setColor(cc.c3b(255, 239, 131));
         skillDescription1.setAnchorPoint(cc.p(0, 0.5));
         skillDescription1.setPosition(cc.p(140, 280));
         this.addChild(skillDescription1);
 
         var skillDescription2 = cc.LabelTTF.create("元神将释放阵亡卡牌的技能效果。", "STHeitiTC-Medium", 20);
-        skillDescription2.setColor(cc.c3b(255, 239, 131));
         skillDescription2.setAnchorPoint(cc.p(0, 0.5));
         skillDescription2.setPosition(cc.p(140, 250));
         this.addChild(skillDescription2);
@@ -137,8 +134,7 @@ var SpiritDetails = LazyLayer.extend({
 //        this.addChild(skillHarmIcon);
 
         this._passiveHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 23);
-        this._passiveHarmLabel.setColor(cc.c3b(255, 239, 131));
-        this._passiveHarmLabel.setPosition(cc.p(520, 370));
+        this._passiveHarmLabel.setPosition(cc.p(520, 367));
         this.addChild(this._passiveHarmLabel);
 
 //        this._skillHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 23);
@@ -147,12 +143,10 @@ var SpiritDetails = LazyLayer.extend({
 //        this.addChild(this._skillHarmLabel);
 
         this._lvLabel = cc.LabelTTF.create("LV.  0", "STHeitiTC-Medium", 40);
-        this._lvLabel.setColor(cc.c3b(255, 239, 131));
         this._lvLabel.setPosition(cc.p(360, 990));
         this.addChild(this._lvLabel);
 
         this._expLabel = cc.LabelTTF.create("灵气:    0 / 0", "STHeitiTC-Medium", 22);
-        this._expLabel.setColor(cc.c3b(255, 239, 131));
         this._expLabel.setPosition(cc.p(360, 940));
         this.addChild(this._expLabel);
 

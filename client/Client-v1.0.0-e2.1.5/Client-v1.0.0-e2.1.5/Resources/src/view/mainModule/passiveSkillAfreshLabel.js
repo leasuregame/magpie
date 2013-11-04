@@ -63,7 +63,6 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this.addChild(this._nameLabel);
 
         this._lvLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
-        this._lvLabel.setColor(cc.c3b(255, 239, 131));
         this._lvLabel.setAnchorPoint(cc.p(0, 0.5));
         this._lvLabel.setPosition(cc.p(245, 708));
         this.addChild(this._lvLabel);
@@ -78,7 +77,6 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._resLabel.addChild(resLabelBgSprite);
 
         var tipLabel = cc.LabelTTF.create("最高加成10.0%", "STHeitiTC-Medium", 18);
-        tipLabel.setColor(cc.c3b(255, 239, 131));
         tipLabel.setPosition(cc.p(380, 349));
         this._resLabel.addChild(tipLabel);
 
@@ -161,7 +159,6 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._resLabel.addChild(moneyIcon);
 
         var moneyLabel = cc.LabelTTF.create("20000 / 次", "STHeitiTC-Medium", 20);
-        moneyLabel.setColor(cc.c3b(255, 239, 131));
         moneyLabel.setAnchorPoint(cc.p(0, 0.5));
         moneyLabel.setPosition(cc.p(130, 90));
         this._resLabel.addChild(moneyLabel);
@@ -171,7 +168,6 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._resLabel.addChild(goldIcon);
 
         var goldLabel = cc.LabelTTF.create("10 / 次", "STHeitiTC-Medium", 20);
-        goldLabel.setColor(cc.c3b(255, 239, 131));
         goldLabel.setAnchorPoint(cc.p(0, 0.5));
         goldLabel.setPosition(cc.p(350, 90));
         this._resLabel.addChild(goldLabel);
@@ -192,7 +188,6 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             "STHeitiTC-Medium",
             20
         );
-        stopUntilBlueIcon.setColor(cc.c3b(255, 239, 131));
         stopUntilBlueIcon.setAnchorPoint(cc.p(0, 0.5));
         stopUntilBlueIcon.setPosition(cc.p(80, 178));
         this._stopTypeLabel.addChild(stopUntilBlueIcon);
@@ -202,7 +197,6 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             "STHeitiTC-Medium",
             20
         );
-        stopUntilYellowIcon.setColor(cc.c3b(255, 239, 131));
         stopUntilYellowIcon.setAnchorPoint(cc.p(0, 0.5));
         stopUntilYellowIcon.setPosition(cc.p(80, 96));
         this._stopTypeLabel.addChild(stopUntilYellowIcon);
@@ -474,14 +468,14 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         var passiveSkill = this._leadCard.get("passiveSkill");
         var maxValue = 0;
-            var len = this._afreshIdList.length;
+        var len = this._afreshIdList.length;
         for (var i = 0; i < len; ++i) {
             maxValue = Math.max(maxValue, passiveSkill[this._afreshIdList[i]].value);
         }
 
         cc.log(maxValue);
         cc.log(isCanAfresh);
-        if(isCanAfresh) {
+        if (isCanAfresh) {
             if (this._stopType == STOP_UNTIL_BLUE) {
                 if (maxValue >= 5.0) {
                     TipLayer.tip("人品爆发，出现蓝色属性，洗炼完毕");

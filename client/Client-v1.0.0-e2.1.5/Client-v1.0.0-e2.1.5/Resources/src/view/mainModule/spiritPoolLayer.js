@@ -57,6 +57,7 @@ var SpiritPoolLayer = cc.Layer.extend({
         this.addChild(countIcon);
 
         var countLabelIcon = cc.LabelTTF.create("今日可采集次数:", "STHeitiTC-Medium", 20);
+        countLabelIcon.setColor(cc.c3b(255, 239, 131));
         countLabelIcon.setAnchorPoint(cc.p(0, 0.5));
         countLabelIcon.setPosition(cc.p(450, 930));
         this.addChild(countLabelIcon);
@@ -71,6 +72,7 @@ var SpiritPoolLayer = cc.Layer.extend({
         this.addChild(perObtainIcon);
 
         var perObtainLabelIcon = cc.LabelTTF.create("每次可获得灵气:", "STHeitiTC-Medium", 20);
+        perObtainLabelIcon.setColor(cc.c3b(255, 239, 131));
         perObtainLabelIcon.setAnchorPoint(cc.p(0, 0.5));
         perObtainLabelIcon.setPosition(cc.p(450, 880));
         this.addChild(perObtainLabelIcon);

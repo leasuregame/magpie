@@ -103,7 +103,7 @@ var TournamentLabel = cc.Node.extend({
             functionItemMenu.setPosition(cc.p(0, 0));
             this.addChild(functionItemMenu);
         } else {
-            var abilityIcon = cc.LabelTTF.create("战斗力", "STHeitiTC-Medium", 22);
+            var abilityIcon = cc.LabelTTF.create("战力", "STHeitiTC-Medium", 22);
             abilityIcon.setColor(cc.c3b(56, 3, 5));
             abilityIcon.setPosition(cc.p(530, 82));
             this.addChild(abilityIcon);

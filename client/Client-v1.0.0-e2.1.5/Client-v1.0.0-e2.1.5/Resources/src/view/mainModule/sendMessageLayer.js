@@ -51,7 +51,6 @@ var SendMessageLayer = LazyLayer.extend({
         this._messageEditBox.setReturnType(cc.KEYBOARD_RETURNTYPE_SEND);
         this._messageEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_INITIAL_CAPS_SENTENCE);
         this._messageEditBox.setFont("STHeitiTC-Medium", 25);
-        this._messageEditBox.setFontColor(cc.c3b(255, 239, 131));
         this._messageEditBox.setMaxLength(MAX_SEND_MESSAGE_LENGTH);
 //        this._messageEditBox.setPlaceHolder("请输入留言内容:");
         this.addChild(this._messageEditBox);

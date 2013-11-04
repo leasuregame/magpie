@@ -13,6 +13,7 @@
 
 
 var BatterLayer = cc.Layer.extend({
+    _index: 0,
     _isEnd: false,
     _counter: 0,
     _battleLog: null,
@@ -38,6 +39,7 @@ var BatterLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._index = 1;
         this._isEnd = false;
         this._battleLog = battleLog;
         this._spiritNode = [];
@@ -139,33 +141,52 @@ var BatterLayer = cc.Layer.extend({
         }
     },
 
+    showSpiritAdditionCallback: function () {
+        this._counter += 1;
+
+        var that = this;
+        return function () {
+            that._counter -= 1;
+
+            if (that._counter == 0) {
+                that.showSpiritAddition();
+            }
+        }
+    },
+
     showSpiritAddition: function () {
         cc.log("BattleLayer showSpiritAddition");
 
         var that = this;
 
-        for (var key in this._battleNode) {
-            if (this._battleNode[key] instanceof BattleSpiritNode) {
+        while (this._index <= 12) {
+            this._index += 1;
+
+            var index = this._index - 1;
+            if (this._battleNode[index] && (this._battleNode[index] instanceof BattleSpiritNode)) {
                 (function () {
-                    var index = parseInt(key);
                     var effect8Node = cc.BuilderReader.load(main_scene_image.effect8, that);
                     effect8Node.setPosition(that._locate[index]);
                     that.addChild(effect8Node);
 
-                    var nextStepCallback = that.nextStepCallback();
+                    var showSpiritAdditionCallback = that.showSpiritAdditionCallback();
                     effect8Node.animationManager.setCompletedAnimationCallback(that, function () {
                         effect8Node.removeFromParent();
-                        nextStepCallback();
+                        showSpiritAdditionCallback();
                     });
 
                     that._battleNode[index].runAnimations(
                         "buf_1_" + that._getDirection(index),
                         0,
-                        that.nextStepCallback()
+                        that.showSpiritAdditionCallback()
                     );
                 })();
+
+                return;
             }
         }
+
+        this.nextStep();
     },
 
     showAddition: function (startIndex) {
@@ -184,7 +205,7 @@ var BatterLayer = cc.Layer.extend({
                     effect9Node.setPosition(locate);
                     that.addChild(effect9Node);
 
-                    var nextStepCallback1 = that.nextStepCallback();
+                    var showSpiritAdditionCallback1 = that.showSpiritAdditionCallback();
                     effect9Node.animationManager.setCompletedAnimationCallback(that, function () {
                         effect9Node.removeFromParent();
 
@@ -192,15 +213,15 @@ var BatterLayer = cc.Layer.extend({
                         effect10Node.setPosition(locate);
                         that.addChild(effect10Node);
 
-                        var nextStepCallback2 = that.nextStepCallback();
+                        var showSpiritAdditionCallback2 = that.showSpiritAdditionCallback();
                         effect10Node.animationManager.setCompletedAnimationCallback(that, function () {
                             effect10Node.removeFromParent();
-                            nextStepCallback2();
+                            showSpiritAdditionCallback2();
                         });
 
                         cardNode._tip(cardNode.getSpiritAtk(), false);
 
-                        nextStepCallback1();
+                        showSpiritAdditionCallback1();
                     });
 
                     cardNode.update(cardNode.getSpiritHp(), false);
@@ -461,6 +482,16 @@ var BatterLayer = cc.Layer.extend({
         this.callback = function () {
             var that = this;
 
+            var effect6Node = cc.BuilderReader.load(main_scene_image.effect6, this);
+            effect6Node.setPosition(attackerLocate);
+            this.addChild(effect6Node);
+
+            var nextStepCallback = this.nextStepCallback();
+            effect6Node.animationManager.setCompletedAnimationCallback(this, function () {
+                effect6Node.removeFromParent();
+                nextStepCallback();
+            });
+
             while (battleStep.hasNextTarget()) {
                 (function () {
                     var target = battleStep.getTarget();
@@ -489,16 +520,6 @@ var BatterLayer = cc.Layer.extend({
                 })();
             }
         };
-
-        var effect6Node = cc.BuilderReader.load(main_scene_image.effect6, this);
-        effect6Node.setPosition(attackerLocate);
-        this.addChild(effect6Node);
-
-        var nextStepCallback = this.nextStepCallback();
-        effect6Node.animationManager.setCompletedAnimationCallback(this, function () {
-            effect6Node.removeFromParent();
-            nextStepCallback();
-        });
 
         this._battleNode[attacker].runAnimations(
             "atk_4_" + this._getDirection(attacker),

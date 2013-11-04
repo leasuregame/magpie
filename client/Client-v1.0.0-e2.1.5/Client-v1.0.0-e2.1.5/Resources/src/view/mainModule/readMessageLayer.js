@@ -89,7 +89,6 @@ var ReadMessageLayer = LazyLayer.extend({
             }
 
             var label = cc.LabelTTF.create(text.substr(min, len), "STHeitiTC-Medium", 25);
-            label.setColor(cc.c3b(255, 239, 131));
             label.setAnchorPoint(cc.p(0, 0.5));
             label.setPosition(cc.p(148, 660 - index * 50));
             this.addChild(label);

@@ -44,7 +44,7 @@ var TipLayer = cc.Layer.extend({
         label.setPosition(cc.p(360, 550));
         this.addChild(label);
 
-        var strLabel = cc.LabelTTF.create(str, fontName, fontSize);
+        var strLabel = StrokeLabel.create(str, fontName, fontSize);
         strLabel.setColor(color);
         label.addChild(strLabel, 1);
 

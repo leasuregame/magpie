@@ -18,6 +18,7 @@ var BatterLayer = cc.Layer.extend({
     _counter: 0,
     _battleLog: null,
     _battleNode: {},
+    _tipNode: {},
     _spiritNode: [],
     _locate: {
         1: cc.p(160, 440),
@@ -67,11 +68,13 @@ var BatterLayer = cc.Layer.extend({
         cc.log(battleNode);
 
         this._battleNode = {};
+        this._tipNode = {};
         for (var key in battleNode) {
             if (battleNode[key] != undefined) {
                 cc.log(battleNode[key]);
 
                 var index = parseInt(key);
+                var locate = this._locate[key];
 
                 if (typeof(battleNode[key]) == "number") {
                     this._battleNode[key] = BattleSpiritNode.create(battleNode[key], index);
@@ -79,7 +82,7 @@ var BatterLayer = cc.Layer.extend({
                     this._battleNode[key] = BattleCardNode.create(battleNode[key], index);
                 }
 
-                this._battleNode[key].setPosition(this._locate[key]);
+                this._battleNode[key].setPosition(locate);
                 this.addChild(this._battleNode[key]);
 
                 cc.log(this._battleNode[key]);
@@ -87,6 +90,10 @@ var BatterLayer = cc.Layer.extend({
                 if (index < 7) {
                     this._battleNode[key].runAnimations("beg_1", 0, this.began());
                 }
+
+                this._tipNode[key] = cc.BuilderReader.load(main_scene_image.tipNode, this);
+                this._tipNode[key].setPosition(locate);
+                this.addChild(this._tipNode[key], 3);
             }
         }
 
@@ -111,6 +118,47 @@ var BatterLayer = cc.Layer.extend({
         BattlePlayer.getInstance().next();
     },
 
+    tip: function (key, name, str) {
+        cc.log("BatterLayer tip");
+
+        var tipNode = this._tipNode[key];
+
+        if (tipNode) {
+            tipNode.controller.label.setString(str);
+            tipNode.animationManager.runAnimationsForSequenceNamedTweenDuration(name, 0);
+        }
+    },
+
+    tipHarm: function (index, value, isCirt) {
+        cc.log("BatterLayer tipHarm");
+
+        var name = "";
+        var str = "";
+
+        if (value === 0) {
+            str = "闪";
+            name = "mis_1";
+        } else if (value > 0) {
+            str = "+" + value;
+
+            if (isCirt) {
+                name = "atk_2_2";
+            } else {
+                name = "atk_2_1";
+            }
+        } else {
+            str = "" + value;
+
+            if (isCirt) {
+                name = "atk_1_2";
+            } else {
+                name = "atk_1_1";
+            }
+        }
+
+        this.tip(index, name, str);
+    },
+
     _getDirection: function (index) {
         if (index <= 6) {
             return 1;
@@ -127,15 +175,13 @@ var BatterLayer = cc.Layer.extend({
             that._counter -= 1;
 
             if (that._counter == 0) {
-                playEffect({
-                    effectId: 2,
-                    target: that,
-                    loops: 1,
-                    position: cc.p(360, 568),
-                    clear: true,
-                    cb: function () {
-                        that.showSpiritAddition();
-                    }
+                var effect15Node = cc.BuilderReader.load(main_scene_image.effect15, that);
+                effect15Node.setPosition(cc.p(360, 568));
+                that.addChild(effect15Node);
+
+                effect15Node.animationManager.setCompletedAnimationCallback(that, function () {
+                    effect15Node.removeFromParent();
+                    that.showSpiritAddition();
                 });
             }
         }
@@ -156,6 +202,10 @@ var BatterLayer = cc.Layer.extend({
 
     showSpiritAddition: function () {
         cc.log("BattleLayer showSpiritAddition");
+
+        if (this._isEnd) {
+            return;
+        }
 
         var that = this;
 
@@ -198,6 +248,7 @@ var BatterLayer = cc.Layer.extend({
         for (var i = startIndex; i < endIndex; ++i) {
             if (this._battleNode[i] && (this._battleNode[i] instanceof BattleCardNode)) {
                 (function () {
+                    var index = i;
                     var cardNode = that._battleNode[i];
                     var locate = that._locate[i];
 
@@ -219,12 +270,14 @@ var BatterLayer = cc.Layer.extend({
                             showSpiritAdditionCallback2();
                         });
 
-                        cardNode._tip(cardNode.getSpiritAtk(), false);
+                        that.tip(index, "buf_2", cardNode.getSpiritAtk());
 
                         showSpiritAdditionCallback1();
                     });
 
-                    cardNode.update(cardNode.getSpiritHp(), false);
+                    var spiritHp = cardNode.getSpiritHp();
+                    cardNode.update(spiritHp);
+                    that.tip(index, "buf_1", spiritHp);
                 })();
             }
         }
@@ -272,35 +325,40 @@ var BatterLayer = cc.Layer.extend({
         cc.log("BattleLayer attack");
         cc.log(battleStep);
 
-
         if (battleStep.isSkill()) {
-            var atkNode = this._battleNode[battleStep.get("attacker")];
-            var skillType = atkNode.getSkillType();
+            var skillType = this._battleNode[battleStep.get("attacker")].getSkillType();
             var isSpiritAtk = battleStep.isSpiritAtk();
-            var ccbNode = atkNode.getSubtitleNode();
 
             if (isSpiritAtk) {
                 battleStep.set("attacker", this._battleLog.getSpirit(battleStep.get("attacker")));
             }
 
+            var ccbNode = this._battleNode[battleStep.get("attacker")].getSubtitleNode();
+
+            var cb = function () {
+                if (ccbNode) {
+                    ccbNode.removeFromParent();
+                }
+
+                var that = this;
+                if (skillType === 1) {
+                    that.singleAtk(battleStep);
+                } else if (skillType === 2) {
+                    that.aoeAtk(battleStep);
+                } else if (skillType === 3) {
+                    that.heal(battleStep);
+                } else if (skillType === 4) {
+                    that.heal(battleStep);
+                }
+            };
+
             if (ccbNode) {
                 ccbNode.setPosition(cc.p(360, 568));
-                this.addChild(ccbNode);
+                this.addChild(ccbNode, 5);
 
-                ccbNode.animationManager.setCompletedAnimationCallback(this, function () {
-                    if (skillType === 1) {
-                        this.singleAtk(battleStep);
-                    } else if (skillType === 2) {
-                        this.aoeAtk(battleStep);
-                    } else if (skillType === 3) {
-                        this.heal(battleStep);
-                    } else if (skillType === 4) {
-                        this.heal(battleStep);
-                    }
-                });
+                ccbNode.animationManager.setCompletedAnimationCallback(this, cb);
             } else {
-                cc.log("错误的技能类型");
-                this.end();
+                cb();
             }
         } else {
             this.normalAtk(battleStep);
@@ -343,12 +401,13 @@ var BatterLayer = cc.Layer.extend({
                         });
 
                         targetNode.runAnimations(
-                            "def_1_" + that._getDirection(target),
+                            (effect ? "def_1_" : "mis_1_") + that._getDirection(target),
                             0,
                             that.nextStepCallback()
                         );
 
-                        targetNode.update(effect, isCrit);
+                        targetNode.update(effect);
+                        that.tipHarm(target, effect, isCrit);
 
                         nextStepCallback1();
                     });
@@ -402,12 +461,13 @@ var BatterLayer = cc.Layer.extend({
                     });
 
                     targetNode.runAnimations(
-                        "def_2_" + that._getDirection(target),
+                        (effect ? "def_2_" : "mis_1_") + that._getDirection(target),
                         0,
                         that.nextStepCallback()
                     );
 
-                    targetNode.update(effect, isCrit);
+                    targetNode.update(effect);
+                    that.tipHarm(target, effect, isCrit);
                 })();
             }
         };
@@ -454,12 +514,13 @@ var BatterLayer = cc.Layer.extend({
                         });
 
                         targetNode.runAnimations(
-                            "def_3_" + that._getDirection(target),
+                            (effect ? "def_3_" : "mis_1_") + that._getDirection(target),
                             0,
                             that.nextStepCallback()
                         );
 
-                        targetNode.update(effect, isCrit);
+                        targetNode.update(effect);
+                        that.tipHarm(target, effect, isCrit);
 
                         nextStepCallback1();
                     });
@@ -511,12 +572,13 @@ var BatterLayer = cc.Layer.extend({
                     });
 
                     targetNode.runAnimations(
-                        "def_4_" + that._getDirection(target),
+                        (effect ? "def_4_" : "mis_1_") + that._getDirection(target),
                         0,
                         that.nextStepCallback()
                     );
 
-                    targetNode.update(effect, isCrit);
+                    targetNode.update(effect);
+                    that.tipHarm(target, effect, isCrit);
                 })();
             }
         };
@@ -581,7 +643,7 @@ var BatterLayer = cc.Layer.extend({
     },
 
     _collectSpirit: function () {
-        cc.log("BatterLayer collectSpirit");
+        cc.log("BatterLayer _collectSpirit");
 
         var len = this._spiritNode.length;
 

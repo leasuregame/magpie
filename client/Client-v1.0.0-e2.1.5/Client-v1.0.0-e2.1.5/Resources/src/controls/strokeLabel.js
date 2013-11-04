@@ -120,6 +120,12 @@ var StrokeLabel = cc.Node.extend({
         }
 
         this.update();
+    },
+
+    getContentSize: function () {
+        cc.log("StrokeLabel getContentSize");
+
+        return this._strBgLabel[0].getContentSize();
     }
 });
 

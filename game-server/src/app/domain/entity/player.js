@@ -841,7 +841,7 @@ var Player = (function(_super) {
     };
 
     Player.prototype.canResetPassMark = function() {
-        for (var i = 1; i < this.passLayer; i++) {
+        for (var i = 1; i <= this.passLayer; i++) {
             if (this.passMark.hasMark(i)) {
                 return true;
             }

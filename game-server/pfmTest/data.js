@@ -20,113 +20,30 @@ var Data = function(db, dir) {
   
 };
 
-Data.prototype.importCsvToSql = function(table, filepath, callback) {
-  var self = this;
-  csv()
-    .from(filepath, {
-      columns: true,
-      delimiter: ';',
-      escape: '"'
-    })
-    .transform(function(row, index, cb) {
-      _.each(row, function(val, key) {
-        if (_.isEmpty(val)) {
-          delete row[key];
-        }
-      });
-
-      if (_.isEmpty(row)) {
-        cb(null);
-        return;
-      }
-      var where = {id: row.id};
-      if (table == 'friend') {
-        where = {playerId: row.playerId, friendId: row.friendId};
-      }
-      if(table == 'card') {
-          genSkillInc(row);
-          initPassiveSkill(row);
-      }
-      self.db[table].delete({
-        where: where
-      }, function(err, res) {
-        self.db[table].create({
-          data: row
-        }, function(err, res) {
-          if (err) {
-            console.log(err);
-          }
-          cb(null, true);
-        });
-      });
-
-
-    })
-    .on('error', function(error) {
-      console.log(error.message);
-    })
-    .on('close', function() {
-      console.log('');
-    })
-    .on('end', function(count) {
-      callback(null, count);
-    });
-};
-
-Data.prototype.loadCsvDataToSql = function(callback) {
-  console.log("  *** load data from csv ***  ");
-  var self = this;
-  var files = fs.readdirSync(this.fixtures_dir).filter(function(file) {
-    return /\.csv$/.test(file) && !/user\.csv$/.test(file);
-  });
-  
-  var count = 0;
-  for (var i = 0; i < files.length; i++) {
-    (function(i) {
-      var filename = files[i];
-
-      var table = path.basename(filename, '.csv');
-      self.importCsvToSql(table, self.fixtures_dir + filename, function(err, res) {
-        count++;
-        if (err) {
-          console.log('load ' + filename + ' error: ', err);
-          return;
-        }
-
-        console.log(filename + '   >>   ' + table);
-        if (count == files.length) {
-          console.log("  *** load data from csv complete ***  ");
-          callback(null, true);
-        }
-      });
-    })(i);
-  }
-};
-
 Data.prototype.dataForRankingUser = function(callback) {
   var self = this, id;
-  async.times(5000, function(n, next) {
-    id = n + 11;
+  async.times(10000, function(n, next) {
+    id = n + 1;
     self.db.user.create({
       data: {
         id: id,
-        account: 'robot' + id,
+        account: 'robotUser' + id,
         password: '1',
         roles: [1]
       }
     }, next);
   }, function(err, results) {
     if (err) console.log(err);
-    console.log('user');
-    callback(null, true)
+    console.log('user complete.');
+    callback(null, true);
   });
 };
 
 Data.prototype.dataForRanking = function(callback){
   // 新浪服务器使用的数据
-  var userId = 20;
+  var userId = 1;
   var self = this;
-  var filepath = path.join(this.fixtures_dir, '..', 'robot', 'player.csv');
+  var filepath = path.join(this.fixtures_dir, 'pfmData.csv');
   console.log(filepath);
   csv()
     .from(filepath, {
@@ -135,6 +52,9 @@ Data.prototype.dataForRanking = function(callback){
       escape: '"'
     })
     .transform(function(row, index, cb) {
+      // if (row.id < 6865) {
+      //   return;
+      // }
       _.each(row, function(val, key) {
         if (_.isEmpty(val)) {
           delete row[key];
@@ -146,12 +66,17 @@ Data.prototype.dataForRanking = function(callback){
         return;
       }
 
+      var now = Date.now();
       var playerData = {
         id: row.id,
         userId: userId++,
         areaId: 1,
-        lv: 25,
-        name: row.name
+        lv: row.lv,
+        name: row.name,
+        power: {
+          time: now,
+          value: row.powerValue
+        }
       };
       var rankData = {
         playerId: row.id,
@@ -163,7 +88,7 @@ Data.prototype.dataForRanking = function(callback){
         playerId: row.id,
         star: row.card_star,
         lv: row.card_lv,
-        skillLv: _.random(1,6)
+        skillLv: row.skill_lv
       };
       async.parallel([
         function(cb) {
@@ -208,48 +133,6 @@ Data.prototype.dataForRanking = function(callback){
     });
 };
 
-Data.prototype.loadDataForRankingList = function(callback) {
-  // 接口测试使用的数据
-  var self = this;
-  var count = 0;
-  console.log('  *** create test data for ranking list ***  ');
-  console.log('raking list data creating......');
-  for (var i = 10000; i < 20001; i++) {
-    (function(id) {
-      var data = {
-        id: id,
-        name: 'james' + id,
-        userId: id,
-        areaId: 1,
-        lv: 20,
-        ability: id + _.random(10000)
-      };
-
-      self.db.player.create({
-        data: data
-      }, function(err, res) {
-        if (err) {
-          console.log(err);
-        }
-
-        self.db.rank.create({
-          data: {
-            playerId: id,
-            createTime: Date.now(),
-            ranking: id - 9999
-          }
-        }, function(err, _res) {
-          count += 1;
-          if (count == 10001) {
-            console.log('  ***  data for ranking list completed ***  ');
-            callback(null, true);
-          }
-        });
-      });
-    })(i);
-  }
-};
-
 var random_lineup = function(cards) {
   var i, ids, lu, pos, r, _i, _ref, _res, tids;
   ids = _.map(cards, function(h) {
@@ -290,9 +173,9 @@ var genSkillInc = function(card) {
     cdata = table.getTableItem('cards', card.tableId);
     skill = cdata.skill_id_linktarget;
     if (skill != null) {
-        min = skill["star" + card.star + "_inc_min"];
-        max = skill["star" + card.star + "_inc_max"];
-        card.skillInc = _.random(min, max);
+        min = skill["star" + card.star + "_inc_min"] * 10;
+        max = skill["star" + card.star + "_inc_max"] * 10;
+        card.skillInc = _.random(min, max) / 10;
         //console.log("skillInc = ",card.skillInc);
     } else {
         throw new Error('can not file skill info of card: ' + card.tableId);

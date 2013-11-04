@@ -54,6 +54,7 @@ class VirtualPlayer extends Player
       hp: c.hp
       atk: c.atk
       boss: true if c.boss?
+      skillType: c.skill_setting.type if c.skill?
     } for c in @heros
     cobj
 

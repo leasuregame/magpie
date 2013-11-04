@@ -31,14 +31,12 @@ var MainScene = cc.Scene.extend({
         var gameFrame = GameFrame.create();
         this.addChild(gameFrame, 10);
 
-        this.switchLayer(MainLayer);
-
-//        var noviceTeachingLayer = NoviceTeachingLayer.getInstance();
-//        if(!noviceTeachingLayer.isNoviceTaught()) {
-//            this.addChild(noviceTeachingLayer, 5);
-//        } else {
-
-//        }
+        var noviceTeachingLayer = NoviceTeachingLayer.getInstance();
+        if(noviceTeachingLayer.isNoviceTeaching()) {
+            this.addChild(noviceTeachingLayer, 5);
+        } else {
+            this.switchLayer(MainLayer);
+        }
     },
 
     changeMessage: function (msg) {

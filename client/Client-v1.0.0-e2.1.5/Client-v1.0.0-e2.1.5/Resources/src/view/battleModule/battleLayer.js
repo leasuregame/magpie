@@ -83,7 +83,7 @@ var BatterLayer = cc.Layer.extend({
                 cc.log(this._battleNode[key]);
 
                 if (index < 7) {
-                    this._battleNode[key].runAnimations("beg_1", 0, this.showSpiritAdditionCallback());
+                    this._battleNode[key].runAnimations("beg_1", 0, this.began());
                 }
             }
         }
@@ -117,7 +117,7 @@ var BatterLayer = cc.Layer.extend({
         return 2;
     },
 
-    showSpiritAdditionCallback: function () {
+    began: function () {
         this._counter += 1;
 
         var that = this;
@@ -125,7 +125,16 @@ var BatterLayer = cc.Layer.extend({
             that._counter -= 1;
 
             if (that._counter == 0) {
-                that.showSpiritAddition();
+                playEffect({
+                    effectId: 2,
+                    target: that,
+                    loops: 1,
+                    position: cc.p(360, 590),
+                    clear: true,
+                    cb: function () {
+                        that.showSpiritAddition();
+                    }
+                });
             }
         }
     },

@@ -227,6 +227,9 @@ var SpiritDetails = LazyLayer.extend({
                         cc.FadeOut.create(1),
                         cc.CallFunc.create(function () {
                             lazyLayer.removeFromParent();
+                            if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+                                NoviceTeachingLayer.getInstance().next();
+                            }
                         }, this)
                     )
                 );
@@ -253,9 +256,13 @@ var SpiritDetails = LazyLayer.extend({
     },
 
     _onClickUpgrade: function () {
-        cc.log("PlayerDetails _onClickUpgrade");
+        cc.log("SpiritDetails _onClickUpgrade");
 
-        LazyLayer.showCloudLayer();
+        if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+            NoviceTeachingLayer.getInstance().clearAndSave();
+        }
+
+        LazyLayer.showCloudAll();
 
         var that = this;
         gameData.spirit.upgrade(function (success) {
@@ -267,15 +274,22 @@ var SpiritDetails = LazyLayer.extend({
                 that.update();
                 TipLayer.tip("升级出错");
             }
+            LazyLayer.closeCloudAll();
         });
     },
 
     _onClickClose: function () {
-        cc.log("PlayerDetails _onClickClose");
+        cc.log("SpiritDetails _onClickClose");
 
         this._menu.setEnabled(false);
 
         this.removeFromParent();
+
+        if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+            NoviceTeachingLayer.getInstance().clearAndSave();
+            MainScene.getInstance().switchLayer(SpiritPoolLayer);
+            NoviceTeachingLayer.getInstance().next();
+        }
     }
 });
 

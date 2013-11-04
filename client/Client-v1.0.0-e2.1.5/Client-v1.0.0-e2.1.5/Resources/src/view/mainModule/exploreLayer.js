@@ -347,6 +347,11 @@ var ExploreLayer = cc.Layer.extend({
         } else {
             this._onBuyPower();
         }
+
+        if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+            NoviceTeachingLayer.getInstance().clearAndSave();
+            NoviceTeachingLayer.getInstance().next();
+        }
     },
 
     _lock: function () {

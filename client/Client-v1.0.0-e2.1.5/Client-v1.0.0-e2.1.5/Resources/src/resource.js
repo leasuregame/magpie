@@ -596,6 +596,10 @@ var main_scene_image = {
     tutorials10: "res/ccb/tutorials10.ccbi",
     tutorials11: "res/ccb/tutorials11.ccbi",
     tutorials12: "res/ccb/tutorials12.ccbi",
+    tutorials13: "res/ccb/tutorials13.ccbi",
+    tutorials14: "res/ccb/tutorials14.ccbi",
+    tutorials15: "res/ccb/tutorials15.ccbi",
+    tutorials16: "res/ccb/tutorials16.ccbi",
 
     // 新手特效资源
     empty: "res/effect/NewPlayer/empty.png",

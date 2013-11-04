@@ -8,7 +8,7 @@ var DirectionNum = 8;
 var ActFlagType = {
 	EXPLORE: 0,
 	LOGIN: 1,
-	PASS
+	PASS: 2
 };
 
 var monitor = function(type, name, reqId) {
@@ -21,7 +21,7 @@ var monitor = function(type, name, reqId) {
 	}
 };
 
-var offset = (typeof actor !== 'undefined') ? actor.id + 2 : 30;
+var offset = (typeof actor !== 'undefined') ? actor.id + 1 : 30;
 var count = 0;
 pomelo.init({
 	host: "127.0.0.1",
@@ -44,6 +44,10 @@ pomelo.init({
 			exploreEvent();
 		}, 3000);
 
+		setInterval(function() {
+			passEvent();
+		}, 2000);
+
 	});
 
 });
@@ -59,7 +63,7 @@ var exploreEvent = function() {
 	});
 };
 
-var passEven = function(){
+var passEvent = function() {
 	monitor('incr', 'passBarrier');
 	monitor(START, 'passBarrier', ActFlagType.PASS);
 

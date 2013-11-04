@@ -131,7 +131,7 @@ var BatterLayer = cc.Layer.extend({
                     effectId: 2,
                     target: that,
                     loops: 1,
-                    position: cc.p(360, 590),
+                    position: cc.p(360, 568),
                     clear: true,
                     cb: function () {
                         that.showSpiritAddition();
@@ -284,7 +284,7 @@ var BatterLayer = cc.Layer.extend({
             }
 
             if (ccbNode) {
-                ccbNode.setPosition(cc.p(360, 590));
+                ccbNode.setPosition(cc.p(360, 568));
                 this.addChild(ccbNode);
 
                 ccbNode.animationManager.setCompletedAnimationCallback(this, function () {

@@ -138,23 +138,29 @@ var NoviceTeachingLayer = LazyLayer.extend({
     isNoviceTeaching: function () {
         cc.log("NoviceTeachingLayer isNoviceTeaching");
 
-        if (this._getStep() < OVER_NOVICE_STEP)
-            return true;
-        else {
-            this.removeFromParent();
-            return false;
-        }
+//        if (this._getStep() < OVER_NOVICE_STEP)
+//            return true;
+//        else {
+//            this.removeFromParent();
+//            return false;
+//        }
+
+        return false;
     },
 
     isNoviceTaught: function () {
         cc.log("NoviceTeachingLayer isNoviceTaught");
-        if (this._getStep() == OVER_NOVICE_STEP)
-            return true;
-        var player = gameData.player;
-        if (player.get('exp') == 0 && player.get('lv') == 1)
-            return false;
-        else
-            return true;
+
+//        if (this._getStep() >= OVER_NOVICE_STEP)
+//            return true;
+//        var player = gameData.player;
+//        if (player.get('exp') == 0 && player.get('lv') == 1)
+//            return false;
+//        else
+//            return true;
+
+
+        return true;
     },
 
     /**

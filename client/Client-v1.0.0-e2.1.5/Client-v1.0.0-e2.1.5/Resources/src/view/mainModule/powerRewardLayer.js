@@ -57,20 +57,20 @@ var PowerRewardLayer = cc.Layer.extend({
             itemText.setPosition(cc.p(200 + x,770));
             this.addChild(itemText);
 
-            var itemText = cc.LabelTTF.create('    点--    点', "STHeitiTC-Medium", 25);
+            var itemText = cc.LabelTTF.create('     点 --      点', "STHeitiTC-Medium", 25);
             itemText.setAnchorPoint(cc.p(0, 0));
-            itemText.setPosition(cc.p(170 + x,730));
+            itemText.setPosition(cc.p(160 + x,730));
             this.addChild(itemText);
 
             var timeText = cc.LabelTTF.create(time[i * 3 + 1], "STHeitiTC-Medium", 25);
             timeText.setAnchorPoint(cc.p(0, 0));
-            timeText.setPosition(cc.p(165 + x,730));
+            timeText.setPosition(cc.p(155 + x,730));
             timeText.setColor(cc.c3b(255, 239, 131));
             this.addChild(timeText);
 
             var timeText = cc.LabelTTF.create(time[i * 3 + 2], "STHeitiTC-Medium", 25);
             timeText.setAnchorPoint(cc.p(0, 0));
-            timeText.setPosition(cc.p(235 + x,730));
+            timeText.setPosition(cc.p(240 + x,730));
             timeText.setColor(cc.c3b(255, 239, 131));
             this.addChild(timeText);
 

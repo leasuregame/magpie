@@ -189,11 +189,18 @@ var SpiritPoolLayer = cc.Layer.extend({
             spirit.removeFromParent();
             TipLayer.tipNoBg(str);
             this.update();
+            if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+                NoviceTeachingLayer.getInstance().next();
+            }
         }, 2);
     },
 
     _onClickSpiritPool: function () {
         cc.log("SpiritPoolLayer _onClickSoulTable");
+
+        if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+            NoviceTeachingLayer.getInstance().clearAndSave();
+        }
 
         var spiritPool = gameData.spiritPool;
 

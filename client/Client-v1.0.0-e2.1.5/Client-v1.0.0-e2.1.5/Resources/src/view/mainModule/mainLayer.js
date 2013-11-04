@@ -213,7 +213,10 @@ var MainLayer = cc.Layer.extend({
     _onClickLayer: function (index) {
         return function () {
             cc.log("MainMenuLayer _onClickLayer: " + index);
-
+            if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+                NoviceTeachingLayer.getInstance().clearAndSave();
+                NoviceTeachingLayer.getInstance().next();
+            }
             MainScene.getInstance().switchLayer(this._layer[index]);
         }
     },

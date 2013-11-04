@@ -77,7 +77,6 @@ var MainMenuLayer = cc.Layer.extend({
             if (runLayer instanceof this._layer[i]) {
                 this._markSprite.setPosition(93 + 107 * i, 142);
                 this._markSprite.setVisible(true);
-
                 return;
             }
 
@@ -91,6 +90,11 @@ var MainMenuLayer = cc.Layer.extend({
             cc.log("MainMenuLayer _onClickLayer: " + index);
 
             MainScene.getInstance().switchLayer(this._layer[index]);
+
+            if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+                NoviceTeachingLayer.getInstance().clearAndSave();
+                NoviceTeachingLayer.getInstance().next();
+            }
         }
     }
 });

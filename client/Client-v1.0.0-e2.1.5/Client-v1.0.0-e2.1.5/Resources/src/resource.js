@@ -552,6 +552,7 @@ var main_scene_image = {
     // 特效
     battleNode: "res/ccb/battleNode.ccbi",
     spiritNode: "res/ccb/spiritNode.ccbi",
+    tipNode: "res/ccb/tipNode.ccbi",
 
     effect1: "res/ccb/effect1.ccbi",
     effect2: "res/ccb/effect2.ccbi",

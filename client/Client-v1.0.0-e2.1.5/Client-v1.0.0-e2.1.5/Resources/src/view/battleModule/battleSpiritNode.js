@@ -32,8 +32,6 @@ var BattleSpiritNode = cc.Node.extend({
 
         this._spiritSprite1.setTexture(spiritSpriteTexture);
         this._spiritSprite2.setTexture(spiritSpriteTexture);
-//        this._spiritSprite3.setTexture(spiritSpriteTexture);
-//        this._spiritSprite4.setTexture(spiritSpriteTexture);
 
         return true;
     },
@@ -50,7 +48,7 @@ var BattleSpiritNode = cc.Node.extend({
     getSubtitleNode: function () {
         cc.log("BattleSpiritNode getSubtitleNode");
 
-        var ccbNode = cc.BuilderReader.load(main_scene_image.effect11, this);
+        var ccbNode = cc.BuilderReader.load(main_scene_image.effect14, this);
 
         if (ccbNode) {
             cc.log(ccbNode);

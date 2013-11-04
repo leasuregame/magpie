@@ -248,7 +248,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>100</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -554,8 +554,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>0.30000001192092896</real>
-											<real>0.30000001192092896</real>
+											<real>1</real>
+											<real>1</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -587,7 +587,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -756,7 +756,7 @@
 										<key>type</key>
 										<string>Check</string>
 										<key>value</key>
-										<false/>
+										<true/>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -793,8 +793,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>0.0</real>
-											<real>0.0</real>
+											<real>10</real>
+											<real>0.20000000298023224</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -1176,7 +1176,7 @@
 										<key>type</key>
 										<string>Check</string>
 										<key>value</key>
-										<false/>
+										<true/>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -1213,8 +1213,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>0.0</real>
-											<real>0.0</real>
+											<real>8</real>
+											<real>0.5</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -1442,6 +1442,8 @@
 										<string>effect/effect/p30.png</string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>
@@ -1468,7 +1470,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>960</real>
+									<real>320</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -1786,11 +1788,11 @@
 								<key>customClass</key>
 								<string></string>
 								<key>displayName</key>
-								<string>card3_head2</string>
+								<string>spirit</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>spirit</string>
 								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
+								<integer>1</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -1828,8 +1830,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>0.0</real>
-											<real>0.0</real>
+											<real>2</real>
+											<real>2</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -1861,7 +1863,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -2035,9 +2037,9 @@
 								<key>displayName</key>
 								<string>CCLabelBMFont</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>label</string>
 								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
+								<integer>1</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -2075,8 +2077,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>0.0</real>
-											<real>0.0</real>
+											<real>1</real>
+											<real>1</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -2105,7 +2107,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -2154,7 +2156,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>960</real>
+									<real>320</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -2264,6 +2266,8 @@
 		<string></string>
 		<key>displayName</key>
 		<string>CCNode</string>
+		<key>jsController</key>
+		<string>CocosBuilderClass</string>
 		<key>memberVarAssignmentName</key>
 		<string></string>
 		<key>memberVarAssignmentType</key>
@@ -2344,7 +2348,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.1666666269302368</real>
+			<real>0.89999997615814209</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

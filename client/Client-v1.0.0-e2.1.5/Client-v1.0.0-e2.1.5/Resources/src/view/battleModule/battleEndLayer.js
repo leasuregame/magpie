@@ -46,12 +46,20 @@ var BattleEndLayer = cc.Layer.extend({
         var str = lz.getRewardString(this._battleLog.get("reward"));
         var len = str.length;
 
-        if (!isWin && len == 0) {
-            str = [
-                "胜败乃常事",
-                "搞搞强化培养洗练",
-                "必能打过"
-            ];
+        if (len == 0) {
+            if (isWin) {
+                str = [
+                    "再接再励",
+                    "勇往直前",
+                    "打遍三界无敌手"
+                ];
+            } else {
+                str = [
+                    "胜败乃常事",
+                    "搞搞强化培养洗练",
+                    "必能打过"
+                ];
+            }
 
             len = 3;
         }

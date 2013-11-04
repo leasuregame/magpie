@@ -1781,11 +1781,11 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>card3_head2</string>
+						<string>card</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>card</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -2030,9 +2030,9 @@
 						<key>displayName</key>
 						<string>CCLabelBMFont</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>label</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -2120,9 +2120,11 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>七十二变</string>
+								<string></string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>

@@ -15,6 +15,9 @@
 var BattleCardNode = cc.Node.extend({
     _index: 0,
     _tableId: 0,
+    _nowHp: 0,
+    _spiritHp: 0,
+    _spiritAtk: 0,
     _hp: 0,
     _maxHp: 0,
     _star: 0,
@@ -23,22 +26,29 @@ var BattleCardNode = cc.Node.extend({
     _url: "",
     _skillId: 0,
     _skillType: 0,
+    _isDie: false,
     _ccbNode: null,
     _animationManager: null,
     _hpProgress: null,
+    _spiritHpProgress: null,
     _tipLabel: null,
 
-    init: function (data) {
+    init: function (data, index) {
         cc.log("BattleCardNode init");
 
         if (!this._super()) return false;
 
-        this._index = data.index || 0;
+        this._index = index;
         this._tableId = data.tableId;
+
+        this._spiritHp = data.spiritHp || 0;
+        this._spiritAtk = data.spiritAtk || 0;
         this._maxHp = data.hp;
-        this._hp = this._maxHp;
+        this._hp = this._maxHp - this._spiritHp;
+        this._nowHp = this._hp;
         this._boss = data.boss || false;
         this._spirit = data.spirit || 0;
+        this._isDie = false;
 
         this._load();
 
@@ -56,8 +66,6 @@ var BattleCardNode = cc.Node.extend({
 
         this._animationManager = this._ccbNode.animationManager;
 
-        cc.log(this);
-
         this._frameSprite.setTexture(frameSpriteTexture);
         this._cardSprite.setTexture(cardSpriteTexture);
         this._iconSprite.setTexture(iconSpriteTexture);
@@ -67,11 +75,20 @@ var BattleCardNode = cc.Node.extend({
         this._hpProgress = Progress.create(
             main_scene_image.progress11,
             main_scene_image.progress12,
-            this._hp,
-            this._maxHp
+            this._nowHp,
+            this._hp
         );
         this._hpProgress.setPosition(cc.p(0, -100));
         this.addChild(this._hpProgress);
+
+        this._spiritHpProgress = Progress.create(
+            null,
+            main_scene_image.progress13,
+            0,
+            this._hp
+        );
+        this._spiritHpProgress.setPosition(cc.p(0, -100));
+        this.addChild(this._spiritHpProgress);
 
         this._tipLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 60);
         this.addChild(this._tipLabel);
@@ -95,35 +112,57 @@ var BattleCardNode = cc.Node.extend({
         }
     },
 
-    setOpacity: function (opacity) {
-        this._frameSprite.setOpacity(opacity);
-        this._cardSprite.setOpacity(opacity);
-        this._iconSprite.setOpacity(opacity);
-    },
-
-    getColor: function () {
-        return this._cardSprite.getColor();
-    },
-
-    setColor: function (color3) {
-        this._frameSprite.setColor(color3);
-        this._cardSprite.setColor(color3);
-        this._iconSprite.setColor(color3);
-    },
-
     getSkillType: function () {
         return this._skillType;
     },
 
+    getSpiritHp: function () {
+        return this._spiritHp;
+    },
+
+    getSpiritAtk: function () {
+        return this._spiritAtk;
+    },
+
     update: function (value, isCrit) {
-        cc.log("BattleCardNode updateHp: " + value);
+        cc.log(this._index + " BattleCardNode update: " + value);
 
-        this._hp += value;
+        var time = 0.3;
+        var differenceValue;
+        var differenceTime;
+        var absValue = Math.abs(value);
 
-        this._hp = Math.min(this._hp, this._maxHp);
-        this._hp = Math.max(this._hp, 0);
+        this._nowHp += value;
+        this._nowHp = Math.min(this._nowHp, this._maxHp);
+        this._nowHp = Math.max(this._nowHp, 0);
 
-        this._hpProgress.setAllValue(this._hp, this._maxHp, 0.3);
+        if (value > 0) {
+            if (this._nowHp > this._hp) {
+                differenceValue = this._hpProgress.getDifferenceValue();
+                differenceTime = time * differenceValue / absValue;
+
+                this._hpProgress.setAllValue(this._hp, this._hp, differenceTime);
+
+                this.scheduleOnce(function () {
+                    this._spiritHpProgress.setAllValue(this._nowHp - this._hp, this._hp, time - differenceTime);
+                }, differenceTime);
+            } else {
+                this._hpProgress.setAllValue(this._nowHp, this._hp, time);
+            }
+        } else if (value < 0) {
+            if (this._nowHp < this._hp) {
+                differenceValue = this._spiritHpProgress.getValue();
+                differenceTime = time * differenceValue / absValue;
+
+                this._spiritHpProgress.setAllValue(0, this._hp, differenceTime);
+
+                this.scheduleOnce(function () {
+                    this._hpProgress.setAllValue(this._nowHp, this._hp, time - differenceTime);
+                }, differenceTime);
+            } else {
+                this._spiritHpProgress.setAllValue(this._nowHp - this._hp, this._hp, time);
+            }
+        }
 
         this._tip(value, isCrit);
     },
@@ -166,40 +205,64 @@ var BattleCardNode = cc.Node.extend({
     },
 
     callback: function () {
-        cc.log("=========================");
-        cc.log("回调成功");
-        cc.log("=========================");
-
         this.getParent().callback();
+    },
+
+    getSubtitleNode: function () {
+        cc.log("BattleCardNode getSubtitleNode");
+
+        var ccbNode = null;
+
+        if (this._skillType === 1) {
+            ccbNode = cc.BuilderReader.load(main_scene_image.effect11, this);
+        }
+
+        if (this._skillType === 2) {
+            ccbNode = cc.BuilderReader.load(main_scene_image.effect11, this);
+        }
+
+        if (this._skillType === 3) {
+            ccbNode = cc.BuilderReader.load(main_scene_image.effect11, this);
+        }
+
+        if (this._skillType === 4) {
+            ccbNode = vcc.BuilderReader.load(main_scene_image.effect11, this);
+        }
+
+        if (ccbNode) {
+            cc.log(ccbNode);
+        }
+
+        return ccbNode;
     },
 
     runAnimations: function (name, tweenDuration, cb) {
         cc.log("BattleCardNode runAnimations: " + name);
 
+        if (this._animationManager.getRunningSequenceName()) {
+            if (this._cb) {
+                this._cb();
+            }
+        }
+
         tweenDuration = tweenDuration || 0;
-        cb = cb || function () {
+        this._cb = cb || function () {
         };
 
         this._animationManager.runAnimationsForSequenceNamedTweenDuration(name, tweenDuration);
-        this._animationManager.setCompletedAnimationCallback(this, cb);
+        this._animationManager.setCompletedAnimationCallback(this, this._cb);
     },
 
-    dead: function () {
-        cc.log("BattleCardNode dead");
+    die: function () {
+        cc.log("BattleCardNode die");
 
-        if (this._hp <= 0) {
-            this.stopAllActions();
-            this._ccbNode.setVisible(false);
+        if (!this._isDie && this._nowHp <= 0) {
+            this._isDie = true;
+
+            this.runAnimations("die_1");
+
             this._hpProgress.setVisible(false);
-            this._tipLabel.setVisible(false);
-
-            var deadSprite = cc.Sprite.create(main_scene_image.icon248);
-            deadSprite.setPosition(cc.p(0, 100));
-            this.addChild(deadSprite);
-
-            deadSprite.runAction(
-                cc.MoveTo.create(0.1, cc.p(0, 0))
-            );
+            this._spiritHpProgress.setVisible(false);
 
             if (this._spirit > 0) {
                 this.getParent().releaseSpirit(this._index, this._spirit);
@@ -209,10 +272,10 @@ var BattleCardNode = cc.Node.extend({
 });
 
 
-BattleCardNode.create = function (data) {
+BattleCardNode.create = function (data, index) {
     var ret = new BattleCardNode();
 
-    if (ret && ret.init(data)) {
+    if (ret && ret.init(data, index)) {
         return ret;
     }
 

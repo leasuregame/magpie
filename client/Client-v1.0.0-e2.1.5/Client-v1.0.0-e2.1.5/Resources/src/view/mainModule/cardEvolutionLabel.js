@@ -75,12 +75,10 @@ var CardEvolutionLayer = cc.Layer.extend({
         this.addChild(this._tipLabel);
 
         var tipLabel1 = cc.LabelTTF.create("满级卡牌消耗同星级卡牌进行升星", "STHeitiTC-Medium", 22);
-        tipLabel1.setColor(cc.c3b(255, 239, 131));
         tipLabel1.setPosition(cc.p(0, 20));
         this._tipLabel.addChild(tipLabel1);
 
         var tipLabel2 = cc.LabelTTF.create("进阶失败主卡保留，从卡消失", "STHeitiTC-Medium", 22);
-        tipLabel2.setColor(cc.c3b(255, 239, 131));
         tipLabel2.setPosition(cc.p(0, -20));
         this._tipLabel.addChild(tipLabel2);
 
@@ -90,23 +88,19 @@ var CardEvolutionLayer = cc.Layer.extend({
         this.addChild(this._helpLabel);
 
         var moneyIcon = cc.LabelTTF.create("消耗仙币:", "STHeitiTC-Medium", 22);
-        moneyIcon.setColor(cc.c3b(255, 239, 131));
         moneyIcon.setPosition(cc.p(-160, 0));
         this._helpLabel.addChild(moneyIcon);
 
         var cardCountIcon = cc.LabelTTF.create("从牌数量:", "STHeitiTC-Medium", 22);
-        cardCountIcon.setColor(cc.c3b(255, 239, 131));
         cardCountIcon.setPosition(cc.p(120, 0));
         this._helpLabel.addChild(cardCountIcon);
 
         this._moneyLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._moneyLabel.setColor(cc.c3b(255, 239, 131));
         this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
         this._moneyLabel.setPosition(cc.p(-100, -2));
         this._helpLabel.addChild(this._moneyLabel);
 
         this._cardCountLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._cardCountLabel.setColor(cc.c3b(255, 239, 131));
         this._cardCountLabel.setAnchorPoint(cc.p(0, 0.5));
         this._cardCountLabel.setPosition(cc.p(180, -2));
         this._helpLabel.addChild(this._cardCountLabel);

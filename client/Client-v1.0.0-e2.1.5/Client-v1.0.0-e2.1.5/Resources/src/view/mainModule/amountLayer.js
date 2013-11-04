@@ -66,7 +66,6 @@ var AmountLayer = LazyLayer.extend({
         this.addChild(consumeIcon);
 
         this._consumeLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
-        this._consumeLabel.setColor(cc.c3b(255, 252, 175));
         this._consumeLabel.setAnchorPoint(cc.p(0, 0.5));
         this._consumeLabel.setPosition(cc.p(250, 627));
         this.addChild(this._consumeLabel);
@@ -77,7 +76,6 @@ var AmountLayer = LazyLayer.extend({
         this.addChild(obtainLabelIcon);
 
         this._obtainLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
-        this._obtainLabel.setColor(cc.c3b(255, 252, 175));
         this._obtainLabel.setPosition(cc.p(480, 627));
         this.addChild(this._obtainLabel);
 
@@ -92,7 +90,6 @@ var AmountLayer = LazyLayer.extend({
         this.addChild(countIcom);
 
         this._countLabel = cc.LabelTTF.create(this._count, "STHeitiTC-Medium", 30);
-        this._countLabel.setColor(cc.c3b(255, 252, 175));
         this._countLabel.setPosition(cc.p(360, 568));
         this.addChild(this._countLabel);
 

@@ -13,24 +13,25 @@
 
 
 var BatterLayer = cc.Layer.extend({
+    _index: 0,
     _isEnd: false,
     _counter: 0,
     _battleLog: null,
     _battleNode: {},
     _spiritNode: [],
     _locate: {
-        1: cc.p(160, 450),
-        2: cc.p(360, 450),
-        3: cc.p(560, 450),
-        4: cc.p(160, 250),
-        5: cc.p(360, 250),
-        6: cc.p(560, 250),
-        7: cc.p(160, 750),
-        8: cc.p(360, 750),
-        9: cc.p(560, 750),
-        10: cc.p(160, 950),
-        11: cc.p(360, 950),
-        12: cc.p(560, 950)
+        1: cc.p(160, 440),
+        2: cc.p(360, 440),
+        3: cc.p(560, 440),
+        4: cc.p(160, 240),
+        5: cc.p(360, 240),
+        6: cc.p(560, 240),
+        7: cc.p(160, 740),
+        8: cc.p(360, 740),
+        9: cc.p(560, 740),
+        10: cc.p(160, 940),
+        11: cc.p(360, 940),
+        12: cc.p(560, 940)
     },
 
     init: function (battleLog) {
@@ -38,6 +39,7 @@ var BatterLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._index = 1;
         this._isEnd = false;
         this._battleLog = battleLog;
         this._spiritNode = [];
@@ -54,14 +56,13 @@ var BatterLayer = cc.Layer.extend({
         bgSprite.setPosition(cc.p(40, 0));
         this.addChild(bgSprite);
 
-        this._backItem = cc.MenuItemFont.create("结束战斗", this.end, this);
-        this._backItem.setPosition(cc.p(250, -460));
-        var menu = cc.Menu.create(this._backItem);
-        this.addChild(menu);
+        return true;
+    },
 
-        this._backItem.setVisible(false);
+    play: function () {
+        cc.log("BatterLayer play");
 
-        var battleNode = battleLog.get("card");
+        var battleNode = this._battleLog.get("card");
 
         cc.log(battleNode);
 
@@ -70,27 +71,31 @@ var BatterLayer = cc.Layer.extend({
             if (battleNode[key] != undefined) {
                 cc.log(battleNode[key]);
 
+                var index = parseInt(key);
+
                 if (typeof(battleNode[key]) == "number") {
-                    this._battleNode[key] = BattleSpiritNode.create(battleNode[key]);
+                    this._battleNode[key] = BattleSpiritNode.create(battleNode[key], index);
                 } else {
-                    this._battleNode[key] = BattleCardNode.create(battleNode[key]);
+                    this._battleNode[key] = BattleCardNode.create(battleNode[key], index);
                 }
 
                 this._battleNode[key].setPosition(this._locate[key]);
                 this.addChild(this._battleNode[key]);
+
+                cc.log(this._battleNode[key]);
+
+                if (index < 7) {
+                    this._battleNode[key].runAnimations("beg_1", 0, this.began());
+                }
             }
         }
 
-        return true;
-    },
-
-    play: function () {
-        cc.log("BatterLayer play");
-
-        this._backItem.setVisible(true);
+        this._backItem = cc.MenuItemFont.create("结束战斗", this.end, this);
+        this._backItem.setPosition(cc.p(250, -460));
+        var menu = cc.Menu.create(this._backItem);
+        this.addChild(menu);
 
         this._battleLog.recover();
-        this.nextStep();
     },
 
     end: function () {
@@ -106,6 +111,125 @@ var BatterLayer = cc.Layer.extend({
         BattlePlayer.getInstance().next();
     },
 
+    _getDirection: function (index) {
+        if (index <= 6) {
+            return 1;
+        }
+
+        return 2;
+    },
+
+    began: function () {
+        this._counter += 1;
+
+        var that = this;
+        return function () {
+            that._counter -= 1;
+
+            if (that._counter == 0) {
+                playEffect({
+                    effectId: 2,
+                    target: that,
+                    loops: 1,
+                    position: cc.p(360, 590),
+                    clear: true,
+                    cb: function () {
+                        that.showSpiritAddition();
+                    }
+                });
+            }
+        }
+    },
+
+    showSpiritAdditionCallback: function () {
+        this._counter += 1;
+
+        var that = this;
+        return function () {
+            that._counter -= 1;
+
+            if (that._counter == 0) {
+                that.showSpiritAddition();
+            }
+        }
+    },
+
+    showSpiritAddition: function () {
+        cc.log("BattleLayer showSpiritAddition");
+
+        var that = this;
+
+        while (this._index <= 12) {
+            this._index += 1;
+
+            var index = this._index - 1;
+            if (this._battleNode[index] && (this._battleNode[index] instanceof BattleSpiritNode)) {
+                (function () {
+                    var effect8Node = cc.BuilderReader.load(main_scene_image.effect8, that);
+                    effect8Node.setPosition(that._locate[index]);
+                    that.addChild(effect8Node);
+
+                    var showSpiritAdditionCallback = that.showSpiritAdditionCallback();
+                    effect8Node.animationManager.setCompletedAnimationCallback(that, function () {
+                        effect8Node.removeFromParent();
+                        showSpiritAdditionCallback();
+                    });
+
+                    that._battleNode[index].runAnimations(
+                        "buf_1_" + that._getDirection(index),
+                        0,
+                        that.showSpiritAdditionCallback()
+                    );
+                })();
+
+                return;
+            }
+        }
+
+        this.nextStep();
+    },
+
+    showAddition: function (startIndex) {
+        cc.log("BattleLayer showOwnAddition");
+
+        var that = this;
+        var endIndex = startIndex + 6;
+
+        for (var i = startIndex; i < endIndex; ++i) {
+            if (this._battleNode[i] && (this._battleNode[i] instanceof BattleCardNode)) {
+                (function () {
+                    var cardNode = that._battleNode[i];
+                    var locate = that._locate[i];
+
+                    var effect9Node = cc.BuilderReader.load(main_scene_image.effect9, that);
+                    effect9Node.setPosition(locate);
+                    that.addChild(effect9Node);
+
+                    var showSpiritAdditionCallback1 = that.showSpiritAdditionCallback();
+                    effect9Node.animationManager.setCompletedAnimationCallback(that, function () {
+                        effect9Node.removeFromParent();
+
+                        var effect10Node = cc.BuilderReader.load(main_scene_image.effect10, that);
+                        effect10Node.setPosition(locate);
+                        that.addChild(effect10Node);
+
+                        var showSpiritAdditionCallback2 = that.showSpiritAdditionCallback();
+                        effect10Node.animationManager.setCompletedAnimationCallback(that, function () {
+                            effect10Node.removeFromParent();
+                            showSpiritAdditionCallback2();
+                        });
+
+                        cardNode._tip(cardNode.getSpiritAtk(), false);
+
+                        showSpiritAdditionCallback1();
+                    });
+
+                    cardNode.update(cardNode.getSpiritHp(), false);
+                })();
+            }
+        }
+    },
+
     callback: function () {
 
     },
@@ -113,19 +237,11 @@ var BatterLayer = cc.Layer.extend({
     nextStepCallback: function () {
         this._counter += 1;
 
-        cc.log(this._counter);
-
         var that = this;
         return function () {
-            cc.log("BattleLayer nextStepCallback");
-
             that._counter -= 1;
 
-            cc.log(that._counter);
-
             if (that._counter == 0) {
-                cc.log("xxxxxxxxxxxx进入下回合");
-
                 that.nextStep();
             }
         }
@@ -133,6 +249,12 @@ var BatterLayer = cc.Layer.extend({
 
     nextStep: function () {
         cc.log("BattleLayer nextStep");
+
+        for (var key in this._battleNode) {
+            if (this._battleNode[key].die) {
+                this._battleNode[key].die();
+            }
+        }
 
         if (this._isEnd) {
             return;
@@ -143,118 +265,125 @@ var BatterLayer = cc.Layer.extend({
             return;
         }
 
-        var battleStep = this._battleLog.getBattleStep();
+        this.attack(this._battleLog.getBattleStep());
+    },
 
+    attack: function (battleStep) {
+        cc.log("BattleLayer attack");
         cc.log(battleStep);
 
-        if (battleStep.isSkill()) {
-            var skillType = this._battleNode[battleStep.get("attacker")].getSkillType();
 
-            if (battleStep.isSpiritAtk()) {
+        if (battleStep.isSkill()) {
+            var atkNode = this._battleNode[battleStep.get("attacker")];
+            var skillType = atkNode.getSkillType();
+            var isSpiritAtk = battleStep.isSpiritAtk();
+            var ccbNode = atkNode.getSubtitleNode();
+
+            if (isSpiritAtk) {
                 battleStep.set("attacker", this._battleLog.getSpirit(battleStep.get("attacker")));
             }
 
-            if (skillType === 1) {
-                this.heal(battleStep);
-            } else if (skillType === 2) {
-                this.heal(battleStep);
-            } else if (skillType === 3) {
-                this.heal(battleStep);
-            } else if (skillType === 4) {
-                this.heal(battleStep);
+            if (ccbNode) {
+                ccbNode.setPosition(cc.p(360, 590));
+                this.addChild(ccbNode);
+
+                ccbNode.animationManager.setCompletedAnimationCallback(this, function () {
+                    if (skillType === 1) {
+                        this.singleAtk(battleStep);
+                    } else if (skillType === 2) {
+                        this.aoeAtk(battleStep);
+                    } else if (skillType === 3) {
+                        this.heal(battleStep);
+                    } else if (skillType === 4) {
+                        this.heal(battleStep);
+                    }
+                });
             } else {
-                cc.log("技能类型出错");
+                cc.log("错误的技能类型");
                 this.end();
             }
         } else {
-            this.heal(battleStep);
+            this.normalAtk(battleStep);
         }
-
-    },
-
-    _getDirection: function (index) {
-        if (index <= 6) {
-            return 1;
-        }
-
-        return 2;
     },
 
     normalAtk: function (battleStep) {
         var attacker = battleStep.get("attacker");
         var attackerLocate = this._locate[attacker];
 
+        battleStep.recover();
+        this.callback = function () {
+            var that = this;
+
+            while (battleStep.hasNextTarget()) {
+                (function () {
+                    var target = battleStep.getTarget();
+                    var targetLocate = that._locate[target];
+                    var targetNode = that._battleNode[target];
+                    var effect = battleStep.getEffect();
+                    var isCrit = battleStep.isCrit();
+
+                    var effect1Node = cc.BuilderReader.load(main_scene_image.effect1, that);
+                    effect1Node.setPosition(attackerLocate);
+                    that.addChild(effect1Node);
+
+                    var effect1NodeAnimationManager = effect1Node.animationManager;
+                    var nextStepCallback1 = that.nextStepCallback();
+                    effect1NodeAnimationManager.setCompletedAnimationCallback(that, function () {
+                        effect1Node.removeFromParent();
+
+                        var effect2Node = cc.BuilderReader.load(main_scene_image.effect2, that);
+                        effect2Node.setPosition(targetLocate);
+                        that.addChild(effect2Node);
+
+                        var nextStepCallback2 = that.nextStepCallback();
+                        effect2Node.animationManager.setCompletedAnimationCallback(that, function () {
+                            effect2Node.removeFromParent();
+                            nextStepCallback2();
+                        });
+
+                        targetNode.runAnimations(
+                            "def_1_" + that._getDirection(target),
+                            0,
+                            that.nextStepCallback()
+                        );
+
+                        targetNode.update(effect, isCrit);
+
+                        nextStepCallback1();
+                    });
+
+                    effect1Node.setRotation(lz.getAngle(attackerLocate, targetLocate));
+                    effect1Node.runAction(
+                        cc.EaseSineIn.create(
+                            cc.MoveTo.create(
+                                effect1NodeAnimationManager.getSequenceDuration(
+                                    effect1NodeAnimationManager.getRunningSequenceName()
+                                ),
+                                targetLocate
+                            )
+                        )
+                    );
+                })();
+            }
+        };
+
         this._battleNode[attacker].runAnimations(
             "atk_1_" + this._getDirection(attacker),
             0,
             this.nextStepCallback()
         );
-
-        this.callback = function () {
-            battleStep.recover();
-            while (battleStep.hasNextTarget()) {
-                var target = battleStep.getTarget();
-                var targetLocate = this._locate[target];
-
-                this._battleNode[target].runAnimations(
-                    "def_1_" + this._getDirection(target),
-                    0,
-                    this.nextStepCallback()
-                );
-
-//              this._battleNode[target].defend(battleStep.getEffect(), battleStep.isCrit());
-
-                var effect1Node = cc.BuilderReader.load(main_scene_image.effect1, this);
-
-                var that = this;
-                var effect1Cb = (function (effect1Node, targetLocate) {
-                    return function () {
-                        var effect2Node = cc.BuilderReader.load(main_scene_image.effect1, this);
-
-                        var effect2Cb = (function () {
-
-                        })();
-
-                        effect2Node.setPosition(targetLocate);
-                        that.addChild(effect1Node);
-
-                        effect1Node.animationManager.setCompletedAnimationCallback(this, cb);
-
-                        effect1Node.removeFromParent();
-                    };
-                })(effect1Node, targetLocate);
-
-                effect1Node.setPosition(attackerLocate);
-                this.addChild(effect1Node);
-
-                effect1Node.animationManager.setCompletedAnimationCallback(this, effect1Cb);
-                effect1Node.setRotation(lz.getAngle(attackerLocate, targetLocate));
-                effect1Node.runAction(
-                    cc.EaseSineIn.create(
-                        cc.MoveTo.create(0.5, targetLocate)
-                    )
-                );
-            }
-        };
     },
 
     singleAtk: function (battleStep) {
         var attacker = battleStep.get("attacker");
         var attackerLocate = this._locate[attacker];
 
-        cc.log(attacker);
-
-        this._battleNode[attacker].runAnimations(
-            "atk_2_" + this._getDirection(attacker),
-            0,
-            this.nextStepCallback()
-        );
-
         battleStep.recover();
         this.callback = function () {
-            while (battleStep.hasNextTarget()) {
-                var that = this;
+            var that = this;
 
+            while (battleStep.hasNextTarget()) {
                 (function () {
                     var target = battleStep.getTarget();
                     var targetLocate = that._locate[target];
@@ -264,12 +393,11 @@ var BatterLayer = cc.Layer.extend({
 
                     var effect3Node = cc.BuilderReader.load(main_scene_image.effect3, that);
                     effect3Node.setPosition(targetLocate);
-                    this.addChild(effect3Node);
+                    that.addChild(effect3Node);
 
                     var nextStepCallback = that.nextStepCallback();
                     effect3Node.animationManager.setCompletedAnimationCallback(that, function () {
                         effect3Node.removeFromParent();
-                        targetNode.dead();
                         nextStepCallback();
                     });
 
@@ -283,23 +411,23 @@ var BatterLayer = cc.Layer.extend({
                 })();
             }
         };
+
+        this._battleNode[attacker].runAnimations(
+            "atk_2_" + this._getDirection(attacker),
+            0,
+            this.nextStepCallback()
+        );
     },
 
     aoeAtk: function (battleStep) {
         var attacker = battleStep.get("attacker");
         var attackerLocate = this._locate[attacker];
 
-        this._battleNode[attacker].runAnimations(
-            "atk_3_" + this._getDirection(attacker),
-            0,
-            this.nextStepCallback()
-        );
-
         battleStep.recover();
         this.callback = function () {
-            while (battleStep.hasNextTarget()) {
-                var that = this;
+            var that = this;
 
+            while (battleStep.hasNextTarget()) {
                 (function () {
                     var target = battleStep.getTarget();
                     var targetLocate = that._locate[target];
@@ -322,7 +450,6 @@ var BatterLayer = cc.Layer.extend({
                         var nextStepCallback2 = that.nextStepCallback();
                         effect5Node.animationManager.setCompletedAnimationCallback(that, function () {
                             effect5Node.removeFromParent();
-                            targetNode.dead();
                             nextStepCallback2();
                         });
 
@@ -339,14 +466,33 @@ var BatterLayer = cc.Layer.extend({
                 })();
             }
         };
+
+        this._battleNode[attacker].runAnimations(
+            "atk_3_" + this._getDirection(attacker),
+            0,
+            this.nextStepCallback()
+        );
     },
 
     heal: function (battleStep) {
+        var attacker = battleStep.get("attacker");
+        var attackerLocate = this._locate[attacker];
+
         battleStep.recover();
         this.callback = function () {
-            while (battleStep.hasNextTarget()) {
-                var that = this;
+            var that = this;
 
+            var effect6Node = cc.BuilderReader.load(main_scene_image.effect6, this);
+            effect6Node.setPosition(attackerLocate);
+            this.addChild(effect6Node);
+
+            var nextStepCallback = this.nextStepCallback();
+            effect6Node.animationManager.setCompletedAnimationCallback(this, function () {
+                effect6Node.removeFromParent();
+                nextStepCallback();
+            });
+
+            while (battleStep.hasNextTarget()) {
                 (function () {
                     var target = battleStep.getTarget();
                     var targetLocate = that._locate[target];
@@ -354,46 +500,26 @@ var BatterLayer = cc.Layer.extend({
                     var effect = battleStep.getEffect();
                     var isCrit = battleStep.isCrit();
 
-                    var effect6Node = cc.BuilderReader.load(main_scene_image.effect6, that);
-                    effect6Node.setPosition(targetLocate);
-                    that.addChild(effect6Node);
+                    var effect7Node = cc.BuilderReader.load(main_scene_image.effect7, that);
+                    effect7Node.setPosition(targetLocate);
+                    that.addChild(effect7Node);
 
-                    var nextStepCallback1 = that.nextStepCallback();
-                    effect6Node.animationManager.setCompletedAnimationCallback(that, function () {
-                        effect6Node.removeFromParent();
-
-                        var effect7Node = cc.BuilderReader.load(main_scene_image.effect7, that);
-                        effect7Node.setPosition(targetLocate);
-                        that.addChild(effect7Node);
-
-                        var nextStepCallback2 = that.nextStepCallback();
-                        effect7Node.animationManager.setCompletedAnimationCallback(that, function () {
-                            effect7Node.removeFromParent();
-                            targetNode.dead();
-                            nextStepCallback2();
-                        });
-
-                        cc.log("xx----------------target" + target);
-                        var nextStepCallback3 = that.nextStepCallback();
-                        targetNode.runAnimations(
-                            "def_4_" + that._getDirection(target),
-                            0,
-                            function() {
-                                cc.log("----------------target" + target);
-                                nextStepCallback3();
-                            }
-                        );
-
-                        targetNode.update(effect, isCrit);
-
-                        nextStepCallback1();
+                    var nextStepCallback = that.nextStepCallback();
+                    effect7Node.animationManager.setCompletedAnimationCallback(that, function () {
+                        effect7Node.removeFromParent();
+                        nextStepCallback();
                     });
+
+                    targetNode.runAnimations(
+                        "def_4_" + that._getDirection(target),
+                        0,
+                        that.nextStepCallback()
+                    );
+
+                    targetNode.update(effect, isCrit);
                 })();
             }
         };
-
-        var attacker = battleStep.get("attacker");
-        var attackerLocate = this._locate[attacker];
 
         this._battleNode[attacker].runAnimations(
             "atk_4_" + this._getDirection(attacker),

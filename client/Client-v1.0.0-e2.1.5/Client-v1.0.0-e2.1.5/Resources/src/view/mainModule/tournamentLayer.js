@@ -64,7 +64,6 @@ var TournamentLayer = cc.Layer.extend({
         this._expProgress = Progress.create(null, main_scene_image.exp, 0, 0, true);
         this._expProgress.setPosition(cc.p(214, 975));
         this.addChild(this._expProgress);
-        this._expProgress.setFontColor(cc.c3b(255, 239, 131));
         this._expProgress.setScale(0.8);
 
         var lvBg = cc.Sprite.create(main_scene_image.lv_bg);
@@ -73,22 +72,18 @@ var TournamentLayer = cc.Layer.extend({
         lvBg.setScale(0.8);
 
         this._lvLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 36);
-        this._lvLabel.setColor(cc.c3b(255, 239, 131));
         this._lvLabel.setPosition(cc.p(87, 993));
         this.addChild(this._lvLabel);
 
         this._countLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
-        this._countLabel.setColor(cc.c3b(255, 239, 131));
         this._countLabel.setPosition(cc.p(530, 1013));
         this.addChild(this._countLabel);
 
         this._rankingLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
-        this._rankingLabel.setColor(cc.c3b(255, 239, 131));
         this._rankingLabel.setPosition(cc.p(430, 973));
         this.addChild(this._rankingLabel);
 
         this._elixirLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
-        this._elixirLabel.setColor(cc.c3b(255, 239, 131));
         this._elixirLabel.setPosition(cc.p(605, 973));
         this.addChild(this._elixirLabel);
 
@@ -98,7 +93,6 @@ var TournamentLayer = cc.Layer.extend({
         rewardIcon.setScaleX(2.5);
 
         this._rewardLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
-        this._rewardLabel.setColor(cc.c3b(255, 239, 131));
         this._rewardLabel.setPosition(cc.p(360, 900));
         this.addChild(this._rewardLabel);
 

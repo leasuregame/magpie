@@ -20,7 +20,7 @@ var vipBoxGoods = {
     },
 
     money: {
-        name: "铜板",
+        name: "仙币",
         url: "icon108",
         point: cc.p(440, 750)
     },
@@ -38,13 +38,13 @@ var vipBoxGoods = {
     },
 
     fragments: {
-        name: "卡牌碎片",
+        name: "卡魂",
         url: "icon145",
         point: cc.p(220, 550)
     },
 
     exp_card: {
-        name: "经验卡",
+        name: "经验元灵",
         url: "icon146",
         point: cc.p(440, 550)
     }
@@ -258,7 +258,6 @@ var VipLayer = cc.Layer.extend({
                 lazyLayer.addChild(nameLabel);
 
                 var countLabel = StrokeLabel.create(data[key], "STHeitiTC-Medium", 25);
-                countLabel.setColor(cc.c3b(225, 121, 60));
                 countLabel.setAnchorPoint(cc.p(0, 0.5));
                 countLabel.setPosition(cc.p(point.x + 50, point.y - 20));
                 lazyLayer.addChild(countLabel);
@@ -293,12 +292,10 @@ var VipLayer = cc.Layer.extend({
         lazyLayer.addChild(bgSprite);
 
         var failLabel = StrokeLabel.create("购 买 失 败", "STHeitiTC-Medium", 25);
-        failLabel.setColor(cc.c3b(255, 252, 175));
         failLabel.setPosition(cc.p(360, 660));
         lazyLayer.addChild(failLabel);
 
         var tipLabel = cc.LabelTTF.create("只有达到VIP" + id + "才能购买此礼包，快去充值吧！", "STHeitiTC-Medium", 20);
-        tipLabel.setColor(cc.c3b(255, 252, 175));
         tipLabel.setPosition(cc.p(360, 600));
         lazyLayer.addChild(tipLabel);
 

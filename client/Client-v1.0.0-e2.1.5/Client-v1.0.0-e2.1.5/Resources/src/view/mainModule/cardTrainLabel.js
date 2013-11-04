@@ -47,7 +47,6 @@ var CardTrainLabel = cc.Layer.extend({
         this.addChild(elixirIcon);
 
         this._elixirLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
-        this._elixirLabel.setColor(cc.c3b(255, 248, 69));
         this._elixirLabel.setAnchorPoint(cc.p(0, 0.5));
         this._elixirLabel.setPosition(cc.p(605, 753));
         this.addChild(this._elixirLabel);
@@ -59,7 +58,6 @@ var CardTrainLabel = cc.Layer.extend({
         this.addChild(needElixirIcon);
 
         this._needElixirLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
-        this._needElixirLabel.setColor(cc.c3b(255, 248, 69));
         this._needElixirLabel.setAnchorPoint(cc.p(0, 0.5));
         this._needElixirLabel.setPosition(cc.p(605, 722));
         this.addChild(this._needElixirLabel);
@@ -82,7 +80,6 @@ var CardTrainLabel = cc.Layer.extend({
         this._resLabel.addChild(hpIcon);
 
         this._hpLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._hpLabel.setColor(cc.c3b(255, 239, 131));
         this._hpLabel.setPosition(cc.p(0, 0));
         this._resLabel.addChild(this._hpLabel);
 
@@ -97,7 +94,6 @@ var CardTrainLabel = cc.Layer.extend({
         this._resLabel.addChild(atkIcon);
 
         this._atkLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
-        this._atkLabel.setColor(cc.c3b(255, 239, 131));
         this._atkLabel.setPosition(cc.p(0, -35));
         this._resLabel.addChild(this._atkLabel);
 
@@ -115,11 +111,17 @@ var CardTrainLabel = cc.Layer.extend({
         tipLabelBgSprite.setPosition(cc.p(0, 0));
         this._tipLabel.addChild(tipLabelBgSprite);
 
-        var tipLabel = cc.LabelTTF.create("每消耗 20 点仙丹可提升 1 点攻击或 2 点生命", "STHeitiTC-Medium", 22);
-        tipLabel.setColor(cc.c3b(255, 239, 131));
-        tipLabel.setPosition(cc.p(0, 0));
-        this._tipLabel.addChild(tipLabel);
+        this._tipLabel = cc.Node.create();
+        this._tipLabel.setPosition(cc.p(360, 380));
+        this.addChild(this._tipLabel);
 
+        var tipLabel1 = cc.LabelTTF.create("每消耗 20 点仙丹可提升 1 点攻击或 2 点生命", "STHeitiTC-Medium", 22);
+        tipLabel1.setPosition(cc.p(0, 20));
+        this._tipLabel.addChild(tipLabel1);
+
+        var tipLabel2 = cc.LabelTTF.create("仙丹通过竞技场产出", "STHeitiTC-Medium", 22);
+        tipLabel2.setPosition(cc.p(0, -20));
+        this._tipLabel.addChild(tipLabel2);
 
         this._helpLabel = cc.Node.create();
         this._helpLabel.setPosition(cc.p(360, 380));
@@ -136,25 +138,21 @@ var CardTrainLabel = cc.Layer.extend({
         this._helpLabel.addChild(trainCountLabel);
 
         var trainHpIcon = cc.LabelTTF.create("培养生命", "STHeitiTC-Medium", 22);
-        trainHpIcon.setColor(cc.c3b(255, 239, 131));
         trainHpIcon.setAnchorPoint(cc.p(0, 0.5));
         trainHpIcon.setPosition(cc.p(-130, 25));
         this._helpLabel.addChild(trainHpIcon);
 
         var trainAtkIcon = cc.LabelTTF.create("培养攻击", "STHeitiTC-Medium", 22);
-        trainAtkIcon.setColor(cc.c3b(255, 239, 131));
         trainAtkIcon.setAnchorPoint(cc.p(0, 0.5));
         trainAtkIcon.setPosition(cc.p(110, 25));
         this._helpLabel.addChild(trainAtkIcon);
 
         var trainOneIcon = cc.LabelTTF.create("培养 1 次", "STHeitiTC-Medium", 22);
-        trainOneIcon.setColor(cc.c3b(255, 239, 131));
         trainOneIcon.setAnchorPoint(cc.p(0, 0.5));
         trainOneIcon.setPosition(cc.p(-130, -25));
         this._helpLabel.addChild(trainOneIcon);
 
         var trainTenIcon = cc.LabelTTF.create("培养 10 次", "STHeitiTC-Medium", 22);
-        trainTenIcon.setColor(cc.c3b(255, 239, 131));
         trainTenIcon.setAnchorPoint(cc.p(0, 0.5));
         trainTenIcon.setPosition(cc.p(110, -25));
         this._helpLabel.addChild(trainTenIcon);
@@ -248,7 +246,7 @@ var CardTrainLabel = cc.Layer.extend({
         if (elixir < needElixir) {
             this._needElixirLabel.setColor(cc.c3b(255, 40, 40));
         } else {
-            this._needElixirLabel.setColor(cc.c3b(255, 248, 69));
+            this._needElixirLabel.setColor(cc.c3b(255, 255, 255));
         }
 
         if (this._leadCardHalfNode != null) {

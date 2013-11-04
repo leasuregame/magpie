@@ -45,7 +45,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
         this.setTouchPriority(NOVICE_TEACHING_LAYER_HANDLER_PRIORITY);
         this._step = sys.localStorage.getItem("step") || 0;
         this._rect = cc.rect(0, 0, 0, 0);
-        if(this.isNoviceTeaching())
+        if (!this.isNoviceTaught())
             this._load();
         else
             return false;
@@ -54,14 +54,14 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
     _load: function () {
         cc.log("NoviceTeachingLayer _load");
-        if(this._layerOrder[this._step] == 2) {
+        if (this._layerOrder[this._step] == 2) {
             MainScene.getInstance().switchLayer(SpiritPoolLayer);
             var spiritDetails = SpiritDetails.create();
             MainScene.getInstance().addChild(spiritDetails, 1);
         } else {
-            if(this._layerOrder[this._step] == 4)
+            if (this._layerOrder[this._step] == 4)
                 this._step = 10;
-            if(this._layerOrder[this._step] == 5)
+            if (this._layerOrder[this._step] == 5)
                 this._step = 15;
             MainScene.getInstance().switchLayer(this._layer[this._layerOrder[this._step]]);
         }
@@ -70,12 +70,12 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
     _save: function () {
         cc.log("NoviceTeachingLayer _save");
-        sys.localStorage.setItem("step",this._step);
+        sys.localStorage.setItem("step", this._step);
     },
 
     next: function () {
         cc.log("NoviceTeachingLayer next");
-        if(this._step < OVER_NOVICE_STEP) {
+        if (this._step < OVER_NOVICE_STEP) {
             this._rect = cc.rect(0, 0, 0, 0);
             this._changeEffect(this._effectOrder[this._step]);
         } else {
@@ -83,7 +83,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
         }
     },
 
-    clearAndSave: function() {
+    clearAndSave: function () {
         this._clearEffect();
         this._step++;
         this._save();
@@ -110,15 +110,15 @@ var NoviceTeachingLayer = LazyLayer.extend({
             cc.log(this);
 
             if (node != null) {
-                node.setAnchorPoint(cc.p(0,0));
+                node.setAnchorPoint(cc.p(0, 0));
                 node.setPosition(cc.p(40, 88));
                 this.addChild(node);
                 this._effectNode = node;
-                if(this._clickType[this._rect] == 0) {
+                if (this._clickType[this._rect] == 0) {
                     this._rect = this._rectOrder[this._step];
                 } else {
                     var that = this;
-                    node.animationManager.setCompletedAnimationCallback(this,function(){
+                    node.animationManager.setCompletedAnimationCallback(this, function () {
                         that._rect = that._rectOrder[that._step];
                     });
                 }
@@ -129,16 +129,16 @@ var NoviceTeachingLayer = LazyLayer.extend({
         }
     },
 
-    _getStep: function() {
+    _getStep: function () {
         cc.log("NoviceTeachingLayer getStep");
         cc.log(this._step);
         return this._step || 0;
     },
 
-    isNoviceTeaching: function() {
+    isNoviceTeaching: function () {
         cc.log("NoviceTeachingLayer isNoviceTeaching");
 
-        if(this._getStep() < OVER_NOVICE_STEP)
+        if (this._getStep() < OVER_NOVICE_STEP)
             return true;
         else {
             this.removeFromParent();
@@ -146,12 +146,12 @@ var NoviceTeachingLayer = LazyLayer.extend({
         }
     },
 
-    isNoviceTaught : function() {
+    isNoviceTaught: function () {
         cc.log("NoviceTeachingLayer isNoviceTaught");
-        if(this._getStep() == OVER_NOVICE_STEP)
+        if (this._getStep() == OVER_NOVICE_STEP)
             return true;
         var player = gameData.player;
-        if(player.get('exp') == 0 && player.get('lv') == 1)
+        if (player.get('exp') == 0 && player.get('lv') == 1)
             return false;
         else
             return true;

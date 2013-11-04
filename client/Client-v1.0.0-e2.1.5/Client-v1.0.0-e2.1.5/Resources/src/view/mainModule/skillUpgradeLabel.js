@@ -52,7 +52,6 @@ var SkillUpgradeLabel = cc.Node.extend({
         this.addChild(skillPointIcon);
 
         this._skillPointLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._skillPointLabel.setColor(cc.c3b(255, 239, 131));
         this._skillPointLabel.setAnchorPoint(cc.p(0, 0.5));
         this._skillPointLabel.setPosition(cc.p(585, 758));
         this.addChild(this._skillPointLabel);
@@ -83,7 +82,7 @@ var SkillUpgradeLabel = cc.Node.extend({
         this._nextSkillLvLabel.setPosition(cc.p(100, 0));
         this._resLabel.addChild(this._nextSkillLvLabel);
 
-        var skillHarmIcon = cc.LabelTTF.create("技能伤害:", "STHeitiTC-Medium", 22);
+        var skillHarmIcon = cc.LabelTTF.create("技能效果:", "STHeitiTC-Medium", 22);
         skillHarmIcon.setColor(cc.c3b(255, 239, 131));
         skillHarmIcon.setPosition(cc.p(-85, -33));
         this._resLabel.addChild(skillHarmIcon);
@@ -109,22 +108,27 @@ var SkillUpgradeLabel = cc.Node.extend({
         helpBgSprite.setPosition(cc.p(360, 380));
         this.addChild(helpBgSprite);
 
-        this._tipLabel = cc.LabelTTF.create("技能通过消耗技能点提升等级", "STHeitiTC-Medium", 22);
-        this._tipLabel.setColor(cc.c3b(255, 239, 131));
+        this._tipLabel = cc.Node.create();
         this._tipLabel.setPosition(cc.p(360, 380));
         this.addChild(this._tipLabel);
+
+        var tipLabel1 = cc.LabelTTF.create("技能通过消耗技能点提升等级", "STHeitiTC-Medium", 22);
+        tipLabel1.setPosition(cc.p(0, 20));
+        this._tipLabel.addChild(tipLabel1);
+
+        var tipLabel2 = cc.LabelTTF.create("技能点通过天道产出", "STHeitiTC-Medium", 22);
+        tipLabel2.setPosition(cc.p(0, -20));
+        this._tipLabel.addChild(tipLabel2);
 
         this._helpLabel = cc.Node.create();
         this._helpLabel.setPosition(cc.p(360, 380));
         this.addChild(this._helpLabel);
 
         var needSkillPointIcon = cc.LabelTTF.create("升级还需技能点:", "STHeitiTC-Medium", 22);
-        needSkillPointIcon.setColor(cc.c3b(255, 239, 131));
         needSkillPointIcon.setPosition(cc.p(-44, 0));
         this._helpLabel.addChild(needSkillPointIcon);
 
         this._needSkillPointLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._needSkillPointLabel.setColor(cc.c3b(255, 239, 131));
         this._needSkillPointLabel.setAnchorPoint(cc.p(0, 0.5));
         this._needSkillPointLabel.setPosition(cc.p(44, -2));
         this._helpLabel.addChild(this._needSkillPointLabel);
@@ -201,7 +205,7 @@ var SkillUpgradeLabel = cc.Node.extend({
             if (upgradeNeedSkillPoint > skillPoint) {
                 this._needSkillPointLabel.setColor(cc.c3b(255, 40, 40));
             } else {
-                this._needSkillPointLabel.setColor(cc.c3b(255, 239, 131));
+                this._needSkillPointLabel.setColor(cc.c3b(255, 255, 255));
             }
 
             this._needSkillPointLabel.setString(upgradeNeedSkillPoint);

@@ -520,8 +520,7 @@ var main_scene_image = {
     HuGuang_JiZhong: effect_scene_path + "HuGuang_JiZhong.png",
     PoWuZhan_Light: effect_scene_path + "PoWuZhan_Light.png",
     tiaoshi: effect_scene_path + "tiaoshi.jpg",
-    pk: effect_scene_path + "pk.png",
-    ZhenYeYin_Zhen: effect_scene_path + "ZhenYeYin_Zhen.png",
+
 
 
 
@@ -559,15 +558,23 @@ var main_scene_image = {
     p21: effect_scene_path + "effect/" + "p21.png",
     p22: effect_scene_path + "effect/" + "p22.png",
     p23: effect_scene_path + "effect/" + "p23.png",
+    p24: effect_scene_path + "effect/" + "p24.png",
+    p25: effect_scene_path + "effect/" + "p25.png",
+    p26: effect_scene_path + "effect/" + "p26.png",
+    p27: effect_scene_path + "effect/" + "p27.png",
+    p28: effect_scene_path + "effect/" + "p28.png",
+    p29: effect_scene_path + "effect/" + "p29.png",
+    p30: effect_scene_path + "effect/" + "p30.png",
+    p31: effect_scene_path + "effect/" + "p31.png",
+    p32: effect_scene_path + "effect/" + "p32.png",
+    p33: effect_scene_path + "effect/" + "p33.png",
+    p34: effect_scene_path + "effect/" + "p34.png",
 
 
 
 
 
-    texiao7: ccb_scene_path + "texiao7.ccbi",
-    texiao9: ccb_scene_path + "texiao9.ccbi",
-    ceshi: ccb_scene_path + "ceshi.ccbi",
-    ceshi2: ccb_scene_path + "ceshi2.ccbi",
+    texiao8: ccb_scene_path + "texiao8.ccbi",
     tutorials1: ccb_scene_path + "tutorials1.ccbi",
     tutorials2: ccb_scene_path + "tutorials2.ccbi",
     tutorials3: ccb_scene_path + "tutorials3.ccbi",
@@ -585,6 +592,9 @@ var main_scene_image = {
     tutorials15: ccb_scene_path + "tutorials15.ccbi",
     tutorials16: ccb_scene_path + "tutorials16.ccbi",
     testBattleNode: ccb_scene_path + "testBattleNode.ccbi",
+    spiritNode: ccb_scene_path + "spiritNode.ccbi",
+    battleNode: ccb_scene_path + "battleNode.ccbi",
+
 
 
 
@@ -600,6 +610,13 @@ var main_scene_image = {
     effect7: ccb_scene_path + "effect7.ccbi", 
     effect8: ccb_scene_path + "effect8.ccbi", 
     effect9: ccb_scene_path + "effect9.ccbi", 
+    effect10: ccb_scene_path + "effect10.ccbi", 
+    effect11: ccb_scene_path + "effect11.ccbi", 
+    effect12: ccb_scene_path + "effect12.ccbi", 
+    effect13: ccb_scene_path + "effect13.ccbi", 
+    effect14: ccb_scene_path + "effect14.ccbi", 
+    effect15: ccb_scene_path + "effect15.ccbi", 
+    
 };
 
 var main_scene_res = [
@@ -681,3 +698,6 @@ for (var key in main_scene_image) {
 //字体
 main_scene_res.push({src: "../res/font/skillName.fnt"});
 main_scene_res.push({src: "../res/font/skillName.png"});
+main_scene_res.push({src: "../res/font/tipNumber.fnt"});
+main_scene_res.push({src: "../res/font/tipNumber.png"});
+

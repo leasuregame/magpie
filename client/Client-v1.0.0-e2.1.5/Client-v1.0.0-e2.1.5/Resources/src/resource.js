@@ -98,6 +98,7 @@ var main_scene_image = {
     progress10: main_scene_path + "progress10.png",
     progress11: main_scene_path + "progress11.png",
     progress12: main_scene_path + "progress12.png",
+    progress13: main_scene_path + "progress13.png",
 
     vip1: main_scene_path + "vip1.png",
     vip2: main_scene_path + "vip2.png",
@@ -417,7 +418,7 @@ var main_scene_image = {
 //    icon141: main_scene_path + "icon141.png",
     icon142: main_scene_path + "icon142.png",
     icon143: main_scene_path + "icon143.png",
-//    icon144: main_scene_path + "icon144.png",
+    icon144: main_scene_path + "icon144.png",
     icon145: main_scene_path + "icon145.png",
     icon146: main_scene_path + "icon146.png",
     icon147: main_scene_path + "icon147.png",
@@ -550,6 +551,7 @@ var main_scene_image = {
 
     // 特效
     battleNode: "res/ccb/battleNode.ccbi",
+    spiritNode: "res/ccb/spiritNode.ccbi",
 
     effect1: "res/ccb/effect1.ccbi",
     effect2: "res/ccb/effect2.ccbi",
@@ -558,6 +560,14 @@ var main_scene_image = {
     effect5: "res/ccb/effect5.ccbi",
     effect6: "res/ccb/effect6.ccbi",
     effect7: "res/ccb/effect7.ccbi",
+    effect8: "res/ccb/effect8.ccbi",
+    effect9: "res/ccb/effect9.ccbi",
+    effect10: "res/ccb/effect10.ccbi",
+    effect11: "res/ccb/effect11.ccbi",
+    effect12: "res/ccb/effect12.ccbi",
+    effect13: "res/ccb/effect13.ccbi",
+    effect14: "res/ccb/effect14.ccbi",
+    effect15: "res/ccb/effect15.ccbi",
 
 
     // 特效资源
@@ -581,6 +591,20 @@ var main_scene_image = {
     p18: "res/effect/effect/p18.png",
     p19: "res/effect/effect/p19.png",
     p20: "res/effect/effect/p20.png",
+    p21: "res/effect/effect/p21.png",
+    p22: "res/effect/effect/p22.png",
+    p23: "res/effect/effect/p23.png",
+    p24: "res/effect/effect/p24.png",
+    p25: "res/effect/effect/p25.png",
+    p26: "res/effect/effect/p26.png",
+    p27: "res/effect/effect/p27.png",
+    p28: "res/effect/effect/p28.png",
+    p29: "res/effect/effect/p29.png",
+    p30: "res/effect/effect/p30.png",
+    p31: "res/effect/effect/p31.png",
+    p32: "res/effect/effect/p32.png",
+    p33: "res/effect/effect/p33.png",
+    p34: "res/effect/effect/p34.png",
 
 
     // 新手特效
@@ -684,6 +708,12 @@ for (var effectId = 0; effectId < effectConfig.length; ++effectId) {
 for (var key in main_scene_image) {
     main_scene_res.push({src: main_scene_image[key]});
 }
+
+//字体
+main_scene_res.push({src: "./res/font/skillName.fnt"});
+main_scene_res.push({src: "./res/font/skillName.png"});
+main_scene_res.push({src: "./res/font/tipNumber.fnt"});
+main_scene_res.push({src: "./res/font/tipNumber.png"});
 
 // battle scene res
 var battle_scene_res = [

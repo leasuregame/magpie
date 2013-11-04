@@ -24,66 +24,6 @@
 		<array>
 			<dict>
 				<key>baseClass</key>
-				<string>CCSprite</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string></string>
-				<key>displayName</key>
-				<string>card_frame5</string>
-				<key>memberVarAssignmentName</key>
-				<string></string>
-				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>anchorPoint</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.5</real>
-							<real>0.5</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<false/>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>ignoreAnchorPointForPosition</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>displayFrame</string>
-						<key>type</key>
-						<string>SpriteFrame</string>
-						<key>value</key>
-						<array>
-							<string></string>
-							<string>main/card_frame5.png</string>
-						</array>
-					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>baseClass</key>
 				<string>CCNode</string>
 				<key>children</key>
 				<array>
@@ -198,8 +138,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>0.80000001192092896</real>
-												<real>0.80000001192092896</real>
+												<real>0.30000001192092896</real>
+												<real>0.30000001192092896</real>
 											</array>
 										</dict>
 										<dict>
@@ -216,26 +156,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>0.89999997615814209</real>
-												<real>0.89999997615814209</real>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>1</integer>
-											</dict>
-											<key>name</key>
-											<string>scale</string>
-											<key>time</key>
-											<real>0.23333333432674408</real>
-											<key>type</key>
-											<integer>4</integer>
-											<key>value</key>
-											<array>
-												<real>1.5</real>
-												<real>1.5</real>
+												<real>0.60000002384185791</real>
+												<real>0.80000001192092896</real>
 											</array>
 										</dict>
 										<dict>
@@ -252,8 +174,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1.6000000238418579</real>
-												<real>1.6000000238418579</real>
+												<real>0.69999998807907104</real>
+												<real>0.89999997615814209</real>
 											</array>
 										</dict>
 										<dict>
@@ -270,8 +192,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>2</real>
-												<real>2</real>
+												<real>1</real>
+												<real>1.2000000476837158</real>
 											</array>
 										</dict>
 									</array>
@@ -304,7 +226,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>60</real>
+									<real>70</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -331,8 +253,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2</real>
-									<real>2</real>
+									<real>1</real>
+									<real>1.2000000476837158</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -373,20 +295,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>0</integer>
-									<integer>244</integer>
-									<integer>26</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>blendFunc</string>
-								<key>type</key>
-								<string>Blendmode</string>
-								<key>value</key>
-								<array>
-									<integer>1</integer>
-									<integer>1</integer>
+									<integer>21</integer>
+									<integer>236</integer>
+									<integer>60</integer>
 								</array>
 							</dict>
 						</array>
@@ -504,8 +415,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>0.80000001192092896</real>
-												<real>0.80000001192092896</real>
+												<real>0.30000001192092896</real>
+												<real>0.30000001192092896</real>
 											</array>
 										</dict>
 										<dict>
@@ -522,26 +433,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>0.89999997615814209</real>
-												<real>0.89999997615814209</real>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>1</integer>
-											</dict>
-											<key>name</key>
-											<string>scale</string>
-											<key>time</key>
-											<real>0.23333333432674408</real>
-											<key>type</key>
-											<integer>4</integer>
-											<key>value</key>
-											<array>
-												<real>1.5</real>
-												<real>1.5</real>
+												<real>0.60000002384185791</real>
+												<real>0.80000001192092896</real>
 											</array>
 										</dict>
 										<dict>
@@ -558,8 +451,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1.6000000238418579</real>
-												<real>1.6000000238418579</real>
+												<real>0.69999998807907104</real>
+												<real>0.89999997615814209</real>
 											</array>
 										</dict>
 										<dict>
@@ -576,8 +469,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>2</real>
-												<real>2</real>
+												<real>1</real>
+												<real>1.2000000476837158</real>
 											</array>
 										</dict>
 									</array>
@@ -610,7 +503,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>60</real>
+									<real>70</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -637,8 +530,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2</real>
-									<real>2</real>
+									<real>1</real>
+									<real>1.2000000476837158</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -679,9 +572,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>215</integer>
-									<integer>242</integer>
-									<integer>162</integer>
+									<integer>184</integer>
+									<integer>238</integer>
+									<integer>112</integer>
 								</array>
 							</dict>
 							<dict>
@@ -869,7 +762,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>800</real>
+						<real>500</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -885,7 +778,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>1000</integer>
+						<integer>80</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -961,9 +854,9 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.24621623754501343</real>
-								<real>0.78672456741333008</real>
-								<real>0.26193439960479736</real>
+								<real>0.10987257212400436</real>
+								<real>0.81010782718658447</real>
+								<real>0.13213115930557251</real>
 								<real>1</real>
 							</array>
 							<array>
@@ -1059,8 +952,6 @@
 						<string>effect/effect/p18.png</string>
 					</dict>
 				</array>
-				<key>seqExpanded</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -1187,7 +1078,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>800</real>
+						<real>500</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1203,7 +1094,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>1000</integer>
+						<integer>80</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1279,9 +1170,9 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.38202023506164551</real>
-								<real>0.81020265817642212</real>
-								<real>0.33626312017440796</real>
+								<real>0.073942147195339203</real>
+								<real>0.82669061422348022</real>
+								<real>0.12762495875358582</real>
 								<real>1</real>
 							</array>
 							<array>
@@ -1377,8 +1268,6 @@
 						<string>effect/effect/p18.png</string>
 					</dict>
 				</array>
-				<key>seqExpanded</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

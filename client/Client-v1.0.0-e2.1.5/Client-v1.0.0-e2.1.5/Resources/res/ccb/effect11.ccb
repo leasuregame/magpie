@@ -1716,8 +1716,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1</real>
-												<real>1</real>
+												<real>2</real>
+												<real>2</real>
 											</array>
 										</dict>
 										<dict>
@@ -1734,8 +1734,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1</real>
-												<real>1</real>
+												<real>2</real>
+												<real>2</real>
 											</array>
 										</dict>
 										<dict>
@@ -1849,6 +1849,8 @@
 								<integer>0</integer>
 							</dict>
 						</array>
+						<key>seqExpanded</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>animatedProperties</key>

@@ -520,8 +520,7 @@ var main_scene_image = {
     HuGuang_JiZhong: effect_scene_path + "HuGuang_JiZhong.png",
     PoWuZhan_Light: effect_scene_path + "PoWuZhan_Light.png",
     tiaoshi: effect_scene_path + "tiaoshi.jpg",
-    pk: effect_scene_path + "pk.png",
-    ZhenYeYin_Zhen: effect_scene_path + "ZhenYeYin_Zhen.png",
+
 
 
 

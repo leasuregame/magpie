@@ -21,6 +21,9 @@ Handler::collect = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
     
+    if player.gold < spiritConfig.BUY_SPIRIT_GOLD
+      return next(null, {code: 501, msg: '元宝不足'})
+
     spiritPool = _.clone(player.spiritPool)
     if spiritPool.collectCount <= 0
       return next(null, {code: 501, msg: '不能采集，已经达到每天最大采集次数'})   

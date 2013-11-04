@@ -454,9 +454,9 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         cc.log("PassiveSkillAfreshLabel _afresh");
 
         var that = this;
-        this._leadCard.afreshPassiveSkill(function (data) {
+        this._leadCard.afreshPassiveSkill(function (isCanAfresh) {
             if (isRepeatAfresh) {
-                that._afreshCallBack();
+                that._afreshCallBack(isCanAfresh);
             }
 
             that.update(true);
@@ -469,28 +469,32 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._afresh(true);
     },
 
-    _afreshCallBack: function () {
+    _afreshCallBack: function (isCanAfresh) {
         cc.log("PassiveSkillAfreshLabel _afreshCallBack: " + this._stopType);
 
         var passiveSkill = this._leadCard.get("passiveSkill");
         var maxValue = 0;
-        var len = this._afreshIdList.length;
+            var len = this._afreshIdList.length;
         for (var i = 0; i < len; ++i) {
             maxValue = Math.max(maxValue, passiveSkill[this._afreshIdList[i]].value);
         }
 
         cc.log(maxValue);
-
-        if (this._stopType == STOP_UNTIL_BLUE) {
-            if (maxValue >= 5.0) {
-                TipLayer.tip("人品爆发，出现蓝色属性，洗炼完毕");
-                this._onClickStop();
+        cc.log(isCanAfresh);
+        if(isCanAfresh) {
+            if (this._stopType == STOP_UNTIL_BLUE) {
+                if (maxValue >= 5.0) {
+                    TipLayer.tip("人品爆发，出现蓝色属性，洗炼完毕");
+                    this._onClickStop();
+                }
+            } else if (this._stopType == STOP_UNTIL_YELLOW) {
+                if (maxValue >= 8.0) {
+                    TipLayer.tip("人品爆发，惊现蓝色属性，洗炼完毕");
+                    this._onClickStop();
+                }
             }
-        } else if (this._stopType == STOP_UNTIL_YELLOW) {
-            if (maxValue >= 8.0) {
-                TipLayer.tip("人品爆发，惊现蓝色属性，洗炼完毕");
-                this._onClickStop();
-            }
+        } else {
+            this._onClickStop();
         }
     },
 
@@ -626,8 +630,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._tipLabel.setFontSize(22);
         this._setTip();
 
-        this.schedule(this._repeatAfresh, 2, null, 0);
-        this.schedule(this._setTip, 1, null, 0);
+        this.schedule(this._repeatAfresh, 2);
+        this.schedule(this._setTip, 1);
     },
 
     _onClickCancel: function () {

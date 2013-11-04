@@ -335,12 +335,10 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         this._stopAllActions();
 
-        var speed = 30;
-        var times = Math.ceil(exp / speed);
         var nowExp = exp;
 
-        this.schedule(function () {
-            var addExp = speed;
+        var fn = function () {
+            var addExp = Math.floor(dummyCard.get("maxExp") / 10);
 
             if (nowExp < addExp) {
                 addExp = nowExp;
@@ -372,10 +370,13 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._cardCountLabel.setString(Math.round(cardCount * factor));
 
             if (nowExp <= 0) {
+                this.unschedule(fn);
                 this._retinueCard = [];
                 this.update();
             }
-        }, 0.05, times);
+        };
+
+        this.schedule(fn, 0.05);
     },
 
     _onClickSelectLeadCard: function () {

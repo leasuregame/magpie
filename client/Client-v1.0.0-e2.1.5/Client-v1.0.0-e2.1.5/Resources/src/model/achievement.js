@@ -77,6 +77,8 @@ var Achievement = Entity.extend({
             } else {
                 cc.log("sync fail");
 
+                TipLayer.tip(data.msg);
+
                 that.sync();
             }
         });

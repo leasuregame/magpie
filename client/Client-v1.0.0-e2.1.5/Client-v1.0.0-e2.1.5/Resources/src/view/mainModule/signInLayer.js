@@ -13,13 +13,15 @@
 
 
 var rewardGoodsUrl = {
+    power: "icon106",
     money: "icon108",
     energy: "icon110",
     skillPoint: "icon109",
     elixir: "icon107",
     lottery_free_count: "icon182",
     spirit: "icon111",
-    gold: "icon112"
+    gold: "icon112",
+    card: "icon146"
 };
 
 var SignInLayer = LazyLayer.extend({
@@ -49,11 +51,11 @@ var SignInLayer = LazyLayer.extend({
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(600, 750));
-        bgSprite.setPosition(cc.p(362, 580));
+        bgSprite.setPosition(cc.p(362, 565));
         this.addChild(bgSprite);
 
         var titleLabel = cc.Sprite.create(main_scene_image.icon187);
-        titleLabel.setPosition(cc.p(360, 920));
+        titleLabel.setPosition(cc.p(360, 905));
         this.addChild(titleLabel);
 
 //        var closeItem = cc.MenuItemImage.create(

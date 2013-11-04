@@ -111,7 +111,7 @@ var TaskLayer = cc.Layer.extend({
             main_scene_image.button9,
             main_scene_image.button9s,
             main_scene_image.button9d,
-            main_scene_image.icon15,
+            main_scene_image.icon44,
             this._onClickWipeOut,
             this
         );
@@ -290,10 +290,7 @@ var TaskLayer = cc.Layer.extend({
         gameData.task.wipeOut(function (data) {
             cc.log(data);
 
-            for (var key in data) {
-                var str = (gameGoodsName[key] || key) + " + " + data[key];
-                TipLayer.tipNoBg(str);
-            }
+            lz.tipReward(data);
 
             that.update();
         }, id);

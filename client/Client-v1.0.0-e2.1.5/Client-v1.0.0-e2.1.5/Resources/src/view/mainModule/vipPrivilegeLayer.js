@@ -36,12 +36,13 @@ var VipPrivilegeLayer = LazyLayer.extend({
         var shop = gameData.shop;
         var vip = gameData.player.get("vip");
         var nextVipCash = shop.getNextVipCash();
+        var str
         cc.log(nextVipCash);
         if (nextVipCash) {
             var tipLabel = cc.LabelTTF.create(
-                "您现在是VIP" + vip + "再冲" + nextVipCash + "元RMB可以享受VIP" + (vip + 1),
+                "您是VIP" + vip + "再冲" + nextVipCash + "元即可享受VIP" + (vip + 1),
                 "STHeitiTC-Medium",
-                22
+                20
             );
             tipLabel.setPosition(cc.p(360, 880));
             this.addChild(tipLabel);

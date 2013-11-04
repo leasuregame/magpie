@@ -344,8 +344,6 @@
 		90D49C3317CAF81800A22DB2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		90D49C3517CAF81800A22DB2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		90D49C3717CAF81800A22DB2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		90D49C3B17CAF81800A22DB2 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseNormal.png; path = Resources/CloseNormal.png; sourceTree = "<group>"; };
-		90D49C3D17CAF81800A22DB2 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseSelected.png; path = Resources/CloseSelected.png; sourceTree = "<group>"; };
 		90D49C3F17CAF81800A22DB2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
 		90D49C4117CAF81800A22DB2 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HelloWorld.png; path = Resources/HelloWorld.png; sourceTree = "<group>"; };
 		90D49C4317CAF81800A22DB2 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Resources/Icon-72.png"; sourceTree = "<group>"; };
@@ -1165,8 +1163,6 @@
 			children = (
 				909CF83717DECDDC0049D151 /* Default-568h@2x.png */,
 				90D4A08B17CAF82600A22DB2 /* CCB */,
-				90D49C3B17CAF81800A22DB2 /* CloseNormal.png */,
-				90D49C3D17CAF81800A22DB2 /* CloseSelected.png */,
 				90D49C3F17CAF81800A22DB2 /* Default.png */,
 				90D4A0CE17CAF82600A22DB2 /* hello.js */,
 				90D49C4117CAF81800A22DB2 /* HelloWorld.png */,
@@ -2602,6 +2598,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90D4A0D217CAF82600A22DB2 /* Build configuration list for PBXNativeTarget "Client-v1.0.0-e2.1.5" */;
 			buildPhases = (
+				9042607E181BA63D000B271D /* ShellScript */,
 				90D49C2217CAF81800A22DB2 /* Sources */,
 				90D49C2317CAF81800A22DB2 /* Frameworks */,
 				90D49C2417CAF81800A22DB2 /* Resources */,
@@ -2686,6 +2683,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9042607E181BA63D000B271D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/tcsh;
+			shellScript = "touch -cm ${SRCROOT}/Client-v1.0.0-e2.1.5/Resources/src\ntouch -cm ${SRCROOT}/Client-v1.0.0-e2.1.5/Resources/res";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		90D49C2217CAF81800A22DB2 /* Sources */ = {

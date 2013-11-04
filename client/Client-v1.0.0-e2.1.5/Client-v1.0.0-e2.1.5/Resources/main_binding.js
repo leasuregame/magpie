@@ -62,10 +62,12 @@ var appFiles = [
     'src/model/signIn.js',
     'src/model/achievement.js',
     'src/model/exchange.js',
+    'src/model/activity.js',
 
     'src/model/battleLogPool.js',
     'src/model/battleLog.js',
     'src/model/battleStep.js',
+    'src/model/gameFlow.js',
 
     'src/model/gameData.js',
 
@@ -87,8 +89,13 @@ var appFiles = [
 
     'src/view/mainModule/effect.js',
 
+    'src/view/mainModule/cocosBuilderClass.js',
     'src/view/mainModule/abilityRankLayer.js',
     'src/view/mainModule/achievementLayer.js',
+    'src/view/mainModule/rechargeLayer.js',
+    'src/view/mainModule/powerRewardLayer.js',
+    'src/view/mainModule/goldRewardLayer.js',
+    'src/view/mainModule/signInLayer.js',
     'src/view/mainModule/activityLayer.js',
     'src/view/mainModule/amountLayer.js',
     'src/view/mainModule/battleMessageLayer.js',
@@ -103,6 +110,7 @@ var appFiles = [
     'src/view/mainModule/cardListLayer.js',
     'src/view/mainModule/cardTrainLabel.js',
     'src/view/mainModule/cardUpgradeLabel.js',
+    'src/view/mainModule/tipsLayer.js',
     'src/view/mainModule/configLayer.js',
     'src/view/mainModule/evolutionLayer.js',
     'src/view/mainModule/exchangeLayer.js',
@@ -128,13 +136,13 @@ var appFiles = [
     'src/view/mainModule/playerDetails.js',
     'src/view/mainModule/playerHeaderLabel.js',
     'src/view/mainModule/playerTournamentLabel.js',
+    'src/view/mainModule/playerUpgradeLayer.js',
     'src/view/mainModule/propsLayer.js',
     'src/view/mainModule/pveLayer.js',
     'src/view/mainModule/rankLayer.js',
     'src/view/mainModule/readMessageLayer.js',
     'src/view/mainModule/sendMessageLayer.js',
     'src/view/mainModule/shopLayer.js',
-    'src/view/mainModule/signInLayer.js',
     'src/view/mainModule/skillUpgradeLabel.js',
     'src/view/mainModule/spiritDetails.js',
     'src/view/mainModule/spiritNode.js',
@@ -178,12 +186,10 @@ for (var i = 0; i < appFiles.length; ++i) {
 
 
 var director = cc.Director.getInstance();
-director.setDisplayStats(true);
+director.setDisplayStats(false);
 
 // set FPS. the default value is 1.0/60 if you don't call this
-director.setAnimationInterval(1.0 / 60);
-
-//var test = lz.HttpClientPackage.getInstance();
+director.setAnimationInterval(1.0 / 30);
 
 // create a scene. it's an autorelease object
 var myScene = LoginScene.create();

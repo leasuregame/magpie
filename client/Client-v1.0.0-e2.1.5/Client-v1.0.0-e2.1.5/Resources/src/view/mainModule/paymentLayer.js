@@ -47,9 +47,23 @@ var PaymentLayer = LazyLayer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        var tipLabel = cc.Sprite.create(main_scene_image.icon160);
-        tipLabel.setPosition(cc.p(260, 900));
-        this.addChild(tipLabel);
+        var tipIcon = cc.Sprite.create(main_scene_image.icon160);
+        tipIcon.setPosition(cc.p(260, 900));
+        this.addChild(tipIcon);
+
+        var nextVipCash = gameData.shop.getNextVipCash();
+        var vip = gameData.player.get("vip");
+        cc.log(nextVipCash);
+        if (nextVipCash) {
+            var tipLabel = cc.LabelTTF.create(
+                "您是VIP" + vip + "再冲" + nextVipCash + "元即可享受VIP" + (vip + 1),
+                "STHeitiTC-Medium",
+                18
+            );
+            tipLabel.setAnchorPoint(cc.p(0, 0.5));
+            tipLabel.setPosition(cc.p(120, 840));
+            this.addChild(tipLabel);
+        }
 
         var paymentTypeList = gameData.shop.getPaymentTypeList();
         var len = paymentTypeList.length;

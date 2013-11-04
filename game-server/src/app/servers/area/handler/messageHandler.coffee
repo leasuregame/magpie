@@ -8,8 +8,8 @@ _ = require 'underscore'
 utility = require '../../../common/utility'
 table = require '../../../manager/table'
 
-resData = table.getTableItem('resource_limit', 1);
-MAX_POWER_VALUE = resData.power_value;
+resData = table.getTableItem('resource_limit', 1)
+MAX_POWER_VALUE = resData.power_value
 
 SYSTEM = -1
 ADD_FRIEND_MESSAGE = 1

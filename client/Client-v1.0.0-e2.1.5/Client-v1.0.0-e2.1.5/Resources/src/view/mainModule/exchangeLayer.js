@@ -185,8 +185,14 @@ var ExchangeLayer = cc.Layer.extend({
         return function () {
             cc.log("ExchangeLayer _onClickExchange");
 
+            var exchange = gameData.exchange;
+
+            if (!exchange.canExchange(star)) {
+                return;
+            }
+
             var that = this;
-            gameData.exchange.exchange(function (data) {
+            exchange.exchange(function (data) {
                 cc.log(data);
 
                 cardDetails.removeFromParent();

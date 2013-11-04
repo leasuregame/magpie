@@ -19,6 +19,9 @@ MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
 LOTTERY_BY_GOLD = 1
 LOTTERY_BY_ENERGY = 0
 
+LOW_LUCKYCARD = 1
+HIGH_LUCKYCARD = 2
+
 ELIXIR_TYPE_HP = 0
 ELIXIR_TYPE_ATK = 1
 
@@ -87,9 +90,11 @@ Handler::strengthen = (msg, session, next) ->
 
     next(null, {code: 200, msg: result})
 
+
+
 Handler::luckyCard = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
-  level = msg.level or 1
+  level = msg.level or LOW_LUCKYCARD
   type = if msg.type? then msg.type else LOTTERY_BY_GOLD
 
   typeMapping = {}
@@ -99,12 +104,20 @@ Handler::luckyCard = (msg, session, next) ->
   player = null
   consumeVal = 0
   fragment = 0
+  isFree = 0
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
 
     (res, cb) ->
       player = res
+      if level is LOW_LUCKYCARD and type is LOTTERY_BY_GOLD and player.firstTime.lowLuckyCard
+        isFree = player.firstTime.lowLuckyCard
+        player.setFirstTime('lowLuckyCard', 0)
+      if level is HIGH_LUCKYCARD and type is LOTTERY_BY_GOLD and player.firstTime.highLuckyCard
+        isFree = player.firstTime.highLuckyCard
+        player.setFirstTime('highLuckyCard', 0)
+
       if _.keys(player.cards).length >= MAX_CARD_COUNT
         return cb({code: 501, msg: '卡牌容量已经达到最大值'})
 
@@ -112,7 +125,10 @@ Handler::luckyCard = (msg, session, next) ->
       hfc = player.highFragmentCount + 1 #高级抽卡魂次数
       hdcc = player.highDrawCardCount + 1 #高级抽卡次数
 
-      [card, consumeVal, fragment] = lottery(level, type, rfc, hfc, hdcc);
+      if isFree
+        [card, consumeVal, fragment] = lottery.freeLottery(level)
+      else
+        [card, consumeVal, fragment] = lottery.lottery(level, type, rfc, hfc, hdcc)
 
       if player[typeMapping[type]] < consumeVal
         return cb({code: 501, msg: '没有足够的资源来完成本次抽卡'}, null)
@@ -125,7 +141,7 @@ Handler::luckyCard = (msg, session, next) ->
         
     (cardEnt, cb) =>
       player.addCard(cardEnt);
-      if(level == 1)
+      if(level == LOW_LUCKYCARD)
           player.increase('rowFragmentCount',1)
       else
           player.increase('highFragmentCount',1)
@@ -137,7 +153,7 @@ Handler::luckyCard = (msg, session, next) ->
       if type is LOTTERY_BY_ENERGY
         player.decrease('energy', consumeVal)
 
-      if level is 2 and cardEnt.star == 5 #抽到5星卡牌，高级抽卡次数变为0
+      if level is HIGH_LUCKYCARD and cardEnt.star == 5 #抽到5星卡牌，高级抽卡次数变为0
         player.set('highDrawCardCount',0)
         card = table.getTableItem('cards', cardEnt.tableId)
         msg = {
@@ -150,7 +166,7 @@ Handler::luckyCard = (msg, session, next) ->
 
       if fragment
         player.increase('fragments',fragment)
-        if level is 1
+        if level is LOW_LUCKYCARD
           player.set('rowFragmentCount',0)
         else
           player.set('highFragmentCount',0)
@@ -168,7 +184,7 @@ Handler::luckyCard = (msg, session, next) ->
     achieve.luckyCardCount(player)
 
     ### 高级抽奖次数成就 ###
-    if level is 3
+    if level is HIGH_LUCKYCARD
       achieve.highLuckyCardCount(player)
 
     player.save()
@@ -213,7 +229,7 @@ Handler::skillUpgrade = (msg, session, next) ->
       
       card.increase('skillLv')
       card.increase('skillPoint', sp_need)
-      player.decrease('skillPoint', sp_need);
+      player.decrease('skillPoint', sp_need)
       cb(null, player, card)
   ], (err, player, card) ->
     if err
@@ -221,7 +237,7 @@ Handler::skillUpgrade = (msg, session, next) ->
 
     card.save()
     player.save()
-    next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need,ability: card.ability()}})
+    next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need, ability: card.ability()}})
 
 Handler::starUpgrade = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
@@ -280,7 +296,7 @@ Handler::starUpgrade = (msg, session, next) ->
 
         if card.useCardsCounts > 5
           rate = card.useCardsCounts * starUpgradeConfig.rate_per_card
-          card.set('useCardsCounts',-1);
+          card.set('useCardsCounts',-1)
 
       totalRate = _.min([card_count * starUpgradeConfig.rate_per_card + rate, 100])
 
@@ -291,6 +307,7 @@ Handler::starUpgrade = (msg, session, next) ->
         player.decrease('money', money_consume)
         card.increase('star')
         card.increase('tableId')
+        card.resetSkillLv()
         entityUtil.resetSkillIncForCard(card)
 
         # 获得so lucky成就
@@ -302,11 +319,9 @@ Handler::starUpgrade = (msg, session, next) ->
           achieve.star5card(player)
           cardNmae = table.getTableItem('cards', card.tableId).name
           msg = {
-            #route: 'onSystemMessage',
             msg: player.name + '成功的将' + cardNmae + '进阶为5星！！！'
             type: 0
           }
-          #@app.get('messageService').pushMessage(msg)
           msgQueue.push(msg);
         # 卡牌星级进阶，添加一个被动属性
         if card.star >= 3

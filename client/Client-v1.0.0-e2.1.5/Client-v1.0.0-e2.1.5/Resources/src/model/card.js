@@ -322,6 +322,8 @@ var Card = Entity.extend({
             } else {
                 cc.log("upgrade fail");
 
+                TipLayer.tip(data.msg);
+
                 cb(null);
             }
         });
@@ -384,6 +386,8 @@ var Card = Entity.extend({
             } else {
                 cc.log("upgradeSkill fail");
 
+                TipLayer.tip(data.msg);
+
                 cb();
             }
         });
@@ -421,11 +425,13 @@ var Card = Entity.extend({
                     gameData.player.add("gold", -10);
                 }
 
-                cb();
+                cb(true);
             } else {
                 cc.log("passSkillAfresh fail");
 
-                cb();
+                TipLayer.tip(data.msg);
+
+                cb(false);
             }
         });
     },
@@ -491,7 +497,9 @@ var Card = Entity.extend({
             } else {
                 cc.log("evolution fail");
 
-                cb(null);
+                TipLayer.tip(data.msg);
+
+                cb();
             }
         });
     },
@@ -528,6 +536,8 @@ var Card = Entity.extend({
                 cc.log("train fail");
 
                 TipLayer.tip(data.msg);
+
+                cb();
             }
         });
     },

@@ -75,7 +75,7 @@ describe("Connector Server", function() {
             password: 1
           }, function(data) {
             expect(data.code).toEqual(501);
-            //expect(data.msg).toEqual('')
+            expect(data.msg).toEqual('')
           });
         });
 
@@ -90,11 +90,25 @@ describe("Connector Server", function() {
 
         var addedUserId;
         beforeEach(function() {
-          doAjax('/adduser', {
-            account: 'testaccount',
-            password: '1'
+          request('connector.userHandler.register', {
+            account: 'test_account',
+            pasword: 1
           }, function(data) {
             addedUserId = data.uid;
+            request('connector.userHandler.login', {
+              account: 'test_account',
+              password: 1
+            }, function(data) {
+              console.log(data);
+              request('connector.playerHandler.createPlayer', {
+                areaId: 1,
+                userId: addedUserId,
+                name: 'test_player'
+              }, function(data) {
+                playerId = data.playerId;
+                createTime = data.ct;
+              });
+            });
           });
         });
 
@@ -108,19 +122,6 @@ describe("Connector Server", function() {
           var playerId;
           var createTime;
 
-          beforeEach(function() {
-            doAjax('/addPlayer', {
-              userId: addedUserId,
-              areaId: 1,
-              name: 'player1',
-              lv: 3
-            }, function(data) {
-              playerId = data.playerId;
-              createTime = data.ct;
-            });
-          });
-
-
           afterEach(function() {
             doAjax('/removePlayer', {
               playerId: playerId
@@ -129,49 +130,50 @@ describe("Connector Server", function() {
 
           it("should can be login, and return player info", function() {
             request('connector.userHandler.login', {
-              account: 'testaccount',
+              account: 'test_account',
               password: '1',
               areaId: 1
             }, function(data) {
               console.log('after login');
               console.log(data);
-              expect(data.msg.user.id).toEqual(addedUserId);
-              expect(data.msg.user.account).toEqual('testaccount');
-              expect(data.msg.player).toEqual({
-                id: playerId,
-                createTime: createTime,
-                userId: addedUserId,
-                areaId: 1,
-                name: 'player1',
-                power: '',
-                lv: 1,
-                vip: 0,
-                vipBox: '',
-                cash: 0,
-                exp: 0,
-                money: 0,
-                gold: 0,
-                lineUp: {},
-                ability: 0,
-                task: '',
-                pass: {
-                    canReset: false,
-                    hasMystical: false,
-                    layer: 0,
-                    mark:[]
-                },
-                dailyGift: {},
-                skillPoint: 0,
-                energy: 0,
-                elixir: 0,
-                spiritor: '',
-                spiritPool: {},
-                cards: [],
-                rank: {},
-                friends: [],
-                signIn: {},
-                friendsCount: 20
-              });
+              expect(data).toEqual({});
+              // expect(data.msg.user.id).toEqual(addedUserId);
+              // expect(data.msg.user.account).toEqual('test_account');
+              // expect(data.msg.player).toEqual({
+              //   id: playerId,
+              //   createTime: createTime,
+              //   userId: addedUserId,
+              //   areaId: 1,
+              //   name: 'player1',
+              //   power: '',
+              //   lv: 1,
+              //   vip: 0,
+              //   vipBox: '',
+              //   cash: 0,
+              //   exp: 0,
+              //   money: 0,
+              //   gold: 0,
+              //   lineUp: {},
+              //   ability: 0,
+              //   task: '',
+              //   pass: {
+              //     canReset: false,
+              //     hasMystical: false,
+              //     layer: 0,
+              //     mark: []
+              //   },
+              //   dailyGift: {},
+              //   skillPoint: 0,
+              //   energy: 0,
+              //   elixir: 0,
+              //   spiritor: '',
+              //   spiritPool: {},
+              //   cards: [],
+              //   rank: {},
+              //   friends: [],
+              //   signIn: {},
+              //   friendsCount: 20
+              // });
             });
           });
 

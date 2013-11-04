@@ -145,6 +145,12 @@ var LotteryLayer = cc.Layer.extend({
         return function () {
             cc.log("LotteryLayer _onClickLottery");
 
+            var lottery = gameData.lottery;
+
+            if (!lottery.canLottery(type, level)) {
+                return;
+            }
+
             LazyLayer.showCloudLayer();
 
             var that = this;
@@ -153,25 +159,29 @@ var LotteryLayer = cc.Layer.extend({
 
                 that.update();
 
-                var blackLayer = cc.LayerColor.create(cc.c4b(0, 0, 0, 255), 720, 1136);
-                that.addChild(blackLayer);
+                if (data) {
+                    var blackLayer = cc.LayerColor.create(cc.c4b(0, 0, 0, 255), 720, 1136);
+                    that.addChild(blackLayer);
 
-                var ret = playEffect({
-                    effectId: 3,
-                    target: blackLayer,
-                    delay: 0.16,
-                    loops: 1,
-                    cb: function () {
-                        var cardFullNode = CardFullNode.create(data);
-                        cardFullNode.setPosition(ret.sprite.getPosition());
-                        blackLayer.addChild(cardFullNode);
+                    var ret = playEffect({
+                        effectId: 3,
+                        target: blackLayer,
+                        delay: 0.16,
+                        loops: 1,
+                        cb: function () {
+                            var cardFullNode = CardFullNode.create(data);
+                            cardFullNode.setPosition(ret.sprite.getPosition());
+                            blackLayer.addChild(cardFullNode);
 
-                        that.scheduleOnce(function () {
-                            blackLayer.removeFromParent();
-                            LazyLayer.closeCloudLayer();
-                        }, 2);
-                    }
-                });
+                            that.scheduleOnce(function () {
+                                blackLayer.removeFromParent();
+                                LazyLayer.closeCloudLayer();
+                            }, 2);
+                        }
+                    });
+                } else {
+                    LazyLayer.closeCloudLayer();
+                }
             }, type, level);
         }
     },

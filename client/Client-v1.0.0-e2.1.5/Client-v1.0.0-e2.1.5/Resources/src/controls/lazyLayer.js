@@ -35,11 +35,7 @@ var LazyLayer = cc.Layer.extend({
     onTouchBegan: function (touch, event) {
         cc.log("LazyLayer onTouchBegan");
 
-        if (this.isVisible()) {
-            return true;
-        }
-
-        return false;
+        return this.isVisible();
     },
 
     /**
@@ -93,6 +89,21 @@ LazyLayer.create = function () {
 
     LazyLayer.closeCloudLayer = function () {
         cc.log("LazyLayer closeCloudLayer");
+
+        cloudLayer.removeFromParent();
+        cloudLayer = null;
+    };
+
+    LazyLayer.showCloudAll = function () {
+        cc.log("LazyLayer showCloudAll");
+
+        cloudLayer = LazyLayer.create();
+        cloudLayer.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+        MainScene.getInstance().addChild(cloudLayer, zOrder);
+    };
+
+    LazyLayer.closeCloudAll = function () {
+        cc.log("LazyLayer closeCloudAll");
 
         cloudLayer.removeFromParent();
         cloudLayer = null;

@@ -76,7 +76,7 @@ Handler::rankingList = (msg, session, next) ->
       notCanGetReward: r.notCanGetReward,
       challengeCount: player.dailyGift.challengeCount,
       rankList: players,
-      time: Date.now()  - start
+      time: Date.now() - start
     }
     end = Date.now();
     console.log '**********get rankingList useTime = ',(end - start) / 1000
@@ -86,18 +86,25 @@ Handler::challenge = (msg, session, next) ->
   playerId = session.get('playerId') or msg.playerId
   playerName = session.get('playerName')
   targetId = msg.targetId
+  ranking = msg.ranking
 
   if playerId is targetId
    return next null,{code: 501, msg: '不能挑战自己'}
 
   player = null
+  target = null
   async.waterfall [
     (cb) ->
-      playerManager.getPlayerInfo {pid: playerId}, cb
+      playerManager.getPlayers [playerId, targetId], cb
 
     (res, cb) ->
-      player = res
-      fightManager.pvp {playerId: playerId, targetId: targetId}, cb
+      player = res[playerId]
+      target = res[targetId]
+
+      if target.rank.ranking isnt ranking
+        return cb({code: 501, msg: '对方排名已发生改变'})
+
+      fightManager.pvp player, target, cb
 
     (bl, cb) =>
       isWin =  bl.winner == 'own'
@@ -127,7 +134,18 @@ Handler::fight = (msg, session, next) ->
   playerId = session.get('playerId')
   targetId = msg.targetId
 
-  fightManager.pvp {playerId: playerId, targetId: targetId}, (err, bl) ->
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayers [playerId, targetId], cb
+
+    (res, cb) ->
+      player = res[playerId]
+      target = res[targetId]
+      cb(null, player, target)
+
+    (player, target, cb) ->
+      fightManager.pvp player, target, cb
+  ], (err, bl) ->
     if err
       return next(null, {code: 501, msg: err.msg or err})
 

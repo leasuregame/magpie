@@ -20,7 +20,7 @@ var vipBoxGoods = {
     },
 
     money: {
-        name: "铜板",
+        name: "仙币",
         url: "icon108",
         point: cc.p(440, 750)
     },
@@ -38,13 +38,13 @@ var vipBoxGoods = {
     },
 
     fragments: {
-        name: "卡牌碎片",
+        name: "卡魂",
         url: "icon145",
         point: cc.p(220, 550)
     },
 
     exp_card: {
-        name: "经验卡",
+        name: "经验元灵",
         url: "icon146",
         point: cc.p(440, 550)
     }

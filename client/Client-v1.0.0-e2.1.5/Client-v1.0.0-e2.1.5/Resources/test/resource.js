@@ -567,6 +567,8 @@ var main_scene_image = {
     p30: effect_scene_path + "effect/" + "p30.png",
     p31: effect_scene_path + "effect/" + "p31.png",
     p32: effect_scene_path + "effect/" + "p32.png",
+    p33: effect_scene_path + "effect/" + "p33.png",
+    p34: effect_scene_path + "effect/" + "p34.png",
 
 
 
@@ -597,6 +599,7 @@ var main_scene_image = {
 
 
 
+
     // 完成特效
     effect1: ccb_scene_path + "effect1.ccbi", 
     effect2: ccb_scene_path + "effect2.ccbi", 
@@ -609,6 +612,10 @@ var main_scene_image = {
     effect9: ccb_scene_path + "effect9.ccbi", 
     effect10: ccb_scene_path + "effect10.ccbi", 
     effect11: ccb_scene_path + "effect11.ccbi", 
+    effect12: ccb_scene_path + "effect12.ccbi", 
+    effect13: ccb_scene_path + "effect13.ccbi", 
+    effect14: ccb_scene_path + "effect14.ccbi", 
+    effect15: ccb_scene_path + "effect15.ccbi", 
     
 };
 
@@ -691,3 +698,6 @@ for (var key in main_scene_image) {
 //字体
 main_scene_res.push({src: "../res/font/skillName.fnt"});
 main_scene_res.push({src: "../res/font/skillName.png"});
+main_scene_res.push({src: "../res/font/tipNumber.fnt"});
+main_scene_res.push({src: "../res/font/tipNumber.png"});
+

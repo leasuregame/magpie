@@ -418,7 +418,7 @@ var main_scene_image = {
 //    icon141: main_scene_path + "icon141.png",
     icon142: main_scene_path + "icon142.png",
     icon143: main_scene_path + "icon143.png",
-//    icon144: main_scene_path + "icon144.png",
+    icon144: main_scene_path + "icon144.png",
     icon145: main_scene_path + "icon145.png",
     icon146: main_scene_path + "icon146.png",
     icon147: main_scene_path + "icon147.png",

@@ -60,8 +60,8 @@ var CardDetails = LazyLayer.extend({
         this.addChild(line3Icon);
 
         var nameLabel = StrokeLabel.create(this._card.get("name"), "STHeitiTC-Medium", 35);
-        nameLabel.setColor(cc.c3b(255, 239, 131));
-        nameLabel.setPosition(cc.p(340, 1020));
+        nameLabel.setColor(cc.c3b(255, 236, 168));
+        nameLabel.setPosition(cc.p(360, 1020));
         this.addChild(nameLabel);
 
 
@@ -91,35 +91,29 @@ var CardDetails = LazyLayer.extend({
         this.addChild(atkBgSprite);
 
         var lvIcon = cc.LabelTTF.create("LV:", "STHeitiTC-Medium", 20);
-        lvIcon.setColor(cc.c3b(255, 239, 131));
         lvIcon.setAnchorPoint(cc.p(0, 0.5));
         lvIcon.setPosition(cc.p(470, 860));
         this.addChild(lvIcon);
 
         var hpIcon = cc.LabelTTF.create("生命:", "STHeitiTC-Medium", 20);
-        hpIcon.setColor(cc.c3b(255, 239, 131));
         hpIcon.setAnchorPoint(cc.p(0, 0.5));
         hpIcon.setPosition(cc.p(470, 780));
         this.addChild(hpIcon);
 
         var atkIcon = cc.LabelTTF.create("攻击:", "STHeitiTC-Medium", 20);
-        atkIcon.setColor(cc.c3b(255, 239, 131));
         atkIcon.setAnchorPoint(cc.p(0, 0.5));
         atkIcon.setPosition(cc.p(470, 700));
         this.addChild(atkIcon);
 
         var lvLabel = cc.LabelTTF.create(this._card.get("lv") + " / " + this._card.get("maxLv"), "STHeitiTC-Medium", 20);
-        lvLabel.setColor(cc.c3b(255, 239, 131));
         lvLabel.setPosition(cc.p(568, 858));
         this.addChild(lvLabel);
 
         var hpLabel = cc.LabelTTF.create(this._card.get("hp"), "STHeitiTC-Medium", 20);
-        hpLabel.setColor(cc.c3b(255, 239, 131));
         hpLabel.setPosition(cc.p(568, 778));
         this.addChild(hpLabel);
 
         var atkLabel = cc.LabelTTF.create(this._card.get("atk"), "STHeitiTC-Medium", 20);
-        atkLabel.setColor(cc.c3b(255, 239, 131));
         atkLabel.setPosition(cc.p(568, 698));
         this.addChild(atkLabel);
 
@@ -127,7 +121,6 @@ var CardDetails = LazyLayer.extend({
         var len = description.length;
         for (var i = 0; i < len; ++i) {
             var descriptionLabel = cc.LabelTTF.create(description[i], "STHeitiTC-Medium", 20);
-            descriptionLabel.setColor(cc.c3b(255, 239, 131));
             descriptionLabel.setAnchorPoint(cc.p(0, 0.5));
             descriptionLabel.setPosition(cc.p(80, 540 + (len - i) * 30));
             this.addChild(descriptionLabel);
@@ -141,41 +134,34 @@ var CardDetails = LazyLayer.extend({
 
         if (this._card.hasSkill()) {
             var skillNameLabel = cc.LabelTTF.create(this._card.get("skillName"), "STHeitiTC-Medium", 20);
-            skillNameLabel.setColor(cc.c3b(255, 239, 131));
             skillNameLabel.setAnchorPoint(cc.p(0, 0.5));
             skillNameLabel.setPosition(cc.p(250, 520));
             this.addChild(skillNameLabel);
 
             var skillDescriptionLabel = cc.LabelTTF.create(this._card.get("skillDescription"), "STHeitiTC-Medium", 20);
-            skillDescriptionLabel.setColor(cc.c3b(255, 239, 131));
             skillDescriptionLabel.setAnchorPoint(cc.p(0, 0.5));
             skillDescriptionLabel.setPosition(cc.p(100, 480));
             this.addChild(skillDescriptionLabel);
 
             var skillRateIcon = cc.LabelTTF.create("触发概率:", "STHeitiTC-Medium", 20);
-            skillRateIcon.setColor(cc.c3b(255, 239, 131));
             skillRateIcon.setAnchorPoint(cc.p(0, 0.5));
             skillRateIcon.setPosition(cc.p(100, 410));
             this.addChild(skillRateIcon);
 
             var skillHarmIcon = cc.LabelTTF.create(this._card.getSkillType() + "效果:", "STHeitiTC-Medium", 20);
-            skillHarmIcon.setColor(cc.c3b(255, 239, 131));
             skillHarmIcon.setAnchorPoint(cc.p(0, 0.5));
             skillHarmIcon.setPosition(cc.p(100, 440));
             this.addChild(skillHarmIcon);
 
             var skillRateLabel = cc.LabelTTF.create(this._card.get("skillRate") + "%", "STHeitiTC-Medium", 20);
-            skillRateLabel.setColor(cc.c3b(255, 239, 131));
             skillRateLabel.setPosition(cc.p(240, 408));
             this.addChild(skillRateLabel);
 
             var skillHarmLabel = cc.LabelTTF.create(this._card.get("skillHarm") + "%", "STHeitiTC-Medium", 20);
-            skillHarmLabel.setColor(cc.c3b(255, 239, 131));
             skillHarmLabel.setPosition(cc.p(240, 438));
             this.addChild(skillHarmLabel);
 
             var skillLvIcon = cc.LabelTTF.create("技能等级:", "STHeitiTC-Medium", 18);
-            skillLvIcon.setColor(cc.c3b(255, 239, 131));
             skillLvIcon.setAnchorPoint(cc.p(0, 0.5));
             skillLvIcon.setPosition(cc.p(500, 410));
             this.addChild(skillLvIcon);
@@ -185,18 +171,15 @@ var CardDetails = LazyLayer.extend({
                 "STHeitiTC-Medium",
                 18
             );
-            skillLvLabel.setColor(cc.c3b(255, 239, 131));
             skillLvLabel.setPosition(cc.p(605, 408));
             this.addChild(skillLvLabel);
         } else {
             var tipLabel = cc.LabelTTF.create("无", "STHeitiTC-Medium", 20);
-            tipLabel.setColor(cc.c3b(255, 239, 131));
             tipLabel.setAnchorPoint(cc.p(0, 0.5));
             tipLabel.setPosition(cc.p(250, 520));
             this.addChild(tipLabel);
 
             var tipDescriptionLabel = cc.LabelTTF.create("三星以上拥有主动技能。", "STHeitiTC-Medium", 20);
-            tipDescriptionLabel.setColor(cc.c3b(255, 239, 131));
             tipDescriptionLabel.setAnchorPoint(cc.p(0, 0.5));
             tipDescriptionLabel.setPosition(cc.p(100, 480));
             this.addChild(tipDescriptionLabel);
@@ -224,7 +207,6 @@ var CardDetails = LazyLayer.extend({
                 passiveSkillIcon.setScale(0.8);
 
                 var passiveSkillNameLabel = cc.LabelTTF.create(passiveSkill[key].description, "STHeitiTC-Medium", 20);
-                passiveSkillNameLabel.setColor(cc.c3b(255, 239, 131));
                 passiveSkillNameLabel.setAnchorPoint(cc.p(0, 0.5));
                 passiveSkillNameLabel.setPosition(cc.p(150, y));
                 this.addChild(passiveSkillNameLabel);
@@ -243,25 +225,22 @@ var CardDetails = LazyLayer.extend({
             }
         } else {
             var tipLabel = cc.LabelTTF.create("无", "STHeitiTC-Medium", 20);
-            tipLabel.setColor(cc.c3b(255, 239, 131));
             tipLabel.setAnchorPoint(cc.p(0, 0.5));
             tipLabel.setPosition(cc.p(250, 340));
             this.addChild(tipLabel);
 
-            var str = "三星以上拥有被动效果。";
+            var str = "三星以上拥有被动效果";
             var star = this._card.get("star");
 
             if (star === 3) {
-                str = "三星卡拥有一个被动效果。"
+                str = "三星卡拥有一个被动效果"
             } else if (star === 4) {
-                str = "四星卡拥有两个被动效果。"
+                str = "四星卡拥有两个被动效果"
             } else if (star === 5) {
-                str = "五星卡拥有三个被动效果。"
+                str = "五星卡拥有三个被动效果"
             }
 
-
-            var tipDescriptionLabel = cc.LabelTTF.create(str, "STHeitiTC-Medium", 20);
-            tipDescriptionLabel.setColor(cc.c3b(255, 239, 131));
+            var tipDescriptionLabel = cc.LabelTTF.create(str + "，具体属性随机生成。", "STHeitiTC-Medium", 20);
             tipDescriptionLabel.setAnchorPoint(cc.p(0, 0.5));
             tipDescriptionLabel.setPosition(cc.p(100, 300));
             this.addChild(tipDescriptionLabel);

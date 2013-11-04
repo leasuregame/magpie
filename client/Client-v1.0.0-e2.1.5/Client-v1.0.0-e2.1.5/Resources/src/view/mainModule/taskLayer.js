@@ -159,10 +159,19 @@ var TaskLayer = cc.Layer.extend({
             bgSprite.setPosition(x, 0);
             scrollViewLayer.addChild(bgSprite);
 
-            var titlesLabel = StrokeLabel.create(chapterTitleTable[i].name, "STHeitiTC-Medium", 30);
-            titlesLabel.setColor(cc.c3b(255, 239, 131));
-            titlesLabel.setPosition(cc.p(320 + x, 745));
-            scrollViewLayer.addChild(titlesLabel);
+            var titleLabel = StrokeLabel.create(chapterTitleTable[i].name, "STHeitiTC-Medium", 30);
+            titleLabel.setColor(cc.c3b(255, 239, 131));
+            titleLabel.setPosition(cc.p(320 + x, 745));
+            scrollViewLayer.addChild(titleLabel);
+
+            var titleIcon1 = cc.Sprite.create(main_scene_image.icon144);
+            titleIcon1.setPosition(220 + x, 745);
+            scrollViewLayer.addChild(titleIcon1);
+
+            var titleIcon2 = cc.Sprite.create(main_scene_image.icon144);
+            titleIcon2.setRotation(180);
+            titleIcon2.setPosition(420 + x, 745);
+            scrollViewLayer.addChild(titleIcon2);
 
             for (var j = 1; j <= TASK_SECTION_COUNT; ++j) {
                 var index = 5 * (i - 1) + j;
@@ -185,7 +194,6 @@ var TaskLayer = cc.Layer.extend({
                 scrollViewLayer.addChild(sectionNameBgSprite, 1);
 
                 var sectionNameLabel = cc.LabelTTF.create(chapterTable[index].chapter, "STHeitiTC-Medium", 25);
-                sectionNameLabel.setColor(cc.c3b(255, 239, 131));
                 sectionNameLabel.setPosition(point);
                 scrollViewLayer.addChild(sectionNameLabel, 1);
 

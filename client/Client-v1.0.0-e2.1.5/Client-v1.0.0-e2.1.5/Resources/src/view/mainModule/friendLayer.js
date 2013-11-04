@@ -65,12 +65,10 @@ var FriendLayer = cc.Layer.extend({
         this.addChild(receiveCountIcon);
 
         this._giveCountLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
-        this._giveCountLabel.setColor(cc.c3b(255, 239, 131));
         this._giveCountLabel.setPosition(cc.p(215, 944));
         this.addChild(this._giveCountLabel);
 
         this._receiveCountLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
-        this._receiveCountLabel.setColor(cc.c3b(255, 239, 131));
         this._receiveCountLabel.setPosition(cc.p(215, 910));
         this.addChild(this._receiveCountLabel);
 
@@ -181,7 +179,6 @@ var FriendLayer = cc.Layer.extend({
         this._nameEditBox.setPosition(cc.p(360, 600));
         this._nameEditBox.setDelegate(this);
         this._nameEditBox.setFont("STHeitiTC-Medium", 35);
-        this._nameEditBox.setFontColor(cc.c3b(255, 239, 131));
         this._nameEditBox.setMaxLength(18);
         this._addFriendLayer.addChild(this._nameEditBox);
 

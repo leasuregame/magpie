@@ -132,7 +132,6 @@ var PassLayer = cc.Layer.extend({
             passNameBgSprite.setScale(0.8);
 
             var passNameLabel = cc.LabelTTF.create("第" + i + "层", "STHeitiTC-Medium", 20);
-            passNameLabel.setColor(cc.c3b(255, 239, 131));
             passNameLabel.setPosition(passNamePoint);
             scrollViewLayer.addChild(passNameLabel);
 
@@ -161,13 +160,11 @@ var PassLayer = cc.Layer.extend({
         this.addChild(tipLabel, 1);
 
         this._topLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
-        this._topLabel.setColor(cc.c3b(255, 239, 131));
         this._topLabel.setAnchorPoint(cc.p(0, 0.5));
         this._topLabel.setPosition(cc.p(190, 934));
         this.addChild(this._topLabel, 1);
 
         this._skillPointLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 20);
-        this._skillPointLabel.setColor(cc.c3b(255, 239, 131));
         this._skillPointLabel.setAnchorPoint(cc.p(0, 0.5));
         this._skillPointLabel.setPosition(cc.p(583, 837));
         this.addChild(this._skillPointLabel);

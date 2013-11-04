@@ -69,7 +69,6 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(playerLabel);
 
         var nameLabel = cc.LabelTTF.create(player.get("name"), "STHeitiTC-Medium", 25);
-        nameLabel.setColor(cc.c3b(255, 239, 131));
         nameLabel.setAnchorPoint(cc.p(0, 0.5));
         nameLabel.setPosition(cc.p(320, 841));
         this.addChild(nameLabel);
@@ -88,7 +87,6 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(lvIconLabel);
 
         var lvLabel = cc.LabelTTF.create(player.get("lv"), "STHeitiTC-Medium", 25);
-        lvLabel.setColor(cc.c3b(255, 239, 131));
         lvLabel.setAnchorPoint(cc.p(0, 0.5));
         lvLabel.setPosition(cc.p(320, 795));
         this.addChild(lvLabel);
@@ -100,7 +98,6 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(spiritLvIconLabel);
 
         var spiritLvLabel = cc.LabelTTF.create(gameData.spirit.get("lv"), "STHeitiTC-Medium", 25);
-        spiritLvLabel.setColor(cc.c3b(255, 239, 131));
         spiritLvLabel.setAnchorPoint(cc.p(0, 0.5));
         spiritLvLabel.setPosition(cc.p(320, 749));
         this.addChild(spiritLvLabel);
@@ -116,7 +113,6 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(moneyIconLabel);
 
         var moneyLabel = cc.LabelTTF.create(player.get("money"), "STHeitiTC-Medium", 25);
-        moneyLabel.setColor(cc.c3b(255, 239, 131));
         moneyLabel.setAnchorPoint(cc.p(0, 0.5));
         moneyLabel.setPosition(cc.p(320, 678));
         this.addChild(moneyLabel);
@@ -132,7 +128,6 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(goldIconLabel);
 
         var goldLabel = cc.LabelTTF.create(player.get("gold"), "STHeitiTC-Medium", 25);
-        goldLabel.setColor(cc.c3b(255, 239, 131));
         goldLabel.setAnchorPoint(cc.p(0, 0.5));
         goldLabel.setPosition(cc.p(320, 632));
         this.addChild(goldLabel);
@@ -148,7 +143,6 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(skillPointIconLabel);
 
         var skillPointLabel = cc.LabelTTF.create(player.get("skillPoint"), "STHeitiTC-Medium", 25);
-        skillPointLabel.setColor(cc.c3b(255, 239, 131));
         skillPointLabel.setAnchorPoint(cc.p(0, 0.5));
         skillPointLabel.setPosition(cc.p(320, 561));
         this.addChild(skillPointLabel);
@@ -164,7 +158,6 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(elixirIconLabel);
 
         var elixirLabel = cc.LabelTTF.create(player.get("elixir"), "STHeitiTC-Medium", 25);
-        elixirLabel.setColor(cc.c3b(255, 239, 131));
         elixirLabel.setAnchorPoint(cc.p(0, 0.5));
         elixirLabel.setPosition(cc.p(320, 515));
         this.addChild(elixirLabel);
@@ -180,7 +173,6 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(energyIconLabel);
 
         var energyLabel = cc.LabelTTF.create(player.get("energy"), "STHeitiTC-Medium", 25);
-        energyLabel.setColor(cc.c3b(255, 239, 131));
         energyLabel.setAnchorPoint(cc.p(0, 0.5));
         energyLabel.setPosition(cc.p(320, 469));
         this.addChild(energyLabel);
@@ -196,13 +188,11 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(powerIconLabel);
 
         this._powerLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
-        this._powerLabel.setColor(cc.c3b(255, 239, 131));
         this._powerLabel.setAnchorPoint(cc.p(0, 0.5));
         this._powerLabel.setPosition(cc.p(320, 393));
         this.addChild(this._powerLabel);
 
         var tipLabel = cc.LabelTTF.create("体力每 10 分钟恢复 5 点", "STHeitiTC-Medium", 25);
-        tipLabel.setColor(cc.c3b(255, 239, 131));
         tipLabel.setAnchorPoint(cc.p(0, 0.5));
         tipLabel.setPosition(cc.p(160, 347));
         this.addChild(tipLabel);

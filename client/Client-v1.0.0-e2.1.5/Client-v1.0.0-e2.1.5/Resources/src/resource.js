@@ -564,6 +564,10 @@ var main_scene_image = {
     effect9: "res/ccb/effect9.ccbi",
     effect10: "res/ccb/effect10.ccbi",
     effect11: "res/ccb/effect11.ccbi",
+    effect12: "res/ccb/effect12.ccbi",
+    effect13: "res/ccb/effect13.ccbi",
+    effect14: "res/ccb/effect14.ccbi",
+    effect15: "res/ccb/effect15.ccbi",
 
 
     // 特效资源
@@ -599,6 +603,8 @@ var main_scene_image = {
     p30: "res/effect/effect/p30.png",
     p31: "res/effect/effect/p31.png",
     p32: "res/effect/effect/p32.png",
+    p33: "res/effect/effect/p33.png",
+    p34: "res/effect/effect/p34.png",
 
 
     // 新手特效
@@ -706,6 +712,8 @@ for (var key in main_scene_image) {
 //字体
 main_scene_res.push({src: "./res/font/skillName.fnt"});
 main_scene_res.push({src: "./res/font/skillName.png"});
+main_scene_res.push({src: "./res/font/tipNumber.fnt"});
+main_scene_res.push({src: "./res/font/tipNumber.png"});
 
 // battle scene res
 var battle_scene_res = [

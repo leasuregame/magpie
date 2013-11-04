@@ -55,6 +55,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
     _load: function () {
         cc.log("NoviceTeachingLayer _load");
         if(this._layerOrder[this._step] == 2) {
+            MainScene.getInstance().switchLayer(SpiritPoolLayer);
             var spiritDetails = SpiritDetails.create();
             MainScene.getInstance().addChild(spiritDetails, 1);
         } else {
@@ -189,18 +190,18 @@ NoviceTeachingLayer.create = function () {
  * 单例
  * */
 (function () {
-    var _mainScene = null;
+    var _noviceTeachingLayer = null;
 
     NoviceTeachingLayer.getInstance = function () {
-        if (_mainScene == null) {
-            _mainScene = new NoviceTeachingLayer();
-            _mainScene.init();
+        if (_noviceTeachingLayer == null) {
+            _noviceTeachingLayer = new NoviceTeachingLayer();
+            _noviceTeachingLayer.init();
         }
 
-        return _mainScene;
+        return _noviceTeachingLayer;
     };
 
     NoviceTeachingLayer.destroy = function () {
-        _mainScene = null;
+        _noviceTeachingLayer = null;
     };
 })();

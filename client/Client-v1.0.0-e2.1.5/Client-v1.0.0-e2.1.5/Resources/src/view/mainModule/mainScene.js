@@ -35,7 +35,7 @@ var MainScene = cc.Scene.extend({
 
         var noviceTeachingLayer = NoviceTeachingLayer.getInstance();
         if(!noviceTeachingLayer.isNoviceTaught()) {
-            this.addChild(noviceTeachingLayer, 100);
+            this.addChild(noviceTeachingLayer, 5);
         } else {
             this.switchLayer(MainLayer);
         }

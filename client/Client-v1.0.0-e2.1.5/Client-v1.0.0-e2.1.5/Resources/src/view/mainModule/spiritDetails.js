@@ -287,7 +287,6 @@ var SpiritDetails = LazyLayer.extend({
 
         if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
             NoviceTeachingLayer.getInstance().clearAndSave();
-            MainScene.getInstance().switchLayer(SpiritPoolLayer);
             NoviceTeachingLayer.getInstance().next();
         }
     }

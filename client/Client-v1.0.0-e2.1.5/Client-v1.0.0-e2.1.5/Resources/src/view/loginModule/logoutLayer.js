@@ -56,6 +56,7 @@ var LogoutLayer = LazyLayer.extend({
         this.removeFromParent();
 
         MainScene.destroy();
+        TipLayer.destroy();
 
         cc.Director.getInstance().replaceScene(LoginScene.create());
     }

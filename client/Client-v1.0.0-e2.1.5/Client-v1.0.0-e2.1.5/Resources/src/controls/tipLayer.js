@@ -100,6 +100,10 @@ TipLayer.create = function () {
         return tipLayer;
     };
 
+    TipLayer.destroy = function () {
+        tipLayer = null;
+    };
+
     TipLayer.tip = function (str, color, fontName, fontSize) {
         TipLayer.getInstance().tip(true, str, color, fontName, fontSize);
     };

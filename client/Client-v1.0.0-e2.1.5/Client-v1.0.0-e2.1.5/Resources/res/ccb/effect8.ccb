@@ -64,7 +64,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -264,8 +264,8 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>255</integer>
-									<integer>166</integer>
+									<integer>226</integer>
+									<integer>158</integer>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -321,7 +321,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -628,7 +628,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -828,8 +828,8 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>3</integer>
-									<integer>245</integer>
+									<integer>0</integer>
+									<integer>215</integer>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -845,6 +845,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>seqExpanded</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>animatedProperties</key>
@@ -883,7 +885,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -1083,9 +1085,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>186</integer>
-									<integer>250</integer>
-									<integer>160</integer>
+									<integer>173</integer>
+									<integer>217</integer>
+									<integer>155</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1190,7 +1192,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -1423,9 +1425,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>232</integer>
-									<integer>209</integer>
-									<integer>4</integer>
+									<integer>217</integer>
+									<integer>199</integer>
+									<integer>0</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1480,7 +1482,7 @@
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
-											<integer>255</integer>
+											<integer>200</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -1714,8 +1716,8 @@
 								<key>value</key>
 								<array>
 									<integer>243</integer>
-									<integer>233</integer>
-									<integer>142</integer>
+									<integer>225</integer>
+									<integer>132</integer>
 								</array>
 							</dict>
 							<dict>
@@ -2065,9 +2067,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>220</integer>
-									<integer>242</integer>
 									<integer>156</integer>
+									<integer>193</integer>
+									<integer>44</integer>
 								</array>
 							</dict>
 							<dict>

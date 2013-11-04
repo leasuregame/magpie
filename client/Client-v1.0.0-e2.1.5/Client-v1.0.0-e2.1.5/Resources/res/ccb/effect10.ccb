@@ -295,9 +295,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>248</integer>
-									<integer>203</integer>
-									<integer>9</integer>
+									<integer>225</integer>
+									<integer>190</integer>
+									<integer>4</integer>
 								</array>
 							</dict>
 						</array>
@@ -572,9 +572,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>247</integer>
-									<integer>243</integer>
-									<integer>196</integer>
+									<integer>204</integer>
+									<integer>192</integer>
+									<integer>107</integer>
 								</array>
 							</dict>
 							<dict>
@@ -952,6 +952,8 @@
 						<string>effect/effect/p18.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1354,13 +1356,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>1</real>
+			<real>0.66666668653488159</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>0.66666668653488159</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

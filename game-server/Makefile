@@ -85,6 +85,7 @@ data-for-test: build
 	node ./data/test/dao.js rank4Sina production
 
 pfm-data:
+	node ./pfmTest/userData.js
 	node ./pfmTest/playerData.js
 	
 

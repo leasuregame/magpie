@@ -52,9 +52,9 @@ Data.prototype.dataForRanking = function(callback){
       escape: '"'
     })
     .transform(function(row, index, cb) {
-      if (row.id < 6865) {
-        return;
-      }
+      // if (row.id < 6865) {
+      //   return;
+      // }
       _.each(row, function(val, key) {
         if (_.isEmpty(val)) {
           delete row[key];

@@ -54,6 +54,17 @@ var FriendLayer = cc.Layer.extend({
         lineIcon.setPosition(cc.p(360, 887));
         this.addChild(lineIcon);
 
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            this._onClickBack,
+            this
+        );
+        backItem.setPosition(cc.p(100, 1008));
+        var menu = cc.Menu.create(backItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu, 1);
+
         var giveCountIcon = cc.LabelTTF.create("今日可送祝福:", "STHeitiTC-Medium", 20);
         giveCountIcon.setColor(cc.c3b(255, 239, 131));
         giveCountIcon.setPosition(cc.p(130, 946));
@@ -446,6 +457,12 @@ var FriendLayer = cc.Layer.extend({
         gameData.friend.deleteFriend(function (data) {
             that.update();
         }, this._selectFriend);
+    },
+
+    _onClickBack: function () {
+        cc.log("FriendLayer _onClickBack");
+
+        MainScene.getInstance().switchLayer(MainLayer);
     }
 });
 

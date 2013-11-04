@@ -85,6 +85,17 @@ var CardLibraryLayer = cc.Layer.extend({
         this.addChild(scrollView);
         scrollView.setContentOffset(scrollView.minContainerOffset());
 
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            this._onClickBack,
+            this
+        );
+        backItem.setPosition(cc.p(100, 1008));
+        var menu = cc.Menu.create(backItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu, 1);
+
         return true;
     },
 
@@ -149,6 +160,12 @@ var CardLibraryLayer = cc.Layer.extend({
                 CardDetails.pop(card);
             }
         };
+    },
+
+    _onClickBack: function () {
+        cc.log("CardLibraryLayer _onClickBack");
+
+        MainScene.getInstance().switchLayer(MainLayer);
     }
 });
 

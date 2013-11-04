@@ -48,6 +48,17 @@ var SpiritPoolLayer = cc.Layer.extend({
         titleIcon.setPosition(cc.p(360, 1008));
         this.addChild(titleIcon);
 
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            this._onClickBack,
+            this
+        );
+        backItem.setPosition(cc.p(100, 1008));
+        var menu = cc.Menu.create(backItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu, 1);
+
         var spiritIcon = cc.Sprite.create(main_scene_image.icon99);
         spiritIcon.setPosition(cc.p(130, 880));
         this.addChild(spiritIcon);
@@ -233,6 +244,12 @@ var SpiritPoolLayer = cc.Layer.extend({
         this._hook.setVisible(this._useGold);
 
         this.update();
+    },
+
+    _onClickBack: function () {
+        cc.log("SpiritPoolLayer _onClickBack");
+
+        MainScene.getInstance().switchLayer(MainLayer);
     }
 });
 

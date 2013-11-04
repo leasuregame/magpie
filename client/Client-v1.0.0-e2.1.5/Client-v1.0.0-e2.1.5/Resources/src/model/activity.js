@@ -59,8 +59,12 @@ var Activity = Entity.extend({
         lzWindow.pomelo.request('area.playerHandler.givePower', {}, function (data) {
             cc.log(data);
             if (data.code == 200) {
-                TipLayer.tip('体力: ' + data.msg.powerValue);
-                gameData.player.add('power', data.msg.powerValue);
+                var power = data.msg.powerValue;
+                if(power + gameData.player.get('power') > 150) {
+                    power = 150 - gameData.player.get('power');
+                }
+                TipLayer.tip('体力: ' + power);
+                gameData.player.add('power', power);
             } else {
                 TipLayer.tip(data.msg);
             }

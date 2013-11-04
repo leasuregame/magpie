@@ -139,7 +139,6 @@ var NoviceTeachingLayer = LazyLayer.extend({
             if (player.get('exp') == 0 && player.get('lv') == 1)
                 return true;
         } else {
-            //this.removeFromParent();
             return false;
         }
     },

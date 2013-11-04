@@ -34,6 +34,18 @@ var AchievementLayer = cc.Layer.extend({
         titleIcon.setPosition(cc.p(360, 1008));
         this.addChild(titleIcon);
 
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            this._onClickBack,
+            this
+        );
+        backItem.setPosition(cc.p(100, 1008));
+        var menu = cc.Menu.create(backItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu, 1);
+
+
         var achievement = gameData.achievement.get("achievement");
         var len = gameData.achievement.get("length");
         cc.log(achievement);
@@ -173,7 +185,14 @@ var AchievementLayer = cc.Layer.extend({
             }, id);
         }
 
+    },
+
+    _onClickBack: function () {
+        cc.log("AchievementLayer _onClickBack");
+
+        MainScene.getInstance().switchLayer(MainLayer);
     }
+
 });
 
 

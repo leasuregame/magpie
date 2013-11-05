@@ -80,6 +80,17 @@ var TreasureHuntLayer = cc.Layer.extend({
         titleIcon.setPosition(cc.p(360, 1008));
         this.addChild(titleIcon);
 
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            this._onClickBack,
+            this
+        );
+        backItem.setPosition(cc.p(100, 1008));
+        var menu = cc.Menu.create(backItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu, 1);
+
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
         headLabel.setPosition(cc.p(360, 938));
         this.addChild(headLabel);
@@ -321,6 +332,12 @@ var TreasureHuntLayer = cc.Layer.extend({
                 that._treasureHuntItem.setEnabled(true);
             }
         })
+    },
+
+    _onClickBack: function () {
+        cc.log("TreasureHuntLayer _onClickBack");
+
+        MainScene.getInstance().switchLayer(MainLayer);
     }
 });
 

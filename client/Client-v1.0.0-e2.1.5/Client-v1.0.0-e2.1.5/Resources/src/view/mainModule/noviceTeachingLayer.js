@@ -39,9 +39,10 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
         this.setTouchPriority(NOVICE_TEACHING_LAYER_HANDLER_PRIORITY);
-        this._step = sys.localStorage.getItem("step") || 0;
+        this._step = sys.localStorage.getItem(gameData.user.get('name') + "step") || 0;
+        cc.log('step = ' + this._step);
         this._rect = cc.rect(0, 0, 0, 0);
-        if (!this.isNoviceTaught())
+        if (this.isNoviceTeaching())
             this._load();
         else
             return false;
@@ -66,7 +67,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
     _save: function () {
         cc.log("NoviceTeachingLayer _save");
-        sys.localStorage.setItem("step", this._step);
+        sys.localStorage.setItem(gameData.user.get('name') + "step", this._step);
     },
 
     next: function () {
@@ -133,30 +134,13 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
     isNoviceTeaching: function () {
         cc.log("NoviceTeachingLayer isNoviceTeaching");
-
-//        if (this._getStep() < OVER_NOVICE_STEP)
-//            return true;
-//        else {
-//            this.removeFromParent();
-//            return false;
-//        }
-
-        return false;
-    },
-
-    isNoviceTaught: function () {
-        cc.log("NoviceTeachingLayer isNoviceTaught");
-
-//        if (this._getStep() >= OVER_NOVICE_STEP)
-//            return true;
-//        var player = gameData.player;
-//        if (player.get('exp') == 0 && player.get('lv') == 1)
-//            return false;
-//        else
-//            return true;
-
-
-        return true;
+        var player = gameData.player;
+        if (this._getStep() < OVER_NOVICE_STEP) {
+            if (player.get('exp') == 0 && player.get('lv') == 1)
+                return true;
+        } else {
+            return false;
+        }
     },
 
     /**
@@ -169,10 +153,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
         var point = touch.getLocation();
         cc.log(point);
-        if (cc.rectContainsPoint(this._rect, point)) {
-            return false;
-        }
-        return true;
+        return !cc.rectContainsPoint(this._rect, point);
     }
 
 });

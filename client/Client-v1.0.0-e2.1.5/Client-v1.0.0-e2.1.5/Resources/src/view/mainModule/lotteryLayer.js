@@ -42,6 +42,17 @@ var LotteryLayer = cc.Layer.extend({
         titleIcon.setPosition(cc.p(360, 1008));
         this.addChild(titleIcon);
 
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            this._onClickBack,
+            this
+        );
+        backItem.setPosition(cc.p(100, 1008));
+        var menu = cc.Menu.create(backItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu, 1);
+
         var lotteryLabel = cc.Sprite.create(main_scene_image.icon242);
         lotteryLabel.setPosition(cc.p(360, 600));
         this.addChild(lotteryLabel);
@@ -197,6 +208,12 @@ var LotteryLayer = cc.Layer.extend({
         cc.log("LotteryLayer _onClickExchange");
 
         MainScene.getInstance().switchLayer(ExchangeLayer);
+    },
+
+    _onClickBack: function () {
+        cc.log("LotteryLayer _onClickBack");
+
+        MainScene.getInstance().switchLayer(MainLayer);
     }
 });
 

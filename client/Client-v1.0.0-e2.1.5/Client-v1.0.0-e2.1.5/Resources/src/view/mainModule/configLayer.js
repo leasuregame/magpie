@@ -38,6 +38,16 @@ var ConfigLayer = cc.Layer.extend({
         titleIcon.setPosition(cc.p(360, 1008));
         this.addChild(titleIcon);
 
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            this._onClickBack,
+            this
+        );
+        backItem.setPosition(cc.p(100, 1008));
+        var menu = cc.Menu.create(backItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu, 1);
 
         var bgMusicItem = cc.MenuItemImage.create(
             main_scene_image.icon127,
@@ -122,6 +132,11 @@ var ConfigLayer = cc.Layer.extend({
         tipsItemTitle.setPosition(cc.p(40, 55));
         tipsItem.addChild(tipsItemTitle);
 
+        var tipIcon = cc.Sprite.create(main_scene_image.icon273);
+        tipIcon.setAnchorPoint(cc.p(0, 0.5));
+        tipIcon.setPosition(cc.p(518, 55));
+        tipsItem.addChild(tipIcon);
+
         var QQGroup = cc.MenuItemImage.create(
             main_scene_image.icon127,
             main_scene_image.icon127,
@@ -152,7 +167,7 @@ var ConfigLayer = cc.Layer.extend({
 
     _onClickBgMusic: function () {
         return function () {
-            cc.log('bgMusicSetting');
+            cc.log('ConfigLayer _onClickBgMusic');
             this.musicOpen = !this.musicOpen;
             this.musicSelect.setVisible(this.musicOpen);
         };
@@ -160,16 +175,22 @@ var ConfigLayer = cc.Layer.extend({
 
     _onClickSound: function () {
         return function () {
-            cc.log('soundSetting');
+            cc.log('ConfigLayer _onClickSound');
             this.soundOpen = !this.soundOpen;
             this.soundSelect.setVisible(this.soundOpen);
         };
     },
 
     _onClickTips: function () {
-        cc.log('tipsItemClick');
+        cc.log('ConfigLayer _onClickTips');
         var tipsLayer = TipsLayer.create();
         this.addChild(tipsLayer, 1);
+    },
+
+    _onClickBack: function () {
+        cc.log("ConfigLayer _onClickBack");
+
+        MainScene.getInstance().switchLayer(MainLayer);
     }
 });
 

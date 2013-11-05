@@ -89,19 +89,23 @@ TipLayer.create = function () {
 
 
 (function () {
-    var tipLayer = null;
+    var _tipLayer = null;
 
     TipLayer.getInstance = function () {
-        if (tipLayer == null) {
-            tipLayer = TipLayer.create();
-            cc.Director.getInstance().getRunningScene().addChild(tipLayer, 10);
+        if (_tipLayer == null) {
+            _tipLayer = TipLayer.create();
+            cc.Director.getInstance().getRunningScene().addChild(_tipLayer, 10);
         }
 
-        return tipLayer;
+        return _tipLayer;
     };
 
     TipLayer.destroy = function () {
-        tipLayer = null;
+        if (_tipLayer) {
+            _tipLayer.removeFromParent();
+        }
+
+        _tipLayer = null;
     };
 
     TipLayer.tip = function (str, color, fontName, fontSize) {

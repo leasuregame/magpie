@@ -35,7 +35,7 @@ var main_scene_path = "res/main/";
 var main_scene_image = {
     bg1: main_scene_path + "bg1.png",
     bg2: main_scene_path + "bg2.png",
-    bg3: main_scene_path + "bg3.png",
+//    bg3: main_scene_path + "bg3.png",
     bg4: main_scene_path + "bg4.png",
     bg5: main_scene_path + "bg5.png",
     bg6: main_scene_path + "bg6.png",
@@ -123,9 +123,6 @@ var main_scene_image = {
     num_red_7: main_scene_path + "num_red_7.png",
     num_red_8: main_scene_path + "num_red_8.png",
     num_red_9: main_scene_path + "num_red_9.png",
-
-    pve_bg1: main_scene_path + "pve_bg1.png",
-    pvp_bg1: main_scene_path + "pvp_bg1.png",
 
     edit1: main_scene_path + "edit1.png",
     edit2: main_scene_path + "edit2.png",

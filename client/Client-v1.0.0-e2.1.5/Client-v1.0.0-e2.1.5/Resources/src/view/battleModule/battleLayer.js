@@ -45,14 +45,7 @@ var BatterLayer = cc.Layer.extend({
         this._battleLog = battleLog;
         this._spiritNode = [];
 
-        var bgSprite = null;
-
-        if (this._battleLog.get("type") == PVP_BATTLE_LOG) {
-            bgSprite = cc.Sprite.create(main_scene_image.pvp_bg1);
-        } else {
-            bgSprite = cc.Sprite.create(main_scene_image.pve_bg1);
-        }
-
+        var bgSprite = cc.Sprite.create(main_scene_image.bg13);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(cc.p(40, 0));
         this.addChild(bgSprite);
@@ -270,14 +263,14 @@ var BatterLayer = cc.Layer.extend({
                             showSpiritAdditionCallback2();
                         });
 
-                        that.tip(index, "buf_2", cardNode.getSpiritAtk());
+                        that.tip(index, "buf_2", "+" + cardNode.getSpiritAtk());
 
                         showSpiritAdditionCallback1();
                     });
 
                     var spiritHp = cardNode.getSpiritHp();
                     cardNode.update(spiritHp);
-                    that.tip(index, "buf_1", spiritHp);
+                    that.tip(index, "buf_1", "+" + spiritHp);
                 })();
             }
         }
@@ -314,7 +307,7 @@ var BatterLayer = cc.Layer.extend({
         }
 
         if (!this._battleLog.hasNextBattleStep()) {
-            this.scheduleOnce(this._collectSpirit, 1);
+            this.scheduleOnce(this._collectSpirit, 1.3);
             return;
         }
 
@@ -335,12 +328,12 @@ var BatterLayer = cc.Layer.extend({
 
             var ccbNode = this._battleNode[battleStep.get("attacker")].getSubtitleNode();
 
+            var that = this;
             var cb = function () {
                 if (ccbNode) {
                     ccbNode.removeFromParent();
                 }
 
-                var that = this;
                 if (skillType === 1) {
                     that.singleAtk(battleStep);
                 } else if (skillType === 2) {
@@ -690,7 +683,7 @@ var BatterLayer = cc.Layer.extend({
 
                 this.scheduleOnce(function () {
                     this.end();
-                }, 4);
+                }, 3);
             }
         } else {
             if (len) {
@@ -709,7 +702,7 @@ var BatterLayer = cc.Layer.extend({
 
                 this.scheduleOnce(function () {
                     this.end();
-                }, 2);
+                }, 1.5);
             }
         }
     }

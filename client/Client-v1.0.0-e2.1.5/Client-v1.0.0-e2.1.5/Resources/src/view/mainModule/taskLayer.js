@@ -164,12 +164,11 @@ var TaskLayer = cc.Layer.extend({
             titleLabel.setPosition(cc.p(320 + x, 745));
             scrollViewLayer.addChild(titleLabel);
 
-            var titleIcon1 = cc.Sprite.create(main_scene_image.icon144);
+            var titleIcon1 = cc.Sprite.create(main_scene_image.icon143);
             titleIcon1.setPosition(220 + x, 745);
             scrollViewLayer.addChild(titleIcon1);
 
             var titleIcon2 = cc.Sprite.create(main_scene_image.icon144);
-            titleIcon2.setRotation(180);
             titleIcon2.setPosition(420 + x, 745);
             scrollViewLayer.addChild(titleIcon2);
 

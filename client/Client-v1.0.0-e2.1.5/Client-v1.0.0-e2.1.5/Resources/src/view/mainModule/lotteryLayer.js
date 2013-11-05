@@ -119,7 +119,7 @@ var LotteryLayer = cc.Layer.extend({
                 main_scene_image.button9,
                 main_scene_image.button9s,
                 main_scene_image.button9d,
-                main_scene_image["icon" + (142 + i)],
+                main_scene_image["icon" + (141 + i)],
                 this._onClickLottery(LOTTERY_BY_ENERGY, i + 1),
                 this
             );

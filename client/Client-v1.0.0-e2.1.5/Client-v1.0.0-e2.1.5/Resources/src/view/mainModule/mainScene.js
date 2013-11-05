@@ -94,6 +94,10 @@ var MainScene = cc.Scene.extend({
     };
 
     MainScene.destroy = function () {
+        if (_mainScene) {
+            _mainScene.removeFromParent();
+        }
+
         _mainScene = null;
     };
 })();

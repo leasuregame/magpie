@@ -35,7 +35,7 @@ var main_scene_path = "res/main/";
 var main_scene_image = {
     bg1: main_scene_path + "bg1.png",
     bg2: main_scene_path + "bg2.png",
-    bg3: main_scene_path + "bg3.png",
+//    bg3: main_scene_path + "bg3.png",
     bg4: main_scene_path + "bg4.png",
     bg5: main_scene_path + "bg5.png",
     bg6: main_scene_path + "bg6.png",
@@ -123,9 +123,6 @@ var main_scene_image = {
     num_red_7: main_scene_path + "num_red_7.png",
     num_red_8: main_scene_path + "num_red_8.png",
     num_red_9: main_scene_path + "num_red_9.png",
-
-    pve_bg1: main_scene_path + "pve_bg1.png",
-    pvp_bg1: main_scene_path + "pvp_bg1.png",
 
     edit1: main_scene_path + "edit1.png",
     edit2: main_scene_path + "edit2.png",
@@ -416,7 +413,7 @@ var main_scene_image = {
     icon138: main_scene_path + "icon138.png",
     icon139: main_scene_path + "icon139.png",
     icon140: main_scene_path + "icon140.png",
-//    icon141: main_scene_path + "icon141.png",
+    icon141: main_scene_path + "icon141.png",
     icon142: main_scene_path + "icon142.png",
     icon143: main_scene_path + "icon143.png",
     icon144: main_scene_path + "icon144.png",
@@ -554,6 +551,7 @@ var main_scene_image = {
     // 特效
     battleNode: "res/ccb/battleNode.ccbi",
     spiritNode: "res/ccb/spiritNode.ccbi",
+    tipNode: "res/ccb/tipNode.ccbi",
 
     effect1: "res/ccb/effect1.ccbi",
     effect2: "res/ccb/effect2.ccbi",

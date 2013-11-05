@@ -6,6 +6,7 @@ node_modules
 Cocos2d-html5-*
 client/nohup.out
 client/Resources.zip
+fileLookup.plist
 table.json
 .idea
 game-server/app

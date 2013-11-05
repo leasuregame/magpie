@@ -132,6 +132,11 @@ var ConfigLayer = cc.Layer.extend({
         tipsItemTitle.setPosition(cc.p(40, 55));
         tipsItem.addChild(tipsItemTitle);
 
+        var tipIcon = cc.Sprite.create(main_scene_image.icon273);
+        tipIcon.setAnchorPoint(cc.p(0, 0.5));
+        tipIcon.setPosition(cc.p(518, 55));
+        tipsItem.addChild(tipIcon);
+
         var QQGroup = cc.MenuItemImage.create(
             main_scene_image.icon127,
             main_scene_image.icon127,

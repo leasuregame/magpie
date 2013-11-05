@@ -217,6 +217,8 @@ var SignIn = Entity.extend({
 
                 gameData.treasureHunt.add("freeCount", table.lottery_free_count);
 
+                that._flag = that._flag | (1 << (id - 1));
+
                 cb({
                     money: table.money,
                     energy: table.energy,

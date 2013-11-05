@@ -397,7 +397,7 @@ var monitor = function(type, name, reqId) {
 };
 
 var offset = (typeof actor !== 'undefined') ? actor.id + 1 : 30;
-var count = 0;
+
 pomelo.init({
 	host: "127.0.0.1",
 	port: 3010,
@@ -412,12 +412,17 @@ pomelo.init({
 		areaId: 1
 	}, function(data) {
 		monitor(END, 'login', ActFlagType.LOGIN);
-		console.log(data.msg.user.account + ' login succeed.');
-		count += 1;
+		console.log(data.code);
+    if (typeof data.msg == 'string') {
+      console.log(data.msg);
+    }
+    
+    console.log(data.msg.user.account + ' login succeed.');
+    var intervalTime = Math.floor(Math.random()*3000 + 2000);
 
 		setInterval(function() {
 			exploreEvent();
-		}, 3000);
+		}, intervalTime);
 
 		// setInterval(function() {
 		// 	passEvent();
@@ -433,10 +438,10 @@ var exploreEvent = function() {
 
 	pomelo.request('area.taskHandler.explore', {}, function(data) {
 		monitor(END, 'explore', ActFlagType.EXPLORE);
-		console.log('explore： ', data.code);
-		if (typeof data.msg === 'string') {
-			console.log('explore result: ', data.msg);
-		}
+		if (data.code != 200) {
+      console.log('explore： ', data.code);
+      console.log('explore result: ', data.msg);
+    }
 	});
 };
 

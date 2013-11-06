@@ -13,6 +13,8 @@
 
 
 var MainBgLayer = cc.Layer.extend({
+    _mainBgLayerFit: gameFit.mainScene.mainBgLayer,
+
     _messagesLabel: null,
 
     init: function () {
@@ -21,7 +23,7 @@ var MainBgLayer = cc.Layer.extend({
         if (!this._super()) return false;
 
         this._messagesLabel = MessageLabel.create();
-        this._messagesLabel.setPosition(cc.p(GAME_HORIZONTAL_LACUNA, 1014));
+        this._messagesLabel.setPosition(this._mainBgLayerFit.messagesLabelPoint);
         this.addChild(this._messagesLabel);
 
         return true;

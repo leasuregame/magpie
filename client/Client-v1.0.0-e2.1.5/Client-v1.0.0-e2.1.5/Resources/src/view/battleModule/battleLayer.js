@@ -11,8 +11,9 @@
  * battle layer
  * */
 
-
 var BatterLayer = cc.Layer.extend({
+    _batterLayerFit: gameFit.battleScene.batterLayer,
+
     _index: 0,
     _isEnd: false,
     _counter: 0,
@@ -20,20 +21,7 @@ var BatterLayer = cc.Layer.extend({
     _battleNode: {},
     _tipNode: {},
     _spiritNode: [],
-    _locate: {
-        1: cc.p(160, 440),
-        2: cc.p(360, 440),
-        3: cc.p(560, 440),
-        4: cc.p(160, 240),
-        5: cc.p(360, 240),
-        6: cc.p(560, 240),
-        7: cc.p(160, 740),
-        8: cc.p(360, 740),
-        9: cc.p(560, 740),
-        10: cc.p(160, 940),
-        11: cc.p(360, 940),
-        12: cc.p(560, 940)
-    },
+    _locate: {},
 
     init: function (battleLog) {
         cc.log("BatterLayer init");
@@ -44,10 +32,11 @@ var BatterLayer = cc.Layer.extend({
         this._isEnd = false;
         this._battleLog = battleLog;
         this._spiritNode = [];
+        this._locate = this._batterLayerFit.locatePoints;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg13);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(cc.p(40, 0));
+        bgSprite.setPosition(this._batterLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         return true;
@@ -91,7 +80,7 @@ var BatterLayer = cc.Layer.extend({
         }
 
         this._backItem = cc.MenuItemFont.create("结束战斗", this.end, this);
-        this._backItem.setPosition(cc.p(250, -460));
+        this._backItem.setPosition(this._batterLayerFit.backItemPoint);
         var menu = cc.Menu.create(this._backItem);
         this.addChild(menu);
 
@@ -169,7 +158,7 @@ var BatterLayer = cc.Layer.extend({
 
             if (that._counter == 0) {
                 var effect15Node = cc.BuilderReader.load(main_scene_image.effect15, that);
-                effect15Node.setPosition(cc.p(360, 568));
+                effect15Node.setPosition(that._batterLayerFit.effect15NodePoint);
                 that.addChild(effect15Node);
 
                 effect15Node.animationManager.setCompletedAnimationCallback(that, function () {
@@ -346,7 +335,7 @@ var BatterLayer = cc.Layer.extend({
             };
 
             if (ccbNode) {
-                ccbNode.setPosition(cc.p(360, 568));
+                ccbNode.setPosition(this._batterLayerFit.ccbNodePoint);
                 this.addChild(ccbNode, 5);
 
                 ccbNode.animationManager.setCompletedAnimationCallback(this, cb);

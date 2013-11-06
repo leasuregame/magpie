@@ -166,7 +166,7 @@ var Card = (function(_super) {
         star: 1,
         lv: 1,
         exp: 0,
-        skillLv: 0,
+        skillLv: 1,
         skillInc: 0,
         skillPoint: 0,
         elixirHp: 0,

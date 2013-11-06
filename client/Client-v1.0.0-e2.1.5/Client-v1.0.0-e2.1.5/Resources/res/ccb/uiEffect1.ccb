@@ -447,7 +447,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>1440</real>
+											<real>1530</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -515,7 +515,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>1440</real>
+								<real>1530</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -537,8 +537,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -579,7 +577,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>720</real>
+											<real>970</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -647,7 +645,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>720</real>
+								<real>970</real>
 							</dict>
 							<dict>
 								<key>name</key>

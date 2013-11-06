@@ -27,7 +27,8 @@ class Spiritor extends Module
       if @trigger()
         console.log '元神攻击', @lv, @spirit_atk_pct
         hero.usingSkill(
-          (res) -> cb(hero)
+          (res) -> 
+            cb(hero)
           , null
           , @spirit_atk_pct
           , true

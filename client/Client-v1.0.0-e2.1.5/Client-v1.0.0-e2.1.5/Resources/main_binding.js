@@ -80,6 +80,7 @@ var appFiles = [
     'src/controls/strokeLabel.js',
     'src/controls/LzMenuItem.js',
     'src/controls/tipLayer.js',
+    'src/controls/colorLabelTTF.js',
 
     'src/view/loginModule/loginScene.js',
     'src/view/loginModule/loginLayer.js',

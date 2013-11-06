@@ -40,10 +40,10 @@ class Matrix
       throw new Error "Invalid parameter, #{pos}"
     @matrixOrder.indexOf(pos)
 
-  attackElement: (scope, args) ->
+  attackElement: (scope, args, filter) ->
     try
       if scope of @
-        els = @[scope](args)
+        els = @[scope](args, filter)
         els = [els] if not _.isArray(els)
         return _.filter els, (e) -> e? and not e.death?()
       else
@@ -179,8 +179,12 @@ class Matrix
   default: (pos) ->
     @getElement(pos)
 
-  random: (num = 1) ->    
+  random: (num = 1, filter) ->    
     len = @rows * @cols
+    if filter and _.isFunction(filter)
+      items = @all().filter (i) -> filter(i)
+      len = items.length
+
     num = len if num > len
     
     indexs = _.range(len)

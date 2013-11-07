@@ -57,8 +57,6 @@ var cocos2dApp = cc.Application.extend({
 
         //load resources
         cc.LoaderScene.preload(main_scene_res, function () {
-            cc.log(cc.Director.getInstance().getWinSize());
-
             cc.Director.getInstance().replaceScene(this.startScene.create());
         }, this);
 
@@ -66,6 +64,4 @@ var cocos2dApp = cc.Application.extend({
     }
 });
 
-
 var myApp = new cocos2dApp(LoginScene);
-//var myApp = new cocos2dApp(MainScene);

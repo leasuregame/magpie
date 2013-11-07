@@ -102,7 +102,7 @@ var Pass = Entity.extend({
         cc.log("Pass defiance " + index);
 
         var that = this;
-        lzWindow.pomelo.request("area.taskHandler.passBarrier", {
+        lz.server.request("area.taskHandler.passBarrier", {
             layer: index
         }, function (data) {
             cc.log(data);
@@ -140,7 +140,7 @@ var Pass = Entity.extend({
         cc.log("Pass wipeOut");
 
         var that = this;
-        lzWindow.pomelo.request("area.taskHandler.wipeOut", {
+        lz.server.request("area.taskHandler.wipeOut", {
             type: "pass"
         }, function (data) {
             cc.log(data);
@@ -188,7 +188,7 @@ var Pass = Entity.extend({
         cc.log("Pass mystical");
 
         var that = this;
-        lzWindow.pomelo.request("area.taskHandler.mysticalPass", {}, function (data) {
+        lz.server.request("area.taskHandler.mysticalPass", {}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
@@ -213,7 +213,7 @@ var Pass = Entity.extend({
         cc.log("Pass reset");
 
         var that = this;
-        lzWindow.pomelo.request("area.taskHandler.resetPassMark", {}, function (data) {
+        lz.server.request("area.taskHandler.resetPassMark", {}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {

@@ -87,7 +87,7 @@ var RegisterLayer = cc.Layer.extend({
     _onClickRegisterAndLogin: function () {
         cc.log("_onClickRegisterAndLogin");
 
-        lzWindow.pomelo.request('connector.userHandler.register', {
+        lz.server.request('connector.userHandler.register', {
             account: this._accountEditBox.getText(),
             password: this._passwordEditBox.getText()
             //name: this._nameEditBox.getText()

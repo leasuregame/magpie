@@ -55,22 +55,27 @@ var SignIn = Entity.extend({
         cc.log("SignIn sync");
 
         var that = this;
-        lzWindow.pomelo.request("area.dailyHandler.signInDetails", {}, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
+        lz.server.request(
+            "area.dailyHandler.signInDetails",
+            {},
+            function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
 
-            if (data.code == 200) {
-                cc.log("sync success");
+                if (data.code == 200) {
+                    cc.log("sync success");
 
-                var msg = data.msg;
+                    var msg = data.msg;
 
-                that.update(msg);
-            } else {
-                cc.log("sync fail");
+                    that.update(msg);
+                } else {
+                    cc.log("sync fail");
 
-                that.sync();
-            }
-        });
+                    that.sync();
+                }
+            },
+            true
+        );
     },
 
     getMonthMark: function (index) {
@@ -133,7 +138,7 @@ var SignIn = Entity.extend({
         cc.log("SignIn signIn");
 
         var that = this;
-        lzWindow.pomelo.request("area.dailyHandler.signIn", {}, function (data) {
+        lz.server.request("area.dailyHandler.signIn", {}, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 
@@ -162,7 +167,7 @@ var SignIn = Entity.extend({
         cc.log("SignIn remedySignIn");
 
         var that = this;
-        lzWindow.pomelo.request("area.dailyHandler.reSignIn", {}, function (data) {
+        lz.server.request("area.dailyHandler.reSignIn", {}, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 
@@ -192,7 +197,7 @@ var SignIn = Entity.extend({
         cc.log("SignIn receiveReward: " + id);
 
         var that = this;
-        lzWindow.pomelo.request("area.dailyHandler.getSignInGift", {
+        lz.server.request("area.dailyHandler.getSignInGift", {
             id: id
         }, function (data) {
             cc.log("pomelo websocket callback data:");

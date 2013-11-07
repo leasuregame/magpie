@@ -102,7 +102,7 @@ var BattleLog = Entity.extend({
 
         var i;
         if (id > 6) {
-            for (i = 6; i <= 12; ++i) {
+            for (i = 7; i <= 12; ++i) {
                 if (this._card[i] != undefined && typeof(this._card[i]) == "number") {
                     return i;
                 }

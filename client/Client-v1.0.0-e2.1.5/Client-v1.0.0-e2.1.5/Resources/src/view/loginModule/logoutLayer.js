@@ -29,8 +29,8 @@ var LogoutLayer = LazyLayer.extend({
         bgSprite.setPosition(cc.p(363, 600));
         this.addChild(bgSprite);
 
-        var msgLabel = cc.LabelTTF.create(msg, "STHeitiTC-Medium", 25);
-        msgLabel.setPosition(cc.p(360, 620));
+        var msgLabel = cc.LabelTTF.create(msg, "STHeitiTC-Medium", 28);
+        msgLabel.setPosition(cc.p(360, 635));
         this.addChild(msgLabel);
 
         var cancelItem = cc.MenuItemImage.createWithIcon(
@@ -40,7 +40,7 @@ var LogoutLayer = LazyLayer.extend({
             this._onClickOk,
             this
         );
-        cancelItem.setPosition(cc.p(360, 500));
+        cancelItem.setPosition(cc.p(360, 520));
 
         var menu = cc.Menu.create(cancelItem);
         menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
@@ -77,5 +77,5 @@ LogoutLayer.create = function (msg) {
 LogoutLayer.pop = function (msg) {
     var logoutLayer = LogoutLayer.create(msg);
 
-    MainScene.getInstance().addChild(logoutLayer, 1);
+    cc.Director.getInstance().getRunningScene().addChild(logoutLayer, 1);
 };

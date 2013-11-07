@@ -69,43 +69,43 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         this._nameLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
         this._nameLabel.setColor(cc.c3b(255, 239, 131));
-        this._nameLabel.setPosition(this._skillUpgradeLabelFit.nameLabelPoint);
+        this._nameLabel.setPosition(cc.p(0, 40));
         this._resLabel.addChild(this._nameLabel);
 
         var skillLvIcon = cc.LabelTTF.create("技能等级:", "STHeitiTC-Medium", 22);
         skillLvIcon.setColor(cc.c3b(255, 239, 131));
-        skillLvIcon.setPosition(this._skillUpgradeLabelFit.skillLvIconPoint);
+        skillLvIcon.setPosition(cc.p(-85, 2));
         this._resLabel.addChild(skillLvIcon);
 
         this._skillLvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._skillLvLabel.setPosition(this._skillUpgradeLabelFit.skillLvLabelPoint);
+        this._skillLvLabel.setPosition(cc.p(0, 0));
         this._resLabel.addChild(this._skillLvLabel);
 
         this._nextSkillLvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._nextSkillLvLabel.setColor(cc.c3b(118, 238, 60));
-        this._nextSkillLvLabel.setPosition(this._skillUpgradeLabelFit.nextSkillLvLabelPoint);
+        this._nextSkillLvLabel.setPosition(cc.p(100, 0));
         this._resLabel.addChild(this._nextSkillLvLabel);
 
         var skillHarmIcon = cc.LabelTTF.create("技能效果:", "STHeitiTC-Medium", 22);
         skillHarmIcon.setColor(cc.c3b(255, 239, 131));
-        skillHarmIcon.setPosition(this._skillUpgradeLabelFit.skillHarmIconPoint);
+        skillHarmIcon.setPosition(cc.p(-85, -33));
         this._resLabel.addChild(skillHarmIcon);
 
         this._skillHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
-        this._skillHarmLabel.setPosition(this._skillUpgradeLabelFit.skillHarmLabelPoint);
+        this._skillHarmLabel.setPosition(cc.p(0, -35));
         this._resLabel.addChild(this._skillHarmLabel);
 
         this._nextSkillHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 22);
         this._nextSkillHarmLabel.setColor(cc.c3b(118, 238, 60));
-        this._nextSkillHarmLabel.setPosition(this._skillUpgradeLabelFit.nextSkillHarmLabelPoint);
+        this._nextSkillHarmLabel.setPosition(cc.p(100, -35));
         this._resLabel.addChild(this._nextSkillHarmLabel);
 
         this._arrowLabel1 = cc.Sprite.create(main_scene_image.icon63);
-        this._arrowLabel1.setPosition(this._skillUpgradeLabelFit.arrowLabel1Point);
+        this._arrowLabel1.setPosition(cc.p(50, 0));
         this._resLabel.addChild(this._arrowLabel1);
 
         this._arrowLabel2 = cc.Sprite.create(main_scene_image.icon63);
-        this._arrowLabel2.setPosition(this._skillUpgradeLabelFit.arrowLabel2Point);
+        this._arrowLabel2.setPosition(cc.p(50, -35));
         this._resLabel.addChild(this._arrowLabel2);
 
         var helpBgSprite = cc.Sprite.create(main_scene_image.icon50);
@@ -117,11 +117,11 @@ var SkillUpgradeLabel = cc.Node.extend({
         this.addChild(this._tipLabel);
 
         var tipLabel1 = cc.LabelTTF.create("技能通过消耗技能点提升等级", "STHeitiTC-Medium", 22);
-        tipLabel1.setPosition(this._skillUpgradeLabelFit.tipLabel1Point);
+        tipLabel1.setPosition(cc.p(0, 20));
         this._tipLabel.addChild(tipLabel1);
 
         var tipLabel2 = cc.LabelTTF.create("技能点通过天道产出", "STHeitiTC-Medium", 22);
-        tipLabel2.setPosition(this._skillUpgradeLabelFit.tipLabel2Point);
+        tipLabel2.setPosition(cc.p(0, -20));
         this._tipLabel.addChild(tipLabel2);
 
         this._helpLabel = cc.Node.create();
@@ -129,12 +129,12 @@ var SkillUpgradeLabel = cc.Node.extend({
         this.addChild(this._helpLabel);
 
         var needSkillPointIcon = cc.LabelTTF.create("升级还需技能点:", "STHeitiTC-Medium", 22);
-        needSkillPointIcon.setPosition(this._skillUpgradeLabelFit.needSkillPointIconPoint);
+        needSkillPointIcon.setPosition(cc.p(-44, 0));
         this._helpLabel.addChild(needSkillPointIcon);
 
         this._needSkillPointLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._needSkillPointLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._needSkillPointLabel.setPosition(this._skillUpgradeLabelFit.needSkillPointLabelPoint);
+        this._needSkillPointLabel.setPosition(cc.p(44, -2));
         this._helpLabel.addChild(this._needSkillPointLabel);
 
         var selectLeadCardItem = cc.MenuItemImage.create(

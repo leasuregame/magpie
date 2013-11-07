@@ -28,8 +28,8 @@ var MainScene = cc.Scene.extend({
         this._mainMenuLayer = MainMenuLayer.create();
         this.addChild(this._mainMenuLayer, 1);
 
-        var gameFrame = GameFrame.create();
-        this.addChild(gameFrame, 100);
+//        var gameFrame = GameFrame.create();
+//        this.addChild(gameFrame, 100);
 
         var noviceTeachingLayer = NoviceTeachingLayer.getInstance();
         if (noviceTeachingLayer.isNoviceTeaching()) {

@@ -75,26 +75,26 @@ var CardTrainLabel = cc.Layer.extend({
 
         this._nameLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
         this._nameLabel.setColor(cc.c3b(255, 239, 131));
-        this._nameLabel.setPosition(this._cardTrainLabelFit.nameLabelPoint);
+        this._nameLabel.setPosition(cc.p(0, 40));
         this._resLabel.addChild(this._nameLabel);
 
         var hpIcon = cc.LabelTTF.create("生命:", "STHeitiTC-Medium", 22);
         hpIcon.setColor(cc.c3b(255, 239, 131));
-        hpIcon.setPosition(this._cardTrainLabelFit.hpIconPoint);
+        hpIcon.setPosition(cc.p(-85, 2));
         this._resLabel.addChild(hpIcon);
 
         this._hpLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._hpLabel.setPosition(this._cardTrainLabelFit.hpLabelPoint);
+        this._hpLabel.setPosition(cc.p(0, 0));
         this._resLabel.addChild(this._hpLabel);
 
         this._hpAdditionLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._hpAdditionLabel.setColor(cc.c3b(118, 238, 60));
-        this._hpAdditionLabel.setPosition(this._cardTrainLabelFit.hpAdditionLabelPoint);
+        this._hpAdditionLabel.setPosition(cc.p(85, 0));
         this._resLabel.addChild(this._hpAdditionLabel);
 
         var atkIcon = cc.LabelTTF.create("攻击:", "STHeitiTC-Medium", 22);
         atkIcon.setColor(cc.c3b(255, 239, 131));
-        atkIcon.setPosition(this._cardTrainLabelFit.atkIconPoint);
+        atkIcon.setPosition(cc.p(-85, -33));
         this._resLabel.addChild(atkIcon);
 
         this._atkLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
@@ -103,7 +103,7 @@ var CardTrainLabel = cc.Layer.extend({
 
         this._atkAdditionLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
         this._atkAdditionLabel.setColor(cc.c3b(118, 238, 60));
-        this._atkAdditionLabel.setPosition(this._cardTrainLabelFit.atkAdditionLabelPoint);
+        this._atkAdditionLabel.setPosition(cc.p(85, -35));
         this._resLabel.addChild(this._atkAdditionLabel);
 
 
@@ -112,7 +112,7 @@ var CardTrainLabel = cc.Layer.extend({
         this.addChild(this._tipLabel);
 
         var tipLabelBgSprite = cc.Sprite.create(main_scene_image.icon50);
-        tipLabelBgSprite.setPosition(this._cardTrainLabelFit.tipLabelBgSpritePoint);
+        tipLabelBgSprite.setPosition(cc.p(0, 0));
         this._tipLabel.addChild(tipLabelBgSprite);
 
         this._tipLabel = cc.Node.create();
@@ -120,11 +120,11 @@ var CardTrainLabel = cc.Layer.extend({
         this.addChild(this._tipLabel);
 
         var tipLabel1 = cc.LabelTTF.create("每消耗 20 点仙丹可提升 1 点攻击或 2 点生命", "STHeitiTC-Medium", 22);
-        tipLabel1.setPosition(this._cardTrainLabelFit.tipLabel1Point);
+        tipLabel1.setPosition(cc.p(0, 20));
         this._tipLabel.addChild(tipLabel1);
 
         var tipLabel2 = cc.LabelTTF.create("仙丹通过竞技场产出", "STHeitiTC-Medium", 22);
-        tipLabel2.setPosition(this._cardTrainLabelFit.tipLabel2Point);
+        tipLabel2.setPosition(cc.p(0, -20));
         this._tipLabel.addChild(tipLabel2);
 
         this._helpLabel = cc.Node.create();
@@ -133,32 +133,32 @@ var CardTrainLabel = cc.Layer.extend({
 
         var trainTypeLabel = cc.Sprite.create(main_scene_image.icon50);
         trainTypeLabel.setScaleY(0.4);
-        trainTypeLabel.setPosition(this._cardTrainLabelFit.trainTypeLabelPoint);
+        trainTypeLabel.setPosition(cc.p(0, 25));
         this._helpLabel.addChild(trainTypeLabel);
 
         var trainCountLabel = cc.Sprite.create(main_scene_image.icon50);
         trainCountLabel.setScaleY(0.4);
-        trainCountLabel.setPosition(this._cardTrainLabelFit.trainCountLabelPoint);
+        trainCountLabel.setPosition(cc.p(0, -25));
         this._helpLabel.addChild(trainCountLabel);
 
         var trainHpIcon = cc.LabelTTF.create("培养生命", "STHeitiTC-Medium", 22);
         trainHpIcon.setAnchorPoint(cc.p(0, 0.5));
-        trainHpIcon.setPosition(this._cardTrainLabelFit.trainHpIconPoint);
+        trainHpIcon.setPosition(cc.p(-130, 25));
         this._helpLabel.addChild(trainHpIcon);
 
         var trainAtkIcon = cc.LabelTTF.create("培养攻击", "STHeitiTC-Medium", 22);
         trainAtkIcon.setAnchorPoint(cc.p(0, 0.5));
-        trainAtkIcon.setPosition(this._cardTrainLabelFit.trainAtkIconPoint);
+        trainAtkIcon.setPosition(cc.p(110, 25));
         this._helpLabel.addChild(trainAtkIcon);
 
         var trainOneIcon = cc.LabelTTF.create("培养 1 次", "STHeitiTC-Medium", 22);
         trainOneIcon.setAnchorPoint(cc.p(0, 0.5));
-        trainOneIcon.setPosition(this._cardTrainLabelFit.trainOneIconPoint);
+        trainOneIcon.setPosition(cc.p(-130, -25));
         this._helpLabel.addChild(trainOneIcon);
 
         var trainTenIcon = cc.LabelTTF.create("培养 10 次", "STHeitiTC-Medium", 22);
         trainTenIcon.setAnchorPoint(cc.p(0, 0.5));
-        trainTenIcon.setPosition(this._cardTrainLabelFit.trainTenIconPoint);
+        trainTenIcon.setPosition(cc.p(110, -25));
         this._helpLabel.addChild(trainTenIcon);
 
         this._trainHpItem = cc.MenuItemImage.create(
@@ -168,7 +168,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._onClickTrainHp,
             this
         );
-        this._trainHpItem.setPosition(this._cardTrainLabelFit.trainHpItemPoint);
+        this._trainHpItem.setPosition(cc.p(-160, 25));
 
         this._trainAtkItem = cc.MenuItemImage.create(
             main_scene_image.button25,
@@ -177,7 +177,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._onClickTrainAtk,
             this
         );
-        this._trainAtkItem.setPosition(this._cardTrainLabelFit.trainAtkItemPoint);
+        this._trainAtkItem.setPosition(cc.p(80, 25));
 
         this._trainOneItem = cc.MenuItemImage.create(
             main_scene_image.button25,
@@ -186,7 +186,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._onClickTrainOne,
             this
         );
-        this._trainOneItem.setPosition(this._cardTrainLabelFit.trainOneItemPoint);
+        this._trainOneItem.setPosition(cc.p(-160, -25));
 
         this._trainTenItem = cc.MenuItemImage.create(
             main_scene_image.button25,
@@ -195,7 +195,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._onClickTrainTen,
             this
         );
-        this._trainTenItem.setPosition(this._cardTrainLabelFit.trainTenItemPoint);
+        this._trainTenItem.setPosition(cc.p(80, -25));
 
         var helpMenu = cc.Menu.create(
             this._trainHpItem,

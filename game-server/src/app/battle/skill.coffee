@@ -28,11 +28,13 @@ class Skill extends Module
   getTargets: ->
     switch @scope
       when 'default' then arg = @hero.pos
-      when 'random' then arg = @target_num
+      when 'random' 
+        arg = @target_num
+        filterFunc = (h) -> h? and not h.death?()
       when 'lengthways' then arg = @hero.pos
       else arg = null
 
-    @_player()?.herosToBeAttacked @scope, arg
+    @_player()?.herosToBeAttacked @scope, arg, filterFunc
 
   getRate: ->
     parseInt(@['rate' + @hero.star])

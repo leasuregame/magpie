@@ -181,13 +181,20 @@ class Matrix
 
   random: (num = 1, filter) ->    
     len = @rows * @cols
+    indexs = _.range(len)
     if filter and _.isFunction(filter)
-      items = @all().filter (i) -> filter(i)
+      items = []
+      indexs = []
+      allItems = @allWithNull()
+      for i in _.range(len)
+        if filter(allItems[i])
+          items.push allItems[i] 
+          indexs.push i
       len = items.length
 
     num = len if num > len
     
-    indexs = _.range(len)
+    
     _res = []
     for i in _.range(num)
       rd_index = Math.floor(Math.random() * len--)

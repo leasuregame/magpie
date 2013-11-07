@@ -7,7 +7,6 @@
  */
 
 var ColorLabelTTF = cc.Node.extend({
-
     _position: cc.p(0, 0),
 
     init: function (args) {
@@ -30,7 +29,6 @@ var ColorLabelTTF = cc.Node.extend({
         }
         return true;
     },
-
 
     createLabel: function (string, color, fontName, fontSize, isStroke, dimensions, alignment) {
         cc.log("ColorLabelTTF createLabel");
@@ -61,7 +59,6 @@ var ColorLabelTTF = cc.Node.extend({
 
         cc.Node.prototype.setPosition.call(this, point);
     }
-
 });
 
 ColorLabelTTF.create = function (/* Multi arguments */) {

@@ -1,4 +1,4 @@
-    /**
+/**
  * Created with JetBrains WebStorm.
  * User: lcc3536
  * Date: 13-9-4
@@ -59,10 +59,10 @@ var vipBoxUrl = {
     vip6: "icon277",
     vip7: "icon277",
     vip8: "icon277",
-    vip9: "icon219",
-    vip10: "icon219",
-    vip11: "icon219",
-    vip12: "icon219"
+    vip9: "icon281",
+    vip10: "icon281",
+    vip11: "icon281",
+    vip12: "icon281"
 };
 
 var VipLayer = cc.Layer.extend({
@@ -164,7 +164,6 @@ var VipLayer = cc.Layer.extend({
                 this._onClickVipBoxDetails(vipBox),
                 this
             );
-            vipBoxDetailsItem.setScale(0.6);
             vipBoxDetailsItem.setPosition(cc.p(95, y + 82));
             menu.addChild(vipBoxDetailsItem);
 

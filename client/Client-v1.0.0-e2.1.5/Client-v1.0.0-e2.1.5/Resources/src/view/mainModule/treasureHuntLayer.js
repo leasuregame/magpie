@@ -17,7 +17,7 @@ var TREASURE_HUNT_BUFFER_LEN = 10;
 var TREASURE_HUNT_ACCELERATION = (0.5 - 0.02) / TREASURE_HUNT_BUFFER_LEN;
 
 var TreasureHuntLayer = cc.Layer.extend({
-    _treasureHuntLayerFit: gameFit.mainScene.treasureHuntLayer,
+    _treasureHuntLayerFit: null,
 
     _selectFrame: null,
     _treasureHuntItem: null,
@@ -44,6 +44,8 @@ var TreasureHuntLayer = cc.Layer.extend({
         cc.log("TreasureHuntLayer init");
 
         if (!this._super()) return false;
+
+        this._treasureHuntLayerFit = gameFit.mainScene.treasureHuntLayer;
 
         this._locate = this._treasureHuntLayerFit.locatePoints;
         var table = outputTables.treasure_hunt.rows;

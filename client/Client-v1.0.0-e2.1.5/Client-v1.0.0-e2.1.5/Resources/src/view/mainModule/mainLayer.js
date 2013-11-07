@@ -13,7 +13,7 @@
 
 
 var MainLayer = cc.Layer.extend({
-    _mainLayer: gameFit.mainScene.mainLayer,
+    _mainLayerFit: null,
 
     _layer: [
         SpiritPoolLayer,
@@ -36,29 +36,31 @@ var MainLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._mainLayerFit = gameFit.mainScene.mainLayer;
+
         var bgSprite = cc.Sprite.create(main_scene_image.bg1);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(this._mainLayer.bgSpritePoint);
-      //  this.addChild(bgSprite, -1);
+        bgSprite.setPosition(this._mainLayerFit.bgSpritePoint);
+        //  this.addChild(bgSprite, -1);
 
         var playerHeaderLabel = PlayerHeaderLabel.create();
-        playerHeaderLabel.setPosition(this._mainLayer.playerHeaderLabelPoint);
+        playerHeaderLabel.setPosition(this._mainLayerFit.playerHeaderLabelPoint);
         this.addChild(playerHeaderLabel);
 
         var player = gameData.player;
 
         var abilityLabel = cc.LabelTTF.create(player.getAbility(), "STHeitiTC-Medium", 22);
         abilityLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        abilityLabel.setPosition(this._mainLayer.abilityLabelPoint);
+        abilityLabel.setPosition(this._mainLayerFit.abilityLabelPoint);
         this.addChild(abilityLabel);
 
         var rankingLabel = cc.LabelTTF.create(gameData.tournament.get("ranking"), "STHeitiTC-Medium", 22);
         rankingLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        rankingLabel.setPosition(this._mainLayer.rankingLabelPoint);
+        rankingLabel.setPosition(this._mainLayerFit.rankingLabelPoint);
         this.addChild(rankingLabel);
 
         var lineUpLabel = LineUpLabel.create();
-        lineUpLabel.setPosition(this._mainLayer.lineUpLabelPoint);
+        lineUpLabel.setPosition(this._mainLayerFit.lineUpLabelPoint);
         this.addChild(lineUpLabel);
 
         var spiritLayerItem = cc.MenuItemImage.create(
@@ -67,7 +69,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(0),
             this
         );
-        spiritLayerItem.setPosition(this._mainLayer.spiritLayerItemPoint);
+        spiritLayerItem.setPosition(this._mainLayerFit.spiritLayerItemPoint);
 
         var lotteryLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -77,7 +79,7 @@ var MainLayer = cc.Layer.extend({
             this
         );
         lotteryLayerItem.setOffset(cc.p(-5, 5));
-        lotteryLayerItem.setPosition(this._mainLayer.lotteryLayerItemPoint);
+        lotteryLayerItem.setPosition(this._mainLayerFit.lotteryLayerItemPoint);
 
         var treasureHuntLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -87,7 +89,7 @@ var MainLayer = cc.Layer.extend({
             this
         );
         treasureHuntLayerItem.setOffset(cc.p(-5, 5));
-        treasureHuntLayerItem.setPosition(this._mainLayer.treasureHuntLayerItemPoint);
+        treasureHuntLayerItem.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
 
         var strengthenLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -97,7 +99,7 @@ var MainLayer = cc.Layer.extend({
             this
         );
         strengthenLayerItem.setOffset(cc.p(-5, 5));
-        strengthenLayerItem.setPosition(this._mainLayer.strengthenLayerItemPoint);
+        strengthenLayerItem.setPosition(this._mainLayerFit.strengthenLayerItemPoint);
 
         var evolutionLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -107,7 +109,7 @@ var MainLayer = cc.Layer.extend({
             this
         );
         evolutionLayerItem.setOffset(cc.p(-5, 5));
-        evolutionLayerItem.setPosition(this._mainLayer.evolutionLayerItemPoint);
+        evolutionLayerItem.setPosition(this._mainLayerFit.evolutionLayerItemPoint);
 
         var activityLayerItem = cc.MenuItemImage.create(
             main_scene_image.button52,
@@ -115,7 +117,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(5),
             this
         );
-        activityLayerItem.setPosition(this._mainLayer.activityLayerItemPoint);
+        activityLayerItem.setPosition(this._mainLayerFit.activityLayerItemPoint);
 
         var cardLibraryLayerItem = cc.MenuItemImage.create(
             main_scene_image.button53,
@@ -123,7 +125,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(6),
             this
         );
-        cardLibraryLayerItem.setPosition(this._mainLayer.cardLibraryLayerItemPoint);
+        cardLibraryLayerItem.setPosition(this._mainLayerFit.cardLibraryLayerItemPoint);
 
         var rankLayerItem = cc.MenuItemImage.create(
             main_scene_image.button54,
@@ -131,7 +133,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(7),
             this
         );
-        rankLayerItem.setPosition(this._mainLayer.rankLayerItemPoint);
+        rankLayerItem.setPosition(this._mainLayerFit.rankLayerItemPoint);
 
         var achievementLayerItem = cc.MenuItemImage.create(
             main_scene_image.button55,
@@ -139,7 +141,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(8),
             this
         );
-        achievementLayerItem.setPosition(this._mainLayer.achievementLayerItemPoint);
+        achievementLayerItem.setPosition(this._mainLayerFit.achievementLayerItemPoint);
 
         var friendLayerItem = cc.MenuItemImage.create(
             main_scene_image.button56,
@@ -147,7 +149,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(9),
             this
         );
-        friendLayerItem.setPosition(this._mainLayer.friendLayerItemPoint);
+        friendLayerItem.setPosition(this._mainLayerFit.friendLayerItemPoint);
 
         var otherItem = cc.MenuItemImage.create(
             main_scene_image.button57,
@@ -155,7 +157,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickOther,
             this
         );
-        otherItem.setPosition(this._mainLayer.otherItemPoint);
+        otherItem.setPosition(this._mainLayerFit.otherItemPoint);
 
 //         var signInLayerItem = cc.MenuItemImage.create(
 //         main_scene_image.button58,
@@ -171,7 +173,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(11),
             this
         );
-        messageItem.setPosition(this._mainLayer.messageItemPoint);
+        messageItem.setPosition(this._mainLayerFit.messageItemPoint);
 
         var configLayerItem = cc.MenuItemImage.create(
             main_scene_image.button60,
@@ -179,7 +181,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(12),
             this
         );
-        configLayerItem.setPosition(this._mainLayer.configLayerItemPoint);
+        configLayerItem.setPosition(this._mainLayerFit.configLayerItemPoint);
 
         var menu = cc.Menu.create(
             spiritLayerItem,

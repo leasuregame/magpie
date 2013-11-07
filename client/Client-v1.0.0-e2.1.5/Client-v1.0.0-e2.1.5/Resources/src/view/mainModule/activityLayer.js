@@ -13,7 +13,7 @@
 
 
 var ActivityLayer = cc.Layer.extend({
-    _activityLayerFit: gameFit.mainScene.activityLayer,
+    _activityLayerFit: null,
 
     _layer: [
         SignInLayer,
@@ -21,13 +21,14 @@ var ActivityLayer = cc.Layer.extend({
         GoldRewardLayer,
         RechargeLayer
     ],
-
     _selectIcon: null,
 
     init: function () {
         cc.log("ActivityLayer init");
 
         if (!this._super()) return false;
+
+        this._activityLayerFit = gameFit.mainScene.activityLayer;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));

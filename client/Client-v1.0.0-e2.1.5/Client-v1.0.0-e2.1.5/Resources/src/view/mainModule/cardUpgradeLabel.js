@@ -13,7 +13,7 @@
 
 
 var CardUpgradeLabel = cc.Layer.extend({
-    _cardUpgradeLabelFit: gameFit.mainScene.cardUpgradeLabel,
+    _cardUpgradeLabelFit: null,
 
     _leadCard: null,
     _retinueCard: [],
@@ -46,6 +46,8 @@ var CardUpgradeLabel = cc.Layer.extend({
         cc.log("CardUpgradeLabel init");
 
         if (!this._super()) return false;
+
+        this._cardUpgradeLabelFit = gameFit.mainScene.cardUpgradeLabel;
 
         var cardItemBgSprite = cc.Sprite.create(main_scene_image.icon48);
         cardItemBgSprite.setPosition(this._cardUpgradeLabelFit.cardItemBgSpritePoint);

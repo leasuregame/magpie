@@ -12,7 +12,7 @@
  * */
 
 var BatterLayer = cc.Layer.extend({
-    _batterLayerFit: gameFit.battleScene.batterLayer,
+    _batterLayerFit: null,
 
     _index: 0,
     _isEnd: false,
@@ -27,6 +27,8 @@ var BatterLayer = cc.Layer.extend({
         cc.log("BatterLayer init");
 
         if (!this._super()) return false;
+
+        this._batterLayerFit = gameFit.battleScene.batterLayer;
 
         this._index = 1;
         this._isEnd = false;

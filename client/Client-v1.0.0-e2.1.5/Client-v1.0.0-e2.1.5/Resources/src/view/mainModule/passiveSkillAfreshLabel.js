@@ -21,7 +21,7 @@ var STOP_UNTIL_BLUE = 1;
 var STOP_UNTIL_YELLOW = 2;
 
 var PassiveSkillAfreshLabel = cc.Layer.extend({
-    _passiveSkillAfreshLabelFit: gameFit.mainScene.passiveSkillAfreshLabel,
+    _passiveSkillAfreshLabelFit: null,
 
     _leadCard: null,
     _leadCardHeadNode: null,
@@ -53,6 +53,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         cc.log("PassiveSkillAfreshLabel init");
 
         if (!this._super()) return false;
+
+        this._passiveSkillAfreshLabelFit = gameFit.mainScene.passiveSkillAfreshLabel;
 
         var cardItemBgSprite = cc.Sprite.create(main_scene_image.icon68);
         cardItemBgSprite.setPosition(this._passiveSkillAfreshLabelFit.cardItemBgSpritePoint);

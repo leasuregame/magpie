@@ -57,6 +57,7 @@ var cocos2dApp = cc.Application.extend({
 
         //load resources
         cc.LoaderScene.preload(main_scene_res, function () {
+            gameFitAdapter();
             cc.Director.getInstance().replaceScene(this.startScene.create());
         }, this);
 

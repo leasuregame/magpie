@@ -11,16 +11,18 @@
  * battle end layer
  * */
 
+
 var BattleEndLayer = cc.Layer.extend({
-    _battleEndLayerFit: gameFit.battleScene.battleEndLayer,
+    _battleEndLayerFit: null,
 
     _battleLog: null,
-
 
     init: function (battleLog) {
         cc.log("BattleEndLayer init");
 
         if (!this._super()) return false;
+
+        this._battleEndLayerFit = gameFit.battleScene.battleEndLayer;
 
         this._battleLog = battleLog;
 

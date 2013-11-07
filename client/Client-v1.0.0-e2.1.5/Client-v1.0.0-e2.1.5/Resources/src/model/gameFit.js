@@ -628,6 +628,15 @@ var fit4Iphone5 = {
             "powerLabelPoint": cc.p(427, 36),
             "vipSpritePoint": cc.p(410, 83)
         },
+        "powerRewardLayer": {
+            "lineIconPoint": cc.p(40, 875),
+            "headTextPoint": cc.p(165, 900),
+            "tipIconPoint": cc.p(120, 675),
+            "powerBgIconPoint": cc.p(125, 290),
+            "textOffsetX": 270,
+            "itemText1BasePoint": cc.p(200, 770),
+            "itemText2BasePoint": cc.p(160, 730)
+        },
         "skillUpgradeLabel": {
             "cardItemBgSpritePoint": cc.p(366, 622),
             "skillPointIconPoint": cc.p(535, 780),

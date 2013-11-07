@@ -13,6 +13,8 @@
 
 
 var EvolutionLayer = cc.Layer.extend({
+    _evolutionLayerFit: gameFit.mainScene.evolutionLayer,
+
     _nowLabel: null,
     _cardEvolutionItem: null,
     _cardTrainItem: null,
@@ -24,16 +26,16 @@ var EvolutionLayer = cc.Layer.extend({
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg1);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
-        this.addChild(bgSprite, -1);
+        bgSprite.setPosition(this._evolutionLayerFit.bgSpritePoint);
+        //this.addChild(bgSprite, -1);
 
         var playerHeaderLabel = PlayerHeaderLabel.create();
-        playerHeaderLabel.setPosition(cc.p(40, 890));
+        playerHeaderLabel.setPosition(this._evolutionLayerFit.playerHeaderLabelPoint);
         this.addChild(playerHeaderLabel);
 
         bgSprite = cc.Sprite.create(main_scene_image.bg15);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
+        bgSprite.setPosition(this._evolutionLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         this._cardEvolutionItem = cc.MenuItemImage.createWithIcon(
@@ -44,8 +46,8 @@ var EvolutionLayer = cc.Layer.extend({
             this._onClickCardEvolution,
             this
         );
-        this._cardEvolutionItem.setPosition(cc.p(110, 844));
-        this._cardEvolutionItem.setOffset(cc.p(-7, -2));
+        this._cardEvolutionItem.setPosition(this._evolutionLayerFit.cardEvolutionItemPoint);
+        this._cardEvolutionItem.setOffset(this._evolutionLayerFit.cardEvolutionItemOffset);
 
         this._cardTrainItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button23,
@@ -55,8 +57,8 @@ var EvolutionLayer = cc.Layer.extend({
             this._onClickCardTrain,
             this
         );
-        this._cardTrainItem.setPosition(cc.p(254, 844));
-        this._cardTrainItem.setOffset(cc.p(0, -2));
+        this._cardTrainItem.setPosition(this._evolutionLayerFit.cardTrainItemPoint);
+        this._cardTrainItem.setOffset(this._evolutionLayerFit.cardTrainItemOffset);
 
         var menu = cc.Menu.create(this._cardEvolutionItem, this._cardTrainItem);
         menu.setPosition(cc.p(0, 0));

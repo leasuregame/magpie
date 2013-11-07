@@ -76,6 +76,12 @@ var fit4Iphone4 = {
             "addFriendItemPoint": cc.p(108, 60),
             "skyDialogRect": cc.rect(40, 198, 640, 768)
         },
+        "activityLayer": {
+            "bgSpritePoint": cc.p(40, 194),
+            "headSpritePoint": cc.p(680, 1048),
+            "itemBasePoint": cc.p(65, 950),
+            "itemOffsetX": 107
+        },
         "cardEvolutionLayer": {
             "cardItemBgSpritePoint": cc.p(359, 627),
             "helpBgSpritePoint": cc.p(360, 380),
@@ -431,6 +437,12 @@ var fit4Iphone5 = {
             "sendMessageItemPoint": cc.p(108, 150),
             "addFriendItemPoint": cc.p(108, 60),
             "skyDialogRect": cc.rect(40, 198, 640, 768)
+        },
+        "activityLayer": {
+            "bgSpritePoint": cc.p(40, 194),
+            "headSpritePoint": cc.p(680, 1136),
+            "itemBasePoint": cc.p(65, 1038),
+            "itemOffsetX": 107
         },
         "cardEvolutionLayer": {
             "cardItemBgSpritePoint": cc.p(359, 627),

@@ -50,7 +50,6 @@ app.configure('production|development', function() {
 
   app.route('connector', routeUtil.connector);
   app.route('area', routeUtil.area);
-  app.route('battle', routeUtil.battle);
 
   app.filter(pomelo.filters.timeout());
 });

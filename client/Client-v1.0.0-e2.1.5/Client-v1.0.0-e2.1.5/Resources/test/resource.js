@@ -575,6 +575,20 @@ var main_scene_image = {
     up3: effect_scene_path + "uiEffect/" + "up3.png",
     up4: effect_scene_path + "uiEffect/" + "up4.png",
     up5: effect_scene_path + "uiEffect/" + "up5.png",
+    up6: effect_scene_path + "uiEffect/" + "up6.png",
+    up7: effect_scene_path + "uiEffect/" + "up7.png",
+    up8: effect_scene_path + "uiEffect/" + "up8.png",
+    up9: effect_scene_path + "uiEffect/" + "up9.png",
+    up10: effect_scene_path + "uiEffect/" + "up10.png",
+    up11: effect_scene_path + "uiEffect/" + "up11.png",
+    up12: effect_scene_path + "uiEffect/" + "up12.png",
+    up13: effect_scene_path + "uiEffect/" + "up13.png",
+    up14: effect_scene_path + "uiEffect/" + "up14.png",
+    up15: effect_scene_path + "uiEffect/" + "up15.png",
+    up16: effect_scene_path + "uiEffect/" + "up16.png",
+    up17: effect_scene_path + "uiEffect/" + "up17.png",
+    up18: effect_scene_path + "uiEffect/" + "up18.png",
+    up19: effect_scene_path + "uiEffect/" + "up19.png",
 
 
 
@@ -623,6 +637,7 @@ var main_scene_image = {
     effect14: ccb_scene_path + "effect14.ccbi", 
     effect15: ccb_scene_path + "effect15.ccbi", 
     uiEffect1: ccb_scene_path + "uiEffect1.ccbi", 
+    uiEffect2: ccb_scene_path + "uiEffect2.ccbi", 
     
 };
 

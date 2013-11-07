@@ -15,6 +15,8 @@
 var MAIN_MENU_LAYER_HANDLER_PRIORITY = -200;
 
 var MainMenuLayer = cc.Layer.extend({
+    _mainMenuLayerFit: gameFit.mainScene.mainMenuLayer,
+
     _markSprite: null,
     _layer: [
         MainLayer,
@@ -37,7 +39,7 @@ var MainMenuLayer = cc.Layer.extend({
 
         var bgSprite = cc.Sprite.create(main_scene_image.icon10);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(cc.p(40, 88));
+        bgSprite.setPosition(this._mainMenuLayerFit.bgSpritePoint);
         this.addChild(bgSprite, -1);
 
         this._markSprite = cc.Sprite.create(main_scene_image.icon9);
@@ -49,6 +51,8 @@ var MainMenuLayer = cc.Layer.extend({
         this.addChild(mainMenu);
 
         var len = this._layer.length;
+        var basePoint = this._mainMenuLayerFit.itemBasePoint;
+        var offsetX = this._mainMenuLayerFit.itemOffsetX;
 
         for (var i = 0; i < len; ++i) {
             var url = "button" + (46 + i);
@@ -59,7 +63,7 @@ var MainMenuLayer = cc.Layer.extend({
                 this._onClickLayer(i),
                 this
             );
-            item.setPosition(cc.p(93 + 107 * i, 142));
+            item.setPosition(cc.p(basePoint.x + offsetX * i, basePoint.y));
             mainMenu.addChild(item);
         }
 
@@ -72,10 +76,12 @@ var MainMenuLayer = cc.Layer.extend({
         var runLayer = MainScene.getInstance().getLayer();
 
         var len = this._layer.length;
+        var basePoint = this._mainMenuLayerFit.markSpriteBasePoint;
+        var offsetX = this._mainMenuLayerFit.markSpriteOffsetX;
 
         for (var i = 0; i < len; ++i) {
             if (runLayer instanceof this._layer[i]) {
-                this._markSprite.setPosition(93 + 107 * i, 142);
+                this._markSprite.setPosition(cc.p(basePoint.x + offsetX * i, basePoint.y));
                 this._markSprite.setVisible(true);
                 return;
             }

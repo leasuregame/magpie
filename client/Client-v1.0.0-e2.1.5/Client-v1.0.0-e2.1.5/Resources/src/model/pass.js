@@ -124,7 +124,7 @@ var Pass = Entity.extend({
 
                     cbData.upgradeReward = upgradeInfo.rewards;
                 }
-
+                cc.log(JSON.stringify(msg.battleLog));
                 cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
 
                 cb(cbData);

@@ -342,7 +342,7 @@ var ExploreLayer = cc.Layer.extend({
             this._onBuyPower();
         }
 
-        if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
             NoviceTeachingLayer.getInstance().clearAndSave();
             NoviceTeachingLayer.getInstance().next();
         }

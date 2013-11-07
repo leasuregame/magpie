@@ -32,7 +32,7 @@ var Message = Entity.extend({
     init: function () {
         cc.log("Message init");
 
-        lzWindow.pomelo.on("onSystemMessage", function (data) {
+        lz.server.on("onSystemMessage", function (data) {
             cc.log("***** on system message:");
             cc.log(data);
 
@@ -58,29 +58,34 @@ var Message = Entity.extend({
         cc.log("Message sync");
 
         var that = this;
-        lzWindow.pomelo.request("area.messageHandler.messageList", {}, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
+        lz.server.request(
+            "area.messageHandler.messageList",
+            {},
+            function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
 
-            if (data.code == 200) {
-                cc.log("sync success");
+                if (data.code == 200) {
+                    cc.log("sync success");
 
-                var msg = data.msg;
+                    var msg = data.msg;
 
-                that.update(msg);
+                    that.update(msg);
 
-                lzWindow.pomelo.on("onMessage", function (data) {
-                    cc.log("***** on message:");
-                    cc.log(data);
+                    lz.server.on("onMessage", function (data) {
+                        cc.log("***** on message:");
+                        cc.log(data);
 
-                    gameData.message.push(data.msg);
-                });
-            } else {
-                cc.log("sync fail");
+                        gameData.message.push(data.msg);
+                    });
+                } else {
+                    cc.log("sync fail");
 
-                that.sync();
-            }
-        });
+                    that.sync();
+                }
+            },
+            true
+        );
     },
 
     push: function (msg) {
@@ -113,7 +118,7 @@ var Message = Entity.extend({
 
         if (message) {
             var that = this;
-            lzWindow.pomelo.request("area.messageHandler.accept", {
+            lz.server.request("area.messageHandler.accept", {
                 msgId: msgId
             }, function (data) {
                 cc.log("pomelo websocket callback data:");
@@ -150,7 +155,7 @@ var Message = Entity.extend({
 
         if (message) {
             var that = this;
-            lzWindow.pomelo.request("area.messageHandler.reject", {
+            lz.server.request("area.messageHandler.reject", {
                 msgId: msgId
             }, function (data) {
                 cc.log("pomelo websocket callback data:");
@@ -184,7 +189,7 @@ var Message = Entity.extend({
 
         if (message) {
             var that = this;
-            lzWindow.pomelo.request("area.messageHandler.handleSysMsg", {
+            lz.server.request("area.messageHandler.handleSysMsg", {
                 msgId: msgId
             }, function (data) {
                 cc.log("pomelo websocket callback data:");
@@ -232,7 +237,7 @@ var Message = Entity.extend({
         }
 
         var that = this;
-        lzWindow.pomelo.request("area.battleHandler.playBack", {
+        lz.server.request("area.battleHandler.playBack", {
             battleLogId: id
         }, function (data) {
             cc.log("pomelo websocket callback data:");

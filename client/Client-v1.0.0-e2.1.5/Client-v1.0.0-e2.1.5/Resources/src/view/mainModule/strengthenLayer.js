@@ -80,13 +80,13 @@ var StrengthenLayer = cc.Layer.extend({
 
         this._onClickCardUpgrade();
 
+        this.retain();
+
         return true;
     },
 
     switchToCardListLayer: function (cardListLayer) {
         cc.log("StrengthenLayer switchToCardListLayer");
-
-        this.retain();
 
         MainScene.getInstance().switch(cardListLayer);
     },
@@ -133,6 +133,10 @@ var StrengthenLayer = cc.Layer.extend({
             this._nowLabel = runLabel.create();
             this.addChild(this._nowLabel);
         }
+    },
+
+    onExit: function () {
+        this.release();
     }
 });
 

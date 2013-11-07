@@ -162,7 +162,7 @@ var LotteryLayer = cc.Layer.extend({
                 return;
             }
 
-            if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
                 NoviceTeachingLayer.getInstance().clearAndSave();
             }
 
@@ -191,7 +191,8 @@ var LotteryLayer = cc.Layer.extend({
                             that.scheduleOnce(function () {
                                 blackLayer.removeFromParent();
                                 LazyLayer.closeCloudLayer();
-                                if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+
+                                if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
                                     NoviceTeachingLayer.getInstance().next();
                                 }
                             }, 2);

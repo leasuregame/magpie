@@ -8,14 +8,10 @@
 
 
 /*
- * 基础功能
- * */
-
-
-/*
  * 命名空间
  * */
 var lz = {};
+
 
 (function () {
     var _callback = {};
@@ -310,9 +306,4 @@ Array.prototype.distinct = function () {
     }
 
     return arr;
-};
-
-// 获取不大于原数的随机数
-Number.prototype.getRandom = function () {
-    return Math.floor(Math.random() * this);
 };

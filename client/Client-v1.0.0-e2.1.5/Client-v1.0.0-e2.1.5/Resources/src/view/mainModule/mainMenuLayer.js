@@ -91,7 +91,7 @@ var MainMenuLayer = cc.Layer.extend({
 
             MainScene.getInstance().switchLayer(this._layer[index]);
 
-            if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
                 NoviceTeachingLayer.getInstance().clearAndSave();
                 NoviceTeachingLayer.getInstance().next();
             }

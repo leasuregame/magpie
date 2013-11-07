@@ -21,6 +21,7 @@ var LoginLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        lz.server.connectGateServer();
         user = gameData.user;
 
         var accountLabel = cc.LabelTTF.create("账号:", "STHeitiTC-Medium", 30);
@@ -55,7 +56,7 @@ var LoginLayer = cc.Layer.extend({
         this.loginButton.setPosition(260, 250);
         this.loginButton.setEnabled(false);
 
-        var registerButton = cc.MenuItemFont.create("直接进入", this._onClickRegister, this);
+        var registerButton = cc.MenuItemFont.create("注册", this._onClickRegister, this);
         registerButton.setFontSize(45);
         registerButton.setPosition(460, 250);
 
@@ -69,7 +70,7 @@ var LoginLayer = cc.Layer.extend({
     },
 
     _changeLoginEnabled: function () {
-        if (connectSuccess) {
+        if (lz.server.isConnect()) {
             this.unschedule(this._changeLoginEnabled);
             this.loginButton.setEnabled(true);
         }

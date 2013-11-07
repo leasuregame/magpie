@@ -6,6 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 var itemTitle = ['元神', '修炼', '天道', '竞技', '好友', 'VIP', '卡牌升级', '技能升级', '被动洗练', '星级进阶', '属性培养'];
 
 var TipsLayer = LazyLayer.extend({
@@ -205,9 +206,8 @@ var TipsLayer = LazyLayer.extend({
 
         this.removeFromParent();
     }
-
-
 });
+
 
 TipsLayer.create = function () {
     var ret = new TipsLayer();
@@ -218,6 +218,7 @@ TipsLayer.create = function () {
 
     return null;
 };
+
 
 TipsLayer.pop = function () {
     var tipsLayer = TipsLayer.create();

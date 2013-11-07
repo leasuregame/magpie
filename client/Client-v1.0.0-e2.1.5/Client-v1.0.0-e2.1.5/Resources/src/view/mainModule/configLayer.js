@@ -13,7 +13,6 @@
 
 
 var ConfigLayer = cc.Layer.extend({
-
     musicOpen: true,
     soundOpen: true,
     musicSelect: null,

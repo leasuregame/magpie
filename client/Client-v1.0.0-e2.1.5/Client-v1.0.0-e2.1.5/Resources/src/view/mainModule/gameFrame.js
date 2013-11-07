@@ -11,7 +11,7 @@
 * game frame
 * */
 
-
+var gameFrameFit = gameFit.gameFrame;
 var GameFrame = cc.Layer.extend({
     init :function() {
         cc.log("GameFrame init");
@@ -20,12 +20,12 @@ var GameFrame = cc.Layer.extend({
 
         var frame1 = cc.Sprite.create(main_scene_image.gameFrame);
         frame1.setAnchorPoint(cc.p(0, 0.5));
-        frame1.setPosition(cc.p(0, 568));
+        frame1.setPosition(gameFrameFit.frame1Point);
         this.addChild(frame1);
 
         var frame2 = cc.Sprite.create(main_scene_image.gameFrame);
         frame2.setAnchorPoint(cc.p(1, 0.5));
-        frame2.setPosition(cc.p(680, 568));
+        frame2.setPosition(gameFrameFit.frame2Point);
         this.addChild(frame2);
         frame2.setRotation(180);
 

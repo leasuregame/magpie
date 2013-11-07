@@ -60,6 +60,7 @@
             'src/model/singleton.js',
             'src/model/gameConfig.js',
 
+            'src/model/gameFit.js',
             'src/model/user.js',
             'src/model/player.js',
             'src/model/card.js',
@@ -98,6 +99,7 @@
             'src/controls/strokeLabel.js',
             'src/controls/LzMenuItem.js',
             'src/controls/tipLayer.js',
+            'src/controls/colorLabelTTF.js',
 
             'src/view/loginModule/loginScene.js',
             'src/view/loginModule/loginLayer.js',

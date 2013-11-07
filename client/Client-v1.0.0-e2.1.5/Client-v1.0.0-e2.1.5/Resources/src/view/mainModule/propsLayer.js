@@ -11,6 +11,7 @@
  * props layer
  * */
 
+var productUrl = ["icon146","icon278","icon279","icon280","icon106"];
 
 var PropsLayer = cc.Layer.extend({
     _goldLabel: null,
@@ -87,7 +88,7 @@ var PropsLayer = cc.Layer.extend({
             bgSprite.setPosition(cc.p(17, y));
             scrollViewLayer.addChild(bgSprite);
 
-            var productSprite = cc.Sprite.create(main_scene_image[rewardGoodsUrl[product.obtain_type]]);
+            var productSprite = cc.Sprite.create(main_scene_image[productUrl[i]]);
             productSprite.setPosition(cc.p(95, y + 82));
             scrollViewLayer.addChild(productSprite);
 

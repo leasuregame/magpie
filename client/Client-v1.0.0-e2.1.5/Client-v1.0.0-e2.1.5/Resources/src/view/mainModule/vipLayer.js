@@ -50,6 +50,21 @@ var vipBoxGoods = {
     }
 };
 
+var vipBoxUrl = {
+    vip1: "icon276",
+    vip2: "icon276",
+    vip3: "icon276",
+    vip4: "icon276",
+    vip5: "icon277",
+    vip6: "icon277",
+    vip7: "icon277",
+    vip8: "icon277",
+    vip9: "icon281",
+    vip10: "icon281",
+    vip11: "icon281",
+    vip12: "icon281"
+};
+
 var VipLayer = cc.Layer.extend({
     _goldLabel: null,
     _moneyLabel: null,
@@ -144,12 +159,11 @@ var VipLayer = cc.Layer.extend({
             scrollViewLayer.addChild(bgSprite);
 
             var vipBoxDetailsItem = cc.MenuItemImage.create(
-                main_scene_image.icon219,
-                main_scene_image.icon219,
+                main_scene_image[vipBoxUrl["vip" + vipBox.id]],
+                main_scene_image[vipBoxUrl["vip" + vipBox.id]],
                 this._onClickVipBoxDetails(vipBox),
                 this
             );
-            vipBoxDetailsItem.setScale(0.6);
             vipBoxDetailsItem.setPosition(cc.p(95, y + 82));
             menu.addChild(vipBoxDetailsItem);
 

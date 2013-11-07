@@ -13,6 +13,8 @@
 
 
 var StrengthenLayer = cc.Layer.extend({
+    _strengthenLayerFit: gameFit.mainScene.strengthenLayer,
+
     _nowLabel: null,
     _cardUpgradeItem: null,
     _skillUpgradeItem: null,
@@ -25,16 +27,16 @@ var StrengthenLayer = cc.Layer.extend({
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg1);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
-        this.addChild(bgSprite, -1);
+        bgSprite.setPosition(this._strengthenLayerFit.bgSpritePoint);
+      //  this.addChild(bgSprite, -1);
 
         var playerHeaderLabel = PlayerHeaderLabel.create();
-        playerHeaderLabel.setPosition(cc.p(40, 890));
+        playerHeaderLabel.setPosition(this._strengthenLayerFit.playerHeaderLabelPoint);
         this.addChild(playerHeaderLabel);
 
         bgSprite = cc.Sprite.create(main_scene_image.bg15);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
+        bgSprite.setPosition(this._strengthenLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         this._cardUpgradeItem = cc.MenuItemImage.createWithIcon(
@@ -45,8 +47,8 @@ var StrengthenLayer = cc.Layer.extend({
             this._onClickCardUpgrade,
             this
         );
-        this._cardUpgradeItem.setPosition(cc.p(110, 844));
-        this._cardUpgradeItem.setOffset(cc.p(-7, -2));
+        this._cardUpgradeItem.setPosition(this._strengthenLayerFit.cardUpgradeItemPoint);
+        this._cardUpgradeItem.setOffset(this._strengthenLayerFit.cardUpgradeItemOffset);
 
         this._skillUpgradeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button23,
@@ -56,8 +58,8 @@ var StrengthenLayer = cc.Layer.extend({
             this._onClickSkillUpgrade,
             this
         );
-        this._skillUpgradeItem.setPosition(cc.p(254, 844));
-        this._skillUpgradeItem.setOffset(cc.p(0, -2));
+        this._skillUpgradeItem.setPosition(this._strengthenLayerFit.skillUpgradeItemPoint);
+        this._skillUpgradeItem.setOffset(this._strengthenLayerFit.skillUpgradeItemOffset);
 
         this._passiveSkillUpgradeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button23,
@@ -67,8 +69,8 @@ var StrengthenLayer = cc.Layer.extend({
             this._onClickPassiveSkillUpgrade,
             this
         );
-        this._passiveSkillUpgradeItem.setPosition(cc.p(404, 844));
-        this._passiveSkillUpgradeItem.setOffset(cc.p(0, -2));
+        this._passiveSkillUpgradeItem.setPosition(this._strengthenLayerFit.passiveSkillUpgradeItemPoint);
+        this._passiveSkillUpgradeItem.setOffset(this._strengthenLayerFit.passiveSkillUpgradeItemOffset);
 
         var menu = cc.Menu.create(
             this._cardUpgradeItem,

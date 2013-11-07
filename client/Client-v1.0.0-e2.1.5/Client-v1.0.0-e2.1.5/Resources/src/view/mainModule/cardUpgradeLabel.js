@@ -13,6 +13,8 @@
 
 
 var CardUpgradeLabel = cc.Layer.extend({
+    _cardUpgradeLabelFit: gameFit.mainScene.cardUpgradeLabel,
+
     _leadCard: null,
     _retinueCard: [],
     _leadCardHalfNode: null,
@@ -46,11 +48,11 @@ var CardUpgradeLabel = cc.Layer.extend({
         if (!this._super()) return false;
 
         var cardItemBgSprite = cc.Sprite.create(main_scene_image.icon48);
-        cardItemBgSprite.setPosition(cc.p(365, 600));
+        cardItemBgSprite.setPosition(this._cardUpgradeLabelFit.cardItemBgSpritePoint);
         this.addChild(cardItemBgSprite);
 
         this._resLabel = cc.Node.create();
-        this._resLabel.setPosition(cc.p(360, 510));
+        this._resLabel.setPosition(this._cardUpgradeLabelFit.resLabelPoint);
         this.addChild(this._resLabel);
 
         var resLabelBgSprite = cc.Sprite.create(main_scene_image.icon49);
@@ -58,85 +60,85 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         var hpIcon = cc.LabelTTF.create("生命:", "STHeitiTC-Medium", 22);
         hpIcon.setColor(cc.c3b(255, 239, 131));
-        hpIcon.setPosition(cc.p(-85, 40));
+        hpIcon.setPosition(this._cardUpgradeLabelFit.hpIconPoint);
         this._resLabel.addChild(hpIcon);
 
         this._hpLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._hpLabel.setPosition(cc.p(0, 38));
+        this._hpLabel.setPosition(this._cardUpgradeLabelFit.hpLabelPoint);
         this._resLabel.addChild(this._hpLabel);
 
         this._hpAdditionLabel = cc.LabelTTF.create("+ 0", "STHeitiTC-Medium", 22);
         this._hpAdditionLabel.setColor(cc.c3b(118, 238, 60));
-        this._hpAdditionLabel.setPosition(cc.p(85, 38));
+        this._hpAdditionLabel.setPosition(this._cardUpgradeLabelFit.hpAdditionLabelPoint);
         this._resLabel.addChild(this._hpAdditionLabel);
 
         var atkIcon = cc.LabelTTF.create("攻击:", "STHeitiTC-Medium", 22);
         atkIcon.setColor(cc.c3b(255, 239, 131));
-        atkIcon.setPosition(cc.p(-85, 5));
+        atkIcon.setPosition(this._cardUpgradeLabelFit.atkIconPoint);
         this._resLabel.addChild(atkIcon);
 
         this._atkLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._atkLabel.setPosition(cc.p(0, 3));
+        this._atkLabel.setPosition(this._cardUpgradeLabelFit.atkLabelPoint);
         this._resLabel.addChild(this._atkLabel);
 
         this._atkAdditionLabel = cc.LabelTTF.create("+ 0", "STHeitiTC-Medium", 22);
         this._atkAdditionLabel.setColor(cc.c3b(118, 238, 60));
-        this._atkAdditionLabel.setPosition(cc.p(85, 3));
+        this._atkAdditionLabel.setPosition(this._cardUpgradeLabelFit.atkAdditionLabelPoint);
         this._resLabel.addChild(this._atkAdditionLabel);
 
         this._lvLabel = StrokeLabel.create("0", "STHeitiTC-Medium", 35);
-        this._lvLabel.setPosition(cc.p(-85, -35));
+        this._lvLabel.setPosition(this._cardUpgradeLabelFit.lvLabelPoint);
         this._resLabel.addChild(this._lvLabel);
 
         var progressBgSprite = cc.Sprite.create(main_scene_image.progress4);
-        progressBgSprite.setPosition(cc.p(30, -35));
+        progressBgSprite.setPosition(this._cardUpgradeLabelFit.progressPoint);
         this._resLabel.addChild(progressBgSprite);
 
         this._greenProgress = Progress.create(null, main_scene_image.progress6, 0, 0);
-        this._greenProgress.setPosition(cc.p(30, -35));
+        this._greenProgress.setPosition(this._cardUpgradeLabelFit.progressPoint);
         this._resLabel.addChild(this._greenProgress);
 
         this._yellowProgress = Progress.create(null, main_scene_image.progress5, 0, 0);
-        this._yellowProgress.setPosition(cc.p(30, -35));
+        this._yellowProgress.setPosition(this._cardUpgradeLabelFit.progressPoint);
         this._resLabel.addChild(this._yellowProgress);
 
         var helpBgSprite = cc.Sprite.create(main_scene_image.icon50);
-        helpBgSprite.setPosition(cc.p(360, 380));
+        helpBgSprite.setPosition(this._cardUpgradeLabelFit.helpBgSpritePoint);
         this.addChild(helpBgSprite);
 
         this._tipLabel = cc.LabelTTF.create("主卡通过吞噬从卡提升等级", "STHeitiTC-Medium", 22);
-        this._tipLabel.setPosition(cc.p(360, 380));
+        this._tipLabel.setPosition(this._cardUpgradeLabelFit.tipLabelPoint);
         this.addChild(this._tipLabel);
 
         this._helpLabel = cc.Node.create();
-        this._helpLabel.setPosition(cc.p(360, 380));
+        this._helpLabel.setPosition(this._cardUpgradeLabelFit.helpLabelPoint);
         this.addChild(this._helpLabel);
 
         var expIcon = cc.LabelTTF.create("获得经验:", "STHeitiTC-Medium", 22);
-        expIcon.setPosition(cc.p(-160, 20));
+        expIcon.setPosition(this._cardUpgradeLabelFit.expIconPoint);
         this._helpLabel.addChild(expIcon);
 
         var moneyIcon = cc.LabelTTF.create("消耗仙币:", "STHeitiTC-Medium", 22);
-        moneyIcon.setPosition(cc.p(-160, -20));
+        moneyIcon.setPosition(this._cardUpgradeLabelFit.moneyIconPoint);
         this._helpLabel.addChild(moneyIcon);
 
         var cardCountIcon = cc.LabelTTF.create("从牌数量:", "STHeitiTC-Medium", 22);
-        cardCountIcon.setPosition(cc.p(120, -20));
+        cardCountIcon.setPosition(this._cardUpgradeLabelFit.cardCountIconPoint);
         this._helpLabel.addChild(cardCountIcon);
 
         this._expLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._expLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._expLabel.setPosition(cc.p(-100, 18));
+        this._expLabel.setPosition(this._cardUpgradeLabelFit.expLabelPoint);
         this._helpLabel.addChild(this._expLabel);
 
         this._moneyLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._moneyLabel.setPosition(cc.p(-100, -22));
+        this._moneyLabel.setPosition(this._cardUpgradeLabelFit.moneyLabelPoint);
         this._helpLabel.addChild(this._moneyLabel);
 
         this._cardCountLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._cardCountLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._cardCountLabel.setPosition(cc.p(180, -22));
+        this._cardCountLabel.setPosition(this._cardUpgradeLabelFit.cardCountLabelPoint);
         this._helpLabel.addChild(this._cardCountLabel);
 
         var selectLeadCardItem = cc.MenuItemImage.create(
@@ -146,7 +148,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             this
         );
         selectLeadCardItem.setScale(1.1);
-        selectLeadCardItem.setPosition(cc.p(360, 685));
+        selectLeadCardItem.setPosition(this._cardUpgradeLabelFit.selectLeadCardItemPoint);
 
         this._upgradeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -156,7 +158,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._onClickUpgrade,
             this
         );
-        this._upgradeItem.setPosition(cc.p(260, 270));
+        this._upgradeItem.setPosition(this._cardUpgradeLabelFit.upgradeItemPoint);
 
         this._selectRetinueCardItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -166,7 +168,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._onClickSelectRetinueCard,
             this
         );
-        this._selectRetinueCardItem.setPosition(cc.p(460, 270));
+        this._selectRetinueCardItem.setPosition(this._cardUpgradeLabelFit.selectRetinueCardItemPoint);
 
         var menu = cc.Menu.create(
             selectLeadCardItem,
@@ -177,7 +179,7 @@ var CardUpgradeLabel = cc.Layer.extend({
         this.addChild(menu);
 
         this._selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon51);
-        this._selectLeadCardIcon.setPosition(cc.p(360, 685));
+        this._selectLeadCardIcon.setPosition(this._cardUpgradeLabelFit.selectLeadCardIconPoint);
         this.addChild(this._selectLeadCardIcon);
 
         return true;
@@ -230,7 +232,7 @@ var CardUpgradeLabel = cc.Layer.extend({
         } else {
             this._leadCardHalfNode = CardHalfNode.create(this._leadCard);
             this._leadCardHalfNode.setScale(1.1);
-            this._leadCardHalfNode.setPosition(cc.p(360, 685));
+            this._leadCardHalfNode.setPosition(this._cardUpgradeLabelFit.leadCardHalfNodePoint);
             this.addChild(this._leadCardHalfNode, 1);
 
             this._hpLabel.setString(this._leadCard.get("hp"));

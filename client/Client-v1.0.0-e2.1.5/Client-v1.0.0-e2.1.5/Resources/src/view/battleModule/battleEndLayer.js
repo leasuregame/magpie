@@ -11,8 +11,9 @@
  * battle end layer
  * */
 
-
 var BattleEndLayer = cc.Layer.extend({
+    _battleEndLayerFit: gameFit.battleScene.battleEndLayer,
+
     _battleLog: null,
 
 
@@ -24,22 +25,22 @@ var BattleEndLayer = cc.Layer.extend({
         this._battleLog = battleLog;
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
-        bgLayer.setPosition(cc.p(40, 0));
+        bgLayer.setPosition(this._battleEndLayerFit.bgLayerPoint);
         this.addChild(bgLayer);
 
         var isWin = this._battleLog.isWin();
 
         if (isWin) {
             var winBgSprite = cc.Sprite.create(main_scene_image.bg17);
-            winBgSprite.setPosition(cc.p(360, 580));
+            winBgSprite.setPosition(this._battleEndLayerFit.winBgSpritePoint);
             this.addChild(winBgSprite);
 
             var obtainSprite = cc.Sprite.create(main_scene_image.icon227);
-            obtainSprite.setPosition(cc.p(360, 718));
+            obtainSprite.setPosition(this._battleEndLayerFit.obtainSpritePoint);
             this.addChild(obtainSprite);
         } else {
             var failBgSprite = cc.Sprite.create(main_scene_image.bg18);
-            failBgSprite.setPosition(cc.p(360, 580));
+            failBgSprite.setPosition(this._battleEndLayerFit.failBgSpritePoint);
             this.addChild(failBgSprite);
         }
 
@@ -64,7 +65,7 @@ var BattleEndLayer = cc.Layer.extend({
             len = 3;
         }
 
-        var offsetY = 655;
+        var offsetY = this._battleEndLayerFit.offsetYHeight;
         var rewardLabel;
         for (var i = 0; i < len; ++i) {
             rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
@@ -83,7 +84,7 @@ var BattleEndLayer = cc.Layer.extend({
             this.end,
             this
         );
-        okItem.setPosition(cc.p(360, 415));
+        okItem.setPosition(this._battleEndLayerFit.okItemPoint);
 
         var menu = cc.Menu.create(okItem);
         menu.setPosition(cc.p(0, 0));

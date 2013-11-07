@@ -13,7 +13,7 @@
 
 
 var StrengthenLayer = cc.Layer.extend({
-    _strengthenLayerFit: gameFit.mainScene.strengthenLayer,
+    _strengthenLayerFit: null,
 
     _nowLabel: null,
     _cardUpgradeItem: null,
@@ -25,10 +25,12 @@ var StrengthenLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._strengthenLayerFit = gameFit.mainScene.strengthenLayer;
+
         var bgSprite = cc.Sprite.create(main_scene_image.bg1);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._strengthenLayerFit.bgSpritePoint);
-      //  this.addChild(bgSprite, -1);
+        //  this.addChild(bgSprite, -1);
 
         var playerHeaderLabel = PlayerHeaderLabel.create();
         playerHeaderLabel.setPosition(this._strengthenLayerFit.playerHeaderLabelPoint);

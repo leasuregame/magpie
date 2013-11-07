@@ -21,7 +21,7 @@ var TRAIN_ONE_COUNT = 1;
 var TRAIN_TEN_COUNT = 10;
 
 var CardTrainLabel = cc.Layer.extend({
-    _cardTrainLabelFit: gameFit.mainScene.cardTrainLabel,
+    _cardTrainLabelFit: null,
 
     _trainType: TRAIN_CARD_NULL,
     _trainCount: TRAIN_ZERO_COUNT,
@@ -37,6 +37,8 @@ var CardTrainLabel = cc.Layer.extend({
         cc.log("CardTrainLabel init");
 
         if (!this._super()) return false;
+
+        this._cardTrainLabelFit = gameFit.mainScene.cardTrainLabel;
 
         var cardItemBgSprite = cc.Sprite.create(main_scene_image.icon88);
         cardItemBgSprite.setPosition(this._cardTrainLabelFit.cardItemBgSpritePoint);

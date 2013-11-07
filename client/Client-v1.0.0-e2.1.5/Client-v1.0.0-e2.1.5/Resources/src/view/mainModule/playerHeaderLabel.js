@@ -13,7 +13,7 @@
 
 
 var PlayerHeaderLabel = cc.Layer.extend({
-    _playerHeaderLabelFit: gameFit.mainScene.playerHeaderLabel,
+    _playerHeaderLabelFit: null,
 
     _selectRect: cc.rect(0, 0, 640, 120),
     _isTouch: false,
@@ -37,6 +37,8 @@ var PlayerHeaderLabel = cc.Layer.extend({
         cc.log("PlayerHeaderLabel init");
 
         if (!this._super()) return false;
+
+        this._playerHeaderLabelFit = gameFit.mainScene.playerHeaderLabel;
 
         this.setTouchEnabled(true);
 

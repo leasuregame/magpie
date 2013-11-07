@@ -13,7 +13,7 @@
 
 
 var LotteryLayer = cc.Layer.extend({
-    _lotteryLayerFit: gameFit.mainScene.lotteryLayer,
+    _lotteryLayerFit: null,
 
     _goldLabel: null,
     _energyLabel: null,
@@ -29,6 +29,8 @@ var LotteryLayer = cc.Layer.extend({
         cc.log("LotteryLayer init");
 
         if (!this._super())  return false;
+
+        this._lotteryLayerFit = gameFit.mainScene.lotteryLayer;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg19);
         bgSprite.setAnchorPoint(cc.p(0, 0));

@@ -13,7 +13,7 @@
 
 
 var CardEvolutionLayer = cc.Layer.extend({
-    _cardEvolutionLayerFit: gameFit.mainScene.cardEvolutionLayer,
+    _cardEvolutionLayerFit: null,
 
     _leadCard: null,
     _retinueCard: [],
@@ -40,6 +40,8 @@ var CardEvolutionLayer = cc.Layer.extend({
         cc.log("CardEvolutionLayer init");
 
         if (!this._super()) return false;
+
+        this._cardEvolutionLayerFit = gameFit.mainScene.cardEvolutionLayer;
 
         var cardItemBgSprite = cc.Sprite.create(main_scene_image.icon83);
         cardItemBgSprite.setPosition(this._cardEvolutionLayerFit.cardItemBgSpritePoint);

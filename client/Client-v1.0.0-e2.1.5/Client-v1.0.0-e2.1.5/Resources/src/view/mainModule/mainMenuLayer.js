@@ -15,7 +15,7 @@
 var MAIN_MENU_LAYER_HANDLER_PRIORITY = -200;
 
 var MainMenuLayer = cc.Layer.extend({
-    _mainMenuLayerFit: gameFit.mainScene.mainMenuLayer,
+    _mainMenuLayerFit: null,
 
     _markSprite: null,
     _layer: [
@@ -36,6 +36,8 @@ var MainMenuLayer = cc.Layer.extend({
         cc.log("MainMenuLayer init");
 
         if (!this._super()) return false;
+
+        this._mainMenuLayerFit = gameFit.mainScene.mainMenuLayer;
 
         var bgSprite = cc.Sprite.create(main_scene_image.icon10);
         bgSprite.setAnchorPoint(cc.p(0, 0));

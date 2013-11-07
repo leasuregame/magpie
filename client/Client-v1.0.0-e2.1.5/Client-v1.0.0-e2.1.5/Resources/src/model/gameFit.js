@@ -6,10 +6,8 @@
  * To change this template use File | Settings | File Templates.
  */
 
-var gameFit = null;
 
 var fit4Iphone4 = {
-
     "gameFrame": {
         "frame1Point": cc.p(0, 568),
         "frame2Point": cc.p(680, 568)
@@ -371,7 +369,6 @@ var fit4Iphone4 = {
 };
 
 var fit4Iphone5 = {
-
     "gameFrame": {
         "frame1Point": cc.p(0, 568),
         "frame2Point": cc.p(680, 568)
@@ -730,7 +727,20 @@ var fit4Iphone5 = {
             "countLabelPoint": cc.p(420, 370)
         }
     }
-
 };
 
-gameFit = fit4Iphone5;
+
+var gameFit = null;
+var gameFitAdapter = function () {
+    cc.log("gameFitAdapter");
+
+    var size = cc.Director.getInstance().getWinSize();
+
+    cc.log(size);
+
+    if (size.height == 1136) {
+        gameFit = fit4Iphone5;
+    } else {
+        gameFit = fit4Iphone4;
+    }
+};

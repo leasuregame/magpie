@@ -13,7 +13,7 @@
 
 
 var EvolutionLayer = cc.Layer.extend({
-    _evolutionLayerFit: gameFit.mainScene.evolutionLayer,
+    _evolutionLayerFit: null,
 
     _nowLabel: null,
     _cardEvolutionItem: null,
@@ -23,6 +23,8 @@ var EvolutionLayer = cc.Layer.extend({
         cc.log("EvolutionLayer init");
 
         if (!this._super()) return false;
+
+        this._evolutionLayerFit = gameFit.mainScene.evolutionLayer;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg1);
         bgSprite.setAnchorPoint(cc.p(0, 0));

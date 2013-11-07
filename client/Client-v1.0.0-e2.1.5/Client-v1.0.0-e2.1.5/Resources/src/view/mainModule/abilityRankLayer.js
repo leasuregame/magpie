@@ -13,7 +13,7 @@
 
 
 var AbilityRankLayer = cc.Layer.extend({
-    _abilityRankLayerFit: gameFit.mainScene.abilityRankLayer,
+    _abilityRankLayerFit: null,
 
     _skyDialog: null,
     _abilityRankList: null,
@@ -24,6 +24,8 @@ var AbilityRankLayer = cc.Layer.extend({
         cc.log("AbilityRankLayer init");
 
         if (!this._super()) return false;
+
+        this._abilityRankLayerFit = gameFit.mainScene.abilityRankLayer;
 
         this._abilityRankList = gameData.rank.get("abilityRankList");
         var len = this._abilityRankList.length;

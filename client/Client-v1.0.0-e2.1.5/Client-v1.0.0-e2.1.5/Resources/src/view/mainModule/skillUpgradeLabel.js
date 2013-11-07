@@ -13,7 +13,7 @@
 
 
 var SkillUpgradeLabel = cc.Node.extend({
-    _skillUpgradeLabelFit: gameFit.mainScene.skillUpgradeLabel,
+    _skillUpgradeLabelFit: null,
 
     _leadCard: null,
     _leadCardHalfNode: null,
@@ -43,6 +43,8 @@ var SkillUpgradeLabel = cc.Node.extend({
         cc.log("SkillUpgradeLabel init");
 
         if (!this._super()) return false;
+
+        this._skillUpgradeLabelFit = gameFit.mainScene.skillUpgradeLabel;
 
         var cardItemBgSprite = cc.Sprite.create(main_scene_image.icon61);
         cardItemBgSprite.setPosition(this._skillUpgradeLabelFit.cardItemBgSpritePoint);

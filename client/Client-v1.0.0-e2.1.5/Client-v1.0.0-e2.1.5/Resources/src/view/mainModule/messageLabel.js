@@ -11,10 +11,11 @@
  * message label
  * */
 
+
 var MESSAGE_MOVE_TIME = 15;
 
 var MessageLabel = cc.Node.extend({
-   _messageLabelFit: gameFit.mainScene.messageLabel,
+    _messageLabelFit: null,
 
     _messageLabel: null,
 
@@ -22,6 +23,8 @@ var MessageLabel = cc.Node.extend({
         cc.log("MessageLabel init");
 
         if (!this._super()) return false;
+
+        this._messageLabelFit = gameFit.mainScene.messageLabel;
 
         var bgSprite = cc.Sprite.create(main_scene_image.main_message_bg);
         bgSprite.setAnchorPoint(cc.p(0, 0));

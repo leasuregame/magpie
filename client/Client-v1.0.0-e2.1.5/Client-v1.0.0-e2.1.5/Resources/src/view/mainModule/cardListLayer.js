@@ -816,7 +816,8 @@ var CardListLayer = cc.Layer.extend({
 
         gameData.lineUp.changeLineUp(function (data) {
             MainScene.getInstance().switchLayer(MainLayer);
-            if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+
+            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
                 NoviceTeachingLayer.getInstance().clearAndSave();
                 NoviceTeachingLayer.getInstance().next();
             }

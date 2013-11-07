@@ -221,7 +221,8 @@ var SpiritDetails = LazyLayer.extend({
                         cc.FadeOut.create(1),
                         cc.CallFunc.create(function () {
                             lazyLayer.removeFromParent();
-                            if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+
+                            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
                                 NoviceTeachingLayer.getInstance().next();
                             }
                         }, this)
@@ -252,7 +253,7 @@ var SpiritDetails = LazyLayer.extend({
     _onClickUpgrade: function () {
         cc.log("SpiritDetails _onClickUpgrade");
 
-        if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
             NoviceTeachingLayer.getInstance().clearAndSave();
         }
 
@@ -279,7 +280,7 @@ var SpiritDetails = LazyLayer.extend({
 
         this.removeFromParent();
 
-        if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
             NoviceTeachingLayer.getInstance().clearAndSave();
             NoviceTeachingLayer.getInstance().next();
         }

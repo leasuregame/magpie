@@ -177,7 +177,7 @@ var ExchangeLayer = cc.Layer.extend({
 
             cardDetails._menu.addChild(exchangeItem);
 
-            cc.Director.getInstance().getRunningScene().addChild(cardDetails, 1);
+            MainScene.getInstance().addChild(cardDetails, 1);
         }
     },
 

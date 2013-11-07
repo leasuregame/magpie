@@ -32,12 +32,13 @@ var PaymentLayer = LazyLayer.extend({
         closeItem.setPosition(cc.p(605, 925));
 
         var vipPrivilegeItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button38,
-            main_scene_image.button38s,
+            main_scene_image.button21,
+            main_scene_image.button21s,
             main_scene_image.icon164,
             this._onClickVipPrivilege,
             this
         );
+        vipPrivilegeItem.setScale(1.1);
         vipPrivilegeItem.setPosition(cc.p(530, 840));
 
         var menu = cc.Menu.create(
@@ -55,13 +56,54 @@ var PaymentLayer = LazyLayer.extend({
         var vip = gameData.player.get("vip");
         cc.log(nextVipCash);
         if (nextVipCash) {
-            var tipLabel = cc.LabelTTF.create(
+           /* var tipLabel = cc.LabelTTF.create(
                 "您是VIP" + vip + "再冲" + nextVipCash + "元即可享受VIP" + (vip + 1),
                 "STHeitiTC-Medium",
-                18
+                20
             );
+           */
+
+            var tipLabel = ColorLabelTTF.create(
+                {
+                    string: "您是",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20
+                },
+                {
+                    string: "VIP" + vip,
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20,
+                    isStroke: true,
+                    color: cc.c3b(255, 248, 69)
+                },
+                {
+                    string: "再冲",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20
+                },
+                {
+                    string: nextVipCash,
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20,
+                    isStroke: true,
+                    color: cc.c3b(255, 248, 69)
+                },
+                {
+                    string: "元即可享受",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20
+                },
+                {
+                    string: "VIP" + (vip + 1),
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20,
+                    isStroke: true,
+                    color: cc.c3b(255, 248, 69)
+                }
+            );
+
             tipLabel.setAnchorPoint(cc.p(0, 0.5));
-            tipLabel.setPosition(cc.p(120, 840));
+            tipLabel.setPosition(cc.p(115, 840));
             this.addChild(tipLabel);
         }
 

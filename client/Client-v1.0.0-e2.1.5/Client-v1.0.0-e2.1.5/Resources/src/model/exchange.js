@@ -119,7 +119,7 @@ var Exchange = Entity.extend({
         cc.log("Exchange exchange");
 
         var that = this;
-        lzWindow.pomelo.request("area.trainHandler.exchangeCard", {
+        lz.server.request("area.trainHandler.exchangeCard", {
             tableId: id
         }, function (data) {
             cc.log(data);

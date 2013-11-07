@@ -66,21 +66,20 @@ var EvolutionLayer = cc.Layer.extend({
 
         this._onClickCardEvolution();
 
+        this.retain();
+
         return true;
     },
 
     switchToCardListLayer: function (cardListLayer) {
         cc.log("EvolutionLayer switchToCardListLayer");
 
-        this.retain();
-        this.setVisible(false);
         MainScene.getInstance().switch(cardListLayer);
     },
 
     backToThisLayer: function () {
         cc.log("EvolutionLayer backToThisLayer");
 
-        this.setVisible(true);
         MainScene.getInstance().switch(this);
     },
 
@@ -108,6 +107,10 @@ var EvolutionLayer = cc.Layer.extend({
             this._nowLabel = runLabel.create();
             this.addChild(this._nowLabel);
         }
+    },
+
+    onExit: function () {
+        this.release();
     }
 });
 

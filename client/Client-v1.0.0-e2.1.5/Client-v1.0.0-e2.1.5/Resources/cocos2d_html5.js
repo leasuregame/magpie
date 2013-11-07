@@ -50,17 +50,17 @@
 
             'src/table/table.js',
 
-            'src/model/pomelo-client.js',
-            'src/model/serverAPI.js',
-
-            'src/model/base.js',
-            'src/model/singleton.js',
-            'src/model/gameConfig.js',
-            'src/model/gameFlow.js',
-            'src/model/gameFit.js',
-
             'src/model/event.js',
             'src/model/entity.js',
+
+            'src/model/lz.js',
+            'src/model/pomelo.js',
+            'src/model/server.js',
+
+            'src/model/singleton.js',
+            'src/model/gameConfig.js',
+
+            'src/model/gameFit.js',
             'src/model/user.js',
             'src/model/player.js',
             'src/model/card.js',
@@ -99,6 +99,7 @@
             'src/controls/strokeLabel.js',
             'src/controls/LzMenuItem.js',
             'src/controls/tipLayer.js',
+            'src/controls/colorLabelTTF.js',
 
             'src/view/loginModule/loginScene.js',
             'src/view/loginModule/loginLayer.js',
@@ -193,9 +194,7 @@
             'src/view/battleModule/battleScene.js',
             'src/view/battleModule/battleSpiritNode.js',
             'src/view/battleModule/cloudLayer.js',
-            'src/view/battleModule/skillFactory.js',
-
-            'src/myApp.js'                   //add your own files in order here
+            'src/view/battleModule/skillFactory.js'
         ]
     };
 

@@ -55,19 +55,25 @@ var User = Entity.extend({
         this._area = parseInt(sys.localStorage.getItem("area")) || 1;
     },
 
-    login: function (cb) {
-        cc.log("User login");
+    _save: function () {
+        cc.log("User _save");
 
         sys.localStorage.setItem("account", this._account);
         sys.localStorage.setItem("password", this._password);
         sys.localStorage.setItem("area", this._area);
+    },
+
+    login: function (cb) {
+        cc.log("User login");
 
         cc.log(this._account);
         cc.log(this._password);
         cc.log(this._area);
 
+        this._save();
+
         var that = this;
-        lzWindow.pomelo.request("connector.userHandler.login", {
+        lz.server.request("connector.userHandler.login", {
             account: this._account,
             password: this._password,
             areaId: 1
@@ -81,6 +87,7 @@ var User = Entity.extend({
 
                 that.update(msg.user);
 
+                gameData.gameInit();
                 gameData.player.init(msg.player);
 
                 cb(true);
@@ -98,7 +105,7 @@ var User = Entity.extend({
         cc.log("User register");
 
         var that = this;
-        lzWindow.pomelo.request("connector.userHandler.register", {
+        lz.server.request("connector.userHandler.register", {
             account: this._account,
             password: this._password,
             name: this._name

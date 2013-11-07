@@ -38,14 +38,18 @@ var NoviceTeachingLayer = LazyLayer.extend({
         cc.log("NoviceTeachingLayer init");
 
         if (!this._super()) return false;
+
         this.setTouchPriority(NOVICE_TEACHING_LAYER_HANDLER_PRIORITY);
+
         this._step = sys.localStorage.getItem(gameData.user.get('name') + "step") || 0;
         cc.log('step = ' + this._step);
+
         this._rect = cc.rect(0, 0, 0, 0);
-        if (this.isNoviceTeaching())
+
+        if (this.isNoviceTeaching()) {
             this._load();
-        else
-            return false;
+        }
+
         return true;
     },
 
@@ -169,6 +173,7 @@ NoviceTeachingLayer.create = function () {
     return null;
 };
 
+
 /*
  * 单例
  * */
@@ -177,8 +182,7 @@ NoviceTeachingLayer.create = function () {
 
     NoviceTeachingLayer.getInstance = function () {
         if (_noviceTeachingLayer == null) {
-            _noviceTeachingLayer = new NoviceTeachingLayer();
-            _noviceTeachingLayer.init();
+            _noviceTeachingLayer = NoviceTeachingLayer.create();
         }
 
         return _noviceTeachingLayer;

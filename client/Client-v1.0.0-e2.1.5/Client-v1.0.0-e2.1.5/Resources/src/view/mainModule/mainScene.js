@@ -29,11 +29,11 @@ var MainScene = cc.Scene.extend({
         this.addChild(this._mainMenuLayer, 1);
 
         var gameFrame = GameFrame.create();
-        this.addChild(gameFrame, 10);
+        this.addChild(gameFrame, 100);
 
         var noviceTeachingLayer = NoviceTeachingLayer.getInstance();
-        if(noviceTeachingLayer.isNoviceTeaching()) {
-            this.addChild(noviceTeachingLayer, 5);
+        if (noviceTeachingLayer.isNoviceTeaching()) {
+            this.addChild(noviceTeachingLayer, 20);
         } else {
             this.switchLayer(MainLayer);
         }
@@ -94,10 +94,6 @@ var MainScene = cc.Scene.extend({
     };
 
     MainScene.destroy = function () {
-        if (_mainScene) {
-            _mainScene.removeFromParent();
-        }
-
         _mainScene = null;
     };
 })();

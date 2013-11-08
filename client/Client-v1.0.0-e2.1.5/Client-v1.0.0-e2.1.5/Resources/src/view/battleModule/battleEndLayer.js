@@ -73,7 +73,7 @@ var BattleEndLayer = cc.Layer.extend({
             rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
             rewardLabel.setColor(cc.c3b(255, 239, 131));
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
-            rewardLabel.setPosition(cc.p(360, offsetY));
+            rewardLabel.setPosition(cc.p(this._battleEndLayerFit.rewardLabelPointX, offsetY));
             this.addChild(rewardLabel);
 
             offsetY -= 45;

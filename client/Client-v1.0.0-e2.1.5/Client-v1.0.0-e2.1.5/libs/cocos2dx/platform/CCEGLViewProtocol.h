@@ -88,7 +88,7 @@ public:
      *                         [2] kResolutionNoBorder Full screen without black border: if the design resolution ratio of width to height is different from the screen resolution ratio, two areas of your game view will be cut.
      *                         [3] kResolutionShowAll  Full screen with black border: if the design resolution ratio of width to height is different from the screen resolution ratio, two black borders will be shown.
      */
-    virtual void setDesignResolutionSize(float x, float y, float width, float height, ResolutionPolicy resolutionPolicy);
+    virtual void setDesignResolutionSize(float width, float height, ResolutionPolicy resolutionPolicy);
 
     /** Get design resolution size.
      *  Default resolution size is the same as 'getFrameSize'.

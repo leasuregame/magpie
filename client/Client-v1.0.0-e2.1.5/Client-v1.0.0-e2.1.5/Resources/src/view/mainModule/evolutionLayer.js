@@ -109,10 +109,6 @@ var EvolutionLayer = cc.Layer.extend({
             this._nowLabel = runLabel.create();
             this.addChild(this._nowLabel);
         }
-    },
-
-    onExit: function () {
-        this.release();
     }
 });
 

@@ -176,7 +176,7 @@ var Card = Entity.extend({
             this._skillInc = skillTable["star" + this._star + "_inc_max"] || 0;
         }
 
-        this._skillHarm = this._skillInc + skillHarmGrow * this._skillLv;
+        this._skillHarm = this._skillInc + skillHarmGrow * (this._skillLv - 1);
         this._skillRate = skillTable["rate" + this._star] || 0;
         this._skillDescription = skillTable.description;
         this._skillType = skillTable.type;

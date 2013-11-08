@@ -81,12 +81,12 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._resLabel.addChild(resLabelBgSprite);
 
         var tipLabel = cc.LabelTTF.create("最高加成10.0%", "STHeitiTC-Medium", 18);
-        tipLabel.setPosition(this._passiveSkillAfreshLabelFit.tipLabelPoint);
+        tipLabel.setPosition(cc.p(380, 349));
         this._resLabel.addChild(tipLabel);
 
         this._tipLabel = cc.LabelTTF.create("魔石洗炼获得金色属性概率提升100倍", "STHeitiTC-Medium", 18);
         this._tipLabel.setColor(cc.c3b(255, 239, 131));
-        this._tipLabel.setPosition(this._passiveSkillAfreshLabelFit.tipLabel2Point);
+        this._tipLabel.setPosition(cc.p(227, 45));
         this._resLabel.addChild(this._tipLabel);
 
         var resMenu = cc.Menu.create();
@@ -98,20 +98,20 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
             var passiveSkillBgSprite = cc.Sprite.create(main_scene_image.icon65);
             passiveSkillBgSprite.setAnchorPoint(cc.p(0, 0.5));
-            passiveSkillBgSprite.setPosition(cc.p(this._passiveSkillAfreshLabelFit.passiveSkillBgSpritePointX, y));
+            passiveSkillBgSprite.setPosition(cc.p(0, y));
             this._resLabel.addChild(passiveSkillBgSprite);
 
             var nameLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 28);
-            nameLabel.setPosition(cc.p(this._passiveSkillAfreshLabelFit.nameLabelPointX, y));
+            nameLabel.setPosition(cc.p(80, y));
             this._resLabel.addChild(nameLabel);
 
             var valueLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 28);
-            valueLabel.setPosition(cc.p(this._passiveSkillAfreshLabelFit.valueLabelPointX, y));
+            valueLabel.setPosition(cc.p(190, y));
             this._resLabel.addChild(valueLabel);
             valueLabel.setVisible(false);
 
             var lockIcon = cc.Sprite.create(main_scene_image.icon200);
-            lockIcon.setPosition(cc.p(this._passiveSkillAfreshLabelFit.lockIconPointX, y));
+            lockIcon.setPosition(cc.p(310, y));
             this._resLabel.addChild(lockIcon);
             lockIcon.setScale(0.6);
 
@@ -121,11 +121,11 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                 this._onClickLock(i),
                 this
             );
-            lockItem.setPosition(cc.p(this._passiveSkillAfreshLabelFit.lockItemPointX, y));
+            lockItem.setPosition(cc.p(385, y));
             resMenu.addChild(lockItem);
 
             var hookLabel = cc.Sprite.create(main_scene_image.icon20);
-            hookLabel.setPosition(cc.p(this._passiveSkillAfreshLabelFit.hookLabelPointX, y));
+            hookLabel.setPosition(cc.p(360, y));
             this._resLabel.addChild(hookLabel);
 
             this._passiveSkillList[i] = {
@@ -145,7 +145,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._onClickUseMoney,
             this
         );
-        this._useMoneyItem.setPosition(this._passiveSkillAfreshLabelFit.useMoneyItemPoint);
+        this._useMoneyItem.setPosition(cc.p(60, 92));
         resMenu.addChild(this._useMoneyItem);
 
         this._useGoldItem = cc.MenuItemImage.create(
@@ -155,25 +155,25 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._onClickUseGold,
             this
         );
-        this._useGoldItem.setPosition(this._passiveSkillAfreshLabelFit.useGoldItemPoint);
+        this._useGoldItem.setPosition(cc.p(280, 92));
         resMenu.addChild(this._useGoldItem);
 
         var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
-        moneyIcon.setPosition(this._passiveSkillAfreshLabelFit.moneyIconPoint);
+        moneyIcon.setPosition(cc.p(100, 92));
         this._resLabel.addChild(moneyIcon);
 
         var moneyLabel = cc.LabelTTF.create("20000 / 次", "STHeitiTC-Medium", 20);
         moneyLabel.setAnchorPoint(cc.p(0, 0.5));
-        moneyLabel.setPosition(this._passiveSkillAfreshLabelFit.moneyLabelPoint);
+        moneyLabel.setPosition(cc.p(130, 90));
         this._resLabel.addChild(moneyLabel);
 
         var goldIcon = cc.Sprite.create(main_scene_image.icon148);
-        goldIcon.setPosition(this._passiveSkillAfreshLabelFit.goldIconPoint);
+        goldIcon.setPosition(cc.p(325, 92));
         this._resLabel.addChild(goldIcon);
 
         var goldLabel = cc.LabelTTF.create("10 / 次", "STHeitiTC-Medium", 20);
         goldLabel.setAnchorPoint(cc.p(0, 0.5));
-        goldLabel.setPosition(this._passiveSkillAfreshLabelFit.goldLabelPoint);
+        goldLabel.setPosition(cc.p(350, 90));
         this._resLabel.addChild(goldLabel);
 
 
@@ -193,7 +193,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             20
         );
         stopUntilBlueIcon.setAnchorPoint(cc.p(0, 0.5));
-        stopUntilBlueIcon.setPosition(this._passiveSkillAfreshLabelFit.stopUntilBlueIconPoint);
+        stopUntilBlueIcon.setPosition(cc.p(80, 178));
         this._stopTypeLabel.addChild(stopUntilBlueIcon);
 
         var stopUntilYellowIcon = cc.LabelTTF.create(
@@ -202,7 +202,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             20
         );
         stopUntilYellowIcon.setAnchorPoint(cc.p(0, 0.5));
-        stopUntilYellowIcon.setPosition(this._passiveSkillAfreshLabelFit.stopUntilYellowIconPoint);
+        stopUntilYellowIcon.setPosition(cc.p(80, 96));
         this._stopTypeLabel.addChild(stopUntilYellowIcon);
 
         var stopTypeMenu = cc.Menu.create();
@@ -216,7 +216,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._onClickStopUntilBlue,
             this
         );
-        this._stopUntilBlueItem.setPosition(this._passiveSkillAfreshLabelFit.stopUntilBlueItemPoint);
+        this._stopUntilBlueItem.setPosition(cc.p(60, 178));
         stopTypeMenu.addChild(this._stopUntilBlueItem);
 
         this._stopUntilYellowItem = cc.MenuItemImage.create(
@@ -226,7 +226,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._onClickStopUntilYellow,
             this
         );
-        this._stopUntilYellowItem.setPosition(this._passiveSkillAfreshLabelFit.stopUntilYellowItemPoint);
+        this._stopUntilYellowItem.setPosition(cc.p(60, 96));
         stopTypeMenu.addChild(this._stopUntilYellowItem);
 
 

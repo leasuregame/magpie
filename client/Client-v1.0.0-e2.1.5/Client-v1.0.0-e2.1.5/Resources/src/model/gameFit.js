@@ -9,8 +9,8 @@
 
 var fit4Iphone4 = {
     "gameFrame": {
-        "frame1Point": cc.p(0, 568),
-        "frame2Point": cc.p(680, 568)
+        "frame1Point": cc.p(0, 480),
+        "frame2Point": cc.p(680, 480)
     },
 
     "battleScene": {

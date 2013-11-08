@@ -35,8 +35,10 @@ var BattleScene = cc.Scene.extend({
         this.addChild(battleEndLayer, 1);
         this._battleProcess.push(battleEndLayer);
 
-//        var gameFrame = GameFrame.create();
-//        this.addChild(gameFrame, 1);
+        if (gameDevice != "Iphone5") {
+            var gameFrame = GameFrame.create();
+            this.addChild(gameFrame, 100);
+        }
 
         return true;
     },

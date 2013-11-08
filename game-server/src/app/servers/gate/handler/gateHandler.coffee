@@ -2,6 +2,7 @@ dispatcher = require '../../../common/dispatcher'
 areasInfo = require '../../../../config/area'
 _ = require 'underscore'
 
+status = ['NEW', 'NORMAL', 'BUSY', 'MAINTENANCE']
 SERVER_STATUS = 
 	NEW: 10
 	NORMAL: 20
@@ -19,6 +20,10 @@ Handler::queryEntry = (msg, session, next) ->
 		return next {code: 500, msg: 'no servers available'}
 
 	conn = dispatcher.randomDispatch(connectors)
+	console.log areasInfo
+	console.log areasInfo.map (a) -> 
+		a.status = randomStatus()
+		a
 	next null, {
 		code: 200, 
 		msg: {
@@ -31,4 +36,4 @@ Handler::queryEntry = (msg, session, next) ->
 	}
 
 randomStatus = ->
-	SERVER_STATUS[_.random(0, _.keys(SERVER_STATUS).length)-1]
+	SERVER_STATUS[status[_.random(0, status.length-1)]]

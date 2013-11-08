@@ -41,7 +41,7 @@ class Skill extends Module
 
   effectValue: ->
     [base_val, lv_grow] = [@hero.skill_inc, @['star' + @hero.star + '_grow']]
-    ( base_val + lv_grow * @lv ) / 100
+    ( base_val + lv_grow * (@lv-1) ) / 100
 
   get_round_num: ->
     @_player()?.round_num

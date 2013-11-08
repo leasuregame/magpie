@@ -41,30 +41,30 @@ var LvRankLayer = cc.Layer.extend({
 
         for (var i = 0; i < len; ++i) {
             var y = scrollViewHeight - 100 - 100 * i;
-
-            var playerItem = cc.MenuItemImage.create(
-                main_scene_image.button15,
-                main_scene_image.button15s,
-                this._onClickPlayer(i),
-                this
-            );
-            playerItem.setScaleX(1.04);
-            playerItem.setScaleY(0.75);
-            playerItem.setAnchorPoint(cc.p(0, 0));
-            playerItem.setPosition(cc.p(0, y));
-            menu.addChild(playerItem);
-
-            this._playerItem[i] = playerItem;
-
             if (this._lvRankList[i].id == own) {
-                playerItem.setEnabled(false);
 
-                var myselfSprite = cc.Sprite.create(main_scene_image.icon257);
+                var myselfSprite = cc.Sprite.create(main_scene_image.button18);
                 myselfSprite.setScaleX(1.04);
                 myselfSprite.setScaleY(0.75);
                 myselfSprite.setAnchorPoint(cc.p(0, 0));
                 myselfSprite.setPosition(cc.p(0, y));
                 scrollViewLayer.addChild(myselfSprite);
+
+            } else {
+                var playerItem = cc.MenuItemImage.create(
+                    main_scene_image.button15,
+                    main_scene_image.button15s,
+                    this._onClickPlayer(i),
+                    this
+                );
+                playerItem.setScaleX(1.04);
+                playerItem.setScaleY(0.75);
+                playerItem.setAnchorPoint(cc.p(0, 0));
+                playerItem.setPosition(cc.p(0, y));
+                menu.addChild(playerItem);
+
+                this._playerItem[i] = playerItem;
+
             }
 
             if (i < 3) {

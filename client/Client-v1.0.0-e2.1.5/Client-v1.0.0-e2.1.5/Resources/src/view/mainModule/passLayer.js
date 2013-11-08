@@ -51,7 +51,7 @@ var PassLayer = cc.Layer.extend({
         var bgSprite = cc.Sprite.create(main_scene_image.bg5);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._passLayerFit.bgSpritePoint);
-        this.addChild(bgSprite);
+       // this.addChild(bgSprite);
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));

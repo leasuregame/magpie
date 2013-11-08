@@ -14,6 +14,8 @@
 var productUrl = ["icon146","icon278","icon279","icon280","icon106"];
 
 var PropsLayer = cc.Layer.extend({
+    _propsLayerFit: null,
+
     _goldLabel: null,
     _moneyLabel: null,
 
@@ -27,32 +29,34 @@ var PropsLayer = cc.Layer.extend({
     init: function () {
         cc.log("PropsLayer init");
 
+        this._propsLayerFit = gameFit.mainScene.propsLayer;
+
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
+        bgSprite.setPosition(this._propsLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
         headLabel.setAnchorPoint(cc.p(0, 0));
-        headLabel.setPosition(cc.p(40, 905));
+        headLabel.setPosition(this._propsLayerFit.headLabelPoint);
         this.addChild(headLabel);
 
         var goldIcon = cc.Sprite.create(main_scene_image.icon148);
-        goldIcon.setPosition(cc.p(280, 934));
+        goldIcon.setPosition(this._propsLayerFit.goldIconPoint);
         this.addChild(goldIcon);
 
         var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
-        moneyIcon.setPosition(cc.p(410, 934));
+        moneyIcon.setPosition(this._propsLayerFit.moneyIconPoint);
         this.addChild(moneyIcon);
 
         this._goldLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._goldLabel.setPosition(cc.p(310, 932));
+        this._goldLabel.setPosition(this._propsLayerFit.goldLabelPoint);
         this.addChild(this._goldLabel);
 
         this._moneyLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._moneyLabel.setPosition(cc.p(435, 932));
+        this._moneyLabel.setPosition(this._propsLayerFit.moneyLabelPoint);
         this.addChild(this._moneyLabel);
 
         var paymentItem = cc.MenuItemImage.createWithIcon(
@@ -62,7 +66,7 @@ var PropsLayer = cc.Layer.extend({
             this._onClickPayment,
             this
         );
-        paymentItem.setPosition(cc.p(600, 934));
+        paymentItem.setPosition(this._propsLayerFit.paymentItemPoint);
 
         var menu = cc.Menu.create(paymentItem);
         menu.setPosition(cc.p(0, 0));
@@ -71,7 +75,7 @@ var PropsLayer = cc.Layer.extend({
         var productList = gameData.shop.getProductList();
         var len = productList.length;
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 711));
+        var scrollViewLayer = MarkLayer.create(this._propsLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
@@ -131,8 +135,8 @@ var PropsLayer = cc.Layer.extend({
             scrollViewLayer.addChild(costLabel);
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(640, 680), scrollViewLayer);
-        this._scrollView.setPosition(cc.p(40, 210));
+        this._scrollView = cc.ScrollView.create(this._propsLayerFit.scrollViewSize, scrollViewLayer);
+        this._scrollView.setPosition(this._propsLayerFit.scrollViewPoint);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);

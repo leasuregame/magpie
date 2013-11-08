@@ -13,6 +13,8 @@
 
 
 var TournamentLayer = cc.Layer.extend({
+    _tournamentLayerFit: null,
+
     _rankList: [],
     _selectId: 0,
     _scrollView: null,
@@ -38,62 +40,64 @@ var TournamentLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._tournamentLayerFit = gameFit.mainScene.tournamentLayer;
+
         this._rankList = [];
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
+        bgSprite.setPosition(this._tournamentLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var playerLabel = cc.Sprite.create(main_scene_image.icon31);
         playerLabel.setAnchorPoint(cc.p(0, 0));
-        playerLabel.setPosition(cc.p(40, 916));
+        playerLabel.setPosition(this._tournamentLayerFit.playerLabelPoint);
         this.addChild(playerLabel);
 
         var nameLabel = StrokeLabel.create(gameData.player.get("name"), "STHeitiTC-Medium", 28);
         nameLabel.setColor(cc.c3b(255, 239, 131));
         nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        nameLabel.setPosition(cc.p(150, 1013));
+        nameLabel.setPosition(this._tournamentLayerFit.nameLabelPoint);
         this.addChild(nameLabel);
 
         var expBg = cc.Sprite.create(main_scene_image.exp_bg);
-        expBg.setPosition(cc.p(210, 975));
+        expBg.setPosition(this._tournamentLayerFit.expBgPoint);
         this.addChild(expBg);
         expBg.setScale(0.8);
 
         this._expProgress = Progress.create(null, main_scene_image.exp, 0, 0, true);
-        this._expProgress.setPosition(cc.p(214, 975));
+        this._expProgress.setPosition(this._tournamentLayerFit.expProgressPoint);
         this.addChild(this._expProgress);
         this._expProgress.setScale(0.8);
 
         var lvBg = cc.Sprite.create(main_scene_image.lv_bg);
-        lvBg.setPosition(cc.p(90, 995));
+        lvBg.setPosition(this._tournamentLayerFit.lvBgPoint);
         this.addChild(lvBg);
         lvBg.setScale(0.8);
 
         this._lvLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 36);
-        this._lvLabel.setPosition(cc.p(87, 993));
+        this._lvLabel.setPosition(this._tournamentLayerFit.lvLabelPoint);
         this.addChild(this._lvLabel);
 
         this._countLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
-        this._countLabel.setPosition(cc.p(530, 1013));
+        this._countLabel.setPosition(this._tournamentLayerFit.countLabelPoint);
         this.addChild(this._countLabel);
 
         this._rankingLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
-        this._rankingLabel.setPosition(cc.p(430, 973));
+        this._rankingLabel.setPosition(this._tournamentLayerFit.rankingLabelPoint);
         this.addChild(this._rankingLabel);
 
         this._elixirLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 22);
-        this._elixirLabel.setPosition(cc.p(605, 973));
+        this._elixirLabel.setPosition(this._tournamentLayerFit.elixirLabelPoint);
         this.addChild(this._elixirLabel);
 
         var rewardIcon = cc.Sprite.create(main_scene_image.icon35);
-        rewardIcon.setPosition(cc.p(360, 900));
+        rewardIcon.setPosition(this._tournamentLayerFit.rewardIconPoint);
         this.addChild(rewardIcon);
         rewardIcon.setScaleX(2.5);
 
         this._rewardLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
-        this._rewardLabel.setPosition(cc.p(360, 900));
+        this._rewardLabel.setPosition(this._tournamentLayerFit.rewardLabelPoint);
         this.addChild(this._rewardLabel);
 
         var buyCountItem = cc.MenuItemImage.create(
@@ -102,7 +106,7 @@ var TournamentLayer = cc.Layer.extend({
             this._onClickBuyCount,
             this
         );
-        buyCountItem.setPosition(cc.p(575, 1015));
+        buyCountItem.setPosition(this._tournamentLayerFit.buyCountItemPoint);
 
         this._rewardItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button17,
@@ -110,7 +114,7 @@ var TournamentLayer = cc.Layer.extend({
             this._onClickRankReward,
             this
         );
-        this._rewardItem.setPosition(cc.p(160, 900));
+        this._rewardItem.setPosition(this._tournamentLayerFit.rewardItemPoint);
 
         var menu = cc.Menu.create(buyCountItem, this._rewardItem);
         menu.setPosition(cc.p(0, 0));
@@ -120,7 +124,7 @@ var TournamentLayer = cc.Layer.extend({
         this.addChild(this._skyDialog, 10);
 
         var label = cc.Scale9Sprite.create(main_scene_image.bg16);
-        label.setContentSize(cc.size(216, 300));
+        label.setContentSize(this._tournamentLayerFit.labelContentSize);
 
         var detailItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -129,7 +133,7 @@ var TournamentLayer = cc.Layer.extend({
             this._onClickDetail,
             this
         );
-        detailItem.setPosition(cc.p(108, 240));
+        detailItem.setPosition(this._tournamentLayerFit.detailItemPoint);
 
         var sendMessageItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -138,7 +142,7 @@ var TournamentLayer = cc.Layer.extend({
             this._onClickSendMessage,
             this
         );
-        sendMessageItem.setPosition(cc.p(108, 150));
+        sendMessageItem.setPosition(this._tournamentLayerFit.sendMessageItemPoint);
 
         var addFriendItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -147,14 +151,14 @@ var TournamentLayer = cc.Layer.extend({
             this._onClickAddFriend,
             this
         );
-        addFriendItem.setPosition(cc.p(108, 60));
+        addFriendItem.setPosition(this._tournamentLayerFit.addFriendItemPoint);
 
         var menu = cc.Menu.create(detailItem, sendMessageItem, addFriendItem);
         menu.setPosition(cc.p(0, 0));
         label.addChild(menu);
 
         this._skyDialog.setLabel(label);
-        this._skyDialog.setRect(cc.rect(40, 198, 640, 700));
+        this._skyDialog.setRect(this._tournamentLayerFit.skyDialogRect);
 
         return true;
     },
@@ -216,7 +220,7 @@ var TournamentLayer = cc.Layer.extend({
         var playerId = gameData.player.get("id");
         var own = len;
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(40, 198, 621, 670));
+        var scrollViewLayer = MarkLayer.create(this._tournamentLayerFit.scrollViewLayerRect);
 
         for (var i = 0; i < len; ++i) {
             if (playerId == this._rankList[i].playerId) {
@@ -228,9 +232,9 @@ var TournamentLayer = cc.Layer.extend({
             scrollViewLayer.addChild(tournamentPlayerLabel);
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(621, 670), scrollViewLayer);
-        this._scrollView.setContentSize(cc.size(GAME_WIDTH, height));
-        this._scrollView.setPosition(cc.p(50, 198));
+        this._scrollView = cc.ScrollView.create(this._tournamentLayerFit.scrollViewSize, scrollViewLayer);
+        this._scrollView.setContentSize(cc.size(this._tournamentLayerFit.scrollViewContentSizeWidth, height));
+        this._scrollView.setPosition(this._tournamentLayerFit.scrollViewPoint);
         this._scrollView.setBounceable(false);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();

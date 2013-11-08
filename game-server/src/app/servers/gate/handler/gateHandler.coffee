@@ -31,4 +31,4 @@ Handler::queryEntry = (msg, session, next) ->
 	}
 
 randomStatus = ->
-	SERVER_STATUS[_.random(0, _.keys(SERVER_STATUS).length)]
+	SERVER_STATUS[_.random(0, _.keys(SERVER_STATUS).length)-1]

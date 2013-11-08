@@ -55,7 +55,7 @@ CCEGLViewProtocol::~CCEGLViewProtocol()
 
 }
 
-void CCEGLViewProtocol::setDesignResolutionSize(float x, float y, float width, float height, ResolutionPolicy resolutionPolicy)
+void CCEGLViewProtocol::setDesignResolutionSize(float width, float height, ResolutionPolicy resolutionPolicy)
 {
     CCAssert(resolutionPolicy != kResolutionUnKnown, "should set resolutionPolicy");
     
@@ -63,7 +63,7 @@ void CCEGLViewProtocol::setDesignResolutionSize(float x, float y, float width, f
     {
         return;
     }
-
+    
     m_obDesignResolutionSize.setSize(width, height);
     
     m_fScaleX = (float)m_obScreenSize.width / m_obDesignResolutionSize.width;
@@ -78,22 +78,22 @@ void CCEGLViewProtocol::setDesignResolutionSize(float x, float y, float width, f
     {
         m_fScaleX = m_fScaleY = MIN(m_fScaleX, m_fScaleY);
     }
-
+    
     if ( resolutionPolicy == kResolutionFixedHeight) {
     	m_fScaleX = m_fScaleY;
     	m_obDesignResolutionSize.width = ceilf(m_obScreenSize.width/m_fScaleX);
     }
-
+    
     if ( resolutionPolicy == kResolutionFixedWidth) {
     	m_fScaleY = m_fScaleX;
     	m_obDesignResolutionSize.height = ceilf(m_obScreenSize.height/m_fScaleY);
     }
-
-    // calculate the rect of viewport    
+    
+    // calculate the rect of viewport
     float viewPortW = m_obDesignResolutionSize.width * m_fScaleX;
     float viewPortH = m_obDesignResolutionSize.height * m_fScaleY;
-
-    m_obViewPortRect.setRect((m_obScreenSize.width - viewPortW) / 2 - x, (m_obScreenSize.height - viewPortH) / 2 - y, viewPortW, viewPortH);
+    
+    m_obViewPortRect.setRect((m_obScreenSize.width - viewPortW) / 2, (m_obScreenSize.height - viewPortH) / 2, viewPortW, viewPortH);
     
     m_eResolutionPolicy = resolutionPolicy;
     

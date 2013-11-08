@@ -2619,6 +2619,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				TargetAttributes = {
+					90D49C2517CAF81800A22DB2 = {
+						DevelopmentTeam = TJT2HAB95B;
+					};
+				};
 			};
 			buildConfigurationList = 90D49C2117CAF81800A22DB2 /* Build configuration list for PBXProject "Client-v1.0.0-e2.1.5" */;
 			compatibilityVersion = "Xcode 3.2";

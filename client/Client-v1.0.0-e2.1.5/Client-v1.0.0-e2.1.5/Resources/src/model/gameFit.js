@@ -731,12 +731,15 @@ var fit4Iphone5 = {
 
 
 var gameFit = null;
+var gameDevice = "Unknown";
+
 var gameFitAdapter = function () {
     cc.log("gameFitAdapter");
 
     var size = cc.Director.getInstance().getWinSize();
 
-    cc.log(size);
+    cc.log(size.width);
+    cc.log(size.height);
 
     if (size.height == 1136) {
         gameFit = fit4Iphone5;

@@ -180,9 +180,9 @@ var fit4Iphone4 = {
         },
         "mainMenuLayer": {
             "bgSpritePoint": cc.p(40, 0),
-            "itemBasePoint": cc.p(93, 56),
+            "itemBasePoint": cc.p(93, 54),
             "itemOffsetX": 107,
-            "markSpriteBasePoint": cc.p(93, 56),
+            "markSpriteBasePoint": cc.p(93, 54),
             "markSpriteOffsetX": 107
         },
         "messageLabel": {
@@ -310,6 +310,78 @@ var fit4Iphone4 = {
             "passiveSkillUpgradeItemPoint": cc.p(404, 756),
             "passiveSkillUpgradeItemOffset": cc.p(0, -2)
 
+        },
+        "taskLayer": {
+            "locatePoints":  [
+                cc.p(160, 550),
+                cc.p(200, 270),
+                cc.p(440, 440),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(160, 550),
+                cc.p(200, 270),
+                cc.p(440, 470),
+                cc.p(480, 260),
+                cc.p(340, 70),
+
+                cc.p(160, 550),
+                cc.p(210, 315),
+                cc.p(415, 480),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(160, 550),
+                cc.p(200, 290),
+                cc.p(420, 470),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(155, 550),
+                cc.p(200, 270),
+                cc.p(420, 470),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(160, 550),
+                cc.p(200, 290),
+                cc.p(440, 470),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(160, 550),
+                cc.p(200, 270),
+                cc.p(440, 450),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(160, 550),
+                cc.p(200, 270),
+                cc.p(440, 440),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(140, 550),
+                cc.p(200, 270),
+                cc.p(420, 470),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(140, 550),
+                cc.p(200, 270),
+                cc.p(430, 460),
+                cc.p(480, 260),
+                cc.p(360, 70)
+            ],
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "wipeOutItemPoint": cc.p(595, 142),
+            "turnLeftSpritePoint": cc.p(80, 462),
+            "turnRightSpritePoint": cc.p(640, 462),
+            "scrollViewLayerRect": cc.rect(40, 198, 640, 744),
+            "scrollViewSize": cc.size(640, 768),
+            "scrollViewContentSize": cc.size(6400, 768),
+            "scrollViewPoint": cc.p(40, 106)
         },
         "treasureHuntLayer": {
             "locatePoints": [
@@ -499,7 +571,7 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(320, 220)
         },
         "mainBgLayer": {
-            "messagesLabelPoint": cc.p(0, 1104)
+            "messagesLabelPoint": cc.p(0, 1102)
         },
         "mainLayer": {
             "bgSpritePoint": cc.p(0, 282),
@@ -525,7 +597,7 @@ var fit4Iphone5 = {
             "bgSpritePoint": cc.p(0, 0),
             "itemBasePoint": cc.p(53, 54),
             "itemOffsetX": 107,
-            "markSpriteBasePoint": cc.p(43, 54),
+            "markSpriteBasePoint": cc.p(53, 54),
             "markSpriteOffsetX": 107
         },
         "messageLabel": {
@@ -653,6 +725,78 @@ var fit4Iphone5 = {
             "passiveSkillUpgradeItemPoint": cc.p(364, 897),
             "passiveSkillUpgradeItemOffset": cc.p(0, -2)
 
+        },
+        "taskLayer": {
+            "locatePoints":  [
+                cc.p(160, 550),
+                cc.p(200, 270),
+                cc.p(440, 440),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(160, 550),
+                cc.p(200, 270),
+                cc.p(440, 470),
+                cc.p(480, 260),
+                cc.p(340, 70),
+
+                cc.p(160, 550),
+                cc.p(210, 315),
+                cc.p(415, 480),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(160, 550),
+                cc.p(200, 290),
+                cc.p(420, 470),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(155, 550),
+                cc.p(200, 270),
+                cc.p(420, 470),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(160, 550),
+                cc.p(200, 290),
+                cc.p(440, 470),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(160, 550),
+                cc.p(200, 270),
+                cc.p(440, 450),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(160, 550),
+                cc.p(200, 270),
+                cc.p(440, 440),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(140, 550),
+                cc.p(200, 270),
+                cc.p(420, 470),
+                cc.p(480, 260),
+                cc.p(360, 70),
+
+                cc.p(140, 550),
+                cc.p(200, 270),
+                cc.p(430, 460),
+                cc.p(480, 260),
+                cc.p(360, 70)
+            ],
+            "headIconPoint": cc.p(0, 1056),
+            "titleIconPoint": cc.p(320, 1096),
+            "wipeOutItemPoint": cc.p(555, 230),
+            "turnLeftSpritePoint": cc.p(40, 550),
+            "turnRightSpritePoint": cc.p(600, 550),
+            "scrollViewLayerRect": cc.rect(40, 198, 640, 744),
+            "scrollViewSize": cc.size(640, 768),
+            "scrollViewContentSize": cc.size(6400, 768),
+            "scrollViewPoint": cc.p(0, 194)
         },
         "treasureHuntLayer": {
             "locatePoints": [

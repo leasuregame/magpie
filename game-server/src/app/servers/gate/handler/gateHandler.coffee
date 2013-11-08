@@ -1,5 +1,12 @@
 dispatcher = require '../../../common/dispatcher'
 areasInfo = require '../../../../config/area'
+_ = require 'underscore'
+
+SERVER_STATUS = 
+	NEW: 10
+	NORMAL: 20
+	BUSY: 30
+	MAINTENANCE: 40
 
 module.exports = (app) ->
 	new Handler(app)
@@ -17,6 +24,9 @@ Handler::queryEntry = (msg, session, next) ->
 		msg: {
 			host: conn.host, 
 			port: conn.clientPort,
-			servers: areasInfo
+			servers: areasInfo.map (a) -> a.status = randomStatus()
 		}
 	}
+
+randomStatus = ->
+	SERVER_STATUS[_.random(0, _.keys(SERVER_STATUS).length)]

@@ -24,7 +24,9 @@ Handler::queryEntry = (msg, session, next) ->
 		msg: {
 			host: conn.host, 
 			port: conn.clientPort,
-			servers: areasInfo.map (a) -> a.status = randomStatus()
+			servers: areasInfo.map (a) -> 
+				a.status = randomStatus()
+				a
 		}
 	}
 

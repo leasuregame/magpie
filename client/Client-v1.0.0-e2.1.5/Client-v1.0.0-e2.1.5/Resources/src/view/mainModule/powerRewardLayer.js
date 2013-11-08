@@ -7,80 +7,80 @@
  */
 
 var PowerRewardLayer = cc.Layer.extend({
+    _powerRewardLayerFit: null,
 
     onEnter: function () {
-        cc.log("RechargeLayer onEnter");
+        cc.log("PowerRewardLayer onEnter");
 
         this._super();
         this.update();
     },
 
     init: function () {
-        cc.log("RechargeLayer init");
+        cc.log("PowerRewardLayer init");
 
         if (!this._super()) return false;
-
+        this._powerRewardLayerFit = gameFit.mainScene.powerRewardLayer;
         return true;
     },
 
-    update: function() {
-        cc.log("RechargeLayer update");
+    update: function () {
+        cc.log("PowerRewardLayer update");
 
         var lineIcon = cc.Sprite.create(main_scene_image.icon18);
-        lineIcon.setAnchorPoint(cc.p(0,0));
-        lineIcon.setPosition(cc.p(40, 875));
+        lineIcon.setAnchorPoint(cc.p(0, 0));
+        lineIcon.setPosition(this._powerRewardLayerFit.lineIconPoint);
         this.addChild(lineIcon);
 
         var headText = cc.LabelTTF.create('每天中午和晚上固定时间，可免费领取体力', "STHeitiTC-Medium", 20);
         headText.setColor(cc.c3b(255, 239, 131));
-        headText.setAnchorPoint(cc.p(0,0));
-        headText.setPosition(cc.p(165, 900));
+        headText.setAnchorPoint(cc.p(0, 0));
+        headText.setPosition(this._powerRewardLayerFit.headTextPoint);
         this.addChild(headText);
 
-        var sprite1 = cc.Sprite.create(main_scene_image.icon269);
-        sprite1.setAnchorPoint(cc.p(0,0));
-        sprite1.setPosition(cc.p(120,675));
-        this.addChild(sprite1);
+        var tipIcon = cc.Sprite.create(main_scene_image.icon269);
+        tipIcon.setAnchorPoint(cc.p(0, 0));
+        tipIcon.setPosition(this._powerRewardLayerFit.tipIconPoint);
+        this.addChild(tipIcon);
 
-        var sprite2 = cc.Sprite.create(main_scene_image.icon270);
-        sprite2.setAnchorPoint(cc.p(0,0));
-        sprite2.setPosition(cc.p(125,290));
-        this.addChild(sprite2);
+        var powerBgIcon = cc.Sprite.create(main_scene_image.icon270);
+        powerBgIcon.setAnchorPoint(cc.p(0, 0));
+        powerBgIcon.setPosition(this._powerRewardLayerFit.powerBgIconPoint);
+        this.addChild(powerBgIcon);
 
-        var time = ['中午','12','13','晚上','18','19'];
+        var time = ['中午', '12', '13', '晚上', '18', '19'];
 
-        for(var i = 0;i < 2;i++) {
+        for (var i = 0; i < 2; i++) {
 
-            var x = i * 270;
-            var itemText = cc.LabelTTF.create(time[i * 3], "STHeitiTC-Medium", 25);
-            itemText.setAnchorPoint(cc.p(0, 0));
-            itemText.setPosition(cc.p(200 + x,770));
-            this.addChild(itemText);
+            var x = i * this._powerRewardLayerFit.textOffsetX;
+            var itemText1 = cc.LabelTTF.create(time[i * 3], "STHeitiTC-Medium", 25);
+            itemText1.setAnchorPoint(cc.p(0, 0));
+            itemText1.setPosition(cc.p(this._powerRewardLayerFit.itemText1BasePoint.x + x, this._powerRewardLayerFit.itemText1BasePoint.y));
+            this.addChild(itemText1);
 
-            var itemText = cc.LabelTTF.create('     点 --      点', "STHeitiTC-Medium", 25);
-            itemText.setAnchorPoint(cc.p(0, 0));
-            itemText.setPosition(cc.p(160 + x,730));
-            this.addChild(itemText);
+            var itemText2 = cc.LabelTTF.create('     点 --      点', "STHeitiTC-Medium", 25);
+            itemText2.setAnchorPoint(cc.p(0, 0));
+            itemText2.setPosition(cc.p(this._powerRewardLayerFit.itemText2BasePoint.x + x, this._powerRewardLayerFit.itemText2BasePoint.y));
+            this.addChild(itemText2);
 
-            var timeText = cc.LabelTTF.create(time[i * 3 + 1], "STHeitiTC-Medium", 25);
-            timeText.setAnchorPoint(cc.p(0, 0));
-            timeText.setPosition(cc.p(155 + x,730));
-            timeText.setColor(cc.c3b(255, 239, 131));
-            this.addChild(timeText);
+            var timeText1 = cc.LabelTTF.create(time[i * 3 + 1], "STHeitiTC-Medium", 25);
+            timeText1.setAnchorPoint(cc.p(0, 0));
+            timeText1.setPosition(cc.p(this._powerRewardLayerFit.timeText1BasePoint.x + x, this._powerRewardLayerFit.timeText1BasePoint.y));
+            timeText1.setColor(cc.c3b(255, 239, 131));
+            this.addChild(timeText1);
 
-            var timeText = cc.LabelTTF.create(time[i * 3 + 2], "STHeitiTC-Medium", 25);
-            timeText.setAnchorPoint(cc.p(0, 0));
-            timeText.setPosition(cc.p(240 + x,730));
-            timeText.setColor(cc.c3b(255, 239, 131));
-            this.addChild(timeText);
+            var timeText2 = cc.LabelTTF.create(time[i * 3 + 2], "STHeitiTC-Medium", 25);
+            timeText2.setAnchorPoint(cc.p(0, 0));
+            timeText2.setPosition(cc.p(this._powerRewardLayerFit.timeText2BasePoint.x + x, this._powerRewardLayerFit.timeText2BasePoint.y));
+            timeText2.setColor(cc.c3b(255, 239, 131));
+            this.addChild(timeText2);
 
-            var itemText = cc.LabelTTF.create('可领取1次', "STHeitiTC-Medium", 25);
-            itemText.setAnchorPoint(cc.p(0, 0));
-            itemText.setPosition(cc.p(170 + x,690));
-            this.addChild(itemText);
+            var itemText3 = cc.LabelTTF.create('可领取1次', "STHeitiTC-Medium", 25);
+            itemText3.setAnchorPoint(cc.p(0, 0));
+            itemText3.setPosition(cc.p(this._powerRewardLayerFit.itemText3BasePoint.x + x, this._powerRewardLayerFit.itemText3BasePoint.y));
+            this.addChild(itemText3);
 
         }
-
 
         var btnGetReward = cc.MenuItemImage.createWithIcon(
             main_scene_image.button10,
@@ -90,14 +90,14 @@ var PowerRewardLayer = cc.Layer.extend({
             this
         );
 
-        btnGetReward.setPosition(cc.p(355,270));
+        btnGetReward.setPosition(this._powerRewardLayerFit.btnGetRewardPoint);
 
         var menu = cc.Menu.create(btnGetReward);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
     },
 
-    _onClickGetReward: function() {
+    _onClickGetReward: function () {
         cc.log("PowerRewardLayer _onClickGetReward");
         gameData.activity.getPowerReward();
     }

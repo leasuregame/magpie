@@ -35,8 +35,8 @@ var BattleScene = cc.Scene.extend({
         this.addChild(battleEndLayer, 1);
         this._battleProcess.push(battleEndLayer);
 
-        var gameFrame = GameFrame.create();
-        this.addChild(gameFrame, 1);
+//        var gameFrame = GameFrame.create();
+//        this.addChild(gameFrame, 1);
 
         return true;
     },

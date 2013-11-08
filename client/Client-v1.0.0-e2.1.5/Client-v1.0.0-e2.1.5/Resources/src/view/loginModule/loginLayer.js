@@ -13,6 +13,8 @@
 
 
 var LoginLayer = cc.Layer.extend({
+    _loginLayerFit: null,
+
     _accountEditBox: null,
     _passwordEditBox: null,
 
@@ -24,16 +26,18 @@ var LoginLayer = cc.Layer.extend({
         lz.server.connectGateServer();
         user = gameData.user;
 
+        this._loginLayerFit = gameFit.loginScene.loginLayer;
+
         var accountLabel = cc.LabelTTF.create("账号:", "STHeitiTC-Medium", 30);
-        accountLabel.setPosition(cc.p(150, 500));
+        accountLabel.setPosition(this._loginLayerFit.accountLabelPoint);
         this.addChild(accountLabel);
 
         var passwordLabel = cc.LabelTTF.create("密码:", "STHeitiTC-Medium", 30);
-        passwordLabel.setPosition(cc.p(150, 400));
+        passwordLabel.setPosition(this._loginLayerFit.passwordLabelPoint);
         this.addChild(passwordLabel);
 
         this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit2));
-        this._accountEditBox.setPosition(cc.p(380, 500));
+        this._accountEditBox.setPosition(this._loginLayerFit.accountEditBoxPoint);
         this._accountEditBox.setDelegate(this);
         this._accountEditBox.setFont("STHeitiTC-Medium", 25);
         this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
@@ -41,7 +45,7 @@ var LoginLayer = cc.Layer.extend({
         this.addChild(this._accountEditBox);
 
         this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
-        this._passwordEditBox.setPosition(cc.p(380, 400));
+        this._passwordEditBox.setPosition(this._loginLayerFit.passwordEditBoxPoint);
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordEditBox.setDelegate(this);
         this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
@@ -53,12 +57,12 @@ var LoginLayer = cc.Layer.extend({
 
         this.loginButton = cc.MenuItemFont.create("登录", this._onClickLogin, this);
         this.loginButton.setFontSize(45);
-        this.loginButton.setPosition(260, 250);
+        this.loginButton.setPosition(this._loginLayerFit.loginButtonPoint);
         this.loginButton.setEnabled(false);
 
         var registerButton = cc.MenuItemFont.create("注册", this._onClickRegister, this);
         registerButton.setFontSize(45);
-        registerButton.setPosition(460, 250);
+        registerButton.setPosition(this._loginLayerFit.registerButtonPoint);
 
         this.menu = cc.Menu.create(this.loginButton, registerButton);
         this.menu.setPosition(cc.p(0, 0));

@@ -182,7 +182,7 @@ var TournamentLayer = cc.Layer.extend({
 
             that._addRankScrollView();
             that._updateRankRewardItem();
-        })
+        });
     },
 
     _updateRankRewardItem: function () {

@@ -702,13 +702,15 @@ var gameFitAdapter = function () {
     cc.log("gameFitAdapter");
 
     var size = cc.Director.getInstance().getWinSize();
+    var height = size.height;
 
-    cc.log(size.width);
-    cc.log(size.height);
+    cc.log("宽度: " + size.width + " | 高度: " + size.height);
 
-    if (size.height == 1136) {
+    if (height == 1136) {
         gameFit = fit4Iphone5;
+        gameDevice = "Iphone5";
     } else {
         gameFit = fit4Iphone4;
+        gameDevice = "Other";
     }
 };

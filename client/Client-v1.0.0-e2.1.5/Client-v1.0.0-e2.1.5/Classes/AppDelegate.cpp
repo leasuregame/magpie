@@ -53,21 +53,6 @@ bool AppDelegate::applicationDidFinishLaunching()
         pEGLView->setDesignResolutionSize(720, 960, kResolutionNoBorder);
     }
     
-//    if (screenSize.height > 960)
-//    {
-//        pEGLView->setDesignResolutionSize(0, 0, 720, 1136, kResolutionNoBorder);
-//    }
-//    else if (screenSize.height > 480)
-//    {
-//        pEGLView->setFrameSize(720, 1136);
-//        pEGLView->setDesignResolutionSize(40, 88, 720, 1136, kResolutionNoBorder);
-//    }
-//    else
-//    {
-//        pEGLView->setFrameSize(360, 568);
-//        pEGLView->setDesignResolutionSize(20, 44, 360, 568, kResolutionNoBorder);
-//    }
-    
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 30);
     

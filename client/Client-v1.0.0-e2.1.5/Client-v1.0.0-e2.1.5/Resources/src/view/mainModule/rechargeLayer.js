@@ -60,8 +60,8 @@ var RechargeLayer = cc.Layer.extend({
             this._onClickGo2Payment,
             this
         );
-
-        go2PaymentItem.setScale(1.5, 1.3);
+        go2PaymentItem.setScaleX(1.5);
+        go2PaymentItem.setScaleY(1.3);
         go2PaymentItem.setPosition(this._rechargeLayerFit.go2PaymentItemPoint);
 
         var menu = cc.Menu.create(go2PaymentItem);

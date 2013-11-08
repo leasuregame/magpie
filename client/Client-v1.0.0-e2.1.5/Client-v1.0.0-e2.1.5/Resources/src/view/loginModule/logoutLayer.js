@@ -20,7 +20,7 @@ var LogoutLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
-        this._logoutLayerFit = gameFit.loginScene.loginLayer;
+        this._logoutLayerFit = gameFit.loginScene.logoutLayer;
 
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 

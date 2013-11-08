@@ -55,7 +55,7 @@ var fit4Iphone4 = {
             "loginButtonPoint": cc.p(260, 250),
             "registerButtonPoint": cc.p(460, 250)
         },
-        "LogoutLayer": {
+        "logoutLayer": {
             "bgLayerPoint": cc.p(40, 0),
             "bgSpritePoint": cc.p(363, 600),
             "msgLabelPoint": cc.p(360, 620),
@@ -398,7 +398,7 @@ var fit4Iphone5 = {
             "loginButtonPoint": cc.p(220, 250),
             "registerButtonPoint": cc.p(420, 250)
         },
-        "LogoutLayer": {
+        "logoutLayer": {
             "bgLayerPoint": cc.p(0, 0),
             "bgSpritePoint": cc.p(323, 600),
             "msgLabelPoint": cc.p(320, 620),
@@ -499,7 +499,7 @@ var fit4Iphone5 = {
             "tipLabelPoint": cc.p(320, 220)
         },
         "mainBgLayer": {
-            "messagesLabelPoint": cc.p(0, 1102)
+            "messagesLabelPoint": cc.p(0, 1104)
         },
         "mainLayer": {
             "bgSpritePoint": cc.p(0, 282),

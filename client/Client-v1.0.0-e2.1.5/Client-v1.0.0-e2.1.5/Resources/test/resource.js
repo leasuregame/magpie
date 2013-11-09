@@ -589,6 +589,26 @@ var main_scene_image = {
     up17: effect_scene_path + "uiEffect/" + "up17.png",
     up18: effect_scene_path + "uiEffect/" + "up18.png",
     up19: effect_scene_path + "uiEffect/" + "up19.png",
+    up20: effect_scene_path + "uiEffect/" + "up20.png",
+    up21: effect_scene_path + "uiEffect/" + "up21.png",
+    up22: effect_scene_path + "uiEffect/" + "up22.png",
+    up23: effect_scene_path + "uiEffect/" + "up23.png",
+    up24: effect_scene_path + "uiEffect/" + "up24.png",
+    up25: effect_scene_path + "uiEffect/" + "up25.png",
+    up26: effect_scene_path + "uiEffect/" + "up26.png",
+    up27: effect_scene_path + "uiEffect/" + "up27.png",
+    up28: effect_scene_path + "uiEffect/" + "up28.png",
+    up29: effect_scene_path + "uiEffect/" + "up29.png",
+    up30: effect_scene_path + "uiEffect/" + "up30.png",
+    up31: effect_scene_path + "uiEffect/" + "up31.png",
+    up32: effect_scene_path + "uiEffect/" + "up32.png",
+    up33: effect_scene_path + "uiEffect/" + "up33.png",
+    up34: effect_scene_path + "uiEffect/" + "up34.png",
+    up35: effect_scene_path + "uiEffect/" + "up35.png",
+    up36: effect_scene_path + "uiEffect/" + "up36.png",
+    up37: effect_scene_path + "uiEffect/" + "up37.png",
+    up38: effect_scene_path + "uiEffect/" + "up38.png",
+    up39: effect_scene_path + "uiEffect/" + "up39.png",
 
 
 
@@ -638,6 +658,16 @@ var main_scene_image = {
     effect15: ccb_scene_path + "effect15.ccbi", 
     uiEffect1: ccb_scene_path + "uiEffect1.ccbi", 
     uiEffect2: ccb_scene_path + "uiEffect2.ccbi", 
+    uiEffect3: ccb_scene_path + "uiEffect3.ccbi", 
+    uiEffect4: ccb_scene_path + "uiEffect4.ccbi", 
+    uiEffect5: ccb_scene_path + "uiEffect5.ccbi", 
+    uiEffect6: ccb_scene_path + "uiEffect6.ccbi",
+    uiEffect7: ccb_scene_path + "uiEffect7.ccbi",
+    uiEffect8: ccb_scene_path + "uiEffect8.ccbi",
+    uiEffect9: ccb_scene_path + "uiEffect9.ccbi",
+    uiEffect10: ccb_scene_path + "uiEffect10.ccbi",
+    uiEffect11: ccb_scene_path + "uiEffect11.ccbi",
+    uiEffect12: ccb_scene_path + "uiEffect12.ccbi",
     
 };
 

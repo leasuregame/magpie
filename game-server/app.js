@@ -4,6 +4,7 @@ var MessageService = require('./app/service/messageService');
 var routeUtil = require('./app/common/route');
 var msgQueue = require('./app/common/msgQueue');
 var argsFilter = require('./app/servers/area/filter/argsFilter');
+var loginFilter = require('./app/servers/connector/filter/loginFilter');
 var areaUtil = require('./app/util/areaUtil');
 /**
  * Init app for client.
@@ -65,6 +66,8 @@ app.configure('production|development', 'connector', function() {
     useDict: true,
     useProtobuf: true
   });
+
+  //app.filter(loginFilter());
 });
 
 app.configure('production|development', 'gate', function(){

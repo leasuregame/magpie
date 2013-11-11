@@ -26,13 +26,6 @@ app.configure('production|development', function() {
       areaIdMap[areas[id].area] = areas[id].id;
     }
     app.set('areaIdMap', areaIdMap);
-
-    var battles = app.get('servers').battle;
-    var battleIdMap = {};
-    for (var id in battles) {
-      battleIdMap[battles[id].area] = battles[id].id;
-    }
-    app.set('battleIdMap', battleIdMap);
   }
 
   // proxy configures
@@ -98,11 +91,9 @@ app.configure('production|development', 'area', function() {
   msgQueue.init({app: app});
   areaUtil.checkFlagFile(app);
   //app.filter(argsFilter());
-});
 
-app.configure('production|development', 'area', function() {
   var areaId = app.get('curServer').area;
-  var mysqlConfig = require(app.getBase() + '/config/mysql1.json');
+  var mysqlConfig = require(app.getBase() + '/config/mysql.json');
   var env = app.get('env');
 
   var val = mysqlConfig;

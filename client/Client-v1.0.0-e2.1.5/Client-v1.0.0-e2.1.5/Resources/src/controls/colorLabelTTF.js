@@ -7,12 +7,17 @@
  */
 
 var ColorLabelTTF = cc.Node.extend({
-    _position: cc.p(0, 0),
+    _size: null,
 
     init: function (args) {
         cc.log("ColorLabelTTF init");
 
         if (!this._super()) return false;
+
+        this._size = cc.size(0, 0);
+
+        this._strLabel = cc.Node.create();
+        this.addChild(this._strLabel);
 
         for (var i = 0; i < args.length; i++) {
             var arg = args[i];
@@ -27,6 +32,9 @@ var ColorLabelTTF = cc.Node.extend({
             this.createLabel(string, color, fontName, fontSize, isStroke, dimensions, alignment);
 
         }
+
+        this.setContentSize(this._size);
+
         return true;
     },
 
@@ -42,22 +50,23 @@ var ColorLabelTTF = cc.Node.extend({
 
         label.setColor(color);
         label.setAnchorPoint(cc.p(0, 0.5));
-        label.setPosition(this._position);
-        var size = label.getContentSize();
-        this._position.x += size.width;
+        label.setPosition(cc.p(this._size.width, 0));
         this.addChild(label);
+
+        var size = label.getContentSize();
+        this._size.width += size.width;
+        this._size.height = Math.max(this._size.height, size.height);
     },
 
     setAnchorPoint: function (anchor) {
         cc.log("ColorLabelTTF setAnchorPoint: " + anchor);
 
-        cc.Node.prototype.setAnchorPoint.call(this, anchor);
-    },
+        var children = this.getChildren()
+        var len = children.length;
 
-    setPosition: function (point) {
-        cc.log("ColorLabelTTF setPosition: " + point);
-
-        cc.Node.prototype.setPosition.call(this, point);
+        for (var i = 0; i < len; ++i) {
+            children[i].setAnchorPoint(anchor);
+        }
     }
 });
 

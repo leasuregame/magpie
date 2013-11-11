@@ -60,7 +60,6 @@ var PaymentLayer = LazyLayer.extend({
         var vip = gameData.player.get("vip");
         cc.log(nextVipCash);
         if (nextVipCash) {
-
             var tipLabel = ColorLabelTTF.create(
                 {
                     string: "您是",

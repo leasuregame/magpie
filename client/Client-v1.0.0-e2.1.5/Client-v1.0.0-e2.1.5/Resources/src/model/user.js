@@ -50,9 +50,9 @@ var User = Entity.extend({
     _load: function () {
         cc.log("User _load");
 
-        this._account = sys.localStorage.getItem("account") || "junyu";
+        this._account = sys.localStorage.getItem("account") || "chenchen";
         this._password = sys.localStorage.getItem("password") || "1";
-        this._area = parseInt(sys.localStorage.getItem("area")) || 1;
+        this._area = parseInt(sys.localStorage.getItem("area")) || 0;
     },
 
     _save: function () {
@@ -61,6 +61,27 @@ var User = Entity.extend({
         sys.localStorage.setItem("account", this._account);
         sys.localStorage.setItem("password", this._password);
         sys.localStorage.setItem("area", this._area);
+    },
+
+    canLogin: function () {
+        cc.log("User canLogin");
+
+        if (!this._area) {
+            TipLayer.tip("请先选择所要登录的区服");
+            return false;
+        }
+
+        if (!this._account) {
+            TipLayer.tip("请输入账号");
+            return false;
+        }
+
+        if (!this._password) {
+            TipLayer.tip("请输入密码");
+            return false;
+        }
+
+        return true;
     },
 
     login: function (cb) {
@@ -73,54 +94,94 @@ var User = Entity.extend({
         this._save();
 
         var that = this;
-        lz.server.request("connector.userHandler.login", {
-            account: this._account,
-            password: this._password,
-            areaId: 1
+        lz.server.connectGameServer(function () {
+            lz.server.request("connector.userHandler.login", {
+                account: that._account,
+                password: that._password,
+                areaId: that._area
+            }, function (data) {
+                cc.log(data);
+
+                var msg = data.msg;
+
+                if (data.code == 200) {
+                    cc.log("login success");
+
+                    that.update(msg.user);
+
+                    var player = msg.player;
+
+                    if (player) {
+                        gameData.gameInit();
+                        gameData.player.init(msg.player);
+
+                        cb(1);
+                    } else {
+                        cb(2);
+                    }
+                } else {
+                    cc.log("login fail");
+
+                    cb(0);
+
+                    TipLayer.tip(data.msg);
+                }
+            });
+        });
+    },
+
+    register: function (cb, account, password, name) {
+        cc.log("User register");
+
+        var param = {
+            account: account,
+            password: password
+        };
+
+        if (name) {
+            param.name = name;
+        }
+
+        var that = this;
+        lz.server.connectGameServer(function () {
+            lz.server.request("connector.userHandler.register", param, function (data) {
+                cc.log(data);
+
+                if (data.code == 200) {
+                    cc.log("register success");
+
+                    cb();
+                } else {
+                    cc.log("register fail");
+
+                    TipLayer.tip(data.msg);
+                }
+            });
+        });
+    },
+
+    createPlayer: function (cb, name) {
+        cc.log("User createPlayer");
+
+        var that = this;
+        lz.server.request("connector.playerHandler.createPlayer", {
+            name: name
         }, function (data) {
             cc.log(data);
 
-            var msg = data.msg;
-
             if (data.code == 200) {
-                cc.log("login success");
+                cc.log("createPlayer success");
 
-                that.update(msg.user);
+                var msg = data.msg;
 
                 gameData.gameInit();
                 gameData.player.init(msg.player);
 
-                cb(true);
+                cb();
             } else {
-                cc.log("login fail");
-
-                cb(false);
+                cc.log("createPlayer fail");
 
                 TipLayer.tip(data.msg);
-            }
-        });
-    },
-
-    register: function (cb) {
-        cc.log("User register");
-
-        var that = this;
-        lz.server.request("connector.userHandler.register", {
-            account: this._account,
-            password: this._password,
-            name: this._name
-        }, function (data) {
-            cc.log(data);
-
-            if (data.code == 200) {
-                cc.log("register success");
-
-
-                cb("success");
-            } else {
-                cc.log("register fail");
-
-                cb("fail");
             }
         });
     },

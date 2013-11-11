@@ -70,7 +70,6 @@ var appFiles = [
     'src/model/battleLogPool.js',
     'src/model/battleLog.js',
     'src/model/battleStep.js',
-    'src/model/gameFlow.js',
 
     'src/model/gameData.js',
 
@@ -88,6 +87,7 @@ var appFiles = [
     'src/view/loginModule/loginScene.js',
     'src/view/loginModule/loginLayer.js',
     'src/view/loginModule/logoutLayer.js',
+    'src/view/loginModule/newPlayerLayer.js',
     'src/view/loginModule/registerScene.js',
     'src/view/loginModule/registerLayer.js',
 

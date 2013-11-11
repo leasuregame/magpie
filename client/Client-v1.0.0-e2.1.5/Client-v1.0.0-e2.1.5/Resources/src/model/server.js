@@ -32,12 +32,39 @@ var CONNECT_FAIL = 0;
 var CONNECT_SUCCESS = 1;
 var CONNECT_TRYING = 2;
 
+// area status
+var AREA_STATUS = {
+    10: {
+        statusName: "新区",
+        color: cc.c3b(108, 218, 0),
+        canLogin: true
+    },
+
+    20: {
+        statusName: "正常",
+        color: cc.c3b(0, 195, 244),
+        canLogin: true
+    },
+
+    30: {
+        statusName: "爆满",
+        color: cc.c3b(226, 0, 0),
+        canLogin: true
+    },
+
+    40: {
+        statusName: "维护",
+        color: cc.c3b(120, 120, 120),
+        canLogin: false
+    }
+};
+
 var Server = Entity.extend({
     _host: "",
     _port: "",
     _waitLayer: null,
     _waitTimes: 0,
-    _serverList: null,
+    _areaList: null,
     _gateServerStatus: CONNECT_FAIL,
     _gameServerStatus: CONNECT_FAIL,
 
@@ -45,13 +72,29 @@ var Server = Entity.extend({
         cc.log("Server init");
     },
 
+    update: function (data) {
+        cc.log("Server update");
+
+        this._host = data.host;
+        this._port = data.port;
+        this._areaList = data.servers;
+
+        var len = this._areaList.length;
+        for (var i = 0; i < len; ++i) {
+            var status = AREA_STATUS[this._areaList[i].status];
+
+            this._areaList[i].statusName = status.statusName;
+            this._areaList[i].color = status.color;
+            this._areaList[i].canLogin = status.canLogin;
+            this._areaList[i].desc = this._areaList[i].id + "区  " + this._areaList[i].name + "  " + status.statusName;
+        }
+    },
+
     connectGateServer: function (cb) {
         cc.log("Server connectGateServer");
 
-        if (this._gateServerStatus == CONNECT_SUCCESS || this._gateServerStatus == CONNECT_TRYING) {
-            cc.log("链接入口服务器成功或正在尝试，请勿重发发送请求");
-            return;
-        }
+        this._gateServerStatus = CONNECT_FAIL;
+        this._gameServerStatus = CONNECT_FAIL;
 
         var success = false;
 
@@ -128,31 +171,16 @@ var Server = Entity.extend({
 
                 var msg = data.msg;
 
-//                that._host = "124.238.236.33";
-//                that._port = "3010";
+                that.update(msg);
 
-                that._host = msg.host;
-                that._port = msg.port;
-                that._serverList = msg.servers;
+                that.off();
+                that.disconnect();
 
                 if (cb) {
                     cb(that._serverList);
                 }
 
-                that.off();
-
-                that.on("close", function (data) {
-                    cc.log("***** on close:");
-                    cc.log(data);
-
-                    cc.log("获取服务器列表已完成，连接游戏服务器");
-
-                    lz.scheduleOnce(function () {
-                        that.connectGameServer();
-                    }, 1);
-                });
-
-                that.disconnect();
+                that._closeAllWaitLayer();
             });
 
         lz.scheduleOnce(function () {
@@ -162,13 +190,16 @@ var Server = Entity.extend({
         }, REQUEST_TIMEOUT);
     },
 
-    connectGameServer: function () {
+    connectGameServer: function (cb) {
         cc.log("Server connectGameServer");
 
-        if (this._gameServerStatus == CONNECT_SUCCESS || this._gameServerStatus == CONNECT_TRYING) {
-            cc.log("连接游戏服务器成功或正在尝试，请勿重发发送请求");
+        if (this.isConnect()) {
+            cb();
+
             return;
         }
+
+        this._showWaitLayer();
 
         this.off();
 
@@ -219,12 +250,15 @@ var Server = Entity.extend({
                 that._gateServerStatus = CONNECT_FAIL;
                 that._gameServerStatus = CONNECT_FAIL;
 
-                that._closeAllWaitLayer();
 
                 LogoutLayer.pop("网络不给力，请重新连接");
             });
 
             that._closeAllWaitLayer();
+
+            if (cb) {
+                cb();
+            }
         });
 
         lz.scheduleOnce(function () {
@@ -281,11 +315,22 @@ var Server = Entity.extend({
     },
 
     isConnect: function () {
-//        cc.log("Server isConnect");
-
         return (lz.pomelo.isConnect() && this._gameServerStatus == CONNECT_SUCCESS);
     },
 
+    getRecommendArea: function () {
+        cc.log("Server getRecommendArea");
+
+        if (this._areaList) {
+            var len = this._areaList.length;
+
+            if (len > 0) {
+                return this._areaList[len - 1].id;
+            }
+        }
+
+        return 0;
+    },
 
     _showWaitLayer: function () {
         cc.log("Server _showWaitLayer");
@@ -298,10 +343,11 @@ var Server = Entity.extend({
 
         this._waitLayer = LazyLayer.create();
         this._waitLayer.setTouchPriority(WAIT_LAYER_HANDLER_PRIORITY);
+        cc.log(cc.Director.getInstance().getRunningScene());
         cc.Director.getInstance().getRunningScene().addChild(this._waitLayer, 10000);
 
         var waitSprite = cc.Sprite.create(main_scene_image.icon42);
-        waitSprite.setPosition(cc.p(360, 568));
+        waitSprite.setPosition(cc.p(320, 568));
         this._waitLayer.addChild(waitSprite);
 
         waitSprite.setOpacity(0);
@@ -322,6 +368,8 @@ var Server = Entity.extend({
                 })
             )
         );
+
+        cc.log("1");
     },
 
     _closeWaitLayer: function () {

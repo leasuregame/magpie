@@ -29,7 +29,12 @@ afterCreatePlayer = (app, session, uid, areaId, player, next) ->
       dao.user.fetchOne where: id: uid, cb
 
     (user, cb) ->
-      user.roles = user.roles.push areaId
+      if _.isArray(user.roles)
+        roles = user.roles
+      else
+        roles = []
+      roles.push areaId
+      user.roles = roles
       user.lastLoginArea = areaId
       user.save()
       cb()

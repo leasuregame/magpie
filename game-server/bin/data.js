@@ -283,7 +283,7 @@ var random_lineup = function(cards) {
 var genSkillInc = function(card) {
     if(parseInt(card.star) < 3) {
        // console.log("card = ",card);
-        card.skillInc = 0.0;
+        card.skillInc = 0;
         return;
     }
     var cdata, max, min, skill;

@@ -457,8 +457,8 @@
 													<integer>4</integer>
 													<key>value</key>
 													<array>
-														<real>1</real>
-														<real>1</real>
+														<real>3.2000000476837158</real>
+														<real>1.3999999761581421</real>
 													</array>
 												</dict>
 												<dict>
@@ -475,8 +475,8 @@
 													<integer>4</integer>
 													<key>value</key>
 													<array>
-														<real>1</real>
-														<real>1</real>
+														<real>3.2000000476837158</real>
+														<real>1.3999999761581421</real>
 													</array>
 												</dict>
 												<dict>
@@ -564,7 +564,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>effect/effect/p32.png</string>
+											<string>effect/effect/p29.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1456,7 +1456,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>960</real>
+									<real>-400</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -1878,7 +1878,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>960</real>
+									<real>-400</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -3003,7 +3003,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.8333332538604736</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

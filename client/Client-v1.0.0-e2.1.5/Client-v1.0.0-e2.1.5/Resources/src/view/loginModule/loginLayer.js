@@ -163,7 +163,6 @@ var LoginLayer = cc.Layer.extend({
     _onClickOpenArea: function () {
         cc.log("LoginLayer _onClickOpenArea");
 
-        this._loginItem.setVisible(false);
         this._selectAreaItem.setVisible(false);
         this._scrollView.setVisible(true);
     },
@@ -204,7 +203,6 @@ var LoginLayer = cc.Layer.extend({
 
             this._scrollView.setVisible(false);
             this._selectAreaItem.setVisible(true);
-            this._loginItem.setVisible(true);
         }
     },
 

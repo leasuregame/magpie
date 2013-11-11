@@ -15,14 +15,12 @@
 var LoginScene = cc.Scene.extend({
     _nowLayer: null,
 
-    init: function() {
-        cc.log("LoginScene init");
+    onEnter: function() {
+        cc.log("Login onEnter");
 
-        if(!this._super()) return false;
+        this._super();
 
         this.switchLayer(LoginLayer);
-
-        return true;
     },
 
     switchLayer: function (runLayer) {
@@ -55,7 +53,7 @@ var LoginScene = cc.Scene.extend({
 LoginScene.create = function () {
     var ret = new LoginScene();
 
-    if (ret && ret.init()) {
+    if (ret) {
         return ret;
     }
 

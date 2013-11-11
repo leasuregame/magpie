@@ -193,7 +193,7 @@ var Server = Entity.extend({
     connectGameServer: function (cb) {
         cc.log("Server connectGameServer");
 
-        if(this.isConnect()) {
+        if (this.isConnect()) {
             cb();
 
             return;
@@ -315,8 +315,6 @@ var Server = Entity.extend({
     },
 
     isConnect: function () {
-//        cc.log("Server isConnect");
-
         return (lz.pomelo.isConnect() && this._gameServerStatus == CONNECT_SUCCESS);
     },
 
@@ -345,6 +343,7 @@ var Server = Entity.extend({
 
         this._waitLayer = LazyLayer.create();
         this._waitLayer.setTouchPriority(WAIT_LAYER_HANDLER_PRIORITY);
+        cc.log(cc.Director.getInstance().getRunningScene());
         cc.Director.getInstance().getRunningScene().addChild(this._waitLayer, 10000);
 
         var waitSprite = cc.Sprite.create(main_scene_image.icon42);
@@ -369,6 +368,8 @@ var Server = Entity.extend({
                 })
             )
         );
+
+        cc.log("1");
     },
 
     _closeWaitLayer: function () {

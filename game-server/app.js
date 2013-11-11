@@ -13,11 +13,18 @@ var app = pomelo.createApp();
 app.set('name', 'game-server');
 app.set('debug', false);
 
-app.configure('production', function() {
+app.configure('production|development', function() {
   app.enable('systemMonitor');
 });
 
 app.configure('production|development', function() {
+  var areaInfo = require('./app/modules/areaInfo');
+  var onlineUser = require('./app/modules/onlineUser');
+  if(typeof app.registerAdmin === 'function'){
+    app.registerAdmin(areaInfo, {app: app});
+    app.registerAdmin(onlineUser, {app: app});
+  }
+
   //Set areasIdMap, a map from area id to serverId.
   if (app.serverType !== 'master') {
     var areas = app.get('servers').area;
@@ -72,7 +79,7 @@ app.configure('production|development', 'gate', function(){
 // configure sql database
 app.configure('production|development', 'connector|auth', function() {
   var env = app.get('env');
-  app.set('mysql', require(app.getBase() + '/config/mysql1.json')[env]['userdb']);
+  app.set('mysql', require(app.getBase() + '/config/mysql.json')[env]['userdb']);
 
   var dbclient = require('./app/dao/mysql/mysql').init(app);
   app.set('dbClient', dbclient);

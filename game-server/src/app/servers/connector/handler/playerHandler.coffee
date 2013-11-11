@@ -26,11 +26,14 @@ Handler::createPlayer = (msg, session, next) ->
 afterCreatePlayer = (app, session, uid, areaId, player, next) ->
   async.waterfall [
     (cb) ->
-      dao.user.fetchOne where: id: uid, cb
+      dao.user.fetchOne {
+        where: id: uid
+        sync: true
+      }, cb
 
     (user, cb) ->
       if _.isArray(user.roles)
-        roles = user.roles
+        roles = _.clone(user.roles)
       else
         roles = []
       roles.push areaId

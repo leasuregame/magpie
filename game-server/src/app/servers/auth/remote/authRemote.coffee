@@ -31,7 +31,7 @@ module.exports =
     dao.user.create data: {account: account, password: password}, (err, user) ->
       if err or not user
         if err and err.code is "ER_DUP_ENTRY" 
-          return cb({code: 501, msg: Resources.ERROR.USER_EXISTS})
+          return cb({code: 501, msg: Resources.ERROR.USER_EXSISTS})
         else
           return cb({code: 500, msg: err.msg})
       

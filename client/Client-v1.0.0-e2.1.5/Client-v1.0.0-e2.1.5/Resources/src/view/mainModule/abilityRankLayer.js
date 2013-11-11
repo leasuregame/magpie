@@ -35,7 +35,7 @@ var AbilityRankLayer = cc.Layer.extend({
             scrollViewHeight = this._abilityRankLayerFit.scrollViewHeight;
         }
 
-        var scrollViewLayer = MarkLayer.create(this._abilityRankLayerFit.scrollViewLayerSize);
+        var scrollViewLayer = MarkLayer.create(this._abilityRankLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
@@ -127,7 +127,7 @@ var AbilityRankLayer = cc.Layer.extend({
         this.addChild(this._skyDialog, 10);
 
         var label = cc.Scale9Sprite.create(main_scene_image.bg16);
-        label.setContentSize(this._abilityRankLayerFit.labelSize);
+        label.setContentSize(this._abilityRankLayerFit.labelContentSize);
 
         var detailItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,

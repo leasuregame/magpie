@@ -13,6 +13,8 @@
 
 
 var RankLayer = cc.Layer.extend({
+    _rankLayerFit: null,
+
     _nowLayer: null,
     _abilityRankLayerItem: null,
     _lvRankLayerItem: null,
@@ -24,14 +26,16 @@ var RankLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._rankLayerFit = gameFit.mainScene.rankLayer;
+
         var headIcon = cc.Sprite.create(main_scene_image.icon1);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 962));
+        headIcon.setPosition(this._rankLayerFit.headIconPoint);
         this.addChild(headIcon);
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
+        bgSprite.setPosition(this._rankLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         this._abilityRankLayerItem = cc.MenuItemImage.create(
@@ -41,7 +45,7 @@ var RankLayer = cc.Layer.extend({
             this._onClickAbilityRankLayer,
             this
         );
-        this._abilityRankLayerItem.setPosition(cc.p(111, 1005));
+        this._abilityRankLayerItem.setPosition(this._rankLayerFit.abilityRankLayerItemPoint);
 
         this._lvRankLayerItem = cc.MenuItemImage.create(
             main_scene_image.button23,
@@ -50,7 +54,7 @@ var RankLayer = cc.Layer.extend({
             this._onClickLvRankLayer,
             this
         );
-        this._lvRankLayerItem.setPosition(cc.p(254, 1005));
+        this._lvRankLayerItem.setPosition(this._rankLayerFit.lvRankLayerItemPoint);
 
         this._passRankLayerItem = cc.MenuItemImage.create(
             main_scene_image.button23,
@@ -59,7 +63,7 @@ var RankLayer = cc.Layer.extend({
             this._onClickPassRankLayer,
             this
         );
-        this._passRankLayerItem.setPosition(cc.p(404, 1005));
+        this._passRankLayerItem.setPosition(this._rankLayerFit.passRankLayerItemPoint);
 
         this._tournamentRankLayerItem = cc.MenuItemImage.create(
             main_scene_image.button23,
@@ -68,7 +72,7 @@ var RankLayer = cc.Layer.extend({
             this._onClickTournamentRankLayer,
             this
         );
-        this._tournamentRankLayerItem.setPosition(cc.p(554, 1005));
+        this._tournamentRankLayerItem.setPosition(this._rankLayerFit.tournamentRankLayerItemPoint);
 
         var menu = cc.Menu.create(
             this._abilityRankLayerItem,
@@ -77,23 +81,23 @@ var RankLayer = cc.Layer.extend({
             this._tournamentRankLayerItem
         );
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu, 1);
+        this.addChild(menu, 0);
 
         var abilityRankIcon = cc.Sprite.create(main_scene_image.icon196);
-        abilityRankIcon.setPosition(cc.p(105, 1000));
-        this.addChild(abilityRankIcon, 2);
+        abilityRankIcon.setPosition(this._rankLayerFit.abilityRankIconPoint);
+        this.addChild(abilityRankIcon, 1);
 
         var lvRankIcon = cc.Sprite.create(main_scene_image.icon197);
-        lvRankIcon.setPosition(cc.p(254, 1000));
-        this.addChild(lvRankIcon, 2);
+        lvRankIcon.setPosition(this._rankLayerFit.lvRankIconPoint);
+        this.addChild(lvRankIcon, 1);
 
         var passRankIcon = cc.Sprite.create(main_scene_image.icon198);
-        passRankIcon.setPosition(cc.p(404, 1000));
-        this.addChild(passRankIcon, 2);
+        passRankIcon.setPosition(this._rankLayerFit.passRankIconPoint);
+        this.addChild(passRankIcon, 1);
 
         var tournamentRankIcon = cc.Sprite.create(main_scene_image.icon199);
-        tournamentRankIcon.setPosition(cc.p(554, 1000));
-        this.addChild(tournamentRankIcon, 2);
+        tournamentRankIcon.setPosition(this._rankLayerFit.tournamentRankIconPoint);
+        this.addChild(tournamentRankIcon, 1);
 
         this._onClickAbilityRankLayer();
 
@@ -151,7 +155,7 @@ var RankLayer = cc.Layer.extend({
         if (!(this._nowLayer instanceof runLayer)) {
             if (this._nowLayer != null) this.removeChild(this._nowLayer);
             this._nowLayer = runLayer.create();
-            this.addChild(this._nowLayer);
+            this.addChild(this._nowLayer, 1);
         }
     }
 });

@@ -36,7 +36,7 @@ var TournamentLayer = cc.Layer.extend({
     },
 
     init: function () {
-        cc.log("Tournament init");
+        cc.log("TournamentLayer init");
 
         if (!this._super()) return false;
 

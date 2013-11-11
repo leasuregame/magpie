@@ -15,38 +15,32 @@
 var vipBoxGoods = {
     energy: {
         name: "活力值",
-        url: "icon110",
-        point: cc.p(220, 750)
+        url: "icon110"
     },
 
     money: {
         name: "仙币",
-        url: "icon108",
-        point: cc.p(440, 750)
+        url: "icon108"
     },
 
     skillPoint: {
         name: "技能点",
-        url: "icon109",
-        point: cc.p(220, 650)
+        url: "icon109"
     },
 
     elixir: {
         name: "仙丹",
-        url: "icon107",
-        point: cc.p(440, 650)
+        url: "icon107"
     },
 
     fragments: {
         name: "卡魂",
-        url: "icon145",
-        point: cc.p(220, 550)
+        url: "icon145"
     },
 
     exp_card: {
         name: "经验元灵",
-        url: "icon146",
-        point: cc.p(440, 550)
+        url: "icon146"
     }
 };
 
@@ -263,7 +257,8 @@ var VipLayer = cc.Layer.extend({
         for (var key in data) {
             if (vipBoxGoods[key] != undefined && data[key] > 0) {
                 var goods = vipBoxGoods[key];
-                var point = goods.point;
+               // var point = goods.point;
+                var point = this._vipLayerFit.vipBoxGoodsPoints[key];
 
                 var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
                 goodsSprite.setPosition(point);

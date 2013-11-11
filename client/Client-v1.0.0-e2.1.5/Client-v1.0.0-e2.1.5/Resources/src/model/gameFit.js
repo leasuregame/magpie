@@ -67,10 +67,10 @@ var fit4Iphone4 = {
     "mainScene": {
         "abilityRankLayer": {
             "scrollViewHeight": 700,
-            "scrollViewLayerSize": cc.rect(54, 228, 609, 700),
+            "scrollViewLayerRect": cc.rect(54, 140, 609, 700),
             "scrollViewSize": cc.size(609, 700),
-            "scrollViewPoint": cc.p(54, 228),
-            "labelSize": cc.size(216, 300),
+            "scrollViewPoint": cc.p(54, 140),
+            "labelContentSize": cc.size(216, 300),
             "detailItemPoint": cc.p(108, 240),
             "sendMessageItemPoint": cc.p(108, 150),
             "addFriendItemPoint": cc.p(108, 60),
@@ -81,6 +81,69 @@ var fit4Iphone4 = {
             "headSpritePoint": cc.p(680, 960),
             "itemBasePoint": cc.p(65, 862),
             "itemOffsetX": 107
+        },
+        "amountLayer": {
+            "bgLayerPoint": cc.p(40, 0),
+            "bgSpriteContentSize": cc.size(550, 300),
+            "bgSpritePoint": cc.p(360, 492),
+            "titleLabelPoint": cc.p(360, 602),
+            "consumeLabelIconPoint": cc.p(160, 542),
+            "consumeIconPoint": cc.p(225, 542),
+            "consumeLabelPoint": cc.p(250, 539),
+            "obtainLabelIconPoint": cc.p(400, 542),
+            "obtainLabelPoint": cc.p(480, 539),
+            "obtainIconPoint": cc.p(560, 542),
+            "countIconPoint": cc.p(360, 482),
+            "countLabelPoint": cc.p(360, 480),
+            "addItemPoint": cc.p(480, 482),
+            "addAddItemPoint": cc.p(560, 482),
+            "subItemPoint": cc.p(240, 482),
+            "subSubItemPoint": cc.p(160, 482),
+            "okItemPoint": cc.p(260, 102),
+            "closeItemPoint": cc.p(460, 102)
+        },
+        "cardDetails": {
+            "bgLayerPoint": cc.p(40, 0),
+            "headBgSpritePoint": cc.p(40, 905),
+            "cardFullNodePoint": cc.p(232, 682),
+            "line1IconPoint": cc.p(360, 422),
+            "line2IconPoint": cc.p(360, 242),
+            "line3IconPoint": cc.p(360, 112),
+            "nameLabelPoint": cc.p(360, 932),
+            "starBasePoint": cc.p(420, 862),
+            "starOffsetX": 50,
+            "lvBgSpritePoint": cc.p(530, 782),
+            "hpBgSpritePoint": cc.p(530, 702),
+            "atkBgSpritePoint": cc.p(530, 622),
+            "lvIconPoint": cc.p(470, 782),
+            "hpIconPoint": cc.p(470, 702),
+            "atkIconPoint": cc.p(470, 622),
+            "lvLabelPoint": cc.p(568, 780),
+            "hpLabelPoint": cc.p(568, 700),
+            "atkLabelPoint": cc.p(568, 620),
+            "descriptionLabelBasePoint": cc.p(440, 562),
+            "descriptionLabelOffsetY": 30,
+            "skillIconPoint": cc.p(100, 392),
+            "skillNameLabelPoint": cc.p(250, 392),
+            "skillDescriptionLabelPoint": cc.p(100, 352),
+            "skillRateIconPoint": cc.p(100, 272),
+            "skillHarmIconPoint": cc.p(100, 312),
+            "skillRateLabelPoint": cc.p(240, 270),
+            "skillHarmLabelPoint": cc.p(240, 310),
+            "skillLvIconPoint": cc.p(500, 312),
+            "skillLvLabelPoint": cc.p(605, 310),
+            "tipLabelPoint": cc.p(250, 392),
+            "tipDescriptionLabelPoint": cc.p(100, 352),
+            "passiveSkillIconPoint": cc.p(100, 212),
+            "passiveSkillOffsetX": -90,
+            "passiveSkillIconPointY": 162,
+            "passiveSkillNameLabelPointY": 162,
+            "passiveSkillValueLabelPointY": 160,
+            "tipLabel2Point": cc.p(250, 212),
+            "tipDescriptionLabel2Point": cc.p(100, 172),
+            "closeItemPoint": cc.p(360, 42),
+            "menuBaseX": 360,
+            "menuBaseY": 42
         },
         "cardEvolutionLayer": {
             "cardItemBgSpritePoint": cc.p(359, 539),
@@ -93,6 +156,17 @@ var fit4Iphone4 = {
             "selectRetinueCardItemPoint": cc.p(460, 182),
             "selectLeadCardIconPoint": cc.p(360, 597),
             "leadCardHalfNodePoint": cc.p(360, 597)
+        },
+        "cardLibraryLayer": {
+            "bgSpritePoint": cc.p(40, 106),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "tipIconPoint": cc.p(360, 863),
+            "tipLabelPoint": cc.p(360, 863),
+            "scrollViewLayerRect": cc.rect(40, 106, 640, 739),
+            "scrollViewSize": cc.size(640, 739),
+            "scrollViewPoint": cc.p(40, 106),
+            "backItemPoint": cc.p(100, 920)
         },
         "cardListLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -157,6 +231,64 @@ var fit4Iphone4 = {
             "scrollViewSize": cc.size(620, 620),
             "scrollViewPoint": cc.p(40, 140)
         },
+        "lineUpDetail": {
+            "locatePoints":  {
+                1: cc.p(190, 642),
+                2: cc.p(360, 642),
+                3: cc.p(530, 642),
+                4: cc.p(190, 432),
+                5: cc.p(360, 432),
+                6: cc.p(530, 432)
+            },
+            "touchRect": {
+                1: cc.rect(123, 563, 135, 158),
+                2: cc.rect(293, 563, 135, 158),
+                3: cc.rect(463, 563, 135, 158),
+                4: cc.rect(123, 353, 135, 158),
+                5: cc.rect(293, 353, 135, 158),
+                6: cc.rect(463, 353, 135, 158)
+            },
+            "bgLayerPoint": cc.p(40, 0),
+            "bgSpritePoint": cc.p(360, 582),
+            "titleLabelPoint": cc.p(190, 830),
+            "nameLabelPoint": cc.p(220, 764),
+            "lvLabelPoint": cc.p(360, 764),
+            "abilityLabelPoint": cc.p(500, 764),
+            "closeItemPoint": cc.p(360, 262)
+        },
+        "lineUpDetailsLayer": {
+            "cardDetailsOffsetX": 40,
+            "scrollViewSize": cc.size(640, 1136),
+            "scrollViewPoint": cc.p(40, 0),
+            "turnLeftSpritePoint": cc.p(60, 392),
+            "turnRightSpritePoint": cc.p(660, 392),
+            "closeItemPoint": cc.p(360, 42)
+        },
+        "lineUpLayer": {
+            "locatePoints":  {
+                1: cc.p(190, 642),
+                2: cc.p(360, 642),
+                3: cc.p(530, 642),
+                4: cc.p(190, 432),
+                5: cc.p(360, 432),
+                6: cc.p(530, 432)
+            },
+            "touchRect": {
+                1: cc.rect(123, 563, 135, 158),
+                2: cc.rect(293, 563, 135, 158),
+                3: cc.rect(463, 563, 135, 158),
+                4: cc.rect(123, 353, 135, 158),
+                5: cc.rect(293, 353, 135, 158),
+                6: cc.rect(463, 353, 135, 158)
+            },
+            "bgLayerPoint": cc.p(40, 0),
+            "bgSpritePoint": cc.p(360, 582),
+            "titleLabelPoint": cc.p(190, 830),
+            "nameLabelPoint": cc.p(220, 764),
+            "lvLabelPoint": cc.p(360, 764),
+            "abilityLabelPoint": cc.p(500, 764),
+            "okItemPoint": cc.p(360, 262)
+        },
         "lotteryLayer": {
             "bgSpritePoint": cc.p(40, 0),
             "headIconPoint": cc.p(40, 880),
@@ -175,6 +307,16 @@ var fit4Iphone4 = {
             "energyLotteryItemBasePoint": cc.p(233, 462),
             "tipBgSpritePoint": cc.p(360, 132),
             "tipLabelPoint": cc.p(360, 132)
+        },
+        "lvRankLayer": {
+            "scrollViewLayerRect": cc.rect(54, 140, 609, 700),
+            "scrollViewSize": cc.size(609, 700),
+            "scrollViewPoint": cc.p(54, 140),
+            "labelContentSize": cc.size(216, 300),
+            "detailItemPoint": cc.p(108, 240),
+            "sendMessageItemPoint": cc.p(108, 150),
+            "addFriendItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(40, 198, 640, 768)
         },
         "mainBgLayer": {
             "messagesLabelPoint": cc.p(40, 926)
@@ -238,7 +380,8 @@ var fit4Iphone4 = {
             "scrollViewPoint": cc.p(40, 106),
             "tipLabelPoint": cc.p(40, 812),
             "topLabelPoint": cc.p(190, 846),
-            "skillPointLabelPoint": cc.p(583, 749),
+            "skillPointIconPoint": cc.p(475, 722),
+            "skillPointLabelPoint": cc.p(588, 749),
             "towerSpritePoint": cc.p(524, 138),
             "towerBgSpritePoint": cc.p(510, 132),
             "wipeOutItemPoint": cc.p(580, 846),
@@ -252,6 +395,62 @@ var fit4Iphone4 = {
             "rewardLabelBasePoint": cc.p(360, 567),
             "rewardLabelOffsetY" : 45,
             "okItem2Point": cc.p(360, 327)
+        },
+        "passRankLayer": {
+            "scrollViewLayerRect": cc.rect(54, 140, 609, 700),
+            "scrollViewSize": cc.size(609, 700),
+            "scrollViewPoint": cc.p(54, 140),
+            "labelContentSize": cc.size(216, 300),
+            "detailItemPoint": cc.p(108, 240),
+            "sendMessageItemPoint": cc.p(108, 150),
+            "addFriendItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(40, 198, 640, 768)
+        },
+        "paymentLayer": {
+            "bgSpritePoint": cc.p(360, 492),
+            "closeItemPoint": cc.p(605, 837),
+            "vipPrivilegeItemPoint": cc.p(530, 752),
+            "tipIconPoint": cc.p(260, 812),
+            "tipLabelPoint": cc.p(115, 752),
+            "scrollViewLayerRect": cc.rect(107, 172, 500, 550),
+            "scrollViewSize": cc.size(500, 550),
+            "scrollViewPoint": cc.p(108, 172)
+        },
+        "playerDetails": {
+            "bgSpritePoint": cc.p(363, 492),
+            "labelSprite1Point": cc.p(360, 707),
+            "labelSprite2Point": cc.p(360, 567),
+            "labelSprite3Point": cc.p(360, 427),
+            "labelSprite4Point": cc.p(360, 282),
+            "titleLabelPoint": cc.p(360, 812),
+            "playerLabelPoint": cc.p(280, 753),
+            "nameLabelPoint": cc.p(320, 753),
+            "vipIconPoint": cc.p(530, 753),
+            "lvIconLabelPoint": cc.p(280, 707),
+            "lvLabelPoint": cc.p(320, 707),
+            "spiritLvIconLabelPoint": cc.p(280, 661),
+            "spiritLvLabelPoint": cc.p(320, 661),
+            "moneyIconPoint": cc.p(170, 590),
+            "moneyIconLabelPoint": cc.p(280, 590),
+            "moneyLabelPoint": cc.p(320, 590),
+            "goldIconPoint": cc.p(170, 544),
+            "goldIconLabelPoint": cc.p(280, 544),
+            "goldLabelPoint": cc.p(320, 544),
+            "skillPointIconPoint": cc.p(170, 473),
+            "skillPointIconLabelPoint": cc.p(280, 473),
+            "skillPointLabelPoint": cc.p(320, 473),
+            "elixirIconPoint": cc.p(170, 427),
+            "elixirIconLabelPoint": cc.p(280, 427),
+            "elixirLabelPoint": cc.p(320, 427),
+            "energyIconPoint": cc.p(170, 381),
+            "energyIconLabelPoint": cc.p(280, 381),
+            "energyLabelPoint": cc.p(320, 381),
+            "powerIconPoint": cc.p(170, 305),
+            "powerIconLabelPoint": cc.p(280, 305),
+            "powerLabelPoint": cc.p(320, 305),
+            "tipLabelPoint": cc.p(160, 259),
+            "okItemPoint": cc.p(360, 187),
+            "closeItemPoint": cc.p(640, 842)
         },
         "playerHeaderLabel": {
             "nameLabelPoint": cc.p(130, 83),
@@ -288,6 +487,18 @@ var fit4Iphone4 = {
             "scrollViewLayerRect": cc.rect(40, 194, 640, 711),
             "scrollViewSize": cc.size(640, 680),
             "scrollViewPoint": cc.p(40, 122)
+        },
+        "rankLayer": {
+            "headIconPoint": cc.p(40, 874),
+            "bgSpritePoint": cc.p(40, 106),
+            "abilityRankLayerItemPoint": cc.p(111, 917),
+            "lvRankLayerItemPoint": cc.p(254, 917),
+            "passRankLayerItemPoint": cc.p(404, 917),
+            "tournamentRankLayerItemPoint": cc.p(554, 917),
+            "abilityRankIconPoint": cc.p(105, 912),
+            "lvRankIconPoint": cc.p(254, 912),
+            "passRankIconPoint": cc.p(404, 912),
+            "tournamentRankIconPoint": cc.p(554, 912)
         },
         "rechargeLayer": {
             "headIconPoint": cc.p(120, 697),
@@ -473,6 +684,16 @@ var fit4Iphone4 = {
             "scrollViewContentSizeWidth": 640,
             "scrollViewPoint": cc.p(50, 110)
         },
+        "tournamentRankLayer": {
+            "scrollViewLayerRect": cc.rect(54, 140, 609, 700),
+            "scrollViewSize": cc.size(609, 700),
+            "scrollViewPoint": cc.p(54, 140),
+            "labelContentSize": cc.size(216, 300),
+            "detailItemPoint": cc.p(108, 240),
+            "sendMessageItemPoint": cc.p(108, 150),
+            "addFriendItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(40, 198, 640, 768)
+        },
         "treasureHuntLayer": {
             "locatePoints": [
                 cc.p(110, 765),
@@ -526,7 +747,24 @@ var fit4Iphone4 = {
             "failLabelPoint": cc.p(360, 572),
             "tipLabelPoint": cc.p(360, 512),
             "paymentItem2Point": cc.p(260, 432),
-            "closeItemPoint": cc.p(460, 432)
+            "closeItemPoint": cc.p(460, 432),
+            "vipBoxGoodsPoints": {
+                energy: cc.p(220, 662),
+                money: cc.p(440, 662),
+                skillPoint: cc.p(220, 562),
+                elixir: cc.p(440, 562),
+                fragments: cc.p(220, 462),
+                exp_card: cc.p(440, 462)
+            }
+        },
+        "vipPrivilegeLayer": {
+            "bgSpriteContentSize": cc.size(540, 720),
+            "bgSpritePoint": cc.p(360, 492),
+            "tipLabelPoint": cc.p(200, 792),
+            "closeItemPoint": cc.p(605, 837),
+            "scrollViewLayerRect": cc.rect(40, 194, 640, 711),
+            "scrollViewSize": cc.size(500, 600),
+            "scrollViewPoint": cc.p(110, 172)
         }
     }
 };
@@ -589,21 +827,84 @@ var fit4Iphone5 = {
 
     "mainScene": {
         "abilityRankLayer": {
-            "scrollViewHeight": 800,
-            "scrollViewLayerSize": cc.rect(14, 175, 609, 800),
-            "scrollViewSize": cc.size(609, 800),
-            "scrollViewPoint": cc.p(14, 175),
-            "labelSize": cc.size(216, 300),
-            "detailItemPoint": cc.p(68, 240),
-            "sendMessageItemPoint": cc.p(68, 150),
-            "addFriendItemPoint": cc.p(68, 60),
-            "skyDialogRect": cc.rect(40, 198, 640, 768)
+            "scrollViewHeight": 700,
+            "scrollViewLayerRect": cc.rect(14, 140, 609, 876),
+            "scrollViewSize": cc.size(609, 876),
+            "scrollViewPoint": cc.p(14, 140),
+            "labelContentSize": cc.size(216, 300),
+            "detailItemPoint": cc.p(108, 240),
+            "sendMessageItemPoint": cc.p(108, 150),
+            "addFriendItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(40, 170, 640, 964)
         },
         "activityLayer": {
             "bgSpritePoint": cc.p(0, 194),
             "headSpritePoint": cc.p(640, 1136),
             "itemBasePoint": cc.p(25, 1038),
             "itemOffsetX": 107
+        },
+        "amountLayer": {
+            "bgLayerPoint": cc.p(0, 0),
+            "bgSpriteContentSize": cc.size(550, 300),
+            "bgSpritePoint": cc.p(320, 580),
+            "titleLabelPoint": cc.p(320, 690),
+            "consumeLabelIconPoint": cc.p(120, 630),
+            "consumeIconPoint": cc.p(185, 630),
+            "consumeLabelPoint": cc.p(210, 627),
+            "obtainLabelIconPoint": cc.p(360, 630),
+            "obtainLabelPoint": cc.p(440, 627),
+            "obtainIconPoint": cc.p(520, 630),
+            "countIconPoint": cc.p(320, 570),
+            "countLabelPoint": cc.p(320, 568),
+            "addItemPoint": cc.p(440, 570),
+            "addAddItemPoint": cc.p(520, 570),
+            "subItemPoint": cc.p(200, 570),
+            "subSubItemPoint": cc.p(120, 570),
+            "okItemPoint": cc.p(220, 490),
+            "closeItemPoint": cc.p(420, 490)
+        },
+        "cardDetails": {
+            "bgLayerPoint": cc.p(0, 0),
+            "headBgSpritePoint": cc.p(0, 993),
+            "cardFullNodePoint": cc.p(192, 770),
+            "line1IconPoint": cc.p(320, 510),
+            "line2IconPoint": cc.p(320, 330),
+            "line3IconPoint": cc.p(320, 200),
+            "nameLabelPoint": cc.p(320, 1020),
+            "starBasePoint": cc.p(380, 950),
+            "starOffsetX": 50,
+            "lvBgSpritePoint": cc.p(490, 870),
+            "hpBgSpritePoint": cc.p(490, 790),
+            "atkBgSpritePoint": cc.p(490, 710),
+            "lvIconPoint": cc.p(430, 870),
+            "hpIconPoint": cc.p(430, 790),
+            "atkIconPoint": cc.p(430, 710),
+            "lvLabelPoint": cc.p(528, 868),
+            "hpLabelPoint": cc.p(528, 788),
+            "atkLabelPoint": cc.p(528, 708),
+            "descriptionLabelBasePoint": cc.p(400, 650),
+            "descriptionLabelOffsetY": 30,
+            "skillIconPoint": cc.p(60, 480),
+            "skillNameLabelPoint": cc.p(210, 480),
+            "skillDescriptionLabelPoint": cc.p(60, 440),
+            "skillRateIconPoint": cc.p(60, 360),
+            "skillHarmIconPoint": cc.p(60, 400),
+            "skillRateLabelPoint": cc.p(200, 358),
+            "skillHarmLabelPoint": cc.p(200, 398),
+            "skillLvIconPoint": cc.p(460, 400),
+            "skillLvLabelPoint": cc.p(565, 398),
+            "tipLabelPoint": cc.p(210, 480),
+            "tipDescriptionLabelPoint": cc.p(60, 440),
+            "passiveSkillIconPoint": cc.p(60, 300),
+            "passiveSkillOffsetX": -130,
+            "passiveSkillIconPointY": 250,
+            "passiveSkillNameLabelPointY": 250,
+            "passiveSkillValueLabelPointY": 248,
+            "tipLabel2Point": cc.p(210, 300),
+            "tipDescriptionLabel2Point": cc.p(60, 260),
+            "closeItemPoint": cc.p(320, 130),
+            "menuBaseX": 320,
+            "menuBaseY": 130
         },
         "cardEvolutionLayer": {
             "cardItemBgSpritePoint": cc.p(319, 627),
@@ -616,6 +917,17 @@ var fit4Iphone5 = {
             "selectRetinueCardItemPoint": cc.p(420, 197),
             "selectLeadCardIconPoint": cc.p(320, 695),
             "leadCardHalfNodePoint": cc.p(320, 695)
+        },
+        "cardLibraryLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1056),
+            "titleIconPoint": cc.p(320, 1096),
+            "tipIconPoint": cc.p(320, 1039),
+            "tipLabelPoint": cc.p(320, 1039),
+            "scrollViewLayerRect": cc.rect(40, 106, 640, 915),
+            "scrollViewSize": cc.size(640, 915),
+            "scrollViewPoint": cc.p(0, 106),
+            "backItemPoint": cc.p(60, 1096)
         },
         "cardListLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -680,6 +992,64 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(620, 780),
             "scrollViewPoint": cc.p(0, 160)
         },
+        "lineUpDetail": {
+            "locatePoints":  {
+                1: cc.p(150, 730),
+                2: cc.p(320, 730),
+                3: cc.p(490, 730),
+                4: cc.p(150, 520),
+                5: cc.p(320, 520),
+                6: cc.p(490, 520)
+            },
+            "touchRect": {
+                1: cc.rect(83, 651, 135, 158),
+                2: cc.rect(253, 651, 135, 158),
+                3: cc.rect(423, 651, 135, 158),
+                4: cc.rect(83, 441, 135, 158),
+                5: cc.rect(253, 441, 135, 158),
+                6: cc.rect(423, 441, 135, 158)
+            },
+            "bgLayerPoint": cc.p(0, 0),
+            "bgSpritePoint": cc.p(320, 670),
+            "titleLabelPoint": cc.p(150, 918),
+            "nameLabelPoint": cc.p(180, 852),
+            "lvLabelPoint": cc.p(320, 852),
+            "abilityLabelPoint": cc.p(460, 852),
+            "closeItemPoint": cc.p(320, 350)
+        },
+        "lineUpDetailsLayer": {
+            "cardDetailsOffsetX": 0,
+            "scrollViewSize": cc.size(640, 1136),
+            "scrollViewPoint": cc.p(0, 0),
+            "turnLeftSpritePoint": cc.p(20, 480),
+            "turnRightSpritePoint": cc.p(620, 480),
+            "closeItemPoint": cc.p(320, 130)
+        },
+        "lineUpLayer": {
+            "locatePoints": {
+                1: cc.p(150, 730),
+                2: cc.p(320, 730),
+                3: cc.p(490, 730),
+                4: cc.p(150, 520),
+                5: cc.p(320, 520),
+                6: cc.p(490, 520)
+            },
+            "touchRect": {
+                1: cc.rect(83, 651, 135, 158),
+                2: cc.rect(253, 651, 135, 158),
+                3: cc.rect(423, 651, 135, 158),
+                4: cc.rect(83, 441, 135, 158),
+                5: cc.rect(253, 441, 135, 158),
+                6: cc.rect(423, 441, 135, 158)
+            },
+            "bgLayerPoint": cc.p(0, 0),
+            "bgSpritePoint": cc.p(320, 670),
+            "titleLabelPoint": cc.p(150, 918),
+            "nameLabelPoint": cc.p(180, 852),
+            "lvLabelPoint": cc.p(320, 852),
+            "abilityLabelPoint": cc.p(460, 852),
+            "okItemPoint": cc.p(320, 350)
+        },
         "lotteryLayer": {
             "bgSpritePoint": cc.p(0, 106),
             "headIconPoint": cc.p(0, 1056),
@@ -698,6 +1068,17 @@ var fit4Iphone5 = {
             "energyLotteryItemBasePoint": cc.p(193, 550),
             "tipBgSpritePoint": cc.p(320, 220),
             "tipLabelPoint": cc.p(320, 220)
+        },
+        "lvRankLayer": {
+            "scrollViewLayerRect": cc.rect(14, 140, 609, 876),
+            "scrollViewSize": cc.size(609, 876),
+            "scrollViewPoint": cc.p(14, 140),
+            "labelContentSize": cc.size(216, 300),
+            "detailItemPoint": cc.p(108, 240),
+            "sendMessageItemPoint": cc.p(108, 150),
+            "addFriendItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(40, 170, 640, 964)
+
         },
         "mainBgLayer": {
             "messagesLabelPoint": cc.p(0, 1102)
@@ -755,13 +1136,14 @@ var fit4Iphone5 = {
             "headIconPoint": cc.p(0, 1056),
             "titleIconPoint": cc.p(320, 1096),
             "mysticalItemPoint": cc.p(540, 610),
-            "scrollViewLayerRect": cc.rect(0, 106, 640, 848),
-            "scrollViewSize": cc.size(640, 848),
+            "scrollViewLayerRect": cc.rect(0, 106, 640, 936),
+            "scrollViewSize": cc.size(640, 936),
             "scrollViewContentSize": cc.size(640, 18700),
             "scrollViewPoint": cc.p(0, 120),
             "tipLabelPoint": cc.p(0, 988),
             "topLabelPoint": cc.p(150, 1022),
-            "skillPointLabelPoint": cc.p(543, 837),
+            "skillPointIconPoint": cc.p(435, 898),
+            "skillPointLabelPoint": cc.p(548, 925),
             "towerSpritePoint": cc.p(484, 138),
             "towerBgSpritePoint": cc.p(470, 132),
             "wipeOutItemPoint": cc.p(540, 1022),
@@ -775,6 +1157,62 @@ var fit4Iphone5 = {
             "rewardLabelBasePoint": cc.p(320, 655),
             "rewardLabelOffsetY" : 45,
             "okItem2Point": cc.p(320, 415)
+        },
+        "passRankLayer": {
+            "scrollViewLayerRect": cc.rect(14, 140, 609, 876),
+            "scrollViewSize": cc.size(609, 876),
+            "scrollViewPoint": cc.p(14, 140),
+            "labelContentSize": cc.size(216, 300),
+            "detailItemPoint": cc.p(108, 240),
+            "sendMessageItemPoint": cc.p(108, 150),
+            "addFriendItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(40, 170, 640, 964)
+        },
+        "paymentLayer": {
+            "bgSpritePoint": cc.p(320, 580),
+            "closeItemPoint": cc.p(565, 925),
+            "vipPrivilegeItemPoint": cc.p(490, 840),
+            "tipIconPoint": cc.p(220, 900),
+            "tipLabelPoint": cc.p(75, 840),
+            "scrollViewLayerRect": cc.rect(67, 260, 500, 550),
+            "scrollViewSize": cc.size(500, 550),
+            "scrollViewPoint": cc.p(68, 260)
+        },
+        "playerDetails": {
+            "bgSpritePoint": cc.p(323, 580),
+            "labelSprite1Point": cc.p(320, 795),
+            "labelSprite2Point": cc.p(320, 655),
+            "labelSprite3Point": cc.p(320, 515),
+            "labelSprite4Point": cc.p(320, 370),
+            "titleLabelPoint": cc.p(320, 900),
+            "playerLabelPoint": cc.p(240, 841),
+            "nameLabelPoint": cc.p(280, 841),
+            "vipIconPoint": cc.p(490, 841),
+            "lvIconLabelPoint": cc.p(240, 795),
+            "lvLabelPoint": cc.p(280, 795),
+            "spiritLvIconLabelPoint": cc.p(240, 749),
+            "spiritLvLabelPoint": cc.p(280, 749),
+            "moneyIconPoint": cc.p(130, 678),
+            "moneyIconLabelPoint": cc.p(240, 678),
+            "moneyLabelPoint": cc.p(280, 678),
+            "goldIconPoint": cc.p(130, 632),
+            "goldIconLabelPoint": cc.p(240, 632),
+            "goldLabelPoint": cc.p(280, 632),
+            "skillPointIconPoint": cc.p(130, 561),
+            "skillPointIconLabelPoint": cc.p(240, 561),
+            "skillPointLabelPoint": cc.p(280, 561),
+            "elixirIconPoint": cc.p(130, 515),
+            "elixirIconLabelPoint": cc.p(240, 515),
+            "elixirLabelPoint": cc.p(280, 515),
+            "energyIconPoint": cc.p(130, 469),
+            "energyIconLabelPoint": cc.p(240, 469),
+            "energyLabelPoint": cc.p(280, 469),
+            "powerIconPoint": cc.p(130, 393),
+            "powerIconLabelPoint": cc.p(240, 393),
+            "powerLabelPoint": cc.p(280, 393),
+            "tipLabelPoint": cc.p(120, 347),
+            "okItemPoint": cc.p(320, 275),
+            "closeItemPoint": cc.p(600, 930)
         },
         "playerHeaderLabel": {
             "nameLabelPoint": cc.p(130, 83),
@@ -811,6 +1249,18 @@ var fit4Iphone5 = {
             "scrollViewLayerRect": cc.rect(40, 106, 640, 843),
             "scrollViewSize": cc.size(640, 822),
             "scrollViewPoint": cc.p(0, 144)
+        },
+        "rankLayer": {
+            "headIconPoint": cc.p(0, 1050),
+            "bgSpritePoint": cc.p(0, 106),
+            "abilityRankLayerItemPoint": cc.p(71, 1093),
+            "lvRankLayerItemPoint": cc.p(214, 1093),
+            "passRankLayerItemPoint": cc.p(364, 1093),
+            "tournamentRankLayerItemPoint": cc.p(514, 1093),
+            "abilityRankIconPoint": cc.p(65, 1088),
+            "lvRankIconPoint": cc.p(214, 1088),
+            "passRankIconPoint": cc.p(364, 1088),
+            "tournamentRankIconPoint": cc.p(514, 1088)
         },
         "rechargeLayer": {
             "headIconPoint": cc.p(80, 785),
@@ -996,6 +1446,16 @@ var fit4Iphone5 = {
             "scrollViewContentSizeWidth": 640,
             "scrollViewPoint": cc.p(10, 154)
         },
+        "tournamentRankLayer": {
+            "scrollViewLayerRect": cc.rect(14, 140, 609, 876),
+            "scrollViewSize": cc.size(609, 876),
+            "scrollViewPoint": cc.p(14, 140),
+            "labelContentSize": cc.size(216, 300),
+            "detailItemPoint": cc.p(108, 240),
+            "sendMessageItemPoint": cc.p(108, 150),
+            "addFriendItemPoint": cc.p(108, 60),
+            "skyDialogRect": cc.rect(40, 170, 640, 964)
+        },
         "treasureHuntLayer": {
             "locatePoints": [
                 cc.p(70, 895),
@@ -1049,7 +1509,24 @@ var fit4Iphone5 = {
             "failLabelPoint": cc.p(320, 660),
             "tipLabelPoint": cc.p(320, 600),
             "paymentItem2Point": cc.p(220, 520),
-            "closeItemPoint": cc.p(420, 520)
+            "closeItemPoint": cc.p(420, 520),
+            "vipBoxGoodsPoints": {
+                energy: cc.p(180, 750),
+                money: cc.p(400, 750),
+                skillPoint: cc.p(180, 650),
+                elixir: cc.p(400, 650),
+                fragments: cc.p(180, 550),
+                exp_card: cc.p(400, 550)
+            }
+        },
+        "vipPrivilegeLayer": {
+            "bgSpriteContentSize": cc.size(540, 720),
+            "bgSpritePoint": cc.p(320, 580),
+            "tipLabelPoint": cc.p(160, 880),
+            "closeItemPoint": cc.p(565, 925),
+            "scrollViewLayerRect": cc.rect(0, 194, 640, 711),
+            "scrollViewSize": cc.size(500, 600),
+            "scrollViewPoint": cc.p(70, 260)
         }
     }
 };

@@ -13,6 +13,8 @@
 
 
 var TournamentRankLayer = cc.Layer.extend({
+    _tournamentRankLayerFit: null,
+
     _skyDialog: null,
     _tournamentRankList: null,
     _selectId: 0,
@@ -23,6 +25,8 @@ var TournamentRankLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._tournamentRankLayerFit = gameFit.mainScene.tournamentRankLayer;
+
         this._tournamentRankList = gameData.rank.get("tournamentRankList");
         var len = this._tournamentRankList.length;
 
@@ -31,7 +35,7 @@ var TournamentRankLayer = cc.Layer.extend({
             scrollViewHeight = 700;
         }
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(54, 228, 609, 700));
+        var scrollViewLayer = MarkLayer.create(this._tournamentRankLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
@@ -111,8 +115,8 @@ var TournamentRankLayer = cc.Layer.extend({
             scrollViewLayer.addChild(lvLabel);
         }
 
-        var scrollView = cc.ScrollView.create(cc.size(609, 700), scrollViewLayer);
-        scrollView.setPosition(cc.p(54, 228));
+        var scrollView = cc.ScrollView.create(this._tournamentRankLayerFit.scrollViewSize, scrollViewLayer);
+        scrollView.setPosition(this._tournamentRankLayerFit.scrollViewPoint);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();
         this.addChild(scrollView);
@@ -124,7 +128,7 @@ var TournamentRankLayer = cc.Layer.extend({
         this.addChild(this._skyDialog, 10);
 
         var label = cc.Scale9Sprite.create(main_scene_image.bg16);
-        label.setContentSize(cc.size(216, 300));
+        label.setContentSize(this._tournamentRankLayerFit.labelContentSize);
 
         var detailItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -133,7 +137,7 @@ var TournamentRankLayer = cc.Layer.extend({
             this._onClickDetail,
             this
         );
-        detailItem.setPosition(cc.p(108, 240));
+        detailItem.setPosition(this._tournamentRankLayerFit.detailItemPoint);
 
         var sendMessageItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -142,7 +146,7 @@ var TournamentRankLayer = cc.Layer.extend({
             this._onClickSendMessage,
             this
         );
-        sendMessageItem.setPosition(cc.p(108, 150));
+        sendMessageItem.setPosition(this._tournamentRankLayerFit.sendMessageItemPoint);
 
         var addFriendItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -151,14 +155,14 @@ var TournamentRankLayer = cc.Layer.extend({
             this._onClickAddFriend,
             this
         );
-        addFriendItem.setPosition(cc.p(108, 60));
+        addFriendItem.setPosition(this._tournamentRankLayerFit.addFriendItemPoint);
 
         var menu = cc.Menu.create(detailItem, sendMessageItem, addFriendItem);
         menu.setPosition(cc.p(0, 0));
         label.addChild(menu);
 
         this._skyDialog.setLabel(label);
-        this._skyDialog.setRect(cc.rect(40, 198, 640, 768));
+        this._skyDialog.setRect(this._tournamentRankLayerFit.skyDialogRect);
 
         return true;
     },

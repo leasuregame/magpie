@@ -51,7 +51,7 @@ var PassLayer = cc.Layer.extend({
         var bgSprite = cc.Sprite.create(main_scene_image.bg5);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._passLayerFit.bgSpritePoint);
-       // this.addChild(bgSprite);
+        this.addChild(bgSprite);
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
@@ -162,6 +162,11 @@ var PassLayer = cc.Layer.extend({
         tipLabel.setAnchorPoint(cc.p(0, 0));
         tipLabel.setPosition(this._passLayerFit.tipLabelPoint);
         this.addChild(tipLabel, 1);
+
+        var skillPointIcon = cc.Sprite.create(main_scene_image.icon282);
+        skillPointIcon.setAnchorPoint(cc.p(0, 0.5));
+        skillPointIcon.setPosition(this._passLayerFit.skillPointIconPoint);
+        this.addChild(skillPointIcon);
 
         this._topLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
         this._topLabel.setAnchorPoint(cc.p(0, 0.5));

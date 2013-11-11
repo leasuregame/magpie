@@ -4,13 +4,12 @@
  * MIT Licensed
  */
 var logger = require('pomelo-logger').getLogger(__filename);
-var utils = require('../util/utils');
 
 module.exports = function(opts) {
 	return new Module(opts);
 };
 
-module.exports.moduleId = 'sceneInfo';
+module.exports.moduleId = 'areaInfo';
 
 var Module = function(opts) {
 	opts = opts || {};
@@ -22,7 +21,7 @@ Module.prototype.monitorHandler = function(agent, msg, cb) {
 	//collect data
 	var serverId = agent.id;
 	var area = require('../domain/area/area');
-	var data = area.getAllPlayers();
+	var data = area.getPlayers();
 	agent.notify(module.exports.moduleId, {serverId: serverId, body: data});
 };
 
@@ -46,5 +45,7 @@ Module.prototype.masterHandler = function(agent, msg, cb) {
 };
 
 Module.prototype.clientHandler = function(agent, msg, cb) {
-	utils.invokeCallback(cb, null, agent.get(module.exports.moduleId));
+	if(!!cb && typeof cb === 'function') {
+		cb(agent, msg);
+	}
 };

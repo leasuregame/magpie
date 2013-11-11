@@ -56,4 +56,4 @@ make build
 ./node_modules/.bin/pomelo start production --daemon
 cd ../gm && make runserver2 && cd ../game-server
 
-cat ./logs/node-log-area-server-1.log
+tail ./logs/node-log-area-server-1.log

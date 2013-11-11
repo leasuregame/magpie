@@ -4,7 +4,6 @@
  * MIT Licensed
  */
 var logger = require('pomelo-logger').getLogger(__filename);
-var utils = require('../util/utils');
 
 module.exports = function(opts) {
 	return new Module(opts);
@@ -49,5 +48,7 @@ Module.prototype.masterHandler = function(agent, msg) {
 };
 
 Module.prototype.clientHandler = function(agent, msg, cb) {
-	utils.invokeCallback(cb, null, agent.get(module.exports.moduleId));
+	if(!!cb && typeof cb === 'function') {
+		cb(agent, msg);
+	}
 };

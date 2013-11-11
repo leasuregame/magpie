@@ -13,13 +13,41 @@
 
 
 var LoginScene = cc.Scene.extend({
-    onEnter: function () {
-        cc.log("LoginScene onEnter");
+    _nowLayer: null,
 
-        this._super();
+    init: function() {
+        cc.log("LoginScene init");
 
-        var loginLayer = LoginLayer.create();
-        this.addChild(loginLayer);
+        if(!this._super()) return false;
+
+        this.switchLayer(LoginLayer);
+
+        return true;
+    },
+
+    switchLayer: function (runLayer) {
+        cc.log("LoginScene switchLayer");
+
+        if (runLayer.canEnter && !runLayer.canEnter()) {
+            return;
+        }
+
+        cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
+
+        if (!(this._nowLayer instanceof runLayer)) {
+            this.switch(runLayer.create());
+        }
+    },
+
+    switch: function (layerObject) {
+        cc.log("LoginScene switch");
+
+        if (this._nowLayer != null) {
+            this.removeChild(this._nowLayer);
+        }
+
+        this._nowLayer = layerObject;
+        this.addChild(this._nowLayer);
     }
 });
 
@@ -27,7 +55,7 @@ var LoginScene = cc.Scene.extend({
 LoginScene.create = function () {
     var ret = new LoginScene();
 
-    if (ret) {
+    if (ret && ret.init()) {
         return ret;
     }
 

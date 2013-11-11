@@ -56,12 +56,12 @@ var PaymentLayer = LazyLayer.extend({
         var vip = gameData.player.get("vip");
         cc.log(nextVipCash);
         if (nextVipCash) {
-           /* var tipLabel = cc.LabelTTF.create(
-                "您是VIP" + vip + "再冲" + nextVipCash + "元即可享受VIP" + (vip + 1),
-                "STHeitiTC-Medium",
-                20
-            );
-           */
+            /* var tipLabel = cc.LabelTTF.create(
+             "您是VIP" + vip + "再冲" + nextVipCash + "元即可享受VIP" + (vip + 1),
+             "STHeitiTC-Medium",
+             20
+             );
+             */
 
             var tipLabel = ColorLabelTTF.create(
                 {

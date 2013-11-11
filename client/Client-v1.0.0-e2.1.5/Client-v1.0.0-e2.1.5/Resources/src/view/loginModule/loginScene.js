@@ -15,7 +15,7 @@
 var LoginScene = cc.Scene.extend({
     _nowLayer: null,
 
-    onEnter: function() {
+    onEnter: function () {
         cc.log("Login onEnter");
 
         this._super();

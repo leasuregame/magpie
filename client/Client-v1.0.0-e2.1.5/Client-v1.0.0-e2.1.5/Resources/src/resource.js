@@ -635,8 +635,9 @@ var main_scene_image = {
     hand: "res/effect/NewPlayer/hand.png",
     light: "res/effect/NewPlayer/light.png",
     talking: "res/effect/NewPlayer/talking.png",
-    yuanshen: "res/effect/NewPlayer/yuanshen.png"
+    yuanshen: "res/effect/NewPlayer/yuanshen.png",
 
+    battle_bg_music: "res/sound/battle_bg_music.mp3"
 };
 
 var main_scene_res = [

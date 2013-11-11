@@ -29,7 +29,7 @@ var EvolutionLayer = cc.Layer.extend({
         var bgSprite = cc.Sprite.create(main_scene_image.bg1);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._evolutionLayerFit.bgSpritePoint);
-        //this.addChild(bgSprite, -1);
+        this.addChild(bgSprite, -1);
 
         var playerHeaderLabel = PlayerHeaderLabel.create();
         playerHeaderLabel.setPosition(this._evolutionLayerFit.playerHeaderLabelPoint);

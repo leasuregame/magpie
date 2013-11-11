@@ -555,6 +555,8 @@ var main_scene_image = {
     icon282: main_scene_path + "icon282.png",
     icon283: main_scene_path + "icon283.png",
     icon284: main_scene_path + "icon284.png",
+    icon285: main_scene_path + "icon285.png",
+    icon286: main_scene_path + "icon286.png",
 
     // 特效
     battleNode: "res/ccb/battleNode.ccbi",

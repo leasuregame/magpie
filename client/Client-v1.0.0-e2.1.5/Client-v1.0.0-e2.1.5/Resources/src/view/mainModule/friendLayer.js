@@ -13,6 +13,8 @@
 
 
 var FriendLayer = cc.Layer.extend({
+    _friendLayerFit: null,
+
     _selectFriend: 0,
     _giveCountLabel: null,
     _receiveCountLabel: null,
@@ -36,22 +38,24 @@ var FriendLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._friendLayerFit = gameFit.mainScene.friendLayer;
+
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
+        bgSprite.setPosition(this._friendLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 968));
+        headIcon.setPosition(this._friendLayerFit.headIconPoint);
         this.addChild(headIcon);
 
         var titleIcon = cc.Sprite.create(main_scene_image.icon118);
-        titleIcon.setPosition(cc.p(360, 1008));
+        titleIcon.setPosition(this._friendLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
         var lineIcon = cc.Sprite.create(main_scene_image.icon18);
-        lineIcon.setPosition(cc.p(360, 887));
+        lineIcon.setPosition(this._friendLayerFit.lineIconPoint);
         this.addChild(lineIcon);
 
         var backItem = cc.MenuItemImage.create(
@@ -60,27 +64,27 @@ var FriendLayer = cc.Layer.extend({
             this._onClickBack,
             this
         );
-        backItem.setPosition(cc.p(100, 1008));
+        backItem.setPosition(this._friendLayerFit.backItemPoint);
         var menu = cc.Menu.create(backItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
         var giveCountIcon = cc.LabelTTF.create("今日可送祝福:", "STHeitiTC-Medium", 20);
         giveCountIcon.setColor(cc.c3b(255, 239, 131));
-        giveCountIcon.setPosition(cc.p(130, 946));
+        giveCountIcon.setPosition(this._friendLayerFit.giveCountIconPoint);
         this.addChild(giveCountIcon);
 
         var receiveCountIcon = cc.LabelTTF.create("今日可领祝福:", "STHeitiTC-Medium", 20);
         receiveCountIcon.setColor(cc.c3b(255, 239, 131));
-        receiveCountIcon.setPosition(cc.p(130, 912));
+        receiveCountIcon.setPosition(this._friendLayerFit.receiveCountIconPoint);
         this.addChild(receiveCountIcon);
 
         this._giveCountLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
-        this._giveCountLabel.setPosition(cc.p(215, 944));
+        this._giveCountLabel.setPosition(this._friendLayerFit.giveCountLabelPoint);
         this.addChild(this._giveCountLabel);
 
         this._receiveCountLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
-        this._receiveCountLabel.setPosition(cc.p(215, 910));
+        this._receiveCountLabel.setPosition(this._friendLayerFit.receiveCountLabelPoint);
         this.addChild(this._receiveCountLabel);
 
         var addFriendItem = cc.MenuItemImage.createWithIcon(
@@ -91,31 +95,31 @@ var FriendLayer = cc.Layer.extend({
             this._onClickAddFriend,
             this
         );
-        addFriendItem.setPosition(cc.p(600, 929));
+        addFriendItem.setPosition(this._friendLayerFit.addFriendItemPoint);
 
         var menu = cc.Menu.create(addFriendItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
         var friendCountIcon = cc.Sprite.create(main_scene_image.icon117);
-        friendCountIcon.setPosition(cc.p(565, 227));
+        friendCountIcon.setPosition(this._friendLayerFit.friendCountIconPoint);
         this.addChild(friendCountIcon);
 
         var slashIcon = cc.LabelTTF.create("/", "STHeitiTC-Medium", 22);
         slashIcon.setColor(cc.c3b(255, 239, 131));
-        slashIcon.setPosition(cc.p(565, 225));
+        slashIcon.setPosition(this._friendLayerFit.slashIconPoint);
         this.addChild(slashIcon);
 
         this._friendCountLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._friendCountLabel.setColor(cc.c3b(255, 239, 131));
         this._friendCountLabel.setAnchorPoint(cc.p(1, 0.5));
-        this._friendCountLabel.setPosition(cc.p(550, 225));
+        this._friendCountLabel.setPosition(this._friendLayerFit.friendCountLabelPoint);
         this.addChild(this._friendCountLabel);
 
         this._maxFriendCountLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
         this._maxFriendCountLabel.setColor(cc.c3b(255, 239, 131));
         this._maxFriendCountLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._maxFriendCountLabel.setPosition(cc.p(580, 225));
+        this._maxFriendCountLabel.setPosition(this._friendLayerFit.maxFriendCountLabelPoint);
         this.addChild(this._maxFriendCountLabel);
 
         this._addAddFriendLayer();
@@ -124,7 +128,7 @@ var FriendLayer = cc.Layer.extend({
         this.addChild(this._skyDialog, 10);
 
         var label = cc.Scale9Sprite.create(main_scene_image.bg16);
-        label.setContentSize(cc.size(216, 390));
+        label.setContentSize(this._friendLayerFit.labelContentSize);
 
         var detailItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -133,7 +137,7 @@ var FriendLayer = cc.Layer.extend({
             this._onClickDetail,
             this
         );
-        detailItem.setPosition(cc.p(108, 330));
+        detailItem.setPosition(this._friendLayerFit.detailItemPoint);
 
         var sendMessageItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -142,7 +146,7 @@ var FriendLayer = cc.Layer.extend({
             this._onClickSendMessage,
             this
         );
-        sendMessageItem.setPosition(cc.p(108, 240));
+        sendMessageItem.setPosition(this._friendLayerFit.sendMessageItemPoint);
 
         var battleItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -151,7 +155,7 @@ var FriendLayer = cc.Layer.extend({
             this._onClickFight,
             this
         );
-        battleItem.setPosition(cc.p(108, 150));
+        battleItem.setPosition(this._friendLayerFit.battleItemPoint);
 
         var deleteFriendItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -160,14 +164,14 @@ var FriendLayer = cc.Layer.extend({
             this._onClickDeleteFriend,
             this
         );
-        deleteFriendItem.setPosition(cc.p(108, 60));
+        deleteFriendItem.setPosition(this._friendLayerFit.deleteFriendItemPoint);
 
         var skyDialogMenu = cc.Menu.create(detailItem, sendMessageItem, battleItem, deleteFriendItem);
         skyDialogMenu.setPosition(cc.p(0, 0));
         label.addChild(skyDialogMenu);
 
         this._skyDialog.setLabel(label);
-        this._skyDialog.setRect(cc.rect(40, 198, 640, 700));
+        this._skyDialog.setRect(this._friendLayerFit.skyDialogRect);
 
         return true;
     },
@@ -178,16 +182,16 @@ var FriendLayer = cc.Layer.extend({
         this._addFriendLayer = LazyLayer.create();
 
         var functionLabel = cc.Sprite.create(main_scene_image.bg16);
-        functionLabel.setPosition(cc.p(360, 600));
+        functionLabel.setPosition(this._friendLayerFit.functionLabelPoint);
         this._addFriendLayer.addChild(functionLabel);
 
         var tipLabel = cc.LabelTTF.create("请输入玩家名字", "STHeitiTC-Medium", 26);
         tipLabel.setColor(cc.c3b(255, 239, 131));
-        tipLabel.setPosition(cc.p(360, 670));
+        tipLabel.setPosition(this._friendLayerFit.tipLabelPoint);
         this._addFriendLayer.addChild(tipLabel);
 
-        this._nameEditBox = cc.EditBox.create(cc.size(305, 49), cc.Scale9Sprite.create(main_scene_image.edit3));
-        this._nameEditBox.setPosition(cc.p(360, 600));
+        this._nameEditBox = cc.EditBox.create(this._friendLayerFit.nameEditBoxSize, cc.Scale9Sprite.create(main_scene_image.edit3));
+        this._nameEditBox.setPosition(this._friendLayerFit.nameEditBoxPoint);
         this._nameEditBox.setDelegate(this);
         this._nameEditBox.setFont("STHeitiTC-Medium", 35);
         this._nameEditBox.setMaxLength(18);
@@ -199,7 +203,7 @@ var FriendLayer = cc.Layer.extend({
             this._onClickOk,
             this
         );
-        okItem.setPosition(cc.p(260, 530));
+        okItem.setPosition(this._friendLayerFit.okPoint);
 
         var cancelItem = cc.MenuItemImage.create(
             main_scene_image.button9,
@@ -207,7 +211,7 @@ var FriendLayer = cc.Layer.extend({
             this._onClickCancel,
             this
         );
-        cancelItem.setPosition(cc.p(460, 530));
+        cancelItem.setPosition(this._friendLayerFit.cancelPoint);
 
         var menu = cc.Menu.create(
             okItem,
@@ -217,11 +221,11 @@ var FriendLayer = cc.Layer.extend({
         this._addFriendLayer.addChild(menu);
 
         var okIcon = cc.Sprite.create(main_scene_image.icon21);
-        okIcon.setPosition(cc.p(260, 530));
+        okIcon.setPosition(this._friendLayerFit.okPoint);
         this._addFriendLayer.addChild(okIcon);
 
         var cancelIcon = cc.Sprite.create(main_scene_image.icon72);
-        cancelIcon.setPosition(cc.p(460, 530));
+        cancelIcon.setPosition(this._friendLayerFit.cancelPoint);
         this._addFriendLayer.addChild(cancelIcon);
 
         this.addChild(this._addFriendLayer, 1);
@@ -250,7 +254,7 @@ var FriendLayer = cc.Layer.extend({
         this._friendCountLabel.setString(len);
         this._maxFriendCountLabel.setString(friend.get("maxFriendCount"));
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 733));
+        var scrollViewLayer = MarkLayer.create(this._friendLayerFit.scrollViewLayerRect);
 
         var friendMenu = LazyMenu.create();
         friendMenu.setPosition(cc.p(0, 0));
@@ -341,8 +345,8 @@ var FriendLayer = cc.Layer.extend({
             }
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(591, 620), scrollViewLayer);
-        this._scrollView.setPosition(cc.p(65, 260));
+        this._scrollView = cc.ScrollView.create(this._friendLayerFit.scrollViewSize, scrollViewLayer);
+        this._scrollView.setPosition(this._friendLayerFit.scrollViewPoint);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);

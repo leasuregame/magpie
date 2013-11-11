@@ -13,6 +13,8 @@
 
 
 var ConfigLayer = cc.Layer.extend({
+    _configLayerFit: null,
+
     musicOpen: true,
     soundOpen: true,
     musicSelect: null,
@@ -23,18 +25,20 @@ var ConfigLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._configLayerFit = gameFit.mainScene.configLayer;
+
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
+        bgSprite.setPosition(this._configLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 968));
+        headIcon.setPosition(this._configLayerFit.headIconPoint);
         this.addChild(headIcon);
 
         var titleIcon = cc.Sprite.create(main_scene_image.icon260);
-        titleIcon.setPosition(cc.p(360, 1008));
+        titleIcon.setPosition(this._configLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
         var backItem = cc.MenuItemImage.create(
@@ -43,7 +47,7 @@ var ConfigLayer = cc.Layer.extend({
             this._onClickBack,
             this
         );
-        backItem.setPosition(cc.p(100, 1008));
+        backItem.setPosition(this._configLayerFit.backItemPoint);
         var menu = cc.Menu.create(backItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
@@ -56,7 +60,7 @@ var ConfigLayer = cc.Layer.extend({
         );
 
         bgMusicItem.setAnchorPoint(cc.p(0, 0));
-        bgMusicItem.setPosition(cc.p(55, 850));
+        bgMusicItem.setPosition(this._configLayerFit.bgMusicItemPoint);
 
         var bgMusicItemTitle = StrokeLabel.create('背景音乐', "STHeitiTC-Medium", 30);
         //bgMusicItemTitle.setColor(cc.c3b(255, 239, 131));
@@ -90,7 +94,7 @@ var ConfigLayer = cc.Layer.extend({
 
         );
         soundItem.setAnchorPoint(cc.p(0, 0));
-        soundItem.setPosition(cc.p(55, 730));
+        soundItem.setPosition(this._configLayerFit.soundItemPoint);
 
         var soundItemTitle = StrokeLabel.create('游戏音效', "STHeitiTC-Medium", 30);
         //soundItemTitle.setColor(cc.c3b(255, 239, 131));
@@ -123,7 +127,7 @@ var ConfigLayer = cc.Layer.extend({
             this
         );
         tipsItem.setAnchorPoint(cc.p(0, 0));
-        tipsItem.setPosition(cc.p(55, 610));
+        tipsItem.setPosition(this._configLayerFit.tipsItemPoint);
 
         var tipsItemTitle = StrokeLabel.create('攻略', "STHeitiTC-Medium", 30);
         //tipsItemTitle.setColor(cc.c3b(255, 239, 131));
@@ -143,7 +147,7 @@ var ConfigLayer = cc.Layer.extend({
             this
         );
         QQGroup.setAnchorPoint(cc.p(0, 0));
-        QQGroup.setPosition(cc.p(55, 490));
+        QQGroup.setPosition(this._configLayerFit.QQGroupPoint);
 
         var QQGroupTitle = StrokeLabel.create('Q群： xxxxxxx', "STHeitiTC-Medium", 30);
         //feedbackItemTitle.setColor(cc.c3b(255, 239, 131));

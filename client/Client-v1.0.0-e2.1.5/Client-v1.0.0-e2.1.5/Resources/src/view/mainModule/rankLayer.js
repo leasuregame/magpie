@@ -28,15 +28,15 @@ var RankLayer = cc.Layer.extend({
 
         this._rankLayerFit = gameFit.mainScene.rankLayer;
 
-        var headIcon = cc.Sprite.create(main_scene_image.icon1);
-        headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(this._rankLayerFit.headIconPoint);
-        this.addChild(headIcon);
-
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._rankLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
+
+        var headIcon = cc.Sprite.create(main_scene_image.icon1);
+        headIcon.setAnchorPoint(cc.p(0, 0));
+        headIcon.setPosition(this._rankLayerFit.headIconPoint);
+        this.addChild(headIcon);
 
         this._abilityRankLayerItem = cc.MenuItemImage.create(
             main_scene_image.button22,

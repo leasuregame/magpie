@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "private": false,
     "dependencies": {
-        "pomelo": "0.5.5",
+        "pomelo": "0.7.1",
         "mysql": ">=2.0",
         "mysql-queues": "*",
         "generic-pool": ">=1.0.9",
@@ -16,8 +16,9 @@
         "async": ">=0.0.1",
         "pomelo-pathfinding": ">=0.1.0",
         "pomelo-collection": ">=0.1.0",
-        "pomelo-logger": "0.0.3",
-        "pomelo-monitor": ">=0.3.3"
+        "pomelo-logger": ">=0.0.3",
+        "pomelo-monitor": ">=0.3.3",
+        "pomelo-sync-plugin": "*"
     },
     "devDependencies": {
         "underscore": "1.4.4",

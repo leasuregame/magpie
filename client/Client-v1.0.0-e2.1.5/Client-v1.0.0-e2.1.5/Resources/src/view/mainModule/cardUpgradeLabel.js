@@ -441,7 +441,7 @@ var CardUpgradeLabel = cc.Layer.extend({
                 loops: 1,
                 delay: 0.1,
                 zOrder: 10,
-                position: cc.p(275, 475),
+                position: that._cardUpgradeLabelFit.effectPoint,
                 clear: true
             });
         }, cardIdList);

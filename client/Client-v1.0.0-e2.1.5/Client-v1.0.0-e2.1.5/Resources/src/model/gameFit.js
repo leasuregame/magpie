@@ -122,8 +122,8 @@ var fit4Iphone4 = {
             "addAddItemPoint": cc.p(560, 482),
             "subItemPoint": cc.p(240, 482),
             "subSubItemPoint": cc.p(160, 482),
-            "okItemPoint": cc.p(260, 102),
-            "closeItemPoint": cc.p(460, 102)
+            "okItemPoint": cc.p(260, 402),
+            "closeItemPoint": cc.p(460, 402)
         },
         "battleMessageLayer": {
             "scrollViewLayerRect": cc.rect(57, 119, 605, 742),
@@ -176,7 +176,7 @@ var fit4Iphone4 = {
         "cardEvolutionLayer": {
             "cardItemBgSpritePoint": cc.p(359, 539),
             "helpBgSpritePoint": cc.p(360, 292),
-            "resLabelPoint": cc.p(360, 482),
+            "resLabelPoint": cc.p(360, 422),
             "tipLabelPoint": cc.p(360, 292),
             "helpLabelPoint": cc.p(360, 292),
             "selectLeadCardItemPoint": cc.p(360, 597),
@@ -241,7 +241,8 @@ var fit4Iphone4 = {
             "upgradeItemPoint": cc.p(260, 182),
             "selectRetinueCardItemPoint": cc.p(460, 182),
             "selectLeadCardIconPoint": cc.p(360, 597),
-            "leadCardHalfNodePoint": cc.p(360, 597)
+            "leadCardHalfNodePoint": cc.p(360, 597),
+            "effectPoint": cc.p(275, 397)
         },
         "configLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -262,6 +263,22 @@ var fit4Iphone4 = {
             "cardEvolutionItemOffset": cc.p(-7, -2),
             "cardTrainItemPoint": cc.p(254, 756),
             "cardTrainItemOffset": cc.p(0, -2)
+        },
+        "exchangeLayer": {
+            "bgSpritePoint": cc.p(40, 0),
+            "headIconPoint": cc.p(40, 880),
+            "titleIconPoint": cc.p(360, 920),
+            "headLabelPoint": cc.p(360, 850),
+            "fragmentIconPoint": cc.p(570, 850),
+            "fragmentLabelPoint": cc.p(600, 850),
+            "selectStar5ItemPoint": cc.p(130, 850),
+            "selectStar4ItemPoint": cc.p(300, 850),
+            "backItemPoint": cc.p(100, 920),
+            "tipIconPoint": cc.p(360, 122),
+            "tipLabelPoint": cc.p(360, 122),
+            "scrollViewLayerRect": cc.rect(40, 142, 640, 680),
+            "scrollViewSize": cc.size(640, 680),
+            "scrollViewPoint": cc.p(40, 142)
         },
         "exploreLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -405,8 +422,8 @@ var fit4Iphone4 = {
             "exchangeItemPoint": cc.p(600, 850),
             "goldLotteryItemBasePoint": cc.p(233, 382),
             "energyLotteryItemBasePoint": cc.p(233, 462),
-            "tipBgSpritePoint": cc.p(360, 132),
-            "tipLabelPoint": cc.p(360, 132)
+            "tipBgSpritePoint": cc.p(360, 172),
+            "tipLabelPoint": cc.p(360, 172)
         },
         "lvRankLayer": {
             "scrollViewLayerRect": cc.rect(54, 140, 609, 700),
@@ -1133,8 +1150,8 @@ var fit4Iphone5 = {
             "scrollViewSize": cc.size(594, 752),
             "scrollViewPoint": cc.p(27, 200),
             "sortItemPoint": cc.p(90, 152),
-            "onSelectAllLowItemPoint": cc.p(260, 230),
-            "selectAllLowHookIconPoint": cc.p(195, 230),
+            "onSelectAllLowItemPoint": cc.p(260, 152),
+            "selectAllLowHookIconPoint": cc.p(195, 152),
             "titleLabelPoint": cc.p(320, 1096),
             "lineUpItemPoint": cc.p(80, 1014),
             "sellItemPoint": cc.p(560, 1014),
@@ -1170,7 +1187,8 @@ var fit4Iphone5 = {
             "upgradeItemPoint": cc.p(220, 197),
             "selectRetinueCardItemPoint": cc.p(420, 197),
             "selectLeadCardIconPoint": cc.p(320, 695),
-            "leadCardHalfNodePoint": cc.p(320, 695)
+            "leadCardHalfNodePoint": cc.p(320, 695),
+            "effectPoint": cc.p(235, 417)
         },
         "configLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -1191,6 +1209,22 @@ var fit4Iphone5 = {
             "cardEvolutionItemOffset": cc.p(-7, -2),
             "cardTrainItemPoint": cc.p(214, 897),
             "cardTrainItemOffset": cc.p(0, -2)
+        },
+        "exchangeLayer": {
+            "bgSpritePoint": cc.p(0, 106),
+            "headIconPoint": cc.p(0, 1056),
+            "titleIconPoint": cc.p(320, 1096),
+            "headLabelPoint": cc.p(320, 1026),
+            "fragmentIconPoint": cc.p(530, 1026),
+            "fragmentLabelPoint": cc.p(460, 1026),
+            "selectStar5ItemPoint": cc.p(90, 1026),
+            "selectStar4ItemPoint": cc.p(260, 1026),
+            "backItemPoint": cc.p(60, 1096),
+            "tipIconPoint": cc.p(320, 122),
+            "tipLabelPoint": cc.p(320, 122),
+            "scrollViewLayerRect": cc.rect(0, 162, 640, 822),
+            "scrollViewSize": cc.size(640, 822),
+            "scrollViewPoint": cc.p(0, 162)
         },
         "exploreLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -1604,7 +1638,7 @@ var fit4Iphone5 = {
             "upgradeItemPoint": cc.p(320, 197),
             "selectLeadCardIconPoint": cc.p(320, 695),
             "leadCardHalfNodePoint": cc.p(320, 695),
-            "effectPoint": cc.p(320, 510)
+            "effectPoint": cc.p(320, 445)
 
         },
         "spiritDetails": {

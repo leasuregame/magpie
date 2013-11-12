@@ -11,50 +11,34 @@
  * battle layer
  * */
 
-
 var BatterLayer = cc.Layer.extend({
+    _batterLayerFit: null,
+
     _index: 0,
     _isEnd: false,
     _counter: 0,
     _battleLog: null,
-    _battleNode: {},
-    _tipNode: {},
-    _spiritNode: [],
-    _locate: {
-        1: cc.p(160, 440),
-        2: cc.p(360, 440),
-        3: cc.p(560, 440),
-        4: cc.p(160, 240),
-        5: cc.p(360, 240),
-        6: cc.p(560, 240),
-        7: cc.p(160, 740),
-        8: cc.p(360, 740),
-        9: cc.p(560, 740),
-        10: cc.p(160, 940),
-        11: cc.p(360, 940),
-        12: cc.p(560, 940)
-    },
+    _battleNode: null,
+    _tipNode: null,
+    _spiritNode: null,
+    _locate: null,
 
     init: function (battleLog) {
         cc.log("BatterLayer init");
 
         if (!this._super()) return false;
 
+        this._batterLayerFit = gameFit.battleScene.batterLayer;
+
         this._index = 1;
         this._isEnd = false;
         this._battleLog = battleLog;
         this._spiritNode = [];
+        this._locate = this._batterLayerFit.locatePoints;
 
-        var bgSprite = null;
-
-        if (this._battleLog.get("type") == PVP_BATTLE_LOG) {
-            bgSprite = cc.Sprite.create(main_scene_image.pvp_bg1);
-        } else {
-            bgSprite = cc.Sprite.create(main_scene_image.pve_bg1);
-        }
-
+        var bgSprite = cc.Sprite.create(main_scene_image.bg13);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(cc.p(40, 0));
+        bgSprite.setPosition(this._batterLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         return true;
@@ -98,7 +82,7 @@ var BatterLayer = cc.Layer.extend({
         }
 
         this._backItem = cc.MenuItemFont.create("结束战斗", this.end, this);
-        this._backItem.setPosition(cc.p(250, -460));
+        this._backItem.setPosition(this._batterLayerFit.backItemPoint);
         var menu = cc.Menu.create(this._backItem);
         this.addChild(menu);
 
@@ -176,7 +160,7 @@ var BatterLayer = cc.Layer.extend({
 
             if (that._counter == 0) {
                 var effect15Node = cc.BuilderReader.load(main_scene_image.effect15, that);
-                effect15Node.setPosition(cc.p(360, 568));
+                effect15Node.setPosition(that._batterLayerFit.effect15NodePoint);
                 that.addChild(effect15Node);
 
                 effect15Node.animationManager.setCompletedAnimationCallback(that, function () {
@@ -270,14 +254,14 @@ var BatterLayer = cc.Layer.extend({
                             showSpiritAdditionCallback2();
                         });
 
-                        that.tip(index, "buf_2", cardNode.getSpiritAtk());
+                        that.tip(index, "buf_2", "攻击\n +" + cardNode.getSpiritAtk());
 
                         showSpiritAdditionCallback1();
                     });
 
                     var spiritHp = cardNode.getSpiritHp();
                     cardNode.update(spiritHp);
-                    that.tip(index, "buf_1", spiritHp);
+                    that.tip(index, "buf_1", "生命\n +" + spiritHp);
                 })();
             }
         }
@@ -303,6 +287,9 @@ var BatterLayer = cc.Layer.extend({
     nextStep: function () {
         cc.log("BattleLayer nextStep");
 
+        this.callback = function () {
+        };
+
         for (var key in this._battleNode) {
             if (this._battleNode[key].die) {
                 this._battleNode[key].die();
@@ -314,7 +301,7 @@ var BatterLayer = cc.Layer.extend({
         }
 
         if (!this._battleLog.hasNextBattleStep()) {
-            this.scheduleOnce(this._collectSpirit, 1);
+            this.scheduleOnce(this._collectSpirit, 1.3);
             return;
         }
 
@@ -333,14 +320,15 @@ var BatterLayer = cc.Layer.extend({
                 battleStep.set("attacker", this._battleLog.getSpirit(battleStep.get("attacker")));
             }
 
-            var ccbNode = this._battleNode[battleStep.get("attacker")].getSubtitleNode();
+            var attacker = battleStep.get("attacker");
+            var ccbNode = this._battleNode[attacker].getSubtitleNode();
+            var that = this;
 
             var cb = function () {
                 if (ccbNode) {
                     ccbNode.removeFromParent();
                 }
 
-                var that = this;
                 if (skillType === 1) {
                     that.singleAtk(battleStep);
                 } else if (skillType === 2) {
@@ -352,14 +340,22 @@ var BatterLayer = cc.Layer.extend({
                 }
             };
 
-            if (ccbNode) {
-                ccbNode.setPosition(cc.p(360, 568));
-                this.addChild(ccbNode, 5);
+            var addSubtitleNodeCb = function () {
+                if (ccbNode) {
+                    ccbNode.setPosition(that._batterLayerFit["ccbNodePoint" + that._getDirection(attacker)]);
+                    that.addChild(ccbNode, 5);
 
-                ccbNode.animationManager.setCompletedAnimationCallback(this, cb);
-            } else {
-                cb();
-            }
+                    ccbNode.animationManager.setCompletedAnimationCallback(that, cb);
+                } else {
+                    cb();
+                }
+            };
+
+            this._battleNode[attacker].runAnimations(
+                "rea_1",
+                0,
+                addSubtitleNodeCb
+            );
         } else {
             this.normalAtk(battleStep);
         }
@@ -674,12 +670,7 @@ var BatterLayer = cc.Layer.extend({
                             cc.Sequence.create(
                                 cc.DelayTime.create(1.5),
                                 cc.CallFunc.create(function () {
-                                    this._battleNode[index].runAction(
-                                        cc.Sequence.create(
-                                            cc.ScaleTo.create(0.5, 1.4, 1.4),
-                                            cc.ScaleTo.create(0.3, 1, 1)
-                                        )
-                                    );
+                                    this._battleNode[index].runAnimations("col_1");
                                 }, this),
                                 cc.ScaleTo.create(0.5, 0.3, 0.3)
                             )
@@ -690,7 +681,7 @@ var BatterLayer = cc.Layer.extend({
 
                 this.scheduleOnce(function () {
                     this.end();
-                }, 4);
+                }, 3);
             }
         } else {
             if (len) {
@@ -709,7 +700,7 @@ var BatterLayer = cc.Layer.extend({
 
                 this.scheduleOnce(function () {
                     this.end();
-                }, 2);
+                }, 1.5);
             }
         }
     }

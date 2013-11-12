@@ -21,6 +21,8 @@ var STOP_UNTIL_BLUE = 1;
 var STOP_UNTIL_YELLOW = 2;
 
 var PassiveSkillAfreshLabel = cc.Layer.extend({
+    _passiveSkillAfreshLabelFit: null,
+
     _leadCard: null,
     _leadCardHeadNode: null,
     _nameLabel: null,
@@ -52,24 +54,26 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._passiveSkillAfreshLabelFit = gameFit.mainScene.passiveSkillAfreshLabel;
+
         var cardItemBgSprite = cc.Sprite.create(main_scene_image.icon68);
-        cardItemBgSprite.setPosition(cc.p(328, 725));
+        cardItemBgSprite.setPosition(this._passiveSkillAfreshLabelFit.cardItemBgSpritePoint);
         this.addChild(cardItemBgSprite);
 
         this._nameLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
         this._nameLabel.setColor(cc.c3b(255, 239, 131));
         this._nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._nameLabel.setPosition(cc.p(243, 742));
+        this._nameLabel.setPosition(this._passiveSkillAfreshLabelFit.nameLabelPoint);
         this.addChild(this._nameLabel);
 
         this._lvLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 22);
         this._lvLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._lvLabel.setPosition(cc.p(245, 708));
+        this._lvLabel.setPosition(this._passiveSkillAfreshLabelFit.lvLabelPoint);
         this.addChild(this._lvLabel);
 
         this._resLabel = cc.Node.create();
         this._resLabel.setAnchorPoint(cc.p(0, 0));
-        this._resLabel.setPosition(cc.p(133, 300));
+        this._resLabel.setPosition(this._passiveSkillAfreshLabelFit.resLabelPoint);
         this.addChild(this._resLabel, 1);
 
         var resLabelBgSprite = cc.Sprite.create(main_scene_image.icon66);
@@ -90,7 +94,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._resLabel.addChild(resMenu);
 
         for (var i = 0; i < 3; ++i) {
-            var y = 308 - 78 * i;
+            var y = this._passiveSkillAfreshLabelFit.basePointY - this._passiveSkillAfreshLabelFit.offsetPointY * i;
 
             var passiveSkillBgSprite = cc.Sprite.create(main_scene_image.icon65);
             passiveSkillBgSprite.setAnchorPoint(cc.p(0, 0.5));
@@ -175,7 +179,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         this._stopTypeLabel = cc.Node.create();
         this._stopTypeLabel.setAnchorPoint(cc.p(0, 0));
-        this._stopTypeLabel.setPosition(cc.p(106, 380));
+        this._stopTypeLabel.setPosition(this._passiveSkillAfreshLabelFit.stopTypeLabelPoint);
         this.addChild(this._stopTypeLabel, 2);
         this._stopTypeLabel.setVisible(false);
 
@@ -227,7 +231,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
 
         this._selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon11);
-        this._selectLeadCardIcon.setPosition(cc.p(189, 724));
+        this._selectLeadCardIcon.setPosition(this._passiveSkillAfreshLabelFit.selectLeadCardIconPoint);
         this.addChild(this._selectLeadCardIcon);
 
         var selectLeadCardItem = cc.MenuItemImage.create(
@@ -236,7 +240,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._onClickSelectLeadCard,
             this
         );
-        selectLeadCardItem.setPosition(cc.p(191, 724));
+        selectLeadCardItem.setPosition(this._passiveSkillAfreshLabelFit.selectLeadCardItemPoint);
 
         this._afreshItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -246,7 +250,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._onClickAfresh,
             this
         );
-        this._afreshItem.setPosition(cc.p(260, 270));
+        this._afreshItem.setPosition(this._passiveSkillAfreshLabelFit.afreshItemPoint);
 
         this._repeatAfreshItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -256,7 +260,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._onClickRepeatAfresh,
             this
         );
-        this._repeatAfreshItem.setPosition(cc.p(460, 270));
+        this._repeatAfreshItem.setPosition(this._passiveSkillAfreshLabelFit.repeatAfreshItemPoint);
 
         this._startItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -266,7 +270,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._onClickStart,
             this
         );
-        this._startItem.setPosition(cc.p(260, 270));
+        this._startItem.setPosition(this._passiveSkillAfreshLabelFit.startItemPoint);
         this._startItem.setVisible(false);
 
         this._cancelItem = cc.MenuItemImage.createWithIcon(
@@ -277,7 +281,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._onClickCancel,
             this
         );
-        this._cancelItem.setPosition(cc.p(460, 270));
+        this._cancelItem.setPosition(this._passiveSkillAfreshLabelFit.cancelItemPoint);
         this._cancelItem.setVisible(false);
 
         var menu = cc.Menu.create(
@@ -303,7 +307,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             this._onClickStop,
             this
         );
-        stopItem.setPosition(cc.p(360, 270));
+        stopItem.setPosition(this._passiveSkillAfreshLabelFit.stopItemPoint);
 
         var shyLayerMenu = cc.Menu.create(stopItem);
         shyLayerMenu.setPosition(cc.p(0, 0));
@@ -324,7 +328,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         if (this._leadCard) {
             if (this._leadCardHeadNode == null) {
                 this._leadCardHeadNode = CardHeadNode.create(this._leadCard);
-                this._leadCardHeadNode.setPosition(cc.p(137, 670));
+                this._leadCardHeadNode.setPosition(this._passiveSkillAfreshLabelFit.leadCardHeadNodePoint);
                 this.addChild(this._leadCardHeadNode);
             }
 

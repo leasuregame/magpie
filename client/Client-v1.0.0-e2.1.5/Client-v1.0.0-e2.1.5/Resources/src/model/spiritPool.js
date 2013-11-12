@@ -72,7 +72,7 @@ var SpiritPool = Entity.extend({
         cc.log("SpiritPool collect");
 
         var that = this;
-        lzWindow.pomelo.request("area.spiritHandler.collect", {
+        lz.server.request("area.spiritHandler.collect", {
             isGold: useGold
         }, function (data) {
             cc.log(data);

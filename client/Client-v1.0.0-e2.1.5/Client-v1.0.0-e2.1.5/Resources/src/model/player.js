@@ -57,9 +57,9 @@ var Player = Entity.extend({
         gameData.signIn.init();
         gameData.rank.init();
         gameData.achievement.init();
+        gameData.activity.init();
         gameData.speak.init();
         gameData.exchange.init();
-        gameData.activity.init();
 
         cc.log(this);
 
@@ -160,7 +160,7 @@ var Player = Entity.extend({
         cc.log("Player sendMessage: " + playerId + " " + msg);
 
         var that = this;
-        lzWindow.pomelo.request("area.messageHandler.leaveMessage", {
+        lz.server.request("area.messageHandler.leaveMessage", {
             friendId: playerId,
             content: msg
         }, function (data) {
@@ -183,7 +183,7 @@ var Player = Entity.extend({
         cc.log("Player learn: " + playerId);
 
         var that = this;
-        lzWindow.pomelo.request("area.rankHandler.fight", {
+        lz.server.request("area.rankHandler.fight", {
             targetId: playerId
         }, function (data) {
             cc.log("pomelo websocket callback data:");
@@ -209,7 +209,7 @@ var Player = Entity.extend({
         cc.log("Player playerDetail: " + playerId);
 
         var that = this;
-        lzWindow.pomelo.request("area.playerHandler.getLineUpInfo", {
+        lz.server.request("area.playerHandler.getLineUpInfo", {
             playerId: playerId
         }, function (data) {
             cc.log("pomelo websocket callback data:");

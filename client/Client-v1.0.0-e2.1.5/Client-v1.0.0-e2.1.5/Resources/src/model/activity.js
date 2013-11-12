@@ -26,22 +26,27 @@ var Activity = Entity.extend({
     sync: function () {
         cc.log("Activity sync");
         var that = this;
-        lzWindow.pomelo.request('area.playerHandler.getActivityInfo', {}, function (data) {
-            cc.log(data);
-            if (data.code == 200) {
-                cc.log("sync success");
-                that.update(data.msg.levelReward);
-            } else {
-                cc.log("sync fail");
+        lz.server.request(
+            "area.playerHandler.getActivityInfo",
+            {},
+            function (data) {
+                cc.log(data);
+                if (data.code == 200) {
+                    cc.log("sync success");
+                    that.update(data.msg.levelReward);
+                } else {
+                    cc.log("sync fail");
 
-                that.sync();
-            }
-        });
+                    that.sync();
+                }
+            },
+            true
+        );
     },
 
     update: function (mark) {
         cc.log("Activity update");
-        for(var i = 1;i <= 10;i++) {
+        for (var i = 1; i <= 10; i++) {
             var offset = (i - 1) % EACH_NUM_BIT;
             index = Math.floor((i - 1) / EACH_NUM_BIT);
             if (mark[index]) {
@@ -56,26 +61,30 @@ var Activity = Entity.extend({
 
     getPowerReward: function () {
         cc.log("Activity getPowerReward");
-        lzWindow.pomelo.request('area.playerHandler.givePower', {}, function (data) {
+        lz.server.request("area.playerHandler.givePower", {}, function (data) {
             cc.log(data);
             if (data.code == 200) {
-                TipLayer.tip('体力: ' + data.msg.powerValue);
-                gameData.player.add('power', data.msg.powerValue);
+                var power = data.msg.powerValue;
+                if (power + gameData.player.get("power") > 150) {
+                    power = 150 - gameData.player.get("power");
+                }
+                TipLayer.tip("体力: " + power);
+                gameData.player.add("power", power);
             } else {
                 TipLayer.tip(data.msg);
             }
         });
     },
 
-    getGoldReward: function (id,cb) {
+    getGoldReward: function (id, cb) {
         cc.log("Activity getGoldReward");
         var that = this;
-        lzWindow.pomelo.request('area.playerHandler.getLevelReward', {id: id}, function (data) {
+        lz.server.request("area.playerHandler.getLevelReward", {id: id}, function (data) {
             cc.log(data);
             if (data.code == 200) {
-                TipLayer.tip('元宝: ' + data.msg.gold);
-                gameData.player.add('gold', data.msg.gold);
-                that._changeTypeById(id,GOLD_RECEIVE);
+                TipLayer.tip("元宝: " + data.msg.gold);
+                gameData.player.add("gold", data.msg.gold);
+                that._changeTypeById(id, GOLD_RECEIVE);
                 cb(true);
             } else {
                 TipLayer.tip(data.msg);
@@ -84,8 +93,8 @@ var Activity = Entity.extend({
         });
     },
 
-    _changeTypeById:function (id , type) {
-       this._type[id] = type;
+    _changeTypeById: function (id, type) {
+        this._type[id] = type;
     },
 
     getTypeById: function (id) {

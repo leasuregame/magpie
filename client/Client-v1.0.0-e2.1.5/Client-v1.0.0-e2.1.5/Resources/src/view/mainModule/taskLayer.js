@@ -13,6 +13,8 @@
 
 
 var TaskLayer = cc.Layer.extend({
+    _taskLayerFit: null,
+
     _index: 0,
     _turnLeftSprite: null,
     _turnRightSprite: null,
@@ -20,67 +22,7 @@ var TaskLayer = cc.Layer.extend({
     _wipeOutItem: null,
     _sectionItem: {},
     _scrollView: null,
-    _locate: [
-        cc.p(160, 550),
-        cc.p(200, 270),
-        cc.p(440, 440),
-        cc.p(480, 260),
-        cc.p(360, 70),
-
-        cc.p(160, 550),
-        cc.p(200, 270),
-        cc.p(440, 470),
-        cc.p(480, 260),
-        cc.p(340, 70),
-
-        cc.p(160, 550),
-        cc.p(210, 315),
-        cc.p(415, 480),
-        cc.p(480, 260),
-        cc.p(360, 70),
-
-        cc.p(160, 550),
-        cc.p(200, 290),
-        cc.p(420, 470),
-        cc.p(480, 260),
-        cc.p(360, 70),
-
-        cc.p(155, 550),
-        cc.p(200, 270),
-        cc.p(420, 470),
-        cc.p(480, 260),
-        cc.p(360, 70),
-
-        cc.p(160, 550),
-        cc.p(200, 290),
-        cc.p(440, 470),
-        cc.p(480, 260),
-        cc.p(360, 70),
-
-        cc.p(160, 550),
-        cc.p(200, 270),
-        cc.p(440, 450),
-        cc.p(480, 260),
-        cc.p(360, 70),
-
-        cc.p(160, 550),
-        cc.p(200, 270),
-        cc.p(440, 440),
-        cc.p(480, 260),
-        cc.p(360, 70),
-
-        cc.p(140, 550),
-        cc.p(200, 270),
-        cc.p(420, 470),
-        cc.p(480, 260),
-        cc.p(360, 70),
-
-        cc.p(140, 550),
-        cc.p(200, 270),
-        cc.p(430, 460),
-        cc.p(480, 260),
-        cc.p(360, 70)
-    ],
+    _locate: [],
 
     onEnter: function () {
         cc.log("TaskLayer onEnter");
@@ -94,17 +36,20 @@ var TaskLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._taskLayerFit = gameFit.mainScene.taskLayer;
+
+        this._locate = this._taskLayerFit.locatePoints;
         this.setTouchEnabled(true);
 
         this._index = gameData.task.getChapter();
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 968));
+        headIcon.setPosition(this._taskLayerFit.headIconPoint);
         this.addChild(headIcon);
 
         var titleIcon = cc.Sprite.create(main_scene_image.icon16);
-        titleIcon.setPosition(cc.p(360, 1008));
+        titleIcon.setPosition(this._taskLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
         this._wipeOutItem = cc.MenuItemImage.createWithIcon(
@@ -115,7 +60,7 @@ var TaskLayer = cc.Layer.extend({
             this._onClickWipeOut,
             this
         );
-        this._wipeOutItem.setPosition(cc.p(595, 230));
+        this._wipeOutItem.setPosition(this._taskLayerFit.wipeOutItemPoint);
 
         var menu = cc.Menu.create(this._wipeOutItem);
         menu.setPosition(cc.p(0, 0));
@@ -123,18 +68,18 @@ var TaskLayer = cc.Layer.extend({
 
         this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
         this._turnLeftSprite.setRotation(180);
-        this._turnLeftSprite.setPosition(cc.p(80, 550));
+        this._turnLeftSprite.setPosition(this._taskLayerFit.turnLeftSpritePoint);
         this.addChild(this._turnLeftSprite, 2);
 
         this._turnRightSprite = cc.Sprite.create(main_scene_image.icon37);
-        this._turnRightSprite.setPosition(cc.p(640, 550));
+        this._turnRightSprite.setPosition(this._taskLayerFit.turnRightSpritePoint);
         this.addChild(this._turnRightSprite, 2);
 
         // 读配置表
         var chapterTitleTable = outputTables.chapter_title.rows;
         var chapterTable = outputTables.chapter.rows;
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(40, 198, 640, 744));
+        var scrollViewLayer = MarkLayer.create(this._taskLayerFit.scrollViewLayerRect);
 
         var lazyMenu = LazyMenu.create();
         lazyMenu.setPosition(cc.p(0, 0));
@@ -155,23 +100,30 @@ var TaskLayer = cc.Layer.extend({
             var x = 640 * (i - 1);
 
             var bgSprite = cc.Sprite.create(main_scene_image.bg8);
-            bgSprite.setAnchorPoint(cc.p(0, 0));
-            bgSprite.setPosition(x, 0);
+            bgSprite.setAnchorPoint(cc.p(0.5, 0.5));
+            bgSprite.setPosition(x + this._taskLayerFit.scrollViewSize.width / 2, this._taskLayerFit.scrollViewSize.height / 2);
+            if (i % 2 == 0) {
+                bgSprite.setScaleX(-1);
+            }
             scrollViewLayer.addChild(bgSprite);
+
+            var titleBgIcon = cc.Sprite.create(main_scene_image.icon147);
+            titleBgIcon.setPosition(cc.p(x, this._taskLayerFit.titlePointY));
+            scrollViewLayer.addChild(titleBgIcon);
 
             var titleLabel = StrokeLabel.create(chapterTitleTable[i].name, "STHeitiTC-Medium", 30);
             titleLabel.setColor(cc.c3b(255, 239, 131));
-            titleLabel.setPosition(cc.p(320 + x, 745));
+            titleLabel.setPosition(cc.p(320 + x, this._taskLayerFit.titlePointY));
             scrollViewLayer.addChild(titleLabel);
 
-            var titleIcon1 = cc.Sprite.create(main_scene_image.icon144);
-            titleIcon1.setPosition(220 + x, 745);
-            scrollViewLayer.addChild(titleIcon1);
+            var titleIcon1 = cc.Sprite.create(main_scene_image.icon143);
+            titleIcon1.setPosition(220 + x, this._taskLayerFit.titlePointY);
+            scrollViewLayer.addChild(titleIcon1, 1);
 
-            var titleIcon2 = cc.Sprite.create(main_scene_image.icon144);
-            titleIcon2.setRotation(180);
-            titleIcon2.setPosition(420 + x, 745);
-            scrollViewLayer.addChild(titleIcon2);
+            var titleIcon2 = cc.Sprite.create(main_scene_image.icon143);
+            titleIcon2.setScaleX(-1);
+            titleIcon2.setPosition(420 + x, this._taskLayerFit.titlePointY);
+            scrollViewLayer.addChild(titleIcon2, 1);
 
             for (var j = 1; j <= TASK_SECTION_COUNT; ++j) {
                 var index = 5 * (i - 1) + j;
@@ -201,9 +153,9 @@ var TaskLayer = cc.Layer.extend({
             }
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(640, 768), scrollViewLayer);
-        this._scrollView.setContentSize(cc.size(6400, 768));
-        this._scrollView.setPosition(GAME_BG_POINT);
+        this._scrollView = cc.ScrollView.create(this._taskLayerFit.scrollViewSize, scrollViewLayer);
+        this._scrollView.setContentSize(this._taskLayerFit.scrollViewContentSize);
+        this._scrollView.setPosition(this._taskLayerFit.scrollViewPoint);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         this._scrollView.setBounceable(false);
         this._scrollView.updateInset();
@@ -288,7 +240,8 @@ var TaskLayer = cc.Layer.extend({
             }
 
             MainScene.getInstance().switch(ExploreLayer.create(id));
-            if(NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+
+            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
                 NoviceTeachingLayer.getInstance().clearAndSave();
                 NoviceTeachingLayer.getInstance().next();
             }

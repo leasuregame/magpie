@@ -48,7 +48,13 @@ var BattleSpiritNode = cc.Node.extend({
     getSubtitleNode: function () {
         cc.log("BattleSpiritNode getSubtitleNode");
 
-        var ccbNode = cc.BuilderReader.load(main_scene_image.effect14, this);
+        var ccbNode = null;
+
+        if (this._index < 7) {
+            ccbNode = cc.BuilderReader.load(main_scene_image.effect13, this);
+        } else {
+            ccbNode = cc.BuilderReader.load(main_scene_image.effect14, this);
+        }
 
         if (ccbNode) {
             cc.log(ccbNode);

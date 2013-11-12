@@ -1,9 +1,9 @@
 /**
- * Created with JetBrains WebStorm.
- * User: lcc3536
- * Date: 13-6-14
- * Time: 上午9:30
- * To change this template use File | Settings | File Templates.
+ * lzRequire the given path.
+ *
+ * @param {String} path
+ * @return {Object} exports
+ * @api public
  */
 
 
@@ -12,25 +12,7 @@
  * */
 
 
-cc.log("pomelo websocket client");
-
-var lzWindow = {};
-
-lzWindow.setTimeout = function (cb, timeout) {
-
-};
-
-lzWindow.clearTimeout = function () {
-
-};
-
-/**
- * lzRequire the given path.
- *
- * @param {String} path
- * @return {Object} exports
- * @api public
- */
+cc.log("pomelo websocket running");
 
 function lzRequire(path, parent, orig) {
     var resolved = lzRequire.resolve(path);
@@ -51,6 +33,17 @@ function lzRequire(path, parent, orig) {
     // perform real lzRequire()
     // by invoking the module's
     // registered function
+    /*
+     if (!module._resolving && !module.exports) {
+     var mod = {};
+     mod.exports = {};
+     mod.client = mod.component = true;
+     module._resolving = true;
+     module.call(this, mod.exports, lzRequire.relative(resolved), mod);
+     delete module._resolving;
+     module.exports = mod.exports;
+     }
+     */
     if (!module.exports) {
         module.exports = {};
         module.client = module.component = true;
@@ -221,11 +214,8 @@ lzRequire.relative = function (parent) {
     return locallzRequire;
 };
 lzRequire.register("component-indexof/index.js", function (exports, lzRequire, module) {
-
-    var indexOf = [].indexOf;
-
     module.exports = function (arr, obj) {
-        if (indexOf) return arr.indexOf(obj);
+        if (arr.indexOf) return arr.indexOf(obj);
         for (var i = 0; i < arr.length; ++i) {
             if (arr[i] === obj) return i;
         }
@@ -581,7 +571,7 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function (exports,
 
             // add message id
             if (msgHasId(type)) {
-                offset = encodeMsgId(id, idBytes, buffer, offset);
+                offset = encodeMsgId(id, buffer, offset);
             }
 
             // add route
@@ -617,13 +607,14 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function (exports,
 
             // parse id
             if (msgHasId(type)) {
-                var byte = bytes[offset++];
-                id = byte & 0x7f;
-                while (byte & 0x80) {
-                    id <<= 7;
-                    byte = bytes[offset++];
-                    id |= byte & 0x7f;
-                }
+                var m = parseInt(bytes[offset]);
+                var i = 0;
+                do {
+                    var m = parseInt(bytes[offset]);
+                    id = id + ((m & 0x7f) * Math.pow(2, (7 * i)));
+                    offset++;
+                    i++;
+                } while (m >= 128);
             }
 
             // parse route
@@ -694,14 +685,20 @@ lzRequire.register("NetEase-pomelo-protocol/lib/protocol.js", function (exports,
             return offset + MSG_FLAG_BYTES;
         };
 
-        var encodeMsgId = function (id, idBytes, buffer, offset) {
-            var index = offset + idBytes - 1;
-            buffer[index--] = id & 0x7f;
-            while (index >= offset) {
-                id >>= 7;
-                buffer[index--] = id & 0x7f | 0x80;
-            }
-            return offset + idBytes;
+        var encodeMsgId = function (id, buffer, offset) {
+            do {
+                var tmp = id % 128;
+                var next = Math.floor(id / 128);
+
+                if (next !== 0) {
+                    tmp = tmp + 128;
+                }
+                buffer[offset++] = tmp;
+
+                id = next;
+            } while (id !== 0);
+
+            return offset;
         };
 
         var encodeMsgRoute = function (compressRoute, route, buffer, offset) {
@@ -1055,20 +1052,24 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
                 switch (proto.option) {
                     case 'lzRequired' :
                         if (typeof(msg[name]) === 'undefined') {
+                            console.warn('no property exist for lzRequired! name: %j, proto: %j, msg: %j', name, proto, msg);
                             return false;
                         }
                     case 'optional' :
                         if (typeof(msg[name]) !== 'undefined') {
-                            if (!!protos.__messages[proto.type]) {
-                                checkMsg(msg[name], protos.__messages[proto.type]);
+                            var message = protos.__messages[proto.type] || MsgEncoder.protos['message ' + proto.type];
+                            if (!!message && !checkMsg(msg[name], message)) {
+                                console.warn('inner proto error! name: %j, proto: %j, msg: %j', name, proto, msg);
+                                return false;
                             }
                         }
                         break;
                     case 'repeated' :
                         //Check nest message in repeated elements
-                        if (!!msg[name] && !!protos.__messages[proto.type]) {
+                        var message = protos.__messages[proto.type] || MsgEncoder.protos['message ' + proto.type];
+                        if (!!msg[name] && !!message) {
                             for (var i = 0; i < msg[name].length; i++) {
-                                if (!checkMsg(msg[name][i], protos.__messages[proto.type])) {
+                                if (!checkMsg(msg[name][i], message)) {
                                     return false;
                                 }
                             }
@@ -1130,12 +1131,13 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
                     offset += length;
                     break;
                 default :
-                    if (!!protos.__messages[type]) {
+                    var message = protos.__messages[type] || MsgEncoder.protos['message ' + type];
+                    if (!!message) {
                         //Use a tmp buffer to build an internal msg
-                        var tmpBuffer = new ArrayBuffer(codec.byteLength(JSON.stringify(value)));
+                        var tmpBuffer = new ArrayBuffer(codec.byteLength(JSON.stringify(value)) * 2);
                         var length = 0;
 
-                        length = encodeMsg(tmpBuffer, length, protos.__messages[type], value);
+                        length = encodeMsg(tmpBuffer, length, message, value);
                         //Encode length
                         offset = writeBytes(buffer, offset, codec.encodeUInt32(length));
                         //contact the object
@@ -1182,6 +1184,7 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
 
         function encodeTag(type, tag) {
             var value = constant.TYPES[type] || 2;
+
             return codec.encodeUInt32((tag << 3) | value);
         }
     })('undefined' !== typeof protobuf ? protobuf : module.exports, this);
@@ -1300,10 +1303,11 @@ lzRequire.register("pomelonode-pomelo-protobuf/lib/client/protobuf.js", function
 
                     return str;
                 default :
-                    if (!!protos && !!protos.__messages[type]) {
+                    var message = protos && (protos.__messages[type] || MsgDecoder.protos['message ' + type]);
+                    if (!!message) {
                         var length = codec.decodeUInt32(getBytes());
                         var msg = {};
-                        decodeMsg(msg, protos.__messages[type], offset + length);
+                        decodeMsg(msg, message, offset + length);
                         return msg;
                     }
                     break;
@@ -1354,10 +1358,11 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
         var JS_WS_CLIENT_TYPE = 'js-websocket';
         var JS_WS_CLIENT_VERSION = '0.0.1';
 
-        var Protocol = lzWindow.Protocol;
+        var Protocol = lz.Protocol;
         var Package = Protocol.Package;
         var Message = Protocol.Message;
-        var EventEmitter = lzWindow.EventEmitter;
+        var EventEmitter = lz.EventEmitter;
+        var rsa = lz.rsa;
 
         var RES_OK = 200;
         var RES_FAIL = 500;
@@ -1373,7 +1378,7 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             };
         }
 
-        var root = lzWindow;
+        var root = lz;
         var pomelo = Object.create(EventEmitter.prototype); // object extend from object
         root.pomelo = pomelo;
         var socket = null;
@@ -1400,10 +1405,13 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
         var decod = null;
         var encode = null;
 
+        var useCrypto;
+
         var handshakeBuffer = {
             'sys': {
                 type: JS_WS_CLIENT_TYPE,
-                version: JS_WS_CLIENT_VERSION
+                version: JS_WS_CLIENT_VERSION,
+                rsa: {}
             },
             'user': {
             }
@@ -1419,14 +1427,21 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             encode = params.encode || defaultEncode;
             decode = params.decode || defaultDecode;
 
-            cc.log('encode: ' + !!params.encode);
-
             var url = 'ws://' + host;
             if (port) {
                 url += ':' + port;
             }
 
             handshakeBuffer.user = params.user;
+            if (params.encrypt) {
+                useCrypto = true;
+                rsa.generate(1024, "10001");
+                var data = {
+                    rsa_n: rsa.n.toString(16),
+                    rsa_e: rsa.e
+                }
+                handshakeBuffer.sys.rsa = data;
+            }
             handshakeCallback = params.handshakeCallback;
             initWebSocket(url, cb);
         };
@@ -1469,8 +1484,8 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
         var initWebSocket = function (url, cb) {
             cc.log('connect to ' + url);
             //Add protobuf version
-            if (SETTING_IS_BROWSER && window.localStorage && window.localStorage.getItem('protos') && protoVersion === 0) {
-                var protos = JSON.parse(window.localStorage.getItem('protos'));
+            if (sys.localStorage && sys.localStorage.getItem('protos') && protoVersion === 0) {
+                var protos = JSON.parse(sys.localStorage.getItem('protos'));
 
                 protoVersion = protos.version || 0;
                 serverProtos = protos.server || {};
@@ -1497,10 +1512,9 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
                 cc.log('socket error: ', event);
             };
             var onclose = function (event) {
-                pomelo.disconnect();
-
                 pomelo.emit('close', event);
                 cc.log('socket close: ', event);
+                pomelo.disconnect();
             };
             socket = new WebSocket(url);
             socket.binaryType = 'arraybuffer';
@@ -1519,13 +1533,17 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
             }
 
             if (heartbeatId) {
-                clearTimeout(heartbeatId);
+                lz.clearTimeout(heartbeatId);
                 heartbeatId = null;
             }
             if (heartbeatTimeoutId) {
-                clearTimeout(heartbeatTimeoutId);
+                lz.clearTimeout(heartbeatTimeoutId);
                 heartbeatTimeoutId = null;
             }
+        };
+
+        pomelo.isConnect = function () {
+            return (socket && (socket.readyState == 1));
         };
 
         pomelo.request = function (route, msg, cb) {
@@ -1553,6 +1571,13 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
         };
 
         var sendMessage = function (reqId, route, msg) {
+            if (useCrypto) {
+                msg = JSON.stringify(msg);
+                var sig = rsa.signString(msg, "sha256");
+                msg = JSON.parse(msg);
+                msg['__crypto__'] = sig;
+            }
+
             if (encode) {
                 msg = encode(reqId, route, msg);
             }
@@ -1562,7 +1587,9 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
         };
 
         var send = function (packet) {
-            socket.send(packet.buffer);
+            if (pomelo.isConnect()) {
+                socket.send(packet.buffer);
+            }
         };
 
         var handler = {};
@@ -1575,7 +1602,7 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
 
             var obj = Package.encode(Package.TYPE_HEARTBEAT);
             if (heartbeatTimeoutId) {
-                clearTimeout(heartbeatTimeoutId);
+                lz.clearTimeout(heartbeatTimeoutId);
                 heartbeatTimeoutId = null;
             }
 
@@ -1583,23 +1610,23 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
                 // already in a heartbeat interval
                 return;
             }
-
-            heartbeatId = setTimeout(function () {
+            heartbeatId = lz.setTimeout(function () {
                 heartbeatId = null;
                 send(obj);
 
                 nextHeartbeatTimeout = Date.now() + heartbeatTimeout;
-                heartbeatTimeoutId = setTimeout(heartbeatTimeoutCb, heartbeatTimeout);
+                heartbeatTimeoutId = lz.setTimeout(heartbeatTimeoutCb, heartbeatTimeout);
             }, heartbeatInterval);
         };
 
         var heartbeatTimeoutCb = function () {
             var gap = nextHeartbeatTimeout - Date.now();
             if (gap > gapThreshold) {
-                heartbeatTimeoutId = setTimeout(heartbeatTimeoutCb, gap);
+                heartbeatTimeoutId = lz.setTimeout(heartbeatTimeoutCb, gap);
             } else {
                 cc.log('server heartbeat timeout');
                 pomelo.emit('heartbeat timeout');
+//                pomelo.emit('close');
                 pomelo.disconnect();
             }
         };
@@ -1736,7 +1763,7 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
                 }
 
                 //Save protobuf protos to localStorage
-                if (SETTING_IS_BROWSER) window.localStorage.setItem('protos', JSON.stringify(protos));
+                sys.localStorage.setItem('protos', JSON.stringify(protos));
             }
         };
 
@@ -1746,18 +1773,20 @@ lzRequire.register("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", 
 });
 lzRequire.register("boot/index.js", function (exports, lzRequire, module) {
     var Emitter = lzRequire('emitter');
-    lzWindow.EventEmitter = Emitter;
+    lz.EventEmitter = Emitter;
 
     var protocol = lzRequire('pomelo-protocol');
-    lzWindow.Protocol = protocol;
+    lz.Protocol = protocol;
 
     var protobuf = lzRequire('pomelo-protobuf');
-    lzWindow.protobuf = protobuf;
+    lz.protobuf = protobuf;
 
     var pomelo = lzRequire('pomelo-jsclient-websocket');
-    lzWindow.pomelo = pomelo;
+    lz.pomelo = pomelo;
 
 });
+
+
 lzRequire.alias("boot/index.js", "pomelo-client/deps/boot/index.js");
 lzRequire.alias("boot/index.js", "boot/index.js");
 lzRequire.alias("component-emitter/index.js", "boot/deps/emitter/index.js");
@@ -1766,14 +1795,11 @@ lzRequire.alias("component-indexof/index.js", "component-emitter/deps/indexof/in
 lzRequire.alias("NetEase-pomelo-protocol/lib/protocol.js", "boot/deps/pomelo-protocol/lib/protocol.js");
 lzRequire.alias("NetEase-pomelo-protocol/lib/protocol.js", "boot/deps/pomelo-protocol/index.js");
 lzRequire.alias("NetEase-pomelo-protocol/lib/protocol.js", "NetEase-pomelo-protocol/index.js");
-
 lzRequire.alias("pomelonode-pomelo-protobuf/lib/client/protobuf.js", "boot/deps/pomelo-protobuf/lib/client/protobuf.js");
 lzRequire.alias("pomelonode-pomelo-protobuf/lib/client/protobuf.js", "boot/deps/pomelo-protobuf/index.js");
 lzRequire.alias("pomelonode-pomelo-protobuf/lib/client/protobuf.js", "pomelonode-pomelo-protobuf/index.js");
-
 lzRequire.alias("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", "boot/deps/pomelo-jsclient-websocket/lib/pomelo-client.js");
 lzRequire.alias("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", "boot/deps/pomelo-jsclient-websocket/index.js");
 lzRequire.alias("pomelonode-pomelo-jsclient-websocket/lib/pomelo-client.js", "pomelonode-pomelo-jsclient-websocket/index.js");
-
 
 lzRequire("boot");

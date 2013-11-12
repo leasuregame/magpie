@@ -2054,7 +2054,7 @@
 								<key>displayName</key>
 								<string>CCLabelBMFont</string>
 								<key>memberVarAssignmentName</key>
-								<string>label</string>
+								<string>label0</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -2134,7 +2134,7 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string>元</string>
+										<string></string>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -2274,7 +2274,7 @@
 								<key>displayName</key>
 								<string>CCLabelBMFont</string>
 								<key>memberVarAssignmentName</key>
-								<string>label</string>
+								<string>label1</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -2354,8 +2354,7 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string>神
-</string>
+										<string></string>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -2495,7 +2494,7 @@
 								<key>displayName</key>
 								<string>CCLabelBMFont</string>
 								<key>memberVarAssignmentName</key>
-								<string>label</string>
+								<string>label2</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -2575,7 +2574,7 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string>之</string>
+										<string></string>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -2715,7 +2714,7 @@
 								<key>displayName</key>
 								<string>CCLabelBMFont</string>
 								<key>memberVarAssignmentName</key>
-								<string>label</string>
+								<string>label3</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -2795,7 +2794,7 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string>怒</string>
+										<string></string>
 									</dict>
 								</array>
 								<key>seqExpanded</key>

@@ -7,6 +7,7 @@
  */
 
 var GoldRewardLayer = cc.Layer.extend({
+    _goldRewardLayerFit: null,
 
     _scrollView: null,
     _scrollViewElement: {},
@@ -22,16 +23,17 @@ var GoldRewardLayer = cc.Layer.extend({
         cc.log("GoldRewardLayer init");
 
         if (!this._super()) return false;
+        this._goldRewardLayerFit = gameFit.mainScene.goldRewardLayer;
 
         var lineIcon = cc.Sprite.create(main_scene_image.icon18);
         lineIcon.setAnchorPoint(cc.p(0, 0));
-        lineIcon.setPosition(cc.p(40, 875));
+        lineIcon.setPosition(this._goldRewardLayerFit.lineIconPoint);
         this.addChild(lineIcon);
 
-        var sprite1 = cc.Sprite.create(main_scene_image.icon271);
-        sprite1.setAnchorPoint(cc.p(0, 0));
-        sprite1.setPosition(cc.p(40, 875));
-        this.addChild(sprite1);
+        var headIcon = cc.Sprite.create(main_scene_image.icon271);
+        headIcon.setAnchorPoint(cc.p(0, 0));
+        headIcon.setPosition(this._goldRewardLayerFit.headIconPoint);
+        this.addChild(headIcon);
 
         return true;
     },
@@ -43,7 +45,7 @@ var GoldRewardLayer = cc.Layer.extend({
             this._scrollView.removeFromParent();
         }
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(10, 194, 740, 711));
+        var scrollViewLayer = MarkLayer.create(this._goldRewardLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
         menu.setTouchPriority(-200);
         menu.setPosition(cc.p(0, 0));
@@ -58,11 +60,11 @@ var GoldRewardLayer = cc.Layer.extend({
 
         var len = keys.length;
 
-        var scrollViewHeight = len * 135;
+        var scrollViewHeight = len * this._goldRewardLayerFit.scrollViewHeight;
 
-        this._scrollView = cc.ScrollView.create(cc.size(620, 700), scrollViewLayer);
+        this._scrollView = cc.ScrollView.create(this._goldRewardLayerFit.scrollViewSize, scrollViewLayer);
         this._scrollView.setTouchPriority(-300);
-        this._scrollView.setPosition(cc.p(40, 160));
+        this._scrollView.setPosition(this._goldRewardLayerFit.scrollViewPoint);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);

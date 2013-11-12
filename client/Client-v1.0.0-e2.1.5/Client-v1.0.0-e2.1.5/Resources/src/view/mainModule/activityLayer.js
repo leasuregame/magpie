@@ -13,6 +13,7 @@
 
 
 var ActivityLayer = cc.Layer.extend({
+    _activityLayerFit: null,
 
     _layer: [
         SignInLayer,
@@ -20,22 +21,23 @@ var ActivityLayer = cc.Layer.extend({
         GoldRewardLayer,
         RechargeLayer
     ],
-
-    _selectIcon:null,
+    _selectIcon: null,
 
     init: function () {
         cc.log("ActivityLayer init");
 
         if (!this._super()) return false;
 
+        this._activityLayerFit = gameFit.mainScene.activityLayer;
+
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
+        bgSprite.setPosition(this._activityLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var headSprite = cc.Sprite.create(main_scene_image.icon10);
         headSprite.setAnchorPoint(cc.p(0, 0));
-        headSprite.setPosition(cc.p(680, 1048));
+        headSprite.setPosition(this._activityLayerFit.headSpritePoint);
         headSprite.setRotation(180);
         this.addChild(headSprite);
 
@@ -57,13 +59,13 @@ var ActivityLayer = cc.Layer.extend({
             );
             item.setScale(0.9);
             item.setAnchorPoint(cc.p(0, 0));
-            item.setPosition(cc.p(65 + 107 * i, 950));
+            item.setPosition(cc.p(this._activityLayerFit.itemBasePoint.x + this._activityLayerFit.itemOffsetX * i, this._activityLayerFit.itemBasePoint.y));
             mainMenu.addChild(item);
         }
 
         this._selectIcon = cc.Sprite.create(main_scene_image.icon265);
         this._selectIcon.setAnchorPoint(cc.p(0, 0));
-        this._selectIcon.setPosition(cc.p(65, 950));
+        this._selectIcon.setPosition(this._activityLayerFit.itemBasePoint);
         this._selectIcon.setScale(0.9);
         this.addChild(this._selectIcon);
         this.switchLayer(this._layer[0]);
@@ -73,7 +75,7 @@ var ActivityLayer = cc.Layer.extend({
     _onClickLayer: function (index) {
         return function () {
             cc.log("MainMenuLayer _onClickLayer: " + index);
-            this._selectIcon.setPosition(cc.p(65 + 107 * index, 950));
+            this._selectIcon.setPosition(cc.p(this._activityLayerFit.itemBasePoint.x + this._activityLayerFit.itemOffsetX * index, this._activityLayerFit.itemBasePoint.y));
             this.switchLayer(this._layer[index]);
         }
     },

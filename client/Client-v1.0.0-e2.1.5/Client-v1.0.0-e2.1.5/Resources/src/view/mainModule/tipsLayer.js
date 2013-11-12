@@ -6,25 +6,30 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 var itemTitle = ['元神', '修炼', '天道', '竞技', '好友', 'VIP', '卡牌升级', '技能升级', '被动洗练', '星级进阶', '属性培养'];
 
 var TipsLayer = LazyLayer.extend({
+
+    _tipsLayerFit: null,
 
     init: function () {
         cc.log('TipsLayer init');
         if (!this._super) return false;
 
+        this._tipsLayerFit = gameFit.mainScene.tipsLayer;
+
         var lazyLayer = LazyLayer.create();
         this.addChild(lazyLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(cc.size(648, 855));
+        bgSprite.setContentSize(this._tipsLayerFit.bgSpriteContentSize);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
+        bgSprite.setPosition(this._tipsLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var title = StrokeLabel.create('攻略', "STHeitiTC-Medium", 40);
-        title.setPosition(cc.p(360, 1000));
+        title.setPosition(this._tipsLayerFit.titlePoint);
         this.addChild(title);
 
         var closeItem = cc.MenuItemImage.create(
@@ -33,13 +38,13 @@ var TipsLayer = LazyLayer.extend({
             this._onClickClose,
             this
         );
-        closeItem.setPosition(cc.p(648, 1020));
+        closeItem.setPosition(this._tipsLayerFit.closeItemPoint);
         var menu = cc.Menu.create(closeItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(10, 194, 740, 711));
+        var scrollViewLayer = MarkLayer.create(this._tipsLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
         menu.setTouchPriority(-200);
         menu.setPosition(cc.p(0, 0));
@@ -47,9 +52,9 @@ var TipsLayer = LazyLayer.extend({
 
         var scrollViewHeight = 11 * 250;
 
-        var scrollView = cc.ScrollView.create(cc.size(620, 700), scrollViewLayer);
+        var scrollView = cc.ScrollView.create(this._tipsLayerFit.scrollViewSize, scrollViewLayer);
         scrollView.setTouchPriority(-300);
-        scrollView.setPosition(cc.p(30, 260));
+        scrollView.setPosition(this._tipsLayerFit.scrollViewPoint);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();
         this.addChild(scrollView);
@@ -205,9 +210,8 @@ var TipsLayer = LazyLayer.extend({
 
         this.removeFromParent();
     }
-
-
 });
+
 
 TipsLayer.create = function () {
     var ret = new TipsLayer();
@@ -218,6 +222,7 @@ TipsLayer.create = function () {
 
     return null;
 };
+
 
 TipsLayer.pop = function () {
     var tipsLayer = TipsLayer.create();

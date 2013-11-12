@@ -125,7 +125,7 @@ var Shop = Entity.extend({
         cc.log("Shop payment: " + id);
 
         var that = this;
-        lzWindow.pomelo.request("area.vipHandler.buyVip", {
+        lz.server.request("area.vipHandler.buyVip", {
             id: id
         }, function (data) {
             cc.log("pomelo websocket callback data:");
@@ -171,7 +171,7 @@ var Shop = Entity.extend({
         cc.log("shop buyVipBox: " + id);
 
         var that = this;
-        lzWindow.pomelo.request("area.vipHandler.buyVipBox", {
+        lz.server.request("area.vipHandler.buyVipBox", {
             boxId: id
         }, function (data) {
             cc.log("pomelo websocket callback data:");
@@ -240,7 +240,7 @@ var Shop = Entity.extend({
         cc.log("shop buyProduct: " + id + "," + times);
 
         var that = this;
-        lzWindow.pomelo.request("area.buyHandler.buyProduct", {
+        lz.server.request("area.buyHandler.buyProduct", {
             id: id,
             times: times
         }, function (data) {

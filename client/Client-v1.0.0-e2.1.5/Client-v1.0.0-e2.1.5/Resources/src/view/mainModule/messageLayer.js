@@ -12,6 +12,8 @@
  * */
 
 var MessageLayer = cc.Layer.extend({
+    _messageLayerFit: null,
+
     _nowLayer: null,
     _battleMessageLayerItem: null,
     _friendMessageLayerItem: null,
@@ -22,10 +24,12 @@ var MessageLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._messageLayerFit = gameFit.mainScene.messageLayer;
+
         var headIcon = cc.Sprite.create(main_scene_image.icon1);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 962));
-        this.addChild(headIcon);
+        headIcon.setPosition(this._messageLayerFit.headIconPoint);
+        this.addChild(headIcon, 1);
 
         this._battleMessageLayerItem = cc.MenuItemImage.create(
             main_scene_image.button22,
@@ -34,7 +38,7 @@ var MessageLayer = cc.Layer.extend({
             this._onClickBattleMessageLayer,
             this
         );
-        this._battleMessageLayerItem.setPosition(cc.p(111, 1005));
+        this._battleMessageLayerItem.setPosition(this._messageLayerFit.battleMessageLayerItemPoint);
 
         this._friendMessageLayerItem = cc.MenuItemImage.create(
             main_scene_image.button23,
@@ -43,7 +47,7 @@ var MessageLayer = cc.Layer.extend({
             this._onClickFriendMessageLayer,
             this
         );
-        this._friendMessageLayerItem.setPosition(cc.p(254, 1005));
+        this._friendMessageLayerItem.setPosition(this._messageLayerFit.friendMessageLayerItemPoint);
 
         this._systemMessageLayerItem = cc.MenuItemImage.create(
             main_scene_image.button23,
@@ -52,7 +56,7 @@ var MessageLayer = cc.Layer.extend({
             this._onClickSystemMessageLayer,
             this
         );
-        this._systemMessageLayerItem.setPosition(cc.p(395, 1005));
+        this._systemMessageLayerItem.setPosition(this._messageLayerFit.systemMessageLayerItemPoint);
 
         var menu = cc.Menu.create(
             this._battleMessageLayerItem,
@@ -63,20 +67,20 @@ var MessageLayer = cc.Layer.extend({
         this.addChild(menu, 1);
 
         var battleMessageIcon = cc.Sprite.create(main_scene_image.icon128);
-        battleMessageIcon.setPosition(cc.p(105, 1000));
+        battleMessageIcon.setPosition(this._messageLayerFit.battleMessageIconPoint);
         this.addChild(battleMessageIcon, 2);
 
         var friendMessageIcon = cc.Sprite.create(main_scene_image.icon129);
-        friendMessageIcon.setPosition(cc.p(254, 1000));
+        friendMessageIcon.setPosition(this._messageLayerFit.friendMessageIconPoint);
         this.addChild(friendMessageIcon, 2);
 
         var systemMessageIcon = cc.Sprite.create(main_scene_image.icon130);
-        systemMessageIcon.setPosition(cc.p(395, 1000));
+        systemMessageIcon.setPosition(this._messageLayerFit.systemMessageIconPoint);
         this.addChild(systemMessageIcon, 2);
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
+        bgSprite.setPosition(this._messageLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         this._onClickBattleMessageLayer();

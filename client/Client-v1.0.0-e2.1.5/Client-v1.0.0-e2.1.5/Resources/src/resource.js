@@ -35,7 +35,7 @@ var main_scene_path = "res/main/";
 var main_scene_image = {
     bg1: main_scene_path + "bg1.png",
     bg2: main_scene_path + "bg2.png",
-    bg3: main_scene_path + "bg3.png",
+//    bg3: main_scene_path + "bg3.png",
     bg4: main_scene_path + "bg4.png",
     bg5: main_scene_path + "bg5.png",
     bg6: main_scene_path + "bg6.png",
@@ -124,9 +124,6 @@ var main_scene_image = {
     num_red_8: main_scene_path + "num_red_8.png",
     num_red_9: main_scene_path + "num_red_9.png",
 
-    pve_bg1: main_scene_path + "pve_bg1.png",
-    pvp_bg1: main_scene_path + "pvp_bg1.png",
-
     edit1: main_scene_path + "edit1.png",
     edit2: main_scene_path + "edit2.png",
     edit3: main_scene_path + "edit3.png",
@@ -149,8 +146,6 @@ var main_scene_image = {
     card_item_bg3: main_scene_path + "card_item_bg3.png",
     card_item_bg4: main_scene_path + "card_item_bg4.png",
     card_item_bg5: main_scene_path + "card_item_bg5.png",
-
-    card_item_frame: main_scene_path + "card_item_frame.png",
 
     button0: main_scene_path + "button0.png",
     button0s: main_scene_path + "button0s.png",
@@ -194,7 +189,7 @@ var main_scene_image = {
     button16s: main_scene_path + "button16s.png",
     button17: main_scene_path + "button17.png",
     button17s: main_scene_path + "button17s.png",
-//    button18: main_scene_path + "button18.png",
+    button18: main_scene_path + "button18.png",
 //    button18s: main_scene_path + "button18s.png",
     button19: main_scene_path + "button19.png",
     button19s: main_scene_path + "button19s.png",
@@ -275,7 +270,8 @@ var main_scene_image = {
     button59s: main_scene_path + "button59s.png",
     button60: main_scene_path + "button60.png",
     button60s: main_scene_path + "button60s.png",
-
+    button61: main_scene_path + "button61.png",
+    button61s: main_scene_path + "button61s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -318,7 +314,7 @@ var main_scene_image = {
     icon39: main_scene_path + "icon39.png",
     icon40: main_scene_path + "icon40.png",
     icon41: main_scene_path + "icon41.png",
-//    icon42: main_scene_path + "icon42.png",
+    icon42: main_scene_path + "icon42.png",
     icon43: main_scene_path + "icon43.png",
     icon44: main_scene_path + "icon44.png",
     icon45: main_scene_path + "icon45.png",
@@ -415,7 +411,7 @@ var main_scene_image = {
     icon138: main_scene_path + "icon138.png",
     icon139: main_scene_path + "icon139.png",
     icon140: main_scene_path + "icon140.png",
-//    icon141: main_scene_path + "icon141.png",
+    icon141: main_scene_path + "icon141.png",
     icon142: main_scene_path + "icon142.png",
     icon143: main_scene_path + "icon143.png",
     icon144: main_scene_path + "icon144.png",
@@ -547,7 +543,21 @@ var main_scene_image = {
     icon270: main_scene_path + "icon270.png",
     icon271: main_scene_path + "icon271.png",
     icon272: main_scene_path + "icon272.png",
-
+    icon273: main_scene_path + "icon273.png",
+    icon274: main_scene_path + "icon274.png",
+    icon275: main_scene_path + "icon275.png",
+    icon276: main_scene_path + "icon276.png",
+    icon277: main_scene_path + "icon277.png",
+    icon278: main_scene_path + "icon278.png",
+    icon279: main_scene_path + "icon279.png",
+    icon280: main_scene_path + "icon280.png",
+    icon281: main_scene_path + "icon281.png",
+    icon282: main_scene_path + "icon282.png",
+    icon283: main_scene_path + "icon283.png",
+    icon284: main_scene_path + "icon284.png",
+    icon285: main_scene_path + "icon285.png",
+    icon286: main_scene_path + "icon286.png",
+    icon287: main_scene_path + "icon287.png",
 
     // 特效
     battleNode: "res/ccb/battleNode.ccbi",
@@ -605,7 +615,6 @@ var main_scene_image = {
     p31: "res/effect/effect/p31.png",
     p32: "res/effect/effect/p32.png",
     p33: "res/effect/effect/p33.png",
-    p34: "res/effect/effect/p34.png",
 
 
     // 新手特效
@@ -631,8 +640,16 @@ var main_scene_image = {
     hand: "res/effect/NewPlayer/hand.png",
     light: "res/effect/NewPlayer/light.png",
     talking: "res/effect/NewPlayer/talking.png",
-    yuanshen: "res/effect/NewPlayer/yuanshen.png"
+    yuanshen: "res/effect/NewPlayer/yuanshen.png",
 
+    main_bg_music: "res/sound/main_bg_music.mp3",
+    battle_bg_music: "res/sound/battle_bg_music.mp3",
+
+//    battle_sound_heal: "res/sound/battle_sound_heal.mp3",
+//    battle_sound_miss: "res/sound/battle_sound_miss.mp3",
+    battle_sound_heal: "res/sound/battle_sound_heal.wav",
+    battle_sound_miss: "res/sound/battle_sound_miss.war",
+    button_sound: "res/sound/button_sound.mp3"
 };
 
 var main_scene_res = [

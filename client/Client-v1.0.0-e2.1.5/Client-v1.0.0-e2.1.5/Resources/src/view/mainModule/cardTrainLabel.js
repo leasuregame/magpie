@@ -21,6 +21,8 @@ var TRAIN_ONE_COUNT = 1;
 var TRAIN_TEN_COUNT = 10;
 
 var CardTrainLabel = cc.Layer.extend({
+    _cardTrainLabelFit: null,
+
     _trainType: TRAIN_CARD_NULL,
     _trainCount: TRAIN_ZERO_COUNT,
 
@@ -36,34 +38,36 @@ var CardTrainLabel = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._cardTrainLabelFit = gameFit.mainScene.cardTrainLabel;
+
         var cardItemBgSprite = cc.Sprite.create(main_scene_image.icon88);
-        cardItemBgSprite.setPosition(cc.p(364, 613));
+        cardItemBgSprite.setPosition(this._cardTrainLabelFit.cardItemBgSpritePoint);
         this.addChild(cardItemBgSprite);
 
         var elixirIcon = cc.LabelTTF.create("仙丹:", "STHeitiTC-Medium", 20);
         elixirIcon.setColor(cc.c3b(255, 239, 131));
         elixirIcon.setAnchorPoint(cc.p(0, 0.5));
-        elixirIcon.setPosition(cc.p(510, 755));
+        elixirIcon.setPosition(this._cardTrainLabelFit.elixirIconPoint);
         this.addChild(elixirIcon);
 
         this._elixirLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
         this._elixirLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._elixirLabel.setPosition(cc.p(605, 753));
+        this._elixirLabel.setPosition(this._cardTrainLabelFit.elixirLabelPoint);
         this.addChild(this._elixirLabel);
 
         var needElixirIcon = cc.LabelTTF.create("消耗仙丹:", "STHeitiTC-Medium", 20);
         needElixirIcon.setColor(cc.c3b(255, 239, 131));
         needElixirIcon.setAnchorPoint(cc.p(0, 0.5));
-        needElixirIcon.setPosition(cc.p(510, 724));
+        needElixirIcon.setPosition(this._cardTrainLabelFit.needElixirIconPoint);
         this.addChild(needElixirIcon);
 
         this._needElixirLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 20);
         this._needElixirLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._needElixirLabel.setPosition(cc.p(605, 722));
+        this._needElixirLabel.setPosition(this._cardTrainLabelFit.needElixirLabelPoint);
         this.addChild(this._needElixirLabel);
 
         this._resLabel = cc.Node.create();
-        this._resLabel.setPosition(cc.p(360, 510));
+        this._resLabel.setPosition(this._cardTrainLabelFit.resLabelPoint);
         this.addChild(this._resLabel);
 
         var resLabelBgSprite = cc.Sprite.create(main_scene_image.icon49);
@@ -104,7 +108,7 @@ var CardTrainLabel = cc.Layer.extend({
 
 
         this._tipLabel = cc.Node.create();
-        this._tipLabel.setPosition(cc.p(360, 380));
+        this._tipLabel.setPosition(this._cardTrainLabelFit.tipLabelPoint);
         this.addChild(this._tipLabel);
 
         var tipLabelBgSprite = cc.Sprite.create(main_scene_image.icon50);
@@ -112,7 +116,7 @@ var CardTrainLabel = cc.Layer.extend({
         this._tipLabel.addChild(tipLabelBgSprite);
 
         this._tipLabel = cc.Node.create();
-        this._tipLabel.setPosition(cc.p(360, 380));
+        this._tipLabel.setPosition(this._cardTrainLabelFit.tipLabelPoint);
         this.addChild(this._tipLabel);
 
         var tipLabel1 = cc.LabelTTF.create("每消耗 20 点仙丹可提升 1 点攻击或 2 点生命", "STHeitiTC-Medium", 22);
@@ -124,7 +128,7 @@ var CardTrainLabel = cc.Layer.extend({
         this._tipLabel.addChild(tipLabel2);
 
         this._helpLabel = cc.Node.create();
-        this._helpLabel.setPosition(cc.p(360, 380));
+        this._helpLabel.setPosition(this._cardTrainLabelFit.helpLabelPoint);
         this.addChild(this._helpLabel);
 
         var trainTypeLabel = cc.Sprite.create(main_scene_image.icon50);
@@ -210,7 +214,7 @@ var CardTrainLabel = cc.Layer.extend({
             this
         );
         selectLeadCardItem.setScale(1.1);
-        selectLeadCardItem.setPosition(cc.p(360, 685));
+        selectLeadCardItem.setPosition(this._cardTrainLabelFit.selectLeadCardItemPoint);
 
         this._trainItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -220,7 +224,7 @@ var CardTrainLabel = cc.Layer.extend({
             this._onClickTrain,
             this
         );
-        this._trainItem.setPosition(cc.p(360, 270));
+        this._trainItem.setPosition(this._cardTrainLabelFit.trainItemPoint);
 
 
         var menu = cc.Menu.create(selectLeadCardItem, this._trainItem);
@@ -228,7 +232,7 @@ var CardTrainLabel = cc.Layer.extend({
         this.addChild(menu);
 
         this._selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon51);
-        this._selectLeadCardIcon.setPosition(cc.p(360, 685));
+        this._selectLeadCardIcon.setPosition(this._cardTrainLabelFit.selectLeadCardIconPoint);
         this.addChild(this._selectLeadCardIcon);
 
         return true;
@@ -272,7 +276,7 @@ var CardTrainLabel = cc.Layer.extend({
         } else {
             this._leadCardHalfNode = CardHalfNode.create(this._leadCard);
             this._leadCardHalfNode.setScale(1.1);
-            this._leadCardHalfNode.setPosition(cc.p(360, 685));
+            this._leadCardHalfNode.setPosition(this._cardTrainLabelFit.leadCardHalfNodePoint);
             this.addChild(this._leadCardHalfNode, 1);
 
             this._resLabel.setVisible(true);

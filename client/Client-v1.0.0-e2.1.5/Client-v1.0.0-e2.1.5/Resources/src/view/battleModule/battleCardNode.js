@@ -181,26 +181,19 @@ var BattleCardNode = cc.Node.extend({
 
         var ccbNode = null;
 
-        if (this._skillType === 1) {
+        if(this._index < 7) {
             ccbNode = cc.BuilderReader.load(main_scene_image.effect11, this);
-        }
-
-        if (this._skillType === 2) {
+        } else {
             ccbNode = cc.BuilderReader.load(main_scene_image.effect12, this);
-        }
-
-        if (this._skillType === 3) {
-            ccbNode = cc.BuilderReader.load(main_scene_image.effect13, this);
-        }
-
-        if (this._skillType === 4) {
-            ccbNode = cc.BuilderReader.load(main_scene_image.effect13, this);
         }
 
         if (ccbNode) {
             cc.log(ccbNode);
 
-            ccbNode.controller.label.setString(this._skillName);
+            var len = this._skillName.length;
+            for(var i = 0; i < len; ++i) {
+                ccbNode.controller["label" + i].setString(this._skillName[i]);
+            }
         }
 
         return ccbNode;

@@ -13,6 +13,8 @@
 
 
 var CardUpgradeLabel = cc.Layer.extend({
+    _cardUpgradeLabelFit: null,
+
     _leadCard: null,
     _retinueCard: [],
     _leadCardHalfNode: null,
@@ -45,12 +47,14 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._cardUpgradeLabelFit = gameFit.mainScene.cardUpgradeLabel;
+
         var cardItemBgSprite = cc.Sprite.create(main_scene_image.icon48);
-        cardItemBgSprite.setPosition(cc.p(365, 600));
+        cardItemBgSprite.setPosition(this._cardUpgradeLabelFit.cardItemBgSpritePoint);
         this.addChild(cardItemBgSprite);
 
         this._resLabel = cc.Node.create();
-        this._resLabel.setPosition(cc.p(360, 510));
+        this._resLabel.setPosition(this._cardUpgradeLabelFit.resLabelPoint);
         this.addChild(this._resLabel);
 
         var resLabelBgSprite = cc.Sprite.create(main_scene_image.icon49);
@@ -101,15 +105,15 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._resLabel.addChild(this._yellowProgress);
 
         var helpBgSprite = cc.Sprite.create(main_scene_image.icon50);
-        helpBgSprite.setPosition(cc.p(360, 380));
+        helpBgSprite.setPosition(this._cardUpgradeLabelFit.helpBgSpritePoint);
         this.addChild(helpBgSprite);
 
         this._tipLabel = cc.LabelTTF.create("主卡通过吞噬从卡提升等级", "STHeitiTC-Medium", 22);
-        this._tipLabel.setPosition(cc.p(360, 380));
+        this._tipLabel.setPosition(this._cardUpgradeLabelFit.tipLabelPoint);
         this.addChild(this._tipLabel);
 
         this._helpLabel = cc.Node.create();
-        this._helpLabel.setPosition(cc.p(360, 380));
+        this._helpLabel.setPosition(this._cardUpgradeLabelFit.helpLabelPoint);
         this.addChild(this._helpLabel);
 
         var expIcon = cc.LabelTTF.create("获得经验:", "STHeitiTC-Medium", 22);
@@ -146,7 +150,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             this
         );
         selectLeadCardItem.setScale(1.1);
-        selectLeadCardItem.setPosition(cc.p(360, 685));
+        selectLeadCardItem.setPosition(this._cardUpgradeLabelFit.selectLeadCardItemPoint);
 
         this._upgradeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -156,7 +160,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._onClickUpgrade,
             this
         );
-        this._upgradeItem.setPosition(cc.p(260, 270));
+        this._upgradeItem.setPosition(this._cardUpgradeLabelFit.upgradeItemPoint);
 
         this._selectRetinueCardItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -166,7 +170,7 @@ var CardUpgradeLabel = cc.Layer.extend({
             this._onClickSelectRetinueCard,
             this
         );
-        this._selectRetinueCardItem.setPosition(cc.p(460, 270));
+        this._selectRetinueCardItem.setPosition(this._cardUpgradeLabelFit.selectRetinueCardItemPoint);
 
         var menu = cc.Menu.create(
             selectLeadCardItem,
@@ -177,7 +181,7 @@ var CardUpgradeLabel = cc.Layer.extend({
         this.addChild(menu);
 
         this._selectLeadCardIcon = cc.Sprite.create(main_scene_image.icon51);
-        this._selectLeadCardIcon.setPosition(cc.p(360, 685));
+        this._selectLeadCardIcon.setPosition(this._cardUpgradeLabelFit.selectLeadCardIconPoint);
         this.addChild(this._selectLeadCardIcon);
 
         return true;
@@ -230,7 +234,7 @@ var CardUpgradeLabel = cc.Layer.extend({
         } else {
             this._leadCardHalfNode = CardHalfNode.create(this._leadCard);
             this._leadCardHalfNode.setScale(1.1);
-            this._leadCardHalfNode.setPosition(cc.p(360, 685));
+            this._leadCardHalfNode.setPosition(this._cardUpgradeLabelFit.leadCardHalfNodePoint);
             this.addChild(this._leadCardHalfNode, 1);
 
             this._hpLabel.setString(this._leadCard.get("hp"));
@@ -437,7 +441,7 @@ var CardUpgradeLabel = cc.Layer.extend({
                 loops: 1,
                 delay: 0.1,
                 zOrder: 10,
-                position: cc.p(275, 475),
+                position: that._cardUpgradeLabelFit.effectPoint,
                 clear: true
             });
         }, cardIdList);

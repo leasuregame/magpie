@@ -25,6 +25,8 @@ var rewardGoodsUrl = {
 };
 
 var SignInLayer = LazyLayer.extend({
+    _signInLayerFit: null,
+
     _turnLeftItem: null,
     _turnRightItem: null,
     _scrollView: null,
@@ -47,15 +49,17 @@ var SignInLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this._signInLayerFit = gameFit.mainScene.signInLayer;
+
         this._index = 0;
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(cc.size(600, 750));
-        bgSprite.setPosition(cc.p(362, 565));
+        bgSprite.setContentSize(this._signInLayerFit.bgSpriteSize);
+        bgSprite.setPosition(this._signInLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var titleLabel = cc.Sprite.create(main_scene_image.icon187);
-        titleLabel.setPosition(cc.p(360, 905));
+        titleLabel.setPosition(this._signInLayerFit.titleLabelPoint);
         this.addChild(titleLabel);
 
 //        var closeItem = cc.MenuItemImage.create(
@@ -74,7 +78,7 @@ var SignInLayer = LazyLayer.extend({
         );
         this._turnLeftItem.setRotation(180);
         this._turnLeftItem.setScale(0.8);
-        this._turnLeftItem.setPosition(cc.p(87, 700));
+        this._turnLeftItem.setPosition(this._signInLayerFit.turnLeftItemPoint);
 
         this._turnRightItem = cc.MenuItemImage.create(
             main_scene_image.icon37,
@@ -83,25 +87,40 @@ var SignInLayer = LazyLayer.extend({
             this
         );
         this._turnRightItem.setScale(0.8);
-        this._turnRightItem.setPosition(cc.p(631, 700));
+        this._turnRightItem.setPosition(this._signInLayerFit.turnRightItemPoint);
 
         this._signInItem = cc.MenuItemImage.create(
-            main_scene_image.button41,
-            main_scene_image.button41s,
-            main_scene_image.button20d,
+            main_scene_image.button10,
+            main_scene_image.button10s,
+            main_scene_image.button9d,
             this._onClickSignIn,
             this
         );
-        this._signInItem.setPosition(cc.p(560, 470));
+        this._signInItem.setScale(0.8);
+        this._signInItem.setPosition(this._signInLayerFit.signInItemPoint);
 
         this._remedySignInItem = cc.MenuItemImage.create(
-            main_scene_image.button20,
-            main_scene_image.button20s,
-            main_scene_image.button20d,
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.button9d,
             this._onClickRemedySignIn,
             this
         );
-        this._remedySignInItem.setPosition(cc.p(435, 470));
+        this._remedySignInItem.setScale(0.8);
+        this._remedySignInItem.setPosition(this._signInLayerFit.remedySignInItemPoint);
+
+        var specialOfferIcon = cc.LayerColor.create(cc.c4b(66, 31, 28, 255), 108, 30);
+        specialOfferIcon.setPosition(this._signInLayerFit.specialOfferIconPoint);
+        this.addChild(specialOfferIcon);
+
+        var sprite = cc.Sprite.create(main_scene_image.icon148);
+        sprite.setScale(0.7);
+        sprite.setPosition(this._signInLayerFit.spritePoint);
+        this.addChild(sprite);
+
+        var spend = cc.LabelTTF.create('20/次', "STHeitiTC-Medium", 20);
+        spend.setPosition(this._signInLayerFit.spendPoint);
+        this.addChild(spend);
 
         var menu = cc.Menu.create(
 //            closeItem,
@@ -114,27 +133,27 @@ var SignInLayer = LazyLayer.extend({
         this.addChild(menu);
 
         var signInIcon = cc.Sprite.create(main_scene_image.icon183);
-        signInIcon.setPosition(cc.p(560, 470));
+        signInIcon.setPosition(this._signInLayerFit.signInIconPoint);
         this.addChild(signInIcon);
 
         var remedySignInIcon = cc.Sprite.create(main_scene_image.icon184);
-        remedySignInIcon.setPosition(cc.p(435, 470));
+        remedySignInIcon.setPosition(this._signInLayerFit.remedySignInIconPoint);
         this.addChild(remedySignInIcon);
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(105, 510, 510, 366));
+        var scrollViewLayer = MarkLayer.create(this._signInLayerFit.scrollViewLayerRect);
 
         this._montyLabel = [];
         for (var i = 0; i < MAX_SIGN_IN_HISTORY; ++i) {
             var monthLabel = MonthLabel.create(i);
-            monthLabel.setPosition(cc.p((MAX_SIGN_IN_HISTORY - i - 1) * 510, 0));
+            monthLabel.setPosition(cc.p((MAX_SIGN_IN_HISTORY - i - 1) * this._signInLayerFit.monthLabelOffsetX, 0));
             scrollViewLayer.addChild(monthLabel);
 
             this._montyLabel[i] = monthLabel;
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(510, 366), scrollViewLayer);
+        this._scrollView = cc.ScrollView.create(this._signInLayerFit.scrollViewSize, scrollViewLayer);
         this._scrollView.setTouchPriority(-300);
-        this._scrollView.setPosition(cc.p(105, 510));
+        this._scrollView.setPosition(this._signInLayerFit.scrollViewPoint);
         this._scrollView.setBounceable(false);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         this._scrollView.updateInset();
@@ -144,11 +163,11 @@ var SignInLayer = LazyLayer.extend({
         this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
 
         var signInCountIcon = cc.Sprite.create(main_scene_image.icon188);
-        signInCountIcon.setPosition(cc.p(235, 470));
+        signInCountIcon.setPosition(this._signInLayerFit.signInCountIconPoint);
         this.addChild(signInCountIcon);
 
         this._signInCountLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
-        this._signInCountLabel.setPosition(cc.p(330, 470));
+        this._signInCountLabel.setPosition(this._signInLayerFit.signInCountLabelPoint);
         this.addChild(this._signInCountLabel);
 
         var rewardList = gameData.signIn.getRewardList();
@@ -157,7 +176,7 @@ var SignInLayer = LazyLayer.extend({
         this._elementList = [];
 
         for (var i = 0; i < len; ++i) {
-            var point = cc.p(160 + 100 * i, 380);
+            var point = cc.p(this._signInLayerFit.pointBasePoint.x + this._signInLayerFit.pointOffsetX * i, this._signInLayerFit.pointBasePoint.y);
 
             var rewardItem = cc.MenuItemImage.create(
                 main_scene_image.button40,
@@ -173,18 +192,34 @@ var SignInLayer = LazyLayer.extend({
             rewardIcon.setPosition(point);
             this.addChild(rewardIcon);
 
-            var alreadyRewardLabel = cc.Sprite.create(main_scene_image.icon194);
-            alreadyRewardLabel.setPosition(point);
-            this.addChild(alreadyRewardLabel);
-            alreadyRewardLabel.setVisible(false);
+            var readyRewardItem = cc.MenuItemImage.createWithIcon(
+                main_scene_image.button61,
+                main_scene_image.button61s,
+                main_scene_image.icon274,
+                this._onClickReceiveReward(i),
+                this
+            );
+            readyRewardItem.setPosition(point);
+            menu.addChild(readyRewardItem);
+            readyRewardItem.setVisible(false);
+
+//            var readyRewardIcon = cc.Sprite.create(main_scene_image.icon274);
+//            readyRewardIcon.setPosition(point);
+//            this.addChild(readyRewardIcon);
+//            readyRewardIcon.setVisible(false);
+
+            var alreadyRewardIcon = cc.Sprite.create(main_scene_image.icon194);
+            alreadyRewardIcon.setPosition(point);
+            this.addChild(alreadyRewardIcon);
+            alreadyRewardIcon.setVisible(false);
 
             var rewardLabel = cc.Node.create();
-            rewardLabel.setPosition(cc.p(360, 300));
+            rewardLabel.setPosition(this._signInLayerFit.rewardLabelPoint);
             this.addChild(rewardLabel);
             rewardLabel.setVisible(i == 0);
 
             var rewardBgSprite = cc.Scale9Sprite.create(main_scene_image.icon185);
-            rewardBgSprite.setContentSize(cc.size(512, 96));
+            rewardBgSprite.setContentSize(this._signInLayerFit.rewardBgSpriteSize);
             rewardLabel.addChild(rewardBgSprite);
 
             var offset = cc.p(-209, 0);
@@ -206,7 +241,8 @@ var SignInLayer = LazyLayer.extend({
             this._elementList[i] = {
                 rewardItem: rewardItem,
                 rewardIcon: rewardIcon,
-                alreadyRewardLabel: alreadyRewardLabel,
+                readyRewardItem: readyRewardItem,
+                alreadyRewardIcon:alreadyRewardIcon,
                 rewardLabel: rewardLabel
             };
 
@@ -239,10 +275,21 @@ var SignInLayer = LazyLayer.extend({
 
         for (var i = 0; i < 5; ++i) {
             var visible = signIn.canReceive(this._index, i);
-
             this._elementList[i].rewardIcon.setVisible(visible);
-            this._elementList[i].alreadyRewardLabel.setVisible(!visible);
+            this._elementList[i].alreadyRewardIcon.setVisible(!visible);
+
+            var monthMark = gameData.signIn.getMonthMark(0);
+            var table = outputTables.signIn_rewards.rows[i + 1];
+            var count = table.count != -1 ? table.count : monthMark.days;
+            if(monthMark.count >= count) {
+                this._elementList[i].readyRewardItem.setVisible(visible);
+                this._elementList[i].rewardIcon.setVisible(false);
+                this._elementList[i].alreadyRewardIcon.setVisible(!visible);
+                this._elementList[i].rewardItem.setVisible(!visible);
+            }
         }
+
+
     },
 
     _onClickClose: function () {
@@ -287,15 +334,16 @@ var SignInLayer = LazyLayer.extend({
                 element.rewardItem.setEnabled(i != id);
                 element.rewardLabel.setVisible(i == id);
             }
+            var signIn = gameData.signIn;
 
             if (this._index == 0) {
                 var monthMark = gameData.signIn.getMonthMark(0);
                 var table = outputTables.signIn_rewards.rows[id + 1];
                 var count = table.count != -1 ? table.count : monthMark.days;
 
-                if (monthMark.count >= count) {
+                if (monthMark.count >= count && signIn.canReceive(this._index, id)) {
                     var that = this;
-                    gameData.signIn.receiveReward(function (data) {
+                    signIn.receiveReward(function (data) {
                         cc.log(data);
 
                         that.update();

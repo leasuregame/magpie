@@ -136,7 +136,7 @@ var CardList = Entity.extend({
         cc.log(cardIdList);
 
         var that = this;
-        lzWindow.pomelo.request("area.trainHandler.sellCards", {
+        lz.server.request("area.trainHandler.sellCards", {
             ids: cardIdList
         }, function (data) {
             cc.log(data);

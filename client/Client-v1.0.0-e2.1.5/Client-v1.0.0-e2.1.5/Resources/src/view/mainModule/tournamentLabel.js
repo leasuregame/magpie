@@ -36,20 +36,29 @@ var TournamentLabel = cc.Node.extend({
         this._target = target;
         this._player = data;
 
-        var playerItem = cc.MenuItemImage.create(
-            main_scene_image.button15,
-            main_scene_image.button15s,
-            this._onClickPlayer,
-            this
-        );
-        playerItem.setAnchorPoint(cc.p(0, 0));
-        playerItem.setPosition(cc.p(0, 0));
-        playerItem.setScaleX(1.05);
+        var player = gameData.player;
 
-        var playerItemMenu = LazyMenu.create(playerItem);
-        playerItemMenu.setPosition(cc.p(0, 0));
-        this.addChild(playerItemMenu);
+        if(this._player.playerId != player.get("id")) {
+            var playerItem = cc.MenuItemImage.create(
+                main_scene_image.button15,
+                main_scene_image.button15s,
+                this._onClickPlayer,
+                this
+            );
+            playerItem.setAnchorPoint(cc.p(0, 0));
+            playerItem.setPosition(cc.p(0, 0));
+            playerItem.setScaleX(1.05);
 
+            var playerItemMenu = LazyMenu.create(playerItem);
+            playerItemMenu.setPosition(cc.p(0, 0));
+            this.addChild(playerItemMenu);
+        } else {
+            var myselfSprite = cc.Sprite.create(main_scene_image.button18);
+            myselfSprite.setScaleX(1.05);
+            myselfSprite.setAnchorPoint(cc.p(0, 0));
+            myselfSprite.setPosition(cc.p(0, 0));
+            this.addChild(myselfSprite);
+        }
         var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
         nameIcon.setContentSize(cc.size(155, 35));
         nameIcon.setAnchorPoint(cc.p(0, 0.5));
@@ -67,7 +76,6 @@ var TournamentLabel = cc.Node.extend({
         rankingLabel.setPosition(cc.p(95, 42));
         this.addChild(rankingLabel);
 
-        var player = gameData.player;
         if (this._player.playerId != player.get("id")) {
             var functionItem = null;
 
@@ -113,13 +121,7 @@ var TournamentLabel = cc.Node.extend({
             abilityLabel.setPosition(cc.p(530, 48));
             this.addChild(abilityLabel);
 
-            playerItem.setEnabled(false);
-
-            var myselfSprite = cc.Sprite.create(main_scene_image.icon257);
-            myselfSprite.setScaleX(1.05);
-            myselfSprite.setAnchorPoint(cc.p(0, 0));
-            myselfSprite.setPosition(cc.p(0, 0));
-            this.addChild(myselfSprite);
+            //playerItem.setEnabled(false);
         }
 
         var cardList = this._player.cardList;

@@ -42,36 +42,41 @@ var Friend = Entity.extend({
         cc.log("friend sync");
 
         var that = this;
-        lzWindow.pomelo.request("area.playerHandler.getFriends", {}, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
+        lz.server.request(
+            "area.playerHandler.getFriends",
+            {},
+            function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
 
-            if (data.code == 200) {
-                cc.log("sync success");
+                if (data.code == 200) {
+                    cc.log("sync success");
 
-                var msg = data.msg;
+                    var msg = data.msg;
 
-                that.update(msg);
+                    that.update(msg);
 
-                lzWindow.pomelo.on("onBless", function (data) {
-                    cc.log("***** on bless:");
-                    cc.log(data);
+                    lz.server.on("onBless", function (data) {
+                        cc.log("***** on bless:");
+                        cc.log(data);
 
-                    that._onBless(data.msg);
-                });
+                        that._onBless(data.msg);
+                    });
 
-                lzWindow.pomelo.on("onFriendAction", function (data) {
-                    cc.log("***** on friend action:");
-                    cc.log(data);
+                    lz.server.on("onFriendAction", function (data) {
+                        cc.log("***** on friend action:");
+                        cc.log(data);
 
-                    that._onFriendAction(data.msg);
-                });
-            } else {
-                cc.log("sync fail");
+                        that._onFriendAction(data.msg);
+                    });
+                } else {
+                    cc.log("sync fail");
 
-                that.sync();
-            }
-        });
+                    that.sync();
+                }
+            },
+            true
+        );
     },
 
     _onBless: function (msg) {
@@ -159,7 +164,7 @@ var Friend = Entity.extend({
         }
 
         var that = this;
-        lzWindow.pomelo.request("area.messageHandler.addFriend", {
+        lz.server.request("area.messageHandler.addFriend", {
             friendName: name
         }, function (data) {
             cc.log("pomelo websocket callback data:");
@@ -181,7 +186,7 @@ var Friend = Entity.extend({
         cc.log("Friend deleteFriend");
 
         var that = this;
-        lzWindow.pomelo.request("area.messageHandler.deleteFriend", {
+        lz.server.request("area.messageHandler.deleteFriend", {
             friendId: friendId
         }, function (data) {
             cc.log("pomelo websocket callback data:");
@@ -209,7 +214,7 @@ var Friend = Entity.extend({
         var friend = this.getFriend(friendId);
         if (friend) {
             var that = this;
-            lzWindow.pomelo.request("area.messageHandler.giveBless", {
+            lz.server.request("area.messageHandler.giveBless", {
                 friendId: friendId
             }, function (data) {
                 cc.log("pomelo websocket callback data:");
@@ -243,7 +248,7 @@ var Friend = Entity.extend({
         var friend = this.getFriend(friendId);
         if (friend && friend.msgId) {
             var that = this;
-            lzWindow.pomelo.request("area.messageHandler.receiveBless", {
+            lz.server.request("area.messageHandler.receiveBless", {
                 msgId: friend.msgId
             }, function (data) {
                 cc.log("pomelo websocket callback data:");

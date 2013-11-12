@@ -33,14 +33,17 @@ var appFiles = [
 
     'src/table/table.js',
 
-    'src/model/pomelo-client.js',
-    'src/model/serverAPI.js',
-
-    'src/model/base.js',
-    'src/model/singleton.js',
-    'src/model/gameConfig.js',
     'src/model/event.js',
     'src/model/entity.js',
+
+    'src/model/lz.js',
+    'src/model/pomelo.js',
+    'src/model/server.js',
+
+    'src/model/singleton.js',
+    'src/model/gameConfig.js',
+
+    'src/model/gameFit.js',
     'src/model/user.js',
     'src/model/player.js',
     'src/model/card.js',
@@ -67,7 +70,6 @@ var appFiles = [
     'src/model/battleLogPool.js',
     'src/model/battleLog.js',
     'src/model/battleStep.js',
-    'src/model/gameFlow.js',
 
     'src/model/gameData.js',
 
@@ -80,10 +82,12 @@ var appFiles = [
     'src/controls/strokeLabel.js',
     'src/controls/LzMenuItem.js',
     'src/controls/tipLayer.js',
+    'src/controls/colorLabelTTF.js',
 
     'src/view/loginModule/loginScene.js',
     'src/view/loginModule/loginLayer.js',
     'src/view/loginModule/logoutLayer.js',
+    'src/view/loginModule/newPlayerLayer.js',
     'src/view/loginModule/registerScene.js',
     'src/view/loginModule/registerLayer.js',
 
@@ -162,6 +166,7 @@ var appFiles = [
     'src/view/mainModule/mainBgLayer.js',
     'src/view/mainModule/mainLayer.js',
     'src/view/mainModule/mainMenuLayer.js',
+    'src/view/mainModule/noviceTeachingLayer.js',
     'src/view/mainModule/mainScene.js',
 
     'src/view/battleModule/actionFactory.js',
@@ -173,9 +178,7 @@ var appFiles = [
     'src/view/battleModule/battleScene.js',
     'src/view/battleModule/battleSpiritNode.js',
     'src/view/battleModule/cloudLayer.js',
-    'src/view/battleModule/skillFactory.js',
-
-    'src/myApp.js'                   //add your own files in order here
+    'src/view/battleModule/skillFactory.js'
 ];
 
 cc.dumpConfig();
@@ -191,9 +194,12 @@ director.setDisplayStats(false);
 // set FPS. the default value is 1.0/60 if you don't call this
 director.setAnimationInterval(1.0 / 30);
 
+// fit dev
+gameFitAdapter();
+
 // create a scene. it's an autorelease object
-var myScene = LoginScene.create();
+var loginScene = LoginScene.create();
 
 // run
 //director.runWithScene(myScene);
-director.replaceScene(myScene);
+director.replaceScene(loginScene);

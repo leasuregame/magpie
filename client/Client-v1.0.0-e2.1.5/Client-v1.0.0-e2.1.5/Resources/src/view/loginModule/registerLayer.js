@@ -23,19 +23,19 @@ var RegisterLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        var accountLabel = cc.LabelTTF.create("账号(必填):", "Marker Felt", 30);
+        var accountLabel = cc.LabelTTF.create("账号(必填):", "STHeitiTC-Medium", 30);
         accountLabel.setPosition(cc.p(150, 700));
         this.addChild(accountLabel);
 
-        var passwordLabel = cc.LabelTTF.create("密码(必填):", "Marker Felt", 30);
+        var passwordLabel = cc.LabelTTF.create("密码(必填):", "STHeitiTC-Medium", 30);
         passwordLabel.setPosition(cc.p(150, 600));
         this.addChild(passwordLabel);
 
-        var passwordAgainLabel = cc.LabelTTF.create("重复密码:", "Marker Felt", 30);
+        var passwordAgainLabel = cc.LabelTTF.create("重复密码:", "STHeitiTC-Medium", 30);
         passwordAgainLabel.setPosition(cc.p(150, 500));
         this.addChild(passwordAgainLabel);
 
-        var nameLabel = cc.LabelTTF.create("昵称(可选):", "Marker Felt", 30);
+        var nameLabel = cc.LabelTTF.create("昵称(可选):", "STHeitiTC-Medium", 30);
         nameLabel.setPosition(cc.p(150, 400));
         this.addChild(nameLabel);
 
@@ -71,7 +71,7 @@ var RegisterLayer = cc.Layer.extend({
         this._nameEditBox.setMaxLength(18);
         this.addChild(this._nameEditBox);
 
-        var registerAndLoginButton = cc.MenuItemFont.create("注册", this._onClickRegisterAndLogin, this);
+        var registerAndLoginButton = cc.MenuItemFont.create("注册", this._onClickRegister, this);
         registerAndLoginButton.setPosition(260, 250);
 
         var backButton = cc.MenuItemFont.create("返回", this._onClickBack, this);
@@ -84,22 +84,58 @@ var RegisterLayer = cc.Layer.extend({
         return true;
     },
 
-    _onClickRegisterAndLogin: function () {
-        cc.log("_onClickRegisterAndLogin");
+    canRegister: function (account, password, passwordAgain) {
+        cc.log("User canRegister");
+        
+        if (!account) {
+            TipLayer.tip("请输入账号");
+            return false;
+        }
 
-        lzWindow.pomelo.request('connector.userHandler.register', {
-            account: this._accountEditBox.getText(),
-            password: this._passwordEditBox.getText()
-            //name: this._nameEditBox.getText()
-        }, function (data) {
+        if (!password) {
+            TipLayer.tip("请输入密码");
+            return false;
+        }
+
+        if (!passwordAgain) {
+            TipLayer.tip("请再次输入密码");
+            return false;
+        }
+
+        if (password != passwordAgain) {
+            TipLayer.tip("两次密码输入不一致");
+            return false;
+        }
+
+        return true;
+    },
+
+    _onClickRegister: function () {
+        cc.log("RegisterLayer _onClickRegister");
+
+        var user = gameData.user;
+
+        var account = this._accountEditBox.getText();
+        var password = this._passwordEditBox.getText();
+        var passwordAgain = this._passwordAgainEditBox.getText();
+        var name = this._nameEditBox.getText();
+
+        if (!this.canRegister(account, password, passwordAgain)) {
+            return;
+        }
+
+        var that = this;
+        user.register(function (data) {
             cc.log(data);
-        });
+
+            that.getParent().switchLayer(LoginLayer);
+        }, account, password, name);
     },
 
     _onClickBack: function () {
-        cc.log("_onClickBack");
-        cc.Director.getInstance().replaceScene(LoginScene.create());
-//        cc.Director.getInstance().replaceScene(cc.TransitionPageTurn.create(1, LoginScene.create(), false));
+        cc.log("RegisterLayer _onClickBack");
+
+        this.getParent().switchLayer(LoginLayer);
     }
 });
 

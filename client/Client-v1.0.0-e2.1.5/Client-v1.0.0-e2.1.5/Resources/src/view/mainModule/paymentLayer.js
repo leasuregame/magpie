@@ -13,14 +13,18 @@
 
 
 var PaymentLayer = LazyLayer.extend({
+    _paymentLayerFit: null,
+
     init: function () {
         cc.log("PaymentLayer init");
 
         if (!this._super()) return false;
 
+        this._paymentLayerFit = gameFit.mainScene.paymentLayer;
+
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(540, 720));
-        bgSprite.setPosition(cc.p(360, 580));
+        bgSprite.setPosition(this._paymentLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var closeItem = cc.MenuItemImage.create(
@@ -29,16 +33,17 @@ var PaymentLayer = LazyLayer.extend({
             this._onClickClose,
             this
         );
-        closeItem.setPosition(cc.p(605, 925));
+        closeItem.setPosition(this._paymentLayerFit.closeItemPoint);
 
         var vipPrivilegeItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button38,
-            main_scene_image.button38s,
+            main_scene_image.button21,
+            main_scene_image.button21s,
             main_scene_image.icon164,
             this._onClickVipPrivilege,
             this
         );
-        vipPrivilegeItem.setPosition(cc.p(530, 840));
+        vipPrivilegeItem.setScale(1.1);
+        vipPrivilegeItem.setPosition(this._paymentLayerFit.vipPrivilegeItemPoint);
 
         var menu = cc.Menu.create(
             closeItem,
@@ -48,27 +53,61 @@ var PaymentLayer = LazyLayer.extend({
         this.addChild(menu);
 
         var tipIcon = cc.Sprite.create(main_scene_image.icon160);
-        tipIcon.setPosition(cc.p(260, 900));
+        tipIcon.setPosition(this._paymentLayerFit.tipIconPoint);
         this.addChild(tipIcon);
 
         var nextVipCash = gameData.shop.getNextVipCash();
         var vip = gameData.player.get("vip");
         cc.log(nextVipCash);
         if (nextVipCash) {
-            var tipLabel = cc.LabelTTF.create(
-                "您是VIP" + vip + "再冲" + nextVipCash + "元即可享受VIP" + (vip + 1),
-                "STHeitiTC-Medium",
-                18
+            var tipLabel = ColorLabelTTF.create(
+                {
+                    string: "您是",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20
+                },
+                {
+                    string: "VIP" + vip,
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20,
+                    isStroke: true,
+                    color: cc.c3b(255, 248, 69)
+                },
+                {
+                    string: "再冲",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20
+                },
+                {
+                    string: nextVipCash,
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20,
+                    isStroke: true,
+                    color: cc.c3b(255, 248, 69)
+                },
+                {
+                    string: "元即可享受",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20
+                },
+                {
+                    string: "VIP" + (vip + 1),
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20,
+                    isStroke: true,
+                    color: cc.c3b(255, 248, 69)
+                }
             );
+
             tipLabel.setAnchorPoint(cc.p(0, 0.5));
-            tipLabel.setPosition(cc.p(120, 840));
+            tipLabel.setPosition(this._paymentLayerFit.tipLabelPoint);
             this.addChild(tipLabel);
         }
 
         var paymentTypeList = gameData.shop.getPaymentTypeList();
         var len = paymentTypeList.length;
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(107, 260, 500, 550));
+        var scrollViewLayer = MarkLayer.create(this._paymentLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
         menu.setTouchPriority(-200);
         menu.setPosition(cc.p(0, 0));
@@ -125,9 +164,9 @@ var PaymentLayer = LazyLayer.extend({
 
         }
 
-        var scrollView = cc.ScrollView.create(cc.size(500, 550), scrollViewLayer);
+        var scrollView = cc.ScrollView.create(this._paymentLayerFit.scrollViewSize, scrollViewLayer);
         scrollView.setTouchPriority(-300);
-        scrollView.setPosition(cc.p(108, 260));
+        scrollView.setPosition(this._paymentLayerFit.scrollViewPoint);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();
         this.addChild(scrollView);

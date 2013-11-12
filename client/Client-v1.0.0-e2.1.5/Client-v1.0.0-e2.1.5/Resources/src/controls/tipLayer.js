@@ -44,7 +44,7 @@ var TipLayer = cc.Layer.extend({
         label.setPosition(cc.p(360, 550));
         this.addChild(label);
 
-        var strLabel = cc.LabelTTF.create(str, fontName, fontSize);
+        var strLabel = StrokeLabel.create(str, fontName, fontSize);
         strLabel.setColor(color);
         label.addChild(strLabel, 1);
 
@@ -89,15 +89,23 @@ TipLayer.create = function () {
 
 
 (function () {
-    var tipLayer = null;
+    var _tipLayer = null;
 
     TipLayer.getInstance = function () {
-        if (tipLayer == null) {
-            tipLayer = TipLayer.create();
-            cc.Director.getInstance().getRunningScene().addChild(tipLayer, 10);
+        if (_tipLayer == null) {
+            _tipLayer = TipLayer.create();
+            cc.Director.getInstance().getRunningScene().addChild(_tipLayer, 10);
         }
 
-        return tipLayer;
+        return _tipLayer;
+    };
+
+    TipLayer.destroy = function () {
+        if (_tipLayer) {
+            _tipLayer.removeFromParent();
+        }
+
+        _tipLayer = null;
     };
 
     TipLayer.tip = function (str, color, fontName, fontSize) {

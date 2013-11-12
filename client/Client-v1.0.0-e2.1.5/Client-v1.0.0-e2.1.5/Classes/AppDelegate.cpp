@@ -45,19 +45,12 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     CCSize screenSize = pEGLView->getFrameSize();
     
-    if (screenSize.height > 960)
-    {
-        pEGLView->setDesignResolutionSize(0, 0, 720, 1136, kResolutionNoBorder);
-    }
-    else if (screenSize.height > 480)
-    {
-        pEGLView->setFrameSize(720, 1136);
-        pEGLView->setDesignResolutionSize(40, 88, 720, 1136, kResolutionNoBorder);
-    }
-    else
-    {
-        pEGLView->setFrameSize(360, 568);
-        pEGLView->setDesignResolutionSize(20, 44, 360, 568, kResolutionNoBorder);
+    CCLOG("宽度: %f | 高度: %f", screenSize.width, screenSize.height);
+    
+    if (screenSize.height == 1136) {
+        pEGLView->setDesignResolutionSize(640, 1136, kResolutionNoBorder);
+    } else {
+        pEGLView->setDesignResolutionSize(720, 960, kResolutionNoBorder);
     }
     
     // set FPS. the default value is 1.0/60 if you don't call this

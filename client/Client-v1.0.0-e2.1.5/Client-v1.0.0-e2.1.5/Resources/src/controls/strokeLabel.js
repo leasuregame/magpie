@@ -54,6 +54,8 @@ var StrokeLabel = cc.Node.extend({
         this._strBgLabel[2].setPosition(cc.p(-offset, 0));
         this._strBgLabel[3].setPosition(cc.p(offset, 0));
         this._strBgLabel[4].setPosition(cc.p(offset * 1.5, -offset * 1.5));
+
+        this.setContentSize(this._strLabel.getContentSize());
     },
 
     setAnchorPoint: function (point) {

@@ -17,6 +17,8 @@ var TREASURE_HUNT_BUFFER_LEN = 10;
 var TREASURE_HUNT_ACCELERATION = (0.5 - 0.02) / TREASURE_HUNT_BUFFER_LEN;
 
 var TreasureHuntLayer = cc.Layer.extend({
+    _treasureHuntLayerFit: null,
+
     _selectFrame: null,
     _treasureHuntItem: null,
     _treasureHuntIcon1: null,
@@ -29,28 +31,7 @@ var TreasureHuntLayer = cc.Layer.extend({
     _nowSlideNum: 0,
     _interval: 0,
     _str: "",
-    _locate: [
-        cc.p(110, 853),
-        cc.p(235, 853),
-        cc.p(360, 853),
-        cc.p(485, 853),
-        cc.p(610, 853),
-        cc.p(610, 753),
-        cc.p(610, 653),
-        cc.p(610, 553),
-        cc.p(610, 453),
-        cc.p(610, 353),
-        cc.p(610, 253),
-        cc.p(485, 253),
-        cc.p(360, 253),
-        cc.p(235, 253),
-        cc.p(110, 253),
-        cc.p(110, 353),
-        cc.p(110, 453),
-        cc.p(110, 553),
-        cc.p(110, 653),
-        cc.p(110, 753)
-    ],
+    _locate: [],
 
     onEnter: function () {
         cc.log("TreasureHuntLayer onEnter");
@@ -64,33 +45,47 @@ var TreasureHuntLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._treasureHuntLayerFit = gameFit.mainScene.treasureHuntLayer;
+
+        this._locate = this._treasureHuntLayerFit.locatePoints;
         var table = outputTables.treasure_hunt.rows;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
+        bgSprite.setPosition(this._treasureHuntLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 968));
+        headIcon.setPosition(this._treasureHuntLayerFit.headIconPoint);
         this.addChild(headIcon);
 
         var titleIcon = cc.Sprite.create(main_scene_image.icon251);
-        titleIcon.setPosition(cc.p(360, 1008));
+        titleIcon.setPosition(this._treasureHuntLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            this._onClickBack,
+            this
+        );
+        backItem.setPosition(this._treasureHuntLayerFit.backItemPoint);
+        var menu = cc.Menu.create(backItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu, 1);
+
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
-        headLabel.setPosition(cc.p(360, 938));
+        headLabel.setPosition(this._treasureHuntLayerFit.headLabelPoint);
         this.addChild(headLabel);
 
         var goldIcon = cc.Sprite.create(main_scene_image.icon148);
-        goldIcon.setPosition(cc.p(570, 938));
+        goldIcon.setPosition(this._treasureHuntLayerFit.goldIconPoint);
         this.addChild(goldIcon);
 
         this._goldLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._goldLabel.setPosition(cc.p(600, 938));
+        this._goldLabel.setPosition(this._treasureHuntLayerFit.goldLabelPoint);
         this.addChild(this._goldLabel);
 
         for (var i = 0; i < MAX_TREASURE_HUNT_COUNT; ++i) {
@@ -111,7 +106,7 @@ var TreasureHuntLayer = cc.Layer.extend({
         this._selectFrame.setVisible(false);
 
         var treasureHuntBg = cc.Sprite.create(main_scene_image.icon253);
-        treasureHuntBg.setPosition(cc.p(360, 588));
+        treasureHuntBg.setPosition(this._treasureHuntLayerFit.treasureHuntBgPoint);
         this.addChild(treasureHuntBg);
 
         this._treasureHuntItem = cc.MenuItemImage.create(
@@ -121,7 +116,7 @@ var TreasureHuntLayer = cc.Layer.extend({
             this._onClickTreasureHunt,
             this
         );
-        this._treasureHuntItem.setPosition(cc.p(360, 540));
+        this._treasureHuntItem.setPosition(this._treasureHuntLayerFit.treasureHuntItemPoint);
 
         var menu = cc.Menu.create(this._treasureHuntItem);
         menu.setPosition(cc.p(0, 0));
@@ -136,19 +131,19 @@ var TreasureHuntLayer = cc.Layer.extend({
         ));
 
         this._treasureHuntIcon1 = cc.Sprite.create(main_scene_image.icon254);
-        this._treasureHuntIcon1.setPosition(cc.p(355, 545));
+        this._treasureHuntIcon1.setPosition(this._treasureHuntLayerFit.treasureHuntIcon1Point);
         this.addChild(this._treasureHuntIcon1);
 
         this._treasureHuntIcon2 = cc.Sprite.create(main_scene_image.icon255);
-        this._treasureHuntIcon2.setPosition(cc.p(355, 545));
+        this._treasureHuntIcon2.setPosition(this._treasureHuntLayerFit.treasureHuntIcon2Point);
         this.addChild(this._treasureHuntIcon2);
 
         this._freeCountLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
-        this._freeCountLabel.setPosition(cc.p(420, 430));
+        this._freeCountLabel.setPosition(this._treasureHuntLayerFit.freeCountLabelPoint);
         this.addChild(this._freeCountLabel);
 
         this._countLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 25);
-        this._countLabel.setPosition(cc.p(420, 370));
+        this._countLabel.setPosition(this._treasureHuntLayerFit.countLabelPoint);
         this.addChild(this._countLabel);
 
         return true;
@@ -321,6 +316,12 @@ var TreasureHuntLayer = cc.Layer.extend({
                 that._treasureHuntItem.setEnabled(true);
             }
         })
+    },
+
+    _onClickBack: function () {
+        cc.log("TreasureHuntLayer _onClickBack");
+
+        MainScene.getInstance().switchLayer(MainLayer);
     }
 });
 

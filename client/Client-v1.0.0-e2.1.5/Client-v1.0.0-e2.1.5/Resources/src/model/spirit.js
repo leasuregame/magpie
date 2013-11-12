@@ -68,7 +68,7 @@ var Spirit = Entity.extend({
         cc.log("Spirit upgrade");
 
         var that = this;
-        lzWindow.pomelo.request("area.spiritHandler.spiritorUpgrade", {}, function (data) {
+        lz.server.request("area.spiritHandler.spiritorUpgrade", {}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {

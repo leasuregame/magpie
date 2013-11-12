@@ -47,7 +47,7 @@ var TreasureHunt = Entity.extend({
         cc.log("TreasureHunt treasureHunt");
 
         var that = this;
-        lzWindow.pomelo.request("area.dailyHandler.lottery", {}, function (data) {
+        lz.server.request("area.dailyHandler.lottery", {}, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 

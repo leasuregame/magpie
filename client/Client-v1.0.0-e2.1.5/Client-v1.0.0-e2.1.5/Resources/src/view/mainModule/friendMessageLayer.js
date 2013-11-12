@@ -13,6 +13,8 @@
 
 
 var FriendMessageLayer = cc.Layer.extend({
+    _friendMessageLayerFit: null,
+
     _scrollView: null,
     _scrollViewElement: {},
 
@@ -28,6 +30,8 @@ var FriendMessageLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._friendMessageLayerFit = gameFit.mainScene.friendMessageLayer;
+
         return true;
     },
 
@@ -42,7 +46,7 @@ var FriendMessageLayer = cc.Layer.extend({
             this._scrollView.removeFromParent();
         }
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(57, 207, 605, 742));
+        var scrollViewLayer = MarkLayer.create(this._friendMessageLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
@@ -152,8 +156,8 @@ var FriendMessageLayer = cc.Layer.extend({
             }
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(605, 742), scrollViewLayer);
-        this._scrollView.setPosition(cc.p(57, 207));
+        this._scrollView = cc.ScrollView.create(this._friendMessageLayerFit.scrollViewSize, scrollViewLayer);
+        this._scrollView.setPosition(this._friendMessageLayerFit.scrollViewPoint);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);

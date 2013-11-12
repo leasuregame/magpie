@@ -172,6 +172,12 @@ var Progress = cc.Node.extend({
         if (this._bgSprite) this._bgSprite.setOpacity(opacity);
     },
 
+    getDifferenceValue: function () {
+        cc.log("Progress getDifferenceValue");
+
+        return (this._maxValue - this._value);
+    },
+
     getValue: function () {
         cc.log("Progress getValue");
 

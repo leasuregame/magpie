@@ -13,75 +13,71 @@
 
 
 var BattleSpiritNode = cc.Node.extend({
-    _spiritSprite: null,
-    _tipLabel: null,
+    _index: 0,
+    _ccbNode: null,
+    _animationManager: null,
 
-    init: function (spiritLv) {
+    init: function (spiritLv, index) {
         cc.log("BattleSpiritNode init");
 
         if (!this._super()) return false;
 
-        var spiritLv = gameData.spirit.get("lv");
+        this._index = index;
 
-        if (spiritLv < 1) {
-            spiritLv = 1;
-        }
+        this._ccbNode = cc.BuilderReader.load(main_scene_image.spiritNode, this);
 
-        this._spiritSprite = cc.Sprite.create(main_scene_image["spirit" + spiritLv]);
-        this.addChild(this._spiritSprite);
+        var spiritSpriteTexture = lz.getTexture(main_scene_image["spirit" + spiritLv]);
+        this._animationManager = this._ccbNode.animationManager;
+        this.addChild(this._ccbNode);
 
-        this._tipLabel = cc.LabelTTF.create("", '黑体', 60);
-        this.addChild(this._tipLabel);
+        this._spiritSprite1.setTexture(spiritSpriteTexture);
+        this._spiritSprite2.setTexture(spiritSpriteTexture);
 
         return true;
     },
 
-    setOpacity: function (opacity) {
-        this._spiritSprite.setOpacity(opacity);
+    showAddition: function () {
+        var startIndex = this._index < 7 ? 1 : 7;
+        this.getParent().showAddition(startIndex);
     },
 
-    getColor: function () {
-        return this._spiritSprite.getColor();
+    callback: function () {
+        this.getParent().callback();
     },
 
-    setColor: function (color3) {
-        this._spiritSprite.setColor(color3);
+    getSubtitleNode: function () {
+        cc.log("BattleSpiritNode getSubtitleNode");
+
+        var ccbNode = cc.BuilderReader.load(main_scene_image.effect14, this);
+
+        if (ccbNode) {
+            cc.log(ccbNode);
+        }
+
+        return ccbNode;
     },
 
-    _tip: function (str) {
-        var a1 = cc.FadeIn.create(0.5);
-        var a2 = cc.ScaleTo.create(0.2, 1.5);
-        var a3 = cc.ScaleTo.create(0.1, 1.0);
-        var a4 = cc.FadeOut.create(1);
+    runAnimations: function (name, tweenDuration, cb) {
+        cc.log("BattleSpiritNode runAnimations: " + name);
 
-        var a = cc.Sequence.create(a1, a2, a3, a4);
+        if (this._animationManager.getRunningSequenceName()) {
+            this._cb();
+        }
 
-        this._tipLabel.setFontSize(80);
-        this._tipLabel.setColor(cc.c3b(255, 0, 0));
-        this._tipLabel.setOpacity(0);
-        this._tipLabel.setString(str);
-        this._tipLabel.runAction(a);
-    },
+        tweenDuration = tweenDuration || 0;
+        this._cb = cb || function () {
+        };
 
-    atk: function () {
-        var a1 = cc.RotateBy.create(0.3 / GAME_COMBAT_SPEED, 30);
-        var a2 = cc.RotateBy.create(0.4 / GAME_COMBAT_SPEED, -60);
-        var a3 = cc.RotateBy.create(0.3 / GAME_COMBAT_SPEED, 30);
-        var a = cc.Sequence.create(a1, a2, a3);
-
-        var b = cc.Sequence.create(cc.ScaleTo.create(0.3, 1.2), cc.ScaleTo.create(0.3, 1.0));
-
-        this.runAction(cc.Spawn.create(a, b));
-
-        this._tip("我怒了");
+        this._animationManager.runAnimationsForSequenceNamedTweenDuration(name, tweenDuration);
+        this._animationManager.setCompletedAnimationCallback(this, this._cb);
     }
 });
 
 
-BattleSpiritNode.create = function (spiritLv) {
+BattleSpiritNode.create = function (spiritLv, index) {
     var ret = new BattleSpiritNode();
 
-    if (ret && ret.init(spiritLv)) {
+    if (ret && ret.init(spiritLv, index)) {
         return ret;
     }
 

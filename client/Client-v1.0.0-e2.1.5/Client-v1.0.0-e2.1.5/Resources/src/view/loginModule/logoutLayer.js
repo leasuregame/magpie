@@ -13,24 +13,28 @@
 
 
 var LogoutLayer = LazyLayer.extend({
+    _logoutLayerFit: null,
+
     init: function (msg) {
         cc.log("LogoutLayer init");
 
         if (!this._super()) return false;
 
+        this._logoutLayerFit = gameFit.loginScene.logoutLayer;
+
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 640, 1136);
-        bgLayer.setPosition(cc.p(40, 0));
+        bgLayer.setPosition(this._logoutLayerFit.bgLayerPoint);
         this.addChild(bgLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(520, 300));
-        bgSprite.setPosition(cc.p(363, 600));
+        bgSprite.setPosition(this._logoutLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        var msgLabel = cc.LabelTTF.create(msg, "STHeitiTC-Medium", 25);
-        msgLabel.setPosition(cc.p(360, 620));
+        var msgLabel = cc.LabelTTF.create(msg, "STHeitiTC-Medium", 28);
+        msgLabel.setPosition(this._logoutLayerFit.msgLabelPoint);
         this.addChild(msgLabel);
 
         var cancelItem = cc.MenuItemImage.createWithIcon(
@@ -40,7 +44,7 @@ var LogoutLayer = LazyLayer.extend({
             this._onClickOk,
             this
         );
-        cancelItem.setPosition(cc.p(360, 500));
+        cancelItem.setPosition(this._logoutLayerFit.cancelItemPoint);
 
         var menu = cc.Menu.create(cancelItem);
         menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
@@ -56,6 +60,7 @@ var LogoutLayer = LazyLayer.extend({
         this.removeFromParent();
 
         MainScene.destroy();
+        TipLayer.destroy();
 
         cc.Director.getInstance().replaceScene(LoginScene.create());
     }
@@ -76,5 +81,5 @@ LogoutLayer.create = function (msg) {
 LogoutLayer.pop = function (msg) {
     var logoutLayer = LogoutLayer.create(msg);
 
-    MainScene.getInstance().addChild(logoutLayer, 1);
+    cc.Director.getInstance().getRunningScene().addChild(logoutLayer, 1);
 };

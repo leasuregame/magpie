@@ -1416,7 +1416,7 @@
 			<key>length</key>
 			<real>0.56666666269302368</real>
 			<key>name</key>
-			<string>Default Timeline</string>
+			<string>hand_animation</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>

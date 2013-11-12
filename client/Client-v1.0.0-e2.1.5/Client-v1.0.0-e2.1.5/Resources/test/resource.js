@@ -507,12 +507,7 @@ var main_scene_image = {
     icon256: main_scene_path + "icon256.png",
 
     
-    ccbParticleFire: effect_scene_path + "ccbParticleFire.png",
-    ccbParticleSmoke: effect_scene_path + "ccbParticleSmoke.png",
-    ccbParticleSnow: effect_scene_path + "ccbParticleSnow.png",
-    ccbParticleStars: effect_scene_path + "ccbParticleStars.png",
-    HuoBao_1: effect_scene_path + "HuoBao_1.png",
-    Jia: effect_scene_path + "Jia.png",
+    
     screen: effect_scene_path + "screen.jpg",
     tanxian: effect_scene_path + "tanxian.jpg",
     xiantai: effect_scene_path + "xiantai.jpg",
@@ -521,16 +516,15 @@ var main_scene_image = {
     zhaohuan: effect_scene_path + "zhaohuan.jpg",
     testBg: effect_scene_path + "testBg.png",
     LeiShe_JiZhong: effect_scene_path + "LeiShe_JiZhong.png",
-    LiuYunZhang_27: effect_scene_path + "LiuYunZhang_27.png",
-    LiuYunZhang_28: effect_scene_path + "LiuYunZhang_28.png",
-    LiuYunZhang_29: effect_scene_path + "LiuYunZhang_29.png",
-    LiuYunZhang_30: effect_scene_path + "LiuYunZhang_30.png",
     light12: effect_scene_path + "light12.png",
     HuGuang_JiZhong: effect_scene_path + "HuGuang_JiZhong.png",
     PoWuZhan_Light: effect_scene_path + "PoWuZhan_Light.png",
-    Chen_1: effect_scene_path + "Chen_1.png",
-    Bing_Di: effect_scene_path + "Bing_Di.png",
     tiaoshi: effect_scene_path + "tiaoshi.jpg",
+
+
+
+
+
 
     // 新手图片
     empty: effect_scene_path + "NewPlayer/" + "empty.png",
@@ -546,18 +540,41 @@ var main_scene_image = {
     p3: effect_scene_path + "effect/" + "p3.png",
     p4: effect_scene_path + "effect/" + "p4.png",
     p5: effect_scene_path + "effect/" + "p5.png",
+    p6: effect_scene_path + "effect/" + "p6.png",
+    p7: effect_scene_path + "effect/" + "p7.png",
+    p8: effect_scene_path + "effect/" + "p8.png",
+    p9: effect_scene_path + "effect/" + "p9.png",
+    p10: effect_scene_path + "effect/" + "p10.png",
+    p11: effect_scene_path + "effect/" + "p11.png",
+    p12: effect_scene_path + "effect/" + "p12.png",
+    p13: effect_scene_path + "effect/" + "p13.png",
+    p14: effect_scene_path + "effect/" + "p14.png",
+    p15: effect_scene_path + "effect/" + "p15.png",
+    p16: effect_scene_path + "effect/" + "p16.png",
+    p17: effect_scene_path + "effect/" + "p17.png",
+    p18: effect_scene_path + "effect/" + "p18.png",
+    p19: effect_scene_path + "effect/" + "p19.png",
+    p20: effect_scene_path + "effect/" + "p20.png",
+    p21: effect_scene_path + "effect/" + "p21.png",
+    p22: effect_scene_path + "effect/" + "p22.png",
+    p23: effect_scene_path + "effect/" + "p23.png",
+    p24: effect_scene_path + "effect/" + "p24.png",
+    p25: effect_scene_path + "effect/" + "p25.png",
+    p26: effect_scene_path + "effect/" + "p26.png",
+    p27: effect_scene_path + "effect/" + "p27.png",
+    p28: effect_scene_path + "effect/" + "p28.png",
+    p29: effect_scene_path + "effect/" + "p29.png",
+    p30: effect_scene_path + "effect/" + "p30.png",
+    p31: effect_scene_path + "effect/" + "p31.png",
+    p32: effect_scene_path + "effect/" + "p32.png",
+    p33: effect_scene_path + "effect/" + "p33.png",
+    p34: effect_scene_path + "effect/" + "p34.png",
 
 
 
 
-    texiao6: ccb_scene_path + "texiao6.ccbi",
-    texiao3: ccb_scene_path + "texiao3.ccbi",
-    texiao4: ccb_scene_path + "texiao4.ccbi",
-    texiao7: ccb_scene_path + "texiao7.ccbi",
+
     texiao8: ccb_scene_path + "texiao8.ccbi",
-    texiao9: ccb_scene_path + "texiao9.ccbi",
-    ceshi: ccb_scene_path + "ceshi.ccbi",
-    ceshi2: ccb_scene_path + "ceshi2.ccbi",
     tutorials1: ccb_scene_path + "tutorials1.ccbi",
     tutorials2: ccb_scene_path + "tutorials2.ccbi",
     tutorials3: ccb_scene_path + "tutorials3.ccbi",
@@ -570,6 +587,14 @@ var main_scene_image = {
     tutorials10: ccb_scene_path + "tutorials10.ccbi",
     tutorials11: ccb_scene_path + "tutorials11.ccbi",
     tutorials12: ccb_scene_path + "tutorials12.ccbi",
+    tutorials13: ccb_scene_path + "tutorials13.ccbi",
+    tutorials14: ccb_scene_path + "tutorials14.ccbi",
+    tutorials15: ccb_scene_path + "tutorials15.ccbi",
+    tutorials16: ccb_scene_path + "tutorials16.ccbi",
+    testBattleNode: ccb_scene_path + "testBattleNode.ccbi",
+    spiritNode: ccb_scene_path + "spiritNode.ccbi",
+    battleNode: ccb_scene_path + "battleNode.ccbi",
+
 
 
 
@@ -578,6 +603,20 @@ var main_scene_image = {
     // 完成特效
     effect1: ccb_scene_path + "effect1.ccbi", 
     effect2: ccb_scene_path + "effect2.ccbi", 
+    effect3: ccb_scene_path + "effect3.ccbi", 
+    effect4: ccb_scene_path + "effect4.ccbi", 
+    effect5: ccb_scene_path + "effect5.ccbi",
+    effect6: ccb_scene_path + "effect6.ccbi", 
+    effect7: ccb_scene_path + "effect7.ccbi", 
+    effect8: ccb_scene_path + "effect8.ccbi", 
+    effect9: ccb_scene_path + "effect9.ccbi", 
+    effect10: ccb_scene_path + "effect10.ccbi", 
+    effect11: ccb_scene_path + "effect11.ccbi", 
+    effect12: ccb_scene_path + "effect12.ccbi", 
+    effect13: ccb_scene_path + "effect13.ccbi", 
+    effect14: ccb_scene_path + "effect14.ccbi", 
+    effect15: ccb_scene_path + "effect15.ccbi", 
+    
 };
 
 var main_scene_res = [
@@ -654,3 +693,11 @@ for (var effectId = 0; effectId < effectConfig.length; ++effectId) {
 for (var key in main_scene_image) {
     main_scene_res.push({src: main_scene_image[key]});
 }
+
+
+//字体
+main_scene_res.push({src: "../res/font/skillName.fnt"});
+main_scene_res.push({src: "../res/font/skillName.png"});
+main_scene_res.push({src: "../res/font/tipNumber.fnt"});
+main_scene_res.push({src: "../res/font/tipNumber.png"});
+

@@ -1,10 +1,6 @@
 var nameChanged = {
-    "achievement": "成就配置表",
-    "成就配置表": "achievement",
     "card_grow": "卡牌升级表",
     "卡牌升级表": "card_grow",
-    "card_price": "卡牌价格配置表",
-    "卡牌价格配置表": "card_price",
     "cards": "神仙卡牌配置表",
     "神仙卡牌配置表": "cards",
     "elixir": "仙丹配置表",
@@ -13,6 +9,8 @@ var nameChanged = {
     "基础属性成长表": "factors",
     "star_upgrade": "卡牌进阶配置表",
     "卡牌进阶配置表": "star_upgrade",
+    "card_price": "卡牌价格配置表",
+    "卡牌价格配置表": "card_price",
     "player_upgrade_reward": "玩家升级阶段奖励配置表",
     "玩家升级阶段奖励配置表": "player_upgrade_reward",
     "friends_config": "好友数量配置表",
@@ -45,16 +43,18 @@ var nameChanged = {
     "排名奖励": "ranking_reward",
     "ranking_reward_factor": "竞技排名奖励加成系数",
     "竞技排名奖励加成系数": "ranking_reward_factor",
+    "achievement": "成就配置表",
+    "成就配置表": "achievement",
     "product": "道具配置表",
     "道具配置表": "product",
     "scope": "卡牌范围表",
     "卡牌范围表": "scope",
     "skill_type": "技能类型表",
     "技能类型表": "skill_type",
-    "skill_upgrade": "卡牌技能升级表",
-    "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
+    "skill_upgrade": "卡牌技能升级表",
+    "卡牌技能升级表": "skill_upgrade",
     "passFailSpiritSpeak": "爬塔失败喊话配置表",
     "爬塔失败喊话配置表": "passFailSpiritSpeak",
     "passWinSpiritSpeak": "爬塔胜利喊话配置表",
@@ -73,14 +73,14 @@ var nameChanged = {
     "神秘关卡配置表": "mystical_pass_config",
     "pass_config": "关卡卡牌配置表",
     "关卡卡牌配置表": "pass_config",
-    "pass_reward": "关卡产出表",
-    "关卡产出表": "pass_reward",
     "player_upgrade": "玩家升级经验表",
     "玩家升级经验表": "player_upgrade",
     "task": "任务奖励表",
     "任务奖励表": "task",
     "task_card": "任务怪物属性表",
     "任务怪物属性表": "task_card",
+    "pass_reward": "关卡产出表",
+    "关卡产出表": "pass_reward",
     "task_config": "任务卡牌配置表",
     "任务卡牌配置表": "task_config",
     "wipe_out": "任务扫荡产出表",
@@ -94,238 +94,7 @@ var nameChanged = {
     "vip_privilege": "vip特权",
     "vip特权": "vip_privilege"
 };
-
 var outputTables = {
-    "achievement": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "method": "levelTo",
-                "need": 50,
-                "name": "升级达人",
-                "desc": "角色等级达到50级",
-                "gold": 10,
-                "energy": 100
-            },
-            "2": {
-                "id": 2,
-                "method": "levelTo",
-                "need": 90,
-                "name": "疯狂升级",
-                "desc": "角色等级达到90级",
-                "gold": 100,
-                "energy": 1000
-            },
-            "3": {
-                "id": 3,
-                "method": "passTo",
-                "need": 50,
-                "name": "一半！",
-                "desc": "天道闯过50层",
-                "gold": 10,
-                "energy": 100
-            },
-            "4": {
-                "id": 4,
-                "method": "passTo",
-                "need": 100,
-                "name": "通关！",
-                "desc": "天道闯过100层",
-                "gold": 100,
-                "energy": 1000
-            },
-            "5": {
-                "id": 5,
-                "method": "winCount",
-                "need": 50,
-                "name": "小试牛刀",
-                "desc": "竞技获胜次数达到50场",
-                "gold": 10,
-                "energy": 100
-            },
-            "6": {
-                "id": 6,
-                "method": "winCount",
-                "need": 5000,
-                "name": "已经超神了",
-                "desc": "竞技获胜次数达到5000场",
-                "gold": 100,
-                "energy": 1000
-            },
-            "7": {
-                "id": 7,
-                "method": "winningStreak",
-                "need": 50,
-                "name": "所向披靡",
-                "desc": "竞技最高连胜达到50次",
-                "gold": 100,
-                "energy": 1000
-            },
-            "8": {
-                "id": 8,
-                "method": "rankingToOne",
-                "need": 1,
-                "name": "寂寞",
-                "desc": "竞技排名达到第1",
-                "gold": 100,
-                "energy": 1000
-            },
-            "9": {
-                "id": 9,
-                "method": "v587",
-                "need": 1,
-                "name": "霸气外射！",
-                "desc": "以1敌5，战胜对方",
-                "gold": 10,
-                "energy": 100
-            },
-            "10": {
-                "id": 10,
-                "method": "friends",
-                "need": 20,
-                "name": "我们约会吧",
-                "desc": "拥有20个好友",
-                "gold": 10,
-                "energy": 100
-            },
-            "11": {
-                "id": 11,
-                "method": "gaveBless",
-                "need": 500,
-                "name": "无私奉献",
-                "desc": "为好友送出祝福达到500次",
-                "gold": 10,
-                "energy": 100
-            },
-            "12": {
-                "id": 12,
-                "method": "receivedBless",
-                "need": 100,
-                "name": "爱是相互的",
-                "desc": "收到好友祝福次数达到100次",
-                "gold": 300,
-                "energy": 2000
-            },
-            "13": {
-                "id": 13,
-                "method": "star5card",
-                "need": 1,
-                "name": "质的飞跃",
-                "desc": "获得1张5星卡",
-                "gold": 10,
-                "energy": 100
-            },
-            "14": {
-                "id": 14,
-                "method": "star5cardFullLevel",
-                "need": 1,
-                "name": "这就是实力",
-                "desc": "将1张5星卡强化到满级",
-                "gold": 50,
-                "energy": 500
-            },
-            "15": {
-                "id": 15,
-                "method": "star5card",
-                "need": 5,
-                "name": "你就是神！",
-                "desc": "获得5张5星卡",
-                "gold": 100,
-                "energy": 1000
-            },
-            "16": {
-                "id": 16,
-                "method": "psTo10",
-                "need": 1,
-                "name": "但求最好",
-                "desc": "拥有1个10%的被动属性",
-                "gold": 10,
-                "energy": 100
-            },
-            "17": {
-                "id": 17,
-                "method": "elixirTo",
-                "need": 100000,
-                "name": "一大波仙丹",
-                "desc": "累计获得100000仙丹",
-                "gold": 50,
-                "energy": 500
-            },
-            "18": {
-                "id": 18,
-                "method": "energyTo",
-                "need": 100000,
-                "name": "活力无限",
-                "desc": "累计获得100000活力值",
-                "gold": 100,
-                "energy": 1000
-            },
-            "19": {
-                "id": 19,
-                "method": "luckyCardCount",
-                "need": 9999,
-                "name": "抽卡狂魔",
-                "desc": "抽卡总次数达到9999",
-                "gold": 100,
-                "energy": 500
-            },
-            "20": {
-                "id": 20,
-                "method": "highLuckyCardCount",
-                "need": 8888,
-                "name": "钱就是个屁",
-                "desc": "高级抽卡总次数达到8888",
-                "gold": 100,
-                "energy": 1000
-            },
-            "21": {
-                "id": 21,
-                "method": "fun",
-                "need": 1,
-                "name": "买彩票去吧",
-                "desc": "用1张素材卡成功进阶该卡牌",
-                "gold": 50,
-                "energy": 100
-            },
-            "22": {
-                "id": 22,
-                "method": "powerConsume",
-                "need": 10000,
-                "name": "孜孜不倦",
-                "desc": "累计消耗体力10000点",
-                "gold": 10,
-                "energy": 100
-            },
-            "23": {
-                "id": 23,
-                "method": "vip",
-                "need": 1,
-                "name": "我是VIP！",
-                "desc": "成为VIP用户",
-                "gold": 50,
-                "energy": 500
-            },
-            "24": {
-                "id": 24,
-                "method": "moneyConsume",
-                "need": 10000000,
-                "name": "不差钱",
-                "desc": "累计消耗仙币1000万",
-                "gold": 10,
-                "energy": 100
-            },
-            "25": {
-                "id": 25,
-                "method": "goldConsume",
-                "need": 100000,
-                "name": "挥金如土",
-                "desc": "累计消耗元宝100000",
-                "gold": 50,
-                "energy": 500
-            }
-        }
-    },
     "card_grow": {
         "colComment": {},
         "rows": {
@@ -755,20 +524,6 @@ var outputTables = {
                 "exp_need": 30687,
                 "money_need": 437934,
                 "cur_exp": 305822
-            }
-        }
-    },
-    "card_price": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "grow_per_lv": 10,
-                "star1": 500,
-                "star2": 700,
-                "star3": 900,
-                "star4": 1100,
-                "star5": 1300
             }
         }
     },
@@ -10208,6 +9963,20 @@ var outputTables = {
             }
         }
     },
+    "card_price": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "grow_per_lv": 10,
+                "star1": 500,
+                "star2": 700,
+                "star3": 900,
+                "star4": 1100,
+                "star5": 1300
+            }
+        }
+    },
     "player_upgrade_reward": {
         "colComment": {},
         "rows": {
@@ -11564,6 +11333,236 @@ var outputTables = {
             }
         }
     },
+    "achievement": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "method": "levelTo",
+                "need": 50,
+                "name": "升级达人",
+                "desc": "角色等级达到50级",
+                "gold": 10,
+                "energy": 100
+            },
+            "2": {
+                "id": 2,
+                "method": "levelTo",
+                "need": 90,
+                "name": "疯狂升级",
+                "desc": "角色等级达到90级",
+                "gold": 100,
+                "energy": 1000
+            },
+            "3": {
+                "id": 3,
+                "method": "passTo",
+                "need": 50,
+                "name": "一半！",
+                "desc": "天道闯过50层",
+                "gold": 10,
+                "energy": 100
+            },
+            "4": {
+                "id": 4,
+                "method": "passTo",
+                "need": 100,
+                "name": "通关！",
+                "desc": "天道闯过100层",
+                "gold": 100,
+                "energy": 1000
+            },
+            "5": {
+                "id": 5,
+                "method": "winCount",
+                "need": 50,
+                "name": "小试牛刀",
+                "desc": "竞技获胜次数达到50场",
+                "gold": 10,
+                "energy": 100
+            },
+            "6": {
+                "id": 6,
+                "method": "winCount",
+                "need": 5000,
+                "name": "已经超神了",
+                "desc": "竞技获胜次数达到5000场",
+                "gold": 100,
+                "energy": 1000
+            },
+            "7": {
+                "id": 7,
+                "method": "winningStreak",
+                "need": 50,
+                "name": "所向披靡",
+                "desc": "竞技最高连胜达到50次",
+                "gold": 100,
+                "energy": 1000
+            },
+            "8": {
+                "id": 8,
+                "method": "rankingToOne",
+                "need": 1,
+                "name": "寂寞",
+                "desc": "竞技排名达到第1",
+                "gold": 100,
+                "energy": 1000
+            },
+            "9": {
+                "id": 9,
+                "method": "v587",
+                "need": 1,
+                "name": "霸气外射！",
+                "desc": "以1敌5，战胜对方",
+                "gold": 10,
+                "energy": 100
+            },
+            "10": {
+                "id": 10,
+                "method": "friends",
+                "need": 20,
+                "name": "我们约会吧",
+                "desc": "拥有20个好友",
+                "gold": 10,
+                "energy": 100
+            },
+            "11": {
+                "id": 11,
+                "method": "gaveBless",
+                "need": 500,
+                "name": "无私奉献",
+                "desc": "为好友送出祝福达到500次",
+                "gold": 10,
+                "energy": 100
+            },
+            "12": {
+                "id": 12,
+                "method": "receivedBless",
+                "need": 100,
+                "name": "爱是相互的",
+                "desc": "收到好友祝福次数达到100次",
+                "gold": 300,
+                "energy": 2000
+            },
+            "13": {
+                "id": 13,
+                "method": "star5card",
+                "need": 1,
+                "name": "质的飞跃",
+                "desc": "获得1张5星卡",
+                "gold": 10,
+                "energy": 100
+            },
+            "14": {
+                "id": 14,
+                "method": "star5cardFullLevel",
+                "need": 1,
+                "name": "这就是实力",
+                "desc": "将1张5星卡强化到满级",
+                "gold": 50,
+                "energy": 500
+            },
+            "15": {
+                "id": 15,
+                "method": "star5card",
+                "need": 5,
+                "name": "你就是神！",
+                "desc": "获得5张5星卡",
+                "gold": 100,
+                "energy": 1000
+            },
+            "16": {
+                "id": 16,
+                "method": "psTo10",
+                "need": 1,
+                "name": "但求最好",
+                "desc": "拥有1个10%的被动属性",
+                "gold": 10,
+                "energy": 100
+            },
+            "17": {
+                "id": 17,
+                "method": "elixirTo",
+                "need": 100000,
+                "name": "一大波仙丹",
+                "desc": "累计获得100000仙丹",
+                "gold": 50,
+                "energy": 500
+            },
+            "18": {
+                "id": 18,
+                "method": "energyTo",
+                "need": 100000,
+                "name": "活力无限",
+                "desc": "累计获得100000活力值",
+                "gold": 100,
+                "energy": 1000
+            },
+            "19": {
+                "id": 19,
+                "method": "luckyCardCount",
+                "need": 9999,
+                "name": "抽卡狂魔",
+                "desc": "抽卡总次数达到9999",
+                "gold": 100,
+                "energy": 500
+            },
+            "20": {
+                "id": 20,
+                "method": "highLuckyCardCount",
+                "need": 8888,
+                "name": "钱就是个屁",
+                "desc": "高级抽卡总次数达到8888",
+                "gold": 100,
+                "energy": 1000
+            },
+            "21": {
+                "id": 21,
+                "method": "fun",
+                "need": 1,
+                "name": "买彩票去吧",
+                "desc": "用1张素材卡成功进阶该卡牌",
+                "gold": 50,
+                "energy": 100
+            },
+            "22": {
+                "id": 22,
+                "method": "powerConsume",
+                "need": 10000,
+                "name": "孜孜不倦",
+                "desc": "累计消耗体力10000点",
+                "gold": 10,
+                "energy": 100
+            },
+            "23": {
+                "id": 23,
+                "method": "vip",
+                "need": 1,
+                "name": "我是VIP！",
+                "desc": "成为VIP用户",
+                "gold": 50,
+                "energy": 500
+            },
+            "24": {
+                "id": 24,
+                "method": "moneyConsume",
+                "need": 10000000,
+                "name": "不差钱",
+                "desc": "累计消耗仙币1000万",
+                "gold": 10,
+                "energy": 100
+            },
+            "25": {
+                "id": 25,
+                "method": "goldConsume",
+                "need": 100000,
+                "name": "挥金如土",
+                "desc": "累计消耗元宝100000",
+                "gold": 50,
+                "energy": 500
+            }
+        }
+    },
     "product": {
         "colComment": {},
         "rows": {
@@ -11581,7 +11580,7 @@ var outputTables = {
             "2": {
                 "id": 2,
                 "method": "money",
-                "name": "铜板",
+                "name": "仙币",
                 "disc": "每次购买可获得1000仙币，每次额外赠送100仙币。",
                 "consume_type": "gold",
                 "consume": 10,
@@ -11592,7 +11591,7 @@ var outputTables = {
             "3": {
                 "id": 3,
                 "method": "money",
-                "name": "铜板",
+                "name": "一袋仙币",
                 "disc": "每次购买可获得5000仙币，每次额外赠送1500仙币。",
                 "consume_type": "gold",
                 "consume": 50,
@@ -11603,7 +11602,7 @@ var outputTables = {
             "4": {
                 "id": 4,
                 "method": "money",
-                "name": "铜板",
+                "name": "一大袋仙币",
                 "disc": "每次购买可获得10000仙币，每次额外赠送5000仙币。",
                 "consume_type": "gold",
                 "consume": 100,
@@ -11703,41 +11702,6 @@ var outputTables = {
                 "id": 4,
                 "name": "mult_heal",
                 "chinese": "群体治疗"
-            }
-        }
-    },
-    "skill_upgrade": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": 5000,
-                "star4": 15000,
-                "star5": 50000
-            },
-            "2": {
-                "id": 2,
-                "star3": 10000,
-                "star4": 30000,
-                "star5": 80000
-            },
-            "3": {
-                "id": 3,
-                "star3": 15000,
-                "star4": 50000,
-                "star5": 120000
-            },
-            "4": {
-                "id": 4,
-                "star3": 20000,
-                "star4": 80000,
-                "star5": 200000
-            },
-            "5": {
-                "id": 5,
-                "star3": 30000,
-                "star4": 120000,
-                "star5": 300000
             }
         }
     },
@@ -11938,6 +11902,41 @@ var outputTables = {
                 "star5_inc_max": 45,
                 "star5_grow": 5,
                 "rate5": 40
+            }
+        }
+    },
+    "skill_upgrade": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": 5000,
+                "star4": 15000,
+                "star5": 50000
+            },
+            "2": {
+                "id": 2,
+                "star3": 10000,
+                "star4": 30000,
+                "star5": 80000
+            },
+            "3": {
+                "id": 3,
+                "star3": 15000,
+                "star4": 50000,
+                "star5": 120000
+            },
+            "4": {
+                "id": 4,
+                "star3": 20000,
+                "star4": 80000,
+                "star5": 200000
+            },
+            "5": {
+                "id": 5,
+                "star3": 30000,
+                "star4": 120000,
+                "star5": 300000
             }
         }
     },
@@ -13448,611 +13447,6 @@ var outputTables = {
                 "boss_attr": 40,
                 "atk_inc": 50,
                 "hp_inc": 50
-            }
-        }
-    },
-    "pass_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "exp": 5,
-                "money": 8,
-                "skill_point": 10
-            },
-            "2": {
-                "id": 2,
-                "exp": 6,
-                "money": 9,
-                "skill_point": 15
-            },
-            "3": {
-                "id": 3,
-                "exp": 7,
-                "money": 10,
-                "skill_point": 20
-            },
-            "4": {
-                "id": 4,
-                "exp": 8,
-                "money": 11,
-                "skill_point": 25
-            },
-            "5": {
-                "id": 5,
-                "exp": 9,
-                "money": 12,
-                "skill_point": 60
-            },
-            "6": {
-                "id": 6,
-                "exp": 10,
-                "money": 13,
-                "skill_point": 35
-            },
-            "7": {
-                "id": 7,
-                "exp": 11,
-                "money": 14,
-                "skill_point": 40
-            },
-            "8": {
-                "id": 8,
-                "exp": 12,
-                "money": 15,
-                "skill_point": 45
-            },
-            "9": {
-                "id": 9,
-                "exp": 13,
-                "money": 16,
-                "skill_point": 50
-            },
-            "10": {
-                "id": 10,
-                "exp": 14,
-                "money": 17,
-                "skill_point": 110
-            },
-            "11": {
-                "id": 11,
-                "exp": 15,
-                "money": 18,
-                "skill_point": 60
-            },
-            "12": {
-                "id": 12,
-                "exp": 16,
-                "money": 19,
-                "skill_point": 65
-            },
-            "13": {
-                "id": 13,
-                "exp": 17,
-                "money": 20,
-                "skill_point": 70
-            },
-            "14": {
-                "id": 14,
-                "exp": 18,
-                "money": 21,
-                "skill_point": 75
-            },
-            "15": {
-                "id": 15,
-                "exp": 19,
-                "money": 22,
-                "skill_point": 160
-            },
-            "16": {
-                "id": 16,
-                "exp": 20,
-                "money": 23,
-                "skill_point": 85
-            },
-            "17": {
-                "id": 17,
-                "exp": 21,
-                "money": 24,
-                "skill_point": 90
-            },
-            "18": {
-                "id": 18,
-                "exp": 22,
-                "money": 25,
-                "skill_point": 95
-            },
-            "19": {
-                "id": 19,
-                "exp": 23,
-                "money": 26,
-                "skill_point": 100
-            },
-            "20": {
-                "id": 20,
-                "exp": 24,
-                "money": 27,
-                "skill_point": 210
-            },
-            "21": {
-                "id": 21,
-                "exp": 25,
-                "money": 28,
-                "skill_point": 110
-            },
-            "22": {
-                "id": 22,
-                "exp": 26,
-                "money": 29,
-                "skill_point": 115
-            },
-            "23": {
-                "id": 23,
-                "exp": 27,
-                "money": 30,
-                "skill_point": 120
-            },
-            "24": {
-                "id": 24,
-                "exp": 28,
-                "money": 31,
-                "skill_point": 125
-            },
-            "25": {
-                "id": 25,
-                "exp": 29,
-                "money": 32,
-                "skill_point": 260
-            },
-            "26": {
-                "id": 26,
-                "exp": 30,
-                "money": 33,
-                "skill_point": 135
-            },
-            "27": {
-                "id": 27,
-                "exp": 31,
-                "money": 34,
-                "skill_point": 140
-            },
-            "28": {
-                "id": 28,
-                "exp": 32,
-                "money": 35,
-                "skill_point": 145
-            },
-            "29": {
-                "id": 29,
-                "exp": 33,
-                "money": 36,
-                "skill_point": 150
-            },
-            "30": {
-                "id": 30,
-                "exp": 34,
-                "money": 37,
-                "skill_point": 310
-            },
-            "31": {
-                "id": 31,
-                "exp": 35,
-                "money": 38,
-                "skill_point": 160
-            },
-            "32": {
-                "id": 32,
-                "exp": 36,
-                "money": 39,
-                "skill_point": 165
-            },
-            "33": {
-                "id": 33,
-                "exp": 37,
-                "money": 40,
-                "skill_point": 170
-            },
-            "34": {
-                "id": 34,
-                "exp": 38,
-                "money": 41,
-                "skill_point": 175
-            },
-            "35": {
-                "id": 35,
-                "exp": 39,
-                "money": 42,
-                "skill_point": 360
-            },
-            "36": {
-                "id": 36,
-                "exp": 40,
-                "money": 43,
-                "skill_point": 185
-            },
-            "37": {
-                "id": 37,
-                "exp": 41,
-                "money": 44,
-                "skill_point": 190
-            },
-            "38": {
-                "id": 38,
-                "exp": 42,
-                "money": 45,
-                "skill_point": 195
-            },
-            "39": {
-                "id": 39,
-                "exp": 43,
-                "money": 46,
-                "skill_point": 200
-            },
-            "40": {
-                "id": 40,
-                "exp": 44,
-                "money": 47,
-                "skill_point": 410
-            },
-            "41": {
-                "id": 41,
-                "exp": 45,
-                "money": 48,
-                "skill_point": 210
-            },
-            "42": {
-                "id": 42,
-                "exp": 46,
-                "money": 49,
-                "skill_point": 215
-            },
-            "43": {
-                "id": 43,
-                "exp": 47,
-                "money": 50,
-                "skill_point": 220
-            },
-            "44": {
-                "id": 44,
-                "exp": 48,
-                "money": 51,
-                "skill_point": 225
-            },
-            "45": {
-                "id": 45,
-                "exp": 49,
-                "money": 52,
-                "skill_point": 460
-            },
-            "46": {
-                "id": 46,
-                "exp": 50,
-                "money": 53,
-                "skill_point": 235
-            },
-            "47": {
-                "id": 47,
-                "exp": 51,
-                "money": 54,
-                "skill_point": 240
-            },
-            "48": {
-                "id": 48,
-                "exp": 52,
-                "money": 55,
-                "skill_point": 245
-            },
-            "49": {
-                "id": 49,
-                "exp": 53,
-                "money": 56,
-                "skill_point": 250
-            },
-            "50": {
-                "id": 50,
-                "exp": 54,
-                "money": 57,
-                "skill_point": 510
-            },
-            "51": {
-                "id": 51,
-                "exp": 55,
-                "money": 58,
-                "skill_point": 260
-            },
-            "52": {
-                "id": 52,
-                "exp": 56,
-                "money": 59,
-                "skill_point": 265
-            },
-            "53": {
-                "id": 53,
-                "exp": 57,
-                "money": 60,
-                "skill_point": 270
-            },
-            "54": {
-                "id": 54,
-                "exp": 58,
-                "money": 61,
-                "skill_point": 275
-            },
-            "55": {
-                "id": 55,
-                "exp": 59,
-                "money": 62,
-                "skill_point": 560
-            },
-            "56": {
-                "id": 56,
-                "exp": 60,
-                "money": 63,
-                "skill_point": 285
-            },
-            "57": {
-                "id": 57,
-                "exp": 61,
-                "money": 64,
-                "skill_point": 290
-            },
-            "58": {
-                "id": 58,
-                "exp": 62,
-                "money": 65,
-                "skill_point": 295
-            },
-            "59": {
-                "id": 59,
-                "exp": 63,
-                "money": 66,
-                "skill_point": 300
-            },
-            "60": {
-                "id": 60,
-                "exp": 64,
-                "money": 67,
-                "skill_point": 610
-            },
-            "61": {
-                "id": 61,
-                "exp": 65,
-                "money": 68,
-                "skill_point": 310
-            },
-            "62": {
-                "id": 62,
-                "exp": 66,
-                "money": 69,
-                "skill_point": 315
-            },
-            "63": {
-                "id": 63,
-                "exp": 67,
-                "money": 70,
-                "skill_point": 320
-            },
-            "64": {
-                "id": 64,
-                "exp": 68,
-                "money": 71,
-                "skill_point": 325
-            },
-            "65": {
-                "id": 65,
-                "exp": 69,
-                "money": 72,
-                "skill_point": 660
-            },
-            "66": {
-                "id": 66,
-                "exp": 70,
-                "money": 73,
-                "skill_point": 335
-            },
-            "67": {
-                "id": 67,
-                "exp": 71,
-                "money": 74,
-                "skill_point": 340
-            },
-            "68": {
-                "id": 68,
-                "exp": 72,
-                "money": 75,
-                "skill_point": 345
-            },
-            "69": {
-                "id": 69,
-                "exp": 73,
-                "money": 76,
-                "skill_point": 350
-            },
-            "70": {
-                "id": 70,
-                "exp": 74,
-                "money": 77,
-                "skill_point": 710
-            },
-            "71": {
-                "id": 71,
-                "exp": 75,
-                "money": 78,
-                "skill_point": 360
-            },
-            "72": {
-                "id": 72,
-                "exp": 76,
-                "money": 79,
-                "skill_point": 365
-            },
-            "73": {
-                "id": 73,
-                "exp": 77,
-                "money": 80,
-                "skill_point": 370
-            },
-            "74": {
-                "id": 74,
-                "exp": 78,
-                "money": 81,
-                "skill_point": 375
-            },
-            "75": {
-                "id": 75,
-                "exp": 79,
-                "money": 82,
-                "skill_point": 760
-            },
-            "76": {
-                "id": 76,
-                "exp": 80,
-                "money": 83,
-                "skill_point": 385
-            },
-            "77": {
-                "id": 77,
-                "exp": 81,
-                "money": 84,
-                "skill_point": 390
-            },
-            "78": {
-                "id": 78,
-                "exp": 82,
-                "money": 85,
-                "skill_point": 395
-            },
-            "79": {
-                "id": 79,
-                "exp": 83,
-                "money": 86,
-                "skill_point": 400
-            },
-            "80": {
-                "id": 80,
-                "exp": 84,
-                "money": 87,
-                "skill_point": 810
-            },
-            "81": {
-                "id": 81,
-                "exp": 85,
-                "money": 88,
-                "skill_point": 410
-            },
-            "82": {
-                "id": 82,
-                "exp": 86,
-                "money": 89,
-                "skill_point": 415
-            },
-            "83": {
-                "id": 83,
-                "exp": 87,
-                "money": 90,
-                "skill_point": 420
-            },
-            "84": {
-                "id": 84,
-                "exp": 88,
-                "money": 91,
-                "skill_point": 425
-            },
-            "85": {
-                "id": 85,
-                "exp": 89,
-                "money": 92,
-                "skill_point": 860
-            },
-            "86": {
-                "id": 86,
-                "exp": 90,
-                "money": 93,
-                "skill_point": 435
-            },
-            "87": {
-                "id": 87,
-                "exp": 91,
-                "money": 94,
-                "skill_point": 440
-            },
-            "88": {
-                "id": 88,
-                "exp": 92,
-                "money": 95,
-                "skill_point": 445
-            },
-            "89": {
-                "id": 89,
-                "exp": 93,
-                "money": 96,
-                "skill_point": 450
-            },
-            "90": {
-                "id": 90,
-                "exp": 94,
-                "money": 97,
-                "skill_point": 910
-            },
-            "91": {
-                "id": 91,
-                "exp": 95,
-                "money": 98,
-                "skill_point": 460
-            },
-            "92": {
-                "id": 92,
-                "exp": 96,
-                "money": 99,
-                "skill_point": 465
-            },
-            "93": {
-                "id": 93,
-                "exp": 97,
-                "money": 100,
-                "skill_point": 470
-            },
-            "94": {
-                "id": 94,
-                "exp": 98,
-                "money": 101,
-                "skill_point": 475
-            },
-            "95": {
-                "id": 95,
-                "exp": 99,
-                "money": 102,
-                "skill_point": 960
-            },
-            "96": {
-                "id": 96,
-                "exp": 100,
-                "money": 103,
-                "skill_point": 485
-            },
-            "97": {
-                "id": 97,
-                "exp": 101,
-                "money": 104,
-                "skill_point": 490
-            },
-            "98": {
-                "id": 98,
-                "exp": 102,
-                "money": 105,
-                "skill_point": 495
-            },
-            "99": {
-                "id": 99,
-                "exp": 103,
-                "money": 106,
-                "skill_point": 500
-            },
-            "100": {
-                "id": 100,
-                "exp": 104,
-                "money": 107,
-                "skill_point": 1010
             }
         }
     },
@@ -25166,6 +24560,611 @@ var outputTables = {
             }
         }
     },
+    "pass_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "exp": 5,
+                "money": 8,
+                "skill_point": 10
+            },
+            "2": {
+                "id": 2,
+                "exp": 6,
+                "money": 9,
+                "skill_point": 15
+            },
+            "3": {
+                "id": 3,
+                "exp": 7,
+                "money": 10,
+                "skill_point": 20
+            },
+            "4": {
+                "id": 4,
+                "exp": 8,
+                "money": 11,
+                "skill_point": 25
+            },
+            "5": {
+                "id": 5,
+                "exp": 9,
+                "money": 12,
+                "skill_point": 60
+            },
+            "6": {
+                "id": 6,
+                "exp": 10,
+                "money": 13,
+                "skill_point": 35
+            },
+            "7": {
+                "id": 7,
+                "exp": 11,
+                "money": 14,
+                "skill_point": 40
+            },
+            "8": {
+                "id": 8,
+                "exp": 12,
+                "money": 15,
+                "skill_point": 45
+            },
+            "9": {
+                "id": 9,
+                "exp": 13,
+                "money": 16,
+                "skill_point": 50
+            },
+            "10": {
+                "id": 10,
+                "exp": 14,
+                "money": 17,
+                "skill_point": 110
+            },
+            "11": {
+                "id": 11,
+                "exp": 15,
+                "money": 18,
+                "skill_point": 60
+            },
+            "12": {
+                "id": 12,
+                "exp": 16,
+                "money": 19,
+                "skill_point": 65
+            },
+            "13": {
+                "id": 13,
+                "exp": 17,
+                "money": 20,
+                "skill_point": 70
+            },
+            "14": {
+                "id": 14,
+                "exp": 18,
+                "money": 21,
+                "skill_point": 75
+            },
+            "15": {
+                "id": 15,
+                "exp": 19,
+                "money": 22,
+                "skill_point": 160
+            },
+            "16": {
+                "id": 16,
+                "exp": 20,
+                "money": 23,
+                "skill_point": 85
+            },
+            "17": {
+                "id": 17,
+                "exp": 21,
+                "money": 24,
+                "skill_point": 90
+            },
+            "18": {
+                "id": 18,
+                "exp": 22,
+                "money": 25,
+                "skill_point": 95
+            },
+            "19": {
+                "id": 19,
+                "exp": 23,
+                "money": 26,
+                "skill_point": 100
+            },
+            "20": {
+                "id": 20,
+                "exp": 24,
+                "money": 27,
+                "skill_point": 210
+            },
+            "21": {
+                "id": 21,
+                "exp": 25,
+                "money": 28,
+                "skill_point": 110
+            },
+            "22": {
+                "id": 22,
+                "exp": 26,
+                "money": 29,
+                "skill_point": 115
+            },
+            "23": {
+                "id": 23,
+                "exp": 27,
+                "money": 30,
+                "skill_point": 120
+            },
+            "24": {
+                "id": 24,
+                "exp": 28,
+                "money": 31,
+                "skill_point": 125
+            },
+            "25": {
+                "id": 25,
+                "exp": 29,
+                "money": 32,
+                "skill_point": 260
+            },
+            "26": {
+                "id": 26,
+                "exp": 30,
+                "money": 33,
+                "skill_point": 135
+            },
+            "27": {
+                "id": 27,
+                "exp": 31,
+                "money": 34,
+                "skill_point": 140
+            },
+            "28": {
+                "id": 28,
+                "exp": 32,
+                "money": 35,
+                "skill_point": 145
+            },
+            "29": {
+                "id": 29,
+                "exp": 33,
+                "money": 36,
+                "skill_point": 150
+            },
+            "30": {
+                "id": 30,
+                "exp": 34,
+                "money": 37,
+                "skill_point": 310
+            },
+            "31": {
+                "id": 31,
+                "exp": 35,
+                "money": 38,
+                "skill_point": 160
+            },
+            "32": {
+                "id": 32,
+                "exp": 36,
+                "money": 39,
+                "skill_point": 165
+            },
+            "33": {
+                "id": 33,
+                "exp": 37,
+                "money": 40,
+                "skill_point": 170
+            },
+            "34": {
+                "id": 34,
+                "exp": 38,
+                "money": 41,
+                "skill_point": 175
+            },
+            "35": {
+                "id": 35,
+                "exp": 39,
+                "money": 42,
+                "skill_point": 360
+            },
+            "36": {
+                "id": 36,
+                "exp": 40,
+                "money": 43,
+                "skill_point": 185
+            },
+            "37": {
+                "id": 37,
+                "exp": 41,
+                "money": 44,
+                "skill_point": 190
+            },
+            "38": {
+                "id": 38,
+                "exp": 42,
+                "money": 45,
+                "skill_point": 195
+            },
+            "39": {
+                "id": 39,
+                "exp": 43,
+                "money": 46,
+                "skill_point": 200
+            },
+            "40": {
+                "id": 40,
+                "exp": 44,
+                "money": 47,
+                "skill_point": 410
+            },
+            "41": {
+                "id": 41,
+                "exp": 45,
+                "money": 48,
+                "skill_point": 210
+            },
+            "42": {
+                "id": 42,
+                "exp": 46,
+                "money": 49,
+                "skill_point": 215
+            },
+            "43": {
+                "id": 43,
+                "exp": 47,
+                "money": 50,
+                "skill_point": 220
+            },
+            "44": {
+                "id": 44,
+                "exp": 48,
+                "money": 51,
+                "skill_point": 225
+            },
+            "45": {
+                "id": 45,
+                "exp": 49,
+                "money": 52,
+                "skill_point": 460
+            },
+            "46": {
+                "id": 46,
+                "exp": 50,
+                "money": 53,
+                "skill_point": 235
+            },
+            "47": {
+                "id": 47,
+                "exp": 51,
+                "money": 54,
+                "skill_point": 240
+            },
+            "48": {
+                "id": 48,
+                "exp": 52,
+                "money": 55,
+                "skill_point": 245
+            },
+            "49": {
+                "id": 49,
+                "exp": 53,
+                "money": 56,
+                "skill_point": 250
+            },
+            "50": {
+                "id": 50,
+                "exp": 54,
+                "money": 57,
+                "skill_point": 510
+            },
+            "51": {
+                "id": 51,
+                "exp": 55,
+                "money": 58,
+                "skill_point": 260
+            },
+            "52": {
+                "id": 52,
+                "exp": 56,
+                "money": 59,
+                "skill_point": 265
+            },
+            "53": {
+                "id": 53,
+                "exp": 57,
+                "money": 60,
+                "skill_point": 270
+            },
+            "54": {
+                "id": 54,
+                "exp": 58,
+                "money": 61,
+                "skill_point": 275
+            },
+            "55": {
+                "id": 55,
+                "exp": 59,
+                "money": 62,
+                "skill_point": 560
+            },
+            "56": {
+                "id": 56,
+                "exp": 60,
+                "money": 63,
+                "skill_point": 285
+            },
+            "57": {
+                "id": 57,
+                "exp": 61,
+                "money": 64,
+                "skill_point": 290
+            },
+            "58": {
+                "id": 58,
+                "exp": 62,
+                "money": 65,
+                "skill_point": 295
+            },
+            "59": {
+                "id": 59,
+                "exp": 63,
+                "money": 66,
+                "skill_point": 300
+            },
+            "60": {
+                "id": 60,
+                "exp": 64,
+                "money": 67,
+                "skill_point": 610
+            },
+            "61": {
+                "id": 61,
+                "exp": 65,
+                "money": 68,
+                "skill_point": 310
+            },
+            "62": {
+                "id": 62,
+                "exp": 66,
+                "money": 69,
+                "skill_point": 315
+            },
+            "63": {
+                "id": 63,
+                "exp": 67,
+                "money": 70,
+                "skill_point": 320
+            },
+            "64": {
+                "id": 64,
+                "exp": 68,
+                "money": 71,
+                "skill_point": 325
+            },
+            "65": {
+                "id": 65,
+                "exp": 69,
+                "money": 72,
+                "skill_point": 660
+            },
+            "66": {
+                "id": 66,
+                "exp": 70,
+                "money": 73,
+                "skill_point": 335
+            },
+            "67": {
+                "id": 67,
+                "exp": 71,
+                "money": 74,
+                "skill_point": 340
+            },
+            "68": {
+                "id": 68,
+                "exp": 72,
+                "money": 75,
+                "skill_point": 345
+            },
+            "69": {
+                "id": 69,
+                "exp": 73,
+                "money": 76,
+                "skill_point": 350
+            },
+            "70": {
+                "id": 70,
+                "exp": 74,
+                "money": 77,
+                "skill_point": 710
+            },
+            "71": {
+                "id": 71,
+                "exp": 75,
+                "money": 78,
+                "skill_point": 360
+            },
+            "72": {
+                "id": 72,
+                "exp": 76,
+                "money": 79,
+                "skill_point": 365
+            },
+            "73": {
+                "id": 73,
+                "exp": 77,
+                "money": 80,
+                "skill_point": 370
+            },
+            "74": {
+                "id": 74,
+                "exp": 78,
+                "money": 81,
+                "skill_point": 375
+            },
+            "75": {
+                "id": 75,
+                "exp": 79,
+                "money": 82,
+                "skill_point": 760
+            },
+            "76": {
+                "id": 76,
+                "exp": 80,
+                "money": 83,
+                "skill_point": 385
+            },
+            "77": {
+                "id": 77,
+                "exp": 81,
+                "money": 84,
+                "skill_point": 390
+            },
+            "78": {
+                "id": 78,
+                "exp": 82,
+                "money": 85,
+                "skill_point": 395
+            },
+            "79": {
+                "id": 79,
+                "exp": 83,
+                "money": 86,
+                "skill_point": 400
+            },
+            "80": {
+                "id": 80,
+                "exp": 84,
+                "money": 87,
+                "skill_point": 810
+            },
+            "81": {
+                "id": 81,
+                "exp": 85,
+                "money": 88,
+                "skill_point": 410
+            },
+            "82": {
+                "id": 82,
+                "exp": 86,
+                "money": 89,
+                "skill_point": 415
+            },
+            "83": {
+                "id": 83,
+                "exp": 87,
+                "money": 90,
+                "skill_point": 420
+            },
+            "84": {
+                "id": 84,
+                "exp": 88,
+                "money": 91,
+                "skill_point": 425
+            },
+            "85": {
+                "id": 85,
+                "exp": 89,
+                "money": 92,
+                "skill_point": 860
+            },
+            "86": {
+                "id": 86,
+                "exp": 90,
+                "money": 93,
+                "skill_point": 435
+            },
+            "87": {
+                "id": 87,
+                "exp": 91,
+                "money": 94,
+                "skill_point": 440
+            },
+            "88": {
+                "id": 88,
+                "exp": 92,
+                "money": 95,
+                "skill_point": 445
+            },
+            "89": {
+                "id": 89,
+                "exp": 93,
+                "money": 96,
+                "skill_point": 450
+            },
+            "90": {
+                "id": 90,
+                "exp": 94,
+                "money": 97,
+                "skill_point": 910
+            },
+            "91": {
+                "id": 91,
+                "exp": 95,
+                "money": 98,
+                "skill_point": 460
+            },
+            "92": {
+                "id": 92,
+                "exp": 96,
+                "money": 99,
+                "skill_point": 465
+            },
+            "93": {
+                "id": 93,
+                "exp": 97,
+                "money": 100,
+                "skill_point": 470
+            },
+            "94": {
+                "id": 94,
+                "exp": 98,
+                "money": 101,
+                "skill_point": 475
+            },
+            "95": {
+                "id": 95,
+                "exp": 99,
+                "money": 102,
+                "skill_point": 960
+            },
+            "96": {
+                "id": 96,
+                "exp": 100,
+                "money": 103,
+                "skill_point": 485
+            },
+            "97": {
+                "id": 97,
+                "exp": 101,
+                "money": 104,
+                "skill_point": 490
+            },
+            "98": {
+                "id": 98,
+                "exp": 102,
+                "money": 105,
+                "skill_point": 495
+            },
+            "99": {
+                "id": 99,
+                "exp": 103,
+                "money": 106,
+                "skill_point": 500
+            },
+            "100": {
+                "id": 100,
+                "exp": 104,
+                "money": 107,
+                "skill_point": 1010
+            }
+        }
+    },
     "task_config": {
         "colComment": {},
         "rows": {
@@ -32277,4 +32276,4 @@ var outputTables = {
             }
         }
     }
-}
+};

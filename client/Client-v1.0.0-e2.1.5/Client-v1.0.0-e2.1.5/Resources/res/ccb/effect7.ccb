@@ -332,7 +332,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.5</real>
+											<real>0.60000002384185791</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -393,7 +393,7 @@
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>0.5</real>
+											<real>0.60000002384185791</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
@@ -688,7 +688,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.20000000298023224</real>
+						<real>0.30000001192092896</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1004,7 +1004,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.20000000298023224</real>
+						<real>0.30000001192092896</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1280,13 +1280,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>0.5</real>
+			<real>0.83333331346511841</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.5</real>
+			<real>0.83333331346511841</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

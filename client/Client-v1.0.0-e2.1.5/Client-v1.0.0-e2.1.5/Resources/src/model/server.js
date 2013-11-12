@@ -246,6 +246,7 @@ var Server = Entity.extend({
                 cc.log("网络连接断开");
 
                 that.off();
+                that._closeAllWaitLayer();
 
                 that._gateServerStatus = CONNECT_FAIL;
                 that._gameServerStatus = CONNECT_FAIL;

@@ -230,8 +230,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2</real>
-									<real>2</real>
+									<real>0.7666667103767395</real>
+									<real>0.7666667103767395</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -244,7 +244,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>10</real>
+								<real>0.90909093618392944</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -273,7 +273,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>75</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -492,8 +492,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>2</real>
-									<real>2</real>
+									<real>0.7666667103767395</real>
+									<real>0.7666667103767395</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -506,7 +506,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-10</real>
+								<real>-0.90909093618392944</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -535,7 +535,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>75</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -765,8 +765,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.7000000476837158</real>
-									<real>1.7000000476837158</real>
+									<real>0.30000001192092896</real>
+									<real>0.30000001192092896</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -779,7 +779,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>100</real>
+								<real>80</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1038,8 +1038,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.7000000476837158</real>
-									<real>1.7000000476837158</real>
+									<real>0.30000001192092896</real>
+									<real>0.30000001192092896</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1052,7 +1052,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>100</real>
+								<real>80</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1974,7 +1974,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.5</real>
+			<real>0.033333335071802139</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -1984,7 +1984,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.033333335071802139</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>sound/battle_sound_heal.mp3</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

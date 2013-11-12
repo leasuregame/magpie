@@ -42,7 +42,8 @@ var fit4Iphone4 = {
             },
             "backItemPoint": cc.p(250, -460),
             "effect15NodePoint": cc.p(360, 480),
-            "ccbNodePoint": cc.p(360, 480)
+            "ccbNodePoint1": cc.p(360, 352),
+            "ccbNodePoint2": cc.p(360, 652)
         }
     },
 
@@ -292,7 +293,7 @@ var fit4Iphone4 = {
             "scrollViewPoint": cc.p(40, 140)
         },
         "lineUpDetail": {
-            "locatePoints":  {
+            "locatePoints": {
                 1: cc.p(190, 642),
                 2: cc.p(360, 642),
                 3: cc.p(530, 642),
@@ -325,7 +326,7 @@ var fit4Iphone4 = {
             "closeItemPoint": cc.p(360, 42)
         },
         "lineUpLayer": {
-            "locatePoints":  {
+            "locatePoints": {
                 1: cc.p(190, 642),
                 2: cc.p(360, 642),
                 3: cc.p(530, 642),
@@ -385,8 +386,8 @@ var fit4Iphone4 = {
             "bgSpriteRect": cc.rect(0, 85, 640, 819),
             "bgSpritePoint": cc.p(40, 106),
             "playerHeaderLabelPoint": cc.p(40, 802),
-            "lineIconPoint": cc.p(40,784),
-            "abilityLabelIconPoint": cc.p(78,591),
+            "lineIconPoint": cc.p(40, 784),
+            "abilityLabelIconPoint": cc.p(78, 591),
             "abilityLabelPoint": cc.p(300, 608),
             "rankingLabelPoint": cc.p(530, 608),
             "lineUpLabelPoint": cc.p(40, 712),
@@ -466,7 +467,7 @@ var fit4Iphone4 = {
             "closeItemPoint": cc.p(460, 442),
             "obtainSpritePoint": cc.p(360, 630),
             "rewardLabelBasePoint": cc.p(360, 567),
-            "rewardLabelOffsetY" : 45,
+            "rewardLabelOffsetY": 45,
             "okItem2Point": cc.p(360, 327)
         },
         "passRankLayer": {
@@ -676,7 +677,7 @@ var fit4Iphone4 = {
             "scrollViewPoint": cc.p(57, 119)
         },
         "taskLayer": {
-            "locatePoints":  [
+            "locatePoints": [
                 cc.p(160, 550),
                 cc.p(200, 270),
                 cc.p(440, 440),
@@ -901,7 +902,8 @@ var fit4Iphone5 = {
             },
             "backItemPoint": cc.p(210, -520),
             "effect15NodePoint": cc.p(320, 568),
-            "ccbNodePoint": cc.p(320, 568)
+            "ccbNodePoint1": cc.p(320, 380),
+            "ccbNodePoint2": cc.p(320, 800)
         }
     },
 
@@ -1151,7 +1153,7 @@ var fit4Iphone5 = {
             "scrollViewPoint": cc.p(0, 160)
         },
         "lineUpDetail": {
-            "locatePoints":  {
+            "locatePoints": {
                 1: cc.p(150, 730),
                 2: cc.p(320, 730),
                 3: cc.p(490, 730),
@@ -1245,8 +1247,8 @@ var fit4Iphone5 = {
             "bgSpriteRect": cc.rect(0, 0, 640, 995),
             "bgSpritePoint": cc.p(0, 106),
             "playerHeaderLabelPoint": cc.p(0, 968),
-            "lineIconPoint": cc.p(0,950),
-            "abilityLabelIconPoint": cc.p(38,732),
+            "lineIconPoint": cc.p(0, 950),
+            "abilityLabelIconPoint": cc.p(38, 732),
             "abilityLabelPoint": cc.p(260, 749),
             "rankingLabelPoint": cc.p(490, 749),
             "lineUpLabelPoint": cc.p(0, 853),
@@ -1326,7 +1328,7 @@ var fit4Iphone5 = {
             "closeItemPoint": cc.p(420, 530),
             "obtainSpritePoint": cc.p(320, 718),
             "rewardLabelBasePoint": cc.p(320, 655),
-            "rewardLabelOffsetY" : 45,
+            "rewardLabelOffsetY": 45,
             "okItem2Point": cc.p(320, 415)
         },
         "passRankLayer": {
@@ -1536,7 +1538,7 @@ var fit4Iphone5 = {
             "scrollViewPoint": cc.p(17, 138)
         },
         "taskLayer": {
-            "locatePoints":  [
+            "locatePoints": [
                 cc.p(160, 706),
                 cc.p(200, 356),
                 cc.p(440, 572),

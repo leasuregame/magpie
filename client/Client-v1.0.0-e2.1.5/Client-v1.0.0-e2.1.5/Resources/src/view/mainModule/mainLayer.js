@@ -26,7 +26,6 @@ var MainLayer = cc.Layer.extend({
         RankLayer,
         AchievementLayer,
         FriendLayer,
-        SignInLayer,
         MessageLayer,
         ConfigLayer
     ],
@@ -38,7 +37,7 @@ var MainLayer = cc.Layer.extend({
 
         this._mainLayerFit = gameFit.mainScene.mainLayer;
 
-        var bgSprite = cc.Sprite.create(main_scene_image.bg1 , this._mainLayerFit.bgSpriteRect);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg1, this._mainLayerFit.bgSpriteRect);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._mainLayerFit.bgSpritePoint);
         this.addChild(bgSprite, -1);
@@ -167,18 +166,10 @@ var MainLayer = cc.Layer.extend({
         );
         otherItem.setPosition(this._mainLayerFit.otherItemPoint);
 
-//         var signInLayerItem = cc.MenuItemImage.create(
-//         main_scene_image.button58,
-//         main_scene_image.button58s,
-//         this._onClickLayer(10),
-//         this
-//         );
-//         signInLayerItem.setPosition(cc.p(414, 322));
-
         var messageItem = cc.MenuItemImage.create(
             main_scene_image.button59,
             main_scene_image.button59,
-            this._onClickLayer(11),
+            this._onClickLayer(10),
             this
         );
         messageItem.setPosition(this._mainLayerFit.messageItemPoint);
@@ -186,7 +177,7 @@ var MainLayer = cc.Layer.extend({
         var configLayerItem = cc.MenuItemImage.create(
             main_scene_image.button60,
             main_scene_image.button60,
-            this._onClickLayer(12),
+            this._onClickLayer(11),
             this
         );
         configLayerItem.setPosition(this._mainLayerFit.configLayerItemPoint);
@@ -223,17 +214,21 @@ var MainLayer = cc.Layer.extend({
         return function () {
             cc.log("MainMenuLayer _onClickLayer: " + index);
 
+            MainScene.getInstance().switchLayer(this._layer[index]);
+
+            cc.AudioEngine.getInstance().playEffect(main_scene_image.button_sound, false);
+
             if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
                 NoviceTeachingLayer.getInstance().clearAndSave();
                 NoviceTeachingLayer.getInstance().next();
             }
-
-            MainScene.getInstance().switchLayer(this._layer[index]);
         }
     },
 
     _onClickOther: function () {
         this._otherMenu.setVisible(!this._otherMenu.isVisible());
+
+        cc.AudioEngine.getInstance().playEffect(main_scene_image.button_sound, false);
     }
 });
 

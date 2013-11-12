@@ -1099,7 +1099,7 @@ var fit4Iphone5 = {
             "QQGroupPoint": cc.p(15, 578)
         },
         "evolutionLayer": {
-            "bgSpritePoint": cc.p(0, 130),
+            "bgSpritePoint": cc.p(0, 106),
             "playerHeaderLabelPoint": cc.p(0, 978),
             "cardEvolutionItemPoint": cc.p(70, 897),
             "cardEvolutionItemOffset": cc.p(-7, -2),
@@ -1520,7 +1520,7 @@ var fit4Iphone5 = {
             "spiritPoint": cc.p(320, 630)
         },
         "strengthenLayer": {
-            "bgSpritePoint": cc.p(0, 130),
+            "bgSpritePoint": cc.p(0, 106),
             "playerHeaderLabelPoint": cc.p(0, 968),
             "cardUpgradeItemPoint": cc.p(70, 897),
             "cardUpgradeItemOffset": cc.p(-7, -2),

@@ -18,10 +18,10 @@ var BatterLayer = cc.Layer.extend({
     _isEnd: false,
     _counter: 0,
     _battleLog: null,
-    _battleNode: {},
-    _tipNode: {},
-    _spiritNode: [],
-    _locate: {},
+    _battleNode: null,
+    _tipNode: null,
+    _spiritNode: null,
+    _locate: null,
 
     init: function (battleLog) {
         cc.log("BatterLayer init");
@@ -254,14 +254,14 @@ var BatterLayer = cc.Layer.extend({
                             showSpiritAdditionCallback2();
                         });
 
-                        that.tip(index, "buf_2", "攻击 + " + cardNode.getSpiritAtk());
+                        that.tip(index, "buf_2", "攻击\n +" + cardNode.getSpiritAtk());
 
                         showSpiritAdditionCallback1();
                     });
 
                     var spiritHp = cardNode.getSpiritHp();
                     cardNode.update(spiritHp);
-                    that.tip(index, "buf_1", "生命 + " + spiritHp);
+                    that.tip(index, "buf_1", "生命\n +" + spiritHp);
                 })();
             }
         }
@@ -286,6 +286,9 @@ var BatterLayer = cc.Layer.extend({
 
     nextStep: function () {
         cc.log("BattleLayer nextStep");
+
+        this.callback = function () {
+        };
 
         for (var key in this._battleNode) {
             if (this._battleNode[key].die) {
@@ -317,9 +320,10 @@ var BatterLayer = cc.Layer.extend({
                 battleStep.set("attacker", this._battleLog.getSpirit(battleStep.get("attacker")));
             }
 
-            var ccbNode = this._battleNode[battleStep.get("attacker")].getSubtitleNode();
-
+            var attacker = battleStep.get("attacker");
+            var ccbNode = this._battleNode[attacker].getSubtitleNode();
             var that = this;
+
             var cb = function () {
                 if (ccbNode) {
                     ccbNode.removeFromParent();
@@ -336,14 +340,22 @@ var BatterLayer = cc.Layer.extend({
                 }
             };
 
-            if (ccbNode) {
-                ccbNode.setPosition(this._batterLayerFit.ccbNodePoint);
-                this.addChild(ccbNode, 5);
+            var addSubtitleNodeCb = function () {
+                if (ccbNode) {
+                    ccbNode.setPosition(that._batterLayerFit["ccbNodePoint" + that._getDirection(attacker)]);
+                    that.addChild(ccbNode, 5);
 
-                ccbNode.animationManager.setCompletedAnimationCallback(this, cb);
-            } else {
-                cb();
-            }
+                    ccbNode.animationManager.setCompletedAnimationCallback(that, cb);
+                } else {
+                    cb();
+                }
+            };
+
+            this._battleNode[attacker].runAnimations(
+                "rea_1",
+                0,
+                addSubtitleNodeCb
+            );
         } else {
             this.normalAtk(battleStep);
         }
@@ -658,12 +670,7 @@ var BatterLayer = cc.Layer.extend({
                             cc.Sequence.create(
                                 cc.DelayTime.create(1.5),
                                 cc.CallFunc.create(function () {
-                                    this._battleNode[index].runAction(
-                                        cc.Sequence.create(
-                                            cc.ScaleTo.create(0.5, 1.4, 1.4),
-                                            cc.ScaleTo.create(0.3, 1, 1)
-                                        )
-                                    );
+                                    this._battleNode[index].runAnimations("col_1");
                                 }, this),
                                 cc.ScaleTo.create(0.5, 0.3, 0.3)
                             )

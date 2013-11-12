@@ -29,7 +29,7 @@ var MessageLayer = cc.Layer.extend({
         var headIcon = cc.Sprite.create(main_scene_image.icon1);
         headIcon.setAnchorPoint(cc.p(0, 0));
         headIcon.setPosition(this._messageLayerFit.headIconPoint);
-        this.addChild(headIcon);
+        this.addChild(headIcon, 1);
 
         this._battleMessageLayerItem = cc.MenuItemImage.create(
             main_scene_image.button22,

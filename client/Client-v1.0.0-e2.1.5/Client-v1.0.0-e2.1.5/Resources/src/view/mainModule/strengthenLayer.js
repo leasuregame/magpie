@@ -27,7 +27,7 @@ var StrengthenLayer = cc.Layer.extend({
 
         this._strengthenLayerFit = gameFit.mainScene.strengthenLayer;
 
-        var bgSprite = cc.Sprite.create(main_scene_image.bg1);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg1, this._strengthenLayerFit.bgSpriteRect1);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._strengthenLayerFit.bgSpritePoint);
         this.addChild(bgSprite, -1);
@@ -36,7 +36,7 @@ var StrengthenLayer = cc.Layer.extend({
         playerHeaderLabel.setPosition(this._strengthenLayerFit.playerHeaderLabelPoint);
         this.addChild(playerHeaderLabel);
 
-        bgSprite = cc.Sprite.create(main_scene_image.bg15);
+        bgSprite = cc.Sprite.create(main_scene_image.bg15, this._strengthenLayerFit.bgSpriteRect2);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._strengthenLayerFit.bgSpritePoint);
         this.addChild(bgSprite);

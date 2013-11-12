@@ -22,6 +22,11 @@ var MainScene = cc.Scene.extend({
     init: function () {
         cc.log("MainScene init");
 
+        cc.AudioEngine.getInstance().setMusicVolume(0.1);
+        cc.AudioEngine.getInstance().setEffectsVolume(1);
+
+        cc.AudioEngine.getInstance().playMusic(main_scene_image.main_bg_music, true);
+
         this._mainBgLayer = MainBgLayer.create();
         this.addChild(this._mainBgLayer, -1);
 
@@ -97,5 +102,7 @@ var MainScene = cc.Scene.extend({
 
     MainScene.destroy = function () {
         _mainScene = null;
+
+        cc.AudioEngine.getInstance().stopMusic();
     };
 })();

@@ -76,7 +76,7 @@ var Server = Entity.extend({
         cc.log("Server update");
 
         this._host = data.host;
-        this._port = data.port;
+        this._port = 3010;
         this._areaList = data.servers;
 
         var len = this._areaList.length;

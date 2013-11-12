@@ -615,7 +615,6 @@ var main_scene_image = {
     p31: "res/effect/effect/p31.png",
     p32: "res/effect/effect/p32.png",
     p33: "res/effect/effect/p33.png",
-    p34: "res/effect/effect/p34.png",
 
 
     // 新手特效
@@ -643,7 +642,14 @@ var main_scene_image = {
     talking: "res/effect/NewPlayer/talking.png",
     yuanshen: "res/effect/NewPlayer/yuanshen.png",
 
-    battle_bg_music: "res/sound/battle_bg_music.mp3"
+    main_bg_music: "res/sound/main_bg_music.mp3",
+    battle_bg_music: "res/sound/battle_bg_music.mp3",
+
+//    battle_sound_heal: "res/sound/battle_sound_heal.mp3",
+//    battle_sound_miss: "res/sound/battle_sound_miss.mp3",
+    battle_sound_heal: "res/sound/battle_sound_heal.wav",
+    battle_sound_miss: "res/sound/battle_sound_miss.war",
+    button_sound: "res/sound/button_sound.mp3"
 };
 
 var main_scene_res = [

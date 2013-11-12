@@ -65,7 +65,7 @@ var BattleScene = cc.Scene.extend({
     end: function () {
         cc.log("BattleScene end");
 
-        cc.AudioEngine.getInstance().stopMusic();
+        cc.AudioEngine.getInstance().playMusic(main_scene_image.main_bg_music, true);
 
         BattlePlayer.getInstance().end();
     }

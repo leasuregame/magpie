@@ -169,7 +169,6 @@ var appFiles = [
     'src/view/mainModule/noviceTeachingLayer.js',
     'src/view/mainModule/mainScene.js',
 
-    'src/view/battleModule/actionFactory.js',
     'src/view/battleModule/battleBeganLayer.js',
     'src/view/battleModule/battleCardNode.js',
     'src/view/battleModule/battleEndLayer.js',

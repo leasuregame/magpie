@@ -39,18 +39,6 @@
 				<array>
 					<dict>
 						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>192.87997436523438</real>
-							<real>380</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>anchorPoint</string>
 						<key>type</key>
 						<string>Point</string>
@@ -67,7 +55,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.3308604955673218</real>
+							<real>1.2999999523162842</real>
 							<real>0.69999998807907104</real>
 							<false/>
 							<integer>0</integer>
@@ -116,8 +104,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>540</real>
-							<real>0.0</real>
+							<real>160</real>
+							<real>-70</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -140,8 +128,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
+							<real>0.5</real>
 							<real>1</real>
-							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -151,8 +139,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>6.4000000953674316</real>
-							<real>3.0983395576477051</real>
+							<real>12.800000190734863</real>
+							<real>7.1999998092651367</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -163,7 +151,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -240,8 +228,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-100</real>
-							<real>450.00006103515625</real>
+							<real>-130</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -264,8 +252,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
 							<real>0.0</real>
+							<real>0.5</real>
 						</array>
 					</dict>
 					<dict>
@@ -275,7 +263,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.60000002384185791</real>
+							<real>3.5</real>
 							<real>1.3999999761581421</real>
 							<false/>
 							<integer>0</integer>
@@ -295,7 +283,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -372,8 +360,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-100</real>
-							<real>960</real>
+							<real>160</real>
+							<real>70</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -396,8 +384,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
+							<real>0.5</real>
 							<real>1</real>
-							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -407,8 +395,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>6.4000000953674316</real>
-							<real>5.0999999046325684</real>
+							<real>12.800000190734863</real>
+							<real>12.359999656677246</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -427,7 +415,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -504,8 +492,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>540</real>
-							<real>310</real>
+							<real>130</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -528,8 +516,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
 							<real>0.0</real>
+							<real>0.5</real>
 						</array>
 					</dict>
 					<dict>
@@ -539,7 +527,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>3.1400001049041748</real>
+							<real>6.6999998092651367</real>
 							<real>1.3999999761581421</real>
 							<false/>
 							<integer>0</integer>
@@ -551,7 +539,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -745,18 +733,6 @@
 				<array>
 					<dict>
 						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>196.49246215820312</real>
-							<real>378.21636962890625</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>anchorPoint</string>
 						<key>type</key>
 						<string>Point</string>
@@ -938,25 +914,13 @@
 				<array>
 					<dict>
 						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>221.55972290039062</real>
-							<real>348.4593505859375</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>anchorPoint</string>
 						<key>type</key>
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.5</real>
+							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -1087,13 +1051,13 @@
 			<key>ext</key>
 			<string> </string>
 			<key>height</key>
-			<integer>960</integer>
+			<integer>0</integer>
 			<key>name</key>
 			<string>magpie</string>
 			<key>scale</key>
 			<real>1</real>
 			<key>width</key>
-			<integer>640</integer>
+			<integer>0</integer>
 		</dict>
 	</array>
 	<key>sequences</key>

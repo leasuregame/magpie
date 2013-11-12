@@ -613,6 +613,7 @@ var main_scene_image = {
     up41: effect_scene_path + "uiEffect/" + "up41.png",
     up42: effect_scene_path + "uiEffect/" + "up42.png",
     up43: effect_scene_path + "uiEffect/" + "up43.png",
+    up44: effect_scene_path + "uiEffect/" + "up44.png",
 
 
 
@@ -675,6 +676,7 @@ var main_scene_image = {
     uiEffect13: ccb_scene_path + "uiEffect13.ccbi",
     uiEffect14: ccb_scene_path + "uiEffect14.ccbi",
     uiEffect15: ccb_scene_path + "uiEffect15.ccbi",
+    uiEffect16: ccb_scene_path + "uiEffect16.ccbi",
     
 };
 

@@ -13,6 +13,8 @@
 
 
 var AchievementLayer = cc.Layer.extend({
+    _achievementLayerFit: null,
+
     _scrollViewElement: {},
 
     init: function () {
@@ -20,18 +22,20 @@ var AchievementLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._achievementLayerFit = gameFit.mainScene.achievementLayer;
+
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
+        bgSprite.setPosition(this._achievementLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 968));
+        headIcon.setPosition(this._achievementLayerFit.headIconPoint);
         this.addChild(headIcon);
 
         var titleIcon = cc.Sprite.create(main_scene_image.icon210);
-        titleIcon.setPosition(cc.p(360, 1008));
+        titleIcon.setPosition(this._achievementLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
         var backItem = cc.MenuItemImage.create(
@@ -40,7 +44,7 @@ var AchievementLayer = cc.Layer.extend({
             this._onClickBack,
             this
         );
-        backItem.setPosition(cc.p(100, 1008));
+        backItem.setPosition(this._achievementLayerFit.backItemPoint);
         var menu = cc.Menu.create(backItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
@@ -54,7 +58,7 @@ var AchievementLayer = cc.Layer.extend({
             scrollViewHeight = 700;
         }
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(54, 228, 609, 700));
+        var scrollViewLayer = MarkLayer.create(this._achievementLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
@@ -148,8 +152,8 @@ var AchievementLayer = cc.Layer.extend({
             }
         }
 
-        var scrollView = cc.ScrollView.create(cc.size(609, 700), scrollViewLayer);
-        scrollView.setPosition(cc.p(54, 228));
+        var scrollView = cc.ScrollView.create(this._achievementLayerFit.scrollViewSize, scrollViewLayer);
+        scrollView.setPosition(this._achievementLayerFit.scrollViewPoint);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();
         this.addChild(scrollView);

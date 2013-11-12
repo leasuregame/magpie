@@ -15,6 +15,8 @@
 var MAX_SEND_MESSAGE_LENGTH = 50;
 
 var SendMessageLayer = LazyLayer.extend({
+    _sendMessageLayerFit: null,
+
     _id: 0,
 
     init: function (id, name) {
@@ -22,30 +24,32 @@ var SendMessageLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this._sendMessageLayerFit = gameFit.mainScene.sendMessageLayer;
+
         this._id = id;
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 640, 1136);
-        bgLayer.setPosition(cc.p(40, 0));
+        bgLayer.setPosition(this._sendMessageLayerFit.bgLayerPoint);
         this.addChild(bgLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(cc.size(520, 300));
-        bgSprite.setPosition(cc.p(363, 600));
+        bgSprite.setContentSize(this._sendMessageLayerFit.bgSpriteContentSize);
+        bgSprite.setPosition(this._sendMessageLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var nameIcon = cc.LabelTTF.create("收件人:", "STHeitiTC-Medium", 25);
         nameIcon.setColor(cc.c3b(255, 248, 69));
         nameIcon.setAnchorPoint(cc.p(0, 0.5));
-        nameIcon.setPosition(cc.p(160, 690));
+        nameIcon.setPosition(this._sendMessageLayerFit.nameIconPoint);
         this.addChild(nameIcon);
 
         var nameLabel = cc.LabelTTF.create(name, "STHeitiTC-Medium", 25);
         nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        nameLabel.setPosition(cc.p(255, 690));
+        nameLabel.setPosition(this._sendMessageLayerFit.nameLabelPoint);
         this.addChild(nameLabel);
 
-        this._messageEditBox = cc.EditBox.create(cc.size(436, 50), cc.Scale9Sprite.create(main_scene_image.edit3));
-        this._messageEditBox.setPosition(cc.p(360, 610));
+        this._messageEditBox = cc.EditBox.create(this._sendMessageLayerFit.messageEditBoxSize, cc.Scale9Sprite.create(main_scene_image.edit3));
+        this._messageEditBox.setPosition(this._sendMessageLayerFit.messageEditBoxPoint);
         this._messageEditBox.setDelegate(this);
         this._messageEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
         this._messageEditBox.setReturnType(cc.KEYBOARD_RETURNTYPE_SEND);
@@ -62,7 +66,7 @@ var SendMessageLayer = LazyLayer.extend({
             this._onClickSend,
             this
         );
-        sendItem.setPosition(cc.p(240, 520));
+        sendItem.setPosition(this._sendMessageLayerFit.sendItemPoint);
 
         var cancelItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -71,7 +75,7 @@ var SendMessageLayer = LazyLayer.extend({
             this._onClickCancel,
             this
         );
-        cancelItem.setPosition(cc.p(480, 520));
+        cancelItem.setPosition(this._sendMessageLayerFit.cancelItemPoint);
 
         var menu = cc.Menu.create(sendItem, cancelItem);
         menu.setPosition(cc.p(0, 0));

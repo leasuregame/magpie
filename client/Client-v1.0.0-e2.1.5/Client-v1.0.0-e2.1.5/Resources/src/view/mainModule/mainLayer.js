@@ -38,17 +38,25 @@ var MainLayer = cc.Layer.extend({
 
         this._mainLayerFit = gameFit.mainScene.mainLayer;
 
-        var bgSprite = cc.Sprite.create(main_scene_image.bg1);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg1 , this._mainLayerFit.bgSpriteRect);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._mainLayerFit.bgSpritePoint);
-        //  this.addChild(bgSprite, -1);
+        this.addChild(bgSprite, -1);
 
         var playerHeaderLabel = PlayerHeaderLabel.create();
         playerHeaderLabel.setPosition(this._mainLayerFit.playerHeaderLabelPoint);
         this.addChild(playerHeaderLabel);
 
+        var lineIcon = cc.Sprite.create(main_scene_image.icon285);
+        lineIcon.setAnchorPoint(cc.p(0, 0));
+        lineIcon.setPosition(this._mainLayerFit.lineIconPoint);
+        this.addChild(lineIcon);
         var player = gameData.player;
 
+        var abilityLabelIcon = cc.Sprite.create(main_scene_image.icon286);
+        abilityLabelIcon.setAnchorPoint(cc.p(0, 0));
+        abilityLabelIcon.setPosition(this._mainLayerFit.abilityLabelIconPoint);
+        this.addChild(abilityLabelIcon);
         var abilityLabel = cc.LabelTTF.create(player.getAbility(), "STHeitiTC-Medium", 22);
         abilityLabel.setAnchorPoint(cc.p(0.5, 0.5));
         abilityLabel.setPosition(this._mainLayerFit.abilityLabelPoint);

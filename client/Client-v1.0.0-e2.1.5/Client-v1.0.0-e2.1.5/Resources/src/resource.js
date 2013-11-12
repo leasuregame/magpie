@@ -189,7 +189,7 @@ var main_scene_image = {
     button16s: main_scene_path + "button16s.png",
     button17: main_scene_path + "button17.png",
     button17s: main_scene_path + "button17s.png",
-//    button18: main_scene_path + "button18.png",
+    button18: main_scene_path + "button18.png",
 //    button18s: main_scene_path + "button18s.png",
     button19: main_scene_path + "button19.png",
     button19s: main_scene_path + "button19s.png",
@@ -552,6 +552,11 @@ var main_scene_image = {
     icon279: main_scene_path + "icon279.png",
     icon280: main_scene_path + "icon280.png",
     icon281: main_scene_path + "icon281.png",
+    icon282: main_scene_path + "icon282.png",
+    icon283: main_scene_path + "icon283.png",
+    icon284: main_scene_path + "icon284.png",
+    icon285: main_scene_path + "icon285.png",
+    icon286: main_scene_path + "icon286.png",
 
     // 特效
     battleNode: "res/ccb/battleNode.ccbi",

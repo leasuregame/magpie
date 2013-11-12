@@ -23,28 +23,66 @@ var vipPrivilegeDescription = {
 };
 
 var VipPrivilegeLayer = LazyLayer.extend({
+    _vipPrivilegeLayerFit: null,
+
     init: function () {
         cc.log("VipPrivilegeLayer init");
 
         if (!this._super()) return false;
 
+        this._vipPrivilegeLayerFit = gameFit.mainScene.vipPrivilegeLayer;
+
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(cc.size(540, 720));
-        bgSprite.setPosition(cc.p(360, 580));
+        bgSprite.setContentSize(this._vipPrivilegeLayerFit.bgSpriteContentSize);
+        bgSprite.setPosition(this._vipPrivilegeLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var shop = gameData.shop;
         var vip = gameData.player.get("vip");
         var nextVipCash = shop.getNextVipCash();
-        var str
+
         cc.log(nextVipCash);
         if (nextVipCash) {
-            var tipLabel = cc.LabelTTF.create(
-                "您是VIP" + vip + "再冲" + nextVipCash + "元即可享受VIP" + (vip + 1),
-                "STHeitiTC-Medium",
-                20
+            var tipLabel = ColorLabelTTF.create(
+                {
+                    string: "您是",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20
+                },
+                {
+                    string: "VIP" + vip,
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20,
+                    isStroke: true,
+                    color: cc.c3b(255, 248, 69)
+                },
+                {
+                    string: "再冲",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20
+                },
+                {
+                    string: nextVipCash,
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20,
+                    isStroke: true,
+                    color: cc.c3b(255, 248, 69)
+                },
+                {
+                    string: "元即可享受",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20
+                },
+                {
+                    string: "VIP" + (vip + 1),
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20,
+                    isStroke: true,
+                    color: cc.c3b(255, 248, 69)
+                }
             );
-            tipLabel.setPosition(cc.p(360, 880));
+            tipLabel.setAnchorPoint(cc.p(0, 0.5));
+            tipLabel.setPosition(this._vipPrivilegeLayerFit.tipLabelPoint);
             this.addChild(tipLabel);
         }
 
@@ -54,7 +92,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
             this._onClickClose,
             this
         );
-        closeItem.setPosition(cc.p(605, 925));
+        closeItem.setPosition(this._vipPrivilegeLayerFit.closeItemPoint);
 
         var menu = cc.Menu.create(closeItem);
         menu.setPosition(cc.p(0, 0));
@@ -63,7 +101,7 @@ var VipPrivilegeLayer = LazyLayer.extend({
         var vipPrivilegeList = shop.getVipPrivilegeList();
         var len = vipPrivilegeList.length;
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 711));
+        var scrollViewLayer = MarkLayer.create(this._vipPrivilegeLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
@@ -110,9 +148,9 @@ var VipPrivilegeLayer = LazyLayer.extend({
             }
         }
 
-        var scrollView = cc.ScrollView.create(cc.size(500, 600), scrollViewLayer);
+        var scrollView = cc.ScrollView.create(this._vipPrivilegeLayerFit.scrollViewSize, scrollViewLayer);
         scrollView.setTouchPriority(-300);
-        scrollView.setPosition(cc.p(110, 260));
+        scrollView.setPosition(this._vipPrivilegeLayerFit.scrollViewPoint);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();
         this.addChild(scrollView);

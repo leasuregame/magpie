@@ -118,12 +118,12 @@ var TaskLayer = cc.Layer.extend({
 
             var titleIcon1 = cc.Sprite.create(main_scene_image.icon143);
             titleIcon1.setPosition(220 + x, this._taskLayerFit.titlePointY);
-            scrollViewLayer.addChild(titleIcon1);
+            scrollViewLayer.addChild(titleIcon1, 1);
 
             var titleIcon2 = cc.Sprite.create(main_scene_image.icon143);
             titleIcon2.setScaleX(-1);
             titleIcon2.setPosition(420 + x, this._taskLayerFit.titlePointY);
-            scrollViewLayer.addChild(titleIcon2);
+            scrollViewLayer.addChild(titleIcon2, 1);
 
             for (var j = 1; j <= TASK_SECTION_COUNT; ++j) {
                 var index = 5 * (i - 1) + j;

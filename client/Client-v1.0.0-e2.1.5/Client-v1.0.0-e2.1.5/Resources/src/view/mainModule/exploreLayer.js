@@ -13,6 +13,8 @@
 
 
 var ExploreLayer = cc.Layer.extend({
+    _exploreLayerFit: null,
+
     _index: 0,
     _maxIndex: 0,
     _sectionId: 0,
@@ -40,6 +42,8 @@ var ExploreLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._exploreLayerFit = gameFit.mainScene.exploreLayer;
+
         this.setTouchEnabled(true);
 
         this._sectionId = sectionId;
@@ -53,69 +57,74 @@ var ExploreLayer = cc.Layer.extend({
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg9);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
+        bgSprite.setPosition(this._exploreLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 968));
+        headIcon.setPosition(this._exploreLayerFit.headIconPoint);
         this.addChild(headIcon, 1);
 
         for (var i = 0; i < 3; ++i) {
             this._mapLabel[i] = cc.Sprite.create(main_scene_image.bg4);
             this._mapLabel[i].setAnchorPoint(cc.p(0, 0));
-            this._mapLabel[i].setPosition(cc.p(40 + i * 640, 766));
+            this._mapLabel[i].setPosition(cc.p(this._exploreLayerFit.mapLabelBasePoint.x + i * this._exploreLayerFit.mapLabelOffsetX, this._exploreLayerFit.mapLabelBasePoint.y));
             this.addChild(this._mapLabel[i]);
         }
 
         var line1Icon = cc.Sprite.create(main_scene_image.icon96);
         line1Icon.setAnchorPoint(cc.p(0.5, 0));
-        line1Icon.setPosition(cc.p(360, 928));
+        line1Icon.setPosition(this._exploreLayerFit.line1IconPoint);
         this.addChild(line1Icon, 1);
 
         var line2Icon = cc.Sprite.create(main_scene_image.icon96);
         line2Icon.setRotation(180);
         line2Icon.setAnchorPoint(cc.p(0.5, 0));
-        line2Icon.setPosition(cc.p(360, 797));
+        line2Icon.setPosition(this._exploreLayerFit.line2IconPoint);
         this.addChild(line2Icon, 1);
 
+        var descriptionBgIcon = cc.Sprite.create(main_scene_image.icon287);
+        descriptionBgIcon.setAnchorPoint(cc.p(0,0));
+        descriptionBgIcon.setPosition(this._exploreLayerFit.descriptionBgIconPoint);
+        this.addChild(descriptionBgIcon)
+
         var descriptionIcon = cc.Sprite.create(main_scene_image.icon216);
-        descriptionIcon.setPosition(cc.p(120, 250));
+        descriptionIcon.setPosition(this._exploreLayerFit.descriptionIconPoint);
         this.addChild(descriptionIcon);
 
         var chapter = Math.ceil((this._sectionId) / TASK_SECTION_COUNT);
 
         var titleLabel = StrokeLabel.create(outputTables.chapter_title.rows[chapter].name, "STHeitiTC-Medium", 40);
         titleLabel.setColor(cc.c3b(255, 239, 131));
-        titleLabel.setPosition(cc.p(360, 1008));
+        titleLabel.setPosition(this._exploreLayerFit.titleLabelPoint);
         this.addChild(titleLabel, 1);
 
         this._spiritShadow = cc.Sprite.create(main_scene_image.icon217);
-        this._spiritShadow.setPosition(cc.p(350, 786));
+        this._spiritShadow.setPosition(this._exploreLayerFit.spiritShadowPoint);
         this.addChild(this._spiritShadow);
 
         this._spiritNode = SpiritSideNode.create();
-        this._spiritNode.setPosition(cc.p(360, 783));
+        this._spiritNode.setPosition(this._exploreLayerFit.spiritNodePoint);
         this.addChild(this._spiritNode);
 
         this._spiritNode.speak();
 
         this._turnLeftSprite = cc.Sprite.create(main_scene_image.icon37);
         this._turnLeftSprite.setRotation(180);
-        this._turnLeftSprite.setPosition(cc.p(80, 550));
+        this._turnLeftSprite.setPosition(this._exploreLayerFit.turnLeftSpritePoint);
         this.addChild(this._turnLeftSprite, 2);
 
         this._turnRightSprite = cc.Sprite.create(main_scene_image.icon37);
-        this._turnRightSprite.setPosition(cc.p(640, 550));
+        this._turnRightSprite.setPosition(this._exploreLayerFit.turnRightSpritePoint);
         this.addChild(this._turnRightSprite, 2);
 
         this._closeBoxSprite = cc.Sprite.create(main_scene_image.icon219);
-        this._closeBoxSprite.setPosition(cc.p(360, 1025));
+        this._closeBoxSprite.setPosition(this._exploreLayerFit.closeBoxSpritePoint);
         this.addChild(this._closeBoxSprite);
         this._closeBoxSprite.setVisible(false);
 
         this._openBoxSprite = cc.Sprite.create(main_scene_image.icon220);
-        this._openBoxSprite.setPosition(cc.p(360, 860));
+        this._openBoxSprite.setPosition(this._exploreLayerFit.openBoxSpritePoint);
         this.addChild(this._openBoxSprite);
         this._openBoxSprite.setVisible(false);
 
@@ -125,7 +134,7 @@ var ExploreLayer = cc.Layer.extend({
             this._onClickBack,
             this
         );
-        backItem.setPosition(cc.p(100, 1008));
+        backItem.setPosition(this._exploreLayerFit.backItemPoint);
 
         this._exploreItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -135,7 +144,7 @@ var ExploreLayer = cc.Layer.extend({
             this._onClickExplore,
             this
         );
-        this._exploreItem.setPosition(cc.p(360, 370));
+        this._exploreItem.setPosition(this._exploreLayerFit.exploreItemPoint);
 
 
         var menu = cc.Menu.create(backItem, this._exploreItem);
@@ -145,7 +154,7 @@ var ExploreLayer = cc.Layer.extend({
         // 读配置表
         var chapterTable = outputTables.task.rows;
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 569));
+        var scrollViewLayer = MarkLayer.create(this._exploreLayerFit.scrollViewLayerRect);
 
         var lazyMenu = LazyMenu.create();
         lazyMenu.setPosition(cc.p(0, 0));
@@ -177,7 +186,7 @@ var ExploreLayer = cc.Layer.extend({
             scrollViewLayer.addChild(exploreMoneyLabel);
 
             var descriptionLabel = cc.Node.create();
-            descriptionLabel.setPosition(cc.p(230, 270));
+            descriptionLabel.setPosition(this._exploreLayerFit.descriptionLabelPoint);
             this.addChild(descriptionLabel);
 
             var powerProgress = Progress.create(null, main_scene_image.progress1, 0, 0);
@@ -227,9 +236,9 @@ var ExploreLayer = cc.Layer.extend({
             }
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(640, 569), scrollViewLayer);
-        this._scrollView.setContentSize(cc.size(6400, 569));
-        this._scrollView.setPosition(GAME_BG_POINT);
+        this._scrollView = cc.ScrollView.create(this._exploreLayerFit.scrollViewSize, scrollViewLayer);
+        this._scrollView.setContentSize(this._exploreLayerFit.scrollViewContentSize);
+        this._scrollView.setPosition(this._exploreLayerFit.scrollViewPoint);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
         this._scrollView.setBounceable(false);
         this._scrollView.updateInset();

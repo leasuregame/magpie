@@ -41,7 +41,7 @@ var SpiritPoolLayer = cc.Layer.extend({
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._spiritPoolLayerFit.bgSpritePoint);
-        // this.addChild(bgSprite);
+        this.addChild(bgSprite);
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));

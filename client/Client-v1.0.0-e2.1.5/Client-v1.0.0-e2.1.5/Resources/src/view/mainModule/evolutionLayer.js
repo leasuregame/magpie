@@ -26,7 +26,7 @@ var EvolutionLayer = cc.Layer.extend({
 
         this._evolutionLayerFit = gameFit.mainScene.evolutionLayer;
 
-        var bgSprite = cc.Sprite.create(main_scene_image.bg1);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg1, this._evolutionLayerFit.bgSpriteRect1);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._evolutionLayerFit.bgSpritePoint);
         this.addChild(bgSprite, -1);
@@ -35,7 +35,7 @@ var EvolutionLayer = cc.Layer.extend({
         playerHeaderLabel.setPosition(this._evolutionLayerFit.playerHeaderLabelPoint);
         this.addChild(playerHeaderLabel);
 
-        bgSprite = cc.Sprite.create(main_scene_image.bg15);
+        bgSprite = cc.Sprite.create(main_scene_image.bg15, this._evolutionLayerFit.bgSpriteRect2);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._evolutionLayerFit.bgSpritePoint);
         this.addChild(bgSprite);

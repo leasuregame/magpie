@@ -28,7 +28,7 @@ var ShopLayer = cc.Layer.extend({
         var headIcon = cc.Sprite.create(main_scene_image.icon1);
         headIcon.setAnchorPoint(cc.p(0, 0));
         headIcon.setPosition(this._shopLayerFit.headIconPoint);
-        this.addChild(headIcon);
+        this.addChild(headIcon, 1);
 
         this._vipLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button22,

@@ -1619,7 +1619,7 @@ var fit4Iphone5 = {
             "effectPoint": cc.p(320, 740)
         },
         "spiritPoolLayer": {
-            "bgSpritePoint": cc.p(0, 194),
+            "bgSpritePoint": cc.p(0, 106),
             "headIconPoint": cc.p(0, 1056),
             "titleIconPoint": cc.p(320, 1096),
             "backItemPoint": cc.p(60, 1096),

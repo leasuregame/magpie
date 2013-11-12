@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E4C758318322D600036A3D5 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4C758118322D600036A3D5 /* libMobClickLibrary.a */; };
+		8E4C75851832309D0036A3D5 /* libjs_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4C75841832309D0036A3D5 /* libjs_static.a */; };
+		8E4C75881832346E0036A3D5 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4C75861832346E0036A3D5 /* libcurl.a */; };
+		8E4C75891832346E0036A3D5 /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4C75871832346E0036A3D5 /* libwebp.a */; };
+		8E4C758B1832349C0036A3D5 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4C758A1832349C0036A3D5 /* libwebsockets.a */; };
 		906E946217CDAD090038DF64 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 906E946017CDAD090038DF64 /* res */; };
 		906E946317CDAD090038DF64 /* src in Resources */ = {isa = PBXBuildFile; fileRef = 906E946117CDAD090038DF64 /* src */; };
 		906E946717CDAD150038DF64 /* main_binding.js in Sources */ = {isa = PBXBuildFile; fileRef = 906E946417CDAD150038DF64 /* main_binding.js */; };
@@ -122,8 +127,6 @@
 		90D49D8817CAF81B00A22DB2 /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90D49D8717CAF81B00A22DB2 /* EAGLView.mm */; };
 		90D49D8D17CAF81B00A22DB2 /* AccelerometerSimulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D49D8C17CAF81B00A22DB2 /* AccelerometerSimulation.m */; };
 		90D49D8F17CAF81B00A22DB2 /* platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90D49D8E17CAF81B00A22DB2 /* platform.cpp */; };
-		90D49D9F17CAF81C00A22DB2 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D49D9E17CAF81C00A22DB2 /* libcurl.a */; };
-		90D49DA117CAF81C00A22DB2 /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D49DA017CAF81C00A22DB2 /* libwebp.a */; };
 		90D49DA817CAF81C00A22DB2 /* CCScriptSupport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90D49DA717CAF81C00A22DB2 /* CCScriptSupport.cpp */; };
 		90D49DAC17CAF81C00A22DB2 /* CCGLProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90D49DAB17CAF81C00A22DB2 /* CCGLProgram.cpp */; };
 		90D49DAF17CAF81C00A22DB2 /* ccGLStateCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90D49DAE17CAF81C00A22DB2 /* ccGLStateCache.cpp */; };
@@ -216,7 +219,6 @@
 		90D49ECD17CAF82100A22DB2 /* ScriptingCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90D49ECC17CAF82100A22DB2 /* ScriptingCore.cpp */; };
 		90D49ED117CAF82100A22DB2 /* XMLHTTPRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90D49ED017CAF82100A22DB2 /* XMLHTTPRequest.cpp */; };
 		90D49EE917CAF82100A22DB2 /* js.msg in Resources */ = {isa = PBXBuildFile; fileRef = 90D49EE817CAF82100A22DB2 /* js.msg */; };
-		90D49F2017CAF82300A22DB2 /* libjs_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D49F1F17CAF82300A22DB2 /* libjs_static.a */; };
 		90D49F4317CAF82300A22DB2 /* chipmunk.c in Sources */ = {isa = PBXBuildFile; fileRef = 90D49F4217CAF82300A22DB2 /* chipmunk.c */; };
 		90D49F4717CAF82300A22DB2 /* cpConstraint.c in Sources */ = {isa = PBXBuildFile; fileRef = 90D49F4617CAF82300A22DB2 /* cpConstraint.c */; };
 		90D49F4917CAF82300A22DB2 /* cpDampedRotarySpring.c in Sources */ = {isa = PBXBuildFile; fileRef = 90D49F4817CAF82300A22DB2 /* cpDampedRotarySpring.c */; };
@@ -324,12 +326,17 @@
 		90D4A07517CAF82600A22DB2 /* Slot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90D4A07417CAF82600A22DB2 /* Slot.cpp */; };
 		90D4A07817CAF82600A22DB2 /* SlotData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90D4A07717CAF82600A22DB2 /* SlotData.cpp */; };
 		90D4A07B17CAF82600A22DB2 /* spine-cocos2dx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90D4A07A17CAF82600A22DB2 /* spine-cocos2dx.cpp */; };
-		90D4A08417CAF82600A22DB2 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D4A08317CAF82600A22DB2 /* libwebsockets.a */; };
 		90D4A08A17CAF82600A22DB2 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90D4A08917CAF82600A22DB2 /* AppDelegate.cpp */; };
 		90D4A0CF17CAF82600A22DB2 /* hello.js in Resources */ = {isa = PBXBuildFile; fileRef = 90D4A0CE17CAF82600A22DB2 /* hello.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E4C758118322D600036A3D5 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		8E4C758218322D600036A3D5 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		8E4C75841832309D0036A3D5 /* libjs_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjs_static.a; path = "libs/javascript/spidermonkey-ios/lib/libjs_static.a"; sourceTree = "<group>"; };
+		8E4C75861832346E0036A3D5 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = libs/cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
+		8E4C75871832346E0036A3D5 /* libwebp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebp.a; path = libs/cocos2dx/platform/third_party/ios/libraries/libwebp.a; sourceTree = "<group>"; };
+		8E4C758A1832349C0036A3D5 /* libwebsockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebsockets.a; path = libs/libwebsockets/ios/lib/libwebsockets.a; sourceTree = "<group>"; };
 		906E946017CDAD090038DF64 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = Resources/res; sourceTree = "<group>"; };
 		906E946117CDAD090038DF64 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = Resources/src; sourceTree = "<group>"; };
 		906E946417CDAD150038DF64 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main_binding.js; path = Resources/main_binding.js; sourceTree = "<group>"; };
@@ -566,8 +573,6 @@
 		90D49D9A17CAF81B00A22DB2 /* multi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = multi.h; path = libs/cocos2dx/platform/third_party/ios/curl/multi.h; sourceTree = "<group>"; };
 		90D49D9B17CAF81B00A22DB2 /* stdcheaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stdcheaders.h; path = libs/cocos2dx/platform/third_party/ios/curl/stdcheaders.h; sourceTree = "<group>"; };
 		90D49D9C17CAF81B00A22DB2 /* typecheck-gcc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "typecheck-gcc.h"; path = "libs/cocos2dx/platform/third_party/ios/curl/typecheck-gcc.h"; sourceTree = "<group>"; };
-		90D49D9E17CAF81C00A22DB2 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = libs/cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
-		90D49DA017CAF81C00A22DB2 /* libwebp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebp.a; path = libs/cocos2dx/platform/third_party/ios/libraries/libwebp.a; sourceTree = "<group>"; };
 		90D49DA317CAF81C00A22DB2 /* decode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = decode.h; path = libs/cocos2dx/platform/third_party/ios/webp/decode.h; sourceTree = "<group>"; };
 		90D49DA417CAF81C00A22DB2 /* encode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = encode.h; path = libs/cocos2dx/platform/third_party/ios/webp/encode.h; sourceTree = "<group>"; };
 		90D49DA517CAF81C00A22DB2 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = types.h; path = libs/cocos2dx/platform/third_party/ios/webp/types.h; sourceTree = "<group>"; };
@@ -825,7 +830,6 @@
 		90D49F1B17CAF82200A22DB2 /* TypeTraits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TypeTraits.h; path = "libs/javascript/spidermonkey-ios/include/mozilla/TypeTraits.h"; sourceTree = "<group>"; };
 		90D49F1C17CAF82200A22DB2 /* Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Util.h; path = "libs/javascript/spidermonkey-ios/include/mozilla/Util.h"; sourceTree = "<group>"; };
 		90D49F1D17CAF82200A22DB2 /* WeakPtr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WeakPtr.h; path = "libs/javascript/spidermonkey-ios/include/mozilla/WeakPtr.h"; sourceTree = "<group>"; };
-		90D49F1F17CAF82300A22DB2 /* libjs_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjs_static.a; path = "libs/javascript/spidermonkey-ios/lib/libjs_static.a"; sourceTree = "<group>"; };
 		90D49F2217CAF82300A22DB2 /* chipmunk-docs.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "chipmunk-docs.html"; path = "libs/chipmunk/chipmunk-docs.html"; sourceTree = "<group>"; };
 		90D49F2517CAF82300A22DB2 /* chipmunk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = chipmunk.h; path = libs/chipmunk/include/chipmunk/chipmunk.h; sourceTree = "<group>"; };
 		90D49F2617CAF82300A22DB2 /* chipmunk_ffi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = chipmunk_ffi.h; path = libs/chipmunk/include/chipmunk/chipmunk_ffi.h; sourceTree = "<group>"; };
@@ -1051,7 +1055,6 @@
 		90D4A07C17CAF82600A22DB2 /* spine-cocos2dx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "spine-cocos2dx.h"; path = "libs/extensions/spine/spine-cocos2dx.h"; sourceTree = "<group>"; };
 		90D4A07D17CAF82600A22DB2 /* spine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = spine.h; path = libs/extensions/spine/spine.h; sourceTree = "<group>"; };
 		90D4A08117CAF82600A22DB2 /* libwebsockets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = libwebsockets.h; path = libs/libwebsockets/ios/include/libwebsockets.h; sourceTree = "<group>"; };
-		90D4A08317CAF82600A22DB2 /* libwebsockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebsockets.a; path = libs/libwebsockets/ios/lib/libwebsockets.a; sourceTree = "<group>"; };
 		90D4A08617CAF82600A22DB2 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		90D4A08817CAF82600A22DB2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		90D4A08917CAF82600A22DB2 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
@@ -1098,16 +1101,17 @@
 			files = (
 				90D49C2A17CAF81800A22DB2 /* QuartzCore.framework in Frameworks */,
 				90D49C2C17CAF81800A22DB2 /* OpenGLES.framework in Frameworks */,
+				8E4C758318322D600036A3D5 /* libMobClickLibrary.a in Frameworks */,
 				90D49C2E17CAF81800A22DB2 /* OpenAL.framework in Frameworks */,
 				90D49C3017CAF81800A22DB2 /* AudioToolbox.framework in Frameworks */,
+				8E4C75881832346E0036A3D5 /* libcurl.a in Frameworks */,
 				90D49C3217CAF81800A22DB2 /* AVFoundation.framework in Frameworks */,
 				90D49C3417CAF81800A22DB2 /* UIKit.framework in Frameworks */,
 				90D49C3617CAF81800A22DB2 /* Foundation.framework in Frameworks */,
+				8E4C758B1832349C0036A3D5 /* libwebsockets.a in Frameworks */,
+				8E4C75891832346E0036A3D5 /* libwebp.a in Frameworks */,
 				90D49C3817CAF81800A22DB2 /* CoreGraphics.framework in Frameworks */,
-				90D49D9F17CAF81C00A22DB2 /* libcurl.a in Frameworks */,
-				90D49DA117CAF81C00A22DB2 /* libwebp.a in Frameworks */,
-				90D49F2017CAF82300A22DB2 /* libjs_static.a in Frameworks */,
-				90D4A08417CAF82600A22DB2 /* libwebsockets.a in Frameworks */,
+				8E4C75851832309D0036A3D5 /* libjs_static.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1626,8 +1630,8 @@
 		90D49D9D17CAF81C00A22DB2 /* libraries */ = {
 			isa = PBXGroup;
 			children = (
-				90D49D9E17CAF81C00A22DB2 /* libcurl.a */,
-				90D49DA017CAF81C00A22DB2 /* libwebp.a */,
+				8E4C75861832346E0036A3D5 /* libcurl.a */,
+				8E4C75871832346E0036A3D5 /* libwebp.a */,
 			);
 			name = libraries;
 			sourceTree = "<group>";
@@ -2130,7 +2134,7 @@
 		90D49F1E17CAF82300A22DB2 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				90D49F1F17CAF82300A22DB2 /* libjs_static.a */,
+				8E4C75841832309D0036A3D5 /* libjs_static.a */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -2529,7 +2533,7 @@
 		90D4A08217CAF82600A22DB2 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				90D4A08317CAF82600A22DB2 /* libwebsockets.a */,
+				8E4C758A1832349C0036A3D5 /* libwebsockets.a */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -2545,6 +2549,8 @@
 		90D4A08717CAF82600A22DB2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8E4C758118322D600036A3D5 /* libMobClickLibrary.a */,
+				8E4C758218322D600036A3D5 /* MobClick.h */,
 				90D4A08817CAF82600A22DB2 /* AppDelegate.h */,
 				90D4A08917CAF82600A22DB2 /* AppDelegate.cpp */,
 			);
@@ -3065,9 +3071,13 @@
 				INFOPLIST_FILE = "Client-v1.0.0-e2.1.5/Resources/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Client-v1.0.0-e2.1.5/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/lib\"",
-					"\"$(SRCROOT)/Client-v1.0.0-e2.1.5/libs/libwebsockets/ios/lib\"",
+					"\\\"$(SRCROOT)/Client-v1.0.0-e2.1.5/libs/cocos2dx/platform/third_party/ios/libraries\\\"",
+					"\\\"$(SRCROOT)/Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/lib\\\"",
+					"\\\"$(SRCROOT)/Client-v1.0.0-e2.1.5/libs/libwebsockets/ios/lib\\\"",
+					"/Users/arthur/magpie/client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5",
+					"/Users/arthur/magpie/client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/lib",
+					"/Users/arthur/magpie/client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/libs/cocos2dx/platform/third_party/ios/libraries",
+					"/Users/arthur/magpie/client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/libs/libwebsockets/ios/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -3096,9 +3106,13 @@
 				INFOPLIST_FILE = "Client-v1.0.0-e2.1.5/Resources/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Client-v1.0.0-e2.1.5/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/lib\"",
-					"\"$(SRCROOT)/Client-v1.0.0-e2.1.5/libs/libwebsockets/ios/lib\"",
+					"\\\"$(SRCROOT)/Client-v1.0.0-e2.1.5/libs/cocos2dx/platform/third_party/ios/libraries\\\"",
+					"\\\"$(SRCROOT)/Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/lib\\\"",
+					"\\\"$(SRCROOT)/Client-v1.0.0-e2.1.5/libs/libwebsockets/ios/lib\\\"",
+					"/Users/arthur/magpie/client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5",
+					"/Users/arthur/magpie/client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/lib",
+					"/Users/arthur/magpie/client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/libs/cocos2dx/platform/third_party/ios/libraries",
+					"/Users/arthur/magpie/client/Client-v1.0.0-e2.1.5/Client-v1.0.0-e2.1.5/libs/libwebsockets/ios/lib",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",

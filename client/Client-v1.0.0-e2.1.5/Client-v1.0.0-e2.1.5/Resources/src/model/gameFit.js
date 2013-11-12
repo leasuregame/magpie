@@ -23,7 +23,6 @@ var fit4Iphone4 = {
             "offsetYHeight": 567,
             "okItemPoint": cc.p(360, 327)
         },
-
         "batterLayer": {
             "bgSpritePoint": cc.p(40, 0),
             "locatePoints": {
@@ -43,6 +42,13 @@ var fit4Iphone4 = {
             "backItemPoint": cc.p(250, -460),
             "effect15NodePoint": cc.p(360, 480),
             "ccbNodePoint": cc.p(360, 480)
+        },
+        "cloudLayer": {
+            MIN_CLOUD_POSITION_X: 40,
+            MID_CLOUD_POSITION_X: 360,
+            MAX_CLOUD_POSITION_X: 680,
+            MIN_CLOUD_POSITION_Y: 0,
+            MAX_CLOUD_POSITION_Y: 960
         }
     },
 
@@ -957,6 +963,13 @@ var fit4Iphone5 = {
             "backItemPoint": cc.p(210, -520),
             "effect15NodePoint": cc.p(320, 568),
             "ccbNodePoint": cc.p(320, 568)
+        },
+        "cloudLayer": {
+            MIN_CLOUD_POSITION_X: 0,
+            MID_CLOUD_POSITION_X: 320,
+            MAX_CLOUD_POSITION_X: 640,
+            MIN_CLOUD_POSITION_Y: 0,
+            MAX_CLOUD_POSITION_Y: 1136
         }
     },
 

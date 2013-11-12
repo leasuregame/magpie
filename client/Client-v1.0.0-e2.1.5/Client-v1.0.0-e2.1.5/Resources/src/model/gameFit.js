@@ -1603,7 +1603,7 @@ var fit4Iphone5 = {
             "propsLayerItemPoint": cc.p(214, 1090)
         },
         "signInLayer": {
-            "bgSpriteSize": cc.size(560, 720),
+            "bgSpriteSize": cc.size(600, 720),
             "bgSpritePoint": cc.p(322, 565),
             "titleLabelPoint": cc.p(320, 885),
             "turnLeftItemPoint": cc.p(47, 680),

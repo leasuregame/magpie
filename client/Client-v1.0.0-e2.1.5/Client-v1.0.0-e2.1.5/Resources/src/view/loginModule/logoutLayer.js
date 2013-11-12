@@ -22,7 +22,7 @@ var LogoutLayer = LazyLayer.extend({
 
         this._logoutLayerFit = gameFit.loginScene.logoutLayer;
 
-        this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+        this.setTouchPriority(WAIT_LAYER_HANDLER_PRIORITY);
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 640, 1136);
         bgLayer.setPosition(this._logoutLayerFit.bgLayerPoint);
@@ -47,7 +47,7 @@ var LogoutLayer = LazyLayer.extend({
         cancelItem.setPosition(this._logoutLayerFit.cancelItemPoint);
 
         var menu = cc.Menu.create(cancelItem);
-        menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+        menu.setTouchPriority(WAIT_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -60,7 +60,6 @@ var LogoutLayer = LazyLayer.extend({
         this.removeFromParent();
 
         MainScene.destroy();
-        TipLayer.destroy();
 
         cc.Director.getInstance().replaceScene(LoginScene.create());
     }
@@ -81,5 +80,5 @@ LogoutLayer.create = function (msg) {
 LogoutLayer.pop = function (msg) {
     var logoutLayer = LogoutLayer.create(msg);
 
-    cc.Director.getInstance().getRunningScene().addChild(logoutLayer, 1);
+    cc.Director.getInstance().getRunningScene().addChild(logoutLayer, 10);
 };

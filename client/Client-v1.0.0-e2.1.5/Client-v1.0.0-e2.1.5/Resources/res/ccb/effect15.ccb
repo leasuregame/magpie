@@ -85,7 +85,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.83333331346511841</real>
+									<real>0.96666663885116577</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -107,7 +107,7 @@
 										<key>opt</key>
 										<real>0.30000001192092896</real>
 										<key>type</key>
-										<integer>5</integer>
+										<integer>1</integer>
 									</dict>
 									<key>name</key>
 									<string>position</string>
@@ -117,7 +117,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>-20</real>
+										<real>-25</real>
 										<real>0.0</real>
 									</array>
 								</dict>
@@ -130,12 +130,30 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>0.83333331346511841</real>
+									<real>0.80000001192092896</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>-400</real>
+										<real>-15</real>
+										<real>0.0</real>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>position</string>
+									<key>time</key>
+									<real>0.96666663885116577</real>
+									<key>type</key>
+									<integer>3</integer>
+									<key>value</key>
+									<array>
+										<real>-300</real>
 										<real>0.0</real>
 									</array>
 								</dict>
@@ -237,7 +255,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-400</real>
+							<real>-300</real>
 							<real>0.0</real>
 							<integer>0</integer>
 						</array>
@@ -287,7 +305,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/effect/p33.png</string>
+							<string>effect/effect/p32.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -308,7 +326,7 @@
 						<key>value</key>
 						<array>
 							<integer>254</integer>
-							<integer>252</integer>
+							<integer>255</integer>
 							<integer>255</integer>
 						</array>
 					</dict>
@@ -379,7 +397,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.83333331346511841</real>
+									<real>0.96666663885116577</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -401,7 +419,7 @@
 										<key>opt</key>
 										<real>0.30000001192092896</real>
 										<key>type</key>
-										<integer>5</integer>
+										<integer>1</integer>
 									</dict>
 									<key>name</key>
 									<string>position</string>
@@ -411,7 +429,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>20</real>
+										<real>25</real>
 										<real>0.0</real>
 									</array>
 								</dict>
@@ -424,12 +442,30 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>0.83333331346511841</real>
+									<real>0.80000001192092896</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>400</real>
+										<real>15</real>
+										<real>0.0</real>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>1</integer>
+									</dict>
+									<key>name</key>
+									<string>position</string>
+									<key>time</key>
+									<real>0.96666663885116577</real>
+									<key>type</key>
+									<integer>3</integer>
+									<key>value</key>
+									<array>
+										<real>300</real>
 										<real>0.0</real>
 									</array>
 								</dict>
@@ -531,7 +567,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>400</real>
+							<real>300</real>
 							<real>0.0</real>
 							<integer>0</integer>
 						</array>
@@ -581,7 +617,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/effect/p34.png</string>
+							<string>effect/effect/p33.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -644,8 +680,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -681,13 +715,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>0.83333331346511841</real>
+			<real>1.3333333730697632</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.83333331346511841</real>
+			<real>1.3333333730697632</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

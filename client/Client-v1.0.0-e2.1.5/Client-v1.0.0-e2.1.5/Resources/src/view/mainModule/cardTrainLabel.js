@@ -12,9 +12,9 @@
  * */
 
 
-var TRAIN_CARD_NULL = 0;
-var TRAIN_CARD_HP = 1;
-var TRAIN_CARD_ATK = 2;
+var TRAIN_CARD_NULL = -1;
+var TRAIN_CARD_HP = 0;
+var TRAIN_CARD_ATK = 1;
 
 var TRAIN_ZERO_COUNT = 0;
 var TRAIN_ONE_COUNT = 1;
@@ -286,7 +286,7 @@ var CardTrainLabel = cc.Layer.extend({
 
             if (this._trainType != TRAIN_CARD_NULL && this._trainCount != TRAIN_ZERO_COUNT) {
                 if (this._trainType == TRAIN_CARD_HP) {
-                    this._hpAdditionLabel.setString("+ " + (this._trainCount * 3));
+                    this._hpAdditionLabel.setString("+ " + (this._trainCount * 2));
                     this._atkAdditionLabel.setString("+ 0");
 
                     this._hpAdditionLabel.setVisible(true);

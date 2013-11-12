@@ -283,7 +283,7 @@ var SignInLayer = LazyLayer.extend({
             var count = table.count != -1 ? table.count : monthMark.days;
             if(monthMark.count >= count) {
                 this._elementList[i].readyRewardItem.setVisible(visible);
-                this._elementList[i].rewardIcon.setVisible(!visible);
+                this._elementList[i].rewardIcon.setVisible(false);
                 this._elementList[i].alreadyRewardIcon.setVisible(!visible);
                 this._elementList[i].rewardItem.setVisible(!visible);
             }

@@ -102,13 +102,13 @@ var TaskLayer = cc.Layer.extend({
             var bgSprite = cc.Sprite.create(main_scene_image.bg8);
             bgSprite.setAnchorPoint(cc.p(0.5, 0.5));
             bgSprite.setPosition(x + this._taskLayerFit.scrollViewSize.width / 2, this._taskLayerFit.scrollViewSize.height / 2);
-            if(i % 2 == 0)
-                //bgSprite.setScaleX(-1);
-                bgSprite.setFlippedX(true);
+            if (i % 2 == 0) {
+                bgSprite.setScaleX(-1);
+            }
             scrollViewLayer.addChild(bgSprite);
 
             var titleBgIcon = cc.Sprite.create(main_scene_image.icon147);
-            titleBgIcon.setPosition(cc.p(x,this._taskLayerFit.titlePointY));
+            titleBgIcon.setPosition(cc.p(x, this._taskLayerFit.titlePointY));
             scrollViewLayer.addChild(titleBgIcon);
 
             var titleLabel = StrokeLabel.create(chapterTitleTable[i].name, "STHeitiTC-Medium", 30);
@@ -121,8 +121,7 @@ var TaskLayer = cc.Layer.extend({
             scrollViewLayer.addChild(titleIcon1);
 
             var titleIcon2 = cc.Sprite.create(main_scene_image.icon143);
-            //titleIcon2.setScaleX(-1);
-            titleIcon2.setFlippedX(true);
+            titleIcon2.setScaleX(-1);
             titleIcon2.setPosition(420 + x, this._taskLayerFit.titlePointY);
             scrollViewLayer.addChild(titleIcon2);
 

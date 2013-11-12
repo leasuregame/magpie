@@ -8,6 +8,14 @@
 
 
 var fit4Iphone4 = {
+
+    "controls": {
+        "tipLayer": {
+            "labelPoint": cc.p(360, 550),
+            "actionPoint": cc.p(360, 650)
+        }
+    },
+
     "gameFrame": {
         "frame1Point": cc.p(0, 480),
         "frame2Point": cc.p(680, 480)
@@ -419,8 +427,8 @@ var fit4Iphone4 = {
             "playerHeaderLabelPoint": cc.p(40, 802),
             "lineIconPoint": cc.p(40,784),
             "abilityLabelIconPoint": cc.p(78,591),
-            "abilityLabelPoint": cc.p(300, 608),
-            "rankingLabelPoint": cc.p(530, 608),
+            "abilityLabelPoint": cc.p(240, 608),
+            "rankingLabelPoint": cc.p(470, 608),
             "lineUpLabelPoint": cc.p(40, 712),
             "spiritLayerItemPoint": cc.p(360, 412),
             "lotteryLayerItemPoint": cc.p(165, 512),
@@ -929,6 +937,14 @@ var fit4Iphone4 = {
 };
 
 var fit4Iphone5 = {
+
+    "controls": {
+        "tipLayer": {
+            "labelPoint": cc.p(320, 550),
+            "actionPoint": cc.p(320, 650)
+        }
+    },
+
     "gameFrame": {
         "frame1Point": cc.p(0, 568),
         "frame2Point": cc.p(680, 568)
@@ -1341,8 +1357,8 @@ var fit4Iphone5 = {
             "playerHeaderLabelPoint": cc.p(0, 968),
             "lineIconPoint": cc.p(0,950),
             "abilityLabelIconPoint": cc.p(38,732),
-            "abilityLabelPoint": cc.p(260, 749),
-            "rankingLabelPoint": cc.p(490, 749),
+            "abilityLabelPoint": cc.p(200, 749),
+            "rankingLabelPoint": cc.p(430, 749),
             "lineUpLabelPoint": cc.p(0, 853),
             "spiritLayerItemPoint": cc.p(320, 500),
             "lotteryLayerItemPoint": cc.p(125, 653),

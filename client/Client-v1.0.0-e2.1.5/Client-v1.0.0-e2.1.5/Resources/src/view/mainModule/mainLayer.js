@@ -58,12 +58,12 @@ var MainLayer = cc.Layer.extend({
         abilityLabelIcon.setPosition(this._mainLayerFit.abilityLabelIconPoint);
         this.addChild(abilityLabelIcon);
         var abilityLabel = cc.LabelTTF.create(player.getAbility(), "STHeitiTC-Medium", 22);
-        abilityLabel.setAnchorPoint(cc.p(0.5, 0.5));
+        abilityLabel.setAnchorPoint(cc.p(0, 0.5));
         abilityLabel.setPosition(this._mainLayerFit.abilityLabelPoint);
         this.addChild(abilityLabel);
 
         var rankingLabel = cc.LabelTTF.create(gameData.tournament.get("ranking"), "STHeitiTC-Medium", 22);
-        rankingLabel.setAnchorPoint(cc.p(0.5, 0.5));
+        rankingLabel.setAnchorPoint(cc.p(0, 0.5));
         rankingLabel.setPosition(this._mainLayerFit.rankingLabelPoint);
         this.addChild(rankingLabel);
 

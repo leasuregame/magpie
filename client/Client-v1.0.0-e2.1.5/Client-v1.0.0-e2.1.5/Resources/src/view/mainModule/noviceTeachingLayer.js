@@ -41,8 +41,8 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
         this.setTouchPriority(NOVICE_TEACHING_LAYER_HANDLER_PRIORITY);
 
-        this._step = sys.localStorage.getItem(gameData.user.get('name') + "step") || 0;
-        cc.log('step = ' + this._step);
+        this._step = sys.localStorage.getItem(gameData.user.get("account") + "step") || 0;
+        cc.log("step = " + this._step);
 
         this._rect = cc.rect(0, 0, 0, 0);
 
@@ -71,7 +71,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
     _save: function () {
         cc.log("NoviceTeachingLayer _save");
-        sys.localStorage.setItem(gameData.user.get('name') + "step", this._step);
+        sys.localStorage.setItem(gameData.user.get("account") + "step", this._step);
     },
 
     next: function () {
@@ -140,7 +140,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
         cc.log("NoviceTeachingLayer isNoviceTeaching");
         var player = gameData.player;
         if (this._getStep() < OVER_NOVICE_STEP) {
-            if (player.get('exp') == 0 && player.get('lv') == 1)
+            if (player.get("exp") == 0 && player.get("lv") == 1)
                 return true;
         } else {
             return false;

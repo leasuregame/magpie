@@ -12,6 +12,7 @@
  * */
 
 var gameData = {
+    sound: Sound.create(),
     user: User.create(),
     player: null,
     cardList: null,

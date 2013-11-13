@@ -80,14 +80,8 @@ var BatterLayer = cc.Layer.extend({
                 this.addChild(this._tipNode[key], 3);
             }
         }
-        var that = this;
-        this._backItem = cc.MenuItemFont.create("结束战斗", function () {
-            if (gameData.player.get("lv") < 10) {
-                TipLayer.tip("10级开始后，可以跳过战斗");
-            } else {
-                that.end();
-            }
-        }, this);
+
+        this._backItem = cc.MenuItemFont.create("结束战斗", this._onClickBack, this);
         this._backItem.setPosition(this._batterLayerFit.backItemPoint);
         var menu = cc.Menu.create(this._backItem);
         this.addChild(menu);
@@ -708,6 +702,18 @@ var BatterLayer = cc.Layer.extend({
                     this.end();
                 }, 1.5);
             }
+        }
+    },
+
+    _onClickBack: function () {
+        cc.log("BattleLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (gameData.player.get("lv") < 10) {
+            TipLayer.tip("10级开始后，可以跳过战斗");
+        } else {
+            this.end();
         }
     }
 });

@@ -107,6 +107,8 @@ var BattleEndLayer = cc.Layer.extend({
     end: function () {
         cc.log("BattleEndLayer end");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         BattlePlayer.getInstance().next();
     }
 });

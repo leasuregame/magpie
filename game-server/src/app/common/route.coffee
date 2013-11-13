@@ -19,14 +19,3 @@ module.exports =
 			return
 
 		cb(null, serverId)
-
-
-	battle: (session, msg, app, cb) ->
-		battles = app.get 'battleIdMap'
-		serverId = battles[session.get('areaId')]
-
-		if not serverId
-			cb(new Error('can not find server info for type: ' + msg.serverType))
-			return
-
-		cb(null, serverId)

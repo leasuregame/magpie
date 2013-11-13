@@ -4,55 +4,60 @@ playerConfig = require('../../config/data/player')
 msgConfig = require('../../config/data/message')
 utility = require('../common/utility')
 
-FLAG_FILE = path.join(__dirname, '..', '..', 'config', 'powerGivenFlag.json')
+FLAG_FILE = path.join(__dirname, '..', '..', 'config', 'powerGivenFlag')
 DEFAULT_FLAG = powerGiven: [], date: '1970-1-1'
 SYSTEM = -1
 
 module.exports = 
   doGivePower: (app, hour = new Date().getHours()) ->
-    return if not @_canGivePower(hour)
+    return if not @_canGivePower(hour, app)
     
-    data = @_readFlag()
+    data = @_readFlag(app)
     data.powerGiven.push(hour)
     data.date = utility.shortDateString()
-    @_writeFlag JSON.stringify(data)
+    @_writeFlag JSON.stringify(data), app
     @_addSysMsg(app)
 
-  checkFlagFile: ->
-    if not fs.existsSync(FLAG_FILE)
-      fs.writeFileSync(FLAG_FILE, JSON.stringify(DEFAULT_FLAG))
+  checkFlagFile: (app)->
+    filepath = @_filePath(app)
+    if not fs.existsSync(filepath)
+      fs.writeFileSync(filepath, JSON.stringify(DEFAULT_FLAG))
 
-  _readFlag: ->
-    JSON.parse(fs.readFileSync(FLAG_FILE))
+  _filePath: (app) ->
+    serverId = app.getServerId()
+    FLAG_FILE + "-#{serverId}.json"
 
-  _writeFlag: (data)->
-    fs.writeFileSync(FLAG_FILE, data)
+  _readFlag: (app)->
+    JSON.parse(fs.readFileSync(@_filePath(app)))
 
-  _canGivePower: (hour = new Date().getHours()) ->
+  _writeFlag: (data, app)->
+    fs.writeFileSync(@_filePath(app), data)
+
+  _canGivePower: (hour = new Date().getHours(), app) ->
     hours = playerConfig.POWER_GIVE.hours
-    data = @_readFlag()
+    data = @_readFlag(app)
     if data.date isnt utility.shortDateString()
       data.date = utility.shortDateString()
       data.powerGiven = []
-      @_writeFlag JSON.stringify(data)
+      @_writeFlag JSON.stringify(data), app
 
     hours.indexOf(hour) > -1 and data.powerGiven.indexOf(hour) < 0
 
   _addSysMsg: (app) ->
     givePoint = playerConfig.POWER_GIVE.point
-    app.get('dao').message.create data: {
-      options: {powerValue: givePoint}
-      sender: SYSTEM
-      receiver: SYSTEM
-      content: '系统赠送50点体力'
-      type: msgConfig.MESSAGETYPE.SYSTEM
-      status: msgConfig.MESSAGESTATUS.UNHANDLED
-    }, (err, msg) ->
-      if not err
-        app.get('messageService').pushMessage {
-          route: 'onMessage'
-          msg: msg.toJson()
-        }, () ->
+    # app.get('dao').message.create data: {
+    #   options: {powerValue: givePoint}
+    #   sender: SYSTEM
+    #   receiver: SYSTEM
+    #   content: '系统赠送50点体力'
+    #   type: msgConfig.MESSAGETYPE.SYSTEM
+    #   status: msgConfig.MESSAGESTATUS.UNHANDLED
+    # }, (err, msg) ->
+    #   if not err
+    app.get('messageService').pushMessage {
+      route: 'onPowerGive'
+      msg: {powerValue: givePoint}
+    }, () ->
 
   
         

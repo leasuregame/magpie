@@ -113,6 +113,8 @@ var RegisterLayer = cc.Layer.extend({
     _onClickRegister: function () {
         cc.log("RegisterLayer _onClickRegister");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var user = gameData.user;
 
         var account = this._accountEditBox.getText();
@@ -134,6 +136,8 @@ var RegisterLayer = cc.Layer.extend({
 
     _onClickBack: function () {
         cc.log("RegisterLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this.getParent().switchLayer(LoginLayer);
     }

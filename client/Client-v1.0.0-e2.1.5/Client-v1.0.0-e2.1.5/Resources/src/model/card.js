@@ -240,6 +240,22 @@ var Card = Entity.extend({
         this._atk = this._initAtk + elixirAtk + psAtk;
     },
 
+    getCardFullUrl: function () {
+        return main_scene_image[this._url + "_full1"];
+    },
+
+    getCardFullOverlayUrl: function () {
+        if (this._star >= 5) {
+            return main_scene_image[this._url + "_full3"];
+        }
+
+        if (this._star >= 3) {
+            return main_scene_image[this._url + "_full2"];
+        }
+
+        return null;
+    },
+
     addExp: function (exp) {
         cc.log("Card addExp: " + exp);
 

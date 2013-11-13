@@ -199,6 +199,15 @@ gameFitAdapter();
 // create a scene. it's an autorelease object
 var loginScene = LoginScene.create();
 
+um.MobClickCPP.startWithAppkey("5279b97f56240b8276001106");
+cc.log("umeng api: ");
+cc.log(um.MobClickCPP);
+cc.log(um.MobClickCPP.setLogSendInterval);
+
+um.MobClickCPP.logPageView("爬塔", 30);
+um.MobClickCPP.event("event_login");
+um.MobClickCPP.countEventTime("event_login", 40);
+
 // run
 //director.runWithScene(myScene);
 director.replaceScene(loginScene);

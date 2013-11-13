@@ -52,7 +52,7 @@ Handler::login = (msg, session, next) ->
 
     (cb) =>
       session.set('userId', user.id)
-      session.bind(uid, cb);
+      session.bind(uid, cb)
     (cb) =>
       if player?
         session.set('playerId', player.id)

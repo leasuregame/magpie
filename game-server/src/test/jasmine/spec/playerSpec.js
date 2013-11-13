@@ -32,7 +32,20 @@ describe("Connector Server", function() {
 
           var cards = data.msg.player.cards;
           delete data.msg.player.cards;
-          expect(cards.length).toEqual(3);
+          expect(cards.length).toEqual(2);
+          delete cards[0].id;
+          expect(cards[0]).toEqual({
+            tableId: 30000,
+            hp: 15,
+            atk: 7,
+            ability: 14,
+            lv: 6,
+            exp: 29,
+            skillPoint: 0,
+            elixirHp: 0,
+            elixirAtk: 0,
+            passiveSkills: []
+          });
 
           expect(data).toEqual({
             code: 200,

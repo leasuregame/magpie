@@ -12,6 +12,8 @@
 		8E4C75881832346E0036A3D5 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4C75861832346E0036A3D5 /* libcurl.a */; };
 		8E4C75891832346E0036A3D5 /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4C75871832346E0036A3D5 /* libwebp.a */; };
 		8E4C758B1832349C0036A3D5 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4C758A1832349C0036A3D5 /* libwebsockets.a */; };
+		8E4C758E183245240036A3D5 /* MobClickCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C758C183245240036A3D5 /* MobClickCPP.mm */; };
+		8E4C7591183245330036A3D5 /* js_cocos2dx_autogen_extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C758F183245330036A3D5 /* js_cocos2dx_autogen_extension.cpp */; };
 		906E946217CDAD090038DF64 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 906E946017CDAD090038DF64 /* res */; };
 		906E946317CDAD090038DF64 /* src in Resources */ = {isa = PBXBuildFile; fileRef = 906E946117CDAD090038DF64 /* src */; };
 		906E946717CDAD150038DF64 /* main_binding.js in Sources */ = {isa = PBXBuildFile; fileRef = 906E946417CDAD150038DF64 /* main_binding.js */; };
@@ -337,6 +339,10 @@
 		8E4C75861832346E0036A3D5 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = libs/cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		8E4C75871832346E0036A3D5 /* libwebp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebp.a; path = libs/cocos2dx/platform/third_party/ios/libraries/libwebp.a; sourceTree = "<group>"; };
 		8E4C758A1832349C0036A3D5 /* libwebsockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebsockets.a; path = libs/libwebsockets/ios/lib/libwebsockets.a; sourceTree = "<group>"; };
+		8E4C758C183245240036A3D5 /* MobClickCPP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MobClickCPP.mm; sourceTree = "<group>"; };
+		8E4C758D183245240036A3D5 /* MobClickCPP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickCPP.h; sourceTree = "<group>"; };
+		8E4C758F183245330036A3D5 /* js_cocos2dx_autogen_extension.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_cocos2dx_autogen_extension.cpp; sourceTree = "<group>"; };
+		8E4C7590183245330036A3D5 /* js_cocos2dx_autogen_extension.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_cocos2dx_autogen_extension.hpp; sourceTree = "<group>"; };
 		906E946017CDAD090038DF64 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = Resources/res; sourceTree = "<group>"; };
 		906E946117CDAD090038DF64 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = Resources/src; sourceTree = "<group>"; };
 		906E946417CDAD150038DF64 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main_binding.js; path = Resources/main_binding.js; sourceTree = "<group>"; };
@@ -1118,6 +1124,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E7F844B1833219000C904E8 /* DataAnalysis */ = {
+			isa = PBXGroup;
+			children = (
+				8E4C758F183245330036A3D5 /* js_cocos2dx_autogen_extension.cpp */,
+				8E4C7590183245330036A3D5 /* js_cocos2dx_autogen_extension.hpp */,
+				8E4C758C183245240036A3D5 /* MobClickCPP.mm */,
+				8E4C758D183245240036A3D5 /* MobClickCPP.h */,
+				8E4C758118322D600036A3D5 /* libMobClickLibrary.a */,
+				8E4C758218322D600036A3D5 /* MobClick.h */,
+			);
+			name = DataAnalysis;
+			sourceTree = "<group>";
+		};
 		90D49C1D17CAF81800A22DB2 = {
 			isa = PBXGroup;
 			children = (
@@ -1153,6 +1172,7 @@
 		90D49C3917CAF81800A22DB2 /* Client-v1.0.0-e2.1.5 */ = {
 			isa = PBXGroup;
 			children = (
+				8E7F844B1833219000C904E8 /* DataAnalysis */,
 				90D49C3A17CAF81800A22DB2 /* Resources */,
 				90D49C5217CAF81800A22DB2 /* ios */,
 				90D49C5B17CAF81800A22DB2 /* libs */,
@@ -2549,8 +2569,6 @@
 		90D4A08717CAF82600A22DB2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8E4C758118322D600036A3D5 /* libMobClickLibrary.a */,
-				8E4C758218322D600036A3D5 /* MobClick.h */,
 				90D4A08817CAF82600A22DB2 /* AppDelegate.h */,
 				90D4A08917CAF82600A22DB2 /* AppDelegate.cpp */,
 			);
@@ -2935,6 +2953,7 @@
 				90D49FD717CAF82400A22DB2 /* CCComAudio.cpp in Sources */,
 				90D49FDA17CAF82400A22DB2 /* CCComController.cpp in Sources */,
 				90D49FDD17CAF82400A22DB2 /* CCInputDelegate.cpp in Sources */,
+				8E4C7591183245330036A3D5 /* js_cocos2dx_autogen_extension.cpp in Sources */,
 				90D49FE317CAF82400A22DB2 /* CCControl.cpp in Sources */,
 				90D49FE617CAF82400A22DB2 /* CCControlButton.cpp in Sources */,
 				90D49FE917CAF82400A22DB2 /* CCControlColourPicker.cpp in Sources */,
@@ -2953,6 +2972,7 @@
 				90D4A01317CAF82500A22DB2 /* CCEditBoxImplNone.cpp in Sources */,
 				90D4A01517CAF82500A22DB2 /* CCEditBoxImplTizen.cpp in Sources */,
 				90D4A01817CAF82500A22DB2 /* CCEditBoxImplWin.cpp in Sources */,
+				8E4C758E183245240036A3D5 /* MobClickCPP.mm in Sources */,
 				90D4A01C17CAF82500A22DB2 /* CCScrollView.cpp in Sources */,
 				90D4A01F17CAF82500A22DB2 /* CCSorting.cpp in Sources */,
 				90D4A02217CAF82500A22DB2 /* CCTableView.cpp in Sources */,

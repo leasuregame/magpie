@@ -254,6 +254,14 @@ var game = {
         console.log('Receive a message: ', data);
       });
 
+      pomelo.on('onKick', function(data) {
+        console.log('on kick', data);
+      });
+
+      pomelo.on('close', function(data) {
+        console.log('on close', data);
+      });
+
     });
   },
   login: function(name, pwd, areaId) {

@@ -146,8 +146,8 @@ class Player extends Module
   currentIndex: ->
     @matrix.curIndex
 
-  herosToBeAttacked: (scope, args) ->
-    @matrix.attackElement scope, args
+  herosToBeAttacked: (scope, args, filter) ->
+    @matrix.attackElement scope, args, filter
 
   reset: ->
     @matrix.reset()

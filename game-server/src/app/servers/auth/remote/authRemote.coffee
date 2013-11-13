@@ -5,7 +5,10 @@ dao = app.get('dao')
 
 module.exports = 
   auth: (account, password, areaId, cb) ->
-    dao.user.fetchOne where: account: account, (err, user) ->
+    dao.user.fetchOne {
+      where: account: account
+      sync: true
+    }, (err, user) ->
       if err
         return cb(err)
 
@@ -13,6 +16,8 @@ module.exports =
         return cb({code: 501, msg: '密码不正确'})
 
       user.lastLoginArea = areaId
+      user.lastLoginTime = Date.now()
+      user.loginCount += 1
       user.save()
       cb(null, user.toJson())
 
@@ -26,7 +31,7 @@ module.exports =
     dao.user.create data: {account: account, password: password}, (err, user) ->
       if err or not user
         if err and err.code is "ER_DUP_ENTRY" 
-          return cb({code: 501, msg: Resources.ERROR.USER_EXISTS})
+          return cb({code: 501, msg: Resources.ERROR.USER_EXSISTS})
         else
           return cb({code: 500, msg: err.msg})
       

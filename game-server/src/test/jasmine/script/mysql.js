@@ -1,4 +1,4 @@
-var config = require('../../../config/mysql1').development;
+var config = require('../../../config/mysql').development;
 var magpie_area_1 = config[1];
 var magpie_area_2 = config[2];
 var userdbConfig = config['userdb'];

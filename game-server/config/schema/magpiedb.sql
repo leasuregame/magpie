@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `cardsCount` SMALLINT(5) UNSIGNED DEFAULT '0', -- 卡牌数量上限
   `resetDate` VARCHAR(20) COLLATE utf8_unicode_ci DEFAULT '',
   `firstTime` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
+  `levelReward` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INDEX_NAME` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -83,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `card` (
   `lv` SMALLINT(5) UNSIGNED DEFAULT '1',
   `exp` INT(10) UNSIGNED DEFAULT '0',
   `skillLv` TINYINT(3) UNSIGNED DEFAULT '1',
-  `skillInc` FLOAT(5,1) UNSIGNED DEFAULT '0',
+  `skillInc` INT(5) UNSIGNED DEFAULT '0',
   `skillPoint` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的技能点
   `elixirHp` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
   `elixirAtk` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数

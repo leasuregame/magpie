@@ -412,7 +412,7 @@ var fit4Iphone4 = {
             "headIconPoint": cc.p(40, 880),
             "titleIconPoint": cc.p(360, 920),
             "backItemPoint": cc.p(100, 920),
-            "lotteryLabelPoint": cc.p(360, 512),
+            "lotteryLabelPoint": cc.p(360, 552),
             "headLabelPoint": cc.p(360, 850),
             "energyIconPoint": cc.p(80, 850),
             "goldIconPoint": cc.p(220, 850),
@@ -1359,7 +1359,7 @@ var fit4Iphone5 = {
             "headIconPoint": cc.p(0, 1056),
             "titleIconPoint": cc.p(320, 1096),
             "backItemPoint": cc.p(60, 1096),
-            "lotteryLabelPoint": cc.p(320, 600),
+            "lotteryLabelPoint": cc.p(320, 640),
             "headLabelPoint": cc.p(320, 1026),
             "energyIconPoint": cc.p(40, 1026),
             "goldIconPoint": cc.p(180, 1026),
@@ -1368,10 +1368,10 @@ var fit4Iphone5 = {
             "goldLabelPoint": cc.p(210, 1026),
             "fragmentLabelPoint": cc.p(440, 1026),
             "exchangeItemPoint": cc.p(560, 1026),
-            "goldLotteryItemBasePoint": cc.p(193, 470),
-            "energyLotteryItemBasePoint": cc.p(193, 550),
-            "tipBgSpritePoint": cc.p(320, 220),
-            "tipLabelPoint": cc.p(320, 220)
+            "goldLotteryItemBasePoint": cc.p(163, 320),
+            "energyLotteryItemBasePoint": cc.p(163, 400),
+            "tipBgSpritePoint": cc.p(320, 200),
+            "tipLabelPoint": cc.p(320, 200)
         },
         "lvRankLayer": {
             "scrollViewLayerRect": cc.rect(14, 140, 609, 876),

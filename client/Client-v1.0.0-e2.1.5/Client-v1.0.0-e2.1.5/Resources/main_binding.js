@@ -128,6 +128,7 @@ var appFiles = [
     'src/view/mainModule/lineUpDetailsLayer.js',
     'src/view/mainModule/lineUpLabel.js',
     'src/view/mainModule/lineUpLayer.js',
+    'src/view/mainModule/lotteryCardLayer.js',
     'src/view/mainModule/lotteryLayer.js',
     'src/view/mainModule/lvRankLayer.js',
     'src/view/mainModule/messageLabel.js',

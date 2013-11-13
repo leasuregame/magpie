@@ -383,8 +383,8 @@ var main_scene_image = {
     icon110: main_scene_path + "icon110.png",
     icon111: main_scene_path + "icon111.png",
     icon112: main_scene_path + "icon112.png",
-//    icon113: main_scene_path + "icon113.png",
-//    icon114: main_scene_path + "icon114.png",
+    icon113: main_scene_path + "icon113.png",
+    icon114: main_scene_path + "icon114.png",
 //    icon115: main_scene_path + "icon115.png",
     icon116: main_scene_path + "icon116.png",
     icon117: main_scene_path + "icon117.png",
@@ -564,6 +564,7 @@ var main_scene_image = {
     spiritNode: "res/ccb/spiritNode.ccbi",
     tipNode: "res/ccb/tipNode.ccbi",
 
+    TestTimelineCallback: "res/ccb/TestTimelineCallback.ccbi",
     effect1: "res/ccb/effect1.ccbi",
     effect2: "res/ccb/effect2.ccbi",
     effect3: "res/ccb/effect3.ccbi",
@@ -579,6 +580,23 @@ var main_scene_image = {
     effect13: "res/ccb/effect13.ccbi",
     effect14: "res/ccb/effect14.ccbi",
     effect15: "res/ccb/effect15.ccbi",
+
+    uiEffect1: "res/ccb/uiEffect1.ccbi",
+    uiEffect2: "res/ccb/uiEffect2.ccbi",
+    uiEffect3: "res/ccb/uiEffect3.ccbi",
+    uiEffect4: "res/ccb/uiEffect4.ccbi",
+    uiEffect5: "res/ccb/uiEffect5.ccbi",
+    uiEffect6: "res/ccb/uiEffect6.ccbi",
+    uiEffect7: "res/ccb/uiEffect7.ccbi",
+    uiEffect8: "res/ccb/uiEffect8.ccbi",
+    uiEffect9: "res/ccb/uiEffect9.ccbi",
+    uiEffect10: "res/ccb/uiEffect10.ccbi",
+    uiEffect11: "res/ccb/uiEffect11.ccbi",
+    uiEffect12: "res/ccb/uiEffect12.ccbi",
+    uiEffect13: "res/ccb/uiEffect13.ccbi",
+    uiEffect14: "res/ccb/uiEffect14.ccbi",
+    uiEffect15: "res/ccb/uiEffect15.ccbi",
+    uiEffect16: "res/ccb/uiEffect16.ccbi",
 
 
     // 特效资源

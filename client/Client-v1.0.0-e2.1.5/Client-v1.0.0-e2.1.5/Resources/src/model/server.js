@@ -322,15 +322,15 @@ var Server = Entity.extend({
     getRecommendArea: function () {
         cc.log("Server getRecommendArea");
 
-        if (this._areaList) {
-            var len = this._areaList.length;
+//        if (this._areaList) {
+//            var len = this._areaList.length;
+//
+//            if (len > 0) {
+//                return this._areaList[len - 1].id;
+//            }
+//        }
 
-            if (len > 0) {
-                return this._areaList[len - 1].id;
-            }
-        }
-
-        return 0;
+        return 1;
     },
 
     _showWaitLayer: function () {

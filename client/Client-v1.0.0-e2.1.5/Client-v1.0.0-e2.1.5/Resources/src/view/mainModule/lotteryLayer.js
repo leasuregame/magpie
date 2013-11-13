@@ -17,6 +17,7 @@ var LotteryLayer = cc.Layer.extend({
 
     _goldLabel: null,
     _energyLabel: null,
+    _lotteryLabel: null,
 
     onEnter: function () {
         cc.log("LotteryLayer onEnter");
@@ -53,13 +54,18 @@ var LotteryLayer = cc.Layer.extend({
             this
         );
         backItem.setPosition(this._lotteryLayerFit.backItemPoint);
-        var menu = cc.Menu.create(backItem);
-        menu.setPosition(cc.p(0, 0));
-        this.addChild(menu, 1);
 
-        var lotteryLabel = cc.Sprite.create(main_scene_image.icon242);
-        lotteryLabel.setPosition(this._lotteryLayerFit.lotteryLabelPoint);
-        this.addChild(lotteryLabel);
+        this._lotteryLabel = cc.BuilderReader.load(main_scene_image.uiEffect6, this);
+        this._lotteryLabel.setPosition(this._lotteryLayerFit.lotteryLabelPoint);
+        this.addChild(this._lotteryLabel);
+
+        var lotteryDescLabel1 = cc.Sprite.create(main_scene_image.icon113);
+        lotteryDescLabel1.setPosition(cc.p(163, 520));
+        this.addChild(lotteryDescLabel1);
+
+        var lotteryDescLabel2 = cc.Sprite.create(main_scene_image.icon114);
+        lotteryDescLabel2.setPosition(cc.p(493, 520));
+        this.addChild(lotteryDescLabel2);
 
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
         headLabel.setPosition(this._lotteryLayerFit.headLabelPoint);
@@ -101,12 +107,12 @@ var LotteryLayer = cc.Layer.extend({
         );
         exchangeItem.setPosition(this._lotteryLayerFit.exchangeItemPoint);
 
-        var menu = cc.Menu.create(exchangeItem);
+        var menu = cc.Menu.create(backItem, exchangeItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
         for (var i = 0; i < 2; ++i) {
-            var x = this._lotteryLayerFit.goldLotteryItemBasePoint.x + 254 * i;
+            var x = this._lotteryLayerFit.goldLotteryItemBasePoint.x + 330 * i;
             var y = this._lotteryLayerFit.goldLotteryItemBasePoint.y;
 
             var goldLotteryItem = cc.MenuItemImage.createWithIcon(
@@ -120,7 +126,7 @@ var LotteryLayer = cc.Layer.extend({
             goldLotteryItem.setPosition(cc.p(x, y));
             menu.addChild(goldLotteryItem);
 
-            x = this._lotteryLayerFit.energyLotteryItemBasePoint.x + 254 * i;
+            x = this._lotteryLayerFit.energyLotteryItemBasePoint.x + 330 * i;
             y = this._lotteryLayerFit.energyLotteryItemBasePoint.y;
 
             var energyLotteryItem = cc.MenuItemImage.createWithIcon(
@@ -160,6 +166,10 @@ var LotteryLayer = cc.Layer.extend({
         this._fragmentLabel.setString(player.get("fragment"));
     },
 
+    openDoor: function() {
+
+    },
+
     _onClickLottery: function (type, level) {
         return function () {
             cc.log("LotteryLayer _onClickLottery");
@@ -170,9 +180,12 @@ var LotteryLayer = cc.Layer.extend({
                 return;
             }
 
-            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                NoviceTeachingLayer.getInstance().clearAndSave();
-            }
+//            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+//                NoviceTeachingLayer.getInstance().clearAndSave();
+//            }
+//            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+//                NoviceTeachingLayer.getInstance().next();
+//            }
 
             LazyLayer.showCloudLayer();
 
@@ -200,9 +213,7 @@ var LotteryLayer = cc.Layer.extend({
                                 blackLayer.removeFromParent();
                                 LazyLayer.closeCloudLayer();
 
-                                if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                                    NoviceTeachingLayer.getInstance().next();
-                                }
+
                             }, 2);
                         }
                     });

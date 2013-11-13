@@ -28,18 +28,20 @@ class Skill extends Module
   getTargets: ->
     switch @scope
       when 'default' then arg = @hero.pos
-      when 'random' then arg = @target_num
+      when 'random' 
+        arg = @target_num
+        filterFunc = (h) -> h? and not h.death?()
       when 'lengthways' then arg = @hero.pos
       else arg = null
 
-    @_player()?.herosToBeAttacked @scope, arg
+    @_player()?.herosToBeAttacked @scope, arg, filterFunc
 
   getRate: ->
     parseInt(@['rate' + @hero.star])
 
   effectValue: ->
     [base_val, lv_grow] = [@hero.skill_inc, @['star' + @hero.star + '_grow']]
-    ( base_val + lv_grow * @lv ) / 100
+    ( base_val + lv_grow * (@lv-1) ) / 100
 
   get_round_num: ->
     @_player()?.round_num

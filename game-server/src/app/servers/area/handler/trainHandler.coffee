@@ -111,10 +111,10 @@ Handler::luckyCard = (msg, session, next) ->
 
     (res, cb) ->
       player = res
-      if level is LOW_LUCKYCARD and player.firstTime.lowLuckyCard
+      if level is LOW_LUCKYCARD and type is LOTTERY_BY_GOLD and player.firstTime.lowLuckyCard
         isFree = player.firstTime.lowLuckyCard
         player.setFirstTime('lowLuckyCard', 0)
-      if level is HIGH_LUCKYCARD and player.firstTime.highLuckyCard
+      if level is HIGH_LUCKYCARD and type is LOTTERY_BY_GOLD and player.firstTime.highLuckyCard
         isFree = player.firstTime.highLuckyCard
         player.setFirstTime('highLuckyCard', 0)
 

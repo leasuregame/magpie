@@ -13,6 +13,8 @@
 
 
 var LineUpLayer = LazyLayer.extend({
+    _lineUpLayerFit: null,
+
     _menu: null,
     _nodeBgSprite: {},
     _node: {},
@@ -20,56 +22,47 @@ var LineUpLayer = LazyLayer.extend({
     _isClick: false,
     _beganPoint: null,
     _oldPoint: null,
-    _locate: {
-        1: cc.p(190, 730),
-        2: cc.p(360, 730),
-        3: cc.p(530, 730),
-        4: cc.p(190, 520),
-        5: cc.p(360, 520),
-        6: cc.p(530, 520)
-    },
-    _touchRect: {
-        1: cc.rect(123, 651, 135, 158),
-        2: cc.rect(293, 651, 135, 158),
-        3: cc.rect(463, 651, 135, 158),
-        4: cc.rect(123, 441, 135, 158),
-        5: cc.rect(293, 441, 135, 158),
-        6: cc.rect(463, 441, 135, 158)
-    },
+    _locate: null,
+    _touchRect: null,
 
     init: function () {
         cc.log("LineUpLayer init");
 
         if (!this._super()) return false;
 
+        this._lineUpLayerFit = gameFit.mainScene.lineUpLayer;
+
+        this._locate = this._lineUpLayerFit.locatePoints;
+        this._touchRect = this._lineUpLayerFit.touchRect;
+
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 240), 640, 1136);
-        bgLayer.setPosition(cc.p(40, 0));
+        bgLayer.setPosition(this._lineUpLayerFit.bgLayerPoint);
         this.addChild(bgLayer, -1);
 
         var bgSprite = cc.Sprite.create(main_scene_image.icon32);
-        bgSprite.setPosition(cc.p(360, 670));
+        bgSprite.setPosition(this._lineUpLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var titleLabel = cc.LabelTTF.create("查 看 阵 型", "STHeitiTC-Medium", 30);
         titleLabel.setColor(cc.c3b(255, 239, 131));
-        titleLabel.setPosition(cc.p(190, 918));
+        titleLabel.setPosition(this._lineUpLayerFit.titleLabelPoint);
         this.addChild(titleLabel);
 
         var player = gameData.player;
 
         var nameLabel = cc.LabelTTF.create(player.get("name"), "STHeitiTC-Medium", 20);
         nameLabel.setColor(cc.c3b(255, 239, 131));
-        nameLabel.setPosition(cc.p(220, 852));
+        nameLabel.setPosition(this._lineUpLayerFit.nameLabelPoint);
         this.addChild(nameLabel);
 
         var lvLabel = cc.LabelTTF.create("等级: " + player.get("lv"), "STHeitiTC-Medium", 20);
         lvLabel.setColor(cc.c3b(255, 239, 131));
-        lvLabel.setPosition(cc.p(360, 852));
+        lvLabel.setPosition(this._lineUpLayerFit.lvLabelPoint);
         this.addChild(lvLabel);
 
         var abilityLabel = cc.LabelTTF.create("战斗力: " + player.getAbility(), "STHeitiTC-Medium", 20);
         abilityLabel.setColor(cc.c3b(255, 239, 131));
-        abilityLabel.setPosition(cc.p(500, 852));
+        abilityLabel.setPosition(this._lineUpLayerFit.abilityLabelPoint);
         this.addChild(abilityLabel);
 
         var lineUp = gameData.lineUp;
@@ -108,7 +101,7 @@ var LineUpLayer = LazyLayer.extend({
             this._onClickOk,
             this
         );
-        okItem.setPosition(cc.p(GAME_WIDTH_MIDPOINT, 350));
+        okItem.setPosition(this._lineUpLayerFit.okItemPoint);
 
         this._menu = cc.Menu.create(okItem);
         this._menu.setPosition(cc.p(0, 0));

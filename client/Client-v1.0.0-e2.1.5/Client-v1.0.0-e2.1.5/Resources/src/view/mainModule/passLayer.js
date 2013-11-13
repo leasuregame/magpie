@@ -13,6 +13,8 @@
 
 
 var PassLayer = cc.Layer.extend({
+    _passLayerFit: null,
+
     _top: 0,
     _isWin: null,
     _upgradeReward: null,
@@ -41,21 +43,23 @@ var PassLayer = cc.Layer.extend({
 
         var pass = gameData.pass;
 
+        this._passLayerFit = gameFit.mainScene.passLayer;
+
         this._top = pass.getTop();
         this._element = {};
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg5);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
+        bgSprite.setPosition(this._passLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 968));
+        headIcon.setPosition(this._passLayerFit.headIconPoint);
         this.addChild(headIcon);
 
         var titleIcon = cc.Sprite.create(main_scene_image.icon17);
-        titleIcon.setPosition(cc.p(360, 1008));
+        titleIcon.setPosition(this._passLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
         this._mysticalItem = cc.MenuItemImage.create(
@@ -64,7 +68,7 @@ var PassLayer = cc.Layer.extend({
             this._onClickMystical,
             this
         );
-        this._mysticalItem.setPosition(cc.p(580, 610));
+        this._mysticalItem.setPosition(this._passLayerFit.mysticalItemPoint);
         this._mysticalItem.setVisible(false);
 
         var mysticalItemMenu = cc.Menu.create(this._mysticalItem);
@@ -77,7 +81,7 @@ var PassLayer = cc.Layer.extend({
             this._mysticalItem.addChild(this._blackHoleSprite[i]);
         }
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(40, 194, 640, 774));
+        var scrollViewLayer = MarkLayer.create(this._passLayerFit.scrollViewLayerRect);
 
         var lazyMenu = LazyMenu.create();
         lazyMenu.setPosition(cc.p(0, 0));
@@ -132,7 +136,6 @@ var PassLayer = cc.Layer.extend({
             passNameBgSprite.setScale(0.8);
 
             var passNameLabel = cc.LabelTTF.create("第" + i + "层", "STHeitiTC-Medium", 20);
-            passNameLabel.setColor(cc.c3b(255, 239, 131));
             passNameLabel.setPosition(passNamePoint);
             scrollViewLayer.addChild(passNameLabel);
 
@@ -147,9 +150,9 @@ var PassLayer = cc.Layer.extend({
         this._spirit.setPosition(this._getCardLocation(this._top));
         scrollViewLayer.addChild(this._spirit, 1);
 
-        this._scrollView = cc.ScrollView.create(cc.size(640, 774), scrollViewLayer);
-        this._scrollView.setContentSize(cc.size(640, 18700));
-        this._scrollView.setPosition(GAME_BG_POINT);
+        this._scrollView = cc.ScrollView.create(this._passLayerFit.scrollViewSize, scrollViewLayer);
+        this._scrollView.setContentSize(this._passLayerFit.scrollViewContentSize);
+        this._scrollView.setPosition(this._passLayerFit.scrollViewPoint);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
@@ -157,29 +160,32 @@ var PassLayer = cc.Layer.extend({
 
         var tipLabel = cc.Sprite.create(main_scene_image.bg6);
         tipLabel.setAnchorPoint(cc.p(0, 0));
-        tipLabel.setPosition(cc.p(40, 900));
+        tipLabel.setPosition(this._passLayerFit.tipLabelPoint);
         this.addChild(tipLabel, 1);
 
+        var skillPointIcon = cc.Sprite.create(main_scene_image.icon282);
+        skillPointIcon.setAnchorPoint(cc.p(0, 0.5));
+        skillPointIcon.setPosition(this._passLayerFit.skillPointIconPoint);
+        this.addChild(skillPointIcon);
+
         this._topLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
-        this._topLabel.setColor(cc.c3b(255, 239, 131));
         this._topLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._topLabel.setPosition(cc.p(190, 934));
+        this._topLabel.setPosition(this._passLayerFit.topLabelPoint);
         this.addChild(this._topLabel, 1);
 
         this._skillPointLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 20);
-        this._skillPointLabel.setColor(cc.c3b(255, 239, 131));
         this._skillPointLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._skillPointLabel.setPosition(cc.p(583, 837));
+        this._skillPointLabel.setPosition(this._passLayerFit.skillPointLabelPoint);
         this.addChild(this._skillPointLabel);
 
         this._towerSprite = cc.Sprite.create(main_scene_image.icon225);
         this._towerSprite.setAnchorPoint(cc.p(0, 0));
-        this._towerSprite.setPosition(cc.p(524, 226));
+        this._towerSprite.setPosition(this._passLayerFit.towerSpritePoint);
         this.addChild(this._towerSprite);
 
         var towerBgSprite = cc.Sprite.create(main_scene_image.icon224);
         towerBgSprite.setAnchorPoint(cc.p(0, 0));
-        towerBgSprite.setPosition(cc.p(510, 220));
+        towerBgSprite.setPosition(this._passLayerFit.towerBgSpritePoint);
         this.addChild(towerBgSprite);
 
         this._wipeOutItem = cc.MenuItemImage.createWithIcon(
@@ -190,7 +196,7 @@ var PassLayer = cc.Layer.extend({
             this._onClickWipeOut,
             this
         );
-        this._wipeOutItem.setPosition(cc.p(580, 934));
+        this._wipeOutItem.setPosition(this._passLayerFit.wipeOutItemPoint);
 
         this._resetItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -200,7 +206,7 @@ var PassLayer = cc.Layer.extend({
             this._onClickReset,
             this
         );
-        this._resetItem.setPosition(cc.p(580, 934));
+        this._resetItem.setPosition(this._passLayerFit.resetItemPoint);
 
         var menu = cc.Menu.create(this._wipeOutItem, this._resetItem);
         menu.setPosition(cc.p(0, 0));
@@ -235,17 +241,19 @@ var PassLayer = cc.Layer.extend({
         if (this._isWin != null) {
             this._spirit.speak(this._isWin);
 
+            var top = pass.getTop();
+
+            if (top != this._top) {
+                this._locate(this._top);
+
+                this._top = top;
+
+                this._defianceAnimation();
+            } else {
+                LazyLayer.closeCloudLayer();
+            }
+
             this._isWin = null;
-        }
-
-        var top = pass.getTop();
-
-        if (top != this._top) {
-            this._locate(this._top);
-
-            this._top = top;
-
-            this._defianceAnimation();
         }
 
         this._wipeOutItem.setEnabled(pass.canWipeOut());
@@ -343,17 +351,17 @@ var PassLayer = cc.Layer.extend({
         this.addChild(layer);
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
-        bgLayer.setPosition(GAME_ZERO);
+        bgLayer.setPosition(this._passLayerFit.bgLayerPoint);
         layer.addChild(bgLayer);
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg16);
-        bgSprite.setPosition(cc.p(360, 580));
+        bgSprite.setPosition(this._passLayerFit.bgSprite2Point);
         layer.addChild(bgSprite);
 
         var rewardLabel = cc.LabelTTF.create("是否消耗 200 魔石重置关卡?", "STHeitiTC-Medium", 25);
         rewardLabel.setColor(cc.c3b(255, 239, 131));
         rewardLabel.setAnchorPoint(cc.p(0.5, 1));
-        rewardLabel.setPosition(cc.p(360, 650));
+        rewardLabel.setPosition(this._passLayerFit.rewardLabelPoint);
         layer.addChild(rewardLabel);
 
         var okItem = cc.MenuItemImage.createWithIcon(
@@ -366,7 +374,7 @@ var PassLayer = cc.Layer.extend({
             },
             this
         );
-        okItem.setPosition(cc.p(260, 530));
+        okItem.setPosition(this._passLayerFit.okItemPoint);
 
         var closeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -377,7 +385,7 @@ var PassLayer = cc.Layer.extend({
             },
             this
         );
-        closeItem.setPosition(cc.p(460, 530));
+        closeItem.setPosition(this._passLayerFit.closeItemPoint);
 
         var menu = cc.Menu.create(okItem, closeItem);
         menu.setPosition(cc.p(0, 0));
@@ -392,29 +400,30 @@ var PassLayer = cc.Layer.extend({
         MainScene.getInstance().addChild(layer, 10);
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
-        bgLayer.setPosition(GAME_ZERO);
+        bgLayer.setPosition(this._passLayerFit.bgLayerPoint);
         layer.addChild(bgLayer);
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg17);
-        bgSprite.setPosition(cc.p(360, 580));
+        bgSprite.setPosition(this._passLayerFit.bgSprite2Point);
         layer.addChild(bgSprite);
 
         var obtainSprite = cc.Sprite.create(main_scene_image.icon226);
-        obtainSprite.setPosition(cc.p(360, 718));
+        obtainSprite.setPosition(this._passLayerFit.obtainSpritePoint);
         layer.addChild(obtainSprite);
 
         var str = lz.getRewardString(reward);
         var len = str.length;
 
-        var offsetY = 655;
+       // var offsetY = 655;
+        var point = this._passLayerFit.rewardLabelBasePoint;
         for (var i = 0; i < len; ++i) {
             var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
             rewardLabel.setColor(cc.c3b(255, 239, 131));
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
-            rewardLabel.setPosition(cc.p(360, offsetY));
+            rewardLabel.setPosition(point);
             layer.addChild(rewardLabel);
 
-            offsetY -= 45;
+            point.y -= this._passLayerFit.rewardLabelOffsetY;
         }
 
         var okItem = cc.MenuItemImage.createWithIcon(
@@ -427,7 +436,7 @@ var PassLayer = cc.Layer.extend({
             },
             this
         );
-        okItem.setPosition(cc.p(360, 415));
+        okItem.setPosition(this._passLayerFit.okItem2Point);
 
         var menu = cc.Menu.create(okItem);
         menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);

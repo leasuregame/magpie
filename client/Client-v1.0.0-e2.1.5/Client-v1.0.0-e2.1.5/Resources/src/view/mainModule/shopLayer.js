@@ -12,6 +12,8 @@
  * */
 
 var ShopLayer = cc.Layer.extend({
+    _shopLayerFit: null,
+
     _nowLayer: null,
     _vipLayerItem: null,
     _propsLayerItem: null,
@@ -21,10 +23,12 @@ var ShopLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._shopLayerFit = gameFit.mainScene.shopLayer;
+
         var headIcon = cc.Sprite.create(main_scene_image.icon1);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 962));
-        this.addChild(headIcon);
+        headIcon.setPosition(this._shopLayerFit.headIconPoint);
+        this.addChild(headIcon, 1);
 
         this._vipLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button22,
@@ -34,7 +38,7 @@ var ShopLayer = cc.Layer.extend({
             this._onClickVipLayer,
             this
         );
-        this._vipLayerItem.setPosition(cc.p(111, 1005));
+        this._vipLayerItem.setPosition(this._shopLayerFit.vipLayerItemPoint);
         this._vipLayerItem.setOffset(cc.p(-6, -5));
 
         this._propsLayerItem = cc.MenuItemImage.createWithIcon(
@@ -45,7 +49,7 @@ var ShopLayer = cc.Layer.extend({
             this._onClickPropsLayer,
             this
         );
-        this._propsLayerItem.setPosition(cc.p(254, 1005));
+        this._propsLayerItem.setPosition(this._shopLayerFit.propsLayerItemPoint);
         this._propsLayerItem.setOffset(cc.p(0, -5));
 
         var menu = cc.Menu.create(

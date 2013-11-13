@@ -39,22 +39,27 @@ var Rank = Entity.extend({
         cc.log("Rank sync");
 
         var that = this;
-        lzWindow.pomelo.request("area.topHandler.orderList", {}, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
+        lz.server.request(
+            "area.topHandler.orderList",
+            {},
+            function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
 
-            if (data.code == 200) {
-                cc.log("rank sync success");
+                if (data.code == 200) {
+                    cc.log("rank sync success");
 
-                var msg = data.msg;
+                    var msg = data.msg;
 
-                that.update(msg);
-            } else {
-                cc.log("rank sync fail");
+                    that.update(msg);
+                } else {
+                    cc.log("rank sync fail");
 
-                that.sync();
-            }
-        });
+                    that.sync();
+                }
+            },
+            true
+        );
     }
 });
 

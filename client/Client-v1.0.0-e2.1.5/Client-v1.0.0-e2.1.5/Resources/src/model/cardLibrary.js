@@ -69,7 +69,7 @@ var CardLibrary = Entity.extend({
                 card: Card.create({
                     tableId: i,
                     lv: 1,
-                    skillLv: 0
+                    skillLv: 1
                 })
             })
         }
@@ -81,29 +81,34 @@ var CardLibrary = Entity.extend({
         cc.log("CardLibrary sync");
 
         var that = this;
-        lzWindow.pomelo.request("area.trainHandler.getCardBook", {}, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
+        lz.server.request(
+            "area.trainHandler.getCardBook",
+            {},
+            function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
 
-            if (data.code == 200) {
-                cc.log("sync success");
+                if (data.code == 200) {
+                    cc.log("sync success");
 
-                var msg = data.msg;
+                    var msg = data.msg;
 
-                that.update(msg.cardBook);
+                    that.update(msg.cardBook);
 
-                lzWindow.pomelo.on("onLightUpCard", function (data) {
-                    cc.log("***** on message:");
-                    cc.log(data);
+                    lz.server.on("onLightUpCard", function (data) {
+                        cc.log("***** on message:");
+                        cc.log(data);
 
-                    that._changeTypeById(data.msg.tableId, CARD_RECEIVE);
-                });
-            } else {
-                cc.log("sync fail");
+                        that._changeTypeById(data.msg.tableId, CARD_RECEIVE);
+                    });
+                } else {
+                    cc.log("sync fail");
 
-                that.sync();
-            }
-        });
+                    that.sync();
+                }
+            },
+            true
+        );
     },
 
     _sort: function (a, b) {
@@ -132,7 +137,7 @@ var CardLibrary = Entity.extend({
         cc.log("CardLibraryLayer receive");
 
         var that = this;
-        lzWindow.pomelo.request("area.trainHandler.getCardBookEnergy", {
+        lz.server.request("area.trainHandler.getCardBookEnergy", {
             tableId: id
         }, function (data) {
             cc.log(data);

@@ -76,7 +76,7 @@ var Lottery = Entity.extend({
         cc.log("Lottery lottery");
 
         var that = this;
-        lzWindow.pomelo.request("area.trainHandler.luckyCard", {
+        lz.server.request("area.trainHandler.luckyCard", {
             type: type,
             level: level
         }, function (data) {

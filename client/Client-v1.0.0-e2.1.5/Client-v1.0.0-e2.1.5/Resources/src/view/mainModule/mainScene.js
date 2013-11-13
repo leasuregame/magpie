@@ -25,7 +25,7 @@ var MainScene = cc.Scene.extend({
         cc.AudioEngine.getInstance().setMusicVolume(0.1);
         cc.AudioEngine.getInstance().setEffectsVolume(1);
 
-        cc.AudioEngine.getInstance().playMusic(main_scene_image.main_bg_music, true);
+//        cc.AudioEngine.getInstance().playMusic(main_scene_image.main_bg_music, true);
 
         this._mainBgLayer = MainBgLayer.create();
         this.addChild(this._mainBgLayer, -1);

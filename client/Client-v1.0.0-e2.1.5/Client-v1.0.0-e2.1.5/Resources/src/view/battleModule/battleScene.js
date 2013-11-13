@@ -46,7 +46,7 @@ var BattleScene = cc.Scene.extend({
     play: function () {
         cc.log("BattleScene play");
 
-        cc.AudioEngine.getInstance().playMusic(main_scene_image.battle_bg_music, true);
+//        cc.AudioEngine.getInstance().playMusic(main_scene_image.battle_bg_music, true);
 
         this._index = 0;
         this.next();
@@ -65,7 +65,7 @@ var BattleScene = cc.Scene.extend({
     end: function () {
         cc.log("BattleScene end");
 
-        cc.AudioEngine.getInstance().playMusic(main_scene_image.main_bg_music, true);
+//        cc.AudioEngine.getInstance().playMusic(main_scene_image.main_bg_music, true);
 
         BattlePlayer.getInstance().end();
     }

@@ -515,8 +515,6 @@ var main_scene_image = {
     yuanshen: effect_scene_path + "yuanshen.jpg",
     zhaohuan: effect_scene_path + "zhaohuan.jpg",
     testBg: effect_scene_path + "testBg.png",
-    LeiShe_JiZhong: effect_scene_path + "LeiShe_JiZhong.png",
-    PoWuZhan_Light: effect_scene_path + "PoWuZhan_Light.png",
     tiaoshi: effect_scene_path + "tiaoshi.jpg",
     up1: effect_scene_path + "up1.png",
 
@@ -614,6 +612,18 @@ var main_scene_image = {
     up42: effect_scene_path + "uiEffect/" + "up42.png",
     up43: effect_scene_path + "uiEffect/" + "up43.png",
     up44: effect_scene_path + "uiEffect/" + "up44.png",
+    up45: effect_scene_path + "uiEffect/" + "up45.png",
+    up46: effect_scene_path + "uiEffect/" + "up46.png",
+    up47: effect_scene_path + "uiEffect/" + "up47.png",
+    up48: effect_scene_path + "uiEffect/" + "up48.png",
+    up49: effect_scene_path + "uiEffect/" + "up49.png",
+    up50: effect_scene_path + "uiEffect/" + "up50.png",
+    up51: effect_scene_path + "uiEffect/" + "up51.png",
+    up52: effect_scene_path + "uiEffect/" + "up52.png",
+    up53: effect_scene_path + "uiEffect/" + "up53.png",
+    up54: effect_scene_path + "uiEffect/" + "up54.png",
+    up55: effect_scene_path + "uiEffect/" + "up55.png",
+    up56: effect_scene_path + "uiEffect/" + "up56.png",
 
 
 
@@ -677,6 +687,9 @@ var main_scene_image = {
     uiEffect14: ccb_scene_path + "uiEffect14.ccbi",
     uiEffect15: ccb_scene_path + "uiEffect15.ccbi",
     uiEffect16: ccb_scene_path + "uiEffect16.ccbi",
+    uiEffect17: ccb_scene_path + "uiEffect17.ccbi",
+    uiEffect18: ccb_scene_path + "uiEffect18.ccbi",
+    uiEffect19: ccb_scene_path + "uiEffect19.ccbi",
     
 };
 

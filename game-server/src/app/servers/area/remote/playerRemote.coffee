@@ -1,5 +1,6 @@
 app = require('pomelo').app
 dao = app.get('dao')
+playerManager = require '../../../manager/player'
 area = require '../../../domain/area/area'
 messageService = app.get('messageService')
 async = require('async')
@@ -64,32 +65,8 @@ Remote::playerLeave = (playerId, uid, serverId, callback) ->
   callback()
 
 initPlayer = (player, callback) ->
-  # 添加初始卡牌信息
-  async.parallel [
-    (cb) ->
-      dao.card.create data: {
-        playerId: player.id
-        tableId: 3
-        lv: 5
-        star: 3
-        }, cb
-    (cb) ->
-      dao.card.create data: {
-        playerId: player.id
-        tableId: 6
-        lv: 1
-        star: 1
-        }, cb
-    (cb) ->
-      dao.card.create data: {
-        playerId: player.id
-        tableId: 12
-        lv: 1
-        star: 2
-        }, cb
-  ], (err, results) ->
+  playerManager.addExpCardFor player, 2, (err, res) ->
     if err
       return callback(err)
 
-    player.addCards results
     callback(null, player)

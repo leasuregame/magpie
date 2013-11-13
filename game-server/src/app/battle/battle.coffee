@@ -99,7 +99,7 @@ class Attack extends Base
       atker.attack (heros) ->
         return if not heros
 
-        # bug, 当卡牌出手后，被秒了，出手次数比实际要出手的次数少了一次
+        # fix bug, 当卡牌出手后，被秒了，出手次数比实际要出手的次数少了一次
         for hero in heros
           dfder.shootCount -= 1 if hero.death() and not hero.isAttacked()
         return

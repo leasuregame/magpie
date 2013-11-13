@@ -4,6 +4,7 @@ var MessageService = require('./app/service/messageService');
 var routeUtil = require('./app/common/route');
 var msgQueue = require('./app/common/msgQueue');
 var argsFilter = require('./app/servers/area/filter/argsFilter');
+var loginFilter = require('./app/servers/connector/filter/loginFilter');
 var areaUtil = require('./app/util/areaUtil');
 /**
  * Init app for client.
@@ -12,11 +13,18 @@ var app = pomelo.createApp();
 app.set('name', 'game-server');
 app.set('debug', false);
 
-app.configure('production', function() {
+app.configure('production|development', function() {
   app.enable('systemMonitor');
 });
 
 app.configure('production|development', function() {
+  var areaInfo = require('./app/modules/areaInfo');
+  var onlineUser = require('./app/modules/onlineUser');
+  if(typeof app.registerAdmin === 'function'){
+    app.registerAdmin(areaInfo, {app: app});
+    app.registerAdmin(onlineUser, {app: app});
+  }
+
   //Set areasIdMap, a map from area id to serverId.
   if (app.serverType !== 'master') {
     var areas = app.get('servers').area;
@@ -25,13 +33,6 @@ app.configure('production|development', function() {
       areaIdMap[areas[id].area] = areas[id].id;
     }
     app.set('areaIdMap', areaIdMap);
-
-    var battles = app.get('servers').battle;
-    var battleIdMap = {};
-    for (var id in battles) {
-      battleIdMap[battles[id].area] = battles[id].id;
-    }
-    app.set('battleIdMap', battleIdMap);
   }
 
   // proxy configures
@@ -50,7 +51,6 @@ app.configure('production|development', function() {
 
   app.route('connector', routeUtil.connector);
   app.route('area', routeUtil.area);
-  app.route('battle', routeUtil.battle);
 
   app.filter(pomelo.filters.timeout());
 });
@@ -66,6 +66,8 @@ app.configure('production|development', 'connector', function() {
     useDict: true,
     useProtobuf: true
   });
+
+  //app.filter(loginFilter());
 });
 
 app.configure('production|development', 'gate', function(){
@@ -77,7 +79,7 @@ app.configure('production|development', 'gate', function(){
 // configure sql database
 app.configure('production|development', 'connector|auth', function() {
   var env = app.get('env');
-  app.set('mysql', require(app.getBase() + '/config/mysql1.json')[env]['userdb']);
+  app.set('mysql', require(app.getBase() + '/config/mysql.json')[env]['userdb']);
 
   var dbclient = require('./app/dao/mysql/mysql').init(app);
   app.set('dbClient', dbclient);
@@ -94,13 +96,11 @@ app.configure('production|development', 'area', function() {
 
   area.init({app: app});
   msgQueue.init({app: app});
-  areaUtil.checkFlagFile();
+  areaUtil.checkFlagFile(app);
   //app.filter(argsFilter());
-});
 
-app.configure('production|development', 'area', function() {
   var areaId = app.get('curServer').area;
-  var mysqlConfig = require(app.getBase() + '/config/mysql1.json');
+  var mysqlConfig = require(app.getBase() + '/config/mysql.json');
   var env = app.get('env');
 
   var val = mysqlConfig;

@@ -32,6 +32,7 @@ Handler::explore = (msg, session, next) ->
 
     (_player, cb) ->
       player = _player
+      taskId = player.task.id unless taskId?
 
       if _.keys(player.cards).length >= MAX_CARD_COUNT
         return cb({code: 501, msg: '卡牌容量已经达到最大值'})
@@ -166,6 +167,7 @@ Handler::passBarrier = (msg, session, next) ->
         return next(null, {code: 501, msg: fdata.pass+'级开放'}) 
 
       layer = if layer? then layer else player.passLayer + 1
+      layer = 100 if layer > 100
       if layer > 100 or layer < 1 or layer > (player.passLayer + 1)
         return cb({code: 501, msg: '不能闯此关'})
 

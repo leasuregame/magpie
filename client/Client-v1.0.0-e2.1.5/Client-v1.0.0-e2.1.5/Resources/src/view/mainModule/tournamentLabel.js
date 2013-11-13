@@ -38,7 +38,7 @@ var TournamentLabel = cc.Node.extend({
 
         var player = gameData.player;
 
-        if(this._player.playerId != player.get("id")) {
+        if (this._player.playerId != player.get("id")) {
             var playerItem = cc.MenuItemImage.create(
                 main_scene_image.button15,
                 main_scene_image.button15s,
@@ -103,6 +103,10 @@ var TournamentLabel = cc.Node.extend({
                     this._onClickFunction,
                     this
                 );
+                var tipText = cc.LabelTTF.create("曾击败你", "STHeitiTC-Medium", 18);
+                tipText.setPosition(cc.p(530, 27));
+                tipText.setColor(cc.c3b(255, 0, 0));
+                this.addChild(tipText);
             }
 
             functionItem.setPosition(cc.p(530, 67));

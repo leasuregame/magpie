@@ -49,12 +49,14 @@ class VirtualPlayer extends Player
 
   getCards: ->
     cobj = {}
-    cobj[c.idx] = {
-      tableId: c.card_id
-      hp: c.hp
-      atk: c.atk
-      boss: true if c.boss?
-    } for c in @heros
+    for c in @heros
+      cobj[c.idx] = {
+        tableId: c.card_id
+        hp: c.hp
+        atk: c.atk
+        boss: true if c.boss?
+        skillType: c.skill_setting.type_linktarget.id if c.skill?
+      }
     cobj
 
 parseCards = (data) ->

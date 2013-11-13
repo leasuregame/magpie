@@ -48,12 +48,13 @@ var CardLibraryLayer = cc.Layer.extend({
 
         var tipIcon = cc.Sprite.create(main_scene_image.main_message_bg);
         tipIcon.setPosition(this._cardLibraryLayerFit.tipIconPoint);
+        tipIcon.setScaleY(1.1);
         this.addChild(tipIcon);
 
         var tipLabel = cc.LabelTTF.create(
             "每次获得新卡牌，点击该卡牌可领取活力点。星级越高奖励越高。",
             "STHeitiTC-Medium",
-            17
+            20
         );
         tipLabel.setPosition(this._cardLibraryLayerFit.tipLabelPoint);
         this.addChild(tipLabel);

@@ -24,6 +24,7 @@ var LineUpLayer = LazyLayer.extend({
     _oldPoint: null,
     _locate: null,
     _touchRect: null,
+    _selectIndex: 0,
 
     init: function () {
         cc.log("LineUpLayer init");
@@ -51,17 +52,17 @@ var LineUpLayer = LazyLayer.extend({
         var player = gameData.player;
 
         var nameLabel = cc.LabelTTF.create(player.get("name"), "STHeitiTC-Medium", 20);
-        nameLabel.setColor(cc.c3b(255, 239, 131));
+        //nameLabel.setColor(cc.c3b(255, 239, 131));
         nameLabel.setPosition(this._lineUpLayerFit.nameLabelPoint);
         this.addChild(nameLabel);
 
         var lvLabel = cc.LabelTTF.create("等级: " + player.get("lv"), "STHeitiTC-Medium", 20);
-        lvLabel.setColor(cc.c3b(255, 239, 131));
+        //lvLabel.setColor(cc.c3b(255, 239, 131));
         lvLabel.setPosition(this._lineUpLayerFit.lvLabelPoint);
         this.addChild(lvLabel);
 
         var abilityLabel = cc.LabelTTF.create("战斗力: " + player.getAbility(), "STHeitiTC-Medium", 20);
-        abilityLabel.setColor(cc.c3b(255, 239, 131));
+        //abilityLabel.setColor(cc.c3b(255, 239, 131));
         abilityLabel.setPosition(this._lineUpLayerFit.abilityLabelPoint);
         this.addChild(abilityLabel);
 
@@ -127,7 +128,7 @@ var LineUpLayer = LazyLayer.extend({
         var cardList = gameData.lineUp.getLineUpCardList();
 
         if (cardList.length > 0) {
-            LineUpDetailsLayer.pop(cardList);
+            LineUpDetailsLayer.pop(cardList, this._selectIndex);
         }
     },
 
@@ -232,9 +233,22 @@ var LineUpLayer = LazyLayer.extend({
         cc.log("LineUpLayer onTouchEnded");
 
         if (this._selectNode > 0) {
+            var index = this._selectNode;
             if (this._isClick) {
                 this.onTouchCancelled(touch, event);
-                this._onClickCard();
+                if (this._isClick) {
+                    if(this._node[index] && typeof(this._node[index]) == "object") {
+                        var cardList = gameData.lineUp.getLineUpCardList();
+                        for(var i = 0;i < cardList.length;i++) {
+                            var card = cardList[i];
+                            if(card == this._node[index]._card) {
+                                this._selectIndex = i + 1;
+                                break;
+                            }
+                        }
+                    }
+                    this._onClickCard();
+                }
                 return;
             }
 

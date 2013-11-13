@@ -65,22 +65,36 @@ class Manager
       (callback) ->
         dao.rank.getPidsByRankings rankings,callback
 
-      (ranks, callback) ->
+      (ranks, callback) =>
         _ids = ranks.map (r)-> r.playerId
-        dao.player.getLineUpInfoByIds _ids, (err, results) ->
+
+        results = []
+        leftIds = []
+        for id in _ids 
+          cache = @getPlayerFromCache(id)
+          if cache
+            results.push {
+              id: cache.id
+              name: cache.name
+              cards: cache.activeCards().map (c) -> playerId: c.playerId, tableId: c.tableId
+            }
+          else 
+            leftIds.push id
+
+        if leftIds.length == 0
+          return callback(null, results, ranks)
+          
+        dao.player.getLineUpInfoByIds leftIds, (err, plys) ->
+          results = results.concat plys if plys.length > 0
           callback(err, results, ranks)
           
     ], (err, players, ranks) ->
       if err isnt null
         return cb(err, null)
 
-      results = {}
-
-      results[r.playerId] = r.ranking for r in ranks
-
-      #addRankInfo(players, ranks)
-
-      cb(null, players, results)
+      _ranks = {}
+      _ranks[r.playerId] = r.ranking for r in ranks
+      cb(null, players, _ranks)
 
   @addExpCardFor: (player, qty, cb) ->
     async.times(
@@ -107,10 +121,5 @@ class Manager
   @delFriendIfOnline: (pid, fid) ->
     ply = @getPlayerFromCache pid
     ply.delFriend fid if ply
-
-addRankInfo = (players, ranks) ->
-  for p in players
-    r = _.findWhere(ranks, {playerId: p.id})
-    p.set('rank', r) if r?
 
 module.exports = Manager

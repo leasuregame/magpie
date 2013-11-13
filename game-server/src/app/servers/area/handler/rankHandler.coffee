@@ -76,7 +76,7 @@ Handler::rankingList = (msg, session, next) ->
       notCanGetReward: r.notCanGetReward,
       challengeCount: player.dailyGift.challengeCount,
       rankList: players,
-      time: Date.now()  - start
+      time: Date.now() - start
     }
     end = Date.now();
     console.log '**********get rankingList useTime = ',(end - start) / 1000
@@ -134,7 +134,18 @@ Handler::fight = (msg, session, next) ->
   playerId = session.get('playerId')
   targetId = msg.targetId
 
-  fightManager.pvp {playerId: playerId, targetId: targetId}, (err, bl) ->
+  async.waterfall [
+    (cb) ->
+      playerManager.getPlayers [playerId, targetId], cb
+
+    (res, cb) ->
+      player = res[playerId]
+      target = res[targetId]
+      cb(null, player, target)
+
+    (player, target, cb) ->
+      fightManager.pvp player, target, cb
+  ], (err, bl) ->
     if err
       return next(null, {code: 501, msg: err.msg or err})
 

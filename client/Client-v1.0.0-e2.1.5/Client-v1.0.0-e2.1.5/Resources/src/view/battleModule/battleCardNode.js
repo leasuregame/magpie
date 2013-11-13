@@ -181,7 +181,7 @@ var BattleCardNode = cc.Node.extend({
 
         var ccbNode = null;
 
-        if(this._index < 7) {
+        if (this._index < 7) {
             ccbNode = cc.BuilderReader.load(main_scene_image.effect11, this);
         } else {
             ccbNode = cc.BuilderReader.load(main_scene_image.effect12, this);
@@ -191,7 +191,7 @@ var BattleCardNode = cc.Node.extend({
             cc.log(ccbNode);
 
             var len = this._skillName.length;
-            for(var i = 0; i < len; ++i) {
+            for (var i = 0; i < len; ++i) {
                 ccbNode.controller["label" + i].setString(this._skillName[i]);
             }
         }

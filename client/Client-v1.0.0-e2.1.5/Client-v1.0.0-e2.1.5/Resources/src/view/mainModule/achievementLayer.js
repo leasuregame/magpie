@@ -168,6 +168,8 @@ var AchievementLayer = cc.Layer.extend({
         return function () {
             cc.log("AchievementLayer _onClickReceiver: " + id);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var that = this;
             gameData.achievement.receiver(function (data) {
                 cc.log(data);
@@ -193,6 +195,8 @@ var AchievementLayer = cc.Layer.extend({
 
     _onClickBack: function () {
         cc.log("AchievementLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
     }

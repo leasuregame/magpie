@@ -57,6 +57,7 @@ var appFiles = [
     'src/model/cardLibrary.js',
     'src/model/message.js',
     'src/model/tournament.js',
+    'src/model/sound.js',
     'src/model/speak.js',
     'src/model/spirit.js',
     'src/model/spiritPool.js',

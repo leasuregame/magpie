@@ -81,7 +81,7 @@ var BatterLayer = cc.Layer.extend({
             }
         }
 
-        this._backItem = cc.MenuItemFont.create("结束战斗", this.end, this);
+        this._backItem = cc.MenuItemFont.create("结束战斗", this._onClickBack, this);
         this._backItem.setPosition(this._batterLayerFit.backItemPoint);
         var menu = cc.Menu.create(this._backItem);
         this.addChild(menu);
@@ -703,6 +703,14 @@ var BatterLayer = cc.Layer.extend({
                 }, 1.5);
             }
         }
+    },
+
+    _onClickBack: function () {
+        cc.log("BattleLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        this.end();
     }
 });
 

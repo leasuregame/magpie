@@ -15,6 +15,7 @@
 var LotteryLayer = cc.Layer.extend({
     _lotteryLayerFit: null,
 
+    _data: null,
     _goldLabel: null,
     _energyLabel: null,
     _lotteryLabel: null,
@@ -166,8 +167,14 @@ var LotteryLayer = cc.Layer.extend({
         this._fragmentLabel.setString(player.get("fragment"));
     },
 
-    openDoor: function() {
+    showCard: function () {
+        cc.log("LotteryLayer showCard");
 
+        this.update();
+
+        LotteryCardLayer.pop(this._data);
+
+        LazyLayer.closeCloudLayer();
     },
 
     _onClickLottery: function (type, level) {
@@ -190,33 +197,18 @@ var LotteryLayer = cc.Layer.extend({
             LazyLayer.showCloudLayer();
 
             var that = this;
-            gameData.lottery.lottery(function (data) {
+            lottery.lottery(function (data) {
                 cc.log(data);
 
                 that.update();
 
                 if (data) {
-                    var blackLayer = cc.LayerColor.create(cc.c4b(0, 0, 0, 255), 720, 1136);
-                    that.addChild(blackLayer);
+                    that._data = data;
 
-                    var ret = playEffect({
-                        effectId: 3,
-                        target: blackLayer,
-                        delay: 0.16,
-                        loops: 1,
-                        cb: function () {
-                            var cardFullNode = CardFullNode.create(data);
-                            cardFullNode.setPosition(ret.sprite.getPosition());
-                            blackLayer.addChild(cardFullNode);
-
-                            that.scheduleOnce(function () {
-                                blackLayer.removeFromParent();
-                                LazyLayer.closeCloudLayer();
-
-
-                            }, 2);
-                        }
-                    });
+                    that._lotteryLabel.animationManager.runAnimationsForSequenceNamedTweenDuration(
+                        "animation_2_" + level,
+                        0
+                    );
                 } else {
                     LazyLayer.closeCloudLayer();
                 }

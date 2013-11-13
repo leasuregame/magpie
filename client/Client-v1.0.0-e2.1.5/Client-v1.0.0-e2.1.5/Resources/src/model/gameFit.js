@@ -303,7 +303,7 @@ var fit4Iphone4 = {
             "descriptionLabelPoint": cc.p(230, 182),
             "scrollViewSize": cc.size(640, 569),
             "scrollViewContentSize": cc.size(6400, 569),
-            "scrollViewPoint":  cc.p(40, 106)
+            "scrollViewPoint": cc.p(40, 106)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -443,8 +443,8 @@ var fit4Iphone4 = {
             "bgSpriteRect": cc.rect(0, 85, 640, 819),
             "bgSpritePoint": cc.p(40, 106),
             "playerHeaderLabelPoint": cc.p(40, 802),
-            "lineIconPoint": cc.p(40,784),
-            "abilityLabelIconPoint": cc.p(78,591),
+            "lineIconPoint": cc.p(40, 784),
+            "abilityLabelIconPoint": cc.p(78, 591),
             "abilityLabelPoint": cc.p(240, 608),
             "rankingLabelPoint": cc.p(470, 608),
             "lineUpLabelPoint": cc.p(40, 712),
@@ -1250,7 +1250,7 @@ var fit4Iphone5 = {
             "descriptionLabelPoint": cc.p(190, 182),
             "scrollViewSize": cc.size(640, 569),
             "scrollViewContentSize": cc.size(6400, 569),
-            "scrollViewPoint":  cc.p(0, 194)
+            "scrollViewPoint": cc.p(0, 194)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -1391,8 +1391,8 @@ var fit4Iphone5 = {
             "bgSpriteRect": cc.rect(0, 0, 640, 995),
             "bgSpritePoint": cc.p(0, 106),
             "playerHeaderLabelPoint": cc.p(0, 968),
-            "lineIconPoint": cc.p(0,950),
-            "abilityLabelIconPoint": cc.p(38,732),
+            "lineIconPoint": cc.p(0, 950),
+            "abilityLabelIconPoint": cc.p(38, 732),
             "abilityLabelPoint": cc.p(200, 749),
             "rankingLabelPoint": cc.p(430, 749),
             "lineUpLabelPoint": cc.p(0, 853),

@@ -43,6 +43,8 @@ var NewPlayerLayer = cc.Layer.extend({
     _onClickOk: function () {
         cc.log("NewPlayerLayer _onClickOk");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var name = this._nameEditBox.getText();
 
         gameData.user.createPlayer(function () {
@@ -52,6 +54,8 @@ var NewPlayerLayer = cc.Layer.extend({
 
     _onClickBack: function () {
         cc.log("NewPlayerLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this.getParent().switchLayer(LoginLayer);
     }

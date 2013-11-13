@@ -22,13 +22,13 @@ var CardFullNode = cc.Node.extend({
 
         this._card = card;
 
-        var url = this._card.get("url");
-        var star = this._card.get("star");
-        var index = Math.floor((star - 1) / 2) + 1;
+        var cardFullSprite = cc.Sprite.create(this._card.getCardFullUrl());
+        this.addChild(cardFullSprite);
 
-        for (var i = 1; i <= index; ++i) {
-            var cardSprite = cc.Sprite.create(main_scene_image[url + "_full" + i]);
-            this.addChild(cardSprite);
+        var cardFullOverlayUrl = this._card.getCardFullOverlayUrl();
+        if (cardFullOverlayUrl) {
+            var cardFullOverlaySprite = cc.Sprite.create(cardFullOverlayUrl);
+            this.addChild(cardFullOverlaySprite);
         }
 
         return true;

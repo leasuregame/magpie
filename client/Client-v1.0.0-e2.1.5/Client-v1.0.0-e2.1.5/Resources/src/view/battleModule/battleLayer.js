@@ -36,7 +36,7 @@ var BatterLayer = cc.Layer.extend({
         this._spiritNode = [];
         this._locate = this._batterLayerFit.locatePoints;
 
-        var bgSprite = cc.Sprite.create(main_scene_image.bg13);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg13, this._batterLayerFit.bgSpriteRect);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._batterLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
@@ -710,7 +710,11 @@ var BatterLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this.end();
+        if (gameData.player.get("lv") < 10) {
+            TipLayer.tip("10级开始后，可以跳过战斗");
+        } else {
+            this.end();
+        }
     }
 });
 

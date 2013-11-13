@@ -794,7 +794,6 @@ var main_scene_image = {
 
     main_bg_music: "res/sound/main_bg_music.mp3",
     battle_bg_music: "res/sound/battle_bg_music.mp3",
-
     battle_sound_heal: "res/sound/battle_sound_heal.wav",
     battle_sound_miss: "res/sound/battle_sound_miss.wav",
     click_button_sound: "res/sound/click_button_sound.wav"

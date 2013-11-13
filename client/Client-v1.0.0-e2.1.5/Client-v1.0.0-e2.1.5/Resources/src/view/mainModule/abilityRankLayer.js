@@ -30,9 +30,9 @@ var AbilityRankLayer = cc.Layer.extend({
         this._abilityRankList = gameData.rank.get("abilityRankList");
         var len = this._abilityRankList.length;
 
-        var scrollViewHeight = len * 100;
-        if (scrollViewHeight < this._abilityRankLayerFit.scrollViewHeight) {
-            scrollViewHeight = this._abilityRankLayerFit.scrollViewHeight;
+        var scrollViewHeight = len * 120;
+        if (scrollViewHeight < 700) {
+            scrollViewHeight = 700;
         }
 
         var scrollViewLayer = MarkLayer.create(this._abilityRankLayerFit.scrollViewLayerRect);
@@ -44,12 +44,12 @@ var AbilityRankLayer = cc.Layer.extend({
         var own = gameData.player.get("id");
 
         for (var i = 0; i < len; ++i) {
-            var y = scrollViewHeight - 100 - 100 * i;
+            var y = scrollViewHeight - 120 - 120 * i;
             if (this._abilityRankList[i].id == own) {
 
                 var myselfSprite = cc.Sprite.create(main_scene_image.button18);
                 myselfSprite.setScaleX(1.04);
-                myselfSprite.setScaleY(0.75);
+                myselfSprite.setScaleY(0.9);
                 myselfSprite.setAnchorPoint(cc.p(0, 0));
                 myselfSprite.setPosition(cc.p(0, y));
                 scrollViewLayer.addChild(myselfSprite);
@@ -62,7 +62,7 @@ var AbilityRankLayer = cc.Layer.extend({
                     this
                 );
                 playerItem.setScaleX(1.04);
-                playerItem.setScaleY(0.75);
+                playerItem.setScaleY(0.9);
                 playerItem.setAnchorPoint(cc.p(0, 0));
                 playerItem.setPosition(cc.p(0, y));
                 menu.addChild(playerItem);
@@ -72,45 +72,45 @@ var AbilityRankLayer = cc.Layer.extend({
 
             if (i < 3) {
                 var rankIcon = cc.Sprite.create(main_scene_image["icon" + (201 + i)]);
-                rankIcon.setPosition(cc.p(60, y + 50));
+                rankIcon.setPosition(cc.p(60, y + 60));
                 scrollViewLayer.addChild(rankIcon);
             } else {
                 var rankLabel = StrokeLabel.create(i + 1, "Arial", 55);
                 rankLabel.setColor(cc.c3b(255, 252, 175));
-                rankLabel.setPosition(cc.p(60, y + 52));
+                rankLabel.setPosition(cc.p(60, y + 62));
                 scrollViewLayer.addChild(rankLabel);
             }
 
             var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
             nameIcon.setContentSize(cc.size(155, 35));
             nameIcon.setAnchorPoint(cc.p(0, 0.5));
-            nameIcon.setPosition(cc.p(105, y + 70));
+            nameIcon.setPosition(cc.p(105, y + 80));
             scrollViewLayer.addChild(nameIcon);
 
             var nameLabel = cc.LabelTTF.create(this._abilityRankList[i].name, "STHeitiTC-Medium", 22);
             nameLabel.setColor(cc.c3b(255, 242, 206));
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
-            nameLabel.setPosition(cc.p(115, y + 70));
+            nameLabel.setPosition(cc.p(115, y + 80));
             scrollViewLayer.addChild(nameLabel);
 
             var abilityIcon = cc.Sprite.create(main_scene_image.icon204);
-            abilityIcon.setPosition(cc.p(420, y + 50));
+            abilityIcon.setPosition(cc.p(420, y + 60));
             scrollViewLayer.addChild(abilityIcon);
 
             var abilityLabel = cc.LabelTTF.create(this._abilityRankList[i].ability, "Arial", 35);
             abilityLabel.setColor(cc.c3b(56, 3, 5));
             abilityLabel.setAnchorPoint(cc.p(0, 0.5));
-            abilityLabel.setPosition(cc.p(465, y + 45));
+            abilityLabel.setPosition(cc.p(465, y + 55));
             scrollViewLayer.addChild(abilityLabel);
 
             var lvIcon = cc.Sprite.create(main_scene_image.icon208);
-            lvIcon.setPosition(cc.p(140, y + 30));
+            lvIcon.setPosition(cc.p(140, y + 40));
             scrollViewLayer.addChild(lvIcon);
 
             var lvLabel = cc.LabelTTF.create(this._abilityRankList[i].lv, "Arial", 22);
             lvLabel.setColor(cc.c3b(56, 3, 5));
             lvLabel.setAnchorPoint(cc.p(0, 0.5));
-            lvLabel.setPosition(cc.p(175, y + 27));
+            lvLabel.setPosition(cc.p(175, y + 37));
             scrollViewLayer.addChild(lvLabel);
         }
 

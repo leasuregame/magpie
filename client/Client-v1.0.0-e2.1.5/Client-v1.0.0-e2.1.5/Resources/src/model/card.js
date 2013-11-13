@@ -529,7 +529,7 @@ var Card = Entity.extend({
     train: function (cb, trainCount, trainType) {
         cc.log("Card train " + this._id);
 
-        var elixir = trainCount * 10;
+        var elixir = trainCount * 20;
         var that = this;
         lz.server.request("area.trainHandler.useElixir", {
             cardId: this._id,

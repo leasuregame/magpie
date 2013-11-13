@@ -84,7 +84,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         tipLabel.setPosition(cc.p(380, 349));
         this._resLabel.addChild(tipLabel);
 
-        this._tipLabel = cc.LabelTTF.create("魔石洗炼获得金色属性概率提升100倍", "STHeitiTC-Medium", 18);
+        this._tipLabel = cc.LabelTTF.create("魔石洗炼获得金色属性概率提升100倍", "STHeitiTC-Medium", 22);
         this._tipLabel.setColor(cc.c3b(255, 239, 131));
         this._tipLabel.setPosition(cc.p(227, 45));
         this._resLabel.addChild(this._tipLabel);
@@ -187,20 +187,101 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         stopTypeBgSprite.setAnchorPoint(cc.p(0, 0));
         this._stopTypeLabel.addChild(stopTypeBgSprite);
 
-        var stopUntilBlueIcon = cc.LabelTTF.create(
-            "出现蓝色属性以上停止洗炼 (5.0% - 10.0%)",
-            "STHeitiTC-Medium",
-            20
+        var stopUntilBlueIcon = ColorLabelTTF.create(
+            {
+                string: "出现",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20
+            },
+            {
+                string: "蓝色",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20,
+                color: cc.c3b(105, 218, 255)
+            },
+            {
+                string: "属性以上停止洗炼 ",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20
+            },
+            {
+                string: "(",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20
+            },
+            {
+                string: "5.0%",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20,
+                color: cc.c3b(105, 218, 255)
+            },
+            {
+                string: " - ",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20
+            },
+            {
+                string: "10.0%",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20,
+                color: cc.c3b(255, 248, 69)
+            },
+            {
+                string: ")",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20
+            }
         );
         stopUntilBlueIcon.setAnchorPoint(cc.p(0, 0.5));
         stopUntilBlueIcon.setPosition(cc.p(80, 178));
         this._stopTypeLabel.addChild(stopUntilBlueIcon);
 
-        var stopUntilYellowIcon = cc.LabelTTF.create(
-            "出现金色属性以上停止洗炼 (8.0% - 10.0%)",
-            "STHeitiTC-Medium",
-            20
+        var stopUntilYellowIcon = ColorLabelTTF.create(
+            {
+                string: "出现",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20
+            },
+            {
+                string: "金色",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20,
+                color: cc.c3b(255, 248, 69)
+            },
+            {
+                string: "属性以上停止洗炼 ",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20
+            },
+            {
+                string: "(",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20
+            },
+            {
+                string: "8.0%",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20,
+                color: cc.c3b(255, 248, 69)
+            },
+            {
+                string: " - ",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20
+            },
+            {
+                string: "10.0%",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20,
+                color: cc.c3b(255, 248, 69)
+            },
+            {
+                string: ")",
+                fontName: "STHeitiTC-Medium",
+                fontSize: 20
+            }
         );
+
         stopUntilYellowIcon.setAnchorPoint(cc.p(0, 0.5));
         stopUntilYellowIcon.setPosition(cc.p(80, 96));
         this._stopTypeLabel.addChild(stopUntilYellowIcon);

@@ -67,7 +67,7 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(titleLabel);
 
         var playerLabel = cc.LabelTTF.create("玩        家:", "STHeitiTC-Medium", 25);
-        playerLabel.setColor(cc.c3b(255, 239, 131));
+        //playerLabel.setColor(cc.c3b(255, 239, 131));
         playerLabel.setAnchorPoint(cc.p(1, 0.5));
         playerLabel.setPosition(this._playerDetailsFit.playerLabelPoint);
         this.addChild(playerLabel);
@@ -85,7 +85,7 @@ var PlayerDetails = LazyLayer.extend({
         }
 
         var lvIconLabel = cc.LabelTTF.create("等        级:", "STHeitiTC-Medium", 25);
-        lvIconLabel.setColor(cc.c3b(255, 239, 131));
+       // lvIconLabel.setColor(cc.c3b(255, 239, 131));
         lvIconLabel.setAnchorPoint(cc.p(1, 0.5));
         lvIconLabel.setPosition(this._playerDetailsFit.lvIconLabelPoint);
         this.addChild(lvIconLabel);
@@ -96,7 +96,7 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(lvLabel);
 
         var spiritLvIconLabel = cc.LabelTTF.create("元神等级:", "STHeitiTC-Medium", 25);
-        spiritLvIconLabel.setColor(cc.c3b(255, 239, 131));
+        //spiritLvIconLabel.setColor(cc.c3b(255, 239, 131));
         spiritLvIconLabel.setAnchorPoint(cc.p(1, 0.5));
         spiritLvIconLabel.setPosition(this._playerDetailsFit.spiritLvIconLabelPoint);
         this.addChild(spiritLvIconLabel);
@@ -111,7 +111,7 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(moneyIcon);
 
         var moneyIconLabel = cc.LabelTTF.create("仙    币:", "STHeitiTC-Medium", 25);
-        moneyIconLabel.setColor(cc.c3b(255, 239, 131));
+       // moneyIconLabel.setColor(cc.c3b(255, 239, 131));
         moneyIconLabel.setAnchorPoint(cc.p(1, 0.5));
         moneyIconLabel.setPosition(this._playerDetailsFit.moneyIconLabelPoint);
         this.addChild(moneyIconLabel);
@@ -126,7 +126,7 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(goldIcon);
 
         var goldIconLabel = cc.LabelTTF.create("魔    石:", "STHeitiTC-Medium", 25);
-        goldIconLabel.setColor(cc.c3b(255, 239, 131));
+       // goldIconLabel.setColor(cc.c3b(255, 239, 131));
         goldIconLabel.setAnchorPoint(cc.p(1, 0.5));
         goldIconLabel.setPosition(this._playerDetailsFit.goldIconLabelPoint);
         this.addChild(goldIconLabel);
@@ -141,7 +141,7 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(skillPointIcon);
 
         var skillPointIconLabel = cc.LabelTTF.create("技能点:", "STHeitiTC-Medium", 25);
-        skillPointIconLabel.setColor(cc.c3b(255, 239, 131));
+        //skillPointIconLabel.setColor(cc.c3b(255, 239, 131));
         skillPointIconLabel.setAnchorPoint(cc.p(1, 0.5));
         skillPointIconLabel.setPosition(this._playerDetailsFit.skillPointIconLabelPoint);
         this.addChild(skillPointIconLabel);
@@ -156,7 +156,7 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(elixirIcon);
 
         var elixirIconLabel = cc.LabelTTF.create("仙    丹:", "STHeitiTC-Medium", 25);
-        elixirIconLabel.setColor(cc.c3b(255, 239, 131));
+        //elixirIconLabel.setColor(cc.c3b(255, 239, 131));
         elixirIconLabel.setAnchorPoint(cc.p(1, 0.5));
         elixirIconLabel.setPosition(this._playerDetailsFit.elixirIconLabelPoint);
         this.addChild(elixirIconLabel);
@@ -171,7 +171,7 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(energyIcon);
 
         var energyIconLabel = cc.LabelTTF.create("活力点:", "STHeitiTC-Medium", 25);
-        energyIconLabel.setColor(cc.c3b(255, 239, 131));
+        //energyIconLabel.setColor(cc.c3b(255, 239, 131));
         energyIconLabel.setAnchorPoint(cc.p(1, 0.5));
         energyIconLabel.setPosition(this._playerDetailsFit.energyIconLabelPoint);
         this.addChild(energyIconLabel);
@@ -186,7 +186,7 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(powerIcon);
 
         var powerIconLabel = cc.LabelTTF.create("体    力:", "STHeitiTC-Medium", 25);
-        powerIconLabel.setColor(cc.c3b(255, 239, 131));
+       // powerIconLabel.setColor(cc.c3b(255, 239, 131));
         powerIconLabel.setAnchorPoint(cc.p(1, 0.5));
         powerIconLabel.setPosition(this._playerDetailsFit.powerIconLabelPoint);
         this.addChild(powerIconLabel);

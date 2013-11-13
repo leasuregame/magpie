@@ -1063,12 +1063,12 @@ var Player = (function(_super) {
         this.set('firstTime', ft);
     };
 
-    Player.prototype.hasLevelReward = function(lv) {
-        return this.levelRewardMark.hasMark(lv);
+    Player.prototype.hasLevelReward = function(val) {
+        return this.levelRewardMark.hasMark(val);
     };
 
-    Player.prototype.setLevelReward = function(lv) {
-        this.levelRewardMark.mark(lv);
+    Player.prototype.setLevelReward = function(val) {
+        this.levelRewardMark.mark(val);
         this.levelReward = this.levelRewardMark.value;
     };
 

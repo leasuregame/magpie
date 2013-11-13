@@ -648,7 +648,7 @@ var main_scene_image = {
 //    battle_sound_heal: "res/sound/battle_sound_heal.mp3",
 //    battle_sound_miss: "res/sound/battle_sound_miss.mp3",
     battle_sound_heal: "res/sound/battle_sound_heal.wav",
-    battle_sound_miss: "res/sound/battle_sound_miss.war",
+    battle_sound_miss: "res/sound/battle_sound_miss.wav",
     button_sound: "res/sound/button_sound.mp3"
 };
 

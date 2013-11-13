@@ -99,7 +99,7 @@ var MainMenuLayer = cc.Layer.extend({
 
             MainScene.getInstance().switchLayer(this._layer[index]);
 
-            cc.AudioEngine.getInstance().playEffect(main_scene_image.button_sound, false);
+            cc.AudioEngine.getInstance().playEffect(main_scene_image.battle_sound_heal, false);
 
             if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
                 NoviceTeachingLayer.getInstance().clearAndSave();

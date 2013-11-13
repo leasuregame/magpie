@@ -23,11 +23,6 @@
 		<key>children</key>
 		<array>
 			<dict>
-				<key>animatedProperties</key>
-				<dict>
-					<key>0</key>
-					<dict/>
-				</dict>
 				<key>baseClass</key>
 				<string>CCParticleSystemQuad</string>
 				<key>children</key>
@@ -89,7 +84,7 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>20</real>
+							<real>40</real>
 							<real>20</real>
 						</array>
 					</dict>
@@ -99,7 +94,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>40</real>
+						<real>30</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -107,7 +102,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.30000001192092896</real>
+						<real>0.5</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -124,8 +119,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.20000000298023224</real>
+							<real>0.75</real>
+							<real>0.25</real>
 						</array>
 					</dict>
 					<dict>
@@ -135,8 +130,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
-							<real>10</real>
+							<real>50</real>
+							<real>20</real>
 						</array>
 					</dict>
 					<dict>
@@ -146,7 +141,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>30</real>
+							<real>15</real>
 							<real>5</real>
 						</array>
 					</dict>
@@ -179,8 +174,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>90</real>
-							<real>50</real>
+							<real>0.0</real>
+							<real>360</real>
 						</array>
 					</dict>
 					<dict>
@@ -191,16 +186,16 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.99999600648880005</real>
-								<real>1</real>
-								<real>1</real>
+								<real>0.50229078531265259</real>
+								<real>0.93876379728317261</real>
+								<real>0.4592100977897644</real>
 								<real>1</real>
 							</array>
 							<array>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>0.0</real>
+								<real>0.37063172459602356</real>
+								<real>0.37064114212989807</real>
+								<real>0.37063607573509216</real>
+								<real>0.33000001311302185</real>
 							</array>
 						</array>
 					</dict>
@@ -212,10 +207,10 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.99999600648880005</real>
-								<real>1</real>
-								<real>1</real>
-								<real>0.18000000715255737</real>
+								<real>0.0</real>
+								<real>0.0</real>
+								<real>0.0</real>
+								<real>255</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -233,7 +228,7 @@
 						<key>value</key>
 						<array>
 							<integer>1</integer>
-							<integer>771</integer>
+							<integer>1</integer>
 						</array>
 					</dict>
 					<dict>
@@ -254,7 +249,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>200</real>
+							<real>60</real>
 							<real>20</real>
 						</array>
 					</dict>
@@ -276,8 +271,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>-430</real>
-							<real>20</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -286,12 +281,10 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>main/icon149.png</string>
+						<string>effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
 				<key>selected</key>
-				<true/>
-				<key>seqExpanded</key>
 				<true/>
 			</dict>
 		</array>
@@ -299,8 +292,6 @@
 		<string></string>
 		<key>displayName</key>
 		<string>CCNode</string>
-		<key>jsController</key>
-		<string>CocosBuilderClass</string>
 		<key>memberVarAssignmentName</key>
 		<string></string>
 		<key>memberVarAssignmentType</key>
@@ -375,17 +366,17 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>1</real>
+			<real>10</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>333.01123046875</real>
+			<real>128</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

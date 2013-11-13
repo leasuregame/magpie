@@ -22,7 +22,6 @@ var NewPlayerLayer = cc.Layer.extend({
         this._nameEditBox.setPosition(cc.p(380, 500));
         this._nameEditBox.setDelegate(this);
         this._nameEditBox.setFont("STHeitiTC-Medium", 25);
-        this._nameEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._nameEditBox.setMaxLength(6);
         this.addChild(this._nameEditBox);
 

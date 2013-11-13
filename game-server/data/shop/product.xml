@@ -19,7 +19,7 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8880</WindowHeight>
+  <WindowHeight>5120</WindowHeight>
   <WindowWidth>30400</WindowWidth>
   <WindowTopX>5400</WindowTopX>
   <WindowTopY>4220</WindowTopY>
@@ -81,7 +81,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">money</Data></Cell>
-    <Cell><Data ss:Type="String">铜板</Data></Cell>
+    <Cell><Data ss:Type="String">仙币</Data></Cell>
     <Cell><Data ss:Type="String">每次购买可获得1000仙币，每次额外赠送100仙币。</Data></Cell>
     <Cell><Data ss:Type="String">gold</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
@@ -92,7 +92,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">money</Data></Cell>
-    <Cell><Data ss:Type="String">铜板</Data></Cell>
+    <Cell><Data ss:Type="String">一袋仙币</Data></Cell>
     <Cell><Data ss:Type="String">每次购买可获得5000仙币，每次额外赠送1500仙币。</Data></Cell>
     <Cell><Data ss:Type="String">gold</Data></Cell>
     <Cell><Data ss:Type="Number">50</Data></Cell>
@@ -103,7 +103,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell><Data ss:Type="String">money</Data></Cell>
-    <Cell><Data ss:Type="String">铜板</Data></Cell>
+    <Cell><Data ss:Type="String">一大袋仙币</Data></Cell>
     <Cell><Data ss:Type="String">每次购买可获得10000仙币，每次额外赠送5000仙币。</Data></Cell>
     <Cell><Data ss:Type="String">gold</Data></Cell>
     <Cell><Data ss:Type="Number">100</Data></Cell>
@@ -150,8 +150,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>10</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -180,6 +180,7 @@
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>

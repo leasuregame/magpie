@@ -64,6 +64,11 @@ var LineUpLabel = cc.Layer.extend({
         cc.log("LineUpLabel _onClickCard");
 
         MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_LINEUP));
+
+        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+            NoviceTeachingLayer.getInstance().clearAndSave();
+            NoviceTeachingLayer.getInstance().next();
+        }
     },
 
     _onClickLock: function (index) {
@@ -73,9 +78,9 @@ var LineUpLabel = cc.Layer.extend({
             cc.log("LineUpLabel _onClickLock");
 
             if (index == 3) {
-                TipLayer.tip("第四个卡槽 " + table.card4_position + " 级开放");
+                TipLayer.tip(table.card4_position + " 级开启");
             } else if (index == 4) {
-                TipLayer.tip("第五个卡槽 " + table.card5_position + " 级开放");
+                TipLayer.tip(table.card5_position + " 级开启");
             }
         }
     }

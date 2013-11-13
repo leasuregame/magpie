@@ -56,7 +56,7 @@ var BattleLogPool = Entity.extend({
             if (battleLog.winner == "own") {
                 battleLog.winner = "enemy";
             } else if (battleLog.winner == "enemy") {
-                battleLog.winner = "own;"
+                battleLog.winner = "own"
             }
         }
 

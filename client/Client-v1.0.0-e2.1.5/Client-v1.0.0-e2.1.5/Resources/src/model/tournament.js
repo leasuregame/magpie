@@ -100,7 +100,7 @@ var Tournament = Entity.extend({
         var time0 = Date.now();
 
         var that = this;
-        lzWindow.pomelo.request("area.rankHandler.rankingList", {}, function (data) {
+        lz.server.request("area.rankHandler.rankingList", {}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
@@ -130,7 +130,7 @@ var Tournament = Entity.extend({
         cc.log("Tournament defiance: " + targetId + " ranking: " + ranking);
 
         var that = this;
-        lzWindow.pomelo.request("area.rankHandler.challenge", {
+        lz.server.request("area.rankHandler.challenge", {
             targetId: targetId,
             ranking: ranking
         }, function (data) {
@@ -170,7 +170,7 @@ var Tournament = Entity.extend({
 
         if (this._canGetReward.length > 0) {
             var that = this;
-            lzWindow.pomelo.request("area.rankHandler.getRankingReward", {
+            lz.server.request("area.rankHandler.getRankingReward", {
                 ranking: this._canGetReward[0]
             }, function (data) {
                 cc.log(data);

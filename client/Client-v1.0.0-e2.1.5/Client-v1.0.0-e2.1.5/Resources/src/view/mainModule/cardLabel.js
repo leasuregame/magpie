@@ -266,6 +266,11 @@ var CardLabel = cc.Node.extend({
         cc.log("CardLabel _onClickCard" + this._card.get("id"));
 
         if (this._selectType != SELECT_TYPE_DEFAULT) {
+            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+                NoviceTeachingLayer.getInstance().clearAndSave();
+                NoviceTeachingLayer.getInstance().next();
+            }
+            
             this.select();
         }
     }

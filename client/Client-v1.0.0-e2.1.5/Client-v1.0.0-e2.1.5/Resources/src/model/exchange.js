@@ -43,7 +43,7 @@ var Exchange = Entity.extend({
                     card: Card.create({
                         tableId: i,
                         lv: 1,
-                        skillLv: 0
+                        skillLv: 1
                     })
                 })
             }
@@ -119,7 +119,7 @@ var Exchange = Entity.extend({
         cc.log("Exchange exchange");
 
         var that = this;
-        lzWindow.pomelo.request("area.trainHandler.exchangeCard", {
+        lz.server.request("area.trainHandler.exchangeCard", {
             tableId: id
         }, function (data) {
             cc.log(data);

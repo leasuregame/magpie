@@ -13,6 +13,8 @@
 
 
 var AbilityRankLayer = cc.Layer.extend({
+    _abilityRankLayerFit: null,
+
     _skyDialog: null,
     _abilityRankList: null,
     _selectId: 0,
@@ -23,15 +25,17 @@ var AbilityRankLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._abilityRankLayerFit = gameFit.mainScene.abilityRankLayer;
+
         this._abilityRankList = gameData.rank.get("abilityRankList");
         var len = this._abilityRankList.length;
 
         var scrollViewHeight = len * 100;
-        if (scrollViewHeight < 700) {
-            scrollViewHeight = 700;
+        if (scrollViewHeight < this._abilityRankLayerFit.scrollViewHeight) {
+            scrollViewHeight = this._abilityRankLayerFit.scrollViewHeight;
         }
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(54, 228, 609, 700));
+        var scrollViewLayer = MarkLayer.create(this._abilityRankLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
@@ -41,30 +45,29 @@ var AbilityRankLayer = cc.Layer.extend({
 
         for (var i = 0; i < len; ++i) {
             var y = scrollViewHeight - 100 - 100 * i;
-
-            var playerItem = cc.MenuItemImage.create(
-                main_scene_image.button15,
-                main_scene_image.button15s,
-                this._onClickPlayer(i),
-                this
-            );
-            playerItem.setScaleX(1.04);
-            playerItem.setScaleY(0.75);
-            playerItem.setAnchorPoint(cc.p(0, 0));
-            playerItem.setPosition(cc.p(0, y));
-            menu.addChild(playerItem);
-
-            this._playerItem[i] = playerItem;
-
             if (this._abilityRankList[i].id == own) {
-                playerItem.setEnabled(false);
 
-                var myselfSprite = cc.Sprite.create(main_scene_image.icon257);
+                var myselfSprite = cc.Sprite.create(main_scene_image.button18);
                 myselfSprite.setScaleX(1.04);
                 myselfSprite.setScaleY(0.75);
                 myselfSprite.setAnchorPoint(cc.p(0, 0));
                 myselfSprite.setPosition(cc.p(0, y));
                 scrollViewLayer.addChild(myselfSprite);
+
+            } else {
+                var playerItem = cc.MenuItemImage.create(
+                    main_scene_image.button15,
+                    main_scene_image.button15s,
+                    this._onClickPlayer(i),
+                    this
+                );
+                playerItem.setScaleX(1.04);
+                playerItem.setScaleY(0.75);
+                playerItem.setAnchorPoint(cc.p(0, 0));
+                playerItem.setPosition(cc.p(0, y));
+                menu.addChild(playerItem);
+
+                this._playerItem[i] = playerItem;
             }
 
             if (i < 3) {
@@ -111,8 +114,8 @@ var AbilityRankLayer = cc.Layer.extend({
             scrollViewLayer.addChild(lvLabel);
         }
 
-        var scrollView = cc.ScrollView.create(cc.size(609, 700), scrollViewLayer);
-        scrollView.setPosition(cc.p(54, 228));
+        var scrollView = cc.ScrollView.create(this._abilityRankLayerFit.scrollViewSize, scrollViewLayer);
+        scrollView.setPosition(this._abilityRankLayerFit.scrollViewPoint);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();
         this.addChild(scrollView);
@@ -124,7 +127,7 @@ var AbilityRankLayer = cc.Layer.extend({
         this.addChild(this._skyDialog, 10);
 
         var label = cc.Scale9Sprite.create(main_scene_image.bg16);
-        label.setContentSize(cc.size(216, 300));
+        label.setContentSize(this._abilityRankLayerFit.labelContentSize);
 
         var detailItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -133,7 +136,7 @@ var AbilityRankLayer = cc.Layer.extend({
             this._onClickDetail,
             this
         );
-        detailItem.setPosition(cc.p(108, 240));
+        detailItem.setPosition(this._abilityRankLayerFit.detailItemPoint);
 
         var sendMessageItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -142,7 +145,7 @@ var AbilityRankLayer = cc.Layer.extend({
             this._onClickSendMessage,
             this
         );
-        sendMessageItem.setPosition(cc.p(108, 150));
+        sendMessageItem.setPosition(this._abilityRankLayerFit.sendMessageItemPoint);
 
         var addFriendItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -151,14 +154,14 @@ var AbilityRankLayer = cc.Layer.extend({
             this._onClickAddFriend,
             this
         );
-        addFriendItem.setPosition(cc.p(108, 60));
+        addFriendItem.setPosition(this._abilityRankLayerFit.addFriendItemPoint);
 
         var menu = cc.Menu.create(detailItem, sendMessageItem, addFriendItem);
         menu.setPosition(cc.p(0, 0));
         label.addChild(menu);
 
         this._skyDialog.setLabel(label);
-        this._skyDialog.setRect(cc.rect(40, 198, 640, 768));
+        this._skyDialog.setRect(this._abilityRankLayerFit.skyDialogRect);
 
         return true;
     },

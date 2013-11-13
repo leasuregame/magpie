@@ -13,13 +13,39 @@
 
 
 var LoginScene = cc.Scene.extend({
+    _nowLayer: null,
+
     onEnter: function () {
-        cc.log("LoginScene onEnter");
+        cc.log("Login onEnter");
 
         this._super();
 
-        var loginLayer = LoginLayer.create();
-        this.addChild(loginLayer);
+        this.switchLayer(LoginLayer);
+    },
+
+    switchLayer: function (runLayer) {
+        cc.log("LoginScene switchLayer");
+
+        if (runLayer.canEnter && !runLayer.canEnter()) {
+            return;
+        }
+
+        cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
+
+        if (!(this._nowLayer instanceof runLayer)) {
+            this.switch(runLayer.create());
+        }
+    },
+
+    switch: function (layerObject) {
+        cc.log("LoginScene switch");
+
+        if (this._nowLayer != null) {
+            this.removeChild(this._nowLayer);
+        }
+
+        this._nowLayer = layerObject;
+        this.addChild(this._nowLayer);
     }
 });
 

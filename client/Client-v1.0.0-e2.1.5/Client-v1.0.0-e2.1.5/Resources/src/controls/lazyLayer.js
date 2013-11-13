@@ -76,36 +76,41 @@ LazyLayer.create = function () {
     return null;
 };
 
-(function () {
-    var cloudLayer = null;
-    var zOrder = 10000;
+
+(function(){
+    var _cloudLayer = null;
 
     LazyLayer.showCloudLayer = function () {
         cc.log("LazyLayer showCloudLayer");
 
-        cloudLayer = LazyLayer.create();
-        MainScene.getInstance().getLayer().addChild(cloudLayer, zOrder);
+        _cloudLayer = LazyLayer.create();
+        MainScene.getInstance().getLayer().addChild(_cloudLayer, 10000);
     };
 
     LazyLayer.closeCloudLayer = function () {
         cc.log("LazyLayer closeCloudLayer");
 
-        cloudLayer.removeFromParent();
-        cloudLayer = null;
+        _cloudLayer.removeFromParent();
+        _cloudLayer = null;
     };
+})();
+
+
+(function(){
+    var _cloudLayer = null;
 
     LazyLayer.showCloudAll = function () {
         cc.log("LazyLayer showCloudAll");
 
-        cloudLayer = LazyLayer.create();
-        cloudLayer.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
-        MainScene.getInstance().addChild(cloudLayer, zOrder);
+        _cloudLayer = LazyLayer.create();
+        _cloudLayer.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+        cc.Director.getInstance().getRunningScene().addChild(_cloudLayer, 10000);
     };
 
     LazyLayer.closeCloudAll = function () {
         cc.log("LazyLayer closeCloudAll");
 
-        cloudLayer.removeFromParent();
-        cloudLayer = null;
+        _cloudLayer.removeFromParent();
+        _cloudLayer = null;
     };
 })();

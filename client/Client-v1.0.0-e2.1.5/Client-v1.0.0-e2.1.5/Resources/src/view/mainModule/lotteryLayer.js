@@ -13,6 +13,8 @@
 
 
 var LotteryLayer = cc.Layer.extend({
+    _lotteryLayerFit: null,
+
     _goldLabel: null,
     _energyLabel: null,
 
@@ -28,53 +30,66 @@ var LotteryLayer = cc.Layer.extend({
 
         if (!this._super())  return false;
 
+        this._lotteryLayerFit = gameFit.mainScene.lotteryLayer;
+
         var bgSprite = cc.Sprite.create(main_scene_image.bg19);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(cc.p(40, 0));
+        bgSprite.setPosition(this._lotteryLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 968));
+        headIcon.setPosition(this._lotteryLayerFit.headIconPoint);
         this.addChild(headIcon);
 
         var titleIcon = cc.Sprite.create(main_scene_image.icon241);
-        titleIcon.setPosition(cc.p(360, 1008));
+        titleIcon.setPosition(this._lotteryLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
+        var backItem = cc.MenuItemImage.create(
+            main_scene_image.button8,
+            main_scene_image.button8s,
+            this._onClickBack,
+            this
+        );
+        backItem.setPosition(this._lotteryLayerFit.backItemPoint);
+        var menu = cc.Menu.create(backItem);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu, 1);
+
         var lotteryLabel = cc.Sprite.create(main_scene_image.icon242);
-        lotteryLabel.setPosition(cc.p(360, 600));
+        lotteryLabel.setPosition(this._lotteryLayerFit.lotteryLabelPoint);
         this.addChild(lotteryLabel);
 
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
-        headLabel.setPosition(cc.p(360, 938));
+        headLabel.setPosition(this._lotteryLayerFit.headLabelPoint);
         this.addChild(headLabel);
 
         var energyIcon = cc.Sprite.create(main_scene_image.icon154);
-        energyIcon.setPosition(cc.p(80, 938));
+        energyIcon.setPosition(this._lotteryLayerFit.energyIconPoint);
         this.addChild(energyIcon);
 
         var goldIcon = cc.Sprite.create(main_scene_image.icon148);
-        goldIcon.setPosition(cc.p(220, 938));
+        goldIcon.setPosition(this._lotteryLayerFit.goldIconPoint);
         this.addChild(goldIcon);
 
         var fragmentIcon = cc.Sprite.create(main_scene_image.icon243);
-        fragmentIcon.setPosition(cc.p(450, 938));
+        fragmentIcon.setPosition(this._lotteryLayerFit.fragmentIconPoint);
         this.addChild(fragmentIcon);
 
         this._energyLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._energyLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._energyLabel.setPosition(cc.p(110, 938));
+        this._energyLabel.setPosition(this._lotteryLayerFit.energyLabelPoint);
         this.addChild(this._energyLabel);
 
         this._goldLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._goldLabel.setPosition(cc.p(250, 938));
+        this._goldLabel.setPosition(this._lotteryLayerFit.goldLabelPoint);
         this.addChild(this._goldLabel);
 
         this._fragmentLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._fragmentLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._fragmentLabel.setPosition(cc.p(480, 938));
+        this._fragmentLabel.setPosition(this._lotteryLayerFit.fragmentLabelPoint);
         this.addChild(this._fragmentLabel);
 
         var exchangeItem = cc.MenuItemImage.createWithIcon(
@@ -84,14 +99,15 @@ var LotteryLayer = cc.Layer.extend({
             this._onClickExchange,
             this
         );
-        exchangeItem.setPosition(cc.p(600, 938));
+        exchangeItem.setPosition(this._lotteryLayerFit.exchangeItemPoint);
 
         var menu = cc.Menu.create(exchangeItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
         for (var i = 0; i < 2; ++i) {
-            var x = 233 + 254 * i;
+            var x = this._lotteryLayerFit.goldLotteryItemBasePoint.x + 254 * i;
+            var y = this._lotteryLayerFit.goldLotteryItemBasePoint.y;
 
             var goldLotteryItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button9,
@@ -101,23 +117,26 @@ var LotteryLayer = cc.Layer.extend({
                 this._onClickLottery(LOTTERY_BY_GOLD, i + 1),
                 this
             );
-            goldLotteryItem.setPosition(cc.p(x, 470));
+            goldLotteryItem.setPosition(cc.p(x, y));
             menu.addChild(goldLotteryItem);
+
+            x = this._lotteryLayerFit.energyLotteryItemBasePoint.x + 254 * i;
+            y = this._lotteryLayerFit.energyLotteryItemBasePoint.y;
 
             var energyLotteryItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button9,
                 main_scene_image.button9s,
                 main_scene_image.button9d,
-                main_scene_image["icon" + (142 + i)],
+                main_scene_image["icon" + (141 + i)],
                 this._onClickLottery(LOTTERY_BY_ENERGY, i + 1),
                 this
             );
-            energyLotteryItem.setPosition(cc.p(x, 550));
+            energyLotteryItem.setPosition(cc.p(x, y));
             menu.addChild(energyLotteryItem);
         }
 
         var tipBgSprite = cc.Sprite.create(main_scene_image.icon245);
-        tipBgSprite.setPosition(cc.p(360, 220));
+        tipBgSprite.setPosition(this._lotteryLayerFit.tipBgSpritePoint);
         this.addChild(tipBgSprite);
 
         var tipLabel = cc.LabelTTF.create(
@@ -125,7 +144,7 @@ var LotteryLayer = cc.Layer.extend({
             "STHeitiTC-Medium",
             18
         );
-        tipLabel.setPosition(cc.p(360, 220));
+        tipLabel.setPosition(this._lotteryLayerFit.tipLabelPoint);
         this.addChild(tipLabel);
 
         return true;
@@ -149,6 +168,10 @@ var LotteryLayer = cc.Layer.extend({
 
             if (!lottery.canLottery(type, level)) {
                 return;
+            }
+
+            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+                NoviceTeachingLayer.getInstance().clearAndSave();
             }
 
             LazyLayer.showCloudLayer();
@@ -176,6 +199,10 @@ var LotteryLayer = cc.Layer.extend({
                             that.scheduleOnce(function () {
                                 blackLayer.removeFromParent();
                                 LazyLayer.closeCloudLayer();
+
+                                if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+                                    NoviceTeachingLayer.getInstance().next();
+                                }
                             }, 2);
                         }
                     });
@@ -190,6 +217,12 @@ var LotteryLayer = cc.Layer.extend({
         cc.log("LotteryLayer _onClickExchange");
 
         MainScene.getInstance().switchLayer(ExchangeLayer);
+    },
+
+    _onClickBack: function () {
+        cc.log("LotteryLayer _onClickBack");
+
+        MainScene.getInstance().switchLayer(MainLayer);
     }
 });
 

@@ -13,6 +13,8 @@
 
 
 var PlayerDetails = LazyLayer.extend({
+    _playerDetailsFit: null,
+
     _powerLabel: null,
     _menu: null,
 
@@ -30,181 +32,173 @@ var PlayerDetails = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this._playerDetailsFit = gameFit.mainScene.playerDetails;
+
         var player = gameData.player;
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(600, 720));
-        bgSprite.setPosition(cc.p(363, 580));
+        bgSprite.setPosition(this._playerDetailsFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var labelSprite1 = cc.Scale9Sprite.create(main_scene_image.icon155);
         labelSprite1.setContentSize(cc.size(550, 150));
-        labelSprite1.setPosition(cc.p(360, 795));
+        labelSprite1.setPosition(this._playerDetailsFit.labelSprite1Point);
         this.addChild(labelSprite1);
 
         var labelSprite2 = cc.Scale9Sprite.create(main_scene_image.icon155);
         labelSprite2.setContentSize(cc.size(550, 100));
-        labelSprite2.setPosition(cc.p(360, 655));
+        labelSprite2.setPosition(this._playerDetailsFit.labelSprite2Point);
         this.addChild(labelSprite2);
 
         var labelSprite3 = cc.Scale9Sprite.create(main_scene_image.icon155);
         labelSprite3.setContentSize(cc.size(550, 150));
-        labelSprite3.setPosition(cc.p(360, 515));
+        labelSprite3.setPosition(this._playerDetailsFit.labelSprite3Point);
         this.addChild(labelSprite3);
 
         var labelSprite4 = cc.Scale9Sprite.create(main_scene_image.icon155);
         labelSprite4.setContentSize(cc.size(550, 100));
-        labelSprite4.setPosition(cc.p(360, 370));
+        labelSprite4.setPosition(this._playerDetailsFit.labelSprite4Point);
         this.addChild(labelSprite4);
 
         var titleLabel = StrokeLabel.create("基  础  信  息", "STHeitiTC-Medium", 30);
         titleLabel.setColor(cc.c3b(255, 239, 131));
-        titleLabel.setPosition(cc.p(360, 900));
+        titleLabel.setPosition(this._playerDetailsFit.titleLabelPoint);
         this.addChild(titleLabel);
 
         var playerLabel = cc.LabelTTF.create("玩        家:", "STHeitiTC-Medium", 25);
         playerLabel.setColor(cc.c3b(255, 239, 131));
         playerLabel.setAnchorPoint(cc.p(1, 0.5));
-        playerLabel.setPosition(cc.p(280, 841));
+        playerLabel.setPosition(this._playerDetailsFit.playerLabelPoint);
         this.addChild(playerLabel);
 
         var nameLabel = cc.LabelTTF.create(player.get("name"), "STHeitiTC-Medium", 25);
-        nameLabel.setColor(cc.c3b(255, 239, 131));
         nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        nameLabel.setPosition(cc.p(320, 841));
+        nameLabel.setPosition(this._playerDetailsFit.nameLabelPoint);
         this.addChild(nameLabel);
 
         var vip = player.get("vip");
         if (vip) {
             var vipIcon = cc.Sprite.create(main_scene_image["vip" + vip]);
-            vipIcon.setPosition(530, 841);
+            vipIcon.setPosition(this._playerDetailsFit.vipIconPoint);
             this.addChild(vipIcon);
         }
 
         var lvIconLabel = cc.LabelTTF.create("等        级:", "STHeitiTC-Medium", 25);
         lvIconLabel.setColor(cc.c3b(255, 239, 131));
         lvIconLabel.setAnchorPoint(cc.p(1, 0.5));
-        lvIconLabel.setPosition(cc.p(280, 795));
+        lvIconLabel.setPosition(this._playerDetailsFit.lvIconLabelPoint);
         this.addChild(lvIconLabel);
 
         var lvLabel = cc.LabelTTF.create(player.get("lv"), "STHeitiTC-Medium", 25);
-        lvLabel.setColor(cc.c3b(255, 239, 131));
         lvLabel.setAnchorPoint(cc.p(0, 0.5));
-        lvLabel.setPosition(cc.p(320, 795));
+        lvLabel.setPosition(this._playerDetailsFit.lvLabelPoint);
         this.addChild(lvLabel);
 
         var spiritLvIconLabel = cc.LabelTTF.create("元神等级:", "STHeitiTC-Medium", 25);
         spiritLvIconLabel.setColor(cc.c3b(255, 239, 131));
         spiritLvIconLabel.setAnchorPoint(cc.p(1, 0.5));
-        spiritLvIconLabel.setPosition(cc.p(280, 749));
+        spiritLvIconLabel.setPosition(this._playerDetailsFit.spiritLvIconLabelPoint);
         this.addChild(spiritLvIconLabel);
 
         var spiritLvLabel = cc.LabelTTF.create(gameData.spirit.get("lv"), "STHeitiTC-Medium", 25);
-        spiritLvLabel.setColor(cc.c3b(255, 239, 131));
         spiritLvLabel.setAnchorPoint(cc.p(0, 0.5));
-        spiritLvLabel.setPosition(cc.p(320, 749));
+        spiritLvLabel.setPosition(this._playerDetailsFit.spiritLvLabelPoint);
         this.addChild(spiritLvLabel);
 
         var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
-        moneyIcon.setPosition(170, 678);
+        moneyIcon.setPosition(this._playerDetailsFit.moneyIconPoint);
         this.addChild(moneyIcon);
 
         var moneyIconLabel = cc.LabelTTF.create("仙    币:", "STHeitiTC-Medium", 25);
         moneyIconLabel.setColor(cc.c3b(255, 239, 131));
         moneyIconLabel.setAnchorPoint(cc.p(1, 0.5));
-        moneyIconLabel.setPosition(cc.p(280, 678));
+        moneyIconLabel.setPosition(this._playerDetailsFit.moneyIconLabelPoint);
         this.addChild(moneyIconLabel);
 
         var moneyLabel = cc.LabelTTF.create(player.get("money"), "STHeitiTC-Medium", 25);
-        moneyLabel.setColor(cc.c3b(255, 239, 131));
         moneyLabel.setAnchorPoint(cc.p(0, 0.5));
-        moneyLabel.setPosition(cc.p(320, 678));
+        moneyLabel.setPosition(this._playerDetailsFit.moneyLabelPoint);
         this.addChild(moneyLabel);
 
         var goldIcon = cc.Sprite.create(main_scene_image.icon148);
-        goldIcon.setPosition(170, 632);
+        goldIcon.setPosition(this._playerDetailsFit.goldIconPoint);
         this.addChild(goldIcon);
 
         var goldIconLabel = cc.LabelTTF.create("魔    石:", "STHeitiTC-Medium", 25);
         goldIconLabel.setColor(cc.c3b(255, 239, 131));
         goldIconLabel.setAnchorPoint(cc.p(1, 0.5));
-        goldIconLabel.setPosition(cc.p(280, 632));
+        goldIconLabel.setPosition(this._playerDetailsFit.goldIconLabelPoint);
         this.addChild(goldIconLabel);
 
         var goldLabel = cc.LabelTTF.create(player.get("gold"), "STHeitiTC-Medium", 25);
-        goldLabel.setColor(cc.c3b(255, 239, 131));
         goldLabel.setAnchorPoint(cc.p(0, 0.5));
-        goldLabel.setPosition(cc.p(320, 632));
+        goldLabel.setPosition(this._playerDetailsFit.goldLabelPoint);
         this.addChild(goldLabel);
 
         var skillPointIcon = cc.Sprite.create(main_scene_image.icon152);
-        skillPointIcon.setPosition(170, 561);
+        skillPointIcon.setPosition(this._playerDetailsFit.skillPointIconPoint);
         this.addChild(skillPointIcon);
 
         var skillPointIconLabel = cc.LabelTTF.create("技能点:", "STHeitiTC-Medium", 25);
         skillPointIconLabel.setColor(cc.c3b(255, 239, 131));
         skillPointIconLabel.setAnchorPoint(cc.p(1, 0.5));
-        skillPointIconLabel.setPosition(cc.p(280, 561));
+        skillPointIconLabel.setPosition(this._playerDetailsFit.skillPointIconLabelPoint);
         this.addChild(skillPointIconLabel);
 
         var skillPointLabel = cc.LabelTTF.create(player.get("skillPoint"), "STHeitiTC-Medium", 25);
-        skillPointLabel.setColor(cc.c3b(255, 239, 131));
         skillPointLabel.setAnchorPoint(cc.p(0, 0.5));
-        skillPointLabel.setPosition(cc.p(320, 561));
+        skillPointLabel.setPosition(this._playerDetailsFit.skillPointLabelPoint);
         this.addChild(skillPointLabel);
 
         var elixirIcon = cc.Sprite.create(main_scene_image.icon151);
-        elixirIcon.setPosition(170, 515);
+        elixirIcon.setPosition(this._playerDetailsFit.elixirIconPoint);
         this.addChild(elixirIcon);
 
         var elixirIconLabel = cc.LabelTTF.create("仙    丹:", "STHeitiTC-Medium", 25);
         elixirIconLabel.setColor(cc.c3b(255, 239, 131));
         elixirIconLabel.setAnchorPoint(cc.p(1, 0.5));
-        elixirIconLabel.setPosition(cc.p(280, 515));
+        elixirIconLabel.setPosition(this._playerDetailsFit.elixirIconLabelPoint);
         this.addChild(elixirIconLabel);
 
         var elixirLabel = cc.LabelTTF.create(player.get("elixir"), "STHeitiTC-Medium", 25);
-        elixirLabel.setColor(cc.c3b(255, 239, 131));
         elixirLabel.setAnchorPoint(cc.p(0, 0.5));
-        elixirLabel.setPosition(cc.p(320, 515));
+        elixirLabel.setPosition(this._playerDetailsFit.elixirLabelPoint);
         this.addChild(elixirLabel);
 
         var energyIcon = cc.Sprite.create(main_scene_image.icon154);
-        energyIcon.setPosition(170, 469);
+        energyIcon.setPosition(this._playerDetailsFit.energyIconPoint);
         this.addChild(energyIcon);
 
         var energyIconLabel = cc.LabelTTF.create("活力点:", "STHeitiTC-Medium", 25);
         energyIconLabel.setColor(cc.c3b(255, 239, 131));
         energyIconLabel.setAnchorPoint(cc.p(1, 0.5));
-        energyIconLabel.setPosition(cc.p(280, 469));
+        energyIconLabel.setPosition(this._playerDetailsFit.energyIconLabelPoint);
         this.addChild(energyIconLabel);
 
         var energyLabel = cc.LabelTTF.create(player.get("energy"), "STHeitiTC-Medium", 25);
-        energyLabel.setColor(cc.c3b(255, 239, 131));
         energyLabel.setAnchorPoint(cc.p(0, 0.5));
-        energyLabel.setPosition(cc.p(320, 469));
+        energyLabel.setPosition(this._playerDetailsFit.energyLabelPoint);
         this.addChild(energyLabel);
 
         var powerIcon = cc.Sprite.create(main_scene_image.icon150);
-        powerIcon.setPosition(170, 393);
+        powerIcon.setPosition(this._playerDetailsFit.powerIconPoint);
         this.addChild(powerIcon);
 
         var powerIconLabel = cc.LabelTTF.create("体    力:", "STHeitiTC-Medium", 25);
         powerIconLabel.setColor(cc.c3b(255, 239, 131));
         powerIconLabel.setAnchorPoint(cc.p(1, 0.5));
-        powerIconLabel.setPosition(cc.p(280, 393));
+        powerIconLabel.setPosition(this._playerDetailsFit.powerIconLabelPoint);
         this.addChild(powerIconLabel);
 
         this._powerLabel = cc.LabelTTF.create("", "STHeitiTC-Medium", 25);
-        this._powerLabel.setColor(cc.c3b(255, 239, 131));
         this._powerLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._powerLabel.setPosition(cc.p(320, 393));
+        this._powerLabel.setPosition(this._playerDetailsFit.powerLabelPoint);
         this.addChild(this._powerLabel);
 
         var tipLabel = cc.LabelTTF.create("体力每 10 分钟恢复 5 点", "STHeitiTC-Medium", 25);
-        tipLabel.setColor(cc.c3b(255, 239, 131));
         tipLabel.setAnchorPoint(cc.p(0, 0.5));
-        tipLabel.setPosition(cc.p(160, 347));
+        tipLabel.setPosition(this._playerDetailsFit.tipLabelPoint);
         this.addChild(tipLabel);
 
         var okItem = cc.MenuItemImage.createWithIcon(
@@ -214,7 +208,7 @@ var PlayerDetails = LazyLayer.extend({
             this._onClickClose,
             this
         );
-        okItem.setPosition(cc.p(360, 275));
+        okItem.setPosition(this._playerDetailsFit.okItemPoint);
 
         var closeItem = cc.MenuItemImage.create(
             main_scene_image.button37,
@@ -222,7 +216,7 @@ var PlayerDetails = LazyLayer.extend({
             this._onClickClose,
             this
         );
-        closeItem.setPosition(cc.p(640, 930));
+        closeItem.setPosition(this._playerDetailsFit.closeItemPoint);
 
         this._menu = cc.Menu.create(okItem, closeItem);
         this._menu.setPosition(cc.p(0, 0));

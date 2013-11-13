@@ -97,7 +97,7 @@ var LineUp = Entity.extend({
                 cc.log(i);
                 var that = this;
 
-                lzWindow.pomelo.request("area.trainHandler.changeLineUp", {
+                lz.server.request("area.trainHandler.changeLineUp", {
                     lineUp: lineUp
                 }, function (data) {
                     cc.log(data);

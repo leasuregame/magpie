@@ -12,7 +12,7 @@
  * */
 
 var gameData = {
-    user: null,
+    user: User.create(),
     player: null,
     cardList: null,
     lineUp: null,
@@ -37,7 +37,6 @@ var gameData = {
     gameInit: function () {
         cc.log("gameData init");
 
-        this.user = User.create();
         this.player = Player.create();
         this.cardList = CardList.create();
         this.lineUp = LineUp.create();
@@ -57,12 +56,10 @@ var gameData = {
         this.achievement = Achievement.create();
         this.speak = Speak.create();
         this.exchange = Exchange.create();
+        this.activity = Activity.create();
 
     },
 
     gameEnd: function () {
     }
 };
-
-
-gameData.gameInit();

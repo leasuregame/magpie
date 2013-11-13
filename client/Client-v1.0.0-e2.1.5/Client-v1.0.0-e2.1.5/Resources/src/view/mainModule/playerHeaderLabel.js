@@ -63,12 +63,12 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this.addChild(this._lvLabel);
 
         var goldIcon = cc.Sprite.create(main_scene_image.icon148);
-        goldIcon.setPosition(cc.p(520, 85));
+        goldIcon.setPosition(cc.p(510, 85));
         this.addChild(goldIcon);
 
         this._goldLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._goldLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._goldLabel.setPosition(cc.p(580, 83));
+        this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._goldLabel.setPosition(cc.p(535, 83));
         this.addChild(this._goldLabel);
 
         var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
@@ -76,8 +76,8 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this.addChild(moneyIcon);
 
         this._moneyLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._moneyLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._moneyLabel.setPosition(cc.p(580, 36));
+        this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._moneyLabel.setPosition(cc.p(535, 36));
         this.addChild(this._moneyLabel);
 
         var powerIcon = cc.Sprite.create(main_scene_image.icon150);

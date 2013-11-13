@@ -69,6 +69,7 @@ var ExploreLayer = cc.Layer.extend({
             this._mapLabel[i] = cc.Sprite.create(main_scene_image.bg4);
             this._mapLabel[i].setAnchorPoint(cc.p(0, 0));
             this._mapLabel[i].setPosition(cc.p(this._exploreLayerFit.mapLabelBasePoint.x + i * this._exploreLayerFit.mapLabelOffsetX, this._exploreLayerFit.mapLabelBasePoint.y));
+            this._mapLabel[i].setScaleY(this._exploreLayerFit.mapLabelScaleY);
             this.addChild(this._mapLabel[i]);
         }
 
@@ -86,7 +87,8 @@ var ExploreLayer = cc.Layer.extend({
         var descriptionBgIcon = cc.Sprite.create(main_scene_image.icon287);
         descriptionBgIcon.setAnchorPoint(cc.p(0,0));
         descriptionBgIcon.setPosition(this._exploreLayerFit.descriptionBgIconPoint);
-        this.addChild(descriptionBgIcon)
+        descriptionBgIcon.setScaleY(1.1);
+        this.addChild(descriptionBgIcon);
 
         var descriptionIcon = cc.Sprite.create(main_scene_image.icon216);
         descriptionIcon.setPosition(this._exploreLayerFit.descriptionIconPoint);
@@ -216,7 +218,7 @@ var ExploreLayer = cc.Layer.extend({
             progressLabel.setPosition(cc.p(465 + x, 278));
             scrollViewLayer.addChild(progressLabel);
 
-            var description = lz.format(chapterTable[id].description, 20);
+            var description = lz.format(chapterTable[id].description, 22);
             var len = description.length;
             for (var j = 0; j < len; ++j) {
                 var storyLabel = cc.LabelTTF.create(description[j], "STHeitiTC-Medium", 20);

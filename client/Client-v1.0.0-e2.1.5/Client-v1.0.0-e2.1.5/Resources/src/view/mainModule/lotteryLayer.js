@@ -137,12 +137,13 @@ var LotteryLayer = cc.Layer.extend({
 
         var tipBgSprite = cc.Sprite.create(main_scene_image.icon245);
         tipBgSprite.setPosition(this._lotteryLayerFit.tipBgSpritePoint);
+        tipBgSprite.setScaleY(1.1);
         this.addChild(tipBgSprite);
 
         var tipLabel = cc.LabelTTF.create(
             "祝福好友，每日登录可获得活力值",
             "STHeitiTC-Medium",
-            18
+            20
         );
         tipLabel.setPosition(this._lotteryLayerFit.tipLabelPoint);
         this.addChild(tipLabel);

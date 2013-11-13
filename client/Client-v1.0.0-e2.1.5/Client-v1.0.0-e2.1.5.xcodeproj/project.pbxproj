@@ -1124,6 +1124,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E7F844B1833219000C904E8 /* DataAnalysis */ = {
+			isa = PBXGroup;
+			children = (
+				8E4C758F183245330036A3D5 /* js_cocos2dx_autogen_extension.cpp */,
+				8E4C7590183245330036A3D5 /* js_cocos2dx_autogen_extension.hpp */,
+				8E4C758C183245240036A3D5 /* MobClickCPP.mm */,
+				8E4C758D183245240036A3D5 /* MobClickCPP.h */,
+				8E4C758118322D600036A3D5 /* libMobClickLibrary.a */,
+				8E4C758218322D600036A3D5 /* MobClick.h */,
+			);
+			name = DataAnalysis;
+			sourceTree = "<group>";
+		};
 		90D49C1D17CAF81800A22DB2 = {
 			isa = PBXGroup;
 			children = (
@@ -1159,6 +1172,7 @@
 		90D49C3917CAF81800A22DB2 /* Client-v1.0.0-e2.1.5 */ = {
 			isa = PBXGroup;
 			children = (
+				8E7F844B1833219000C904E8 /* DataAnalysis */,
 				90D49C3A17CAF81800A22DB2 /* Resources */,
 				90D49C5217CAF81800A22DB2 /* ios */,
 				90D49C5B17CAF81800A22DB2 /* libs */,
@@ -2555,12 +2569,6 @@
 		90D4A08717CAF82600A22DB2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8E4C758F183245330036A3D5 /* js_cocos2dx_autogen_extension.cpp */,
-				8E4C7590183245330036A3D5 /* js_cocos2dx_autogen_extension.hpp */,
-				8E4C758C183245240036A3D5 /* MobClickCPP.mm */,
-				8E4C758D183245240036A3D5 /* MobClickCPP.h */,
-				8E4C758118322D600036A3D5 /* libMobClickLibrary.a */,
-				8E4C758218322D600036A3D5 /* MobClick.h */,
 				90D4A08817CAF82600A22DB2 /* AppDelegate.h */,
 				90D4A08917CAF82600A22DB2 /* AppDelegate.cpp */,
 			);

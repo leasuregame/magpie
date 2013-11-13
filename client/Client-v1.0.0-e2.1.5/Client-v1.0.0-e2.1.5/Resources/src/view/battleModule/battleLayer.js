@@ -80,8 +80,14 @@ var BatterLayer = cc.Layer.extend({
                 this.addChild(this._tipNode[key], 3);
             }
         }
-
-        this._backItem = cc.MenuItemFont.create("结束战斗", this.end, this);
+        var that = this;
+        this._backItem = cc.MenuItemFont.create("结束战斗", function () {
+            if (gameData.player.get("lv") < 10) {
+                TipLayer.tip("10级开始后，可以跳过战斗");
+            } else {
+                that.end();
+            }
+        }, this);
         this._backItem.setPosition(this._batterLayerFit.backItemPoint);
         var menu = cc.Menu.create(this._backItem);
         this.addChild(menu);

@@ -297,7 +297,7 @@ var ExploreLayer = cc.Layer.extend({
         for (var i = 0; i < 3; ++i) {
             var point = this._mapLabel[i].getPosition();
 
-            if (point.x < -600) {
+            if (point.x < this._exploreLayerFit.pointX) {
                 point.x += 1920;
                 this._mapLabel[i].setPosition(point);
             }
@@ -587,7 +587,7 @@ var ExploreLayer = cc.Layer.extend({
             )
         );
 
-        this._closeBoxSprite.setPosition(cc.p(360, 1025));
+        this._closeBoxSprite.setPosition(this._exploreLayerFit.closeBoxSpritePoint2);
         this._closeBoxSprite.setScale(0.9);
         this._closeBoxSprite.setVisible(true);
 

@@ -20,9 +20,15 @@ var LineUpDetailsLayer = cc.Layer.extend({
     _turnLeftSprite: null,
     _turnRightSprite: null,
 
-    init: function (cardList) {
-        cc.log("LineUpDetailsLayer init");
+    onEnter: function () {
+        cc.log("LineUpDetailsLayer onEnter");
 
+        this._super();
+        this.update();
+    },
+
+    init: function (cardList, index) {
+        cc.log("LineUpDetailsLayer init");
         if (!this._super()) return false;
 
         this._lineUpDetailsLayerFit = gameFit.mainScene.lineUpDetailsLayer;
@@ -31,7 +37,7 @@ var LineUpDetailsLayer = cc.Layer.extend({
 
         cardList = cardList || [];
 
-        this._index = 1;
+        this._index = index;
         var len = cardList.length;
         this._maxIndex = len;
         var scrollViewLayer = cc.Layer.create();
@@ -77,23 +83,22 @@ var LineUpDetailsLayer = cc.Layer.extend({
         this._menu.setPosition(cc.p(0, 0));
         this.addChild(this._menu);
 
+        this._scrollView.setContentOffset(this._getScrollViewOffset());
+
         return true;
     },
 
     update: function () {
         cc.log("LineUpDetailsLayer update");
 
-        cc.log(this._index);
-
         this._scrollView.setContentOffset(this._getScrollViewOffset(), true);
-
         this._turnLeftSprite.setVisible(this._index > 1);
         this._turnRightSprite.setVisible(this._index < this._maxIndex);
     },
 
     _getScrollViewOffset: function () {
         cc.log("LineUpDetailsLayer _getScrollViewOffset");
-
+        cc.log(this._index);
         this._index = Math.max(this._index, 1);
         this._index = Math.min(this._index, this._maxIndex);
 
@@ -134,18 +139,18 @@ var LineUpDetailsLayer = cc.Layer.extend({
 });
 
 
-LineUpDetailsLayer.create = function (cardList) {
+LineUpDetailsLayer.create = function (cardList, index) {
     var ret = new LineUpDetailsLayer();
 
-    if (ret && ret.init(cardList)) {
+    if (ret && ret.init(cardList, index)) {
         return ret;
     }
 
     return null;
 };
 
-LineUpDetailsLayer.pop = function (cardList) {
-    var lineUpDetailsLayer = LineUpDetailsLayer.create(cardList);
+LineUpDetailsLayer.pop = function (cardList, index) {
+    var lineUpDetailsLayer = LineUpDetailsLayer.create(cardList, index);
 
     MainScene.getInstance().addChild(lineUpDetailsLayer, 10);
 };

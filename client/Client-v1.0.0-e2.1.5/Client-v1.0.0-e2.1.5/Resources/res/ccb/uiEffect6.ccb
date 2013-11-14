@@ -220,7 +220,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>211.2032470703125</real>
+									<real>219</real>
 									<real>107</real>
 									<integer>0</integer>
 								</array>
@@ -364,7 +364,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>125.7967529296875</real>
+									<real>118</real>
 									<real>107</real>
 									<integer>0</integer>
 								</array>
@@ -566,9 +566,9 @@
 				<key>displayName</key>
 				<string>CCNode</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>highDoor</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1128,9 +1128,9 @@
 				<key>displayName</key>
 				<string>CCNode</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>lowDoor</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1183,6 +1183,8 @@
 						<false/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -1328,7 +1330,7 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.43537411093711853</real>
+									<real>3</real>
 									<real>1</real>
 									<false/>
 									<integer>0</integer>
@@ -1877,7 +1879,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.76666665077209473</real>
+			<real>1.6333333253860474</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

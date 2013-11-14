@@ -149,6 +149,14 @@
 									<string>effect/uiEffect/up69.png</string>
 								</array>
 							</dict>
+							<dict>
+								<key>name</key>
+								<string>opacity</string>
+								<key>type</key>
+								<string>Byte</string>
+								<key>value</key>
+								<integer>150</integer>
+							</dict>
 						</array>
 					</dict>
 					<dict>
@@ -220,6 +228,14 @@
 									<string></string>
 									<string>effect/uiEffect/up69.png</string>
 								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>opacity</string>
+								<key>type</key>
+								<string>Byte</string>
+								<key>value</key>
+								<integer>150</integer>
 							</dict>
 						</array>
 					</dict>
@@ -432,6 +448,14 @@
 									<string>effect/uiEffect/up71.png</string>
 								</array>
 							</dict>
+							<dict>
+								<key>name</key>
+								<string>opacity</string>
+								<key>type</key>
+								<string>Byte</string>
+								<key>value</key>
+								<integer>100</integer>
+							</dict>
 						</array>
 					</dict>
 					<dict>
@@ -504,6 +528,14 @@
 									<string>effect/uiEffect/up71.png</string>
 								</array>
 							</dict>
+							<dict>
+								<key>name</key>
+								<string>opacity</string>
+								<key>type</key>
+								<string>Byte</string>
+								<key>value</key>
+								<integer>100</integer>
+							</dict>
 						</array>
 					</dict>
 					<dict>
@@ -575,6 +607,14 @@
 									<string></string>
 									<string>effect/uiEffect/up71.png</string>
 								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>opacity</string>
+								<key>type</key>
+								<string>Byte</string>
+								<key>value</key>
+								<integer>100</integer>
 							</dict>
 						</array>
 					</dict>
@@ -774,6 +814,14 @@
 									<string>effect/uiEffect/up70.png</string>
 								</array>
 							</dict>
+							<dict>
+								<key>name</key>
+								<string>opacity</string>
+								<key>type</key>
+								<string>Byte</string>
+								<key>value</key>
+								<integer>200</integer>
+							</dict>
 						</array>
 					</dict>
 					<dict>
@@ -851,6 +899,14 @@
 									<string>effect/uiEffect/up70.png</string>
 								</array>
 							</dict>
+							<dict>
+								<key>name</key>
+								<string>opacity</string>
+								<key>type</key>
+								<string>Byte</string>
+								<key>value</key>
+								<integer>200</integer>
+							</dict>
 						</array>
 					</dict>
 					<dict>
@@ -927,6 +983,14 @@
 									<string></string>
 									<string>effect/uiEffect/up70.png</string>
 								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>opacity</string>
+								<key>type</key>
+								<string>Byte</string>
+								<key>value</key>
+								<integer>200</integer>
 							</dict>
 						</array>
 					</dict>

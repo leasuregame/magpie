@@ -4,7 +4,7 @@ app = require('pomelo').app
 dao = app.get('dao')
 
 module.exports = 
-  auth: (account, password, areaId, cb) ->
+  auth: (account, password, areaId, frontendId, cb) ->
     dao.user.fetchOne {
       where: account: account
       sync: true
@@ -14,6 +14,10 @@ module.exports =
 
       if password isnt user.password
         return cb({code: 501, msg: '密码不正确'})
+
+      bss = app.get('backendSessionService')
+      bss.kickByUid frontendId, user.id + '*' + areaId, (err, res) -> 
+        console.log 'backendSessionService kick by uid: ', err, res
 
       user.lastLoginArea = areaId
       user.lastLoginTime = Date.now()

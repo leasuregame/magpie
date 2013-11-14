@@ -440,11 +440,6 @@ var Player = (function(_super) {
 
             incs.spirit_hp += _hp;
             incs.spirit_atk += _atk;
-
-            // 最小值为1
-            incs.spirit_hp = _.max([incs.spirit_hp, 1]);
-            incs.spirit_atk = _.max([incs.spirit_atk, 1]);
-
             _.extend(card.incs, incs);
             card.recountHpAndAtk();
         }
@@ -473,10 +468,9 @@ var Player = (function(_super) {
         var total_spirit = spiritor.spirit;
         var spiritorData = table.getTableItem('spirit', spiritor.lv);
 
-        while ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < MAX_SPIRITOR_LV) {
+        if ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < MAX_SPIRITOR_LV) {
             spiritor.lv += 1;
             total_spirit -= spiritorData.spirit_need;
-            spiritorData = table.getTableItem('spirit', spiritor.lv);
         }
         spiritor.spirit = total_spirit;
         this.set('spiritor', spiritor);

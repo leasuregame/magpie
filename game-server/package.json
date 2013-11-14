@@ -17,7 +17,8 @@
         "pomelo-pathfinding": ">=0.1.0",
         "pomelo-collection": ">=0.1.0",
         "pomelo-logger": "0.0.3",
-        "pomelo-monitor": ">=0.3.3"
+        "pomelo-monitor": ">=0.3.3",
+        "pomelo-sync-plugin": "*"
     },
     "devDependencies": {
         "underscore": "1.4.4",

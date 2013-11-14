@@ -58,6 +58,10 @@ var Spirit = Entity.extend({
         this._rate = table.rate;
     },
 
+    getSpiritUrl: function () {
+        return main_scene_image["spirit" + this._lv];
+    },
+
     canUpgrade: function () {
         cc.log("Spirit canUpgrade");
 

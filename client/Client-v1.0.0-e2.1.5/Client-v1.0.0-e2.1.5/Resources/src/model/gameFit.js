@@ -1693,7 +1693,7 @@ var fit4Iphone5 = {
         },
         "spiritDetails": {
             "bgLayerPoint": cc.p(0, 0),
-            "spiritNodeBgSpritePoint": cc.p(320, 730),
+            "spiritNodeBgSpritePoint": cc.p(320, 600),
             "cloudSpritePoint": cc.p(520, 580),
             "cloudSpritePoint2": cc.p(120, 580),
             "cloudSprite1Point": cc.p(560, 330),

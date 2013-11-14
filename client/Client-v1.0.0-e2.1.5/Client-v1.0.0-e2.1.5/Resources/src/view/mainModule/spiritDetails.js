@@ -15,8 +15,7 @@
 var SpiritDetails = LazyLayer.extend({
     _spiritDetailsFit: null,
 
-    _menu: null,
-    _spiritNode: null,
+    spiritNode: null,
     _lvLabel: null,
     _expLabel: null,
     _passiveHarmLabel: null,
@@ -43,22 +42,9 @@ var SpiritDetails = LazyLayer.extend({
         bgLayer.setPosition(this._spiritDetailsFit.bgLayerPoint);
         this.addChild(bgLayer);
 
-        var spiritNodeBgSprite = cc.Sprite.create(main_scene_image.icon234);
-        spiritNodeBgSprite.setPosition(this._spiritDetailsFit.spiritNodeBgSpritePoint);
-        this.addChild(spiritNodeBgSprite);
-
-        var cloudSprite = cc.Sprite.create(main_scene_image.icon237);
-        cloudSprite.setPosition(this._spiritDetailsFit.cloudSpritePoint);
-        this.addChild(cloudSprite);
-
-        cloudSprite.runAction(
-            cc.RepeatForever.create(
-                cc.Sequence.create(
-                    cc.MoveTo.create(lz.random(6, 12), this._spiritDetailsFit.cloudSpritePoint2),
-                    cc.MoveTo.create(lz.random(6, 12), this._spiritDetailsFit.cloudSpritePoint)
-                )
-            )
-        );
+        this._ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect4, this);
+        this._ccbNode.setPosition(this._spiritDetailsFit.spiritNodeBgSpritePoint);
+        this.addChild(this._ccbNode);
 
         var cloudSprite1 = cc.Sprite.create(main_scene_image.icon238);
         cloudSprite1.setPosition(this._spiritDetailsFit.cloudSprite1Point);
@@ -75,32 +61,6 @@ var SpiritDetails = LazyLayer.extend({
         var lineSprite2 = cc.Sprite.create(main_scene_image.icon240);
         lineSprite2.setPosition(this._spiritDetailsFit.lineSprite2Point);
         this.addChild(lineSprite2);
-
-        var stoneSprite1 = cc.Sprite.create(main_scene_image.icon235);
-        stoneSprite1.setPosition(this._spiritDetailsFit.stoneSprite1Point);
-        this.addChild(stoneSprite1);
-
-        stoneSprite1.runAction(
-            cc.RepeatForever.create(
-                cc.Sequence.create(
-                    cc.MoveTo.create(lz.random(5, 10), this._spiritDetailsFit.stoneSprite1Point2),
-                    cc.MoveTo.create(lz.random(8, 16), this._spiritDetailsFit.stoneSprite1Point)
-                )
-            )
-        );
-
-        var stoneSprite2 = cc.Sprite.create(main_scene_image.icon236);
-        stoneSprite2.setPosition(this._spiritDetailsFit.stoneSprite2Point);
-        this.addChild(stoneSprite2);
-
-        stoneSprite2.runAction(
-            cc.RepeatForever.create(
-                cc.Sequence.create(
-                    cc.MoveTo.create(lz.random(4, 8), this._spiritDetailsFit.stoneSprite2Point2),
-                    cc.MoveTo.create(lz.random(3, 6), this._spiritDetailsFit.stoneSprite2Point)
-                )
-            )
-        );
 
         var passiveIcon = cc.LabelTTF.create("元神守护", "STHeitiTC-Medium", 30);
         passiveIcon.setColor(cc.c3b(255, 248, 69));
@@ -173,10 +133,10 @@ var SpiritDetails = LazyLayer.extend({
         );
         closeItem.setPosition(this._spiritDetailsFit.closeItemPoint);
 
-        this._menu = cc.Menu.create(this._upgradeItem, closeItem);
-        this._menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
-        this._menu.setPosition(cc.p(0, 0));
-        this.addChild(this._menu);
+        var menu = cc.Menu.create(this._upgradeItem, closeItem);
+        menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu);
 
         return true;
     },
@@ -186,15 +146,7 @@ var SpiritDetails = LazyLayer.extend({
 
         var spirit = gameData.spirit;
 
-        if (this._spiritNode != null) {
-            this._spiritNode.removeFromParent();
-            this._spiritNode = null;
-        }
-
-        this._spiritNode = SpiritNode.create();
-        this._spiritNode.setScale(1.2);
-        this._spiritNode.setPosition(this._spiritDetailsFit.spiritNodePoint);
-        this.addChild(this._spiritNode, 2);
+        this.spiritNode.setTexture(lz.getTexture(spirit.getSpiritUrl()));
 
         this._upgradeItem.setVisible(spirit.canUpgrade());
 
@@ -204,54 +156,14 @@ var SpiritDetails = LazyLayer.extend({
 //        this._skillHarmLabel.setString(spirit.get("skillHarm") + "%");
     },
 
-    _play: function () {
-        var lazyLayer = LazyLayer.create();
-        lazyLayer.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
-        this.addChild(lazyLayer, 3);
+    closeCloud: function () {
+        cc.log("SpiritDetails closeCloud");
 
-        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 255), 640, 1136);
-        bgLayer.setPosition(this._spiritDetailsFit.bgLayerPoint);
-        lazyLayer.addChild(bgLayer);
+        LazyLayer.closeCloudAll();
 
-        var that = this;
-        var cb = function () {
-            that.update();
-
-            lazyLayer.setZOrder(1);
-
-            that.scheduleOnce(function () {
-                bgLayer.runAction(
-                    cc.Sequence.create(
-                        cc.FadeOut.create(1),
-                        cc.CallFunc.create(function () {
-                            lazyLayer.removeFromParent();
-
-                            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                                NoviceTeachingLayer.getInstance().next();
-                            }
-                        }, this)
-                    )
-                );
-            }, 2);
-        };
-
-        bgLayer.runAction(
-            cc.Sequence.create(
-                cc.FadeIn.create(1),
-                cc.CallFunc.create(function () {
-                    playEffect({
-                        effectId: 10,
-                        target: that,
-                        loops: 1,
-                        delay: 0.1,
-                        zOrder: 10,
-                        position: this._spiritDetailsFit.effectPoint,
-                        clear: true,
-                        cb: cb
-                    });
-                }, this)
-            )
-        );
+        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+            NoviceTeachingLayer.getInstance().next();
+        }
     },
 
     _onClickUpgrade: function () {
@@ -268,19 +180,17 @@ var SpiritDetails = LazyLayer.extend({
             cc.log(success);
 
             if (success) {
-                that._play();
+                that._ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
             } else {
                 that.update();
                 TipLayer.tip("升级出错");
+                LazyLayer.closeCloudAll();
             }
-            LazyLayer.closeCloudAll();
         });
     },
 
     _onClickClose: function () {
         cc.log("SpiritDetails _onClickClose");
-
-        this._menu.setEnabled(false);
 
         this.removeFromParent();
 

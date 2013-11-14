@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>18</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -26,108 +26,7 @@
 				<key>animatedProperties</key>
 				<dict>
 					<key>0</key>
-					<dict>
-						<key>scale</key>
-						<dict>
-							<key>keyframes</key>
-							<array>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>scale</string>
-									<key>time</key>
-									<real>0.0</real>
-									<key>type</key>
-									<integer>4</integer>
-									<key>value</key>
-									<array>
-										<real>1</real>
-										<real>1</real>
-									</array>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>scale</string>
-									<key>time</key>
-									<real>0.10000000149011612</real>
-									<key>type</key>
-									<integer>4</integer>
-									<key>value</key>
-									<array>
-										<real>1.2999999523162842</real>
-										<real>1.2999999523162842</real>
-									</array>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>scale</string>
-									<key>time</key>
-									<real>0.26666668057441711</real>
-									<key>type</key>
-									<integer>4</integer>
-									<key>value</key>
-									<array>
-										<real>1.6000000238418579</real>
-										<real>1.6000000238418579</real>
-									</array>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>scale</string>
-									<key>time</key>
-									<real>0.36666667461395264</real>
-									<key>type</key>
-									<integer>4</integer>
-									<key>value</key>
-									<array>
-										<real>0.80000001192092896</real>
-										<real>0.80000001192092896</real>
-									</array>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>scale</string>
-									<key>time</key>
-									<real>0.53333336114883423</real>
-									<key>type</key>
-									<integer>4</integer>
-									<key>value</key>
-									<array>
-										<real>1</real>
-										<real>1</real>
-									</array>
-								</dict>
-							</array>
-							<key>name</key>
-							<string>scale</string>
-							<key>type</key>
-							<integer>4</integer>
-						</dict>
-					</dict>
+					<dict/>
 					<key>1</key>
 					<dict>
 						<key>scale</key>
@@ -2316,7 +2215,7 @@
 						<dict>
 							<key>0</key>
 							<dict>
-								<key>scale</key>
+								<key>opacity</key>
 								<dict>
 									<key>keyframes</key>
 									<array>
@@ -2327,16 +2226,13 @@
 												<integer>1</integer>
 											</dict>
 											<key>name</key>
-											<string>scale</string>
+											<string>opacity</string>
 											<key>time</key>
 											<real>0.0</real>
 											<key>type</key>
-											<integer>4</integer>
+											<integer>5</integer>
 											<key>value</key>
-											<array>
-												<real>1</real>
-												<real>1</real>
-											</array>
+											<integer>255</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -2345,76 +2241,19 @@
 												<integer>1</integer>
 											</dict>
 											<key>name</key>
-											<string>scale</string>
+											<string>opacity</string>
 											<key>time</key>
-											<real>0.10000000149011612</real>
+											<real>0.13333334028720856</real>
 											<key>type</key>
-											<integer>4</integer>
+											<integer>5</integer>
 											<key>value</key>
-											<array>
-												<real>0.80000001192092896</real>
-												<real>0.80000001192092896</real>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>1</integer>
-											</dict>
-											<key>name</key>
-											<string>scale</string>
-											<key>time</key>
-											<real>0.26666668057441711</real>
-											<key>type</key>
-											<integer>4</integer>
-											<key>value</key>
-											<array>
-												<real>0.80000001192092896</real>
-												<real>0.80000001192092896</real>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>1</integer>
-											</dict>
-											<key>name</key>
-											<string>scale</string>
-											<key>time</key>
-											<real>0.36666667461395264</real>
-											<key>type</key>
-											<integer>4</integer>
-											<key>value</key>
-											<array>
-												<real>1</real>
-												<real>1</real>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>1</integer>
-											</dict>
-											<key>name</key>
-											<string>scale</string>
-											<key>time</key>
-											<real>0.53333336114883423</real>
-											<key>type</key>
-											<integer>4</integer>
-											<key>value</key>
-											<array>
-												<real>1</real>
-												<real>1</real>
-											</array>
+											<integer>0</integer>
 										</dict>
 									</array>
 									<key>name</key>
-									<string>scale</string>
+									<string>opacity</string>
 									<key>type</key>
-									<integer>4</integer>
+									<integer>5</integer>
 								</dict>
 							</dict>
 							<key>1</key>
@@ -2684,7 +2523,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.0</real>
+											<real>0.30000001192092896</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -2699,7 +2538,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.13333334028720856</real>
+											<real>0.66666668653488159</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -3318,7 +3157,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -3329,7 +3168,7 @@
 						<dict>
 							<key>0</key>
 							<dict>
-								<key>scale</key>
+								<key>opacity</key>
 								<dict>
 									<key>keyframes</key>
 									<array>
@@ -3340,16 +3179,13 @@
 												<integer>1</integer>
 											</dict>
 											<key>name</key>
-											<string>scale</string>
+											<string>opacity</string>
 											<key>time</key>
 											<real>0.0</real>
 											<key>type</key>
-											<integer>4</integer>
+											<integer>5</integer>
 											<key>value</key>
-											<array>
-												<real>1</real>
-												<real>1</real>
-											</array>
+											<integer>255</integer>
 										</dict>
 										<dict>
 											<key>easing</key>
@@ -3358,94 +3194,19 @@
 												<integer>1</integer>
 											</dict>
 											<key>name</key>
-											<string>scale</string>
+											<string>opacity</string>
 											<key>time</key>
-											<real>0.10000000149011612</real>
+											<real>0.13333334028720856</real>
 											<key>type</key>
-											<integer>4</integer>
+											<integer>5</integer>
 											<key>value</key>
-											<array>
-												<real>0.89999997615814209</real>
-												<real>0.89999997615814209</real>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>1</integer>
-											</dict>
-											<key>name</key>
-											<string>scale</string>
-											<key>time</key>
-											<real>0.26666668057441711</real>
-											<key>type</key>
-											<integer>4</integer>
-											<key>value</key>
-											<array>
-												<real>1.1499999761581421</real>
-												<real>1.1499999761581421</real>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>1</integer>
-											</dict>
-											<key>name</key>
-											<string>scale</string>
-											<key>time</key>
-											<real>0.30000001192092896</real>
-											<key>type</key>
-											<integer>4</integer>
-											<key>value</key>
-											<array>
-												<real>1.3999999761581421</real>
-												<real>1.3999999761581421</real>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>1</integer>
-											</dict>
-											<key>name</key>
-											<string>scale</string>
-											<key>time</key>
-											<real>0.40000000596046448</real>
-											<key>type</key>
-											<integer>4</integer>
-											<key>value</key>
-											<array>
-												<real>1.2000000476837158</real>
-												<real>1.2000000476837158</real>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>1</integer>
-											</dict>
-											<key>name</key>
-											<string>scale</string>
-											<key>time</key>
-											<real>0.53333336114883423</real>
-											<key>type</key>
-											<integer>4</integer>
-											<key>value</key>
-											<array>
-												<real>1</real>
-												<real>1</real>
-											</array>
+											<integer>0</integer>
 										</dict>
 									</array>
 									<key>name</key>
-									<string>scale</string>
+									<string>opacity</string>
 									<key>type</key>
-									<integer>4</integer>
+									<integer>5</integer>
 								</dict>
 							</dict>
 							<key>1</key>
@@ -4184,7 +3945,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.13333334028720856</real>
+											<real>0.3333333432674408</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -4195,6 +3956,98 @@
 									<string>opacity</string>
 									<key>type</key>
 									<integer>5</integer>
+								</dict>
+								<key>position</key>
+								<dict>
+									<key>keyframes</key>
+									<array>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>position</string>
+											<key>time</key>
+											<real>0.0</real>
+											<key>type</key>
+											<integer>3</integer>
+											<key>value</key>
+											<array>
+												<real>0.0</real>
+												<real>0.0</real>
+											</array>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>position</string>
+											<key>time</key>
+											<real>0.3333333432674408</real>
+											<key>type</key>
+											<integer>3</integer>
+											<key>value</key>
+											<array>
+												<real>0.0</real>
+												<real>20</real>
+											</array>
+										</dict>
+									</array>
+									<key>name</key>
+									<string>position</string>
+									<key>type</key>
+									<integer>3</integer>
+								</dict>
+								<key>scale</key>
+								<dict>
+									<key>keyframes</key>
+									<array>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>scale</string>
+											<key>time</key>
+											<real>0.0</real>
+											<key>type</key>
+											<integer>4</integer>
+											<key>value</key>
+											<array>
+												<real>1</real>
+												<real>1</real>
+											</array>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>scale</string>
+											<key>time</key>
+											<real>0.3333333432674408</real>
+											<key>type</key>
+											<integer>4</integer>
+											<key>value</key>
+											<array>
+												<real>0.80000001192092896</real>
+												<real>1</real>
+											</array>
+										</dict>
+									</array>
+									<key>name</key>
+									<string>scale</string>
+									<key>type</key>
+									<integer>4</integer>
 								</dict>
 							</dict>
 							<key>2</key>
@@ -5390,7 +5243,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -5399,6 +5252,49 @@
 					<dict>
 						<key>animatedProperties</key>
 						<dict>
+							<key>0</key>
+							<dict>
+								<key>opacity</key>
+								<dict>
+									<key>keyframes</key>
+									<array>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>opacity</string>
+											<key>time</key>
+											<real>0.0</real>
+											<key>type</key>
+											<integer>5</integer>
+											<key>value</key>
+											<integer>255</integer>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>opacity</string>
+											<key>time</key>
+											<real>0.13333334028720856</real>
+											<key>type</key>
+											<integer>5</integer>
+											<key>value</key>
+											<integer>0</integer>
+										</dict>
+									</array>
+									<key>name</key>
+									<string>opacity</string>
+									<key>type</key>
+									<integer>5</integer>
+								</dict>
+							</dict>
 							<key>18</key>
 							<dict>
 								<key>opacity</key>
@@ -5457,7 +5353,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.0</real>
+											<real>0.30000001192092896</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -5472,7 +5368,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.13333334028720856</real>
+											<real>0.66666668653488159</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -5713,7 +5609,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -5792,8 +5688,6 @@
 				<key>animatedProperties</key>
 				<dict>
 					<key>0</key>
-					<dict/>
-					<key>19</key>
 					<dict>
 						<key>displayFrame</key>
 						<dict>
@@ -6024,13 +5918,13 @@
 				<array>
 					<dict>
 						<key>baseValue</key>
-						<false/>
+						<integer>1</integer>
 						<key>name</key>
 						<string>visible</string>
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -6055,8 +5949,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>1.5</real>
+							<real>1.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -6093,7 +5987,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -6116,12 +6010,10 @@
 		<string></string>
 		<key>displayName</key>
 		<string>CCNode</string>
-		<key>jsController</key>
-		<string>CocosBuilderClass</string>
 		<key>memberVarAssignmentName</key>
 		<string></string>
 		<key>memberVarAssignmentType</key>
-		<integer>2</integer>
+		<integer>0</integer>
 		<key>properties</key>
 		<array>
 			<dict>
@@ -6170,7 +6062,7 @@
 			<key>height</key>
 			<integer>0</integer>
 			<key>name</key>
-			<string>ceshi</string>
+			<string>uitexiao</string>
 			<key>scale</key>
 			<real>1</real>
 			<key>width</key>
@@ -6181,922 +6073,30 @@
 	<array>
 		<dict>
 			<key>autoPlay</key>
-			<false/>
+			<true/>
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array>
-					<dict>
-						<key>easing</key>
-						<dict>
-							<key>type</key>
-							<integer>0</integer>
-						</dict>
-						<key>time</key>
-						<real>0.36666667461395264</real>
-						<key>type</key>
-						<integer>10</integer>
-						<key>value</key>
-						<array>
-							<string>callback</string>
-							<integer>2</integer>
-						</array>
-					</dict>
-				</array>
+				<array/>
 				<key>type</key>
 				<integer>10</integer>
 			</dict>
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>0.53333336114883423</real>
+			<real>1</real>
 			<key>name</key>
-			<string>atk_1_1</string>
+			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.53333336114883423</real>
+			<real>1</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>409.71768188476562</real>
+			<real>330.125</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array>
-					<dict>
-						<key>easing</key>
-						<dict>
-							<key>type</key>
-							<integer>0</integer>
-						</dict>
-						<key>time</key>
-						<real>0.36666667461395264</real>
-						<key>type</key>
-						<integer>9</integer>
-						<key>value</key>
-						<array>
-							<string>sound/battle_sound_miss.wav</string>
-							<real>1</real>
-							<real>0.0</real>
-							<real>1</real>
-						</array>
-					</dict>
-				</array>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array>
-					<dict>
-						<key>easing</key>
-						<dict>
-							<key>type</key>
-							<integer>0</integer>
-						</dict>
-						<key>time</key>
-						<real>0.36666667461395264</real>
-						<key>type</key>
-						<integer>10</integer>
-						<key>value</key>
-						<array>
-							<string>callback</string>
-							<integer>2</integer>
-						</array>
-					</dict>
-				</array>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>0.53333336114883423</real>
-			<key>name</key>
-			<string>atk_1_2</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>0.53333336114883423</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>349.97052001953125</real>
-			<key>sequenceId</key>
-			<integer>1</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array>
-					<dict>
-						<key>easing</key>
-						<dict>
-							<key>type</key>
-							<integer>0</integer>
-						</dict>
-						<key>time</key>
-						<real>0.36666667461395264</real>
-						<key>type</key>
-						<integer>9</integer>
-						<key>value</key>
-						<array>
-							<string>sound/battle_sound_heal.wav</string>
-							<real>1</real>
-							<real>0.0</real>
-							<real>1</real>
-						</array>
-					</dict>
-				</array>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array>
-					<dict>
-						<key>easing</key>
-						<dict>
-							<key>type</key>
-							<integer>0</integer>
-						</dict>
-						<key>time</key>
-						<real>0.3333333432674408</real>
-						<key>type</key>
-						<integer>10</integer>
-						<key>value</key>
-						<array>
-							<string>callback</string>
-							<integer>2</integer>
-						</array>
-					</dict>
-				</array>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>1.3333333730697632</real>
-			<key>name</key>
-			<string>atk_2_1</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>1.3333333730697632</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>396.7191162109375</real>
-			<key>sequenceId</key>
-			<integer>2</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array>
-					<dict>
-						<key>easing</key>
-						<dict>
-							<key>type</key>
-							<integer>0</integer>
-						</dict>
-						<key>time</key>
-						<real>0.3333333432674408</real>
-						<key>type</key>
-						<integer>10</integer>
-						<key>value</key>
-						<array>
-							<string>callback</string>
-							<integer>2</integer>
-						</array>
-					</dict>
-				</array>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>1.3333333730697632</real>
-			<key>name</key>
-			<string>atk_2_2</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>1.3333333730697632</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>443.21487426757812</real>
-			<key>sequenceId</key>
-			<integer>3</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>0.3333333432674408</real>
-			<key>name</key>
-			<string>def_2_1</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>0.3333333432674408</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>512</real>
-			<key>sequenceId</key>
-			<integer>4</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>0.3333333432674408</real>
-			<key>name</key>
-			<string>def_2_2</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>0.3333333432674408</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>453.1165771484375</real>
-			<key>sequenceId</key>
-			<integer>5</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array>
-					<dict>
-						<key>easing</key>
-						<dict>
-							<key>type</key>
-							<integer>0</integer>
-						</dict>
-						<key>time</key>
-						<real>0.30000001192092896</real>
-						<key>type</key>
-						<integer>10</integer>
-						<key>value</key>
-						<array>
-							<string>callback</string>
-							<integer>2</integer>
-						</array>
-					</dict>
-				</array>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>1.3333333730697632</real>
-			<key>name</key>
-			<string>atk_3_1</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>1.3333333730697632</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>512</real>
-			<key>sequenceId</key>
-			<integer>6</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array>
-					<dict>
-						<key>easing</key>
-						<dict>
-							<key>type</key>
-							<integer>0</integer>
-						</dict>
-						<key>time</key>
-						<real>0.5</real>
-						<key>type</key>
-						<integer>10</integer>
-						<key>value</key>
-						<array>
-							<string>callback</string>
-							<integer>2</integer>
-						</array>
-					</dict>
-				</array>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>1.3333333730697632</real>
-			<key>name</key>
-			<string>atk_3_2</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>1.3333333730697632</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>512</real>
-			<key>sequenceId</key>
-			<integer>7</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array>
-					<dict>
-						<key>easing</key>
-						<dict>
-							<key>type</key>
-							<integer>0</integer>
-						</dict>
-						<key>time</key>
-						<real>0.56666666269302368</real>
-						<key>type</key>
-						<integer>10</integer>
-						<key>value</key>
-						<array>
-							<string>callback</string>
-							<integer>2</integer>
-						</array>
-					</dict>
-				</array>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>0.73333334922790527</real>
-			<key>name</key>
-			<string>atk_4_1</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>0.73333334922790527</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>451.76824951171875</real>
-			<key>sequenceId</key>
-			<integer>8</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array>
-					<dict>
-						<key>easing</key>
-						<dict>
-							<key>type</key>
-							<integer>0</integer>
-						</dict>
-						<key>time</key>
-						<real>0.56666666269302368</real>
-						<key>type</key>
-						<integer>10</integer>
-						<key>value</key>
-						<array>
-							<string>callback</string>
-							<integer>2</integer>
-						</array>
-					</dict>
-				</array>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>0.73333334922790527</real>
-			<key>name</key>
-			<string>atk_4_2</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>0.73333334922790527</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>463.08145141601562</real>
-			<key>sequenceId</key>
-			<integer>9</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>0.26666668057441711</real>
-			<key>name</key>
-			<string>def_1_1</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>0.26666668057441711</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>456.55056762695312</real>
-			<key>sequenceId</key>
-			<integer>10</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>0.26666668057441711</real>
-			<key>name</key>
-			<string>def_1_2</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>0.26666668057441711</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>512</real>
-			<key>sequenceId</key>
-			<integer>11</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>0.26666668057441711</real>
-			<key>name</key>
-			<string>def_3_1</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>0.26666668057441711</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>480.50421142578125</real>
-			<key>sequenceId</key>
-			<integer>12</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>0.26666668057441711</real>
-			<key>name</key>
-			<string>def_3_2</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>0.26666668057441711</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>507.32302856445312</real>
-			<key>sequenceId</key>
-			<integer>13</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>0.66666668653488159</real>
-			<key>name</key>
-			<string>def_4_1</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>0.66666668653488159</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>512</real>
-			<key>sequenceId</key>
-			<integer>14</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>0.66666668653488159</real>
-			<key>name</key>
-			<string>def_4_2</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>0.66666668653488159</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>512</real>
-			<key>sequenceId</key>
-			<integer>15</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>0.66666668653488159</real>
-			<key>name</key>
-			<string>mis_1_1</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>0.66666668653488159</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>490.55337524414062</real>
-			<key>sequenceId</key>
-			<integer>16</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array>
-					<dict>
-						<key>easing</key>
-						<dict>
-							<key>type</key>
-							<integer>0</integer>
-						</dict>
-						<key>time</key>
-						<real>0.033333335071802139</real>
-						<key>type</key>
-						<integer>9</integer>
-						<key>value</key>
-						<array>
-							<string>sound/battle_sound_miss.mp3</string>
-							<real>1</real>
-							<real>0.0</real>
-							<real>1</real>
-						</array>
-					</dict>
-				</array>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>0.66666668653488159</real>
-			<key>name</key>
-			<string>mis_1_2</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>0.66666668653488159</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>503.29916381835938</real>
-			<key>sequenceId</key>
-			<integer>17</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array>
-					<dict>
-						<key>easing</key>
-						<dict>
-							<key>type</key>
-							<integer>0</integer>
-						</dict>
-						<key>time</key>
-						<real>0.033333335071802139</real>
-						<key>type</key>
-						<integer>9</integer>
-						<key>value</key>
-						<array>
-							<string>sound/battle_sound_miss.mp3</string>
-							<real>1</real>
-							<real>0.0</real>
-							<real>1</real>
-						</array>
-					</dict>
-				</array>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>1.1666666269302368</real>
-			<key>name</key>
-			<string>beg_1</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>1.1666666269302368</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>480.16714477539062</real>
-			<key>sequenceId</key>
-			<integer>18</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>1</real>
-			<key>name</key>
-			<string>die_1</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>1</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>304.1278076171875</real>
-			<key>sequenceId</key>
-			<integer>19</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>autoPlay</key>
-			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
-			<key>chainedSequenceId</key>
-			<integer>-1</integer>
-			<key>length</key>
-			<real>0.5</real>
-			<key>name</key>
-			<string>rea_1</string>
-			<key>offset</key>
-			<real>0.0</real>
-			<key>position</key>
-			<real>0.5</real>
-			<key>resolution</key>
-			<real>30</real>
-			<key>scale</key>
-			<real>512</real>
-			<key>sequenceId</key>
-			<integer>20</integer>
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>

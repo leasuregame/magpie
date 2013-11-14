@@ -270,8 +270,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>seqExpanded</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -334,8 +332,6 @@
 						<false/>
 					</dict>
 				</array>
-				<key>seqExpanded</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -444,7 +440,7 @@
 											<key>value</key>
 											<array>
 												<real>1.2999999523162842</real>
-												<real>1.5</real>
+												<real>2</real>
 											</array>
 										</dict>
 										<dict>
@@ -462,7 +458,7 @@
 											<key>value</key>
 											<array>
 												<real>1.2000000476837158</real>
-												<real>1</real>
+												<real>1.5</real>
 											</array>
 										</dict>
 									</array>
@@ -523,7 +519,7 @@
 								<key>value</key>
 								<array>
 									<real>1.2000000476837158</real>
-									<real>1</real>
+									<real>1.5</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -592,8 +588,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>seqExpanded</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>animatedProperties</key>
@@ -692,7 +686,7 @@
 											<key>value</key>
 											<array>
 												<real>1.2999999523162842</real>
-												<real>1.5</real>
+												<real>2</real>
 											</array>
 										</dict>
 										<dict>
@@ -710,7 +704,7 @@
 											<key>value</key>
 											<array>
 												<real>1.2000000476837158</real>
-												<real>1</real>
+												<real>1.5</real>
 											</array>
 										</dict>
 									</array>
@@ -771,7 +765,7 @@
 								<key>value</key>
 								<array>
 									<real>1.2000000476837158</real>
-									<real>1</real>
+									<real>1.5</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -840,8 +834,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>seqExpanded</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -899,8 +891,6 @@
 						<false/>
 					</dict>
 				</array>
-				<key>seqExpanded</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -1039,8 +1029,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>seqExpanded</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>animatedProperties</key>
@@ -1055,7 +1043,7 @@
 											<key>easing</key>
 											<dict>
 												<key>type</key>
-												<integer>8</integer>
+												<integer>1</integer>
 											</dict>
 											<key>name</key>
 											<string>opacity</string>
@@ -1070,12 +1058,27 @@
 											<key>easing</key>
 											<dict>
 												<key>type</key>
-												<integer>9</integer>
+												<integer>1</integer>
 											</dict>
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>0.1666666716337204</real>
+											<real>0.10000000149011612</real>
+											<key>type</key>
+											<integer>5</integer>
+											<key>value</key>
+											<integer>255</integer>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>opacity</string>
+											<key>time</key>
+											<real>0.23333333432674408</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -1245,8 +1248,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>seqExpanded</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>

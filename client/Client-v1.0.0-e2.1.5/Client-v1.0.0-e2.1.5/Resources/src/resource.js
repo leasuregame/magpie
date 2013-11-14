@@ -385,7 +385,7 @@ var main_scene_image = {
     icon112: main_scene_path + "icon112.png",
     icon113: main_scene_path + "icon113.png",
     icon114: main_scene_path + "icon114.png",
-//    icon115: main_scene_path + "icon115.png",
+    icon115: main_scene_path + "icon115.png",
     icon116: main_scene_path + "icon116.png",
     icon117: main_scene_path + "icon117.png",
     icon118: main_scene_path + "icon118.png",
@@ -558,6 +558,7 @@ var main_scene_image = {
     icon285: main_scene_path + "icon285.png",
     icon286: main_scene_path + "icon286.png",
     icon287: main_scene_path + "icon287.png",
+    icon288: main_scene_path + "icon288.png",
 
     // 特效
     battleNode: "res/ccb/battleNode.ccbi",

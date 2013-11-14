@@ -158,17 +158,17 @@ var MainLayer = cc.Layer.extend({
         );
         friendLayerItem.setPosition(this._mainLayerFit.friendLayerItemPoint);
 
-        var otherItem = cc.MenuItemImage.create(
-            main_scene_image.button57,
-            main_scene_image.button57s,
-            this._onClickOther,
-            this
-        );
-        otherItem.setPosition(this._mainLayerFit.otherItemPoint);
+//        var otherItem = cc.MenuItemImage.create(
+//            main_scene_image.button57,
+//            main_scene_image.button57s,
+//            this._onClickOther,
+//            this
+//        );
+//        otherItem.setPosition(this._mainLayerFit.otherItemPoint);
 
         var messageItem = cc.MenuItemImage.create(
             main_scene_image.button59,
-            main_scene_image.button59,
+            main_scene_image.button59s,
             this._onClickLayer(10),
             this
         );
@@ -176,10 +176,11 @@ var MainLayer = cc.Layer.extend({
 
         var configLayerItem = cc.MenuItemImage.create(
             main_scene_image.button60,
-            main_scene_image.button60,
+            main_scene_image.button60s,
             this._onClickLayer(11),
             this
         );
+        configLayerItem.setScale(0.8);
         configLayerItem.setPosition(this._mainLayerFit.configLayerItemPoint);
 
         var menu = cc.Menu.create(
@@ -193,19 +194,21 @@ var MainLayer = cc.Layer.extend({
             rankLayerItem,
             achievementLayerItem,
             friendLayerItem,
-            otherItem
+            messageItem,
+            configLayerItem
+           // otherItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._otherMenu = cc.Menu.create(
-            // signInLayerItem,
-            messageItem,
-            configLayerItem
-        );
-        this._otherMenu.setPosition(cc.p(0, 0));
-        this.addChild(this._otherMenu);
-        this._otherMenu.setVisible(false);
+//        this._otherMenu = cc.Menu.create(
+//            // signInLayerItem,
+//            messageItem,
+//            configLayerItem
+//        );
+//        this._otherMenu.setPosition(cc.p(0, 0));
+//        this.addChild(this._otherMenu);
+//        this._otherMenu.setVisible(false);
 
         return true;
     },

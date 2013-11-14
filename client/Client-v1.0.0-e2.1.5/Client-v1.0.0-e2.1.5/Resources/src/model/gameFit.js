@@ -436,7 +436,9 @@ var fit4Iphone4 = {
             "headIconPoint": cc.p(40, 880),
             "titleIconPoint": cc.p(360, 920),
             "backItemPoint": cc.p(100, 920),
-            "lotteryLabelPoint": cc.p(360, 552),
+            "lotteryLabelPoint": cc.p(360, 532),
+            "lotteryDescLabel1Point": cc.p(203, 412),
+            "lotteryDescLabel2Point": cc.p(533, 412),
             "headLabelPoint": cc.p(360, 850),
             "energyIconPoint": cc.p(80, 850),
             "goldIconPoint": cc.p(220, 850),
@@ -445,10 +447,10 @@ var fit4Iphone4 = {
             "goldLabelPoint": cc.p(250, 850),
             "fragmentLabelPoint": cc.p(480, 850),
             "exchangeItemPoint": cc.p(600, 850),
-            "goldLotteryItemBasePoint": cc.p(233, 382),
-            "energyLotteryItemBasePoint": cc.p(233, 462),
-            "tipBgSpritePoint": cc.p(360, 172),
-            "tipLabelPoint": cc.p(360, 172)
+            "goldLotteryItemBasePoint": cc.p(203, 222),
+            "energyLotteryItemBasePoint": cc.p(203, 302),
+            "tipBgSpritePoint": cc.p(360, 152),
+            "tipLabelPoint": cc.p(360, 152)
         },
         "lvRankLayer": {
             "scrollViewLayerRect": cc.rect(54, 140, 609, 700),
@@ -483,8 +485,8 @@ var fit4Iphone4 = {
             "achievementLayerItemPoint": cc.p(414, 157),
             "friendLayerItemPoint": cc.p(521, 157),
             "otherItemPoint": cc.p(628, 157),
-            "messageItemPoint": cc.p(521, 234),
-            "configLayerItemPoint": cc.p(628, 234)
+            "messageItemPoint": cc.p(628, 157),
+            "configLayerItemPoint": cc.p(628, 608)
         },
         "mainMenuLayer": {
             "bgSpritePoint": cc.p(40, 0),
@@ -543,7 +545,9 @@ var fit4Iphone4 = {
             "resetItemPoint": cc.p(580, 846),
             "bgLayerPoint": cc.p(40, 0),
             "bgSprite2Point": cc.p(360, 492),
-            "rewardLabelPoint": cc.p(360, 562),
+            "rewardLabel1Point": cc.p(210, 562),
+            "goldIconPoint": cc.p(357, 572),
+            "rewardLabel2Point": cc.p(405, 562),
             "okItemPoint": cc.p(260, 442),
             "closeItemPoint": cc.p(460, 442),
             "obtainSpritePoint": cc.p(360, 630),
@@ -618,6 +622,14 @@ var fit4Iphone4 = {
 //            "powerLabelPoint": cc.p(427, 36),
 //            "vipSpritePoint": cc.p(410, 83)
 //        },
+        "playerUpgradeLayer": {
+            "bgLayerPoint": cc.p(40, 0),
+            "bgSpritePoint": cc.p(360, 512),
+            "obtainSpritePoint": cc.p(360, 732),
+            "offsetY": 632,
+            "rewardLabelPointX": 360,
+            "okItemPoint": cc.p(360, 372)
+        },
         "powerRewardLayer": {
             "lineIconPoint": cc.p(40, 787),
             "headTextPoint": cc.p(165, 812),
@@ -1407,7 +1419,9 @@ var fit4Iphone5 = {
             "headIconPoint": cc.p(0, 1056),
             "titleIconPoint": cc.p(320, 1096),
             "backItemPoint": cc.p(60, 1096),
-            "lotteryLabelPoint": cc.p(320, 640),
+            "lotteryLabelPoint": cc.p(320, 660),
+            "lotteryDescLabel1Point": cc.p(163, 500),
+            "lotteryDescLabel2Point": cc.p(493, 500),
             "headLabelPoint": cc.p(320, 1026),
             "energyIconPoint": cc.p(40, 1026),
             "goldIconPoint": cc.p(180, 1026),
@@ -1416,10 +1430,10 @@ var fit4Iphone5 = {
             "goldLabelPoint": cc.p(210, 1026),
             "fragmentLabelPoint": cc.p(440, 1026),
             "exchangeItemPoint": cc.p(560, 1026),
-            "goldLotteryItemBasePoint": cc.p(163, 320),
-            "energyLotteryItemBasePoint": cc.p(163, 400),
-            "tipBgSpritePoint": cc.p(320, 200),
-            "tipLabelPoint": cc.p(320, 200)
+            "goldLotteryItemBasePoint": cc.p(163, 290),
+            "energyLotteryItemBasePoint": cc.p(163, 380),
+            "tipBgSpritePoint": cc.p(320, 170),
+            "tipLabelPoint": cc.p(320, 170)
         },
         "lvRankLayer": {
             "scrollViewLayerRect": cc.rect(14, 140, 609, 876),
@@ -1455,8 +1469,8 @@ var fit4Iphone5 = {
             "achievementLayerItemPoint": cc.p(374, 167),
             "friendLayerItemPoint": cc.p(481, 167),
             "otherItemPoint": cc.p(588, 167),
-            "messageItemPoint": cc.p(481, 259),
-            "configLayerItemPoint": cc.p(588, 259)
+            "messageItemPoint": cc.p(588, 167),
+            "configLayerItemPoint": cc.p(588, 749)
         },
         "mainMenuLayer": {
             "bgSpritePoint": cc.p(0, 0),
@@ -1515,7 +1529,9 @@ var fit4Iphone5 = {
             "resetItemPoint": cc.p(540, 1022),
             "bgLayerPoint": cc.p(0, 88),
             "bgSprite2Point": cc.p(320, 580),
-            "rewardLabelPoint": cc.p(320, 650),
+            "rewardLabel1Point": cc.p(170, 650),
+            "goldIconPoint": cc.p(317, 660),
+            "rewardLabel2Point": cc.p(365, 650),
             "okItemPoint": cc.p(220, 530),
             "closeItemPoint": cc.p(420, 530),
             "obtainSpritePoint": cc.p(320, 718),
@@ -1590,6 +1606,14 @@ var fit4Iphone5 = {
 //            "powerLabelPoint": cc.p(427, 36),
 //            "vipSpritePoint": cc.p(410, 83)
 //        },
+        "playerUpgradeLayer": {
+            "bgLayerPoint": cc.p(0, 88),
+            "bgSpritePoint": cc.p(320, 600),
+            "obtainSpritePoint": cc.p(320, 820),
+            "offsetY": 720,
+            "rewardLabelPointX": 320,
+            "okItemPoint": cc.p(320, 460)
+        },
         "powerRewardLayer": {
             "lineIconPoint": cc.p(0, 963),
             "headTextPoint": cc.p(125, 988),

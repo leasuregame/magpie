@@ -103,10 +103,10 @@ var TournamentLabel = cc.Node.extend({
                     this._onClickFunction,
                     this
                 );
-                var tipText = cc.LabelTTF.create("曾击败你", "STHeitiTC-Medium", 18);
-                tipText.setPosition(cc.p(530, 27));
-                tipText.setColor(cc.c3b(255, 0, 0));
-                this.addChild(tipText);
+                var tipIcon = cc.Sprite.create(main_scene_image.icon288);
+                tipIcon.setPosition(cc.p(530, 27));
+                //tipText.setColor(cc.c3b(255, 0, 0));
+                this.addChild(tipIcon);
             }
 
             functionItem.setPosition(cc.p(530, 67));

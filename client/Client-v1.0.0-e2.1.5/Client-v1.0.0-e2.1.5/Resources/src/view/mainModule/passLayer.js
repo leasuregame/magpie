@@ -358,11 +358,22 @@ var PassLayer = cc.Layer.extend({
         bgSprite.setPosition(this._passLayerFit.bgSprite2Point);
         layer.addChild(bgSprite);
 
-        var rewardLabel = cc.LabelTTF.create("是否消耗 200 魔石重置关卡?", "STHeitiTC-Medium", 25);
-        rewardLabel.setColor(cc.c3b(255, 239, 131));
-        rewardLabel.setAnchorPoint(cc.p(0.5, 1));
-        rewardLabel.setPosition(this._passLayerFit.rewardLabelPoint);
-        layer.addChild(rewardLabel);
+        var rewardLabel1 = cc.LabelTTF.create("是否消耗 200 ", "STHeitiTC-Medium", 25);
+        rewardLabel1.setColor(cc.c3b(255, 239, 131));
+        rewardLabel1.setAnchorPoint(cc.p(0, 1));
+        rewardLabel1.setPosition(this._passLayerFit.rewardLabel1Point);
+        layer.addChild(rewardLabel1);
+
+        var goldIcon = cc.Sprite.create(main_scene_image.icon148);
+        goldIcon.setAnchorPoint(cc.p(0, 1));
+        goldIcon.setPosition(this._passLayerFit.goldIconPoint);
+        layer.addChild(goldIcon);
+
+        var rewardLabel2 = cc.LabelTTF.create("重置关卡?", "STHeitiTC-Medium", 25);
+        rewardLabel2.setColor(cc.c3b(255, 239, 131));
+        rewardLabel2.setAnchorPoint(cc.p(0, 1));
+        rewardLabel2.setPosition(this._passLayerFit.rewardLabel2Point);
+        layer.addChild(rewardLabel2);
 
         var okItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -414,7 +425,7 @@ var PassLayer = cc.Layer.extend({
         var str = lz.getRewardString(reward);
         var len = str.length;
 
-       // var offsetY = 655;
+        // var offsetY = 655;
         var point = this._passLayerFit.rewardLabelBasePoint;
         for (var i = 0; i < len; ++i) {
             var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);

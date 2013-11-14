@@ -241,19 +241,17 @@ var Card = Entity.extend({
     },
 
     getCardFullUrl: function () {
-        return main_scene_image[this._url + "_full1"];
-    },
+        cc.log("Card getCardFullUrl");
 
-    getCardFullOverlayUrl: function () {
-        if (this._star >= 5) {
-            return main_scene_image[this._url + "_full3"];
+        var len = this._star - 3;
+
+        var urlList = [main_scene_image[this._url + "_full1"]];
+
+        for (var i = 0; i < len; ++i) {
+            urlList.push(main_scene_image[this._url + "_full" + (i + 2)]);
         }
 
-        if (this._star >= 3) {
-            return main_scene_image[this._url + "_full2"];
-        }
-
-        return null;
+        return urlList;
     },
 
     addExp: function (exp) {

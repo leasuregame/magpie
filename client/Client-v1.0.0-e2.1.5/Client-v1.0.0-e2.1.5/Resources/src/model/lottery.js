@@ -32,8 +32,8 @@ var Lottery = Entity.extend({
         cc.log("Lottery update");
 
         if (data) {
-            this._freeLowLotteryCard = data.lowLuckyCaard == 1;
-            this._freeHighLotteryCard = data.highLuckyCaard == 1;
+            this._freeLowLotteryCard = data.lowLuckyCard == 1;
+            this._freeHighLotteryCard = data.highLuckyCard == 1;
         }
     },
 
@@ -55,12 +55,12 @@ var Lottery = Entity.extend({
         } else if (type == LOTTERY_BY_GOLD) {
             var gold = player.get("gold");
 
-            if (level == 1 && (this._freeLowLotteryCard || gold < 39)) {
+            if (level == 1 && !this._freeLowLotteryCard && gold < 39) {
                 TipLayer.tip("魔石不足");
                 return false;
             }
 
-            if (level == 2 && (this._freeHighLotteryCard || gold < 199)) {
+            if (level == 2 && !this._freeHighLotteryCard && gold < 199) {
                 TipLayer.tip("魔石不足");
                 return false;
             }

@@ -96,7 +96,7 @@ var LotteryCardLayer = LazyLayer.extend({
         if (this._canClick) {
             this.removeFromParent();
             if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                MainScene.getInstance().addChild(NoviceTeachingLayer.getInstance(), 20);
+                NoviceTeachingLayer.getInstance().setVisible(true);
                 NoviceTeachingLayer.getInstance().next();
             }
         }

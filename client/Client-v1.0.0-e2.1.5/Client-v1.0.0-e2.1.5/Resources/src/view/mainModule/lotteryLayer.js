@@ -190,7 +190,7 @@ var LotteryLayer = cc.Layer.extend({
 
             if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
                 NoviceTeachingLayer.getInstance().clearAndSave();
-                NoviceTeachingLayer.getInstance().removeFromParent();
+                NoviceTeachingLayer.getInstance().setVisible(false);
             }
 
             LazyLayer.showCloudLayer();

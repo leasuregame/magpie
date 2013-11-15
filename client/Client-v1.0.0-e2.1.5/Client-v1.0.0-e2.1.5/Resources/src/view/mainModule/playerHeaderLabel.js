@@ -92,7 +92,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
         var vipLv = player.get("vip");
         if (vipLv) {
             var vipSprite = cc.Sprite.create(main_scene_image["vip" + vipLv]);
-            vipSprite.setPosition(cc.p(410, 83));
+            vipSprite.setPosition(cc.p(410, 87));
             this.addChild(vipSprite);
         }
 

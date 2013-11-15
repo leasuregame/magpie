@@ -485,7 +485,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>1</real>
+									<real>1.0666667222976685</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -500,7 +500,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>1.2666666507720947</real>
+									<real>1.3333333730697632</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -527,7 +527,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>1</real>
+									<real>1.0666667222976685</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -545,7 +545,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>1.1000000238418579</real>
+									<real>1.1666666269302368</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -563,7 +563,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>1.2666666507720947</real>
+									<real>1.3333333730697632</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -797,7 +797,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>1</real>
+									<real>1.0666667222976685</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -812,7 +812,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>1.2666666507720947</real>
+									<real>1.3333333730697632</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -839,7 +839,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>1</real>
+									<real>1.0666667222976685</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -857,7 +857,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>1.1000000238418579</real>
+									<real>1.1666666269302368</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -875,7 +875,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>1.2666666507720947</real>
+									<real>1.3333333730697632</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>

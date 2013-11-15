@@ -3,6 +3,8 @@ Resources = require '../../../../../shared/resources'
 app = require('pomelo').app
 dao = app.get('dao')
 
+accountMap = {}
+
 module.exports = 
   auth: (account, password, areaId, frontendId, cb) ->
     dao.user.fetchOne {
@@ -15,14 +17,17 @@ module.exports =
       if password isnt user.password
         return cb({code: 501, msg: '密码不正确'})
 
-      bss = app.get('backendSessionService')
-      bss.kickByUid frontendId, user.id + '*' + areaId, (err, res) -> 
-        console.log 'backendSessionService kick by uid: ', err, res
+      if accountMap[account] and areaId is accountMap[account].areaId
+        bss = app.get('backendSessionService')
+        bss.kickByUid accountMap[account].serverId, user.id + '*' + areaId, (err, res) -> 
+          console.log 'backendSessionService kick by uid: ', err, res
 
       user.lastLoginArea = areaId
       user.lastLoginTime = Date.now()
       user.loginCount += 1
       user.save()
+
+      accountMap[account] = {areaId: areaId, serverId: frontendId}
       cb(null, user.toJson())
 
   register: (args, cb) ->

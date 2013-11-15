@@ -36,7 +36,7 @@ Handler::login = (msg, session, next) ->
 
     (res, cb) =>
       user = res
-      uid = user.id + '*' + areaId;
+      uid = user.id + '*' + areaId
       sessionService = @app.get 'sessionService'
       sessionService.kick(uid,cb)
     (cb) =>

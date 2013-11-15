@@ -267,7 +267,7 @@ lz.tipReward = function (reward) {
 
         var fn = (function (key) {
             return function () {
-                TipLayer.tipNoBg(lz.getNameByKey(key) + ": " + reward[key]);
+                TipLayer.tipNoBg(lz.getNameByKey(key) + ": +" + reward[key]);
             }
         })(key);
 

@@ -68,7 +68,7 @@ var Activity = Entity.extend({
                 if (power + gameData.player.get("power") > 150) {
                     power = 150 - gameData.player.get("power");
                 }
-                TipLayer.tip("体力: " + power);
+                TipLayer.tip("体力: +" + power);
                 gameData.player.add("power", power);
             } else {
                 TipLayer.tip(data.msg);
@@ -82,7 +82,7 @@ var Activity = Entity.extend({
         lz.server.request("area.playerHandler.getLevelReward", {id: id}, function (data) {
             cc.log(data);
             if (data.code == 200) {
-                TipLayer.tip("元宝: " + data.msg.gold);
+                TipLayer.tip("元宝: +" + data.msg.gold);
                 gameData.player.add("gold", data.msg.gold);
                 that._changeTypeById(id, GOLD_RECEIVE);
                 cb(true);

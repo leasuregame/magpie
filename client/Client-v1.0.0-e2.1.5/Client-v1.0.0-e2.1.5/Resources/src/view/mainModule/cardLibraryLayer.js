@@ -159,7 +159,7 @@ var CardLibraryLayer = cc.Layer.extend({
 
                     that.update();
 
-                    TipLayer.tipNoBg("活力点: " + data);
+                    TipLayer.tipNoBg("活力点: +" + data);
                 }, id);
             } else {
                 CardDetails.pop(card);

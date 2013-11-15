@@ -1718,13 +1718,13 @@ var fit4Iphone5 = {
             "tournamentRankIconPoint": cc.p(514, 1084)
         },
         "rechargeLayer": {
-            "headIconPoint": cc.p(80, 785),
+            "headIconPoint": cc.p(80, 845),
             "midIconPoint": cc.p(40, 195),
             "itemTextPoint": cc.p(80, 660),
             "textBasePoint": cc.p(80, 615),
             "textOffsetY": 35,
-            "go2PaymentItemPoint": cc.p(320, 300),
-            "btnTitlePoint": cc.p(320, 300)
+            "go2PaymentItemPoint": cc.p(320, 220),
+            "btnTitlePoint": cc.p(320, 220)
         },
         "sendMessageLayer": {
             "bgLayerPoint": cc.p(0, 0),

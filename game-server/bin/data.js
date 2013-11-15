@@ -150,7 +150,7 @@ Data.prototype.dataForRanking = function(callback){
         id: row.id,
         userId: userId++,
         areaId: 1,
-        lv: 25,
+        lv: 1,
         name: row.name
       };
       var rankData = {
@@ -167,7 +167,7 @@ Data.prototype.dataForRanking = function(callback){
       };
       async.parallel([
         function(cb) {
-          self.db.player.create({data: playerData}, cb);    
+          self.db.player.create({data: playerData}, cb);
         },
         function(cb) {
           self.db.rank.create({data: rankData}, cb);

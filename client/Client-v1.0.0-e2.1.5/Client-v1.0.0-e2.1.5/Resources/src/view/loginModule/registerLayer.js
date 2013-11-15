@@ -41,6 +41,7 @@ var RegisterLayer = cc.Layer.extend({
 
         this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit2));
         this._accountEditBox.setPosition(cc.p(420, 700));
+        this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
         this._accountEditBox.setDelegate(this);
         this._accountEditBox.setFont("American Typewriter", 25);
         this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
@@ -65,6 +66,7 @@ var RegisterLayer = cc.Layer.extend({
 
         this._nameEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit2));
         this._nameEditBox.setPosition(cc.p(420, 400));
+        this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
         this._nameEditBox.setDelegate(this);
         this._nameEditBox.setFont("American Typewriter", 25);
         this._nameEditBox.setFontColor(cc.c3b(200, 0, 250));

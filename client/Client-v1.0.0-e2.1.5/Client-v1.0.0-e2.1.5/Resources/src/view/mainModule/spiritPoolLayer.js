@@ -165,10 +165,10 @@ var SpiritPoolLayer = cc.Layer.extend({
         spirit.setPosition(this._spiritPoolLayerFit.spiritPoint);
         this.addChild(spirit);
 
-        var str = "灵气: " + data.spirit_obtain;
+        var str = "灵气: +" + data.spirit_obtain;
 
         if (data.isDouble) {
-            str = "天降甘霖 灵气爆发: " + data.spirit_obtain;
+            str = "天降甘霖 灵气爆发: +" + data.spirit_obtain;
             spirit.setScale(1.5);
         }
 

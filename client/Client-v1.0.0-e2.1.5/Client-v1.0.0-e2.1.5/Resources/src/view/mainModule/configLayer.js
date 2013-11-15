@@ -124,7 +124,7 @@ var ConfigLayer = cc.Layer.extend({
         this.soundSelect.setAnchorPoint(cc.p(0, 0.5));
         this.soundSelect.setPosition(cc.p(470, 55));
         soundItem.addChild(this.soundSelect);
-        this.musicSelect.setVisible(this.soundOpen);
+        this.soundSelect.setVisible(this.soundOpen);
 
         cc.log(this.musicOpen);
         cc.log(this.soundOpen);

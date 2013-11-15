@@ -230,7 +230,7 @@ var Friend = Entity.extend({
 
                     gameData.player.add("energy", msg.energy);
 
-                    TipLayer.tipNoBg(lz.getNameByKey("energy") + ": " + msg.energy);
+                    TipLayer.tipNoBg(lz.getNameByKey("energy") + ": +" + msg.energy);
 
                     cb("success");
                 } else {
@@ -266,7 +266,7 @@ var Friend = Entity.extend({
 
                     gameData.player.add("energy", msg.energy);
 
-                    TipLayer.tipNoBg(lz.getNameByKey("energy") + ": " + msg.energy);
+                    TipLayer.tipNoBg(lz.getNameByKey("energy") + ": +" + msg.energy);
 
                     cb("success");
                 } else {

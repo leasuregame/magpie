@@ -12,6 +12,10 @@
  * */
 
 
+var MAX_LAST_NAME_COUNT = 250;
+var MAX_FIRST_NAME_COUNT = 2568;
+var MAX_ILLEGAL_STR_COUNT = 778;
+
 var User = Entity.extend({
     _id: 0,                 // 账号序号
     _createTime: 0,         // 创建时间
@@ -50,7 +54,7 @@ var User = Entity.extend({
     _load: function () {
         cc.log("User _load");
 
-        this._account = sys.localStorage.getItem("account") || "chenchen";
+        this._account = sys.localStorage.getItem("account") || "junyu";
         this._password = sys.localStorage.getItem("password") || "1";
         this._area = parseInt(sys.localStorage.getItem("area")) || 0;
     },
@@ -61,6 +65,40 @@ var User = Entity.extend({
         sys.localStorage.setItem("account", this._account);
         sys.localStorage.setItem("password", this._password);
         sys.localStorage.setItem("area", this._area);
+    },
+
+    getRandomFirstName: function () {
+        cc.log("User getRandomFirstName");
+
+        return (outputTables.first_name.rows[lz.randomInt(1, MAX_FIRST_NAME_COUNT)].first_name);
+    },
+
+    getRandomLastName: function () {
+        cc.log("User getRandomLastName");
+
+        return (outputTables.last_name.rows[lz.randomInt(1, MAX_LAST_NAME_COUNT)].last_name);
+    },
+
+    getRandomName: function () {
+        cc.log("User getRandomName");
+
+        return (this.getRandomLastName() + this.getRandomFirstName());
+    },
+
+    eligibleName: function (name) {
+        cc.log("User eligibleName");
+
+        var illegalStr = outputTables.illegal_str.rows;
+
+        for (var i = 1; i < MAX_ILLEGAL_STR_COUNT; ++i) {
+            if (name.indexOf(illegalStr[i].illegal_str) != -1) {
+                cc.log(illegalStr[i].illegal_str);
+
+                return false;
+            }
+        }
+
+        return true;
     },
 
     canLogin: function () {

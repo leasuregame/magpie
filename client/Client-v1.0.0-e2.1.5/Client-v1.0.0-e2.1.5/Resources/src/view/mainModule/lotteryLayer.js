@@ -188,12 +188,10 @@ var LotteryLayer = cc.Layer.extend({
                 return;
             }
 
-//            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-//                NoviceTeachingLayer.getInstance().clearAndSave();
-//            }
-//            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-//                NoviceTeachingLayer.getInstance().next();
-//            }
+            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+                NoviceTeachingLayer.getInstance().clearAndSave();
+                NoviceTeachingLayer.getInstance().removeFromParent();
+            }
 
             LazyLayer.showCloudLayer();
 
@@ -210,6 +208,7 @@ var LotteryLayer = cc.Layer.extend({
                         "animation_2_" + level,
                         0
                     );
+
                 } else {
                     LazyLayer.closeCloudLayer();
                 }

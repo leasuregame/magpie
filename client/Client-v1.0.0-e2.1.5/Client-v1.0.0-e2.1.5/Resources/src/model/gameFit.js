@@ -526,6 +526,7 @@ var fit4Iphone4 = {
         },
         "passLayer": {
             "bgSpritePoint": cc.p(40, 106),
+            "ccbNodePoint": cc.p(320, 493),
             "headIconPoint": cc.p(40, 880),
             "titleIconPoint": cc.p(360, 920),
             "mysticalItemPoint": cc.p(580, 522),
@@ -1019,7 +1020,7 @@ var fit4Iphone5 = {
                 11: cc.p(320, 1000),
                 12: cc.p(520, 1000)
             },
-            "backItemPoint": cc.p(210, -520),
+            "backItemPoint": cc.p(225, -530),
             "effect15NodePoint": cc.p(320, 568),
             "ccbNodePoint1": cc.p(320, 380),
             "ccbNodePoint2": cc.p(320, 800)
@@ -1498,13 +1499,14 @@ var fit4Iphone5 = {
         },
         "passLayer": {
             "bgSpritePoint": cc.p(0, 106),
+            "ccbNodePoint": cc.p(320, 591),
             "headIconPoint": cc.p(0, 1056),
             "titleIconPoint": cc.p(320, 1096),
-            "mysticalItemPoint": cc.p(540, 610),
-            "scrollViewLayerRect": cc.rect(0, 106, 640, 936),
-            "scrollViewSize": cc.size(640, 936),
+            "mysticalItemPoint": cc.p(530, 730),
+            "scrollViewLayerRect": cc.rect(0, 106, 640, 950),
+            "scrollViewSize": cc.size(640, 950),
             "scrollViewContentSize": cc.size(640, 18700),
-            "scrollViewPoint": cc.p(0, 120),
+            "scrollViewPoint": cc.p(0, 106),
             "tipLabelPoint": cc.p(0, 988),
             "topLabelPoint": cc.p(150, 1022),
             "skillPointIconPoint": cc.p(435, 898),

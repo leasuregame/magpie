@@ -42,6 +42,10 @@ var MainLayer = cc.Layer.extend({
         bgSprite.setPosition(this._mainLayerFit.bgSpritePoint);
         this.addChild(bgSprite, -1);
 
+        var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect30, this);
+        ccbNode.setPosition(this._mainLayerFit.spiritLayerItemPoint);
+        this.addChild(ccbNode);
+
         var playerHeaderLabel = PlayerHeaderLabel.create();
         playerHeaderLabel.setPosition(this._mainLayerFit.playerHeaderLabelPoint);
         this.addChild(playerHeaderLabel);
@@ -199,7 +203,6 @@ var MainLayer = cc.Layer.extend({
         this.addChild(menu);
 
         this._otherMenu = cc.Menu.create(
-            // signInLayerItem,
             messageItem,
             configLayerItem
         );

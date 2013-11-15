@@ -1149,7 +1149,7 @@
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
-											<real>-360</real>
+											<real>-180</real>
 										</dict>
 									</array>
 									<key>name</key>
@@ -1205,7 +1205,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-360</real>
+								<real>-180</real>
 							</dict>
 							<dict>
 								<key>name</key>

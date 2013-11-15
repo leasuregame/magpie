@@ -53,6 +53,10 @@ var PassLayer = cc.Layer.extend({
         bgSprite.setPosition(this._passLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
+        var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect28, this);
+        ccbNode.setPosition(this._passLayerFit.ccbNodePoint);
+        this.addChild(ccbNode);
+
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
         headIcon.setPosition(this._passLayerFit.headIconPoint);
@@ -62,24 +66,9 @@ var PassLayer = cc.Layer.extend({
         titleIcon.setPosition(this._passLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
-        this._mysticalItem = cc.MenuItemImage.create(
-            main_scene_image.button43,
-            main_scene_image.button43,
-            this._onClickMystical,
-            this
-        );
+        this._mysticalItem = cc.BuilderReader.load(main_scene_image.uiEffect1, this);
         this._mysticalItem.setPosition(this._passLayerFit.mysticalItemPoint);
-        this._mysticalItem.setVisible(false);
-
-        var mysticalItemMenu = cc.Menu.create(this._mysticalItem);
-        mysticalItemMenu.setPosition(cc.p(0, 0));
-        this.addChild(mysticalItemMenu);
-
-        for (var i = 0; i < 6; ++i) {
-            this._blackHoleSprite[i] = cc.Sprite.create(main_scene_image["icon" + (228 + i)]);
-            this._blackHoleSprite[i].setPosition(cc.p(82, 125));
-            this._mysticalItem.addChild(this._blackHoleSprite[i]);
-        }
+        this.addChild(this._mysticalItem);
 
         var scrollViewLayer = MarkLayer.create(this._passLayerFit.scrollViewLayerRect);
 
@@ -414,7 +403,7 @@ var PassLayer = cc.Layer.extend({
         var str = lz.getRewardString(reward);
         var len = str.length;
 
-       // var offsetY = 655;
+        // var offsetY = 655;
         var point = this._passLayerFit.rewardLabelBasePoint;
         for (var i = 0; i < len; ++i) {
             var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);

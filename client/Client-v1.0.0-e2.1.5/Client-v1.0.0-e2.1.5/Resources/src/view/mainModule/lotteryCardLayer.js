@@ -30,13 +30,16 @@ var LotteryCardLayer = LazyLayer.extend({
         var controller = this._ccbNode.controller;
 
         controller.nameLabel.setString(this._card.get("name"));
-        controller.cardFull.setTexture(lz.getTexture(this._card.getCardFullUrl()));
 
-        var cardFullOverlayUrl = this._card.getCardFullOverlayUrl();
-        if (cardFullOverlayUrl) {
-            controller.cardFullOverlay.setTexture(lz.getTexture(cardFullOverlayUrl));
-        } else {
-            controller.cardFullOverlay.setVisible(false);
+        var urlList = this._card.getCardFullUrl();
+        var len = urlList.length;
+
+        for (var i = 0; i < 3; ++i) {
+            if (i < len) {
+                controller["cardFull" + i].setTexture(lz.getTexture(urlList[i]));
+            } else {
+                controller["cardFull" + i].setVisible(false);
+            }
         }
 
         this._ccbNode.animationManager.setCompletedAnimationCallback(this, function () {

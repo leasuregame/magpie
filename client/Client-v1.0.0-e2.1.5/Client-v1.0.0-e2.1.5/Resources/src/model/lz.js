@@ -1,4 +1,3 @@
-
 /**
  * Created with JetBrains WebStorm.
  * User: lcc3536
@@ -17,7 +16,6 @@ var lz = {};
 (function () {
     var _callback = {};
     var _index = 0;
-
 
     lz.schedule = function (fn, interval, repeat, delay) {
         interval = interval || 0;

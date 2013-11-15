@@ -190,7 +190,7 @@ var LotteryLayer = cc.Layer.extend({
 
             if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
                 NoviceTeachingLayer.getInstance().clearAndSave();
-                NoviceTeachingLayer.getInstance().removeFromParent();
+                NoviceTeachingLayer.getInstance().setVisible(false);
             }
 
             LazyLayer.showCloudLayer();
@@ -204,11 +204,16 @@ var LotteryLayer = cc.Layer.extend({
                 if (data) {
                     that._data = data;
 
+                    var highDoorPosition = that._lotteryLabel.controller.highDoor.getPosition();
+                    var lowDoorPosition = that._lotteryLabel.controller.lowDoor.getPosition();
+
                     that._lotteryLabel.animationManager.runAnimationsForSequenceNamedTweenDuration(
                         "animation_2_" + level,
                         0
                     );
 
+                    that._lotteryLabel.controller.highDoor.setPosition(highDoorPosition);
+                    that._lotteryLabel.controller.lowDoor.setPosition(lowDoorPosition);
                 } else {
                     LazyLayer.closeCloudLayer();
                 }

@@ -42,6 +42,10 @@ var MainLayer = cc.Layer.extend({
         bgSprite.setPosition(this._mainLayerFit.bgSpritePoint);
         this.addChild(bgSprite, -1);
 
+        var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect30, this);
+        ccbNode.setPosition(this._mainLayerFit.spiritLayerItemPoint);
+        this.addChild(ccbNode);
+
         var playerHeaderLabel = PlayerHeaderLabel.create();
         playerHeaderLabel.setPosition(this._mainLayerFit.playerHeaderLabelPoint);
         this.addChild(playerHeaderLabel);
@@ -56,6 +60,7 @@ var MainLayer = cc.Layer.extend({
         abilityLabelIcon.setAnchorPoint(cc.p(0, 0));
         abilityLabelIcon.setPosition(this._mainLayerFit.abilityLabelIconPoint);
         this.addChild(abilityLabelIcon);
+
         var abilityLabel = cc.LabelTTF.create(player.getAbility(), "STHeitiTC-Medium", 22);
         abilityLabel.setAnchorPoint(cc.p(0, 0.5));
         abilityLabel.setPosition(this._mainLayerFit.abilityLabelPoint);
@@ -158,14 +163,6 @@ var MainLayer = cc.Layer.extend({
         );
         friendLayerItem.setPosition(this._mainLayerFit.friendLayerItemPoint);
 
-//        var otherItem = cc.MenuItemImage.create(
-//            main_scene_image.button57,
-//            main_scene_image.button57s,
-//            this._onClickOther,
-//            this
-//        );
-//        otherItem.setPosition(this._mainLayerFit.otherItemPoint);
-
         var messageItem = cc.MenuItemImage.create(
             main_scene_image.button59,
             main_scene_image.button59s,
@@ -196,19 +193,9 @@ var MainLayer = cc.Layer.extend({
             friendLayerItem,
             messageItem,
             configLayerItem
-           // otherItem
         );
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
-
-//        this._otherMenu = cc.Menu.create(
-//            // signInLayerItem,
-//            messageItem,
-//            configLayerItem
-//        );
-//        this._otherMenu.setPosition(cc.p(0, 0));
-//        this.addChild(this._otherMenu);
-//        this._otherMenu.setVisible(false);
 
         return true;
     },
@@ -226,12 +213,6 @@ var MainLayer = cc.Layer.extend({
                 NoviceTeachingLayer.getInstance().next();
             }
         }
-    },
-
-    _onClickOther: function () {
-        this._otherMenu.setVisible(!this._otherMenu.isVisible());
-
-        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
     }
 });
 

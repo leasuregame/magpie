@@ -156,9 +156,12 @@ var NoviceTeachingLayer = LazyLayer.extend({
     onTouchBegan: function (touch, event) {
         cc.log("NoviceTeachingLayer onTouchBegan");
 
-        var point = touch.getLocation();
-        cc.log(point);
-        return !cc.rectContainsPoint(this._rect, point);
+        if (this.isVisible()) {
+            var point = touch.getLocation();
+            return !cc.rectContainsPoint(this._rect, point);
+        } else {
+            return false;
+        }
     }
 
 });

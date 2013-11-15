@@ -32,11 +32,11 @@ Handler::login = (msg, session, next) ->
       session.pushAll cb
 
     (cb) =>
-      @app.rpc.auth.authRemote.auth session, account, password, areaId, cb
+      @app.rpc.auth.authRemote.auth session, account, password, areaId, @app.getServerId(), cb
 
     (res, cb) =>
       user = res
-      uid = user.id + '*' + areaId;
+      uid = user.id + '*' + areaId
       sessionService = @app.get 'sessionService'
       sessionService.kick(uid,cb)
     (cb) =>
@@ -45,6 +45,7 @@ Handler::login = (msg, session, next) ->
         @app.rpc.area.playerRemote.getPlayerByUserId session, user.id, @app.getServerId(), (err, res) ->
           if err
             logger.error 'fail to get player by user id', err
+            return cb(err)
           player = res
           cb()
       else
@@ -61,8 +62,8 @@ Handler::login = (msg, session, next) ->
       session.pushAll cb
   ], (err) ->
     if err
-      logger.error 'fail to login: ', err
-      return next(null, {code: err.code or 500, msg: err.msg or err})
+      logger.error 'fail to login: ', err, err.stack
+      return next(null, {code: err.code or 500, msg: err.msg or err.message or err})
 
     next(null, {code: 200, msg: {user: user, player: player}})
 

@@ -9,6 +9,7 @@
 
 
 var LotteryCardLayer = LazyLayer.extend({
+    _lotteryCardLayerFit: null,
     _index: 0,
     _card: null,
     _canClick: false,
@@ -19,12 +20,14 @@ var LotteryCardLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this._lotteryCardLayerFit = gameFit.mainScene.lotteryCardLayer;
+
         this._card = data.card;
 
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
         this._ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect7, this);
-        this._ccbNode.setPosition(cc.p(320, 568));
+        this._ccbNode.setPosition(this._lotteryCardLayerFit.ccbNodePoint);
         this.addChild(this._ccbNode);
 
         var controller = this._ccbNode.controller;
@@ -48,7 +51,7 @@ var LotteryCardLayer = LazyLayer.extend({
 
         if (data.fragment) {
             var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
-            ccbNode.setPosition(cc.p(320, 1020));
+            ccbNode.setPosition(this._lotteryCardLayerFit.ccbNodePoint1);
             this.addChild(ccbNode, 1);
         }
 
@@ -92,6 +95,10 @@ var LotteryCardLayer = LazyLayer.extend({
 
         if (this._canClick) {
             this.removeFromParent();
+            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+                MainScene.getInstance().addChild(NoviceTeachingLayer.getInstance(), 20);
+                NoviceTeachingLayer.getInstance().next();
+            }
         }
 
         return true;

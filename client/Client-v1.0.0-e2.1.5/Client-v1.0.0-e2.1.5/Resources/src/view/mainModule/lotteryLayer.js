@@ -61,11 +61,11 @@ var LotteryLayer = cc.Layer.extend({
         this.addChild(this._lotteryLabel);
 
         var lotteryDescLabel1 = cc.Sprite.create(main_scene_image.icon113);
-        lotteryDescLabel1.setPosition(cc.p(163, 520));
+        lotteryDescLabel1.setPosition(this._lotteryLayerFit.lotteryDescLabel1Point);
         this.addChild(lotteryDescLabel1);
 
         var lotteryDescLabel2 = cc.Sprite.create(main_scene_image.icon114);
-        lotteryDescLabel2.setPosition(cc.p(493, 520));
+        lotteryDescLabel2.setPosition(this._lotteryLayerFit.lotteryDescLabel2Point);
         this.addChild(lotteryDescLabel2);
 
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
@@ -188,12 +188,10 @@ var LotteryLayer = cc.Layer.extend({
                 return;
             }
 
-//            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-//                NoviceTeachingLayer.getInstance().clearAndSave();
-//            }
-//            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-//                NoviceTeachingLayer.getInstance().next();
-//            }
+            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+                NoviceTeachingLayer.getInstance().clearAndSave();
+                NoviceTeachingLayer.getInstance().removeFromParent();
+            }
 
             LazyLayer.showCloudLayer();
 

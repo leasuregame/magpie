@@ -175,6 +175,8 @@ var SpiritDetails = LazyLayer.extend({
 
         LazyLayer.showCloudAll();
 
+        this._upgradeItem.setVisible(false);
+
         var that = this;
         gameData.spirit.upgrade(function (success) {
             cc.log(success);

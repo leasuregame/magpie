@@ -88,7 +88,7 @@ var RegisterLayer = cc.Layer.extend({
 
     canRegister: function (account, password, passwordAgain) {
         cc.log("User canRegister");
-        
+
         if (!account) {
             TipLayer.tip("请输入账号");
             return false;

@@ -112,7 +112,7 @@ var Player = Entity.extend({
             powerBuyCount: data.dailyGift.powerBuyCount,
             challengeBuyCount: data.dailyGift.challengeBuyCount
         });
-
+        gameData.lottery.init(data.firstTime);
     },
 
     upgrade: function (data) {

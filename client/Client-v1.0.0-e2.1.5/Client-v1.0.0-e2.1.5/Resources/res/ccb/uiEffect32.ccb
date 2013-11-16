@@ -206,6 +206,8 @@
 						<integer>255</integer>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -388,7 +390,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>81</real>
+								<real>120</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -622,7 +624,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-81</real>
+								<real>-120</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -699,7 +701,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>180</real>
+							<real>262</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -819,7 +821,7 @@
 									<key>value</key>
 									<array>
 										<real>0.0</real>
-										<real>174</real>
+										<real>240</real>
 									</array>
 								</dict>
 								<dict>
@@ -837,7 +839,7 @@
 									<key>value</key>
 									<array>
 										<real>0.0</real>
-										<real>194</real>
+										<real>270</real>
 									</array>
 								</dict>
 							</array>
@@ -939,7 +941,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>194</real>
+							<real>270</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1348,8 +1350,6 @@
 						<string>effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1438,7 +1438,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.0666667222976685</real>
+			<real>1.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

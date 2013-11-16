@@ -126,7 +126,8 @@ Handler::luckyCard = (msg, session, next) ->
       hdcc = player.highDrawCardCount + 1 #高级抽卡次数
 
       if isFree
-        [card, consumeVal, fragment] = lottery.freeLottery(level)
+        except_ids = player.cards.filter (c) -> c.tableId
+        [card, consumeVal, fragment] = lottery.freeLottery(level, except_ids)
       else
         [card, consumeVal, fragment] = lottery.lottery(level, type, rfc, hfc, hdcc)
 

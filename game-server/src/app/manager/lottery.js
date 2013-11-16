@@ -27,9 +27,16 @@ var lottery = function (level, type, rFragments, hFragment, hCounts) {
     return [card, consume_val, fragment];
 };
 
-var freeLottery = function(level) {
+var freeLottery = function(level, eids) {
+    if (eids == null || !_.isArray(eids)){
+        eids = [];
+    }
+
     var star = level == 1 ? 3 : 4;
     var card = freeCard(star);
+    while (eids.indexOf(card.tableId) > -1) {
+        card = freeCard(star);
+    }
     return [card, 0, 0];
 };
 

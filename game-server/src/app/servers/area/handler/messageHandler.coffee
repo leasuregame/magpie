@@ -60,6 +60,34 @@ module.exports = (app) ->
 
 Handler = (@app) ->
 
+Handler::messageList = (msg, session, next) ->
+  playerId = session.get('playerId')
+
+  async.parallel [
+    (cb) ->
+      dao.message.fetchMany where: {
+        sender: -1
+        receiver: -1
+        type: msgConfig.MESSAGETYPE.SYSTEM
+        msgId: null
+      }, cb
+
+    (cb) ->
+      dao.message.fetchMany where: receiver: playerId, cb
+  ], (err, results) ->
+    if err
+      return next(null, {code: err.code or 500, msg: err.msg or err})
+
+    systemMessages = results[0]
+    myMessages = results[1]
+
+    messages = mergeMessages(myMessages, systemMessages)
+    messages = messages.map (m) -> 
+      if m.type is msgConfig.MESSAGETYPE.MESSAGE then m.toLeaveMessage?() else m.toJson?()
+    messages = _.groupBy messages, (item) -> item.type
+    messages = changeGroupNameAndSort(messages)
+    next(null, {code: 200, msg: messages})
+
 Handler::sysMsg = (msg, session, next) ->
   console.log("msg = ",msg);
   content = msg.content
@@ -186,34 +214,6 @@ Handler::readMessage = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     next(null, {code: 200, msg: res.content})
-
-Handler::messageList = (msg, session, next) ->
-  playerId = session.get('playerId')
-
-  async.parallel [
-    (cb) ->
-      dao.message.fetchMany where: {
-        sender: -1
-        receiver: -1
-        type: msgConfig.MESSAGETYPE.SYSTEM
-        msgId: null
-      }, cb
-
-    (cb) ->
-      dao.message.fetchMany where: receiver: playerId, cb
-  ], (err, results) ->
-    if err
-      return next(null, {code: err.code or 500, msg: err.msg or err})
-
-    systemMessages = results[0]
-    myMessages = results[1]
-
-    messages = mergeMessages(myMessages, systemMessages)
-    messages = messages.map (m) -> 
-      if m.type is msgConfig.MESSAGETYPE.MESSAGE then m.toLeaveMessage?() else m.toJson?()
-    messages = _.groupBy messages, (item) -> item.type
-    messages = changeGroupNameAndSort(messages)
-    next(null, {code: 200, msg: messages})
 
 Handler::deleteFriend = (msg, session, next) ->
   playerId = session.get('playerId')

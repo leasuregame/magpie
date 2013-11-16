@@ -26,7 +26,7 @@ var BattleSpiritNode = cc.Node.extend({
 
         this._ccbNode = cc.BuilderReader.load(main_scene_image.spiritNode, this);
 
-        var spiritSpriteTexture = lz.getTexture(main_scene_image["spirit" + spiritLv]);
+        var spiritSpriteTexture = lz.getTexture(main_scene_image["spirit_1_" + Math.ceil(spiritLv / 2)]);
         this._animationManager = this._ccbNode.animationManager;
         this.addChild(this._ccbNode);
 

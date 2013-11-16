@@ -21,7 +21,7 @@ var Player = Entity.extend({
     _power: 0,          // 体力
     _lv: 0,             // 等级
     _exp: 0,            // 经验
-    _gold: 0,           // 元宝
+    _gold: 0,           // 魔石
     _money: 0,          // 金钱
     _elixir: 0,         // 仙丹
     _fragment: 0,       // 卡魂

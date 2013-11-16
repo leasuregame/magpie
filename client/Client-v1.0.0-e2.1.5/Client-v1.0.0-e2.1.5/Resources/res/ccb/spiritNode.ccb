@@ -2104,8 +2104,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.0166667699813843</real>
-							<real>1.0166667699813843</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -2126,7 +2126,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>main/spirit1.png</string>
+							<string>main/spirit_1_1.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -4278,8 +4278,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.1666668653488159</real>
-							<real>1.1666668653488159</real>
+							<real>2</real>
+							<real>2</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -4300,7 +4300,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>main/spirit1.png</string>
+							<string>main/spirit_1_1.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -4311,7 +4311,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>100</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4646,6 +4646,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -5212,7 +5214,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.60000002384185791</real>
+			<real>0.80000001192092896</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

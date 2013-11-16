@@ -113,11 +113,18 @@ describe("Area Server", function() {
                 beforeEach(function() {
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
-                        type: 1
+                        type: 1, 
+                        status: 2
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
-                        type: 1
+                        type: 1,
+                        status: 1
+                    }, function() {});
+                    doAjax('/message/add', {
+                        receiver: arthur.playerId,
+                        type: 1,
+                        status: 3
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
@@ -145,7 +152,33 @@ describe("Area Server", function() {
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
-                        type: 4
+                        type: 4,
+                        sender: -1,
+                        receiver: -1
+                    }, function() {});
+                    doAjax('/message/add', {
+                        receiver: arthur.playerId,
+                        type: 4,
+                        sender: -1,
+                        receiver: -1
+                    }, function() {});
+                    doAjax('/message/add', {
+                        receiver: arthur.playerId,
+                        type: 4,
+                        sender: -1,
+                        receiver: -1
+                    }, function() {});
+                    doAjax('/message/add', {
+                        receiver: arthur.playerId,
+                        type: 4,
+                        sender: -1,
+                        receiver: -1
+                    }, function() {});
+                    doAjax('/message/add', {
+                        receiver: arthur.playerId,
+                        type: 4,
+                        sender: -1,
+                        receiver: -1
                     }, function() {});
 
 

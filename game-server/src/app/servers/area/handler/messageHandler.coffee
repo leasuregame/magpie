@@ -18,13 +18,20 @@ DELETE_FRIEND_MESSAGE = 2
 isFinalStatus = (status) ->
   _.contains msgConfig.FINALSTATUS, status
 
-mergeMessages = (myMessages, systemMessages) ->
+mergeMessages = (myMessages, systemMessages, blMessages, unhandleMessages) ->
   mySystems = myMessages.filter (m) -> m.sender is -1
   mySystems = mySystems.map (m) -> m.msgId
 
   systemMessages.forEach (m) ->
     if m.id not in mySystems
       myMessages.push m
+
+  ids = mySystems.map (m) -> m.id
+  unhandleMessages.forEach (m) ->
+    if m.id not in ids
+      mySystems.push m
+
+  blMessages.forEach (m) -> myMessages.push m
   return myMessages
 
 changeGroupNameAndSort = (messages) ->
@@ -39,6 +46,7 @@ changeGroupNameAndSort = (messages) ->
 
   for n, items of results
     items.sort (x, y) -> x.createTime < y.createTime
+    items[0...20]
 
   results
 
@@ -65,23 +73,60 @@ Handler::messageList = (msg, session, next) ->
 
   async.parallel [
     (cb) ->
-      dao.message.fetchMany where: {
-        sender: -1
-        receiver: -1
-        type: msgConfig.MESSAGETYPE.SYSTEM
-        msgId: null
+      dao.message.fetchMany {
+        limit: 20,
+        orderBy: ' createTime DESC ',
+        where: {
+          sender: -1
+          receiver: -1
+          type: msgConfig.MESSAGETYPE.SYSTEM
+          msgId: null
+        }
+      }, cb
+
+    (cb) -> 
+      dao.message.fetchMany {
+        where: {
+          receiver: playerId
+          type: msgConfig.MESSAGETYPE.BATTLENOTICE
+        },
+        limit: 20,
+        orderBy: ' createTime DESC '
       }, cb
 
     (cb) ->
-      dao.message.fetchMany where: receiver: playerId, cb
+      dao.message.fetchMany {
+        where: " receiver = #{playerId} and type in (#{msgConfig.MESSAGETYPE.ADDFRIEND}, #{msgConfig.MESSAGETYPE.MESSAGE}) "
+        limit: 20,
+        orderBy: ' createTime DESC '
+      }, cb
+
+    (cb) ->
+      dao.message.fetchMany { 
+        where: {
+          receiver: playerId
+          type: msgConfig.MESSAGETYPE.ADDFRIEND
+          status: msgConfig.MESSAGESTATUS.ASKING
+        }, 
+        limit: 20,
+        orderBy: ' createTime DESC '
+      }
+        , cb
   ], (err, results) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     systemMessages = results[0]
-    myMessages = results[1]
+    blMessages = results[1]
+    friendMessages = results[2]
+    unhandleMessages = results[3]
 
-    messages = mergeMessages(myMessages, systemMessages)
+    console.log '1', systemMessages.length
+    console.log '2', blMessages.length
+    console.log '3', friendMessages.length
+    console.log '4', unhandleMessages.length
+
+    messages = mergeMessages(friendMessages, systemMessages, blMessages, unhandleMessages)
     messages = messages.map (m) -> 
       if m.type is msgConfig.MESSAGETYPE.MESSAGE then m.toLeaveMessage?() else m.toJson?()
     messages = _.groupBy messages, (item) -> item.type

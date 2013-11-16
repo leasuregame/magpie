@@ -491,21 +491,18 @@ Handler::useElixir = (msg, session, next) ->
       return next(null, {code: 501, msg: '不能对3星以下的卡牌使用仙丹'})
 
     limit = elixirLimit.getItem(card.star)
-    console.log '-a-', card, limit
     if (card.elixirHp + card.elixirAtk) >= limit.elixir_limit
-      return next(null, {code: 501, msg: "卡牌仙丹容量已满"})
+      return next(null, {code: 501, msg: "卡牌可吞噬仙丹数量已满"})
 
     if (card.elixirHp + card.elixirAtk + elixir) > limit.elixir_limit
       return next(null, {code: 501, msg: "使用的仙丹已经超出了卡牌的最大仙丹容量"})
 
     if not player.isCanUseElixirForCard(cardId)
-      return next(null, {code: 501, msg: "消耗的仙丹已达到当前玩家级别的上限"})
+      return next(null, {code: 501, msg: "已达当前可吞噬数量上限，请提升角色等级"})
 
     can_use_elixir = player.canUseElixir(cardId)
     if can_use_elixir < elixir
       return next(null, {code: 501, msg: "最多还可以消耗#{can_use_elixir}点仙丹"})
-
-    console.log '0a0: ', player.elixirPerLv, can_use_elixir
 
     card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
     card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK

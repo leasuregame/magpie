@@ -59,7 +59,7 @@ var Spirit = Entity.extend({
     },
 
     getSpiritUrl: function () {
-        return main_scene_image["spirit" + this._lv];
+        return main_scene_image["spirit_1_" + Math.ceil(this._lv / 2)];
     },
 
     canUpgrade: function () {

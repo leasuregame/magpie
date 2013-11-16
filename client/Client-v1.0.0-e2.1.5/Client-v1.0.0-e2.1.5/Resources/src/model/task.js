@@ -96,7 +96,7 @@ var Task = Entity.extend({
     canExplore: function () {
         cc.log("Task canExplore");
 
-        if(gameData.player.get("power") < this._powerNeed) {
+        if (gameData.player.get("power") < this._powerNeed) {
             TipLayer.tip("体力不足");
             return false;
         }

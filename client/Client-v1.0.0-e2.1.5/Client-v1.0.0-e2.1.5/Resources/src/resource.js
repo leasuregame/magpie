@@ -146,6 +146,8 @@ var main_scene_image = {
     card_item_bg3: main_scene_path + "card_item_bg3.png",
     card_item_bg4: main_scene_path + "card_item_bg4.png",
     card_item_bg5: main_scene_path + "card_item_bg5.png",
+    card_item_bg6: main_scene_path + "card_item_bg6.png",
+    card_item_bg6s: main_scene_path + "card_item_bg6s.png",
 
     button0: main_scene_path + "button0.png",
     button0s: main_scene_path + "button0s.png",

@@ -188,6 +188,11 @@ var User = Entity.extend({
                 if (data.code == 200) {
                     cc.log("register success");
 
+                    that._account = account;
+                    that._password = password;
+
+                    that._save();
+
                     cb();
                 } else {
                     cc.log("register fail");

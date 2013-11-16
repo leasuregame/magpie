@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -180,8 +180,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -624,8 +622,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>4</real>
+							<real>4</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -657,7 +655,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -861,7 +859,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -886,8 +884,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.7999999523162842</real>
-							<real>1.7999999523162842</real>
+							<real>2</real>
+							<real>2</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -919,7 +917,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>80</integer>
+						<integer>100</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1018,7 +1016,7 @@
 	<array>
 		<dict>
 			<key>autoPlay</key>
-			<true/>
+			<false/>
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
@@ -1069,7 +1067,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2</real>
+			<real>1.1666666269302368</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

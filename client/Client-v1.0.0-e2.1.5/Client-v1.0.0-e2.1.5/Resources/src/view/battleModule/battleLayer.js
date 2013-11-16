@@ -119,7 +119,7 @@ var BatterLayer = cc.Layer.extend({
         }
     },
 
-    tipHarm: function (index, value, isCirt) {
+    tipHarm: function (index, value, isSkill, isCirt) {
         cc.log("BatterLayer tipHarm");
 
         var name = "";
@@ -139,10 +139,16 @@ var BatterLayer = cc.Layer.extend({
         } else {
             str = "" + value;
 
-            if (isCirt) {
-                name = "atk_1_2";
+            if (isSkill) {
+                name = "atk_3_";
             } else {
-                name = "atk_1_1";
+                name = "atk_1_"
+            }
+
+            if (isCirt) {
+                name += "2";
+            } else {
+                name += "1";
             }
         }
 
@@ -409,7 +415,7 @@ var BatterLayer = cc.Layer.extend({
                         );
 
                         targetNode.update(effect);
-                        that.tipHarm(target, effect, isCrit);
+                        that.tipHarm(target, effect, false, isCrit);
 
                         nextStepCallback1();
                     });
@@ -469,7 +475,7 @@ var BatterLayer = cc.Layer.extend({
                     );
 
                     targetNode.update(effect);
-                    that.tipHarm(target, effect, isCrit);
+                    that.tipHarm(target, effect, true, isCrit);
                 })();
             }
         };
@@ -522,7 +528,7 @@ var BatterLayer = cc.Layer.extend({
                         );
 
                         targetNode.update(effect);
-                        that.tipHarm(target, effect, isCrit);
+                        that.tipHarm(target, effect, true, isCrit);
 
                         nextStepCallback1();
                     });
@@ -580,7 +586,7 @@ var BatterLayer = cc.Layer.extend({
                     );
 
                     targetNode.update(effect);
-                    that.tipHarm(target, effect, isCrit);
+                    that.tipHarm(target, effect, true, isCrit);
                 })();
             }
         };

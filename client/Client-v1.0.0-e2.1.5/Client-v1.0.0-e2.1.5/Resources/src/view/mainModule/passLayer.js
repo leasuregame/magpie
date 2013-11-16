@@ -134,7 +134,7 @@ var PassLayer = cc.Layer.extend({
             };
         }
 
-        this._spirit = SpiritNode.create();
+        this._spirit = SpiritNode.create(0);
         this._spirit.setAnchorPoint(cc.p(0, 0));
         this._spirit.setPosition(this._getCardLocation(this._top));
         scrollViewLayer.addChild(this._spirit, 1);
@@ -414,7 +414,6 @@ var PassLayer = cc.Layer.extend({
         var str = lz.getRewardString(reward);
         var len = str.length;
 
-        // var offsetY = 655;
         var point = this._passLayerFit.rewardLabelBasePoint;
         for (var i = 0; i < len; ++i) {
             var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
@@ -477,6 +476,19 @@ var PassLayer = cc.Layer.extend({
 
         this.scheduleOnce(function () {
             LazyLayer.closeCloudLayer();
+
+            var ccbNode;
+            if (gameData.pass.isBossPass(this._top)) {
+                ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect20, this);
+            } else {
+                ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect16, this);
+            }
+            ccbNode.setPosition(this._element[this._top].passItem.getPosition());
+            this._scrollView.addChild(ccbNode);
+
+            ccbNode.animationManager.setCompletedAnimationCallback(this, function () {
+                ccbNode.removeFromParent();
+            });
         }, 3.5);
     },
 
@@ -508,6 +520,16 @@ var PassLayer = cc.Layer.extend({
     _onClickDefiance: function (id) {
         return function () {
             cc.log("PassLayer _onClickDefiance: " + id);
+
+            this._element[id].passItem.stopAllActions();
+
+            this._element[id].passItem.runAction(
+                cc.Sequence.create(
+                    cc.ScaleTo.create(0.2, 1.2),
+                    cc.ScaleTo.create(0.3, 0.9),
+                    cc.ScaleTo.create(0.2, 1)
+                )
+            );
 
             if (id > this._top) {
                 TipLayer.tip("请先挑战前面关卡");

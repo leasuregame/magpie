@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -131,8 +131,8 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<integer>0</integer>
+									<string>_onClickSpiritPool</string>
+									<integer>2</integer>
 								</array>
 							</dict>
 							<dict>
@@ -444,7 +444,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -690,8 +690,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>20</real>
-									<real>-32</real>
+									<real>-17.600025177001953</real>
+									<real>-42.400035858154297</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -751,7 +751,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -961,8 +961,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>20</real>
-									<real>-32</real>
+									<real>-17.600025177001953</real>
+									<real>-42.400035858154297</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1022,7 +1022,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1232,8 +1232,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-30</real>
-									<real>-52</real>
+									<real>-17.600025177001953</real>
+									<real>-42.400035858154297</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1260,8 +1260,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.2000000476837158</real>
-									<real>1.2000000476837158</real>
+									<real>1</real>
+									<real>1</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1293,7 +1293,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1503,8 +1503,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-30</real>
-									<real>-52</real>
+									<real>-17.600025177001953</real>
+									<real>-42.400035858154297</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1531,8 +1531,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.2000000476837158</real>
-									<real>1.2000000476837158</real>
+									<real>1</real>
+									<real>1</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1564,7 +1564,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1610,7 +1610,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2117,7 +2117,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>200</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2168,7 +2168,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>31.714284896850586</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2706,7 +2706,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2880,7 +2880,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3054,7 +3054,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3228,7 +3228,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3402,7 +3402,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3576,7 +3576,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3750,7 +3750,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -3924,7 +3924,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4228,7 +4228,7 @@
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<false/>
+								<true/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4281,7 +4281,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>200</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4551,7 +4551,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4725,7 +4725,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -4899,7 +4899,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -5073,7 +5073,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -5247,7 +5247,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -5421,7 +5421,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -5734,8 +5734,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-30</real>
-									<real>-45</real>
+									<real>-46.64306640625</real>
+									<real>-58.217391967773438</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -5762,8 +5762,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
-									<real>0.5</real>
+									<real>0.30000001192092896</real>
+									<real>0.30000001192092896</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -5803,7 +5803,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -6010,8 +6010,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>20</real>
-									<real>-30</real>
+									<real>-46.64306640625</real>
+									<real>-58.217391967773438</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -6038,8 +6038,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
-									<real>0.5</real>
+									<real>0.30000001192092896</real>
+									<real>0.30000001192092896</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -6079,7 +6079,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -6319,7 +6319,24 @@
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.56666666269302368</real>
+						<key>type</key>
+						<integer>10</integer>
+						<key>value</key>
+						<array>
+							<string>_collectSpirit</string>
+							<integer>2</integer>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>10</integer>
 			</dict>
@@ -6332,7 +6349,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2.0333333015441895</real>
+			<real>0.56666666269302368</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

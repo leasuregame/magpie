@@ -79,6 +79,7 @@ var main_scene_image = {
     spirit9: main_scene_path + "spirit9.png",
     spirit10: main_scene_path + "spirit10.png",
 
+    spirit_1_0: main_scene_path + "spirit_1_0.png",
     spirit_1_1: main_scene_path + "spirit_1_1.png",
     spirit_1_2: main_scene_path + "spirit_1_2.png",
     spirit_1_3: main_scene_path + "spirit_1_3.png",
@@ -152,6 +153,8 @@ var main_scene_image = {
     card_item_bg3: main_scene_path + "card_item_bg3.png",
     card_item_bg4: main_scene_path + "card_item_bg4.png",
     card_item_bg5: main_scene_path + "card_item_bg5.png",
+    card_item_bg6: main_scene_path + "card_item_bg6.png",
+    card_item_bg6s: main_scene_path + "card_item_bg6s.png",
 
     button0: main_scene_path + "button0.png",
     button0s: main_scene_path + "button0s.png",

@@ -222,7 +222,7 @@ var GoldLayer = LazyLayer.extend({
 
         var waitTime = time - scaleTime;
 
-        TipLayer.tipNoBg("元宝: +" + this._goldList[index]);
+        TipLayer.tipNoBg("魔石: +" + this._goldList[index]);
 
         var action = cc.Sequence.create(
             cc.EaseExponentialOut.create(
@@ -254,7 +254,7 @@ var GoldLayer = LazyLayer.extend({
         if (this._gold > 0) {
             gameData.task.obtainGold(this._gold);
 
-            var tipLabel = cc.LabelTTF.create("恭喜您，获得 " + this._gold + " 元宝", "STHeitiTC-Medium", 35);
+            var tipLabel = cc.LabelTTF.create("恭喜您，获得 " + this._gold + " 魔石", "STHeitiTC-Medium", 35);
             tipLabel.setColor(cc.c3b(255, 239, 131));
             tipLabel.setPosition(this._goldLayerFit.tipLabelPoint);
             this.addChild(tipLabel);

@@ -554,6 +554,8 @@
 		<string></string>
 		<key>displayName</key>
 		<string>CCNode</string>
+		<key>jsController</key>
+		<string>CocosBuilderClass</string>
 		<key>memberVarAssignmentName</key>
 		<string></string>
 		<key>memberVarAssignmentType</key>
@@ -632,9 +634,9 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>1.3203125</real>
+			<real>0.033333335071802139</real>
 			<key>position</key>
-			<real>10</real>
+			<real>7.1666665077209473</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

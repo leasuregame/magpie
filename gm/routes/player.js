@@ -13,80 +13,79 @@ var Player = require('../models/player');
 var Url = require('url');
 var logger = require('../logger').logger('player');
 
-var player = function(app) {
+var player = function (app) {
 
-    app.get('/playerLogin',checkLogin);
+    app.get('/playerLogin', checkLogin);
 
     //玩家数据修改
-    app.get('/playerLogin',function(req , res){
+    app.get('/playerLogin', function (req, res) {
 
 
-        var url = Url.parse(req.url,true);
+        var url = Url.parse(req.url, true);
         var query = url.query;
 
         var target = query["target"] || 'playerLogin';
         console.log(target);
-      //  if(!req.session.player)
+        //  if(!req.session.player)
         //    target = 'playerLogin';
 
 
+        Area.getAreasList(function (areas) {
 
-        Area.getAreasList(function(areas) {
-
-            res.render('playerLogin',{
-                title : '玩家数据修改',
-                user : req.session.user,
-                player:req.session.player,
-                area:req.session.area,
-                areas:areas,
-                target:target,
-                success:req.flash('success').toString(),
-                error:req.flash('error').toString()
+            res.render('playerLogin', {
+                title: '玩家数据修改',
+                user: req.session.user,
+                player: req.session.player,
+                area: req.session.area,
+                areas: areas,
+                target: target,
+                success: req.flash('success').toString(),
+                error: req.flash('error').toString()
             });
         });
 
     });
 
-    app.post('/playerLogin',function(req,res){
+    app.post('/playerLogin', function (req, res) {
 
         var playerName = req.body.playerName;//query['playerName'];
         var area = JSON.parse(req.body.area);//JSON.parse(query['area']);
         var target = req.body.target;
-        console.log("target = ",target);
+        console.log("target = ", target);
 
         //dbClient.shutdown();
         var env = app.settings.env;
-        var db = getDB(area.id,env);
+        var db = getDB(area.id, env);
         dbClient.init(db);
 
         var player = {
-            where :{
-                name : playerName,
-                areaId : area.id
+            where: {
+                name: playerName,
+                areaId: area.id
             }
         };
 
-        Player.getPlayerInfo(player,function(err,Player){
-            if(err) {
-                req.flash('error','没有该玩家的信息');
-                logger.error("[playerLogin]" +  playerName + "没有该玩家的信息");
+        Player.getPlayerInfo(player, function (err, Player) {
+            if (err) {
+                req.flash('error', '没有该玩家的信息');
+                logger.error("[playerLogin]" + playerName + "没有该玩家的信息");
                 return res.redirect('/playerLogin');
-            }else {
-               // console.log(Player);
+            } else {
+                // console.log(Player);
                 logger.info("[playerLogin]" + playerName);
                 logger.info("[playerLogin][playerData]" + JSON.stringify(Player));
                 req.session.player = Player;
                 req.session.area = area;
-                if(target != "playerLogin") {
+                if (target != "playerLogin") {
                     return res.redirect('/' + target);
                 }
-                res.render('playerData',{
-                    title : '玩家数据修改',
-                    user : req.session.user,
-                    player : req.session.player,
-                    area : req.session.area,
-                    success:req.flash('success').toString(),
-                    error:req.flash('error').toString()
+                res.render('playerData', {
+                    title: '玩家数据修改',
+                    user: req.session.user,
+                    player: req.session.player,
+                    area: req.session.area,
+                    success: req.flash('success').toString(),
+                    error: req.flash('error').toString()
                 });
             }
         });
@@ -94,96 +93,96 @@ var player = function(app) {
     });
 
 
-    app.get('/playerData',function(req,res){
-        if(req.session.player) {
+    app.get('/playerData', function (req, res) {
+        if (req.session.player) {
 
             var player = {
-                where :{
-                    name : req.session.player.name,
-                    areaId : req.session.area.id
+                where: {
+                    name: req.session.player.name,
+                    areaId: req.session.area.id
                 }
             };
-            Player.getPlayerInfo(player,function(err,Player){
-                if(err) {
-                    req.flash('error','没有该玩家的信息');
+            Player.getPlayerInfo(player, function (err, Player) {
+                if (err) {
+                    req.flash('error', '没有该玩家的信息');
                     return res.redirect('/playerLogin');
                 }
-                else{
+                else {
                     req.session.player = Player;
-                    res.render('playerData',{
-                        title : '玩家数据修改',
-                        user : req.session.user,
-                        player : req.session.player,
-                        area : req.session.area,
-                        success:req.flash('success').toString(),
-                        error:req.flash('error').toString()
+                    res.render('playerData', {
+                        title: '玩家数据修改',
+                        user: req.session.user,
+                        player: req.session.player,
+                        area: req.session.area,
+                        success: req.flash('success').toString(),
+                        error: req.flash('error').toString()
                     });
                 }
             });
 
 
-        }else {
+        } else {
             res.redirect('/playerLogin?target=playerData');
         }
     });
 
-    app.post('/playerData',function(req , res){
+    app.post('/playerData', function (req, res) {
 
-        var url = Url.parse(req.url,true);
+        var url = Url.parse(req.url, true);
         var query = url.query;
         //console.log(req.url);
         var player = JSON.parse(query['player']);
         var area = JSON.parse(query['area']);
-      //  console.log((player["spiritor"]));
+        //  console.log((player["spiritor"]));
         var data = player;
 
 
         var options = {
-            where :{
-                name : data.name,
-                areaId : area.id
+            where: {
+                name: data.name,
+                areaId: area.id
             },
-            data:data
+            data: data
 
         };
 
-        Player.update(options,function(err,isOK){
-            if(err) {
-               // console.log(err);
+        Player.update(options, function (err, isOK) {
+            if (err) {
+                // console.log(err);
                 logger.error("[update]" + err);
-                res.send({type:'error',info:'修改数据失败'});
+                res.send({type: 'error', info: '修改数据失败'});
 
-            }else {
+            } else {
                 logger.info("[update]" + JSON.stringify(data));
-                res.send({type:'success',info:'修改数据成功'});
+                res.send({type: 'success', info: '修改数据成功'});
             }
 
         });
 
     });
 
-    app.get('/playerId',function(req,res){
-        var url = Url.parse(req.url,true);
+    app.get('/playerId', function (req, res) {
+        var url = Url.parse(req.url, true);
         var query = url.query;
-        var name =  query['name'];
+        var name = query['name'];
         var areaId = query['areaId'];
 
         var env = app.settings.env;
-        var db = getDB(areaId,env);
+        var db = getDB(areaId, env);
         dbClient.init(db);
 
-        Player.getPlayerId(name,areaId,function(err,id){
-            if(err) {
-                res.send({type:'error',info:err});
-            }else {
-                res.send({type:'success',info:id});
+        Player.getPlayerId(name, areaId, function (err, id) {
+            if (err) {
+                res.send({type: 'error', info: err});
+            } else {
+                res.send({type: 'success', info: id});
             }
         });
     });
 
-    function checkLogin(req, res, next){
-        if(!req.session.user){
-            req.flash('error','请先登录');
+    function checkLogin(req, res, next) {
+        if (!req.session.user) {
+            req.flash('error', '请先登录');
             return res.redirect('/login');
         }
         next();

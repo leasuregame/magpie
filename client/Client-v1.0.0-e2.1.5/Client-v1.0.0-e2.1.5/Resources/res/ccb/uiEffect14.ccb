@@ -215,7 +215,7 @@
 								<real>0.99999600648880005</real>
 								<real>1</real>
 								<real>1</real>
-								<real>1</real>
+								<real>0.18000000715255737</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -254,7 +254,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>200</real>
+							<real>400</real>
 							<real>20</real>
 						</array>
 					</dict>
@@ -276,7 +276,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>-430</real>
+							<real>-800</real>
 							<real>20</real>
 						</array>
 					</dict>
@@ -289,6 +289,10 @@
 						<string>main/icon149.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -336,8 +340,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

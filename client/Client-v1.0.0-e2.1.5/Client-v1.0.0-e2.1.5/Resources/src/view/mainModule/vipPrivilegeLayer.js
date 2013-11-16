@@ -13,7 +13,7 @@
 
 
 var vipPrivilegeDescription = {
-    lottery_free_count: "每日抽奖次数",
+    lottery_free_count: "每日寻宝次数",
     friend_count: "好友上限",
     buy_power_count: "每日体力购买次数",
     give_bless_count: "每日送出祝福次数",
@@ -106,10 +106,10 @@ var VipPrivilegeLayer = LazyLayer.extend({
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu, 1);
 
-        var scrollViewHeight = len * 315;
+        var scrollViewHeight = len * 355;
 
         for (var i = 0; i < len; ++i) {
-            var y = scrollViewHeight - 315 - i * 315;
+            var y = scrollViewHeight - 355 - i * 355;
 
             var vipPrivilege = vipPrivilegeList[i];
 
@@ -121,13 +121,14 @@ var VipPrivilegeLayer = LazyLayer.extend({
             var bgSprite = cc.Sprite.create(bgSpriteUrl);
             bgSprite.setAnchorPoint(cc.p(0, 0));
             bgSprite.setPosition(cc.p(0, y));
+            bgSprite.setScaleY(1.15);
             scrollViewLayer.addChild(bgSprite);
 
             var vipIcon = cc.Sprite.create(main_scene_image["vip" + vipPrivilege.id]);
-            vipIcon.setPosition(cc.p(250, y + 280));
+            vipIcon.setPosition(cc.p(250, y + 320));
             scrollViewLayer.addChild(vipIcon);
 
-            var offsetY = y + 240;
+            var offsetY = y + 280;
             for (var key in vipPrivilege) {
                 if (vipPrivilegeDescription[key] != undefined && vipPrivilege[key] > 0) {
                     var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
@@ -146,6 +147,33 @@ var VipPrivilegeLayer = LazyLayer.extend({
                     offsetY -= 35;
                 }
             }
+
+            var vipPrivilegeIcon = cc.Sprite.create(main_scene_image.icon171);
+            vipPrivilegeIcon.setPosition(cc.p(40, offsetY));
+            scrollViewLayer.addChild(vipPrivilegeIcon);
+            var vipPrivilegeLabel = ColorLabelTTF.create(
+                {
+                    string: "可购买",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20
+                },
+                {
+                    string: "VIP" + (12 - i),
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20,
+                    isStroke: true,
+                    color: cc.c3b(255, 248, 69)
+                },
+                {
+                    string: "礼包",
+                    fontName: "STHeitiTC-Medium",
+                    fontSize: 20
+                }
+            );
+            vipPrivilegeLabel.setAnchorPoint(cc.p(0, 0.5));
+            vipPrivilegeLabel.setPosition(cc.p(70, offsetY));
+            scrollViewLayer.addChild(vipPrivilegeLabel);
+
         }
 
         var scrollView = cc.ScrollView.create(this._vipPrivilegeLayerFit.scrollViewSize, scrollViewLayer);

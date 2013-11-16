@@ -17,7 +17,6 @@ var lz = {};
     var _callback = {};
     var _index = 0;
 
-
     lz.schedule = function (fn, interval, repeat, delay) {
         interval = interval || 0;
         repeat = (repeat == null) ? cc.REPEAT_FOREVER : repeat;
@@ -266,7 +265,7 @@ lz.tipReward = function (reward) {
 
         var fn = (function (key) {
             return function () {
-                TipLayer.tipNoBg(lz.getNameByKey(key) + ": " + reward[key]);
+                TipLayer.tipNoBg(lz.getNameByKey(key) + ": +" + reward[key]);
             }
         })(key);
 

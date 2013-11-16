@@ -41,6 +41,7 @@ var RegisterLayer = cc.Layer.extend({
 
         this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit2));
         this._accountEditBox.setPosition(cc.p(420, 700));
+        this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
         this._accountEditBox.setDelegate(this);
         this._accountEditBox.setFont("American Typewriter", 25);
         this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
@@ -65,6 +66,7 @@ var RegisterLayer = cc.Layer.extend({
 
         this._nameEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit2));
         this._nameEditBox.setPosition(cc.p(420, 400));
+        this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
         this._nameEditBox.setDelegate(this);
         this._nameEditBox.setFont("American Typewriter", 25);
         this._nameEditBox.setFontColor(cc.c3b(200, 0, 250));
@@ -86,7 +88,7 @@ var RegisterLayer = cc.Layer.extend({
 
     canRegister: function (account, password, passwordAgain) {
         cc.log("User canRegister");
-        
+
         if (!account) {
             TipLayer.tip("请输入账号");
             return false;
@@ -113,6 +115,8 @@ var RegisterLayer = cc.Layer.extend({
     _onClickRegister: function () {
         cc.log("RegisterLayer _onClickRegister");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var user = gameData.user;
 
         var account = this._accountEditBox.getText();
@@ -134,6 +138,8 @@ var RegisterLayer = cc.Layer.extend({
 
     _onClickBack: function () {
         cc.log("RegisterLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this.getParent().switchLayer(LoginLayer);
     }

@@ -16,6 +16,7 @@ var CardLibraryLayer = cc.Layer.extend({
     _cardLibraryLayerFit: null,
 
     _cardItem: {},
+    _cardLockItem: {},
     _effect: {},
 
     onEnter: function () {
@@ -48,12 +49,13 @@ var CardLibraryLayer = cc.Layer.extend({
 
         var tipIcon = cc.Sprite.create(main_scene_image.main_message_bg);
         tipIcon.setPosition(this._cardLibraryLayerFit.tipIconPoint);
+        tipIcon.setScaleY(1.1);
         this.addChild(tipIcon);
 
         var tipLabel = cc.LabelTTF.create(
             "每次获得新卡牌，点击该卡牌可领取活力点。星级越高奖励越高。",
             "STHeitiTC-Medium",
-            17
+            20
         );
         tipLabel.setPosition(this._cardLibraryLayerFit.tipLabelPoint);
         this.addChild(tipLabel);
@@ -69,6 +71,7 @@ var CardLibraryLayer = cc.Layer.extend({
         var scrollViewHeight = Math.ceil(len / 4) * 143 + 25;
 
         this._cardItem = {};
+        this._cardLockItem = {};
         this._effect = {};
         for (var i = 0; i < len; ++i) {
             var row = Math.floor(i / 4);
@@ -79,6 +82,12 @@ var CardLibraryLayer = cc.Layer.extend({
             menu.addChild(cardItem);
 
             this._cardItem[cardLibrary[i].id] = cardItem;
+
+            var cardLockItem = cc.Sprite.create(main_scene_image.icon200);
+            cardLockItem.setScale(0.6);
+            cardLockItem.setPosition(cc.p(80, 25));
+            cardItem.addChild(cardLockItem);
+            this._cardLockItem[cardLibrary[i].id] = cardLockItem;
         }
 
         var scrollView = cc.ScrollView.create(this._cardLibraryLayerFit.scrollViewSize, scrollViewLayer);
@@ -118,12 +127,19 @@ var CardLibraryLayer = cc.Layer.extend({
                 if (this._effect[key]) {
                     this._effect[key].removeFromParent();
                 }
+
+
             } else if (type == CARD_EXIST) {
                 cardItem.setColor(cc.c3b(255, 255, 255));
 
                 if (this._effect[key]) {
                     this._effect[key].removeFromParent();
                 }
+
+                if(this._cardLockItem[key]) {
+                    this._cardLockItem[key].removeFromParent();
+                }
+
             } else if (type == CARD_RECEIVE) {
                 cardItem.setColor(cc.c3b(110, 110, 110));
 
@@ -138,6 +154,10 @@ var CardLibraryLayer = cc.Layer.extend({
                     });
 
                     this._effect[key] = ret.sprite;
+                }
+
+                if(this._cardLockItem[key]) {
+                    this._cardLockItem[key].removeFromParent();
                 }
             }
         }
@@ -158,7 +178,7 @@ var CardLibraryLayer = cc.Layer.extend({
 
                     that.update();
 
-                    TipLayer.tipNoBg("活力点: " + data);
+                    TipLayer.tipNoBg("活力点: +" + data);
                 }, id);
             } else {
                 CardDetails.pop(card);

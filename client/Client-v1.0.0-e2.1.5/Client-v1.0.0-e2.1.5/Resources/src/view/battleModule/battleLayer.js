@@ -36,7 +36,7 @@ var BatterLayer = cc.Layer.extend({
         this._spiritNode = [];
         this._locate = this._batterLayerFit.locatePoints;
 
-        var bgSprite = cc.Sprite.create(main_scene_image.bg13);
+        var bgSprite = cc.Sprite.create(main_scene_image.bg13, this._batterLayerFit.bgSpriteRect);
         bgSprite.setAnchorPoint(cc.p(0, 0));
         bgSprite.setPosition(this._batterLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
@@ -81,8 +81,14 @@ var BatterLayer = cc.Layer.extend({
             }
         }
 
-        this._backItem = cc.MenuItemFont.create("结束战斗", this.end, this);
+        this._backItem = cc.MenuItemImage.create(
+            main_scene_image.button12,
+            main_scene_image.button12s,
+            this._onClickBack,
+            this
+        );
         this._backItem.setPosition(this._batterLayerFit.backItemPoint);
+
         var menu = cc.Menu.create(this._backItem);
         this.addChild(menu);
 
@@ -113,7 +119,7 @@ var BatterLayer = cc.Layer.extend({
         }
     },
 
-    tipHarm: function (index, value, isCirt) {
+    tipHarm: function (index, value, isSkill, isCirt) {
         cc.log("BatterLayer tipHarm");
 
         var name = "";
@@ -133,10 +139,16 @@ var BatterLayer = cc.Layer.extend({
         } else {
             str = "" + value;
 
-            if (isCirt) {
-                name = "atk_1_2";
+            if (isSkill) {
+                name = "atk_3_";
             } else {
-                name = "atk_1_1";
+                name = "atk_1_"
+            }
+
+            if (isCirt) {
+                name += "2";
+            } else {
+                name += "1";
             }
         }
 
@@ -254,14 +266,14 @@ var BatterLayer = cc.Layer.extend({
                             showSpiritAdditionCallback2();
                         });
 
-                        that.tip(index, "buf_2", "攻击\n +" + cardNode.getSpiritAtk());
+                        that.tip(index, "buf_2", cardNode.getSpiritAtk());
 
                         showSpiritAdditionCallback1();
                     });
 
                     var spiritHp = cardNode.getSpiritHp();
                     cardNode.update(spiritHp);
-                    that.tip(index, "buf_1", "生命\n +" + spiritHp);
+                    that.tip(index, "buf_1", spiritHp);
                 })();
             }
         }
@@ -403,7 +415,7 @@ var BatterLayer = cc.Layer.extend({
                         );
 
                         targetNode.update(effect);
-                        that.tipHarm(target, effect, isCrit);
+                        that.tipHarm(target, effect, false, isCrit);
 
                         nextStepCallback1();
                     });
@@ -463,7 +475,7 @@ var BatterLayer = cc.Layer.extend({
                     );
 
                     targetNode.update(effect);
-                    that.tipHarm(target, effect, isCrit);
+                    that.tipHarm(target, effect, true, isCrit);
                 })();
             }
         };
@@ -516,7 +528,7 @@ var BatterLayer = cc.Layer.extend({
                         );
 
                         targetNode.update(effect);
-                        that.tipHarm(target, effect, isCrit);
+                        that.tipHarm(target, effect, true, isCrit);
 
                         nextStepCallback1();
                     });
@@ -574,7 +586,7 @@ var BatterLayer = cc.Layer.extend({
                     );
 
                     targetNode.update(effect);
-                    that.tipHarm(target, effect, isCrit);
+                    that.tipHarm(target, effect, true, isCrit);
                 })();
             }
         };
@@ -702,6 +714,18 @@ var BatterLayer = cc.Layer.extend({
                     this.end();
                 }, 1.5);
             }
+        }
+    },
+
+    _onClickBack: function () {
+        cc.log("BattleLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (gameData.player.get("lv") < 10) {
+            TipLayer.tip("10级开始后，可以跳过战斗");
+        } else {
+            this.end();
         }
     }
 });

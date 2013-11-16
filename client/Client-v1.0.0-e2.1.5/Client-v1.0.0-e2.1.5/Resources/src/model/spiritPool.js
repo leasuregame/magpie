@@ -61,7 +61,7 @@ var SpiritPool = Entity.extend({
         }
 
         if (useGold && gameData.player.get("gold") < 20) {
-            TipLayer.tip("元宝不足");
+            TipLayer.tip("魔石不足");
             return false;
         }
 

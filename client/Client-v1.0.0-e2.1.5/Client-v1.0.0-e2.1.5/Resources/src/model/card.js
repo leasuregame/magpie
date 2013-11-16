@@ -240,6 +240,20 @@ var Card = Entity.extend({
         this._atk = this._initAtk + elixirAtk + psAtk;
     },
 
+    getCardFullUrl: function () {
+        cc.log("Card getCardFullUrl");
+
+        var len = this._star - 3;
+
+        var urlList = [main_scene_image[this._url + "_full1"]];
+
+        for (var i = 0; i < len; ++i) {
+            urlList.push(main_scene_image[this._url + "_full" + (i + 2)]);
+        }
+
+        return urlList;
+    },
+
     addExp: function (exp) {
         cc.log("Card addExp: " + exp);
 
@@ -513,7 +527,7 @@ var Card = Entity.extend({
     train: function (cb, trainCount, trainType) {
         cc.log("Card train " + this._id);
 
-        var elixir = trainCount * 10;
+        var elixir = trainCount * 20;
         var that = this;
         lz.server.request("area.trainHandler.useElixir", {
             cardId: this._id,

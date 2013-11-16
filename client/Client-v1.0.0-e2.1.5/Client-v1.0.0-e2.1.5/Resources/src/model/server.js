@@ -251,8 +251,7 @@ var Server = Entity.extend({
                 that._gateServerStatus = CONNECT_FAIL;
                 that._gameServerStatus = CONNECT_FAIL;
 
-
-                LogoutLayer.pop("网络不给力，请重新连接");
+                LogoutLayer.pop("请重新连接");
             });
 
             that._closeAllWaitLayer();
@@ -322,15 +321,15 @@ var Server = Entity.extend({
     getRecommendArea: function () {
         cc.log("Server getRecommendArea");
 
-        if (this._areaList) {
-            var len = this._areaList.length;
+//        if (this._areaList) {
+//            var len = this._areaList.length;
+//
+//            if (len > 0) {
+//                return this._areaList[len - 1].id;
+//            }
+//        }
 
-            if (len > 0) {
-                return this._areaList[len - 1].id;
-            }
-        }
-
-        return 0;
+        return 1;
     },
 
     _showWaitLayer: function () {
@@ -369,8 +368,6 @@ var Server = Entity.extend({
                 })
             )
         );
-
-        cc.log("1");
     },
 
     _closeWaitLayer: function () {

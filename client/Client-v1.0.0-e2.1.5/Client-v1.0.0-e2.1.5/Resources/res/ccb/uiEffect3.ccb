@@ -60,7 +60,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>10</real>
+									<real>25</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -382,7 +382,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-1440</real>
+							<real>-78.720001220703125</real>
 							<real>180</real>
 							<integer>0</integer>
 						</array>
@@ -463,7 +463,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>4.6666665077209473</real>
+									<real>12.5</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -481,7 +481,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>10</real>
+									<real>25</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -755,8 +755,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1440</real>
-							<real>-140</real>
+							<real>73.471992492675781</real>
+							<real>-141.09333801269531</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -877,17 +877,17 @@
 			<key>chainedSequenceId</key>
 			<integer>0</integer>
 			<key>length</key>
-			<real>10</real>
+			<real>25</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>10</real>
+			<real>1.3666666746139526</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>107.58988952636719</real>
+			<real>42.639045715332031</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

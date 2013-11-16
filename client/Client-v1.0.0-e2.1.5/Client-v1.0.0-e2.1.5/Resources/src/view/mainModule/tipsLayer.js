@@ -86,7 +86,7 @@ var TipsLayer = LazyLayer.extend({
 
         //修炼描述
         y = scrollViewHeight - 55 - 30 - 250;
-        var description = lz.format('主要产出：角色升级经验，仙币，卡牌强化所用的素材卡。', 28);
+        var description = lz.format('主要产出：角色升级经验，仙币，卡牌强化所用的从卡。', 28);
         this._addDescription(description, y, scrollViewLayer);
 
         y -= description.length * 25;
@@ -113,7 +113,7 @@ var TipsLayer = LazyLayer.extend({
 
         //好友描述
         y = scrollViewHeight - 55 - 30 - 250 * 4;
-        var description = lz.format('你可以通过祝福好友来获取活力值，活力值可以代替元宝进行卡牌召唤。', 28);
+        var description = lz.format('你可以通过祝福好友来获取活力值，活力值可以代替魔石进行卡牌召唤。', 28);
         this._addDescription(description, y, scrollViewLayer);
 
         //VIP描述
@@ -169,7 +169,7 @@ var TipsLayer = LazyLayer.extend({
         var description = lz.format('5星卡拥有3个被动效果。', 28);
         this._addDescription(description, y, scrollViewLayer);
         y -= description.length * 25;
-        var description = lz.format('被动属性效果可以花费仙币或者元宝进行洗练，追求最佳属性搭配。', 28);
+        var description = lz.format('被动属性效果可以花费仙币或者魔石进行洗练，追求最佳属性搭配。', 28);
         this._addDescription(description, y, scrollViewLayer);
 
         //星级进阶

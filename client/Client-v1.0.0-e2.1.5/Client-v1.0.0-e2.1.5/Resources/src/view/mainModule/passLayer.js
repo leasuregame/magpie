@@ -53,6 +53,10 @@ var PassLayer = cc.Layer.extend({
         bgSprite.setPosition(this._passLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
+        var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect28, this);
+        ccbNode.setPosition(this._passLayerFit.ccbNodePoint);
+        this.addChild(ccbNode);
+
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
         headIcon.setPosition(this._passLayerFit.headIconPoint);
@@ -62,24 +66,9 @@ var PassLayer = cc.Layer.extend({
         titleIcon.setPosition(this._passLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
-        this._mysticalItem = cc.MenuItemImage.create(
-            main_scene_image.button43,
-            main_scene_image.button43,
-            this._onClickMystical,
-            this
-        );
+        this._mysticalItem = cc.BuilderReader.load(main_scene_image.uiEffect1, this);
         this._mysticalItem.setPosition(this._passLayerFit.mysticalItemPoint);
-        this._mysticalItem.setVisible(false);
-
-        var mysticalItemMenu = cc.Menu.create(this._mysticalItem);
-        mysticalItemMenu.setPosition(cc.p(0, 0));
-        this.addChild(mysticalItemMenu);
-
-        for (var i = 0; i < 6; ++i) {
-            this._blackHoleSprite[i] = cc.Sprite.create(main_scene_image["icon" + (228 + i)]);
-            this._blackHoleSprite[i].setPosition(cc.p(82, 125));
-            this._mysticalItem.addChild(this._blackHoleSprite[i]);
-        }
+        this.addChild(this._mysticalItem);
 
         var scrollViewLayer = MarkLayer.create(this._passLayerFit.scrollViewLayerRect);
 
@@ -145,7 +134,7 @@ var PassLayer = cc.Layer.extend({
             };
         }
 
-        this._spirit = SpiritNode.create();
+        this._spirit = SpiritNode.create(0);
         this._spirit.setAnchorPoint(cc.p(0, 0));
         this._spirit.setPosition(this._getCardLocation(this._top));
         scrollViewLayer.addChild(this._spirit, 1);
@@ -358,11 +347,22 @@ var PassLayer = cc.Layer.extend({
         bgSprite.setPosition(this._passLayerFit.bgSprite2Point);
         layer.addChild(bgSprite);
 
-        var rewardLabel = cc.LabelTTF.create("是否消耗 200 魔石重置关卡?", "STHeitiTC-Medium", 25);
-        rewardLabel.setColor(cc.c3b(255, 239, 131));
-        rewardLabel.setAnchorPoint(cc.p(0.5, 1));
-        rewardLabel.setPosition(this._passLayerFit.rewardLabelPoint);
-        layer.addChild(rewardLabel);
+        var rewardLabel1 = cc.LabelTTF.create("是否消耗 200 ", "STHeitiTC-Medium", 25);
+        rewardLabel1.setColor(cc.c3b(255, 239, 131));
+        rewardLabel1.setAnchorPoint(cc.p(0, 1));
+        rewardLabel1.setPosition(this._passLayerFit.rewardLabel1Point);
+        layer.addChild(rewardLabel1);
+
+        var goldIcon = cc.Sprite.create(main_scene_image.icon148);
+        goldIcon.setAnchorPoint(cc.p(0, 1));
+        goldIcon.setPosition(this._passLayerFit.goldIconPoint);
+        layer.addChild(goldIcon);
+
+        var rewardLabel2 = cc.LabelTTF.create("重置关卡?", "STHeitiTC-Medium", 25);
+        rewardLabel2.setColor(cc.c3b(255, 239, 131));
+        rewardLabel2.setAnchorPoint(cc.p(0, 1));
+        rewardLabel2.setPosition(this._passLayerFit.rewardLabel2Point);
+        layer.addChild(rewardLabel2);
 
         var okItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -414,7 +414,6 @@ var PassLayer = cc.Layer.extend({
         var str = lz.getRewardString(reward);
         var len = str.length;
 
-       // var offsetY = 655;
         var point = this._passLayerFit.rewardLabelBasePoint;
         for (var i = 0; i < len; ++i) {
             var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 20);
@@ -477,6 +476,19 @@ var PassLayer = cc.Layer.extend({
 
         this.scheduleOnce(function () {
             LazyLayer.closeCloudLayer();
+
+            var ccbNode;
+            if (gameData.pass.isBossPass(this._top)) {
+                ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect20, this);
+            } else {
+                ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect16, this);
+            }
+            ccbNode.setPosition(this._element[this._top].passItem.getPosition());
+            this._scrollView.addChild(ccbNode);
+
+            ccbNode.animationManager.setCompletedAnimationCallback(this, function () {
+                ccbNode.removeFromParent();
+            });
         }, 3.5);
     },
 
@@ -508,6 +520,16 @@ var PassLayer = cc.Layer.extend({
     _onClickDefiance: function (id) {
         return function () {
             cc.log("PassLayer _onClickDefiance: " + id);
+
+            this._element[id].passItem.stopAllActions();
+
+            this._element[id].passItem.runAction(
+                cc.Sequence.create(
+                    cc.ScaleTo.create(0.2, 1.2),
+                    cc.ScaleTo.create(0.3, 0.9),
+                    cc.ScaleTo.create(0.2, 1)
+                )
+            );
 
             if (id > this._top) {
                 TipLayer.tip("请先挑战前面关卡");

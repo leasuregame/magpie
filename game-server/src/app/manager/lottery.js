@@ -126,11 +126,15 @@ var newCard = function (level, hCounts) {
 };
 
 var freeCard = function(star) {
+    var idMap = {
+        3: [13, 43, 48],
+        4: [58, 98, 128]
+    };
     return {
-        tableId: randomCardId(star),
+        tableId: idMap[star][_.random(0, 3)],
         star: star,
         lv: parseInt(gen_card_level(star))
-    }
+    };
 };
 
 var consume = function (level, type) {

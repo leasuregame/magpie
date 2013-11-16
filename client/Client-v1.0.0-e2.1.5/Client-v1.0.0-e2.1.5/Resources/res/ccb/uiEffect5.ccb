@@ -124,11 +124,11 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>spirit1</string>
+				<string>spirit</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>spiritNode</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -176,10 +176,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>main/spirit1.png</string>
+							<string>main/spirit_1_1.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -240,8 +242,8 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<integer>0</integer>
+									<string>_onClickSpirit</string>
+									<integer>2</integer>
 								</array>
 							</dict>
 							<dict>

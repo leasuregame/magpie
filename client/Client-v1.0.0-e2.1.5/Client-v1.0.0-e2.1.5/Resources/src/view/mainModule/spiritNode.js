@@ -29,7 +29,7 @@ var SpiritNode = cc.Node.extend({
             spiritLv = 1;
         }
 
-        this._spiritSprite = cc.Sprite.create(main_scene_image["spirit" + spiritLv]);
+        this._spiritSprite = cc.Sprite.create(main_scene_image["spirit_1_" + Math.ceil(spiritLv / 2)]);
         this.addChild(this._spiritSprite);
 
         return true;
@@ -95,26 +95,21 @@ SpiritNode.create = function (spiritLv) {
 };
 
 
-SpiritNode.getSpiritItem = function (cb, target) {
-    cb = cb || function () {
-        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-            NoviceTeachingLayer.getInstance().clearAndSave();
-            NoviceTeachingLayer.getInstance().next();
-        }
-
-        var spiritDetails = SpiritDetails.create();
-        MainScene.getInstance().addChild(spiritDetails, 1);
-    };
-    target = target || this;
-
-    var spiritItem = cc.MenuItemImage.create(
-        main_scene_image.spirit1,
-        main_scene_image.spirit1,
-        cb,
-        target
-    );
-
-    spiritItem.setScale(0.9);
-
-    return spiritItem;
-};
+//SpiritNode.getSpiritItem = function (cb, target) {
+//    cb = cb || function () {
+//        var spiritDetails = SpiritDetails.create();
+//        MainScene.getInstance().addChild(spiritDetails, 1);
+//    };
+//    target = target || this;
+//
+//    var spiritItem = cc.MenuItemImage.create(
+//        main_scene_image.spirit1,
+//        main_scene_image.spirit1,
+//        cb,
+//        target
+//    );
+//
+//    spiritItem.setScale(0.9);
+//
+//    return spiritItem;
+//};

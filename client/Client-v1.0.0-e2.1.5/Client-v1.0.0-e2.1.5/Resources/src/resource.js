@@ -79,6 +79,12 @@ var main_scene_image = {
     spirit9: main_scene_path + "spirit9.png",
     spirit10: main_scene_path + "spirit10.png",
 
+    spirit_1_1: main_scene_path + "spirit_1_1.png",
+    spirit_1_2: main_scene_path + "spirit_1_2.png",
+    spirit_1_3: main_scene_path + "spirit_1_3.png",
+    spirit_1_4: main_scene_path + "spirit_1_4.png",
+    spirit_1_5: main_scene_path + "spirit_1_5.png",
+
     spirit_side: main_scene_path + "spirit_side.png",
 
     spirit_face1: main_scene_path + "spirit_face1.png",

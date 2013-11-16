@@ -85,7 +85,7 @@ var ExploreLayer = cc.Layer.extend({
         this.addChild(line2Icon, 1);
 
         var descriptionBgIcon = cc.Sprite.create(main_scene_image.icon287);
-        descriptionBgIcon.setAnchorPoint(cc.p(0,0));
+        descriptionBgIcon.setAnchorPoint(cc.p(0, 0));
         descriptionBgIcon.setPosition(this._exploreLayerFit.descriptionBgIconPoint);
         descriptionBgIcon.setScaleY(1.1);
         this.addChild(descriptionBgIcon);
@@ -622,7 +622,6 @@ var ExploreLayer = cc.Layer.extend({
         cc.log(product);
 
         if (product.count <= 0) {
-            TipLayer.tip(product.tip);
             return;
         }
 

@@ -116,8 +116,8 @@ var SpiritPoolLayer = cc.Layer.extend({
         tipLabel.setPosition(this._spiritPoolLayerFit.tipLabelPoint);
         this.addChild(tipLabel);
 
-        this._spiritItem = SpiritNode.getSpiritItem();
-        this._spiritItem.setPosition(this._spiritPoolLayerFit.spiritItemPoint);
+//        this._spiritItem = SpiritNode.getSpiritItem();
+//        this._spiritItem.setPosition(this._spiritPoolLayerFit.spiritItemPoint);
 
         this._spiritPoolItem = cc.MenuItemImage.create(
             main_scene_image.icon97,
@@ -239,6 +239,17 @@ var SpiritPoolLayer = cc.Layer.extend({
                 that.update();
             }
         }, this._useGold);
+    },
+
+    _onClickSpirit: function () {
+        cc.log("SpiritPoolLayer _onClickSpirit");
+
+        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+            NoviceTeachingLayer.getInstance().clearAndSave();
+            NoviceTeachingLayer.getInstance().next();
+        }
+
+        MainScene.getInstance().addChild(SpiritDetails.create(), 1);
     },
 
     _onClickUseGold: function () {

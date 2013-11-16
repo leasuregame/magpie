@@ -60,9 +60,9 @@ var CardDao = (function(_super) {
 	};
 
     CardDao.deleteExploreCards = function(pid,cb){
-        var sql = "delete from card where playerId = ? and lv < ?";
+        var sql = "delete from card where playerId = ? and tableId =  ?";
         console.log(sql);
-        var args = [pid,11];
+        var args = [pid,30000];
         dbClient.query(sql,args,function(err,res){
             if(err) {
                 //logger.error("[SQL ERROR, when delete cards]", err.stack);

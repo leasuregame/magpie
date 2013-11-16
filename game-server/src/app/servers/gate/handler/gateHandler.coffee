@@ -20,10 +20,6 @@ Handler::queryEntry = (msg, session, next) ->
 		return next {code: 500, msg: 'no servers available'}
 
 	conn = dispatcher.randomDispatch(connectors)
-	console.log areasInfo
-	console.log areasInfo.map (a) -> 
-		a.status = randomStatus()
-		a
 	next null, {
 		code: 200, 
 		msg: {

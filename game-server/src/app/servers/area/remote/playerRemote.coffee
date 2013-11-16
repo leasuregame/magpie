@@ -1,5 +1,6 @@
 app = require('pomelo').app
 dao = app.get('dao')
+playerManager = require '../../../manager/playerManager'
 area = require '../../../domain/area/area'
 messageService = app.get('messageService')
 async = require('async')
@@ -36,7 +37,7 @@ Remote::createPlayer = (args, callback) ->
       
       ### 每天重置一次玩家的部分数据 ###
       player.resetData() if not player.isReset()
-
+      console.log 'cards : ', player.cards
       ### 缓存登陆的玩家信息 ###
       area.addPlayer player
       messageService.add(uid, serverId, player.id, player.name)
@@ -64,32 +65,8 @@ Remote::playerLeave = (playerId, uid, serverId, callback) ->
   callback()
 
 initPlayer = (player, callback) ->
-  # 添加初始卡牌信息
-  async.parallel [
-    (cb) ->
-      dao.card.create data: {
-        playerId: player.id
-        tableId: 3
-        lv: 5
-        star: 3
-        }, cb
-    (cb) ->
-      dao.card.create data: {
-        playerId: player.id
-        tableId: 6
-        lv: 1
-        star: 1
-        }, cb
-    (cb) ->
-      dao.card.create data: {
-        playerId: player.id
-        tableId: 12
-        lv: 1
-        star: 2
-        }, cb
-  ], (err, results) ->
+  playerManager.addExpCardFor player, 2, (err, res) ->
     if err
       return callback(err)
 
-    player.addCards results
     callback(null, player)

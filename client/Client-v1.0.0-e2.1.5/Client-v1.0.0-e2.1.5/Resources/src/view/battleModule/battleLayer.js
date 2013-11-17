@@ -173,7 +173,7 @@ var BatterLayer = cc.Layer.extend({
             if (that._counter == 0) {
                 var effect15Node = cc.BuilderReader.load(main_scene_image.effect15, that);
                 effect15Node.setPosition(that._batterLayerFit.effect15NodePoint);
-                that.addChild(effect15Node);
+                that.addChild(effect15Node, 5);
 
                 effect15Node.animationManager.setCompletedAnimationCallback(that, function () {
                     effect15Node.removeFromParent();

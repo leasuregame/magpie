@@ -157,6 +157,8 @@ var SignIn = Entity.extend({
                 that._monthsMark[0].count += 1;
 
                 cb(msg);
+
+                lz.dc.event("event_daily_sign", "signIn");
             } else {
                 cc.log("signIn fail");
             }
@@ -187,6 +189,8 @@ var SignIn = Entity.extend({
                 that._monthsMark[0].count += 1;
 
                 cb(msg.reward);
+
+                lz.dc.event("event_daily_sign", "remedySignIn");
             } else {
                 cc.log("remedySignIn fail");
             }

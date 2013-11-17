@@ -174,6 +174,8 @@ var Friend = Entity.extend({
                 cc.log("addFriend success");
 
                 TipLayer.tip("请求已发送");
+
+                lz.dc.event("event_friend", "addFriend");
             } else {
                 cc.log("addFriend fail");
 
@@ -200,6 +202,8 @@ var Friend = Entity.extend({
                 TipLayer.tip("删除成功");
 
                 cb();
+
+                lz.dc.event("event_friend", "deleteFriend");
             } else {
                 cc.log("deleteFriend fail");
 

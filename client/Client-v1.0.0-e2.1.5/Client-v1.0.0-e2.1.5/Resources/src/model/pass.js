@@ -98,12 +98,12 @@ var Pass = Entity.extend({
         return true;
     },
 
-    defiance: function (cb, index) {
-        cc.log("Pass defiance " + index);
+    defiance: function (cb, id) {
+        cc.log("Pass defiance " + id);
 
         var that = this;
         lz.server.request("area.taskHandler.passBarrier", {
-            layer: index
+            layer: id
         }, function (data) {
             cc.log(data);
 
@@ -128,6 +128,8 @@ var Pass = Entity.extend({
                 cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
 
                 cb(cbData);
+
+                lz.dc.event("event_pass", id);
             } else {
                 cc.log("defiance fail");
 

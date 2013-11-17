@@ -159,6 +159,8 @@ var Shop = Entity.extend({
                 }
 
                 cb();
+
+                lz.dc.event("event_pay", id);
             } else {
                 cc.log("payment fail");
 
@@ -212,6 +214,8 @@ var Shop = Entity.extend({
                     fragment: table.fragments || 0,
                     cards: table.exp_card || 0
                 });
+
+                lz.dc.event("event_buy", "buyVipBox")
             } else {
                 cc.log("buyVipBox fail");
 
@@ -256,6 +260,8 @@ var Shop = Entity.extend({
                 var reward = that.ProductHandle[table.method](msg);
 
                 cb(reward);
+
+                lz.dc.event("event_buy", "buyProduct " + id)
             } else {
                 cc.log("buyProduct fail");
 

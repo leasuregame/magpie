@@ -152,6 +152,8 @@ var CardLibrary = Entity.extend({
                 that._changeTypeById(id, CARD_EXIST);
 
                 cb(msg.energy);
+
+                lz.dc.event("event_card_book");
             } else {
                 cc.log("receive fail");
             }

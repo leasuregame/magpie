@@ -202,6 +202,8 @@ var Task = Entity.extend({
                 }
 
                 cb(cbData);
+
+                lz.dc.event("event_explore", id);
             } else {
                 cc.log("explore fail");
 

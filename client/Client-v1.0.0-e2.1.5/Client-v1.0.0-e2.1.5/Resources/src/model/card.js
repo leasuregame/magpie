@@ -69,10 +69,10 @@ var Card = Entity.extend({
 
             cc.log(this);
 
-            if (data != undefined && data.hp != undefined && SETTING_IS_BROWSER)
+            if (data != undefined && data.hp != undefined && lz.TARGET_PLATFORM_IS_BROWSER)
                 cc.Assert(data.hp == this._hp, "Card hp error");
 
-            if (data != undefined && data.atk != undefined && SETTING_IS_BROWSER)
+            if (data != undefined && data.atk != undefined && lz.TARGET_PLATFORM_IS_BROWSER)
                 cc.Assert(data.atk == this._atk, "Card atk error");
 
             cc.log("=============================================");
@@ -333,6 +333,8 @@ var Card = Entity.extend({
                     exp: msg.exp_obtain,
                     money: msg.money_consume
                 });
+
+                lz.dc.event("event_card_upgrade", that._lv);
             } else {
                 cc.log("upgrade fail");
 
@@ -397,6 +399,8 @@ var Card = Entity.extend({
                 gameData.player.add("skillPoint", -msg.skillPoint);
 
                 cb();
+
+                lz.dc.event("event_card_skill_upgrade", that._skillLv);
             } else {
                 cc.log("upgradeSkill fail");
 
@@ -508,6 +512,8 @@ var Card = Entity.extend({
                 that.update(msg.card);
 
                 cb();
+
+                lz.dc.event("event_card_star_upgrade", that._star);
             } else {
                 cc.log("evolution fail");
 

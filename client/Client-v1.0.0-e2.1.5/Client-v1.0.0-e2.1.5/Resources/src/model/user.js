@@ -157,6 +157,8 @@ var User = Entity.extend({
                     } else {
                         cb(2);
                     }
+
+                    lz.dc.event("event_login", that._area);
                 } else {
                     cc.log("login fail");
 
@@ -188,6 +190,8 @@ var User = Entity.extend({
                     that._save();
 
                     cb();
+
+                    lz.dc.event("event_register");
                 } else {
                     cc.log("register fail");
 

@@ -112,6 +112,8 @@ var Achievement = Entity.extend({
                 gameData.player.adds(reward);
 
                 cb(reward);
+
+                lz.dc.event("event_achievement", id);
             } else {
                 cc.log("receiver fail");
 

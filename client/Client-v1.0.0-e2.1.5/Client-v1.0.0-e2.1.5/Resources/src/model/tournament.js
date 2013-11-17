@@ -155,6 +155,8 @@ var Tournament = Entity.extend({
                 cbData.battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
 
                 cb(cbData);
+
+                lz.dc.event("event_rank");
             } else {
                 cc.log("Tournament defiance fail");
 

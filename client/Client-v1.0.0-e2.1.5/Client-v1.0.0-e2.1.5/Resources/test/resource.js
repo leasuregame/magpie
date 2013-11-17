@@ -667,7 +667,7 @@ var main_scene_image = {
 
 
 
-
+    texiao5: ccb_scene_path + "texiao5.ccbi",
     texiao8: ccb_scene_path + "texiao8.ccbi",
     tutorials1: ccb_scene_path + "tutorials1.ccbi",
     tutorials2: ccb_scene_path + "tutorials2.ccbi",
@@ -689,6 +689,11 @@ var main_scene_image = {
     spiritNode: ccb_scene_path + "spiritNode.ccbi",
     battleNode: ccb_scene_path + "battleNode.ccbi",
 
+
+    //testpicture
+    13: effect_scene_path + "test/" + "13.png",
+    14: effect_scene_path + "test/" + "14.png",
+    15: effect_scene_path + "test/" + "15.png",
 
 
 

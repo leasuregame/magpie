@@ -168,21 +168,15 @@ var User = Entity.extend({
         });
     },
 
-    register: function (cb, account, password, name) {
+    register: function (cb, account, password) {
         cc.log("User register");
-
-        var param = {
-            account: account,
-            password: password
-        };
-
-        if (name) {
-            param.name = name;
-        }
 
         var that = this;
         lz.server.connectGameServer(function () {
-            lz.server.request("connector.userHandler.register", param, function (data) {
+            lz.server.request("connector.userHandler.register", {
+                account: account,
+                password: password
+            }, function (data) {
                 cc.log(data);
 
                 if (data.code == 200) {

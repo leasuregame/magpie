@@ -16,7 +16,6 @@ var RegisterLayer = cc.Layer.extend({
     _accountEditBox: null,
     _passwordEditBox: null,
     _passwordAgainEditBox: null,
-    _nameEditBox: null,
 
     init: function () {
         cc.log("RegisterLayer init");
@@ -34,10 +33,6 @@ var RegisterLayer = cc.Layer.extend({
         var passwordAgainLabel = cc.LabelTTF.create("重复密码:", "STHeitiTC-Medium", 30);
         passwordAgainLabel.setPosition(cc.p(150, 500));
         this.addChild(passwordAgainLabel);
-
-        var nameLabel = cc.LabelTTF.create("昵称(可选):", "STHeitiTC-Medium", 30);
-        nameLabel.setPosition(cc.p(150, 400));
-        this.addChild(nameLabel);
 
         this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit2));
         this._accountEditBox.setPosition(cc.p(420, 700));
@@ -63,15 +58,6 @@ var RegisterLayer = cc.Layer.extend({
         this._passwordAgainEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._passwordAgainEditBox.setMaxLength(18);
         this.addChild(this._passwordAgainEditBox);
-
-        this._nameEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit2));
-        this._nameEditBox.setPosition(cc.p(420, 400));
-        this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
-        this._nameEditBox.setDelegate(this);
-        this._nameEditBox.setFont("American Typewriter", 25);
-        this._nameEditBox.setFontColor(cc.c3b(200, 0, 250));
-        this._nameEditBox.setMaxLength(18);
-        this.addChild(this._nameEditBox);
 
         var registerAndLoginButton = cc.MenuItemFont.create("注册", this._onClickRegister, this);
         registerAndLoginButton.setPosition(260, 250);
@@ -122,7 +108,6 @@ var RegisterLayer = cc.Layer.extend({
         var account = this._accountEditBox.getText();
         var password = this._passwordEditBox.getText();
         var passwordAgain = this._passwordAgainEditBox.getText();
-        var name = this._nameEditBox.getText();
 
         if (!this.canRegister(account, password, passwordAgain)) {
             return;
@@ -133,7 +118,7 @@ var RegisterLayer = cc.Layer.extend({
             cc.log(data);
 
             that.getParent().switchLayer(LoginLayer);
-        }, account, password, name);
+        }, account, password);
     },
 
     _onClickBack: function () {

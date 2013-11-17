@@ -353,21 +353,21 @@ var BatterLayer = cc.Layer.extend({
             };
 
             var addSubtitleNodeCb = function () {
-                if (ccbNode) {
-                    ccbNode.setPosition(that._batterLayerFit["ccbNodePoint" + that._getDirection(attacker)]);
-                    that.addChild(ccbNode, 5);
+                ccbNode.setPosition(that._batterLayerFit["ccbNodePoint" + that._getDirection(attacker)]);
+                that.addChild(ccbNode, 5);
 
-                    ccbNode.animationManager.setCompletedAnimationCallback(that, cb);
-                } else {
-                    cb();
-                }
+                ccbNode.animationManager.setCompletedAnimationCallback(that, cb);
             };
 
-            this._battleNode[attacker].runAnimations(
-                "rea_1",
-                0,
-                addSubtitleNodeCb
-            );
+            if (ccbNode) {
+                this._battleNode[attacker].runAnimations(
+                    "rea_1",
+                    0,
+                    addSubtitleNodeCb
+                );
+            } else {
+                cb();
+            }
         } else {
             this.normalAtk(battleStep);
         }

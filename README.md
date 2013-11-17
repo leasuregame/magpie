@@ -6,3 +6,6 @@ magpie
 [战报格式](https://github.com/leasuregame/magpie/wiki/%E6%88%98%E6%8A%A5%E6%A0%BC%E5%BC%8F)
 
 [任务系统](https://github.com/leasuregame/magpie/wiki/%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F)
+
+友盟测试账号：wuzhanghai@leasuregame.com
+密码：wenjin34

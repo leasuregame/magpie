@@ -13,15 +13,18 @@
 
 
 var PlayerUpgradeLayer = LazyLayer.extend({
+    _playerUpgradeLayerFit: null,
+
     init: function (data) {
         cc.log("PlayerUpgradeLayer init");
 
         if (!this._super()) return false;
 
+        this._playerUpgradeLayerFit = gameFit.mainScene.playerUpgradeLayer;
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
-        bgLayer.setPosition(GAME_ZERO);
+        bgLayer.setPosition(this._playerUpgradeLayerFit.bgLayerPoint);
         this.addChild(bgLayer);
 
         var layer = cc.Layer.create();
@@ -30,22 +33,27 @@ var PlayerUpgradeLayer = LazyLayer.extend({
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.icon259);
         bgSprite.setContentSize(cc.size(450, 400));
-        bgSprite.setPosition(cc.p(360, 600));
+        bgSprite.setPosition(this._playerUpgradeLayerFit.bgSpritePoint);
         layer.addChild(bgSprite);
 
         var obtainSprite = cc.Sprite.create(main_scene_image.icon258);
-        obtainSprite.setPosition(cc.p(360, 820));
+        obtainSprite.setPosition(this._playerUpgradeLayerFit.obtainSpritePoint);
         layer.addChild(obtainSprite);
 
         var str = lz.getRewardString(data);
         var len = str.length;
 
-        var offsetY = 720;
+        var offsetY = this._playerUpgradeLayerFit.offsetY;
         for (var i = 0; i < len; ++i) {
+            var rewardBgLabel = cc.Sprite.create(main_scene_image.icon115);
+            rewardBgLabel.setAnchorPoint(cc.p(0.5, 0.8));
+            rewardBgLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
+            layer.addChild(rewardBgLabel);
+
             var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 22);
             rewardLabel.setColor(cc.c3b(255, 239, 131));
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
-            rewardLabel.setPosition(cc.p(360, offsetY));
+            rewardLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
             layer.addChild(rewardLabel);
 
             offsetY -= 45;
@@ -59,7 +67,7 @@ var PlayerUpgradeLayer = LazyLayer.extend({
             this._onClickOk,
             this
         );
-        okItem.setPosition(cc.p(360, 460));
+        okItem.setPosition(this._playerUpgradeLayerFit.okItemPoint);
 
         var menu = cc.Menu.create(okItem);
         menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);

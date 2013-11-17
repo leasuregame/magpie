@@ -15,8 +15,10 @@
 var LotteryLayer = cc.Layer.extend({
     _lotteryLayerFit: null,
 
+    _data: null,
     _goldLabel: null,
     _energyLabel: null,
+    _lotteryLabel: null,
 
     onEnter: function () {
         cc.log("LotteryLayer onEnter");
@@ -53,13 +55,18 @@ var LotteryLayer = cc.Layer.extend({
             this
         );
         backItem.setPosition(this._lotteryLayerFit.backItemPoint);
-        var menu = cc.Menu.create(backItem);
-        menu.setPosition(cc.p(0, 0));
-        this.addChild(menu, 1);
 
-        var lotteryLabel = cc.Sprite.create(main_scene_image.icon242);
-        lotteryLabel.setPosition(this._lotteryLayerFit.lotteryLabelPoint);
-        this.addChild(lotteryLabel);
+        this._lotteryLabel = cc.BuilderReader.load(main_scene_image.uiEffect6, this);
+        this._lotteryLabel.setPosition(this._lotteryLayerFit.lotteryLabelPoint);
+        this.addChild(this._lotteryLabel);
+
+        var lotteryDescLabel1 = cc.Sprite.create(main_scene_image.icon113);
+        lotteryDescLabel1.setPosition(this._lotteryLayerFit.lotteryDescLabel1Point);
+        this.addChild(lotteryDescLabel1);
+
+        var lotteryDescLabel2 = cc.Sprite.create(main_scene_image.icon114);
+        lotteryDescLabel2.setPosition(this._lotteryLayerFit.lotteryDescLabel2Point);
+        this.addChild(lotteryDescLabel2);
 
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
         headLabel.setPosition(this._lotteryLayerFit.headLabelPoint);
@@ -101,12 +108,12 @@ var LotteryLayer = cc.Layer.extend({
         );
         exchangeItem.setPosition(this._lotteryLayerFit.exchangeItemPoint);
 
-        var menu = cc.Menu.create(exchangeItem);
+        var menu = cc.Menu.create(backItem, exchangeItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
         for (var i = 0; i < 2; ++i) {
-            var x = this._lotteryLayerFit.goldLotteryItemBasePoint.x + 254 * i;
+            var x = this._lotteryLayerFit.goldLotteryItemBasePoint.x + 330 * i;
             var y = this._lotteryLayerFit.goldLotteryItemBasePoint.y;
 
             var goldLotteryItem = cc.MenuItemImage.createWithIcon(
@@ -120,7 +127,7 @@ var LotteryLayer = cc.Layer.extend({
             goldLotteryItem.setPosition(cc.p(x, y));
             menu.addChild(goldLotteryItem);
 
-            x = this._lotteryLayerFit.energyLotteryItemBasePoint.x + 254 * i;
+            x = this._lotteryLayerFit.energyLotteryItemBasePoint.x + 330 * i;
             y = this._lotteryLayerFit.energyLotteryItemBasePoint.y;
 
             var energyLotteryItem = cc.MenuItemImage.createWithIcon(
@@ -137,12 +144,13 @@ var LotteryLayer = cc.Layer.extend({
 
         var tipBgSprite = cc.Sprite.create(main_scene_image.icon245);
         tipBgSprite.setPosition(this._lotteryLayerFit.tipBgSpritePoint);
+        tipBgSprite.setScaleY(1.1);
         this.addChild(tipBgSprite);
 
         var tipLabel = cc.LabelTTF.create(
             "祝福好友，每日登录可获得活力值",
             "STHeitiTC-Medium",
-            18
+            20
         );
         tipLabel.setPosition(this._lotteryLayerFit.tipLabelPoint);
         this.addChild(tipLabel);
@@ -160,6 +168,16 @@ var LotteryLayer = cc.Layer.extend({
         this._fragmentLabel.setString(player.get("fragment"));
     },
 
+    showCard: function () {
+        cc.log("LotteryLayer showCard");
+
+        this.update();
+
+        LotteryCardLayer.pop(this._data);
+
+        LazyLayer.closeCloudLayer();
+    },
+
     _onClickLottery: function (type, level) {
         return function () {
             cc.log("LotteryLayer _onClickLottery");
@@ -172,40 +190,30 @@ var LotteryLayer = cc.Layer.extend({
 
             if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
                 NoviceTeachingLayer.getInstance().clearAndSave();
+                NoviceTeachingLayer.getInstance().setVisible(false);
             }
 
             LazyLayer.showCloudLayer();
 
             var that = this;
-            gameData.lottery.lottery(function (data) {
+            lottery.lottery(function (data) {
                 cc.log(data);
 
                 that.update();
 
                 if (data) {
-                    var blackLayer = cc.LayerColor.create(cc.c4b(0, 0, 0, 255), 720, 1136);
-                    that.addChild(blackLayer);
+                    that._data = data;
 
-                    var ret = playEffect({
-                        effectId: 3,
-                        target: blackLayer,
-                        delay: 0.16,
-                        loops: 1,
-                        cb: function () {
-                            var cardFullNode = CardFullNode.create(data);
-                            cardFullNode.setPosition(ret.sprite.getPosition());
-                            blackLayer.addChild(cardFullNode);
+                    var highDoorPosition = that._lotteryLabel.controller.highDoor.getPosition();
+                    var lowDoorPosition = that._lotteryLabel.controller.lowDoor.getPosition();
 
-                            that.scheduleOnce(function () {
-                                blackLayer.removeFromParent();
-                                LazyLayer.closeCloudLayer();
+                    that._lotteryLabel.animationManager.runAnimationsForSequenceNamedTweenDuration(
+                        "animation_2_" + level,
+                        0
+                    );
 
-                                if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                                    NoviceTeachingLayer.getInstance().next();
-                                }
-                            }, 2);
-                        }
-                    });
+                    that._lotteryLabel.controller.highDoor.setPosition(highDoorPosition);
+                    that._lotteryLabel.controller.lowDoor.setPosition(lowDoorPosition);
                 } else {
                     LazyLayer.closeCloudLayer();
                 }

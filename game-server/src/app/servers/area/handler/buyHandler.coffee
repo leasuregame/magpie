@@ -85,7 +85,7 @@ products =
           cb {code: 501, msg: "体力已达上限"}
 
         else if player.dailyGift.powerBuyCount <= 0
-          cb {code: 501, msg: "购买次数已经用完"}
+          cb {code: 501, msg: "体力购买次数已用完，VIP可购买更多"}
 
         else if player.dailyGift.powerBuyCount < times
           cb {code: 501, msg: "所剩购买次数不足"}

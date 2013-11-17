@@ -15,9 +15,6 @@
 var MIN_GOLD_HEIGHT = 1700;
 var MAX_GOLD_HEIGHT = 1900;
 
-var MIN_GOLD_OFFSET = 30;
-var MAX_GOLD_OFFSET = 320;
-
 var MIN_GOLD_SPEED = 250;
 var MAX_GOLD_SPEED = 400;
 
@@ -25,34 +22,40 @@ var MIN_GOLD_ROTATION = -450;
 var MAX_GOLD_ROTATION = 450;
 
 var GoldLayer = LazyLayer.extend({
+    _goldLayerFit: null,
+
     _gold: 0,
     _goldList: [],
     _goldItem: [],
     _goldBoxItem: null,
     _length: 0,
+    _tipText: null,
+    _tipText2: null,
 
     init: function (data) {
         cc.log("GoldLayer init");
 
         if (!this._super()) return false;
 
+        this._goldLayerFit = gameFit.mainScene.goldLayer;
+
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
         this._gold = 0;
         this._goldList = data || [];
 
-        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
-        bgLayer.setPosition(GAME_ZERO);
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, this._goldLayerFit.bgLayerHeight);
+        bgLayer.setPosition(this._goldLayerFit.bgLayerPoint);
         this.addChild(bgLayer);
 
         var goldIcon = cc.Sprite.create(main_scene_image.icon214);
-        goldIcon.setPosition(cc.p(550, 1000));
+        goldIcon.setPosition(this._goldLayerFit.goldIconPoint);
         this.addChild(goldIcon);
 
         this._goldLabel = cc.LabelTTF.create(this._gold, "STHeitiTC-Medium", 20);
         this._goldLabel.setColor(cc.c3b(255, 239, 131));
         this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._goldLabel.setPosition(cc.p(600, 1000));
+        this._goldLabel.setPosition(this._goldLayerFit.goldLabelPoint);
         this.addChild(this._goldLabel);
 
         var menu = cc.Menu.create();
@@ -60,13 +63,28 @@ var GoldLayer = LazyLayer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        var isFirstGold = sys.localStorage.getItem(gameData.user.get('name') + "firstGold") || 1;
+        if (isFirstGold == 1) {
+            this._tipText = cc.LabelTTF.create("点击大魔石，化为小魔石", "STHeitiTC-Medium", 40);
+            this._tipText.setAnchorPoint(cc.p(0.5, 0.5));
+            this._tipText.setPosition(this._goldLayerFit.tipTextPoint);
+            this.addChild(this._tipText);
+
+            this._tipText2 = cc.LabelTTF.create("点击小魔石，即可获得对应奖励", "STHeitiTC-Medium", 40);
+            this._tipText2.setAnchorPoint(cc.p(0.5, 0.5));
+            this._tipText2.setPosition(this._goldLayerFit.tipText2Point);
+            this.addChild(this._tipText2);
+
+            sys.localStorage.setItem(gameData.user.get('name') + "firstGold", 0);
+        }
+
         this._goldBoxItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.icon221,
             main_scene_image.icon221,
             this._onClickGoldBox,
             this
         );
-        this._goldBoxItem.setPosition(cc.p(360, 350));
+        this._goldBoxItem.setPosition(this._goldLayerFit.goldBoxItemPoint);
         menu.addChild(this._goldBoxItem);
 
         var action = cc.Sequence.create(
@@ -92,7 +110,7 @@ var GoldLayer = LazyLayer.extend({
                 this
             );
             this._goldItem[i].setScale(this._getScale(this._goldList[i]));
-            this._goldItem[i].setPosition(cc.p(360, 350));
+            this._goldItem[i].setPosition(this._goldLayerFit.goldItemPoint);
             menu.addChild(this._goldItem[i]);
             this._goldItem[i].setVisible(false);
         }
@@ -123,7 +141,7 @@ var GoldLayer = LazyLayer.extend({
     },
 
     _getRandomOffset: function () {
-        return lz.random(MIN_GOLD_OFFSET, MAX_GOLD_OFFSET);
+        return lz.random(this._goldLayerFit.MIN_GOLD_OFFSET, this._goldLayerFit.MAX_GOLD_OFFSET);
     },
 
     _getRandomSpeed: function () {
@@ -150,8 +168,8 @@ var GoldLayer = LazyLayer.extend({
         var offset = this._getRandomOffset();
         var rotation = this._getRandomRotation();
         var time = this._getTime(height, offset);
-        var starPoint = cc.p(360, 350);
-        var endPoint = cc.p(360, 100);
+        var starPoint = lz.clone(this._goldLayerFit.starPoint);
+        var endPoint = lz.clone(this._goldLayerFit.endPoint);
 
         if (index % 2 == 0) {
             endPoint.x -= offset;
@@ -192,7 +210,7 @@ var GoldLayer = LazyLayer.extend({
 
         var goldItem = this._goldItem[index];
         var starPoint = goldItem.getPosition();
-        var endPoint = cc.p(548, 1003);
+        var endPoint = this._goldLayerFit.endPoint2;
         var xLen = endPoint.x - starPoint.x;
         var yLen = endPoint.y - starPoint.y;
         var time = Math.sqrt(xLen * xLen + yLen * yLen) / 400;
@@ -204,7 +222,7 @@ var GoldLayer = LazyLayer.extend({
 
         var waitTime = time - scaleTime;
 
-        TipLayer.tipNoBg("元宝: " + this._goldList[index]);
+        TipLayer.tipNoBg("魔石: +" + this._goldList[index]);
 
         var action = cc.Sequence.create(
             cc.EaseExponentialOut.create(
@@ -236,9 +254,9 @@ var GoldLayer = LazyLayer.extend({
         if (this._gold > 0) {
             gameData.task.obtainGold(this._gold);
 
-            var tipLabel = cc.LabelTTF.create("恭喜您，获得 " + this._gold + " 元宝", "STHeitiTC-Medium", 35);
+            var tipLabel = cc.LabelTTF.create("恭喜您，获得 " + this._gold + " 魔石", "STHeitiTC-Medium", 35);
             tipLabel.setColor(cc.c3b(255, 239, 131));
-            tipLabel.setPosition(cc.p(360, 550));
+            tipLabel.setPosition(this._goldLayerFit.tipLabelPoint);
             this.addChild(tipLabel);
         }
 
@@ -249,7 +267,12 @@ var GoldLayer = LazyLayer.extend({
 
     _onClickGoldBox: function () {
         cc.log("GoldLayer _onClickGoldBox");
-
+        if (this._tipText != null) {
+            this._tipText.removeFromParent();
+        }
+        if (this._tipText2 != null) {
+            this._tipText2.removeFromParent();
+        }
         this._open();
     },
 

@@ -42,6 +42,7 @@ var LoginLayer = cc.Layer.extend({
 
         this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit2));
         this._accountEditBox.setPosition(this._loginLayerFit.accountEditBoxPoint);
+        this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
         this._accountEditBox.setDelegate(this);
         this._accountEditBox.setFont("STHeitiTC-Medium", 25);
         this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
@@ -209,6 +210,8 @@ var LoginLayer = cc.Layer.extend({
     _onClickLogin: function () {
         cc.log("LoginLayer _onClickLogin");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var user = gameData.user;
 
         user.set("account", this._accountEditBox.getText());
@@ -232,6 +235,8 @@ var LoginLayer = cc.Layer.extend({
 
     _onClickRegister: function () {
         cc.log("LoginLayer _onClickRegister");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this.getParent().switchLayer(RegisterLayer);
     }

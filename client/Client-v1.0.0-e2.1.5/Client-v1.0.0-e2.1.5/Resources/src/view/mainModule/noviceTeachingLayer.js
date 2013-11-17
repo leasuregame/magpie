@@ -11,6 +11,8 @@ var NOVICE_TEACHING_LAYER_HANDLER_PRIORITY = -201;
 var OVER_NOVICE_STEP = 17;
 
 var NoviceTeachingLayer = LazyLayer.extend({
+    _noviceTeachingLayerFit: null,
+
     _layer: [
         MainLayer,
         SpiritPoolLayer,
@@ -21,14 +23,8 @@ var NoviceTeachingLayer = LazyLayer.extend({
     ],
     _layerOrder: [0, 1, 1, 2, 2, 1, 0, 3, 3, 3, 0, 4, 4, 4, 0, 5, 5],
     _clickType: [1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
-    _rectOrder: [
-        cc.rect(267, 407, 160, 160), cc.rect(180, 460, 360, 360), cc.rect(52, 802, 150, 150),
-        cc.rect(293, 495, 134, 45), cc.rect(294, 106, 134, 45), cc.rect(57, 102, 106, 106),
-        cc.rect(81, 576, 160, 60), cc.rect(165, 466, 134, 45), cc.rect(442, 466, 134, 45),
-        cc.rect(57, 102, 106, 106), cc.rect(70, 758, 90, 90), cc.rect(596, 663, 43, 43),
-        cc.rect(596, 795, 43, 43), cc.rect(538, 904, 124, 40), cc.rect(164, 102, 106, 106),
-        cc.rect(124, 751, 145, 127), cc.rect(294, 348, 134, 45)
-    ],
+    _rectOrder: null,
+    _effectPoints: null,
     _effectOrder: [1, 2, 3, 4, 5, 6, 7, 8, 9, 6, 10, 11, 12, 13, 14, 15, 16],
     _effectNode: null,
     _step: 0,
@@ -39,10 +35,15 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this._noviceTeachingLayerFit = gameFit.mainScene.noviceTeachingLayer;
+
+        this._rectOrder = this._noviceTeachingLayerFit.rectOrder;
+        this._effectPoints = this._noviceTeachingLayerFit.effectPoints;
+
         this.setTouchPriority(NOVICE_TEACHING_LAYER_HANDLER_PRIORITY);
 
-        this._step = sys.localStorage.getItem(gameData.user.get('name') + "step") || 0;
-        cc.log('step = ' + this._step);
+        this._step = sys.localStorage.getItem(gameData.user.get("account") + "step") || 0;
+        cc.log("step = " + this._step);
 
         this._rect = cc.rect(0, 0, 0, 0);
 
@@ -71,7 +72,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
     _save: function () {
         cc.log("NoviceTeachingLayer _save");
-        sys.localStorage.setItem(gameData.user.get('name') + "step", this._step);
+        sys.localStorage.setItem(gameData.user.get("account") + "step", this._step);
     },
 
     next: function () {
@@ -112,7 +113,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
             if (node != null) {
                 node.setAnchorPoint(cc.p(0, 0));
-                node.setPosition(cc.p(40, 88));
+                node.setPosition(this._effectPoints[this._step]);
                 this.addChild(node);
                 this._effectNode = node;
                 if (this._clickType[this._rect] == 0) {
@@ -140,7 +141,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
         cc.log("NoviceTeachingLayer isNoviceTeaching");
         var player = gameData.player;
         if (this._getStep() < OVER_NOVICE_STEP) {
-            if (player.get('exp') == 0 && player.get('lv') == 1)
+            if (player.get("exp") == 0 && player.get("lv") == 1)
                 return true;
         } else {
             return false;
@@ -155,9 +156,12 @@ var NoviceTeachingLayer = LazyLayer.extend({
     onTouchBegan: function (touch, event) {
         cc.log("NoviceTeachingLayer onTouchBegan");
 
-        var point = touch.getLocation();
-        cc.log(point);
-        return !cc.rectContainsPoint(this._rect, point);
+        if (this.isVisible()) {
+            var point = touch.getLocation();
+            return !cc.rectContainsPoint(this._rect, point);
+        } else {
+            return false;
+        }
     }
 
 });

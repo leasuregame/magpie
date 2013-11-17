@@ -54,6 +54,11 @@ var ExchangeLayer = cc.Layer.extend({
         headLabel.setPosition(this._exchangeLayerFit.headLabelPoint);
         this.addChild(headLabel);
 
+        var fragmentBgIcon = cc.Sprite.create(main_scene_image.icon98);
+        fragmentBgIcon.setPosition(this._exchangeLayerFit.fragmentBgIconPoint);
+        fragmentBgIcon.setScaleX(0.8);
+        this.addChild(fragmentBgIcon);
+
         var fragmentIcon = cc.Sprite.create(main_scene_image.icon243);
         fragmentIcon.setPosition(this._exchangeLayerFit.fragmentIconPoint);
         this.addChild(fragmentIcon);
@@ -99,15 +104,35 @@ var ExchangeLayer = cc.Layer.extend({
 
         var tipIcon = cc.Sprite.create(main_scene_image.icon245);
         tipIcon.setPosition(this._exchangeLayerFit.tipIconPoint);
-        this.addChild(tipIcon);
+        //this.addChild(tipIcon);
 
-        var tipLabel = cc.LabelTTF.create(
-            "兑换 5 星卡需要 " + EXCHANGE_STAR5_CARD + " 个卡魂  兑换 4 星卡需要 " + EXCHANGE_STAR4_CARD + " 个卡魂",
+        var tipLabel1 = cc.LabelTTF.create(
+            "兑换 5 星卡需要 " + EXCHANGE_STAR5_CARD,
             "STHeitiTC-Medium",
             17
         );
-        tipLabel.setPosition(this._exchangeLayerFit.tipLabelPoint);
-        this.addChild(tipLabel);
+        tipLabel1.setAnchorPoint(cc.p(0,0.5));
+        tipLabel1.setPosition(this._exchangeLayerFit.tipLabel1Point);
+        this.addChild(tipLabel1);
+
+        var fragmentIcon = cc.Sprite.create(main_scene_image.icon243);
+        fragmentIcon.setAnchorPoint(cc.p(0,0.5));
+        fragmentIcon.setPosition(this._exchangeLayerFit.fragmentIconPoint1);
+        this.addChild(fragmentIcon);
+
+        var tipLabel2 = cc.LabelTTF.create(
+            "兑换 4 星卡需要 " + EXCHANGE_STAR4_CARD,
+            "STHeitiTC-Medium",
+            17
+        );
+        tipLabel2.setAnchorPoint(cc.p(0,0.5));
+        tipLabel2.setPosition(this._exchangeLayerFit.tipLabel2Point);
+        this.addChild(tipLabel2);
+
+        var fragmentIcon = cc.Sprite.create(main_scene_image.icon243);
+        fragmentIcon.setAnchorPoint(cc.p(0,0.5));
+        fragmentIcon.setPosition(this._exchangeLayerFit.fragmentIconPoint2);
+        this.addChild(fragmentIcon);
 
         this._update();
 

@@ -230,13 +230,14 @@ describe("Area Server", function() {
 				};
 
 				beforeAll(function() {
-					doAjax('/update/player/' + passer.playerId, {
+					doAjax('/update/player/' + 100, {
 						power: JSON.stringify({
 							time: Date.now(),
 							value: 10000000
 						})
 					}, function() {
-						loginWith(passer.account, passer.password, passer.areaId);
+						//loginWith(passer.account, passer.password, passer.areaId);
+						loginWith('arthur', '1', 1);
 					});
 				});
 
@@ -252,7 +253,7 @@ describe("Area Server", function() {
 				};
 
 				var count = 1;
-				var totalCount = 500;
+				var totalCount = 10000;
 				var curLv = 10
 
 				it(totalCount + '次', function() {

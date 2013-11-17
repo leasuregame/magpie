@@ -38,7 +38,7 @@ var TournamentLabel = cc.Node.extend({
 
         var player = gameData.player;
 
-        if(this._player.playerId != player.get("id")) {
+        if (this._player.playerId != player.get("id")) {
             var playerItem = cc.MenuItemImage.create(
                 main_scene_image.button15,
                 main_scene_image.button15s,
@@ -103,6 +103,10 @@ var TournamentLabel = cc.Node.extend({
                     this._onClickFunction,
                     this
                 );
+                var tipIcon = cc.Sprite.create(main_scene_image.icon288);
+                tipIcon.setPosition(cc.p(530, 27));
+                //tipText.setColor(cc.c3b(255, 0, 0));
+                this.addChild(tipIcon);
             }
 
             functionItem.setPosition(cc.p(530, 67));

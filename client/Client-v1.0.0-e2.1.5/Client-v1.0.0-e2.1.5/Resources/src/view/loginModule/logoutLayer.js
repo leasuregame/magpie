@@ -57,6 +57,8 @@ var LogoutLayer = LazyLayer.extend({
     _onClickOk: function () {
         cc.log("LogoutLayer _onClickOk");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this.removeFromParent();
 
         MainScene.destroy();
@@ -80,5 +82,5 @@ LogoutLayer.create = function (msg) {
 LogoutLayer.pop = function (msg) {
     var logoutLayer = LogoutLayer.create(msg);
 
-    cc.Director.getInstance().getRunningScene().addChild(logoutLayer, 10);
+    cc.Director.getInstance().getRunningScene().addChild(logoutLayer, 500);
 };

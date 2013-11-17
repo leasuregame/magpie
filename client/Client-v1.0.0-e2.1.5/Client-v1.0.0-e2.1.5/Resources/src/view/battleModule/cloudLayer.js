@@ -21,10 +21,11 @@ var MIN_CLOUD_SCALE = 0.7;
 var MAX_CLOUD_SCALE = 1.3;
 var MIN_CLOUD_ROTATION = 0;
 var MAX_CLOUD_ROTATION = 360;
-var MIN_CLOUD_SPEED = 300;
-var MAX_CLOUD_SPEED = 380;
+var MIN_CLOUD_SPEED = 350;
+var MAX_CLOUD_SPEED = 430;
 var MIN_CLOUD_FADE_OUT_TIME = 1.3;
 var MAX_CLOUD_FADE_OUT_TIME = 1.7;
+var ADVANCE_TIME = 1.0;
 
 var CloudLayer = cc.Layer.extend({
     _cloudLayerFit: null,
@@ -73,7 +74,9 @@ var CloudLayer = cc.Layer.extend({
             this._cb();
         }
 
-        this.removeFromParent();
+        this.scheduleOnce(function () {
+            this.removeFromParent();
+        }, ADVANCE_TIME);
     },
 
     _began: function () {
@@ -110,7 +113,7 @@ var CloudLayer = cc.Layer.extend({
             cloud.runAction(action);
         }
 
-        this.scheduleOnce(this.end, time);
+        this.scheduleOnce(this.end, time - ADVANCE_TIME);
     },
 
     _getRandomPosition: function () {

@@ -12,15 +12,23 @@ app.set('dbClient', require('../../app/dao/mysql/mysql').init(app));
 var dao = require('../../app/dao').init('mysql');
 app.set('dao', dao);
 
-var udata = new Data(dao);
-var user_path = path.join(__dirname, 'csv', 'user.csv');
-udata.importCsvToSql('user', user_path, function(err, res) {
+var udata = new Data(dao, path.join(__dirname, '..'));
+var areaId = process.argv[3] || 1;
+udata.loadRobotUser(areaId, function(err, res) {
 	if (!err) {
-		console.log('load user data complete, on ', Date.now());
-		udata.dataForRankingUser(function(err, res) {
-			console.log('rank user complete');
-			process.exit();
-		});
-		//process.exit();
+		console.log('load robot user complete.');
+		process.exit();
 	}
 });
+
+// var user_path = path.join(__dirname, 'csv', 'user.csv');
+// udata.importCsvToSql('user', user_path, function(err, res) {
+// 	if (!err) {
+// 		console.log('load user data complete, on ', Date.now());
+// 		udata.dataForRankingUser(function(err, res) {
+// 			console.log('rank user complete');
+// 			process.exit();
+// 		});
+// 		//process.exit();
+// 	}
+// });

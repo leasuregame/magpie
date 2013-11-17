@@ -18,6 +18,7 @@ var genDao = function(key) {
 
 var main = function() {
   var type = process.argv[2];
+  var areaId = process.argv[3] || 1;
   var quenues = [];
   var start = Date.now();
   var gdata = new Data(genDao(1), path.join(__dirname, 'csv/'));
@@ -32,6 +33,9 @@ var main = function() {
     case 'rank4Sina': 
       quenues.push(gdata.dataForRanking);
       break;
+    case 'robot': 
+      quenues.push(gdata.loadRobot);
+      break;
     default:
       quenues.push(gdata.loadCsvDataToSql);
       quenues.push(gdata.loadDataForRankingList);
@@ -40,7 +44,11 @@ var main = function() {
   async.mapSeries(
     quenues,
     function(fn, cb) {
-      fn.call(gdata, cb);
+      if (fn.name == 'loadRobot'){
+        fn.call(gdata, areaId, cb);
+      } else {
+        fn.call(gdata, cb);  
+      }      
     },
     function(err, results) {
       var end = Date.now();

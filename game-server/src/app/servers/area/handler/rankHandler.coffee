@@ -44,9 +44,16 @@ Handler::rankingList = (msg, session, next) ->
         return cb({code: 501, msg: fdata.rank+'级开放'})
       
       if not player.rank?
-        return cb({code: 501, msg: '找不到竞技信息'})
-
-      cb()
+        ### first time enter ranking list ###
+        app.get('dao').rank.initRankingInfo player.id, (err, rank) -> 
+          if err
+            cb(err)
+          else 
+            player.rank = rank
+            cb()
+        #return cb({code: 501, msg: '找不到竞技信息'})
+      else
+        cb()
 
     (cb)->
       if player.rank.recentChallenger.length > 0

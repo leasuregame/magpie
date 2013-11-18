@@ -257,7 +257,7 @@ var Player = (function(_super) {
         cash: 0,
         exp: 0,
         money: 5000,
-        gold: 10,
+        gold: 100,
         lineUp: '12:-1',
         ability: 0,
         task: {

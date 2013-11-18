@@ -10,7 +10,7 @@ event_card_skill_upgrade, 卡牌技能升级
 event_card_star_upgrade, 卡牌星级进阶
 event_buy, 购买
 event_achievement, 成就
-event_firend, 好友统计
+event_friend, 好友统计
 event_daily_sign, 每日签到
 event_card_book, 图鉴奖励领取
 event_lucky_card, 抽卡

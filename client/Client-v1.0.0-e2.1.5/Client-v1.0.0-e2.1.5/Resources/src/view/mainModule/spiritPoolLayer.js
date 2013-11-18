@@ -19,10 +19,12 @@ var SpiritPoolLayer = cc.Layer.extend({
     _expLabel: null,
     _countLabel: null,
     _preObtainLabel: null,
-    _spiritItem: null,
-    _spiritPoolItem: null,
+    _spirit: null,
+    spiritNode: null,
+    _spiritPool: null,
     _hook: null,
     _useGold: false,
+    _reward: null,
 
     onEnter: function () {
         cc.log("SpiritPoolLayer onEnter");
@@ -59,13 +61,6 @@ var SpiritPoolLayer = cc.Layer.extend({
             this
         );
         backItem.setPosition(this._spiritPoolLayerFit.backItemPoint);
-        var menu = cc.Menu.create(backItem);
-        menu.setPosition(cc.p(0, 0));
-        this.addChild(menu, 1);
-
-        var spiritIcon = cc.Sprite.create(main_scene_image.icon99);
-        spiritIcon.setPosition(this._spiritPoolLayerFit.spiritIconPoint);
-        this.addChild(spiritIcon);
 
         var countIcon = cc.Sprite.create(main_scene_image.icon98);
         countIcon.setPosition(this._spiritPoolLayerFit.countIconPoint);
@@ -116,16 +111,13 @@ var SpiritPoolLayer = cc.Layer.extend({
         tipLabel.setPosition(this._spiritPoolLayerFit.tipLabelPoint);
         this.addChild(tipLabel);
 
-        this._spiritItem = SpiritNode.getSpiritItem();
-        this._spiritItem.setPosition(this._spiritPoolLayerFit.spiritItemPoint);
+        this._spirit = cc.BuilderReader.load(main_scene_image.uiEffect5, this);
+        this._spirit.setPosition(this._spiritPoolLayerFit.spiritItemPoint);
+        this.addChild(this._spirit);
 
-        this._spiritPoolItem = cc.MenuItemImage.create(
-            main_scene_image.icon97,
-            main_scene_image.icon97,
-            this._onClickSpiritPool,
-            this
-        );
-        this._spiritPoolItem.setPosition(this._spiritPoolLayerFit.spiritPoolItemPoint);
+        this._spiritPool = cc.BuilderReader.load(main_scene_image.uiEffect2, this);
+        this._spiritPool.setPosition(this._spiritPoolLayerFit.spiritPoolItemPoint);
+        this.addChild(this._spiritPool);
 
         var useGoldItem = cc.MenuItemImage.create(
             main_scene_image.button34,
@@ -135,7 +127,7 @@ var SpiritPoolLayer = cc.Layer.extend({
         );
         useGoldItem.setPosition(this._spiritPoolLayerFit.useGoldItemPoint);
 
-        var menu = cc.Menu.create(this._spiritItem, this._spiritPoolItem, useGoldItem);
+        var menu = cc.Menu.create(backItem, useGoldItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
@@ -150,6 +142,8 @@ var SpiritPoolLayer = cc.Layer.extend({
     update: function () {
         cc.log("SpiritPoolLayer update");
 
+        this.spiritNode.setTexture(lz.getTexture(gameData.spirit.getSpiritUrl()));
+
         var spiritPool = gameData.spiritPool;
 
         this._lvLabel.setString("LV.  " + spiritPool.get("lv"));
@@ -158,58 +152,57 @@ var SpiritPoolLayer = cc.Layer.extend({
         this._preObtainLabel.setString(spiritPool.get("perObtain") + (this._useGold ? " x2" : ""));
     },
 
-    _collectSpirit: function (data) {
+    _collectSpirit: function () {
         cc.log("SpiritPoolLayer collectSpirit");
 
-        var spirit = cc.Sprite.create(main_scene_image.icon247);
-        spirit.setPosition(this._spiritPoolLayerFit.spiritPoint);
-        this.addChild(spirit);
+        if (this._reward) {
+            var spirit = cc.Sprite.create(main_scene_image.icon247);
+            spirit.setPosition(this._spiritPoolLayerFit.spiritPoint);
+            this.addChild(spirit);
 
-        var str = "灵气: +" + data.spirit_obtain;
+            var str = "灵气: +" + this._reward.spirit_obtain;
 
-        if (data.isDouble) {
-            str = "天降甘霖 灵气爆发: +" + data.spirit_obtain;
-            spirit.setScale(1.5);
+            if (this._reward.isDouble) {
+                str = "天降甘霖 灵气爆发: +" + this._reward.spirit_obtain;
+                spirit.setScale(1.5);
+            }
+
+            var point1 = this._spiritPoolLayerFit.spiritPoolItemPoint;
+            var point2 = this._spiritPoolLayerFit.spiritIconPoint;
+
+            var pointArray = [
+                point1,
+                cc.p(lz.random(point1.x, point2.x), lz.random(point1.y, point2.y)),
+                point2
+            ];
+
+            spirit.runAction(cc.Sequence.create(
+                cc.Spawn.create(
+                    cc.CardinalSplineTo.create(2, pointArray, 0),
+                    cc.Sequence.create(
+                        cc.DelayTime.create(1.5),
+                        cc.CallFunc.create(function () {
+                            this._spirit.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
+                        }, this),
+                        cc.ScaleTo.create(0.5, 0.3, 0.3)
+                    )
+                ),
+                cc.Hide.create()
+            ));
+
+            this.scheduleOnce(function () {
+                spirit.removeFromParent();
+                TipLayer.tipNoBg(str);
+                this.update();
+
+                if (noviceTeachingLayer.isNoviceTeaching()) {
+                    noviceTeachingLayer.next();
+                }
+            }, 2);
         }
 
-        var point1 = this._spiritPoolLayerFit.spiritPoolItemPoint;
-        var point2 = this._spiritPoolLayerFit.spiritIconPoint;
 
-        var pointArray = [
-            point1,
-            cc.p(lz.random(point1.x, point2.x), lz.random(point1.y, point2.y)),
-            point2
-        ];
-
-        spirit.runAction(cc.Sequence.create(
-            cc.Spawn.create(
-                cc.CardinalSplineTo.create(2, pointArray, 0),
-                cc.Sequence.create(
-                    cc.DelayTime.create(1.5),
-                    cc.CallFunc.create(function () {
-                        this._spiritItem.stopAllActions();
-
-                        this._spiritItem.runAction(
-                            cc.Sequence.create(
-                                cc.ScaleTo.create(0.5, 1.2, 1.24),
-                                cc.ScaleTo.create(0.3, 1, 1)
-                            )
-                        );
-                    }, this),
-                    cc.ScaleTo.create(0.5, 0.3, 0.3)
-                )
-            ),
-            cc.Hide.create()
-        ));
-
-        this.scheduleOnce(function () {
-            spirit.removeFromParent();
-            TipLayer.tipNoBg(str);
-            this.update();
-            if (noviceTeachingLayer.isNoviceTeaching()) {
-                noviceTeachingLayer.next();
-            }
-        }, 2);
+        LazyLayer.closeCloudLayer();
     },
 
     _onClickSpiritPool: function () {
@@ -231,14 +224,25 @@ var SpiritPoolLayer = cc.Layer.extend({
         spiritPool.collect(function (data) {
             cc.log(data);
 
-            LazyLayer.closeCloudLayer();
-
             if (data) {
-                that._collectSpirit(data);
+                that._reward = data;
+                that._spiritPool.animationManager.runAnimationsForSequenceNamedTweenDuration("xiantai_2", 0);
             } else {
                 that.update();
+                LazyLayer.closeCloudLayer();
             }
         }, this._useGold);
+    },
+
+    _onClickSpirit: function () {
+        cc.log("SpiritPoolLayer _onClickSpirit");
+
+        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+            NoviceTeachingLayer.getInstance().clearAndSave();
+            NoviceTeachingLayer.getInstance().next();
+        }
+
+        MainScene.getInstance().addChild(SpiritDetails.create(), 1);
     },
 
     _onClickUseGold: function () {

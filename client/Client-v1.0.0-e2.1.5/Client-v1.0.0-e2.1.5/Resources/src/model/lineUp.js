@@ -109,18 +109,20 @@ var LineUp = Entity.extend({
 
                         that.update(msg.lineUp);
 
-                        cb("success");
+                        cb(true);
                     } else {
                         cc.log("changeLineUp fail");
 
-                        cb("fail");
+                        TipLayer.tip(data.msg);
+
+                        cb(false);
                     }
                 });
 
                 return;
             }
         }
-        cb();
+        cb(true);
     }
 });
 

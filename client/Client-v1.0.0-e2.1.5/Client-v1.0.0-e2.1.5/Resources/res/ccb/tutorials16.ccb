@@ -191,7 +191,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>217</integer>
+						<integer>127</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -315,7 +315,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>217</integer>
+						<integer>127</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -439,7 +439,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>217</integer>
+						<integer>127</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -563,7 +563,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>217</integer>
+						<integer>127</integer>
 					</dict>
 					<dict>
 						<key>name</key>

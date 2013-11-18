@@ -1844,7 +1844,7 @@ var fit4Iphone5 = {
             "lvLabelPoint": cc.p(230, 258),
             "expLabelPoint": cc.p(360, 258),
             "tipLabelPoint": cc.p(320, 200),
-            "spiritItemPoint": cc.p(90, 933),
+            "spiritItemPoint": cc.p(100, 933),
             "spiritPoolItemPoint": cc.p(320, 600),
             "useGoldItemPoint": cc.p(320, 340),
             "hookPoint": cc.p(195, 342),

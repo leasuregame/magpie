@@ -778,9 +778,8 @@ var CardListLayer = cc.Layer.extend({
 
         var lineUp = lz.clone(gameData.lineUp.get("lineUp"));
         var cardList = this._getSelectCardList();
-        var i, key, len;
-        cc.log(lineUp);
-        len = cardList.length;
+        var i, key, len = cardList.length;
+
         for (i = 0; i < len; ++i) {
             cardList[i] = cardList[i].get("id");
         }
@@ -818,12 +817,16 @@ var CardListLayer = cc.Layer.extend({
             }
         }
 
-        gameData.lineUp.changeLineUp(function (data) {
-            MainScene.getInstance().switchLayer(MainLayer);
+        gameData.lineUp.changeLineUp(function (success) {
+            if (success) {
+                MainScene.getInstance().switchLayer(MainLayer);
 
-            if (noviceTeachingLayer.isNoviceTeaching()) {
-                noviceTeachingLayer.clearAndSave();
-                noviceTeachingLayer.next();
+                if (noviceTeachingLayer.isNoviceTeaching()) {
+                    noviceTeachingLayer.clearAndSave();
+                    noviceTeachingLayer.next();
+
+                }
+
             }
         }, lineUp);
 

@@ -169,18 +169,26 @@ var Server = Entity.extend({
 
                 success = true;
 
-                var msg = data.msg;
+                if (data.code == 200) {
+                    var msg = data.msg;
 
-                that.update(msg);
+                    that.update(msg);
 
-                that.off();
-                that.disconnect();
+                    that.off();
+                    that.disconnect();
 
-                if (cb) {
-                    cb(that._serverList);
+                    if (cb) {
+                        cb(that._serverList);
+                    }
+
+                    that._closeAllWaitLayer();
+
+                    lz.dc.event("event_query_entry");
+                } else {
+                    lz.scheduleOnce(function () {
+                        that.connectGateServer(cb);
+                    }, RECONNECT_TIME);
                 }
-
-                that._closeAllWaitLayer();
             });
 
         lz.scheduleOnce(function () {
@@ -321,15 +329,15 @@ var Server = Entity.extend({
     getRecommendArea: function () {
         cc.log("Server getRecommendArea");
 
-//        if (this._areaList) {
-//            var len = this._areaList.length;
-//
-//            if (len > 0) {
-//                return this._areaList[len - 1].id;
-//            }
-//        }
+        if (this._areaList) {
+            var len = this._areaList.length;
 
-        return 1;
+            if (len > 0) {
+                return this._areaList[len - 1].id;
+            }
+        }
+
+        return 0;
     },
 
     _showWaitLayer: function () {

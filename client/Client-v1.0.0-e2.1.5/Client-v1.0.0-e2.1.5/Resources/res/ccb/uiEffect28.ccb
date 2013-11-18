@@ -146,7 +146,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up69.png</string>
+									<string>res/effect/uiEffect/up69.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -226,7 +226,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up69.png</string>
+									<string>res/effect/uiEffect/up69.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -262,7 +262,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
+							<real>-67.692314147949219</real>
 							<real>0.0</real>
 							<integer>0</integer>
 						</array>
@@ -445,7 +445,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up71.png</string>
+									<string>res/effect/uiEffect/up71.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -525,7 +525,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up71.png</string>
+									<string>res/effect/uiEffect/up71.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -605,7 +605,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up71.png</string>
+									<string>res/effect/uiEffect/up71.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -641,7 +641,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
+							<real>-135.38462829589844</real>
 							<real>0.0</real>
 							<integer>0</integer>
 						</array>
@@ -811,7 +811,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up70.png</string>
+									<string>res/effect/uiEffect/up70.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -896,7 +896,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up70.png</string>
+									<string>res/effect/uiEffect/up70.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -981,7 +981,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up70.png</string>
+									<string>res/effect/uiEffect/up70.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1017,7 +1017,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
+							<real>67.692314147949219</real>
 							<real>0.0</real>
 							<integer>0</integer>
 						</array>
@@ -1334,7 +1334,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/uiEffect/up72.png</string>
+						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -1456,7 +1456,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -1469,12 +1469,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>0.13333334028720856</real>
+											<real>0.30000001192092896</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -1487,12 +1487,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>0.26666668057441711</real>
+											<real>0.60000002384185791</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -1505,102 +1505,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>0.40000000596046448</real>
+											<real>0.89999997615814209</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>0.53333336114883423</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>0.66666668653488159</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>0.80000001192092896</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>0.93333333730697632</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>1.0666667222976685</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -1618,7 +1528,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -1631,12 +1541,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>1.3333333730697632</real>
+											<real>1.5</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -1649,12 +1559,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>1.4666666984558105</real>
+											<real>1.7999999523162842</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -1667,102 +1577,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>1.6000000238418579</real>
+											<real>2.0999999046325684</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>1.7333333492279053</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>1.8666666746139526</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>2</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>2.1333334445953369</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>2.2666666507720947</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -1780,7 +1600,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -1793,12 +1613,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>2.5333333015441895</real>
+											<real>2.7000000476837158</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -1811,12 +1631,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>2.6666667461395264</real>
+											<real>3</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -1829,102 +1649,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>2.7999999523162842</real>
+											<real>3.2999999523162842</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>2.9333333969116211</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>3.0666666030883789</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>3.2000000476837158</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>3.3333332538604736</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>3.4666666984558105</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -1942,7 +1672,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -1955,12 +1685,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>3.7333333492279053</real>
+											<real>3.9000000953674316</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -1973,12 +1703,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>3.8666665554046631</real>
+											<real>4.1999998092651367</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -1991,102 +1721,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>4</real>
+											<real>4.5</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>4.1333332061767578</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>4.2666668891906738</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>4.4000000953674316</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>4.5333333015441895</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>4.6666665077209473</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2104,7 +1744,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2117,12 +1757,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>4.9333333969116211</real>
+											<real>5.0999999046325684</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2135,12 +1775,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>5.0666666030883789</real>
+											<real>5.4000000953674316</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2153,102 +1793,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>5.1999998092651367</real>
+											<real>5.6999998092651367</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>5.3333334922790527</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>5.4666666984558105</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>5.5999999046325684</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>5.7333331108093262</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>5.8666667938232422</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2266,7 +1816,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2279,12 +1829,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>6.1333332061767578</real>
+											<real>6.3000001907348633</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2297,12 +1847,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>6.2666668891906738</real>
+											<real>6.5999999046325684</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2315,102 +1865,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>6.4000000953674316</real>
+											<real>6.9000000953674316</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>6.5333333015441895</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>6.6666665077209473</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>6.8000001907348633</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>6.9333333969116211</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>7.0666666030883789</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2428,7 +1888,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2441,12 +1901,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>7.3333334922790527</real>
+											<real>7.5</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2459,12 +1919,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>7.4666666984558105</real>
+											<real>7.8000001907348633</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2477,102 +1937,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>7.5999999046325684</real>
+											<real>8.1000003814697266</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>7.7333331108093262</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>7.8666667938232422</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>8</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>8.1333332061767578</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>8.2666664123535156</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2590,7 +1960,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2603,12 +1973,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>8.5333337783813477</real>
+											<real>8.6999998092651367</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2621,12 +1991,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>8.6666669845581055</real>
+											<real>9</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2639,102 +2009,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>8.8000001907348633</real>
+											<real>9.3000001907348633</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>8.9333333969116211</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>9.0666666030883789</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>9.1999998092651367</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>9.3333330154418945</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>9.4666662216186523</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2752,7 +2032,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2765,12 +2045,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>9.7333335876464844</real>
+											<real>9.8999996185302734</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2783,12 +2063,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>9.8666667938232422</real>
+											<real>10.199999809265137</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2801,102 +2081,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>10</real>
+											<real>10.5</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>10.133333206176758</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>10.266666412353516</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>10.399999618530273</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>10.533333778381348</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>10.666666984558105</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2914,7 +2104,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2927,12 +2117,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>10.933333396911621</real>
+											<real>11.100000381469727</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2945,12 +2135,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>11.066666603088379</real>
+											<real>11.399999618530273</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -2963,102 +2153,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>11.199999809265137</real>
+											<real>11.699999809265137</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>11.333333015441895</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>11.466666221618652</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>11.600000381469727</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>11.733333587646484</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>11.866666793823242</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3076,7 +2176,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3089,12 +2189,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>12.133333206176758</real>
+											<real>12.300000190734863</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3107,12 +2207,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>12.266666412353516</real>
+											<real>12.600000381469727</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3125,102 +2225,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>12.399999618530273</real>
+											<real>12.899999618530273</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>12.533333778381348</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>12.666666984558105</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>12.800000190734863</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>12.933333396911621</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>13.066666603088379</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3238,7 +2248,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3251,12 +2261,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>13.333333015441895</real>
+											<real>13.5</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3269,12 +2279,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>13.466666221618652</real>
+											<real>13.800000190734863</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3287,102 +2297,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>13.600000381469727</real>
+											<real>14.100000381469727</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>13.733333587646484</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>13.866666793823242</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>14</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>14.133333206176758</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>14.266666412353516</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3400,7 +2320,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3413,12 +2333,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>14.533333778381348</real>
+											<real>14.699999809265137</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3431,12 +2351,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>14.666666984558105</real>
+											<real>15</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3449,102 +2369,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>14.800000190734863</real>
+											<real>15.300000190734863</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>14.933333396911621</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>15.066666603088379</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>15.199999809265137</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>15.333333015441895</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>15.466666221618652</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3562,7 +2392,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3575,12 +2405,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>15.733333587646484</real>
+											<real>15.899999618530273</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3593,12 +2423,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>15.866666793823242</real>
+											<real>16.200000762939453</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3611,102 +2441,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>16</real>
+											<real>16.5</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>16.133333206176758</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>16.266666412353516</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>16.399999618530273</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>16.533332824707031</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>16.666666030883789</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3724,7 +2464,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3737,12 +2477,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>16.933332443237305</real>
+											<real>17.100000381469727</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3755,12 +2495,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>17.066667556762695</real>
+											<real>17.399999618530273</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3773,102 +2513,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>17.200000762939453</real>
+											<real>17.700000762939453</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>17.333333969116211</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>17.466667175292969</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>17.600000381469727</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>17.733333587646484</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>17.866666793823242</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3886,7 +2536,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3899,12 +2549,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>18.133333206176758</real>
+											<real>18.299999237060547</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3917,12 +2567,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>18.266666412353516</real>
+											<real>18.600000381469727</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -3935,102 +2585,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>18.399999618530273</real>
+											<real>18.899999618530273</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>18.533332824707031</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>18.666666030883789</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>18.799999237060547</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>18.933332443237305</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>19.066667556762695</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -4048,7 +2608,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -4061,12 +2621,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>19.333333969116211</real>
+											<real>19.5</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -4079,12 +2639,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>19.466667175292969</real>
+											<real>19.799999237060547</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -4097,102 +2657,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>19.600000381469727</real>
+											<real>20.100000381469727</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>19.733333587646484</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>19.866666793823242</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>20</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up34.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>20.133333206176758</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>20.266666412353516</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up36.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -4210,7 +2680,7 @@
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up34.png</string>
+												<string>res/effect/uiEffect/up35.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -4223,30 +2693,12 @@
 											<key>name</key>
 											<string>displayFrame</string>
 											<key>time</key>
-											<real>20.533332824707031</real>
+											<real>20.700000762939453</real>
 											<key>type</key>
 											<integer>7</integer>
 											<key>value</key>
 											<array>
-												<string>effect/uiEffect/up36.png</string>
-												<string>Use regular file</string>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>0</integer>
-											</dict>
-											<key>name</key>
-											<string>displayFrame</string>
-											<key>time</key>
-											<real>20.666666030883789</real>
-											<key>type</key>
-											<integer>7</integer>
-											<key>value</key>
-											<array>
-												<string>effect/uiEffect/up35.png</string>
+												<string>res/effect/uiEffect/up34.png</string>
 												<string>Use regular file</string>
 											</array>
 										</dict>
@@ -4387,7 +2839,7 @@
 							<dict>
 								<key>baseValue</key>
 								<array>
-									<string>effect/uiEffect/up34.png</string>
+									<string>res/effect/uiEffect/up34.png</string>
 									<string>Use regular file</string>
 								</array>
 								<key>name</key>
@@ -4397,7 +2849,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up35.png</string>
+									<string>res/effect/uiEffect/up35.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -4439,8 +2891,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>89.855995178222656</real>
-							<real>-149.29925537109375</real>
+							<real>149.25602722167969</real>
+							<real>-147.39845275878906</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -4565,13 +3017,13 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.033333335071802139</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>2.2000000476837158</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>51.171348571777344</real>
+			<real>131.81741333007812</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

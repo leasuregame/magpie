@@ -163,6 +163,8 @@ var TournamentLabel = cc.Node.extend({
     _onClickPlayer: function () {
         cc.log("TournamentLabel _onClickPlayer");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var point = this.convertToWorldSpace(cc.p(185, 95));
 
         this._target._onClickPlayer(this._player.playerId, point);
@@ -170,6 +172,8 @@ var TournamentLabel = cc.Node.extend({
 
     _onClickFunction: function () {
         cc.log("TournamentLabel _onClickFunction " + this._player.type);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         if (this._player.playerId != gameData.player.get("id")) {
             var that = this;

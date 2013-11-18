@@ -16,6 +16,22 @@ var BattleScene = cc.Scene.extend({
     _battleProcess: [],
     _index: 0,
 
+    onEnter: function () {
+        cc.log("BattleScene onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("战斗场景");
+    },
+
+    onExit: function () {
+        cc.log("BattleScene onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("战斗场景");
+    },
+
     init: function (battleLog) {
         cc.log("BattleScene init");
 

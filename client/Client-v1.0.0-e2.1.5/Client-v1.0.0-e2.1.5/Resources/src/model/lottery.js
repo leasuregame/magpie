@@ -112,6 +112,8 @@ var Lottery = Entity.extend({
                     card: card,
                     fragment: msg.fragment
                 });
+
+                lz.dc.event("event_lottery", "type:" + type + " level:" + level);
             } else {
                 cc.log("lottery fail");
 

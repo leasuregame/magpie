@@ -1956,7 +1956,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -2018,7 +2018,7 @@
 						<key>type</key>
 						<string>FntFile</string>
 						<key>value</key>
-						<string>font/tipNumber.fnt</string>
+						<string>res/font/tipNumber.fnt</string>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -2401,7 +2401,7 @@
 						<key>type</key>
 						<string>FntFile</string>
 						<key>value</key>
-						<string>font/tipNumber.fnt</string>
+						<string>res/font/tipNumber.fnt</string>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -2784,7 +2784,7 @@
 						<key>type</key>
 						<string>FntFile</string>
 						<key>value</key>
-						<string>font/tipNumber.fnt</string>
+						<string>res/font/tipNumber.fnt</string>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -3186,7 +3186,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>1.3333333730697632</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

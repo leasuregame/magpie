@@ -267,7 +267,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>main/spirit_1_1.png</string>
+							<string>res/main/spirit_1_1.png</string>
 						</array>
 					</dict>
 				</array>
@@ -353,7 +353,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up8.png</string>
+									<string>res/effect/uiEffect/up8.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -364,7 +364,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up8.png</string>
+									<string>res/effect/uiEffect/up8.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -375,7 +375,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up8.png</string>
+									<string>res/effect/uiEffect/up8.png</string>
 								</array>
 							</dict>
 						</array>
@@ -932,7 +932,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/effect/p23.png</string>
+							<string>res/effect/effect/p23.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1252,7 +1252,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/uiEffect/up4.png</string>
+							<string>res/effect/uiEffect/up4.png</string>
 						</array>
 					</dict>
 					<dict>

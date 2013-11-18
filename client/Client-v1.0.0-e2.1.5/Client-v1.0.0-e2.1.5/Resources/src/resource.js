@@ -1,8 +1,3 @@
-var SETTING_IS_BROWSER = false;
-if (typeof(navigator) != 'undefined') {
-    SETTING_IS_BROWSER = true;
-}
-
 // login scene res
 var login_scene_path = "res/login/";
 
@@ -802,9 +797,24 @@ var main_scene_image = {
 
     main_bg_music: "res/sound/main_bg_music.mp3",
     battle_bg_music: "res/sound/battle_bg_music.mp3",
+    battle_sound_aoe: "res/sound/battle_sound_aoe.wav",
+    battle_sound_atk: "res/sound/battle_sound_atk.wav",
+    battle_sound_buff: "res/sound/battle_sound_buff.wav",
     battle_sound_heal: "res/sound/battle_sound_heal.wav",
+    battle_sound_lose: "res/sound/battle_sound_lose.wav",
     battle_sound_miss: "res/sound/battle_sound_miss.wav",
-    click_button_sound: "res/sound/click_button_sound.wav"
+    battle_sound_single: "res/sound/battle_sound_single.wav",
+    battle_sound_subtitle_card: "res/sound/battle_sound_subtitle_card.wav",
+    battle_sound_subtitle_spirit: "res/sound/battle_sound_subtitle_spirit.wav",
+    battle_sound_win: "res/sound/battle_sound_win.wav",
+    card_upgrade_sound: "res/sound/card_upgrade_sound.wav",
+    click_building_sound: "res/sound/click_building_sound.wav",
+    click_gold_sound: "res/sound/click_gold_sound.wav",
+    highlights_sound: "res/sound/highlights_sound.wav",
+    click_button_sound: "res/sound/click_button_sound.wav",
+    player_upgrade_sound: "res/sound/player_upgrade_sound.wav",
+    spirit_upgrade_sound: "res/sound/spirit_upgrade_sound.wav",
+    star_sound: "res/sound/star_sound.wav"
 };
 
 var main_scene_res = [

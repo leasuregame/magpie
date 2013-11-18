@@ -13,6 +13,12 @@
 var lz = {};
 
 
+lz.TARGET_PLATFORM_IS_BROWSER = !("opengl" in sys.capabilities && "browser" != sys.platform);
+
+/*
+ * 模仿 setTimeout 和 clearTimeout 写的函数
+ * 与浏览器中调用方式一致
+ * */
 (function () {
     var _callback = {};
     var _index = 0;
@@ -31,19 +37,13 @@ var lz = {};
 
     lz.unschedule = function (fn) {
         // explicit nil handling
-
         cc.Director.getInstance().getScheduler().unscheduleCallbackForTarget(lz, fn);
     };
 
     lz.setTimeout = function (fn, delay) {
-//        cc.log("setTimeOut: " + _index);
-
         var _fn = (function (index) {
             return function () {
                 fn();
-
-//                cc.log("delete callback: " + index);
-
                 delete _callback[index];
             }
         })(_index);
@@ -61,10 +61,7 @@ var lz = {};
 
     lz.clearTimeout = function (index) {
         if (_callback[index]) {
-//            cc.log("clearTimeout: " + index);
-
             lz.unschedule(_callback[index]);
-
             delete _callback[index];
         }
     };
@@ -113,12 +110,24 @@ lz.clone = function (obj) {
     return newObj;
 };
 
+/*
+ * 传入图片生成纹理
+ * */
+lz.getTexture = function (filename) {
+    var texture = cc.TextureCache.getInstance().textureForKey(filename);
+
+    if (!texture) {
+        texture = cc.TextureCache.getInstance().addImage(filename);
+    }
+
+    return texture;
+};
 
 /*
  * 格式化字符串，分隔成段
  * */
 lz.format = function (str, length) {
-    cc.log("CardDetails _getDescription");
+    cc.log("lz format");
 
     if (!length || length <= 0) return [];
 
@@ -145,30 +154,15 @@ lz.getStrWidth = function (str, fonName, fontSize) {
     return label.getContentSize().width;
 };
 
-lz.getColor = function (colorType) {
-    var color = cc.c3b(255, 255, 255);
-
-    switch (colorType) {
-        case "green" :
-            color = cc.c3b(118, 238, 60);
-            break;
-        case "blue" :
-            color = cc.c3b(105, 218, 255);
-            break;
-        case "yellow" :
-            color = cc.c3b(255, 248, 69);
-            break;
-    }
-
-    return color;
-};
-
+/*
+ * 获取两个点之间地骗转角
+ * */
 lz.getAngle = function (p1, p2) {
     return (90 - Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI);
 };
 
 /*
- * 获取介于两数之间的随机数[a, b)
+ * 获取两数之间的随机数[a, b)
  * */
 lz.random = function (a, b) {
     if (b == undefined) {
@@ -238,22 +232,6 @@ lz.getRewardString = function (data) {
     return str;
 };
 
-lz.getTimeStr = function (time) {
-    cc.log("BattleMessageLayer _getTimeStr");
-
-    var date = new Date(time);
-    var today = new Date();
-    var timeStr = "";
-
-    if (today.toDateString() === date.toDateString()) {
-        timeStr = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
-    } else {
-        timeStr = date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay();
-    }
-
-    return timeStr;
-};
-
 lz.tipReward = function (reward) {
     reward = reward || {};
 
@@ -276,14 +254,20 @@ lz.tipReward = function (reward) {
     }
 };
 
-lz.getTexture = function (filename) {
-    var texture = cc.TextureCache.getInstance().textureForKey(filename);
+lz.getTimeStr = function (time) {
+    cc.log("BattleMessageLayer _getTimeStr");
 
-    if (!texture) {
-        texture = cc.TextureCache.getInstance().addImage(filename);
+    var date = new Date(time);
+    var today = new Date();
+    var timeStr = "";
+
+    if (today.toDateString() === date.toDateString()) {
+        timeStr = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
+    } else {
+        timeStr = date.getFullYear() + " . " + date.getMonth() + " . " + date.getDay();
     }
 
-    return texture;
+    return timeStr;
 };
 
 /*

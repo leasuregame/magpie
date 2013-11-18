@@ -21,6 +21,22 @@ var LoginLayer = cc.Layer.extend({
     _accountEditBox: null,
     _passwordEditBox: null,
 
+    onEnter: function () {
+        cc.log("LoginLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("登录界面");
+    },
+
+    onExit: function () {
+        cc.log("LoginLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("登录界面");
+    },
+
     init: function () {
         cc.log("LoginLayer init");
 
@@ -164,6 +180,8 @@ var LoginLayer = cc.Layer.extend({
     _onClickOpenArea: function () {
         cc.log("LoginLayer _onClickOpenArea");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._selectAreaItem.setVisible(false);
         this._scrollView.setVisible(true);
     },
@@ -171,6 +189,8 @@ var LoginLayer = cc.Layer.extend({
     _onClickArea: function (id) {
         return function () {
             cc.log("LoginLayer _onClickArea: " + id);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             var area = lz.server.get("areaList")[id];
             var user = gameData.user;

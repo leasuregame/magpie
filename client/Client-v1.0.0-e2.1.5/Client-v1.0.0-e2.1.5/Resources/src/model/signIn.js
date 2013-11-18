@@ -68,6 +68,8 @@ var SignIn = Entity.extend({
                     var msg = data.msg;
 
                     that.update(msg);
+
+                    lz.dc.event("event_sign_in_record");
                 } else {
                     cc.log("sync fail");
 
@@ -157,6 +159,8 @@ var SignIn = Entity.extend({
                 that._monthsMark[0].count += 1;
 
                 cb(msg);
+
+                lz.dc.event("event_sign_in");
             } else {
                 cc.log("signIn fail");
             }
@@ -187,6 +191,8 @@ var SignIn = Entity.extend({
                 that._monthsMark[0].count += 1;
 
                 cb(msg.reward);
+
+                lz.dc.event("event_remedy_sign_in");
             } else {
                 cc.log("remedySignIn fail");
             }
@@ -233,6 +239,8 @@ var SignIn = Entity.extend({
                     spirit: table.spirit,
                     freeCount: table.lottery_free_count
                 });
+
+                lz.dc.event("event_receive_sign_in_reward", id);
             } else {
                 cc.log("signIn fail");
 

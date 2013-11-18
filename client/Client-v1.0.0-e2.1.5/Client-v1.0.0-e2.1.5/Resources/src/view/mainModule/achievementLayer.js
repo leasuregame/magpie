@@ -17,6 +17,22 @@ var AchievementLayer = cc.Layer.extend({
 
     _scrollViewElement: {},
 
+    onEnter: function() {
+        cc.log("AchievementLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("成就界面");
+    },
+
+    onExit: function() {
+        cc.log("AchievementLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("成就界面");
+    },
+
     init: function () {
         cc.log("AchievementLayer init");
 

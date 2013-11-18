@@ -244,7 +244,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p26.png</string>
+									<string>res/effect/effect/p26.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -281,6 +281,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -501,7 +503,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p26.png</string>
+									<string>res/effect/effect/p26.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -808,7 +810,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p25.png</string>
+									<string>res/effect/effect/p25.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1065,7 +1067,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p25.png</string>
+									<string>res/effect/effect/p25.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1390,7 +1392,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p23.png</string>
+									<string>res/effect/effect/p23.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1665,7 +1667,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p23.png</string>
+									<string>res/effect/effect/p23.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2017,7 +2019,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up62.png</string>
+									<string>res/effect/uiEffect/up62.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2319,7 +2321,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up62.png</string>
+									<string>res/effect/uiEffect/up62.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2704,7 +2706,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/effect/p18.png</string>
+						<string>res/effect/effect/p18.png</string>
 					</dict>
 				</array>
 			</dict>
@@ -2805,26 +2807,7 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array>
-					<dict>
-						<key>easing</key>
-						<dict>
-							<key>type</key>
-							<integer>0</integer>
-						</dict>
-						<key>time</key>
-						<real>0.033333335071802139</real>
-						<key>type</key>
-						<integer>9</integer>
-						<key>value</key>
-						<array>
-							<string>sound/battle_sound_heal.wav</string>
-							<real>1</real>
-							<real>0.0</real>
-							<real>1</real>
-						</array>
-					</dict>
-				</array>
+				<array/>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

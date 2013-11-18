@@ -19,6 +19,22 @@ var MessageLayer = cc.Layer.extend({
     _friendMessageLayerItem: null,
     _systemMessageLayerItem: null,
 
+    onEnter: function () {
+        cc.log("MessageLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("消息界面");
+    },
+
+    onExit: function () {
+        cc.log("MessageLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("消息界面");
+    },
+
     init: function () {
         cc.log("MessageLayer init");
 
@@ -91,6 +107,8 @@ var MessageLayer = cc.Layer.extend({
     _onClickBattleMessageLayer: function () {
         cc.log("MessageLayer _onClickBattleMessageLayer");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._battleMessageLayerItem.setEnabled(false);
         this._friendMessageLayerItem.setEnabled(true);
         this._systemMessageLayerItem.setEnabled(true);
@@ -101,6 +119,8 @@ var MessageLayer = cc.Layer.extend({
     _onClickFriendMessageLayer: function () {
         cc.log("MessageLayer _onClickFriendMessageLayer");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._battleMessageLayerItem.setEnabled(true);
         this._friendMessageLayerItem.setEnabled(false);
         this._systemMessageLayerItem.setEnabled(true);
@@ -110,6 +130,8 @@ var MessageLayer = cc.Layer.extend({
 
     _onClickSystemMessageLayer: function () {
         cc.log("MessageLayer _onClickSystemMessageLayer");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._battleMessageLayerItem.setEnabled(true);
         this._friendMessageLayerItem.setEnabled(true);

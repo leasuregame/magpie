@@ -69,6 +69,8 @@ var Friend = Entity.extend({
 
                         that._onFriendAction(data.msg);
                     });
+
+                    lz.dc.event("event_friend");
                 } else {
                     cc.log("sync fail");
 
@@ -174,6 +176,8 @@ var Friend = Entity.extend({
                 cc.log("addFriend success");
 
                 TipLayer.tip("请求已发送");
+
+                lz.dc.event("event_add_friend");
             } else {
                 cc.log("addFriend fail");
 
@@ -200,6 +204,8 @@ var Friend = Entity.extend({
                 TipLayer.tip("删除成功");
 
                 cb();
+
+                lz.dc.event("event_delete_friend");
             } else {
                 cc.log("deleteFriend fail");
 
@@ -233,6 +239,8 @@ var Friend = Entity.extend({
                     TipLayer.tipNoBg(lz.getNameByKey("energy") + ": +" + msg.energy);
 
                     cb("success");
+
+                    lz.dc.event("event_give_bless");
                 } else {
                     cc.log("giveBless fail");
                 }
@@ -269,6 +277,8 @@ var Friend = Entity.extend({
                     TipLayer.tipNoBg(lz.getNameByKey("energy") + ": +" + msg.energy);
 
                     cb("success");
+
+                    lz.dc.event("event_receive_bless");
                 } else {
                     cc.log("receiveBless fail");
                 }

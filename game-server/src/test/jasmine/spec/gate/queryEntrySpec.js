@@ -7,7 +7,7 @@ describe("Gate Server", function() {
 				var ok = false;
 				runs(function() {
 					pomelo.init({
-						host: '192.168.1.8',
+						host: '127.0.0.1',
 						port: '3009'
 					}, function() {
 						console.log('connected to gate server!');

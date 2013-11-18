@@ -244,7 +244,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p21.png</string>
+									<string>res/effect/effect/p21.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -499,7 +499,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p21.png</string>
+									<string>res/effect/effect/p21.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -804,7 +804,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p22.png</string>
+									<string>res/effect/effect/p22.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1059,7 +1059,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p22.png</string>
+									<string>res/effect/effect/p22.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1399,7 +1399,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p23.png</string>
+									<string>res/effect/effect/p23.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1689,7 +1689,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p23.png</string>
+									<string>res/effect/effect/p23.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2041,7 +2041,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p20.png</string>
+									<string>res/effect/effect/p20.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2331,7 +2331,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p20.png</string>
+									<string>res/effect/effect/p20.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2704,7 +2704,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/effect/p15.png</string>
+						<string>res/effect/effect/p15.png</string>
 					</dict>
 				</array>
 				<key>seqExpanded</key>

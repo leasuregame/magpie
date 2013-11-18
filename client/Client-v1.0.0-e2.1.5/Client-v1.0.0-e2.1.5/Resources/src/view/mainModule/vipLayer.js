@@ -71,6 +71,16 @@ var VipLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("VIP礼包界面");
+    },
+
+    onExit: function () {
+        cc.log("VipLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("VIP礼包界面");
     },
 
     init: function () {
@@ -257,7 +267,7 @@ var VipLayer = cc.Layer.extend({
         for (var key in data) {
             if (vipBoxGoods[key] != undefined && data[key] > 0) {
                 var goods = vipBoxGoods[key];
-               // var point = goods.point;
+                // var point = goods.point;
                 var point = this._vipLayerFit.vipBoxGoodsPoints[key];
 
                 var goodsSprite = cc.Sprite.create(main_scene_image[goods.url]);
@@ -343,6 +353,8 @@ var VipLayer = cc.Layer.extend({
     _onClickPayment: function () {
         cc.log("VipLayer _onClickPayment");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var paymentLayer = PaymentLayer.create();
         this.addChild(paymentLayer, 1);
     },
@@ -350,6 +362,8 @@ var VipLayer = cc.Layer.extend({
     _onClickBuy: function (id) {
         return function () {
             cc.log("VipLayer _onClickBuy: " + id);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             if (gameData.player.get("vip") < id) {
                 this._addTip(id);
@@ -370,6 +384,8 @@ var VipLayer = cc.Layer.extend({
     _onClickVipBoxDetails: function (data) {
         return function () {
             cc.log("VipLayer _onClickVipBoxDetails");
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             this._addVipBoxDetails(data);
         }

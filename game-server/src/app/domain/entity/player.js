@@ -256,8 +256,8 @@ var Player = (function(_super) {
         vipBox: [],
         cash: 0,
         exp: 0,
-        money: 0,
-        gold: 0,
+        money: 5000,
+        gold: 10,
         lineUp: '12:-1',
         ability: 0,
         task: {
@@ -468,10 +468,9 @@ var Player = (function(_super) {
         var total_spirit = spiritor.spirit;
         var spiritorData = table.getTableItem('spirit', spiritor.lv);
 
-        while ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < MAX_SPIRITOR_LV) {
+        if ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < MAX_SPIRITOR_LV) {
             spiritor.lv += 1;
             total_spirit -= spiritorData.spirit_need;
-            spiritorData = table.getTableItem('spirit', spiritor.lv);
         }
         spiritor.spirit = total_spirit;
         this.set('spiritor', spiritor);
@@ -1063,12 +1062,12 @@ var Player = (function(_super) {
         this.set('firstTime', ft);
     };
 
-    Player.prototype.hasLevelReward = function(lv) {
-        return this.levelRewardMark.hasMark(lv);
+    Player.prototype.hasLevelReward = function(val) {
+        return this.levelRewardMark.hasMark(val);
     };
 
-    Player.prototype.setLevelReward = function(lv) {
-        this.levelRewardMark.mark(lv);
+    Player.prototype.setLevelReward = function(val) {
+        this.levelRewardMark.mark(val);
         this.levelReward = this.levelRewardMark.value;
     };
 

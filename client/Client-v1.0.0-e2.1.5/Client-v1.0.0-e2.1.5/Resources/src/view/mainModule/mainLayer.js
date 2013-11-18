@@ -30,6 +30,22 @@ var MainLayer = cc.Layer.extend({
         ConfigLayer
     ],
 
+    onEnter: function () {
+        cc.log("MainLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("主界面");
+    },
+
+    onExit: function () {
+        cc.log("MainLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("主界面");
+    },
+
     init: function () {
         cc.log("MainLayer init");
 

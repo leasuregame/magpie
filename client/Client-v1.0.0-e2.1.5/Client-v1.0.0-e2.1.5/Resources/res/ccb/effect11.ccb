@@ -564,7 +564,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>effect/effect/p29.png</string>
+											<string>res/effect/effect/p29.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -590,6 +590,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>
@@ -1007,7 +1009,7 @@
 										<key>type</key>
 										<string>Texture</string>
 										<key>value</key>
-										<string>effect/effect/p30.png</string>
+										<string>res/effect/effect/p30.png</string>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -1427,7 +1429,7 @@
 										<key>type</key>
 										<string>Texture</string>
 										<key>value</key>
-										<string>effect/effect/p30.png</string>
+										<string>res/effect/effect/p30.png</string>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -1836,7 +1838,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>effect/effect/p31.png</string>
+											<string>res/main/card2_skill.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -2114,7 +2116,7 @@
 										<key>type</key>
 										<string>FntFile</string>
 										<key>value</key>
-										<string>font/skillName.fnt</string>
+										<string>res/font/skillName.fnt</string>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -2334,7 +2336,7 @@
 										<key>type</key>
 										<string>FntFile</string>
 										<key>value</key>
-										<string>font/skillName.fnt</string>
+										<string>res/font/skillName.fnt</string>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -2554,7 +2556,7 @@
 										<key>type</key>
 										<string>FntFile</string>
 										<key>value</key>
-										<string>font/skillName.fnt</string>
+										<string>res/font/skillName.fnt</string>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -2774,7 +2776,7 @@
 										<key>type</key>
 										<string>FntFile</string>
 										<key>value</key>
-										<string>font/skillName.fnt</string>
+										<string>res/font/skillName.fnt</string>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -3004,7 +3006,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.1666666716337204</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/battle_sound_subtitle_card.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

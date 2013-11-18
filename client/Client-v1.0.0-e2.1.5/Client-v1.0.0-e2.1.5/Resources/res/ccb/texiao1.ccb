@@ -77,7 +77,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>main/card_frame4.png</string>
+							<string>res/main/card_frame4.png</string>
 						</array>
 					</dict>
 				</array>
@@ -896,7 +896,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/effect/p18.png</string>
+						<string>res/effect/effect/p18.png</string>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -1471,7 +1471,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up42.png</string>
+									<string>res/effect/uiEffect/up42.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1696,7 +1696,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up42.png</string>
+									<string>res/effect/uiEffect/up42.png</string>
 								</array>
 							</dict>
 							<dict>

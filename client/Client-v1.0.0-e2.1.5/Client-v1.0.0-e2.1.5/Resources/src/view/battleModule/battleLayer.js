@@ -173,7 +173,7 @@ var BatterLayer = cc.Layer.extend({
             if (that._counter == 0) {
                 var effect15Node = cc.BuilderReader.load(main_scene_image.effect15, that);
                 effect15Node.setPosition(that._batterLayerFit.effect15NodePoint);
-                that.addChild(effect15Node);
+                that.addChild(effect15Node, 5);
 
                 effect15Node.animationManager.setCompletedAnimationCallback(that, function () {
                     effect15Node.removeFromParent();
@@ -353,21 +353,21 @@ var BatterLayer = cc.Layer.extend({
             };
 
             var addSubtitleNodeCb = function () {
-                if (ccbNode) {
-                    ccbNode.setPosition(that._batterLayerFit["ccbNodePoint" + that._getDirection(attacker)]);
-                    that.addChild(ccbNode, 5);
+                ccbNode.setPosition(that._batterLayerFit["ccbNodePoint" + that._getDirection(attacker)]);
+                that.addChild(ccbNode, 5);
 
-                    ccbNode.animationManager.setCompletedAnimationCallback(that, cb);
-                } else {
-                    cb();
-                }
+                ccbNode.animationManager.setCompletedAnimationCallback(that, cb);
             };
 
-            this._battleNode[attacker].runAnimations(
-                "rea_1",
-                0,
-                addSubtitleNodeCb
-            );
+            if (ccbNode) {
+                this._battleNode[attacker].runAnimations(
+                    "rea_1",
+                    0,
+                    addSubtitleNodeCb
+                );
+            } else {
+                cb();
+            }
         } else {
             this.normalAtk(battleStep);
         }

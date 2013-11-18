@@ -257,7 +257,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/effect/p20.png</string>
+							<string>res/effect/effect/p20.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -280,17 +280,6 @@
 							<integer>81</integer>
 							<integer>245</integer>
 							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>blendFunc</string>
-						<key>type</key>
-						<string>Blendmode</string>
-						<key>value</key>
-						<array>
-							<integer>1</integer>
-							<integer>1</integer>
 						</array>
 					</dict>
 				</array>
@@ -530,7 +519,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/effect/p20.png</string>
+							<string>res/effect/effect/p20.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -567,6 +556,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

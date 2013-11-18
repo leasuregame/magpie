@@ -31,6 +31,16 @@ var SpiritPoolLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("灵台界面");
+    },
+
+    onExit: function () {
+        cc.log("SpiritPoolLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("灵台界面");
     },
 
     init: function () {
@@ -111,13 +121,19 @@ var SpiritPoolLayer = cc.Layer.extend({
         tipLabel.setPosition(this._spiritPoolLayerFit.tipLabelPoint);
         this.addChild(tipLabel);
 
+        this._spiritPool = cc.BuilderReader.load(main_scene_image.uiEffect2, this);
+        this._spiritPool.setPosition(this._spiritPoolLayerFit.spiritPoolItemPoint);
+        this.addChild(this._spiritPool);
+
         this._spirit = cc.BuilderReader.load(main_scene_image.uiEffect5, this);
         this._spirit.setPosition(this._spiritPoolLayerFit.spiritItemPoint);
         this.addChild(this._spirit);
 
-        this._spiritPool = cc.BuilderReader.load(main_scene_image.uiEffect2, this);
-        this._spiritPool.setPosition(this._spiritPoolLayerFit.spiritPoolItemPoint);
-        this.addChild(this._spiritPool);
+        if (gameData.spirit.canUpgrade()) {
+            this._spirit.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2_1", 0);
+        } else {
+            this._spirit.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1_1", 0);
+        }
 
         var useGoldItem = cc.MenuItemImage.create(
             main_scene_image.button34,
@@ -182,7 +198,11 @@ var SpiritPoolLayer = cc.Layer.extend({
                     cc.Sequence.create(
                         cc.DelayTime.create(1.5),
                         cc.CallFunc.create(function () {
-                            this._spirit.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
+                            if (gameData.spirit.canUpgrade()) {
+                                this._spirit.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2_2", 0);
+                            } else {
+                                this._spirit.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1_2", 0);
+                            }
                         }, this),
                         cc.ScaleTo.create(0.5, 0.3, 0.3)
                     )
@@ -206,6 +226,8 @@ var SpiritPoolLayer = cc.Layer.extend({
 
     _onClickSpiritPool: function () {
         cc.log("SpiritPoolLayer _onClickSoulTable");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
             NoviceTeachingLayer.getInstance().clearAndSave();
@@ -236,6 +258,8 @@ var SpiritPoolLayer = cc.Layer.extend({
     _onClickSpirit: function () {
         cc.log("SpiritPoolLayer _onClickSpirit");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
             NoviceTeachingLayer.getInstance().clearAndSave();
             NoviceTeachingLayer.getInstance().next();
@@ -247,6 +271,8 @@ var SpiritPoolLayer = cc.Layer.extend({
     _onClickUseGold: function () {
         cc.log("SpiritPoolLayer _onClickUseGold");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._useGold = !this._useGold;
         this._hook.setVisible(this._useGold);
 
@@ -255,6 +281,8 @@ var SpiritPoolLayer = cc.Layer.extend({
 
     _onClickBack: function () {
         cc.log("SpiritPoolLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
     }

@@ -35,6 +35,16 @@ var ExploreLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("探索界面");
+    },
+
+    onExit: function () {
+        cc.log("ExploreLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("探索界面");
     },
 
     init: function (sectionId) {
@@ -325,11 +335,15 @@ var ExploreLayer = cc.Layer.extend({
     _onClickBack: function () {
         cc.log("ExploreLayer _onClickBack");
 
-        MainScene.getInstance().switchLayer(PveLayer);
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        MainScene.getInstance().switchLayer(TaskLayer);
     },
 
     _onClickExplore: function () {
         cc.log("ExploreLayer _onClickExplore");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var task = gameData.task;
 

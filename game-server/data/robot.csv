@@ -1,4 +1,4 @@
-playerName, level, ranking,cards,id,userId,account,password
+playerName,level,ranking,cards,id,userId,account,password
 无敌卵子,51,1,"{""ids"":[21,3,8,1,17],""lvs"":[28,25,22,21,19]}",11,11,robot1,1
 苍井空,52,2,"{""ids"":[23,27,33,36,43],""lvs"":[28,25,22,21,19]}",12,12,robot2,1
 我要升天,50,3,"{""ids"":[46,57,61,68,73],""lvs"":[28,25,22,21,19]}",13,13,robot3,1

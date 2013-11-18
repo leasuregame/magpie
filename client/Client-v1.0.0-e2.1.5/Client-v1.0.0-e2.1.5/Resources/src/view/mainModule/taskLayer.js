@@ -241,9 +241,9 @@ var TaskLayer = cc.Layer.extend({
 
             MainScene.getInstance().switch(ExploreLayer.create(id));
 
-            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                NoviceTeachingLayer.getInstance().clearAndSave();
-                NoviceTeachingLayer.getInstance().next();
+            if (noviceTeachingLayer.isNoviceTeaching()) {
+                noviceTeachingLayer.clearAndSave();
+                noviceTeachingLayer.next();
             }
         }
     },

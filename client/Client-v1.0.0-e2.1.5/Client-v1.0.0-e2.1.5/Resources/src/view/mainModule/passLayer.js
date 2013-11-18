@@ -339,7 +339,7 @@ var PassLayer = cc.Layer.extend({
         var layer = LazyLayer.create();
         this.addChild(layer);
 
-        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
         bgLayer.setPosition(this._passLayerFit.bgLayerPoint);
         layer.addChild(bgLayer);
 

@@ -61,6 +61,7 @@ var Friend = Entity.extend({
                         cc.log(data);
 
                         that._onBless(data.msg);
+                        gameMark.setFriendMark(true);
                     });
 
                     lz.server.on("onFriendAction", function (data) {
@@ -68,6 +69,7 @@ var Friend = Entity.extend({
                         cc.log(data);
 
                         that._onFriendAction(data.msg);
+                        gameMark.setFriendMark(true);
                     });
                 } else {
                     cc.log("sync fail");

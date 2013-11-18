@@ -20,6 +20,9 @@ var LotteryLayer = cc.Layer.extend({
     _energyLabel: null,
     _lotteryLabel: null,
 
+    _goldLotteryIcon: [],
+    _goldLotteryLabel: [],
+
     onEnter: function () {
         cc.log("LotteryLayer onEnter");
 
@@ -116,15 +119,31 @@ var LotteryLayer = cc.Layer.extend({
             var x = this._lotteryLayerFit.goldLotteryItemBasePoint.x + 330 * i;
             var y = this._lotteryLayerFit.goldLotteryItemBasePoint.y;
 
-            var goldLotteryItem = cc.MenuItemImage.createWithIcon(
+            var goldLotteryItem = cc.MenuItemImage.create(
                 main_scene_image.button9,
                 main_scene_image.button9s,
                 main_scene_image.button9d,
-                main_scene_image["icon" + (139 + i)],
                 this._onClickLottery(LOTTERY_BY_GOLD, i + 1),
                 this
             );
             goldLotteryItem.setPosition(cc.p(x, y));
+
+            this._goldLotteryIcon[i] = cc.Sprite.create(main_scene_image["icon" + (139 + i)]);
+            this._goldLotteryIcon[i].setPosition(cc.p(75, 35));
+            goldLotteryItem.addChild(this._goldLotteryIcon[i]);
+
+            this._goldLotteryLabel[i] = StrokeLabel.create("首抽免费", "STHeitiTC-Medium", 25);
+            this._goldLotteryLabel[i].setPosition(cc.p(75, 35));
+            this._goldLotteryLabel[i].setColor(cc.c3b(255, 239, 131));
+            goldLotteryItem.addChild(this._goldLotteryLabel[i]);
+
+            var player = gameData.player;
+            var isVisible = sys.localStorage.getItem(player.get("userId") + "*" + player.get("areaId") + "firstLottery" + i) || true;
+
+            cc.log(isVisible);
+            this._goldLotteryLabel[i].setVisible(isVisible);
+            this._goldLotteryIcon[i].setVisible(!isVisible);
+
             menu.addChild(goldLotteryItem);
 
             x = this._lotteryLayerFit.energyLotteryItemBasePoint.x + 330 * i;
@@ -188,9 +207,9 @@ var LotteryLayer = cc.Layer.extend({
                 return;
             }
 
-            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                NoviceTeachingLayer.getInstance().clearAndSave();
-                NoviceTeachingLayer.getInstance().setVisible(false);
+            if (noviceTeachingLayer.isNoviceTeaching()) {
+                noviceTeachingLayer.clearAndSave();
+                noviceTeachingLayer.setVisible(false);
             }
 
             LazyLayer.showCloudLayer();
@@ -218,6 +237,18 @@ var LotteryLayer = cc.Layer.extend({
                     LazyLayer.closeCloudLayer();
                 }
             }, type, level);
+
+            if (type == LOTTERY_BY_GOLD) {
+                var player = gameData.player;
+                var isFirstLottery = sys.localStorage.getItem(player.get("userId") + "*" + player.get("areaId") + "firstLottery" + (level - 1)) || true;
+                cc.log(isFirstLottery);
+                if (isFirstLottery == true) {
+                    sys.localStorage.setItem(player.get("userId") + "*" + player.get("areaId") + "firstLottery" + (level - 1), false);
+                    this._goldLotteryIcon[level - 1].setVisible(true);
+                    this._goldLotteryLabel[level - 1].setVisible(false);
+                }
+            }
+
         }
     },
 

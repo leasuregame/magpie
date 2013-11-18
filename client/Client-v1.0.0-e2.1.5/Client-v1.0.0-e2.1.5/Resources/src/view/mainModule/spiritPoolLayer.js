@@ -206,8 +206,8 @@ var SpiritPoolLayer = cc.Layer.extend({
             spirit.removeFromParent();
             TipLayer.tipNoBg(str);
             this.update();
-            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                NoviceTeachingLayer.getInstance().next();
+            if (noviceTeachingLayer.isNoviceTeaching()) {
+                noviceTeachingLayer.next();
             }
         }, 2);
     },
@@ -215,8 +215,8 @@ var SpiritPoolLayer = cc.Layer.extend({
     _onClickSpiritPool: function () {
         cc.log("SpiritPoolLayer _onClickSoulTable");
 
-        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-            NoviceTeachingLayer.getInstance().clearAndSave();
+        if (noviceTeachingLayer.isNoviceTeaching()) {
+            noviceTeachingLayer.clearAndSave();
         }
 
         var spiritPool = gameData.spiritPool;

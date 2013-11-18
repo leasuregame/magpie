@@ -77,6 +77,7 @@ var Message = Entity.extend({
                         cc.log(data);
 
                         gameData.message.push(data.msg);
+                        gameMark.setMessageMark(true);
                     });
                 } else {
                     cc.log("sync fail");
@@ -216,6 +217,7 @@ var Message = Entity.extend({
 
                     cb();
                 } else {
+                    TipLayer.tip(data.msg);
                     cc.log("receive fail");
                 }
             });

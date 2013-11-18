@@ -19,6 +19,7 @@ var MainScene = cc.Scene.extend({
     _mainBgLayer: null,
     _mainMenuLayer: null,
 
+
     init: function () {
         cc.log("MainScene init");
 
@@ -35,7 +36,7 @@ var MainScene = cc.Scene.extend({
             this.addChild(gameFrame, 100);
         }
 
-        var noviceTeachingLayer = NoviceTeachingLayer.getInstance();
+       noviceTeachingLayer = NoviceTeachingLayer.create();
         if (noviceTeachingLayer.isNoviceTeaching()) {
             this.addChild(noviceTeachingLayer, 20);
         } else {

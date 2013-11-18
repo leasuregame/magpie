@@ -122,11 +122,11 @@ var TreasureHuntLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._treasureHuntItem.setScale(0.9);
+        this._treasureHuntItem.setScale(1.3);
         this._treasureHuntItem.runAction(cc.RepeatForever.create(
             cc.Sequence.create(
                 cc.ScaleTo.create(1.5, 1.05, 1.05),
-                cc.ScaleTo.create(1.5, 0.9, 0.9)
+                cc.ScaleTo.create(1.5, 1.3, 1.3)
             )
         ));
 

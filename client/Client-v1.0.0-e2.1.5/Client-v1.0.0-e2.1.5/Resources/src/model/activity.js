@@ -34,6 +34,13 @@ var Activity = Entity.extend({
                 if (data.code == 200) {
                     cc.log("sync success");
                     that.update(data.msg.levelReward);
+
+                    lz.server.on("onPowerGive", function(data){
+                        cc.log("***** on powerGive:");
+                        cc.log(data);
+
+                        gameMark.setPowerRewardMark(true);
+                    });
                 } else {
                     cc.log("sync fail");
 

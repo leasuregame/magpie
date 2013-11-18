@@ -33,6 +33,11 @@ var LogoutLayer = LazyLayer.extend({
         bgSprite.setPosition(this._logoutLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
+        var msgBgIcon = cc.Sprite.create(main_scene_image.icon175);
+        msgBgIcon.setPosition(this._logoutLayerFit.msgBgIconPoint);
+        msgBgIcon.setScaleX(0.88);
+        this.addChild(msgBgIcon);
+
         var msgLabel = cc.LabelTTF.create(msg, "STHeitiTC-Medium", 28);
         msgLabel.setPosition(this._logoutLayerFit.msgLabelPoint);
         this.addChild(msgLabel);

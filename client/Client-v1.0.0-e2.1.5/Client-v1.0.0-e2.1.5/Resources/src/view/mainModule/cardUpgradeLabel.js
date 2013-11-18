@@ -40,6 +40,16 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("卡牌升级界面");
+    },
+
+    onExit: function() {
+        cc.log("CardUpgradeLabel onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("卡牌升级界面");
     },
 
     init: function () {
@@ -375,6 +385,8 @@ var CardUpgradeLabel = cc.Layer.extend({
     _onClickSelectLeadCard: function () {
         cc.log("CardUpgradeLabel _onClickSelectLeadCard");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_UPGRADE_MASTER, function (data) {
             cc.log(data);
@@ -398,6 +410,8 @@ var CardUpgradeLabel = cc.Layer.extend({
     _onClickSelectRetinueCard: function () {
         cc.log("CardUpgradeLabel _onClickSelectRetinueCard");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_UPGRADE_RETINUE, function (data) {
             cc.log(data);
@@ -419,6 +433,8 @@ var CardUpgradeLabel = cc.Layer.extend({
 
     _onClickUpgrade: function () {
         cc.log("CardUpgradeLabel _onClickUpgrade");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var cardIdList = [];
         var len = this._retinueCard.length;

@@ -722,7 +722,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up62.png</string>
+									<string>res/effect/uiEffect/up62.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1068,7 +1068,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up62.png</string>
+									<string>res/effect/uiEffect/up62.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1423,7 +1423,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/uiEffect/up68.png</string>
+							<string>res/effect/uiEffect/up68.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1446,17 +1446,6 @@
 							<integer>0</integer>
 							<integer>247</integer>
 							<integer>238</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>blendFunc</string>
-						<key>type</key>
-						<string>Blendmode</string>
-						<key>value</key>
-						<array>
-							<integer>1</integer>
-							<integer>1</integer>
 						</array>
 					</dict>
 				</array>
@@ -1921,7 +1910,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>main/icon221.png</string>
+							<string>res/main/icon221.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2287,7 +2276,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/uiEffect/up67.png</string>
+							<string>res/effect/uiEffect/up67.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2627,7 +2616,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/uiEffect/up72.png</string>
+						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
 				<key>seqExpanded</key>

@@ -67,7 +67,7 @@ var LazyMenu = cc.Menu.extend({
         this._touchBeganPoint = touch.getLocation();
         this._isScroll = false;
 
-        if (SETTING_IS_BROWSER) {
+        if (lz.TARGET_PLATFORM_IS_BROWSER) {
             return this._super(touch, e);
         }
     },
@@ -79,14 +79,14 @@ var LazyMenu = cc.Menu.extend({
         cc.log("LazyMenu onTouchEnded");
 
         if (this._isScroll) {
-            if (SETTING_IS_BROWSER) {
+            if (lz.TARGET_PLATFORM_IS_BROWSER) {
                 this.onTouchCancelled(touch, e);
             } else {
                 return true;
             }
         }
         else {
-            if (SETTING_IS_BROWSER) {
+            if (lz.TARGET_PLATFORM_IS_BROWSER) {
                 this._super(touch, e);
             }
         }
@@ -112,11 +112,11 @@ var LazyMenu = cc.Menu.extend({
             }
         }
 
-        if (SETTING_IS_BROWSER) {
+        if (lz.TARGET_PLATFORM_IS_BROWSER) {
             this._super(touch, e);
         }
     }
-})
+});
 
 
 LazyMenu.create = function (/*Multiple Arguments*/) {

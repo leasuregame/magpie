@@ -105,6 +105,7 @@ var CardLibrary = Entity.extend({
 
                     gameMark.updateCardLibraryMark(false);
 
+                    lz.dc.event("event_get_card_book");
                 } else {
                     cc.log("sync fail");
 
@@ -156,6 +157,8 @@ var CardLibrary = Entity.extend({
                 that._changeTypeById(id, CARD_EXIST);
 
                 cb(msg.energy);
+
+                lz.dc.event("event_receive_card_book_reward", id);
             } else {
                 cc.log("receive fail");
             }

@@ -15,6 +15,22 @@
 var LogoutLayer = LazyLayer.extend({
     _logoutLayerFit: null,
 
+    onEnter: function () {
+        cc.log("LogoutLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("退出登录界面");
+    },
+
+    onExit: function () {
+        cc.log("LogoutLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("退出登录界面");
+    },
+
     init: function (msg) {
         cc.log("LogoutLayer init");
 

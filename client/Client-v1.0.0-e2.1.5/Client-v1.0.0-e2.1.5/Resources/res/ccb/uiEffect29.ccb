@@ -281,9 +281,11 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/uiEffect/up72.png</string>
+						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

@@ -207,7 +207,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/effect/p34.png</string>
+							<string>res/effect/effect/p34.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -409,7 +409,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/effect/p34.png</string>
+							<string>res/effect/effect/p34.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -421,17 +421,6 @@
 						<string>Byte</string>
 						<key>value</key>
 						<integer>0</integer>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>blendFunc</string>
-						<key>type</key>
-						<string>Blendmode</string>
-						<key>value</key>
-						<array>
-							<integer>1</integer>
-							<integer>1</integer>
-						</array>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -720,7 +709,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/effect/p32.png</string>
+							<string>res/effect/effect/p32.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1032,7 +1021,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/effect/p33.png</string>
+							<string>res/effect/effect/p33.png</string>
 						</array>
 					</dict>
 					<dict>

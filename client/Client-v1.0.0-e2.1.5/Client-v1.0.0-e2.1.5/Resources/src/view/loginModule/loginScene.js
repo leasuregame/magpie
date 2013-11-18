@@ -21,6 +21,16 @@ var LoginScene = cc.Scene.extend({
         this._super();
 
         this.switchLayer(LoginLayer);
+
+        lz.dc.beginLogPageView("登录场景");
+    },
+
+    onExit: function () {
+        cc.log("LoginScene onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("登录场景");
     },
 
     switchLayer: function (runLayer) {

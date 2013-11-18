@@ -21,6 +21,22 @@ var RankLayer = cc.Layer.extend({
     _passRankLayerItem: null,
     _tournamentRankLayerItem: null,
 
+    onEnter: function () {
+        cc.log("RankLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("排行榜界面");
+    },
+
+    onExit: function () {
+        cc.log("RankLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("排行榜界面");
+    },
+
     init: function () {
         cc.log("RankLayer init");
 
@@ -107,6 +123,8 @@ var RankLayer = cc.Layer.extend({
     _onClickAbilityRankLayer: function () {
         cc.log("RankLayer _onClickAbilityRankLayer");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._abilityRankLayerItem.setEnabled(false);
         this._lvRankLayerItem.setEnabled(true);
         this._passRankLayerItem.setEnabled(true);
@@ -117,6 +135,8 @@ var RankLayer = cc.Layer.extend({
 
     _onClickLvRankLayer: function () {
         cc.log("RankLayer _onClickLvRankLayer");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._abilityRankLayerItem.setEnabled(true);
         this._lvRankLayerItem.setEnabled(false);
@@ -129,6 +149,8 @@ var RankLayer = cc.Layer.extend({
     _onClickPassRankLayer: function () {
         cc.log("RankLayer _onClickPassRankLayer");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._abilityRankLayerItem.setEnabled(true);
         this._lvRankLayerItem.setEnabled(true);
         this._passRankLayerItem.setEnabled(false);
@@ -140,6 +162,8 @@ var RankLayer = cc.Layer.extend({
     _onClickTournamentRankLayer: function () {
         cc.log("RankLayer _onClickTournamentRankLayer");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._abilityRankLayerItem.setEnabled(true);
         this._lvRankLayerItem.setEnabled(true);
         this._passRankLayerItem.setEnabled(true);
@@ -149,7 +173,7 @@ var RankLayer = cc.Layer.extend({
     },
 
     switchLayer: function (runLayer) {
-        cc.log("PveLayer switchMenu");
+        cc.log("RankLayer switchMenu");
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
         if (!(this._nowLayer instanceof runLayer)) {

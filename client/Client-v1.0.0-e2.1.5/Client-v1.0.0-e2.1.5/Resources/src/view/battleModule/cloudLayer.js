@@ -25,7 +25,7 @@ var MIN_CLOUD_SPEED = 350;
 var MAX_CLOUD_SPEED = 430;
 var MIN_CLOUD_FADE_OUT_TIME = 1.3;
 var MAX_CLOUD_FADE_OUT_TIME = 1.7;
-var ADVANCE_TIME = 0.5;
+var ADVANCE_TIME = 1.0;
 
 var CloudLayer = cc.Layer.extend({
     _cloudLayerFit: null,
@@ -74,7 +74,9 @@ var CloudLayer = cc.Layer.extend({
             this._cb();
         }
 
-        this.removeFromParent();
+        this.scheduleOnce(function () {
+            this.removeFromParent();
+        }, ADVANCE_TIME);
     },
 
     _began: function () {

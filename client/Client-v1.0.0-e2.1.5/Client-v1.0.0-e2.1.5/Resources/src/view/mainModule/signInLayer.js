@@ -42,6 +42,16 @@ var SignInLayer = LazyLayer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("签到界面");
+    },
+
+    onExit: function () {
+        cc.log("SignInLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("签到界面");
     },
 
     init: function () {
@@ -242,7 +252,7 @@ var SignInLayer = LazyLayer.extend({
                 rewardItem: rewardItem,
                 rewardIcon: rewardIcon,
                 readyRewardItem: readyRewardItem,
-                alreadyRewardIcon:alreadyRewardIcon,
+                alreadyRewardIcon: alreadyRewardIcon,
                 rewardLabel: rewardLabel
             };
 
@@ -281,7 +291,7 @@ var SignInLayer = LazyLayer.extend({
             var monthMark = gameData.signIn.getMonthMark(0);
             var table = outputTables.signIn_rewards.rows[i + 1];
             var count = table.count != -1 ? table.count : monthMark.days;
-            if(monthMark.count >= count) {
+            if (monthMark.count >= count) {
                 this._elementList[i].readyRewardItem.setVisible(visible);
                 this._elementList[i].rewardIcon.setVisible(false);
                 this._elementList[i].alreadyRewardIcon.setVisible(!visible);
@@ -295,11 +305,15 @@ var SignInLayer = LazyLayer.extend({
     _onClickClose: function () {
         cc.log("SignInLayer _onClickClose");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this.removeFromParent();
     },
 
     _onClickSignIn: function () {
         cc.log("SignInLayer _onClickSignIn");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var that = this;
         gameData.signIn.signIn(function (data) {
@@ -315,6 +329,8 @@ var SignInLayer = LazyLayer.extend({
     _onClickRemedySignIn: function () {
         cc.log("SignInLayer _onClickRemedySignIn");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var that = this;
         gameData.signIn.remedySignIn(function (data) {
             cc.log(data);
@@ -329,6 +345,8 @@ var SignInLayer = LazyLayer.extend({
     _onClickReceiveReward: function (id) {
         return function () {
             cc.log("SignInLayer _onClickReward: " + id);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             var len = this._elementList.length;
             for (var i = 0; i < len; ++i) {
@@ -361,12 +379,16 @@ var SignInLayer = LazyLayer.extend({
     _onClickTurnLeft: function () {
         cc.log("SignInLayer _onClickTurnLeft");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._index = Math.min(this._index + 1, MAX_SIGN_IN_HISTORY - 1);
         this.update();
     },
 
     _onClickTurnRight: function () {
         cc.log("SignInLayer _onClickTurnRight");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._index = Math.max(this._index - 1, 0);
         this.update();

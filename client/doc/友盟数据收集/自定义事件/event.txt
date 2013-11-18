@@ -1,0 +1,70 @@
+event_query_entry, 获取服务器列表
+event_register, 注册
+event_login, 登陆
+event_create_player, 创建新角色
+
+event_task, 修炼
+event_momo, 摸一摸
+event_wipe_out_task, 修炼一件拾取
+
+event_pass, 天道
+event_reset_pass, 重置天道
+event_mystical, 神秘关卡
+event_wipe_out_pass, 关卡扫荡
+
+event_rank_list, 竞技排行榜
+event_challenge, 竞技
+event_ranking_reward, 竞技排名奖励
+
+event_lottery, 抽卡
+event_treasure_hunt, 寻宝
+event_exchange_card, 兑换卡牌
+
+event_collect, 灵气采集
+event_spirit_upgrade, 元神升级
+
+event_card_sell, 出售卡牌
+event_lineup, 阵型
+
+event_card_upgrade, 卡牌升级
+event_card_skill_upgrade, 技能升级
+event_card_passive_skill_afresh, 被动洗炼
+event_card_evolution, 卡牌升星
+event_card_train, 属性培养
+
+event_give_power, 活动领取体力
+event_activity, 冲级活动
+event_receive_level_reward, 领取冲级奖励
+event_sign_in_record, 签到记录
+event_sign_in, 签到
+event_remedy_sign_in, 补签
+event_receive_sign_in_reward, 领取签到奖励
+
+event_get_card_book, 图鉴
+event_receive_card_book_reward, 领取图鉴奖励
+
+event_order_list, 排行榜
+
+event_achievement, 成就
+event_achievement_reward, 领取成就奖励
+
+event_friend, 好友
+event_add_friend, 加好友
+event_delete_friend, 删好友
+event_friend_accept, 同意加好友请求
+event_friend_reject, 拒绝好友请求
+event_give_bless, 送祝福
+event_receive_bless, 领祝福
+
+event_message_list, 消息列表
+event_send_message, 留言
+event_handle_sys_message, 处理系统消息
+event_battle_play_back, 回放战报
+event_get_player_detail, 玩家查询
+event_fight, 玩家切磋
+
+event_pay, 付费
+event_buy_vip_box, 购买vip礼包
+event_buy_product, 购买物品
+
+event_teaching_end, 新手完成

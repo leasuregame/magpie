@@ -158,7 +158,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up57.png</string>
+									<string>res/effect/uiEffect/up57.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -327,7 +327,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up57.png</string>
+									<string>res/effect/uiEffect/up57.png</string>
 								</array>
 							</dict>
 							<dict>

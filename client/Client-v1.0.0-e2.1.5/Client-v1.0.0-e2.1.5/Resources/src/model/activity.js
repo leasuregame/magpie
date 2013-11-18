@@ -33,6 +33,7 @@ var Activity = Entity.extend({
                 cc.log(data);
                 if (data.code == 200) {
                     cc.log("sync success");
+
                     that.update(data.msg.levelReward);
 
                     lz.server.on("onPowerGive", function(data){
@@ -43,6 +44,8 @@ var Activity = Entity.extend({
                     });
 
                     gameMark.updateActivityMark(false);
+
+                    lz.dc.event("event_activity");
                 } else {
                     cc.log("sync fail");
 
@@ -79,6 +82,8 @@ var Activity = Entity.extend({
                 }
                 TipLayer.tip("体力: +" + power);
                 gameData.player.add("power", power);
+
+                lz.dc.event("event_give_power");
             } else {
                 TipLayer.tip(data.msg);
             }
@@ -95,6 +100,8 @@ var Activity = Entity.extend({
                 gameData.player.add("gold", data.msg.gold);
                 that._changeTypeById(id, GOLD_RECEIVE);
                 cb(true);
+
+                lz.dc.event("event_receive_level_reward", id);
             } else {
                 TipLayer.tip(data.msg);
                 cb(false)

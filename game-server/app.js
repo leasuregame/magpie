@@ -1,4 +1,5 @@
 var pomelo = require('pomelo');
+var sync = require('pomelo-sync-plugin');
 var area = require('./app/domain/area/area');
 var MessageService = require('./app/service/messageService');
 var routeUtil = require('./app/common/route');
@@ -84,11 +85,11 @@ app.configure('production|development', 'connector|auth', function() {
   var dbclient = require('./app/dao/mysql/mysql').init(app);
   app.set('dbClient', dbclient);
 
-  app.load(pomelo.sync, {
+  app.use(sync, {sync: {
     path: __dirname + '/app/dao/mysql/mapping/user',
     dbclient: dbclient,
     interval: 60000
-  });
+  }});
 });
 
 app.configure('production|development', 'area', function() {
@@ -112,11 +113,11 @@ app.configure('production|development', 'area', function() {
   var dbclient = require('./app/dao/mysql/mysql').init(app);
   app.set('dbClient', dbclient);
 
-  app.load(pomelo.sync, {
+  app.use(sync, {sync: {
     path: __dirname + '/app/dao/mysql/mapping/area',
     dbclient: dbclient,
     interval: 60000
-  });
+  }});
 });
 
 app.configure('production|development', 'connector|auth|area', function() {

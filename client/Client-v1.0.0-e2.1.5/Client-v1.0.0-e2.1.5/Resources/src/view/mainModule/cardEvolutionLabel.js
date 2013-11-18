@@ -34,6 +34,16 @@ var CardEvolutionLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("卡牌升星界面");
+    },
+
+    onExit: function () {
+        cc.log("CardEvolutionLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("卡牌升星界面");
     },
 
     init: function () {
@@ -214,6 +224,8 @@ var CardEvolutionLayer = cc.Layer.extend({
     _onClickSelectLeadCard: function () {
         cc.log("CardEvolutionLayer _onClickSelectLeadCard");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_EVOLUTION_MASTER, function (data) {
             cc.log(data);
@@ -237,6 +249,8 @@ var CardEvolutionLayer = cc.Layer.extend({
     _onClickSelectRetinueCard: function () {
         cc.log("CardEvolutionLayer _onClickSelectRetinueCard");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_EVOLUTION_RETINUE, function (data) {
             cc.log(data);
@@ -258,6 +272,8 @@ var CardEvolutionLayer = cc.Layer.extend({
 
     _onClickEvolution: function () {
         cc.log("CardEvolutionLayer _onClickEvolution");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var cardIdList = [];
         var len = this._retinueCard.length;

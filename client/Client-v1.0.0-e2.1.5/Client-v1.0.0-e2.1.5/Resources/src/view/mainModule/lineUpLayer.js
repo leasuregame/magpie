@@ -26,6 +26,22 @@ var LineUpLayer = LazyLayer.extend({
     _touchRect: null,
     _selectIndex: 0,
 
+    onEnter: function () {
+        cc.log("LineUpLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("调整阵型界面");
+    },
+
+    onExit: function () {
+        cc.log("LineUpLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("调整阵型界面");
+    },
+
     init: function () {
         cc.log("LineUpLayer init");
 
@@ -114,6 +130,8 @@ var LineUpLayer = LazyLayer.extend({
     _onClickOk: function () {
         cc.log("LineUpLayer _onClickOk");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._menu.setEnabled(false);
 
         var that = this;
@@ -124,6 +142,8 @@ var LineUpLayer = LazyLayer.extend({
 
     _onClickCard: function () {
         cc.log("LineUpLayer _onClickCard");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var cardList = gameData.lineUp.getLineUpCardList();
 
@@ -237,11 +257,11 @@ var LineUpLayer = LazyLayer.extend({
             if (this._isClick) {
                 this.onTouchCancelled(touch, event);
                 if (this._isClick) {
-                    if(this._node[index] && typeof(this._node[index]) == "object") {
+                    if (this._node[index] && typeof(this._node[index]) == "object") {
                         var cardList = gameData.lineUp.getLineUpCardList();
-                        for(var i = 0;i < cardList.length;i++) {
+                        for (var i = 0; i < cardList.length; i++) {
                             var card = cardList[i];
-                            if(card == this._node[index]._card) {
+                            if (card == this._node[index]._card) {
                                 this._selectIndex = i + 1;
                                 break;
                             }

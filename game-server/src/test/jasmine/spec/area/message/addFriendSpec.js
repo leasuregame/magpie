@@ -82,15 +82,11 @@ describe("Area Server", function() {
                     request('area.messageHandler.accept', {
                         msgId: 1
                     }, function(data) {
-                        expect(data).toEqual({
-                            code: 200,
-                            msg: {
-                                id: 100,
-                                name: 'Attacker',
-                                lv: 40,
-                                ability: 120525
-                            }
-                        });
+                        expect(data.code).toEqual(200);
+                        expect(data.msg.id).toEqual(100);
+                        expect(data.msg.name).toEqual('Attacker');
+                        expect(data.msg.lv).toEqual(40);
+                        // expect(data.msg.ability).toEqual(1000);
                     });
                 });
 
@@ -113,11 +109,18 @@ describe("Area Server", function() {
                 beforeEach(function() {
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
-                        type: 1
+                        type: 1, 
+                        status: 2
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
-                        type: 1
+                        type: 1,
+                        status: 1
+                    }, function() {});
+                    doAjax('/message/add', {
+                        receiver: arthur.playerId,
+                        type: 1,
+                        status: 3
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
@@ -145,7 +148,33 @@ describe("Area Server", function() {
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
-                        type: 4
+                        type: 4,
+                        sender: -1,
+                        receiver: -1
+                    }, function() {});
+                    doAjax('/message/add', {
+                        receiver: arthur.playerId,
+                        type: 4,
+                        sender: -1,
+                        receiver: -1
+                    }, function() {});
+                    doAjax('/message/add', {
+                        receiver: arthur.playerId,
+                        type: 4,
+                        sender: -1,
+                        receiver: -1
+                    }, function() {});
+                    doAjax('/message/add', {
+                        receiver: arthur.playerId,
+                        type: 4,
+                        sender: -1,
+                        receiver: -1
+                    }, function() {});
+                    doAjax('/message/add', {
+                        receiver: arthur.playerId,
+                        type: 4,
+                        sender: -1,
+                        receiver: -1
                     }, function() {});
 
 

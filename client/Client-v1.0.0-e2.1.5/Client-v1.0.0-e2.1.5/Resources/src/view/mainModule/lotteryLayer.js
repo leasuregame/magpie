@@ -28,6 +28,16 @@ var LotteryLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("抽卡界面");
+    },
+
+    onExit: function () {
+        cc.log("LotteryLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("抽卡界面");
     },
 
     init: function () {
@@ -201,6 +211,8 @@ var LotteryLayer = cc.Layer.extend({
         return function () {
             cc.log("LotteryLayer _onClickLottery");
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var lottery = gameData.lottery;
 
             if (!lottery.canLottery(type, level)) {
@@ -255,11 +267,15 @@ var LotteryLayer = cc.Layer.extend({
     _onClickExchange: function () {
         cc.log("LotteryLayer _onClickExchange");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         MainScene.getInstance().switchLayer(ExchangeLayer);
     },
 
     _onClickBack: function () {
         cc.log("LotteryLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
     }

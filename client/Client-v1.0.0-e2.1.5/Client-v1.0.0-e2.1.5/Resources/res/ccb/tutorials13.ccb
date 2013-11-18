@@ -77,7 +77,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/NewPlayer/empty.png</string>
+							<string>res/effect/NewPlayer/empty.png</string>
 						</array>
 					</dict>
 				</array>
@@ -636,7 +636,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/NewPlayer/light.png</string>
+							<string>res/effect/NewPlayer/light.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -817,7 +817,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/NewPlayer/hand.png</string>
+							<string>res/effect/NewPlayer/hand.png</string>
 						</array>
 					</dict>
 				</array>

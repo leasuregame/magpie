@@ -32,6 +32,22 @@ var GoldLayer = LazyLayer.extend({
     _tipText: null,
     _tipText2: null,
 
+    onEnter: function () {
+        cc.log("GoldLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("摸一摸界面");
+    },
+
+    onExit: function() {
+        cc.log("GoldLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("摸一摸界面");
+    },
+
     init: function (data) {
         cc.log("GoldLayer init");
 
@@ -267,6 +283,9 @@ var GoldLayer = LazyLayer.extend({
 
     _onClickGoldBox: function () {
         cc.log("GoldLayer _onClickGoldBox");
+
+        gameData.sound.playEffect(main_scene_image.click_gold_sound, false);
+
         if (this._tipText != null) {
             this._tipText.removeFromParent();
         }
@@ -279,6 +298,8 @@ var GoldLayer = LazyLayer.extend({
     _onClickGold: function (index) {
         return function () {
             cc.log("GoldLayer _onClickGold: " + index);
+
+            gameData.sound.playEffect(main_scene_image.click_gold_sound, false);
 
             this._obtainGold(index);
         }

@@ -12,13 +12,26 @@
  * */
 
 
-cc.BuilderReader.setResourcePath("./res/");
-
 var MainScene = cc.Scene.extend({
     _nowLayer: null,
     _mainBgLayer: null,
     _mainMenuLayer: null,
 
+    onEnter: function () {
+        cc.log("MainScene onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("主场景");
+    },
+
+    onExit: function () {
+        cc.log("MainScene onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("主场景");
+    },
 
     init: function () {
         cc.log("MainScene init");

@@ -151,6 +151,8 @@ var CardList = Entity.extend({
                 gameData.player.add("money", msg.price);
 
                 cb();
+
+                lz.dc.event("event_card_sell", cardIdList.length);
             } else {
                 cc.log("upgrade fail");
             }

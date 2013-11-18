@@ -15,6 +15,22 @@ var LotteryCardLayer = LazyLayer.extend({
     _canClick: false,
     _ccbNode: null,
 
+    onEnter: function () {
+        cc.log("LotteryCardLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("抽卡获得卡牌界面");
+    },
+
+    onExit: function () {
+        cc.log("LotteryCardLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("抽卡获得卡牌界面");
+    },
+
     init: function (data) {
         cc.log("LotteryCardLayer init");
 

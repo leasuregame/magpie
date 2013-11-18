@@ -37,6 +37,7 @@ var appFiles = [
     'src/model/entity.js',
 
     'src/model/lz.js',
+    'src/model/dataCollection.js',
     'src/model/pomelo.js',
     'src/model/server.js',
 
@@ -90,7 +91,6 @@ var appFiles = [
     'src/view/loginModule/loginLayer.js',
     'src/view/loginModule/logoutLayer.js',
     'src/view/loginModule/newPlayerLayer.js',
-    'src/view/loginModule/registerScene.js',
     'src/view/loginModule/registerLayer.js',
 
     'src/view/mainModule/effect.js',
@@ -123,7 +123,6 @@ var appFiles = [
     'src/view/mainModule/exploreLayer.js',
     'src/view/mainModule/friendLayer.js',
     'src/view/mainModule/friendMessageLayer.js',
-    'src/view/mainModule/gamblingLayer.js',
     'src/view/mainModule/gameFrame.js',
     'src/view/mainModule/goldLayer.js',
     'src/view/mainModule/lineUpDetail.js',
@@ -145,7 +144,6 @@ var appFiles = [
     'src/view/mainModule/playerTournamentLabel.js',
     'src/view/mainModule/playerUpgradeLayer.js',
     'src/view/mainModule/propsLayer.js',
-    'src/view/mainModule/pveLayer.js',
     'src/view/mainModule/rankLayer.js',
     'src/view/mainModule/readMessageLayer.js',
     'src/view/mainModule/sendMessageLayer.js',
@@ -161,7 +159,6 @@ var appFiles = [
     'src/view/mainModule/taskLayer.js',
     'src/view/mainModule/tournamentLayer.js',
     'src/view/mainModule/tournamentLabel.js',
-    'src/view/mainModule/tournamentMessageLabel.js',
     'src/view/mainModule/tournamentRankLayer.js',
     'src/view/mainModule/treasureHuntLayer.js',
     'src/view/mainModule/vipLayer.js',

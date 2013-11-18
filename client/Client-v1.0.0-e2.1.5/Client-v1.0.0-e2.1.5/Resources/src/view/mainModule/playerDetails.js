@@ -25,6 +25,16 @@ var PlayerDetails = LazyLayer.extend({
         this.update();
 
         this.schedule(this.update, 5);
+
+        lz.dc.beginLogPageView("玩家详细信息界面");
+    },
+
+    onExit: function () {
+        cc.log("PlayerDetails onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("玩家详细信息界面");
     },
 
     init: function () {
@@ -85,7 +95,7 @@ var PlayerDetails = LazyLayer.extend({
         }
 
         var lvIconLabel = cc.LabelTTF.create("等        级:", "STHeitiTC-Medium", 25);
-       // lvIconLabel.setColor(cc.c3b(255, 239, 131));
+        // lvIconLabel.setColor(cc.c3b(255, 239, 131));
         lvIconLabel.setAnchorPoint(cc.p(1, 0.5));
         lvIconLabel.setPosition(this._playerDetailsFit.lvIconLabelPoint);
         this.addChild(lvIconLabel);
@@ -111,7 +121,7 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(moneyIcon);
 
         var moneyIconLabel = cc.LabelTTF.create("仙    币:", "STHeitiTC-Medium", 25);
-       // moneyIconLabel.setColor(cc.c3b(255, 239, 131));
+        // moneyIconLabel.setColor(cc.c3b(255, 239, 131));
         moneyIconLabel.setAnchorPoint(cc.p(1, 0.5));
         moneyIconLabel.setPosition(this._playerDetailsFit.moneyIconLabelPoint);
         this.addChild(moneyIconLabel);
@@ -126,7 +136,7 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(goldIcon);
 
         var goldIconLabel = cc.LabelTTF.create("魔    石:", "STHeitiTC-Medium", 25);
-       // goldIconLabel.setColor(cc.c3b(255, 239, 131));
+        // goldIconLabel.setColor(cc.c3b(255, 239, 131));
         goldIconLabel.setAnchorPoint(cc.p(1, 0.5));
         goldIconLabel.setPosition(this._playerDetailsFit.goldIconLabelPoint);
         this.addChild(goldIconLabel);
@@ -186,7 +196,7 @@ var PlayerDetails = LazyLayer.extend({
         this.addChild(powerIcon);
 
         var powerIconLabel = cc.LabelTTF.create("体    力:", "STHeitiTC-Medium", 25);
-       // powerIconLabel.setColor(cc.c3b(255, 239, 131));
+        // powerIconLabel.setColor(cc.c3b(255, 239, 131));
         powerIconLabel.setAnchorPoint(cc.p(1, 0.5));
         powerIconLabel.setPosition(this._playerDetailsFit.powerIconLabelPoint);
         this.addChild(powerIconLabel);
@@ -232,6 +242,8 @@ var PlayerDetails = LazyLayer.extend({
 
     _onClickClose: function () {
         cc.log("PlayerDetails _onClickClose");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._menu.setEnabled(false);
 

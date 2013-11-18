@@ -9,6 +9,22 @@
 
 
 var NewPlayerLayer = cc.Layer.extend({
+    onEnter: function () {
+        cc.log("NewPlayerLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("创建新玩家界面");
+    },
+
+    onExit: function () {
+        cc.log("NewPlayerLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("创建新玩家界面");
+    },
+
     init: function () {
         cc.log("NewPlayerLayer init");
 

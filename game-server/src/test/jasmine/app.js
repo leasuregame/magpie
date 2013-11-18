@@ -197,29 +197,6 @@ app.get('/createDb', function(req, res) {
   command(req, res, 'sh', [__dirname + '/../../bin/initMysql.sh', 'magpie_area_1']);
 });
 
-app.get('/:table/:id', function(req, res) {
-  mysql.magpiedb1.query('select * from ' + req.params.table + ' where id = ?', [req.params.id], function(err, result) {
-    if (err) {
-      res.send({
-        code: 500,
-        msg: err
-      })
-    } else {
-      if ( !! result && result.length == 1) {
-        res.send({
-          code: 200,
-          data: result[0]
-        });
-      } else {
-        res.send({
-          code: 404,
-          data: req.params.table + ' not exists'
-        });
-      }
-    }
-  });
-});
-
 app.get('/update/:table/:id', function(req, res) {
   var table = req.params.table;
   var id = req.params.id;
@@ -271,6 +248,29 @@ app.get('/create/:table', function(req, res) {
     });
   });
 
+});
+
+app.get('/:table/:id', function(req, res) {
+  mysql.magpiedb1.query('select * from ' + req.params.table + ' where id = ?', [req.params.id], function(err, result) {
+    if (err) {
+      res.send({
+        code: 500,
+        msg: err
+      })
+    } else {
+      if ( !! result && result.length == 1) {
+        res.send({
+          code: 200,
+          data: result[0]
+        });
+      } else {
+        res.send({
+          code: 404,
+          data: req.params.table + ' not exists'
+        });
+      }
+    }
+  });
 });
 
 var command = function(req, res, cmd, args) {

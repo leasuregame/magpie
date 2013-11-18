@@ -23,6 +23,16 @@ var FriendMessageLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("好友消息界面");
+    },
+
+    onExit: function() {
+        cc.log("FriendMessageLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("好友消息界面");
     },
 
     init: function () {
@@ -170,6 +180,8 @@ var FriendMessageLayer = cc.Layer.extend({
         return function () {
             cc.log("FriendMessageLayer _onClickAccept: " + id);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             gameData.message.accept(id);
             gameMark.updateFriendMessageMark(false);
 
@@ -184,6 +196,8 @@ var FriendMessageLayer = cc.Layer.extend({
     _onClickReject: function (id) {
         return function () {
             cc.log("FriendMessageLayer _onClickReject: " + id);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             gameData.message.reject(id);
             gameMark.updateFriendMessageMark(false);
@@ -200,6 +214,8 @@ var FriendMessageLayer = cc.Layer.extend({
         return function () {
             cc.log("FriendMessageLayer _onClickAddFriend: ");
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             gameData.friend.addFriend(name);
         }
     },
@@ -208,8 +224,10 @@ var FriendMessageLayer = cc.Layer.extend({
         return function () {
             cc.log("FriendMessageLayer _onClickRead: " + message);
 
-            gameMark.updateFriendMessageMark(false);
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+            gameMark.updateFriendMessageMark(false);
+            
             ReadMessageLayer.pop(message.sender, message.senderName, message.text);
         }
     }

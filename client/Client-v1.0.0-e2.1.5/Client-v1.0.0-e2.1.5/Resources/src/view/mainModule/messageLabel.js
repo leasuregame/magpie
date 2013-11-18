@@ -19,6 +19,22 @@ var MessageLabel = cc.Node.extend({
 
     _messageLabel: null,
 
+    onEnter: function () {
+        cc.log("MessageLabel onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("滑动消息条");
+    },
+
+    onExit: function () {
+        cc.log("MessageLabel onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("滑动消息条");
+    },
+
     init: function () {
         cc.log("MessageLabel init");
 

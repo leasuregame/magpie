@@ -27,9 +27,16 @@ var lottery = function (level, type, rFragments, hFragment, hCounts) {
     return [card, consume_val, fragment];
 };
 
-var freeLottery = function(level) {
+var freeLottery = function(level, eids) {
+    if (eids == null || !_.isArray(eids)){
+        eids = [];
+    }
+
     var star = level == 1 ? 3 : 4;
     var card = freeCard(star);
+    while (eids.indexOf(card.tableId) > -1) {
+        card = freeCard(star);
+    }
     return [card, 0, 0];
 };
 
@@ -119,11 +126,15 @@ var newCard = function (level, hCounts) {
 };
 
 var freeCard = function(star) {
+    var idMap = {
+        3: [13, 43, 48, 28, 148, 153, 183, 123, 18],
+        4: [59, 99, 129]
+    };
     return {
-        tableId: randomCardId(star),
+        tableId: idMap[star][_.random(0, idMap[star].length-1)],
         star: star,
         lv: parseInt(gen_card_level(star))
-    }
+    };
 };
 
 var consume = function (level, type) {

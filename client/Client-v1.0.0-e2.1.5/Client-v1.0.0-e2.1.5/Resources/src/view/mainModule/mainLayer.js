@@ -29,17 +29,27 @@ var MainLayer = cc.Layer.extend({
         MessageLayer,
         ConfigLayer
     ],
-
     _activityMark: null,
     _cardLibraryMark: null,
     _achievementMark: null,
     _friendMark: null,
     _messageMark: null,
 
-    onEnter: function() {
+    onEnter: function () {
         cc.log("MainLayer onEnter");
+
         this._super();
         this.updateMark();
+
+        lz.dc.beginLogPageView("主界面");
+    },
+
+    onExit: function () {
+        cc.log("MainLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("主界面");
     },
 
     init: function () {

@@ -27,11 +27,27 @@ var LineUpDetail = LazyLayer.extend({
     _touchRect: null,
     _selectIndex: 0,
 
+    onEnter: function () {
+        cc.log("LineUpDetail onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("查看其他玩家阵型界面");
+    },
+
+    onExit: function () {
+        cc.log("LineUpDetail onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("查看其他玩家阵型界面");
+    },
+
     init: function (data) {
         cc.log("LineUpDetail init");
 
         if (!this._super()) return false;
-        if (!data) return;
+        if (!data) return false;
 
         this._lineUpDetailFit = gameFit.mainScene.lineUpDetail;
 
@@ -116,6 +132,8 @@ var LineUpDetail = LazyLayer.extend({
     _onClickClose: function () {
         cc.log("LineUpDetail _onClickOk");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._menu.setEnabled(false);
         this.removeFromParent();
     },
@@ -123,6 +141,9 @@ var LineUpDetail = LazyLayer.extend({
     _onClickCard: function () {
         cc.log("LineUpDetail _onClickCard");
         cc.log(this._selectIndex);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         if (this._cardList.length > 0) {
             LineUpDetailsLayer.pop(this._cardList, this._selectIndex);
         }
@@ -209,10 +230,10 @@ var LineUpDetail = LazyLayer.extend({
             this.onTouchCancelled(touch, event);
 
             if (this._isClick) {
-                if(this._node[index] && typeof(this._node[index]) == "object") {
-                    for(var i = 0;i < this._cardList.length;i++) {
+                if (this._node[index] && typeof(this._node[index]) == "object") {
+                    for (var i = 0; i < this._cardList.length; i++) {
                         var card = this._cardList[i];
-                        if(card == this._node[index]._card) {
+                        if (card == this._node[index]._card) {
                             this._selectIndex = i + 1;
                             break;
                         }

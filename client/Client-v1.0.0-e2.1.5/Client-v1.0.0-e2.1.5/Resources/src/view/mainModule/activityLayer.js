@@ -22,13 +22,23 @@ var ActivityLayer = cc.Layer.extend({
         RechargeLayer
     ],
     _selectIcon: null,
-
     _mark: [],
 
-    onEnter:function() {
+    onEnter: function() {
         cc.log("ActivityLayer onEnter");
+
         this._super();
         this.updateMark();
+
+        lz.dc.beginLogPageView("活动界面");
+    },
+
+    onExit: function() {
+        cc.log("ActivityLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("活动界面");
     },
 
     init: function () {
@@ -87,6 +97,9 @@ var ActivityLayer = cc.Layer.extend({
     _onClickLayer: function (index) {
         return function () {
             cc.log("MainMenuLayer _onClickLayer: " + index);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             this._selectIcon.setPosition(cc.p(this._activityLayerFit.itemBasePoint.x + this._activityLayerFit.itemOffsetX * index, this._activityLayerFit.itemBasePoint.y));
             this.switchLayer(this._layer[index]);
         }

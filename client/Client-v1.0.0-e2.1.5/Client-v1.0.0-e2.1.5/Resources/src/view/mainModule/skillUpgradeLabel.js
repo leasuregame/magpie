@@ -37,6 +37,16 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("技能升级界面");
+    },
+
+    onExit: function () {
+        cc.log("SkillUpgradeLabel onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("技能升级界面");
     },
 
     init: function () {
@@ -242,6 +252,8 @@ var SkillUpgradeLabel = cc.Node.extend({
     _onClickSelectLeadCard: function () {
         cc.log("SkillUpgradeLabel _onClickSelectLeadCard");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_SKILL_UPGRADE_MASTER, function (data) {
             cc.log(data);
@@ -264,6 +276,8 @@ var SkillUpgradeLabel = cc.Node.extend({
 
     _onClickUpgrade: function () {
         cc.log("SkillUpgradeLabel _onClickUpgrade");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         if (!this._leadCard.canUpgradeSkill()) {
             TipLayer.tip("技能不可升级");

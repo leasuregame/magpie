@@ -165,7 +165,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -183,7 +183,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -201,7 +201,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -219,7 +219,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -237,7 +237,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -255,7 +255,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -273,7 +273,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -291,7 +291,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -309,7 +309,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -327,7 +327,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -345,7 +345,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -363,7 +363,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -381,7 +381,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -399,7 +399,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -417,7 +417,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -435,7 +435,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -453,7 +453,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -471,7 +471,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -489,7 +489,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -507,7 +507,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -525,7 +525,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -543,7 +543,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -561,7 +561,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -579,7 +579,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -597,7 +597,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -615,7 +615,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -633,7 +633,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -651,7 +651,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -669,7 +669,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -687,7 +687,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -705,7 +705,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -723,7 +723,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -741,7 +741,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -759,7 +759,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -777,7 +777,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -795,7 +795,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -813,7 +813,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -831,7 +831,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -849,7 +849,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -910,7 +910,7 @@
 									<dict>
 										<key>baseValue</key>
 										<array>
-											<string>effect/uiEffect/up34.png</string>
+											<string>res/effect/uiEffect/up34.png</string>
 											<string>Use regular file</string>
 										</array>
 										<key>name</key>
@@ -920,7 +920,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>effect/uiEffect/up35.png</string>
+											<string>res/effect/uiEffect/up35.png</string>
 										</array>
 									</dict>
 								</array>
@@ -1135,7 +1135,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1153,7 +1153,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1171,7 +1171,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1189,7 +1189,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1207,7 +1207,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1225,7 +1225,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1243,7 +1243,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1261,7 +1261,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1279,7 +1279,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1297,7 +1297,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1315,7 +1315,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1333,7 +1333,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1351,7 +1351,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1369,7 +1369,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1387,7 +1387,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1405,7 +1405,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1423,7 +1423,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1441,7 +1441,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1459,7 +1459,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1477,7 +1477,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1495,7 +1495,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1513,7 +1513,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1531,7 +1531,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1549,7 +1549,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1567,7 +1567,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1585,7 +1585,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1603,7 +1603,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1621,7 +1621,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1639,7 +1639,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1657,7 +1657,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1675,7 +1675,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1693,7 +1693,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1711,7 +1711,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1729,7 +1729,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1747,7 +1747,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1765,7 +1765,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1783,7 +1783,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up34.png</string>
+														<string>res/effect/uiEffect/up34.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1801,7 +1801,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up36.png</string>
+														<string>res/effect/uiEffect/up36.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1819,7 +1819,7 @@
 													<integer>7</integer>
 													<key>value</key>
 													<array>
-														<string>effect/uiEffect/up35.png</string>
+														<string>res/effect/uiEffect/up35.png</string>
 														<string>Use regular file</string>
 													</array>
 												</dict>
@@ -1880,7 +1880,7 @@
 									<dict>
 										<key>baseValue</key>
 										<array>
-											<string>effect/uiEffect/up34.png</string>
+											<string>res/effect/uiEffect/up34.png</string>
 											<string>Use regular file</string>
 										</array>
 										<key>name</key>
@@ -1890,7 +1890,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>effect/uiEffect/up35.png</string>
+											<string>res/effect/uiEffect/up35.png</string>
 										</array>
 									</dict>
 								</array>

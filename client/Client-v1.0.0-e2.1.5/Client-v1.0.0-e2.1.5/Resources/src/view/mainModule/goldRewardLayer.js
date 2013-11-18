@@ -17,6 +17,16 @@ var GoldRewardLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("冲级奖励界面");
+    },
+
+    onExit: function() {
+        cc.log("GoldRewardLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("冲级奖励界面");
     },
 
     init: function () {
@@ -138,8 +148,9 @@ var GoldRewardLayer = cc.Layer.extend({
     },
 
     _onClickGetReward: function (id) {
-
         return function () {
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             cc.log(id);
             var element = this._scrollViewElement[id];
             gameData.activity.getGoldReward(id, function (isOK) {
@@ -153,8 +164,6 @@ var GoldRewardLayer = cc.Layer.extend({
         };
 
     }
-
-
 });
 
 GoldRewardLayer.create = function () {

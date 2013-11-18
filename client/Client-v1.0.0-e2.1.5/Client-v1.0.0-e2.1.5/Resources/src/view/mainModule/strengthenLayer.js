@@ -20,6 +20,22 @@ var StrengthenLayer = cc.Layer.extend({
     _skillUpgradeItem: null,
     _passiveSkillUpgradeItem: null,
 
+    onEnter: function () {
+        cc.log("StrengthenLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("强化界面");
+    },
+
+    onExit: function () {
+        cc.log("StrengthenLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("强化界面");
+    },
+
     init: function () {
         cc.log("StrengthenLayer init");
 
@@ -104,6 +120,8 @@ var StrengthenLayer = cc.Layer.extend({
     _onClickCardUpgrade: function () {
         cc.log("StrengthenLayer _onClickCardUpgrade");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._cardUpgradeItem.setEnabled(false);
         this._skillUpgradeItem.setEnabled(true);
         this._passiveSkillUpgradeItem.setEnabled(true);
@@ -114,6 +132,8 @@ var StrengthenLayer = cc.Layer.extend({
     _onClickSkillUpgrade: function () {
         cc.log("StrengthenLayer _onClickSkillUpgrade");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._cardUpgradeItem.setEnabled(true);
         this._skillUpgradeItem.setEnabled(false);
         this._passiveSkillUpgradeItem.setEnabled(true);
@@ -123,6 +143,8 @@ var StrengthenLayer = cc.Layer.extend({
 
     _onClickPassiveSkillUpgrade: function () {
         cc.log("StrengthenLayer _onClickPassiveSkillUpgrade");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._cardUpgradeItem.setEnabled(true);
         this._skillUpgradeItem.setEnabled(true);

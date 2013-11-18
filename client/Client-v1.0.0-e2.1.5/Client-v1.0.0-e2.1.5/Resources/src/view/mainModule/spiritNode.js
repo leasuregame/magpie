@@ -91,21 +91,26 @@ SpiritNode.create = function (spiritLv) {
 };
 
 
-//SpiritNode.getSpiritItem = function (cb, target) {
-//    cb = cb || function () {
-//        var spiritDetails = SpiritDetails.create();
-//        MainScene.getInstance().addChild(spiritDetails, 1);
-//    };
-//    target = target || this;
-//
-//    var spiritItem = cc.MenuItemImage.create(
-//        main_scene_image.spirit1,
-//        main_scene_image.spirit1,
-//        cb,
-//        target
-//    );
-//
-//    spiritItem.setScale(0.9);
-//
-//    return spiritItem;
-//};
+SpiritNode.getSpiritItem = function (cb, target) {
+    cb = cb || function () {
+        if (noviceTeachingLayer.isNoviceTeaching()) {
+            noviceTeachingLayer.clearAndSave();
+            noviceTeachingLayer.next();
+        }
+
+        var spiritDetails = SpiritDetails.create();
+        MainScene.getInstance().addChild(spiritDetails, 1);
+    };
+    target = target || this;
+
+    var spiritItem = cc.MenuItemImage.create(
+        main_scene_image.spirit1,
+        main_scene_image.spirit1,
+        cb,
+        target
+    );
+
+    spiritItem.setScale(0.9);
+
+    return spiritItem;
+};

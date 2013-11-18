@@ -48,7 +48,7 @@ var fit4Iphone4 = {
                 11: cc.p(360, 852),
                 12: cc.p(560, 852)
             },
-            "backItemPoint": cc.p(250, -460),
+            "backItemPoint": cc.p(250, -450),
             "effect15NodePoint": cc.p(360, 480),
             "ccbNodePoint1": cc.p(360, 352),
             "ccbNodePoint2": cc.p(360, 652)
@@ -74,6 +74,7 @@ var fit4Iphone4 = {
         "logoutLayer": {
             "bgLayerPoint": cc.p(40, 0),
             "bgSpritePoint": cc.p(363, 600),
+            "msgBgIconPoint": cc.p(360, 620),
             "msgLabelPoint": cc.p(360, 620),
             "cancelItemPoint": cc.p(360, 500)
         }
@@ -516,7 +517,7 @@ var fit4Iphone4 = {
         "noviceTeachingLayer": {
             "rectOrder": [
                 cc.rect(267, 319, 160, 160), cc.rect(180, 372, 360, 360), cc.rect(52, 714, 150, 150),
-                cc.rect(293, 407, 134, 45), cc.rect(294, 18, 134, 45), cc.rect(57, 4, 106, 106),
+                cc.rect(293, 377, 134, 45), cc.rect(294, 18, 134, 45), cc.rect(57, 4, 106, 106),
                 cc.rect(81, 488, 160, 60), cc.rect(136, 195, 134, 45), cc.rect(468, 195, 134, 45),
                 cc.rect(57, 4, 106, 106), cc.rect(70, 670, 90, 90), cc.rect(200, 676, 446, 112),
                 cc.rect(200, 536, 446, 112), cc.rect(538, 816, 124, 40), cc.rect(164, 4, 106, 106),
@@ -526,7 +527,7 @@ var fit4Iphone4 = {
                 cc.p(360, 412),
                 cc.p(360, 542),
                 cc.p(130, 792),
-                cc.p(360, 432),
+                cc.p(360, 402),
                 cc.p(360, 42),
                 cc.p(93, 54),
                 cc.p(165, 512),
@@ -540,7 +541,15 @@ var fit4Iphone4 = {
                 cc.p(200, 54),
                 cc.p(200, 703),
                 cc.p(360, 280)
-            ]
+            ],
+            "overItemPoint": cc.p(250, -450),
+            "bgLayerPoint": cc.p(40, 0),
+            "bgSpritePoint": cc.p(360, 492),
+            "msgBgIconPoint": cc.p(360, 530),
+            "tipLabelPoint": cc.p(360, 562),
+            "tipLabel2Point": cc.p(360, 522),
+            "okItemPoint": cc.p(260, 442),
+            "closeItemPoint": cc.p(460, 442)
         },
         "passiveSkillAfreshLabel": {
             "cardItemBgSpritePoint": cc.p(328, 637),
@@ -786,7 +795,7 @@ var fit4Iphone4 = {
             "skillDescription2Point": cc.p(140, 162),
             "passiveHarmLabelPoint": cc.p(520, 279),
             "lvLabelPoint": cc.p(260, 454),
-            "expLabelPoint": cc.p(400, 454),
+            "expLabelPoint": cc.p(420, 454),
             "upgradeItemPoint": cc.p(360, 402),
             "closeItemPoint": cc.p(360, 42),
             "spiritNodePoint": cc.p(360, 632),
@@ -1091,6 +1100,7 @@ var fit4Iphone5 = {
         "logoutLayer": {
             "bgLayerPoint": cc.p(0, 0),
             "bgSpritePoint": cc.p(323, 600),
+            "msgBgIconPoint": cc.p(320, 620),
             "msgLabelPoint": cc.p(320, 620),
             "cancelItemPoint": cc.p(320, 500)
         }
@@ -1534,7 +1544,7 @@ var fit4Iphone5 = {
         "noviceTeachingLayer": {
             "rectOrder": [
                 cc.rect(236, 424, 160, 160), cc.rect(140, 372, 360, 360), cc.rect(14, 852, 150, 150),
-                cc.rect(253, 495, 134, 45), cc.rect(254, 104, 134, 45), cc.rect(17, 4, 106, 106),
+                cc.rect(253, 475, 134, 45), cc.rect(254, 104, 134, 45), cc.rect(17, 4, 106, 106),
                 cc.rect(41, 624, 160, 60), cc.rect(98, 267, 134, 45), cc.rect(428, 267, 134, 45),
                 cc.rect(17, 4, 106, 106), cc.rect(30, 806, 90, 90), cc.rect(160, 830, 446, 112),
                 cc.rect(160, 695, 446, 112), cc.rect(498, 994, 124, 40), cc.rect(124, 4, 106, 106),
@@ -1544,7 +1554,7 @@ var fit4Iphone5 = {
                 cc.p(320, 500),
                 cc.p(320, 630),
                 cc.p(90, 934),
-                cc.p(320, 520),
+                cc.p(320, 500),
                 cc.p(320, 130),
                 cc.p(53, 54),
                 cc.p(125, 653),
@@ -1558,7 +1568,15 @@ var fit4Iphone5 = {
                 cc.p(160, 54),
                 cc.p(160, 860),
                 cc.p(320, 330)
-            ]
+            ],
+            "overItemPoint": cc.p(225, -530),
+            "bgLayerPoint": cc.p(0, 88),
+            "bgSpritePoint": cc.p(320, 580),
+            "msgBgIconPoint": cc.p(320, 620),
+            "tipLabelPoint": cc.p(320, 650),
+            "tipLabel2Point": cc.p(320, 610),
+            "okItemPoint": cc.p(220, 530),
+            "closeItemPoint": cc.p(420, 530)
         },
         "passiveSkillAfreshLabel": {
             "cardItemBgSpritePoint": cc.p(288, 725),
@@ -1675,7 +1693,7 @@ var fit4Iphone5 = {
 //            "vipSpritePoint": cc.p(410, 83)
 //        },
         "playerUpgradeLayer": {
-            "bgLayerPoint": cc.p(0, 88),
+            "bgLayerPoint": cc.p(0, 0),
             "bgSpritePoint": cc.p(320, 600),
             "obtainSpritePoint": cc.p(320, 820),
             "offsetY": 720,
@@ -1804,7 +1822,7 @@ var fit4Iphone5 = {
             "skillDescription2Point": cc.p(100, 250),
             "passiveHarmLabelPoint": cc.p(480, 367),
             "lvLabelPoint": cc.p(220, 560),
-            "expLabelPoint": cc.p(360, 560),
+            "expLabelPoint": cc.p(380, 560),
             "upgradeItemPoint": cc.p(320, 500),
             "closeItemPoint": cc.p(320, 130),
             "spiritNodePoint": cc.p(320, 720),

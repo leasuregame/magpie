@@ -22,11 +22,13 @@ var ActivityLayer = cc.Layer.extend({
         RechargeLayer
     ],
     _selectIcon: null,
+    _mark: [],
 
     onEnter: function() {
         cc.log("ActivityLayer onEnter");
 
         this._super();
+        this.updateMark();
 
         lz.dc.beginLogPageView("活动界面");
     },
@@ -62,8 +64,6 @@ var ActivityLayer = cc.Layer.extend({
         mainMenu.setPosition(cc.p(0, 0));
         this.addChild(mainMenu);
 
-        //var len = this._layer.length;
-
         for (var i = 0; i < 4; ++i) {
             var url = "icon" + (261 + i);
 
@@ -76,6 +76,12 @@ var ActivityLayer = cc.Layer.extend({
             item.setScale(0.9);
             item.setAnchorPoint(cc.p(0, 0));
             item.setPosition(cc.p(this._activityLayerFit.itemBasePoint.x + this._activityLayerFit.itemOffsetX * i, this._activityLayerFit.itemBasePoint.y));
+
+            this._mark[i] = cc.Sprite.create(main_scene_image.icon19);
+            this._mark[i].setPosition(cc.p(75, 80));
+            this._mark[i].setVisible(false);
+            item.addChild(this._mark[i]);
+
             mainMenu.addChild(item);
         }
 
@@ -108,6 +114,15 @@ var ActivityLayer = cc.Layer.extend({
             this._nowLayer = runLayer.create();
             this.addChild(this._nowLayer);
         }
+    },
+
+    updateMark: function() {
+        cc.log("MessageLayer updateMark");
+
+        this._mark[0].setVisible(gameMark.getSignInMark());
+        this._mark[1].setVisible(gameMark.getPowerRewardMark());
+        this._mark[2].setVisible(gameMark.getGoldRewardMark());
+        this._mark[3].setVisible(gameMark.getRechargeMark());
     }
 
 

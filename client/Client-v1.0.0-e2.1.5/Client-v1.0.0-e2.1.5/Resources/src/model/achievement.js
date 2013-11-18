@@ -76,7 +76,10 @@ var Achievement = Entity.extend({
                         cc.log(data);
 
                         gameData.achievement.setAchieve(data.msg.achieveId);
+                        gameMark.updateAchievementMark(true);
                     });
+
+                    gameMark.updateAchievementMark(false);
 
                     lz.dc.event("event_achievement");
                 } else {

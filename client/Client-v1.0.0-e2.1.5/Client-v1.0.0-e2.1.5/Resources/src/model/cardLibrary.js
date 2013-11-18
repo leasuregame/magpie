@@ -100,7 +100,10 @@ var CardLibrary = Entity.extend({
                         cc.log(data);
 
                         that._changeTypeById(data.msg.tableId, CARD_RECEIVE);
+                        gameMark.updateCardLibraryMark(true);
                     });
+
+                    gameMark.updateCardLibraryMark(false);
 
                     lz.dc.event("event_get_card_book");
                 } else {

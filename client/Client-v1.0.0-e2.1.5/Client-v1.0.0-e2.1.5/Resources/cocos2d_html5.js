@@ -91,6 +91,7 @@
             'src/model/battleStep.js',
 
             'src/model/gameData.js',
+            'src/model/gameMark.js',
 
             'src/controls/progress.js',
             'src/controls/lazyLayer.js',

@@ -137,6 +137,9 @@ var SystemMessageLayer = cc.Layer.extend({
             gameData.message.receive(function () {
                 element.receiveItem.setVisible(false);
                 element.hasBeenReceiveIcon.setVisible(true);
+
+                gameMark.updateFriendMessageMark(false);
+
             }, id);
         }
     }

@@ -171,8 +171,8 @@ var SpiritDetails = LazyLayer.extend({
 
         LazyLayer.closeCloudAll();
 
-        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-            NoviceTeachingLayer.getInstance().next();
+        if (noviceTeachingLayer.isNoviceTeaching()) {
+            noviceTeachingLayer.next();
         }
     },
 
@@ -181,8 +181,8 @@ var SpiritDetails = LazyLayer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-            NoviceTeachingLayer.getInstance().clearAndSave();
+        if (noviceTeachingLayer.isNoviceTeaching()) {
+            noviceTeachingLayer.clearAndSave();
         }
 
         LazyLayer.showCloudAll();
@@ -210,9 +210,9 @@ var SpiritDetails = LazyLayer.extend({
 
         this.removeFromParent();
 
-        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-            NoviceTeachingLayer.getInstance().clearAndSave();
-            NoviceTeachingLayer.getInstance().next();
+        if (noviceTeachingLayer.isNoviceTeaching()) {
+            noviceTeachingLayer.clearAndSave();
+            noviceTeachingLayer.next();
         }
     }
 });

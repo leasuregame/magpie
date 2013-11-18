@@ -183,6 +183,7 @@ var FriendMessageLayer = cc.Layer.extend({
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             gameData.message.accept(id);
+            gameMark.updateFriendMessageMark(false);
 
             var element = this._scrollViewElement[id];
 
@@ -199,6 +200,7 @@ var FriendMessageLayer = cc.Layer.extend({
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             gameData.message.reject(id);
+            gameMark.updateFriendMessageMark(false);
 
             var element = this._scrollViewElement[id];
 
@@ -224,6 +226,8 @@ var FriendMessageLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+            gameMark.updateFriendMessageMark(false);
+            
             ReadMessageLayer.pop(message.sender, message.senderName, message.text);
         }
     }

@@ -442,8 +442,11 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                 }
 
                 var value = passiveSkill[key].value.toFixed(1);
-                passiveSkillLabel.valueLabel.setString("+ " + value + "%");
-
+                if(value == 10.0) {
+                    passiveSkillLabel.valueLabel.setString("     + " + value + "% (满)");
+                } else {
+                    passiveSkillLabel.valueLabel.setString("+ " + value + "%");
+                }
                 if (value >= 8.0) {
                     passiveSkillLabel.valueLabel.setColor(cc.c3b(255, 248, 69));
                 } else if (value >= 5.0) {

@@ -67,9 +67,9 @@ var LineUpLabel = cc.Layer.extend({
 
         MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_LINEUP));
 
-        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-            NoviceTeachingLayer.getInstance().clearAndSave();
-            NoviceTeachingLayer.getInstance().next();
+        if (noviceTeachingLayer.isNoviceTeaching()) {
+            noviceTeachingLayer.clearAndSave();
+            noviceTeachingLayer.next();
         }
     },
 

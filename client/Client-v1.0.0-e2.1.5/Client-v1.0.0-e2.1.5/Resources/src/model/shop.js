@@ -439,7 +439,7 @@ var Shop = Entity.extend({
             player.set(msg.consume.key, msg.consume.value);
 
             return {
-                power: msg.power
+                money: msg.money
             }
         },
 

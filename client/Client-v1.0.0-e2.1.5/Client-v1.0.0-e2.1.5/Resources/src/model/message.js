@@ -77,7 +77,10 @@ var Message = Entity.extend({
                         cc.log(data);
 
                         gameData.message.push(data.msg);
+
                     });
+
+                    gameMark.updateMessageMark(false);
 
                     lz.dc.event("event_message_list");
                 } else {
@@ -95,12 +98,15 @@ var Message = Entity.extend({
 
         if (msg.type == ADD_FRIEND_MESSAGE) {
             this._friendMessage.push(msg);
+            gameMark.updateFriendMessageMark(true);
         } else if (msg.type == LEAVE_MESSAGE) {
             this._friendMessage.push(msg);
+            gameMark.updateFriendMessageMark(true);
         } else if (msg.type == BATTLE_MESSAGE) {
             this._battleMessage.push(msg);
         } else if (msg.type == SYSTEM_MESSAGE) {
             this._systemMessage.push(msg);
+            gameMark.updateSystemMessageMark(true);
         }
 
         this._sort();
@@ -223,6 +229,7 @@ var Message = Entity.extend({
 
                     lz.dc.event("event_handle_sys_message");
                 } else {
+                    TipLayer.tip(data.msg);
                     cc.log("receive fail");
                 }
             });

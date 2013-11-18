@@ -180,6 +180,9 @@ var ConfigLayer = cc.Layer.extend({
     _onClickBgMusic: function () {
         return function () {
             cc.log("ConfigLayer _onClickBgMusic");
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             this.musicOpen = !this.musicOpen;
             this.musicSelect.setVisible(this.musicOpen);
 
@@ -194,6 +197,9 @@ var ConfigLayer = cc.Layer.extend({
     _onClickSound: function () {
         return function () {
             cc.log("ConfigLayer _onClickSound");
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             this.soundOpen = !this.soundOpen;
             this.soundSelect.setVisible(this.soundOpen);
 
@@ -207,12 +213,17 @@ var ConfigLayer = cc.Layer.extend({
 
     _onClickTips: function () {
         cc.log("ConfigLayer _onClickTips");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var tipsLayer = TipsLayer.create();
         this.addChild(tipsLayer, 1);
     },
 
     _onClickBack: function () {
         cc.log("ConfigLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
     }

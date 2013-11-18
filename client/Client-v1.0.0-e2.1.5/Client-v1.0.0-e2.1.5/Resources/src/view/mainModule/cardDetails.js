@@ -295,6 +295,8 @@ var CardDetails = LazyLayer.extend({
     _onClickClose: function () {
         cc.log("CardDetails _onClickClose");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._menu.setEnabled(false);
         this.removeFromParent();
 

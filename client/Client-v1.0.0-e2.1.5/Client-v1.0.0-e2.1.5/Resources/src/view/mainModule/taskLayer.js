@@ -225,6 +225,8 @@ var TaskLayer = cc.Layer.extend({
         return function () {
             cc.log("TaskLayer _onClickSection " + id);
 
+            gameData.sound.playEffect(main_scene_image.click_building_sound, false);
+
             var task = gameData.task;
 
             if (id > task.getSection()) {
@@ -263,6 +265,8 @@ var TaskLayer = cc.Layer.extend({
 
     _onClickWipeOut: function () {
         cc.log("TaskLayer _onClickWipeOut");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._wipOut();
     },

@@ -262,7 +262,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p3.png</string>
+									<string>res/effect/effect/p3.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -537,7 +537,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p3.png</string>
+									<string>res/effect/effect/p3.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -812,7 +812,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p4.png</string>
+									<string>res/effect/effect/p4.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1087,7 +1087,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p4.png</string>
+									<string>res/effect/effect/p4.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1410,7 +1410,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up42.png</string>
+									<string>res/effect/uiEffect/up42.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1433,17 +1433,6 @@
 									<integer>215</integer>
 									<integer>131</integer>
 									<integer>255</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>blendFunc</string>
-								<key>type</key>
-								<string>Blendmode</string>
-								<key>value</key>
-								<array>
-									<integer>1</integer>
-									<integer>1</integer>
 								</array>
 							</dict>
 						</array>
@@ -1685,7 +1674,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up42.png</string>
+									<string>res/effect/uiEffect/up42.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2135,7 +2124,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/effect/p15.png</string>
+						<string>res/effect/effect/p15.png</string>
 					</dict>
 				</array>
 			</dict>
@@ -2502,7 +2491,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/effect/p18.png</string>
+						<string>res/effect/effect/p8.png</string>
 					</dict>
 				</array>
 			</dict>
@@ -2605,7 +2594,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.83333331346511841</real>
+			<real>0.73333334922790527</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -2628,7 +2617,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>sound/battle_sound_heal.wav</string>
+							<string>res/sound/battle_sound_atk.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>

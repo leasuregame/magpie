@@ -65,6 +65,8 @@ var GamblingLayer = cc.Layer.extend({
     _onClickLotteryLayer: function () {
         cc.log("GamblingLayer _onClickLotteryLayer");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._lotteryLayerItem.setEnabled(false);
         this._treasureHuntLayerItem.setEnabled(true);
         this.switchLayer(LotteryLayer);
@@ -72,6 +74,8 @@ var GamblingLayer = cc.Layer.extend({
 
     _onClickTreasureHuntLayer: function () {
         cc.log("GamblingLayer _onClickTreasureHuntLayer");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._lotteryLayerItem.setEnabled(true);
         this._treasureHuntLayerItem.setEnabled(false);

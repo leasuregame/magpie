@@ -325,11 +325,15 @@ var ExploreLayer = cc.Layer.extend({
     _onClickBack: function () {
         cc.log("ExploreLayer _onClickBack");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         MainScene.getInstance().switchLayer(PveLayer);
     },
 
     _onClickExplore: function () {
         cc.log("ExploreLayer _onClickExplore");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var task = gameData.task;
 

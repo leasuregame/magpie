@@ -170,6 +170,8 @@ var FriendMessageLayer = cc.Layer.extend({
         return function () {
             cc.log("FriendMessageLayer _onClickAccept: " + id);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             gameData.message.accept(id);
 
             var element = this._scrollViewElement[id];
@@ -183,6 +185,8 @@ var FriendMessageLayer = cc.Layer.extend({
     _onClickReject: function (id) {
         return function () {
             cc.log("FriendMessageLayer _onClickReject: " + id);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             gameData.message.reject(id);
 
@@ -198,6 +202,8 @@ var FriendMessageLayer = cc.Layer.extend({
         return function () {
             cc.log("FriendMessageLayer _onClickAddFriend: ");
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             gameData.friend.addFriend(name);
         }
     },
@@ -205,6 +211,8 @@ var FriendMessageLayer = cc.Layer.extend({
     _onClickRead: function (message) {
         return function () {
             cc.log("FriendMessageLayer _onClickRead: " + message);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             ReadMessageLayer.pop(message.sender, message.senderName, message.text);
         }

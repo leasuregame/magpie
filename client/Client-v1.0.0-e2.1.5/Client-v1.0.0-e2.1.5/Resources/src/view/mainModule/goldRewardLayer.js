@@ -138,8 +138,9 @@ var GoldRewardLayer = cc.Layer.extend({
     },
 
     _onClickGetReward: function (id) {
-
         return function () {
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             cc.log(id);
             var element = this._scrollViewElement[id];
             gameData.activity.getGoldReward(id, function (isOK) {
@@ -151,8 +152,6 @@ var GoldRewardLayer = cc.Layer.extend({
         };
 
     }
-
-
 });
 
 GoldRewardLayer.create = function () {

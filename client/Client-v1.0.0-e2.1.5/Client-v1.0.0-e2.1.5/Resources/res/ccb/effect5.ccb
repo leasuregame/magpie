@@ -262,7 +262,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>-89.833335876464844</real>
+									<real>-92</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -289,8 +289,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.0333333015441895</real>
-									<real>1.0333333015441895</real>
+									<real>1.2000000476837158</real>
+									<real>1.2000000476837158</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -311,7 +311,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p14.png</string>
+									<string>res/effect/effect/p14.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -322,7 +322,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>106</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -563,7 +563,7 @@
 								<key>value</key>
 								<array>
 									<real>0.0</real>
-									<real>-89.833335876464844</real>
+									<real>-92</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -590,8 +590,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.94999998807907104</real>
-									<real>0.86666667461395264</real>
+									<real>1.2000000476837158</real>
+									<real>1.2000000476837158</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -612,7 +612,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p14.png</string>
+									<string>res/effect/effect/p14.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -623,7 +623,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>106</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -865,8 +865,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.2222222089767456</real>
-									<real>1.2222222089767456</real>
+									<real>1.5</real>
+									<real>1.5</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -887,7 +887,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p13.png</string>
+									<string>res/effect/effect/p13.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -898,7 +898,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>142</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 					</dict>
@@ -1077,8 +1077,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.3571429252624512</real>
-									<real>1.3571429252624512</real>
+									<real>1.5</real>
+									<real>1.5</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1099,7 +1099,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p13.png</string>
+									<string>res/effect/effect/p13.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1110,7 +1110,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>73</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1396,11 +1396,9 @@
 								<key>type</key>
 								<string>Texture</string>
 								<key>value</key>
-								<string>effect/effect/p18.png</string>
+								<string>res/effect/effect/p18.png</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -1548,7 +1546,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.3333333432674408</real>
+			<real>0.66666668653488159</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -1571,7 +1569,7 @@
 						<integer>9</integer>
 						<key>value</key>
 						<array>
-							<string>sound/battle_sound_heal.mp3</string>
+							<string>res/sound/battle_sound_aoe.wav</string>
 							<real>1</real>
 							<real>0.0</real>
 							<real>1</real>

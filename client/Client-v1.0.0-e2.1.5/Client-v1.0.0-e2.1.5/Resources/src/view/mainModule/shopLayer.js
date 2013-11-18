@@ -67,6 +67,8 @@ var ShopLayer = cc.Layer.extend({
     _onClickVipLayer: function () {
         cc.log("ShopLayer _onClickVipLayer");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._vipLayerItem.setEnabled(false);
         this._propsLayerItem.setEnabled(true);
 
@@ -75,6 +77,8 @@ var ShopLayer = cc.Layer.extend({
 
     _onClickPropsLayer: function () {
         cc.log("ShopLayer _onClickPropsLayer");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._vipLayerItem.setEnabled(true);
         this._propsLayerItem.setEnabled(false);

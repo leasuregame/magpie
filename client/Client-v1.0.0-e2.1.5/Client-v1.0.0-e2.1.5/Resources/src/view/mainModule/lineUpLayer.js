@@ -114,6 +114,8 @@ var LineUpLayer = LazyLayer.extend({
     _onClickOk: function () {
         cc.log("LineUpLayer _onClickOk");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._menu.setEnabled(false);
 
         var that = this;
@@ -124,6 +126,8 @@ var LineUpLayer = LazyLayer.extend({
 
     _onClickCard: function () {
         cc.log("LineUpLayer _onClickCard");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var cardList = gameData.lineUp.getLineUpCardList();
 

@@ -77,7 +77,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>main/card_frame4.png</string>
+							<string>res/main/card_frame4.png</string>
 						</array>
 					</dict>
 				</array>

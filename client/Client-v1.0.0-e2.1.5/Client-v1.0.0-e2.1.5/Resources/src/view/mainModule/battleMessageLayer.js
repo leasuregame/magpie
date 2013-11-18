@@ -103,6 +103,8 @@ var BattleMessageLayer = cc.Layer.extend({
         return function () {
             cc.log("BattleMessageLayer onClickPlayback: " + id);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             gameData.message.playback(id);
         }
     }

@@ -153,7 +153,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up19.png</string>
+									<string>res/effect/uiEffect/up19.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -251,7 +251,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up19.png</string>
+									<string>res/effect/uiEffect/up19.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -335,7 +335,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up19.png</string>
+									<string>res/effect/uiEffect/up19.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -562,7 +562,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up19.png</string>
+									<string>res/effect/uiEffect/up19.png</string>
 								</array>
 							</dict>
 						</array>
@@ -639,7 +639,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up19.png</string>
+									<string>res/effect/uiEffect/up19.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -727,7 +727,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up19.png</string>
+									<string>res/effect/uiEffect/up19.png</string>
 								</array>
 							</dict>
 						</array>

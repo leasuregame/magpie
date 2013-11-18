@@ -120,6 +120,8 @@ var SystemMessageLayer = cc.Layer.extend({
         return function () {
             cc.log("SystemMessageLayer onClickPlayback: " + id);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var element = this._scrollViewElement[id];
 
             gameData.message.receive(function () {

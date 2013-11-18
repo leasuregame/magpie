@@ -134,6 +134,8 @@ var LineUpDetailsLayer = cc.Layer.extend({
     _onClickClose: function () {
         cc.log("LineUpDetailsLayer update");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this.removeFromParent();
     }
 });

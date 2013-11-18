@@ -521,6 +521,8 @@ var PassLayer = cc.Layer.extend({
         return function () {
             cc.log("PassLayer _onClickDefiance: " + id);
 
+            gameData.sound.playEffect(main_scene_image.click_building_sound, false);
+
             this._element[id].passItem.stopAllActions();
 
             this._element[id].passItem.runAction(
@@ -558,6 +560,8 @@ var PassLayer = cc.Layer.extend({
     _onClickWipeOut: function () {
         cc.log("PassLayer _onClickWipeOut");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         LazyLayer.showCloudAll();
 
         var that = this;
@@ -580,6 +584,8 @@ var PassLayer = cc.Layer.extend({
     _onClickMystical: function () {
         cc.log("PassLayer _onClickMystical");
 
+        gameData.sound.playEffect(main_scene_image.click_building_sound, false);
+
         LazyLayer.showCloudLayer();
 
         var that = this;
@@ -590,6 +596,8 @@ var PassLayer = cc.Layer.extend({
 
     _onClickReset: function () {
         cc.log("PassLayer _onClickReset");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._showReset();
     }

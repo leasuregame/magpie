@@ -65,6 +65,8 @@ var PveLayer = cc.Layer.extend({
     _onClickTaskLayer: function () {
         cc.log("PveLayer _onClickTaskLayer");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._taskLayerItem.setEnabled(false);
         this._passLayerItem.setEnabled(true);
         this.switchLayer(TaskLayer);
@@ -72,6 +74,8 @@ var PveLayer = cc.Layer.extend({
 
     _onClickPassLayer: function () {
         cc.log("PveLayer _onClickPassLayer");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._taskLayerItem.setEnabled(true);
         this._passLayerItem.setEnabled(false);

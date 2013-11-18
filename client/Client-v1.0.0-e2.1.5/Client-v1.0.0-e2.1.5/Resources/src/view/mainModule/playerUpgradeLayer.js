@@ -88,6 +88,8 @@ var PlayerUpgradeLayer = LazyLayer.extend({
     _onClickOk: function () {
         cc.log("PlayerUpgradeLayer _onClickOk");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this.removeFromParent();
     }
 });

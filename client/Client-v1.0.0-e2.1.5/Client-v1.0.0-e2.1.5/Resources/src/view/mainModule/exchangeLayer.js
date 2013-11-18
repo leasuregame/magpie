@@ -190,6 +190,8 @@ var ExchangeLayer = cc.Layer.extend({
         return function () {
             cc.log("ExchangeLayer _onClickCard: " + data.id);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var id = data.id;
             var card = data.card;
             var star = card.get("star");
@@ -214,6 +216,8 @@ var ExchangeLayer = cc.Layer.extend({
         return function () {
             cc.log("ExchangeLayer _onClickExchange");
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var exchange = gameData.exchange;
 
             if (!exchange.canExchange(star)) {
@@ -234,6 +238,8 @@ var ExchangeLayer = cc.Layer.extend({
     },
 
     _onClickSelectStar4: function () {
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         if (this._type == SELECT_STAR4_EXCHANGE_CARD) {
             this._type = SELECT_ALL_EXCHANGE_CARD;
 
@@ -249,6 +255,8 @@ var ExchangeLayer = cc.Layer.extend({
     },
 
     _onClickSelectStar5: function () {
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         if (this._type == SELECT_STAR5_EXCHANGE_CARD) {
             this._type = SELECT_ALL_EXCHANGE_CARD;
 
@@ -266,6 +274,8 @@ var ExchangeLayer = cc.Layer.extend({
 
     _onClickBack: function () {
         cc.log("ExchangeLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(LotteryLayer);
     }

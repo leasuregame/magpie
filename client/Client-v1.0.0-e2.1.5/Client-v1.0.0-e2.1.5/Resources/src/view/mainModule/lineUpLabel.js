@@ -63,6 +63,8 @@ var LineUpLabel = cc.Layer.extend({
     _onClickCard: function () {
         cc.log("LineUpLabel _onClickCard");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_LINEUP));
 
         if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
@@ -76,6 +78,8 @@ var LineUpLabel = cc.Layer.extend({
 
         return function () {
             cc.log("LineUpLabel _onClickLock");
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             if (index == 3) {
                 TipLayer.tip(table.card4_position + " 级开启");

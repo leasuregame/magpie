@@ -182,6 +182,8 @@ var LotteryLayer = cc.Layer.extend({
         return function () {
             cc.log("LotteryLayer _onClickLottery");
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var lottery = gameData.lottery;
 
             if (!lottery.canLottery(type, level)) {
@@ -224,11 +226,15 @@ var LotteryLayer = cc.Layer.extend({
     _onClickExchange: function () {
         cc.log("LotteryLayer _onClickExchange");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         MainScene.getInstance().switchLayer(ExchangeLayer);
     },
 
     _onClickBack: function () {
         cc.log("LotteryLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
     }

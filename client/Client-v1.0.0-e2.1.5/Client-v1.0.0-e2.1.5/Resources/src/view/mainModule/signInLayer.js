@@ -295,11 +295,15 @@ var SignInLayer = LazyLayer.extend({
     _onClickClose: function () {
         cc.log("SignInLayer _onClickClose");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this.removeFromParent();
     },
 
     _onClickSignIn: function () {
         cc.log("SignInLayer _onClickSignIn");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var that = this;
         gameData.signIn.signIn(function (data) {
@@ -314,6 +318,8 @@ var SignInLayer = LazyLayer.extend({
     _onClickRemedySignIn: function () {
         cc.log("SignInLayer _onClickRemedySignIn");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var that = this;
         gameData.signIn.remedySignIn(function (data) {
             cc.log(data);
@@ -327,6 +333,8 @@ var SignInLayer = LazyLayer.extend({
     _onClickReceiveReward: function (id) {
         return function () {
             cc.log("SignInLayer _onClickReward: " + id);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             var len = this._elementList.length;
             for (var i = 0; i < len; ++i) {
@@ -358,12 +366,16 @@ var SignInLayer = LazyLayer.extend({
     _onClickTurnLeft: function () {
         cc.log("SignInLayer _onClickTurnLeft");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._index = Math.min(this._index + 1, MAX_SIGN_IN_HISTORY - 1);
         this.update();
     },
 
     _onClickTurnRight: function () {
         cc.log("SignInLayer _onClickTurnRight");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._index = Math.max(this._index - 1, 0);
         this.update();

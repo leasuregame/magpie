@@ -233,6 +233,8 @@ var PlayerDetails = LazyLayer.extend({
     _onClickClose: function () {
         cc.log("PlayerDetails _onClickClose");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._menu.setEnabled(false);
 
         this.removeFromParent();

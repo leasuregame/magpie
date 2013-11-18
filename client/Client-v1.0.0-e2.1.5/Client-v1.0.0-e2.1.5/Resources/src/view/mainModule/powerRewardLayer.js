@@ -99,6 +99,9 @@ var PowerRewardLayer = cc.Layer.extend({
 
     _onClickGetReward: function () {
         cc.log("PowerRewardLayer _onClickGetReward");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         gameData.activity.getPowerReward();
     }
 

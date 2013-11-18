@@ -181,7 +181,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>main/star2.png</string>
+									<string>res/main/star2.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -400,7 +400,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up30.png</string>
+									<string>res/effect/uiEffect/up30.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -582,7 +582,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.0</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/star_sound.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

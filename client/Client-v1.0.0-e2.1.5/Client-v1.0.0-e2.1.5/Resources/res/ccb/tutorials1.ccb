@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -335,7 +335,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/NewPlayer/empty.png</string>
+							<string>res/effect/NewPlayer/empty.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -996,8 +996,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>1.8018301725387573</real>
+							<real>1.7945098876953125</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1018,7 +1018,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/NewPlayer/light.png</string>
+							<string>res/effect/NewPlayer/light.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1277,7 +1277,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/NewPlayer/hand.png</string>
+							<string>res/effect/NewPlayer/hand.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1640,7 +1640,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/NewPlayer/talking.png</string>
+									<string>res/effect/NewPlayer/talking.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1783,7 +1783,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/NewPlayer/yuanshen.png</string>
+									<string>res/effect/NewPlayer/yuanshen.png</string>
 								</array>
 							</dict>
 							<dict>

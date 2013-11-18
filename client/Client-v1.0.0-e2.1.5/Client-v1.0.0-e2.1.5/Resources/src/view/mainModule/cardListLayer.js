@@ -336,6 +336,8 @@ var CardListLayer = cc.Layer.extend({
             main_scene_image.button8,
             main_scene_image.button8s,
             function () {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
                 MainScene.getInstance().switchLayer(MainLayer);
             },
             this
@@ -375,6 +377,8 @@ var CardListLayer = cc.Layer.extend({
         okItem.setPosition(this._cardListLayerFit.okItemPoint);
 
         var backItem = cc.MenuItemImage.create(main_scene_image.button8, main_scene_image.button8s, function () {
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             this._cb(null);
         }, this);
         backItem.setPosition(this._cardListLayerFit.backItemPoint);
@@ -492,6 +496,8 @@ var CardListLayer = cc.Layer.extend({
             main_scene_image.button8,
             main_scene_image.button8s,
             function () {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
                 this._cb(null);
             },
             this
@@ -626,6 +632,8 @@ var CardListLayer = cc.Layer.extend({
             main_scene_image.button8,
             main_scene_image.button8s,
             function () {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
                 MainScene.getInstance().switch(CardListLayer.create());
             },
             this
@@ -747,18 +755,23 @@ var CardListLayer = cc.Layer.extend({
     _onClickOk: function () {
         cc.log("CardListLayer _onClickOk");
 
-        this._cb(this._getSelectCardList());
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        this._cb(this._getSelectCardList());
     },
 
     _onClickSell: function () {
         cc.log("CardListLayer _onClickSell");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_SELL));
     },
 
     _onClickSellOk: function () {
         cc.log("CardListLayer _onClickSellOk");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var selectCardList = this._getSelectCardList();
         var cardIdList = [];
@@ -775,6 +788,8 @@ var CardListLayer = cc.Layer.extend({
 
     _onClickChangeLineUp: function () {
         cc.log("CardListLayer _onClickChangeLineUp");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var lineUp = lz.clone(gameData.lineUp.get("lineUp"));
         var cardList = this._getSelectCardList();
@@ -833,17 +848,23 @@ var CardListLayer = cc.Layer.extend({
     _onClickLineUp: function () {
         cc.log("CardListLayer _onClickChangeLineUp");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         LineUpLayer.pop();
     },
 
     _onClickSortType: function () {
         cc.log("CardListLayer _onClickSortType");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this.setSortType(this._sortType ^ 1);
     },
 
     _onClickSelectAllLow: function () {
         cc.log("CardListLayer _onClickAllLow");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._isSelectAllLow = !this._isSelectAllLow;
 

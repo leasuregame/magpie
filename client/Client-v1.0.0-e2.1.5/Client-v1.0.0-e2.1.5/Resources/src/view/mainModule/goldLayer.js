@@ -267,6 +267,9 @@ var GoldLayer = LazyLayer.extend({
 
     _onClickGoldBox: function () {
         cc.log("GoldLayer _onClickGoldBox");
+
+        gameData.sound.playEffect(main_scene_image.click_gold_sound, false);
+
         if (this._tipText != null) {
             this._tipText.removeFromParent();
         }
@@ -279,6 +282,8 @@ var GoldLayer = LazyLayer.extend({
     _onClickGold: function (index) {
         return function () {
             cc.log("GoldLayer _onClickGold: " + index);
+
+            gameData.sound.playEffect(main_scene_image.click_gold_sound, false);
 
             this._obtainGold(index);
         }

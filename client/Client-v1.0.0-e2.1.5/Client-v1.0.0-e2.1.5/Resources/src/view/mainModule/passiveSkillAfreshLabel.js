@@ -600,6 +600,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _onClickSelectLeadCard: function () {
         cc.log("PassiveSkillAfreshLabel _onClickSelectLeadCard");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_PASSIVE_SKILL_AFRESH_MASTER, function (data) {
             cc.log(data);
@@ -628,6 +630,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         return function () {
             cc.log("PassiveSkillAfreshLabel _onClickLock: " + index);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var passiveSkill = this._passiveSkillList[index];
             passiveSkill.isLock = !passiveSkill.isLock;
             passiveSkill.hookLabel.setVisible(passiveSkill.isLock);
@@ -640,6 +644,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _onClickUseMoney: function () {
         cc.log("PassiveSkillAfreshLabel _onClickUseMoney");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._useType = USE_MONEY;
         this._useMoneyItem.setEnabled(false);
         this._useGoldItem.setEnabled(true);
@@ -649,6 +655,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
     _onClickUseGold: function () {
         cc.log("PassiveSkillAfreshLabel _onClickUseGold");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._useType = USE_GOLD;
         this._useMoneyItem.setEnabled(true);
@@ -660,6 +668,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _onClickStopUntilBlue: function () {
         cc.log("PassiveSkillAfreshLabel _onClickStopUntilBlue");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._stopType = STOP_UNTIL_BLUE;
         this._stopUntilBlueItem.setEnabled(false);
         this._stopUntilYellowItem.setEnabled(true);
@@ -669,6 +679,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
     _onClickStopUntilYellow: function () {
         cc.log("PassiveSkillAfreshLabel _onClickStopUntilYellow");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._stopType = STOP_UNTIL_YELLOW;
         this._stopUntilBlueItem.setEnabled(true);
@@ -680,11 +692,15 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _onClickAfresh: function () {
         cc.log("PassiveSkillAfreshLabel _onClickAfresh");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._afresh();
     },
 
     _onClickRepeatAfresh: function () {
         cc.log("PassiveSkillAfreshLabel _onClickRepeatAfresh");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._resLabel.setVisible(false);
         this._afreshItem.setVisible(false);
@@ -697,6 +713,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
     _onClickStart: function () {
         cc.log("PassiveSkillAfreshLabel _onClickStart");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._resLabel.setVisible(true);
         this._afreshItem.setVisible(false);
@@ -716,6 +734,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
     _onClickCancel: function () {
         cc.log("PassiveSkillAfreshLabel _onClickCancel");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._resLabel.setVisible(true);
         this._afreshItem.setVisible(true);
         this._repeatAfreshItem.setVisible(true);
@@ -727,6 +747,8 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
     _onClickStop: function () {
         cc.log("PassiveSkillAfreshLabel _onClickStop");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._resLabel.setVisible(true);
         this._afreshItem.setVisible(true);

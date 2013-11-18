@@ -217,6 +217,8 @@ var SpiritPoolLayer = cc.Layer.extend({
     _onClickSpiritPool: function () {
         cc.log("SpiritPoolLayer _onClickSoulTable");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
             NoviceTeachingLayer.getInstance().clearAndSave();
         }
@@ -246,6 +248,8 @@ var SpiritPoolLayer = cc.Layer.extend({
     _onClickSpirit: function () {
         cc.log("SpiritPoolLayer _onClickSpirit");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
             NoviceTeachingLayer.getInstance().clearAndSave();
             NoviceTeachingLayer.getInstance().next();
@@ -257,6 +261,8 @@ var SpiritPoolLayer = cc.Layer.extend({
     _onClickUseGold: function () {
         cc.log("SpiritPoolLayer _onClickUseGold");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._useGold = !this._useGold;
         this._hook.setVisible(this._useGold);
 
@@ -265,6 +271,8 @@ var SpiritPoolLayer = cc.Layer.extend({
 
     _onClickBack: function () {
         cc.log("SpiritPoolLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
     }

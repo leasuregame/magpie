@@ -313,6 +313,8 @@ var CardTrainLabel = cc.Layer.extend({
     _onClickSelectLeadCard: function () {
         cc.log("CardTrainLabel _onClickSelectLeadCard");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var that = this;
         var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_UPGRADE_MASTER, function (data) {
             cc.log(data);
@@ -335,6 +337,8 @@ var CardTrainLabel = cc.Layer.extend({
 
     _onClickTrain: function () {
         cc.log("CardTrainLabel _onClickTrain");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         if (this._trainType == TRAIN_CARD_NULL) {
             TipLayer.tip("请选择培养类型");
@@ -365,6 +369,8 @@ var CardTrainLabel = cc.Layer.extend({
     _onClickTrainHp: function () {
         cc.log("CardTrainLabel _onClickTrainHp");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._trainType = TRAIN_CARD_HP;
         this._trainHpItem.setEnabled(false);
         this._trainAtkItem.setEnabled(true);
@@ -374,6 +380,8 @@ var CardTrainLabel = cc.Layer.extend({
 
     _onClickTrainAtk: function () {
         cc.log("CardTrainLabel _onClickTrainAtk");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._trainType = TRAIN_CARD_ATK;
         this._trainHpItem.setEnabled(true);
@@ -385,6 +393,8 @@ var CardTrainLabel = cc.Layer.extend({
     _onClickTrainOne: function () {
         cc.log("CardTrainLabel _onClickTrainOne");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._trainCount = TRAIN_ONE_COUNT;
         this._trainOneItem.setEnabled(false);
         this._trainTenItem.setEnabled(true);
@@ -394,6 +404,8 @@ var CardTrainLabel = cc.Layer.extend({
 
     _onClickTrainTen: function () {
         cc.log("CardTrainLabel _onClickTrainTen");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._trainCount = TRAIN_TEN_COUNT;
         this._trainOneItem.setEnabled(true);

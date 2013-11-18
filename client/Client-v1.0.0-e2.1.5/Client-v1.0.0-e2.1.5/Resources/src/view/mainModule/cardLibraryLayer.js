@@ -167,6 +167,8 @@ var CardLibraryLayer = cc.Layer.extend({
         return function () {
             cc.log("CardLibraryLayer _onClickCard: " + data.id);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var that = this;
             var id = data.id;
             var card = data.card;
@@ -188,6 +190,8 @@ var CardLibraryLayer = cc.Layer.extend({
 
     _onClickBack: function () {
         cc.log("CardLibraryLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
     }

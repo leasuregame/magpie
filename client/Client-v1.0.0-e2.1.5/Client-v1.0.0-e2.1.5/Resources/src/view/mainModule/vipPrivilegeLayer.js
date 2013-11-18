@@ -192,6 +192,8 @@ var VipPrivilegeLayer = LazyLayer.extend({
     _onClickClose: function () {
         cc.log("VipPrivilegeLayer _onClickClose");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var parent = this.getParent();
 
         var paymentLayer = PaymentLayer.create();

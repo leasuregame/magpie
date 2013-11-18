@@ -101,7 +101,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up7.png</string>
+									<string>res/effect/uiEffect/up7.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -112,7 +112,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up7.png</string>
+									<string>res/effect/uiEffect/up7.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -123,7 +123,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up7.png</string>
+									<string>res/effect/uiEffect/up7.png</string>
 								</array>
 							</dict>
 						</array>
@@ -315,7 +315,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>360</real>
+								<real>123.50000762939453</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -333,7 +333,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up3.png</string>
+									<string>res/effect/uiEffect/up3.png</string>
 								</array>
 							</dict>
 						</array>
@@ -510,7 +510,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>720</real>
+								<real>247.00001525878906</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -528,7 +528,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up2.png</string>
+									<string>res/effect/uiEffect/up2.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -652,7 +652,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>1530</real>
+								<real>584</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -670,7 +670,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up1.png</string>
+									<string>res/effect/uiEffect/up1.png</string>
 								</array>
 							</dict>
 						</array>
@@ -782,7 +782,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>970</real>
+								<real>497</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -800,7 +800,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up1.png</string>
+									<string>res/effect/uiEffect/up1.png</string>
 								</array>
 							</dict>
 						</array>
@@ -912,7 +912,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>1080</real>
+								<real>370.50003051757812</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -930,7 +930,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up1.png</string>
+									<string>res/effect/uiEffect/up1.png</string>
 								</array>
 							</dict>
 						</array>
@@ -1394,7 +1394,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/uiEffect/up4.png</string>
+							<string>res/effect/uiEffect/up4.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1676,11 +1676,9 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/uiEffect/up5.png</string>
+						<string>res/effect/uiEffect/up5.png</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -1947,7 +1945,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/uiEffect/up72.png</string>
+						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
 			</dict>
@@ -2038,7 +2036,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>24</real>
+			<real>8.2333335876464844</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

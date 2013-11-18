@@ -11,7 +11,7 @@
  * props layer
  * */
 
-var productUrl = ["icon283","icon278","icon279","icon280","icon284"];
+var productUrl = ["icon283", "icon278", "icon279", "icon280", "icon284"];
 
 var PropsLayer = cc.Layer.extend({
     _propsLayerFit: null,
@@ -159,12 +159,16 @@ var PropsLayer = cc.Layer.extend({
     _onClickPayment: function () {
         cc.log("PropsLayer _onClickPayment");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         PaymentLayer.pop();
     },
 
     _onClickBuy: function (id) {
         return function () {
             cc.log("PropsLayer _onClickBuy");
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             var product = gameData.shop.getProduct(id);
 

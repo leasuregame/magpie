@@ -116,6 +116,8 @@ var LineUpDetail = LazyLayer.extend({
     _onClickClose: function () {
         cc.log("LineUpDetail _onClickOk");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._menu.setEnabled(false);
         this.removeFromParent();
     },
@@ -123,6 +125,9 @@ var LineUpDetail = LazyLayer.extend({
     _onClickCard: function () {
         cc.log("LineUpDetail _onClickCard");
         cc.log(this._selectIndex);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         if (this._cardList.length > 0) {
             LineUpDetailsLayer.pop(this._cardList, this._selectIndex);
         }

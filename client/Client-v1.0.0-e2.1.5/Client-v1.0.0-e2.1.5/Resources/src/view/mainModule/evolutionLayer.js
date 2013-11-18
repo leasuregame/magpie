@@ -88,6 +88,8 @@ var EvolutionLayer = cc.Layer.extend({
     _onClickCardEvolution: function () {
         cc.log("EvolutionLayer _onClickCardEvolution");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._cardEvolutionItem.setEnabled(false);
         this._cardTrainItem.setEnabled(true);
 
@@ -96,6 +98,8 @@ var EvolutionLayer = cc.Layer.extend({
 
     _onClickCardTrain: function () {
         cc.log("EvolutionLayer _onClickCardTrain");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._cardEvolutionItem.setEnabled(true);
         this._cardTrainItem.setEnabled(false);

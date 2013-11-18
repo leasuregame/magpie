@@ -171,6 +171,8 @@ var TournamentRankLayer = cc.Layer.extend({
         return function () {
             cc.log("TournamentRankLayer _onClickPlayer");
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var point = this._playerItem[index].convertToWorldSpace(cc.p(255, 90));
 
             this._selectId = index;
@@ -180,6 +182,8 @@ var TournamentRankLayer = cc.Layer.extend({
 
     _onClickDetail: function () {
         cc.log("TournamentRankLayer _onClickDetail: " + this._selectId);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         gameData.player.playerDetail(function (data) {
             cc.log(data);
@@ -191,12 +195,16 @@ var TournamentRankLayer = cc.Layer.extend({
     _onClickSendMessage: function () {
         cc.log("TournamentRankLayer _onClickSendMessage: " + this._selectId);
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var player = this._tournamentRankList[this._selectId];
         SendMessageLayer.pop(player.id, player.name);
     },
 
     _onClickAddFriend: function () {
         cc.log("TournamentRankLayer _onClickAddFriend: " + this._selectId);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         gameData.friend.addFriend(this._tournamentRankList[this._selectId].name);
     }

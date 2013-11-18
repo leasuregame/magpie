@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -220,7 +220,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>480</real>
+										<real>120</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -238,7 +238,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>effect/uiEffect/up30.png</string>
+											<string>res/effect/uiEffect/up30.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -466,7 +466,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>-480</real>
+										<real>-120</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -484,7 +484,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>effect/uiEffect/up30.png</string>
+											<string>res/effect/uiEffect/up30.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -751,7 +751,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up45.png</string>
+									<string>res/effect/uiEffect/up45.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -867,7 +867,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1125,7 +1125,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/uiEffect/up72.png</string>
+						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -1216,7 +1216,7 @@
 			<key>name</key>
 			<string>animation_1</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.19448453187942505</real>
 			<key>position</key>
 			<real>1</real>
 			<key>resolution</key>
@@ -1228,7 +1228,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.033333335071802139</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/battle_sound_win.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

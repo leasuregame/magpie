@@ -291,6 +291,8 @@ var TreasureHuntLayer = cc.Layer.extend({
     _onClickTreasureHunt: function () {
         cc.log("TreasureHuntLayer _onClickTreasureHunt");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var treasureHunt = gameData.treasureHunt;
 
         if (!treasureHunt.canTreasureHunt()) {
@@ -320,6 +322,8 @@ var TreasureHuntLayer = cc.Layer.extend({
 
     _onClickBack: function () {
         cc.log("TreasureHuntLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
     }

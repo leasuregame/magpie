@@ -171,6 +171,8 @@ var Player = Entity.extend({
                 cc.log("sendMessage success");
 
                 cb("success");
+
+                lz.dc.event("event_send_message");
             } else {
                 cc.log("sendMessage fail");
 
@@ -197,6 +199,8 @@ var Player = Entity.extend({
                 var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
 
                 cb(battleLogId);
+
+                lz.dc.event("event_fight");
             } else {
                 cc.log("learn fail");
 
@@ -221,6 +225,8 @@ var Player = Entity.extend({
                 var msg = data.msg;
 
                 cb(msg);
+
+                lz.dc.event("event_get_player_detail");
             } else {
                 cc.log("playerDetail fail");
 

@@ -78,6 +78,8 @@ var Message = Entity.extend({
 
                         gameData.message.push(data.msg);
                     });
+
+                    lz.dc.event("event_message_list");
                 } else {
                     cc.log("sync fail");
 
@@ -132,6 +134,8 @@ var Message = Entity.extend({
                     message.status = ACCEPT_STATUS;
 
                     gameData.friend.push(msg);
+
+                    lz.dc.event("event_friend_accept");
                 } else {
                     cc.log("accept fail");
                 }
@@ -166,6 +170,7 @@ var Message = Entity.extend({
 
                     message.status = REJECT_STATUS;
 
+                    lz.dc.event("event_friend_reject");
                 } else {
                     cc.log("reject fail");
                 }
@@ -215,6 +220,8 @@ var Message = Entity.extend({
                     lz.tipReward(msg);
 
                     cb();
+
+                    lz.dc.event("event_handle_sys_message");
                 } else {
                     cc.log("receive fail");
                 }
@@ -251,6 +258,8 @@ var Message = Entity.extend({
                 var battleLogId = battleLogPool.pushBattleLog(msg.battleLog, PVP_BATTLE_LOG);
 
                 BattlePlayer.getInstance().play(battleLogId, true);
+
+                lz.dc.event("event_battle_play_back");
             } else {
                 cc.log("playback fail");
 

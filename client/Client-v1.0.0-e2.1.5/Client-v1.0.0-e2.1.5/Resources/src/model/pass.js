@@ -180,6 +180,8 @@ var Pass = Entity.extend({
                 };
 
                 cb(cbData);
+
+                lz.dc.event("event_wipe_out_pass");
             } else {
                 cc.log("wipeOut fail");
             }
@@ -205,6 +207,8 @@ var Pass = Entity.extend({
                 var battleLogId = BattleLogPool.getInstance().pushBattleLog(msg.battleLog, PVE_BATTLE_LOG);
 
                 cb(battleLogId);
+
+                lz.dc.event("event_mystical");
             } else {
                 cc.log("mystical fail");
             }
@@ -233,6 +237,8 @@ var Pass = Entity.extend({
                 });
 
                 cb();
+
+                lz.dc.event("event_reset_pass");
             } else {
                 cc.log("reset fail");
 

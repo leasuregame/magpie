@@ -203,7 +203,7 @@ var Task = Entity.extend({
 
                 cb(cbData);
 
-                lz.dc.event("event_explore", id);
+                lz.dc.event("event_task", id);
             } else {
                 cc.log("explore fail");
 
@@ -245,6 +245,8 @@ var Task = Entity.extend({
                 gameData.player.adds(reward);
 
                 cb(reward);
+
+                lz.dc.event("event_wipe_out_task", id);
             } else {
                 cc.log("wipeOut fail");
 
@@ -266,6 +268,8 @@ var Task = Entity.extend({
                 cc.log("obtainGold success.");
 
                 gameData.player.add("gold", gold);
+
+                lz.dc.event("event_momo", gold);
             } else {
                 cc.log("obtainGold fail");
 

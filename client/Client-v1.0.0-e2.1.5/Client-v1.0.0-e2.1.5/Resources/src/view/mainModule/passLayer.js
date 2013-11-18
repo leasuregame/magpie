@@ -580,6 +580,8 @@ var PassLayer = cc.Layer.extend({
     _onClickMystical: function () {
         cc.log("PassLayer _onClickMystical");
 
+        LazyLayer.showCloudLayer();
+
         var that = this;
         gameData.pass.mystical(function (battleLogId) {
             that._isWin = BattlePlayer.getInstance().play(battleLogId);

@@ -219,6 +219,8 @@ var User = Entity.extend({
                 gameData.player.init(msg.player);
 
                 cb();
+
+                lz.dc.event("event_create_player", that._area);
             } else {
                 cc.log("createPlayer fail");
 

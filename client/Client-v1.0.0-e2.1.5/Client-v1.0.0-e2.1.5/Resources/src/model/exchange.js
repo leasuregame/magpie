@@ -143,6 +143,8 @@ var Exchange = Entity.extend({
                 gameData.cardList.push(card);
 
                 cb(card);
+
+                lz.dc.event("event_exchange_card", id);
             } else {
                 cc.log("exchange fail");
             }

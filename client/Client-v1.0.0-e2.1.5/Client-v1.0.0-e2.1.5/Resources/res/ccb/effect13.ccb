@@ -1838,7 +1838,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>effect/effect/p31.png</string>
+											<string>main/card2_skill.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1852,6 +1852,8 @@
 										<integer>255</integer>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>
@@ -2141,8 +2143,6 @@
 										<string>元</string>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>

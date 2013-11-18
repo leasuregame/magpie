@@ -77,6 +77,8 @@ var Achievement = Entity.extend({
 
                         gameData.achievement.setAchieve(data.msg.achieveId);
                     });
+
+                    lz.dc.event("event_achievement");
                 } else {
                     cc.log("sync fail");
 
@@ -113,7 +115,7 @@ var Achievement = Entity.extend({
 
                 cb(reward);
 
-                lz.dc.event("event_achievement", id);
+                lz.dc.event("event_achievement_reward", id);
             } else {
                 cc.log("receiver fail");
 

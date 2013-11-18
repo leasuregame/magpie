@@ -116,6 +116,8 @@ var Tournament = Entity.extend({
                 that.update(msg.rank);
 
                 cb();
+
+                lz.dc.event("event_rank_list");
             } else {
                 cc.log("Tournament sync fail");
 
@@ -156,7 +158,7 @@ var Tournament = Entity.extend({
 
                 cb(cbData);
 
-                lz.dc.event("event_rank");
+                lz.dc.event("event_challenge");
             } else {
                 cc.log("Tournament defiance fail");
 
@@ -170,10 +172,12 @@ var Tournament = Entity.extend({
     receive: function (cb) {
         cc.log("Tournament receive");
 
+        var ranking = this._canGetReward[0];
+
         if (this._canGetReward.length > 0) {
             var that = this;
             lz.server.request("area.rankHandler.getRankingReward", {
-                ranking: this._canGetReward[0]
+                ranking: ranking
             }, function (data) {
                 cc.log(data);
 
@@ -189,6 +193,8 @@ var Tournament = Entity.extend({
                     cb({
                         elixir: msg.elixir
                     });
+
+                    lz.dc.event("event_ranking_reward", ranking);
                 } else {
                     cc.log("Tournament receive fail");
 

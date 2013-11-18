@@ -444,6 +444,8 @@ var Card = Entity.extend({
                 }
 
                 cb(true);
+
+                lz.dc.event("event_card_passive_skill_afresh", type);
             } else {
                 cc.log("passSkillAfresh fail");
 
@@ -513,7 +515,7 @@ var Card = Entity.extend({
 
                 cb();
 
-                lz.dc.event("event_card_star_upgrade", that._star);
+                lz.dc.event("event_card_evolution", "star:" + that._star + " use:" + cardIdList.length);
             } else {
                 cc.log("evolution fail");
 
@@ -552,6 +554,8 @@ var Card = Entity.extend({
                 gameData.player.add("elixir", -elixir);
 
                 cb();
+
+                lz.dc.event("event_card_train", "type:" + trainType + " count:" + trainCount);
             } else {
                 cc.log("train fail");
 

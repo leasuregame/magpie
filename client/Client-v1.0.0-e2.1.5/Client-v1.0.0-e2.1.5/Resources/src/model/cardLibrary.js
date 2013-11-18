@@ -101,6 +101,8 @@ var CardLibrary = Entity.extend({
 
                         that._changeTypeById(data.msg.tableId, CARD_RECEIVE);
                     });
+
+                    lz.dc.event("event_get_card_book");
                 } else {
                     cc.log("sync fail");
 
@@ -153,7 +155,7 @@ var CardLibrary = Entity.extend({
 
                 cb(msg.energy);
 
-                lz.dc.event("event_card_book");
+                lz.dc.event("event_receive_card_book_reward", id);
             } else {
                 cc.log("receive fail");
             }

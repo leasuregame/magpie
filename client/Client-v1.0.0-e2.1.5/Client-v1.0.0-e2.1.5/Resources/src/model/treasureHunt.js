@@ -75,7 +75,7 @@ var TreasureHunt = Entity.extend({
                     str: str
                 });
 
-                lz.dc.event("event_lottery", id);
+                lz.dc.event("event_treasure_hunt", id);
             } else {
                 cc.log("treasureHunt fail");
 

@@ -36,7 +36,7 @@ var Activity = Entity.extend({
 
                     that.update(data.msg.levelReward);
 
-                    lz.server.on("onPowerGive", function(data){
+                    lz.server.on("onPowerGive", function (data) {
                         cc.log("***** on powerGive:");
                         cc.log(data);
 
@@ -96,9 +96,11 @@ var Activity = Entity.extend({
         lz.server.request("area.playerHandler.getLevelReward", {id: id}, function (data) {
             cc.log(data);
             if (data.code == 200) {
-                TipLayer.tip("魔石: +" + data.msg.gold);
+                TipLayer.tipNoBg("魔石: +" + data.msg.gold);
+
                 gameData.player.add("gold", data.msg.gold);
                 that._changeTypeById(id, GOLD_RECEIVE);
+
                 cb(true);
 
                 lz.dc.event("event_receive_level_reward", id);

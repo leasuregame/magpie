@@ -12,8 +12,6 @@
  * */
 
 
-//cc.BuilderReader.setResourcePath("./");
-
 var MainScene = cc.Scene.extend({
     _nowLayer: null,
     _mainBgLayer: null,
@@ -51,7 +49,7 @@ var MainScene = cc.Scene.extend({
             this.addChild(gameFrame, 100);
         }
 
-        var noviceTeachingLayer = NoviceTeachingLayer.getInstance();
+       noviceTeachingLayer = NoviceTeachingLayer.create();
         if (noviceTeachingLayer.isNoviceTeaching()) {
             this.addChild(noviceTeachingLayer, 20);
         } else {
@@ -67,6 +65,12 @@ var MainScene = cc.Scene.extend({
 
     getLayer: function () {
         return this._nowLayer;
+    },
+
+    updateMark: function() {
+        if(this._nowLayer.updateMark) {
+            this._nowLayer.updateMark();
+        }
     },
 
     switchLayer: function (runLayer) {

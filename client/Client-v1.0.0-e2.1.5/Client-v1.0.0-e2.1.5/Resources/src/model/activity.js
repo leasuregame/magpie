@@ -36,6 +36,15 @@ var Activity = Entity.extend({
 
                     that.update(data.msg.levelReward);
 
+                    lz.server.on("onPowerGive", function(data){
+                        cc.log("***** on powerGive:");
+                        cc.log(data);
+
+                        gameMark.updatePowerRewardMark(true);
+                    });
+
+                    gameMark.updateActivityMark(false);
+
                     lz.dc.event("event_activity");
                 } else {
                     cc.log("sync fail");

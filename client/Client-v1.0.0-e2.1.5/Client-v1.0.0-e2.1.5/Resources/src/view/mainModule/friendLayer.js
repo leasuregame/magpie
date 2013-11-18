@@ -405,6 +405,7 @@ var FriendLayer = cc.Layer.extend({
                 cc.log(data);
 
                 that.update();
+                gameMark.updateFriendMark(false);
             }, id);
         }
 
@@ -450,6 +451,8 @@ var FriendLayer = cc.Layer.extend({
                 cc.log(data);
 
                 LineUpDetail.pop(data);
+                gameMark.updateFriendMark(false);
+
             }, this._selectFriend);
         } else {
             TipLayer.tip("找不到该玩家");

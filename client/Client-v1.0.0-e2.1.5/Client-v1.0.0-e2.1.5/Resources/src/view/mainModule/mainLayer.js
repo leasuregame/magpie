@@ -29,11 +29,17 @@ var MainLayer = cc.Layer.extend({
         MessageLayer,
         ConfigLayer
     ],
+    _activityMark: null,
+    _cardLibraryMark: null,
+    _achievementMark: null,
+    _friendMark: null,
+    _messageMark: null,
 
     onEnter: function () {
         cc.log("MainLayer onEnter");
 
         this._super();
+        this.updateMark();
 
         lz.dc.beginLogPageView("主界面");
     },
@@ -147,6 +153,11 @@ var MainLayer = cc.Layer.extend({
         );
         activityLayerItem.setPosition(this._mainLayerFit.activityLayerItemPoint);
 
+        this._activityMark = cc.Sprite.create(main_scene_image.icon19);
+        this._activityMark.setPosition(cc.p(75, 80));
+        this._activityMark.setVisible(false);
+        activityLayerItem.addChild(this._activityMark);
+
         var cardLibraryLayerItem = cc.MenuItemImage.create(
             main_scene_image.button53,
             main_scene_image.button53s,
@@ -154,6 +165,11 @@ var MainLayer = cc.Layer.extend({
             this
         );
         cardLibraryLayerItem.setPosition(this._mainLayerFit.cardLibraryLayerItemPoint);
+
+        this._cardLibraryMark = cc.Sprite.create(main_scene_image.icon19);
+        this._cardLibraryMark.setPosition(cc.p(75, 80));
+        this._cardLibraryMark.setVisible(false);
+        cardLibraryLayerItem.addChild(this._cardLibraryMark);
 
         var rankLayerItem = cc.MenuItemImage.create(
             main_scene_image.button54,
@@ -171,6 +187,11 @@ var MainLayer = cc.Layer.extend({
         );
         achievementLayerItem.setPosition(this._mainLayerFit.achievementLayerItemPoint);
 
+        this._achievementMark = cc.Sprite.create(main_scene_image.icon19);
+        this._achievementMark.setPosition(cc.p(75, 80));
+        this._achievementMark.setVisible(false);
+        achievementLayerItem.addChild(this._achievementMark);
+
         var friendLayerItem = cc.MenuItemImage.create(
             main_scene_image.button56,
             main_scene_image.button56s,
@@ -179,6 +200,11 @@ var MainLayer = cc.Layer.extend({
         );
         friendLayerItem.setPosition(this._mainLayerFit.friendLayerItemPoint);
 
+        this._friendMark = cc.Sprite.create(main_scene_image.icon19);
+        this._friendMark.setPosition(cc.p(75, 80));
+        this._friendMark.setVisible(false);
+        friendLayerItem.addChild(this._friendMark);
+
         var messageItem = cc.MenuItemImage.create(
             main_scene_image.button59,
             main_scene_image.button59s,
@@ -186,6 +212,11 @@ var MainLayer = cc.Layer.extend({
             this
         );
         messageItem.setPosition(this._mainLayerFit.messageItemPoint);
+
+        this._messageMark = cc.Sprite.create(main_scene_image.icon19);
+        this._messageMark.setPosition(cc.p(75, 80));
+        this._messageMark.setVisible(false);
+        messageItem.addChild(this._messageMark);
 
         var configLayerItem = cc.MenuItemImage.create(
             main_scene_image.button60,
@@ -216,6 +247,15 @@ var MainLayer = cc.Layer.extend({
         return true;
     },
 
+    updateMark: function () {
+        cc.log("MainLayer updateMark");
+        this._activityMark.setVisible(gameMark.getActivityMark());
+        this._cardLibraryMark.setVisible(gameMark.getCardLibraryMark());
+        this._achievementMark.setVisible(gameMark.getAchievementMark());
+        this._friendMark.setVisible(gameMark.getFriendMark());
+        this._messageMark.setVisible(gameMark.getMessageMark());
+    },
+
     _onClickLayer: function (index) {
         return function () {
             cc.log("MainMenuLayer _onClickLayer: " + index);
@@ -224,9 +264,9 @@ var MainLayer = cc.Layer.extend({
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                NoviceTeachingLayer.getInstance().clearAndSave();
-                NoviceTeachingLayer.getInstance().next();
+            if (noviceTeachingLayer.isNoviceTeaching()) {
+                noviceTeachingLayer.clearAndSave();
+                noviceTeachingLayer.next();
             }
         }
     }

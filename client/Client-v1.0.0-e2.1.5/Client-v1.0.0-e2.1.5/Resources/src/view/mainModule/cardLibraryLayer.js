@@ -96,7 +96,7 @@ var CardLibraryLayer = cc.Layer.extend({
 
             var cardLockItem = cc.Sprite.create(main_scene_image.icon200);
             cardLockItem.setScale(0.6);
-            cardLockItem.setPosition(cc.p(80, 25));
+            cardLockItem.setPosition(cc.p(83, 24));
             cardItem.addChild(cardLockItem);
             this._cardLockItem[cardLibrary[i].id] = cardLockItem;
         }
@@ -192,6 +192,8 @@ var CardLibraryLayer = cc.Layer.extend({
                     that.update();
 
                     TipLayer.tipNoBg("活力点: +" + data);
+
+                    gameMark.updateCardLibraryMark(false);
                 }, id);
             } else {
                 CardDetails.pop(card);

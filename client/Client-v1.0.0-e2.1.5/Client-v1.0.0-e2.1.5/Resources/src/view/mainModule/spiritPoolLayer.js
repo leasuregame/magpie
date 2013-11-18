@@ -215,11 +215,12 @@ var SpiritPoolLayer = cc.Layer.extend({
                 TipLayer.tipNoBg(str);
                 this.update();
 
-                if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                    NoviceTeachingLayer.getInstance().next();
+                if (noviceTeachingLayer.isNoviceTeaching()) {
+                    noviceTeachingLayer.next();
                 }
             }, 2);
         }
+
 
         LazyLayer.closeCloudLayer();
     },
@@ -229,8 +230,8 @@ var SpiritPoolLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-            NoviceTeachingLayer.getInstance().clearAndSave();
+        if (noviceTeachingLayer.isNoviceTeaching()) {
+            noviceTeachingLayer.clearAndSave();
         }
 
         var spiritPool = gameData.spiritPool;

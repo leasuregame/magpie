@@ -846,10 +846,12 @@ var CardListLayer = cc.Layer.extend({
             if (success) {
                 MainScene.getInstance().switchLayer(MainLayer);
 
-                if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                    NoviceTeachingLayer.getInstance().clearAndSave();
-                    NoviceTeachingLayer.getInstance().next();
+                if (noviceTeachingLayer.isNoviceTeaching()) {
+                    noviceTeachingLayer.clearAndSave();
+                    noviceTeachingLayer.next();
+
                 }
+
             }
         }, lineUp);
 

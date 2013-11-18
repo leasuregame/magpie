@@ -157,6 +157,8 @@ var GoldRewardLayer = cc.Layer.extend({
                 if (isOK) {
                     element.btnGetReward.setVisible(false);
                     element.hasBeenGainIcon.setVisible(true);
+
+                    gameMark.updateGoldRewardMark(false);
                 }
             });
         };

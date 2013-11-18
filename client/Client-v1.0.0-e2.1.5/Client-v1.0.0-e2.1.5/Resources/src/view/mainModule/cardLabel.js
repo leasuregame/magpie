@@ -268,9 +268,9 @@ var CardLabel = cc.Node.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         if (this._selectType != SELECT_TYPE_DEFAULT) {
-            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-                NoviceTeachingLayer.getInstance().clearAndSave();
-                NoviceTeachingLayer.getInstance().next();
+            if (noviceTeachingLayer.isNoviceTeaching()) {
+                noviceTeachingLayer.clearAndSave();
+                noviceTeachingLayer.next();
             }
             
             this.select();

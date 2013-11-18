@@ -33,6 +33,16 @@ var TournamentLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("竞技界面");
+    },
+
+    onExit: function () {
+        cc.log("TournamentLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("竞技界面");
     },
 
     init: function () {

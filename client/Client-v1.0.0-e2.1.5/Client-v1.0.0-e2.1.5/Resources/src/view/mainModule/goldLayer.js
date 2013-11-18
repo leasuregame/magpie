@@ -32,6 +32,22 @@ var GoldLayer = LazyLayer.extend({
     _tipText: null,
     _tipText2: null,
 
+    onEnter: function () {
+        cc.log("GoldLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("摸一摸界面");
+    },
+
+    onExit: function() {
+        cc.log("GoldLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("摸一摸界面");
+    },
+
     init: function (data) {
         cc.log("GoldLayer init");
 

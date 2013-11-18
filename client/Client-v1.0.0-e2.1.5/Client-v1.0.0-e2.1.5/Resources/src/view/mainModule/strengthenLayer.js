@@ -20,6 +20,22 @@ var StrengthenLayer = cc.Layer.extend({
     _skillUpgradeItem: null,
     _passiveSkillUpgradeItem: null,
 
+    onEnter: function () {
+        cc.log("StrengthenLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("强化界面");
+    },
+
+    onExit: function () {
+        cc.log("StrengthenLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("强化界面");
+    },
+
     init: function () {
         cc.log("StrengthenLayer init");
 

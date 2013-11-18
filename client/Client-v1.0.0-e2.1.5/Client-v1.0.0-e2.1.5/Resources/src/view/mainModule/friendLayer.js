@@ -31,6 +31,16 @@ var FriendLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("好友界面");
+    },
+
+    onExit: function () {
+        cc.log("FriendLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("好友界面");
     },
 
     init: function () {

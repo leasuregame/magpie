@@ -49,6 +49,16 @@ var CardListLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("卡牌列表界面");
+    },
+
+    onExit: function () {
+        cc.log("CardListLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("卡牌列表界面");
     },
 
     init: function (selectType, cb, otherData) {

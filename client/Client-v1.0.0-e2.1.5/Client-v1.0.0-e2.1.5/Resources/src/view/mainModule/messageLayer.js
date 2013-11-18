@@ -19,6 +19,22 @@ var MessageLayer = cc.Layer.extend({
     _friendMessageLayerItem: null,
     _systemMessageLayerItem: null,
 
+    onEnter: function () {
+        cc.log("MessageLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("消息界面");
+    },
+
+    onExit: function () {
+        cc.log("MessageLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("消息界面");
+    },
+
     init: function () {
         cc.log("MessageLayer init");
 

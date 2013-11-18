@@ -23,6 +23,16 @@ var SystemMessageLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("系统消息界面");
+    },
+
+    onExit: function () {
+        cc.log("SystemMessageLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("系统消息界面");
     },
 
     init: function () {

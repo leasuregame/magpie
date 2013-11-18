@@ -42,6 +42,16 @@ var SignInLayer = LazyLayer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("签到界面");
+    },
+
+    onExit: function () {
+        cc.log("SignInLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("签到界面");
     },
 
     init: function () {
@@ -242,7 +252,7 @@ var SignInLayer = LazyLayer.extend({
                 rewardItem: rewardItem,
                 rewardIcon: rewardIcon,
                 readyRewardItem: readyRewardItem,
-                alreadyRewardIcon:alreadyRewardIcon,
+                alreadyRewardIcon: alreadyRewardIcon,
                 rewardLabel: rewardLabel
             };
 
@@ -281,7 +291,7 @@ var SignInLayer = LazyLayer.extend({
             var monthMark = gameData.signIn.getMonthMark(0);
             var table = outputTables.signIn_rewards.rows[i + 1];
             var count = table.count != -1 ? table.count : monthMark.days;
-            if(monthMark.count >= count) {
+            if (monthMark.count >= count) {
                 this._elementList[i].readyRewardItem.setVisible(visible);
                 this._elementList[i].rewardIcon.setVisible(false);
                 this._elementList[i].alreadyRewardIcon.setVisible(!visible);

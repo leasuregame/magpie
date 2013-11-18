@@ -24,6 +24,16 @@ var CardDetails = LazyLayer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("卡牌详细信息界面");
+    },
+
+    onExit: function () {
+        cc.log("CardDetails onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("卡牌详细信息界面");
     },
 
     init: function (card, cb) {

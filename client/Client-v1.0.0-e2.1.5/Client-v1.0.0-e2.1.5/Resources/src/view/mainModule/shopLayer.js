@@ -18,6 +18,22 @@ var ShopLayer = cc.Layer.extend({
     _vipLayerItem: null,
     _propsLayerItem: null,
 
+    onEnter: function () {
+        cc.log("ShopLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("商城界面");
+    },
+
+    onExit: function () {
+        cc.log("ShopLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("商城界面");
+    },
+
     init: function () {
         cc.log("ShopLayer init");
 

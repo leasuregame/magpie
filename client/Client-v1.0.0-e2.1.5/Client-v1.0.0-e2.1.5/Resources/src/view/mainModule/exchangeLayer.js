@@ -25,6 +25,16 @@ var ExchangeLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("卡魂兑换界面");
+    },
+
+    onExit: function() {
+        cc.log("ExchangeLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("卡魂兑换界面");
     },
 
     init: function () {

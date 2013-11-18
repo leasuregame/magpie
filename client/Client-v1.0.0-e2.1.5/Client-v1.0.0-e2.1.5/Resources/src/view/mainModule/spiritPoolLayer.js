@@ -31,6 +31,16 @@ var SpiritPoolLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("灵台界面");
+    },
+
+    onExit: function () {
+        cc.log("SpiritPoolLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("灵台界面");
     },
 
     init: function () {

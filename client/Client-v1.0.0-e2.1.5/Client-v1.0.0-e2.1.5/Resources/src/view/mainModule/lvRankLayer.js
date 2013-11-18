@@ -20,6 +20,22 @@ var LvRankLayer = cc.Layer.extend({
     _selectId: 0,
     _playerItem: {},
 
+    onEnter: function () {
+        cc.log("LvRankLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("等级排行榜界面");
+    },
+
+    onExit: function () {
+        cc.log("LvRankLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("等级排行榜界面");
+    },
+
     init: function () {
         cc.log("LvRankLayer init");
 

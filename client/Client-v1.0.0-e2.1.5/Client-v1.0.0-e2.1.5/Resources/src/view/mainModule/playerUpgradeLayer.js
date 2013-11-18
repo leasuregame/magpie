@@ -15,6 +15,22 @@
 var PlayerUpgradeLayer = LazyLayer.extend({
     _playerUpgradeLayerFit: null,
 
+    onEnter: function () {
+        cc.log("PlayerUpgradeLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("玩家升级界面");
+    },
+
+    onExit: function () {
+        cc.log("PlayerUpgradeLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("玩家升级界面");
+    },
+
     init: function (data) {
         cc.log("PlayerUpgradeLayer init");
 

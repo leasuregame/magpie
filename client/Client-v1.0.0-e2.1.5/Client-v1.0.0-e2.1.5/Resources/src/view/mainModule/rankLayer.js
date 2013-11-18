@@ -21,6 +21,22 @@ var RankLayer = cc.Layer.extend({
     _passRankLayerItem: null,
     _tournamentRankLayerItem: null,
 
+    onEnter: function () {
+        cc.log("RankLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("排行榜界面");
+    },
+
+    onExit: function () {
+        cc.log("RankLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("排行榜界面");
+    },
+
     init: function () {
         cc.log("RankLayer init");
 
@@ -157,7 +173,7 @@ var RankLayer = cc.Layer.extend({
     },
 
     switchLayer: function (runLayer) {
-        cc.log("PveLayer switchMenu");
+        cc.log("RankLayer switchMenu");
         cc.log("this._nowLayer is runLayer " + (this._nowLayer instanceof runLayer));
 
         if (!(this._nowLayer instanceof runLayer)) {

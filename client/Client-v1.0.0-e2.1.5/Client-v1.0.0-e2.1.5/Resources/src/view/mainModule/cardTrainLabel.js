@@ -31,6 +31,16 @@ var CardTrainLabel = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("卡牌培养界面");
+    },
+
+    onExit: function() {
+        cc.log("CardTrainLabel onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("卡牌培养界面");
     },
 
     init: function () {

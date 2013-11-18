@@ -47,6 +47,16 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("被动洗炼界面");
+    },
+
+    onExit: function () {
+        cc.log("PassiveSkillAfreshLabel onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("被动洗炼界面");
     },
 
     init: function () {

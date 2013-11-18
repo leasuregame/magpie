@@ -27,6 +27,16 @@ var SpiritDetails = LazyLayer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("元神界面");
+    },
+
+    onExit: function () {
+        cc.log("SpiritDetails onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("元神界面");
     },
 
     init: function () {

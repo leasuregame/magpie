@@ -17,6 +17,16 @@ var GoldRewardLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("冲级奖励界面");
+    },
+
+    onExit: function() {
+        cc.log("GoldRewardLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("冲级奖励界面");
     },
 
     init: function () {

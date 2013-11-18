@@ -20,6 +20,22 @@ var PassRankLayer = cc.Layer.extend({
     _selectId: 0,
     _playerItem: {},
 
+    onEnter: function () {
+        cc.log("PassRankLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("天道排行榜界面");
+    },
+
+    onExit: function () {
+        cc.log("PassRankLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("天道排行榜界面");
+    },
+
     init: function () {
         cc.log("PassRankLayer init");
 

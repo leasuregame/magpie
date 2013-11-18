@@ -20,6 +20,22 @@ var TournamentRankLayer = cc.Layer.extend({
     _selectId: 0,
     _playerItem: {},
 
+    onEnter: function () {
+        cc.log("TournamentRankLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("竞技场排行榜界面");
+    },
+
+    onExit: function () {
+        cc.log("TournamentRankLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("竞技场排行榜界面");
+    },
+
     init: function () {
         cc.log("TournamentRankLayer init");
 

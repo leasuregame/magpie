@@ -20,6 +20,22 @@ var ConfigLayer = cc.Layer.extend({
     musicSelect: null,
     soundSelect: null,
 
+    onEnter: function () {
+        cc.log("ConfigLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("设置界面");
+    },
+
+    onExit: function () {
+        cc.log("ConfigLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("设置界面");
+    },
+
     init: function () {
         cc.log("ConfigLayer init");
 

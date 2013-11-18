@@ -24,6 +24,16 @@ var PropsLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("道具界面");
+    },
+
+    onExit: function () {
+        cc.log("PropsLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("道具界面");
     },
 
     init: function () {

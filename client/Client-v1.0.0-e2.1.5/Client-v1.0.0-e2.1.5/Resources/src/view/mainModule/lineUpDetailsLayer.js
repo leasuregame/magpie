@@ -25,6 +25,16 @@ var LineUpDetailsLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("上阵卡牌列表界面");
+    },
+
+    onExit: function () {
+        cc.log("LineUpDetailsLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("上阵卡牌列表界面");
     },
 
     init: function (cardList, index) {

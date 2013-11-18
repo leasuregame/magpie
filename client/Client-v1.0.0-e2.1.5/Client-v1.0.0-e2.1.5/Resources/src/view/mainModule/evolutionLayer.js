@@ -19,6 +19,22 @@ var EvolutionLayer = cc.Layer.extend({
     _cardEvolutionItem: null,
     _cardTrainItem: null,
 
+    onEnter: function () {
+        cc.log("EvolutionLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("进阶界面");
+    },
+
+    onExit: function() {
+        cc.log("EvolutionLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("进阶界面");
+    },
+
     init: function () {
         cc.log("EvolutionLayer init");
 

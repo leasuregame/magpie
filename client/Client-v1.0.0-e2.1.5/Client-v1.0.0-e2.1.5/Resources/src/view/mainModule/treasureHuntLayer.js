@@ -38,6 +38,16 @@ var TreasureHuntLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("寻宝界面");
+    },
+
+    onExit: function () {
+        cc.log("TreasureHuntLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("寻宝界面");
     },
 
     init: function () {

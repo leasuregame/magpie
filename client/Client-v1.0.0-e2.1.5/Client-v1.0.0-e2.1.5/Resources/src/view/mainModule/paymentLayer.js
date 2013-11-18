@@ -15,6 +15,22 @@
 var PaymentLayer = LazyLayer.extend({
     _paymentLayerFit: null,
 
+    onEnter: function () {
+        cc.log("PaymentLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("充值界面");
+    },
+
+    onExit: function () {
+        cc.log("PaymentLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("充值界面");
+    },
+
     init: function () {
         cc.log("PaymentLayer init");
 

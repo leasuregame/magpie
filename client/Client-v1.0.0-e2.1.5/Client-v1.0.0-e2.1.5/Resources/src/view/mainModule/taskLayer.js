@@ -29,6 +29,16 @@ var TaskLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("修炼界面");
+    },
+
+    onExit: function () {
+        cc.log("TaskLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("修炼界面");
     },
 
     init: function () {

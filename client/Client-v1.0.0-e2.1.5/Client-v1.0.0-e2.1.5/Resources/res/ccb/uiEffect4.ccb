@@ -56,7 +56,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>ccb/uiEffect11.ccb</string>
+						<string>res/ccb/uiEffect11.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -320,7 +320,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/uiEffect/up20.png</string>
+							<string>res/effect/uiEffect/up20.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -679,7 +679,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up21.png</string>
+									<string>res/effect/uiEffect/up21.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -981,7 +981,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up21.png</string>
+									<string>res/effect/uiEffect/up21.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1297,7 +1297,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>main/spirit_1_1.png</string>
+							<string>res/main/spirit_1_1.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1807,7 +1807,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p23.png</string>
+									<string>res/effect/effect/p23.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2287,7 +2287,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p23.png</string>
+									<string>res/effect/effect/p23.png</string>
 								</array>
 							</dict>
 							<dict>

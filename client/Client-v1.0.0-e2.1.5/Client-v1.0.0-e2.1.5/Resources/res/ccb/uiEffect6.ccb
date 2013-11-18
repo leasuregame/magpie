@@ -56,7 +56,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>ccb/uiEffect8.ccb</string>
+						<string>res/ccb/uiEffect8.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -265,7 +265,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up22.png</string>
+									<string>res/effect/uiEffect/up22.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -409,7 +409,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up22.png</string>
+									<string>res/effect/uiEffect/up22.png</string>
 								</array>
 							</dict>
 						</array>
@@ -483,7 +483,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up23.png</string>
+									<string>res/effect/uiEffect/up23.png</string>
 								</array>
 							</dict>
 						</array>
@@ -555,7 +555,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up26.png</string>
+									<string>res/effect/uiEffect/up26.png</string>
 								</array>
 							</dict>
 						</array>
@@ -827,7 +827,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up24.png</string>
+									<string>res/effect/uiEffect/up24.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -971,7 +971,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up24.png</string>
+									<string>res/effect/uiEffect/up24.png</string>
 								</array>
 							</dict>
 						</array>
@@ -1045,7 +1045,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up25.png</string>
+									<string>res/effect/uiEffect/up25.png</string>
 								</array>
 							</dict>
 						</array>
@@ -1117,7 +1117,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up26.png</string>
+									<string>res/effect/uiEffect/up26.png</string>
 								</array>
 							</dict>
 						</array>
@@ -1352,7 +1352,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p8.png</string>
+									<string>res/effect/effect/p8.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1605,7 +1605,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/effect/p8.png</string>
+									<string>res/effect/effect/p8.png</string>
 								</array>
 							</dict>
 							<dict>

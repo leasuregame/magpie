@@ -36,7 +36,7 @@ var CardHeadNode = cc.Node.extend({
 
         this._cardSprite = cc.Sprite.create(main_scene_image[url]);
         this._cardSprite.setAnchorPoint(cc.p(0, 0));
-        this._cardSprite.setPosition(cc.p(6, 10));
+        this._cardSprite.setPosition(cc.p(0, 6));
         this.addChild(this._cardSprite);
 
         this._frameSprite = cc.Sprite.create(main_scene_image["card_item_bg" + star]);

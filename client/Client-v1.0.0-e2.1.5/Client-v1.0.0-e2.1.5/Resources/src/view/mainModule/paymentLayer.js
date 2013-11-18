@@ -15,6 +15,22 @@
 var PaymentLayer = LazyLayer.extend({
     _paymentLayerFit: null,
 
+    onEnter: function () {
+        cc.log("PaymentLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("充值界面");
+    },
+
+    onExit: function () {
+        cc.log("PaymentLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("充值界面");
+    },
+
     init: function () {
         cc.log("PaymentLayer init");
 
@@ -180,11 +196,15 @@ var PaymentLayer = LazyLayer.extend({
     _onClickClose: function () {
         cc.log("PaymentLayer _onClickClose");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this.removeFromParent();
     },
 
     _onClickVipPrivilege: function () {
         cc.log("PaymentLayer _onClickVipPrivilege");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var parent = this.getParent();
 
@@ -197,6 +217,8 @@ var PaymentLayer = LazyLayer.extend({
     _onClickPayment: function (id) {
         return function () {
             cc.log("PaymentLayer _onClickPayment: " + id);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             var parent = this.getParent();
             gameData.shop.payment(function (data) {

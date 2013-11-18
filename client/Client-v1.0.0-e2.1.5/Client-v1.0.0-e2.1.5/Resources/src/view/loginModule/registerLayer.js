@@ -17,6 +17,22 @@ var RegisterLayer = cc.Layer.extend({
     _passwordEditBox: null,
     _passwordAgainEditBox: null,
 
+    onEnter: function () {
+        cc.log("RegisterLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("注册界面");
+    },
+
+    onExit: function () {
+        cc.log("RegisterLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("注册界面");
+    },
+
     init: function () {
         cc.log("RegisterLayer init");
 

@@ -27,6 +27,16 @@ var SpiritDetails = LazyLayer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("元神界面");
+    },
+
+    onExit: function () {
+        cc.log("SpiritDetails onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("元神界面");
     },
 
     init: function () {
@@ -169,6 +179,8 @@ var SpiritDetails = LazyLayer.extend({
     _onClickUpgrade: function () {
         cc.log("SpiritDetails _onClickUpgrade");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
             NoviceTeachingLayer.getInstance().clearAndSave();
         }
@@ -193,6 +205,8 @@ var SpiritDetails = LazyLayer.extend({
 
     _onClickClose: function () {
         cc.log("SpiritDetails _onClickClose");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this.removeFromParent();
 

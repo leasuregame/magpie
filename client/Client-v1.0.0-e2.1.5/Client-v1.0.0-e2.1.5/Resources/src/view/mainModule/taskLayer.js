@@ -29,6 +29,16 @@ var TaskLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("修炼界面");
+    },
+
+    onExit: function () {
+        cc.log("TaskLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("修炼界面");
     },
 
     init: function () {
@@ -225,6 +235,8 @@ var TaskLayer = cc.Layer.extend({
         return function () {
             cc.log("TaskLayer _onClickSection " + id);
 
+            gameData.sound.playEffect(main_scene_image.click_building_sound, false);
+
             var task = gameData.task;
 
             if (id > task.getSection()) {
@@ -263,6 +275,8 @@ var TaskLayer = cc.Layer.extend({
 
     _onClickWipeOut: function () {
         cc.log("TaskLayer _onClickWipeOut");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._wipOut();
     },

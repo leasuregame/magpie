@@ -286,7 +286,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>main/icon149.png</string>
+						<string>res/main/icon149.png</string>
 					</dict>
 				</array>
 				<key>selected</key>

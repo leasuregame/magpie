@@ -303,7 +303,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>main/card5_full1.png</string>
+									<string>res/main/card5_full1.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -423,7 +423,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>main/card5_full3.png</string>
+									<string>res/main/card5_full3.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -543,7 +543,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>main/card5_full2.png</string>
+									<string>res/main/card5_full2.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -833,7 +833,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up27.png</string>
+									<string>res/effect/uiEffect/up27.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1068,7 +1068,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up27.png</string>
+									<string>res/effect/uiEffect/up27.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1679,7 +1679,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/uiEffect/up28.png</string>
+									<string>res/effect/uiEffect/up28.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -2159,7 +2159,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>effect/uiEffect/up29.png</string>
+							<string>res/effect/uiEffect/up29.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -2488,7 +2488,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/uiEffect/up72.png</string>
+						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
 				<key>selected</key>

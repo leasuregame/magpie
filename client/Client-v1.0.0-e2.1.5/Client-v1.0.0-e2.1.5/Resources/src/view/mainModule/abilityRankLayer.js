@@ -20,6 +20,22 @@ var AbilityRankLayer = cc.Layer.extend({
     _selectId: 0,
     _playerItem: {},
 
+    onEnter: function() {
+        cc.log("AbilityRankLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("战斗力排行榜界面");
+    },
+
+    onExit: function() {
+        cc.log("AbilityRankLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("战斗力排行榜界面");
+    },
+
     init: function () {
         cc.log("AbilityRankLayer init");
 

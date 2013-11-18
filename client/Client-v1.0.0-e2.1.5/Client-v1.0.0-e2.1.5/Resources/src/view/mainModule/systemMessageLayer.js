@@ -23,6 +23,16 @@ var SystemMessageLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("系统消息界面");
+    },
+
+    onExit: function () {
+        cc.log("SystemMessageLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("系统消息界面");
     },
 
     init: function () {
@@ -119,6 +129,8 @@ var SystemMessageLayer = cc.Layer.extend({
     _onClickReceive: function (id) {
         return function () {
             cc.log("SystemMessageLayer onClickPlayback: " + id);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             var element = this._scrollViewElement[id];
 

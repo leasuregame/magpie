@@ -31,6 +31,16 @@ var FriendLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("好友界面");
+    },
+
+    onExit: function () {
+        cc.log("FriendLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("好友界面");
     },
 
     init: function () {
@@ -358,6 +368,8 @@ var FriendLayer = cc.Layer.extend({
     _onClickAddFriend: function () {
         cc.log("FriendLayer _onClickAddFriend");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._nameEditBox.setVisible(true);
         this._addFriendLayer.setVisible(true);
     },
@@ -365,6 +377,8 @@ var FriendLayer = cc.Layer.extend({
     _onClickOk: function () {
         cc.log("FriendLayer _onClickOk");
         cc.log("name: " + this._nameEditBox.getText());
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         gameData.friend.addFriend(this._nameEditBox.getText());
 
@@ -374,6 +388,8 @@ var FriendLayer = cc.Layer.extend({
     _onClickCancel: function () {
         cc.log("FriendLayer _onClickCancel");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._nameEditBox.setVisible(false);
         this._addFriendLayer.setVisible(false);
     },
@@ -381,6 +397,8 @@ var FriendLayer = cc.Layer.extend({
     _onClickGiveBless: function (id) {
         return function () {
             cc.log("FriendLayer _onClickGiveBless: " + id);
+
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             var that = this;
             gameData.friend.giveBless(function (data) {
@@ -396,6 +414,8 @@ var FriendLayer = cc.Layer.extend({
         return function () {
             cc.log("FriendLayer _onClickReceiveBless: " + id);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var that = this;
             gameData.friend.receiveBless(function (data) {
                 cc.log(data);
@@ -409,6 +429,8 @@ var FriendLayer = cc.Layer.extend({
         return function () {
             cc.log("FriendLayer _onClickFriend: " + id);
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var point = this._friendItem[id].convertToWorldSpace(cc.p(230, 98));
 
             this._selectFriend = id;
@@ -418,6 +440,8 @@ var FriendLayer = cc.Layer.extend({
 
     _onClickDetail: function () {
         cc.log("FriendLayer _onClickDetail: " + this._selectFriend);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var friend = gameData.friend.getFriend(this._selectFriend);
 
@@ -435,6 +459,8 @@ var FriendLayer = cc.Layer.extend({
     _onClickSendMessage: function () {
         cc.log("FriendLayer _onClickSendMessage: " + this._selectFriend);
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var friend = gameData.friend.getFriend(this._selectFriend);
 
         if (friend) {
@@ -448,6 +474,8 @@ var FriendLayer = cc.Layer.extend({
         cc.log("FriendLayer _onClickFight: " + this._selectFriend);
         cc.log(this._selectFriend);
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var that = this;
         gameData.player.fight(function (battleLogId) {
             BattlePlayer.getInstance().play(battleLogId);
@@ -457,6 +485,8 @@ var FriendLayer = cc.Layer.extend({
     _onClickDeleteFriend: function () {
         cc.log("FriendLayer _onClickDeleteFriend: " + this._selectFriend);
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var that = this;
         gameData.friend.deleteFriend(function (data) {
             that.update();
@@ -465,6 +495,8 @@ var FriendLayer = cc.Layer.extend({
 
     _onClickBack: function () {
         cc.log("FriendLayer _onClickBack");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         MainScene.getInstance().switchLayer(MainLayer);
     }

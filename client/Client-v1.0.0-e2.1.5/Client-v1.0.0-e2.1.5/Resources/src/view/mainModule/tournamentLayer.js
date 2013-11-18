@@ -33,6 +33,16 @@ var TournamentLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("竞技界面");
+    },
+
+    onExit: function () {
+        cc.log("TournamentLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("竞技界面");
     },
 
     init: function () {
@@ -267,12 +277,16 @@ var TournamentLayer = cc.Layer.extend({
     _onClickPlayer: function (id, point) {
         cc.log("TournamentLayer _onClickPlayer");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._selectId = id;
         this._skyDialog.show(point);
     },
 
     _onClickRankReward: function () {
         cc.log("TournamentLayer _onClickRankReward");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var that = this;
         gameData.tournament.receive(function (reward) {
@@ -283,6 +297,8 @@ var TournamentLayer = cc.Layer.extend({
 
     _onClickDetail: function () {
         cc.log("TournamentLayer _onClickDetail: " + this._selectId);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var player = this._getPlayer(this._selectId);
 
@@ -300,6 +316,8 @@ var TournamentLayer = cc.Layer.extend({
     _onClickSendMessage: function () {
         cc.log("TournamentLayer _onClickSendMessage: " + this._selectId);
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var player = this._getPlayer(this._selectId);
 
         if (player) {
@@ -312,6 +330,8 @@ var TournamentLayer = cc.Layer.extend({
     _onClickAddFriend: function () {
         cc.log("TournamentLayer _onClickAddFriend: " + this._selectId);
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var player = this._getPlayer(this._selectId);
 
         if (player) {
@@ -323,6 +343,8 @@ var TournamentLayer = cc.Layer.extend({
 
     _onClickBuyCount: function () {
         cc.log("TournamentLayer _onClickBuyCount");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var id = 6;
         var product = gameData.shop.getProduct(id);

@@ -10,8 +10,23 @@
 var itemTitle = ['元神', '修炼', '天道', '竞技', '好友', 'VIP', '卡牌升级', '技能升级', '被动洗练', '星级进阶', '属性培养'];
 
 var TipsLayer = LazyLayer.extend({
-
     _tipsLayerFit: null,
+
+    onEnter: function () {
+        cc.log("TipsLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("帮助界面");
+    },
+
+    onExit: function () {
+        cc.log("TipsLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("帮助界面");
+    },
 
     init: function () {
         cc.log('TipsLayer init');
@@ -207,6 +222,8 @@ var TipsLayer = LazyLayer.extend({
 
     _onClickClose: function () {
         cc.log("TipsLayer _onClickClose");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this.removeFromParent();
     }

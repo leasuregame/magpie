@@ -25,6 +25,22 @@ var vipPrivilegeDescription = {
 var VipPrivilegeLayer = LazyLayer.extend({
     _vipPrivilegeLayerFit: null,
 
+    onEnter: function () {
+        cc.log("VipPrivilegeLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("VIP特权界面");
+    },
+
+    onExit: function () {
+        cc.log("VipPrivilegeLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("VIP特权界面");
+    },
+
     init: function () {
         cc.log("VipPrivilegeLayer init");
 
@@ -191,6 +207,8 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
     _onClickClose: function () {
         cc.log("VipPrivilegeLayer _onClickClose");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var parent = this.getParent();
 

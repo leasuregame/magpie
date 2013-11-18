@@ -19,6 +19,22 @@ var EvolutionLayer = cc.Layer.extend({
     _cardEvolutionItem: null,
     _cardTrainItem: null,
 
+    onEnter: function () {
+        cc.log("EvolutionLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("进阶界面");
+    },
+
+    onExit: function() {
+        cc.log("EvolutionLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("进阶界面");
+    },
+
     init: function () {
         cc.log("EvolutionLayer init");
 
@@ -88,6 +104,8 @@ var EvolutionLayer = cc.Layer.extend({
     _onClickCardEvolution: function () {
         cc.log("EvolutionLayer _onClickCardEvolution");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._cardEvolutionItem.setEnabled(false);
         this._cardTrainItem.setEnabled(true);
 
@@ -96,6 +114,8 @@ var EvolutionLayer = cc.Layer.extend({
 
     _onClickCardTrain: function () {
         cc.log("EvolutionLayer _onClickCardTrain");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this._cardEvolutionItem.setEnabled(true);
         this._cardTrainItem.setEnabled(false);

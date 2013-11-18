@@ -102,6 +102,8 @@ var ReadMessageLayer = LazyLayer.extend({
     _onClickSendMessage: function () {
         cc.log("ReadMessageLayer _onClickSend");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this._onClickClose();
 
         SendMessageLayer.pop(this._id, this._name);
@@ -109,6 +111,8 @@ var ReadMessageLayer = LazyLayer.extend({
 
     _onClickClose: function () {
         cc.log("ReadMessageLayer _onClickClose");
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         this.removeFromParent();
     }

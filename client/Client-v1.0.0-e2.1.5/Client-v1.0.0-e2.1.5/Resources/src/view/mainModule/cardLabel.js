@@ -265,6 +265,8 @@ var CardLabel = cc.Node.extend({
     _onClickCard: function () {
         cc.log("CardLabel _onClickCard" + this._card.get("id"));
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         if (this._selectType != SELECT_TYPE_DEFAULT) {
             if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
                 NoviceTeachingLayer.getInstance().clearAndSave();

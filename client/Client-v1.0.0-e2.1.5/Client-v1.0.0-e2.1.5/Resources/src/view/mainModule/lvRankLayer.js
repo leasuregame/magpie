@@ -20,6 +20,22 @@ var LvRankLayer = cc.Layer.extend({
     _selectId: 0,
     _playerItem: {},
 
+    onEnter: function () {
+        cc.log("LvRankLayer onEnter");
+
+        this._super();
+
+        lz.dc.beginLogPageView("等级排行榜界面");
+    },
+
+    onExit: function () {
+        cc.log("LvRankLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("等级排行榜界面");
+    },
+
     init: function () {
         cc.log("LvRankLayer init");
 
@@ -171,6 +187,8 @@ var LvRankLayer = cc.Layer.extend({
         return function () {
             cc.log("AbilityRankLayer _onClickPlayer");
 
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
             var point = this._playerItem[index].convertToWorldSpace(cc.p(255, 90));
 
             this._selectId = index;
@@ -180,6 +198,8 @@ var LvRankLayer = cc.Layer.extend({
 
     _onClickDetail: function () {
         cc.log("AbilityRankLayer _onClickDetail: " + this._selectId);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         gameData.player.playerDetail(function (data) {
             cc.log(data);
@@ -191,12 +211,16 @@ var LvRankLayer = cc.Layer.extend({
     _onClickSendMessage: function () {
         cc.log("AbilityRankLayer _onClickSendMessage: " + this._selectId);
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         var player = this._lvRankList[this._selectId];
         SendMessageLayer.pop(player.id, player.name);
     },
 
     _onClickAddFriend: function () {
         cc.log("AbilityRankLayer _onClickAddFriend: " + this._selectId);
+
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         gameData.friend.addFriend(this._lvRankList[this._selectId].name);
     }

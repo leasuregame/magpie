@@ -114,6 +114,8 @@ var PlayerHeaderLabel = cc.Layer.extend({
     _onClickPlayerDetails: function () {
         cc.log("MainLayer _onClickPlayerDetails");
 
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         MainScene.getInstance().getLayer().addChild(PlayerDetails.create(), 10);
     },
 

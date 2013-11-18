@@ -169,18 +169,26 @@ var Server = Entity.extend({
 
                 success = true;
 
-                var msg = data.msg;
+                if (data.code == 200) {
+                    var msg = data.msg;
 
-                that.update(msg);
+                    that.update(msg);
 
-                that.off();
-                that.disconnect();
+                    that.off();
+                    that.disconnect();
 
-                if (cb) {
-                    cb(that._serverList);
+                    if (cb) {
+                        cb(that._serverList);
+                    }
+
+                    that._closeAllWaitLayer();
+
+                    lz.dc.event("event_query_entry");
+                } else {
+                    lz.scheduleOnce(function () {
+                        that.connectGateServer(cb);
+                    }, RECONNECT_TIME);
                 }
-
-                that._closeAllWaitLayer();
             });
 
         lz.scheduleOnce(function () {

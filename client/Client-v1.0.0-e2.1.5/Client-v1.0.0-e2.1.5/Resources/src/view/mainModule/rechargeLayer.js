@@ -15,6 +15,16 @@ var RechargeLayer = cc.Layer.extend({
 
         this._super();
         this.update();
+
+        lz.dc.beginLogPageView("充值优惠界面");
+    },
+
+    onExit: function () {
+        cc.log("RechargeLayer onExit");
+
+        this._super();
+
+        lz.dc.endLogPageView("充值优惠界面");
     },
 
     init: function () {
@@ -74,6 +84,8 @@ var RechargeLayer = cc.Layer.extend({
     },
 
     _onClickGo2Payment: function () {
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         MainScene.getInstance().switchLayer(ShopLayer);
     }
 });

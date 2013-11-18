@@ -215,7 +215,7 @@ var Shop = Entity.extend({
                     cards: table.exp_card || 0
                 });
 
-                lz.dc.event("event_buy", "buyVipBox")
+                lz.dc.event("event_buy", "buyVipBox " + id);
             } else {
                 cc.log("buyVipBox fail");
 

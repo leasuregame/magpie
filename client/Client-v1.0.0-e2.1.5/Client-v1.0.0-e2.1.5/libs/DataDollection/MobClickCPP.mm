@@ -27,8 +27,6 @@ void MobClickCPP::setLogEnabled(bool value)
 
 void MobClickCPP::startWithAppKey(const char* appKey)
 {
-    [MobClick setLogEnabled:YES];
-    
     NSString* key = [NSString stringWithUTF8String:appKey];
     [MobClick startWithAppkey:key];
 }

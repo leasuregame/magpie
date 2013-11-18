@@ -171,6 +171,7 @@ var FriendMessageLayer = cc.Layer.extend({
             cc.log("FriendMessageLayer _onClickAccept: " + id);
 
             gameData.message.accept(id);
+            gameMark.updateFriendMessageMark(false);
 
             var element = this._scrollViewElement[id];
 
@@ -185,6 +186,7 @@ var FriendMessageLayer = cc.Layer.extend({
             cc.log("FriendMessageLayer _onClickReject: " + id);
 
             gameData.message.reject(id);
+            gameMark.updateFriendMessageMark(false);
 
             var element = this._scrollViewElement[id];
 
@@ -205,6 +207,8 @@ var FriendMessageLayer = cc.Layer.extend({
     _onClickRead: function (message) {
         return function () {
             cc.log("FriendMessageLayer _onClickRead: " + message);
+
+            gameMark.updateFriendMessageMark(false);
 
             ReadMessageLayer.pop(message.sender, message.senderName, message.text);
         }

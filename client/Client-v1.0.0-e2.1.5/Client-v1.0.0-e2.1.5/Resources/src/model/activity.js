@@ -39,8 +39,10 @@ var Activity = Entity.extend({
                         cc.log("***** on powerGive:");
                         cc.log(data);
 
-                        gameMark.setPowerRewardMark(true);
+                        gameMark.updatePowerRewardMark(true);
                     });
+
+                    gameMark.updateActivityMark(false);
                 } else {
                     cc.log("sync fail");
 

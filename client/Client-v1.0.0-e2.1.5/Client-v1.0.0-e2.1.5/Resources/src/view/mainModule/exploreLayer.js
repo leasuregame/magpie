@@ -65,7 +65,7 @@ var ExploreLayer = cc.Layer.extend({
         headIcon.setPosition(this._exploreLayerFit.headIconPoint);
         this.addChild(headIcon, 1);
 
-        for (var i = 0; i < 3; ++i) {
+        for (var i = 0; i < 4; ++i) {
             this._mapLabel[i] = cc.Sprite.create(main_scene_image.bg4);
             this._mapLabel[i].setAnchorPoint(cc.p(0, 0));
             this._mapLabel[i].setPosition(cc.p(this._exploreLayerFit.mapLabelBasePoint.x + i * this._exploreLayerFit.mapLabelOffsetX, this._exploreLayerFit.mapLabelBasePoint.y));
@@ -294,11 +294,12 @@ var ExploreLayer = cc.Layer.extend({
             this._element[i].descriptionLabel.setVisible(i == this._index);
         }
 
-        for (var i = 0; i < 3; ++i) {
+        for (var i = 0; i < 4; ++i) {
             var point = this._mapLabel[i].getPosition();
 
             if (point.x < this._exploreLayerFit.pointX) {
-                point.x += 1920;
+                //point.x += 1920;
+                point.x += 2560;
                 this._mapLabel[i].setPosition(point);
             }
         }
@@ -487,6 +488,7 @@ var ExploreLayer = cc.Layer.extend({
 
                 if (upgradeReward) {
                     PlayerUpgradeLayer.pop(upgradeReward);
+                    gameMark.updateGoldRewardMark(false);
                 }
             }, 1);
 
@@ -568,7 +570,7 @@ var ExploreLayer = cc.Layer.extend({
 
         var mapAction = cc.Repeat.create(mapMoveAction, 2);
 
-        for (var i = 0; i < 3; ++i) {
+        for (var i = 0; i < 4; ++i) {
             this._mapLabel[i].runAction(mapAction.copy());
         }
     },

@@ -68,6 +68,8 @@ var SignIn = Entity.extend({
                     var msg = data.msg;
 
                     that.update(msg);
+
+                    gameMark.updateSignInMark(false);
                 } else {
                     cc.log("sync fail");
 
@@ -105,7 +107,9 @@ var SignIn = Entity.extend({
 
         if (index == 0) {
             var day = new Date().getDate() - 1;
-            return ((this._monthsMark[0].mark >> day & 1) != 1);
+            if (this._monthsMark[0]) {
+                return ((this._monthsMark[0].mark >> day & 1) != 1);
+            }
         }
 
         return false;
@@ -116,8 +120,9 @@ var SignIn = Entity.extend({
 
         if (index == 0) {
             var nowDay = new Date().getDate();
-
-            return (this._monthsMark[0].count < nowDay);
+            if (this._monthsMark[0]) {
+                return (this._monthsMark[0].count < nowDay);
+            }
         }
 
         return false;

@@ -76,8 +76,11 @@ var Achievement = Entity.extend({
                         cc.log(data);
 
                         gameData.achievement.setAchieve(data.msg.achieveId);
-                        gameMark.setAchievementMark(true);
+                        gameMark.updateAchievementMark(true);
                     });
+
+                    gameMark.updateAchievementMark(false);
+
                 } else {
                     cc.log("sync fail");
 

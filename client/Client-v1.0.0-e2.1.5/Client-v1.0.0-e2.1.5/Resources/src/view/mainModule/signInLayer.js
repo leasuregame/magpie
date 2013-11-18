@@ -308,6 +308,7 @@ var SignInLayer = LazyLayer.extend({
             that.update();
 
             lz.tipReward(data);
+            gameMark.updateSignInMark(false);
         });
     },
 
@@ -321,6 +322,7 @@ var SignInLayer = LazyLayer.extend({
             that.update();
 
             lz.tipReward(data);
+            gameMark.updateSignInMark(false);
         });
     },
 
@@ -349,6 +351,7 @@ var SignInLayer = LazyLayer.extend({
                         that.update();
 
                         lz.tipReward(data);
+                        gameMark.updateSignInMark(false);
                     }, id + 1);
                 }
             }

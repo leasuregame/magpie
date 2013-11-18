@@ -179,6 +179,8 @@ var CardLibraryLayer = cc.Layer.extend({
                     that.update();
 
                     TipLayer.tipNoBg("活力点: +" + data);
+
+                    gameMark.updateCardLibraryMark(false);
                 }, id);
             } else {
                 CardDetails.pop(card);

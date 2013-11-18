@@ -77,8 +77,11 @@ var Message = Entity.extend({
                         cc.log(data);
 
                         gameData.message.push(data.msg);
-                        gameMark.setMessageMark(true);
+
                     });
+
+                    gameMark.updateMessageMark(false);
+
                 } else {
                     cc.log("sync fail");
 
@@ -94,12 +97,15 @@ var Message = Entity.extend({
 
         if (msg.type == ADD_FRIEND_MESSAGE) {
             this._friendMessage.push(msg);
+            gameMark.updateFriendMessageMark(true);
         } else if (msg.type == LEAVE_MESSAGE) {
             this._friendMessage.push(msg);
+            gameMark.updateFriendMessageMark(true);
         } else if (msg.type == BATTLE_MESSAGE) {
             this._battleMessage.push(msg);
         } else if (msg.type == SYSTEM_MESSAGE) {
             this._systemMessage.push(msg);
+            gameMark.updateSystemMessageMark(true);
         }
 
         this._sort();

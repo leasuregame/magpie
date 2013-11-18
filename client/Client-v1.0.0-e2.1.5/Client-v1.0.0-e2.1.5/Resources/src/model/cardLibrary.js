@@ -100,8 +100,11 @@ var CardLibrary = Entity.extend({
                         cc.log(data);
 
                         that._changeTypeById(data.msg.tableId, CARD_RECEIVE);
-                        gameMark.setCardLibraryMark(true);
+                        gameMark.updateCardLibraryMark(true);
                     });
+
+                    gameMark.updateCardLibraryMark(false);
+
                 } else {
                     cc.log("sync fail");
 

@@ -625,9 +625,7 @@ var ExploreLayer = cc.Layer.extend({
         };
 
         this.scheduleOnce(function () {
-            //CardDetails.pop(this._reward.card, cb);
-            LotteryCardLayer.pop({card: this._reward.card});
-            cb();
+            LotteryCardLayer.pop({card: this._reward.card, cb: cb});
         }, 0.5);
     },
 

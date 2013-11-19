@@ -114,7 +114,7 @@
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>10</real>
+									<real>-20</real>
 								</dict>
 							</array>
 							<key>name</key>
@@ -239,7 +239,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>10</real>
+						<real>-20</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -277,12 +277,25 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>81</integer>
-							<integer>245</integer>
-							<integer>0</integer>
+							<integer>212</integer>
+							<integer>251</integer>
+							<integer>120</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>blendFunc</string>
+						<key>type</key>
+						<string>Blendmode</string>
+						<key>value</key>
+						<array>
+							<integer>1</integer>
+							<integer>1</integer>
 						</array>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -376,7 +389,7 @@
 									<key>type</key>
 									<integer>2</integer>
 									<key>value</key>
-									<real>10</real>
+									<real>20</real>
 								</dict>
 							</array>
 							<key>name</key>
@@ -501,7 +514,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>10</real>
+						<real>20</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -539,9 +552,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>247</integer>
-							<integer>250</integer>
-							<integer>227</integer>
+							<integer>212</integer>
+							<integer>251</integer>
+							<integer>120</integer>
 						</array>
 					</dict>
 					<dict>
@@ -556,7 +569,7 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
+				<key>seqExpanded</key>
 				<true/>
 			</dict>
 		</array>

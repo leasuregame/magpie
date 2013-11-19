@@ -817,6 +817,17 @@
 											<integer>247</integer>
 										</array>
 									</dict>
+									<dict>
+										<key>name</key>
+										<string>blendFunc</string>
+										<key>type</key>
+										<string>Blendmode</string>
+										<key>value</key>
+										<array>
+											<integer>1</integer>
+											<integer>1</integer>
+										</array>
+									</dict>
 								</array>
 								<key>seqExpanded</key>
 								<true/>
@@ -1041,6 +1052,17 @@
 											<integer>223</integer>
 											<integer>247</integer>
 											<integer>239</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>blendFunc</string>
+										<key>type</key>
+										<string>Blendmode</string>
+										<key>value</key>
+										<array>
+											<integer>1</integer>
+											<integer>1</integer>
 										</array>
 									</dict>
 								</array>
@@ -1331,6 +1353,17 @@
 											<integer>252</integer>
 										</array>
 									</dict>
+									<dict>
+										<key>name</key>
+										<string>blendFunc</string>
+										<key>type</key>
+										<string>Blendmode</string>
+										<key>value</key>
+										<array>
+											<integer>1</integer>
+											<integer>1</integer>
+										</array>
+									</dict>
 								</array>
 								<key>seqExpanded</key>
 								<true/>
@@ -1555,6 +1588,17 @@
 											<integer>181</integer>
 											<integer>250</integer>
 											<integer>252</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>blendFunc</string>
+										<key>type</key>
+										<string>Blendmode</string>
+										<key>value</key>
+										<array>
+											<integer>1</integer>
+											<integer>1</integer>
 										</array>
 									</dict>
 								</array>

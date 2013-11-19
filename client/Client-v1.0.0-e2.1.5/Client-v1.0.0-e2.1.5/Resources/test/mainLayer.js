@@ -21,7 +21,7 @@ var MainLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        cc.BuilderReader.setResourcePath("../res/");
+        cc.BuilderReader.setResourcePath("../");
 
         var bgSprite = cc.Sprite.create(main_scene_image.testBg);
         bgSprite.setPosition(cc.p(360, 568));

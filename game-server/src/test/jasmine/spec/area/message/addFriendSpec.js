@@ -114,7 +114,7 @@ describe("Area Server", function() {
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
                         type: 1, 
-                        status: 2
+                        status: 1
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
@@ -124,12 +124,12 @@ describe("Area Server", function() {
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
                         type: 1,
-                        status: 3
+                        status: 1
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
                         type: 1, 
-                        status: 2
+                        status: 1
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,

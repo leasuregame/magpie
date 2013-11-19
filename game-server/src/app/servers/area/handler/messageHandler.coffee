@@ -18,7 +18,7 @@ DELETE_FRIEND_MESSAGE = 2
 isFinalStatus = (status) ->
   _.contains msgConfig.FINALSTATUS, status
 
-mergeMessages = (myMessages, systemMessages, blMessages) ->
+mergeMessages = (myMessages, systemMessages, blMessages, unhandledMessage) ->
   mySystems = myMessages.filter (m) -> m.sender is -1
   mySystems = mySystems.map (m) -> m.msgId
 
@@ -26,7 +26,7 @@ mergeMessages = (myMessages, systemMessages, blMessages) ->
     if m.id not in mySystems
       myMessages.push m
 
-  blMessages.forEach (m) -> myMessages.push m
+  blMessages.concat(unhandledMessage).forEach (m) -> myMessages.push m
   return myMessages
 
 changeGroupNameAndSort = (messages) ->
@@ -82,7 +82,7 @@ Handler::messageList = (msg, session, next) ->
     (cb) ->
       dao.message.fetchMany {
         limit: 20,
-        orderBy: ' createTime DESC ',
+        orderby: ' createTime DESC ',
         where: {
           sender: -1
           receiver: -1
@@ -98,14 +98,25 @@ Handler::messageList = (msg, session, next) ->
           type: msgConfig.MESSAGETYPE.BATTLENOTICE
         },
         limit: 20,
-        orderBy: ' createTime DESC '
+        orderby: ' createTime DESC '
       }, cb
 
     (cb) ->
       dao.message.fetchMany {
         where: " receiver = #{playerId} and type in (#{msgConfig.MESSAGETYPE.SYSTEM}, #{msgConfig.MESSAGETYPE.ADDFRIEND}, #{msgConfig.MESSAGETYPE.MESSAGE}) "
         limit: 20,
-        orderBy: ' createTime DESC '
+        orderby: ' createTime DESC '
+      }, cb
+
+    (cb) ->
+      dao.message.fetchMany {
+        where: {
+          receiver: playerId,
+          type: msgConfig.MESSAGETYPE.ADDFRIEND,
+          status: msgConfig.MESSAGESTATUS.ASKING
+        },
+        limit: 20,
+        orderby: ' createTime DESC '
       }, cb
   ], (err, results) ->
     if err
@@ -114,8 +125,9 @@ Handler::messageList = (msg, session, next) ->
     systemMessages = results[0]
     blMessages = results[1]
     friendMessages = results[2]
+    unhandledMessage = results[3]
 
-    messages = mergeMessages(friendMessages, systemMessages, blMessages)
+    messages = mergeMessages(friendMessages, systemMessages, blMessages, unhandledMessage)
     messages = messages.map (m) -> 
       if m.type is msgConfig.MESSAGETYPE.MESSAGE then m.toLeaveMessage?() else m.toJson?()
     messages = _.groupBy messages, (item) -> item.type

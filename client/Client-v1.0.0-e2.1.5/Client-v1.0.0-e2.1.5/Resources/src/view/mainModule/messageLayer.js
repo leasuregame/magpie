@@ -68,8 +68,8 @@ var MessageLayer = cc.Layer.extend({
         );
         this._friendMessageLayerItem.setPosition(this._messageLayerFit.friendMessageLayerItemPoint);
 
-        this._friendMessageMark = cc.Sprite.create(main_scene_image.icon19);
-        this._friendMessageMark.setPosition(cc.p(100, 50));
+        this._friendMessageMark = cc.Sprite.create(main_scene_image.icon289);
+        this._friendMessageMark.setPosition(cc.p(135, 50));
         this._friendMessageMark.setVisible(false);
         this._friendMessageLayerItem.addChild(this._friendMessageMark);
 
@@ -82,8 +82,8 @@ var MessageLayer = cc.Layer.extend({
         );
         this._systemMessageLayerItem.setPosition(this._messageLayerFit.systemMessageLayerItemPoint);
 
-        this._systemMessageMark = cc.Sprite.create(main_scene_image.icon19);
-        this._systemMessageMark.setPosition(cc.p(100, 50));
+        this._systemMessageMark = cc.Sprite.create(main_scene_image.icon289);
+        this._systemMessageMark.setPosition(cc.p(135, 50));
         this._systemMessageMark.setVisible(false);
         this._systemMessageLayerItem.addChild(this._systemMessageMark);
 

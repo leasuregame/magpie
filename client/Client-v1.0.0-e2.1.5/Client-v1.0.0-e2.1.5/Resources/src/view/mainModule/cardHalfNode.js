@@ -48,20 +48,20 @@ var CardHalfNode = cc.Node.extend({
         return true;
     },
 
-    up: function() {
+    up: function () {
         this._frameSprite.setScale(1.05);
         this._cardSprite.setScale(1.1);
 
-        if(this._iconSprite) {
+        if (this._iconSprite) {
             this._iconSprite.setScale(1.05);
         }
     },
 
-    put: function() {
+    put: function () {
         this._frameSprite.setScale(1);
         this._cardSprite.setScale(1);
 
-        if(this._iconSprite) {
+        if (this._iconSprite) {
             this._iconSprite.setScale(1);
         }
     },

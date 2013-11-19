@@ -26,7 +26,7 @@ var BattleMessageLayer = cc.Layer.extend({
         lz.dc.beginLogPageView("战斗消息界面");
     },
 
-    onExit: function() {
+    onExit: function () {
         cc.log("BattleMessageLayer onExit");
 
         this._super();

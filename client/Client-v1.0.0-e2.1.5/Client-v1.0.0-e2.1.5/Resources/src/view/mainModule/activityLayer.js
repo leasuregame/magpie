@@ -24,7 +24,7 @@ var ActivityLayer = cc.Layer.extend({
     _selectIcon: null,
     _mark: [],
 
-    onEnter: function() {
+    onEnter: function () {
         cc.log("ActivityLayer onEnter");
 
         this._super();
@@ -33,7 +33,7 @@ var ActivityLayer = cc.Layer.extend({
         lz.dc.beginLogPageView("活动界面");
     },
 
-    onExit: function() {
+    onExit: function () {
         cc.log("ActivityLayer onExit");
 
         this._super();
@@ -77,7 +77,7 @@ var ActivityLayer = cc.Layer.extend({
             item.setAnchorPoint(cc.p(0, 0));
             item.setPosition(cc.p(this._activityLayerFit.itemBasePoint.x + this._activityLayerFit.itemOffsetX * i, this._activityLayerFit.itemBasePoint.y));
 
-            this._mark[i] = cc.Sprite.create(main_scene_image.icon19);
+            this._mark[i] = cc.Sprite.create(main_scene_image.icon289);
             this._mark[i].setPosition(cc.p(75, 80));
             this._mark[i].setVisible(false);
             item.addChild(this._mark[i]);
@@ -116,7 +116,7 @@ var ActivityLayer = cc.Layer.extend({
         }
     },
 
-    updateMark: function() {
+    updateMark: function () {
         cc.log("MessageLayer updateMark");
 
         this._mark[0].setVisible(gameMark.getSignInMark());

@@ -45,7 +45,7 @@ var LogoutLayer = LazyLayer.extend({
         this.addChild(bgLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(cc.size(520, 300));
+        bgSprite.setContentSize(cc.size(520, 260));
         bgSprite.setPosition(this._logoutLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 

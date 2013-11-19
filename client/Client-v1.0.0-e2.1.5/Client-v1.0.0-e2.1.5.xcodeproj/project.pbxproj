@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		906E946217CDAD090038DF64 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 906E946017CDAD090038DF64 /* res */; };
 		906E946317CDAD090038DF64 /* src in Resources */ = {isa = PBXBuildFile; fileRef = 906E946117CDAD090038DF64 /* src */; };
-		906E946717CDAD150038DF64 /* main_binding.js in Sources */ = {isa = PBXBuildFile; fileRef = 906E946417CDAD150038DF64 /* main_binding.js */; };
-		906E946817CDAD150038DF64 /* main.js in Sources */ = {isa = PBXBuildFile; fileRef = 906E946517CDAD150038DF64 /* main.js */; };
 		906E946A17CDAD5D0038DF64 /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 906E946417CDAD150038DF64 /* main_binding.js */; };
 		907884911839457000906496 /* chipmunk-docs.html in Resources */ = {isa = PBXBuildFile; fileRef = 907881851839456F00906496 /* chipmunk-docs.html */; };
 		907884921839457000906496 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 907881A21839456F00906496 /* LICENSE.txt */; };
@@ -270,22 +268,8 @@
 		907885901839457000906496 /* cocos2d_specifics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907883FB1839457000906496 /* cocos2d_specifics.cpp */; };
 		907885911839457000906496 /* cocosjs_manual_conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907883FD1839457000906496 /* cocosjs_manual_conversions.cpp */; };
 		907885921839457000906496 /* jsb_cocos2dx_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907884001839457000906496 /* jsb_cocos2dx_auto.cpp */; };
-		907885931839457000906496 /* jsb_cocos2dx_auto_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 907884021839457000906496 /* jsb_cocos2dx_auto_api.js */; };
 		907885941839457000906496 /* jsb_cocos2dx_extension_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907884031839457000906496 /* jsb_cocos2dx_extension_auto.cpp */; };
-		907885951839457000906496 /* jsb_cocos2dx_extension_auto_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 907884051839457000906496 /* jsb_cocos2dx_extension_auto_api.js */; };
 		907885961839457000906496 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 907884061839457000906496 /* README */; };
-		907885971839457000906496 /* jsb.js in Sources */ = {isa = PBXBuildFile; fileRef = 907884081839457000906496 /* jsb.js */; };
-		907885981839457000906496 /* jsb_chipmunk.js in Sources */ = {isa = PBXBuildFile; fileRef = 907884091839457000906496 /* jsb_chipmunk.js */; };
-		907885991839457000906496 /* jsb_chipmunk_constants.js in Sources */ = {isa = PBXBuildFile; fileRef = 9078840A1839457000906496 /* jsb_chipmunk_constants.js */; };
-		9078859A1839457000906496 /* jsb_cocos2d.js in Sources */ = {isa = PBXBuildFile; fileRef = 9078840B1839457000906496 /* jsb_cocos2d.js */; };
-		9078859B1839457000906496 /* jsb_cocos2d_constants.js in Sources */ = {isa = PBXBuildFile; fileRef = 9078840C1839457000906496 /* jsb_cocos2d_constants.js */; };
-		9078859C1839457000906496 /* jsb_cocos2d_extension.js in Sources */ = {isa = PBXBuildFile; fileRef = 9078840D1839457000906496 /* jsb_cocos2d_extension.js */; };
-		9078859D1839457000906496 /* jsb_cocosbuilder.js in Sources */ = {isa = PBXBuildFile; fileRef = 9078840E1839457000906496 /* jsb_cocosbuilder.js */; };
-		9078859E1839457000906496 /* jsb_debugger.js in Sources */ = {isa = PBXBuildFile; fileRef = 9078840F1839457000906496 /* jsb_debugger.js */; };
-		9078859F1839457000906496 /* jsb_opengl.js in Sources */ = {isa = PBXBuildFile; fileRef = 907884101839457000906496 /* jsb_opengl.js */; };
-		907885A01839457000906496 /* jsb_opengl_constants.js in Sources */ = {isa = PBXBuildFile; fileRef = 907884111839457000906496 /* jsb_opengl_constants.js */; };
-		907885A11839457000906496 /* jsb_sys.js in Sources */ = {isa = PBXBuildFile; fileRef = 907884121839457000906496 /* jsb_sys.js */; };
-		907885A21839457000906496 /* main.debug.js in Sources */ = {isa = PBXBuildFile; fileRef = 907884131839457000906496 /* main.debug.js */; };
 		907885A31839457000906496 /* js_bindings_ccbreader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907884141839457000906496 /* js_bindings_ccbreader.cpp */; };
 		907885A41839457000906496 /* js_bindings_chipmunk_auto_classes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907884161839457000906496 /* js_bindings_chipmunk_auto_classes.cpp */; };
 		907885A51839457000906496 /* js_bindings_chipmunk_functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907884191839457000906496 /* js_bindings_chipmunk_functions.cpp */; };
@@ -301,14 +285,28 @@
 		907885AF1839457000906496 /* jsb_opengl_manual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907884311839457000906496 /* jsb_opengl_manual.cpp */; };
 		907885B01839457000906496 /* jsb_opengl_registration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907884331839457000906496 /* jsb_opengl_registration.cpp */; };
 		907885B11839457000906496 /* jsb_websocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907884351839457000906496 /* jsb_websocket.cpp */; };
-		907885B21839457000906496 /* obfuscate_exclude_chipmunk.js in Sources */ = {isa = PBXBuildFile; fileRef = 907884381839457000906496 /* obfuscate_exclude_chipmunk.js */; };
-		907885B31839457000906496 /* obfuscate_exclude_cocos2d.js in Sources */ = {isa = PBXBuildFile; fileRef = 907884391839457000906496 /* obfuscate_exclude_cocos2d.js */; };
 		907885B41839457000906496 /* ScriptingCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9078843A1839457000906496 /* ScriptingCore.cpp */; };
 		907885B51839457000906496 /* XMLHTTPRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9078843D1839457000906496 /* XMLHTTPRequest.cpp */; };
 		907885B61839457000906496 /* js.msg in Resources */ = {isa = PBXBuildFile; fileRef = 907884541839457000906496 /* js.msg */; };
 		907885B71839457000906496 /* libjs_static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9078848A1839457000906496 /* libjs_static.a */; };
 		907885B81839457000906496 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 907884901839457000906496 /* libwebsockets.a */; };
 		909CF83817DECDDC0049D151 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 909CF83717DECDDC0049D151 /* Default-568h@2x.png */; };
+		90D36049183B40F4001F388A /* jsb_cocos2dx_auto_api.js in Resources */ = {isa = PBXBuildFile; fileRef = 907884021839457000906496 /* jsb_cocos2dx_auto_api.js */; };
+		90D3604A183B40F4001F388A /* jsb_cocos2dx_extension_auto_api.js in Resources */ = {isa = PBXBuildFile; fileRef = 907884051839457000906496 /* jsb_cocos2dx_extension_auto_api.js */; };
+		90D3604B183B40F4001F388A /* jsb.js in Resources */ = {isa = PBXBuildFile; fileRef = 907884081839457000906496 /* jsb.js */; };
+		90D3604C183B40F4001F388A /* jsb_chipmunk.js in Resources */ = {isa = PBXBuildFile; fileRef = 907884091839457000906496 /* jsb_chipmunk.js */; };
+		90D3604D183B40F4001F388A /* jsb_chipmunk_constants.js in Resources */ = {isa = PBXBuildFile; fileRef = 9078840A1839457000906496 /* jsb_chipmunk_constants.js */; };
+		90D3604E183B40F4001F388A /* jsb_cocos2d.js in Resources */ = {isa = PBXBuildFile; fileRef = 9078840B1839457000906496 /* jsb_cocos2d.js */; };
+		90D3604F183B40F4001F388A /* jsb_cocos2d_constants.js in Resources */ = {isa = PBXBuildFile; fileRef = 9078840C1839457000906496 /* jsb_cocos2d_constants.js */; };
+		90D36050183B40F4001F388A /* jsb_cocos2d_extension.js in Resources */ = {isa = PBXBuildFile; fileRef = 9078840D1839457000906496 /* jsb_cocos2d_extension.js */; };
+		90D36051183B40F4001F388A /* jsb_cocosbuilder.js in Resources */ = {isa = PBXBuildFile; fileRef = 9078840E1839457000906496 /* jsb_cocosbuilder.js */; };
+		90D36052183B40F4001F388A /* jsb_debugger.js in Resources */ = {isa = PBXBuildFile; fileRef = 9078840F1839457000906496 /* jsb_debugger.js */; };
+		90D36053183B40F4001F388A /* jsb_opengl.js in Resources */ = {isa = PBXBuildFile; fileRef = 907884101839457000906496 /* jsb_opengl.js */; };
+		90D36054183B40F4001F388A /* jsb_opengl_constants.js in Resources */ = {isa = PBXBuildFile; fileRef = 907884111839457000906496 /* jsb_opengl_constants.js */; };
+		90D36055183B40F4001F388A /* jsb_sys.js in Resources */ = {isa = PBXBuildFile; fileRef = 907884121839457000906496 /* jsb_sys.js */; };
+		90D36056183B40F4001F388A /* main.debug.js in Resources */ = {isa = PBXBuildFile; fileRef = 907884131839457000906496 /* main.debug.js */; };
+		90D36057183B40F4001F388A /* obfuscate_exclude_chipmunk.js in Resources */ = {isa = PBXBuildFile; fileRef = 907884381839457000906496 /* obfuscate_exclude_chipmunk.js */; };
+		90D36058183B40F4001F388A /* obfuscate_exclude_cocos2d.js in Resources */ = {isa = PBXBuildFile; fileRef = 907884391839457000906496 /* obfuscate_exclude_cocos2d.js */; };
 		90D49C2A17CAF81800A22DB2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D49C2917CAF81800A22DB2 /* QuartzCore.framework */; };
 		90D49C2C17CAF81800A22DB2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D49C2B17CAF81800A22DB2 /* OpenGLES.framework */; };
 		90D49C2E17CAF81800A22DB2 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D49C2D17CAF81800A22DB2 /* OpenAL.framework */; };
@@ -2698,6 +2696,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90D36049183B40F4001F388A /* jsb_cocos2dx_auto_api.js in Resources */,
+				90D3604A183B40F4001F388A /* jsb_cocos2dx_extension_auto_api.js in Resources */,
+				90D3604B183B40F4001F388A /* jsb.js in Resources */,
+				90D3604C183B40F4001F388A /* jsb_chipmunk.js in Resources */,
+				90D3604D183B40F4001F388A /* jsb_chipmunk_constants.js in Resources */,
+				90D3604E183B40F4001F388A /* jsb_cocos2d.js in Resources */,
+				90D3604F183B40F4001F388A /* jsb_cocos2d_constants.js in Resources */,
+				90D36050183B40F4001F388A /* jsb_cocos2d_extension.js in Resources */,
+				90D36051183B40F4001F388A /* jsb_cocosbuilder.js in Resources */,
+				90D36052183B40F4001F388A /* jsb_debugger.js in Resources */,
+				90D36053183B40F4001F388A /* jsb_opengl.js in Resources */,
+				90D36054183B40F4001F388A /* jsb_opengl_constants.js in Resources */,
+				90D36055183B40F4001F388A /* jsb_sys.js in Resources */,
+				90D36056183B40F4001F388A /* main.debug.js in Resources */,
+				90D36057183B40F4001F388A /* obfuscate_exclude_chipmunk.js in Resources */,
+				90D36058183B40F4001F388A /* obfuscate_exclude_cocos2d.js in Resources */,
 				906E946A17CDAD5D0038DF64 /* main_binding.js in Resources */,
 				907884931839457000906496 /* README.txt in Resources */,
 				90D49C4017CAF81800A22DB2 /* Default.png in Resources */,
@@ -2755,7 +2769,6 @@
 				907885A31839457000906496 /* js_bindings_ccbreader.cpp in Sources */,
 				907885511839457000906496 /* CCLayerLoader.cpp in Sources */,
 				9078852B1839457000906496 /* CCTextFieldTTF.cpp in Sources */,
-				907885B31839457000906496 /* obfuscate_exclude_cocos2d.js in Sources */,
 				907884A91839457000906496 /* cpShape.c in Sources */,
 				9078852D1839457000906496 /* CCTextureAtlas.cpp in Sources */,
 				907885911839457000906496 /* cocosjs_manual_conversions.cpp in Sources */,
@@ -2764,11 +2777,9 @@
 				9078849B1839457000906496 /* cpPinJoint.c in Sources */,
 				907885711839457000906496 /* CCScrollView.cpp in Sources */,
 				9078849D1839457000906496 /* cpRatchetJoint.c in Sources */,
-				9078859B1839457000906496 /* jsb_cocos2d_constants.js in Sources */,
 				907884E91839457000906496 /* CCLabelTTF.cpp in Sources */,
 				907885031839457000906496 /* CCEGLView.mm in Sources */,
 				907884BA1839457000906496 /* CCActionManager.cpp in Sources */,
-				907885971839457000906496 /* jsb.js in Sources */,
 				9078850A1839457000906496 /* AccelerometerSimulation.m in Sources */,
 				907884E01839457000906496 /* ray2.c in Sources */,
 				907884CA1839457000906496 /* CCDictionary.cpp in Sources */,
@@ -2844,7 +2855,6 @@
 				907885611839457000906496 /* CCControlColourPicker.cpp in Sources */,
 				9078854B1839457000906496 /* CCControlLoader.cpp in Sources */,
 				907885441839457000906496 /* CCBFileLoader.cpp in Sources */,
-				907885B21839457000906496 /* obfuscate_exclude_chipmunk.js in Sources */,
 				907884F11839457000906496 /* CCClippingNode.cpp in Sources */,
 				907885661839457000906496 /* CCControlStepper.cpp in Sources */,
 				9078852C1839457000906496 /* CCTexture2D.cpp in Sources */,
@@ -2857,7 +2867,6 @@
 				9078853F1839457000906496 /* js_cocos2dx_autogen_extension.cpp in Sources */,
 				907884AA1839457000906496 /* cpSpace.c in Sources */,
 				9078849C1839457000906496 /* cpPivotJoint.c in Sources */,
-				9078859F1839457000906496 /* jsb_opengl.js in Sources */,
 				907884B91839457000906496 /* CCActionInterval.cpp in Sources */,
 				907884EF1839457000906496 /* CCMenu.cpp in Sources */,
 				907885381839457000906496 /* CCTouchDispatcher.cpp in Sources */,
@@ -2870,7 +2879,6 @@
 				9078857D1839457000906496 /* AnimationStateData.cpp in Sources */,
 				907884DF1839457000906496 /* quaternion.c in Sources */,
 				907884D21839457000906496 /* CCDrawingPrimitives.cpp in Sources */,
-				907885981839457000906496 /* jsb_chipmunk.js in Sources */,
 				907885471839457000906496 /* CCBSequence.cpp in Sources */,
 				907885B41839457000906496 /* ScriptingCore.cpp in Sources */,
 				907885AD1839457000906496 /* jsb_cocos2dx_extension_manual.cpp in Sources */,
@@ -2883,12 +2891,10 @@
 				907885841839457000906496 /* CCSkeleton.cpp in Sources */,
 				907885701839457000906496 /* CCEditBoxImplWin.cpp in Sources */,
 				907884F31839457000906496 /* CCProgressTimer.cpp in Sources */,
-				907885991839457000906496 /* jsb_chipmunk_constants.js in Sources */,
 				907885051839457000906496 /* CCFileUtilsIOS.mm in Sources */,
 				907884AB1839457000906496 /* cpSpaceComponent.c in Sources */,
 				907884FE1839457000906496 /* CCAccelerometer.mm in Sources */,
 				907884B61839457000906496 /* CCActionGrid.cpp in Sources */,
-				9078859D1839457000906496 /* jsb_cocosbuilder.js in Sources */,
 				907884D91839457000906496 /* mat4stack.c in Sources */,
 				907885191839457000906496 /* base64.cpp in Sources */,
 				9078856B1839457000906496 /* CCEditBox.cpp in Sources */,
@@ -2897,7 +2903,6 @@
 				907884E81839457000906496 /* CCLabelBMFont.cpp in Sources */,
 				907884EE1839457000906496 /* CCTransitionProgress.cpp in Sources */,
 				907885801839457000906496 /* Attachment.cpp in Sources */,
-				906E946717CDAD150038DF64 /* main_binding.js in Sources */,
 				907884D61839457000906496 /* aabb.c in Sources */,
 				907884B71839457000906496 /* CCActionGrid3D.cpp in Sources */,
 				907885591839457000906496 /* CCScrollViewLoader.cpp in Sources */,
@@ -2905,7 +2910,6 @@
 				907885781839457000906496 /* WebSocket.cpp in Sources */,
 				9078850E1839457000906496 /* CCScriptSupport.cpp in Sources */,
 				907884AD1839457000906496 /* cpSpaceQuery.c in Sources */,
-				907885A11839457000906496 /* jsb_sys.js in Sources */,
 				9078858A1839457000906496 /* SkeletonData.cpp in Sources */,
 				907885621839457000906496 /* CCControlHuePicker.cpp in Sources */,
 				9078857E1839457000906496 /* Atlas.cpp in Sources */,
@@ -2914,13 +2918,11 @@
 				907885741839457000906496 /* CCTableViewCell.cpp in Sources */,
 				907884F61839457000906496 /* CCParticleExamples.cpp in Sources */,
 				907884A81839457000906496 /* cpPolyShape.c in Sources */,
-				907885931839457000906496 /* jsb_cocos2dx_auto_api.js in Sources */,
 				9078858D1839457000906496 /* Slot.cpp in Sources */,
 				907884C61839457000906496 /* CCAffineTransform.cpp in Sources */,
 				907885A81839457000906496 /* js_bindings_core.cpp in Sources */,
 				907884E21839457000906496 /* vec2.c in Sources */,
 				9078857F1839457000906496 /* AtlasAttachmentLoader.cpp in Sources */,
-				906E946817CDAD150038DF64 /* main.js in Sources */,
 				9078857B1839457000906496 /* Animation.cpp in Sources */,
 				907885181839457000906496 /* CCSpriteFrameCache.cpp in Sources */,
 				907884FC1839457000906496 /* CCSAXParser.cpp in Sources */,
@@ -2939,7 +2941,6 @@
 				907885891839457000906496 /* Skeleton.cpp in Sources */,
 				907885041839457000906496 /* CCES2Renderer.m in Sources */,
 				907885061839457000906496 /* CCImage.mm in Sources */,
-				9078859C1839457000906496 /* jsb_cocos2d_extension.js in Sources */,
 				907885521839457000906496 /* CCMenuItemImageLoader.cpp in Sources */,
 				907885331839457000906496 /* CCTMXLayer.cpp in Sources */,
 				907885351839457000906496 /* CCTMXTiledMap.cpp in Sources */,
@@ -2953,7 +2954,6 @@
 				9078853A1839457000906496 /* CDAudioManager.m in Sources */,
 				9078853C1839457000906496 /* CocosDenshion.m in Sources */,
 				907884B11839457000906496 /* cpVect.c in Sources */,
-				9078859A1839457000906496 /* jsb_cocos2d.js in Sources */,
 				907885261839457000906496 /* CCUserDefault.mm in Sources */,
 				907885301839457000906496 /* CCTexturePVR.cpp in Sources */,
 				907884EA1839457000906496 /* CCLayer.cpp in Sources */,
@@ -2973,7 +2973,6 @@
 				907885791839457000906496 /* CCPhysicsDebugNode.cpp in Sources */,
 				907885881839457000906496 /* RegionAttachment.cpp in Sources */,
 				907884E41839457000906496 /* vec4.c in Sources */,
-				907885A01839457000906496 /* jsb_opengl_constants.js in Sources */,
 				907884B21839457000906496 /* CCAction.cpp in Sources */,
 				907884D31839457000906496 /* CCDrawNode.cpp in Sources */,
 				9078856F1839457000906496 /* CCEditBoxImplTizen.cpp in Sources */,
@@ -2985,9 +2984,7 @@
 				907885341839457000906496 /* CCTMXObjectGroup.cpp in Sources */,
 				907884FB1839457000906496 /* CCImageCommonWebp.cpp in Sources */,
 				907884F91839457000906496 /* CCEGLViewProtocol.cpp in Sources */,
-				9078859E1839457000906496 /* jsb_debugger.js in Sources */,
 				907884FF1839457000906496 /* CCApplication.mm in Sources */,
-				907885951839457000906496 /* jsb_cocos2dx_extension_auto_api.js in Sources */,
 				907885561839457000906496 /* CCNodeLoaderLibrary.cpp in Sources */,
 				907884A61839457000906496 /* cpCollision.c in Sources */,
 				907885AB1839457000906496 /* js_bindings_system_registration.cpp in Sources */,
@@ -3027,7 +3024,6 @@
 				907885821839457000906496 /* Bone.cpp in Sources */,
 				907884B81839457000906496 /* CCActionInstant.cpp in Sources */,
 				907885071839457000906496 /* CCLock.cpp in Sources */,
-				907885A21839457000906496 /* main.debug.js in Sources */,
 				907885AF1839457000906496 /* jsb_opengl_manual.cpp in Sources */,
 				907884E71839457000906496 /* CCLabelAtlas.cpp in Sources */,
 				9078858E1839457000906496 /* SlotData.cpp in Sources */,

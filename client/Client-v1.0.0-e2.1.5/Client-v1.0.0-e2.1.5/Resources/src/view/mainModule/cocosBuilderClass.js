@@ -8,10 +8,10 @@
 
 
 /*
-* cocos builder class
-* */
+ * cocos builder class
+ * */
 
 
-var CocosBuilderClass = function() {
+var CocosBuilderClass = function () {
 
 };

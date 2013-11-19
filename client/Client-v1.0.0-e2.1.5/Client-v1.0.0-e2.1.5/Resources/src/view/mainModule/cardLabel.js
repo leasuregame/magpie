@@ -272,7 +272,7 @@ var CardLabel = cc.Node.extend({
                 noviceTeachingLayer.clearAndSave();
                 noviceTeachingLayer.next();
             }
-            
+
             this.select();
         }
     }

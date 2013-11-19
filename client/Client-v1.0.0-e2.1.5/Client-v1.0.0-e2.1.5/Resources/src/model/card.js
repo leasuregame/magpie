@@ -149,7 +149,7 @@ var Card = Entity.extend({
 //        this._hp = this._initHp;
 //        this._atk = this._initAtk;
 
-        this._url = "card" + (cardTable.number % 6 + 1);
+        this._url = "card" + cardTable.url;
 
         // 读取卡牌升级配置表
         var cardGrowTable = outputTables.card_grow.rows[this._lv];

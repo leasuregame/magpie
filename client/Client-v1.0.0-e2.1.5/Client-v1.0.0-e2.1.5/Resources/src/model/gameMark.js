@@ -154,8 +154,6 @@ var gameMark = {
             var signIn = gameData.signIn;
             if (signIn.canSignIn(0) == true) {
                 mark = true;
-            } else if (signIn.canRemedySignIn(0) == true) {
-                mark = true;
             } else {
                 for (var i = 0; i < 5; ++i) {
                     if (signIn.canReceive(this.index, i) == true) {
@@ -166,13 +164,15 @@ var gameMark = {
                 }
             }
         }
-        this._signIn = false;
+        this._signIn = mark;
         return mark;
     },
 
     updateSignInMark: function (mark) {
         cc.log("gameMark updateSignInMark");
         this._signIn = mark;
+        this.updateActivityMark(mark);
+        MainScene.getInstance().updateMark();
     },
 
     getPowerRewardMark: function () {
@@ -183,6 +183,7 @@ var gameMark = {
     updatePowerRewardMark: function (mark) {
         cc.log("gameMark updatePowerRewardMark");
         this._powerReward = mark;
+        this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     },
 
@@ -192,13 +193,16 @@ var gameMark = {
         var mark = this._goldReward;
         if (mark == false) {
             var goldRewards = outputTables.player_upgrade_reward.rows;
+            var lv = gameData.player.get("lv");
             var keys = Object.keys(goldRewards);
             var len = keys.length;
             for (var i = 0; i < len; ++i) {
                 var key = keys[i];
-                if (gameData.activity.getTypeById(goldRewards[key].id) != GOLD_RECEIVE) {
-                    mark = true;
-                    break;
+                if (gameData.activity.getTypeById(goldRewards[key].id) == GOLD_NO_RECEIVE) {
+                    if (lv >= goldRewards[key].lv) {
+                        mark = true;
+                        break;
+                    }
                 }
             }
         }
@@ -209,6 +213,7 @@ var gameMark = {
     updateGoldRewardMark: function (mark) {
         cc.log("gameMark getGoldRewardMark");
         this._goldReward = mark;
+        this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     },
 
@@ -220,6 +225,7 @@ var gameMark = {
     updateRechargeMark: function (mark) {
         cc.log("gameMark updateRechargeMark");
         this._recharge = mark;
+        this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     },
 
@@ -248,6 +254,7 @@ var gameMark = {
     updateFriendMessageMark: function (mark) {
         cc.log("gameMark updateFriendMessageMark");
         this._friendMessage = mark;
+        this.updateMessageMark(mark);
         MainScene.getInstance().updateMark();
     },
 
@@ -271,6 +278,7 @@ var gameMark = {
     updateSystemMessageMark: function (mark) {
         cc.log("gameMark updateSystemMessageMark");
         this._systemMessage = mark;
+        this.updateMessageMark(mark);
         MainScene.getInstance().updateMark();
     }
 

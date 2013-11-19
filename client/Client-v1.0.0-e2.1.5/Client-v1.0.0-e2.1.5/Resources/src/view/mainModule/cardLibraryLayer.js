@@ -16,8 +16,9 @@ var CardLibraryLayer = cc.Layer.extend({
     _cardLibraryLayerFit: null,
 
     _cardItem: {},
-    _cardLockItem: {},
+    _cardLockIcon: {},
     _effect: {},
+    _scrollView: null,
 
     onEnter: function () {
         cc.log("CardLibraryLayer onEnter");
@@ -28,7 +29,7 @@ var CardLibraryLayer = cc.Layer.extend({
         lz.dc.beginLogPageView("卡库界面");
     },
 
-    onExit: function() {
+    onExit: function () {
         cc.log("CardLibraryLayer onExit");
 
         this._super();
@@ -82,32 +83,34 @@ var CardLibraryLayer = cc.Layer.extend({
         var scrollViewHeight = Math.ceil(len / 4) * 143 + 25;
 
         this._cardItem = {};
-        this._cardLockItem = {};
+        this._cardLockIcon = {};
         this._effect = {};
         for (var i = 0; i < len; ++i) {
             var row = Math.floor(i / 4);
             var index = i % 4;
+            var id = cardLibrary[i].id;
 
             var cardItem = CardHeadNode.getCardHeadItem(cardLibrary[i].card, this._onClickCard(cardLibrary[i]), this);
             cardItem.setPosition(cc.p(94 + 148 * index, scrollViewHeight - 89 - 143 * row));
             menu.addChild(cardItem);
 
-            this._cardItem[cardLibrary[i].id] = cardItem;
+            this._cardItem[id] = cardItem;
 
-            var cardLockItem = cc.Sprite.create(main_scene_image.icon200);
-            cardLockItem.setScale(0.6);
-            cardLockItem.setPosition(cc.p(83, 24));
-            cardItem.addChild(cardLockItem);
-            this._cardLockItem[cardLibrary[i].id] = cardLockItem;
+            var cardLockIcon = cc.Sprite.create(main_scene_image.icon200);
+            cardLockIcon.setScale(0.6);
+            cardLockIcon.setPosition(cc.p(83, 24));
+            cardItem.addChild(cardLockIcon);
+
+            this._cardLockIcon[id] = cardLockIcon;
         }
 
-        var scrollView = cc.ScrollView.create(this._cardLibraryLayerFit.scrollViewSize, scrollViewLayer);
-        scrollView.setContentSize(cc.size(640, scrollViewHeight));
-        scrollView.setPosition(this._cardLibraryLayerFit.scrollViewPoint);
-        scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
-        scrollView.updateInset();
-        this.addChild(scrollView);
-        scrollView.setContentOffset(scrollView.minContainerOffset());
+        this._scrollView = cc.ScrollView.create(this._cardLibraryLayerFit.scrollViewSize, scrollViewLayer);
+        this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
+        this._scrollView.setPosition(this._cardLibraryLayerFit.scrollViewPoint);
+        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        this._scrollView.updateInset();
+        this.addChild(this._scrollView);
+        this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
 
         var backItem = cc.MenuItemImage.create(
             main_scene_image.button8,
@@ -137,38 +140,29 @@ var CardLibraryLayer = cc.Layer.extend({
 
                 if (this._effect[key]) {
                     this._effect[key].removeFromParent();
+                    this._effect[key] = null;
                 }
-
-
             } else if (type == CARD_EXIST) {
                 cardItem.setColor(cc.c3b(255, 255, 255));
 
                 if (this._effect[key]) {
                     this._effect[key].removeFromParent();
+                    this._effect[key] = null;
                 }
 
-                if(this._cardLockItem[key]) {
-                    this._cardLockItem[key].removeFromParent();
+                if (this._cardLockIcon[key]) {
+                    this._cardLockIcon[key].removeFromParent();
+                    this._cardLockIcon[key] = null;
                 }
-
             } else if (type == CARD_RECEIVE) {
                 cardItem.setColor(cc.c3b(110, 110, 110));
 
                 if (!this._effect[key]) {
-                    var ret = playEffect({
-                        effectId: 1,
-                        target: cardItem,
-                        loops: 0,
-                        delay: 0.1,
-                        zOrder: 10,
-                        position: cc.p(50, 56)
-                    });
 
-                    this._effect[key] = ret.sprite;
-                }
-
-                if(this._cardLockItem[key]) {
-                    this._cardLockItem[key].removeFromParent();
+                    var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect19, this);
+                    ccbNode.setPosition(cardItem.getPosition());
+                    this._effect[key] = ccbNode;
+                    this._scrollView.addChild(this._effect[key]);
                 }
             }
         }

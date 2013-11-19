@@ -261,9 +261,9 @@ var SpiritPoolLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
-            NoviceTeachingLayer.getInstance().clearAndSave();
-            NoviceTeachingLayer.getInstance().next();
+        if (noviceTeachingLayer.isNoviceTeaching()) {
+            noviceTeachingLayer.clearAndSave();
+            noviceTeachingLayer.next();
         }
 
         MainScene.getInstance().addChild(SpiritDetails.create(), 1);

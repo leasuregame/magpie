@@ -6,11 +6,11 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 var GOLD_RECEIVE = 1;
 var GOLD_NO_RECEIVE = 0;
 
 var Activity = Entity.extend({
-
     _type: {},
 
     init: function () {

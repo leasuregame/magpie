@@ -27,7 +27,7 @@ var FriendMessageLayer = cc.Layer.extend({
         lz.dc.beginLogPageView("好友消息界面");
     },
 
-    onExit: function() {
+    onExit: function () {
         cc.log("FriendMessageLayer onExit");
 
         this._super();
@@ -227,7 +227,7 @@ var FriendMessageLayer = cc.Layer.extend({
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
             gameMark.updateFriendMessageMark(false);
-            
+
             ReadMessageLayer.pop(message.sender, message.senderName, message.text);
         }
     }

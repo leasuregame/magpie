@@ -17,7 +17,7 @@ var AchievementLayer = cc.Layer.extend({
 
     _scrollViewElement: {},
 
-    onEnter: function() {
+    onEnter: function () {
         cc.log("AchievementLayer onEnter");
 
         this._super();
@@ -25,7 +25,7 @@ var AchievementLayer = cc.Layer.extend({
         lz.dc.beginLogPageView("成就界面");
     },
 
-    onExit: function() {
+    onExit: function () {
         cc.log("AchievementLayer onExit");
 
         this._super();
@@ -204,6 +204,8 @@ var AchievementLayer = cc.Layer.extend({
                 );
 
                 lz.tipReward(data);
+                gameMark.updateAchievementMark(false);
+
             }, id);
         }
 

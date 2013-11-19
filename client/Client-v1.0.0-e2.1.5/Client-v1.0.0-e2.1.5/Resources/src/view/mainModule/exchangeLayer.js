@@ -29,7 +29,7 @@ var ExchangeLayer = cc.Layer.extend({
         lz.dc.beginLogPageView("卡魂兑换界面");
     },
 
-    onExit: function() {
+    onExit: function () {
         cc.log("ExchangeLayer onExit");
 
         this._super();
@@ -121,12 +121,12 @@ var ExchangeLayer = cc.Layer.extend({
             "STHeitiTC-Medium",
             17
         );
-        tipLabel1.setAnchorPoint(cc.p(0,0.5));
+        tipLabel1.setAnchorPoint(cc.p(0, 0.5));
         tipLabel1.setPosition(this._exchangeLayerFit.tipLabel1Point);
         this.addChild(tipLabel1);
 
         var fragmentIcon = cc.Sprite.create(main_scene_image.icon243);
-        fragmentIcon.setAnchorPoint(cc.p(0,0.5));
+        fragmentIcon.setAnchorPoint(cc.p(0, 0.5));
         fragmentIcon.setPosition(this._exchangeLayerFit.fragmentIconPoint1);
         this.addChild(fragmentIcon);
 
@@ -135,12 +135,12 @@ var ExchangeLayer = cc.Layer.extend({
             "STHeitiTC-Medium",
             17
         );
-        tipLabel2.setAnchorPoint(cc.p(0,0.5));
+        tipLabel2.setAnchorPoint(cc.p(0, 0.5));
         tipLabel2.setPosition(this._exchangeLayerFit.tipLabel2Point);
         this.addChild(tipLabel2);
 
         var fragmentIcon = cc.Sprite.create(main_scene_image.icon243);
-        fragmentIcon.setAnchorPoint(cc.p(0,0.5));
+        fragmentIcon.setAnchorPoint(cc.p(0, 0.5));
         fragmentIcon.setPosition(this._exchangeLayerFit.fragmentIconPoint2);
         this.addChild(fragmentIcon);
 

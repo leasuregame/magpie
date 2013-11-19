@@ -19,17 +19,22 @@ Handler::queryEntry = (msg, session, next) ->
 	if not connectors or connectors.length is 0
 		return next {code: 500, msg: 'no servers available'}
 
-	conn = dispatcher.randomDispatch(connectors)
-	next null, {
-		code: 200, 
-		msg: {
-			host: conn.host, 
-			port: conn.clientPort,
-			servers: areasInfo.map (a) -> 
-				a.status = randomStatus()
-				a
+	@app.get('serverStateService').areaPlayerCount (err, counts) ->
+		if err
+			logger.error('get servers state faild. ', err)
+
+		conn = dispatcher.randomDispatch(connectors)
+		next null, {
+			code: 200, 
+			msg: {
+				host: conn.host, 
+				port: conn.clientPort,
+				servers: areasInfo.map (a) -> 
+					a.status = randomStatus()
+					a.logins = counts['area-server-'+a.id]
+					a
+			}
 		}
-	}
 
 randomStatus = ->
 	SERVER_STATUS[status[_.random(0, status.length-1)]]

@@ -76,7 +76,7 @@ var fit4Iphone4 = {
             "bgSpritePoint": cc.p(363, 600),
             "msgBgIconPoint": cc.p(360, 620),
             "msgLabelPoint": cc.p(360, 620),
-            "cancelItemPoint": cc.p(360, 500)
+            "cancelItemPoint": cc.p(360, 520)
         }
 
     },
@@ -1102,7 +1102,7 @@ var fit4Iphone5 = {
             "bgSpritePoint": cc.p(323, 600),
             "msgBgIconPoint": cc.p(320, 620),
             "msgLabelPoint": cc.p(320, 620),
-            "cancelItemPoint": cc.p(320, 500)
+            "cancelItemPoint": cc.p(320, 520)
         }
 
     },

@@ -20,8 +20,8 @@ var SYSTEM_MESSAGE = 4;
 var ASKING_STATUS = 1;
 var ACCEPT_STATUS = 2;
 var REJECT_STATUS = 3;
-var HANDLED_STATUS = 4;
-var UNHANDLED_STATUS = 5;
+var UNHANDLED_STATUS = 4;
+var HANDLED_STATUS = 5;
 var NOTICE_STATUS = 6;
 
 var Message = Entity.extend({

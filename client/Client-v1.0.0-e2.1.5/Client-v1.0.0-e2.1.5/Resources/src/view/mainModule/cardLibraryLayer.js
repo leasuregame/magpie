@@ -140,16 +140,19 @@ var CardLibraryLayer = cc.Layer.extend({
 
                 if (this._effect[key]) {
                     this._effect[key].removeFromParent();
+                    this._effect[key] = null;
                 }
             } else if (type == CARD_EXIST) {
                 cardItem.setColor(cc.c3b(255, 255, 255));
 
                 if (this._effect[key]) {
                     this._effect[key].removeFromParent();
+                    this._effect[key] = null;
                 }
 
                 if (this._cardLockIcon[key]) {
-                    this._cardLockIcon[key].setVisible(false);
+                    this._cardLockIcon[key].removeFromParent();
+                    this._cardLockIcon[key] = null;
                 }
             } else if (type == CARD_RECEIVE) {
                 cardItem.setColor(cc.c3b(110, 110, 110));

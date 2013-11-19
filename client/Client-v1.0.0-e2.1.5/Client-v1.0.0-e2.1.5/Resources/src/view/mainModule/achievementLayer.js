@@ -204,6 +204,8 @@ var AchievementLayer = cc.Layer.extend({
                 );
 
                 lz.tipReward(data);
+                gameMark.updateAchievementMark(false);
+
             }, id);
         }
 

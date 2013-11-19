@@ -18,6 +18,7 @@ var CardLibraryLayer = cc.Layer.extend({
     _cardItem: {},
     _cardLockIcon: {},
     _effect: {},
+    _scrollView: null,
 
     onEnter: function () {
         cc.log("CardLibraryLayer onEnter");
@@ -103,13 +104,13 @@ var CardLibraryLayer = cc.Layer.extend({
             this._cardLockIcon[id] = cardLockIcon;
         }
 
-        var scrollView = cc.ScrollView.create(this._cardLibraryLayerFit.scrollViewSize, scrollViewLayer);
-        scrollView.setContentSize(cc.size(640, scrollViewHeight));
-        scrollView.setPosition(this._cardLibraryLayerFit.scrollViewPoint);
-        scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
-        scrollView.updateInset();
-        this.addChild(scrollView);
-        scrollView.setContentOffset(scrollView.minContainerOffset());
+        this._scrollView = cc.ScrollView.create(this._cardLibraryLayerFit.scrollViewSize, scrollViewLayer);
+        this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
+        this._scrollView.setPosition(this._cardLibraryLayerFit.scrollViewPoint);
+        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        this._scrollView.updateInset();
+        this.addChild(this._scrollView);
+        this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
 
         var backItem = cc.MenuItemImage.create(
             main_scene_image.button8,
@@ -154,16 +155,11 @@ var CardLibraryLayer = cc.Layer.extend({
                 cardItem.setColor(cc.c3b(110, 110, 110));
 
                 if (!this._effect[key]) {
-                    var ret = playEffect({
-                        effectId: 1,
-                        target: cardItem,
-                        loops: 0,
-                        delay: 0.1,
-                        zOrder: 10,
-                        position: cc.p(50, 56)
-                    });
 
-                    this._effect[key] = ret.sprite;
+                    var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect19, this);
+                    ccbNode.setPosition(cardItem.getPosition());
+                    this._effect[key] = ccbNode;
+                    this._scrollView.addChild(this._effect[key]);
                 }
             }
         }

@@ -9,59 +9,57 @@
 
 
 lz.dc = {
-    _dc: um.MobClickCPP,
-
     setAppVersion: function (str) {
         if (!lz.TARGET_PLATFORM_IS_BROWSER) {
-            this._dc.setAppVersion.apply(this._dc, arguments);
+            um.MobClickCPP.setAppVersion.apply(um.MobClickCPP, arguments);
         }
     },
 
     setCrashReportEnabled: function (enabled) {
         if (!lz.TARGET_PLATFORM_IS_BROWSER) {
-            this._dc.setCrashReportEnabled.apply(this._dc, arguments);
+            um.MobClickCPP.setCrashReportEnabled.apply(um.MobClickCPP, arguments);
         }
     },
 
     setLogEnabled: function (enabled) {
         if (!lz.TARGET_PLATFORM_IS_BROWSER) {
-            this._dc.setLogEnabled.apply(this._dc, arguments);
+            um.MobClickCPP.setLogEnabled.apply(um.MobClickCPP, arguments);
         }
     },
 
     startWithAppKey: function (appKey, rp, cid) {
         if (!lz.TARGET_PLATFORM_IS_BROWSER) {
-            this._dc.startWithAppKey.apply(this._dc, arguments);
+            um.MobClickCPP.startWithAppKey.apply(um.MobClickCPP, arguments);
         }
     },
 
     setLogSendInterval: function (second) {
         if (!lz.TARGET_PLATFORM_IS_BROWSER) {
-            this._dc.setLogSendInterval.apply(this._dc, arguments);
+            um.MobClickCPP.setLogSendInterval.apply(um.MobClickCPP, arguments);
         }
     },
 
     logPageView: function (pageName, second) {
         if (!lz.TARGET_PLATFORM_IS_BROWSER) {
-            this._dc.logPageView.apply(this._dc, arguments);
+            um.MobClickCPP.logPageView.apply(um.MobClickCPP, arguments);
         }
     },
 
     beginLogPageView: function (pageName) {
         if (!lz.TARGET_PLATFORM_IS_BROWSER) {
-            this._dc.beginLogPageView.apply(this._dc, arguments);
+            um.MobClickCPP.beginLogPageView.apply(um.MobClickCPP, arguments);
         }
     },
 
     endLogPageView: function (pageName) {
         if (!lz.TARGET_PLATFORM_IS_BROWSER) {
-            this._dc.endLogPageView.apply(this._dc, arguments);
+            um.MobClickCPP.endLogPageView.apply(um.MobClickCPP, arguments);
         }
     },
 
     event: function (eventId, lable, accumulation) {
         if (!lz.TARGET_PLATFORM_IS_BROWSER) {
-            this._dc.event.apply(this._dc, arguments);
+            um.MobClickCPP.event.apply(um.MobClickCPP, arguments);
         }
     }
 };

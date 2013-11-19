@@ -16,7 +16,7 @@ var CardLibraryLayer = cc.Layer.extend({
     _cardLibraryLayerFit: null,
 
     _cardItem: {},
-    _cardLockItem: {},
+    _cardLockIcon: {},
     _effect: {},
 
     onEnter: function () {
@@ -28,7 +28,7 @@ var CardLibraryLayer = cc.Layer.extend({
         lz.dc.beginLogPageView("卡库界面");
     },
 
-    onExit: function() {
+    onExit: function () {
         cc.log("CardLibraryLayer onExit");
 
         this._super();
@@ -82,7 +82,7 @@ var CardLibraryLayer = cc.Layer.extend({
         var scrollViewHeight = Math.ceil(len / 4) * 143 + 25;
 
         this._cardItem = {};
-        this._cardLockItem = {};
+        this._cardLockIcon = {};
         this._effect = {};
         for (var i = 0; i < len; ++i) {
             var row = Math.floor(i / 4);
@@ -94,11 +94,11 @@ var CardLibraryLayer = cc.Layer.extend({
 
             this._cardItem[cardLibrary[i].id] = cardItem;
 
-            var cardLockItem = cc.Sprite.create(main_scene_image.icon200);
-            cardLockItem.setScale(0.6);
-            cardLockItem.setPosition(cc.p(83, 24));
-            cardItem.addChild(cardLockItem);
-            this._cardLockItem[cardLibrary[i].id] = cardLockItem;
+            var cardLockIcon = cc.Sprite.create(main_scene_image.icon200);
+            cardLockIcon.setScale(0.6);
+            cardLockIcon.setPosition(cc.p(83, 24));
+            cardItem.addChild(cardLockIcon);
+            this._cardLockIcon[cardLibrary[i].id] = cardLockIcon;
         }
 
         var scrollView = cc.ScrollView.create(this._cardLibraryLayerFit.scrollViewSize, scrollViewLayer);
@@ -138,8 +138,6 @@ var CardLibraryLayer = cc.Layer.extend({
                 if (this._effect[key]) {
                     this._effect[key].removeFromParent();
                 }
-
-
             } else if (type == CARD_EXIST) {
                 cardItem.setColor(cc.c3b(255, 255, 255));
 
@@ -147,8 +145,8 @@ var CardLibraryLayer = cc.Layer.extend({
                     this._effect[key].removeFromParent();
                 }
 
-                if(this._cardLockItem[key]) {
-                    this._cardLockItem[key].removeFromParent();
+                if (this._cardLockIcon[key]) {
+                    this._cardLockIcon[key].removeFromParent();
                 }
 
             } else if (type == CARD_RECEIVE) {
@@ -165,10 +163,6 @@ var CardLibraryLayer = cc.Layer.extend({
                     });
 
                     this._effect[key] = ret.sprite;
-                }
-
-                if(this._cardLockItem[key]) {
-                    this._cardLockItem[key].removeFromParent();
                 }
             }
         }

@@ -24,7 +24,7 @@ var ActivityLayer = cc.Layer.extend({
     _selectIcon: null,
     _mark: [],
 
-    onEnter: function() {
+    onEnter: function () {
         cc.log("ActivityLayer onEnter");
 
         this._super();
@@ -33,7 +33,7 @@ var ActivityLayer = cc.Layer.extend({
         lz.dc.beginLogPageView("活动界面");
     },
 
-    onExit: function() {
+    onExit: function () {
         cc.log("ActivityLayer onExit");
 
         this._super();
@@ -116,7 +116,7 @@ var ActivityLayer = cc.Layer.extend({
         }
     },
 
-    updateMark: function() {
+    updateMark: function () {
         cc.log("MessageLayer updateMark");
 
         this._mark[0].setVisible(gameMark.getSignInMark());

@@ -20,7 +20,7 @@ var AbilityRankLayer = cc.Layer.extend({
     _selectId: 0,
     _playerItem: {},
 
-    onEnter: function() {
+    onEnter: function () {
         cc.log("AbilityRankLayer onEnter");
 
         this._super();
@@ -28,7 +28,7 @@ var AbilityRankLayer = cc.Layer.extend({
         lz.dc.beginLogPageView("战斗力排行榜界面");
     },
 
-    onExit: function() {
+    onExit: function () {
         cc.log("AbilityRankLayer onExit");
 
         this._super();

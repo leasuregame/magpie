@@ -27,7 +27,7 @@ var EvolutionLayer = cc.Layer.extend({
         lz.dc.beginLogPageView("进阶界面");
     },
 
-    onExit: function() {
+    onExit: function () {
         cc.log("EvolutionLayer onExit");
 
         this._super();

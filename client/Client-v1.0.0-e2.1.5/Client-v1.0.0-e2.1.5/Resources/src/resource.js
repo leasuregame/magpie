@@ -565,6 +565,10 @@ var main_scene_image = {
     icon289: main_scene_path + "icon289.png",
     icon290: main_scene_path + "icon290.png",
 
+    card30000_head1: main_scene_path + "card30000_head1.png",
+    card30000_half1: main_scene_path + "card30000_half1.png",
+    card30000_full1: main_scene_path + "card30000_full1.png",
+
     // 特效
     battleNode: "res/ccb/battleNode.ccbi",
     spiritNode: "res/ccb/spiritNode.ccbi",

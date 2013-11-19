@@ -724,7 +724,7 @@ var Player = (function(_super) {
         if (this.money < moneyConsume) {
             return cb({
                 code: 501,
-                msg: '铜板不足'
+                msg: '仙币不足'
             });
         }
 
@@ -767,7 +767,7 @@ var Player = (function(_super) {
     };
 
     /*
-     元宝数量  元宝个数
+     魔石数量  魔石个数
 
      1--5       6个
 

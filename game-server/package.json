@@ -19,7 +19,8 @@
         "pomelo-logger": "0.0.3",
         "pomelo-monitor": ">=0.3.3",
         "pomelo-sync-plugin": "*",
-        "pomelo-cli": "*"
+        "pomelo-cli": "*",
+        "pomelo-admin": "*"
     },
     "devDependencies": {
         "underscore": "1.4.4",

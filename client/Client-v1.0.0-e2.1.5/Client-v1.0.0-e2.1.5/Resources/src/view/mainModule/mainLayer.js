@@ -153,7 +153,7 @@ var MainLayer = cc.Layer.extend({
         );
         activityLayerItem.setPosition(this._mainLayerFit.activityLayerItemPoint);
 
-        this._activityMark = cc.Sprite.create(main_scene_image.icon19);
+        this._activityMark = cc.Sprite.create(main_scene_image.icon289);
         this._activityMark.setPosition(cc.p(75, 80));
         this._activityMark.setVisible(false);
         activityLayerItem.addChild(this._activityMark);
@@ -166,7 +166,7 @@ var MainLayer = cc.Layer.extend({
         );
         cardLibraryLayerItem.setPosition(this._mainLayerFit.cardLibraryLayerItemPoint);
 
-        this._cardLibraryMark = cc.Sprite.create(main_scene_image.icon19);
+        this._cardLibraryMark = cc.Sprite.create(main_scene_image.icon289);
         this._cardLibraryMark.setPosition(cc.p(75, 80));
         this._cardLibraryMark.setVisible(false);
         cardLibraryLayerItem.addChild(this._cardLibraryMark);
@@ -187,7 +187,7 @@ var MainLayer = cc.Layer.extend({
         );
         achievementLayerItem.setPosition(this._mainLayerFit.achievementLayerItemPoint);
 
-        this._achievementMark = cc.Sprite.create(main_scene_image.icon19);
+        this._achievementMark = cc.Sprite.create(main_scene_image.icon289);
         this._achievementMark.setPosition(cc.p(75, 80));
         this._achievementMark.setVisible(false);
         achievementLayerItem.addChild(this._achievementMark);
@@ -200,7 +200,7 @@ var MainLayer = cc.Layer.extend({
         );
         friendLayerItem.setPosition(this._mainLayerFit.friendLayerItemPoint);
 
-        this._friendMark = cc.Sprite.create(main_scene_image.icon19);
+        this._friendMark = cc.Sprite.create(main_scene_image.icon289);
         this._friendMark.setPosition(cc.p(75, 80));
         this._friendMark.setVisible(false);
         friendLayerItem.addChild(this._friendMark);
@@ -213,7 +213,7 @@ var MainLayer = cc.Layer.extend({
         );
         messageItem.setPosition(this._mainLayerFit.messageItemPoint);
 
-        this._messageMark = cc.Sprite.create(main_scene_image.icon19);
+        this._messageMark = cc.Sprite.create(main_scene_image.icon289);
         this._messageMark.setPosition(cc.p(75, 80));
         this._messageMark.setVisible(false);
         messageItem.addChild(this._messageMark);

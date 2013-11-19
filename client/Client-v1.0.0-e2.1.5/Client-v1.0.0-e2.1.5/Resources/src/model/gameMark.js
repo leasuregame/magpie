@@ -154,8 +154,6 @@ var gameMark = {
             var signIn = gameData.signIn;
             if (signIn.canSignIn(0) == true) {
                 mark = true;
-            } else if (signIn.canRemedySignIn(0) == true) {
-                mark = true;
             } else {
                 for (var i = 0; i < 5; ++i) {
                     if (signIn.canReceive(this.index, i) == true) {
@@ -198,7 +196,7 @@ var gameMark = {
             for (var i = 0; i < len; ++i) {
                 var key = keys[i];
                 if (gameData.activity.getTypeById(goldRewards[key].id) == GOLD_NO_RECEIVE) {
-                    if(lv >= goldRewards[key].lv) {
+                    if (lv >= goldRewards[key].lv) {
                         mark = true;
                         break;
                     }

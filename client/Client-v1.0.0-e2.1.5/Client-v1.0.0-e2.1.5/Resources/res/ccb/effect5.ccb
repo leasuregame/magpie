@@ -324,6 +324,17 @@
 								<key>value</key>
 								<integer>0</integer>
 							</dict>
+							<dict>
+								<key>name</key>
+								<string>blendFunc</string>
+								<key>type</key>
+								<string>Blendmode</string>
+								<key>value</key>
+								<array>
+									<integer>1</integer>
+									<integer>1</integer>
+								</array>
+							</dict>
 						</array>
 						<key>seqExpanded</key>
 						<true/>
@@ -1564,7 +1575,7 @@
 							<integer>0</integer>
 						</dict>
 						<key>time</key>
-						<real>0.066666670143604279</real>
+						<real>0.033333335071802139</real>
 						<key>type</key>
 						<integer>9</integer>
 						<key>value</key>

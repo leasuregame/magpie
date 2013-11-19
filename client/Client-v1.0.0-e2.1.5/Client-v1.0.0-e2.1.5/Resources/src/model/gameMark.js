@@ -164,13 +164,15 @@ var gameMark = {
                 }
             }
         }
-        this._signIn = false;
+        this._signIn = mark;
         return mark;
     },
 
     updateSignInMark: function (mark) {
         cc.log("gameMark updateSignInMark");
         this._signIn = mark;
+        this.updateActivityMark(mark);
+        MainScene.getInstance().updateMark();
     },
 
     getPowerRewardMark: function () {
@@ -181,6 +183,7 @@ var gameMark = {
     updatePowerRewardMark: function (mark) {
         cc.log("gameMark updatePowerRewardMark");
         this._powerReward = mark;
+        this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     },
 
@@ -210,6 +213,7 @@ var gameMark = {
     updateGoldRewardMark: function (mark) {
         cc.log("gameMark getGoldRewardMark");
         this._goldReward = mark;
+        this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     },
 
@@ -221,6 +225,7 @@ var gameMark = {
     updateRechargeMark: function (mark) {
         cc.log("gameMark updateRechargeMark");
         this._recharge = mark;
+        this.updateActivityMark(mark);
         MainScene.getInstance().updateMark();
     },
 
@@ -249,6 +254,7 @@ var gameMark = {
     updateFriendMessageMark: function (mark) {
         cc.log("gameMark updateFriendMessageMark");
         this._friendMessage = mark;
+        this.updateMessageMark(mark);
         MainScene.getInstance().updateMark();
     },
 
@@ -272,6 +278,7 @@ var gameMark = {
     updateSystemMessageMark: function (mark) {
         cc.log("gameMark updateSystemMessageMark");
         this._systemMessage = mark;
+        this.updateMessageMark(mark);
         MainScene.getInstance().updateMark();
     }
 

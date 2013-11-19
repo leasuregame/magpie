@@ -147,13 +147,6 @@ var LotteryLayer = cc.Layer.extend({
             this._goldLotteryLabel[i].setColor(cc.c3b(255, 239, 131));
             goldLotteryItem.addChild(this._goldLotteryLabel[i]);
 
-            var player = gameData.player;
-            var isVisible = sys.localStorage.getItem(player.get("userId") + "*" + player.get("areaId") + "firstLottery" + i) || true;
-
-            cc.log(isVisible);
-            this._goldLotteryLabel[i].setVisible(isVisible);
-            this._goldLotteryIcon[i].setVisible(!isVisible);
-
             menu.addChild(goldLotteryItem);
 
             x = this._lotteryLayerFit.energyLotteryItemBasePoint.x + 330 * i;
@@ -195,6 +188,17 @@ var LotteryLayer = cc.Layer.extend({
         this._goldLabel.setString(player.get("gold"));
         this._energyLabel.setString(player.get("energy"));
         this._fragmentLabel.setString(player.get("fragment"));
+
+
+        var isFirstLottery = gameData.lottery._freeLowLotteryCard;
+
+        this._goldLotteryIcon[0].setVisible(!isFirstLottery);
+        this._goldLotteryLabel[0].setVisible(isFirstLottery);
+
+        isFirstLottery = gameData.lottery._freeHighLotteryCard;
+        this._goldLotteryIcon[1].setVisible(!isFirstLottery);
+        this._goldLotteryLabel[1].setVisible(isFirstLottery);
+
     },
 
     showCard: function () {
@@ -249,18 +253,6 @@ var LotteryLayer = cc.Layer.extend({
                     LazyLayer.closeCloudLayer();
                 }
             }, type, level);
-
-            if (type == LOTTERY_BY_GOLD) {
-                var player = gameData.player;
-                var isFirstLottery = sys.localStorage.getItem(player.get("userId") + "*" + player.get("areaId") + "firstLottery" + (level - 1)) || true;
-                cc.log(isFirstLottery);
-                if (isFirstLottery == true) {
-                    sys.localStorage.setItem(player.get("userId") + "*" + player.get("areaId") + "firstLottery" + (level - 1), false);
-                    this._goldLotteryIcon[level - 1].setVisible(true);
-                    this._goldLotteryLabel[level - 1].setVisible(false);
-                }
-            }
-
         }
     },
 

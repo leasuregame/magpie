@@ -266,14 +266,14 @@ var BatterLayer = cc.Layer.extend({
                             showSpiritAdditionCallback2();
                         });
 
-                        that.tip(index, "buf_2", cardNode.getSpiritAtk());
+                        that.tip(index, "buf_2", "+" + cardNode.getSpiritAtk());
 
                         showSpiritAdditionCallback1();
                     });
 
                     var spiritHp = cardNode.getSpiritHp();
                     cardNode.update(spiritHp);
-                    that.tip(index, "buf_1", spiritHp);
+                    that.tip(index, "buf_1", "+" + spiritHp);
                 })();
             }
         }

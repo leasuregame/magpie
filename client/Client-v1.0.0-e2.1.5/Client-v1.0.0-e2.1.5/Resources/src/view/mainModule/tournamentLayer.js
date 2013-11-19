@@ -245,7 +245,6 @@ var TournamentLayer = cc.Layer.extend({
         this._scrollView = cc.ScrollView.create(this._tournamentLayerFit.scrollViewSize, scrollViewLayer);
         this._scrollView.setContentSize(cc.size(this._tournamentLayerFit.scrollViewContentSizeWidth, height));
         this._scrollView.setPosition(this._tournamentLayerFit.scrollViewPoint);
-        this._scrollView.setBounceable(false);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
 

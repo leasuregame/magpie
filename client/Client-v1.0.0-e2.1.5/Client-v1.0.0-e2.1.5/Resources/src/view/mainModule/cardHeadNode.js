@@ -34,6 +34,8 @@ var CardHeadNode = cc.Node.extend({
             url = this._card.get("url") + "_head" + (Math.floor((star - 1) / 2) + 1);
         }
 
+        cc.log(url);
+
         this._cardSprite = cc.Sprite.create(main_scene_image[url]);
         this._cardSprite.setAnchorPoint(cc.p(0, 0));
         this._cardSprite.setPosition(cc.p(0, 6));

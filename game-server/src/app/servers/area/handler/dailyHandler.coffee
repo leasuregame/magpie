@@ -22,13 +22,13 @@ Handler::lottery = (msg, session, next) ->
       return next(null, {code: 501, msg: '您的抽奖次数已用完'})
 
     if player.gold < 10
-      return next(null, {code: 501, msg: '元宝不足'})
+      return next(null, {code: 501, msg: '魔石不足'})
 
     if player.dailyGift.lotteryFreeCount > 0
       ### 免费抽奖次数减一 ###
       player.updateGift 'lotteryFreeCount', player.dailyGift.lotteryFreeCount-1
     else
-      ### 无免费次数，则消耗10个元宝 ###
+      ### 无免费次数，则消耗10个魔石 ###
       player.decrease('gold', 10)
 
     ### 抽奖次数减一 ###

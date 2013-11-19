@@ -87,18 +87,20 @@ var CardLibraryLayer = cc.Layer.extend({
         for (var i = 0; i < len; ++i) {
             var row = Math.floor(i / 4);
             var index = i % 4;
+            var id = cardLibrary[i].id;
 
             var cardItem = CardHeadNode.getCardHeadItem(cardLibrary[i].card, this._onClickCard(cardLibrary[i]), this);
             cardItem.setPosition(cc.p(94 + 148 * index, scrollViewHeight - 89 - 143 * row));
             menu.addChild(cardItem);
 
-            this._cardItem[cardLibrary[i].id] = cardItem;
+            this._cardItem[id] = cardItem;
 
             var cardLockIcon = cc.Sprite.create(main_scene_image.icon200);
             cardLockIcon.setScale(0.6);
             cardLockIcon.setPosition(cc.p(83, 24));
             cardItem.addChild(cardLockIcon);
-            this._cardLockIcon[cardLibrary[i].id] = cardLockIcon;
+
+            this._cardLockIcon[id] = cardLockIcon;
         }
 
         var scrollView = cc.ScrollView.create(this._cardLibraryLayerFit.scrollViewSize, scrollViewLayer);
@@ -146,9 +148,8 @@ var CardLibraryLayer = cc.Layer.extend({
                 }
 
                 if (this._cardLockIcon[key]) {
-                    this._cardLockIcon[key].removeFromParent();
+                    this._cardLockIcon[key].setVisible(false);
                 }
-
             } else if (type == CARD_RECEIVE) {
                 cardItem.setColor(cc.c3b(110, 110, 110));
 

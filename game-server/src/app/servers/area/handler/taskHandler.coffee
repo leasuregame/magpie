@@ -54,7 +54,7 @@ Handler::explore = (msg, session, next) ->
             countSpirit(player, battleLog, 'TASK')
             player.incSpirit battleLog.totalSpirit if battleLog.winner is 'own'
 
-          ### 每次战斗结束都有20%的概率获得5元宝 ###
+          ### 每次战斗结束都有20%的概率获得5魔石 ###
           if utility.hitRate(taskRate.gold_obtain.rate)
             player.increase('gold', taskRate.gold_obtain.value)
             data.gold_obtain += taskRate.gold_obtain.value
@@ -100,7 +100,7 @@ Handler::updateMomoResult = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg})
 
     if gold > player.getMonoGiftTotal()
-      return next(null,{code: 501,msg: '获取的元宝数大于实际值'})
+      return next(null,{code: 501,msg: '获取的魔石数大于实际值'})
     player.clearMonoGift()
 
     player.increase 'gold', gold
@@ -227,7 +227,7 @@ Handler::resetPassMark = (msg, session, next) ->
     (res,cb) ->
       player = res
       if player.gold < 200
-        return cb({code: 501,msg: '元宝不足'})
+        return cb({code: 501,msg: '魔石不足'})
 
       if not player.canResetPassMark()
         return cb({code: 501, msg: '没有关卡可以重置'})

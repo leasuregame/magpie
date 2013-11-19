@@ -1,5 +1,6 @@
 dispatcher = require '../../../common/dispatcher'
 areasInfo = require '../../../../config/area'
+async = require 'async'
 _ = require 'underscore'
 
 status = ['NEW', 'NORMAL', 'BUSY', 'MAINTENANCE']
@@ -19,19 +20,27 @@ Handler::queryEntry = (msg, session, next) ->
 	if not connectors or connectors.length is 0
 		return next {code: 500, msg: 'no servers available'}
 
-	@app.get('serverStateService').areaPlayerCount (err, counts) ->
+	async.parallel [
+		(cb) => 
+			@app.get('serverStateService').areaPlayerCount cb
+		(cb) =>
+			@app.get('serverStateService').connectCount cb
+	], (err, results) ->
 		if err
 			logger.error('get servers state faild. ', err)
+		console.log results
+		areas = results[0]
+		conns = results[1]
 
-		conn = dispatcher.randomDispatch(connectors)
+		connector = dispatcher.randomDispatch(connectors)
 		next null, {
 			code: 200, 
 			msg: {
-				host: conn.host, 
-				port: conn.clientPort,
+				host: connector.host, 
+				port: connector.clientPort,
 				servers: areasInfo.map (a) -> 
 					a.status = randomStatus()
-					a.logins = counts['area-server-'+a.id]
+					a.logins = areas['area-server-'+a.id]
 					a
 			}
 		}

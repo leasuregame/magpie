@@ -50,8 +50,8 @@ var NoviceTeachingLayer = LazyLayer.extend({
         if (this.isNoviceTeaching()) {
             this._load();
             var overItem = cc.MenuItemImage.create(
-                main_scene_image.button12,
-                main_scene_image.button12s,
+                main_scene_image.icon290,
+                main_scene_image.icon290,
                 this.onOverTeaching,
                 this
             );

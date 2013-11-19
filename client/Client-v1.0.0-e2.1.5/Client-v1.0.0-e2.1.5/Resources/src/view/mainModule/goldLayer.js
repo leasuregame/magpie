@@ -40,7 +40,7 @@ var GoldLayer = LazyLayer.extend({
         lz.dc.beginLogPageView("摸一摸界面");
     },
 
-    onExit: function() {
+    onExit: function () {
         cc.log("GoldLayer onExit");
 
         this._super();

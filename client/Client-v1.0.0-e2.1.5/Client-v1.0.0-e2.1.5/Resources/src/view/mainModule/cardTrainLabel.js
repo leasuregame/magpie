@@ -35,7 +35,7 @@ var CardTrainLabel = cc.Layer.extend({
         lz.dc.beginLogPageView("卡牌培养界面");
     },
 
-    onExit: function() {
+    onExit: function () {
         cc.log("CardTrainLabel onExit");
 
         this._super();

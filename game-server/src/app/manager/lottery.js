@@ -127,7 +127,7 @@ var newCard = function (level, hCounts) {
 
 var freeCard = function(star) {
     var idMap = {
-        3: [13, 43, 48, 28, 148, 153, 183, 123, 18],
+        3: [13, 43, 48, 28, 148, 153, 183, 123, 18, 108, 73, 78, 103, 213, 8],
         4: [59, 99, 129]
     };
     return {

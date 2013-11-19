@@ -106,7 +106,7 @@ var BattleCardNode = cc.Node.extend({
         this._star = cardTable.star;
         this._skillId = cardTable.skill_id;
         this._skillName = cardTable.skill_name || "";
-        this._url = "card" + (cardTable.number % 6 + 1);
+        this._url = "card" + cardTable.url;
 
         // 读取技能配置表
         if (this._skillId) {

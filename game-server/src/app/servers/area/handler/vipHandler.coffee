@@ -48,7 +48,7 @@ Handler::buyVipBox = (msg, session, next) ->
       return next(null, {code: 501, msg: '不能重复购买'})
 
     if player.gold < boxInfo.price
-      return next(null, {code: 501, msg: '元宝不足'})
+      return next(null, {code: 501, msg: '魔石不足'})
 
     checkResourceLimit player, boxInfo, (ok, msg) ->
       if not ok

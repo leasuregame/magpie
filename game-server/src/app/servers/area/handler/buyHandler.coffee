@@ -41,7 +41,7 @@ products =
 
            player = res
            if player.gold < gold
-             cb {code: 501, msg: "元宝不足"}
+             cb {code: 501, msg: "魔石不足"}
 
            else if Math.ceil((RESOURE_LIMIT.money - player.money) * 1.0 / product.obtain) < times
              cb {code: 501, msg: "超过仙币上限"}
@@ -94,7 +94,7 @@ products =
           cb {code: 501, msg: "超过体力上限"}
 
         else if player.gold < gold
-          cb {code: 501, msg: "元宝不足"}
+          cb {code: 501, msg: "魔石不足"}
 
         else
           if player.power.value + powerValue > RESOURE_LIMIT.power_value
@@ -139,7 +139,7 @@ products =
           cb {code: 501, msg: "超过购买次数上限"}
 
         else if player.gold < gold
-          cb  {code: 501, msg: "元宝不足"}
+          cb  {code: 501, msg: "魔石不足"}
 
         else
           player.updateGift 'challengeBuyCount', player.dailyGift.challengeBuyCount - times
@@ -174,7 +174,7 @@ products =
         return nexl(null, {code: 501, msg: '卡牌容量已经达到最大值'})
 
       if player.money < times * PRICE
-        return next(null, {code: 501, msg: '铜板不足'})
+        return next(null, {code: 501, msg: '仙币不足'})
 
       if _.keys(player.cards).length + times > RESOURE_LIMIT.card_count_limit
         return nexl(null, {code: 501, msg: '卡牌容量不足'})

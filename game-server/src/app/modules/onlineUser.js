@@ -49,6 +49,6 @@ Module.prototype.masterHandler = function(agent, msg) {
 
 Module.prototype.clientHandler = function(agent, msg, cb) {
 	if(!!cb && typeof cb === 'function') {
-		cb(agent, msg);
+		cb(null, agent.get(module.exports.moduleId)||{});
 	}
 };

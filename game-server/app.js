@@ -2,6 +2,7 @@ var pomelo = require('pomelo');
 var sync = require('pomelo-sync-plugin');
 var area = require('./app/domain/area/area');
 var MessageService = require('./app/service/messageService');
+var ServerStateService = require('./app/service/serverStateService');
 var routeUtil = require('./app/common/route');
 var msgQueue = require('./app/common/msgQueue');
 var argsFilter = require('./app/servers/area/filter/argsFilter');
@@ -21,9 +22,11 @@ app.configure('production|development', function() {
 app.configure('production|development', function() {
   var areaInfo = require('./app/modules/areaInfo');
   var onlineUser = require('./app/modules/onlineUser');
+  var loginsOnArea = require('./app/modules/loginsOnArea');
   if(typeof app.registerAdmin === 'function'){
     app.registerAdmin(areaInfo, {app: app});
     app.registerAdmin(onlineUser, {app: app});
+    app.registerAdmin(loginsOnArea, {app: app});
   }
 
   //Set areasIdMap, a map from area id to serverId.
@@ -75,6 +78,8 @@ app.configure('production|development', 'gate', function(){
   app.set('connectorConfig', {
     connector: pomelo.connectors.hybridconnector
   });
+
+  app.set('serverStateService', new ServerStateService(app));
 });
 
 // configure sql database

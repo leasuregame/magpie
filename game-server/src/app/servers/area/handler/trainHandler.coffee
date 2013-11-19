@@ -282,7 +282,7 @@ Handler::starUpgrade = (msg, session, next) ->
       money_consume = starUpgradeConfig.money_need
       
       if player.money < money_consume
-        return cb({code: 501, msg: '铜板不足'})
+        return cb({code: 501, msg: '仙币不足'})
 
       if card_count > starUpgradeConfig.max_num
         return cb({code: 501, msg: "最多只能消耗#{starUpgradeConfig.max_num}张卡牌来进行升级"})
@@ -385,7 +385,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       money_need = passSkillConfig.CONSUME[type] * psIds.length
 
       if player[_pros[type]] < money_need
-        return cb({code: 501, msg: '铜板/元宝不足，不能洗炼'})
+        return cb({code: 501, msg: '仙币/魔石不足，不能洗炼'})
 
       card = player.getCard(cardId)
       passSkills = card.passiveSkills.filter (ps) -> _.contains(psIds, ps.id)

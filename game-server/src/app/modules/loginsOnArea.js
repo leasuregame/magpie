@@ -1,15 +1,11 @@
-/*!
- * Pomelo -- consoleModule sceneInfo
- * Copyright(c) 2012 fantasyni <fantasyni@163.com>
- * MIT Licensed
- */
+
 var logger = require('pomelo-logger').getLogger(__filename);
 
 module.exports = function(opts) {
 	return new Module(opts);
 };
 
-module.exports.moduleId = 'areaInfo';
+module.exports.moduleId = 'loginsOnArea';
 
 var Module = function(opts) {
 	opts = opts || {};
@@ -21,9 +17,9 @@ Module.prototype.monitorHandler = function(agent, msg, cb) {
 	//collect data
 	var serverId = agent.id;
 	var area = require('../domain/area/area');
-	var data = area.getPlayers();
+	var count = area.getPlayers().length;
 	//console.log('area info monitor: ', data.length);
-	agent.notify(module.exports.moduleId, {serverId: serverId, body: data});
+	agent.notify(module.exports.moduleId, {serverId: serverId, body: count});
 };
 
 Module.prototype.masterHandler = function(agent, msg, cb) {

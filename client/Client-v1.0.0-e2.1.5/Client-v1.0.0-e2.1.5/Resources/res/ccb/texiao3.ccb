@@ -104,8 +104,10 @@
 								<dict>
 									<key>easing</key>
 									<dict>
+										<key>opt</key>
+										<real>2</real>
 										<key>type</key>
-										<integer>1</integer>
+										<integer>2</integer>
 									</dict>
 									<key>name</key>
 									<string>position</string>
@@ -387,8 +389,10 @@
 								<dict>
 									<key>easing</key>
 									<dict>
+										<key>opt</key>
+										<real>2</real>
 										<key>type</key>
-										<integer>1</integer>
+										<integer>2</integer>
 									</dict>
 									<key>name</key>
 									<string>position</string>
@@ -973,7 +977,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/test/12.png</string>
+									<string>res/effect/test/12.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1180,7 +1184,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/test/12.png</string>
+									<string>res/effect/test/12.png</string>
 								</array>
 							</dict>
 							<dict>

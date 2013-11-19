@@ -663,6 +663,8 @@ var main_scene_image = {
     up81: effect_scene_path + "uiEffect/" + "up81.png",
     up82: effect_scene_path + "uiEffect/" + "up82.png",
     up83: effect_scene_path + "uiEffect/" + "up83.png",
+    up84: effect_scene_path + "uiEffect/" + "up84.png",
+    up85: effect_scene_path + "uiEffect/" + "up85.png",
 
 
 
@@ -748,6 +750,7 @@ var main_scene_image = {
     uiEffect31: ccb_scene_path + "uiEffect31.ccbi",
     uiEffect32: ccb_scene_path + "uiEffect32.ccbi",
     uiEffect33: ccb_scene_path + "uiEffect33.ccbi",
+    uiEffect34: ccb_scene_path + "uiEffect34.ccbi",
     
 };
 

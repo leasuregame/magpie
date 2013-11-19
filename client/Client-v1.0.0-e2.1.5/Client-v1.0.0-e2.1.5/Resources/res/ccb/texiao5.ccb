@@ -410,7 +410,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/test/13.png</string>
+						<string>res/effect/test/13.png</string>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -716,9 +716,11 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>effect/test/13.png</string>
+						<string>res/effect/test/13.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -942,7 +944,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/test/15.png</string>
+									<string>res/effect/test/15.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1199,7 +1201,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>effect/test/15.png</string>
+									<string>res/effect/test/15.png</string>
 								</array>
 							</dict>
 							<dict>

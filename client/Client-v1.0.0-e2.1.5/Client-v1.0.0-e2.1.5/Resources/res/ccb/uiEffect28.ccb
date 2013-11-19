@@ -262,7 +262,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-67.692314147949219</real>
+							<real>0.0</real>
 							<real>0.0</real>
 							<integer>0</integer>
 						</array>
@@ -641,7 +641,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-135.38462829589844</real>
+							<real>0.0</real>
 							<real>0.0</real>
 							<integer>0</integer>
 						</array>
@@ -1017,7 +1017,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>67.692314147949219</real>
+							<real>0.0</real>
 							<real>0.0</real>
 							<integer>0</integer>
 						</array>
@@ -2859,8 +2859,8 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>137</integer>
-									<integer>206</integer>
+									<integer>230</integer>
+									<integer>181</integer>
 									<integer>255</integer>
 								</array>
 							</dict>
@@ -2891,8 +2891,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>149.25602722167969</real>
-							<real>-147.39845275878906</real>
+							<real>89.855995178222656</real>
+							<real>-149.29925537109375</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3017,9 +3017,9 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>0.033333335071802139</real>
+			<real>1.412559986114502</real>
 			<key>position</key>
-			<real>2.2000000476837158</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

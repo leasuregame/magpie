@@ -270,6 +270,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -580,6 +582,17 @@
 									<true/>
 								</array>
 							</dict>
+							<dict>
+								<key>name</key>
+								<string>blendFunc</string>
+								<key>type</key>
+								<string>Blendmode</string>
+								<key>value</key>
+								<array>
+									<integer>1</integer>
+									<integer>1</integer>
+								</array>
+							</dict>
 						</array>
 						<key>seqExpanded</key>
 						<true/>
@@ -815,6 +828,17 @@
 								<array>
 									<true/>
 									<true/>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>blendFunc</string>
+								<key>type</key>
+								<string>Blendmode</string>
+								<key>value</key>
+								<array>
+									<integer>1</integer>
+									<integer>1</integer>
 								</array>
 							</dict>
 						</array>
@@ -1238,8 +1262,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>

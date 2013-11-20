@@ -16,6 +16,7 @@ var BattleEndLayer = cc.Layer.extend({
     _battleEndLayerFit: null,
 
     _battleLog: null,
+    _fragmentEffect: null,
 
     init: function (battleLog) {
         cc.log("BattleEndLayer init");
@@ -31,21 +32,26 @@ var BattleEndLayer = cc.Layer.extend({
         this.addChild(bgLayer);
 
         var isWin = this._battleLog.isWin();
-
+        var ccbNode;
+        var label;
         if (isWin) {
             //var winBgSprite = cc.Sprite.create(main_scene_image.bg17);
-            var winBgSprite = cc.BuilderReader.load(main_scene_image.uiEffect17, this);
-            winBgSprite.setPosition(this._battleEndLayerFit.winBgSpritePoint);
-            this.addChild(winBgSprite);
+            ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect17, this);
+            ccbNode.setPosition(this._battleEndLayerFit.winBgSpritePoint);
+            this.addChild(ccbNode);
+
+            label = ccbNode.controller.label;
 
             var obtainSprite = cc.Sprite.create(main_scene_image.icon227);
             obtainSprite.setPosition(this._battleEndLayerFit.obtainSpritePoint);
-            this.addChild(obtainSprite);
+            label.addChild(obtainSprite);
         } else {
             //var failBgSprite = cc.Sprite.create(main_scene_image.bg18);
-            var failBgSprite = cc.BuilderReader.load(main_scene_image.uiEffect18, this);
-            failBgSprite.setPosition(this._battleEndLayerFit.failBgSpritePoint);
-            this.addChild(failBgSprite);
+            ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect18, this);
+            ccbNode.setPosition(this._battleEndLayerFit.failBgSpritePoint);
+            this.addChild(ccbNode);
+
+            label = ccbNode.controller.label;
         }
 
         var str = lz.getRewardString(this._battleLog.get("reward"));
@@ -76,7 +82,7 @@ var BattleEndLayer = cc.Layer.extend({
             rewardLabel.setColor(cc.c3b(255, 239, 131));
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
             rewardLabel.setPosition(cc.p(this._battleEndLayerFit.rewardLabelPointX, offsetY));
-            this.addChild(rewardLabel);
+            label.addChild(rewardLabel);
 
             offsetY -= 53;
         }
@@ -101,7 +107,7 @@ var BattleEndLayer = cc.Layer.extend({
 
         var menu = cc.Menu.create(okItem, replayItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        label.addChild(menu);
 
         this.setVisible(false);
 
@@ -110,8 +116,15 @@ var BattleEndLayer = cc.Layer.extend({
 
     play: function () {
         cc.log("BattleEndLayer play");
-
         this.setVisible(true);
+
+        var fragment = this._battleLog.get("reward").fragment;
+        if (fragment) {
+            this._fragmentEffect = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
+            this._fragmentEffect.setPosition(this._battleEndLayerFit.fragmentEffectPoint);
+            this.addChild(this._fragmentEffect, 1);
+        }
+
     },
 
     end: function () {
@@ -119,11 +132,19 @@ var BattleEndLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if(this._fragmentEffect) {
+            this._fragmentEffect.removeFromParent();
+        }
+
         BattlePlayer.getInstance().next();
     },
 
     replay: function () {
         cc.log("BattleEndLayer replay");
+
+        if(this._fragmentEffect) {
+            this._fragmentEffect.removeFromParent();
+        }
 
         BattlePlayer.getInstance().next();
         BattlePlayer.getInstance().play(this._battleLog.get("id"), true);

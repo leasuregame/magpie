@@ -390,7 +390,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>71.999992370605469</real>
+								<real>120</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -624,7 +624,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-71.999992370605469</real>
+								<real>-120</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1433,7 +1433,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1705,9 +1705,9 @@
 		<key>jsController</key>
 		<string>CocosBuilderClass</string>
 		<key>memberVarAssignmentName</key>
-		<string></string>
+		<string>label</string>
 		<key>memberVarAssignmentType</key>
-		<integer>0</integer>
+		<integer>1</integer>
 		<key>properties</key>
 		<array>
 			<dict>
@@ -1743,6 +1743,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -1782,9 +1784,9 @@
 			<key>name</key>
 			<string>animation_1</string>
 			<key>offset</key>
-			<real>0.44125914573669434</real>
+			<real>0.0</real>
 			<key>position</key>
-			<real>0.96666663885116577</real>
+			<real>1.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -47,6 +47,8 @@ var CardDetails = LazyLayer.extend({
         this._card = card;
         this._cb = cb;
 
+        this._card.setNewCardMark(false);
+
         var bgLayer = cc.LayerColor.create(cc.c4b(30, 15, 10, 255), 640, 1136);
         bgLayer.setPosition(this._cardDetailsFit.bgLayerPoint);
         this.addChild(bgLayer, -1);

@@ -391,13 +391,13 @@ var ExploreLayer = cc.Layer.extend({
     },
 
     _toNext: function () {
-        cc.log("ExploreLayer _next");
+        cc.log("ExploreLayer _toNext");
 
         var passEffect = cc.BuilderReader.load(main_scene_image.uiEffect24, this);
         passEffect.setPosition(this._exploreLayerFit.passEffectPoint);
         this.addChild(passEffect);
 
-        passEffect.animationManager.setAnimationCompletedCallback(this, function () {
+        passEffect.animationManager.setCompletedAnimationCallback(this, function () {
             passEffect.removeFromParent();
             this.scheduleOnce(function () {
                 this._index += 1;

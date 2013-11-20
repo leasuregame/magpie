@@ -12,6 +12,7 @@ var LotteryCardLayer = LazyLayer.extend({
     _lotteryCardLayerFit: null,
     _index: 0,
     _card: null,
+    _fragment: null,
     _cb: null,
     _canClick: false,
     _ccbNode: null,
@@ -40,6 +41,7 @@ var LotteryCardLayer = LazyLayer.extend({
         this._lotteryCardLayerFit = gameFit.mainScene.lotteryCardLayer;
 
         this._card = data.card;
+        this._fragment = data.fragment;
         this._cb = data.cb || null;
 
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
@@ -67,11 +69,6 @@ var LotteryCardLayer = LazyLayer.extend({
             this._canClick = true;
         });
 
-        if (data.fragment) {
-            var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
-            ccbNode.setPosition(this._lotteryCardLayerFit.ccbNodePoint1);
-            this.addChild(ccbNode, 1);
-        }
 
         return true;
     },
@@ -80,6 +77,12 @@ var LotteryCardLayer = LazyLayer.extend({
         cc.log("LotteryCardLayer startSetStar");
 
         this._index = 0;
+
+        if (this._fragment) {
+            var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
+            ccbNode.setPosition(this._lotteryCardLayerFit.ccbNodePoint1);
+            this.addChild(ccbNode, 1);
+        }
 
         this._setStar();
     },

@@ -63,9 +63,11 @@ var CardList = Entity.extend({
             var len = card.length;
             for (var i = 0; i < len; ++i) {
                 this._cardList[card[i].get("id")] = card[i];
+                card[i].setNewCardMark(true)
             }
         } else {
             this._cardList[card.get("id")] = card;
+            card.setNewCardMark(true)
         }
 
         this.update();
@@ -110,11 +112,24 @@ var CardList = Entity.extend({
     },
 
     _sort: function (cardList, type) {
-        cc.log("CardList _sort");
-        cc.log(type);
+        cc.log("CardList _sort: " + type);
+
+        var typeList = [type, SORT_CARD_LIST_BY_STAR, SORT_CARD_LIST_BY_ABILITY, SORT_CARD_LIST_BY_LV];
 
         return function (a, b) {
-            return (cardList[a].has(type) && cardList[b].has(type) ? (cardList[a].get(type) - cardList[b].get(type)) : 0);
+            var aa = cardList[a];
+            var bb = cardList[b];
+            var len = typeList.length;
+
+            for (var i = 0; i < len; ++i) {
+                if (aa.has(typeList[i]) && bb.has(typeList[i])) {
+                    if (aa.get(typeList[i]) != bb.get(typeList[i])) {
+                        return (aa.get(typeList[i]) - bb.get(typeList[i]));
+                    }
+                }
+            }
+
+            return 0;
         }
     },
 
@@ -129,6 +144,10 @@ var CardList = Entity.extend({
         this._index.sort(this._sort(this._cardList, type));
 
         return this._index;
+    },
+
+    isFull: function () {
+        return (this._count >= this._maxCount);
     },
 
     sell: function (cb, cardIdList) {

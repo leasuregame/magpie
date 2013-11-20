@@ -107,7 +107,7 @@ var gameMark = {
             var friendList = friend.get("friendList");
             var len = friendList.length;
             for (var i = 0; i < len; ++i) {
-                if (receiveCount > 0 && friendList[i].canReceive) {
+                if (giveCount > 0 && friendList[i].canReceive) {
                     mark = true;
                     break;
                 }

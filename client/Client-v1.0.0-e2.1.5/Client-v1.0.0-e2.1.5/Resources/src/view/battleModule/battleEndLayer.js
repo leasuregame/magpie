@@ -16,8 +16,7 @@ var BattleEndLayer = cc.Layer.extend({
     _battleEndLayerFit: null,
 
     _battleLog: null,
-    _fragmentEffect: null,
-
+    _ccbNode: null,
     init: function (battleLog) {
         cc.log("BattleEndLayer init");
 
@@ -32,26 +31,24 @@ var BattleEndLayer = cc.Layer.extend({
         this.addChild(bgLayer);
 
         var isWin = this._battleLog.isWin();
-        var ccbNode;
         var label;
-        if (isWin) {
-            //var winBgSprite = cc.Sprite.create(main_scene_image.bg17);
-            ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect17, this);
-            ccbNode.setPosition(this._battleEndLayerFit.winBgSpritePoint);
-            this.addChild(ccbNode);
 
-            label = ccbNode.controller.label;
+        if (isWin) {
+            this._ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect17, this);
+            this._ccbNode.setPosition(this._battleEndLayerFit.winBgSpritePoint);
+            this.addChild(this._ccbNode);
+
+            label = this._ccbNode.controller.label;
 
             var obtainSprite = cc.Sprite.create(main_scene_image.icon227);
             obtainSprite.setPosition(this._battleEndLayerFit.obtainSpritePoint);
             label.addChild(obtainSprite);
         } else {
-            //var failBgSprite = cc.Sprite.create(main_scene_image.bg18);
-            ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect18, this);
-            ccbNode.setPosition(this._battleEndLayerFit.failBgSpritePoint);
-            this.addChild(ccbNode);
+            this._ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect18, this);
+            this._ccbNode.setPosition(this._battleEndLayerFit.failBgSpritePoint);
+            this.addChild(this._ccbNode);
 
-            label = ccbNode.controller.label;
+            label = this._ccbNode.controller.label;
         }
 
         var str = lz.getRewardString(this._battleLog.get("reward"));
@@ -116,13 +113,16 @@ var BattleEndLayer = cc.Layer.extend({
 
     play: function () {
         cc.log("BattleEndLayer play");
+
         this.setVisible(true);
+
+        this._ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
 
         var fragment = this._battleLog.get("reward").fragment;
         if (fragment) {
-            this._fragmentEffect = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
-            this._fragmentEffect.setPosition(this._battleEndLayerFit.fragmentEffectPoint);
-            this.addChild(this._fragmentEffect, 1);
+            var fragmentEffect = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
+            fragmentEffect.setPosition(this._battleEndLayerFit.fragmentEffectPoint);
+            this.addChild(fragmentEffect, 1);
         }
 
     },
@@ -132,19 +132,11 @@ var BattleEndLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if(this._fragmentEffect) {
-            this._fragmentEffect.removeFromParent();
-        }
-
         BattlePlayer.getInstance().next();
     },
 
     replay: function () {
         cc.log("BattleEndLayer replay");
-
-        if(this._fragmentEffect) {
-            this._fragmentEffect.removeFromParent();
-        }
 
         BattlePlayer.getInstance().next();
         BattlePlayer.getInstance().play(this._battleLog.get("id"), true);

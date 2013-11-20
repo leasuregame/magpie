@@ -15,11 +15,14 @@
 var LoginLayer = cc.Layer.extend({
     _loginLayerFit: null,
 
-    _selectAreaItem: null,
+    _areaList: null,
+    _selectAreaEffect: null,
     _scrollView: null,
     _loginItem: null,
     _accountEditBox: null,
     _passwordEditBox: null,
+    _selectAreaName: null,
+    _loginFrame: null,
 
     onEnter: function () {
         cc.log("LoginLayer onEnter");
@@ -42,56 +45,53 @@ var LoginLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        this.updateAreaList();
-
         user = gameData.user;
 
         this._loginLayerFit = gameFit.loginScene.loginLayer;
 
+
+        var bgEffect = cc.BuilderReader.load(main_scene_image.uiEffect36, this);
+        bgEffect.setPosition(cc.p(320, 568));
+        this.addChild(bgEffect);
+
+        this._loginFrame = cc.BuilderReader.load(main_scene_image.uiEffect37, this);
+        this._loginFrame.setPosition(cc.p(320, 568));
+        this.addChild(this._loginFrame);
+
         var accountLabel = cc.LabelTTF.create("账号:", "STHeitiTC-Medium", 30);
-        accountLabel.setPosition(this._loginLayerFit.accountLabelPoint);
-        this.addChild(accountLabel);
+        accountLabel.setPosition(cc.p(-210, 0));
+        this._loginFrame.controller.accountLabel.addChild(accountLabel);
 
         var passwordLabel = cc.LabelTTF.create("密码:", "STHeitiTC-Medium", 30);
-        passwordLabel.setPosition(this._loginLayerFit.passwordLabelPoint);
-        this.addChild(passwordLabel);
+        passwordLabel.setPosition(cc.p(-210, 0));
+        this._loginFrame.controller.passwordLabel.addChild(passwordLabel);
 
         this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit2));
-        this._accountEditBox.setPosition(this._loginLayerFit.accountEditBoxPoint);
+        this._accountEditBox.setPosition(cc.p(20, 0));
         this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
         this._accountEditBox.setDelegate(this);
         this._accountEditBox.setFont("STHeitiTC-Medium", 25);
         this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._accountEditBox.setMaxLength(18);
-        this.addChild(this._accountEditBox);
+        //this.addChild(this._accountEditBox);
+        this._loginFrame.controller.accountLabel.addChild(this._accountEditBox);
 
         this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
-        this._passwordEditBox.setPosition(this._loginLayerFit.passwordEditBoxPoint);
+        this._passwordEditBox.setPosition(cc.p(20, 0));
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordEditBox.setDelegate(this);
         this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._passwordEditBox.setMaxLength(18);
-        this.addChild(this._passwordEditBox);
+        this._loginFrame.controller.passwordLabel.addChild(this._passwordEditBox);
 
         this._accountEditBox.setText(user.get("account"));
         this._passwordEditBox.setText(user.get("password"));
 
-        var selectLabel = StrokeLabel.create("点击选区", "STHeitiTC-Medium", 35);
-        this._selectAreaItem = cc.MenuItemLabel.create(selectLabel, this._onClickOpenArea, this);
-        this._selectAreaItem.setPosition(cc.p(320, 800));
+        this._selectAreaName = StrokeLabel.create("", "STHeitiTC-Medium", 30);
+        this._selectAreaName.setPosition(cc.p(0, 0));
+        this._loginFrame.controller.areaName.addChild(this._selectAreaName);
 
-        this._loginItem = cc.MenuItemFont.create("登录", this._onClickLogin, this);
-        this._loginItem.setFontSize(45);
-        this._loginItem.setPosition(this._loginLayerFit.loginButtonPoint);
-
-        var registerItem = cc.MenuItemFont.create("注册", this._onClickRegister, this);
-        registerItem.setFontSize(45);
-        registerItem.setPosition(this._loginLayerFit.registerButtonPoint);
-
-        this.menu = cc.Menu.create(this._selectAreaItem, this._loginItem, registerItem);
-        this.menu.setPosition(cc.p(0, 0));
-        this.addChild(this.menu);
-
+        this.updateAreaList();
         return true
     },
 
@@ -110,71 +110,40 @@ var LoginLayer = cc.Layer.extend({
     addAreaList: function () {
         cc.log("LoginLayer addAreaList");
 
-        if (this._scrollView) {
-            this._scrollView.removeFromParent();
-            this._scrollView = null;
-        }
-
         var server = lz.server;
         var user = gameData.user;
 
         var areaId = user.get("area") || server.getRecommendArea();
         user.set("area", areaId);
-        var areaList = server.get("areaList");
-        var len = areaList.length;
-
-        var scrollViewHeight = len * 50 + 10;
-        if (scrollViewHeight < 200) {
-            scrollViewHeight = 200;
-        }
-
-        var scrollViewLayer = MarkLayer.create(cc.rect(0, 700, 640, 200));
-        var menu = LazyMenu.create();
-        menu.setPosition(cc.p(0, 0));
-        scrollViewLayer.addChild(menu);
+        this._areaList = server.get("areaList");
+        var len = this._areaList.length;
 
         for (var i = 0; i < len; ++i) {
-            var area = areaList[i];
+            var area = this._areaList[i];
 
             if (areaId == area.id) {
-                var label = ColorLabelTTF.create(
-                    {
-                        string: area.desc,
-                        fontName: "STHeitiTC-Medium",
-                        fontSize: 35,
-                        isStroke: true,
-                        color: area.color
-                    },
-                    {
-                        string: "    点击选区",
-                        fontName: "STHeitiTC-Medium",
-                        fontSize: 35
-                    }
-                );
-                label.setAnchorPoint(cc.p(0, 0));
-                this._selectAreaItem.setLabel(label);
+               this.updateSelectAreaName(i);
             }
-
-            var areaLabel = StrokeLabel.create(area.desc, "STHeitiTC-Medium", 35);
-            areaLabel.setColor(area.color);
-            areaLabel.setAnchorPoint(cc.p(0, 0));
-
-            var areaItem = cc.MenuItemLabel.create(areaLabel, this._onClickArea(i), this);
-            areaItem.setAnchorPoint(cc.p(0.5, 0));
-            areaItem.setPosition(cc.p(320, scrollViewHeight - i * 50 - 50));
-            menu.addChild(areaItem);
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(640, 200), scrollViewLayer);
-        this._scrollView.setPosition(cc.p(0, 700));
-        this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
-        this._scrollView.updateInset();
-        this.addChild(this._scrollView);
+    },
 
-        this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
-        this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
+    updateSelectAreaName: function(id) {
+        cc.log("LoginLayer updateSelectAreaName");
 
-        this._scrollView.setVisible(!this._selectAreaItem.isVisible());
+        var area = this._areaList[id];
+        this._selectAreaName.setString(area.name);
+        this._selectAreaName.setColor(area.color);
+
+        this._loginFrame.setVisible(true);
+    },
+
+    updateEditBox: function() {
+
+        this._accountEditBox.setText(user.get("account"));
+        this._passwordEditBox.setText(user.get("password"));
+        this._loginFrame.setVisible(true);
+
     },
 
     _onClickOpenArea: function () {
@@ -182,49 +151,11 @@ var LoginLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this._selectAreaItem.setVisible(false);
-        this._scrollView.setVisible(true);
-    },
+        this._loginFrame.setVisible(false);
 
-    _onClickArea: function (id) {
-        return function () {
-            cc.log("LoginLayer _onClickArea: " + id);
+        var selectAreaLayer = SelectAreaLayer.create(this._areaList);
+        this.addChild(selectAreaLayer, 1);
 
-            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-            var area = lz.server.get("areaList")[id];
-            var user = gameData.user;
-
-            if (!area.canLogin) {
-                cc.log("服务器正在维护");
-
-                TipLayer.tip("服务器正在维护");
-
-                return;
-            }
-
-            user.set("area", area.id);
-
-            var label = ColorLabelTTF.create(
-                {
-                    string: area.desc,
-                    fontName: "STHeitiTC-Medium",
-                    fontSize: 35,
-                    isStroke: true,
-                    color: area.color
-                },
-                {
-                    string: "    点击选区",
-                    fontName: "STHeitiTC-Medium",
-                    fontSize: 35
-                }
-            );
-            label.setAnchorPoint(cc.p(0, 0));
-            this._selectAreaItem.setLabel(label);
-
-            this._scrollView.setVisible(false);
-            this._selectAreaItem.setVisible(true);
-        }
     },
 
     _onClickLogin: function () {
@@ -258,7 +189,10 @@ var LoginLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this.getParent().switchLayer(RegisterLayer);
+        this._loginFrame.setVisible(false);
+
+        var registerLayer = RegisterLayer.create();
+        this.addChild(registerLayer, 1);
     }
 });
 

@@ -53,5 +53,22 @@ var Entity = Event.extend({
 
     has: function (name) {
         return (typeof (this["_" + name]) != "undefined");
+    },
+
+    schedule: function (fn, interval, repeat, delay) {
+        interval = interval || 0;
+        repeat = (repeat == null) ? cc.REPEAT_FOREVER : repeat;
+        delay = delay || 0;
+
+        cc.Director.getInstance().getScheduler().scheduleCallbackForTarget(this, fn, interval, repeat, delay, false);
+    },
+
+    scheduleOnce: function (fn, delay) {
+        this.schedule(fn, 0.0, 0, delay);
+    },
+
+    unschedule: function (fn) {
+        // explicit nil handling
+        cc.Director.getInstance().getScheduler().unscheduleCallbackForTarget(this, fn);
     }
 });

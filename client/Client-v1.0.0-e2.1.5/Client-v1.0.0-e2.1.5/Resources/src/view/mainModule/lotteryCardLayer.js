@@ -12,6 +12,7 @@ var LotteryCardLayer = LazyLayer.extend({
     _lotteryCardLayerFit: null,
     _index: 0,
     _card: null,
+    _cb: null,
     _canClick: false,
     _ccbNode: null,
 
@@ -39,6 +40,7 @@ var LotteryCardLayer = LazyLayer.extend({
         this._lotteryCardLayerFit = gameFit.mainScene.lotteryCardLayer;
 
         this._card = data.card;
+        this._cb = data.cb || null;
 
         this.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
 
@@ -115,8 +117,11 @@ var LotteryCardLayer = LazyLayer.extend({
                 noviceTeachingLayer.setVisible(true);
                 noviceTeachingLayer.next();
             }
-        }
 
+            if(this._cb) {
+                this._cb();
+            }
+        }
         return true;
     }
 });

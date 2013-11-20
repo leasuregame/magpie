@@ -24,6 +24,8 @@ var TaskLayer = cc.Layer.extend({
     _scrollView: null,
     _locate: [],
 
+    _goldItem: null,
+
     onEnter: function () {
         cc.log("TaskLayer onEnter");
 
@@ -48,6 +50,7 @@ var TaskLayer = cc.Layer.extend({
 
         this._taskLayerFit = gameFit.mainScene.taskLayer;
 
+        this._goldItem = [];
         this._locate = this._taskLayerFit.locatePoints;
         this.setTouchEnabled(true);
 
@@ -214,6 +217,28 @@ var TaskLayer = cc.Layer.extend({
                     } else {
                         sectionItem.hidIconImage();
                         sectionItem.setColor(cc.c3b(255, 255, 255));
+
+                        var point = this._sectionItem[index].getPosition();
+                        var size = this._sectionItem[index].getContentSize();
+
+                        if (task.getMarkByIndex(index) == true) {
+                            if (this._goldItem[index] == null) {
+                                this._goldItem[index] = cc.BuilderReader.load(main_scene_image.uiEffect13, this);
+                                this._goldItem[index].setPosition(cc.p(point.x, point.y + size.height));
+                                this._scrollView.addChild(this._goldItem[index] , 1);
+                            }
+                        } else {
+                            if(this._goldItem[index]) {
+                                this._goldItem[index].removeFromParent();
+                                this._goldItem[index] = null;
+                                var goldGetEffect = cc.BuilderReader.load(main_scene_image.uiEffect14, this);
+                                goldGetEffect.setPosition(cc.p(point.x, point.y + size.height));
+                                this._scrollView.addChild(goldGetEffect , 1);
+                                goldGetEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                                    goldGetEffect.removeFromParent();
+                                });
+                            }
+                        }
                     }
                 } else {
                     sectionItem.setVisible(false);

@@ -77,10 +77,8 @@ var Activity = Entity.extend({
             cc.log(data);
             if (data.code == 200) {
                 var power = data.msg.powerValue;
-                if (power + gameData.player.get("power") > 150) {
-                    power = 150 - gameData.player.get("power");
-                }
-                TipLayer.tip("体力: +" + power);
+
+                TipLayer.tipNoBg("体力: +" + power);
                 gameData.player.add("power", power);
 
                 lz.dc.event("event_give_power");

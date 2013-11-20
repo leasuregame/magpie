@@ -70,7 +70,7 @@ var MainScene = cc.Scene.extend({
     },
 
     updateMark: function () {
-        if (this._nowLayer.updateMark) {
+        if (this._nowLayer && this._nowLayer.updateMark) {
             this._nowLayer.updateMark();
         }
     },

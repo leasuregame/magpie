@@ -377,7 +377,7 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>1</real>
+			<real>1.5</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
@@ -387,7 +387,7 @@
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>128</real>
+			<real>385.53231811523438</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

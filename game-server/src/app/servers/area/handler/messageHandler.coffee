@@ -163,7 +163,7 @@ Handler::handleSysMsg = (msg, session, next) ->
   player = null
   incValues = (obj, data) ->
     obj.increase(k, data[k]) for k in _.keys(data) when obj.hasField k 
-    obj.resumePower(data.powerValue) if _.has(data, 'powerValue')
+    obj.addPower(data.powerValue) if _.has(data, 'powerValue')
 
   async.waterfall [
     (cb)->
@@ -189,12 +189,10 @@ Handler::handleSysMsg = (msg, session, next) ->
     (message,cb)->  
       playerManager.getPlayerInfo {pid: playerId},(err,res)->
         if err
-          cb({code: err.code or 500, msg: err.msg or err})
+          return cb({code: err.code or 500, msg: err.msg or err})
+
         player = res
-        if player.power.value >= MAX_POWER_VALUE
-          cb {code: 501, msg: "体力已达上限"}
-        else
-          cb(null, message)
+        cb(null, message)
 
     (message,cb)->
       if message.receiver is playerId

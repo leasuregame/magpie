@@ -649,9 +649,8 @@ var Player = (function(_super) {
     };
 
     Player.prototype.givePower = function(hour, value) {
-        var max_power = getMaxPower(this.lv);
         var power = utility.deepCopy(this.power);
-        power.value = _.min([power.value + value, max_power]);
+        power.value += value;
         power.time = Date.now();
         this.updatePower(power);
 

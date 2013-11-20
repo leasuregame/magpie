@@ -101,6 +101,11 @@ var Task = Entity.extend({
             return false;
         }
 
+        if (gameData.cardList.isFull()) {
+            TipLayer.tip("卡牌已满，请先消耗");
+            return false;
+        }
+
         return true;
     },
 

@@ -131,6 +131,10 @@ var CardList = Entity.extend({
         return this._index;
     },
 
+    isFull: function() {
+        return (this._count >= this._maxCount);
+    },
+
     sell: function (cb, cardIdList) {
         cc.log("CardList sell");
         cc.log(cardIdList);

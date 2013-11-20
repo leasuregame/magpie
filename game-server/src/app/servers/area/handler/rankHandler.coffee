@@ -233,7 +233,7 @@ filterPlayersInfo = (players, ranks, rankings) ->
       playerId: p.id
       name: p.name
       ranking: ranks[p.id]
-      cards: if p.cards? then p.cards.map (c) -> c.tableId else []
+      cards: if p.cards? then (p.cards.sort (x, y) -> x.star < y.star).map (c) -> c.tableId else []
       type: rankings[ranks[p.id]]
     }
     

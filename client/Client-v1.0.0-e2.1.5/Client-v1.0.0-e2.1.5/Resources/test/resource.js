@@ -665,6 +665,26 @@ var main_scene_image = {
     up83: effect_scene_path + "uiEffect/" + "up83.png",
     up84: effect_scene_path + "uiEffect/" + "up84.png",
     up85: effect_scene_path + "uiEffect/" + "up85.png",
+    up86: effect_scene_path + "uiEffect/" + "up86.png",
+    up87: effect_scene_path + "uiEffect/" + "up87.png",
+    up88: effect_scene_path + "uiEffect/" + "up88.png",
+    up89: effect_scene_path + "uiEffect/" + "up89.png",
+    up90: effect_scene_path + "uiEffect/" + "up90.png",
+    up91: effect_scene_path + "uiEffect/" + "up91.png",
+    up92: effect_scene_path + "uiEffect/" + "up92.png",
+    up93: effect_scene_path + "uiEffect/" + "up93.png",
+    
+    up95: effect_scene_path + "uiEffect/" + "up95.png",
+    up96: effect_scene_path + "uiEffect/" + "up96.png",
+    up97: effect_scene_path + "uiEffect/" + "up97.png",
+    up98: effect_scene_path + "uiEffect/" + "up98.png",
+    up99: effect_scene_path + "uiEffect/" + "up99.png",
+    up100: effect_scene_path + "uiEffect/" + "up100.png",
+    up101: effect_scene_path + "uiEffect/" + "up101.png",
+    up102: effect_scene_path + "uiEffect/" + "up102.png",
+    up103: effect_scene_path + "uiEffect/" + "up103.png",
+    up104: effect_scene_path + "uiEffect/" + "up104.png",
+
 
 
 
@@ -751,6 +771,12 @@ var main_scene_image = {
     uiEffect32: ccb_scene_path + "uiEffect32.ccbi",
     uiEffect33: ccb_scene_path + "uiEffect33.ccbi",
     uiEffect34: ccb_scene_path + "uiEffect34.ccbi",
+    uiEffect35: ccb_scene_path + "uiEffect35.ccbi",
+    uiEffect36: ccb_scene_path + "uiEffect36.ccbi",
+    uiEffect37: ccb_scene_path + "uiEffect37.ccbi",
+    uiEffect38: ccb_scene_path + "uiEffect38.ccbi",
+    uiEffect39: ccb_scene_path + "uiEffect39.ccbi",
+    uiEffect40: ccb_scene_path + "uiEffect40.ccbi",
     
 };
 
@@ -775,12 +801,6 @@ for (var cardId = 1; cardId <= 6; ++cardId) {
     main_scene_image["card" + cardId + "_full1"] = main_scene_path + "card" + cardId + "_full1.png";
     main_scene_image["card" + cardId + "_full2"] = main_scene_path + "card" + cardId + "_full2.png";
     main_scene_image["card" + cardId + "_full3"] = main_scene_path + "card" + cardId + "_full3.png";
-}
-
-for (var cardId = 1001; cardId <= 1003; ++cardId) {
-    main_scene_image["card" + cardId + "_head1"] = main_scene_path + "card" + cardId + "_head1.png";
-    main_scene_image["card" + cardId + "_half1"] = main_scene_path + "card" + cardId + "_half1.png";
-    main_scene_image["card" + cardId + "_full1"] = main_scene_path + "card" + cardId + "_full1.png";
 }
 
 for (var taskId = 1; taskId <= 50; ++taskId) {

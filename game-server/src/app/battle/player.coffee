@@ -28,7 +28,7 @@ defaultEntity =
   lv: 0
   exp: 0
   lineUp: ''
-  spiritor: {lv: 0}
+  spiritor: {lv: 1}
   cards: []
 
 class Player extends Module

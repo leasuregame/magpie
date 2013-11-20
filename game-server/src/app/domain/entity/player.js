@@ -440,6 +440,11 @@ var Player = (function(_super) {
 
             incs.spirit_hp += _hp;
             incs.spirit_atk += _atk;
+
+            // 最小值为1
+            incs.spirit_hp = _.max([incs.spirit_hp, 1]);
+            incs.spirit_atk = _.max([incs.spirit_atk, 1]);
+
             _.extend(card.incs, incs);
             card.recountHpAndAtk();
         }

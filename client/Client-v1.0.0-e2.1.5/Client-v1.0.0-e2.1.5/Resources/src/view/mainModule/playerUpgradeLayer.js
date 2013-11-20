@@ -47,24 +47,30 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         layer.setPosition(cc.p(0, 0));
         this.addChild(layer);
 
-//        var bgSprite = cc.Scale9Sprite.create(main_scene_image.icon259);
-//        bgSprite.setContentSize(cc.size(450, 400));
-//        bgSprite.setPosition(this._playerUpgradeLayerFit.bgSpritePoint);
-//        layer.addChild(bgSprite);
-
         var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect32, this);
         ccbNode.setPosition(this._playerUpgradeLayerFit.bgSpritePoint);
         layer.addChild(ccbNode);
-
-//        var obtainSprite = cc.Sprite.create(main_scene_image.icon258);
-//        obtainSprite.setPosition(this._playerUpgradeLayerFit.obtainSpritePoint);
-//        layer.addChild(obtainSprite);
 
         var str = lz.getRewardString(data);
         var len = str.length;
 
         var offsetY = this._playerUpgradeLayerFit.offsetY;
+
+        var lvBgLabel = cc.Sprite.create(main_scene_image.icon115);
+        lvBgLabel.setAnchorPoint(cc.p(0.5, 0.8));
+        lvBgLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
+        layer.addChild(lvBgLabel);
+
+        var lv = gameData.player.get("lv");
+        var lvLabel = cc.LabelTTF.create("等级：LV " + (lv - 1) + " -- LV " + lv, "STHeitiTC-Medium", 22);
+        lvLabel.setColor(cc.c3b(255, 239, 131));
+        lvLabel.setAnchorPoint(cc.p(0.5, 1));
+        lvLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
+        layer.addChild(lvLabel);
+
         for (var i = 0; i < len; ++i) {
+            offsetY -= 45;
+
             var rewardBgLabel = cc.Sprite.create(main_scene_image.icon115);
             rewardBgLabel.setAnchorPoint(cc.p(0.5, 0.8));
             rewardBgLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
@@ -76,7 +82,6 @@ var PlayerUpgradeLayer = LazyLayer.extend({
             rewardLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
             layer.addChild(rewardLabel);
 
-            offsetY -= 45;
         }
 
         var okItem = cc.MenuItemImage.createWithIcon(

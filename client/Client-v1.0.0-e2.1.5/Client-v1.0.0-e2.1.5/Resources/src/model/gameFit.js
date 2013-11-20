@@ -24,13 +24,14 @@ var fit4Iphone4 = {
     "battleScene": {
         "battleEndLayer": {
             "bgLayerPoint": cc.p(40, 0),
-            "winBgSpritePoint": cc.p(360, 512),
-            "obtainSpritePoint": cc.p(360, 668),
-            "failBgSpritePoint": cc.p(360, 492),
-            "rewardLabelPointX": 360,
-            "offsetYHeight": 587,
-            "okItemPoint": cc.p(285, 267),
-            "replayItemPoint": cc.p(435, 267)
+            "winBgSpritePoint": cc.p(360, 612),
+            "obtainSpritePoint": cc.p(0, 158),
+            "failBgSpritePoint": cc.p(360, 612),
+            "rewardLabelPointX": 0,
+            "offsetYHeight": 80,
+            "okItemPoint": cc.p(-85, -237),
+            "replayItemPoint": cc.p(85, -237),
+            "fragmentEffectPoint": cc.p(360, 200)
         },
         "batterLayer": {
             "bgSpriteRect": cc.rect(0, 88, 640, 960),
@@ -436,7 +437,7 @@ var fit4Iphone4 = {
         },
         "lotteryCardLayer": {
             "ccbNodePoint": cc.p(360, 520),
-            "ccbNodePoint1": cc.p(360, 972)
+            "ccbNodePoint1": cc.p(550, 782)
         },
         "lotteryLayer": {
             "bgSpritePoint": cc.p(40, 0),
@@ -510,10 +511,10 @@ var fit4Iphone4 = {
             "headIconPoint": cc.p(40, 874),
             "battleMessageLayerItemPoint": cc.p(111, 914),
             "friendMessageLayerItemPoint": cc.p(254, 914),
-            "systemMessageLayerItemPoint": cc.p(395, 914),
+            "systemMessageLayerItemPoint": cc.p(403, 914),
             "battleMessageIconPoint": cc.p(105, 912),
             "friendMessageIconPoint": cc.p(254, 912),
-            "systemMessageIconPoint": cc.p(395, 912),
+            "systemMessageIconPoint": cc.p(403, 912),
             "bgSpritePoint": cc.p(40, 106)
         },
         "noviceTeachingLayer": {
@@ -1052,13 +1053,14 @@ var fit4Iphone5 = {
     "battleScene": {
         "battleEndLayer": {
             "bgLayerPoint": cc.p(0, 0),
-            "winBgSpritePoint": cc.p(320, 580),
-            "obtainSpritePoint": cc.p(320, 738),
-            "failBgSpritePoint": cc.p(320, 580),
-            "rewardLabelPointX": 320,
-            "offsetYHeight": 655,
-            "okItemPoint": cc.p(245, 345),
-            "replayItemPoint": cc.p(395, 345)
+            "winBgSpritePoint": cc.p(320, 680),
+            "obtainSpritePoint": cc.p(0, 158),
+            "failBgSpritePoint": cc.p(320, 680),
+            "rewardLabelPointX": 0,
+            "offsetYHeight": 80,
+            "okItemPoint": cc.p(-85, -237),
+            "replayItemPoint": cc.p(85, -237),
+            "fragmentEffectPoint": cc.p(320, 270)
         },
         "batterLayer": {
             "bgSpriteRect": cc.rect(0, 0, 640, 1136),
@@ -1464,7 +1466,7 @@ var fit4Iphone5 = {
         },
         "lotteryCardLayer": {
             "ccbNodePoint": cc.p(320, 568),
-            "ccbNodePoint1": cc.p(320, 1020)
+            "ccbNodePoint1": cc.p(510, 820)
         },
         "lotteryLayer": {
             "bgSpritePoint": cc.p(0, 106),

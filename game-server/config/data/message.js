@@ -14,7 +14,7 @@ exp = module.exports = {
 		HANDLED: 5,		
 		NOTICE: 6
 	},
-	FINALSTATUS: [2, 3, 4, 6]
+	FINALSTATUS: [2, 3, 5, 6]
 };
 
 exp.TYPE_MAP = {}

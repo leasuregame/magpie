@@ -543,6 +543,8 @@ Handler::giveBless = (msg, session, next) ->
     player.giveBlessOnce()
     player.save()
 
+    updateBlessCount(playerId, friendId)
+
     sendMessage @app, friendId, {
       route: 'onBless'
       msg: {id: res.id, sender: res.sender}
@@ -585,6 +587,12 @@ Handler::receiveBless = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     next(null, {code: 200, msg: {energy: message.options.energy}})
+
+updateBlessCount = (playerId, friendId) ->
+  console.log 'receive bless: ', playerId, friendId
+  dao.friend.updateFriendBlessCount playerId, friendId, (err, res) -> 
+    if err or not res
+      logger.error(err)
 
 
 

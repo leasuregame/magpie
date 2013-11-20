@@ -29,7 +29,8 @@ var fit4Iphone4 = {
             "failBgSpritePoint": cc.p(360, 492),
             "rewardLabelPointX": 360,
             "offsetYHeight": 567,
-            "okItemPoint": cc.p(360, 327)
+            "okItemPoint": cc.p(285, 327),
+            "replayItemPoint": cc.p(435, 327)
         },
         "batterLayer": {
             "bgSpriteRect": cc.rect(0, 88, 640, 960),
@@ -1055,7 +1056,8 @@ var fit4Iphone5 = {
             "failBgSpritePoint": cc.p(320, 580),
             "rewardLabelPointX": 320,
             "offsetYHeight": 655,
-            "okItemPoint": cc.p(320, 415)
+            "okItemPoint": cc.p(245, 415),
+            "replayItemPoint": cc.p(395, 415)
         },
         "batterLayer": {
             "bgSpriteRect": cc.rect(0, 0, 640, 1136),

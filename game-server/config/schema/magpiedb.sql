@@ -51,6 +51,8 @@ DROP TABLE IF EXISTS `friend`;
 CREATE TABLE IF NOT EXISTS `friend` (
   `playerId` INT(10) UNSIGNED NOT NULL,
   `friendId` INT(10) UNSIGNED NOT NULL,
+  `giveCount` INT(10) UNSIGNED DEFAULT '0',
+  `receiveCount` INT(10) UNSIGNED DEFAULT '0',
   PRIMARY KEY (`playerId`, `friendId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

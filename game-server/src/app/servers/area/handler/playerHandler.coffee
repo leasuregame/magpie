@@ -86,9 +86,6 @@ Handler::givePower = (msg, session, next) ->
     if hasGetPower(player, cur_hour) 
       return next(null, {code: 501, msg: '不能重复领取'})
 
-    if player.power.value >= MAX_POWER_VALUE
-      return next(null, {code: 501, msg: '体力已达上限'})
-
     point = playerConfig.POWER_GIVE.point
     player.givePower(cur_hour, point)
     player.save()

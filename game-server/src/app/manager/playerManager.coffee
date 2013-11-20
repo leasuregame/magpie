@@ -76,7 +76,7 @@ class Manager
             results.push {
               id: cache.id
               name: cache.name
-              cards: (cache.activeCards().sort (x, y) -> x.ability < y.ability).map (c) -> playerId: c.playerId, tableId: c.tableId
+              cards: (cache.activeCards().sort (x, y) -> x.ability() < y.ability()).map (c) -> playerId: c.playerId, tableId: c.tableId
             }
           else 
             leftIds.push id

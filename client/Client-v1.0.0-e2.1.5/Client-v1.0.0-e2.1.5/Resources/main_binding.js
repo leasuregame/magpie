@@ -45,6 +45,7 @@ var appFiles = [
     'src/model/gameConfig.js',
 
     'src/model/gameFit.js',
+    'src/model/clock.js',
     'src/model/user.js',
     'src/model/player.js',
     'src/model/card.js',

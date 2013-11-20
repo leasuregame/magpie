@@ -254,8 +254,6 @@ var CardListLayer = cc.Layer.extend({
             this._selectCount += 1;
 
             if (this._selectCount == this._maxSelectCount) {
-                cc.log("set enabled false");
-
                 for (var key in this._cardLabel) {
                     if (!this._cardLabel[key].isSelect()) {
                         this._cardLabel[key].setEnabled(false);
@@ -263,20 +261,16 @@ var CardListLayer = cc.Layer.extend({
                 }
             }
         } else {
-            if (this._selectCount == this._maxSelectCount) {
-                cc.log("set enabled true");
+            this._selectCount -= 1;
 
-                for (var key in this._cardLabel) {
-                    if (this._isCanSelect(key)) {
-                        this._cardLabel[key].setEnabled(true);
-                    }
+            for (var key in this._cardLabel) {
+                if (this._isCanSelect(key)) {
+                    this._cardLabel[key].setEnabled(true);
                 }
             }
-
-            this._selectCount -= 1;
         }
 
-        this._updateTip();
+        this._selectCallback();
     },
 
     _isCanSelect: function (cardId) {
@@ -291,8 +285,8 @@ var CardListLayer = cc.Layer.extend({
         return true;
     },
 
-    _updateTip: function () {
-        cc.log("CardListLayer _updateTip default");
+    _selectCallback: function () {
+        cc.log("CardListLayer _selectCallback default");
     },
 
     _initDefault: function () {
@@ -370,6 +364,28 @@ var CardListLayer = cc.Layer.extend({
         this._otherLabel.addChild(menu);
 
         this._maxSelectCount = MAX_LINE_UP_CARD;
+
+        this._selectCallback = function () {
+            cc.log("CardListLayer _initLineUp _selectCallback");
+
+            var selectList = this._getSelectCardList();
+            var len = selectList.length;
+
+            for (var key in this._cardLabel) {
+                var cardLabel = this._cardLabel[key];
+
+                if (!cardLabel.isSelect() && cardLabel.isEnabled()) {
+                    var kind = cardLabel.getCard().get("kind");
+
+                    for (var i = 0; i < len; ++i) {
+                        if (kind == selectList[i].get("kind")) {
+                            cardLabel.setEnabled(false);
+                            break;
+                        }
+                    }
+                }
+            }
+        };
 
         var lineUp = gameData.lineUp.getLineUpList();
         var len = lineUp.length;
@@ -571,7 +587,7 @@ var CardListLayer = cc.Layer.extend({
         expLabel.setPosition(this._cardListLayerFit.expLabelPoint);
         this.addChild(expLabel);
 
-        this._updateTip = function () {
+        this._selectCallback = function () {
             cc.log("CardListLayer _initCardUpgradeRetinue update");
 
             var selectList = this._getSelectCardList();
@@ -614,7 +630,7 @@ var CardListLayer = cc.Layer.extend({
         rateLabel.setPosition(this._cardListLayerFit.rateLabelPoint);
         this.addChild(rateLabel);
 
-        this._updateTip = function () {
+        this._selectCallback = function () {
             cc.log("CardListLayer _initCardEvolutionRetinue update");
 
             var selectList = this._getSelectCardList();
@@ -686,7 +702,7 @@ var CardListLayer = cc.Layer.extend({
         moneyLabel.setPosition(this._cardListLayerFit.moneyLabelPoint);
         this.addChild(moneyLabel);
 
-        this._updateTip = function () {
+        this._selectCallback = function () {
             cc.log("CardListLayer _initSell _initCardUpgradeRetinue update");
 
             var selectList = this._getSelectCardList();
@@ -764,10 +780,11 @@ var CardListLayer = cc.Layer.extend({
         cc.log("CardListLayer getSelectCardList");
 
         var selectCardList = [];
-        var cardList = gameData.cardList;
 
         for (var key in this._cardLabel) {
-            if (this._cardLabel[key].isSelect()) selectCardList.push(cardList.getCardByIndex(key));
+            if (this._cardLabel[key].isSelect()) {
+                selectCardList.push(this._cardLabel[key].getCard());
+            }
         }
 
         return selectCardList;

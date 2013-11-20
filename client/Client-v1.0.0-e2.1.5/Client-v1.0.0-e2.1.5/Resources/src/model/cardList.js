@@ -114,7 +114,7 @@ var CardList = Entity.extend({
     _sort: function (cardList, type) {
         cc.log("CardList _sort: " + type);
 
-        var typeList = [type, SORT_CARD_LIST_BY_STAR, SORT_CARD_LIST_BY_LV, SORT_CARD_LIST_BY_ABILITY];
+        var typeList = [type, SORT_CARD_LIST_BY_STAR, SORT_CARD_LIST_BY_ABILITY, SORT_CARD_LIST_BY_LV];
 
         return function (a, b) {
             var aa = cardList[a];

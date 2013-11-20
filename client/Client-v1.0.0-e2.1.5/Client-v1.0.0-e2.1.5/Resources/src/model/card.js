@@ -38,6 +38,7 @@ var Card = Entity.extend({
     _name: "",              // 卡牌名称
     _description: "",       // 卡牌描述
     _star: 0,               // 卡牌星级
+    _kind: 0,
     _maxLv: 0,              // 卡牌最大等级
     _maxExp: 0,             // 最大经验
     _initHp: 0,             // 卡牌初始生命值
@@ -134,6 +135,7 @@ var Card = Entity.extend({
         this._name = cardTable.name;
         this._description = cardTable.description;
         this._star = cardTable.star;
+        this._kind = cardTable.number || 0;
         this._initHp = cardTable.hp;
         this._initAtk = cardTable.atk;
         this._skillId = cardTable.skill_id;

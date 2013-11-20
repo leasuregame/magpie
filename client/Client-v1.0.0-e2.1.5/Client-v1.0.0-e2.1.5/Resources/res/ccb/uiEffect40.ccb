@@ -498,6 +498,18 @@
 						<array>
 							<dict>
 								<key>name</key>
+								<string>position</string>
+								<key>type</key>
+								<string>Position</string>
+								<key>value</key>
+								<array>
+									<real>-40</real>
+									<real>-31</real>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>anchorPoint</string>
 								<key>type</key>
 								<string>Point</string>
@@ -529,6 +541,8 @@
 								<false/>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -924,8 +938,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

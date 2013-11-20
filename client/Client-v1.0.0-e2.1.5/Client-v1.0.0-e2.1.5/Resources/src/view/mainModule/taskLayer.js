@@ -24,7 +24,7 @@ var TaskLayer = cc.Layer.extend({
     _scrollView: null,
     _locate: [],
 
-    _goldItem: [],
+    _goldItem: null,
 
     onEnter: function () {
         cc.log("TaskLayer onEnter");
@@ -50,6 +50,7 @@ var TaskLayer = cc.Layer.extend({
 
         this._taskLayerFit = gameFit.mainScene.taskLayer;
 
+        this._goldItem = [];
         this._locate = this._taskLayerFit.locatePoints;
         this.setTouchEnabled(true);
 

@@ -313,7 +313,8 @@ var fit4Iphone4 = {
             "scrollViewContentSize": cc.size(6400, 569),
             "scrollViewPoint": cc.p(40, 106),
             "pointX": -600,
-            "closeBoxSpritePoint2": cc.p(360, 1025)
+            "closeBoxSpritePoint2": cc.p(360, 1025),
+            "passEffectPoint": cc.p(360, 578)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -1340,7 +1341,8 @@ var fit4Iphone5 = {
             "scrollViewContentSize": cc.size(6400, 569),
             "scrollViewPoint": cc.p(0, 194),
             "pointX": -640,
-            "closeBoxSpritePoint2": cc.p(320, 1025)
+            "closeBoxSpritePoint2": cc.p(320, 1025),
+            "passEffectPoint": cc.p(320, 706)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(0, 106),

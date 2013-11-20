@@ -393,20 +393,25 @@ var ExploreLayer = cc.Layer.extend({
     _toNext: function () {
         cc.log("ExploreLayer _next");
 
-        TipLayer.tip("恭喜您，本关已完成");
+        var passEffect = cc.BuilderReader.load(main_scene_image.uiEffect24, this);
+        passEffect.setPosition(this._exploreLayerFit.passEffectPoint);
+        this.addChild(passEffect);
 
-        this.scheduleOnce(function () {
-            this._index += 1;
+        passEffect.animationManager.setAnimationCompletedCallback(this, function () {
+            passEffect.removeFromParent();
+            this.scheduleOnce(function () {
+                this._index += 1;
 
-            if (this._index > this._maxIndex) {
-                this._unlock();
-                this._onClickBack();
-            }
+                if (this._index > this._maxIndex) {
+                    this._unlock();
+                    this._onClickBack();
+                }
 
-            this.update();
+                this.update();
 
-            this.scheduleOnce(this._unlock, 1);
-        }, 1);
+                this.scheduleOnce(this._unlock, 1);
+            }, 1);
+        });
     },
 
     _showReward: function () {

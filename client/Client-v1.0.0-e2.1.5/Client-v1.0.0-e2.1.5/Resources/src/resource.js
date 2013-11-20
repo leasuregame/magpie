@@ -789,7 +789,6 @@ var main_scene_image = {
     up85: "res/effect/uiEffect/up85.png",
 
 
-
     // 新手特效
     tutorials1: "res/ccb/tutorials1.ccbi",
     tutorials2: "res/ccb/tutorials2.ccbi",

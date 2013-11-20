@@ -432,7 +432,15 @@ var CardListLayer = cc.Layer.extend({
 
         this._initMaster();
 
-        if (this._otherData.leadCard) {
+        var cardList = gameData.cardList.get("cardList");
+
+        for (var key in cardList) {
+            if (!cardList[key].canUpgrade()) {
+                this._excludeList.push(key);
+            }
+        }
+
+        if (this._otherData.leadCard && this._otherData.leadCard.canUpgrade()) {
             this._cardLabel[this._otherData.leadCard.get("id")].select();
         }
     },

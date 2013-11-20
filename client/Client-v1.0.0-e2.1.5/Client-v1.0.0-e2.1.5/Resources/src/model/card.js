@@ -315,6 +315,12 @@ var Card = Entity.extend({
         return (cardGrow.cur_exp + this.getCardExp());
     },
 
+    canUpgrade: function () {
+        cc.log("Card canUpgrade");
+
+        return (this._lv < this._maxLv);
+    },
+
     upgrade: function (cb, cardIdList) {
         cc.log("Card upgrade " + this._id);
         cc.log(cardIdList);
@@ -359,7 +365,7 @@ var Card = Entity.extend({
     canUpgradeSkill: function () {
         cc.log("Card canUpgradeSkill");
 
-        return (this._star > 2 && this._skillLv < this._skillMaxLv)
+        return (this._star > 2 && (this._skillLv < this._skillMaxLv));
     },
 
     getUpgradeNeedSKillPoint: function () {
@@ -470,13 +476,13 @@ var Card = Entity.extend({
     canEvolution: function () {
         cc.log("Card canEvolution");
 
-        return (this._star < 5);
+        return ((this._lv >= this._maxLv) && (this._star < MAX_CARD_STAR));
     },
 
     getPreCardRate: function () {
         cc.log("Card getPreCardRate");
 
-        if (this.canEvolution()) {
+        if (this._star < MAX_CARD_STAR) {
             return outputTables.star_upgrade.rows[this._star].rate_per_card;
         }
 

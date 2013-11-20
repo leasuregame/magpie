@@ -81,7 +81,7 @@ products =
 
         player = res
 
-        else if player.dailyGift.powerBuyCount <= 0
+        if player.dailyGift.powerBuyCount <= 0
           cb {code: 501, msg: "体力购买次数已用完，VIP可购买更多"}
 
         else if player.dailyGift.powerBuyCount < times

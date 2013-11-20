@@ -38,6 +38,7 @@ var Card = Entity.extend({
     _name: "",              // 卡牌名称
     _description: "",       // 卡牌描述
     _star: 0,               // 卡牌星级
+    _kind: 0,
     _maxLv: 0,              // 卡牌最大等级
     _maxExp: 0,             // 最大经验
     _initHp: 0,             // 卡牌初始生命值
@@ -54,6 +55,8 @@ var Card = Entity.extend({
     _skillMaxLv: 0,         // 技能最大等级
 
     _url: "",
+
+    _newCardMark: false,
 
     init: function (data) {
         cc.log("Card init");
@@ -78,6 +81,7 @@ var Card = Entity.extend({
             cc.log("=============================================");
         }
 
+        this._newCardMark = sys.localStorage.getItem("card_" + this._id + "_mark") || false;
 
         return true;
     },
@@ -131,6 +135,7 @@ var Card = Entity.extend({
         this._name = cardTable.name;
         this._description = cardTable.description;
         this._star = cardTable.star;
+        this._kind = cardTable.number || 0;
         this._initHp = cardTable.hp;
         this._initAtk = cardTable.atk;
         this._skillId = cardTable.skill_id;
@@ -181,6 +186,12 @@ var Card = Entity.extend({
         this._skillDescription = skillTable.description;
         this._skillType = skillTable.type;
         this._skillMaxLv = outputTables.lv_limit.rows[1].skill_lv_limit;
+    },
+
+    setNewCardMark: function (mark) {
+        this._newCardMark = mark;
+
+        sys.localStorage.setItem("card_" + this._id + "_mark", this._newCardMark);
     },
 
     getSkillType: function () {
@@ -304,6 +315,12 @@ var Card = Entity.extend({
         return (cardGrow.cur_exp + this.getCardExp());
     },
 
+    canUpgrade: function () {
+        cc.log("Card canUpgrade");
+
+        return (this._lv < this._maxLv);
+    },
+
     upgrade: function (cb, cardIdList) {
         cc.log("Card upgrade " + this._id);
         cc.log(cardIdList);
@@ -348,7 +365,7 @@ var Card = Entity.extend({
     canUpgradeSkill: function () {
         cc.log("Card canUpgradeSkill");
 
-        return (this._star > 2 && this._skillLv < this._skillMaxLv)
+        return (this._star > 2 && (this._skillLv < this._skillMaxLv));
     },
 
     getUpgradeNeedSKillPoint: function () {
@@ -459,13 +476,13 @@ var Card = Entity.extend({
     canEvolution: function () {
         cc.log("Card canEvolution");
 
-        return (this._star < 5);
+        return ((this._lv >= this._maxLv) && (this._star < MAX_CARD_STAR));
     },
 
     getPreCardRate: function () {
         cc.log("Card getPreCardRate");
 
-        if (this.canEvolution()) {
+        if (this._star < MAX_CARD_STAR) {
             return outputTables.star_upgrade.rows[this._star].rate_per_card;
         }
 

@@ -111,7 +111,7 @@ var Tournament = Entity.extend({
                 var msg = data.msg;
 
                 var str = "总时间: " + time / 1000 + "秒，数据传输时间: " + (time - msg.rank.time) / 1000 + " 秒";
-                TipLayer.tip(str);
+//                TipLayer.tip(str);
 
                 that.update(msg.rank);
 

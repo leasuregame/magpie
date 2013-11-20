@@ -262,6 +262,12 @@ var CardLabel = cc.Node.extend({
         this.setEnabled(enabled);
     },
 
+    getCard: function () {
+        cc.log("CardLabel getCard");
+
+        return this._card;
+    },
+
     _onClickCard: function () {
         cc.log("CardLabel _onClickCard" + this._card.get("id"));
 

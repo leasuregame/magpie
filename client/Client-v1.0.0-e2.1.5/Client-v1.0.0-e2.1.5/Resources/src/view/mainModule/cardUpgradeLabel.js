@@ -34,6 +34,7 @@ var CardUpgradeLabel = cc.Layer.extend({
     _selectRetinueCardItem: null,
     _upgradeItem: null,
     _selectLeadCardIcon: null,
+    _money: null,
 
     onEnter: function () {
         cc.log("CardUpgradeLabel onEnter");
@@ -283,14 +284,20 @@ var CardUpgradeLabel = cc.Layer.extend({
 
             var dummyCard = lz.clone(this._leadCard);
 
-            var money = dummyCard.addExp(exp);
+            this._money = dummyCard.addExp(exp);
 
             this._hpAdditionLabel.setString("+ " + (dummyCard.get("hp") - this._leadCard.get("hp")));
             this._atkAdditionLabel.setString("+ " + (dummyCard.get("atk") - this._leadCard.get("atk")));
 
             this._expLabel.setString(exp);
-            this._moneyLabel.setString(money);
+            this._moneyLabel.setString(this._money);
             this._cardCountLabel.setString(cardCount);
+
+            if (this._money > gameData.player.get("money")) {
+                this._moneyLabel.setColor(cc.c3b(255, 40, 40));
+            } else {
+                this._moneyLabel.setColor(cc.c3b(255, 255, 255));
+            }
 
             var isDummyCard = true;
             var lvCallFuncAction = cc.CallFunc.create(function () {
@@ -378,8 +385,10 @@ var CardUpgradeLabel = cc.Layer.extend({
             if (nowExp <= 0) {
                 this.unschedule(fn);
                 this._retinueCard = [];
-                upgradeEffect.removeFromParent();
                 this.update();
+
+                upgradeEffect.removeFromParent();
+                LazyLayer.closeCloudLayer();
             }
         };
 
@@ -440,6 +449,18 @@ var CardUpgradeLabel = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if (!this._leadCard.canUpgrade()) {
+            TipLayer.tip("卡牌已满级");
+            return;
+        }
+
+        if (this._money > gameData.player.get("money")) {
+            TipLayer.tip("仙币不足");
+            return;
+        }
+
+        LazyLayer.showCloudLayer();
+
         var cardIdList = [];
         var len = this._retinueCard.length;
         for (var i = 0; i < len; ++i) {
@@ -452,9 +473,13 @@ var CardUpgradeLabel = cc.Layer.extend({
         this._leadCard.upgrade(function (data) {
             cc.log(data);
 
-            that._retinueCard = [];
-            that._upgrade(dummyCard, data.exp, data.money, len);
-
+            if (data) {
+                that._retinueCard = [];
+                that._upgrade(dummyCard, data.exp, data.money, len);
+            } else {
+                this.update();
+                LazyLayer.closeCloudLayer();
+            }
         }, cardIdList);
     }
 });

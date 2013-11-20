@@ -68,14 +68,12 @@ var CardListLayer = cc.Layer.extend({
 
         this._cardListLayerFit = gameFit.mainScene.cardListLayer;
 
-        var cardCount = gameData.cardList.get("length");
-
         this._cardLabel = {};
         this._otherData = {};
         this._excludeList = [];
         this._cb = cb;
         this._otherData = otherData;
-        this._maxSelectCount = cardCount;
+        this._maxSelectCount = gameData.cardList.get("count");
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -145,6 +143,19 @@ var CardListLayer = cc.Layer.extend({
         this._selectAllLowHookIcon.setPosition(this._cardListLayerFit.selectAllLowHookIconPoint);
         this.addChild(this._selectAllLowHookIcon);
         this._selectAllLowHookIcon.setVisible(false);
+
+        var cardCountIcon = cc.Sprite.create(main_scene_image.icon117);
+        cardCountIcon.setPosition(this._cardListLayerFit.cardCountLabelPoint);
+        this.addChild(cardCountIcon);
+
+        var cardCountLabel = cc.LabelTTF.create(
+            gameData.cardList.get("count") + " / " + gameData.cardList.get("maxCount"),
+            "STHeitiTC-Medium",
+            22
+        );
+        cardCountLabel.setColor(cc.c3b(255, 239, 131));
+        cardCountLabel.setPosition(this._cardListLayerFit.cardCountLabelPoint);
+        this.addChild(cardCountLabel);
 
         this._otherLabel = cc.Layer.create();
         this.addChild(this._otherLabel);
@@ -243,8 +254,6 @@ var CardListLayer = cc.Layer.extend({
             this._selectCount += 1;
 
             if (this._selectCount == this._maxSelectCount) {
-                cc.log("set enabled false");
-
                 for (var key in this._cardLabel) {
                     if (!this._cardLabel[key].isSelect()) {
                         this._cardLabel[key].setEnabled(false);
@@ -252,20 +261,16 @@ var CardListLayer = cc.Layer.extend({
                 }
             }
         } else {
-            if (this._selectCount == this._maxSelectCount) {
-                cc.log("set enabled true");
+            this._selectCount -= 1;
 
-                for (var key in this._cardLabel) {
-                    if (this._isCanSelect(key)) {
-                        this._cardLabel[key].setEnabled(true);
-                    }
+            for (var key in this._cardLabel) {
+                if (this._isCanSelect(key)) {
+                    this._cardLabel[key].setEnabled(true);
                 }
             }
-
-            this._selectCount -= 1;
         }
 
-        this._updateTip();
+        this._selectCallback();
     },
 
     _isCanSelect: function (cardId) {
@@ -280,8 +285,8 @@ var CardListLayer = cc.Layer.extend({
         return true;
     },
 
-    _updateTip: function () {
-        cc.log("CardListLayer _updateTip default");
+    _selectCallback: function () {
+        cc.log("CardListLayer _selectCallback default");
     },
 
     _initDefault: function () {
@@ -360,6 +365,28 @@ var CardListLayer = cc.Layer.extend({
 
         this._maxSelectCount = MAX_LINE_UP_CARD;
 
+        this._selectCallback = function () {
+            cc.log("CardListLayer _initLineUp _selectCallback");
+
+            var selectList = this._getSelectCardList();
+            var len = selectList.length;
+
+            for (var key in this._cardLabel) {
+                var cardLabel = this._cardLabel[key];
+
+                if (!cardLabel.isSelect() && cardLabel.isEnabled()) {
+                    var kind = cardLabel.getCard().get("kind");
+
+                    for (var i = 0; i < len; ++i) {
+                        if (kind == selectList[i].get("kind")) {
+                            cardLabel.setEnabled(false);
+                            break;
+                        }
+                    }
+                }
+            }
+        };
+
         var lineUp = gameData.lineUp.getLineUpList();
         var len = lineUp.length;
 
@@ -405,7 +432,15 @@ var CardListLayer = cc.Layer.extend({
 
         this._initMaster();
 
-        if (this._otherData.leadCard) {
+        var cardList = gameData.cardList.get("cardList");
+
+        for (var key in cardList) {
+            if (!cardList[key].canUpgrade()) {
+                this._excludeList.push(key);
+            }
+        }
+
+        if (this._otherData.leadCard && this._otherData.leadCard.canUpgrade()) {
             this._cardLabel[this._otherData.leadCard.get("id")].select();
         }
     },
@@ -560,7 +595,7 @@ var CardListLayer = cc.Layer.extend({
         expLabel.setPosition(this._cardListLayerFit.expLabelPoint);
         this.addChild(expLabel);
 
-        this._updateTip = function () {
+        this._selectCallback = function () {
             cc.log("CardListLayer _initCardUpgradeRetinue update");
 
             var selectList = this._getSelectCardList();
@@ -603,7 +638,7 @@ var CardListLayer = cc.Layer.extend({
         rateLabel.setPosition(this._cardListLayerFit.rateLabelPoint);
         this.addChild(rateLabel);
 
-        this._updateTip = function () {
+        this._selectCallback = function () {
             cc.log("CardListLayer _initCardEvolutionRetinue update");
 
             var selectList = this._getSelectCardList();
@@ -675,7 +710,7 @@ var CardListLayer = cc.Layer.extend({
         moneyLabel.setPosition(this._cardListLayerFit.moneyLabelPoint);
         this.addChild(moneyLabel);
 
-        this._updateTip = function () {
+        this._selectCallback = function () {
             cc.log("CardListLayer _initSell _initCardUpgradeRetinue update");
 
             var selectList = this._getSelectCardList();
@@ -753,10 +788,11 @@ var CardListLayer = cc.Layer.extend({
         cc.log("CardListLayer getSelectCardList");
 
         var selectCardList = [];
-        var cardList = gameData.cardList;
 
         for (var key in this._cardLabel) {
-            if (this._cardLabel[key].isSelect()) selectCardList.push(cardList.getCardByIndex(key));
+            if (this._cardLabel[key].isSelect()) {
+                selectCardList.push(this._cardLabel[key].getCard());
+            }
         }
 
         return selectCardList;

@@ -63,9 +63,11 @@ var CardList = Entity.extend({
             var len = card.length;
             for (var i = 0; i < len; ++i) {
                 this._cardList[card[i].get("id")] = card[i];
+                card[i].setNewCardMark(true)
             }
         } else {
             this._cardList[card.get("id")] = card;
+            card.setNewCardMark(true)
         }
 
         this.update();

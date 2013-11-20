@@ -55,6 +55,8 @@ var Card = Entity.extend({
 
     _url: "",
 
+    _newCardMark: false,
+
     init: function (data) {
         cc.log("Card init");
 
@@ -78,6 +80,7 @@ var Card = Entity.extend({
             cc.log("=============================================");
         }
 
+        this._newCardMark = sys.localStorage.getItem("card_" + this._id + "_mark") || false;
 
         return true;
     },
@@ -181,6 +184,12 @@ var Card = Entity.extend({
         this._skillDescription = skillTable.description;
         this._skillType = skillTable.type;
         this._skillMaxLv = outputTables.lv_limit.rows[1].skill_lv_limit;
+    },
+
+    setNewCardMark: function (mark) {
+        this._newCardMark = mark;
+
+        sys.localStorage.setItem("card_" + this._id + "_mark", this._newCardMark);
     },
 
     getSkillType: function () {

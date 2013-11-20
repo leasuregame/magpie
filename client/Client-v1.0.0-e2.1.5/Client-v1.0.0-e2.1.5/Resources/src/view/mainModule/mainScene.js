@@ -38,7 +38,7 @@ var MainScene = cc.Scene.extend({
     init: function () {
         cc.log("MainScene init");
 
-        gameData.sound.playMusic();
+        cc.AudioEngine.getInstance().playMusic(main_scene_image.main_bg_music, true);
 
         this._mainBgLayer = MainBgLayer.create();
         this.addChild(this._mainBgLayer, -1);

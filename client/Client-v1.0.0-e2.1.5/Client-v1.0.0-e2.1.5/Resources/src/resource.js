@@ -789,7 +789,6 @@ var main_scene_image = {
     up85: "res/effect/uiEffect/up85.png",
 
 
-
     // 新手特效
     tutorials1: "res/ccb/tutorials1.ccbi",
     tutorials2: "res/ccb/tutorials2.ccbi",
@@ -821,12 +820,12 @@ var main_scene_image = {
     battle_sound_atk: "res/sound/battle_sound_atk.wav",
     battle_sound_buff: "res/sound/battle_sound_buff.wav",
     battle_sound_heal: "res/sound/battle_sound_heal.wav",
-    battle_sound_lose: "res/sound/battle_sound_lose1.wav",
+    battle_sound_lose: "res/sound/battle_sound_lose.wav",
     battle_sound_miss: "res/sound/battle_sound_miss.wav",
     battle_sound_single: "res/sound/battle_sound_single.wav",
     battle_sound_subtitle_card: "res/sound/battle_sound_subtitle_card.wav",
     battle_sound_subtitle_spirit: "res/sound/battle_sound_subtitle_spirit.wav",
-    battle_sound_win: "res/sound/battle_sound_win1.wav",
+    battle_sound_win: "res/sound/battle_sound_win.wav",
     card_upgrade_sound: "res/sound/card_upgrade_sound.wav",
     click_building_sound: "res/sound/click_building_sound.wav",
     click_gold_sound: "res/sound/click_gold_sound.wav",

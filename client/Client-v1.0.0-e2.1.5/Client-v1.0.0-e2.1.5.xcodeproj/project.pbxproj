@@ -1046,7 +1046,7 @@
 		9078848E1839457000906496 /* libwebsockets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libwebsockets.h; sourceTree = "<group>"; };
 		907884901839457000906496 /* libwebsockets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwebsockets.a; sourceTree = "<group>"; };
 		909CF83717DECDDC0049D151 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
-		90D49C2617CAF81800A22DB2 /* Client-v1.0.0-e2.1.5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Client-v1.0.0-e2.1.5.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D49C2617CAF81800A22DB2 /* 极品神仙.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "极品神仙.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D49C2917CAF81800A22DB2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		90D49C2B17CAF81800A22DB2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		90D49C2D17CAF81800A22DB2 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -2499,7 +2499,7 @@
 		90D49C2717CAF81800A22DB2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				90D49C2617CAF81800A22DB2 /* Client-v1.0.0-e2.1.5.app */,
+				90D49C2617CAF81800A22DB2 /* 极品神仙.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2642,7 +2642,7 @@
 			);
 			name = "Client-v1.0.0-e2.1.5";
 			productName = "Client-v1.0.0-e2.1.5";
-			productReference = 90D49C2617CAF81800A22DB2 /* Client-v1.0.0-e2.1.5.app */;
+			productReference = 90D49C2617CAF81800A22DB2 /* 极品神仙.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -3065,6 +3065,7 @@
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/ios\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "极品神仙";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3096,6 +3097,7 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "极品神仙";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3135,7 +3137,7 @@
 					"-ljs_static",
 					"-lcurl",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "极品神仙";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"Client-v1.0.0-e2.1.5/libs/Chipmunk/include/chipmunk\" \"Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/include\"";
 				WRAPPER_EXTENSION = app;
@@ -3175,7 +3177,7 @@
 					"-ljs_static",
 					"-lcurl",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "极品神仙";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"Client-v1.0.0-e2.1.5/libs/Chipmunk/include/chipmunk\" \"Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/include\"";
 				VALIDATE_PRODUCT = YES;

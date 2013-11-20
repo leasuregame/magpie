@@ -68,14 +68,12 @@ var CardListLayer = cc.Layer.extend({
 
         this._cardListLayerFit = gameFit.mainScene.cardListLayer;
 
-        var cardCount = gameData.cardList.get("length");
-
         this._cardLabel = {};
         this._otherData = {};
         this._excludeList = [];
         this._cb = cb;
         this._otherData = otherData;
-        this._maxSelectCount = cardCount;
+        this._maxSelectCount = gameData.cardList.get("count");
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg11);
         bgSprite.setAnchorPoint(cc.p(0, 0));
@@ -145,6 +143,19 @@ var CardListLayer = cc.Layer.extend({
         this._selectAllLowHookIcon.setPosition(this._cardListLayerFit.selectAllLowHookIconPoint);
         this.addChild(this._selectAllLowHookIcon);
         this._selectAllLowHookIcon.setVisible(false);
+
+        var cardCountIcon = cc.Sprite.create(main_scene_image.icon117);
+        cardCountIcon.setPosition(this._cardListLayerFit.cardCountLabelPoint);
+        this.addChild(cardCountIcon);
+
+        var cardCountLabel = cc.LabelTTF.create(
+            gameData.cardList.get("count") + " / " + gameData.cardList.get("maxCount"),
+            "STHeitiTC-Medium",
+            22
+        );
+        cardCountLabel.setColor(cc.c3b(255, 239, 131));
+        cardCountLabel.setPosition(this._cardListLayerFit.cardCountLabelPoint);
+        this.addChild(cardCountLabel);
 
         this._otherLabel = cc.Layer.create();
         this.addChild(this._otherLabel);

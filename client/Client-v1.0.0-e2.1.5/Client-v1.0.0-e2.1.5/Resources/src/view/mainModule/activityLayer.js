@@ -77,7 +77,7 @@ var ActivityLayer = cc.Layer.extend({
             item.setAnchorPoint(cc.p(0, 0));
             item.setPosition(cc.p(this._activityLayerFit.itemBasePoint.x + this._activityLayerFit.itemOffsetX * i, this._activityLayerFit.itemBasePoint.y));
 
-            this._mark[i] = cc.Sprite.create(main_scene_image.icon289);
+            this._mark[i] = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
             this._mark[i].setPosition(cc.p(80, 80));
             this._mark[i].setVisible(false);
             item.addChild(this._mark[i]);

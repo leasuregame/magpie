@@ -33,8 +33,8 @@ var BattleEndLayer = cc.Layer.extend({
         var isWin = this._battleLog.isWin();
 
         if (isWin) {
-            var winBgSprite = cc.Sprite.create(main_scene_image.bg17);
-            //var winBgSprite = cc.BuilderReader.load(main_scene_image.uiEffect17, this);
+            //var winBgSprite = cc.Sprite.create(main_scene_image.bg17);
+            var winBgSprite = cc.BuilderReader.load(main_scene_image.uiEffect17, this);
             winBgSprite.setPosition(this._battleEndLayerFit.winBgSpritePoint);
             this.addChild(winBgSprite);
 
@@ -42,8 +42,8 @@ var BattleEndLayer = cc.Layer.extend({
             obtainSprite.setPosition(this._battleEndLayerFit.obtainSpritePoint);
             this.addChild(obtainSprite);
         } else {
-            var failBgSprite = cc.Sprite.create(main_scene_image.bg18);
-            //var failBgSprite = cc.BuilderReader.load(main_scene_image.uiEffect18, this);
+            //var failBgSprite = cc.Sprite.create(main_scene_image.bg18);
+            var failBgSprite = cc.BuilderReader.load(main_scene_image.uiEffect18, this);
             failBgSprite.setPosition(this._battleEndLayerFit.failBgSpritePoint);
             this.addChild(failBgSprite);
         }
@@ -78,7 +78,7 @@ var BattleEndLayer = cc.Layer.extend({
             rewardLabel.setPosition(cc.p(this._battleEndLayerFit.rewardLabelPointX, offsetY));
             this.addChild(rewardLabel);
 
-            offsetY -= 45;
+            offsetY -= 53;
         }
 
         var okItem = cc.MenuItemImage.createWithIcon(

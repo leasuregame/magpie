@@ -687,7 +687,7 @@ var Player = (function(_super) {
                 msg: '找不到目标卡牌'
             });
         }
-        var source_cards = this.getCards(sources);
+        var source_cards = this.popCards(sources);
         if (source_cards.length == 0) {
             return cb({
                 code: 501,

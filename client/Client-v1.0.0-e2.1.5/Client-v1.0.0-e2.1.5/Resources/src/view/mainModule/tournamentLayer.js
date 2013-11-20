@@ -211,7 +211,7 @@ var TournamentLayer = cc.Layer.extend({
             this._rewardLabel.setVisible(true);
             this._rewardItem.setVisible(reward.canReceive);
         } else {
-            this._rewardLabel.setVisible(false);
+            this._rewardLabel.setString("所有奖励已经领取完");
             this._rewardItem.setVisible(false);
         }
     },

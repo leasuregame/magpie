@@ -564,6 +564,7 @@ var main_scene_image = {
     icon288: main_scene_path + "icon288.png",
     icon289: main_scene_path + "icon289.png",
     icon290: main_scene_path + "icon290.png",
+    icon291: main_scene_path + "icon291.png",
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
@@ -622,9 +623,9 @@ var main_scene_image = {
     uiEffect29: "res/ccb/uiEffect29.ccbi",
     uiEffect30: "res/ccb/uiEffect30.ccbi",
     uiEffect31: "res/ccb/uiEffect31.ccbi",
-//    uiEffect32: "res/ccb/uiEffect32.ccbi",
-//    uiEffect33: "res/ccb/uiEffect33.ccbi",
-//    uiEffect34: "res/ccb/uiEffect34.ccbi",
+    uiEffect32: "res/ccb/uiEffect32.ccbi",
+    uiEffect33: "res/ccb/uiEffect33.ccbi",
+    uiEffect34: "res/ccb/uiEffect34.ccbi",
 //    uiEffect35: "res/ccb/uiEffect35.ccbi",
 //    uiEffect36: "res/ccb/uiEffect36.ccbi",
 //    uiEffect37: "res/ccb/uiEffect37.ccbi",
@@ -774,6 +775,19 @@ var main_scene_image = {
     up71: "res/effect/uiEffect/up71.png",
     up72: "res/effect/uiEffect/up72.png",
     up73: "res/effect/uiEffect/up73.png",
+    up74: "res/effect/uiEffect/up74.png",
+    up75: "res/effect/uiEffect/up75.png",
+    up76: "res/effect/uiEffect/up76.png",
+    up77: "res/effect/uiEffect/up77.png",
+    up78: "res/effect/uiEffect/up78.png",
+    up79: "res/effect/uiEffect/up79.png",
+    up80: "res/effect/uiEffect/up80.png",
+    up81: "res/effect/uiEffect/up81.png",
+    up82: "res/effect/uiEffect/up82.png",
+    up83: "res/effect/uiEffect/up83.png",
+    up84: "res/effect/uiEffect/up84.png",
+    up85: "res/effect/uiEffect/up85.png",
+
 
 
     // 新手特效

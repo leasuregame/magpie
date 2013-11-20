@@ -132,6 +132,9 @@ var SpiritDetails = LazyLayer.extend({
             this
         );
         this._upgradeItem.setPosition(this._spiritDetailsFit.upgradeItemPoint);
+        var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect33, this);
+        ccbNode.setPosition(cc.p(75, 35));
+        this._upgradeItem.addChild(ccbNode);
 
         var closeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,

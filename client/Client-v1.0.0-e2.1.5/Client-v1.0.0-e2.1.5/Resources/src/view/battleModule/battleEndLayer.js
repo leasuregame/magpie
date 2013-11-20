@@ -33,7 +33,8 @@ var BattleEndLayer = cc.Layer.extend({
         var isWin = this._battleLog.isWin();
 
         if (isWin) {
-            var winBgSprite = cc.Sprite.create(main_scene_image.bg17);
+            //var winBgSprite = cc.Sprite.create(main_scene_image.bg17);
+            var winBgSprite = cc.BuilderReader.load(main_scene_image.uiEffect17, this);
             winBgSprite.setPosition(this._battleEndLayerFit.winBgSpritePoint);
             this.addChild(winBgSprite);
 
@@ -41,7 +42,8 @@ var BattleEndLayer = cc.Layer.extend({
             obtainSprite.setPosition(this._battleEndLayerFit.obtainSpritePoint);
             this.addChild(obtainSprite);
         } else {
-            var failBgSprite = cc.Sprite.create(main_scene_image.bg18);
+            //var failBgSprite = cc.Sprite.create(main_scene_image.bg18);
+            var failBgSprite = cc.BuilderReader.load(main_scene_image.uiEffect18, this);
             failBgSprite.setPosition(this._battleEndLayerFit.failBgSpritePoint);
             this.addChild(failBgSprite);
         }
@@ -76,7 +78,7 @@ var BattleEndLayer = cc.Layer.extend({
             rewardLabel.setPosition(cc.p(this._battleEndLayerFit.rewardLabelPointX, offsetY));
             this.addChild(rewardLabel);
 
-            offsetY -= 45;
+            offsetY -= 53;
         }
 
         var okItem = cc.MenuItemImage.createWithIcon(
@@ -88,10 +90,18 @@ var BattleEndLayer = cc.Layer.extend({
         );
         okItem.setPosition(this._battleEndLayerFit.okItemPoint);
 
-        var menu = cc.Menu.create(okItem);
+        var replayItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button9,
+            main_scene_image.button9s,
+            main_scene_image.icon291,
+            this.replay,
+            this
+        );
+        replayItem.setPosition(this._battleEndLayerFit.replayItemPoint);
+
+        var menu = cc.Menu.create(okItem, replayItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
-
 
         this.setVisible(false);
 
@@ -110,7 +120,15 @@ var BattleEndLayer = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         BattlePlayer.getInstance().next();
+    },
+
+    replay: function () {
+        cc.log("BattleEndLayer replay");
+
+        BattlePlayer.getInstance().next();
+        BattlePlayer.getInstance().play(this._battleLog.get("id"), true);
     }
+
 });
 
 

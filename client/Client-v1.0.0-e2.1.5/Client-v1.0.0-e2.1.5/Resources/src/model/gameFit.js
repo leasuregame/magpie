@@ -24,12 +24,13 @@ var fit4Iphone4 = {
     "battleScene": {
         "battleEndLayer": {
             "bgLayerPoint": cc.p(40, 0),
-            "winBgSpritePoint": cc.p(360, 492),
-            "obtainSpritePoint": cc.p(360, 638),
+            "winBgSpritePoint": cc.p(360, 512),
+            "obtainSpritePoint": cc.p(360, 668),
             "failBgSpritePoint": cc.p(360, 492),
             "rewardLabelPointX": 360,
-            "offsetYHeight": 567,
-            "okItemPoint": cc.p(360, 327)
+            "offsetYHeight": 587,
+            "okItemPoint": cc.p(285, 267),
+            "replayItemPoint": cc.p(435, 267)
         },
         "batterLayer": {
             "bgSpriteRect": cc.rect(0, 88, 640, 960),
@@ -312,7 +313,8 @@ var fit4Iphone4 = {
             "scrollViewContentSize": cc.size(6400, 569),
             "scrollViewPoint": cc.p(40, 106),
             "pointX": -600,
-            "closeBoxSpritePoint2": cc.p(360, 1025)
+            "closeBoxSpritePoint2": cc.p(360, 1025),
+            "passEffectPoint": cc.p(360, 578)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -1051,11 +1053,12 @@ var fit4Iphone5 = {
         "battleEndLayer": {
             "bgLayerPoint": cc.p(0, 0),
             "winBgSpritePoint": cc.p(320, 580),
-            "obtainSpritePoint": cc.p(320, 718),
+            "obtainSpritePoint": cc.p(320, 738),
             "failBgSpritePoint": cc.p(320, 580),
             "rewardLabelPointX": 320,
             "offsetYHeight": 655,
-            "okItemPoint": cc.p(320, 415)
+            "okItemPoint": cc.p(245, 345),
+            "replayItemPoint": cc.p(395, 345)
         },
         "batterLayer": {
             "bgSpriteRect": cc.rect(0, 0, 640, 1136),
@@ -1338,7 +1341,8 @@ var fit4Iphone5 = {
             "scrollViewContentSize": cc.size(6400, 569),
             "scrollViewPoint": cc.p(0, 194),
             "pointX": -640,
-            "closeBoxSpritePoint2": cc.p(320, 1025)
+            "closeBoxSpritePoint2": cc.p(320, 1025),
+            "passEffectPoint": cc.p(320, 706)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(0, 106),

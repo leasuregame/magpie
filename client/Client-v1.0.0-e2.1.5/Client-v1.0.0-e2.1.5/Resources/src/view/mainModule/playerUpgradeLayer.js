@@ -47,14 +47,18 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         layer.setPosition(cc.p(0, 0));
         this.addChild(layer);
 
-        var bgSprite = cc.Scale9Sprite.create(main_scene_image.icon259);
-        bgSprite.setContentSize(cc.size(450, 400));
-        bgSprite.setPosition(this._playerUpgradeLayerFit.bgSpritePoint);
-        layer.addChild(bgSprite);
+//        var bgSprite = cc.Scale9Sprite.create(main_scene_image.icon259);
+//        bgSprite.setContentSize(cc.size(450, 400));
+//        bgSprite.setPosition(this._playerUpgradeLayerFit.bgSpritePoint);
+//        layer.addChild(bgSprite);
 
-        var obtainSprite = cc.Sprite.create(main_scene_image.icon258);
-        obtainSprite.setPosition(this._playerUpgradeLayerFit.obtainSpritePoint);
-        layer.addChild(obtainSprite);
+        var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect32, this);
+        ccbNode.setPosition(this._playerUpgradeLayerFit.bgSpritePoint);
+        layer.addChild(ccbNode);
+
+//        var obtainSprite = cc.Sprite.create(main_scene_image.icon258);
+//        obtainSprite.setPosition(this._playerUpgradeLayerFit.obtainSpritePoint);
+//        layer.addChild(obtainSprite);
 
         var str = lz.getRewardString(data);
         var len = str.length;

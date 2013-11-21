@@ -66,12 +66,8 @@ var fit4Iphone4 = {
 
     "loginScene": {
         "loginLayer": {
-            "accountLabelPoint": cc.p(150, 500),
-            "passwordLabelPoint": cc.p(150, 400),
-            "accountEditBoxPoint": cc.p(380, 500),
-            "passwordEditBoxPoint": cc.p(380, 400),
-            "loginButtonPoint": cc.p(260, 250),
-            "registerButtonPoint": cc.p(460, 250)
+            "bgEffectPoint": cc.p(360, 488),
+            "loginFramePoint": cc.p(360, 520)
         },
         "logoutLayer": {
             "bgLayerPoint": cc.p(40, 0),
@@ -79,8 +75,16 @@ var fit4Iphone4 = {
             "msgBgIconPoint": cc.p(360, 620),
             "msgLabelPoint": cc.p(360, 620),
             "cancelItemPoint": cc.p(360, 520)
+        },
+        "newPlayerLayer": {
+            "newPlayerFramePoint": cc.p(360, 568)
+        },
+        "registerLayer": {
+            "registerFramePoint": cc.p(360, 568)
+        },
+        "selectAreaLayer": {
+            "selectAreaFramePoint": cc.p(360, 568)
         }
-
     },
 
     "mainScene": {
@@ -1096,12 +1100,8 @@ var fit4Iphone5 = {
 
     "loginScene": {
         "loginLayer": {
-            "accountLabelPoint": cc.p(110, 500),
-            "passwordLabelPoint": cc.p(110, 400),
-            "accountEditBoxPoint": cc.p(340, 500),
-            "passwordEditBoxPoint": cc.p(340, 400),
-            "loginButtonPoint": cc.p(220, 250),
-            "registerButtonPoint": cc.p(420, 250)
+            "bgEffectPoint": cc.p(320, 568),
+            "loginFramePoint": cc.p(320, 568)
         },
         "logoutLayer": {
             "bgLayerPoint": cc.p(0, 0),
@@ -1109,6 +1109,15 @@ var fit4Iphone5 = {
             "msgBgIconPoint": cc.p(320, 620),
             "msgLabelPoint": cc.p(320, 620),
             "cancelItemPoint": cc.p(320, 520)
+        },
+        "newPlayerLayer": {
+            "newPlayerFramePoint": cc.p(320, 568)
+        },
+        "registerLayer": {
+            "registerFramePoint": cc.p(320, 568)
+        },
+        "selectAreaLayer": {
+            "selectAreaFramePoint": cc.p(320, 568)
         }
 
     },

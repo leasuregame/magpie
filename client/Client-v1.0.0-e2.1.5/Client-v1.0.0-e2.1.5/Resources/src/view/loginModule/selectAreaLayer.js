@@ -6,7 +6,8 @@
  * To change this template use File | Settings | File Templates.
  */
 
-var SelectAreaLayer = LazyLayer.extend({
+var SelectAreaLayer = cc.Layer.extend({
+    _selectAreaLayerFit: null,
 
     _areaList: null,
 
@@ -32,29 +33,32 @@ var SelectAreaLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this._selectAreaLayerFit = gameFit.loginScene.selectAreaLayer;
+
         this._areaList = areaList;
 
-        var selectAreaEffect = cc.BuilderReader.load(main_scene_image.uiEffect38, this);
-        selectAreaEffect.setPosition(cc.p(320, 568));
-        this.addChild(selectAreaEffect, 1);
+        var selectAreaFrame = cc.BuilderReader.load(main_scene_image.uiEffect38, this);
+        selectAreaFrame.setPosition(this._selectAreaLayerFit.selectAreaFramePoint);
+        this.addChild(selectAreaFrame, 1);
 
-        //var scrollViewLayer = cc.Layer.create();
-        var scrollViewLayer = MarkLayer.create(cc.rect(-320, -300, 640, 400));
+        var scrollViewLayer = MarkLayer.create(cc.rect(0, 28, 640, 400));
         var len = this._areaList.length;
 
         var scrollViewHeight = len * 70 + 10;
         if (scrollViewHeight < 400) {
             scrollViewHeight = 400;
         }
-        var menu = cc.Menu.create();
+        var menu = LazyMenu.create();
+        menu.setTouchPriority(-200);
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
 
         var scrollView = cc.ScrollView.create(cc.size(640, 400), scrollViewLayer);
+        scrollView.setTouchPriority(-300);
         scrollView.setPosition(cc.p(-320, -300));
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();
-        selectAreaEffect.controller.areaList.addChild(scrollView, 1);
+        selectAreaFrame.controller.areaList.addChild(scrollView, 1);
 
         for (var i = 0; i < len; ++i) {
 
@@ -71,14 +75,16 @@ var SelectAreaLayer = LazyLayer.extend({
 
             var areaLabel = StrokeLabel.create(area.desc, "STHeitiTC-Medium", 35);
             areaLabel.setColor(area.color);
-            areaLabel.setPosition(cc.p(180, scrollViewHeight - i * 70 - 90));
-            scrollView.addChild(areaLabel);
+            areaLabel.setPosition(cc.p(300, 30));
+            areaItem.addChild(areaLabel);
 
             menu.addChild(areaItem);
         }
 
         scrollView.setContentSize(cc.size(640, scrollViewHeight));
         scrollView.setContentOffset(scrollView.minContainerOffset());
+
+        this.selectAreaFrame = selectAreaFrame;
 
         return true;
     },
@@ -105,6 +111,8 @@ var SelectAreaLayer = LazyLayer.extend({
             var parent = this.getParent();
             parent.updateSelectAreaName(id);
             this.removeFromParent();
+
+            cc.log(this.selectAreaFrame.controller.areaList.convertToWorldSpace(cc.p(0, 0)));
         }
     }
 });

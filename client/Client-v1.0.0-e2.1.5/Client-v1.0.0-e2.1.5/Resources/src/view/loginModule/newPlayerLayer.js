@@ -9,6 +9,8 @@
 
 
 var NewPlayerLayer = cc.Layer.extend({
+    _newPlayerLayerFit: null,
+
     onEnter: function () {
         cc.log("NewPlayerLayer onEnter");
 
@@ -30,8 +32,10 @@ var NewPlayerLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._newPlayerLayerFit = gameFit.loginScene.newPlayerLayer;
+
         var newPlayerFrame = cc.BuilderReader.load(main_scene_image.uiEffect40, this);
-        newPlayerFrame.setPosition(cc.p(320, 568));
+        newPlayerFrame.setPosition(this._newPlayerLayerFit.newPlayerFramePoint);
         this.addChild(newPlayerFrame);
 
         var playerNameLabel = newPlayerFrame.controller.playerNameLabel;
@@ -93,7 +97,7 @@ var NewPlayerLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        this.getParent().switchLayer(LoginLayer);
+        this.removeFromParent();
     }
 });
 

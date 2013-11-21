@@ -313,6 +313,18 @@ var FriendLayer = cc.Layer.extend({
             abilityLabel.setPosition(cc.p(157, y + 36));
             scrollViewLayer.addChild(abilityLabel);
 
+            var giveCountLabel = cc.LabelTTF.create("送出祝福: " + friendList[i].giveCount, "STHeitiTC-Medium", 22);
+            giveCountLabel.setColor(cc.c3b(56, 3, 5));
+            giveCountLabel.setAnchorPoint(cc.p(0, 0.5));
+            giveCountLabel.setPosition(cc.p(250, y + 80));
+            scrollViewLayer.addChild(giveCountLabel);
+
+            var receiveCountLabel = cc.LabelTTF.create("收到祝福: " + friendList[i].receiveCount, "STHeitiTC-Medium", 22);
+            receiveCountLabel.setColor(cc.c3b(56, 3, 5));
+            receiveCountLabel.setAnchorPoint(cc.p(0, 0.5));
+            receiveCountLabel.setPosition(cc.p(250, y + 41));
+            scrollViewLayer.addChild(receiveCountLabel);
+
             var friendItem = cc.MenuItemImage.create(
                 main_scene_image.button15,
                 main_scene_image.button15s,

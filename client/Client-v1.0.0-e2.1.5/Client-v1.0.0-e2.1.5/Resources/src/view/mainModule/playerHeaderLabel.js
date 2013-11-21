@@ -81,7 +81,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this.addChild(this._moneyLabel);
 
         var powerIcon = cc.Sprite.create(main_scene_image.icon150);
-        powerIcon.setPosition(cc.p(360,38));
+        powerIcon.setPosition(cc.p(360, 38));
         this.addChild(powerIcon);
 
         this._powerLabel = cc.LabelTTF.create("0 / 0", "STHeitiTC-Medium", 22);

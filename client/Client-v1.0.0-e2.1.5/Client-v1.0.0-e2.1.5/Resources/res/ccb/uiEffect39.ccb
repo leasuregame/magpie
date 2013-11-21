@@ -345,7 +345,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -992,7 +992,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>255</integer>
+										<integer>0</integer>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -1052,6 +1052,130 @@
 											</dict>
 										</array>
 									</dict>
+									<dict>
+										<key>baseClass</key>
+										<string>CCNode</string>
+										<key>children</key>
+										<array/>
+										<key>customClass</key>
+										<string></string>
+										<key>displayName</key>
+										<string>CCNode</string>
+										<key>memberVarAssignmentName</key>
+										<string>accountLabel</string>
+										<key>memberVarAssignmentType</key>
+										<integer>1</integer>
+										<key>properties</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>position</string>
+												<key>type</key>
+												<string>Position</string>
+												<key>value</key>
+												<array>
+													<real>0.0</real>
+													<real>85</real>
+													<integer>0</integer>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>anchorPoint</string>
+												<key>type</key>
+												<string>Point</string>
+												<key>value</key>
+												<array>
+													<real>0.0</real>
+													<real>0.0</real>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>scale</string>
+												<key>type</key>
+												<string>ScaleLock</string>
+												<key>value</key>
+												<array>
+													<real>1</real>
+													<real>1</real>
+													<false/>
+													<integer>0</integer>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>ignoreAnchorPointForPosition</string>
+												<key>type</key>
+												<string>Check</string>
+												<key>value</key>
+												<false/>
+											</dict>
+										</array>
+									</dict>
+									<dict>
+										<key>baseClass</key>
+										<string>CCNode</string>
+										<key>children</key>
+										<array/>
+										<key>customClass</key>
+										<string></string>
+										<key>displayName</key>
+										<string>CCNode</string>
+										<key>memberVarAssignmentName</key>
+										<string>passwordLabel</string>
+										<key>memberVarAssignmentType</key>
+										<integer>1</integer>
+										<key>properties</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>position</string>
+												<key>type</key>
+												<string>Position</string>
+												<key>value</key>
+												<array>
+													<real>0.0</real>
+													<real>170</real>
+													<integer>0</integer>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>anchorPoint</string>
+												<key>type</key>
+												<string>Point</string>
+												<key>value</key>
+												<array>
+													<real>0.0</real>
+													<real>0.0</real>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>scale</string>
+												<key>type</key>
+												<string>ScaleLock</string>
+												<key>value</key>
+												<array>
+													<real>1</real>
+													<real>1</real>
+													<false/>
+													<integer>0</integer>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>ignoreAnchorPointForPosition</string>
+												<key>type</key>
+												<string>Check</string>
+												<key>value</key>
+												<false/>
+											</dict>
+										</array>
+										<key>selected</key>
+										<true/>
+									</dict>
 								</array>
 								<key>customClass</key>
 								<string></string>
@@ -1075,216 +1199,6 @@
 											<integer>0</integer>
 										</array>
 									</dict>
-									<dict>
-										<key>name</key>
-										<string>anchorPoint</string>
-										<key>type</key>
-										<string>Point</string>
-										<key>value</key>
-										<array>
-											<real>0.0</real>
-											<real>0.0</real>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>scale</string>
-										<key>type</key>
-										<string>ScaleLock</string>
-										<key>value</key>
-										<array>
-											<real>1</real>
-											<real>1</real>
-											<false/>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>ignoreAnchorPointForPosition</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-								</array>
-							</dict>
-							<dict>
-								<key>baseClass</key>
-								<string>CCNode</string>
-								<key>children</key>
-								<array>
-									<dict>
-										<key>baseClass</key>
-										<string>CCNode</string>
-										<key>children</key>
-										<array/>
-										<key>customClass</key>
-										<string></string>
-										<key>displayName</key>
-										<string>CCNode</string>
-										<key>memberVarAssignmentName</key>
-										<string>accountLabel</string>
-										<key>memberVarAssignmentType</key>
-										<integer>1</integer>
-										<key>properties</key>
-										<array>
-											<dict>
-												<key>name</key>
-												<string>anchorPoint</string>
-												<key>type</key>
-												<string>Point</string>
-												<key>value</key>
-												<array>
-													<real>0.0</real>
-													<real>0.0</real>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>scale</string>
-												<key>type</key>
-												<string>ScaleLock</string>
-												<key>value</key>
-												<array>
-													<real>1</real>
-													<real>1</real>
-													<false/>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>ignoreAnchorPointForPosition</string>
-												<key>type</key>
-												<string>Check</string>
-												<key>value</key>
-												<false/>
-											</dict>
-										</array>
-									</dict>
-								</array>
-								<key>customClass</key>
-								<string></string>
-								<key>displayName</key>
-								<string>CCNode</string>
-								<key>memberVarAssignmentName</key>
-								<string></string>
-								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
-								<key>properties</key>
-								<array>
-									<dict>
-										<key>name</key>
-										<string>position</string>
-										<key>type</key>
-										<string>Position</string>
-										<key>value</key>
-										<array>
-											<real>0.0</real>
-											<real>85</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>anchorPoint</string>
-										<key>type</key>
-										<string>Point</string>
-										<key>value</key>
-										<array>
-											<real>0.0</real>
-											<real>0.0</real>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>scale</string>
-										<key>type</key>
-										<string>ScaleLock</string>
-										<key>value</key>
-										<array>
-											<real>1</real>
-											<real>1</real>
-											<false/>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>ignoreAnchorPointForPosition</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-								</array>
-							</dict>
-							<dict>
-								<key>baseClass</key>
-								<string>CCNode</string>
-								<key>children</key>
-								<array>
-									<dict>
-										<key>baseClass</key>
-										<string>CCNode</string>
-										<key>children</key>
-										<array/>
-										<key>customClass</key>
-										<string></string>
-										<key>displayName</key>
-										<string>CCNode</string>
-										<key>memberVarAssignmentName</key>
-										<string>passwordLabel</string>
-										<key>memberVarAssignmentType</key>
-										<integer>1</integer>
-										<key>properties</key>
-										<array>
-											<dict>
-												<key>name</key>
-												<string>anchorPoint</string>
-												<key>type</key>
-												<string>Point</string>
-												<key>value</key>
-												<array>
-													<real>0.0</real>
-													<real>0.0</real>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>scale</string>
-												<key>type</key>
-												<string>ScaleLock</string>
-												<key>value</key>
-												<array>
-													<real>1</real>
-													<real>1</real>
-													<false/>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>ignoreAnchorPointForPosition</string>
-												<key>type</key>
-												<string>Check</string>
-												<key>value</key>
-												<false/>
-											</dict>
-										</array>
-									</dict>
-								</array>
-								<key>customClass</key>
-								<string></string>
-								<key>displayName</key>
-								<string>CCNode</string>
-								<key>memberVarAssignmentName</key>
-								<string></string>
-								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
-								<key>properties</key>
-								<array>
 									<dict>
 										<key>name</key>
 										<string>anchorPoint</string>
@@ -1388,7 +1302,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>-800</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1515,7 +1429,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.56666666269302368</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

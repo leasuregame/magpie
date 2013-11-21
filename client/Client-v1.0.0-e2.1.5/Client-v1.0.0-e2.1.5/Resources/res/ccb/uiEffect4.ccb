@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -331,7 +331,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>200</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>baseValue</key>
@@ -647,8 +647,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>4</real>
+									<real>4</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -661,7 +661,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>60</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -690,7 +690,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -949,8 +949,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>4</real>
+									<real>4</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -963,7 +963,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>-60</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -992,7 +992,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1775,8 +1775,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>3.5</real>
-									<real>3.5</real>
+									<real>10</real>
+									<real>10</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1789,7 +1789,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-80</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2255,8 +2255,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>3.5</real>
-									<real>3.5</real>
+									<real>13</real>
+									<real>13</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -2269,7 +2269,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-80</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -2479,7 +2479,7 @@
 			<key>name</key>
 			<string>animation_1</string>
 			<key>offset</key>
-			<real>1.3130247592926025</real>
+			<real>2.0903563499450684</real>
 			<key>position</key>
 			<real>3</real>
 			<key>resolution</key>
@@ -2546,7 +2546,7 @@
 			<key>name</key>
 			<string>animation_2</string>
 			<key>offset</key>
-			<real>1.7860817909240723</real>
+			<real>0.0</real>
 			<key>position</key>
 			<real>4.5</real>
 			<key>resolution</key>
@@ -2558,7 +2558,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>2.2999999523162842</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/spirit_upgrade_sound.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

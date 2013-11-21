@@ -249,15 +249,15 @@ var Player = (function(_super) {
     Player.DEFAULT_VALUES = {
         power: {
             time: 0,
-            value: 150
+            value: 500
         },
         lv: 1,
         vip: 0,
         vipBox: [],
         cash: 0,
         exp: 0,
-        money: 5000,
-        gold: 100,
+        money: 10000,
+        gold: 20,
         lineUp: '12:-1',
         ability: 0,
         task: {

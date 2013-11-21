@@ -1,6 +1,9 @@
 dao = require('pomelo').app.get('dao')
 async = require('async')
 
+CHINESE_REG = /^[\u4e00-\u9fa5]{1,6}$/
+EMPTY_SPACE_REG = /\s+/g
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -11,6 +14,12 @@ Handler::createPlayer = (msg, session, next) ->
   areaId = session.get('areaId') or msg.areaId
   userId = session.get('userId') or msg.userId
   uid = session.uid
+
+  if EMPTY_SPACE_REG.test(name)
+    return next(null, {code: 501, msg: '角色名称不能包含空格'})
+
+  if not CHINESE_REG.test(name)
+    return next(null, {code: 501, msg: '只能输入1-6为汉字'})
 
   @app.rpc.area.playerRemote.createPlayer session, {
     name: name

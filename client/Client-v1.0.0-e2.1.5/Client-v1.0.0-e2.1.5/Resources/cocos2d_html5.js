@@ -110,6 +110,7 @@
             'src/view/loginModule/logoutLayer.js',
             'src/view/loginModule/newPlayerLayer.js',
             'src/view/loginModule/registerLayer.js',
+            'src/view/loginModule/selectAreaLayer.js',
 
             'src/view/mainModule/effect.js',
 

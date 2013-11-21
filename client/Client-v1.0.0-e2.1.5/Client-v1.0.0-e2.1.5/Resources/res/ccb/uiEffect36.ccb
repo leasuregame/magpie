@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -295,7 +295,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -609,7 +609,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>152</real>
+								<real>30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -843,7 +843,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-152</real>
+								<real>-30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -925,7 +925,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>3.8888888359069824</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1695,7 +1695,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>3.8888888359069824</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1810,7 +1810,7 @@
 	<array>
 		<dict>
 			<key>autoPlay</key>
-			<false/>
+			<true/>
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
@@ -1844,7 +1844,7 @@
 		</dict>
 		<dict>
 			<key>autoPlay</key>
-			<true/>
+			<false/>
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>

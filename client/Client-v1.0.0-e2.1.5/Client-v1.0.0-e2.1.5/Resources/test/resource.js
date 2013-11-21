@@ -686,6 +686,7 @@ var main_scene_image = {
     up104: effect_scene_path + "uiEffect/" + "up104.png",
     up105: effect_scene_path + "uiEffect/" + "up105.png",
     up106: effect_scene_path + "uiEffect/" + "up106.png",
+    up107: effect_scene_path + "uiEffect/" + "up107.png",
 
 
 

@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -295,7 +295,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -609,7 +609,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>17.999998092651367</real>
+								<real>152</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -638,7 +638,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>170</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -843,7 +843,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-17.999998092651367</real>
+								<real>-152</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -872,7 +872,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>170</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -925,7 +925,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>3.8888888359069824</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1632,8 +1632,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.1666667461395264</real>
-									<real>1.1666667461395264</real>
+									<real>1</real>
+									<real>1</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1695,7 +1695,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>3.8888888359069824</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1786,8 +1786,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -1829,7 +1827,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.96666663885116577</real>
+			<real>1.1666666269302368</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -1863,7 +1861,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>2</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

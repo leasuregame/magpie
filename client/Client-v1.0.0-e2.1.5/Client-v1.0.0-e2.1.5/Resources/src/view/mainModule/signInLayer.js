@@ -72,14 +72,6 @@ var SignInLayer = LazyLayer.extend({
         titleLabel.setPosition(this._signInLayerFit.titleLabelPoint);
         this.addChild(titleLabel);
 
-//        var closeItem = cc.MenuItemImage.create(
-//            main_scene_image.button37,
-//            main_scene_image.button37s,
-//            this._onClickClose,
-//            this
-//        );
-//        closeItem.setPosition(cc.p(645, 940));
-
         this._turnLeftItem = cc.MenuItemImage.create(
             main_scene_image.icon37,
             main_scene_image.icon37,
@@ -133,7 +125,6 @@ var SignInLayer = LazyLayer.extend({
         this.addChild(spend);
 
         var menu = cc.Menu.create(
-//            closeItem,
             this._turnLeftItem,
             this._turnRightItem,
             this._signInItem,
@@ -212,11 +203,6 @@ var SignInLayer = LazyLayer.extend({
             readyRewardItem.setPosition(point);
             menu.addChild(readyRewardItem);
             readyRewardItem.setVisible(false);
-
-//            var readyRewardIcon = cc.Sprite.create(main_scene_image.icon274);
-//            readyRewardIcon.setPosition(point);
-//            this.addChild(readyRewardIcon);
-//            readyRewardIcon.setVisible(false);
 
             var alreadyRewardIcon = cc.Sprite.create(main_scene_image.icon194);
             alreadyRewardIcon.setPosition(point);
@@ -298,8 +284,6 @@ var SignInLayer = LazyLayer.extend({
                 this._elementList[i].rewardItem.setVisible(!visible);
             }
         }
-
-
     },
 
     _onClickClose: function () {
@@ -338,7 +322,6 @@ var SignInLayer = LazyLayer.extend({
             that.update();
 
             lz.tipReward(data);
-
         });
     },
 

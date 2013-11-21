@@ -609,7 +609,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>17.999998092651367</real>
+								<real>30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -638,7 +638,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>170</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -843,7 +843,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>-17.999998092651367</real>
+								<real>-30</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -872,7 +872,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>170</integer>
+								<integer>255</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1632,8 +1632,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1.1666667461395264</real>
-									<real>1.1666667461395264</real>
+									<real>1</real>
+									<real>1</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1786,8 +1786,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -1812,7 +1810,7 @@
 	<array>
 		<dict>
 			<key>autoPlay</key>
-			<false/>
+			<true/>
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
@@ -1829,7 +1827,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.96666663885116577</real>
+			<real>1.1666666269302368</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -1846,7 +1844,7 @@
 		</dict>
 		<dict>
 			<key>autoPlay</key>
-			<true/>
+			<false/>
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
@@ -1863,7 +1861,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>2</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

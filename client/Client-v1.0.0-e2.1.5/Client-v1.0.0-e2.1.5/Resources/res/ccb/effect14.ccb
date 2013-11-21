@@ -250,8 +250,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -1840,7 +1838,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/card2_skill.png</string>
+											<string>res/main/spirit_1_skill.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1854,6 +1852,8 @@
 										<integer>153</integer>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>

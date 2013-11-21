@@ -63,23 +63,14 @@ var main_scene_image = {
 
     card0: main_scene_path + "card0.png",
 
-    spirit1: main_scene_path + "spirit1.png",
-    spirit2: main_scene_path + "spirit2.png",
-    spirit3: main_scene_path + "spirit3.png",
-    spirit4: main_scene_path + "spirit4.png",
-    spirit5: main_scene_path + "spirit5.png",
-    spirit6: main_scene_path + "spirit6.png",
-    spirit7: main_scene_path + "spirit7.png",
-    spirit8: main_scene_path + "spirit8.png",
-    spirit9: main_scene_path + "spirit9.png",
-    spirit10: main_scene_path + "spirit10.png",
-
     spirit_1_0: main_scene_path + "spirit_1_0.png",
     spirit_1_1: main_scene_path + "spirit_1_1.png",
     spirit_1_2: main_scene_path + "spirit_1_2.png",
     spirit_1_3: main_scene_path + "spirit_1_3.png",
     spirit_1_4: main_scene_path + "spirit_1_4.png",
     spirit_1_5: main_scene_path + "spirit_1_5.png",
+
+    spirit_1_skill: main_scene_path + "spirit_1_skill.png",
 
     spirit_side: main_scene_path + "spirit_side.png",
 

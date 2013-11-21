@@ -126,6 +126,7 @@ var main_scene_image = {
     num_red_8: main_scene_path + "num_red_8.png",
     num_red_9: main_scene_path + "num_red_9.png",
 
+    edit: main_scene_path + "edit.png",
     edit1: main_scene_path + "edit1.png",
     edit2: main_scene_path + "edit2.png",
     edit3: main_scene_path + "edit3.png",

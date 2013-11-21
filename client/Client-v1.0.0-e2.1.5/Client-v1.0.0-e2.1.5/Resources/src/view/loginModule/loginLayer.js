@@ -49,13 +49,12 @@ var LoginLayer = cc.Layer.extend({
 
         this._loginLayerFit = gameFit.loginScene.loginLayer;
 
-
         var bgEffect = cc.BuilderReader.load(main_scene_image.uiEffect36, this);
-        bgEffect.setPosition(cc.p(320, 568));
+        bgEffect.setPosition(this._loginLayerFit.bgEffectPoint);
         this.addChild(bgEffect);
 
         this._loginFrame = cc.BuilderReader.load(main_scene_image.uiEffect37, this);
-        this._loginFrame.setPosition(cc.p(320, 568));
+        this._loginFrame.setPosition(this._loginLayerFit.loginFramePoint);
         this.addChild(this._loginFrame);
 
         var accountLabel = cc.LabelTTF.create("账号:", "STHeitiTC-Medium", 30);
@@ -66,22 +65,40 @@ var LoginLayer = cc.Layer.extend({
         passwordLabel.setPosition(cc.p(-210, 0));
         this._loginFrame.controller.passwordLabel.addChild(passwordLabel);
 
-        this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit2));
+        this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._accountEditBox.setPosition(cc.p(20, 0));
         this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
-        this._accountEditBox.setDelegate(this);
-        this._accountEditBox.setFont("STHeitiTC-Medium", 25);
+        this._accountEditBox.setDelegate({
+            /**
+             * This method is called when the edit box text was changed.
+             * @param {cc.EditBox} sender
+             * @param {String} text
+             */
+            editBoxTextChanged: function (sender, text) {
+
+            }
+        });
+        this._accountEditBox.setFont("STHeitiTC-Medium", 35);
         this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
-        this._accountEditBox.setMaxLength(18);
-        //this.addChild(this._accountEditBox);
+        this._accountEditBox.setMaxLength(20);
         this._loginFrame.controller.accountLabel.addChild(this._accountEditBox);
 
-        this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
+        this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._passwordEditBox.setPosition(cc.p(20, 0));
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
-        this._passwordEditBox.setDelegate(this);
+        this._passwordEditBox.setDelegate({
+            /**
+             * This method is called when the edit box text was changed.
+             * @param {cc.EditBox} sender
+             * @param {String} text
+             */
+            editBoxTextChanged: function (sender, text) {
+
+            }
+        });
+        this._passwordEditBox.setFont("STHeitiTC-Medium", 35);
         this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
-        this._passwordEditBox.setMaxLength(18);
+        this._passwordEditBox.setMaxLength(20);
         this._loginFrame.controller.passwordLabel.addChild(this._passwordEditBox);
 
         this._accountEditBox.setText(user.get("account"));
@@ -122,13 +139,13 @@ var LoginLayer = cc.Layer.extend({
             var area = this._areaList[i];
 
             if (areaId == area.id) {
-               this.updateSelectAreaName(i);
+                this.updateSelectAreaName(i);
             }
         }
 
     },
 
-    updateSelectAreaName: function(id) {
+    updateSelectAreaName: function (id) {
         cc.log("LoginLayer updateSelectAreaName");
 
         var area = this._areaList[id];
@@ -138,7 +155,7 @@ var LoginLayer = cc.Layer.extend({
         this._loginFrame.setVisible(true);
     },
 
-    updateEditBox: function() {
+    updateEditBox: function () {
 
         this._accountEditBox.setText(user.get("account"));
         this._passwordEditBox.setText(user.get("password"));
@@ -179,7 +196,10 @@ var LoginLayer = cc.Layer.extend({
             if (type == 1) {
                 cc.Director.getInstance().replaceScene(MainScene.getInstance());
             } else if (type == 2) {
-                that.getParent().switchLayer(NewPlayerLayer);
+                //that.getParent().switchLayer(NewPlayerLayer);
+                var newPlayerLayer = NewPlayerLayer.create();
+                that.addChild(newPlayerLayer);
+                that._loginFrame.setVisible(false);
             }
         });
     },

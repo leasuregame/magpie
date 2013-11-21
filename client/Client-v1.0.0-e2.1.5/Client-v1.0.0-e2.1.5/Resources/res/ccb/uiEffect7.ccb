@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -303,7 +303,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/main/card5_full1.png</string>
+									<string>res/main/card3_full1.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -314,7 +314,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -425,7 +425,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/main/card5_full3.png</string>
+									<string>res/main/card3_full3.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -436,7 +436,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -545,7 +545,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/main/card5_full2.png</string>
+									<string>res/main/card3_full2.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -556,7 +556,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -780,7 +780,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-8.4250831604003906</real>
+									<real>0.0</real>
 									<real>-255.52796936035156</real>
 									<integer>0</integer>
 								</array>
@@ -817,7 +817,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>540</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -846,7 +846,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1015,7 +1015,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-8.4250831604003906</real>
+									<real>0.0</real>
 									<real>-255.52796936035156</real>
 									<integer>0</integer>
 								</array>
@@ -1052,7 +1052,7 @@
 								<key>type</key>
 								<string>Degrees</string>
 								<key>value</key>
-								<real>540</real>
+								<real>0.0</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1081,7 +1081,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1508,106 +1508,6 @@
 									<key>type</key>
 									<integer>5</integer>
 								</dict>
-								<key>scale</key>
-								<dict>
-									<key>keyframes</key>
-									<array>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>1</integer>
-											</dict>
-											<key>name</key>
-											<string>scale</string>
-											<key>time</key>
-											<real>0.0</real>
-											<key>type</key>
-											<integer>4</integer>
-											<key>value</key>
-											<array>
-												<real>3</real>
-												<real>3</real>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>1</integer>
-											</dict>
-											<key>name</key>
-											<string>scale</string>
-											<key>time</key>
-											<real>1.2333333492279053</real>
-											<key>type</key>
-											<integer>4</integer>
-											<key>value</key>
-											<array>
-												<real>3.2000000476837158</real>
-												<real>3.2000000476837158</real>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>1</integer>
-											</dict>
-											<key>name</key>
-											<string>scale</string>
-											<key>time</key>
-											<real>2.5</real>
-											<key>type</key>
-											<integer>4</integer>
-											<key>value</key>
-											<array>
-												<real>3</real>
-												<real>3</real>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>1</integer>
-											</dict>
-											<key>name</key>
-											<string>scale</string>
-											<key>time</key>
-											<real>3.7333333492279053</real>
-											<key>type</key>
-											<integer>4</integer>
-											<key>value</key>
-											<array>
-												<real>3.2000000476837158</real>
-												<real>3.2000000476837158</real>
-											</array>
-										</dict>
-										<dict>
-											<key>easing</key>
-											<dict>
-												<key>type</key>
-												<integer>1</integer>
-											</dict>
-											<key>name</key>
-											<string>scale</string>
-											<key>time</key>
-											<real>5</real>
-											<key>type</key>
-											<integer>4</integer>
-											<key>value</key>
-											<array>
-												<real>3</real>
-												<real>3</real>
-											</array>
-										</dict>
-									</array>
-									<key>name</key>
-									<string>scale</string>
-									<key>type</key>
-									<integer>4</integer>
-								</dict>
 							</dict>
 						</dict>
 						<key>baseClass</key>
@@ -1626,18 +1526,6 @@
 						<array>
 							<dict>
 								<key>name</key>
-								<string>position</string>
-								<key>type</key>
-								<string>Position</string>
-								<key>value</key>
-								<array>
-									<real>-6</real>
-									<real>0.0</real>
-									<integer>0</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>anchorPoint</string>
 								<key>type</key>
 								<string>Point</string>
@@ -1648,19 +1536,14 @@
 								</array>
 							</dict>
 							<dict>
-								<key>baseValue</key>
-								<array>
-									<real>3</real>
-									<real>3</real>
-								</array>
 								<key>name</key>
 								<string>scale</string>
 								<key>type</key>
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>3</real>
-									<real>3</real>
+									<real>2.5</real>
+									<real>2.5</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1692,7 +1575,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>100</integer>
+								<integer>0</integer>
 							</dict>
 							<dict>
 								<key>baseValue</key>
@@ -1707,8 +1590,8 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>254</integer>
-									<integer>255</integer>
+									<integer>245</integer>
+									<integer>144</integer>
 									<integer>255</integer>
 								</array>
 							</dict>
@@ -1918,7 +1801,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2172,7 +2055,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -2232,7 +2115,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2493,6 +2376,8 @@
 						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -2600,7 +2485,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>3.5</real>
+			<real>1</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -2634,7 +2519,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>5</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

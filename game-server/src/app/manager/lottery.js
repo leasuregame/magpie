@@ -13,17 +13,10 @@
 
 var cardConfig = require('../../config/data/card');
 var utility = require('../common/utility');
+var entityUtil = require('../util/entityUtil');
 var Card = require('../domain/entity/card');
 var table = require('../manager/table');
 var _ = require("underscore");
-
-var tableIds = table.getTable('cards').filter(function(id) {
-    return id <= 250;
-}).map(function(item) {
-    return parseInt(item.id);
-}).sort(function(x, y) {
-    return x - y;
-});
 
 var lottery = function (level, type, rFragments, hFragment, hCounts) {
     var card = newCard(level, hCounts);
@@ -123,7 +116,7 @@ var gen_card_fragment = function (level, rCounts, hCounts) {
 
 var newCard = function (level, hCounts) {
     var card_star = parseInt(gen_card_star(level, hCounts));
-    var card_id = randomCardId(card_star);
+    var card_id = entityUtil.randomCardId(card_star);
     var card_level = parseInt(gen_card_level(card_star));
 
     return {

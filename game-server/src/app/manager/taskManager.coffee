@@ -91,9 +91,8 @@ class Manager
   @openBox: (player, data, cb) ->
     _obj = taskRate.open_box.star
 
-    _rd_star = utility.randomValue(_.keys(_obj), _.values(_obj))
-    _card_table_id = randomCard(_rd_star)
-    
+    _rd_star = parseInt utility.randomValue(_.keys(_obj), _.values(_obj))
+    _card_table_id = entityUtil.randomCardId(_rd_star)
     entityUtil.createCard {
       star: _rd_star
       tableId: _card_table_id
@@ -188,11 +187,6 @@ class Manager
         card.addPassiveSkills pss
 
         cb(null, card)
-
-randomCard = (star) ->
-  ids = _.range(parseInt(star), 250, 5)
-  index = _.random(0, ids.length - 1)
-  ids[index]
 
 bornPassiveSkill = () ->
   born_rates = psConfig.BORN_RATES

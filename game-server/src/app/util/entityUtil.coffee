@@ -54,6 +54,14 @@ module.exports =
       
     cb(isUpgrade, rewards)
 
+  randomCardId: (star) ->
+    tableIds = table.getTable('cards').filter((id) -> id <= 250)
+        .map((item) -> parseInt(item.id))
+        .sort((x, y) -> x - y)
+    len = tableIds.length
+    idx = _.random(0, len/5 - 1) * 5 + parseInt(star) - 1
+    tableIds[idx]
+
 genSkillInc = (card) ->
   cdata = table.getTableItem('cards', card.tableId)
   skill = cdata.skill_id_linktarget

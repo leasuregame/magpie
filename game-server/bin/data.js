@@ -20,6 +20,27 @@ var Data = function(db, dir) {
 
 };
 
+Data.prototype.deleteUnUsedCards = function() {
+  var tableIds = table.getTable('cards').filter(function(id) {
+    return id <= 250;
+  }).map(function(item) {
+    return parseInt(item.id);
+  });
+  this.db['card'].delete({
+    where: ' tableId not in (' + tableIds.toString() + ', 30000)'
+  }, function(err, res) {
+    console.log('delete result:', err, res)
+  });
+
+  this.db['player'].update({
+    where: {1: 1},
+    data: {
+    lineUp: '12:-1'
+  }}, function(err, res) {
+    console.log('updated players: ', err, res);
+  });
+};
+
 Data.prototype.importCsvToSql = function(table, filepath, callback) {
   var self = this;
   csv()
@@ -157,7 +178,9 @@ Data.prototype.loadRobotUser = function(areaId, callback) {
         roles: JSON.stringify([areaId])
       };
 
-      self.db.user.create({data: userData}, cb)
+      self.db.user.create({
+        data: userData
+      }, cb)
     })
     .on('error', function(error) {
       console.log('load csv error:', error.message);

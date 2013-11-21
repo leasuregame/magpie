@@ -26,7 +26,7 @@ var BattleEndLayer = cc.Layer.extend({
 
         this._battleLog = battleLog;
 
-        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 100), 640, 1136);
         bgLayer.setPosition(this._battleEndLayerFit.bgLayerPoint);
         this.addChild(bgLayer);
 

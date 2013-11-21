@@ -64,7 +64,6 @@ Handler::login = (msg, session, next) ->
         @app.rpc.area.playerRemote.getPlayerByUserId session, user.id, @app.getServerId(), (err, res) ->
           if err
             logger.error 'fail to get player by user id', err
-            return cb(err)
           player = res
           cb()
       else

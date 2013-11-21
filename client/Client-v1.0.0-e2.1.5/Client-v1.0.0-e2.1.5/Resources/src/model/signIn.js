@@ -70,7 +70,7 @@ var SignIn = Entity.extend({
                     that.update(msg);
 
                     gameMark.updateSignInMark(false);
-                    
+
                     lz.dc.event("event_sign_in_record");
                 } else {
                     cc.log("sync fail");
@@ -168,6 +168,8 @@ var SignIn = Entity.extend({
                 lz.dc.event("event_sign_in");
             } else {
                 cc.log("signIn fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },
@@ -200,6 +202,8 @@ var SignIn = Entity.extend({
                 lz.dc.event("event_remedy_sign_in");
             } else {
                 cc.log("remedySignIn fail");
+
+                TipLayer.tip(data.msg);
             }
         });
     },

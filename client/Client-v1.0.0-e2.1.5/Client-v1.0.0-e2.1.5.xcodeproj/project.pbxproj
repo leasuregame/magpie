@@ -316,7 +316,6 @@
 		90D49C3617CAF81800A22DB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D49C3517CAF81800A22DB2 /* Foundation.framework */; };
 		90D49C3817CAF81800A22DB2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D49C3717CAF81800A22DB2 /* CoreGraphics.framework */; };
 		90D49C4017CAF81800A22DB2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D49C3F17CAF81800A22DB2 /* Default.png */; };
-		90D49C4217CAF81800A22DB2 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D49C4117CAF81800A22DB2 /* HelloWorld.png */; };
 		90D49C4417CAF81800A22DB2 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D49C4317CAF81800A22DB2 /* Icon-72.png */; };
 		90D49C4617CAF81800A22DB2 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D49C4517CAF81800A22DB2 /* Icon-Small-50.png */; };
 		90D49C4817CAF81800A22DB2 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 90D49C4717CAF81800A22DB2 /* Icon-Small.png */; };
@@ -2715,7 +2714,6 @@
 				906E946A17CDAD5D0038DF64 /* main_binding.js in Resources */,
 				907884931839457000906496 /* README.txt in Resources */,
 				90D49C4017CAF81800A22DB2 /* Default.png in Resources */,
-				90D49C4217CAF81800A22DB2 /* HelloWorld.png in Resources */,
 				907885B61839457000906496 /* js.msg in Resources */,
 				907884D81839457000906496 /* CMakeLists.txt in Resources */,
 				90D49C4417CAF81800A22DB2 /* Icon-72.png in Resources */,

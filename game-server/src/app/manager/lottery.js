@@ -17,6 +17,11 @@ var Card = require('../domain/entity/card');
 var table = require('../manager/table');
 var _ = require("underscore");
 
+var tableIds = table.getTable('card').filter(function(id) {
+    return id <= 250;
+}).map(function(item) {
+    return item.id;
+});
 
 var lottery = function (level, type, rFragments, hFragment, hCounts) {
     var card = newCard(level, hCounts);
@@ -46,6 +51,8 @@ var freeLottery = function(level, eids) {
  * 2：高级抽卡
  * */
 var randomCardId = function (star) {
+    //len = tableIds.length
+
     return _.random(0, 49) * 5 + star;
 };
 
@@ -126,9 +133,10 @@ var newCard = function (level, hCounts) {
 };
 
 var freeCard = function(star) {
+    var firstCard = table.getTableItem('first_card', 1)
     var idMap = {
-        3: [13, 43, 48, 28, 148, 153, 183, 123, 18, 108, 73, 78, 103, 213, 8],
-        4: [59, 99, 129]
+        3: firstCard.star3,
+        4: firstCard.star4
     };
     return {
         tableId: idMap[star][_.random(0, idMap[star].length-1)],

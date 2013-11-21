@@ -71,11 +71,13 @@ var StrokeLabel = cc.Node.extend({
     },
 
     setString: function (text) {
+
         this._strLabel.setString(text);
 
         for (var i = 0; i < BG_LABEL_COUNT; ++i) {
             this._strBgLabel[i].setString(text);
         }
+
     },
 
     setColor: function (color3) {

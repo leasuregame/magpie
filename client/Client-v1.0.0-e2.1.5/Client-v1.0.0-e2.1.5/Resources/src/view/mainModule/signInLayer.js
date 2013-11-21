@@ -284,8 +284,6 @@ var SignInLayer = LazyLayer.extend({
                 this._elementList[i].rewardItem.setVisible(!visible);
             }
         }
-
-
     },
 
     _onClickClose: function () {

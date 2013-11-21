@@ -1552,10 +1552,10 @@ var fit4Iphone5 = {
             "headIconPoint": cc.p(0, 1050),
             "battleMessageLayerItemPoint": cc.p(71, 1090),
             "friendMessageLayerItemPoint": cc.p(214, 1090),
-            "systemMessageLayerItemPoint": cc.p(357, 1090),
+            "systemMessageLayerItemPoint": cc.p(361, 1090),
             "battleMessageIconPoint": cc.p(71, 1085),
             "friendMessageIconPoint": cc.p(214, 1085),
-            "systemMessageIconPoint": cc.p(357, 1085),
+            "systemMessageIconPoint": cc.p(361, 1085),
             "bgSpritePoint": cc.p(0, 106)
         },
         "noviceTeachingLayer": {

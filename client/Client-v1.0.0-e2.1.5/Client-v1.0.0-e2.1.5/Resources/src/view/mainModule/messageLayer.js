@@ -69,7 +69,7 @@ var MessageLayer = cc.Layer.extend({
         this._friendMessageLayerItem.setPosition(this._messageLayerFit.friendMessageLayerItemPoint);
 
         this._friendMessageMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
-        this._friendMessageMark.setPosition(cc.p(135, 50));
+        this._friendMessageMark.setPosition(cc.p(125, 50));
         this._friendMessageMark.setVisible(false);
         this._friendMessageLayerItem.addChild(this._friendMessageMark, 3);
 
@@ -83,9 +83,9 @@ var MessageLayer = cc.Layer.extend({
         this._systemMessageLayerItem.setPosition(this._messageLayerFit.systemMessageLayerItemPoint);
 
         this._systemMessageMark = cc.BuilderReader.load(main_scene_image.uiEffect34, this);
-        this._systemMessageMark.setPosition(cc.p(135, 50));
+        this._systemMessageMark.setPosition(cc.p(125, 50));
         this._systemMessageMark.setVisible(false);
-        this._systemMessageLayerItem.addChild(this._systemMessageMark), 3;
+        this._systemMessageLayerItem.addChild(this._systemMessageMark, 3);
 
         var menu = cc.Menu.create(
             this._battleMessageLayerItem,

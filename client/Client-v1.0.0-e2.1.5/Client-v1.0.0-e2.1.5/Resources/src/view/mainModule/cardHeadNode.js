@@ -36,8 +36,6 @@ var CardHeadNode = cc.Node.extend({
             newCardMark = this._card.get("newCardMark");
         }
 
-        cc.log(url);
-
         this._cardSprite = cc.Sprite.create(main_scene_image[url]);
         this._cardSprite.setAnchorPoint(cc.p(0, 0));
         this._cardSprite.setPosition(cc.p(0, 6));
@@ -48,11 +46,10 @@ var CardHeadNode = cc.Node.extend({
         this.addChild(this._frameSprite);
 
         if (newCardMark) {
-            var newCardMarkIcon = cc.LabelTTF.create("新", "STHeitiTC-Medium", 22);
+            var newCardMarkIcon = cc.Sprite.create(main_scene_image.icon93);
             newCardMarkIcon.setPosition(cc.p(20, 26));
             this.addChild(newCardMarkIcon);
         }
-
 
         this.setContentSize(cc.size(108, 108));
 

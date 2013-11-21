@@ -56,4 +56,6 @@ make build
 ./node_modules/.bin/pomelo start production --daemon
 cd ../gm && make runserver2 && cd ../game-server
 
-tail ./logs/node-log-area-server-1.log
+tail -n 100 ./logs/node-log-area-server-1.log
+http://124.238.236.33:3003
+test, 123

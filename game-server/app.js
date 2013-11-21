@@ -8,6 +8,7 @@ var msgQueue = require('./app/common/msgQueue');
 var argsFilter = require('./app/servers/area/filter/argsFilter');
 var loginFilter = require('./app/servers/connector/filter/loginFilter');
 var areaUtil = require('./app/util/areaUtil');
+var counter = require('./app/components/counter');
 /**
  * Init app for client.
  */
@@ -123,6 +124,8 @@ app.configure('production|development', 'area', function() {
     dbclient: dbclient,
     interval: 60000
   }});
+
+  //app.load(counter,  {interval: 3000});
 });
 
 app.configure('production|development', 'connector|auth|area', function() {

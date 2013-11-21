@@ -10,11 +10,11 @@ exp = module.exports = {
 		ASKING: 1,
 		ACCEPT: 2,
 		REJECT: 3,
-		HANDLED: 4,
-		UNHANDLED: 5,
+		UNHANDLED: 4,
+		HANDLED: 5,		
 		NOTICE: 6
 	},
-	FINALSTATUS: [2, 3, 4, 6]
+	FINALSTATUS: [2, 3, 5, 6]
 };
 
 exp.TYPE_MAP = {}

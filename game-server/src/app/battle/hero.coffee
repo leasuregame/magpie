@@ -37,7 +37,7 @@ class Hero extends Module
     @atk_only = attrs.atk
 
     @card_id = attrs.tableId
-    @skill_lv = attrs.skillLv or 0
+    @skill_lv = attrs.skillLv or 1
     @skill_inc = attrs.skillInc
     @sp_value = attrs.passiveSkills or []
     

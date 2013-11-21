@@ -81,8 +81,7 @@ loaddata:
 
 data-for-test: build
 	node ./data/test/loadUserData.js production
-	node ./data/test/dao.js csv production
-	node ./data/test/dao.js rank4Sina production
+	node ./data/test/dao.js robot production
 
 pfm-data:
 	node ./pfmTest/userData.js

@@ -857,7 +857,11 @@ var main_scene_res = [
     //effect
 ];
 
-for (var cardId = 1; cardId <= 6; ++cardId) {
+var cardResIdList = [3, 9, 12, 25, 31, 36, 38, 39, 44, 50];
+
+for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
+    var cardId = cardResIdList[cardIndex];
+
     main_scene_image["card" + cardId + "_head1"] = main_scene_path + "card" + cardId + "_head1.png";
     main_scene_image["card" + cardId + "_head2"] = main_scene_path + "card" + cardId + "_head2.png";
     main_scene_image["card" + cardId + "_head3"] = main_scene_path + "card" + cardId + "_head3.png";
@@ -869,6 +873,8 @@ for (var cardId = 1; cardId <= 6; ++cardId) {
     main_scene_image["card" + cardId + "_full1"] = main_scene_path + "card" + cardId + "_full1.png";
     main_scene_image["card" + cardId + "_full2"] = main_scene_path + "card" + cardId + "_full2.png";
     main_scene_image["card" + cardId + "_full3"] = main_scene_path + "card" + cardId + "_full3.png";
+
+    main_scene_image["card" + cardId + "_skill"] = main_scene_path + "card" + cardId + "_skill.png";
 }
 
 for (var cardId = 10000; cardId <= 10032; ++cardId) {

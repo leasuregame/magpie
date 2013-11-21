@@ -29,11 +29,11 @@ var FriendDao = (function(_super) {
     FriendDao.getFriends = function(playerId, cb) {
         var sql = 'select p.id, p.name, p.lv, p.ability, f.giveCount, f.receiveCount from player as p \
             join friend as f on p.id = f.friendId \
-            where f.playerId = 1 \
+            where f.playerId =  ? \
             union \
             select p.id, p.name, p.lv, p.ability, f.receiveCount as giveCount, f.giveCount as receiveCount from player as p \
             join friend as f on p.id = f.playerId \
-            where f.friendId = 1';
+            where f.friendId = ?';
         var args = [playerId, playerId];
 
         return dbClient.query(sql, args, function(err, res) {
@@ -47,7 +47,6 @@ var FriendDao = (function(_super) {
             }
 
             if ( !!res && res.length > 0) {
-                console.log('aa--aa: ', res);
                 cb(null, res.map(function(r) {
                     return {
                         id: r.id,

@@ -71,12 +71,12 @@ class Manager
         results = []
         leftIds = []
         for id in _ids 
-          cache = @getPlayerFromCache(id)
+          cache = @getPlayerFromCache(id)          
           if cache
             results.push {
               id: cache.id
               name: cache.name
-              cards: (cache.activeCards().sort (x, y) -> x.ability() < y.ability()).map (c) -> playerId: c.playerId, tableId: c.tableId
+              cards: cache.activeCards().map (c) -> playerId: c.playerId, tableId: c.tableId, star: c.star
             }
           else 
             leftIds.push id

@@ -103,7 +103,9 @@ Handler::messageList = (msg, session, next) ->
 
     (cb) ->
       dao.message.fetchMany {
-        where: " receiver = #{playerId} and type in (#{msgConfig.MESSAGETYPE.SYSTEM}, #{msgConfig.MESSAGETYPE.ADDFRIEND}, #{msgConfig.MESSAGETYPE.MESSAGE}) "
+        where: " receiver = #{playerId} and 
+          type in (#{msgConfig.MESSAGETYPE.SYSTEM}, #{msgConfig.MESSAGETYPE.ADDFRIEND}, #{msgConfig.MESSAGETYPE.MESSAGE}) and 
+          status <> #{msgConfig.MESSAGESTATUS.ASKING}"
         limit: 20,
         orderby: ' createTime DESC '
       }, cb

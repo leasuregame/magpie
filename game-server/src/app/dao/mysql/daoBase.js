@@ -64,7 +64,7 @@ var DaoBase = (function() {
     _.extend(data, options.data);
     options.table = options.table || this.table;
 
-    if (_.contains(this.domain.FIELDS, 'createTime')){
+    if (_.contains(this.domain.FIELDS, 'createTime') && !data.createTime){
       data.createTime = Date.now();
     }
 

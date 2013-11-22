@@ -11,7 +11,7 @@ var OnlineUserDao = (function(_super) {
 		OnlineUserDao.__super__.constructor.apply(this, arguments);
 	}
 
-	OnlineUserDao.table = 'friend';
+	OnlineUserDao.table = 'onlineUser';
 
 	var domain = function(attrs) {
 		this.id = attrs.id;

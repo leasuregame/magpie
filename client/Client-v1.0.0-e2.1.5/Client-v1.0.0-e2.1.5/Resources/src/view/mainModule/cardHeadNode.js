@@ -46,11 +46,10 @@ var CardHeadNode = cc.Node.extend({
         this.addChild(this._frameSprite);
 
         if (newCardMark) {
-            var newCardMarkIcon = cc.LabelTTF.create("新", "STHeitiTC-Medium", 22);
+            var newCardMarkIcon = cc.Sprite.create(main_scene_image.icon93);
             newCardMarkIcon.setPosition(cc.p(20, 26));
             this.addChild(newCardMarkIcon);
         }
-
 
         this.setContentSize(cc.size(108, 108));
 

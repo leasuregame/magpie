@@ -719,6 +719,7 @@ var main_scene_image = {
     13: effect_scene_path + "test/" + "13.png",
     14: effect_scene_path + "test/" + "14.png",
     15: effect_scene_path + "test/" + "15.png",
+    16: effect_scene_path + "test/" + "16.png",
 
 
 

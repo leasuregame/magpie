@@ -249,15 +249,15 @@ var Player = (function(_super) {
     Player.DEFAULT_VALUES = {
         power: {
             time: 0,
-            value: 150
+            value: 500
         },
         lv: 1,
         vip: 0,
         vipBox: [],
         cash: 0,
         exp: 0,
-        money: 5000,
-        gold: 100,
+        money: 10000,
+        gold: 20,
         lineUp: '12:-1',
         ability: 0,
         task: {
@@ -440,6 +440,11 @@ var Player = (function(_super) {
 
             incs.spirit_hp += _hp;
             incs.spirit_atk += _atk;
+
+            // 最小值为1
+            incs.spirit_hp = _.max([incs.spirit_hp, 1]);
+            incs.spirit_atk = _.max([incs.spirit_atk, 1]);
+
             _.extend(card.incs, incs);
             card.recountHpAndAtk();
         }
@@ -649,9 +654,8 @@ var Player = (function(_super) {
     };
 
     Player.prototype.givePower = function(hour, value) {
-        var max_power = getMaxPower(this.lv);
         var power = utility.deepCopy(this.power);
-        power.value = _.min([power.value + value, max_power]);
+        power.value += value;
         power.time = Date.now();
         this.updatePower(power);
 
@@ -687,7 +691,7 @@ var Player = (function(_super) {
                 msg: '找不到目标卡牌'
             });
         }
-        var source_cards = this.getCards(sources);
+        var source_cards = this.popCards(sources);
         if (source_cards.length == 0) {
             return cb({
                 code: 501,

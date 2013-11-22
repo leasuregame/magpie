@@ -14,6 +14,7 @@ entityUtil = require '../../../util/entityUtil'
 job = require '../../../dao/job'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
+logger = require('pomelo-logger').getLogger(__filename)
 
 MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
 LOTTERY_BY_GOLD = 1
@@ -236,7 +237,10 @@ Handler::skillUpgrade = (msg, session, next) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
 
-    card.save()
+    card.emit 'persist', _.extend(id: card.id, card.getSaveData()), (err, res) -> 
+      if err
+        logger.error('faild to save card data.', err)
+
     player.save()
     next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need, ability: card.ability()}})
 

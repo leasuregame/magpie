@@ -360,7 +360,7 @@ var main_scene_image = {
     icon90: main_scene_path + "icon90.png",
     icon91: main_scene_path + "icon91.png",
     icon92: main_scene_path + "icon92.png",
-//    icon93: main_scene_path + "icon93.png",
+    icon93: main_scene_path + "icon93.png",
     icon94: main_scene_path + "icon94.png",
 //    icon95: main_scene_path + "icon95.png",
     icon96: main_scene_path + "icon96.png",
@@ -787,7 +787,7 @@ var main_scene_image = {
     up91: "res/effect/uiEffect/up91.png",
     up92: "res/effect/uiEffect/up92.png",
     up93: "res/effect/uiEffect/up93.png",
-   // up94: "res/effect/uiEffect/up94.png",
+    // up94: "res/effect/uiEffect/up94.png",
     up95: "res/effect/uiEffect/up95.png",
     up96: "res/effect/uiEffect/up96.png",
     up97: "res/effect/uiEffect/up97.png",
@@ -798,7 +798,6 @@ var main_scene_image = {
     up102: "res/effect/uiEffect/up102.png",
     up103: "res/effect/uiEffect/up103.png",
     up104: "res/effect/uiEffect/up104.png",
-
 
 
     // 新手特效
@@ -857,7 +856,11 @@ var main_scene_res = [
     //effect
 ];
 
-for (var cardId = 1; cardId <= 6; ++cardId) {
+var cardResIdList = [3, 9, 12, 25, 31, 36, 38, 39, 44, 50];
+
+for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
+    var cardId = cardResIdList[cardIndex];
+
     main_scene_image["card" + cardId + "_head1"] = main_scene_path + "card" + cardId + "_head1.png";
     main_scene_image["card" + cardId + "_head2"] = main_scene_path + "card" + cardId + "_head2.png";
     main_scene_image["card" + cardId + "_head3"] = main_scene_path + "card" + cardId + "_head3.png";
@@ -869,6 +872,8 @@ for (var cardId = 1; cardId <= 6; ++cardId) {
     main_scene_image["card" + cardId + "_full1"] = main_scene_path + "card" + cardId + "_full1.png";
     main_scene_image["card" + cardId + "_full2"] = main_scene_path + "card" + cardId + "_full2.png";
     main_scene_image["card" + cardId + "_full3"] = main_scene_path + "card" + cardId + "_full3.png";
+
+    main_scene_image["card" + cardId + "_skill"] = main_scene_path + "card" + cardId + "_skill.png";
 }
 
 for (var cardId = 10000; cardId <= 10032; ++cardId) {

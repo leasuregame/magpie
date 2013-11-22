@@ -3,7 +3,8 @@ utility = require '../../../common/utility'
 logger = require('pomelo-logger').getLogger(__filename)
 _ = require 'underscore'
 
-ACCOUNT_REG = /^[\w+]{6,20}$/
+EMAIL_REG = /^(?=\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$).{6,50}$/
+ACCOUNT_REG = /[\w+]{6,50}$/
 PASSWORD_REG = /^[a-zA-Z0-9]{6,20}$/
 EMPTY_SPACE_REG = /\s+/g
 
@@ -19,11 +20,11 @@ Handler::register = (msg, session, next) ->
   if EMPTY_SPACE_REG.test(account) or EMPTY_SPACE_REG.test(password)
     return next(null, {code: 501, msg: '用户名或密码不能包含空格'})
 
-  if not account? or not password?
+  if not account? or account == '' or not password? or password == ''
     return next(null, {code: 501, msg: '用户名或密码不能为空'})
 
   if not ACCOUNT_REG.test(account)
-    return next(null, {code: 501, msg: '用户名只能由6-20的字母/数字/_/@/.'})
+    return next(null, {code: 501, msg: '用户名只能由6-50的字母/数字/_/@/.'})
 
   if not PASSWORD_REG.test(password)
     return next(null, {code: 501, msg: '密码只能有6-20的数字或字母组成'})

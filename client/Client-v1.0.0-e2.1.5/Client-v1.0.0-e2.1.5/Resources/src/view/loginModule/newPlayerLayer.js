@@ -38,8 +38,8 @@ var NewPlayerLayer = cc.Layer.extend({
         newPlayerFrame.setPosition(this._newPlayerLayerFit.newPlayerFramePoint);
         this.addChild(newPlayerFrame);
 
-        this._nameEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
-        //this._nameEditBox.setAnchorPoint(cc.p(0, 0.5));
+        this._nameEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
+        this._nameEditBox.setAnchorPoint(cc.p(0, 0.5));
 
         this._nameEditBox.setPosition(cc.p(0, 0));
         this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);

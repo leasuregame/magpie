@@ -47,8 +47,8 @@ var RegisterLayer = cc.Layer.extend({
         this.addChild(registerFrame);
 
 
-        this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
-       // this._accountEditBox.setAnchorPoint(cc.p(0, 0.5));
+        this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._accountEditBox.setAnchorPoint(cc.p(0, 0.5));
         this._accountEditBox.setPosition(cc.p(0, 0));
         this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
         this._accountEditBox.setDelegate({
@@ -84,7 +84,7 @@ var RegisterLayer = cc.Layer.extend({
         this._accountEditBox.setMaxLength(18);
         registerFrame.controller.accountLabel.addChild(this._accountEditBox);
 
-        this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
+        this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._passwordEditBox.setAnchorPoint(cc.p(0, 0.5));
         this._passwordEditBox.setPosition(cc.p(0, 0));
 
@@ -103,7 +103,7 @@ var RegisterLayer = cc.Layer.extend({
         this._passwordEditBox.setMaxLength(18);
         registerFrame.controller.passwordLabel.addChild(this._passwordEditBox);
 
-        this._passwordAgainEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
+        this._passwordAgainEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._passwordAgainEditBox.setAnchorPoint(cc.p(0, 0.5));
         this._passwordAgainEditBox.setPosition(cc.p(0, 0));
 

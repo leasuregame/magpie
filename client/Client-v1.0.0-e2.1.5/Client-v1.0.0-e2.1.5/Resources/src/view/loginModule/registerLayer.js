@@ -47,83 +47,91 @@ var RegisterLayer = cc.Layer.extend({
         this.addChild(registerFrame);
 
 
-        this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._accountEditBox = cc.EditBox.create(cc.size(350, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._accountEditBox.setAnchorPoint(cc.p(0, 0.5));
         this._accountEditBox.setPosition(cc.p(0, 0));
+        this._accountEditBox.setPlaceHolder("推荐使用电话号码或邮箱");
         this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
         this._accountEditBox.setDelegate({
-            /**
-             * This method is called when an edit box gains focus after keyboard is shown.
-             * @param {cc.EditBox} sender
-             */
-            editBoxEditingDidBegin: function (sender) {
-                var point = sender.getPosition();
-                cc.log("point: x = " + point.x + " y = " + point.y);
-            },
-
             /**
              * This method is called when an edit box loses focus after keyboard is hidden.
              * @param {cc.EditBox} sender
              */
             editBoxEditingDidEnd: function (sender) {
-                var point = sender.getPosition();
-                cc.log("point: x = " + point.x + " y = " + point.y);
-            },
-
-            /**
-             * This method is called when the edit box text was changed.
-             * @param {cc.EditBox} sender
-             * @param {String} text
-             */
-            editBoxTextChanged: function (sender, text) {
-
+                var text = sender.getText();
+                if (CHINESE_REG.test(text) == true) {
+                    TipLayer.tip("账号不能包含中文");
+                } else if (EMPTY_SPACE_REG.test(text) == true) {
+                    TipLayer.tip("账号不能包含空格");
+                } else if (ACCOUNT_REG.test(text) == false) {
+                    TipLayer.tip("账号不能包含非法字符");
+                }
             }
         });
-        this._accountEditBox.setFont("STHeitiTC-Medium", 35);
+        this._accountEditBox.setFont("STHeitiTC-Medium", 30);
         this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._accountEditBox.setMaxLength(18);
+        this._accountEditBox.setVisible(false);
         registerFrame.controller.accountLabel.addChild(this._accountEditBox);
 
-        this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._passwordEditBox = cc.EditBox.create(cc.size(350, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._passwordEditBox.setAnchorPoint(cc.p(0, 0.5));
         this._passwordEditBox.setPosition(cc.p(0, 0));
-
+        this._passwordEditBox.setPlaceHolder("6-20位数字或者字母");
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordEditBox.setDelegate({
             /**
-             * This method is called when the edit box text was changed.
+             * This method is called when an edit box loses focus after keyboard is hidden.
              * @param {cc.EditBox} sender
-             * @param {String} text
              */
-            editBoxTextChanged: function (sender, text) {
-
+            editBoxEditingDidEnd: function (sender) {
+                var text = sender.getText();
+                if (CHINESE_REG.test(text) == true) {
+                    TipLayer.tip("密码不能包含中文");
+                } else if (EMPTY_SPACE_REG.test(text) == true) {
+                    TipLayer.tip("密码不能包含空格");
+                } else if (PASSWORD_REG.test(text) == false) {
+                    TipLayer.tip("密码不能包含非法字符");
+                }
             }
         });
+        this._passwordEditBox.setFont("STHeitiTC-Medium", 30);
         this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._passwordEditBox.setMaxLength(18);
+        this._passwordEditBox.setVisible(false);
         registerFrame.controller.passwordLabel.addChild(this._passwordEditBox);
 
-        this._passwordAgainEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._passwordAgainEditBox = cc.EditBox.create(cc.size(350, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._passwordAgainEditBox.setAnchorPoint(cc.p(0, 0.5));
         this._passwordAgainEditBox.setPosition(cc.p(0, 0));
-
+        this._passwordAgainEditBox.setPlaceHolder("6-20位数字或者字母");
         this._passwordAgainEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordAgainEditBox.setDelegate({
             /**
-             * This method is called when the edit box text was changed.
+             * This method is called when an edit box loses focus after keyboard is hidden.
              * @param {cc.EditBox} sender
-             * @param {String} text
              */
-            editBoxTextChanged: function (sender, text) {
-
+            editBoxEditingDidEnd: function (sender) {
+                if (CHINESE_REG.test(text) == true) {
+                    TipLayer.tip("密码不能包含中文");
+                } else if (EMPTY_SPACE_REG.test(text) == true) {
+                    TipLayer.tip("密码不能包含空格");
+                } else if (PASSWORD_REG.test(text) == false) {
+                    TipLayer.tip("密码不能包含非法字符");
+                }
             }
         });
+        this._passwordAgainEditBox.setFont("STHeitiTC-Medium", 30);
         this._passwordAgainEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._passwordAgainEditBox.setMaxLength(18);
+        this._passwordAgainEditBox.setVisible(false);
         registerFrame.controller.passwordAgainLabel.addChild(this._passwordAgainEditBox);
 
-
-        this._accountEditBox.setText("123213");
+        registerFrame.animationManager.setCompletedAnimationCallback(this, function () {
+            this._accountEditBox.setVisible(true);
+            this._passwordEditBox.setVisible(true);
+            this._passwordAgainEditBox.setVisible(true);
+        });
 
         return true;
     },

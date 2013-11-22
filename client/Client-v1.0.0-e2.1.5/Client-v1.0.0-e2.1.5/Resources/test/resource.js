@@ -693,6 +693,7 @@ var main_scene_image = {
 
 
     texiao5: ccb_scene_path + "texiao5.ccbi",
+    texiao6: ccb_scene_path + "texiao6.ccbi",
     texiao8: ccb_scene_path + "texiao8.ccbi",
     tutorials1: ccb_scene_path + "tutorials1.ccbi",
     tutorials2: ccb_scene_path + "tutorials2.ccbi",
@@ -716,10 +717,23 @@ var main_scene_image = {
 
 
     //testpicture
+    1: effect_scene_path + "test/" + "1.png",
+    2: effect_scene_path + "test/" + "2.png",
+    3: effect_scene_path + "test/" + "3.png",
+    4: effect_scene_path + "test/" + "4.png",
+    5: effect_scene_path + "test/" + "5.png",
+    6: effect_scene_path + "test/" + "6.png",
+    7: effect_scene_path + "test/" + "7.png",
+    8: effect_scene_path + "test/" + "8.png",
+    9: effect_scene_path + "test/" + "9.png",
+    10: effect_scene_path + "test/" + "10.png",
+    11: effect_scene_path + "test/" + "11.png",
+    12: effect_scene_path + "test/" + "12.png",
     13: effect_scene_path + "test/" + "13.png",
     14: effect_scene_path + "test/" + "14.png",
     15: effect_scene_path + "test/" + "15.png",
     16: effect_scene_path + "test/" + "16.png",
+    17: effect_scene_path + "test/" + "17.png",
 
 
 

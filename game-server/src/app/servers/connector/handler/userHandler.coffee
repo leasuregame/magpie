@@ -3,7 +3,7 @@ utility = require '../../../common/utility'
 logger = require('pomelo-logger').getLogger(__filename)
 _ = require 'underscore'
 
-ACCOUNT_REG = /^[\w+]{6,20}$/
+ACCOUNT_REG = /^[\w+@.]{6,20}$/
 PASSWORD_REG = /^[a-zA-Z0-9]{6,20}$/
 EMPTY_SPACE_REG = /\s+/g
 
@@ -23,10 +23,10 @@ Handler::register = (msg, session, next) ->
     return next(null, {code: 501, msg: '用户名或密码不能为空'})
 
   if not ACCOUNT_REG.test(account)
-    return next(null, {code: 501, msg: '用户名只能由6-20的字符串、数字或下划线组成'})
+    return next(null, {code: 501, msg: '用户名只能由6-20位的字符串、数字或下划线组成，或者是邮箱地址'})
 
   if not PASSWORD_REG.test(password)
-    return next(null, {code: 501, msg: '密码只能有6-20的数字或字母组成'})
+    return next(null, {code: 501, msg: '密码只能由6-20位的数字或字母组成'})
 
   @app.rpc.auth.authRemote.register session, {
     account: msg.account

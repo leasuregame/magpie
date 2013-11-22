@@ -689,7 +689,10 @@ var main_scene_image = {
 
 
 
-
+    texiao1: ccb_scene_path + "texiao1.ccbi",
+    texiao2: ccb_scene_path + "texiao2.ccbi",
+    texiao3: ccb_scene_path + "texiao3.ccbi",
+    texiao4: ccb_scene_path + "texiao4.ccbi",
     texiao5: ccb_scene_path + "texiao5.ccbi",
     texiao6: ccb_scene_path + "texiao6.ccbi",
     texiao8: ccb_scene_path + "texiao8.ccbi",
@@ -733,6 +736,13 @@ var main_scene_image = {
     16: effect_scene_path + "test/" + "16.png",
     17: effect_scene_path + "test/" + "17.png",
     18: effect_scene_path + "test/" + "18.png",
+    19: effect_scene_path + "test/" + "19.png",
+    20: effect_scene_path + "test/" + "20.png",
+    21: effect_scene_path + "test/" + "21.png",
+    22: effect_scene_path + "test/" + "22.png",
+    23: effect_scene_path + "test/" + "23.png",
+    24: effect_scene_path + "test/" + "24.png",
+    25: effect_scene_path + "test/" + "25.png",
 
 
 

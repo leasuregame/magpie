@@ -58,7 +58,7 @@ var BattleCardNode = cc.Node.extend({
 
         var frameSpriteTexture = lz.getTexture(main_scene_image["card_frame" + this._star]);
 
-        var num = Math.floor((this._star - 1) / 2) + 1;
+        var num = this._star > 2 ? this._star - 2 : 1;
         var cardSpriteTexture = lz.getTexture(main_scene_image[this._url + "_half" + num]);
 
         if (this._skillType > 3) {
@@ -194,6 +194,8 @@ var BattleCardNode = cc.Node.extend({
             for (var i = 0; i < len; ++i) {
                 ccbNode.controller["label" + i].setString(this._skillName[i]);
             }
+
+            ccbNode.controller.card.setTexture(lz.getTexture(main_scene_image[this._url + "_skill"]));
         }
 
         return ccbNode;

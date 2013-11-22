@@ -32,7 +32,7 @@ var CardHeadNode = cc.Node.extend({
             url = "icon12";
         } else if (this._card) {
             star = this._card.get("star");
-            url = this._card.get("url") + "_head" + (Math.floor((star - 1) / 2) + 1);
+            url = this._card.get("url") + "_head" + (star > 2 ? star - 2 : 1);
             newCardMark = this._card.get("newCardMark");
         }
 
@@ -47,7 +47,7 @@ var CardHeadNode = cc.Node.extend({
 
         if (newCardMark) {
             var newCardMarkIcon = cc.Sprite.create(main_scene_image.icon93);
-            newCardMarkIcon.setPosition(cc.p(20, 26));
+            newCardMarkIcon.setPosition(cc.p(25, 31));
             this.addChild(newCardMarkIcon);
         }
 

@@ -27,7 +27,7 @@ var CardHalfNode = cc.Node.extend({
 
         var url = this._card.get("url");
         var star = this._card.get("star");
-        var index = Math.floor((star - 1) / 2) + 1;
+        var index = star > 2 ? star - 2 : 1;
         var skillType = this._card.get("skillType");
         if (skillType > 3) {
             skillType = 3;

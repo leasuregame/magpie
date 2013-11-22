@@ -23,7 +23,7 @@ Handler::register = (msg, session, next) ->
     return next(null, {code: 501, msg: '用户名或密码不能为空'})
 
   if not ACCOUNT_REG.test(account)
-    return next(null, {code: 501, msg: '用户名只能由6-20的字符串、数字或下划线组成'})
+    return next(null, {code: 501, msg: '用户名只能由6-20的字母/数字/_/@/.'})
 
   if not PASSWORD_REG.test(password)
     return next(null, {code: 501, msg: '密码只能有6-20的数字或字母组成'})

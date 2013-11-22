@@ -18,6 +18,8 @@ var FriendDao = (function(_super) {
     var domain = function(attrs) {
         this.playerId = attrs.playerId;
         this.friendId = attrs.friendId;
+        this.giveCount = attrs.giveCount;
+        this.receiveCount = attrs.receiveCount;
     };
     domain.DEFAULT_VALUES = {};
     domain.FIELDS = ['playerId', 'friendId'];

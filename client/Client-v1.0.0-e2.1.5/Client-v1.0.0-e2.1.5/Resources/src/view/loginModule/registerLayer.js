@@ -46,6 +46,7 @@ var RegisterLayer = cc.Layer.extend({
         registerFrame.setPosition(this._registerLayerFit.registerFramePoint);
         this.addChild(registerFrame);
 
+
         this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
        // this._accountEditBox.setAnchorPoint(cc.p(0, 0.5));
         this._accountEditBox.setPosition(cc.p(0, 0));
@@ -86,6 +87,7 @@ var RegisterLayer = cc.Layer.extend({
         this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
         this._passwordEditBox.setAnchorPoint(cc.p(0, 0.5));
         this._passwordEditBox.setPosition(cc.p(0, 0));
+
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordEditBox.setDelegate({
             /**
@@ -104,6 +106,7 @@ var RegisterLayer = cc.Layer.extend({
         this._passwordAgainEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
         this._passwordAgainEditBox.setAnchorPoint(cc.p(0, 0.5));
         this._passwordAgainEditBox.setPosition(cc.p(0, 0));
+
         this._passwordAgainEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordAgainEditBox.setDelegate({
             /**
@@ -179,6 +182,7 @@ var RegisterLayer = cc.Layer.extend({
         cc.log("RegisterLayer _onClickBack");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this.getParent().updateEditBox();
         this.removeFromParent();
     }

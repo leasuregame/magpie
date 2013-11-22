@@ -29,8 +29,8 @@ var fit4Iphone4 = {
             "failBgSpritePoint": cc.p(360, 612),
             "rewardLabelPointX": 0,
             "offsetYHeight": 80,
-            "okItemPoint": cc.p(-85, -237),
-            "replayItemPoint": cc.p(85, -237),
+            "replayItemPoint": cc.p(-85, -237),
+            "okItemPoint": cc.p(85, -237),
             "fragmentEffectPoint": cc.p(360, 200)
         },
         "batterLayer": {
@@ -142,7 +142,7 @@ var fit4Iphone4 = {
         "cardDetails": {
             "bgLayerPoint": cc.p(40, 0),
             "headBgSpritePoint": cc.p(40, 905),
-            "cardFullNodePoint": cc.p(232, 682),
+            "cardFullNodePoint": cc.p(247, 682),
             "line1IconPoint": cc.p(360, 422),
             "line2IconPoint": cc.p(360, 242),
             "line3IconPoint": cc.p(360, 112),
@@ -1063,8 +1063,8 @@ var fit4Iphone5 = {
             "failBgSpritePoint": cc.p(320, 680),
             "rewardLabelPointX": 0,
             "offsetYHeight": 80,
-            "okItemPoint": cc.p(-85, -237),
-            "replayItemPoint": cc.p(85, -237),
+            "replayItemPoint": cc.p(-85, -237),
+            "okItemPoint": cc.p(85, -237),
             "fragmentEffectPoint": cc.p(320, 270)
         },
         "batterLayer": {
@@ -1177,7 +1177,7 @@ var fit4Iphone5 = {
         "cardDetails": {
             "bgLayerPoint": cc.p(0, 0),
             "headBgSpritePoint": cc.p(0, 1081),
-            "cardFullNodePoint": cc.p(192, 830),
+            "cardFullNodePoint": cc.p(207, 830),
             "line1IconPoint": cc.p(320, 555),
             "line2IconPoint": cc.p(320, 320),
             "line3IconPoint": cc.p(320, 180),

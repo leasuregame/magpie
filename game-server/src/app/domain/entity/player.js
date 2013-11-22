@@ -372,12 +372,17 @@ var Player = (function(_super) {
 
         var pass = utility.deepCopy(this.pass);
         pass.resetTimes = 1;
+        pass.mark = [];
+
+        var task = utility.deepCopy(this.task);
+        task.mark = [];
 
         var spiritPool = utility.deepCopy(this.spiritPool);
         spiritPool.collectCount = spiritConfig.MAX_COLLECT_COUNT + vipPrivilege.spirit_collect_count;
 
         this.dailyGift = dg;
         this.pass = pass;
+        this.task = task;
         this.spiritPool = spiritPool;
         this.friendsCount = realCount(this.lv, friendsCountTab) + vipPrivilege.friend_count;
         this.resetDate = utility.shortDateString();

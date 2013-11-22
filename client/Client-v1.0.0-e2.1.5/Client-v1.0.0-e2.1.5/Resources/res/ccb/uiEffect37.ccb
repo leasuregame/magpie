@@ -49,8 +49,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>225</real>
-									<real>-150</real>
+									<real>160</real>
+									<real>-180</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -164,8 +164,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>60</real>
-									<real>-150</real>
+									<real>-40</real>
+									<real>-180</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -471,8 +471,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>225</real>
-							<real>-148</real>
+							<real>160</real>
+							<real>-178</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -543,8 +543,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>60</real>
-							<real>-150</real>
+							<real>-40</real>
+							<real>-180</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -609,7 +609,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-263</real>
+									<real>-223</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -667,7 +667,7 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>up91</string>
+						<string>up94</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -726,7 +726,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/uiEffect/up91.png</string>
+									<string>res/effect/uiEffect/up94.png</string>
 								</array>
 							</dict>
 						</array>
@@ -753,7 +753,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-180</real>
+									<real>-140</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -811,7 +811,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-240</real>
+							<real>-260</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -876,7 +876,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-263</real>
+									<real>-223</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -934,7 +934,7 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>up91</string>
+						<string>up94</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -993,7 +993,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/uiEffect/up91.png</string>
+									<string>res/effect/uiEffect/up94.png</string>
 								</array>
 							</dict>
 						</array>
@@ -1020,7 +1020,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-180</real>
+									<real>-140</real>
 									<real>0.0</real>
 									<integer>0</integer>
 								</array>
@@ -1115,8 +1115,6 @@
 						<false/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -1203,9 +1201,9 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.033333335071802139</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>1.5333333015441895</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

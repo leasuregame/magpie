@@ -44,17 +44,15 @@ var main_scene_image = {
 
     card0: main_scene_path + "card0.png",
 
-    spirit1: main_scene_path + "spirit1.png",
-    spirit2: main_scene_path + "spirit2.png",
-    spirit3: main_scene_path + "spirit3.png",
-    spirit4: main_scene_path + "spirit4.png",
-    spirit5: main_scene_path + "spirit5.png",
-    spirit6: main_scene_path + "spirit6.png",
-    spirit7: main_scene_path + "spirit7.png",
-    spirit8: main_scene_path + "spirit8.png",
-    spirit9: main_scene_path + "spirit9.png",
-    spirit10: main_scene_path + "spirit10.png",
+    spirit_1_0: main_scene_path + "spirit_1_0.png",
+    spirit_1_1: main_scene_path + "spirit_1_1.png",
+    spirit_1_2: main_scene_path + "spirit_1_2.png",
+    spirit_1_3: main_scene_path + "spirit_1_3.png",
+    spirit_1_4: main_scene_path + "spirit_1_4.png",
+    spirit_1_5: main_scene_path + "spirit_1_5.png",
 
+    spirit_1_skill: main_scene_path + "spirit_1_skill.png",
+    
     spirit_side: main_scene_path + "spirit_side.png",
 
     spirit_face1: main_scene_path + "spirit_face1.png",
@@ -693,6 +691,7 @@ var main_scene_image = {
 
 
     texiao5: ccb_scene_path + "texiao5.ccbi",
+    texiao6: ccb_scene_path + "texiao6.ccbi",
     texiao8: ccb_scene_path + "texiao8.ccbi",
     tutorials1: ccb_scene_path + "tutorials1.ccbi",
     tutorials2: ccb_scene_path + "tutorials2.ccbi",
@@ -716,10 +715,24 @@ var main_scene_image = {
 
 
     //testpicture
+    1: effect_scene_path + "test/" + "1.png",
+    2: effect_scene_path + "test/" + "2.png",
+    3: effect_scene_path + "test/" + "3.png",
+    4: effect_scene_path + "test/" + "4.png",
+    5: effect_scene_path + "test/" + "5.png",
+    6: effect_scene_path + "test/" + "6.png",
+    7: effect_scene_path + "test/" + "7.png",
+    8: effect_scene_path + "test/" + "8.png",
+    9: effect_scene_path + "test/" + "9.png",
+    10: effect_scene_path + "test/" + "10.png",
+    11: effect_scene_path + "test/" + "11.png",
+    12: effect_scene_path + "test/" + "12.png",
     13: effect_scene_path + "test/" + "13.png",
     14: effect_scene_path + "test/" + "14.png",
     15: effect_scene_path + "test/" + "15.png",
     16: effect_scene_path + "test/" + "16.png",
+    17: effect_scene_path + "test/" + "17.png",
+    18: effect_scene_path + "test/" + "18.png",
 
 
 
@@ -781,6 +794,8 @@ var main_scene_image = {
     uiEffect38: ccb_scene_path + "uiEffect38.ccbi",
     uiEffect39: ccb_scene_path + "uiEffect39.ccbi",
     uiEffect40: ccb_scene_path + "uiEffect40.ccbi",
+    uiEffect41: ccb_scene_path + "uiEffect41.ccbi",
+    uiEffect42: ccb_scene_path + "uiEffect42.ccbi",
     
 };
 
@@ -793,7 +808,11 @@ var main_scene_res = [
     //effect
 ];
 
-for (var cardId = 1; cardId <= 6; ++cardId) {
+var cardResIdList = [3, 9, 12, 25, 31, 36, 38, 39, 44, 50];
+
+for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
+    var cardId = cardResIdList[cardIndex];
+
     main_scene_image["card" + cardId + "_head1"] = main_scene_path + "card" + cardId + "_head1.png";
     main_scene_image["card" + cardId + "_head2"] = main_scene_path + "card" + cardId + "_head2.png";
     main_scene_image["card" + cardId + "_head3"] = main_scene_path + "card" + cardId + "_head3.png";
@@ -805,6 +824,8 @@ for (var cardId = 1; cardId <= 6; ++cardId) {
     main_scene_image["card" + cardId + "_full1"] = main_scene_path + "card" + cardId + "_full1.png";
     main_scene_image["card" + cardId + "_full2"] = main_scene_path + "card" + cardId + "_full2.png";
     main_scene_image["card" + cardId + "_full3"] = main_scene_path + "card" + cardId + "_full3.png";
+
+    main_scene_image["card" + cardId + "_skill"] = main_scene_path + "card" + cardId + "_skill.png";
 }
 
 for (var taskId = 1; taskId <= 50; ++taskId) {

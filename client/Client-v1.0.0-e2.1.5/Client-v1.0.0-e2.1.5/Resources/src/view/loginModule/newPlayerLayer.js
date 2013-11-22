@@ -38,15 +38,23 @@ var NewPlayerLayer = cc.Layer.extend({
         newPlayerFrame.setPosition(this._newPlayerLayerFit.newPlayerFramePoint);
         this.addChild(newPlayerFrame);
 
-        var playerNameLabel = newPlayerFrame.controller.playerNameLabel;
-
-        this._nameEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit3));
+        this._nameEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        //this._nameEditBox.setAnchorPoint(cc.p(0, 0.5));
         this._nameEditBox.setPosition(cc.p(0, 0));
         this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
-        this._nameEditBox.setDelegate(this);
+        this._nameEditBox.setDelegate({
+            /**
+             * This method is called when the edit box text was changed.
+             * @param {cc.EditBox} sender
+             * @param {String} text
+             */
+            editBoxTextChanged: function (sender, text) {
+
+            }
+        });
         this._nameEditBox.setFont("STHeitiTC-Medium", 35);
         this._nameEditBox.setMaxLength(6);
-        playerNameLabel.addChild(this._nameEditBox);
+        newPlayerFrame.controller.playerNameLabel.addChild(this._nameEditBox);
 
         this._setRandomName();
 

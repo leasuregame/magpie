@@ -46,33 +46,81 @@ var RegisterLayer = cc.Layer.extend({
         registerFrame.setPosition(this._registerLayerFit.registerFramePoint);
         this.addChild(registerFrame);
 
-        var controller = registerFrame.controller;
-
-        this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._accountEditBox.setPosition(cc.p(60, 0));
+        this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
+       // this._accountEditBox.setAnchorPoint(cc.p(0, 0.5));
+        this._accountEditBox.setPosition(cc.p(0, 0));
         this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
-        this._accountEditBox.setDelegate(this);
-        this._accountEditBox.setFont("American Typewriter", 35);
+        this._accountEditBox.setDelegate({
+            /**
+             * This method is called when an edit box gains focus after keyboard is shown.
+             * @param {cc.EditBox} sender
+             */
+            editBoxEditingDidBegin: function (sender) {
+                var point = sender.getPosition();
+                cc.log("point: x = " + point.x + " y = " + point.y);
+            },
+
+            /**
+             * This method is called when an edit box loses focus after keyboard is hidden.
+             * @param {cc.EditBox} sender
+             */
+            editBoxEditingDidEnd: function (sender) {
+                var point = sender.getPosition();
+                cc.log("point: x = " + point.x + " y = " + point.y);
+            },
+
+            /**
+             * This method is called when the edit box text was changed.
+             * @param {cc.EditBox} sender
+             * @param {String} text
+             */
+            editBoxTextChanged: function (sender, text) {
+
+            }
+        });
+        this._accountEditBox.setFont("STHeitiTC-Medium", 35);
         this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._accountEditBox.setMaxLength(18);
-        controller.accountLabel.addChild(this._accountEditBox, 1);
+        registerFrame.controller.accountLabel.addChild(this._accountEditBox);
 
-        this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._passwordEditBox.setPosition(cc.p(60, 0));
+        this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
+        this._passwordEditBox.setAnchorPoint(cc.p(0, 0.5));
+        this._passwordEditBox.setPosition(cc.p(0, 0));
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
-        this._passwordEditBox.setDelegate(this);
+        this._passwordEditBox.setDelegate({
+            /**
+             * This method is called when the edit box text was changed.
+             * @param {cc.EditBox} sender
+             * @param {String} text
+             */
+            editBoxTextChanged: function (sender, text) {
+
+            }
+        });
         this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._passwordEditBox.setMaxLength(18);
-        controller.passwordLabel.addChild(this._passwordEditBox, 1);
+        registerFrame.controller.passwordLabel.addChild(this._passwordEditBox);
 
-        this._passwordAgainEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._passwordAgainEditBox.setPosition(cc.p(60, 0));
+        this._passwordAgainEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit1));
+        this._passwordAgainEditBox.setAnchorPoint(cc.p(0, 0.5));
+        this._passwordAgainEditBox.setPosition(cc.p(0, 0));
         this._passwordAgainEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
-        this._passwordAgainEditBox.setDelegate(this);
+        this._passwordAgainEditBox.setDelegate({
+            /**
+             * This method is called when the edit box text was changed.
+             * @param {cc.EditBox} sender
+             * @param {String} text
+             */
+            editBoxTextChanged: function (sender, text) {
+
+            }
+        });
         this._passwordAgainEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._passwordAgainEditBox.setMaxLength(18);
-        controller.passwordAgainLabel.addChild(this._passwordAgainEditBox, 1);
+        registerFrame.controller.passwordAgainLabel.addChild(this._passwordAgainEditBox);
 
+
+        this._accountEditBox.setText("123213");
 
         return true;
     },

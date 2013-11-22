@@ -57,8 +57,8 @@ var LoginLayer = cc.Layer.extend({
         this._loginFrame.setPosition(this._loginLayerFit.loginFramePoint);
         this.addChild(this._loginFrame);
 
-        this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._accountEditBox.setPosition(cc.p(20, 0));
+        this._accountEditBox = cc.EditBox.create(cc.size(440, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._accountEditBox.setPosition(cc.p(10, 0));
         this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
         this._accountEditBox.setDelegate({
             /**
@@ -75,8 +75,8 @@ var LoginLayer = cc.Layer.extend({
         this._accountEditBox.setMaxLength(20);
         this._loginFrame.controller.accountLabel.addChild(this._accountEditBox);
 
-        this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._passwordEditBox.setPosition(cc.p(20, 0));
+        this._passwordEditBox = cc.EditBox.create(cc.size(440, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._passwordEditBox.setPosition(cc.p(10, 0));
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordEditBox.setDelegate({
             /**

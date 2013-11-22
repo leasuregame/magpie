@@ -91,8 +91,6 @@ products =
           cb {code: 501, msg: "魔石不足"}
 
         else
-          if player.power.value + powerValue > RESOURE_LIMIT.power_value
-            powerValue = RESOURE_LIMIT.power_value - player.power.value
           player.updateGift 'powerBuyCount', player.dailyGift.powerBuyCount - times
           player.addPower powerValue
           player.decrease 'gold', gold

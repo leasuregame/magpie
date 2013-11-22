@@ -59,11 +59,16 @@ var RegisterLayer = cc.Layer.extend({
              */
             editBoxEditingDidEnd: function (sender) {
                 var text = sender.getText();
-                if (CHINESE_REG.test(text) == true) {
+                var len = text.length;
+                if(!text) {
+                    TipLayer.tip("请输入账号");
+                } else if(len < 6 || len > 50) {
+                    TipLayer.tip("账号长度不正确");
+                } else if (CHINESE_REG.test(text) == true) {
                     TipLayer.tip("账号不能包含中文");
                 } else if (EMPTY_SPACE_REG.test(text) == true) {
                     TipLayer.tip("账号不能包含空格");
-                } else if (ACCOUNT_REG.test(text) == false) {
+                } else if (ACCOUNT_REG.test(text) == false && text) {
                     TipLayer.tip("账号不能包含非法字符");
                 }
             }
@@ -86,11 +91,16 @@ var RegisterLayer = cc.Layer.extend({
              */
             editBoxEditingDidEnd: function (sender) {
                 var text = sender.getText();
-                if (CHINESE_REG.test(text) == true) {
+                var len = text.length;
+                if(!text) {
+                    TipLayer.tip("请输入密码");
+                } else if(len < 6 || len > 20) {
+                    TipLayer.tip("密码长度不正确");
+                } else if (CHINESE_REG.test(text) == true) {
                     TipLayer.tip("密码不能包含中文");
                 } else if (EMPTY_SPACE_REG.test(text) == true) {
                     TipLayer.tip("密码不能包含空格");
-                } else if (PASSWORD_REG.test(text) == false) {
+                } else if (PASSWORD_REG.test(text) == false && text) {
                     TipLayer.tip("密码不能包含非法字符");
                 }
             }
@@ -112,7 +122,13 @@ var RegisterLayer = cc.Layer.extend({
              * @param {cc.EditBox} sender
              */
             editBoxEditingDidEnd: function (sender) {
-                if (CHINESE_REG.test(text) == true) {
+                var text = sender.getText();
+                var len = text.length;
+                if(!text) {
+                    TipLayer.tip("请再次输入密码");
+                } else if(len < 6 || len > 20) {
+                    TipLayer.tip("密码长度不正确");
+                } else if (CHINESE_REG.test(text) == true) {
                     TipLayer.tip("密码不能包含中文");
                 } else if (EMPTY_SPACE_REG.test(text) == true) {
                     TipLayer.tip("密码不能包含空格");

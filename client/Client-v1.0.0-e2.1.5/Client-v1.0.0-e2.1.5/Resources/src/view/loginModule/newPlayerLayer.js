@@ -50,7 +50,12 @@ var NewPlayerLayer = cc.Layer.extend({
              */
             editBoxEditingDidEnd: function (sender) {
                 var text = sender.getText();
-                if (EMPTY_SPACE_REG.test(text) == true) {
+                var len = text.length;
+                if(!text) {
+                    TipLayer.tip("请输入昵称");
+                } else if(len < 1 || len > 6) {
+                    TipLayer.tip("昵称长度不正确");
+                } else if (EMPTY_SPACE_REG.test(text) == true) {
                     TipLayer.tip("昵称不能包含空格");
                 } else if (NICKNAME_REG.test(text) == false) {
                     TipLayer.tip("昵称不能包含非法字符");

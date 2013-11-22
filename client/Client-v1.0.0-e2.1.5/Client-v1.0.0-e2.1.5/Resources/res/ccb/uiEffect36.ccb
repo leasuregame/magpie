@@ -916,7 +916,7 @@
 						<key>baseValue</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>-30</real>
 						</array>
 						<key>name</key>
 						<string>position</string>
@@ -925,7 +925,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>-30</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1686,7 +1686,7 @@
 						<key>baseValue</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>-30</real>
 						</array>
 						<key>name</key>
 						<string>position</string>
@@ -1695,7 +1695,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>-30</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1737,6 +1737,8 @@
 						<false/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

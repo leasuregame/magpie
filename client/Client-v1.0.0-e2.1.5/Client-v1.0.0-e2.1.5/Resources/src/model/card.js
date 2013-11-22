@@ -81,7 +81,7 @@ var Card = Entity.extend({
             cc.log("=============================================");
         }
 
-        this._newCardMark = sys.localStorage.getItem("card_" + this._id + "_mark") || false;
+        this._newCardMark = this._id && sys.localStorage.getItem("card_" + this._id + "_mark") || false;
 
         return true;
     },

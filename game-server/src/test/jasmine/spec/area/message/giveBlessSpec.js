@@ -35,7 +35,7 @@ describe("Area Server", function() {
                     loginWith(arthur.account, arthur.password, arthur.areaId);
                 });
 
-                it('should can give bless to him', function() {
+                it('should can not give bless to him', function() {
                     request('area.messageHandler.giveBless', {
                         friendId: 100
                     }, function(data) {
@@ -71,7 +71,7 @@ describe("Area Server", function() {
 						loginWith('1', '1', 1);
 					});
 
-					it('should can not handler the messages that not sended to me', function() {
+					it('should can receive bless', function() {
 						request('area.messageHandler.receiveBless', {
 							msgId: 1
 						}, function(data) {

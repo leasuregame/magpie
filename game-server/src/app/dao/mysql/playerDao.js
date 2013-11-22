@@ -166,7 +166,7 @@ var PlayerDao = (function(_super) {
             },
             function(cardIds,callback) {
                 if(cardIds.length != 0) {
-                    var sql = "select playerId,tableId from card where id in (" + cardIds.toString() + ")";
+                    var sql = "select playerId, tableId, star from card where id in (" + cardIds.toString() + ")";
                     dbClient.query(sql,[],function(err,res){
                         cards = res;
                         callback();
@@ -179,7 +179,6 @@ var PlayerDao = (function(_super) {
             if(cards)
                 players.forEach(function(p){
                     p.cards = cards.filter(function(c){ return c.playerId == p.id});
-
                 });
             end = Date.now();
             console.log('get player LineUpInfo By Ids time: ', (end - start)/1000);

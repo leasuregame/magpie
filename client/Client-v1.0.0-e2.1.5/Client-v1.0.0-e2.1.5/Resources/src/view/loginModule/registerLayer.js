@@ -49,30 +49,29 @@ var RegisterLayer = cc.Layer.extend({
         var controller = registerFrame.controller;
 
         this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._accountEditBox.setPosition(cc.p(60, 0));
+        this._accountEditBox.setPosition(cc.p(70, 0));
         this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
         this._accountEditBox.setDelegate(this);
         this._accountEditBox.setFont("American Typewriter", 35);
         this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
-        this._accountEditBox.setMaxLength(18);
-        controller.accountLabel.addChild(this._accountEditBox, 1);
+        this._accountEditBox.setMaxLength(20);
+        controller.accountLabel.addChild(this._accountEditBox);
 
         this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._passwordEditBox.setPosition(cc.p(60, 0));
+        this._passwordEditBox.setPosition(cc.p(70, 0));
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordEditBox.setDelegate(this);
         this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
-        this._passwordEditBox.setMaxLength(18);
-        controller.passwordLabel.addChild(this._passwordEditBox, 1);
+        this._passwordEditBox.setMaxLength(20);
+        controller.passwordLabel.addChild(this._passwordEditBox);
 
         this._passwordAgainEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._passwordAgainEditBox.setPosition(cc.p(60, 0));
+        this._passwordAgainEditBox.setPosition(cc.p(70, 0));
         this._passwordAgainEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordAgainEditBox.setDelegate(this);
         this._passwordAgainEditBox.setFontColor(cc.c3b(200, 0, 250));
-        this._passwordAgainEditBox.setMaxLength(18);
-        controller.passwordAgainLabel.addChild(this._passwordAgainEditBox, 1);
-
+        this._passwordAgainEditBox.setMaxLength(20);
+        controller.passwordAgainLabel.addChild(this._passwordAgainEditBox);
 
         return true;
     },
@@ -131,6 +130,7 @@ var RegisterLayer = cc.Layer.extend({
         cc.log("RegisterLayer _onClickBack");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
         this.getParent().updateEditBox();
         this.removeFromParent();
     }

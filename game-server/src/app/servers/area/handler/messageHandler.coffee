@@ -18,7 +18,7 @@ DELETE_FRIEND_MESSAGE = 2
 isFinalStatus = (status) ->
   _.contains msgConfig.FINALSTATUS, status
 
-mergeMessages = (myMessages, systemMessages, blMessages, unhandleMessages) ->
+mergeMessages = (myMessages, systemMessages, blMessages, unhandledMessage) ->
   mySystems = myMessages.filter (m) -> m.sender is -1
   mySystems = mySystems.map (m) -> m.msgId
 
@@ -26,12 +26,7 @@ mergeMessages = (myMessages, systemMessages, blMessages, unhandleMessages) ->
     if m.id not in mySystems
       myMessages.push m
 
-  ids = mySystems.map (m) -> m.id
-  unhandleMessages.forEach (m) ->
-    if m.id not in ids
-      mySystems.push m
-
-  blMessages.forEach (m) -> myMessages.push m
+  blMessages.concat(unhandledMessage).forEach (m) -> myMessages.push m
   return myMessages
 
 changeGroupNameAndSort = (messages) ->
@@ -46,7 +41,19 @@ changeGroupNameAndSort = (messages) ->
 
   for n, items of results
     items.sort (x, y) -> x.createTime < y.createTime
-    items[0...20]
+    if n is 'system'
+      items.sort (x, y) -> x.status > y.status
+    else if n is 'friend'
+      copyItems = _.clone(items)
+      newItems = []
+      for i, j in items
+        if i? and i.status is msgConfig.MESSAGESTATUS.ASKING
+          _res = copyItems.splice(j, 1)
+          newItems = newItems.concat(_res)
+      newItems = newItems.concat(copyItems)
+      items = newItems
+
+    results[n] = items[0...20]
 
   results
 
@@ -75,7 +82,7 @@ Handler::messageList = (msg, session, next) ->
     (cb) ->
       dao.message.fetchMany {
         limit: 20,
-        orderBy: ' createTime DESC ',
+        orderby: ' createTime DESC ',
         where: {
           sender: -1
           receiver: -1
@@ -91,27 +98,28 @@ Handler::messageList = (msg, session, next) ->
           type: msgConfig.MESSAGETYPE.BATTLENOTICE
         },
         limit: 20,
-        orderBy: ' createTime DESC '
+        orderby: ' createTime DESC '
       }, cb
 
     (cb) ->
       dao.message.fetchMany {
-        where: " receiver = #{playerId} and type in (#{msgConfig.MESSAGETYPE.SYSTEM}, #{msgConfig.MESSAGETYPE.ADDFRIEND}, #{msgConfig.MESSAGETYPE.MESSAGE}) "
+        where: " receiver = #{playerId} and 
+          type in (#{msgConfig.MESSAGETYPE.SYSTEM}, #{msgConfig.MESSAGETYPE.ADDFRIEND}, #{msgConfig.MESSAGETYPE.MESSAGE}) and 
+          status <> #{msgConfig.MESSAGESTATUS.ASKING}"
         limit: 20,
-        orderBy: ' createTime DESC '
+        orderby: ' createTime DESC '
       }, cb
 
     (cb) ->
-      dao.message.fetchMany { 
+      dao.message.fetchMany {
         where: {
-          receiver: playerId
-          type: msgConfig.MESSAGETYPE.ADDFRIEND
+          receiver: playerId,
+          type: msgConfig.MESSAGETYPE.ADDFRIEND,
           status: msgConfig.MESSAGESTATUS.ASKING
-        }, 
+        },
         limit: 20,
-        orderBy: ' createTime DESC '
-      }
-        , cb
+        orderby: ' createTime DESC '
+      }, cb
   ], (err, results) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
@@ -119,19 +127,14 @@ Handler::messageList = (msg, session, next) ->
     systemMessages = results[0]
     blMessages = results[1]
     friendMessages = results[2]
-    unhandleMessages = results[3]
+    unhandledMessage = results[3]
 
-    console.log '1', systemMessages.length
-    console.log '2', blMessages.length
-    console.log '3', friendMessages.length
-    console.log '4', unhandleMessages.length
-
-    messages = mergeMessages(friendMessages, systemMessages, blMessages, unhandleMessages)
+    messages = mergeMessages(friendMessages, systemMessages, blMessages, unhandledMessage)
     messages = messages.map (m) -> 
       if m.type is msgConfig.MESSAGETYPE.MESSAGE then m.toLeaveMessage?() else m.toJson?()
     messages = _.groupBy messages, (item) -> item.type
-    messages = changeGroupNameAndSort(messages)
-    next(null, {code: 200, msg: messages})
+    msgs = changeGroupNameAndSort(messages)
+    next(null, {code: 200, msg: msgs})
 
 Handler::sysMsg = (msg, session, next) ->
   console.log("msg = ",msg);
@@ -162,7 +165,7 @@ Handler::handleSysMsg = (msg, session, next) ->
   player = null
   incValues = (obj, data) ->
     obj.increase(k, data[k]) for k in _.keys(data) when obj.hasField k 
-    obj.resumePower(data.powerValue) if _.has(data, 'powerValue')
+    obj.addPower(data.powerValue) if _.has(data, 'powerValue')
 
   async.waterfall [
     (cb)->
@@ -185,17 +188,12 @@ Handler::handleSysMsg = (msg, session, next) ->
         else
           cb(null,message)
 
-    (message,cb)->
-      if message.options.powerValue? and message.options.powerValue > 0      
-        playerManager.getPlayerInfo {pid: playerId},(err,res)->
-          if err
-            cb({code: err.code or 500, msg: err.msg or err})
-          player = res
-          if player.power.value >= MAX_POWER_VALUE
-            cb {code: 501, msg: "体力已达上限"}
-          else
-            cb(null, message)
-      else
+    (message,cb)->  
+      playerManager.getPlayerInfo {pid: playerId},(err,res)->
+        if err
+          return cb({code: err.code or 500, msg: err.msg or err})
+
+        player = res
         cb(null, message)
 
     (message,cb)->
@@ -545,6 +543,8 @@ Handler::giveBless = (msg, session, next) ->
     player.giveBlessOnce()
     player.save()
 
+    updateBlessCount(playerId, friendId)
+
     sendMessage @app, friendId, {
       route: 'onBless'
       msg: {id: res.id, sender: res.sender}
@@ -587,6 +587,12 @@ Handler::receiveBless = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
     next(null, {code: 200, msg: {energy: message.options.energy}})
+
+updateBlessCount = (playerId, friendId) ->
+  console.log 'receive bless: ', playerId, friendId
+  dao.friend.updateFriendBlessCount playerId, friendId, (err, res) -> 
+    if err or not res
+      logger.error(err)
 
 
 

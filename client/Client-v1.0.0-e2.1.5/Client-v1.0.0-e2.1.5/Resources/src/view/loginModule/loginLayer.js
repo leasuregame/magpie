@@ -57,15 +57,7 @@ var LoginLayer = cc.Layer.extend({
         this._loginFrame.setPosition(this._loginLayerFit.loginFramePoint);
         this.addChild(this._loginFrame);
 
-        var accountLabel = cc.LabelTTF.create("账号:", "STHeitiTC-Medium", 30);
-        accountLabel.setPosition(cc.p(-210, 0));
-        this._loginFrame.controller.accountLabel.addChild(accountLabel);
-
-        var passwordLabel = cc.LabelTTF.create("密码:", "STHeitiTC-Medium", 30);
-        passwordLabel.setPosition(cc.p(-210, 0));
-        this._loginFrame.controller.passwordLabel.addChild(passwordLabel);
-
-        this._accountEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._accountEditBox = cc.EditBox.create(cc.size(420, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._accountEditBox.setPosition(cc.p(20, 0));
         this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
         this._accountEditBox.setDelegate({
@@ -83,7 +75,7 @@ var LoginLayer = cc.Layer.extend({
         this._accountEditBox.setMaxLength(20);
         this._loginFrame.controller.accountLabel.addChild(this._accountEditBox);
 
-        this._passwordEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._passwordEditBox = cc.EditBox.create(cc.size(420, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._passwordEditBox.setPosition(cc.p(20, 0));
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordEditBox.setDelegate({
@@ -160,7 +152,6 @@ var LoginLayer = cc.Layer.extend({
         this._accountEditBox.setText(user.get("account"));
         this._passwordEditBox.setText(user.get("password"));
         this._loginFrame.setVisible(true);
-
     },
 
     _onClickOpenArea: function () {
@@ -172,7 +163,6 @@ var LoginLayer = cc.Layer.extend({
 
         var selectAreaLayer = SelectAreaLayer.create(this._areaList);
         this.addChild(selectAreaLayer, 1);
-
     },
 
     _onClickLogin: function () {

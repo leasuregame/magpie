@@ -102,19 +102,9 @@ var SpiritDetails = LazyLayer.extend({
         skillDescription2.setPosition(this._spiritDetailsFit.skillDescription2Point);
         this.addChild(skillDescription2);
 
-//        var skillHarmIcon = cc.LabelTTF.create("当前加成效果:", "STHeitiTC-Medium", 20);
-//        skillHarmIcon.setColor(cc.c3b(146, 180, 83));
-//        skillHarmIcon.setPosition(cc.p(420, 220));
-//        this.addChild(skillHarmIcon);
-
         this._passiveHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 23);
         this._passiveHarmLabel.setPosition(this._spiritDetailsFit.passiveHarmLabelPoint);
         this.addChild(this._passiveHarmLabel);
-
-//        this._skillHarmLabel = cc.LabelTTF.create("0%", "STHeitiTC-Medium", 23);
-//        this._skillHarmLabel.setColor(cc.c3b(255, 239, 131));
-//        this._skillHarmLabel.setPosition(cc.p(520, 220));
-//        this.addChild(this._skillHarmLabel);
 
         this._lvLabel = cc.LabelTTF.create("LV.  0", "STHeitiTC-Medium", 22);
         this._lvLabel.setPosition(this._spiritDetailsFit.lvLabelPoint);
@@ -127,14 +117,16 @@ var SpiritDetails = LazyLayer.extend({
         this._upgradeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
             main_scene_image.button9s,
+            main_scene_image.button9d,
             main_scene_image.icon52,
             this._onClickUpgrade,
             this
         );
         this._upgradeItem.setPosition(this._spiritDetailsFit.upgradeItemPoint);
+
         var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect33, this);
         ccbNode.setPosition(cc.p(75, 35));
-        this._upgradeItem.addChild(ccbNode);
+        this._upgradeItem.getNormalImage().addChild(ccbNode);
 
         var closeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -161,7 +153,7 @@ var SpiritDetails = LazyLayer.extend({
 
         this.spiritNode.setTexture(lz.getTexture(spirit.getSpiritUrl()));
 
-        this._upgradeItem.setVisible(spirit.canUpgrade());
+        this._upgradeItem.setEnabled(spirit.canUpgrade());
 
         this._lvLabel.setString("LV.  " + spirit.get("lv"));
         this._expLabel.setString("灵气:    " + spirit.get("exp") + " / " + spirit.get("maxExp"));
@@ -190,7 +182,7 @@ var SpiritDetails = LazyLayer.extend({
 
         LazyLayer.showCloudAll();
 
-        this._upgradeItem.setVisible(false);
+        this._upgradeItem.setEnabled(false);
 
         var that = this;
         gameData.spirit.upgrade(function (success) {

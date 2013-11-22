@@ -84,6 +84,9 @@ Handler::reSignIn = (msg, session, next) ->
     if err
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
+    if player.gold < goldResume
+      return next(null, {code: 501, msg: '魔石不足'})
+
     if player.signDays() >= 31
       return next(null, {code: 501, msg: '没有日期可以补签'})
 

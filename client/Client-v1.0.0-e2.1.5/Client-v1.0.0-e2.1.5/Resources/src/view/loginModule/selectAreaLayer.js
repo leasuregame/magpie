@@ -111,8 +111,6 @@ var SelectAreaLayer = cc.Layer.extend({
             var parent = this.getParent();
             parent.updateSelectAreaName(id);
             this.removeFromParent();
-
-            cc.log(this.selectAreaFrame.controller.areaList.convertToWorldSpace(cc.p(0, 0)));
         }
     }
 });

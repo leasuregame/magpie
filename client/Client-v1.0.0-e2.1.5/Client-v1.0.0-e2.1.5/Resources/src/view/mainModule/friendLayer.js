@@ -417,7 +417,7 @@ var FriendLayer = cc.Layer.extend({
                 cc.log(data);
 
                 that.update();
-                gameMark.updateFriendMark(false);
+
             }, id);
         }
 
@@ -434,6 +434,7 @@ var FriendLayer = cc.Layer.extend({
                 cc.log(data);
 
                 that.update();
+                gameMark.updateFriendMark(false);
             }, id);
         }
     },

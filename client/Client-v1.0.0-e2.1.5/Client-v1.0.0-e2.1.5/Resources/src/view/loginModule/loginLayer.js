@@ -11,8 +11,8 @@
  * login layer
  * */
 
-
-var ACCOUNT_REG = /^[\w+@.]{6,20}$/;
+var EMAIL_REG = /^(?=\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$).{6,50}$/;
+var ACCOUNT_REG = /^[\w+-]{6,50}$/;
 var PASSWORD_REG = /^[a-zA-Z0-9]{6,20}$/;
 var EMPTY_SPACE_REG = /\s+/g;
 var CHINESE_REG = /^[\u4e00-\u9fa5]{1,6}$/;
@@ -62,6 +62,10 @@ var LoginLayer = cc.Layer.extend({
         this._loginFrame = cc.BuilderReader.load(main_scene_image.uiEffect37, this);
         this._loginFrame.setPosition(this._loginLayerFit.loginFramePoint);
         this.addChild(this._loginFrame);
+
+        this._loginFrame.controller.accountNode.setPosition(this._loginLayerFit.accountNodePoint);
+        this._loginFrame.controller.passwordNode.setPosition(this._loginLayerFit.passwordNodePoint);
+        this._loginFrame.controller.startGameNode.setPosition(this._loginLayerFit.startGameNodePoint);
 
 
         this._accountEditBox = cc.EditBox.create(cc.size(440, 60), cc.Scale9Sprite.create(main_scene_image.edit));

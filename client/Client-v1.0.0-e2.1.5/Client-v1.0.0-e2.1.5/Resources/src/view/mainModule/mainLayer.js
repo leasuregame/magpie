@@ -219,7 +219,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(11),
             this
         );
-        configLayerItem.setScale(0.8);
+
         configLayerItem.setPosition(this._mainLayerFit.configLayerItemPoint);
 
         var menu = cc.Menu.create(

@@ -64,11 +64,11 @@ var RegisterLayer = cc.Layer.extend({
                     TipLayer.tip("请输入账号");
                 } else if(len < 6 || len > 50) {
                     TipLayer.tip("账号长度不正确");
-                } else if (CHINESE_REG.test(text) == true) {
+                } else if (CHINESE_REG.test(text)) {
                     TipLayer.tip("账号不能包含中文");
-                } else if (EMPTY_SPACE_REG.test(text) == true) {
+                } else if (EMPTY_SPACE_REG.test(text)) {
                     TipLayer.tip("账号不能包含空格");
-                } else if (ACCOUNT_REG.test(text) == false && text) {
+                } else if (!(EMAIL_REG.test(text) || ACCOUNT_REG.test(text))) {
                     TipLayer.tip("账号不能包含非法字符");
                 }
             }
@@ -96,11 +96,11 @@ var RegisterLayer = cc.Layer.extend({
                     TipLayer.tip("请输入密码");
                 } else if(len < 6 || len > 20) {
                     TipLayer.tip("密码长度不正确");
-                } else if (CHINESE_REG.test(text) == true) {
+                } else if (CHINESE_REG.test(text)) {
                     TipLayer.tip("密码不能包含中文");
-                } else if (EMPTY_SPACE_REG.test(text) == true) {
+                } else if (EMPTY_SPACE_REG.test(text)) {
                     TipLayer.tip("密码不能包含空格");
-                } else if (PASSWORD_REG.test(text) == false && text) {
+                } else if (!PASSWORD_REG.test(text)) {
                     TipLayer.tip("密码不能包含非法字符");
                 }
             }
@@ -128,11 +128,11 @@ var RegisterLayer = cc.Layer.extend({
                     TipLayer.tip("请再次输入密码");
                 } else if(len < 6 || len > 20) {
                     TipLayer.tip("密码长度不正确");
-                } else if (CHINESE_REG.test(text) == true) {
+                } else if (CHINESE_REG.test(text)) {
                     TipLayer.tip("密码不能包含中文");
-                } else if (EMPTY_SPACE_REG.test(text) == true) {
+                } else if (EMPTY_SPACE_REG.test(text)) {
                     TipLayer.tip("密码不能包含空格");
-                } else if (PASSWORD_REG.test(text) == false) {
+                } else if (!PASSWORD_REG.test(text)) {
                     TipLayer.tip("密码不能包含非法字符");
                 }
             }

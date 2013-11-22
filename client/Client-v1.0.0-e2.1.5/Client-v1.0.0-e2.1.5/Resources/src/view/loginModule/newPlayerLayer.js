@@ -55,9 +55,9 @@ var NewPlayerLayer = cc.Layer.extend({
                     TipLayer.tip("请输入昵称");
                 } else if(len < 1 || len > 6) {
                     TipLayer.tip("昵称长度不正确");
-                } else if (EMPTY_SPACE_REG.test(text) == true) {
+                } else if (EMPTY_SPACE_REG.test(text)) {
                     TipLayer.tip("昵称不能包含空格");
-                } else if (NICKNAME_REG.test(text) == false) {
+                } else if (!NICKNAME_REG.test(text)) {
                     TipLayer.tip("昵称不能包含非法字符");
                 }
             }

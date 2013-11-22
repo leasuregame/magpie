@@ -66,8 +66,12 @@ var fit4Iphone4 = {
 
     "loginScene": {
         "loginLayer": {
-            "bgEffectPoint": cc.p(360, 488),
-            "loginFramePoint": cc.p(360, 520)
+            "bgEffectPoint": cc.p(360, 480),
+            "loginFramePoint": cc.p(360, 520),
+            "accountNodePoint": cc.p(0, -260),
+            "passwordNodePoint": cc.p(0, -350),
+            "startGameNodePoint": cc.p(0, -460)
+
         },
         "logoutLayer": {
             "bgLayerPoint": cc.p(40, 0),
@@ -718,6 +722,16 @@ var fit4Iphone4 = {
             "passRankIconPoint": cc.p(404, 908),
             "tournamentRankIconPoint": cc.p(554, 908)
         },
+        "readMessageLayer": {
+            "bgLayerPoint": cc.p(40, 0),
+            "bgSpritePoint": cc.p(363, 600),
+            "nameIconPoint": cc.p(160, 720),
+            "nameLabelPoint": cc.p(255, 720),
+            "messageLabelPoint": cc.p(363, 610),
+            "sendMessageItemPoint": cc.p(240, 485),
+            "cancelItemPoint": cc.p(480, 485),
+            "labelPointX": 148
+        },
         "rechargeLayer": {
             "headIconPoint": cc.p(120, 697),
             "midIconPoint": cc.p(80, 107),
@@ -1101,7 +1115,10 @@ var fit4Iphone5 = {
     "loginScene": {
         "loginLayer": {
             "bgEffectPoint": cc.p(320, 568),
-            "loginFramePoint": cc.p(320, 568)
+            "loginFramePoint": cc.p(320, 568),
+            "accountNodePoint": cc.p(0, -260),
+            "passwordNodePoint": cc.p(0, -360),
+            "startGameNodePoint": cc.p(0, -480)
         },
         "logoutLayer": {
             "bgLayerPoint": cc.p(0, 0),
@@ -1753,6 +1770,16 @@ var fit4Iphone5 = {
             "lvRankIconPoint": cc.p(214, 1084),
             "passRankIconPoint": cc.p(364, 1084),
             "tournamentRankIconPoint": cc.p(514, 1084)
+        },
+        "readMessageLayer": {
+            "bgLayerPoint": cc.p(0, 0),
+            "bgSpritePoint": cc.p(323, 600),
+            "nameIconPoint": cc.p(120, 720),
+            "nameLabelPoint": cc.p(215, 720),
+            "messageLabelPoint": cc.p(323, 610),
+            "sendMessageItemPoint": cc.p(200, 485),
+            "cancelItemPoint": cc.p(440, 485),
+            "labelPointX": 108
         },
         "rechargeLayer": {
             "headIconPoint": cc.p(80, 845),

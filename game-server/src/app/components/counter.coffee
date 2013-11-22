@@ -29,7 +29,14 @@ class Component
 
   afterStart: (cb) ->
     runCounter = =>
-      logger.info(@client.request 'areaInfo', null, (err, data) -> console.log err, data)
+      @client.request 'areaInfo', {sid: @app.getServerId()}, (err, data) => 
+        logger.info('count online users: ', err, data)
+        @app.get('dao').onlineUser.create data: {
+          createTime: Date.now()
+          qty: data.length
+        }, (err, res) -> 
+          if err
+            logger.error('faild create onlineUser record.', err)
 
     @timerId = setInterval runCounter, @interval
     process.nextTick cb

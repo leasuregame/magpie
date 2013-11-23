@@ -9,37 +9,37 @@
 
 var FUNCTION_OPEN = {
     "1": {
-        "lv": 5,
+        "tableName": "rank",
         "tip": "竞技场已开启，现在可参与。",
         "name": "tournamentGuide"
     },
     "2": {
-        "lv": 10,
+        "tableName": "pass",
         "tip": "天道已开启，现在可参与。",
         "name": "passGuide"
     },
     "3": {
-        "lv": 15,
+        "tableName": "card3_position",
         "tip": "第3个卡槽已开启，现在可上阵新的卡牌。",
         "name": "card3Guide"
     },
     "4": {
-        "lv": 20,
+        "tableName": "lottery",
         "tip": "寻宝已开启，现在可参与。",
         "name": "treasureHuntGuide"
     },
     "5": {
-        "lv": 30,
+        "tableName": "card4_position",
         "tip": "第4个卡槽已开启，现在可上阵新的卡牌。",
         "name": "card4Guide"
     },
     "6": {
-        "lv": 40,
+        "tableName": "ranking_list",
         "tip": "排行榜已开放，现在可进行查询。",
         "name": "rankGuide"
     },
     "7": {
-        "lv": 50,
+        "tableName": "card5_position",
         "tip": "第5个卡槽已开启，现在可上阵新的卡牌。",
         "name": "card5Guide"
     }
@@ -51,13 +51,16 @@ var gameGuide = {
     _passGuide: false,
     _treasureHuntGuide: false,
     _rankGuide: false,
+    _card3Guide: false,
+    _card4Guide: false,
+    _card5Guide: false,
 
-    updateGuide: function() {
+    updateGuide: function () {
         var table = outputTables.function_limit.rows[1];
         var lv = gameData.player.get("lv");
-        for(var i = 1; i <= 7; i++) {
+        for (var i = 1; i <= 7; i++) {
             var guide = FUNCTION_OPEN[i];
-            if(lv == guide.lv) {
+            if (lv == table[guide.tableName]) {
                 TipLayer.tip(guide.tip);
                 this.set(guide.name, true);
                 MainScene.getInstance().updateGuide();
@@ -67,11 +70,11 @@ var gameGuide = {
         }
     },
 
-    get: function(name) {
+    get: function (name) {
         return this["_" + name];
     },
 
-    set: function(name, value) {
+    set: function (name, value) {
         this["_" + name] = value;
     }
 

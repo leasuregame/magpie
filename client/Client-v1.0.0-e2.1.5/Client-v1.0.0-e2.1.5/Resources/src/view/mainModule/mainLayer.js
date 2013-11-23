@@ -36,6 +36,7 @@ var MainLayer = cc.Layer.extend({
     _friendMark: null,
     _messageMark: null,
 
+    _treasureHuntGuide: null,
     _rankGuide: null,
 
     onEnter: function () {
@@ -43,6 +44,7 @@ var MainLayer = cc.Layer.extend({
 
         this._super();
         this.updateMark();
+        this.updateGuide();
 
         lz.dc.beginLogPageView("主界面");
     },
@@ -242,6 +244,10 @@ var MainLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
+        var effect = cc.BuilderReader.load(main_scene_image.uiEffect41, this);
+        effect.setPosition(this._mainLayerFit.spiritLayerItemPoint);
+        this.addChild(effect);
+
         return true;
     },
 
@@ -258,12 +264,38 @@ var MainLayer = cc.Layer.extend({
     updateGuide: function () {
         cc.log("MainLayer updateGuide");
 
+        if (gameGuide.get("treasureHuntGuide")) {
+            this._treasureHuntGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._treasureHuntGuide.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
+            this.addChild(this._treasureHuntGuide);
+        }
+
+        if (gameGuide.get("rankGuide")) {
+            this._rankGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._rankGuide.setPosition(this._mainLayerFit.rankLayerItemPoint);
+            this._rankGuide.setRotation(180);
+            this.addChild(this._rankGuide);
+        }
 
     },
 
     _onClickLayer: function (index) {
         return function () {
             cc.log("MainMenuLayer _onClickLayer: " + index);
+
+            if (index == 2) {
+                if (this._treasureHuntGuide) {
+                    this._treasureHuntGuide.removeFromParent();
+                    gameGuide.set("treasureHuntGuide", false);
+                }
+            }
+
+            if (index == 7) {
+                if (this._rankGuide) {
+                    this._rankGuide.removeFromParent();
+                    gameGuide.set("rankGuide", false);
+                }
+            }
 
             MainScene.getInstance().switchLayer(this._layer[index]);
 

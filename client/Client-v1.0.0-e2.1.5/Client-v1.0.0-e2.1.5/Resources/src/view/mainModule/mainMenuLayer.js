@@ -99,18 +99,42 @@ var MainMenuLayer = cc.Layer.extend({
 
     updateGuide: function () {
         cc.log("MainMenuLayer updateGuide");
-        if (gameGuide.get("passGuide")) {
 
+        var basePoint = this._mainMenuLayerFit.itemBasePoint;
+        var offsetX = this._mainMenuLayerFit.itemOffsetX;
+
+        if (gameGuide.get("passGuide")) {
+            this._passGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._passGuide.setRotation(180);
+            this._passGuide.setPosition(cc.p(basePoint.x + offsetX * 2, basePoint.y));
+            this.addChild(this._passGuide);
         }
 
         if (gameGuide.get("tournamentGuide")) {
-
+            this._tournamentGuide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._tournamentGuide.setRotation(180);
+            this._tournamentGuide.setPosition(cc.p(basePoint.x + offsetX * 3, basePoint.y));
+            this.addChild(this._tournamentGuide);
         }
     },
 
     _onClickLayer: function (index) {
         return function () {
             cc.log("MainMenuLayer _onClickLayer: " + index);
+
+            if (index == 2) {
+                if (this._passGuide) {
+                    this._passGuide.removeFromParent();
+                    gameGuide.set("passGuide", false);
+                }
+            }
+
+            if (index == 3) {
+                if (this._tournamentGuide) {
+                    this._tournamentGuide.removeFromParent();
+                    gameGuide.set("tournamentGuide", false);
+                }
+            }
 
             MainScene.getInstance().switchLayer(this._layer[index]);
 

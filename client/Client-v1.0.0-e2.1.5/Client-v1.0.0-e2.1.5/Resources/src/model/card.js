@@ -457,7 +457,7 @@ var Card = Entity.extend({
                 if (type == USE_MONEY) {
                     gameData.player.add("money", -20000);
                 } else if (type == USE_GOLD) {
-                    gameData.player.add("gold", -10);
+                    gameData.player.add("gold", -20);
                 }
 
                 cb(true);

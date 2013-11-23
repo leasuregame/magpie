@@ -181,7 +181,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         goldIcon.setPosition(cc.p(325, 92));
         this._resLabel.addChild(goldIcon);
 
-        var goldLabel = cc.LabelTTF.create("10 / 次", "STHeitiTC-Medium", 20);
+        var goldLabel = cc.LabelTTF.create("20 / 次", "STHeitiTC-Medium", 20);
         goldLabel.setAnchorPoint(cc.p(0, 0.5));
         goldLabel.setPosition(cc.p(350, 90));
         this._resLabel.addChild(goldLabel);

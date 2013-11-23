@@ -16,11 +16,16 @@ var LineUpLabel = cc.Layer.extend({
     _cardList: null,
     _lineUp: null,
 
+    _card3Guide: null,
+    _card4Guide: null,
+    _card5Guide: null,
+
     onEnter: function () {
         cc.log("LineUpLabel onEnter");
 
         this._super();
         this.update();
+        this.updateGuide();
     },
 
     init: function () {
@@ -60,10 +65,44 @@ var LineUpLabel = cc.Layer.extend({
         }
     },
 
+    updateGuide: function () {
+        cc.log("LineUpLabel updateGuide");
+
+        if (gameGuide.get("card5Guide")) {
+            this._card5Guide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._card5Guide.setPosition(cc.p(79 + 122 * 4, 0));
+            this.addChild(this._card5Guide, 10);
+        } else if (gameGuide.get("card4Guide")) {
+            this._card4Guide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._card4Guide.setPosition(cc.p(79 + 122 * 3, 0));
+            this.addChild(this._card4Guide, 10);
+        } else if (gameGuide.get("card3Guide")) {
+            this._card3Guide = cc.BuilderReader.load(main_scene_image.uiEffect43);
+            this._card3Guide.setPosition(cc.p(79 + 122 * 2, 0));
+            this.addChild(this._card3Guide, 10);
+        }
+
+    },
+
     _onClickCard: function () {
         cc.log("LineUpLabel _onClickCard");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+        if (this._card5Guide) {
+            this._card5Guide.removeFromParent();
+            gameGuide.set("card5Guide", false);
+        }
+
+        if (this._card4Guide) {
+            this._card4Guide.removeFromParent();
+            gameGuide.set("card4Guide", false);
+        }
+
+        if (this._card3Guide) {
+            this._card3Guide.removeFromParent();
+            gameGuide.set("card3Guide", false);
+        }
 
         MainScene.getInstance().switch(CardListLayer.create(SELECT_TYPE_LINEUP));
 
@@ -80,7 +119,7 @@ var LineUpLabel = cc.Layer.extend({
             cc.log("LineUpLabel _onClickLock");
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-            if(index == 2) {
+            if (index == 2) {
                 TipLayer.tip(table.card3_position + " 级开启");
             } else if (index == 3) {
                 TipLayer.tip(table.card4_position + " 级开启");

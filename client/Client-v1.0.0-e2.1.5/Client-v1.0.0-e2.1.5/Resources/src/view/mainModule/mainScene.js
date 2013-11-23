@@ -75,10 +75,12 @@ var MainScene = cc.Scene.extend({
         }
     },
 
-    updateGuide: function() {
+    updateGuide: function () {
         if (this._nowLayer && this._nowLayer.updateGuide) {
             this._nowLayer.updateGuide();
         }
+
+        this._mainMenuLayer.updateGuide();
     },
 
     switchLayer: function (runLayer) {

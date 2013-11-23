@@ -976,15 +976,11 @@ var Player = (function(_super) {
         this.emit('receive.bless');
     };
 
-    Player.prototype.isCanUseElixirForCard = function(cardId) {
-        if (_.has(this.elixirPerLv, cardId)) {
-            return this.elixirPerLv[cardId] < elxirLimit(this.lv);
+    Player.prototype.canUseElixir = function() {
+        if (this.lv >= 80) {
+            return Number.MAX_VALUE;
         }
-        return true;
-    };
-
-    Player.prototype.canUseElixir = function(cardId) {
-        return elxirLimit(this.lv) - (this.elixirPerLv[cardId] || 0);
+        return elixirLimit(this.lv);
     };
 
     Player.prototype.useElixirForCard = function(cardId, elixir) {
@@ -1122,12 +1118,12 @@ var Player = (function(_super) {
     return Player;
 })(Entity);
 
-var elxirLimit = function(lv) {
-    var limit = 2000;
-    if (lv > 50 && lv <= 100) {
-        limit = 4000;
+var elixirLimit = function(lv) {
+    if (lv <= 50) {
+        return 2000 * lv;
+    } else {
+        return 2000 * 50 + 4000 * (lv - 50);
     }
-    return limit;
 };
 
 // var processSpiritPoll = function(sp) {

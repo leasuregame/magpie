@@ -125,7 +125,7 @@ app.configure('production|development', 'area', function() {
     interval: 60000
   }});
 
-  app.load(counter,  {interval: 3000});
+  //app.load(counter,  {interval: 3000});
 });
 
 app.configure('production|development', 'connector|auth|area', function() {

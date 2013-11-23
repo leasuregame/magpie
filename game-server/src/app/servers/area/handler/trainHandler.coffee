@@ -204,6 +204,7 @@ Handler::skillUpgrade = (msg, session, next) ->
   cardId = msg.cardId
 
   sp_need = 0
+  card = null
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -223,7 +224,7 @@ Handler::skillUpgrade = (msg, session, next) ->
       if card? and card.skillLv == 5
         return cb({code: 501, msg: '该卡牌的技能等级已经升到最高级，不能再升级了'})
 
-      upgradeData = table.getTableItem('skill_upgrade', card.skillLv + 1)
+      upgradeData = table.getTableItem('skill_upgrade', card.skillLv)
       sp_need = upgradeData['star'+card.star]
 
       if player.skillPoint < sp_need
@@ -233,15 +234,33 @@ Handler::skillUpgrade = (msg, session, next) ->
       card.increase('skillPoint', sp_need)
       player.decrease('skillPoint', sp_need)
       cb(null, player, card)
-  ], (err, player, card) ->
+
+    (player, card, cb) ->
+      _jobs = []
+
+      playerData = player.getSaveData()
+      _jobs.push {
+        type: 'update'
+        options: 
+          table: 'player'
+          where: id: player.id
+          data: playerData
+      } if not _.isEmpty(playerData)
+
+      cardData = card.getSaveData()
+      _jobs.push {
+        type: 'update'
+        options:
+          table: 'card'
+          where: id: card.id
+          data: cardData
+      } if not _.isEmpty(cardData)
+
+      job.multJobs _jobs, cb
+  ], (err, res) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
 
-    card.emit 'persist', _.extend(id: card.id, card.getSaveData()), (err, res) -> 
-      if err
-        logger.error('faild to save card data.', err)
-
-    player.save()
     next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need, ability: card.ability()}})
 
 Handler::starUpgrade = (msg, session, next) ->
@@ -389,7 +408,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
       money_need = passSkillConfig.CONSUME[type] * psIds.length
 
       if player[_pros[type]] < money_need
-        return cb({code: 501, msg: '仙币/魔石不足，不能洗炼'})
+        return cb({code: 501, msg: if _pros[type] == 'money' then '仙币不足' else '魔石不足'})
 
       card = player.getCard(cardId)
       passSkills = card.passiveSkills.filter (ps) -> _.contains(psIds, ps.id)
@@ -481,9 +500,6 @@ Handler::useElixir = (msg, session, next) ->
     if (err) 
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    if player.lv < 10
-      return next(null, {code: 501, msg: '10级开放'})
-
     if player.elixir < elixir
       return next(null, {code: 501, msg: '仙丹不足'})
 
@@ -501,12 +517,12 @@ Handler::useElixir = (msg, session, next) ->
     if (card.elixirHp + card.elixirAtk + elixir) > limit.elixir_limit
       return next(null, {code: 501, msg: "使用的仙丹已经超出了卡牌的最大仙丹容量"})
 
-    if not player.isCanUseElixirForCard(cardId)
+    if (card.elixirHp + card.elixirAtk + elixir) > player.canUseElixir()
       return next(null, {code: 501, msg: "已达当前可吞噬数量上限，请提升角色等级"})
 
-    can_use_elixir = player.canUseElixir(cardId)
-    if can_use_elixir < elixir
-      return next(null, {code: 501, msg: "最多还可以消耗#{can_use_elixir}点仙丹"})
+    # can_use_elixir = player.canUseElixir(cardId)
+    # if can_use_elixir < elixir
+    #   return next(null, {code: 501, msg: "最多还可以消耗#{can_use_elixir}点仙丹"})
 
     card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
     card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK

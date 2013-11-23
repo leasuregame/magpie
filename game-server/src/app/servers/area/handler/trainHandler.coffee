@@ -697,7 +697,7 @@ cardStar = (tableId) ->
 checkCardCount = (playerLv, cardIds) ->
   card_count = (cardIds.filter (id) -> id isnt -1).length
   fdata = table.getTableItem('function_limit', 1)
-  lvMap = {4: fdata.card4_position, 5: fdata.card5_position}
+  lvMap = {3: fdata.card3_position, 4: fdata.card4_position, 5: fdata.card5_position}
   for qty, lv of lvMap
     if playerLv < lv and card_count >= qty
       return false

@@ -605,10 +605,10 @@ var fit4Iphone4 = {
             "rewardLabel2Point": cc.p(405, 562),
             "okItemPoint": cc.p(260, 442),
             "closeItemPoint": cc.p(460, 442),
-            "obtainSpritePoint": cc.p(360, 630),
-            "rewardLabelBasePoint": cc.p(360, 567),
-            "rewardLabelOffsetY": 45,
-            "okItem2Point": cc.p(360, 327)
+            "obtainSpritePoint": cc.p(0, 158),
+            "rewardLabelBasePoint": cc.p(0, 80),
+            "rewardLabelOffsetY": 53,
+            "okItem2Point": cc.p(0, -237)
         },
         "passRankLayer": {
             "scrollViewLayerRect": cc.rect(54, 140, 609, 700),
@@ -1647,17 +1647,17 @@ var fit4Iphone5 = {
             "towerBgSpritePoint": cc.p(470, 132),
             "wipeOutItemPoint": cc.p(540, 1022),
             "resetItemPoint": cc.p(540, 1022),
-            "bgLayerPoint": cc.p(0, 88),
+            "bgLayerPoint": cc.p(0, 0),
             "bgSprite2Point": cc.p(320, 580),
             "rewardLabel1Point": cc.p(170, 650),
             "goldIconPoint": cc.p(317, 660),
             "rewardLabel2Point": cc.p(365, 650),
             "okItemPoint": cc.p(220, 530),
             "closeItemPoint": cc.p(420, 530),
-            "obtainSpritePoint": cc.p(320, 718),
-            "rewardLabelBasePoint": cc.p(320, 655),
-            "rewardLabelOffsetY": 45,
-            "okItem2Point": cc.p(320, 415)
+            "obtainSpritePoint": cc.p(0, 158),
+            "rewardLabelBasePoint": cc.p(0, 80),
+            "rewardLabelOffsetY": 53,
+            "okItem2Point": cc.p(0, -237)
         },
         "passRankLayer": {
             "scrollViewLayerRect": cc.rect(14, 140, 609, 876),

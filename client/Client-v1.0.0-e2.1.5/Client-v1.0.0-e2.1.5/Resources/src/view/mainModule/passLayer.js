@@ -409,17 +409,19 @@ var PassLayer = cc.Layer.extend({
         layer.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         MainScene.getInstance().addChild(layer, 10);
 
-        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 960);
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
         bgLayer.setPosition(this._passLayerFit.bgLayerPoint);
         layer.addChild(bgLayer);
 
-        var bgSprite = cc.Sprite.create(main_scene_image.bg17);
+        var bgSprite =cc.BuilderReader.load(main_scene_image.uiEffect17, this);
         bgSprite.setPosition(this._passLayerFit.bgSprite2Point);
         layer.addChild(bgSprite);
 
+        var label = bgSprite.controller.label;
+
         var obtainSprite = cc.Sprite.create(main_scene_image.icon226);
         obtainSprite.setPosition(this._passLayerFit.obtainSpritePoint);
-        layer.addChild(obtainSprite);
+        label.addChild(obtainSprite);
 
         var str = lz.getRewardString(reward);
         var len = str.length;
@@ -430,7 +432,7 @@ var PassLayer = cc.Layer.extend({
             rewardLabel.setColor(cc.c3b(255, 239, 131));
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
             rewardLabel.setPosition(point);
-            layer.addChild(rewardLabel);
+            label.addChild(rewardLabel);
 
             point.y -= this._passLayerFit.rewardLabelOffsetY;
         }
@@ -450,7 +452,9 @@ var PassLayer = cc.Layer.extend({
         var menu = cc.Menu.create(okItem);
         menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
-        layer.addChild(menu);
+        label.addChild(menu);
+
+        bgSprite.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
     },
 
     _blackHoleRotate: function () {

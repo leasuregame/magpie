@@ -80,8 +80,9 @@ var LineUpLabel = cc.Layer.extend({
             cc.log("LineUpLabel _onClickLock");
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-            if (index == 3) {
+            if(index == 2) {
+                TipLayer.tip(table.card3_position + " 级开启");
+            } else if (index == 3) {
                 TipLayer.tip(table.card4_position + " 级开启");
             } else if (index == 4) {
                 TipLayer.tip(table.card5_position + " 级开启");

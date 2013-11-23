@@ -163,15 +163,16 @@ var Player = Entity.extend({
 
         var table = outputTables.function_limit.rows[1];
 
-        MAX_LINE_UP_CARD = 3;
-
-        if (this._lv >= table.card4_position) {
-            MAX_LINE_UP_CARD = 4;
-        }
+        MAX_LINE_UP_CARD = 2;
 
         if (this._lv >= table.card5_position) {
             MAX_LINE_UP_CARD = 5;
+        } else if (this._lv >= table.card4_position) {
+            MAX_LINE_UP_CARD = 4;
+        } else if (this._lv >= table.card3_position) {
+            MAX_LINE_UP_CARD = 3;
         }
+
     },
 
     getAbility: function () {

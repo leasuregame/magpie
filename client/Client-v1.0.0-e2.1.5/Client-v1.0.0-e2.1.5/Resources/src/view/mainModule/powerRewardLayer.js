@@ -112,7 +112,9 @@ var PowerRewardLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        gameData.activity.getPowerReward();
+        gameData.activity.getPowerReward(function () {
+            gameMark.updatePowerRewardMark(false);
+        });
     }
 
 

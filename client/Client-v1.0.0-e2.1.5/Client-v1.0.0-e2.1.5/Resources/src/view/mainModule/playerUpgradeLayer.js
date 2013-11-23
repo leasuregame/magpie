@@ -63,7 +63,7 @@ var PlayerUpgradeLayer = LazyLayer.extend({
 
         var lv = gameData.player.get("lv");
         var lvLabel = cc.LabelTTF.create("等级：LV " + (lv - 1) + " -- LV " + lv, "STHeitiTC-Medium", 22);
-        lvLabel.setColor(cc.c3b(255, 239, 131));
+        lvLabel.setColor(cc.c3b(238, 186, 43));
         lvLabel.setAnchorPoint(cc.p(0.5, 1));
         lvLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
         layer.addChild(lvLabel);

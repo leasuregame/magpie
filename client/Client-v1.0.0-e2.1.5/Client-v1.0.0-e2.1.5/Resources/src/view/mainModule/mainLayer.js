@@ -29,11 +29,14 @@ var MainLayer = cc.Layer.extend({
         MessageLayer,
         ConfigLayer
     ],
+
     _activityMark: null,
     _cardLibraryMark: null,
     _achievementMark: null,
     _friendMark: null,
     _messageMark: null,
+
+    _rankGuide: null,
 
     onEnter: function () {
         cc.log("MainLayer onEnter");
@@ -250,6 +253,12 @@ var MainLayer = cc.Layer.extend({
         this._achievementMark.setVisible(gameMark.getAchievementMark());
         this._friendMark.setVisible(gameMark.getFriendMark());
         this._messageMark.setVisible(gameMark.getMessageMark());
+    },
+
+    updateGuide: function () {
+        cc.log("MainLayer updateGuide");
+
+
     },
 
     _onClickLayer: function (index) {

@@ -27,9 +27,13 @@ var MainMenuLayer = cc.Layer.extend({
         ShopLayer
     ],
 
+    _passGuide: null,
+    _tournamentGuide: null,
+
     onEnter: function () {
         this._super();
         this.update();
+        this.updateGuide();
     },
 
     init: function () {
@@ -91,6 +95,17 @@ var MainMenuLayer = cc.Layer.extend({
         }
 
         this._markSprite.setVisible(false);
+    },
+
+    updateGuide: function () {
+        cc.log("MainMenuLayer updateGuide");
+        if (gameGuide.get("passGuide")) {
+
+        }
+
+        if (gameGuide.get("tournamentGuide")) {
+
+        }
     },
 
     _onClickLayer: function (index) {

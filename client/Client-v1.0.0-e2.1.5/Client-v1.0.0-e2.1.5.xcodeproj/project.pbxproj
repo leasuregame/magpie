@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9055D91A183F648F00841BE1 /* jsb_cocos2dx_auto_api.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EA5183E068000727729 /* jsb_cocos2dx_auto_api.js */; };
+		9055D91B183F648F00841BE1 /* jsb_cocos2dx_extension_auto_api.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EA8183E068000727729 /* jsb_cocos2dx_extension_auto_api.js */; };
+		9055D91C183F648F00841BE1 /* jsb.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EAB183E068000727729 /* jsb.js */; };
+		9055D91D183F648F00841BE1 /* jsb_chipmunk.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EAC183E068000727729 /* jsb_chipmunk.js */; };
+		9055D91E183F648F00841BE1 /* jsb_chipmunk_constants.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EAD183E068000727729 /* jsb_chipmunk_constants.js */; };
+		9055D91F183F648F00841BE1 /* jsb_cocos2d.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EAE183E068000727729 /* jsb_cocos2d.js */; };
+		9055D920183F648F00841BE1 /* jsb_cocos2d_constants.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EAF183E068000727729 /* jsb_cocos2d_constants.js */; };
+		9055D921183F648F00841BE1 /* jsb_cocos2d_extension.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EB0183E068000727729 /* jsb_cocos2d_extension.js */; };
+		9055D922183F648F00841BE1 /* jsb_cocosbuilder.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EB1183E068000727729 /* jsb_cocosbuilder.js */; };
+		9055D923183F648F00841BE1 /* jsb_debugger.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EB2183E068000727729 /* jsb_debugger.js */; };
+		9055D924183F648F00841BE1 /* jsb_opengl.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EB3183E068000727729 /* jsb_opengl.js */; };
+		9055D925183F648F00841BE1 /* jsb_opengl_constants.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EB4183E068000727729 /* jsb_opengl_constants.js */; };
+		9055D926183F648F00841BE1 /* jsb_sys.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EB5183E068000727729 /* jsb_sys.js */; };
+		9055D927183F648F00841BE1 /* obfuscate_exclude_chipmunk.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EDB183E068000727729 /* obfuscate_exclude_chipmunk.js */; };
+		9055D928183F648F00841BE1 /* obfuscate_exclude_cocos2d.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EDC183E068000727729 /* obfuscate_exclude_cocos2d.js */; };
 		906E946217CDAD090038DF64 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 906E946017CDAD090038DF64 /* res */; };
 		906E946317CDAD090038DF64 /* src in Resources */ = {isa = PBXBuildFile; fileRef = 906E946117CDAD090038DF64 /* src */; };
 		906E946A17CDAD5D0038DF64 /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 906E946417CDAD150038DF64 /* main_binding.js */; };
@@ -269,22 +284,8 @@
 		90B55033183E068000727729 /* cocos2d_specifics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54E9E183E068000727729 /* cocos2d_specifics.cpp */; };
 		90B55034183E068000727729 /* cocosjs_manual_conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EA0183E068000727729 /* cocosjs_manual_conversions.cpp */; };
 		90B55035183E068000727729 /* jsb_cocos2dx_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EA3183E068000727729 /* jsb_cocos2dx_auto.cpp */; };
-		90B55036183E068000727729 /* jsb_cocos2dx_auto_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EA5183E068000727729 /* jsb_cocos2dx_auto_api.js */; };
 		90B55037183E068000727729 /* jsb_cocos2dx_extension_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EA6183E068000727729 /* jsb_cocos2dx_extension_auto.cpp */; };
-		90B55038183E068000727729 /* jsb_cocos2dx_extension_auto_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EA8183E068000727729 /* jsb_cocos2dx_extension_auto_api.js */; };
 		90B55039183E068000727729 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EA9183E068000727729 /* README */; };
-		90B5503A183E068000727729 /* jsb.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EAB183E068000727729 /* jsb.js */; };
-		90B5503B183E068000727729 /* jsb_chipmunk.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EAC183E068000727729 /* jsb_chipmunk.js */; };
-		90B5503C183E068000727729 /* jsb_chipmunk_constants.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EAD183E068000727729 /* jsb_chipmunk_constants.js */; };
-		90B5503D183E068000727729 /* jsb_cocos2d.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EAE183E068000727729 /* jsb_cocos2d.js */; };
-		90B5503E183E068000727729 /* jsb_cocos2d_constants.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EAF183E068000727729 /* jsb_cocos2d_constants.js */; };
-		90B5503F183E068000727729 /* jsb_cocos2d_extension.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EB0183E068000727729 /* jsb_cocos2d_extension.js */; };
-		90B55040183E068000727729 /* jsb_cocosbuilder.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EB1183E068000727729 /* jsb_cocosbuilder.js */; };
-		90B55041183E068000727729 /* jsb_debugger.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EB2183E068000727729 /* jsb_debugger.js */; };
-		90B55042183E068000727729 /* jsb_opengl.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EB3183E068000727729 /* jsb_opengl.js */; };
-		90B55043183E068000727729 /* jsb_opengl_constants.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EB4183E068000727729 /* jsb_opengl_constants.js */; };
-		90B55044183E068000727729 /* jsb_sys.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EB5183E068000727729 /* jsb_sys.js */; };
-		90B55045183E068000727729 /* main.debug.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EB6183E068000727729 /* main.debug.js */; };
 		90B55046183E068000727729 /* js_bindings_ccbreader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EB7183E068000727729 /* js_bindings_ccbreader.cpp */; };
 		90B55047183E068000727729 /* js_bindings_chipmunk_auto_classes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EB9183E068000727729 /* js_bindings_chipmunk_auto_classes.cpp */; };
 		90B55048183E068000727729 /* js_bindings_chipmunk_functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EBC183E068000727729 /* js_bindings_chipmunk_functions.cpp */; };
@@ -300,8 +301,6 @@
 		90B55052183E068000727729 /* jsb_opengl_manual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54ED4183E068000727729 /* jsb_opengl_manual.cpp */; };
 		90B55053183E068000727729 /* jsb_opengl_registration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54ED6183E068000727729 /* jsb_opengl_registration.cpp */; };
 		90B55054183E068000727729 /* jsb_websocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54ED8183E068000727729 /* jsb_websocket.cpp */; };
-		90B55055183E068000727729 /* obfuscate_exclude_chipmunk.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EDB183E068000727729 /* obfuscate_exclude_chipmunk.js */; };
-		90B55056183E068000727729 /* obfuscate_exclude_cocos2d.js in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EDC183E068000727729 /* obfuscate_exclude_cocos2d.js */; };
 		90B55057183E068000727729 /* ScriptingCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EDD183E068000727729 /* ScriptingCore.cpp */; };
 		90B55058183E068000727729 /* XMLHTTPRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EE0183E068000727729 /* XMLHTTPRequest.cpp */; };
 		90B55059183E068000727729 /* js.msg in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EF7183E068000727729 /* js.msg */; };
@@ -2693,6 +2692,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9055D91A183F648F00841BE1 /* jsb_cocos2dx_auto_api.js in Resources */,
+				9055D91B183F648F00841BE1 /* jsb_cocos2dx_extension_auto_api.js in Resources */,
+				9055D91C183F648F00841BE1 /* jsb.js in Resources */,
+				9055D91D183F648F00841BE1 /* jsb_chipmunk.js in Resources */,
+				9055D91E183F648F00841BE1 /* jsb_chipmunk_constants.js in Resources */,
+				9055D91F183F648F00841BE1 /* jsb_cocos2d.js in Resources */,
+				9055D920183F648F00841BE1 /* jsb_cocos2d_constants.js in Resources */,
+				9055D921183F648F00841BE1 /* jsb_cocos2d_extension.js in Resources */,
+				9055D922183F648F00841BE1 /* jsb_cocosbuilder.js in Resources */,
+				9055D923183F648F00841BE1 /* jsb_debugger.js in Resources */,
+				9055D924183F648F00841BE1 /* jsb_opengl.js in Resources */,
+				9055D925183F648F00841BE1 /* jsb_opengl_constants.js in Resources */,
+				9055D926183F648F00841BE1 /* jsb_sys.js in Resources */,
+				9055D927183F648F00841BE1 /* obfuscate_exclude_chipmunk.js in Resources */,
+				9055D928183F648F00841BE1 /* obfuscate_exclude_cocos2d.js in Resources */,
 				90B55059183E068000727729 /* js.msg in Resources */,
 				90B55039183E068000727729 /* README in Resources */,
 				906E946A17CDAD5D0038DF64 /* main_binding.js in Resources */,
@@ -2744,7 +2758,6 @@
 				90B55003183E068000727729 /* CCControlButton.cpp in Sources */,
 				90B54FD3183E068000727729 /* CCTexturePVR.cpp in Sources */,
 				90B5502B183E068000727729 /* RegionAttachment.cpp in Sources */,
-				90B5503F183E068000727729 /* jsb_cocos2d_extension.js in Sources */,
 				90B55049183E068000727729 /* js_bindings_chipmunk_manual.cpp in Sources */,
 				90B54FE6183E068000727729 /* CCBAnimationManager.cpp in Sources */,
 				90B54FE4183E068000727729 /* MobClickCPP.mm in Sources */,
@@ -2757,7 +2770,6 @@
 				90B54F68183E068000727729 /* CCScheduler.cpp in Sources */,
 				90B54F45183E068000727729 /* cpArray.c in Sources */,
 				90B55029183E068000727729 /* extension.cpp in Sources */,
-				90B55056183E068000727729 /* obfuscate_exclude_cocos2d.js in Sources */,
 				90B54F64183E068000727729 /* CCCamera.cpp in Sources */,
 				90B54F61183E068000727729 /* CCActionTween.cpp in Sources */,
 				90B5502E183E068000727729 /* SkeletonJson.cpp in Sources */,
@@ -2766,7 +2778,6 @@
 				90B54F77183E068000727729 /* CCGrabber.cpp in Sources */,
 				90B54F96183E068000727729 /* CCProgressTimer.cpp in Sources */,
 				90B54F49183E068000727729 /* cpCollision.c in Sources */,
-				90B5503A183E068000727729 /* jsb.js in Sources */,
 				90B5504E183E068000727729 /* js_bindings_system_registration.cpp in Sources */,
 				90B54F52183E068000727729 /* cpSpatialIndex.c in Sources */,
 				90B54FE0183E068000727729 /* SimpleAudioEngine.mm in Sources */,
@@ -2777,7 +2788,6 @@
 				90B55057183E068000727729 /* ScriptingCore.cpp in Sources */,
 				90B54F90183E068000727729 /* CCTransitionPageTurn.cpp in Sources */,
 				90B54FF4183E068000727729 /* CCLayerLoader.cpp in Sources */,
-				90B55040183E068000727729 /* jsb_cocosbuilder.js in Sources */,
 				90B55000183E068000727729 /* CCComController.cpp in Sources */,
 				90B54FDC183E068000727729 /* CCTouchHandler.cpp in Sources */,
 				90B55002183E068000727729 /* CCControl.cpp in Sources */,
@@ -2786,7 +2796,6 @@
 				90B54F41183E068000727729 /* cpRotaryLimitJoint.c in Sources */,
 				90B54FCC183E068000727729 /* ZipUtils.cpp in Sources */,
 				90B54FB1183E068000727729 /* CCScriptSupport.cpp in Sources */,
-				90B55036183E068000727729 /* jsb_cocos2dx_auto_api.js in Sources */,
 				90B54FC0183E068000727729 /* ccUTF8.cpp in Sources */,
 				90B55035183E068000727729 /* jsb_cocos2dx_auto.cpp in Sources */,
 				90B5500D183E068000727729 /* CCScale9Sprite.cpp in Sources */,
@@ -2799,7 +2808,6 @@
 				90B54FBB183E068000727729 /* CCSpriteFrameCache.cpp in Sources */,
 				90B54FC1183E068000727729 /* ccUtils.cpp in Sources */,
 				90B54FF7183E068000727729 /* CCNode+CCBRelativePositioning.cpp in Sources */,
-				90B55041183E068000727729 /* jsb_debugger.js in Sources */,
 				90B5500E183E068000727729 /* CCEditBox.cpp in Sources */,
 				90B55037183E068000727729 /* jsb_cocos2dx_extension_auto.cpp in Sources */,
 				90B54FF8183E068000727729 /* CCNodeLoader.cpp in Sources */,
@@ -2833,7 +2841,6 @@
 				90B54F3D183E068000727729 /* cpGrooveJoint.c in Sources */,
 				90B54FBE183E068000727729 /* CCPointExtension.cpp in Sources */,
 				90B55047183E068000727729 /* js_bindings_chipmunk_auto_classes.cpp in Sources */,
-				90B55038183E068000727729 /* jsb_cocos2dx_extension_auto_api.js in Sources */,
 				90B54F82183E068000727729 /* quaternion.c in Sources */,
 				90B54F57183E068000727729 /* CCActionCatmullRom.cpp in Sources */,
 				90B55046183E068000727729 /* js_bindings_ccbreader.cpp in Sources */,
@@ -2845,7 +2852,6 @@
 				90B55009183E068000727729 /* CCControlStepper.cpp in Sources */,
 				90B54F55183E068000727729 /* CCAction.cpp in Sources */,
 				90B54FEB183E068000727729 /* CCBSequenceProperty.cpp in Sources */,
-				90B55055183E068000727729 /* obfuscate_exclude_chipmunk.js in Sources */,
 				90B54FD0183E068000727729 /* CCTextureAtlas.cpp in Sources */,
 				90B55001183E068000727729 /* CCInputDelegate.cpp in Sources */,
 				90B55021183E068000727729 /* Atlas.cpp in Sources */,
@@ -2855,7 +2861,6 @@
 				90B54F43183E068000727729 /* cpSlideJoint.c in Sources */,
 				90B5502D183E068000727729 /* SkeletonData.cpp in Sources */,
 				90B54F6D183E068000727729 /* CCDictionary.cpp in Sources */,
-				90B55043183E068000727729 /* jsb_opengl_constants.js in Sources */,
 				90B55050183E068000727729 /* jsb_cocos2dx_extension_manual.cpp in Sources */,
 				90B54F6F183E068000727729 /* CCNS.cpp in Sources */,
 				90B54FA1183E068000727729 /* CCAccelerometer.mm in Sources */,
@@ -2868,14 +2873,12 @@
 				90B54F5B183E068000727729 /* CCActionInstant.cpp in Sources */,
 				90B54FC9183E068000727729 /* CCUserDefault.mm in Sources */,
 				90B54FBF183E068000727729 /* CCProfiling.cpp in Sources */,
-				90B5503E183E068000727729 /* jsb_cocos2d_constants.js in Sources */,
 				90B54F8F183E068000727729 /* CCTransition.cpp in Sources */,
 				90B54FA6183E068000727729 /* CCEGLView.mm in Sources */,
 				90B5501A183E068000727729 /* HttpClient.cpp in Sources */,
 				90B54F71183E068000727729 /* CCSet.cpp in Sources */,
 				90B54F54183E068000727729 /* cpVect.c in Sources */,
 				90B55027183E068000727729 /* CCSkeleton.cpp in Sources */,
-				90B55044183E068000727729 /* jsb_sys.js in Sources */,
 				90B54F95183E068000727729 /* CCMotionStreak.cpp in Sources */,
 				90B54FB9183E068000727729 /* CCSpriteBatchNode.cpp in Sources */,
 				90B54FC8183E068000727729 /* TransformUtils.cpp in Sources */,
@@ -2906,7 +2909,6 @@
 				90B54FF3183E068000727729 /* CCLayerGradientLoader.cpp in Sources */,
 				90B54F5E183E068000727729 /* CCActionPageTurn3D.cpp in Sources */,
 				90B54FD1183E068000727729 /* CCTextureCache.cpp in Sources */,
-				90B5503C183E068000727729 /* jsb_chipmunk_constants.js in Sources */,
 				90B54FD5183E068000727729 /* CCTileMapAtlas.cpp in Sources */,
 				90B54F63183E068000727729 /* CCNode.cpp in Sources */,
 				90B54FF6183E068000727729 /* CCMenuItemLoader.cpp in Sources */,
@@ -2932,7 +2934,6 @@
 				90B55058183E068000727729 /* XMLHTTPRequest.cpp in Sources */,
 				90D49C5A17CAF81800A22DB2 /* main.m in Sources */,
 				90D4A08A17CAF82600A22DB2 /* AppDelegate.cpp in Sources */,
-				90B55045183E068000727729 /* main.debug.js in Sources */,
 				90B54FAB183E068000727729 /* CCThread.mm in Sources */,
 				90B5501B183E068000727729 /* WebSocket.cpp in Sources */,
 				90B54F4F183E068000727729 /* cpSpaceHash.c in Sources */,
@@ -2975,7 +2976,6 @@
 				90B5504C183E068000727729 /* js_bindings_opengl.cpp in Sources */,
 				90B55010183E068000727729 /* CCEditBoxImplMac.mm in Sources */,
 				90B55025183E068000727729 /* Bone.cpp in Sources */,
-				90B5503B183E068000727729 /* jsb_chipmunk.js in Sources */,
 				90B54FC6183E068000727729 /* TGAlib.cpp in Sources */,
 				90B54FD4183E068000727729 /* CCParallaxNode.cpp in Sources */,
 				90B54F8D183E068000727729 /* CCLayer.cpp in Sources */,
@@ -3010,7 +3010,6 @@
 				90B54FE7183E068000727729 /* CCBFileLoader.cpp in Sources */,
 				90B55016183E068000727729 /* CCTableView.cpp in Sources */,
 				90B54F5C183E068000727729 /* CCActionInterval.cpp in Sources */,
-				90B55042183E068000727729 /* jsb_opengl.js in Sources */,
 				90B55005183E068000727729 /* CCControlHuePicker.cpp in Sources */,
 				90B54F39183E068000727729 /* cpConstraint.c in Sources */,
 				90B5500C183E068000727729 /* CCInvocation.cpp in Sources */,
@@ -3019,7 +3018,6 @@
 				90B55017183E068000727729 /* CCTableViewCell.cpp in Sources */,
 				90B54F59183E068000727729 /* CCActionGrid.cpp in Sources */,
 				90B54FD9183E068000727729 /* CCTMXXMLParser.cpp in Sources */,
-				90B5503D183E068000727729 /* jsb_cocos2d.js in Sources */,
 				90B55019183E068000727729 /* LocalStorageAndroid.cpp in Sources */,
 				90B54F67183E068000727729 /* ccFPSImages.c in Sources */,
 				90B54F97183E068000727729 /* CCRenderTexture.cpp in Sources */,
@@ -3060,8 +3058,8 @@
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/third_party/ios\"",
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/ios\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PRODUCT_NAME = "极品神仙";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = Magpie;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3091,9 +3089,9 @@
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/third_party/ios\"",
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/ios\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PRODUCT_NAME = "极品神仙";
+				PRODUCT_NAME = Magpie;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3139,6 +3137,7 @@
 				);
 				PRODUCT_NAME = "极品神仙";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"Client-v1.0.0-e2.1.5/libs/Chipmunk/include/chipmunk\" \"Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/include\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3183,6 +3182,7 @@
 				);
 				PRODUCT_NAME = "极品神仙";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"Client-v1.0.0-e2.1.5/libs/Chipmunk/include/chipmunk\" \"Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/include\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

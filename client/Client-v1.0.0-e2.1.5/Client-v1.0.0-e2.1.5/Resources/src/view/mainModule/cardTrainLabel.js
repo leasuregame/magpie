@@ -326,7 +326,7 @@ var CardTrainLabel = cc.Layer.extend({
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
         var that = this;
-        var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_UPGRADE_MASTER, function (data) {
+        var cardListLayer = CardListLayer.create(SELECT_TYPE_CARD_TRAIN_MASTER, function (data) {
             cc.log(data);
 
             if (data) {

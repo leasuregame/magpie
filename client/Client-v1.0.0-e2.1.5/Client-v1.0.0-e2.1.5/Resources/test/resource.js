@@ -575,7 +575,16 @@ var main_scene_image = {
     p43: effect_scene_path + "effect/" + "p43.png",
     p44: effect_scene_path + "effect/" + "p44.png",
     p45: effect_scene_path + "effect/" + "p45.png",
-    
+    p46: effect_scene_path + "effect/" + "p46.png",
+    p47: effect_scene_path + "effect/" + "p47.png",
+    p48: effect_scene_path + "effect/" + "p48.png",
+    p49: effect_scene_path + "effect/" + "p49.png",
+    p50: effect_scene_path + "effect/" + "p50.png",
+    p51: effect_scene_path + "effect/" + "p51.png",
+    p52: effect_scene_path + "effect/" + "p52.png",
+    p53: effect_scene_path + "effect/" + "p53.png",
+    p54: effect_scene_path + "effect/" + "p54.png",
+    p55: effect_scene_path + "effect/" + "p55.png",
 
     //UI特效
     up1: effect_scene_path + "uiEffect/" + "up1.png",
@@ -764,6 +773,13 @@ var main_scene_image = {
     effect13: ccb_scene_path + "effect13.ccbi", 
     effect14: ccb_scene_path + "effect14.ccbi", 
     effect15: ccb_scene_path + "effect15.ccbi", 
+    effect16: ccb_scene_path + "effect16.ccbi", 
+    effect17: ccb_scene_path + "effect17.ccbi", 
+    effect18: ccb_scene_path + "effect18.ccbi", 
+    effect19: ccb_scene_path + "effect19.ccbi", 
+    effect20: ccb_scene_path + "effect20.ccbi", 
+    effect21: ccb_scene_path + "effect21.ccbi", 
+
     uiEffect1: ccb_scene_path + "uiEffect1.ccbi", 
     uiEffect2: ccb_scene_path + "uiEffect2.ccbi", 
     uiEffect3: ccb_scene_path + "uiEffect3.ccbi", 

@@ -103,6 +103,7 @@ Handler::getActivityInfo = (msg, session, next) ->
       )   
 
     next(null, {code: 200, msg: {
+      canGetPower: not hasGetPower(player, new Date().getHours())
       levelReward: player.levelReward
     }})
 

@@ -1196,6 +1196,7 @@ var checkLineUp = function(player) {
 
     var fdata = table.getTableItem('function_limit', 1);
     var lvMap = {
+        3: fdata.card3_position,
         4: fdata.card4_position,
         5: fdata.card5_position
     };

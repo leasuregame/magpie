@@ -400,14 +400,15 @@ Handler::passSkillAfresh  = (msg, session, next) ->
   type = if msg.type? then msg.type else passSkillConfig.TYPE.MONEY
   _pros = 1: 'money', 2: 'gold'
 
+  consumeVal = 0
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
 
     (player, cb) ->
-      money_need = passSkillConfig.CONSUME[type] * psIds.length
+      consumeVal = passSkillConfig.CONSUME[type] * psIds.length
 
-      if player[_pros[type]] < money_need
+      if player[_pros[type]] < consumeVal
         return cb({code: 501, msg: if _pros[type] == 'money' then '仙币不足' else '魔石不足'})
 
       card = player.getCard(cardId)
@@ -417,7 +418,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
         return cb({code: 501, msg: '找不到被动属性'})
 
       card.afreshPassiveSkill(type, ps) for ps in passSkills
-      player.decrease(_pros[type], money_need)
+      player.decrease(_pros[type], consumeVal)
       cb(null, player, card)
   ], (err, player, card) ->
     if err
@@ -696,7 +697,7 @@ cardStar = (tableId) ->
 checkCardCount = (playerLv, cardIds) ->
   card_count = (cardIds.filter (id) -> id isnt -1).length
   fdata = table.getTableItem('function_limit', 1)
-  lvMap = {4: fdata.card4_position, 5: fdata.card5_position}
+  lvMap = {3: fdata.card3_position, 4: fdata.card4_position, 5: fdata.card5_position}
   for qty, lv of lvMap
     if playerLv < lv and card_count >= qty
       return false

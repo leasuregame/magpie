@@ -19,7 +19,7 @@ Handler::createPlayer = (msg, session, next) ->
     return next(null, {code: 501, msg: '角色名称不能包含空格'})
 
   if not CHINESE_REG.test(name)
-    return next(null, {code: 501, msg: '只能输入1-6为汉字'})
+    return next(null, {code: 501, msg: '只能输入1-6位汉字'})
 
   @app.rpc.area.playerRemote.createPlayer session, {
     name: name

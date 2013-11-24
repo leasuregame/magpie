@@ -23,11 +23,11 @@ Handler::register = (msg, session, next) ->
   if not account? or account == '' or not password? or password == ''
     return next(null, {code: 501, msg: '用户名或密码不能为空'})
 
-  if not ACCOUNT_REG.test(account)
-    return next(null, {code: 501, msg: '用户名只能由6-50的字母/数字/_/@/.'})
+  if not ACCOUNT_REG.test(account) or not EMAIL_REG.test(account)
+    return next(null, {code: 501, msg: '用户名只能由6-50的字符组成，推荐使用邮箱或手机号'})
 
   if not PASSWORD_REG.test(password)
-    return next(null, {code: 501, msg: '密码只能有6-20的数字或字母组成'})
+    return next(null, {code: 501, msg: '密码只能由6-20位的数字或字母组成'})
 
   @app.rpc.auth.authRemote.register session, {
     account: msg.account

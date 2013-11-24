@@ -33,10 +33,13 @@ Data.prototype.deleteUnUsedCards = function() {
   });
 
   this.db['player'].update({
-    where: {1: 1},
+    where: {
+      1: 1
+    },
     data: {
-    lineUp: '12:-1'
-  }}, function(err, res) {
+      lineUp: '12:-1'
+    }
+  }, function(err, res) {
     console.log('updated players: ', err, res);
   });
 };

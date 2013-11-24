@@ -208,7 +208,7 @@ var Player = (function(_super) {
 
     Player.FIELDS = [
         'id',
-        'createTime',
+        'created',
         'userId',
         'areaId',
         'name',
@@ -1079,7 +1079,7 @@ var Player = (function(_super) {
     Player.prototype.toJson = function() {
         return {
             id: this.id,
-            createTime: this.createTime,
+            createTime: this.created,
             userId: this.userId,
             areaId: this.areaId,
             name: this.name,

@@ -1079,7 +1079,7 @@ var Player = (function(_super) {
     Player.prototype.toJson = function() {
         return {
             id: this.id,
-            createTime: this.created,
+            createTime: new Date(this.created).getTime(),
             userId: this.userId,
             areaId: this.areaId,
             name: this.name,

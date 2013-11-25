@@ -150,30 +150,38 @@ class Matrix
 
   hp_max: ->
     items = @all()
+    return null if items.length == 0
+
     res = items[0]
     items.forEach (h) ->
-      h.hp > res.hp && res = h
+      res = h if h.hp > res.hp
     res
 
   hp_min: ->
     items = @all()
+    return null if items.length == 0
+
     res = items[0]
     items.forEach (h) ->
-      h.hp < res.hp && res = h
+      res = h if h.hp < res.hp
     res
 
   atk_max: ->
     items = @all()
+    return null if items.length == 0
+
     res = items[0]
     items.forEach (h) ->
-      h.atk > res.atk && res = h
+      res = h if h.atk > res.atk
     res
 
   atk_min: ->
     items = @all()
+    return null if items.length == 0
+
     res = items[0]
     items.forEach (h) ->
-      h.atk < res.atk && res = h
+      res = h if h.atk < res.atk
     res
 
   default: (pos) ->
@@ -192,8 +200,7 @@ class Matrix
           indexs.push i
       len = items.length
 
-    num = len if num > len
-    
+    num = len if num > len    
     
     _res = []
     for i in _.range(num)

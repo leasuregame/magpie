@@ -151,6 +151,11 @@ class Manager
         ### 一大关结束，触发摸一摸功能 ###
         if task.id % 10 is 1 && task.id != 1
           data.momo = player.createMonoGift();
+
+        rew = table.getTableItem('task_throught_reward', task.id-1)
+        if not rew
+          logger.error('can not find throught reward by id', task.id-1)
+        data.throught_reaward = {money: rew?.money_obtain}
       player.set('task', task)
 
     ### consume power first, then add exp

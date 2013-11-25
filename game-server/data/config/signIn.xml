@@ -88,111 +88,104 @@
  </Worksheet>
  <Worksheet ss:Name="连续签到奖励">
   <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="96.75"
-   ss:DefaultRowHeight="18.9375">
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="107.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="102.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="108"/>
-   <Column ss:Index="6" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="101.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="165"/>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">连签次数</Data></Cell>
-    <Cell><Data ss:Type="String">铜板奖励</Data></Cell>
-    <Cell><Data ss:Type="String">活力值奖励</Data></Cell>
-    <Cell><Data ss:Type="String">技能点</Data></Cell>
-    <Cell><Data ss:Type="String">仙丹</Data></Cell>
-    <Cell><Data ss:Type="String">免费寻宝次数</Data></Cell>
-    <Cell><Data ss:Type="String">卡魂</Data></Cell>
-    <Cell><Data ss:Type="String">元宝</Data></Cell>
-    <Cell><Data ss:Type="String">灵气</Data></Cell>
+   x:FullRows="1" ss:DefaultColumnWidth="72" ss:DefaultRowHeight="20.25">
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">连签次数</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">铜板奖励</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">活力值奖励</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">技能点</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">仙丹</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">免费寻宝次数</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">卡魂</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">元宝</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">灵气</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">count</Data></Cell>
-    <Cell><Data ss:Type="String">money</Data></Cell>
-    <Cell><Data ss:Type="String">energy</Data></Cell>
-    <Cell><Data ss:Type="String">skillPoint</Data></Cell>
-    <Cell><Data ss:Type="String">elixir</Data></Cell>
-    <Cell><Data ss:Type="String">lottery_free_count</Data></Cell>
-    <Cell><ss:Data ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40"><Font
-       html:Color="#000000">fragments</Font></ss:Data></Cell>
-    <Cell><Data ss:Type="String">gold</Data></Cell>
-    <Cell><Data ss:Type="String">spirit</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">count</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">money</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">energy</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">skillPoint</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">elixir</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">lottery_free_count</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">fragments</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">gold</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">spirit</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="Number">5000</Data></Cell>
-    <Cell><Data ss:Type="Number">100</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">5000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell><Data ss:Type="Number">10</Data></Cell>
-    <Cell><Data ss:Type="Number">10000</Data></Cell>
-    <Cell><Data ss:Type="Number">200</Data></Cell>
-    <Cell><Data ss:Type="Number">800</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">200</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">800</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="Number">18</Data></Cell>
-    <Cell><Data ss:Type="Number">20000</Data></Cell>
-    <Cell><Data ss:Type="Number">300</Data></Cell>
-    <Cell><Data ss:Type="Number">1000</Data></Cell>
-    <Cell><Data ss:Type="Number">1000</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">18</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">20000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">300</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">1000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">4</Data></Cell>
-    <Cell><Data ss:Type="Number">25</Data></Cell>
-    <Cell><Data ss:Type="Number">30000</Data></Cell>
-    <Cell><Data ss:Type="Number">500</Data></Cell>
-    <Cell><Data ss:Type="Number">2000</Data></Cell>
-    <Cell><Data ss:Type="Number">2000</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">4</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">25</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">30000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">500</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">2000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">2000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="Number">-1</Data></Cell>
-    <Cell><Data ss:Type="Number">50000</Data></Cell>
-    <Cell><Data ss:Type="Number">800</Data></Cell>
-    <Cell><Data ss:Type="Number">3000</Data></Cell>
-    <Cell><Data ss:Type="Number">3000</Data></Cell>
-    <Cell><Data ss:Type="Number">10</Data></Cell>
-    <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
-    <Cell><Data ss:Type="Number">0</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">-1</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">50000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">800</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">3000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">3000</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">5</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="Number">0</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
-    <Header x:Margin="0.51180555555555596"/>
-    <Footer x:Margin="0.51180555555555596"/>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Unsynced/>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

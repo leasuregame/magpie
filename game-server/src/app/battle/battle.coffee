@@ -37,6 +37,8 @@ class Battle extends Base
     battleLog.set('cards', cards)
     battleLog.set('ownId', @attacker.id)
     battleLog.set('enemyId', @defender.id)
+    battleLog.set('ownName', @attacker.name)
+    battleLog.set('enemyName', @defender.name)
     
     log.info '    >>> 战斗开始 <<<    '
 

@@ -102,8 +102,9 @@ Handler::getActivityInfo = (msg, session, next) ->
         }
       )   
 
+    cur_hour = new Date().getHours()
     next(null, {code: 200, msg: {
-      canGetPower: not hasGetPower(player, new Date().getHours())
+      canGetPower: not hasGetPower(player, cur_hour) and canGetPower(cur_hour)
       levelReward: player.levelReward
     }})
 

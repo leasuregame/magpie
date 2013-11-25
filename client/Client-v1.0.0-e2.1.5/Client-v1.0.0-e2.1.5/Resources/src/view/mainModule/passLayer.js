@@ -218,7 +218,7 @@ var PassLayer = cc.Layer.extend({
         cc.log("PassLayer update");
 
         if (this._upgradeReward) {
-            PlayerUpgradeLayer.pop(this._upgradeReward);
+            PlayerUpgradeLayer.pop({reward: this._upgradeReward});
             this._upgradeReward = null;
         }
 

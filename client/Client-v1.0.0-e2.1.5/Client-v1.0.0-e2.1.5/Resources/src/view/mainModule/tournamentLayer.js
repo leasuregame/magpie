@@ -177,7 +177,7 @@ var TournamentLayer = cc.Layer.extend({
         cc.log("TournamentLayer update");
 
         if (this._upgradeReward) {
-            PlayerUpgradeLayer.pop(this._upgradeReward);
+            PlayerUpgradeLayer.pop({reward: this._upgradeReward});
             this._upgradeReward = null;
         }
 
@@ -226,7 +226,7 @@ var TournamentLayer = cc.Layer.extend({
 
         this._rankList = tournament.get("rankList");
         var len = this._rankList.length;
-        var height = len * 135;
+        var height = len * 135 + 80;
         var playerId = gameData.player.get("id");
         var own = len;
 
@@ -236,10 +236,20 @@ var TournamentLayer = cc.Layer.extend({
             if (playerId == this._rankList[i].playerId) {
                 own = i;
             }
-
             var tournamentPlayerLabel = TournamentLabel.create(this, this._rankList[i]);
-            tournamentPlayerLabel.setPosition(cc.p(0, height - 135 * (i + 1)));
-            scrollViewLayer.addChild(tournamentPlayerLabel);
+            scrollViewLayer.addChild(tournamentPlayerLabel, 2);
+
+            if (i < 10) {
+                tournamentPlayerLabel.setPosition(cc.p(0, height - 135 * (i + 1)));
+            } else {
+                tournamentPlayerLabel.setPosition(cc.p(0, height - 135 * (i + 1) - 80));
+            }
+
+            if (i == 9) {
+                var line = cc.Sprite.create(main_scene_image.icon296);
+                line.setPosition(cc.p(310, height - 135 * (i + 1) - 40));
+                scrollViewLayer.addChild(line);
+            }
         }
 
         this._scrollView = cc.ScrollView.create(this._tournamentLayerFit.scrollViewSize, scrollViewLayer);

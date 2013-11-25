@@ -94,14 +94,10 @@ var GoldLayer = LazyLayer.extend({
             sys.localStorage.setItem(gameData.user.get('name') + "firstGold", 0);
         }
 
-        this._goldBoxItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.icon221,
-            main_scene_image.icon221,
-            this._onClickGoldBox,
-            this
-        );
+        this._goldBoxItem = cc.BuilderReader.load(main_scene_image.uiEffect27, this);
+        this._goldBoxItem.controller.goldBoxMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         this._goldBoxItem.setPosition(this._goldLayerFit.goldBoxItemPoint);
-        menu.addChild(this._goldBoxItem);
+        this.addChild(this._goldBoxItem);
 
         var action = cc.Sequence.create(
             cc.Spawn.create(
@@ -292,7 +288,11 @@ var GoldLayer = LazyLayer.extend({
         if (this._tipText2 != null) {
             this._tipText2.removeFromParent();
         }
-        this._open();
+        this._goldBoxItem.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_3", 0);
+        this._goldBoxItem.animationManager.setCompletedAnimationCallback(this, function () {
+            this._goldBoxItem.removeFromParent();
+            this._open();
+        });
     },
 
     _onClickGold: function (index) {

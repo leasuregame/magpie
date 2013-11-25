@@ -501,14 +501,21 @@ var ExploreLayer = cc.Layer.extend({
                     this._unlock();
                 }
 
-                if (goldList) {
+                if (upgradeReward) {
+                    var cb = function () {
+
+                        gameMark.updateGoldRewardMark(false);
+
+                        if (goldList) {
+                            GoldLayer.pop(goldList);
+                        }
+                    };
+                    PlayerUpgradeLayer.pop({reward: upgradeReward, cb: cb});
+                } else if (goldList) {
                     GoldLayer.pop(goldList);
                 }
 
-                if (upgradeReward) {
-                    PlayerUpgradeLayer.pop(upgradeReward);
-                    gameMark.updateGoldRewardMark(false);
-                }
+
             }, 1);
 
             return 1;

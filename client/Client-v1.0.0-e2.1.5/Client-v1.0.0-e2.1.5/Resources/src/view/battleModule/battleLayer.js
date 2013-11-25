@@ -41,6 +41,19 @@ var BatterLayer = cc.Layer.extend({
         bgSprite.setPosition(this._batterLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
+        if (this._battleLog.get("ownName") && this._battleLog.get("enemyName")) {
+
+            var ownName = StrokeLabel.create(this._battleLog.get("ownName"), "STHeitiTC-Medium", 20);
+            ownName.setAnchorPoint(cc.p(0, 0.5));
+            ownName.setPosition(this._batterLayerFit.ownNamePoint);
+            this.addChild(ownName);
+
+            var enemyName = StrokeLabel.create(this._battleLog.get("enemyName"), "STHeitiTC-Medium", 20);
+            enemyName.setAnchorPoint(cc.p(0, 0.5));
+            enemyName.setPosition(this._batterLayerFit.enemyNamePoint);
+            this.addChild(enemyName);
+        }
+
         return true;
     },
 

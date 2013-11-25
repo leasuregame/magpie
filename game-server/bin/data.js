@@ -178,15 +178,17 @@ Data.prototype.loadRobotUser = function(areaId, callback) {
         id: row.userId,
         account: row.account,
         password: row.password,
-        roles: JSON.stringify([areaId])
+        roles: JSON.stringify([parseInt(areaId)])
       };
       self.db.user.delete({
-        where: {id: row.id}
+        where: {
+          id: row.id
+        }
       }, function(err, res) {
         self.db.user.create({
           data: userData
         }, cb);
-      });      
+      });
     })
     .on('error', function(error) {
       console.log('load csv error:', error.message);
@@ -234,9 +236,12 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
       };
 
       async.parallel([
+
         function(cb) {
           self.db.player.delete({
-            where: {id: playerData.id}
+            where: {
+              id: playerData.id
+            }
           }, cb);
         },
         function(cb) {
@@ -257,33 +262,36 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
         function(cb) {
           var cards = JSON.parse(row.cards);
           var count = cards.ids.length;
-          async.times(count, function(n, next) {
-            var cardData = {
-              playerId: row.id,
-              tableId: cards.ids[n],
-              lv: cards.lvs[n],
-              star: cards.ids[n] % 5 || 5
-            };
-            genSkillInc(cardData);
-            initPassiveSkill(cardData);
-            self.db.card.delete({
-              where: {
-                playerId: playerData.id
-              }
-            }, function(err, res) {
+          self.db.card.delete({
+            where: {
+              playerId: playerData.id
+            }
+          }, function(err, res) {
+            async.times(count, function(n, next) {
+              var cardData = {
+                playerId: row.id,
+                tableId: cards.ids[n],
+                lv: cards.lvs[n],
+                star: cards.ids[n] % 5 || 5
+              };
+              genSkillInc(cardData);
+              initPassiveSkill(cardData);
+
               self.db.card.create({
                 data: cardData
-              }, next);
-            });            
-          }, cb);
+              }, function(err, c) {
+                next(err, c);
+              });
+
+            }, cb);
+          });
         }
       ], function(err, results) {
         if (err) return console.log(err);
 
-        var player = results[0];
-        var rank = results[1];
-        var cards = results[2];
-
+        var player = results[1];
+        var rank = results[3];
+        var cards = results[4];
         player.lineUp = random_lineup(cards);
         self.db.player.update({
           where: {
@@ -353,6 +361,7 @@ Data.prototype.dataForRanking = function(callback) {
         skillLv: _.random(1, 6)
       };
       async.parallel([
+
         function(cb) {
           self.db.player.create({
             data: playerData

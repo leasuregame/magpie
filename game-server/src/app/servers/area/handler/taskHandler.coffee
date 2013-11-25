@@ -54,14 +54,13 @@ Handler::explore = (msg, session, next) ->
             countSpirit(player, battleLog, 'TASK')
             player.incSpirit battleLog.totalSpirit if battleLog.winner is 'own'
 
-          ### 每次战斗结束都有20%的概率获得5魔石 ###
+          ### 每次战斗结束都有10%的概率获得5魔石 ###
           if utility.hitRate(taskRate.gold_obtain.rate)
             player.increase('gold', taskRate.gold_obtain.value)
-            data.gold_obtain += taskRate.gold_obtain.value
-
-          checkFragment(battleLog, player, chapterId)
+            data.gold_obtain += taskRate.gold_obtain.value          
 
           if battleLog.winner is 'own'
+            checkFragment(battleLog, player, chapterId)
             async.parallel [
               (callback) ->
                 taskManager.obtainBattleRewards(player, data, chapterId, battleLog, callback)
@@ -339,6 +338,7 @@ checkFragment = (battleLog, player, chapterId) ->
     task = utility.deepCopy(player.task)
     task.hasFragment = parseInt(chapterId)
     player.set('task', task)
+    player.increase('fragments')
   else 
     battleLog.rewards.fragment = 0
     

@@ -317,9 +317,12 @@ checkMysticalPass = (player) ->
 
   mpc = table.getTableItem 'mystical_pass_config', player.pass.mystical.diff
 
-  if mpc and (player.passLayer >= mpc.layer_from and player.passLayer <= mpc.layer_to) and utility.hitRate(mpc.rate)
+  if mpc and player.passLayer < mpc.layer_from
+    return
+  else if mpc and player.passLayer is mpc.layer_to and not player.pass.mystical.isTrigger
     player.triggerMysticalPass()
-
+  else if utility.hitRate(mpc.rate)
+    player.triggerMysticalPass()
 
 updatePlayer = (player, rewards, layer) ->
   player.increase('money', rewards.money)

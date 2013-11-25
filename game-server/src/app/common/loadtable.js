@@ -37,7 +37,7 @@ function analyzeTable(alltable, tablename) {
   if (table === undefined) {
     console.log(tablename + "表不存在");
   }
-  console.log('table: ', tablename);
+    
   var outputTable = {};
   var columns = table.Row[1]['Cell']; //第2行
   var colNames = [];
@@ -112,7 +112,7 @@ function analyzeTable(alltable, tablename) {
           text = row[j]['Data']['Font']['#'];
         }
         if (!text) {
-          console.log(text, row[j]['Data']);
+          //console.log(text, row[j]['Data']);
           text = row[j]['Data']['Font']['#'];
         }
 
@@ -152,7 +152,7 @@ function analyzeTable(alltable, tablename) {
           text = row[j]['Data']['Font']['#'];
         }
         if (!text) {
-          console.log(text, row[j]['Data']);
+          //console.log(text, row[j]['Data']);
           text = row[j]['Data']['Font']['#'];
         }
 

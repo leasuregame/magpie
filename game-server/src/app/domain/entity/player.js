@@ -204,6 +204,7 @@ var Player = (function(_super) {
 
         // executeVipPrivilege(this);
         correctPower(this);
+        this.created = utility.dateFormat(new Date(this.created), 'yyyy-MM-dd h:mm:ss');
     };
 
     Player.FIELDS = [

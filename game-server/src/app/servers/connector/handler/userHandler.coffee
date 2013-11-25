@@ -23,7 +23,7 @@ Handler::register = (msg, session, next) ->
   if not account? or account == '' or not password? or password == ''
     return next(null, {code: 501, msg: '用户名或密码不能为空'})
 
-  if not ACCOUNT_REG.test(account) or not EMAIL_REG.test(account)
+  if not EMAIL_REG.test(account) and not ACCOUNT_REG.test(account)
     return next(null, {code: 501, msg: '用户名只能由6-50的字符组成，推荐使用邮箱或手机号'})
 
   if not PASSWORD_REG.test(password)

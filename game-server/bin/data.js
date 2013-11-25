@@ -159,7 +159,7 @@ Data.prototype.loadRobotUser = function(areaId, callback) {
   csv()
     .from(filePath, {
       columns: true,
-      delimiter: ',',
+      delimiter: ';',
       escape: '"'
     })
     .transform(function(row, index, cb) {
@@ -180,10 +180,13 @@ Data.prototype.loadRobotUser = function(areaId, callback) {
         password: row.password,
         roles: JSON.stringify([areaId])
       };
-
-      self.db.user.create({
-        data: userData
-      }, cb)
+      self.db.user.delete({
+        where: {id: row.id}
+      }, function(err, res) {
+        self.db.user.create({
+          data: userData
+        }, cb);
+      });      
     })
     .on('error', function(error) {
       console.log('load csv error:', error.message);
@@ -203,7 +206,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
   csv()
     .from(filePath, {
       columns: true,
-      delimiter: ',',
+      delimiter: ';',
       escape: '"'
     })
     .transform(function(row, index, cb) {
@@ -232,8 +235,18 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
 
       async.parallel([
         function(cb) {
+          self.db.player.delete({
+            where: {id: playerData.id}
+          }, cb);
+        },
+        function(cb) {
           self.db.player.create({
             data: playerData
+          }, cb);
+        },
+        function(cb) {
+          self.db.rank.delete({
+            where: rankData
           }, cb);
         },
         function(cb) {
@@ -253,10 +266,15 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
             };
             genSkillInc(cardData);
             initPassiveSkill(cardData);
-
-            self.db.card.create({
-              data: cardData
-            }, next);
+            self.db.card.delete({
+              where: {
+                playerId: playerData.id
+              }
+            }, function(err, res) {
+              self.db.card.create({
+                data: cardData
+              }, next);
+            });            
           }, cb);
         }
       ], function(err, results) {

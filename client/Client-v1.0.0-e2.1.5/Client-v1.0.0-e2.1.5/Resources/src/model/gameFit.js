@@ -625,6 +625,7 @@ var fit4Iphone4 = {
             "skyDialogRect": cc.rect(40, 198, 640, 768)
         },
         "paymentLayer": {
+            "bgSpriteContentSize": cc.size(540, 720),
             "bgSpritePoint": cc.p(360, 492),
             "closeItemPoint": cc.p(605, 837),
             "vipPrivilegeItemPoint": cc.p(530, 752),
@@ -1680,14 +1681,15 @@ var fit4Iphone5 = {
             "skyDialogRect": cc.rect(40, 170, 640, 964)
         },
         "paymentLayer": {
+            "bgSpriteContentSize": cc.size(546, 830),
             "bgSpritePoint": cc.p(320, 580),
-            "closeItemPoint": cc.p(565, 925),
-            "vipPrivilegeItemPoint": cc.p(490, 840),
-            "tipIconPoint": cc.p(220, 900),
-            "tipLabelPoint": cc.p(75, 840),
-            "scrollViewLayerRect": cc.rect(67, 260, 500, 550),
-            "scrollViewSize": cc.size(500, 550),
-            "scrollViewPoint": cc.p(68, 260)
+            "closeItemPoint": cc.p(565, 980),
+            "vipPrivilegeItemPoint": cc.p(490, 895),
+            "tipIconPoint": cc.p(220, 955),
+            "tipLabelPoint": cc.p(75, 895),
+            "scrollViewLayerRect": cc.rect(67, 220, 500, 645),
+            "scrollViewSize": cc.size(500, 645),
+            "scrollViewPoint": cc.p(68, 220)
         },
         "playerDetails": {
             "bgSpritePoint": cc.p(323, 580),

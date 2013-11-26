@@ -264,7 +264,7 @@ var Server = Entity.extend({
                 that._gateServerStatus = CONNECT_FAIL;
                 that._gameServerStatus = CONNECT_FAIL;
 
-                LogoutLayer.pop("网络不给力，点击确定重新连接...");
+                LogoutLayer.pop("网络断开，点击确定重新连接...");
             });
 
             that._closeAllWaitLayer();

@@ -237,18 +237,18 @@ var TournamentLayer = cc.Layer.extend({
                 own = i;
             }
             var tournamentPlayerLabel = TournamentLabel.create(this, this._rankList[i]);
-            scrollViewLayer.addChild(tournamentPlayerLabel, 2);
+            scrollViewLayer.addChild(tournamentPlayerLabel);
 
             if (i < 10) {
                 tournamentPlayerLabel.setPosition(cc.p(0, height - 135 * (i + 1)));
             } else {
-                tournamentPlayerLabel.setPosition(cc.p(0, height - 135 * (i + 1) - 80));
+                tournamentPlayerLabel.setPosition(cc.p(0, height - 135 * (i + 1) - 55));
             }
 
             if (i == 9) {
                 var line = cc.Sprite.create(main_scene_image.icon296);
-                line.setPosition(cc.p(310, height - 135 * (i + 1) - 40));
-                scrollViewLayer.addChild(line);
+                line.setPosition(cc.p(310, height - 135 * (i + 1) - 15));
+                scrollViewLayer.addChild(line, 2);
             }
         }
 

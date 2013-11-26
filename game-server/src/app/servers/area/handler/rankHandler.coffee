@@ -6,6 +6,7 @@ table = require '../../../manager/table'
 async = require 'async'
 logger = require('pomelo-logger').getLogger(__filename)
 msgConfig = require '../../../../config/data/message'
+achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 
 rankingConfig = table.getTableItem('ranking_list',1)

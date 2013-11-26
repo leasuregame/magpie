@@ -30,6 +30,8 @@ var main = function() {
     case 'rank':
       quenues.push(gdata.loadDataForRankingList);
       break;
+    case 'delete-unused-cards':
+      quenues.push(gdata.deleteUnUsedCards);
     default:
       quenues.push(gdata.loadCsvDataToSql);
       quenues.push(gdata.loadDataForRankingList);

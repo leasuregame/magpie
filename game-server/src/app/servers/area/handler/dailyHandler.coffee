@@ -131,10 +131,10 @@ Handler::getSignInGift = (msg, session, next) ->
       return next(null, {code: 501, msg: '不能重复领取'})
 
     setIfExist = (attrs) ->
-      player.increase att, val for att, val of rew when att in attrs
+      player.increase att, val for att, val of rew when att in attrs and val > 0
       return
 
-    setIfExist ['energy', 'money', 'skillPoint', 'elixir', 'gold']
+    setIfExist ['energy', 'money', 'skillPoint', 'elixir', 'gold', 'fragments']
     player.incSpirit(rew.spirit)
     if rew.lottery_free_count > 0
       dg = utility.deepCopy(player.dailyGift)

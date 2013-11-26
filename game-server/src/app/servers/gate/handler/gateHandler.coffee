@@ -3,12 +3,12 @@ areasInfo = require '../../../../config/area'
 async = require 'async'
 _ = require 'underscore'
 
-status = ['NEW', 'NORMAL', 'BUSY', 'MAINTENANCE']
+status = ['NEW', 'NORMAL', 'BUSY']#, 'MAINTENANCE']
 SERVER_STATUS = 
 	NEW: 10
 	NORMAL: 20
 	BUSY: 30
-	MAINTENANCE: 40
+	#MAINTENANCE: 40
 
 module.exports = (app) ->
 	new Handler(app)

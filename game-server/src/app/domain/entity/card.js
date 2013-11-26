@@ -43,9 +43,9 @@ var addEvents = function(card) {
         card.recountHpAndAtk();
     });
 
-    card.on('skillPoint.change', function() {
-        checkSkillLv(card);
-    });
+    // card.on('skillPoint.change', function() {
+    //     checkSkillLv(card);
+    // });
 };
 
 var countElixirEffect = function(card) {

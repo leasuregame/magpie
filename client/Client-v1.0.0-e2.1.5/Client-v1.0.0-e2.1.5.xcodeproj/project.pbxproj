@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9017A49D1844871200A02018 /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9017A49C1844871200A02018 /* IAPHelpOC.mm */; };
 		903DE0DA18435E7F003B90AD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903DE0D918435E7F003B90AD /* StoreKit.framework */; };
-		903DE0DF18435EC4003B90AD /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 903DE0DE18435EC3003B90AD /* IAPHelp.mm */; };
 		9055D91A183F648F00841BE1 /* jsb_cocos2dx_auto_api.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EA5183E068000727729 /* jsb_cocos2dx_auto_api.js */; };
 		9055D91B183F648F00841BE1 /* jsb_cocos2dx_extension_auto_api.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EA8183E068000727729 /* jsb_cocos2dx_extension_auto_api.js */; };
 		9055D91C183F648F00841BE1 /* jsb.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EAB183E068000727729 /* jsb.js */; };
@@ -203,9 +201,6 @@
 		90B54FDF183E068000727729 /* CocosDenshion.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B54DDC183E067F00727729 /* CocosDenshion.m */; };
 		90B54FE0183E068000727729 /* SimpleAudioEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90B54DDD183E067F00727729 /* SimpleAudioEngine.mm */; };
 		90B54FE1183E068000727729 /* SimpleAudioEngine_objc.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B54DDF183E067F00727729 /* SimpleAudioEngine_objc.m */; };
-		90B54FE2183E068000727729 /* js_cocos2dx_autogen_extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54DE5183E067F00727729 /* js_cocos2dx_autogen_extension.cpp */; };
-		90B54FE3183E068000727729 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B54DE7183E067F00727729 /* libMobClickLibrary.a */; };
-		90B54FE4183E068000727729 /* MobClickCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90B54DEA183E067F00727729 /* MobClickCPP.mm */; };
 		90B54FE5183E068000727729 /* AssetsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54DED183E067F00727729 /* AssetsManager.cpp */; };
 		90B54FE6183E068000727729 /* CCBAnimationManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54DF0183E067F00727729 /* CCBAnimationManager.cpp */; };
 		90B54FE7183E068000727729 /* CCBFileLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54DF2183E067F00727729 /* CCBFileLoader.cpp */; };
@@ -343,11 +338,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9017A49818447D0D00A02018 /* IAPHelpOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelpOC.h; sourceTree = "<group>"; };
-		9017A49C1844871200A02018 /* IAPHelpOC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelpOC.mm; sourceTree = "<group>"; };
 		903DE0D918435E7F003B90AD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		903DE0DD18435EC3003B90AD /* IAPHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelp.h; sourceTree = "<group>"; };
-		903DE0DE18435EC3003B90AD /* IAPHelp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelp.mm; sourceTree = "<group>"; };
 		906E946017CDAD090038DF64 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = Resources/res; sourceTree = "<group>"; };
 		906E946117CDAD090038DF64 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = Resources/src; sourceTree = "<group>"; };
 		906E946417CDAD150038DF64 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main_binding.js; path = Resources/main_binding.js; sourceTree = "<group>"; };
@@ -745,12 +736,6 @@
 		90B54DDE183E067F00727729 /* SimpleAudioEngine_objc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleAudioEngine_objc.h; sourceTree = "<group>"; };
 		90B54DDF183E067F00727729 /* SimpleAudioEngine_objc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleAudioEngine_objc.m; sourceTree = "<group>"; };
 		90B54DE1183E067F00727729 /* CocosDenshion.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = CocosDenshion.xcodeproj; sourceTree = "<group>"; };
-		90B54DE5183E067F00727729 /* js_cocos2dx_autogen_extension.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_cocos2dx_autogen_extension.cpp; sourceTree = "<group>"; };
-		90B54DE6183E067F00727729 /* js_cocos2dx_autogen_extension.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_cocos2dx_autogen_extension.hpp; sourceTree = "<group>"; };
-		90B54DE7183E067F00727729 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
-		90B54DE8183E067F00727729 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
-		90B54DE9183E067F00727729 /* MobClickCPP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickCPP.h; sourceTree = "<group>"; };
-		90B54DEA183E067F00727729 /* MobClickCPP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MobClickCPP.mm; sourceTree = "<group>"; };
 		90B54DED183E067F00727729 /* AssetsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssetsManager.cpp; sourceTree = "<group>"; };
 		90B54DEE183E067F00727729 /* AssetsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetsManager.h; sourceTree = "<group>"; };
 		90B54DF0183E067F00727729 /* CCBAnimationManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCBAnimationManager.cpp; sourceTree = "<group>"; };
@@ -1131,7 +1116,6 @@
 				90B5505A183E068000727729 /* libjs_static.a in Frameworks */,
 				90B5505B183E068000727729 /* libwebsockets.a in Frameworks */,
 				90D49C3617CAF81800A22DB2 /* Foundation.framework in Frameworks */,
-				90B54FE3183E068000727729 /* libMobClickLibrary.a in Frameworks */,
 				90D49C3817CAF81800A22DB2 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1139,25 +1123,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		903DE0DC18435EC3003B90AD /* IAPHelp */ = {
-			isa = PBXGroup;
-			children = (
-				9017A49818447D0D00A02018 /* IAPHelpOC.h */,
-				9017A49C1844871200A02018 /* IAPHelpOC.mm */,
-				903DE0DD18435EC3003B90AD /* IAPHelp.h */,
-				903DE0DE18435EC3003B90AD /* IAPHelp.mm */,
-			);
-			path = IAPHelp;
-			sourceTree = "<group>";
-		};
 		90B54C26183E067F00727729 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				903DE0DC18435EC3003B90AD /* IAPHelp */,
 				90B54C27183E067F00727729 /* chipmunk */,
 				90B54C68183E067F00727729 /* cocos2dx */,
 				90B54DD1183E067F00727729 /* CocosDenshion */,
-				90B54DE4183E067F00727729 /* DataDollection */,
 				90B54DEB183E067F00727729 /* extensions */,
 				90B54E9C183E068000727729 /* javascript */,
 				90B54F2E183E068000727729 /* libwebsockets */,
@@ -1970,19 +1941,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		90B54DE4183E067F00727729 /* DataDollection */ = {
-			isa = PBXGroup;
-			children = (
-				90B54DE5183E067F00727729 /* js_cocos2dx_autogen_extension.cpp */,
-				90B54DE6183E067F00727729 /* js_cocos2dx_autogen_extension.hpp */,
-				90B54DE7183E067F00727729 /* libMobClickLibrary.a */,
-				90B54DE8183E067F00727729 /* MobClick.h */,
-				90B54DE9183E067F00727729 /* MobClickCPP.h */,
-				90B54DEA183E067F00727729 /* MobClickCPP.mm */,
-			);
-			path = DataDollection;
-			sourceTree = "<group>";
-		};
 		90B54DEB183E067F00727729 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -2781,9 +2739,7 @@
 				90B54FD3183E068000727729 /* CCTexturePVR.cpp in Sources */,
 				90B5502B183E068000727729 /* RegionAttachment.cpp in Sources */,
 				90B55049183E068000727729 /* js_bindings_chipmunk_manual.cpp in Sources */,
-				9017A49D1844871200A02018 /* IAPHelpOC.mm in Sources */,
 				90B54FE6183E068000727729 /* CCBAnimationManager.cpp in Sources */,
-				90B54FE4183E068000727729 /* MobClickCPP.mm in Sources */,
 				90B54F81183E068000727729 /* plane.c in Sources */,
 				90B55006183E068000727729 /* CCControlPotentiometer.cpp in Sources */,
 				90B54F6B183E068000727729 /* CCAutoreleasePool.cpp in Sources */,
@@ -2846,7 +2802,6 @@
 				90B55020183E068000727729 /* AnimationStateData.cpp in Sources */,
 				90B54F8B183E068000727729 /* CCLabelBMFont.cpp in Sources */,
 				90B54F7D183E068000727729 /* matrix.c in Sources */,
-				903DE0DF18435EC4003B90AD /* IAPHelp.mm in Sources */,
 				90B54F6A183E068000727729 /* CCArray.cpp in Sources */,
 				90B54F53183E068000727729 /* cpSweep1D.c in Sources */,
 				90B54F4E183E068000727729 /* cpSpaceComponent.c in Sources */,
@@ -2892,7 +2847,6 @@
 				90B54FD8183E068000727729 /* CCTMXTiledMap.cpp in Sources */,
 				90B5504D183E068000727729 /* js_bindings_system_functions.cpp in Sources */,
 				90B5501C183E068000727729 /* CCPhysicsDebugNode.cpp in Sources */,
-				90B54FE2183E068000727729 /* js_cocos2dx_autogen_extension.cpp in Sources */,
 				90B54FB8183E068000727729 /* CCSprite.cpp in Sources */,
 				90B54F5B183E068000727729 /* CCActionInstant.cpp in Sources */,
 				90B54FC9183E068000727729 /* CCUserDefault.mm in Sources */,

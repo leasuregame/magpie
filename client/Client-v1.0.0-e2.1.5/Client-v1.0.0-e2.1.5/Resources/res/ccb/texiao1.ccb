@@ -1062,78 +1062,6 @@
 										<string>Use regular file</string>
 									</array>
 								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>0</integer>
-									</dict>
-									<key>name</key>
-									<string>displayFrame</string>
-									<key>time</key>
-									<real>0.89999997615814209</real>
-									<key>type</key>
-									<integer>7</integer>
-									<key>value</key>
-									<array>
-										<string>res/effect/test/4.png</string>
-										<string>Use regular file</string>
-									</array>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>0</integer>
-									</dict>
-									<key>name</key>
-									<string>displayFrame</string>
-									<key>time</key>
-									<real>0.96666663885116577</real>
-									<key>type</key>
-									<integer>7</integer>
-									<key>value</key>
-									<array>
-										<string>res/effect/test/5.png</string>
-										<string>Use regular file</string>
-									</array>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>0</integer>
-									</dict>
-									<key>name</key>
-									<string>displayFrame</string>
-									<key>time</key>
-									<real>1.0333333015441895</real>
-									<key>type</key>
-									<integer>7</integer>
-									<key>value</key>
-									<array>
-										<string>res/effect/test/6.png</string>
-										<string>Use regular file</string>
-									</array>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>0</integer>
-									</dict>
-									<key>name</key>
-									<string>displayFrame</string>
-									<key>time</key>
-									<real>1.1000000238418579</real>
-									<key>type</key>
-									<integer>7</integer>
-									<key>value</key>
-									<array>
-										<string>res/effect/test/7.png</string>
-										<string>Use regular file</string>
-									</array>
-								</dict>
 							</array>
 							<key>name</key>
 							<string>displayFrame</string>
@@ -1183,7 +1111,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>1.0666667222976685</real>
+									<real>0.73333334922790527</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -1198,7 +1126,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>1.1666666269302368</real>
+									<real>0.83333331346511841</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -1261,7 +1189,7 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<string>effect/test/4.png</string>
+							<string>res/effect/test/4.png</string>
 							<string>Use regular file</string>
 						</array>
 						<key>name</key>
@@ -1271,7 +1199,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>res/effect/test/7.png</string>
+							<string>res/effect/test/4.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1464,6 +1392,14 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>rotation</string>
+								<key>type</key>
+								<string>Degrees</string>
+								<key>value</key>
+								<real>-30</real>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>ignoreAnchorPointForPosition</string>
 								<key>type</key>
 								<string>Check</string>
@@ -1498,9 +1434,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>100</integer>
-									<integer>253</integer>
-									<integer>254</integer>
+									<integer>86</integer>
+									<integer>177</integer>
+									<integer>181</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1689,6 +1625,14 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>rotation</string>
+								<key>type</key>
+								<string>Degrees</string>
+								<key>value</key>
+								<real>-30</real>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>ignoreAnchorPointForPosition</string>
 								<key>type</key>
 								<string>Check</string>
@@ -1723,9 +1667,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
+									<integer>143</integer>
 									<integer>185</integer>
-									<integer>252</integer>
-									<integer>254</integer>
+									<integer>187</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1867,13 +1811,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>1.1666666269302368</real>
+			<real>0.83333331346511841</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.1666666269302368</real>
+			<real>0.83333331346511841</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

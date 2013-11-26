@@ -326,7 +326,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>res/effect/test/18.png</string>
+						<string>res/effect/uiEffect/up113.png</string>
 					</dict>
 				</array>
 			</dict>
@@ -551,7 +551,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/test/18.png</string>
+									<string>res/effect/uiEffect/up113.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -764,7 +764,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/test/18.png</string>
+									<string>res/effect/uiEffect/up113.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1068,7 +1068,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/test/18.png</string>
+									<string>res/effect/uiEffect/up113.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -1281,7 +1281,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/test/18.png</string>
+									<string>res/effect/uiEffect/up113.png</string>
 								</array>
 							</dict>
 							<dict>

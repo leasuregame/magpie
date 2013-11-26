@@ -203,8 +203,8 @@ var gameGoodsName = {
     "energy": "活力",
     "skillPoint": "技能点",
     "totalSpirit": "灵气",
-    "cards": "经验卡",
-    "exp_card": "经验卡",
+    "cards": "经验元灵",
+    "exp_card": "经验元灵",
     "freeCount": "免费抽奖次数",
     "lottery_free_count": "免费抽奖次数",
     "challengeCount": "有奖竞技次数"
@@ -222,7 +222,9 @@ lz.getRewardString = function (data) {
             if (key == "cards") {
                 str.push(lz.getNameByKey(key) + " : " + data[key].length);
             } else {
-                if (data[key] > 0) {
+                if (key == "fragment") {
+                    continue;
+                } else if (data[key] > 0) {
                     str.push(lz.getNameByKey(key) + " : " + data[key]);
                 }
             }

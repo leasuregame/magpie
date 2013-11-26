@@ -192,6 +192,11 @@ var Task = Entity.extend({
                     cbData.upgradeReward = msg.upgradeInfo.rewards;
                 }
 
+                if (msg.throught_reward) {
+                    TipLayer.tipNoBg("仙币：+" + msg.throught_reward.money);
+                    player.add('money',msg.throught_reward.money);
+                }
+
                 if (msg.result == "fight") {
                     msg.battle_log.rewards.money = msg.money_obtain;
                     msg.battle_log.rewards.exp = msg.exp_obtain;

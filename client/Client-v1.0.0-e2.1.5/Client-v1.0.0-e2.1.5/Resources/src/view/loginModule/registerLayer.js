@@ -75,7 +75,7 @@ var RegisterLayer = cc.Layer.extend({
         });
         this._accountEditBox.setFont("STHeitiTC-Medium", 30);
         this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
-        this._accountEditBox.setMaxLength(18);
+        this._accountEditBox.setMaxLength(50);
         this._accountEditBox.setVisible(false);
         registerFrame.controller.accountLabel.addChild(this._accountEditBox);
 
@@ -107,7 +107,7 @@ var RegisterLayer = cc.Layer.extend({
         });
         this._passwordEditBox.setFont("STHeitiTC-Medium", 30);
         this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
-        this._passwordEditBox.setMaxLength(18);
+        this._passwordEditBox.setMaxLength(20);
         this._passwordEditBox.setVisible(false);
         registerFrame.controller.passwordLabel.addChild(this._passwordEditBox);
 
@@ -139,7 +139,7 @@ var RegisterLayer = cc.Layer.extend({
         });
         this._passwordAgainEditBox.setFont("STHeitiTC-Medium", 30);
         this._passwordAgainEditBox.setFontColor(cc.c3b(200, 0, 250));
-        this._passwordAgainEditBox.setMaxLength(18);
+        this._passwordAgainEditBox.setMaxLength(20);
         this._passwordAgainEditBox.setVisible(false);
         registerFrame.controller.passwordAgainLabel.addChild(this._passwordAgainEditBox);
 

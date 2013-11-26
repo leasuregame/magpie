@@ -575,6 +575,7 @@ var main_scene_image = {
     icon298: main_scene_path + "icon298.png",
     icon299: main_scene_path + "icon299.png",
     icon300: main_scene_path + "icon300.png",
+    icon301: main_scene_path + "icon301.png",
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
@@ -645,8 +646,8 @@ var main_scene_image = {
     uiEffect41: "res/ccb/uiEffect41.ccbi",
 //    uiEffect42: "res/ccb/uiEffect42.ccbi",
     uiEffect43: "res/ccb/uiEffect43.ccbi",
-//    uiEffect44: "res/ccb/uiEffect44.ccbi",
-//    uiEffect45: "res/ccb/uiEffect45.ccbi",
+    uiEffect44: "res/ccb/uiEffect44.ccbi",
+    uiEffect45: "res/ccb/uiEffect45.ccbi",
 //    uiEffect46: "res/ccb/uiEffect46.ccbi",
 //    uiEffect47: "res/ccb/uiEffect47.ccbi",
 //    uiEffect48: "res/ccb/uiEffect48.ccbi",

@@ -390,27 +390,26 @@ var ExploreLayer = cc.Layer.extend({
         this.setTouchEnabled(true);
     },
 
-    _toNext: function () {
+    _toNext: function (cb) {
         cc.log("ExploreLayer _toNext");
 
         var passEffect = cc.BuilderReader.load(main_scene_image.uiEffect24, this);
         passEffect.setPosition(this._exploreLayerFit.passEffectPoint);
         this.addChild(passEffect);
 
+        var that = this;
+
         passEffect.animationManager.setCompletedAnimationCallback(this, function () {
             passEffect.removeFromParent();
-            this.scheduleOnce(function () {
-                this._index += 1;
+            that._index += 1;
 
-                if (this._index > this._maxIndex) {
-                    this._unlock();
-                    this._onClickBack();
-                }
-
-                this.update();
-
-                this.scheduleOnce(this._unlock, 1);
-            }, 1);
+            if (that._index > that._maxIndex) {
+                that._unlock();
+                that._onClickBack();
+            }
+            that.scheduleOnce(that._unlock, 1);
+            cb();
+            that.update();
         });
     },
 
@@ -495,24 +494,28 @@ var ExploreLayer = cc.Layer.extend({
 
                 this._reward = null;
 
-                if (toNext) {
-                    this._toNext();
-                } else {
-                    this._unlock();
+                var next = function () {
+                    if (upgradeReward) {
+                        var cb = function () {
+
+                            gameMark.updateGoldRewardMark(false);
+
+                            if (goldList) {
+                                GoldLayer.pop(goldList);
+                            }
+                        };
+                        PlayerUpgradeLayer.pop({reward: upgradeReward, cb: cb});
+                    } else if (goldList) {
+                        GoldLayer.pop(goldList);
+                    }
+
                 }
 
-                if (upgradeReward) {
-                    var cb = function () {
-
-                        gameMark.updateGoldRewardMark(false);
-
-                        if (goldList) {
-                            GoldLayer.pop(goldList);
-                        }
-                    };
-                    PlayerUpgradeLayer.pop({reward: upgradeReward, cb: cb});
-                } else if (goldList) {
-                    GoldLayer.pop(goldList);
+                if (toNext) {
+                    this._toNext(next);
+                } else {
+                    this._unlock();
+                    next();
                 }
 
 
@@ -697,7 +700,7 @@ var ExploreLayer = cc.Layer.extend({
                 this._index = 1 - Math.ceil(endOffset.x / 640);
             }
 
-            this.update();
+            //this.update();
         }
     },
 

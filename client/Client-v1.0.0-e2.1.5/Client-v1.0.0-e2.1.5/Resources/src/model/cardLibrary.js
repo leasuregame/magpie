@@ -74,7 +74,7 @@ var CardLibrary = Entity.extend({
             })
         }
 
-        this._cardLibrary.sort(this._sort);
+        //this._cardLibrary.sort(this._sort);
     },
 
     sync: function () {
@@ -128,6 +128,31 @@ var CardLibrary = Entity.extend({
         } else {
             return tableIdA - tableIdB;
         }
+    },
+
+    _sort2: function (a, b) {
+
+        var stateA = gameData.cardLibrary.getTypeById(a.id);
+        var stateB = gameData.cardLibrary.getTypeById(b.id);
+
+        var starA = a.card.get("star");
+        var starB = b.card.get("star");
+
+        var tableIdA = a.card.get("tableId");
+        var tableIdB = b.card.get("tableId");
+
+        if (stateA != stateB) {
+            return stateB - stateA;
+        } else if (starA != starB) {
+            return (starB - starA);
+        } else {
+            return tableIdA - tableIdB;
+        }
+    },
+
+    isSortByState: function (res) {
+        var sort = res ? this._sort2 : this._sort;
+        this._cardLibrary.sort(sort);
     },
 
     _changeTypeById: function (id, type) {

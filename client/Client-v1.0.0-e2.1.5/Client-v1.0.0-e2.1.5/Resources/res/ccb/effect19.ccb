@@ -463,7 +463,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.30000001192092896</real>
+							<real>0.5</real>
 							<real>0.10000000149011612</real>
 						</array>
 					</dict>
@@ -518,8 +518,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>-90</real>
-							<real>10</real>
+							<real>0.0</real>
+							<real>360</real>
 						</array>
 					</dict>
 					<dict>
@@ -593,8 +593,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>60</real>
-							<real>20</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -628,6 +628,8 @@
 						<string>res/effect/effect/p15.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -677,8 +679,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

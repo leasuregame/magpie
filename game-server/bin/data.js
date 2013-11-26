@@ -20,6 +20,30 @@ var Data = function(db, dir) {
 
 };
 
+Data.prototype.deleteUnUsedCards = function() {
+  var tableIds = table.getTable('cards').filter(function(id) {
+    return id <= 250;
+  }).map(function(item) {
+    return parseInt(item.id);
+  });
+  this.db['card'].delete({
+    where: ' tableId not in (' + tableIds.toString() + ', 30000)'
+  }, function(err, res) {
+    console.log('delete result:', err, res)
+  });
+
+  this.db['player'].update({
+    where: {
+      1: 1
+    },
+    data: {
+      lineUp: '12:-1'
+    }
+  }, function(err, res) {
+    console.log('updated players: ', err, res);
+  });
+};
+
 Data.prototype.importCsvToSql = function(table, filepath, callback) {
   var self = this;
   csv()
@@ -135,7 +159,7 @@ Data.prototype.loadRobotUser = function(areaId, callback) {
   csv()
     .from(filePath, {
       columns: true,
-      delimiter: ',',
+      delimiter: ';',
       escape: '"'
     })
     .transform(function(row, index, cb) {
@@ -154,10 +178,17 @@ Data.prototype.loadRobotUser = function(areaId, callback) {
         id: row.userId,
         account: row.account,
         password: row.password,
-        roles: JSON.stringify([areaId])
+        roles: JSON.stringify([parseInt(areaId)])
       };
-
-      self.db.user.create({data: userData}, cb)
+      self.db.user.delete({
+        where: {
+          id: row.id
+        }
+      }, function(err, res) {
+        self.db.user.create({
+          data: userData
+        }, cb);
+      });
     })
     .on('error', function(error) {
       console.log('load csv error:', error.message);
@@ -177,7 +208,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
   csv()
     .from(filePath, {
       columns: true,
-      delimiter: ',',
+      delimiter: ';',
       escape: '"'
     })
     .transform(function(row, index, cb) {
@@ -205,9 +236,22 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
       };
 
       async.parallel([
+
+        function(cb) {
+          self.db.player.delete({
+            where: {
+              id: playerData.id
+            }
+          }, cb);
+        },
         function(cb) {
           self.db.player.create({
             data: playerData
+          }, cb);
+        },
+        function(cb) {
+          self.db.rank.delete({
+            where: rankData
           }, cb);
         },
         function(cb) {
@@ -218,28 +262,36 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
         function(cb) {
           var cards = JSON.parse(row.cards);
           var count = cards.ids.length;
-          async.times(count, function(n, next) {
-            var cardData = {
-              playerId: row.id,
-              tableId: cards.ids[n],
-              lv: cards.lvs[n],
-              star: cards.ids[n] % 5 || 5
-            };
-            genSkillInc(cardData);
-            initPassiveSkill(cardData);
+          self.db.card.delete({
+            where: {
+              playerId: playerData.id
+            }
+          }, function(err, res) {
+            async.times(count, function(n, next) {
+              var cardData = {
+                playerId: row.id,
+                tableId: cards.ids[n],
+                lv: cards.lvs[n],
+                star: cards.ids[n] % 5 || 5
+              };
+              genSkillInc(cardData);
+              initPassiveSkill(cardData);
 
-            self.db.card.create({
-              data: cardData
-            }, next);
-          }, cb);
+              self.db.card.create({
+                data: cardData
+              }, function(err, c) {
+                next(err, c);
+              });
+
+            }, cb);
+          });
         }
       ], function(err, results) {
         if (err) return console.log(err);
 
-        var player = results[0];
-        var rank = results[1];
-        var cards = results[2];
-
+        var player = results[1];
+        var rank = results[3];
+        var cards = results[4];
         player.lineUp = random_lineup(cards);
         self.db.player.update({
           where: {
@@ -309,6 +361,7 @@ Data.prototype.dataForRanking = function(callback) {
         skillLv: _.random(1, 6)
       };
       async.parallel([
+
         function(cb) {
           self.db.player.create({
             data: playerData

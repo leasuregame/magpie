@@ -37,24 +37,28 @@ var AREA_STATUS = {
     10: {
         statusName: "新区",
         color: cc.c3b(108, 218, 0),
+        url: main_scene_image.icon292,
         canLogin: true
     },
 
     20: {
         statusName: "正常",
         color: cc.c3b(0, 195, 244),
+        url: main_scene_image.icon293,
         canLogin: true
     },
 
     30: {
         statusName: "爆满",
         color: cc.c3b(226, 0, 0),
+        url: main_scene_image.icon294,
         canLogin: true
     },
 
     40: {
         statusName: "维护",
         color: cc.c3b(120, 120, 120),
+        url: main_scene_image.icon295,
         canLogin: false
     }
 };
@@ -86,7 +90,8 @@ var Server = Entity.extend({
             this._areaList[i].statusName = status.statusName;
             this._areaList[i].color = status.color;
             this._areaList[i].canLogin = status.canLogin;
-            this._areaList[i].desc = this._areaList[i].id + "区  " + this._areaList[i].name + "  " + status.statusName;
+            this._areaList[i].desc = this._areaList[i].id + "区  " + this._areaList[i].name + "  ";// + status.statusName;
+            this._areaList[i].url = status.url;
         }
     },
 

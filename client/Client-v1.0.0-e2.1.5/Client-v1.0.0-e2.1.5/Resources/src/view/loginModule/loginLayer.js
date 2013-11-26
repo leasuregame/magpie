@@ -11,6 +11,12 @@
  * login layer
  * */
 
+var EMAIL_REG = /^(?=\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$).{6,50}$/;
+var ACCOUNT_REG = /^[\w+-]{6,50}$/;
+var PASSWORD_REG = /^[a-zA-Z0-9]{6,20}$/;
+var EMPTY_SPACE_REG = /\s+/g;
+var CHINESE_REG = /^[\u4e00-\u9fa5]{1,6}$/;
+var NICKNAME_REG = /^[0-9\u4e00-\u9fa5]{1,6}$/;
 
 var LoginLayer = cc.Layer.extend({
     _loginLayerFit: null,
@@ -57,8 +63,15 @@ var LoginLayer = cc.Layer.extend({
         this._loginFrame.setPosition(this._loginLayerFit.loginFramePoint);
         this.addChild(this._loginFrame);
 
-        this._accountEditBox = cc.EditBox.create(cc.size(420, 60), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._accountEditBox.setPosition(cc.p(20, 0));
+        this._loginFrame.controller.accountNode.setPosition(this._loginLayerFit.accountNodePoint);
+        this._loginFrame.controller.passwordNode.setPosition(this._loginLayerFit.passwordNodePoint);
+        this._loginFrame.controller.startGameNode.setPosition(this._loginLayerFit.startGameNodePoint);
+
+
+        this._accountEditBox = cc.EditBox.create(cc.size(440, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._accountEditBox.setAnchorPoint(cc.p(0, 0.5));
+        this._accountEditBox.setPosition(cc.p(0, 0));
+
         this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
         this._accountEditBox.setDelegate({
             /**
@@ -70,13 +83,17 @@ var LoginLayer = cc.Layer.extend({
 
             }
         });
+
         this._accountEditBox.setFont("STHeitiTC-Medium", 35);
         this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._accountEditBox.setMaxLength(20);
         this._loginFrame.controller.accountLabel.addChild(this._accountEditBox);
 
-        this._passwordEditBox = cc.EditBox.create(cc.size(420, 60), cc.Scale9Sprite.create(main_scene_image.edit));
-        this._passwordEditBox.setPosition(cc.p(20, 0));
+
+        this._passwordEditBox = cc.EditBox.create(cc.size(440, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._passwordEditBox.setAnchorPoint(cc.p(0, 0.5));
+        this._passwordEditBox.setPosition(cc.p(0, 0));
+
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordEditBox.setDelegate({
             /**

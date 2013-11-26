@@ -36,6 +36,8 @@ var fit4Iphone4 = {
         "batterLayer": {
             "bgSpriteRect": cc.rect(0, 88, 640, 960),
             "bgSpritePoint": cc.p(40, 0),
+            "ownNamePoint": cc.p(100, 452),
+            "enemyNamePoint": cc.p(100, 522),
             "locatePoints": {
                 1: cc.p(160, 352),
                 2: cc.p(360, 352),
@@ -66,8 +68,12 @@ var fit4Iphone4 = {
 
     "loginScene": {
         "loginLayer": {
-            "bgEffectPoint": cc.p(360, 488),
-            "loginFramePoint": cc.p(360, 520)
+            "bgEffectPoint": cc.p(360, 480),
+            "loginFramePoint": cc.p(360, 520),
+            "accountNodePoint": cc.p(0, -260),
+            "passwordNodePoint": cc.p(0, -350),
+            "startGameNodePoint": cc.p(0, -460)
+
         },
         "logoutLayer": {
             "bgLayerPoint": cc.p(40, 0),
@@ -601,10 +607,10 @@ var fit4Iphone4 = {
             "rewardLabel2Point": cc.p(405, 562),
             "okItemPoint": cc.p(260, 442),
             "closeItemPoint": cc.p(460, 442),
-            "obtainSpritePoint": cc.p(360, 630),
-            "rewardLabelBasePoint": cc.p(360, 567),
-            "rewardLabelOffsetY": 45,
-            "okItem2Point": cc.p(360, 327)
+            "obtainSpritePoint": cc.p(0, 158),
+            "rewardLabelBasePoint": cc.p(0, 80),
+            "rewardLabelOffsetY": 53,
+            "okItem2Point": cc.p(0, -237)
         },
         "passRankLayer": {
             "scrollViewLayerRect": cc.rect(54, 140, 609, 700),
@@ -718,6 +724,16 @@ var fit4Iphone4 = {
             "passRankIconPoint": cc.p(404, 908),
             "tournamentRankIconPoint": cc.p(554, 908)
         },
+        "readMessageLayer": {
+            "bgLayerPoint": cc.p(40, 0),
+            "bgSpritePoint": cc.p(363, 600),
+            "nameIconPoint": cc.p(160, 720),
+            "nameLabelPoint": cc.p(255, 720),
+            "messageLabelPoint": cc.p(363, 610),
+            "sendMessageItemPoint": cc.p(240, 485),
+            "cancelItemPoint": cc.p(480, 485),
+            "labelPointX": 148
+        },
         "rechargeLayer": {
             "headIconPoint": cc.p(120, 697),
             "midIconPoint": cc.p(80, 107),
@@ -821,6 +837,8 @@ var fit4Iphone4 = {
             "perObtainIconPoint": cc.p(550, 792),
             "perObtainLabelIconPoint": cc.p(450, 792),
             "preObtainLabelPoint": cc.p(600, 792),
+            "goldIconPoint": cc.p(585, 742),
+            "goldLabelPoint": cc.p(565, 739),
             "lvIconPoint": cc.p(190, 200),
             "lvLabelPoint": cc.p(270, 200),
             "expLabelPoint": cc.p(400, 200),
@@ -1070,6 +1088,8 @@ var fit4Iphone5 = {
         "batterLayer": {
             "bgSpriteRect": cc.rect(0, 0, 640, 1136),
             "bgSpritePoint": cc.p(0, 0),
+            "ownNamePoint": cc.p(60, 490),
+            "enemyNamePoint": cc.p(60, 660),
             "locatePoints": {
                 1: cc.p(120, 380),
                 2: cc.p(320, 380),
@@ -1101,7 +1121,10 @@ var fit4Iphone5 = {
     "loginScene": {
         "loginLayer": {
             "bgEffectPoint": cc.p(320, 568),
-            "loginFramePoint": cc.p(320, 568)
+            "loginFramePoint": cc.p(320, 568),
+            "accountNodePoint": cc.p(0, -260),
+            "passwordNodePoint": cc.p(0, -360),
+            "startGameNodePoint": cc.p(0, -480)
         },
         "logoutLayer": {
             "bgLayerPoint": cc.p(0, 0),
@@ -1630,17 +1653,17 @@ var fit4Iphone5 = {
             "towerBgSpritePoint": cc.p(470, 132),
             "wipeOutItemPoint": cc.p(540, 1022),
             "resetItemPoint": cc.p(540, 1022),
-            "bgLayerPoint": cc.p(0, 88),
+            "bgLayerPoint": cc.p(0, 0),
             "bgSprite2Point": cc.p(320, 580),
             "rewardLabel1Point": cc.p(170, 650),
             "goldIconPoint": cc.p(317, 660),
             "rewardLabel2Point": cc.p(365, 650),
             "okItemPoint": cc.p(220, 530),
             "closeItemPoint": cc.p(420, 530),
-            "obtainSpritePoint": cc.p(320, 718),
-            "rewardLabelBasePoint": cc.p(320, 655),
-            "rewardLabelOffsetY": 45,
-            "okItem2Point": cc.p(320, 415)
+            "obtainSpritePoint": cc.p(0, 158),
+            "rewardLabelBasePoint": cc.p(0, 80),
+            "rewardLabelOffsetY": 53,
+            "okItem2Point": cc.p(0, -237)
         },
         "passRankLayer": {
             "scrollViewLayerRect": cc.rect(14, 140, 609, 876),
@@ -1754,6 +1777,16 @@ var fit4Iphone5 = {
             "passRankIconPoint": cc.p(364, 1084),
             "tournamentRankIconPoint": cc.p(514, 1084)
         },
+        "readMessageLayer": {
+            "bgLayerPoint": cc.p(0, 0),
+            "bgSpritePoint": cc.p(323, 600),
+            "nameIconPoint": cc.p(120, 720),
+            "nameLabelPoint": cc.p(215, 720),
+            "messageLabelPoint": cc.p(323, 610),
+            "sendMessageItemPoint": cc.p(200, 485),
+            "cancelItemPoint": cc.p(440, 485),
+            "labelPointX": 108
+        },
         "rechargeLayer": {
             "headIconPoint": cc.p(80, 845),
             "midIconPoint": cc.p(40, 195),
@@ -1851,12 +1884,14 @@ var fit4Iphone5 = {
             "titleIconPoint": cc.p(320, 1096),
             "backItemPoint": cc.p(60, 1096),
             "spiritIconPoint": cc.p(90, 933),
-            "countIconPoint": cc.p(510, 963),
-            "countLabelIconPoint": cc.p(410, 963),
-            "countLabelPoint": cc.p(560, 963),
-            "perObtainIconPoint": cc.p(510, 913),
-            "perObtainLabelIconPoint": cc.p(410, 913),
-            "preObtainLabelPoint": cc.p(560, 913),
+            "countIconPoint": cc.p(510, 978),
+            "countLabelIconPoint": cc.p(410, 978),
+            "countLabelPoint": cc.p(560, 978),
+            "perObtainIconPoint": cc.p(510, 928),
+            "perObtainLabelIconPoint": cc.p(410, 928),
+            "preObtainLabelPoint": cc.p(560, 928),
+            "goldIconPoint": cc.p(545, 878),
+            "goldLabelPoint": cc.p(525, 875),
             "lvIconPoint": cc.p(150, 258),
             "lvLabelPoint": cc.p(230, 258),
             "expLabelPoint": cc.p(360, 258),
@@ -1949,7 +1984,7 @@ var fit4Iphone5 = {
             ],
             "headIconPoint": cc.p(0, 1056),
             "titleIconPoint": cc.p(320, 1096),
-            "wipeOutItemPoint": cc.p(555, 142),
+            "wipeOutItemPoint": cc.p(555, 172),
             "turnLeftSpritePoint": cc.p(40, 550),
             "turnRightSpritePoint": cc.p(600, 550),
             "scrollViewLayerRect": cc.rect(0, 106, 640, 950),

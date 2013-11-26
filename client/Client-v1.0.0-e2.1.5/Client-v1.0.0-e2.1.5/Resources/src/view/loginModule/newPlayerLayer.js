@@ -38,17 +38,35 @@ var NewPlayerLayer = cc.Layer.extend({
         newPlayerFrame.setPosition(this._newPlayerLayerFit.newPlayerFramePoint);
         this.addChild(newPlayerFrame);
 
-        var playerNameLabel = newPlayerFrame.controller.playerNameLabel;
+        this._nameEditBox = cc.EditBox.create(cc.size(320, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._nameEditBox.setAnchorPoint(cc.p(0, 0.5));
 
-        this._nameEditBox = cc.EditBox.create(cc.size(380, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._nameEditBox.setPosition(cc.p(0, 0));
         this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
-        this._nameEditBox.setDelegate(this);
+        this._nameEditBox.setDelegate({
+            /**
+             * This method is called when an edit box loses focus after keyboard is hidden.
+             * @param {cc.EditBox} sender
+             */
+            editBoxEditingDidEnd: function (sender) {
+                var text = sender.getText();
+                var len = text.length;
+                if(!text) {
+                    TipLayer.tip("请输入昵称");
+                } else if(len < 1 || len > 6) {
+                    TipLayer.tip("昵称长度不正确");
+                } else if (EMPTY_SPACE_REG.test(text)) {
+                    TipLayer.tip("昵称不能包含空格");
+                } else if (!NICKNAME_REG.test(text)) {
+                    TipLayer.tip("昵称不能包含非法字符");
+                }
+            }
+        });
         this._nameEditBox.setFont("STHeitiTC-Medium", 35);
         this._nameEditBox.setMaxLength(6);
-        playerNameLabel.addChild(this._nameEditBox);
+        newPlayerFrame.controller.playerNameLabel.addChild(this._nameEditBox);
 
-        this._setRandomName();
+        newPlayerFrame.animationManager.setCompletedAnimationCallback(this, this._setRandomName);
 
         return true;
     },
@@ -82,8 +100,13 @@ var NewPlayerLayer = cc.Layer.extend({
         var name = this._nameEditBox.getText();
         var user = gameData.user;
 
+        if (!name) {
+            TipLayer.tip("请输入昵称");
+            return;
+        }
+
         if (!user.eligibleName(name)) {
-            TipLayer.tip("改名字被占用");
+            TipLayer.tip("昵称已被占用");
             return;
         }
 

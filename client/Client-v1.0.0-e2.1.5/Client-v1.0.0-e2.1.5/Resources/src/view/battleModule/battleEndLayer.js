@@ -94,8 +94,8 @@ var BattleEndLayer = cc.Layer.extend({
         okItem.setPosition(this._battleEndLayerFit.okItemPoint);
 
         var replayItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
+            main_scene_image.button10,
+            main_scene_image.button10s,
             main_scene_image.icon291,
             this.replay,
             this

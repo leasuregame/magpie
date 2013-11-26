@@ -13,15 +13,10 @@
 
 var cardConfig = require('../../config/data/card');
 var utility = require('../common/utility');
+var entityUtil = require('../util/entityUtil');
 var Card = require('../domain/entity/card');
 var table = require('../manager/table');
 var _ = require("underscore");
-
-var tableIds = table.getTable('card').filter(function(id) {
-    return id <= 250;
-}).map(function(item) {
-    return item.id;
-});
 
 var lottery = function (level, type, rFragments, hFragment, hCounts) {
     var card = newCard(level, hCounts);
@@ -51,9 +46,8 @@ var freeLottery = function(level, eids) {
  * 2：高级抽卡
  * */
 var randomCardId = function (star) {
-    //len = tableIds.length
-
-    return _.random(0, 49) * 5 + star;
+    var len = tableIds.length;
+    return tableIds[_.random(0, len/5 - 1) * 5 + star - 1];
 };
 
 var gen_card_star = function (level, hCounts) {
@@ -122,7 +116,7 @@ var gen_card_fragment = function (level, rCounts, hCounts) {
 
 var newCard = function (level, hCounts) {
     var card_star = parseInt(gen_card_star(level, hCounts));
-    var card_id = randomCardId(card_star);
+    var card_id = entityUtil.randomCardId(card_star);
     var card_level = parseInt(gen_card_level(card_star));
 
     return {
@@ -135,8 +129,8 @@ var newCard = function (level, hCounts) {
 var freeCard = function(star) {
     var firstCard = table.getTableItem('first_card', 1)
     var idMap = {
-        3: firstCard.star3,
-        4: firstCard.star4
+        3: JSON.parse(firstCard.star3),
+        4: JSON.parse(firstCard.star4)
     };
     return {
         tableId: idMap[star][_.random(0, idMap[star].length-1)],

@@ -13,6 +13,8 @@
 
 
 var ReadMessageLayer = LazyLayer.extend({
+    _readMessageLayerFit: null,
+
     _id: 0,
     _name: "",
 
@@ -21,32 +23,34 @@ var ReadMessageLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this._readMessageLayerFit = gameFit.mainScene.readMessageLayer;
+
         this._id = id;
         this._name = name;
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 640, 1136);
-        bgLayer.setPosition(cc.p(40, 0));
+        bgLayer.setPosition(this._readMessageLayerFit.bgLayerPoint);
         this.addChild(bgLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(520, 350));
-        bgSprite.setPosition(cc.p(363, 600));
+        bgSprite.setPosition(this._readMessageLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var nameIcon = cc.LabelTTF.create("发件人:", "STHeitiTC-Medium", 25);
         nameIcon.setColor(cc.c3b(255, 248, 69));
         nameIcon.setAnchorPoint(cc.p(0, 0.5));
-        nameIcon.setPosition(cc.p(160, 720));
+        nameIcon.setPosition(this._readMessageLayerFit.nameIconPoint);
         this.addChild(nameIcon);
 
         var nameLabel = cc.LabelTTF.create(this._name, "STHeitiTC-Medium", 25);
         nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        nameLabel.setPosition(cc.p(255, 720));
+        nameLabel.setPosition(this._readMessageLayerFit.nameLabelPoint);
         this.addChild(nameLabel);
 
         var messageLabel = cc.Scale9Sprite.create(main_scene_image.edit3);
         messageLabel.setContentSize(cc.size(460, 160));
-        messageLabel.setPosition(cc.p(363, 610));
+        messageLabel.setPosition(this._readMessageLayerFit.messageLabelPoint);
         this.addChild(messageLabel);
 
         this._setTextLabel(text);
@@ -58,7 +62,7 @@ var ReadMessageLayer = LazyLayer.extend({
             this._onClickSendMessage,
             this
         );
-        sendMessageItem.setPosition(cc.p(240, 485));
+        sendMessageItem.setPosition(this._readMessageLayerFit.sendMessageItemPoint);
 
         var cancelItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -67,7 +71,7 @@ var ReadMessageLayer = LazyLayer.extend({
             this._onClickClose,
             this
         );
-        cancelItem.setPosition(cc.p(480, 485));
+        cancelItem.setPosition(this._readMessageLayerFit.cancelItemPoint);
 
         var menu = cc.Menu.create(sendMessageItem, cancelItem);
         menu.setPosition(cc.p(0, 0));
@@ -90,7 +94,7 @@ var ReadMessageLayer = LazyLayer.extend({
 
             var label = cc.LabelTTF.create(text.substr(min, len), "STHeitiTC-Medium", 25);
             label.setAnchorPoint(cc.p(0, 0.5));
-            label.setPosition(cc.p(148, 660 - index * 50));
+            label.setPosition(cc.p(this._readMessageLayerFit.labelPointX, 660 - index * 50));
             this.addChild(label);
 
             index += 1;

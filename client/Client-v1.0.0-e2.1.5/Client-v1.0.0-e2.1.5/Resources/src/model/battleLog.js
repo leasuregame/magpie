@@ -17,7 +17,9 @@ var BattleLog = Entity.extend({
     _type: PVE_BATTLE_LOG,
     _card: {},
     _ownId: 0,
+    _ownName: null,
     _enemyId: 0,
+    _enemyName: null,
     _winner: "",
     _reward: null,
     _battleStep: null,
@@ -33,7 +35,9 @@ var BattleLog = Entity.extend({
         this.set("type", battleLog.type);
         this.set("card", battleLog.cards);
         this.set("ownId", battleLog.ownId);
+        this.set("ownName", battleLog.ownName);
         this.set("enemyId", battleLog.enemyId);
+        this.set("enemyName", battleLog.enemyName);
         this.set("winner", battleLog.winner);
         this.set("reward", battleLog.rewards);
         this.set("battleStep", battleLog.steps);

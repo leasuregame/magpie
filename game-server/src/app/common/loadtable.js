@@ -37,7 +37,7 @@ function analyzeTable(alltable, tablename) {
   if (table === undefined) {
     console.log(tablename + "表不存在");
   }
-  console.log('table: ', tablename);
+    
   var outputTable = {};
   var columns = table.Row[1]['Cell']; //第2行
   var colNames = [];
@@ -112,7 +112,7 @@ function analyzeTable(alltable, tablename) {
           text = row[j]['Data']['Font']['#'];
         }
         if (!text) {
-          console.log(text, row[j]['Data']);
+          //console.log(text, row[j]['Data']);
           text = row[j]['Data']['Font']['#'];
         }
 
@@ -152,7 +152,7 @@ function analyzeTable(alltable, tablename) {
           text = row[j]['Data']['Font']['#'];
         }
         if (!text) {
-          console.log(text, row[j]['Data']);
+          //console.log(text, row[j]['Data']);
           text = row[j]['Data']['Font']['#'];
         }
 
@@ -423,6 +423,7 @@ module.exports = function() {
   for (var i = 0; i < arguments.length; i++) {
     var file = arguments[i];
     var data = fs.readFileSync(file);
+    console.log('message', file);
     parser.parseString(data, function(err, result) {
       var sheets = result.Worksheet;
       for (var i = sheets.length - 1; i >= 0; i--) {

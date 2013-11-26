@@ -138,7 +138,7 @@ var SystemMessageLayer = cc.Layer.extend({
                 element.receiveItem.setVisible(false);
                 element.hasBeenReceiveIcon.setVisible(true);
 
-                gameMark.updateFriendMessageMark(false);
+                gameMark.updateSystemMessageMark(false);
 
             }, id);
         }

@@ -44,6 +44,7 @@ var Activity = Entity.extend({
                     });
 
                     gameMark.updateActivityMark(false);
+                    gameMark.updatePowerRewardMark(data.msg.canGetPower);
 
                     lz.dc.event("event_activity");
                 } else {
@@ -71,7 +72,7 @@ var Activity = Entity.extend({
         }
     },
 
-    getPowerReward: function () {
+    getPowerReward: function (cb) {
         cc.log("Activity getPowerReward");
         lz.server.request("area.playerHandler.givePower", {}, function (data) {
             cc.log(data);
@@ -82,8 +83,10 @@ var Activity = Entity.extend({
                 gameData.player.add("power", power);
 
                 lz.dc.event("event_give_power");
+                cb();
             } else {
                 TipLayer.tip(data.msg);
+                cb();
             }
         });
     },
@@ -104,7 +107,7 @@ var Activity = Entity.extend({
                 lz.dc.event("event_receive_level_reward", id);
             } else {
                 TipLayer.tip(data.msg);
-                cb(false)
+                cb(false);
             }
         });
     },

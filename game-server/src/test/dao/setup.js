@@ -11,7 +11,7 @@ var setup = function(key) {
     var pomelo = require('pomelo');
     var app = pomelo.createApp();
 
-    var mysqlConfig = require('../../config/mysql1.json');
+    var mysqlConfig = require('../../config/mysql.json');
     app.set('mysql', mysqlConfig.development[key]);
     //app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
     app.set('dbClient', require('../../app/dao/mysql/mysql').init(app));

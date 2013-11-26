@@ -49,8 +49,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>225</real>
-									<real>-150</real>
+									<real>160</real>
+									<real>-180</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -164,8 +164,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>60</real>
-									<real>-150</real>
+									<real>-40</real>
+									<real>-180</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -267,9 +267,9 @@
 						<key>displayName</key>
 						<string>CCMenuItemImage</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>startGameNode</string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -471,8 +471,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>225</real>
-							<real>-148</real>
+							<real>160</real>
+							<real>-178</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -543,8 +543,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>60</real>
-							<real>-150</real>
+							<real>-40</real>
+							<real>-180</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -609,8 +609,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-263</real>
-									<real>1.3999999761581421</real>
+									<real>-223</real>
+									<real>0.0</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -667,7 +667,7 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>up91</string>
+						<string>up94</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -682,7 +682,7 @@
 								<key>value</key>
 								<array>
 									<real>40</real>
-									<real>1.440000057220459</real>
+									<real>0.0</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -726,7 +726,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/uiEffect/up91.png</string>
+									<string>res/effect/uiEffect/up94.png</string>
 								</array>
 							</dict>
 						</array>
@@ -746,6 +746,18 @@
 						<integer>1</integer>
 						<key>properties</key>
 						<array>
+							<dict>
+								<key>name</key>
+								<string>position</string>
+								<key>type</key>
+								<string>Position</string>
+								<key>value</key>
+								<array>
+									<real>-140</real>
+									<real>0.0</real>
+									<integer>0</integer>
+								</array>
+							</dict>
 							<dict>
 								<key>name</key>
 								<string>anchorPoint</string>
@@ -786,9 +798,9 @@
 				<key>displayName</key>
 				<string>CCNode</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>accountNode</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -799,7 +811,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-240</real>
+							<real>-260</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -836,6 +848,8 @@
 						<false/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -864,8 +878,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-263</real>
-									<real>1.3999999761581421</real>
+									<real>-223</real>
+									<real>0.0</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -922,7 +936,7 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>up91</string>
+						<string>up94</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -981,7 +995,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/uiEffect/up91.png</string>
+									<string>res/effect/uiEffect/up94.png</string>
 								</array>
 							</dict>
 						</array>
@@ -1001,6 +1015,18 @@
 						<integer>1</integer>
 						<key>properties</key>
 						<array>
+							<dict>
+								<key>name</key>
+								<string>position</string>
+								<key>type</key>
+								<string>Position</string>
+								<key>value</key>
+								<array>
+									<real>-140</real>
+									<real>0.0</real>
+									<integer>0</integer>
+								</array>
+							</dict>
 							<dict>
 								<key>name</key>
 								<string>anchorPoint</string>
@@ -1041,9 +1067,9 @@
 				<key>displayName</key>
 				<string>CCNode</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>passwordNode</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1177,9 +1203,9 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.033333335071802139</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>1.5333333015441895</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

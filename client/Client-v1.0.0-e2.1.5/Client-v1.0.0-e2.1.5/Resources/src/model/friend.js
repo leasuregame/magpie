@@ -113,7 +113,8 @@ var Friend = Entity.extend({
 
         friend.canGive = friend.canGive || true;
         friend.canReceive = friend.canReceive || false;
-
+        friend.giveCount = friend.giveCount || 0;
+        friend.receiveCount = friend.receiveCount || 0;
         this._friendList.push(friend);
     },
 

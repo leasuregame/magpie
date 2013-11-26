@@ -171,7 +171,7 @@ var PaymentLayer = LazyLayer.extend({
             var paymentItem = cc.MenuItemImage.createWithIcon(
                 main_scene_image.button21,
                 main_scene_image.button21s,
-                main_scene_image.icon159,
+                main_scene_image.icon300,
                 this._onClickPayment(paymentTypeList[i].id),
                 this
             );

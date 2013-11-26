@@ -21,7 +21,8 @@ var rewardGoodsUrl = {
     lottery_free_count: "icon182",
     spirit: "icon111",
     gold: "icon112",
-    card: "icon146"
+    card: "icon146",
+    fragments: "icon145"
 };
 
 var SignInLayer = LazyLayer.extend({

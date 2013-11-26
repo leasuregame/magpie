@@ -181,15 +181,17 @@ var FriendMessageLayer = cc.Layer.extend({
             cc.log("FriendMessageLayer _onClickAccept: " + id);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-            gameData.message.accept(id);
-            gameMark.updateFriendMessageMark(false);
-
             var element = this._scrollViewElement[id];
 
-            element.acceptItem.setVisible(false);
-            element.rejectItem.setVisible(false);
-            element.hasBeenAcceptIcon.setVisible(true);
+            gameData.message.accept(function () {
+                gameMark.updateFriendMessageMark(false);
+
+                element.acceptItem.setVisible(false);
+                element.rejectItem.setVisible(false);
+                element.hasBeenAcceptIcon.setVisible(true);
+            }, id);
+
+
         }
     },
 
@@ -198,15 +200,16 @@ var FriendMessageLayer = cc.Layer.extend({
             cc.log("FriendMessageLayer _onClickReject: " + id);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-            gameData.message.reject(id);
-            gameMark.updateFriendMessageMark(false);
-
             var element = this._scrollViewElement[id];
 
-            element.acceptItem.setVisible(false);
-            element.rejectItem.setVisible(false);
-            element.hasBeenRejectIcon.setVisible(true);
+            gameData.message.reject(function () {
+                gameMark.updateFriendMessageMark(false);
+
+                element.acceptItem.setVisible(false);
+                element.rejectItem.setVisible(false);
+                element.hasBeenRejectIcon.setVisible(true);
+            }, id);
+
         }
     },
 

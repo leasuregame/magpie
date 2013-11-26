@@ -112,7 +112,7 @@ var Message = Entity.extend({
         this._sort();
     },
 
-    accept: function (msgId) {
+    accept: function (cb, msgId) {
         cc.log("Message accept: " + msgId);
 
         var len = this._friendMessage.length;
@@ -140,7 +140,7 @@ var Message = Entity.extend({
                     message.status = ACCEPT_STATUS;
 
                     gameData.friend.push(msg);
-
+                    cb();
                     lz.dc.event("event_friend_accept");
                 } else {
                     cc.log("accept fail");
@@ -151,7 +151,7 @@ var Message = Entity.extend({
         }
     },
 
-    reject: function (msgId) {
+    reject: function (cb, msgId) {
         cc.log("Message reject: " + msgId);
 
         var len = this._friendMessage.length;
@@ -175,7 +175,7 @@ var Message = Entity.extend({
                     cc.log("reject success");
 
                     message.status = REJECT_STATUS;
-
+                    cb();
                     lz.dc.event("event_friend_reject");
                 } else {
                     cc.log("reject fail");

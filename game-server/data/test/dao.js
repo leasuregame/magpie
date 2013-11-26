@@ -21,7 +21,7 @@ var main = function() {
   var areaId = process.argv[4] || 1;
   var quenues = [];
   var start = Date.now();
-  var gdata = new Data(genDao(1), path.join(__dirname, 'csv/'));
+  var gdata = new Data(genDao(areaId), path.join(__dirname, 'csv/'));
 
   switch (type) {
     case 'csv':

@@ -93,6 +93,7 @@
 
             'src/model/gameData.js',
             'src/model/gameMark.js',
+            'src/model/gameGuide.js',
 
             'src/controls/progress.js',
             'src/controls/lazyLayer.js',

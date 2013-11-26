@@ -163,8 +163,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>3</real>
-												<real>3</real>
+												<real>2</real>
+												<real>2</real>
 											</array>
 										</dict>
 										<dict>
@@ -181,8 +181,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>4</real>
-												<real>4</real>
+												<real>3</real>
+												<real>3</real>
 											</array>
 										</dict>
 									</array>
@@ -230,8 +230,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>4</real>
-									<real>4</real>
+									<real>3</real>
+									<real>3</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -282,20 +282,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>40</integer>
-									<integer>140</integer>
-									<integer>255</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>blendFunc</string>
-								<key>type</key>
-								<string>Blendmode</string>
-								<key>value</key>
-								<array>
-									<integer>1</integer>
-									<integer>1</integer>
+									<integer>76</integer>
+									<integer>251</integer>
+									<integer>218</integer>
 								</array>
 							</dict>
 						</array>
@@ -438,8 +427,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>3</real>
-												<real>3</real>
+												<real>2</real>
+												<real>2</real>
 											</array>
 										</dict>
 										<dict>
@@ -456,8 +445,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>4</real>
-												<real>4</real>
+												<real>3</real>
+												<real>3</real>
 											</array>
 										</dict>
 									</array>
@@ -505,8 +494,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>4</real>
-									<real>4</real>
+									<real>3</real>
+									<real>3</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -763,8 +752,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>3</real>
-												<real>3</real>
+												<real>2</real>
+												<real>2</real>
 											</array>
 										</dict>
 										<dict>
@@ -781,8 +770,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>4</real>
-												<real>4</real>
+												<real>3</real>
+												<real>3</real>
 											</array>
 										</dict>
 									</array>
@@ -830,8 +819,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>4</real>
-									<real>4</real>
+									<real>3</real>
+									<real>3</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1038,8 +1027,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>3</real>
-												<real>3</real>
+												<real>2</real>
+												<real>2</real>
 											</array>
 										</dict>
 										<dict>
@@ -1056,8 +1045,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>4</real>
-												<real>4</real>
+												<real>3</real>
+												<real>3</real>
 											</array>
 										</dict>
 									</array>
@@ -1105,8 +1094,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>4</real>
-									<real>4</real>
+									<real>3</real>
+									<real>3</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1363,8 +1352,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>3</real>
-												<real>3</real>
+												<real>2</real>
+												<real>2</real>
 											</array>
 										</dict>
 										<dict>
@@ -1381,8 +1370,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>4</real>
-												<real>4</real>
+												<real>3</real>
+												<real>3</real>
 											</array>
 										</dict>
 									</array>
@@ -1430,8 +1419,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>4</real>
-									<real>4</real>
+									<real>3</real>
+									<real>3</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1638,8 +1627,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>3</real>
-												<real>3</real>
+												<real>2</real>
+												<real>2</real>
 											</array>
 										</dict>
 										<dict>
@@ -1656,8 +1645,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>4</real>
-												<real>4</real>
+												<real>3</real>
+												<real>3</real>
 											</array>
 										</dict>
 									</array>
@@ -1705,8 +1694,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>4</real>
-									<real>4</real>
+									<real>3</real>
+									<real>3</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1819,286 +1808,6 @@
 						<string>Check</string>
 						<key>value</key>
 						<false/>
-					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>animatedProperties</key>
-				<dict>
-					<key>0</key>
-					<dict/>
-				</dict>
-				<key>baseClass</key>
-				<string>CCParticleSystemQuad</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string></string>
-				<key>displayName</key>
-				<string>CCParticleSystemQuad</string>
-				<key>memberVarAssignmentName</key>
-				<string></string>
-				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>-70</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>anchorPoint</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<false/>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>ignoreAnchorPointForPosition</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>emitterMode</string>
-						<key>type</key>
-						<string>IntegerLabeled</string>
-						<key>value</key>
-						<integer>0</integer>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>posVar</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>100</real>
-							<real>20</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>emissionRate</string>
-						<key>type</key>
-						<string>Float</string>
-						<key>value</key>
-						<real>40</real>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>duration</string>
-						<key>type</key>
-						<string>Float</string>
-						<key>value</key>
-						<real>0.5</real>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>totalParticles</string>
-						<key>type</key>
-						<string>Integer</string>
-						<key>value</key>
-						<integer>80</integer>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>life</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>0.5</real>
-							<real>0.25</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>startSize</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>30</real>
-							<real>10</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>endSize</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>10</real>
-							<real>5</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>startSpin</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>endSpin</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>angle</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>90</real>
-							<real>20</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>startColor</string>
-						<key>type</key>
-						<string>Color4FVar</string>
-						<key>value</key>
-						<array>
-							<array>
-								<real>0.27627310156822205</real>
-								<real>0.74198293685913086</real>
-								<real>0.80438202619552612</real>
-								<real>1</real>
-							</array>
-							<array>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>0.0</real>
-							</array>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>endColor</string>
-						<key>type</key>
-						<string>Color4FVar</string>
-						<key>value</key>
-						<array>
-							<array>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>255</real>
-							</array>
-							<array>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>0.0</real>
-							</array>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>blendFunc</string>
-						<key>type</key>
-						<string>Blendmode</string>
-						<key>value</key>
-						<array>
-							<integer>1</integer>
-							<integer>1</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>gravity</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>speed</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>300</real>
-							<real>20</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>tangentialAccel</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>radialAccel</string>
-						<key>type</key>
-						<string>FloatVar</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>texture</string>
-						<key>type</key>
-						<string>Texture</string>
-						<key>value</key>
-						<string>res/effect/effect/p18.png</string>
 					</dict>
 				</array>
 			</dict>

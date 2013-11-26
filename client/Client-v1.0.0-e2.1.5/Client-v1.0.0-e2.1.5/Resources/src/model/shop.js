@@ -146,6 +146,7 @@ var Shop = Entity.extend({
                     var nowPrivilegeTable = outputTables.recharge.rows[nowVip];
 
                     player.add("gold", rechargeTable.cash * 10 + rechargeTable.gold);
+                    player.set("vip", nowVip);
 
                     gameData.treasureHunt.add("freeCount", nowPrivilegeTable.lottery_free_count - oldPrivilegeTable.lottery_free_count);
                     gameData.friend.adds({

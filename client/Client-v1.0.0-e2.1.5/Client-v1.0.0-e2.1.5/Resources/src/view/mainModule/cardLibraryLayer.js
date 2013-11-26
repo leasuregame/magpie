@@ -185,6 +185,15 @@ var CardLibraryLayer = cc.Layer.extend({
 
                     that.update();
 
+                    var effect = cc.BuilderReader.load(main_scene_image.uiEffect25, this);
+                    effect.setScale(0.6);
+                    effect.setPosition(cc.p(83, 24));
+                    that._cardItem[id].addChild(effect);
+
+                    effect.animationManager.setCompletedAnimationCallback(this, function () {
+                        effect.removeFromParent();
+                    });
+
                     TipLayer.tipNoBg("活力点: +" + data);
 
                     gameMark.updateCardLibraryMark(false);

@@ -103,11 +103,11 @@ var gameMark = {
         var mark = this._friend;
         if (mark == false) {
             var friend = gameData.friend;
-            var giveCount = friend.get("giveCount");
+            var receiveCount = friend.get("receiveCount");
             var friendList = friend.get("friendList");
             var len = friendList.length;
             for (var i = 0; i < len; ++i) {
-                if (giveCount > 0 && friendList[i].canReceive) {
+                if (receiveCount > 0 && friendList[i].canReceive) {
                     mark = true;
                     break;
                 }
@@ -259,7 +259,7 @@ var gameMark = {
     },
 
     getSystemMessageMark: function () {
-        cc.log("gameMark getFriendMessageMark");
+        cc.log("gameMark getSystemMessageMark");
 
         var mark = this._systemMessage;
         if (mark == false) {
@@ -268,6 +268,7 @@ var gameMark = {
             for (var i = 0; i < len; ++i) {
                 if (systemMessageList[i].status == UNHANDLED_STATUS) {
                     mark = true;
+                    break;
                 }
             }
         }

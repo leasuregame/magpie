@@ -53,7 +53,6 @@ public:
     static CCObject * target;
     static SEL_CallFuncO callback;
     
-    static bool canBuy();
     static void buy(const char * productId, CCObject * target, SEL_CallFuncO callback);
     static void executeCallback(PaymentState state, const char * product, const char * receipt, const char * msg);
 };

@@ -1,6 +1,18 @@
 var nameChanged = {
     "achievement": "成就配置表",
     "成就配置表": "achievement",
+    "card_grow": "卡牌升级表",
+    "卡牌升级表": "card_grow",
+    "card_price": "卡牌价格配置表",
+    "卡牌价格配置表": "card_price",
+    "cards": "神仙卡牌配置表",
+    "神仙卡牌配置表": "cards",
+    "elixir": "仙丹配置表",
+    "仙丹配置表": "elixir",
+    "factors": "基础属性成长表",
+    "基础属性成长表": "factors",
+    "star_upgrade": "卡牌进阶配置表",
+    "卡牌进阶配置表": "star_upgrade",
     "player_upgrade_reward": "玩家升级阶段奖励配置表",
     "玩家升级阶段奖励配置表": "player_upgrade_reward",
     "friends_config": "好友数量配置表",
@@ -25,18 +37,6 @@ var nameChanged = {
     "每日签到奖励": "daily_signin_rewards",
     "signIn_rewards": "连续签到奖励",
     "连续签到奖励": "signIn_rewards",
-    "card_grow": "卡牌升级表",
-    "卡牌升级表": "card_grow",
-    "card_price": "卡牌价格配置表",
-    "卡牌价格配置表": "card_price",
-    "cards": "神仙卡牌配置表",
-    "神仙卡牌配置表": "cards",
-    "elixir": "仙丹配置表",
-    "仙丹配置表": "elixir",
-    "factors": "基础属性成长表",
-    "基础属性成长表": "factors",
-    "star_upgrade": "卡牌进阶配置表",
-    "卡牌进阶配置表": "star_upgrade",
     "treasure_hunt": "寻宝配置表",
     "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
@@ -63,16 +63,16 @@ var nameChanged = {
     "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
+    "spirit": "元神配置表",
+    "元神配置表": "spirit",
+    "spirit_pool": "灵气池配置表",
+    "灵气池配置表": "spirit_pool",
     "passFailSpiritSpeak": "爬塔失败喊话配置表",
     "爬塔失败喊话配置表": "passFailSpiritSpeak",
     "passWinSpiritSpeak": "爬塔胜利喊话配置表",
     "爬塔胜利喊话配置表": "passWinSpiritSpeak",
     "spiritSpeak": "精灵喊话配置表",
     "精灵喊话配置表": "spiritSpeak",
-    "spirit": "元神配置表",
-    "元神配置表": "spirit",
-    "spirit_pool": "灵气池配置表",
-    "灵气池配置表": "spirit_pool",
     "chapter": "大章表",
     "大章表": "chapter",
     "chapter_title": "总章表",
@@ -91,6 +91,8 @@ var nameChanged = {
     "任务怪物属性表": "task_card",
     "task_config": "任务卡牌配置表",
     "任务卡牌配置表": "task_config",
+    "task_through_reward": "通关仙币奖励",
+    "通关仙币奖励": "task_through_reward",
     "wipe_out": "任务扫荡产出表",
     "任务扫荡产出表": "wipe_out",
     "recharge": "充值类型",
@@ -102,7 +104,6 @@ var nameChanged = {
     "vip_privilege": "vip特权",
     "vip特权": "vip_privilege"
 };
-
 var outputTables = {
     "achievement": {
         "colComment": {},
@@ -331,281 +332,6 @@ var outputTables = {
                 "desc": "累计消耗魔石100000",
                 "gold": 50,
                 "energy": 500
-            }
-        }
-    },
-    "player_upgrade_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 10,
-                "gold": 10
-            },
-            "2": {
-                "id": 2,
-                "lv": 20,
-                "gold": 20
-            },
-            "3": {
-                "id": 3,
-                "lv": 30,
-                "gold": 30
-            },
-            "4": {
-                "id": 4,
-                "lv": 40,
-                "gold": 40
-            },
-            "5": {
-                "id": 5,
-                "lv": 50,
-                "gold": 100
-            },
-            "6": {
-                "id": 6,
-                "lv": 60,
-                "gold": 150
-            },
-            "7": {
-                "id": 7,
-                "lv": 70,
-                "gold": 200
-            },
-            "8": {
-                "id": 8,
-                "lv": 80,
-                "gold": 260
-            },
-            "9": {
-                "id": 9,
-                "lv": 90,
-                "gold": 300
-            },
-            "10": {
-                "id": 10,
-                "lv": 100,
-                "gold": 500
-            }
-        }
-    },
-    "friends_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 20
-            },
-            "31": {
-                "id": 31,
-                "count": 30
-            },
-            "51": {
-                "id": 51,
-                "count": 40
-            },
-            "71": {
-                "id": 71,
-                "count": 50
-            }
-        }
-    },
-    "receive_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "give_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "first_card": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": "[13,43,218,248,153,123]",
-                "star4": "[59]"
-            }
-        }
-    },
-    "function_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rank": 5,
-                "pass": 10,
-                "card4_position": 30,
-                "lottery": 20,
-                "card5_position": 50,
-                "ranking_list": 40
-            }
-        }
-    },
-    "lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "player_lv_limit": 100,
-                "skill_lv_limit": 5,
-                "spirit_lv_limit": 10,
-                "spirit_pool_lv_limit": 10
-            }
-        }
-    },
-    "card_lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "max_lv": 30
-            },
-            "2": {
-                "id": 2,
-                "max_lv": 40
-            },
-            "3": {
-                "id": 3,
-                "max_lv": 50
-            },
-            "4": {
-                "id": 4,
-                "max_lv": 55
-            },
-            "5": {
-                "id": 5,
-                "max_lv": 60
-            }
-        }
-    },
-    "elixir_limit": {
-        "colComment": {},
-        "rows": {
-            "3": {
-                "id": 3,
-                "elixir_limit": 10000
-            },
-            "4": {
-                "id": 4,
-                "elixir_limit": 25000
-            },
-            "5": {
-                "id": 5,
-                "elixir_limit": 50000
-            }
-        }
-    },
-    "resource_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 99999999,
-                "skillPoint": 9999999,
-                "energy": 99999,
-                "card_count_limit": 100,
-                "power_value": 150,
-                "elixir": 999999
-            }
-        }
-    },
-    "daily_signin_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 1000,
-                "energy": 50
-            }
-        }
-    },
-    "signIn_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5,
-                "money": 5000,
-                "energy": 100,
-                "skillPoint": 0,
-                "elixir": 0,
-                "lottery_free_count": 0,
-                "gold": 0
-            },
-            "2": {
-                "id": 2,
-                "count": 10,
-                "money": 10000,
-                "energy": 200,
-                "skillPoint": 800,
-                "elixir": 0,
-                "lottery_free_count": 0,
-                "gold": 0
-            },
-            "3": {
-                "id": 3,
-                "count": 18,
-                "money": 20000,
-                "energy": 300,
-                "skillPoint": 1000,
-                "elixir": 1000,
-                "lottery_free_count": 0,
-                "gold": 0
-            },
-            "4": {
-                "id": 4,
-                "count": 25,
-                "money": 30000,
-                "energy": 500,
-                "skillPoint": 2000,
-                "elixir": 2000,
-                "lottery_free_count": 5,
-                "gold": 0
-            },
-            "5": {
-                "id": 5,
-                "count": -1,
-                "money": 50000,
-                "energy": 800,
-                "skillPoint": 3000,
-                "elixir": 3000,
-                "lottery_free_count": 10,
-                "gold": 300
             }
         }
     },
@@ -9987,10 +9713,7 @@ var outputTables = {
                 "id": 1,
                 "elixir": 20,
                 "atk": 1,
-                "hp": 2,
-                "star3_max": 100000,
-                "star4_max": 160000,
-                "star5_max": 240000
+                "hp": 2
             }
         }
     },
@@ -10389,6 +10112,292 @@ var outputTables = {
                 "money_need": 50000,
                 "rate_per_card": 4,
                 "max_num": 25
+            }
+        }
+    },
+    "player_upgrade_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 10,
+                "gold": 10
+            },
+            "2": {
+                "id": 2,
+                "lv": 20,
+                "gold": 20
+            },
+            "3": {
+                "id": 3,
+                "lv": 30,
+                "gold": 30
+            },
+            "4": {
+                "id": 4,
+                "lv": 40,
+                "gold": 40
+            },
+            "5": {
+                "id": 5,
+                "lv": 50,
+                "gold": 100
+            },
+            "6": {
+                "id": 6,
+                "lv": 60,
+                "gold": 150
+            },
+            "7": {
+                "id": 7,
+                "lv": 70,
+                "gold": 200
+            },
+            "8": {
+                "id": 8,
+                "lv": 80,
+                "gold": 260
+            },
+            "9": {
+                "id": 9,
+                "lv": 90,
+                "gold": 300
+            },
+            "10": {
+                "id": 10,
+                "lv": 100,
+                "gold": 500
+            }
+        }
+    },
+    "friends_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 20
+            },
+            "31": {
+                "id": 31,
+                "count": 30
+            },
+            "51": {
+                "id": 51,
+                "count": 40
+            },
+            "71": {
+                "id": 71,
+                "count": 50
+            }
+        }
+    },
+    "receive_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "give_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "first_card": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": "[13,43,218,248,153,123]",
+                "star4": "[59]"
+            }
+        }
+    },
+    "function_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rank": 5,
+                "pass": 10,
+                "card3_position": 15,
+                "lottery": 20,
+                "card4_position": 30,
+                "ranking_list": 40,
+                "card5_position": 50
+            }
+        }
+    },
+    "lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "player_lv_limit": 100,
+                "skill_lv_limit": 5,
+                "spirit_lv_limit": 10,
+                "spirit_pool_lv_limit": 10
+            }
+        }
+    },
+    "card_lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "max_lv": 30
+            },
+            "2": {
+                "id": 2,
+                "max_lv": 40
+            },
+            "3": {
+                "id": 3,
+                "max_lv": 50
+            },
+            "4": {
+                "id": 4,
+                "max_lv": 55
+            },
+            "5": {
+                "id": 5,
+                "max_lv": 60
+            }
+        }
+    },
+    "elixir_limit": {
+        "colComment": {},
+        "rows": {
+            "3": {
+                "id": 3,
+                "elixir_limit": 100000
+            },
+            "4": {
+                "id": 4,
+                "elixir_limit": 160000
+            },
+            "5": {
+                "id": 5,
+                "elixir_limit": 240000
+            }
+        }
+    },
+    "resource_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 99999999,
+                "skillPoint": 9999999,
+                "energy": 99999,
+                "card_count_limit": 100,
+                "power_value": 150,
+                "elixir": 999999
+            }
+        }
+    },
+    "daily_signin_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 2000,
+                "energy": 100
+            }
+        }
+    },
+    "signIn_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5,
+                "money": 5000,
+                "energy": 100,
+                "skillPoint": 0,
+                "elixir": 0,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "2": {
+                "id": 2,
+                "count": 10,
+                "money": 10000,
+                "energy": 200,
+                "skillPoint": 800,
+                "elixir": 0,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "3": {
+                "id": 3,
+                "count": 18,
+                "money": 20000,
+                "energy": 300,
+                "skillPoint": 1000,
+                "elixir": 1000,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "4": {
+                "id": 4,
+                "count": 25,
+                "money": 30000,
+                "energy": 500,
+                "skillPoint": 2000,
+                "elixir": 2000,
+                "lottery_free_count": 5,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "5": {
+                "id": 5,
+                "count": -1,
+                "money": 50000,
+                "energy": 800,
+                "skillPoint": 3000,
+                "elixir": 3000,
+                "lottery_free_count": 10,
+                "fragments": 5,
+                "gold": 0,
+                "spirit": 0
             }
         }
     },
@@ -24960,9 +24969,9 @@ var outputTables = {
     "rank": {
         "colComment": {},
         "rows": {
-            "10": {
-                "id": 10,
-                "lv": 10,
+            "5": {
+                "id": 5,
+                "lv": 5,
                 "win_exp": 1,
                 "win_money": 10,
                 "win_elixir": 100,
@@ -24970,9 +24979,9 @@ var outputTables = {
                 "lose_money": 5,
                 "lose_elixir": 50
             },
-            "11": {
-                "id": 11,
-                "lv": 11,
+            "6": {
+                "id": 6,
+                "lv": 6,
                 "win_exp": 2,
                 "win_money": 11,
                 "win_elixir": 110,
@@ -24980,9 +24989,9 @@ var outputTables = {
                 "lose_money": 6,
                 "lose_elixir": 55
             },
-            "12": {
-                "id": 12,
-                "lv": 12,
+            "7": {
+                "id": 7,
+                "lv": 7,
                 "win_exp": 3,
                 "win_money": 12,
                 "win_elixir": 120,
@@ -24990,9 +24999,9 @@ var outputTables = {
                 "lose_money": 6,
                 "lose_elixir": 60
             },
-            "13": {
-                "id": 13,
-                "lv": 13,
+            "8": {
+                "id": 8,
+                "lv": 8,
                 "win_exp": 4,
                 "win_money": 13,
                 "win_elixir": 130,
@@ -25000,9 +25009,9 @@ var outputTables = {
                 "lose_money": 7,
                 "lose_elixir": 65
             },
-            "14": {
-                "id": 14,
-                "lv": 14,
+            "9": {
+                "id": 9,
+                "lv": 9,
                 "win_exp": 5,
                 "win_money": 14,
                 "win_elixir": 140,
@@ -25010,9 +25019,9 @@ var outputTables = {
                 "lose_money": 7,
                 "lose_elixir": 70
             },
-            "15": {
-                "id": 15,
-                "lv": 15,
+            "10": {
+                "id": 10,
+                "lv": 10,
                 "win_exp": 6,
                 "win_money": 15,
                 "win_elixir": 150,
@@ -25020,9 +25029,9 @@ var outputTables = {
                 "lose_money": 8,
                 "lose_elixir": 75
             },
-            "16": {
-                "id": 16,
-                "lv": 16,
+            "11": {
+                "id": 11,
+                "lv": 11,
                 "win_exp": 7,
                 "win_money": 16,
                 "win_elixir": 160,
@@ -25030,9 +25039,9 @@ var outputTables = {
                 "lose_money": 8,
                 "lose_elixir": 80
             },
-            "17": {
-                "id": 17,
-                "lv": 17,
+            "12": {
+                "id": 12,
+                "lv": 12,
                 "win_exp": 8,
                 "win_money": 17,
                 "win_elixir": 170,
@@ -25040,9 +25049,9 @@ var outputTables = {
                 "lose_money": 9,
                 "lose_elixir": 85
             },
-            "18": {
-                "id": 18,
-                "lv": 18,
+            "13": {
+                "id": 13,
+                "lv": 13,
                 "win_exp": 9,
                 "win_money": 18,
                 "win_elixir": 180,
@@ -25050,9 +25059,9 @@ var outputTables = {
                 "lose_money": 9,
                 "lose_elixir": 90
             },
-            "19": {
-                "id": 19,
-                "lv": 19,
+            "14": {
+                "id": 14,
+                "lv": 14,
                 "win_exp": 10,
                 "win_money": 19,
                 "win_elixir": 190,
@@ -25060,9 +25069,9 @@ var outputTables = {
                 "lose_money": 10,
                 "lose_elixir": 95
             },
-            "20": {
-                "id": 20,
-                "lv": 20,
+            "15": {
+                "id": 15,
+                "lv": 15,
                 "win_exp": 11,
                 "win_money": 20,
                 "win_elixir": 200,
@@ -25070,9 +25079,9 @@ var outputTables = {
                 "lose_money": 10,
                 "lose_elixir": 100
             },
-            "21": {
-                "id": 21,
-                "lv": 21,
+            "16": {
+                "id": 16,
+                "lv": 16,
                 "win_exp": 12,
                 "win_money": 21,
                 "win_elixir": 210,
@@ -25080,9 +25089,9 @@ var outputTables = {
                 "lose_money": 11,
                 "lose_elixir": 105
             },
-            "22": {
-                "id": 22,
-                "lv": 22,
+            "17": {
+                "id": 17,
+                "lv": 17,
                 "win_exp": 13,
                 "win_money": 22,
                 "win_elixir": 220,
@@ -25090,9 +25099,9 @@ var outputTables = {
                 "lose_money": 11,
                 "lose_elixir": 110
             },
-            "23": {
-                "id": 23,
-                "lv": 23,
+            "18": {
+                "id": 18,
+                "lv": 18,
                 "win_exp": 14,
                 "win_money": 23,
                 "win_elixir": 230,
@@ -25100,9 +25109,9 @@ var outputTables = {
                 "lose_money": 12,
                 "lose_elixir": 115
             },
-            "24": {
-                "id": 24,
-                "lv": 24,
+            "19": {
+                "id": 19,
+                "lv": 19,
                 "win_exp": 15,
                 "win_money": 24,
                 "win_elixir": 240,
@@ -25110,9 +25119,9 @@ var outputTables = {
                 "lose_money": 12,
                 "lose_elixir": 120
             },
-            "25": {
-                "id": 25,
-                "lv": 25,
+            "20": {
+                "id": 20,
+                "lv": 20,
                 "win_exp": 16,
                 "win_money": 25,
                 "win_elixir": 250,
@@ -25120,9 +25129,9 @@ var outputTables = {
                 "lose_money": 13,
                 "lose_elixir": 125
             },
-            "26": {
-                "id": 26,
-                "lv": 26,
+            "21": {
+                "id": 21,
+                "lv": 21,
                 "win_exp": 17,
                 "win_money": 26,
                 "win_elixir": 260,
@@ -25130,9 +25139,9 @@ var outputTables = {
                 "lose_money": 13,
                 "lose_elixir": 130
             },
-            "27": {
-                "id": 27,
-                "lv": 27,
+            "22": {
+                "id": 22,
+                "lv": 22,
                 "win_exp": 18,
                 "win_money": 27,
                 "win_elixir": 270,
@@ -25140,9 +25149,9 @@ var outputTables = {
                 "lose_money": 14,
                 "lose_elixir": 135
             },
-            "28": {
-                "id": 28,
-                "lv": 28,
+            "23": {
+                "id": 23,
+                "lv": 23,
                 "win_exp": 19,
                 "win_money": 28,
                 "win_elixir": 280,
@@ -25150,9 +25159,9 @@ var outputTables = {
                 "lose_money": 14,
                 "lose_elixir": 140
             },
-            "29": {
-                "id": 29,
-                "lv": 29,
+            "24": {
+                "id": 24,
+                "lv": 24,
                 "win_exp": 20,
                 "win_money": 29,
                 "win_elixir": 290,
@@ -25160,9 +25169,9 @@ var outputTables = {
                 "lose_money": 15,
                 "lose_elixir": 145
             },
-            "30": {
-                "id": 30,
-                "lv": 30,
+            "25": {
+                "id": 25,
+                "lv": 25,
                 "win_exp": 21,
                 "win_money": 30,
                 "win_elixir": 300,
@@ -25170,9 +25179,9 @@ var outputTables = {
                 "lose_money": 15,
                 "lose_elixir": 150
             },
-            "31": {
-                "id": 31,
-                "lv": 31,
+            "26": {
+                "id": 26,
+                "lv": 26,
                 "win_exp": 22,
                 "win_money": 31,
                 "win_elixir": 310,
@@ -25180,9 +25189,9 @@ var outputTables = {
                 "lose_money": 16,
                 "lose_elixir": 155
             },
-            "32": {
-                "id": 32,
-                "lv": 32,
+            "27": {
+                "id": 27,
+                "lv": 27,
                 "win_exp": 23,
                 "win_money": 32,
                 "win_elixir": 320,
@@ -25190,9 +25199,9 @@ var outputTables = {
                 "lose_money": 16,
                 "lose_elixir": 160
             },
-            "33": {
-                "id": 33,
-                "lv": 33,
+            "28": {
+                "id": 28,
+                "lv": 28,
                 "win_exp": 24,
                 "win_money": 33,
                 "win_elixir": 330,
@@ -25200,9 +25209,9 @@ var outputTables = {
                 "lose_money": 17,
                 "lose_elixir": 165
             },
-            "34": {
-                "id": 34,
-                "lv": 34,
+            "29": {
+                "id": 29,
+                "lv": 29,
                 "win_exp": 25,
                 "win_money": 34,
                 "win_elixir": 340,
@@ -25210,9 +25219,9 @@ var outputTables = {
                 "lose_money": 17,
                 "lose_elixir": 170
             },
-            "35": {
-                "id": 35,
-                "lv": 35,
+            "30": {
+                "id": 30,
+                "lv": 30,
                 "win_exp": 26,
                 "win_money": 35,
                 "win_elixir": 350,
@@ -25220,9 +25229,9 @@ var outputTables = {
                 "lose_money": 18,
                 "lose_elixir": 175
             },
-            "36": {
-                "id": 36,
-                "lv": 36,
+            "31": {
+                "id": 31,
+                "lv": 31,
                 "win_exp": 27,
                 "win_money": 36,
                 "win_elixir": 360,
@@ -25230,9 +25239,9 @@ var outputTables = {
                 "lose_money": 18,
                 "lose_elixir": 180
             },
-            "37": {
-                "id": 37,
-                "lv": 37,
+            "32": {
+                "id": 32,
+                "lv": 32,
                 "win_exp": 28,
                 "win_money": 37,
                 "win_elixir": 370,
@@ -25240,9 +25249,9 @@ var outputTables = {
                 "lose_money": 19,
                 "lose_elixir": 185
             },
-            "38": {
-                "id": 38,
-                "lv": 38,
+            "33": {
+                "id": 33,
+                "lv": 33,
                 "win_exp": 29,
                 "win_money": 38,
                 "win_elixir": 380,
@@ -25250,9 +25259,9 @@ var outputTables = {
                 "lose_money": 19,
                 "lose_elixir": 190
             },
-            "39": {
-                "id": 39,
-                "lv": 39,
+            "34": {
+                "id": 34,
+                "lv": 34,
                 "win_exp": 30,
                 "win_money": 39,
                 "win_elixir": 390,
@@ -25260,9 +25269,9 @@ var outputTables = {
                 "lose_money": 20,
                 "lose_elixir": 195
             },
-            "40": {
-                "id": 40,
-                "lv": 40,
+            "35": {
+                "id": 35,
+                "lv": 35,
                 "win_exp": 31,
                 "win_money": 40,
                 "win_elixir": 400,
@@ -25270,9 +25279,9 @@ var outputTables = {
                 "lose_money": 20,
                 "lose_elixir": 200
             },
-            "41": {
-                "id": 41,
-                "lv": 41,
+            "36": {
+                "id": 36,
+                "lv": 36,
                 "win_exp": 32,
                 "win_money": 41,
                 "win_elixir": 410,
@@ -25280,9 +25289,9 @@ var outputTables = {
                 "lose_money": 21,
                 "lose_elixir": 205
             },
-            "42": {
-                "id": 42,
-                "lv": 42,
+            "37": {
+                "id": 37,
+                "lv": 37,
                 "win_exp": 33,
                 "win_money": 42,
                 "win_elixir": 420,
@@ -25290,9 +25299,9 @@ var outputTables = {
                 "lose_money": 21,
                 "lose_elixir": 210
             },
-            "43": {
-                "id": 43,
-                "lv": 43,
+            "38": {
+                "id": 38,
+                "lv": 38,
                 "win_exp": 34,
                 "win_money": 43,
                 "win_elixir": 430,
@@ -25300,9 +25309,9 @@ var outputTables = {
                 "lose_money": 22,
                 "lose_elixir": 215
             },
-            "44": {
-                "id": 44,
-                "lv": 44,
+            "39": {
+                "id": 39,
+                "lv": 39,
                 "win_exp": 35,
                 "win_money": 44,
                 "win_elixir": 440,
@@ -25310,9 +25319,9 @@ var outputTables = {
                 "lose_money": 22,
                 "lose_elixir": 220
             },
-            "45": {
-                "id": 45,
-                "lv": 45,
+            "40": {
+                "id": 40,
+                "lv": 40,
                 "win_exp": 36,
                 "win_money": 45,
                 "win_elixir": 450,
@@ -25320,9 +25329,9 @@ var outputTables = {
                 "lose_money": 23,
                 "lose_elixir": 225
             },
-            "46": {
-                "id": 46,
-                "lv": 46,
+            "41": {
+                "id": 41,
+                "lv": 41,
                 "win_exp": 37,
                 "win_money": 46,
                 "win_elixir": 460,
@@ -25330,9 +25339,9 @@ var outputTables = {
                 "lose_money": 23,
                 "lose_elixir": 230
             },
-            "47": {
-                "id": 47,
-                "lv": 47,
+            "42": {
+                "id": 42,
+                "lv": 42,
                 "win_exp": 38,
                 "win_money": 47,
                 "win_elixir": 470,
@@ -25340,9 +25349,9 @@ var outputTables = {
                 "lose_money": 24,
                 "lose_elixir": 235
             },
-            "48": {
-                "id": 48,
-                "lv": 48,
+            "43": {
+                "id": 43,
+                "lv": 43,
                 "win_exp": 39,
                 "win_money": 48,
                 "win_elixir": 480,
@@ -25350,9 +25359,9 @@ var outputTables = {
                 "lose_money": 24,
                 "lose_elixir": 240
             },
-            "49": {
-                "id": 49,
-                "lv": 49,
+            "44": {
+                "id": 44,
+                "lv": 44,
                 "win_exp": 40,
                 "win_money": 49,
                 "win_elixir": 490,
@@ -25360,9 +25369,9 @@ var outputTables = {
                 "lose_money": 25,
                 "lose_elixir": 245
             },
-            "50": {
-                "id": 50,
-                "lv": 50,
+            "45": {
+                "id": 45,
+                "lv": 45,
                 "win_exp": 41,
                 "win_money": 50,
                 "win_elixir": 500,
@@ -25370,9 +25379,9 @@ var outputTables = {
                 "lose_money": 25,
                 "lose_elixir": 250
             },
-            "51": {
-                "id": 51,
-                "lv": 51,
+            "46": {
+                "id": 46,
+                "lv": 46,
                 "win_exp": 42,
                 "win_money": 51,
                 "win_elixir": 510,
@@ -25380,9 +25389,9 @@ var outputTables = {
                 "lose_money": 26,
                 "lose_elixir": 255
             },
-            "52": {
-                "id": 52,
-                "lv": 52,
+            "47": {
+                "id": 47,
+                "lv": 47,
                 "win_exp": 43,
                 "win_money": 52,
                 "win_elixir": 520,
@@ -25390,9 +25399,9 @@ var outputTables = {
                 "lose_money": 26,
                 "lose_elixir": 260
             },
-            "53": {
-                "id": 53,
-                "lv": 53,
+            "48": {
+                "id": 48,
+                "lv": 48,
                 "win_exp": 44,
                 "win_money": 53,
                 "win_elixir": 530,
@@ -25400,9 +25409,9 @@ var outputTables = {
                 "lose_money": 27,
                 "lose_elixir": 265
             },
-            "54": {
-                "id": 54,
-                "lv": 54,
+            "49": {
+                "id": 49,
+                "lv": 49,
                 "win_exp": 45,
                 "win_money": 54,
                 "win_elixir": 540,
@@ -25410,9 +25419,9 @@ var outputTables = {
                 "lose_money": 27,
                 "lose_elixir": 270
             },
-            "55": {
-                "id": 55,
-                "lv": 55,
+            "50": {
+                "id": 50,
+                "lv": 50,
                 "win_exp": 46,
                 "win_money": 55,
                 "win_elixir": 550,
@@ -25420,9 +25429,9 @@ var outputTables = {
                 "lose_money": 28,
                 "lose_elixir": 275
             },
-            "56": {
-                "id": 56,
-                "lv": 56,
+            "51": {
+                "id": 51,
+                "lv": 51,
                 "win_exp": 47,
                 "win_money": 56,
                 "win_elixir": 560,
@@ -25430,9 +25439,9 @@ var outputTables = {
                 "lose_money": 28,
                 "lose_elixir": 280
             },
-            "57": {
-                "id": 57,
-                "lv": 57,
+            "52": {
+                "id": 52,
+                "lv": 52,
                 "win_exp": 48,
                 "win_money": 57,
                 "win_elixir": 570,
@@ -25440,9 +25449,9 @@ var outputTables = {
                 "lose_money": 29,
                 "lose_elixir": 285
             },
-            "58": {
-                "id": 58,
-                "lv": 58,
+            "53": {
+                "id": 53,
+                "lv": 53,
                 "win_exp": 49,
                 "win_money": 58,
                 "win_elixir": 580,
@@ -25450,9 +25459,9 @@ var outputTables = {
                 "lose_money": 29,
                 "lose_elixir": 290
             },
-            "59": {
-                "id": 59,
-                "lv": 59,
+            "54": {
+                "id": 54,
+                "lv": 54,
                 "win_exp": 50,
                 "win_money": 59,
                 "win_elixir": 590,
@@ -25460,9 +25469,9 @@ var outputTables = {
                 "lose_money": 30,
                 "lose_elixir": 295
             },
-            "60": {
-                "id": 60,
-                "lv": 60,
+            "55": {
+                "id": 55,
+                "lv": 55,
                 "win_exp": 51,
                 "win_money": 60,
                 "win_elixir": 600,
@@ -25470,9 +25479,9 @@ var outputTables = {
                 "lose_money": 30,
                 "lose_elixir": 300
             },
-            "61": {
-                "id": 61,
-                "lv": 61,
+            "56": {
+                "id": 56,
+                "lv": 56,
                 "win_exp": 52,
                 "win_money": 61,
                 "win_elixir": 610,
@@ -25480,9 +25489,9 @@ var outputTables = {
                 "lose_money": 31,
                 "lose_elixir": 305
             },
-            "62": {
-                "id": 62,
-                "lv": 62,
+            "57": {
+                "id": 57,
+                "lv": 57,
                 "win_exp": 53,
                 "win_money": 62,
                 "win_elixir": 620,
@@ -25490,9 +25499,9 @@ var outputTables = {
                 "lose_money": 31,
                 "lose_elixir": 310
             },
-            "63": {
-                "id": 63,
-                "lv": 63,
+            "58": {
+                "id": 58,
+                "lv": 58,
                 "win_exp": 54,
                 "win_money": 63,
                 "win_elixir": 630,
@@ -25500,9 +25509,9 @@ var outputTables = {
                 "lose_money": 32,
                 "lose_elixir": 315
             },
-            "64": {
-                "id": 64,
-                "lv": 64,
+            "59": {
+                "id": 59,
+                "lv": 59,
                 "win_exp": 55,
                 "win_money": 64,
                 "win_elixir": 640,
@@ -25510,9 +25519,9 @@ var outputTables = {
                 "lose_money": 32,
                 "lose_elixir": 320
             },
-            "65": {
-                "id": 65,
-                "lv": 65,
+            "60": {
+                "id": 60,
+                "lv": 60,
                 "win_exp": 56,
                 "win_money": 65,
                 "win_elixir": 650,
@@ -25520,9 +25529,9 @@ var outputTables = {
                 "lose_money": 33,
                 "lose_elixir": 325
             },
-            "66": {
-                "id": 66,
-                "lv": 66,
+            "61": {
+                "id": 61,
+                "lv": 61,
                 "win_exp": 57,
                 "win_money": 66,
                 "win_elixir": 660,
@@ -25530,9 +25539,9 @@ var outputTables = {
                 "lose_money": 33,
                 "lose_elixir": 330
             },
-            "67": {
-                "id": 67,
-                "lv": 67,
+            "62": {
+                "id": 62,
+                "lv": 62,
                 "win_exp": 58,
                 "win_money": 67,
                 "win_elixir": 670,
@@ -25540,9 +25549,9 @@ var outputTables = {
                 "lose_money": 34,
                 "lose_elixir": 335
             },
-            "68": {
-                "id": 68,
-                "lv": 68,
+            "63": {
+                "id": 63,
+                "lv": 63,
                 "win_exp": 59,
                 "win_money": 68,
                 "win_elixir": 680,
@@ -25550,9 +25559,9 @@ var outputTables = {
                 "lose_money": 34,
                 "lose_elixir": 340
             },
-            "69": {
-                "id": 69,
-                "lv": 69,
+            "64": {
+                "id": 64,
+                "lv": 64,
                 "win_exp": 60,
                 "win_money": 69,
                 "win_elixir": 690,
@@ -25560,9 +25569,9 @@ var outputTables = {
                 "lose_money": 35,
                 "lose_elixir": 345
             },
-            "70": {
-                "id": 70,
-                "lv": 70,
+            "65": {
+                "id": 65,
+                "lv": 65,
                 "win_exp": 61,
                 "win_money": 70,
                 "win_elixir": 700,
@@ -25570,9 +25579,9 @@ var outputTables = {
                 "lose_money": 35,
                 "lose_elixir": 350
             },
-            "71": {
-                "id": 71,
-                "lv": 71,
+            "66": {
+                "id": 66,
+                "lv": 66,
                 "win_exp": 62,
                 "win_money": 71,
                 "win_elixir": 710,
@@ -25580,9 +25589,9 @@ var outputTables = {
                 "lose_money": 36,
                 "lose_elixir": 355
             },
-            "72": {
-                "id": 72,
-                "lv": 72,
+            "67": {
+                "id": 67,
+                "lv": 67,
                 "win_exp": 63,
                 "win_money": 72,
                 "win_elixir": 720,
@@ -25590,9 +25599,9 @@ var outputTables = {
                 "lose_money": 36,
                 "lose_elixir": 360
             },
-            "73": {
-                "id": 73,
-                "lv": 73,
+            "68": {
+                "id": 68,
+                "lv": 68,
                 "win_exp": 64,
                 "win_money": 73,
                 "win_elixir": 730,
@@ -25600,9 +25609,9 @@ var outputTables = {
                 "lose_money": 37,
                 "lose_elixir": 365
             },
-            "74": {
-                "id": 74,
-                "lv": 74,
+            "69": {
+                "id": 69,
+                "lv": 69,
                 "win_exp": 65,
                 "win_money": 74,
                 "win_elixir": 740,
@@ -25610,9 +25619,9 @@ var outputTables = {
                 "lose_money": 37,
                 "lose_elixir": 370
             },
-            "75": {
-                "id": 75,
-                "lv": 75,
+            "70": {
+                "id": 70,
+                "lv": 70,
                 "win_exp": 66,
                 "win_money": 75,
                 "win_elixir": 750,
@@ -25620,9 +25629,9 @@ var outputTables = {
                 "lose_money": 38,
                 "lose_elixir": 375
             },
-            "76": {
-                "id": 76,
-                "lv": 76,
+            "71": {
+                "id": 71,
+                "lv": 71,
                 "win_exp": 67,
                 "win_money": 76,
                 "win_elixir": 760,
@@ -25630,9 +25639,9 @@ var outputTables = {
                 "lose_money": 38,
                 "lose_elixir": 380
             },
-            "77": {
-                "id": 77,
-                "lv": 77,
+            "72": {
+                "id": 72,
+                "lv": 72,
                 "win_exp": 68,
                 "win_money": 77,
                 "win_elixir": 770,
@@ -25640,9 +25649,9 @@ var outputTables = {
                 "lose_money": 39,
                 "lose_elixir": 385
             },
-            "78": {
-                "id": 78,
-                "lv": 78,
+            "73": {
+                "id": 73,
+                "lv": 73,
                 "win_exp": 69,
                 "win_money": 78,
                 "win_elixir": 780,
@@ -25650,9 +25659,9 @@ var outputTables = {
                 "lose_money": 39,
                 "lose_elixir": 390
             },
-            "79": {
-                "id": 79,
-                "lv": 79,
+            "74": {
+                "id": 74,
+                "lv": 74,
                 "win_exp": 70,
                 "win_money": 79,
                 "win_elixir": 790,
@@ -25660,9 +25669,9 @@ var outputTables = {
                 "lose_money": 40,
                 "lose_elixir": 395
             },
-            "80": {
-                "id": 80,
-                "lv": 80,
+            "75": {
+                "id": 75,
+                "lv": 75,
                 "win_exp": 71,
                 "win_money": 80,
                 "win_elixir": 800,
@@ -25670,9 +25679,9 @@ var outputTables = {
                 "lose_money": 40,
                 "lose_elixir": 400
             },
-            "81": {
-                "id": 81,
-                "lv": 81,
+            "76": {
+                "id": 76,
+                "lv": 76,
                 "win_exp": 72,
                 "win_money": 81,
                 "win_elixir": 810,
@@ -25680,9 +25689,9 @@ var outputTables = {
                 "lose_money": 41,
                 "lose_elixir": 405
             },
-            "82": {
-                "id": 82,
-                "lv": 82,
+            "77": {
+                "id": 77,
+                "lv": 77,
                 "win_exp": 73,
                 "win_money": 82,
                 "win_elixir": 820,
@@ -25690,9 +25699,9 @@ var outputTables = {
                 "lose_money": 41,
                 "lose_elixir": 410
             },
-            "83": {
-                "id": 83,
-                "lv": 83,
+            "78": {
+                "id": 78,
+                "lv": 78,
                 "win_exp": 74,
                 "win_money": 83,
                 "win_elixir": 830,
@@ -25700,9 +25709,9 @@ var outputTables = {
                 "lose_money": 42,
                 "lose_elixir": 415
             },
-            "84": {
-                "id": 84,
-                "lv": 84,
+            "79": {
+                "id": 79,
+                "lv": 79,
                 "win_exp": 75,
                 "win_money": 84,
                 "win_elixir": 840,
@@ -25710,9 +25719,9 @@ var outputTables = {
                 "lose_money": 42,
                 "lose_elixir": 420
             },
-            "85": {
-                "id": 85,
-                "lv": 85,
+            "80": {
+                "id": 80,
+                "lv": 80,
                 "win_exp": 76,
                 "win_money": 85,
                 "win_elixir": 850,
@@ -25720,9 +25729,9 @@ var outputTables = {
                 "lose_money": 43,
                 "lose_elixir": 425
             },
-            "86": {
-                "id": 86,
-                "lv": 86,
+            "81": {
+                "id": 81,
+                "lv": 81,
                 "win_exp": 77,
                 "win_money": 86,
                 "win_elixir": 860,
@@ -25730,9 +25739,9 @@ var outputTables = {
                 "lose_money": 43,
                 "lose_elixir": 430
             },
-            "87": {
-                "id": 87,
-                "lv": 87,
+            "82": {
+                "id": 82,
+                "lv": 82,
                 "win_exp": 78,
                 "win_money": 87,
                 "win_elixir": 870,
@@ -25740,9 +25749,9 @@ var outputTables = {
                 "lose_money": 44,
                 "lose_elixir": 435
             },
-            "88": {
-                "id": 88,
-                "lv": 88,
+            "83": {
+                "id": 83,
+                "lv": 83,
                 "win_exp": 79,
                 "win_money": 88,
                 "win_elixir": 880,
@@ -25750,9 +25759,9 @@ var outputTables = {
                 "lose_money": 44,
                 "lose_elixir": 440
             },
-            "89": {
-                "id": 89,
-                "lv": 89,
+            "84": {
+                "id": 84,
+                "lv": 84,
                 "win_exp": 80,
                 "win_money": 89,
                 "win_elixir": 890,
@@ -25760,9 +25769,9 @@ var outputTables = {
                 "lose_money": 45,
                 "lose_elixir": 445
             },
-            "90": {
-                "id": 90,
-                "lv": 90,
+            "85": {
+                "id": 85,
+                "lv": 85,
                 "win_exp": 81,
                 "win_money": 90,
                 "win_elixir": 900,
@@ -25770,9 +25779,9 @@ var outputTables = {
                 "lose_money": 45,
                 "lose_elixir": 450
             },
-            "91": {
-                "id": 91,
-                "lv": 91,
+            "86": {
+                "id": 86,
+                "lv": 86,
                 "win_exp": 82,
                 "win_money": 91,
                 "win_elixir": 910,
@@ -25780,9 +25789,9 @@ var outputTables = {
                 "lose_money": 46,
                 "lose_elixir": 455
             },
-            "92": {
-                "id": 92,
-                "lv": 92,
+            "87": {
+                "id": 87,
+                "lv": 87,
                 "win_exp": 83,
                 "win_money": 92,
                 "win_elixir": 920,
@@ -25790,9 +25799,9 @@ var outputTables = {
                 "lose_money": 46,
                 "lose_elixir": 460
             },
-            "93": {
-                "id": 93,
-                "lv": 93,
+            "88": {
+                "id": 88,
+                "lv": 88,
                 "win_exp": 84,
                 "win_money": 93,
                 "win_elixir": 930,
@@ -25800,9 +25809,9 @@ var outputTables = {
                 "lose_money": 47,
                 "lose_elixir": 465
             },
-            "94": {
-                "id": 94,
-                "lv": 94,
+            "89": {
+                "id": 89,
+                "lv": 89,
                 "win_exp": 85,
                 "win_money": 94,
                 "win_elixir": 940,
@@ -25810,9 +25819,9 @@ var outputTables = {
                 "lose_money": 47,
                 "lose_elixir": 470
             },
-            "95": {
-                "id": 95,
-                "lv": 95,
+            "90": {
+                "id": 90,
+                "lv": 90,
                 "win_exp": 86,
                 "win_money": 95,
                 "win_elixir": 950,
@@ -25820,9 +25829,9 @@ var outputTables = {
                 "lose_money": 48,
                 "lose_elixir": 475
             },
-            "96": {
-                "id": 96,
-                "lv": 96,
+            "91": {
+                "id": 91,
+                "lv": 91,
                 "win_exp": 87,
                 "win_money": 96,
                 "win_elixir": 960,
@@ -25830,9 +25839,9 @@ var outputTables = {
                 "lose_money": 48,
                 "lose_elixir": 480
             },
-            "97": {
-                "id": 97,
-                "lv": 97,
+            "92": {
+                "id": 92,
+                "lv": 92,
                 "win_exp": 88,
                 "win_money": 97,
                 "win_elixir": 970,
@@ -25840,9 +25849,9 @@ var outputTables = {
                 "lose_money": 49,
                 "lose_elixir": 485
             },
-            "98": {
-                "id": 98,
-                "lv": 98,
+            "93": {
+                "id": 93,
+                "lv": 93,
                 "win_exp": 89,
                 "win_money": 98,
                 "win_elixir": 980,
@@ -25850,9 +25859,9 @@ var outputTables = {
                 "lose_money": 49,
                 "lose_elixir": 490
             },
-            "99": {
-                "id": 99,
-                "lv": 99,
+            "94": {
+                "id": 94,
+                "lv": 94,
                 "win_exp": 90,
                 "win_money": 99,
                 "win_elixir": 990,
@@ -25860,15 +25869,65 @@ var outputTables = {
                 "lose_money": 50,
                 "lose_elixir": 495
             },
-            "100": {
-                "id": 100,
-                "lv": 100,
+            "95": {
+                "id": 95,
+                "lv": 95,
                 "win_exp": 91,
                 "win_money": 100,
                 "win_elixir": 1000,
                 "lose_exp": 46,
                 "lose_money": 50,
                 "lose_elixir": 500
+            },
+            "96": {
+                "id": 96,
+                "lv": 96,
+                "win_exp": 92,
+                "win_money": 101,
+                "win_elixir": 1010,
+                "lose_exp": 46,
+                "lose_money": 51,
+                "lose_elixir": 505
+            },
+            "97": {
+                "id": 97,
+                "lv": 97,
+                "win_exp": 93,
+                "win_money": 102,
+                "win_elixir": 1020,
+                "lose_exp": 47,
+                "lose_money": 51,
+                "lose_elixir": 510
+            },
+            "98": {
+                "id": 98,
+                "lv": 98,
+                "win_exp": 94,
+                "win_money": 103,
+                "win_elixir": 1030,
+                "lose_exp": 47,
+                "lose_money": 52,
+                "lose_elixir": 515
+            },
+            "99": {
+                "id": 99,
+                "lv": 99,
+                "win_exp": 95,
+                "win_money": 104,
+                "win_elixir": 1040,
+                "lose_exp": 48,
+                "lose_money": 52,
+                "lose_elixir": 520
+            },
+            "100": {
+                "id": 100,
+                "lv": 100,
+                "win_exp": 96,
+                "win_money": 105,
+                "win_elixir": 1050,
+                "lose_exp": 48,
+                "lose_money": 53,
+                "lose_elixir": 525
             }
         }
     },
@@ -25980,7 +26039,7 @@ var outputTables = {
             "2": {
                 "id": 2,
                 "method": "money",
-                "name": "仙币",
+                "name": "一小袋仙币",
                 "disc": "每次购买可获得1000仙币，每次额外赠送100仙币。",
                 "consume_type": "gold",
                 "consume": 10,
@@ -25991,7 +26050,7 @@ var outputTables = {
             "3": {
                 "id": 3,
                 "method": "money",
-                "name": "仙币",
+                "name": "一袋仙币",
                 "disc": "每次购买可获得5000仙币，每次额外赠送1500仙币。",
                 "consume_type": "gold",
                 "consume": 50,
@@ -26002,7 +26061,7 @@ var outputTables = {
             "4": {
                 "id": 4,
                 "method": "money",
-                "name": "仙币",
+                "name": "一大袋仙币",
                 "disc": "每次购买可获得10000仙币，每次额外赠送5000仙币。",
                 "consume_type": "gold",
                 "consume": 100,
@@ -26014,7 +26073,7 @@ var outputTables = {
                 "id": 5,
                 "method": "power",
                 "name": "体力",
-                "disc": "每次购买可获得50点体力。每日最多买6次。VIP除外。",
+                "disc": "每次购买可获得50点体力。每日最多买5次。VIP除外。",
                 "consume_type": "gold",
                 "consume": 20,
                 "obtain_type": "power",
@@ -26340,6 +26399,166 @@ var outputTables = {
             }
         }
     },
+    "spirit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "spirit_need": 900,
+                "hp_inc": 5,
+                "atk_inc": 5,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "spirit_need": 2040,
+                "hp_inc": 10,
+                "atk_inc": 10,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "spirit_need": 4180,
+                "hp_inc": 15,
+                "atk_inc": 15,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "spirit_need": 6720,
+                "hp_inc": 20,
+                "atk_inc": 20,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "spirit_need": 9660,
+                "hp_inc": 25,
+                "atk_inc": 25,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "spirit_need": 13000,
+                "hp_inc": 30,
+                "atk_inc": 30,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "spirit_need": 16740,
+                "hp_inc": 35,
+                "atk_inc": 35,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "spirit_need": 20880,
+                "hp_inc": 40,
+                "atk_inc": 40,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "spirit_need": 25420,
+                "hp_inc": 45,
+                "atk_inc": 45,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "spirit_need": 32640,
+                "hp_inc": 50,
+                "atk_inc": 50,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            }
+        }
+    },
+    "spirit_pool": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "exp_need": 225,
+                "spirit_obtain": 10
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "exp_need": 450,
+                "spirit_obtain": 12
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "exp_need": 825,
+                "spirit_obtain": 14
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "exp_need": 1200,
+                "spirit_obtain": 16
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "exp_need": 1575,
+                "spirit_obtain": 18
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "exp_need": 1950,
+                "spirit_obtain": 20
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "exp_need": 2325,
+                "spirit_obtain": 22
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "exp_need": 2700,
+                "spirit_obtain": 24
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "exp_need": 3075,
+                "spirit_obtain": 26
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "exp_need": 3500,
+                "spirit_obtain": 28
+            }
+        }
+    },
     "passFailSpiritSpeak": {
         "colComment": {},
         "rows": {
@@ -26584,166 +26803,6 @@ var outputTables = {
             "43": {
                 "id": 43,
                 "text": "上天从来都不是公平的，怎么可能公平呢？"
-            }
-        }
-    },
-    "spirit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "spirit_need": 900,
-                "hp_inc": 5,
-                "atk_inc": 5,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "2": {
-                "id": 2,
-                "lv": 2,
-                "spirit_need": 2040,
-                "hp_inc": 10,
-                "atk_inc": 10,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "3": {
-                "id": 3,
-                "lv": 3,
-                "spirit_need": 4180,
-                "hp_inc": 15,
-                "atk_inc": 15,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "4": {
-                "id": 4,
-                "lv": 4,
-                "spirit_need": 6720,
-                "hp_inc": 20,
-                "atk_inc": 20,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "5": {
-                "id": 5,
-                "lv": 5,
-                "spirit_need": 9660,
-                "hp_inc": 25,
-                "atk_inc": 25,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "6": {
-                "id": 6,
-                "lv": 6,
-                "spirit_need": 13000,
-                "hp_inc": 30,
-                "atk_inc": 30,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "7": {
-                "id": 7,
-                "lv": 7,
-                "spirit_need": 16740,
-                "hp_inc": 35,
-                "atk_inc": 35,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "8": {
-                "id": 8,
-                "lv": 8,
-                "spirit_need": 20880,
-                "hp_inc": 40,
-                "atk_inc": 40,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "9": {
-                "id": 9,
-                "lv": 9,
-                "spirit_need": 25420,
-                "hp_inc": 45,
-                "atk_inc": 45,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "10": {
-                "id": 10,
-                "lv": 10,
-                "spirit_need": 32640,
-                "hp_inc": 50,
-                "atk_inc": 50,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            }
-        }
-    },
-    "spirit_pool": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "exp_need": 225,
-                "spirit_obtain": 10
-            },
-            "2": {
-                "id": 2,
-                "lv": 2,
-                "exp_need": 450,
-                "spirit_obtain": 12
-            },
-            "3": {
-                "id": 3,
-                "lv": 3,
-                "exp_need": 825,
-                "spirit_obtain": 14
-            },
-            "4": {
-                "id": 4,
-                "lv": 4,
-                "exp_need": 1200,
-                "spirit_obtain": 16
-            },
-            "5": {
-                "id": 5,
-                "lv": 5,
-                "exp_need": 1575,
-                "spirit_obtain": 18
-            },
-            "6": {
-                "id": 6,
-                "lv": 6,
-                "exp_need": 1950,
-                "spirit_obtain": 20
-            },
-            "7": {
-                "id": 7,
-                "lv": 7,
-                "exp_need": 2325,
-                "spirit_obtain": 22
-            },
-            "8": {
-                "id": 8,
-                "lv": 8,
-                "exp_need": 2700,
-                "spirit_obtain": 24
-            },
-            "9": {
-                "id": 9,
-                "lv": 9,
-                "exp_need": 3075,
-                "spirit_obtain": 26
-            },
-            "10": {
-                "id": 10,
-                "lv": 10,
-                "exp_need": 3500,
-                "spirit_obtain": 28
             }
         }
     },
@@ -46002,6 +46061,2011 @@ var outputTables = {
             }
         }
     },
+    "task_through_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money_obtain": 500
+            },
+            "2": {
+                "id": 2,
+                "money_obtain": 505
+            },
+            "3": {
+                "id": 3,
+                "money_obtain": 510
+            },
+            "4": {
+                "id": 4,
+                "money_obtain": 515
+            },
+            "5": {
+                "id": 5,
+                "money_obtain": 520
+            },
+            "6": {
+                "id": 6,
+                "money_obtain": 525
+            },
+            "7": {
+                "id": 7,
+                "money_obtain": 530
+            },
+            "8": {
+                "id": 8,
+                "money_obtain": 535
+            },
+            "9": {
+                "id": 9,
+                "money_obtain": 540
+            },
+            "10": {
+                "id": 10,
+                "money_obtain": 545
+            },
+            "11": {
+                "id": 11,
+                "money_obtain": 550
+            },
+            "12": {
+                "id": 12,
+                "money_obtain": 555
+            },
+            "13": {
+                "id": 13,
+                "money_obtain": 560
+            },
+            "14": {
+                "id": 14,
+                "money_obtain": 565
+            },
+            "15": {
+                "id": 15,
+                "money_obtain": 570
+            },
+            "16": {
+                "id": 16,
+                "money_obtain": 575
+            },
+            "17": {
+                "id": 17,
+                "money_obtain": 580
+            },
+            "18": {
+                "id": 18,
+                "money_obtain": 585
+            },
+            "19": {
+                "id": 19,
+                "money_obtain": 590
+            },
+            "20": {
+                "id": 20,
+                "money_obtain": 595
+            },
+            "21": {
+                "id": 21,
+                "money_obtain": 600
+            },
+            "22": {
+                "id": 22,
+                "money_obtain": 605
+            },
+            "23": {
+                "id": 23,
+                "money_obtain": 610
+            },
+            "24": {
+                "id": 24,
+                "money_obtain": 615
+            },
+            "25": {
+                "id": 25,
+                "money_obtain": 620
+            },
+            "26": {
+                "id": 26,
+                "money_obtain": 625
+            },
+            "27": {
+                "id": 27,
+                "money_obtain": 630
+            },
+            "28": {
+                "id": 28,
+                "money_obtain": 635
+            },
+            "29": {
+                "id": 29,
+                "money_obtain": 640
+            },
+            "30": {
+                "id": 30,
+                "money_obtain": 645
+            },
+            "31": {
+                "id": 31,
+                "money_obtain": 650
+            },
+            "32": {
+                "id": 32,
+                "money_obtain": 655
+            },
+            "33": {
+                "id": 33,
+                "money_obtain": 660
+            },
+            "34": {
+                "id": 34,
+                "money_obtain": 665
+            },
+            "35": {
+                "id": 35,
+                "money_obtain": 670
+            },
+            "36": {
+                "id": 36,
+                "money_obtain": 675
+            },
+            "37": {
+                "id": 37,
+                "money_obtain": 680
+            },
+            "38": {
+                "id": 38,
+                "money_obtain": 685
+            },
+            "39": {
+                "id": 39,
+                "money_obtain": 690
+            },
+            "40": {
+                "id": 40,
+                "money_obtain": 695
+            },
+            "41": {
+                "id": 41,
+                "money_obtain": 700
+            },
+            "42": {
+                "id": 42,
+                "money_obtain": 705
+            },
+            "43": {
+                "id": 43,
+                "money_obtain": 710
+            },
+            "44": {
+                "id": 44,
+                "money_obtain": 715
+            },
+            "45": {
+                "id": 45,
+                "money_obtain": 720
+            },
+            "46": {
+                "id": 46,
+                "money_obtain": 725
+            },
+            "47": {
+                "id": 47,
+                "money_obtain": 730
+            },
+            "48": {
+                "id": 48,
+                "money_obtain": 735
+            },
+            "49": {
+                "id": 49,
+                "money_obtain": 740
+            },
+            "50": {
+                "id": 50,
+                "money_obtain": 745
+            },
+            "51": {
+                "id": 51,
+                "money_obtain": 750
+            },
+            "52": {
+                "id": 52,
+                "money_obtain": 755
+            },
+            "53": {
+                "id": 53,
+                "money_obtain": 760
+            },
+            "54": {
+                "id": 54,
+                "money_obtain": 765
+            },
+            "55": {
+                "id": 55,
+                "money_obtain": 770
+            },
+            "56": {
+                "id": 56,
+                "money_obtain": 775
+            },
+            "57": {
+                "id": 57,
+                "money_obtain": 780
+            },
+            "58": {
+                "id": 58,
+                "money_obtain": 785
+            },
+            "59": {
+                "id": 59,
+                "money_obtain": 790
+            },
+            "60": {
+                "id": 60,
+                "money_obtain": 795
+            },
+            "61": {
+                "id": 61,
+                "money_obtain": 800
+            },
+            "62": {
+                "id": 62,
+                "money_obtain": 805
+            },
+            "63": {
+                "id": 63,
+                "money_obtain": 810
+            },
+            "64": {
+                "id": 64,
+                "money_obtain": 815
+            },
+            "65": {
+                "id": 65,
+                "money_obtain": 820
+            },
+            "66": {
+                "id": 66,
+                "money_obtain": 825
+            },
+            "67": {
+                "id": 67,
+                "money_obtain": 830
+            },
+            "68": {
+                "id": 68,
+                "money_obtain": 835
+            },
+            "69": {
+                "id": 69,
+                "money_obtain": 840
+            },
+            "70": {
+                "id": 70,
+                "money_obtain": 845
+            },
+            "71": {
+                "id": 71,
+                "money_obtain": 850
+            },
+            "72": {
+                "id": 72,
+                "money_obtain": 855
+            },
+            "73": {
+                "id": 73,
+                "money_obtain": 860
+            },
+            "74": {
+                "id": 74,
+                "money_obtain": 865
+            },
+            "75": {
+                "id": 75,
+                "money_obtain": 870
+            },
+            "76": {
+                "id": 76,
+                "money_obtain": 875
+            },
+            "77": {
+                "id": 77,
+                "money_obtain": 880
+            },
+            "78": {
+                "id": 78,
+                "money_obtain": 885
+            },
+            "79": {
+                "id": 79,
+                "money_obtain": 890
+            },
+            "80": {
+                "id": 80,
+                "money_obtain": 895
+            },
+            "81": {
+                "id": 81,
+                "money_obtain": 900
+            },
+            "82": {
+                "id": 82,
+                "money_obtain": 905
+            },
+            "83": {
+                "id": 83,
+                "money_obtain": 910
+            },
+            "84": {
+                "id": 84,
+                "money_obtain": 915
+            },
+            "85": {
+                "id": 85,
+                "money_obtain": 920
+            },
+            "86": {
+                "id": 86,
+                "money_obtain": 925
+            },
+            "87": {
+                "id": 87,
+                "money_obtain": 930
+            },
+            "88": {
+                "id": 88,
+                "money_obtain": 935
+            },
+            "89": {
+                "id": 89,
+                "money_obtain": 940
+            },
+            "90": {
+                "id": 90,
+                "money_obtain": 945
+            },
+            "91": {
+                "id": 91,
+                "money_obtain": 950
+            },
+            "92": {
+                "id": 92,
+                "money_obtain": 955
+            },
+            "93": {
+                "id": 93,
+                "money_obtain": 960
+            },
+            "94": {
+                "id": 94,
+                "money_obtain": 965
+            },
+            "95": {
+                "id": 95,
+                "money_obtain": 970
+            },
+            "96": {
+                "id": 96,
+                "money_obtain": 975
+            },
+            "97": {
+                "id": 97,
+                "money_obtain": 980
+            },
+            "98": {
+                "id": 98,
+                "money_obtain": 985
+            },
+            "99": {
+                "id": 99,
+                "money_obtain": 990
+            },
+            "100": {
+                "id": 100,
+                "money_obtain": 995
+            },
+            "101": {
+                "id": 101,
+                "money_obtain": 1000
+            },
+            "102": {
+                "id": 102,
+                "money_obtain": 1005
+            },
+            "103": {
+                "id": 103,
+                "money_obtain": 1010
+            },
+            "104": {
+                "id": 104,
+                "money_obtain": 1015
+            },
+            "105": {
+                "id": 105,
+                "money_obtain": 1020
+            },
+            "106": {
+                "id": 106,
+                "money_obtain": 1025
+            },
+            "107": {
+                "id": 107,
+                "money_obtain": 1030
+            },
+            "108": {
+                "id": 108,
+                "money_obtain": 1035
+            },
+            "109": {
+                "id": 109,
+                "money_obtain": 1040
+            },
+            "110": {
+                "id": 110,
+                "money_obtain": 1045
+            },
+            "111": {
+                "id": 111,
+                "money_obtain": 1050
+            },
+            "112": {
+                "id": 112,
+                "money_obtain": 1055
+            },
+            "113": {
+                "id": 113,
+                "money_obtain": 1060
+            },
+            "114": {
+                "id": 114,
+                "money_obtain": 1065
+            },
+            "115": {
+                "id": 115,
+                "money_obtain": 1070
+            },
+            "116": {
+                "id": 116,
+                "money_obtain": 1075
+            },
+            "117": {
+                "id": 117,
+                "money_obtain": 1080
+            },
+            "118": {
+                "id": 118,
+                "money_obtain": 1085
+            },
+            "119": {
+                "id": 119,
+                "money_obtain": 1090
+            },
+            "120": {
+                "id": 120,
+                "money_obtain": 1095
+            },
+            "121": {
+                "id": 121,
+                "money_obtain": 1100
+            },
+            "122": {
+                "id": 122,
+                "money_obtain": 1105
+            },
+            "123": {
+                "id": 123,
+                "money_obtain": 1110
+            },
+            "124": {
+                "id": 124,
+                "money_obtain": 1115
+            },
+            "125": {
+                "id": 125,
+                "money_obtain": 1120
+            },
+            "126": {
+                "id": 126,
+                "money_obtain": 1125
+            },
+            "127": {
+                "id": 127,
+                "money_obtain": 1130
+            },
+            "128": {
+                "id": 128,
+                "money_obtain": 1135
+            },
+            "129": {
+                "id": 129,
+                "money_obtain": 1140
+            },
+            "130": {
+                "id": 130,
+                "money_obtain": 1145
+            },
+            "131": {
+                "id": 131,
+                "money_obtain": 1150
+            },
+            "132": {
+                "id": 132,
+                "money_obtain": 1155
+            },
+            "133": {
+                "id": 133,
+                "money_obtain": 1160
+            },
+            "134": {
+                "id": 134,
+                "money_obtain": 1165
+            },
+            "135": {
+                "id": 135,
+                "money_obtain": 1170
+            },
+            "136": {
+                "id": 136,
+                "money_obtain": 1175
+            },
+            "137": {
+                "id": 137,
+                "money_obtain": 1180
+            },
+            "138": {
+                "id": 138,
+                "money_obtain": 1185
+            },
+            "139": {
+                "id": 139,
+                "money_obtain": 1190
+            },
+            "140": {
+                "id": 140,
+                "money_obtain": 1195
+            },
+            "141": {
+                "id": 141,
+                "money_obtain": 1200
+            },
+            "142": {
+                "id": 142,
+                "money_obtain": 1205
+            },
+            "143": {
+                "id": 143,
+                "money_obtain": 1210
+            },
+            "144": {
+                "id": 144,
+                "money_obtain": 1215
+            },
+            "145": {
+                "id": 145,
+                "money_obtain": 1220
+            },
+            "146": {
+                "id": 146,
+                "money_obtain": 1225
+            },
+            "147": {
+                "id": 147,
+                "money_obtain": 1230
+            },
+            "148": {
+                "id": 148,
+                "money_obtain": 1235
+            },
+            "149": {
+                "id": 149,
+                "money_obtain": 1240
+            },
+            "150": {
+                "id": 150,
+                "money_obtain": 1245
+            },
+            "151": {
+                "id": 151,
+                "money_obtain": 1250
+            },
+            "152": {
+                "id": 152,
+                "money_obtain": 1255
+            },
+            "153": {
+                "id": 153,
+                "money_obtain": 1260
+            },
+            "154": {
+                "id": 154,
+                "money_obtain": 1265
+            },
+            "155": {
+                "id": 155,
+                "money_obtain": 1270
+            },
+            "156": {
+                "id": 156,
+                "money_obtain": 1275
+            },
+            "157": {
+                "id": 157,
+                "money_obtain": 1280
+            },
+            "158": {
+                "id": 158,
+                "money_obtain": 1285
+            },
+            "159": {
+                "id": 159,
+                "money_obtain": 1290
+            },
+            "160": {
+                "id": 160,
+                "money_obtain": 1295
+            },
+            "161": {
+                "id": 161,
+                "money_obtain": 1300
+            },
+            "162": {
+                "id": 162,
+                "money_obtain": 1305
+            },
+            "163": {
+                "id": 163,
+                "money_obtain": 1310
+            },
+            "164": {
+                "id": 164,
+                "money_obtain": 1315
+            },
+            "165": {
+                "id": 165,
+                "money_obtain": 1320
+            },
+            "166": {
+                "id": 166,
+                "money_obtain": 1325
+            },
+            "167": {
+                "id": 167,
+                "money_obtain": 1330
+            },
+            "168": {
+                "id": 168,
+                "money_obtain": 1335
+            },
+            "169": {
+                "id": 169,
+                "money_obtain": 1340
+            },
+            "170": {
+                "id": 170,
+                "money_obtain": 1345
+            },
+            "171": {
+                "id": 171,
+                "money_obtain": 1350
+            },
+            "172": {
+                "id": 172,
+                "money_obtain": 1355
+            },
+            "173": {
+                "id": 173,
+                "money_obtain": 1360
+            },
+            "174": {
+                "id": 174,
+                "money_obtain": 1365
+            },
+            "175": {
+                "id": 175,
+                "money_obtain": 1370
+            },
+            "176": {
+                "id": 176,
+                "money_obtain": 1375
+            },
+            "177": {
+                "id": 177,
+                "money_obtain": 1380
+            },
+            "178": {
+                "id": 178,
+                "money_obtain": 1385
+            },
+            "179": {
+                "id": 179,
+                "money_obtain": 1390
+            },
+            "180": {
+                "id": 180,
+                "money_obtain": 1395
+            },
+            "181": {
+                "id": 181,
+                "money_obtain": 1400
+            },
+            "182": {
+                "id": 182,
+                "money_obtain": 1405
+            },
+            "183": {
+                "id": 183,
+                "money_obtain": 1410
+            },
+            "184": {
+                "id": 184,
+                "money_obtain": 1415
+            },
+            "185": {
+                "id": 185,
+                "money_obtain": 1420
+            },
+            "186": {
+                "id": 186,
+                "money_obtain": 1425
+            },
+            "187": {
+                "id": 187,
+                "money_obtain": 1430
+            },
+            "188": {
+                "id": 188,
+                "money_obtain": 1435
+            },
+            "189": {
+                "id": 189,
+                "money_obtain": 1440
+            },
+            "190": {
+                "id": 190,
+                "money_obtain": 1445
+            },
+            "191": {
+                "id": 191,
+                "money_obtain": 1450
+            },
+            "192": {
+                "id": 192,
+                "money_obtain": 1455
+            },
+            "193": {
+                "id": 193,
+                "money_obtain": 1460
+            },
+            "194": {
+                "id": 194,
+                "money_obtain": 1465
+            },
+            "195": {
+                "id": 195,
+                "money_obtain": 1470
+            },
+            "196": {
+                "id": 196,
+                "money_obtain": 1475
+            },
+            "197": {
+                "id": 197,
+                "money_obtain": 1480
+            },
+            "198": {
+                "id": 198,
+                "money_obtain": 1485
+            },
+            "199": {
+                "id": 199,
+                "money_obtain": 1490
+            },
+            "200": {
+                "id": 200,
+                "money_obtain": 1495
+            },
+            "201": {
+                "id": 201,
+                "money_obtain": 1500
+            },
+            "202": {
+                "id": 202,
+                "money_obtain": 1505
+            },
+            "203": {
+                "id": 203,
+                "money_obtain": 1510
+            },
+            "204": {
+                "id": 204,
+                "money_obtain": 1515
+            },
+            "205": {
+                "id": 205,
+                "money_obtain": 1520
+            },
+            "206": {
+                "id": 206,
+                "money_obtain": 1525
+            },
+            "207": {
+                "id": 207,
+                "money_obtain": 1530
+            },
+            "208": {
+                "id": 208,
+                "money_obtain": 1535
+            },
+            "209": {
+                "id": 209,
+                "money_obtain": 1540
+            },
+            "210": {
+                "id": 210,
+                "money_obtain": 1545
+            },
+            "211": {
+                "id": 211,
+                "money_obtain": 1550
+            },
+            "212": {
+                "id": 212,
+                "money_obtain": 1555
+            },
+            "213": {
+                "id": 213,
+                "money_obtain": 1560
+            },
+            "214": {
+                "id": 214,
+                "money_obtain": 1565
+            },
+            "215": {
+                "id": 215,
+                "money_obtain": 1570
+            },
+            "216": {
+                "id": 216,
+                "money_obtain": 1575
+            },
+            "217": {
+                "id": 217,
+                "money_obtain": 1580
+            },
+            "218": {
+                "id": 218,
+                "money_obtain": 1585
+            },
+            "219": {
+                "id": 219,
+                "money_obtain": 1590
+            },
+            "220": {
+                "id": 220,
+                "money_obtain": 1595
+            },
+            "221": {
+                "id": 221,
+                "money_obtain": 1600
+            },
+            "222": {
+                "id": 222,
+                "money_obtain": 1605
+            },
+            "223": {
+                "id": 223,
+                "money_obtain": 1610
+            },
+            "224": {
+                "id": 224,
+                "money_obtain": 1615
+            },
+            "225": {
+                "id": 225,
+                "money_obtain": 1620
+            },
+            "226": {
+                "id": 226,
+                "money_obtain": 1625
+            },
+            "227": {
+                "id": 227,
+                "money_obtain": 1630
+            },
+            "228": {
+                "id": 228,
+                "money_obtain": 1635
+            },
+            "229": {
+                "id": 229,
+                "money_obtain": 1640
+            },
+            "230": {
+                "id": 230,
+                "money_obtain": 1645
+            },
+            "231": {
+                "id": 231,
+                "money_obtain": 1650
+            },
+            "232": {
+                "id": 232,
+                "money_obtain": 1655
+            },
+            "233": {
+                "id": 233,
+                "money_obtain": 1660
+            },
+            "234": {
+                "id": 234,
+                "money_obtain": 1665
+            },
+            "235": {
+                "id": 235,
+                "money_obtain": 1670
+            },
+            "236": {
+                "id": 236,
+                "money_obtain": 1675
+            },
+            "237": {
+                "id": 237,
+                "money_obtain": 1680
+            },
+            "238": {
+                "id": 238,
+                "money_obtain": 1685
+            },
+            "239": {
+                "id": 239,
+                "money_obtain": 1690
+            },
+            "240": {
+                "id": 240,
+                "money_obtain": 1695
+            },
+            "241": {
+                "id": 241,
+                "money_obtain": 1700
+            },
+            "242": {
+                "id": 242,
+                "money_obtain": 1705
+            },
+            "243": {
+                "id": 243,
+                "money_obtain": 1710
+            },
+            "244": {
+                "id": 244,
+                "money_obtain": 1715
+            },
+            "245": {
+                "id": 245,
+                "money_obtain": 1720
+            },
+            "246": {
+                "id": 246,
+                "money_obtain": 1725
+            },
+            "247": {
+                "id": 247,
+                "money_obtain": 1730
+            },
+            "248": {
+                "id": 248,
+                "money_obtain": 1735
+            },
+            "249": {
+                "id": 249,
+                "money_obtain": 1740
+            },
+            "250": {
+                "id": 250,
+                "money_obtain": 1745
+            },
+            "251": {
+                "id": 251,
+                "money_obtain": 1750
+            },
+            "252": {
+                "id": 252,
+                "money_obtain": 1755
+            },
+            "253": {
+                "id": 253,
+                "money_obtain": 1760
+            },
+            "254": {
+                "id": 254,
+                "money_obtain": 1765
+            },
+            "255": {
+                "id": 255,
+                "money_obtain": 1770
+            },
+            "256": {
+                "id": 256,
+                "money_obtain": 1775
+            },
+            "257": {
+                "id": 257,
+                "money_obtain": 1780
+            },
+            "258": {
+                "id": 258,
+                "money_obtain": 1785
+            },
+            "259": {
+                "id": 259,
+                "money_obtain": 1790
+            },
+            "260": {
+                "id": 260,
+                "money_obtain": 1795
+            },
+            "261": {
+                "id": 261,
+                "money_obtain": 1800
+            },
+            "262": {
+                "id": 262,
+                "money_obtain": 1805
+            },
+            "263": {
+                "id": 263,
+                "money_obtain": 1810
+            },
+            "264": {
+                "id": 264,
+                "money_obtain": 1815
+            },
+            "265": {
+                "id": 265,
+                "money_obtain": 1820
+            },
+            "266": {
+                "id": 266,
+                "money_obtain": 1825
+            },
+            "267": {
+                "id": 267,
+                "money_obtain": 1830
+            },
+            "268": {
+                "id": 268,
+                "money_obtain": 1835
+            },
+            "269": {
+                "id": 269,
+                "money_obtain": 1840
+            },
+            "270": {
+                "id": 270,
+                "money_obtain": 1845
+            },
+            "271": {
+                "id": 271,
+                "money_obtain": 1850
+            },
+            "272": {
+                "id": 272,
+                "money_obtain": 1855
+            },
+            "273": {
+                "id": 273,
+                "money_obtain": 1860
+            },
+            "274": {
+                "id": 274,
+                "money_obtain": 1865
+            },
+            "275": {
+                "id": 275,
+                "money_obtain": 1870
+            },
+            "276": {
+                "id": 276,
+                "money_obtain": 1875
+            },
+            "277": {
+                "id": 277,
+                "money_obtain": 1880
+            },
+            "278": {
+                "id": 278,
+                "money_obtain": 1885
+            },
+            "279": {
+                "id": 279,
+                "money_obtain": 1890
+            },
+            "280": {
+                "id": 280,
+                "money_obtain": 1895
+            },
+            "281": {
+                "id": 281,
+                "money_obtain": 1900
+            },
+            "282": {
+                "id": 282,
+                "money_obtain": 1905
+            },
+            "283": {
+                "id": 283,
+                "money_obtain": 1910
+            },
+            "284": {
+                "id": 284,
+                "money_obtain": 1915
+            },
+            "285": {
+                "id": 285,
+                "money_obtain": 1920
+            },
+            "286": {
+                "id": 286,
+                "money_obtain": 1925
+            },
+            "287": {
+                "id": 287,
+                "money_obtain": 1930
+            },
+            "288": {
+                "id": 288,
+                "money_obtain": 1935
+            },
+            "289": {
+                "id": 289,
+                "money_obtain": 1940
+            },
+            "290": {
+                "id": 290,
+                "money_obtain": 1945
+            },
+            "291": {
+                "id": 291,
+                "money_obtain": 1950
+            },
+            "292": {
+                "id": 292,
+                "money_obtain": 1955
+            },
+            "293": {
+                "id": 293,
+                "money_obtain": 1960
+            },
+            "294": {
+                "id": 294,
+                "money_obtain": 1965
+            },
+            "295": {
+                "id": 295,
+                "money_obtain": 1970
+            },
+            "296": {
+                "id": 296,
+                "money_obtain": 1975
+            },
+            "297": {
+                "id": 297,
+                "money_obtain": 1980
+            },
+            "298": {
+                "id": 298,
+                "money_obtain": 1985
+            },
+            "299": {
+                "id": 299,
+                "money_obtain": 1990
+            },
+            "300": {
+                "id": 300,
+                "money_obtain": 1995
+            },
+            "301": {
+                "id": 301,
+                "money_obtain": 2000
+            },
+            "302": {
+                "id": 302,
+                "money_obtain": 2005
+            },
+            "303": {
+                "id": 303,
+                "money_obtain": 2010
+            },
+            "304": {
+                "id": 304,
+                "money_obtain": 2015
+            },
+            "305": {
+                "id": 305,
+                "money_obtain": 2020
+            },
+            "306": {
+                "id": 306,
+                "money_obtain": 2025
+            },
+            "307": {
+                "id": 307,
+                "money_obtain": 2030
+            },
+            "308": {
+                "id": 308,
+                "money_obtain": 2035
+            },
+            "309": {
+                "id": 309,
+                "money_obtain": 2040
+            },
+            "310": {
+                "id": 310,
+                "money_obtain": 2045
+            },
+            "311": {
+                "id": 311,
+                "money_obtain": 2050
+            },
+            "312": {
+                "id": 312,
+                "money_obtain": 2055
+            },
+            "313": {
+                "id": 313,
+                "money_obtain": 2060
+            },
+            "314": {
+                "id": 314,
+                "money_obtain": 2065
+            },
+            "315": {
+                "id": 315,
+                "money_obtain": 2070
+            },
+            "316": {
+                "id": 316,
+                "money_obtain": 2075
+            },
+            "317": {
+                "id": 317,
+                "money_obtain": 2080
+            },
+            "318": {
+                "id": 318,
+                "money_obtain": 2085
+            },
+            "319": {
+                "id": 319,
+                "money_obtain": 2090
+            },
+            "320": {
+                "id": 320,
+                "money_obtain": 2095
+            },
+            "321": {
+                "id": 321,
+                "money_obtain": 2100
+            },
+            "322": {
+                "id": 322,
+                "money_obtain": 2105
+            },
+            "323": {
+                "id": 323,
+                "money_obtain": 2110
+            },
+            "324": {
+                "id": 324,
+                "money_obtain": 2115
+            },
+            "325": {
+                "id": 325,
+                "money_obtain": 2120
+            },
+            "326": {
+                "id": 326,
+                "money_obtain": 2125
+            },
+            "327": {
+                "id": 327,
+                "money_obtain": 2130
+            },
+            "328": {
+                "id": 328,
+                "money_obtain": 2135
+            },
+            "329": {
+                "id": 329,
+                "money_obtain": 2140
+            },
+            "330": {
+                "id": 330,
+                "money_obtain": 2145
+            },
+            "331": {
+                "id": 331,
+                "money_obtain": 2150
+            },
+            "332": {
+                "id": 332,
+                "money_obtain": 2155
+            },
+            "333": {
+                "id": 333,
+                "money_obtain": 2160
+            },
+            "334": {
+                "id": 334,
+                "money_obtain": 2165
+            },
+            "335": {
+                "id": 335,
+                "money_obtain": 2170
+            },
+            "336": {
+                "id": 336,
+                "money_obtain": 2175
+            },
+            "337": {
+                "id": 337,
+                "money_obtain": 2180
+            },
+            "338": {
+                "id": 338,
+                "money_obtain": 2185
+            },
+            "339": {
+                "id": 339,
+                "money_obtain": 2190
+            },
+            "340": {
+                "id": 340,
+                "money_obtain": 2195
+            },
+            "341": {
+                "id": 341,
+                "money_obtain": 2200
+            },
+            "342": {
+                "id": 342,
+                "money_obtain": 2205
+            },
+            "343": {
+                "id": 343,
+                "money_obtain": 2210
+            },
+            "344": {
+                "id": 344,
+                "money_obtain": 2215
+            },
+            "345": {
+                "id": 345,
+                "money_obtain": 2220
+            },
+            "346": {
+                "id": 346,
+                "money_obtain": 2225
+            },
+            "347": {
+                "id": 347,
+                "money_obtain": 2230
+            },
+            "348": {
+                "id": 348,
+                "money_obtain": 2235
+            },
+            "349": {
+                "id": 349,
+                "money_obtain": 2240
+            },
+            "350": {
+                "id": 350,
+                "money_obtain": 2245
+            },
+            "351": {
+                "id": 351,
+                "money_obtain": 2250
+            },
+            "352": {
+                "id": 352,
+                "money_obtain": 2255
+            },
+            "353": {
+                "id": 353,
+                "money_obtain": 2260
+            },
+            "354": {
+                "id": 354,
+                "money_obtain": 2265
+            },
+            "355": {
+                "id": 355,
+                "money_obtain": 2270
+            },
+            "356": {
+                "id": 356,
+                "money_obtain": 2275
+            },
+            "357": {
+                "id": 357,
+                "money_obtain": 2280
+            },
+            "358": {
+                "id": 358,
+                "money_obtain": 2285
+            },
+            "359": {
+                "id": 359,
+                "money_obtain": 2290
+            },
+            "360": {
+                "id": 360,
+                "money_obtain": 2295
+            },
+            "361": {
+                "id": 361,
+                "money_obtain": 2300
+            },
+            "362": {
+                "id": 362,
+                "money_obtain": 2305
+            },
+            "363": {
+                "id": 363,
+                "money_obtain": 2310
+            },
+            "364": {
+                "id": 364,
+                "money_obtain": 2315
+            },
+            "365": {
+                "id": 365,
+                "money_obtain": 2320
+            },
+            "366": {
+                "id": 366,
+                "money_obtain": 2325
+            },
+            "367": {
+                "id": 367,
+                "money_obtain": 2330
+            },
+            "368": {
+                "id": 368,
+                "money_obtain": 2335
+            },
+            "369": {
+                "id": 369,
+                "money_obtain": 2340
+            },
+            "370": {
+                "id": 370,
+                "money_obtain": 2345
+            },
+            "371": {
+                "id": 371,
+                "money_obtain": 2350
+            },
+            "372": {
+                "id": 372,
+                "money_obtain": 2355
+            },
+            "373": {
+                "id": 373,
+                "money_obtain": 2360
+            },
+            "374": {
+                "id": 374,
+                "money_obtain": 2365
+            },
+            "375": {
+                "id": 375,
+                "money_obtain": 2370
+            },
+            "376": {
+                "id": 376,
+                "money_obtain": 2375
+            },
+            "377": {
+                "id": 377,
+                "money_obtain": 2380
+            },
+            "378": {
+                "id": 378,
+                "money_obtain": 2385
+            },
+            "379": {
+                "id": 379,
+                "money_obtain": 2390
+            },
+            "380": {
+                "id": 380,
+                "money_obtain": 2395
+            },
+            "381": {
+                "id": 381,
+                "money_obtain": 2400
+            },
+            "382": {
+                "id": 382,
+                "money_obtain": 2405
+            },
+            "383": {
+                "id": 383,
+                "money_obtain": 2410
+            },
+            "384": {
+                "id": 384,
+                "money_obtain": 2415
+            },
+            "385": {
+                "id": 385,
+                "money_obtain": 2420
+            },
+            "386": {
+                "id": 386,
+                "money_obtain": 2425
+            },
+            "387": {
+                "id": 387,
+                "money_obtain": 2430
+            },
+            "388": {
+                "id": 388,
+                "money_obtain": 2435
+            },
+            "389": {
+                "id": 389,
+                "money_obtain": 2440
+            },
+            "390": {
+                "id": 390,
+                "money_obtain": 2445
+            },
+            "391": {
+                "id": 391,
+                "money_obtain": 2450
+            },
+            "392": {
+                "id": 392,
+                "money_obtain": 2455
+            },
+            "393": {
+                "id": 393,
+                "money_obtain": 2460
+            },
+            "394": {
+                "id": 394,
+                "money_obtain": 2465
+            },
+            "395": {
+                "id": 395,
+                "money_obtain": 2470
+            },
+            "396": {
+                "id": 396,
+                "money_obtain": 2475
+            },
+            "397": {
+                "id": 397,
+                "money_obtain": 2480
+            },
+            "398": {
+                "id": 398,
+                "money_obtain": 2485
+            },
+            "399": {
+                "id": 399,
+                "money_obtain": 2490
+            },
+            "400": {
+                "id": 400,
+                "money_obtain": 2495
+            },
+            "401": {
+                "id": 401,
+                "money_obtain": 2500
+            },
+            "402": {
+                "id": 402,
+                "money_obtain": 2505
+            },
+            "403": {
+                "id": 403,
+                "money_obtain": 2510
+            },
+            "404": {
+                "id": 404,
+                "money_obtain": 2515
+            },
+            "405": {
+                "id": 405,
+                "money_obtain": 2520
+            },
+            "406": {
+                "id": 406,
+                "money_obtain": 2525
+            },
+            "407": {
+                "id": 407,
+                "money_obtain": 2530
+            },
+            "408": {
+                "id": 408,
+                "money_obtain": 2535
+            },
+            "409": {
+                "id": 409,
+                "money_obtain": 2540
+            },
+            "410": {
+                "id": 410,
+                "money_obtain": 2545
+            },
+            "411": {
+                "id": 411,
+                "money_obtain": 2550
+            },
+            "412": {
+                "id": 412,
+                "money_obtain": 2555
+            },
+            "413": {
+                "id": 413,
+                "money_obtain": 2560
+            },
+            "414": {
+                "id": 414,
+                "money_obtain": 2565
+            },
+            "415": {
+                "id": 415,
+                "money_obtain": 2570
+            },
+            "416": {
+                "id": 416,
+                "money_obtain": 2575
+            },
+            "417": {
+                "id": 417,
+                "money_obtain": 2580
+            },
+            "418": {
+                "id": 418,
+                "money_obtain": 2585
+            },
+            "419": {
+                "id": 419,
+                "money_obtain": 2590
+            },
+            "420": {
+                "id": 420,
+                "money_obtain": 2595
+            },
+            "421": {
+                "id": 421,
+                "money_obtain": 2600
+            },
+            "422": {
+                "id": 422,
+                "money_obtain": 2605
+            },
+            "423": {
+                "id": 423,
+                "money_obtain": 2610
+            },
+            "424": {
+                "id": 424,
+                "money_obtain": 2615
+            },
+            "425": {
+                "id": 425,
+                "money_obtain": 2620
+            },
+            "426": {
+                "id": 426,
+                "money_obtain": 2625
+            },
+            "427": {
+                "id": 427,
+                "money_obtain": 2630
+            },
+            "428": {
+                "id": 428,
+                "money_obtain": 2635
+            },
+            "429": {
+                "id": 429,
+                "money_obtain": 2640
+            },
+            "430": {
+                "id": 430,
+                "money_obtain": 2645
+            },
+            "431": {
+                "id": 431,
+                "money_obtain": 2650
+            },
+            "432": {
+                "id": 432,
+                "money_obtain": 2655
+            },
+            "433": {
+                "id": 433,
+                "money_obtain": 2660
+            },
+            "434": {
+                "id": 434,
+                "money_obtain": 2665
+            },
+            "435": {
+                "id": 435,
+                "money_obtain": 2670
+            },
+            "436": {
+                "id": 436,
+                "money_obtain": 2675
+            },
+            "437": {
+                "id": 437,
+                "money_obtain": 2680
+            },
+            "438": {
+                "id": 438,
+                "money_obtain": 2685
+            },
+            "439": {
+                "id": 439,
+                "money_obtain": 2690
+            },
+            "440": {
+                "id": 440,
+                "money_obtain": 2695
+            },
+            "441": {
+                "id": 441,
+                "money_obtain": 2700
+            },
+            "442": {
+                "id": 442,
+                "money_obtain": 2705
+            },
+            "443": {
+                "id": 443,
+                "money_obtain": 2710
+            },
+            "444": {
+                "id": 444,
+                "money_obtain": 2715
+            },
+            "445": {
+                "id": 445,
+                "money_obtain": 2720
+            },
+            "446": {
+                "id": 446,
+                "money_obtain": 2725
+            },
+            "447": {
+                "id": 447,
+                "money_obtain": 2730
+            },
+            "448": {
+                "id": 448,
+                "money_obtain": 2735
+            },
+            "449": {
+                "id": 449,
+                "money_obtain": 2740
+            },
+            "450": {
+                "id": 450,
+                "money_obtain": 2745
+            },
+            "451": {
+                "id": 451,
+                "money_obtain": 2750
+            },
+            "452": {
+                "id": 452,
+                "money_obtain": 2755
+            },
+            "453": {
+                "id": 453,
+                "money_obtain": 2760
+            },
+            "454": {
+                "id": 454,
+                "money_obtain": 2765
+            },
+            "455": {
+                "id": 455,
+                "money_obtain": 2770
+            },
+            "456": {
+                "id": 456,
+                "money_obtain": 2775
+            },
+            "457": {
+                "id": 457,
+                "money_obtain": 2780
+            },
+            "458": {
+                "id": 458,
+                "money_obtain": 2785
+            },
+            "459": {
+                "id": 459,
+                "money_obtain": 2790
+            },
+            "460": {
+                "id": 460,
+                "money_obtain": 2795
+            },
+            "461": {
+                "id": 461,
+                "money_obtain": 2800
+            },
+            "462": {
+                "id": 462,
+                "money_obtain": 2805
+            },
+            "463": {
+                "id": 463,
+                "money_obtain": 2810
+            },
+            "464": {
+                "id": 464,
+                "money_obtain": 2815
+            },
+            "465": {
+                "id": 465,
+                "money_obtain": 2820
+            },
+            "466": {
+                "id": 466,
+                "money_obtain": 2825
+            },
+            "467": {
+                "id": 467,
+                "money_obtain": 2830
+            },
+            "468": {
+                "id": 468,
+                "money_obtain": 2835
+            },
+            "469": {
+                "id": 469,
+                "money_obtain": 2840
+            },
+            "470": {
+                "id": 470,
+                "money_obtain": 2845
+            },
+            "471": {
+                "id": 471,
+                "money_obtain": 2850
+            },
+            "472": {
+                "id": 472,
+                "money_obtain": 2855
+            },
+            "473": {
+                "id": 473,
+                "money_obtain": 2860
+            },
+            "474": {
+                "id": 474,
+                "money_obtain": 2865
+            },
+            "475": {
+                "id": 475,
+                "money_obtain": 2870
+            },
+            "476": {
+                "id": 476,
+                "money_obtain": 2875
+            },
+            "477": {
+                "id": 477,
+                "money_obtain": 2880
+            },
+            "478": {
+                "id": 478,
+                "money_obtain": 2885
+            },
+            "479": {
+                "id": 479,
+                "money_obtain": 2890
+            },
+            "480": {
+                "id": 480,
+                "money_obtain": 2895
+            },
+            "481": {
+                "id": 481,
+                "money_obtain": 2900
+            },
+            "482": {
+                "id": 482,
+                "money_obtain": 2905
+            },
+            "483": {
+                "id": 483,
+                "money_obtain": 2910
+            },
+            "484": {
+                "id": 484,
+                "money_obtain": 2915
+            },
+            "485": {
+                "id": 485,
+                "money_obtain": 2920
+            },
+            "486": {
+                "id": 486,
+                "money_obtain": 2925
+            },
+            "487": {
+                "id": 487,
+                "money_obtain": 2930
+            },
+            "488": {
+                "id": 488,
+                "money_obtain": 2935
+            },
+            "489": {
+                "id": 489,
+                "money_obtain": 2940
+            },
+            "490": {
+                "id": 490,
+                "money_obtain": 2945
+            },
+            "491": {
+                "id": 491,
+                "money_obtain": 2950
+            },
+            "492": {
+                "id": 492,
+                "money_obtain": 2955
+            },
+            "493": {
+                "id": 493,
+                "money_obtain": 2960
+            },
+            "494": {
+                "id": 494,
+                "money_obtain": 2965
+            },
+            "495": {
+                "id": 495,
+                "money_obtain": 2970
+            },
+            "496": {
+                "id": 496,
+                "money_obtain": 2975
+            },
+            "497": {
+                "id": 497,
+                "money_obtain": 2980
+            },
+            "498": {
+                "id": 498,
+                "money_obtain": 2985
+            },
+            "499": {
+                "id": 499,
+                "money_obtain": 2990
+            },
+            "500": {
+                "id": 500,
+                "money_obtain": 2995
+            }
+        }
+    },
     "wipe_out": {
         "colComment": {},
         "rows": {
@@ -46212,38 +48276,38 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "cash": 10,
-                "gold": 10
+                "cash": 6,
+                "gold": 6
             },
             "2": {
                 "id": 2,
                 "cash": 30,
-                "gold": 30
+                "gold": 33
             },
             "3": {
                 "id": 3,
-                "cash": 50,
-                "gold": 50
+                "cash": 68,
+                "gold": 76
             },
             "4": {
                 "id": 4,
-                "cash": 100,
-                "gold": 120
+                "cash": 128,
+                "gold": 146
             },
             "5": {
                 "id": 5,
-                "cash": 200,
-                "gold": 250
+                "cash": 198,
+                "gold": 232
             },
             "6": {
                 "id": 6,
-                "cash": 500,
-                "gold": 700
+                "cash": 328,
+                "gold": 403
             },
             "7": {
                 "id": 7,
-                "cash": 600,
-                "gold": 800
+                "cash": 648,
+                "gold": 842
             }
         }
     },
@@ -46608,4 +48672,4 @@ var outputTables = {
             }
         }
     }
-};
+}

@@ -48,6 +48,10 @@ var VipPrivilegeLayer = LazyLayer.extend({
 
         this._vipPrivilegeLayerFit = gameFit.mainScene.vipPrivilegeLayer;
 
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
+        bgLayer.setPosition(this._vipPrivilegeLayerFit.bgLayerPoint);
+        this.addChild(bgLayer);
+
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(this._vipPrivilegeLayerFit.bgSpriteContentSize);
         bgSprite.setPosition(this._vipPrivilegeLayerFit.bgSpritePoint);

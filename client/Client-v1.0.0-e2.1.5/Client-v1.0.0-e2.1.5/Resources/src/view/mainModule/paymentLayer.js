@@ -38,6 +38,10 @@ var PaymentLayer = LazyLayer.extend({
 
         this._paymentLayerFit = gameFit.mainScene.paymentLayer;
 
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
+        bgLayer.setPosition(this._paymentLayerFit.bgLayerPoint);
+        this.addChild(bgLayer);
+
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(this._paymentLayerFit.bgSpriteContentSize);
         bgSprite.setPosition(this._paymentLayerFit.bgSpritePoint);

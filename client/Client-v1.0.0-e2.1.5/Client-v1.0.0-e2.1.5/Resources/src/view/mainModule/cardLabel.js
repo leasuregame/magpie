@@ -55,7 +55,7 @@ var CardLabel = cc.Node.extend({
         var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
         nameIcon.setContentSize(cc.size(190, 30));
         nameIcon.setAnchorPoint(cc.p(0, 0.5));
-        nameIcon.setPosition(cc.p(185, 100));
+        nameIcon.setPosition(cc.p(155, 100));
         this.addChild(nameIcon);
 
         var otherIcon = cc.Sprite.create(main_scene_image.icon30);
@@ -76,7 +76,7 @@ var CardLabel = cc.Node.extend({
         var nameLabel = cc.LabelTTF.create(this._card.get("name"), "STHeitiTC-Medium", 20);
         nameLabel.setColor(cc.c3b(255, 242, 206));
         nameLabel.setAnchorPoint(cc.p(0, 0.5));
-        nameLabel.setPosition(cc.p(190, 100));
+        nameLabel.setPosition(cc.p(180, 100));
         this.addChild(nameLabel);
 
         var lvLabel = cc.LabelTTF.create(this._card.get("lv"), "STHeitiTC-Medium", 22);
@@ -96,7 +96,7 @@ var CardLabel = cc.Node.extend({
         this.addChild(this._starLabel);
 
         this._useLabel = cc.Sprite.create(main_scene_image.icon26);
-        this._useLabel.setPosition(cc.p(440, 100));
+        this._useLabel.setPosition(cc.p(410, 100));
         this.addChild(this._useLabel);
         this._useLabel.setVisible(gameData.lineUp.isLineUpCard(this._card.get("id")));
 

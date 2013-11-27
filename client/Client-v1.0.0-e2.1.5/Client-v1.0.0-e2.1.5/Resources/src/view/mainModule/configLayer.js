@@ -15,8 +15,8 @@
 var ConfigLayer = cc.Layer.extend({
     _configLayerFit: null,
 
-    musicOpen: true,
-    soundOpen: true,
+    musicOpen: false,
+    soundOpen: false,
     musicSelect: null,
     soundSelect: null,
 
@@ -87,7 +87,6 @@ var ConfigLayer = cc.Layer.extend({
         bgMusicItem.setPosition(this._configLayerFit.bgMusicItemPoint);
 
         var bgMusicItemTitle = StrokeLabel.create("背景音乐", "STHeitiTC-Medium", 30);
-        //bgMusicItemTitle.setColor(cc.c3b(255, 239, 131));
         bgMusicItemTitle.setAnchorPoint(cc.p(0, 0.5));
         bgMusicItemTitle.setPosition(cc.p(40, 55));
         bgMusicItem.addChild(bgMusicItemTitle);
@@ -98,7 +97,6 @@ var ConfigLayer = cc.Layer.extend({
         bgMusicItem.addChild(bgMusicOpenSprite);
 
         var bgMusicOpenSpriteTitle = StrokeLabel.create("开", "STHeitiTC-Medium", 30);
-        //bgMusicOpenSpriteTitle.setColor(cc.c3b(255, 239, 131));
         bgMusicOpenSpriteTitle.setAnchorPoint(cc.p(0, 0.5));
         bgMusicOpenSpriteTitle.setPosition(cc.p(530, 55));
         bgMusicItem.addChild(bgMusicOpenSpriteTitle);
@@ -120,7 +118,6 @@ var ConfigLayer = cc.Layer.extend({
         soundItem.setPosition(this._configLayerFit.soundItemPoint);
 
         var soundItemTitle = StrokeLabel.create("游戏音效", "STHeitiTC-Medium", 30);
-        //soundItemTitle.setColor(cc.c3b(255, 239, 131));
         soundItemTitle.setAnchorPoint(cc.p(0, 0.5));
         soundItemTitle.setPosition(cc.p(40, 55));
         soundItem.addChild(soundItemTitle);
@@ -131,7 +128,6 @@ var ConfigLayer = cc.Layer.extend({
         soundItem.addChild(soundOpenSprite);
 
         var soundOpenSpriteTitle = StrokeLabel.create("开", "STHeitiTC-Medium", 30);
-        //soundOpenSpriteTitle.setColor(cc.c3b(255, 239, 131));
         soundOpenSpriteTitle.setAnchorPoint(cc.p(0, 0.5));
         soundOpenSpriteTitle.setPosition(cc.p(530, 55));
         soundItem.addChild(soundOpenSpriteTitle);
@@ -155,7 +151,6 @@ var ConfigLayer = cc.Layer.extend({
         tipsItem.setPosition(this._configLayerFit.tipsItemPoint);
 
         var tipsItemTitle = StrokeLabel.create("攻略", "STHeitiTC-Medium", 30);
-        //tipsItemTitle.setColor(cc.c3b(255, 239, 131));
         tipsItemTitle.setAnchorPoint(cc.p(0, 0.5));
         tipsItemTitle.setPosition(cc.p(40, 55));
         tipsItem.addChild(tipsItemTitle);
@@ -175,7 +170,6 @@ var ConfigLayer = cc.Layer.extend({
         QQGroup.setPosition(this._configLayerFit.QQGroupPoint);
 
         var QQGroupTitle = StrokeLabel.create("Q群： xxxxxxx", "STHeitiTC-Medium", 30);
-        //feedbackItemTitle.setColor(cc.c3b(255, 239, 131));
         QQGroupTitle.setAnchorPoint(cc.p(0, 0.5));
         QQGroupTitle.setPosition(cc.p(40, 55));
         QQGroup.addChild(QQGroupTitle);

@@ -39,6 +39,8 @@ var MainLayer = cc.Layer.extend({
     _treasureHuntGuide: null,
     _rankGuide: null,
 
+    _spiritLayerItem: null,
+
     onEnter: function () {
         cc.log("MainLayer onEnter");
 
@@ -101,14 +103,6 @@ var MainLayer = cc.Layer.extend({
         var lineUpLabel = LineUpLabel.create();
         lineUpLabel.setPosition(this._mainLayerFit.lineUpLabelPoint);
         this.addChild(lineUpLabel);
-
-        var spiritLayerItem = cc.MenuItemImage.create(
-            main_scene_image.button1,
-            main_scene_image.button1s,
-            this._onClickLayer(0),
-            this
-        );
-        spiritLayerItem.setPosition(this._mainLayerFit.spiritLayerItemPoint);
 
         var lotteryLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -228,7 +222,6 @@ var MainLayer = cc.Layer.extend({
         configLayerItem.setPosition(this._mainLayerFit.configLayerItemPoint);
 
         var menu = cc.Menu.create(
-            spiritLayerItem,
             lotteryLayerItem,
             treasureHuntLayerItem,
             strengthenLayerItem,
@@ -244,11 +237,32 @@ var MainLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        var effect = cc.BuilderReader.load(main_scene_image.uiEffect41, this);
-        effect.setPosition(this._mainLayerFit.spiritLayerItemPoint);
-        this.addChild(effect);
+        var isVisible = false;
+        var spirit = gameData.spirit;
+        var spiritPool = gameData.spiritPool;
+
+        if (spirit.canUpgrade()) {
+            isVisible = true;
+        } else if (spiritPool.get("collectCount") > 0) {
+            isVisible = true;
+        }
+
+        this._spiritLayerItem = cc.BuilderReader.load(main_scene_image.uiEffect41, this);
+        this._spiritLayerItem.setPosition(this._mainLayerFit.spiritLayerItemPoint);
+
+        this._spiritLayerItem.controller.markEffect.setVisible(isVisible);
+
+        this.addChild(this._spiritLayerItem);
 
         return true;
+    },
+
+    _onClickSpiritItem: function () {
+        cc.log("MainLayer _onClickSpiritItem");
+
+        MainScene.getInstance().switchLayer(this._layer[0]);
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
     },
 
     updateMark: function () {

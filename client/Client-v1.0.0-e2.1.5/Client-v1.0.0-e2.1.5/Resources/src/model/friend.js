@@ -69,7 +69,6 @@ var Friend = Entity.extend({
                         cc.log(data);
 
                         that._onFriendAction(data.msg);
-                        gameMark.updateFriendMark(true);
                     });
 
                     gameMark.updateFriendMark(false);
@@ -238,7 +237,7 @@ var Friend = Entity.extend({
 
                     that._giveCount -= 1;
                     friend.canGive = false;
-
+                    friend.giveCount += 1;
                     gameData.player.add("energy", msg.energy);
 
                     TipLayer.tipNoBg(lz.getNameByKey("energy") + ": +" + msg.energy);
@@ -274,7 +273,7 @@ var Friend = Entity.extend({
 
                     that._receiveCount -= 1;
                     friend.canReceive = false;
-
+                    friend.receiveCount += 1;
                     delete friend.msgId;
 
                     gameData.player.add("energy", msg.energy);

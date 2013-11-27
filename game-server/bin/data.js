@@ -236,7 +236,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
         playerId: parseInt(row.id)
       };
 
-      async.parallel([
+      async.series([
 
         function(cb) {
           self.db.player.delete({

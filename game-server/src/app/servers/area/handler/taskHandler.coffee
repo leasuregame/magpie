@@ -217,15 +217,15 @@ Handler::passBarrier = (msg, session, next) ->
   重置关卡
 ###
 Handler::resetPassMark = (msg, session, next) ->
-
   playerId = session.get('playerId')
   player = null
+  goldResume = 200
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
     (res,cb) ->
       player = res
-      if player.gold < 200
+      if player.gold < goldResume
         return cb({code: 501,msg: '魔石不足'})
 
       if not player.canResetPassMark()
@@ -237,7 +237,7 @@ Handler::resetPassMark = (msg, session, next) ->
         return cb({code: 501,msg: '重置关卡次数已用光'})
 
     (cb) ->
-      player.decrease 'gold', 200
+      player.decrease 'gold', goldResume
       cb(null, player.gold)
   ],(err,gold) ->
 

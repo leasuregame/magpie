@@ -584,7 +584,7 @@ Handler::changeLineUp = (msg, session, next) ->
       return next(null, {code: 501, msg: '上阵卡牌不能是相同系列的卡牌'})
 
     if not checkCardCount(player.lv, cids)
-      return next(null, {code: 501, msg: "上阵卡牌数量不对"})
+      return next(null, {code: 501, msg: "当前等级只能上阵#{lineupCardCount(player.lv)}张卡牌"})
 
     player.updateLineUp(lineupObj)
     player.save()
@@ -696,9 +696,14 @@ cardStar = (tableId) ->
 
 checkCardCount = (playerLv, cardIds) ->
   card_count = (cardIds.filter (id) -> id isnt -1).length
+  if card_count > lineupCardCount(playerLv)
+    return false
+  else
+    return true
+
+lineupCardCount = (plv) ->
   fdata = table.getTableItem('function_limit', 1)
   lvMap = {3: fdata.card3_position, 4: fdata.card4_position, 5: fdata.card5_position}
   for qty, lv of lvMap
-    if playerLv < lv and card_count >= qty
-      return false
-  return true
+    return qty - 1 if plv < lv
+  return 5

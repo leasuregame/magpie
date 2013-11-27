@@ -96,7 +96,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         this._tipLabel = cc.LabelTTF.create("魔石洗炼获得金色属性概率提升100倍", "STHeitiTC-Medium", 22);
         this._tipLabel.setColor(cc.c3b(255, 239, 131));
-        this._tipLabel.setPosition(cc.p(227, 45));
+        this._tipLabel.setPosition(this._passiveSkillAfreshLabelFit.tipLabelPoint);
         this._resLabel.addChild(this._tipLabel);
 
         var resMenu = cc.Menu.create();
@@ -775,7 +775,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this.unschedule(this._setTip);
 
         this._tipLabel.setFontSize(18);
-        this._tipLabel.setString("魔石洗炼获得金色属性概率提升10倍");
+        this._tipLabel.setString("魔石洗炼获得金色属性概率提升100倍");
     }
 });
 

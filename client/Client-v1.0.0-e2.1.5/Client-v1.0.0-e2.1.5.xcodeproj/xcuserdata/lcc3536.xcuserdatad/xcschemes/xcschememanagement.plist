@@ -4,14 +4,24 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Client-v1.0.0-e2.1.5.xcscheme</key>
+		<key>Magpie-AppStore.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Magpie-tb.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>90A5463D1845A57A00875372</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>90D49C2517CAF81800A22DB2</key>
 		<dict>
 			<key>primary</key>

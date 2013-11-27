@@ -18,7 +18,7 @@ var genDao = function(key) {
 
 var main = function() {
   var type = process.argv[2];
-  var areaId = parseInt(process.argv[3] || 1);
+  var areaId = parseInt(process.argv[4] || 1);
   var quenues = [];
   var start = Date.now();
   var gdata = new Data(genDao(areaId));

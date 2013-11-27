@@ -359,8 +359,13 @@ var Server = Entity.extend({
         cc.log(cc.Director.getInstance().getRunningScene());
         cc.Director.getInstance().getRunningScene().addChild(this._waitLayer, 10000);
 
+        var point = cc.p(320, 568);
+        if (gameDevice != "Iphone5") {
+            point = cc.p(360, 480);
+        }
+
         var waitSprite = cc.Sprite.create(main_scene_image.icon42);
-        waitSprite.setPosition(cc.p(320, 568));
+        waitSprite.setPosition(point);
         this._waitLayer.addChild(waitSprite);
 
         waitSprite.setOpacity(0);

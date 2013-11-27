@@ -136,9 +136,9 @@ var GoldLayer = LazyLayer.extend({
         if (value > 20) {
             scale = 0.45;
         } else if (value > 10) {
-            scale = 0.35;
+            scale = 0.37;
         } else if (value > 5) {
-            scale = 0.25;
+            scale = 0.30;
         }
 
         return scale;

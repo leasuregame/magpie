@@ -180,6 +180,7 @@
             'src/view/mainModule/tournamentLayer.js',
             'src/view/mainModule/tournamentLabel.js',
             'src/view/mainModule/tournamentRankLayer.js',
+            'src/view/mainModule/tournamentTipLayer.js',
             'src/view/mainModule/treasureHuntLayer.js',
             'src/view/mainModule/vipLayer.js',
             'src/view/mainModule/vipPrivilegeLayer.js',

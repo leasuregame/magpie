@@ -44,7 +44,7 @@ Handler::rankingList = (msg, session, next) ->
       if player.lv < fdata.rank
         return cb({code: 501, msg: fdata.rank+'级开放'})
       
-      if not player.rank?
+      if not player.rank? or _.isEmpty(player.rank)
         ### first time enter ranking list ###
         app.get('dao').rank.initRankingInfo player.id, (err, rank) -> 
           if err

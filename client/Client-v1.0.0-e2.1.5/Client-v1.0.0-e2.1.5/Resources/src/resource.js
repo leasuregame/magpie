@@ -874,7 +874,10 @@ var main_scene_res = [
     //effect
 ];
 
-var cardResIdList = [3, 9, 12, 25, 31, 36, 38, 39, 44, 50];
+var cardResIdList = [
+    2, 3, 7, 9, 12, 18, 19, 20, 22, 25, 28,
+    30, 31, 32, 34, 36, 38, 39, 44, 49, 50
+];
 
 for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
     var cardId = cardResIdList[cardIndex];

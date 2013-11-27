@@ -39,20 +39,21 @@ var CardLibrary = Entity.extend({
 
         var mark = data.mark;
         var flag = data.flag;
+        var len = this._cardLibrary.length;
 
-        for (var i = 1; i <= MAX_CARD_TABLE_ID; ++i) {
-            var offset = (i - 1) % EACH_NUM_BIT;
-            index = Math.floor((i - 1) / EACH_NUM_BIT);
+        for (var i = 0; i < len; ++i) {
+            var id = this._cardLibrary[i].id;
 
-            this._changeTypeById(i, CARD_NO_EXIST);
+            var offset = (id - 1) % EACH_NUM_BIT;
+            index = Math.floor((id - 1) / EACH_NUM_BIT);
 
             if (mark[index]) {
                 if ((mark[index] >> offset & 1) == 1) {
-                    this._changeTypeById(i, CARD_RECEIVE);
+                    this._changeTypeById(id, CARD_RECEIVE);
 
                     if (flag[index]) {
                         if ((flag[index] >> offset & 1) == 1) {
-                            this._changeTypeById(i, CARD_EXIST);
+                            this._changeTypeById(id, CARD_EXIST);
                         }
                     }
                 }
@@ -63,15 +64,19 @@ var CardLibrary = Entity.extend({
     _load: function () {
         cc.log("CardLibrary _load");
 
+        var table = outputTables.cards.rows;
+
         for (var i = 1; i <= MAX_CARD_TABLE_ID; ++i) {
-            this._cardLibrary.push({
-                id: i,
-                card: Card.create({
-                    tableId: i,
-                    lv: 1,
-                    skillLv: 1
+            if (table[i]) {
+                this._cardLibrary.push({
+                    id: i,
+                    card: Card.create({
+                        tableId: i,
+                        lv: 1,
+                        skillLv: 1
+                    })
                 })
-            })
+            }
         }
 
         this._cardLibrary.sort(this._sort);

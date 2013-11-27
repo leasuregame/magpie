@@ -37,7 +37,7 @@ var Exchange = Entity.extend({
         var table = outputTables.cards.rows;
 
         for (var i = 1; i <= MAX_CARD_TABLE_ID; ++i) {
-            if (table[i].star === 4 || table[i].star === 5) {
+            if (table[i] && (table[i].star === 4 || table[i].star === 5)) {
                 this._exchangeCardList.push({
                     id: i,
                     card: Card.create({

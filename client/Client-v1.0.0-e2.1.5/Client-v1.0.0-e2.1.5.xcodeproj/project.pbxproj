@@ -3754,7 +3754,7 @@
 					"-lcurl",
 				);
 				PRODUCT_NAME = "极品神仙";
-				PROVISIONING_PROFILE = "7549B327-4F65-4F2A-889F-0EE85700E418";
+				PROVISIONING_PROFILE = "5B3E94EB-5E11-4FF9-9387-4B2ED1E7A713";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"Client-v1.0.0-e2.1.5/libs/Chipmunk/include/chipmunk\" \"Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/include\"";
 				WRAPPER_EXTENSION = app;
@@ -3799,7 +3799,7 @@
 					"-lcurl",
 				);
 				PRODUCT_NAME = "极品神仙";
-				PROVISIONING_PROFILE = "7549B327-4F65-4F2A-889F-0EE85700E418";
+				PROVISIONING_PROFILE = "5B3E94EB-5E11-4FF9-9387-4B2ED1E7A713";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"Client-v1.0.0-e2.1.5/libs/Chipmunk/include/chipmunk\" \"Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/include\"";
 				VALIDATE_PRODUCT = YES;

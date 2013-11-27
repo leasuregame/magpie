@@ -127,7 +127,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.0</real>
+									<real>0.033333335071802139</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -145,7 +145,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.066666670143604279</real>
+									<real>0.10000000149011612</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>

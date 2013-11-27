@@ -208,7 +208,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
   csv()
     .from(filePath, {
       columns: true,
-      delimiter: ';',
+      delimiter: ',',
       escape: '"'
     })
     .transform(function(row, index, cb) {
@@ -217,7 +217,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
           delete row[key];
         }
       });
-
+      console.log(row);
       if (_.isEmpty(row)) {
         cb(null);
         return;

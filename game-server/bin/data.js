@@ -218,11 +218,6 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
         }
       });
       
-      if (_.isEmpty(row) || parseInt(row.id) >= 13) {
-        cb(null);
-        return;
-      }
-      console.log(row);
       console.log(row.playerName);
       var playerData = {
         id: parseInt(row.id),

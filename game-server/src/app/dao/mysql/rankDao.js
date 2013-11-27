@@ -38,7 +38,7 @@ var RankDao = (function(_super) {
         var sql = "select max(ranking) + 1 as next_ranking from rank";
         dbClient.query(sql, [], function(err, res) {
             if (err) {
-                return cb(err)
+                return cb(err);
             }
             console.log('init ranking : ', res);
             if ( !! res && res.length > 0) {
@@ -54,7 +54,7 @@ var RankDao = (function(_super) {
 
                     cb(null, rank);
                 });
-            }
+            } 
 
         });
     };

@@ -57,7 +57,8 @@ Handler::rankingList = (msg, session, next) ->
         cb()
 
     (cb)->
-      if player.rank.recentChallenger.length > 0
+      console.log 'rank info: ', player.rank
+      if player.rank?.recentChallenger?.length > 0
         rankManager.getRankings(player.rank.recentChallenger,cb)
       else
         cb(null,[])

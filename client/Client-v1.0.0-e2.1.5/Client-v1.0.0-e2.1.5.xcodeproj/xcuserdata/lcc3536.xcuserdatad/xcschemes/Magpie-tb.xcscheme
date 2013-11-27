@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "90A5463D1845A57A00875372"
-               BuildableName = "&#26497;&#21697;&#31070;&#20185;.app"
-               BlueprintName = "Magpie-tb"
+               BlueprintIdentifier = "90E6AF3518464F4600E27CCB"
+               BuildableName = "Magpie-AppStore copy.app"
+               BlueprintName = "Magpie-TB"
                ReferencedContainer = "container:Client-v1.0.0-e2.1.5.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "90A5463D1845A57A00875372"
-            BuildableName = "&#26497;&#21697;&#31070;&#20185;.app"
-            BlueprintName = "Magpie-tb"
+            BlueprintIdentifier = "90E6AF3518464F4600E27CCB"
+            BuildableName = "Magpie-AppStore copy.app"
+            BlueprintName = "Magpie-TB"
             ReferencedContainer = "container:Client-v1.0.0-e2.1.5.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,9 +51,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "90A5463D1845A57A00875372"
-            BuildableName = "&#26497;&#21697;&#31070;&#20185;.app"
-            BlueprintName = "Magpie-tb"
+            BlueprintIdentifier = "90E6AF3518464F4600E27CCB"
+            BuildableName = "Magpie-AppStore copy.app"
+            BlueprintName = "Magpie-TB"
             ReferencedContainer = "container:Client-v1.0.0-e2.1.5.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -69,9 +69,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "90A5463D1845A57A00875372"
-            BuildableName = "&#26497;&#21697;&#31070;&#20185;.app"
-            BlueprintName = "Magpie-tb"
+            BlueprintIdentifier = "90E6AF3518464F4600E27CCB"
+            BuildableName = "Magpie-AppStore copy.app"
+            BlueprintName = "Magpie-TB"
             ReferencedContainer = "container:Client-v1.0.0-e2.1.5.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

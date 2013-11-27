@@ -220,7 +220,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>120</real>
+										<real>40</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -249,7 +249,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>255</integer>
+										<integer>73</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -466,7 +466,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>-120</real>
+										<real>-40</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -495,7 +495,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>255</integer>
+										<integer>73</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -611,8 +611,10 @@
 										<dict>
 											<key>easing</key>
 											<dict>
+												<key>opt</key>
+												<real>2</real>
 												<key>type</key>
-												<integer>1</integer>
+												<integer>4</integer>
 											</dict>
 											<key>name</key>
 											<string>scale</string>
@@ -622,8 +624,8 @@
 											<integer>4</integer>
 											<key>value</key>
 											<array>
-												<real>1.2000000476837158</real>
-												<real>1.2000000476837158</real>
+												<real>1.1000000238418579</real>
+												<real>1.1000000238418579</real>
 											</array>
 										</dict>
 										<dict>
@@ -635,7 +637,25 @@
 											<key>name</key>
 											<string>scale</string>
 											<key>time</key>
-											<real>0.36666667461395264</real>
+											<real>0.3333333432674408</real>
+											<key>type</key>
+											<integer>4</integer>
+											<key>value</key>
+											<array>
+												<real>0.89999997615814209</real>
+												<real>0.89999997615814209</real>
+											</array>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>scale</string>
+											<key>time</key>
+											<real>0.40000000596046448</real>
 											<key>type</key>
 											<integer>4</integer>
 											<key>value</key>
@@ -857,8 +877,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>0.89999997615814209</real>
+									<real>0.89999997615814209</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -872,6 +892,8 @@
 								<false/>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -1327,7 +1349,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>0.3333333432674408</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

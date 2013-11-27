@@ -70,16 +70,16 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     sc->start();
     
-    CCScene *scene = CCScene::create();
-    UpdateLayer *updateLayer = new UpdateLayer();
-    scene->addChild(updateLayer);
-    updateLayer->release();
+//    CCScene *scene = CCScene::create();
+//    UpdateLayer *updateLayer = new UpdateLayer();
+//    scene->addChild(updateLayer);
+//    updateLayer->release();
+//    
+//    pDirector->runWithScene(scene);
     
-    pDirector->runWithScene(scene);
-    
-    //    CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
-    //    CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
-    //    ScriptingCore::getInstance()->runScript("hello.js");
+    CCScriptEngineProtocol *pEngine = ScriptingCore::getInstance();
+    CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
+    ScriptingCore::getInstance()->runScript("main_binding.js");
     
     return true;
 }

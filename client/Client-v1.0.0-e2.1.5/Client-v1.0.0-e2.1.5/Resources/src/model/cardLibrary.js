@@ -16,8 +16,6 @@ var CARD_NO_EXIST = 0;
 var CARD_EXIST = 1;
 var CARD_RECEIVE = 2;
 
-var MAX_CARD_TABLE_ID = 250;
-
 var CardLibrary = Entity.extend({
     _cardLibrary: [],
     _type: {},
@@ -56,7 +54,11 @@ var CardLibrary = Entity.extend({
                             this._changeTypeById(id, CARD_EXIST);
                         }
                     }
+
+                    return;
                 }
+
+                this._changeTypeById(id, CARD_NO_EXIST);
             }
         }
     },
@@ -78,8 +80,6 @@ var CardLibrary = Entity.extend({
                 })
             }
         }
-
-        //this._cardLibrary.sort(this._sort);
     },
 
     sync: function () {

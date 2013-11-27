@@ -217,25 +217,21 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
           delete row[key];
         }
       });
-      console.log(row);
-      if (_.isEmpty(row)) {
-        cb(null);
-        return;
-      }
+      
       console.log(row.playerName);
       var playerData = {
-        id: row.id,
-        userId: row.userId,
-        areaId: areaId,
-        lv: row.level,
+        id: parseInt(row.id),
+        userId: parseInt(row.userId),
+        areaId: parseInt(areaId),
+        lv: parseInt(row.level),
         name: row.playerName,
       };
       var rankData = {
-        ranking: row.ranking,
-        playerId: row.id
+        ranking: parseInt(row.ranking),
+        playerId: parseInt(row.id)
       };
 
-      async.parallel([
+      async.series([
 
         function(cb) {
           self.db.player.delete({
@@ -287,6 +283,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
           });
         }
       ], function(err, results) {
+        console.log('result: ', err, results);
         if (err) return console.log(err);
 
         var player = results[1];

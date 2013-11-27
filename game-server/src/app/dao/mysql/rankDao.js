@@ -35,27 +35,36 @@ var RankDao = (function(_super) {
     };
 
     RankDao.initRankingInfo = function(pid, cb) {
-        var sql = "select max(ranking) + 1 as next_ranking from rank";
-        dbClient.query(sql, [], function(err, res) {
-            if (err) {
-                return cb(err)
+        RankDao.fetchOne({
+            where: {
+                playerId: pid
             }
-            console.log('init ranking : ', res);
-            if ( !! res && res.length > 0) {
-                RankDao.create({
-                    data: {
-                        playerId: pid,
-                        ranking: res[0].next_ranking
-                    }
-                }, function(err, rank) {
-                    if (err) {
-                        return cb(err);
-                    }
-
-                    cb(null, rank);
-                });
+        }, function(err, res) {
+            if (!err && res) {
+                return cb(err, res);
             }
 
+            var sql = "select max(ranking) + 1 as next_ranking from rank";
+            dbClient.query(sql, [], function(err, res) {
+                if (err) {
+                    return cb(err);
+                }
+                console.log('init ranking : ', res);
+                if ( !! res && res.length > 0) {
+                    RankDao.create({
+                        data: {
+                            playerId: pid,
+                            ranking: res[0].next_ranking
+                        }
+                    }, function(err, rank) {
+                        if (err) {
+                            return cb(err);
+                        }
+
+                        cb(null, rank);
+                    });
+                }
+            });
         });
     };
 

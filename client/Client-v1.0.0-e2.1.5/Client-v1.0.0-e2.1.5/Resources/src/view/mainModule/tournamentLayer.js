@@ -20,6 +20,7 @@ var TournamentLayer = cc.Layer.extend({
     _scrollView: null,
     _rewardLabel: null,
     _rewardItem: null,
+    _rewardEffect: null,
     _menu: null,
     _expProgress: null,
     _lvLabel: null,
@@ -124,11 +125,12 @@ var TournamentLayer = cc.Layer.extend({
             this._onClickRankReward,
             this
         );
+        this._rewardItem.setVisible(false);
         this._rewardItem.setPosition(this._tournamentLayerFit.rewardItemPoint);
 
         var menu = cc.Menu.create(buyCountItem, this._rewardItem);
         menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
+        this.addChild(menu, 2);
 
         this._skyDialog = SkyDialog.create();
         this.addChild(this._skyDialog, 10);
@@ -210,6 +212,13 @@ var TournamentLayer = cc.Layer.extend({
             this._rewardLabel.setString("首次达到 " + reward.ranking + " 名  奖励 " + reward.elixir + " 仙丹");
             this._rewardLabel.setVisible(true);
             this._rewardItem.setVisible(reward.canReceive);
+
+            if (!this._rewardEffect) {
+                this._rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect22, this);
+                this._rewardEffect.setPosition(this._tournamentLayerFit.rewardItemPoint);
+                this.addChild(this._rewardEffect, 1);
+            }
+
         } else {
             this._rewardLabel.setString("所有奖励已经领取完");
             this._rewardItem.setVisible(false);
@@ -300,6 +309,12 @@ var TournamentLayer = cc.Layer.extend({
         var that = this;
         gameData.tournament.receive(function (reward) {
             lz.tipReward(reward);
+
+            if (this._rewardEffect) {
+                this._rewardEffect.removeFromParent();
+                this._rewardEffect = null;
+            }
+
             that._updateRankRewardItem();
         });
     },

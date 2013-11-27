@@ -72,7 +72,7 @@ var TournamentLabel = cc.Node.extend({
         this.addChild(nameLabel);
 
         var ranking = this._player.ranking;
-        if(ranking <= 3) {
+        if (ranking <= 3) {
             var rankingIcon = cc.Sprite.create(main_scene_image["icon" + (200 + ranking)]);
             rankingIcon.setPosition(cc.p(95, 42));
             this.addChild(rankingIcon);
@@ -193,6 +193,7 @@ var TournamentLabel = cc.Node.extend({
                 }, this._player.playerId);
             } else {
 
+                // 有问题，sys.localStorage.getItem读出来是字符串，也就是"0";
 //                var tournament = gameData.tournament;
 //                var count = tournament.get("count");
 

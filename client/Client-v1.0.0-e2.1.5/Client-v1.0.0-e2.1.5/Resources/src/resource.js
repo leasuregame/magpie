@@ -880,8 +880,7 @@ var main_scene_res = [
 ];
 
 var cardResIdList = [
-    2, 3, 7, 9, 12, 18, 19, 20, 22, 25, 28,
-    30, 31, 32, 34, 36, 38, 39, 44, 49, 50
+    2, 3, 7, 9, 12, 18, 19, 20, 22, 25, 28, 30, 31, 32, 34, 36, 38, 39, 43, 44, 49, 50, 51
 ];
 
 for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {

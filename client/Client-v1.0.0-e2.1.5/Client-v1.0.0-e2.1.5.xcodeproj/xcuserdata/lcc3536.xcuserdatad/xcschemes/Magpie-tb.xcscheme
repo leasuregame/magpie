@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "90E6AF3518464F4600E27CCB"
-               BuildableName = "Magpie-AppStore copy.app"
+               BuildableName = "Magpie-TB.app"
                BlueprintName = "Magpie-TB"
                ReferencedContainer = "container:Client-v1.0.0-e2.1.5.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "90E6AF3518464F4600E27CCB"
-            BuildableName = "Magpie-AppStore copy.app"
+            BuildableName = "Magpie-TB.app"
             BlueprintName = "Magpie-TB"
             ReferencedContainer = "container:Client-v1.0.0-e2.1.5.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "90E6AF3518464F4600E27CCB"
-            BuildableName = "Magpie-AppStore copy.app"
+            BuildableName = "Magpie-TB.app"
             BlueprintName = "Magpie-TB"
             ReferencedContainer = "container:Client-v1.0.0-e2.1.5.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "90E6AF3518464F4600E27CCB"
-            BuildableName = "Magpie-AppStore copy.app"
+            BuildableName = "Magpie-TB.app"
             BlueprintName = "Magpie-TB"
             ReferencedContainer = "container:Client-v1.0.0-e2.1.5.xcodeproj">
          </BuildableReference>

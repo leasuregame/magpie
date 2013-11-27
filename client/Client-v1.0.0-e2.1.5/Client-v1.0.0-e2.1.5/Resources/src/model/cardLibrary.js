@@ -46,11 +46,11 @@ var CardLibrary = Entity.extend({
 
             if (mark[index]) {
                 if ((mark[index] >> offset & 1) == 1) {
-                    this._changeTypeById(id, CARD_EXIST);
+                    this._changeTypeById(id, CARD_RECEIVE);
 
                     if (flag[index]) {
                         if ((flag[index] >> offset & 1) == 1) {
-                            this._changeTypeById(id, CARD_RECEIVE);
+                            this._changeTypeById(id, CARD_EXIST);
                         }
                     }
 

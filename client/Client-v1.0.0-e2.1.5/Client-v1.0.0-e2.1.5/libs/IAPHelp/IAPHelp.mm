@@ -8,11 +8,13 @@
 
 #include "IAPHelp.h"
 
-CCObject IAPHelp::*target = NULL;
-SEL_CallFuncO IAPHelp::*callback = NULL;
+CCObject * IAPHelp::target = NULL;
+SEL_CallFuncO IAPHelp::callback = NULL;
 
 void IAPHelp::buy(const char * productId, CCObject * target, SEL_CallFuncO callback)
 {
+    IAPHelp::target = target;
+    IAPHelp::callback = callback;
 }
 
 void IAPHelp::executeCallback(PaymentState state, const char * product, const char * receipt, const char * msg)

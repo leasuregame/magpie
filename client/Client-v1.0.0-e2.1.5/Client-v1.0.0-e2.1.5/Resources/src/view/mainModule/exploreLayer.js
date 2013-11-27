@@ -348,7 +348,9 @@ var ExploreLayer = cc.Layer.extend({
 
         var task = gameData.task;
 
-        if (task.canExplore()) {
+        var statue = task.canExplore();
+
+        if (statue == CAN_EXPLORE) {
             this._lock();
 
             var that = this;
@@ -364,8 +366,10 @@ var ExploreLayer = cc.Layer.extend({
                 }
 
             }, this._getTaskId());
-        } else {
+        } else if (statue == POWER_NO_ENOUGH) {
             this._onBuyPower();
+        } else {
+            return;
         }
 
         if (noviceTeachingLayer.isNoviceTeaching()) {

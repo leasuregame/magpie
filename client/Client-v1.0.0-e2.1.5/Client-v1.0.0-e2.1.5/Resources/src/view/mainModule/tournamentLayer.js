@@ -213,10 +213,12 @@ var TournamentLayer = cc.Layer.extend({
             this._rewardLabel.setVisible(true);
             this._rewardItem.setVisible(reward.canReceive);
 
-            if (!this._rewardEffect) {
-                this._rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect22, this);
-                this._rewardEffect.setPosition(this._tournamentLayerFit.rewardItemPoint);
-                this.addChild(this._rewardEffect, 1);
+            if (reward.canReceive) {
+                if (!this._rewardEffect) {
+                    this._rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect22, this);
+                    this._rewardEffect.setPosition(this._tournamentLayerFit.rewardItemPoint);
+                    this.addChild(this._rewardEffect, 1);
+                }
             }
 
         } else {
@@ -310,9 +312,9 @@ var TournamentLayer = cc.Layer.extend({
         gameData.tournament.receive(function (reward) {
             lz.tipReward(reward);
 
-            if (this._rewardEffect) {
-                this._rewardEffect.removeFromParent();
-                this._rewardEffect = null;
+            if (that._rewardEffect) {
+                that._rewardEffect.removeFromParent();
+                that._rewardEffect = null;
             }
 
             that._updateRankRewardItem();

@@ -84,19 +84,19 @@ var BattleEndLayer = cc.Layer.extend({
             offsetY -= 53;
         }
 
-        var okItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon21,
+        var okItem = cc.MenuItemImage.create(
+            main_scene_image.button66,
+            main_scene_image.button66s,
+          //  main_scene_image.icon21,
             this.end,
             this
         );
         okItem.setPosition(this._battleEndLayerFit.okItemPoint);
 
-        var replayItem = cc.MenuItemImage.createWithIcon(
-            main_scene_image.button9,
-            main_scene_image.button9s,
-            main_scene_image.icon291,
+        var replayItem = cc.MenuItemImage.create(
+            main_scene_image.button67,
+            main_scene_image.button67s,
+            //main_scene_image.icon291,
             this.replay,
             this
         );

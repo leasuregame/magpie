@@ -333,7 +333,6 @@
 		90A5477C1845A57A00875372 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 906E946017CDAD090038DF64 /* res */; };
 		90A5477D1845A57A00875372 /* src in Resources */ = {isa = PBXBuildFile; fileRef = 906E946117CDAD090038DF64 /* src */; };
 		90A999D21845AB0D00DF30EF /* hello.js in Sources */ = {isa = PBXBuildFile; fileRef = 90A999D11845AB0D00DF30EF /* hello.js */; };
-		90A999D41845AB5400DF30EF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A999D31845AB5400DF30EF /* StoreKit.framework */; };
 		90A999E01845C4B300DF30EF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90A999D61845C4B300DF30EF /* Default-568h@2x.png */; };
 		90A999E11845C4B300DF30EF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 90A999D71845C4B300DF30EF /* Default.png */; };
 		90A999E21845C4B300DF30EF /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 90A999D81845C4B300DF30EF /* Icon-72.png */; };
@@ -344,7 +343,7 @@
 		90A999E71845C4B300DF30EF /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90A999DD1845C4B300DF30EF /* Icon@2x.png */; };
 		90A999E81845C4B300DF30EF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90A999DE1845C4B300DF30EF /* Info.plist */; };
 		90A999E91845C4B300DF30EF /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 90A999DF1845C4B300DF30EF /* iTunesArtwork */; };
-		90A999EB1845C5F900DF30EF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A999D31845AB5400DF30EF /* StoreKit.framework */; };
+		90A999F01845C68900DF30EF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A999EF1845C68900DF30EF /* StoreKit.framework */; };
 		90B54F34183E068000727729 /* chipmunk-docs.html in Resources */ = {isa = PBXBuildFile; fileRef = 90B54C28183E067F00727729 /* chipmunk-docs.html */; };
 		90B54F35183E068000727729 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 90B54C45183E067F00727729 /* LICENSE.txt */; };
 		90B54F36183E068000727729 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 90B54C46183E067F00727729 /* README.txt */; };
@@ -652,7 +651,6 @@
 		906E946417CDAD150038DF64 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main_binding.js; path = Resources/main_binding.js; sourceTree = "<group>"; };
 		90A547821845A57A00875372 /* 极品神仙.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "极品神仙.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A999D11845AB0D00DF30EF /* hello.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = hello.js; path = Resources/hello.js; sourceTree = "<group>"; };
-		90A999D31845AB5400DF30EF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		90A999D61845C4B300DF30EF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		90A999D71845C4B300DF30EF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		90A999D81845C4B300DF30EF /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
@@ -663,6 +661,7 @@
 		90A999DD1845C4B300DF30EF /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		90A999DE1845C4B300DF30EF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90A999DF1845C4B300DF30EF /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		90A999EF1845C68900DF30EF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		90B54C28183E067F00727729 /* chipmunk-docs.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "chipmunk-docs.html"; sourceTree = "<group>"; };
 		90B54C2B183E067F00727729 /* chipmunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk.h; sourceTree = "<group>"; };
 		90B54C2C183E067F00727729 /* chipmunk_ffi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chipmunk_ffi.h; sourceTree = "<group>"; };
@@ -1391,7 +1390,6 @@
 				90A547571845A57A00875372 /* libjs_static.a in Frameworks */,
 				90A547581845A57A00875372 /* libwebsockets.a in Frameworks */,
 				90A547591845A57A00875372 /* Foundation.framework in Frameworks */,
-				90A999EB1845C5F900DF30EF /* StoreKit.framework in Frameworks */,
 				90A5475A1845A57A00875372 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1400,6 +1398,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90A999F01845C68900DF30EF /* StoreKit.framework in Frameworks */,
 				90D49C2A17CAF81800A22DB2 /* QuartzCore.framework in Frameworks */,
 				90B54FB0183E068000727729 /* libwebp.a in Frameworks */,
 				90D49C2C17CAF81800A22DB2 /* OpenGLES.framework in Frameworks */,
@@ -1411,7 +1410,6 @@
 				90B5505A183E068000727729 /* libjs_static.a in Frameworks */,
 				90B5505B183E068000727729 /* libwebsockets.a in Frameworks */,
 				90D49C3617CAF81800A22DB2 /* Foundation.framework in Frameworks */,
-				90A999D41845AB5400DF30EF /* StoreKit.framework in Frameworks */,
 				90D49C3817CAF81800A22DB2 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2797,7 +2795,7 @@
 		90D49C2817CAF81800A22DB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				90A999D31845AB5400DF30EF /* StoreKit.framework */,
+				90A999EF1845C68900DF30EF /* StoreKit.framework */,
 				90D49C2917CAF81800A22DB2 /* QuartzCore.framework */,
 				90D49C2B17CAF81800A22DB2 /* OpenGLES.framework */,
 				90D49C2D17CAF81800A22DB2 /* OpenAL.framework */,
@@ -2914,7 +2912,7 @@
 						DevelopmentTeam = TJT2HAB95B;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};

@@ -50,7 +50,7 @@ test-battle: build
 		--recursive \
 		./test/battle/$(files)
 
-test-api: clean build
+test-api: build
 	node ./test/jasmine/app.js
 
 runserver: build
@@ -81,8 +81,7 @@ loaddata:
 
 data-for-test: build
 	node ./data/test/loadUserData.js production
-	node ./data/test/dao.js csv production
-	node ./data/test/dao.js rank4Sina production
+	node ./data/test/dao.js robot production
 
 pfm-data:
 	node ./pfmTest/userData.js

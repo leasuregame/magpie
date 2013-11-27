@@ -12,39 +12,31 @@
  * */
 
 
-var TipLayer = cc.Layer.extend({
-    _str: [],
+var TipLayer = {
+//    _str: [],
 
-    init: function () {
-        cc.log("TipLayer init");
-
-        if (!this._super()) return false;
-
-        this._str = [];
-
-        return true;
-    },
-
-    tip: function (hasBg, str, color, fontName, fontSize) {
+    _tip: function (hasBg, str, color, fontName, fontSize) {
         cc.log("TipLayer tip: " + str);
 
         if (!str) return;
 
-        var len = this._str.length;
+//        var len = this._str.length;
+//
+//        if (len && (str == this._str[len - 1])) return;
 
-        if (len && (str == this._str[len - 1])) return;
-
-        this._str.push(str);
+//        this._str.push(str);
 
         color = color || cc.c3b(255, 255, 255);
         fontName = fontName || "STHeitiTC-Medium";
         fontSize = fontSize || 25;
 
-        var label = cc.Node.create();
-        label.setPosition(cc.p(360, 550));
-        this.addChild(label);
+        var labelPoint = gameFit.controls.tipLayer.labelPoint;
 
-        var strLabel = cc.LabelTTF.create(str, fontName, fontSize);
+        var label = cc.Node.create();
+        label.setPosition(labelPoint);
+        cc.Director.getInstance().getRunningScene().addChild(label);
+
+        var strLabel = StrokeLabel.create(str, fontName, fontSize);
         strLabel.setColor(color);
         label.addChild(strLabel, 1);
 
@@ -63,48 +55,25 @@ var TipLayer = cc.Layer.extend({
             if (bgLabel) bgLabel.setOpacity(opacity);
         };
 
+        var point = gameFit.controls.tipLayer.actionPoint;
+
         label.runAction(
             cc.Sequence.create(
-                cc.MoveTo.create(1, cc.p(360, 650)),
+                cc.MoveTo.create(1, point),
                 cc.FadeOut.create(0.2),
                 cc.CallFunc.create(function () {
-                    this._str.shift();
+//                    this._str.shift();
                     label.removeFromParent();
                 }, this)
             )
         );
+    },
+
+    tip: function (str, color, fontName, fontSize) {
+        this._tip(true, str, color, fontName, fontSize);
+    },
+
+    tipNoBg: function (str, color, fontName, fontSize) {
+        this._tip(false, str, color, fontName, fontSize);
     }
-});
-
-
-TipLayer.create = function () {
-    var ret = new TipLayer();
-
-    if (ret && ret.init()) {
-        return ret;
-    }
-
-    return null;
 };
-
-
-(function () {
-    var tipLayer = null;
-
-    TipLayer.getInstance = function () {
-        if (tipLayer == null) {
-            tipLayer = TipLayer.create();
-            cc.Director.getInstance().getRunningScene().addChild(tipLayer, 10);
-        }
-
-        return tipLayer;
-    };
-
-    TipLayer.tip = function (str, color, fontName, fontSize) {
-        TipLayer.getInstance().tip(true, str, color, fontName, fontSize);
-    };
-
-    TipLayer.tipNoBg = function (str, color, fontName, fontSize) {
-        TipLayer.getInstance().tip(false, str, color, fontName, fontSize);
-    };
-})();

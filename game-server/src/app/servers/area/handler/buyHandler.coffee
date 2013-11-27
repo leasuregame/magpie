@@ -41,7 +41,7 @@ products =
 
            player = res
            if player.gold < gold
-             cb {code: 501, msg: "元宝不足"}
+             cb {code: 501, msg: "魔石不足"}
 
            else if Math.ceil((RESOURE_LIMIT.money - player.money) * 1.0 / product.obtain) < times
              cb {code: 501, msg: "超过仙币上限"}
@@ -81,26 +81,18 @@ products =
 
         player = res
 
-        if player.power.value >= RESOURE_LIMIT.power_value
-          cb {code: 501, msg: "体力已达上限"}
-
-        else if player.dailyGift.powerBuyCount <= 0
-          cb {code: 501, msg: "购买次数已经用完"}
+        if player.dailyGift.powerBuyCount <= 0
+          cb {code: 501, msg: "体力购买次数已用完，VIP可购买更多"}
 
         else if player.dailyGift.powerBuyCount < times
           cb {code: 501, msg: "所剩购买次数不足"}
 
-        else if Math.ceil((RESOURE_LIMIT.power_value - player.power.value) * 1.0/ product.obtain) < times
-          cb {code: 501, msg: "超过体力上限"}
-
         else if player.gold < gold
-          cb {code: 501, msg: "元宝不足"}
+          cb {code: 501, msg: "魔石不足"}
 
         else
-          if player.power.value + powerValue > RESOURE_LIMIT.power_value
-            powerValue = RESOURE_LIMIT.power_value - player.power.value
           player.updateGift 'powerBuyCount', player.dailyGift.powerBuyCount - times
-          player.resumePower powerValue
+          player.addPower powerValue
           player.decrease 'gold', gold
           cb()
 
@@ -139,7 +131,7 @@ products =
           cb {code: 501, msg: "超过购买次数上限"}
 
         else if player.gold < gold
-          cb  {code: 501, msg: "元宝不足"}
+          cb  {code: 501, msg: "魔石不足"}
 
         else
           player.updateGift 'challengeBuyCount', player.dailyGift.challengeBuyCount - times
@@ -174,7 +166,7 @@ products =
         return nexl(null, {code: 501, msg: '卡牌容量已经达到最大值'})
 
       if player.money < times * PRICE
-        return next(null, {code: 501, msg: '铜板不足'})
+        return next(null, {code: 501, msg: '仙币不足'})
 
       if _.keys(player.cards).length + times > RESOURE_LIMIT.card_count_limit
         return nexl(null, {code: 501, msg: '卡牌容量不足'})

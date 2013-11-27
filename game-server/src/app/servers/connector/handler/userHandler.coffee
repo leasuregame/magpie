@@ -3,12 +3,32 @@ utility = require '../../../common/utility'
 logger = require('pomelo-logger').getLogger(__filename)
 _ = require 'underscore'
 
+EMAIL_REG = /^(?=\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$).{6,50}$/
+ACCOUNT_REG = /[\w+]{6,50}$/
+PASSWORD_REG = /^[a-zA-Z0-9]{6,20}$/
+EMPTY_SPACE_REG = /\s+/g
+
 module.exports = (app) ->
   new Handler(app)
 
 Handler = (@app) ->
 
 Handler::register = (msg, session, next) ->
+  account = msg.account
+  password = msg.password
+
+  if EMPTY_SPACE_REG.test(account) or EMPTY_SPACE_REG.test(password)
+    return next(null, {code: 501, msg: '用户名或密码不能包含空格'})
+
+  if not account? or account == '' or not password? or password == ''
+    return next(null, {code: 501, msg: '用户名或密码不能为空'})
+
+  if not EMAIL_REG.test(account) and not ACCOUNT_REG.test(account)
+    return next(null, {code: 501, msg: '用户名只能由6-50的字符组成，推荐使用邮箱或手机号'})
+
+  if not PASSWORD_REG.test(password)
+    return next(null, {code: 501, msg: '密码只能由6-20位的数字或字母组成'})
+
   @app.rpc.auth.authRemote.register session, {
     account: msg.account
     password: msg.password
@@ -32,11 +52,11 @@ Handler::login = (msg, session, next) ->
       session.pushAll cb
 
     (cb) =>
-      @app.rpc.auth.authRemote.auth session, account, password, areaId, cb
+      @app.rpc.auth.authRemote.auth session, account, password, areaId, @app.getServerId(), cb
 
     (res, cb) =>
       user = res
-      uid = user.id + '*' + areaId;
+      uid = user.id + '*' + areaId
       sessionService = @app.get 'sessionService'
       sessionService.kick(uid,cb)
     (cb) =>
@@ -52,7 +72,7 @@ Handler::login = (msg, session, next) ->
 
     (cb) =>
       session.set('userId', user.id)
-      session.bind(uid, cb);
+      session.bind(uid, cb)
     (cb) =>
       if player?
         session.set('playerId', player.id)
@@ -61,10 +81,10 @@ Handler::login = (msg, session, next) ->
       session.pushAll cb
   ], (err) ->
     if err
-      logger.error 'fail to login: ', err
-      return next(null, {code: err.code or 500, msg: err.msg or err})
+      logger.error 'fail to login: ', err, err.stack
+      return next(null, {code: err.code or 500, msg: err.msg or err.message or err})
 
-    next(null, {code: 200, msg: {user: user, player: player}})
+    next(null, {code: 200, msg: {user: user, player: player, serverTime: Date.now()}})
 
 onUserLeave = (app, session, reason) ->
   if not session or not session.uid

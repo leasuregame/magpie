@@ -96,7 +96,7 @@ var Task = Entity.extend({
     canExplore: function () {
         cc.log("Task canExplore");
 
-        if(gameData.player.get("power") < this._powerNeed) {
+        if (gameData.player.get("power") < this._powerNeed) {
             TipLayer.tip("体力不足");
             return false;
         }
@@ -145,7 +145,7 @@ var Task = Entity.extend({
         cc.log("Task explore " + id);
 
         var that = this;
-        lzWindow.pomelo.request("area.taskHandler.explore", {
+        lz.server.request("area.taskHandler.explore", {
             taskId: id
         }, function (data) {
             cc.log("pomelo websocket callback data:");
@@ -224,7 +224,7 @@ var Task = Entity.extend({
         cc.log(param);
 
         var that = this;
-        lzWindow.pomelo.request("area.taskHandler.wipeOut", param, function (data) {
+        lz.server.request("area.taskHandler.wipeOut", param, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
@@ -255,7 +255,7 @@ var Task = Entity.extend({
         cc.log("Task obtainGold: " + gold);
 
         var that = this;
-        lzWindow.pomelo.request("area.taskHandler.updateMomoResult", {
+        lz.server.request("area.taskHandler.updateMomoResult", {
             gold: gold
         }, function (data) {
             cc.log(data);

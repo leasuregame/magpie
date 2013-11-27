@@ -35,14 +35,18 @@ var BattleScene = cc.Scene.extend({
         this.addChild(battleEndLayer, 1);
         this._battleProcess.push(battleEndLayer);
 
-        var gameFrame = GameFrame.create();
-        this.addChild(gameFrame, 1);
+        if (gameDevice != "Iphone5") {
+            var gameFrame = GameFrame.create();
+            this.addChild(gameFrame, 100);
+        }
 
         return true;
     },
 
     play: function () {
         cc.log("BattleScene play");
+
+        gameData.sound.playMusic(main_scene_image.battle_bg_music, true);
 
         this._index = 0;
         this.next();
@@ -60,6 +64,8 @@ var BattleScene = cc.Scene.extend({
 
     end: function () {
         cc.log("BattleScene end");
+
+        gameData.sound.playMusic();
 
         BattlePlayer.getInstance().end();
     }

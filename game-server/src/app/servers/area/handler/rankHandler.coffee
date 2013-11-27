@@ -6,6 +6,7 @@ table = require '../../../manager/table'
 async = require 'async'
 logger = require('pomelo-logger').getLogger(__filename)
 msgConfig = require '../../../../config/data/message'
+achieve = require '../../../domain/achievement'
 _ = require 'underscore'
 
 rankingConfig = table.getTableItem('ranking_list',1)
@@ -44,9 +45,16 @@ Handler::rankingList = (msg, session, next) ->
         return cb({code: 501, msg: fdata.rank+'级开放'})
       
       if not player.rank?
-        return cb({code: 501, msg: '找不到竞技信息'})
-
-      cb()
+        ### first time enter ranking list ###
+        app.get('dao').rank.initRankingInfo player.id, (err, rank) -> 
+          if err
+            cb(err)
+          else 
+            player.rank = rank
+            cb()
+        #return cb({code: 501, msg: '找不到竞技信息'})
+      else
+        cb()
 
     (cb)->
       if player.rank.recentChallenger.length > 0
@@ -155,7 +163,7 @@ Handler::getRankingReward = (msg, session, next) ->
   playerId = session.get('playerId')
   ranking = msg.ranking
 
-  playerManager.getPlayerInfo {pid: playerId}, (err, player) ->
+  playerManager.getPlayerInfo {pid: playerId}, (err, player) =>
     if err
       return next(null, {code: err.code, msg: err.msg or err.message})
 
@@ -171,12 +179,19 @@ Handler::getRankingReward = (msg, session, next) ->
       return next(null, {code: 501, msg: "不能重复领取#{ranking}的排名奖励"})
 
     rank.getRankingReward(ranking)
-    player.increase('elixir', rewardData.elixir)
-    player.save()
-    next(null, {
-      code: 200, 
-      msg: elixir: rewardData.elixir
-    })
+    @app.get('dao').rank.update {
+      data: rank.getSaveData()
+      where: id: rank.id
+    }, (err, res) -> 
+      if err
+        return next(null, msg: {code: 501, msg: err.message or err.msg})
+        
+      player.increase('elixir', rewardData.elixir)
+      player.save()
+      next(null, {
+        code: 200, 
+        msg: elixir: rewardData.elixir
+      })
 
 isV587 = (bl) ->
   ownCardCount = enemyCardCount = 0
@@ -226,7 +241,7 @@ filterPlayersInfo = (players, ranks, rankings) ->
       playerId: p.id
       name: p.name
       ranking: ranks[p.id]
-      cards: if p.cards? then p.cards.map (c) -> c.tableId else []
+      cards: if p.cards? then (p.cards.sort (x, y) -> x.star < y.star).map (c) -> c.tableId else []
       type: rankings[ranks[p.id]]
     }
     

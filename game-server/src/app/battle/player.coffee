@@ -28,7 +28,7 @@ defaultEntity =
   lv: 0
   exp: 0
   lineUp: ''
-  spiritor: {lv: 0}
+  spiritor: {lv: 1}
   cards: []
 
 class Player extends Module
@@ -146,8 +146,8 @@ class Player extends Module
   currentIndex: ->
     @matrix.curIndex
 
-  herosToBeAttacked: (scope, args) ->
-    @matrix.attackElement scope, args
+  herosToBeAttacked: (scope, args, filter) ->
+    @matrix.attackElement scope, args, filter
 
   reset: ->
     @matrix.reset()

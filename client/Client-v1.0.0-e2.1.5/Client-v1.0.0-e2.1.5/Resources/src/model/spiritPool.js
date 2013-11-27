@@ -61,7 +61,7 @@ var SpiritPool = Entity.extend({
         }
 
         if (useGold && gameData.player.get("gold") < 20) {
-            TipLayer.tip("元宝不足");
+            TipLayer.tip("魔石不足");
             return false;
         }
 
@@ -72,7 +72,7 @@ var SpiritPool = Entity.extend({
         cc.log("SpiritPool collect");
 
         var that = this;
-        lzWindow.pomelo.request("area.spiritHandler.collect", {
+        lz.server.request("area.spiritHandler.collect", {
             isGold: useGold
         }, function (data) {
             cc.log(data);

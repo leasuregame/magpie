@@ -3,6 +3,7 @@ var app = require('pomelo').app;
 var dbClient = app.get('dbClient');
 var logger = require('pomelo-logger').getLogger(__filename);
 var _ = require('underscore');
+var utility = require('../../common/utility');
 
 var ACTION = {
   INSERT: 'insert',
@@ -64,8 +65,12 @@ var DaoBase = (function() {
     _.extend(data, options.data);
     options.table = options.table || this.table;
 
-    if (_.contains(this.domain.FIELDS, 'createTime')){
+    if (_.contains(this.domain.FIELDS, 'createTime') && !data.createTime) {
       data.createTime = Date.now();
+    }
+
+    if (this.table == 'player' && !data.created) {
+      data.created = utility.dateFormat(new Date(), 'yyyy-MM-dd h:mm:ss')
     }
 
     for (key in data) {
@@ -85,7 +90,7 @@ var DaoBase = (function() {
           msg: err.message
         }, null);
       }
-      
+
       var entity = new _this.domain(_.extend({
         id: res.insertId
       }, options.data));

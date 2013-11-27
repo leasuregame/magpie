@@ -90,11 +90,11 @@ var CardLabel = cc.Node.extend({
         this._useLabel.setVisible(gameData.lineUp.isLineUpCard(this._card.get("id")));
 
         this._hookBgLabel = cc.Sprite.create(main_scene_image.icon27);
-        this._hookBgLabel.setPosition(cc.p(545, 62));
+        this._hookBgLabel.setPosition(cc.p(525, 62));
         this.addChild(this._hookBgLabel);
 
         this._hookLabel = cc.Sprite.create(main_scene_image.icon20);
-        this._hookLabel.setPosition(cc.p(545, 62));
+        this._hookLabel.setPosition(cc.p(525, 62));
         this.addChild(this._hookLabel);
 
         selectType = selectType || SELECT_TYPE_DEFAULT;
@@ -266,6 +266,11 @@ var CardLabel = cc.Node.extend({
         cc.log("CardLabel _onClickCard" + this._card.get("id"));
 
         if (this._selectType != SELECT_TYPE_DEFAULT) {
+            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+                NoviceTeachingLayer.getInstance().clearAndSave();
+                NoviceTeachingLayer.getInstance().next();
+            }
+            
             this.select();
         }
     }

@@ -57,38 +57,43 @@ var Achievement = Entity.extend({
         cc.log("Achievement sync");
 
         var that = this;
-        lzWindow.pomelo.request("area.achieveHandler.achievements", {}, function (data) {
-            cc.log("pomelo websocket callback data:");
-            cc.log(data);
+        lz.server.request(
+            "area.achieveHandler.achievements",
+            {},
+            function (data) {
+                cc.log("pomelo websocket callback data:");
+                cc.log(data);
 
-            if (data.code == 200) {
-                cc.log("sync success");
+                if (data.code == 200) {
+                    cc.log("sync success");
 
-                var msg = data.msg;
+                    var msg = data.msg;
 
-                that.update(msg);
+                    that.update(msg);
 
-                lzWindow.pomelo.on("onAchieve", function (data) {
-                    cc.log("***** on achieve:");
-                    cc.log(data);
+                    lz.server.on("onAchieve", function (data) {
+                        cc.log("***** on achieve:");
+                        cc.log(data);
 
-                    gameData.achievement.setAchieve(data.msg.achieveId);
-                });
-            } else {
-                cc.log("sync fail");
+                        gameData.achievement.setAchieve(data.msg.achieveId);
+                    });
+                } else {
+                    cc.log("sync fail");
 
-                TipLayer.tip(data.msg);
+                    TipLayer.tip(data.msg);
 
-                that.sync();
-            }
-        });
+                    that.sync();
+                }
+            },
+            true
+        );
     },
 
     receiver: function (cb, id) {
         cc.log("Achievement receiver");
 
         var that = this;
-        lzWindow.pomelo.request("area.achieveHandler.getReward", {
+        lz.server.request("area.achieveHandler.getReward", {
             id: id
         }, function (data) {
             cc.log("pomelo websocket callback data:");

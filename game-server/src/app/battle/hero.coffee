@@ -37,7 +37,7 @@ class Hero extends Module
     @atk_only = attrs.atk
 
     @card_id = attrs.tableId
-    @skill_lv = attrs.skillLv or 0
+    @skill_lv = attrs.skillLv or 1
     @skill_inc = attrs.skillInc
     @sp_value = attrs.passiveSkills or []
     
@@ -98,7 +98,7 @@ class Hero extends Module
   usingSkill: (callback, enemys = @skill.getTargets(), percent = 100, isSpiritor = false) ->
     return if @player.enemy.death()
 
-    if not enemys or not enemys.length > 0
+    if not enemys or enemys.length is 0
       log.warn '技能攻击时，攻击的对方卡牌不能为空'
       return
 

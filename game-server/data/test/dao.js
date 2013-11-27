@@ -8,7 +8,7 @@ var app = pomelo.createApp();
 var genDao = function(key) {
   app.set('env', process.argv[3] || 'development');
   //app.loadConfig('mysql', app.getBase() + '/config/mysql.json');
-  app.set('mysql', require('../../config/mysql1')[process.argv[3] || 'development'][key]);
+  app.set('mysql', require('../../config/mysql')[process.argv[3] || 'development'][key]);
   app.set('dbClient', require('../../app/dao/mysql/mysql').init(app));
   var dao = require('../../app/dao').init('mysql');
   app.set('dao', dao);
@@ -18,9 +18,10 @@ var genDao = function(key) {
 
 var main = function() {
   var type = process.argv[2];
+  var areaId = process.argv[4] || 1;
   var quenues = [];
   var start = Date.now();
-  var gdata = new Data(genDao(1), path.join(__dirname, 'csv/'));
+  var gdata = new Data(genDao(areaId), path.join(__dirname, 'csv/'));
 
   switch (type) {
     case 'csv':
@@ -32,6 +33,9 @@ var main = function() {
     case 'rank4Sina': 
       quenues.push(gdata.dataForRanking);
       break;
+    case 'robot': 
+      quenues.push(gdata.loadRobot);
+      break;
     default:
       quenues.push(gdata.loadCsvDataToSql);
       quenues.push(gdata.loadDataForRankingList);
@@ -40,7 +44,11 @@ var main = function() {
   async.mapSeries(
     quenues,
     function(fn, cb) {
-      fn.call(gdata, cb);
+      if (fn.name == 'loadRobot'){
+        fn.call(gdata, areaId, cb);
+      } else {
+        fn.call(gdata, cb);  
+      }      
     },
     function(err, results) {
       var end = Date.now();

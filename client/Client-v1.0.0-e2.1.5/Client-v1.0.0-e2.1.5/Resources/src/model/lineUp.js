@@ -97,7 +97,7 @@ var LineUp = Entity.extend({
                 cc.log(i);
                 var that = this;
 
-                lzWindow.pomelo.request("area.trainHandler.changeLineUp", {
+                lz.server.request("area.trainHandler.changeLineUp", {
                     lineUp: lineUp
                 }, function (data) {
                     cc.log(data);
@@ -109,18 +109,20 @@ var LineUp = Entity.extend({
 
                         that.update(msg.lineUp);
 
-                        cb("success");
+                        cb(true);
                     } else {
                         cc.log("changeLineUp fail");
 
-                        cb("fail");
+                        TipLayer.tip(data.msg);
+
+                        cb(false);
                     }
                 });
 
                 return;
             }
         }
-        cb();
+        cb(true);
     }
 });
 

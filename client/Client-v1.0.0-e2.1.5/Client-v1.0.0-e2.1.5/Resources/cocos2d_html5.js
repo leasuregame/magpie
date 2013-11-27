@@ -50,16 +50,17 @@
 
             'src/table/table.js',
 
-            'src/model/pomelo-client.js',
-            'src/model/serverAPI.js',
-
-            'src/model/base.js',
-            'src/model/singleton.js',
-            'src/model/gameConfig.js',
-            'src/model/gameFlow.js',
-
             'src/model/event.js',
             'src/model/entity.js',
+
+            'src/model/lz.js',
+            'src/model/pomelo.js',
+            'src/model/server.js',
+
+            'src/model/singleton.js',
+            'src/model/gameConfig.js',
+
+            'src/model/gameFit.js',
             'src/model/user.js',
             'src/model/player.js',
             'src/model/card.js',
@@ -73,6 +74,7 @@
             'src/model/cardLibrary.js',
             'src/model/message.js',
             'src/model/tournament.js',
+            'src/model/sound.js',
             'src/model/speak.js',
             'src/model/spirit.js',
             'src/model/spiritPool.js',
@@ -98,10 +100,12 @@
             'src/controls/strokeLabel.js',
             'src/controls/LzMenuItem.js',
             'src/controls/tipLayer.js',
+            'src/controls/colorLabelTTF.js',
 
             'src/view/loginModule/loginScene.js',
             'src/view/loginModule/loginLayer.js',
             'src/view/loginModule/logoutLayer.js',
+            'src/view/loginModule/newPlayerLayer.js',
             'src/view/loginModule/registerScene.js',
             'src/view/loginModule/registerLayer.js',
 
@@ -142,6 +146,7 @@
             'src/view/mainModule/lineUpDetailsLayer.js',
             'src/view/mainModule/lineUpLabel.js',
             'src/view/mainModule/lineUpLayer.js',
+            'src/view/mainModule/lotteryCardLayer.js',
             'src/view/mainModule/lotteryLayer.js',
             'src/view/mainModule/lvRankLayer.js',
             'src/view/mainModule/messageLabel.js',
@@ -180,9 +185,9 @@
             'src/view/mainModule/mainBgLayer.js',
             'src/view/mainModule/mainLayer.js',
             'src/view/mainModule/mainMenuLayer.js',
+            'src/view/mainModule/noviceTeachingLayer.js',
             'src/view/mainModule/mainScene.js',
 
-            'src/view/battleModule/actionFactory.js',
             'src/view/battleModule/battleBeganLayer.js',
             'src/view/battleModule/battleCardNode.js',
             'src/view/battleModule/battleEndLayer.js',
@@ -191,9 +196,7 @@
             'src/view/battleModule/battleScene.js',
             'src/view/battleModule/battleSpiritNode.js',
             'src/view/battleModule/cloudLayer.js',
-            'src/view/battleModule/skillFactory.js',
-
-            'src/myApp.js'                   //add your own files in order here
+            'src/view/battleModule/skillFactory.js'
         ]
     };
 

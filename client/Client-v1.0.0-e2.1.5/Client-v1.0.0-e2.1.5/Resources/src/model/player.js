@@ -21,7 +21,7 @@ var Player = Entity.extend({
     _power: 0,          // 体力
     _lv: 0,             // 等级
     _exp: 0,            // 经验
-    _gold: 0,           // 元宝
+    _gold: 0,           // 魔石
     _money: 0,          // 金钱
     _elixir: 0,         // 仙丹
     _fragment: 0,       // 卡魂
@@ -57,6 +57,7 @@ var Player = Entity.extend({
         gameData.signIn.init();
         gameData.rank.init();
         gameData.achievement.init();
+        gameData.activity.init();
         gameData.speak.init();
         gameData.exchange.init();
 
@@ -111,7 +112,7 @@ var Player = Entity.extend({
             powerBuyCount: data.dailyGift.powerBuyCount,
             challengeBuyCount: data.dailyGift.challengeBuyCount
         });
-
+        gameData.lottery.init(data.firstTime);
     },
 
     upgrade: function (data) {
@@ -159,7 +160,7 @@ var Player = Entity.extend({
         cc.log("Player sendMessage: " + playerId + " " + msg);
 
         var that = this;
-        lzWindow.pomelo.request("area.messageHandler.leaveMessage", {
+        lz.server.request("area.messageHandler.leaveMessage", {
             friendId: playerId,
             content: msg
         }, function (data) {
@@ -182,7 +183,7 @@ var Player = Entity.extend({
         cc.log("Player learn: " + playerId);
 
         var that = this;
-        lzWindow.pomelo.request("area.rankHandler.fight", {
+        lz.server.request("area.rankHandler.fight", {
             targetId: playerId
         }, function (data) {
             cc.log("pomelo websocket callback data:");
@@ -208,7 +209,7 @@ var Player = Entity.extend({
         cc.log("Player playerDetail: " + playerId);
 
         var that = this;
-        lzWindow.pomelo.request("area.playerHandler.getLineUpInfo", {
+        lz.server.request("area.playerHandler.getLineUpInfo", {
             playerId: playerId
         }, function (data) {
             cc.log("pomelo websocket callback data:");

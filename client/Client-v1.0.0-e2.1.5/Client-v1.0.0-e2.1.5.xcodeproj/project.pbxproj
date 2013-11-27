@@ -2619,6 +2619,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				TargetAttributes = {
+					90D49C2517CAF81800A22DB2 = {
+						DevelopmentTeam = TJT2HAB95B;
+					};
+				};
 			};
 			buildConfigurationList = 90D49C2117CAF81800A22DB2 /* Build configuration list for PBXProject "Client-v1.0.0-e2.1.5" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -3051,6 +3056,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3071,6 +3077,7 @@
 					"-lcurl",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"Client-v1.0.0-e2.1.5/libs/Chipmunk/include/chipmunk\" \"Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/include\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3081,6 +3088,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Client-v1.0.0-e2.1.5/Prefix.pch";
@@ -3100,6 +3108,7 @@
 					"-lcurl",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"Client-v1.0.0-e2.1.5/libs/Chipmunk/include/chipmunk\" \"Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/include\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

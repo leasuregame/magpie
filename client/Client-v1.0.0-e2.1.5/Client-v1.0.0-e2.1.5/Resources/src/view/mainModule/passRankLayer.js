@@ -13,6 +13,8 @@
 
 
 var PassRankLayer = cc.Layer.extend({
+    _passRankLayerFit: null,
+
     _skyDialog: null,
     _passRankList: null,
     _selectId: 0,
@@ -23,15 +25,17 @@ var PassRankLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._passRankLayerFit = gameFit.mainScene.passRankLayer;
+
         this._passRankList = gameData.rank.get("passRankList");
         var len = this._passRankList.length;
 
-        var scrollViewHeight = len * 100;
+        var scrollViewHeight = len * 120;
         if (scrollViewHeight < 700) {
             scrollViewHeight = 700;
         }
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(54, 228, 609, 700));
+        var scrollViewLayer = MarkLayer.create(this._passRankLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
@@ -40,79 +44,79 @@ var PassRankLayer = cc.Layer.extend({
         var own = gameData.player.get("id");
 
         for (var i = 0; i < len; ++i) {
-            var y = scrollViewHeight - 100 - 100 * i;
-
-            var playerItem = cc.MenuItemImage.create(
-                main_scene_image.button15,
-                main_scene_image.button15s,
-                this._onClickPlayer(i),
-                this
-            );
-            playerItem.setScaleX(1.04);
-            playerItem.setScaleY(0.75);
-            playerItem.setAnchorPoint(cc.p(0, 0));
-            playerItem.setPosition(cc.p(0, y));
-            menu.addChild(playerItem);
-
-            this._playerItem[i] = playerItem;
+            var y = scrollViewHeight - 120 - 120 * i;
 
             if (this._passRankList[i].id == own) {
-                playerItem.setEnabled(false);
 
-                var myselfSprite = cc.Sprite.create(main_scene_image.icon257);
+                var myselfSprite = cc.Sprite.create(main_scene_image.button18);
                 myselfSprite.setScaleX(1.04);
-                myselfSprite.setScaleY(0.75);
+                myselfSprite.setScaleY(0.9);
                 myselfSprite.setAnchorPoint(cc.p(0, 0));
                 myselfSprite.setPosition(cc.p(0, y));
                 scrollViewLayer.addChild(myselfSprite);
+            } else {
+
+                var playerItem = cc.MenuItemImage.create(
+                    main_scene_image.button15,
+                    main_scene_image.button15s,
+                    this._onClickPlayer(i),
+                    this
+                );
+                playerItem.setScaleX(1.04);
+                playerItem.setScaleY(0.9);
+                playerItem.setAnchorPoint(cc.p(0, 0));
+                playerItem.setPosition(cc.p(0, y));
+                menu.addChild(playerItem);
+
+                this._playerItem[i] = playerItem;
             }
 
             if (i < 3) {
                 var rankIcon = cc.Sprite.create(main_scene_image["icon" + (201 + i)]);
-                rankIcon.setPosition(cc.p(60, y + 50));
+                rankIcon.setPosition(cc.p(60, y + 60));
                 scrollViewLayer.addChild(rankIcon);
             } else {
                 var rankLabel = StrokeLabel.create(i + 1, "Arial", 55);
                 rankLabel.setColor(cc.c3b(255, 252, 175));
-                rankLabel.setPosition(cc.p(60, y + 52));
+                rankLabel.setPosition(cc.p(60, y + 62));
                 scrollViewLayer.addChild(rankLabel);
             }
 
             var nameIcon = cc.Scale9Sprite.create(main_scene_image.icon29);
             nameIcon.setContentSize(cc.size(155, 35));
             nameIcon.setAnchorPoint(cc.p(0, 0.5));
-            nameIcon.setPosition(cc.p(105, y + 70));
+            nameIcon.setPosition(cc.p(105, y + 80));
             scrollViewLayer.addChild(nameIcon);
 
             var nameLabel = cc.LabelTTF.create(this._passRankList[i].name, "STHeitiTC-Medium", 22);
             nameLabel.setColor(cc.c3b(255, 242, 206));
             nameLabel.setAnchorPoint(cc.p(0, 0.5));
-            nameLabel.setPosition(cc.p(115, y + 70));
+            nameLabel.setPosition(cc.p(115, y + 80));
             scrollViewLayer.addChild(nameLabel);
 
             var passIcon = cc.Sprite.create(main_scene_image.icon206);
-            passIcon.setPosition(cc.p(420, y + 50));
+            passIcon.setPosition(cc.p(420, y + 60));
             scrollViewLayer.addChild(passIcon);
 
             var passLabel = cc.LabelTTF.create(this._passRankList[i].passLayer, "Arial", 35);
             passLabel.setColor(cc.c3b(56, 3, 5));
             passLabel.setAnchorPoint(cc.p(0, 0.5));
-            passLabel.setPosition(cc.p(465, y + 45));
+            passLabel.setPosition(cc.p(465, y + 55));
             scrollViewLayer.addChild(passLabel);
 
             var abilityIcon = cc.Sprite.create(main_scene_image.icon207);
-            abilityIcon.setPosition(cc.p(140, y + 30));
+            abilityIcon.setPosition(cc.p(140, y + 40));
             scrollViewLayer.addChild(abilityIcon);
 
             var abilityLabel = cc.LabelTTF.create(this._passRankList[i].ability, "Arial", 22);
             abilityLabel.setColor(cc.c3b(56, 3, 5));
             abilityLabel.setAnchorPoint(cc.p(0, 0.5));
-            abilityLabel.setPosition(cc.p(175, y + 27));
+            abilityLabel.setPosition(cc.p(175, y + 37));
             scrollViewLayer.addChild(abilityLabel);
         }
 
-        var scrollView = cc.ScrollView.create(cc.size(609, 700), scrollViewLayer);
-        scrollView.setPosition(cc.p(54, 228));
+        var scrollView = cc.ScrollView.create(this._passRankLayerFit.scrollViewSize, scrollViewLayer);
+        scrollView.setPosition(this._passRankLayerFit.scrollViewPoint);
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();
         this.addChild(scrollView);
@@ -124,7 +128,7 @@ var PassRankLayer = cc.Layer.extend({
         this.addChild(this._skyDialog, 10);
 
         var label = cc.Scale9Sprite.create(main_scene_image.bg16);
-        label.setContentSize(cc.size(216, 300));
+        label.setContentSize(this._passRankLayerFit.labelContentSize);
 
         var detailItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -133,7 +137,7 @@ var PassRankLayer = cc.Layer.extend({
             this._onClickDetail,
             this
         );
-        detailItem.setPosition(cc.p(108, 240));
+        detailItem.setPosition(this._passRankLayerFit.detailItemPoint);
 
         var sendMessageItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -142,7 +146,7 @@ var PassRankLayer = cc.Layer.extend({
             this._onClickSendMessage,
             this
         );
-        sendMessageItem.setPosition(cc.p(108, 150));
+        sendMessageItem.setPosition(this._passRankLayerFit.sendMessageItemPoint);
 
         var addFriendItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -151,14 +155,14 @@ var PassRankLayer = cc.Layer.extend({
             this._onClickAddFriend,
             this
         );
-        addFriendItem.setPosition(cc.p(108, 60));
+        addFriendItem.setPosition(this._passRankLayerFit.addFriendItemPoint);
 
         var menu = cc.Menu.create(detailItem, sendMessageItem, addFriendItem);
         menu.setPosition(cc.p(0, 0));
         label.addChild(menu);
 
         this._skyDialog.setLabel(label);
-        this._skyDialog.setRect(cc.rect(40, 198, 640, 768));
+        this._skyDialog.setRect(this._passRankLayerFit.skyDialogRect);
 
         return true;
     },

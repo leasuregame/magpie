@@ -13,6 +13,8 @@
 
 
 var ExchangeLayer = cc.Layer.extend({
+    _exchangeLayerFit: null,
+
     _type: null,
     _scrollView: null,
     _selectStar5Item: null,
@@ -30,33 +32,40 @@ var ExchangeLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
+        this._exchangeLayerFit = gameFit.mainScene.exchangeLayer;
+
         this._type = SELECT_ALL_EXCHANGE_CARD;
 
         var bgSprite = cc.Sprite.create(main_scene_image.bg19);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(cc.p(40, 0));
+        bgSprite.setPosition(this._exchangeLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var headIcon = cc.Sprite.create(main_scene_image.icon2);
         headIcon.setAnchorPoint(cc.p(0, 0));
-        headIcon.setPosition(cc.p(40, 968));
+        headIcon.setPosition(this._exchangeLayerFit.headIconPoint);
         this.addChild(headIcon);
 
         var titleIcon = cc.Sprite.create(main_scene_image.icon246);
-        titleIcon.setPosition(cc.p(360, 1008));
+        titleIcon.setPosition(this._exchangeLayerFit.titleIconPoint);
         this.addChild(titleIcon);
 
         var headLabel = cc.Sprite.create(main_scene_image.icon147);
-        headLabel.setPosition(cc.p(360, 938));
+        headLabel.setPosition(this._exchangeLayerFit.headLabelPoint);
         this.addChild(headLabel);
 
+        var fragmentBgIcon = cc.Sprite.create(main_scene_image.icon98);
+        fragmentBgIcon.setPosition(this._exchangeLayerFit.fragmentBgIconPoint);
+        fragmentBgIcon.setScaleX(0.8);
+        this.addChild(fragmentBgIcon);
+
         var fragmentIcon = cc.Sprite.create(main_scene_image.icon243);
-        fragmentIcon.setPosition(cc.p(570, 938));
+        fragmentIcon.setPosition(this._exchangeLayerFit.fragmentIconPoint);
         this.addChild(fragmentIcon);
 
         this._fragmentLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
         this._fragmentLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._fragmentLabel.setPosition(cc.p(600, 938));
+        this._fragmentLabel.setPosition(this._exchangeLayerFit.fragmentLabelPoint);
         this.addChild(this._fragmentLabel);
 
         this._selectStar5Item = cc.MenuItemImage.createWithIcon(
@@ -66,7 +75,7 @@ var ExchangeLayer = cc.Layer.extend({
             this._onClickSelectStar5,
             this
         );
-        this._selectStar5Item.setPosition(cc.p(130, 938));
+        this._selectStar5Item.setPosition(this._exchangeLayerFit.selectStar5ItemPoint);
         this._selectStar5Item.setOffset(cc.p(-40, 0));
         this._selectStar5Item.hidIconImage();
 
@@ -77,7 +86,7 @@ var ExchangeLayer = cc.Layer.extend({
             this._onClickSelectStar4,
             this
         );
-        this._selectStar4Item.setPosition(cc.p(300, 938));
+        this._selectStar4Item.setPosition(this._exchangeLayerFit.selectStar4ItemPoint);
         this._selectStar4Item.setOffset(cc.p(-40, 0));
         this._selectStar4Item.hidIconImage();
 
@@ -87,23 +96,43 @@ var ExchangeLayer = cc.Layer.extend({
             this._onClickBack,
             this
         );
-        backItem.setPosition(cc.p(100, 1008));
+        backItem.setPosition(this._exchangeLayerFit.backItemPoint);
 
         var menu = cc.Menu.create(this._selectStar5Item, this._selectStar4Item, backItem);
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
         var tipIcon = cc.Sprite.create(main_scene_image.icon245);
-        tipIcon.setPosition(cc.p(360, 210));
-        this.addChild(tipIcon);
+        tipIcon.setPosition(this._exchangeLayerFit.tipIconPoint);
+        //this.addChild(tipIcon);
 
-        var tipLabel = cc.LabelTTF.create(
-            "兑换 5 星卡需要 " + EXCHANGE_STAR5_CARD + " 个卡魂  兑换 4 星卡需要 " + EXCHANGE_STAR4_CARD + " 个卡魂",
+        var tipLabel1 = cc.LabelTTF.create(
+            "兑换 5 星卡需要 " + EXCHANGE_STAR5_CARD,
             "STHeitiTC-Medium",
             17
         );
-        tipLabel.setPosition(cc.p(360, 210));
-        this.addChild(tipLabel);
+        tipLabel1.setAnchorPoint(cc.p(0,0.5));
+        tipLabel1.setPosition(this._exchangeLayerFit.tipLabel1Point);
+        this.addChild(tipLabel1);
+
+        var fragmentIcon = cc.Sprite.create(main_scene_image.icon243);
+        fragmentIcon.setAnchorPoint(cc.p(0,0.5));
+        fragmentIcon.setPosition(this._exchangeLayerFit.fragmentIconPoint1);
+        this.addChild(fragmentIcon);
+
+        var tipLabel2 = cc.LabelTTF.create(
+            "兑换 4 星卡需要 " + EXCHANGE_STAR4_CARD,
+            "STHeitiTC-Medium",
+            17
+        );
+        tipLabel2.setAnchorPoint(cc.p(0,0.5));
+        tipLabel2.setPosition(this._exchangeLayerFit.tipLabel2Point);
+        this.addChild(tipLabel2);
+
+        var fragmentIcon = cc.Sprite.create(main_scene_image.icon243);
+        fragmentIcon.setAnchorPoint(cc.p(0,0.5));
+        fragmentIcon.setPosition(this._exchangeLayerFit.fragmentIconPoint2);
+        this.addChild(fragmentIcon);
 
         this._update();
 
@@ -128,7 +157,7 @@ var ExchangeLayer = cc.Layer.extend({
 
         cc.log(exchangeCardList);
 
-        var scrollViewLayer = MarkLayer.create(cc.rect(40, 230, 640, 680));
+        var scrollViewLayer = MarkLayer.create(this._exchangeLayerFit.scrollViewLayerRect);
         var menu = LazyMenu.create();
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
@@ -148,9 +177,9 @@ var ExchangeLayer = cc.Layer.extend({
             this._cardItem[exchangeCardList[i].id] = cardItem;
         }
 
-        this._scrollView = cc.ScrollView.create(cc.size(640, 680), scrollViewLayer);
+        this._scrollView = cc.ScrollView.create(this._exchangeLayerFit.scrollViewSize, scrollViewLayer);
         this._scrollView.setContentSize(cc.size(640, scrollViewHeight));
-        this._scrollView.setPosition(cc.p(40, 230));
+        this._scrollView.setPosition(this._exchangeLayerFit.scrollViewPoint);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         this._scrollView.updateInset();
         this.addChild(this._scrollView);
@@ -177,7 +206,7 @@ var ExchangeLayer = cc.Layer.extend({
 
             cardDetails._menu.addChild(exchangeItem);
 
-            cc.Director.getInstance().getRunningScene().addChild(cardDetails, 1);
+            MainScene.getInstance().addChild(cardDetails, 1);
         }
     },
 

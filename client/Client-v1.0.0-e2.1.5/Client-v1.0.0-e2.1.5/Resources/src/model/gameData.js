@@ -12,7 +12,8 @@
  * */
 
 var gameData = {
-    user: null,
+    sound: Sound.create(),
+    user: User.create(),
     player: null,
     cardList: null,
     lineUp: null,
@@ -37,7 +38,6 @@ var gameData = {
     gameInit: function () {
         cc.log("gameData init");
 
-        this.user = User.create();
         this.player = Player.create();
         this.cardList = CardList.create();
         this.lineUp = LineUp.create();
@@ -64,6 +64,3 @@ var gameData = {
     gameEnd: function () {
     }
 };
-
-
-gameData.gameInit();

@@ -13,6 +13,8 @@
 
 
 var MainLayer = cc.Layer.extend({
+    _mainLayerFit: null,
+
     _layer: [
         SpiritPoolLayer,
         LotteryLayer,
@@ -24,7 +26,6 @@ var MainLayer = cc.Layer.extend({
         RankLayer,
         AchievementLayer,
         FriendLayer,
-        SignInLayer,
         MessageLayer,
         ConfigLayer
     ],
@@ -34,31 +35,44 @@ var MainLayer = cc.Layer.extend({
 
         if (!this._super()) return false;
 
-        var bgSprite = cc.Sprite.create(main_scene_image.bg1);
+        this._mainLayerFit = gameFit.mainScene.mainLayer;
+
+        var bgSprite = cc.Sprite.create(main_scene_image.bg1, this._mainLayerFit.bgSpriteRect);
         bgSprite.setAnchorPoint(cc.p(0, 0));
-        bgSprite.setPosition(GAME_BG_POINT);
+        bgSprite.setPosition(this._mainLayerFit.bgSpritePoint);
         this.addChild(bgSprite, -1);
 
+        var ccbNode = cc.BuilderReader.load(main_scene_image.uiEffect30, this);
+        ccbNode.setPosition(this._mainLayerFit.spiritLayerItemPoint);
+        this.addChild(ccbNode);
+
         var playerHeaderLabel = PlayerHeaderLabel.create();
-        playerHeaderLabel.setPosition(cc.p(40, 890));
+        playerHeaderLabel.setPosition(this._mainLayerFit.playerHeaderLabelPoint);
         this.addChild(playerHeaderLabel);
 
+        var lineIcon = cc.Sprite.create(main_scene_image.icon285);
+        lineIcon.setAnchorPoint(cc.p(0, 0));
+        lineIcon.setPosition(this._mainLayerFit.lineIconPoint);
+        this.addChild(lineIcon);
         var player = gameData.player;
 
+        var abilityLabelIcon = cc.Sprite.create(main_scene_image.icon286);
+        abilityLabelIcon.setAnchorPoint(cc.p(0, 0));
+        abilityLabelIcon.setPosition(this._mainLayerFit.abilityLabelIconPoint);
+        this.addChild(abilityLabelIcon);
+
         var abilityLabel = cc.LabelTTF.create(player.getAbility(), "STHeitiTC-Medium", 22);
-        abilityLabel.setColor(cc.c3b(255, 239, 131));
-        abilityLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        abilityLabel.setPosition(cc.p(300, 696));
+        abilityLabel.setAnchorPoint(cc.p(0, 0.5));
+        abilityLabel.setPosition(this._mainLayerFit.abilityLabelPoint);
         this.addChild(abilityLabel);
 
         var rankingLabel = cc.LabelTTF.create(gameData.tournament.get("ranking"), "STHeitiTC-Medium", 22);
-        rankingLabel.setColor(cc.c3b(255, 239, 131));
-        rankingLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        rankingLabel.setPosition(cc.p(530, 696));
+        rankingLabel.setAnchorPoint(cc.p(0, 0.5));
+        rankingLabel.setPosition(this._mainLayerFit.rankingLabelPoint);
         this.addChild(rankingLabel);
 
         var lineUpLabel = LineUpLabel.create();
-        lineUpLabel.setPosition(cc.p(40, 800));
+        lineUpLabel.setPosition(this._mainLayerFit.lineUpLabelPoint);
         this.addChild(lineUpLabel);
 
         var spiritLayerItem = cc.MenuItemImage.create(
@@ -67,7 +81,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(0),
             this
         );
-        spiritLayerItem.setPosition(cc.p(360, 500));
+        spiritLayerItem.setPosition(this._mainLayerFit.spiritLayerItemPoint);
 
         var lotteryLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -77,7 +91,7 @@ var MainLayer = cc.Layer.extend({
             this
         );
         lotteryLayerItem.setOffset(cc.p(-5, 5));
-        lotteryLayerItem.setPosition(cc.p(165, 600));
+        lotteryLayerItem.setPosition(this._mainLayerFit.lotteryLayerItemPoint);
 
         var treasureHuntLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -87,7 +101,7 @@ var MainLayer = cc.Layer.extend({
             this
         );
         treasureHuntLayerItem.setOffset(cc.p(-5, 5));
-        treasureHuntLayerItem.setPosition(cc.p(165, 410));
+        treasureHuntLayerItem.setPosition(this._mainLayerFit.treasureHuntLayerItemPoint);
 
         var strengthenLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -97,7 +111,7 @@ var MainLayer = cc.Layer.extend({
             this
         );
         strengthenLayerItem.setOffset(cc.p(-5, 5));
-        strengthenLayerItem.setPosition(cc.p(555, 600));
+        strengthenLayerItem.setPosition(this._mainLayerFit.strengthenLayerItemPoint);
 
         var evolutionLayerItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button2,
@@ -107,7 +121,7 @@ var MainLayer = cc.Layer.extend({
             this
         );
         evolutionLayerItem.setOffset(cc.p(-5, 5));
-        evolutionLayerItem.setPosition(cc.p(555, 410));
+        evolutionLayerItem.setPosition(this._mainLayerFit.evolutionLayerItemPoint);
 
         var activityLayerItem = cc.MenuItemImage.create(
             main_scene_image.button52,
@@ -115,7 +129,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(5),
             this
         );
-        activityLayerItem.setPosition(cc.p(93, 245));
+        activityLayerItem.setPosition(this._mainLayerFit.activityLayerItemPoint);
 
         var cardLibraryLayerItem = cc.MenuItemImage.create(
             main_scene_image.button53,
@@ -123,7 +137,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(6),
             this
         );
-        cardLibraryLayerItem.setPosition(cc.p(200, 245));
+        cardLibraryLayerItem.setPosition(this._mainLayerFit.cardLibraryLayerItemPoint);
 
         var rankLayerItem = cc.MenuItemImage.create(
             main_scene_image.button54,
@@ -131,7 +145,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(7),
             this
         );
-        rankLayerItem.setPosition(cc.p(307, 245));
+        rankLayerItem.setPosition(this._mainLayerFit.rankLayerItemPoint);
 
         var achievementLayerItem = cc.MenuItemImage.create(
             main_scene_image.button55,
@@ -139,7 +153,7 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(8),
             this
         );
-        achievementLayerItem.setPosition(cc.p(414, 245));
+        achievementLayerItem.setPosition(this._mainLayerFit.achievementLayerItemPoint);
 
         var friendLayerItem = cc.MenuItemImage.create(
             main_scene_image.button56,
@@ -147,39 +161,24 @@ var MainLayer = cc.Layer.extend({
             this._onClickLayer(9),
             this
         );
-        friendLayerItem.setPosition(cc.p(521, 245));
-
-        var otherItem = cc.MenuItemImage.create(
-            main_scene_image.button57,
-            main_scene_image.button57s,
-            this._onClickOther,
-            this
-        );
-        otherItem.setPosition(cc.p(628, 245));
-
-        var signInLayerItem = cc.MenuItemImage.create(
-            main_scene_image.button58,
-            main_scene_image.button58s,
-            this._onClickLayer(10),
-            this
-        );
-        signInLayerItem.setPosition(cc.p(414, 322));
+        friendLayerItem.setPosition(this._mainLayerFit.friendLayerItemPoint);
 
         var messageItem = cc.MenuItemImage.create(
             main_scene_image.button59,
-            main_scene_image.button59,
-            this._onClickLayer(11),
+            main_scene_image.button59s,
+            this._onClickLayer(10),
             this
         );
-        messageItem.setPosition(cc.p(521, 322));
+        messageItem.setPosition(this._mainLayerFit.messageItemPoint);
 
         var configLayerItem = cc.MenuItemImage.create(
             main_scene_image.button60,
-            main_scene_image.button60,
-            this._onClickLayer(12),
+            main_scene_image.button60s,
+            this._onClickLayer(11),
             this
         );
-        configLayerItem.setPosition(cc.p(628, 322));
+        configLayerItem.setScale(0.8);
+        configLayerItem.setPosition(this._mainLayerFit.configLayerItemPoint);
 
         var menu = cc.Menu.create(
             spiritLayerItem,
@@ -192,19 +191,11 @@ var MainLayer = cc.Layer.extend({
             rankLayerItem,
             achievementLayerItem,
             friendLayerItem,
-            otherItem
-        );
-        menu.setPosition(cc.p(0, 0));
-        this.addChild(menu);
-
-        this._otherMenu = cc.Menu.create(
-            signInLayerItem,
             messageItem,
             configLayerItem
         );
-        this._otherMenu.setPosition(cc.p(0, 0));
-        this.addChild(this._otherMenu);
-        this._otherMenu.setVisible(false);
+        menu.setPosition(cc.p(0, 0));
+        this.addChild(menu);
 
         return true;
     },
@@ -214,11 +205,14 @@ var MainLayer = cc.Layer.extend({
             cc.log("MainMenuLayer _onClickLayer: " + index);
 
             MainScene.getInstance().switchLayer(this._layer[index]);
-        }
-    },
 
-    _onClickOther: function () {
-        this._otherMenu.setVisible(!this._otherMenu.isVisible());
+            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+
+            if (NoviceTeachingLayer.getInstance().isNoviceTeaching()) {
+                NoviceTeachingLayer.getInstance().clearAndSave();
+                NoviceTeachingLayer.getInstance().next();
+            }
+        }
     }
 });
 

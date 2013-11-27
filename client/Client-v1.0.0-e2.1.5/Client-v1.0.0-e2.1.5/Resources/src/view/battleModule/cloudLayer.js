@@ -21,17 +21,15 @@ var MIN_CLOUD_SCALE = 0.7;
 var MAX_CLOUD_SCALE = 1.3;
 var MIN_CLOUD_ROTATION = 0;
 var MAX_CLOUD_ROTATION = 360;
-var MIN_CLOUD_POSITION_X = 40;
-var MID_CLOUD_POSITION_X = 360;
-var MAX_CLOUD_POSITION_X = 680;
-var MIN_CLOUD_POSITION_Y = 0;
-var MAX_CLOUD_POSITION_Y = 1136;
-var MIN_CLOUD_SPEED = 300;
-var MAX_CLOUD_SPEED = 380;
+var MIN_CLOUD_SPEED = 350;
+var MAX_CLOUD_SPEED = 430;
 var MIN_CLOUD_FADE_OUT_TIME = 1.3;
 var MAX_CLOUD_FADE_OUT_TIME = 1.7;
+var ADVANCE_TIME = 0.5;
 
 var CloudLayer = cc.Layer.extend({
+    _cloudLayerFit: null,
+
     _cloud: null,
     _cb: null,
 
@@ -39,6 +37,8 @@ var CloudLayer = cc.Layer.extend({
         cc.log("CloudLayer init");
 
         if (!this._super()) return false;
+
+        this._cloudLayerFit = gameFit.battleScene.cloudLayer;
 
         var spriteSheet = cc.SpriteBatchNode.create(main_scene_image.cloud, MAX_CLOUD_COUNT);
         this.addChild(spriteSheet);
@@ -90,11 +90,11 @@ var CloudLayer = cc.Layer.extend({
             var point = cloud.getPosition();
             var x = point.x;
 
-            if (x > MID_CLOUD_POSITION_X) {
-                point.x = MAX_CLOUD_POSITION_X + CLOUD_RADIUS;
+            if (x > this._cloudLayerFit.MID_CLOUD_POSITION_X) {
+                point.x = this._cloudLayerFit.MAX_CLOUD_POSITION_X + CLOUD_RADIUS;
                 x = point.x - x;
             } else {
-                point.x = MIN_CLOUD_POSITION_X - CLOUD_RADIUS;
+                point.x = this._cloudLayerFit.MIN_CLOUD_POSITION_X - CLOUD_RADIUS;
                 x = x - point.x;
             }
 
@@ -111,13 +111,13 @@ var CloudLayer = cc.Layer.extend({
             cloud.runAction(action);
         }
 
-        this.scheduleOnce(this.end, time);
+        this.scheduleOnce(this.end, time - ADVANCE_TIME);
     },
 
     _getRandomPosition: function () {
         return cc.p(
-            lz.random(MIN_CLOUD_POSITION_X, MAX_CLOUD_POSITION_X),
-            lz.random(MIN_CLOUD_POSITION_Y, MAX_CLOUD_POSITION_Y)
+            lz.random(this._cloudLayerFit.MIN_CLOUD_POSITION_X, this._cloudLayerFit.MAX_CLOUD_POSITION_X),
+            lz.random(this._cloudLayerFit.MIN_CLOUD_POSITION_Y, this._cloudLayerFit.MAX_CLOUD_POSITION_Y)
         );
     },
 

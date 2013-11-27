@@ -36,7 +36,7 @@ var TreasureHunt = Entity.extend({
         }
 
         if (this._freeCount <= 0 && gameData.player.get("gold") < 10) {
-            TipLayer.tip("元宝不足");
+            TipLayer.tip("魔石不足");
             return false;
         }
 
@@ -47,7 +47,7 @@ var TreasureHunt = Entity.extend({
         cc.log("TreasureHunt treasureHunt");
 
         var that = this;
-        lzWindow.pomelo.request("area.dailyHandler.lottery", {}, function (data) {
+        lz.server.request("area.dailyHandler.lottery", {}, function (data) {
             cc.log("pomelo websocket callback data:");
             cc.log(data);
 
@@ -67,7 +67,7 @@ var TreasureHunt = Entity.extend({
                 that._count = msg.lotteryCount;
                 that._freeCount = msg.lotteryFreeCount;
 
-                var str = table.name + ": " + table.value;
+                var str = table.name + ": +" + table.value;
 
                 cb({
                     id: msg.resourceId,

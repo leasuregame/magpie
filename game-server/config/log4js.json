@@ -59,6 +59,6 @@
     "forward-log": "ERROR"
   },
 
-  "replaceConsole": false,
+  "replaceConsole": true,
   "lineDebug": true
 }

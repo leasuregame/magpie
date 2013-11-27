@@ -14,6 +14,7 @@ entityUtil = require '../../../util/entityUtil'
 job = require '../../../dao/job'
 achieve = require '../../../domain/achievement'
 _ = require 'underscore'
+logger = require('pomelo-logger').getLogger(__filename)
 
 MAX_CARD_COUNT = table.getTableItem('resource_limit', 1).card_count_limit
 LOTTERY_BY_GOLD = 1
@@ -126,7 +127,8 @@ Handler::luckyCard = (msg, session, next) ->
       hdcc = player.highDrawCardCount + 1 #高级抽卡次数
 
       if isFree
-        [card, consumeVal, fragment] = lottery.freeLottery(level)
+        except_ids = _.values(player.cards).map (c) -> c.tableId
+        [card, consumeVal, fragment] = lottery.freeLottery(level, except_ids)
       else
         [card, consumeVal, fragment] = lottery.lottery(level, type, rfc, hfc, hdcc)
 
@@ -202,6 +204,7 @@ Handler::skillUpgrade = (msg, session, next) ->
   cardId = msg.cardId
 
   sp_need = 0
+  card = null
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
@@ -221,7 +224,7 @@ Handler::skillUpgrade = (msg, session, next) ->
       if card? and card.skillLv == 5
         return cb({code: 501, msg: '该卡牌的技能等级已经升到最高级，不能再升级了'})
 
-      upgradeData = table.getTableItem('skill_upgrade', card.skillLv + 1)
+      upgradeData = table.getTableItem('skill_upgrade', card.skillLv)
       sp_need = upgradeData['star'+card.star]
 
       if player.skillPoint < sp_need
@@ -231,12 +234,33 @@ Handler::skillUpgrade = (msg, session, next) ->
       card.increase('skillPoint', sp_need)
       player.decrease('skillPoint', sp_need)
       cb(null, player, card)
-  ], (err, player, card) ->
+
+    (player, card, cb) ->
+      _jobs = []
+
+      playerData = player.getSaveData()
+      _jobs.push {
+        type: 'update'
+        options: 
+          table: 'player'
+          where: id: player.id
+          data: playerData
+      } if not _.isEmpty(playerData)
+
+      cardData = card.getSaveData()
+      _jobs.push {
+        type: 'update'
+        options:
+          table: 'card'
+          where: id: card.id
+          data: cardData
+      } if not _.isEmpty(cardData)
+
+      job.multJobs _jobs, cb
+  ], (err, res) ->
     if err
       return next(null, {code: err.code, msg: err.msg})
 
-    card.save()
-    player.save()
     next(null, {code: 200, msg: {skillLv: card.skillLv, skillPoint: sp_need, ability: card.ability()}})
 
 Handler::starUpgrade = (msg, session, next) ->
@@ -281,7 +305,7 @@ Handler::starUpgrade = (msg, session, next) ->
       money_consume = starUpgradeConfig.money_need
       
       if player.money < money_consume
-        return cb({code: 501, msg: '铜板不足'})
+        return cb({code: 501, msg: '仙币不足'})
 
       if card_count > starUpgradeConfig.max_num
         return cb({code: 501, msg: "最多只能消耗#{starUpgradeConfig.max_num}张卡牌来进行升级"})
@@ -376,15 +400,16 @@ Handler::passSkillAfresh  = (msg, session, next) ->
   type = if msg.type? then msg.type else passSkillConfig.TYPE.MONEY
   _pros = 1: 'money', 2: 'gold'
 
+  consumeVal = 0
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
 
     (player, cb) ->
-      money_need = passSkillConfig.CONSUME[type] * psIds.length
+      consumeVal = passSkillConfig.CONSUME[type] * psIds.length
 
-      if player[_pros[type]] < money_need
-        return cb({code: 501, msg: '铜板/元宝不足，不能洗炼'})
+      if player[_pros[type]] < consumeVal
+        return cb({code: 501, msg: if _pros[type] == 'money' then '仙币不足' else '魔石不足'})
 
       card = player.getCard(cardId)
       passSkills = card.passiveSkills.filter (ps) -> _.contains(psIds, ps.id)
@@ -393,7 +418,7 @@ Handler::passSkillAfresh  = (msg, session, next) ->
         return cb({code: 501, msg: '找不到被动属性'})
 
       card.afreshPassiveSkill(type, ps) for ps in passSkills
-      player.decrease(_pros[type], money_need)
+      player.decrease(_pros[type], consumeVal)
       cb(null, player, card)
   ], (err, player, card) ->
     if err
@@ -476,9 +501,6 @@ Handler::useElixir = (msg, session, next) ->
     if (err) 
       return next(null, {code: err.code or 500, msg: err.msg or err})
 
-    if player.lv < 10
-      return next(null, {code: 501, msg: '10级开放'})
-
     if player.elixir < elixir
       return next(null, {code: 501, msg: '仙丹不足'})
 
@@ -490,21 +512,18 @@ Handler::useElixir = (msg, session, next) ->
       return next(null, {code: 501, msg: '不能对3星以下的卡牌使用仙丹'})
 
     limit = elixirLimit.getItem(card.star)
-    console.log '-a-', card, limit
     if (card.elixirHp + card.elixirAtk) >= limit.elixir_limit
-      return next(null, {code: 501, msg: "卡牌仙丹容量已满"})
+      return next(null, {code: 501, msg: "卡牌可吞噬仙丹数量已满"})
 
     if (card.elixirHp + card.elixirAtk + elixir) > limit.elixir_limit
       return next(null, {code: 501, msg: "使用的仙丹已经超出了卡牌的最大仙丹容量"})
 
-    if not player.isCanUseElixirForCard(cardId)
-      return next(null, {code: 501, msg: "消耗的仙丹已达到当前玩家级别的上限"})
+    if (card.elixirHp + card.elixirAtk + elixir) > player.canUseElixir()
+      return next(null, {code: 501, msg: "已达当前可吞噬数量上限，请提升角色等级"})
 
-    can_use_elixir = player.canUseElixir(cardId)
-    if can_use_elixir < elixir
-      return next(null, {code: 501, msg: "最多还可以消耗#{can_use_elixir}点仙丹"})
-
-    console.log '0a0: ', player.elixirPerLv, can_use_elixir
+    # can_use_elixir = player.canUseElixir(cardId)
+    # if can_use_elixir < elixir
+    #   return next(null, {code: 501, msg: "最多还可以消耗#{can_use_elixir}点仙丹"})
 
     card.increase('elixirHp', elixir) if type is ELIXIR_TYPE_HP
     card.increase('elixirAtk', elixir) if type is ELIXIR_TYPE_ATK
@@ -565,7 +584,7 @@ Handler::changeLineUp = (msg, session, next) ->
       return next(null, {code: 501, msg: '上阵卡牌不能是相同系列的卡牌'})
 
     if not checkCardCount(player.lv, cids)
-      return next(null, {code: 501, msg: "上阵卡牌数量不对"})
+      return next(null, {code: 501, msg: "当前等级只能上阵#{lineupCardCount(player.lv)}张卡牌"})
 
     player.updateLineUp(lineupObj)
     player.save()
@@ -677,9 +696,14 @@ cardStar = (tableId) ->
 
 checkCardCount = (playerLv, cardIds) ->
   card_count = (cardIds.filter (id) -> id isnt -1).length
+  if card_count > lineupCardCount(playerLv)
+    return false
+  else
+    return true
+
+lineupCardCount = (plv) ->
   fdata = table.getTableItem('function_limit', 1)
-  lvMap = {4: fdata.card4_position, 5: fdata.card5_position}
+  lvMap = {3: fdata.card3_position, 4: fdata.card4_position, 5: fdata.card5_position}
   for qty, lv of lvMap
-    if playerLv < lv and card_count >= qty
-      return false
-  return true
+    return qty - 1 if plv < lv
+  return 5

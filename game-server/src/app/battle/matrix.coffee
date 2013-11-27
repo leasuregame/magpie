@@ -40,10 +40,10 @@ class Matrix
       throw new Error "Invalid parameter, #{pos}"
     @matrixOrder.indexOf(pos)
 
-  attackElement: (scope, args) ->
+  attackElement: (scope, args, filter) ->
     try
       if scope of @
-        els = @[scope](args)
+        els = @[scope](args, filter)
         els = [els] if not _.isArray(els)
         return _.filter els, (e) -> e? and not e.death?()
       else
@@ -150,40 +150,58 @@ class Matrix
 
   hp_max: ->
     items = @all()
+    return null if items.length == 0
+
     res = items[0]
     items.forEach (h) ->
-      h.hp > res.hp && res = h
+      res = h if h.hp > res.hp
     res
 
   hp_min: ->
     items = @all()
+    return null if items.length == 0
+
     res = items[0]
     items.forEach (h) ->
-      h.hp < res.hp && res = h
+      res = h if h.hp < res.hp
     res
 
   atk_max: ->
     items = @all()
+    return null if items.length == 0
+
     res = items[0]
     items.forEach (h) ->
-      h.atk > res.atk && res = h
+      res = h if h.atk > res.atk
     res
 
   atk_min: ->
     items = @all()
+    return null if items.length == 0
+
     res = items[0]
     items.forEach (h) ->
-      h.atk < res.atk && res = h
+      res = h if h.atk < res.atk
     res
 
   default: (pos) ->
     @getElement(pos)
 
-  random: (num = 1) ->    
+  random: (num = 1, filter) ->    
     len = @rows * @cols
-    num = len if num > len
-    
     indexs = _.range(len)
+    if filter and _.isFunction(filter)
+      items = []
+      indexs = []
+      allItems = @allWithNull()
+      for i in _.range(len)
+        if filter(allItems[i])
+          items.push allItems[i] 
+          indexs.push i
+      len = items.length
+
+    num = len if num > len    
+    
     _res = []
     for i in _.range(num)
       rd_index = Math.floor(Math.random() * len--)

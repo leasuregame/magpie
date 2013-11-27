@@ -13,10 +13,10 @@
 
 var cardConfig = require('../../config/data/card');
 var utility = require('../common/utility');
+var entityUtil = require('../util/entityUtil');
 var Card = require('../domain/entity/card');
 var table = require('../manager/table');
 var _ = require("underscore");
-
 
 var lottery = function (level, type, rFragments, hFragment, hCounts) {
     var card = newCard(level, hCounts);
@@ -27,9 +27,16 @@ var lottery = function (level, type, rFragments, hFragment, hCounts) {
     return [card, consume_val, fragment];
 };
 
-var freeLottery = function(level) {
+var freeLottery = function(level, eids) {
+    if (eids == null || !_.isArray(eids)){
+        eids = [];
+    }
+
     var star = level == 1 ? 3 : 4;
     var card = freeCard(star);
+    while (eids.indexOf(card.tableId) > -1) {
+        card = freeCard(star);
+    }
     return [card, 0, 0];
 };
 
@@ -39,7 +46,8 @@ var freeLottery = function(level) {
  * 2：高级抽卡
  * */
 var randomCardId = function (star) {
-    return _.random(0, 49) * 5 + star;
+    var len = tableIds.length;
+    return tableIds[_.random(0, len/5 - 1) * 5 + star - 1];
 };
 
 var gen_card_star = function (level, hCounts) {
@@ -108,7 +116,7 @@ var gen_card_fragment = function (level, rCounts, hCounts) {
 
 var newCard = function (level, hCounts) {
     var card_star = parseInt(gen_card_star(level, hCounts));
-    var card_id = randomCardId(card_star);
+    var card_id = entityUtil.randomCardId(card_star);
     var card_level = parseInt(gen_card_level(card_star));
 
     return {
@@ -119,11 +127,16 @@ var newCard = function (level, hCounts) {
 };
 
 var freeCard = function(star) {
+    var firstCard = table.getTableItem('first_card', 1)
+    var idMap = {
+        3: JSON.parse(firstCard.star3),
+        4: JSON.parse(firstCard.star4)
+    };
     return {
-        tableId: randomCardId(star),
+        tableId: idMap[star][_.random(0, idMap[star].length-1)],
         star: star,
         lv: parseInt(gen_card_level(star))
-    }
+    };
 };
 
 var consume = function (level, type) {

@@ -12,6 +12,10 @@
  * */
 
 
+var MAX_LAST_NAME_COUNT = 250;
+var MAX_FIRST_NAME_COUNT = 2568;
+var MAX_ILLEGAL_STR_COUNT = 778;
+
 var User = Entity.extend({
     _id: 0,                 // 账号序号
     _createTime: 0,         // 创建时间
@@ -52,68 +56,175 @@ var User = Entity.extend({
 
         this._account = sys.localStorage.getItem("account") || "chenchen";
         this._password = sys.localStorage.getItem("password") || "1";
-        this._area = parseInt(sys.localStorage.getItem("area")) || 1;
+        this._area = parseInt(sys.localStorage.getItem("area")) || 0;
+    },
+
+    _save: function () {
+        cc.log("User _save");
+
+        sys.localStorage.setItem("account", this._account);
+        sys.localStorage.setItem("password", this._password);
+        sys.localStorage.setItem("area", this._area);
+    },
+
+    getRandomFirstName: function () {
+        cc.log("User getRandomFirstName");
+
+        return (outputTables.first_name.rows[lz.randomInt(1, MAX_FIRST_NAME_COUNT)].first_name);
+    },
+
+    getRandomLastName: function () {
+        cc.log("User getRandomLastName");
+
+        return (outputTables.last_name.rows[lz.randomInt(1, MAX_LAST_NAME_COUNT)].last_name);
+    },
+
+    getRandomName: function () {
+        cc.log("User getRandomName");
+
+        return (this.getRandomLastName() + this.getRandomFirstName());
+    },
+
+    eligibleName: function (name) {
+        cc.log("User eligibleName");
+
+        var illegalStr = outputTables.illegal_str.rows;
+
+        for (var i = 1; i < MAX_ILLEGAL_STR_COUNT; ++i) {
+            if (name.indexOf(illegalStr[i].illegal_str) != -1) {
+                cc.log(illegalStr[i].illegal_str);
+
+                return false;
+            }
+        }
+
+        return true;
+    },
+
+    canLogin: function () {
+        cc.log("User canLogin");
+
+        if (!this._area) {
+            TipLayer.tip("请先选择所要登录的区服");
+            return false;
+        }
+
+        if (!this._account) {
+            TipLayer.tip("请输入账号");
+            return false;
+        }
+
+        if (!this._password) {
+            TipLayer.tip("请输入密码");
+            return false;
+        }
+
+        return true;
     },
 
     login: function (cb) {
         cc.log("User login");
 
-        sys.localStorage.setItem("account", this._account);
-        sys.localStorage.setItem("password", this._password);
-        sys.localStorage.setItem("area", this._area);
-
         cc.log(this._account);
         cc.log(this._password);
         cc.log(this._area);
 
+        this._save();
+
         var that = this;
-        lzWindow.pomelo.request("connector.userHandler.login", {
-            account: this._account,
-            password: this._password,
-            areaId: 1
-        }, function (data) {
-            cc.log(data);
+        lz.server.connectGameServer(function () {
+            lz.server.request("connector.userHandler.login", {
+                account: that._account,
+                password: that._password,
+                areaId: that._area
+            }, function (data) {
+                cc.log(data);
 
-            var msg = data.msg;
+                var msg = data.msg;
 
-            if (data.code == 200) {
-                cc.log("login success");
+                if (data.code == 200) {
+                    cc.log("login success");
 
-                that.update(msg.user);
+                    that.update(msg.user);
 
-                gameData.player.init(msg.player);
+                    var player = msg.player;
 
-                cb(true);
-            } else {
-                cc.log("login fail");
+                    if (player) {
+                        gameData.gameInit();
+                        gameData.player.init(msg.player);
 
-                cb(false);
+                        cb(1);
+                    } else {
+                        cb(2);
+                    }
+                } else {
+                    cc.log("login fail");
 
-                TipLayer.tip(data.msg);
-            }
+                    cb(0);
+
+                    TipLayer.tip(data.msg);
+                }
+            });
         });
     },
 
-    register: function (cb) {
+    register: function (cb, account, password, name) {
         cc.log("User register");
 
+        var param = {
+            account: account,
+            password: password
+        };
+
+        if (name) {
+            param.name = name;
+        }
+
         var that = this;
-        lzWindow.pomelo.request("connector.userHandler.register", {
-            account: this._account,
-            password: this._password,
-            name: this._name
+        lz.server.connectGameServer(function () {
+            lz.server.request("connector.userHandler.register", param, function (data) {
+                cc.log(data);
+
+                if (data.code == 200) {
+                    cc.log("register success");
+
+                    that._account = account;
+                    that._password = password;
+
+                    that._save();
+
+                    cb();
+                } else {
+                    cc.log("register fail");
+
+                    TipLayer.tip(data.msg);
+                }
+            });
+        });
+    },
+
+    createPlayer: function (cb, name) {
+        cc.log("User createPlayer");
+
+        var that = this;
+        lz.server.request("connector.playerHandler.createPlayer", {
+            name: name
         }, function (data) {
             cc.log(data);
 
             if (data.code == 200) {
-                cc.log("register success");
+                cc.log("createPlayer success");
 
+                var msg = data.msg;
 
-                cb("success");
+                gameData.gameInit();
+                gameData.player.init(msg.player);
+
+                cb();
             } else {
-                cc.log("register fail");
+                cc.log("createPlayer fail");
 
-                cb("fail");
+                TipLayer.tip(data.msg);
             }
         });
     },

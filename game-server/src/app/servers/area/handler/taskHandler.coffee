@@ -54,14 +54,13 @@ Handler::explore = (msg, session, next) ->
             countSpirit(player, battleLog, 'TASK')
             player.incSpirit battleLog.totalSpirit if battleLog.winner is 'own'
 
-          ### 每次战斗结束都有20%的概率获得5元宝 ###
+          ### 每次战斗结束都有10%的概率获得5魔石 ###
           if utility.hitRate(taskRate.gold_obtain.rate)
             player.increase('gold', taskRate.gold_obtain.value)
-            data.gold_obtain += taskRate.gold_obtain.value
-
-          checkFragment(battleLog, player, chapterId)
+            data.gold_obtain += taskRate.gold_obtain.value          
 
           if battleLog.winner is 'own'
+            checkFragment(battleLog, player, chapterId)
             async.parallel [
               (callback) ->
                 taskManager.obtainBattleRewards(player, data, chapterId, battleLog, callback)
@@ -100,7 +99,7 @@ Handler::updateMomoResult = (msg, session, next) ->
       return next(null, {code: err.code or 500, msg: err.msg})
 
     if gold > player.getMonoGiftTotal()
-      return next(null,{code: 501,msg: '获取的元宝数大于实际值'})
+      return next(null,{code: 501,msg: '获取的魔石数大于实际值'})
     player.clearMonoGift()
 
     player.increase 'gold', gold
@@ -218,16 +217,16 @@ Handler::passBarrier = (msg, session, next) ->
   重置关卡
 ###
 Handler::resetPassMark = (msg, session, next) ->
-
   playerId = session.get('playerId')
   player = null
+  goldResume = 200
   async.waterfall [
     (cb) ->
       playerManager.getPlayerInfo {pid: playerId}, cb
     (res,cb) ->
       player = res
-      if player.gold < 200
-        return cb({code: 501,msg: '元宝不足'})
+      if player.gold < goldResume
+        return cb({code: 501,msg: '魔石不足'})
 
       if not player.canResetPassMark()
         return cb({code: 501, msg: '没有关卡可以重置'})
@@ -238,7 +237,7 @@ Handler::resetPassMark = (msg, session, next) ->
         return cb({code: 501,msg: '重置关卡次数已用光'})
 
     (cb) ->
-      player.decrease 'gold', 200
+      player.decrease 'gold', goldResume
       cb(null, player.gold)
   ],(err,gold) ->
 
@@ -318,9 +317,12 @@ checkMysticalPass = (player) ->
 
   mpc = table.getTableItem 'mystical_pass_config', player.pass.mystical.diff
 
-  if mpc and (player.passLayer >= mpc.layer_from and player.passLayer <= mpc.layer_to) and utility.hitRate(mpc.rate)
+  if mpc and player.passLayer < mpc.layer_from
+    return
+  else if mpc and player.passLayer is mpc.layer_to and not player.pass.mystical.isTrigger
     player.triggerMysticalPass()
-
+  else if utility.hitRate(mpc.rate)
+    player.triggerMysticalPass()
 
 updatePlayer = (player, rewards, layer) ->
   player.increase('money', rewards.money)
@@ -339,6 +341,7 @@ checkFragment = (battleLog, player, chapterId) ->
     task = utility.deepCopy(player.task)
     task.hasFragment = parseInt(chapterId)
     player.set('task', task)
+    player.increase('fragments')
   else 
     battleLog.rewards.fragment = 0
     

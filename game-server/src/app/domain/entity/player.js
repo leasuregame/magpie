@@ -204,11 +204,12 @@ var Player = (function(_super) {
 
         // executeVipPrivilege(this);
         correctPower(this);
+        this.created = utility.dateFormat(new Date(this.created), 'yyyy-MM-dd h:mm:ss');
     };
 
     Player.FIELDS = [
         'id',
-        'createTime',
+        'created',
         'userId',
         'areaId',
         'name',
@@ -249,15 +250,15 @@ var Player = (function(_super) {
     Player.DEFAULT_VALUES = {
         power: {
             time: 0,
-            value: 150
+            value: 500
         },
         lv: 1,
         vip: 0,
         vipBox: [],
         cash: 0,
         exp: 0,
-        money: 0,
-        gold: 0,
+        money: 10000,
+        gold: 20,
         lineUp: '12:-1',
         ability: 0,
         task: {
@@ -372,12 +373,17 @@ var Player = (function(_super) {
 
         var pass = utility.deepCopy(this.pass);
         pass.resetTimes = 1;
+        pass.mark = [];
+
+        var task = utility.deepCopy(this.task);
+        task.mark = [];
 
         var spiritPool = utility.deepCopy(this.spiritPool);
         spiritPool.collectCount = spiritConfig.MAX_COLLECT_COUNT + vipPrivilege.spirit_collect_count;
 
         this.dailyGift = dg;
         this.pass = pass;
+        this.task = task;
         this.spiritPool = spiritPool;
         this.friendsCount = realCount(this.lv, friendsCountTab) + vipPrivilege.friend_count;
         this.resetDate = utility.shortDateString();
@@ -440,6 +446,11 @@ var Player = (function(_super) {
 
             incs.spirit_hp += _hp;
             incs.spirit_atk += _atk;
+
+            // 最小值为1
+            incs.spirit_hp = _.max([incs.spirit_hp, 1]);
+            incs.spirit_atk = _.max([incs.spirit_atk, 1]);
+
             _.extend(card.incs, incs);
             card.recountHpAndAtk();
         }
@@ -468,10 +479,9 @@ var Player = (function(_super) {
         var total_spirit = spiritor.spirit;
         var spiritorData = table.getTableItem('spirit', spiritor.lv);
 
-        while ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < MAX_SPIRITOR_LV) {
+        if ( !! spiritorData && total_spirit >= spiritorData.spirit_need && spiritor.lv < MAX_SPIRITOR_LV) {
             spiritor.lv += 1;
             total_spirit -= spiritorData.spirit_need;
-            spiritorData = table.getTableItem('spirit', spiritor.lv);
         }
         spiritor.spirit = total_spirit;
         this.set('spiritor', spiritor);
@@ -650,9 +660,8 @@ var Player = (function(_super) {
     };
 
     Player.prototype.givePower = function(hour, value) {
-        var max_power = getMaxPower(this.lv);
         var power = utility.deepCopy(this.power);
-        power.value = _.min([power.value + value, max_power]);
+        power.value += value;
         power.time = Date.now();
         this.updatePower(power);
 
@@ -688,7 +697,7 @@ var Player = (function(_super) {
                 msg: '找不到目标卡牌'
             });
         }
-        var source_cards = this.getCards(sources);
+        var source_cards = this.popCards(sources);
         if (source_cards.length == 0) {
             return cb({
                 code: 501,
@@ -725,7 +734,7 @@ var Player = (function(_super) {
         if (this.money < moneyConsume) {
             return cb({
                 code: 501,
-                msg: '铜板不足'
+                msg: '仙币不足'
             });
         }
 
@@ -768,7 +777,7 @@ var Player = (function(_super) {
     };
 
     /*
-     元宝数量  元宝个数
+     魔石数量  魔石个数
 
      1--5       6个
 
@@ -968,15 +977,11 @@ var Player = (function(_super) {
         this.emit('receive.bless');
     };
 
-    Player.prototype.isCanUseElixirForCard = function(cardId) {
-        if (_.has(this.elixirPerLv, cardId)) {
-            return this.elixirPerLv[cardId] < elxirLimit(this.lv);
+    Player.prototype.canUseElixir = function() {
+        if (this.lv >= 80) {
+            return Number.MAX_VALUE;
         }
-        return true;
-    };
-
-    Player.prototype.canUseElixir = function(cardId) {
-        return elxirLimit(this.lv) - (this.elixirPerLv[cardId] || 0);
+        return elixirLimit(this.lv);
     };
 
     Player.prototype.useElixirForCard = function(cardId, elixir) {
@@ -1075,7 +1080,7 @@ var Player = (function(_super) {
     Player.prototype.toJson = function() {
         return {
             id: this.id,
-            createTime: this.createTime,
+            createTime: new Date(this.created).getTime(),
             userId: this.userId,
             areaId: this.areaId,
             name: this.name,
@@ -1114,12 +1119,12 @@ var Player = (function(_super) {
     return Player;
 })(Entity);
 
-var elxirLimit = function(lv) {
-    var limit = 2000;
-    if (lv > 50 && lv <= 100) {
-        limit = 4000;
+var elixirLimit = function(lv) {
+    if (lv <= 50) {
+        return 2000 * lv;
+    } else {
+        return 2000 * 50 + 4000 * (lv - 50);
     }
-    return limit;
 };
 
 // var processSpiritPoll = function(sp) {
@@ -1192,6 +1197,7 @@ var checkLineUp = function(player) {
 
     var fdata = table.getTableItem('function_limit', 1);
     var lvMap = {
+        3: fdata.card3_position,
         4: fdata.card4_position,
         5: fdata.card5_position
     };

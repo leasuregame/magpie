@@ -220,10 +220,10 @@ var entryGame = function(account, areaId) {
 
 
 var game = {
-  init: function() {
+  init: function(port) {
     pomelo.init({
       host: '127.0.0.1',
-      port: '3010'
+      port: port
     }, function() {
       console.log('connect success!');
       pomelo.on('onLeaveMessage', function(data){
@@ -252,6 +252,14 @@ var game = {
 
       pomelo.on('onLightUpCard', function(data){
         console.log('Receive a message: ', data);
+      });
+
+      pomelo.on('onKick', function(data) {
+        console.log('on kick', data);
+      });
+
+      pomelo.on('close', function(data) {
+        console.log('on close', data);
       });
 
     });

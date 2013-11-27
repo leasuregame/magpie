@@ -4,7 +4,7 @@
 DROP TABLE IF EXISTS `player`;
 CREATE TABLE IF NOT EXISTS `player` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `createTime` BIGINT(20) UNSIGNED NOT NULL,
+  `created` DATETIME NOT NULL,
   `userId` INT(10) UNSIGNED NOT NULL,
   `areaId` SMALLINT(5) UNSIGNED NOT NULL,
   `name` VARCHAR(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -51,6 +51,8 @@ DROP TABLE IF EXISTS `friend`;
 CREATE TABLE IF NOT EXISTS `friend` (
   `playerId` INT(10) UNSIGNED NOT NULL,
   `friendId` INT(10) UNSIGNED NOT NULL,
+  `giveCount` INT(10) UNSIGNED DEFAULT '0',
+  `receiveCount` INT(10) UNSIGNED DEFAULT '0',
   PRIMARY KEY (`playerId`, `friendId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -84,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `card` (
   `lv` SMALLINT(5) UNSIGNED DEFAULT '1',
   `exp` INT(10) UNSIGNED DEFAULT '0',
   `skillLv` TINYINT(3) UNSIGNED DEFAULT '1',
-  `skillInc` FLOAT(5,1) UNSIGNED DEFAULT '0',
+  `skillInc` INT(5) UNSIGNED DEFAULT '0',
   `skillPoint` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的技能点
   `elixirHp` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
   `elixirAtk` INT(10) UNSIGNED DEFAULT '0',  -- 消耗的仙丹数
@@ -122,5 +124,23 @@ CREATE TABLE IF NOT EXISTS `rank` (
   `recentChallenger` VARCHAR(100)  COLLATE utf8_unicode_ci DEFAULT '',
   `historyRanking` INT(10) UNSIGNED DEFAULT '0',
   `gotRewards` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+DROP TABLE IF EXISTS `onlineUser`;
+CREATE TABLE IF NOT EXISTS `onlineUser` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `createTime` BIGINT(20) UNSIGNED NOT NULL,
+  `qty` INT(10) UNSIGNED DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+DROP TABLE IF EXISTS `lvDistribution`;
+CREATE TABLE IF NOT EXISTS `lvDistribution` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `createTime` Date,
+  `lv` INT(10) UNSIGNED DEFAULT '0',
+  `qty` INT(10) UNSIGNED DEFAULT '0',
+  `playerCreateDate` Date,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

@@ -67,11 +67,14 @@ var MainLayer = cc.Layer.extend({
 
             var node = cc.BuilderReader.load(main_scene_image[url], this);
 
+            cc.log(node);
+            cc.log(this);
+
             if (node != null) {
-                node.setPosition(cc.p(360, 500));
+                node.setPosition(cc.p(360, 568));
                 this.addChild(node);
 
-                node.animationManager.setCompletedAnimationCallback(this, this._clearEffect);
+//                node.animationManager.setCompletedAnimationCallback(this, this._clearEffect);
 
                 this._effectNode = node;
             }
@@ -84,7 +87,7 @@ var MainLayer = cc.Layer.extend({
         this._changeEffect();
     },
 
-    testCallback: function () {
+    callback: function () {
         cc.log("回调成功");
     }
 });

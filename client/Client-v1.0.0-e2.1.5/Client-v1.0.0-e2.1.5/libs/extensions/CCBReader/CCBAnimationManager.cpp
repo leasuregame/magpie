@@ -41,6 +41,7 @@ bool CCBAnimationManager::init()
     mDocumentOutletNodes = new CCArray();
     mDocumentCallbackNames = new CCArray();
     mDocumentCallbackNodes = new CCArray();
+    mDocumentCallbackControlEvents = new CCArray();
     mKeyframeCallbacks = new CCArray();
     mKeyframeCallFuncs = new CCDictionary();
 
@@ -75,7 +76,8 @@ CCBAnimationManager::~CCBAnimationManager()
     CC_SAFE_RELEASE(mDocumentOutletNodes);
     CC_SAFE_RELEASE(mDocumentCallbackNames);
     CC_SAFE_RELEASE(mDocumentCallbackNodes);
-    
+    CC_SAFE_RELEASE(mDocumentCallbackControlEvents);
+
     CC_SAFE_RELEASE(mKeyframeCallFuncs);
     CC_SAFE_RELEASE(mKeyframeCallbacks);
     CC_SAFE_RELEASE(mTarget);
@@ -84,6 +86,27 @@ CCBAnimationManager::~CCBAnimationManager()
 CCArray* CCBAnimationManager::getSequences()
 {
     return mSequences;
+}
+
+float CCBAnimationManager::getSequenceDuration(const std::string &name)
+{
+    int id = getSequenceId(name.c_str());
+
+    if(id == -1)
+    {
+        CCLOGERROR("can not found sequence %s",name.c_str());
+        return 0;
+    }
+
+    CCBSequence* s = getSequence(id);
+
+    if(s == NULL){
+
+        CCLOGERROR("sequence %s is NULL",name.c_str());
+        return 0;
+    }
+  
+    return s->getDuration();
 }
 
 void CCBAnimationManager::setSequences(CCArray* seq)
@@ -129,12 +152,22 @@ void CCBAnimationManager::addDocumentCallbackName(std::string name) {
     mDocumentCallbackNames->addObject(tmpName);
 }
 
+void CCBAnimationManager::addDocumentCallbackControlEvents(CCControlEvent eventType)
+{
+    mDocumentCallbackControlEvents->addObject(CCInteger::create((int)eventType));
+}
+
 CCArray* CCBAnimationManager::getDocumentCallbackNames() {
     return mDocumentCallbackNames;
 }
 
 CCArray* CCBAnimationManager::getDocumentCallbackNodes() {
     return mDocumentCallbackNodes;
+}
+
+CCArray* CCBAnimationManager::getDocumentCallbackControlEvents()
+{
+    return mDocumentCallbackControlEvents;
 }
 
 void CCBAnimationManager::addDocumentOutletNode(CCNode *node) {

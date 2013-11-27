@@ -1,6 +1,9 @@
 dao = require('pomelo').app.get('dao')
 async = require('async')
 
+CHINESE_REG = /^[0-9\u4e00-\u9fa5]{1,6}$/
+EMPTY_SPACE_REG = /\s+/g
+
 module.exports = (app) ->
   new Handler(app)
 
@@ -11,6 +14,12 @@ Handler::createPlayer = (msg, session, next) ->
   areaId = session.get('areaId') or msg.areaId
   userId = session.get('userId') or msg.userId
   uid = session.uid
+
+  if EMPTY_SPACE_REG.test(name)
+    return next(null, {code: 501, msg: '角色名称不能包含空格'})
+
+  if not CHINESE_REG.test(name)
+    return next(null, {code: 501, msg: '只能输入1-6位汉字'})
 
   @app.rpc.area.playerRemote.createPlayer session, {
     name: name
@@ -26,10 +35,18 @@ Handler::createPlayer = (msg, session, next) ->
 afterCreatePlayer = (app, session, uid, areaId, player, next) ->
   async.waterfall [
     (cb) ->
-      dao.user.fetchOne where: id: uid, cb
+      dao.user.fetchOne {
+        where: id: uid
+        sync: true
+      }, cb
 
     (user, cb) ->
-      user.roles = user.roles.push areaId
+      if _.isArray(user.roles)
+        roles = _.clone(user.roles)
+      else
+        roles = []
+      roles.push areaId
+      user.roles = roles
       user.lastLoginArea = areaId
       user.save()
       cb()

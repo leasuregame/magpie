@@ -22,17 +22,25 @@ var MainScene = cc.Scene.extend({
     init: function () {
         cc.log("MainScene init");
 
+        gameData.sound.playMusic();
+
         this._mainBgLayer = MainBgLayer.create();
         this.addChild(this._mainBgLayer, -1);
 
         this._mainMenuLayer = MainMenuLayer.create();
         this.addChild(this._mainMenuLayer, 1);
 
-        var gameFrame = GameFrame.create();
-        this.addChild(gameFrame, 10);
+        if (gameDevice != "Iphone5") {
+            var gameFrame = GameFrame.create();
+            this.addChild(gameFrame, 100);
+        }
 
-        this.switchLayer(MainLayer);
-
+        var noviceTeachingLayer = NoviceTeachingLayer.getInstance();
+        if (noviceTeachingLayer.isNoviceTeaching()) {
+            this.addChild(noviceTeachingLayer, 20);
+        } else {
+            this.switchLayer(MainLayer);
+        }
     },
 
     changeMessage: function (msg) {
@@ -91,5 +99,7 @@ var MainScene = cc.Scene.extend({
 
     MainScene.destroy = function () {
         _mainScene = null;
+
+        cc.AudioEngine.getInstance().stopMusic();
     };
 })();

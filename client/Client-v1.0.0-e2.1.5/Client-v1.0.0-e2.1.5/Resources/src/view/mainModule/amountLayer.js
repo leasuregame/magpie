@@ -13,6 +13,8 @@
 
 
 var AmountLayer = LazyLayer.extend({
+    _amountLayerFit: null,
+
     _cb: null,
     _price: 0,
     _obtain: 0,
@@ -33,6 +35,8 @@ var AmountLayer = LazyLayer.extend({
 
         if (!this._super()) return false;
 
+        this._amountLayerFit = gameFit.mainScene.amountLayer;
+
         this._cb = cb || function () {
         };
         this._price = data.price || 0;
@@ -42,58 +46,55 @@ var AmountLayer = LazyLayer.extend({
         tital = "购买" + data.name || "";
 
         var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 640, 1136);
-        bgLayer.setPosition(cc.p(40, 0));
+        bgLayer.setPosition(this._amountLayerFit.bgLayerPoint);
         this.addChild(bgLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
-        bgSprite.setContentSize(cc.size(550, 300));
-        bgSprite.setPosition(cc.p(360, 580));
+        bgSprite.setContentSize(this._amountLayerFit.bgSpriteContentSize);
+        bgSprite.setPosition(this._amountLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
         var titleLabel = StrokeLabel.create(tital, "STHeitiTC-Medium", 30);
         titleLabel.setColor(cc.c3b(255, 252, 175));
-        titleLabel.setPosition(cc.p(360, 690));
+        titleLabel.setPosition(this._amountLayerFit.titleLabelPoint);
         this.addChild(titleLabel);
 
         var consumeLabelIcon = cc.LabelTTF.create("消耗:", "STHeitiTC-Medium", 20);
         consumeLabelIcon.setColor(cc.c3b(255, 252, 175));
-        consumeLabelIcon.setPosition(cc.p(160, 630));
+        consumeLabelIcon.setPosition(this._amountLayerFit.consumeLabelIconPoint);
         this.addChild(consumeLabelIcon);
 
         var consumeIcon = cc.Sprite.create(main_scene_image[gameGoodsIcon[data.consumeType]]);
         consumeIcon.setScale(0.7);
-        consumeIcon.setPosition(cc.p(225, 630));
+        consumeIcon.setPosition(this._amountLayerFit.consumeIconPoint);
         this.addChild(consumeIcon);
 
         this._consumeLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
-        this._consumeLabel.setColor(cc.c3b(255, 252, 175));
         this._consumeLabel.setAnchorPoint(cc.p(0, 0.5));
-        this._consumeLabel.setPosition(cc.p(250, 627));
+        this._consumeLabel.setPosition(this._amountLayerFit.consumeLabelPoint);
         this.addChild(this._consumeLabel);
 
         var obtainLabelIcon = cc.LabelTTF.create("获得:", "STHeitiTC-Medium", 20);
         obtainLabelIcon.setColor(cc.c3b(255, 252, 175));
-        obtainLabelIcon.setPosition(cc.p(400, 630));
+        obtainLabelIcon.setPosition(this._amountLayerFit.obtainLabelIconPoint);
         this.addChild(obtainLabelIcon);
 
         this._obtainLabel = cc.LabelTTF.create(0, "STHeitiTC-Medium", 20);
-        this._obtainLabel.setColor(cc.c3b(255, 252, 175));
-        this._obtainLabel.setPosition(cc.p(480, 627));
+        this._obtainLabel.setPosition(this._amountLayerFit.obtainLabelPoint);
         this.addChild(this._obtainLabel);
 
         var obtainIcon = cc.LabelTTF.create(data.unit, "STHeitiTC-Medium", 20);
         obtainIcon.setColor(cc.c3b(255, 252, 175));
-        obtainIcon.setPosition(cc.p(560, 630));
+        obtainIcon.setPosition(this._amountLayerFit.obtainIconPoint);
         this.addChild(obtainIcon);
 
 
-        countIcom = cc.Sprite.create(main_scene_image.icon117);
-        countIcom.setPosition(cc.p(360, 570));
-        this.addChild(countIcom);
+        var countIcon = cc.Sprite.create(main_scene_image.icon117);
+        countIcon.setPosition(this._amountLayerFit.countIconPoint);
+        this.addChild(countIcon);
 
         this._countLabel = cc.LabelTTF.create(this._count, "STHeitiTC-Medium", 30);
-        this._countLabel.setColor(cc.c3b(255, 252, 175));
-        this._countLabel.setPosition(cc.p(360, 568));
+        this._countLabel.setPosition(this._amountLayerFit.countLabelPoint);
         this.addChild(this._countLabel);
 
         var addItem = cc.MenuItemImage.createWithIcon(
@@ -103,7 +104,7 @@ var AmountLayer = LazyLayer.extend({
             this._onClickAdd,
             this
         );
-        addItem.setPosition(cc.p(480, 570));
+        addItem.setPosition(this._amountLayerFit.addItemPoint);
 
         var addAddItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button39,
@@ -112,7 +113,7 @@ var AmountLayer = LazyLayer.extend({
             this._onClickAddAdd,
             this
         );
-        addAddItem.setPosition(cc.p(560, 570));
+        addAddItem.setPosition(this._amountLayerFit.addAddItemPoint);
 
         var subItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button39,
@@ -121,7 +122,7 @@ var AmountLayer = LazyLayer.extend({
             this._onClickSub,
             this
         );
-        subItem.setPosition(cc.p(240, 570));
+        subItem.setPosition(this._amountLayerFit.subItemPoint);
 
         var subSubItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button39,
@@ -130,7 +131,7 @@ var AmountLayer = LazyLayer.extend({
             this._onClickSubSub,
             this
         );
-        subSubItem.setPosition(cc.p(160, 570));
+        subSubItem.setPosition(this._amountLayerFit.subSubItemPoint);
 
         var okItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -139,7 +140,7 @@ var AmountLayer = LazyLayer.extend({
             this._onClickOk,
             this
         );
-        okItem.setPosition(cc.p(260, 490));
+        okItem.setPosition(this._amountLayerFit.okItemPoint);
 
         var closeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -148,7 +149,7 @@ var AmountLayer = LazyLayer.extend({
             this._onClickClose,
             this
         );
-        closeItem.setPosition(cc.p(460, 490));
+        closeItem.setPosition(this._amountLayerFit.closeItemPoint);
 
         var menu = cc.Menu.create(
             addItem,

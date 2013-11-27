@@ -47,37 +47,44 @@ var PlayerHeaderLabel = cc.Layer.extend({
         this.addChild(nameLabel);
 
         var expBg = cc.Sprite.create(main_scene_image.exp_bg);
-        expBg.setPosition(cc.p(210, 36));
+        expBg.setPosition(cc.p(214, 36));
         this.addChild(expBg);
 
         this._expProgress = Progress.create(null, main_scene_image.exp, 0, 0, true);
-        this._expProgress.setPosition(cc.p(214, 36));
+        this._expProgress.setPosition(cc.p(210, 36));
         this.addChild(this._expProgress);
-        this._expProgress.setFontColor(cc.c3b(255, 239, 131));
 
         var lvBg = cc.Sprite.create(main_scene_image.lv_bg);
         lvBg.setPosition(cc.p(60, 60));
         this.addChild(lvBg);
 
         this._lvLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 45);
-        this._lvLabel.setColor(cc.c3b(255, 239, 131));
         this._lvLabel.setPosition(cc.p(57, 58));
         this.addChild(this._lvLabel);
 
+        var goldIcon = cc.Sprite.create(main_scene_image.icon148);
+        goldIcon.setPosition(cc.p(510, 85));
+        this.addChild(goldIcon);
+
         this._goldLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._goldLabel.setColor(cc.c3b(255, 239, 131));
-        this._goldLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._goldLabel.setPosition(cc.p(580, 83));
+        this._goldLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._goldLabel.setPosition(cc.p(535, 83));
         this.addChild(this._goldLabel);
 
+        var moneyIcon = cc.Sprite.create(main_scene_image.icon149);
+        moneyIcon.setPosition(cc.p(510, 38));
+        this.addChild(moneyIcon);
+
         this._moneyLabel = cc.LabelTTF.create("0", "STHeitiTC-Medium", 22);
-        this._moneyLabel.setColor(cc.c3b(255, 239, 131));
-        this._moneyLabel.setAnchorPoint(cc.p(0.5, 0.5));
-        this._moneyLabel.setPosition(cc.p(580, 36));
+        this._moneyLabel.setAnchorPoint(cc.p(0, 0.5));
+        this._moneyLabel.setPosition(cc.p(535, 36));
         this.addChild(this._moneyLabel);
 
+        var powerIcon = cc.Sprite.create(main_scene_image.icon150);
+        powerIcon.setPosition(cc.p(360,38));
+        this.addChild(powerIcon);
+
         this._powerLabel = cc.LabelTTF.create("0 / 0", "STHeitiTC-Medium", 22);
-        this._powerLabel.setColor(cc.c3b(255, 239, 131));
         this._powerLabel.setAnchorPoint(cc.p(0.5, 0.5));
         this._powerLabel.setPosition(cc.p(427, 36));
         this.addChild(this._powerLabel);
@@ -85,7 +92,7 @@ var PlayerHeaderLabel = cc.Layer.extend({
         var vipLv = player.get("vip");
         if (vipLv) {
             var vipSprite = cc.Sprite.create(main_scene_image["vip" + vipLv]);
-            vipSprite.setPosition(cc.p(410, 83));
+            vipSprite.setPosition(cc.p(410, 87));
             this.addChild(vipSprite);
         }
 

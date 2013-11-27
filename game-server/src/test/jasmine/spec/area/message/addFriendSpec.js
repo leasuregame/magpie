@@ -113,41 +113,80 @@ describe("Area Server", function() {
                 beforeEach(function() {
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
-                        type: 1
+                        type: 1, 
+                        status: 1
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
-                        type: 1
+                        type: 1,
+                        status: 1
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
-                        type: 1
+                        type: 1,
+                        status: 1
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
-                        type: 2
+                        type: 1, 
+                        status: 1
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
-                        type: 2
+                        type: 2, 
+                        status: 6
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
-                        type: 2
+                        type: 2, 
+                        status: 6
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
-                        type: 3
+                        type: 2,
+                        status: 6
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
-                        type: 3
+                        type: 3,
+                        status: 6
                     }, function() {});
                     doAjax('/message/add', {
                         receiver: arthur.playerId,
-                        type: 4
+                        type: 3,
+                        status: 6
                     }, function() {});
-
+                    doAjax('/message/add', {
+                        receiver: arthur.playerId,
+                        type: 4,
+                        sender: -1,
+                        receiver: -1,
+                        status: 4
+                    }, function() {});                    
+                    doAjax('/message/add', {
+                        receiver: arthur.playerId,
+                        type: 4,
+                        sender: -1,
+                        status: 5
+                    }, function() {});
+                    doAjax('/message/add', {
+                        receiver: arthur.playerId,
+                        type: 4,
+                        sender: -1,
+                        status: 4
+                    }, function() {});
+                    doAjax('/message/add', {
+                        type: 4,
+                        sender: -1,
+                        receiver: -1,
+                        status: 4
+                    }, function() {});
+                    doAjax('/message/add', {
+                        type: 4,
+                        sender: -1,
+                        receiver: -1,
+                        status: 4
+                    }, function() {});
 
                     loginWith(arthur.account, arthur.password, arthur.areaId);
                 });

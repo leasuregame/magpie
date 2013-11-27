@@ -22,12 +22,12 @@ class Spiritor extends Module
 
   angry: (heros, cb) ->
     for hero in heros
-      continue if not hero.skill
+      continue if not hero.skill or not hero.death()
 
       if @trigger()
         console.log '元神攻击', @lv, @spirit_atk_pct
         hero.usingSkill(
-          (res) ->
+          (res) -> 
             cb(hero)
           , null
           , @spirit_atk_pct

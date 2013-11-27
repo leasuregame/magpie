@@ -58,6 +58,10 @@ var Spirit = Entity.extend({
         this._rate = table.rate;
     },
 
+    getSpiritUrl: function () {
+        return main_scene_image["spirit_1_" + Math.ceil(this._lv / 2)];
+    },
+
     canUpgrade: function () {
         cc.log("Spirit canUpgrade");
 
@@ -68,7 +72,7 @@ var Spirit = Entity.extend({
         cc.log("Spirit upgrade");
 
         var that = this;
-        lzWindow.pomelo.request("area.spiritHandler.spiritorUpgrade", {}, function (data) {
+        lz.server.request("area.spiritHandler.spiritorUpgrade", {}, function (data) {
             cc.log(data);
 
             if (data.code == 200) {

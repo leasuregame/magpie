@@ -401,6 +401,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         stopItem.setPosition(this._passiveSkillAfreshLabelFit.stopItemPoint);
 
         var shyLayerMenu = cc.Menu.create(stopItem);
+        shyLayerMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         shyLayerMenu.setPosition(cc.p(0, 0));
         this._shyLayer.addChild(shyLayerMenu);
 
@@ -573,15 +574,19 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
 
         cc.log(maxValue);
         cc.log(isCanAfresh);
+
         if (isCanAfresh) {
             if (this._stopType == STOP_UNTIL_BLUE) {
-                if (maxValue >= 5.0) {
+                if (maxValue >= 8.0) {
+                    TipLayer.tip("人品爆发，惊现金色属性，洗炼完毕");
+                    this._onClickStop();
+                } else if (maxValue >= 5.0) {
                     TipLayer.tip("人品爆发，出现蓝色属性，洗炼完毕");
                     this._onClickStop();
                 }
             } else if (this._stopType == STOP_UNTIL_YELLOW) {
                 if (maxValue >= 8.0) {
-                    TipLayer.tip("人品爆发，惊现蓝色属性，洗炼完毕");
+                    TipLayer.tip("人品爆发，惊现金色属性，洗炼完毕");
                     this._onClickStop();
                 }
             }

@@ -842,6 +842,7 @@ var CardListLayer = cc.Layer.extend({
         var i, key, len = cardList.length;
 
         for (i = 0; i < len; ++i) {
+            cardList[i].setNewCardMark(false);
             cardList[i] = cardList[i].get("id");
         }
 

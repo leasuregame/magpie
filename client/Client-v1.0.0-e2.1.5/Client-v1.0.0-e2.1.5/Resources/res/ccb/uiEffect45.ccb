@@ -601,9 +601,11 @@
 						<key>type</key>
 						<string>Text</string>
 						<key>value</key>
-						<string>哈哈哈</string>
+						<string></string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -4745,8 +4747,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

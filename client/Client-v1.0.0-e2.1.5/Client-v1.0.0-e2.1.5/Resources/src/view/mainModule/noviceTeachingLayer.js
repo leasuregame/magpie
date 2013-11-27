@@ -42,7 +42,8 @@ var NoviceTeachingLayer = LazyLayer.extend({
 
         this.setTouchPriority(NOVICE_TEACHING_LAYER_HANDLER_PRIORITY);
 
-        this._step = sys.localStorage.getItem(gameData.user.get("account") + "step") || 0;
+        this._step = parseInt(sys.localStorage.getItem(gameData.user.get("account") + "step")) || 0;
+        
         cc.log("step = " + this._step);
 
         this._rect = cc.rect(0, 0, 0, 0);

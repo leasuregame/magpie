@@ -318,7 +318,7 @@ var Player = (function(_super) {
             flag: []
         },
         cards: {},
-        rank: {},
+        rank: null,
         friends: [],
         friendsCount: DEFAULT_FRIENDS_COUNT,
         rowFragmentCount: 0,

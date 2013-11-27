@@ -591,6 +591,12 @@ var main_scene_image = {
     p59: effect_scene_path + "effect/" + "p59.png",
     p60: effect_scene_path + "effect/" + "p60.png",
     p61: effect_scene_path + "effect/" + "p61.png",
+    p62: effect_scene_path + "effect/" + "p62.png",
+    p63: effect_scene_path + "effect/" + "p63.png",
+    p64: effect_scene_path + "effect/" + "p64.png",
+    p65: effect_scene_path + "effect/" + "p65.png",
+    p66: effect_scene_path + "effect/" + "p66.png",
+    p67: effect_scene_path + "effect/" + "p67.png",
 
     //UI特效
     up1: effect_scene_path + "uiEffect/" + "up1.png",

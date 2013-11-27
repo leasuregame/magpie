@@ -45,8 +45,8 @@ var ConfigLayer = cc.Layer.extend({
 
         var sound = gameData.sound;
 
-        this.musicOpen = sound.get("openMusic");
-        this.soundOpen = sound.get("openEffect");
+        this.musicOpen = sound.isOpenMusic();
+        this.soundOpen = sound.isOpenEffect();
 
         cc.log(this.musicOpen);
         cc.log(this.soundOpen);
@@ -79,7 +79,7 @@ var ConfigLayer = cc.Layer.extend({
         var bgMusicItem = cc.MenuItemImage.create(
             main_scene_image.icon127,
             main_scene_image.icon127,
-            this._onClickBgMusic(),
+            this._onClickBgMusic,
             this
         );
 
@@ -110,7 +110,7 @@ var ConfigLayer = cc.Layer.extend({
         var soundItem = cc.MenuItemImage.create(
             main_scene_image.icon127,
             main_scene_image.icon127,
-            this._onClickSound(),
+            this._onClickSound,
             this
 
         );
@@ -188,37 +188,33 @@ var ConfigLayer = cc.Layer.extend({
     },
 
     _onClickBgMusic: function () {
-        return function () {
-            cc.log("ConfigLayer _onClickBgMusic");
+        cc.log("ConfigLayer _onClickBgMusic");
 
-            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            this.musicOpen = !this.musicOpen;
-            this.musicSelect.setVisible(this.musicOpen);
+        this.musicOpen = !this.musicOpen;
+        this.musicSelect.setVisible(this.musicOpen);
 
-            if (this.musicOpen) {
-                gameData.sound.openMusic();
-            } else {
-                gameData.sound.closeMusic();
-            }
-        };
+        if (this.musicOpen) {
+            gameData.sound.openMusic();
+        } else {
+            gameData.sound.closeMusic();
+        }
     },
 
     _onClickSound: function () {
-        return function () {
-            cc.log("ConfigLayer _onClickSound");
+        cc.log("ConfigLayer _onClickSound");
 
-            gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+        gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            this.soundOpen = !this.soundOpen;
-            this.soundSelect.setVisible(this.soundOpen);
+        this.soundOpen = !this.soundOpen;
+        this.soundSelect.setVisible(this.soundOpen);
 
-            if (this.soundOpen) {
-                gameData.sound.openEffect();
-            } else {
-                gameData.sound.closeEffect();
-            }
-        };
+        if (this.soundOpen) {
+            gameData.sound.openEffect();
+        } else {
+            gameData.sound.closeEffect();
+        }
     },
 
     _onClickTips: function () {

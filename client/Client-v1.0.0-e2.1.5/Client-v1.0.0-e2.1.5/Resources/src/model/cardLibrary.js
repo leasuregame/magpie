@@ -16,8 +16,6 @@ var CARD_NO_EXIST = 0;
 var CARD_EXIST = 1;
 var CARD_RECEIVE = 2;
 
-var MAX_CARD_TABLE_ID = 250;
-
 var CardLibrary = Entity.extend({
     _cardLibrary: [],
     _type: {},
@@ -39,42 +37,50 @@ var CardLibrary = Entity.extend({
 
         var mark = data.mark;
         var flag = data.flag;
+        var len = this._cardLibrary.length;
 
-        for (var i = 1; i <= MAX_CARD_TABLE_ID; ++i) {
-            var offset = (i - 1) % EACH_NUM_BIT;
-            index = Math.floor((i - 1) / EACH_NUM_BIT);
-
-            this._changeTypeById(i, CARD_NO_EXIST);
+        for (var i = 0; i < len; ++i) {
+            var id = this._cardLibrary[i].id;
+            var offset = (id - 1) % EACH_NUM_BIT;
+            var index = Math.floor((id - 1) / EACH_NUM_BIT);
 
             if (mark[index]) {
                 if ((mark[index] >> offset & 1) == 1) {
-                    this._changeTypeById(i, CARD_RECEIVE);
+                    this._changeTypeById(id, CARD_RECEIVE);
 
                     if (flag[index]) {
                         if ((flag[index] >> offset & 1) == 1) {
-                            this._changeTypeById(i, CARD_EXIST);
+                            this._changeTypeById(id, CARD_EXIST);
                         }
                     }
+
+                    continue;
                 }
             }
+
+            this._changeTypeById(id, CARD_NO_EXIST);
         }
     },
 
     _load: function () {
         cc.log("CardLibrary _load");
 
-        for (var i = 1; i <= MAX_CARD_TABLE_ID; ++i) {
-            this._cardLibrary.push({
-                id: i,
-                card: Card.create({
-                    tableId: i,
-                    lv: 1,
-                    skillLv: 1
-                })
-            })
-        }
+        var table = outputTables.cards.rows;
 
-        //this._cardLibrary.sort(this._sort);
+        for (var i = 1; i <= MAX_CARD_TABLE_ID; ++i) {
+            if (table[i]) {
+                cc.log(i);
+
+                this._cardLibrary.push({
+                    id: i,
+                    card: Card.create({
+                        tableId: i,
+                        lv: 1,
+                        skillLv: 1
+                    })
+                })
+            }
+        }
     },
 
     sync: function () {

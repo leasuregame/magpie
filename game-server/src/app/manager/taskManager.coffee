@@ -77,6 +77,9 @@ class Manager
       rewards.money_obtain += parseInt(wipeOutData.money_obtain)
       player.setTaskMark(id)
 
+    if chapterId? and player.hasTaskMark(chapterId)
+      return cb({code: 501, msg: '已扫荡'})
+
     if chapterId? and not player.hasTaskMark(chapterId)
       count_(chapterId, rewards)
     else
@@ -152,7 +155,7 @@ class Manager
         if task.id % 10 is 1 && task.id != 1
           data.momo = player.createMonoGift();
 
-        rew = table.getTableItem('task_throught_reward', task.id-1)
+        rew = table.getTableItem('task_through_reward', task.id-1)
         if not rew
           logger.error('can not find throught reward by id', task.id-1)
         data.throught_reaward = {money: rew?.money_obtain}

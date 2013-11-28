@@ -158,7 +158,7 @@ class Manager
         rew = table.getTableItem('task_through_reward', task.id-1)
         if not rew
           logger.error('can not find throught reward by id', task.id-1)
-        data.throught_reaward = {money: rew?.money_obtain}
+        data.through_reward = {money: rew?.money_obtain}
       player.set('task', task)
 
     ### consume power first, then add exp

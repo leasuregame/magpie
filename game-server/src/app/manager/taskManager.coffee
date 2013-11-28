@@ -159,6 +159,7 @@ class Manager
         if not rew
           logger.error('can not find throught reward by id', task.id-1)
         data.through_reward = {money: rew?.money_obtain}
+        player.increase('money', rew?.money_obtain or 0)
       player.set('task', task)
 
     ### consume power first, then add exp

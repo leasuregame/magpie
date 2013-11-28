@@ -75,13 +75,12 @@ var LoginLayer = cc.Layer.extend({
         this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
         this._accountEditBox.setDelegate({
             /**
-             * This method is called when the edit box text was changed.
+             * This method is called when an edit box gains focus after keyboard is shown.
              * @param {cc.EditBox} sender
-             * @param {String} text
              */
-            editBoxTextChanged: function (sender, text) {
-
-            }
+            editBoxEditingDidBegin: function (sender) {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+            },
         });
 
         this._accountEditBox.setFont("STHeitiTC-Medium", 35);
@@ -97,13 +96,12 @@ var LoginLayer = cc.Layer.extend({
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordEditBox.setDelegate({
             /**
-             * This method is called when the edit box text was changed.
+             * This method is called when an edit box gains focus after keyboard is shown.
              * @param {cc.EditBox} sender
-             * @param {String} text
              */
-            editBoxTextChanged: function (sender, text) {
-
-            }
+            editBoxEditingDidBegin: function (sender) {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+            },
         });
         this._passwordEditBox.setFont("STHeitiTC-Medium", 35);
         //this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));

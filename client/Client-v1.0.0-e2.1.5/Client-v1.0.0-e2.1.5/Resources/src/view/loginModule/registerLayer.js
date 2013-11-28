@@ -54,6 +54,14 @@ var RegisterLayer = cc.Layer.extend({
         this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
         this._accountEditBox.setDelegate({
             /**
+             * This method is called when an edit box gains focus after keyboard is shown.
+             * @param {cc.EditBox} sender
+             */
+            editBoxEditingDidBegin: function (sender) {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+            },
+
+            /**
              * This method is called when an edit box loses focus after keyboard is hidden.
              * @param {cc.EditBox} sender
              */
@@ -86,6 +94,14 @@ var RegisterLayer = cc.Layer.extend({
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordEditBox.setDelegate({
             /**
+             * This method is called when an edit box gains focus after keyboard is shown.
+             * @param {cc.EditBox} sender
+             */
+            editBoxEditingDidBegin: function (sender) {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+            },
+
+            /**
              * This method is called when an edit box loses focus after keyboard is hidden.
              * @param {cc.EditBox} sender
              */
@@ -117,6 +133,14 @@ var RegisterLayer = cc.Layer.extend({
         this._passwordAgainEditBox.setPlaceHolder("6-20位数字或者字母");
         this._passwordAgainEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordAgainEditBox.setDelegate({
+            /**
+             * This method is called when an edit box gains focus after keyboard is shown.
+             * @param {cc.EditBox} sender
+             */
+            editBoxEditingDidBegin: function (sender) {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+            },
+
             /**
              * This method is called when an edit box loses focus after keyboard is hidden.
              * @param {cc.EditBox} sender

@@ -45,6 +45,14 @@ var NewPlayerLayer = cc.Layer.extend({
         this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
         this._nameEditBox.setDelegate({
             /**
+             * This method is called when an edit box gains focus after keyboard is shown.
+             * @param {cc.EditBox} sender
+             */
+            editBoxEditingDidBegin: function (sender) {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+            },
+
+            /**
              * This method is called when an edit box loses focus after keyboard is hidden.
              * @param {cc.EditBox} sender
              */

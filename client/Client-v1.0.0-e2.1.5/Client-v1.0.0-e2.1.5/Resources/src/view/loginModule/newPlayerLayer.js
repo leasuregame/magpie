@@ -40,6 +40,7 @@ var NewPlayerLayer = cc.Layer.extend({
 
         this._nameEditBox = cc.EditBox.create(cc.size(340, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._nameEditBox.setAnchorPoint(cc.p(0, 0.5));
+        this._nameEditBox.setPlaceHolder("只能用汉字以及数字");
 
         this._nameEditBox.setPosition(cc.p(0, 0));
         this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);

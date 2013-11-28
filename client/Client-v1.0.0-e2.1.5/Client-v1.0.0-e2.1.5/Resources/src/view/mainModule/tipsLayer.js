@@ -200,7 +200,7 @@ var TipsLayer = LazyLayer.extend({
         var description = lz.format('你可以通过参与竞技场来获取仙丹奖励。仙丹可以用来提升卡牌的基本属性。', 28);
         this._addDescription(description, y, scrollViewLayer);
         y -= description.length * 25;
-        var description = lz.format('每10点仙丹可以提升1点攻击力，或2点生命值。', 28);
+        var description = lz.format('每20点仙丹可以提升1点攻击力，或2点生命值。', 28);
         this._addDescription(description, y, scrollViewLayer);
 
         scrollView.setContentSize(cc.size(580, scrollViewHeight));

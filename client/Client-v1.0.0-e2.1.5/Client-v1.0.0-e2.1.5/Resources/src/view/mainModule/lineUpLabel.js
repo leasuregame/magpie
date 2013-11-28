@@ -91,16 +91,19 @@ var LineUpLabel = cc.Layer.extend({
 
         if (this._card5Guide) {
             this._card5Guide.removeFromParent();
+            this._card5Guide = null;
             gameGuide.set("card5Guide", false);
         }
 
         if (this._card4Guide) {
             this._card4Guide.removeFromParent();
+            this._card4Guide = null;
             gameGuide.set("card4Guide", false);
         }
 
         if (this._card3Guide) {
             this._card3Guide.removeFromParent();
+            this._card3Guide = null;
             gameGuide.set("card3Guide", false);
         }
 

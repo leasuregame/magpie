@@ -125,6 +125,7 @@ var MainMenuLayer = cc.Layer.extend({
             if (index == 2) {
                 if (this._passGuide) {
                     this._passGuide.removeFromParent();
+                    this._passGuide = null;
                     gameGuide.set("passGuide", false);
                 }
             }
@@ -132,6 +133,7 @@ var MainMenuLayer = cc.Layer.extend({
             if (index == 3) {
                 if (this._tournamentGuide) {
                     this._tournamentGuide.removeFromParent();
+                    this._tournamentGuide = null;
                     gameGuide.set("tournamentGuide", false);
                 }
             }

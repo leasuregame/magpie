@@ -263,6 +263,11 @@ var MainLayer = cc.Layer.extend({
         MainScene.getInstance().switchLayer(this._layer[0]);
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
+        if (noviceTeachingLayer.isNoviceTeaching()) {
+            noviceTeachingLayer.clearAndSave();
+            noviceTeachingLayer.next();
+        }
+
     },
 
     updateMark: function () {
@@ -300,6 +305,7 @@ var MainLayer = cc.Layer.extend({
             if (index == 2) {
                 if (this._treasureHuntGuide) {
                     this._treasureHuntGuide.removeFromParent();
+                    this._treasureHuntGuide = null;
                     gameGuide.set("treasureHuntGuide", false);
                 }
             }
@@ -307,6 +313,7 @@ var MainLayer = cc.Layer.extend({
             if (index == 7) {
                 if (this._rankGuide) {
                     this._rankGuide.removeFromParent();
+                    this._rankGuide = null;
                     gameGuide.set("rankGuide", false);
                 }
             }

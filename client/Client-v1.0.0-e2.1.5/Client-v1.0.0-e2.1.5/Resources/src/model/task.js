@@ -196,9 +196,9 @@ var Task = Entity.extend({
                     cbData.upgradeReward = msg.upgradeInfo.rewards;
                 }
 
-                if (msg.throught_reward) {
-                    TipLayer.tipNoBg("仙币：+" + msg.throught_reward.money);
-                    player.add('money',msg.throught_reward.money);
+                if (msg.through_reward) {
+                    TipLayer.tipNoBg("通关奖励  仙币：+" + msg.through_reward.money);
+                    player.add('money',msg.through_reward.money);
                 }
 
                 if (msg.result == "fight") {

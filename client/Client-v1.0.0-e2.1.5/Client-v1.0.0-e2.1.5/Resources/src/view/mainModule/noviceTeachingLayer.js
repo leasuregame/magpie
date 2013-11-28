@@ -98,6 +98,7 @@ var NoviceTeachingLayer = LazyLayer.extend({
     },
 
     clearAndSave: function () {
+        this._rect = cc.rect(0, 0, 0, 0);
         this._clearEffect();
         this._step++;
         this._save();

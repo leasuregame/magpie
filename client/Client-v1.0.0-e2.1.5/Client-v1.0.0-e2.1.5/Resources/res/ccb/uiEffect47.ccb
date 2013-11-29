@@ -522,7 +522,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>res/effect/uiEffect/up121.png</string>
+							<string>res/effect/uiEffect/up120.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -854,6 +854,8 @@
 						<string>res/effect/uiEffect/up72.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

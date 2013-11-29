@@ -269,7 +269,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -429,7 +429,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>255</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -538,7 +538,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>30</real>
+											<real>3</real>
 											<real>0.0</real>
 											<integer>0</integer>
 										</array>
@@ -550,7 +550,7 @@
 										<string>Point</string>
 										<key>value</key>
 										<array>
-											<real>0.5</real>
+											<real>0.0</real>
 											<real>0.5</real>
 										</array>
 									</dict>
@@ -602,7 +602,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -638,9 +638,11 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string>+60</string>
+										<string></string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>
@@ -742,7 +744,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>30</real>
+											<real>3</real>
 											<real>-40</real>
 											<integer>0</integer>
 										</array>
@@ -754,7 +756,7 @@
 										<string>Point</string>
 										<key>value</key>
 										<array>
-											<real>0.5</real>
+											<real>0.0</real>
 											<real>0.5</real>
 										</array>
 									</dict>
@@ -806,7 +808,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>0</integer>
+										<integer>255</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -842,7 +844,7 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string>+11</string>
+										<string></string>
 									</dict>
 								</array>
 								<key>seqExpanded</key>
@@ -917,7 +919,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>80</real>
+							<real>41.599998474121094</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1044,7 +1046,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.3333333730697632</real>
+			<real>0.40000000596046448</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

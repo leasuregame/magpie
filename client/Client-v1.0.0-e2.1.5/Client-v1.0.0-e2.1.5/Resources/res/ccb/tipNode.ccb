@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -75,7 +75,7 @@
 									<key>value</key>
 									<array>
 										<real>0.0</real>
-										<real>-60</real>
+										<real>0.0</real>
 									</array>
 								</dict>
 								<dict>
@@ -93,7 +93,7 @@
 									<key>value</key>
 									<array>
 										<real>0.0</real>
-										<real>0.0</real>
+										<real>40</real>
 									</array>
 								</dict>
 								<dict>
@@ -111,7 +111,7 @@
 									<key>value</key>
 									<array>
 										<real>0.0</real>
-										<real>-10</real>
+										<real>30</real>
 									</array>
 								</dict>
 							</array>
@@ -311,7 +311,7 @@
 									<key>value</key>
 									<array>
 										<real>0.0</real>
-										<real>-60</real>
+										<real>0.0</real>
 									</array>
 								</dict>
 								<dict>
@@ -329,7 +329,7 @@
 									<key>value</key>
 									<array>
 										<real>0.0</real>
-										<real>0.0</real>
+										<real>40</real>
 									</array>
 								</dict>
 								<dict>
@@ -347,7 +347,7 @@
 									<key>value</key>
 									<array>
 										<real>0.0</real>
-										<real>-10</real>
+										<real>30</real>
 									</array>
 								</dict>
 							</array>
@@ -2007,7 +2007,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-10</real>
+							<real>30</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2069,9 +2069,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>65</integer>
-							<integer>249</integer>
-							<integer>74</integer>
+							<integer>255</integer>
+							<integer>241</integer>
+							<integer>101</integer>
 						</array>
 					</dict>
 					<dict>
@@ -2091,7 +2091,7 @@
 						<key>type</key>
 						<string>Text</string>
 						<key>value</key>
-						<string></string>
+						<string>123</string>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -2221,7 +2221,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2231,7 +2231,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>60</real>
+							<real>100</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2286,7 +2286,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -2416,7 +2416,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2426,7 +2426,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>60</real>
+							<real>100</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2481,7 +2481,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -2574,7 +2574,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>0.20000000298023224</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

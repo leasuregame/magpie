@@ -144,3 +144,17 @@ CREATE TABLE IF NOT EXISTS `lvDistribution` (
   `playerCreateDate` Date,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+DROP TABLE IF EXISTS `buyRecord`;
+CREATE TABLE IF NOT EXISTS `buyRecord` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `createTime` BIGINT(20) UNSIGNED NOT NULL,
+  `playerId` INT(10) UNSIGNED NOT NULL,
+  `signature` VARCHAR(512) COLLATE utf8_unicode_ci DEFAULT '',
+  `receiptData` TEXT COLLATE utf8_unicode_ci,
+  `qty` INT(10) UNSIGNED DEFAULT '0',
+  `product` VARCHAR(256) COLLATE utf8_unicode_ci DEFAULT '',
+  `purchaseDate` DATETIME,
+  `isVerify` BOOLEAN,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

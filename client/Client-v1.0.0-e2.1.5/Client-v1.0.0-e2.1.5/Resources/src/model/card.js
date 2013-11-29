@@ -372,7 +372,7 @@ var Card = Entity.extend({
         cc.log("Card getUpgradeNeedSKillPoint");
 
         if (this.canUpgradeSkill()) {
-            var skillUpgradeTable = outputTables.skill_upgrade.rows[this._skillLv + 1];
+            var skillUpgradeTable = outputTables.skill_upgrade.rows[this._skillLv];
             return skillUpgradeTable["star" + this._star];
         }
 

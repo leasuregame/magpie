@@ -402,7 +402,16 @@ var TournamentLayer = cc.Layer.extend({
                 lz.tipReward(data);
             }, id, count);
         }
+    },
+
+    showTip: function() {
+        cc.log("TournamentLayer showTip");
+        var that = this;
+        TournamentTipLayer.pop(function() {
+            that._onClickBuyCount();
+        });
     }
+
 });
 
 TournamentLayer.create = function () {

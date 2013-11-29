@@ -87,7 +87,7 @@ var BattleEndLayer = cc.Layer.extend({
         var okItem = cc.MenuItemImage.create(
             main_scene_image.button66,
             main_scene_image.button66s,
-          //  main_scene_image.icon21,
+            //  main_scene_image.icon21,
             this.end,
             this
         );
@@ -122,6 +122,7 @@ var BattleEndLayer = cc.Layer.extend({
         if (fragment) {
             var fragmentEffect = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
             fragmentEffect.setPosition(this._battleEndLayerFit.fragmentEffectPoint);
+            fragmentEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
             this.addChild(fragmentEffect, 1);
         }
 

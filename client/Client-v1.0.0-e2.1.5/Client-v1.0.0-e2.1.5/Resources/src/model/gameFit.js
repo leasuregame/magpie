@@ -688,7 +688,7 @@ var fit4Iphone4 = {
             "bgLayerPoint": cc.p(40, 0),
             "bgSpritePoint": cc.p(360, 512),
             "obtainSpritePoint": cc.p(360, 732),
-            "offsetY": 632,
+            "offsetY": 660,
             "rewardLabelPointX": 360,
             "okItemPoint": cc.p(360, 372)
         },
@@ -988,6 +988,13 @@ var fit4Iphone4 = {
             "sendMessageItemPoint": cc.p(108, 150),
             "addFriendItemPoint": cc.p(108, 60),
             "skyDialogRect": cc.rect(40, 198, 640, 768)
+        },
+        "tournamentTipLayer": {
+            "bgSpritePoint": cc.p(360, 492),
+            "offsetPointY": 552,
+            "offsetPointX": 135,
+            "buyItemPoint": cc.p(240, 432),
+            "closeItemPoint": cc.p(480, 432)
         },
         "treasureHuntLayer": {
             "locatePoints": [
@@ -1747,7 +1754,7 @@ var fit4Iphone5 = {
             "bgLayerPoint": cc.p(0, 0),
             "bgSpritePoint": cc.p(320, 600),
             "obtainSpritePoint": cc.p(320, 820),
-            "offsetY": 720,
+            "offsetY": 748,
             "rewardLabelPointX": 320,
             "okItemPoint": cc.p(320, 460)
         },
@@ -2047,6 +2054,13 @@ var fit4Iphone5 = {
             "sendMessageItemPoint": cc.p(108, 150),
             "addFriendItemPoint": cc.p(108, 60),
             "skyDialogRect": cc.rect(40, 170, 640, 964)
+        },
+        "tournamentTipLayer": {
+           "bgSpritePoint": cc.p(320, 580),
+            "offsetPointY": 640,
+            "offsetPointX": 95,
+            "buyItemPoint": cc.p(200, 520),
+            "closeItemPoint": cc.p(440, 520)
         },
         "treasureHuntLayer": {
             "locatePoints": [

@@ -401,6 +401,8 @@ var ExploreLayer = cc.Layer.extend({
         passEffect.setPosition(this._exploreLayerFit.passEffectPoint);
         this.addChild(passEffect);
 
+        TipLayer.tipNoBg("通关奖励  仙币：+" + this._reward.through_reward.money);
+
         var that = this;
 
         passEffect.animationManager.setCompletedAnimationCallback(this, function () {
@@ -496,8 +498,6 @@ var ExploreLayer = cc.Layer.extend({
                 var goldList = this._reward.goldList;
                 var upgradeReward = this._reward.upgradeReward;
 
-                this._reward = null;
-
                 var next = function () {
                     if (upgradeReward) {
                         var cb = function () {
@@ -522,6 +522,7 @@ var ExploreLayer = cc.Layer.extend({
                     next();
                 }
 
+                this._reward = null;
 
             }, 1);
 
@@ -704,7 +705,7 @@ var ExploreLayer = cc.Layer.extend({
                 this._index = 1 - Math.ceil(endOffset.x / 640);
             }
 
-            //this.update();
+            this.update();
         }
     },
 

@@ -1,4 +1,4 @@
-// login scene res
+    // login scene res
 var login_scene_path = "res/login/";
 
 var login_scene_image = {
@@ -205,8 +205,8 @@ var main_scene_image = {
     button25: main_scene_path + "button25.png",
     button25s: main_scene_path + "button25s.png",
     button25d: main_scene_path + "button25d.png",
-//    button26: main_scene_path + "button26.png",
-//    button26s: main_scene_path + "button26s.png",
+    button26: main_scene_path + "button26.png",
+    button26s: main_scene_path + "button26s.png",
 //    button27: main_scene_path + "button27.png",
 //    button27s: main_scene_path + "button27s.png",
 //    button28: main_scene_path + "button28.png",

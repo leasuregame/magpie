@@ -45,7 +45,7 @@ var PlayerUpgradeLayer = LazyLayer.extend({
             this._cb = data.cb;
         }
 
-        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 230), 640, 1136);
+        var bgLayer = cc.LayerColor.create(cc.c4b(25, 18, 18, 150), 640, 1136);
         bgLayer.setPosition(this._playerUpgradeLayerFit.bgLayerPoint);
         this.addChild(bgLayer);
 
@@ -62,11 +62,6 @@ var PlayerUpgradeLayer = LazyLayer.extend({
 
         var offsetY = this._playerUpgradeLayerFit.offsetY;
 
-        var lvBgLabel = cc.Sprite.create(main_scene_image.icon115);
-        lvBgLabel.setAnchorPoint(cc.p(0.5, 0.8));
-        lvBgLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
-        layer.addChild(lvBgLabel);
-
         var lv = gameData.player.get("lv");
         var lvLabel = cc.LabelTTF.create("等级：LV " + (lv - 1) + " -- LV " + lv, "STHeitiTC-Medium", 22);
         lvLabel.setColor(cc.c3b(115, 255, 100));
@@ -76,11 +71,6 @@ var PlayerUpgradeLayer = LazyLayer.extend({
 
         for (var i = 0; i < len; ++i) {
             offsetY -= 45;
-
-            var rewardBgLabel = cc.Sprite.create(main_scene_image.icon115);
-            rewardBgLabel.setAnchorPoint(cc.p(0.5, 0.8));
-            rewardBgLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
-            layer.addChild(rewardBgLabel);
 
             var rewardLabel = cc.LabelTTF.create(str[i], "STHeitiTC-Medium", 22);
             rewardLabel.setColor(cc.c3b(255, 239, 131));

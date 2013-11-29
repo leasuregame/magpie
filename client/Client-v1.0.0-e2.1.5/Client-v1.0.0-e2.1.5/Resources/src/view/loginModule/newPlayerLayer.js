@@ -40,7 +40,6 @@ var NewPlayerLayer = cc.Layer.extend({
 
         this._nameEditBox = cc.EditBox.create(cc.size(340, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._nameEditBox.setAnchorPoint(cc.p(0, 0.5));
-        this._nameEditBox.setPlaceHolder("只能用汉字以及数字");
 
         this._nameEditBox.setPosition(cc.p(0, 0));
         this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
@@ -63,7 +62,7 @@ var NewPlayerLayer = cc.Layer.extend({
                 if(!text) {
                     TipLayer.tip("请输入昵称");
                 } else if(len < 1 || len > 6) {
-                    TipLayer.tip("昵称长度不正确");
+                    TipLayer.tip("昵称为1~6位中文或数字");
                 } else if (EMPTY_SPACE_REG.test(text)) {
                     TipLayer.tip("昵称不能包含空格");
                 } else if (!NICKNAME_REG.test(text)) {
@@ -72,10 +71,13 @@ var NewPlayerLayer = cc.Layer.extend({
             }
         });
         this._nameEditBox.setFont("STHeitiTC-Medium", 35);
-        this._nameEditBox.setMaxLength(6);
+        //this._nameEditBox.setMaxLength(6);
         newPlayerFrame.controller.playerNameLabel.addChild(this._nameEditBox);
 
-        newPlayerFrame.animationManager.setCompletedAnimationCallback(this, this._setRandomName);
+        newPlayerFrame.animationManager.setCompletedAnimationCallback(this, function(){
+            this._nameEditBox.setPlaceHolder("只能用汉字以及数字");
+            this._setRandomName();
+        });
 
         return true;
     },

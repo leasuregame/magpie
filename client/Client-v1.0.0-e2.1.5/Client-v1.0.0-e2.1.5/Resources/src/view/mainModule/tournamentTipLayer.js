@@ -7,6 +7,9 @@
  */
 
 var TournamentTipLayer = LazyLayer.extend({
+    _tournamentTipLayerFit: null,
+
+    _cb: null,
 
     onEnter: function () {
         cc.log("TournamentTipLayer onEnter");
@@ -24,28 +27,41 @@ var TournamentTipLayer = LazyLayer.extend({
         lz.dc.endLogPageView("竞技提示界面");
     },
 
-    init: function () {
+    init: function (cb) {
         cc.log("TournamentTipLayer init");
 
         if (!this._super()) return false;
+
+        this._tournamentTipLayerFit = gameFit.mainScene.tournamentTipLayer;
+
+        this._cb = cb;
 
         var lazyLayer = LazyLayer.create();
         this.addChild(lazyLayer);
 
         var bgSprite = cc.Scale9Sprite.create(main_scene_image.bg16);
         bgSprite.setContentSize(cc.size(550, 250));
-        bgSprite.setPosition(cc.p(320, 492));
+        bgSprite.setPosition(this._tournamentTipLayerFit.bgSpritePoint);
         lazyLayer.addChild(bgSprite);
 
-        var y = 552;
+        var y = this._tournamentTipLayerFit.offsetPointY;
 
         var description = lz.format('每日有奖竞技次数用完之后，你可以继续挑战，但不能再获得奖励。你可以购买额外的有奖竞技次数。', 21);
         for (var i = 0; i < description.length; i++) {
             var itemText = cc.LabelTTF.create(description[i], "STHeitiTC-Medium", 22);
             itemText.setAnchorPoint(cc.p(0, 0));
-            itemText.setPosition(cc.p(95, y - i * 30));
+            itemText.setPosition(cc.p(this._tournamentTipLayerFit.offsetPointX, y - i * 30));
             lazyLayer.addChild(itemText);
         }
+
+        var buyItem = cc.MenuItemImage.createWithIcon(
+            main_scene_image.button21,
+            main_scene_image.button21s,
+            main_scene_image.icon300,
+            this._onClickBuy,
+            this
+        );
+        buyItem.setPosition(this._tournamentTipLayerFit.buyItemPoint);
 
         var closeItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button9,
@@ -54,9 +70,9 @@ var TournamentTipLayer = LazyLayer.extend({
             this._onClickClose,
             this
         );
-        closeItem.setPosition(cc.p(320, 432));
+        closeItem.setPosition(this._tournamentTipLayerFit.closeItemPoint);
 
-        var menu = cc.Menu.create(closeItem);
+        var menu = cc.Menu.create(buyItem, closeItem);
         menu.setPosition(cc.p(0, 0));
         lazyLayer.addChild(menu);
 
@@ -67,22 +83,28 @@ var TournamentTipLayer = LazyLayer.extend({
     _onClickClose: function() {
         cc.log("TournamentTipLayer _onClickClose");
         this.removeFromParent();
+    },
+
+    _onClickBuy: function() {
+        cc.log("TournamentTipLayer _onClickBuy");
+        this._cb();
+        this.removeFromParent();
     }
 
 });
 
-TournamentTipLayer.create = function() {
+TournamentTipLayer.create = function(cb) {
     var ret = new TournamentTipLayer();
 
-    if (ret && ret.init()) {
+    if (ret && ret.init(cb)) {
         return ret;
     }
 
     return null;
 };
 
-TournamentTipLayer.pop = function() {
-    var tournamentTipLayer = TournamentTipLayer.create();
+TournamentTipLayer.pop = function(cb) {
+    var tournamentTipLayer = TournamentTipLayer.create(cb);
 
     MainScene.getInstance().getLayer().addChild(tournamentTipLayer, 10);
 };

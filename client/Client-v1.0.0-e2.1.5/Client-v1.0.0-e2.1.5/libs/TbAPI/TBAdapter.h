@@ -20,6 +20,12 @@ typedef enum {
     TBInterfaceOrientationLandscapeRight
 }TBAdapterOrientation;
 
+struct UserData {
+    char *nickName;
+    char *userID;
+    char *sessionId;
+};
+
 /**
  *	SDK调用类，负责适配C++与OC消息处理
  */
@@ -78,7 +84,7 @@ public:
     int TBEnterBBS(int tag);
 /************************以下函数需要开发根据实际应用自定义************************/
     void TBInitDidFinishWithUpdateCode(int code);
-    void TBLoginResultHandle(bool isSuccess);
+    void TBLoginResultHandle(bool isSuccess, UserData user);
     void TBLogoutHandle();
     void TBLeavedPlatformHandle(int closeType, const char *order);
     void TBCheckUpdateFinished(int updateResult);

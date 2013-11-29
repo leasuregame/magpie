@@ -46,7 +46,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBSwitchAccount(JSContext *cx, uint32_t argc, 
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
@@ -63,7 +63,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBUserID(JSContext *cx, uint32_t argc, jsval *
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
@@ -83,7 +83,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBCheckOrderFailed(JSContext *cx, uint32_t arg
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -109,7 +109,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBUnipayForCoinWithOrder(JSContext *cx, uint32
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 3);
 	return JS_FALSE;
 }
@@ -131,7 +131,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBSetAppID(JSContext *cx, uint32_t argc, jsval
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -153,7 +153,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBSetAutoRotate(JSContext *cx, uint32_t argc, 
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -175,7 +175,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBLogin(JSContext *cx, uint32_t argc, jsval *v
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -197,7 +197,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBLogout(JSContext *cx, uint32_t argc, jsval *
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -214,7 +214,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBIsLogined(JSContext *cx, uint32_t argc, jsva
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
@@ -236,7 +236,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBBuyGoodsFailed(JSContext *cx, uint32_t argc,
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
 	return JS_FALSE;
 }
@@ -256,7 +256,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBCheckUpdateFinished(JSContext *cx, uint32_t 
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -270,13 +270,13 @@ JSBool js_jsb_TBAdapter_TBAdapter_ShowMessage(JSContext *cx, uint32_t argc, jsva
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
 	if (argc == 1) {
 		char* arg0;
-		#pragma warning NO CONVERSION TO NATIVE FOR char*;
+#pragma warning NO CONVERSION TO NATIVE FOR char*;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
 		cobj->ShowMessage(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -291,7 +291,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBSetDebug(JSContext *cx, uint32_t argc, jsval
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
@@ -311,7 +311,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBSetScreenOrientation(JSContext *cx, uint32_t
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -326,7 +326,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBLogoutHandle(JSContext *cx, uint32_t argc, j
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
@@ -346,7 +346,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBBuyGoodsDidCancelByUser(JSContext *cx, uint3
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -370,7 +370,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBCheckOrderResultHandle(JSContext *cx, uint32
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 3);
 	return JS_FALSE;
 }
@@ -392,7 +392,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBCheckOrder(JSContext *cx, uint32_t argc, jsv
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -409,7 +409,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBNickName(JSContext *cx, uint32_t argc, jsval
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
@@ -429,7 +429,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBBuyGoodsDidEnterWebview(JSContext *cx, uint3
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -451,7 +451,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBEnterGameCenter(JSContext *cx, uint32_t argc
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -473,7 +473,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBEnterBBS(JSContext *cx, uint32_t argc, jsval
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -493,7 +493,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBInitDidFinishWithUpdateCode(JSContext *cx, u
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -515,7 +515,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBLeavedPlatformHandle(JSContext *cx, uint32_t
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
 	return JS_FALSE;
 }
@@ -535,7 +535,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBBuyGoodsSuccessWithOrder(JSContext *cx, uint
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -552,7 +552,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBSessionID(JSContext *cx, uint32_t argc, jsva
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
@@ -576,7 +576,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBUnipayForCoinWhthOrder(JSContext *cx, uint32
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
 	return JS_FALSE;
 }
@@ -588,16 +588,25 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBLoginResultHandle(JSContext *cx, uint32_t ar
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	TBAdapter* cobj = (TBAdapter *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
-	if (argc == 1) {
+	if (argc == 2) {
 		JSBool arg0;
+		UserData arg1;
 		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
+		do {
+			if (!argv[1].isObject()) { ok = JS_FALSE; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[1]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg1 = (UserData)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg1, cx, JS_FALSE, "Invalid Native Object");
+		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
-		cobj->TBLoginResultHandle(arg0);
+		cobj->TBLoginResultHandle(arg0, arg1);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-
-	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
+    
+	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
 	return JS_FALSE;
 }
 JSBool js_jsb_TBAdapter_TBAdapter_TBEnterUserCenter(JSContext *cx, uint32_t argc, jsval *vp)
@@ -618,7 +627,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBEnterUserCenter(JSContext *cx, uint32_t argc
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
@@ -635,7 +644,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBCheckUpdate(JSContext *cx, uint32_t argc, js
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
@@ -659,7 +668,7 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBInitPlatformWithAppID(JSContext *cx, uint32_
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-
+    
 	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 3);
 	return JS_FALSE;
 }
@@ -669,13 +678,13 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBAdapterInstance(JSContext *cx, uint32_t argc
 		TBAdapter* ret = TBAdapter::TBAdapterInstance();
 		jsval jsret;
 		do {
-		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<TBAdapter>(cx, ret);
-			jsret = OBJECT_TO_JSVAL(proxy->obj);
-		} else {
-			jsret = JSVAL_NULL;
-		}
-	} while (0);
+            if (ret) {
+                js_proxy_t *proxy = js_get_or_create_proxy<TBAdapter>(cx, ret);
+                jsret = OBJECT_TO_JSVAL(proxy->obj);
+            } else {
+                jsret = JSVAL_NULL;
+            }
+        } while (0);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -693,7 +702,7 @@ void js_jsb_TBAdapter_TBAdapter_finalize(JSFreeOp *fop, JSObject *obj) {
     jsproxy = jsb_get_js_proxy(obj);
     if (jsproxy) {
         nproxy = jsb_get_native_proxy(jsproxy->ptr);
-
+        
         TBAdapter *nobj = static_cast<TBAdapter *>(nproxy->ptr);
         if (nobj)
             delete nobj;
@@ -723,9 +732,9 @@ void js_register_jsb_TBAdapter_TBAdapter(JSContext *cx, JSObject *global) {
 	jsb_TBAdapter_class->convert = JS_ConvertStub;
 	jsb_TBAdapter_class->finalize = js_jsb_TBAdapter_TBAdapter_finalize;
 	jsb_TBAdapter_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
+    
 	JSPropertySpec *properties = NULL;
-
+    
 	static JSFunctionSpec funcs[] = {
 		JS_FN("TBSwitchAccount", js_jsb_TBAdapter_TBAdapter_TBSwitchAccount, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("TBUserID", js_jsb_TBAdapter_TBAdapter_TBUserID, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -754,32 +763,32 @@ void js_register_jsb_TBAdapter_TBAdapter(JSContext *cx, JSObject *global) {
 		JS_FN("TBBuyGoodsSuccessWithOrder", js_jsb_TBAdapter_TBAdapter_TBBuyGoodsSuccessWithOrder, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("TBSessionID", js_jsb_TBAdapter_TBAdapter_TBSessionID, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("TBUnipayForCoinWhthOrder", js_jsb_TBAdapter_TBAdapter_TBUnipayForCoinWhthOrder, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("TBLoginResultHandle", js_jsb_TBAdapter_TBAdapter_TBLoginResultHandle, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("TBLoginResultHandle", js_jsb_TBAdapter_TBAdapter_TBLoginResultHandle, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("TBEnterUserCenter", js_jsb_TBAdapter_TBAdapter_TBEnterUserCenter, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("TBCheckUpdate", js_jsb_TBAdapter_TBAdapter_TBCheckUpdate, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("TBInitPlatformWithAppID", js_jsb_TBAdapter_TBAdapter_TBInitPlatformWithAppID, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("ctor", js_jsb_TBAdapter_TBAdapter_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
-
+    
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("TBAdapterInstance", js_jsb_TBAdapter_TBAdapter_TBAdapterInstance, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FS_END
 	};
-
+    
 	jsb_TBAdapter_prototype = JS_InitClass(
-		cx, global,
-		NULL, // parent proto
-		jsb_TBAdapter_class,
-		dummy_constructor, 0, // no constructor
-		properties,
-		funcs,
-		NULL, // no static properties
-		st_funcs);
+                                           cx, global,
+                                           NULL, // parent proto
+                                           jsb_TBAdapter_class,
+                                           dummy_constructor, 0, // no constructor
+                                           properties,
+                                           funcs,
+                                           NULL, // no static properties
+                                           st_funcs);
 	// make the class enumerable in the registered namespace
 	JSBool found;
 	JS_SetPropertyAttributes(cx, global, "TBAdapter", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
-
+    
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<TBAdapter> t;
 	js_type_class_t *p;
@@ -808,7 +817,7 @@ void register_all_jsb_TBAdapter(JSContext* cx, JSObject* obj) {
 		JS_ValueToObject(cx, nsval, &ns);
 	}
 	obj = ns;
-
+    
 	js_register_jsb_TBAdapter_TBAdapter(cx, obj);
 }
 

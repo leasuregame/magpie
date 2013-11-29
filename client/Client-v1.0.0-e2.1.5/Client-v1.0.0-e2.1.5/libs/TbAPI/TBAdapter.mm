@@ -7,6 +7,7 @@
 //
 
 #include "TBAdapter.h"
+
 #include <TBPlatform/TBPlatform.h>
 #include "TBCallbackHandler.h"
 #include "cocos2d.h"
@@ -128,7 +129,7 @@ int TBAdapter::TBEnterBBS(int tag){
 }
 /************************以下函数需要开发根据实际应用自定义************************/
 void TBAdapter::TBInitDidFinishWithUpdateCode(int code){
-#warning 初始化结果处理（需要自定义）
+    // 初始化结果处理（需要自定义）
     this->ShowMessage("初始化结果（检查更新结果）:%d");
     
     cocos2d::CCLog("initDidFinishWithUpdateCodeHandler call: %d", code);
@@ -138,7 +139,7 @@ void TBAdapter::TBInitDidFinishWithUpdateCode(int code){
     };
     this->TBExcuteCallback("initDidFinishWithUpdateCodeHandler", 1, v, NULL);
 }
-void TBAdapter::TBLoginResultHandle(bool isSuccess, TBPlatformUserInfo *user){
+void TBAdapter::TBLoginResultHandle(bool isSuccess, UserData user){
 #warning 登录结果处理（需要自定义）
     this->ShowMessage("登录结果:%d");
     
@@ -147,12 +148,11 @@ void TBAdapter::TBLoginResultHandle(bool isSuccess, TBPlatformUserInfo *user){
     js_proxy_t* p = jsb_get_native_proxy(this);
     jsval retval;
     jsval v[] = {
-        v[0] = BOOLEAN_TO_JSVAL(isSuccess),
-        v[1] = OBJECT_TO_JSVAL(user)
+        v[0] = BOOLEAN_TO_JSVAL(isSuccess)
     };
     
     ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(p->obj),
-                                                           "loginResultHandler", 2, v, &retval);
+                                                           "loginResultHandler", 1, v, &retval);
 }
 void TBAdapter::TBLogoutHandle(){
 #warning 注销结果处理（需要自定义）
@@ -248,7 +248,21 @@ static TBCallbackHandler *p_instance = NULL;
     NSDictionary *dict = [notify userInfo];
 	BOOL isSuccess  = [[dict objectForKey:@"result"] boolValue];
     TBPlatformUserInfo *user = [dict objectForKey:@"tbuserinfo"];
-    TBAdapter::TBAdapterInstance()->TBLoginResultHandle(isSuccess, user);
+    const char *nickName = [user.nickName cStringUsingEncoding:NSASCIIStringEncoding];
+    const char *userID = [user.userID cStringUsingEncoding:NSASCIIStringEncoding];
+    const char *sessionID = [user.sessionID cStringUsingEncoding:NSASCIIStringEncoding];
+    
+    char* nn = new char[100];//足够长
+    strcpy(nn,nickName);
+    
+    char *uuid = new char[100];
+    strcpy(uuid, userID);
+    
+    char *sid = new char[100];
+    strcpy(sid, sessionID);
+    
+    UserData ud = {nn, uuid, sid};
+    TBAdapter::TBAdapterInstance()->TBLoginResultHandle(isSuccess,ud);
 }
 /**
  *	注销结果通知

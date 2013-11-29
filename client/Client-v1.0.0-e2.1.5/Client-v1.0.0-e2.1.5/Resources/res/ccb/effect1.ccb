@@ -197,7 +197,7 @@
 										<key>type</key>
 										<string>Degrees</string>
 										<key>value</key>
-										<real>180</real>
+										<real>0.0</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -395,7 +395,7 @@
 										<string>FloatVar</string>
 										<key>value</key>
 										<array>
-											<real>0.20000000298023224</real>
+											<real>0.34999999403953552</real>
 											<real>0.10000000149011612</real>
 										</array>
 									</dict>
@@ -560,6 +560,8 @@
 										<string>res/effect/effect/p15.png</string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>
@@ -701,8 +703,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -744,7 +744,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.26666668057441711</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

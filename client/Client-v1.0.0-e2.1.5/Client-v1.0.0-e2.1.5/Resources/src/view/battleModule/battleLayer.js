@@ -431,7 +431,7 @@ var BatterLayer = cc.Layer.extend({
                         nextStepCallback1();
                     });
 
-                    effect1Node.setRotation(lz.getAngle(attackerLocate, targetLocate));
+//                    effect1Node.setRotation(lz.getAngle(attackerLocate, targetLocate));
                     effect1Node.runAction(
                         cc.EaseSineIn.create(
                             cc.MoveTo.create(

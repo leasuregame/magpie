@@ -7,11 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-<<<<<<< HEAD
-	<integer>1</integer>
-=======
 	<integer>0</integer>
->>>>>>> effect
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -2073,15 +2069,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-<<<<<<< HEAD
-							<integer>255</integer>
-							<integer>241</integer>
-							<integer>101</integer>
-=======
 							<integer>65</integer>
 							<integer>249</integer>
 							<integer>74</integer>
->>>>>>> effect
 						</array>
 					</dict>
 					<dict>
@@ -2104,8 +2094,6 @@
 						<string></string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -2460,8 +2448,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -2476,37 +2464,7 @@
 					</dict>
 					<dict>
 						<key>name</key>
-<<<<<<< HEAD
-						<string>fntFile</string>
-						<key>type</key>
-						<string>FntFile</string>
-						<key>value</key>
-						<string>res/font/tipNumber.fnt</string>
-					</dict>
-					<dict>
-						<key>baseValue</key>
-						<array>
-							<integer>108</integer>
-							<integer>235</integer>
-							<integer>255</integer>
-						</array>
-						<key>name</key>
-						<string>color</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<integer>255</integer>
-							<integer>241</integer>
-							<integer>101</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>blendFunc</string>
-=======
 						<string>displayFrame</string>
->>>>>>> effect
 						<key>type</key>
 						<string>SpriteFrame</string>
 						<key>value</key>

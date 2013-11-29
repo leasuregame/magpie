@@ -5,7 +5,7 @@ path = require 'path'
 fs = require 'fs'
 
 DEFAULT_INTERVAL = 60000 * 5
-HOUR  = 4
+HOUR  = 0
 DATE_FILEPATH = path.join(__dirname, '..', '..', 'config', 'lvDistributionDate.conf')
 
 module.exports = (app, opts) ->
@@ -36,7 +36,7 @@ class Component
 
   afterStart: (cb) ->
     @timerId = setInterval onlineUserCounter.bind(null, @), @interval
-    @timerId_lvDis = setInterval lvDistributionCounter.bind(null, @), 60000 * 10
+    @timerId_lvDis = setInterval lvDistributionCounter.bind(null, @), 60000 * 30
     process.nextTick cb
 
   stop: (force, cb) ->

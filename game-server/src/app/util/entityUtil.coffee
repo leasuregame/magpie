@@ -55,7 +55,7 @@ module.exports =
     cb(isUpgrade, rewards)
 
   randomCardId: (star) ->
-    tableIds = table.getTable('cards').filter((id) -> id <= 250)
+    tableIds = table.getTable('cards').filter((id) -> id <= 500)
         .map((item) -> parseInt(item.id))
         .sort((x, y) -> x - y)
     len = tableIds.length

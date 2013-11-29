@@ -163,7 +163,7 @@ class Matrix
 
     res = items[0]
     items.forEach (h) ->
-      res = h if h.hp < res.hp
+      res = h if h.hp/h.init_hp < res.hp/res.init_hp
     res
 
   atk_max: ->

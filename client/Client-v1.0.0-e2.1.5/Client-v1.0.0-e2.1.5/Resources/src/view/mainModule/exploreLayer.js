@@ -610,7 +610,8 @@ var ExploreLayer = cc.Layer.extend({
     },
 
     _showBox: function () {
-        cc.log("TaskLayer _openBox");
+        cc.log("TaskLayer _showBox");
+
         var that = this;
         var cb = function () {
             that.update();
@@ -622,45 +623,13 @@ var ExploreLayer = cc.Layer.extend({
 
         boxEffect.animationManager.setCompletedAnimationCallback(this, function(){
             boxEffect.removeFromParent();
-            LotteryCardLayer.pop({card: this._reward.card, cb: cb});
         });
-
-//        var boxAction = cc.Sequence.create(
-//            cc.Spawn.create(
-//                cc.MoveBy.create(0.3, cc.p(0, -165)),
-//                cc.ScaleTo.create(0.3, 1, 1)
-//            ),
-//            cc.CallFunc.create(
-//                this._openBox,
-//                this
-//            )
-//        );
-//
-//        this._closeBoxSprite.setPosition(this._exploreLayerFit.closeBoxSpritePoint2);
-//        this._closeBoxSprite.setScale(0.9);
-//        this._closeBoxSprite.setVisible(true);
-//
-//        this._openBoxSprite.setVisible(false);
-//
-//        this._closeBoxSprite.runAction(boxAction);
     },
 
-//    _openBox: function () {
-//        cc.log("TaskLayer _openBox");
-//
-//        this._closeBoxSprite.setVisible(false);
-//        this._openBoxSprite.setVisible(true);
-//
-//        var that = this;
-//        var cb = function () {
-//            that._openBoxSprite.setVisible(false);
-//            that.update();
-//        };
-//
-//        this.scheduleOnce(function () {
-//            LotteryCardLayer.pop({card: this._reward.card, cb: cb});
-//        }, 0.5);
-//    },
+    _openBox: function () {
+        cc.log("TaskLayer _openBox");
+        LotteryCardLayer.pop({card: this._reward.card, cb: cb});
+    },
 
     _onBuyPower: function () {
         cc.log("TournamentLayer _onClickBuyCount");

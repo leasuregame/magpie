@@ -1694,7 +1694,7 @@
 	<array>
 		<dict>
 			<key>autoPlay</key>
-			<true/>
+			<false/>
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>
@@ -1760,7 +1760,7 @@
 			<key>length</key>
 			<real>0.83333331346511841</real>
 			<key>name</key>
-			<string>aniamtion_2</string>
+			<string>animation_2</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>

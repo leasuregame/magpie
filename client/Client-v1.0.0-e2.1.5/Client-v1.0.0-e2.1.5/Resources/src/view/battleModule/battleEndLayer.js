@@ -118,11 +118,15 @@ var BattleEndLayer = cc.Layer.extend({
 
         this._ccbNode.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_1", 0);
 
-        var fragment = this._battleLog.get("reward").fragment;
+        //var fragment = this._battleLog.get("reward").fragment;
+        var fragment = 1;
         if (fragment) {
             var fragmentEffect = cc.BuilderReader.load(main_scene_image.uiEffect23, this);
             fragmentEffect.setPosition(this._battleEndLayerFit.fragmentEffectPoint);
             this.addChild(fragmentEffect, 1);
+
+            fragmentEffect.animationManager.runAnimationsForSequenceNamedTweenDuration("animation_2", 0);
+
         }
 
     },

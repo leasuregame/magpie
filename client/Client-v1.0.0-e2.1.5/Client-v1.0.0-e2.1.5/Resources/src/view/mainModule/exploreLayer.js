@@ -611,43 +611,56 @@ var ExploreLayer = cc.Layer.extend({
 
     _showBox: function () {
         cc.log("TaskLayer _openBox");
-
-        var boxAction = cc.Sequence.create(
-            cc.Spawn.create(
-                cc.MoveBy.create(0.3, cc.p(0, -165)),
-                cc.ScaleTo.create(0.3, 1, 1)
-            ),
-            cc.CallFunc.create(
-                this._openBox,
-                this
-            )
-        );
-
-        this._closeBoxSprite.setPosition(this._exploreLayerFit.closeBoxSpritePoint2);
-        this._closeBoxSprite.setScale(0.9);
-        this._closeBoxSprite.setVisible(true);
-
-        this._openBoxSprite.setVisible(false);
-
-        this._closeBoxSprite.runAction(boxAction);
-    },
-
-    _openBox: function () {
-        cc.log("TaskLayer _openBox");
-
-        this._closeBoxSprite.setVisible(false);
-        this._openBoxSprite.setVisible(true);
-
         var that = this;
         var cb = function () {
-            that._openBoxSprite.setVisible(false);
             that.update();
         };
 
-        this.scheduleOnce(function () {
+        var boxEffect = cc.BuilderReader.load(main_scene_image.uiEffect47, this);
+        boxEffect.setPosition(this._exploreLayerFit.openBoxSpritePoint);
+        this.addChild(boxEffect);
+
+        boxEffect.animationManager.setCompletedAnimationCallback(this, function(){
+            boxEffect.removeFromParent();
             LotteryCardLayer.pop({card: this._reward.card, cb: cb});
-        }, 0.5);
+        });
+
+//        var boxAction = cc.Sequence.create(
+//            cc.Spawn.create(
+//                cc.MoveBy.create(0.3, cc.p(0, -165)),
+//                cc.ScaleTo.create(0.3, 1, 1)
+//            ),
+//            cc.CallFunc.create(
+//                this._openBox,
+//                this
+//            )
+//        );
+//
+//        this._closeBoxSprite.setPosition(this._exploreLayerFit.closeBoxSpritePoint2);
+//        this._closeBoxSprite.setScale(0.9);
+//        this._closeBoxSprite.setVisible(true);
+//
+//        this._openBoxSprite.setVisible(false);
+//
+//        this._closeBoxSprite.runAction(boxAction);
     },
+
+//    _openBox: function () {
+//        cc.log("TaskLayer _openBox");
+//
+//        this._closeBoxSprite.setVisible(false);
+//        this._openBoxSprite.setVisible(true);
+//
+//        var that = this;
+//        var cb = function () {
+//            that._openBoxSprite.setVisible(false);
+//            that.update();
+//        };
+//
+//        this.scheduleOnce(function () {
+//            LotteryCardLayer.pop({card: this._reward.card, cb: cb});
+//        }, 0.5);
+//    },
 
     _onBuyPower: function () {
         cc.log("TournamentLayer _onClickBuyCount");

@@ -23,55 +23,6 @@
 		<key>children</key>
 		<array>
 			<dict>
-				<key>baseClass</key>
-				<string>CCNode</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string></string>
-				<key>displayName</key>
-				<string>CCNode</string>
-				<key>memberVarAssignmentName</key>
-				<string></string>
-				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>anchorPoint</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<false/>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>ignoreAnchorPointForPosition</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-				</array>
-			</dict>
-			<dict>
 				<key>animatedProperties</key>
 				<dict>
 					<key>0</key>
@@ -89,7 +40,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>0.066666670143604279</real>
+									<real>0.0</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -186,7 +137,7 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>60</real>
+							<real>70</real>
 							<real>20</real>
 						</array>
 					</dict>
@@ -196,7 +147,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>500</real>
+						<real>50</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -212,7 +163,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>80</integer>
+						<integer>40</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -221,7 +172,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.30000001192092896</real>
+							<real>0.5</real>
 							<real>0.20000000298023224</real>
 						</array>
 					</dict>
@@ -232,7 +183,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
+							<real>60</real>
 							<real>10</real>
 						</array>
 					</dict>
@@ -243,8 +194,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
 							<real>10</real>
+							<real>5</real>
 						</array>
 					</dict>
 					<dict>
@@ -277,7 +228,7 @@
 						<key>value</key>
 						<array>
 							<real>90</real>
-							<real>20</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -288,16 +239,16 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.10987257212400436</real>
-								<real>0.81010782718658447</real>
-								<real>0.13213115930557251</real>
+								<real>0.99999600648880005</real>
+								<real>1</real>
+								<real>1</real>
 								<real>1</real>
 							</array>
 							<array>
 								<real>0.0</real>
 								<real>0.0</real>
 								<real>0.0</real>
-								<real>0.0</real>
+								<real>0.76999998092651367</real>
 							</array>
 						</array>
 					</dict>
@@ -309,16 +260,16 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>255</real>
+								<real>0.99999600648880005</real>
+								<real>1</real>
+								<real>1</real>
+								<real>1</real>
 							</array>
 							<array>
 								<real>0.0</real>
 								<real>0.0</real>
 								<real>0.0</real>
-								<real>0.0</real>
+								<real>0.79000002145767212</real>
 							</array>
 						</array>
 					</dict>
@@ -330,7 +281,7 @@
 						<key>value</key>
 						<array>
 							<integer>1</integer>
-							<integer>1</integer>
+							<integer>771</integer>
 						</array>
 					</dict>
 					<dict>
@@ -351,7 +302,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>400</real>
+							<real>250</real>
 							<real>20</real>
 						</array>
 					</dict>
@@ -383,7 +334,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>res/effect/effect/p18.png</string>
+						<string>res/effect/effect/p19.png</string>
 					</dict>
 				</array>
 			</dict>
@@ -405,7 +356,7 @@
 									<key>name</key>
 									<string>visible</string>
 									<key>time</key>
-									<real>0.1666666716337204</real>
+									<real>0.0</real>
 									<key>type</key>
 									<integer>1</integer>
 									<key>value</key>
@@ -451,7 +402,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-77</real>
+							<real>-68</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -502,8 +453,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>60</real>
-							<real>0.0</real>
+							<real>70</real>
+							<real>20</real>
 						</array>
 					</dict>
 					<dict>
@@ -512,7 +463,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>500</real>
+						<real>50</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -520,7 +471,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.34999999403953552</real>
+						<real>0.40000000596046448</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -528,7 +479,7 @@
 						<key>type</key>
 						<string>Integer</string>
 						<key>value</key>
-						<integer>80</integer>
+						<integer>40</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -537,7 +488,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>0.30000001192092896</real>
+							<real>0.5</real>
 							<real>0.20000000298023224</real>
 						</array>
 					</dict>
@@ -548,8 +499,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>30</real>
-							<real>20</real>
+							<real>15</real>
+							<real>8</real>
 						</array>
 					</dict>
 					<dict>
@@ -559,8 +510,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>10</real>
-							<real>10</real>
+							<real>8</real>
+							<real>3</real>
 						</array>
 					</dict>
 					<dict>
@@ -593,7 +544,7 @@
 						<key>value</key>
 						<array>
 							<real>90</real>
-							<real>10</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -604,16 +555,16 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>0.073942147195339203</real>
-								<real>0.82669061422348022</real>
-								<real>0.12762495875358582</real>
+								<real>0.0</real>
+								<real>0.97689074277877808</real>
+								<real>0.0</real>
 								<real>1</real>
 							</array>
 							<array>
 								<real>0.0</real>
 								<real>0.0</real>
 								<real>0.0</real>
-								<real>0.0</real>
+								<real>0.76999998092651367</real>
 							</array>
 						</array>
 					</dict>
@@ -625,16 +576,16 @@
 						<key>value</key>
 						<array>
 							<array>
+								<real>0.19499760866165161</real>
+								<real>0.97730344533920288</real>
 								<real>0.0</real>
-								<real>0.0</real>
-								<real>0.0</real>
-								<real>255</real>
+								<real>1</real>
 							</array>
 							<array>
 								<real>0.0</real>
 								<real>0.0</real>
 								<real>0.0</real>
-								<real>0.0</real>
+								<real>0.79000002145767212</real>
 							</array>
 						</array>
 					</dict>
@@ -667,7 +618,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>400</real>
+							<real>250</real>
 							<real>20</real>
 						</array>
 					</dict>
@@ -689,7 +640,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>30</real>
+							<real>50</real>
 							<real>0.0</real>
 						</array>
 					</dict>
@@ -699,7 +650,7 @@
 						<key>type</key>
 						<string>Texture</string>
 						<key>value</key>
-						<string>res/effect/effect/p18.png</string>
+						<string>res/effect/effect/p23.png</string>
 					</dict>
 				</array>
 			</dict>
@@ -784,13 +735,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>1</real>
+			<real>1.3333333730697632</real>
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1</real>
+			<real>1.3333333730697632</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

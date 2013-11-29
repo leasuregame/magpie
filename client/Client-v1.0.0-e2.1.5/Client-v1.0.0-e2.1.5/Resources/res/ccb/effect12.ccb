@@ -1817,6 +1817,17 @@
 										<key>value</key>
 										<integer>0</integer>
 									</dict>
+									<dict>
+										<key>name</key>
+										<string>flip</string>
+										<key>type</key>
+										<string>Flip</string>
+										<key>value</key>
+										<array>
+											<true/>
+											<false/>
+										</array>
+									</dict>
 								</array>
 								<key>seqExpanded</key>
 								<true/>

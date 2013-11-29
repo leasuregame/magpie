@@ -146,6 +146,18 @@
 									<string>res/effect/effect/p26.png</string>
 								</array>
 							</dict>
+							<dict>
+								<key>name</key>
+								<string>color</string>
+								<key>type</key>
+								<string>Color3</string>
+								<key>value</key>
+								<array>
+									<integer>170</integer>
+									<integer>252</integer>
+									<integer>214</integer>
+								</array>
+							</dict>
 						</array>
 						<key>seqExpanded</key>
 						<true/>
@@ -271,9 +283,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>194</integer>
-									<integer>194</integer>
-									<integer>194</integer>
+									<integer>157</integer>
+									<integer>203</integer>
+									<integer>186</integer>
 								</array>
 							</dict>
 							<dict>
@@ -405,8 +417,8 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>0.0</real>
+									<real>12</real>
+									<real>12</real>
 								</array>
 							</dict>
 							<dict>
@@ -605,8 +617,6 @@
 								<string>res/effect/test/2.png</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>

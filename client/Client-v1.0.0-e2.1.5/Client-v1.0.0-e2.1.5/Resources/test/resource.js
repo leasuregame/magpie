@@ -553,7 +553,7 @@ var main_scene_image = {
     p21: effect_scene_path + "effect/" + "p21.png",
     p22: effect_scene_path + "effect/" + "p22.png",
     p23: effect_scene_path + "effect/" + "p23.png",
-    p24: effect_scene_path + "effect/" + "p24.png",
+    p24: effect_scene_path + "effect/" + "p24.png", 
     p25: effect_scene_path + "effect/" + "p25.png",
     p26: effect_scene_path + "effect/" + "p26.png",
     p27: effect_scene_path + "effect/" + "p27.png",

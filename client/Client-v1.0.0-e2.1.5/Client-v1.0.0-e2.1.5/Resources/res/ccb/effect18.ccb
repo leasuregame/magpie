@@ -512,8 +512,19 @@
 						<key>value</key>
 						<array>
 							<integer>254</integer>
-							<integer>255</integer>
-							<integer>255</integer>
+							<integer>252</integer>
+							<integer>120</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>blendFunc</string>
+						<key>type</key>
+						<string>Blendmode</string>
+						<key>value</key>
+						<array>
+							<integer>1</integer>
+							<integer>1</integer>
 						</array>
 					</dict>
 				</array>
@@ -724,8 +735,19 @@
 						<key>value</key>
 						<array>
 							<integer>254</integer>
-							<integer>255</integer>
-							<integer>255</integer>
+							<integer>241</integer>
+							<integer>118</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>blendFunc</string>
+						<key>type</key>
+						<string>Blendmode</string>
+						<key>value</key>
+						<array>
+							<integer>1</integer>
+							<integer>1</integer>
 						</array>
 					</dict>
 				</array>

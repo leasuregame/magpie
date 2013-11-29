@@ -121,6 +121,11 @@ class Manager
       task.hasWin = true
       player.task = task
 
+    ### 每次战斗结束都有10%的概率获得5魔石 ###
+    if utility.hitRate(taskRate.gold_obtain.rate)
+      player.increase('gold', taskRate.gold_obtain.value)
+      battleLog.rewards.gold = taskRate.gold_obtain.value  
+
     saveExpCardsInfo player.id, taskData.max_drop_card_number, (err, results) ->
       if err
         logger.error('save exp card for task error: ', err)

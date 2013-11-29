@@ -9,6 +9,7 @@
 #define ___2dx__TBAdapter__
 
 #include <iostream>
+#include "ScriptingCore.h"
 
 #endif
 /*屏幕方向枚举，等同于iOS原生方向*/
@@ -25,6 +26,8 @@ typedef enum {
 class TBAdapter{
 private:
     TBAdapter(){};
+    void TBExcuteCallback(const char *name, uint32_t argc /* = 0 */,
+                          jsval *vp /* = NULL */, jsval* retVal /* = NULL */);
 public:
     virtual ~TBAdapter(){};
     /*获取该类单例*/

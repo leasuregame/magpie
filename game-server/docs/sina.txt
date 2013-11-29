@@ -59,3 +59,5 @@ cd ../gm && make runserver2 && cd ../game-server
 tail -f ./logs/node-log-area-server-1.log
 http://124.238.236.33:3003
 test, 123
+
+TB01033343

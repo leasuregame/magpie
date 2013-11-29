@@ -9,6 +9,7 @@
 #include "TBAdapter.h"
 #include <TBPlatform/TBPlatform.h>
 #include "TBCallbackHandler.h"
+#include "cocos2d.h"
 
 //TBAdapter TBAdapter::TBAdapter(){
     //[TBCallbackHandler sharedHandler];
@@ -25,6 +26,12 @@ TBAdapter * TBAdapter::TBAdapterInstance(){
     [TBCallbackHandler sharedHandler];
     return m_Instance;
 }
+
+void TBAdapter::TBExcuteCallback(const char *name, uint32_t argc, jsval *vp, jsval *retVal) {
+    js_proxy_t* p = jsb_get_native_proxy(this);
+    ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(p->obj),
+                                                           name, argc, vp, retVal);
+};
 /* 初始化平台
  * appid：应用ID，由后台获取
  * orientation：平台初始方向
@@ -123,10 +130,29 @@ int TBAdapter::TBEnterBBS(int tag){
 void TBAdapter::TBInitDidFinishWithUpdateCode(int code){
 #warning 初始化结果处理（需要自定义）
     this->ShowMessage("初始化结果（检查更新结果）:%d");
+    
+    cocos2d::CCLog("initDidFinishWithUpdateCodeHandler call: %d", code);
+    
+    jsval v[] = {
+        v[0] = UINT_TO_JSVAL(code)
+    };
+    this->TBExcuteCallback("initDidFinishWithUpdateCodeHandler", 1, v, NULL);
 }
-void TBAdapter::TBLoginResultHandle(bool isSuccess){
+void TBAdapter::TBLoginResultHandle(bool isSuccess, TBPlatformUserInfo *user){
 #warning 登录结果处理（需要自定义）
     this->ShowMessage("登录结果:%d");
+    
+    cocos2d::CCLog("login result handler: %s");
+    
+    js_proxy_t* p = jsb_get_native_proxy(this);
+    jsval retval;
+    jsval v[] = {
+        v[0] = BOOLEAN_TO_JSVAL(isSuccess),
+        v[1] = OBJECT_TO_JSVAL(user)
+    };
+    
+    ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(p->obj),
+                                                           "loginResultHandler", 2, v, &retval);
 }
 void TBAdapter::TBLogoutHandle(){
 #warning 注销结果处理（需要自定义）
@@ -221,7 +247,8 @@ static TBCallbackHandler *p_instance = NULL;
 - (void)TBLoginNotify:(id)notify{
     NSDictionary *dict = [notify userInfo];
 	BOOL isSuccess  = [[dict objectForKey:@"result"] boolValue];
-    TBAdapter::TBAdapterInstance()->TBLoginResultHandle(isSuccess);
+    TBPlatformUserInfo *user = [dict objectForKey:@"tbuserinfo"];
+    TBAdapter::TBAdapterInstance()->TBLoginResultHandle(isSuccess, user);
 }
 /**
  *	注销结果通知

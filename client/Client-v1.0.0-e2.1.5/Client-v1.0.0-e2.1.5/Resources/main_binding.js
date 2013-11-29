@@ -200,6 +200,22 @@ director.setAnimationInterval(1.0 / 30);
 // fit dev
 gameFitAdapter();
 
+var tbadapter = tb.TBAdapter.TBAdapterInstance();
+tbadapter.TBInitPlatformWithAppID(100000, 1, true);
+cc.log("inited tbadapter...");
+tbadapter.initDidFinishWithUpdateCodeHandler = function(code, y) {
+    cc.log("finish init with code: ", code);
+    cc.log(code);
+    cc.log(y);
+    
+    tbadapter.TBLogin(0);
+};
+
+tbadapter.loginResultHandler = function(isSuccess) {
+    cc.log('login result: ', isSuccess);
+    
+};
+
 // create a scene. it's an autorelease object
 var loginScene = LoginScene.create();
 

@@ -239,9 +239,9 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>1</real>
-								<real>0.95502370595932007</real>
-								<real>0.35835000872612</real>
+								<real>0.99953407049179077</real>
+								<real>0.98835557699203491</real>
+								<real>0.47265523672103882</real>
 								<real>1</real>
 							</array>
 							<array>
@@ -260,8 +260,8 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>1</real>
-								<real>0.88658672571182251</real>
+								<real>0.9994240403175354</real>
+								<real>0.98555368185043335</real>
 								<real>0.0</real>
 								<real>1</real>
 							</array>
@@ -555,9 +555,9 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>1</real>
-								<real>0.95502370595932007</real>
-								<real>0.35835000872612</real>
+								<real>0.99953407049179077</real>
+								<real>0.98835557699203491</real>
+								<real>0.47265523672103882</real>
 								<real>1</real>
 							</array>
 							<array>
@@ -576,8 +576,8 @@
 						<key>value</key>
 						<array>
 							<array>
-								<real>1</real>
-								<real>0.88658672571182251</real>
+								<real>0.9994240403175354</real>
+								<real>0.98555368185043335</real>
 								<real>0.0</real>
 								<real>1</real>
 							</array>

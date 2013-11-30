@@ -423,6 +423,18 @@ var ExploreLayer = cc.Layer.extend({
         cc.log("ExploreLayer _showReward");
 
         if (this._reward) {
+
+            if (this._reward.money && this._reward.exp) {
+                var rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect48, this);
+                rewardEffect.controller.moneyLabel.setString("+" + this._reward.money);
+                rewardEffect.controller.expLabel.setString("+" + this._reward.exp);
+                rewardEffect.setPosition(this._exploreLayerFit.rewardEffectPoint);
+                this.addChild(rewardEffect);
+                rewardEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                    rewardEffect.removeFromParent();
+                });
+            }
+
             var fadeAction = cc.Sequence.create(
                 cc.FadeIn.create(0.3),
                 cc.DelayTime.create(0.6),
@@ -612,22 +624,23 @@ var ExploreLayer = cc.Layer.extend({
     _showBox: function () {
         cc.log("TaskLayer _showBox");
 
-        var that = this;
-        var cb = function () {
-            that.update();
-        };
-
         var boxEffect = cc.BuilderReader.load(main_scene_image.uiEffect47, this);
         boxEffect.setPosition(this._exploreLayerFit.openBoxSpritePoint);
         this.addChild(boxEffect);
 
-        boxEffect.animationManager.setCompletedAnimationCallback(this, function(){
+        boxEffect.animationManager.setCompletedAnimationCallback(this, function () {
             boxEffect.removeFromParent();
         });
     },
 
     _openBox: function () {
         cc.log("TaskLayer _openBox");
+
+        var that = this;
+        var cb = function () {
+            that.update();
+        };
+
         LotteryCardLayer.pop({card: this._reward.card, cb: cb});
     },
 

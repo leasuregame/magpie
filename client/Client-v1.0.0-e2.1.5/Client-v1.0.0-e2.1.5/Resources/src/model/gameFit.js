@@ -25,7 +25,7 @@ var fit4Iphone4 = {
         "battleEndLayer": {
             "bgLayerPoint": cc.p(40, 0),
             "winBgSpritePoint": cc.p(360, 612),
-            "obtainSpritePoint": cc.p(0, 158),
+            "obtainSpritePoint": cc.p(0, 173),
             "failBgSpritePoint": cc.p(360, 612),
             "rewardLabelPointX": 0,
             "offsetYHeight": 80,
@@ -328,7 +328,8 @@ var fit4Iphone4 = {
             "scrollViewPoint": cc.p(40, 106),
             "pointX": -600,
             "closeBoxSpritePoint2": cc.p(360, 1025),
-            "passEffectPoint": cc.p(360, 578)
+            "passEffectPoint": cc.p(360, 578),
+            "rewardEffectPoint": cc.p(360, 800)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -1090,7 +1091,7 @@ var fit4Iphone5 = {
         "battleEndLayer": {
             "bgLayerPoint": cc.p(0, 0),
             "winBgSpritePoint": cc.p(320, 680),
-            "obtainSpritePoint": cc.p(0, 158),
+            "obtainSpritePoint": cc.p(0, 173),
             "failBgSpritePoint": cc.p(320, 680),
             "rewardLabelPointX": 0,
             "offsetYHeight": 80,
@@ -1393,7 +1394,8 @@ var fit4Iphone5 = {
             "scrollViewPoint": cc.p(0, 194),
             "pointX": -640,
             "closeBoxSpritePoint2": cc.p(320, 1025),
-            "passEffectPoint": cc.p(320, 706)
+            "passEffectPoint": cc.p(320, 706),
+            "rewardEffectPoint": cc.p(320, 900)
         },
         "friendLayer": {
             "bgSpritePoint": cc.p(0, 106),
@@ -1515,7 +1517,7 @@ var fit4Iphone5 = {
         },
         "lotteryCardLayer": {
             "ccbNodePoint": cc.p(320, 568),
-            "ccbNodePoint1": cc.p(320, 600)
+            "ccbNodePoint1": cc.p(320, 580)
         },
         "lotteryLayer": {
             "bgSpritePoint": cc.p(0, 106),

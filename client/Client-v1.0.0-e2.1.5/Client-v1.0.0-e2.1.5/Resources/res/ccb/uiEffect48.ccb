@@ -269,7 +269,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -429,7 +429,7 @@
 								<key>type</key>
 								<string>Byte</string>
 								<key>value</key>
-								<integer>255</integer>
+								<integer>0</integer>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -526,9 +526,9 @@
 								<key>displayName</key>
 								<string>CCLabelTTF_Money</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>moneyLabel</string>
 								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
+								<integer>1</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -602,7 +602,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>255</integer>
+										<integer>0</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -641,8 +641,6 @@
 										<string></string>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>
@@ -732,9 +730,9 @@
 								<key>displayName</key>
 								<string>CCLabelTTF_Exp</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>expLabel</string>
 								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
+								<integer>1</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -808,7 +806,7 @@
 										<key>type</key>
 										<string>Byte</string>
 										<key>value</key>
-										<integer>255</integer>
+										<integer>0</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -847,6 +845,8 @@
 										<string></string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 								<key>seqExpanded</key>
 								<true/>
 							</dict>
@@ -919,7 +919,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>41.599998474121094</real>
+							<real>80</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1046,7 +1046,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.40000000596046448</real>
+			<real>1.3333333730697632</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -361,11 +361,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-<<<<<<< HEAD
-							<real>50</real>
-=======
 							<real>-70</real>
->>>>>>> effect
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -425,7 +421,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -794,7 +790,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-40</real>
+							<real>-140</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -854,7 +850,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>255</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -1698,7 +1694,7 @@
 	<array>
 		<dict>
 			<key>autoPlay</key>
-			<false/>
+			<true/>
 			<key>callbackChannel</key>
 			<dict>
 				<key>keyframes</key>

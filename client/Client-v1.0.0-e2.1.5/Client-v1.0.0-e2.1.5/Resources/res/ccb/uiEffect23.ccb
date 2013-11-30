@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -70,7 +70,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>1.7333333492279053</real>
+									<real>2.7333333492279053</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -85,7 +85,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2</real>
+									<real>3</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -110,13 +110,13 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>1.6666666269302368</real>
+									<real>2.6666667461395264</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
 									<array>
 										<real>0.0</real>
-										<real>-50</real>
+										<real>-70</real>
 									</array>
 								</dict>
 								<dict>
@@ -128,13 +128,13 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>1.7333333492279053</real>
+									<real>2.7333333492279053</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
 									<array>
 										<real>0.0</real>
-										<real>-60</real>
+										<real>-80</real>
 									</array>
 								</dict>
 								<dict>
@@ -146,7 +146,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>2</real>
+									<real>3</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -352,7 +352,7 @@
 						<key>baseValue</key>
 						<array>
 							<real>0.0</real>
-							<real>-50</real>
+							<real>-70</real>
 						</array>
 						<key>name</key>
 						<string>position</string>
@@ -361,7 +361,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-50</real>
+							<real>50</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -421,7 +421,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -475,7 +475,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>1.7333333492279053</real>
+									<real>2.7333333492279053</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -490,7 +490,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2</real>
+									<real>3</real>
 									<key>type</key>
 									<integer>5</integer>
 									<key>value</key>
@@ -515,7 +515,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>1.6666666269302368</real>
+									<real>2.6666667461395264</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -533,7 +533,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>1.7333333492279053</real>
+									<real>2.7333333492279053</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -551,7 +551,7 @@
 									<key>name</key>
 									<string>position</string>
 									<key>time</key>
-									<real>2</real>
+									<real>3</real>
 									<key>type</key>
 									<integer>3</integer>
 									<key>value</key>
@@ -790,7 +790,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-140</real>
+							<real>-40</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -850,7 +850,7 @@
 						<key>type</key>
 						<string>Byte</string>
 						<key>value</key>
-						<integer>255</integer>
+						<integer>0</integer>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -1705,17 +1705,17 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>2</real>
+			<real>3</real>
 			<key>name</key>
 			<string>animation_1</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2</real>
+			<real>3</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>424.65447998046875</real>
+			<real>296.31179809570312</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>
@@ -1729,7 +1729,7 @@
 							<integer>0</integer>
 						</dict>
 						<key>time</key>
-						<real>0.73333334922790527</real>
+						<real>0.60000002384185791</real>
 						<key>type</key>
 						<integer>9</integer>
 						<key>value</key>
@@ -1774,7 +1774,26 @@
 			<key>soundChannel</key>
 			<dict>
 				<key>keyframes</key>
-				<array/>
+				<array>
+					<dict>
+						<key>easing</key>
+						<dict>
+							<key>type</key>
+							<integer>0</integer>
+						</dict>
+						<key>time</key>
+						<real>0.60000002384185791</real>
+						<key>type</key>
+						<integer>9</integer>
+						<key>value</key>
+						<array>
+							<string>res/sound/star_sound.wav</string>
+							<real>1</real>
+							<real>0.0</real>
+							<real>1</real>
+						</array>
+					</dict>
+				</array>
 				<key>type</key>
 				<integer>9</integer>
 			</dict>

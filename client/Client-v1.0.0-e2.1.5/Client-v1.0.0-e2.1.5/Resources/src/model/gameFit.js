@@ -450,7 +450,7 @@ var fit4Iphone4 = {
         },
         "lotteryCardLayer": {
             "ccbNodePoint": cc.p(360, 520),
-            "ccbNodePoint1": cc.p(550, 782)
+            "ccbNodePoint1": cc.p(360, 544)
         },
         "lotteryLayer": {
             "bgSpritePoint": cc.p(40, 0),
@@ -1515,7 +1515,7 @@ var fit4Iphone5 = {
         },
         "lotteryCardLayer": {
             "ccbNodePoint": cc.p(320, 568),
-            "ccbNodePoint1": cc.p(510, 820)
+            "ccbNodePoint1": cc.p(320, 600)
         },
         "lotteryLayer": {
             "bgSpritePoint": cc.p(0, 106),

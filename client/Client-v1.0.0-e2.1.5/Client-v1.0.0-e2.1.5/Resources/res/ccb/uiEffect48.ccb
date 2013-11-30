@@ -343,9 +343,9 @@
 						<key>displayName</key>
 						<string>CCLabelTTF_Money</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>moneyLabel</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -858,9 +858,9 @@
 						<key>displayName</key>
 						<string>CCLabelTTF_Exp</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>expLabel</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>

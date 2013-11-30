@@ -584,7 +584,8 @@ var fit4Iphone4 = {
             "cancelItemPoint": cc.p(460, 182),
             "stopItemPoint": cc.p(360, 182),
             "leadCardHeadNodePoint": cc.p(137, 582),
-            "tipLabelPoint": cc.p(227, 45)
+            "tipLabelPoint": cc.p(227, 45),
+            "effectPoint": cc.p(360, 523)
         },
         "passLayer": {
             "bgSpritePoint": cc.p(40, 106),
@@ -1651,7 +1652,8 @@ var fit4Iphone5 = {
             "cancelItemPoint": cc.p(420, 197),
             "stopItemPoint": cc.p(320, 197),
             "leadCardHeadNodePoint": cc.p(97, 670),
-            "tipLabelPoint": cc.p(227, 25)
+            "tipLabelPoint": cc.p(227, 25),
+            "effectPoint": cc.p(320, 563)
         },
         "passLayer": {
             "bgSpritePoint": cc.p(0, 106),

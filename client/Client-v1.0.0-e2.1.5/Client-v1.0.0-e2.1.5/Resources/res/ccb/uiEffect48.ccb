@@ -889,7 +889,7 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>+999</string>
+								<string></string>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -1404,9 +1404,11 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>+999</string>
+								<string></string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>

@@ -588,25 +588,22 @@ JSBool js_jsb_TBAdapter_TBAdapter_TBLoginResultHandle(JSContext *cx, uint32_t ar
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	TBAdapter* cobj = (TBAdapter *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "Invalid Native Object");
-	if (argc == 2) {
+	if (argc == 4) {
 		JSBool arg0;
-		UserData arg1;
+		const char* arg1;
+		const char* arg2;
+		const char* arg3;
 		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		do {
-			if (!argv[1].isObject()) { ok = JS_FALSE; break; }
-			js_proxy_t *proxy;
-			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[1]);
-			proxy = jsb_get_js_proxy(tmpObj);
-			arg1 = (UserData)(proxy ? proxy->ptr : NULL);
-			JSB_PRECONDITION2( arg1, cx, JS_FALSE, "Invalid Native Object");
-		} while (0);
+		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		std::string arg2_tmp; ok &= jsval_to_std_string(cx, argv[2], &arg2_tmp); arg2 = arg2_tmp.c_str();
+		std::string arg3_tmp; ok &= jsval_to_std_string(cx, argv[3], &arg3_tmp); arg3 = arg3_tmp.c_str();
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "Error processing arguments");
-		cobj->TBLoginResultHandle(arg0, arg1);
+		cobj->TBLoginResultHandle(arg0, arg1, arg2, arg3);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
     
-	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 2);
+	JS_ReportError(cx, "wrong number of arguments: %d, was expecting %d", argc, 4);
 	return JS_FALSE;
 }
 JSBool js_jsb_TBAdapter_TBAdapter_TBEnterUserCenter(JSContext *cx, uint32_t argc, jsval *vp)

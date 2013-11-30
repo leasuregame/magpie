@@ -139,56 +139,122 @@ void TBAdapter::TBInitDidFinishWithUpdateCode(int code){
     };
     this->TBExcuteCallback("initDidFinishWithUpdateCodeHandler", 1, v, NULL);
 }
-void TBAdapter::TBLoginResultHandle(bool isSuccess, UserData user){
+void TBAdapter::TBLoginResultHandle(bool isSuccess, const char *nikeName,const char *userId,const char *sessionId){
 #warning 登录结果处理（需要自定义）
-    this->ShowMessage("登录结果:%d");
+    //this->ShowMessage("登录结果:%d");
     
-    cocos2d::CCLog("login result handler: %s");
+    //cocos2d::CCLog("login result handler: %s");
+    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+    JSObject* jsobj = JS_NewObject(cx, NULL, NULL, NULL);
+    jsval vp_nikeName = c_string_to_jsval(cx, nikeName);
+    jsval vp_userId = c_string_to_jsval(cx, userId);
+    jsval vp_sessionId = c_string_to_jsval(cx, sessionId);
+    JS_SetProperty(cx, jsobj, "nikeName", &vp_nikeName);
+    JS_SetProperty(cx, jsobj, "userId", &vp_userId);
+    JS_SetProperty(cx, jsobj, "sessionId", &vp_sessionId);
+    
+    jsval userinfo = OBJECT_TO_JSVAL(jsobj);
     
     js_proxy_t* p = jsb_get_native_proxy(this);
     jsval retval;
     jsval v[] = {
-        v[0] = BOOLEAN_TO_JSVAL(isSuccess)
+        v[0] = BOOLEAN_TO_JSVAL(isSuccess),
+        v[1] = userinfo
     };
+    //cocos2d::CCLog("%s %s %s", nikeName, userId, sessionId);
     
     ScriptingCore::getInstance()->executeFunctionWithOwner(OBJECT_TO_JSVAL(p->obj),
-                                                           "loginResultHandler", 1, v, &retval);
+                                                           "loginResultHandler", 2, v, &retval);
 }
 void TBAdapter::TBLogoutHandle(){
 #warning 注销结果处理（需要自定义）
     this->ShowMessage("Logouted");
+    this->TBExcuteCallback("logoutHandler", 0, NULL, NULL);
+
 }
 void TBAdapter::TBLeavedPlatformHandle(int closeType, const char *order){
 #warning 平台离开通知（需要自定义）
     this->ShowMessage("离开类型:%d,订单号(仅从充值页关闭时有值):%s");
+    
+    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+    jsval v[] = {
+        v[0] = UINT_TO_JSVAL(closeType),
+        v[1] = c_string_to_jsval(cx, order)
+    };
+    
+    this->TBExcuteCallback("leavedPlatformHandler", 2, v, NULL);
 }
 void TBAdapter::TBCheckUpdateFinished(int result){
 #warning 检查更新结果（需要自定义）
     this->ShowMessage("检查更新结果:%d");
+    jsval v[] = {
+        v[0] = UINT_TO_JSVAL(result)
+    };
+    
+    this->TBExcuteCallback("checkUpdateFinishedHandler", 1, v, NULL);
 }
 void TBAdapter::TBBuyGoodsSuccessWithOrder(const char *order){
 #warning 推币购买物品成功（需要自定义）
     this->ShowMessage("购买物品成功:%@");
+    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+    jsval v[] = {
+        v[0] = c_string_to_jsval(cx, order)
+    };
+    
+    this->TBExcuteCallback("buyGoodsSuccessWithOrderHandler", 1, v, NULL);
 }
 void TBAdapter::TBBuyGoodsFailed(const char *order,int error){
 #warning 购买物品失败（需要自定义）
     this->ShowMessage("购买物品失败:%@ errorCode:%d");
+    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+    jsval v[] = {
+        v[0] = c_string_to_jsval(cx, order),
+        v[1] = UINT_TO_JSVAL(error)
+    };
+    
+    this->TBExcuteCallback("leavedPlatformHandler", 2, v, NULL);
 }
 void TBAdapter::TBBuyGoodsDidEnterWebview(const char *order){
 #warning 余额不足，进入充值支付页面（需要自定义）
     this->ShowMessage("进入充值Web页，订单号:%@");
+    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+    jsval v[] = {
+        v[0] = c_string_to_jsval(cx, order)
+    };
+    
+    this->TBExcuteCallback("buyGoodsDidEnterVwebviewHandler", 1, v, NULL);
 }
 void TBAdapter::TBCheckOrderResultHandle(const char *order,int status,int amount){
 #warning 查询订单结果（需要自定义）
     this->ShowMessage("查询订单结果\nOrder:%@\nStatus:%d\nAmount:%d");
+    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+    jsval v[] = {
+        v[0] = c_string_to_jsval(cx, order),
+        v[1] = UINT_TO_JSVAL(status),
+        v[2] = UINT_TO_JSVAL(amount)
+    };
+    
+    this->TBExcuteCallback("checkOrderResultHandler", 3, v, NULL);
 }
 void TBAdapter::TBCheckOrderFailed(const char *order){
 #warning 查询订单失败（需要自定义）
     this->ShowMessage("查询订单失败，订单号:%@");
+    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+    jsval v[] = {
+        v[0] = c_string_to_jsval(cx, order)
+    };
+    
+    this->TBExcuteCallback("checkOrderFailedHandler", 1, v, NULL);
 }
 
 void TBAdapter::TBBuyGoodsDidCancelByUser(const char *order){
     this->ShowMessage("取消支付");
+    JSContext* cx = ScriptingCore::getInstance()->getGlobalContext();
+    jsval v[] = {
+        v[0] = c_string_to_jsval(cx, order)
+    };
+    
+    this->TBExcuteCallback("checkOrderFailedHandler", 1, v, NULL);
 }
 
 void TBAdapter::ShowMessage(char *msg){
@@ -252,17 +318,18 @@ static TBCallbackHandler *p_instance = NULL;
     const char *userID = [user.userID cStringUsingEncoding:NSASCIIStringEncoding];
     const char *sessionID = [user.sessionID cStringUsingEncoding:NSASCIIStringEncoding];
     
-    char* nn = new char[100];//足够长
-    strcpy(nn,nickName);
-    
-    char *uuid = new char[100];
-    strcpy(uuid, userID);
-    
-    char *sid = new char[100];
-    strcpy(sid, sessionID);
-    
-    UserData ud = {nn, uuid, sid};
-    TBAdapter::TBAdapterInstance()->TBLoginResultHandle(isSuccess,ud);
+//    char* nn = new char[100];//足够长
+//    strcpy(nn,nickName);
+//    
+//    char *uuid = new char[100];
+//    strcpy(uuid, userID);
+//    
+//    char *sid = new char[100];
+//    strcpy(sid, sessionID);
+//    
+//    UserData ud = {nn, uuid, sid};
+//    cocos2d::CCLog("%s, %s, %s", nn, uuid, sid);
+    TBAdapter::TBAdapterInstance()->TBLoginResultHandle(isSuccess, nickName, userID, sessionID);
 }
 /**
  *	注销结果通知

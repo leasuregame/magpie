@@ -208,7 +208,7 @@ Data.prototype.loadRobot = function loadRobot(areaId, callback) {
   csv()
     .from(filePath, {
       columns: true,
-      delimiter: ',',
+      delimiter: ';',
       escape: '"'
     })
     .transform(function(row, index, cb) {

@@ -1,4 +1,4 @@
-playerManager = require '../../../manager/playerManager'
+playerManager = require('pomelo').app.get('playerManager')
 cardManager = require '../../../manager/cardManager'
 lottery = require '../../../manager/lottery'
 async = require 'async'

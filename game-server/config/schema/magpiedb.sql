@@ -124,7 +124,8 @@ CREATE TABLE IF NOT EXISTS `rank` (
   `recentChallenger` VARCHAR(100)  COLLATE utf8_unicode_ci DEFAULT '',
   `historyRanking` INT(10) UNSIGNED DEFAULT '0',
   `gotRewards` VARCHAR(100) COLLATE utf8_unicode_ci DEFAULT '',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `INDEX_NAME` (`ranking`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `onlineUser`;
@@ -150,11 +151,10 @@ CREATE TABLE IF NOT EXISTS `buyRecord` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `createTime` BIGINT(20) UNSIGNED NOT NULL,
   `playerId` INT(10) UNSIGNED NOT NULL,
-  `signature` VARCHAR(512) COLLATE utf8_unicode_ci DEFAULT '',
-  `receiptData` TEXT COLLATE utf8_unicode_ci,
+  `receiptData` VARCHAR(5000) COLLATE utf8_unicode_ci,
   `qty` INT(10) UNSIGNED DEFAULT '0',
-  `product` VARCHAR(256) COLLATE utf8_unicode_ci DEFAULT '',
+  `productId` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
   `purchaseDate` DATETIME,
-  `isVerify` BOOLEAN,
+  `isVerify` BOOLEAN DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

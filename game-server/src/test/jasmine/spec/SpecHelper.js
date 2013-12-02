@@ -262,6 +262,10 @@ var game = {
         console.log('on close', data);
       });
 
+      pomelo.on('onVerifyResult', function(data) {
+        console.log('onVerifyResult', data);
+      });
+
     });
   },
   login: function(name, pwd, areaId) {

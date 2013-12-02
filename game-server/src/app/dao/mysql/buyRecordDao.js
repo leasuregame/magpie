@@ -17,15 +17,14 @@ var BuyRecordDao = (function(_super) {
 		this.id = attrs.id;
 		this.createTime = attrs.createTime;
 		this.qty = attrs.qty;
-		this.signature = attrs.signature;
 		this.playerId = attrs.playerId;
-		this.receiptData = attrs.recieptData;
-		this.product = attrs.product;
+		this.receiptData = attrs.receiptData;
+		this.productId = attrs.productId;
 		this.purchaseDate = attrs.purchaseDate;
 		this.isVerify = attrs.isVerify;
 	};
 	domain.DEFAULT_VALUES = {};
-	domain.FIELDS = ['id', 'createTime', 'qty', 'signature', 'playerId', 'recieptData', 'product', 'purchaseDate', 'isVerify'];
+	domain.FIELDS = ['id', 'createTime', 'qty', 'playerId', 'receiptData', 'productId', 'purchaseDate', 'isVerify'];
 	BuyRecordDao.domain = domain;
 
 	return BuyRecordDao;

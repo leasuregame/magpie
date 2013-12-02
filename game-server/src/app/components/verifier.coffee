@@ -3,6 +3,8 @@ logger = require('pomelo-logger').getLogger(__filename)
 _ = require 'underscore'
 async = require 'async'
 table = require '../manager/table'
+utility = require '../common/utility'
+Queue = require '../common/verifyQueue'
 
 SANBOX_URL = 'https://sandbox.itunes.apple.com/verifyReceipt'
 VERIFY_URL = 'https://buy.itunes.apple.com/verifyReceipt'
@@ -13,39 +15,39 @@ module.exports = (app, opts) ->
 class Component
   constructor: (app, opts={}) ->
     @app = app
-    @queue = new Queue()
     @timerId = null
     @interval = 1000
+    @app.set('verifyQueue', new Queue())
 
   @name = '__verify__'
 
-  start: () ->
+  start: (cb) ->
     @app.get('dao').buyRecord.fetchMany {
-      where: verify: 0
+      where: isVerify: 0
     }, (err, res) =>
       if err
         logger.error('faild to fetch buyRecord.', err)
 
       if !!res and res.length > 0
-        @queue.init(res)
+        @app.get('verifyQueue').init(res)
 
     process.nextTick cb
 
-  afterStart: () ->
-    @timerId = setInterval executeVerify.bind(null, @app, @queue), @interval
+  afterStart: (cb) ->
+    @timerId = setInterval executeVerify.bind(null, @app, @app.get('verifyQueue')), @interval
     process.nextTick cb
 
   stop: () ->
     clearInterval @timerId
     process.nextTick cb
 
-executeVerify = (app, queue, cb) ->
+executeVerify = (app, queue) ->
   return if queue.len() is 0
   items = queue.needToProcess()
   return if items.length is 0
 
   async.each items, (item, done) ->
-    return cb(null, null) if item.doing 
+    return if item.doing 
     item.doing = true
 
     request.post {
@@ -60,20 +62,20 @@ executeVerify = (app, queue, cb) ->
         queue.del(item.id) # 删除后，后面用到这个对象的地方会不会出问题呢
         updatePlayer(app, item, body)
         
-      cb(null, body)
+      done()
   , (err) ->
     if err
       logger.error('faild to verify app store reciept.', err)
 
 updatePlayer = (app, buyRecord, receiptResult) ->
-  products = table.getTable('product').filter (id, item) -> item.product_id is receiptResult.receipt.product_id
+  products = table.getTable('recharge').filter (id, item) -> item.product_id is receiptResult.receipt.product_id
   if products and products.length > 0
     product = products[0]
   else
-    throw new Errror('can not file product info by product id ', receiptResult.receipt.product_id)
+    throw new Error('can not file product info by product id ', receiptResult.receipt.product_id)
     return
 
-  self.get('playerManager').getPlayerInfo {pid: buyRecord.playerId}, (err, player) ->
+  app.get('playerManager').getPlayerInfo {pid: buyRecord.playerId}, (err, player) ->
     if err
       logger.error('can not find player info by playerid ', buyRecord.playerId, err)
       return
@@ -81,16 +83,17 @@ updatePlayer = (app, buyRecord, receiptResult) ->
     player.increase('cash', product.cash)
     player.increase('gold', product.cash * 10)
     player.save()
-    updateBuyRecord(app, buyRecord, receiptResult)
+    updateBuyRecord(app, buyRecord, receiptResult.receipt)
     successMsg(app, player)
 
-updateBuyRecord = (app, buyRecord, receiptResult) ->
+updateBuyRecord = (app, buyRecord, receipt) ->
   app.get('dao').buyRecord.update {
+    where: id: buyRecord.id
     data: {
       isVerify: 1,
-      purchaseDate: receiptResult.receipt.purchase_date,
-      productId: receiptResult.receipt.product_id,
-      qty: receiptResult.receipt.quantity
+      purchaseDate: utility.dateFormat(new Date(parseInt receipt.purchase_date_ms), 'yyyy-MM-dd h:mm:ss'),
+      productId: receipt.product_id,
+      qty: receipt.quantity
     }
   }, (err, res) ->
     if err
@@ -107,32 +110,3 @@ successMsg = (app, player) ->
   }, (err, res) ->
     if err
       logger.error('faild to send message to playerId ', playerId)
-
-class Queue
-  constructor: (opts) ->
-    @items = {}
-    @ids = []
-
-  push: (item) ->
-    if item.id not in @ids
-      @ids.push item.id
-      item.doing = false
-      @items[item.id] = item
-
-  pop: () ->
-    id = @ids.pop()
-    @items[id]
-
-  del: (id) ->
-    idx = @ids.indexOf(id)
-    @ids.splice idx, 1
-    delete @items[id]
-
-  waiting: () ->
-    @len() > 0 and @_needToProcess().length > 0
-
-  len: () ->
-    @ids.length
-
-  needToProcess: () ->
-    _.values(@items).filter (i) -> not i.doing

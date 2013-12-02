@@ -48,10 +48,7 @@ var explore = function (app) {
         var task = query["task"];
 
         var env = app.settings.env;
-        //var db = getDB(areaId,env);
-        //dbClient.init(db);
 
-        // var passNum = query["passNum"];
         Explore.simulate(env, areaId, playerId,task, function (err, result) {
             if (err) {
                 res.send({type: "error", info: err});

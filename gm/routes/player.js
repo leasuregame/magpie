@@ -26,23 +26,20 @@ var player = function (app) {
 
         var target = query["target"] || 'playerLogin';
         console.log(target);
-        //  if(!req.session.player)
-        //    target = 'playerLogin';
 
-
-        Area.getAreasList(function (areas) {
+       // Area.getAreasList(function (areas) {
 
             res.render('playerLogin', {
                 title: '玩家数据修改',
                 user: req.session.user,
                 player: req.session.player,
                 area: req.session.area,
-                areas: areas,
+               // areas: areas,
                 target: target,
                 success: req.flash('success').toString(),
                 error: req.flash('error').toString()
             });
-        });
+      //  });
 
     });
 

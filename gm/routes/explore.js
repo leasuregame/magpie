@@ -15,20 +15,20 @@ var explore = function (app) {
 
     app.get('/explore', function (req, res) {
 
-        if(!req.session.player) {
+        if (!req.session.player) {
             res.redirect('/playerLogin?target=explore');
         }
         else {
             var player = req.session.player;
             var env = app.settings.env;
-            Explore.getUserByAccount(env,player.userId,player.areaId,function(err,user){
-                if(!err) {
+            Explore.getUserByAccount(env, player.userId, player.areaId, function (err, user) {
+                if (!err) {
                     res.render('explore', {
                         user: req.session.user,
-                       // areas: areas,
-                        gameUser:user,
-                        player : req.session.player,
-                        area : req.session.area,
+                        // areas: areas,
+                        gameUser: user,
+                        player: req.session.player,
+                        area: req.session.area,
                         success: req.flash('success').toString(),
                         error: req.flash('error').toString()
                     });
@@ -49,7 +49,7 @@ var explore = function (app) {
 
         var env = app.settings.env;
 
-        Explore.simulate(env, areaId, playerId,task, function (err, result) {
+        Explore.simulate(env, areaId, playerId, task, function (err, result) {
             if (err) {
                 res.send({type: "error", info: err});
             }

@@ -40,14 +40,6 @@ app.configure('development', function(){
 app.configure('production', function(){ app.use(express.errorHandler());
 });
 
-/*
-app.get('/', routes.index);
-app.get('/hello',routes.hello);
-app.get('/users', user.list);
-*/
-
-
-
 
 routes(app);
 

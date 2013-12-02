@@ -55,6 +55,8 @@ Handler::login = (msg, session, next) ->
       @app.rpc.auth.authRemote.auth session, account, password, areaId, @app.getServerId(), (err, u) ->
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
+        else if err
+          cb(err)
         else 
           cb(null, u)
 

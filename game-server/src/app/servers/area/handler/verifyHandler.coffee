@@ -53,7 +53,7 @@ Handler::appStore = (msg, session, next) ->
 				request.post {
 					headers: {'content-type': 'application/json'}
 					url: SANBOX_URL
-					json: g
+					json: new Buffter(g).toString('base64')
 				}, (err, res, body) ->
 					if err
 						return cb(err)

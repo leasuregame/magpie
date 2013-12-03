@@ -55,13 +55,9 @@ function connectServer(areaId, cb) {
     }, function (data) {
         if (data.code === 200) {
             console.log(data);
-
-            //   dfd.resolve();
         } else {
             console.log(data);
-            //  cb(data.code);
         }
-
         cb(data.code);
 
     });

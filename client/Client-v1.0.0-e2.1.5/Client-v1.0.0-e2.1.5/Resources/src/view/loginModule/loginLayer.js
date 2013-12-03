@@ -213,11 +213,13 @@ var LoginLayer = cc.Layer.extend({
         cc.log("LoginLayer _onClickRegister");
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-
-        this._loginFrame.setVisible(false);
-
-        var registerLayer = RegisterLayer.create();
-        this.addChild(registerLayer, 1);
+                                
+        tbadapter.TBLogin(0);
+                                 
+//        this._loginFrame.setVisible(false);
+//
+//        var registerLayer = RegisterLayer.create();
+//        this.addChild(registerLayer, 1);
     }
 });
 

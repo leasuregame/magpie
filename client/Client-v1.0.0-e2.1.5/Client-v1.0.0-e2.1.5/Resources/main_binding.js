@@ -207,7 +207,7 @@ tbadapter.initDidFinishWithUpdateCodeHandler = function(code) {
     cc.log("finish init with code: ");
     cc.log(code);
     
-    tbadapter.TBLogin(0);
+    
 };
 
 tbadapter.loginResultHandler = function(isSuccess, userInfo) {

@@ -1,6 +1,6 @@
 dao = require('pomelo').app.get('dao')
 table = require '../../../manager/table'
-playerManager = require '../../../manager/playerManager'
+playerManager = require('pomelo').app.get('playerManager')
 utility = require '../../../common/utility'
 msgConfig = require '../../../../config/data/message'
 playerConfig = require '../../../../config/data/player'

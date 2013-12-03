@@ -1,6 +1,6 @@
 app = require('pomelo').app
 dao = app.get('dao')
-playerManager = require '../../../manager/playerManager'
+playerManager = require('pomelo').app.get('playerManager')
 area = require '../../../domain/area/area'
 messageService = app.get('messageService')
 async = require('async')

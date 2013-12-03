@@ -1,7 +1,8 @@
 var queues = require('mysql-queues');
-var NND, sqlclient, _pool;
+var NND, sqlclient, _pool, currentConfig;
 
 _pool = null;
+currentConfig = null;
 
 NND = {
     /*
@@ -17,7 +18,7 @@ NND = {
 
     query: function (sql, args, cb) {
         return _pool.acquire(function (err, client) {
-            if ( !! err) {
+            if (!!err) {
                 console.error('[sqlqueryErr] ' + err.stack);
                 return;
             }
@@ -32,7 +33,7 @@ NND = {
     queues: function (sqlList, cb) {
         console.log(sqlList);
         return _pool.acquire(function (err, client) {
-            if ( !! err) {
+            if (!!err) {
                 console.error('[sqlqueryErr] ' + err.stack);
                 return;
             }
@@ -41,22 +42,18 @@ NND = {
 
             function error(e, info) {
                 if (e && trans.rollback) {
-                    trans.rollback(function(err, info) {
+                    trans.rollback(function (err, info) {
                         return cb(e, false);
                     });
                 }
-                // if (info.affectedRows < 1 && trans.rollback) {
-                //     trans.rollback(function(err, info){
-                //         return cb({code: 501, msg: 'not all data is complete'}, false);
-                //     });
-                // }
             }
+
             for (var i = 0; i < sqlList.length; i++) {
                 var sql = sqlList[i].sql;
                 var args = sqlList[i].args;
-                trans.query(sql, args, error);              
+                trans.query(sql, args, error);
             }
-            trans.commit(function(err, info) {
+            trans.commit(function (err, info) {
                 _pool.release(client);
                 return cb(err, true);
             });
@@ -78,10 +75,11 @@ NND = {
 
 sqlclient = {
     init: function (config) {
-        if ( !! _pool) {
+        if (!!_pool && currentConfig && currentConfig == config) {
             return sqlclient;
         } else {
-            NND.init(config);
+            currentConfig = config;
+            NND.init(currentConfig);
             sqlclient.insert = NND.query;
             sqlclient.update = NND.query;
             sqlclient.delete = NND.query;

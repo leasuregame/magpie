@@ -1,27 +1,26 @@
-app = require('pomelo').app
-dao = app.get('dao')
 Cache = require '../common/cache'
 async = require 'async'
 area = require('../domain/area/area')
 _ = require 'underscore'
 
 class Manager 
+  constructor: (@app) ->
 
-  @createPlayer: (uid, name, params, cb) ->
-    dao.player.create data: {userId: uid, name: name, areaId: areaId}, (err, player) ->
+  createPlayer: (uid, name, params, cb) ->
+    @app.get('dao').player.create data: {userId: uid, name: name, areaId: areaId}, (err, player) ->
       if err isnt null
         cb(err, null)
         return
 
       cb(null, player)
 
-  @getPlayerInfo: (params, cb) ->
+  getPlayerInfo: (params, cb) ->
     _player = @getPlayerFromCache(params.pid)
     console.log '-get player form area cache-', _player != null
     return cb(null, _player) if _player?
 
     sync = params.sync? and params.sync or true
-    dao.player.getPlayerInfo {
+    @app.get('dao').player.getPlayerInfo {
       where: {id:params.pid}, 
       sync: sync
     }, (err, player) ->
@@ -31,16 +30,16 @@ class Manager
 
       cb(null, player)
 
-  @getPlayerFromCache: (id) ->
+  getPlayerFromCache: (id) ->
     return area.getPlayer(id)
 
-  @getPlayer: (params, cb) ->
-    dao.player.fetchOne where: params, (err, player) ->
+  getPlayer: (params, cb) ->
+    @app.get('dao').player.fetchOne where: params, (err, player) ->
       if err
         return cb(err, null)
       cb(null, player)
 
-  @getPlayers: (ids, cb) ->
+  getPlayers: (ids, cb) ->
     results = {}
     leftIds = []
     for id in ids
@@ -53,17 +52,17 @@ class Manager
     if leftIds.length == 0
       return cb(null, results)
       
-    dao.player.getPlayerDetails leftIds, (err, res) ->
+    @app.get('dao').player.getPlayerDetails leftIds, (err, res) ->
       if err isnt null
         return cb(err, null)
 
       res.map (r) -> results[r.id] = r
       return cb(null, results)
 
-  @rankingList: (rankings, cb) ->
+  rankingList: (rankings, cb) ->
     async.waterfall [
-      (callback) ->
-        dao.rank.getPidsByRankings rankings,callback
+      (callback) =>
+        @app.get('dao').rank.getPidsByRankings rankings,callback
 
       (ranks, callback) =>
         _ids = ranks.map (r)-> r.playerId
@@ -84,7 +83,7 @@ class Manager
         if leftIds.length == 0
           return callback(null, results, ranks)
           
-        dao.player.getLineUpInfoByIds leftIds, (err, plys) ->
+        @app.get('dao').player.getLineUpInfoByIds leftIds, (err, plys) ->
           results = results.concat plys if plys.length > 0
           callback(err, results, ranks)
           
@@ -96,11 +95,11 @@ class Manager
       _ranks[r.playerId] = r.ranking for r in ranks
       cb(null, players, _ranks)
 
-  @addExpCardFor: (player, qty, cb) ->
+  addExpCardFor: (player, qty, cb) ->
     async.times(
       qty
-    , (n, callback) ->
-      dao.card.createExpCard data: {
+    , (n, callback) =>
+      @app.get('dao').card.createExpCard data: {
         playerId: player.id,
         lv: 6,
         exp: 29
@@ -114,11 +113,11 @@ class Manager
       cb(null, cards.map (c) -> c.toJson())
     )
 
-  @addFriendIfOnline: (pid, friend) ->
+  addFriendIfOnline: (pid, friend) ->
     ply = @getPlayerFromCache pid
     ply.addFriend friend if ply
 
-  @delFriendIfOnline: (pid, fid) ->
+  delFriendIfOnline: (pid, fid) ->
     ply = @getPlayerFromCache pid
     ply.delFriend fid if ply
 

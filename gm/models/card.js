@@ -10,35 +10,36 @@ var cardDao = require('./dao/mysql/cardDao');
 var async = require('async');
 var table = require('./manager/table');
 
-function Card() {};
+function Card() {
+};
 
 Card.table = "cards";
 
-Card.update = function(data,cb){
+Card.update = function (data, cb) {
 
     console.log(data);
     var card = {
-        where:{
-            id:data.id
+        where: {
+            id: data.id
         },
-        data:{
-            lv:data.lv,
-            skillLv:data.skillLv,
-            elixirHp:data.elixirHp,
-            elixirAtk:data.elixirAtk,
-            star:data.star,
-            tableId:data.tableId,
-            passiveSkills:data.passiveSkills
+        data: {
+            lv: data.lv,
+            skillLv: data.skillLv,
+            elixirHp: data.elixirHp,
+            elixirAtk: data.elixirAtk,
+            star: data.star,
+            tableId: data.tableId,
+            passiveSkills: data.passiveSkills
         }
     };
 
-    cardDao.update(card,function(err,isOK){
-        if(err) {
+    cardDao.update(card, function (err, isOK) {
+        if (err) {
             console.log(err);
-            return cb(err,null);
-        }else {
+            return cb(err, null);
+        } else {
             var name = Card.getName(data.tableId);
-            return cb(null,name);
+            return cb(null, name);
         }
     });
 
@@ -46,97 +47,104 @@ Card.update = function(data,cb){
 };
 
 
-Card.create = function(card,cb){
-    //var time = Date.now();
-    var options = {
-        data: card
-    };
+Card.create = function (card, cb) {
 
-    options.data['createTime'] =  Date.now();
+    if (Card.isTableIdExist(card.tableId) == false) {
+        return cb('tableIdError', null);
+    }
+    else {
+        var options = {
+            data: card
+        };
 
-    async.waterfall([
-        function(callback){
-            genSkillInc(options.data);
-            console.log("after genSkillInc:",options.data);
-            callback();
-        },
-        function(callback){
-            cardDao.create(options, function(err,card){
-              if(err) {
-                  return cb(err,null);
-              }
-              else callback(null,card);
-            });
-        },
-        function(card,callback){
-            var cardId = card["insertId"];
-            var options = {
-                where:{
-                    id:cardId
-                }
-            };
-            cardDao.getCardInfo(options,function(err,card){
+        options.data['createTime'] = Date.now();
 
-                if(err) {
-                    return cb(err,null);
-                }else {
+        async.waterfall([
+            function (callback) {
+                genSkillInc(options.data);
+                console.log("after genSkillInc:", options.data);
+                callback();
+            },
+            function (callback) {
+                cardDao.create(options, function (err, card) {
+                    if (err) {
+                        return cb(err, null);
+                    }
+                    else callback(null, card);
+                });
+            },
+            function (card, callback) {
+                var cardId = card["insertId"];
+                var options = {
+                    where: {
+                        id: cardId
+                    }
+                };
+                cardDao.getCardInfo(options, function (err, card) {
 
-                    card.name = Card.getName(card.tableId);
-                    console.log(card);
-                    //callback(null,card);
-                    callback(null,card);
-                    //  res.send(card);
-                }
-            });
+                    if (err) {
+                        return cb(err, null);
+                    } else {
 
-        }
+                        card.name = Card.getName(card.tableId);
+                        console.log(card);
+                        callback(null, card);
+                    }
+                });
 
-    ],function(err,card){
-        if(err) {
-            return cb(err,null);
-        }else {
-            return cb(null,card);
-        }
-    });
+            }
+
+        ], function (err, card) {
+            if (err) {
+                return cb(err, null);
+            } else {
+                return cb(null, card);
+            }
+        });
+    }
 };
 
-Card.delete = function(cardId,cb){
+Card.delete = function (cardId, cb) {
 
     var options = {
-        where:{
-            id:cardId
+        where: {
+            id: cardId
         }
     };
 
-    cardDao.delete(options,function(err,isOK){
-        if(err) {
+    cardDao.delete(options, function (err, isOK) {
+        if (err) {
             console.log(err);
-            return cb(err,false);
-        }else {
-            return cb(null,true);
+            return cb(err, false);
+        } else {
+            return cb(null, true);
         }
     });
 };
 
+Card.isTableIdExist = function (tableId) {
+    var data = table.getTableItem(Card.table, tableId);
+    if (data) {
+        return true;
+    }
+    return false;
+};
 
-
-Card.getName = function(tableId){
-    //console.log(Card.table);
-    var data = table.getTableItem(Card.table,tableId);
-   // console.log(data);
+Card.getName = function (tableId) {
+    var data = table.getTableItem(Card.table, tableId);
     return data.name;
 };
 
-Card.setCardsName =function(cards) {
-   cards.forEach(function(card){
-       card.name = Card.getName(card.tableId);
-   });
+Card.setCardsName = function (cards) {
+    cards.forEach(function (card) {
+        card.name = Card.getName(card.tableId);
+    });
 };
 
 
-var genSkillInc = function(card) {
+var genSkillInc = function (card) {
     var cdata, max, min, skill;
-    if(card.star < 3)
+    if (card.star < 3)
         return;
     cdata = table.getTableItem('cards', card.tableId);
     skill = cdata.skill_id_linktarget;

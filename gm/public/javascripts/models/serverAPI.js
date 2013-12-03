@@ -7,23 +7,48 @@
  */
 
 var pomelo = window.pomelo;
-var ip = "124.238.236.33";
-//var ip = "127.0.0.1";
+var host = "124.238.236.33";
+//var host = "127.0.0.1";
+var servers = null;
+var port = null;
 
-
-function initConnect(cb) {
-    var host = ip;
-    var port = 3010;
+function initServer(cb) {
+    console.log("initServer");
     pomelo.init({
         host: host,
-        port: port,
+        port: 3009,
         log: true
     }, function () {
-        cb();
+
+        var route = "gate.gateHandler.queryEntry";
+        pomelo.request(route, {}, function (data) {
+            console.log(data);
+            var msg = data.msg;
+            port = msg.port;
+            servers = msg.servers;
+            if (cb) {
+                cb();
+            }
+
+        });
+
     });
 };
 
-function connectServer(areaId,cb) {
+
+function initConnect(cb) {
+    initServer(function () {
+        pomelo.init({
+            host: host,
+            port: port,
+            log: true
+        }, function () {
+            cb();
+        });
+    });
+};
+
+function connectServer(areaId, cb) {
     var route = "connector.entryHandler.entryForGM";
     pomelo.request(route, {
         areaId: areaId
@@ -43,15 +68,15 @@ function connectServer(areaId,cb) {
 
 };
 
-function connect(areaId,next) {
+function connect(areaId, next) {
     async.waterfall([
-        function(cb){
-            initConnect(function(){
+        function (cb) {
+            initConnect(function () {
                 cb();
             })
         },
-        function(cb){
-            connectServer(areaId,function(code){
+        function (cb) {
+            connectServer(areaId, function (code) {
                 if (code == 200) {
                     next();
                 } else {

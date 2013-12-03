@@ -19,7 +19,7 @@ function setAreas(a) {
 function initAreasList() {
     var inner = "";
     inner += '<option value = "-1">所有</option>';
-    areas.forEach(function (area) {
+    servers.forEach(function (area) {
         inner += '<option value =' + area.id + '>' + area.name + '</option>';
     });
     $("#area").append(inner);
@@ -27,7 +27,9 @@ function initAreasList() {
 
 
 $(document).ready(function () {
-   // initConnect(function(){});
+    initServer(function(){
+        initAreasList();
+    });
     $("#btnOk").click(function () {
         submit();
     });
@@ -44,13 +46,13 @@ function submit() {
     mail['options'] = options;
 
     if (areaId == ALL) {  //全部服务器
-        var len = areas.length;
+        var len = servers.length;
         var id = 0;
 
         async.whilst(
             function(){ return id < len; },
             function(cb){
-                dealAll(areas[id].id,mail,function(err){
+                dealAll(servers[id].id,mail,function(err){
                     if(err)
                         cb(err);
                     id++;
@@ -64,7 +66,6 @@ function submit() {
 
     } else { //指定服务器
         if (playerName == '') {
-           // $.when(connectServer(areaId)).then(sendMail(mail));
            dealAll(areaId,mail,function(err){
                 if(err) {
                     console.log("err = ",err);
@@ -79,7 +80,6 @@ function submit() {
                     console.log(data);
                     if (data.type == 'success') {
                         mail['playerId'] = data.info;
-                        //$.when(connectServer(areaId)).then(sendMail(mail));
                         dealAll(areaId,mail,function(err){
                             if(err) {
                                 console.log("err = ",err);
@@ -157,15 +157,12 @@ function getData() {
 
 function sendMail(mail,cb) {
 
-    //var dfd = $.Deferred();
     console.log(mail);
 
     pomelo.request('area.messageHandler.sysMsg', mail, function (data) {
         console.log(data);
-       // alert("sendMail");
         cb(data.code);
     });
-    //return dfd.promise();
 };
 
 function disconnect() {

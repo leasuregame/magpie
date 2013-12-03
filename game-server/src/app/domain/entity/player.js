@@ -209,6 +209,7 @@ var Player = (function(_super) {
 
     Player.FIELDS = [
         'id',
+        'uniqueId',
         'created',
         'userId',
         'areaId',
@@ -318,7 +319,7 @@ var Player = (function(_super) {
             flag: []
         },
         cards: {},
-        rank: {},
+        rank: null,
         friends: [],
         friendsCount: DEFAULT_FRIENDS_COUNT,
         rowFragmentCount: 0,
@@ -1080,6 +1081,7 @@ var Player = (function(_super) {
     Player.prototype.toJson = function() {
         return {
             id: this.id,
+            uniqueId: this.uniqueId,
             createTime: new Date(this.created).getTime(),
             userId: this.userId,
             areaId: this.areaId,

@@ -26,34 +26,26 @@ var player = function (app) {
 
         var target = query["target"] || 'playerLogin';
         console.log(target);
-        //  if(!req.session.player)
-        //    target = 'playerLogin';
 
-
-        Area.getAreasList(function (areas) {
-
-            res.render('playerLogin', {
-                title: '玩家数据修改',
-                user: req.session.user,
-                player: req.session.player,
-                area: req.session.area,
-                areas: areas,
-                target: target,
-                success: req.flash('success').toString(),
-                error: req.flash('error').toString()
-            });
+        res.render('playerLogin', {
+            title: '玩家数据修改',
+            user: req.session.user,
+            player: req.session.player,
+            area: req.session.area,
+            target: target,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()
         });
 
     });
 
     app.post('/playerLogin', function (req, res) {
 
-        var playerName = req.body.playerName;//query['playerName'];
-        var area = JSON.parse(req.body.area);//JSON.parse(query['area']);
+        var playerName = req.body.playerName;
+        var area = JSON.parse(req.body.area);
         var target = req.body.target;
         console.log("target = ", target);
 
-        //dbClient.shutdown();
         var env = app.settings.env;
         var db = getDB(area.id, env);
         dbClient.init(db);
@@ -71,7 +63,6 @@ var player = function (app) {
                 logger.error("[playerLogin]" + playerName + "没有该玩家的信息");
                 return res.redirect('/playerLogin');
             } else {
-                // console.log(Player);
                 logger.info("[playerLogin]" + playerName);
                 logger.info("[playerLogin][playerData]" + JSON.stringify(Player));
                 req.session.player = Player;
@@ -133,7 +124,6 @@ var player = function (app) {
         //console.log(req.url);
         var player = JSON.parse(query['player']);
         var area = JSON.parse(query['area']);
-        //  console.log((player["spiritor"]));
         var data = player;
 
 

@@ -1,5 +1,5 @@
 async = require 'async'
-playerManager = require '../../../manager/playerManager'
+playerManager = require('pomelo').app.get('playerManager')
 table = require '../../../manager/table'
 
 module.exports = (app) ->

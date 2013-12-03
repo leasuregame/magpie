@@ -1,5 +1,5 @@
 app = require('pomelo').app
-playerManager = require '../../../manager/playerManager'
+playerManager = require('pomelo').app.get('playerManager')
 rankManager = require '../../../manager/rankManager'
 fightManager = require '../../../manager/fightManager'
 table = require '../../../manager/table'
@@ -44,7 +44,7 @@ Handler::rankingList = (msg, session, next) ->
       if player.lv < fdata.rank
         return cb({code: 501, msg: fdata.rank+'级开放'})
       
-      if not player.rank?
+      if not player.rank? or _.isEmpty(player.rank)
         ### first time enter ranking list ###
         app.get('dao').rank.initRankingInfo player.id, (err, rank) -> 
           if err
@@ -57,7 +57,8 @@ Handler::rankingList = (msg, session, next) ->
         cb()
 
     (cb)->
-      if player.rank.recentChallenger.length > 0
+      console.log 'rank info: ', player.rank
+      if player.rank?.recentChallenger?.length > 0
         rankManager.getRankings(player.rank.recentChallenger,cb)
       else
         cb(null,[])

@@ -39,8 +39,12 @@ Handler::register = (msg, session, next) ->
     next(null, {code: 200, msg: {userId: user.id}})
 
 Handler::login = (msg, session, next) ->
-  account = msg.account
-  password = msg.password
+  doLogin('app', @app, msg, session, next)
+
+Handler::loginTB = (msg, session, next) ->
+  doLogin('tongbu', @app, msg, session, next)
+
+doLogin  = (type, app, msg, session, next) ->
   areaId = msg.areaId
 
   user = null
@@ -52,7 +56,8 @@ Handler::login = (msg, session, next) ->
       session.pushAll cb
 
     (cb) =>
-      @app.rpc.auth.authRemote.auth session, account, password, areaId, @app.getServerId(), (err, u) ->
+      [args, method] = authParams(type, msg, app)
+      app.rpc.auth.authRemote[method] session, args, (err, u, isValid) ->
         if err and err.code is 404
           cb({code: 501, msg: '用户不存在'})
         else if err
@@ -63,12 +68,12 @@ Handler::login = (msg, session, next) ->
     (res, cb) =>
       user = res
       uid = user.id + '*' + areaId
-      sessionService = @app.get 'sessionService'
+      sessionService = app.get 'sessionService'
       sessionService.kick(uid,cb)
     (cb) =>
       # check whether has create player in the login area
       if _.contains user.roles, areaId
-        @app.rpc.area.playerRemote.getPlayerByUserId session, user.id, @app.getServerId(), (err, res) ->
+        app.rpc.area.playerRemote.getPlayerByUserId session, user.id, app.getServerId(), (err, res) ->
           if err
             logger.error 'fail to get player by user id', err
           player = res
@@ -83,7 +88,7 @@ Handler::login = (msg, session, next) ->
       if player?
         session.set('playerId', player.id)
         session.set('playerName', player.name)
-        session.on('closed', onUserLeave.bind(null, @app))
+        session.on('closed', onUserLeave.bind(null, app))
       session.pushAll cb
   ], (err) ->
     if err
@@ -99,3 +104,14 @@ onUserLeave = (app, session, reason) ->
     if err
       logger.error 'user leave error' + err
 
+authParams = (type, msg, app) ->
+  keyMap = 
+    app: keys: ['account', 'password', 'areaId'], method: 'auth'
+    tongbu: keys: ['nickName', 'userId', 'sessionId', 'areaId'], method: 'checkSession'
+  
+  args  = {}
+  for k in keyMap[type]?.keys
+    args[k] = msg[k] if msg[k]?
+
+  args.fronendId = app.getServerId()
+  [args, keyMap[type]?.method]

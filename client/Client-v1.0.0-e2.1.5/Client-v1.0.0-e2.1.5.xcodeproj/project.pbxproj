@@ -10,6 +10,9 @@
 		90434654184D852F00FF5D56 /* Icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = 90434651184D852F00FF5D56 /* Icon-152.png */; };
 		90434655184D852F00FF5D56 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 90434652184D852F00FF5D56 /* Icon-120.png */; };
 		90434656184D852F00FF5D56 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 90434653184D852F00FF5D56 /* Icon-76.png */; };
+		9043465A184D892A00FF5D56 /* Icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = 90434657184D892A00FF5D56 /* Icon-152.png */; };
+		9043465B184D892A00FF5D56 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 90434658184D892A00FF5D56 /* Icon-120.png */; };
+		9043465C184D892A00FF5D56 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 90434659184D892A00FF5D56 /* Icon-76.png */; };
 		9055D91A183F648F00841BE1 /* jsb_cocos2dx_auto_api.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EA5183E068000727729 /* jsb_cocos2dx_auto_api.js */; };
 		9055D91B183F648F00841BE1 /* jsb_cocos2dx_extension_auto_api.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EA8183E068000727729 /* jsb_cocos2dx_extension_auto_api.js */; };
 		9055D91C183F648F00841BE1 /* jsb.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EAB183E068000727729 /* jsb.js */; };
@@ -672,6 +675,9 @@
 		90434651184D852F00FF5D56 /* Icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-152.png"; sourceTree = "<group>"; };
 		90434652184D852F00FF5D56 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
 		90434653184D852F00FF5D56 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		90434657184D892A00FF5D56 /* Icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-152.png"; sourceTree = "<group>"; };
+		90434658184D892A00FF5D56 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
+		90434659184D892A00FF5D56 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
 		906B4F841848BFC300A1033A /* IAPHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelp.h; sourceTree = "<group>"; };
 		906B4F851848BFC300A1033A /* IAPHelp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelp.mm; sourceTree = "<group>"; };
 		906B4F861848BFC300A1033A /* IAPHelpOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelpOC.h; sourceTree = "<group>"; };
@@ -2949,6 +2955,9 @@
 		90E6B09A184653DF00E27CCB /* Resources-TB */ = {
 			isa = PBXGroup;
 			children = (
+				90434657184D892A00FF5D56 /* Icon-152.png */,
+				90434658184D892A00FF5D56 /* Icon-120.png */,
+				90434659184D892A00FF5D56 /* Icon-76.png */,
 				90E6B09B184653DF00E27CCB /* Default-568h@2x.png */,
 				90E6B09C184653DF00E27CCB /* Default.png */,
 				90E6B09D184653DF00E27CCB /* Icon-72.png */,
@@ -3123,12 +3132,14 @@
 				90E6B06A18464F4600E27CCB /* jsb_sys.js in Resources */,
 				90E6B06B18464F4600E27CCB /* obfuscate_exclude_chipmunk.js in Resources */,
 				90E6B0A7184653DF00E27CCB /* Icon-72.png in Resources */,
+				9043465B184D892A00FF5D56 /* Icon-120.png in Resources */,
 				90E6B06D18464F4600E27CCB /* obfuscate_exclude_cocos2d.js in Resources */,
 				90E6B06E18464F4600E27CCB /* js.msg in Resources */,
 				90E6B06F18464F4600E27CCB /* README in Resources */,
 				90E6B07018464F4600E27CCB /* main_binding.js in Resources */,
 				90E6B07118464F4600E27CCB /* CMakeLists.txt in Resources */,
 				90E6B07318464F4600E27CCB /* LICENSE.txt in Resources */,
+				9043465A184D892A00FF5D56 /* Icon-152.png in Resources */,
 				90E6B07418464F4600E27CCB /* chipmunk-docs.html in Resources */,
 				90E6B07518464F4600E27CCB /* ChangeLog in Resources */,
 				90E6B07618464F4600E27CCB /* README.txt in Resources */,
@@ -3137,6 +3148,7 @@
 				90E6B0AE184653DF00E27CCB /* iTunesArtwork in Resources */,
 				90E6B0AA184653DF00E27CCB /* Icon-Small@2x.png in Resources */,
 				90E6B0AB184653DF00E27CCB /* Icon.png in Resources */,
+				9043465C184D892A00FF5D56 /* Icon-76.png in Resources */,
 				90E6B07C18464F4600E27CCB /* res in Resources */,
 				90E6B07D18464F4600E27CCB /* src in Resources */,
 			);

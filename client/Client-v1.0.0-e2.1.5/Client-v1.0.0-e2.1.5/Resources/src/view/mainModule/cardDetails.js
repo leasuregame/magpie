@@ -333,5 +333,7 @@ CardDetails.pop = function (card, cb) {
     var cardDetails = CardDetails.create(card, cb);
 
     cc.Director.getInstance().getRunningScene().addChild(cardDetails, 1);
+
+    return cardDetails;
 };
 

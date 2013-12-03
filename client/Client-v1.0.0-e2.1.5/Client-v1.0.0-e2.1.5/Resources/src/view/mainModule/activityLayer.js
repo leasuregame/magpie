@@ -60,7 +60,6 @@ var ActivityLayer = cc.Layer.extend({
         this.addChild(headSprite);
 
         var mainMenu = cc.Menu.create();
-        mainMenu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         mainMenu.setPosition(cc.p(0, 0));
         this.addChild(mainMenu);
 

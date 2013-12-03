@@ -88,6 +88,7 @@ var Player = Entity.extend({
         cc.log("Player update");
 
         this.set("id", data.id);
+        this.set("uid", data.uniqueId);
         this.set("createTime", data.createTime);
         this.set("userId", data.userId);
         this.set("areaId", data.areaId);

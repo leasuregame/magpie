@@ -64,14 +64,14 @@ var TournamentTipLayer = LazyLayer.extend({
 
     },
 
-    _onClickClose: function() {
+    _onClickClose: function () {
         cc.log("TournamentTipLayer _onClickClose");
         this.removeFromParent();
     }
 
 });
 
-TournamentTipLayer.create = function() {
+TournamentTipLayer.create = function () {
     var ret = new TournamentTipLayer();
 
     if (ret && ret.init()) {
@@ -81,8 +81,10 @@ TournamentTipLayer.create = function() {
     return null;
 };
 
-TournamentTipLayer.pop = function() {
+TournamentTipLayer.pop = function () {
     var tournamentTipLayer = TournamentTipLayer.create();
 
     MainScene.getInstance().getLayer().addChild(tournamentTipLayer, 10);
+
+    return tournamentTipLayer;
 };

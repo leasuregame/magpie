@@ -249,4 +249,6 @@ PaymentLayer.pop = function () {
     var paymentLayer = PaymentLayer.create();
 
     MainScene.getInstance().getLayer().addChild(paymentLayer, 10);
+
+    return paymentLayer;
 };

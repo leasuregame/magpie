@@ -25,6 +25,7 @@ var BattleLog = Entity.extend({
     _battleStep: null,
     _battleStepLen: 0,
     _index: -1,
+    _isPlayback: false,
 
     init: function (id, isPlayback) {
         cc.log("BattleLog init");
@@ -42,6 +43,7 @@ var BattleLog = Entity.extend({
         this.set("reward", battleLog.rewards);
         this.set("battleStep", battleLog.steps);
         this.set("battleStepLen", battleLog.steps.length);
+        this.set("isPlayback", isPlayback);
 
         for (var key in this._card) {
             this._card[key].index = key;

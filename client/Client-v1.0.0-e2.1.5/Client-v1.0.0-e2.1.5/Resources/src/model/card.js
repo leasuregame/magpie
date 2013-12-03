@@ -12,6 +12,7 @@
  * */
 
 
+var MAX_CARD_TABLE_ID = 1000;
 var MAX_CARD_STAR = 5;
 
 var passiveSkillDescription = {
@@ -81,7 +82,7 @@ var Card = Entity.extend({
             cc.log("=============================================");
         }
 
-        this._newCardMark = this._id && sys.localStorage.getItem("card_" + this._id + "_mark") || false;
+        this._newCardMark = this._id && ((sys.localStorage.getItem("card_" + this._id + "_mark") == "true") || false);
 
         return true;
     },
@@ -190,7 +191,6 @@ var Card = Entity.extend({
 
     setNewCardMark: function (mark) {
         this._newCardMark = mark;
-
         sys.localStorage.setItem("card_" + this._id + "_mark", this._newCardMark);
     },
 
@@ -476,7 +476,7 @@ var Card = Entity.extend({
     canEvolution: function () {
         cc.log("Card canEvolution");
 
-        return ((this._lv >= this._maxLv) && (this._star < MAX_CARD_STAR));
+        return ((this._tableId <= MAX_CARD_TABLE_ID) && (this._lv >= this._maxLv) && (this._star < MAX_CARD_STAR));
     },
 
     getPreCardRate: function () {

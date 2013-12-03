@@ -8,13 +8,17 @@
  * */
 
 
-var MUSIC_VOLUME = 0.2;
+var SOUND_OPEN = 1;
+var SOUND_CLOSE = 2;
+
+var MUSIC_VOLUME = 0.3;
 var EFFECT_VOLUME = 1.0;
+var NO_VOLUME = 0;
 
 var Sound = Entity.extend({
     _audioEngine: null,
-    _openMusic: true,
-    _openEffect: true,
+    _openMusic: SOUND_OPEN,
+    _openEffect: SOUND_OPEN,
     _openMusicKey: null,
     _openEffectKey: null,
 
@@ -22,9 +26,6 @@ var Sound = Entity.extend({
         cc.log("Sound init");
 
         this._audioEngine = cc.AudioEngine.getInstance();
-
-        this._audioEngine.setMusicVolume(MUSIC_VOLUME);
-        this._audioEngine.setEffectsVolume(EFFECT_VOLUME);
 
         this._openMusicKey = "openMusic";
         this._openEffectKey = "openEffect";
@@ -37,9 +38,11 @@ var Sound = Entity.extend({
     _load: function () {
         cc.log("Sound _load");
 
-        this._openMusic = sys.localStorage.getItem(this._openMusicKey) || true;
-        this._openEffect = sys.localStorage.getItem(this._openEffectKey) || true;
+        this._openMusic = parseInt(sys.localStorage.getItem(this._openMusicKey)) || SOUND_OPEN;
+        this._openEffect = parseInt(sys.localStorage.getItem(this._openEffectKey)) || SOUND_OPEN;
 
+        this._audioEngine.setMusicVolume(this.isOpenMusic() ? MUSIC_VOLUME : NO_VOLUME);
+        this._audioEngine.setEffectsVolume(this.isOpenEffect() ? EFFECT_VOLUME : NO_VOLUME);
     },
 
     _save: function () {
@@ -49,8 +52,16 @@ var Sound = Entity.extend({
         sys.localStorage.setItem(this._openEffectKey, this._openEffect);
     },
 
+    isOpenMusic: function () {
+        return (this._openMusic == SOUND_OPEN);
+    },
+
+    isOpenEffect: function () {
+        return (this._openEffect == SOUND_OPEN);
+    },
+
     playMusic: function (path, loop) {
-        if (this._openMusic) {
+        if (this.isOpenMusic()) {
             if (path) {
                 this._audioEngine.playMusic(path, loop);
             } else {
@@ -64,23 +75,23 @@ var Sound = Entity.extend({
     },
 
     openMusic: function () {
-        this._openMusic = true;
-
+        this._openMusic = SOUND_OPEN;
+        this._audioEngine.setMusicVolume(MUSIC_VOLUME);
         this.playMusic();
 
         this._save();
     },
 
     closeMusic: function () {
-        this._openMusic = false;
-
+        this._openMusic = SOUND_CLOSE;
+        this._audioEngine.setMusicVolume(NO_VOLUME);
         this.stopMusic();
 
         this._save();
     },
 
     playEffect: function (path, loop) {
-        if (this._openEffect) {
+        if (this.isOpenEffect()) {
             this._audioEngine.playEffect(path, loop);
         }
     },
@@ -90,14 +101,14 @@ var Sound = Entity.extend({
     },
 
     openEffect: function () {
-        this._openEffect = true;
-
+        this._openEffect = SOUND_OPEN;
+        this._audioEngine.setEffectsVolume(EFFECT_VOLUME);
         this._save();
     },
 
     closeEffect: function () {
-        this._openEffect = false;
-
+        this._openEffect = SOUND_CLOSE;
+        this._audioEngine.setEffectsVolume(NO_VOLUME);
         this.stopEffect();
 
         this._save();

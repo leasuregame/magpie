@@ -321,7 +321,7 @@ bool WebSocket::init(const Delegate& delegate,
             _wsProtocols[i].callback = WebSocketCallbackWrapper::onSocketCallback;
             
             // 修改缓冲区大小
-            _wsProtocols[i].rx_buffer_size = 1024 * 20;  // 15k
+            _wsProtocols[i].rx_buffer_size = 1024 * 200;  // 200k
         }
     }
     else
@@ -332,7 +332,7 @@ bool WebSocket::init(const Delegate& delegate,
         _wsProtocols[0].callback = WebSocketCallbackWrapper::onSocketCallback;
         
         // 修改缓冲区大小
-        _wsProtocols[0].rx_buffer_size = 1024 * 20;  // 15k
+        _wsProtocols[0].rx_buffer_size = 1024 * 200;  // 200k
     }
     
     // WebSocket thread needs to be invoked at the end of this method.

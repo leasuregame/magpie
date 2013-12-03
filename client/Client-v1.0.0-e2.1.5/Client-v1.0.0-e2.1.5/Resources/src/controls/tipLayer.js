@@ -13,28 +13,20 @@
 
 
 var TipLayer = {
-//    _str: [],
-
     _tip: function (hasBg, str, color, fontName, fontSize) {
         cc.log("TipLayer tip: " + str);
 
         if (!str) return;
 
-//        var len = this._str.length;
-//
-//        if (len && (str == this._str[len - 1])) return;
-
-//        this._str.push(str);
-
         color = color || cc.c3b(255, 255, 255);
         fontName = fontName || "STHeitiTC-Medium";
-        fontSize = fontSize || 25;
+        fontSize = fontSize || 30;
 
         var labelPoint = gameFit.controls.tipLayer.labelPoint;
 
         var label = cc.Node.create();
         label.setPosition(labelPoint);
-        cc.Director.getInstance().getRunningScene().addChild(label);
+        cc.Director.getInstance().getRunningScene().addChild(label, 10000);
 
         var strLabel = StrokeLabel.create(str, fontName, fontSize);
         strLabel.setColor(color);
@@ -62,7 +54,6 @@ var TipLayer = {
                 cc.MoveTo.create(1, point),
                 cc.FadeOut.create(0.2),
                 cc.CallFunc.create(function () {
-//                    this._str.shift();
                     label.removeFromParent();
                 }, this)
             )

@@ -145,4 +145,6 @@ LotteryCardLayer.pop = function (data) {
     var lotteryCardLayer = LotteryCardLayer.create(data);
 
     MainScene.getInstance().addChild(lotteryCardLayer, 10);
+
+    return lotteryCardLayer;
 };

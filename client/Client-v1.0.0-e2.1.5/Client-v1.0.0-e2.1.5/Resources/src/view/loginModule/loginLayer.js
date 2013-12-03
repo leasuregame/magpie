@@ -67,46 +67,43 @@ var LoginLayer = cc.Layer.extend({
         this._loginFrame.controller.passwordNode.setPosition(this._loginLayerFit.passwordNodePoint);
         this._loginFrame.controller.startGameNode.setPosition(this._loginLayerFit.startGameNodePoint);
 
-
-        this._accountEditBox = cc.EditBox.create(cc.size(440, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._accountEditBox = cc.EditBox.create(cc.size(395, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._accountEditBox.setAnchorPoint(cc.p(0, 0.5));
-        this._accountEditBox.setPosition(cc.p(0, 0));
+        this._accountEditBox.setPosition(cc.p(0, -3));
 
         this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
         this._accountEditBox.setDelegate({
             /**
-             * This method is called when the edit box text was changed.
+             * This method is called when an edit box gains focus after keyboard is shown.
              * @param {cc.EditBox} sender
-             * @param {String} text
              */
-            editBoxTextChanged: function (sender, text) {
-
+            editBoxEditingDidBegin: function (sender) {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
             }
         });
 
         this._accountEditBox.setFont("STHeitiTC-Medium", 35);
-        this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
+        //this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._accountEditBox.setMaxLength(20);
         this._loginFrame.controller.accountLabel.addChild(this._accountEditBox);
 
 
-        this._passwordEditBox = cc.EditBox.create(cc.size(440, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._passwordEditBox = cc.EditBox.create(cc.size(395, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._passwordEditBox.setAnchorPoint(cc.p(0, 0.5));
         this._passwordEditBox.setPosition(cc.p(0, 0));
 
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordEditBox.setDelegate({
             /**
-             * This method is called when the edit box text was changed.
+             * This method is called when an edit box gains focus after keyboard is shown.
              * @param {cc.EditBox} sender
-             * @param {String} text
              */
-            editBoxTextChanged: function (sender, text) {
-
+            editBoxEditingDidBegin: function (sender) {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
             }
         });
         this._passwordEditBox.setFont("STHeitiTC-Medium", 35);
-        this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
+        //this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
         this._passwordEditBox.setMaxLength(20);
         this._loginFrame.controller.passwordLabel.addChild(this._passwordEditBox);
 

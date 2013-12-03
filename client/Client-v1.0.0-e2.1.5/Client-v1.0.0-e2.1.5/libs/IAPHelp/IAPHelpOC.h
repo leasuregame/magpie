@@ -6,11 +6,16 @@
 //
 //
 
+#ifndef __IAP_HELP_OC__
+#define __IAP_HELP_OC__
+
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
 #include "IAPHelp.h"
 
 @interface IAPHelpOC : NSObject<SKProductsRequestDelegate, SKPaymentTransactionObserver>
+
++ (id) sharedInstance;
 
 /*
  购买某个商品，传入商品ID
@@ -29,7 +34,7 @@
 /*
  购买操作有结果时触发该回调函数
  */
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;
+- (void) paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;
 
 /*
  购买完成时调用
@@ -47,3 +52,5 @@
 - (void) restoreTransaction: (SKPaymentTransaction *)transaction;
 
 @end
+
+#endif /* defined(__IAP_HELP_OC__) */

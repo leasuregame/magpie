@@ -18,6 +18,7 @@ var UPDATE_POWER_VALUE = 5;
 
 var Player = Entity.extend({
     _id: 0,             // 数据库id
+    _uid: "",           // 玩家唯一标识
     _createTime: 0,     // 创建时间
     _userId: 0,         // 账号id
     _areaId: 0,         // 区

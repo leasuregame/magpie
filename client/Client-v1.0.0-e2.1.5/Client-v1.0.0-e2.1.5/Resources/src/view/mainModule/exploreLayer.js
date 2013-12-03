@@ -704,7 +704,7 @@ var ExploreLayer = cc.Layer.extend({
                 this._index = 1 - Math.ceil(endOffset.x / 640);
             }
 
-            //this.update();
+            this.update();
         }
     },
 

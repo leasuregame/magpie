@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90434654184D852F00FF5D56 /* Icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = 90434651184D852F00FF5D56 /* Icon-152.png */; };
+		90434655184D852F00FF5D56 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 90434652184D852F00FF5D56 /* Icon-120.png */; };
+		90434656184D852F00FF5D56 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 90434653184D852F00FF5D56 /* Icon-76.png */; };
 		9055D91A183F648F00841BE1 /* jsb_cocos2dx_auto_api.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EA5183E068000727729 /* jsb_cocos2dx_auto_api.js */; };
 		9055D91B183F648F00841BE1 /* jsb_cocos2dx_extension_auto_api.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EA8183E068000727729 /* jsb_cocos2dx_extension_auto_api.js */; };
 		9055D91C183F648F00841BE1 /* jsb.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EAB183E068000727729 /* jsb.js */; };
@@ -22,14 +25,16 @@
 		9055D926183F648F00841BE1 /* jsb_sys.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EB5183E068000727729 /* jsb_sys.js */; };
 		9055D927183F648F00841BE1 /* obfuscate_exclude_chipmunk.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EDB183E068000727729 /* obfuscate_exclude_chipmunk.js */; };
 		9055D928183F648F00841BE1 /* obfuscate_exclude_cocos2d.js in Resources */ = {isa = PBXBuildFile; fileRef = 90B54EDC183E068000727729 /* obfuscate_exclude_cocos2d.js */; };
+		906B4F8B1848BFC300A1033A /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 906B4F851848BFC300A1033A /* IAPHelp.mm */; };
+		906B4F8C1848BFC300A1033A /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 906B4F871848BFC300A1033A /* IAPHelpOC.mm */; };
+		906B4F8D1848BFC300A1033A /* js_bindings_IAPHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 906B4F881848BFC300A1033A /* js_bindings_IAPHelp.cpp */; };
+		906B4F8E1848BFC300A1033A /* js_bindings_IAPHelp_api.js in Sources */ = {isa = PBXBuildFile; fileRef = 906B4F8A1848BFC300A1033A /* js_bindings_IAPHelp_api.js */; };
 		906E946217CDAD090038DF64 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 906E946017CDAD090038DF64 /* res */; };
 		906E946317CDAD090038DF64 /* src in Resources */ = {isa = PBXBuildFile; fileRef = 906E946117CDAD090038DF64 /* src */; };
 		906E946A17CDAD5D0038DF64 /* main_binding.js in Resources */ = {isa = PBXBuildFile; fileRef = 906E946417CDAD150038DF64 /* main_binding.js */; };
 		90915B631845E83C00CA8541 /* js_cocos2dx_autogen_extension.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90915B581845E83C00CA8541 /* js_cocos2dx_autogen_extension.cpp */; };
 		90915B641845E83C00CA8541 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90915B5A1845E83C00CA8541 /* libMobClickLibrary.a */; };
 		90915B651845E83C00CA8541 /* MobClickCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90915B5D1845E83C00CA8541 /* MobClickCPP.mm */; };
-		90915B661845E83C00CA8541 /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90915B601845E83C00CA8541 /* IAPHelp.mm */; };
-		90915B671845E83C00CA8541 /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90915B621845E83C00CA8541 /* IAPHelpOC.mm */; };
 		90A999D21845AB0D00DF30EF /* hello.js in Sources */ = {isa = PBXBuildFile; fileRef = 90A999D11845AB0D00DF30EF /* hello.js */; };
 		90A999F01845C68900DF30EF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A999EF1845C68900DF30EF /* StoreKit.framework */; };
 		90B54F34183E068000727729 /* chipmunk-docs.html in Resources */ = {isa = PBXBuildFile; fileRef = 90B54C28183E067F00727729 /* chipmunk-docs.html */; };
@@ -500,7 +505,6 @@
 		90E6AFE818464F4600E27CCB /* XMLHTTPRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54EE0183E068000727729 /* XMLHTTPRequest.cpp */; };
 		90E6AFE918464F4600E27CCB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D49C5917CAF81800A22DB2 /* main.m */; };
 		90E6AFEA18464F4600E27CCB /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90D4A08917CAF82600A22DB2 /* AppDelegate.cpp */; };
-		90E6AFEB18464F4600E27CCB /* IAPHelpOC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90915B621845E83C00CA8541 /* IAPHelpOC.mm */; };
 		90E6AFEC18464F4600E27CCB /* CCThread.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90B54D3B183E067F00727729 /* CCThread.mm */; };
 		90E6AFED18464F4600E27CCB /* WebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54E69183E068000727729 /* WebSocket.cpp */; };
 		90E6AFEE18464F4600E27CCB /* cpSpaceHash.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B54C61183E067F00727729 /* cpSpaceHash.c */; };
@@ -576,7 +580,6 @@
 		90E6B03418464F4600E27CCB /* CCDataVisitor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54C9B183E067F00727729 /* CCDataVisitor.cpp */; };
 		90E6B03518464F4600E27CCB /* cpGearJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = 90B54C4E183E067F00727729 /* cpGearJoint.c */; };
 		90E6B03618464F4600E27CCB /* CCBFileLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54DF2183E067F00727729 /* CCBFileLoader.cpp */; };
-		90E6B03718464F4600E27CCB /* IAPHelp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90915B601845E83C00CA8541 /* IAPHelp.mm */; };
 		90E6B03818464F4600E27CCB /* CCTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54E5C183E068000727729 /* CCTableView.cpp */; };
 		90E6B03918464F4600E27CCB /* CCActionInterval.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54C78183E067F00727729 /* CCActionInterval.cpp */; };
 		90E6B03A18464F4600E27CCB /* CCControlHuePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90B54E38183E067F00727729 /* CCControlHuePicker.cpp */; };
@@ -666,6 +669,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		90434651184D852F00FF5D56 /* Icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-152.png"; sourceTree = "<group>"; };
+		90434652184D852F00FF5D56 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
+		90434653184D852F00FF5D56 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		906B4F841848BFC300A1033A /* IAPHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelp.h; sourceTree = "<group>"; };
+		906B4F851848BFC300A1033A /* IAPHelp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelp.mm; sourceTree = "<group>"; };
+		906B4F861848BFC300A1033A /* IAPHelpOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelpOC.h; sourceTree = "<group>"; };
+		906B4F871848BFC300A1033A /* IAPHelpOC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelpOC.mm; sourceTree = "<group>"; };
+		906B4F881848BFC300A1033A /* js_bindings_IAPHelp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = js_bindings_IAPHelp.cpp; sourceTree = "<group>"; };
+		906B4F891848BFC300A1033A /* js_bindings_IAPHelp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = js_bindings_IAPHelp.hpp; sourceTree = "<group>"; };
+		906B4F8A1848BFC300A1033A /* js_bindings_IAPHelp_api.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = js_bindings_IAPHelp_api.js; sourceTree = "<group>"; };
 		906E946017CDAD090038DF64 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = Resources/res; sourceTree = "<group>"; };
 		906E946117CDAD090038DF64 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = Resources/src; sourceTree = "<group>"; };
 		906E946417CDAD150038DF64 /* main_binding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main_binding.js; path = Resources/main_binding.js; sourceTree = "<group>"; };
@@ -675,10 +688,6 @@
 		90915B5B1845E83C00CA8541 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		90915B5C1845E83C00CA8541 /* MobClickCPP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickCPP.h; sourceTree = "<group>"; };
 		90915B5D1845E83C00CA8541 /* MobClickCPP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MobClickCPP.mm; sourceTree = "<group>"; };
-		90915B5F1845E83C00CA8541 /* IAPHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelp.h; sourceTree = "<group>"; };
-		90915B601845E83C00CA8541 /* IAPHelp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelp.mm; sourceTree = "<group>"; };
-		90915B611845E83C00CA8541 /* IAPHelpOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelpOC.h; sourceTree = "<group>"; };
-		90915B621845E83C00CA8541 /* IAPHelpOC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IAPHelpOC.mm; sourceTree = "<group>"; };
 		90A999D11845AB0D00DF30EF /* hello.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = hello.js; path = Resources/hello.js; sourceTree = "<group>"; };
 		90A999EF1845C68900DF30EF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		90B54C28183E067F00727729 /* chipmunk-docs.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "chipmunk-docs.html"; sourceTree = "<group>"; };
@@ -1460,6 +1469,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		906B4F831848BFC300A1033A /* IAPHelp */ = {
+			isa = PBXGroup;
+			children = (
+				906B4F841848BFC300A1033A /* IAPHelp.h */,
+				906B4F851848BFC300A1033A /* IAPHelp.mm */,
+				906B4F861848BFC300A1033A /* IAPHelpOC.h */,
+				906B4F871848BFC300A1033A /* IAPHelpOC.mm */,
+				906B4F881848BFC300A1033A /* js_bindings_IAPHelp.cpp */,
+				906B4F891848BFC300A1033A /* js_bindings_IAPHelp.hpp */,
+				906B4F8A1848BFC300A1033A /* js_bindings_IAPHelp_api.js */,
+			);
+			path = IAPHelp;
+			sourceTree = "<group>";
+		};
 		90915B571845E83C00CA8541 /* DataDollection */ = {
 			isa = PBXGroup;
 			children = (
@@ -1473,22 +1496,11 @@
 			path = DataDollection;
 			sourceTree = "<group>";
 		};
-		90915B5E1845E83C00CA8541 /* IAPHelp */ = {
-			isa = PBXGroup;
-			children = (
-				90915B5F1845E83C00CA8541 /* IAPHelp.h */,
-				90915B601845E83C00CA8541 /* IAPHelp.mm */,
-				90915B611845E83C00CA8541 /* IAPHelpOC.h */,
-				90915B621845E83C00CA8541 /* IAPHelpOC.mm */,
-			);
-			path = IAPHelp;
-			sourceTree = "<group>";
-		};
 		90B54C26183E067F00727729 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				906B4F831848BFC300A1033A /* IAPHelp */,
 				90915B571845E83C00CA8541 /* DataDollection */,
-				90915B5E1845E83C00CA8541 /* IAPHelp */,
 				90B54C27183E067F00727729 /* chipmunk */,
 				90B54C68183E067F00727729 /* cocos2dx */,
 				90B54DD1183E067F00727729 /* CocosDenshion */,
@@ -2917,6 +2929,9 @@
 		90E6B085184653D500E27CCB /* Resources-AppStore */ = {
 			isa = PBXGroup;
 			children = (
+				90434651184D852F00FF5D56 /* Icon-152.png */,
+				90434652184D852F00FF5D56 /* Icon-120.png */,
+				90434653184D852F00FF5D56 /* Icon-76.png */,
 				90E6B086184653D500E27CCB /* Default-568h@2x.png */,
 				90E6B087184653D500E27CCB /* Default.png */,
 				90E6B088184653D500E27CCB /* Icon-72.png */,
@@ -3063,12 +3078,14 @@
 				9055D926183F648F00841BE1 /* jsb_sys.js in Resources */,
 				9055D927183F648F00841BE1 /* obfuscate_exclude_chipmunk.js in Resources */,
 				90E6B092184653D500E27CCB /* Icon-72.png in Resources */,
+				90434655184D852F00FF5D56 /* Icon-120.png in Resources */,
 				9055D928183F648F00841BE1 /* obfuscate_exclude_cocos2d.js in Resources */,
 				90B55059183E068000727729 /* js.msg in Resources */,
 				90B55039183E068000727729 /* README in Resources */,
 				906E946A17CDAD5D0038DF64 /* main_binding.js in Resources */,
 				90B54F38183E068000727729 /* CMakeLists.txt in Resources */,
 				90B54F35183E068000727729 /* LICENSE.txt in Resources */,
+				90434654184D852F00FF5D56 /* Icon-152.png in Resources */,
 				90B54F34183E068000727729 /* chipmunk-docs.html in Resources */,
 				90B54F7A183E068000727729 /* ChangeLog in Resources */,
 				90B54F36183E068000727729 /* README.txt in Resources */,
@@ -3077,6 +3094,7 @@
 				90E6B099184653D500E27CCB /* iTunesArtwork in Resources */,
 				90E6B095184653D500E27CCB /* Icon-Small@2x.png in Resources */,
 				90E6B096184653D500E27CCB /* Icon.png in Resources */,
+				90434656184D852F00FF5D56 /* Icon-76.png in Resources */,
 				906E946217CDAD090038DF64 /* res in Resources */,
 				906E946317CDAD090038DF64 /* src in Resources */,
 			);
@@ -3258,6 +3276,7 @@
 				90B55009183E068000727729 /* CCControlStepper.cpp in Sources */,
 				90B54F55183E068000727729 /* CCAction.cpp in Sources */,
 				90B54FEB183E068000727729 /* CCBSequenceProperty.cpp in Sources */,
+				906B4F8E1848BFC300A1033A /* js_bindings_IAPHelp_api.js in Sources */,
 				90B54FD0183E068000727729 /* CCTextureAtlas.cpp in Sources */,
 				90B55001183E068000727729 /* CCInputDelegate.cpp in Sources */,
 				90B55021183E068000727729 /* Atlas.cpp in Sources */,
@@ -3339,7 +3358,7 @@
 				90B55058183E068000727729 /* XMLHTTPRequest.cpp in Sources */,
 				90D49C5A17CAF81800A22DB2 /* main.m in Sources */,
 				90D4A08A17CAF82600A22DB2 /* AppDelegate.cpp in Sources */,
-				90915B671845E83C00CA8541 /* IAPHelpOC.mm in Sources */,
+				906B4F8C1848BFC300A1033A /* IAPHelpOC.mm in Sources */,
 				90B54FAB183E068000727729 /* CCThread.mm in Sources */,
 				90B5501B183E068000727729 /* WebSocket.cpp in Sources */,
 				90B54F4F183E068000727729 /* cpSpaceHash.c in Sources */,
@@ -3415,7 +3434,7 @@
 				90B54F6C183E068000727729 /* CCDataVisitor.cpp in Sources */,
 				90B54F3C183E068000727729 /* cpGearJoint.c in Sources */,
 				90B54FE7183E068000727729 /* CCBFileLoader.cpp in Sources */,
-				90915B661845E83C00CA8541 /* IAPHelp.mm in Sources */,
+				906B4F8B1848BFC300A1033A /* IAPHelp.mm in Sources */,
 				90B55016183E068000727729 /* CCTableView.cpp in Sources */,
 				90B54F5C183E068000727729 /* CCActionInterval.cpp in Sources */,
 				90B55005183E068000727729 /* CCControlHuePicker.cpp in Sources */,
@@ -3431,6 +3450,7 @@
 				90B54F67183E068000727729 /* ccFPSImages.c in Sources */,
 				90B54F97183E068000727729 /* CCRenderTexture.cpp in Sources */,
 				90B54FAA183E068000727729 /* CCLock.cpp in Sources */,
+				906B4F8D1848BFC300A1033A /* js_bindings_IAPHelp.cpp in Sources */,
 				90B5500B183E068000727729 /* CCControlUtils.cpp in Sources */,
 				90B54F9B183E068000727729 /* CCParticleSystemQuad.cpp in Sources */,
 				90B54FB7183E068000727729 /* CCAnimationCache.cpp in Sources */,
@@ -3620,7 +3640,6 @@
 				90E6AFE818464F4600E27CCB /* XMLHTTPRequest.cpp in Sources */,
 				90E6AFE918464F4600E27CCB /* main.m in Sources */,
 				90E6AFEA18464F4600E27CCB /* AppDelegate.cpp in Sources */,
-				90E6AFEB18464F4600E27CCB /* IAPHelpOC.mm in Sources */,
 				90E6AFEC18464F4600E27CCB /* CCThread.mm in Sources */,
 				90E6AFED18464F4600E27CCB /* WebSocket.cpp in Sources */,
 				90E6AFEE18464F4600E27CCB /* cpSpaceHash.c in Sources */,
@@ -3696,7 +3715,6 @@
 				90E6B03418464F4600E27CCB /* CCDataVisitor.cpp in Sources */,
 				90E6B03518464F4600E27CCB /* cpGearJoint.c in Sources */,
 				90E6B03618464F4600E27CCB /* CCBFileLoader.cpp in Sources */,
-				90E6B03718464F4600E27CCB /* IAPHelp.mm in Sources */,
 				90E6B03818464F4600E27CCB /* CCTableView.cpp in Sources */,
 				90E6B03918464F4600E27CCB /* CCActionInterval.cpp in Sources */,
 				90E6B03A18464F4600E27CCB /* CCControlHuePicker.cpp in Sources */,
@@ -3826,7 +3844,7 @@
 					"-lcurl",
 				);
 				PRODUCT_NAME = "Magpie-AppStore";
-				PROVISIONING_PROFILE = "5B3E94EB-5E11-4FF9-9387-4B2ED1E7A713";
+				PROVISIONING_PROFILE = "1709E95C-37ED-45BC-8FF1-288810FEAE59";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"Client-v1.0.0-e2.1.5/libs/Chipmunk/include/chipmunk\" \"Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/include\"";
 				WRAPPER_EXTENSION = app;
@@ -3871,7 +3889,7 @@
 					"-lcurl",
 				);
 				PRODUCT_NAME = "Magpie-AppStore";
-				PROVISIONING_PROFILE = "5B3E94EB-5E11-4FF9-9387-4B2ED1E7A713";
+				PROVISIONING_PROFILE = "1709E95C-37ED-45BC-8FF1-288810FEAE59";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"Client-v1.0.0-e2.1.5/libs/Chipmunk/include/chipmunk\" \"Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/include\"";
 				VALIDATE_PRODUCT = YES;

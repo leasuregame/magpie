@@ -9,11 +9,9 @@
 #ifndef __IAP_HELP__
 #define __IAP_HELP__
 
-#include "cocos2d.h"
-#include <string>
+#include "cocoa/CCObject.h"
 
 USING_NS_CC;
-using namespace std;
 
 
 /*
@@ -50,8 +48,8 @@ typedef struct PaymentDataStruct {
 class IAPHelp
 {
 public:
-    static CCObject * target;
-    static SEL_CallFuncO callback;
+    static CCObject * mTarget;
+    static SEL_CallFuncO mCallback;
     
     static void buy(const char * productId, CCObject * target, SEL_CallFuncO callback);
     static void executeCallback(PaymentState state, const char * product, const char * receipt, const char * msg);

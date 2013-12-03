@@ -34,7 +34,7 @@ var TipLayer = {
 
         var label = cc.Node.create();
         label.setPosition(labelPoint);
-        cc.Director.getInstance().getRunningScene().addChild(label);
+        cc.Director.getInstance().getRunningScene().addChild(label, 1000);
 
         var strLabel = StrokeLabel.create(str, fontName, fontSize);
         strLabel.setColor(color);

@@ -26,19 +26,6 @@ var submitRequest = function() {
         }
         setResult(result);
     });
-    /*
-    var url = "/passSkillAfresh?type=" + type + "&times=" + times;
-    $.ajax({
-        url:url,
-        type:"post",
-        success:function(msg){
-            if(msg.type == "success") {
-                console.log(msg.info);
-                setResult(msg.info);
-            }
-        }
-    });
-    */
 };
 
 var setResult = function(result) {

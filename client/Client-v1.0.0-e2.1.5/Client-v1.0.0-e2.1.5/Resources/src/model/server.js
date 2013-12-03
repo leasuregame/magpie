@@ -261,6 +261,12 @@ var Server = Entity.extend({
                 that._gateServerStatus = CONNECT_FAIL;
                 that._gameServerStatus = CONNECT_FAIL;
 
+                Dialog.pop("网络断开，点击确定重新连接...", function() {
+                    MainScene.destroy();
+
+                    cc.Director.getInstance().replaceScene(LoginScene.create());
+                });
+
                 LogoutLayer.pop("网络断开，点击确定重新连接...");
             });
 

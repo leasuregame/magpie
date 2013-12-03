@@ -31,21 +31,27 @@ var Payment = Entity.extend({
             cc.log("***** on verify result:");
             cc.log(data);
 
+            var msg = data.msg;
+
+            cc.log(msg.gold);
+            cc.log(msg.cash);
+
             var player = gameData.player;
 
-            player.set("gold", data.gold);
-            player.set("cash", data.cash);
+            player.set("gold", msg.gold);
+            player.set("cash", msg.cash);
 
-            var nowVip = data.vip;
+            var nowVip = msg.vip;
             var oldVip = player.get("vip");
 
-            if (nowVip != oldVip) {
-                var rechargeTable = outputTables.recharge.rows[id];
-                var oldPrivilegeTable = outputTables.recharge.rows[oldVip];
-                var nowPrivilegeTable = outputTables.recharge.rows[nowVip];
+            if (nowVip && nowVip != oldVip) {
+                cc.log(nowVip);
+                cc.log(oldVip);
 
-                player.add("gold", rechargeTable.cash * 10 + rechargeTable.gold);
                 player.set("vip", nowVip);
+
+                var oldPrivilegeTable = outputTables.vip.rows[oldVip];
+                var nowPrivilegeTable = outputTables.vip.rows[nowVip];
 
                 gameData.treasureHunt.add("freeCount", nowPrivilegeTable.lottery_free_count - oldPrivilegeTable.lottery_free_count);
                 gameData.friend.adds({
@@ -167,18 +173,19 @@ var Payment = Entity.extend({
             this._push(paymentData.receipt);
 
             Dialog.pop("充值已成功，请稍候");
+            this._closeWaitLayer();
         } else if (state == PAYMENT_FAILED) {
             cc.log("payment failed");
 
             Dialog.pop("充值失败");
+            this._closeWaitLayer();
         } else if (state == PAYMENT_RESTORED) {
             cc.log("payment restored");
 
             Dialog.pop("该商品已购买");
+            this._closeWaitLayer();
         } else if (state == PAYMENT_PURCHASING) {
             cc.log("payment purchasing");
-
-            this._closeWaitLayer();
         } else {
             cc.log("payment error");
 
@@ -209,3 +216,14 @@ var Payment = Entity.extend({
         }
     }
 });
+
+
+Payment.create = function () {
+    var ret = new Payment();
+
+    if (ret) {
+        return ret;
+    }
+
+    return null;
+};

@@ -176,7 +176,7 @@ var PaymentLayer = LazyLayer.extend({
                 main_scene_image.button21,
                 main_scene_image.button21s,
                 main_scene_image.icon300,
-                this._onClickPayment(paymentTypeList[i].id),
+                this._onClickPayment(paymentTypeList[i].product_id),
                 this
             );
             paymentItem.setPosition(cc.p(421, y + 50));
@@ -218,18 +218,13 @@ var PaymentLayer = LazyLayer.extend({
         this.removeFromParent();
     },
 
-    _onClickPayment: function (id) {
+    _onClickPayment: function (productId) {
         return function () {
-            cc.log("PaymentLayer _onClickPayment: " + id);
+            cc.log("PaymentLayer _onClickPayment: " + productId);
 
             gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-            var parent = this.getParent();
-            gameData.shop.payment(function (data) {
-                cc.log(data);
-
-                parent.update();
-            }, id);
+            gameData.payment.buy(productId);
         }
     }
 });

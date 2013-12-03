@@ -19,8 +19,6 @@ var WaitLayer = LazyLayer.extend({
 
         this.setTouchPriority(WAIT_LAYER_HANDLER_PRIORITY);
 
-        cc.Director.getInstance().getRunningScene().addChild(this._waitLayer, 10000);
-
         var point = cc.p(320, 568);
         if (gameDevice != "Iphone5") {
             point = cc.p(360, 480);
@@ -28,7 +26,7 @@ var WaitLayer = LazyLayer.extend({
 
         var waitSprite = cc.Sprite.create(main_scene_image.icon42);
         waitSprite.setPosition(point);
-        this._waitLayer.addChild(waitSprite);
+        this.addChild(waitSprite);
 
         waitSprite.setOpacity(0);
 
@@ -66,7 +64,7 @@ WaitLayer.create = function () {
 
 
 WaitLayer.pop = function () {
-    var waitLayer = new WaitLayer();
+    var waitLayer = WaitLayer.create();
 
     cc.Director.getInstance().getRunningScene().addChild(waitLayer, 10000);
 

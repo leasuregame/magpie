@@ -89,7 +89,7 @@ Dialog.create = function (msg, cb) {
     var ret = new Dialog();
 
     if (ret && ret.init(msg, cb)) {
-        return retu;
+        return ret;
     }
 
     return null;

@@ -14,6 +14,8 @@ var PAYMENT_FAILED = 2;
 var PAYMENT_RESTORED = 3;
 var PAYMENT_PURCHASING = 4;
 
+var JUDGE_INTERVAL = 300;
+
 var Payment = Entity.extend({
     _paymentKey: "",
     _receiptList: null,
@@ -56,6 +58,9 @@ var Payment = Entity.extend({
                 gameData.spiritPool.add("collectCount", nowPrivilegeTable.spirit_collect_count - oldPrivilegeTable.spirit_collect_count);
             }
         });
+
+        this._load();
+        this.schedule(this._judge, JUDGE_INTERVAL);
     },
 
     _load: function () {
@@ -74,19 +79,32 @@ var Payment = Entity.extend({
         sys.localStorage.setItem(this._paymentKey, JSON.stringify(this._receiptList));
     },
 
+    _judge: function () {
+        cc.log("Payment _judge");
+
+        var len = this._receiptList.length;
+
+        for (var i = 0; i < len; ++i) {
+            this._sendReceipt(this._receiptList[i]);
+        }
+    },
+
     _push: function (receipt) {
         cc.log("Payment _push");
 
         this._receiptList.push(receipt);
 
         this._save();
+
+        this._sendReceipt(receipt);
     },
 
     _pop: function (receipt) {
         cc.log("Payment _pop");
 
         var len = this._receiptList.length;
-        for (var i = 0; i < len; ++i) {
+
+        for (var i = len - 1; i >= 0; --i) {
             if (this._receiptList[i] == receipt) {
                 this._receiptList.splice(i, 1);
             }
@@ -98,9 +116,32 @@ var Payment = Entity.extend({
     buy: function (productId) {
         cc.log("Payment buy");
 
-        this._showWaitLayer();
+        if (lz.IAPHelp) {
+            this._showWaitLayer();
 
-        lz.IAPHelp.buy(productId, this, this._payCallback);
+            lz.IAPHelp.buy(productId, this, this._payCallback);
+        }
+    },
+
+    _sendReceipt: function (receipt) {
+        cc.log("Payment _sendReceipt");
+
+        var that = this;
+        lz.server.request("area.verifyHandler.appStore", {
+            receipt: receipt
+        }, function (data) {
+            cc.log(data);
+
+            var code = data.code;
+
+            if (code == 200 || code == 600 || code == 501) {
+                cc.log("send receipt success");
+
+                that._pop(receipt);
+            } else {
+                cc.log("send receipt fail");
+            }
+        }, true);
     },
 
     _payCallback: function (paymentData) {
@@ -123,6 +164,7 @@ var Payment = Entity.extend({
         } else if (state == PAYMENT_PURCHASED) {
             cc.log("payment purchased");
 
+            this._push(paymentData.receipt);
 
             Dialog.pop("充值已成功，请稍候");
         } else if (state == PAYMENT_FAILED) {
@@ -165,5 +207,5 @@ var Payment = Entity.extend({
             this._waitLayer.removeFromParent();
             this._waitLayer = null;
         }
-    },
+    }
 });

@@ -1,4 +1,4 @@
-playerManager = require '../../../manager/playerManager'
+playerManager = require('pomelo').app.get('playerManager')
 taskManager = require '../../../manager/taskManager'
 fightManager = require '../../../manager/fightManager'
 table = require '../../../manager/table'
@@ -52,12 +52,7 @@ Handler::explore = (msg, session, next) ->
 
           if not player.task.hasWin
             countSpirit(player, battleLog, 'TASK')
-            player.incSpirit battleLog.totalSpirit if battleLog.winner is 'own'
-
-          ### 每次战斗结束都有10%的概率获得5魔石 ###
-          if utility.hitRate(taskRate.gold_obtain.rate)
-            player.increase('gold', taskRate.gold_obtain.value)
-            data.gold_obtain += taskRate.gold_obtain.value          
+            player.incSpirit battleLog.totalSpirit if battleLog.winner is 'own'      
 
           if battleLog.winner is 'own'
             checkFragment(battleLog, player, chapterId)
@@ -115,10 +110,10 @@ Handler::wipeOut = (msg, session, next) ->
   chapterId = msg.chapterId
   console.log 'wipe out:', msg
   if type is 'task' and chapterId? and (chapterId < 1 or chapterId > 50)
-    return next(null, {code: 501, msg: '无效参数：chapterId'})
+    return next(null, {code: 501, msg: "无效参数：#{chapterId}"})
 
   if ['task', 'pass'].indexOf(type) < 0
-    return next(null, {code: 501, msg: '无效参数：type'})
+    return next(null, {code: 501, msg: "无效参数：#{type}"})
 
   async.waterfall [
     (cb) ->

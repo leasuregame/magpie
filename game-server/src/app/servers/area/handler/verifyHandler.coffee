@@ -16,7 +16,7 @@ Handler::appStore = (msg, session, next) ->
 	playerId = session.get('playerId')
 	receipt = msg.receipt
 	if not receipt
-		return next(null, msg: '请提供购买凭证信息')
+		return next(null, {code: 501, msg: '请提供购买凭证信息'})
 
 	brecord = null
 	async.waterfall [

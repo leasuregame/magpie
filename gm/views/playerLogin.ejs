@@ -9,19 +9,17 @@
         <div class="form-group">
             <label for="areaId">服务器:</label>
             <select id="areaList" class="form-control input-small" name="area">
-                <% areas.forEach(function(area){ %>
-                <option value="<%= JSON.stringify(area) %>">
-                    <%= area.name %>
-                </option>
-                <% }) %>
+
             </select>
         </div>
         <input type="text" id="target" name = "target" value = "<%=target%>">
         <script>
             $("#target").hide();
         </script>
-        <button type="submit" class="btn btn-primary">确认</button>
+        <button type="button" class="btn btn-primary" id="btnOK">确认</button>
     </fieldset>
 </form>
+ <script src="/javascripts/playerLogin.js"></script>
+ </script>
 
 <%- include footer %>

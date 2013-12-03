@@ -63,3 +63,13 @@ http://124.238.236.33:3003
 test, 123
 
 use Dev http Client to test verify receipt.
+
+新浪服务器master：
+角色账号：987123000
+登陆密码：helloboy
+
+服务器：花果山
+角色名称：卫萤
+
+服务器：水帘洞
+角色名称：杨翠阳

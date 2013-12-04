@@ -123,6 +123,7 @@ Handler::wipeOut = (msg, session, next) ->
       taskManager.wipeOut player, type, chapterId, cb
   ], (err, player, rewards) ->
     if err
+      console.log 'wipe out error: ', err
       return next(null, {code: err.code or 500, msg: err.msg or ''})
 
     upgradeInfo = null

@@ -75,7 +75,9 @@ var ShopLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu, 1);
 
-        this._onClickPropsLayer();
+        this._vipLayerItem.setEnabled(true);
+        this._propsLayerItem.setEnabled(false);
+        this.switchLayer(PropsLayer);
 
         return true;
     },

@@ -82,7 +82,9 @@ var EvolutionLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._onClickCardEvolution();
+        this._cardEvolutionItem.setEnabled(false);
+        this._cardTrainItem.setEnabled(true);
+        this._switchLabel(CardEvolutionLabel);
 
         this.retain();
 

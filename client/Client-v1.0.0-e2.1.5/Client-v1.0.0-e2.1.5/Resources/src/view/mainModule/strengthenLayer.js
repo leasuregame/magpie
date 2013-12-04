@@ -98,7 +98,10 @@ var StrengthenLayer = cc.Layer.extend({
         menu.setPosition(cc.p(0, 0));
         this.addChild(menu);
 
-        this._onClickCardUpgrade();
+        this._cardUpgradeItem.setEnabled(false);
+        this._skillUpgradeItem.setEnabled(true);
+        this._passiveSkillUpgradeItem.setEnabled(true);
+        this._switchLabel(CardUpgradeLabel);
 
         this.retain();
 

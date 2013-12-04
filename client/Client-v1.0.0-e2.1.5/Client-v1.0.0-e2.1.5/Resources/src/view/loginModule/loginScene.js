@@ -33,6 +33,19 @@ var LoginScene = cc.Scene.extend({
         lz.dc.endLogPageView("登录场景");
     },
 
+    init: function () {
+        cc.log("LoginScene init");
+
+        if (!this._super()) return false;
+
+        if (gameDevice != "Iphone5") {
+            var gameFrame = GameFrame.create();
+            this.addChild(gameFrame, 100);
+        }
+
+        return true;
+    },
+
     switchLayer: function (runLayer) {
         cc.log("LoginScene switchLayer");
 
@@ -63,7 +76,7 @@ var LoginScene = cc.Scene.extend({
 LoginScene.create = function () {
     var ret = new LoginScene();
 
-    if (ret) {
+    if (ret && ret.init()) {
         return ret;
     }
 

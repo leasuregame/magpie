@@ -131,5 +131,7 @@ SendMessageLayer.pop = function (id, name) {
     var sendMessageLayer = SendMessageLayer.create(id, name);
 
     MainScene.getInstance().getLayer().addChild(sendMessageLayer, 10);
+
+    return sendMessageLayer;
 };
 

@@ -281,5 +281,7 @@ LineUpDetail.pop = function (data) {
     var lineUpDetail = LineUpDetail.create(data);
 
     MainScene.getInstance().getLayer().addChild(lineUpDetail, 10);
+
+    return lineUpDetail;
 };
 

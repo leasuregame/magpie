@@ -338,4 +338,6 @@ LineUpLayer.pop = function () {
     var lineUpLayer = LineUpLayer.create();
 
     MainScene.getInstance().getLayer().addChild(lineUpLayer, 10);
+
+    return lineUpLayer;
 };

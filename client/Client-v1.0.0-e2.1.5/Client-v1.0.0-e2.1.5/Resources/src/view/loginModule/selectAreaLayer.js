@@ -49,12 +49,10 @@ var SelectAreaLayer = cc.Layer.extend({
             scrollViewHeight = 400;
         }
         var menu = LazyMenu.create();
-        menu.setTouchPriority(-200);
         menu.setPosition(cc.p(0, 0));
         scrollViewLayer.addChild(menu);
 
         var scrollView = cc.ScrollView.create(cc.size(640, 400), scrollViewLayer);
-        scrollView.setTouchPriority(-300);
         scrollView.setPosition(cc.p(-320, -300));
         scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
         scrollView.updateInset();

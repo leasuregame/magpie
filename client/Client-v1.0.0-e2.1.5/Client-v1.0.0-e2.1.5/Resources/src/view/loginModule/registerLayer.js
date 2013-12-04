@@ -47,12 +47,20 @@ var RegisterLayer = cc.Layer.extend({
         this.addChild(registerFrame);
 
 
-        this._accountEditBox = cc.EditBox.create(cc.size(350, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._accountEditBox = cc.EditBox.create(cc.size(366, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._accountEditBox.setAnchorPoint(cc.p(0, 0.5));
         this._accountEditBox.setPosition(cc.p(0, 0));
         this._accountEditBox.setPlaceHolder("推荐使用电话号码或邮箱");
         this._accountEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_EMAILADDR);
         this._accountEditBox.setDelegate({
+            /**
+             * This method is called when an edit box gains focus after keyboard is shown.
+             * @param {cc.EditBox} sender
+             */
+            editBoxEditingDidBegin: function (sender) {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+            },
+
             /**
              * This method is called when an edit box loses focus after keyboard is hidden.
              * @param {cc.EditBox} sender
@@ -74,17 +82,25 @@ var RegisterLayer = cc.Layer.extend({
             }
         });
         this._accountEditBox.setFont("STHeitiTC-Medium", 30);
-        this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
-        this._accountEditBox.setMaxLength(18);
+        //this._accountEditBox.setFontColor(cc.c3b(200, 0, 250));
+        this._accountEditBox.setMaxLength(50);
         this._accountEditBox.setVisible(false);
         registerFrame.controller.accountLabel.addChild(this._accountEditBox);
 
-        this._passwordEditBox = cc.EditBox.create(cc.size(350, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._passwordEditBox = cc.EditBox.create(cc.size(366, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._passwordEditBox.setAnchorPoint(cc.p(0, 0.5));
         this._passwordEditBox.setPosition(cc.p(0, 0));
         this._passwordEditBox.setPlaceHolder("6-20位数字或者字母");
         this._passwordEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordEditBox.setDelegate({
+            /**
+             * This method is called when an edit box gains focus after keyboard is shown.
+             * @param {cc.EditBox} sender
+             */
+            editBoxEditingDidBegin: function (sender) {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+            },
+
             /**
              * This method is called when an edit box loses focus after keyboard is hidden.
              * @param {cc.EditBox} sender
@@ -106,17 +122,25 @@ var RegisterLayer = cc.Layer.extend({
             }
         });
         this._passwordEditBox.setFont("STHeitiTC-Medium", 30);
-        this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
-        this._passwordEditBox.setMaxLength(18);
+        //this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));
+        this._passwordEditBox.setMaxLength(20);
         this._passwordEditBox.setVisible(false);
         registerFrame.controller.passwordLabel.addChild(this._passwordEditBox);
 
-        this._passwordAgainEditBox = cc.EditBox.create(cc.size(350, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._passwordAgainEditBox = cc.EditBox.create(cc.size(366, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._passwordAgainEditBox.setAnchorPoint(cc.p(0, 0.5));
         this._passwordAgainEditBox.setPosition(cc.p(0, 0));
         this._passwordAgainEditBox.setPlaceHolder("6-20位数字或者字母");
         this._passwordAgainEditBox.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this._passwordAgainEditBox.setDelegate({
+            /**
+             * This method is called when an edit box gains focus after keyboard is shown.
+             * @param {cc.EditBox} sender
+             */
+            editBoxEditingDidBegin: function (sender) {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+            },
+
             /**
              * This method is called when an edit box loses focus after keyboard is hidden.
              * @param {cc.EditBox} sender
@@ -138,8 +162,8 @@ var RegisterLayer = cc.Layer.extend({
             }
         });
         this._passwordAgainEditBox.setFont("STHeitiTC-Medium", 30);
-        this._passwordAgainEditBox.setFontColor(cc.c3b(200, 0, 250));
-        this._passwordAgainEditBox.setMaxLength(18);
+        //this._passwordAgainEditBox.setFontColor(cc.c3b(200, 0, 250));
+        this._passwordAgainEditBox.setMaxLength(20);
         this._passwordAgainEditBox.setVisible(false);
         registerFrame.controller.passwordAgainLabel.addChild(this._passwordAgainEditBox);
 

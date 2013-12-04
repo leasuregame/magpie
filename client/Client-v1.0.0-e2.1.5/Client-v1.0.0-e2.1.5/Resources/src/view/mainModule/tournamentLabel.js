@@ -71,10 +71,17 @@ var TournamentLabel = cc.Node.extend({
         nameLabel.setPosition(cc.p(30, 99));
         this.addChild(nameLabel);
 
-        var rankingLabel = StrokeLabel.create(this._player.ranking, "STHeitiTC-Medium", 38);
-        rankingLabel.setColor(cc.c3b(255, 242, 206));
-        rankingLabel.setPosition(cc.p(95, 42));
-        this.addChild(rankingLabel);
+        var ranking = this._player.ranking;
+        if (ranking <= 3) {
+            var rankingIcon = cc.Sprite.create(main_scene_image["icon" + (200 + ranking)]);
+            rankingIcon.setPosition(cc.p(95, 42));
+            this.addChild(rankingIcon);
+        } else {
+            var rankingLabel = StrokeLabel.create(ranking, "STHeitiTC-Medium", 38);
+            rankingLabel.setColor(cc.c3b(255, 242, 206));
+            rankingLabel.setPosition(cc.p(95, 42));
+            this.addChild(rankingLabel);
+        }
 
         if (this._player.playerId != player.get("id")) {
             var functionItem = null;
@@ -185,6 +192,20 @@ var TournamentLabel = cc.Node.extend({
                     LineUpDetail.pop(data);
                 }, this._player.playerId);
             } else {
+
+                // 有问题，sys.localStorage.getItem读出来是字符串，也就是"0";
+//                var tournament = gameData.tournament;
+//                var count = tournament.get("count");
+
+//                var isFirstCountUsed = sys.localStorage.getItem(gameData.player.get("id") + "*" + gameData.player.get("areaId") + "firstCountUsed") || 1;
+
+//                if(count == 0 && isFirstCountUsed == 1) {
+//
+//                    sys.localStorage.setItem(gameData.player.get("id") + "*" + gameData.player.get("areaId") + "firstCountUsed", 0);
+//                    TournamentTipLayer.pop();
+//
+//                } else {
+//
                 gameData.tournament.defiance(function (data) {
                     cc.log(data);
 
@@ -198,6 +219,9 @@ var TournamentLabel = cc.Node.extend({
                         that._target.update();
                     }
                 }, this._player.playerId, this._player.ranking);
+
+
+//                }
             }
         }
     }

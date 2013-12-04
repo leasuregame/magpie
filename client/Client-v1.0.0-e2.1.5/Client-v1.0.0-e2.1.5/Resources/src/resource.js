@@ -276,6 +276,10 @@ var main_scene_image = {
     button64s: main_scene_path + "button64s.png",
     button65: main_scene_path + "button65.png",
     button65s: main_scene_path + "button65s.png",
+    button66: main_scene_path + "button66.png",
+    button66s: main_scene_path + "button66s.png",
+    button67: main_scene_path + "button67.png",
+    button67s: main_scene_path + "button67s.png",
 
     icon1: main_scene_path + "icon1.png",
     icon2: main_scene_path + "icon2.png",
@@ -575,6 +579,7 @@ var main_scene_image = {
     icon298: main_scene_path + "icon298.png",
     icon299: main_scene_path + "icon299.png",
     icon300: main_scene_path + "icon300.png",
+    icon301: main_scene_path + "icon301.png",
 
     card30000_head1: main_scene_path + "card30000_head1.png",
     card30000_half1: main_scene_path + "card30000_half1.png",
@@ -645,8 +650,8 @@ var main_scene_image = {
     uiEffect41: "res/ccb/uiEffect41.ccbi",
 //    uiEffect42: "res/ccb/uiEffect42.ccbi",
     uiEffect43: "res/ccb/uiEffect43.ccbi",
-//    uiEffect44: "res/ccb/uiEffect44.ccbi",
-//    uiEffect45: "res/ccb/uiEffect45.ccbi",
+    uiEffect44: "res/ccb/uiEffect44.ccbi",
+    uiEffect45: "res/ccb/uiEffect45.ccbi",
 //    uiEffect46: "res/ccb/uiEffect46.ccbi",
 //    uiEffect47: "res/ccb/uiEffect47.ccbi",
 //    uiEffect48: "res/ccb/uiEffect48.ccbi",
@@ -874,7 +879,9 @@ var main_scene_res = [
     //effect
 ];
 
-var cardResIdList = [3, 9, 12, 25, 31, 36, 38, 39, 44, 50];
+var cardResIdList = [
+    2, 3, 7, 9, 12, 18, 19, 20, 22, 25, 28, 30, 31, 32, 34, 36, 38, 39, 43, 44, 49, 50, 51
+];
 
 for (var cardIndex = 0; cardIndex < cardResIdList.length; ++cardIndex) {
     var cardId = cardResIdList[cardIndex];
@@ -900,44 +907,6 @@ for (var cardId = 10000; cardId <= 10032; ++cardId) {
 
 for (var taskId = 1; taskId <= 50; ++taskId) {
     main_scene_image["task" + taskId] = main_scene_path + "task" + taskId + ".png";
-}
-
-var effectConfig = [
-    10,
-    10,
-    10,
-    5,
-    6,
-    7,
-    6,
-    8,
-    6,
-    12,
-    8,
-    4,
-    4
-];
-
-var effectRect = [
-    cc.rect(0, 0, 160, 80),
-    cc.rect(0, 0, 132, 132),
-    cc.rect(0, 0, 640, 218),
-    cc.rect(0, 0, 600, 713),
-    cc.rect(0, 0, 120, 275),
-    cc.rect(0, 0, 182, 171),
-    cc.rect(0, 0, 250, 275),
-    cc.rect(0, 0, 83, 261),
-    cc.rect(0, 0, 251, 279),
-    cc.rect(0, 0, 188, 263),
-    cc.rect(0, 0, 464, 391),
-    cc.rect(0, 0, 280, 308),
-    cc.rect(0, 0, 170, 185)
-];
-
-for (var effectId = 0; effectId < effectConfig.length; ++effectId) {
-    for (var frameI = 0; frameI < effectConfig[effectId]; ++frameI) {
-        main_scene_image["effect" + effectId + "_frame" + frameI] = "res/effect/" + effectId + "/" + frameI + ".png";
-    }
 }
 
 for (var key in main_scene_image) {

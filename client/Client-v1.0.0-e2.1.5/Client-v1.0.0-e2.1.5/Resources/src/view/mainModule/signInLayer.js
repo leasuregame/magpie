@@ -25,7 +25,7 @@ var rewardGoodsUrl = {
     fragments: "icon145"
 };
 
-var SignInLayer = LazyLayer.extend({
+var SignInLayer = cc.Layer.extend({
     _signInLayerFit: null,
 
     _turnLeftItem: null,
@@ -59,6 +59,8 @@ var SignInLayer = LazyLayer.extend({
         cc.log("SignInLayer init");
 
         if (!this._super()) return false;
+
+        this.setTouchEnabled(true);
 
         this._signInLayerFit = gameFit.mainScene.signInLayer;
 
@@ -154,7 +156,6 @@ var SignInLayer = LazyLayer.extend({
         }
 
         this._scrollView = cc.ScrollView.create(this._signInLayerFit.scrollViewSize, scrollViewLayer);
-        this._scrollView.setTouchPriority(-300);
         this._scrollView.setPosition(this._signInLayerFit.scrollViewPoint);
         this._scrollView.setBounceable(false);
         this._scrollView.setDirection(cc.SCROLLVIEW_DIRECTION_HORIZONTAL);
@@ -392,12 +393,12 @@ var SignInLayer = LazyLayer.extend({
     },
 
     /**
-     * callback when a touch event finished
-     * @param {cc.Touch} touch
+     * when a touch finished
+     * @param {cc.Touch} touches
      * @param {event} event
      */
-    onTouchEnded: function (touch, event) {
-        cc.log("SignInLayer onTouchEnded");
+    onTouchesEnded: function (touches, event) {
+        cc.log("TaskLayer onTouchesEnded");
 
         this._scrollView.unscheduleAllCallbacks();
         this._scrollView.stopAllActions();
@@ -416,11 +417,11 @@ var SignInLayer = LazyLayer.extend({
     },
 
     /**
-     * @param {cc.Touch} touch
-     * @param {event} event
+     * @param touch
+     * @param event
      */
-    onTouchCancelled: function (touch, event) {
-        cc.log("SignInLayer onTouchCancelled");
+    onTouchesCancelled: function (touch, event) {
+        cc.log("SignInLayer onTouchesCancelled");
 
         this.onTouchEnded(touch, event);
     }

@@ -92,8 +92,13 @@ var card = function(app) {
        // console.log(card);
         Card.create(card,function(err,result){
             if(err) {
-                logger.error("[add]" + err);
-               res.send({type:"fail",info:"添加卡牌出错"});
+               if(err == 'tableIdError')   {
+                   logger.error("[add]" + "不存在tableId = " + card.tableId + "的卡牌");
+                   res.send({type:"fail",info:"不存在tableId = " + card.tableId + "的卡牌"});
+               } else {
+                   logger.error("[add]" + err);
+                   res.send({type:"fail",info:"添加卡牌出错"});
+               }
             } else{
 
                 logger.info("[add]" + "success");

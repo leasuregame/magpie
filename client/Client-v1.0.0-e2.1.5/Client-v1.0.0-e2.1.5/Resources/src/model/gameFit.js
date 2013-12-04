@@ -75,7 +75,7 @@ var fit4Iphone4 = {
             "startGameNodePoint": cc.p(0, -460)
 
         },
-        "logoutLayer": {
+        "dialog": {
             "bgLayerPoint": cc.p(40, 0),
             "bgSpritePoint": cc.p(363, 600),
             "msgBgIconPoint": cc.p(360, 620),
@@ -1141,7 +1141,7 @@ var fit4Iphone5 = {
             "passwordNodePoint": cc.p(0, -360),
             "startGameNodePoint": cc.p(0, -480)
         },
-        "logoutLayer": {
+        "dialog": {
             "bgLayerPoint": cc.p(0, 0),
             "bgSpritePoint": cc.p(323, 600),
             "msgBgIconPoint": cc.p(320, 620),

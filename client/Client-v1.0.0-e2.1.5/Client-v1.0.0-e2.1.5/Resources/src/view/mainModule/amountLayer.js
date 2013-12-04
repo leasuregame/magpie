@@ -249,4 +249,6 @@ AmountLayer.pop = function (cb, data) {
     var amountLayer = AmountLayer.create(cb, data);
 
     MainScene.getInstance().getLayer().addChild(amountLayer, 10);
+
+    return amountLayer;
 };

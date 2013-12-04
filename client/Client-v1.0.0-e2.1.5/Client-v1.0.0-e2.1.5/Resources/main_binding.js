@@ -70,6 +70,8 @@ var appFiles = [
     'src/model/exchange.js',
     'src/model/activity.js',
 
+    'appStoreModel/payment.js',
+
     'src/model/battleLogPool.js',
     'src/model/battleLog.js',
     'src/model/battleStep.js',
@@ -88,6 +90,8 @@ var appFiles = [
     'src/controls/LzMenuItem.js',
     'src/controls/tipLayer.js',
     'src/controls/colorLabelTTF.js',
+    'src/controls/waitLayer.js',
+    'src/controls/dialog.js',
 
     'src/view/loginModule/loginScene.js',
     'src/view/loginModule/loginLayer.js',

@@ -29,6 +29,7 @@ var gameData = {
     spirit: null,
     spiritPool: null,
     friend: null,
+    payment: null,
     shop: null,
     signIn: null,
     achievement: null,
@@ -54,6 +55,7 @@ var gameData = {
         this.spirit = Spirit.create();
         this.spiritPool = SpiritPool.create();
         this.friend = Friend.create();
+        this.payment = Payment.create();
         this.shop = Shop.create();
         this.signIn = SignIn.create();
         this.achievement = Achievement.create();

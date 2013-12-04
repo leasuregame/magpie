@@ -77,6 +77,9 @@ class Manager
       rewards.money_obtain += parseInt(wipeOutData.money_obtain)
       player.setTaskMark(id)
 
+    if chapterId? and player.hasTaskMark(chapterId)
+      return cb({code: 501, msg: '已扫荡'})
+
     if chapterId? and not player.hasTaskMark(chapterId)
       count_(chapterId, rewards)
     else
@@ -118,6 +121,11 @@ class Manager
       task.hasWin = true
       player.task = task
 
+    ### 每次战斗结束都有10%的概率获得5魔石 ###
+    if utility.hitRate(taskRate.gold_obtain.rate)
+      player.increase('gold', taskRate.gold_obtain.value)
+      battleLog.rewards.gold = taskRate.gold_obtain.value  
+
     saveExpCardsInfo player.id, taskData.max_drop_card_number, (err, results) ->
       if err
         logger.error('save exp card for task error: ', err)
@@ -152,10 +160,11 @@ class Manager
         if task.id % 10 is 1 && task.id != 1
           data.momo = player.createMonoGift();
 
-        rew = table.getTableItem('task_throught_reward', task.id-1)
+        rew = table.getTableItem('task_through_reward', task.id-1)
         if not rew
           logger.error('can not find throught reward by id', task.id-1)
-        data.throught_reaward = {money: rew?.money_obtain}
+        data.through_reward = {money: rew?.money_obtain}
+        player.increase('money', rew?.money_obtain or 0)
       player.set('task', task)
 
     ### consume power first, then add exp

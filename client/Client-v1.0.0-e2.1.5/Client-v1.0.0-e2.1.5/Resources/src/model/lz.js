@@ -10,8 +10,7 @@
 /*
  * 命名空间
  * */
-var lz = {};
-
+var lz = lz || {};
 
 lz.TARGET_PLATFORM_IS_BROWSER = !("opengl" in sys.capabilities && "browser" != sys.platform);
 
@@ -221,7 +220,7 @@ lz.getRewardString = function (data) {
         if (data[key]) {
             if (key == "cards") {
                 var cards = data[key];
-                if(cards.length > 0) {
+                if (cards.length > 0) {
                     str.push(cards[0].lv + lz.getNameByKey(key) + " : " + 1);
                 }
             } else {

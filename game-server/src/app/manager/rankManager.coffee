@@ -3,7 +3,7 @@ dao = app.get('dao')
 job = require('../dao/job')
 table = require('./table')
 achieve = require('../domain/achievement')
-playerManager = require('./playerManager')
+playerManager = app.get('playerManager')
 entityUtil = require '../util/entityUtil'
 _ = require('underscore')
 

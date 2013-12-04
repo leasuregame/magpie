@@ -80,7 +80,7 @@ var TournamentTipLayer = LazyLayer.extend({
 
     },
 
-    _onClickClose: function() {
+    _onClickClose: function () {
         cc.log("TournamentTipLayer _onClickClose");
         this.removeFromParent();
     },
@@ -93,6 +93,7 @@ var TournamentTipLayer = LazyLayer.extend({
 
 });
 
+
 TournamentTipLayer.create = function(cb) {
     var ret = new TournamentTipLayer();
 
@@ -103,8 +104,11 @@ TournamentTipLayer.create = function(cb) {
     return null;
 };
 
+
 TournamentTipLayer.pop = function(cb) {
     var tournamentTipLayer = TournamentTipLayer.create(cb);
 
     MainScene.getInstance().getLayer().addChild(tournamentTipLayer, 10);
+
+    return tournamentTipLayer;
 };

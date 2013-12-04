@@ -72,6 +72,8 @@ var VipLayer = cc.Layer.extend({
         this._super();
         this.update();
 
+        this.schedule(this._update, 1);
+
         lz.dc.beginLogPageView("VIP礼包界面");
     },
 
@@ -137,10 +139,7 @@ var VipLayer = cc.Layer.extend({
     update: function () {
         cc.log("VipLayer update");
 
-        var player = gameData.player;
-
-        this._goldLabel.setString(player.get("gold"));
-        this._moneyLabel.setString(player.get("money"));
+        this._update();
 
         if (this._scrollView != null) {
             this._scrollView.removeFromParent();
@@ -253,7 +252,16 @@ var VipLayer = cc.Layer.extend({
         this._scrollView.setContentOffset(this._scrollView.minContainerOffset());
     },
 
-    _addVipBoxDetails: function (obj) {
+    _update: function () {
+        cc.log("VipLayer _update");
+
+        var player = gameData.player;
+
+        this._goldLabel.setString(player.get("gold"));
+        this._moneyLabel.setString(player.get("money"));
+    },
+
+    _addVipBoxDetails: function (data) {
         cc.log("VipLayer _addVipBoxDetails");
 
         var data = obj.data;

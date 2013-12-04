@@ -65,13 +65,13 @@ module.exports =
           if statusCode > 0 and statusCode is userId
             done(null, true)
           else if statusCode is -1
-            done({code: 501, msg: 'wrong sessionId'})
+            done({code: 501, msg: '会话无效'})
           else
             done(null, false)
 
       (isValid, done) ->
         if not isValid
-          return done({code: 501, msg: 'login faild, please relogin'})
+          return done({code: 501, msg: '登陆失败，请重新登陆'})
 
         dao.user.fetchOne {
           where: id: userId, account: nickName

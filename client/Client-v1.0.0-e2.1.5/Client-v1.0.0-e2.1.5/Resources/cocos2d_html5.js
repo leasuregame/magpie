@@ -87,6 +87,8 @@
             'src/model/exchange.js',
             'src/model/activity.js',
 
+            '../Resources-AppStore/appStoreModel/payment.js',
+
             'src/model/battleLogPool.js',
             'src/model/battleLog.js',
             'src/model/battleStep.js',

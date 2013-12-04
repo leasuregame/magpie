@@ -266,8 +266,6 @@ var Server = Entity.extend({
 
                     cc.Director.getInstance().replaceScene(LoginScene.create());
                 });
-
-                LogoutLayer.pop("网络断开，点击确定重新连接...");
             });
 
             that._closeAllWaitLayer();

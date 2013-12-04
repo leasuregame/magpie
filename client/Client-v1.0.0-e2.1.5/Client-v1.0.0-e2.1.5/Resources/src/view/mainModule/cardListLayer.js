@@ -646,7 +646,18 @@ var CardListLayer = cc.Layer.extend({
             var selectList = this._getSelectCardList();
             var len = selectList.length;
             var rate = len * this._otherData.leadCard.getPreCardRate();
-            rate = rate < 100 ? rate : 100;
+
+            if (rate >= 100) {
+                rate = 100;
+
+                for (var key in this._cardLabel) {
+                    var cardLabel = this._cardLabel[key];
+
+                    if (!cardLabel.isSelect() && cardLabel.isEnabled()) {
+                        cardLabel.setEnabled(false);
+                    }
+                }
+            }
 
             countLabel.setString(len);
             rateLabel.setString(rate + "%");
@@ -848,7 +859,6 @@ var CardListLayer = cc.Layer.extend({
         var i, key, len = cardList.length;
 
         for (i = 0; i < len; ++i) {
-            cardList[i].setNewCardMark(false);
             cardList[i] = cardList[i].get("id");
         }
 

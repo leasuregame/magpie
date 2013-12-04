@@ -111,6 +111,7 @@ var appFiles = [
     'src/view/mainModule/bubbleLabel.js',
     'src/view/mainModule/cardDetails.js',
     'src/view/mainModule/cardEvolutionLabel.js',
+    'src/view/mainModule/cardEvolutionLayer.js',
     'src/view/mainModule/cardFullNode.js',
     'src/view/mainModule/cardHalfNode.js',
     'src/view/mainModule/cardHeadNode.js',

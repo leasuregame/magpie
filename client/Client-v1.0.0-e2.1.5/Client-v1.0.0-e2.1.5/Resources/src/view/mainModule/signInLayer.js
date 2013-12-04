@@ -270,19 +270,32 @@ var SignInLayer = LazyLayer.extend({
 
         this._signInCountLabel.setString(count);
 
-        for (var i = 0; i < 5; ++i) {
-            var visible = signIn.canReceive(this._index, i);
-            this._elementList[i].rewardIcon.setVisible(visible);
-            this._elementList[i].alreadyRewardIcon.setVisible(!visible);
+        if (this._index != 0) {
+            for (var i = 0; i < 5; ++i) {
 
-            var monthMark = gameData.signIn.getMonthMark(0);
-            var table = outputTables.signIn_rewards.rows[i + 1];
-            var count = table.count != -1 ? table.count : monthMark.days;
-            if (monthMark.count >= count) {
-                this._elementList[i].readyRewardItem.setVisible(visible);
-                this._elementList[i].rewardIcon.setVisible(false);
+                this._elementList[i].readyRewardItem.setVisible(false);
+                this._elementList[i].rewardIcon.setVisible(true);
+                this._elementList[i].alreadyRewardIcon.setVisible(false);
+                this._elementList[i].rewardItem.setVisible(true);
+
+            }
+        } else {
+            for (var i = 0; i < 5; ++i) {
+
+                var visible = signIn.canReceive(this._index, i);
+                this._elementList[i].rewardIcon.setVisible(visible);
                 this._elementList[i].alreadyRewardIcon.setVisible(!visible);
-                this._elementList[i].rewardItem.setVisible(!visible);
+
+                var monthMark = gameData.signIn.getMonthMark(0);
+                var table = outputTables.signIn_rewards.rows[i + 1];
+                var count = table.count != -1 ? table.count : monthMark.days;
+
+                if (monthMark.count >= count) {
+                    this._elementList[i].readyRewardItem.setVisible(visible);
+                    this._elementList[i].rewardIcon.setVisible(false);
+                    this._elementList[i].alreadyRewardIcon.setVisible(!visible);
+                    this._elementList[i].rewardItem.setVisible(!visible);
+                }
             }
         }
     },

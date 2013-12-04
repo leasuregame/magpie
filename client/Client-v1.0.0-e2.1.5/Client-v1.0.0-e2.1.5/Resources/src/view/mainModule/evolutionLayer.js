@@ -109,7 +109,7 @@ var EvolutionLayer = cc.Layer.extend({
         this._cardEvolutionItem.setEnabled(false);
         this._cardTrainItem.setEnabled(true);
 
-        this._switchLabel(CardEvolutionLayer);
+        this._switchLabel(CardEvolutionLabel);
     },
 
     _onClickCardTrain: function () {

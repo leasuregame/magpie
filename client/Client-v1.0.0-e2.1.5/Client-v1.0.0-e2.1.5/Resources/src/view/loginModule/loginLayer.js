@@ -80,7 +80,7 @@ var LoginLayer = cc.Layer.extend({
              */
             editBoxEditingDidBegin: function (sender) {
                 gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-            },
+            }
         });
 
         this._accountEditBox.setFont("STHeitiTC-Medium", 35);
@@ -101,7 +101,7 @@ var LoginLayer = cc.Layer.extend({
              */
             editBoxEditingDidBegin: function (sender) {
                 gameData.sound.playEffect(main_scene_image.click_button_sound, false);
-            },
+            }
         });
         this._passwordEditBox.setFont("STHeitiTC-Medium", 35);
         //this._passwordEditBox.setFontColor(cc.c3b(200, 0, 250));

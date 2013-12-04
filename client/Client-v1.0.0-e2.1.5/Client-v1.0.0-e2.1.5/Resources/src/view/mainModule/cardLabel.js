@@ -62,13 +62,12 @@ var CardLabel = cc.Node.extend({
         otherIcon.setPosition(cc.p(200, 34));
         this.addChild(otherIcon);
 
-        var url = main_scene_image.icon297;
-        if(this._card.get("skillType") == 2) {
-            url = main_scene_image.icon298;
-        } else if(this._card.get("skillType") > 2){
-            url = main_scene_image.icon299;
+        var skillType = this._card.get("skillType");
+        if (skillType > 3) {
+            skillType = 3;
         }
-        var skillTypeIcon = cc.Sprite.create(url);
+
+        var skillTypeIcon = cc.Sprite.create(main_scene_image["icon" + (297 + skillType)]);
         skillTypeIcon.setAnchorPoint(cc.p(0, 0.5));
         skillTypeIcon.setPosition(cc.p(142, 100));
         this.addChild(skillTypeIcon);

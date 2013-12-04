@@ -763,8 +763,8 @@ var fit4Iphone4 = {
         },
         "shopLayer": {
             "headIconPoint": cc.p(40, 874),
-            "vipLayerItemPoint": cc.p(111, 914),
-            "propsLayerItemPoint": cc.p(254, 914)
+            "vipLayerItemPoint": cc.p(254, 914),
+            "propsLayerItemPoint": cc.p(111, 914)
         },
         "signInLayer": {
             "bgSpriteSize": cc.size(600, 720),
@@ -1831,8 +1831,8 @@ var fit4Iphone5 = {
         },
         "shopLayer": {
             "headIconPoint": cc.p(0, 1050),
-            "vipLayerItemPoint": cc.p(71, 1090),
-            "propsLayerItemPoint": cc.p(214, 1090)
+            "vipLayerItemPoint": cc.p(214, 1090),
+            "propsLayerItemPoint": cc.p(71, 1090)
         },
         "signInLayer": {
             "bgSpriteSize": cc.size(600, 720),
@@ -2060,7 +2060,7 @@ var fit4Iphone5 = {
             "skyDialogRect": cc.rect(40, 170, 640, 964)
         },
         "tournamentTipLayer": {
-           "bgSpritePoint": cc.p(320, 580),
+            "bgSpritePoint": cc.p(320, 580),
             "offsetPointY": 640,
             "offsetPointX": 95,
             "buyItemPoint": cc.p(200, 520),

@@ -71,7 +71,7 @@ var RegisterLayer = cc.Layer.extend({
                 if(!text) {
                     TipLayer.tip("请输入账号");
                 } else if(len < 6 || len > 50) {
-                    TipLayer.tip("账号长度不正确");
+                    TipLayer.tip("账号长度为6-50位");
                 } else if (CHINESE_REG.test(text)) {
                     TipLayer.tip("账号不能包含中文");
                 } else if (EMPTY_SPACE_REG.test(text)) {
@@ -111,7 +111,7 @@ var RegisterLayer = cc.Layer.extend({
                 if(!text) {
                     TipLayer.tip("请输入密码");
                 } else if(len < 6 || len > 20) {
-                    TipLayer.tip("密码长度不正确");
+                    TipLayer.tip("密码长度为6-20位");
                 } else if (CHINESE_REG.test(text)) {
                     TipLayer.tip("密码不能包含中文");
                 } else if (EMPTY_SPACE_REG.test(text)) {
@@ -151,7 +151,7 @@ var RegisterLayer = cc.Layer.extend({
                 if(!text) {
                     TipLayer.tip("请再次输入密码");
                 } else if(len < 6 || len > 20) {
-                    TipLayer.tip("密码长度不正确");
+                    TipLayer.tip("密码长度为6-20位");
                 } else if (CHINESE_REG.test(text)) {
                     TipLayer.tip("密码不能包含中文");
                 } else if (EMPTY_SPACE_REG.test(text)) {

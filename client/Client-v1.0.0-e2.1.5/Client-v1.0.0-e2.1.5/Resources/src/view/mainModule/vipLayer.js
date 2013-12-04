@@ -14,7 +14,7 @@
 
 var vipBoxGoods = {
     energy: {
-        name: "活力值",
+        name: "活力点",
         url: "icon110"
     },
 

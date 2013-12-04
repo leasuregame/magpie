@@ -128,7 +128,7 @@ var TipsLayer = LazyLayer.extend({
 
         //好友描述
         y = scrollViewHeight - 55 - 30 - 250 * 4;
-        var description = lz.format('你可以通过祝福好友来获取活力值，活力值可以代替魔石进行卡牌召唤。', 28);
+        var description = lz.format('你可以通过祝福好友来获取活力点，活力点可以代替魔石进行卡牌召唤。', 28);
         this._addDescription(description, y, scrollViewLayer);
 
         //VIP描述

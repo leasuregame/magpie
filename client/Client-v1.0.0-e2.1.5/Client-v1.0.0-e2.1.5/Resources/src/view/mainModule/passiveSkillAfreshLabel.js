@@ -172,7 +172,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         moneyIcon.setPosition(cc.p(100, 92));
         this._resLabel.addChild(moneyIcon);
 
-        var moneyLabel = cc.LabelTTF.create("20000 / 次", "STHeitiTC-Medium", 20);
+        var moneyLabel = cc.LabelTTF.create("2000 / 次", "STHeitiTC-Medium", 20);
         moneyLabel.setAnchorPoint(cc.p(0, 0.5));
         moneyLabel.setPosition(cc.p(130, 90));
         this._resLabel.addChild(moneyLabel);

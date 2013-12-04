@@ -264,9 +264,11 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>+123</string>
+								<string></string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 						<key>seqExpanded</key>
 						<true/>
 					</dict>
@@ -593,7 +595,7 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>+123</string>
+								<string></string>
 							</dict>
 						</array>
 						<key>seqExpanded</key>
@@ -758,7 +760,7 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.69799017906188965</real>
 			<key>position</key>
 			<real>1.5</real>
 			<key>resolution</key>

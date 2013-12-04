@@ -57,7 +57,7 @@ var TournamentTipLayer = LazyLayer.extend({
         var buyItem = cc.MenuItemImage.createWithIcon(
             main_scene_image.button21,
             main_scene_image.button21s,
-            main_scene_image.icon300,
+            main_scene_image.icon302,
             this._onClickBuy,
             this
         );

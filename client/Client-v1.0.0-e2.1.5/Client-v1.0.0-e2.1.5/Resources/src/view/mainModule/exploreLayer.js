@@ -647,7 +647,7 @@ var ExploreLayer = cc.Layer.extend({
     _onBuyPower: function () {
         cc.log("TournamentLayer _onClickBuyCount");
 
-        var id = 5;
+        var id = 2;
         var product = gameData.shop.getProduct(id);
 
         cc.log(product);

@@ -261,7 +261,7 @@ var VipLayer = cc.Layer.extend({
         this._moneyLabel.setString(player.get("money"));
     },
 
-    _addVipBoxDetails: function (data) {
+    _addVipBoxDetails: function (obj) {
         cc.log("VipLayer _addVipBoxDetails");
 
         var data = obj.data;

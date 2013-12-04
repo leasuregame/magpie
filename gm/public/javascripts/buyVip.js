@@ -10,6 +10,7 @@ var pomelo = window.pomelo;
 var playerId = null;
 var areaId = null;
 var user;
+var recharge = null;
 
 $(document).ready(function(){
     $("#tip").hide();
@@ -19,22 +20,24 @@ $(document).ready(function(){
     });
 });
 
-function setData(u,p){
+function setData(u,p,r){
     //console.log(u,p);
     user = u;
     playerId = parseInt(p.id);
     areaId = parseInt(p.areaId);
+    console.log(r);
+    recharge = r;
     $("#VIP").val(p.vip);
 };
 
 function insertType(){
 
    // console.log(type);
-    var keys = _.keys(type);
-    var values = _.values(type);
+    var keys = _.keys(recharge);
+    var values = _.values(recharge);
     var inner = "";
     for(var i = 0;i < keys.length;i++) {
-        inner += "<option value='" + keys[i] + "'>" + values[i] + "</option>";
+        inner += "<option value='" + keys[i] + "'>" + values[i].cash + "</option>";
     }
 
     $("#buyType").append(inner);
@@ -51,7 +54,7 @@ function submit() {
             console.log("id = ",id);
             pomelo.request(route,{id:id},function(data){
                 console.log(data);
-                var vip = data.msg.player.vip;
+                var vip = data.msg.vip;
                 $("#VIP").val(vip);
                 if(data.code == 200) {
                     setShowMsg({type:"success",info:"充值成功"});
@@ -64,15 +67,9 @@ function submit() {
 }
 
 function login(account, password, areaId, cb) {
-    // queryEntry(function(host,port){
-    //var host = "127.0.0.1";
-    var host = ip;
-    var port = 3010;
-    pomelo.init({
-        host: host,
-        port: port,
-        log: true
-    }, function () {
+
+
+    initConnect(function(){
         var route = "connector.userHandler.login";
         pomelo.request(route, {
             account: account,
@@ -87,7 +84,8 @@ function login(account, password, areaId, cb) {
             }
         });
     });
-    // });
+
+
 };
 
 //信息提示

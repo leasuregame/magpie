@@ -309,10 +309,7 @@ var Player = (function(_super) {
             exp: 0,
             collectCount: spiritConfig.MAX_COLLECT_COUNT
         },
-        signIn: {
-            months: {},
-            flag: 0
-        },
+        signIn: {},
         achievement: {},
         cardBook: {
             mark: [],
@@ -909,36 +906,40 @@ var Player = (function(_super) {
     };
 
     Player.prototype.signToday = function() {
-        var d = new Date();
-        var key = util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
+        var key = singInKey();
         var si = utility.deepCopy(this.signIn);
 
-        if (!_.has(si.months, key)) {
-            var _months = Object.keys(si.months);
+        if (!_.has(si, key)) {
+            var _months = Object.keys(si);
             if (_months.length >= 12) {
-                delete si.months[_months[0]];
+                delete si[_months[0]];
             }
-            si.months[key] = 0;
+            si[key] = {
+                mark: 0,
+                flag: 0
+            };
         }
 
-        si.months[key] = utility.mark(si.months[key], d.getDate());
+        si[key].mark = utility.mark(si[key].mark, new Date().getDate());
         this.signIn = si;
     };
 
     Player.prototype.signFirstUnsignDay = function() {
-        var d = new Date();
-        var key = util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
+        var key = singInKey();
         var si = utility.deepCopy(this.signIn);
 
-        if (!_.has(si.months, key)) {
-            si.months[key] = 0;
+        if (!_.has(si, key)) {
+            si[key] = {
+                mark: 0,
+                flag: 0
+            };
         }
 
         var firstUnsignDay = 31;
-        var count = d.getDate();
+        var count = new Date().getDate();
         for (var i = 1; i < count; i++) {
-            if (!utility.hasMark(si.months[key], i)) {
-                si.months[key] = utility.mark(si.months[key], i);
+            if (!utility.hasMark(si[key].mark, i)) {
+                si[key].mark = utility.mark(si[key].mark, i);
                 this.signIn = si;
                 firstUnsignDay = i;
                 break;
@@ -949,11 +950,15 @@ var Player = (function(_super) {
 
     Player.prototype.signDays = function() {
         var i, days = 0;
-        var d = new Date();
-        var key = util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
+        var key = singInKey();
 
+        if (!_.has(this.signIn, key)) {
+            return 0;
+        }
+
+        var mark = this.signIn[key].mark;
         for (i = 1; i <= 31; i++) {
-            if (utility.hasMark(this.signIn.months[key], i)) {
+            if (utility.hasMark(mark, i)) {
                 days += 1;
             }
         }
@@ -962,12 +967,22 @@ var Player = (function(_super) {
 
     Player.prototype.setSignInFlag = function(id) {
         var si = utility.deepCopy(this.signIn);
-        si.flag = utility.mark(parseInt(si.flag), id);
+        var key = singInKey();
+        if (!_.has(si, key)) {
+            si[key] = {
+                mark: 0,
+                flag: 0
+            };
+        } else {
+            si[key].flag = utility.mark(parseInt(si[key].flag), id);
+        }
+        
         this.signIn = si;
     };
 
     Player.prototype.hasSignInFlag = function(id) {
-        return utility.hasMark(parseInt(this.signIn.flag), id);
+        var key = singInKey();
+        return utility.hasMark(parseInt(this.signIn[key].flag), id);
     };
 
     Player.prototype.giveBlessOnce = function() {
@@ -1120,6 +1135,11 @@ var Player = (function(_super) {
 
     return Player;
 })(Entity);
+
+var singInKey = function() {
+    var d = new Date();
+    return util.format('%d%d', d.getFullYear(), d.getMonth() + 1);
+};
 
 var elixirLimit = function(lv) {
     if (lv <= 50) {

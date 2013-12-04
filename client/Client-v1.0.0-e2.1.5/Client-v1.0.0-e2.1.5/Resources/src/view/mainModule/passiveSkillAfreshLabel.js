@@ -197,6 +197,20 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         stopTypeBgSprite.setAnchorPoint(cc.p(0, 0));
         this._stopTypeLabel.addChild(stopTypeBgSprite);
 
+        var blueLabel = cc.Sprite.create(main_scene_image.icon50);
+        blueLabel.setScaleX(0.91);
+        blueLabel.setScaleY(0.4);
+        blueLabel.setAnchorPoint(cc.p(0, 0.5));
+        blueLabel.setPosition(cc.p(0, 178));
+        this._stopTypeLabel.addChild(blueLabel);
+
+        var yellowLabel = cc.Sprite.create(main_scene_image.icon50);
+        yellowLabel.setScaleX(0.91);
+        yellowLabel.setScaleY(0.4);
+        yellowLabel.setAnchorPoint(cc.p(0, 0.5));
+        yellowLabel.setPosition(cc.p(0, 96));
+        this._stopTypeLabel.addChild(yellowLabel);
+
         var stopUntilBlueIcon = ColorLabelTTF.create(
             {
                 string: "出现",

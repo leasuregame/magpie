@@ -157,5 +157,6 @@ CREATE TABLE IF NOT EXISTS `buyRecord` (
   `productId` VARCHAR(50) COLLATE utf8_unicode_ci DEFAULT '',
   `purchaseDate` DATETIME,
   `isVerify` BOOLEAN DEFAULT '0',
+  `status` INT(6),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

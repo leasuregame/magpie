@@ -199,10 +199,6 @@ pomelo.on('onLightUpCard', function(data) {
   console.log('Receive a message: ', data.msg);
 });
 
-pomelo.on('onVerifyResult', function(data) {
-  console.log('onVerifyResult', data);
-});
-
 var loginWith = function(account, pwd, areaId) {
   request("connector.userHandler.login", {
     account: account,

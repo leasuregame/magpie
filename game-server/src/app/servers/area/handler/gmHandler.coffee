@@ -23,7 +23,7 @@ Handler::simulateLottery = (msg,session,next)->
   rFragments = msg.rFragments + 1
   hFragment = msg.hFragments + 1
   hCounts = msg.hCounts + 1
-  next null,{code:200,msg:lottery(level, type, rFragments, hFragment, hCounts)}
+  next null,{code:200,msg:lottery.lottery(level, type, rFragments, hFragment, hCounts)}
 
 Handler::simulatePassSkillAfresh = (msg,session,next)->
   console.log msg

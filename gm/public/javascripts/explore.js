@@ -268,7 +268,7 @@ function explore(id) {
             if (times % 100 == 0) {   //每100次探索清理卡牌
                 deleteCards(function () {
                     pomelo.disconnect();
-                   login2Explore();
+                    login2Explore();
                 });
             } else {
                 explore(id);

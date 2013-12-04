@@ -1,6 +1,18 @@
 var nameChanged = {
     "achievement": "成就配置表",
     "成就配置表": "achievement",
+    "card_grow": "卡牌升级表",
+    "卡牌升级表": "card_grow",
+    "card_price": "卡牌价格配置表",
+    "卡牌价格配置表": "card_price",
+    "cards": "神仙卡牌配置表",
+    "神仙卡牌配置表": "cards",
+    "elixir": "仙丹配置表",
+    "仙丹配置表": "elixir",
+    "factors": "基础属性成长表",
+    "基础属性成长表": "factors",
+    "star_upgrade": "卡牌进阶配置表",
+    "卡牌进阶配置表": "star_upgrade",
     "player_upgrade_reward": "玩家升级阶段奖励配置表",
     "玩家升级阶段奖励配置表": "player_upgrade_reward",
     "friends_config": "好友数量配置表",
@@ -25,18 +37,6 @@ var nameChanged = {
     "每日签到奖励": "daily_signin_rewards",
     "signIn_rewards": "连续签到奖励",
     "连续签到奖励": "signIn_rewards",
-    "card_grow": "卡牌升级表",
-    "卡牌升级表": "card_grow",
-    "card_price": "卡牌价格配置表",
-    "卡牌价格配置表": "card_price",
-    "cards": "神仙卡牌配置表",
-    "神仙卡牌配置表": "cards",
-    "elixir": "仙丹配置表",
-    "仙丹配置表": "elixir",
-    "factors": "基础属性成长表",
-    "基础属性成长表": "factors",
-    "star_upgrade": "卡牌进阶配置表",
-    "卡牌进阶配置表": "star_upgrade",
     "treasure_hunt": "寻宝配置表",
     "寻宝配置表": "treasure_hunt",
     "illegal_str": "非法字符串",
@@ -333,292 +333,6 @@ var outputTables = {
                 "desc": "累计消耗魔石100000",
                 "gold": 50,
                 "energy": 500
-            }
-        }
-    },
-    "player_upgrade_reward": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 10,
-                "gold": 10
-            },
-            "2": {
-                "id": 2,
-                "lv": 20,
-                "gold": 20
-            },
-            "3": {
-                "id": 3,
-                "lv": 30,
-                "gold": 30
-            },
-            "4": {
-                "id": 4,
-                "lv": 40,
-                "gold": 40
-            },
-            "5": {
-                "id": 5,
-                "lv": 50,
-                "gold": 100
-            },
-            "6": {
-                "id": 6,
-                "lv": 60,
-                "gold": 150
-            },
-            "7": {
-                "id": 7,
-                "lv": 70,
-                "gold": 200
-            },
-            "8": {
-                "id": 8,
-                "lv": 80,
-                "gold": 260
-            },
-            "9": {
-                "id": 9,
-                "lv": 90,
-                "gold": 300
-            },
-            "10": {
-                "id": 10,
-                "lv": 100,
-                "gold": 500
-            }
-        }
-    },
-    "friends_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 20
-            },
-            "31": {
-                "id": 31,
-                "count": 30
-            },
-            "51": {
-                "id": 51,
-                "count": 40
-            },
-            "71": {
-                "id": 71,
-                "count": 50
-            }
-        }
-    },
-    "receive_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "give_bless_config": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5
-            },
-            "31": {
-                "id": 31,
-                "count": 10
-            },
-            "51": {
-                "id": 51,
-                "count": 15
-            },
-            "71": {
-                "id": 71,
-                "count": 20
-            }
-        }
-    },
-    "first_card": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "star3": "[8,13,33,43,168,88,178,218,123,138,243]",
-                "star4": "[59,149]"
-            }
-        }
-    },
-    "function_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "rank": 5,
-                "pass": 10,
-                "card3_position": 15,
-                "lottery": 20,
-                "card4_position": 30,
-                "ranking_list": 40,
-                "card5_position": 50
-            }
-        }
-    },
-    "lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "player_lv_limit": 100,
-                "skill_lv_limit": 5,
-                "spirit_lv_limit": 10,
-                "spirit_pool_lv_limit": 10
-            }
-        }
-    },
-    "card_lv_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "max_lv": 30
-            },
-            "2": {
-                "id": 2,
-                "max_lv": 40
-            },
-            "3": {
-                "id": 3,
-                "max_lv": 50
-            },
-            "4": {
-                "id": 4,
-                "max_lv": 55
-            },
-            "5": {
-                "id": 5,
-                "max_lv": 60
-            }
-        }
-    },
-    "elixir_limit": {
-        "colComment": {},
-        "rows": {
-            "3": {
-                "id": 3,
-                "elixir_limit": 100000
-            },
-            "4": {
-                "id": 4,
-                "elixir_limit": 160000
-            },
-            "5": {
-                "id": 5,
-                "elixir_limit": 240000
-            }
-        }
-    },
-    "resource_limit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 99999999,
-                "skillPoint": 9999999,
-                "energy": 99999,
-                "card_count_limit": 100,
-                "power_value": 150,
-                "elixir": 999999
-            }
-        }
-    },
-    "daily_signin_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "money": 2000,
-                "energy": 100
-            }
-        }
-    },
-    "signIn_rewards": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "count": 5,
-                "money": 5000,
-                "energy": 100,
-                "skillPoint": 0,
-                "elixir": 0,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "2": {
-                "id": 2,
-                "count": 10,
-                "money": 10000,
-                "energy": 200,
-                "skillPoint": 800,
-                "elixir": 0,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "3": {
-                "id": 3,
-                "count": 18,
-                "money": 20000,
-                "energy": 300,
-                "skillPoint": 1000,
-                "elixir": 1000,
-                "lottery_free_count": 0,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "4": {
-                "id": 4,
-                "count": 25,
-                "money": 30000,
-                "energy": 500,
-                "skillPoint": 2000,
-                "elixir": 2000,
-                "lottery_free_count": 5,
-                "fragments": 0,
-                "gold": 0,
-                "spirit": 0
-            },
-            "5": {
-                "id": 5,
-                "count": -1,
-                "money": 50000,
-                "energy": 800,
-                "skillPoint": 3000,
-                "elixir": 3000,
-                "lottery_free_count": 10,
-                "fragments": 5,
-                "gold": 0,
-                "spirit": 0
             }
         }
     },
@@ -7995,67 +7709,67 @@ var outputTables = {
             "20000": {
                 "id": 20000,
                 "number": 20000,
+                "name": "巨齿狼王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10022,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20001": {
+                "id": 20001,
+                "number": 20001,
+                "name": "双头牛怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10023,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20002": {
+                "id": 20002,
+                "number": 20002,
+                "name": "长矛鼠怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10024,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20003": {
+                "id": 20003,
+                "number": 20003,
+                "name": "小狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10025,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20004": {
+                "id": 20004,
+                "number": 20004,
+                "name": "大狗怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10026,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "20005": {
+                "id": 20005,
+                "number": 20005,
                 "name": "蝙蝠怪",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
                 "url": 10027,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20001": {
-                "id": 20001,
-                "number": 20001,
-                "name": "蟠桃怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10028,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20002": {
-                "id": 20002,
-                "number": 20002,
-                "name": "僵尸怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10029,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20003": {
-                "id": 20003,
-                "number": 20003,
-                "name": "宫灯怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10030,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20004": {
-                "id": 20004,
-                "number": 20004,
-                "name": "挂科怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10031,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "20005": {
-                "id": 20005,
-                "number": 20005,
-                "name": "自习怪",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10032,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20006": {
@@ -8066,7 +7780,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10018,
+                "url": 10033,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20007": {
@@ -8077,7 +7791,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10019,
+                "url": 10034,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20008": {
@@ -8088,7 +7802,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10020,
+                "url": 10035,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20009": {
@@ -8099,7 +7813,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10021,
+                "url": 10036,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20010": {
@@ -8110,7 +7824,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10022,
+                "url": 10037,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20011": {
@@ -8121,7 +7835,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10023,
+                "url": 10038,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20012": {
@@ -8132,7 +7846,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10024,
+                "url": 10039,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20013": {
@@ -8143,7 +7857,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10025,
+                "url": 10040,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20014": {
@@ -8154,7 +7868,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10026,
+                "url": 10041,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20015": {
@@ -8165,7 +7879,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10027,
+                "url": 10042,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20016": {
@@ -8176,7 +7890,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
+                "url": 10043,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20017": {
@@ -8187,7 +7901,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
+                "url": 10044,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20018": {
@@ -8198,7 +7912,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
+                "url": 10045,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20019": {
@@ -8209,7 +7923,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
+                "url": 10046,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "20020": {
@@ -8220,7 +7934,7 @@ var outputTables = {
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
+                "url": 10047,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "30000": {
@@ -8237,51 +7951,7 @@ var outputTables = {
             "30001": {
                 "id": 30001,
                 "number": 30001,
-                "name": "魔道狂魔",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10023,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30002": {
-                "id": 30002,
-                "number": 30002,
-                "name": "魔道恶鬼",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10024,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30003": {
-                "id": 30003,
-                "number": 30003,
-                "name": "魔道巫灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10025,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30004": {
-                "id": 30004,
-                "number": 30004,
-                "name": "魔道死灵",
-                "star": 1,
-                "lv": 1,
-                "atk": 5,
-                "hp": 10,
-                "url": 10026,
-                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
-            },
-            "30005": {
-                "id": 30005,
-                "number": 30005,
-                "name": "魔道幽魂",
+                "name": "蝙蝠怪",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
@@ -8289,59 +7959,103 @@ var outputTables = {
                 "url": 10027,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
-            "30006": {
-                "id": 30006,
-                "number": 30006,
-                "name": "魔道女仆",
+            "30002": {
+                "id": 30002,
+                "number": 30002,
+                "name": "火魔王",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10028,
+                "url": 10033,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30003": {
+                "id": 30003,
+                "number": 30003,
+                "name": "金角大王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10036,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30004": {
+                "id": 30004,
+                "number": 30004,
+                "name": "银角大王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10037,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30005": {
+                "id": 30005,
+                "number": 30005,
+                "name": "半头魔王",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10040,
+                "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
+            },
+            "30006": {
+                "id": 30006,
+                "number": 30006,
+                "name": "三条胳膊怪",
+                "star": 1,
+                "lv": 1,
+                "atk": 5,
+                "hp": 10,
+                "url": 10041,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "30007": {
                 "id": 30007,
                 "number": 30007,
-                "name": "魔道蛋仙",
+                "name": "双刀怪",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10029,
+                "url": 10043,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "30008": {
                 "id": 30008,
                 "number": 30008,
-                "name": "魔道妖姐",
+                "name": "巨剑怪",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10030,
+                "url": 10044,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "30009": {
                 "id": 30009,
                 "number": 30009,
-                "name": "魔道巨兽",
+                "name": "锤子怪",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10031,
+                "url": 10046,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             },
             "30010": {
                 "id": 30010,
                 "number": 30010,
-                "name": "魔道小鬼",
+                "name": "石巨人",
                 "star": 1,
                 "lv": 1,
                 "atk": 5,
                 "hp": 10,
-                "url": 10032,
+                "url": 10047,
                 "description": "怪物卡牌，不可进阶。主要作为卡牌升级所用的经验素材卡。"
             }
         }
@@ -8752,6 +8466,292 @@ var outputTables = {
                 "money_need": 50000,
                 "rate_per_card": 4,
                 "max_num": 25
+            }
+        }
+    },
+    "player_upgrade_reward": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 10,
+                "gold": 10
+            },
+            "2": {
+                "id": 2,
+                "lv": 20,
+                "gold": 20
+            },
+            "3": {
+                "id": 3,
+                "lv": 30,
+                "gold": 30
+            },
+            "4": {
+                "id": 4,
+                "lv": 40,
+                "gold": 40
+            },
+            "5": {
+                "id": 5,
+                "lv": 50,
+                "gold": 100
+            },
+            "6": {
+                "id": 6,
+                "lv": 60,
+                "gold": 150
+            },
+            "7": {
+                "id": 7,
+                "lv": 70,
+                "gold": 200
+            },
+            "8": {
+                "id": 8,
+                "lv": 80,
+                "gold": 260
+            },
+            "9": {
+                "id": 9,
+                "lv": 90,
+                "gold": 300
+            },
+            "10": {
+                "id": 10,
+                "lv": 100,
+                "gold": 500
+            }
+        }
+    },
+    "friends_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 20
+            },
+            "31": {
+                "id": 31,
+                "count": 30
+            },
+            "51": {
+                "id": 51,
+                "count": 40
+            },
+            "71": {
+                "id": 71,
+                "count": 50
+            }
+        }
+    },
+    "receive_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "give_bless_config": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5
+            },
+            "31": {
+                "id": 31,
+                "count": 10
+            },
+            "51": {
+                "id": 51,
+                "count": 15
+            },
+            "71": {
+                "id": 71,
+                "count": 20
+            }
+        }
+    },
+    "first_card": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "star3": "[8,13,33,43,168,88,178,218,123,138,243]",
+                "star4": "[59,149]"
+            }
+        }
+    },
+    "function_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "rank": 5,
+                "pass": 10,
+                "card3_position": 15,
+                "lottery": 20,
+                "card4_position": 30,
+                "ranking_list": 40,
+                "card5_position": 50
+            }
+        }
+    },
+    "lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "player_lv_limit": 100,
+                "skill_lv_limit": 5,
+                "spirit_lv_limit": 10,
+                "spirit_pool_lv_limit": 10
+            }
+        }
+    },
+    "card_lv_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "max_lv": 30
+            },
+            "2": {
+                "id": 2,
+                "max_lv": 40
+            },
+            "3": {
+                "id": 3,
+                "max_lv": 50
+            },
+            "4": {
+                "id": 4,
+                "max_lv": 55
+            },
+            "5": {
+                "id": 5,
+                "max_lv": 60
+            }
+        }
+    },
+    "elixir_limit": {
+        "colComment": {},
+        "rows": {
+            "3": {
+                "id": 3,
+                "elixir_limit": 100000
+            },
+            "4": {
+                "id": 4,
+                "elixir_limit": 160000
+            },
+            "5": {
+                "id": 5,
+                "elixir_limit": 240000
+            }
+        }
+    },
+    "resource_limit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 99999999,
+                "skillPoint": 9999999,
+                "energy": 99999,
+                "card_count_limit": 100,
+                "power_value": 150,
+                "elixir": 999999
+            }
+        }
+    },
+    "daily_signin_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "money": 2000,
+                "energy": 100
+            }
+        }
+    },
+    "signIn_rewards": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "count": 5,
+                "money": 5000,
+                "energy": 100,
+                "skillPoint": 0,
+                "elixir": 0,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "2": {
+                "id": 2,
+                "count": 10,
+                "money": 10000,
+                "energy": 200,
+                "skillPoint": 800,
+                "elixir": 0,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "3": {
+                "id": 3,
+                "count": 18,
+                "money": 20000,
+                "energy": 300,
+                "skillPoint": 1000,
+                "elixir": 1000,
+                "lottery_free_count": 0,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "4": {
+                "id": 4,
+                "count": 25,
+                "money": 30000,
+                "energy": 500,
+                "skillPoint": 2000,
+                "elixir": 2000,
+                "lottery_free_count": 5,
+                "fragments": 0,
+                "gold": 0,
+                "spirit": 0
+            },
+            "5": {
+                "id": 5,
+                "count": -1,
+                "money": 50000,
+                "energy": 800,
+                "skillPoint": 3000,
+                "elixir": 3000,
+                "lottery_free_count": 10,
+                "fragments": 5,
+                "gold": 0,
+                "spirit": 0
             }
         }
     },
@@ -24399,6 +24399,17 @@ var outputTables = {
             },
             "2": {
                 "id": 2,
+                "method": "power",
+                "name": "体力",
+                "disc": "每次购买可获得50点体力。每日最多买5次。VIP除外。",
+                "consume_type": "gold",
+                "consume": 20,
+                "obtain_type": "power",
+                "obtain": 50,
+                "isVisible": 1
+            },
+            "3": {
+                "id": 3,
                 "method": "money",
                 "name": "一小袋仙币",
                 "disc": "每次购买可获得1000仙币，每次额外赠送100仙币。",
@@ -24408,8 +24419,8 @@ var outputTables = {
                 "obtain": 1100,
                 "isVisible": 1
             },
-            "3": {
-                "id": 3,
+            "4": {
+                "id": 4,
                 "method": "money",
                 "name": "一袋仙币",
                 "disc": "每次购买可获得5000仙币，每次额外赠送1500仙币。",
@@ -24419,8 +24430,8 @@ var outputTables = {
                 "obtain": 6500,
                 "isVisible": 1
             },
-            "4": {
-                "id": 4,
+            "5": {
+                "id": 5,
                 "method": "money",
                 "name": "一大袋仙币",
                 "disc": "每次购买可获得10000仙币，每次额外赠送5000仙币。",
@@ -24428,17 +24439,6 @@ var outputTables = {
                 "consume": 100,
                 "obtain_type": "money",
                 "obtain": 15000,
-                "isVisible": 1
-            },
-            "5": {
-                "id": 5,
-                "method": "power",
-                "name": "体力",
-                "disc": "每次购买可获得50点体力。每日最多买5次。VIP除外。",
-                "consume_type": "gold",
-                "consume": 20,
-                "obtain_type": "power",
-                "obtain": 50,
                 "isVisible": 1
             },
             "6": {
@@ -24540,7 +24540,7 @@ var outputTables = {
             },
             "4": {
                 "id": 4,
-                "text": "海，吃饭了没。"
+                "text": "嗨，吃饭了没。"
             },
             "5": {
                 "id": 5,
@@ -27847,7 +27847,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 10,
                 "coins_obtain": 60,
-                "description": "仙界每年都会举行一次峰会，讨论关于修仙之道相关事宜。会议由西天如来发起，耶稣如果有空的话，他也会来参加的。"
+                "description": "仙界每年都会举行一次峰会，讨论关于修仙之道相关事宜。会议由西天如来发起，观音菩萨一般不参加，她说没啥意思。"
             },
             "18": {
                 "id": 18,
@@ -29915,7 +29915,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 125,
                 "coins_obtain": 250,
-                "description": "对于人间流行的上帝这个称呼，玉帝很不喜欢，他也曾和西方的耶稣交涉过多次，明确表示上天应该只有他这么一个帝。"
+                "description": "对于人间流行天杀的这个称呼，玉帝很不喜欢，感觉气氛不太对，所以他打算把这三个字永久删除掉。"
             },
             "206": {
                 "id": 206,
@@ -31323,7 +31323,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 190,
                 "coins_obtain": 380,
-                "description": "最近仙界掀起一股移民狂潮，许多神仙打算移民到西方耶稣那边，据说那里各方面条件都要好。当然，这些神仙很快就被玉帝弄死了。"
+                "description": "最近仙界掀起一股移民狂潮，许多神仙打算移民到西天观音菩萨那边，据说那里各方面条件都要好。当然，这些神仙很快就被玉帝弄死了。"
             },
             "334": {
                 "id": 334,
@@ -33072,7 +33072,7 @@ var outputTables = {
                 "power_consume": 5,
                 "exp_obtain": 270,
                 "coins_obtain": 540,
-                "description": "近日西天耶稣来到天庭做客，玉帝以全羊宴进行款待。羊角大仙吃的泪流满面。"
+                "description": "近日西天菩萨全家来到天庭做客，玉帝以全羊宴进行款待。羊角大仙吃的泪流满面。"
             },
             "493": {
                 "id": 493,
@@ -37684,7 +37684,7 @@ var outputTables = {
             },
             "20000": {
                 "id": 20000,
-                "card_id": "蝙蝠怪",
+                "card_id": "巨齿狼王",
                 "atk": 446,
                 "hp": 1113,
                 "dodge_rate": 10,
@@ -37692,7 +37692,7 @@ var outputTables = {
             },
             "20001": {
                 "id": 20001,
-                "card_id": "蟠桃怪",
+                "card_id": "双头牛怪",
                 "atk": 683,
                 "hp": 1706,
                 "dodge_rate": 10,
@@ -37701,7 +37701,7 @@ var outputTables = {
             },
             "20002": {
                 "id": 20002,
-                "card_id": "僵尸怪",
+                "card_id": "长矛鼠怪",
                 "atk": 1022,
                 "hp": 2553,
                 "dodge_rate": 10,
@@ -37710,7 +37710,7 @@ var outputTables = {
             },
             "20003": {
                 "id": 20003,
-                "card_id": "宫灯怪",
+                "card_id": "小狗怪",
                 "atk": 1495,
                 "hp": 3734,
                 "dodge_rate": 10,
@@ -37719,7 +37719,7 @@ var outputTables = {
             },
             "20004": {
                 "id": 20004,
-                "card_id": "挂科怪",
+                "card_id": "大狗怪",
                 "atk": 2135,
                 "hp": 5335,
                 "dodge_rate": 10,
@@ -37728,7 +37728,7 @@ var outputTables = {
             },
             "20005": {
                 "id": 20005,
-                "card_id": "自习怪",
+                "card_id": "蝙蝠怪",
                 "atk": 3177,
                 "hp": 7940,
                 "dodge_rate": 10,
@@ -37872,7 +37872,7 @@ var outputTables = {
             },
             "30001": {
                 "id": 30001,
-                "card_id": "魔道狂魔",
+                "card_id": "蝙蝠怪",
                 "atk": 3177,
                 "hp": 7940,
                 "dodge_rate": 10,
@@ -37880,7 +37880,7 @@ var outputTables = {
             },
             "30002": {
                 "id": 30002,
-                "card_id": "魔道恶鬼",
+                "card_id": "火魔王",
                 "atk": 3327,
                 "hp": 8090,
                 "dodge_rate": 10,
@@ -37889,7 +37889,7 @@ var outputTables = {
             },
             "30003": {
                 "id": 30003,
-                "card_id": "魔道巫灵",
+                "card_id": "金角大王",
                 "atk": 7640,
                 "hp": 19842,
                 "dodge_rate": 10,
@@ -37897,7 +37897,7 @@ var outputTables = {
             },
             "30004": {
                 "id": 30004,
-                "card_id": "魔道死灵",
+                "card_id": "银角大王",
                 "atk": 7790,
                 "hp": 19992,
                 "dodge_rate": 10,
@@ -37906,7 +37906,7 @@ var outputTables = {
             },
             "30005": {
                 "id": 30005,
-                "card_id": "魔道幽魂",
+                "card_id": "半头魔王",
                 "atk": 14824,
                 "hp": 38506,
                 "dodge_rate": 10,
@@ -37914,7 +37914,7 @@ var outputTables = {
             },
             "30006": {
                 "id": 30006,
-                "card_id": "魔道女仆",
+                "card_id": "三条胳膊怪",
                 "atk": 15144,
                 "hp": 38656,
                 "dodge_rate": 10,
@@ -37923,7 +37923,7 @@ var outputTables = {
             },
             "30007": {
                 "id": 30007,
-                "card_id": "魔道蛋仙",
+                "card_id": "双刀怪",
                 "atk": 37260,
                 "hp": 80256,
                 "dodge_rate": 10,
@@ -37931,7 +37931,7 @@ var outputTables = {
             },
             "30008": {
                 "id": 30008,
-                "card_id": "魔道妖姐",
+                "card_id": "巨剑怪",
                 "atk": 37420,
                 "hp": 80416,
                 "dodge_rate": 10,
@@ -37940,7 +37940,7 @@ var outputTables = {
             },
             "30009": {
                 "id": 30009,
-                "card_id": "魔道巨兽",
+                "card_id": "锤子怪",
                 "atk": 48356,
                 "hp": 105623,
                 "dodge_rate": 10,
@@ -37948,7 +37948,7 @@ var outputTables = {
             },
             "30010": {
                 "id": 30010,
-                "card_id": "魔道小鬼",
+                "card_id": "石巨人",
                 "atk": 50717,
                 "hp": 110185,
                 "dodge_rate": 10,

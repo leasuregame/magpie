@@ -10,11 +10,11 @@ describe('Area Server', function() {
 
 			describe('when had got sign in gift', function() {
 				beforeEach(function() {
-					var singIn = {
-						months: {},
+					var singIn = {};
+					singIn[mkey] = {
+						mark: 31,
 						flag: 1
 					};
-					singIn.months[mkey] = 31;
 
 					doAjax('/update/player/100', {
 						signIn: JSON.stringify(singIn)
@@ -36,11 +36,8 @@ describe('Area Server', function() {
 			});
 
 			describe('when get sign in gift', function() {
-				var singIn = {
-					months: {},
-					flag: 0
-				};
-				singIn.months[mkey] = 2147483647;
+				var singIn = {};
+				singIn[mkey] = { mark: 2147483647, flag: 0};
 
 				beforeEach(function() {
 					doAjax('/update/player/101', {
@@ -65,10 +62,8 @@ describe('Area Server', function() {
 
 			describe('when signIn days is not enough and get sign in gift', function() {
 				var singIn = {
-					months: {},
-					flag: 0
 				};
-				singIn.months[mkey] = 1;
+				singIn[mkey] = {mark: 1, flag: 0};
 
 				beforeEach(function() {
 					doAjax('/update/player/102', {

@@ -7,7 +7,7 @@
  */
 
 var pomelo = window.pomelo;
-var host = "124.238.236.33";
+var host = "124.238.236.32";
 //var host = "127.0.0.1";
 var servers = null;
 var port = null;
@@ -55,13 +55,9 @@ function connectServer(areaId, cb) {
     }, function (data) {
         if (data.code === 200) {
             console.log(data);
-
-            //   dfd.resolve();
         } else {
             console.log(data);
-            //  cb(data.code);
         }
-
         cb(data.code);
 
     });

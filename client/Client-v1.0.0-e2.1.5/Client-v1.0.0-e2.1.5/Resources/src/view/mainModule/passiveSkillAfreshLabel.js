@@ -422,7 +422,10 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         this._shyLayer.setVisible(false);
 
         this._reset();
-        this._onClickUseMoney();
+
+        this._useType = USE_MONEY;
+        this._useMoneyItem.setEnabled(false);
+        this._useGoldItem.setEnabled(true);
 
         return true;
     },

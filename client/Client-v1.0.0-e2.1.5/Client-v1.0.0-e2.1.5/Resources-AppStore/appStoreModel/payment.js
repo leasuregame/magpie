@@ -50,8 +50,8 @@ var Payment = Entity.extend({
 
                 player.set("vip", nowVip);
 
-                var oldPrivilegeTable = outputTables.vip.rows[oldVip];
-                var nowPrivilegeTable = outputTables.vip.rows[nowVip];
+                var oldPrivilegeTable = outputTables.vip_privilege.rows[oldVip];
+                var nowPrivilegeTable = outputTables.vip_privilege.rows[nowVip];
 
                 gameData.treasureHunt.add("freeCount", nowPrivilegeTable.lottery_free_count - oldPrivilegeTable.lottery_free_count);
                 gameData.friend.adds({

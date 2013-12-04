@@ -60,8 +60,9 @@ executeVerify = (app, queue) ->
   async.each items, (item, done) ->
     return if item.doing 
     item.doing = true
+    tryCount = 0
 
-    poseReceipt = (reqUrl, receiptData, callback) ->
+    postReceipt = (reqUrl, receiptData) ->
       request.post {
         headers: 'content-type': 'application/json'
         url: reqUrl
@@ -69,15 +70,22 @@ executeVerify = (app, queue) ->
       }, (err, res, body) ->
         if err
           logger.error('faild to verify app store receipt.', err)
+          return
 
         if body.status is 0
           queue.del(item.id) # 删除后，后面用到这个对象的地方会不会出问题呢
           updatePlayer(app, item, body)
         else
-          item.doning = false
+          item.doing = false
           updateBuyRecord(app, item.id, {status: body.status})
 
-      done()
+        if body.status is 21007 and tryCount == 0
+          tryCount += 1
+          return postReceipt(SANBOX_URL, receiptData)
+
+        done()
+
+    postReceipt(VERIFY_URL, item.receiptData)
   , (err) ->
     if err
       logger.error('faild to verify app store reciept.', err)

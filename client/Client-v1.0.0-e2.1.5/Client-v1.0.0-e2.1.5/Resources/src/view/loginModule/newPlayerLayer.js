@@ -38,12 +38,20 @@ var NewPlayerLayer = cc.Layer.extend({
         newPlayerFrame.setPosition(this._newPlayerLayerFit.newPlayerFramePoint);
         this.addChild(newPlayerFrame);
 
-        this._nameEditBox = cc.EditBox.create(cc.size(320, 60), cc.Scale9Sprite.create(main_scene_image.edit));
+        this._nameEditBox = cc.EditBox.create(cc.size(340, 60), cc.Scale9Sprite.create(main_scene_image.edit));
         this._nameEditBox.setAnchorPoint(cc.p(0, 0.5));
 
         this._nameEditBox.setPosition(cc.p(0, 0));
         this._nameEditBox.setInputMode(cc.EDITBOX_INPUT_MODE_SINGLELINE);
         this._nameEditBox.setDelegate({
+            /**
+             * This method is called when an edit box gains focus after keyboard is shown.
+             * @param {cc.EditBox} sender
+             */
+            editBoxEditingDidBegin: function (sender) {
+                gameData.sound.playEffect(main_scene_image.click_button_sound, false);
+            },
+
             /**
              * This method is called when an edit box loses focus after keyboard is hidden.
              * @param {cc.EditBox} sender

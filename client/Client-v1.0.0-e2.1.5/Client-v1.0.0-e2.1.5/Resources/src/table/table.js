@@ -63,16 +63,16 @@ var nameChanged = {
     "卡牌技能升级表": "skill_upgrade",
     "skills": "技能配置表",
     "技能配置表": "skills",
-    "spirit": "元神配置表",
-    "元神配置表": "spirit",
-    "spirit_pool": "灵气池配置表",
-    "灵气池配置表": "spirit_pool",
     "passFailSpiritSpeak": "爬塔失败喊话配置表",
     "爬塔失败喊话配置表": "passFailSpiritSpeak",
     "passWinSpiritSpeak": "爬塔胜利喊话配置表",
     "爬塔胜利喊话配置表": "passWinSpiritSpeak",
     "spiritSpeak": "精灵喊话配置表",
     "精灵喊话配置表": "spiritSpeak",
+    "spirit": "元神配置表",
+    "元神配置表": "spirit",
+    "spirit_pool": "灵气池配置表",
+    "灵气池配置表": "spirit_pool",
     "chapter": "大章表",
     "大章表": "chapter",
     "chapter_title": "总章表",
@@ -104,6 +104,7 @@ var nameChanged = {
     "vip_privilege": "vip特权",
     "vip特权": "vip_privilege"
 };
+
 var outputTables = {
     "achievement": {
         "colComment": {},
@@ -791,67 +792,6 @@ var outputTables = {
             }
         },
         "rows": {
-            "1": {
-                "id": 1,
-                "number": 1,
-                "name": "石猴·孙悟空",
-                "star": 1,
-                "lv": 1,
-                "atk": 59,
-                "hp": 103,
-                "description": "不要老是跟我提五百年后的事情，烦不烦啊！",
-                "url": 3
-            },
-            "2": {
-                "id": 2,
-                "number": 1,
-                "name": "美猴王·孙悟空",
-                "star": 2,
-                "lv": 1,
-                "atk": 109,
-                "hp": 125,
-                "description": "凭什么我是妖，你是仙，户口本上有写么？",
-                "url": 3
-            },
-            "3": {
-                "id": 3,
-                "number": 1,
-                "name": "齐天大圣·孙悟空",
-                "star": 3,
-                "lv": 1,
-                "atk": 155,
-                "hp": 352,
-                "skill_name": "七十二变",
-                "skill_id": 3,
-                "description": "从今往后一万年，你们都会记住我的名字，齐天大圣孙悟空。",
-                "url": 3
-            },
-            "4": {
-                "id": 4,
-                "number": 1,
-                "name": "行者·孙悟空",
-                "star": 4,
-                "lv": 1,
-                "atk": 210,
-                "hp": 503,
-                "skill_name": "七十二变",
-                "skill_id": 3,
-                "description": "你是谁的亲戚，麻烦打架前先报上来，免得俺老孙白费力气。",
-                "url": 3
-            },
-            "5": {
-                "id": 5,
-                "number": 1,
-                "name": "斗战圣佛·孙悟空",
-                "star": 5,
-                "lv": 1,
-                "atk": 280,
-                "hp": 651,
-                "skill_name": "七十二变",
-                "skill_id": 3,
-                "description": "一沙一世界，一树一菩提，妖即是色，色即是空，空即是佛。",
-                "url": 3
-            },
             "6": {
                 "id": 6,
                 "number": 2,
@@ -861,7 +801,7 @@ var outputTables = {
                 "atk": 45,
                 "hp": 129,
                 "description": "当你不能够再拥有，你唯一可以做的，就是令自己不要忘记。",
-                "url": 3
+                "url": 2
             },
             "7": {
                 "id": 7,
@@ -872,7 +812,7 @@ var outputTables = {
                 "atk": 91,
                 "hp": 275,
                 "description": "第一次见到翠兰，我就想起了你，就像每次抬头看到月亮一样。",
-                "url": 3
+                "url": 2
             },
             "8": {
                 "id": 8,
@@ -883,9 +823,9 @@ var outputTables = {
                 "atk": 142,
                 "hp": 398,
                 "skill_name": "倒打一耙",
-                "skill_id": 5,
+                "skill_id": 1,
                 "description": "猴子说我呆，沙僧说我二，其实我只是不想做这些无意义的事情。",
-                "url": 3
+                "url": 2
             },
             "9": {
                 "id": 9,
@@ -896,9 +836,9 @@ var outputTables = {
                 "atk": 182,
                 "hp": 543,
                 "skill_name": "倒打一耙",
-                "skill_id": 5,
+                "skill_id": 1,
                 "description": "连如来也当我是个吃货，其实我唯有不停的吃，才能让自己不去想她。",
-                "url": 3
+                "url": 2
             },
             "10": {
                 "id": 10,
@@ -909,9 +849,9 @@ var outputTables = {
                 "atk": 255,
                 "hp": 713,
                 "skill_name": "倒打一耙",
-                "skill_id": 5,
+                "skill_id": 1,
                 "description": "那年，我管银河系。",
-                "url": 3
+                "url": 2
             },
             "11": {
                 "id": 11,
@@ -974,189 +914,6 @@ var outputTables = {
                 "description": "我是要告诉人家，我失去的东西一定要拿回来！",
                 "url": 3
             },
-            "16": {
-                "id": 16,
-                "number": 4,
-                "name": "大力·牛魔王",
-                "star": 1,
-                "lv": 1,
-                "atk": 50,
-                "hp": 121,
-                "description": "力气大不是罪，不能什么脏活累活都叫我做啊！",
-                "url": 3
-            },
-            "17": {
-                "id": 17,
-                "number": 4,
-                "name": "芭蕉洞主·牛魔王",
-                "star": 2,
-                "lv": 1,
-                "atk": 95,
-                "hp": 151,
-                "description": "我按照芭蕉叶的样子，给你铸了把扇子，妹纸，你喜欢么？",
-                "url": 3
-            },
-            "18": {
-                "id": 18,
-                "number": 4,
-                "name": "平天大圣·牛魔王",
-                "star": 3,
-                "lv": 1,
-                "atk": 151,
-                "hp": 373,
-                "skill_name": "群牛乱舞",
-                "skill_id": 5,
-                "description": "看清楚是平天不是齐天！猴子是我小弟，不要总拿他压我！",
-                "url": 3
-            },
-            "19": {
-                "id": 19,
-                "number": 4,
-                "name": "众神之神·牛魔王",
-                "star": 4,
-                "lv": 1,
-                "atk": 203,
-                "hp": 520,
-                "skill_name": "群牛乱舞",
-                "skill_id": 5,
-                "description": "我宁愿做一日英雄，都不想成世做条虫，放马过来吧！",
-                "url": 3
-            },
-            "20": {
-                "id": 20,
-                "number": 4,
-                "name": "放下屠刀·牛魔王",
-                "star": 5,
-                "lv": 1,
-                "atk": 275,
-                "hp": 675,
-                "skill_name": "群牛乱舞",
-                "skill_id": 5,
-                "description": "孩子被你们带走了，老婆也离我而去，你要我放下，我还有什么可放？",
-                "url": 3
-            },
-            "21": {
-                "id": 21,
-                "number": 5,
-                "name": "唐僧·金蝉子",
-                "star": 1,
-                "lv": 1,
-                "atk": 49,
-                "hp": 120,
-                "description": "那年，我徒步去阿三国，没有导游，只有三个同样不认识路的驴友。",
-                "url": 3
-            },
-            "22": {
-                "id": 22,
-                "number": 5,
-                "name": "普渡众佛·金蝉子",
-                "star": 2,
-                "lv": 1,
-                "atk": 99,
-                "hp": 249,
-                "description": "江湖谣言吃了我的肉可以长生不老，你看我年龄就知道是假的了。",
-                "url": 3
-            },
-            "23": {
-                "id": 23,
-                "number": 5,
-                "name": "燃灯道人·金蝉子",
-                "star": 3,
-                "lv": 1,
-                "atk": 148,
-                "hp": 377,
-                "skill_name": "普度众生",
-                "skill_id": 10,
-                "description": "我知道在雷音寺宣传道教等于去踢馆，所以如来直接把我给转世到了人间。",
-                "url": 3
-            },
-            "24": {
-                "id": 24,
-                "number": 5,
-                "name": "功德佛·金蝉子",
-                "star": 4,
-                "lv": 1,
-                "atk": 201,
-                "hp": 522,
-                "skill_name": "普度众生",
-                "skill_id": 10,
-                "description": "我心里清楚，我的功德是奶了雷音寺这帮人，而不是因为取经。",
-                "url": 3
-            },
-            "25": {
-                "id": 25,
-                "number": 5,
-                "name": "真身·金蝉子",
-                "star": 5,
-                "lv": 1,
-                "atk": 272,
-                "hp": 676,
-                "skill_name": "普度众生",
-                "skill_id": 10,
-                "description": "我吃素，却总是被人当肉吃，我只想做回我自己。",
-                "url": 3
-            },
-            "26": {
-                "id": 26,
-                "number": 6,
-                "name": "龟兹公主·铁扇公主",
-                "star": 1,
-                "lv": 1,
-                "atk": 60,
-                "hp": 105,
-                "description": "那一年，我在龟兹，那一年，我是公主。",
-                "url": 3
-            },
-            "27": {
-                "id": 27,
-                "number": 6,
-                "name": "罗刹女·铁扇公主",
-                "star": 2,
-                "lv": 1,
-                "atk": 111,
-                "hp": 225,
-                "description": "嫁给老牛后，我有了另一个名字，罗莎女。",
-                "url": 3
-            },
-            "28": {
-                "id": 28,
-                "number": 6,
-                "name": "芭蕉扇·铁扇公主",
-                "star": 3,
-                "lv": 1,
-                "atk": 161,
-                "hp": 341,
-                "skill_name": "浴火重生",
-                "skill_id": 2,
-                "description": "你热么？我给你扇扇？",
-                "url": 3
-            },
-            "29": {
-                "id": 29,
-                "number": 6,
-                "name": "牛夫人·铁扇公主",
-                "star": 4,
-                "lv": 1,
-                "atk": 216,
-                "hp": 501,
-                "skill_name": "浴火重生",
-                "skill_id": 2,
-                "description": "以前看月亮的时候叫人家小甜甜，原来都是假的。",
-                "url": 3
-            },
-            "30": {
-                "id": 30,
-                "number": 6,
-                "name": "情比金坚·铁扇公主",
-                "star": 5,
-                "lv": 1,
-                "atk": 288,
-                "hp": 630,
-                "skill_name": "浴火重生",
-                "skill_id": 2,
-                "description": "孩子已被掳走，再不能让他们把我们夫妻分离了。",
-                "url": 3
-            },
             "31": {
                 "id": 31,
                 "number": 7,
@@ -1166,7 +923,7 @@ var outputTables = {
                 "atk": 53,
                 "hp": 125,
                 "description": "当天将不是那么容易的，得通过天将考试，录取比例很低。",
-                "url": 3
+                "url": 7
             },
             "32": {
                 "id": 32,
@@ -1177,7 +934,7 @@ var outputTables = {
                 "atk": 101,
                 "hp": 251,
                 "description": "我不喜欢门卫这个称呼，我更喜欢大家叫我天宫天门守将。",
-                "url": 3
+                "url": 7
             },
             "33": {
                 "id": 33,
@@ -1188,9 +945,9 @@ var outputTables = {
                 "atk": 151,
                 "hp": 371,
                 "skill_name": "雷霆之怒",
-                "skill_id": 3,
+                "skill_id": 1,
                 "description": "想搬家么？找我吧！什么？房子很大？我可以把你家对面那条河一起搬走。",
-                "url": 3
+                "url": 7
             },
             "34": {
                 "id": 34,
@@ -1201,9 +958,9 @@ var outputTables = {
                 "atk": 205,
                 "hp": 519,
                 "skill_name": "雷霆之怒",
-                "skill_id": 3,
+                "skill_id": 1,
                 "description": "先锋这个职业，基本就是送死+被黑锅的意思，你懂的。",
-                "url": 3
+                "url": 7
             },
             "35": {
                 "id": 35,
@@ -1214,70 +971,9 @@ var outputTables = {
                 "atk": 277,
                 "hp": 677,
                 "skill_name": "雷霆之怒",
-                "skill_id": 3,
+                "skill_id": 1,
                 "description": "斧头帮知道吧，那是我开创的。",
-                "url": 3
-            },
-            "36": {
-                "id": 36,
-                "number": 8,
-                "name": "神二代·红孩儿",
-                "star": 1,
-                "lv": 1,
-                "atk": 49,
-                "hp": 122,
-                "description": "我爸是牛魔，我妈是铁扇，我是神二代！",
-                "url": 9
-            },
-            "37": {
-                "id": 37,
-                "number": 8,
-                "name": "火云洞·红孩儿",
-                "star": 2,
-                "lv": 1,
-                "atk": 100,
-                "hp": 248,
-                "description": "我有一所房子，面朝大海，春暖花开，4M宽带，能叫外卖。",
-                "url": 9
-            },
-            "38": {
-                "id": 38,
-                "number": 8,
-                "name": "三味真火·红孩儿",
-                "star": 3,
-                "lv": 1,
-                "atk": 145,
-                "hp": 376,
-                "skill_name": "三味真火",
-                "skill_id": 3,
-                "description": "这门神功的唯一的缺点是使用前要先把自己打出鼻血来……",
-                "url": 9
-            },
-            "39": {
-                "id": 39,
-                "number": 8,
-                "name": "圣婴大王·红孩儿",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 519,
-                "skill_name": "三味真火",
-                "skill_id": 3,
-                "description": "虽然我长个正太样儿，却有颗大叔的心。",
-                "url": 9
-            },
-            "40": {
-                "id": 40,
-                "number": 8,
-                "name": "善财童子·红孩儿",
-                "star": 5,
-                "lv": 1,
-                "atk": 273,
-                "hp": 671,
-                "skill_name": "三味真火",
-                "skill_id": 3,
-                "description": "厌倦了打打杀杀、尔虞我诈的日子，我决定从事更有前途的金融行业。",
-                "url": 9
+                "url": 7
             },
             "41": {
                 "id": 41,
@@ -1338,128 +1034,6 @@ var outputTables = {
                 "skill_name": "兽之元神",
                 "skill_id": 1,
                 "description": "嫌我名字长？和慈禧比起来，我这个只能算缩写。",
-                "url": 9
-            },
-            "46": {
-                "id": 46,
-                "number": 10,
-                "name": "阿哥·雷震子",
-                "star": 1,
-                "lv": 1,
-                "atk": 53,
-                "hp": 119,
-                "description": "我爹战斗力强，排到我，已经是第一百个孩子了。",
-                "url": 9
-            },
-            "47": {
-                "id": 47,
-                "number": 10,
-                "name": "羽人·雷震子",
-                "star": 2,
-                "lv": 1,
-                "atk": 103,
-                "hp": 244,
-                "description": "虽然我有一对翅膀，但请不要叫我鸟人，你可以叫我X-man。",
-                "url": 9
-            },
-            "48": {
-                "id": 48,
-                "number": 10,
-                "name": "救父·雷震子",
-                "star": 3,
-                "lv": 1,
-                "atk": 151,
-                "hp": 373,
-                "skill_name": "雷音破",
-                "skill_id": 1,
-                "description": "走的匆忙，忘记问师父我爹长啥样了，这是要闹哪样呀！",
-                "url": 9
-            },
-            "49": {
-                "id": 49,
-                "number": 10,
-                "name": "出五关·雷震子",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 519,
-                "skill_name": "雷音破",
-                "skill_id": 1,
-                "description": "一条命通五关不难，难的是还要背个人一起过，不服你试试？",
-                "url": 9
-            },
-            "50": {
-                "id": 50,
-                "number": 10,
-                "name": "金刚·雷震子",
-                "star": 5,
-                "lv": 1,
-                "atk": 281,
-                "hp": 651,
-                "skill_name": "雷音破",
-                "skill_id": 1,
-                "description": "你感觉不到我的体温，因为我全身都是金刚，没有血肉。",
-                "url": 9
-            },
-            "51": {
-                "id": 51,
-                "number": 11,
-                "name": "羽麟奴·妲己",
-                "star": 1,
-                "lv": 1,
-                "atk": 59,
-                "hp": 125,
-                "description": "那年我和大家一起高歌：从我羽麟，北平成汤！",
-                "url": 9
-            },
-            "52": {
-                "id": 52,
-                "number": 11,
-                "name": "轩辕坟·妲己",
-                "star": 2,
-                "lv": 1,
-                "atk": 111,
-                "hp": 255,
-                "description": "南巢一役后，我躲进了轩辕坟，千年修行，千年孤独。",
-                "url": 9
-            },
-            "53": {
-                "id": 53,
-                "number": 11,
-                "name": "彰德夫人·妲己",
-                "star": 3,
-                "lv": 1,
-                "atk": 161,
-                "hp": 368,
-                "skill_name": "红颜祸水",
-                "skill_id": 6,
-                "description": "商朝的后宫也演甄嬛传啊有木有，刚进宫皇后就训话，本宫心累啊！",
-                "url": 9
-            },
-            "54": {
-                "id": 54,
-                "number": 11,
-                "name": "醉生梦死·妲己",
-                "star": 4,
-                "lv": 1,
-                "atk": 216,
-                "hp": 516,
-                "skill_name": "红颜祸水",
-                "skill_id": 6,
-                "description": "我不懂什么红颜祸水，我只是棋盘中的一颗棋子，但我知道我们是真爱！",
-                "url": 9
-            },
-            "55": {
-                "id": 55,
-                "number": 11,
-                "name": "九尾天狐·妲己",
-                "star": 5,
-                "lv": 1,
-                "atk": 283,
-                "hp": 670,
-                "skill_name": "红颜祸水",
-                "skill_id": 6,
-                "description": "千年修白，万年修黑。女娲娘娘，真的是这样子的么？",
                 "url": 9
             },
             "56": {
@@ -1523,311 +1097,6 @@ var outputTables = {
                 "description": "齐祖是说我是齐国创始人，不是说我长的像齐达内。",
                 "url": 12
             },
-            "61": {
-                "id": 61,
-                "number": 13,
-                "name": "总兵·李靖",
-                "star": 1,
-                "lv": 1,
-                "atk": 62,
-                "hp": 130,
-                "description": "兄弟我在陈塘关当总兵的时候，吃西瓜从来不花钱。",
-                "url": 12
-            },
-            "62": {
-                "id": 62,
-                "number": 13,
-                "name": "人父·李靖",
-                "star": 2,
-                "lv": 1,
-                "atk": 113,
-                "hp": 259,
-                "description": "我有三子一女，但我还是最喜欢我的干女儿，你懂的。",
-                "url": 12
-            },
-            "63": {
-                "id": 63,
-                "number": 13,
-                "name": "降魔大元帅·李靖",
-                "star": 3,
-                "lv": 1,
-                "atk": 155,
-                "hp": 380,
-                "skill_name": "失魂引",
-                "skill_id": 1,
-                "description": "这帮天兵天将下凡连城管都打不过，还想我去收孙悟空！",
-                "url": 12
-            },
-            "64": {
-                "id": 64,
-                "number": 13,
-                "name": "保卫天庭·李靖",
-                "star": 4,
-                "lv": 1,
-                "atk": 219,
-                "hp": 529,
-                "skill_name": "失魂引",
-                "skill_id": 1,
-                "description": "天庭的九门提督可不好当，你知道隆科多是怎么挂的么？",
-                "url": 12
-            },
-            "65": {
-                "id": 65,
-                "number": 13,
-                "name": "托塔天王·李靖",
-                "star": 5,
-                "lv": 1,
-                "atk": 288,
-                "hp": 680,
-                "skill_name": "失魂引",
-                "skill_id": 1,
-                "description": "每天托着个十几斤重的塔走来走去，我的手臂都快骨质增生了。",
-                "url": 12
-            },
-            "66": {
-                "id": 66,
-                "number": 14,
-                "name": "快枪手·赵公民",
-                "star": 1,
-                "lv": 1,
-                "atk": 51,
-                "hp": 122,
-                "description": "天下武功，无坚不破，唯快不破，所以先下手总是没错。",
-                "url": 12
-            },
-            "67": {
-                "id": 67,
-                "number": 14,
-                "name": "神鞭·赵公民",
-                "star": 2,
-                "lv": 1,
-                "atk": 99,
-                "hp": 243,
-                "description": "想歪的给我面壁去，我说的是武器。",
-                "url": 12
-            },
-            "68": {
-                "id": 68,
-                "number": 14,
-                "name": "大罗金仙·赵公明",
-                "star": 3,
-                "lv": 1,
-                "atk": 149,
-                "hp": 374,
-                "skill_name": "五音诀",
-                "skill_id": 8,
-                "description": "我能有今天的成就，要感谢我的粑粑和麻麻，还有CCTV。",
-                "url": 12
-            },
-            "69": {
-                "id": 69,
-                "number": 14,
-                "name": "玄坛真君·赵公明",
-                "star": 4,
-                "lv": 1,
-                "atk": 205,
-                "hp": 518,
-                "skill_name": "五音诀",
-                "skill_id": 8,
-                "description": "当不当教主真的不重要，看一看这花花世界，就像梦一场。",
-                "url": 12
-            },
-            "70": {
-                "id": 70,
-                "number": 14,
-                "name": "财神·赵公明",
-                "star": 5,
-                "lv": 1,
-                "atk": 271,
-                "hp": 672,
-                "skill_name": "五音诀",
-                "skill_id": 8,
-                "description": "我就是一ATM，关键还得你卡里有钱，不然我也帮不了你。",
-                "url": 12
-            },
-            "71": {
-                "id": 71,
-                "number": 15,
-                "name": "异类·申公豹",
-                "star": 1,
-                "lv": 1,
-                "atk": 48,
-                "hp": 121,
-                "description": "虽然我们是修炼成仙，但我知道他们看不起我的异类出身。",
-                "url": 12
-            },
-            "72": {
-                "id": 72,
-                "number": 15,
-                "name": "铁齿铜牙·申公豹",
-                "star": 2,
-                "lv": 1,
-                "atk": 102,
-                "hp": 244,
-                "description": "就算我能把死的说成活的，也无法改变阐教的种族主义思想。",
-                "url": 12
-            },
-            "73": {
-                "id": 73,
-                "number": 15,
-                "name": "雷公鞭·申公豹",
-                "star": 3,
-                "lv": 1,
-                "atk": 144,
-                "hp": 369,
-                "skill_name": "玄冥寒",
-                "skill_id": 1,
-                "description": "没有人能分辨出这究竟是一道影，还是一堵墙，其实它是我的鞭。",
-                "url": 12
-            },
-            "74": {
-                "id": 74,
-                "number": 15,
-                "name": "万妖之王·申公豹",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 525,
-                "skill_name": "玄冥寒",
-                "skill_id": 1,
-                "description": "只有和它们在一起，我才能感觉到那种无私的信任与关怀。",
-                "url": 12
-            },
-            "75": {
-                "id": 75,
-                "number": 15,
-                "name": "分水将军·申公豹",
-                "star": 5,
-                "lv": 1,
-                "atk": 279,
-                "hp": 666,
-                "skill_name": "玄冥寒",
-                "skill_id": 1,
-                "description": "成王败寇，我的实力无需封神榜上的职位来证明。",
-                "url": 12
-            },
-            "76": {
-                "id": 76,
-                "number": 16,
-                "name": "瞬移·土行孙",
-                "star": 1,
-                "lv": 1,
-                "atk": 49,
-                "hp": 120,
-                "description": "我可以瞬间从移动到你面前，但你不能站在水泥地上！",
-                "url": 12
-            },
-            "77": {
-                "id": 77,
-                "number": 16,
-                "name": "遁神·土行孙",
-                "star": 2,
-                "lv": 1,
-                "atk": 103,
-                "hp": 247,
-                "description": "我不仅会土遁，水遁、火遁、尿遁也是样样精通。",
-                "url": 12
-            },
-            "78": {
-                "id": 78,
-                "number": 16,
-                "name": "捆仙绳·土行孙",
-                "star": 3,
-                "lv": 1,
-                "atk": 156,
-                "hp": 380,
-                "skill_name": "土遁",
-                "skill_id": 1,
-                "description": "我这根捆仙绳，平时可以当领带，战时可以当武器，多功能用途。",
-                "url": 12
-            },
-            "79": {
-                "id": 79,
-                "number": 16,
-                "name": "地行仙·土行孙",
-                "star": 4,
-                "lv": 1,
-                "atk": 210,
-                "hp": 520,
-                "skill_name": "土遁",
-                "skill_id": 1,
-                "description": "地行比飞行安全多了，最多撞个石头啥的，不会坠机。",
-                "url": 12
-            },
-            "80": {
-                "id": 80,
-                "number": 16,
-                "name": "土府星君·土行孙",
-                "star": 5,
-                "lv": 1,
-                "atk": 277,
-                "hp": 681,
-                "skill_name": "土遁",
-                "skill_id": 1,
-                "description": "我最大的成就不是封神，而是娶了心中的女神邓婵玉。",
-                "url": 12
-            },
-            "81": {
-                "id": 81,
-                "number": 17,
-                "name": "捕蛇者·法海",
-                "star": 1,
-                "lv": 1,
-                "atk": 50,
-                "hp": 123,
-                "description": "我只是把捉到的白蛇卖了而已，谁想会记恨我几辈子。",
-                "url": 12
-            },
-            "82": {
-                "id": 82,
-                "number": 17,
-                "name": "苦修·法海",
-                "star": 2,
-                "lv": 1,
-                "atk": 104,
-                "hp": 251,
-                "description": "好不容易炼成的丹药被她偷吃了，我这辈子又白练了。",
-                "url": 12
-            },
-            "83": {
-                "id": 83,
-                "number": 17,
-                "name": "金山住持·法海",
-                "star": 3,
-                "lv": 1,
-                "atk": 144,
-                "hp": 384,
-                "skill_name": "苦海无边",
-                "skill_id": 9,
-                "description": "没想到隔了几辈子再遇到白蛇，已经修炼成了女神模样。",
-                "url": 12
-            },
-            "84": {
-                "id": 84,
-                "number": 17,
-                "name": "雷峰塔·法海",
-                "star": 4,
-                "lv": 1,
-                "atk": 209,
-                "hp": 525,
-                "skill_name": "苦海无边",
-                "skill_id": 9,
-                "description": "人蛇恋是不会有结果的，她应该呆在我的身边修炼。",
-                "url": 12
-            },
-            "85": {
-                "id": 85,
-                "number": 17,
-                "name": "升仙·法海",
-                "star": 5,
-                "lv": 1,
-                "atk": 279,
-                "hp": 685,
-                "skill_name": "苦海无边",
-                "skill_id": 9,
-                "description": "没想到会和他们一起升仙，看着他们甜蜜的样子，我有点失落。",
-                "url": 12
-            },
             "86": {
                 "id": 86,
                 "number": 18,
@@ -1837,7 +1106,7 @@ var outputTables = {
                 "atk": 55,
                 "hp": 131,
                 "description": "我在青城山宅了1800多年才修炼成女神，你会羡慕我么？",
-                "url": 12
+                "url": 18
             },
             "87": {
                 "id": 87,
@@ -1848,7 +1117,7 @@ var outputTables = {
                 "atk": 106,
                 "hp": 254,
                 "description": "为什么会一见钟情呢，或许因为他是我下山后见得第一个男人。",
-                "url": 12
+                "url": 18
             },
             "88": {
                 "id": 88,
@@ -1859,9 +1128,9 @@ var outputTables = {
                 "atk": 143,
                 "hp": 369,
                 "skill_name": "水漫金山",
-                "skill_id": 4,
+                "skill_id": 2,
                 "description": "没灵芝仙草许仙就活不了，许仙不在了我就得回青城山继续宅了！",
-                "url": 12
+                "url": 18
             },
             "89": {
                 "id": 89,
@@ -1872,9 +1141,9 @@ var outputTables = {
                 "atk": 206,
                 "hp": 524,
                 "skill_name": "水漫金山",
-                "skill_id": 4,
+                "skill_id": 2,
                 "description": "白素贞你住手吧，许仙真的不在珠海金山！",
-                "url": 12
+                "url": 18
             },
             "90": {
                 "id": 90,
@@ -1885,9 +1154,9 @@ var outputTables = {
                 "atk": 265,
                 "hp": 689,
                 "skill_name": "水漫金山",
-                "skill_id": 4,
+                "skill_id": 2,
                 "description": "尔康，你不能恨我，你不能因为我这么爱你而恨我。",
-                "url": 12
+                "url": 18
             },
             "91": {
                 "id": 91,
@@ -1898,7 +1167,7 @@ var outputTables = {
                 "atk": 53,
                 "hp": 126,
                 "description": "我修行了一千年，孤独了一千年。",
-                "url": 12
+                "url": 19
             },
             "92": {
                 "id": 92,
@@ -1909,7 +1178,7 @@ var outputTables = {
                 "atk": 106,
                 "hp": 244,
                 "description": "既然无法娶女神，我宁愿化为女儿身终身跟随。",
-                "url": 12
+                "url": 19
             },
             "93": {
                 "id": 93,
@@ -1920,9 +1189,9 @@ var outputTables = {
                 "atk": 152,
                 "hp": 372,
                 "skill_name": "黯然销魂",
-                "skill_id": 4,
+                "skill_id": 3,
                 "description": "法海你不懂爱，姐姐不要你，我也不会从。",
-                "url": 12
+                "url": 19
             },
             "94": {
                 "id": 94,
@@ -1933,9 +1202,9 @@ var outputTables = {
                 "atk": 203,
                 "hp": 515,
                 "skill_name": "黯然销魂",
-                "skill_id": 4,
+                "skill_id": 3,
                 "description": "法海，要么你跟我走，要么你放过我姐姐！",
-                "url": 12
+                "url": 19
             },
             "95": {
                 "id": 95,
@@ -1946,9 +1215,9 @@ var outputTables = {
                 "atk": 268,
                 "hp": 677,
                 "skill_name": "黯然销魂",
-                "skill_id": 4,
+                "skill_id": 3,
                 "description": "一起升仙的那天，我和他是最落寞的，只羡鸳鸯不羡仙。",
-                "url": 12
+                "url": 19
             },
             "96": {
                 "id": 96,
@@ -1959,7 +1228,7 @@ var outputTables = {
                 "atk": 60,
                 "hp": 118,
                 "description": "洞宾走后，家里要我嫁人，内心犹如奔过一万头草泥马。",
-                "url": 12
+                "url": 20
             },
             "97": {
                 "id": 97,
@@ -1970,7 +1239,7 @@ var outputTables = {
                 "atk": 111,
                 "hp": 239,
                 "description": "一开始我只是想节食减肥，后来发现习惯了就不饿了……",
-                "url": 12
+                "url": 20
             },
             "98": {
                 "id": 98,
@@ -1981,9 +1250,9 @@ var outputTables = {
                 "atk": 161,
                 "hp": 370,
                 "skill_name": "莲花心经",
-                "skill_id": 7,
+                "skill_id": 10,
                 "description": "那天我花7分钱买了本《筋斗云》，然后我就会飞了。",
-                "url": 12
+                "url": 20
             },
             "99": {
                 "id": 99,
@@ -1994,9 +1263,9 @@ var outputTables = {
                 "atk": 221,
                 "hp": 522,
                 "skill_name": "莲花心经",
-                "skill_id": 7,
+                "skill_id": 10,
                 "description": "凤凰台上凤凰花，凤凰花开飞凤凰。",
-                "url": 12
+                "url": 20
             },
             "100": {
                 "id": 100,
@@ -2007,70 +1276,9 @@ var outputTables = {
                 "atk": 290,
                 "hp": 662,
                 "skill_name": "莲花心经",
-                "skill_id": 7,
+                "skill_id": 10,
                 "description": "让我们荡起双桨，小船儿推开波浪~~~轻点！",
-                "url": 12
-            },
-            "101": {
-                "id": 101,
-                "number": 21,
-                "name": "黄粱梦·吕洞宾",
-                "star": 1,
-                "lv": 1,
-                "atk": 55,
-                "hp": 122,
-                "description": "黄粱一梦告诉我：睡前一定要吃饱，不然美梦都会被饿醒。",
-                "url": 12
-            },
-            "102": {
-                "id": 102,
-                "number": 21,
-                "name": "双修·吕洞宾",
-                "star": 2,
-                "lv": 1,
-                "atk": 108,
-                "hp": 240,
-                "description": "双修就像结对编程，要两个人一起搞，你懂的。",
-                "url": 12
-            },
-            "103": {
-                "id": 103,
-                "number": 21,
-                "name": "纯阳子·吕洞宾",
-                "star": 3,
-                "lv": 1,
-                "atk": 155,
-                "hp": 360,
-                "skill_name": "流云诀",
-                "skill_id": 1,
-                "description": "开导劝化风尘女子是我的业余爱好，虽然她们都说我虚伪。",
-                "url": 12
-            },
-            "104": {
-                "id": 104,
-                "number": 21,
-                "name": "剑仙·吕洞宾",
-                "star": 4,
-                "lv": 1,
-                "atk": 210,
-                "hp": 512,
-                "skill_name": "流云诀",
-                "skill_id": 1,
-                "description": "这年头，我一跟人说自己是剑仙，他们就流露出诡异的笑容。",
-                "url": 12
-            },
-            "105": {
-                "id": 105,
-                "number": 21,
-                "name": "吕祖·吕洞宾",
-                "star": 5,
-                "lv": 1,
-                "atk": 280,
-                "hp": 676,
-                "skill_name": "流云诀",
-                "skill_id": 1,
-                "description": "我有个徒孙叫王重阳，他拿过一个叫华山论剑的武术冠军。",
-                "url": 12
+                "url": 20
             },
             "106": {
                 "id": 106,
@@ -2081,7 +1289,7 @@ var outputTables = {
                 "atk": 56,
                 "hp": 137,
                 "description": "你可以把神游理解为隐形人，想去哪就去哪……你懂的！",
-                "url": 25
+                "url": 22
             },
             "107": {
                 "id": 107,
@@ -2092,7 +1300,7 @@ var outputTables = {
                 "atk": 111,
                 "hp": 241,
                 "description": "为了不辜负大家对神仙相貌的期待，我只能说自己以前是很帅的。",
-                "url": 25
+                "url": 22
             },
             "108": {
                 "id": 108,
@@ -2103,9 +1311,9 @@ var outputTables = {
                 "atk": 159,
                 "hp": 358,
                 "skill_name": "流星拐",
-                "skill_id": 1,
+                "skill_id": 4,
                 "description": "扮猪吃老虎是我的最爱，比如在大街上的人堆里变条龙飞走。",
-                "url": 25
+                "url": 22
             },
             "109": {
                 "id": 109,
@@ -2116,9 +1324,9 @@ var outputTables = {
                 "atk": 221,
                 "hp": 516,
                 "skill_name": "流星拐",
-                "skill_id": 1,
+                "skill_id": 4,
                 "description": "有人找我求雨，我都要求他舔我的烂腿，没办法，好这口。",
-                "url": 25
+                "url": 22
             },
             "110": {
                 "id": 110,
@@ -2129,131 +1337,9 @@ var outputTables = {
                 "atk": 276,
                 "hp": 683,
                 "skill_name": "流星拐",
-                "skill_id": 1,
+                "skill_id": 4,
                 "description": "我们教主圈从不缺新闻，最近的咆哮教主你知道么？",
-                "url": 25
-            },
-            "111": {
-                "id": 111,
-                "number": 23,
-                "name": "散汉·汉钟离",
-                "star": 1,
-                "lv": 1,
-                "atk": 52,
-                "hp": 129,
-                "description": "以前管我们这种人叫散汉，现在叫屌丝。",
-                "url": 25
-            },
-            "112": {
-                "id": 112,
-                "number": 23,
-                "name": "征讨将军·汉钟离",
-                "star": 2,
-                "lv": 1,
-                "atk": 105,
-                "hp": 242,
-                "description": "我学文的，偏要我去当领兵打仗，真当我是袁崇焕啊。",
-                "url": 25
-            },
-            "113": {
-                "id": 113,
-                "number": 23,
-                "name": "十日试·汉钟离",
-                "star": 3,
-                "lv": 1,
-                "atk": 160,
-                "hp": 363,
-                "skill_name": "行云流水",
-                "skill_id": 9,
-                "description": "《十日谈》这样的少儿不宜的书籍都能出名，何况我的是日试呢！",
-                "url": 25
-            },
-            "114": {
-                "id": 114,
-                "number": 23,
-                "name": "炼金术·汉钟离",
-                "star": 4,
-                "lv": 1,
-                "atk": 211,
-                "hp": 522,
-                "skill_name": "行云流水",
-                "skill_id": 9,
-                "description": "呐，当差人是要拜关二哥，你要是炒黄金，当然得拜我啦。",
-                "url": 25
-            },
-            "115": {
-                "id": 115,
-                "number": 23,
-                "name": "正阳真人·汉钟离",
-                "star": 5,
-                "lv": 1,
-                "atk": 282,
-                "hp": 674,
-                "skill_name": "行云流水",
-                "skill_id": 9,
-                "description": "当了神仙，就跟童话里说的一样，从此过上了幸福的生活。",
-                "url": 25
-            },
-            "116": {
-                "id": 116,
-                "number": 24,
-                "name": "驴友·张果老",
-                "star": 1,
-                "lv": 1,
-                "atk": 39,
-                "hp": 128,
-                "description": "骑驴比骑马有个性多了，况且有户口的马，那才是驴嘛！",
-                "url": 25
-            },
-            "117": {
-                "id": 117,
-                "number": 24,
-                "name": "歌手·张果老",
-                "star": 2,
-                "lv": 1,
-                "atk": 89,
-                "hp": 269,
-                "description": "我的歌路很广，穷则乞讨时用，达则可开演唱会。",
-                "url": 25
-            },
-            "118": {
-                "id": 118,
-                "number": 24,
-                "name": "通玄先生·张果老",
-                "star": 3,
-                "lv": 1,
-                "atk": 138,
-                "hp": 388,
-                "skill_name": "人驴合一",
-                "skill_id": 1,
-                "description": "我也不记得我多少岁了，名字里就有个老字，咱能不比老么？",
-                "url": 25
-            },
-            "119": {
-                "id": 119,
-                "number": 24,
-                "name": "广宗道人·张果老",
-                "star": 4,
-                "lv": 1,
-                "atk": 182,
-                "hp": 555,
-                "skill_name": "人驴合一",
-                "skill_id": 1,
-                "description": "折个驴、变个狗啥的我最在行了，人都说我可以去马戏团工作。",
-                "url": 25
-            },
-            "120": {
-                "id": 120,
-                "number": 24,
-                "name": "冲妙真人·张果老",
-                "star": 5,
-                "lv": 1,
-                "atk": 249,
-                "hp": 709,
-                "skill_name": "人驴合一",
-                "skill_id": 1,
-                "description": "我总觉得我的封号有点娘，不过他们说听起来很有冲劲。",
-                "url": 25
+                "url": 22
             },
             "121": {
                 "id": 121,
@@ -2316,128 +1402,6 @@ var outputTables = {
                 "description": "离开的那天，我的爱与肉身一起，在风中化去了。",
                 "url": 25
             },
-            "126": {
-                "id": 126,
-                "number": 26,
-                "name": "行医采药·蓝采和",
-                "star": 1,
-                "lv": 1,
-                "atk": 40,
-                "hp": 130,
-                "description": "我们那时候行医不用上学，有点植物学基础，会烹饪就行。",
-                "url": 25
-            },
-            "127": {
-                "id": 127,
-                "number": 26,
-                "name": "流浪汉·蓝采和",
-                "star": 2,
-                "lv": 1,
-                "atk": 90,
-                "hp": 270,
-                "description": "想和你就这样流浪，一起看雪看星星看月亮，从诗词歌赋谈到人生哲学。",
-                "url": 25
-            },
-            "128": {
-                "id": 128,
-                "number": 26,
-                "name": "万花篮·蓝采和",
-                "star": 3,
-                "lv": 1,
-                "atk": 140,
-                "hp": 390,
-                "skill_name": "吐气如兰",
-                "skill_id": 7,
-                "description": "这些年看到好玩的好看的东西，就对着他们念咒语：快到篮里来！",
-                "url": 25
-            },
-            "129": {
-                "id": 129,
-                "number": 26,
-                "name": "阴阳体·蓝采和",
-                "star": 4,
-                "lv": 1,
-                "atk": 180,
-                "hp": 560,
-                "skill_name": "吐气如兰",
-                "skill_id": 7,
-                "description": "他们说我是阴阳调和于一体，其实我只是有点伪娘控而已。",
-                "url": 25
-            },
-            "130": {
-                "id": 130,
-                "number": 26,
-                "name": "度仙·蓝采和",
-                "star": 5,
-                "lv": 1,
-                "atk": 250,
-                "hp": 710,
-                "skill_name": "吐气如兰",
-                "skill_id": 7,
-                "description": "汉钟离要我跟他走，我知道他的意思，但我还是从了。",
-                "url": 25
-            },
-            "131": {
-                "id": 131,
-                "number": 27,
-                "name": "农夫·牛郎",
-                "star": 1,
-                "lv": 1,
-                "atk": 43,
-                "hp": 125,
-                "description": "给地主打工不轻松，不过地主也不容易，省吃俭用才有了这么多地。",
-                "url": 25
-            },
-            "132": {
-                "id": 132,
-                "number": 27,
-                "name": "神牛·牛郎",
-                "star": 2,
-                "lv": 1,
-                "atk": 92,
-                "hp": 266,
-                "description": "大哥，你是神牛早点说嘛，能不能给我变个十万八万花花先！",
-                "url": 25
-            },
-            "133": {
-                "id": 133,
-                "number": 27,
-                "name": "更衣室の恋·牛郎",
-                "star": 3,
-                "lv": 1,
-                "atk": 144,
-                "hp": 384,
-                "skill_name": "织女情",
-                "skill_id": 9,
-                "description": "死牛给我出的馊主意，要我去偷妹纸的衣服，岛国动作片看多了吧！",
-                "url": 25
-            },
-            "134": {
-                "id": 134,
-                "number": 27,
-                "name": "天庭驸马·牛郎",
-                "star": 4,
-                "lv": 1,
-                "atk": 186,
-                "hp": 549,
-                "skill_name": "织女情",
-                "skill_id": 9,
-                "description": "我们驸马界一直都是比较低调的，除了出了个叫陈世美的。",
-                "url": 25
-            },
-            "135": {
-                "id": 135,
-                "number": 27,
-                "name": "牵牛星·牛郎",
-                "star": 5,
-                "lv": 1,
-                "atk": 255,
-                "hp": 719,
-                "skill_name": "织女情",
-                "skill_id": 9,
-                "description": "一年才见一次面，见面的时候还被围观，这让我们夫妻情何以堪啊！",
-                "url": 25
-            },
             "136": {
                 "id": 136,
                 "number": 28,
@@ -2447,7 +1411,7 @@ var outputTables = {
                 "atk": 42,
                 "hp": 122,
                 "description": "我做的针线是极好的，针脚密色彩新，配上这图案，是最好不过的了。",
-                "url": 25
+                "url": 28
             },
             "137": {
                 "id": 137,
@@ -2458,7 +1422,7 @@ var outputTables = {
                 "atk": 92,
                 "hp": 262,
                 "description": "我们七姐妹都有个重口味爱好：喜欢去水库里裸泳。",
-                "url": 25
+                "url": 28
             },
             "138": {
                 "id": 138,
@@ -2469,9 +1433,9 @@ var outputTables = {
                 "atk": 132,
                 "hp": 382,
                 "skill_name": "鹊桥泪",
-                "skill_id": 4,
+                "skill_id": 6,
                 "description": "突然有一天有了家有了孩子，你会觉得这世界变得不一样了。",
-                "url": 25
+                "url": 28
             },
             "139": {
                 "id": 139,
@@ -2482,9 +1446,9 @@ var outputTables = {
                 "atk": 182,
                 "hp": 552,
                 "skill_name": "鹊桥泪",
-                "skill_id": 4,
+                "skill_id": 6,
                 "description": "牛郎走的第一天，想他；牛郎走的第二天，想他想他；牛郎走的第三天，想他想他想他。",
-                "url": 25
+                "url": 28
             },
             "140": {
                 "id": 140,
@@ -2495,70 +1459,9 @@ var outputTables = {
                 "atk": 242,
                 "hp": 712,
                 "skill_name": "鹊桥泪",
-                "skill_id": 4,
+                "skill_id": 6,
                 "description": "这是个集御姐、人妻、熟女、OL于一身的封号，牛郎肯定会喜欢的。",
-                "url": 25
-            },
-            "141": {
-                "id": 141,
-                "number": 29,
-                "name": "决斗·吴刚",
-                "star": 1,
-                "lv": 1,
-                "atk": 33,
-                "hp": 123,
-                "description": "偷情也就算了，还生了三个娃，让我喜当爹三次！",
-                "url": 25
-            },
-            "142": {
-                "id": 142,
-                "number": 29,
-                "name": "刺配·吴刚",
-                "star": 2,
-                "lv": 1,
-                "atk": 83,
-                "hp": 263,
-                "description": "我被发配到月球，成为当地第一个原住民，比嫦娥都早。",
-                "url": 25
-            },
-            "143": {
-                "id": 143,
-                "number": 29,
-                "name": "樵夫·吴刚",
-                "star": 3,
-                "lv": 1,
-                "atk": 133,
-                "hp": 383,
-                "skill_name": "桂花情",
-                "skill_id": 1,
-                "description": "无聊的时候我就砍砍桂花树，反正砍得没有长得快。",
-                "url": 25
-            },
-            "144": {
-                "id": 144,
-                "number": 29,
-                "name": "逆袭·吴刚",
-                "star": 4,
-                "lv": 1,
-                "atk": 183,
-                "hp": 553,
-                "skill_name": "桂花情",
-                "skill_id": 1,
-                "description": "你能理解单身几百年后突然来一个女神和你共处的感受么？",
-                "url": 25
-            },
-            "145": {
-                "id": 145,
-                "number": 29,
-                "name": "桂花仙·吴刚",
-                "star": 5,
-                "lv": 1,
-                "atk": 243,
-                "hp": 703,
-                "skill_name": "桂花情",
-                "skill_id": 1,
-                "description": "桂花树下桃花仙，桂花仙人种桂花；从此不砍桂花树，抱得嫦娥躲在家。",
-                "url": 25
+                "url": 28
             },
             "146": {
                 "id": 146,
@@ -2569,7 +1472,7 @@ var outputTables = {
                 "atk": 46,
                 "hp": 133,
                 "description": "不是说好发教材的么？咋发下来的都是白纸？太黑了！",
-                "url": 25
+                "url": 30
             },
             "147": {
                 "id": 147,
@@ -2580,7 +1483,7 @@ var outputTables = {
                 "atk": 95,
                 "hp": 262,
                 "description": "作为靠嘴皮子吃饭的鼻祖，我深知其中的不易啊！",
-                "url": 25
+                "url": 30
             },
             "148": {
                 "id": 148,
@@ -2591,9 +1494,9 @@ var outputTables = {
                 "atk": 145,
                 "hp": 385,
                 "skill_name": "鬼脚七",
-                "skill_id": 2,
+                "skill_id": 7,
                 "description": "我发现一口井，每天晚上播天气预报，然后我就出名了。",
-                "url": 25
+                "url": 30
             },
             "149": {
                 "id": 149,
@@ -2604,9 +1507,9 @@ var outputTables = {
                 "atk": 188,
                 "hp": 556,
                 "skill_name": "鬼脚七",
-                "skill_id": 2,
+                "skill_id": 7,
                 "description": "只要你有了想象力，草就可以变成马，豆就可以变成兵。",
-                "url": 25
+                "url": 30
             },
             "150": {
                 "id": 150,
@@ -2617,9 +1520,9 @@ var outputTables = {
                 "atk": 244,
                 "hp": 721,
                 "skill_name": "鬼脚七",
-                "skill_id": 2,
+                "skill_id": 7,
                 "description": "当了神仙后，玉帝给我分了一套别墅，有产权的哦！",
-                "url": 25
+                "url": 30
             },
             "151": {
                 "id": 151,
@@ -2652,7 +1555,7 @@ var outputTables = {
                 "atk": 149,
                 "hp": 378,
                 "skill_name": "招魂蟠",
-                "skill_id": 2,
+                "skill_id": 8,
                 "description": "别老练少林72绝技了，多看苍老师的片子可以下火去戾气。",
                 "url": 31
             },
@@ -2665,7 +1568,7 @@ var outputTables = {
                 "atk": 201,
                 "hp": 549,
                 "skill_name": "招魂蟠",
-                "skill_id": 2,
+                "skill_id": 8,
                 "description": "巨龙巨龙你差两年，永永远远的差两年。",
                 "url": 31
             },
@@ -2678,7 +1581,7 @@ var outputTables = {
                 "atk": 265,
                 "hp": 719,
                 "skill_name": "招魂蟠",
-                "skill_id": 2,
+                "skill_id": 8,
                 "description": "抽刀断水水更流，举杯消愁愁更愁，吃多吃少难吃足。",
                 "url": 31
             },
@@ -2691,7 +1594,7 @@ var outputTables = {
                 "atk": 53,
                 "hp": 126,
                 "description": "在这里先八寒再八热，经历冰火九重天！……别想歪了。",
-                "url": 36
+                "url": 32
             },
             "157": {
                 "id": 157,
@@ -2702,7 +1605,7 @@ var outputTables = {
                 "atk": 105,
                 "hp": 277,
                 "description": "咱这儿天天饿着不给你吃饭，但就是饿不死，减肥者禁入！",
-                "url": 36
+                "url": 32
             },
             "158": {
                 "id": 158,
@@ -2713,9 +1616,9 @@ var outputTables = {
                 "atk": 154,
                 "hp": 369,
                 "skill_name": "哭丧棒",
-                "skill_id": 1,
+                "skill_id": 9,
                 "description": "我们这儿都是牛啊马啊狗啊啥的，重口味者禁入！",
-                "url": 36
+                "url": 32
             },
             "159": {
                 "id": 159,
@@ -2726,9 +1629,9 @@ var outputTables = {
                 "atk": 206,
                 "hp": 556,
                 "skill_name": "哭丧棒",
-                "skill_id": 1,
+                "skill_id": 9,
                 "description": "这里打斗比较激烈一些，需要用到皮鞭、绳索、蜡烛等物品。",
-                "url": 36
+                "url": 32
             },
             "160": {
                 "id": 160,
@@ -2739,70 +1642,9 @@ var outputTables = {
                 "atk": 266,
                 "hp": 666,
                 "skill_name": "哭丧棒",
-                "skill_id": 1,
+                "skill_id": 9,
                 "description": "我们终于回归正常了，各位有特殊癖好的也可以再回去。",
-                "url": 36
-            },
-            "161": {
-                "id": 161,
-                "number": 33,
-                "name": "科员·日游神",
-                "star": 1,
-                "lv": 1,
-                "atk": 62,
-                "hp": 125,
-                "description": "我怎么也是个有编制的神，可不是临时工。",
-                "url": 36
-            },
-            "162": {
-                "id": 162,
-                "number": 33,
-                "name": "副科长·日游神",
-                "star": 2,
-                "lv": 1,
-                "atk": 112,
-                "hp": 244,
-                "description": "终于走上领导岗位了，虽然还是要整天出来巡街。",
-                "url": 36
-            },
-            "163": {
-                "id": 163,
-                "number": 33,
-                "name": "科长·日游神",
-                "star": 3,
-                "lv": 1,
-                "atk": 159,
-                "hp": 374,
-                "skill_name": "日炎拳",
-                "skill_id": 1,
-                "description": "这次能提拔，多亏巨灵神他们给我指了条路。",
-                "url": 36
-            },
-            "164": {
-                "id": 164,
-                "number": 33,
-                "name": "副处长·日游神",
-                "star": 4,
-                "lv": 1,
-                "atk": 222,
-                "hp": 519,
-                "skill_name": "日炎拳",
-                "skill_id": 1,
-                "description": "众仙们，我们要以高度负责的精神，认真组织和开展好学习实践活动！",
-                "url": 36
-            },
-            "165": {
-                "id": 165,
-                "number": 33,
-                "name": "处长·日游神",
-                "star": 5,
-                "lv": 1,
-                "atk": 268,
-                "hp": 669,
-                "skill_name": "日炎拳",
-                "skill_id": 1,
-                "description": "再过两年要退居二线了，我儿子的仙籍得抓紧办了。",
-                "url": 36
+                "url": 32
             },
             "166": {
                 "id": 166,
@@ -2813,7 +1655,7 @@ var outputTables = {
                 "atk": 60,
                 "hp": 122,
                 "description": "终于吃上公家饭了，偶尔还可以欺负一下新神仙。",
-                "url": 36
+                "url": 34
             },
             "167": {
                 "id": 167,
@@ -2824,7 +1666,7 @@ var outputTables = {
                 "atk": 115,
                 "hp": 246,
                 "description": "相比副连这个很娘的称呼，我更喜欢大家叫我captain。",
-                "url": 36
+                "url": 34
             },
             "168": {
                 "id": 168,
@@ -2837,7 +1679,7 @@ var outputTables = {
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "description": "其实神仙的夜生活很丰富的，很庆幸我负责夜里的巡逻，你懂的。",
-                "url": 36
+                "url": 34
             },
             "169": {
                 "id": 169,
@@ -2850,7 +1692,7 @@ var outputTables = {
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "description": "为啥那个唱歌的神仙升的比我快那么多!",
-                "url": 36
+                "url": 34
             },
             "170": {
                 "id": 170,
@@ -2863,68 +1705,7 @@ var outputTables = {
                 "skill_name": "流星击",
                 "skill_id": 1,
                 "description": "笑什么笑，是大校不是大笑，严肃点！",
-                "url": 36
-            },
-            "171": {
-                "id": 171,
-                "number": 35,
-                "name": "瑶草·瑶姬",
-                "star": 1,
-                "lv": 1,
-                "atk": 48,
-                "hp": 135,
-                "description": "我是一株吃了会让你幸福的草，唯一不幸福的就是我本身。",
-                "url": 31
-            },
-            "172": {
-                "id": 172,
-                "number": 35,
-                "name": "神女峰·瑶姬",
-                "star": 2,
-                "lv": 1,
-                "atk": 95,
-                "hp": 256,
-                "description": "我化作一道险峰，等着真心的你来攀登。",
-                "url": 31
-            },
-            "173": {
-                "id": 173,
-                "number": 35,
-                "name": "巫山云雨·瑶姬",
-                "star": 3,
-                "lv": 1,
-                "atk": 145,
-                "hp": 380,
-                "skill_name": "巫山云雨",
-                "skill_id": 8,
-                "description": "巫山朝云暮雨的天气很适合野合么？什么大家都跑我这儿来？",
-                "url": 31
-            },
-            "174": {
-                "id": 174,
-                "number": 35,
-                "name": "神女赋·瑶姬",
-                "star": 4,
-                "lv": 1,
-                "atk": 201,
-                "hp": 535,
-                "skill_name": "巫山云雨",
-                "skill_id": 8,
-                "description": "我鄙视那些YY我的文章，再经典也是对我的伤害。",
-                "url": 31
-            },
-            "175": {
-                "id": 175,
-                "number": 35,
-                "name": "巫山神女·瑶姬",
-                "star": 5,
-                "lv": 1,
-                "atk": 275,
-                "hp": 730,
-                "skill_name": "巫山云雨",
-                "skill_id": 8,
-                "description": "曾经沧海难为水，除却巫山不是云。",
-                "url": 31
+                "url": 34
             },
             "176": {
                 "id": 176,
@@ -2957,7 +1738,7 @@ var outputTables = {
                 "atk": 151,
                 "hp": 381,
                 "skill_name": "碧波滔天",
-                "skill_id": 3,
+                "skill_id": 2,
                 "description": "不喜欢就是不喜欢，龙王太子又如何！",
                 "url": 36
             },
@@ -2970,7 +1751,7 @@ var outputTables = {
                 "atk": 200,
                 "hp": 536,
                 "skill_name": "碧波滔天",
-                "skill_id": 3,
+                "skill_id": 2,
                 "description": "再逼我就跳海，死了我也不放过你！",
                 "url": 36
             },
@@ -2983,69 +1764,8 @@ var outputTables = {
                 "atk": 280,
                 "hp": 721,
                 "skill_name": "碧波滔天",
-                "skill_id": 3,
+                "skill_id": 2,
                 "description": "我知道海不可能被填平，我只是想告诉后面的姐妹他是个什么样的男人。",
-                "url": 36
-            },
-            "181": {
-                "id": 181,
-                "number": 37,
-                "name": "巨人·夸父",
-                "star": 1,
-                "lv": 1,
-                "atk": 53,
-                "hp": 133,
-                "description": "不是每一瓶牛奶都可以叫特仑苏，不是每一个巨人都可以成为夸父。",
-                "url": 36
-            },
-            "182": {
-                "id": 182,
-                "number": 37,
-                "name": "守护者·夸父",
-                "star": 2,
-                "lv": 1,
-                "atk": 99,
-                "hp": 261,
-                "description": "我不是你的优乐美，我是你的守护神！",
-                "url": 36
-            },
-            "183": {
-                "id": 183,
-                "number": 37,
-                "name": "星降术·夸父",
-                "star": 3,
-                "lv": 1,
-                "atk": 150,
-                "hp": 391,
-                "skill_name": "大地之怒",
-                "skill_id": 5,
-                "description": "快使用星将术，哼哼哈嘿，快爆发小宇宙，伊莫拉沙！",
-                "url": 36
-            },
-            "184": {
-                "id": 184,
-                "number": 37,
-                "name": "神行·夸父",
-                "star": 4,
-                "lv": 1,
-                "atk": 202,
-                "hp": 540,
-                "skill_name": "大地之怒",
-                "skill_id": 5,
-                "description": "田径运动员比赛前都会拜拜我，我是他们这行的祖师爷。",
-                "url": 36
-            },
-            "185": {
-                "id": 185,
-                "number": 37,
-                "name": "逐日·夸父",
-                "star": 5,
-                "lv": 1,
-                "atk": 279,
-                "hp": 731,
-                "skill_name": "大地之怒",
-                "skill_id": 5,
-                "description": "别问我为什么要追日，除非你不抗日！",
                 "url": 36
             },
             "186": {
@@ -3079,7 +1799,7 @@ var outputTables = {
                 "atk": 144,
                 "hp": 388,
                 "skill_name": "穿云箭",
-                "skill_id": 4,
+                "skill_id": 3,
                 "description": "当我第一次见到宓妃时，她在弹一把七弦琴，后来她有一个好听的名字：洛神。",
                 "url": 38
             },
@@ -3092,7 +1812,7 @@ var outputTables = {
                 "atk": 205,
                 "hp": 541,
                 "skill_name": "穿云箭",
-                "skill_id": 4,
+                "skill_id": 3,
                 "description": "唯有射下那九个太阳，才能压下我内心的怒火。",
                 "url": 38
             },
@@ -3105,7 +1825,7 @@ var outputTables = {
                 "atk": 277,
                 "hp": 729,
                 "skill_name": "穿云箭",
-                "skill_id": 4,
+                "skill_id": 3,
                 "description": "有人在我坟前的桃树下唱歌：我在这儿等着你回来……",
                 "url": 38
             },
@@ -3140,7 +1860,7 @@ var outputTables = {
                 "atk": 159,
                 "hp": 352,
                 "skill_name": "天音玄",
-                "skill_id": 6,
+                "skill_id": 4,
                 "description": "天杀的王母，跟我演甄嬛传，让我天天在月宫捣药！",
                 "url": 39
             },
@@ -3153,7 +1873,7 @@ var outputTables = {
                 "atk": 212,
                 "hp": 502,
                 "skill_name": "天音玄",
-                "skill_id": 6,
+                "skill_id": 4,
                 "description": "命运让我离开了后羿，却又给我送来了吴刚，我只能呵呵。",
                 "url": 39
             },
@@ -3166,192 +1886,9 @@ var outputTables = {
                 "atk": 290,
                 "hp": 647,
                 "skill_name": "天音玄",
-                "skill_id": 6,
+                "skill_id": 4,
                 "description": "想我的时候，打一盘Luna地图或是看看钱包。",
                 "url": 39
-            },
-            "196": {
-                "id": 196,
-                "number": 40,
-                "name": "无名巨人·刑天",
-                "star": 1,
-                "lv": 1,
-                "atk": 61,
-                "hp": 120,
-                "description": "我的身材和我的名字一样威武。",
-                "url": 39
-            },
-            "197": {
-                "id": 197,
-                "number": 40,
-                "name": "文艺青年·刑天",
-                "star": 2,
-                "lv": 1,
-                "atk": 103,
-                "hp": 230,
-                "description": "业余时间我也写写诗歌，在微博上发发鸡汤文。",
-                "url": 39
-            },
-            "198": {
-                "id": 198,
-                "number": 40,
-                "name": "求战·刑天",
-                "star": 3,
-                "lv": 1,
-                "atk": 160,
-                "hp": 350,
-                "skill_name": "天杀",
-                "skill_id": 1,
-                "description": "出来混的就是要讲义气嘛，打个架婆婆妈妈的最不爽了。",
-                "url": 39
-            },
-            "199": {
-                "id": 199,
-                "number": 40,
-                "name": "永不妥协·刑天",
-                "star": 4,
-                "lv": 1,
-                "atk": 215,
-                "hp": 500,
-                "skill_name": "天杀",
-                "skill_id": 1,
-                "description": "虽千万人吾往矣，这才是亮剑精神！",
-                "url": 39
-            },
-            "200": {
-                "id": 200,
-                "number": 40,
-                "name": "无首战神·刑天",
-                "star": 5,
-                "lv": 1,
-                "atk": 299,
-                "hp": 644,
-                "skill_name": "天杀",
-                "skill_id": 1,
-                "description": "自从没了脑袋，打架灵活多了，也不用护头护脑了。",
-                "url": 39
-            },
-            "201": {
-                "id": 201,
-                "number": 41,
-                "name": "拜师·沉香",
-                "star": 1,
-                "lv": 1,
-                "atk": 55,
-                "hp": 119,
-                "description": "我师父早年跳霹雳舞，成仙后大家都叫他霹雳大仙。",
-                "url": 39
-            },
-            "202": {
-                "id": 202,
-                "number": 41,
-                "name": "宣花斧·沉香",
-                "star": 2,
-                "lv": 1,
-                "atk": 109,
-                "hp": 234,
-                "description": "幸福生活不能光靠手，所以师父给了我把宣花斧。",
-                "url": 39
-            },
-            "203": {
-                "id": 203,
-                "number": 41,
-                "name": "战三眼·沉香",
-                "star": 3,
-                "lv": 1,
-                "atk": 162,
-                "hp": 355,
-                "skill_name": "开山裂地",
-                "skill_id": 6,
-                "description": "你能救母，我也能救母，我是沉香，我为我自己代言。",
-                "url": 39
-            },
-            "204": {
-                "id": 204,
-                "number": 41,
-                "name": "劈山·沉香",
-                "star": 4,
-                "lv": 1,
-                "atk": 221,
-                "hp": 498,
-                "skill_name": "开山裂地",
-                "skill_id": 6,
-                "description": "别人走路我爬山，别人劈柴我劈山。",
-                "url": 39
-            },
-            "205": {
-                "id": 205,
-                "number": 41,
-                "name": "宝莲灯·沉香",
-                "star": 5,
-                "lv": 1,
-                "atk": 296,
-                "hp": 644,
-                "skill_name": "开山裂地",
-                "skill_id": 6,
-                "description": "每次点上这个灯，都会发出悦耳的音乐：等灯等灯。",
-                "url": 39
-            },
-            "206": {
-                "id": 206,
-                "number": 42,
-                "name": "修缘·济公",
-                "star": 1,
-                "lv": 1,
-                "atk": 58,
-                "hp": 125,
-                "description": "呐，不要说我没有提醒你，修行呢，最要紧的是开心！",
-                "url": 38
-            },
-            "207": {
-                "id": 207,
-                "number": 42,
-                "name": "颠·济公",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 235,
-                "description": "别人笑我太疯癫，我笑他人看不穿。",
-                "url": 38
-            },
-            "208": {
-                "id": 208,
-                "number": 42,
-                "name": "酒肉和尚·济公",
-                "star": 3,
-                "lv": 1,
-                "atk": 155,
-                "hp": 355,
-                "skill_name": "舍生取义",
-                "skill_id": 8,
-                "description": "别以为喝酒吃肉就能修成正果，你看鲁智深就知道了。",
-                "url": 38
-            },
-            "209": {
-                "id": 209,
-                "number": 42,
-                "name": "降龙罗汉·济公",
-                "star": 4,
-                "lv": 1,
-                "atk": 216,
-                "hp": 505,
-                "skill_name": "舍生取义",
-                "skill_id": 8,
-                "description": "左右两边是十八罗汉，降龙伏虎在这一边，至于求子就要拜观音大士。",
-                "url": 38
-            },
-            "210": {
-                "id": 210,
-                "number": 42,
-                "name": "降龙尊者·济公",
-                "star": 5,
-                "lv": 1,
-                "atk": 288,
-                "hp": 660,
-                "skill_name": "舍生取义",
-                "skill_id": 8,
-                "description": "我想代表天宫向凡间宣扬爱心，让他们明白只要有爱，哪里都是天堂。",
-                "url": 38
             },
             "211": {
                 "id": 211,
@@ -3362,7 +1899,7 @@ var outputTables = {
                 "atk": 51,
                 "hp": 121,
                 "description": "嫁给河伯是我一生最大的错。",
-                "url": 38
+                "url": 43
             },
             "212": {
                 "id": 212,
@@ -3373,7 +1910,7 @@ var outputTables = {
                 "atk": 101,
                 "hp": 251,
                 "description": "我献出洛书，只是想离开这个人。",
-                "url": 38
+                "url": 43
             },
             "213": {
                 "id": 213,
@@ -3384,9 +1921,9 @@ var outputTables = {
                 "atk": 151,
                 "hp": 371,
                 "skill_name": "水乳之欢",
-                "skill_id": 2,
+                "skill_id": 1,
                 "description": "第一次见到他的时候，我就记住了他的名字：后羿。",
-                "url": 38
+                "url": 43
             },
             "214": {
                 "id": 214,
@@ -3397,9 +1934,9 @@ var outputTables = {
                 "atk": 201,
                 "hp": 521,
                 "skill_name": "水乳之欢",
-                "skill_id": 2,
+                "skill_id": 1,
                 "description": "既然无法陪伴左右，不如化为这护城的洛水守护你。",
-                "url": 38
+                "url": 43
             },
             "215": {
                 "id": 215,
@@ -3410,9 +1947,9 @@ var outputTables = {
                 "atk": 271,
                 "hp": 671,
                 "skill_name": "水乳之欢",
-                "skill_id": 2,
+                "skill_id": 1,
                 "description": "仿佛兮若轻云之蔽月，飘飘兮若流风之回雪。",
-                "url": 38
+                "url": 43
             },
             "216": {
                 "id": 216,
@@ -3445,7 +1982,7 @@ var outputTables = {
                 "atk": 158,
                 "hp": 374,
                 "skill_name": "无米之炊",
-                "skill_id": 1,
+                "skill_id": 5,
                 "description": "考验徒弟说到底就是洗脑，能洗的就教，不能洗的咱就说考验没通过。",
                 "url": 44
             },
@@ -3458,7 +1995,7 @@ var outputTables = {
                 "atk": 203,
                 "hp": 531,
                 "skill_name": "无米之炊",
-                "skill_id": 1,
+                "skill_id": 5,
                 "description": "想入会？交五斗米。慢着，这是报名费，交学费后面排队去。",
                 "url": 44
             },
@@ -3471,252 +2008,8 @@ var outputTables = {
                 "atk": 274,
                 "hp": 678,
                 "skill_name": "无米之炊",
-                "skill_id": 1,
+                "skill_id": 5,
                 "description": "我是五斗米教扛把子，你知道什么叫不准勾引二嫂么？",
-                "url": 44
-            },
-            "221": {
-                "id": 221,
-                "number": 45,
-                "name": "日高一平·修罗王",
-                "star": 1,
-                "lv": 1,
-                "atk": 48,
-                "hp": 123,
-                "description": "师父曾经说过，如果把我和阿凯加起来，再除二就是十全十美了。",
-                "url": 44
-            },
-            "222": {
-                "id": 222,
-                "number": 45,
-                "name": "变身·修罗王",
-                "star": 2,
-                "lv": 1,
-                "atk": 99,
-                "hp": 256,
-                "description": "我肚子一饿就会失去战意，连脱战甲的时间都等不了。",
-                "url": 44
-            },
-            "223": {
-                "id": 223,
-                "number": 45,
-                "name": "魔破拳·修罗王",
-                "star": 3,
-                "lv": 1,
-                "atk": 153,
-                "hp": 374,
-                "skill_name": "五世修罗",
-                "skill_id": 6,
-                "description": "这拳打出来之前，得先做一次全身运动，比较费时间。",
-                "url": 44
-            },
-            "224": {
-                "id": 224,
-                "number": 45,
-                "name": "梵天战甲·修罗王",
-                "star": 4,
-                "lv": 1,
-                "atk": 203,
-                "hp": 531,
-                "skill_name": "五世修罗",
-                "skill_id": 6,
-                "description": "这战甲酷毙了！就是穿着太占地方，容易卡门，脱了也不能缩小存放。",
-                "url": 44
-            },
-            "225": {
-                "id": 225,
-                "number": 45,
-                "name": "创造神·修罗王",
-                "star": 5,
-                "lv": 1,
-                "atk": 274,
-                "hp": 675,
-                "skill_name": "五世修罗",
-                "skill_id": 6,
-                "description": "有创造神就会有破坏神，还会有调和神，我们都只是棋子。",
-                "url": 44
-            },
-            "226": {
-                "id": 226,
-                "number": 46,
-                "name": "力伽·迦楼罗王",
-                "star": 1,
-                "lv": 1,
-                "atk": 45,
-                "hp": 115,
-                "description": "我是迦楼罗王力迦，天空界最帅的男人，没有之一。",
-                "url": 44
-            },
-            "227": {
-                "id": 227,
-                "number": 46,
-                "name": "凤凰·迦楼罗王",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 256,
-                "description": "凤凰会涅槃，我没有那么容易死。",
-                "url": 44
-            },
-            "228": {
-                "id": 228,
-                "number": 46,
-                "name": "羽吹雪·迦楼罗王",
-                "star": 3,
-                "lv": 1,
-                "atk": 155,
-                "hp": 379,
-                "skill_name": "罗汉印",
-                "skill_id": 1,
-                "description": "我吹的是红红的血，不是白白的雪。",
-                "url": 44
-            },
-            "229": {
-                "id": 229,
-                "number": 46,
-                "name": "火翼阵·迦楼罗王",
-                "star": 4,
-                "lv": 1,
-                "atk": 208,
-                "hp": 530,
-                "skill_name": "罗汉印",
-                "skill_id": 1,
-                "description": "就像飞蛾扑火，明知不可能，还是要义无反顾的燃烧自己。",
-                "url": 44
-            },
-            "230": {
-                "id": 230,
-                "number": 46,
-                "name": "众鸟之王·迦楼罗王",
-                "star": 5,
-                "lv": 1,
-                "atk": 280,
-                "hp": 689,
-                "skill_name": "罗汉印",
-                "skill_id": 1,
-                "description": "每个人都有一个大鸟梦，而我的是众鸟之王。",
-                "url": 44
-            },
-            "231": {
-                "id": 231,
-                "number": 47,
-                "name": "莲伽·紧那罗王",
-                "star": 1,
-                "lv": 1,
-                "atk": 55,
-                "hp": 116,
-                "description": "谁说女孩不能做神将，我就是神将中的神将——八部众！",
-                "url": 44
-            },
-            "232": {
-                "id": 232,
-                "number": 47,
-                "name": "爱与恨·紧那罗王",
-                "star": 2,
-                "lv": 1,
-                "atk": 106,
-                "hp": 254,
-                "description": "我无法说服自己爱上一个浪子，对不起，马里千。",
-                "url": 44
-            },
-            "233": {
-                "id": 233,
-                "number": 47,
-                "name": "天王情·紧那罗王",
-                "star": 3,
-                "lv": 1,
-                "atk": 147,
-                "hp": 376,
-                "skill_name": "八部众",
-                "skill_id": 1,
-                "description": "如果非要做一个选择，就让我死在乔伽的手下吧。",
-                "url": 44
-            },
-            "234": {
-                "id": 234,
-                "number": 47,
-                "name": "宿命·紧那罗王",
-                "star": 4,
-                "lv": 1,
-                "atk": 206,
-                "hp": 523,
-                "skill_name": "八部众",
-                "skill_id": 1,
-                "description": "屈服黑暗是他的宿命，执迷不悟是我的宿命。",
-                "url": 44
-            },
-            "235": {
-                "id": 235,
-                "number": 47,
-                "name": "无双环·紧那罗王",
-                "star": 5,
-                "lv": 1,
-                "atk": 265,
-                "hp": 670,
-                "skill_name": "八部众",
-                "skill_id": 1,
-                "description": "既然无法在一起，那就把我的武器叫做无双环吧。",
-                "url": 44
-            },
-            "236": {
-                "id": 236,
-                "number": 48,
-                "name": "三眼·杨戬",
-                "star": 1,
-                "lv": 1,
-                "atk": 44,
-                "hp": 133,
-                "description": "他们笑我三只眼，是嫉妒我比他们看的更清楚，可这也是我的烦恼。",
-                "url": 44
-            },
-            "237": {
-                "id": 237,
-                "number": 48,
-                "name": "啸天·杨戬",
-                "star": 2,
-                "lv": 1,
-                "atk": 89,
-                "hp": 285,
-                "description": "当所有的人，离开我的时候，你劝我要安静从容。谢谢你，哮天犬。",
-                "url": 44
-            },
-            "238": {
-                "id": 238,
-                "number": 48,
-                "name": "仙·杨戬",
-                "star": 3,
-                "lv": 1,
-                "atk": 138,
-                "hp": 402,
-                "skill_name": "三只眼",
-                "skill_id": 4,
-                "description": "在小庙里当神仙没什么不好，大庙里的神仙很大，心眼却很小。",
-                "url": 44
-            },
-            "239": {
-                "id": 239,
-                "number": 48,
-                "name": "神·杨戬",
-                "star": 4,
-                "lv": 1,
-                "atk": 180,
-                "hp": 555,
-                "skill_name": "三只眼",
-                "skill_id": 4,
-                "description": "英雄惜英雄只是电影里的桥段，你挑衅我的狗我就跟你拼命！",
-                "url": 44
-            },
-            "240": {
-                "id": 240,
-                "number": 48,
-                "name": "二郎神·杨戬",
-                "star": 5,
-                "lv": 1,
-                "atk": 250,
-                "hp": 718,
-                "skill_name": "三只眼",
-                "skill_id": 4,
-                "description": "很多年之后，我有个绰号叫“二郎神”，其实我不二。",
                 "url": 44
             },
             "241": {
@@ -3728,7 +2021,7 @@ var outputTables = {
                 "atk": 46,
                 "hp": 140,
                 "description": "他们说我爹不喜欢我，是因为我不姓李，可名字是谁起的呢？",
-                "url": 44
+                "url": 49
             },
             "242": {
                 "id": 242,
@@ -3739,7 +2032,7 @@ var outputTables = {
                 "atk": 92,
                 "hp": 290,
                 "description": "我知道我的兵器看起来有点娘，你如果不服，可以来试试。",
-                "url": 44
+                "url": 49
             },
             "243": {
                 "id": 243,
@@ -3750,9 +2043,9 @@ var outputTables = {
                 "atk": 141,
                 "hp": 410,
                 "skill_name": "龙骨枪",
-                "skill_id": 1,
+                "skill_id": 6,
                 "description": "我家有一把乾坤弓，拿来咱们一起去打麻雀吧！",
-                "url": 44
+                "url": 49
             },
             "244": {
                 "id": 244,
@@ -3763,9 +2056,9 @@ var outputTables = {
                 "atk": 192,
                 "hp": 560,
                 "skill_name": "龙骨枪",
-                "skill_id": 1,
+                "skill_id": 6,
                 "description": "公海里的海鲜是不是谁都可以捕捞？我想捉条龙。",
-                "url": 44
+                "url": 49
             },
             "245": {
                 "id": 245,
@@ -3776,9 +2069,9 @@ var outputTables = {
                 "atk": 262,
                 "hp": 720,
                 "skill_name": "龙骨枪",
-                "skill_id": 1,
+                "skill_id": 6,
                 "description": "那年开始，我忘记了很多事情，师父说，那就好。",
-                "url": 44
+                "url": 49
             },
             "246": {
                 "id": 246,
@@ -3811,7 +2104,7 @@ var outputTables = {
                 "atk": 141,
                 "hp": 410,
                 "skill_name": "月光宝盒",
-                "skill_id": 1,
+                "skill_id": 8,
                 "description": "拔出宝剑就能娶我，你还不明白我那颗恨嫁的心么？",
                 "url": 50
             },
@@ -3824,7 +2117,7 @@ var outputTables = {
                 "atk": 185,
                 "hp": 556,
                 "skill_name": "月光宝盒",
-                "skill_id": 1,
+                "skill_id": 8,
                 "description": "回到过去我可以当什么都没发生，虽然不能拥有，但我可以不去忘记。",
                 "url": 50
             },
@@ -3837,9 +2130,70 @@ var outputTables = {
                 "atk": 255,
                 "hp": 725,
                 "skill_name": "月光宝盒",
-                "skill_id": 1,
+                "skill_id": 8,
                 "description": "意中人你驾着七色云彩慢慢飞，小心前面带刺的玫瑰。",
                 "url": 50
+            },
+            "251": {
+                "id": 251,
+                "number": 51,
+                "name": "智慧·文曲星",
+                "star": 1,
+                "lv": 1,
+                "atk": 46,
+                "hp": 135,
+                "description": "天生智商300多，这不是我的错。",
+                "url": 51
+            },
+            "252": {
+                "id": 252,
+                "number": 51,
+                "name": "凡尘·文曲星",
+                "star": 2,
+                "lv": 1,
+                "atk": 110,
+                "hp": 257,
+                "description": "不能老呆天上，该下凡尘时，必须得下去走一趟。",
+                "url": 51
+            },
+            "253": {
+                "id": 253,
+                "number": 51,
+                "name": "状元·文曲星",
+                "star": 3,
+                "lv": 1,
+                "atk": 152,
+                "hp": 382,
+                "skill_name": "慧眼诀",
+                "skill_id": 2,
+                "description": "状元只是一个名分，真正的能力才是关键。",
+                "url": 51
+            },
+            "254": {
+                "id": 254,
+                "number": 51,
+                "name": "了然缘·文曲星",
+                "star": 4,
+                "lv": 1,
+                "atk": 201,
+                "hp": 535,
+                "skill_name": "慧眼诀",
+                "skill_id": 2,
+                "description": "有时候，我会看破仙尘，我不禁陷入了深深的沉思。",
+                "url": 51
+            },
+            "255": {
+                "id": 255,
+                "number": 51,
+                "name": "慧心三界·文曲星",
+                "star": 5,
+                "lv": 1,
+                "atk": 281,
+                "hp": 722,
+                "skill_name": "慧眼诀",
+                "skill_id": 2,
+                "description": "智慧的最高境界，是无知。",
+                "url": 51
             },
             "10000": {
                 "id": 10000,
@@ -10238,8 +8592,8 @@ var outputTables = {
         "rows": {
             "1": {
                 "id": 1,
-                "star3": "[13,43,218,248,153,123]",
-                "star4": "[59]"
+                "star3": "[8,13,33,43,168,88,178,218,123,138,243]",
+                "star4": "[59,149]"
             }
         }
     },
@@ -23191,7 +21545,8 @@ var outputTables = {
                 "first_name": "松雨"
             },
             "2373": {
-                "id": 2373
+                "id": 2373,
+                "first_name": "松风"
             },
             "2374": {
                 "id": 2374,
@@ -23226,7 +21581,8 @@ var outputTables = {
                 "first_name": "木莲"
             },
             "2382": {
-                "id": 2382
+                "id": 2382,
+                "first_name": "木香"
             },
             "2383": {
                 "id": 2383,
@@ -23261,7 +21617,8 @@ var outputTables = {
                 "first_name": "林衡"
             },
             "2391": {
-                "id": 2391
+                "id": 2391,
+                "first_name": "林森"
             },
             "2392": {
                 "id": 2392,
@@ -23292,7 +21649,8 @@ var outputTables = {
                 "first_name": "树声"
             },
             "2399": {
-                "id": 2399
+                "id": 2399,
+                "first_name": "树君"
             },
             "2400": {
                 "id": 2400,
@@ -23363,7 +21721,8 @@ var outputTables = {
                 "first_name": "楚天"
             },
             "2417": {
-                "id": 2417
+                "id": 2417,
+                "first_name": "楚云"
             },
             "2418": {
                 "id": 2418,
@@ -23398,7 +21757,8 @@ var outputTables = {
                 "first_name": "荣畅"
             },
             "2426": {
-                "id": 2426
+                "id": 2426,
+                "first_name": "荣志"
             },
             "2427": {
                 "id": 2427,
@@ -23413,7 +21773,8 @@ var outputTables = {
                 "first_name": "荣华"
             },
             "2430": {
-                "id": 2430
+                "id": 2430,
+                "first_name": "伟霖"
             },
             "2431": {
                 "id": 2431,
@@ -26399,166 +24760,6 @@ var outputTables = {
             }
         }
     },
-    "spirit": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "spirit_need": 900,
-                "hp_inc": 5,
-                "atk_inc": 5,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "2": {
-                "id": 2,
-                "lv": 2,
-                "spirit_need": 2040,
-                "hp_inc": 10,
-                "atk_inc": 10,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "3": {
-                "id": 3,
-                "lv": 3,
-                "spirit_need": 4180,
-                "hp_inc": 15,
-                "atk_inc": 15,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "4": {
-                "id": 4,
-                "lv": 4,
-                "spirit_need": 6720,
-                "hp_inc": 20,
-                "atk_inc": 20,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "5": {
-                "id": 5,
-                "lv": 5,
-                "spirit_need": 9660,
-                "hp_inc": 25,
-                "atk_inc": 25,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "6": {
-                "id": 6,
-                "lv": 6,
-                "spirit_need": 13000,
-                "hp_inc": 30,
-                "atk_inc": 30,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "7": {
-                "id": 7,
-                "lv": 7,
-                "spirit_need": 16740,
-                "hp_inc": 35,
-                "atk_inc": 35,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "8": {
-                "id": 8,
-                "lv": 8,
-                "spirit_need": 20880,
-                "hp_inc": 40,
-                "atk_inc": 40,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "9": {
-                "id": 9,
-                "lv": 9,
-                "spirit_need": 25420,
-                "hp_inc": 45,
-                "atk_inc": 45,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            },
-            "10": {
-                "id": 10,
-                "lv": 10,
-                "spirit_need": 32640,
-                "hp_inc": 50,
-                "atk_inc": 50,
-                "spirit_atk_pct": 100,
-                "rate": 50
-            }
-        }
-    },
-    "spirit_pool": {
-        "colComment": {},
-        "rows": {
-            "1": {
-                "id": 1,
-                "lv": 1,
-                "exp_need": 225,
-                "spirit_obtain": 10
-            },
-            "2": {
-                "id": 2,
-                "lv": 2,
-                "exp_need": 450,
-                "spirit_obtain": 12
-            },
-            "3": {
-                "id": 3,
-                "lv": 3,
-                "exp_need": 825,
-                "spirit_obtain": 14
-            },
-            "4": {
-                "id": 4,
-                "lv": 4,
-                "exp_need": 1200,
-                "spirit_obtain": 16
-            },
-            "5": {
-                "id": 5,
-                "lv": 5,
-                "exp_need": 1575,
-                "spirit_obtain": 18
-            },
-            "6": {
-                "id": 6,
-                "lv": 6,
-                "exp_need": 1950,
-                "spirit_obtain": 20
-            },
-            "7": {
-                "id": 7,
-                "lv": 7,
-                "exp_need": 2325,
-                "spirit_obtain": 22
-            },
-            "8": {
-                "id": 8,
-                "lv": 8,
-                "exp_need": 2700,
-                "spirit_obtain": 24
-            },
-            "9": {
-                "id": 9,
-                "lv": 9,
-                "exp_need": 3075,
-                "spirit_obtain": 26
-            },
-            "10": {
-                "id": 10,
-                "lv": 10,
-                "exp_need": 3500,
-                "spirit_obtain": 28
-            }
-        }
-    },
     "passFailSpiritSpeak": {
         "colComment": {},
         "rows": {
@@ -26803,6 +25004,166 @@ var outputTables = {
             "43": {
                 "id": 43,
                 "text": "上天从来都不是公平的，怎么可能公平呢？"
+            }
+        }
+    },
+    "spirit": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "spirit_need": 900,
+                "hp_inc": 5,
+                "atk_inc": 5,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "spirit_need": 2040,
+                "hp_inc": 10,
+                "atk_inc": 10,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "spirit_need": 4180,
+                "hp_inc": 15,
+                "atk_inc": 15,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "spirit_need": 6720,
+                "hp_inc": 20,
+                "atk_inc": 20,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "spirit_need": 9660,
+                "hp_inc": 25,
+                "atk_inc": 25,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "spirit_need": 13000,
+                "hp_inc": 30,
+                "atk_inc": 30,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "spirit_need": 16740,
+                "hp_inc": 35,
+                "atk_inc": 35,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "spirit_need": 20880,
+                "hp_inc": 40,
+                "atk_inc": 40,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "spirit_need": 25420,
+                "hp_inc": 45,
+                "atk_inc": 45,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "spirit_need": 32640,
+                "hp_inc": 50,
+                "atk_inc": 50,
+                "spirit_atk_pct": 100,
+                "rate": 50
+            }
+        }
+    },
+    "spirit_pool": {
+        "colComment": {},
+        "rows": {
+            "1": {
+                "id": 1,
+                "lv": 1,
+                "exp_need": 225,
+                "spirit_obtain": 10
+            },
+            "2": {
+                "id": 2,
+                "lv": 2,
+                "exp_need": 450,
+                "spirit_obtain": 12
+            },
+            "3": {
+                "id": 3,
+                "lv": 3,
+                "exp_need": 825,
+                "spirit_obtain": 14
+            },
+            "4": {
+                "id": 4,
+                "lv": 4,
+                "exp_need": 1200,
+                "spirit_obtain": 16
+            },
+            "5": {
+                "id": 5,
+                "lv": 5,
+                "exp_need": 1575,
+                "spirit_obtain": 18
+            },
+            "6": {
+                "id": 6,
+                "lv": 6,
+                "exp_need": 1950,
+                "spirit_obtain": 20
+            },
+            "7": {
+                "id": 7,
+                "lv": 7,
+                "exp_need": 2325,
+                "spirit_obtain": 22
+            },
+            "8": {
+                "id": 8,
+                "lv": 8,
+                "exp_need": 2700,
+                "spirit_obtain": 24
+            },
+            "9": {
+                "id": 9,
+                "lv": 9,
+                "exp_need": 3075,
+                "spirit_obtain": 26
+            },
+            "10": {
+                "id": 10,
+                "lv": 10,
+                "exp_need": 3500,
+                "spirit_obtain": 28
             }
         }
     },
@@ -48672,4 +47033,4 @@ var outputTables = {
             }
         }
     }
-}
+};

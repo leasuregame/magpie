@@ -104,4 +104,6 @@ LogoutLayer.pop = function (msg) {
     var logoutLayer = LogoutLayer.create(msg);
 
     cc.Director.getInstance().getRunningScene().addChild(logoutLayer, 500);
+
+    return logoutLayer;
 };

@@ -38,7 +38,7 @@ var MainScene = cc.Scene.extend({
     init: function () {
         cc.log("MainScene init");
 
-        cc.AudioEngine.getInstance().playMusic(main_scene_image.main_bg_music, true);
+        gameData.sound.playMusic();
 
         this._mainBgLayer = MainBgLayer.create();
         this.addChild(this._mainBgLayer, -1);
@@ -130,6 +130,6 @@ var MainScene = cc.Scene.extend({
     MainScene.destroy = function () {
         _mainScene = null;
 
-        cc.AudioEngine.getInstance().stopMusic();
+        gameData.sound.stopMusic();
     };
 })();

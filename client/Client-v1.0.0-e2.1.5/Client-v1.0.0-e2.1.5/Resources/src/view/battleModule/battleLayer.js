@@ -22,6 +22,7 @@ var BatterLayer = cc.Layer.extend({
     _tipNode: null,
     _spiritNode: null,
     _locate: null,
+    _isPlayback: false,
 
     init: function (battleLog) {
         cc.log("BatterLayer init");
@@ -33,6 +34,7 @@ var BatterLayer = cc.Layer.extend({
         this._index = 1;
         this._isEnd = false;
         this._battleLog = battleLog;
+        this._isPlayback = battleLog.get("isPlayback");
         this._spiritNode = [];
         this._locate = this._batterLayerFit.locatePoints;
 
@@ -41,18 +43,18 @@ var BatterLayer = cc.Layer.extend({
         bgSprite.setPosition(this._batterLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        if (this._battleLog.get("ownName") && this._battleLog.get("enemyName")) {
-
-            var ownName = StrokeLabel.create(this._battleLog.get("ownName"), "STHeitiTC-Medium", 20);
-            ownName.setAnchorPoint(cc.p(0, 0.5));
-            ownName.setPosition(this._batterLayerFit.ownNamePoint);
-            this.addChild(ownName);
-
-            var enemyName = StrokeLabel.create(this._battleLog.get("enemyName"), "STHeitiTC-Medium", 20);
-            enemyName.setAnchorPoint(cc.p(0, 0.5));
-            enemyName.setPosition(this._batterLayerFit.enemyNamePoint);
-            this.addChild(enemyName);
-        }
+//        if (this._battleLog.get("ownName") && this._battleLog.get("enemyName")) {
+//
+//            var ownName = StrokeLabel.create(this._battleLog.get("ownName"), "STHeitiTC-Medium", 20);
+//            ownName.setAnchorPoint(cc.p(0, 0.5));
+//            ownName.setPosition(this._batterLayerFit.ownNamePoint);
+//            this.addChild(ownName);
+//
+//            var enemyName = StrokeLabel.create(this._battleLog.get("enemyName"), "STHeitiTC-Medium", 20);
+//            enemyName.setAnchorPoint(cc.p(0, 0.5));
+//            enemyName.setPosition(this._batterLayerFit.enemyNamePoint);
+//            this.addChild(enemyName);
+//        }
 
         return true;
     },
@@ -735,7 +737,9 @@ var BatterLayer = cc.Layer.extend({
 
         gameData.sound.playEffect(main_scene_image.click_button_sound, false);
 
-        if (gameData.player.get("lv") < 10) {
+        if (this._isPlayback) {
+            this.end();
+        } else if (gameData.player.get("lv") < 10) {
             TipLayer.tip("10级以后，可以跳过战斗");
         } else {
             this.end();

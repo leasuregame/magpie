@@ -10,8 +10,35 @@
 
 @implementation IAPHelpOC
 
++ (id) sharedInstance
+{
+    static dispatch_once_t pred = 0;
+    __strong static id _sharedObject = nil;
+    dispatch_once(&pred, ^{
+        _sharedObject = [[self alloc] init]; // or some other init method
+    });
+    return _sharedObject;
+}
+
+- (id) init
+{
+    NSLog(@"IAPHelpOC init");
+    
+    if ((self = [super init])) {
+        //监听购买结果
+        
+        NSLog(@"-----监听购买结果-----");
+        
+        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    }
+    
+    return self;
+}
+
 - (void) buy : (NSString *) productId
 {
+    NSLog(@"IAPHelpOC buy");
+    
     if([SKPaymentQueue canMakePayments])
     {
         NSLog(@"-----允许购买进入购买流程-----");
@@ -26,14 +53,18 @@
 
 - (void) getProductInfo : (NSString *) productId
 {
+    NSLog(@"IAPHelpOC getProductInfo");
+    
     NSSet * set = [NSSet setWithArray:@[productId]];
     SKProductsRequest * request = [[SKProductsRequest alloc] initWithProductIdentifiers:set];
     request.delegate = self;
     [request start];
 }
 
-- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
+- (void) productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
+    NSLog(@"IAPHelpOC productsRequest");
+    
     NSArray *myProduct = response.products;
     
     if (myProduct.count == 0)
@@ -47,8 +78,10 @@
     [[SKPaymentQueue defaultQueue] addPayment:payment];
 }
 
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
+- (void) paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
 {
+    NSLog(@"IAPHelpOC paymentQueue");
+    
     for (SKPaymentTransaction *transaction in transactions)
     {
         switch (transaction.transactionState)
@@ -74,15 +107,17 @@
     
 }
 
-- (void)completeTransaction:(SKPaymentTransaction *)transaction
+- (void) completeTransaction:(SKPaymentTransaction *)transaction
 {
-    NSString * productStr = transaction.payment.productIdentifier;
-    NSString * receiptStr = [transaction.transactionReceipt base64EncodedString];
+    NSLog(@"IAPHelpOC completeTransaction");
     
-    NSLog(@"---------------------------------------------------------------------");
-    NSLog(@"transactionIdentifier = %@", productStr);
-    NSLog(@"transactionReceipt = %@", receiptStr);
-    NSLog(@"---------------------------------------------------------------------");
+    NSString * productStr = transaction.payment.productIdentifier;
+    NSString * receiptStr = [[NSString alloc] initWithData:transaction.transactionReceipt encoding:NSUTF8StringEncoding];
+    
+//    NSLog(@"---------------------------------------------------------------------");
+//    NSLog(@"transactionIdentifier = %@", productStr);
+//    NSLog(@"transactionReceipt = %@", receiptStr);
+//    NSLog(@"---------------------------------------------------------------------");
     
     if ([productStr length] > 0)
     {
@@ -93,13 +128,22 @@
         
         IAPHelp::executeCallback(PaymentPurchased, product, receipt, "购买成功");
     }
+    else
+    {
+        NSLog(@"-----购买成功，但商品ID为空，未知错误-----");
+        
+        IAPHelp::executeCallback(PaymentFailed, "", "", "购买失败");
+    }
     
     // 从支付队列删除改支付
+    NSLog(@"-----删除支付-----");
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
 
-- (void)failedTransaction:(SKPaymentTransaction *)transaction
+- (void) failedTransaction:(SKPaymentTransaction *)transaction
 {
+    NSLog(@"IAPHelpOC failedTransaction");
+    
     if(transaction.error.code != SKErrorPaymentCancelled)
     {
         NSLog(@"-----购买失败-----");
@@ -114,17 +158,32 @@
     }
     
     // 从支付队列删除改支付
+    NSLog(@"-----删除支付-----");
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
 
-- (void)restoreTransaction:(SKPaymentTransaction *)transaction
+- (void) restoreTransaction:(SKPaymentTransaction *)transaction
 {
+    NSLog(@"IAPHelpOC restoreTransaction");
     NSLog(@"-----已经购买过此商品-----");
     
     IAPHelp::executeCallback(PaymentRestored, "", "", "已经购买过此商品");
     
     // 从支付队列删除改支付
+    NSLog(@"-----删除支付-----");
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+}
+
+- (void) dealloc
+{
+    NSLog(@"IAPHelpOC dealloc");
+    
+    //解除购买监听
+    
+    NSLog(@"-----解除购买监听-----");
+    
+    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
+    [super dealloc];
 }
 
 @end

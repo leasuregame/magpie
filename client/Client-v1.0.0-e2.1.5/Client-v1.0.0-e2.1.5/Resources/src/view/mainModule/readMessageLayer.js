@@ -138,4 +138,6 @@ ReadMessageLayer.pop = function (id, name, text) {
     var readMessageLayer = ReadMessageLayer.create(id, name, text);
 
     MainScene.getInstance().getLayer().addChild(readMessageLayer, 10);
+
+    return readMessageLayer;
 };

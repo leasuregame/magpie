@@ -26,22 +26,6 @@ function submitLottery(){
             console.log(err);
         setResult(result);
     });
-  //  console.log("level="+ level);
-  //  console.log("type=" + type);
-  //  console.log("times=" + times);
-   /* var url = "/lottery?level=" + level + "&type=" + type + "&times=" + times;
-    $.ajax({
-        url:url,
-        type:"post",
-        success:function(msg){
-            if(msg.type == "success") {
-                console.log(msg);
-                var result = msg.info;
-                setResult(result);
-            }
-        }
-    });
-    */
 };
 
 function setResult(result) {

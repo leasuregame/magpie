@@ -16,6 +16,8 @@ var EMPTY = -2;
 var lineUp = [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY];
 var matrixOrder = ['00', '01', '02', '10', '11', '12'];
 
+var EXP_CARD = 30000;
+
 //星级对应的最大等级
 var MaxLevelConfig = [
     {
@@ -195,7 +197,12 @@ function eventHandle() {
 function checkTableId() {
     var val = $("#tableId").val();
     var star = $("#starList").val();
-    val = val % 5;
+    if (val == EXP_CARD) {
+        val = 1;
+    } else {
+        val = val % 5;
+    }
+
     if (val == 0) val = 5;
 
     if (val != star) {
@@ -303,7 +310,7 @@ function submitUpdate() {
     }
 
     var url = "/updateCard?card=" + JSON.stringify(data) + '&lineUp=' + getLineUp();
-    console.log('card = ',data);
+    console.log('card = ', data);
     $.ajax({
         url: url,
         type: "post",

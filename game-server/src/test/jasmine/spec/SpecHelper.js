@@ -270,6 +270,13 @@ var game = {
         console.log('onVerifyResult', data);
       });
 
+      pomelo.on('onPowerGive', function(data) {
+        console.log('on power given', data);
+      });
+
+      pomelo.on('onPowerGiveEnd', function(data) {
+        console.log('on power given', data);
+      });
     });
   },
   login: function(name, pwd, areaId) {

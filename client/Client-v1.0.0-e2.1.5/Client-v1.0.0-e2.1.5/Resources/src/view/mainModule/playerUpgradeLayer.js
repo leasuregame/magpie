@@ -57,6 +57,8 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         ccbNode.setPosition(this._playerUpgradeLayerFit.bgSpritePoint);
         layer.addChild(ccbNode);
 
+        var label = ccbNode.controller.label;
+
         var str = lz.getRewardString(data.reward);
         var len = str.length;
 
@@ -67,7 +69,7 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         lvLabel.setColor(cc.c3b(115, 255, 100));
         lvLabel.setAnchorPoint(cc.p(0.5, 1));
         lvLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
-        layer.addChild(lvLabel);
+        label.addChild(lvLabel);
 
         for (var i = 0; i < len; ++i) {
             offsetY -= 45;
@@ -76,7 +78,7 @@ var PlayerUpgradeLayer = LazyLayer.extend({
             rewardLabel.setColor(cc.c3b(255, 239, 131));
             rewardLabel.setAnchorPoint(cc.p(0.5, 1));
             rewardLabel.setPosition(cc.p(this._playerUpgradeLayerFit.rewardLabelPointX, offsetY));
-            layer.addChild(rewardLabel);
+            label.addChild(rewardLabel);
 
         }
 
@@ -90,10 +92,11 @@ var PlayerUpgradeLayer = LazyLayer.extend({
         );
         okItem.setPosition(this._playerUpgradeLayerFit.okItemPoint);
 
+
         var menu = cc.Menu.create(okItem);
         menu.setTouchPriority(MAIN_MENU_LAYER_HANDLER_PRIORITY);
         menu.setPosition(cc.p(0, 0));
-        layer.addChild(menu);
+        label.addChild(menu);
 
         layer.setScale(0.1);
         layer.runAction(

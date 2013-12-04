@@ -690,9 +690,9 @@ var fit4Iphone4 = {
             "bgLayerPoint": cc.p(40, 0),
             "bgSpritePoint": cc.p(360, 512),
             "obtainSpritePoint": cc.p(360, 732),
-            "offsetY": 660,
-            "rewardLabelPointX": 360,
-            "okItemPoint": cc.p(360, 372)
+            "offsetY": 150,
+            "rewardLabelPointX": 0,
+            "okItemPoint": cc.p(0, -180)
         },
         "powerRewardLayer": {
             "lineIconPoint": cc.p(40, 787),
@@ -1758,9 +1758,9 @@ var fit4Iphone5 = {
             "bgLayerPoint": cc.p(0, 0),
             "bgSpritePoint": cc.p(320, 600),
             "obtainSpritePoint": cc.p(320, 820),
-            "offsetY": 748,
-            "rewardLabelPointX": 320,
-            "okItemPoint": cc.p(320, 460)
+            "offsetY": 150,
+            "rewardLabelPointX": 0,
+            "okItemPoint": cc.p(0, -180)
         },
         "powerRewardLayer": {
             "lineIconPoint": cc.p(0, 963),

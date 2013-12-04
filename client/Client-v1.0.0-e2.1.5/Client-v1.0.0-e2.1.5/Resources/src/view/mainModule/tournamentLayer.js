@@ -201,6 +201,15 @@ var TournamentLayer = cc.Layer.extend({
         });
     },
 
+    _update: function () {
+        cc.log("TournamentLayer _update");
+
+        var tournament = gameData.tournament;
+
+        this._rankingLabel.setString(tournament.get("ranking"));
+        this._countLabel.setString(tournament.get("count"));
+    },
+
     _updateRankRewardItem: function () {
         cc.log("TournamentLayer _updateRankRewardItem");
 
@@ -230,10 +239,9 @@ var TournamentLayer = cc.Layer.extend({
     _addRankScrollView: function () {
         cc.log("TournamentLayer _addRankScrollView");
 
-        var tournament = gameData.tournament;
+        this._update();
 
-        this._rankingLabel.setString(tournament.get("ranking"));
-        this._countLabel.setString(tournament.get("count"));
+        var tournament = gameData.tournament;
 
         this._rankList = tournament.get("rankList");
         var len = this._rankList.length;
@@ -397,17 +405,17 @@ var TournamentLayer = cc.Layer.extend({
         if (count > 0) {
             var that = this;
             gameData.shop.buyProduct(function (data) {
-                that.update();
+                that._update();
 
                 lz.tipReward(data);
             }, id, count);
         }
     },
 
-    showTip: function() {
+    showTip: function () {
         cc.log("TournamentLayer showTip");
         var that = this;
-        TournamentTipLayer.pop(function() {
+        TournamentTipLayer.pop(function () {
             that._onClickBuyCount();
         });
     }

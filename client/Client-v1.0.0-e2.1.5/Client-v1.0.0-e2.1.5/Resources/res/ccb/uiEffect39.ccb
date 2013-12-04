@@ -379,7 +379,7 @@
 										<key>value</key>
 										<array>
 											<real>110</real>
-											<real>-180</real>
+											<real>-185</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -442,7 +442,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/button9.png</string>
+											<string>res/effect/uiEffect/up123.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -453,7 +453,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/button9s.png</string>
+											<string>res/effect/uiEffect/up124.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -464,7 +464,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/button9d.png</string>
+											<string>res/effect/uiEffect/up123.png</string>
 										</array>
 									</dict>
 								</array>
@@ -492,7 +492,7 @@
 										<key>value</key>
 										<array>
 											<real>-110</real>
-											<real>-180</real>
+											<real>-185</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -555,7 +555,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/button9.png</string>
+											<string>res/effect/uiEffect/up123.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -566,7 +566,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/button9s.png</string>
+											<string>res/effect/uiEffect/up124.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -577,7 +577,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>res/main/button9d.png</string>
+											<string>res/effect/uiEffect/up123.png</string>
 										</array>
 									</dict>
 								</array>
@@ -682,7 +682,7 @@
 								<key>value</key>
 								<array>
 									<real>110</real>
-									<real>-180</real>
+									<real>-185</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -726,7 +726,7 @@
 								<key>value</key>
 								<array>
 									<string></string>
-									<string>res/effect/uiEffect/up96.png</string>
+									<string>res/effect/uiEffect/up125.png</string>
 								</array>
 							</dict>
 						</array>
@@ -754,7 +754,7 @@
 								<key>value</key>
 								<array>
 									<real>-110</real>
-									<real>-180</real>
+									<real>-185</real>
 									<integer>0</integer>
 								</array>
 							</dict>

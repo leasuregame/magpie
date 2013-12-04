@@ -112,7 +112,10 @@ var MessageLayer = cc.Layer.extend({
         bgSprite.setPosition(this._messageLayerFit.bgSpritePoint);
         this.addChild(bgSprite);
 
-        this._onClickBattleMessageLayer();
+        this._battleMessageLayerItem.setEnabled(false);
+        this._friendMessageLayerItem.setEnabled(true);
+        this._systemMessageLayerItem.setEnabled(true);
+        this.switchLayer(BattleMessageLayer);
 
         return true;
     },

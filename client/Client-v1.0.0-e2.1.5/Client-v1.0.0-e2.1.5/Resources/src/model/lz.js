@@ -199,7 +199,7 @@ var gameGoodsName = {
     "power": "体力",
     "elixir": "仙丹",
     "fragment": "卡魂",
-    "energy": "活力",
+    "energy": "活力点",
     "skillPoint": "技能点",
     "totalSpirit": "灵气",
     "cards": "级经验元灵",

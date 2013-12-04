@@ -172,7 +172,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         moneyIcon.setPosition(cc.p(100, 92));
         this._resLabel.addChild(moneyIcon);
 
-        var moneyLabel = cc.LabelTTF.create("20000 / 次", "STHeitiTC-Medium", 20);
+        var moneyLabel = cc.LabelTTF.create("2000 / 次", "STHeitiTC-Medium", 20);
         moneyLabel.setAnchorPoint(cc.p(0, 0.5));
         moneyLabel.setPosition(cc.p(130, 90));
         this._resLabel.addChild(moneyLabel);
@@ -196,6 +196,20 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
         var stopTypeBgSprite = cc.Sprite.create(main_scene_image.bg16);
         stopTypeBgSprite.setAnchorPoint(cc.p(0, 0));
         this._stopTypeLabel.addChild(stopTypeBgSprite);
+
+        var blueLabel = cc.Sprite.create(main_scene_image.icon50);
+        blueLabel.setScaleX(0.91);
+        blueLabel.setScaleY(0.4);
+        blueLabel.setAnchorPoint(cc.p(0, 0.5));
+        blueLabel.setPosition(cc.p(0, 178));
+        this._stopTypeLabel.addChild(blueLabel);
+
+        var yellowLabel = cc.Sprite.create(main_scene_image.icon50);
+        yellowLabel.setScaleX(0.91);
+        yellowLabel.setScaleY(0.4);
+        yellowLabel.setAnchorPoint(cc.p(0, 0.5));
+        yellowLabel.setPosition(cc.p(0, 96));
+        this._stopTypeLabel.addChild(yellowLabel);
 
         var stopUntilBlueIcon = ColorLabelTTF.create(
             {
@@ -433,7 +447,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
             var passiveSkillCount = 0;
             var lockNum = 0;
             var passiveSkill = this._leadCard.get("passiveSkill");
-
+            var maxValue = 0.0;
             this._afreshIdList = [];
             for (var key in passiveSkill) {
                 var passiveSkillLabel = this._passiveSkillList[passiveSkillCount++];
@@ -443,6 +457,9 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                 }
 
                 var value = passiveSkill[key].value.toFixed(1);
+                if (value > maxValue) {
+                    maxValue = value;
+                }
                 if (value == 10.0) {
                     passiveSkillLabel.valueLabel.setString("     + " + value + "% (满)");
                 } else {
@@ -477,8 +494,18 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                                 cc.MoveBy.create(0.1, cc.p(-5, 0))
                             )
                         );
+
                     }
                 }
+            }
+
+            if (maxValue == 10.0 && isAfresh) {
+                var effect = cc.BuilderReader.load(main_scene_image.uiEffect26, this);
+                effect.setPosition(this._passiveSkillAfreshLabelFit.effectPoint);
+                this.addChild(effect, 2);
+                effect.animationManager.setCompletedAnimationCallback(this, function () {
+                    effect.removeFromParent();
+                });
             }
 
             for (var i = 0; i < passiveSkillCount; ++i) {
@@ -590,6 +617,7 @@ var PassiveSkillAfreshLabel = cc.Layer.extend({
                     this._onClickStop();
                 }
             }
+
         } else {
             this._onClickStop();
         }

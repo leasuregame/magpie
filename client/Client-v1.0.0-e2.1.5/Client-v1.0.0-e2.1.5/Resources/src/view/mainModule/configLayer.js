@@ -169,7 +169,7 @@ var ConfigLayer = cc.Layer.extend({
         QQGroup.setAnchorPoint(cc.p(0, 0));
         QQGroup.setPosition(this._configLayerFit.QQGroupPoint);
 
-        var QQGroupTitle = StrokeLabel.create("Q群： xxxxxxx", "STHeitiTC-Medium", 30);
+        var QQGroupTitle = StrokeLabel.create("Q群： 264272502", "STHeitiTC-Medium", 30);
         QQGroupTitle.setAnchorPoint(cc.p(0, 0.5));
         QQGroupTitle.setPosition(cc.p(40, 55));
         QQGroup.addChild(QQGroupTitle);

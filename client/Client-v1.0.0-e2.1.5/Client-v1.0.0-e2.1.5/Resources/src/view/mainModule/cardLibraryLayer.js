@@ -231,6 +231,12 @@ var CardLibraryLayer = cc.Layer.extend({
                     cc.log(effect);
 
                     effect.animationManager.setCompletedAnimationCallback(this, function () {
+                        var lightEffect = cc.BuilderReader.load(main_scene_image.uiEffect21, this);
+                        lightEffect.setPosition(cc.p(100, 100));
+                        that._cardItem[id].addChild(lightEffect);
+                        lightEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                            lightEffect.removeFromParent();
+                        });
                         effect.removeFromParent();
                     });
 

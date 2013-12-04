@@ -644,6 +644,34 @@
 									<key>type</key>
 									<integer>2</integer>
 								</dict>
+								<key>scale</key>
+								<dict>
+									<key>keyframes</key>
+									<array>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>scale</string>
+											<key>time</key>
+											<real>0.0</real>
+											<key>type</key>
+											<integer>4</integer>
+											<key>value</key>
+											<array>
+												<real>3</real>
+												<real>3</real>
+											</array>
+										</dict>
+									</array>
+									<key>name</key>
+									<string>scale</string>
+									<key>type</key>
+									<integer>4</integer>
+								</dict>
 							</dict>
 						</dict>
 						<key>baseClass</key>
@@ -667,7 +695,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-0.22401070594787598</real>
+									<real>0.0</real>
 									<real>-12.183977127075195</real>
 									<integer>0</integer>
 								</array>
@@ -684,6 +712,11 @@
 								</array>
 							</dict>
 							<dict>
+								<key>baseValue</key>
+								<array>
+									<real>4</real>
+									<real>4</real>
+								</array>
 								<key>name</key>
 								<string>scale</string>
 								<key>type</key>
@@ -810,7 +843,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>1.3666666746139526</real>
+											<real>1.5666667222976685</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -825,7 +858,7 @@
 											<key>name</key>
 											<string>opacity</string>
 											<key>time</key>
-											<real>1.6666666269302368</real>
+											<real>1.8333333730697632</real>
 											<key>type</key>
 											<integer>5</integer>
 											<key>value</key>
@@ -850,7 +883,7 @@
 											<key>name</key>
 											<string>rotation</string>
 											<key>time</key>
-											<real>0.3333333432674408</real>
+											<real>0.0</real>
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
@@ -865,7 +898,7 @@
 											<key>name</key>
 											<string>rotation</string>
 											<key>time</key>
-											<real>1.6666666269302368</real>
+											<real>1.8333333730697632</real>
 											<key>type</key>
 											<integer>2</integer>
 											<key>value</key>
@@ -990,6 +1023,34 @@
 									<key>type</key>
 									<integer>2</integer>
 								</dict>
+								<key>scale</key>
+								<dict>
+									<key>keyframes</key>
+									<array>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>1</integer>
+											</dict>
+											<key>name</key>
+											<string>scale</string>
+											<key>time</key>
+											<real>0.0</real>
+											<key>type</key>
+											<integer>4</integer>
+											<key>value</key>
+											<array>
+												<real>3</real>
+												<real>3</real>
+											</array>
+										</dict>
+									</array>
+									<key>name</key>
+									<string>scale</string>
+									<key>type</key>
+									<integer>4</integer>
+								</dict>
 							</dict>
 						</dict>
 						<key>baseClass</key>
@@ -1013,7 +1074,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>-0.22401070594787598</real>
+									<real>0.0</real>
 									<real>-12.183977127075195</real>
 									<integer>0</integer>
 								</array>
@@ -1030,6 +1091,11 @@
 								</array>
 							</dict>
 							<dict>
+								<key>baseValue</key>
+								<array>
+									<real>4</real>
+									<real>4</real>
+								</array>
 								<key>name</key>
 								<string>scale</string>
 								<key>type</key>
@@ -1987,7 +2053,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<true/>
+						<false/>
 					</dict>
 					<dict>
 						<key>name</key>

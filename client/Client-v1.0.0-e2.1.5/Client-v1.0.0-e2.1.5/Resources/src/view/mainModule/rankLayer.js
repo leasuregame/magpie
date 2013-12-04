@@ -115,7 +115,11 @@ var RankLayer = cc.Layer.extend({
         tournamentRankIcon.setPosition(this._rankLayerFit.tournamentRankIconPoint);
         this.addChild(tournamentRankIcon, 1);
 
-        this._onClickAbilityRankLayer();
+        this._abilityRankLayerItem.setEnabled(false);
+        this._lvRankLayerItem.setEnabled(true);
+        this._passRankLayerItem.setEnabled(true);
+        this._tournamentRankLayerItem.setEnabled(true);
+        this.switchLayer(AbilityRankLayer);
 
         return true;
     },

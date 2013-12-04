@@ -52,16 +52,22 @@ var LineUpLabel = cc.Layer.extend({
 
         for (var i = 0; i < 5; ++i) {
             var cardHeadItem = null;
-
+            var effect = null;
             if (i < MAX_LINE_UP_CARD) {
                 cardHeadItem = CardHeadNode.getCardHeadItem(lineUpCardList[i], this._onClickCard, this);
+
+                if (lineUpCardList[i]) {
+                    effect = cc.BuilderReader.load(main_scene_image.uiEffect44, this);
+                    effect.setPosition(cc.p(79 + 122 * i, 0));
+                    this.addChild(effect, 2);
+                }
 
             } else {
                 cardHeadItem = CardHeadNode.getCardHeadItem(-1, this._onClickLock(i), this);
             }
-
             cardHeadItem.setPosition(cc.p(79 + 122 * i, 0));
             menu.addChild(cardHeadItem);
+
         }
     },
 

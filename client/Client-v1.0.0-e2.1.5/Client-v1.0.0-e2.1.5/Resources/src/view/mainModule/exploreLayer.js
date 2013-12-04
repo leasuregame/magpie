@@ -401,6 +401,8 @@ var ExploreLayer = cc.Layer.extend({
         passEffect.setPosition(this._exploreLayerFit.passEffectPoint);
         this.addChild(passEffect);
 
+        TipLayer.tipNoBg("通关奖励  仙币：+" + this._reward.through_reward.money);
+
         var that = this;
 
         passEffect.animationManager.setCompletedAnimationCallback(this, function () {
@@ -421,6 +423,18 @@ var ExploreLayer = cc.Layer.extend({
         cc.log("ExploreLayer _showReward");
 
         if (this._reward) {
+
+            if (this._reward.money && this._reward.exp) {
+                var rewardEffect = cc.BuilderReader.load(main_scene_image.uiEffect48, this);
+                rewardEffect.controller.moneyLabel.setString("+" + this._reward.money);
+                rewardEffect.controller.expLabel.setString("+" + this._reward.exp);
+                rewardEffect.setPosition(this._exploreLayerFit.rewardEffectPoint);
+                this.addChild(rewardEffect);
+                rewardEffect.animationManager.setCompletedAnimationCallback(this, function () {
+                    rewardEffect.removeFromParent();
+                });
+            }
+
             var fadeAction = cc.Sequence.create(
                 cc.FadeIn.create(0.3),
                 cc.DelayTime.create(0.6),
@@ -496,8 +510,6 @@ var ExploreLayer = cc.Layer.extend({
                 var goldList = this._reward.goldList;
                 var upgradeReward = this._reward.upgradeReward;
 
-                this._reward = null;
-
                 var next = function () {
                     if (upgradeReward) {
                         var cb = function () {
@@ -522,6 +534,7 @@ var ExploreLayer = cc.Layer.extend({
                     next();
                 }
 
+                this._reward = null;
 
             }, 1);
 
@@ -609,43 +622,26 @@ var ExploreLayer = cc.Layer.extend({
     },
 
     _showBox: function () {
-        cc.log("TaskLayer _openBox");
+        cc.log("TaskLayer _showBox");
 
-        var boxAction = cc.Sequence.create(
-            cc.Spawn.create(
-                cc.MoveBy.create(0.3, cc.p(0, -165)),
-                cc.ScaleTo.create(0.3, 1, 1)
-            ),
-            cc.CallFunc.create(
-                this._openBox,
-                this
-            )
-        );
+        var boxEffect = cc.BuilderReader.load(main_scene_image.uiEffect47, this);
+        boxEffect.setPosition(this._exploreLayerFit.openBoxSpritePoint);
+        this.addChild(boxEffect);
 
-        this._closeBoxSprite.setPosition(this._exploreLayerFit.closeBoxSpritePoint2);
-        this._closeBoxSprite.setScale(0.9);
-        this._closeBoxSprite.setVisible(true);
-
-        this._openBoxSprite.setVisible(false);
-
-        this._closeBoxSprite.runAction(boxAction);
+        boxEffect.animationManager.setCompletedAnimationCallback(this, function () {
+            boxEffect.removeFromParent();
+        });
     },
 
     _openBox: function () {
         cc.log("TaskLayer _openBox");
 
-        this._closeBoxSprite.setVisible(false);
-        this._openBoxSprite.setVisible(true);
-
         var that = this;
         var cb = function () {
-            that._openBoxSprite.setVisible(false);
             that.update();
         };
 
-        this.scheduleOnce(function () {
-            LotteryCardLayer.pop({card: this._reward.card, cb: cb});
-        }, 0.5);
+        LotteryCardLayer.pop({card: this._reward.card, cb: cb});
     },
 
     _onBuyPower: function () {

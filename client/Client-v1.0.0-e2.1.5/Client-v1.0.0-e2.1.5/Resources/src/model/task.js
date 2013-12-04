@@ -197,7 +197,7 @@ var Task = Entity.extend({
                 }
 
                 if (msg.through_reward) {
-                    TipLayer.tipNoBg("通关奖励  仙币：+" + msg.through_reward.money);
+                    cbData.through_reward = msg.through_reward;
                     player.add('money',msg.through_reward.money);
                 }
 

@@ -3864,7 +3864,7 @@
 					"-lcurl",
 				);
 				PRODUCT_NAME = "Magpie-AppStore";
-				PROVISIONING_PROFILE = "1709E95C-37ED-45BC-8FF1-288810FEAE59";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"Client-v1.0.0-e2.1.5/libs/Chipmunk/include/chipmunk\" \"Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/include\"";
 				WRAPPER_EXTENSION = app;
@@ -3909,7 +3909,7 @@
 					"-lcurl",
 				);
 				PRODUCT_NAME = "Magpie-AppStore";
-				PROVISIONING_PROFILE = "1709E95C-37ED-45BC-8FF1-288810FEAE59";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"Client-v1.0.0-e2.1.5/libs/Chipmunk/include/chipmunk\" \"Client-v1.0.0-e2.1.5/libs/javascript/spidermonkey-ios/include\"";
 				VALIDATE_PRODUCT = YES;

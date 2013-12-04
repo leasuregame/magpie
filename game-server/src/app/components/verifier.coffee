@@ -9,6 +9,17 @@ Queue = require '../common/verifyQueue'
 SANBOX_URL = 'https://sandbox.itunes.apple.com/verifyReceipt'
 VERIFY_URL = 'https://buy.itunes.apple.com/verifyReceipt'
 
+# app receipt 验证返回状态码
+# 状态码 描述
+# 21000 App Store无法读取你提供的JSON数据
+# 21002 收据数据不符合格式
+# 21003 收据无法被验证
+# 21004 你提供的共享密钥和账户的共享密钥不一致
+# 21005 收据服务器当前不可用
+# 21006 收据是有效的，但订阅服务已经过期。当收到这个信息时，解码后的收据信息也包含在返回内容中
+# 21007 收据信息是测试用（sandbox），但却被发送到产品环境中验证
+# 21008 收据信息是产品环境中使用，但却被发送到测试环境中验证
+
 module.exports = (app, opts) ->
   return new Component(app, opts)
 
@@ -23,7 +34,7 @@ class Component
 
   start: (cb) ->
     @app.get('dao').buyRecord.fetchMany {
-      where: isVerify: 0
+      where: "isVerify = 0 and (status is null or status = 21005)"
     }, (err, res) =>
       if err
         logger.error('faild to fetch buyRecord.', err)
@@ -50,18 +61,22 @@ executeVerify = (app, queue) ->
     return if item.doing 
     item.doing = true
 
-    request.post {
-      headers: 'content-type': 'application/json'
-      url: SANBOX_URL
-      json: 'receipt-data': new Buffer(item.receiptData).toString('base64')
-    }, (err, res, body) ->
-      if err
-        logger.error('faild to verify app store receipt.', err)
+    poseReceipt = (reqUrl, receiptData, callback) ->
+      request.post {
+        headers: 'content-type': 'application/json'
+        url: reqUrl
+        json: 'receipt-data': new Buffer(receiptData).toString('base64')
+      }, (err, res, body) ->
+        if err
+          logger.error('faild to verify app store receipt.', err)
 
-      if body.status is 0
-        queue.del(item.id) # 删除后，后面用到这个对象的地方会不会出问题呢
-        updatePlayer(app, item, body)
-        
+        if body.status is 0
+          queue.del(item.id) # 删除后，后面用到这个对象的地方会不会出问题呢
+          updatePlayer(app, item, body)
+        else
+          item.doning = false
+          updateBuyRecord(app, item.id, {status: body.status})
+
       done()
   , (err) ->
     if err
@@ -83,18 +98,21 @@ updatePlayer = (app, buyRecord, receiptResult) ->
     player.increase('cash', product.cash)
     player.increase('gold', product.cash * 10)
     player.save()
-    updateBuyRecord(app, buyRecord, receiptResult.receipt)
+
+    rdata = 
+      isVerify: 1
+      purchaseDate: utility.dateFormat(new Date(parseInt receiptResult.receipt.purchase_date_ms), 'yyyy-MM-dd h:mm:ss')
+      productId: receiptResult.receipt.product_id
+      qty: receiptResult.receipt.quantity
+      status: receiptResult.status
+
+    updateBuyRecord(app, buyRecord.id, rdata)
     successMsg(app, player)
 
-updateBuyRecord = (app, buyRecord, receipt) ->
+updateBuyRecord = (app, id, data) ->
   app.get('dao').buyRecord.update {
-    where: id: buyRecord.id
-    data: {
-      isVerify: 1,
-      purchaseDate: utility.dateFormat(new Date(parseInt receipt.purchase_date_ms), 'yyyy-MM-dd h:mm:ss'),
-      productId: receipt.product_id,
-      qty: receipt.quantity
-    }
+    where: id: id
+    data: data
   }, (err, res) ->
     if err
       logger.error('faild to update buy record.', err)

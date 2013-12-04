@@ -938,7 +938,7 @@ var Player = (function(_super) {
         var firstUnsignDay = 31;
         var count = new Date().getDate();
         for (var i = 1; i < count; i++) {
-            if (!utility.hasMark(si[key], i)) {
+            if (!utility.hasMark(si[key].mark, i)) {
                 si[key].mark = utility.mark(si[key].mark, i);
                 this.signIn = si;
                 firstUnsignDay = i;

@@ -196,10 +196,18 @@ var CardEvolutionLayer = cc.Layer.extend({
 
             this._resLabel.setVisible(true);
 
+            var needMoney = this._leadCard.getEvolutionNeedMoney();
+
             this._nameLabel.setString(this._leadCard.get("name"));
             this._evolutionRateLabel.setString("0%");
             this._cardCountLabel.setString("0");
-            this._moneyLabel.setString(this._leadCard.getEvolutionNeedMoney());
+            this._moneyLabel.setString(needMoney);
+
+            if (needMoney > gameData.player.get("money")) {
+                this._moneyLabel.setColor(cc.c3b(255, 40, 40));
+            } else {
+                this._moneyLabel.setColor(cc.c3b(255, 255, 255));
+            }
 
             this._helpLabel.setVisible(true);
             this._tipLabel.setVisible(false);

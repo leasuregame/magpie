@@ -358,9 +358,9 @@ var fit4Iphone4 = {
             "nameEditBoxPoint": cc.p(360, 512),
             "okPoint": cc.p(260, 442),
             "cancelPoint": cc.p(460, 442),
-            "scrollViewLayerRect": cc.rect(40, 106, 640, 620),
-            "scrollViewSize": cc.size(591, 620),
-            "scrollViewPoint": cc.p(65, 106)
+            "scrollViewLayerRect": cc.rect(40, 166, 640, 610),
+            "scrollViewSize": cc.size(640, 610),
+            "scrollViewPoint": cc.p(65, 166)
         },
         "friendMessageLayer": {
             "scrollViewLayerRect": cc.rect(57, 119, 605, 742),

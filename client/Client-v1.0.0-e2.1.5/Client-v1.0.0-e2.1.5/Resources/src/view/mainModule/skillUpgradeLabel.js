@@ -291,15 +291,15 @@ var SkillUpgradeLabel = cc.Node.extend({
 
         var that = this;
         this._leadCard.upgradeSkill(function (data) {
-            playEffect({
-                effectId: 11,
-                target: that,
-                loops: 1,
-                delay: 0.1,
-                zOrder: 10,
-                position: that._skillUpgradeLabelFit.effectPoint,
-                clear: true
-            });
+//            playEffect({
+//                effectId: 11,
+//                target: that,
+//                loops: 1,
+//                delay: 0.1,
+//                zOrder: 10,
+//                position: that._skillUpgradeLabelFit.effectPoint,
+//                clear: true
+//            });
 
             that.update();
         });

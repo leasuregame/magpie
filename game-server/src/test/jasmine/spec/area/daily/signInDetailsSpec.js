@@ -5,7 +5,20 @@ describe('Area Server', function() {
 		});
 		describe('area.dailyHandler.signInDetails', function() {
 			beforeEach(function() {
-				loginWith('arthur', '1', 1);
+				doAjax('/update/player/' + 100, {
+					signIn: JSON.stringify({
+						201310: {
+							makr: 15,
+							flag: 0
+						},
+						201311: {
+							makr: 15,
+							flag: 0
+						}
+					})
+				}, function() {
+					loginWith('arthur', '1', 1);
+				});
 			});
 			describe('when get sign in details', function() {
 				it('should can return sign in info', function() {
@@ -14,8 +27,14 @@ describe('Area Server', function() {
 						expect(data).toEqual({
 							code: 200,
 							msg: {
-								months: {},
-								flag: 0
+								201310: {
+									makr: 15,
+									flag: 0
+								},
+								201311: {
+									makr: 15,
+									flag: 0
+								}
 							}
 						});
 					});

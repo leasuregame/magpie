@@ -103,8 +103,12 @@ updatePlayer = (app, buyRecord, receiptResult) ->
       logger.error('can not find player info by playerid ', buyRecord.playerId, err)
       return
 
+    times = 1
+    if player.cash is 0
+      times = 3  ### 首冲获得三倍魔石 ###
+
     player.increase('cash', product.cash)
-    player.increase('gold', product.cash * 10)
+    player.increase('gold', (product.cash * 10 + product.gold) * times)
     player.save()
 
     rdata = 
